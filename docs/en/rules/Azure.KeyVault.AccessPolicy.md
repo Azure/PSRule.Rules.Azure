@@ -68,4 +68,4 @@ For example:
 ## LINKS
 
 - [Best practices to use Key Vault](https://docs.microsoft.com/azure/key-vault/general/best-practices)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)

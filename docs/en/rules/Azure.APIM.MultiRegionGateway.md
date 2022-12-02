@@ -100,4 +100,4 @@ resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-previe
 
 - [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
 - [About multi-region deployment](https://learn.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region#about-multi-region-deployment)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)

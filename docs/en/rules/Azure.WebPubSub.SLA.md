@@ -81,4 +81,4 @@ resource service 'Microsoft.SignalRService/webPubSub@2021-10-01' = {
 
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#availability-targets)
 - [Azure Web PubSub pricing](https://azure.microsoft.com/pricing/details/web-pubsub/)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.signalrservice/webpubsub)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.signalrservice/webpubsub)

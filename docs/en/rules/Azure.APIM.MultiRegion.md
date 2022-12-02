@@ -100,4 +100,4 @@ Virtual network settings must be configured in the added region, if networking i
 
 - [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
 - [Azure API Management instance multi-region](https://learn.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)

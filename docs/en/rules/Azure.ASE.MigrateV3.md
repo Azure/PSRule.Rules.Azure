@@ -171,4 +171,4 @@ resource hostingEnvironment 'Microsoft.Web/hostingEnvironments@2022-03-01' = {
 - [Infrastructure provisioning](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [App Service Environment version 1 and version 2 will be retired on 31 August 2024](https://azure.microsoft.com/updates/app-service-environment-v1-and-v2-retirement-announcement)
 - [Migrate to App Service Environment v3](https://learn.microsoft.com/azure/app-service/environment/migration-alternatives)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.web/hostingenvironments)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/hostingenvironments)

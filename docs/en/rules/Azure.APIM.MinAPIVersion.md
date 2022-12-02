@@ -102,4 +102,4 @@ configuration:
 - [Infrastructure provisioning](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Azure API Management API version retirements](https://learn.microsoft.com/azure/api-management/breaking-changes/api-version-retirement-sep-2023)
 - [Azure API Management soft-delete REST API versions behaviour](https://learn.microsoft.com/azure/api-management/soft-delete)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)

@@ -89,4 +89,4 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 ## LINKS
 
 - [Configure general settings](https://docs.microsoft.com/azure/app-service/configure-common#configure-general-settings)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)

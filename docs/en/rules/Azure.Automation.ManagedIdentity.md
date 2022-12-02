@@ -97,4 +97,4 @@ resource automation_account_name_resource 'Microsoft.Automation/automationAccoun
 - [Managed identities](https://docs.microsoft.com/azure/automation/automation-security-overview#managed-identities)
 - [Using a system-assigned managed identity for an Azure Automation account](https://docs.microsoft.com/azure/automation/enable-managed-identity-for-automation)
 - [Using a user-assigned managed identity for an Azure Automation account](https://docs.microsoft.com/azure/automation/add-user-assigned-identity)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.automation/automationaccounts#identity)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.automation/automationaccounts#identity)

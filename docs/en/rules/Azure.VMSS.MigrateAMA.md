@@ -349,5 +349,5 @@ resource linuxAgent 'Microsoft.Compute/virtualMachineScaleSets/extensions@2022-0
 - [Monitoring](https://learn.microsoft.com/azure/architecture/framework/devops/checklist)
 - [Log Analytics agent retiring](https://azure.microsoft.com/updates/were-retiring-the-log-analytics-agent-in-azure-monitor-on-31-august-2024)
 - [Migrate to Azure Monitor Agent from Log Analytics Agent](https://learn.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-migration)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)

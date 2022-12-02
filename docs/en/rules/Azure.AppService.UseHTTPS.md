@@ -93,4 +93,4 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Enforce HTTPS](https://docs.microsoft.com/azure/app-service/configure-ssl-bindings#enforce-https)
 - [Azure Policy built-in definitions for Azure App Service](https://docs.microsoft.com/azure/app-service/policy-reference)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteproperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteproperties)

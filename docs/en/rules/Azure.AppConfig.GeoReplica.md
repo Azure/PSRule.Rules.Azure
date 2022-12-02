@@ -150,4 +150,4 @@ resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2022-0
 - [Resiliency and diaster recovery](https://learn.microsoft.com/azure/azure-app-configuration/concept-disaster-recovery)
 - [Geo-replication overview](https://learn.microsoft.com/azure/azure-app-configuration/concept-geo-replication)
 - [Enable geo-replication](https://learn.microsoft.com/azure/azure-app-configuration/howto-geo-replication)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores/replicas)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores/replicas)

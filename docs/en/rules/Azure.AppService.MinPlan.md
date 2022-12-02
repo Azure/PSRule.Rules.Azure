@@ -82,4 +82,4 @@ resource appPlan 'Microsoft.Web/serverfarms@2021-01-15' = {
 - [Manage an App Service plan in Azure](https://docs.microsoft.com/azure/app-service/app-service-plan-manage)
 - [Configure PremiumV3 tier for Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-configure-premium-tier)
 - [App Service pricing](https://azure.microsoft.com/pricing/details/app-service/windows/)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms)

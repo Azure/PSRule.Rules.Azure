@@ -36,4 +36,4 @@ To configure this rule:
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools#ManagedClusterAgentPoolProfileProperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools#ManagedClusterAgentPoolProfileProperties)

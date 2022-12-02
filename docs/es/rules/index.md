@@ -362,5 +362,7 @@ AZR-000337 | [Azure.MariaDB.DatabaseName](Azure.MariaDB.DatabaseName.md) | Azure
 AZR-000338 | [Azure.MariaDB.FirewallRuleName](Azure.MariaDB.FirewallRuleName.md) | Azure Database for MariaDB firewall rules should meet naming requirements. | GA
 AZR-000339 | [Azure.MariaDB.VNETRuleName](Azure.MariaDB.VNETRuleName.md) | Azure Database for MariaDB VNET rules should meet naming requirements. | GA
 AZR-000340 | [Azure.APIM.MultiRegion](Azure.APIM.MultiRegion.md) | API Management instances should use multi-region deployment to improve service availability. | GA
+AZR-000341 | [Azure.APIM.MultiRegionGateway](Azure.APIM.MultiRegionGateway.md) | API Management instances should have multi-region deployment gateways enabled. | GA
+AZR-000342 | [Azure.MariaDB.AllowAzureAccess](Azure.MariaDB.AllowAzureAccess.md) | Determine if access from Azure services is required. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

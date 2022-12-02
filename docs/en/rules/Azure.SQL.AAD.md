@@ -160,4 +160,4 @@ the sub-resoure will override the property.
 - [Conditional Access with Azure SQL Database and Azure Synapse Analytics](https://docs.microsoft.com/azure/azure-sql/database/conditional-access-configure)
 - [Azure AD-only authentication with Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication)
 - [Azure Policy for Azure Active Directory only authentication with Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication-policy)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/administrators)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/administrators)

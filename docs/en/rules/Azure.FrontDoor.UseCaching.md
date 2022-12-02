@@ -264,5 +264,5 @@ This rule only applies to Front Door Classic `(Microsoft.Network/frontDoors)`.
 - [Performance patterns](https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency-patterns)
 - [Caching with Azure Front Door](https://learn.microsoft.com/azure/frontdoor/front-door-caching)
 - [Routing architecture overview](https://learn.microsoft.com/azure/frontdoor/front-door-routing-architecture)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors/rulesengines)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors/rulesengines)

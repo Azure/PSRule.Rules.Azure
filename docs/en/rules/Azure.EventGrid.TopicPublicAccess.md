@@ -77,4 +77,4 @@ resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
 
 - [Traffic flow security in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-flow#data-exfiltration)
 - [Private Endpoints](https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics?tabs=json)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics?tabs=json)

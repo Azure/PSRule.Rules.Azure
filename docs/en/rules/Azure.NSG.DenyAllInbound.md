@@ -192,4 +192,4 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2022-01-01' = {
 - [Network security groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
 - [Introduction to flow logging for network security groups](https://learn.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)
 - [Virtual network service tags](https://docs.microsoft.com/azure/virtual-network/service-tags-overview)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)

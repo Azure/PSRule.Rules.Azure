@@ -131,4 +131,4 @@ Azure Database for MySQL Flexible Server deployment model does not currently sup
 
 - [Security operations](https://learn.microsoft.com/azure/architecture/framework/security/security-operations)
 - [Enable Microsoft Defender for open-source relational databases](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-usage)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers/securityalertpolicies)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers/securityalertpolicies)

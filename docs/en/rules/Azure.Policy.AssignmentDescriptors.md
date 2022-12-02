@@ -52,5 +52,5 @@ For example:
 ## LINKS
 
 - [Azure Policy assignment structure](https://docs.microsoft.com/azure/governance/policy/concepts/assignment-structure)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyassignments)
 - [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)

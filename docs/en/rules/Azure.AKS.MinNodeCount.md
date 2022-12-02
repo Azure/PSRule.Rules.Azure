@@ -26,4 +26,4 @@ Consider deploying additional nodes as required to provide enough resiliency dur
 
 - [Baseline architecture for an Azure Kubernetes Service (AKS) cluster](https://docs.microsoft.com/azure/architecture/reference-architectures/containers/aks/secure-baseline-aks)
 - [Create an AKS cluster](https://docs.microsoft.com/azure/aks/use-multiple-node-pools#create-an-aks-cluster)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

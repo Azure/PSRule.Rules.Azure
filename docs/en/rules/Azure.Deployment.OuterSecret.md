@@ -90,5 +90,5 @@ Bicep templates will do this by default when performing nested deployments.
 
 ## LINKS
 
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.resources/deployments?pivots=deployment-language-bicep)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.resources/deployments?pivots=deployment-language-bicep)
 - [Deployment Function Scopes](https://learn.microsoft.com/azure/azure-resource-manager/templates/scope-functions?tabs=azure-powershell#function-resolution-in-scopes)

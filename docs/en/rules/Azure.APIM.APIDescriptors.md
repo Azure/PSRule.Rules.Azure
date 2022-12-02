@@ -25,4 +25,4 @@ Display name and description fields should be human readable and easy to underst
 ## LINKS
 
 - [Import and publish your first API](https://docs.microsoft.com/azure/api-management/import-and-publish)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis#ApiCreateOrUpdateProperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/apis#ApiCreateOrUpdateProperties)
