@@ -20,11 +20,16 @@ Server-level firewall rules apply to all databases on the Azure Database for Mar
 
 ## RECOMMENDATION
 
-Review the amount of Azure for MariaDB server firewall rules and consider to reduce the amount where it is possible.
+Review the number of Azure for MariaDB server firewall rules configured.
+Consider to removing rules that are no longer needed.
+
+## NOTES
+
+This rule fails when the number of configured firewall rules exceeds ten (10).
 
 ## LINKS
 
 - [Network security and containment](https://learn.microsoft.com/azure/architecture/framework/security/design-network)
 - [Azure Database for MariaDB server firewall rules](https://learn.microsoft.com/azure/mariadb/concepts-firewall-rules)
 - [Create and manage Azure Database for MariaDB firewall rules by using the Azure portal](https://learn.microsoft.com/azure/mariadb/howto-manage-firewall-portal)
-- [Azure template reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers/firewallrules)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers/firewallrules)
