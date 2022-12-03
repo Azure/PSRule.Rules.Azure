@@ -9,7 +9,14 @@
 Rule 'Azure.AKS.Version' -Ref 'AZR-000015' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'PV-7' } {
     $minVersion = $Configuration.GetValueOrDefault('Azure_AKSMinimumVersion', $Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION);
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
-        $Assert.Version($TargetObject, 'Properties.kubernetesVersion', ">=$minVersion");
+        $upgradeChannel = $TargetObject.properties.autoUpgradeProfile.upgradeChannel
+        $expectedUpgradeChannels = @('rapid', 'stable', 'node-image')
+        if ($upgradeChannel -in $expectedUpgradeChannels -and !(IsExport)) {
+            $Assert.Pass();
+        }
+        else {
+            $Assert.Version($TargetObject, 'Properties.kubernetesVersion', ">=$minVersion");
+        }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters/agentPools') {
         if (!$Assert.HasField($TargetObject, 'Properties.orchestratorVersion').Result) {
