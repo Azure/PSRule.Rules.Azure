@@ -126,6 +126,14 @@ Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMa
     Reason($LocalizedData.DBServerFirewallRuleCount, $firewallRules.Length, 10).PathPrefix('resources')
 }
 
+# Synopsis: Determine if there is an excessive number of permitted IP addresses.
+Rule 'Azure.MariaDB.FirewallIPRange' -Ref 'AZR-000344' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $summary = GetIPAddressSummary
+
+    $Assert.LessOrEqual($summary, 'Public', 10).
+    Reason($LocalizedData.DBServerFirewallPublicIPRange, $summary.Public, 10).PathPrefix('resources')
+}
+
 #endregion Rules
 
 #region Helper functions
