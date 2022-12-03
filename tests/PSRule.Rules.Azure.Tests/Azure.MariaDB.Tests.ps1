@@ -147,6 +147,24 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C';
         }
+
+        It 'Azure.MariaDB.FirewallIPRange' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MariaDB.FirewallIPRange' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-A';
+
+            $ruleResult[0].Reason | Should -BeExactly "The number of public IP addresses permitted (255) exceeded 10.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C';
+        }
     }
 
     Context 'Resource name - Azure.MariaDB.ServerName' {
