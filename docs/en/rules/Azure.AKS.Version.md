@@ -180,7 +180,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
 ### Configure with Azure CLI
 
 ```bash
-az aks update  -n '<name>' -g '<resource_group>' --auto-upgrade-channel 'stable'
+az aks update -n '<name>' -g '<resource_group>' --auto-upgrade-channel 'stable'
 ```
 
 ```bash
