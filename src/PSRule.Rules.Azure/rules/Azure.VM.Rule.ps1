@@ -282,7 +282,7 @@ Rule 'Azure.VM.SQLServerDisk' -Ref 'AZR-000324' -Type 'Microsoft.Compute/virtual
 #region Azure Monitor Agent
 
 # Synopsis: Use Azure Monitor Agent for collecting monitoring data.
-Rule 'Azure.VM.AMA' -Ref 'AZR-000344' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'Preview'; ruleSet = '2022_12'; } {
+Rule 'Azure.VM.AMA' -Ref 'AZR-000344' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     $amaTypes = @('AzureMonitorWindowsAgent', 'AzureMonitorLinuxAgent')
     $extensions = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachines/extensions' |
         Where-Object { $_.properties.publisher -eq 'Microsoft.Azure.Monitor' -or $_.properties.type -in $amaTypes })
