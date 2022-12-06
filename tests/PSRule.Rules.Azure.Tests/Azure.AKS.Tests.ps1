@@ -235,8 +235,8 @@ Describe 'Azure.AKS' -Tag AKS {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'cluster-F', 'cluster-K', 'cluster-L';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-F', 'cluster-K';
         }
 
         It 'Azure.AKS.AutoScaling' {
@@ -1002,7 +1002,7 @@ Describe 'Azure.AKS' -Tag AKS {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 1;
+            $ruleResult | Should -HaveCount 2;
             $ruleResult.TargetName | Should -BeIn 'cluster-L';
 
             # With Azure_AKSMinimumVersion
@@ -1055,7 +1055,7 @@ Describe 'Azure.AKS' -Tag AKS {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 1;
+            $ruleResult | Should -HaveCount 2;
             $ruleResult.TargetName | Should -BeIn 'cluster-L';
 
             # With Azure_AKSMinimumVersion
