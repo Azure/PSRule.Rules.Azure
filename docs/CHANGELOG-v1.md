@@ -26,6 +26,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers limits the amount of firewall permitted IP addresses by @BenjaminEngeset.
+      [#1856](https://github.com/Azure/PSRule.Rules.Azure/issues/1856)
     - Check Azure Database for MariaDB servers limits the amount of firewall rules allowed by @BenjaminEngeset.
       [#1855](https://github.com/Azure/PSRule.Rules.Azure/issues/1855)
     - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
@@ -36,6 +38,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Bug fixes:
     - Fixed Azure.AKS.Version ignore clusters with auto-upgrade enabled by @BenjaminEngeset.
       [#1926](https://github.com/Azure/PSRule.Rules.Azure/issues/1926)
+
+## v1.22.1
+
+What's changed since v1.22.0:
+
+- Bug fixes:
+  - Fixes template parameter does not use the required format by @BernieWhite.
+    [#1930](https://github.com/Azure/PSRule.Rules.Azure/issues/1930)
 
 ## v1.22.0
 
