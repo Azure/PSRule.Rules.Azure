@@ -90,4 +90,5 @@
     MariaDBEncryptedConnection = "The Azure Database for MariaDB should only accept encrypted connections."
     APIMMultiRegion = "The API management instance should use multi-region deployment."
     MariaDBFirewallAllowAzureServices = "The Azure Database for MariaDB should not allow access to Azure services unless explicitly needed."
+    VMAzureMonitorAgent = "The virtual machine should have Azure Monitor Agent installed."
 }

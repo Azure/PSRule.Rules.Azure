@@ -562,6 +562,28 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'vm-F';
         }
+
+        It 'Azure.VM.AMA' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.AMA' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'vm-B', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-D', 'offerSaysLinux', 'offerInConfig';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine should have Azure Monitor Agent installed.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine should have Azure Monitor Agent installed.";
+            $ruleResult[2].Reason | Should -BeExactly "The virtual machine should have Azure Monitor Agent installed.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-C', 'vm-E', 'vm-F';
+        }
     }
 
     Context 'Resource name - Azure.VM.Name' {
