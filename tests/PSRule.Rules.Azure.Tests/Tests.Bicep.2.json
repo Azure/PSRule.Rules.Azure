@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.4.1318.3566",
-      "templateHash": "13856958272754005555"
+      "version": "0.13.1.58284",
+      "templateHash": "1497947304986475936"
     }
   },
   "parameters": {
@@ -40,13 +40,13 @@
         "mode": "Incremental",
         "parameters": {
           "name": {
-            "value": "[format('{0}{1}', split(reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.id.value, '/')[8], reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.unique.value)]"
+            "value": "[format('{0}{1}', split(reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.id.value, '/')[8], reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.unique.value)]"
           },
           "location": {
             "value": "[parameters('location')]"
           },
           "tags": {
-            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.tags.value]"
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.tags.value]"
           }
         },
         "template": {
@@ -55,8 +55,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.4.1318.3566",
-              "templateHash": "4093724470647525487"
+              "version": "0.13.1.58284",
+              "templateHash": "10683227264194439860"
             }
           },
           "parameters": {
@@ -151,14 +151,14 @@
             },
             "unique": {
               "type": "string",
-              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name'))).primaryEndpoints.blob)]",
+              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]",
               "metadata": {
                 "description": "A unique string that is generated from the blob endpoint."
               }
             },
             "endpointNIC": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name')))).networkInterfaces[0].id]",
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]",
               "metadata": {
                 "description": "The ID of the endpoint NIC."
               }
@@ -183,9 +183,7 @@
           "name": {
             "value": "[parameters('storageName1')]"
           },
-          "location": {
-            "value": "[parameters('location')]"
-          }
+          "location": "[if(not(empty(parameters('location'))), createObject('value', parameters('location')), createObject('value', resourceGroup().location))]"
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
@@ -193,8 +191,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.4.1318.3566",
-              "templateHash": "4093724470647525487"
+              "version": "0.13.1.58284",
+              "templateHash": "10683227264194439860"
             }
           },
           "parameters": {
@@ -289,14 +287,14 @@
             },
             "unique": {
               "type": "string",
-              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name'))).primaryEndpoints.blob)]",
+              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]",
               "metadata": {
                 "description": "A unique string that is generated from the blob endpoint."
               }
             },
             "endpointNIC": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name')))).networkInterfaces[0].id]",
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]",
               "metadata": {
                 "description": "The ID of the endpoint NIC."
               }
@@ -322,7 +320,7 @@
             "value": "[parameters('location')]"
           },
           "tags": {
-            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1')).outputs.tags.value]"
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.tags.value]"
           }
         },
         "template": {
@@ -331,8 +329,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.4.1318.3566",
-              "templateHash": "4093724470647525487"
+              "version": "0.13.1.58284",
+              "templateHash": "10683227264194439860"
             }
           },
           "parameters": {
@@ -427,14 +425,14 @@
             },
             "unique": {
               "type": "string",
-              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name'))).primaryEndpoints.blob)]",
+              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]",
               "metadata": {
                 "description": "A unique string that is generated from the blob endpoint."
               }
             },
             "endpointNIC": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name')))).networkInterfaces[0].id]",
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]",
               "metadata": {
                 "description": "The ID of the endpoint NIC."
               }
