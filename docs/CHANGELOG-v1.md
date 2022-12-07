@@ -38,6 +38,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - API Management:
     - Check API management instances has multi-region deployment gateways enabled by @BenjaminEngeset.
       [#1910](https://github.com/Azure/PSRule.Rules.Azure/issues/1910)
+  - Bug fixes:
+    - Fixed Azure.AKS.Version ignore clusters with auto-upgrade enabled by @BenjaminEngeset.
+      [#1926](https://github.com/Azure/PSRule.Rules.Azure/issues/1926)
 
 ## v1.22.1
 

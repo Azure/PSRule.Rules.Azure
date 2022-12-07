@@ -229,14 +229,14 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 8;
-            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J';
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-L';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'cluster-F', 'cluster-K', 'cluster-L';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-F', 'cluster-K';
         }
 
         It 'Azure.AKS.AutoScaling' {
@@ -994,16 +994,16 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 11;
-            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
+            $ruleResult | Should -HaveCount 10;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
             $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.24.3'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 1;
-            $ruleResult.TargetName | Should -BeIn 'cluster-L';
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-L', 'cluster-K';
 
             # With Azure_AKSMinimumVersion
             $option = @{
@@ -1027,16 +1027,16 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 11;
-            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
+            $ruleResult | Should -HaveCount 10;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
             $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.24.3'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 1;
-            $ruleResult.TargetName | Should -BeIn 'cluster-L';
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-L', 'cluster-K';
         }
 
         It 'Azure.AKS.Version - YAML file option' {
@@ -1047,7 +1047,7 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 11;
+            $ruleResult | Should -HaveCount 10;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
             $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.24.3'.";
@@ -1055,8 +1055,8 @@ Describe 'Azure.AKS' -Tag AKS {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 1;
-            $ruleResult.TargetName | Should -BeIn 'cluster-L';
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-L', 'cluster-K';
 
             # With Azure_AKSMinimumVersion
             $invokeOldParams = @{
@@ -1076,16 +1076,16 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 11;
-            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'system';
+            $ruleResult | Should -HaveCount 10;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'system';
             $ruleResult.Reason | Should -Not -BeNullOrEmpty;
             $ruleResult.Reason | Should -BeLike "Path Properties.*Version: The version '*' does not match the constraint '>=1.24.3'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult | Should -HaveCount 1;
-            $ruleResult.TargetName | Should -BeIn 'cluster-L';
+            $ruleResult | Should -HaveCount 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-L', 'cluster-K';
         }
 
         It 'Azure.AKS.AvailabilityZone - HashTable option' {

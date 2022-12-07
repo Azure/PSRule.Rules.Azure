@@ -1,1820 +1,1814 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-A",
-        "Location": "Australia East",
-        "ResourceName": "cluster-A",
-        "Name": "cluster-A",
-        "Properties": {
-            "kubernetesVersion": "1.23.8",
-            "dnsPrefix": "cluster-A",
-            "fqdn": "cluster-A-00000000.nnn.region.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "agentpool",
-                    "count": 3,
-                    "vmSize": "Standard_F2s_v2",
-                    "osDiskSizeGB": 30,
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 30,
-                    "type": "AvailabilitySet",
-                    "orchestratorVersion": "1.23.8",
-                    "osType": "Linux",
-                    "enableAutoScaling": false,
-                    "availabilityZones": null
-                }
-            ],
-            "servicePrincipalProfile": {
-                "clientId": "00000000-0000-0000-0000-000000000000"
-            },
-            "addonProfiles": {
-                "aciconnectorlinux": {
-                    "enabled": true,
-                    "config": {
-                        "subnetname": "subnet-A"
-                    }
-                },
-                "httpapplicationrouting": {
-                    "enabled": true,
-                    "config": {
-                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
-                    }
-                },
-                "omsagent": {
-                    "enabled": false,
-                    "config": {
-                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
-                    }
-                }
-            },
-            "nodeResourceGroup": "MC_test-rg_cluster-A_region",
-            "enableRBAC": true,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "loadBalancerSku": "Basic",
-                "serviceCidr": "10.4.1.0/24",
-                "dnsServiceIP": "10.4.1.10",
-                "dockerBridgeCidr": "172.17.0.1/16"
-            },
-            "maxAgentPools": 1
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-A",
+    "Location": "Australia East",
+    "ResourceName": "cluster-A",
+    "Name": "cluster-A",
+    "Properties": {
+      "kubernetesVersion": "1.23.8",
+      "dnsPrefix": "cluster-A",
+      "fqdn": "cluster-A-00000000.nnn.region.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool",
+          "count": 3,
+          "vmSize": "Standard_F2s_v2",
+          "osDiskSizeGB": 30,
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 30,
+          "type": "AvailabilitySet",
+          "orchestratorVersion": "1.23.8",
+          "osType": "Linux",
+          "enableAutoScaling": false,
+          "availabilityZones": null
+        }
+      ],
+      "servicePrincipalProfile": {
+        "clientId": "00000000-0000-0000-0000-000000000000"
+      },
+      "addonProfiles": {
+        "aciconnectorlinux": {
+          "enabled": true,
+          "config": {
+            "subnetname": "subnet-A"
+          }
         },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ContainerService/managedClusters",
-        "ResourceType": "Microsoft.ContainerService/managedClusters",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": []
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-B",
-        "Location": "auatraliaeast",
-        "ResourceName": "cluster-B",
-        "Name": "cluster-B",
-        "Properties": {
-            "kubernetesVersion": "1.13.8",
-            "dnsPrefix": "cluster-B",
-            "fqdn": "cluster-B-00000000.nnn.region.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "agentpool",
-                    "count": 1,
-                    "vmSize": "Standard_F2s_v2",
-                    "osDiskSizeGB": 30,
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 30,
-                    "type": "AvailabilitySet",
-                    "orchestratorVersion": "1.11.4",
-                    "osType": "Linux",
-                    "enableAutoScaling": false
-                }
-            ],
-            "servicePrincipalProfile": {
-                "clientId": "00000000-0000-0000-0000-000000000000"
-            },
-            "addonProfiles": {
-                "aciconnectorlinux": {
-                    "enabled": true,
-                    "config": {
-                        "subnetname": "subnet-A"
-                    }
-                }
-            },
-            "nodeResourceGroup": "MC_test-rg_cluster-B_region",
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "loadBalancerSku": "Basic",
-                "serviceCidr": "10.5.1.0/24",
-                "dnsServiceIP": "10.5.1.10",
-                "dockerBridgeCidr": "172.17.0.1/16"
-            },
-            "maxAgentPools": 1
+        "httpapplicationrouting": {
+          "enabled": true,
+          "config": {
+            "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
+          }
         },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ContainerService/managedClusters",
-        "ResourceType": "Microsoft.ContainerService/managedClusters",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "subnet-A",
-                "Name": "subnet-A",
-                "ExtensionResourceName": null,
-                "ParentResource": "virtualNetworks/vnet-A",
-                "Plan": null,
-                "Properties": {
-                    "provisioningState": "Succeeded",
-                    "addressPrefix": "10.0.0.0/24",
-                    "networkSecurityGroup": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
-                    },
-                    "routeTable": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
-                    },
-                    "ipConfigurations": [],
-                    "serviceEndpoints": [],
-                    "delegations": [],
-                    "privateEndpointNetworkPolicies": "Enabled",
-                    "privateLinkServiceNetworkPolicies": "Enabled"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Network/virtualNetworks/subnets",
-                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "SubscriptionId": null
-            }
-        ]
+        "omsagent": {
+          "enabled": false,
+          "config": {
+            "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+          }
+        }
+      },
+      "nodeResourceGroup": "MC_test-rg_cluster-A_region",
+      "enableRBAC": true,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "loadBalancerSku": "Basic",
+        "serviceCidr": "10.4.1.0/24",
+        "dnsServiceIP": "10.4.1.10",
+        "dockerBridgeCidr": "172.17.0.1/16"
+      },
+      "maxAgentPools": 1
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-C",
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerService/managedClusters",
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": []
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-B",
+    "Location": "auatraliaeast",
+    "ResourceName": "cluster-B",
+    "Name": "cluster-B",
+    "Properties": {
+      "kubernetesVersion": "1.13.8",
+      "dnsPrefix": "cluster-B",
+      "fqdn": "cluster-B-00000000.nnn.region.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool",
+          "count": 1,
+          "vmSize": "Standard_F2s_v2",
+          "osDiskSizeGB": 30,
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 30,
+          "type": "AvailabilitySet",
+          "orchestratorVersion": "1.11.4",
+          "osType": "Linux",
+          "enableAutoScaling": false
+        }
+      ],
+      "servicePrincipalProfile": {
+        "clientId": "00000000-0000-0000-0000-000000000000"
+      },
+      "addonProfiles": {
+        "aciconnectorlinux": {
+          "enabled": true,
+          "config": {
+            "subnetname": "subnet-A"
+          }
+        }
+      },
+      "nodeResourceGroup": "MC_test-rg_cluster-B_region",
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "loadBalancerSku": "Basic",
+        "serviceCidr": "10.5.1.0/24",
+        "dnsServiceIP": "10.5.1.10",
+        "dockerBridgeCidr": "172.17.0.1/16"
+      },
+      "maxAgentPools": 1
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerService/managedClusters",
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
         "Identity": null,
         "Kind": null,
-        "Location": "australiaeast",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "cluster-C",
-        "Name": "cluster-C",
-        "ParentResource": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "kubernetesVersion": "1.23.8",
-            "dnsPrefix": "cluster-C",
-            "fqdn": "cluster-C-00000000.nnn.region.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "agentpool",
-                    "count": 3,
-                    "vmSize": "Standard_B2ms",
-                    "osDiskSizeGB": 100,
-                    "osDiskType": "Ephemeral",
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-C",
-                    "maxPods": 50,
-                    "type": "VirtualMachineScaleSets",
-                    "provisioningState": "Succeeded",
-                    "orchestratorVersion": "1.23.8",
-                    "osType": "Linux",
-                    "enableAutoScaling": false
-                }
-            ],
-            "servicePrincipalProfile": {
-                "clientId": "00000000-0000-0000-0000-000000000000"
-            },
-            "addonProfiles": {
-                "aciConnectorLinux": {
-                    "enabled": true,
-                    "config": {
-                        "SubnetName": "subnet-E"
-                    }
-                },
-                "azurepolicy": {
-                    "enabled": true,
-                    "config": null
-                },
-                "httpApplicationRouting": {
-                    "enabled": true,
-                    "config": {
-                        "HTTPApplicationRoutingZoneName": "test-dns-zone.region.aksapp.io"
-                    }
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
-                    }
-                }
-            },
-            "nodeResourceGroup": "MC_test-rg_cluster-C_region",
-            "enableRBAC": true,
-            "enablePodSecurityPolicy": true,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "networkPolicy": "azure",
-                "loadBalancerSku": "Basic",
-                "serviceCidr": "192.168.0.0/16",
-                "dnsServiceIP": "192.168.0.4",
-                "dockerBridgeCidr": "172.17.0.1/16"
-            },
-            "maxAgentPools": 8
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ContainerService/managedClusters",
-        "ResourceType": "Microsoft.ContainerService/managedClusters",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "subnet-A",
-                "Name": "subnet-A",
-                "ExtensionResourceName": null,
-                "ParentResource": "virtualNetworks/vnet-A",
-                "Plan": null,
-                "Properties": {
-                    "provisioningState": "Succeeded",
-                    "addressPrefix": "10.0.0.0/23",
-                    "networkSecurityGroup": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
-                    },
-                    "routeTable": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
-                    },
-                    "ipConfigurations": [],
-                    "serviceEndpoints": [],
-                    "delegations": [],
-                    "privateEndpointNetworkPolicies": "Enabled",
-                    "privateLinkServiceNetworkPolicies": "Enabled"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Network/virtualNetworks/subnets",
-                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "SubscriptionId": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-D",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-D",
-        "Identity": {
-            "PrincipalId": "00000000-0000-0000-0000-000000000000",
-            "TenantId": "00000000-0000-0000-0000-000000000000",
-            "Type": "SystemAssigned",
-            "UserAssignedIdentities": null
-        },
-        "Kind": null,
-        "Location": "australiaeast",
-        "ManagedBy": null,
-        "ResourceName": "cluster-D",
-        "Name": "cluster-D",
+        "ResourceName": "subnet-A",
+        "Name": "subnet-A",
         "ExtensionResourceName": null,
-        "ParentResource": null,
+        "ParentResource": "virtualNetworks/vnet-A",
         "Plan": null,
         "Properties": {
-            "provisioningState": "Succeeded",
-            "kubernetesVersion": "1.23.8",
-            "dnsPrefix": "cluster-D",
-            "fqdn": "cluster-D-nnnnnnnn.hcp.region.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "agentpool",
-                    "count": 1,
-                    "vmSize": "Standard_B2ms",
-                    "osDiskSizeGB": 100,
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 50,
-                    "type": "VirtualMachineScaleSets",
-                    "provisioningState": "Succeeded",
-                    "orchestratorVersion": "1.23.8",
-                    "nodeLabels": {},
-                    "mode": "System",
-                    "osType": "Linux",
-                    "nodeImageVersion": "AKSUbuntu:1604:2020.05.13",
-                    "enableAutoScaling": false,
-                    "availabilityZones": [
-                        "1",
-                        "2",
-                        "3"
-                    ]
-                }
-            ],
-            "windowsProfile": {
-                "adminUsername": "azureuser"
-            },
-            "servicePrincipalProfile": {
-                "clientId": "msi"
-            },
-            "addonProfiles": {
-                "aciConnectorLinux": {
-                    "enabled": true,
-                    "config": {
-                        "SubnetName": "subnet-B"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-D",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "azurePolicy": {
-                    "enabled": true,
-                    "config": {
-                        "version": "v2"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-D",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "httpApplicationRouting": {
-                    "enabled": false
-                },
-                "kubeDashboard": {
-                    "enabled": false,
-                    "config": null
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-D",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                }
-            },
-            "nodeResourceGroup": "MC_test-rg_cluster-D_region",
-            "enableRBAC": true,
-            "enablePodSecurityPolicy": true,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "networkPolicy": "calico",
-                "loadBalancerSku": "Standard",
-                "loadBalancerProfile": {
-                    "managedOutboundIPs": {
-                        "count": 1
-                    },
-                    "effectiveOutboundIPs": [
-                        {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg_cluster-D_region/providers/Microsoft.Network/publicIPAddresses/00000000-0000-0000-0000-000000000000"
-                        }
-                    ]
-                },
-                "serviceCidr": "192.168.0.0/16",
-                "dnsServiceIP": "192.168.0.4",
-                "dockerBridgeCidr": "172.17.0.1/16",
-                "outboundType": "loadBalancer"
-            },
-            "aadProfile": {
-                "managed": true,
-                "adminGroupObjectIDs": null,
-                "tenantID": "00000000-0000-0000-0000-000000000000"
-            },
-            "maxAgentPools": 10,
-            "identityProfile": {
-                "kubeletidentity": {
-                    "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-D-agentpool",
-                    "clientId": "00000000-0000-0000-0000-000000000000",
-                    "objectId": "00000000-0000-0000-0000-000000000000"
-                }
-            }
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ContainerService/managedClusters",
-        "ResourceType": "Microsoft.ContainerService/managedClusters",
-        "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "Basic",
-            "Tier": "Free",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "subnet-A",
-                "Name": "subnet-A",
-                "ExtensionResourceName": null,
-                "ParentResource": "virtualNetworks/vnet-A",
-                "Plan": null,
-                "Properties": {
-                    "provisioningState": "Succeeded",
-                    "addressPrefix": "10.0.0.0/27",
-                    "networkSecurityGroup": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
-                    },
-                    "routeTable": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
-                    },
-                    "ipConfigurations": [],
-                    "serviceEndpoints": [],
-                    "delegations": [],
-                    "privateEndpointNetworkPolicies": "Enabled",
-                    "privateLinkServiceNetworkPolicies": "Enabled"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Network/virtualNetworks/subnets",
-                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "SubscriptionId": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-E/agentPools/system",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-E/agentPools/system",
-        "Identity": null,
-        "Kind": null,
-        "Location": "antarcticanorth",
-        "ManagedBy": null,
-        "ResourceName": "system",
-        "Name": "system",
-        "ExtensionResourceName": null,
-        "ParentResource": "managedClusters/cluster-E",
-        "Properties": {
-            "count": 2,
-            "vmSize": "Standard_D2s_v3",
-            "osDiskSizeGB": 32,
-            "osDiskType": "Ephemeral",
-            "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-            "maxPods": 50,
-            "type": "VirtualMachineScaleSets",
-            "maxCount": 2,
-            "minCount": 2,
-            "enableAutoScaling": true,
-            "provisioningState": "Succeeded",
-            "powerState": {
-                "code": "Running"
-            },
-            "orchestratorVersion": "1.23.8",
-            "nodeLabels": {},
-            "mode": "System",
-            "osType": "Linux",
-            "nodeImageVersion": "AKSUbuntu-1804containerd-2021.01.28",
-            "availabilityZones": null
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ContainerService/managedClusters/agentPools",
-        "ResourceType": "Microsoft.ContainerService/managedClusters/agentPools",
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "subnet-A",
-                "Name": "subnet-A",
-                "ExtensionResourceName": null,
-                "ParentResource": "virtualNetworks/vnet-A",
-                "Plan": null,
-                "Properties": {
-                    "provisioningState": "Succeeded",
-                    "addressPrefix": "10.0.0.0/25",
-                    "networkSecurityGroup": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
-                    },
-                    "routeTable": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
-                    },
-                    "ipConfigurations": [],
-                    "serviceEndpoints": [],
-                    "delegations": [],
-                    "privateEndpointNetworkPolicies": "Enabled",
-                    "privateLinkServiceNetworkPolicies": "Enabled"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Network/virtualNetworks/subnets",
-                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "SubscriptionId": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.ContainerService/managedClusters/cluster-F",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.ContainerService/managedClusters/cluster-F",
-        "Identity": {
-            "PrincipalId": null,
-            "TenantId": null,
-            "Type": "UserAssigned",
-            "UserAssignedIdentities": null
-        },
-        "Kind": null,
-        "Location": "Antarctica North",
-        "ManagedBy": null,
-        "ResourceName": "cluster-F",
-        "Name": "cluster-F",
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "powerState": {
-                "code": "Running"
-            },
-            "kubernetesVersion": "1.23.8",
-            "dnsPrefix": "cluster-F",
-            "fqdn": "cluster-F-00000000.hcp.region.azmk8s.io",
-            "azurePortalFQDN": "cluster-F-00000000.portal.hcp.region.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "system",
-                    "count": 2,
-                    "vmSize": "Standard_D2s_v3",
-                    "osDiskSizeGB": 32,
-                    "osDiskType": "Managed",
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 50,
-                    "type": "VirtualMachineScaleSets",
-                    "maxCount": 2,
-                    "minCount": 2,
-                    "enableAutoScaling": true,
-                    "provisioningState": "Succeeded",
-                    "powerState": {
-                        "code": "Running"
-                    },
-                    "orchestratorVersion": "1.23.8",
-                    "nodeLabels": {},
-                    "mode": "System",
-                    "osType": "Linux",
-                    "nodeImageVersion": "AKSUbuntu-1804containerd-2021.04.27",
-                    "availabilityZones": []
-                }
-            ],
-            "windowsProfile": {
-                "adminUsername": "azureuser",
-                "enableCSIProxy": true
-            },
-            "servicePrincipalProfile": {
-                "clientId": "msi"
-            },
-            "addonProfiles": {
-                "aciConnectorLinux": {
-                    "enabled": true,
-                    "config": {
-                        "SubnetName": "subnet-B"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-F",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "azureKeyvaultSecretsProvider": {
-                    "enabled": true,
-                    "config": {
-                        "enableSecretRotation": "false"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-cluster-F",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "azurepolicy": {
-                    "enabled": true,
-                    "config": null,
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-F",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "httpApplicationRouting": {
-                    "enabled": true,
-                    "config": {
-                        "HTTPApplicationRoutingZoneName": "0000000000000000000.region.aksapp.io"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/httpapplicationrouting-cluster-F",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "kubeDashboard": {
-                    "enabled": false,
-                    "config": null
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-eus"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-F",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "openServiceMesh": {
-                    "enabled": true,
-                    "config": {},
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/openservicemesh-cluster-F",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                }
-            },
-            "nodeResourceGroup": "MC_rg-test_cluster-F_region",
-            "disableLocalAccounts": true,
-            "enableRBAC": true,
-            "enablePodSecurityPolicy": false,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "networkPolicy": "azure",
-                "loadBalancerSku": "Standard",
-                "loadBalancerProfile": {
-                    "managedOutboundIPs": {
-                        "count": 1
-                    },
-                    "effectiveOutboundIPs": [
-                        {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_rg-test_cluster-F_region/providers/Microsoft.Network/publicIPAddresses/00000000-0000-0000-0000-000000000000"
-                        }
-                    ]
-                },
-                "serviceCidr": "192.168.0.0/16",
-                "dnsServiceIP": "192.168.0.4",
-                "dockerBridgeCidr": "172.17.0.1/16",
-                "outboundType": "loadBalancer"
-            },
-            "aadProfile": {
-                "managed": true,
-                "enableAzureRbac": true,
-                "adminGroupObjectIDs": [],
-                "tenantID": "00000000-0000-0000-0000-000000000000"
-            },
-            "maxAgentPools": 100,
-            "identityProfile": {
-                "kubeletidentity": {
-                    "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-F-agentpool",
-                    "clientId": "00000000-0000-0000-0000-000000000000",
-                    "objectId": "00000000-0000-0000-0000-000000000000"
-                }
-            },
-            "autoScalerProfile": {
-                "balance-similar-node-groups": "false",
-                "expander": "random",
-                "max-empty-bulk-delete": "10",
-                "max-graceful-termination-sec": "600",
-                "max-node-provision-time": "15m",
-                "max-total-unready-percentage": "45",
-                "new-pod-scale-up-delay": "0s",
-                "ok-total-unready-count": "3",
-                "scale-down-delay-after-add": "10m",
-                "scale-down-delay-after-delete": "10s",
-                "scale-down-delay-after-failure": "3m",
-                "scale-down-unneeded-time": "10m",
-                "scale-down-unready-time": "20m",
-                "scale-down-utilization-threshold": "0.5",
-                "scan-interval": "10s",
-                "skip-nodes-with-local-storage": "false",
-                "skip-nodes-with-system-pods": "true"
-            },
-            "autoUpgradeProfile": {
-                "upgradeChannel": "rapid"
-            },
-            "apiServerAccessProfile": {
-                "authorizedIpRanges": [
-                    "0.0.0.0/32"
-                ],
-                "enablePrivateCluster": null,
-                "privateDnsZone": null
-            }
+          "provisioningState": "Succeeded",
+          "addressPrefix": "10.0.0.0/24",
+          "networkSecurityGroup": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+          },
+          "routeTable": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+          },
+          "ipConfigurations": [],
+          "serviceEndpoints": [],
+          "delegations": [],
+          "privateEndpointNetworkPolicies": "Enabled",
+          "privateLinkServiceNetworkPolicies": "Enabled"
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.ContainerService/managedClusters",
-        "ResourceType": "Microsoft.ContainerService/managedClusters",
-        "Sku": {
-            "Name": "Basic",
-            "Tier": "Free",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "subnet-A",
-                "Name": "subnet-A",
-                "ExtensionResourceName": null,
-                "ParentResource": "virtualNetworks/vnet-A",
-                "Plan": null,
-                "Properties": {
-                    "provisioningState": "Succeeded",
-                    "addressPrefix": "10.0.0.0/21",
-                    "networkSecurityGroup": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
-                    },
-                    "routeTable": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
-                    },
-                    "ipConfigurations": [],
-                    "serviceEndpoints": [],
-                    "delegations": [],
-                    "privateEndpointNetworkPolicies": "Enabled",
-                    "privateLinkServiceNetworkPolicies": "Enabled"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Network/virtualNetworks/subnets",
-                "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "SubscriptionId": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-G",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-G",
-        "Location": "Australia East",
-        "ResourceName": "cluster-G",
-        "Name": "cluster-G",
-        "Properties": {
-            "kubernetesVersion": "1.23.8",
-            "dnsPrefix": "cluster-G",
-            "fqdn": "cluster-G-00000000.nnn.region.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "agentpool",
-                    "count": 3,
-                    "vmSize": "Standard_F2s_v2",
-                    "osDiskSizeGB": 30,
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 30,
-                    "type": "VirtualMachineScaleSets",
-                    "orchestratorVersion": "1.23.8",
-                    "osType": "Linux",
-                    "enableAutoScaling": false,
-                    "availabilityZones": null
-                }
-            ],
-            "servicePrincipalProfile": {
-                "clientId": "00000000-0000-0000-0000-000000000000"
-            },
-            "addonProfiles": {
-                "aciconnectorlinux": {
-                    "enabled": true,
-                    "config": {
-                        "subnetname": "subnet-A"
-                    }
-                },
-                "httpapplicationrouting": {
-                    "enabled": true,
-                    "config": {
-                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
-                    }
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
-                    }
-                }
-            },
-            "nodeResourceGroup": "MC_test-rg_cluster-G_region",
-            "enableRBAC": true,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "loadBalancerSku": "Basic",
-                "serviceCidr": "10.4.1.0/24",
-                "dnsServiceIP": "10.4.1.10",
-                "dockerBridgeCidr": "172.17.0.1/16"
-            },
-            "maxAgentPools": 1
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ContainerService/managedClusters",
-        "ResourceType": "Microsoft.ContainerService/managedClusters",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "kube-apiserver",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-audit",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-audit-admin",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-controller-manager",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-scheduler",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "cluster-autoscaler",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "guard",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "k8s-aks-cluster-rg",
-                "Type": "microsoft.containerservice/managedclusters",
-                "ResourceType": "microsoft.containerservice/managedclusters",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-H",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-H",
-        "Location": "australiaeast",
-        "ResourceName": "cluster-H",
-        "Name": "cluster-H",
-        "Properties": {
-            "kubernetesVersion": "1.23.8",
-            "dnsPrefix": "cluster-H",
-            "fqdn": "cluster-H-00000000.nnn.region.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "agentpool",
-                    "count": 3,
-                    "vmSize": "Standard_F2s_v2",
-                    "osDiskSizeGB": 30,
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 30,
-                    "type": "VirtualMachineScaleSets",
-                    "orchestratorVersion": "1.23.8",
-                    "osType": "Linux",
-                    "enableAutoScaling": false,
-                    "availabilityZones": []
-                }
-            ],
-            "servicePrincipalProfile": {
-                "clientId": "00000000-0000-0000-0000-000000000000"
-            },
-            "addonProfiles": {
-                "aciconnectorlinux": {
-                    "enabled": true,
-                    "config": {
-                        "subnetname": "subnet-A"
-                    }
-                },
-                "httpapplicationrouting": {
-                    "enabled": true,
-                    "config": {
-                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
-                    }
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
-                    }
-                }
-            },
-            "nodeResourceGroup": "MC_test-rg_cluster-H_region",
-            "enableRBAC": true,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "loadBalancerSku": "Basic",
-                "serviceCidr": "10.4.1.0/24",
-                "dnsServiceIP": "10.4.1.10",
-                "dockerBridgeCidr": "172.17.0.1/16"
-            },
-            "maxAgentPools": 1
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ContainerService/managedClusters",
-        "ResourceType": "Microsoft.ContainerService/managedClusters",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "kube-apiserver",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-audit",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-audit-admin",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-controller-manager",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-scheduler",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "cluster-autoscaler",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "guard",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "k8s-aks-cluster-rg",
-                "Type": "microsoft.containerservice/managedclusters",
-                "ResourceType": "microsoft.containerservice/managedclusters",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-I",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-I",
-        "Location": "antarcticanorth",
-        "ResourceName": "cluster-I",
-        "Name": "cluster-I",
-        "Properties": {
-            "kubernetesVersion": "1.23.8",
-            "dnsPrefix": "cluster-I",
-            "fqdn": "cluster-I-00000000.nnn.region.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "agentpool",
-                    "count": 3,
-                    "vmSize": "Standard_F2s_v2",
-                    "osDiskSizeGB": 30,
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 30,
-                    "type": "VirtualMachineScaleSets",
-                    "orchestratorVersion": "1.23.8",
-                    "osType": "Linux",
-                    "enableAutoScaling": false,
-                    "availabilityZones": null
-                }
-            ],
-            "servicePrincipalProfile": {
-                "clientId": "00000000-0000-0000-0000-000000000000"
-            },
-            "addonProfiles": {
-                "aciconnectorlinux": {
-                    "enabled": true,
-                    "config": {
-                        "subnetname": "subnet-A"
-                    }
-                },
-                "httpapplicationrouting": {
-                    "enabled": true,
-                    "config": {
-                        "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
-                    }
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
-                    }
-                }
-            },
-            "nodeResourceGroup": "MC_test-rg_cluster-I_region",
-            "enableRBAC": true,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "loadBalancerSku": "Basic",
-                "serviceCidr": "10.4.1.0/24",
-                "dnsServiceIP": "10.4.1.10",
-                "dockerBridgeCidr": "172.17.0.1/16"
-            },
-            "maxAgentPools": 1
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ContainerService/managedClusters",
-        "ResourceType": "Microsoft.ContainerService/managedClusters",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "kube-apiserver",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-audit",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-audit-admin",
-                            "categoryGroup": null,
-                            "enabled": false,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-controller-manager",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-scheduler",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "cluster-autoscaler",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "guard",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "k8s-aks-cluster-rg",
-                "Type": "microsoft.containerservice/managedclusters",
-                "ResourceType": "microsoft.containerservice/managedclusters",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-J",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-J",
-        "Location": "antarcticasouth",
-        "ResourceName": "cluster-J",
-        "Name": "cluster-J",
-        "Properties": {
-            "kubernetesVersion": "1.23.8",
-            "dnsPrefix": "cluster-J",
-            "fqdn": "cluster-J-00000000.nnn.region.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "agentpool",
-                    "count": 3,
-                    "vmSize": "Standard_F2s_v2",
-                    "osDiskSizeGB": 30,
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 30,
-                    "type": "VirtualMachineScaleSets",
-                    "orchestratorVersion": "1.23.8",
-                    "osType": "Linux",
-                    "enableAutoScaling": false,
-                    "availabilityZones": null
-                }
-            ],
-            "servicePrincipalProfile": {
-                "clientId": "00000000-0000-0000-0000-000000000000"
-            },
-            "addonProfiles": {
-                "aciconnectorlinux": {
-                    "enabled": true,
-                    "config": {
-                        "subnetname": "subnet-A"
-                    }
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
-                    }
-                }
-            },
-            "nodeResourceGroup": "MC_test-rg_cluster-J_region",
-            "enableRBAC": true,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "loadBalancerSku": "Basic",
-                "serviceCidr": "10.4.1.0/24",
-                "dnsServiceIP": "10.4.1.10",
-                "dockerBridgeCidr": "172.17.0.1/16"
-            },
-            "maxAgentPools": 1
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ContainerService/managedClusters",
-        "ResourceType": "Microsoft.ContainerService/managedClusters",
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "kube-apiserver",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-audit",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-audit-admin",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-controller-manager",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "kube-scheduler",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "cluster-autoscaler",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "guard",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "k8s-aks-cluster-rg",
-                "Type": "microsoft.containerservice/managedclusters",
-                "ResourceType": "microsoft.containerservice/managedclusters",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
-    },
-    {
-        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-K",
-        "location": "eastus",
-        "name": "cluster-K",
-        "tags": null,
-        "type": "Microsoft.ContainerService/ManagedClusters",
-        "properties": {
-            "provisioningState": "Succeeded",
-            "powerState": {
-                "code": "Running"
-            },
-            "kubernetesVersion": "1.23.8",
-            "dnsPrefix": "cluster-K",
-            "fqdn": "cluster-K-00000000.hcp.eastus.azmk8s.io",
-            "azurePortalFQDN": "cluster-K-00000000.portal.hcp.eastus.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "system",
-                    "count": 2,
-                    "vmSize": "Standard_D2s_v3",
-                    "osDiskSizeGB": 32,
-                    "osDiskType": "Managed",
-                    "kubeletDiskType": "OS",
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 50,
-                    "type": "VirtualMachineScaleSets",
-                    "maxCount": 2,
-                    "minCount": 2,
-                    "enableAutoScaling": true,
-                    "provisioningState": "Succeeded",
-                    "powerState": {
-                        "code": "Running"
-                    },
-                    "orchestratorVersion": "1.23.8",
-                    "mode": "System",
-                    "osType": "Linux",
-                    "osSKU": "Ubuntu",
-                    "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",
-                    "enableFIPS": false
-                }
-            ],
-            "windowsProfile": {
-                "adminUsername": "azureuser",
-                "enableCSIProxy": true
-            },
-            "servicePrincipalProfile": {
-                "clientId": "msi"
-            },
-            "addonProfiles": {
-                "aciConnectorLinux": {
-                    "enabled": true,
-                    "config": {
-                        "SubnetName": "subnet-B"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-K",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "azureKeyvaultSecretsProvider": {
-                    "enabled": true,
-                    "config": {
-                        "enableSecretRotation": "False"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-cluster-K",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "azurepolicy": {
-                    "enabled": true,
-                    "config": null,
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-K",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "kubeDashboard": {
-                    "enabled": false,
-                    "config": null
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-eus"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-K",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "openServiceMesh": {
-                    "enabled": true,
-                    "config": null,
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/openservicemesh-cluster-K",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                }
-            },
-            "nodeResourceGroup": "test-rg",
-            "enableRBAC": true,
-            "enablePodSecurityPolicy": false,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "networkPolicy": "azure",
-                "loadBalancerSku": "Standard",
-                "loadBalancerProfile": {
-                    "managedOutboundIPs": {
-                        "count": 1
-                    },
-                    "effectiveOutboundIPs": [
-                        {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/publicIP-A"
-                        }
-                    ]
-                },
-                "serviceCidr": "192.168.0.0/16",
-                "dnsServiceIP": "192.168.0.4",
-                "dockerBridgeCidr": "172.17.0.1/16",
-                "outboundType": "loadBalancer"
-            },
-            "aadProfile": {
-                "managed": true,
-                "adminGroupObjectIDs": null,
-                "enableAzureRBAC": true,
-                "tenantID": "00000000-0000-0000-0000-000000000000"
-            },
-            "maxAgentPools": 100,
-            "identityProfile": {
-                "kubeletidentity": {
-                    "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-K-agentpool",
-                    "clientId": "00000000-0000-0000-0000-000000000000",
-                    "objectId": "00000000-0000-0000-0000-000000000000"
-                }
-            },
-            "autoScalerProfile": {
-                "balance-similar-node-groups": "false",
-                "expander": "random",
-                "max-empty-bulk-delete": "10",
-                "max-graceful-termination-sec": "600",
-                "max-node-provision-time": "15m",
-                "max-total-unready-percentage": "45",
-                "new-pod-scale-up-delay": "0s",
-                "ok-total-unready-count": "3",
-                "scale-down-delay-after-add": "10m",
-                "scale-down-delay-after-delete": "10s",
-                "scale-down-delay-after-failure": "3m",
-                "scale-down-unneeded-time": "10m",
-                "scale-down-unready-time": "20m",
-                "scale-down-utilization-threshold": "0.5",
-                "scan-interval": "10s",
-                "skip-nodes-with-local-storage": "false",
-                "skip-nodes-with-system-pods": "true"
-            },
-            "autoUpgradeProfile": {
-                "upgradeChannel": "rapid"
-            }
-        },
-        "identity": {
-            "type": "UserAssigned",
-            "userAssignedIdentities": {
-                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-A": {
-                    "clientId": "00000000-0000-0000-0000-000000000000",
-                    "principalId": "00000000-0000-0000-0000-000000000000"
-                }
-            }
-        },
-        "sku": {
-            "name": "Basic",
-            "tier": "Paid"
+        "Type": "Microsoft.Network/virtualNetworks/subnets",
+        "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "australiaeast",
+    "ManagedBy": null,
+    "ResourceName": "cluster-C",
+    "Name": "cluster-C",
+    "ParentResource": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "kubernetesVersion": "1.23.8",
+      "dnsPrefix": "cluster-C",
+      "fqdn": "cluster-C-00000000.nnn.region.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool",
+          "count": 3,
+          "vmSize": "Standard_B2ms",
+          "osDiskSizeGB": 100,
+          "osDiskType": "Ephemeral",
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-C",
+          "maxPods": 50,
+          "type": "VirtualMachineScaleSets",
+          "provisioningState": "Succeeded",
+          "orchestratorVersion": "1.23.8",
+          "osType": "Linux",
+          "enableAutoScaling": false
         }
-    },
-    {
-        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-L",
-        "location": "eastus",
-        "name": "cluster-L",
-        "tags": null,
-        "type": "Microsoft.ContainerService/ManagedClusters",
-        "properties": {
-            "provisioningState": "Succeeded",
-            "powerState": {
-                "code": "Running"
-            },
-            "kubernetesVersion": "1.24.3",
-            "dnsPrefix": "nnn-cluster-L",
-            "fqdn": "nnn-cluster-L-00000000.hcp.eastus.azmk8s.io",
-            "azurePortalFQDN": "nnn-cluster-L-00000000.portal.hcp.eastus.azmk8s.io",
-            "agentPoolProfiles": [
-                {
-                    "name": "system",
-                    "count": 2,
-                    "vmSize": "Standard_D2s_v3",
-                    "osDiskSizeGB": 32,
-                    "osDiskType": "Ephemeral",
-                    "kubeletDiskType": "OS",
-                    "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-                    "maxPods": 50,
-                    "type": "VirtualMachineScaleSets",
-                    "maxCount": 2,
-                    "minCount": 2,
-                    "enableAutoScaling": true,
-                    "provisioningState": "Succeeded",
-                    "powerState": {
-                        "code": "Running"
-                    },
-                    "orchestratorVersion": "1.24.3",
-                    "mode": "System",
-                    "osType": "Linux",
-                    "osSKU": "Ubuntu",
-                    "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",
-                    "enableFIPS": false
-                }
-            ],
-            "windowsProfile": {
-                "adminUsername": "azureuser",
-                "enableCSIProxy": true
-            },
-            "servicePrincipalProfile": {
-                "clientId": "msi"
-            },
-            "addonProfiles": {
-                "aciConnectorLinux": {
-                    "enabled": true,
-                    "config": {
-                        "SubnetName": "subnet-B"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-L",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "azureKeyvaultSecretsProvider": {
-                    "enabled": true,
-                    "config": {
-                        "enableSecretRotation": "true"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-cluster-L",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "azurepolicy": {
-                    "enabled": true,
-                    "config": null,
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-L",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "httpApplicationRouting": {
-                    "enabled": false,
-                    "config": {
-                        "HTTPApplicationRoutingZoneName": "nnnn.eastus.aksapp.io"
-                    }
-                },
-                "kubeDashboard": {
-                    "enabled": false,
-                    "config": null
-                },
-                "omsagent": {
-                    "enabled": true,
-                    "config": {
-                        "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-eus"
-                    },
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-L",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                },
-                "openServiceMesh": {
-                    "enabled": true,
-                    "config": null,
-                    "identity": {
-                        "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/openservicemesh-cluster-L",
-                        "clientId": "00000000-0000-0000-0000-000000000000",
-                        "objectId": "00000000-0000-0000-0000-000000000000"
-                    }
-                }
-            },
-            "nodeResourceGroup": "test-rg",
-            "enableRBAC": true,
-            "enablePodSecurityPolicy": false,
-            "networkProfile": {
-                "networkPlugin": "azure",
-                "networkPolicy": "azure",
-                "loadBalancerSku": "Standard",
-                "loadBalancerProfile": {
-                    "managedOutboundIPs": {
-                        "count": 1
-                    },
-                    "effectiveOutboundIPs": [
-                        {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/publicIP-A"
-                        }
-                    ]
-                },
-                "serviceCidr": "192.168.0.0/16",
-                "dnsServiceIP": "192.168.0.4",
-                "dockerBridgeCidr": "172.17.0.1/16",
-                "outboundType": "loadBalancer"
-            },
-            "aadProfile": {
-                "managed": true,
-                "adminGroupObjectIDs": null,
-                "enableAzureRBAC": true,
-                "tenantID": "00000000-0000-0000-0000-000000000000"
-            },
-            "maxAgentPools": 100,
-            "identityProfile": {
-                "kubeletidentity": {
-                    "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-L-agentpool",
-                    "clientId": "00000000-0000-0000-0000-000000000000",
-                    "objectId": "00000000-0000-0000-0000-000000000000"
-                }
-            },
-            "autoScalerProfile": {
-                "balance-similar-node-groups": "false",
-                "expander": "random",
-                "max-empty-bulk-delete": "10",
-                "max-graceful-termination-sec": "600",
-                "max-node-provision-time": "15m",
-                "max-total-unready-percentage": "45",
-                "new-pod-scale-up-delay": "0s",
-                "ok-total-unready-count": "3",
-                "scale-down-delay-after-add": "10m",
-                "scale-down-delay-after-delete": "10s",
-                "scale-down-delay-after-failure": "3m",
-                "scale-down-unneeded-time": "10m",
-                "scale-down-unready-time": "20m",
-                "scale-down-utilization-threshold": "0.5",
-                "scan-interval": "10s",
-                "skip-nodes-with-local-storage": "false",
-                "skip-nodes-with-system-pods": "true"
-            },
-            "autoUpgradeProfile": {
-                "upgradeChannel": "rapid"
-            },
-            "podIdentityProfile": {
-                "enabled": true
-            }
+      ],
+      "servicePrincipalProfile": {
+        "clientId": "00000000-0000-0000-0000-000000000000"
+      },
+      "addonProfiles": {
+        "aciConnectorLinux": {
+          "enabled": true,
+          "config": {
+            "SubnetName": "subnet-E"
+          }
         },
-        "identity": {
-            "type": "UserAssigned",
-            "userAssignedIdentities": {
-                "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-A": {
-                    "clientId": "00000000-0000-0000-0000-000000000000",
-                    "principalId": "00000000-0000-0000-0000-000000000000"
-                }
-            }
+        "azurepolicy": {
+          "enabled": true,
+          "config": null
         },
-        "sku": {
-            "name": "Basic",
-            "tier": "Paid"
+        "httpApplicationRouting": {
+          "enabled": true,
+          "config": {
+            "HTTPApplicationRoutingZoneName": "test-dns-zone.region.aksapp.io"
+          }
+        },
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+          }
         }
+      },
+      "nodeResourceGroup": "MC_test-rg_cluster-C_region",
+      "enableRBAC": true,
+      "enablePodSecurityPolicy": true,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "networkPolicy": "azure",
+        "loadBalancerSku": "Basic",
+        "serviceCidr": "192.168.0.0/16",
+        "dnsServiceIP": "192.168.0.4",
+        "dockerBridgeCidr": "172.17.0.1/16"
+      },
+      "maxAgentPools": 8
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerService/managedClusters",
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "subnet-A",
+        "Name": "subnet-A",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualNetworks/vnet-A",
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "addressPrefix": "10.0.0.0/23",
+          "networkSecurityGroup": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+          },
+          "routeTable": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+          },
+          "ipConfigurations": [],
+          "serviceEndpoints": [],
+          "delegations": [],
+          "privateEndpointNetworkPolicies": "Enabled",
+          "privateLinkServiceNetworkPolicies": "Enabled"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/virtualNetworks/subnets",
+        "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-D",
+    "Identity": {
+      "PrincipalId": "00000000-0000-0000-0000-000000000000",
+      "TenantId": "00000000-0000-0000-0000-000000000000",
+      "Type": "SystemAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "australiaeast",
+    "ManagedBy": null,
+    "ResourceName": "cluster-D",
+    "Name": "cluster-D",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "kubernetesVersion": "1.23.8",
+      "dnsPrefix": "cluster-D",
+      "fqdn": "cluster-D-nnnnnnnn.hcp.region.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool",
+          "count": 1,
+          "vmSize": "Standard_B2ms",
+          "osDiskSizeGB": 100,
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 50,
+          "type": "VirtualMachineScaleSets",
+          "provisioningState": "Succeeded",
+          "orchestratorVersion": "1.23.8",
+          "nodeLabels": {},
+          "mode": "System",
+          "osType": "Linux",
+          "nodeImageVersion": "AKSUbuntu:1604:2020.05.13",
+          "enableAutoScaling": false,
+          "availabilityZones": ["1", "2", "3"]
+        }
+      ],
+      "windowsProfile": {
+        "adminUsername": "azureuser"
+      },
+      "servicePrincipalProfile": {
+        "clientId": "msi"
+      },
+      "addonProfiles": {
+        "aciConnectorLinux": {
+          "enabled": true,
+          "config": {
+            "SubnetName": "subnet-B"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-D",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "azurePolicy": {
+          "enabled": true,
+          "config": {
+            "version": "v2"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-D",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "httpApplicationRouting": {
+          "enabled": false
+        },
+        "kubeDashboard": {
+          "enabled": false,
+          "config": null
+        },
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-D",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      },
+      "nodeResourceGroup": "MC_test-rg_cluster-D_region",
+      "enableRBAC": true,
+      "enablePodSecurityPolicy": true,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "networkPolicy": "calico",
+        "loadBalancerSku": "Standard",
+        "loadBalancerProfile": {
+          "managedOutboundIPs": {
+            "count": 1
+          },
+          "effectiveOutboundIPs": [
+            {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg_cluster-D_region/providers/Microsoft.Network/publicIPAddresses/00000000-0000-0000-0000-000000000000"
+            }
+          ]
+        },
+        "serviceCidr": "192.168.0.0/16",
+        "dnsServiceIP": "192.168.0.4",
+        "dockerBridgeCidr": "172.17.0.1/16",
+        "outboundType": "loadBalancer"
+      },
+      "aadProfile": {
+        "managed": true,
+        "adminGroupObjectIDs": null,
+        "tenantID": "00000000-0000-0000-0000-000000000000"
+      },
+      "maxAgentPools": 10,
+      "identityProfile": {
+        "kubeletidentity": {
+          "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-D-agentpool",
+          "clientId": "00000000-0000-0000-0000-000000000000",
+          "objectId": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerService/managedClusters",
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Basic",
+      "Tier": "Free",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "subnet-A",
+        "Name": "subnet-A",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualNetworks/vnet-A",
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "addressPrefix": "10.0.0.0/27",
+          "networkSecurityGroup": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+          },
+          "routeTable": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+          },
+          "ipConfigurations": [],
+          "serviceEndpoints": [],
+          "delegations": [],
+          "privateEndpointNetworkPolicies": "Enabled",
+          "privateLinkServiceNetworkPolicies": "Enabled"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/virtualNetworks/subnets",
+        "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-E/agentPools/system",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-E/agentPools/system",
+    "Identity": null,
+    "Kind": null,
+    "Location": "antarcticanorth",
+    "ManagedBy": null,
+    "ResourceName": "system",
+    "Name": "system",
+    "ExtensionResourceName": null,
+    "ParentResource": "managedClusters/cluster-E",
+    "Properties": {
+      "count": 2,
+      "vmSize": "Standard_D2s_v3",
+      "osDiskSizeGB": 32,
+      "osDiskType": "Ephemeral",
+      "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+      "maxPods": 50,
+      "type": "VirtualMachineScaleSets",
+      "maxCount": 2,
+      "minCount": 2,
+      "enableAutoScaling": true,
+      "provisioningState": "Succeeded",
+      "powerState": {
+        "code": "Running"
+      },
+      "orchestratorVersion": "1.23.8",
+      "nodeLabels": {},
+      "mode": "System",
+      "osType": "Linux",
+      "nodeImageVersion": "AKSUbuntu-1804containerd-2021.01.28",
+      "availabilityZones": null
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerService/managedClusters/agentPools",
+    "ResourceType": "Microsoft.ContainerService/managedClusters/agentPools",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "subnet-A",
+        "Name": "subnet-A",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualNetworks/vnet-A",
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "addressPrefix": "10.0.0.0/25",
+          "networkSecurityGroup": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+          },
+          "routeTable": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+          },
+          "ipConfigurations": [],
+          "serviceEndpoints": [],
+          "delegations": [],
+          "privateEndpointNetworkPolicies": "Enabled",
+          "privateLinkServiceNetworkPolicies": "Enabled"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/virtualNetworks/subnets",
+        "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.ContainerService/managedClusters/cluster-F",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.ContainerService/managedClusters/cluster-F",
+    "Identity": {
+      "PrincipalId": null,
+      "TenantId": null,
+      "Type": "UserAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "Antarctica North",
+    "ManagedBy": null,
+    "ResourceName": "cluster-F",
+    "Name": "cluster-F",
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "powerState": {
+        "code": "Running"
+      },
+      "kubernetesVersion": "1.23.8",
+      "dnsPrefix": "cluster-F",
+      "fqdn": "cluster-F-00000000.hcp.region.azmk8s.io",
+      "azurePortalFQDN": "cluster-F-00000000.portal.hcp.region.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "system",
+          "count": 2,
+          "vmSize": "Standard_D2s_v3",
+          "osDiskSizeGB": 32,
+          "osDiskType": "Managed",
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 50,
+          "type": "VirtualMachineScaleSets",
+          "maxCount": 2,
+          "minCount": 2,
+          "enableAutoScaling": true,
+          "provisioningState": "Succeeded",
+          "powerState": {
+            "code": "Running"
+          },
+          "orchestratorVersion": "1.23.8",
+          "nodeLabels": {},
+          "mode": "System",
+          "osType": "Linux",
+          "nodeImageVersion": "AKSUbuntu-1804containerd-2021.04.27",
+          "availabilityZones": []
+        }
+      ],
+      "windowsProfile": {
+        "adminUsername": "azureuser",
+        "enableCSIProxy": true
+      },
+      "servicePrincipalProfile": {
+        "clientId": "msi"
+      },
+      "addonProfiles": {
+        "aciConnectorLinux": {
+          "enabled": true,
+          "config": {
+            "SubnetName": "subnet-B"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-F",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "azureKeyvaultSecretsProvider": {
+          "enabled": true,
+          "config": {
+            "enableSecretRotation": "false"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-cluster-F",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "azurepolicy": {
+          "enabled": true,
+          "config": null,
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-F",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "httpApplicationRouting": {
+          "enabled": true,
+          "config": {
+            "HTTPApplicationRoutingZoneName": "0000000000000000000.region.aksapp.io"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/httpapplicationrouting-cluster-F",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "kubeDashboard": {
+          "enabled": false,
+          "config": null
+        },
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-eus"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-F",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "openServiceMesh": {
+          "enabled": true,
+          "config": {},
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/openservicemesh-cluster-F",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      },
+      "nodeResourceGroup": "MC_rg-test_cluster-F_region",
+      "disableLocalAccounts": true,
+      "enableRBAC": true,
+      "enablePodSecurityPolicy": false,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "networkPolicy": "azure",
+        "loadBalancerSku": "Standard",
+        "loadBalancerProfile": {
+          "managedOutboundIPs": {
+            "count": 1
+          },
+          "effectiveOutboundIPs": [
+            {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_rg-test_cluster-F_region/providers/Microsoft.Network/publicIPAddresses/00000000-0000-0000-0000-000000000000"
+            }
+          ]
+        },
+        "serviceCidr": "192.168.0.0/16",
+        "dnsServiceIP": "192.168.0.4",
+        "dockerBridgeCidr": "172.17.0.1/16",
+        "outboundType": "loadBalancer"
+      },
+      "aadProfile": {
+        "managed": true,
+        "enableAzureRbac": true,
+        "adminGroupObjectIDs": [],
+        "tenantID": "00000000-0000-0000-0000-000000000000"
+      },
+      "maxAgentPools": 100,
+      "identityProfile": {
+        "kubeletidentity": {
+          "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_rg-test_cluster-F_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-F-agentpool",
+          "clientId": "00000000-0000-0000-0000-000000000000",
+          "objectId": "00000000-0000-0000-0000-000000000000"
+        }
+      },
+      "autoScalerProfile": {
+        "balance-similar-node-groups": "false",
+        "expander": "random",
+        "max-empty-bulk-delete": "10",
+        "max-graceful-termination-sec": "600",
+        "max-node-provision-time": "15m",
+        "max-total-unready-percentage": "45",
+        "new-pod-scale-up-delay": "0s",
+        "ok-total-unready-count": "3",
+        "scale-down-delay-after-add": "10m",
+        "scale-down-delay-after-delete": "10s",
+        "scale-down-delay-after-failure": "3m",
+        "scale-down-unneeded-time": "10m",
+        "scale-down-unready-time": "20m",
+        "scale-down-utilization-threshold": "0.5",
+        "scan-interval": "10s",
+        "skip-nodes-with-local-storage": "false",
+        "skip-nodes-with-system-pods": "true"
+      },
+      "autoUpgradeProfile": {
+        "upgradeChannel": "rapid"
+      },
+      "apiServerAccessProfile": {
+        "authorizedIpRanges": ["0.0.0.0/32"],
+        "enablePrivateCluster": null,
+        "privateDnsZone": null
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.ContainerService/managedClusters",
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "Sku": {
+      "Name": "Basic",
+      "Tier": "Free",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "subnet-A",
+        "Name": "subnet-A",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualNetworks/vnet-A",
+        "Plan": null,
+        "Properties": {
+          "provisioningState": "Succeeded",
+          "addressPrefix": "10.0.0.0/21",
+          "networkSecurityGroup": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-subnet-A"
+          },
+          "routeTable": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/routeTables/route-subnet-A"
+          },
+          "ipConfigurations": [],
+          "serviceEndpoints": [],
+          "delegations": [],
+          "privateEndpointNetworkPolicies": "Enabled",
+          "privateLinkServiceNetworkPolicies": "Enabled"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Network/virtualNetworks/subnets",
+        "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-G",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-G",
+    "Location": "Australia East",
+    "ResourceName": "cluster-G",
+    "Name": "cluster-G",
+    "Properties": {
+      "kubernetesVersion": "1.23.8",
+      "dnsPrefix": "cluster-G",
+      "fqdn": "cluster-G-00000000.nnn.region.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool",
+          "count": 3,
+          "vmSize": "Standard_F2s_v2",
+          "osDiskSizeGB": 30,
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 30,
+          "type": "VirtualMachineScaleSets",
+          "orchestratorVersion": "1.23.8",
+          "osType": "Linux",
+          "enableAutoScaling": false,
+          "availabilityZones": null
+        }
+      ],
+      "servicePrincipalProfile": {
+        "clientId": "00000000-0000-0000-0000-000000000000"
+      },
+      "addonProfiles": {
+        "aciconnectorlinux": {
+          "enabled": true,
+          "config": {
+            "subnetname": "subnet-A"
+          }
+        },
+        "httpapplicationrouting": {
+          "enabled": true,
+          "config": {
+            "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
+          }
+        },
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+          }
+        }
+      },
+      "nodeResourceGroup": "MC_test-rg_cluster-G_region",
+      "enableRBAC": true,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "loadBalancerSku": "Basic",
+        "serviceCidr": "10.4.1.0/24",
+        "dnsServiceIP": "10.4.1.10",
+        "dockerBridgeCidr": "172.17.0.1/16"
+      },
+      "maxAgentPools": 1
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerService/managedClusters",
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "kube-apiserver",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-audit",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-audit-admin",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-controller-manager",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-scheduler",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "cluster-autoscaler",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "guard",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "k8s-aks-cluster-rg",
+        "Type": "microsoft.containerservice/managedclusters",
+        "ResourceType": "microsoft.containerservice/managedclusters",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-H",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-H",
+    "Location": "australiaeast",
+    "ResourceName": "cluster-H",
+    "Name": "cluster-H",
+    "Properties": {
+      "kubernetesVersion": "1.23.8",
+      "dnsPrefix": "cluster-H",
+      "fqdn": "cluster-H-00000000.nnn.region.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool",
+          "count": 3,
+          "vmSize": "Standard_F2s_v2",
+          "osDiskSizeGB": 30,
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 30,
+          "type": "VirtualMachineScaleSets",
+          "orchestratorVersion": "1.23.8",
+          "osType": "Linux",
+          "enableAutoScaling": false,
+          "availabilityZones": []
+        }
+      ],
+      "servicePrincipalProfile": {
+        "clientId": "00000000-0000-0000-0000-000000000000"
+      },
+      "addonProfiles": {
+        "aciconnectorlinux": {
+          "enabled": true,
+          "config": {
+            "subnetname": "subnet-A"
+          }
+        },
+        "httpapplicationrouting": {
+          "enabled": true,
+          "config": {
+            "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
+          }
+        },
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+          }
+        }
+      },
+      "nodeResourceGroup": "MC_test-rg_cluster-H_region",
+      "enableRBAC": true,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "loadBalancerSku": "Basic",
+        "serviceCidr": "10.4.1.0/24",
+        "dnsServiceIP": "10.4.1.10",
+        "dockerBridgeCidr": "172.17.0.1/16"
+      },
+      "maxAgentPools": 1
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerService/managedClusters",
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "kube-apiserver",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-audit",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-audit-admin",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-controller-manager",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-scheduler",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "cluster-autoscaler",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "guard",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "k8s-aks-cluster-rg",
+        "Type": "microsoft.containerservice/managedclusters",
+        "ResourceType": "microsoft.containerservice/managedclusters",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-I",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-I",
+    "Location": "antarcticanorth",
+    "ResourceName": "cluster-I",
+    "Name": "cluster-I",
+    "Properties": {
+      "kubernetesVersion": "1.23.8",
+      "dnsPrefix": "cluster-I",
+      "fqdn": "cluster-I-00000000.nnn.region.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool",
+          "count": 3,
+          "vmSize": "Standard_F2s_v2",
+          "osDiskSizeGB": 30,
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 30,
+          "type": "VirtualMachineScaleSets",
+          "orchestratorVersion": "1.23.8",
+          "osType": "Linux",
+          "enableAutoScaling": false,
+          "availabilityZones": null
+        }
+      ],
+      "servicePrincipalProfile": {
+        "clientId": "00000000-0000-0000-0000-000000000000"
+      },
+      "addonProfiles": {
+        "aciconnectorlinux": {
+          "enabled": true,
+          "config": {
+            "subnetname": "subnet-A"
+          }
+        },
+        "httpapplicationrouting": {
+          "enabled": true,
+          "config": {
+            "httpapplicationroutingzonename": "test-dns-zone.region.aksapp.io"
+          }
+        },
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+          }
+        }
+      },
+      "nodeResourceGroup": "MC_test-rg_cluster-I_region",
+      "enableRBAC": true,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "loadBalancerSku": "Basic",
+        "serviceCidr": "10.4.1.0/24",
+        "dnsServiceIP": "10.4.1.10",
+        "dockerBridgeCidr": "172.17.0.1/16"
+      },
+      "maxAgentPools": 1
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerService/managedClusters",
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "kube-apiserver",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-audit",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-audit-admin",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-controller-manager",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-scheduler",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "cluster-autoscaler",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "guard",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "k8s-aks-cluster-rg",
+        "Type": "microsoft.containerservice/managedclusters",
+        "ResourceType": "microsoft.containerservice/managedclusters",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-J",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-J",
+    "Location": "antarcticasouth",
+    "ResourceName": "cluster-J",
+    "Name": "cluster-J",
+    "Properties": {
+      "kubernetesVersion": "1.23.8",
+      "dnsPrefix": "cluster-J",
+      "fqdn": "cluster-J-00000000.nnn.region.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "agentpool",
+          "count": 3,
+          "vmSize": "Standard_F2s_v2",
+          "osDiskSizeGB": 30,
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 30,
+          "type": "VirtualMachineScaleSets",
+          "orchestratorVersion": "1.23.8",
+          "osType": "Linux",
+          "enableAutoScaling": false,
+          "availabilityZones": null
+        }
+      ],
+      "servicePrincipalProfile": {
+        "clientId": "00000000-0000-0000-0000-000000000000"
+      },
+      "addonProfiles": {
+        "aciconnectorlinux": {
+          "enabled": true,
+          "config": {
+            "subnetname": "subnet-A"
+          }
+        },
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "loganalyticsworkspaceresourceid": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region"
+          }
+        }
+      },
+      "nodeResourceGroup": "MC_test-rg_cluster-J_region",
+      "enableRBAC": true,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "loadBalancerSku": "Basic",
+        "serviceCidr": "10.4.1.0/24",
+        "dnsServiceIP": "10.4.1.10",
+        "dockerBridgeCidr": "172.17.0.1/16"
+      },
+      "maxAgentPools": 1
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerService/managedClusters",
+    "ResourceType": "Microsoft.ContainerService/managedClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/k8s-aks-cluster-rg/providers/microsoft.containerservice/managedclusters/k8s-aks-cluster/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "kube-apiserver",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-audit",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-audit-admin",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-controller-manager",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "kube-scheduler",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "cluster-autoscaler",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "guard",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "k8s-aks-cluster-rg",
+        "Type": "microsoft.containerservice/managedclusters",
+        "ResourceType": "microsoft.containerservice/managedclusters",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-K",
+    "location": "eastus",
+    "name": "cluster-K",
+    "tags": null,
+    "type": "Microsoft.ContainerService/ManagedClusters",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "powerState": {
+        "code": "Running"
+      },
+      "kubernetesVersion": "1.23.8",
+      "dnsPrefix": "cluster-K",
+      "fqdn": "cluster-K-00000000.hcp.eastus.azmk8s.io",
+      "azurePortalFQDN": "cluster-K-00000000.portal.hcp.eastus.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "system",
+          "count": 2,
+          "vmSize": "Standard_D2s_v3",
+          "osDiskSizeGB": 32,
+          "osDiskType": "Managed",
+          "kubeletDiskType": "OS",
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 50,
+          "type": "VirtualMachineScaleSets",
+          "maxCount": 2,
+          "minCount": 2,
+          "enableAutoScaling": true,
+          "provisioningState": "Succeeded",
+          "powerState": {
+            "code": "Running"
+          },
+          "orchestratorVersion": "1.23.8",
+          "mode": "System",
+          "osType": "Linux",
+          "osSKU": "Ubuntu",
+          "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",
+          "enableFIPS": false
+        }
+      ],
+      "windowsProfile": {
+        "adminUsername": "azureuser",
+        "enableCSIProxy": true
+      },
+      "servicePrincipalProfile": {
+        "clientId": "msi"
+      },
+      "addonProfiles": {
+        "aciConnectorLinux": {
+          "enabled": true,
+          "config": {
+            "SubnetName": "subnet-B"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-K",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "azureKeyvaultSecretsProvider": {
+          "enabled": true,
+          "config": {
+            "enableSecretRotation": "False"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-cluster-K",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "azurepolicy": {
+          "enabled": true,
+          "config": null,
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-K",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "kubeDashboard": {
+          "enabled": false,
+          "config": null
+        },
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-eus"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-K",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "openServiceMesh": {
+          "enabled": true,
+          "config": null,
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/openservicemesh-cluster-K",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      },
+      "nodeResourceGroup": "test-rg",
+      "enableRBAC": true,
+      "enablePodSecurityPolicy": false,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "networkPolicy": "azure",
+        "loadBalancerSku": "Standard",
+        "loadBalancerProfile": {
+          "managedOutboundIPs": {
+            "count": 1
+          },
+          "effectiveOutboundIPs": [
+            {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/publicIP-A"
+            }
+          ]
+        },
+        "serviceCidr": "192.168.0.0/16",
+        "dnsServiceIP": "192.168.0.4",
+        "dockerBridgeCidr": "172.17.0.1/16",
+        "outboundType": "loadBalancer"
+      },
+      "aadProfile": {
+        "managed": true,
+        "adminGroupObjectIDs": null,
+        "enableAzureRBAC": true,
+        "tenantID": "00000000-0000-0000-0000-000000000000"
+      },
+      "maxAgentPools": 100,
+      "identityProfile": {
+        "kubeletidentity": {
+          "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-K-agentpool",
+          "clientId": "00000000-0000-0000-0000-000000000000",
+          "objectId": "00000000-0000-0000-0000-000000000000"
+        }
+      },
+      "autoScalerProfile": {
+        "balance-similar-node-groups": "false",
+        "expander": "random",
+        "max-empty-bulk-delete": "10",
+        "max-graceful-termination-sec": "600",
+        "max-node-provision-time": "15m",
+        "max-total-unready-percentage": "45",
+        "new-pod-scale-up-delay": "0s",
+        "ok-total-unready-count": "3",
+        "scale-down-delay-after-add": "10m",
+        "scale-down-delay-after-delete": "10s",
+        "scale-down-delay-after-failure": "3m",
+        "scale-down-unneeded-time": "10m",
+        "scale-down-unready-time": "20m",
+        "scale-down-utilization-threshold": "0.5",
+        "scan-interval": "10s",
+        "skip-nodes-with-local-storage": "false",
+        "skip-nodes-with-system-pods": "true"
+      },
+      "autoUpgradeProfile": {
+        "upgradeChannel": "stable"
+      }
+    },
+    "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-A": {
+          "clientId": "00000000-0000-0000-0000-000000000000",
+          "principalId": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    },
+    "sku": {
+      "name": "Basic",
+      "tier": "Paid"
     }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-L",
+    "location": "eastus",
+    "name": "cluster-L",
+    "tags": null,
+    "type": "Microsoft.ContainerService/ManagedClusters",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "powerState": {
+        "code": "Running"
+      },
+      "kubernetesVersion": "1.24.3",
+      "dnsPrefix": "nnn-cluster-L",
+      "fqdn": "nnn-cluster-L-00000000.hcp.eastus.azmk8s.io",
+      "azurePortalFQDN": "nnn-cluster-L-00000000.portal.hcp.eastus.azmk8s.io",
+      "agentPoolProfiles": [
+        {
+          "name": "system",
+          "count": 2,
+          "vmSize": "Standard_D2s_v3",
+          "osDiskSizeGB": 32,
+          "osDiskType": "Ephemeral",
+          "kubeletDiskType": "OS",
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 50,
+          "type": "VirtualMachineScaleSets",
+          "maxCount": 2,
+          "minCount": 2,
+          "enableAutoScaling": true,
+          "provisioningState": "Succeeded",
+          "powerState": {
+            "code": "Running"
+          },
+          "orchestratorVersion": "1.24.3",
+          "mode": "System",
+          "osType": "Linux",
+          "osSKU": "Ubuntu",
+          "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",
+          "enableFIPS": false
+        }
+      ],
+      "windowsProfile": {
+        "adminUsername": "azureuser",
+        "enableCSIProxy": true
+      },
+      "servicePrincipalProfile": {
+        "clientId": "msi"
+      },
+      "addonProfiles": {
+        "aciConnectorLinux": {
+          "enabled": true,
+          "config": {
+            "SubnetName": "subnet-B"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/aciconnectorlinux-cluster-L",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "azureKeyvaultSecretsProvider": {
+          "enabled": true,
+          "config": {
+            "enableSecretRotation": "true"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurekeyvaultsecretsprovider-cluster-L",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "azurepolicy": {
+          "enabled": true,
+          "config": null,
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/azurepolicy-cluster-L",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "httpApplicationRouting": {
+          "enabled": false,
+          "config": {
+            "HTTPApplicationRoutingZoneName": "nnnn.eastus.aksapp.io"
+          }
+        },
+        "kubeDashboard": {
+          "enabled": false,
+          "config": null
+        },
+        "omsagent": {
+          "enabled": true,
+          "config": {
+            "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-eus/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-eus"
+          },
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/omsagent-cluster-L",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "openServiceMesh": {
+          "enabled": true,
+          "config": null,
+          "identity": {
+            "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/openservicemesh-cluster-L",
+            "clientId": "00000000-0000-0000-0000-000000000000",
+            "objectId": "00000000-0000-0000-0000-000000000000"
+          }
+        }
+      },
+      "nodeResourceGroup": "test-rg",
+      "enableRBAC": true,
+      "enablePodSecurityPolicy": false,
+      "networkProfile": {
+        "networkPlugin": "azure",
+        "networkPolicy": "azure",
+        "loadBalancerSku": "Standard",
+        "loadBalancerProfile": {
+          "managedOutboundIPs": {
+            "count": 1
+          },
+          "effectiveOutboundIPs": [
+            {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/publicIP-A"
+            }
+          ]
+        },
+        "serviceCidr": "192.168.0.0/16",
+        "dnsServiceIP": "192.168.0.4",
+        "dockerBridgeCidr": "172.17.0.1/16",
+        "outboundType": "loadBalancer"
+      },
+      "aadProfile": {
+        "managed": true,
+        "adminGroupObjectIDs": null,
+        "enableAzureRBAC": true,
+        "tenantID": "00000000-0000-0000-0000-000000000000"
+      },
+      "maxAgentPools": 100,
+      "identityProfile": {
+        "kubeletidentity": {
+          "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-L-agentpool",
+          "clientId": "00000000-0000-0000-0000-000000000000",
+          "objectId": "00000000-0000-0000-0000-000000000000"
+        }
+      },
+      "autoScalerProfile": {
+        "balance-similar-node-groups": "false",
+        "expander": "random",
+        "max-empty-bulk-delete": "10",
+        "max-graceful-termination-sec": "600",
+        "max-node-provision-time": "15m",
+        "max-total-unready-percentage": "45",
+        "new-pod-scale-up-delay": "0s",
+        "ok-total-unready-count": "3",
+        "scale-down-delay-after-add": "10m",
+        "scale-down-delay-after-delete": "10s",
+        "scale-down-delay-after-failure": "3m",
+        "scale-down-unneeded-time": "10m",
+        "scale-down-unready-time": "20m",
+        "scale-down-utilization-threshold": "0.5",
+        "scan-interval": "10s",
+        "skip-nodes-with-local-storage": "false",
+        "skip-nodes-with-system-pods": "true"
+      },
+      "autoUpgradeProfile": {
+        "upgradeChannel": "none"
+      },
+      "podIdentityProfile": {
+        "enabled": true
+      }
+    },
+    "identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": {
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi-A": {
+          "clientId": "00000000-0000-0000-0000-000000000000",
+          "principalId": "00000000-0000-0000-0000-000000000000"
+        }
+      }
+    },
+    "sku": {
+      "name": "Basic",
+      "tier": "Paid"
+    }
+  }
 ]
