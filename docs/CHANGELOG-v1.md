@@ -29,6 +29,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check virtual machines has Azure Monitor Agent installed by @BenjaminEngeset.
       [#1868](https://github.com/Azure/PSRule.Rules.Azure/issues/1868)
   - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers limits the amount of firewall permitted IP addresses by @BenjaminEngeset.
+      [#1856](https://github.com/Azure/PSRule.Rules.Azure/issues/1856)
     - Check Azure Database for MariaDB servers limits the amount of firewall rules allowed by @BenjaminEngeset.
       [#1855](https://github.com/Azure/PSRule.Rules.Azure/issues/1855)
     - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
