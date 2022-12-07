@@ -22,7 +22,7 @@ module storage1 './Tests.Bicep.1.bicep' = {
   name: 'storage1'
   params: {
     name: storageName1
-    location: location
+    location: !empty(location) ? location : resourceGroup().location
   }
 }
 
