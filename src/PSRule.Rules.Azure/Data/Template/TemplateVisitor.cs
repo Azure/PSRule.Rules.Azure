@@ -1213,6 +1213,9 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 foreach (var parameter in innerParameters.Properties())
                 {
+                    if (parameter.Value is JValue parameterValueExpression)
+                        parameter.Value = ResolveToken(context, ResolveVariable(context, parameterValueExpression));
+
                     if (parameter.Value is JObject parameterInner)
                     {
                         if (parameterInner.TryGetProperty(PROPERTY_VALUE, out JToken parameterValue))
