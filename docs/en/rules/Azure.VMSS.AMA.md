@@ -343,4 +343,5 @@ The Azure Monitor Agent (AMA) itself does not include all configuration needed, 
 
 - [Monitoring](https://learn.microsoft.com/azure/architecture/framework/devops/checklist)
 - [Azure Monitor Agent overview](https://learn.microsoft.com/azure/azure-monitor/agents/agents-overview)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)
