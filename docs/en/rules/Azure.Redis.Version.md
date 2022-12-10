@@ -20,7 +20,7 @@ Version 4 for Azure Cache for Redis instances will be retired on June 30, 3023.
 
 ## RECOMMENDATION
 
-Consider upgrading Redis version for Azure Cache for Redis to the latest supported version (6.0).
+Consider upgrading Redis version for Azure Cache for Redis to the latest supported version (>=6.0).
 
 ## EXAMPLES
 
@@ -28,7 +28,7 @@ Consider upgrading Redis version for Azure Cache for Redis to the latest support
 
 To deploy Azure Cache for Redis instances that pass this rule:
 
-- Set the `properties.redisVersion` property to `latest` or `6.0`.
+- Set the `properties.redisVersion` property to `latest` or `>=6`.
 
 For example:
 
@@ -54,7 +54,7 @@ For example:
 
 To deploy Azure Cache for Redis instances that pass this rule:
 
-- Set the `properties.redisVersion` property to `latest` or `6.0`.
+- Set the `properties.redisVersion` property to `latest` or `>=6`.
 
 For example:
 
