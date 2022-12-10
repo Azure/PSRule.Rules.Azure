@@ -21,7 +21,7 @@ Azure Monitor Agent replaces all of Azure Monitor's legacy monitoring agents.
 
 ## RECOMMENDATION
 
-Virtual Machine Scale Sets should install Azure Monitor Agent.
+Consider monitoring Virtual Machine Scale Sets using the Azure Monitor Agent.
 
 ## EXAMPLES
 
