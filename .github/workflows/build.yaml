@@ -36,17 +36,20 @@ jobs:
 
     - name: Install dependencies
       shell: pwsh
+      timeout-minutes: 3
       run: ./.azure-pipelines/pipeline-deps.ps1
 
     - name: Build module
       shell: pwsh
+      timeout-minutes: 5
       run: Invoke-Build -Configuration Release -AssertStyle GitHubActions
 
     - name: Upload module
       uses: actions/upload-artifact@v3
       with:
-        name: module-release
+        name: Module
         path: ./out/modules/PSRule.Rules.Azure/*
+        retention-days: 3
         if-no-files-found: error
 
     - name: Upload Test Results
@@ -55,14 +58,16 @@ jobs:
       with:
         name: Module.DotNet.TestResults
         path: ./reports/*.trx
+        retention-days: 3
         if-no-files-found: error
 
-    - name: Upload Test Results
+    - name: Upload PSRule Results
       uses: actions/upload-artifact@v3
       if: always()
       with:
         name: Module.PSRule.TestResults
         path: ./reports/ps-rule*.xml
+        retention-days: 3
         if-no-files-found: error
 
   Test:
@@ -99,14 +104,16 @@ jobs:
 
     - name: Install dependencies
       shell: pwsh
+      timeout-minutes: 3
       run: ./.azure-pipelines/pipeline-deps.ps1
 
     - name: Download module
       uses: actions/download-artifact@v3
       with:
-        name: module-release
+        name: Module
         path: ./out/modules/PSRule.Rules.Azure
 
     - name: Test module
       shell: pwsh
+      timeout-minutes: 15
       run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions

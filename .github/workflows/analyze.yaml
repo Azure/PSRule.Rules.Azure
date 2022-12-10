@@ -30,11 +30,21 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v3
 
+    - run: |
+        # echo '### Hello world! :rocket:' >> $GITHUB_STEP_SUMMARY
+        echo "JOBSUMMARYPATH=$GITHUB_STEP_SUMMARY" >> $GITHUB_ENV
+        echo $GITHUB_STEP_SUMMARY
+
+
     - name: Run PSRule analysis
       uses: microsoft/ps-rule@v2.7.0
       with:
         modules: PSRule.Rules.MSFT.OSS
         prerelease: true
+      env:
+        PSRULE_OUTPUT_JOBSUMMARYPATH: summary.md
+
+    - run: cat summary.md >> $GITHUB_STEP_SUMMARY
 
   devskim:
     name: Analyze with DevSkim
@@ -45,18 +55,18 @@ jobs:
       security-events: write
     steps:
 
-      - name: Checkout
-        uses: actions/checkout@v3
+    - name: Checkout
+      uses: actions/checkout@v3
 
-      - name: Run DevSkim scanner
-        uses: microsoft/DevSkim-Action@v1
-        with:
-          directory-to-scan: src/
+    - name: Run DevSkim scanner
+      uses: microsoft/DevSkim-Action@v1
+      with:
+        directory-to-scan: src/
 
-      - name: Upload results to security tab
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: devskim-results.sarif
+    - name: Upload results to security tab
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: devskim-results.sarif
 
   codeql:
     name: Analyze with CodeQL
