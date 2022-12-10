@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Cache for Redis:
+    - Check Azure Cache for Redis instances uses Redis 6 by @BenjaminEngeset.
+      [#1077](https://github.com/Azure/PSRule.Rules.Azure/issues/1077)
+
 ## v1.23.0-B0009 (pre-release)
 
 What's changed since v1.22.1:
