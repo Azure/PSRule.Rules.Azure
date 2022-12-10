@@ -623,6 +623,16 @@ Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignme
                     }
                 }
             }
+
+            Mock -CommandName 'Get-AzPolicyExemption' -ModuleName 'PSRule.Rules.Azure' -Verifiable -MockWith {
+                return [PSCustomObject]@{
+                    Name               = '00000000-0000-0000-0000-000000000000'
+                    ResourceId         = '/providers/Microsoft.Authorization/policyExemptions/00000000-0000-0000-0000-000000000000'
+                    ResourceName       = '00000000-0000-0000-0000-000000000000'
+                    ResourceType       = 'Microsoft.Authorization/policyExemptions'
+                    Properties         = [PSCustomObject]@{}
+                }
+            }
         }
 
         It 'Exports assignments' {
@@ -634,6 +644,7 @@ Describe 'Export-AzPolicyAssignmentData' -Tag 'Cmdlet', 'Export-AzPolicyAssignme
             Assert-MockCalled -CommandName 'Get-AzPolicyAssignment' -ModuleName 'PSRule.Rules.Azure' -Times 1;
             Assert-MockCalled -CommandName 'Get-AzPolicyDefinition' -ModuleName 'PSRule.Rules.Azure' -Times 1;
             Assert-MockCalled -CommandName 'Get-AzPolicySetDefinition' -ModuleName 'PSRule.Rules.Azure' -Times 1;
+            Assert-MockCalled -CommandName 'Get-AzPolicyExemption' -ModuleName 'PSRule.Rules.Azure' -Times 1;
 
             $result.Length | Should -Be 1;
             $result | Should -BeOfType System.IO.FileInfo;

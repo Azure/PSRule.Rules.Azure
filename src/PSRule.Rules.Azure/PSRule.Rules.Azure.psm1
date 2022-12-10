@@ -1574,7 +1574,12 @@ function ExpandPolicyAssignment {
             }
         }
 
-        $Assignment | Add-Member -MemberType NoteProperty -Name PolicyDefinitions -Value $policyDefinitions -PassThru;
+        $Assignment | Add-Member -MemberType NoteProperty -Name PolicyDefinitions -Value $policyDefinitions;
+
+        $exemptions = @(Get-AzPolicyExemption -PolicyAssignmentIdFilter $Assignment.PolicyAssignmentId -Verbose:$VerbosePreference -DefaultProfile $Context);
+        $Assignment | Add-Member -MemberType NoteProperty -Name exemptions -Value $exemptions;
+
+        $Assignment;
     }
 }
 

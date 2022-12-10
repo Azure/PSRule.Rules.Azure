@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check virtual machine scale sets has Azure Monitor Agent installed by @BenjaminEngeset.
       [#1867](https://github.com/Azure/PSRule.Rules.Azure/issues/1867)
 
+What's changed since pre-release v1.23.0-B0009:
+
+- General improvements:
+  - Added support to export exemptions related to policy assignments by @BernieWhite.
+    [#1888](https://github.com/Azure/PSRule.Rules.Azure/issues/1888)
+
 ## v1.23.0-B0009 (pre-release)
 
 What's changed since v1.22.1:
