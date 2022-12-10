@@ -53,7 +53,6 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Tags": {},
     "Properties": {
-      "redisVersion": "3.2.7",
       "sku": {
         "name": "Standard",
         "family": "C",
@@ -208,7 +207,7 @@
     "Plan": null,
     "Properties": {
       "provisioningState": "Succeeded",
-      "redisVersion": "4.0.14",
+      "redisVersion": "6",
       "sku": {
         "name": "Standard",
         "family": "C",
