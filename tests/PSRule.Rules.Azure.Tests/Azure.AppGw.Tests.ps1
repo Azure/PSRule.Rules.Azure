@@ -375,7 +375,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
         # Pass
         It '<_>' -ForEach $validNames {
             $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'AzureAppGw.Name';
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AppGw.Name';
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Pass';
         }
