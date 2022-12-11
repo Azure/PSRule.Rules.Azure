@@ -25,6 +25,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - Application Gateway:
+    - Check Application Gateways names meet naming requirements by @BenjaminEngeset.
+      [[#1943](https://github.com/Azure/PSRule.Rules.Azure/issues/1943)
   - Virtual Machine Scale Sets:
     - Check virtual machine scale sets has Azure Monitor Agent installed by @BenjaminEngeset.
       [#1867](https://github.com/Azure/PSRule.Rules.Azure/issues/1867)
