@@ -24,16 +24,20 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.23.0-B0009:
+
 - New rules:
   - Azure Cache for Redis:
     - Check Azure Cache for Redis instances uses Redis 6 by @BenjaminEngeset.
       [#1077](https://github.com/Azure/PSRule.Rules.Azure/issues/1077)
-
-What's changed since pre-release v1.23.0-B0009:
-
+  - Virtual Machine Scale Sets:
+    - Check virtual machine scale sets has Azure Monitor Agent installed by @BenjaminEngeset.
+      [#1867](https://github.com/Azure/PSRule.Rules.Azure/issues/1867)
 - General improvements:
   - Added support to export exemptions related to policy assignments by @BernieWhite.
     [#1888](https://github.com/Azure/PSRule.Rules.Azure/issues/1888)
+  - Added support for Bicep `flatten` function by @BernieWhite.
+    [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
 
 ## v1.23.0-B0009 (pre-release)
 
