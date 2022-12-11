@@ -46,4 +46,18 @@ Rule 'Azure.AppGw.AvailabilityZone' -Ref 'AZR-000060' -With 'Azure.IsAppGwV2Sku'
 
 } -Configure @{ AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
+# Synopsis: Application Gateways should meet naming requirements.
+Rule 'Azure.AppGw.Name' -Ref 'AZR-000348' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    # https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
+
+    # Between 1 and 80 characters long
+    $Assert.GreaterOrEqual($PSRule, 'TargetName', 1)
+    $Assert.LessOrEqual($PSRule, 'TargetName', 80)
+
+    # Alphanumerics, underscores, periods and hyphens
+    # Start with alphanumeric
+    # End with alphanumeric or underscore
+    $Assert.Match($PSRule, 'TargetName', '^[A-Za-z0-9]$|^([A-Za-z0-9][\w.-]{0,78}[\w])$')
+}
+
 #endregion Application Gateway
