@@ -131,9 +131,8 @@ Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000300' -Type 'Microsoft.Cache/redi
 # Synopsis: Azure Cache for Redis should use the latest supported version of Redis.
 Rule 'Azure.Redis.Version' -Ref 'AZR-000347' -Type 'Microsoft.Cache/redis' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
     $Assert.AnyOf(
-        $Assert.HasFieldValue($TargetObject, 'properties.redisVersion', 'latest'),
-        $Assert.Version($TargetObject, 'properties.redisVersion', '>=6'),
-        $Assert.NotHasField($TargetObject, 'properties.redisVersion')
+        $Assert.HasDefaultValue($TargetObject, 'properties.redisVersion', 'latest'),
+        $Assert.Version($TargetObject, 'properties.redisVersion', '>=6')
     ).Reason($LocalizedData.AzureCacheRedisVersion)
 }
 

@@ -28,7 +28,7 @@ Consider upgrading Redis version for Azure Cache for Redis to the latest support
 
 To deploy Azure Cache for Redis instances that pass this rule:
 
-- Set the `properties.redisVersion` property to `latest` or `>=6`.
+- Set the `properties.redisVersion` property to `latest` or `6`.
 
 For example:
 
@@ -54,7 +54,7 @@ For example:
 
 To deploy Azure Cache for Redis instances that pass this rule:
 
-- Set the `properties.redisVersion` property to `latest` or `>=6`.
+- Set the `properties.redisVersion` property to `latest` or `6`.
 
 For example:
 

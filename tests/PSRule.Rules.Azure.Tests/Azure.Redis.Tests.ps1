@@ -389,9 +389,9 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.Length | Should -Be 7;
             $ruleResult.TargetName | Should -BeIn 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J';
 
-            $ruleResult[0].Reason | Should -BeExactly "The Azure Cache for Redis should use the latest supported version (>=6) of Redis.";
-            $ruleResult[1].Reason | Should -BeExactly "The Azure Cache for Redis should use the latest supported version (>=6) of Redis.";
-            $ruleResult[2].Reason | Should -BeExactly "The Azure Cache for Redis should use the latest supported version (>=6) of Redis.";
+            $ruleResult[0].Reason | Should -BeExactly "The Azure Cache for Redis should use the latest supported version of Redis.";
+            $ruleResult[1].Reason | Should -BeExactly "The Azure Cache for Redis should use the latest supported version of Redis.";
+            $ruleResult[2].Reason | Should -BeExactly "The Azure Cache for Redis should use the latest supported version of Redis.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
