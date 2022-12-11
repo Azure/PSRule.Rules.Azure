@@ -225,6 +225,28 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_ARRAY)]
+        public void Flatten()
+        {
+            var context = GetContext();
+
+            var actual = Functions.Flatten(context, new object[] { new object[] { new string[] { "one", "two" }, new string[] { "three" }, new string[] { "four", "five" } } }) as object[];
+            Assert.Equal(new string[] { "one", "two", "three", "four", "five" }, actual);
+
+            actual = Functions.Flatten(context, new object[] { new object[] { new string[] { "one", "two", "three" }, new object[] { "three" }, new object[] { "four", "five" } } }) as object[];
+            Assert.Equal(new string[] { "one", "two", "three", "three", "four", "five" }, actual);
+
+            actual = Functions.Flatten(context, new object[] { new object[] { new string[] { "one", "two", "three" }, new object[] { 3 }, new object[] { 4, 5 } } }) as object[];
+            Assert.Equal(new object[] { "one", "two", "three", 3, 4, 5 }, actual);
+
+            actual = Functions.Flatten(context, new object[] { new object[] { } }) as object[];
+            Assert.Equal(new object[] { }, actual);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Flatten(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Flatten(context, System.Array.Empty<object>()));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
         public void Intersection()
         {
             var context = GetContext();
@@ -243,7 +265,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, System.Array.Empty<object>()));
-            Assert.Throws<ArgumentException>(() => Functions.Intersection(context, new object[] { "one", "two", "three" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, new object[] { "one", "two", "three" }));
         }
 
         [Fact]
@@ -361,8 +383,8 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, System.Array.Empty<object>()));
-            Assert.Throws<ArgumentException>(() => Functions.Max(context, new object[] { "one", "two" }));
-            Assert.Throws<ArgumentException>(() => Functions.Max(context, new object[] { 1, "0" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, new object[] { "one", "two" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, new object[] { 1, "0" }));
         }
 
         [Fact]
@@ -389,8 +411,8 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, System.Array.Empty<object>()));
-            Assert.Throws<ArgumentException>(() => Functions.Min(context, new object[] { "one", "two" }));
-            Assert.Throws<ArgumentException>(() => Functions.Min(context, new object[] { 1, "0" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, new object[] { "one", "two" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, new object[] { 1, "0" }));
         }
 
         [Fact]
@@ -463,7 +485,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("", actual3);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Take(context, new object[] { "one two three" }));
-            Assert.Throws<ArgumentException>(() => Functions.Take(context, new object[] { "one two three", "0" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Take(context, new object[] { "one two three", "0" }));
 
             // Array
             var actual4 = Functions.Take(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]"), 2 }) as JArray;
@@ -475,8 +497,8 @@ namespace PSRule.Rules.Azure
             Assert.Empty(actual6);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Take(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]") }));
-            Assert.Throws<ArgumentException>(() => Functions.Take(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]"), "0" }));
-            Assert.Throws<ArgumentException>(() => Functions.Take(context, new object[] { 1, "0" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Take(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]"), "0" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Take(context, new object[] { 1, "0" }));
         }
 
         [Fact]

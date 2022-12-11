@@ -34,6 +34,8 @@ What's changed since pre-release v1.23.0-B0009:
 - General improvements:
   - Added support to export exemptions related to policy assignments by @BernieWhite.
     [#1888](https://github.com/Azure/PSRule.Rules.Azure/issues/1888)
+  - Added support for Bicep `flatten` function by @BernieWhite.
+    [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
 
 ## v1.23.0-B0009 (pre-release)
 
