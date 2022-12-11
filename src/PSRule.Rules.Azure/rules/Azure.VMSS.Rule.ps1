@@ -79,6 +79,19 @@ Rule 'Azure.VMSS.MigrateAMA' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualM
     $Assert.Less($extensions, '.', 1).Reason($LocalizedData.LogAnalyticsAgentDeprecated)
 }
 
+# Synopsis: Use Azure Monitor Agent for collecting monitoring data.
+Rule 'Azure.VMSS.AMA' -Ref 'AZR-000346' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    $amaTypes = @('AzureMonitorWindowsAgent', 'AzureMonitorLinuxAgent')
+        $property = $TargetObject.Properties.virtualMachineProfile.extensionProfile.extensions.properties |
+            Where-Object { $_.publisher -eq 'Microsoft.Azure.Monitor' -or $_.type -in $amaTypes }
+                $subresource = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachineScaleSets/extensions' |
+                    Where-Object { $_.properties.publisher -eq 'Microsoft.Azure.Monitor' -or $_.properties.type -in $amaTypes })
+    
+    $amaExtensions = @($property; $subresource)       
+    $Assert.GreaterOrEqual($amaExtensions, '.', 1).
+    Reason($LocalizedData.VMSSAzureMonitorAgent)
+}
+
 #endregion Virtual machine scale set
 
 #region Helper functions
