@@ -108,6 +108,28 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-003';
         }
+
+        It 'Azure.VMSS.AMA' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VMSS.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.AMA' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-002', 'vmss-004', 'vmss-005';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine scale set should have Azure Monitor Agent installed.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine scale set should have Azure Monitor Agent installed.";
+            $ruleResult[2].Reason | Should -BeExactly "The virtual machine scale set should have Azure Monitor Agent installed.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-003';
+        }
     }
 
     Context 'Resource name - Azure.VMSS.Name' {
