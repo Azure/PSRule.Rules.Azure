@@ -24,16 +24,18 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.23.0-B0009:
+
 - New rules:
   - Application Gateway:
     - Check Application Gateways names meet naming requirements by @BenjaminEngeset.
       [#1943](https://github.com/Azure/PSRule.Rules.Azure/issues/1943)
+  - Azure Cache for Redis:
+    - Check Azure Cache for Redis instances uses Redis 6 by @BenjaminEngeset.
+      [#1077](https://github.com/Azure/PSRule.Rules.Azure/issues/1077)
   - Virtual Machine Scale Sets:
     - Check virtual machine scale sets has Azure Monitor Agent installed by @BenjaminEngeset.
       [#1867](https://github.com/Azure/PSRule.Rules.Azure/issues/1867)
-
-What's changed since pre-release v1.23.0-B0009:
-
 - General improvements:
   - Added support to export exemptions related to policy assignments by @BernieWhite.
     [#1888](https://github.com/Azure/PSRule.Rules.Azure/issues/1888)
