@@ -3170,6 +3170,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_5">
@@ -6384,6 +6386,20 @@
     <li class="md-nav__item">
       <a href="../en/rules/Azure.Redis.PublicNetworkAccess/" class="md-nav__link">
         Azure.Redis.PublicNetworkAccess
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.Redis.Version/" class="md-nav__link">
+        Azure.Redis.Version
       </a>
     </li>
   
@@ -9798,8 +9814,14 @@
   See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
+<p>What's changed since pre-release v1.23.0-B0009:</p>
 <ul>
 <li>New rules:<ul>
+<li>Azure Cache for Redis:<ul>
+<li>Check Azure Cache for Redis instances uses Redis 6 by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1077">#1077</a></li>
+</ul>
+</li>
 <li>Virtual Machine Scale Sets:<ul>
 <li>Check virtual machine scale sets has Azure Monitor Agent installed by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1867">#1867</a></li>
@@ -9807,9 +9829,6 @@
 </li>
 </ul>
 </li>
-</ul>
-<p>What's changed since pre-release v1.23.0-B0009:</p>
-<ul>
 <li>General improvements:<ul>
 <li>Added support to export exemptions related to policy assignments by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1888">#1888</a></li>
