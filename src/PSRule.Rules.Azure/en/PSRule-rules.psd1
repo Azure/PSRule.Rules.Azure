@@ -91,4 +91,5 @@
     APIMMultiRegion = "The API management instance should use multi-region deployment."
     MariaDBFirewallAllowAzureServices = "The Azure Database for MariaDB should not allow access to Azure services unless explicitly needed."
     VMAzureMonitorAgent = "The virtual machine should have Azure Monitor Agent installed."
+    VMSSAzureMonitorAgent = "The virtual machine scale set should have Azure Monitor Agent installed."
 }
