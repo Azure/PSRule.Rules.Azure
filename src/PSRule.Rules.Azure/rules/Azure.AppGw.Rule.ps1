@@ -57,7 +57,7 @@ Rule 'Azure.AppGw.Name' -Ref 'AZR-000348' -Type 'Microsoft.Network/applicationGa
     # Alphanumerics, underscores, periods and hyphens
     # Start with alphanumeric
     # End with alphanumeric or underscore
-    $Assert.Match($PSRule, 'TargetName', '^[A-Za-z0-9]$|^([A-Za-z0-9][\w.-]{0,78}[\w])$')
+    $Assert.Match($PSRule, 'TargetName', '^[A-Za-z0-9]$|^([A-Za-z0-9][\w.-]{0,78}[\w])$', $True)
 }
 
 #endregion Application Gateway
