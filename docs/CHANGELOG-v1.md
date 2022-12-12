@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Bastion:
+    - Check Bastion hosts names meet naming requirements by @BenjaminEngeset.
+      [#1950](https://github.com/Azure/PSRule.Rules.Azure/issues/1950)
+
 ## v1.23.0-B0025 (pre-release)
 
 What's changed since pre-release v1.23.0-B0009:
