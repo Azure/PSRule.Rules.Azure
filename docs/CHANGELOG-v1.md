@@ -41,6 +41,9 @@ What's changed since pre-release v1.23.0-B0009:
     [#1888](https://github.com/Azure/PSRule.Rules.Azure/issues/1888)
   - Added support for Bicep `flatten` function by @BernieWhite.
     [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
+- Engineering:
+  - Bump Az.Resources to v6.5.0.
+    [#1945](https://github.com/Azure/PSRule.Rules.Azure/pull/1945)
 
 ## v1.23.0-B0009 (pre-release)
 
