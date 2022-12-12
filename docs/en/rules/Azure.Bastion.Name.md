@@ -34,5 +34,5 @@ This rule does not check if Bastion host names are unique.
 ## LINKS
 
 - [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
-- [Naming rules and restrictions for Bastion host](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork)S
-- [Template reference](https://learn.microsoft.com/azure/templates/microsoft.network/bastionhosts)
+- [Naming rules and restrictions for Bastion host](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/bastionhosts)
