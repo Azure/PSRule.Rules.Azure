@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Recovery Services vault:
+    - Check Recovery Services vaults names meet naming requirements by @BenjaminEngeset.
+      [#1953](https://github.com/Azure/PSRule.Rules.Azure/issues/1953)
+
 ## v1.23.0-B0025 (pre-release)
 
 What's changed since pre-release v1.23.0-B0009:
