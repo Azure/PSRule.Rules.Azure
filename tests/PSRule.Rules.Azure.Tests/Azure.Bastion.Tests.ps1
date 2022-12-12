@@ -23,7 +23,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Context 'Resource name - Azure.AppGw.Name' {
+Context 'Resource name - Azure.Bastion.Name' {
     BeforeAll {
         $invokeParams = @{
             Baseline = 'Azure.All'
