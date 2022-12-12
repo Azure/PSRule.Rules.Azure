@@ -24,12 +24,18 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.22.1:
+
+- Bug fixes:
+  - Fixed `Azure.Deployment.SecureValue` with `reference` function expression by @BernieWhite.
+    [#1882](https://github.com/Azure/PSRule.Rules.Azure/issues/1882)
+
 ## v1.22.1
 
 What's changed since v1.22.0:
 
 - Bug fixes:
-  - Fixes template parameter does not use the required format by @BernieWhite.
+  - Fixed template parameter does not use the required format by @BernieWhite.
     [#1930](https://github.com/Azure/PSRule.Rules.Azure/issues/1930)
 
 ## v1.22.0

@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.11.1.770",
-      "templateHash": "13697280230530537471"
+      "version": "0.13.1.58284",
+      "templateHash": "8685448171369407541"
     }
   },
   "resources": [
@@ -29,8 +29,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.11.1.770",
-              "templateHash": "16259778108278407670"
+              "version": "0.13.1.58284",
+              "templateHash": "3563517143203947158"
             }
           },
           "parameters": {
@@ -71,8 +71,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.11.1.770",
-              "templateHash": "17528568844097414113"
+              "version": "0.13.1.58284",
+              "templateHash": "13907904796621207265"
             }
           },
           "parameters": {
@@ -121,8 +121,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.11.1.770",
-              "templateHash": "12671604694843835576"
+              "version": "0.13.1.58284",
+              "templateHash": "1243191437263886583"
             }
           },
           "parameters": {
@@ -217,8 +217,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.11.1.770",
-              "templateHash": "10641783441846165654"
+              "version": "0.13.1.58284",
+              "templateHash": "14384591199981266606"
             }
           },
           "parameters": {
@@ -259,6 +259,44 @@
                     }
                   }
                 ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "reference_good",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.13.1.58284",
+              "templateHash": "9418583989023446705"
+            }
+          },
+          "parameters": {
+            "appInsightsName": {
+              "type": "string",
+              "defaultValue": "app-insights"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2022-07-01",
+              "name": "keyvault/good",
+              "properties": {
+                "value": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsightsName')), '2020-02-02').InstrumentationKey]"
               }
             }
           ]

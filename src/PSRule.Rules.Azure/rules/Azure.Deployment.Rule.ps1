@@ -22,6 +22,31 @@ Rule 'Azure.Deployment.SecureValue' -Ref 'AZR-000316' -Type 'Microsoft.Resources
     RecurseSecureValue -Deployment $TargetObject
 }
 
+# Synopsis: Ensure Outer scope deployments aren't using SecureString or SecureObject Parameters
+Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000331' -Type 'Microsoft.Resources/deployments' -If { IsParentDeployment } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+    $template = @($TargetObject.properties.template);
+    if ($template.resources.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    $secureParameters = @($template.parameters.PSObject.properties | Where-Object {
+            $_.Value.type -eq 'secureString' -or $_.Value.type -eq 'secureObject'
+        } | ForEach-Object {
+            $_.Name
+        });
+    foreach ($deployments in $template.resources) {
+        if ($deployments.properties.expressionEvaluationOptions.scope -eq 'outer') {
+            foreach ($outerDeployment in $deployments.properties.template.resources) {
+                foreach ($property in $outerDeployment.properties) {
+                    RecursivePropertiesSecretEvaluation -Resource $outerDeployment -SecureParameters $secureParameters -ShouldUseSecret $False -Property $property
+                }
+            }
+        } else {
+            $Assert.Pass()
+        }
+    }
+}
+
 #endregion Rules
 
 #region Helpers
@@ -60,35 +85,6 @@ function global:RecurseDeploymentSensitive {
     }
 }
 
-# Synopsis: Ensure Outer scope deployments aren't using SecureString or SecureObject Parameters
-Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000331' -Type 'Microsoft.Resources/deployments' -If { IsParentDeployment } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } { 
-
-    $template = @($TargetObject.properties.template);
-    if ($template.resources.Length -eq 0) {
-        return $Assert.Pass();
-    }
-
-    $secureParameters = @($template.parameters.PSObject.properties | Where-Object {
-            $_.Value.type -eq 'secureString' -or $_.Value.type -eq 'secureObject'
-        } | ForEach-Object {
-            $_.Name
-        });
-    foreach ($deployments in $template.resources) {
-        if ($deployments.properties.expressionEvaluationOptions.scope -eq 'outer') {
-            foreach ($outerDeployment in $deployments.properties.template.resources) {
-                foreach ($property in $outerDeployment.properties) {
-                    RecursivePropertiesSecretEvaluation -Resource $outerDeployment -SecureParameters $secureParameters -ShouldUseSecret $False -Property $property
-                }
-            }
-        } else {
-            $Assert.Pass()
-        }
-        
-    }
-}
-
-
-#endregion Rules
 function global:RecursivePropertiesSecretEvaluation {
     param (
         [Parameter(Mandatory = $True)]
@@ -103,10 +99,8 @@ function global:RecursivePropertiesSecretEvaluation {
 
         [Parameter(Mandatory = $False)]
         [Bool]$ShouldUseSecret = $True
-
     )
     process {
-
         $PropertyName = $Property.psObject.properties.Name 
         foreach ($NestedProperty in $Property.PSObject.Properties.Value.PSObject.Properties ) {
             if($NestedProperty.MemberType -eq 'NoteProperty'){
@@ -114,7 +108,7 @@ function global:RecursivePropertiesSecretEvaluation {
             } else {
                 CheckPropertyUsesSecureParameter -Resource $Resource -SecureParameters $SecureParameters -PropertyPath "properties.$($PropertyName)" -ShouldUseSecret $ShouldUseSecret
             }
-        } 
+        }
     }
 }
 
@@ -132,13 +126,12 @@ function global:CheckPropertyUsesSecureParameter {
 
         [Parameter(Mandatory = $False)]
         [Bool]$ShouldUseSecret = $True
-
     )
     process {
         $propertiesInPath = $PropertyPath.Split(".") # properties.example.name
         $propertyValue = $Resource
         foreach ($aPropertyInThePath in $propertiesInPath) {
-            $propertyValue = $propertyValue."$aPropertyInThePath"  
+            $propertyValue = $propertyValue."$aPropertyInThePath"
         }
 
         if ($propertyValue) {
@@ -381,4 +374,5 @@ function global:IsParentDeployment {
         }
     }
 }
+
 #endregion Helpers
