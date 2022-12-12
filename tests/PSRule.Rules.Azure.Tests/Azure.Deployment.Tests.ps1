@@ -71,9 +71,9 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
+            $ruleResult.Length | Should -Be 3;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
-            $targetNames | Should -BeIn 'secret_good', 'streaming_jobs_good';
+            $targetNames | Should -BeIn 'secret_good', 'streaming_jobs_good', 'reference_good';
         }
     }
 }

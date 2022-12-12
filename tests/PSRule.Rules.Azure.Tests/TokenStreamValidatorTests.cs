@@ -52,6 +52,7 @@ namespace PSRule.Rules.Azure
             Assert.False(Helper.HasSecureValue("[if(true(), parameters('notSecure'), parameters('adminPassword'))]", secureParameters));
             Assert.True(Helper.HasSecureValue("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount'), '2021-09-01').keys[0].value]", secureParameters));
             Assert.True(Helper.HasSecureValue("{{SecretReference aName}}", secureParameters));
+            Assert.True(Helper.HasSecureValue("[reference(resourceId('Microsoft.Insights/components', parameters('appInsightsName')), '2020-02-02').InstrumentationKey]", secureParameters));
         }
     }
 }
