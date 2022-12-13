@@ -25,6 +25,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - Bastion:
+    - Check Bastion hosts names meet naming requirements by @BenjaminEngeset.
+      [#1950](https://github.com/Azure/PSRule.Rules.Azure/issues/1950)
   - Recovery Services vault:
     - Check Recovery Services vaults names meet naming requirements by @BenjaminEngeset.
       [#1953](https://github.com/Azure/PSRule.Rules.Azure/issues/1953)
