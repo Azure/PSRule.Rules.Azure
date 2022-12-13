@@ -16,6 +16,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string FN_VARIABLES = "variables";
         private const string FN_IF = "if";
         private const string FN_LISTKEYS = "listKeys";
+        private const string FN_REFERNECE = "reference";
 
         /// <summary>
         /// Look for literal values or use of variables().
@@ -59,7 +60,7 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
-        /// Returns true if it contains a call to the function listKeys.
+        /// Returns true if an expression contains a call to the listKeys function.
         /// </summary>
         public static bool UsesListKeysFunction(TokenStream stream)
         {
@@ -72,11 +73,27 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
 
                 if (IsFunction(token, FN_LISTKEYS))
-                {
                     return true;
-                }
             }
+            return false;
+        }
 
+        /// <summary>
+        /// Returns true if an expression contains a call to the reference function.
+        /// </summary>
+        public static bool UsesReferenceFunction(TokenStream stream)
+        {
+            while (stream.Count > 0)
+            {
+                if (!stream.TryTokenType(ExpressionTokenType.Element, out var token))
+                {
+                    stream.Pop();
+                    continue;
+                }
+
+                if (IsFunction(token, FN_REFERNECE))
+                    return true;
+            }
             return false;
         }
 
@@ -148,7 +165,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool IsFunction(ExpressionToken token, string name)
         {
-            return token.Type == ExpressionTokenType.Element && string.Equals(token.Content, name, StringComparison.OrdinalIgnoreCase);
+            return token.Type == ExpressionTokenType.Element &&
+                string.Equals(token.Content, name, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
