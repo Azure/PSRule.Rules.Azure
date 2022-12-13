@@ -70,5 +70,68 @@ Describe 'Azure.RSV' -Tag 'RSV' {
             $ruleResult.TargetName | Should -BeIn 'replication-alert-b', 'vault-g', 'replication-alert-c';
         }
     }
-}
 
+    Context 'Resource name - Azure.RSV.Name' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.RecoveryServices/vaults'
+            }
+        }
+
+        BeforeDiscovery {
+            $validNames = @(
+                'a1'
+                'A1'
+                'a-'
+                'A-'
+                'contoso-001-rsv'
+                'contoso001rsv'
+                'CONTOSO-001-AGW'
+                'CONTOSO-001-AGW-'
+            )
+
+            $invalidNames = @(
+                '-a'
+                '-A'
+                '_a'
+                '_A'
+                '1'
+                '11'
+                '_1'
+                '-1'
+                '-'
+                '_'
+                '-contoso-001-rsv'
+                '-contoso-001-rsv-'
+                '-_contoso-001-rsv'
+                'CONTOSO-001-RSV.'
+                '-CONTOSO-001-RSV'
+                'CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-001-RSV'
+            )
+        }
+
+        # Pass
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.RSV.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
+        }
+
+        # Fail
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.RSV.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
+        }
+    }
+}

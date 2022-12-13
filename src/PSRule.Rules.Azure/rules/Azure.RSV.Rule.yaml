@@ -1,0 +1,33 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Recovery Services Vault (RSV)
+#
+
+#region Rules
+
+---
+# Synopsis: Recovery Services vaults should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.RSV.Name
+  ref: AZR-000350
+  tags:
+    release: 'GA'
+    ruleSet: '2022_12'
+    Azure.WAF/pillar: 'Operational Excellence'
+spec:
+  type:
+  - Microsoft.RecoveryServices/vaults
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 2
+    - name: '.'
+      lessOrEquals: 50
+    - name: '.'
+      match: '^[A-Za-z][A-Za-z0-9-]{1,49}$'
+
+#endregion Rules
