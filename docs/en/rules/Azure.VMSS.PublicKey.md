@@ -2,7 +2,7 @@
 severity: Important
 pillar: Security
 category: Identity and access management
-resource: Azure Virtual Machine Scale Sets
+resource: Virtual Machine Scale Sets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.PublicKey/
 ---
 
