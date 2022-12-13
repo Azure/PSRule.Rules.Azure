@@ -2,7 +2,7 @@
 severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
-resource: Recovery Services vault
+resource: Recovery Services Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RSV.Name/
 ---
 
