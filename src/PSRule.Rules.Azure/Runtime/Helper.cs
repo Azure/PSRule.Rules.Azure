@@ -48,11 +48,21 @@ namespace PSRule.Rules.Azure.Runtime
         }
 
         /// <summary>
-        /// Returns true if it contains a call to the function listKeys.
+        /// Returns true if an expression contains a call to the listKeys function.
         /// </summary>
         internal static bool UsesListKeysFunction(string expression)
         {
-            return IsTemplateExpression(expression) && TokenStreamValidator.UsesListKeysFunction(ExpressionParser.Parse(expression));
+            return IsTemplateExpression(expression) &&
+                TokenStreamValidator.UsesListKeysFunction(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Returns true if an expression contains a call to the reference function.
+        /// </summary>
+        internal static bool UsesReferenceFunction(string expression)
+        {
+            return IsTemplateExpression(expression) &&
+                TokenStreamValidator.UsesReferenceFunction(ExpressionParser.Parse(expression));
         }
 
         /// <summary>
@@ -60,18 +70,16 @@ namespace PSRule.Rules.Azure.Runtime
         /// </summary>
         public static bool HasSecureValue(string expression, string[] secureParameters)
         {
-            if ((!string.IsNullOrEmpty(expression) && expression.StartsWith("{{Secret", StringComparison.OrdinalIgnoreCase)) || UsesListKeysFunction(expression))
-            {
+            if ((!string.IsNullOrEmpty(expression) && expression.StartsWith("{{Secret", StringComparison.OrdinalIgnoreCase)) ||
+                UsesListKeysFunction(expression) ||
+                UsesReferenceFunction(expression))
                 return true;
-            }
-            else
-            {
-                var parameterNamesInExpression = GetParameterTokenValue(expression);
 
-                return parameterNamesInExpression != null &&
-                parameterNamesInExpression.Length > 0 &&
-                parameterNamesInExpression.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == parameterNamesInExpression.Length;
-            }
+            var parameterNamesInExpression = GetParameterTokenValue(expression);
+
+            return parameterNamesInExpression != null &&
+            parameterNamesInExpression.Length > 0 &&
+            parameterNamesInExpression.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == parameterNamesInExpression.Length;
         }
 
         /// <summary>

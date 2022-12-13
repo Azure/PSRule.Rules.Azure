@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.23.0-B0025:
+
 - New rules:
   - Bastion:
     - Check Bastion hosts names meet naming requirements by @BenjaminEngeset.
@@ -31,6 +33,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Recovery Services Vault:
     - Check Recovery Services vaults names meet naming requirements by @BenjaminEngeset.
       [#1953](https://github.com/Azure/PSRule.Rules.Azure/issues/1953)
+- Bug fixes:
+  - Fixed `Azure.Deployment.SecureValue` with `reference` function expression by @BernieWhite.
+    [#1882](https://github.com/Azure/PSRule.Rules.Azure/issues/1882)
 
 ## v1.23.0-B0025 (pre-release)
 
@@ -77,12 +82,20 @@ What's changed since v1.22.1:
   - Fixed Azure.AKS.Version ignore clusters with auto-upgrade enabled by @BenjaminEngeset.
     [#1926](https://github.com/Azure/PSRule.Rules.Azure/issues/1926)
 
+## v1.22.2
+
+What's changed since v1.22.1:
+
+- Bug fixes:
+  - Fixed `Azure.Deployment.SecureValue` with `reference` function expression by @BernieWhite.
+    [#1882](https://github.com/Azure/PSRule.Rules.Azure/issues/1882)
+
 ## v1.22.1
 
 What's changed since v1.22.0:
 
 - Bug fixes:
-  - Fixes template parameter does not use the required format by @BernieWhite.
+  - Fixed template parameter does not use the required format by @BernieWhite.
     [#1930](https://github.com/Azure/PSRule.Rules.Azure/issues/1930)
 
 ## v1.22.0

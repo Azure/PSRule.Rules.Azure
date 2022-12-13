@@ -33,3 +33,7 @@ module streaming_jobs_bad 'Tests.Bicep.9.badStreamingJobs.bicep' = {
     notSecret: ''
   }
 }
+
+module secret_goodreference 'Tests.Bicep.9.goodReference.bicep' = {
+  name: 'reference_good'
+}
