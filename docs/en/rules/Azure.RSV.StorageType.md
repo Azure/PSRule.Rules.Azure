@@ -2,7 +2,7 @@
 severity: Important
 pillar: Reliability
 category: Design
-resource: Azure Recovery Services Vault (RSV)
+resource: Recovery Services Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RSV.StorageType/
 ---
 

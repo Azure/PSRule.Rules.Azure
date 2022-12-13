@@ -1,6 +1,6 @@
 ---
-generated: True
 title: Reference
+generated: True
 ---
 
 # Reference
@@ -364,5 +364,12 @@ AZR-000339 | [Azure.MariaDB.VNETRuleName](Azure.MariaDB.VNETRuleName.md) | Azure
 AZR-000340 | [Azure.APIM.MultiRegion](Azure.APIM.MultiRegion.md) | API Management instances should use multi-region deployment to improve service availability. | GA
 AZR-000341 | [Azure.APIM.MultiRegionGateway](Azure.APIM.MultiRegionGateway.md) | API Management instances should have multi-region deployment gateways enabled. | GA
 AZR-000342 | [Azure.MariaDB.AllowAzureAccess](Azure.MariaDB.AllowAzureAccess.md) | Determine if access from Azure services is required. | GA
+AZR-000343 | [Azure.MariaDB.FirewallRuleCount](Azure.MariaDB.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules. | GA
+AZR-000344 | [Azure.MariaDB.FirewallIPRange](Azure.MariaDB.FirewallIPRange.md) | Determine if there is an excessive number of permitted IP addresses. | GA
+AZR-000345 | [Azure.VM.AMA](Azure.VM.AMA.md) | Use Azure Monitor Agent for collecting monitoring data. | GA
+AZR-000346 | [Azure.VMSS.AMA](Azure.VMSS.AMA.md) | Use Azure Monitor Agent for collecting monitoring data. | GA
+AZR-000347 | [Azure.Redis.Version](Azure.Redis.Version.md) | Azure Cache for Redis should use the latest supported version of Redis. | GA
+AZR-000348 | [Azure.AppGw.Name](Azure.AppGw.Name.md) | Application Gateways should meet naming requirements. | GA
+AZR-000349 | [Azure.Bastion.Name](Azure.Bastion.Name.md) | Bastion hosts should meet naming requirements. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
