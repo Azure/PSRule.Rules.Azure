@@ -24,6 +24,19 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.23.0-B0046:
+
+- New features:
+  - Added December 2022 baselines `Azure.GA_2022_12` and `Azure.Preview_2022_12` by @BernieWhite.
+    [#1961](https://github.com/Azure/PSRule.Rules.Azure/issues/1961)
+    - Includes rules released before or during December 2022.
+    - Marked `Azure.GA_2022_09` and `Azure.Preview_2022_09` baselines as obsolete.
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.25.4` by @BernieWhite.
+      [#1960](https://github.com/Azure/PSRule.Rules.Azure/issues/1960)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+
 ## v1.23.0-B0046 (pre-release)
 
 What's changed since pre-release v1.23.0-B0025:

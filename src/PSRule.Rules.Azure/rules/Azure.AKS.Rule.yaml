@@ -17,6 +17,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -56,6 +57,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Performance Efficiency
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -325,6 +327,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -349,6 +352,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -373,7 +377,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_09'
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: 'Operational Excellence'
   labels:
     Azure.ASB.v3/control: 'LT-3'
 spec:
