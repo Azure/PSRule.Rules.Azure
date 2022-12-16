@@ -371,5 +371,6 @@ AZR-000346 | [Azure.VMSS.AMA](Azure.VMSS.AMA.md) | Use Azure Monitor Agent for c
 AZR-000347 | [Azure.Redis.Version](Azure.Redis.Version.md) | Azure Cache for Redis should use the latest supported version of Redis. | GA
 AZR-000348 | [Azure.AppGw.Name](Azure.AppGw.Name.md) | Application Gateways should meet naming requirements. | GA
 AZR-000349 | [Azure.Bastion.Name](Azure.Bastion.Name.md) | Bastion hosts should meet naming requirements. | GA
+AZR-000350 | [Azure.RSV.Name](Azure.RSV.Name.md) | Recovery Services vaults should meet naming requirements. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

@@ -309,6 +309,8 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.GA_2022_09
+  annotations:
+    obsolete: true
 spec:
   configuration:
     # Configure minimum AKS cluster version
@@ -334,6 +336,8 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.Preview_2022_09
+  annotations:
+    obsolete: true
 spec:
   rule:
     tag:
@@ -349,3 +353,52 @@ spec:
       - '2022_03'
       - '2022_06'
       - '2022_09'
+
+---
+# Synopsis: Include rules released December 2022 or prior for Azure GA features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.GA_2022_12
+spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.25.4'
+  rule:
+    tag:
+      release: GA
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+      - '2021_12'
+      - '2022_03'
+      - '2022_06'
+      - '2022_09'
+      - '2022_12'
+
+---
+# Synopsis: Include rules released December 2022 or prior for Azure preview only features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Preview_2022_12
+spec:
+  rule:
+    tag:
+      release: preview
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+      - '2021_12'
+      - '2022_03'
+      - '2022_06'
+      - '2022_09'
+      - '2022_12'

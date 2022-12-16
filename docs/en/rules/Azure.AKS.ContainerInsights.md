@@ -14,11 +14,13 @@ Enable Container insights to monitor AKS cluster workloads.
 
 ## DESCRIPTION
 
-With Container insights, you can use performance charts and health status to monitor AKS clusters, nodes and pods. Container insights delivers quick, visual and actionable information: from the CPU and memory pressure of your nodes to the logs of individual Kubernetes pods.
+With Container insights, you can use performance charts and health status to monitor AKS clusters, nodes and pods.
+Container insights delivers quick, visual and actionable information: from the CPU and memory pressure of your nodes to the logs of individual Kubernetes pods.
 
 ## RECOMMENDATION
 
-Consider enabling Container insights for AKS clusters. Monitoring containers is critical, especially when running production AKS clusters at scale with multiple applications.
+Consider enabling Container insights for AKS clusters.
+Monitoring containers is critical, especially when running production AKS clusters at scale with multiple applications.
 
 ## EXAMPLES
 
