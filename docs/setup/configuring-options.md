@@ -32,8 +32,8 @@ Use comments to add context.
 
     ```yaml
     requires:
-      # Require a minimum of PSRule for Azure v1.10.2
-      PSRule.Rules.Azure: '>=1.10.2'
+      # Require a minimum of PSRule for Azure v1.22.2
+      PSRule.Rules.Azure: '>=1.22.2'
 
     configuration:
       # Enable expansion of Azure Template files.
@@ -46,7 +46,7 @@ Use comments to add context.
       AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 15
 
       # Configure the minimum AKS cluster version.
-      AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.22.4
+      AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.25.4
 
     rule:
       # Enable custom rules that don't exist in the baseline

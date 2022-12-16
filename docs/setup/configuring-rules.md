@@ -34,7 +34,7 @@ Default:
 ```yaml
 # YAML: The default AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option
 configuration:
-  AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.21.9
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.25.4
 ```
 
 Example:
