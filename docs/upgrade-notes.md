@@ -43,9 +43,9 @@ To update your configuration, use the new name instead.
     Set the `AZURE_AKS_CLUSTER_MINIMUM_VERSION` option in `ps-rule.yaml`.
 
     ```yaml
-    # YAML: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.22.4
+    # YAML: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.25.4
     configuration:
-      AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.22.4
+      AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.25.4
     ```
 
 === "Bash"
@@ -53,8 +53,8 @@ To update your configuration, use the new name instead.
     Set the `PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION` environment variable.
 
     ```bash
-    # Bash: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.22.4
-    export PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION=1.22.4
+    # Bash: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.25.4
+    export PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION=1.25.4
     ```
 
 === "GitHub Actions"
@@ -62,9 +62,9 @@ To update your configuration, use the new name instead.
     Set the `PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION` environment variable.
 
     ```yaml
-    # GitHub Actions: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.22.4
+    # GitHub Actions: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.25.4
     env:
-      PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.22.4'
+      PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.25.4'
     ```
 
 === "Azure Pipelines"
@@ -72,10 +72,10 @@ To update your configuration, use the new name instead.
     Set the `PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION` environment variable.
 
     ```yaml
-    # Azure Pipelines: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.22.4
+    # Azure Pipelines: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.25.4
     variables:
     - name: PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION
-      value: '1.22.4'
+      value: '1.25.4'
     ```
 
 ### Removal of SupportsTags function
