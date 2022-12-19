@@ -47,6 +47,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
             Assert.Null(actual.Where);
             Assert.Equal("{\"allOf\":[{\"equals\":\"Microsoft.Storage/storageAccounts\",\"type\":\".\"},{\"field\":\"properties.networkAcls.defaultAction\",\"notEquals\":\"Deny\"}]}", actual.Condition.ToString(Formatting.None));
+            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" }, actual.With);
         }
 
         [Fact]

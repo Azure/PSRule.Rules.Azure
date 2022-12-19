@@ -36,6 +36,9 @@ What's changed since pre-release v1.23.0-B0046:
     - Updated `Azure.AKS.Version` to use latest stable version `1.25.4` by @BernieWhite.
       [#1960](https://github.com/Azure/PSRule.Rules.Azure/issues/1960)
       - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- General improvements:
+  - Improves handling for policy definition modes by using support tags selector by @BernieWhite.
+    [#1946](https://github.com/Azure/PSRule.Rules.Azure/issues/1946)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk v17.4.1.
     [#1964](https://github.com/Azure/PSRule.Rules.Azure/pull/1964)

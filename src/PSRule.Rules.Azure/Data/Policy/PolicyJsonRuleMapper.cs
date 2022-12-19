@@ -22,6 +22,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_SPEC = "spec";
         private const string PROPERTY_CONDITION = "condition";
         private const string PROPERTY_WHERE = "where";
+        private const string PROPERTY_WITH = "with";
         private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_TAGS = "tags";
         private const string PROPERTY_ANNOTATIONS = "annotations";
@@ -57,6 +58,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             writer.WritePropertyName(PROPERTY_SPEC);
             writer.WriteStartObject();
             WriteType(writer, serializer, definition);
+            WriteWith(writer, serializer, definition);
             WriteWhere(writer, serializer, definition);
             WriteCondition(writer, serializer, definition);
             writer.WriteEndObject();
@@ -87,6 +89,18 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             writer.WritePropertyName(PROPERTY_WHERE);
             serializer.Serialize(writer, definition.Where);
+        }
+
+        /// <summary>
+        /// Emit selector pre-condition.
+        /// </summary>
+        private static void WriteWith(JsonWriter writer, JsonSerializer serializer, PolicyDefinition definition)
+        {
+            if (definition.With == null)
+                return;
+
+            writer.WritePropertyName(PROPERTY_WITH);
+            serializer.Serialize(writer, definition.With);
         }
 
         private static void WriteCondition(JsonWriter writer, JsonSerializer serializer, PolicyDefinition definition)

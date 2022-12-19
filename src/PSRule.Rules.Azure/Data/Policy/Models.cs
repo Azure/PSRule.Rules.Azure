@@ -108,6 +108,11 @@ namespace PSRule.Rules.Azure.Data.Policy
         public JObject Where { get; set; }
 
         /// <summary>
+        /// The spec with pre-condition for the rule.
+        /// </summary>
+        public string[] With { get; set; }
+
+        /// <summary>
         /// The spec type pre-condition for the rule.
         /// </summary>
         public List<string> Types { get; }

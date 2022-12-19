@@ -763,7 +763,8 @@ namespace PSRule.Rules.Azure.Data.Policy
                 !policyRule.TryObjectProperty(PROPERTY_THEN, out var then))
                 return false;
 
-            if (properties.TryStringProperty(PROPERTY_MODE, out var mode) && IsRuntimeMode(mode))
+            if (!properties.TryStringProperty(PROPERTY_MODE, out var mode) ||
+                !IsPolicyMode(mode, out var policyMode))
                 return false;
 
             properties.TryStringProperty(PROPERTY_DISPLAYNAME, out var displayName);
@@ -822,6 +823,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             if (policyRule.TryObjectProperty(PROPERTY_IF, out var condition))
                 result.Condition = condition;
 
+            AddSelectors(result, policyMode);
             EffectConditions(result, policyRule);
             policyDefinition = result;
 
@@ -931,6 +933,14 @@ namespace PSRule.Rules.Azure.Data.Policy
                 builder.Append(hash[i].ToString("x2", AzureCulture));
 
             return builder.ToString();
+        }
+
+        private static void AddSelectors(PolicyDefinition policyDefinition, PolicyMode policyMode)
+        {
+            if (policyMode != PolicyMode.Indexed)
+                return;
+
+            policyDefinition.With = new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" };
         }
 
         /// <summary>
@@ -1075,11 +1085,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                 type.Equals(TYPE_BACKUPPROTECTEDITEMS, StringComparison.OrdinalIgnoreCase);
         }
 
-        private static bool IsRuntimeMode(string mode)
+        private static bool IsPolicyMode(string mode, out PolicyMode policyMode)
         {
-            return !(string.IsNullOrEmpty(mode) ||
-                mode.Equals(MODE_INDEXED, StringComparison.OrdinalIgnoreCase) ||
-                mode.Equals(MODE_ALL, StringComparison.OrdinalIgnoreCase));
+            policyMode = PolicyMode.None;
+            return !string.IsNullOrEmpty(mode) && Enum.TryParse(mode, ignoreCase: true, out policyMode);
         }
 
         private static PolicyDefinitionEmptyConditionException ThrowEmptyConditionExpandResult(PolicyAssignmentContext context, string policyDefinitionId)
