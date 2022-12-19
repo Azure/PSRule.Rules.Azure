@@ -17,6 +17,9 @@
       "type": [
         "Microsoft.Storage/storageAccounts"
       ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
+      ],
       "condition": {
         "allOf": [
           {
@@ -48,6 +51,9 @@
     "spec": {
       "type": [
         "Microsoft.Compute/virtualMachines"
+      ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
       ],
       "where": {
         "allOf": [
@@ -350,6 +356,9 @@
     "spec": {
       "type": [
         "Microsoft.Web/sites"
+      ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
       ],
       "where": {
         "allOf": [
