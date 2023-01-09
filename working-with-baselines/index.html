@@ -7819,22 +7819,22 @@ See <a href="../en/baselines/Azure.All/">reference</a> for a list baselines ship
 <div class="tabbed-content">
 <div class="tabbed-block">
 <p>Update your GitHub Actions workflow by specifying <code>baseline: &lt;name_of_baseline&gt;</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Analyze Azure resources using PSRule for Azure</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analyze Azure template files</span><span class="w"></span>
-<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microsoft/ps-rule@v2.6.0</span><span class="w"></span>
-<span class="w">  </span><span class="nt">with</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">modules</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule.Rules.Azure&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">baseline</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.GA_2022_12&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Analyze Azure resources using PSRule for Azure</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analyze Azure template files</span>
+<span class="w">  </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">microsoft/ps-rule@v2.6.0</span>
+<span class="w">  </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">modules</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule.Rules.Azure&#39;</span>
+<span class="w">    </span><span class="nt">baseline</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.GA_2022_12&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
 <p>Update your Azure DevOps YAML pipeline by specifying <code>baseline: &lt;name_of_baseline&gt;</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Analyze Azure resources using PSRule for Azure</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@2</span><span class="w"></span>
-<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analyze Azure template files</span><span class="w"></span>
-<span class="w">  </span><span class="nt">inputs</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">modules</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule.Rules.Azure&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">baseline</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.GA_2022_12&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># Analyze Azure resources using PSRule for Azure</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">task</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ps-rule-assert@2</span>
+<span class="w">  </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analyze Azure template files</span>
+<span class="w">  </span><span class="nt">inputs</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">modules</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule.Rules.Azure&#39;</span>
+<span class="w">    </span><span class="nt">baseline</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.GA_2022_12&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -7854,9 +7854,9 @@ See <a href="../en/baselines/Azure.All/">reference</a> for a list baselines ship
 When you specify a baseline, custom rules you create and store in <code>.ps-rule/</code> will be ignored by default.</p>
 <p>To change this behavior, set the <code>Rule.IncludeLocal</code> option to <code>true</code>.
 This option can be set in <code>ps-rule.yaml</code>.</p>
-<div class="highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span class="c1"># YAML: Enable custom rules that don&#39;t exist in the baseline</span><span class="w"></span>
-<span class="nt">rule</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">includeLocal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<div class="highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span class="c1"># YAML: Enable custom rules that don&#39;t exist in the baseline</span>
+<span class="nt">rule</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">includeLocal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 
   <hr>

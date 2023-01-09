@@ -7850,14 +7850,14 @@ Cualquier vulnerabilidad detectada se informa a Microsoft Defender for Cloud.</p
 <li>Establezca <code>pricingTier</code> a <code>Standard</code> para Microsoft Defender para container registries.</li>
 </ul>
 <p>Por ejemplo:</p>
-<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Security/pricings&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-01&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ContainerRegistry&quot;</span><span class="p">,</span><span class="w"></span>
-<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<span class="w">    </span><span class="nt">&quot;pricingTier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Standard&quot;</span><span class="w"></span>
-<span class="w">  </span><span class="p">}</span><span class="w"></span>
-<span class="p">}</span><span class="w"></span>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Security/pricings&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2018-06-01&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ContainerRegistry&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;pricingTier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Standard&quot;</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">}</span>
 </code></pre></div>
 <h3 id="configurar-con-bicep">Configurar con Bicep<a class="headerlink" href="#configurar-con-bicep" title="Permanent link">#</a></h3>
 <p>Para habilitar el escaneo de imágenes de contenedores:</p>
@@ -7873,7 +7873,7 @@ Cualquier vulnerabilidad detectada se informa a Microsoft Defender for Cloud.</p
 }
 </code></pre></div>
 <h3 id="configurar-con-azure-cli">Configurar con Azure CLI<a class="headerlink" href="#configurar-con-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az security pricing create -n <span class="s1">&#39;ContainerRegistry&#39;</span> --tier <span class="s1">&#39;standard&#39;</span>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az<span class="w"> </span>security<span class="w"> </span>pricing<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;ContainerRegistry&#39;</span><span class="w"> </span>--tier<span class="w"> </span><span class="s1">&#39;standard&#39;</span>
 </code></pre></div>
 <h3 id="configurar-con-azure-powershell">Configurar con Azure PowerShell<a class="headerlink" href="#configurar-con-azure-powershell" title="Permanent link">#</a></h3>
 <div class="highlight"><span class="filename">Azure PowerShell snippet</span><pre><span></span><code><span class="nb">Set-AzSecurityPricing</span> <span class="n">-Name</span> <span class="s1">&#39;ContainerRegistry&#39;</span> <span class="n">-PricingTier</span> <span class="s1">&#39;Standard&#39;</span>

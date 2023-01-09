@@ -7698,39 +7698,39 @@ On case-sensitive file systems, a file with uppercase characters may not be foun
 Use comments to add context.</p>
 <div class="admonition example">
 <p class="admonition-title">Example <code>ps-rule.yaml</code></p>
-<div class="highlight"><pre><span></span><code><span class="nt">requires</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Require a minimum of PSRule for Azure v1.22.2</span><span class="w"></span>
-<span class="w">  </span><span class="nt">PSRule.Rules.Azure</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=1.22.2&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">requires</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Require a minimum of PSRule for Azure v1.22.2</span>
+<span class="w">  </span><span class="nt">PSRule.Rules.Azure</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=1.22.2&#39;</span>
 
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Enable expansion of Azure Template files.</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Enable expansion of Azure Template files.</span>
+<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="w">  </span><span class="c1"># Enable expansion of Azure Bicep files.</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Enable expansion of Azure Bicep files.</span>
+<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-<span class="w">  </span><span class="c1"># Configure the timeout for bicep build to 15 seconds.</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION_TIMEOUT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Configure the timeout for bicep build to 15 seconds.</span>
+<span class="w">  </span><span class="nt">AZURE_BICEP_FILE_EXPANSION_TIMEOUT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
 
-<span class="w">  </span><span class="c1"># Configure the minimum AKS cluster version.</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_AKS_CLUSTER_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.25.4</span><span class="w"></span>
+<span class="w">  </span><span class="c1"># Configure the minimum AKS cluster version.</span>
+<span class="w">  </span><span class="nt">AZURE_AKS_CLUSTER_MINIMUM_VERSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.25.4</span>
 
-<span class="nt">rule</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Enable custom rules that don&#39;t exist in the baseline</span><span class="w"></span>
-<span class="w">  </span><span class="nt">includeLocal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">  </span><span class="nt">exclude</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Ignore the following rules for all resources</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Azure.VM.UseHybridUseBenefit</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Azure.VM.Standalone</span><span class="w"></span>
+<span class="nt">rule</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Enable custom rules that don&#39;t exist in the baseline</span>
+<span class="w">  </span><span class="nt">includeLocal</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">exclude</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Ignore the following rules for all resources</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Azure.VM.UseHybridUseBenefit</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Azure.VM.Standalone</span>
 
-<span class="nt">suppression</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure.AKS.AuthorizedIPs</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Exclude the following externally managed AKS clusters</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aks-cluster-prod-eus-001</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure.Storage.SoftDelete</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="c1"># Exclude the following non-production storage accounts</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storagedeveus6jo36t</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storagedeveus1df278</span><span class="w"></span>
+<span class="nt">suppression</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure.AKS.AuthorizedIPs</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Exclude the following externally managed AKS clusters</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aks-cluster-prod-eus-001</span>
+<span class="w">  </span><span class="nt">Azure.Storage.SoftDelete</span><span class="p">:</span>
+<span class="w">  </span><span class="c1"># Exclude the following non-production storage accounts</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storagedeveus6jo36t</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storagedeveus1df278</span>
 </code></pre></div>
 </div>
 <div class="admonition tip">
@@ -7757,20 +7757,20 @@ Where <code>&lt;PARENT&gt;</code> is the parent class and <code>&lt;NAME&gt;</co
 <div class="tabbed-set tabbed-alternate" data-tabs="1:4"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><input id="__tabbed_1_4" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">GitHub Actions</label><label for="__tabbed_1_2">Azure Pipelines</label><label for="__tabbed_1_3">PowerShell</label><label for="__tabbed_1_4">Bash</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="w">  </span><span class="nt">PSRULE_OUTPUT_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yaml</span><span class="w"></span>
-<span class="w">  </span><span class="nt">PSRULE_RULE_EXCLUDE</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">env</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">  </span><span class="nt">PSRULE_OUTPUT_FORMAT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yaml</span>
+<span class="w">  </span><span class="nt">PSRULE_RULE_EXCLUDE</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span><span class="w"></span>
-<span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_OUTPUT_FORMAT</span><span class="w"></span>
-<span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yaml</span><span class="w"></span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_RULE_EXCLUDE</span><span class="w"></span>
-<span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">variables</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span>
+<span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_OUTPUT_FORMAT</span>
+<span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Yaml</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PSRULE_RULE_EXCLUDE</span>
+<span class="w">  </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span>
 </code></pre></div>
 </div>
 <div class="tabbed-block">
@@ -7780,9 +7780,9 @@ Where <code>&lt;PARENT&gt;</code> is the parent class and <code>&lt;NAME&gt;</co
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><span class="nb">export</span> <span class="nv">PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span><span class="o">=</span><span class="nb">true</span>
-<span class="nb">export</span> <span class="nv">PSRULE_OUTPUT_FORMAT</span><span class="o">=</span>Yaml
-<span class="nb">export</span> <span class="nv">PSRULE_RULE_EXCLUDE</span><span class="o">=</span><span class="s1">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PSRULE_CONFIGURATION_AZURE_BICEP_FILE_EXPANSION</span><span class="o">=</span><span class="nb">true</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">PSRULE_OUTPUT_FORMAT</span><span class="o">=</span>Yaml
+<span class="nb">export</span><span class="w"> </span><span class="nv">PSRULE_RULE_EXCLUDE</span><span class="o">=</span><span class="s1">&#39;Azure.VM.UseHybridUseBenefit;Azure.VM.Standalone&#39;</span>
 </code></pre></div>
 </div>
 </div>

@@ -7735,9 +7735,9 @@ This approach requires more capacity planning ahead of time, and can result in I
 <p>This rule applies when analyzing resources deployed to Azure using <a href="https://azure.github.io/PSRule.Rules.Azure/export-rule-data/">Export in-flight resource data</a>.</p>
 <p>This rule fails when the CNI subnet size is smaller than <code>/23</code>.</p>
 <p>Configure <code>AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</code> to set the minimum AKS CNI cluster subnet size.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">23</span>
 </code></pre></div>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>

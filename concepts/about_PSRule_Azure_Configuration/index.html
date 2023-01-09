@@ -7728,35 +7728,35 @@ For details of setting configuration options see <a href="https://aka.ms/ps-rule
 <p>This configuration option determines the minimum version of Kubernetes for AKS clusters and node pools.
 Rules that check the Kubernetes version fail when the version is older than the version specified.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"> </span><span class="c1"># A version string</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"> </span><span class="c1"># A version string</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSMinimumVersion configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.20.5</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSMinimumVersion configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.20.5</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSMinimumVersion configuration option to 1.19.7</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.19.7</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSMinimumVersion configuration option to 1.19.7</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_AKSMinimumVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1.19.7</span>
 </code></pre></div>
 <h3 id="azure_aksnodeminimummaxpods">Azure_AKSNodeMinimumMaxPods<a class="headerlink" href="#azure_aksnodeminimummaxpods" title="Permanent link">#</a></h3>
 <p>This configuration option determines the minimum allowed max pods setting per node pool.
 When an AKS cluster node pool is created, a <code>maxPods</code> option is used to determine the maximum number of pods for each node in the node pool.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSNodeMinimumMaxPods configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AKSNodeMinimumMaxPods configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">50</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_AKSNodeMinimumMaxPods</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <h3 id="azure_allowedregions">Azure_AllowedRegions<a class="headerlink" href="#azure_allowedregions" title="Permanent link">#</a></h3>
 <p>This configuration option specifies a list of allowed locations that resources can be deployed to.
@@ -7764,71 +7764,71 @@ Rules that check the location of Azure resources fail when a resource or resourc
 <p>By default, <code>Azure_AllowedRegions</code> is not configured.
 The rule <code>Azure.Resource.AllowedRegions</code> is skipped when no allowed locations are configured.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_AllowedRegions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"> </span><span class="c1"># An array of regions</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_AllowedRegions</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"> </span><span class="c1"># An array of regions</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AllowedRegions configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_AllowedRegions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_AllowedRegions configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_AllowedRegions</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AllowedRegions configuration option to Australia East, Australia South East</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_AllowedRegions</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;australiaeast&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;australiasoutheast&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_AllowedRegions configuration option to Australia East, Australia South East</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_AllowedRegions</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;australiaeast&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;australiasoutheast&#39;</span>
 </code></pre></div>
 <h3 id="azure_minimumcertificatelifetime">Azure_MinimumCertificateLifetime<a class="headerlink" href="#azure_minimumcertificatelifetime" title="Permanent link">#</a></h3>
 <p>This configuration option determines the minimum number of days allowed before certificate expiry.
 Rules that check certificate lifetime fail when the days remaining before expiry drop below this number.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_MinimumCertificateLifetime configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default Azure_MinimumCertificateLifetime configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">Azure_MinimumCertificateLifetime</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
 </code></pre></div>
 <h3 id="azure_parameter_file_expansion">AZURE_PARAMETER_FILE_EXPANSION<a class="headerlink" href="#azure_parameter_file_expansion" title="Permanent link">#</a></h3>
 <p>This configuration option determines if Azure template parameter files will automatically be expanded.
 By default, parameter files will not be automatically expanded.</p>
 <p>Parameter files are expanded when PSRule cmdlets with the <code>-Format File</code> parameter are used.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">bool</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_PARAMETER_FILE_EXPANSION configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_PARAMETER_FILE_EXPANSION configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_PARAMETER_FILE_EXPANSION configuration option to enable expansion</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_PARAMETER_FILE_EXPANSION configuration option to enable expansion</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_PARAMETER_FILE_EXPANSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 <h3 id="azure_policy_waiver_max_expiry">AZURE_POLICY_WAIVER_MAX_EXPIRY<a class="headerlink" href="#azure_policy_waiver_max_expiry" title="Permanent link">#</a></h3>
 <p>This configuration option determines the maximum number of days in the future for a waiver policy exemption.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">integer</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">366</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">366</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_WAIVER_MAX_EXPIRY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">90</span>
 </code></pre></div>
 <h3 id="azure_resource_group">AZURE_RESOURCE_GROUP<a class="headerlink" href="#azure_resource_group" title="Permanent link">#</a></h3>
 <p>This configuration option sets the resource group object used by the <code>resourceGroup()</code> function.
@@ -7837,29 +7837,29 @@ Provided properties will override the default.
 Any properties that are not provided with use the defaults as specified below.</p>
 <p>This configuration option will be ignored when <code>-ResourceGroup</code> is used with <code>Export-AzRuleTemplateData</code>.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
-<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
-<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span><span class="w"></span>
-<span class="w">    </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">provisioningState</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">object</span>
+<span class="w">    </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">provisioningState</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_RESOURCE_GROUP configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ps-rule-test-rg&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eastus&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span><span class="w"></span>
-<span class="w">    </span><span class="nt">properties</span><span class="p">:</span><span class="w"></span>
-<span class="w">      </span><span class="nt">provisioningState</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Succeeded&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_RESOURCE_GROUP configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ps-rule-test-rg&#39;</span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;eastus&#39;</span>
+<span class="w">    </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{</span><span class="w"> </span><span class="p p-Indicator">}</span>
+<span class="w">    </span><span class="nt">properties</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">provisioningState</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Succeeded&#39;</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the location of the resource group object.</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;australiasoutheast&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the location of the resource group object.</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_RESOURCE_GROUP</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">location</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;australiasoutheast&#39;</span>
 </code></pre></div>
 <h3 id="azure_subscription">AZURE_SUBSCRIPTION<a class="headerlink" href="#azure_subscription" title="Permanent link">#</a></h3>
 <p>This configuration option sets the subscription object used by the <code>subscription()</code> function.
@@ -7868,26 +7868,26 @@ Provided properties will override the default.
 Any properties that are not provided with use the defaults as specified below.</p>
 <p>This configuration option will be ignored when <code>-Subscription</code> is used with <code>Export-AzRuleTemplateData</code>.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">subscriptionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
-<span class="w">    </span><span class="nt">tenantId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
-<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
-<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">subscriptionId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">tenantId</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_SUBSCRIPTION configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">subscriptionId</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">tenantId</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">Subscription&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;NotDefined&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_SUBSCRIPTION configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">subscriptionId</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
+<span class="w">    </span><span class="nt">tenantId</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;ffffffff-ffff-ffff-ffff-ffffffffffff&#39;</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;PSRule</span><span class="nv"> </span><span class="s">Test</span><span class="nv"> </span><span class="s">Subscription&#39;</span>
+<span class="w">    </span><span class="nt">state</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;NotDefined&#39;</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the display name of the subscription object</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span><span class="w"></span>
-<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;My</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">subscription&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the display name of the subscription object</span>
+<span class="w">  </span><span class="nt">AZURE_SUBSCRIPTION</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;My</span><span class="nv"> </span><span class="s">test</span><span class="nv"> </span><span class="s">subscription&#39;</span>
 </code></pre></div>
 <h3 id="azure_policy_ignore_list">AZURE_POLICY_IGNORE_LIST<a class="headerlink" href="#azure_policy_ignore_list" title="Permanent link">#</a></h3>
 <p>This configuration option configures a custom list policy definitions to ignore when exporting policy to rules.
@@ -7899,53 +7899,53 @@ The built-in list can be found <a href="https://github.com/Azure/PSRule.Rules.Az
 <li>Are not relevant to testing Infrastructure as Code.</li>
 </ul>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_POLICY_IGNORE_LIST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_IGNORE_LIST</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_IGNORE_LIST configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_POLICY_IGNORE_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_IGNORE_LIST configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_IGNORE_LIST</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Add a custom policy definition to ignore</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_POLICY_IGNORE_LIST</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9&#39;</span><span class="w"></span>
-<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Add a custom policy definition to ignore</span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_IGNORE_LIST</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9&#39;</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0&#39;</span>
 </code></pre></div>
 <h3 id="azure_policy_rule_prefix">AZURE_POLICY_RULE_PREFIX<a class="headerlink" href="#azure_policy_rule_prefix" title="Permanent link">#</a></h3>
 <p>This configuration option sets the prefix for names of exported rules.
 Configure this option to change the prefix, which defaults to <code>Azure</code>.</p>
 <p>This configuration option will be ignored when <code>-Prefix</code> is used with <code>Export-AzPolicyAssignmentRuleData</code>.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_RULE_PREFIX configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_POLICY_RULE_PREFIX configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Azure&#39;</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the prefix of exported policy rules</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AzureCustomPrefix&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Override the prefix of exported policy rules</span>
+<span class="w">  </span><span class="nt">AZURE_POLICY_RULE_PREFIX</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;AzureCustomPrefix&#39;</span>
 </code></pre></div>
 <h3 id="azure_apim_min_api_version">AZURE_APIM_MIN_API_VERSION<a class="headerlink" href="#azure_apim_min_api_version" title="Permanent link">#</a></h3>
 <p>This configuration option sets the minimum API version used for control plane API calls to API Management instances.
 Configure this option to change the minimum API version, which defaults to <code>'2021-08-01'</code>.</p>
 <p>Syntax:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 </code></pre></div>
 <p>Default:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_APIM_MIN_API_VERSION configuration option</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2021-08-01&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: The default AZURE_APIM_MIN_API_VERSION configuration option</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2021-08-01&#39;</span>
 </code></pre></div>
 <p>Example:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to &#39;2021-12-01-preview&#39;</span><span class="w"></span>
-<span class="nt">configuration</span><span class="p">:</span><span class="w"></span>
-<span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2021-12-01-preview&#39;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="c1"># YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to &#39;2021-12-01-preview&#39;</span>
+<span class="nt">configuration</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">AZURE_APIM_MIN_API_VERSION</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;2021-12-01-preview&#39;</span>
 </code></pre></div>
 
   <hr>
