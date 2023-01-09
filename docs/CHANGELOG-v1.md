@@ -24,9 +24,17 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.23.0:
+
+- Engineering:
+  - Bump PSRule to v2.7.0.
+    [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
+  - Bump Az.Resources to v6.5.1.
+    [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
+
 ## v1.23.0
 
-What's changed since release v1.22.2:
+What's changed since v1.22.2:
 
 - New features:
   - Added December 2022 baselines `Azure.GA_2022_12` and `Azure.Preview_2022_12` by @BernieWhite.
