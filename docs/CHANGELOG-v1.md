@@ -24,6 +24,69 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.23.0
+
+What's changed since release v1.22.2:
+
+- New features:
+  - Added December 2022 baselines `Azure.GA_2022_12` and `Azure.Preview_2022_12` by @BernieWhite.
+    [#1961](https://github.com/Azure/PSRule.Rules.Azure/issues/1961)
+    - Includes rules released before or during December 2022.
+    - Marked `Azure.GA_2022_09` and `Azure.Preview_2022_09` baselines as obsolete.
+- New rules:
+  - API Management:
+    - Check API management instances has multi-region deployment gateways enabled by @BenjaminEngeset.
+      [#1910](https://github.com/Azure/PSRule.Rules.Azure/issues/1910)
+  - Application Gateway:
+    - Check Application Gateways names meet naming requirements by @BenjaminEngeset.
+      [#1943](https://github.com/Azure/PSRule.Rules.Azure/issues/1943)
+  - Azure Cache for Redis:
+    - Check Azure Cache for Redis instances uses Redis 6 by @BenjaminEngeset.
+      [#1077](https://github.com/Azure/PSRule.Rules.Azure/issues/1077)
+  - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers limits the amount of firewall permitted IP addresses by @BenjaminEngeset.
+      [#1856](https://github.com/Azure/PSRule.Rules.Azure/issues/1856)
+    - Check Azure Database for MariaDB servers limits the amount of firewall rules allowed by @BenjaminEngeset.
+      [#1855](https://github.com/Azure/PSRule.Rules.Azure/issues/1855)
+    - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
+      [#1857](https://github.com/Azure/PSRule.Rules.Azure/issues/1857)
+  - Bastion:
+    - Check Bastion hosts names meet naming requirements by @BenjaminEngeset.
+      [#1950](https://github.com/Azure/PSRule.Rules.Azure/issues/1950)
+  - Recovery Services Vault:
+    - Check Recovery Services vaults names meet naming requirements by @BenjaminEngeset.
+      [#1953](https://github.com/Azure/PSRule.Rules.Azure/issues/1953)
+  - Virtual Machine:
+    - Check virtual machines has Azure Monitor Agent installed by @BenjaminEngeset.
+      [#1868](https://github.com/Azure/PSRule.Rules.Azure/issues/1868)
+  - Virtual Machine Scale Sets:
+    - Check virtual machine scale sets has Azure Monitor Agent installed by @BenjaminEngeset.
+      [#1867](https://github.com/Azure/PSRule.Rules.Azure/issues/1867)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.25.4` by @BernieWhite.
+      [#1960](https://github.com/Azure/PSRule.Rules.Azure/issues/1960)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- General improvements:
+  - Improves handling for policy definition modes by using support tags selector by @BernieWhite.
+    [#1946](https://github.com/Azure/PSRule.Rules.Azure/issues/1946)
+  - Added support to export exemptions related to policy assignments by @BernieWhite.
+    [#1888](https://github.com/Azure/PSRule.Rules.Azure/issues/1888)
+  - Added support for Bicep `flatten` function by @BernieWhite.
+    [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
+- Engineering:
+  - Bump Az.Resources to v6.5.0.
+    [#1945](https://github.com/Azure/PSRule.Rules.Azure/pull/1945)
+  - Bump Microsoft.NET.Test.Sdk v17.4.1.
+    [#1964](https://github.com/Azure/PSRule.Rules.Azure/pull/1964)
+- Bug fixes:
+  - Fixed Azure.AKS.Version ignore clusters with auto-upgrade enabled by @BenjaminEngeset.
+    [#1926](https://github.com/Azure/PSRule.Rules.Azure/issues/1926)
+
+What's changed since pre-release v1.23.0-B0072:
+
+- No additional changes.
+
 ## v1.23.0-B0072 (pre-release)
 
 What's changed since pre-release v1.23.0-B0046:
