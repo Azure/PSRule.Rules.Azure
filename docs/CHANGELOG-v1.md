@@ -31,6 +31,8 @@ What's changed since v1.23.0:
     [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
   - Bump Az.Resources to v6.5.1.
     [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
+  - Bump Newtonsoft.Json to v13.0.2.
+    [#1903](https://github.com/Azure/PSRule.Rules.Azure/pull/1903)
 
 ## v1.23.0
 
