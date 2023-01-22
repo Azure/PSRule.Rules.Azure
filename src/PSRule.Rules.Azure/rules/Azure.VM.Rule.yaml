@@ -110,6 +110,24 @@ spec:
     field: properties.dnsSettings.dnsServers
     hasValue: false
 
+---
+# Synopsis: VMs should be deallocated instead of stopped.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VM.ShouldNotBeStopped
+  ref: AZR-123346
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+  - Microsoft.Compute/virtualMachines
+  condition:
+    field: PowerState
+    notMatch: PowerState/stopped
+
 #endregion Rules
 
 #region Selectors

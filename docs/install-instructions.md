@@ -234,6 +234,7 @@ If the `./build.ps1` script fails, you can start troubleshooting this by:
   - Check the installed **.NET** version by entering the `dotnet --list-sdks` command in your terminal.
 - Check if your .NET setup is connected to any Nuget repositories and if there's any 
 connectivity or authentication issues.
+- Installation of some pre-reqs may require admin privileges
 
 ### Limited access networks
 

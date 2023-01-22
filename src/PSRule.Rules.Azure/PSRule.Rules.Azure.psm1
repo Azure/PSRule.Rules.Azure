@@ -1359,6 +1359,9 @@ function VisitVirtualMachine {
             $resources += Get-AzResource -ResourceId $id -ExpandProperties -DefaultProfile $Context;
         }
         $Resource | Add-Member -MemberType NoteProperty -Name resources -Value $resources -PassThru;
+
+        $status = Get-AzVM -ResourceId $Resource.Id -Status
+        $Resource | Add-Member -MemberType NoteProperty -Name PowerState -Value $status.Statuses[1].Code
     }
 }
 
