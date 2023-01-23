@@ -1300,5 +1300,20 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'vm-C/installcustomscript', 'vm-D/installcustomscript', 'vm-A';
         }
+
+        It 'Azure.VM.ShouldNotBeStopped' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ShouldNotBeStopped' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vm-F';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be ($ruleResult.TargetName.Count - 1);
+        }
     }
 }
