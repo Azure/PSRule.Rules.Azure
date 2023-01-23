@@ -1,15 +1,15 @@
 {
   "dependencies": {
     "PSRule": {
-      "version": "2.6.0"
+      "version": "2.7.0"
     }
   },
   "devDependencies": {
     "Az.Resources": {
-      "version": "6.5.0"
+      "version": "6.5.1"
     },
     "Pester": {
-      "version": "5.3.3"
+      "version": "5.4.0"
     },
     "platyPS": {
       "version": "0.14.2"
