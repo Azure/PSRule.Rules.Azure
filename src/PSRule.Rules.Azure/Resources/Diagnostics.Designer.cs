@@ -8,11 +8,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace PSRule.Rules.Azure.Resources
-{
+namespace PSRule.Rules.Azure.Resources {
     using System;
-
-
+    
+    
     /// <summary>
     ///   A strongly-typed resource class, for looking up localized strings, etc.
     /// </summary>
@@ -20,118 +19,152 @@ namespace PSRule.Rules.Azure.Resources
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Diagnostics
-    {
-
+    internal class Diagnostics {
+        
         private static global::System.Resources.ResourceManager resourceMan;
-
+        
         private static global::System.Globalization.CultureInfo resourceCulture;
-
+        
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Diagnostics()
-        {
+        internal Diagnostics() {
         }
-
+        
         /// <summary>
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager
-        {
-            get
-            {
-                if (object.ReferenceEquals(resourceMan, null))
-                {
+        internal static global::System.Resources.ResourceManager ResourceManager {
+            get {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PSRule.Rules.Azure.Resources.Diagnostics", typeof(Diagnostics).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
             }
         }
-
+        
         /// <summary>
         ///   Overrides the current thread's CurrentUICulture property for all
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture
-        {
-            get
-            {
+        internal static global::System.Globalization.CultureInfo Culture {
+            get {
                 return resourceCulture;
             }
-            set
-            {
+            set {
                 resourceCulture = value;
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Running bicep from &apos;{0}&apos;..
         /// </summary>
-        internal static string DebugRunningBicep
-        {
-            get
-            {
+        internal static string DebugRunningBicep {
+            get {
                 return ResourceManager.GetString("DebugRunningBicep", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Expanding resource: {0}.
+        /// </summary>
+        internal static string VerboseExpandingResource {
+            get {
+                return ResourceManager.GetString("VerboseExpandingResource", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Searching for files in &apos;{0}&apos;..
         /// </summary>
-        internal static string VerboseFindFiles
-        {
-            get
-            {
+        internal static string VerboseFindFiles {
+            get {
                 return ResourceManager.GetString("VerboseFindFiles", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to Found file &apos;{0}&apos;..
         /// </summary>
-        internal static string VerboseFoundFile
-        {
-            get
-            {
+        internal static string VerboseFoundFile {
+            get {
                 return ResourceManager.GetString("VerboseFoundFile", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting resource: {0}.
+        /// </summary>
+        internal static string VerboseGetResource {
+            get {
+                return ResourceManager.GetString("VerboseGetResource", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Getting resources from subscription: {0}.
+        /// </summary>
+        internal static string VerboseGetResources {
+            get {
+                return ResourceManager.GetString("VerboseGetResources", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Added {0} resources from subscription &apos;{1}&apos;..
+        /// </summary>
+        internal static string VerboseGetResourcesResult {
+            get {
+                return ResourceManager.GetString("VerboseGetResourcesResult", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to The parameter file &apos;{0}&apos; does not contain a metadata property..
         /// </summary>
-        internal static string VerboseMetadataNotFound
-        {
-            get
-            {
+        internal static string VerboseMetadataNotFound {
+            get {
                 return ResourceManager.GetString("VerboseMetadataNotFound", resourceCulture);
             }
         }
-
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Retrying &apos;{0}&apos; in {1}, attept {2}..
+        /// </summary>
+        internal static string VerboseRetryIn {
+            get {
+                return ResourceManager.GetString("VerboseRetryIn", resourceCulture);
+            }
+        }
+        
         /// <summary>
         ///   Looks up a localized string similar to Unable to find the specified template file &apos;{0}&apos;..
         /// </summary>
-        internal static string VerboseTemplateFileNotFound
-        {
-            get
-            {
+        internal static string VerboseTemplateFileNotFound {
+            get {
                 return ResourceManager.GetString("VerboseTemplateFileNotFound", resourceCulture);
             }
         }
-
+        
         /// <summary>
         ///   Looks up a localized string similar to The parameter file &apos;{0}&apos; does not reference a linked template..
         /// </summary>
-        internal static string VerboseTemplateLinkNotFound
-        {
-            get
-            {
+        internal static string VerboseTemplateLinkNotFound {
+            get {
                 return ResourceManager.GetString("VerboseTemplateLinkNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to get &apos;{0}&apos;: status={1}, correlation-id={2}, {3}.
+        /// </summary>
+        internal static string WarnFailedToGet {
+            get {
+                return ResourceManager.GetString("WarnFailedToGet", resourceCulture);
             }
         }
     }

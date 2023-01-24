@@ -26,6 +26,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.23.0:
 
+- General improvements:
+  - Updated `Export-AzRuleData` to improve export performance by @BernieWhite.
+    [#1341](https://github.com/Azure/PSRule.Rules.Azure/issues/1341)
+    - Removed `Az.Resources` dependency.
+    - Added async threading for export concurrency.
+    - Improved performance by using automatic look up of API versions by using provider cache.
 - Engineering:
   - Bump PSRule to v2.7.0.
     [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
@@ -35,6 +41,9 @@ What's changed since v1.23.0:
     [#1903](https://github.com/Azure/PSRule.Rules.Azure/pull/1903)
   - Bump Pester to v5.4.0.
     [#1994](https://github.com/Azure/PSRule.Rules.Azure/pull/1994)
+- Bug fixes:
+  - Fixed `Export-AzRuleData` may not export all data if throttled by @BernieWhite.
+    [#1341](https://github.com/Azure/PSRule.Rules.Azure/issues/1341)
 
 ## v1.23.0
 

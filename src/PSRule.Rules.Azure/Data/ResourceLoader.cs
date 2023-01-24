@@ -9,10 +9,23 @@ using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Data
 {
+    /// <summary>
+    /// A base class for a helper that loads resources from the assembly.
+    /// </summary>
     public abstract class ResourceLoader
     {
+        /// <summary>
+        /// Create an instance of the resource loader.
+        /// </summary>
         internal protected ResourceLoader() { }
 
+        /// <summary>
+        /// Get the content of a resource stream by name.
+        /// </summary>
+        /// <param name="name">The name of the resource stream.</param>
+        /// <returns>The string content of the resource stream.</returns>
+        /// <exception cref="ArgumentNullException">Returns if the name of the resource stream is null or empty.</exception>
+        /// <exception cref="ArgumentException">Returned when the specified name does not exist as a resource stream.</exception>
         protected static string GetContent(string name)
         {
             if (string.IsNullOrEmpty(name))
