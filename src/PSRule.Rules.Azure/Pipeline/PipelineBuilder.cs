@@ -54,6 +54,16 @@ namespace PSRule.Rules.Azure.Pipeline
         {
             return new PolicyAssignmentSearchPipelineBuilder(path);
         }
+
+        /// <summary>
+        /// Create a builder for creating a pipeline to exporting resource data from Azure.
+        /// </summary>
+        /// <param name="option">Options that configure PSRule for Azure.</param>
+        /// <returns>A builder object to configure the pipeline.</returns>
+        public static IResourceDataPipelineBuilder ResourceData(PSRuleOption option)
+        {
+            return new ResourceDataPipelineBuilder(option);
+        }
     }
 
     /// <summary>
