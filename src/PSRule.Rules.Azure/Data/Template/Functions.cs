@@ -827,7 +827,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return new JArray();
 
             var mapping = resourceTypes[0].ZoneMappings.Where(z => LocationHelper.Equal(location, z.Location)).FirstOrDefault();
-            if (mapping.Zones.Length == 0)
+            if (mapping == null || mapping.Zones == null || mapping.Zones.Length == 0)
                 return new JArray();
 
             if (mapping.Zones.Length < numberOfZones + offset)

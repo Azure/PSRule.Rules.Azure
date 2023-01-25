@@ -255,7 +255,7 @@ namespace PSRule.Rules.Azure.Pipeline
             context.Wait();
             Task.WaitAll(pool);
             context.Flush();
-            pool.Dispose();
+            pool.DisposeAll();
         }
 
         #endregion Expand resources
