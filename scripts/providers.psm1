@@ -45,7 +45,7 @@ function UpdateProviders {
     }
     process {
         $subscriptionId = (Get-AzContext).Subscription.Id
-        $providers = @(((Invoke-AzRest -Method Get -Path "/subscriptions/$subscriptionId/providers?api-version=2021-04-01").Content | ConvertFrom-Json).value | Sort-Object -Property namespace -CaseSensitive);
+        $providers = @(((Invoke-AzRest -Method Get -Path "/subscriptions/$subscriptionId/providers?api-version=2021-04-01&`$expand=resourceTypes/zoneMappings").Content | ConvertFrom-Json).value | Sort-Object -Property namespace -CaseSensitive);
         $aliasIndex = [ordered]@{};
 
         Get-AzPolicyAlias | Sort-Object -Property Namespace, ResourceType | ForEach-Object {
