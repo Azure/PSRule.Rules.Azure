@@ -208,6 +208,9 @@
     <value>The template file '{0}' must be within the current working directory.</value>
     <comment>Occurs when the template file is outside of the current working path.</comment>
   </data>
+  <data name="PolicyIgnoreInvalid" xml:space="preserve">
+    <value>Failed to the policy ignore content.</value>
+  </data>
   <data name="PropertyNotFound" xml:space="preserve">
     <value>The language expression property '{0}' doesn't exist.</value>
     <comment>Occurs when a property that don't exist is referenced.</comment>

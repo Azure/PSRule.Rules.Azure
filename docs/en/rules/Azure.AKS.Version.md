@@ -28,7 +28,7 @@ Consider upgrading AKS control plane and nodes pools to the latest stable versio
 
 To deploy AKS clusters that pass this rule:
 
-- Set `Properties.kubernetesVersion` to a newer stable version.
+- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable` or `node-image` or set `properties.kubernetesVersion` to a newer stable version.
 
 For example:
 
@@ -45,7 +45,7 @@ For example:
         }
     },
     "properties": {
-        "kubernetesVersion": "1.23.8",
+        "kubernetesVersion": "1.25.4",
         "enableRBAC": true,
         "dnsPrefix": "[parameters('dnsPrefix')]",
         "agentPoolProfiles": "[variables('allPools')]",
@@ -107,7 +107,7 @@ For example:
 
 To deploy AKS clusters that pass this rule:
 
-- Set `Properties.kubernetesVersion` to a newer stable version.
+- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable` or `node-image` or set `properties.kubernetesVersion` to a newer stable version.
 
 For example:
 
@@ -122,7 +122,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
     }
   }
   properties: {
-    kubernetesVersion: '1.23.8'
+    kubernetesVersion: '1.25.4'
     enableRBAC: true
     dnsPrefix: dnsPrefix
     agentPoolProfiles: allPools
@@ -180,13 +180,17 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
 ### Configure with Azure CLI
 
 ```bash
-az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.23.8'
+az aks update -n '<name>' -g '<resource_group>' --auto-upgrade-channel 'stable'
+```
+
+```bash
+az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.25.4'
 ```
 
 ### Configure with Azure PowerShell
 
 ```powershell
-Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.23.8'
+Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.25.4'
 ```
 
 ## NOTES
@@ -198,7 +202,8 @@ To configure this rule:
 
 ## LINKS
 
-- [Target and non-functional requirements](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
+- [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
+- [Automatically upgrade an Azure Kubernetes Service cluster](https://learn.microsoft.com/azure/aks/auto-upgrade-cluster)
 - [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
 - [Support policies for Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/support-policies)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

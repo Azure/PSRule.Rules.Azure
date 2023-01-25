@@ -1,15 +1,22 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Text;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
+    /// <summary>
+    /// The available token types used for Azure Resource Manager expressions.
+    /// </summary>
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1720:Identifier contains type name", Justification = "Represents standard type.")]
     public enum ExpressionTokenType : byte
     {
+        /// <summary>
+        /// Null token.
+        /// </summary>
         None,
 
         /// <summary>
@@ -18,7 +25,7 @@ namespace PSRule.Rules.Azure.Data.Template
         Element,
 
         /// <summary>
-        /// A property '.property_name'.
+        /// A property <c>.property_name</c>.
         /// </summary>
         Property,
 
@@ -33,22 +40,22 @@ namespace PSRule.Rules.Azure.Data.Template
         Numeric,
 
         /// <summary>
-        /// Start a grouping '('.
+        /// Start a grouping <c>'('</c>.
         /// </summary>
         GroupStart,
 
         /// <summary>
-        /// End a grouping ')'.
+        /// End a grouping <c>')'</c>.
         /// </summary>
         GroupEnd,
 
         /// <summary>
-        /// Start an index '['.
+        /// Start an index <c>'['</c>.
         /// </summary>
         IndexStart,
 
         /// <summary>
-        /// End an index ']'.
+        /// End an index <c>']'</c>.
         /// </summary>
         IndexEnd
     }
@@ -120,6 +127,53 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             stream.Add(new ExpressionToken(ExpressionTokenType.IndexEnd, null));
         }
+
+        internal static bool ConsumeFunction(this TokenStream stream, string name)
+        {
+            if (stream == null ||
+                stream.Count == 0 ||
+                stream.Current.Type != ExpressionTokenType.Element ||
+                !string.Equals(stream.Current.Content, name, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            stream.Pop();
+            return true;
+        }
+
+        internal static bool ConsumePropertyName(this TokenStream stream, string propertyName)
+        {
+            if (stream == null ||
+                stream.Count == 0 ||
+                stream.Current.Type != ExpressionTokenType.Property ||
+                !string.Equals(stream.Current.Content, propertyName, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            stream.Pop();
+            return true;
+        }
+
+        internal static bool ConsumeString(this TokenStream stream, string s)
+        {
+            if (stream == null ||
+                stream.Count == 0 ||
+                stream.Current.Type != ExpressionTokenType.Property ||
+                !string.Equals(stream.Current.Content, s, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            stream.Pop();
+            return true;
+        }
+
+        internal static bool ConsumeGroup(this TokenStream stream)
+        {
+            if (stream == null ||
+                stream.Count == 0 ||
+                stream.Current.Type != ExpressionTokenType.GroupStart)
+                return false;
+
+            stream.SkipGroup();
+            return true;
+        }
     }
 
     /// <summary>
@@ -177,6 +231,24 @@ namespace PSRule.Rules.Azure.Data.Template
 
             Pop();
             return true;
+        }
+
+        public void SkipGroup()
+        {
+            if (!TryTokenType(ExpressionTokenType.GroupStart, out _))
+                return;
+
+            var inner = 0;
+            while (inner >= 0 && Count > 0)
+            {
+                if (Current.Type == ExpressionTokenType.GroupStart)
+                    inner++;
+
+                if (Current.Type == ExpressionTokenType.GroupEnd)
+                    inner--;
+
+                Pop();
+            }
         }
 
         public void Add(ExpressionToken token)

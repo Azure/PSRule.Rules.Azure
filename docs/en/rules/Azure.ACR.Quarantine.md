@@ -1,5 +1,5 @@
 ---
-reviewed: 2021/11/13
+reviewed: 2021-11-13
 severity: Important
 pillar: Security
 category: Azure resources
@@ -111,8 +111,8 @@ Image quarantine for Azure Container Registry is currently in preview.
 
 ## LINKS
 
-- [Monitor Azure resources in Microsoft Defender for Cloud](https://docs.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
+- [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
 - [How do I enable automatic image quarantine for a registry?](https://docs.microsoft.com/azure/container-registry/container-registry-faq#how-do-i-enable-automatic-image-quarantine-for-a-registry-)
 - [Quarantine Pattern](https://github.com/Azure/acr/tree/main/docs/preview/quarantine)
 - [Secure the images and run time](https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)

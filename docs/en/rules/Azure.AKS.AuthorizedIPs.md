@@ -43,7 +43,7 @@ az aks update -n '<name>' -g '<resource_group>' --api-server-authorized-ip-range
 
 ## LINKS
 
-- [Network security](https://docs.microsoft.com/azure/architecture/framework/security/design-network)
+- [Network security](https://learn.microsoft.com/azure/architecture/framework/security/design-network)
 - [Secure access to the API server using authorized IP address ranges in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/api-server-authorized-ip-ranges)
 - [Best practices for cluster security and upgrades in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-cluster-security#secure-access-to-the-api-server-and-cluster-nodes)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

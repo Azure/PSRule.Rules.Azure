@@ -83,7 +83,7 @@ You may want to use PSRule to enforce tagging or something similar early in a De
 
 We have a walk through scenario [Enforcing custom tags][9] to get you started.
 
-  [AWAF]: https://docs.microsoft.com/azure/architecture/framework/
+  [AWAF]: https://learn.microsoft.com/azure/architecture/framework/
 
 ## How do I create a custom rule to enforce code ownership?
 

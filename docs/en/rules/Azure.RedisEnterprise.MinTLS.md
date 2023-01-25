@@ -30,14 +30,14 @@ Support for TLS 1.0/ 1.1 version will be removed.
 
 To disable old versions of TLS on Redis Cache Enterprise using PowerShell
 
-```PowerShell
-Set-AzRedisCache -Name <YourRedisName> -MinimumTlsVersion "1.2"
+```powershell
+Set-AzRedisCache -Name <YourRedisName> -MinimumTlsVersion '1.2'
 ```
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Remove TLS 1.0 and 1.1 from use with Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-remove-tls-10-11)
 - [Configure Azure Cache for Redis settings](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#RedisCreateProperties)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#RedisCreateProperties)

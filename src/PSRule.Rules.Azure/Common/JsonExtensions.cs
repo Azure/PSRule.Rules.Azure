@@ -140,6 +140,29 @@ namespace PSRule.Rules.Azure
             return string.Equals(n, name, StringComparison.OrdinalIgnoreCase);
         }
 
+        internal static bool ContainsKeyInsensitive(this JObject o, string propertyName)
+        {
+            return o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out _);
+        }
+
+        /// <summary>
+        /// Determine if the token is a value.
+        /// </summary>
+        internal static bool HasValue(this JToken o)
+        {
+            return o.Type == JTokenType.String ||
+                o.Type == JTokenType.Integer ||
+                o.Type == JTokenType.Object ||
+                o.Type == JTokenType.Array ||
+                o.Type == JTokenType.Boolean ||
+                o.Type == JTokenType.Bytes ||
+                o.Type == JTokenType.Date ||
+                o.Type == JTokenType.Float ||
+                o.Type == JTokenType.Guid ||
+                o.Type == JTokenType.TimeSpan ||
+                o.Type == JTokenType.Uri;
+        }
+
         internal static bool TryGetProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken
         {
             value = null;
@@ -169,6 +192,13 @@ namespace PSRule.Rules.Azure
 
             value = property.Value.Value<string>();
             return true;
+        }
+
+        internal static void ReplaceProperty<TValue>(this JObject o, string propertyName, TValue value) where TValue : JToken
+        {
+            var p = o.Property(propertyName, StringComparison.OrdinalIgnoreCase);
+            if (p != null)
+                p.Value = value;
         }
 
         internal static bool TryRenameProperty(this JProperty property, string oldName, string newName)
@@ -360,6 +390,13 @@ namespace PSRule.Rules.Azure
 
             var value = token.Value<string>();
             return value != null && value.IsExpressionString();
+        }
+
+        internal static bool IsEmpty(this JToken value)
+        {
+            return value.Type == JTokenType.None ||
+                value.Type == JTokenType.Null ||
+                (value.Type == JTokenType.String && string.IsNullOrEmpty(value.Value<string>()));
         }
     }
 }

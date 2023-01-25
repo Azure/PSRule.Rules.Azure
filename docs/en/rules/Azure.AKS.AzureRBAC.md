@@ -127,7 +127,7 @@ az aks update -n '<name>' -g '<resource_group>' --enable-azure-rbac
 
 ## LINKS
 
-- [Authorization with Azure AD](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authorization)
+- [Authorization with Azure AD](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authorization)
 - [Use Azure RBAC for Kubernetes Authorization](https://docs.microsoft.com/azure/aks/manage-azure-rbac)
 - [Access and identity options for Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-identity#azure-rbac-for-kubernetes-authorization)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

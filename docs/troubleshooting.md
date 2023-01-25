@@ -93,10 +93,10 @@ There is a few common causes of this issue including:
 - **Check rule path** &mdash; By default, PSRule will look for rules in the `.ps-rule/` directory.
   This directory is the root for your repository or the current working path by default.
   On case-sensitive file systems such as Linux, this directory name is case-sensitive.
-  See [Storing and naming rules][4] for more information.
+  See [Storing and naming rules][5] for more information.
 - **Check file name suffix** &mdash; PSRule only looks for files with the `.Rule.ps1`, `.Rule.yaml`, or `.Rule.jsonc` suffix.
   On case-sensitive file systems such as Linux, this file siffix is case-sensitive.
-  See [Storing and naming rules][4] for more information.
+  See [Storing and naming rules][5] for more information.
 - **Check binding configuration** &mdash; PSRule uses _binding_ to work out which property to use for a resource type.
   To be able to use the `-Type` parameter or `type` properties in rules definitions, binding must be set.
   This is automatically configured for PSRule for Azure, however must be set in `ps-rule.yaml` for custom rules.
@@ -156,5 +156,5 @@ For the PSRule GitHub Action, use **>=1.4.0**.
 
 ```yaml
 - name: Run PSRule analysis
-  uses: Microsoft/ps-rule@v2.3.2
+  uses: microsoft/ps-rule@v2.6.0
 ```

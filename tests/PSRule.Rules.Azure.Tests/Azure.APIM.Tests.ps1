@@ -349,6 +349,66 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'apim-C';
         }
+
+        It 'Azure.APIM.MinAPIVersion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.MinAPIVersion' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 13;
+            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'apim-C', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
+
+            $ruleResult[0].Reason | Should -BeExactly "The api management instance is missing minimum api version configuration.";
+            $ruleResult[1].Reason | Should -BeExactly "The api management instance is missing minimum api version configuration.";
+            $ruleResult[2].Reason | Should -BeExactly "The api management instance with minimum api version '2021-04-01-preview' is less than '2021-08-01'.";
+            $ruleResult[3].Reason | Should -BeIn "The api management instance with api version '2021-04-01-preview' is less than '2021-08-01'.", "The api management instance with minimum api version '2021-04-01-preview' is less than '2021-08-01'.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-J', 'apim-K';
+        }
+
+        It 'Azure.APIM.MultiRegion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.MultiRegion' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'apim-D', 'apim-E', 'apim-H', 'apim-I', 'apim-J', 'apim-O';
+
+            $ruleResult[0].Reason | Should -BeExactly "The API management instance should use multi-region deployment.";
+            $ruleResult[1].Reason | Should -BeExactly "The API management instance should use multi-region deployment.";
+            $ruleResult[2].Reason | Should -BeExactly "The API management instance should use multi-region deployment.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'apim-F', 'apim-G', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-P';
+        }
+
+        It 'Azure.APIM.MultiRegionGateway' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.MultiRegionGateway' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'apim-F', 'apim-G', 'apim-K';
+
+            $ruleResult[0].Reason | Should -BeExactly "The field 'disableGateway' is set to 'True'.";
+            $ruleResult[1].Reason | Should -BeExactly "The field 'disableGateway' is set to 'True'.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'apim-l', 'apim-M', 'apim-N', 'apim-P';
+        }
     }
 
     Context 'With Template' {

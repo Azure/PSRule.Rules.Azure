@@ -2,7 +2,7 @@
 severity: Important
 pillar: Reliability
 category: Design
-resource: Azure Recovery Services Vault (RSV)
+resource: Recovery Services Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RSV.StorageType/
 ---
 
@@ -75,5 +75,5 @@ resource testRecoveryServices 'Microsoft.RecoveryServices/vaults/backupconfig@20
 
 - [Recovery Services Vault - Overview](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview#storage-settings-in-the-recovery-services-vault)
 - [Recovery Services Vault - Storage Settings](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/backupconfig?tabs=bicep)
-- [Well Architected Framework - Reliability](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/backupconfig?tabs=bicep)
+- [Well Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)

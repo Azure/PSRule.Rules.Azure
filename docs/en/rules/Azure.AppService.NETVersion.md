@@ -95,6 +95,6 @@ resource webApp 'Microsoft.Web/sites@2021-03-01' = {
 
 ## LINKS
 
-- [Security design principles](https://docs.microsoft.com/azure/architecture/framework/security/security-principles#protect-against-code-level-vulnerabilities)
+- [Security design principles](https://learn.microsoft.com/azure/architecture/framework/security/security-principles#protect-against-code-level-vulnerabilities)
 - [Set .NET Framework runtime version](https://docs.microsoft.com/azure/app-service/configure-language-dotnet-framework#set-net-framework-runtime-version)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig)

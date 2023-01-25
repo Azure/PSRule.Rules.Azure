@@ -17,6 +17,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -34,6 +35,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: [ 'IM-1', 'IM-2' ]
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -53,6 +57,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Performance Efficiency
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -70,6 +75,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'NS-1'
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -89,6 +97,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_12'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'AM-2'
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -106,6 +117,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_06'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: [ 'IM-1', 'IM-2' ]
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -123,6 +137,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_06'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'NS-1'
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -140,6 +157,9 @@ metadata:
   tags:
     release: 'preview'
     ruleSet: '2021_06'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: [ 'IM-1', 'PA-7' ]
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -157,6 +177,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_06'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: [ 'IM-1', 'PA-7' ]
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -174,6 +197,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_12'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'IM-8'
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -191,6 +217,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_12'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'DP-7'
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -210,6 +239,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_12'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: [ 'NS-1', 'DP-4' ]
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -230,6 +262,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_12'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: 'PV-7'
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -250,6 +285,9 @@ metadata:
   tags:
     release: 'preview'
     ruleSet: '2021_12'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: [ 'IM-1', 'IM-2' ]
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -269,6 +307,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.ASB.v3/control: [ 'IM-1','PA-7' ]
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -286,6 +327,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -310,6 +352,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
@@ -334,6 +377,9 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_09'
+    Azure.WAF/pillar: 'Operational Excellence'
+  labels:
+    Azure.ASB.v3/control: 'LT-3'
 spec:
   type:
   - Microsoft.ContainerService/managedClusters

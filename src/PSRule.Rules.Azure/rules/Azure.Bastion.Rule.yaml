@@ -1,0 +1,33 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Bastion
+#
+
+#region Rules
+
+---
+# Synopsis: Bastion hosts should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Bastion.Name
+  ref: AZR-000349
+  tags:
+    release: 'GA'
+    ruleSet: '2022_12'
+    Azure.WAF/pillar: 'Operational Excellence'
+spec:
+  type:
+  - Microsoft.Network/bastionHosts
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 80
+    - name: '.'
+      match: '^[A-Za-z0-9]$|^([A-Za-z0-9][\w.-]{0,78}[\w])$'
+
+#endregion Rules

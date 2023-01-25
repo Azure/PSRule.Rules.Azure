@@ -86,4 +86,4 @@ resource vault 'Microsoft.KeyVault/vaults@2021-10-01' = {
 
 - [Azure Key Vault soft-delete overview](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
 - [Azure Key Vault security](https://docs.microsoft.com/azure/key-vault/general/security-overview#backup-and-recovery)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)

@@ -15,12 +15,12 @@ namespace PSRule.Rules.Azure.Pipeline.Output
         private const string Source = "PSRule";
         private const string HostTag = "PSHOST";
 
-        private Action<string> OnWriteWarning;
-        private Action<string> OnWriteVerbose;
-        private Action<ErrorRecord> OnWriteError;
-        private Action<InformationRecord> OnWriteInformation;
-        private Action<string> OnWriteDebug;
-        internal Action<object, bool> OnWriteObject;
+        private Action<string> _OnWriteWarning;
+        private Action<string> _OnWriteVerbose;
+        private Action<ErrorRecord> _OnWriteError;
+        private Action<InformationRecord> _OnWriteInformation;
+        private Action<string> _OnWriteDebug;
+        internal Action<object, bool> _OnWriteObject;
 
         private bool _LogError;
         private bool _LogWarning;
@@ -42,12 +42,12 @@ namespace PSRule.Rules.Azure.Pipeline.Output
             if (commandRuntime == null)
                 return;
 
-            OnWriteVerbose = commandRuntime.WriteVerbose;
-            OnWriteWarning = commandRuntime.WriteWarning;
-            OnWriteError = commandRuntime.WriteError;
-            OnWriteInformation = commandRuntime.WriteInformation;
-            OnWriteDebug = commandRuntime.WriteDebug;
-            OnWriteObject = commandRuntime.WriteObject;
+            _OnWriteVerbose = commandRuntime.WriteVerbose;
+            _OnWriteWarning = commandRuntime.WriteWarning;
+            _OnWriteError = commandRuntime.WriteError;
+            _OnWriteInformation = commandRuntime.WriteInformation;
+            _OnWriteDebug = commandRuntime.WriteDebug;
+            _OnWriteObject = commandRuntime.WriteObject;
         }
 
         internal void UseExecutionContext(EngineIntrinsics executionContext)
@@ -80,10 +80,10 @@ namespace PSRule.Rules.Azure.Pipeline.Output
         /// <param name="errorRecord">A valid PowerShell error record.</param>
         public override void WriteError(ErrorRecord errorRecord)
         {
-            if (OnWriteError == null || !ShouldWriteError())
+            if (_OnWriteError == null || !ShouldWriteError())
                 return;
 
-            OnWriteError(errorRecord);
+            _OnWriteError(errorRecord);
         }
 
         /// <summary>
@@ -92,10 +92,10 @@ namespace PSRule.Rules.Azure.Pipeline.Output
         /// <param name="message">A message to log.</param>
         public override void WriteVerbose(string message)
         {
-            if (OnWriteVerbose == null || !ShouldWriteVerbose())
+            if (_OnWriteVerbose == null || !ShouldWriteVerbose())
                 return;
 
-            OnWriteVerbose(message);
+            _OnWriteVerbose(message);
         }
 
         /// <summary>
@@ -104,10 +104,10 @@ namespace PSRule.Rules.Azure.Pipeline.Output
         /// <param name="message">A message to log</param>
         public override void WriteWarning(string message)
         {
-            if (OnWriteWarning == null || !ShouldWriteWarning())
+            if (_OnWriteWarning == null || !ShouldWriteWarning())
                 return;
 
-            OnWriteWarning(message);
+            _OnWriteWarning(message);
         }
 
         /// <summary>
@@ -115,10 +115,10 @@ namespace PSRule.Rules.Azure.Pipeline.Output
         /// </summary>
         public override void WriteInformation(InformationRecord informationRecord)
         {
-            if (OnWriteInformation == null || !ShouldWriteInformation())
+            if (_OnWriteInformation == null || !ShouldWriteInformation())
                 return;
 
-            OnWriteInformation(informationRecord);
+            _OnWriteInformation(informationRecord);
         }
 
         /// <summary>
@@ -126,28 +126,28 @@ namespace PSRule.Rules.Azure.Pipeline.Output
         /// </summary>
         public override void WriteDebug(DebugRecord debugRecord)
         {
-            if (OnWriteDebug == null || !ShouldWriteDebug())
+            if (_OnWriteDebug == null || !ShouldWriteDebug())
                 return;
 
-            OnWriteDebug(debugRecord.Message);
+            _OnWriteDebug(debugRecord.Message);
         }
 
         public override void WriteObject(object sendToPipeline, bool enumerateCollection)
         {
-            if (OnWriteObject == null)
+            if (_OnWriteObject == null)
                 return;
 
-            OnWriteObject(sendToPipeline, enumerateCollection);
+            _OnWriteObject(sendToPipeline, enumerateCollection);
         }
 
         public override void WriteHost(HostInformationMessage info)
         {
-            if (OnWriteInformation == null)
+            if (_OnWriteInformation == null)
                 return;
 
             var record = new InformationRecord(info, Source);
             record.Tags.Add(HostTag);
-            OnWriteInformation(record);
+            _OnWriteInformation(record);
         }
 
         public override bool ShouldWriteVerbose()

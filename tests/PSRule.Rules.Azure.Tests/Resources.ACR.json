@@ -555,7 +555,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-G",
     "Location": "region",
     "ResourceName": "registry-G",
-    "Name": "registry-H",
+    "Name": "registry-G",
     "Properties": {
       "loginServer": "registry-G.azurecr.io",
       "adminUserEnabled": false,
@@ -637,7 +637,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-I",
     "Location": "region",
     "ResourceName": "registry-I",
-    "Name": "registry-H",
+    "Name": "registry-I",
     "Properties": {
       "loginServer": "registry-I.azurecr.io",
       "adminUserEnabled": false,
@@ -661,6 +661,50 @@
     "Sku": {
       "Name": "Standard",
       "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-J",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-J",
+    "Location": "region",
+    "ResourceName": "registry-J",
+    "Name": "registry-J",
+    "Properties": {
+      "loginServer": "registry-I.azurecr.io",
+      "adminUserEnabled": false,
+      "encryption": {
+        "keyVaultProperties": {
+          "identity": "00000000-0000-0000-0000-000000000000",
+          "keyIdentifier": ""
+        },
+        "status": "enabled"
+      },
+      "policies": {
+        "quarantinePolicy": {
+          "status": "disabled"
+        },
+        "trustPolicy": {
+          "type": "Notary",
+          "status": "disabled"
+        },
+        "softDeletePolicy": {
+          "retentionDays": 90,
+          "status": "enabled"
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ContainerRegistry/registries",
+    "ResourceType": "Microsoft.ContainerRegistry/registries",
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium",
       "Size": null,
       "Family": null,
       "Model": null,

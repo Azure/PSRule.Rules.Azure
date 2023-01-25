@@ -2,7 +2,7 @@
 severity: Important
 pillar: Reliability
 category: Design
-resource: Azure Recovery Services Vault (RSV)
+resource: Recovery Services Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RSV.ReplicationAlert/
 ---
 
@@ -47,12 +47,14 @@ For example:
     "sendToOwners": "Send",
     "customEmailAddresses": [
       "example@email.com"
-    ]
+    ],
+    "locale": "en-US"
   }
 }
 ```
 
 ### Configure with Bicep
+
 By default a Recovery Services vaults does not have replication alerts setup. To define a replication
 alert via a Bicep either configure the `sendToOwners` or `CustomerEmailAddress` properties:
 
@@ -64,20 +66,24 @@ For example:
 ```bicep
 resource testRecoveryServices 'Microsoft.RecoveryServices/vaults/replicationAlertSettings@2021-08-01' = {
   name: 'replicationAlert'
-  location: 'string'
   parent: resourceSymbolicName
   properties: {
     sendToOwners: 'Sender'
     customEmailAddresses: [
       'example@email.com'
     ]
+    locale: 'en-US'
   }
 }
 ```
+
+## NOTES
+
+With the `locale` property you can define the locale for the email notification.
 
 ## LINKS
 
 - [Recovery Services Vault - Overview](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview#storage-settings-in-the-recovery-services-vault)
 - [Recovery Services Vault - Replication Alerts](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#configuring-notifications-for-alerts)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/replicationalertsettings?tabs=bicep)
-- [Well Architected Framework - Reliability](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/replicationalertsettings?tabs=bicep)
+- [Well Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)

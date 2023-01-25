@@ -32,7 +32,7 @@ Within the root directory of your infrastructure as code repository:
 
         # Analyze Azure resources using PSRule for Azure
         - name: Analyze Azure template files
-          uses: microsoft/ps-rule@v2.3.2
+          uses: microsoft/ps-rule@v2.6.0
           with:
             modules: 'PSRule.Rules.Azure'
     ```
@@ -51,7 +51,23 @@ Within the root directory of your infrastructure as code repository:
         modules: 'PSRule.Rules.Azure'
     ```
 
+=== "Generic with PowerShell"
+
+    Create a pipeline in any CI environment by using PowerShell.
+
+    ```powershell
+    # Analyze Azure resources using PSRule for Azure
+    $modules = @('PSRule.Rules.Azure')
+    Install-Module -Name $modules -Scope CurrentUser -Force -ErrorAction Stop;
+    Assert-PSRule -InputPath '.' -Module $modules -Format File -ErrorAction Stop;
+    ```
+
 This will automatically install compatible versions of all dependencies.
+
+!!! Tip
+    If this is your first time implementing PSRule for Azure on a live repository,
+    you may want to consider setting [continue on error](#continue-on-error).
+    This will allow you to try out PSRule without preventing pull requests (PRs) from being merged.
 
 ## Parameters
 
@@ -79,7 +95,7 @@ You can use the `inputPath` parameter to limit the analysis to a specific path.
     ```yaml hl_lines="6"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.3.2
+      uses: microsoft/ps-rule@v2.6.0
       with:
         modules: 'PSRule.Rules.Azure'
         inputPath: azure/modules/
@@ -94,6 +110,15 @@ You can use the `inputPath` parameter to limit the analysis to a specific path.
       inputs:
         modules: 'PSRule.Rules.Azure'
         inputPath: azure/modules/
+    ```
+
+=== "Generic with PowerShell"
+
+    ```powershell hl_lines="4"
+    # Analyze Azure resources using PSRule for Azure
+    $modules = @('PSRule.Rules.Azure')
+    Install-Module -Name $modules -Scope CurrentUser -Force -ErrorAction Stop;
+    Assert-PSRule -InputPath 'azure/modules/' -Module $modules -Format File -ErrorAction Stop;
     ```
 
 ### Configuring a baseline
@@ -110,10 +135,10 @@ See [working with baselines][8] for more information.
     ```yaml hl_lines="6"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.3.2
+      uses: microsoft/ps-rule@v2.6.0
       with:
         modules: 'PSRule.Rules.Azure'
-        baseline: Azure.GA_2022_06
+        baseline: Azure.GA_2022_12
     ```
 
 === "Azure Pipelines"
@@ -124,7 +149,60 @@ See [working with baselines][8] for more information.
       displayName: Analyze Azure template files
       inputs:
         modules: 'PSRule.Rules.Azure'
-        baseline: Azure.GA_2022_06
+        baseline: Azure.GA_2022_12
+    ```
+
+=== "Generic with PowerShell"
+
+    ```powershell hl_lines="4"
+    # Analyze Azure resources using PSRule for Azure
+    $modules = @('PSRule.Rules.Azure')
+    Install-Module -Name $modules -Scope CurrentUser -Force -ErrorAction Stop;
+    Assert-PSRule -InputPath '.' -Baseline 'Azure.GA_2022_12' -Module $modules -Format File -ErrorAction Stop;
+    ```
+
+### Continue on error
+
+By default, PSRule breaks or stops the pipeline if any rules fail or errors occur.
+When adopting PSRule for Azure or a new baseline you may want to run PSRule without stopping the pipeline.
+
+To do this, configure the PSRule for Azure step to _continue on error_.
+
+=== "GitHub Actions"
+
+    Set the `continue-on-error` property to `true`.
+
+    ```yaml hl_lines="4"
+    # Analyze Azure resources using PSRule for Azure
+    - name: Analyze Azure template files
+      uses: microsoft/ps-rule@v2.6.0
+      continue-on-error: true
+      with:
+        modules: 'PSRule.Rules.Azure'
+    ```
+
+=== "Azure Pipelines"
+
+    Set the `continueOnError` property to `true`.
+
+    ```yaml hl_lines="4"
+    # Analyze Azure resources using PSRule for Azure
+    - task: ps-rule-assert@2
+      displayName: Analyze Azure template files
+      continueOnError: true
+      inputs:
+        modules: 'PSRule.Rules.Azure'
+    ```
+
+=== "Generic with PowerShell"
+
+    Set the `ErrorAction` parameter of `Assert-PSRule` to `Continue`.
+
+    ```powershell hl_lines="4"
+    # Analyze Azure resources using PSRule for Azure
+    $modules = @('PSRule.Rules.Azure')
+    Install-Module -Name $modules -Scope CurrentUser -Force -ErrorAction Stop;
+    Assert-PSRule -InputPath '.' -Module $modules -Format File -ErrorAction Continue;
     ```
 
 ### Adding additional modules
@@ -136,7 +214,7 @@ You can add additional modules to the `modules` parameter by using comma (`,`) s
     ```yaml hl_lines="5"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.3.2
+      uses: microsoft/ps-rule@v2.6.0
       with:
         modules: 'PSRule.Rules.Azure,PSRule.Monitor'
     ```
@@ -149,6 +227,15 @@ You can add additional modules to the `modules` parameter by using comma (`,`) s
       displayName: Analyze Azure template files
       inputs:
         modules: 'PSRule.Rules.Azure,PSRule.Monitor'
+    ```
+
+=== "Generic with PowerShell"
+
+    ```powershell hl_lines="2"
+    # Analyze Azure resources using PSRule for Azure
+    $modules = @('PSRule.Rules.Azure', 'PSRule.Monitor')
+    Install-Module -Name $modules -Scope CurrentUser -Force -ErrorAction Stop;
+    Assert-PSRule -InputPath '.' -Module $modules -Format File -ErrorAction Stop;
     ```
 
 ### Outputting results
@@ -161,7 +248,7 @@ For details on the formats that are supported see [analysis output][9].
     ```yaml hl_lines="6-7"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.3.2
+      uses: microsoft/ps-rule@v2.6.0
       with:
         modules: 'PSRule.Rules.Azure'
         outputFormat: Sarif
@@ -178,6 +265,15 @@ For details on the formats that are supported see [analysis output][9].
         modules: 'PSRule.Rules.Azure'
         outputFormat: Sarif
         outputPath: reports/ps-rule-results.sarif
+    ```
+
+=== "Generic with PowerShell"
+
+    ```powershell hl_lines="4"
+    # Analyze Azure resources using PSRule for Azure
+    $modules = @('PSRule.Rules.Azure')
+    Install-Module -Name $modules -Scope CurrentUser -Force -ErrorAction Stop;
+    Assert-PSRule -InputPath '.' -OutputFormat 'Sarif' -OutputPath 'reports/ps-rule-results.sarif' -Module $modules -Format File -ErrorAction Stop;
     ```
 
   [9]: https://microsoft.github.io/PSRule/v2/analysis-output/

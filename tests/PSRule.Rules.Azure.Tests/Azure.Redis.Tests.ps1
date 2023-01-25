@@ -379,6 +379,26 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.Length | Should -Be 7;
             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
         }
+
+        It 'Azure.Redis.Version' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.Version' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J';
+
+            $ruleResult[0].Reason | Should -BeExactly "The Azure Cache for Redis should use the latest supported version of Redis.";
+            $ruleResult[1].Reason | Should -BeExactly "The Azure Cache for Redis should use the latest supported version of Redis.";
+            $ruleResult[2].Reason | Should -BeExactly "The Azure Cache for Redis should use the latest supported version of Redis.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-Q', 'redis-R';
+        }
     }
 
     Context 'With Configuration Option' -Tag 'Configuration' {

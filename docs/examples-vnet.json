@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.10.61.36676",
-      "templateHash": "3888836277028789846"
+      "version": "0.12.1.58429",
+      "templateHash": "10916983340852253317"
     }
   },
   "parameters": {
@@ -174,7 +174,7 @@
             "properties": {
               "privateIPAllocationMethod": "Dynamic",
               "subnet": {
-                "id": "[reference(resourceId('Microsoft.Network/virtualNetworks', 'vnet-001')).subnets[1].id]"
+                "id": "[reference(resourceId('Microsoft.Network/virtualNetworks', 'vnet-001'), '2022-01-01').subnets[1].id]"
               }
             },
             "zones": [
@@ -187,6 +187,86 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-001')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2022-05-01",
+      "name": "vnet-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "dhcpOptions": {
+          "dnsServers": [
+            "10.0.1.4",
+            "10.0.1.5"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "GatewaySubnet",
+            "properties": {
+              "addressPrefix": "10.0.0.0/27"
+            }
+          },
+          {
+            "name": "AzureFirewallSubnet",
+            "properties": {
+              "addressPrefix": "10.0.1.0/26"
+            }
+          },
+          {
+            "name": "AzureBastionSubnet",
+            "properties": {
+              "addressPrefix": "10.0.1.64/26"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2022-05-01",
+      "name": "vnet-02",
+      "location": "[parameters('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "dhcpOptions": {
+          "dnsServers": [
+            "10.0.1.4",
+            "10.0.1.5"
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "apiVersion": "2022-05-01",
+      "name": "[format('{0}/{1}', 'vnet-02', 'GatewaySubnet')]",
+      "properties": {
+        "addressPrefix": "10.0.0.0/27"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-02')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Network/virtualNetworks/subnets",
+      "apiVersion": "2022-05-01",
+      "name": "[format('{0}/{1}', 'vnet-02', 'AzureBastionSubnet')]",
+      "properties": {
+        "addressPrefix": "10.0.0.0/26"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworks', 'vnet-02')]"
       ]
     }
   ]

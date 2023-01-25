@@ -5,10 +5,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
-using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Runtime;
 using System.Text;
 using System.Threading;
 using System.Web;
@@ -16,7 +13,6 @@ using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Resources;
-using YamlDotNet.Core.Tokens;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -40,7 +36,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const char SINGLE_QUOTE = '\'';
         private const char DOUBLE_QUOTE = '"';
 
-        internal readonly static IFunctionDescriptor[] Builtin = new IFunctionDescriptor[]
+        internal readonly static IFunctionDescriptor[] Common = new IFunctionDescriptor[]
         {
             // Array and object
             new FunctionDescriptor("array", Array),
@@ -50,6 +46,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("createObject", CreateObject),
             new FunctionDescriptor("empty", Empty),
             new FunctionDescriptor("first", First),
+            new FunctionDescriptor("flatten", Flatten),
             new FunctionDescriptor("intersection", Intersection),
             new FunctionDescriptor("items", Items),
             new FunctionDescriptor("last", Last),
@@ -158,7 +155,19 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("uriComponentToString", UriComponentToString),
         };
 
-        private static readonly CultureInfo AzureCulture = new CultureInfo("en-US");
+        /// <summary>
+        /// Functions specific to Azure Policy.
+        /// See <seealso href="https://learn.microsoft.com/azure/governance/policy/concepts/definition-structure#policy-functions">Policy Functions</seealso>.
+        /// </summary>
+        internal readonly static IFunctionDescriptor[] Policy = new IFunctionDescriptor[]
+        {
+            //new FunctionDescriptor("addDays", AddDays),
+            //new FunctionDescriptor("field", Field),
+            //new FunctionDescriptor("requestContext", RequestContext),
+            //new FunctionDescriptor("policy", Policy),
+        };
+
+        private static readonly CultureInfo AzureCulture = new("en-US");
 
         #region Array and object
 
@@ -257,6 +266,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        /// <summary>
+        /// contains(container, itemToFind)
+        /// </summary>
+        /// <remarks>
+        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#contains
+        /// </remarks>
         internal static object Contains(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 2)
@@ -271,7 +286,7 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (args[0] is string svalue)
                 return svalue.Contains(objectToFind.ToString());
             else if (args[0] is JObject jObject)
-                return jObject.ContainsKey(objectToFind.ToString());
+                return jObject.ContainsKeyInsensitive(objectToFind.ToString());
 
             return false;
         }
@@ -317,6 +332,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return new JObject(properties);
         }
 
+        /// <summary>
+        /// first(arg1)
+        /// </summary>
+        /// <remarks>
+        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#first
+        /// </remarks>
         internal static object First(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
@@ -326,10 +347,35 @@ namespace PSRule.Rules.Azure.Data.Template
                 return avalue.GetValue(0);
             else if (args[0] is JArray jArray)
                 return jArray[0];
+            else if (args[0] is IMock mock)
+                return mock.TryGetIndex(0, out var mvalue) ? mvalue : mock;
             else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[0], 1);
 
             return null;
+        }
+
+        /// <summary>
+        /// flatten(arrayToFlatten)
+        /// </summary>
+        /// <remarks>
+        /// https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-array#flatten
+        /// </remarks>
+        internal static object Flatten(ITemplateContext context, object[] args)
+        {
+            if (args == null || args.Length != 1)
+                throw ArgumentsOutOfRange(nameof(Flatten), args);
+
+            if (!ExpressionHelpers.TryArray(args[0], out var array))
+                throw ArgumentFormatInvalid(nameof(Flatten));
+
+            var items = new List<object>();
+            for (var i = 0; i < array.Length; i++)
+            {
+                if (array.GetValue(i) is IEnumerable<object> enumerable)
+                    items.AddRange(enumerable);
+            }
+            return items.ToArray();
         }
 
         internal static object Intersection(ITemplateContext context, object[] args)
@@ -344,7 +390,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 for (var i = 1; i < args.Length; i++)
                 {
                     if (!TryJArray(args[i], out var value))
-                        throw new ArgumentException();
+                        throw ArgumentFormatInvalid(nameof(Intersection));
 
                     intersection = intersection.Intersect(value);
                 }
@@ -358,7 +404,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 for (var i = 1; i < args.Length; i++)
                 {
                     if (!TryJObject(args[i], out var value))
-                        throw new ArgumentException();
+                        throw ArgumentFormatInvalid(nameof(Intersection));
 
                     foreach (var prop in intersection.Properties().ToArray())
                     {
@@ -368,7 +414,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
                 return intersection;
             }
-            throw new ArgumentException();
+            throw ArgumentFormatInvalid(nameof(Intersection));
         }
 
         /// <summary>
@@ -387,9 +433,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 var result = new JArray();
                 foreach (var item in jObject.Properties().OrderBy(p => p.Name))
                 {
-                    var i = new JObject();
-                    i.Add("key", item.Name);
-                    i.Add("value", item.Value);
+                    var i = new JObject
+                    {
+                        { "key", item.Name },
+                        { "value", item.Value }
+                    };
                     result.Add(i);
                 }
                 return result;
@@ -444,6 +492,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return CountArgs(args) > 0 ? throw ArgumentsOutOfRange(nameof(Null), args) : (object)null;
         }
 
+        /// <summary>
+        /// last(arg1)
+        /// </summary>
+        /// <remarks>
+        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#last
+        /// </remarks>
         internal static object Last(ITemplateContext context, object[] args)
         {
             if (args == null || args.Length != 1)
@@ -453,6 +507,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 return avalue.GetValue(avalue.Length - 1);
             else if (args[0] is JArray jArray)
                 return jArray[jArray.Count - 1];
+            else if (args[0] is IMock mock)
+                return mock.TryGetIndex(0, out var mvalue) ? mvalue : mock;
             else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[svalue.Length - 1], 1);
 
@@ -496,11 +552,11 @@ namespace PSRule.Rules.Azure.Data.Template
                             result = !result.HasValue || value < result ? value : result;
                         }
                         else
-                            throw new ArgumentException();
+                            throw ArgumentFormatInvalid(nameof(Min));
                     }
                 }
                 else
-                    throw new ArgumentException();
+                    throw ArgumentFormatInvalid(nameof(Min));
             }
             return result;
         }
@@ -527,11 +583,11 @@ namespace PSRule.Rules.Azure.Data.Template
                             result = !result.HasValue || value > result ? value : result;
                         }
                         else
-                            throw new ArgumentException();
+                            throw ArgumentFormatInvalid(nameof(Max));
                     }
                 }
                 else
-                    throw new ArgumentException();
+                    throw ArgumentFormatInvalid(nameof(Max));
             }
             return result;
         }
@@ -578,7 +634,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 return result;
             }
-            throw new ArgumentException();
+            throw ArgumentFormatInvalid(nameof(Skip));
         }
 
         internal static object Take(ITemplateContext context, object[] args)
@@ -587,7 +643,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Take), args);
 
             if (!ExpressionHelpers.TryInt(args[1], out var numberToTake))
-                throw new ArgumentException();
+                throw ArgumentInvalidInteger(nameof(Take), nameof(numberToTake));
 
             var take = numberToTake <= 0 ? 0 : numberToTake;
             if (ExpressionHelpers.TryString(args[0], out var soriginalValue))
@@ -610,7 +666,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return result;
             }
 
-            throw new ArgumentException();
+            throw ArgumentFormatInvalid(nameof(Take));
         }
 
         internal static object Union(ITemplateContext context, object[] args)
@@ -1783,7 +1839,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             for (var i = 0; i < array.Length; i++)
             {
-                if (ExpressionHelpers.ObjectEquals(array.GetValue(i), objectToFind))
+                if (ExpressionHelpers.Equal(array.GetValue(i), objectToFind))
                     return true;
             }
             return false;

@@ -72,6 +72,6 @@ resource appPlan 'Microsoft.Web/serverfarms@2021-01-15' = {
 
 ## LINKS
 
-- [Resiliency and dependencies](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
+- [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
 - [Get started with Autoscale in Azure](https://docs.microsoft.com/azure/azure-monitor/autoscale/autoscale-get-started)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms)

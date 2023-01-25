@@ -14,11 +14,13 @@ Enable Container insights to monitor AKS cluster workloads.
 
 ## DESCRIPTION
 
-With Container insights, you can use performance charts and health status to monitor AKS clusters, nodes and pods. Container insights delivers quick, visual and actionable information: from the CPU and memory pressure of your nodes to the logs of individual Kubernetes pods.
+With Container insights, you can use performance charts and health status to monitor AKS clusters, nodes and pods.
+Container insights delivers quick, visual and actionable information: from the CPU and memory pressure of your nodes to the logs of individual Kubernetes pods.
 
 ## RECOMMENDATION
 
-Consider enabling Container insights for AKS clusters. Monitoring containers is critical, especially when running production AKS clusters at scale with multiple applications.
+Consider enabling Container insights for AKS clusters.
+Monitoring containers is critical, especially when running production AKS clusters at scale with multiple applications.
 
 ## EXAMPLES
 
@@ -131,9 +133,9 @@ az aks enable-addons \
 
 ## LINKS
 
-- [Container Insights](https://docs.microsoft.com/azure/architecture/framework/devops/monitoring#container-insights)
+- [Container Insights](https://learn.microsoft.com/azure/architecture/framework/devops/monitoring#container-insights)
 - [Monitor your Kubernetes cluster performance with Container insights](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-analyze)
 - [Container insights overview](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview)
 - [Enable monitoring of a new Azure Kubernetes Service (AKS) cluster](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-new-cluster)
 - [Enable monitoring of Azure Kubernetes Service (AKS) cluster already deployed](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-existing-clusters)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

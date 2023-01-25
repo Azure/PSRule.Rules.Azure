@@ -1,1118 +1,1095 @@
 [
-    {
-        "Name": "redis-A",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-A",
-        "ResourceName": "redis-A",
-        "ResourceType": "Microsoft.Cache/Redis",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
+  {
+    "Name": "redis-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-A",
+    "ResourceName": "redis-A",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "redisVersion": "latest",
+      "sku": {
+        "name": "Standard",
+        "family": "C",
+        "capacity": 2
+      },
+      "minimumTlsVersion": "1.2",
+      "enableNonSslPort": false,
+      "redisConfiguration": {
+        "maxclients": "2000",
+        "maxmemory-policy": "volatile-lru"
+      },
+      "accessKeys": null,
+      "hostName": "redis-A.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "publicNetworkAccess": "Disabled"
+    },
+    "Resources": [
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Standard",
-                "family": "C",
-                "capacity": 2
-            },
-            "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-A.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": [],
-            "publicNetworkAccess": "Disabled"
-        },
-        "Resources": [
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_1",
-                "ResourceName": "ClientIPAddress_1",
-                "Properties": {
-                    "startIpAddress": "10.1.1.1",
-                    "endIpAddress": "10.1.1.1"
-                }
-            }
-        ]
-    },
-    {
-        "Name": "redis-B",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-B",
-        "ResourceName": "redis-B",
-        "ResourceType": "Microsoft.Cache/Redis",
         "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
+        "Name": "ClientIPAddress_1",
+        "ResourceName": "ClientIPAddress_1",
         "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Standard",
-                "family": "C",
-                "capacity": 2
-            },
-            "enableNonSslPort": true,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-B.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": [],
-            "publicNetworkAccess": "Enabled"
-        },
-        "Resources": [
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_1",
-                "ResourceName": "ClientIPAddress_1",
-                "Properties": {
-                    "startIpAddress": "10.1.1.1",
-                    "endIpAddress": "10.1.1.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_2",
-                "ResourceName": "ClientIPAddress_2",
-                "Properties": {
-                    "startIpAddress": "10.1.2.1",
-                    "endIpAddress": "10.1.2.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_3",
-                "ResourceName": "ClientIPAddress_3",
-                "Properties": {
-                    "startIpAddress": "10.1.3.1",
-                    "endIpAddress": "10.1.3.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_4",
-                "ResourceName": "ClientIPAddress_4",
-                "Properties": {
-                    "startIpAddress": "10.1.4.1",
-                    "endIpAddress": "10.1.4.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_5",
-                "ResourceName": "ClientIPAddress_5",
-                "Properties": {
-                    "startIpAddress": "10.1.5.1",
-                    "endIpAddress": "10.1.5.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_6",
-                "ResourceName": "ClientIPAddress_6",
-                "Properties": {
-                    "startIpAddress": "10.1.6.1",
-                    "endIpAddress": "10.1.6.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_7",
-                "ResourceName": "ClientIPAddress_7",
-                "Properties": {
-                    "startIpAddress": "10.1.7.1",
-                    "endIpAddress": "10.1.7.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_8",
-                "ResourceName": "ClientIPAddress_8",
-                "Properties": {
-                    "startIpAddress": "10.1.8.1",
-                    "endIpAddress": "10.1.8.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_9",
-                "ResourceName": "ClientIPAddress_9",
-                "Properties": {
-                    "startIpAddress": "10.1.9.1",
-                    "endIpAddress": "10.1.9.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_10",
-                "ResourceName": "ClientIPAddress_10",
-                "Properties": {
-                    "startIpAddress": "10.1.10.1",
-                    "endIpAddress": "10.1.10.1"
-                }
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-C",
-        "Identity": null,
-        "Kind": null,
-        "Location": "australiaeast",
-        "ManagedBy": null,
-        "ResourceName": "redis-C",
-        "Name": "redis-C",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "redisVersion": "4.0.14",
-            "sku": {
-                "name": "Standard",
-                "family": "C",
-                "capacity": 0
-            },
-            "enableNonSslPort": false,
-            "instances": [
-                {
-                    "sslPort": 15000,
-                    "isMaster": true
-                },
-                {
-                    "sslPort": 15001,
-                    "isMaster": false
-                }
-            ],
-            "redisConfiguration": {
-                "maxclients": "256",
-                "maxmemory-reserved": "2",
-                "maxfragmentationmemory-reserved": "12",
-                "maxmemory-delta": "2"
-            },
-            "accessKeys": null,
-            "hostName": "redis-C.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
-        },
-        "Resources": [
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_1",
-                "ResourceName": "ClientIPAddress_1",
-                "Properties": {
-                    "startIpAddress": "10.1.1.1",
-                    "endIpAddress": "10.1.1.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_2",
-                "ResourceName": "ClientIPAddress_2",
-                "Properties": {
-                    "startIpAddress": "10.1.2.1",
-                    "endIpAddress": "10.1.2.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_3",
-                "ResourceName": "ClientIPAddress_3",
-                "Properties": {
-                    "startIpAddress": "10.1.3.1",
-                    "endIpAddress": "10.1.3.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_4",
-                "ResourceName": "ClientIPAddress_4",
-                "Properties": {
-                    "startIpAddress": "10.1.4.1",
-                    "endIpAddress": "10.1.4.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_5",
-                "ResourceName": "ClientIPAddress_5",
-                "Properties": {
-                    "startIpAddress": "10.1.5.1",
-                    "endIpAddress": "10.1.5.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_6",
-                "ResourceName": "ClientIPAddress_6",
-                "Properties": {
-                    "startIpAddress": "10.1.6.1",
-                    "endIpAddress": "10.1.6.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_7",
-                "ResourceName": "ClientIPAddress_7",
-                "Properties": {
-                    "startIpAddress": "10.1.7.1",
-                    "endIpAddress": "10.1.7.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_8",
-                "ResourceName": "ClientIPAddress_8",
-                "Properties": {
-                    "startIpAddress": "10.1.8.1",
-                    "endIpAddress": "10.1.8.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_9",
-                "ResourceName": "ClientIPAddress_9",
-                "Properties": {
-                    "startIpAddress": "10.1.9.1",
-                    "endIpAddress": "10.1.9.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_10",
-                "ResourceName": "ClientIPAddress_10",
-                "Properties": {
-                    "startIpAddress": "10.1.10.1",
-                    "endIpAddress": "10.1.10.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_11",
-                "ResourceName": "ClientIPAddress_11",
-                "Properties": {
-                    "startIpAddress": "10.1.11.1",
-                    "endIpAddress": "10.1.11.1"
-                }
-            }
-        ],
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Cache/Redis",
-        "ResourceType": "Microsoft.Cache/Redis",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": null,
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-D",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-D",
-        "Identity": null,
-        "Kind": null,
-        "Location": "australiaeast",
-        "ManagedBy": null,
-        "ResourceName": "redis-D",
-        "Name": "redis-D",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "redisVersion": "4.0.14",
-            "sku": {
-                "name": "Standard",
-                "family": "C",
-                "capacity": 1
-            },
-            "enableNonSslPort": false,
-            "instances": [
-                {
-                    "sslPort": 15000,
-                    "isMaster": true
-                },
-                {
-                    "sslPort": 15001,
-                    "isMaster": false
-                }
-            ],
-            "redisConfiguration": {
-                "maxclients": "1000",
-                "maxmemory-reserved": "150",
-                "maxfragmentationmemory-reserved": "0",
-                "maxmemory-policy": "volatile-lru",
-                "maxmemory-delta": "50"
-            },
-            "accessKeys": null,
-            "hostName": "redis-D.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
-        },
-        "Resources": [
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_1",
-                "ResourceName": "ClientIPAddress_1",
-                "Properties": {
-                    "startIpAddress": "17.1.1.1",
-                    "endIpAddress": "17.1.1.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_2",
-                "ResourceName": "ClientIPAddress_2",
-                "Properties": {
-                    "startIpAddress": "17.1.2.1",
-                    "endIpAddress": "17.1.2.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_3",
-                "ResourceName": "ClientIPAddress_3",
-                "Properties": {
-                    "startIpAddress": "17.1.3.1",
-                    "endIpAddress": "17.1.3.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_4",
-                "ResourceName": "ClientIPAddress_4",
-                "Properties": {
-                    "startIpAddress": "17.1.4.1",
-                    "endIpAddress": "17.1.4.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_5",
-                "ResourceName": "ClientIPAddress_5",
-                "Properties": {
-                    "startIpAddress": "17.1.5.1",
-                    "endIpAddress": "17.1.5.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_6",
-                "ResourceName": "ClientIPAddress_6",
-                "Properties": {
-                    "startIpAddress": "17.1.6.1",
-                    "endIpAddress": "17.1.6.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_7",
-                "ResourceName": "ClientIPAddress_7",
-                "Properties": {
-                    "startIpAddress": "17.1.7.1",
-                    "endIpAddress": "17.1.7.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_8",
-                "ResourceName": "ClientIPAddress_8",
-                "Properties": {
-                    "startIpAddress": "17.1.8.1",
-                    "endIpAddress": "17.1.8.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_9",
-                "ResourceName": "ClientIPAddress_9",
-                "Properties": {
-                    "startIpAddress": "17.1.9.1",
-                    "endIpAddress": "17.1.9.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_10",
-                "ResourceName": "ClientIPAddress_10",
-                "Properties": {
-                    "startIpAddress": "17.1.10.1",
-                    "endIpAddress": "17.1.10.1"
-                }
-            }
-        ],
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Cache/Redis",
-        "ResourceType": "Microsoft.Cache/Redis",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": null,
-        "CreatedTime": null,
-        "ChangedTime": null,
-        "ETag": null
-    },
-    {
-        "Name": "redis-E",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-E",
-        "ResourceName": "redis-E",
-        "ResourceType": "Microsoft.Cache/Redis",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Premium",
-                "family": "P",
-                "capacity": 1
-            },
-            "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-E.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": [],
-            "replicasPerMaster": 2
-        },
-        "Resources": [
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_1",
-                "ResourceName": "ClientIPAddress_1",
-                "Properties": {
-                    "startIpAddress": "17.1.1.1",
-                    "endIpAddress": "17.1.1.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_2",
-                "ResourceName": "ClientIPAddress_2",
-                "Properties": {
-                    "startIpAddress": "17.1.2.1",
-                    "endIpAddress": "17.1.2.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_3",
-                "ResourceName": "ClientIPAddress_3",
-                "Properties": {
-                    "startIpAddress": "17.1.3.1",
-                    "endIpAddress": "17.1.3.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_4",
-                "ResourceName": "ClientIPAddress_4",
-                "Properties": {
-                    "startIpAddress": "17.1.4.1",
-                    "endIpAddress": "17.1.4.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_5",
-                "ResourceName": "ClientIPAddress_5",
-                "Properties": {
-                    "startIpAddress": "17.1.5.1",
-                    "endIpAddress": "17.1.5.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_6",
-                "ResourceName": "ClientIPAddress_6",
-                "Properties": {
-                    "startIpAddress": "17.1.6.1",
-                    "endIpAddress": "17.1.6.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_7",
-                "ResourceName": "ClientIPAddress_7",
-                "Properties": {
-                    "startIpAddress": "17.1.7.1",
-                    "endIpAddress": "17.1.7.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_8",
-                "ResourceName": "ClientIPAddress_8",
-                "Properties": {
-                    "startIpAddress": "17.1.8.1",
-                    "endIpAddress": "17.1.8.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_9",
-                "ResourceName": "ClientIPAddress_9",
-                "Properties": {
-                    "startIpAddress": "17.1.9.1",
-                    "endIpAddress": "17.1.9.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_10",
-                "ResourceName": "ClientIPAddress_10",
-                "Properties": {
-                    "startIpAddress": "17.1.10.1",
-                    "endIpAddress": "17.1.10.1"
-                }
-            },
-            {
-                "Type": "Microsoft.Cache/redis/firewallRules",
-                "ResourceType": "Microsoft.Cache/redis/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "ResourceGroupName": "test-rg",
-                "Name": "ClientIPAddress_11",
-                "ResourceName": "ClientIPAddress_11",
-                "Properties": {
-                    "startIpAddress": "17.1.11.1",
-                    "endIpAddress": "17.1.11.1"
-                }
-            }
-        ],
-        "zones": [
-            "2",
-            "3",
-            "1"
-        ]
-    },
-    {
-        "Name": "redis-F",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-F",
-        "ResourceName": "redis-F",
-        "ResourceType": "Microsoft.Cache/Redis",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Premium",
-                "family": "P",
-                "capacity": 2
-            },
-            "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-F.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": [],
-            "replicasPerMaster": 2
-        },
-        "zones": [
-            "1"
-        ]
-    },
-    {
-        "Name": "redis-G",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-G",
-        "ResourceName": "redis-G",
-        "ResourceType": "Microsoft.Cache/Redis",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Premium",
-                "family": "P",
-                "capacity": 3
-            },
-            "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-G.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": [],
-            "replicasPerMaster": 1
-        },
-        "zones": [
-            "1",
-            "2",
-            "3"
-        ]
-    },
-    {
-        "Name": "redis-H",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-H",
-        "ResourceName": "redis-H",
-        "ResourceType": "Microsoft.Cache/Redis",
-        "ResourceGroupName": "test-rg",
-        "Location": "Antarctica North",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Premium",
-                "family": "P",
-                "capacity": 4
-            },
-            "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-H.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": [],
-            "replicasPerMaster": 1
-        },
-        "zones": []
-    },
-    {
-        "Name": "redis-I",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-I",
-        "ResourceName": "redis-I",
-        "ResourceType": "Microsoft.Cache/Redis",
-        "ResourceGroupName": "test-rg",
-        "Location": "antarcticasouth",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Premium",
-                "family": "P",
-                "capacity": 5
-            },
-            "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-I.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": [],
-            "replicasPerMaster": 1
-        },
-        "zones": []
-    },
-    {
-        "Name": "redis-J",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-G",
-        "ResourceName": "redis-J",
-        "ResourceType": "Microsoft.Cache/Redis",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "redisVersion": "3.2.7",
-            "sku": {
-                "name": "Premium",
-                "family": "P",
-                "capacity": 2
-            },
-            "minimumTlsVersion": "1.2",
-            "enableNonSslPort": false,
-            "redisConfiguration": {
-                "maxclients": "2000",
-                "maxmemory-policy": "volatile-lru"
-            },
-            "accessKeys": null,
-            "hostName": "redis-J.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": [],
-            "replicasPerMaster": 1
-        },
-        "zones": [
-            "1",
-            "2",
-            "3"
-        ]
-    },
-    {
-        "Name": "redis-K",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Microsoft.Cache/redisEnterprise/redis-K",
-        "ResourceName": "redis-K",
-        "ResourceType": "Microsoft.Cache/redisEnterprise",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "minimumTlsVersion": "1.2",
-            "hostName": "redis-K.redis.cache.windows.net"
-        },
-        "sku": {
-            "name": "Enterprise_E10",
-            "capacity": 2
-        },
-        "zones": [
-            "1",
-            "2",
-            "3"
-        ]
-    },
-    {
-        "Name": "redis-L",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-L",
-        "ResourceName": "redis-L",
-        "ResourceType": "Microsoft.Cache/redisEnterprise",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "minimumTlsVersion": "1.2",
-            "hostName": "redis-L.redis.cache.windows.net"
-        },
-        "sku": {
-            "name": "Enterprise_E20",
-            "capacity": 4
-        },
-        "zones": []
-    },
-    {
-        "Name": "redis-M",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-M",
-        "ResourceName": "redis-M",
-        "ResourceType": "Microsoft.Cache/redisEnterprise",
-        "ResourceGroupName": "test-rg",
-        "Location": "Antarctica North",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "minimumTlsVersion": "1.2",
-            "hostName": "redis-M.redis.cache.windows.net"
-        },
-        "sku": {
-            "name": "Enterprise_E50",
-            "capacity": 6
-        },
-        "zones": []
-    },
-    {
-        "Name": "redis-N",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-N",
-        "ResourceName": "redis-N",
-        "ResourceType": "Microsoft.Cache/redisEnterprise",
-        "ResourceGroupName": "test-rg",
-        "Location": "antarcticasouth",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "minimumTlsVersion": "1.2",
-            "hostName": "redis-N.redis.cache.windows.net"
-        },
-        "sku": {
-            "name": "Enterprise_E100",
-            "capacity": 8
-        },
-        "zones": []
-    },
-    {
-        "Name": "redis-O",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-O",
-        "ResourceName": "redis-O",
-        "ResourceType": "Microsoft.Cache/redisEnterprise",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "minimumTlsVersion": "1.2",
-            "hostName": "redis-O.redis.cache.windows.net"
-        },
-        "sku": {
-            "name": "EnterpriseFlash_F300",
-            "capacity": 3
-        },
-        "zones": [
-            "1",
-            "2",
-            "3"
-        ]
-    },
-    {
-        "Name": "redis-P",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-P",
-        "ResourceName": "redis-P",
-        "ResourceType": "Microsoft.Cache/redisEnterprise",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
-        "Properties": {
-            "minimumTlsVersion": "1.2",
-            "hostName": "redis-P.redis.cache.windows.net"
-        },
-        "sku": {
-            "name": "EnterpriseFlash_F700",
-            "capacity": 9
-        },
-        "zones": []
-    },
-    {
-        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-004/providers/Microsoft.Cache/Redis/redis-Q",
-        "location": "australiaeast",
-        "name": "redis-Q",
-        "type": "Microsoft.Cache/Redis",
-        "properties": {
-            "provisioningState": "Succeeded",
-            "redisVersion": "6.0.14",
-            "sku": {
-                "name": "Standard",
-                "family": "C",
-                "capacity": 0
-            },
-            "enableNonSslPort": false,
-            "instances": [
-                {
-                    "sslPort": 15000,
-                    "isMaster": true,
-                    "isPrimary": true
-                },
-                {
-                    "sslPort": 15001,
-                    "isMaster": false,
-                    "isPrimary": false
-                }
-            ],
-            "minimumTlsVersion": "1.2",
-            "publicNetworkAccess": "Enabled",
-            "redisConfiguration": {
-                "maxclients": "256",
-                "maxmemory-reserved": "30",
-                "maxfragmentationmemory-reserved": "30",
-                "maxmemory-delta": "30"
-            },
-            "accessKeys": null,
-            "hostName": "redis-Q.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
-        },
-        "identity": {
-            "type": "SystemAssigned",
-            "principalId": "00000000-0000-0000-0000-000000000000",
-            "tenantId": "00000000-0000-0000-0000-000000000000"
+          "startIpAddress": "10.1.1.1",
+          "endIpAddress": "10.1.1.1"
         }
+      }
+    ]
+  },
+  {
+    "Name": "redis-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-B",
+    "ResourceName": "redis-B",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "sku": {
+        "name": "Standard",
+        "family": "C",
+        "capacity": 2
+      },
+      "enableNonSslPort": true,
+      "redisConfiguration": {
+        "maxclients": "2000",
+        "maxmemory-policy": "volatile-lru"
+      },
+      "accessKeys": null,
+      "hostName": "redis-B.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "publicNetworkAccess": "Enabled"
     },
-    {
-        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-004/providers/Microsoft.Cache/Redis/redis-R",
-        "location": "australiaeast",
-        "name": "redis-R",
-        "type": "Microsoft.Cache/Redis",
-        "properties": {
-            "provisioningState": "Succeeded",
-            "redisVersion": "6.0.14",
-            "enableNonSslPort": false,
-            "instances": [
-                {
-                    "sslPort": 15000,
-                    "isMaster": true,
-                    "isPrimary": true
-                },
-                {
-                    "sslPort": 15001,
-                    "isMaster": false,
-                    "isPrimary": false
-                }
-            ],
-            "minimumTlsVersion": "1.2",
-            "publicNetworkAccess": "Enabled",
-            "redisConfiguration": {
-                "maxclients": "256",
-                "maxmemory-reserved": "30",
-                "maxfragmentationmemory-reserved": "30",
-                "maxmemory-delta": "30"
-            },
-            "accessKeys": null,
-            "hostName": "redis-R.redis.cache.windows.net",
-            "port": 6379,
-            "sslPort": 6380,
-            "linkedServers": []
-        }
-    },
-    {
-        "Name": "redis-S",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-S",
-        "ResourceName": "redis-S",
-        "ResourceType": "Microsoft.Cache/redisEnterprise",
-        "ResourceGroupName": "test-rg",
-        "Location": "australiaeast",
+    "Resources": [
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": {},
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_1",
+        "ResourceName": "ClientIPAddress_1",
         "Properties": {
-            "hostName": "redis-S.redis.cache.windows.net"
+          "startIpAddress": "10.1.1.1",
+          "endIpAddress": "10.1.1.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_2",
+        "ResourceName": "ClientIPAddress_2",
+        "Properties": {
+          "startIpAddress": "10.1.2.1",
+          "endIpAddress": "10.1.2.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_3",
+        "ResourceName": "ClientIPAddress_3",
+        "Properties": {
+          "startIpAddress": "10.1.3.1",
+          "endIpAddress": "10.1.3.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_4",
+        "ResourceName": "ClientIPAddress_4",
+        "Properties": {
+          "startIpAddress": "10.1.4.1",
+          "endIpAddress": "10.1.4.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_5",
+        "ResourceName": "ClientIPAddress_5",
+        "Properties": {
+          "startIpAddress": "10.1.5.1",
+          "endIpAddress": "10.1.5.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_6",
+        "ResourceName": "ClientIPAddress_6",
+        "Properties": {
+          "startIpAddress": "10.1.6.1",
+          "endIpAddress": "10.1.6.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_7",
+        "ResourceName": "ClientIPAddress_7",
+        "Properties": {
+          "startIpAddress": "10.1.7.1",
+          "endIpAddress": "10.1.7.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_8",
+        "ResourceName": "ClientIPAddress_8",
+        "Properties": {
+          "startIpAddress": "10.1.8.1",
+          "endIpAddress": "10.1.8.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_9",
+        "ResourceName": "ClientIPAddress_9",
+        "Properties": {
+          "startIpAddress": "10.1.9.1",
+          "endIpAddress": "10.1.9.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_10",
+        "ResourceName": "ClientIPAddress_10",
+        "Properties": {
+          "startIpAddress": "10.1.10.1",
+          "endIpAddress": "10.1.10.1"
+        }
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "australiaeast",
+    "ManagedBy": null,
+    "ResourceName": "redis-C",
+    "Name": "redis-C",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "redisVersion": "6",
+      "sku": {
+        "name": "Standard",
+        "family": "C",
+        "capacity": 0
+      },
+      "enableNonSslPort": false,
+      "instances": [
+        {
+          "sslPort": 15000,
+          "isMaster": true
         },
-        "sku": {
-            "name": "EnterpriseFlash_F1500",
-            "capacity": 15
+        {
+          "sslPort": 15001,
+          "isMaster": false
+        }
+      ],
+      "redisConfiguration": {
+        "maxclients": "256",
+        "maxmemory-reserved": "2",
+        "maxfragmentationmemory-reserved": "12",
+        "maxmemory-delta": "2"
+      },
+      "accessKeys": null,
+      "hostName": "redis-C.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": []
+    },
+    "Resources": [
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_1",
+        "ResourceName": "ClientIPAddress_1",
+        "Properties": {
+          "startIpAddress": "10.1.1.1",
+          "endIpAddress": "10.1.1.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_2",
+        "ResourceName": "ClientIPAddress_2",
+        "Properties": {
+          "startIpAddress": "10.1.2.1",
+          "endIpAddress": "10.1.2.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_3",
+        "ResourceName": "ClientIPAddress_3",
+        "Properties": {
+          "startIpAddress": "10.1.3.1",
+          "endIpAddress": "10.1.3.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_4",
+        "ResourceName": "ClientIPAddress_4",
+        "Properties": {
+          "startIpAddress": "10.1.4.1",
+          "endIpAddress": "10.1.4.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_5",
+        "ResourceName": "ClientIPAddress_5",
+        "Properties": {
+          "startIpAddress": "10.1.5.1",
+          "endIpAddress": "10.1.5.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_6",
+        "ResourceName": "ClientIPAddress_6",
+        "Properties": {
+          "startIpAddress": "10.1.6.1",
+          "endIpAddress": "10.1.6.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_7",
+        "ResourceName": "ClientIPAddress_7",
+        "Properties": {
+          "startIpAddress": "10.1.7.1",
+          "endIpAddress": "10.1.7.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_8",
+        "ResourceName": "ClientIPAddress_8",
+        "Properties": {
+          "startIpAddress": "10.1.8.1",
+          "endIpAddress": "10.1.8.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_9",
+        "ResourceName": "ClientIPAddress_9",
+        "Properties": {
+          "startIpAddress": "10.1.9.1",
+          "endIpAddress": "10.1.9.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_10",
+        "ResourceName": "ClientIPAddress_10",
+        "Properties": {
+          "startIpAddress": "10.1.10.1",
+          "endIpAddress": "10.1.10.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_11",
+        "ResourceName": "ClientIPAddress_11",
+        "Properties": {
+          "startIpAddress": "10.1.11.1",
+          "endIpAddress": "10.1.11.1"
+        }
+      }
+    ],
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Cache/Redis",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": null,
+    "CreatedTime": null,
+    "ChangedTime": null,
+    "ETag": null
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-D",
+    "Identity": null,
+    "Kind": null,
+    "Location": "australiaeast",
+    "ManagedBy": null,
+    "ResourceName": "redis-D",
+    "Name": "redis-D",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "redisVersion": "4.0.14",
+      "sku": {
+        "name": "Standard",
+        "family": "C",
+        "capacity": 1
+      },
+      "enableNonSslPort": false,
+      "instances": [
+        {
+          "sslPort": 15000,
+          "isMaster": true
         },
-        "zones": []
+        {
+          "sslPort": 15001,
+          "isMaster": false
+        }
+      ],
+      "redisConfiguration": {
+        "maxclients": "1000",
+        "maxmemory-reserved": "150",
+        "maxfragmentationmemory-reserved": "0",
+        "maxmemory-policy": "volatile-lru",
+        "maxmemory-delta": "50"
+      },
+      "accessKeys": null,
+      "hostName": "redis-D.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": []
+    },
+    "Resources": [
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_1",
+        "ResourceName": "ClientIPAddress_1",
+        "Properties": {
+          "startIpAddress": "17.1.1.1",
+          "endIpAddress": "17.1.1.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_2",
+        "ResourceName": "ClientIPAddress_2",
+        "Properties": {
+          "startIpAddress": "17.1.2.1",
+          "endIpAddress": "17.1.2.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_3",
+        "ResourceName": "ClientIPAddress_3",
+        "Properties": {
+          "startIpAddress": "17.1.3.1",
+          "endIpAddress": "17.1.3.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_4",
+        "ResourceName": "ClientIPAddress_4",
+        "Properties": {
+          "startIpAddress": "17.1.4.1",
+          "endIpAddress": "17.1.4.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_5",
+        "ResourceName": "ClientIPAddress_5",
+        "Properties": {
+          "startIpAddress": "17.1.5.1",
+          "endIpAddress": "17.1.5.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_6",
+        "ResourceName": "ClientIPAddress_6",
+        "Properties": {
+          "startIpAddress": "17.1.6.1",
+          "endIpAddress": "17.1.6.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_7",
+        "ResourceName": "ClientIPAddress_7",
+        "Properties": {
+          "startIpAddress": "17.1.7.1",
+          "endIpAddress": "17.1.7.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_8",
+        "ResourceName": "ClientIPAddress_8",
+        "Properties": {
+          "startIpAddress": "17.1.8.1",
+          "endIpAddress": "17.1.8.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_9",
+        "ResourceName": "ClientIPAddress_9",
+        "Properties": {
+          "startIpAddress": "17.1.9.1",
+          "endIpAddress": "17.1.9.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_10",
+        "ResourceName": "ClientIPAddress_10",
+        "Properties": {
+          "startIpAddress": "17.1.10.1",
+          "endIpAddress": "17.1.10.1"
+        }
+      }
+    ],
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Cache/Redis",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": null,
+    "CreatedTime": null,
+    "ChangedTime": null,
+    "ETag": null
+  },
+  {
+    "Name": "redis-E",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-E",
+    "ResourceName": "redis-E",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "redisVersion": "3.2.7",
+      "sku": {
+        "name": "Premium",
+        "family": "P",
+        "capacity": 1
+      },
+      "minimumTlsVersion": "1.2",
+      "enableNonSslPort": false,
+      "redisConfiguration": {
+        "maxclients": "2000",
+        "maxmemory-policy": "volatile-lru"
+      },
+      "accessKeys": null,
+      "hostName": "redis-E.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "replicasPerMaster": 2
+    },
+    "Resources": [
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_1",
+        "ResourceName": "ClientIPAddress_1",
+        "Properties": {
+          "startIpAddress": "17.1.1.1",
+          "endIpAddress": "17.1.1.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_2",
+        "ResourceName": "ClientIPAddress_2",
+        "Properties": {
+          "startIpAddress": "17.1.2.1",
+          "endIpAddress": "17.1.2.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_3",
+        "ResourceName": "ClientIPAddress_3",
+        "Properties": {
+          "startIpAddress": "17.1.3.1",
+          "endIpAddress": "17.1.3.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_4",
+        "ResourceName": "ClientIPAddress_4",
+        "Properties": {
+          "startIpAddress": "17.1.4.1",
+          "endIpAddress": "17.1.4.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_5",
+        "ResourceName": "ClientIPAddress_5",
+        "Properties": {
+          "startIpAddress": "17.1.5.1",
+          "endIpAddress": "17.1.5.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_6",
+        "ResourceName": "ClientIPAddress_6",
+        "Properties": {
+          "startIpAddress": "17.1.6.1",
+          "endIpAddress": "17.1.6.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_7",
+        "ResourceName": "ClientIPAddress_7",
+        "Properties": {
+          "startIpAddress": "17.1.7.1",
+          "endIpAddress": "17.1.7.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_8",
+        "ResourceName": "ClientIPAddress_8",
+        "Properties": {
+          "startIpAddress": "17.1.8.1",
+          "endIpAddress": "17.1.8.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_9",
+        "ResourceName": "ClientIPAddress_9",
+        "Properties": {
+          "startIpAddress": "17.1.9.1",
+          "endIpAddress": "17.1.9.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_10",
+        "ResourceName": "ClientIPAddress_10",
+        "Properties": {
+          "startIpAddress": "17.1.10.1",
+          "endIpAddress": "17.1.10.1"
+        }
+      },
+      {
+        "Type": "Microsoft.Cache/redis/firewallRules",
+        "ResourceType": "Microsoft.Cache/redis/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ResourceGroupName": "test-rg",
+        "Name": "ClientIPAddress_11",
+        "ResourceName": "ClientIPAddress_11",
+        "Properties": {
+          "startIpAddress": "17.1.11.1",
+          "endIpAddress": "17.1.11.1"
+        }
+      }
+    ],
+    "zones": ["2", "3", "1"]
+  },
+  {
+    "Name": "redis-F",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-F",
+    "ResourceName": "redis-F",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "redisVersion": "3.2.7",
+      "sku": {
+        "name": "Premium",
+        "family": "P",
+        "capacity": 2
+      },
+      "minimumTlsVersion": "1.2",
+      "enableNonSslPort": false,
+      "redisConfiguration": {
+        "maxclients": "2000",
+        "maxmemory-policy": "volatile-lru"
+      },
+      "accessKeys": null,
+      "hostName": "redis-F.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "replicasPerMaster": 2
+    },
+    "zones": ["1"]
+  },
+  {
+    "Name": "redis-G",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-G",
+    "ResourceName": "redis-G",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "redisVersion": "3.2.7",
+      "sku": {
+        "name": "Premium",
+        "family": "P",
+        "capacity": 3
+      },
+      "minimumTlsVersion": "1.2",
+      "enableNonSslPort": false,
+      "redisConfiguration": {
+        "maxclients": "2000",
+        "maxmemory-policy": "volatile-lru"
+      },
+      "accessKeys": null,
+      "hostName": "redis-G.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "replicasPerMaster": 1
+    },
+    "zones": ["1", "2", "3"]
+  },
+  {
+    "Name": "redis-H",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-H",
+    "ResourceName": "redis-H",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "Antarctica North",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "redisVersion": "3.2.7",
+      "sku": {
+        "name": "Premium",
+        "family": "P",
+        "capacity": 4
+      },
+      "minimumTlsVersion": "1.2",
+      "enableNonSslPort": false,
+      "redisConfiguration": {
+        "maxclients": "2000",
+        "maxmemory-policy": "volatile-lru"
+      },
+      "accessKeys": null,
+      "hostName": "redis-H.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "replicasPerMaster": 1
+    },
+    "zones": []
+  },
+  {
+    "Name": "redis-I",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-I",
+    "ResourceName": "redis-I",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "antarcticasouth",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "redisVersion": "3.2.7",
+      "sku": {
+        "name": "Premium",
+        "family": "P",
+        "capacity": 5
+      },
+      "minimumTlsVersion": "1.2",
+      "enableNonSslPort": false,
+      "redisConfiguration": {
+        "maxclients": "2000",
+        "maxmemory-policy": "volatile-lru"
+      },
+      "accessKeys": null,
+      "hostName": "redis-I.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "replicasPerMaster": 1
+    },
+    "zones": []
+  },
+  {
+    "Name": "redis-J",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Redis/redis-G",
+    "ResourceName": "redis-J",
+    "ResourceType": "Microsoft.Cache/Redis",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "redisVersion": "3.2.7",
+      "sku": {
+        "name": "Premium",
+        "family": "P",
+        "capacity": 2
+      },
+      "minimumTlsVersion": "1.2",
+      "enableNonSslPort": false,
+      "redisConfiguration": {
+        "maxclients": "2000",
+        "maxmemory-policy": "volatile-lru"
+      },
+      "accessKeys": null,
+      "hostName": "redis-J.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": [],
+      "replicasPerMaster": 1
+    },
+    "zones": ["1", "2", "3"]
+  },
+  {
+    "Name": "redis-K",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/Microsoft.Cache/redisEnterprise/redis-K",
+    "ResourceName": "redis-K",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "minimumTlsVersion": "1.2",
+      "hostName": "redis-K.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "Enterprise_E10",
+      "capacity": 2
+    },
+    "zones": ["1", "2", "3"]
+  },
+  {
+    "Name": "redis-L",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-L",
+    "ResourceName": "redis-L",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "minimumTlsVersion": "1.2",
+      "hostName": "redis-L.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "Enterprise_E20",
+      "capacity": 4
+    },
+    "zones": []
+  },
+  {
+    "Name": "redis-M",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-M",
+    "ResourceName": "redis-M",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "Antarctica North",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "minimumTlsVersion": "1.2",
+      "hostName": "redis-M.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "Enterprise_E50",
+      "capacity": 6
+    },
+    "zones": []
+  },
+  {
+    "Name": "redis-N",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-N",
+    "ResourceName": "redis-N",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "antarcticasouth",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "minimumTlsVersion": "1.2",
+      "hostName": "redis-N.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "Enterprise_E100",
+      "capacity": 8
+    },
+    "zones": []
+  },
+  {
+    "Name": "redis-O",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-O",
+    "ResourceName": "redis-O",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "minimumTlsVersion": "1.2",
+      "hostName": "redis-O.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "EnterpriseFlash_F300",
+      "capacity": 3
+    },
+    "zones": ["1", "2", "3"]
+  },
+  {
+    "Name": "redis-P",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-P",
+    "ResourceName": "redis-P",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "minimumTlsVersion": "1.2",
+      "hostName": "redis-P.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "EnterpriseFlash_F700",
+      "capacity": 9
+    },
+    "zones": []
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-004/providers/Microsoft.Cache/Redis/redis-Q",
+    "location": "australiaeast",
+    "name": "redis-Q",
+    "type": "Microsoft.Cache/Redis",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "redisVersion": "6.0.14",
+      "sku": {
+        "name": "Standard",
+        "family": "C",
+        "capacity": 0
+      },
+      "enableNonSslPort": false,
+      "instances": [
+        {
+          "sslPort": 15000,
+          "isMaster": true,
+          "isPrimary": true
+        },
+        {
+          "sslPort": 15001,
+          "isMaster": false,
+          "isPrimary": false
+        }
+      ],
+      "minimumTlsVersion": "1.2",
+      "publicNetworkAccess": "Enabled",
+      "redisConfiguration": {
+        "maxclients": "256",
+        "maxmemory-reserved": "30",
+        "maxfragmentationmemory-reserved": "30",
+        "maxmemory-delta": "30"
+      },
+      "accessKeys": null,
+      "hostName": "redis-Q.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": []
+    },
+    "identity": {
+      "type": "SystemAssigned",
+      "principalId": "00000000-0000-0000-0000-000000000000",
+      "tenantId": "00000000-0000-0000-0000-000000000000"
     }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-004/providers/Microsoft.Cache/Redis/redis-R",
+    "location": "australiaeast",
+    "name": "redis-R",
+    "type": "Microsoft.Cache/Redis",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "redisVersion": "6.0.14",
+      "enableNonSslPort": false,
+      "instances": [
+        {
+          "sslPort": 15000,
+          "isMaster": true,
+          "isPrimary": true
+        },
+        {
+          "sslPort": 15001,
+          "isMaster": false,
+          "isPrimary": false
+        }
+      ],
+      "minimumTlsVersion": "1.2",
+      "publicNetworkAccess": "Enabled",
+      "redisConfiguration": {
+        "maxclients": "256",
+        "maxmemory-reserved": "30",
+        "maxfragmentationmemory-reserved": "30",
+        "maxmemory-delta": "30"
+      },
+      "accessKeys": null,
+      "hostName": "redis-R.redis.cache.windows.net",
+      "port": 6379,
+      "sslPort": 6380,
+      "linkedServers": []
+    }
+  },
+  {
+    "Name": "redis-S",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Cache/redisEnterprise/redis-S",
+    "ResourceName": "redis-S",
+    "ResourceType": "Microsoft.Cache/redisEnterprise",
+    "ResourceGroupName": "test-rg",
+    "Location": "australiaeast",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": {},
+    "Properties": {
+      "hostName": "redis-S.redis.cache.windows.net"
+    },
+    "sku": {
+      "name": "EnterpriseFlash_F1500",
+      "capacity": 15
+    },
+    "zones": []
+  }
 ]

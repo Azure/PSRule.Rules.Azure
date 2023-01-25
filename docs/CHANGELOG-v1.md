@@ -24,8 +24,727 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.23.0:
+
+- General improvements:
+  - Updated `Export-AzRuleData` to improve export performance by @BernieWhite.
+    [#1341](https://github.com/Azure/PSRule.Rules.Azure/issues/1341)
+    - Removed `Az.Resources` dependency.
+    - Added async threading for export concurrency.
+    - Improved performance by using automatic look up of API versions by using provider cache.
+- Engineering:
+  - Bump PSRule to v2.7.0.
+    [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
+  - Bump Az.Resources to v6.5.1.
+    [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
+  - Bump Newtonsoft.Json to v13.0.2.
+    [#1903](https://github.com/Azure/PSRule.Rules.Azure/pull/1903)
+  - Bump Pester to v5.4.0.
+    [#1994](https://github.com/Azure/PSRule.Rules.Azure/pull/1994)
+- Bug fixes:
+  - Fixed `Export-AzRuleData` may not export all data if throttled by @BernieWhite.
+    [#1341](https://github.com/Azure/PSRule.Rules.Azure/issues/1341)
+
+## v1.23.0
+
+What's changed since v1.22.2:
+
+- New features:
+  - Added December 2022 baselines `Azure.GA_2022_12` and `Azure.Preview_2022_12` by @BernieWhite.
+    [#1961](https://github.com/Azure/PSRule.Rules.Azure/issues/1961)
+    - Includes rules released before or during December 2022.
+    - Marked `Azure.GA_2022_09` and `Azure.Preview_2022_09` baselines as obsolete.
+- New rules:
+  - API Management:
+    - Check API management instances has multi-region deployment gateways enabled by @BenjaminEngeset.
+      [#1910](https://github.com/Azure/PSRule.Rules.Azure/issues/1910)
+  - Application Gateway:
+    - Check Application Gateways names meet naming requirements by @BenjaminEngeset.
+      [#1943](https://github.com/Azure/PSRule.Rules.Azure/issues/1943)
+  - Azure Cache for Redis:
+    - Check Azure Cache for Redis instances uses Redis 6 by @BenjaminEngeset.
+      [#1077](https://github.com/Azure/PSRule.Rules.Azure/issues/1077)
+  - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers limits the amount of firewall permitted IP addresses by @BenjaminEngeset.
+      [#1856](https://github.com/Azure/PSRule.Rules.Azure/issues/1856)
+    - Check Azure Database for MariaDB servers limits the amount of firewall rules allowed by @BenjaminEngeset.
+      [#1855](https://github.com/Azure/PSRule.Rules.Azure/issues/1855)
+    - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
+      [#1857](https://github.com/Azure/PSRule.Rules.Azure/issues/1857)
+  - Bastion:
+    - Check Bastion hosts names meet naming requirements by @BenjaminEngeset.
+      [#1950](https://github.com/Azure/PSRule.Rules.Azure/issues/1950)
+  - Recovery Services Vault:
+    - Check Recovery Services vaults names meet naming requirements by @BenjaminEngeset.
+      [#1953](https://github.com/Azure/PSRule.Rules.Azure/issues/1953)
+  - Virtual Machine:
+    - Check virtual machines has Azure Monitor Agent installed by @BenjaminEngeset.
+      [#1868](https://github.com/Azure/PSRule.Rules.Azure/issues/1868)
+  - Virtual Machine Scale Sets:
+    - Check virtual machine scale sets has Azure Monitor Agent installed by @BenjaminEngeset.
+      [#1867](https://github.com/Azure/PSRule.Rules.Azure/issues/1867)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.25.4` by @BernieWhite.
+      [#1960](https://github.com/Azure/PSRule.Rules.Azure/issues/1960)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- General improvements:
+  - Improves handling for policy definition modes by using support tags selector by @BernieWhite.
+    [#1946](https://github.com/Azure/PSRule.Rules.Azure/issues/1946)
+  - Added support to export exemptions related to policy assignments by @BernieWhite.
+    [#1888](https://github.com/Azure/PSRule.Rules.Azure/issues/1888)
+  - Added support for Bicep `flatten` function by @BernieWhite.
+    [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
+- Engineering:
+  - Bump Az.Resources to v6.5.0.
+    [#1945](https://github.com/Azure/PSRule.Rules.Azure/pull/1945)
+  - Bump Microsoft.NET.Test.Sdk v17.4.1.
+    [#1964](https://github.com/Azure/PSRule.Rules.Azure/pull/1964)
+- Bug fixes:
+  - Fixed Azure.AKS.Version ignore clusters with auto-upgrade enabled by @BenjaminEngeset.
+    [#1926](https://github.com/Azure/PSRule.Rules.Azure/issues/1926)
+
+What's changed since pre-release v1.23.0-B0072:
+
+- No additional changes.
+
+## v1.23.0-B0072 (pre-release)
+
+What's changed since pre-release v1.23.0-B0046:
+
+- New features:
+  - Added December 2022 baselines `Azure.GA_2022_12` and `Azure.Preview_2022_12` by @BernieWhite.
+    [#1961](https://github.com/Azure/PSRule.Rules.Azure/issues/1961)
+    - Includes rules released before or during December 2022.
+    - Marked `Azure.GA_2022_09` and `Azure.Preview_2022_09` baselines as obsolete.
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.25.4` by @BernieWhite.
+      [#1960](https://github.com/Azure/PSRule.Rules.Azure/issues/1960)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- General improvements:
+  - Improves handling for policy definition modes by using support tags selector by @BernieWhite.
+    [#1946](https://github.com/Azure/PSRule.Rules.Azure/issues/1946)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk v17.4.1.
+    [#1964](https://github.com/Azure/PSRule.Rules.Azure/pull/1964)
+
+## v1.23.0-B0046 (pre-release)
+
+What's changed since pre-release v1.23.0-B0025:
+
+- New rules:
+  - Bastion:
+    - Check Bastion hosts names meet naming requirements by @BenjaminEngeset.
+      [#1950](https://github.com/Azure/PSRule.Rules.Azure/issues/1950)
+  - Recovery Services Vault:
+    - Check Recovery Services vaults names meet naming requirements by @BenjaminEngeset.
+      [#1953](https://github.com/Azure/PSRule.Rules.Azure/issues/1953)
+- Bug fixes:
+  - Fixed `Azure.Deployment.SecureValue` with `reference` function expression by @BernieWhite.
+    [#1882](https://github.com/Azure/PSRule.Rules.Azure/issues/1882)
+
+## v1.23.0-B0025 (pre-release)
+
+What's changed since pre-release v1.23.0-B0009:
+
+- New rules:
+  - Application Gateway:
+    - Check Application Gateways names meet naming requirements by @BenjaminEngeset.
+      [#1943](https://github.com/Azure/PSRule.Rules.Azure/issues/1943)
+  - Azure Cache for Redis:
+    - Check Azure Cache for Redis instances uses Redis 6 by @BenjaminEngeset.
+      [#1077](https://github.com/Azure/PSRule.Rules.Azure/issues/1077)
+  - Virtual Machine Scale Sets:
+    - Check virtual machine scale sets has Azure Monitor Agent installed by @BenjaminEngeset.
+      [#1867](https://github.com/Azure/PSRule.Rules.Azure/issues/1867)
+- General improvements:
+  - Added support to export exemptions related to policy assignments by @BernieWhite.
+    [#1888](https://github.com/Azure/PSRule.Rules.Azure/issues/1888)
+  - Added support for Bicep `flatten` function by @BernieWhite.
+    [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
+- Engineering:
+  - Bump Az.Resources to v6.5.0.
+    [#1945](https://github.com/Azure/PSRule.Rules.Azure/pull/1945)
+
+## v1.23.0-B0009 (pre-release)
+
+What's changed since v1.22.1:
+
+- New rules:
+  - API Management:
+    - Check API management instances has multi-region deployment gateways enabled by @BenjaminEngeset.
+      [#1910](https://github.com/Azure/PSRule.Rules.Azure/issues/1910)
+  - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers limits the amount of firewall permitted IP addresses by @BenjaminEngeset.
+      [#1856](https://github.com/Azure/PSRule.Rules.Azure/issues/1856)
+    - Check Azure Database for MariaDB servers limits the amount of firewall rules allowed by @BenjaminEngeset.
+      [#1855](https://github.com/Azure/PSRule.Rules.Azure/issues/1855)
+    - Check Azure Database for MariaDB servers does not have Azure services bypassed on firewall by @BenjaminEngeset.
+      [#1857](https://github.com/Azure/PSRule.Rules.Azure/issues/1857)
+  - Virtual Machine:
+    - Check virtual machines has Azure Monitor Agent installed by @BenjaminEngeset.
+      [#1868](https://github.com/Azure/PSRule.Rules.Azure/issues/1868)
+- Bug fixes:
+  - Fixed Azure.AKS.Version ignore clusters with auto-upgrade enabled by @BenjaminEngeset.
+    [#1926](https://github.com/Azure/PSRule.Rules.Azure/issues/1926)
+
+## v1.22.2
+
+What's changed since v1.22.1:
+
+- Bug fixes:
+  - Fixed `Azure.Deployment.SecureValue` with `reference` function expression by @BernieWhite.
+    [#1882](https://github.com/Azure/PSRule.Rules.Azure/issues/1882)
+
+## v1.22.1
+
+What's changed since v1.22.0:
+
+- Bug fixes:
+  - Fixed template parameter does not use the required format by @BernieWhite.
+    [#1930](https://github.com/Azure/PSRule.Rules.Azure/issues/1930)
+
+## v1.22.0
+
+What's changed since v1.21.2:
+
+- New rules:
+  - API Management:
+    - Check API management instances uses multi-region deployment by @BenjaminEngeset.
+      [#1030](https://github.com/Azure/PSRule.Rules.Azure/issues/1030)
+    - Check api management instances limits control plane API calls to apim with version `'2021-08-01'` or newer by @BenjaminEngeset.
+      [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
+  - App Service Environment:
+    - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @BenjaminEngeset.
+      [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+  - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers, databases, firewall rules and VNET rules names meet naming requirements by @BenjaminEngeset.
+      [#1854](https://github.com/Azure/PSRule.Rules.Azure/issues/1854)
+    - Check Azure Database for MariaDB servers only uses TLS 1.2 version by @BenjaminEngeset.
+      [#1853](https://github.com/Azure/PSRule.Rules.Azure/issues/1853)
+    - Check Azure Database for MariaDB servers only accept encrypted connections by @BenjaminEngeset.
+      [#1852](https://github.com/Azure/PSRule.Rules.Azure/issues/1852)
+    - Check Azure Database for MariaDB servers have Microsoft Defender configured by @BenjaminEngeset.
+      [#1850](https://github.com/Azure/PSRule.Rules.Azure/issues/1850)
+    - Check Azure Database for MariaDB servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#1848](https://github.com/Azure/PSRule.Rules.Azure/issues/1848)
+  - Azure Database for PostgreSQL:
+    - Check Azure Database for PostgreSQL servers have Microsoft Defender configured by @BenjaminEngeset.
+      [#286](https://github.com/Azure/PSRule.Rules.Azure/issues/286)
+    - Check Azure Database for PostgreSQL servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#285](https://github.com/Azure/PSRule.Rules.Azure/issues/285)
+  - Azure Database for MySQL:
+    - Check Azure Database for MySQL servers have Microsoft Defender configured by @BenjaminEngeset.
+      [#287](https://github.com/Azure/PSRule.Rules.Azure/issues/287)
+    - Check Azure Database for MySQL servers uses the flexible deployment model by @BenjaminEngeset.
+      [#1841](https://github.com/Azure/PSRule.Rules.Azure/issues/1841)
+    - Check Azure Database for MySQL Flexible Servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#1840](https://github.com/Azure/PSRule.Rules.Azure/issues/1840)
+    - Check Azure Database for MySQL servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#284](https://github.com/Azure/PSRule.Rules.Azure/issues/284)
+  - Azure Resource Deployments:
+    - Check for nested deployment that are scoped to `outer` and passing secure values by @ms-sambell.
+      [#1475](https://github.com/Azure/PSRule.Rules.Azure/issues/1475)
+    - Check custom script extension uses protected settings for secure values by @ms-sambell.
+      [#1478](https://github.com/Azure/PSRule.Rules.Azure/issues/1478)
+  - Front Door:
+    - Check front door uses caching by @BenjaminEngeset.
+      [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
+  - Virtual Machine:
+    - Check virtual machines running SQL Server uses Premium disks or above by @BenjaminEngeset.
+      [#9](https://github.com/Azure/PSRule.Rules.Azure/issues/9)
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has an AzureFirewallSubnet by @BernieWhite.
+      [#875](https://github.com/Azure/PSRule.Rules.Azure/issues/875)
+- General improvements:
+  - Added debug logging improvements for Bicep expansion by @BernieWhite.
+    [#1901](https://github.com/Azure/PSRule.Rules.Azure/issues/1901)
+- Engineering:
+  - Bump PSRule to v2.6.0.
+    [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
+  - Bump Az.Resources to v6.4.1.
+    [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
+  - Bump Microsoft.NET.Test.Sdk to v17.4.0
+    [#1838](https://github.com/Azure/PSRule.Rules.Azure/pull/1838)
+  - Bump coverlet.collector to v3.2.0.
+    [#1814](https://github.com/Azure/PSRule.Rules.Azure/pull/1814)
+- Bug fixes:
+  - Fixed ref and name duplicated by @BernieWhite.
+    [#1876](https://github.com/Azure/PSRule.Rules.Azure/issues/1876)
+  - Fixed an item with the same key for parameters by @BernieWhite
+    [#1871](https://github.com/Azure/PSRule.Rules.Azure/issues/1871)
+  - Fixed policy parse of `requestContext` function by @BernieWhite.
+    [#1654](https://github.com/Azure/PSRule.Rules.Azure/issues/1654)
+  - Fixed handling of policy type field by @BernieWhite.
+    [#1323](https://github.com/Azure/PSRule.Rules.Azure/issues/1323)
+  - Fixed `Azure.AppService.WebProbe` with non-boolean value set by @BernieWhite.
+    [#1906](https://github.com/Azure/PSRule.Rules.Azure/issues/1906)
+  - Fixed managed identity flagged as secret by `Azure.Deployment.OutputSecretValue` by @BernieWhite.
+    [#1826](https://github.com/Azure/PSRule.Rules.Azure/issues/1826)
+    [#1886](https://github.com/Azure/PSRule.Rules.Azure/issues/1886)
+  - Fixed missing support for diagnostic settings category groups by @BenjaminEngeset.
+    [#1873](https://github.com/Azure/PSRule.Rules.Azure/issues/1873)
+
+What's changed since pre-release v1.22.0-B0203:
+
+- No additional changes.
+
+## v1.22.0-B0203 (pre-release)
+
+What's changed since pre-release v1.22.0-B0153:
+
+- General improvements:
+  - Added debug logging improvements for Bicep expansion by @BernieWhite.
+    [#1901](https://github.com/Azure/PSRule.Rules.Azure/issues/1901)
+- Bug fixes:
+  - Fixed `Azure.AppService.WebProbe` with non-boolean value set by @BernieWhite.
+    [#1906](https://github.com/Azure/PSRule.Rules.Azure/issues/1906)
+
+## v1.22.0-B0153 (pre-release)
+
+What's changed since pre-release v1.22.0-B0106:
+
+- Bug fixes:
+  - Fixed managed identity flagged as secret by `Azure.Deployment.OutputSecretValue` by @BernieWhite.
+    [#1826](https://github.com/Azure/PSRule.Rules.Azure/issues/1826)
+    [#1886](https://github.com/Azure/PSRule.Rules.Azure/issues/1886)
+
+## v1.22.0-B0106 (pre-release)
+
+What's changed since pre-release v1.22.0-B0062:
+
+- New rules:
+  - API Management:
+    - Check API management instances uses multi-region deployment by @BenjaminEngeset.
+      [#1030](https://github.com/Azure/PSRule.Rules.Azure/issues/1030)
+  - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers, databases, firewall rules and VNET rules names meet naming requirements by @BenjaminEngeset.
+      [#1854](https://github.com/Azure/PSRule.Rules.Azure/issues/1854)
+- Engineering:
+  - Bump PSRule to v2.6.0.
+    [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
+  - Bump Az.Resources to v6.4.1.
+    [#1883](https://github.com/Azure/PSRule.Rules.Azure/pull/1883)
+- Bug fixes:
+  - Fixed ref and name duplicated by @BernieWhite.
+    [#1876](https://github.com/Azure/PSRule.Rules.Azure/issues/1876)
+  - Fixed an item with the same key for parameters by @BernieWhite
+    [#1871](https://github.com/Azure/PSRule.Rules.Azure/issues/1871)
+  - Fixed policy parse of `requestContext` function by @BernieWhite.
+    [#1654](https://github.com/Azure/PSRule.Rules.Azure/issues/1654)
+  - Fixed handling of policy type field by @BernieWhite.
+    [#1323](https://github.com/Azure/PSRule.Rules.Azure/issues/1323)
+
+## v1.22.0-B0062 (pre-release)
+
+What's changed since pre-release v1.22.0-B0026:
+
+- New rules:
+  - Azure Database for MariaDB:
+    - Check Azure Database for MariaDB servers only uses TLS 1.2 version by @BenjaminEngeset.
+      [#1853](https://github.com/Azure/PSRule.Rules.Azure/issues/1853)
+    - Check Azure Database for MariaDB servers only accept encrypted connections by @BenjaminEngeset.
+      [#1852](https://github.com/Azure/PSRule.Rules.Azure/issues/1852)
+    - Check Azure Database for MariaDB servers have Microsoft Defender configured by @BenjaminEngeset.
+      [#1850](https://github.com/Azure/PSRule.Rules.Azure/issues/1850)
+    - Check Azure Database for MariaDB servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#1848](https://github.com/Azure/PSRule.Rules.Azure/issues/1848)
+  - Azure Database for PostgreSQL:
+    - Check Azure Database for PostgreSQL servers have Microsoft Defender configured by @BenjaminEngeset.
+      [#286](https://github.com/Azure/PSRule.Rules.Azure/issues/286)
+    - Check Azure Database for PostgreSQL servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#285](https://github.com/Azure/PSRule.Rules.Azure/issues/285)
+  - Azure Database for MySQL:
+    - Check Azure Database for MySQL servers have Microsoft Defender configured by @BenjaminEngeset.
+      [#287](https://github.com/Azure/PSRule.Rules.Azure/issues/287)
+    - Check Azure Database for MySQL servers uses the flexible deployment model by @BenjaminEngeset.
+      [#1841](https://github.com/Azure/PSRule.Rules.Azure/issues/1841)
+    - Check Azure Database for MySQL Flexible Servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#1840](https://github.com/Azure/PSRule.Rules.Azure/issues/1840)
+    - Check Azure Database for MySQL servers have geo-redundant backup configured by @BenjaminEngeset.
+      [#284](https://github.com/Azure/PSRule.Rules.Azure/issues/284)
+  - Azure Resource Deployments:
+    - Check for nested deployment that are scoped to `outer` and passing secure values by @ms-sambell.
+      [#1475](https://github.com/Azure/PSRule.Rules.Azure/issues/1475)
+    - Check custom script extension uses protected settings for secure values by @ms-sambell.
+      [#1478](https://github.com/Azure/PSRule.Rules.Azure/issues/1478)
+  - Virtual Machine:
+    - Check virtual machines running SQL Server uses Premium disks or above by @BenjaminEngeset.
+      [#9](https://github.com/Azure/PSRule.Rules.Azure/issues/9)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.4.0
+    [#1838](https://github.com/Azure/PSRule.Rules.Azure/pull/1838)
+  - Bump coverlet.collector to v3.2.0.
+    [#1814](https://github.com/Azure/PSRule.Rules.Azure/pull/1814)
+- Bug fixes:
+  - Fixed missing support for diagnostic settings category groups by @BenjaminEngeset.
+    [#1873](https://github.com/Azure/PSRule.Rules.Azure/issues/1873)
+
+## v1.22.0-B0026 (pre-release)
+
+What's changed since pre-release v1.22.0-B0011:
+
+- New rules:
+  - API Management:
+    - Check api management instances limits control plane API calls to apim with version `'2021-08-01'` or newer by @BenjaminEngeset.
+      [#1819](https://github.com/Azure/PSRule.Rules.Azure/issues/1819)
+- Engineering:
+  - Bump Az.Resources to v6.4.0.
+    [#1829](https://github.com/Azure/PSRule.Rules.Azure/pull/1829)
+- Bug fixes:
+  - Fixed non-Linux VM images flagged as Linux by @BernieWhite.
+    [#1825](https://github.com/Azure/PSRule.Rules.Azure/issues/1825)
+  - Fixed failed to expand with last function on runtime property by @BernieWhite.
+    [#1830](https://github.com/Azure/PSRule.Rules.Azure/issues/1830)
+
+## v1.22.0-B0011 (pre-release)
+
+What's changed since v1.21.0:
+
+- New rules:
+  - App Service Environment:
+    - Check app service environments uses version 3 (ASEv3) instead of classic version 1 (ASEv1) and version 2 (ASEv2) by @BenjaminEngeset.
+      [#1805](https://github.com/Azure/PSRule.Rules.Azure/issues/1805)
+  - Front Door:
+    - Check front door uses caching by @BenjaminEngeset.
+      [#548](https://github.com/Azure/PSRule.Rules.Azure/issues/548)
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has an AzureFirewallSubnet by @BernieWhite.
+      [#875](https://github.com/Azure/PSRule.Rules.Azure/issues/875)
+
+## v1.21.2
+
+What's changed since v1.21.1:
+
+- Bug fixes:
+  - Fixed non-Linux VM images flagged as Linux by @BernieWhite.
+    [#1825](https://github.com/Azure/PSRule.Rules.Azure/issues/1825)
+  - Fixed failed to expand with last function on runtime property by @BernieWhite.
+    [#1830](https://github.com/Azure/PSRule.Rules.Azure/issues/1830)
+
+## v1.21.1
+
+What's changed since v1.21.0:
+
+- Bug fixes:
+  - Fixed multiple nested parameter loops returns stack empty exception by @BernieWhite.
+    [#1811](https://github.com/Azure/PSRule.Rules.Azure/issues/1811)
+  - Fixed `Azure.ACR.ContentTrust` when customer managed keys are enabled by @BernieWhite.
+    [#1810](https://github.com/Azure/PSRule.Rules.Azure/issues/1810)
+
+## v1.21.0
+
+What's changed since v1.20.2:
+
+- New features:
+  - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
+    [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
+- New rules:
+  - Deployment:
+    - Check sensitive resource values use secure parameters by @VeraBE @BernieWhite.
+      [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
+  - Service Bus:
+    - Check service bus namespaces uses TLS 1.2 version by @BenjaminEngeset.
+      [#1777](https://github.com/Azure/PSRule.Rules.Azure/issues/1777)
+  - Virtual Machine:
+    - Check virtual machines uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @BenjaminEngeset.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+  - Virtual Machine Scale Sets:
+    - Check virtual machine scale sets uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @BenjaminEngeset.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @BenjaminEngeset.
+      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
+- General improvements:
+  - Added built-in list of ignored policy definitions by @BernieWhite.
+    [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)
+    - To ignore additional policy definitions, use the `AZURE_POLICY_IGNORE_LIST` configuration option.
+- Engineering:
+  - Bump PSRule to v2.5.3.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+  - Bump Az.Resources to v6.3.1.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+
+What's changed since pre-release v1.21.0-B0050:
+
+- No additional changes.
+
+## v1.21.0-B0050 (pre-release)
+
+What's changed since pre-release v1.21.0-B0027:
+
+- New rules:
+  - Virtual Machine:
+    - Check virtual machines uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @BenjaminEngeset.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+  - Virtual Machine Scale Sets:
+    - Check virtual machine scale sets uses Azure Monitor Agent instead of old legacy Log Analytics Agent by @BenjaminEngeset.
+      [#1792](https://github.com/Azure/PSRule.Rules.Azure/issues/1792)
+- Engineering:
+  - Bump PSRule to v2.5.3.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+  - Bump Az.Resources to v6.3.1.
+    [#1800](https://github.com/Azure/PSRule.Rules.Azure/pull/1800)
+- Bug fixes:
+  - Fixed contains function unable to match array by @BernieWhite.
+    [#1793](https://github.com/Azure/PSRule.Rules.Azure/issues/1793)
+
+## v1.21.0-B0027 (pre-release)
+
+What's changed since pre-release v1.21.0-B0011:
+
+- New rules:
+  - Deployment:
+    - Check sensitive resource values use secure parameters by @VeraBE @BernieWhite.
+      [#1773](https://github.com/Azure/PSRule.Rules.Azure/issues/1773)
+  - Service Bus:
+    - Check service bus namespaces uses TLS 1.2 version by @BenjaminEngeset.
+      [#1777](https://github.com/Azure/PSRule.Rules.Azure/issues/1777)
+
+## v1.21.0-B0011 (pre-release)
+
+What's changed since v1.20.1:
+
+- New features:
+  - Mapping of Azure Security Benchmark v3 to security rules by @jagoodwin.
+    [#1610](https://github.com/Azure/PSRule.Rules.Azure/issues/1610)
+- New rules:
+  - Virtual Network:
+    - Check VNETs with a GatewaySubnet also has a AzureBastionSubnet by @BenjaminEngeset.
+      [#1761](https://github.com/Azure/PSRule.Rules.Azure/issues/1761)
+- General improvements:
+  - Added built-in list of ignored policy definitions by @BernieWhite.
+    [#1730](https://github.com/Azure/PSRule.Rules.Azure/issues/1730)
+    - To ignore additional policy definitions, use the `AZURE_POLICY_IGNORE_LIST` configuration option.
+- Engineering:
+  - Bump PSRule to v2.5.1.
+    [#1782](https://github.com/Azure/PSRule.Rules.Azure/pull/1782)
+  - Bump Az.Resources to v6.3.0.
+    [#1782](https://github.com/Azure/PSRule.Rules.Azure/pull/1782)
+
+## v1.20.2
+
+What's changed since v1.20.1:
+
+- Bug fixes:
+  - Fixed contains function unable to match array by @BernieWhite.
+    [#1793](https://github.com/Azure/PSRule.Rules.Azure/issues/1793)
+
+## v1.20.1
+
+What's changed since v1.20.0:
+
+- Bug fixes:
+  - Fixed expand bicep source when reading JsonContent into a parameter by @BernieWhite.
+    [#1780](https://github.com/Azure/PSRule.Rules.Azure/issues/1780)
+
+## v1.20.0
+
+What's changed since v1.19.2:
+
+- New features:
+  - Added September 2022 baselines `Azure.GA_2022_09` and `Azure.Preview_2022_09` by @BernieWhite.
+    [#1738](https://github.com/Azure/PSRule.Rules.Azure/issues/1738)
+    - Includes rules released before or during September 2022.
+    - Marked `Azure.GA_2022_06` and `Azure.Preview_2022_06` baselines as obsolete.
+- New rules:
+  - AKS:
+    - Check clusters use Ephemeral OS disk by @BenjaminEngeset.
+      [#1618](https://github.com/Azure/PSRule.Rules.Azure/issues/1618)
+  - App Configuration:
+    - Check app configuration store has purge protection enabled by @BenjaminEngeset.
+      [#1689](https://github.com/Azure/PSRule.Rules.Azure/issues/1689)
+    - Check app configuration store has one or more replicas by @BenjaminEngeset.
+      [#1688](https://github.com/Azure/PSRule.Rules.Azure/issues/1688)
+    - Check app configuration store audit diagnostic logs are enabled by @BenjaminEngeset.
+      [#1690](https://github.com/Azure/PSRule.Rules.Azure/issues/1690)
+    - Check identity-based authentication is used for configuration stores by @pazdedav.
+      [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
+  - Application Gateway WAF:
+    - Check policy is enabled by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy uses prevention mode by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy uses managed rule sets by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy does not have any exclusions defined by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+  - Azure Cache for Redis:
+    - Check the number of firewall rules for caches by @jonathanruiz.
+      [#544](https://github.com/Azure/PSRule.Rules.Azure/issues/544)
+    - Check the number of IP addresses in firewall rules for caches by @jonathanruiz.
+      [#544](https://github.com/Azure/PSRule.Rules.Azure/issues/544)
+  - CDN:
+    - Check CDN profile uses Front Door Standard or Premium tier by @BenjaminEngeset.
+      [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
+  - Container Registry:
+    - Check soft delete policy is enabled by @BenjaminEngeset.
+      [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
+  - Defender for Cloud:
+    - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for Virtual Machines by @jdewisscher.
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for SQL Servers by @jdewisscher.
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for App Services by @jdewisscher.
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for Storage Accounts by @jdewisscher.
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Cloud is enabled for SQL Servers on machines by @jdewisscher.
+      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+  - Deployment:
+    - Check that nested deployments securely pass through administrator usernames by @ms-sambell.
+      [#1479](https://github.com/Azure/PSRule.Rules.Azure/issues/1479)
+  - Front Door WAF:
+    - Check policy is enabled by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy uses prevention mode by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy uses managed rule sets by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+    - Check policy does not have any exclusions defined by @fbinotto.
+      [#1470](https://github.com/Azure/PSRule.Rules.Azure/issues/1470)
+  - Network Security Group:
+    - Check AKS managed NSGs don't contain custom rules by @ms-sambell.
+      [#8](https://github.com/Azure/PSRule.Rules.Azure/issues/8)
+  - Storage Account:
+    - Check blob container soft delete is enabled by @pazdedav.
+      [#1671](https://github.com/Azure/PSRule.Rules.Azure/issues/1671)
+    - Check file share soft delete is enabled by @jonathanruiz.
+      [#966](https://github.com/Azure/PSRule.Rules.Azure/issues/966)
+  - VMSS:
+    - Check Linux VMSS has disabled password authentication by @BenjaminEngeset.
+      [#1635](https://github.com/Azure/PSRule.Rules.Azure/issues/1635)
+- Updated rules:
+  - **Important change**: Updated rules, tests and docs with Microsoft Defender for Cloud by @jonathanruiz.
+    [#545](https://github.com/Azure/PSRule.Rules.Azure/issues/545)
+    - The following rules have been renamed with aliases:
+      - Renamed `Azure.SQL.ThreatDetection` to `Azure.SQL.DefenderCloud`.
+      - Renamed `Azure.SecurityCenter.Contact` to `Azure.DefenderCloud.Contact`.
+      - Renamed `Azure.SecurityCenter.Provisioning` to `Azure.DefenderCloud.Provisioning`.
+    - If you are referencing the old names please consider updating to the new names.
+  - Updated documentation examples for Front Door and Key Vault rules by @lluppesms.
+    [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
+  - Improved the way we check that VM or VMSS has Linux by @verabe.
+    [#1704](https://github.com/Azure/PSRule.Rules.Azure/issues/1704)
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.23.8` by @BernieWhite.
+      [#1627](https://github.com/Azure/PSRule.Rules.Azure/issues/1627)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+  - Event Grid:
+    - Promoted `Azure.EventGrid.DisableLocalAuth` to GA rule set by @BernieWhite.
+      [#1628](https://github.com/Azure/PSRule.Rules.Azure/issues/1628)
+  - Key Vault:
+    - Promoted `Azure.KeyVault.AutoRotationPolicy` to GA rule set by @BernieWhite.
+      [#1629](https://github.com/Azure/PSRule.Rules.Azure/issues/1629)
+- General improvements:
+  - Updated NSG documentation with code snippets and links by @simone-bennett.
+    [#1607](https://github.com/Azure/PSRule.Rules.Azure/issues/1607)
+  - Updated Application Gateway documentation with code snippets by @ms-sambell.
+    [#1608](https://github.com/Azure/PSRule.Rules.Azure/issues/1608)
+  - Updated SQL firewall rules documentation by @ms-sambell.
+    [#1569](https://github.com/Azure/PSRule.Rules.Azure/issues/1569)
+  - Updated Container Apps documentation and rule to new resource type by @marie-schmidt.
+    [#1672](https://github.com/Azure/PSRule.Rules.Azure/issues/1672)
+  - Updated KeyVault and FrontDoor documentation with code snippets by @lluppesms.
+    [#1667](https://github.com/Azure/PSRule.Rules.Azure/issues/1667)
+  - Added tag and annotation metadata from policy for rules generation by @BernieWhite.
+    [#1652](https://github.com/Azure/PSRule.Rules.Azure/issues/1652)
+  - Added hash to `name` and `ref` properties for policy rules by @ArmaanMcleod.
+    [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
+    - Use `AZURE_POLICY_RULE_PREFIX` or `Export-AzPolicyAssignmentRuleData -RulePrefix` to override rule prefix.
+- Engineering:
+  - Bump PSRule to v2.4.2.
+    [#1753](https://github.com/Azure/PSRule.Rules.Azure/pull/1753)
+    [#1748](https://github.com/Azure/PSRule.Rules.Azure/issues/1748)
+  - Bump Microsoft.NET.Test.Sdk to v17.3.2.
+    [#1719](https://github.com/Azure/PSRule.Rules.Azure/pull/1719)
+  - Updated provider data for analysis.
+    [#1605](https://github.com/Azure/PSRule.Rules.Azure/pull/1605)
+  - Bump Az.Resources to v6.2.0.
+    [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
+  - Bump PSScriptAnalyzer to v1.21.0.
+    [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
+- Bug fixes:
+  - Fixed continue processing policy assignments on error by @BernieWhite.
+    [#1651](https://github.com/Azure/PSRule.Rules.Azure/issues/1651)
+  - Fixed handling of runtime assessment data by @BernieWhite.
+    [#1707](https://github.com/Azure/PSRule.Rules.Azure/issues/1707)
+  - Fixed conversion of type conditions to pre-conditions by @BernieWhite.
+    [#1708](https://github.com/Azure/PSRule.Rules.Azure/issues/1708)
+  - Fixed inconclusive failure of `Azure.Deployment.AdminUsername` by @BernieWhite.
+    [#1631](https://github.com/Azure/PSRule.Rules.Azure/issues/1631)
+  - Fixed error expanding with `json()` and single quotes by @BernieWhite.
+    [#1656](https://github.com/Azure/PSRule.Rules.Azure/issues/1656)
+  - Fixed handling key collision with duplicate definitions using same parameters by @ArmaanMcleod.
+    [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
+  - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @BenjaminEngeset.
+    [#1726](https://github.com/Azure/PSRule.Rules.Azure/issues/1726)
+  - Fixed `Azure.Deployment.AdminUsername` incorrectly fails with nested deployments by @BernieWhite.
+    [#1762](https://github.com/Azure/PSRule.Rules.Azure/issues/1762)
+  - Fixed `Azure.FrontDoorWAF.Exclusions` reports exclusions when none are specified by @BernieWhite.
+    [#1751](https://github.com/Azure/PSRule.Rules.Azure/issues/1751)
+  - Fixed `Azure.Deployment.AdminUsername` does not match the pattern by @BernieWhite.
+    [#1758](https://github.com/Azure/PSRule.Rules.Azure/issues/1758)
+  - Consider private offerings when checking that a VM or VMSS has Linux by @verabe.
+    [#1725](https://github.com/Azure/PSRule.Rules.Azure/issues/1725)
+
+What's changed since pre-release v1.20.0-B0477:
+
+- No additional changes.
+
+## v1.20.0-B0477 (pre-release)
+
+What's changed since pre-release v1.20.0-B0389:
+
+- General improvements:
+  - Added hash to `name` and `ref` properties for policy rules by @ArmaanMcleod.
+    [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
+    - Use `AZURE_POLICY_RULE_PREFIX` or `Export-AzPolicyAssignmentRuleData -RulePrefix` to override rule prefix.
+
+## v1.20.0-B0389 (pre-release)
+
+What's changed since pre-release v1.20.0-B0304:
+
+- New rules:
+  - App Configuration:
+    - Check app configuration store has purge protection enabled by @BenjaminEngeset.
+      [#1689](https://github.com/Azure/PSRule.Rules.Azure/issues/1689)
+- Bug fixes:
+  - Fixed `Azure.Deployment.AdminUsername` incorrectly fails with nested deployments by @BernieWhite.
+    [#1762](https://github.com/Azure/PSRule.Rules.Azure/issues/1762)
+
+## v1.20.0-B0304 (pre-release)
+
+What's changed since pre-release v1.20.0-B0223:
+
+- Engineering:
+  - Bump PSRule to v2.4.2.
+    [#1753](https://github.com/Azure/PSRule.Rules.Azure/pull/1753)
+    [#1748](https://github.com/Azure/PSRule.Rules.Azure/issues/1748)
+- Bug fixes:
+  - Fixed `Azure.FrontDoorWAF.Exclusions` reports exclusions when none are specified by @BernieWhite.
+    [#1751](https://github.com/Azure/PSRule.Rules.Azure/issues/1751)
+  - Fixed `Azure.Deployment.AdminUsername` does not match the pattern by @BernieWhite.
+    [#1758](https://github.com/Azure/PSRule.Rules.Azure/issues/1758)
+  - Consider private offerings when checking that a VM or VMSS has Linux by @verabe.
+    [#1725](https://github.com/Azure/PSRule.Rules.Azure/issues/1725)
+
+## v1.20.0-B0223 (pre-release)
+
 What's changed since pre-release v1.20.0-B0148:
 
+- New features:
+  - Added September 2022 baselines `Azure.GA_2022_09` and `Azure.Preview_2022_09` by @BernieWhite.
+    [#1738](https://github.com/Azure/PSRule.Rules.Azure/issues/1738)
+    - Includes rules released before or during September 2022.
+    - Marked `Azure.GA_2022_06` and `Azure.Preview_2022_06` baselines as obsolete.
+- New rules:
+  - App Configuration:
+    - Check app configuration store has one or more replicas by @BenjaminEngeset.
+      [#1688](https://github.com/Azure/PSRule.Rules.Azure/issues/1688)
 - Engineering:
   - Bump PSRule to v2.4.1.
     [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
@@ -33,6 +752,11 @@ What's changed since pre-release v1.20.0-B0148:
     [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
   - Bump PSScriptAnalyzer to v1.21.0.
     [#1636](https://github.com/Azure/PSRule.Rules.Azure/pull/1636)
+- Bug fixes:
+  - Fixed handling key collision with duplicate definitions using same parameters by @ArmaanMcleod.
+    [#1653](https://github.com/Azure/PSRule.Rules.Azure/issues/1653)
+  - Fixed bug requiring all diagnostic logs settings to have auditing enabled by @BenjaminEngeset.
+    [#1726](https://github.com/Azure/PSRule.Rules.Azure/issues/1726)
 
 ## v1.20.0-B0148 (pre-release)
 
@@ -40,7 +764,7 @@ What's changed since pre-release v1.20.0-B0085:
 
 - New rules:
   - App Configuration:
-    - Check app configuration store audit diagnostic logs are enabled by @bengeset96.
+    - Check app configuration store audit diagnostic logs are enabled by @BenjaminEngeset.
       [#1690](https://github.com/Azure/PSRule.Rules.Azure/issues/1690)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.3.2.
@@ -63,7 +787,7 @@ What's changed since pre-release v1.20.0-B0028:
     - Check identity-based authentication is used for configuration stores by @pazdedav.
       [#1691](https://github.com/Azure/PSRule.Rules.Azure/issues/1691)
   - Container Registry:
-    - Check soft delete policy is enabled by @bengeset96.
+    - Check soft delete policy is enabled by @BenjaminEngeset.
       [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
   - Defender for Cloud:
     - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
@@ -125,13 +849,13 @@ What's changed since pre-release v1.20.0-B0004:
 
 - New rules:
   - AKS:
-    - Check clusters use Ephemeral OS disk by @bengeset96.
+    - Check clusters use Ephemeral OS disk by @BenjaminEngeset.
       [#1618](https://github.com/Azure/PSRule.Rules.Azure/issues/1618)
   - CDN:
-    - Check CDN profile uses Front Door Standard or Premium tier by @bengeset96.
+    - Check CDN profile uses Front Door Standard or Premium tier by @BenjaminEngeset.
       [#1612](https://github.com/Azure/PSRule.Rules.Azure/issues/1612)
   - VMSS:
-    - Check Linux VMSS has disabled password authentication by @bengeset96.
+    - Check Linux VMSS has disabled password authentication by @BenjaminEngeset.
       [#1635](https://github.com/Azure/PSRule.Rules.Azure/issues/1635)
 - Updated rules:
   - Azure Kubernetes Service:
@@ -190,7 +914,7 @@ What's changed since v1.18.1:
 
 - New rules:
   - Azure Kubernetes Service:
-    - Check clusters use uptime SLA by @bengeset96.
+    - Check clusters use uptime SLA by @BenjaminEngeset.
       [#1601](https://github.com/Azure/PSRule.Rules.Azure/issues/1601)
 - General improvements:
   - Updated rule level for the following rules by @BernieWhite.
@@ -235,7 +959,7 @@ What's changed since pre-release v1.19.0-B0042:
 
 - New rules:
   - Azure Kubernetes Service:
-    - Check clusters use uptime SLA by @bengeset96.
+    - Check clusters use uptime SLA by @BenjaminEngeset.
       [#1601](https://github.com/Azure/PSRule.Rules.Azure/issues/1601)
 
 ## v1.19.0-B0042 (pre-release)

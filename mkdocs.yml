@@ -125,7 +125,6 @@ plugins:
     redirect_maps:
       using-metadata.md: using-templates.md
       customization/index.md: customization/storing-custom-rules.md
-      license-contributing.md: contributing/index.md
 
 extra:
   version:
@@ -143,3 +142,11 @@ extra:
     repo_id: MDEwOlJlcG9zaXRvcnkxODQxNTQ2Njg=
     category: Documentation
     category_id: DIC_kwDOCvn6LM4CQqE6
+
+  # alternate:
+  #   - name: English
+  #     link: /PSRule.Rules.Azure/en/
+  #     lang: en
+  #   - name: Spanish
+  #     link: /PSRule.Rules.Azure/es/
+  #     lang: es

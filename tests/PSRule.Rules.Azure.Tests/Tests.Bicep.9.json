@@ -1,0 +1,307 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.13.1.58284",
+      "templateHash": "8685448171369407541"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "secret_good",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "secret": {
+            "value": ""
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.13.1.58284",
+              "templateHash": "3563517143203947158"
+            }
+          },
+          "parameters": {
+            "secret": {
+              "type": "secureString"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2022-07-01",
+              "name": "keyvault/good",
+              "properties": {
+                "value": "[parameters('secret')]"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "secret_bad",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "notSecret": {
+            "value": ""
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.13.1.58284",
+              "templateHash": "13907904796621207265"
+            }
+          },
+          "parameters": {
+            "notSecret": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2022-07-01",
+              "name": "keyvault/bad",
+              "properties": {
+                "value": "[parameters('notSecret')]"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "streaming_jobs_good",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "secret": {
+            "value": ""
+          },
+          "secretFromKeyVault": {
+            "reference": {
+              "keyVault": {
+                "id": "[resourceId('Microsoft.KeyVault/vaults', 'aKeyVault')]"
+              },
+              "secretName": "aSecretName"
+            }
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.13.1.58284",
+              "templateHash": "1243191437263886583"
+            }
+          },
+          "parameters": {
+            "secret": {
+              "type": "secureString"
+            },
+            "secretFromKeyVault": {
+              "type": "secureString"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2021-09-01",
+              "name": "aStorageAccount"
+            },
+            {
+              "type": "Microsoft.StreamAnalytics/streamingjobs",
+              "apiVersion": "2021-10-01-preview",
+              "name": "goodStreamingJobs",
+              "properties": {
+                "inputs": [
+                  {
+                    "name": "inputWithSecretPassword",
+                    "properties": {
+                      "type": "Reference",
+                      "datasource": {
+                        "type": "Microsoft.Sql/Server/Database",
+                        "properties": {
+                          "password": "[parameters('secret')]"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "name": "inputUsingListKeys",
+                    "properties": {
+                      "type": "Reference",
+                      "datasource": {
+                        "type": "Microsoft.Sql/Server/Database",
+                        "properties": {
+                          "password": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount'), '2021-09-01').keys[0].value]"
+                        }
+                      }
+                    }
+                  },
+                  {
+                    "name": "inputUsingKeyVault",
+                    "properties": {
+                      "type": "Reference",
+                      "datasource": {
+                        "type": "Microsoft.Sql/Server/Database",
+                        "properties": {
+                          "password": "[parameters('secretFromKeyVault')]"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "outputs": [
+                  {
+                    "name": "outputWithoutPassword",
+                    "properties": {}
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount')]"
+              ]
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "streaming_jobs_bad",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "notSecret": {
+            "value": ""
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.13.1.58284",
+              "templateHash": "14384591199981266606"
+            }
+          },
+          "parameters": {
+            "notSecret": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.StreamAnalytics/streamingjobs",
+              "apiVersion": "2021-10-01-preview",
+              "name": "badStreamingJobs",
+              "properties": {
+                "inputs": [
+                  {
+                    "name": "inputWithoutSecretPassword",
+                    "properties": {
+                      "type": "Reference",
+                      "datasource": {
+                        "type": "Microsoft.Sql/Server/Database",
+                        "properties": {
+                          "password": "[parameters('notSecret')]"
+                        }
+                      }
+                    }
+                  }
+                ],
+                "outputs": [
+                  {
+                    "name": "outputWithoutSecretPassword",
+                    "properties": {
+                      "datasource": {
+                        "type": "Microsoft.DBForPostgreSQL/servers/databases",
+                        "properties": {
+                          "password": "[parameters('notSecret')]"
+                        }
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "reference_good",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.13.1.58284",
+              "templateHash": "9418583989023446705"
+            }
+          },
+          "parameters": {
+            "appInsightsName": {
+              "type": "string",
+              "defaultValue": "app-insights"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2022-07-01",
+              "name": "keyvault/good",
+              "properties": {
+                "value": "[reference(resourceId('Microsoft.Insights/components', parameters('appInsightsName')), '2020-02-02').InstrumentationKey]"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

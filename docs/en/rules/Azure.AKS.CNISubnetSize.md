@@ -1,6 +1,6 @@
 ---
 severity: Important
-pillar: Performance Efficiency
+pillar: Reliability
 category: Scalability
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.CNISubnetSize/
@@ -21,13 +21,13 @@ This approach requires more capacity planning ahead of time, and can result in I
 
 ## RECOMMENDATION
 
-Consider allocating a large subnet(/23 or bigger) to your AKS cluster.
+Consider allocating a larger subnet (`/23` or bigger) to your AKS cluster.
 
 ## NOTES
 
-This rule applies when analyzing resources deployed to Azure using [Export in-flight resource data](https://github.com/Azure/PSRule.Rules.Azure#export-in-flight-resource-data).
+This rule applies when analyzing resources deployed to Azure using [Export in-flight resource data](https://azure.github.io/PSRule.Rules.Azure/export-rule-data/).
 
-This rule fails when the CNI subnet size is smaller than /23.
+This rule fails when the CNI subnet size is smaller than `/23`.
 
 Configure `AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE` to set the minimum AKS CNI cluster subnet size.
 
@@ -39,7 +39,7 @@ configuration:
 
 ## LINKS
 
-- [Configure Azure CNI networking in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-azure-cni)
-- [Plan for growth](https://docs.microsoft.com/azure/architecture/framework/scalability/design-scale#plan-for-growth)
-- [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/configure-kubenet)
-- [Tutorial: Configure Azure CNI networking in Azure Kubernetes Service (AKS) using Ansible](https://docs.microsoft.com/azure/developer/ansible/aks-configure-cni-networking?tabs=ansible)
+- [Plan for growth](https://learn.microsoft.com/azure/architecture/framework/scalability/design-scale#plan-for-growth)
+- [Configure Azure CNI networking in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/configure-azure-cni)
+- [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/configure-kubenet)
+- [Tutorial: Configure Azure CNI networking in Azure Kubernetes Service (AKS) using Ansible](https://learn.microsoft.com/azure/developer/ansible/aks-configure-cni-networking)

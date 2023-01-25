@@ -315,4 +315,78 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B';
         }
     }
+
+    Context 'Resource name - Azure.AppGw.Name' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline = 'Azure.All'
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+            }
+
+            $testObject = [PSCustomObject]@{
+                Name = ''
+                ResourceType = 'Microsoft.Network/applicationGateways'
+            }
+        }
+
+        BeforeDiscovery {
+            $validNames = @(
+                'a'
+                'A'
+                'a_'
+                'A_'
+                '1'
+                '1_'
+                'contoso-001-agw'
+                'contoso.001.agw'
+                'contoso_001_agw'
+                'contoso-001-agw_'
+                'contoso.001.agw_'
+                'contoso_001_agw_'
+                'CONTOSO-001-AGW'
+                'contoso.001.AGW'
+                'contoso_001_AGW'
+                'CONTOSO-001-AGW_'
+                'CONTOSO.001.agw_'
+                'contoso_001_AGW_'
+            )
+
+            $invalidNames = @(
+                'a-'
+                'A-'
+                '_a'
+                '_A'
+                '-a'
+                '-A'
+                '_1'
+                '-1'
+                '-'
+                '_'
+                '-contoso-001-agw'
+                '-contoso-001-agw-'
+                '-_contoso-001-agw'
+                'CONTOSO-001-AGW.'
+                'CONTOSO-001-AGW-'
+                'CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-CONTOSO-AGW-001'
+            )
+        }
+
+        # Pass
+        It '<_>' -ForEach $validNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AppGw.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Pass';
+        }
+
+        # Fail
+        It '<_>' -ForEach $invalidNames {
+            $testObject.Name = $_;
+            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AppGw.Name';
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Outcome | Should -Be 'Fail';
+        }
+    }
 }

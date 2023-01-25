@@ -116,7 +116,7 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [Use managed identities in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
 - [Authenticate with managed identity](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service)

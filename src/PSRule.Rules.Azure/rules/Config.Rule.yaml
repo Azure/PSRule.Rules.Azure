@@ -30,12 +30,11 @@ spec:
     AZURE_BICEP_FILE_EXPANSION: false
 
     # Configure minimum AKS cluster version
-    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.23.8'
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.25.4'
     AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
-      - adminUsername
-      - administratorLogin
-      - administratorLoginPassword
-
+    - adminUsername
+    - administratorLogin
+    - administratorLoginPassword
 
   convention:
     include:

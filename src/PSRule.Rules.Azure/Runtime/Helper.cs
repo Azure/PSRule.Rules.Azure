@@ -1,7 +1,9 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.IO;
+using System.Linq;
 using System.Management.Automation;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data;
@@ -18,16 +20,79 @@ namespace PSRule.Rules.Azure.Runtime
     /// </summary>
     public static class Helper
     {
+        /// <summary>
+        /// Parse and reformat the expression by removing whitespace.
+        /// </summary>
         public static string CompressExpression(string expression)
         {
             return !IsTemplateExpression(expression) ? expression : ExpressionParser.Parse(expression).AsString();
         }
 
+        /// <summary>
+        /// Look for literals and variable usage.
+        /// </summary>
+        public static bool HasLiteralValue(string expression)
+        {
+            return !IsTemplateExpression(expression) ||
+                TokenStreamValidator.HasLiteralValue(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Get the name of parameters that would be assigned as values.
+        /// </summary>
+        internal static string[] GetParameterTokenValue(string expression)
+        {
+            return !IsTemplateExpression(expression)
+                ? Array.Empty<string>()
+                : TokenStreamValidator.GetParameterTokenValue(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Returns true if an expression contains a call to the listKeys function.
+        /// </summary>
+        internal static bool UsesListKeysFunction(string expression)
+        {
+            return IsTemplateExpression(expression) &&
+                TokenStreamValidator.UsesListKeysFunction(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Returns true if an expression contains a call to the reference function.
+        /// </summary>
+        internal static bool UsesReferenceFunction(string expression)
+        {
+            return IsTemplateExpression(expression) &&
+                TokenStreamValidator.UsesReferenceFunction(ExpressionParser.Parse(expression));
+        }
+
+        /// <summary>
+        /// Checks if the value of the expresion is secure, whether by using secure parameters, references to KeyVault, or the ListKeys function.
+        /// </summary>
+        public static bool HasSecureValue(string expression, string[] secureParameters)
+        {
+            if ((!string.IsNullOrEmpty(expression) && expression.StartsWith("{{Secret", StringComparison.OrdinalIgnoreCase)) ||
+                UsesListKeysFunction(expression) ||
+                UsesReferenceFunction(expression))
+                return true;
+
+            var parameterNamesInExpression = GetParameterTokenValue(expression);
+
+            return parameterNamesInExpression != null &&
+            parameterNamesInExpression.Length > 0 &&
+            parameterNamesInExpression.Intersect(secureParameters, StringComparer.OrdinalIgnoreCase).Count() == parameterNamesInExpression.Length;
+        }
+
+        /// <summary>
+        /// Check it the string is an expression.
+        /// </summary>
         public static bool IsTemplateExpression(string expression)
         {
             return ExpressionParser.IsExpression(expression);
         }
 
+        /// <summary>
+        /// Expand resources from a parameter file and linked template/ bicep files.
+        /// </summary>
         public static PSObject[] GetResources(string parameterFile, int timeout)
         {
             var context = GetContext();
@@ -41,16 +106,25 @@ namespace PSRule.Rules.Azure.Runtime
                 GetTemplateResources(link.TemplateFile, link.ParameterFile, context);
         }
 
+        /// <summary>
+        /// Expand resources from a bicep file.
+        /// </summary>
         public static PSObject[] GetBicepResources(string bicepFile, PSCmdlet commandRuntime, int timeout)
         {
             return GetBicepResources(bicepFile, null, commandRuntime, timeout);
         }
 
+        /// <summary>
+        /// Get the linked template path.
+        /// </summary>
         public static string GetMetadataLinkPath(string parameterFile, string templateFile)
         {
             return TemplateLinkHelper.GetMetadataLinkPath(parameterFile, templateFile);
         }
 
+        /// <summary>
+        /// Evaluate NSG rules.
+        /// </summary>
         public static INetworkSecurityGroupEvaluator GetNetworkSecurityGroup(PSObject[] securityRules)
         {
             var builder = new NetworkSecurityGroupEvaluator();
@@ -58,6 +132,9 @@ namespace PSRule.Rules.Azure.Runtime
             return builder;
         }
 
+        /// <summary>
+        /// Get resource type information.
+        /// </summary>
         public static ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
         {
             var resourceProviderHelper = new ResourceProviderHelper();

@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.6.18.56646",
-      "templateHash": "3587417424638621658"
+      "version": "0.12.40.16777",
+      "templateHash": "4463296209999688608"
     }
   },
   "parameters": {
@@ -62,8 +62,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.6.18.56646",
-              "templateHash": "16765444302131705333"
+              "version": "0.12.40.16777",
+              "templateHash": "7540507475036321031"
             }
           },
           "parameters": {
@@ -105,8 +105,14 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.6.18.56646",
-              "templateHash": "15751681190452431153"
+              "version": "0.12.40.16777",
+              "templateHash": "5419326011865364836"
+            }
+          },
+          "parameters": {
+            "empty": {
+              "type": "secureString",
+              "defaultValue": ""
             }
           },
           "resources": [],
@@ -114,6 +120,10 @@
             "value": {
               "type": "string",
               "value": "testing123"
+            },
+            "emptyOutput": {
+              "type": "string",
+              "value": ""
             }
           }
         }
@@ -127,7 +137,7 @@
     },
     "contentType": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.KeyVault/vaults/secrets', 'vault1', 'secret1')).contentType]"
+      "value": "[reference(resourceId('Microsoft.KeyVault/vaults/secrets', 'vault1', 'secret1'), '2021-10-01').contentType]"
     },
     "secret": {
       "type": "string",
@@ -139,7 +149,7 @@
     },
     "secretFromChild": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'child')).outputs.secretFromParameter.value]"
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'child'), '2020-10-01').outputs.secretFromParameter.value]"
     }
   }
 }

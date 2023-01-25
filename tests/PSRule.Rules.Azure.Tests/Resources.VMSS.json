@@ -1,448 +1,808 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-001",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-001",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "vmss-001",
-        "Name": "vmss-001",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "singlePlacementGroup": true,
-            "upgradePolicy": {
-                "mode": "Manual"
-            },
-            "virtualMachineProfile": {
-                "osProfile": {
-                    "computerNamePrefix": "vmss-001",
-                    "adminUsername": "azureuser",
-                    "linuxConfiguration": {
-                        "disablePasswordAuthentication": true,
-                        "ssh": {
-                            "publicKeys": [
-                                {
-                                    "path": "/home/azureuser/.ssh/authorized_keys"
-                                }
-                            ]
-                        },
-                        "provisionVMAgent": true
-                    },
-                    "secrets": [],
-                    "allowExtensionOperations": true,
-                    "requireGuestProvisionSignal": true
-                },
-                "storageProfile": {
-                    "osDisk": {
-                        "createOption": "FromImage",
-                        "caching": "ReadWrite",
-                        "managedDisk": {
-                            "storageAccountType": "Premium_LRS"
-                        },
-                        "diskSizeGB": 100
-                    },
-                    "imageReference": {
-                        "publisher": "microsoft-aks",
-                        "offer": "aks",
-                        "sku": "aks-ubuntu-1604-202003",
-                        "version": "2020.03.05"
-                    }
-                },
-                "networkProfile": {
-                    "networkInterfaceConfigurations": [
-                        {
-                            "name": "vmss-001",
-                            "properties": {
-                                "primary": true,
-                                "enableAcceleratedNetworking": false,
-                                "networkSecurityGroup": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-001"
-                                },
-                                "dnsSettings": {
-                                    "dnsServers": []
-                                },
-                                "enableIPForwarding": false,
-                                "ipConfigurations": [
-                                    {
-                                        "name": "ipconfig1",
-                                        "properties": {
-                                            "primary": true,
-                                            "subnet": {
-                                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
-                                            },
-                                            "privateIPAddressVersion": "IPv4",
-                                            "loadBalancerBackendAddressPools": [
-                                                {
-                                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "name": "ipconfig2",
-                                        "properties": {
-                                            "subnet": {
-                                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
-                                            },
-                                            "privateIPAddressVersion": "IPv4"
-                                        }
-                                    },
-                                    {
-                                        "name": "ipconfig3",
-                                        "properties": {
-                                            "subnet": {
-                                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
-                                            },
-                                            "privateIPAddressVersion": "IPv4"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                },
-                "extensionProfile": {
-                    "extensions": [
-                        {
-                            "name": "vmssCSE",
-                            "properties": {
-                                "autoUpgradeMinorVersion": true,
-                                "publisher": "Microsoft.Azure.Extensions",
-                                "type": "CustomScript",
-                                "typeHandlerVersion": "2.0",
-                                "settings": {}
-                            }
-                        },
-                        {
-                            "name": "vmss-001-AKSLinuxBilling",
-                            "properties": {
-                                "autoUpgradeMinorVersion": true,
-                                "publisher": "Microsoft.AKS",
-                                "type": "Compute.AKS.Linux.Billing",
-                                "typeHandlerVersion": "1.0",
-                                "settings": {}
-                            }
-                        }
-                    ]
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-001",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-001",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "vmss-001",
+    "Name": "vmss-001",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "singlePlacementGroup": true,
+      "upgradePolicy": {
+        "mode": "Manual"
+      },
+      "virtualMachineProfile": {
+        "osProfile": {
+          "computerNamePrefix": "vmss-001",
+          "adminUsername": "azureuser",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": true,
+            "ssh": {
+              "publicKeys": [
+                {
+                  "path": "/home/azureuser/.ssh/authorized_keys"
                 }
+              ]
             },
-            "provisioningState": "Succeeded",
-            "overprovision": false,
-            "doNotRunExtensionsOnOverprovisionedVMs": false
+            "provisionVMAgent": true
+          },
+          "secrets": [],
+          "allowExtensionOperations": true,
+          "requireGuestProvisionSignal": true
         },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/virtualMachineScaleSets",
-        "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
-        "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "Standard_B2ms",
-            "Tier": "Standard",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": 1
+        "storageProfile": {
+          "osDisk": {
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
+            },
+            "diskSizeGB": 100
+          },
+          "imageReference": {
+            "publisher": "microsoft-aks",
+            "offer": "aks",
+            "sku": "aks-ubuntu-1604-202003",
+            "version": "2020.03.05"
+          }
         },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        "networkProfile": {
+          "networkInterfaceConfigurations": [
+            {
+              "name": "vmss-001",
+              "properties": {
+                "primary": true,
+                "enableAcceleratedNetworking": false,
+                "networkSecurityGroup": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-001"
+                },
+                "dnsSettings": {
+                  "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "ipConfigurations": [
+                  {
+                    "name": "ipconfig1",
+                    "properties": {
+                      "primary": true,
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                      },
+                      "privateIPAddressVersion": "IPv4",
+                      "loadBalancerBackendAddressPools": [
+                        {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "ipconfig2",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  },
+                  {
+                    "name": "ipconfig3",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "extensionProfile": {
+          "extensions": [
+            {
+              "name": "vmssCSE",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "settings": {}
+              }
+            },
+            {
+              "name": "vmss-001-AKSLinuxBilling",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.AKS",
+                "type": "Compute.AKS.Linux.Billing",
+                "typeHandlerVersion": "1.0",
+                "settings": {}
+              }
+            }
+          ]
+        }
+      },
+      "provisioningState": "Succeeded",
+      "overprovision": false,
+      "doNotRunExtensionsOnOverprovisionedVMs": false
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-002",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-002",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "vmss-002",
-        "Name": "vmss-002",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "singlePlacementGroup": true,
-            "upgradePolicy": {
-                "mode": "Manual"
-            },
-            "virtualMachineProfile": {
-                "osProfile": {
-                    "computerNamePrefix": "vmss-002",
-                    "adminUsername": "azureuser",
-                    "linuxConfiguration": {
-                        "disablePasswordAuthentication": false,
-                        "ssh": {
-                            "publicKeys": [
-                                {
-                                    "path": "/home/azureuser/.ssh/authorized_keys"
-                                }
-                            ]
-                        },
-                        "provisionVMAgent": true
-                    },
-                    "secrets": [],
-                    "allowExtensionOperations": true,
-                    "requireGuestProvisionSignal": true
-                },
-                "storageProfile": {
-                    "osDisk": {
-                        "createOption": "FromImage",
-                        "caching": "ReadWrite",
-                        "managedDisk": {
-                            "storageAccountType": "Premium_LRS"
-                        },
-                        "diskSizeGB": 100
-                    },
-                    "imageReference": {
-                        "publisher": "microsoft-aks",
-                        "offer": "aks",
-                        "sku": "aks-ubuntu-1604-202003",
-                        "version": "2020.03.05"
-                    }
-                },
-                "networkProfile": {
-                    "networkInterfaceConfigurations": [
-                        {
-                            "name": "vmss-002",
-                            "properties": {
-                                "primary": true,
-                                "enableAcceleratedNetworking": false,
-                                "networkSecurityGroup": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-002"
-                                },
-                                "dnsSettings": {
-                                    "dnsServers": []
-                                },
-                                "enableIPForwarding": false,
-                                "ipConfigurations": [
-                                    {
-                                        "name": "ipconfig1",
-                                        "properties": {
-                                            "primary": true,
-                                            "subnet": {
-                                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-002/subnets/subnet-002"
-                                            },
-                                            "privateIPAddressVersion": "IPv4",
-                                            "loadBalancerBackendAddressPools": [
-                                                {
-                                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "name": "ipconfig2",
-                                        "properties": {
-                                            "subnet": {
-                                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-002/subnets/subnet-002"
-                                            },
-                                            "privateIPAddressVersion": "IPv4"
-                                        }
-                                    },
-                                    {
-                                        "name": "ipconfig3",
-                                        "properties": {
-                                            "subnet": {
-                                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-002/subnets/subnet-002"
-                                            },
-                                            "privateIPAddressVersion": "IPv4"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                },
-                "extensionProfile": {
-                    "extensions": [
-                        {
-                            "name": "vmssCSE",
-                            "properties": {
-                                "autoUpgradeMinorVersion": true,
-                                "publisher": "Microsoft.Azure.Extensions",
-                                "type": "CustomScript",
-                                "typeHandlerVersion": "2.0",
-                                "settings": {}
-                            }
-                        },
-                        {
-                            "name": "vmss-002-AKSLinuxBilling",
-                            "properties": {
-                                "autoUpgradeMinorVersion": true,
-                                "publisher": "Microsoft.AKS",
-                                "type": "Compute.AKS.Linux.Billing",
-                                "typeHandlerVersion": "1.0",
-                                "settings": {}
-                            }
-                        }
-                    ]
-                }
-            },
-            "provisioningState": "Succeeded",
-            "overprovision": false,
-            "doNotRunExtensionsOnOverprovisionedVMs": false
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/virtualMachineScaleSets",
-        "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
-        "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "Standard_B2ms",
-            "Tier": "Standard",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": 1
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachineScaleSets",
+    "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard_B2ms",
+      "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": 1
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-003",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-003",
-        "Identity": null,
-        "Kind": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-001/extensions/AzureMonitorLinuxAgent",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-001/extensions/AzureMonitorLinuxAgent",
         "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "vmss-003",
-        "Name": "vmss-003",
+        "ResourceName": "AzureMonitorLinuxAgent",
+        "Name": "AzureMonitorLinuxAgent",
         "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
+        "ParentResource": "virtualMachineScaleSets/vmss-001",
         "Properties": {
-            "singlePlacementGroup": true,
-            "upgradePolicy": {
-                "mode": "Manual"
-            },
-            "virtualMachineProfile": {
-                "osProfile": {
-                    "computerNamePrefix": "vmss-003",
-                    "adminUsername": "azureuser",
-                    "linuxConfiguration": {
-                        "ssh": {
-                            "publicKeys": [
-                                {
-                                    "path": "/home/azureuser/.ssh/authorized_keys"
-                                }
-                            ]
-                        },
-                        "provisionVMAgent": true
-                    },
-                    "secrets": [],
-                    "allowExtensionOperations": true,
-                    "requireGuestProvisionSignal": true
-                },
-                "storageProfile": {
-                    "osDisk": {
-                        "createOption": "FromImage",
-                        "caching": "ReadWrite",
-                        "managedDisk": {
-                            "storageAccountType": "Premium_LRS"
-                        },
-                        "diskSizeGB": 100
-                    },
-                    "imageReference": {
-                        "publisher": "microsoft-aks",
-                        "offer": "aks",
-                        "sku": "aks-ubuntu-1604-202003",
-                        "version": "2020.03.05"
-                    }
-                },
-                "networkProfile": {
-                    "networkInterfaceConfigurations": [
-                        {
-                            "name": "vmss-003",
-                            "properties": {
-                                "primary": true,
-                                "enableAcceleratedNetworking": false,
-                                "networkSecurityGroup": {
-                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-003"
-                                },
-                                "dnsSettings": {
-                                    "dnsServers": []
-                                },
-                                "enableIPForwarding": false,
-                                "ipConfigurations": [
-                                    {
-                                        "name": "ipconfig1",
-                                        "properties": {
-                                            "primary": true,
-                                            "subnet": {
-                                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-003/subnets/subnet-003"
-                                            },
-                                            "privateIPAddressVersion": "IPv4",
-                                            "loadBalancerBackendAddressPools": [
-                                                {
-                                                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
-                                                }
-                                            ]
-                                        }
-                                    },
-                                    {
-                                        "name": "ipconfig2",
-                                        "properties": {
-                                            "subnet": {
-                                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-003/subnets/subnet-003"
-                                            },
-                                            "privateIPAddressVersion": "IPv4"
-                                        }
-                                    },
-                                    {
-                                        "name": "ipconfig3",
-                                        "properties": {
-                                            "subnet": {
-                                                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-003/subnets/subnet-003"
-                                            },
-                                            "privateIPAddressVersion": "IPv4"
-                                        }
-                                    }
-                                ]
-                            }
-                        }
-                    ]
-                },
-                "extensionProfile": {
-                    "extensions": [
-                        {
-                            "name": "vmssCSE",
-                            "properties": {
-                                "autoUpgradeMinorVersion": true,
-                                "publisher": "Microsoft.Azure.Extensions",
-                                "type": "CustomScript",
-                                "typeHandlerVersion": "2.0",
-                                "settings": {}
-                            }
-                        },
-                        {
-                            "name": "vmss-003-AKSLinuxBilling",
-                            "properties": {
-                                "autoUpgradeMinorVersion": true,
-                                "publisher": "Microsoft.AKS",
-                                "type": "Compute.AKS.Linux.Billing",
-                                "typeHandlerVersion": "1.0",
-                                "settings": {}
-                            }
-                        }
-                    ]
-                }
-            },
-            "provisioningState": "Succeeded",
-            "overprovision": false,
-            "doNotRunExtensionsOnOverprovisionedVMs": false
+          "publisher": "Microsoft.Azure.Monitor",
+          "type": "AzureMonitorLinuxAgent",
+          "typeHandlerVersion": "1.21",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
         },
         "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Compute/virtualMachineScaleSets",
-        "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
+        "Type": "Microsoft.Compute/virtualMachineScaleSets/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachineScaleSets/extensions",
         "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "Standard_B2ms",
-            "Tier": "Standard",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": 1
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-002",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-002",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "vmss-002",
+    "Name": "vmss-002",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "singlePlacementGroup": true,
+      "upgradePolicy": {
+        "mode": "Manual"
+      },
+      "virtualMachineProfile": {
+        "osProfile": {
+          "computerNamePrefix": "vmss-002",
+          "adminUsername": "azureuser",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": false,
+            "ssh": {
+              "publicKeys": [
+                {
+                  "path": "/home/azureuser/.ssh/authorized_keys"
+                }
+              ]
+            },
+            "provisionVMAgent": true
+          },
+          "secrets": [],
+          "allowExtensionOperations": true,
+          "requireGuestProvisionSignal": true
         },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+        "storageProfile": {
+          "osDisk": {
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
+            },
+            "diskSizeGB": 100
+          },
+          "imageReference": {
+            "publisher": "microsoft-aks",
+            "offer": "aks",
+            "sku": "aks-ubuntu-1604-202003",
+            "version": "2020.03.05"
+          }
+        },
+        "networkProfile": {
+          "networkInterfaceConfigurations": [
+            {
+              "name": "vmss-002",
+              "properties": {
+                "primary": true,
+                "enableAcceleratedNetworking": false,
+                "networkSecurityGroup": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-002"
+                },
+                "dnsSettings": {
+                  "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "ipConfigurations": [
+                  {
+                    "name": "ipconfig1",
+                    "properties": {
+                      "primary": true,
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-002/subnets/subnet-002"
+                      },
+                      "privateIPAddressVersion": "IPv4",
+                      "loadBalancerBackendAddressPools": [
+                        {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "ipconfig2",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-002/subnets/subnet-002"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  },
+                  {
+                    "name": "ipconfig3",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-002/subnets/subnet-002"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "extensionProfile": {
+          "extensions": [
+            {
+              "name": "vmssCSE",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "settings": {}
+              }
+            },
+            {
+              "name": "vmss-002-AKSLinuxBilling",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.AKS",
+                "type": "Compute.AKS.Linux.Billing",
+                "typeHandlerVersion": "1.0",
+                "settings": {}
+              }
+            }
+          ]
+        }
+      },
+      "provisioningState": "Succeeded",
+      "overprovision": false,
+      "doNotRunExtensionsOnOverprovisionedVMs": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachineScaleSets",
+    "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard_B2ms",
+      "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-002/extensions/OmsAgentForLinux",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-002/extensions/OmsAgentForLinux",
+        "Location": "region",
+        "ResourceName": "OmsAgentForLinux",
+        "Name": "OmsAgentForLinux",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualMachineScaleSets/vmss-002",
+        "Properties": {
+          "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+          "type": "OmsAgentForLinux",
+          "typeHandlerVersion": "1.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachineScaleSets/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachineScaleSets/extensions",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-003",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-003",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "vmss-003",
+    "Name": "vmss-003",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "singlePlacementGroup": true,
+      "upgradePolicy": {
+        "mode": "Manual"
+      },
+      "virtualMachineProfile": {
+        "osProfile": {
+          "computerNamePrefix": "vmss-003",
+          "adminUsername": "azureuser",
+          "linuxConfiguration": {
+            "ssh": {
+              "publicKeys": [
+                {
+                  "path": "/home/azureuser/.ssh/authorized_keys"
+                }
+              ]
+            },
+            "provisionVMAgent": true
+          },
+          "secrets": [],
+          "allowExtensionOperations": true,
+          "requireGuestProvisionSignal": true
+        },
+        "storageProfile": {
+          "osDisk": {
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
+            },
+            "diskSizeGB": 100
+          },
+          "imageReference": {
+            "publisher": "microsoft-aks",
+            "offer": "aks",
+            "sku": "aks-ubuntu-1604-202003",
+            "version": "2020.03.05"
+          }
+        },
+        "networkProfile": {
+          "networkInterfaceConfigurations": [
+            {
+              "name": "vmss-003",
+              "properties": {
+                "primary": true,
+                "enableAcceleratedNetworking": false,
+                "networkSecurityGroup": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-003"
+                },
+                "dnsSettings": {
+                  "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "ipConfigurations": [
+                  {
+                    "name": "ipconfig1",
+                    "properties": {
+                      "primary": true,
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-003/subnets/subnet-003"
+                      },
+                      "privateIPAddressVersion": "IPv4",
+                      "loadBalancerBackendAddressPools": [
+                        {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "ipconfig2",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-003/subnets/subnet-003"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  },
+                  {
+                    "name": "ipconfig3",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-003/subnets/subnet-003"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "extensionProfile": {
+          "extensions": [
+            {
+              "name": "vmssCSE",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "settings": {}
+              }
+            },
+            {
+              "name": "vmss-003-AKSLinuxBilling",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.AKS",
+                "type": "Compute.AKS.Linux.Billing",
+                "typeHandlerVersion": "1.0",
+                "settings": {}
+              }
+            },
+            {
+              "name": "AzureMonitorLinuxAgent",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Monitor",
+                "type": "AzureMonitorLinuxAgent",
+                "typeHandlerVersion": "1.21",
+                "settings": {}
+              }
+            }
+          ]
+        }
+      },
+      "provisioningState": "Succeeded",
+      "overprovision": false,
+      "doNotRunExtensionsOnOverprovisionedVMs": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachineScaleSets",
+    "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard_B2ms",
+      "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-004",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-004",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "vmss-004",
+    "Name": "vmss-004",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "singlePlacementGroup": true,
+      "upgradePolicy": {
+        "mode": "Manual"
+      },
+      "virtualMachineProfile": {
+        "osProfile": {
+          "computerNamePrefix": "vmss-004",
+          "adminUsername": "azureuser",
+          "windowsConfiguration": {
+            "enableAutomaticUpdates": true,
+            "enableVMAgentPlatformUpdates": true
+          },
+          "linuxConfiguration": null,
+          "secrets": [],
+          "allowExtensionOperations": true,
+          "requireGuestProvisionSignal": true
+        },
+        "storageProfile": {
+          "osDisk": {
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
+            },
+            "diskSizeGB": 256
+          },
+          "imageReference": {
+            "publisher": "MicrosoftWindowsServer",
+            "offer": "WindowsServer",
+            "sku": "2022-datacenter-azure-edition-core",
+            "version": "latest"
+          }
+        },
+        "networkProfile": {
+          "networkInterfaceConfigurations": [
+            {
+              "name": "vmss-004",
+              "properties": {
+                "primary": true,
+                "enableAcceleratedNetworking": false,
+                "networkSecurityGroup": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-001"
+                },
+                "dnsSettings": {
+                  "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "ipConfigurations": [
+                  {
+                    "name": "ipconfig1",
+                    "properties": {
+                      "primary": true,
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                      },
+                      "privateIPAddressVersion": "IPv4",
+                      "loadBalancerBackendAddressPools": [
+                        {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/Winfarm/backendAddressPools/Winfarm"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "ipconfig2",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  },
+                  {
+                    "name": "ipconfig3",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "extensionProfile": {
+          "extensions": [
+            {
+              "name": "vmssCSE",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.Azure.Extensions",
+                "type": "CustomScript",
+                "typeHandlerVersion": "2.0",
+                "settings": {}
+              }
+            }
+          ]
+        }
+      },
+      "provisioningState": "Succeeded",
+      "overprovision": false,
+      "doNotRunExtensionsOnOverprovisionedVMs": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachineScaleSets",
+    "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard_B2ms",
+      "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-004/extensions/OMSExtension",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-004/extensions/OMSExtension",
+        "Location": "region",
+        "ResourceName": "OMSExtension",
+        "Name": "OMSExtension",
+        "ExtensionResourceName": null,
+        "ParentResource": "virtualMachineScaleSets/vmss-004",
+        "Properties": {
+          "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+          "type": "MicrosoftMonitoringAgent",
+          "typeHandlerVersion": "1.0",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "workspaceId": "00000000-0000-0000-0000-000000000000"
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachineScaleSets/extensions",
+        "ResourceType": "Microsoft.Compute/virtualMachineScaleSets/extensions",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-005",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-005",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "vmss-005",
+    "Name": "vmss-005",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "singlePlacementGroup": true,
+      "upgradePolicy": {
+        "mode": "Manual"
+      },
+      "virtualMachineProfile": {
+        "osProfile": {
+          "computerNamePrefix": "vmss-005",
+          "adminUsername": "azureuser",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": true,
+            "ssh": {
+              "publicKeys": [
+                {
+                  "path": "/home/azureuser/.ssh/authorized_keys"
+                }
+              ]
+            },
+            "provisionVMAgent": true
+          },
+          "secrets": [],
+          "allowExtensionOperations": true,
+          "requireGuestProvisionSignal": true
+        },
+        "storageProfile": {
+          "osDisk": {
+            "createOption": "FromImage",
+            "caching": "ReadWrite",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
+            },
+            "diskSizeGB": 256
+          },
+          "imageReference": {
+            "publisher": "RedHat",
+            "offer": "RHEL",
+            "sku": "7-LVM",
+            "version": "latest"
+          }
+        },
+        "networkProfile": {
+          "networkInterfaceConfigurations": [
+            {
+              "name": "vmss-005",
+              "properties": {
+                "primary": true,
+                "enableAcceleratedNetworking": false,
+                "networkSecurityGroup": {
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-001"
+                },
+                "dnsSettings": {
+                  "dnsServers": []
+                },
+                "enableIPForwarding": false,
+                "ipConfigurations": [
+                  {
+                    "name": "ipconfig1",
+                    "properties": {
+                      "primary": true,
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                      },
+                      "privateIPAddressVersion": "IPv4",
+                      "loadBalancerBackendAddressPools": [
+                        {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/Winfarm/backendAddressPools/Winfarm"
+                        }
+                      ]
+                    }
+                  },
+                  {
+                    "name": "ipconfig2",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  },
+                  {
+                    "name": "ipconfig3",
+                    "properties": {
+                      "subnet": {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
+                      },
+                      "privateIPAddressVersion": "IPv4"
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        "extensionProfile": {
+          "extensions": [
+            {
+              "name": "OmsAgentForLinux",
+              "properties": {
+                "autoUpgradeMinorVersion": true,
+                "publisher": "Microsoft.EnterpriseCloud.Monitoring",
+                "type": "OmsAgentForLinux",
+                "typeHandlerVersion": "1.0",
+                "settings": {}
+              }
+            }
+          ]
+        }
+      },
+      "provisioningState": "Succeeded",
+      "overprovision": false,
+      "doNotRunExtensionsOnOverprovisionedVMs": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachineScaleSets",
+    "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard_B2ms",
+      "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 ]

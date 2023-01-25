@@ -102,8 +102,8 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://docs.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
 - [What are managed identities for Azure resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 - [Tutorial: Secure Azure SQL Database connection from App Service using a managed identity](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-connect-msi)
 - [How to use managed identities for App Service and Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#managedserviceidentity-object)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#managedserviceidentity-object)

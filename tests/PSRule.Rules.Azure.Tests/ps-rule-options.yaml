@@ -30,7 +30,7 @@ configuration:
     arrayOptions: [ 'test', 'value' ]
   AZURE_DEPLOYMENT:
     name: 'deployment-from-yaml'
-  AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.24.3'
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: '9.99.9'
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
   - location: 'Antarctica North'
     zones:
@@ -99,3 +99,6 @@ configuration:
       - "1"
       - "2"
       - "3"
+  AZURE_POLICY_RULE_PREFIX: 'AzureCustomPrefix'
+  AZURE_LINUX_OS_OFFERS:
+  - 'anOfferName'

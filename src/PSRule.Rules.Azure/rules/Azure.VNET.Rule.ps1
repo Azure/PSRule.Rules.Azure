@@ -14,8 +14,8 @@ Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetw
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         # Get subnets
         $subnet = @($TargetObject.properties.subnets | Where-Object {
-            $_.Name -notin $excludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
-        });
+                $_.Name -notin $excludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
+            });
         if ($subnet.Length -eq 0 -or !$Assert.HasFieldValue($TargetObject, 'properties.subnets').Result) {
             return $Assert.Pass();
         }
@@ -26,15 +26,15 @@ Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetw
     }
     foreach ($sn in $subnet) {
         $Assert.
-            HasFieldValue($sn, 'properties.networkSecurityGroup.id').
-            WithReason(($LocalizedData.SubnetNSGNotConfigured -f $sn.Name), $True);
+        HasFieldValue($sn, 'properties.networkSecurityGroup.id').
+        WithReason(($LocalizedData.SubnetNSGNotConfigured -f $sn.Name), $True);
     }
 }
 
 # TODO: Check that NSG on GatewaySubnet is not defined
 
-# Synopsis: VNETs should have at least two DNS servers assigned
-Rule 'Azure.VNET.SingleDNS' -Ref 'AZR-000264' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+# Synopsis: VNETs should have at least two DNS servers assigned.
+Rule 'Azure.VNET.SingleDNS' -Ref 'AZR-000264' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     # If DNS servers are customized, at least two IP addresses should be defined
     if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
         $True;
@@ -44,20 +44,20 @@ Rule 'Azure.VNET.SingleDNS' -Ref 'AZR-000264' -Type 'Microsoft.Network/virtualNe
     }
 }
 
-# Synopsis: VNETs should use Azure local DNS servers
-Rule 'Azure.VNET.LocalDNS' -Ref 'AZR-000265' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+# Synopsis: Virtual networks (VNETs) should use Azure local DNS servers.
+Rule 'Azure.VNET.LocalDNS' -Ref 'AZR-000265' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     # If DNS servers are customized, check what range the IPs are in
     if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
         $True;
     }
     else {
         # Primary DNS server must be within VNET address space or peered VNET
-        $dnsServers = @($TargetObject.Properties.dhcpOptions.dnsServers)
+        $dnsServers = @($TargetObject.properties.dhcpOptions.dnsServers)
         $primary = $dnsServers[0]
         $localRanges = @();
-        $localRanges += $TargetObject.Properties.addressSpace.addressPrefixes
+        $localRanges += $TargetObject.properties.addressSpace.addressPrefixes
         if ($Assert.HasFieldValue($TargetObject, 'Properties.virtualNetworkPeerings').Result) {
-            $localRanges += $TargetObject.Properties.virtualNetworkPeerings.properties.remoteAddressSpace.addressPrefixes
+            $localRanges += $TargetObject.properties.virtualNetworkPeerings.properties.remoteAddressSpace.addressPrefixes
         }
 
         # Determine if the primary is in range
@@ -65,16 +65,16 @@ Rule 'Azure.VNET.LocalDNS' -Ref 'AZR-000265' -Type 'Microsoft.Network/virtualNet
     }
 }
 
-# Synopsis: VNET peers should be connected
-Rule 'Azure.VNET.PeerState' -Ref 'AZR-000266' -If { (HasPeerNetwork) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+# Synopsis: VNET peering connections must be connected.
+Rule 'Azure.VNET.PeerState' -Ref 'AZR-000266' -If { (HasPeerNetwork) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $peers = @($TargetObject.Properties.virtualNetworkPeerings);
     foreach ($peer in $peers) {
         $Assert.HasFieldValue($peer, 'Properties.peeringState', 'Connected');
     }
 }
 
-# Synopsis: Use subnets naming requirements
-Rule 'Azure.VNET.SubnetName' -Ref 'AZR-000267' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+# Synopsis: Subnet names should meet naming requirements.
+Rule 'Azure.VNET.SubnetName' -Ref 'AZR-000267' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         $subnets = @($TargetObject.Properties.subnets)
@@ -107,4 +107,41 @@ Rule 'Azure.VNET.SubnetName' -Ref 'AZR-000267' -Type 'Microsoft.Network/virtualN
     }
 }
 
+# Synopsis: VNETs with a GatewaySubnet should have an AzureBastionSubnet to allow for out of band remote access to VMs.
+Rule 'Azure.VNET.BastionSubnet' -Ref 'AZR-000314' -Type 'Microsoft.Network/virtualNetworks' -If { HasGatewaySubnet } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    $subnets = @(GetVirtualNetworkSubnets)
+    $Assert.In($subnets, '.', @('AzureBastionSubnet')).ReasonFrom('properties.subnets', $LocalizedData.SubnetNotFound, 'AzureBastionSubnet')
+}
+
+# Synopsis: Use Azure Firewall to filter network traffic to and from Azure resources.
+Rule 'Azure.VNET.FirewallSubnet' -Ref 'AZR-000322' -Type 'Microsoft.Network/virtualNetworks' -If { HasGatewaySubnet } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+    $subnets = @(GetVirtualNetworkSubnets)
+    $Assert.In($subnets, '.', @('AzureFirewallSubnet')).ReasonFrom('properties.subnets', $LocalizedData.SubnetNotFound, 'AzureFirewallSubnet')
+}
+
 #endregion Virtual Network
+
+#region Helper functions
+
+function global:HasGatewaySubnet {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        ($TargetObject.Properties.subnets | Where-Object { $_.name -eq 'GatewaySubnet' }) -or
+        (@(GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' |
+            Where-Object { $_.name -eq 'GatewaySubnet' }))
+    }
+}
+
+function global:GetVirtualNetworkSubnets {
+    [CmdletBinding()]
+    [OutputType([PSObject])]
+    param ()
+    process {
+        $TargetObject.Properties.subnets | ForEach-Object { $_.name }
+        GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' | ForEach-Object { $_.name }
+    }
+}
+
+#endregion Helper functions

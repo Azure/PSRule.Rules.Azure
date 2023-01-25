@@ -112,6 +112,6 @@ resource publicIPAddresses_resource 'Microsoft.Network/publicIPAddresses@2020-11
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses?tabs=json)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses?tabs=json)
 - [Load Balancer and Availability Zones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
-- [Use zone-aware services](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)

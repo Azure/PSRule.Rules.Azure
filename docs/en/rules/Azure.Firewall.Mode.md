@@ -77,7 +77,7 @@ resource firewall_classic 'Microsoft.Network/azureFirewalls@2021-05-01' = {
 
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
+- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
 - [Azure Firewall threat intelligence-based filtering](https://docs.microsoft.com/azure/firewall/threat-intel)
 - [Azure network security overview](https://docs.microsoft.com/azure/security/fundamentals/network-overview#azure-firewall)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/azurefirewalls)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/azurefirewalls)

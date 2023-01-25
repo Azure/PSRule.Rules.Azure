@@ -25,6 +25,9 @@ The following configurations options are available for use:
 - [AZURE_POLICY_WAIVER_MAX_EXPIRY](#azure_policy_waiver_max_expiry)
 - [AZURE_RESOURCE_GROUP](#azure_resource_group)
 - [AZURE_SUBSCRIPTION](#azure_subscription)
+- [AZURE_POLICY_IGNORE_LIST](#azure_policy_ignore_list)
+- [AZURE_POLICY_RULE_PREFIX](#azure_policy_rule_prefix)
+- [AZURE_APIM_MIN_API_VERSION](#azure_apim_min_api_version)
 
   [1]: https://aka.ms/ps-rule/options
 
@@ -285,9 +288,101 @@ Example:
     displayName: 'My test subscription'
 ```
 
+### AZURE_POLICY_IGNORE_LIST
+
+This configuration option configures a custom list policy definitions to ignore when exporting policy to rules.
+In addition to the custom list, a built-in list of policies are ignored.
+The built-in list can be found [here](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/policy-ignore.json).
+
+Configure this option to ignore policy definitions that:
+
+- Already have a rule defined.
+- Are not relevant to testing Infrastructure as Code.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_POLICY_IGNORE_LIST: array
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_POLICY_IGNORE_LIST configuration option
+configuration:
+  AZURE_POLICY_IGNORE_LIST: []
+```
+
+Example:
+
+```yaml
+# YAML: Add a custom policy definition to ignore
+  AZURE_POLICY_IGNORE_LIST:
+  - '/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9'
+  - '/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0'
+```
+
+### AZURE_POLICY_RULE_PREFIX
+
+This configuration option sets the prefix for names of exported rules.
+Configure this option to change the prefix, which defaults to `Azure`.
+
+This configuration option will be ignored when `-Prefix` is used with `Export-AzPolicyAssignmentRuleData`.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_POLICY_RULE_PREFIX: string
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_POLICY_RULE_PREFIX configuration option
+configuration:
+  AZURE_POLICY_RULE_PREFIX: 'Azure'
+```
+
+Example:
+
+```yaml
+# YAML: Override the prefix of exported policy rules
+  AZURE_POLICY_RULE_PREFIX: 'AzureCustomPrefix'
+```
+
+### AZURE_APIM_MIN_API_VERSION
+
+This configuration option sets the minimum API version used for control plane API calls to API Management instances.
+Configure this option to change the minimum API version, which defaults to `'2021-08-01'`.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_APIM_MIN_API_VERSION: string
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_APIM_MIN_API_VERSION configuration option
+configuration:
+  AZURE_APIM_MIN_API_VERSION: '2021-08-01'
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to '2021-12-01-preview'
+configuration:
+  AZURE_APIM_MIN_API_VERSION: '2021-12-01-preview'
+```
+
 ## NOTE
 
-An online version of this document is available at https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/concepts/about_PSRule_Azure_Configuration.md.
+An online version of this document is available at <https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/concepts/about_PSRule_Azure_Configuration.md>.
 
 ## KEYWORDS
 

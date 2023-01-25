@@ -1,5 +1,5 @@
 ---
-reviewed: 2021/11/13
+reviewed: 2021-11-13
 severity: Important
 pillar: Reliability
 category: Requirements
@@ -115,8 +115,8 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
 
 ## LINKS
 
-- [Target and non-functional requirements](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
+- [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
 - [Azure Container Registry SKUs](https://docs.microsoft.com/azure/container-registry/container-registry-skus)
 - [Geo-replication in Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)
 - [Best practices for Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)

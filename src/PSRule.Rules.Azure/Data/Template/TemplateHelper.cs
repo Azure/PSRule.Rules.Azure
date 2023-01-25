@@ -16,12 +16,12 @@ namespace PSRule.Rules.Azure.Data.Template
 {
     internal sealed class TemplateHelper
     {
-        private readonly PipelineContext Context;
+        private readonly PipelineContext _Context;
         private readonly string _DeploymentName;
 
         public TemplateHelper(PipelineContext context)
         {
-            Context = context;
+            _Context = context;
             _DeploymentName = context.Option.Configuration.Deployment.Name;
         }
 
@@ -35,7 +35,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var visitor = new RuleDataExportVisitor();
 
             // Load context
-            templateContext = new TemplateVisitor.TemplateContext(Context);
+            templateContext = new TemplateVisitor.TemplateContext(_Context);
             if (!string.IsNullOrEmpty(parameterFile))
             {
                 var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);
@@ -76,13 +76,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static JObject ReadFile(string path)
         {
-            using (var stream = new StreamReader(path))
-            {
-                using (var reader = new JsonTextReader(stream))
-                {
-                    return JObject.Load(reader);
-                }
-            }
+            using var stream = new StreamReader(path);
+            using var reader = new JsonTextReader(stream);
+            return JObject.Load(reader);
         }
     }
 }

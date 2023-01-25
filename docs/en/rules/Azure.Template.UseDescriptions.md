@@ -64,5 +64,5 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
 
 ## LINKS
 
-- [Better understand your cloud resources](https://docs.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#better-understand-your-cloud-resources)
+- [Better understand your cloud resources](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#better-understand-your-cloud-resources)
 - [Decorators](https://docs.microsoft.com/azure/azure-resource-manager/bicep/parameters#decorators)

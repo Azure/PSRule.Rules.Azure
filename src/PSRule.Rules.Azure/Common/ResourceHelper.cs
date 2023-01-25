@@ -13,14 +13,21 @@ namespace PSRule.Rules.Azure
         private const string SUBSCRIPTIONS = "subscriptions";
         private const string RESOURCEGROUPS = "resourceGroups";
         private const string PROVIDERS = "providers";
+        private const char SLASH_C = '/';
 
+        /// <summary>
+        /// Determines if the resource Id matches the specified resource type.
+        /// </summary>
+        /// <param name="resourceId">The resource Id to compare.</param>
+        /// <param name="resourceType">The expected resource type.</param>
+        /// <returns>Returns <c>true</c> if the resource Id matches the type. Otherwise <c>false</c> is returned.</returns>
         internal static bool IsResourceType(string resourceId, string resourceType)
         {
             if (string.IsNullOrEmpty(resourceId) || string.IsNullOrEmpty(resourceType))
                 return false;
 
             var idParts = GetResourceIdTypeParts(resourceId);
-            var typeParts = resourceType.Split('/');
+            var typeParts = resourceType.Split(SLASH_C);
             if (idParts.Length != typeParts.Length)
                 return false;
 
@@ -32,7 +39,62 @@ namespace PSRule.Rules.Azure
         }
 
         /// <summary>
-        /// 
+        /// Get the resource type of the resource.
+        /// </summary>
+        /// <param name="resourceId">The resource Id of a resource.</param>
+        /// <returns>Returns the resource type if the Id is valid or <c>null</c> when an invalid resource Id is specified.</returns>
+        internal static string GetResourceType(string resourceId)
+        {
+            return string.IsNullOrEmpty(resourceId) ? null : string.Join(SLASH, GetResourceIdTypeParts(resourceId));
+        }
+
+        /// <summary>
+        /// Get the resource provider namespaces and type from a full resource type string.
+        /// </summary>
+        internal static bool TryResourceProviderFromType(string type, out string provider, out string resourceType)
+        {
+            provider = null;
+            resourceType = null;
+            var parts = type.SplitByFirstSubstring("/");
+            if (parts.Length != 2)
+                return false;
+
+            provider = parts[0];
+            resourceType = parts[1];
+            return true;
+        }
+
+        /// <summary>
+        /// Get the subscription Id from a specified resource Id.
+        /// </summary>
+        internal static bool TrySubscriptionId(string resourceId, out string subscriptionId)
+        {
+            subscriptionId = null;
+            if (string.IsNullOrEmpty(resourceId))
+                return false;
+
+            var idParts = resourceId.Split(SLASH_C);
+            var i = 0;
+            return ConsumeSubscriptionIdPart(idParts, ref i, out subscriptionId);
+        }
+
+        /// <summary>
+        /// Get the name of the resource group from the specified resource Id.
+        /// </summary>
+        internal static bool TryResourceGroup(string resourceId, out string resourceGroupName)
+        {
+            resourceGroupName = null;
+            if (string.IsNullOrEmpty(resourceId))
+                return false;
+
+            var idParts = resourceId.Split(SLASH_C);
+            var i = 0;
+            return ConsumeSubscriptionIdPart(idParts, ref i, out _) &&
+                ConsumeResourceGroupPart(idParts, ref i, out resourceGroupName);
+        }
+
+        /// <summary>
+        /// Combines Id fragments to form a resource Id.
         /// </summary>
         /// <remarks>
         /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/{resourceType}/{name}
@@ -111,14 +173,14 @@ namespace PSRule.Rules.Azure
 
         internal static bool TryResourceIdComponents(string resourceType, string name, out string[] resourceTypeComponents, out string[] nameComponents)
         {
-            var typeParts = resourceType.Split('/');
+            var typeParts = resourceType.Split(SLASH_C);
             var depth = string.IsNullOrEmpty(typeParts[typeParts.Length - 1]) ? typeParts.Length - 2 : typeParts.Length - 1;
             resourceTypeComponents = new string[depth];
-            resourceTypeComponents[0] = string.Concat(typeParts[0], '/', typeParts[1]);
+            resourceTypeComponents[0] = string.Concat(typeParts[0], SLASH_C, typeParts[1]);
             for (var i = 1; i < depth; i++)
                 resourceTypeComponents[i] = typeParts[i + 1];
 
-            nameComponents = name.Split('/');
+            nameComponents = name.Split(SLASH_C);
             return resourceTypeComponents.Length > 0 && nameComponents.Length > 0;
         }
 
@@ -127,14 +189,14 @@ namespace PSRule.Rules.Azure
             resourceGroupName = null;
             resourceTypeComponents = null;
             nameComponents = null;
-            var idParts = resourceId.Split('/');
+            var idParts = resourceId.Split(SLASH_C);
             var i = 0;
             if (!(ConsumeSubscriptionIdPart(idParts, ref i, out subscriptionId) &&
                 ConsumeResourceGroupPart(idParts, ref i, out resourceGroupName) &&
                 ConsumeProvidersPart(idParts, ref i, out var provider, out var type, out var name)))
                 return false;
 
-            var resourceType = string.Concat(provider, '/', type);
+            var resourceType = string.Concat(provider, SLASH_C, type);
             if (!ConsumeSubResourceType(idParts, ref i, out var subTypes, out var subNames))
             {
                 resourceTypeComponents = new string[] { resourceType };
@@ -154,7 +216,7 @@ namespace PSRule.Rules.Azure
 
         private static string[] GetResourceIdTypeParts(string resourceId)
         {
-            var idParts = resourceId.Split('/');
+            var idParts = resourceId.Split(SLASH_C);
             var i = 0;
             if (!(ConsumeSubscriptionIdPart(idParts, ref i, out _) &&
                 ConsumeResourceGroupPart(idParts, ref i, out _) &&

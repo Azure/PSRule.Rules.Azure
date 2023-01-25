@@ -42,3 +42,50 @@ Rule 'Azure.PostgreSQL.ServerName' -Ref 'AZR-000152' -Type 'Microsoft.DBforPostg
     # Can't start or end with a hyphen
     $Assert.Match($PSRule, 'TargetName', '^[a-z0-9]([a-z0-9-]*[a-z0-9]){2,62}$', $True);
 }
+
+# Synopsis: Azure Database for PostgreSQL should store backups in a geo-redundant storage.
+Rule 'Azure.PostgreSQL.GeoRedundantBackup' -Ref 'AZR-000326' -Type 'Microsoft.DBforPostgreSQL/flexibleServers', 'Microsoft.DBforPostgreSQL/servers' -If { HasPostgreSQLTierSupportingGeoRedundantBackup } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/flexibleServers') {
+        $Assert.HasFieldValue($TargetObject, 'properties.backup.geoRedundantBackup', 'Enabled').
+        Reason($LocalizedData.PostgreSQLGeoRedundantBackupNotConfigured, $PSRule.TargetName)
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/servers') {
+        $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.geoRedundantBackup', 'Enabled').
+        Reason($LocalizedData.PostgreSQLGeoRedundantBackupNotConfigured, $PSRule.TargetName)
+    }
+}
+
+# Synopsis: Enable Microsoft Defender for Cloud for Azure Database for PostgreSQL.
+Rule 'Azure.PostgreSQL.DefenderCloud' -Ref 'AZR-000327' -Type 'Microsoft.DBforPostgreSQL/servers', 'Microsoft.DBforPostgreSQL/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/servers') {
+        $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/servers/securityAlertPolicies')
+        if ($defenderConfigs.Length -eq 0) {
+            $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.DBforPostgreSQL/servers/securityAlertPolicies')
+        }
+        foreach ($defenderConfig in $defenderConfigs) {
+            $Assert.HasFieldValue($defenderConfig, 'properties.state', 'Enabled').
+            PathPrefix('resources')
+        }
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/servers/securityAlertPolicies') {
+        $Assert.HasFieldValue($TargetObject, 'properties.state', 'Enabled')
+    }
+}
+
+#region Helper functions
+
+function global:HasPostgreSQLTierSupportingGeoRedundantBackup {
+    [CmdletBinding()]
+    [OutputType([System.Boolean])]
+    param ()
+    process {
+        if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/flexibleServers') {
+            $True
+        }
+        elseif ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/servers') {
+            $Assert.in($TargetObject, 'sku.tier', @('GeneralPurpose', 'MemoryOptimized')).Result
+        }
+    }
+}
+
+#endregion Helper functions

@@ -46,8 +46,9 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
             
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -HaveCount 3;
+            $ruleResult[0].Reason | Should -HaveCount 4;
             $ruleResult[0].Reason | Should -Be @(
+                "The subnet (AzureBastionSubnet) has no NSG associated.",
                 "The subnet (subnet-B) has no NSG associated.", 
                 "The subnet (subnet-C) has no NSG associated.", 
                 "The subnet (subnet-D) has no NSG associated."
@@ -154,6 +155,56 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F';
+        }
+
+        It 'Azure.VNET.BastionSubnet' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.BastionSubnet' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-C';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.subnets: The subnet 'AzureBastionSubnet' was expected but has not been defined.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.subnets: The subnet 'AzureBastionSubnet' was expected but has not been defined.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-D', 'vnet-E';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetObject.ResourceType -eq 'Microsoft.Network/virtualNetworks' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vnet-F';
+        }
+
+        It 'Azure.VNET.FirewallSubnet' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.FirewallSubnet' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.subnets: The subnet 'AzureFirewallSubnet' was expected but has not been defined.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.subnets: The subnet 'AzureFirewallSubnet' was expected but has not been defined.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetObject.ResourceType -eq 'Microsoft.Network/virtualNetworks' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vnet-F';
         }
     }
 

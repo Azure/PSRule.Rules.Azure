@@ -6,10 +6,17 @@
 #
 
 # Synopsis: AKS control plane and nodes pools should use a current stable release.
-Rule 'Azure.AKS.Version' -Ref 'AZR-000015' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AKS.Version' -Ref 'AZR-000015' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } -Labels @{ 'Azure.ASB.v3/control' = 'PV-7' } {
     $minVersion = $Configuration.GetValueOrDefault('Azure_AKSMinimumVersion', $Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION);
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
-        $Assert.Version($TargetObject, 'Properties.kubernetesVersion', ">=$minVersion");
+        $upgradeChannel = $TargetObject.properties.autoUpgradeProfile.upgradeChannel
+        $expectedUpgradeChannels = @('rapid', 'stable', 'node-image')
+        if ($upgradeChannel -in $expectedUpgradeChannels -and !(IsExport)) {
+            $Assert.Pass();
+        }
+        else {
+            $Assert.Version($TargetObject, 'Properties.kubernetesVersion', ">=$minVersion");
+        }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters/agentPools') {
         if (!$Assert.HasField($TargetObject, 'Properties.orchestratorVersion').Result) {
@@ -22,7 +29,7 @@ Rule 'Azure.AKS.Version' -Ref 'AZR-000015' -Type 'Microsoft.ContainerService/man
 }
 
 # Synopsis: AKS agent pools should run the same Kubernetes version as the cluster
-Rule 'Azure.AKS.PoolVersion' -Ref 'AZR-000016' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AKS.PoolVersion' -Ref 'AZR-000016' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $clusterVersion = $TargetObject.Properties.kubernetesVersion;
     $agentPools = @(GetAgentPoolProfiles);
     if ($agentPools.Length -eq 0) {
@@ -35,7 +42,7 @@ Rule 'Azure.AKS.PoolVersion' -Ref 'AZR-000016' -Type 'Microsoft.ContainerService
 }
 
 # Synopsis: AKS node pools should use scale sets
-Rule 'Azure.AKS.PoolScaleSet' -Ref 'AZR-000017' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AKS.PoolScaleSet' -Ref 'AZR-000017' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $agentPools = @(GetAgentPoolProfiles);
     if ($agentPools.Length -eq 0) {
         return $Assert.Pass();
@@ -47,7 +54,7 @@ Rule 'Azure.AKS.PoolScaleSet' -Ref 'AZR-000017' -Type 'Microsoft.ContainerServic
 }
 
 # Synopsis: AKS nodes should use a minimum number of pods
-Rule 'Azure.AKS.NodeMinPods' -Ref 'AZR-000018' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.AKS.NodeMinPods' -Ref 'AZR-000018' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $agentPools = @(GetAgentPoolProfiles);
     if ($agentPools.Length -eq 0) {
         return $Assert.Pass();
@@ -58,7 +65,7 @@ Rule 'Azure.AKS.NodeMinPods' -Ref 'AZR-000018' -Type 'Microsoft.ContainerService
 } -Configure @{ Azure_AKSNodeMinimumMaxPods = 50 }
 
 # Synopsis: Use Autoscaling to ensure AKS cluster is running efficiently with the right number of nodes for the workloads present.
-Rule 'Azure.AKS.AutoScaling' -Ref 'AZR-000019' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.AutoScaling' -Ref 'AZR-000019' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $agentPools = @(GetAgentPoolProfiles);
 
     if ($agentPools.Length -eq 0) {
@@ -78,7 +85,7 @@ Rule 'Azure.AKS.AutoScaling' -Ref 'AZR-000019' -Type 'Microsoft.ContainerService
 }
 
 # Synopsis: AKS clusters using Azure CNI should use large subnets to reduce IP exhaustion issues.
-Rule 'Azure.AKS.CNISubnetSize' -Ref 'AZR-000020' -If { IsExport } -With 'Azure.AKS.AzureCNI' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.CNISubnetSize' -Ref 'AZR-000020' -If { IsExport } -With 'Azure.AKS.AzureCNI' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $clusterSubnets = @(GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets');
 
     if ($clusterSubnets.Length -eq 0) {
@@ -100,7 +107,7 @@ Rule 'Azure.AKS.CNISubnetSize' -Ref 'AZR-000020' -If { IsExport } -With 'Azure.A
 } -Configure @{ AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE = 23 }
 
 # Synopsis: AKS clusters deployed with virtual machine scale sets should use availability zones in supported regions for high availability.
-Rule 'Azure.AKS.AvailabilityZone' -Ref 'AZR-000021' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.AvailabilityZone' -Ref 'AZR-000021' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $agentPools = @(GetAgentPoolProfiles);
 
     if ($agentPools.Length -eq 0) {
@@ -135,7 +142,7 @@ Rule 'Azure.AKS.AvailabilityZone' -Ref 'AZR-000021' -Type 'Microsoft.ContainerSe
 } -Configure @{ AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: AKS clusters should collect security-based audit logs to assess and monitor the compliance status of workloads.
-Rule 'Azure.AKS.AuditLogs' -Ref 'AZR-000022' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.AuditLogs' -Ref 'AZR-000022' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'LT-4' } {
     $diagnosticLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.ContainerService/managedClusters/providers/diagnosticSettings');
 
     $Assert.Greater($diagnosticLogs, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotConfigured, $TargetObject.name);
@@ -157,7 +164,7 @@ Rule 'Azure.AKS.AuditLogs' -Ref 'AZR-000022' -Type 'Microsoft.ContainerService/m
 }
 
 # Synopsis: AKS clusters should collect platform diagnostic logs to monitor the state of workloads.
-Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.ASB.v3/control' = 'LT-4' } {
     $configurationLogCategoriesList = $Configuration.GetStringValues('AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST');
 
     if ($configurationLogCategoriesList.Length -eq 0) {
@@ -234,12 +241,12 @@ Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerServic
 }
 
 # Synopsis: AKS clusters should have Uptime SLA enabled to ensure availability of control plane components for production workloads.
-Rule 'Azure.AKS.UptimeSLA' -Ref 'AZR-000285' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.AKS.UptimeSLA' -Ref 'AZR-000285' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.Contains($TargetObject, 'sku.tier', 'Paid');
 }
 
 # Synopsis: AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades.
-Rule 'Azure.AKS.EphemeralOSDisk' -Ref 'AZR-000287' -Level Warning -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+Rule 'Azure.AKS.EphemeralOSDisk' -Ref 'AZR-000287' -Level Warning -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $agentPools = @(GetAgentPoolProfiles);
     if ($agentPools.Length -eq 0) {
         return $Assert.Pass();

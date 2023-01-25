@@ -26,7 +26,7 @@ Consider configuring the minimum supported TLS version to be 1.2.
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [TLS enforcement in Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/concepts-ssl-connection-security#tls-enforcement-in-azure-database-for-mysql)
 - [Set TLS configurations for Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/howto-tls-configurations#set-tls-configurations-for-azure-database-for-mysql)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)

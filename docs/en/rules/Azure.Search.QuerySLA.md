@@ -61,6 +61,6 @@ For example:
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.search/searchservices#searchserviceproperties-object)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.search/searchservices#searchserviceproperties-object)
 - [SLA for Azure Cognitive Search](https://azure.microsoft.com/support/legal/sla/search)
 - [Resiliency checklist for specific Azure services](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service#search)

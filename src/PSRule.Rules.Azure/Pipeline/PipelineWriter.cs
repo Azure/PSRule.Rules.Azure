@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -14,6 +14,12 @@ namespace PSRule.Rules.Azure.Pipeline
         void WriteVerbose(string message);
 
         void WriteVerbose(string format, params object[] args);
+
+        void WriteWarning(string message);
+
+        void WriteWarning(string format, params object[] args);
+
+        void WriteError(Exception exception, string errorId, ErrorCategory errorCategory, object targetObject);
     }
 
     internal abstract class PipelineWriter : ILogger
@@ -77,6 +83,14 @@ namespace PSRule.Rules.Azure.Pipeline
         public virtual bool ShouldWriteVerbose()
         {
             return _Writer != null && _Writer.ShouldWriteVerbose();
+        }
+
+        public void WriteWarning(string format, params object[] args)
+        {
+            if (!ShouldWriteWarning())
+                return;
+
+            WriteWarning(string.Format(Thread.CurrentThread.CurrentCulture, format, args));
         }
 
         public virtual void WriteWarning(string message)

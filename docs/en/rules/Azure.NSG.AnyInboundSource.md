@@ -1,12 +1,12 @@
 ---
 severity: Critical
 pillar: Security
-category: Network security and containment
+category: Application endpoints
 resource: Network Security Group
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.AnyInboundSource/
 ---
 
-# Avoid rules that allow "any" as an inbound source
+# Avoid rules that allow any as an inbound source
 
 ## SYNOPSIS
 
@@ -218,10 +218,10 @@ resource asg 'Microsoft.Network/applicationSecurityGroups@2022-01-01' = {
 
 ## LINKS
 
+- [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Service Tags Overview](https://learn.microsoft.com/azure/virtual-network/service-tags-overview)
-- [Best practices for endpoint security on Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Network Security Groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
 - [Logically segment subnets](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [What is Azure Application Gateway?](https://docs.microsoft.com/azure/application-gateway/overview)
 - [Azure DDoS Protection Standard overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)

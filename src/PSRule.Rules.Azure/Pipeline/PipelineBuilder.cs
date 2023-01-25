@@ -54,6 +54,16 @@ namespace PSRule.Rules.Azure.Pipeline
         {
             return new PolicyAssignmentSearchPipelineBuilder(path);
         }
+
+        /// <summary>
+        /// Create a builder for creating a pipeline to exporting resource data from Azure.
+        /// </summary>
+        /// <param name="option">Options that configure PSRule for Azure.</param>
+        /// <returns>A builder object to configure the pipeline.</returns>
+        public static IResourceDataPipelineBuilder ResourceData(PSRuleOption option)
+        {
+            return new ResourceDataPipelineBuilder(option);
+        }
     }
 
     /// <summary>
@@ -123,18 +133,21 @@ namespace PSRule.Rules.Azure.Pipeline
             _Output = new PSPipelineWriter(Option);
         }
 
+        /// <inheritdoc/>
         public virtual void UseCommandRuntime(PSCmdlet commandRuntime)
         {
             CmdletContext = commandRuntime;
             _Output.UseCommandRuntime(commandRuntime);
         }
 
+        /// <inheritdoc/>
         public void UseExecutionContext(EngineIntrinsics executionContext)
         {
             ExecutionContext = executionContext;
             _Output.UseExecutionContext(executionContext);
         }
 
+        /// <inheritdoc/>
         public virtual IPipelineBuilder Configure(PSRuleOption option)
         {
             if (option == null)
@@ -145,6 +158,7 @@ namespace PSRule.Rules.Azure.Pipeline
             return this;
         }
 
+        /// <inheritdoc/>
         public abstract IPipeline Build();
 
         protected PipelineContext PrepareContext()

@@ -92,6 +92,6 @@ Azure Container Apps are currently in preview.
 
 ## LINKS
 
-- [Data encryption in Azure](https://docs.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [Set up HTTPS ingress in Azure Container Apps](https://docs.microsoft.com/azure/container-apps/ingress#configuration)
-- [Azure template reference](https://docs.microsoft.com/azure/container-apps/azure-resource-manager-api-spec)
+- [Azure deployment reference](https://docs.microsoft.com/azure/container-apps/azure-resource-manager-api-spec)

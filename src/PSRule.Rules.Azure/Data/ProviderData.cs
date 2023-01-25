@@ -10,6 +10,19 @@ using PSRule.Rules.Azure.Resources;
 namespace PSRule.Rules.Azure.Data
 {
     /// <summary>
+    /// Defines extension methods for Azure resource provider data.
+    /// </summary>
+    internal static class ProviderDataExtensions
+    {
+        public static bool TryResourceType(this ProviderData data, string resourceType, out ResourceProviderType type)
+        {
+            type = null;
+            return ResourceHelper.TryResourceProviderFromType(resourceType, out var provider, out var typeName) &&
+                data.TryResourceType(provider, typeName, out type);
+        }
+    }
+
+    /// <summary>
     /// Defines a datastore of Azure resource provider data.
     /// </summary>
     internal sealed class ProviderData : ResourceLoader
@@ -20,7 +33,7 @@ namespace PSRule.Rules.Azure.Data
         /// <summary>
         /// Settings for JSON deserialization.
         /// </summary>
-        private static readonly JsonSerializerSettings _Settings = new JsonSerializerSettings
+        private static readonly JsonSerializerSettings _Settings = new()
         {
             Converters = new List<JsonConverter>
             {

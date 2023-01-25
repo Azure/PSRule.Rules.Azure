@@ -193,13 +193,15 @@ task TestDotNet {
     if ($CodeCoverage) {
         exec {
             # Test library
-            dotnet test --collect:"Code Coverage" --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+            # dotnet test --collect:"Code Coverage" --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+            dotnet test tests/PSRule.Rules.Azure.Tests
         }
     }
     else {
         exec {
             # Test library
-            dotnet test --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+            # dotnet test --logger trx -r (Join-Path $PWD -ChildPath reports/) tests/PSRule.Rules.Azure.Tests
+            dotnet test tests/PSRule.Rules.Azure.Tests
         }
     }
 }
@@ -360,12 +362,13 @@ task BuildDocs BuildRuleDocs, BuildBaselineDocs
 # Synopsis: Build table of content for rules
 task BuildRuleDocs Build, Dependencies, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
-    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
-    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
-    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Path ./RuleToc.Doc.ps1;
 
+    # English
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
     $metadata = @{}
-    Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All | ForEach-Object {
+    Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Culture 'en' | ForEach-Object {
         $metadata[$_.Name] = [PSCustomObject]@{
             Name = $_.Name
             Ref = $_.Ref
@@ -383,6 +386,30 @@ task BuildRuleDocs Build, Dependencies, {
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;
+
+    # Spanish
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
+    $metadata = @{}
+    Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Culture 'es' | ForEach-Object {
+        $metadata[$_.Name] = [PSCustomObject]@{
+            Name = $_.Name
+            Ref = $_.Ref
+            Alias = @($_.Alias)
+            Flags = $_.Flags
+            Release = $_.Tag.release
+            RuleSet = $_.Tag.ruleSet
+            Level = $_.Level.ToString()
+            Method = $_.Tag.method
+            DisplayName = $_.Info.DisplayName
+            Synopsis = $_.Info.Synopsis
+            Recommendation = $_.Info.Recommendation
+            Pillar = $_.Tag.'Azure.WAF/pillar'
+            Control = $_.Tag.'Azure.ASB.v3/control'
+        }
+    }
+    $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/es/rules/metadata.json -Force;
 }
 
 # Synopsis: Build table of content for baselines
@@ -402,6 +429,7 @@ task BuildBaselineDocs Build, Dependencies, {
 
 # Synopsis: Build help
 task BuildHelp BuildModule, Dependencies, {
+    # Culture for English
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en/ -ItemType Directory -Force;
     }
@@ -413,6 +441,14 @@ task BuildHelp BuildModule, Dependencies, {
     }
     if (!(Test-Path out/modules/PSRule.Rules.Azure/en-GB/)) {
         $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-GB/ -ItemType Directory -Force;
+    }
+
+    # Culture for Spanish
+    if (!(Test-Path out/modules/PSRule.Rules.Azure/es/)) {
+        $Null = New-Item -Path out/modules/PSRule.Rules.Azure/es/ -ItemType Directory -Force;
+    }
+    if (!(Test-Path out/modules/PSRule.Rules.Azure/es-us/)) {
+        $Null = New-Item -Path out/modules/PSRule.Rules.Azure/en-US/ -ItemType Directory -Force;
     }
 
     $Null = Copy-Item -Path docs/en/rules/*.md -Destination out/modules/PSRule.Rules.Azure/en/;

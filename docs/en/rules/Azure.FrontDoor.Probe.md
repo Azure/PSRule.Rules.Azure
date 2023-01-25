@@ -148,7 +148,7 @@ resource frontDoorOriginGroup 'Microsoft.Cdn/profiles/origingroups@2021-06-01' =
 
 ## LINKS
 
-- [Creating good health probes](https://docs.microsoft.com/azure/architecture/framework/resiliency/monitor-model#create-good-health-probes)
+- [Creating good health probes](https://learn.microsoft.com/azure/architecture/framework/resiliency/monitor-model#create-good-health-probes)
 - [Health probes](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes)
 - [How Front Door determines backend health](https://docs.microsoft.com/azure/frontdoor/front-door-health-probes#how-front-door-determines-backend-health)
 - [Health Endpoint Monitoring pattern](https://docs.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring)

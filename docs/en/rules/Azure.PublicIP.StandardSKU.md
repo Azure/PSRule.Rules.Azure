@@ -94,7 +94,7 @@ resource publicIPAddresses_resource 'Microsoft.Network/publicIPAddresses@2020-11
 
 ## LINKS
 
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses?tabs=json)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses?tabs=json)
 - [Standard Public IP addresses](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#standard)
 - [Load Balancer and Availability Zones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
-- [Meet application platform requirements](https://docs.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
+- [Meet application platform requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)

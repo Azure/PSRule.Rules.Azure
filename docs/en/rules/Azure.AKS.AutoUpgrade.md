@@ -191,8 +191,8 @@ az aks update -n '<name>' -g '<resource_group>' --auto-upgrade-channel 'stable'
 
 ## LINKS
 
-- [Automation overview](https://docs.microsoft.com/azure/architecture/framework/devops/automation-overview)
+- [Automation overview](https://learn.microsoft.com/azure/architecture/framework/devops/automation-overview)
 - [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
 - [Support policies for Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/support-policies)
 - [Set auto-upgrade channel](https://docs.microsoft.com/azure/aks/upgrade-cluster#set-auto-upgrade-channel)
-- [Azure template reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)
+- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)
