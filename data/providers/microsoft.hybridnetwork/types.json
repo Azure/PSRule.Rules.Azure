@@ -33,12 +33,19 @@
       "2020-01-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
       "Central US EUAP",
       "East US",
       "East US 2 EUAP",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
+      "UK South",
       "West Central US",
-      "West Europe"
+      "West Europe",
+      "West US",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -46,6 +53,7 @@
     "aliases": null,
     "resourceType": "networkfunctions",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01-preview",
       "2022-01-01-preview",
       "2021-06-01-privatepreview",
@@ -53,22 +61,37 @@
       "2020-01-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
       "East US",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
-      "West Europe"
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 3"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "networkfunctions/components",
+    "resourceType": "networkFunctions/components",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
       "East US",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
-      "West Europe"
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -85,8 +108,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "operations",
+    "resourceType": "Operations",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01-preview",
       "2022-01-01-preview",
       "2021-05-01",

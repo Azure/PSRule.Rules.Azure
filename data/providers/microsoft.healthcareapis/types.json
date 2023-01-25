@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -22,6 +23,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -62,6 +64,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -103,6 +106,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -191,6 +195,7 @@
     },
     "resourceType": "services",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -210,6 +215,7 @@
       "East US 2",
       "Germany West Central",
       "Japan East",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "South Africa North",
@@ -311,6 +317,7 @@
     "aliases": null,
     "resourceType": "services/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -326,6 +333,7 @@
       "East US 2",
       "Germany West Central",
       "Japan East",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "South Africa North",
@@ -354,6 +362,7 @@
     },
     "resourceType": "services/privateEndpointConnections",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -369,6 +378,7 @@
       "East US 2",
       "Germany West Central",
       "Japan East",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "South Africa North",
@@ -389,6 +399,7 @@
     "aliases": null,
     "resourceType": "services/privateLinkResources",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -404,6 +415,7 @@
       "East US 2",
       "Germany West Central",
       "Japan East",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "South Africa North",
@@ -439,6 +451,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -497,6 +510,7 @@
     },
     "resourceType": "workspaces/dicomservices",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -526,6 +540,7 @@
     "aliases": null,
     "resourceType": "workspaces/eventGridFilters",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -603,6 +618,7 @@
     },
     "resourceType": "workspaces/fhirservices",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -639,6 +655,7 @@
     },
     "resourceType": "workspaces/iotconnectors",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -673,6 +690,7 @@
     },
     "resourceType": "workspaces/iotconnectors/fhirdestinations",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -702,6 +720,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -738,6 +757,7 @@
     },
     "resourceType": "workspaces/privateEndpointConnections",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
@@ -766,6 +786,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateLinkResources",
     "apiVersions": [
+      "2022-12-01",
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",

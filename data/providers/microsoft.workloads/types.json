@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-10-15-preview",
       "2021-12-01-preview"
     ],
@@ -13,6 +14,8 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2022-11-01-preview",
+      "2022-10-15-preview",
       "2021-12-01-preview"
     ],
     "locations": [
@@ -38,9 +41,13 @@
     ],
     "locations": [
       "Australia East",
+      "Central India",
       "East Asia",
+      "East US",
       "East US 2",
-      "North Europe"
+      "North Europe",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -52,9 +59,13 @@
     ],
     "locations": [
       "Australia East",
+      "Central India",
       "East Asia",
+      "East US",
       "East US 2",
-      "North Europe"
+      "North Europe",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -66,9 +77,13 @@
     ],
     "locations": [
       "Australia East",
+      "Central India",
       "East Asia",
+      "East US",
       "East US 2",
-      "North Europe"
+      "North Europe",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -76,6 +91,8 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2022-11-01-preview",
+      "2022-10-15-preview",
       "2021-12-01-preview"
     ],
     "locations": [],
@@ -89,9 +106,13 @@
     ],
     "locations": [
       "Australia East",
+      "Central India",
       "East Asia",
+      "East US",
       "East US 2",
-      "North Europe"
+      "North Europe",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -103,9 +124,13 @@
     ],
     "locations": [
       "Australia East",
+      "Central India",
       "East Asia",
+      "East US",
       "East US 2",
-      "North Europe"
+      "North Europe",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -117,9 +142,13 @@
     ],
     "locations": [
       "Australia East",
+      "Central India",
       "East Asia",
+      "East US",
       "East US 2",
-      "North Europe"
+      "North Europe",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -131,9 +160,13 @@
     ],
     "locations": [
       "Australia East",
+      "Central India",
       "East Asia",
+      "East US",
       "East US 2",
-      "North Europe"
+      "North Europe",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   }

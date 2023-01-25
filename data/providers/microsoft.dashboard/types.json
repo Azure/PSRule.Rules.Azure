@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
@@ -22,15 +23,20 @@
     },
     "resourceType": "grafana",
     "apiVersions": [
+      "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
     ],
     "locations": [
       "Australia East",
+      "East Asia",
       "East US",
+      "East US 2",
+      "North Europe",
       "South Central US",
       "Sweden Central",
+      "UK South",
       "West Central US",
       "West Europe",
       "West US 3"
@@ -41,6 +47,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
@@ -52,6 +59,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
@@ -63,6 +71,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"
@@ -74,8 +83,10 @@
       "East US",
       "East US 2",
       "East US 2 EUAP",
+      "North Europe",
       "South Central US",
       "Sweden Central",
+      "UK South",
       "West Central US",
       "West Europe",
       "West US 3"
@@ -86,6 +97,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
       "2021-09-01-preview"

@@ -6,7 +6,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -17,7 +18,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -28,7 +30,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -39,7 +42,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -50,7 +54,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -61,7 +66,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -73,7 +79,8 @@
       "2021-10-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -84,7 +91,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -95,7 +103,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -106,7 +115,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -117,7 +127,8 @@
       "2022-09-01-preview"
     ],
     "locations": [
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -140,7 +151,8 @@
     ],
     "locations": [
       "Australia East",
-      "Central US"
+      "Central US",
+      "West Europe"
     ],
     "zoneMappings": null
   },

@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "clusters",
     "apiVersions": [
+      "2022-12-01",
+      "2022-10-01",
       "2022-09-01",
       "2022-05-01",
       "2022-03-01",
@@ -25,6 +27,8 @@
     "aliases": null,
     "resourceType": "clusters/arcSettings",
     "apiVersions": [
+      "2022-12-01",
+      "2022-10-01",
       "2022-09-01",
       "2022-05-01",
       "2022-03-01",
@@ -46,6 +50,8 @@
     "aliases": null,
     "resourceType": "clusters/arcSettings/extensions",
     "apiVersions": [
+      "2022-12-01",
+      "2022-10-01",
       "2022-09-01",
       "2022-05-01",
       "2022-03-01",
@@ -71,7 +77,9 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
+      "South Central US",
       "Southeast Asia",
       "West Europe"
     ],
@@ -85,7 +93,9 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
+      "South Central US",
       "Southeast Asia",
       "West Europe"
     ],
@@ -99,7 +109,9 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
+      "South Central US",
       "Southeast Asia",
       "West Europe"
     ],
@@ -113,7 +125,9 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "East US",
+      "South Central US",
       "Southeast Asia",
       "West Europe"
     ],
@@ -121,7 +135,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "galleryImages",
+    "resourceType": "GalleryImages",
     "apiVersions": [
       "2021-09-01-preview",
       "2021-07-01-preview"
@@ -137,6 +151,9 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-12-15-preview",
+      "2022-12-01",
+      "2022-10-01",
       "2022-09-01",
       "2022-08-01-preview",
       "2022-05-01",
@@ -156,6 +173,10 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2022-12-15-preview",
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-10-01",
       "2022-09-01",
       "2022-08-01-preview",
       "2022-05-01",
@@ -185,6 +206,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "marketplaceGalleryImages",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "networkinterfaces",
     "apiVersions": [
       "2021-09-01-preview",
@@ -201,6 +234,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-12-15-preview",
+      "2022-12-01",
+      "2022-10-01",
       "2022-09-01",
       "2022-08-01-preview",
       "2022-05-01",
@@ -221,6 +257,8 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2022-12-01",
+      "2022-10-01",
       "2022-09-01"
     ],
     "locations": [],
@@ -269,7 +307,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "virtualMachines/extensions",
+    "resourceType": "virtualmachines/extensions",
     "apiVersions": [
       "2021-09-01-preview"
     ],

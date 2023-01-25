@@ -402,6 +402,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -450,6 +451,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -607,6 +609,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -808,6 +811,15 @@
       "2015-11-01",
       "2015-01-01",
       "2014-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "snapshots",
+    "apiVersions": [
+      "2022-11-01-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -1175,6 +1187,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -1231,6 +1244,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",

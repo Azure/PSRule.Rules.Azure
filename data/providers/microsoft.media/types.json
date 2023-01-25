@@ -1913,6 +1913,8 @@
     },
     "resourceType": "mediaservices/transforms",
     "apiVersions": [
+      "2022-07-01",
+      "2022-05-01-preview",
       "2021-11-01",
       "2021-06-01",
       "2020-05-01",
@@ -2396,6 +2398,8 @@
     },
     "resourceType": "mediaservices/transforms/jobs",
     "apiVersions": [
+      "2022-07-01",
+      "2022-05-01-preview",
       "2021-11-01",
       "2021-06-01",
       "2020-05-01",

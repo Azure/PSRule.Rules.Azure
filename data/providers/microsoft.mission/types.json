@@ -1,0 +1,83 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "communities",
+    "apiVersions": [
+      "2022-12-07-preview",
+      "2022-10-31-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Central US",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "communities/virtualEnclaves",
+    "apiVersions": [
+      "2022-10-31-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Central US",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2022-12-07-preview",
+      "2022-10-31-preview",
+      "2022-08-02-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2022-12-07-preview",
+      "2022-10-31-preview",
+      "2022-08-02-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Central US",
+      "West Central US",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-12-07-preview",
+      "2022-10-31-preview",
+      "2022-08-02-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualEnclaves",
+    "apiVersions": [],
+    "locations": [
+      "East US",
+      "North Central US",
+      "West Central US",
+      "West US"
+    ],
+    "zoneMappings": null
+  }
+]

@@ -3,8 +3,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2022-07-30-preview",
-      "2022-04-29-preview"
+      "2022-12-12-preview",
+      "2022-09-30-preview"
     ],
     "locations": [
       "global"
@@ -15,8 +15,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
-      "2022-07-30-preview",
-      "2022-04-29-preview"
+      "2022-12-12-preview",
+      "2022-09-30-preview"
     ],
     "locations": [
       "East US",
@@ -29,8 +29,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2022-07-30-preview",
-      "2022-04-29-preview"
+      "2022-12-12-preview",
+      "2022-09-30-preview"
     ],
     "locations": [
       "global"

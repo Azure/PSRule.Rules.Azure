@@ -1,0 +1,14 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "South Central US",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  }
+]

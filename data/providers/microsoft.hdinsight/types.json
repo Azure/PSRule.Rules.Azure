@@ -140,6 +140,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -149,6 +150,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -280,6 +282,10 @@
         "zones": []
       },
       {
+        "location": "Qatar Central",
+        "zones": []
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -338,6 +344,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US",
+        "zones": []
       },
       {
         "location": "West US 2",
@@ -480,6 +490,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -489,6 +500,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -620,6 +632,10 @@
         "zones": []
       },
       {
+        "location": "Qatar Central",
+        "zones": []
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -680,6 +696,10 @@
         ]
       },
       {
+        "location": "West US",
+        "zones": []
+      },
+      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -715,6 +735,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -724,6 +745,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -793,6 +815,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -802,6 +825,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -843,6 +867,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -852,6 +877,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -893,6 +919,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -902,6 +929,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -975,6 +1003,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -984,6 +1013,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -1043,6 +1073,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -1052,6 +1083,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -1093,6 +1125,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -1102,6 +1135,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",

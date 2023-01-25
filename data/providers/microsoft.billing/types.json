@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "billingAccounts",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
       "2020-11-01-privatepreview",
       "2020-05-01",
@@ -416,6 +417,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/transactions",
     "apiVersions": [
+      "2020-11-01-privatepreview",
       "2019-10-01-preview",
       "2018-11-01-preview"
     ],
@@ -961,6 +963,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/operationResults",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2021-10-01",
       "2020-12-15-privatepreview",
       "2020-11-01-privatepreview",
@@ -1050,8 +1053,42 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/reservationOrders",
+    "apiVersions": [
+      "2023-04-01-beta",
+      "2023-04-01",
+      "2022-10-01-privatepreview",
+      "2022-10-01-beta",
+      "2020-11-01-privatepreview",
+      "2020-11-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/reservationOrders/reservations",
+    "apiVersions": [
+      "2023-04-01-beta",
+      "2023-04-01",
+      "2022-10-01-privatepreview",
+      "2022-10-01-beta",
+      "2020-11-01-privatepreview",
+      "2020-11-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/reservations",
     "apiVersions": [
+      "2023-04-01-beta",
+      "2023-04-01",
+      "2022-10-01-privatepreview",
+      "2022-10-01-beta",
+      "2020-11-01-privatepreview",
+      "2020-11-01-beta",
       "2020-05-01",
       "2019-10-01-preview"
     ],
@@ -1062,8 +1099,14 @@
     "aliases": null,
     "resourceType": "billingAccounts/savingsPlanOrders",
     "apiVersions": [
+      "2023-04-01-beta",
+      "2023-04-01",
+      "2022-10-01-privatepreview",
+      "2022-10-01-beta",
       "2020-12-15-privatepreview",
-      "2020-12-15-beta"
+      "2020-12-15-beta",
+      "2020-11-01-privatepreview",
+      "2020-11-01-beta"
     ],
     "locations": [],
     "zoneMappings": null
@@ -1072,8 +1115,14 @@
     "aliases": null,
     "resourceType": "billingAccounts/savingsPlanOrders/savingsPlans",
     "apiVersions": [
+      "2023-04-01-beta",
+      "2023-04-01",
+      "2022-10-01-privatepreview",
+      "2022-10-01-beta",
       "2020-12-15-privatepreview",
-      "2020-12-15-beta"
+      "2020-12-15-beta",
+      "2020-11-01-privatepreview",
+      "2020-11-01-beta"
     ],
     "locations": [],
     "zoneMappings": null
@@ -1082,8 +1131,14 @@
     "aliases": null,
     "resourceType": "billingAccounts/savingsPlans",
     "apiVersions": [
+      "2023-04-01-beta",
+      "2023-04-01",
+      "2022-10-01-privatepreview",
+      "2022-10-01-beta",
       "2020-12-15-privatepreview",
-      "2020-12-15-beta"
+      "2020-12-15-beta",
+      "2020-11-01-privatepreview",
+      "2020-11-01-beta"
     ],
     "locations": [],
     "zoneMappings": null

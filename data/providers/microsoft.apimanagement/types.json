@@ -331,6 +331,9 @@
       "Microsoft.ApiManagement/service/additionalLocations[*].disableGateway": "properties.additionalLocations[*].disableGateway",
       "Microsoft.ApiManagement/service/additionalLocations[*].gatewayRegionalUrl": "properties.additionalLocations[*].gatewayRegionalUrl",
       "Microsoft.ApiManagement/service/additionalLocations[*].location": "properties.additionalLocations[*].location",
+      "Microsoft.ApiManagement/service/additionalLocations[*].natGatewayState": "properties.additionalLocations[*].natGatewayState",
+      "Microsoft.ApiManagement/service/additionalLocations[*].outboundPublicIPAddresses": "properties.additionalLocations[*].outboundPublicIPAddresses",
+      "Microsoft.ApiManagement/service/additionalLocations[*].outboundPublicIPAddresses[*]": "properties.additionalLocations[*].outboundPublicIPAddresses[*]",
       "Microsoft.ApiManagement/service/additionalLocations[*].platformVersion": "properties.additionalLocations[*].platformVersion",
       "Microsoft.ApiManagement/service/additionalLocations[*].privateIPAddresses": "properties.additionalLocations[*].privateIPAddresses",
       "Microsoft.ApiManagement/service/additionalLocations[*].privateIPAddresses[*]": "properties.additionalLocations[*].privateIPAddresses[*]",
@@ -400,7 +403,10 @@
       "Microsoft.ApiManagement/service/hostnameConfigurations[*].negotiateClientCertificate": "properties.hostnameConfigurations[*].negotiateClientCertificate",
       "Microsoft.ApiManagement/service/hostnameConfigurations[*].type": "properties.hostnameConfigurations[*].type",
       "Microsoft.ApiManagement/service/managementApiUrl": "properties.managementApiUrl",
+      "Microsoft.ApiManagement/service/natGatewayState": "properties.natGatewayState",
       "Microsoft.ApiManagement/service/notificationSenderEmail": "properties.notificationSenderEmail",
+      "Microsoft.ApiManagement/service/outboundPublicIPAddresses": "properties.outboundPublicIPAddresses",
+      "Microsoft.ApiManagement/service/outboundPublicIPAddresses[*]": "properties.outboundPublicIPAddresses[*]",
       "Microsoft.ApiManagement/service/platformVersion": "properties.platformVersion",
       "Microsoft.ApiManagement/service/portalUrl": "properties.portalUrl",
       "Microsoft.ApiManagement/service/privateEndpointConnections": "properties.privateEndpointConnections",
@@ -594,10 +600,19 @@
       "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2": "properties.authenticationSettings.oAuth2",
       "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2.authorizationServerId": "properties.authenticationSettings.oAuth2.authorizationServerId",
       "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2.scope": "properties.authenticationSettings.oAuth2.scope",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2AuthenticationSettings": "properties.authenticationSettings.oAuth2AuthenticationSettings",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2AuthenticationSettings[*]": "properties.authenticationSettings.oAuth2AuthenticationSettings[*]",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2AuthenticationSettings[*].authorizationServerId": "properties.authenticationSettings.oAuth2AuthenticationSettings[*].authorizationServerId",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.oAuth2AuthenticationSettings[*].scope": "properties.authenticationSettings.oAuth2AuthenticationSettings[*].scope",
       "Microsoft.ApiManagement/service/apis/authenticationSettings.openid": "properties.authenticationSettings.openid",
       "Microsoft.ApiManagement/service/apis/authenticationSettings.openid.bearerTokenSendingMethods": "properties.authenticationSettings.openid.bearerTokenSendingMethods",
       "Microsoft.ApiManagement/service/apis/authenticationSettings.openid.bearerTokenSendingMethods[*]": "properties.authenticationSettings.openid.bearerTokenSendingMethods[*]",
       "Microsoft.ApiManagement/service/apis/authenticationSettings.openid.openidProviderId": "properties.authenticationSettings.openid.openidProviderId",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.openidAuthenticationSettings": "properties.authenticationSettings.openidAuthenticationSettings",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.openidAuthenticationSettings[*]": "properties.authenticationSettings.openidAuthenticationSettings[*]",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.openidAuthenticationSettings[*].bearerTokenSendingMethods": "properties.authenticationSettings.openidAuthenticationSettings[*].bearerTokenSendingMethods",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.openidAuthenticationSettings[*].bearerTokenSendingMethods[*]": "properties.authenticationSettings.openidAuthenticationSettings[*].bearerTokenSendingMethods[*]",
+      "Microsoft.ApiManagement/service/apis/authenticationSettings.openidAuthenticationSettings[*].openidProviderId": "properties.authenticationSettings.openidAuthenticationSettings[*].openidProviderId",
       "Microsoft.ApiManagement/service/apis/authenticationSettings.subscriptionKeyRequired": "properties.authenticationSettings.subscriptionKeyRequired",
       "Microsoft.ApiManagement/service/apis/contact": "properties.contact",
       "Microsoft.ApiManagement/service/apis/contact.email": "properties.contact.email",
@@ -691,6 +706,7 @@
       "Microsoft.ApiManagement/service/apis/diagnostics/httpCorrelationProtocol": "properties.httpCorrelationProtocol",
       "Microsoft.ApiManagement/service/apis/diagnostics/logClientIp": "properties.logClientIp",
       "Microsoft.ApiManagement/service/apis/diagnostics/loggerId": "properties.loggerId",
+      "Microsoft.ApiManagement/service/apis/diagnostics/metrics": "properties.metrics",
       "Microsoft.ApiManagement/service/apis/diagnostics/operationNameFormat": "properties.operationNameFormat",
       "Microsoft.ApiManagement/service/apis/diagnostics/sampling": "properties.sampling",
       "Microsoft.ApiManagement/service/apis/diagnostics/sampling.percentage": "properties.sampling.percentage",
@@ -905,6 +921,18 @@
   },
   {
     "aliases": {
+      "Microsoft.ApiManagement/service/authorizationProviders/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/authorizationProviders/identityProvider": "properties.identityProvider",
+      "Microsoft.ApiManagement/service/authorizationProviders/oauth2": "properties.oauth2",
+      "Microsoft.ApiManagement/service/authorizationProviders/oauth2.grantTypes": "properties.oauth2.grantTypes",
+      "Microsoft.ApiManagement/service/authorizationProviders/oauth2.grantTypes.authorizationCode": "properties.oauth2.grantTypes.authorizationCode",
+      "Microsoft.ApiManagement/service/authorizationProviders/oauth2.grantTypes.clientCredentials": "properties.oauth2.grantTypes.clientCredentials",
+      "Microsoft.ApiManagement/service/authorizationProviders/oauth2.redirectUrl": "properties.oauth2.redirectUrl"
+    },
+    "resourceType": "service/authorizationproviders"
+  },
+  {
+    "aliases": {
       "Microsoft.ApiManagement/service/authorizationServers/authorizationEndpoint": "properties.authorizationEndpoint",
       "Microsoft.ApiManagement/service/authorizationServers/authorizationMethods": "properties.authorizationMethods",
       "Microsoft.ApiManagement/service/authorizationServers/authorizationMethods[*]": "properties.authorizationMethods[*]",
@@ -932,7 +960,9 @@
       "Microsoft.ApiManagement/service/authorizationServers/tokenBodyParameters[*].name": "properties.tokenBodyParameters[*].name",
       "Microsoft.ApiManagement/service/authorizationServers/tokenBodyParameters[*].value": "properties.tokenBodyParameters[*].value",
       "Microsoft.ApiManagement/service/authorizationServers/tokenEndpoint": "properties.tokenEndpoint",
-      "Microsoft.ApiManagement/service/authorizationServers/tokenEndpoint.externalDocs": "properties.tokenEndpoint.externalDocs"
+      "Microsoft.ApiManagement/service/authorizationServers/tokenEndpoint.externalDocs": "properties.tokenEndpoint.externalDocs",
+      "Microsoft.ApiManagement/service/authorizationServers/useInApiDocumentation": "properties.useInApiDocumentation",
+      "Microsoft.ApiManagement/service/authorizationServers/useInTestConsole": "properties.useInTestConsole"
     },
     "resourceType": "service/authorizationservers"
   },
@@ -1071,6 +1101,7 @@
       "Microsoft.ApiManagement/service/diagnostics/httpCorrelationProtocol": "properties.httpCorrelationProtocol",
       "Microsoft.ApiManagement/service/diagnostics/logClientIp": "properties.logClientIp",
       "Microsoft.ApiManagement/service/diagnostics/loggerId": "properties.loggerId",
+      "Microsoft.ApiManagement/service/diagnostics/metrics": "properties.metrics",
       "Microsoft.ApiManagement/service/diagnostics/operationNameFormat": "properties.operationNameFormat",
       "Microsoft.ApiManagement/service/diagnostics/sampling": "properties.sampling",
       "Microsoft.ApiManagement/service/diagnostics/sampling.percentage": "properties.sampling.percentage",
@@ -1098,6 +1129,17 @@
       "Microsoft.ApiManagement/service/gateways/certificateAuthorities/isTrusted": "properties.isTrusted"
     },
     "resourceType": "service/gateways/certificateauthorities"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/gateways/hostnameConfigurations/certificateId": "properties.certificateId",
+      "Microsoft.ApiManagement/service/gateways/hostnameConfigurations/hostname": "properties.hostname",
+      "Microsoft.ApiManagement/service/gateways/hostnameConfigurations/http2Enabled": "properties.http2Enabled",
+      "Microsoft.ApiManagement/service/gateways/hostnameConfigurations/negotiateClientCertificate": "properties.negotiateClientCertificate",
+      "Microsoft.ApiManagement/service/gateways/hostnameConfigurations/tls10Enabled": "properties.tls10Enabled",
+      "Microsoft.ApiManagement/service/gateways/hostnameConfigurations/tls11Enabled": "properties.tls11Enabled"
+    },
+    "resourceType": "service/gateways/hostnameconfigurations"
   },
   {
     "aliases": {
@@ -1197,7 +1239,9 @@
       "Microsoft.ApiManagement/service/openidConnectProviders/clientSecret": "properties.clientSecret",
       "Microsoft.ApiManagement/service/openidConnectProviders/description": "properties.description",
       "Microsoft.ApiManagement/service/openidConnectProviders/displayName": "properties.displayName",
-      "Microsoft.ApiManagement/service/openidConnectProviders/metadataEndpoint": "properties.metadataEndpoint"
+      "Microsoft.ApiManagement/service/openidConnectProviders/metadataEndpoint": "properties.metadataEndpoint",
+      "Microsoft.ApiManagement/service/openidConnectProviders/useInApiDocumentation": "properties.useInApiDocumentation",
+      "Microsoft.ApiManagement/service/openidConnectProviders/useInTestConsole": "properties.useInTestConsole"
     },
     "resourceType": "service/openidconnectproviders"
   },

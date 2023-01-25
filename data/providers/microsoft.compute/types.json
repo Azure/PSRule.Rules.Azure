@@ -23,6 +23,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -99,6 +100,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -335,6 +337,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US",
+        "zones": []
       },
       {
         "location": "West US 2",
@@ -356,6 +362,7 @@
   },
   {
     "aliases": {
+      "Microsoft.Compute/capacityReservationGroups/capacityReservations/platformFaultDomainCount": "properties.platformFaultDomainCount",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations/provisioningState": "properties.provisioningState",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations/provisioningTime": "properties.provisioningTime",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations/reservationId": "properties.reservationId",
@@ -372,6 +379,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -608,6 +616,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US",
+        "zones": []
       },
       {
         "location": "West US 2",
@@ -690,6 +702,7 @@
     },
     "resourceType": "cloudServices",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-04",
       "2021-03-01",
       "2020-10-01-preview"
@@ -921,6 +934,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US",
+        "zones": []
       },
       {
         "location": "West US 2",
@@ -1040,6 +1057,7 @@
     "aliases": null,
     "resourceType": "cloudServices/roleInstances",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-04",
       "2021-03-01",
       "2020-10-01-preview"
@@ -1137,6 +1155,7 @@
     "aliases": null,
     "resourceType": "cloudServices/roles",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-04",
       "2021-03-01",
       "2020-10-01-preview"
@@ -1340,6 +1359,7 @@
     "aliases": {
       "Microsoft.Compute/disks/accountType": "properties.accountType",
       "Microsoft.Compute/disks/burstingEnabled": "properties.burstingEnabled",
+      "Microsoft.Compute/disks/burstingEnabledTime": "properties.burstingEnabledTime",
       "Microsoft.Compute/disks/completionPercent": "properties.completionPercent",
       "Microsoft.Compute/disks/creationData": "properties.creationData",
       "Microsoft.Compute/disks/creationData.createOption": "properties.creationData.createOption",
@@ -1354,6 +1374,7 @@
       "Microsoft.Compute/disks/creationData.imageReference.lun": "properties.creationData.imageReference.lun",
       "Microsoft.Compute/disks/creationData.imageReference.sharedGalleryImageId": "properties.creationData.imageReference.sharedGalleryImageId",
       "Microsoft.Compute/disks/creationData.logicalSectorSize": "properties.creationData.logicalSectorSize",
+      "Microsoft.Compute/disks/creationData.performancePlus": "properties.creationData.performancePlus",
       "Microsoft.Compute/disks/creationData.securityDataUri": "properties.creationData.securityDataUri",
       "Microsoft.Compute/disks/creationData.sourceResourceId": "properties.creationData.sourceResourceId",
       "Microsoft.Compute/disks/creationData.sourceUniqueId": "properties.creationData.sourceUniqueId",
@@ -1399,6 +1420,7 @@
       "Microsoft.Compute/disks/managedBy": "managedBy",
       "Microsoft.Compute/disks/maxShares": "properties.maxShares",
       "Microsoft.Compute/disks/networkAccessPolicy": "properties.networkAccessPolicy",
+      "Microsoft.Compute/disks/optimizedForFrequentAttach": "properties.optimizedForFrequentAttach",
       "Microsoft.Compute/disks/osType": "properties.osType",
       "Microsoft.Compute/disks/ownerId": "properties.ownerId",
       "Microsoft.Compute/disks/propertyUpdatesInProgress": "properties.propertyUpdatesInProgress",
@@ -1422,6 +1444,7 @@
       "Microsoft.Compute/disks/supportedCapabilities": "properties.supportedCapabilities",
       "Microsoft.Compute/disks/supportedCapabilities.acceleratedNetwork": "properties.supportedCapabilities.acceleratedNetwork",
       "Microsoft.Compute/disks/supportedCapabilities.architecture": "properties.supportedCapabilities.architecture",
+      "Microsoft.Compute/disks/supportedCapabilities.diskControllerTypes": "properties.supportedCapabilities.diskControllerTypes",
       "Microsoft.Compute/disks/supportsHibernation": "properties.supportsHibernation",
       "Microsoft.Compute/disks/tier": "properties.tier",
       "Microsoft.Compute/disks/timeCreated": "properties.timeCreated",
@@ -1683,6 +1706,10 @@
         ]
       },
       {
+        "location": "West US",
+        "zones": []
+      },
+      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -1817,6 +1844,18 @@
   },
   {
     "aliases": {
+      "Microsoft.Compute/galleries/applications/customActions": "properties.customActions",
+      "Microsoft.Compute/galleries/applications/customActions[*]": "properties.customActions[*]",
+      "Microsoft.Compute/galleries/applications/customActions[*].description": "properties.customActions[*].description",
+      "Microsoft.Compute/galleries/applications/customActions[*].name": "properties.customActions[*].name",
+      "Microsoft.Compute/galleries/applications/customActions[*].parameters": "properties.customActions[*].parameters",
+      "Microsoft.Compute/galleries/applications/customActions[*].parameters[*]": "properties.customActions[*].parameters[*]",
+      "Microsoft.Compute/galleries/applications/customActions[*].parameters[*].defaultValue": "properties.customActions[*].parameters[*].defaultValue",
+      "Microsoft.Compute/galleries/applications/customActions[*].parameters[*].description": "properties.customActions[*].parameters[*].description",
+      "Microsoft.Compute/galleries/applications/customActions[*].parameters[*].name": "properties.customActions[*].parameters[*].name",
+      "Microsoft.Compute/galleries/applications/customActions[*].parameters[*].required": "properties.customActions[*].parameters[*].required",
+      "Microsoft.Compute/galleries/applications/customActions[*].parameters[*].type": "properties.customActions[*].parameters[*].type",
+      "Microsoft.Compute/galleries/applications/customActions[*].script": "properties.customActions[*].script",
       "Microsoft.Compute/galleries/applications/description": "properties.description",
       "Microsoft.Compute/galleries/applications/endOfLifeDate": "properties.endOfLifeDate",
       "Microsoft.Compute/galleries/applications/eula": "properties.eula",
@@ -1884,6 +1923,18 @@
       "Microsoft.Compute/galleries/applications/versions/publishingProfile": "properties.publishingProfile",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.advancedSettings": "properties.publishingProfile.advancedSettings",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.contentType": "properties.publishingProfile.contentType",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions": "properties.publishingProfile.customActions",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*]": "properties.publishingProfile.customActions[*]",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].description": "properties.publishingProfile.customActions[*].description",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].name": "properties.publishingProfile.customActions[*].name",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].parameters": "properties.publishingProfile.customActions[*].parameters",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].parameters[*]": "properties.publishingProfile.customActions[*].parameters[*]",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].parameters[*].defaultValue": "properties.publishingProfile.customActions[*].parameters[*].defaultValue",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].parameters[*].description": "properties.publishingProfile.customActions[*].parameters[*].description",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].parameters[*].name": "properties.publishingProfile.customActions[*].parameters[*].name",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].parameters[*].required": "properties.publishingProfile.customActions[*].parameters[*].required",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].parameters[*].type": "properties.publishingProfile.customActions[*].parameters[*].type",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.customActions[*].script": "properties.publishingProfile.customActions[*].script",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.enableHealthCheck": "properties.publishingProfile.enableHealthCheck",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.endOfLifeDate": "properties.publishingProfile.endOfLifeDate",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.excludeFromLatest": "properties.publishingProfile.excludeFromLatest",
@@ -1932,6 +1983,7 @@
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].excludeFromLatest": "properties.publishingProfile.targetRegions[*].excludeFromLatest",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].name": "properties.publishingProfile.targetRegions[*].name",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].regionalReplicaCount": "properties.publishingProfile.targetRegions[*].regionalReplicaCount",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].storageAccountType": "properties.publishingProfile.targetRegions[*].storageAccountType",
@@ -1942,7 +1994,9 @@
       "Microsoft.Compute/galleries/applications/versions/replicationStatus.summary[*].details": "properties.replicationStatus.summary[*].details",
       "Microsoft.Compute/galleries/applications/versions/replicationStatus.summary[*].progress": "properties.replicationStatus.summary[*].progress",
       "Microsoft.Compute/galleries/applications/versions/replicationStatus.summary[*].region": "properties.replicationStatus.summary[*].region",
-      "Microsoft.Compute/galleries/applications/versions/replicationStatus.summary[*].state": "properties.replicationStatus.summary[*].state"
+      "Microsoft.Compute/galleries/applications/versions/replicationStatus.summary[*].state": "properties.replicationStatus.summary[*].state",
+      "Microsoft.Compute/galleries/applications/versions/safetyProfile": "properties.safetyProfile",
+      "Microsoft.Compute/galleries/applications/versions/safetyProfile.allowDeletionOfReplicatedLocations": "properties.safetyProfile.allowDeletionOfReplicatedLocations"
     },
     "resourceType": "galleries/applications/versions",
     "apiVersions": [
@@ -2131,6 +2185,7 @@
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.confidentialVMEncryptionType",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId": "properties.publishingProfile.targetRegions[*].encryption.osDiskImage.securityProfile.secureVMDiskEncryptionSetId",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].excludeFromLatest": "properties.publishingProfile.targetRegions[*].excludeFromLatest",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].name": "properties.publishingProfile.targetRegions[*].name",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].regionalReplicaCount": "properties.publishingProfile.targetRegions[*].regionalReplicaCount",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].storageAccountType": "properties.publishingProfile.targetRegions[*].storageAccountType",
@@ -2142,6 +2197,13 @@
       "Microsoft.Compute/galleries/images/versions/replicationStatus.summary[*].progress": "properties.replicationStatus.summary[*].progress",
       "Microsoft.Compute/galleries/images/versions/replicationStatus.summary[*].region": "properties.replicationStatus.summary[*].region",
       "Microsoft.Compute/galleries/images/versions/replicationStatus.summary[*].state": "properties.replicationStatus.summary[*].state",
+      "Microsoft.Compute/galleries/images/versions/safetyProfile": "properties.safetyProfile",
+      "Microsoft.Compute/galleries/images/versions/safetyProfile.allowDeletionOfReplicatedLocations": "properties.safetyProfile.allowDeletionOfReplicatedLocations",
+      "Microsoft.Compute/galleries/images/versions/safetyProfile.policyViolations": "properties.safetyProfile.policyViolations",
+      "Microsoft.Compute/galleries/images/versions/safetyProfile.policyViolations[*]": "properties.safetyProfile.policyViolations[*]",
+      "Microsoft.Compute/galleries/images/versions/safetyProfile.policyViolations[*].category": "properties.safetyProfile.policyViolations[*].category",
+      "Microsoft.Compute/galleries/images/versions/safetyProfile.policyViolations[*].details": "properties.safetyProfile.policyViolations[*].details",
+      "Microsoft.Compute/galleries/images/versions/safetyProfile.reportedForPolicyViolation": "properties.safetyProfile.reportedForPolicyViolation",
       "Microsoft.Compute/galleries/images/versions/storageProfile": "properties.storageProfile",
       "Microsoft.Compute/galleries/images/versions/storageProfile.dataDiskImages": "properties.storageProfile.dataDiskImages",
       "Microsoft.Compute/galleries/images/versions/storageProfile.dataDiskImages[*]": "properties.storageProfile.dataDiskImages[*]",
@@ -2150,14 +2212,17 @@
       "Microsoft.Compute/galleries/images/versions/storageProfile.dataDiskImages[*].sizeInGB": "properties.storageProfile.dataDiskImages[*].sizeInGB",
       "Microsoft.Compute/galleries/images/versions/storageProfile.dataDiskImages[*].source": "properties.storageProfile.dataDiskImages[*].source",
       "Microsoft.Compute/galleries/images/versions/storageProfile.dataDiskImages[*].source.id": "properties.storageProfile.dataDiskImages[*].source.id",
+      "Microsoft.Compute/galleries/images/versions/storageProfile.dataDiskImages[*].source.storageAccountId": "properties.storageProfile.dataDiskImages[*].source.storageAccountId",
       "Microsoft.Compute/galleries/images/versions/storageProfile.dataDiskImages[*].source.uri": "properties.storageProfile.dataDiskImages[*].source.uri",
       "Microsoft.Compute/galleries/images/versions/storageProfile.osDiskImage": "properties.storageProfile.osDiskImage",
       "Microsoft.Compute/galleries/images/versions/storageProfile.osDiskImage.hostCaching": "properties.storageProfile.osDiskImage.hostCaching",
       "Microsoft.Compute/galleries/images/versions/storageProfile.osDiskImage.sizeInGB": "properties.storageProfile.osDiskImage.sizeInGB",
       "Microsoft.Compute/galleries/images/versions/storageProfile.osDiskImage.source": "properties.storageProfile.osDiskImage.source",
       "Microsoft.Compute/galleries/images/versions/storageProfile.osDiskImage.source.id": "properties.storageProfile.osDiskImage.source.id",
+      "Microsoft.Compute/galleries/images/versions/storageProfile.osDiskImage.source.storageAccountId": "properties.storageProfile.osDiskImage.source.storageAccountId",
       "Microsoft.Compute/galleries/images/versions/storageProfile.osDiskImage.source.uri": "properties.storageProfile.osDiskImage.source.uri",
       "Microsoft.Compute/galleries/images/versions/storageProfile.source": "properties.storageProfile.source",
+      "Microsoft.Compute/galleries/images/versions/storageProfile.source.communityGalleryImageId": "properties.storageProfile.source.communityGalleryImageId",
       "Microsoft.Compute/galleries/images/versions/storageProfile.source.id": "properties.storageProfile.source.id",
       "Microsoft.Compute/galleries/images/versions/storageProfile.source.uri": "properties.storageProfile.source.uri"
     },
@@ -2230,6 +2295,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -2470,6 +2536,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US",
+        "zones": []
       },
       {
         "location": "West US 2",
@@ -2508,6 +2578,7 @@
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -2748,6 +2819,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US",
+        "zones": []
       },
       {
         "location": "West US 2",
@@ -2804,6 +2879,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -2868,6 +2944,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -2993,6 +3070,7 @@
     "aliases": null,
     "resourceType": "locations/cloudServiceOsFamilies",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-04",
       "2021-03-01"
     ],
@@ -3041,6 +3119,7 @@
     "aliases": null,
     "resourceType": "locations/cloudServiceOsVersions",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-04",
       "2021-03-01"
     ],
@@ -3089,6 +3168,7 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-03",
       "2022-03-01",
@@ -3159,6 +3239,7 @@
     "aliases": null,
     "resourceType": "locations/csoperations",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-04",
       "2021-03-01",
       "2020-10-01-preview"
@@ -3363,6 +3444,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -3378,6 +3460,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -3431,6 +3514,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/vmimages",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -3541,6 +3625,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -3602,6 +3687,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -3670,6 +3756,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-03",
       "2022-03-01",
@@ -3740,6 +3827,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -3790,6 +3878,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -3852,6 +3941,7 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-03",
       "2022-03-01",
@@ -3922,6 +4012,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -3976,6 +4067,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -4030,6 +4122,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -4097,6 +4190,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -4160,6 +4254,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -4223,6 +4318,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -4290,6 +4386,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -4396,6 +4493,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -4640,6 +4738,10 @@
         ]
       },
       {
+        "location": "West US",
+        "zones": []
+      },
+      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -4695,6 +4797,7 @@
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.customData": "properties.restorePoints[*].properties.sourceMetadata.osProfile.customData",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.linuxConfiguration": "properties.restorePoints[*].properties.sourceMetadata.osProfile.linuxConfiguration",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.linuxConfiguration.disablePasswordAuthentication": "properties.restorePoints[*].properties.sourceMetadata.osProfile.linuxConfiguration.disablePasswordAuthentication",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.linuxConfiguration.enableVMAgentPlatformUpdates": "properties.restorePoints[*].properties.sourceMetadata.osProfile.linuxConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.linuxConfiguration.patchSettings": "properties.restorePoints[*].properties.sourceMetadata.osProfile.linuxConfiguration.patchSettings",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.linuxConfiguration.patchSettings.assessmentMode": "properties.restorePoints[*].properties.sourceMetadata.osProfile.linuxConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings": "properties.restorePoints[*].properties.sourceMetadata.osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings",
@@ -4723,6 +4826,7 @@
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.windowsConfiguration.additionalUnattendContent[*].passName": "properties.restorePoints[*].properties.sourceMetadata.osProfile.windowsConfiguration.additionalUnattendContent[*].passName",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.windowsConfiguration.additionalUnattendContent[*].settingName": "properties.restorePoints[*].properties.sourceMetadata.osProfile.windowsConfiguration.additionalUnattendContent[*].settingName",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.windowsConfiguration.enableAutomaticUpdates": "properties.restorePoints[*].properties.sourceMetadata.osProfile.windowsConfiguration.enableAutomaticUpdates",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.windowsConfiguration.enableVMAgentPlatformUpdates": "properties.restorePoints[*].properties.sourceMetadata.osProfile.windowsConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.windowsConfiguration.patchSettings": "properties.restorePoints[*].properties.sourceMetadata.osProfile.windowsConfiguration.patchSettings",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.windowsConfiguration.patchSettings.assessmentMode": "properties.restorePoints[*].properties.sourceMetadata.osProfile.windowsConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings": "properties.restorePoints[*].properties.sourceMetadata.osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings",
@@ -4781,6 +4885,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -4871,6 +4976,7 @@
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.customData": "properties.sourceMetadata.osProfile.customData",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.linuxConfiguration": "properties.sourceMetadata.osProfile.linuxConfiguration",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.linuxConfiguration.disablePasswordAuthentication": "properties.sourceMetadata.osProfile.linuxConfiguration.disablePasswordAuthentication",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.linuxConfiguration.enableVMAgentPlatformUpdates": "properties.sourceMetadata.osProfile.linuxConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.linuxConfiguration.patchSettings": "properties.sourceMetadata.osProfile.linuxConfiguration.patchSettings",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.linuxConfiguration.patchSettings.assessmentMode": "properties.sourceMetadata.osProfile.linuxConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings": "properties.sourceMetadata.osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings",
@@ -4899,6 +5005,7 @@
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.windowsConfiguration.additionalUnattendContent[*].passName": "properties.sourceMetadata.osProfile.windowsConfiguration.additionalUnattendContent[*].passName",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.windowsConfiguration.additionalUnattendContent[*].settingName": "properties.sourceMetadata.osProfile.windowsConfiguration.additionalUnattendContent[*].settingName",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.windowsConfiguration.enableAutomaticUpdates": "properties.sourceMetadata.osProfile.windowsConfiguration.enableAutomaticUpdates",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.windowsConfiguration.enableVMAgentPlatformUpdates": "properties.sourceMetadata.osProfile.windowsConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.windowsConfiguration.patchSettings": "properties.sourceMetadata.osProfile.windowsConfiguration.patchSettings",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.windowsConfiguration.patchSettings.assessmentMode": "properties.sourceMetadata.osProfile.windowsConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings": "properties.sourceMetadata.osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings",
@@ -4961,6 +5068,7 @@
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -5168,6 +5276,7 @@
       "Microsoft.Compute/snapshots/creationData.imageReference.lun": "properties.creationData.imageReference.lun",
       "Microsoft.Compute/snapshots/creationData.imageReference.sharedGalleryImageId": "properties.creationData.imageReference.sharedGalleryImageId",
       "Microsoft.Compute/snapshots/creationData.logicalSectorSize": "properties.creationData.logicalSectorSize",
+      "Microsoft.Compute/snapshots/creationData.performancePlus": "properties.creationData.performancePlus",
       "Microsoft.Compute/snapshots/creationData.securityDataUri": "properties.creationData.securityDataUri",
       "Microsoft.Compute/snapshots/creationData.sourceResourceId": "properties.creationData.sourceResourceId",
       "Microsoft.Compute/snapshots/creationData.sourceUniqueId": "properties.creationData.sourceUniqueId",
@@ -5207,6 +5316,7 @@
       "Microsoft.Compute/snapshots/encryptionSettingsCollection.encryptionSettingsVersion": "properties.encryptionSettingsCollection.encryptionSettingsVersion",
       "Microsoft.Compute/snapshots/hyperVGeneration": "properties.hyperVGeneration",
       "Microsoft.Compute/snapshots/incremental": "properties.incremental",
+      "Microsoft.Compute/snapshots/incrementalSnapshotFamilyId": "properties.incrementalSnapshotFamilyId",
       "Microsoft.Compute/snapshots/managedBy": "managedBy",
       "Microsoft.Compute/snapshots/networkAccessPolicy": "properties.networkAccessPolicy",
       "Microsoft.Compute/snapshots/osType": "properties.osType",
@@ -5227,6 +5337,7 @@
       "Microsoft.Compute/snapshots/supportedCapabilities": "properties.supportedCapabilities",
       "Microsoft.Compute/snapshots/supportedCapabilities.acceleratedNetwork": "properties.supportedCapabilities.acceleratedNetwork",
       "Microsoft.Compute/snapshots/supportedCapabilities.architecture": "properties.supportedCapabilities.architecture",
+      "Microsoft.Compute/snapshots/supportedCapabilities.diskControllerTypes": "properties.supportedCapabilities.diskControllerTypes",
       "Microsoft.Compute/snapshots/supportsHibernation": "properties.supportsHibernation",
       "Microsoft.Compute/snapshots/timeCreated": "properties.timeCreated",
       "Microsoft.Compute/snapshots/uniqueId": "properties.uniqueId"
@@ -5298,6 +5409,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -5407,6 +5519,7 @@
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations": "properties.networkProfile.networkInterfaceConfigurations",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*]": "properties.networkProfile.networkInterfaceConfigurations[*]",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].deleteOption": "properties.networkProfile.networkInterfaceConfigurations[*].properties.deleteOption",
+      "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].disableTcpStateTracking": "properties.networkProfile.networkInterfaceConfigurations[*].properties.disableTcpStateTracking",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].dnsSettings": "properties.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].dnsSettings.dnsServers": "properties.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings.dnsServers",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].dnsSettings.dnsServers[*]": "properties.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings.dnsServers[*]",
@@ -5468,6 +5581,7 @@
       "Microsoft.Compute/virtualMachines/osProfile.customData": "properties.osProfile.customData",
       "Microsoft.Compute/virtualMachines/osProfile.linuxConfiguration": "properties.osProfile.linuxConfiguration",
       "Microsoft.Compute/virtualMachines/osProfile.linuxConfiguration.disablePasswordAuthentication": "properties.osProfile.linuxConfiguration.disablePasswordAuthentication",
+      "Microsoft.Compute/virtualMachines/osProfile.linuxConfiguration.enableVMAgentPlatformUpdates": "properties.osProfile.linuxConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/virtualMachines/osProfile.linuxConfiguration.patchSettings": "properties.osProfile.linuxConfiguration.patchSettings",
       "Microsoft.Compute/virtualMachines/osProfile.linuxConfiguration.patchSettings.assessmentMode": "properties.osProfile.linuxConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/virtualMachines/osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings": "properties.osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings",
@@ -5496,6 +5610,7 @@
       "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.additionalUnattendContent[*].passName": "properties.osProfile.windowsConfiguration.additionalUnattendContent[*].passName",
       "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.additionalUnattendContent[*].settingName": "properties.osProfile.windowsConfiguration.additionalUnattendContent[*].settingName",
       "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.enableAutomaticUpdates": "properties.osProfile.windowsConfiguration.enableAutomaticUpdates",
+      "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.enableVMAgentPlatformUpdates": "properties.osProfile.windowsConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.patchSettings": "properties.osProfile.windowsConfiguration.patchSettings",
       "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.patchSettings.assessmentMode": "properties.osProfile.windowsConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/virtualMachines/osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings": "properties.osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings",
@@ -5550,6 +5665,7 @@
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].vhd": "properties.storageProfile.dataDisks[*].vhd",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].vhd.uri": "properties.storageProfile.dataDisks[*].vhd.uri",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].writeAcceleratorEnabled": "properties.storageProfile.dataDisks[*].writeAcceleratorEnabled",
+      "Microsoft.Compute/virtualMachines/storageProfile.diskControllerType": "properties.storageProfile.diskControllerType",
       "Microsoft.Compute/virtualMachines/storageProfile.imageReference": "properties.storageProfile.imageReference",
       "Microsoft.Compute/virtualMachines/storageProfile.imageReference.communityGalleryImageId": "properties.storageProfile.imageReference.communityGalleryImageId",
       "Microsoft.Compute/virtualMachines/storageProfile.imageReference.exactVersion": "properties.storageProfile.imageReference.exactVersion",
@@ -5601,6 +5717,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -5852,6 +5969,10 @@
         ]
       },
       {
+        "location": "West US",
+        "zones": []
+      },
+      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -5873,6 +5994,7 @@
     "aliases": null,
     "resourceType": "virtualMachines/applications",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -5925,6 +6047,10 @@
       "Microsoft.Compute/virtualMachines/extensions/enableAutomaticUpgrade": "properties.enableAutomaticUpgrade",
       "Microsoft.Compute/virtualMachines/extensions/forceUpdateTag": "properties.forceUpdateTag",
       "Microsoft.Compute/virtualMachines/extensions/protectedSettings": "properties.protectedSettings",
+      "Microsoft.Compute/virtualMachines/extensions/protectedSettingsFromKeyVault": "properties.protectedSettingsFromKeyVault",
+      "Microsoft.Compute/virtualMachines/extensions/protectedSettingsFromKeyVault.secretUrl": "properties.protectedSettingsFromKeyVault.secretUrl",
+      "Microsoft.Compute/virtualMachines/extensions/protectedSettingsFromKeyVault.sourceVault": "properties.protectedSettingsFromKeyVault.sourceVault",
+      "Microsoft.Compute/virtualMachines/extensions/protectedSettingsFromKeyVault.sourceVault.id": "properties.protectedSettingsFromKeyVault.sourceVault.id",
       "Microsoft.Compute/virtualMachines/extensions/provisioningState": "properties.provisioningState",
       "Microsoft.Compute/virtualMachines/extensions/publisher": "properties.publisher",
       "Microsoft.Compute/virtualMachines/extensions/resources": "properties.resources",
@@ -5942,6 +6068,7 @@
       "Microsoft.Compute/virtualMachines/extensions/resources[*].type": "properties.resources[*].properties.type",
       "Microsoft.Compute/virtualMachines/extensions/resources[*].typeHandlerVersion": "properties.resources[*].properties.typeHandlerVersion",
       "Microsoft.Compute/virtualMachines/extensions/settings": "properties.settings",
+      "Microsoft.Compute/virtualMachines/extensions/settings.timestamp": "properties.settings.timestamp",
       "Microsoft.Compute/virtualMachines/extensions/settings.workspaceId": "properties.settings.workspaceId",
       "Microsoft.Compute/virtualMachines/extensions/suppressFailures": "properties.suppressFailures",
       "Microsoft.Compute/virtualMachines/extensions/type": "properties.type",
@@ -5949,6 +6076,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -6083,6 +6211,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -6184,6 +6313,9 @@
       "Microsoft.Compute/VirtualMachineScaleSets/osProfile.windowsConfiguration.provisionVMAgent": "properties.virtualMachineProfile.osProfile.windowsConfiguration.provisionVMAgent",
       "Microsoft.Compute/virtualMachineScaleSets/overProvision": "properties.overProvision",
       "Microsoft.Compute/virtualMachineScaleSets/platformFaultDomainCount": "properties.platformFaultDomainCount",
+      "Microsoft.Compute/virtualMachineScaleSets/priorityMixPolicy": "properties.priorityMixPolicy",
+      "Microsoft.Compute/virtualMachineScaleSets/priorityMixPolicy.baseRegularPriorityCount": "properties.priorityMixPolicy.baseRegularPriorityCount",
+      "Microsoft.Compute/virtualMachineScaleSets/priorityMixPolicy.regularPriorityPercentageAboveBase": "properties.priorityMixPolicy.regularPriorityPercentageAboveBase",
       "Microsoft.Compute/virtualMachineScaleSets/provisioningState": "properties.provisioningState",
       "Microsoft.Compute/virtualMachineScaleSets/proximityPlacementGroup": "properties.proximityPlacementGroup",
       "Microsoft.Compute/virtualMachineScaleSets/proximityPlacementGroup.id": "properties.proximityPlacementGroup.id",
@@ -6248,6 +6380,10 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].id": "properties.virtualMachineProfile.extensionProfile.extensions[*].id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].name": "properties.virtualMachineProfile.extensionProfile.extensions[*].name",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].protectedSettings": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.protectedSettings",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].protectedSettingsFromKeyVault": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.protectedSettingsFromKeyVault",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].protectedSettingsFromKeyVault.secretUrl": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.protectedSettingsFromKeyVault.secretUrl",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].protectedSettingsFromKeyVault.sourceVault": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.protectedSettingsFromKeyVault.sourceVault",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].protectedSettingsFromKeyVault.sourceVault.id": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.protectedSettingsFromKeyVault.sourceVault.id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].provisionAfterExtensions": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.provisionAfterExtensions",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].provisionAfterExtensions[*]": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.provisionAfterExtensions[*]",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.extensionProfile.extensions[*].provisioningState": "properties.virtualMachineProfile.extensionProfile.extensions[*].properties.provisioningState",
@@ -6269,6 +6405,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*]": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*]",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].deleteOption": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.deleteOption",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].disableTcpStateTracking": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.disableTcpStateTracking",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].dnsSettings": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].dnsSettings.dnsServers": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings.dnsServers",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].dnsSettings.dnsServers[*]": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings.dnsServers[*]",
@@ -6320,6 +6457,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.customData": "properties.virtualMachineProfile.osProfile.customData",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.linuxConfiguration": "properties.virtualMachineProfile.osProfile.linuxConfiguration",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication": "properties.virtualMachineProfile.osProfile.linuxConfiguration.disablePasswordAuthentication",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.linuxConfiguration.enableVMAgentPlatformUpdates": "properties.virtualMachineProfile.osProfile.linuxConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.linuxConfiguration.patchSettings": "properties.virtualMachineProfile.osProfile.linuxConfiguration.patchSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.linuxConfiguration.patchSettings.assessmentMode": "properties.virtualMachineProfile.osProfile.linuxConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings": "properties.virtualMachineProfile.osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings",
@@ -6347,6 +6485,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent[*].passName": "properties.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent[*].passName",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent[*].settingName": "properties.virtualMachineProfile.osProfile.windowsConfiguration.additionalUnattendContent[*].settingName",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates": "properties.virtualMachineProfile.osProfile.windowsConfiguration.enableAutomaticUpdates",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.windowsConfiguration.enableVMAgentPlatformUpdates": "properties.virtualMachineProfile.osProfile.windowsConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.windowsConfiguration.patchSettings": "properties.virtualMachineProfile.osProfile.windowsConfiguration.patchSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.windowsConfiguration.patchSettings.assessmentMode": "properties.virtualMachineProfile.osProfile.windowsConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings": "properties.virtualMachineProfile.osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings",
@@ -6391,6 +6530,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.storageAccountType": "properties.virtualMachineProfile.storageProfile.dataDisks[*].managedDisk.storageAccountType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].name": "properties.virtualMachineProfile.storageProfile.dataDisks[*].name",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.dataDisks[*].writeAcceleratorEnabled": "properties.virtualMachineProfile.storageProfile.dataDisks[*].writeAcceleratorEnabled",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.diskControllerType": "properties.virtualMachineProfile.storageProfile.diskControllerType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.imageReference": "properties.virtualMachineProfile.storageProfile.imageReference",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.imageReference.communityGalleryImageId": "properties.virtualMachineProfile.storageProfile.imageReference.communityGalleryImageId",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.imageReference.exactVersion": "properties.virtualMachineProfile.storageProfile.imageReference.exactVersion",
@@ -6430,6 +6570,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -6682,6 +6823,10 @@
         ]
       },
       {
+        "location": "West US",
+        "zones": []
+      },
+      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -6703,6 +6848,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/applications",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -6755,11 +6901,16 @@
       "Microsoft.Compute/virtualMachineScaleSets/extensions/enableAutomaticUpgrade": "properties.enableAutomaticUpgrade",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/forceUpdateTag": "properties.forceUpdateTag",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/protectedSettings": "properties.protectedSettings",
+      "Microsoft.Compute/virtualMachineScaleSets/extensions/protectedSettingsFromKeyVault": "properties.protectedSettingsFromKeyVault",
+      "Microsoft.Compute/virtualMachineScaleSets/extensions/protectedSettingsFromKeyVault.secretUrl": "properties.protectedSettingsFromKeyVault.secretUrl",
+      "Microsoft.Compute/virtualMachineScaleSets/extensions/protectedSettingsFromKeyVault.sourceVault": "properties.protectedSettingsFromKeyVault.sourceVault",
+      "Microsoft.Compute/virtualMachineScaleSets/extensions/protectedSettingsFromKeyVault.sourceVault.id": "properties.protectedSettingsFromKeyVault.sourceVault.id",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/provisionAfterExtensions": "properties.provisionAfterExtensions",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/provisionAfterExtensions[*]": "properties.provisionAfterExtensions[*]",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/provisioningState": "properties.provisioningState",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/publisher": "properties.publisher",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/settings": "properties.settings",
+      "Microsoft.Compute/virtualMachineScaleSets/extensions/settings.timestamp": "properties.settings.timestamp",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/settings.workspaceId": "properties.settings.workspaceId",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/suppressFailures": "properties.suppressFailures",
       "Microsoft.Compute/virtualMachineScaleSets/extensions/type": "properties.type",
@@ -6767,6 +6918,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -6835,6 +6987,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -6905,6 +7058,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -6994,6 +7148,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations": "properties.networkProfile.networkInterfaceConfigurations",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*]": "properties.networkProfile.networkInterfaceConfigurations[*]",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].deleteOption": "properties.networkProfile.networkInterfaceConfigurations[*].properties.deleteOption",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].disableTcpStateTracking": "properties.networkProfile.networkInterfaceConfigurations[*].properties.disableTcpStateTracking",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].dnsSettings": "properties.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].dnsSettings.dnsServers": "properties.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings.dnsServers",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].dnsSettings.dnsServers[*]": "properties.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings.dnsServers[*]",
@@ -7048,6 +7203,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations": "properties.networkProfileConfiguration.networkInterfaceConfigurations",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*]": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*]",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfileConfiguration.networkInterfaceConfigurations[*].deleteOption": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.deleteOption",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfileConfiguration.networkInterfaceConfigurations[*].disableTcpStateTracking": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.disableTcpStateTracking",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].dnsSettings": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.dnsSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].dnsSettings.dnsServers": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.dnsSettings.dnsServers",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].dnsSettings.dnsServers[*]": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.dnsSettings.dnsServers[*]",
@@ -7099,6 +7255,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/osProfile.customData": "properties.osProfile.customData",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/osProfile.linuxConfiguration": "properties.osProfile.linuxConfiguration",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/osProfile.linuxConfiguration.disablePasswordAuthentication": "properties.osProfile.linuxConfiguration.disablePasswordAuthentication",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/osProfile.linuxConfiguration.enableVMAgentPlatformUpdates": "properties.osProfile.linuxConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/osProfile.linuxConfiguration.patchSettings": "properties.osProfile.linuxConfiguration.patchSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/osProfile.linuxConfiguration.patchSettings.assessmentMode": "properties.osProfile.linuxConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings": "properties.osProfile.linuxConfiguration.patchSettings.automaticByPlatformSettings",
@@ -7127,6 +7284,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/osProfile.windowsConfiguration.additionalUnattendContent[*].passName": "properties.osProfile.windowsConfiguration.additionalUnattendContent[*].passName",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/osProfile.windowsConfiguration.additionalUnattendContent[*].settingName": "properties.osProfile.windowsConfiguration.additionalUnattendContent[*].settingName",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/osProfile.windowsConfiguration.enableAutomaticUpdates": "properties.osProfile.windowsConfiguration.enableAutomaticUpdates",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/osProfile.windowsConfiguration.enableVMAgentPlatformUpdates": "properties.osProfile.windowsConfiguration.enableVMAgentPlatformUpdates",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/osProfile.windowsConfiguration.patchSettings": "properties.osProfile.windowsConfiguration.patchSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/osProfile.windowsConfiguration.patchSettings.assessmentMode": "properties.osProfile.windowsConfiguration.patchSettings.assessmentMode",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings": "properties.osProfile.windowsConfiguration.patchSettings.automaticByPlatformSettings",
@@ -7180,6 +7338,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].vhd": "properties.storageProfile.dataDisks[*].vhd",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].vhd.uri": "properties.storageProfile.dataDisks[*].vhd.uri",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].writeAcceleratorEnabled": "properties.storageProfile.dataDisks[*].writeAcceleratorEnabled",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.diskControllerType": "properties.storageProfile.diskControllerType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.imageReference": "properties.storageProfile.imageReference",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.imageReference.communityGalleryImageId": "properties.storageProfile.imageReference.communityGalleryImageId",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.imageReference.exactVersion": "properties.storageProfile.imageReference.exactVersion",
@@ -7228,6 +7387,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -7298,6 +7458,10 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/enableAutomaticUpgrade": "properties.enableAutomaticUpgrade",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/forceUpdateTag": "properties.forceUpdateTag",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/protectedSettings": "properties.protectedSettings",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/protectedSettingsFromKeyVault": "properties.protectedSettingsFromKeyVault",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/protectedSettingsFromKeyVault.secretUrl": "properties.protectedSettingsFromKeyVault.secretUrl",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/protectedSettingsFromKeyVault.sourceVault": "properties.protectedSettingsFromKeyVault.sourceVault",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/protectedSettingsFromKeyVault.sourceVault.id": "properties.protectedSettingsFromKeyVault.sourceVault.id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/provisioningState": "properties.provisioningState",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/publisher": "properties.publisher",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/extensions/settings": "properties.settings",
@@ -7307,6 +7471,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",
@@ -7375,6 +7540,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2022-11-01",
       "2022-08-01",
       "2022-03-01",
       "2021-11-01",

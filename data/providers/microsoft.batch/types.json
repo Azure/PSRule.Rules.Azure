@@ -33,6 +33,7 @@
     },
     "resourceType": "batchAccounts",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01",
@@ -102,6 +103,7 @@
     },
     "resourceType": "batchAccounts/certificates",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01",
@@ -161,6 +163,7 @@
     "aliases": null,
     "resourceType": "batchAccounts/detectors",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01"
     ],
@@ -430,6 +433,7 @@
     },
     "resourceType": "batchAccounts/pools",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01",
@@ -489,6 +493,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01",
@@ -513,6 +518,7 @@
     "aliases": null,
     "resourceType": "locations/accountOperationResults",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01",
@@ -578,6 +584,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01",
@@ -638,6 +645,7 @@
     "aliases": null,
     "resourceType": "locations/cloudServiceSkus",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01"
@@ -688,6 +696,7 @@
     "aliases": null,
     "resourceType": "locations/quotas",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01",
@@ -751,6 +760,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineSkus",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01"
@@ -801,6 +811,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-10-01",
       "2022-06-01",
       "2022-01-01",
       "2021-06-01",

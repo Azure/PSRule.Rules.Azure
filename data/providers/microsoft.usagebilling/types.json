@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2021-05-01-preview"
     ],
     "locations": [
@@ -21,6 +22,7 @@
       "East US",
       "East US 2",
       "East US 2 EUAP",
+      "EAST US STG",
       "France Central",
       "France South",
       "Germany North",

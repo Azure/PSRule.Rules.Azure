@@ -32,6 +32,8 @@
     },
     "resourceType": "cassandraClusters",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -90,6 +92,8 @@
     "aliases": null,
     "resourceType": "databaseAccountNames",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -258,6 +262,8 @@
     },
     "resourceType": "databaseAccounts",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -333,6 +339,8 @@
     "aliases": null,
     "resourceType": "databaseAccounts/encryptionScopes",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -391,6 +399,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -428,6 +438,8 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -503,6 +515,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -578,6 +592,8 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -653,6 +669,8 @@
     "aliases": null,
     "resourceType": "locations/restorableDatabaseAccounts",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -713,6 +731,8 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -750,6 +770,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -787,6 +809,8 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",
@@ -824,6 +848,8 @@
     "aliases": null,
     "resourceType": "restorableDatabaseAccounts",
     "apiVersions": [
+      "2022-11-15-preview",
+      "2022-11-15",
       "2022-08-15-preview",
       "2022-08-15",
       "2022-05-15-preview",

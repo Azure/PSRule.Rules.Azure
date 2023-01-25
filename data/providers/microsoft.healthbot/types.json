@@ -17,6 +17,7 @@
     },
     "resourceType": "healthBots",
     "apiVersions": [
+      "2022-08-08",
       "2021-08-24",
       "2020-12-08"
     ],
@@ -39,6 +40,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-08-08",
       "2021-08-24",
       "2020-12-08"
     ],
@@ -49,6 +51,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2022-08-08",
       "2021-08-24",
       "2020-12-08"
     ],
@@ -72,6 +75,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2022-08-08",
       "2021-08-24",
       "2020-12-08"
     ],
