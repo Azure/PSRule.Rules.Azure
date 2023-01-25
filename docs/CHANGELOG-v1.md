@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.24.0-B0013 (pre-release)
+
 What's changed since v1.23.0:
 
 - General improvements:
