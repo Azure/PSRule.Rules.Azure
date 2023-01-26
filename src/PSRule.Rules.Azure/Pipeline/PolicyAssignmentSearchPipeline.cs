@@ -19,7 +19,7 @@ namespace PSRule.Rules.Azure.Pipeline
         /// <inheritdoc/>
         public override void Process(PSObject sourceObject)
         {
-            if (sourceObject == null | !sourceObject.GetPath(out var path))
+            if (sourceObject == null || !sourceObject.GetPath(out var path))
                 return;
 
             _PathBuilder.Add(path);

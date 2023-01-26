@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -12,18 +12,31 @@ namespace PSRule.Rules.Azure.Data.Network
     /// </summary>
     public interface INetworkSecurityGroupEvaluator
     {
+        /// <summary>
+        /// Determine the resulting outbound access after evaluating NSG rules.
+        /// </summary>
         Access Outbound(string prefix, int port);
     }
 
     /// <summary>
-    /// The result after evaluatoring a rule.
+    /// The result after evaluating a rule.
     /// </summary>
     public enum Access
     {
+        /// <summary>
+        /// The result is denies or allowed based on NSG defaults.
+        /// A specific NSG rule has not been configured to allow or deny.
+        /// </summary>
         Default = 0,
 
+        /// <summary>
+        /// Access has been permitted.
+        /// </summary>
         Allow = 1,
 
+        /// <summary>
+        /// Access has been denied.
+        /// </summary>
         Deny = 2
     }
 
@@ -39,6 +52,8 @@ namespace PSRule.Rules.Azure.Data.Network
         private const string DESTINATION_ADDRESS_PREFIXES = "destinationAddressPrefixes";
         private const string DESTINATION_PORT_RANGE = "destinationPortRange";
         private const string DESTINATION_PORT_RANGES = "destinationPortRanges";
+        private const string ANY = "*";
+
         private readonly List<SecurityRule> _Outbound;
 
         internal NetworkSecurityGroupEvaluator()
@@ -95,6 +110,7 @@ namespace PSRule.Rules.Azure.Data.Network
             }
         }
 
+        /// <inheritdoc/>
         public Access Outbound(string prefix, int port)
         {
             for (var i = 0; i < _Outbound.Count; i++)
@@ -112,7 +128,6 @@ namespace PSRule.Rules.Azure.Data.Network
             var access = (Access)Enum.Parse(typeof(Access), properties.GetPropertyValue<string>(ACCESS), ignoreCase: true);
             var destinationAddressPrefixes = GetFilter(properties, DESTINATION_ADDRESS_PREFIX) ?? GetFilter(properties, DESTINATION_ADDRESS_PREFIXES);
             var destinationPortRanges = GetFilter(properties, DESTINATION_PORT_RANGE) ?? GetFilter(properties, DESTINATION_PORT_RANGES);
-
             var result = new SecurityRule(
                 direction,
                 access,
@@ -127,7 +142,7 @@ namespace PSRule.Rules.Azure.Data.Network
             if (o.TryProperty(propertyName, out string[] value) && value.Length > 0)
                 return value;
 
-            return o.TryProperty(propertyName, out string s) && s != "*" ? (new string[] { s }) : null;
+            return o.TryProperty(propertyName, out string s) && s != ANY ? (new string[] { s }) : null;
         }
     }
 }
