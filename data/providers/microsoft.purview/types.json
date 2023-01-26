@@ -71,12 +71,26 @@
       "2021-12-01"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "East US",
+      "East US 2",
+      "France Central",
       "Japan East",
       "Korea Central",
+      "North Europe",
       "South Africa North",
+      "South Central US",
+      "Southeast Asia",
       "Switzerland North",
       "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
       "West US",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null

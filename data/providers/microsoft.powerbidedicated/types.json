@@ -29,6 +29,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -43,7 +44,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -89,6 +91,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -103,7 +106,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -149,6 +153,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -163,7 +168,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -200,6 +206,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -214,7 +221,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -251,6 +259,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -265,7 +274,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },

@@ -26,6 +26,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-06-01",
       "2022-05-01",
       "2022-01-01",
@@ -105,6 +106,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -119,6 +121,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -194,6 +197,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -208,6 +212,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -223,6 +228,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -514,7 +520,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -531,6 +541,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US",
+        "zones": []
       },
       {
         "location": "West US 2",
@@ -860,6 +874,7 @@
     },
     "resourceType": "redisEnterprise",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -874,6 +889,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -933,6 +949,10 @@
         ]
       },
       {
+        "location": "North Central US",
+        "zones": []
+      },
+      {
         "location": "North Europe",
         "zones": [
           "1",
@@ -973,6 +993,10 @@
         ]
       },
       {
+        "location": "West US",
+        "zones": []
+      },
+      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -1009,6 +1033,7 @@
     },
     "resourceType": "redisEnterprise/databases",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -1023,6 +1048,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -1038,6 +1064,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -1052,6 +1079,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -1067,6 +1095,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/operationresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -1081,6 +1110,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -1096,6 +1126,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -1110,6 +1141,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -1133,6 +1165,7 @@
     },
     "resourceType": "RedisEnterprise/privateEndpointConnections",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -1147,6 +1180,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -1162,6 +1196,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnections/operationresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -1176,6 +1211,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -1191,6 +1227,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateLinkResources",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
       "2021-03-01",
@@ -1205,6 +1242,7 @@
       "Central US",
       "East US",
       "East US 2",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",

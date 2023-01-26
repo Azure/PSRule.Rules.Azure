@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "availabilityStatuses",
     "apiVersions": [
+      "2022-05-01-preview",
+      "2022-05-01",
       "2020-05-01-preview",
       "2020-05-01",
       "2018-08-01-rc",
@@ -73,6 +75,8 @@
     "aliases": null,
     "resourceType": "events",
     "apiVersions": [
+      "2022-05-01-rc",
+      "2022-05-01",
       "2020-09-01-rc",
       "2018-07-01-rc",
       "2018-07-01"
@@ -97,6 +101,14 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-01-rc",
+      "2022-05-01-preview",
+      "2022-05-01-beta",
+      "2022-05-01-alpha",
+      "2022-05-01",
+      "2020-05-01-preview",
+      "2020-05-01",
+      "2018-07-01-preview",
       "2018-07-01",
       "2015-01-01"
     ],

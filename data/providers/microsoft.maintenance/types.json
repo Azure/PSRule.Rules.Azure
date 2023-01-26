@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "applyUpdates",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-05-01",
@@ -65,9 +66,13 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Maintenance/configurationAssignments/maintenanceConfigurationId": "properties.maintenanceConfigurationId",
+      "Microsoft.Maintenance/configurationAssignments/resourceId": "properties.resourceId"
+    },
     "resourceType": "configurationAssignments",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-05-01",
@@ -130,9 +135,49 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Maintenance/maintenanceConfigurations/extensionProperties": "properties.extensionProperties",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches": "properties.installPatches",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.linuxParameters": "properties.installPatches.linuxParameters",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.linuxParameters.classificationsToInclude": "properties.installPatches.linuxParameters.classificationsToInclude",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.linuxParameters.classificationsToInclude[*]": "properties.installPatches.linuxParameters.classificationsToInclude[*]",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.linuxParameters.packageNameMasksToExclude": "properties.installPatches.linuxParameters.packageNameMasksToExclude",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.linuxParameters.packageNameMasksToExclude[*]": "properties.installPatches.linuxParameters.packageNameMasksToExclude[*]",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.linuxParameters.packageNameMasksToInclude": "properties.installPatches.linuxParameters.packageNameMasksToInclude",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.linuxParameters.packageNameMasksToInclude[*]": "properties.installPatches.linuxParameters.packageNameMasksToInclude[*]",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.rebootSetting": "properties.installPatches.rebootSetting",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks": "properties.installPatches.tasks",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.postTasks": "properties.installPatches.tasks.postTasks",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.postTasks[*]": "properties.installPatches.tasks.postTasks[*]",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.postTasks[*].parameters": "properties.installPatches.tasks.postTasks[*].parameters",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.postTasks[*].source": "properties.installPatches.tasks.postTasks[*].source",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.postTasks[*].taskScope": "properties.installPatches.tasks.postTasks[*].taskScope",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.preTasks": "properties.installPatches.tasks.preTasks",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.preTasks[*]": "properties.installPatches.tasks.preTasks[*]",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.preTasks[*].parameters": "properties.installPatches.tasks.preTasks[*].parameters",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.preTasks[*].source": "properties.installPatches.tasks.preTasks[*].source",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.tasks.preTasks[*].taskScope": "properties.installPatches.tasks.preTasks[*].taskScope",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.windowsParameters": "properties.installPatches.windowsParameters",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.windowsParameters.classificationsToInclude": "properties.installPatches.windowsParameters.classificationsToInclude",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.windowsParameters.classificationsToInclude[*]": "properties.installPatches.windowsParameters.classificationsToInclude[*]",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.windowsParameters.excludeKbsRequiringReboot": "properties.installPatches.windowsParameters.excludeKbsRequiringReboot",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.windowsParameters.kbNumbersToExclude": "properties.installPatches.windowsParameters.kbNumbersToExclude",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.windowsParameters.kbNumbersToExclude[*]": "properties.installPatches.windowsParameters.kbNumbersToExclude[*]",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.windowsParameters.kbNumbersToInclude": "properties.installPatches.windowsParameters.kbNumbersToInclude",
+      "Microsoft.Maintenance/maintenanceConfigurations/installPatches.windowsParameters.kbNumbersToInclude[*]": "properties.installPatches.windowsParameters.kbNumbersToInclude[*]",
+      "Microsoft.Maintenance/maintenanceConfigurations/maintenanceScope": "properties.maintenanceScope",
+      "Microsoft.Maintenance/maintenanceConfigurations/maintenanceWindow": "properties.maintenanceWindow",
+      "Microsoft.Maintenance/maintenanceConfigurations/maintenanceWindow.duration": "properties.maintenanceWindow.duration",
+      "Microsoft.Maintenance/maintenanceConfigurations/maintenanceWindow.expirationDateTime": "properties.maintenanceWindow.expirationDateTime",
+      "Microsoft.Maintenance/maintenanceConfigurations/maintenanceWindow.recurEvery": "properties.maintenanceWindow.recurEvery",
+      "Microsoft.Maintenance/maintenanceConfigurations/maintenanceWindow.startDateTime": "properties.maintenanceWindow.startDateTime",
+      "Microsoft.Maintenance/maintenanceConfigurations/maintenanceWindow.timeZone": "properties.maintenanceWindow.timeZone",
+      "Microsoft.Maintenance/maintenanceConfigurations/namespace": "properties.namespace",
+      "Microsoft.Maintenance/maintenanceConfigurations/visibility": "properties.visibility"
+    },
     "resourceType": "maintenanceConfigurations",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-05-01",
@@ -198,6 +243,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-05-01",
@@ -263,6 +309,7 @@
     "aliases": null,
     "resourceType": "publicMaintenanceConfigurations",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-05-01",
@@ -276,6 +323,7 @@
     "aliases": null,
     "resourceType": "updates",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-05-01",

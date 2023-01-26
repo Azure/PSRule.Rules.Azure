@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "Locations/operationStatuses",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
@@ -33,12 +35,79 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-05-01-preview",
       "2022-01-01-preview",
       "2021-09-01-preview",
       "2021-08-01-preview"
     ],
     "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "provisionedClusters",
+    "apiVersions": [
+      "2022-09-01-preview",
+      "2022-05-01-preview",
+      "2022-01-01-preview",
+      "2021-09-01-preview",
+      "2021-08-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "provisionedClusters/agentPools",
+    "apiVersions": [
+      "2022-09-01-preview",
+      "2022-05-01-preview",
+      "2022-01-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "provisionedClusters/hybridIdentityMetadata",
+    "apiVersions": [
+      "2022-09-01-preview",
+      "2022-05-01-preview",
+      "2022-01-01-preview",
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualNetworks",
+    "apiVersions": [
+      "2022-09-01-preview",
+      "2022-05-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West Europe",
+      "West US 3"
+    ],
     "zoneMappings": null
   }
 ]

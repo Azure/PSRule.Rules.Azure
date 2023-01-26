@@ -77,7 +77,11 @@
       "Microsoft.Automanage/configurationProfileAssignments/compliance.updateStatus": "properties.compliance.updateStatus",
       "Microsoft.Automanage/configurationProfileAssignments/configurationProfile": "properties.configurationProfile",
       "Microsoft.Automanage/configurationProfileAssignments/configurationProfilePreferenceId": "properties.configurationProfilePreferenceId",
+      "Microsoft.Automanage/configurationProfileAssignments/managedBy": "managedBy",
+      "Microsoft.Automanage/configurationProfileAssignments/profileOverrides": "properties.profileOverrides",
+      "Microsoft.Automanage/configurationProfileAssignments/provisioningState": "properties.provisioningState",
       "Microsoft.Automanage/configurationProfileAssignments/provisioningStatus": "properties.provisioningStatus",
+      "Microsoft.Automanage/configurationProfileAssignments/status": "properties.status",
       "Microsoft.Automanage/configurationProfileAssignments/targetId": "properties.targetId"
     },
     "resourceType": "configurationProfileAssignments",
@@ -132,7 +136,10 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Automanage/configurationProfiles/overrides": "properties.overrides",
+      "Microsoft.Automanage/configurationProfiles/overrides[*]": "properties.overrides[*]"
+    },
     "resourceType": "configurationProfiles",
     "apiVersions": [
       "2022-05-04",
@@ -159,7 +166,10 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Automanage/configurationProfiles/versions/overrides": "properties.overrides",
+      "Microsoft.Automanage/configurationProfiles/versions/overrides[*]": "properties.overrides[*]"
+    },
     "resourceType": "configurationProfiles/versions",
     "apiVersions": [
       "2022-05-04",
@@ -192,7 +202,6 @@
       "2022-06-01-preview",
       "2022-05-04",
       "2022-03-30-preview",
-      "2021-08-01-preview",
       "2021-04-30-preview",
       "2020-06-30-preview"
     ],

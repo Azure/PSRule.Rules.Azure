@@ -1,0 +1,13 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-11-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  }
+]

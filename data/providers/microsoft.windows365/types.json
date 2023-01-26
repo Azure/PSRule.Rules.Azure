@@ -1,0 +1,15 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "CloudPcDelegatedMsis",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "North Europe",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  }
+]

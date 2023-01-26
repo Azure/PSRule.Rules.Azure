@@ -1,11 +1,111 @@
 [
   {
     "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2022-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
       "2022-07-01-preview"
     ],
     "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageMovers",
+    "apiVersions": [
+      "2022-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageMovers/agents",
+    "apiVersions": [
+      "2022-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageMovers/endpoints",
+    "apiVersions": [
+      "2022-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageMovers/projects",
+    "apiVersions": [
+      "2022-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageMovers/projects/jobDefinitions",
+    "apiVersions": [
+      "2022-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageMovers/projects/jobDefinitions/jobRuns",
+    "apiVersions": [
+      "2022-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US 3"
+    ],
     "zoneMappings": null
   }
 ]

@@ -33,10 +33,15 @@
       "2020-06-16"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
       "East US",
+      "East US 2",
       "Southeast Asia",
+      "UK South",
       "West Europe",
-      "West Us 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },

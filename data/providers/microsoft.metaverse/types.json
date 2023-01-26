@@ -1,20 +1,22 @@
 [
   {
     "aliases": null,
-    "resourceType": "monitors",
+    "resourceType": "locations",
     "apiVersions": [
-      "2020-01-13-preview"
+      "2022-02-01-preview"
     ],
     "locations": [],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "operations",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
-      "2020-01-13-preview"
+      "2022-02-01-preview"
     ],
-    "locations": [],
+    "locations": [
+      "West Central US"
+    ],
     "zoneMappings": null
   }
 ]

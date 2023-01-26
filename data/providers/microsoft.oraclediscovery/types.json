@@ -3,7 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2022-09-01-privatepreview"
+      "2022-11-22-preview"
     ],
     "locations": [
       "global"
@@ -14,21 +14,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
-      "2022-09-01-privatepreview"
-    ],
-    "locations": [
-      "East US",
-      "East US 2",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "operations",
-    "apiVersions": [
-      "2022-09-01-privatepreview"
+      "2022-11-22-preview"
     ],
     "locations": [
       "global"

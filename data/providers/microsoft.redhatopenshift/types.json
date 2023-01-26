@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",
       "2020-04-30",
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",
       "2020-04-30"
@@ -25,6 +27,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -63,6 +66,7 @@
     "aliases": null,
     "resourceType": "locations/operationsstatus",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",
       "2020-04-30"
@@ -73,6 +77,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -111,6 +116,7 @@
     "aliases": null,
     "resourceType": "OpenShiftClusters",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",
       "2020-04-30"
@@ -121,6 +127,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -159,6 +166,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",
       "2020-04-30",

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-12-01",
       "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
@@ -27,22 +28,23 @@
     },
     "resourceType": "loadtests",
     "apiVersions": [
-      "2022-08-01-preview",
+      "2022-12-01",
       "2022-04-15-preview",
-      "2022-04-01-preview",
-      "2021-12-01-preview",
-      "2021-09-01-preview",
-      "2020-09-01-preview"
+      "2021-12-01-preview"
     ],
     "locations": [
       "Australia East",
+      "East Asia",
       "East US",
       "East US 2",
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
-      "West US 2"
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -50,17 +52,21 @@
     "aliases": null,
     "resourceType": "loadtests/outboundNetworkDependenciesEndpoints",
     "apiVersions": [
-      "2022-08-01-preview"
+      "2022-12-01"
     ],
     "locations": [
       "Australia East",
+      "East Asia",
       "East US",
       "East US 2",
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
-      "West US 2"
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -68,6 +74,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2022-12-01",
       "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
@@ -83,6 +90,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2022-12-01",
       "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
@@ -93,13 +101,17 @@
     ],
     "locations": [
       "Australia East",
+      "East Asia",
       "East US",
       "East US 2",
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
-      "West US 2"
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -107,17 +119,21 @@
     "aliases": null,
     "resourceType": "Locations/Quotas",
     "apiVersions": [
-      "2022-08-01-preview"
+      "2022-12-01"
     ],
     "locations": [
       "Australia East",
+      "East Asia",
       "East US",
       "East US 2",
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
-      "West US 2"
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -125,6 +141,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-12-01",
       "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
@@ -140,6 +157,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2022-12-01",
       "2022-08-01-preview",
       "2022-04-15-preview",
       "2022-04-01-preview",
