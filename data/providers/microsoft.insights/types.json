@@ -91,6 +91,8 @@
     "locations": [
       "Germany West Central",
       "Global",
+      "North Central US",
+      "South Central US",
       "Sweden Central"
     ],
     "zoneMappings": null
@@ -1838,6 +1840,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
