@@ -156,9 +156,9 @@ namespace PSRule.Rules.Azure.Data.Policy
             /// </summary>
             internal string PolicyDefinitionId { get; private set; }
 
-            public ExpressionFnOuter BuildExpression(string expression)
+            public ExpressionFnOuter BuildExpression(string s)
             {
-                return _ExpressionBuilder.Build(expression);
+                return _ExpressionBuilder.Build(s);
             }
 
             private JToken GetExpression(JProperty child)
