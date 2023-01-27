@@ -1763,7 +1763,7 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, new object[] { "One", "Two", "Three" }));
-            Assert.Throws<ArgumentException>(() => Functions.Trim(context, new object[] { 2 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, new object[] { 2 }));
         }
 
         [Fact]
