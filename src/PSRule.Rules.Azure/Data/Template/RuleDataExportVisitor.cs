@@ -19,6 +19,24 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_RESOURCES = "resources";
         private const string PROPERTY_ID = "id";
         private const string PROPERTY_PROPERTIES = "properties";
+        private const string PROPERTY_CLIENTID = "clientId";
+        private const string PROPERTY_PRINCIPALID = "principalId";
+        private const string PROPERTY_TENANTID = "tenantId";
+        private const string PROPERTY_ADMINISTRATORS = "administrators";
+        private const string PROPERTY_IDENTITY = "identity";
+        private const string PROPERTY_TYPE = "type";
+        private const string PROPERTY_SITECONFIG = "siteConfig";
+
+        private const string PLACEHOLDER_GUID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
+        private const string IDENTITY_SYSTEMASSIGNED = "SystemAssigned";
+
+        private const string TYPE_USERASSIGNEDIDENTITY = "Microsoft.ManagedIdentity/userAssignedIdentities";
+        private const string TYPE_SQLSERVER = "Microsoft.Sql/servers";
+        private const string TYPE_SQLSERVER_ADMINISTRATOR = "Microsoft.Sql/servers/administrators";
+        private const string TYPE_WEBAPP = "Microsoft.Web/sites";
+        private const string TYPE_WEBAPP_CONFIG = "Microsoft.Web/sites/config";
+        private const string TYPE_WEBAPPSLOT = "Microsoft.Web/sites/slots";
+        private const string TYPE_WEBAPPSLOT_CONFIG = "Microsoft.Web/sites/slots/config";
 
         private static readonly JsonMergeSettings _MergeSettings = new()
         {
@@ -55,6 +73,12 @@ namespace PSRule.Rules.Azure.Data.Template
             base.EndTemplate(context, deploymentName, template);
         }
 
+        protected override void Emit(TemplateContext context, IResourceValue resource)
+        {
+            ProjectRuntimeProperties(context, resource);
+            base.Emit(context, resource);
+        }
+
         /// <summary>
         /// Build materialized views.
         /// </summary>
@@ -68,7 +92,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     continue;
 
                 MergeResource(context, resources[i], remaining, processed);
-                ProjectProperties(resources[i]);
+                ProjectEffectiveProperties(resources[i]);
                 processed.Add(resources[i].Id);
                 remaining.Remove(resources[i]);
             }
@@ -77,26 +101,70 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// Project caulcauted properties into the resourcce.
         /// </summary>
-        private static void ProjectProperties(IResourceValue resource)
+        private static void ProjectEffectiveProperties(IResourceValue resource)
         {
             _ = ProjectWebApp(resource) ||
                 ProjectSQLServer(resource);
         }
 
-        private static bool ProjectSQLServer(IResourceValue resource)
+        /// <summary>
+        /// Project runtime properties that are commonly referenced.
+        /// </summary>
+        private static void ProjectRuntimeProperties(TemplateContext context, IResourceValue resource)
         {
-            if (!resource.IsType("Microsoft.Sql/servers"))
+            _ = ProjectManagedIdentity(context, resource) ||
+                ProjectResource(context, resource);
+        }
+
+        private static bool ProjectResource(TemplateContext context, IResourceValue resource)
+        {
+            if (!resource.Value.TryGetProperty(PROPERTY_IDENTITY, out JObject identity) ||
+                !identity.TryGetProperty(PROPERTY_TYPE, out var type) ||
+                type.IndexOf(IDENTITY_SYSTEMASSIGNED, StringComparison.OrdinalIgnoreCase) == -1)
+                return true;
+
+            if (!identity.ContainsKeyInsensitive(PROPERTY_PRINCIPALID))
+                identity.Add(PROPERTY_PRINCIPALID, PLACEHOLDER_GUID);
+
+            if (!identity.ContainsKeyInsensitive(PROPERTY_TENANTID))
+                identity.Add(PROPERTY_TENANTID, context.Tenant.TenantId);
+
+            return true;
+        }
+
+        private static bool ProjectManagedIdentity(TemplateContext context, IResourceValue resource)
+        {
+            if (!resource.IsType(TYPE_USERASSIGNEDIDENTITY))
                 return false;
 
-            if (!resource.Value.TryGetResources("Microsoft.Sql/servers/administrators", out var subResources))
+            resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+            if (!properties.ContainsKeyInsensitive(PROPERTY_CLIENTID))
+                properties.Add(PROPERTY_CLIENTID, PLACEHOLDER_GUID);
+
+            if (!properties.ContainsKeyInsensitive(PROPERTY_PRINCIPALID))
+                properties.Add(PROPERTY_PRINCIPALID, PLACEHOLDER_GUID);
+
+            if (!properties.ContainsKeyInsensitive(PROPERTY_TENANTID))
+                properties.Add(PROPERTY_TENANTID, context.Tenant.TenantId);
+
+            return true;
+        }
+
+        private static bool ProjectSQLServer(IResourceValue resource)
+        {
+            if (!resource.IsType(TYPE_SQLSERVER))
+                return false;
+
+            if (!resource.Value.TryGetResources(TYPE_SQLSERVER_ADMINISTRATOR, out var subResources))
                 return true;
 
             for (var i = 0; i < subResources.Length; i++)
             {
-                if (subResources[i].ResourceNameEquals("ActiveDirectory") && subResources[i].TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var overrideProperties))
+                if (subResources[i].ResourceNameEquals("ActiveDirectory") &&
+                    subResources[i].TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var overrideProperties))
                 {
                     resource.Value.UseProperty<JObject>(PROPERTY_PROPERTIES, out var properties);
-                    properties.UseProperty<JObject>("administrators", out var administrators);
+                    properties.UseProperty<JObject>(PROPERTY_ADMINISTRATORS, out var administrators);
                     administrators.Merge(overrideProperties, _MergeSettings);
                 }
             }
@@ -106,10 +174,10 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool ProjectWebApp(IResourceValue resource)
         {
             string configType = null;
-            if (resource.IsType("Microsoft.Web/sites"))
-                configType = "Microsoft.Web/sites/config";
-            else if (resource.IsType("Microsoft.Web/sites/slots"))
-                configType = "Microsoft.Web/sites/slots/config";
+            if (resource.IsType(TYPE_WEBAPP))
+                configType = TYPE_WEBAPP_CONFIG;
+            else if (resource.IsType(TYPE_WEBAPPSLOT))
+                configType = TYPE_WEBAPPSLOT_CONFIG;
 
             if (configType == null)
                 return false;
@@ -119,10 +187,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
             for (var i = 0; i < subResources.Length; i++)
             {
-                if (subResources[i].ResourceNameEquals("web") && subResources[i].TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var overrideProperties))
+                if (subResources[i].ResourceNameEquals("web") &&
+                    subResources[i].TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var overrideProperties))
                 {
                     resource.Value.UseProperty<JObject>(PROPERTY_PROPERTIES, out var properties);
-                    properties.UseProperty<JObject>("siteConfig", out var siteConfig);
+                    properties.UseProperty<JObject>(PROPERTY_SITECONFIG, out var siteConfig);
                     siteConfig.Merge(overrideProperties, _MergeSettings);
                 }
             }

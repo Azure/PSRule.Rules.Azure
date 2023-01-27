@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.9.1.41621",
-      "templateHash": "1630303063958575858"
+      "version": "0.13.1.58284",
+      "templateHash": "11956986385837715242"
     }
   },
   "parameters": {
@@ -41,7 +41,10 @@
       "type": "Microsoft.Sql/servers",
       "apiVersion": "2022-02-01-preview",
       "name": "sql-server",
-      "location": "[parameters('location')]"
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      }
     },
     {
       "type": "Microsoft.Sql/servers/administrators",
@@ -82,8 +85,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.9.1.41621",
-              "templateHash": "15814387920058569600"
+              "version": "0.13.1.58284",
+              "templateHash": "4480766204783076209"
             }
           },
           "parameters": {
@@ -146,8 +149,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.9.1.41621",
-              "templateHash": "15814387920058569600"
+              "version": "0.13.1.58284",
+              "templateHash": "4480766204783076209"
             }
           },
           "parameters": {
@@ -205,8 +208,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.9.1.41621",
-              "templateHash": "14114073521915653545"
+              "version": "0.13.1.58284",
+              "templateHash": "2067010727711821958"
             }
           },
           "parameters": {
@@ -253,8 +256,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.9.1.41621",
-              "templateHash": "14114073521915653545"
+              "version": "0.13.1.58284",
+              "templateHash": "2067010727711821958"
             }
           },
           "parameters": {

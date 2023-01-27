@@ -29,6 +29,9 @@ What's changed since pre-release v1.24.0-B0013:
 - Engineering:
   - Updated resource providers and policy aliases.
     [#1736](https://github.com/Azure/PSRule.Rules.Azure/pull/1736)
+- Bug fixes:
+  - Fixed failed to expand nested deployment with runtime shallow parameter by @BernieWhite.
+    [#2004](https://github.com/Azure/PSRule.Rules.Azure/issues/2004)
 
 ## v1.24.0-B0013 (pre-release)
 

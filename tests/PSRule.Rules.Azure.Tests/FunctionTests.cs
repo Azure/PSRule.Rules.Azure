@@ -1779,7 +1779,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.UniqueString(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.UniqueString(context, System.Array.Empty<object>()));
-            Assert.Throws<ArgumentException>(() => Functions.UniqueString(context, new object[] { "One", 2, "Three" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.UniqueString(context, new object[] { "One", 2, "Three" }));
         }
 
         [Fact]
