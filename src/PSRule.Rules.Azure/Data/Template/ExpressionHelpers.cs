@@ -21,6 +21,13 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static readonly CultureInfo AzureCulture = new("en-US");
 
+        internal static bool IsString(object o)
+        {
+            return o is string ||
+                o is JToken token && token.Type == JTokenType.String ||
+                o is IMock;
+        }
+
         internal static bool TryString(object o, out string value)
         {
             if (o is string s)
@@ -703,28 +710,22 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static byte[] GetUnique(object[] args)
         {
             // Not actual hash algorithm used in Azure
-            using (var algorithm = SHA256.Create())
-            {
-                var url_uid = new Guid("6ba7b811-9dad-11d1-80b4-00c04fd430c8").ToByteArray();
-                algorithm.TransformBlock(url_uid, 0, url_uid.Length, null, 0);
+            using var algorithm = SHA256.Create();
+            var url_uid = new Guid("6ba7b811-9dad-11d1-80b4-00c04fd430c8").ToByteArray();
+            algorithm.TransformBlock(url_uid, 0, url_uid.Length, null, 0);
 
-                for (var i = 0; i < args.Length; i++)
+            for (var i = 0; i < args.Length; i++)
+            {
+                if (TryString(args[i], out var svalue))
                 {
-                    if (TryString(args[i], out var svalue))
-                    {
-                        var bvalue = Encoding.UTF8.GetBytes(svalue);
-                        if (i == args.Length - 1)
-                            algorithm.TransformFinalBlock(bvalue, 0, bvalue.Length);
-                        else
-                            algorithm.TransformBlock(bvalue, 0, bvalue.Length, null, 0);
-                    }
+                    var bvalue = Encoding.UTF8.GetBytes(svalue);
+                    if (i == args.Length - 1)
+                        algorithm.TransformFinalBlock(bvalue, 0, bvalue.Length);
                     else
-                    {
-                        throw new ArgumentException();
-                    }
+                        algorithm.TransformBlock(bvalue, 0, bvalue.Length, null, 0);
                 }
-                return algorithm.Hash;
             }
+            return algorithm.Hash;
         }
 
         internal static string GetUniqueString(object[] args)
