@@ -989,12 +989,12 @@ namespace PSRule.Rules.Azure.Data.Policy
         private static void OptimizeConditions(PolicyDefinition policyDefinition)
         {
             policyDefinition.Where = OptimizeConditionObject(policyDefinition, policyDefinition.Where);
-            policyDefinition.Condition = OptimizeConditionObject(policyDefinition, policyDefinition.Condition);
+            policyDefinition.Condition = OptimizeConditionObject(policyDefinition, policyDefinition.Condition, keep: true);
         }
 
-        private static JObject OptimizeConditionObject(PolicyDefinition policyDefinition, JObject condition)
+        private static JObject OptimizeConditionObject(PolicyDefinition policyDefinition, JObject condition, bool keep = false)
         {
-            if (condition == null || OptimizeTypeCondition(policyDefinition, condition))
+            if (condition == null || !keep && OptimizeTypeCondition(policyDefinition, condition))
                 return null;
 
             // Handle allOf and anyOf depth
