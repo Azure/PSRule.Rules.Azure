@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-09-01",
+      "2021-06-06-Preview",
       "2021-04-01-Preview",
       "2020-08-01-Preview",
       "2020-08-01",
@@ -25,12 +27,22 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-06-06-Preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
-      "2021-06-06-preview"
+      "2021-06-06-Preview"
     ],
     "locations": [
-      "Central US EUAP"
+      "Central US EUAP",
+      "East US 2 EUAP"
     ],
     "zoneMappings": null
   },
@@ -38,6 +50,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01",
+      "2021-06-06-Preview",
       "2021-04-01-Preview",
       "2020-08-01-Preview",
       "2020-08-01",
@@ -53,6 +67,8 @@
     "aliases": null,
     "resourceType": "resourceHealthMetadata",
     "apiVersions": [
+      "2022-09-01",
+      "2021-06-06-Preview",
       "2021-04-01-Preview",
       "2020-08-01-Preview",
       "2020-08-01",
@@ -165,6 +181,8 @@
     },
     "resourceType": "searchServices",
     "apiVersions": [
+      "2022-09-01",
+      "2021-06-06-Preview",
       "2021-04-01-Preview",
       "2020-08-01-Preview",
       "2020-08-01",

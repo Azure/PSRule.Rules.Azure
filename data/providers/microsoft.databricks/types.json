@@ -1,8 +1,11 @@
 [
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Databricks/accessConnectors/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "accessConnectors",
     "apiVersions": [
+      "2022-10-01-preview",
       "2022-04-01-preview"
     ],
     "locations": [
@@ -49,6 +52,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01",
@@ -99,6 +103,7 @@
     "aliases": null,
     "resourceType": "locations/getNetworkPolicies",
     "apiVersions": [
+      "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"
@@ -147,6 +152,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"
@@ -195,6 +201,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"
@@ -250,14 +257,26 @@
       "Microsoft.Databricks/workspaces/createdBy.oid": "properties.createdBy.oid",
       "Microsoft.Databricks/workspaces/createdBy.puid": "properties.createdBy.puid",
       "Microsoft.Databricks/workspaces/createdDateTime": "properties.createdDateTime",
+      "Microsoft.Databricks/workspaces/diskEncryptionSetId": "properties.diskEncryptionSetId",
       "Microsoft.Databricks/workspaces/encryption": "properties.encryption",
       "Microsoft.Databricks/workspaces/encryption.entities": "properties.encryption.entities",
+      "Microsoft.Databricks/workspaces/encryption.entities.managedDisk": "properties.encryption.entities.managedDisk",
+      "Microsoft.Databricks/workspaces/encryption.entities.managedDisk.keySource": "properties.encryption.entities.managedDisk.keySource",
+      "Microsoft.Databricks/workspaces/encryption.entities.managedDisk.keyVaultProperties": "properties.encryption.entities.managedDisk.keyVaultProperties",
+      "Microsoft.Databricks/workspaces/encryption.entities.managedDisk.keyVaultProperties.keyName": "properties.encryption.entities.managedDisk.keyVaultProperties.keyName",
+      "Microsoft.Databricks/workspaces/encryption.entities.managedDisk.keyVaultProperties.keyVaultUri": "properties.encryption.entities.managedDisk.keyVaultProperties.keyVaultUri",
+      "Microsoft.Databricks/workspaces/encryption.entities.managedDisk.keyVaultProperties.keyVersion": "properties.encryption.entities.managedDisk.keyVaultProperties.keyVersion",
+      "Microsoft.Databricks/workspaces/encryption.entities.managedDisk.rotationToLatestKeyVersionEnabled": "properties.encryption.entities.managedDisk.rotationToLatestKeyVersionEnabled",
       "Microsoft.Databricks/workspaces/encryption.entities.managedServices": "properties.encryption.entities.managedServices",
       "Microsoft.Databricks/workspaces/encryption.entities.managedServices.keySource": "properties.encryption.entities.managedServices.keySource",
       "Microsoft.Databricks/workspaces/encryption.entities.managedServices.keyVaultProperties": "properties.encryption.entities.managedServices.keyVaultProperties",
       "Microsoft.Databricks/workspaces/encryption.entities.managedServices.keyVaultProperties.keyName": "properties.encryption.entities.managedServices.keyVaultProperties.keyName",
       "Microsoft.Databricks/workspaces/encryption.entities.managedServices.keyVaultProperties.keyVaultUri": "properties.encryption.entities.managedServices.keyVaultProperties.keyVaultUri",
       "Microsoft.Databricks/workspaces/encryption.entities.managedServices.keyVaultProperties.keyVersion": "properties.encryption.entities.managedServices.keyVaultProperties.keyVersion",
+      "Microsoft.Databricks/workspaces/managedDiskIdentity": "properties.managedDiskIdentity",
+      "Microsoft.Databricks/workspaces/managedDiskIdentity.principalId": "properties.managedDiskIdentity.principalId",
+      "Microsoft.Databricks/workspaces/managedDiskIdentity.tenantId": "properties.managedDiskIdentity.tenantId",
+      "Microsoft.Databricks/workspaces/managedDiskIdentity.type": "properties.managedDiskIdentity.type",
       "Microsoft.DataBricks/workspaces/managedResourceGroupId": "properties.managedResourceGroupId",
       "Microsoft.DataBricks/workspaces/parameters": "properties.parameters",
       "Microsoft.DataBricks/workspaces/parameters.amlWorkspaceId": "properties.parameters.amlWorkspaceId",
@@ -347,6 +366,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"
@@ -458,6 +478,7 @@
     },
     "resourceType": "workspaces/virtualNetworkPeerings",
     "apiVersions": [
+      "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
       "2018-04-01"

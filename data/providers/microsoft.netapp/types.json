@@ -53,6 +53,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -124,6 +125,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -175,6 +177,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -238,6 +241,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -299,6 +303,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -370,6 +375,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -422,6 +428,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -469,6 +476,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -574,6 +582,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -655,6 +664,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -821,6 +831,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -958,6 +969,14 @@
         ]
       },
       {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Central US",
         "zones": [
           "1",
@@ -1007,6 +1026,14 @@
       },
       {
         "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US",
         "zones": [
           "1",
           "2",
@@ -1066,6 +1093,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -1143,6 +1171,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -1230,6 +1259,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -1383,6 +1413,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -1455,6 +1486,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "South Africa North",
       "South Central US",
       "South Central US (Stage)",
       "South India",

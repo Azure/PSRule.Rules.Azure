@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-15-privatepreview",
       "2021-11-10-privatepreview"
     ],
     "locations": [],

@@ -3,6 +3,9 @@
     "aliases": null,
     "resourceType": "backupInstances",
     "apiVersions": [
+      "2022-11-01-preview",
+      "2022-10-01-preview",
+      "2022-09-01-preview",
       "2022-03-31-preview"
     ],
     "locations": [
@@ -49,6 +52,7 @@
   },
   {
     "aliases": {
+      "Microsoft.DataProtection/backupVaults/isVaultProtectedByResourceGuard": "properties.isVaultProtectedByResourceGuard",
       "Microsoft.DataProtection/backupVaults/monitoringSettings": "properties.monitoringSettings",
       "Microsoft.DataProtection/backupVaults/monitoringSettings.azureMonitorAlertSettings": "properties.monitoringSettings.azureMonitorAlertSettings",
       "Microsoft.DataProtection/backupVaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures": "properties.monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures",
@@ -60,6 +64,12 @@
       "Microsoft.DataProtection/backupVaults/resourceMoveDetails.startTimeUtc": "properties.resourceMoveDetails.startTimeUtc",
       "Microsoft.DataProtection/backupVaults/resourceMoveDetails.targetResourcePath": "properties.resourceMoveDetails.targetResourcePath",
       "Microsoft.DataProtection/backupVaults/resourceMoveState": "properties.resourceMoveState",
+      "Microsoft.DataProtection/backupVaults/securitySettings": "properties.securitySettings",
+      "Microsoft.DataProtection/backupVaults/securitySettings.immutabilitySettings": "properties.securitySettings.immutabilitySettings",
+      "Microsoft.DataProtection/backupVaults/securitySettings.immutabilitySettings.state": "properties.securitySettings.immutabilitySettings.state",
+      "Microsoft.DataProtection/backupVaults/securitySettings.softDeleteSettings": "properties.securitySettings.softDeleteSettings",
+      "Microsoft.DataProtection/backupVaults/securitySettings.softDeleteSettings.retentionDurationInDays": "properties.securitySettings.softDeleteSettings.retentionDurationInDays",
+      "Microsoft.DataProtection/backupVaults/securitySettings.softDeleteSettings.state": "properties.securitySettings.softDeleteSettings.state",
       "Microsoft.DataProtection/backupVaults/storageSettings": "properties.storageSettings",
       "Microsoft.DataProtection/backupVaults/storageSettings[*]": "properties.storageSettings[*]",
       "Microsoft.DataProtection/backupVaults/storageSettings[*].datastoreType": "properties.storageSettings[*].datastoreType",
@@ -67,6 +77,10 @@
     },
     "resourceType": "BackupVaults",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-10-01-preview",
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -126,6 +140,10 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-10-01-preview",
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -146,6 +164,10 @@
     "aliases": null,
     "resourceType": "locations/checkFeatureSupport",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-10-01-preview",
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -205,6 +227,10 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-10-01-preview",
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -264,6 +290,10 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-10-01-preview",
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -323,6 +353,10 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-10-01-preview",
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -382,6 +416,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-10-01-preview",
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -402,6 +440,10 @@
     "aliases": null,
     "resourceType": "ResourceGuards",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-10-01-preview",
+      "2022-09-01-preview",
       "2022-05-01",
       "2022-04-01",
       "2022-03-01",
@@ -493,6 +535,22 @@
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo": "properties.policyInfo",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyId": "properties.policyInfo.policyId",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters": "properties.policyInfo.policyParameters",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList": "properties.policyInfo.policyParameters.backupDatasourceParametersList",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*]": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.excludedNamespaces": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].excludedNamespaces",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.excludedNamespaces[*]": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].excludedNamespaces[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.excludedResourceTypes": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].excludedResourceTypes",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.excludedResourceTypes[*]": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].excludedResourceTypes[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.includeClusterScopeResources": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].includeClusterScopeResources",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.includedNamespaces": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].includedNamespaces",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.includedNamespaces[*]": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].includedNamespaces[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.includedResourceTypes": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].includedResourceTypes",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.includedResourceTypes[*]": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].includedResourceTypes[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.labelSelectors": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].labelSelectors",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.labelSelectors[*]": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].labelSelectors[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.snapshotVolumes": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].snapshotVolumes",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].objectType": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].objectType",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.dataStoreParametersList": "properties.policyInfo.policyParameters.dataStoreParametersList",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.dataStoreParametersList[*]": "properties.policyInfo.policyParameters.dataStoreParametersList[*]",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.dataStoreParametersList[*].AzureOperationalStoreParameters": "properties.policyInfo.policyParameters.dataStoreParametersList[*]",
@@ -646,5 +704,17 @@
       "Microsoft.DataProtection/backupVaults/backupPolicies/objectType": "properties.objectType"
     },
     "resourceType": "backupvaults/backuppolicies"
+  },
+  {
+    "aliases": {
+      "Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/description": "properties.description",
+      "Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/lastUpdatedTime": "properties.lastUpdatedTime",
+      "Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/resourceGuardOperationDetails": "properties.resourceGuardOperationDetails",
+      "Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/resourceGuardOperationDetails[*]": "properties.resourceGuardOperationDetails[*]",
+      "Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/resourceGuardOperationDetails[*].defaultResourceRequest": "properties.resourceGuardOperationDetails[*].defaultResourceRequest",
+      "Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/resourceGuardOperationDetails[*].vaultCriticalOperation": "properties.resourceGuardOperationDetails[*].vaultCriticalOperation",
+      "Microsoft.DataProtection/backupVaults/backupResourceGuardProxies/resourceGuardResourceId": "properties.resourceGuardResourceId"
+    },
+    "resourceType": "backupvaults/backupresourceguardproxies"
   }
 ]

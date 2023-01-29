@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",
@@ -20,6 +21,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",
@@ -78,6 +80,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01"
     ],
@@ -129,6 +132,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01"
     ],
@@ -180,6 +184,7 @@
     "aliases": null,
     "resourceType": "locations/workflows",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",
@@ -238,6 +243,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",
@@ -302,6 +308,7 @@
     },
     "resourceType": "storageSyncServices",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",
@@ -376,6 +383,7 @@
     },
     "resourceType": "storageSyncServices/registeredServers",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",
@@ -439,6 +447,7 @@
     },
     "resourceType": "storageSyncServices/syncGroups",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",
@@ -511,6 +520,7 @@
     },
     "resourceType": "storageSyncServices/syncGroups/cloudEndpoints",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",
@@ -597,6 +607,7 @@
     },
     "resourceType": "storageSyncServices/syncGroups/serverEndpoints",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",
@@ -657,6 +668,7 @@
     "aliases": null,
     "resourceType": "storageSyncServices/workflows",
     "apiVersions": [
+      "2022-06-01",
       "2020-09-01",
       "2020-03-01",
       "2019-10-01",

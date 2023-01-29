@@ -55,6 +55,8 @@
     },
     "resourceType": "extensions",
     "apiVersions": [
+      "2022-11-01",
+      "2022-07-01",
       "2022-04-02-preview",
       "2022-03-01",
       "2021-09-01",
@@ -64,6 +66,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -87,6 +90,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Uae North",
       "UK South",
       "Uk West",
       "West Central US",
@@ -182,6 +186,8 @@
     },
     "resourceType": "fluxConfigurations",
     "apiVersions": [
+      "2022-11-01",
+      "2022-07-01",
       "2022-03-01",
       "2022-01-01-preview",
       "2021-11-01-preview",
@@ -190,6 +196,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -213,6 +220,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Uae North",
       "UK South",
       "Uk West",
       "West Central US",
@@ -227,6 +235,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-11-01",
       "2022-03-01",
       "2022-01-01-preview",
       "2021-12-01-preview",
@@ -268,6 +277,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -291,6 +301,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Uae North",
       "UK South",
       "Uk West",
       "West Central US",
@@ -310,6 +321,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -333,6 +345,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Uae North",
       "UK South",
       "Uk West",
       "West Central US",
@@ -360,6 +373,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -383,6 +397,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Uae North",
       "UK South",
       "Uk West",
       "West Central US",
@@ -419,6 +434,8 @@
     },
     "resourceType": "sourceControlConfigurations",
     "apiVersions": [
+      "2022-11-01",
+      "2022-07-01",
       "2022-03-01",
       "2021-03-01",
       "2020-10-01-preview",
@@ -428,6 +445,7 @@
     "locations": [
       "Australia East",
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -451,6 +469,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Uae North",
       "UK South",
       "Uk West",
       "West Central US",

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "availableEngineVersions",
     "apiVersions": [
+      "2022-11-08",
       "2020-10-05-privatepreview"
     ],
     "locations": [
@@ -23,6 +24,7 @@
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UK South",
@@ -37,31 +39,49 @@
   {
     "aliases": null,
     "resourceType": "checkNameAvailability",
-    "apiVersions": [],
+    "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-05-01-privatepreview",
+      "2022-03-08-privatepreview",
+      "2022-03-08-preview",
+      "2022-01-20-preview",
+      "2021-06-01-preview",
+      "2021-06-01",
+      "2020-11-05-preview",
+      "2020-02-14-privatepreview",
+      "2020-02-14-preview"
+    ],
     "locations": [
       "Australia Central",
       "Australia Central 2",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
       "Central US",
+      "Central US EUAP",
       "East Asia",
       "East US",
       "East US 2",
+      "East US 2 EUAP",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
+      "Jio India Central",
       "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Norway West",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -71,6 +91,7 @@
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
+      "UAE Central",
       "UAE North",
       "UK South",
       "UK West",
@@ -87,6 +108,12 @@
     "aliases": {
       "Microsoft.DBForPostgreSql/flexibleServers/administratorLogin": "properties.administratorLogin",
       "Microsoft.DBForPostgreSql/flexibleServers/administratorLoginPassword": "properties.administratorLoginPassword",
+      "Microsoft.DBForPostgreSql/flexibleServers/authConfig": "properties.authConfig",
+      "Microsoft.DBForPostgreSql/flexibleServers/authConfig.activeDirectoryAuth": "properties.authConfig.activeDirectoryAuth",
+      "Microsoft.DBForPostgreSql/flexibleServers/authConfig.activeDirectoryAuthEnabled": "properties.authConfig.activeDirectoryAuthEnabled",
+      "Microsoft.DBForPostgreSql/flexibleServers/authConfig.passwordAuth": "properties.authConfig.passwordAuth",
+      "Microsoft.DBForPostgreSql/flexibleServers/authConfig.passwordAuthEnabled": "properties.authConfig.passwordAuthEnabled",
+      "Microsoft.DBForPostgreSql/flexibleServers/authConfig.tenantId": "properties.authConfig.tenantId",
       "Microsoft.DBForPostgreSql/flexibleServers/availabilityZone": "properties.availabilityZone",
       "Microsoft.DBForPostgreSql/flexibleServers/backup": "properties.backup",
       "Microsoft.DBForPostgreSql/flexibleServers/backup.backupRetentionDays": "properties.backup.backupRetentionDays",
@@ -94,6 +121,10 @@
       "Microsoft.DBForPostgreSql/flexibleServers/backup.geoRedundantBackup": "properties.backup.geoRedundantBackup",
       "Microsoft.DBForPostgreSql/flexibleServers/byokEnforcement": "properties.byokEnforcement",
       "Microsoft.DBForPostgreSql/flexibleServers/createMode": "properties.createMode",
+      "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption": "properties.dataEncryption",
+      "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.primaryKeyURI": "properties.dataEncryption.primaryKeyURI",
+      "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.primaryUserAssignedIdentityId": "properties.dataEncryption.primaryUserAssignedIdentityId",
+      "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.type": "properties.dataEncryption.type",
       "Microsoft.DBForPostgreSql/flexibleServers/delegatedSubnetArguments": "properties.delegatedSubnetArguments",
       "Microsoft.DBForPostgreSql/flexibleServers/delegatedSubnetArguments.subnetArmResourceId": "properties.delegatedSubnetArguments.subnetArmResourceId",
       "Microsoft.DBForPostgreSql/flexibleServers/displayName": "properties.displayName",
@@ -120,6 +151,8 @@
       "Microsoft.DBForPostgreSql/flexibleServers/privateDnsZoneArguments": "properties.privateDnsZoneArguments",
       "Microsoft.DBForPostgreSql/flexibleServers/privateDnsZoneArguments.privateDnsZoneArmResourceId": "properties.privateDnsZoneArguments.privateDnsZoneArmResourceId",
       "Microsoft.DBForPostgreSql/flexibleServers/publicNetworkAccess": "properties.network.publicNetworkAccess",
+      "Microsoft.DBForPostgreSql/flexibleServers/replicaCapacity": "properties.replicaCapacity",
+      "Microsoft.DBForPostgreSql/flexibleServers/replicationRole": "properties.replicationRole",
       "Microsoft.DBForPostgreSql/flexibleServers/sku": "sku",
       "Microsoft.DBForPostgreSql/flexibleServers/sku.name": "sku.name",
       "Microsoft.DBForPostgreSql/flexibleServers/sku.tier": "sku.tier",
@@ -142,7 +175,11 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-05-01-privatepreview",
       "2022-03-08-privatepreview",
+      "2022-03-08-preview",
       "2022-01-20-preview",
       "2021-06-01-preview",
       "2021-06-01",
@@ -191,212 +228,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": [
-      {
-        "location": "Australia East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Brazil South",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Canada Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Central India",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East Asia",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "East US 2",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "France Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Germany West Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Japan East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Korea Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "North Central US",
-        "zones": []
-      },
-      {
-        "location": "North Europe",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Norway East",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Qatar Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "South Africa North",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "South Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Southeast Asia",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Sweden Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Switzerland North",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "UAE North",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "UK South",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West Europe",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West US 2",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West US 3",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      }
-    ]
+    "zoneMappings": null
   },
   {
     "aliases": null,
@@ -642,7 +474,11 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-05-01-privatepreview",
       "2022-03-08-privatepreview",
+      "2022-03-08-preview",
       "2022-01-20-preview",
       "2021-06-01-preview",
       "2021-06-01",
@@ -695,7 +531,11 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-05-01-privatepreview",
       "2022-03-08-privatepreview",
+      "2022-03-08-preview",
       "2022-01-20-preview",
       "2021-06-01-preview",
       "2021-06-01",
@@ -783,6 +623,26 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/getCachedServerName",
+    "apiVersions": [
+      "2022-03-08-privatepreview"
+    ],
+    "locations": [
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "West Central US",
       "West US",
       "West US 2",
       "West US 3"
@@ -1398,6 +1258,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-05-01-privatepreview",
+      "2022-03-08-preview",
       "2022-01-20-preview",
       "2021-06-01-preview",
       "2021-06-01"
@@ -1456,28 +1320,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "serverGroups",
-    "apiVersions": [
-      "2018-03-29-privatepreview"
-    ],
-    "locations": [
-      "Australia East",
-      "Canada Central",
-      "East US",
-      "East US 2",
-      "North Central US",
-      "North Europe",
-      "Southeast Asia",
-      "UK South",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
     "resourceType": "serverGroupsv2",
     "apiVersions": [
+      "2022-11-08",
       "2020-10-05-privatepreview"
     ],
     "locations": [
@@ -1498,7 +1343,9 @@
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UK South",
       "West Central US",
       "West Europe",
@@ -2158,24 +2005,12 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
-    "resourceType": "serversv2",
-    "apiVersions": [
-      "2018-03-29-privatepreview"
-    ],
-    "locations": [
-      "Australia East",
-      "Canada Central",
-      "East US",
-      "East US 2",
-      "North Central US",
-      "North Europe",
-      "Southeast Asia",
-      "UK South",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "aliases": {
+      "Microsoft.DBforPostgreSQL/flexibleServers/administrators/principalName": "properties.principalName",
+      "Microsoft.DBforPostgreSQL/flexibleServers/administrators/principalType": "properties.principalType",
+      "Microsoft.DBforPostgreSQL/flexibleServers/administrators/tenantId": "properties.tenantId"
+    },
+    "resourceType": "flexibleservers/administrators"
   },
   {
     "aliases": {

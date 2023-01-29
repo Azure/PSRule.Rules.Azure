@@ -6,9 +6,118 @@
       "2021-11-20-preview"
     ],
     "locations": [
-      "East US 2 (Stage)"
+      "Australia East",
+      "East US",
+      "East US 2",
+      "East US 2 (Stage)",
+      "France Central",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
   },
   {
     "aliases": null,
@@ -26,7 +135,19 @@
       "2021-11-20-preview"
     ],
     "locations": [
-      "East US 2 (Stage)"
+      "Australia East",
+      "East US",
+      "East US 2",
+      "East US 2 (Stage)",
+      "France Central",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -34,10 +155,23 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-12-01-preview",
       "2021-11-20-preview"
     ],
     "locations": [
-      "East US 2 (Stage)"
+      "Australia East",
+      "East US",
+      "East US 2",
+      "East US 2 (Stage)",
+      "France Central",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   }

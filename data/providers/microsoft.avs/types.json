@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-03-20"
@@ -14,6 +15,7 @@
     "aliases": null,
     "resourceType": "locations/checkQuotaAvailability",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-03-20"
@@ -51,6 +53,7 @@
     "aliases": null,
     "resourceType": "locations/checkTrialAvailability",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-03-20"
@@ -88,6 +91,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-03-20"
@@ -96,9 +100,69 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/availability": "properties.availability",
+      "Microsoft.AVS/privateClouds/availability.secondaryZone": "properties.availability.secondaryZone",
+      "Microsoft.AVS/privateClouds/availability.strategy": "properties.availability.strategy",
+      "Microsoft.AVS/privateClouds/availability.zone": "properties.availability.zone",
+      "Microsoft.AVS/privateClouds/circuit": "properties.circuit",
+      "Microsoft.AVS/privateClouds/circuit.expressRouteID": "properties.circuit.expressRouteID",
+      "Microsoft.AVS/privateClouds/circuit.expressRoutePrivatePeeringID": "properties.circuit.expressRoutePrivatePeeringID",
+      "Microsoft.AVS/privateClouds/circuit.primarySubnet": "properties.circuit.primarySubnet",
+      "Microsoft.AVS/privateClouds/circuit.secondarySubnet": "properties.circuit.secondarySubnet",
+      "Microsoft.AVS/privateClouds/encryption": "properties.encryption",
+      "Microsoft.AVS/privateClouds/encryption.keyVaultProperties": "properties.encryption.keyVaultProperties",
+      "Microsoft.AVS/privateClouds/encryption.keyVaultProperties.keyName": "properties.encryption.keyVaultProperties.keyName",
+      "Microsoft.AVS/privateClouds/encryption.keyVaultProperties.keyState": "properties.encryption.keyVaultProperties.keyState",
+      "Microsoft.AVS/privateClouds/encryption.keyVaultProperties.keyVaultUrl": "properties.encryption.keyVaultProperties.keyVaultUrl",
+      "Microsoft.AVS/privateClouds/encryption.keyVaultProperties.keyVersion": "properties.encryption.keyVaultProperties.keyVersion",
+      "Microsoft.AVS/privateClouds/encryption.keyVaultProperties.versionType": "properties.encryption.keyVaultProperties.versionType",
+      "Microsoft.AVS/privateClouds/encryption.status": "properties.encryption.status",
+      "Microsoft.AVS/privateClouds/endpoints": "properties.endpoints",
+      "Microsoft.AVS/privateClouds/endpoints.hcxCloudManager": "properties.endpoints.hcxCloudManager",
+      "Microsoft.AVS/privateClouds/endpoints.nsxtManager": "properties.endpoints.nsxtManager",
+      "Microsoft.AVS/privateClouds/endpoints.vcsa": "properties.endpoints.vcsa",
+      "Microsoft.AVS/privateClouds/externalCloudLinks": "properties.externalCloudLinks",
+      "Microsoft.AVS/privateClouds/externalCloudLinks[*]": "properties.externalCloudLinks[*]",
+      "Microsoft.AVS/privateClouds/identitySources": "properties.identitySources",
+      "Microsoft.AVS/privateClouds/identitySources[*]": "properties.identitySources[*]",
+      "Microsoft.AVS/privateClouds/identitySources[*].alias": "properties.identitySources[*].alias",
+      "Microsoft.AVS/privateClouds/identitySources[*].baseGroupDN": "properties.identitySources[*].baseGroupDN",
+      "Microsoft.AVS/privateClouds/identitySources[*].baseUserDN": "properties.identitySources[*].baseUserDN",
+      "Microsoft.AVS/privateClouds/identitySources[*].domain": "properties.identitySources[*].domain",
+      "Microsoft.AVS/privateClouds/identitySources[*].name": "properties.identitySources[*].name",
+      "Microsoft.AVS/privateClouds/identitySources[*].password": "properties.identitySources[*].password",
+      "Microsoft.AVS/privateClouds/identitySources[*].primaryServer": "properties.identitySources[*].primaryServer",
+      "Microsoft.AVS/privateClouds/identitySources[*].secondaryServer": "properties.identitySources[*].secondaryServer",
+      "Microsoft.AVS/privateClouds/identitySources[*].ssl": "properties.identitySources[*].ssl",
+      "Microsoft.AVS/privateClouds/identitySources[*].username": "properties.identitySources[*].username",
+      "Microsoft.AVS/privateClouds/internet": "properties.internet",
+      "Microsoft.AVS/privateClouds/managementCluster": "properties.managementCluster",
+      "Microsoft.AVS/privateClouds/managementCluster.clusterId": "properties.managementCluster.clusterId",
+      "Microsoft.AVS/privateClouds/managementCluster.clusterSize": "properties.managementCluster.clusterSize",
+      "Microsoft.AVS/privateClouds/managementCluster.hosts": "properties.managementCluster.hosts",
+      "Microsoft.AVS/privateClouds/managementCluster.hosts[*]": "properties.managementCluster.hosts[*]",
+      "Microsoft.AVS/privateClouds/managementCluster.provisioningState": "properties.managementCluster.provisioningState",
+      "Microsoft.AVS/privateClouds/managementNetwork": "properties.managementNetwork",
+      "Microsoft.AVS/privateClouds/networkBlock": "properties.networkBlock",
+      "Microsoft.AVS/privateClouds/nsxtCertificateThumbprint": "properties.nsxtCertificateThumbprint",
+      "Microsoft.AVS/privateClouds/nsxtPassword": "properties.nsxtPassword",
+      "Microsoft.AVS/privateClouds/provisioningNetwork": "properties.provisioningNetwork",
+      "Microsoft.AVS/privateClouds/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/secondaryCircuit": "properties.secondaryCircuit",
+      "Microsoft.AVS/privateClouds/secondaryCircuit.expressRouteID": "properties.secondaryCircuit.expressRouteID",
+      "Microsoft.AVS/privateClouds/secondaryCircuit.expressRoutePrivatePeeringID": "properties.secondaryCircuit.expressRoutePrivatePeeringID",
+      "Microsoft.AVS/privateClouds/secondaryCircuit.primarySubnet": "properties.secondaryCircuit.primarySubnet",
+      "Microsoft.AVS/privateClouds/secondaryCircuit.secondarySubnet": "properties.secondaryCircuit.secondarySubnet",
+      "Microsoft.AVS/privateClouds/sku": "sku",
+      "Microsoft.AVS/privateClouds/sku.name": "sku.name",
+      "Microsoft.AVS/privateClouds/vcenterCertificateThumbprint": "properties.vcenterCertificateThumbprint",
+      "Microsoft.AVS/privateClouds/vcenterPassword": "properties.vcenterPassword",
+      "Microsoft.AVS/privateClouds/vmotionNetwork": "properties.vmotionNetwork"
+    },
     "resourceType": "privateClouds",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2021-01-01-preview",
@@ -135,9 +199,17 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/addons/addonType": "properties.addonType",
+      "Microsoft.AVS/privateClouds/addons/HCX.offer": "properties.offer",
+      "Microsoft.AVS/privateClouds/addons/licenseKey": "properties.licenseKey",
+      "Microsoft.AVS/privateClouds/addons/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/addons/SRM.licenseKey": "properties.licenseKey",
+      "Microsoft.AVS/privateClouds/addons/VR.vrsCount": "properties.vrsCount"
+    },
     "resourceType": "privateClouds/addons",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -172,9 +244,15 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/authorizations/expressRouteAuthorizationId": "properties.expressRouteAuthorizationId",
+      "Microsoft.AVS/privateClouds/authorizations/expressRouteAuthorizationKey": "properties.expressRouteAuthorizationKey",
+      "Microsoft.AVS/privateClouds/authorizations/expressRouteId": "properties.expressRouteId",
+      "Microsoft.AVS/privateClouds/authorizations/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "privateClouds/authorizations",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-03-20"
@@ -212,6 +290,7 @@
     "aliases": null,
     "resourceType": "privateClouds/cloudLinks",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01"
     ],
@@ -245,9 +324,18 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/clusters/clusterId": "properties.clusterId",
+      "Microsoft.AVS/privateClouds/clusters/clusterSize": "properties.clusterSize",
+      "Microsoft.AVS/privateClouds/clusters/hosts": "properties.hosts",
+      "Microsoft.AVS/privateClouds/clusters/hosts[*]": "properties.hosts[*]",
+      "Microsoft.AVS/privateClouds/clusters/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/clusters/sku": "sku",
+      "Microsoft.AVS/privateClouds/clusters/sku.name": "sku.name"
+    },
     "resourceType": "privateClouds/clusters",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2021-01-01-preview",
@@ -283,9 +371,24 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/clusters/datastores/diskPoolVolume": "properties.diskPoolVolume",
+      "Microsoft.AVS/privateClouds/clusters/datastores/diskPoolVolume.endpoints": "properties.diskPoolVolume.endpoints",
+      "Microsoft.AVS/privateClouds/clusters/datastores/diskPoolVolume.endpoints[*]": "properties.diskPoolVolume.endpoints[*]",
+      "Microsoft.AVS/privateClouds/clusters/datastores/diskPoolVolume.lunName": "properties.diskPoolVolume.lunName",
+      "Microsoft.AVS/privateClouds/clusters/datastores/diskPoolVolume.mountOption": "properties.diskPoolVolume.mountOption",
+      "Microsoft.AVS/privateClouds/clusters/datastores/diskPoolVolume.path": "properties.diskPoolVolume.path",
+      "Microsoft.AVS/privateClouds/clusters/datastores/diskPoolVolume.targetId": "properties.diskPoolVolume.targetId",
+      "Microsoft.AVS/privateClouds/clusters/datastores/netAppVolume": "properties.netAppVolume",
+      "Microsoft.AVS/privateClouds/clusters/datastores/netAppVolume.id": "properties.netAppVolume.id",
+      "Microsoft.AVS/privateClouds/clusters/datastores/netAppVolume.nfsFilePath": "properties.netAppVolume.nfsFilePath",
+      "Microsoft.AVS/privateClouds/clusters/datastores/netAppVolume.nfsProviderIp": "properties.netAppVolume.nfsProviderIp",
+      "Microsoft.AVS/privateClouds/clusters/datastores/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/clusters/datastores/status": "properties.status"
+    },
     "resourceType": "privateClouds/clusters/datastores",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2021-01-01-preview"
@@ -323,6 +426,7 @@
     "aliases": null,
     "resourceType": "privateClouds/clusters/placementPolicies",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01"
     ],
     "locations": [
@@ -358,6 +462,7 @@
     "aliases": null,
     "resourceType": "privateClouds/clusters/virtualMachines",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01"
     ],
     "locations": [
@@ -390,9 +495,17 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/globalReachConnections/addressPrefix": "properties.addressPrefix",
+      "Microsoft.AVS/privateClouds/globalReachConnections/authorizationKey": "properties.authorizationKey",
+      "Microsoft.AVS/privateClouds/globalReachConnections/circuitConnectionStatus": "properties.circuitConnectionStatus",
+      "Microsoft.AVS/privateClouds/globalReachConnections/expressRouteId": "properties.expressRouteId",
+      "Microsoft.AVS/privateClouds/globalReachConnections/peerExpressRouteCircuit": "properties.peerExpressRouteCircuit",
+      "Microsoft.AVS/privateClouds/globalReachConnections/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "privateClouds/globalReachConnections",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -427,9 +540,13 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/hcxEnterpriseSites/activationKey": "properties.activationKey",
+      "Microsoft.AVS/privateClouds/hcxEnterpriseSites/status": "properties.status"
+    },
     "resourceType": "privateClouds/hcxEnterpriseSites",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-03-20"
@@ -467,6 +584,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptExecutions",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01"
     ],
@@ -503,6 +621,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptPackages",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01"
     ],
@@ -539,6 +658,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptPackages/scriptCmdlets",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01"
     ],
@@ -575,6 +695,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -609,9 +730,21 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/dhcpType": "properties.dhcpType",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/displayName": "properties.displayName",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/RELAY.serverAddresses": "properties.serverAddresses",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/RELAY.serverAddresses[*]": "properties.serverAddresses[*]",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/revision": "properties.revision",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/segments": "properties.segments",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/segments[*]": "properties.segments[*]",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/SERVER.leaseTime": "properties.leaseTime",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dhcpConfigurations/SERVER.serverAddress": "properties.serverAddress"
+    },
     "resourceType": "privateClouds/workloadNetworks/dhcpConfigurations",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -646,9 +779,20 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsServices/defaultDnsZone": "properties.defaultDnsZone",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsServices/displayName": "properties.displayName",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsServices/dnsServiceIp": "properties.dnsServiceIp",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsServices/fqdnZones": "properties.fqdnZones",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsServices/fqdnZones[*]": "properties.fqdnZones[*]",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsServices/logLevel": "properties.logLevel",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsServices/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsServices/revision": "properties.revision",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsServices/status": "properties.status"
+    },
     "resourceType": "privateClouds/workloadNetworks/dnsServices",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -683,9 +827,20 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsZones/displayName": "properties.displayName",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsZones/dnsServerIps": "properties.dnsServerIps",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsZones/dnsServerIps[*]": "properties.dnsServerIps[*]",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsZones/dnsServices": "properties.dnsServices",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsZones/domain": "properties.domain",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsZones/domain[*]": "properties.domain[*]",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsZones/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsZones/revision": "properties.revision",
+      "Microsoft.AVS/privateClouds/workloadNetworks/dnsZones/sourceIp": "properties.sourceIp"
+    },
     "resourceType": "privateClouds/workloadNetworks/dnsZones",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -723,6 +878,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/gateways",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -757,9 +913,18 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/workloadNetworks/portMirroringProfiles/destination": "properties.destination",
+      "Microsoft.AVS/privateClouds/workloadNetworks/portMirroringProfiles/direction": "properties.direction",
+      "Microsoft.AVS/privateClouds/workloadNetworks/portMirroringProfiles/displayName": "properties.displayName",
+      "Microsoft.AVS/privateClouds/workloadNetworks/portMirroringProfiles/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/workloadNetworks/portMirroringProfiles/revision": "properties.revision",
+      "Microsoft.AVS/privateClouds/workloadNetworks/portMirroringProfiles/source": "properties.source",
+      "Microsoft.AVS/privateClouds/workloadNetworks/portMirroringProfiles/status": "properties.status"
+    },
     "resourceType": "privateClouds/workloadNetworks/portMirroringProfiles",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -797,6 +962,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/publicIPs",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01"
     ],
@@ -830,9 +996,23 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/connectedGateway": "properties.connectedGateway",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/displayName": "properties.displayName",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/portVif": "properties.portVif",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/portVif[*]": "properties.portVif[*]",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/portVif[*].portName": "properties.portVif[*].portName",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/revision": "properties.revision",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/status": "properties.status",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/subnet": "properties.subnet",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/subnet.dhcpRanges": "properties.subnet.dhcpRanges",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/subnet.dhcpRanges[*]": "properties.subnet.dhcpRanges[*]",
+      "Microsoft.AVS/privateClouds/workloadNetworks/segments/subnet.gatewayAddress": "properties.subnet.gatewayAddress"
+    },
     "resourceType": "privateClouds/workloadNetworks/segments",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -870,6 +1050,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/virtualMachines",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"
@@ -904,9 +1085,17 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.AVS/privateClouds/workloadNetworks/vmGroups/displayName": "properties.displayName",
+      "Microsoft.AVS/privateClouds/workloadNetworks/vmGroups/members": "properties.members",
+      "Microsoft.AVS/privateClouds/workloadNetworks/vmGroups/members[*]": "properties.members[*]",
+      "Microsoft.AVS/privateClouds/workloadNetworks/vmGroups/provisioningState": "properties.provisioningState",
+      "Microsoft.AVS/privateClouds/workloadNetworks/vmGroups/revision": "properties.revision",
+      "Microsoft.AVS/privateClouds/workloadNetworks/vmGroups/status": "properties.status"
+    },
     "resourceType": "privateClouds/workloadNetworks/vmGroups",
     "apiVersions": [
+      "2022-05-01",
       "2021-12-01",
       "2021-06-01",
       "2020-07-17-preview"

@@ -11,6 +11,7 @@
       "East US",
       "North Europe",
       "South Central US",
+      "Southeast Asia",
       "West Central US",
       "West Europe",
       "West US",
@@ -31,6 +32,7 @@
       "East US",
       "North Europe",
       "South Central US",
+      "Southeast Asia",
       "West Central US",
       "West Europe",
       "West US",
@@ -51,6 +53,7 @@
       "East US",
       "North Europe",
       "South Central US",
+      "Southeast Asia",
       "West Central US",
       "West Europe",
       "West US",
@@ -71,6 +74,7 @@
       "East US",
       "North Europe",
       "South Central US",
+      "Southeast Asia",
       "West Central US",
       "West Europe",
       "West US",
@@ -81,7 +85,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations",
+    "resourceType": "Locations",
     "apiVersions": [
       "2019-01-01"
     ],
@@ -100,6 +104,7 @@
       "East US",
       "North Europe",
       "South Central US",
+      "Southeast Asia",
       "West Central US",
       "West Europe",
       "West US",
@@ -114,6 +119,15 @@
     "apiVersions": [
       "2022-02-17-preview",
       "2021-02-04-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2019-01-01"
     ],
     "locations": [],
     "zoneMappings": null

@@ -8,9 +8,11 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "East US",
       "Norway East",
       "South Central US",
+      "Southeast Asia",
       "Sweden Central",
       "West US",
       "West US 2",
@@ -23,18 +25,83 @@
     "resourceType": "contactProfiles",
     "apiVersions": [
       "2022-03-01",
-      "2021-04-04-preview",
-      "2020-09-01-preview"
+      "2021-04-04-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "East US",
       "Norway East",
       "South Central US",
+      "Southeast Asia",
       "Sweden Central",
       "West US",
       "West US 2",
       "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "edgeSites",
+    "apiVersions": [
+      "2022-06-01-preview",
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Brazil South",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "globalCommunicationsSites",
+    "apiVersions": [
+      "2022-06-01-preview",
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Brazil South",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "groundStations",
+    "apiVersions": [
+      "2022-06-01-preview",
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Brazil South",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "l2Connections",
+    "apiVersions": [
+      "2022-06-01-preview",
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Brazil South",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "l3Connections",
+    "apiVersions": [
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Brazil South",
+      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -46,8 +113,10 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Norway East",
       "South Central US",
+      "Southeast Asia",
       "Sweden Central",
       "West US",
       "West US 2",
@@ -63,9 +132,11 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "East US",
       "Norway East",
       "South Central US",
+      "Southeast Asia",
       "Sweden Central",
       "West US",
       "West US 2",
@@ -78,14 +149,15 @@
     "resourceType": "operations",
     "apiVersions": [
       "2022-03-01",
-      "2021-04-04-preview",
-      "2020-09-01-preview"
+      "2021-04-04-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "East US",
       "Norway East",
       "South Central US",
+      "Southeast Asia",
       "Sweden Central",
       "West US",
       "West US 2",
@@ -95,17 +167,30 @@
   },
   {
     "aliases": null,
+    "resourceType": "orbitalGateways",
+    "apiVersions": [
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Brazil South",
+      "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "spacecrafts",
     "apiVersions": [
       "2022-03-01",
-      "2021-04-04-preview",
-      "2020-09-01-preview"
+      "2021-04-04-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "East US",
       "Norway East",
       "South Central US",
+      "Southeast Asia",
       "Sweden Central",
       "West US",
       "West US 2",
@@ -118,14 +203,15 @@
     "resourceType": "spacecrafts/contacts",
     "apiVersions": [
       "2022-03-01",
-      "2021-04-04-preview",
-      "2020-09-01-preview"
+      "2021-04-04-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "East US",
       "Norway East",
       "South Central US",
+      "Southeast Asia",
       "Sweden Central",
       "West US",
       "West US 2",

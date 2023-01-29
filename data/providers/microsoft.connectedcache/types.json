@@ -25,5 +25,63 @@
       "West US"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ispCustomers",
+    "apiVersions": [
+      "2022-03-21-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "North Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "ispCustomers/ispCacheNodes",
+    "apiVersions": [
+      "2022-03-21-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "North Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-03-21-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2022-03-21-preview"
+    ],
+    "locations": [
+      "Central US EUAP",
+      "Korea Central",
+      "North Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2022-03-21-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -70,6 +71,7 @@
     "aliases": null,
     "resourceType": "deletedAccounts",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -126,6 +128,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -154,6 +157,7 @@
     "aliases": null,
     "resourceType": "locations/asyncoperations",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -222,6 +226,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -285,6 +290,7 @@
     "aliases": null,
     "resourceType": "locations/deletedAccounts",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -341,6 +347,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -406,6 +413,7 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01"
     ],
@@ -467,6 +475,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -531,6 +540,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -735,6 +745,7 @@
     },
     "resourceType": "storageAccounts",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -987,6 +998,10 @@
         ]
       },
       {
+        "location": "West US",
+        "zones": []
+      },
+      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -1079,6 +1094,7 @@
     },
     "resourceType": "storageAccounts/blobServices",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -1154,6 +1170,7 @@
     },
     "resourceType": "storageAccounts/encryptionScopes",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -1256,6 +1273,7 @@
     },
     "resourceType": "storageAccounts/fileServices",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -1321,6 +1339,7 @@
     "aliases": null,
     "resourceType": "storageAccounts/listAccountSas",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -1386,6 +1405,7 @@
     "aliases": null,
     "resourceType": "storageAccounts/listServiceSas",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -1476,6 +1496,7 @@
     },
     "resourceType": "storageAccounts/queueServices",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -1635,6 +1656,7 @@
     "aliases": null,
     "resourceType": "storageAccounts/storageTaskAssignments",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01"
     ],
@@ -1708,6 +1730,7 @@
     },
     "resourceType": "storageAccounts/tableServices",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",
@@ -1773,6 +1796,7 @@
     "aliases": null,
     "resourceType": "storageTasks",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01"
     ],
@@ -1821,6 +1845,7 @@
     "aliases": null,
     "resourceType": "usages",
     "apiVersions": [
+      "2022-09-01",
       "2022-05-01",
       "2021-09-01",
       "2021-08-01",

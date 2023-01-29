@@ -3,7 +3,9 @@
     "aliases": null,
     "resourceType": "checknameavailability",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-03-01-preview",
+      "2022-02-01-privatepreview",
       "2021-11-01-preview",
       "2021-02-01-preview",
       "2020-07-01-preview"
@@ -15,7 +17,9 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-03-01-preview",
+      "2022-02-01-privatepreview",
       "2021-11-01-preview",
       "2021-02-01-preview",
       "2020-07-01-preview"
@@ -27,12 +31,16 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-03-01-preview",
+      "2022-02-01-privatepreview",
       "2021-11-01-preview",
       "2021-02-01-preview",
       "2020-07-01-preview"
     ],
     "locations": [
+      "Central US EUAP",
+      "East US 2 EUAP",
       "North Europe",
       "South Central US",
       "West Central US",
@@ -45,7 +53,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01-preview",
       "2022-03-01-preview",
+      "2022-02-01-privatepreview",
       "2021-11-01-preview",
       "2021-02-01-preview",
       "2020-07-01-preview"
@@ -62,7 +72,8 @@
     "locations": [
       "North Europe",
       "West Central US",
-      "West Europe"
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   }

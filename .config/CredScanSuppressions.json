@@ -4,6 +4,10 @@
         {
             "placeholder": "$CREDENTIAL_PLACEHOLDER$",
             "_justification": "This is dummy credential used as a placeholder for unit testing."
+        },
+        {
+            "placeholder": "ffffffff-ffff-ffff-ffff-ffffffffffff",
+            "_justification": "This is a dummy Azure id for tenants or subscriptions used in unit testing."
         }
     ]
 }

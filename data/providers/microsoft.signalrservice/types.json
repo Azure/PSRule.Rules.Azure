@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-02-01",
       "2021-10-01",
       "2021-09-01-preview",
@@ -20,6 +21,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-02-01",
       "2021-10-01",
       "2021-09-01-preview",
@@ -48,6 +50,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -68,6 +71,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-02-01",
       "2021-10-01",
       "2021-09-01-preview",
@@ -96,6 +100,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -116,6 +121,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-02-01",
       "2021-10-01",
       "2021-09-01-preview",
@@ -144,6 +150,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -164,6 +171,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-02-01",
       "2021-10-01",
       "2021-09-01-preview",
@@ -192,6 +200,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -212,6 +221,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-02-01",
       "2021-10-01",
       "2021-09-01-preview",
@@ -323,6 +333,7 @@
     },
     "resourceType": "SignalR",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-02-01",
       "2021-10-01",
       "2021-09-01-preview",
@@ -351,6 +362,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -371,6 +383,7 @@
     "aliases": null,
     "resourceType": "SignalR/eventGridFilters",
     "apiVersions": [
+      "2022-08-01-preview",
       "2022-02-01",
       "2021-10-01",
       "2021-09-01-preview",
@@ -399,6 +412,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -503,6 +517,7 @@
     },
     "resourceType": "WebPubSub",
     "apiVersions": [
+      "2022-08-01-preview",
       "2021-10-01",
       "2021-09-01-preview",
       "2021-06-01-preview",
@@ -527,6 +542,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "Southeast Asia",

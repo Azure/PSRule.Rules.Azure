@@ -3,6 +3,10 @@
     "aliases": null,
     "resourceType": "calculateMigrationCost",
     "apiVersions": [
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2021-07-01-privatepreview",
       "2021-07-01-beta"
     ],
@@ -13,6 +17,10 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2021-07-01-privatepreview",
       "2021-07-01-beta"
     ],
@@ -23,6 +31,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-11-01-beta",
+      "2022-11-01",
       "2021-07-01-privatepreview",
       "2021-07-01-beta"
     ],
@@ -31,8 +41,24 @@
   },
   {
     "aliases": null,
+    "resourceType": "reservationOrderAliases",
+    "apiVersions": [
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "savingsPlanOrderAliases",
     "apiVersions": [
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2021-07-01-privatepreview",
       "2021-07-01-beta"
     ],
@@ -43,6 +69,10 @@
     "aliases": null,
     "resourceType": "savingsPlanOrders",
     "apiVersions": [
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2021-07-01-privatepreview",
       "2021-07-01-beta"
     ],
@@ -53,6 +83,10 @@
     "aliases": null,
     "resourceType": "savingsPlanOrders/savingsPlans",
     "apiVersions": [
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2021-07-01-privatepreview",
       "2021-07-01-beta"
     ],
@@ -63,6 +97,10 @@
     "aliases": null,
     "resourceType": "savingsPlans",
     "apiVersions": [
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2021-07-01-privatepreview",
       "2021-07-01-beta"
     ],
@@ -73,6 +111,10 @@
     "aliases": null,
     "resourceType": "validate",
     "apiVersions": [
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
       "2021-07-01-privatepreview",
       "2021-07-01-beta"
     ],

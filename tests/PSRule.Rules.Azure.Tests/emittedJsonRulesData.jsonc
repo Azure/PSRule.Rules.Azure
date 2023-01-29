@@ -4,7 +4,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.711b248c2a36",
+      "name": "Azure.Policy.34672cb6f738",
       "tags": {
         "Azure.Policy/category": "Storage"
       },
@@ -23,10 +23,6 @@
       "condition": {
         "allOf": [
           {
-            "equals": "Microsoft.Storage/storageAccounts",
-            "type": "."
-          },
-          {
             "field": "properties.minimumTlsVersion",
             "notEquals": "TLS1_2"
           }
@@ -39,7 +35,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.ed3cdd1a0b36",
+      "name": "Azure.Policy.3314b9415338",
       "tags": {
         "Azure.Policy/category": "Monitoring"
       },
@@ -57,10 +53,6 @@
       ],
       "where": {
         "allOf": [
-          {
-            "equals": "Microsoft.Compute/virtualMachines",
-            "type": "."
-          },
           {
             "anyOf": [
               {
@@ -344,7 +336,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.96bdb80b8c7b",
+      "name": "Azure.Policy.3a83b926fd9e",
       "tags": {
         "Azure.Policy/category": "App Service"
       },
@@ -362,10 +354,6 @@
       ],
       "where": {
         "allOf": [
-          {
-            "equals": "Microsoft.Web/sites",
-            "type": "."
-          },
           {
             "field": "kind",
             "contains": "functionapp"
@@ -408,7 +396,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.e561b2d6f013",
+      "name": "Azure.Policy.86912b6a2faa",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -419,10 +407,6 @@
       ],
       "condition": {
         "allOf": [
-          {
-            "equals": "Microsoft.Network/loadBalancers",
-            "type": "."
-          },
           {
             "greaterOrEquals": 1,
             "field": "properties.loadBalancingRules[?@.properties.disableOutboundSnat == False]"
@@ -436,7 +420,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.ae2444286cb0",
+      "name": "Azure.Policy.ec67e4794000",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -447,10 +431,6 @@
       ],
       "condition": {
         "allOf": [
-          {
-            "equals": "Microsoft.Network/loadBalancers",
-            "type": "."
-          },
           {
             "greaterOrEquals": 1,
             "field": "properties.loadBalancingRules[*]"
@@ -464,7 +444,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.57d149e93fed",
+      "name": "Azure.Policy.43c78c4c36bf",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -475,10 +455,6 @@
       ],
       "condition": {
         "allOf": [
-          {
-            "equals": "Microsoft.Network/networkSecurityGroups",
-            "type": "."
-          },
           {
             "field": "properties.securityRules[?@.properties.description == 'My unique description']",
             "count": 1
@@ -624,7 +600,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.dcf8e21e0a26",
+      "name": "Azure.Policy.be8dd5f1c412",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -635,10 +611,6 @@
       ],
       "condition": {
         "allOf": [
-          {
-            "equals": "Microsoft.Network/privateEndpoints",
-            "type": "."
-          },
           {
             "field": "properties.subnet.id",
             "notContains": "pls"

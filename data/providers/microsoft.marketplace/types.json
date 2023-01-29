@@ -10,6 +10,39 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-06-01",
+      "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/edgeZones",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-06-01",
+      "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/edgeZones/products",
+    "apiVersions": [
+      "2021-10-01",
+      "2021-06-01",
+      "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "macc",
     "apiVersions": [
       "2018-08-01-beta"
@@ -95,7 +128,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
+      "2022-02-02",
       "2021-12-01",
       "2018-03-01-beta"
     ],
@@ -125,6 +160,7 @@
     "aliases": null,
     "resourceType": "privateStores",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01",
@@ -137,6 +173,7 @@
     "aliases": null,
     "resourceType": "privateStores/AdminRequestApprovals",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01",
@@ -149,6 +186,7 @@
     "aliases": null,
     "resourceType": "privateStores/anyExistingOffersInTheCollections",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01"
     ],
     "locations": [],
@@ -158,6 +196,7 @@
     "aliases": null,
     "resourceType": "privateStores/billingAccounts",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01"
@@ -169,6 +208,7 @@
     "aliases": null,
     "resourceType": "privateStores/bulkCollectionsAction",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01"
@@ -180,6 +220,7 @@
     "aliases": null,
     "resourceType": "privateStores/collections",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01"
@@ -191,6 +232,7 @@
     "aliases": null,
     "resourceType": "privateStores/collections/approveAllItems",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01"
     ],
     "locations": [],
@@ -200,6 +242,7 @@
     "aliases": null,
     "resourceType": "privateStores/collections/disableApproveAllItems",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01"
     ],
     "locations": [],
@@ -209,6 +252,7 @@
     "aliases": null,
     "resourceType": "privateStores/collections/offers",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01"
@@ -220,7 +264,26 @@
     "aliases": null,
     "resourceType": "privateStores/collections/offers/upsertOfferWithMultiContext",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/collections/queryRules",
+    "apiVersions": [
+      "2022-09-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/collections/setRules",
+    "apiVersions": [
+      "2022-09-01"
     ],
     "locations": [],
     "zoneMappings": null
@@ -229,6 +292,7 @@
     "aliases": null,
     "resourceType": "privateStores/collections/transferOffers",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01"
@@ -240,6 +304,7 @@
     "aliases": null,
     "resourceType": "privateStores/collectionsToSubscriptionsMapping",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01"
@@ -251,6 +316,7 @@
     "aliases": null,
     "resourceType": "privateStores/fetchAllSubscriptionsInTenant",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01"
     ],
@@ -261,6 +327,7 @@
     "aliases": null,
     "resourceType": "privateStores/listNewPlansNotifications",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01"
     ],
@@ -271,6 +338,7 @@
     "aliases": null,
     "resourceType": "privateStores/listStopSellOffersPlansNotifications",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01"
     ],
@@ -281,6 +349,7 @@
     "aliases": null,
     "resourceType": "privateStores/listSubscriptionsContext",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01"
     ],
@@ -301,6 +370,7 @@
     "aliases": null,
     "resourceType": "privateStores/offers/acknowledgeNotification",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01",
@@ -313,6 +383,7 @@
     "aliases": null,
     "resourceType": "privateStores/queryApprovedPlans",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01"
@@ -324,6 +395,7 @@
     "aliases": null,
     "resourceType": "privateStores/queryNotificationsState",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01",
@@ -336,6 +408,7 @@
     "aliases": null,
     "resourceType": "privateStores/queryOffers",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01"
@@ -347,7 +420,17 @@
     "aliases": null,
     "resourceType": "privateStores/queryUserOffers",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateStores/queryUserRules",
+    "apiVersions": [
+      "2022-09-01"
     ],
     "locations": [],
     "zoneMappings": null
@@ -356,6 +439,7 @@
     "aliases": null,
     "resourceType": "privateStores/RequestApprovals",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01",
@@ -368,6 +452,7 @@
     "aliases": null,
     "resourceType": "privateStores/requestApprovals/query",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01",
@@ -380,6 +465,7 @@
     "aliases": null,
     "resourceType": "privateStores/requestApprovals/withdrawPlan",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-12-01",
       "2021-06-01",

@@ -95,6 +95,8 @@
     },
     "resourceType": "DomainServices",
     "apiVersions": [
+      "2022-12-01",
+      "2022-09-01",
       "2021-05-01",
       "2021-03-01",
       "2020-01-01",
@@ -146,6 +148,8 @@
     "aliases": null,
     "resourceType": "DomainServices/oucontainer",
     "apiVersions": [
+      "2022-12-01",
+      "2022-09-01",
       "2021-05-01",
       "2021-03-01",
       "2020-01-01",
@@ -196,6 +200,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-12-01",
+      "2022-09-01",
       "2021-05-01",
       "2021-03-01",
       "2020-01-01",
@@ -247,6 +253,8 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2022-12-01",
+      "2022-09-01",
       "2021-05-01",
       "2021-03-01",
       "2020-01-01",
@@ -298,6 +306,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-12-01",
+      "2022-09-01",
       "2021-05-01",
       "2021-03-01",
       "2020-01-01",

@@ -68,6 +68,7 @@
     "resourceType": "Locations",
     "apiVersions": [
       "2022-07-01-preview",
+      "2022-03-29-preview",
       "2021-10-01-preview",
       "2020-08-20-preview",
       "2020-08-20"
@@ -80,6 +81,7 @@
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
       "2022-07-01-preview",
+      "2022-03-29-preview",
       "2021-10-01-preview",
       "2020-08-20-preview",
       "2020-08-20"
@@ -94,6 +96,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2022-07-01-preview",
+      "2022-03-29-preview",
       "2021-10-01-preview",
       "2020-08-20-preview",
       "2020-08-20"

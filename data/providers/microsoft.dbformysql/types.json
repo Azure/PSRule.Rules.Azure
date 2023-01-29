@@ -164,6 +164,7 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2022-09-30-privatepreview",
       "2022-06-01-privatepreview",
       "2021-12-01-preview",
       "2021-05-01-preview",
@@ -357,6 +358,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US",
+        "zones": []
       },
       {
         "location": "West US 2",
@@ -633,6 +638,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2022-09-30-privatepreview",
       "2022-06-01-privatepreview",
       "2021-12-01-preview",
       "2021-05-01-preview",
@@ -684,6 +690,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2022-09-30-privatepreview",
       "2022-06-01-privatepreview",
       "2021-12-01-preview",
       "2021-05-01-preview",
@@ -733,6 +740,7 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2022-09-30-privatepreview",
       "2022-06-01-privatepreview",
       "2021-12-01-preview",
       "2021-05-01-preview",

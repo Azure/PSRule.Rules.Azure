@@ -6,6 +6,7 @@
     "resourceType": "attestationProviders",
     "apiVersions": [
       "2021-06-01-preview",
+      "2021-06-01",
       "2020-10-01",
       "2018-09-01-preview",
       "2018-09-01"
@@ -36,6 +37,7 @@
     "resourceType": "defaultProviders",
     "apiVersions": [
       "2021-06-01-preview",
+      "2021-06-01",
       "2020-10-01",
       "2018-09-01-preview",
       "2018-09-01"
@@ -66,6 +68,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2021-06-01-preview",
+      "2021-06-01",
       "2020-10-01",
       "2018-09-01-preview",
       "2018-09-01"
@@ -78,6 +81,7 @@
     "resourceType": "locations/defaultProvider",
     "apiVersions": [
       "2021-06-01-preview",
+      "2021-06-01",
       "2020-10-01",
       "2018-09-01-preview",
       "2018-09-01"
@@ -108,6 +112,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2021-06-01-preview",
+      "2021-06-01",
       "2020-10-01",
       "2018-09-01-preview",
       "2018-09-01"

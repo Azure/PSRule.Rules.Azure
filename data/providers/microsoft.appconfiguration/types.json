@@ -4,6 +4,7 @@
     "resourceType": "checkNameAvailability",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -39,6 +40,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -82,6 +84,7 @@
     "resourceType": "configurationStores",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -117,6 +120,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -133,6 +137,7 @@
     "resourceType": "configurationStores/eventGridFilters",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -168,6 +173,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -193,6 +199,7 @@
     "resourceType": "configurationStores/keyValues",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview"
@@ -224,6 +231,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -242,9 +250,41 @@
       "2022-03-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
       "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
       "West Central US",
-      "West US"
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -253,6 +293,7 @@
     "resourceType": "deletedConfigurationStores",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview"
     ],
     "locations": [
@@ -282,6 +323,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -298,6 +340,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -333,6 +376,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -349,6 +393,7 @@
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview"
     ],
     "locations": [
@@ -378,6 +423,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -394,6 +440,7 @@
     "resourceType": "locations/deletedConfigurationStores",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview"
     ],
     "locations": [
@@ -423,6 +470,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -439,6 +487,7 @@
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -474,6 +523,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -490,6 +540,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2022-05-01",
+      "2022-03-01-preview",
       "2021-10-01-preview",
       "2021-03-01-preview",
       "2020-07-01-preview",
@@ -525,6 +576,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",

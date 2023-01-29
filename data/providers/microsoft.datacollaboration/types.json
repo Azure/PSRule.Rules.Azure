@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "listinvitations",
     "apiVersions": [
+      "2022-05-04-preview",
       "2020-05-04-preview"
     ],
     "locations": [
@@ -23,6 +24,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-05-04-preview",
       "2020-05-04-preview"
     ],
     "locations": [
@@ -34,6 +36,7 @@
     "aliases": null,
     "resourceType": "locations/consumerInvitations",
     "apiVersions": [
+      "2022-05-04-preview",
       "2020-05-04-preview"
     ],
     "locations": [
@@ -54,6 +57,7 @@
     "aliases": null,
     "resourceType": "locations/consumerInvitations/reject",
     "apiVersions": [
+      "2022-05-04-preview",
       "2020-05-04-preview"
     ],
     "locations": [
@@ -74,6 +78,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-05-04-preview",
       "2020-05-04-preview"
     ],
     "locations": [
@@ -88,6 +93,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-05-04-preview",
       "2020-05-04-preview"
     ],
     "locations": [

@@ -57,6 +57,7 @@
       "South Africa North",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "UAE North",
       "UK South",
@@ -117,6 +118,7 @@
     "aliases": null,
     "resourceType": "locations/rmsOperationResults",
     "apiVersions": [
+      "2022-08-01",
       "2021-08-01",
       "2021-01-01",
       "2019-10-01-preview"
@@ -199,6 +201,7 @@
       "South Africa North",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "UAE North",
       "UK South",
@@ -227,6 +230,7 @@
     },
     "resourceType": "moveCollections",
     "apiVersions": [
+      "2022-08-01",
       "2021-08-01",
       "2021-01-01",
       "2019-10-01-preview"

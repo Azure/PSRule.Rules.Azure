@@ -1,0 +1,11 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2022-09-12-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

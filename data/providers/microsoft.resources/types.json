@@ -376,6 +376,7 @@
     "aliases": null,
     "resourceType": "deploymentStacks",
     "apiVersions": [
+      "2022-08-01-preview",
       "2021-05-01-preview"
     ],
     "locations": [
@@ -401,6 +402,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -423,6 +425,7 @@
     "aliases": null,
     "resourceType": "deploymentStacks/snapshots",
     "apiVersions": [
+      "2022-08-01-preview",
       "2021-05-01-preview"
     ],
     "locations": [
@@ -448,6 +451,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -579,6 +583,7 @@
     "aliases": null,
     "resourceType": "locations/deploymentStackOperationStatus",
     "apiVersions": [
+      "2022-08-01-preview",
       "2021-05-01-preview"
     ],
     "locations": [
@@ -604,6 +609,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -805,6 +811,15 @@
       "2015-11-01",
       "2015-01-01",
       "2014-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "snapshots",
+    "apiVersions": [
+      "2022-11-01-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -1172,6 +1187,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -1228,6 +1244,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -1274,6 +1291,15 @@
       "2015-11-01",
       "2015-01-01",
       "2014-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "validateResources",
+    "apiVersions": [
+      "2022-06-01"
     ],
     "locations": [],
     "zoneMappings": null

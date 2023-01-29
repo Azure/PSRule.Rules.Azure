@@ -24,8 +24,38 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.24.0-B0035 (pre-release)
+
+What's changed since pre-release v1.24.0-B0013:
+
+- General improvements:
+  - Added support for Bicep lambda functions by @BernieWhite.
+    [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
+    - Bicep `filter`, `map`, `reduce`, and `sort` are supported.
+    - Support for `flatten` was previously added in v1.23.0.
+  - Added optimization for policy type conditions by @BernieWhite.
+    [#1966](https://github.com/Azure/PSRule.Rules.Azure/issues/1966)
+- Engineering:
+  - Updated resource providers and policy aliases.
+    [#1736](https://github.com/Azure/PSRule.Rules.Azure/pull/1736)
+- Bug fixes:
+  - Fixed failed to expand nested deployment with runtime shallow parameter by @BernieWhite.
+    [#2004](https://github.com/Azure/PSRule.Rules.Azure/issues/2004)
+  - Fixed `apiVersion` comparison of `requestContext` by @BernieWhite.
+    [#1654](https://github.com/Azure/PSRule.Rules.Azure/issues/1654)
+  - Fixed simple cases for field type expressions by @BernieWhite.
+    [#1323](https://github.com/Azure/PSRule.Rules.Azure/issues/1323)
+
+## v1.24.0-B0013 (pre-release)
+
 What's changed since v1.23.0:
 
+- General improvements:
+  - Updated `Export-AzRuleData` to improve export performance by @BernieWhite.
+    [#1341](https://github.com/Azure/PSRule.Rules.Azure/issues/1341)
+    - Removed `Az.Resources` dependency.
+    - Added async threading for export concurrency.
+    - Improved performance by using automatic look up of API versions by using provider cache.
 - Engineering:
   - Bump PSRule to v2.7.0.
     [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
@@ -35,6 +65,9 @@ What's changed since v1.23.0:
     [#1903](https://github.com/Azure/PSRule.Rules.Azure/pull/1903)
   - Bump Pester to v5.4.0.
     [#1994](https://github.com/Azure/PSRule.Rules.Azure/pull/1994)
+- Bug fixes:
+  - Fixed `Export-AzRuleData` may not export all data if throttled by @BernieWhite.
+    [#1341](https://github.com/Azure/PSRule.Rules.Azure/issues/1341)
 
 ## v1.23.0
 

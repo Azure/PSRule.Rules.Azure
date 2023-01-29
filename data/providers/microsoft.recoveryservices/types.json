@@ -52,6 +52,12 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-01-01",
+      "2022-10-01",
+      "2022-09-30-preview",
+      "2022-09-10",
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -460,6 +466,12 @@
     "aliases": null,
     "resourceType": "locations/backupPreValidateProtection",
     "apiVersions": [
+      "2023-01-01",
+      "2022-10-01",
+      "2022-09-30-preview",
+      "2022-09-10",
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -519,6 +531,12 @@
     "aliases": null,
     "resourceType": "locations/backupStatus",
     "apiVersions": [
+      "2023-01-01",
+      "2022-10-01",
+      "2022-09-30-preview",
+      "2022-09-10",
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -579,6 +597,12 @@
     "aliases": null,
     "resourceType": "locations/backupValidateFeatures",
     "apiVersions": [
+      "2023-01-01",
+      "2022-10-01",
+      "2022-09-30-preview",
+      "2022-09-10",
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -638,6 +662,9 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-01-01",
+      "2022-10-01",
+      "2022-09-30-preview",
       "2022-01-31-preview"
     ],
     "locations": [
@@ -732,6 +759,12 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-01-01",
+      "2022-10-01",
+      "2022-09-30-preview",
+      "2022-09-10",
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -784,6 +817,12 @@
     "aliases": null,
     "resourceType": "replicationEligibilityResults",
     "apiVersions": [
+      "2023-01-01",
+      "2022-10-01",
+      "2022-09-30-preview",
+      "2022-09-10",
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -849,6 +888,11 @@
       "Microsoft.RecoveryServices/vaults/encryption.kekIdentity.useSystemAssignedIdentity": "properties.encryption.kekIdentity.useSystemAssignedIdentity",
       "Microsoft.RecoveryServices/vaults/encryption.keyVaultProperties": "properties.encryption.keyVaultProperties",
       "Microsoft.RecoveryServices/vaults/encryption.keyVaultProperties.keyUri": "properties.encryption.keyVaultProperties.keyUri",
+      "Microsoft.RecoveryServices/vaults/monitoringSettings": "properties.monitoringSettings",
+      "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings": "properties.monitoringSettings.azureMonitorAlertSettings",
+      "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures": "properties.monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures",
+      "Microsoft.RecoveryServices/vaults/monitoringSettings.classicAlertSettings": "properties.monitoringSettings.classicAlertSettings",
+      "Microsoft.RecoveryServices/vaults/monitoringSettings.classicAlertSettings.alertsForCriticalOperations": "properties.monitoringSettings.classicAlertSettings.alertsForCriticalOperations",
       "Microsoft.RecoveryServices/vaults/moveDetails": "properties.moveDetails",
       "Microsoft.RecoveryServices/vaults/moveDetails.completionTimeUtc": "properties.moveDetails.completionTimeUtc",
       "Microsoft.RecoveryServices/vaults/moveDetails.operationId": "properties.moveDetails.operationId",
@@ -864,6 +908,8 @@
       "Microsoft.RecoveryServices/vaults/privateEndpointConnections.privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
       "Microsoft.RecoveryServices/vaults/privateEndpointConnections.privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
       "Microsoft.RecoveryServices/vaults/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.RecoveryServices/vaults/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.RecoveryServices/vaults/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
       "Microsoft.RecoveryServices/vaults/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
       "Microsoft.RecoveryServices/vaults/privateEndpointConnections[*].location": "properties.privateEndpointConnections[*].location",
       "Microsoft.RecoveryServices/vaults/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
@@ -878,6 +924,13 @@
       "Microsoft.RecoveryServices/vaults/privateEndpointStateForBackup": "properties.privateEndpointStateForBackup",
       "Microsoft.RecoveryServices/vaults/privateEndpointStateForSiteRecovery": "properties.privateEndpointStateForSiteRecovery",
       "Microsoft.RecoveryServices/vaults/provisioningState": "properties.provisioningState",
+      "Microsoft.RecoveryServices/vaults/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.RecoveryServices/vaults/redundancySettings": "properties.redundancySettings",
+      "Microsoft.RecoveryServices/vaults/redundancySettings.crossRegionRestore": "properties.redundancySettings.crossRegionRestore",
+      "Microsoft.RecoveryServices/vaults/redundancySettings.standardTierStorageRedundancy": "properties.redundancySettings.standardTierStorageRedundancy",
+      "Microsoft.RecoveryServices/vaults/securitySettings": "properties.securitySettings",
+      "Microsoft.RecoveryServices/vaults/securitySettings.immutabilitySettings": "properties.securitySettings.immutabilitySettings",
+      "Microsoft.RecoveryServices/vaults/securitySettings.immutabilitySettings.state": "properties.securitySettings.immutabilitySettings.state",
       "Microsoft.RecoveryServices/vaults/sku": "sku",
       "Microsoft.RecoveryServices/vaults/sku.capacity": "sku.capacity",
       "Microsoft.RecoveryServices/vaults/sku.family": "sku.family",
@@ -897,6 +950,12 @@
     },
     "resourceType": "vaults",
     "apiVersions": [
+      "2023-01-01",
+      "2022-10-01",
+      "2022-09-30-preview",
+      "2022-09-10",
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-06-01-preview",
       "2022-05-01",
       "2022-04-01",
@@ -1326,6 +1385,7 @@
       "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/resourceGuardOperationRequests": "properties.resourceGuardOperationRequests",
       "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/resourceGuardOperationRequests[*]": "properties.resourceGuardOperationRequests[*]",
       "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/serverName": "properties.serverName",
+      "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/softDeleteRetentionPeriod": "properties.softDeleteRetentionPeriod",
       "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/sourceResourceId": "properties.sourceResourceId",
       "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/virtualMachineId": "properties.virtualMachineId",
       "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/workloadType": "properties.workloadType"
@@ -1855,6 +1915,18 @@
   },
   {
     "aliases": {
+      "Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/description": "properties.description",
+      "Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/lastUpdatedTime": "properties.lastUpdatedTime",
+      "Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/resourceGuardOperationDetails": "properties.resourceGuardOperationDetails",
+      "Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/resourceGuardOperationDetails[*]": "properties.resourceGuardOperationDetails[*]",
+      "Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/resourceGuardOperationDetails[*].defaultResourceRequest": "properties.resourceGuardOperationDetails[*].defaultResourceRequest",
+      "Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/resourceGuardOperationDetails[*].vaultCriticalOperation": "properties.resourceGuardOperationDetails[*].vaultCriticalOperation",
+      "Microsoft.RecoveryServices/vaults/backupResourceGuardProxies/resourceGuardResourceId": "properties.resourceGuardResourceId"
+    },
+    "resourceType": "vaults/backupresourceguardproxies"
+  },
+  {
+    "aliases": {
       "Microsoft.RecoveryServices/vaults/backupstorageconfig/crossRegionRestoreFlag": "properties.crossRegionRestoreFlag",
       "Microsoft.RecoveryServices/vaults/backupstorageconfig/dedupState": "properties.dedupState",
       "Microsoft.RecoveryServices/vaults/backupstorageconfig/storageModelType": "properties.storageModelType",
@@ -1879,6 +1951,18 @@
       "Microsoft.RecoveryServices/Vaults/extendedInformation/vaultExtendedInfo.integrityKey": "properties.integrityKey"
     },
     "resourceType": "vaults/extendedinformation"
+  },
+  {
+    "aliases": {
+      "Microsoft.RecoveryServices/vaults/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.RecoveryServices/vaults/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.RecoveryServices/vaults/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.RecoveryServices/vaults/privateEndpointConnections/privateLinkServiceConnectionState.actionRequired": "properties.privateLinkServiceConnectionState.actionRequired",
+      "Microsoft.RecoveryServices/vaults/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.RecoveryServices/vaults/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.RecoveryServices/vaults/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "vaults/privateendpointconnections"
   },
   {
     "aliases": {
@@ -1934,6 +2018,7 @@
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmName": "properties.providerSpecificDetails.targetVmName",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmSize": "properties.providerSpecificDetails.targetVmSize",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmTags": "properties.providerSpecificDetails.targetVmTags",
+      "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.testNetworkId": "properties.providerSpecificDetails.testNetworkId",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.vmwareMachineId": "properties.providerSpecificDetails.vmwareMachineId"
     },
     "resourceType": "vaults/replicationfabrics/replicationprotectioncontainers/replicationmigrationitems"

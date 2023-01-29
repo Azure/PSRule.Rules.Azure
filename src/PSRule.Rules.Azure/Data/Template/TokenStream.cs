@@ -156,10 +156,23 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             if (stream == null ||
                 stream.Count == 0 ||
-                stream.Current.Type != ExpressionTokenType.Property ||
+                stream.Current.Type != ExpressionTokenType.String ||
                 !string.Equals(stream.Current.Content, s, StringComparison.OrdinalIgnoreCase))
                 return false;
 
+            stream.Pop();
+            return true;
+        }
+
+        internal static bool ConsumeString(this TokenStream stream, out string s)
+        {
+            s = null;
+            if (stream == null ||
+                stream.Count == 0 ||
+                stream.Current.Type != ExpressionTokenType.String)
+                return false;
+
+            s = stream.Current.Content;
             stream.Pop();
             return true;
         }

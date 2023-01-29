@@ -6,6 +6,7 @@ using System.Collections;
 using System.Diagnostics;
 using System.Globalization;
 using System.IO;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
@@ -28,6 +29,7 @@ namespace PSRule.Rules.Azure
         private const string TRAIT_STRING = "String";
         private const string TRAIT_RESOURCE = "Resource";
         private const string TRAIT_SCOPE = "Scope";
+        private const string TRAIT_LAMBDA = "Lambda";
 
         #region Array and object
 
@@ -1763,7 +1765,7 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, System.Array.Empty<object>()));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, new object[] { "One", "Two", "Three" }));
-            Assert.Throws<ArgumentException>(() => Functions.Trim(context, new object[] { 2 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Trim(context, new object[] { 2 }));
         }
 
         [Fact]
@@ -1779,7 +1781,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.UniqueString(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.UniqueString(context, System.Array.Empty<object>()));
-            Assert.Throws<ArgumentException>(() => Functions.UniqueString(context, new object[] { "One", 2, "Three" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.UniqueString(context, new object[] { "One", 2, "Three" }));
         }
 
         [Fact]
@@ -1831,6 +1833,73 @@ namespace PSRule.Rules.Azure
         }
 
         #endregion String
+
+        #region Lambda
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_LAMBDA)]
+        public void Filter()
+        {
+            var context = GetContext();
+            var dogs = JArray.Parse(@"[{""name"":""Evie"",""age"":5,""interests"":[""Ball"",""Frisbee""]},{""name"":""Casper"",""age"":3,""interests"":[""Other dogs""]},{""name"":""Indy"",""age"":2,""interests"":[""Butter""]},{""name"":""Kira"",""age"":8,""interests"":[""Rubs""]}]");
+            var i = 0;
+
+            ExpressionFnOuter comparer = c => dogs[i++]["age"].Value<int>() >= 5;
+            var actual = Functions.Filter(context, new object[] { dogs, new LambdaExpressionFn("dog", comparer) }) as object[];
+            Assert.Equal(2, actual.Length);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_LAMBDA)]
+        public void Map()
+        {
+            var context = GetContext();
+            var dogs = JArray.Parse(@"[{""name"":""Evie"",""age"":5,""interests"":[""Ball"",""Frisbee""]},{""name"":""Casper"",""age"":3,""interests"":[""Other dogs""]},{""name"":""Indy"",""age"":2,""interests"":[""Butter""]},{""name"":""Kira"",""age"":8,""interests"":[""Rubs""]}]");
+            var i = 0;
+
+            ExpressionFnOuter mapper = c => dogs[i++]["name"].Value<string>();
+            var actual = Functions.Map(context, new object[] { dogs, new LambdaExpressionFn("dog", mapper) }) as object[];
+            Assert.Equal(4, actual.Length);
+            Assert.Equal("Evie", actual.OfType<string>().First());
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_LAMBDA)]
+        public void Reduce()
+        {
+            var context = GetContext();
+            var dogs = JArray.Parse(@"[{""name"":""Evie"",""age"":5,""interests"":[""Ball"",""Frisbee""]},{""name"":""Casper"",""age"":3,""interests"":[""Other dogs""]},{""name"":""Indy"",""age"":2,""interests"":[""Butter""]},{""name"":""Kira"",""age"":8,""interests"":[""Rubs""]}]");
+
+            ExpressionFnOuter reducer = c =>
+            {
+                c.TryLambdaVariable("cur", out int cur);
+                c.TryLambdaVariable("next", out JObject next);
+                cur += next["age"].Value<int>();
+                return cur;
+            };
+            var actual = (int)Functions.Reduce(context, new object[] { dogs, 0, new LambdaExpressionFn("cur", "next", reducer) });
+            Assert.Equal(18, actual);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_LAMBDA)]
+        public void Sort()
+        {
+            var context = GetContext();
+            var dogs = JArray.Parse(@"[{""name"":""Evie"",""age"":5,""interests"":[""Ball"",""Frisbee""]},{""name"":""Casper"",""age"":3,""interests"":[""Other dogs""]},{""name"":""Indy"",""age"":2,""interests"":[""Butter""]},{""name"":""Kira"",""age"":8,""interests"":[""Rubs""]}]");
+
+            ExpressionFnOuter sorter = c =>
+            {
+                c.TryLambdaVariable("a", out JObject a);
+                c.TryLambdaVariable("b", out JObject b);
+                return a["age"].Value<int>() < b["age"].Value<int>();
+            };
+            var actual = Functions.Sort(context, new object[] { dogs, new LambdaExpressionFn("a", "b", sorter) }) as object[];
+            Assert.Equal(4, actual.Length);
+            Assert.Equal("Kira", actual.OfType<JObject>().First()["name"].Value<string>());
+        }
+
+        #endregion Lambda
 
         #region Complex scenarios
 

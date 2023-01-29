@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "canMigrate",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview"
     ],
     "locations": [
@@ -35,6 +36,7 @@
     "aliases": null,
     "resourceType": "CdnWebApplicationFirewallManagedRuleSets",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -69,6 +71,7 @@
       "Microsoft.Cdn/CdnWebApplicationFirewallPolicies/endpointLinks": "properties.endpointLinks",
       "Microsoft.Cdn/CdnWebApplicationFirewallPolicies/endpointLinks[*]": "properties.endpointLinks[*]",
       "Microsoft.Cdn/CdnWebApplicationFirewallPolicies/endpointLinks[*].id": "properties.endpointLinks[*].id",
+      "Microsoft.Cdn/CdnWebApplicationFirewallPolicies/extendedProperties": "properties.extendedProperties",
       "Microsoft.Cdn/CdnWebApplicationFirewallPolicies/managedRules": "properties.managedRules",
       "Microsoft.Cdn/CdnWebApplicationFirewallPolicies/managedRules.managedRuleSets": "properties.managedRules.managedRuleSets",
       "Microsoft.Cdn/CdnWebApplicationFirewallPolicies/managedRules.managedRuleSets[*]": "properties.managedRules.managedRuleSets[*]",
@@ -119,6 +122,7 @@
     },
     "resourceType": "CdnWebApplicationFirewallPolicies",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -134,6 +138,7 @@
     "aliases": null,
     "resourceType": "checkEndpointNameAvailability",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01"
     ],
@@ -167,6 +172,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -212,6 +218,7 @@
     "aliases": null,
     "resourceType": "checkResourceUsage",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -255,6 +262,7 @@
     "aliases": null,
     "resourceType": "edgenodes",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -300,6 +308,7 @@
     "aliases": null,
     "resourceType": "migrate",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview"
     ],
     "locations": [
@@ -332,6 +341,7 @@
     "aliases": null,
     "resourceType": "operationresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -377,6 +387,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -422,6 +433,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/afdendpointresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -455,6 +467,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/afdendpointresults/routeresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -488,6 +501,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/customdomainresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -521,6 +535,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -566,6 +581,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults/customdomainresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -611,6 +627,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults/origingroupresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -647,6 +664,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults/originresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -692,6 +710,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/origingroupresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -725,6 +744,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/origingroupresults/originresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -758,6 +778,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/rulesetresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -791,6 +812,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/rulesetresults/ruleresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -824,6 +846,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/secretresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -857,6 +880,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/securitypoliciesresults",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -890,6 +914,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -933,6 +958,7 @@
   },
   {
     "aliases": {
+      "Microsoft.Cdn/profiles/extendedProperties": "properties.extendedProperties",
       "Microsoft.Cdn/profiles/frontdoorId": "properties.frontdoorId",
       "Microsoft.Cdn/profiles/identity": "properties.identity",
       "Microsoft.Cdn/profiles/identity.principalId": "properties.identity.principalId",
@@ -947,6 +973,7 @@
     },
     "resourceType": "profiles",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -1000,6 +1027,7 @@
     },
     "resourceType": "profiles/afdendpoints",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -1032,6 +1060,10 @@
   {
     "aliases": {
       "Microsoft.Cdn/profiles/afdEndpoints/routes/cacheConfiguration": "properties.cacheConfiguration",
+      "Microsoft.Cdn/profiles/afdEndpoints/routes/cacheConfiguration.compressionSettings": "properties.cacheConfiguration.compressionSettings",
+      "Microsoft.Cdn/profiles/afdEndpoints/routes/cacheConfiguration.compressionSettings.contentTypesToCompress": "properties.cacheConfiguration.compressionSettings.contentTypesToCompress",
+      "Microsoft.Cdn/profiles/afdEndpoints/routes/cacheConfiguration.compressionSettings.contentTypesToCompress[*]": "properties.cacheConfiguration.compressionSettings.contentTypesToCompress[*]",
+      "Microsoft.Cdn/profiles/afdEndpoints/routes/cacheConfiguration.compressionSettings.isCompressionEnabled": "properties.cacheConfiguration.compressionSettings.isCompressionEnabled",
       "Microsoft.Cdn/profiles/afdEndpoints/routes/cacheConfiguration.queryParameters": "properties.cacheConfiguration.queryParameters",
       "Microsoft.Cdn/profiles/afdEndpoints/routes/cacheConfiguration.queryStringCachingBehavior": "properties.cacheConfiguration.queryStringCachingBehavior",
       "Microsoft.Cdn/profiles/afdEndpoints/routes/compressionSettings": "properties.compressionSettings",
@@ -1063,6 +1095,7 @@
     },
     "resourceType": "profiles/afdendpoints/routes",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -1098,6 +1131,7 @@
       "Microsoft.Cdn/profiles/customDomains/azureDnsZone.id": "properties.azureDnsZone.id",
       "Microsoft.Cdn/profiles/customDomains/deploymentStatus": "properties.deploymentStatus",
       "Microsoft.Cdn/profiles/customDomains/domainValidationState": "properties.domainValidationState",
+      "Microsoft.Cdn/profiles/customDomains/extendedProperties": "properties.extendedProperties",
       "Microsoft.Cdn/profiles/customDomains/hostName": "properties.hostName",
       "Microsoft.Cdn/profiles/customDomains/preValidatedCustomDomainResourceId": "properties.preValidatedCustomDomainResourceId",
       "Microsoft.Cdn/profiles/customDomains/preValidatedCustomDomainResourceId.id": "properties.preValidatedCustomDomainResourceId.id",
@@ -1114,6 +1148,7 @@
     },
     "resourceType": "profiles/customdomains",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -1170,6 +1205,7 @@
       "Microsoft.Cdn/profiles/endpoints/customDomains[*].customHttpsProvisioningState": "properties.customDomains[*].properties.customHttpsProvisioningState",
       "Microsoft.Cdn/profiles/endpoints/customDomains[*].customHttpsProvisioningSubstate": "properties.customDomains[*].properties.customHttpsProvisioningSubstate",
       "Microsoft.Cdn/profiles/endpoints/customDomains[*].hostName": "properties.customDomains[*].properties.hostName",
+      "Microsoft.Cdn/profiles/endpoints/customDomains[*].name": "properties.customDomains[*].name",
       "Microsoft.Cdn/profiles/endpoints/customDomains[*].provisioningState": "properties.customDomains[*].properties.provisioningState",
       "Microsoft.Cdn/profiles/endpoints/customDomains[*].resourceState": "properties.customDomains[*].properties.resourceState",
       "Microsoft.Cdn/profiles/endpoints/customDomains[*].validationData": "properties.customDomains[*].properties.validationData",
@@ -1511,6 +1547,7 @@
     },
     "resourceType": "profiles/endpoints",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -1558,6 +1595,7 @@
     },
     "resourceType": "profiles/endpoints/customdomains",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -1622,6 +1660,7 @@
     },
     "resourceType": "profiles/endpoints/origingroups",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -1674,6 +1713,7 @@
     },
     "resourceType": "profiles/endpoints/origins",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -1741,6 +1781,7 @@
     },
     "resourceType": "profiles/origingroups",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -1795,6 +1836,7 @@
     },
     "resourceType": "profiles/origingroups/origins",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -1828,6 +1870,7 @@
     "aliases": null,
     "resourceType": "profiles/rulesets",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -2111,6 +2154,7 @@
     },
     "resourceType": "profiles/rulesets/rules",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -2169,6 +2213,7 @@
     },
     "resourceType": "profiles/secrets",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -2219,6 +2264,7 @@
     },
     "resourceType": "profiles/securitypolicies",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"
@@ -2252,6 +2298,7 @@
     "aliases": null,
     "resourceType": "validateProbe",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01",
@@ -2294,6 +2341,7 @@
     "aliases": null,
     "resourceType": "validateSecret",
     "apiVersions": [
+      "2022-11-01-preview",
       "2022-05-01-preview",
       "2021-06-01",
       "2020-09-01"

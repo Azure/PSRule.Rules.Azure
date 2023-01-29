@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using PSRule.Rules.Azure.Data.Template;
@@ -6,6 +6,9 @@ using Xunit;
 
 namespace PSRule.Rules.Azure
 {
+    /// <summary>
+    /// Unit tests for <see cref="ExpressionParser"/>.
+    /// </summary>
     public sealed class ExpressionParserTests
     {
         [Fact]

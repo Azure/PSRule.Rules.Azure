@@ -52,6 +52,7 @@ namespace PSRule.Rules.Azure
         private const string PROPERTY_RESOURCES = "resources";
         private const string PROPERTY_NAME = "name";
         private const string PROPERTY_TYPE = "type";
+        private const string PROPERTY_FIELD = "field";
         private const string TARGETINFO_KEY = "_PSRule";
         private const string TARGETINFO_SOURCE = "source";
         private const string TARGETINFO_FILE = "file";
@@ -145,6 +146,41 @@ namespace PSRule.Rules.Azure
             return o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out _);
         }
 
+        /// <summary>
+        /// Determine if the token is a value.
+        /// </summary>
+        internal static bool HasValue(this JToken o)
+        {
+            return o.Type == JTokenType.String ||
+                o.Type == JTokenType.Integer ||
+                o.Type == JTokenType.Object ||
+                o.Type == JTokenType.Array ||
+                o.Type == JTokenType.Boolean ||
+                o.Type == JTokenType.Bytes ||
+                o.Type == JTokenType.Date ||
+                o.Type == JTokenType.Float ||
+                o.Type == JTokenType.Guid ||
+                o.Type == JTokenType.TimeSpan ||
+                o.Type == JTokenType.Uri;
+        }
+
+        /// <summary>
+        /// Add items to the array.
+        /// </summary>
+        /// <param name="o">The <seealso cref="JArray"/> to add items to.</param>
+        /// <param name="items">A set of items to add.</param>
+        internal static void AddRange(this JArray o, IEnumerable<JToken> items)
+        {
+            foreach (var item in items)
+                o.Add(item);
+        }
+
+        internal static IEnumerable<JObject> GetPeerConditionByField(this JObject o, string field)
+        {
+            return o.BeforeSelf().OfType<JObject>().Where(peer => peer.TryGetProperty(PROPERTY_FIELD, out var peerField) &&
+                string.Equals(field, peerField, StringComparison.OrdinalIgnoreCase));
+        }
+
         internal static bool TryGetProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken
         {
             value = null;
@@ -174,6 +210,13 @@ namespace PSRule.Rules.Azure
 
             value = property.Value.Value<string>();
             return true;
+        }
+
+        internal static void ReplaceProperty<TValue>(this JObject o, string propertyName, TValue value) where TValue : JToken
+        {
+            var p = o.Property(propertyName, StringComparison.OrdinalIgnoreCase);
+            if (p != null)
+                p.Value = value;
         }
 
         internal static bool TryRenameProperty(this JProperty property, string oldName, string newName)

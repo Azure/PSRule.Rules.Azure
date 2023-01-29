@@ -108,5 +108,14 @@
       "West US 2"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "plannedQuotas",
+    "apiVersions": [
+      "2022-08-22-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]

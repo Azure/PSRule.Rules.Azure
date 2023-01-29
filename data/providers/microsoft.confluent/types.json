@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "agreements",
     "apiVersions": [
+      "2022-10-07-preview",
       "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
@@ -18,6 +19,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-10-07-preview",
       "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
@@ -33,6 +35,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-10-07-preview",
       "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
@@ -48,6 +51,7 @@
     "aliases": null,
     "resourceType": "locations/OperationStatuses",
     "apiVersions": [
+      "2022-10-07-preview",
       "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
@@ -83,6 +87,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-10-07-preview",
       "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
@@ -98,6 +103,7 @@
     "aliases": null,
     "resourceType": "organizations",
     "apiVersions": [
+      "2022-10-07-preview",
       "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",
@@ -131,6 +137,7 @@
     "aliases": null,
     "resourceType": "validations",
     "apiVersions": [
+      "2022-10-07-preview",
       "2022-07-21-preview",
       "2022-04-10-preview",
       "2021-12-01",

@@ -7,5 +7,41 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationsStatus",
+    "apiVersions": [
+      "2021-03-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "quotaRequests",
+    "apiVersions": [
+      "2021-03-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "quotas",
+    "apiVersions": [
+      "2021-03-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "usages",
+    "apiVersions": [
+      "2021-03-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]
