@@ -1,0 +1,98 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.13.1.58284",
+      "templateHash": "15169255149500185367"
+    }
+  },
+  "parameters": {
+    "arrayToTest": {
+      "type": "array",
+      "defaultValue": [
+        [
+          "one",
+          "two"
+        ],
+        [
+          "three"
+        ],
+        [
+          "four",
+          "five"
+        ]
+      ]
+    }
+  },
+  "variables": {
+    "dogs": [
+      {
+        "name": "Evie",
+        "age": 5,
+        "interests": [
+          "Ball",
+          "Frisbee"
+        ]
+      },
+      {
+        "name": "Casper",
+        "age": 3,
+        "interests": [
+          "Other dogs"
+        ]
+      },
+      {
+        "name": "Indy",
+        "age": 2,
+        "interests": [
+          "Butter"
+        ]
+      },
+      {
+        "name": "Kira",
+        "age": 8,
+        "interests": [
+          "Rubs"
+        ]
+      }
+    ],
+    "ages": "[map(variables('dogs'), lambda('dog', lambdaVariables('dog').age))]"
+  },
+  "resources": [],
+  "outputs": {
+    "arrayOutput": {
+      "type": "array",
+      "value": "[flatten(parameters('arrayToTest'))]"
+    },
+    "oldDogs": {
+      "type": "array",
+      "value": "[filter(variables('dogs'), lambda('dog', greaterOrEquals(lambdaVariables('dog').age, 5)))]"
+    },
+    "dogNames": {
+      "type": "array",
+      "value": "[map(variables('dogs'), lambda('dog', lambdaVariables('dog').name))]"
+    },
+    "sayHi": {
+      "type": "array",
+      "value": "[map(variables('dogs'), lambda('dog', format('Hello {0}!', lambdaVariables('dog').name)))]"
+    },
+    "mapObject": {
+      "type": "array",
+      "value": "[map(range(0, length(variables('dogs'))), lambda('i', createObject('i', lambdaVariables('i'), 'dog', variables('dogs')[lambdaVariables('i')].name, 'greeting', format('Ahoy, {0}!', variables('dogs')[lambdaVariables('i')].name))))]"
+    },
+    "totalAge": {
+      "type": "int",
+      "value": "[reduce(variables('ages'), 0, lambda('cur', 'next', add(lambdaVariables('cur'), lambdaVariables('next'))))]"
+    },
+    "totalAgeAdd1": {
+      "type": "int",
+      "value": "[reduce(variables('ages'), 1, lambda('cur', 'next', add(lambdaVariables('cur'), lambdaVariables('next'))))]"
+    },
+    "dogsByAge": {
+      "type": "array",
+      "value": "[sort(variables('dogs'), lambda('a', 'b', less(lambdaVariables('a').age, lambdaVariables('b').age)))]"
+    }
+  }
+}

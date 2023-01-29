@@ -26,6 +26,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.24.0-B0013:
 
+- General improvements:
+  - Added support for Bicep lambda functions by @BernieWhite.
+    [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
+    - Bicep `filter`, `map`, `reduce`, and `sort` are supported.
+    - Support for `flatten` was previously added in v1.23.0.
 - Engineering:
   - Updated resource providers and policy aliases.
     [#1736](https://github.com/Azure/PSRule.Rules.Azure/pull/1736)

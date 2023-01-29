@@ -153,6 +153,14 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("uri", Uri),
             new FunctionDescriptor("uriComponent", UriComponent),
             new FunctionDescriptor("uriComponentToString", UriComponentToString),
+
+            // Lambda
+            new FunctionDescriptor("filter", Filter, delayBinding: true),
+            new FunctionDescriptor("map", Map, delayBinding: true),
+            new FunctionDescriptor("reduce", Reduce, delayBinding: true),
+            new FunctionDescriptor("sort", Sort, delayBinding: true),
+            new FunctionDescriptor("lambda", Lambda, delayBinding: true),
+            new FunctionDescriptor("lambdaVariables", LambdaVariables, delayBinding: true),
         };
 
         /// <summary>
@@ -359,7 +367,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// flatten(arrayToFlatten)
         /// </summary>
         /// <remarks>
-        /// https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-array#flatten
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-array#flatten"/>.
         /// </remarks>
         internal static object Flatten(ITemplateContext context, object[] args)
         {
@@ -1803,6 +1811,126 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         #endregion String
+
+        #region Lambda
+
+        /// <summary>
+        /// filter(inputArray, lambda expression)
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-lambda#filter"/>.
+        /// </remarks>
+        internal static object Filter(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw ArgumentsOutOfRange(nameof(Filter), args);
+
+            args[0] = GetExpression(context, args[0]);
+            if (!ExpressionHelpers.TryArray(args[0], out var inputArray))
+                throw ArgumentFormatInvalid(nameof(Filter));
+
+            args[1] = GetExpression(context, args[1]);
+            if (args[1] is not LambdaExpressionFn lambda)
+                throw ArgumentFormatInvalid(nameof(Filter));
+
+            return lambda.Filter(context, inputArray.OfType<object>().ToArray());
+        }
+
+        /// <summary>
+        /// map(inputArray, lambda expression)
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-lambda#map"/>.
+        /// </remarks>
+        internal static object Map(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw ArgumentsOutOfRange(nameof(Map), args);
+
+            args[0] = GetExpression(context, args[0]);
+            if (!ExpressionHelpers.TryArray(args[0], out var inputArray))
+                throw ArgumentFormatInvalid(nameof(Map));
+
+            args[1] = GetExpression(context, args[1]);
+            if (args[1] is not LambdaExpressionFn lambda)
+                throw ArgumentFormatInvalid(nameof(Map));
+
+            return lambda.Map(context, inputArray.OfType<object>().ToArray());
+        }
+
+        /// <summary>
+        /// reduce(inputArray, initialValue, lambda expression)
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-lambda#reduce"/>.
+        /// </remarks>
+        internal static object Reduce(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 3)
+                throw ArgumentsOutOfRange(nameof(Reduce), args);
+
+            args[0] = GetExpression(context, args[0]);
+            if (!ExpressionHelpers.TryArray(args[0], out var inputArray))
+                throw ArgumentFormatInvalid(nameof(Reduce));
+
+            var initialValue = GetExpression(context, args[1]);
+            args[2] = GetExpression(context, args[2]);
+            if (args[2] is not LambdaExpressionFn lambda)
+                throw ArgumentFormatInvalid(nameof(Reduce));
+
+            return lambda.Reduce(context, inputArray.OfType<object>().ToArray(), initialValue);
+        }
+
+        /// <summary>
+        /// sort(inputArray, lambda expression)
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-lambda#sort"/>.
+        /// </remarks>
+        internal static object Sort(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw ArgumentsOutOfRange(nameof(Sort), args);
+
+            args[0] = GetExpression(context, args[0]);
+            if (!ExpressionHelpers.TryArray(args[0], out var inputArray))
+                throw ArgumentFormatInvalid(nameof(Sort));
+
+            args[1] = GetExpression(context, args[1]);
+            if (args[1] is not LambdaExpressionFn lambda)
+                throw ArgumentFormatInvalid(nameof(Sort));
+
+            return lambda.Sort(context, inputArray.OfType<object>().ToArray());
+        }
+
+        /// <summary>
+        /// Evaluate a lambda expression.
+        /// </summary>
+        internal static object Lambda(ITemplateContext context, object[] args)
+        {
+            var count = CountArgs(args);
+            if (count < 2 || count > 3)
+                throw ArgumentsOutOfRange(nameof(Lambda), args);
+
+            return new LambdaExpressionFn(args);
+        }
+
+        /// <summary>
+        /// Get a lambda variable.
+        /// </summary>
+        internal static object LambdaVariables(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw ArgumentsOutOfRange(nameof(LambdaVariables), args);
+
+            args[0] = GetExpression(context, args[0]);
+            if (!ExpressionHelpers.TryString(args[0], out var variableName))
+                throw ArgumentInvalidString(nameof(LambdaVariables), nameof(args));
+
+            return context.TryLambdaVariable(variableName, out var value) ? value : null;
+        }
+
+        #endregion Lambda
 
         #region Helper functions
 

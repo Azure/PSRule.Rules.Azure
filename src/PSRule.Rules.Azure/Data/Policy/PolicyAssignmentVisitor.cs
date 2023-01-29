@@ -638,6 +638,12 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 return _PolicyIgnore.Contains(definitionId);
             }
+
+            /// <inheritdoc/>
+            public bool TryLambdaVariable(string variableName, out object value)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         internal void Visit(PolicyAssignmentContext context, JObject assignment)
