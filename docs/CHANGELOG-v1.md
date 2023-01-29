@@ -31,6 +31,8 @@ What's changed since pre-release v1.24.0-B0013:
     [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
     - Bicep `filter`, `map`, `reduce`, and `sort` are supported.
     - Support for `flatten` was previously added in v1.23.0.
+  - Added optimization for policy type conditions by @BernieWhite.
+    [#1966](https://github.com/Azure/PSRule.Rules.Azure/issues/1966)
 - Engineering:
   - Updated resource providers and policy aliases.
     [#1736](https://github.com/Azure/PSRule.Rules.Azure/pull/1736)

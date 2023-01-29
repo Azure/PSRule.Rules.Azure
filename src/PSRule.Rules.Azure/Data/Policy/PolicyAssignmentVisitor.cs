@@ -82,8 +82,6 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string TYPE_SECURITYASSESSMENTS = "Microsoft.Security/assessments";
         private const string TYPE_GUESTCONFIGURATIONASSIGNMENTS = "Microsoft.GuestConfiguration/guestConfigurationAssignments";
         private const string TYPE_BACKUPPROTECTEDITEMS = "Microsoft.RecoveryServices/backupprotecteditems";
-        private const string MODE_INDEXED = "Indexed";
-        private const string MODE_ALL = "All";
 
         private static readonly CultureInfo AzureCulture = new("en-US");
 
@@ -834,6 +832,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             AddSelectors(result, policyMode);
             EffectConditions(result, policyRule);
+            OptimizeConditions(result);
             policyDefinition = result;
 
             // Check for an resulting empty condition.
@@ -985,6 +984,59 @@ namespace PSRule.Rules.Azure.Data.Policy
                 return;
 
             policyDefinition.With = new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" };
+        }
+
+        private static void OptimizeConditions(PolicyDefinition policyDefinition)
+        {
+            policyDefinition.Where = OptimizeConditionObject(policyDefinition, policyDefinition.Where);
+            policyDefinition.Condition = OptimizeConditionObject(policyDefinition, policyDefinition.Condition, keep: true);
+        }
+
+        private static JObject OptimizeConditionObject(PolicyDefinition policyDefinition, JObject condition, bool keep = false)
+        {
+            if (condition == null || !keep && OptimizeTypeCondition(policyDefinition, condition))
+                return null;
+
+            // Handle allOf and anyOf depth
+            if (condition.TryArrayProperty(PROPERTY_ALLOF, out var items) ||
+                condition.TryArrayProperty(PROPERTY_ANYOF, out items))
+            {
+                foreach (var item in items.OfType<JObject>().ToArray())
+                {
+                    if (OptimizeConditionObject(policyDefinition, item) == null)
+                        item.Remove();
+                }
+            }
+            // Handle field merge
+            else if (condition.TryGetProperty(PROPERTY_FIELD, out var field))
+            {
+                MergeWithPeerCondition(condition, field);
+            }
+            return condition;
+        }
+
+        private static void MergeWithPeerCondition(JObject condition, string field)
+        {
+            if (condition.TryArrayProperty(PROPERTY_IN, out var values))
+            {
+                foreach (var peer in condition.GetPeerConditionByField(field))
+                {
+                    if (peer.TryArrayProperty(PROPERTY_IN, out var otherValues))
+                    {
+                        values.AddRange(otherValues);
+                        condition[PROPERTY_IN] = values;
+                        peer.Remove();
+                    }
+                }
+            }
+        }
+
+        private static bool OptimizeTypeCondition(PolicyDefinition policyDefinition, JObject condition)
+        {
+            return policyDefinition.Types != null &&
+                policyDefinition.Types.Count == 1 &&
+                condition.ContainsKeyInsensitive(PROPERTY_TYPE) &&
+                condition.ContainsKeyInsensitive(PROPERTY_EQUALS);
         }
 
         /// <summary>
