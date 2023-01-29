@@ -52,6 +52,7 @@ namespace PSRule.Rules.Azure
         private const string PROPERTY_RESOURCES = "resources";
         private const string PROPERTY_NAME = "name";
         private const string PROPERTY_TYPE = "type";
+        private const string PROPERTY_FIELD = "field";
         private const string TARGETINFO_KEY = "_PSRule";
         private const string TARGETINFO_SOURCE = "source";
         private const string TARGETINFO_FILE = "file";
@@ -161,6 +162,23 @@ namespace PSRule.Rules.Azure
                 o.Type == JTokenType.Guid ||
                 o.Type == JTokenType.TimeSpan ||
                 o.Type == JTokenType.Uri;
+        }
+
+        /// <summary>
+        /// Add items to the array.
+        /// </summary>
+        /// <param name="o">The <seealso cref="JArray"/> to add items to.</param>
+        /// <param name="items">A set of items to add.</param>
+        internal static void AddRange(this JArray o, IEnumerable<JToken> items)
+        {
+            foreach (var item in items)
+                o.Add(item);
+        }
+
+        internal static IEnumerable<JObject> GetPeerConditionByField(this JObject o, string field)
+        {
+            return o.BeforeSelf().OfType<JObject>().Where(peer => peer.TryGetProperty(PROPERTY_FIELD, out var peerField) &&
+                string.Equals(field, peerField, StringComparison.OrdinalIgnoreCase));
         }
 
         internal static bool TryGetProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken
