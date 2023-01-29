@@ -61,6 +61,9 @@ resource webConfig 'Microsoft.Web/sites/config@2022-03-01' = {
 resource sql 'Microsoft.Sql/servers@2022-02-01-preview' = {
   name: 'sql-server'
   location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
 }
 
 resource sqlAdmins 'Microsoft.Sql/servers/administrators@2022-02-01-preview' = {

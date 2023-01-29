@@ -1585,7 +1585,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// join(inputArray, delimiter)
         /// </summary>
         /// <remarks>
-        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#join
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#join"/>.
         /// </remarks>
         internal static object Join(ITemplateContext context, object[] args)
         {
@@ -1691,22 +1691,39 @@ namespace PSRule.Rules.Azure.Data.Template
             return stringToChange.ToUpper(AzureCulture);
         }
 
+        /// <summary>
+        /// trim(stringToTrim)
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#trim"/>.
+        /// </remarks>
         internal static object Trim(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Trim), args);
 
             if (!ExpressionHelpers.TryString(args[0], out var stringToTrim))
-                throw new ArgumentException();
+                throw ArgumentInvalidString(nameof(Trim), "stringToTrim");
 
             return stringToTrim.Trim();
         }
 
+        /// <summary>
+        /// uniqueString(baseString, ...)
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#uniquestring"/>.
+        /// </remarks>
         internal static object UniqueString(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) == 0)
                 throw ArgumentsOutOfRange(nameof(UniqueString), args);
 
+            for (var i = 0; i < args.Length; i++)
+            {
+                if (!ExpressionHelpers.IsString(args[i]))
+                    throw ArgumentInvalidString(nameof(UniqueString), i == 0 ? "baseString" : "additional parameters as needed");
+            }
             return ExpressionHelpers.GetUniqueString(args).Substring(0, 13);
         }
 

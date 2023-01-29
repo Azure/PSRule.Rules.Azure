@@ -631,6 +631,8 @@ namespace PSRule.Rules.Azure
 
             var sqlServer = resources.FirstOrDefault(r => r["type"].ToString() == "Microsoft.Sql/servers");
             Assert.Equal("abc", sqlServer["properties"]["administrators"]["login"].ToString());
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", sqlServer["identity"]["principalId"]);
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", sqlServer["identity"]["tenantId"]);
         }
 
         [Fact]

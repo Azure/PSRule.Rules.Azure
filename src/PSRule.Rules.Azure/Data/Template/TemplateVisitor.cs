@@ -1308,6 +1308,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static T ExpandToken<T>(ITemplateContext context, JToken value)
         {
+            if (typeof(T) == typeof(string) && (value.Type == JTokenType.Object || value.Type == JTokenType.Array))
+                return default;
+
             return value.IsExpressionString() ? EvaluateExpression<T>(context, value) : value.Value<T>();
         }
 
