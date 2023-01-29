@@ -39,6 +39,8 @@ What's changed since pre-release v1.24.0-B0013:
     [#2004](https://github.com/Azure/PSRule.Rules.Azure/issues/2004)
   - Fixed `apiVersion` comparison of `requestContext` by @BernieWhite.
     [#1654](https://github.com/Azure/PSRule.Rules.Azure/issues/1654)
+  - Fixed simple cases for field type expressions by @BernieWhite.
+    [#1323](https://github.com/Azure/PSRule.Rules.Azure/issues/1323)
 
 ## v1.24.0-B0013 (pre-release)
 

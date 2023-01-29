@@ -922,14 +922,23 @@ namespace PSRule.Rules.Azure.Data.Policy
                 }
             }
 
-            // Handle "[field('type')]
+            // Handle [field('string')]
             else if (tokens.ConsumeFunction(PROPERTY_FIELD) &&
                 tokens.TryTokenType(ExpressionTokenType.GroupStart, out _) &&
-                tokens.ConsumeString(PROPERTY_TYPE) &&
+                tokens.ConsumeString(out var field) &&
                 tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _))
             {
-                condition.Remove(PROPERTY_VALUE);
-                condition.Add(PROPERTY_TYPE, DOT);
+                // Handle [field('type')]
+                if (string.Equals(field, PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
+                {
+                    condition.Remove(PROPERTY_VALUE);
+                    condition.Add(PROPERTY_TYPE, DOT);
+                }
+                else
+                {
+                    condition.Remove(PROPERTY_VALUE);
+                    condition.Add(PROPERTY_FIELD, field);
+                }
             }
         }
 
