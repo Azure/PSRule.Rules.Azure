@@ -42,13 +42,13 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_ALLOF = "allOf";
         private const string PROPERTY_ANYOF = "anyOf";
         private const string PROPERTY_EQUALS = "equals";
-        private const string FIELD_NOTEQUALS = "notEquals";
-        private const string FIELD_GREATER = "greater";
+        private const string PROPERTY_NOTEQUALS = "notEquals";
+        private const string PROPERTY_GREATER = "greater";
         private const string PROPERTY_GREATEROREQUALS = "greaterOrEquals";
-        private const string FIELD_LESS = "less";
-        private const string FIELD_LESSOREQUALS = "lessOrEquals";
-        private const string FIELD_IN = "in";
-        private const string FIELD_NOTIN = "notIn";
+        private const string PROPERTY_LESS = "less";
+        private const string PROPERTY_LESSOREQUALS = "lessOrEquals";
+        private const string PROPERTY_IN = "in";
+        private const string PROPERTY_NOTIN = "notIn";
         private const string PROPERTY_EXISTS = "exists";
         private const string PROPERTY_DISPLAYNAME = "displayName";
         private const string PROPERTY_DESCRIPTION = "description";
@@ -61,6 +61,8 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_NOTCOUNT = "notCount";
         private const string PROPERTY_WHERE = "where";
         private const string PROPERTY_RESOURCES = "resources";
+        private const string PROPERTY_REQUESTCONTEXT = "requestContext";
+        private const string PROPERTY_APIVERSION = "apiVersion";
         private const string EFFECT_DISABLED = "Disabled";
         private const string EFFECT_AUDITIFNOTEXISTS = "AuditIfNotExists";
         private const string EFFECT_DEPLOYIFNOTEXISTS = "DeployIfNotExists";
@@ -82,6 +84,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string TYPE_BACKUPPROTECTEDITEMS = "Microsoft.RecoveryServices/backupprotecteditems";
         private const string MODE_INDEXED = "Indexed";
         private const string MODE_ALL = "All";
+
         private static readonly CultureInfo AzureCulture = new("en-US");
 
         /// <summary>
@@ -190,11 +193,11 @@ namespace PSRule.Rules.Azure.Data.Policy
             private static string ExpressionToObjectPathComparisonOperator(string expression) => expression switch
             {
                 PROPERTY_EQUALS => EQUALITY_OPERATOR,
-                FIELD_NOTEQUALS => INEQUALITY_OPERATOR,
-                FIELD_GREATER => GREATER_OPERATOR,
+                PROPERTY_NOTEQUALS => INEQUALITY_OPERATOR,
+                PROPERTY_GREATER => GREATER_OPERATOR,
                 PROPERTY_GREATEROREQUALS => GREATEROREQUAL_OPERATOR,
-                FIELD_LESS => LESS_OPERATOR,
-                FIELD_LESSOREQUALS => LESSOREQUAL_OPERATOR,
+                PROPERTY_LESS => LESS_OPERATOR,
+                PROPERTY_LESSOREQUALS => LESSOREQUAL_OPERATOR,
                 _ => null
             };
 
@@ -274,7 +277,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         else
                         {
                             // Convert in expression
-                            if (comparisonExpression.Name.Equals(FIELD_IN, StringComparison.OrdinalIgnoreCase)
+                            if (comparisonExpression.Name.Equals(PROPERTY_IN, StringComparison.OrdinalIgnoreCase)
                                 && comparisonValue.Type == JTokenType.Array)
                             {
                                 var filters = comparisonValue
@@ -284,7 +287,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                             }
 
                             // Convert notIn expression
-                            else if (comparisonExpression.Name.Equals(FIELD_NOTIN, StringComparison.OrdinalIgnoreCase)
+                            else if (comparisonExpression.Name.Equals(PROPERTY_NOTIN, StringComparison.OrdinalIgnoreCase)
                                 && comparisonValue.Type == JTokenType.Array)
                             {
                                 var filters = comparisonValue
@@ -423,7 +426,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         // Replace equals with count if field count expression is currently being visited
                         // Replace notEquals with notCount if field count expression is currently being visited
                         else if (hasFieldCount && (child.TryRenameProperty(PROPERTY_EQUALS, PROPERTY_COUNT) ||
-                            child.TryRenameProperty(FIELD_NOTEQUALS, PROPERTY_NOTCOUNT)))
+                            child.TryRenameProperty(PROPERTY_NOTEQUALS, PROPERTY_NOTCOUNT)))
                         {
                             // Do nothing.
                         }
@@ -885,18 +888,44 @@ namespace PSRule.Rules.Azure.Data.Policy
             var tokens = ExpressionParser.Parse(s);
 
             // Handle [requestContext().apiVersion]
-            if (tokens.ConsumeFunction("requestContext") &&
+            if (tokens.ConsumeFunction(PROPERTY_REQUESTCONTEXT) &&
                 tokens.ConsumeGroup() &&
-                tokens.ConsumePropertyName("apiVersion"))
+                tokens.ConsumePropertyName(PROPERTY_APIVERSION))
             {
                 condition.Remove(PROPERTY_VALUE);
-                condition.Add(PROPERTY_FIELD, "apiVersion");
+                condition.Add(PROPERTY_FIELD, PROPERTY_APIVERSION);
+                if (condition.TryGetProperty(PROPERTY_LESS, out var value))
+                {
+                    condition.Remove(PROPERTY_LESS);
+                    condition.Add(PROPERTY_APIVERSION, string.Concat(LESS_OPERATOR, value));
+                }
+                else if (condition.TryGetProperty(PROPERTY_LESSOREQUALS, out value))
+                {
+                    condition.Remove(PROPERTY_LESSOREQUALS);
+                    condition.Add(PROPERTY_APIVERSION, string.Concat(LESSOREQUAL_OPERATOR, value));
+
+                }
+                else if (condition.TryGetProperty(PROPERTY_GREATER, out value))
+                {
+                    condition.Remove(PROPERTY_GREATER);
+                    condition.Add(PROPERTY_APIVERSION, string.Concat(GREATER_OPERATOR, value));
+                }
+                else if (condition.TryGetProperty(PROPERTY_GREATEROREQUALS, out value))
+                {
+                    condition.Remove(PROPERTY_GREATEROREQUALS);
+                    condition.Add(PROPERTY_APIVERSION, string.Concat(GREATEROREQUAL_OPERATOR, value));
+                }
+                else if (condition.TryGetProperty(PROPERTY_EQUALS, out value))
+                {
+                    condition.Remove(PROPERTY_EQUALS);
+                    condition.Add(PROPERTY_APIVERSION, value);
+                }
             }
 
             // Handle "[field('type')]
-            else if (tokens.ConsumeFunction("field") &&
+            else if (tokens.ConsumeFunction(PROPERTY_FIELD) &&
                 tokens.TryTokenType(ExpressionTokenType.GroupStart, out _) &&
-                tokens.ConsumeString("type") &&
+                tokens.ConsumeString(PROPERTY_TYPE) &&
                 tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _))
             {
                 condition.Remove(PROPERTY_VALUE);
