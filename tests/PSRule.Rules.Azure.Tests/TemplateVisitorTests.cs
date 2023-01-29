@@ -655,6 +655,63 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(resources);
         }
 
+        [Fact]
+        public void LambdaFunctions()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.13.json"), null, out var templateContext);
+            Assert.NotNull(resources);
+
+            // Filter
+            Assert.True(templateContext.RootDeployment.TryOutput("oldDogs", out JObject oldDogs));
+            Assert.Equal(2, oldDogs["value"].Value<JArray>().Count);
+            Assert.Equal("Evie", oldDogs["value"][0]["name"].Value<string>());
+            Assert.Equal("Kira", oldDogs["value"][1]["name"].Value<string>());
+
+            // Map
+            Assert.True(templateContext.RootDeployment.TryOutput("dogNames", out JObject dogNames));
+            Assert.Equal(4, dogNames["value"].Value<JArray>().Count);
+            Assert.Equal("Evie", dogNames["value"][0].Value<string>());
+            Assert.Equal("Casper", dogNames["value"][1].Value<string>());
+            Assert.Equal("Indy", dogNames["value"][2].Value<string>());
+            Assert.Equal("Kira", dogNames["value"][3].Value<string>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("sayHi", out JObject sayHi));
+            Assert.Equal(4, sayHi["value"].Value<JArray>().Count);
+            Assert.Equal("Hello Evie!", sayHi["value"][0].Value<string>());
+            Assert.Equal("Hello Casper!", sayHi["value"][1].Value<string>());
+            Assert.Equal("Hello Indy!", sayHi["value"][2].Value<string>());
+            Assert.Equal("Hello Kira!", sayHi["value"][3].Value<string>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("mapObject", out JObject mapObject));
+            Assert.Equal(4, mapObject["value"].Value<JArray>().Count);
+            Assert.Equal(0, mapObject["value"][0]["i"].Value<int>());
+            Assert.Equal("Evie", mapObject["value"][0]["dog"].Value<string>());
+            Assert.Equal("Ahoy, Evie!", mapObject["value"][0]["greeting"].Value<string>());
+            Assert.Equal(1, mapObject["value"][1]["i"].Value<int>());
+            Assert.Equal("Casper", mapObject["value"][1]["dog"].Value<string>());
+            Assert.Equal("Ahoy, Casper!", mapObject["value"][1]["greeting"].Value<string>());
+            Assert.Equal(2, mapObject["value"][2]["i"].Value<int>());
+            Assert.Equal("Indy", mapObject["value"][2]["dog"].Value<string>());
+            Assert.Equal("Ahoy, Indy!", mapObject["value"][2]["greeting"].Value<string>());
+            Assert.Equal(3, mapObject["value"][3]["i"].Value<int>());
+            Assert.Equal("Kira", mapObject["value"][3]["dog"].Value<string>());
+            Assert.Equal("Ahoy, Kira!", mapObject["value"][3]["greeting"].Value<string>());
+
+            // Reduce
+            Assert.True(templateContext.RootDeployment.TryOutput("totalAge", out JObject totalAge));
+            Assert.Equal(18, totalAge["value"].Value<int>());
+            Assert.True(templateContext.RootDeployment.TryOutput("totalAgeAdd1", out JObject totalAgeAdd1));
+            Assert.Equal(19, totalAgeAdd1["value"].Value<int>());
+
+            // Sort
+            Assert.True(templateContext.RootDeployment.TryOutput("dogsByAge", out JObject dogsByAge));
+            Assert.Equal(4, dogsByAge["value"].Value<JArray>().Count);
+            Assert.Equal("Kira", dogsByAge["value"][0]["name"].Value<string>());
+            Assert.Equal("Evie", dogsByAge["value"][1]["name"].Value<string>());
+            Assert.Equal("Casper", dogsByAge["value"][2]["name"].Value<string>());
+            Assert.Equal("Indy", dogsByAge["value"][3]["name"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
@@ -667,6 +724,14 @@ namespace PSRule.Rules.Azure
             var context = new PipelineContext(PSRuleOption.Default, null);
             var helper = new TemplateHelper(context);
             helper.ProcessTemplate(templateFile, parametersFile, out var templateContext);
+            return templateContext.GetResources().Select(i => i.Value).ToArray();
+        }
+
+        private static JObject[] ProcessTemplate(string templateFile, string parametersFile, out TemplateContext templateContext)
+        {
+            var context = new PipelineContext(PSRuleOption.Default, null);
+            var helper = new TemplateHelper(context);
+            helper.ProcessTemplate(templateFile, parametersFile, out templateContext);
             return templateContext.GetResources().Select(i => i.Value).ToArray();
         }
 

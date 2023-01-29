@@ -11,7 +11,6 @@ using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -19,46 +18,6 @@ namespace PSRule.Rules.Azure.Data.Template
     /// A string expression.
     /// </summary>
     public delegate T StringExpression<T>();
-
-    internal interface IValidationContext
-    {
-        void AddValidationIssue(string issueId, string name, string path, string message, params object[] args);
-
-        ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType);
-
-        bool IsSecureValue(object value);
-    }
-
-    internal interface ITemplateContext : IValidationContext
-    {
-        TemplateContext.CopyIndexStore CopyIndex { get; }
-
-        DeploymentValue Deployment { get; }
-
-        string TemplateFile { get; }
-
-        string ParameterFile { get; }
-
-        ResourceGroupOption ResourceGroup { get; }
-
-        SubscriptionOption Subscription { get; }
-
-        TenantOption Tenant { get; }
-
-        ManagementGroupOption ManagementGroup { get; }
-
-        ExpressionFnOuter BuildExpression(string s);
-
-        CloudEnvironment GetEnvironment();
-
-        bool TryParameter(string parameterName, out object value);
-
-        bool TryVariable(string variableName, out object value);
-
-        bool TryGetResource(string resourceId, out IResourceValue resource);
-
-        void WriteDebug(string message, params object[] args);
-    }
 
     /// <summary>
     /// The base class for a template visitor.
@@ -205,11 +164,17 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public ParameterDefaultsOption ParameterDefaults { get; private set; }
 
+            /// <inheritdoc/>
             public DeploymentValue Deployment => _Deployment.Peek();
 
             public string TemplateFile { get; private set; }
 
             public string ParameterFile { get; private set; }
+
+            /// <summary>
+            /// The top level deployment.
+            /// </summary>
+            internal DeploymentValue RootDeployment { get; private set; }
 
             public ExpressionFnOuter BuildExpression(string s)
             {
@@ -526,6 +491,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 AddResource(deploymentValue);
                 _CurrentDeployment = deploymentValue;
                 _Deployment.Push(deploymentValue);
+                if (!isNested)
+                    RootDeployment = _CurrentDeployment;
             }
 
             internal void ExitDeployment()
@@ -569,11 +536,13 @@ namespace PSRule.Rules.Azure.Data.Template
                 _SecureValues.Add(value);
             }
 
+            /// <inheritdoc/>
             public bool IsSecureValue(object value)
             {
                 return _SecureValues.Contains(value);
             }
 
+            /// <inheritdoc/>
             public bool TryParameter(string parameterName, out object value)
             {
                 value = null;
@@ -626,6 +595,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 Variables[variableName] = value;
             }
 
+            /// <inheritdoc/>
             public bool TryVariable(string variableName, out object value)
             {
                 if (!Variables.TryGetValue(variableName, out value))
@@ -645,6 +615,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _ExpressionFactory.With(descriptor);
             }
 
+            /// <inheritdoc/>
             public ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
             {
                 return _ResourceProviderHelper.GetResourceType(providerNamespace, resourceType);
@@ -662,6 +633,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 ParameterFile = parameterFile;
             }
 
+            /// <inheritdoc/>
             public void AddValidationIssue(string issueId, string name, string path, string message, params object[] args)
             {
                 _CurrentDeployment.Value.SetValidationIssue(issueId, name, path, message, args);
@@ -704,79 +676,33 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 return token;
             }
+
+            /// <inheritdoc/>
+            public bool TryLambdaVariable(string variableName, out object value)
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        internal sealed class UserDefinedFunctionContext : ITemplateContext
+        internal sealed class UserDefinedFunctionContext : BaseTemplateContext
         {
-            private readonly ITemplateContext _Inner;
             private readonly Dictionary<string, object> _Parameters;
 
             public UserDefinedFunctionContext(ITemplateContext context)
+                : base(context)
             {
-                _Inner = context;
                 _Parameters = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
             }
 
-            public TemplateContext.CopyIndexStore CopyIndex => _Inner.CopyIndex;
-
-            public DeploymentValue Deployment => throw new NotImplementedException();
-
-            public string TemplateFile => _Inner.TemplateFile;
-
-            public string ParameterFile => _Inner.ParameterFile;
-
-            public ResourceGroupOption ResourceGroup => _Inner.ResourceGroup;
-
-            public SubscriptionOption Subscription => _Inner.Subscription;
-
-            public TenantOption Tenant => _Inner.Tenant;
-
-            public ManagementGroupOption ManagementGroup => _Inner.ManagementGroup;
-
-            public ExpressionFnOuter BuildExpression(string s)
-            {
-                return _Inner.BuildExpression(s);
-            }
-
-            public CloudEnvironment GetEnvironment()
-            {
-                return _Inner.GetEnvironment();
-            }
-
-            public ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
-            {
-                return _Inner.GetResourceType(providerNamespace, resourceType);
-            }
-
-            public bool TryParameter(string parameterName, out object value)
+            public override bool TryParameter(string parameterName, out object value)
             {
                 return _Parameters.TryGetValue(parameterName, out value);
             }
 
-            public bool TryVariable(string variableName, out object value)
+            public override bool TryVariable(string variableName, out object value)
             {
                 value = null;
                 return false;
-            }
-
-            public bool TryGetResource(string resourceId, out IResourceValue resource)
-            {
-                return _Inner.TryGetResource(resourceId, out resource);
-            }
-
-            public void WriteDebug(string message, params object[] args)
-            {
-                _Inner.WriteDebug(message, args);
-            }
-
-            public void AddValidationIssue(string issueId, string name, string path, string message, params object[] args)
-            {
-                _Inner.AddValidationIssue(issueId, name, path, message, args);
-            }
-
-            public bool IsSecureValue(object value)
-            {
-                return _Inner.IsSecureValue(value);
             }
 
             internal void SetParameters(JObject[] parameters, object[] args)
@@ -785,9 +711,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     return;
 
                 for (var i = 0; i < parameters.Length; i++)
-                {
                     _Parameters.Add(parameters[i]["name"].Value<string>(), args[i]);
-                }
             }
         }
 

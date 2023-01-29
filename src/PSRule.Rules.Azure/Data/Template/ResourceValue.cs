@@ -35,6 +35,17 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             return string.Equals(resource.Type, type, StringComparison.OrdinalIgnoreCase);
         }
+
+        internal static bool TryOutput<TValue>(this DeploymentValue resource, string name, out TValue value)
+        {
+            value = default;
+            if (resource.TryOutput(name, out var o) && o is TValue v)
+            {
+                value = v;
+                return true;
+            }
+            return false;
+        }
     }
 
     internal abstract class BaseResourceValue
@@ -161,6 +172,16 @@ namespace PSRule.Rules.Azure.Data.Template
         public void AddOutput(string name, ILazyValue output)
         {
             _Outputs.Add(name, output);
+        }
+
+        internal bool TryOutput(string name, out object value)
+        {
+            value = null;
+            if (!_Outputs.TryGetValue(name, out var lazy))
+                return false;
+
+            value = lazy.GetValue();
+            return true;
         }
 
         public bool TryProperty(string propertyName, out object value)
