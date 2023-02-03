@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Virtual Machine:
+    - Virtual machines should be fully dealocatted and not stopped by @dcrreynolds
+      [#88](https://github.com/Azure/PSRule.Rules.Azure/issues/88)
+
 ## v1.24.0-B0035 (pre-release)
 
 What's changed since pre-release v1.24.0-B0013:

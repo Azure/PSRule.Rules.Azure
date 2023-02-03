@@ -24,4 +24,4 @@ Consider fully deallocating VMs instead of stopping VMs.
 
 ## LINKS
 
-- [States and billing status of Azure Virtual Machines](https://learn.microsoft.com/en-us/azure/virtual-machines/states-billing)
+- [States and billing status of Azure Virtual Machines](https://learn.microsoft.com/azure/virtual-machines/states-billing)

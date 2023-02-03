@@ -281,6 +281,10 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                         AddSubResource(resource, await GetResource(context, id, APIVERSION_2022_07_01));
                 }
             }
+
+            var response = await context.GetAsync($"{resourceId}/instanceView", APIVERSION_2021_11_01);
+            resource.Add("PowerState", (string)response["statuses"][1]["code"]);
+
             return true;
         }
 
