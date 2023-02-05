@@ -149,7 +149,7 @@ You may need to [configure credentials][4] to access the private registry from a
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.6.0
+      uses: microsoft/ps-rule@v2.7.0
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
