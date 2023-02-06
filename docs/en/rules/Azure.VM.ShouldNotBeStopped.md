@@ -18,7 +18,7 @@ Azure Virtual Machines in a stopped state are still billed hourly for compute us
 
 ## RECOMMENDATION
 
-Consider fully deallocating VMs instead of stopping VMs.
+Consider fully deallocating VMs instead of stopping VMs to reduce cost.
 
 ## NOTES
 
