@@ -24,6 +24,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.24.0:
+
+- Engineering:
+  - Bump BenchmarkDotNet to v0.13.4.
+    [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.4.
+    [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
+
 ## v1.24.0
 
 What's changed since v1.23.0:
