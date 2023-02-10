@@ -1,0 +1,56 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.14.46.61228",
+      "templateHash": "10500092375568922133"
+    },
+    "name": "Front Door profile",
+    "description": "Deploys and configures an Azure Front Door profile.",
+    "summary": "Create or update an Azure Front Door."
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "defaultValue": "[deployment().name]",
+      "metadata": {
+        "description": "The name of the Front Door."
+      }
+    },
+    "identityId": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "A User-Assigned Managed Identity for the profile. This identity is used to access Key Vault.",
+        "strongType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+      }
+    },
+    "originResponseTimeoutSeconds": {
+      "type": "int",
+      "defaultValue": 60,
+      "metadata": {
+        "description": "Configures the send and receive timeout on forwarding request to the origin."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Cdn/profiles",
+      "apiVersion": "2022-11-01-preview",
+      "name": "[parameters('name')]",
+      "location": "Global",
+      "sku": {
+        "name": "Premium_AzureFrontDoor"
+      },
+      "identity": "[if(not(empty(parameters('identityId'))), createObject('type', 'UserAssigned', 'userAssignedIdentities', createObject(format('{0}', parameters('identityId')), createObject())), null())]",
+      "properties": {
+        "originResponseTimeoutSeconds": "[parameters('originResponseTimeoutSeconds')]"
+      },
+      "metadata": {
+        "description": "Create or update a Front Door."
+      }
+    }
+  ]
+}
