@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.24.1
+
 What's changed since v1.24.0:
 
 - Bug fixes:
