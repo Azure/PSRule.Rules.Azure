@@ -17,6 +17,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_12'
+    Azure.WAF/pillar: 'Operational Excellence'
 spec:
   type:
   - Microsoft.Network/azureFirewalls
@@ -39,6 +40,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_12'
+    Azure.WAF/pillar: 'Operational Excellence'
 spec:
   type:
   - Microsoft.Network/firewallPolicies
@@ -61,6 +63,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Security'
 spec:
   type:
   - Microsoft.Network/azureFirewalls

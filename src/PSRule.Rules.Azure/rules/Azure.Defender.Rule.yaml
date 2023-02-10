@@ -17,6 +17,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2022_09'
+    Azure.WAF/pillar: 'Security'
 spec:
   level: Error
   where:
@@ -38,6 +39,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2022_09'
+    Azure.WAF/pillar: 'Security'
 spec:
   level: Error
   where:
@@ -62,6 +64,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2022_09'
+    Azure.WAF/pillar: 'Security'
 spec:
   level: Error
   where:
@@ -83,6 +86,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2022_09'
+    Azure.WAF/pillar: 'Security'
 spec:
   level: Error
   where:
@@ -104,6 +108,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2022_09'
+    Azure.WAF/pillar: 'Security'
 spec:
   level: Error
   where:
@@ -125,6 +130,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2022_09'
+    Azure.WAF/pillar: 'Security'
 spec:
   level: Error
   where:

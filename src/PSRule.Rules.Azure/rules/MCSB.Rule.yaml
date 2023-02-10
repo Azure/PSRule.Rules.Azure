@@ -1,0 +1,21 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Taxonomies for PSRule for Azure
+#
+
+---
+# Synopsis: Microsoft Cloud Security Benchmark v1.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.MCSB.v1
+  annotations:
+    taxonomies: Azure.MCSB.v1
+spec:
+  rule:
+    tag:
+      release: GA
+    labels:
+      Azure.MCSB.v1/control: '*'
