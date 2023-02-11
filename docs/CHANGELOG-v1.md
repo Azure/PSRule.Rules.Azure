@@ -29,6 +29,9 @@ What's changed since v1.24.1:
 - New features:
   - Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Beanchmark by @BernieWhite.
     [#1634](https://github.com/Azure/PSRule.Rules.Azure/issues/1634)
+- General improvements:
+  - Added support for Bicep custom types by @BernieWhite.
+    [#2026](https://github.com/Azure/PSRule.Rules.Azure/issues/2026)
 - Engineering:
   - Updated build to use GitHub Actions by @BernieWhite.
     [#1696](https://github.com/Azure/PSRule.Rules.Azure/issues/1696)

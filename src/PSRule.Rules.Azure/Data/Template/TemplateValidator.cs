@@ -81,7 +81,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool IsSecureParameter(ParameterType type, string s)
         {
-            return type == ParameterType.SecureString || type == ParameterType.SecureObject;
+            return type.Type == TypePrimitive.SecureString || type.Type == TypePrimitive.SecureObject;
         }
 
         private void ParameterStrongType(IValidationContext context, string parameterName, JObject parameter, object value)

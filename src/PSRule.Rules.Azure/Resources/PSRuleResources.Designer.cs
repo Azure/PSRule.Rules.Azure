@@ -286,6 +286,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The type for output &apos;{0}&apos; was not defined or invalid..
+        /// </summary>
+        internal static string OutputTypeInvalid {
+            get {
+                return ResourceManager.GetString("OutputTypeInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to find the specified parameter file &apos;{0}&apos;..
         /// </summary>
         internal static string ParameterFileNotFound {
@@ -300,6 +309,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string ParameterNotFound {
             get {
                 return ResourceManager.GetString("ParameterNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The type for parameter &apos;{0}&apos; was not defined or invalid..
+        /// </summary>
+        internal static string ParameterTypeInvalid {
+            get {
+                return ResourceManager.GetString("ParameterTypeInvalid", resourceCulture);
             }
         }
         
