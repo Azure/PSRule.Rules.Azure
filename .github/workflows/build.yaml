@@ -52,14 +52,14 @@ jobs:
         retention-days: 3
         if-no-files-found: error
 
-    - name: Upload Test Results
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: Module.DotNet.TestResults
-        path: ./reports/*.trx
-        retention-days: 3
-        if-no-files-found: error
+    # - name: Upload Test Results
+    #   uses: actions/upload-artifact@v3
+    #   if: always()
+    #   with:
+    #     name: Module.DotNet.TestResults
+    #     path: ./reports/*.trx
+    #     retention-days: 3
+    #     if-no-files-found: error
 
     - name: Upload PSRule Results
       uses: actions/upload-artifact@v3
