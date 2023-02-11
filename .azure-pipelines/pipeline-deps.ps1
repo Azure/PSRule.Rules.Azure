@@ -13,8 +13,8 @@ if ($Null -eq (Get-PackageProvider -Name NuGet -ErrorAction Ignore)) {
     Install-PackageProvider -Name NuGet -Force -Scope CurrentUser;
 }
 
-if ($Null -eq (Get-InstalledModule -Name PowerShellGet -MinimumVersion 2.2.1 -ErrorAction Ignore)) {
-    Install-Module PowerShellGet -MinimumVersion 2.2.1 -Scope CurrentUser -Force -AllowClobber;
+if ($Null -eq (Get-InstalledModule -Name PowerShellGet -MinimumVersion 2.2.1 -ErrorAction Ignore -WarningAction SilentlyContinue)) {
+    Install-Module PowerShellGet -MinimumVersion 2.2.1 -Scope CurrentUser -Force -AllowClobber -WarningAction SilentlyContinue;
 }
 
 if ($Null -eq (Get-InstalledModule -Name InvokeBuild -MinimumVersion 5.4.0 -ErrorAction Ignore)) {
