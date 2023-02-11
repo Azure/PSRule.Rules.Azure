@@ -24,7 +24,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.24.0:
+What's changed since v1.24.1:
 
 - New features:
   - Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Beanchmark by @BernieWhite.
@@ -34,6 +34,14 @@ What's changed since v1.24.0:
     [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
   - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.4.
     [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
+
+## v1.24.1
+
+What's changed since v1.24.0:
+
+- Bug fixes:
+  - Fixes Bicep expand object or null by @BernieWhite.
+    [#2021](https://github.com/Azure/PSRule.Rules.Azure/issues/2021)
 
 ## v1.24.0
 
