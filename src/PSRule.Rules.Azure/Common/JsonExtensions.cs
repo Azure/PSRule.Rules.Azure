@@ -184,9 +184,9 @@ namespace PSRule.Rules.Azure
         internal static bool TryGetProperty<TValue>(this JObject o, string propertyName, out TValue value) where TValue : JToken
         {
             value = null;
-            if (o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var v))
+            if (o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var v) && v.Type != JTokenType.Null)
             {
-                value = (TValue)v;
+                value = v.Value<TValue>();
                 return value != null;
             }
             return false;
