@@ -645,6 +645,11 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 throw new NotImplementedException();
             }
+
+            bool ITemplateContext.TryDefinition(string type, out ITypeDefinition definition)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         internal void Visit(PolicyAssignmentContext context, JObject assignment)

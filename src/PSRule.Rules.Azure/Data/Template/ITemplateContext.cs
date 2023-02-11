@@ -73,6 +73,8 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <returns>Returns <c>true</c> if the variable exists or <c>false</c> if a variable with the specified name could not be found.</returns>
         bool TryVariable(string variableName, out object value);
 
+        bool TryDefinition(string type, out ITypeDefinition definition);
+
         bool TryGetResource(string resourceId, out IResourceValue resource);
 
         void WriteDebug(string message, params object[] args);
@@ -152,6 +154,12 @@ namespace PSRule.Rules.Azure.Data.Template
         public virtual bool TryLambdaVariable(string variableName, out object value)
         {
             return _Inner.TryLambdaVariable(variableName, out value);
+        }
+
+        /// <inheritdoc/>
+        public bool TryDefinition(string type, out ITypeDefinition definition)
+        {
+            return _Inner.TryDefinition(type, out definition);
         }
 
         #region IValidationContext
