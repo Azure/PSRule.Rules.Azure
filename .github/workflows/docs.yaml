@@ -5,7 +5,7 @@
 # NOTES:
 # This workflow generates and published the documentation site https://azure.github.io/PSRule.Rules.Azure/.
 
-name: Build and deploy docs
+name: Docs
 on:
   push:
     branches:

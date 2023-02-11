@@ -7,10 +7,10 @@
 
 name: Build
 on:
-  # push:
-  #   branches: [ main, 'release/*' ]
-  # pull_request:
-  #   branches: [ main, 'release/*' ]
+  push:
+    branches: [ main, 'release/*' ]
+  pull_request:
+    branches: [ main, 'release/*' ]
   workflow_dispatch:
 
 env:
@@ -18,7 +18,7 @@ env:
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
-  Build:
+  build:
     name: Build
     runs-on: ubuntu-latest
     permissions:
@@ -37,7 +37,7 @@ jobs:
     - name: Install dependencies
       shell: pwsh
       timeout-minutes: 3
-      run: ./.azure-pipelines/pipeline-deps.ps1
+      run: ./scripts/pipeline-deps.ps1
 
     - name: Build module
       shell: pwsh
@@ -70,10 +70,10 @@ jobs:
         retention-days: 3
         if-no-files-found: error
 
-  Test:
+  test:
     name: Test (${{ matrix.rid }}-${{ matrix.shell }})
     runs-on: ${{ matrix.os }}
-    needs: Build
+    needs: build
     permissions:
       contents: read
 
@@ -116,13 +116,13 @@ jobs:
       name: Install dependencies (PowerShell)
       shell: pwsh
       timeout-minutes: 3
-      run: ./.azure-pipelines/pipeline-deps.ps1
+      run: ./scripts/pipeline-deps.ps1
 
     - if: ${{ matrix.shell == 'powershell' }}
       name: Install dependencies (Windows PowerShell)
       shell: powershell
       timeout-minutes: 3
-      run: ./.azure-pipelines/pipeline-deps.ps1
+      run: ./scripts/pipeline-deps.ps1
 
     - name: Download module
       uses: actions/download-artifact@v3

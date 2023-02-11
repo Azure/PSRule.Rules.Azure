@@ -10,17 +10,19 @@ variables:
  # Use build number format, i.e. 1.20.0-B2202001
 name: $(version)-B$(date:yyMM)$(rev:rrr)
 
-trigger:
-  branches:
-    include:
-    - 'main'
-    - 'release/*'
+trigger: none
+# trigger:
+#   branches:
+#     include:
+#     - 'main'
+#     - 'release/*'
 
-pr:
-  branches:
-    include:
-    - 'main'
-    - 'release/*'
+pr: none
+# pr:
+#   branches:
+#     include:
+#     - 'main'
+#     - 'release/*'
 
 stages:
 
@@ -43,7 +45,7 @@ stages:
         version: 6.x
 
     # Install pipeline dependencies
-    - powershell: ./.azure-pipelines/pipeline-deps.ps1
+    - powershell: ./scripts/pipeline-deps.ps1
       displayName: 'Install dependencies'
 
     # Build module
