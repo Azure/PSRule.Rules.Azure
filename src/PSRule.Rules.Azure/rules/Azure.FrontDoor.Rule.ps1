@@ -8,7 +8,7 @@
 #region Front Door
 
 # Synopsis: Front Door should reject TLS versions older than 1.2.
-Rule 'Azure.FrontDoor.MinTLS' -Ref 'AZR-000106' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'DP-3' } {
+Rule 'Azure.FrontDoor.MinTLS' -Ref 'AZR-000106' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.MCSB.v1/control' = 'DP-3' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);
@@ -66,7 +66,7 @@ Rule 'Azure.FrontDoor.ProbePath' -Ref 'AZR-000110' -Type 'Microsoft.Network/fron
 }
 
 # Synopsis: Enable Web Application Firewall (WAF) policies on each Front Door endpoint.
-Rule 'Azure.FrontDoor.UseWAF' -Ref 'AZR-000111' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.ASB.v3/control' = 'NS-6' } {
+Rule 'Azure.FrontDoor.UseWAF' -Ref 'AZR-000111' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.MCSB.v1/control' = 'NS-6' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);

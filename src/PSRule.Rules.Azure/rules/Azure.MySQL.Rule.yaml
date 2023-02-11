@@ -19,7 +19,7 @@ metadata:
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.ASB.v3/control: 'NS-2'
+    Azure.MCSB.v1/control: 'NS-2'
 spec:
   type:
   - Microsoft.DBforMySQL/servers
@@ -39,7 +39,7 @@ metadata:
     ruleSet: '2020_09'
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.ASB.v3/control: 'DP-3'
+    Azure.MCSB.v1/control: 'DP-3'
 spec:
   type:
   - Microsoft.DBforMySQL/servers
