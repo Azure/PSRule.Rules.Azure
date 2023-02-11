@@ -112,8 +112,9 @@ jobs:
       with:
         dotnet-version: 6.x
 
-    - name: Install dependencies
-      shell: ${{ matrix.shell }}
+    - if: ${{ matrix.shell == 'pwsh' }}
+      name: Install dependencies (PowerShell)
+      shell: pwsh
       timeout-minutes: 3
       run: ./.azure-pipelines/pipeline-deps.ps1
 
@@ -123,7 +124,8 @@ jobs:
         name: Module
         path: ./out/modules/PSRule.Rules.Azure
 
-    - name: Test module
-      shell: ${{ matrix.shell }}
+    - if: ${{ matrix.shell == 'pwsh' }}
+      name: Test module (PowerShell)
+      shell: pwsh
       timeout-minutes: 15
       run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
