@@ -17,6 +17,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.Network/applicationGateways
@@ -40,6 +41,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Operational Excellence'
 spec:
   type:
   - Microsoft.Network/applicationGateways
@@ -65,7 +67,7 @@ metadata:
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.ASB.v3/control: 'NS-6'
+    Azure.MCSB.v1/control: 'NS-6'
 spec:
   with:
   - Azure.IsAppGwPublic
@@ -87,7 +89,7 @@ metadata:
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.ASB.v3/control: 'NS-8'
+    Azure.MCSB.v1/control: 'NS-8'
 spec:
   type:
   - Microsoft.Network/applicationGateways
@@ -113,6 +115,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Security'
 spec:
   with:
   - Azure.AppGw.WithClassicWAF
@@ -132,7 +135,7 @@ metadata:
     ruleSet: '2020_06'
     Azure.WAF/pillar: 'Security'
   labels:
-    Azure.ASB.v3/control: 'NS-6'
+    Azure.MCSB.v1/control: 'NS-6'
 spec:
   with:
   - Azure.IsAppGwPublic
@@ -153,6 +156,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Security'
 spec:
   with:
   - Azure.AppGw.WithClassicWAF
@@ -173,6 +177,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: 'Security'
 spec:
   with:
   - Azure.AppGw.WithClassicWAF

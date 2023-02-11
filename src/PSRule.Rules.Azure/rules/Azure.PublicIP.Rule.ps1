@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Public IP addresses should be attached or cleaned up if not in use
-Rule 'Azure.PublicIP.IsAttached' -Ref 'AZR-000154' -Type 'Microsoft.Network/publicIPAddresses' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'NS-1' } {
+Rule 'Azure.PublicIP.IsAttached' -Ref 'AZR-000154' -Type 'Microsoft.Network/publicIPAddresses' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'NS-1' } {
     $Assert.HasFieldValue($TargetObject, 'Properties.ipConfiguration.id');
 }
 

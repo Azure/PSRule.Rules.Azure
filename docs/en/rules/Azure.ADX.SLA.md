@@ -1,5 +1,5 @@
 ---
-reviewed: 2022/01/18
+reviewed: 2022-01-18
 severity: Important
 pillar: Reliability
 category: Requirements
