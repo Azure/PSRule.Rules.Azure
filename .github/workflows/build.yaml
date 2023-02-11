@@ -71,7 +71,7 @@ jobs:
         if-no-files-found: error
 
   Test:
-    name: Test module (${{ matrix.rid }}-${{ matrix.shell }})
+    name: Test (${{ matrix.rid }}-${{ matrix.shell }})
     runs-on: ${{ matrix.os }}
     needs: Build
     permissions:
