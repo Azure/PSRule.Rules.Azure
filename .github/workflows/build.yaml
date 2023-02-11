@@ -118,6 +118,12 @@ jobs:
       timeout-minutes: 3
       run: ./.azure-pipelines/pipeline-deps.ps1
 
+    - if: ${{ matrix.shell == 'powershell' }}
+      name: Install dependencies (Windows PowerShell)
+      shell: powershell
+      timeout-minutes: 3
+      run: ./.azure-pipelines/pipeline-deps.ps1
+
     - name: Download module
       uses: actions/download-artifact@v3
       with:
@@ -127,5 +133,11 @@ jobs:
     - if: ${{ matrix.shell == 'pwsh' }}
       name: Test module (PowerShell)
       shell: pwsh
+      timeout-minutes: 15
+      run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
+
+    - if: ${{ matrix.shell == 'powershell' }}
+      name: Test module (Windows PowerShell)
+      shell: powershell
       timeout-minutes: 15
       run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
