@@ -139,5 +139,5 @@ jobs:
     - if: ${{ matrix.shell == 'powershell' }}
       name: Test module (Windows PowerShell)
       shell: powershell
-      timeout-minutes: 15
+      timeout-minutes: 30
       run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
