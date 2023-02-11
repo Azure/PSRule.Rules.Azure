@@ -5,7 +5,7 @@
 # NOTES:
 # Automatically updates provider data stored in data/ with the latest versions.
 
-name: BumpProviders
+name: Providers
 
 on:
   schedule:

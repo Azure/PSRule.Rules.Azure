@@ -33,6 +33,8 @@ What's changed since v1.24.1:
   - Added support for Bicep custom types by @BernieWhite.
     [#2026](https://github.com/Azure/PSRule.Rules.Azure/issues/2026)
 - Engineering:
+  - Updated build to use GitHub Actions by @BernieWhite.
+    [#1696](https://github.com/Azure/PSRule.Rules.Azure/issues/1696)
   - Bump BenchmarkDotNet to v0.13.4.
     [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
   - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.4.
