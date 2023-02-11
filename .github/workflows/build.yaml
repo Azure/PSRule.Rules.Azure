@@ -82,6 +82,9 @@ jobs:
       fail-fast: false
 
       matrix:
+        os: [ 'ubuntu-latest' ]
+        rid: [ 'linux-x64' ]
+        shell: [ 'pwsh' ]
         include:
           - os: windows-latest
             rid: win-x64
