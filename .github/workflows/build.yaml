@@ -71,7 +71,7 @@ jobs:
         if-no-files-found: error
 
   Test:
-    name: Test module (${{ matrix.rid }})
+    name: Test module (${{ matrix.rid }}-${{ matrix.shell }})
     runs-on: ${{ matrix.os }}
     needs: Build
     permissions:
@@ -85,12 +85,19 @@ jobs:
         include:
           - os: windows-latest
             rid: win-x64
+            shell: pwsh
+          - os: windows-latest
+            rid: win-x64
+            shell: powershell
           - os: ubuntu-latest
             rid: linux-x64
+            shell: pwsh
           - os: ubuntu-latest
             rid: linux-musl-x64
+            shell: pwsh
           - os: macos-latest
             rid: osx-x64
+            shell: pwsh
 
     steps:
 
@@ -103,7 +110,7 @@ jobs:
         dotnet-version: 6.x
 
     - name: Install dependencies
-      shell: pwsh
+      shell: ${{ matrix.shell }}
       timeout-minutes: 3
       run: ./.azure-pipelines/pipeline-deps.ps1
 
@@ -114,6 +121,6 @@ jobs:
         path: ./out/modules/PSRule.Rules.Azure
 
     - name: Test module
-      shell: pwsh
+      shell: ${{ matrix.shell }}
       timeout-minutes: 15
       run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
