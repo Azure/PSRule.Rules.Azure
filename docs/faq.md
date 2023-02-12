@@ -10,12 +10,16 @@ For general FAQ see [PSRule - Frequently Asked Questions (FAQ)][ps-rule-faq], in
 - [How is PSRule different to Pester?][11]
 - [How do I configure PSRule?][ps-rule-configure]
 - [How do I ignore a rule?][ignore-rule]
+- [How do exclude or ignore files from being processed?][13]
+- [How do I disable or suppress the not processed warning?][14]
 - [How do I layer on custom rules on top of an existing module?][add-custom-rule]
 
 !!! Note
     If you have a question that is not answered here, please [join or start a discussion][discussion].
 
   [discussion]: https://github.com/Azure/PSRule.Rules.Azure/discussions
+  [13]: https://microsoft.github.io/PSRule/v2/faq/#how-do-exclude-or-ignore-files-from-being-processed
+  [14]: https://microsoft.github.io/PSRule/v2/faq/#how-do-i-disable-or-suppress-the-not-processed-warning
 
 ## What is a rule?
 
@@ -138,14 +142,14 @@ the default built-in _Reader_ role to a subscription is required for:
 When exporting data for _in-flight_ analysis,
 no access to Azure is required after data has been exported to JSON.
 
-## Should I continue to use Azure Advisor, Security Center, or Azure Policy?
+## Should I continue to use Azure Advisor, Defender for Cloud, or Azure Policy?
 
 Absolutely.
-PSRule for Azure does not replace Azure Advisor, Security Center, or Azure Policy.
+PSRule for Azure does not replace Azure Advisor, Microsoft Defender for Cloud, or Azure Policy.
 
-PSRule complements Azure Advisor, Security Center, and Azure Policy features by:
+PSRule complements Azure Advisor, Microsoft Defender for Cloud, and Azure Policy features by:
 
-- Recommending turning on and using features of Azure Advisor, Azure Security Center, or Azure Policy.
+- Recommending turning on and using features of Azure Advisor, Microsoft Defender for Cloud, or Azure Policy.
 - Providing offline analysis in split environments where the analyst has no access to Azure subscriptions.
   Rule data for analysis can be exported out to a JSON file.
 - Providing the ability to analyze resources in Azure Resource Manager templates before deployment.

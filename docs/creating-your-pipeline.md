@@ -82,6 +82,7 @@ For a full list of parameters see the readme for [GitHub Actions][6] or [Azure P
 
 ### Limiting input to a specific path
 
+By default, PSRule will scan all files and folders within the repository or current working path.
 You can use the `inputPath` parameter to limit the analysis to a specific path.
 
 !!! Tip
@@ -361,8 +362,45 @@ suppression:
     Meaningful comments help during peer review within a Pull Request (PR).
     Also consider including a date if the exclusions or suppressions are temporary.
 
-  [3]: https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#ruleexclude
-  [4]: https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/#suppression
+  [3]: https://aka.ms/ps-rule/options#ruleexclude
+  [4]: https://aka.ms/ps-rule/options#suppression
+
+### Ignoring files
+
+[:octicons-book-24: Docs][10]
+
+To exclude or ignore files from being processed, configure the [Input.PathIgnore][10] option.
+This option allows you to ignore files using a path spec.
+
+To ignore files with common extensions, set the `Input.PathIgnore` option within the `ps-rule.yaml` file.
+
+```yaml title="ps-rule.yaml"
+input:
+  pathIgnore:
+  # Exclude files with these extensions
+  - '*.md'
+  - '*.png'
+  # Exclude specific configuration files
+  - 'bicepconfig.json'
+```
+
+To ignore all files with some exceptions, set the `Input.PathIgnore` option within the `ps-rule.yaml` file.
+
+```yaml title="ps-rule.yaml"
+input:
+  pathIgnore:
+  # Exclude all files
+  - '*'
+  # Only process deploy.bicep files
+  - '!**/deploy.bicep'
+```
+
+!!! Tip
+    Some common file exclusions are recommended for working with Azure Bicep source files.
+    See [Configuring path exclusions][11] for details.
+
+  [10]: https://aka.ms/ps-rule/options#inputpathignore
+  [11]: using-bicep.md#configuring-path-exclusions
 
 ### Advanced configuration
 
