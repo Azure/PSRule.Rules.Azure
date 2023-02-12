@@ -298,9 +298,11 @@
             <div class="flex-item">
                 <h1>PSRule for Azure</h1>
                 <h2 class="text-white">Azure · Continuous · Consistency.</h2>
-                <span class="text-white">Ready to go validation and governance controls for Azure Infrastructure as Code (IaC).</span>
+                <span class="text-white">Ready to go rules for testing Azure Infrastructure as Code (IaC).</span>
                 <div>
-                    <a class="link-arrow text-white mt-4 md-icon" href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | e }}">{% include ".icons/octicons/arrow-right-24.svg" %}Get started now</a>
+                    <a class="link-arrow text-white mt-4 md-icon" href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | e }}">{% include ".icons/octicons/arrow-right-24.svg" %}Learn more</a>
+                    <br>
+                    <a class="link-arrow text-white mt-4 md-icon" href="install-instructions/" title="Installation">{% include ".icons/octicons/arrow-right-24.svg" %}Get started now</a>
                     <br>
                     <a class="link-arrow text-white mt-4 md-icon" href="{{ config.repo_url }}" title="{{ config.repo_name }}">{% include ".icons/octicons/arrow-right-24.svg" %}Contribute on GitHub</a>
                 </div>
@@ -311,26 +313,46 @@
 <section class="section-block feature-block">
     <div class="md-grid">
         <div display="flex" class="flex-grid tile-grid">
-            
-            <a class="tile" href="{{ page.next_page.url | url }}#readytogo" target="_self" rel="noopener">
+            <a class="tile" href="features/#learn-by-example" target="_self" rel="noopener">
+                <div>
+                    {% include ".icons/octicons/light-bulb-24.svg" %}
+                    <h3 class="h4 text-brand font-weight-600 mb-3">Learn by example</h3>
+                    <p>Fix issues quickly, and learn how to improve your Infrastructure as Code.</p>
+                </div>
+            </a>
+            <a class="tile" href="features/#framework-aligned" target="_self" rel="noopener">
+                <div>
+                    {% include ".icons/octicons/verified-24.svg" %}
+                    <h3 class="h4 text-brand font-weight-600 mb-3">Framework aligned</h3>
+                    <p>Apply principals of Azure Well-Architected Framework to your workloads.</p>
+                </div>
+            </a>
+            <a class="tile" href="features/#start-day-one" target="_self" rel="noopener">
                 <div>
                     {% include ".icons/octicons/rocket-24.svg" %}
-                    <h3 class="h4 text-brand font-weight-600 mb-3">Ready to go</h3>
+                    <h3 class="h4 text-brand font-weight-600 mb-3">Start day one</h3>
                     <p>Leverage over 340 pre-built rules to test Azure resources.</p>
                 </div>
             </a>
-            <a class="tile" href="{{ page.next_page.url | url }}#devops" target="_self" rel="noopener">
+            <a class="tile" href="features/#devops-integrated" target="_self" rel="noopener">
                 <div>
                     {% include ".icons/octicons/infinity-24.svg" %}
-                    <h3 class="h4 text-brand font-weight-600 mb-3">DevOps</h3>
-                    <p>Validate resources and infrastructure code pre or post-deployment.</p>
+                    <h3 class="h4 text-brand font-weight-600 mb-3">DevOps integrated</h3>
+                    <p>Test Azure infrastructure as code such as Bicep or Azure Resource Manager templates.</p>
                 </div>
             </a>
-            <a class="tile" href="{{ page.next_page.url | url }}#cross-platform" target="_self" rel="noopener">
+            <a class="tile" href="features/#cross-platform" target="_self" rel="noopener">
                 <div>
                     {% include ".icons/octicons/cpu-24.svg" %}
                     <h3 class="h4 text-brand font-weight-600 mb-3">Cross-platform</h3>
-                    <p>Run on MacOS, Linux, and Windows.</p>
+                    <p>Run locally or in the cloud on MacOS, Linux, and Windows.</p>
+                </div>
+            </a>
+            <a class="tile" href="license-contributing/" target="_self" rel="noopener">
+                <div>
+                    {% include ".icons/octicons/code-of-conduct-24.svg" %}
+                    <h3 class="h4 text-brand font-weight-600 mb-3">Open community</h3>
+                    <p>Open source rules for the Azure community.</p>
                 </div>
             </a>
         </div>
