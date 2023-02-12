@@ -18,4 +18,11 @@ PSRule for Azure uses the principles of the Azure Well-Architected Framework (WA
 - **Link to documentation** &mdash; to learn how this applies to your environment.
 - **Demonstrate** &mdash; how you can implement the change with examples.
 
+## Introducing PSRule for Azure
+
+An introduction to PSRule for Azure and how it relates to the Azure Well-Architected Framework.
+We also give an quick overview of baselines, handling exceptions, and reporting options.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/L4CIDqnXLPk" title="YouTube - Introducing PSRule for Azure" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 *[IaC]: Infrastructure as Code
