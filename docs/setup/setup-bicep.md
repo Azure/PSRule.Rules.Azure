@@ -152,3 +152,8 @@ configuration:
 ```
 
   [7]: configuring-expansion.md#bicep-compilation-timeout
+
+## Recommended content
+
+- [Using Bicep source](../using-bicep.md)
+- [Restoring modules from a private registry](../using-bicep.md#restoring-modules-from-a-private-registry)
