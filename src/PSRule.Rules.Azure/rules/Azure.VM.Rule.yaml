@@ -116,7 +116,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.VM.ShouldNotBeStopped
-  ref: AZR-123346
+  ref: AZR-000351
   tags:
     release: 'GA'
     ruleSet: '2023_03'
@@ -124,6 +124,8 @@ metadata:
 spec:
   type:
   - Microsoft.Compute/virtualMachines
+  with:
+  - PSRule.Rules.Azure\Azure.Resource.Export
   condition:
     field: PowerState
     notMatch: PowerState/stopped

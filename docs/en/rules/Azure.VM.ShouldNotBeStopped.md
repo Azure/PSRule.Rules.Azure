@@ -24,4 +24,5 @@ Consider fully deallocating VMs instead of stopping VMs to reduce cost.
 
 ## LINKS
 
+- [Shut down underutilized instances](https://learn.microsoft.com/azure/architecture/framework/cost/optimize-vm#shut-down-underutilized-instances)
 - [States and billing status of Azure Virtual Machines](https://learn.microsoft.com/azure/virtual-machines/states-billing)
