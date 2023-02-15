@@ -714,6 +714,20 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Indy", dogsByAge["value"][3]["name"].Value<string>());
         }
 
+        [Fact]
+        public void CustomTypes()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.14.json"), null);
+            Assert.NotNull(resources);
+        }
+
+        [Fact]
+        public void ObjectToNull()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.15.json"), null, out _);
+            Assert.NotNull(resources);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

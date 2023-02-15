@@ -24,10 +24,74 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.24.1:
+
+- New features:
+  - Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Beanchmark by @BernieWhite.
+    [#1634](https://github.com/Azure/PSRule.Rules.Azure/issues/1634)
+- General improvements:
+  - Added support for Bicep custom types by @BernieWhite.
+    [#2026](https://github.com/Azure/PSRule.Rules.Azure/issues/2026)
+- Engineering:
+  - Updated build to use GitHub Actions by @BernieWhite.
+    [#1696](https://github.com/Azure/PSRule.Rules.Azure/issues/1696)
+  - Bump BenchmarkDotNet to v0.13.4.
+    [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.4.
+    [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
 - New rules:
   - Virtual Machine:
     - Virtual machines should be fully dealocatted and not stopped by @dcrreynolds
       [#88](https://github.com/Azure/PSRule.Rules.Azure/issues/88)
+
+## v1.24.1
+
+What's changed since v1.24.0:
+
+- Bug fixes:
+  - Fixes Bicep expand object or null by @BernieWhite.
+    [#2021](https://github.com/Azure/PSRule.Rules.Azure/issues/2021)
+
+## v1.24.0
+
+What's changed since v1.23.0:
+
+- General improvements:
+  - Updated `Export-AzRuleData` to improve export performance by @BernieWhite.
+    [#1341](https://github.com/Azure/PSRule.Rules.Azure/issues/1341)
+    - Removed `Az.Resources` dependency.
+    - Added async threading for export concurrency.
+    - Improved performance by using automatic look up of API versions by using provider cache.
+  - Added support for Bicep lambda functions by @BernieWhite.
+    [#1536](https://github.com/Azure/PSRule.Rules.Azure/issues/1536)
+    - Bicep `filter`, `map`, `reduce`, and `sort` are supported.
+    - Support for `flatten` was previously added in v1.23.0.
+  - Added optimization for policy type conditions by @BernieWhite.
+    [#1966](https://github.com/Azure/PSRule.Rules.Azure/issues/1966)
+- Engineering:
+  - Bump PSRule to v2.7.0.
+    [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
+  - Updated resource providers and policy aliases.
+    [#1736](https://github.com/Azure/PSRule.Rules.Azure/pull/1736)
+  - Bump Az.Resources to v6.5.1.
+    [#1973](https://github.com/Azure/PSRule.Rules.Azure/pull/1973)
+  - Bump Newtonsoft.Json to v13.0.2.
+    [#1903](https://github.com/Azure/PSRule.Rules.Azure/pull/1903)
+  - Bump Pester to v5.4.0.
+    [#1994](https://github.com/Azure/PSRule.Rules.Azure/pull/1994)
+- Bug fixes:
+  - Fixed `Export-AzRuleData` may not export all data if throttled by @BernieWhite.
+    [#1341](https://github.com/Azure/PSRule.Rules.Azure/issues/1341)
+  - Fixed failed to expand nested deployment with runtime shallow parameter by @BernieWhite.
+    [#2004](https://github.com/Azure/PSRule.Rules.Azure/issues/2004)
+  - Fixed `apiVersion` comparison of `requestContext` by @BernieWhite.
+    [#1654](https://github.com/Azure/PSRule.Rules.Azure/issues/1654)
+  - Fixed simple cases for field type expressions by @BernieWhite.
+    [#1323](https://github.com/Azure/PSRule.Rules.Azure/issues/1323)
+
+What's changed since pre-release v1.24.0-B0035:
+
+- No additional changes.
 
 ## v1.24.0-B0035 (pre-release)
 

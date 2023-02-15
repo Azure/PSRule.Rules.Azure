@@ -85,7 +85,9 @@ nav:
     - Index: en/rules/index.md
     - By pillar: en/rules/module.md
     - By resource: en/rules/resource.md
-    - Azure Security Benchmark: en/asb-v3.md
+    - Microsoft Cloud Security Benchmark: en/mcsb-v1.md
+  - Learn:
+    - Learn PSRule for Azure series: learn/learn-video-series.md
 
 markdown_extensions:
   - admonition
@@ -125,6 +127,7 @@ plugins:
     redirect_maps:
       using-metadata.md: using-templates.md
       customization/index.md: customization/storing-custom-rules.md
+      en/asb-v3.md: en/mcsb-v1.md
 
 extra:
   version:

@@ -5,25 +5,36 @@ discussion: false
 
 # Features
 
+## Learn by example
+
+PSRule for Azure helps you quickly identify and fix issues to improve the quality of solutions deployed on Azure.
+Tests include documentation with offical documentation references and examples.
+Use the Azure Bicep or template examples to adapt your solution to recommendations.
+
 ## Framework aligned
 
 PSRule for Azure is aligned to the [Azure Well-Architected Framework (WAF)][2].
 Tests called _rules_ check the configuration of Azure resources against WAF principles.
 Rules exist across five (5) WAF pillars:
 
-- Cost Optimization
-- Operational Excellence
-- Performance Efficiency
-- Reliability
-- Security
+- [Cost Optimization][9]
+- [Operational Excellence][10]
+- [Performance Efficiency][11]
+- [Reliability][12]
+- [Security][13]
 
 To help you align your Infrastructure as Code (IaC) to WAF principles, PSRule for Azure includes documentation.
 Included are examples, references to WAF and product documentation.
 This allows you to explore and learn the context of each WAF principle.
 
   [2]: https://learn.microsoft.com/azure/architecture/framework/
+  [9]: en/rules/module.md#cost-optimization
+  [10]: en/rules/module.md#operational-excellence
+  [11]: en/rules/module.md#performance-efficiency
+  [12]: en/rules/module.md#reliability
+  [13]: en/rules/module.md#security
 
-## Ready to go
+## Start day one
 
 PSRule for Azure includes over 340 rules for validating resources against configuration recommendations.
 Rules automatically detect and analyze resources from Azure IaC artifacts.
@@ -47,7 +58,7 @@ As new built-in rules are added and improved, download the latest version to sta
 ## DevOps integrated
 
 Azure resources can be validated throughout their lifecycle to support a DevOps culture.
-From as early as authoring an ARM template, resources can be validated offline before deployment.
+Start testing your Bicep and ARM templates from code by validating them offline before deployment.
 
 Pre-flight validation can be integrated into a continuous integration (CI) pipeline as unit tests to:
 

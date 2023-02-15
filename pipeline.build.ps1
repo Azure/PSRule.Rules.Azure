@@ -382,7 +382,7 @@ task BuildRuleDocs Build, Dependencies, {
             Synopsis = $_.Info.Synopsis
             Recommendation = $_.Info.Recommendation
             Pillar = $_.Tag.'Azure.WAF/pillar'
-            Control = $_.Tag.'Azure.ASB.v3/control'
+            Control = $_.Tag.'Azure.MCSB.v1/control'
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;
@@ -406,7 +406,7 @@ task BuildRuleDocs Build, Dependencies, {
             Synopsis = $_.Info.Synopsis
             Recommendation = $_.Info.Recommendation
             Pillar = $_.Tag.'Azure.WAF/pillar'
-            Control = $_.Tag.'Azure.ASB.v3/control'
+            Control = $_.Tag.'Azure.MCSB.v1/control'
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/es/rules/metadata.json -Force;

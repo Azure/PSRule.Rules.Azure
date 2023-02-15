@@ -6,14 +6,20 @@ A suite of rules to validate Azure resources and infrastructure as code (IaC) us
 
 Features of PSRule for Azure include:
 
-- [Ready to go][2] - Leverage over 340 pre-built rules to validate Azure resources.
-- [DevOps][3] - Validate resources and infrastructure code pre or post-deployment.
-- [Cross-platform][4] - Run on MacOS, Linux, and Windows.
+- [Learn by example][6] - Fix issues quickly, and learn how to improve your Infrastructure as Code..
+- [Framework aligned][7] - Apply principals of Azure Well-Architected Framework to your workloads.
+- [Start day one][2] - Leverage over 340 pre-built rules to test Azure resources.
+- [DevOps integrated][3] - Test Azure infrastructure as code such as Bicep or Azure Resource Manager templates.
+- [Cross-platform][4] - Run locally or in the cloud on MacOS, Linux, and Windows.
+- [Open community][8] - Open source rules for the Azure community.
 
   [1]: https://vscode.dev/github/Azure/PSRule.Rules.Azure
-  [2]: https://azure.github.io/PSRule.Rules.Azure/features/#readytogo
-  [3]: https://azure.github.io/PSRule.Rules.Azure/features/#devops
+  [2]: https://azure.github.io/PSRule.Rules.Azure/features/#start-day-one
+  [3]: https://azure.github.io/PSRule.Rules.Azure/features/#devops-integrated
   [4]: https://azure.github.io/PSRule.Rules.Azure/features/#cross-platform
+  [6]: https://azure.github.io/PSRule.Rules.Azure/features/#learn-by-example
+  [7]: https://azure.github.io/PSRule.Rules.Azure/features/#framework-aligned
+  [8]: https://azure.github.io/PSRule.Rules.Azure/license-contributing/
 
 ## Project objectives
 
@@ -97,7 +103,7 @@ jobs:
 
     # STEP 2: Run analysis against exported data
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.6.0
+      uses: microsoft/ps-rule@v2.7.0
       with:
         modules: 'PSRule.Rules.Azure'  # Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.
 ```
@@ -313,12 +319,14 @@ The following baselines are included within `PSRule.Rules.Azure`.
 - [Azure.GA_2022_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_03/) - Baseline for GA rules released March 2022 or prior.
 - [Azure.GA_2022_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_06/) - Baseline for GA rules released June 2022 or prior.
 - [Azure.GA_2022_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_09/) - Baseline for GA rules released September 2022 or prior.
+- [Azure.GA_2022_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_12/) - Baseline for GA rules released December 2022 or prior.
 - [Azure.Preview](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview/) - Includes rules for Azure GA and preview features.
 - [Azure.Preview_2021_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2021_09/) - Baseline for rules released September 2021 or prior for Azure preview only features.
 - [Azure.Preview_2021_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2021_12/) - Baseline for rules released December 2021 or prior for Azure preview only features.
 - [Azure.Preview_2022_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_03/) - Baseline for rules released March 2022 or prior for Azure preview only features.
 - [Azure.Preview_2022_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_06/) - Baseline for rules released June 2022 or prior for Azure preview only features.
 - [Azure.Preview_2022_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_09/) - Baseline for rules released September 2022 or prior for Azure preview only features.
+- [Azure.Preview_2022_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_12/) - Baseline for rules released December 2022 or prior for Azure preview only features.
 
 ## Language reference
 

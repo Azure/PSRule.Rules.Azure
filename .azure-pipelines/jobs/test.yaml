@@ -51,7 +51,7 @@ jobs:
   - task: PowerShell@2
     inputs:
       targetType: inline
-      script: ./.azure-pipelines/pipeline-deps.ps1
+      script: ./scripts/pipeline-deps.ps1
       pwsh: ${{ parameters.pwsh }}
     displayName: 'Install dependencies'
 

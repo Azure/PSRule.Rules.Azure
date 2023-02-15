@@ -130,65 +130,6 @@ To do this configure `ps-rule.yaml` with the `input.pathIgnore` option.
 !!! Note
     In this example, Bicep files such as `deploy.bicep` in other directories will be expanded.
 
-### Restoring modules from a private registry
-
-Bicep modules can be stored in a private registry.
-Storing modules in a private registry gives you a central location to reference modules across your organization.
-
-To test Bicep deployments which uses modules stored in a private registry, these modules must be restored.
-The restore process automatically occurs when PSRule is run, however must be authenticated.
-
-To authenticate to a private registry configure `bicepconfig.json` by setting [credentialPrecedence][3].
-This setting determines the order to find a credential to use when authenticating to the registry.
-
-You may need to [configure credentials][4] to access the private registry from a CI pipeline.
-
-=== "GitHub Actions"
-
-    Configure the `microsoft/ps-rule` action with Azure environment variables.
-
-    ```yaml
-    - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.6.0
-      with:
-        modules: PSRule.Rules.Azure,PSRule.Monitor
-        conventions: Monitor.LogAnalytics.Import
-      env:
-        # Define environment variables using GitHub encrypted secrets
-        AZURE_CLIENT_ID: ${{ secrets.BICEP_REGISTRY_CLIENTID }}
-        AZURE_CLIENT_SECRET: ${{ secrets.BICEP_REGISTRY_CLIENTSECRET }}
-        AZURE_TENANT_ID: ${{ secrets.BICEP_REGISTRY_TENANTID }}
-    ```
-
-    !!! Important
-        Environment variables can be configured in the workflow or from a secret.
-        To keep `BICEP_REGISTRY_CLIENTSECRET` secure, use an [encrypted secret][5].
-
-=== "Azure Pipelines"
-
-    Configure the `ps-rule-assert` task with Azure environment variables.
-
-    ```yaml
-    - task: ps-rule-assert@2
-      displayName: Analyze Azure template files
-      inputs:
-        modules: 'PSRule.Rules.Azure'
-      env:
-        # Define environment variables within Azure Pipelines
-        AZURE_CLIENT_ID: $(BICEPREGISTRYCLIENTID)
-        AZURE_CLIENT_SECRET: $(BICEPREGISTRYCLIENTSECRET)
-        AZURE_TENANT_ID: $(BICEPREGISTRYTENANTID)
-    ```
-
-    !!! Important
-        Variables can be configured in YAML, on the pipeline, or referenced from a defined variable group.
-        To keep `BICEPREGISTRYCLIENTSECRET` secure, use a [variable group][6] linked to an Azure Key Vault.
-
-  [3]: https://docs.microsoft.com/azure/azure-resource-manager/bicep/bicep-config#credential-precedence
-  [4]: https://docs.microsoft.com/dotnet/api/azure.identity.environmentcredential
-  [5]: https://docs.github.com/actions/reference/encrypted-secrets
-  [6]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
-
 ### Using parameter files
 
 When using Bicep, you don't need to use parameter files.
@@ -238,6 +179,134 @@ This option will discover Bicep files from parameter metadata.
     ```
 
   [7]: using-templates.md#by-metadata
+
+## Restoring modules from a private registry
+
+Bicep modules can be stored in a private registry.
+Storing modules in a private registry gives you a central location to reference modules across your organization.
+
+To test Bicep deployments which uses modules stored in a private registry, these modules must be restored.
+The restore process automatically occurs when PSRule is run, however some additional steps are required to authenticate.
+
+To configure authentication to a private registry:
+
+- [Configure `bicepconfig.json`](#configure-bicepconfigjson)
+- [Granting access to a private registry](#granting-access-to-a-private-registry)
+- [Set pipeline environment variables](#set-pipeline-environment-variables)
+
+!!! Note
+    Currently it is not possible to connect to a private registry without any authentication.
+    See issue [#2015][10] for details on annoymous access.
+
+  [10]: https://github.com/Azure/PSRule.Rules.Azure/issues/2015
+
+### Configure `bicepconfig.json`
+
+To authenticate to a private registry, configure `bicepconfig.json` by setting [credentialPrecedence][3].
+This setting determines the order to find a credential to use when authenticating to the registry.
+
+Use the following credential type based on your environment as the first value of the [credentialPrecedence][3] setting:
+
+- `Environment` &mdash; Use environment variables to authenticate to the registry.
+  This is the most common scenario for CI pipelines and works for cloud-hosted or self-hosted agents/ private runners.
+- `ManagedIdentity` &mdash; Use a managed identity to authenticate to the registry.
+  This may be applicable for scenarios where you are using self-hosted agents or private runners.
+  You must [configure a System-Assigned managed identity][9] for the Azure Virtual Machine or Virtual Machine Scale Set.
+
+!!! Example "Example `bicepconfig.json`"
+
+    ```json
+    {
+      "credentialPrecedence": [
+        "Environment",
+        "AzureCLI",
+      ]
+    }
+    ```
+
+!!! Tip
+    The `bicepconfig.json` configures the Bicep CLI.
+    You should commit this file into a repository along with your Bicep code.
+
+  [9]: https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview
+
+### Granting access to a private registry
+
+To access a private registry use an Azure AD identity which has been granted permissions to pull Bicep modules.
+When using `Environment` credential type, see [create a service principal that can access resources][11] to create the identity.
+If you are using the `ManagedIdentity` credential type, an identity is created for when you [configure the managed identity][9].
+
+After configuring the identity, [grant access using the `AcrPull`][12] built-in RBAC role on the Azure Container Registry.
+
+  [12]: https://learn.microsoft.com/azure/container-registry/container-registry-faq#how-do-i-grant-access-to-pull-or-push-images-without-permission-to-manage-the-registry-resource-
+
+### Set pipeline environment variables
+
+When using the `Environment` credential type, environment variables should be set in the pipeline.
+Typically, the following three environment variables should be set:
+
+- `AZURE_CLIENT_ID` &mdash; The Client ID (also called Application ID) of an App Registration in Azure AD.
+  This will be represented as a GUID.
+- `AZURE_CLIENT_SECRET` &mdash; A valid secret that was generated for the App Registration.
+- `AZURE_TENANT_ID` &mdash; The Tenant ID that identifies your specific Azure AD tenant where your App Registration is created.
+  This will be represented as a GUID.
+
+!!! Note
+    The environment credential type also supports other environment variables that may be applicable to your environment.
+    To see a list visit [EnvironmentCredential Class][4].
+
+=== "GitHub Actions"
+
+    Configure the `microsoft/ps-rule` action with Azure environment variables.
+
+    ```yaml
+    - name: Analyze Azure template files
+      uses: microsoft/ps-rule@v2.7.0
+      with:
+        modules: PSRule.Rules.Azure,PSRule.Monitor
+        conventions: Monitor.LogAnalytics.Import
+      env:
+        # Define environment variables using GitHub encrypted secrets
+        AZURE_CLIENT_ID: ${{ secrets.BICEP_REGISTRY_CLIENTID }}
+        AZURE_CLIENT_SECRET: ${{ secrets.BICEP_REGISTRY_CLIENTSECRET }}
+        AZURE_TENANT_ID: ${{ secrets.BICEP_REGISTRY_TENANTID }}
+    ```
+
+    !!! Important
+        Environment variables can be configured in the workflow or from a secret.
+        To keep `BICEP_REGISTRY_CLIENTSECRET` secure, use an [encrypted secret][5].
+
+=== "Azure Pipelines"
+
+    Configure the `ps-rule-assert` task with Azure environment variables.
+
+    ```yaml
+    - task: ps-rule-assert@2
+      displayName: Analyze Azure template files
+      inputs:
+        modules: 'PSRule.Rules.Azure'
+      env:
+        # Define environment variables within Azure Pipelines
+        AZURE_CLIENT_ID: $(BICEPREGISTRYCLIENTID)
+        AZURE_CLIENT_SECRET: $(BICEPREGISTRYCLIENTSECRET)
+        AZURE_TENANT_ID: $(BICEPREGISTRYTENANTID)
+    ```
+
+    !!! Important
+        Variables can be configured in YAML, on the pipeline, or referenced from a defined variable group.
+        To keep `BICEPREGISTRYCLIENTSECRET` secure, use a [variable group][6] linked to an Azure Key Vault.
+
+  [3]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-config-modules#configure-profiles-and-credentials
+  [4]: https://docs.microsoft.com/dotnet/api/azure.identity.environmentcredential
+  [5]: https://docs.github.com/actions/reference/encrypted-secrets
+  [6]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
+  [11]: https://learn.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+
+## Recommended content
+
+- [Setup Bicep](setup/setup-bicep.md)
+- [Bicep compilation timeout](setup/configuring-expansion.md#bicep-compilation-timeout)
+- [Troubleshooting](troubleshooting.md)
 
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager

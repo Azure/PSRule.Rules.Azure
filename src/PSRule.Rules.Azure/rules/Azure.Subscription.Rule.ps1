@@ -8,7 +8,7 @@
 #region RBAC
 
 # Synopsis: Use groups for assigning permissions instead of individual user accounts
-Rule 'Azure.RBAC.UseGroups' -Ref 'AZR-000203' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'PA-7' } {
+Rule 'Azure.RBAC.UseGroups' -Ref 'AZR-000203' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'PA-7' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.ObjectType -eq 'User'
@@ -19,7 +19,7 @@ Rule 'Azure.RBAC.UseGroups' -Ref 'AZR-000203' -Type 'Microsoft.Subscription' -Ta
 }
 
 # Synopsis: Limit the number of subscription Owners
-Rule 'Azure.RBAC.LimitOwner' -Ref 'AZR-000204' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'PA-7' } {
+Rule 'Azure.RBAC.LimitOwner' -Ref 'AZR-000204' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'PA-7' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.RoleDefinitionName -eq 'Owner' -and
@@ -32,7 +32,7 @@ Rule 'Azure.RBAC.LimitOwner' -Ref 'AZR-000204' -Type 'Microsoft.Subscription' -T
 }
 
 # Synopsis: Limit RBAC inheritance from Management Groups
-Rule 'Azure.RBAC.LimitMGDelegation' -Ref 'AZR-000205' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'PA-7' } {
+Rule 'Azure.RBAC.LimitMGDelegation' -Ref 'AZR-000205' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'PA-7' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         ($_.Scope -like "/providers/Microsoft.Management/managementGroups/*")
@@ -43,7 +43,7 @@ Rule 'Azure.RBAC.LimitMGDelegation' -Ref 'AZR-000205' -Type 'Microsoft.Subscript
 }
 
 # Synopsis: Avoid using classic co-administrator roles
-Rule 'Azure.RBAC.CoAdministrator' -Ref 'AZR-000206' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'PA-7' } {
+Rule 'Azure.RBAC.CoAdministrator' -Ref 'AZR-000206' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'PA-7' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.RoleDefinitionName -eq 'CoAdministrator'
@@ -54,7 +54,7 @@ Rule 'Azure.RBAC.CoAdministrator' -Ref 'AZR-000206' -Type 'Microsoft.Subscriptio
 }
 
 # Synopsis: Use RBAC assignments on resource groups instead of individual resources
-Rule 'Azure.RBAC.UseRGDelegation' -Ref 'AZR-000207' -Type 'Microsoft.Resources/resourceGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'PA-7' } {
+Rule 'Azure.RBAC.UseRGDelegation' -Ref 'AZR-000207' -Type 'Microsoft.Resources/resourceGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'PA-7' } {
     $assignments = @($TargetObject.resources | Where-Object {
         $_.ResourceType -eq 'Microsoft.Authorization/roleAssignments' -and
         $_.Scope -like "/subscriptions/*/resourceGroups/*/providers/*"
@@ -65,7 +65,7 @@ Rule 'Azure.RBAC.UseRGDelegation' -Ref 'AZR-000207' -Type 'Microsoft.Resources/r
 }
 
 # Synopsis: Use JiT role activation with PIM
-Rule 'Azure.RBAC.PIM' -Ref 'AZR-000208' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'PA-7' } {
+Rule 'Azure.RBAC.PIM' -Ref 'AZR-000208' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'PA-7' } {
     # Get PIM assignment
     $assignments = @(GetSubResources -ResourceType 'Microsoft.Authorization/roleAssignments' | Where-Object {
         $_.DisplayName -eq 'MS-PIM' -and $_.ObjectType -eq 'ServicePrincipal'
@@ -93,7 +93,7 @@ Rule 'Azure.DefenderCloud.Contact' -Alias 'Azure.SecurityCenter.Contact' -Ref 'A
 # TODO: Check Security Center recommendations
 
 # Synopsis: Enable auto-provisioning on VMs to improve Microsoft Defender for Cloud insights
-Rule 'Azure.DefenderCloud.Provisioning' -Alias 'Azure.SecurityCenter.Provisioning' -Ref 'AZR-000210' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'LT-4' } {
+Rule 'Azure.DefenderCloud.Provisioning' -Alias 'Azure.SecurityCenter.Provisioning' -Ref 'AZR-000210' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4' } {
     $provisioning = @(GetSubResources -ResourceType 'Microsoft.Security/autoProvisioningSettings');
     $Null -ne $provisioning -and $provisioning.Length -gt 0;
     foreach ($s in $provisioning) {
@@ -109,7 +109,7 @@ Rule 'Azure.DefenderCloud.Provisioning' -Alias 'Azure.SecurityCenter.Provisionin
 #region Monitor
 
 # Synopsis: Configure Azure service logs
-Rule 'Azure.Monitor.ServiceHealth' -Ref 'AZR-000211' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.ASB.v3/control' = 'LT-4' } {
+Rule 'Azure.Monitor.ServiceHealth' -Ref 'AZR-000211' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4' } {
     $alerts = @(GetSubResources -ResourceType 'microsoft.insights/activityLogAlerts' | Where-Object {
         @($_.Properties.condition.allOf | Where-Object { $_.field -eq 'category' -and $_.equals -eq 'ServiceHealth' }).Length -gt 0
     });

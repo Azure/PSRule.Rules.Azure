@@ -65,6 +65,7 @@ Describe 'Bicep' -Tag 'Bicep' {
             try {
                 # Install CLI
                 az bicep install
+                az bicep upgrade
 
                 # Expand source files
                 $option = @{

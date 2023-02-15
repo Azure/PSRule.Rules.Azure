@@ -63,6 +63,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_GENERATOR = "_generator";
         private const string PROPERTY_CONDITION = "condition";
         private const string PROPERTY_DEPENDSON = "dependsOn";
+        private const string PROPERTY_DEFINITIONS = "definitions";
+        private const string PROPERTY_REF = "$ref";
 
         internal sealed class TemplateContext : ITemplateContext
         {
@@ -81,6 +83,7 @@ namespace PSRule.Rules.Azure.Data.Template
             private readonly Dictionary<string, JToken> _ParameterAssignments;
             private readonly TemplateValidator _Validator;
             private readonly HashSet<object> _SecureValues;
+            private readonly Dictionary<string, ITypeDefinition> _Definitions;
 
             private DeploymentValue _CurrentDeployment;
             private bool? _IsGenerated;
@@ -106,6 +109,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _Validator = new TemplateValidator();
                 _IsGenerated = null;
                 _SecureValues = new HashSet<object>();
+                _Definitions = new Dictionary<string, ITypeDefinition>(StringComparer.OrdinalIgnoreCase);
             }
 
             internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, ParameterDefaultsOption parameterDefaults)
@@ -224,7 +228,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (string.IsNullOrEmpty(name) || output == null || _CurrentDeployment == null)
                     return;
 
-                _CurrentDeployment.AddOutput(name, new LazyOutput(this, output));
+                _CurrentDeployment.AddOutput(name, new LazyOutput(this, name, output));
             }
 
             public void WriteDebug(string message, params object[] args)
@@ -529,7 +533,7 @@ namespace PSRule.Rules.Azure.Data.Template
             /// </summary>
             internal void TrackSecureValue(string name, ParameterType type, object value)
             {
-                if (value == null || !(type == ParameterType.SecureString || type == ParameterType.SecureObject) ||
+                if (value == null || !(type.Type == TypePrimitive.SecureString || type.Type == TypePrimitive.SecureObject) ||
                     (value is JValue jValue && jValue.IsEmpty()))
                     return;
 
@@ -561,23 +565,23 @@ namespace PSRule.Rules.Azure.Data.Template
             internal bool TryParameterDefault(string parameterName, ParameterType type, out JToken value)
             {
                 value = default;
-                switch (type)
+                switch (type.Type)
                 {
-                    case ParameterType.String:
-                    case ParameterType.SecureString:
+                    case TypePrimitive.String:
+                    case TypePrimitive.SecureString:
                         return ParameterDefaults.TryGetString(parameterName, out value);
 
-                    case ParameterType.Bool:
+                    case TypePrimitive.Bool:
                         return ParameterDefaults.TryGetBool(parameterName, out value);
 
-                    case ParameterType.Int:
+                    case TypePrimitive.Int:
                         return ParameterDefaults.TryGetLong(parameterName, out value);
 
-                    case ParameterType.Array:
+                    case TypePrimitive.Array:
                         return ParameterDefaults.TryGetArray(parameterName, out value);
 
-                    case ParameterType.Object:
-                    case ParameterType.SecureObject:
+                    case TypePrimitive.Object:
+                    case TypePrimitive.SecureObject:
                         return ParameterDefaults.TryGetObject(parameterName, out value);
 
                     default:
@@ -644,15 +648,17 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (!Parameters.TryGetValue(parameterName, out var value))
                     return;
 
-                if (value.Type == ParameterType.String && !string.IsNullOrEmpty(value.GetValue() as string))
+                if (value.Type.Type == TypePrimitive.String && !string.IsNullOrEmpty(value.GetValue() as string))
                     _Validator.ValidateParameter(this, value.Type, parameterName, parameter, value.GetValue() as string);
             }
 
             internal void CheckOutput(string outputName, JObject output)
             {
-                var type = GetParameterType(output);
+                if (!TryParameterType(this, output, out var type))
+                    throw ThrowTemplateOutputException(outputName);
+
                 output.TryGetProperty<JToken>(PROPERTY_VALUE, out var value);
-                _Validator.ValidateOutput(this, type, outputName, output, value);
+                _Validator.ValidateOutput(this, type.Value, outputName, output, value);
             }
 
             private static object ConvertType(object value)
@@ -681,6 +687,16 @@ namespace PSRule.Rules.Azure.Data.Template
             public bool TryLambdaVariable(string variableName, out object value)
             {
                 throw new NotImplementedException();
+            }
+
+            internal void AddDefinition(string definitionName, ITypeDefinition definition)
+            {
+                _Definitions.Add(definitionName, definition);
+            }
+
+            public bool TryDefinition(string definitionName, out ITypeDefinition definition)
+            {
+                return _Definitions.TryGetValue(definitionName, out definition);
             }
         }
 
@@ -799,11 +815,14 @@ namespace PSRule.Rules.Azure.Data.Template
             private readonly JObject _Value;
             private readonly ParameterType _Type;
 
-            public LazyOutput(TemplateContext context, JObject value)
+            public LazyOutput(TemplateContext context, string name, JObject value)
             {
                 _Context = context;
                 _Value = value;
-                _Type = GetParameterType(value);
+                if (!TryParameterType(context, value, out var type))
+                    throw ThrowTemplateOutputException(name);
+
+                _Type = type.Value;
             }
 
             public object GetValue()
@@ -837,6 +856,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 if (TryStringProperty(template, PROPERTY_CONTENTVERSION, out var contentVersion))
                     ContentVersion(context, contentVersion);
+
+                // Handle custom type definitions
+                if (TryObjectProperty(template, PROPERTY_DEFINITIONS, out var definitions))
+                    Definitions(context, definitions);
 
                 // Handle compile time function variables
                 if (TryObjectProperty(template, PROPERTY_VARIABLES, out var variables))
@@ -878,6 +901,36 @@ namespace PSRule.Rules.Azure.Data.Template
 
         }
 
+        #region Definitions
+
+        protected virtual void Definitions(TemplateContext context, JObject definitions)
+        {
+            if (definitions == null || definitions.Count == 0)
+                return;
+
+            foreach (var definition in definitions)
+                Definition(context, definition.Key, definition.Value as JObject);
+        }
+
+        protected virtual void Definition(TemplateContext context, string definitionName, JObject definition)
+        {
+            if (TryDefinition(definition, out var value))
+                context.AddDefinition($"#/definitions/{definitionName}", value);
+        }
+
+        private static bool TryDefinition(JObject definition, out ITypeDefinition value)
+        {
+            value = null;
+            if (!definition.TryGetProperty(PROPERTY_TYPE, out var t) ||
+                !Enum.TryParse(t, ignoreCase: true, result: out TypePrimitive type))
+                return false;
+
+            value = new TypeDefinition(type, definition);
+            return true;
+        }
+
+        #endregion Definitions
+
         #region Parameters
 
         protected virtual void Parameters(TemplateContext context, JObject parameters)
@@ -910,8 +963,10 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!context.TryParameterAssignment(parameterName, out var value))
                 return false;
 
-            var type = GetParameterType(parameter);
-            AddParameterFromType(context, parameterName, type, value);
+            if (!TryParameterType(context, parameter, out var type))
+                throw ThrowTemplateParameterException(parameterName);
+
+            AddParameterFromType(context, parameterName, type.Value, value);
             return true;
         }
 
@@ -923,38 +978,56 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!parameter.ContainsKey(PROPERTY_DEFAULTVALUE))
                 return false;
 
-            var type = GetParameterType(parameter);
+            if (!TryParameterType(context, parameter, out var type))
+                throw ThrowTemplateParameterException(parameterName);
+
             var defaultValue = parameter[PROPERTY_DEFAULTVALUE];
-            AddParameterFromType(context, parameterName, type, defaultValue);
+            AddParameterFromType(context, parameterName, type.Value, defaultValue);
             return true;
         }
 
         private static bool TryParameterDefault(TemplateContext context, string parameterName, JObject parameter)
         {
-            var type = GetParameterType(parameter);
-            if (!context.TryParameterDefault(parameterName, type, out var value))
+            if (!TryParameterType(context, parameter, out var type))
+                throw ThrowTemplateParameterException(parameterName);
+
+            if (!context.TryParameterDefault(parameterName, type.Value, out var value))
                 return false;
 
-            AddParameterFromType(context, parameterName, type, value);
+            AddParameterFromType(context, parameterName, type.Value, value);
             return true;
         }
 
-        private static ParameterType GetParameterType(JToken parameter)
+        private static bool TryParameterType(ITemplateContext context, JObject parameter, out ParameterType? value)
         {
-            return parameter[PROPERTY_TYPE].ToObject<ParameterType>();
+            value = null;
+            if (parameter == null)
+                throw new ArgumentNullException(nameof(parameter));
+
+            // Try $ref
+            if (parameter.TryGetProperty(PROPERTY_REF, out var type) &&
+                context.TryDefinition(type, out var definition))
+                value = new ParameterType(definition.Type, type);
+
+            // Try type
+            if (parameter.TryGetProperty(PROPERTY_TYPE, out type) &&
+                ParameterType.TrySimpleType(type, out var v))
+                value = v;
+
+            return value != null && value.Value.Type != TypePrimitive.None;
         }
 
         private static void AddParameterFromType(TemplateContext context, string parameterName, ParameterType type, JToken value)
         {
-            if (type == ParameterType.Bool)
+            if (type.Type == TypePrimitive.Bool)
                 context.Parameter(new LazyParameter<bool>(context, parameterName, type, value));
-            else if (type == ParameterType.Int)
+            else if (type.Type == TypePrimitive.Int)
                 context.Parameter(new LazyParameter<long>(context, parameterName, type, value));
-            else if (type == ParameterType.String)
+            else if (type.Type == TypePrimitive.String)
                 context.Parameter(new LazyParameter<string>(context, parameterName, type, value));
-            else if (type == ParameterType.Array)
+            else if (type.Type == TypePrimitive.Array)
                 context.Parameter(new LazyParameter<JArray>(context, parameterName, type, value));
-            else if (type == ParameterType.Object)
+            else if (type.Type == TypePrimitive.Object)
                 context.Parameter(new LazyParameter<JObject>(context, parameterName, type, value));
             else
                 context.Parameter(parameterName, type, ExpandPropertyToken(context, value));
@@ -1680,6 +1753,22 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             Array.Sort(resources, new ResourceDependencyComparer());
             return resources;
+        }
+
+        /// <summary>
+        /// The type for parameter '{0}' was not defined or invalid.
+        /// </summary>
+        private static Exception ThrowTemplateParameterException(string parameterName)
+        {
+            return new TemplateParameterException(parameterName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ParameterTypeInvalid, parameterName));
+        }
+
+        /// <summary>
+        /// The type for output '{0}' was not defined or invalid.
+        /// </summary>
+        private static Exception ThrowTemplateOutputException(string outputName)
+        {
+            return new TemplateOutputException(outputName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ParameterTypeInvalid, outputName));
         }
     }
 }
