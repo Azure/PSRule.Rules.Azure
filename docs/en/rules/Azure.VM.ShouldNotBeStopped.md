@@ -20,8 +20,6 @@ Azure Virtual Machines in a stopped state are still billed hourly for compute us
 
 Consider fully deallocating VMs instead of stopping VMs to reduce cost.
 
-## NOTES
-
 ## LINKS
 
 - [Shut down underutilized instances](https://learn.microsoft.com/azure/architecture/framework/cost/optimize-vm#shut-down-underutilized-instances)
