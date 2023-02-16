@@ -29,7 +29,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since v1.24.1:
 
 - New features:
-  - Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Beanchmark by @BernieWhite.
+  - Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Benchmark by @BernieWhite.
     [#1634](https://github.com/Azure/PSRule.Rules.Azure/issues/1634)
 - New rules:
   - Virtual Machine:
