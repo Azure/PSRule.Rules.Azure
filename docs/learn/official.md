@@ -1,4 +1,4 @@
-# Offical learning
+# Official learning
 
 ## Blog posts
 

@@ -88,7 +88,7 @@ nav:
     - Microsoft Cloud Security Benchmark: en/mcsb-v1.md
   - Learn:
     - Learn PSRule for Azure series: learn/learn-video-series.md
-    - Offical learning: learn/offical.md
+    - Official learning: learn/official.md
 
 markdown_extensions:
   - admonition
