@@ -33,7 +33,7 @@ What's changed since v1.24.1:
     [#1634](https://github.com/Azure/PSRule.Rules.Azure/issues/1634)
 - New rules:
   - Virtual Machine:
-    - Virtual machines should be fully dealocatted and not stopped by @dcrreynolds.
+    - Virtual machines should be fully deallocatted and not stopped by @dcrreynolds.
       [#88](https://github.com/Azure/PSRule.Rules.Azure/issues/88)
 - General improvements:
   - Added support for Bicep custom types by @BernieWhite.
