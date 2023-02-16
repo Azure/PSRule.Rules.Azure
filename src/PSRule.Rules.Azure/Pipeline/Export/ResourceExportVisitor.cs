@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data;
@@ -281,6 +282,10 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                         AddSubResource(resource, await GetResource(context, id, APIVERSION_2022_07_01));
                 }
             }
+
+            var response = await context.GetAsync($"{resourceId}/instanceView", APIVERSION_2021_11_01);
+            resource.Add("PowerState", response["statuses"].FirstOrDefault(status => status["code"].Value<string>().StartsWith("PowerState/"))["code"].Value<string>());
+
             return true;
         }
 

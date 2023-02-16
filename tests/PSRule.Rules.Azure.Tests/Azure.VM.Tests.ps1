@@ -584,6 +584,23 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-C', 'vm-E', 'vm-F';
         }
+
+        It 'Azure.VM.ShouldNotBeStopped' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ShouldNotBeStopped' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vm-F';
+
+            $ruleResult[0].Recommendation | Should -BeExactly "Consider fully deallocating VMs instead of stopping VMs to reduce cost.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass'});
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 10
+        }
     }
 
     Context 'Resource name - Azure.VM.Name' {
