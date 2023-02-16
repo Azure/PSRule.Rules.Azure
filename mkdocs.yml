@@ -3,7 +3,7 @@
 
 site_name: PSRule for Azure
 site_url: https://azure.github.io/PSRule.Rules.Azure
-site_description: Ready to go validation and governance controls for Azure Infrastructure as Code (IaC).
+site_description: Ready to go rules for testing Azure Infrastructure as Code (IaC).
 site_author: Microsoft
 
 repo_url: https://github.com/Azure/PSRule.Rules.Azure/
@@ -88,6 +88,7 @@ nav:
     - Microsoft Cloud Security Benchmark: en/mcsb-v1.md
   - Learn:
     - Learn PSRule for Azure series: learn/learn-video-series.md
+    - Official learning: learn/official.md
 
 markdown_extensions:
   - admonition
