@@ -24,6 +24,15 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.24.2
+
+This is republished v1.24.1 to fix a release issue.
+What's changed since v1.24.0:
+
+- Bug fixes:
+  - Fixes Bicep expand object or null by @BernieWhite.
+    [#2021](https://github.com/Azure/PSRule.Rules.Azure/issues/2021)
+
 ## v1.24.1
 
 What's changed since v1.24.0:
