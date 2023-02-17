@@ -26,14 +26,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## v1.25.0-B0013 (pre-release)
 
-What's changed since v1.24.1:
+What's changed since v1.24.2:
 
 - New features:
   - Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Benchmark by @BernieWhite.
     [#1634](https://github.com/Azure/PSRule.Rules.Azure/issues/1634)
 - New rules:
   - Virtual Machine:
-    - Virtual machines should be fully deallocatted and not stopped by @dcrreynolds.
+    - Virtual machines should be fully deallocated and not stopped by @dcrreynolds.
       [#88](https://github.com/Azure/PSRule.Rules.Azure/issues/88)
 - General improvements:
   - Added support for Bicep custom types by @BernieWhite.
@@ -45,6 +45,15 @@ What's changed since v1.24.1:
     [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
   - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.4.
     [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
+
+## v1.24.2
+
+This is republished v1.24.1 to fix a release issue.
+What's changed since v1.24.0:
+
+- Bug fixes:
+  - Fixes Bicep expand object or null by @BernieWhite.
+    [#2021](https://github.com/Azure/PSRule.Rules.Azure/issues/2021)
 
 ## v1.24.1
 
