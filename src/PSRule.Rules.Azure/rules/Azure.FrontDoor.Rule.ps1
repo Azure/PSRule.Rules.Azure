@@ -33,7 +33,7 @@ Rule 'Azure.FrontDoor.Logs' -Ref 'AZR-000107' -Type 'Microsoft.Network/frontDoor
 }
 
 # Synopsis: Configure and enable health probes for each backend pool.
-Rule 'Azure.FrontDoor.Probe' -Ref 'AZR-000108' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.FrontDoor.Probe' -Ref 'AZR-000108' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $probes = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $probes = @($TargetObject.Properties.healthProbeSettings);
@@ -43,8 +43,8 @@ Rule 'Azure.FrontDoor.Probe' -Ref 'AZR-000108' -Type 'Microsoft.Network/frontdoo
     }
 }
 
-# Synopsis: Configure health probes to use HEAD instead of GET requests.
-Rule 'Azure.FrontDoor.ProbeMethod' -Ref 'AZR-000109' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+# Synopsis: Configure health probes to use HEAD requests to reduce performance overhead.
+Rule 'Azure.FrontDoor.ProbeMethod' -Ref 'AZR-000109' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $probes = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $probes = @($TargetObject.Properties.healthProbeSettings);
@@ -55,7 +55,7 @@ Rule 'Azure.FrontDoor.ProbeMethod' -Ref 'AZR-000109' -Type 'Microsoft.Network/fr
 }
 
 # Synopsis: Configure a dedicated path for health probe requests.
-Rule 'Azure.FrontDoor.ProbePath' -Ref 'AZR-000110' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.FrontDoor.ProbePath' -Ref 'AZR-000110' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $probes = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $probes = @($TargetObject.Properties.healthProbeSettings);

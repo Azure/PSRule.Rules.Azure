@@ -15,12 +15,21 @@
     {% set description = page.meta.description %}
   {% endif %}
 
+  <!-- Determine type -->
+  {% set og_type = "website" %}
+  {% if page and page.meta and page.meta.type and page.meta.template == "reference.html" %}
+    {% set og_type = "article" %}
+  {% endif %}
+  {% if page and page.meta and page.meta.og_type %}
+    {% set og_type = page.meta.og_type %}
+  {% endif %}
+
   <!-- The image needs to have an absolute URL -->
   {% set image = config.extra.local.social_preview %}
 
   <!-- Open graph meta tags -->
   <meta property="og:site_name" content="{{ config.site_name }}" />
-  <meta property="og:type" content="website" />
+  <meta property="og:type" content="{{ og_type }}" />
   <meta property="og:title" content="{{ title }}" />
   <meta property="og:description" content="{{ description }}" />
   <meta property="og:url" content="{{ page.canonical_url }}" />

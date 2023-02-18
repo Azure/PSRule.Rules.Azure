@@ -8,7 +8,7 @@
 #region Rules
 
 ---
-# Synopsis: Front Door instance should be enabled
+# Synopsis: Enable Azure Front Door Classic instance.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
@@ -17,12 +17,13 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Cost Optimization
 spec:
   type:
   - Microsoft.Network/frontDoors
   condition:
-    field: 'Properties.enabledState'
-    equals: 'Enabled'
+    field: properties.enabledState
+    equals: Enabled
 
 ---
 # Synopsis: Use Front Door naming requirements
@@ -34,6 +35,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/frontDoors
@@ -58,12 +60,13 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
-    field: 'Properties.policySettings.mode'
-    equals: 'Prevention'
+    field: properties.policySettings.mode
+    equals: Prevention
 
 ---
 # Synopsis: Front Door Web Application Firewall (WAF) policy must be enabled to protect back end resources.
@@ -75,15 +78,15 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'NS-6'
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
-    field: 'Properties.policySettings.enabledState'
-    equals: 'Enabled'
+    field: properties.policySettings.enabledState
+    equals: Enabled
 
 ---
 # Synopsis: Use Front Door WAF naming requirements
@@ -95,6 +98,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_12'
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
