@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-02-18
 severity: Important
 pillar: Reliability
 category: Data management
@@ -82,8 +83,14 @@ resource vault 'Microsoft.KeyVault/vaults@2021-10-01' = {
 }
 ```
 
+### Configure with Azure CLI
+
+```bash
+az keyvault update -n '<name>' -g '<resource_group>' --enable-purge-protection
+```
+
 ## LINKS
 
-- [Azure Key Vault soft-delete overview](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
-- [Azure Key Vault security](https://docs.microsoft.com/azure/key-vault/general/security-overview#backup-and-recovery)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)
+- [Azure Key Vault soft-delete overview](https://learn.microsoft.com/azure/key-vault/general/soft-delete-overview)
+- [Azure Key Vault security](https://learn.microsoft.com/azure/key-vault/general/security-features#backup-and-recovery)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults)

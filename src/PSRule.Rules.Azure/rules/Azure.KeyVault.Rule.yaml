@@ -17,6 +17,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.KeyVault/vaults
@@ -34,6 +35,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.KeyVault/vaults

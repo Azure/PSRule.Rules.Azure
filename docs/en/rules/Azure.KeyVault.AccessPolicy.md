@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-02-18
 severity: Important
 pillar: Security
 category: Identity and access management
@@ -29,43 +30,86 @@ Consider assigning access to Key Vault data based on the principle of least priv
 
 ### Azure templates
 
-To deploy key vaults access policies that pass this rule:
+To deploy Key Vaults that pass this rule:
 
-- Avoid assigning `Purge` and `All` permissions for Key Vault objects.
+- Avoid assigning `purge` and `all` permissions for Key Vault objects.
+  Use specific permissions such as `get` and `set`.
 
 For example:
 
 ```json
 {
-    "comments": "Create or update a Key Vault.",
-    "type": "Microsoft.KeyVault/vaults",
-    "name": "[parameters('vaultName')]",
-    "apiVersion": "2019-09-01",
-    "location": "[parameters('location')]",
-    "properties": {
-        "accessPolicies": [
-            {
-                "objectId": "<object_id>",
-                "tenantId": "<tenant_id>",
-                "permissions": {
-                    "secrets": [
-                        "Get",
-                        "List",
-                        "Set"
-                    ]
-                }
-            }
-        ],
-        "tenantId": "[subscription().tenantId]",
-        "sku": {
-            "name": "Standard",
-            "family": "A"
-        }
+  "type": "Microsoft.KeyVault/vaults",
+  "apiVersion": "2022-07-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "sku": {
+      "family": "A",
+      "name": "premium"
+    },
+    "tenantId": "[tenant().tenantId]",
+    "softDeleteRetentionInDays": 90,
+    "enableSoftDelete": true,
+    "enablePurgeProtection": true,
+    "accessPolicies": [
+      {
+        "objectId": "[parameters('objectId')]",
+        "permissions": {
+          "secrets": [
+            "get",
+            "list",
+            "set"
+          ]
+        },
+        "tenantId": "[tenant().tenantId]"
+      }
+    ]
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy Key Vaults that pass this rule:
+
+- Avoid assigning `purge` and `all` permissions for Key Vault objects.
+  Use specific permissions such as `get` and `set`.
+
+For example:
+
+```bicep
+resource vault 'Microsoft.KeyVault/vaults@2022-07-01' = {
+  name: name
+  location: location
+  properties: {
+    sku: {
+      family: 'A'
+      name: 'premium'
     }
+    tenantId: tenant().tenantId
+    softDeleteRetentionInDays: 90
+    enableSoftDelete: true
+    enablePurgeProtection: true
+    accessPolicies: [
+      {
+        objectId: objectId
+        permissions: {
+          secrets: [
+            'get'
+            'list'
+            'set'
+          ]
+        }
+        tenantId: tenant().tenantId
+      }
+    ]
+  }
 }
 ```
 
 ## LINKS
 
-- [Best practices to use Key Vault](https://docs.microsoft.com/azure/key-vault/general/best-practices)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)
+- [Automate and use least privilege](https://learn.microsoft.com/azure/architecture/framework/security/security-principles#automate-and-use-least-privilege)
+- [Best practices to use Key Vault](https://learn.microsoft.com/azure/key-vault/general/best-practices)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults)

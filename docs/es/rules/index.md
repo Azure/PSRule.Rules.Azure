@@ -127,13 +127,13 @@ AZR-000102 | [Azure.EventHub.DisableLocalAuth](Azure.EventHub.DisableLocalAuth.m
 AZR-000103 | [Azure.Firewall.Name](Azure.Firewall.Name.md) | Firewall names should meet naming requirements. | GA
 AZR-000104 | [Azure.Firewall.PolicyName](Azure.Firewall.PolicyName.md) | Firewall policy names should meet naming requirements. | GA
 AZR-000105 | [Azure.Firewall.Mode](Azure.Firewall.Mode.md) | Deny high confidence malicious IP addresses and domains on classic managed Azure Firewalls. | GA
-AZR-000106 | [Azure.FrontDoor.MinTLS](Azure.FrontDoor.MinTLS.md) | Front Door should reject TLS versions older than 1.2. | GA
+AZR-000106 | [Azure.FrontDoor.MinTLS](Azure.FrontDoor.MinTLS.md) | Front Door Classic instances should reject TLS versions older than 1.2. | GA
 AZR-000107 | [Azure.FrontDoor.Logs](Azure.FrontDoor.Logs.md) | Audit and monitor access through Front Door. | GA
-AZR-000108 | [Azure.FrontDoor.Probe](Azure.FrontDoor.Probe.md) | Configure and enable health probes for each backend pool. | GA
-AZR-000109 | [Azure.FrontDoor.ProbeMethod](Azure.FrontDoor.ProbeMethod.md) | Configure health probes to use HEAD instead of GET requests. | GA
+AZR-000108 | [Azure.FrontDoor.Probe](Azure.FrontDoor.Probe.md) | Use health probes to check the health of each backend. | GA
+AZR-000109 | [Azure.FrontDoor.ProbeMethod](Azure.FrontDoor.ProbeMethod.md) | Configure health probes to use HEAD requests to reduce performance overhead. | GA
 AZR-000110 | [Azure.FrontDoor.ProbePath](Azure.FrontDoor.ProbePath.md) | Configure a dedicated path for health probe requests. | GA
 AZR-000111 | [Azure.FrontDoor.UseWAF](Azure.FrontDoor.UseWAF.md) | Enable Web Application Firewall (WAF) policies on each Front Door endpoint. | GA
-AZR-000112 | [Azure.FrontDoor.State](Azure.FrontDoor.State.md) | Enable Azure Front Door instance. | GA
+AZR-000112 | [Azure.FrontDoor.State](Azure.FrontDoor.State.md) | Enable Azure Front Door Classic instance. | GA
 AZR-000113 | [Azure.FrontDoor.Name](Azure.FrontDoor.Name.md) | Front Door names should meet naming requirements. | GA
 AZR-000114 | [Azure.FrontDoor.WAF.Mode](Azure.FrontDoor.WAF.Mode.md) | Use protection mode in Front Door Web Application Firewall (WAF) policies to protect back end resources. | GA
 AZR-000115 | [Azure.FrontDoor.WAF.Enabled](Azure.FrontDoor.WAF.Enabled.md) | Front Door Web Application Firewall (WAF) policy must be enabled to protect back end resources. | GA
@@ -372,5 +372,6 @@ AZR-000347 | [Azure.Redis.Version](Azure.Redis.Version.md) | Azure Cache for Red
 AZR-000348 | [Azure.AppGw.Name](Azure.AppGw.Name.md) | Application Gateways should meet naming requirements. | GA
 AZR-000349 | [Azure.Bastion.Name](Azure.Bastion.Name.md) | Bastion hosts should meet naming requirements. | GA
 AZR-000350 | [Azure.RSV.Name](Azure.RSV.Name.md) | Recovery Services vaults should meet naming requirements. | GA
+AZR-000351 | [Azure.VM.ShouldNotBeStopped](Azure.VM.ShouldNotBeStopped.md) | Azure VMs should be running or in a deallocated state. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

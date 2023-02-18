@@ -36,6 +36,7 @@ theme:
   - navigation.tabs
   - content.code.annotate
   - content.tabs.link
+  - content.code.copy
 
 nav:
   - Home: index.md
