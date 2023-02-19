@@ -84,6 +84,7 @@
         "POLICYDEFINITIONID",
         "POLICYRULE",
         "psarm",
+        "PSRULE",
         "PUBLICIP",
         "pwsh",
         "Qualys",

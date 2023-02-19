@@ -13,6 +13,7 @@ The Bicep CLI is already installed on hosted runners and agents used by GitHub A
 ## Installing Bicep CLI
 
 PSRule for Azure requires a minimum of Bicep CLI version **0.4.451**.
+However the features you use within Bicep may require a newer version of the Bicep CLI.
 
 You may need to install or upgrade the Bicep CLI in the following scenarios:
 
@@ -139,7 +140,7 @@ This can occur if your Bicep deployments are:
 - Use nested modules.
 - Use modules restored from a registry.
 
-If you are experincing timeout errors you can increase the default timeout of 5 seconds.
+If you are experiencing timeout errors you can increase the default timeout of 5 seconds.
 To configure the timeout, set `Configuration.AZURE_BICEP_FILE_EXPANSION_TIMEOUT` to the timeout in seconds.
 
 ```yaml title="ps-rule.yaml"
@@ -152,6 +153,32 @@ configuration:
 ```
 
   [7]: configuring-expansion.md#bicep-compilation-timeout
+
+### Configuring minimum version
+
+:octicons-milestone-24: v1.25.0
+
+The Azure Bicep CLI is updated regularly, with new features and bug fixes.
+You must use a version of the Bicep CLI that supports the features you are using.
+If you attempt to use a feature that is not supported by the Bicep CLI, expansion will fail with a _BCP_ error.
+
+It may not always be clear which version of Bicep CLI PSRule for Azure is using if you have multiple versions installed.
+Using the Bicep CLI via `az bicep` is not the default, and you may need to [set additional options to use it](#using-azure-cli).
+
+To ensure you are using the correct version of the Bicep CLI, you can configure the minimum version required.
+If an earlier version is detected, PSRule for Azure will generate a warning.
+To configure the minimum version, set the `Configuration.AZURE_BICEP_MINIMUM_VERSION` option.
+
+```yaml title="ps-rule.yaml"
+configuration:
+  # Configure the minimum version of the Bicep CLI.
+  AZURE_BICEP_MINIMUM_VERSION: '0.13.0'
+```
+
+!!! Tip
+    For troubleshooting Bicep compilation errors see [Bicep compile errors][8].
+
+  [8]: ../troubleshooting.md#bicep-compile-errors
 
 ## Recommended content
 

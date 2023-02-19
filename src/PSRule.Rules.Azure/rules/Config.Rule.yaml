@@ -28,6 +28,7 @@ spec:
     AZURE_PARAMETER_FILE_EXPANSION: false
     AZURE_PARAMETER_FILE_METADATA_LINK: false
     AZURE_BICEP_FILE_EXPANSION: false
+    AZURE_BICEP_MINIMUM_VERSION: '0.4.451'
 
     # Configure minimum AKS cluster version
     AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.25.4'
@@ -38,6 +39,7 @@ spec:
 
   convention:
     include:
+    - 'Azure.Context'
     - 'Azure.DeprecatedOptions'
     - 'Azure.ExpandTemplate'
     - 'Azure.BicepInstall'

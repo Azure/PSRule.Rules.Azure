@@ -34,6 +34,12 @@ What's changed since pre-release v1.25.0-B0013:
       [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
     - Check Microsoft Defender for ARM is enabled by @BernieWhite.
       [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+- General improvements:
+  - Added support for configuring a minimum version of Bicep by @BernieWhite.
+    [#1935](https://github.com/Azure/PSRule.Rules.Azure/issues/1935)
+    - Configure this option to increase the visibility of the version of the Bicep CLI used by PSRule for Azure.
+    - Set `AZURE_BICEP_MINIMUM_VERSION` to configure the minimum version.
+    - By default, this option default to `0.4.451`.
 - Engineering:
   - Bump Az.Resources to v6.5.2.
     [#2037](https://github.com/Azure/PSRule.Rules.Azure/pull/2037)
