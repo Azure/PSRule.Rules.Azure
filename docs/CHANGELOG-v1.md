@@ -26,6 +26,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.25.0-B0013:
 
+- New rules:
+  - Defender for Cloud:
+    - Check Microsoft Defender for Key Vault is enabled by @BernieWhite.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for DNS is enabled by @BernieWhite.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for ARM is enabled by @BernieWhite.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
 - Engineering:
   - Bump Az.Resources to v6.5.2.
     [#2037](https://github.com/Azure/PSRule.Rules.Azure/pull/2037)
@@ -35,7 +43,7 @@ What's changed since pre-release v1.25.0-B0013:
 What's changed since v1.24.2:
 
 - New features:
-  - Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Benchmark by @BernieWhite.
+  - **Experimental**: Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Benchmark by @BernieWhite.
     [#1634](https://github.com/Azure/PSRule.Rules.Azure/issues/1634)
 - New rules:
   - Virtual Machine:
@@ -692,18 +700,18 @@ What's changed since v1.19.2:
     - Check soft delete policy is enabled by @BenjaminEngeset.
       [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
   - Defender for Cloud:
-    - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for Virtual Machines by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for SQL Servers by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for App Services by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for Storage Accounts by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
-    - Check Microsoft Defender for Cloud is enabled for SQL Servers on machines by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Containers is enable by @jdewisscher.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Servers is enabled by @jdewisscher.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for SQL is enabled by @jdewisscher.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for App Services is enabled by @jdewisscher.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for Storage is enabled by @jdewisscher.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for SQL Servers on VMs is enabled by @jdewisscher.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
   - Deployment:
     - Check that nested deployments securely pass through administrator usernames by @ms-sambell.
       [#1479](https://github.com/Azure/PSRule.Rules.Azure/issues/1479)
@@ -901,17 +909,17 @@ What's changed since pre-release v1.20.0-B0028:
       [#1674](https://github.com/Azure/PSRule.Rules.Azure/issues/1674)
   - Defender for Cloud:
     - Check Microsoft Defender for Cloud is enabled for Containers by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
     - Check Microsoft Defender for Cloud is enabled for Virtual Machines by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
     - Check Microsoft Defender for Cloud is enabled for SQL Servers by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
     - Check Microsoft Defender for Cloud is enabled for App Services by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
     - Check Microsoft Defender for Cloud is enabled for Storage Accounts by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
     - Check Microsoft Defender for Cloud is enabled for SQL Servers on machines by @jdewisscher.
-      [#1632](hhttps://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
   - Network Security Group:
     - Check AKS managed NSGs don't contain custom rules by @ms-sambell.
       [#8](https://github.com/Azure/PSRule.Rules.Azure/issues/8)

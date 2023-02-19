@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 #
-# Unit tests for Azure Defender
+# Unit tests for Microsoft Defender for Cloud
 #
 
 [CmdletBinding()]
@@ -23,7 +23,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.Defender' -Tag 'Defender' {
+Describe 'Azure.Defender' -Tag 'MDC', 'Defender' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -130,6 +130,54 @@ Describe 'Azure.Defender' -Tag 'Defender' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetObject.Name | Should -BeIn 'defenderL';
+        }
+
+        It 'Azure.Defender.KeyVault' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.KeyVault' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderO';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderN';
+        }
+
+        It 'Azure.Defender.Dns' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.Dns' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderQ';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderP';
+        }
+
+        It 'Azure.Defender.Arm' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.Arm' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderS';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderR';
         }
     }
 }

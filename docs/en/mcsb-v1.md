@@ -44,16 +44,32 @@ The following controls are included in the Microsoft cloud security benchmark v1
   [13]: https://learn.microsoft.com/security/benchmark/azure/mcsb-devops-security
   [14]: https://learn.microsoft.com/security/benchmark/azure/mcsb-governance-strategy
 
-<!-- ### Using the ASB v3 baseline with PSRule
+### Using the MCSB v1 baseline
 
-:octicons-milestone-24: v1.nn.0
+:octicons-beaker-24: · :octicons-milestone-24: v1.25.0
 
-To start using the ASB v3 baseline with PSRule configure the baseline parameter to use `Azure.SecurityBenchmark.v3`.
+To start using the MCSB v1 baseline with PSRule, [configure the baseline parameter][18] to use `Azure.MCSB.v1`.
+View the [list of rules associated with the MCSB v1 baseline][15].
+
+  [1]: https://microsoft.github.io/PSRule/rules/azure/mcsb-v1/
+
+!!! Experimental
+    MCSB baselines are a work in progress and subject to change.
+    We hope to add more rules to the baseline in the future.
+    [Join or start a discussion][16] to let us know how we can improve this feature going forward.
 
 !!! Note
-    It's important to note that the ASB v3 baseline is reduced set of rules.
-    Not all rules for the Well-Architected Framework are included in ASB v3. -->
+    It's important to note that the MCSB v1 baseline is subset of rules from the Well-Architected Framework.
+    Not all rules for the Well-Architected Framework are included in MCSB.
+    Using the MCSB v1 baseline is useful to understand alignment with the MCSB and other industry frameworks / standards.
+    For a complete set of rules for the Well-Architected Framework, consider using a [quarterly baseline][17].
 
-## Links
+  [15]: baselines/Azure.MCSB.v1.md
+  [16]: https://github.com/Azure/PSRule.Rules.Azure/discussions
+  [17]: ../working-with-baselines.md#quarterly-baselines
+  [18]: ../working-with-baselines.md#using-baselines
+
+## Recommended content
 
 - [Overview of Azure security controls (v3)][2]
+- [Using baselines][18]

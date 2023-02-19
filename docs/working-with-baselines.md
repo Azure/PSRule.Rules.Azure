@@ -38,7 +38,7 @@ Considerations for adopting a quarterly baseline include:
     This is described further in [including custom rules](#including-custom-rules).
 
 !!! Note
-    The preview quarterly baselines includes Azure features relased under preview only.
+    The preview quarterly baselines includes Azure features released under preview only.
     This is different from the `Azure.Preview` baseline which contains GA and preview features.
 
 ### Limitations
@@ -64,6 +64,11 @@ In additional to quarterly baselines, some additional baselines exist:
 - `Azure.Preview` - Includes rules for GA and preview Azure features.
 - `Azure.All` - Includes all Azure rules shipped with PSRule for Azure.
   This is functionally the same as `Azure.Preview` however intended for internal use only.
+- `Azure.MCSB.v1` - Includes rules related to Microsoft cloud security benchmark (MCSB) controls.
+  This baseline is currently experimental and may change in future releases.
+  You can learn more about MCSB within PSRule for Azure in the [Microsoft cloud security benchmark (MCSB)][3] topic.
+
+  [3]: en/mcsb-v1.md
 
 ## Using baselines
 

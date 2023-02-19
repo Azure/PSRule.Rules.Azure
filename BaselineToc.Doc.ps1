@@ -38,11 +38,17 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
 Document 'asb.baseline' -If { $PSDocs.TargetObject.Name -eq 'Azure.MCSB.v1' } {
     $baselineName = $PSDocs.TargetObject.Name;
     $obsolete = $PSDocs.TargetObject.metadata.annotations.obsolete -eq $True;
+    $experimental = $PSDocs.TargetObject.metadata.annotations.experimental -eq $True;
 
     Write-Verbose -Message "[Baseline] -- Processing baseline: $baselineName";
     Write-Verbose -Message "[Baseline] -- Baseline is obsolete: $obsolete";
+    Write-Verbose -Message "[Baseline] -- Baseline is experimental: $experimental";
 
     Title $baselineName;
+
+    if ($experimental) {
+        '<!-- EXPERIMENTAL -->'
+    }
 
     if ($obsolete) {
         '<!-- OBSOLETE -->'

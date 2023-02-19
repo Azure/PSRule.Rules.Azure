@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-02-19
 severity: Critical
 pillar: Security
 category: Security operations
@@ -10,7 +11,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defend
 
 ## SYNOPSIS
 
-Enable Defender for SQL servers.
+Enable Microsoft Defender for SQL servers.
 
 ## DESCRIPTION
 
@@ -32,7 +33,7 @@ Consider using Microsoft Defender for SQL to protect your SQL databases.
 
 ### Configure with Azure template
 
-To enable Defender for SQL:
+To enable Microsoft Defender for SQL:
 
 - Set the `Standard` pricing tier for Microsoft Defender for SQL.
 
@@ -51,7 +52,7 @@ For example:
 
 ### Configure with Bicep
 
-To enable Defender for SQL:
+To enable Microsoft Defender for SQL:
 
 - Set the `Standard` pricing tier for Microsoft Defender for SQL.
 
@@ -68,11 +69,23 @@ resource defenderForSQL 'Microsoft.Security/pricings@2022-03-01' = {
 
 ### Configure with Azure CLI
 
+To enable Microsoft Defender for SQL:
+
+- Set the `Standard` pricing tier for Microsoft Defender for SQL.
+
+For example:
+
 ```bash
 az security pricing create -n 'SqlServers' --tier 'standard'
 ```
 
 ### Configure with Azure PowerShell
+
+To enable Microsoft Defender for SQL:
+
+- Set the `Standard` pricing tier for Microsoft Defender for SQL.
+
+For example:
 
 ```powershell
 Set-AzSecurityPricing -Name 'SqlServers' -PricingTier 'Standard'
@@ -84,6 +97,11 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
+- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
 - [Azure SQL Database and security](https://learn.microsoft.com/azure/architecture/framework/services/data/azure-sql-database-well-architected-framework#azure-sql-database-and-security)
-- [Introduction to Microsoft Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql)
-- [Azure Security Benchmark - Data protection](https://docs.microsoft.com/security/benchmark/azure/security-controls-v2-data-protection)
+- [Introduction to Microsoft Defender for SQL](https://learn.microsoft.com/azure/azure-sql/database/azure-defender-for-sql?view=azuresql)
+- [Azure security baseline for Azure SQL](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-sql-security-baseline)
+- [DP-2: Monitor anomalies and threats targeting sensitive data](https://learn.microsoft.com/security/benchmark/azure/mcsb-data-protection#dp-2-monitor-anomalies-and-threats-targeting-sensitive-data)
+- [LT-1: Enable threat detection capabilities](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-sql-security-baseline#lt-1-enable-threat-detection-capabilities)
+- [Azure Policy built-in policy definitions](https://learn.microsoft.com/azure/governance/policy/samples/built-in-policies#security-center)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/pricings)
