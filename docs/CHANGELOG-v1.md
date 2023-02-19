@@ -36,7 +36,7 @@ What's changed since pre-release v1.25.0-B0013:
       [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
 - General improvements:
   - Added support for configuring a minimum version of Bicep by @BernieWhite.
-    [#1953](https://github.com/Azure/PSRule.Rules.Azure/issues/1935)
+    [#1935](https://github.com/Azure/PSRule.Rules.Azure/issues/1935)
     - Configure this option to increase the visibility of the version of the Bicep CLI used by PSRule for Azure.
     - Set `AZURE_BICEP_MINIMUM_VERSION` to configure the minimum version.
     - By default, this option default to `0.4.451`.
