@@ -74,6 +74,7 @@ nav:
         - v0: 'CHANGELOG-v0.md'
       - Upgrade notes: upgrade-notes.md
       - Deprecations: deprecations.md
+      - Changes and versioning: versioning.md
     - Support: support.md
   - Setup:
     - Configuring options: setup/configuring-options.md
