@@ -1,12 +1,13 @@
 ---
+reviewed: 2023-02-19
 severity: Critical
 pillar: Security
-category: Data protection
+category: Azure resources
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Containers/
 ---
 
-# Configure Microsoft Defender for Containers to the Standard tier
+# Set Microsoft Defender for Containers to the Standard tier
 
 ## SYNOPSIS
 
@@ -44,7 +45,7 @@ Consider using Microsoft Defender for Containers to protect your container-based
 
 ### Configure with Azure template
 
-To enable Defender for Containers:
+To enable Microsoft Defender for Containers:
 
 - Set the `Standard` pricing tier for Microsoft Defender for Containers.
 
@@ -63,7 +64,7 @@ For example:
 
 ### Configure with Bicep
 
-To enable Defender for Containers:
+To enable Microsoft Defender for Containers:
 
 - Set the `Standard` pricing tier for Microsoft Defender for Containers.
 
@@ -80,11 +81,23 @@ resource defenderForContainers 'Microsoft.Security/pricings@2022-03-01' = {
 
 ### Configure with Azure CLI
 
+To enable Microsoft Defender for Containers:
+
+- Set the `Standard` pricing tier for Microsoft Defender for Containers.
+
+For example:
+
 ```bash
 az security pricing create -n 'Containers' --tier 'standard'
 ```
 
 ### Configure with Azure PowerShell
+
+To enable Microsoft Defender for Containers:
+
+- Set the `Standard` pricing tier for Microsoft Defender for Containers.
+
+For example:
 
 ```powershell
 Set-AzSecurityPricing -Name 'Containers' -PricingTier 'Standard'
@@ -97,5 +110,9 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 ## LINKS
 
 - [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
-- [Introduction to Microsoft Defender for Containers](https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction)
-- [Secure the images and run time](https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
+- [Introduction to Microsoft Defender for Containers](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction)
+- [Secure the images and run time](https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
+- [Azure security baseline for Container Registry](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline)
+- [LT-1: Enable threat detection capabilities](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#lt-1-enable-threat-detection-capabilities)
+- [Azure Policy built-in policy definitions](https://learn.microsoft.com/azure/governance/policy/samples/built-in-policies#security-center)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/pricings)

@@ -13,6 +13,7 @@ metadata:
   name: Azure.MCSB.v1
   annotations:
     taxonomies: Azure.MCSB.v1
+    experimental: true
 spec:
   rule:
     tag:

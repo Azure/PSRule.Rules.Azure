@@ -10,7 +10,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defend
 
 ## SYNOPSIS
 
-Enable Defender for SQL servers on machines.
+Enable Microsoft Defender for SQL servers on machines.
 
 ## DESCRIPTION
 
