@@ -151,6 +151,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to An exception was raised attempting to call the Bicep CLI: {0}.
+        /// </summary>
+        internal static string BicepCommandError {
+            get {
+                return ResourceManager.GetString("BicepCommandError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Bicep ({0}) compilation of &apos;{1}&apos; failed with: {2}.
         /// </summary>
         internal static string BicepCompileError {

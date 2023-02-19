@@ -61,40 +61,54 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
             internal BicepProcess Create(string sourcePath, int timeout)
             {
-                var args = GetBicepBuildArgs(sourcePath, _UseAzCLI);
-                var startInfo = new ProcessStartInfo(_BinPath, args)
+                try
                 {
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    WorkingDirectory = PSRuleOption.GetWorkingPath(),
-                };
-                return new BicepProcess(Process.Start(startInfo), timeout, Version);
+                    var args = GetBicepBuildArgs(sourcePath, _UseAzCLI);
+                    var startInfo = new ProcessStartInfo(_BinPath, args)
+                    {
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false,
+                        WorkingDirectory = PSRuleOption.GetWorkingPath(),
+                    };
+                    return new BicepProcess(Process.Start(startInfo), timeout, Version);
+                }
+                catch (Exception ex)
+                {
+                    throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCommandError, ex.Message), ex);
+                }
             }
 
             private string GetVersionInfo()
             {
-                var args = GetBicepVersionArgs(_UseAzCLI);
-                var versionStartInfo = new ProcessStartInfo(_BinPath, args)
-                {
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    WorkingDirectory = PSRuleOption.GetWorkingPath(),
-                };
-                var bicep = new BicepProcess(Process.Start(versionStartInfo), 5);
                 try
                 {
-                    if (bicep.WaitForExit(out _))
-                        return TrimVersion(bicep.GetOutput());
+                    var args = GetBicepVersionArgs(_UseAzCLI);
+                    var versionStartInfo = new ProcessStartInfo(_BinPath, args)
+                    {
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false,
+                        WorkingDirectory = PSRuleOption.GetWorkingPath(),
+                    };
+                    var bicep = new BicepProcess(Process.Start(versionStartInfo), 5);
+                    try
+                    {
+                        if (bicep.WaitForExit(out _))
+                            return TrimVersion(bicep.GetOutput());
+                    }
+                    finally
+                    {
+                        bicep.Dispose();
+                    }
+                    return null;
                 }
-                finally
+                catch (Exception ex)
                 {
-                    bicep.Dispose();
+                    throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCommandError, ex.Message), ex);
                 }
-                return null;
             }
 
             private static string TrimVersion(string s)
@@ -145,15 +159,22 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
             public bool WaitForExit(out int exitCode)
             {
-                if (!_Process.HasExited)
+                try
                 {
-                    var timeoutCount = 0;
-                    while (!_Process.WaitForExit(_Interval) && !_Process.HasExited && timeoutCount < _Timeout)
-                        timeoutCount++;
-                }
+                    if (!_Process.HasExited)
+                    {
+                        var timeoutCount = 0;
+                        while (!_Process.WaitForExit(_Interval) && !_Process.HasExited && timeoutCount < _Timeout)
+                            timeoutCount++;
+                    }
 
-                exitCode = _Process.HasExited ? _Process.ExitCode : -1;
-                return _Process.HasExited && _ErrorWait.WaitOne(_Interval) && _OutputWait.WaitOne();
+                    exitCode = _Process.HasExited ? _Process.ExitCode : -1;
+                    return _Process.HasExited && _ErrorWait.WaitOne(_Interval) && _OutputWait.WaitOne();
+                }
+                catch (Exception ex)
+                {
+                    throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCommandError, ex.Message), ex);
+                }
             }
 
             public string GetOutput()
