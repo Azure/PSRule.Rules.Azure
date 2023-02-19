@@ -1,0 +1,45 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.14.46.61228",
+      "templateHash": "7216837688353806863"
+    }
+  },
+  "parameters": {
+    "resourceName": {
+      "type": "string",
+      "defaultValue": "cosmos-repro"
+    },
+    "servicePrincipalIds": {
+      "type": "array",
+      "defaultValue": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  "variables": {
+    "dataContributorRoleId": "00000000-0000-0000-0000-000000000002"
+  },
+  "resources": [
+    {
+      "copy": {
+        "name": "repro",
+        "count": "[length(parameters('servicePrincipalIds'))]",
+        "mode": "serial",
+        "batchSize": 1
+      },
+      "type": "Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments",
+      "apiVersion": "2021-10-15",
+      "name": "[format('{0}/{1}', parameters('resourceName'), format('{0}', parameters('servicePrincipalIds')[copyIndex()]))]",
+      "properties": {
+        "roleDefinitionId": "[format('{0}/resourceGroups/{1}/providers/Microsoft.DocumentDB/databaseAccounts/{2}/sqlRoleDefinitions/{3}', subscription().id, resourceGroup().name, parameters('resourceName'), variables('dataContributorRoleId'))]",
+        "principalId": "[parameters('servicePrincipalIds')[copyIndex()]]",
+        "scope": "[resourceId('Microsoft.DocumentDB/databaseAccounts', parameters('resourceName'))]"
+      }
+    }
+  ]
+}

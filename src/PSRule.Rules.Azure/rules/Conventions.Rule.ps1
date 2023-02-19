@@ -13,15 +13,32 @@ Export-PSRuleConvention 'Azure.DeprecatedOptions' -Initialize {
     }
 }
 
+# Synopsis: Create a context singleton.
+Export-PSRuleConvention 'Azure.Context' -Initialize {
+    $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
+    $minimum = $Configuration.GetValueOrDefault('AZURE_BICEP_MINIMUM_VERSION', '0.4.451');
+    $service = [PSRule.Rules.Azure.Runtime.Helper]::CreateService();
+    $PSRule.AddService('Azure.Context', $service);
+    $version = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepVersion($service, $timeout);
+
+    if ($Null -ne $version) {
+        Write-Verbose -Message "[Azure.Context] -- Bicep version: $version";
+        if ([System.Version]::Parse($version) -lt [System.Version]::Parse($minimum)) {
+            Write-Warning -Message ($LocalizedData.BicepCLIVersion -f $version, $minimum);
+        }
+    }
+}
+
 # Synopsis: Expand Azure resources from parameter files.
 Export-PSRuleConvention 'Azure.ExpandTemplate' -If { $Configuration.AZURE_PARAMETER_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.json' -and $Assert.HasJsonSchema($PSRule.GetContentFirstOrDefault($TargetObject), @(
     "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json`#"
     "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json`#"
 ), $True) } -Begin {
     Write-Verbose "[Azure.ExpandTemplate] -- Expanding parameter file: $($TargetObject.FullName)";
+    $context = $PSRule.GetService('Azure.Context');
     $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
     try {
-        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetResources($TargetObject.FullName, $timeout);
+        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetResources($context, $TargetObject.FullName, $timeout);
         if ($Null -ne $data) {
             $PSRule.Import($data);
         }
@@ -62,9 +79,10 @@ Export-PSRuleConvention 'Azure.BicepInstall' -If { $Configuration.AZURE_BICEP_FI
 
 Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.bicep' } -Begin {
     Write-Verbose "[Azure.ExpandBicep] -- Start expanding bicep source: $($TargetObject.FullName)";
+    $context = $PSRule.GetService('Azure.Context');
     try {
         $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
-        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepResources($TargetObject.FullName, $PSCmdlet, $timeout);
+        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepResources($context, $TargetObject.FullName, $PSCmdlet, $timeout);
         if ($Null -ne $data) {
             Write-Verbose "[Azure.ExpandBicep] -- Importing $($data.Length) Bicep resources.";
             $PSRule.Import($data);

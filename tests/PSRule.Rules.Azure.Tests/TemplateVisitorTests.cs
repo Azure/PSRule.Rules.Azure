@@ -728,6 +728,25 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(resources);
         }
 
+        [Fact]
+        public void BatchSize()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.16.json"), null, out _);
+            Assert.NotNull(resources);
+            Assert.Equal(3, resources.Length);
+
+            var actual = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+
+            actual = resources[1];
+            Assert.Equal("Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments", actual["type"].Value<string>());
+            Assert.Equal("cosmos-repro/a", actual["name"].Value<string>());
+
+            actual = resources[2];
+            Assert.Equal("Microsoft.DocumentDB/databaseAccounts/sqlRoleAssignments", actual["type"].Value<string>());
+            Assert.Equal("cosmos-repro/b", actual["name"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
