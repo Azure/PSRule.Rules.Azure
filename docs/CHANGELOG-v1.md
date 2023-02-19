@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.25.0-B0013:
+
+- Engineering:
+  - Bump Az.Resources to v6.5.2.
+    [#2037](https://github.com/Azure/PSRule.Rules.Azure/pull/2037)
+
 ## v1.25.0-B0013 (pre-release)
 
 What's changed since v1.24.2:
@@ -48,7 +54,7 @@ What's changed since v1.24.2:
 
 ## v1.24.2
 
-This is republished v1.24.1 to fix a release issue.
+This is a republish of v1.24.1 to fix a release issue.
 What's changed since v1.24.0:
 
 - Bug fixes:
