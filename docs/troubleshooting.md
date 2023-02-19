@@ -7,36 +7,30 @@ discussion: false
 
 This article provides troubleshooting instructions for common errors.
 
-## An earlier version of Az.Accounts is imported
+## Bicep compile errors
 
-When running PSRule for Azure in Azure DevOps within the `AzurePowerShell@5` task,
-you may see the following error.
+When expanding Bicep source files you may get an error including a _BCPnnn_ code similar to the following:
 
 !!! Error
 
-    This module requires Az.Accounts version 2.8.0. An earlier version of
-    Az.Accounts is imported in the current PowerShell session. Please open a new
-    session before importing this module. This error could indicate that multiple
-    incompatible versions of the Azure PowerShell cmdlets are installed on your
-    system. Please see https://aka.ms/azps-version-error for troubleshooting
-    information.
+    Exception calling "GetResources" with "3" argument(s): "Bicep (0.14.46) compilation of '<file>' failed with: Error BCP057: The name "storageAccountName" does not exist in the current context.
 
-This error is raised by a chained dependency failure importing a newer version of `Az.Accounts`.
-To avoid this issue attempt to install the exact versions of `Az.Resources`.
-In the `AzurePowerShell@5` task before installing PSRule.
+This error is raised when Bicep fails to compile a source file.
+To resolve this issue:
 
-```powershell
-Install-Module Az.Resources -RequiredVersion '5.6.0' -Force -Scope CurrentUser
-```
+- You may need to update your Bicep source file before PSRule can expand it.
+  Use guidance from the Bicep error message to help resolve the issue.
+- Check that you are using a version of Bicep that supports the Bicep features you are using.
+  It may not always be clear which version of Bicep CLI PSRule for Azure is using if you have multiple versions installed.
+  Using the Bicep CLI via `az bicep` is not the default, and you may need to [set additional options to use it][7].
 
-From PSRule for Azure v1.16.0, `Az.Accounts` and `Az.Resources` are no longer installed as dependencies.
-When using export commands from PSRule, you may need to install these modules.
+!!! Tip
+    From PSRule for Azure v1.25.0 you can configure the minimum version of Bicep CLI required.
+    If an earlier version is detected, PSRule for Azure will generate a warning.
+    See [Configuring minimum version][8] for details on how to configure this option.
 
-To install these modules, use the following PowerShell command:
-
-```powershell
-Install-Module Az.Resources -Force -Scope CurrentUser
-```
+  [7]: setup/setup-bicep.md#using-azure-cli
+  [8]: setup/setup-bicep.md#configuring-minimum-version
 
 ## Bicep compilation timeout
 
@@ -95,7 +89,7 @@ There is a few common causes of this issue including:
   On case-sensitive file systems such as Linux, this directory name is case-sensitive.
   See [Storing and naming rules][5] for more information.
 - **Check file name suffix** &mdash; PSRule only looks for files with the `.Rule.ps1`, `.Rule.yaml`, or `.Rule.jsonc` suffix.
-  On case-sensitive file systems such as Linux, this file siffix is case-sensitive.
+  On case-sensitive file systems such as Linux, this file suffix is case-sensitive.
   See [Storing and naming rules][5] for more information.
 - **Check binding configuration** &mdash; PSRule uses _binding_ to work out which property to use for a resource type.
   To be able to use the `-Type` parameter or `type` properties in rules definitions, binding must be set.
@@ -107,7 +101,7 @@ There is a few common causes of this issue including:
   See [using templates][2] and [using Bicep source][3] for details on how to enable expansion.
 
 !!! Tip
-    You may be able to use `git mv` to change the case of a file if it is commited to the repository inorrectly.
+    You may be able to use `git mv` to change the case of a file if it is committed to the repository incorrectly.
 
   [5]: https://aka.ms/ps-rule/naming
   [6]: customization/enforce-custom-tags.md#binding-type
@@ -135,6 +129,37 @@ You may find while editing a `.json` parameter file the root `metadata` property
 This doesn't affect the workings of the parameter file or deployment.
 The reason for the warning is that the `metadata` property has not been added to the parameter file JSON schema.
 However, the top level `metadata` property is ignored by Azure Resource Manager when deploying a template.
+
+## An earlier version of Az.Accounts is imported
+
+When running PSRule for Azure in Azure DevOps within the `AzurePowerShell@5` task,
+you may see the following error.
+
+!!! Error
+
+    This module requires Az.Accounts version 2.8.0. An earlier version of
+    Az.Accounts is imported in the current PowerShell session. Please open a new
+    session before importing this module. This error could indicate that multiple
+    incompatible versions of the Azure PowerShell cmdlets are installed on your
+    system. Please see https://aka.ms/azps-version-error for troubleshooting
+    information.
+
+This error is raised by a chained dependency failure importing a newer version of `Az.Accounts`.
+To avoid this issue attempt to install the exact versions of `Az.Resources`.
+In the `AzurePowerShell@5` task before installing PSRule.
+
+```powershell
+Install-Module Az.Resources -RequiredVersion '5.6.0' -Force -Scope CurrentUser
+```
+
+From PSRule for Azure v1.16.0, `Az.Accounts` and `Az.Resources` are no longer installed as dependencies.
+When using export commands from PSRule, you may need to install these modules.
+
+To install these modules, use the following PowerShell command:
+
+```powershell
+Install-Module Az.Resources -Force -Scope CurrentUser
+```
 
 ## Could not load file or assembly YamlDotNet
 
