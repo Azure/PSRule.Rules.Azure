@@ -15,10 +15,20 @@ Export-PSRuleConvention 'Azure.DeprecatedOptions' -Initialize {
 
 # Synopsis: Create a context singleton.
 Export-PSRuleConvention 'Azure.Context' -Initialize {
+    Write-Verbose "[Azure.Context] -- Initializing Azure context.";
+
+    Write-Verbose "[Azure.Context] -- Bicep CLI.";
+    bicep --version
+
+    Write-Verbose "[Azure.Context] -- Az Bicep CLI.";
+    az bicep version
+
     $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
     $minimum = $Configuration.GetValueOrDefault('AZURE_BICEP_MINIMUM_VERSION', '0.4.451');
     $service = [PSRule.Rules.Azure.Runtime.Helper]::CreateService();
     $PSRule.AddService('Azure.Context', $service);
+
+    Write-Verbose "[Azure.Context] -- Checking Bicep CLI version.";
     $version = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepVersion($service, $timeout);
 
     if ($Null -ne $version) {
