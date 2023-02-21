@@ -179,12 +179,18 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
             public string GetOutput()
             {
-                return _Output.ToString();
+                lock (_Output)
+                {
+                    return _Output.ToString();
+                }
             }
 
             public string GetError()
             {
-                return _Error.ToString();
+                lock (_Error)
+                {
+                    return _Error.ToString();
+                }
             }
 
             private void Bicep_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -195,7 +201,10 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 }
                 else
                 {
-                    _Output.AppendLine(e.Data);
+                    lock (_Output)
+                    {
+                        _Output.AppendLine(e.Data);
+                    }
                 }
             }
 
@@ -208,8 +217,14 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 else
                 {
                     var errors = GetErrorLine(e.Data);
-                    for (var i = 0; i < errors.Length; i++)
-                        _Error.AppendLine(errors[i]);
+                    if (errors.Length == 0)
+                        return;
+
+                    lock (_Error)
+                    {
+                        for (var i = 0; i < errors.Length; i++)
+                            _Error.AppendLine(errors[i]);
+                    }
                 }
             }
 
@@ -234,8 +249,14 @@ namespace PSRule.Rules.Azure.Data.Bicep
                         _OutputWait.Dispose();
                         _Process.Dispose();
                     }
-                    _Error.Clear();
-                    _Output.Clear();
+                    lock (_Error)
+                    {
+                        _Error.Clear();
+                    }
+                    lock (_Output)
+                    {
+                        _Output.Clear();
+                    }
                     _Disposed = true;
                 }
             }
@@ -430,7 +451,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static void GetBicepBuildAdditionalArgs(out string args)
         {
-            args = System.Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_ARGS") ?? string.Empty;
+            args = Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_ARGS") ?? string.Empty;
         }
 
         private static bool UseAzCLI()

@@ -17,11 +17,11 @@ Export-PSRuleConvention 'Azure.DeprecatedOptions' -Initialize {
 Export-PSRuleConvention 'Azure.Context' -Initialize {
     Write-Verbose "[Azure.Context] -- Initializing Azure context.";
 
-    Write-Verbose "[Azure.Context] -- Bicep CLI.";
-    bicep --version
+    # Write-Verbose "[Azure.Context] -- Bicep CLI.";
+    # bicep --version
 
-    Write-Verbose "[Azure.Context] -- Az Bicep CLI.";
-    az bicep version
+    # Write-Verbose "[Azure.Context] -- Az Bicep CLI.";
+    # az bicep version
 
     $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
     $minimum = $Configuration.GetValueOrDefault('AZURE_BICEP_MINIMUM_VERSION', '0.4.451');
