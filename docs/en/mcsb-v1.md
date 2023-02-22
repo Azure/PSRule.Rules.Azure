@@ -30,7 +30,7 @@ The following controls are included in the Microsoft cloud security benchmark v1
 - [DevOps Security (DS)][13]
 - [Governance and Strategy (GS)][14]
 
-  [2]: https://docs.microsoft.com/security/benchmark/azure/overview
+  [2]: https://learn.microsoft.com/security/benchmark/azure/overview
   [3]: https://learn.microsoft.com/security/benchmark/azure/mcsb-network-security
   [4]: https://learn.microsoft.com/security/benchmark/azure/mcsb-identity-management
   [5]: https://learn.microsoft.com/security/benchmark/azure/mcsb-privileged-access
@@ -46,14 +46,12 @@ The following controls are included in the Microsoft cloud security benchmark v1
 
 ### Using the MCSB v1 baseline
 
-:octicons-beaker-24: · :octicons-milestone-24: v1.25.0
+:octicons-beaker-24:{ .experimental } Experimental · :octicons-milestone-24: v1.25.0
 
 To start using the MCSB v1 baseline with PSRule, [configure the baseline parameter][18] to use `Azure.MCSB.v1`.
 View the [list of rules associated with the MCSB v1 baseline][15].
 
-  [1]: https://microsoft.github.io/PSRule/rules/azure/mcsb-v1/
-
-!!! Experimental
+!!! Experimental "Experimental - [Learn more][19]"
     MCSB baselines are a work in progress and subject to change.
     We hope to add more rules to the baseline in the future.
     [Join or start a discussion][16] to let us know how we can improve this feature going forward.
@@ -68,8 +66,9 @@ View the [list of rules associated with the MCSB v1 baseline][15].
   [16]: https://github.com/Azure/PSRule.Rules.Azure/discussions
   [17]: ../working-with-baselines.md#quarterly-baselines
   [18]: ../working-with-baselines.md#using-baselines
+  [19]: ../versioning.md#experimental-features
 
 ## Recommended content
 
-- [Overview of Azure security controls (v3)][2]
+- [Overview of Microsoft cloud security benchmark (v1)][2]
 - [Using baselines][18]

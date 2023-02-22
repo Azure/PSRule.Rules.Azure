@@ -21,13 +21,13 @@ This and more is included in the [documentation][1].
 
   [1]: https://aka.ms/AzGovViz
 
-### Template Best Practice Analyzer (BPA)
+### Template Analyzer
 
 [:octicons-book-24: Docs][2] · :octicons-milestone-24: v0.3.0
 
-BPA scans Azure templates and Bicep code to ensure security and best practice checks are being followed before deployment.
+Template Analyzer scans Azure templates and Bicep code to ensure security and best practice checks are being followed before deployment.
 
-By default, BPA will only include rules aligned to the Security Well-Architected Framework pillar.
+By default, Template Analyzer will only include rules aligned to the Security Well-Architected Framework pillar.
 To include rules from other pillars, use the `--include-non-security-rules` command-line switch.
 
   [2]: https://github.com/Azure/template-analyzer

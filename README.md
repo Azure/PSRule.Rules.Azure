@@ -51,13 +51,19 @@ Support for this project/ product is limited to the resources listed above.
 
 ## Getting the modules
 
-This project requires the `PSRule` and `Az` PowerShell modules. For details on each see [install].
+This project requires the `PSRule` and `Az` PowerShell modules. For details on each see [install][10].
 
 You can download and install these modules from the PowerShell Gallery.
 
 Module             | Description | Downloads / instructions
 ------             | ----------- | ------------------------
-PSRule.Rules.Azure | Validate Azure resources and infrastructure as code using PSRule. | [latest][module] / [instructions][install]
+PSRule.Rules.Azure | Validate Azure resources and infrastructure as code using PSRule. | [latest][9] / [instructions][10]
+
+For rule and integration modules see [related projects][11].
+
+  [9]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
+  [10]: https://azure.github.io/PSRule.Rules.Azure/install-instructions/
+  [11]: https://azure.github.io/PSRule.Rules.Azure/related-projects/
 
 ## Getting started
 
@@ -327,6 +333,7 @@ The following baselines are included within `PSRule.Rules.Azure`.
 - [Azure.Preview_2022_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_06/) - Baseline for rules released June 2022 or prior for Azure preview only features.
 - [Azure.Preview_2022_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_09/) - Baseline for rules released September 2022 or prior for Azure preview only features.
 - [Azure.Preview_2022_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_12/) - Baseline for rules released December 2022 or prior for Azure preview only features.
+- [Azure.MCSB.v1](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.MCSB.v1/) - A baseline aligned to Microsoft Cloud Security Benchmark v1 controls.
 
 ## Language reference
 
@@ -364,23 +371,12 @@ To find out more, look at these conceptual topics:
 
 ## Related projects
 
-The following projects can also be used with PSRule for Azure.
-
-Name                      | Description
-----                      | -----------
-[PSRule.Rules.CAF]        | A suite of rules to validate Azure resources against the Cloud Adoption Framework (CAF) using PSRule.
-[PSRule.Monitor]          | Send and query PSRule analysis results in Azure Monitor.
-[PSRule-pipelines]        | An Azure DevOps extension for using PSRule within Azure Pipelines.
-[ps-rule]                 | Validate infrastructure as code (IaC) and DevOps repositories using GitHub Actions.
+For a list of projects and integrations see [Related projects][11].
 
 ## Changes and versioning
 
 This repository uses [semantic versioning](http://semver.org/) to declare breaking changes.
-For a list of module changes please see the [change log](CHANGELOG.md).
-
-> Pre-release module versions are created on major commits and can be installed from the PowerShell Gallery.
-> Pre-release versions should be considered experimental.
-> Modules and change log details for pre-releases will be removed as standard releases are made available.
+For details please see the [changes and versioning](https://azure.github.io/PSRule.Rules.Azure/versioning/).
 
 ## Contributing
 
@@ -404,13 +400,7 @@ This project is [licensed under the MIT License](LICENSE).
 
 [issue]: https://github.com/Azure/PSRule.Rules.Azure/issues
 [discussion]: https://github.com/Azure/PSRule.Rules.Azure/discussions
-[install]: https://azure.github.io/PSRule.Rules.Azure/install-instructions/
-[module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
-[engine]: https://github.com/Microsoft/PSRule
-[PSRule.Rules.CAF]: https://github.com/microsoft/PSRule.Rules.CAF
-[PSRule.Monitor]: https://github.com/microsoft/PSRule.Monitor
-[PSRule-pipelines]: https://github.com/microsoft/PSRule-pipelines
-[ps-rule]: https://github.com/microsoft/ps-rule
+[engine]: https://github.com/microsoft/PSRule
 [create-workflow]: https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file
 [extension]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
 [troubleshooting guide]: https://azure.github.io/PSRule.Rules.Azure/troubleshooting/
