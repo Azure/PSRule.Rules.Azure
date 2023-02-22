@@ -43,6 +43,9 @@ What's changed since pre-release v1.25.0-B0013:
 - Engineering:
   - Bump Az.Resources to v6.5.2.
     [#2037](https://github.com/Azure/PSRule.Rules.Azure/pull/2037)
+- Bug fixes:
+  - Fixed cases of exit code 5 with path probing by @BernieWhite.
+    [#1901](https://github.com/Azure/PSRule.Rules.Azure/issues/1901)
 
 ## v1.25.0-B0013 (pre-release)
 
@@ -72,7 +75,7 @@ This is a republish of v1.24.1 to fix a release issue.
 What's changed since v1.24.0:
 
 - Bug fixes:
-  - Fixes Bicep expand object or null by @BernieWhite.
+  - Fixed Bicep expand object or null by @BernieWhite.
     [#2021](https://github.com/Azure/PSRule.Rules.Azure/issues/2021)
 
 ## v1.24.1
@@ -80,7 +83,7 @@ What's changed since v1.24.0:
 What's changed since v1.24.0:
 
 - Bug fixes:
-  - Fixes Bicep expand object or null by @BernieWhite.
+  - Fixed Bicep expand object or null by @BernieWhite.
     [#2021](https://github.com/Azure/PSRule.Rules.Azure/issues/2021)
 
 ## v1.24.0

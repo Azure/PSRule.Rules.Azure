@@ -27,9 +27,6 @@ namespace PSRule.Rules.Azure.Data.Bicep
         private const int BICEP_TIMEOUT_MIN = 1;
         private const int BICEP_TIMEOUT_MAX = 120;
 
-        private static readonly char[] LINUX_PATH_ENV_SEPARATOR = new char[] { ':' };
-        private static readonly char[] WINDOWS_PATH_ENV_SEPARATOR = new char[] { ';' };
-
         private readonly PipelineContext _Context;
         private readonly RuntimeService _Service;
         private readonly int _Timeout;

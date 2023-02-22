@@ -30,8 +30,9 @@ namespace PSRule.Rules.Azure.Runtime
 
         /// <summary>
         /// Get information about the installed Bicep version.
+        /// And determine if a warning should be flagged.
         /// </summary>
-        public static string GetBicepVersion(IService service, int timeout)
+        public static bool WarnBicepVersion(IService service, int timeout, string minimum, out string version)
         {
             var context = GetContext(service);
             var bicep = new BicepHelper(
@@ -39,7 +40,11 @@ namespace PSRule.Rules.Azure.Runtime
                 service as RuntimeService,
                 timeout
             );
-            return bicep.Version;
+            version = bicep.Version;
+            return version != null &&
+                System.Version.TryParse(version, out var actual) &&
+                System.Version.TryParse(minimum, out var expected) &&
+                actual < expected;
         }
 
         /// <summary>
