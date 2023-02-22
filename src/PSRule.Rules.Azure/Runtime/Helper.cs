@@ -23,28 +23,23 @@ namespace PSRule.Rules.Azure.Runtime
         /// <summary>
         /// Create a singleton context for running within PSRule.
         /// </summary>
-        public static IService CreateService()
+        public static IService CreateService(string minimum, int timeout)
         {
-            return new RuntimeService();
+            return new RuntimeService(minimum, timeout);
         }
 
         /// <summary>
         /// Get information about the installed Bicep version.
-        /// And determine if a warning should be flagged.
         /// </summary>
-        public static bool WarnBicepVersion(IService service, int timeout, string minimum, out string version)
+        public static string GetBicepVersion(IService service)
         {
-            var context = GetContext(service);
+            var s = service as RuntimeService;
+            var context = GetContext();
             var bicep = new BicepHelper(
                 context,
-                service as RuntimeService,
-                timeout
+                s
             );
-            version = bicep.Version;
-            return version != null &&
-                System.Version.TryParse(version, out var actual) &&
-                System.Version.TryParse(minimum, out var expected) &&
-                actual < expected;
+            return bicep.Version;
         }
 
         /// <summary>
@@ -120,25 +115,25 @@ namespace PSRule.Rules.Azure.Runtime
         /// <summary>
         /// Expand resources from a parameter file and linked template/ bicep files.
         /// </summary>
-        public static PSObject[] GetResources(IService service, string parameterFile, int timeout)
+        public static PSObject[] GetResources(IService service, string parameterFile)
         {
-            var context = GetContext(service);
+            var context = GetContext();
             var linkHelper = new TemplateLinkHelper(context, PSRuleOption.GetWorkingPath(), true);
             var link = linkHelper.ProcessParameterFile(parameterFile);
             if (link == null)
                 return null;
 
             return IsBicep(link.TemplateFile) ?
-                GetBicepResources(service as RuntimeService, link.TemplateFile, link.ParameterFile, null, timeout) :
+                GetBicepResources(service as RuntimeService, link.TemplateFile, link.ParameterFile) :
                 GetTemplateResources(link.TemplateFile, link.ParameterFile, context);
         }
 
         /// <summary>
         /// Expand resources from a bicep file.
         /// </summary>
-        public static PSObject[] GetBicepResources(IService service, string bicepFile, PSCmdlet commandRuntime, int timeout)
+        public static PSObject[] GetBicepResources(IService service, string bicepFile)
         {
-            return GetBicepResources(service as RuntimeService, bicepFile, null, commandRuntime, timeout);
+            return GetBicepResources(service as RuntimeService, bicepFile, null);
         }
 
         /// <summary>
@@ -197,18 +192,17 @@ namespace PSRule.Rules.Azure.Runtime
             return Path.GetExtension(path) == ".bicep";
         }
 
-        private static PSObject[] GetBicepResources(RuntimeService service, string templateFile, string parameterFile, PSCmdlet commandRuntime, int timeout)
+        private static PSObject[] GetBicepResources(RuntimeService service, string templateFile, string parameterFile)
         {
-            var context = GetContext(service);
+            var context = GetContext();
             var bicep = new BicepHelper(
                 context,
-                service,
-                timeout
+                service
             );
             return bicep.ProcessFile(templateFile, parameterFile);
         }
 
-        private static PipelineContext GetContext(IService service)
+        private static PipelineContext GetContext()
         {
             PSCmdlet commandRuntime = null;
             var option = PSRuleOption.FromFileOrDefault(PSRuleOption.GetWorkingPath());

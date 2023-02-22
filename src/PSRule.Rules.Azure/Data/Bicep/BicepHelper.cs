@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
@@ -24,8 +25,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
     /// </summary>
     internal sealed class BicepHelper
     {
-        private const int BICEP_TIMEOUT_MIN = 1;
-        private const int BICEP_TIMEOUT_MAX = 120;
+        private const int ERROR_FILE_NOT_FOUND = 2;
 
         private readonly PipelineContext _Context;
         private readonly RuntimeService _Service;
@@ -33,13 +33,11 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static BicepInfo _Bicep;
 
-        public BicepHelper(PipelineContext context, RuntimeService service, int timeout)
+        public BicepHelper(PipelineContext context, RuntimeService service)
         {
             _Context = context;
             _Service = service;
-            _Timeout = timeout < BICEP_TIMEOUT_MIN ? BICEP_TIMEOUT_MIN : timeout;
-            if (_Timeout > BICEP_TIMEOUT_MAX)
-                _Timeout = BICEP_TIMEOUT_MAX;
+            _Timeout = _Service.Timeout;
         }
 
         internal sealed class BicepInfo
@@ -110,6 +108,10 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 }
                 catch (Exception ex)
                 {
+                    if (ex is Win32Exception win32 && win32.NativeErrorCode == ERROR_FILE_NOT_FOUND)
+                    {
+                        throw new BicepCompileException(PSRuleResources.BicepNotFound, ex);
+                    }
                     throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCommandError, ex.Message), ex);
                 }
             }
