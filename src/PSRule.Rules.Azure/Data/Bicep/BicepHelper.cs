@@ -50,16 +50,22 @@ namespace PSRule.Rules.Azure.Data.Bicep
             private readonly string _BinPath;
             private readonly bool _UseAzCLI;
 
-            public BicepInfo(string binPath, bool useAzCLI)
+            private BicepInfo(string version, string binPath, bool useAzCLI)
             {
+                Version = version;
                 _BinPath = binPath;
                 _UseAzCLI = useAzCLI;
-                Version = GetVersionInfo();
             }
 
             public string Version { get; }
 
-            internal BicepProcess Create(string sourcePath, int timeout)
+            public static BicepInfo Create(string binPath, bool useAzCLI)
+            {
+                var version = GetVersionInfo(binPath, useAzCLI);
+                return string.IsNullOrEmpty(version) ? null : new BicepInfo(version, binPath, useAzCLI);
+            }
+
+            public BicepProcess Spawn(string sourcePath, int timeout)
             {
                 try
                 {
@@ -80,12 +86,12 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 }
             }
 
-            private string GetVersionInfo()
+            private static string GetVersionInfo(string binPath, bool useAzCLI)
             {
                 try
                 {
-                    var args = GetBicepVersionArgs(_UseAzCLI);
-                    var versionStartInfo = new ProcessStartInfo(_BinPath, args)
+                    var args = GetBicepVersionArgs(useAzCLI);
+                    var versionStartInfo = new ProcessStartInfo(binPath, args)
                     {
                         CreateNoWindow = true,
                         RedirectStandardOutput = true,
@@ -374,68 +380,53 @@ namespace PSRule.Rules.Azure.Data.Bicep
         private BicepProcess GetBicep(string sourcePath, int timeout)
         {
             _Bicep ??= GetBicepInfo();
-            return _Bicep?.Create(sourcePath, timeout);
+            return _Bicep?.Spawn(sourcePath, timeout);
         }
 
         private BicepInfo GetBicepInfo()
         {
-            if (_Service.Bicep != null)
-                return _Service.Bicep;
-
-            var useAzCLI = false;
-            if (!(TryBicepPath(out var binPath) || TryAzCLIPath(out binPath, out useAzCLI)) || string.IsNullOrEmpty(binPath))
-                return null;
-
-            return _Service.Bicep = new BicepInfo(binPath, useAzCLI);
+            return _Service.Bicep ??= BicepInfo.Create(GetBinaryPath(out var useAzCLI), useAzCLI);
         }
 
-        private static bool TryBicepPath(out string binPath)
-        {
-            return TryBicepEnvVariable(out binPath) || TryBinaryPath(GetBicepBinaryName(), out binPath);
-        }
-
-        private static bool TryAzCLIPath(out string binPath, out bool useAzCLI)
+        private string GetBinaryPath(out bool useAzCLI)
         {
             useAzCLI = false;
-            binPath = null;
-            return UseAzCLI() && TryBinaryPath(GetAzBinaryName(), out binPath);
+            return GetBicepEnvironmentVariable() ??
+                GetAzCLIPath(out useAzCLI) ??
+                GetBicepBinary();
         }
 
-        private static bool TryBinaryPath(string bin, out string binPath)
+        private static string GetAzCLIPath(out bool useAzCLI)
         {
-            var paths = GetPathEnv();
-            for (var i = 0; paths != null && i < paths.Length; i++)
-            {
-                binPath = Path.Combine(paths[i], bin);
-                if (File.Exists(binPath))
-                    return true;
-            }
-            binPath = null;
-            return false;
+            useAzCLI = UseAzCLI();
+            return useAzCLI ? GetAzBinaryName() : null;
         }
 
-        private static string[] GetPathEnv()
+        /// <summary>
+        /// Check if the <c>PSRULE_AZURE_BICEP_PATH</c> environment variable is set and use this path if set.
+        /// </summary>
+        private static string GetBicepEnvironmentVariable()
         {
-            var envPath = Environment.GetEnvironmentVariable("PATH");
-            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
-                ? envPath.Split(LINUX_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries)
-                : envPath.Split(WINDOWS_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
+            var binaryPath = Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_PATH");
+            return string.IsNullOrEmpty(binaryPath) ? null : binaryPath;
         }
 
-        private static bool TryBicepEnvVariable(out string binaryPath)
+        /// <summary>
+        /// Get the file name of the Bicep CLI binary.
+        /// </summary>
+        private static string GetBicepBinary()
         {
-            binaryPath = Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_PATH");
-            return !string.IsNullOrEmpty(binaryPath);
+            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ||
+                RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "bicep" : "bicep.exe";
         }
 
-        private static string GetBicepBinaryName()
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "bicep" : "bicep.exe";
-        }
-
+        /// <summary>
+        /// Get the file name of the Azure CLI binary.
+        /// </summary>
         private static string GetAzBinaryName()
         {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "az" : "az.exe";
+            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ||
+                RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "az" : "az.exe";
         }
 
         private static string GetBicepBuildArgs(string sourcePath, bool useAzCLI)
@@ -454,6 +445,9 @@ namespace PSRule.Rules.Azure.Data.Bicep
             args = Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_ARGS") ?? string.Empty;
         }
 
+        /// <summary>
+        /// Check if the <c>PSRULE_AZURE_BICEP_USE_AZURE_CLI</c> environment is set.
+        /// </summary>
         private static bool UseAzCLI()
         {
             return EnvironmentHelper.Default.TryBool("PSRULE_AZURE_BICEP_USE_AZURE_CLI", out var value) && value;
