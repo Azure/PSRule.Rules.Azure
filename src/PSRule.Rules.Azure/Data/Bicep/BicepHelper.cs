@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
 using System.Management.Automation;
@@ -24,11 +25,7 @@ namespace PSRule.Rules.Azure.Data.Bicep
     /// </summary>
     internal sealed class BicepHelper
     {
-        private const int BICEP_TIMEOUT_MIN = 1;
-        private const int BICEP_TIMEOUT_MAX = 120;
-
-        private static readonly char[] LINUX_PATH_ENV_SEPARATOR = new char[] { ':' };
-        private static readonly char[] WINDOWS_PATH_ENV_SEPARATOR = new char[] { ';' };
+        private const int ERROR_FILE_NOT_FOUND = 2;
 
         private readonly PipelineContext _Context;
         private readonly RuntimeService _Service;
@@ -36,13 +33,11 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static BicepInfo _Bicep;
 
-        public BicepHelper(PipelineContext context, RuntimeService service, int timeout)
+        public BicepHelper(PipelineContext context, RuntimeService service)
         {
             _Context = context;
             _Service = service;
-            _Timeout = timeout < BICEP_TIMEOUT_MIN ? BICEP_TIMEOUT_MIN : timeout;
-            if (_Timeout > BICEP_TIMEOUT_MAX)
-                _Timeout = BICEP_TIMEOUT_MAX;
+            _Timeout = _Service.Timeout;
         }
 
         internal sealed class BicepInfo
@@ -50,51 +45,75 @@ namespace PSRule.Rules.Azure.Data.Bicep
             private readonly string _BinPath;
             private readonly bool _UseAzCLI;
 
-            public BicepInfo(string binPath, bool useAzCLI)
+            private BicepInfo(string version, string binPath, bool useAzCLI)
             {
+                Version = version;
                 _BinPath = binPath;
                 _UseAzCLI = useAzCLI;
-                Version = GetVersionInfo();
             }
 
             public string Version { get; }
 
-            internal BicepProcess Create(string sourcePath, int timeout)
+            public static BicepInfo Create(string binPath, bool useAzCLI)
             {
-                var args = GetBicepBuildArgs(sourcePath, _UseAzCLI);
-                var startInfo = new ProcessStartInfo(_BinPath, args)
-                {
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    WorkingDirectory = PSRuleOption.GetWorkingPath(),
-                };
-                return new BicepProcess(Process.Start(startInfo), timeout, Version);
+                var version = GetVersionInfo(binPath, useAzCLI);
+                return string.IsNullOrEmpty(version) ? null : new BicepInfo(version, binPath, useAzCLI);
             }
 
-            private string GetVersionInfo()
+            public BicepProcess Spawn(string sourcePath, int timeout)
             {
-                var args = GetBicepVersionArgs(_UseAzCLI);
-                var versionStartInfo = new ProcessStartInfo(_BinPath, args)
-                {
-                    CreateNoWindow = true,
-                    RedirectStandardOutput = true,
-                    RedirectStandardError = true,
-                    UseShellExecute = false,
-                    WorkingDirectory = PSRuleOption.GetWorkingPath(),
-                };
-                var bicep = new BicepProcess(Process.Start(versionStartInfo), 5);
                 try
                 {
-                    if (bicep.WaitForExit(out _))
-                        return TrimVersion(bicep.GetOutput());
+                    var args = GetBicepBuildArgs(sourcePath, _UseAzCLI);
+                    var startInfo = new ProcessStartInfo(_BinPath, args)
+                    {
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false,
+                        WorkingDirectory = PSRuleOption.GetWorkingPath(),
+                    };
+                    return new BicepProcess(Process.Start(startInfo), timeout, Version);
                 }
-                finally
+                catch (Exception ex)
                 {
-                    bicep.Dispose();
+                    throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCommandError, ex.Message), ex);
                 }
-                return null;
+            }
+
+            private static string GetVersionInfo(string binPath, bool useAzCLI)
+            {
+                try
+                {
+                    var args = GetBicepVersionArgs(useAzCLI);
+                    var versionStartInfo = new ProcessStartInfo(binPath, args)
+                    {
+                        CreateNoWindow = true,
+                        RedirectStandardOutput = true,
+                        RedirectStandardError = true,
+                        UseShellExecute = false,
+                        WorkingDirectory = PSRuleOption.GetWorkingPath(),
+                    };
+                    var bicep = new BicepProcess(Process.Start(versionStartInfo), 5);
+                    try
+                    {
+                        if (bicep.WaitForExit(out _))
+                            return TrimVersion(bicep.GetOutput());
+                    }
+                    finally
+                    {
+                        bicep.Dispose();
+                    }
+                    return null;
+                }
+                catch (Exception ex)
+                {
+                    if (ex is Win32Exception win32 && win32.NativeErrorCode == ERROR_FILE_NOT_FOUND)
+                    {
+                        throw new BicepCompileException(PSRuleResources.BicepNotFound, ex);
+                    }
+                    throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCommandError, ex.Message), ex);
+                }
             }
 
             private static string TrimVersion(string s)
@@ -145,25 +164,38 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
             public bool WaitForExit(out int exitCode)
             {
-                if (!_Process.HasExited)
+                try
                 {
-                    var timeoutCount = 0;
-                    while (!_Process.WaitForExit(_Interval) && !_Process.HasExited && timeoutCount < _Timeout)
-                        timeoutCount++;
-                }
+                    if (!_Process.HasExited)
+                    {
+                        var timeoutCount = 0;
+                        while (!_Process.WaitForExit(_Interval) && !_Process.HasExited && timeoutCount < _Timeout)
+                            timeoutCount++;
+                    }
 
-                exitCode = _Process.HasExited ? _Process.ExitCode : -1;
-                return _Process.HasExited && _ErrorWait.WaitOne(_Interval) && _OutputWait.WaitOne();
+                    exitCode = _Process.HasExited ? _Process.ExitCode : -1;
+                    return _Process.HasExited && _ErrorWait.WaitOne(_Interval) && _OutputWait.WaitOne();
+                }
+                catch (Exception ex)
+                {
+                    throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepCommandError, ex.Message), ex);
+                }
             }
 
             public string GetOutput()
             {
-                return _Output.ToString();
+                lock (_Output)
+                {
+                    return _Output.ToString();
+                }
             }
 
             public string GetError()
             {
-                return _Error.ToString();
+                lock (_Error)
+                {
+                    return _Error.ToString();
+                }
             }
 
             private void Bicep_OutputDataReceived(object sender, DataReceivedEventArgs e)
@@ -174,7 +206,10 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 }
                 else
                 {
-                    _Output.AppendLine(e.Data);
+                    lock (_Output)
+                    {
+                        _Output.AppendLine(e.Data);
+                    }
                 }
             }
 
@@ -187,8 +222,14 @@ namespace PSRule.Rules.Azure.Data.Bicep
                 else
                 {
                     var errors = GetErrorLine(e.Data);
-                    for (var i = 0; i < errors.Length; i++)
-                        _Error.AppendLine(errors[i]);
+                    if (errors.Length == 0)
+                        return;
+
+                    lock (_Error)
+                    {
+                        for (var i = 0; i < errors.Length; i++)
+                            _Error.AppendLine(errors[i]);
+                    }
                 }
             }
 
@@ -213,8 +254,14 @@ namespace PSRule.Rules.Azure.Data.Bicep
                         _OutputWait.Dispose();
                         _Process.Dispose();
                     }
-                    _Error.Clear();
-                    _Output.Clear();
+                    lock (_Error)
+                    {
+                        _Error.Clear();
+                    }
+                    lock (_Output)
+                    {
+                        _Output.Clear();
+                    }
                     _Disposed = true;
                 }
             }
@@ -332,68 +379,53 @@ namespace PSRule.Rules.Azure.Data.Bicep
         private BicepProcess GetBicep(string sourcePath, int timeout)
         {
             _Bicep ??= GetBicepInfo();
-            return _Bicep?.Create(sourcePath, timeout);
+            return _Bicep?.Spawn(sourcePath, timeout);
         }
 
         private BicepInfo GetBicepInfo()
         {
-            if (_Service.Bicep != null)
-                return _Service.Bicep;
-
-            var useAzCLI = false;
-            if (!(TryBicepPath(out var binPath) || TryAzCLIPath(out binPath, out useAzCLI)) || string.IsNullOrEmpty(binPath))
-                return null;
-
-            return _Service.Bicep = new BicepInfo(binPath, useAzCLI);
+            return _Service.Bicep ??= BicepInfo.Create(GetBinaryPath(out var useAzCLI), useAzCLI);
         }
 
-        private static bool TryBicepPath(out string binPath)
-        {
-            return TryBicepEnvVariable(out binPath) || TryBinaryPath(GetBicepBinaryName(), out binPath);
-        }
-
-        private static bool TryAzCLIPath(out string binPath, out bool useAzCLI)
+        private string GetBinaryPath(out bool useAzCLI)
         {
             useAzCLI = false;
-            binPath = null;
-            return UseAzCLI() && TryBinaryPath(GetAzBinaryName(), out binPath);
+            return GetBicepEnvironmentVariable() ??
+                GetAzCLIPath(out useAzCLI) ??
+                GetBicepBinary();
         }
 
-        private static bool TryBinaryPath(string bin, out string binPath)
+        private static string GetAzCLIPath(out bool useAzCLI)
         {
-            var paths = GetPathEnv();
-            for (var i = 0; paths != null && i < paths.Length; i++)
-            {
-                binPath = Path.Combine(paths[i], bin);
-                if (File.Exists(binPath))
-                    return true;
-            }
-            binPath = null;
-            return false;
+            useAzCLI = UseAzCLI();
+            return useAzCLI ? GetAzBinaryName() : null;
         }
 
-        private static string[] GetPathEnv()
+        /// <summary>
+        /// Check if the <c>PSRULE_AZURE_BICEP_PATH</c> environment variable is set and use this path if set.
+        /// </summary>
+        private static string GetBicepEnvironmentVariable()
         {
-            var envPath = Environment.GetEnvironmentVariable("PATH");
-            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux)
-                ? envPath.Split(LINUX_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries)
-                : envPath.Split(WINDOWS_PATH_ENV_SEPARATOR, StringSplitOptions.RemoveEmptyEntries);
+            var binaryPath = Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_PATH");
+            return string.IsNullOrEmpty(binaryPath) ? null : binaryPath;
         }
 
-        private static bool TryBicepEnvVariable(out string binaryPath)
+        /// <summary>
+        /// Get the file name of the Bicep CLI binary.
+        /// </summary>
+        private static string GetBicepBinary()
         {
-            binaryPath = Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_PATH");
-            return !string.IsNullOrEmpty(binaryPath);
+            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ||
+                RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "bicep" : "bicep.exe";
         }
 
-        private static string GetBicepBinaryName()
-        {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "bicep" : "bicep.exe";
-        }
-
+        /// <summary>
+        /// Get the file name of the Azure CLI binary.
+        /// </summary>
         private static string GetAzBinaryName()
         {
-            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) || RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "az" : "az.exe";
+            return RuntimeInformation.IsOSPlatform(OSPlatform.OSX) ||
+                RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ? "az" : "az.exe";
         }
 
         private static string GetBicepBuildArgs(string sourcePath, bool useAzCLI)
@@ -409,9 +441,12 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static void GetBicepBuildAdditionalArgs(out string args)
         {
-            args = System.Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_ARGS") ?? string.Empty;
+            args = Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_ARGS") ?? string.Empty;
         }
 
+        /// <summary>
+        /// Check if the <c>PSRULE_AZURE_BICEP_USE_AZURE_CLI</c> environment is set.
+        /// </summary>
         private static bool UseAzCLI()
         {
             return EnvironmentHelper.Default.TryBool("PSRULE_AZURE_BICEP_USE_AZURE_CLI", out var value) && value;
