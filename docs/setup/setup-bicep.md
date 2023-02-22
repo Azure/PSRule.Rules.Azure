@@ -154,6 +154,31 @@ configuration:
 
   [7]: configuring-expansion.md#bicep-compilation-timeout
 
+### Checking Bicep version
+
+:octicons-milestone-24: v1.25.0
+
+To use Bicep files with PSRule for Azure:
+
+- The Bicep CLI must be installed or you must configure the Azure CLI.
+- The version installed  must support the features you are using.
+
+It may not always be clear which version of Bicep CLI is being used if you have multiple versions installed.
+Additionally, the version installed in your CI/ CD pipeline may not be the same as your local development environment.
+
+You can enable checking the Bicep CLI version during initialization.
+To enable this feature, set the `Configuration.AZURE_BICEP_CHECK_TOOL` option to `true`.
+Additionally, you can set the minimum version required using the `Configuration.AZURE_BICEP_MINIMUM_VERSION` option.
+
+```yaml title="ps-rule.yaml"
+configuration:
+  # Enable Bicep CLI checks.
+  AZURE_BICEP_CHECK_TOOL: true
+
+  # Optionally, configure the minimum version of the Bicep CLI.
+  AZURE_BICEP_MINIMUM_VERSION: '0.13.0'
+```
+
 ### Configuring minimum version
 
 :octicons-milestone-24: v1.25.0
@@ -162,23 +187,31 @@ The Azure Bicep CLI is updated regularly, with new features and bug fixes.
 You must use a version of the Bicep CLI that supports the features you are using.
 If you attempt to use a feature that is not supported by the Bicep CLI, expansion will fail with a _BCP_ error.
 
-It may not always be clear which version of Bicep CLI PSRule for Azure is using if you have multiple versions installed.
-Using the Bicep CLI via `az bicep` is not the default, and you may need to [set additional options to use it](#using-azure-cli).
+!!! Tip
+    It may not always be clear which version of Bicep CLI is being used if you have multiple versions installed.
+    Using the Bicep CLI via `az bicep` is not the default, and you may need to [set additional options to use it](#using-azure-cli).
 
 To ensure you are using the correct version of the Bicep CLI, you can configure the minimum version required.
-If an earlier version is detected, PSRule for Azure will generate a warning.
+If an earlier version is detected, PSRule for Azure will generate an error.
 To configure the minimum version, set the `Configuration.AZURE_BICEP_MINIMUM_VERSION` option.
+By default, the minimum version is set to `0.4.451`.
 
 ```yaml title="ps-rule.yaml"
 configuration:
+  # Enable Bicep CLI checks.
+  AZURE_BICEP_CHECK_TOOL: true
+
   # Configure the minimum version of the Bicep CLI.
   AZURE_BICEP_MINIMUM_VERSION: '0.13.0'
 ```
 
-!!! Tip
-    For troubleshooting Bicep compilation errors see [Bicep compile errors][8].
+!!! Important
+    The `Configuration.AZURE_BICEP_CHECK_TOOL` **must** be set to `true` for this option to take effect.
 
-  [8]: ../troubleshooting.md#bicep-compile-errors
+!!! Tip
+    For troubleshooting Bicep compilation errors see [Bicep compile errors][9].
+
+  [9]: ../troubleshooting.md#bicep-compile-errors
 
 ## Recommended content
 

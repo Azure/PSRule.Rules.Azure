@@ -26,11 +26,30 @@ To resolve this issue:
 
 !!! Tip
     From PSRule for Azure v1.25.0 you can configure the minimum version of Bicep CLI required.
-    If an earlier version is detected, PSRule for Azure will generate a warning.
+    If an earlier version is detected, PSRule for Azure will generate an error.
     See [Configuring minimum version][8] for details on how to configure this option.
 
   [7]: setup/setup-bicep.md#using-azure-cli
   [8]: setup/setup-bicep.md#configuring-minimum-version
+
+## Bicep version
+
+When expanding Bicep source files you may get an error relating to the Bicep version you have installed.
+For example if you attempt to use a Bicep feature that is not supported by the version used by PSRule for Azure.
+
+PSRule for Azure uses the Bicep CLI installed on your machine or CI worker.
+By default, the Bicep CLI binary will be selected by your `PATH` environment variable.
+
+Optionally you can configure an alternative Bicep CLI binary to use by either:
+
+- **By path** &mdash; Set the [PSRULE_AZURE_BICEP_PATH][9] environment variable to the specified binary path.
+- **From Azure CLI** &mdash; Set the [PSRULE_AZURE_BICEP_USE_AZURE_CLI][10] environment variable to `true`.
+
+For more details on installing and configuring the Bicep CLI, see [Setup Bicep][11].
+
+  [9]: setup/setup-bicep.md#setting-environment-variables
+  [10]: setup/setup-bicep.md#using-azure-cli
+  [11]: setup/setup-bicep.md
 
 ## Bicep compilation timeout
 
