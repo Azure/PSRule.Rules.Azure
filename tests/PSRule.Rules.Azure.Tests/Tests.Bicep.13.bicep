@@ -54,3 +54,12 @@ output totalAgeAdd1 int = reduce(ages, 1, (cur, next) => cur + next)
 
 // Sort
 output dogsByAge array = sort(dogs, (a, b) => a.age < b.age)
+
+// To Object
+param numbers array = [0, 1, 2, 3]
+output objectMap object = toObject([123, 456, 789], i => '${i / 100}')
+output objectMap2 object = toObject(numbers, i => '${i}', i => {
+  isEven: (i % 2) == 0
+  isGreaterThan2: (i > 2)
+})
+output objectMapNull object = toObject([123, 456, 789, null], i => '${i}')
