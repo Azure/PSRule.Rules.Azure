@@ -34,6 +34,8 @@ What's changed since pre-release v1.25.0-B0035:
     [#2052](https://github.com/Azure/PSRule.Rules.Azure/pull/2052)
   - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.5.
     [#2052](https://github.com/Azure/PSRule.Rules.Azure/pull/2052)
+  - Bump Microsoft.NET.Test.Sdk to v17.5.0.
+    [#2055](https://github.com/Azure/PSRule.Rules.Azure/pull/2055)
 
 ## v1.25.0-B0035 (pre-release)
 
