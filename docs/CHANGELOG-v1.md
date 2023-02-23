@@ -68,10 +68,10 @@ What's changed since v1.24.2:
 - Engineering:
   - Updated build to use GitHub Actions by @BernieWhite.
     [#1696](https://github.com/Azure/PSRule.Rules.Azure/issues/1696)
-  - Bump BenchmarkDotNet to v0.13.4.
-    [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
-  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.4.
-    [#1992](https://github.com/Azure/PSRule.Rules.Azure/pull/1992)
+  - Bump BenchmarkDotNet to v0.13.5.
+    [#2052](https://github.com/Azure/PSRule.Rules.Azure/pull/2052)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.5.
+    [#2052](https://github.com/Azure/PSRule.Rules.Azure/pull/2052)
 
 ## v1.24.2
 
