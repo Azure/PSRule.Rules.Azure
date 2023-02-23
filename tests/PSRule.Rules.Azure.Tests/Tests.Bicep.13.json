@@ -1,11 +1,13 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "1.9-experimental",
   "contentVersion": "1.0.0.0",
   "metadata": {
+    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.13.1.58284",
-      "templateHash": "15169255149500185367"
+      "version": "0.14.85.62628",
+      "templateHash": "11595356597778450057"
     }
   },
   "parameters": {
@@ -23,6 +25,15 @@
           "four",
           "five"
         ]
+      ]
+    },
+    "numbers": {
+      "type": "array",
+      "defaultValue": [
+        0,
+        1,
+        2,
+        3
       ]
     }
   },
@@ -60,7 +71,7 @@
     ],
     "ages": "[map(variables('dogs'), lambda('dog', lambdaVariables('dog').age))]"
   },
-  "resources": [],
+  "resources": {},
   "outputs": {
     "arrayOutput": {
       "type": "array",
@@ -93,6 +104,18 @@
     "dogsByAge": {
       "type": "array",
       "value": "[sort(variables('dogs'), lambda('a', 'b', less(lambdaVariables('a').age, lambdaVariables('b').age)))]"
+    },
+    "objectMap": {
+      "type": "object",
+      "value": "[toObject(createArray(123, 456, 789), lambda('i', format('{0}', div(lambdaVariables('i'), 100))))]"
+    },
+    "objectMap2": {
+      "type": "object",
+      "value": "[toObject(parameters('numbers'), lambda('i', format('{0}', lambdaVariables('i'))), lambda('i', createObject('isEven', equals(mod(lambdaVariables('i'), 2), 0), 'isGreaterThan2', greater(lambdaVariables('i'), 2))))]"
+    },
+    "objectMapNull": {
+      "type": "object",
+      "value": "[toObject(createArray(123, 456, 789, null()), lambda('i', format('{0}', lambdaVariables('i'))))]"
     }
   }
 }

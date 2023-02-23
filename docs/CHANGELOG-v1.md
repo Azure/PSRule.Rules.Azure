@@ -26,6 +26,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.25.0-B0035:
 
+- General improvements:
+  - Added support for Bicep `toObject` function by @BernieWhite.
+    [#2014](https://github.com/Azure/PSRule.Rules.Azure/issues/2014)
 - Engineering:
   - Bump BenchmarkDotNet to v0.13.5.
     [#2052](https://github.com/Azure/PSRule.Rules.Azure/pull/2052)

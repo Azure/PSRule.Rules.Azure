@@ -107,10 +107,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var result = new object[inputArray.Length];
             for (var i = 0; i < inputArray.Length; i++)
-            {
-                lambdaContext.LambdaVariable(varName, inputArray[i]);
-                result[i] = mapper(lambdaContext);
-            }
+                result[i] = ObjectMapper(inputArray[i], lambdaContext, varName, mapper);
+
             return result;
         }
 
@@ -155,6 +153,25 @@ namespace PSRule.Rules.Azure.Data.Template
             return result;
         }
 
+        internal object ToObject(ITemplateContext context, object[] inputArray, LambdaExpressionFn lambdaValues)
+        {
+            var keyContext = GetArgs2(context, out var varName1, out var keyMapper);
+            if (keyContext == null)
+                return null;
+
+            string varName2 = null;
+            ExpressionFnOuter valueMapper = null;
+            var valueContext = lambdaValues?.GetArgs2(context, out varName2, out valueMapper);
+            var result = new Dictionary<string, object>(inputArray.Length);
+            for (var i = 0; i < inputArray.Length; i++)
+            {
+                var key = ObjectMapper(inputArray[i], keyContext, varName1, keyMapper)?.ToString() ?? string.Empty;
+                var value = valueContext != null ? ObjectMapper(inputArray[i], valueContext, varName2, valueMapper) : inputArray[i];
+                result.Add(key, value);
+            }
+            return result;
+        }
+
         #endregion Lambda functions
 
         #region Helper methods
@@ -194,6 +211,15 @@ namespace PSRule.Rules.Azure.Data.Template
 
             fn = arg2;
             return new LambdaContext(context);
+        }
+
+        private static object ObjectMapper(object input, LambdaContext context, string varName, ExpressionFnOuter mapper)
+        {
+            if (context == null || mapper == null)
+                return null;
+
+            context.LambdaVariable(varName, input);
+            return mapper(context);
         }
 
         #endregion Helper methods

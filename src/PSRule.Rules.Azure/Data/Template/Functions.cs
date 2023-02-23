@@ -159,6 +159,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("map", Map, delayBinding: true),
             new FunctionDescriptor("reduce", Reduce, delayBinding: true),
             new FunctionDescriptor("sort", Sort, delayBinding: true),
+            new FunctionDescriptor("toObject", ToObject, delayBinding: true),
             new FunctionDescriptor("lambda", Lambda, delayBinding: true),
             new FunctionDescriptor("lambdaVariables", LambdaVariables, delayBinding: true),
         };
@@ -1901,6 +1902,32 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentFormatInvalid(nameof(Sort));
 
             return lambda.Sort(context, inputArray.OfType<object>().ToArray());
+        }
+
+        internal static object ToObject(ITemplateContext context, object[] args)
+        {
+            var count = CountArgs(args);
+            if (count < 2 || count > 3)
+                throw ArgumentsOutOfRange(nameof(ToObject), args);
+
+            args[0] = GetExpression(context, args[0]);
+            if (!ExpressionHelpers.TryArray(args[0], out var inputArray))
+                throw ArgumentFormatInvalid(nameof(ToObject));
+
+            args[1] = GetExpression(context, args[1]);
+            if (args[1] is not LambdaExpressionFn lambdaKeys)
+                throw ArgumentFormatInvalid(nameof(ToObject));
+
+            LambdaExpressionFn lambdaValues = null;
+            if (count == 3)
+            {
+                args[2] = GetExpression(context, args[2]);
+                if (args[2] is not LambdaExpressionFn)
+                    throw ArgumentFormatInvalid(nameof(ToObject));
+
+                lambdaValues = args[2] as LambdaExpressionFn;
+            }
+            return lambdaKeys.ToObject(context, inputArray.OfType<object>().ToArray(), lambdaValues);
         }
 
         /// <summary>

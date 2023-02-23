@@ -712,6 +712,26 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Evie", dogsByAge["value"][1]["name"].Value<string>());
             Assert.Equal("Casper", dogsByAge["value"][2]["name"].Value<string>());
             Assert.Equal("Indy", dogsByAge["value"][3]["name"].Value<string>());
+
+            // ToObject
+            Assert.True(templateContext.RootDeployment.TryOutput("objectMap", out JObject objectMap));
+            Assert.Equal(123, objectMap["value"]["1"].Value<int>());
+            Assert.Equal(456, objectMap["value"]["4"].Value<int>());
+            Assert.Equal(789, objectMap["value"]["7"].Value<int>());
+            Assert.True(templateContext.RootDeployment.TryOutput("objectMap2", out JObject objectMap2));
+            Assert.True(objectMap2["value"]["0"]["isEven"].Value<bool>());
+            Assert.False(objectMap2["value"]["0"]["isGreaterThan2"].Value<bool>());
+            Assert.False(objectMap2["value"]["1"]["isEven"].Value<bool>());
+            Assert.False(objectMap2["value"]["1"]["isGreaterThan2"].Value<bool>());
+            Assert.True(objectMap2["value"]["2"]["isEven"].Value<bool>());
+            Assert.False(objectMap2["value"]["2"]["isGreaterThan2"].Value<bool>());
+            Assert.False(objectMap2["value"]["3"]["isEven"].Value<bool>());
+            Assert.True(objectMap2["value"]["3"]["isGreaterThan2"].Value<bool>());
+            Assert.True(templateContext.RootDeployment.TryOutput("objectMapNull", out JObject objectMapNull));
+            Assert.True(objectMapNull["value"][""].Type == JTokenType.Null);
+            Assert.Equal(123, objectMapNull["value"]["123"].Value<int>());
+            Assert.Equal(456, objectMapNull["value"]["456"].Value<int>());
+            Assert.Equal(789, objectMapNull["value"]["789"].Value<int>());
         }
 
         [Fact]
