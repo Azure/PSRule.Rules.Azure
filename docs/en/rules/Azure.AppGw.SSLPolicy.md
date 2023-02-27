@@ -24,7 +24,11 @@ Consider configuring Application Gateway to accept a minimum of TLS 1.2.
 
 To deploy Application Gateways that pass this rule:
 
-- Set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2`.
+- Set the `properties.sslPolicy.policyType` property to `Custom or Predefined`.
+If the `properties.sslPolicy.policyType` is set to `Predefined`, `properties.sslPolicy.policyName`
+becomes mandatory whereas, `minProtocolVersion` and `cipherSuites` are not supported.
+
+- For `Custom`, set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2` and add list of supported `cipherSuites`.
 
 For example:
 
@@ -40,7 +44,9 @@ For example:
             "tier": "WAF_v2"
         },
         "sslPolicy": {
-          "minProtocolVersion": "TLSv1_2"
+          "policyType": "Custom",
+          "minProtocolVersion": "TLSv1_2",
+          "cipherSuites": []
         }
     }
 }
@@ -50,7 +56,11 @@ For example:
 
 To deploy Application Gateways that pass this rule:
 
-- Set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2`.
+- Set the `properties.sslPolicy.policyType` property to `Custom or Predefined`.
+If the `properties.sslPolicy.policyType` is set to `Predefined`, `properties.sslPolicy.policyName`
+becomes mandatory whereas, `minProtocolVersion` and `cipherSuites` are not supported.
+
+- For `Custom`, set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2` and add list of supported `cipherSuites`.
 
 For example:
 
@@ -64,7 +74,9 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
       tier: 'WAF_v2'
     }
     sslPolicy: {
+      policyType: 'Custom'
       minProtocolVersion: 'TLSv1_2'
+      cipherSuites: []
     }
   }
 }
