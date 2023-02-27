@@ -1,7 +1,7 @@
 ---
 name: Bug report
 about: Report errors or unexpected behaviour
-labels: 'bug'
+labels: 'bug', 'Needs: Triage :mag:'
 ---
 
 **Description of the issue**

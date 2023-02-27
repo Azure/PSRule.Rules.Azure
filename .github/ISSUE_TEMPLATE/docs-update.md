@@ -1,7 +1,7 @@
 ---
 name: Documentation update
 about: Report errors in documentation or improvement
-labels: 'documentation'
+labels: 'documentation', 'Needs: Triage :mag:'
 ---
 
 **What is the path or URL of the page you're reporting?**

@@ -1,7 +1,7 @@
 ---
 name: Feature request
 about: Suggest an idea
-labels: 'enhancement'
+labels: 'enhancement', 'Needs: Triage :mag:'
 ---
 
 **Is your feature request related to a problem? Please describe.**
