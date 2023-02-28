@@ -58,7 +58,7 @@ For example:
 
 ### Configure with Bicep
 
-To deploy Application Gateways that pass this rule:
+To deploy Application Gateways that pass this rule use a predefined or custom policy:
 
 - **Custom** &mdash; Set the `properties.sslPolicy.policyType` property to `Custom`.
   - Set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2`.
