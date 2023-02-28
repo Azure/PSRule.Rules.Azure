@@ -22,7 +22,7 @@ Consider configuring Application Gateway to accept a minimum of TLS 1.2.
 
 ### Configure with Azure template
 
-To deploy Application Gateways that pass this rule:
+To deploy Application Gateways that pass this rule use a predefined or custom policy:
 
 - **Custom** &mdash; Set the `properties.sslPolicy.policyType` property to `Custom`.
   - Set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2`.
