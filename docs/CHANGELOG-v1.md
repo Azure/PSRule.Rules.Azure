@@ -36,6 +36,9 @@ What's changed since pre-release v1.25.0-B0035:
     [#2052](https://github.com/Azure/PSRule.Rules.Azure/pull/2052)
   - Bump Microsoft.NET.Test.Sdk to v17.5.0.
     [#2055](https://github.com/Azure/PSRule.Rules.Azure/pull/2055)
+- Bug fixes:
+  - Fixed SQL transparent data Encryption (TDE) works properly on all resources including exported resources by @zilberd.
+    [#2059](https://github.com/Azure/PSRule.Rules.Azure/issues/2059)
 
 ## v1.25.0-B0035 (pre-release)
 

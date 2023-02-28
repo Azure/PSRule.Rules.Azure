@@ -22,9 +22,17 @@ Consider configuring Application Gateway to accept a minimum of TLS 1.2.
 
 ### Configure with Azure template
 
-To deploy Application Gateways that pass this rule:
+To deploy Application Gateways that pass this rule use a predefined or custom policy:
 
-- Set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2`.
+- **Custom** &mdash; Set the `properties.sslPolicy.policyType` property to `Custom`.
+  - Set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2`.
+  - Set the `properties.sslPolicy.cipherSuites` property to a list of supported ciphers. For example:
+    - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
+    - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
+    - `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
+    - `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
+- **Predefined** &mdash; Set the `properties.sslPolicy.policyType` property to `Predefined`.
+  - Set the `properties.sslPolicy.policyName` property to a supported predefined policy such as `AppGwSslPolicy20220101S`.
 
 For example:
 
@@ -40,7 +48,14 @@ For example:
             "tier": "WAF_v2"
         },
         "sslPolicy": {
-          "minProtocolVersion": "TLSv1_2"
+          "policyType": "Custom",
+          "minProtocolVersion": "TLSv1_2",
+          "cipherSuites": [
+                  "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+                  "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+                  "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+                  "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+          ]
         }
     }
 }
@@ -48,9 +63,17 @@ For example:
 
 ### Configure with Bicep
 
-To deploy Application Gateways that pass this rule:
+To deploy Application Gateways that pass this rule use a predefined or custom policy:
 
-- Set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2`.
+- **Custom** &mdash; Set the `properties.sslPolicy.policyType` property to `Custom`.
+  - Set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2`.
+  - Set the `properties.sslPolicy.cipherSuites` property to a list of supported ciphers. For example:
+    - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
+    - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
+    - `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
+    - `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
+- **Predefined** &mdash; Set the `properties.sslPolicy.policyType` property to `Predefined`.
+  - Set the `properties.sslPolicy.policyName` property to a supported predefined policy such as `AppGwSslPolicy20220101S`.
 
 For example:
 
@@ -64,7 +87,14 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
       tier: 'WAF_v2'
     }
     sslPolicy: {
+      policyType: 'Custom'
       minProtocolVersion: 'TLSv1_2'
+      cipherSuites: [
+        'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'
+        'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'
+      ]
     }
   }
 }
@@ -77,3 +107,6 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
 - [Configure SSL policy versions and cipher suites on Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell)
 - [Overview of TLS termination and end to end TLS with Application Gateway](https://docs.microsoft.com/azure/application-gateway/ssl-overview)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways)
+- [Predefined TLS policy](https://learn.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#predefined-tls-policy)
+- [Cipher suites](https://learn.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#cipher-suites)
+- [Limitations](https://learn.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#limitations)
