@@ -24,11 +24,15 @@ Consider configuring Application Gateway to accept a minimum of TLS 1.2.
 
 To deploy Application Gateways that pass this rule:
 
-- Set the `properties.sslPolicy.policyType` property to `Custom or Predefined`.
-If the `properties.sslPolicy.policyType` is set to `Predefined`, `properties.sslPolicy.policyName`
-becomes mandatory whereas, `minProtocolVersion` and `cipherSuites` are not supported.
-
-- For `Custom`, set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2` and add list of supported `cipherSuites`.
+- **Custom** &mdash; Set the `properties.sslPolicy.policyType` property to `Custom`.
+  - Set the `properties.sslPolicy.minProtocolVersion` property to `TLSv1_2`.
+  - Set the `properties.sslPolicy.cipherSuites` property to a list of supported ciphers. For example:
+    - `TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384`
+    - `TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256`
+    - `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
+    - `TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256`
+- **Predefined** &mdash; Set the `properties.sslPolicy.policyType` property to `Predefined`.
+  - Set the `properties.sslPolicy.policyName` property to a supported predefined policy such as `AppGwSslPolicy20220101S`.
 
 For example:
 
