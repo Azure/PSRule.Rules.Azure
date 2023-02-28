@@ -84,7 +84,12 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
     sslPolicy: {
       policyType: 'Custom'
       minProtocolVersion: 'TLSv1_2'
-      cipherSuites: []
+      cipherSuites: [
+        'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'
+        'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'
+      ]
     }
   }
 }
