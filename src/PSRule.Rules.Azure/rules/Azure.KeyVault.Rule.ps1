@@ -131,7 +131,7 @@ Rule 'Azure.KeyVault.Firewall' -Ref 'AZR-000355' -Type 'Microsoft.KeyVault/vault
         
         return $Assert.fail();
     }
-    elseif ($Assert.HasFieldValue($TargetObject, 'Properties.networkAcls.defaultAction', 'deny').Result) {
+    elseif ($Assert.HasFieldValue($TargetObject, 'Properties.networkAcls.defaultAction', 'Deny').Result) {
         $Assert.Pass();
     }
     else {

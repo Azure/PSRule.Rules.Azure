@@ -132,7 +132,7 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
+            $ruleResult.Length | Should -Be 7;
             $ruleResult.TargetName | Should -BeIn 'keyvault-B', 'keyvault-C', 'keyvault-D', 'keyvault-E', 'keyvault-F', 'keyvault-G', 'keyvault-H';
 
             # Pass
@@ -359,11 +359,11 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
         It 'Azure.KeyVault.Firewall' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.KeyVault.Firewall' };
 
-            # Fail
+            # Fails
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
+            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'keyvault1';
+            $ruleResult.TargetName | Should -Be 'keyvault-001';
         }
     }
 }
