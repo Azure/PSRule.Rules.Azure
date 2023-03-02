@@ -125,6 +125,22 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-B', 'keyvault-C', 'keyvault-D', 'keyvault-E', 'keyvault-F';
         }
+
+        It 'Azure.KeyVault.Firewall' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.KeyVault.Firewall' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-B', 'keyvault-C', 'keyvault-D', 'keyvault-E', 'keyvault-F', 'keyvault-G', 'keyvault-H';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A';
+        }
     }
 
     Context 'Resource name - Azure.KeyVault.Name' {
@@ -338,6 +354,16 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult[0].TargetName | Should -BeLike '*Resources.Parameters2.json';
             $ruleResult[1].TargetName | Should -BeExactly 'kvstoragediag01';
+        }
+
+        It 'Azure.KeyVault.Firewall' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.KeyVault.Firewall' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'keyvault1';
         }
     }
 }

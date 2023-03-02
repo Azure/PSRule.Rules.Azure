@@ -30,6 +30,12 @@
       "enabledForTemplateDeployment": true,
       "enableSoftDelete": true,
       "enablePurgeProtection": true,
+      "networkAcls":  {
+        "defaultAction": "Deny",
+        "bypass": "AzureServices",
+        "ipRules": [],
+        "virtualNetworkRules": []
+      },
       "vaultUri": "https://keyvault-A.vault.azure.net/",
       "provisioningState": "Succeeded"
     },
