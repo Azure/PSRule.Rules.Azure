@@ -33,8 +33,8 @@ If any of the following options are enabled you must also enable _Allow trusted 
 
 ## RECOMMENDATION
 
-Consider configuring KeyVault firewall to restrict network access to permitted clients only.
-Also consider enforcing this setting using Azure Policy [Azure Key Vault should have firewall enabled](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490).
+Consider configuring Key Vault firewall to restrict network access to permitted clients only.
+Also consider enforcing this setting using Azure Policy.
 
 ## NOTES
 
