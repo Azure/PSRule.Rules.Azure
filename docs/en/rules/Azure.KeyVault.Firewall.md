@@ -36,8 +36,75 @@ If any of the following options are enabled you must also enable _Allow trusted 
 Consider configuring Key Vault firewall to restrict network access to permitted clients only.
 Also consider enforcing this setting using Azure Policy.
 
-## NOTES
+## EXAMPLES
 
+### Configure with Azure template
+
+To deploy Key Vaults that pass this rule:
+
+- Set the `properties.networkAcls.defaultAction` property to `Deny`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.KeyVault/vaults",
+  "apiVersion": "2022-07-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "sku": {
+      "family": "A",
+      "name": "standard"
+    },
+    "tenantId": "[tenant().tenantId]",
+    "softDeleteRetentionInDays": 90,
+    "enableSoftDelete": true,
+    "enablePurgeProtection": true,
+    "accessPolicies": "[parameters('accessPolicies')]",
+    "networkAcls": {
+      "defaultAction": "Deny",
+      "bypass": "AzureServices",
+      "ipRules": [],
+      "virtualNetworkRules": []
+    }
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy Key Vaults that pass this rule:
+
+- Set the `properties.networkAcls.defaultAction` property to `Deny`.
+
+For example:
+
+```bicep
+resource vault 'Microsoft.KeyVault/vaults[@2022-07-01'](https://github.com/2022-07-01') = {
+  name: name
+  location: location
+  properties: {
+    sku: {
+      family: 'A'
+      name: 'standard'
+    }
+    tenantId: tenant().tenantId
+    softDeleteRetentionInDays: 90
+    enableSoftDelete: true
+    enablePurgeProtection: true
+    accessPolicies: accessPolicies
+    networkAcls: {
+      defaultAction: 'Deny'
+      bypass: 'AzureServices'
+      ipRules: []
+      virtualNetworkRules: []
+    }
+  }
+}
+```
+
+## NOTES
 
 ## LINKS
 
