@@ -10,7 +10,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVau
 
 ## SYNOPSIS
 
-KeyVault should only accept explicitly allowed traffic.
+Key Vault should only accept explicitly allowed traffic.
 
 ## DESCRIPTION
 
