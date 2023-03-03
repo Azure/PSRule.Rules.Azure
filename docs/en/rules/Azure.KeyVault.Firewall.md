@@ -14,7 +14,7 @@ Key Vault should only accept explicitly allowed traffic.
 
 ## DESCRIPTION
 
-By default, KeyVault accept connections from clients on any network.
+By default, Key Vault accept connections from clients on any network.
 To limit access to selected networks, you must first change the default action.
 
 After changing the default action from `Allow` to `Deny`, configure one or more rules to allow traffic.
