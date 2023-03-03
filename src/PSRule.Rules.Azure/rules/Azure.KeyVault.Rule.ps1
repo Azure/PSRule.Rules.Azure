@@ -127,14 +127,5 @@ Rule 'Azure.KeyVault.AutoRotationPolicy' -Ref 'AZR-000123' -Type 'Microsoft.KeyV
 
 # Synopsis: KeyVaults should only accept explicitly allowed traffic.
 Rule 'Azure.KeyVault.Firewall' -Ref 'AZR-000355' -Type 'Microsoft.KeyVault/vaults'  -Tag @{ release = 'GA'; 'Azure.WAF/pillar' = 'Security'; } {
-    if ($Assert.NullOrEmpty($TargetObject, 'Properties.networkAcls').Result) {
-        
-        return $Assert.fail();
-    }
-    elseif ($Assert.HasFieldValue($TargetObject, 'Properties.networkAcls.defaultAction', 'Deny').Result) {
-        $Assert.Pass();
-    }
-    else {
-        $Assert.Fail();
-    }
+    $Assert.HasFieldValue($TargetObject, 'Properties.networkAcls.defaultAction', 'Deny')
 }
