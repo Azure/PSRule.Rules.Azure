@@ -25,6 +25,12 @@ Traffic can be allowed from:
 - Private endpoint connections.
 - Azure virtual network subnets with a Service Endpoint.
 
+If any of the following options are enabled you must also enable _Allow trusted Microsoft services to bypass this firewall_:
+
+- `enabledForDeployment` - _Azure Virtual Machines for deployment_.
+- `enabledForDiskEncryption` - _Azure Disk Encryption for volume encryption_.
+- `enabledForTemplateDeployment` - _Azure Resource Manager for template deployment_.
+
 ## RECOMMENDATION
 
 Consider configuring KeyVault firewall to restrict network access to permitted clients only.
