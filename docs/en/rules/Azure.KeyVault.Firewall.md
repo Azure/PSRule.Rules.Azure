@@ -6,7 +6,7 @@ resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.Firewall/
 ---
 
-# Configure Azure KeyVault firewall
+# Configure Azure Key Vault firewall
 
 ## SYNOPSIS
 
