@@ -43,6 +43,6 @@ Also consider enforcing this setting using Azure Policy [Azure Key Vault should 
 
 - [Public endpoints](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints#public-endpoints)
 - [Configure Azure Key Vault firewalls and virtual networks](https://docs.microsoft.com/azure/key-vault/general/network-security)
-- [Azure security baseline for Key Vault - Disable Public Network Access](https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/key-vault-security-baseline?context=%2Fazure%2Fkey-vault%2Fgeneral%2Fcontext%2Fcontext#disable-public-network-access)
+- [Azure security baseline for Key Vault - Disable Public Network Access](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline#disable-public-network-access)
 - [Azure Policies - Azure Key Vault should have firewall enabled](https://www.azadvertizer.net/azpolicyadvertizer/55615ac9-af46-4a59-874e-391cc3dfb490.html)
 
