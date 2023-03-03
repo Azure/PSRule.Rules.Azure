@@ -360,13 +360,14 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.KeyVault.Firewall' };
 
             # Fails
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'keyvault-001';
+            
+            # No passes
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -BeNullOrEmpty;
-#            test should be fail when the module will be published            
-#            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-#            $ruleResult | Should -Not -BeNullOrEmpty;
-#            $ruleResult.Length | Should -Be 1;
-#            $ruleResult.TargetName | Should -Be 'keyvault-001';
         }
     }
 }
