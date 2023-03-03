@@ -112,4 +112,5 @@ resource vault 'Microsoft.KeyVault/vaults[@2022-07-01'](https://github.com/2022-
 - [Configure Azure Key Vault firewalls and virtual networks](https://docs.microsoft.com/azure/key-vault/general/network-security)
 - [Azure security baseline for Key Vault - Disable Public Network Access](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline#disable-public-network-access)
 - [Azure Policies - Azure Key Vault should have firewall enabled](https://www.azadvertizer.net/azpolicyadvertizer/55615ac9-af46-4a59-874e-391cc3dfb490.html)
+[Azure Key Vault should have firewall enabled](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490)
 
