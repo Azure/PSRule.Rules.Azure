@@ -82,6 +82,7 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
   properties: {
     displayName: 'Echo API'
     description: 'An echo API service.'
+    type: 'http'
     path: 'echo'
     serviceUrl: 'https://echo.contoso.com'
     protocols: [

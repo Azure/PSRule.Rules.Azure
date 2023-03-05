@@ -1,13 +1,11 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "languageVersion": "1.9-experimental",
   "contentVersion": "1.0.0.0",
   "metadata": {
-    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
       "version": "0.14.85.62628",
-      "templateHash": "11980562241747406918"
+      "templateHash": "15764725433071649409"
     }
   },
   "parameters": {
@@ -40,8 +38,8 @@
       }
     }
   },
-  "resources": {
-    "service": {
+  "resources": [
+    {
       "type": "Microsoft.ApiManagement/service",
       "apiVersion": "2021-08-01",
       "name": "[parameters('name')]",
@@ -81,7 +79,7 @@
         "description": "An example API Management service."
       }
     },
-    "product": {
+    {
       "type": "Microsoft.ApiManagement/service/products",
       "apiVersion": "2021-08-01",
       "name": "[format('{0}/{1}', parameters('name'), 'echo')]",
@@ -92,13 +90,13 @@
         "subscriptionRequired": true
       },
       "dependsOn": [
-        "service"
+        "[resourceId('Microsoft.ApiManagement/service', parameters('name'))]"
       ],
       "metadata": {
         "description": "An example product."
       }
     },
-    "version": {
+    {
       "type": "Microsoft.ApiManagement/service/apiVersionSets",
       "apiVersion": "2021-08-01",
       "name": "[format('{0}/{1}', parameters('name'), 'echo')]",
@@ -108,19 +106,20 @@
         "versioningScheme": "Segment"
       },
       "dependsOn": [
-        "service"
+        "[resourceId('Microsoft.ApiManagement/service', parameters('name'))]"
       ],
       "metadata": {
         "description": "An example API Version."
       }
     },
-    "api": {
+    {
       "type": "Microsoft.ApiManagement/service/apis",
       "apiVersion": "2021-08-01",
       "name": "[format('{0}/{1}', parameters('name'), 'echo-v1')]",
       "properties": {
         "displayName": "Echo API",
         "description": "An echo API service.",
+        "type": "http",
         "path": "echo",
         "serviceUrl": "https://echo.contoso.com",
         "protocols": [
@@ -131,14 +130,14 @@
         "subscriptionRequired": true
       },
       "dependsOn": [
-        "service",
-        "version"
+        "[resourceId('Microsoft.ApiManagement/service', parameters('name'))]",
+        "[resourceId('Microsoft.ApiManagement/service/apiVersionSets', parameters('name'), 'echo')]"
       ],
       "metadata": {
         "description": "An example API."
       }
     },
-    "backend": {
+    {
       "type": "Microsoft.ApiManagement/service/backends",
       "apiVersion": "2021-08-01",
       "name": "[format('{0}/{1}', parameters('name'), 'echo')]",
@@ -149,11 +148,11 @@
         "url": "https://echo.contoso.com"
       },
       "dependsOn": [
-        "service"
+        "[resourceId('Microsoft.ApiManagement/service', parameters('name'))]"
       ],
       "metadata": {
         "description": "An example API backend."
       }
     }
-  }
+  ]
 }
