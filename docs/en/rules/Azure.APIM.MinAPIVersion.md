@@ -1,7 +1,8 @@
 ---
+reviewed: 2023-03-05
 severity: Important
 pillar: Operational Excellence
-category: Infrastructure provisioning
+category: Repeatable infrastructure
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.MinAPIVersion/
 ---
@@ -14,9 +15,12 @@ API Management instances should limit control plane API calls to API Management 
 
 ## DESCRIPTION
 
-On 30 September 2023, all API versions prior to 2021-08-01 will be retired and API calls using those API versions will fail. This means you'll no longer be able to create or manage your API Management services using your existing templates, tools, scripts, and programs until they've been updated. Data operations (such as accessing the APIs or Products configured on Azure API Management) will be unaffected by this update, including after 30 September 2023.
+On 30 September 2023, all API versions prior to 2021-08-01 will be retired and API calls using those API versions will fail.
+This means you'll no longer be able to create or manage your API Management services using your existing templates, tools, scripts, and programs until they've been updated.
+Data operations (such as accessing the APIs or Products configured on Azure API Management) will be unaffected by this update, including after 30 September 2023.
 
-From now through 30 September 2023, you can continue to use the templates, tools, and programs without impact. You can transition to API version 2021-08-01 or later at any point prior to 30 September 2023.
+From now through 30 September 2023, you can continue to use the templates, tools, and programs without impact.
+You can transition to API version 2021-08-01 or later at any point prior to 30 September 2023.
 
 ## RECOMMENDATION
 
@@ -26,7 +30,7 @@ Limit control plane API calls to API Management with version '2021-08-01' or new
 
 ### Configure with Azure template
 
-To deploy API Management instances that pass this rule:
+To deploy API Management services that pass this rule:
 
 - Set the `apiVersion` property to `'2021-08-01'` or newer.
 - Set the `properties.apiVersionConstraint.minApiVersion` property to `'2021-08-01'` or newer.
@@ -35,40 +39,84 @@ For example:
 
 ```json
 {
-  "type": "Microsoft.ApiManagement/service",
-  "apiVersion": "2021-12-01-preview",
-  "name": "[parameters('apiManagementServiceName')]",
-  "location": "[parameters('location')]",
-  "sku": {
-    "name": "[parameters('sku')]",
-    "capacity": "[parameters('skuCount')]"
-  },
-  "properties": {
-    "apiVersionConstraint": {
-      "minApiVersion": "2021-08-01"
+    "type": "Microsoft.ApiManagement/service",
+    "apiVersion": "2021-08-01",
+    "name": "[parameters('name')]",
+    "location": "[parameters('location')]",
+    "sku": {
+        "name": "Premium",
+        "capacity": 1
+    },
+    "identity": {
+        "type": "SystemAssigned"
+    },
+    "properties": {
+        "publisherEmail": "[parameters('publisherEmail')]",
+        "publisherName": "[parameters('publisherName')]",
+        "customProperties": {
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "True",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": "False",
+            "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256": "False"
+        },
+        "apiVersionConstraint": {
+            "minApiVersion": "2021-08-01"
+        }
     }
-  }
 }
 ```
 
 ### Configure with Bicep
 
-To deploy API Management instances that pass this rule:
+To deploy API Management services that pass this rule:
 
-- Set the `apiVersion` property to `'2021-08-01'` or newer.
+- Use the API Version `Microsoft.ApiManagement/service@2021-08-01` or newer.
 - Set the `properties.apiVersionConstraint.minApiVersion` property to `'2021-08-01'` or newer.
 
 For example:
 
 ```bicep
-resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-preview' = {
-  name: apiManagementServiceName
+resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
+  name: name
   location: location
   sku: {
-    name: sku
-    capacity: skuCount
+    name: 'Premium'
+    capacity: 1
+  }
+  identity: {
+    type: 'SystemAssigned'
   }
   properties: {
+    publisherEmail: publisherEmail
+    publisherName: publisherName
+    customProperties: {
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls11': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Ssl30': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls10': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Tls11': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2': 'True'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA': 'False'
+      'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256': 'False'
+    }
     apiVersionConstraint: {
       minApiVersion: '2021-08-01'
     }
@@ -99,7 +147,7 @@ configuration:
 
 ## LINKS
 
-- [Infrastructure provisioning](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [Repeatable Infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Azure API Management API version retirements](https://learn.microsoft.com/azure/api-management/breaking-changes/api-version-retirement-sep-2023)
-- [Azure API Management soft-delete REST API versions behaviour](https://learn.microsoft.com/azure/api-management/soft-delete)
+- [Azure API Management soft-delete API versions](https://learn.microsoft.com/azure/api-management/soft-delete)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)

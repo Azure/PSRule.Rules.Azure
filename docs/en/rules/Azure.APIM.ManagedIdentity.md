@@ -1,7 +1,8 @@
 ---
+reviewed: 2023-03-05
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.ManagedIdentity/
 ---
@@ -26,7 +27,7 @@ Also consider using managed identities to authenticate to related Azure services
 
 ### Configure with Azure template
 
-To deploy App Services that pass this rule:
+To deploy API Management services that pass this rule:
 
 - Set the `identity.type` to `SystemAssigned` or `UserAssigned`.
 - If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
@@ -65,6 +66,9 @@ For example:
             "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA256": "False",
             "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA": "False",
             "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256": "False"
+        },
+        "apiVersionConstraint": {
+            "minApiVersion": "2021-08-01"
         }
     }
 }
@@ -72,7 +76,7 @@ For example:
 
 ### Configure with Bicep
 
-To deploy App Services that pass this rule:
+To deploy API Management services that pass this rule:
 
 - Set the `identity.type` to `SystemAssigned` or `UserAssigned`.
 - If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
@@ -110,6 +114,9 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA': 'False'
       'Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_GCM_SHA256': 'False'
     }
+    apiVersionConstraint: {
+      minApiVersion: '2021-08-01'
+    }
   }
 }
 ```
@@ -117,6 +124,6 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
 ## LINKS
 
 - [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
-- [Use managed identities in Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
-- [Authenticate with managed identity](https://docs.microsoft.com/azure/api-management/api-management-authentication-policies#ManagedIdentity)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service)
+- [Use managed identities in Azure API Management](https://learn.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
+- [Authenticate with managed identity](https://learn.microsoft.com/azure/api-management/api-management-policies#authentication-policies)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)
