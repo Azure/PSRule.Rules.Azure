@@ -1,106 +1,145 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-A",
-        "Identity": null,
-        "Kind": null,
-        "Location": "East US",
-        "ManagedBy": null,
-        "ResourceName": "hubns-A",
-        "Name": "hubns-A",
-        "ExtensionResourceName": null,
-        "Properties": {
-            "disableLocalAuth": true,
-            "zoneRedundant": true,
-            "isAutoInflateEnabled": true,
-            "maximumThroughputUnits": 2,
-            "kafkaEnabled": true,
-            "provisioningState": "Succeeded",
-            "createdAt": "2022-01-22T08:53:47.343Z",
-            "updatedAt": "2022-01-22T08:54:38.617Z",
-            "serviceBusEndpoint": "https://hubns-A.servicebus.windows.net:443/",
-            "status": "Active"
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.EventHub/namespaces",
-        "ResourceType": "Microsoft.EventHub/namespaces",
-        "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "Standard",
-            "Tier": "Standard",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": 1
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-A/eventhubs/hub-A",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-A/eventhubs/hub-A",
-                "Identity": null,
-                "Kind": null,
-                "Location": "East US",
-                "ManagedBy": null,
-                "ResourceName": "hub-A",
-                "Name": "hub-A",
-                "ExtensionResourceName": null,
-                "Properties": {
-                    "messageRetentionInDays": 1,
-                    "partitionCount": 1,
-                    "status": "Active",
-                    "createdAt": "2022-01-22T08:55:28.82",
-                    "updatedAt": "2022-01-22T08:55:29.087",
-                    "partitionIds": [
-                        "0"
-                    ]
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.EventHub/namespaces/eventhubs",
-                "ResourceType": "Microsoft.EventHub/namespaces/eventhubs",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            }
-        ]
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "East US",
+    "ManagedBy": null,
+    "ResourceName": "hubns-A",
+    "Name": "hubns-A",
+    "ExtensionResourceName": null,
+    "Properties": {
+      "disableLocalAuth": true,
+      "zoneRedundant": true,
+      "isAutoInflateEnabled": true,
+      "maximumThroughputUnits": 2,
+      "kafkaEnabled": true,
+      "provisioningState": "Succeeded",
+      "createdAt": "2022-01-22T08:53:47.343Z",
+      "updatedAt": "2022-01-22T08:54:38.617Z",
+      "serviceBusEndpoint": "https://hubns-A.servicebus.windows.net:443/",
+      "status": "Active"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-B",
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.EventHub/namespaces",
+    "ResourceType": "Microsoft.EventHub/namespaces",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard",
+      "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-A/eventhubs/hub-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-A/eventhubs/hub-A",
         "Identity": null,
         "Kind": null,
         "Location": "East US",
         "ManagedBy": null,
-        "ResourceName": "hubns-B",
-        "Name": "hubns-B",
+        "ResourceName": "hub-A",
+        "Name": "hub-A",
         "ExtensionResourceName": null,
         "Properties": {
-            "disableLocalAuth": false,
-            "zoneRedundant": true,
-            "isAutoInflateEnabled": true,
-            "maximumThroughputUnits": 2,
-            "kafkaEnabled": true,
-            "provisioningState": "Succeeded",
-            "createdAt": "2022-01-22T08:53:47.343Z",
-            "updatedAt": "2022-01-22T08:54:38.617Z",
-            "serviceBusEndpoint": "https://hubns-B.servicebus.windows.net:443/",
-            "status": "Active"
+          "messageRetentionInDays": 1,
+          "partitionCount": 1,
+          "status": "Active",
+          "createdAt": "2022-01-22T08:55:28.82",
+          "updatedAt": "2022-01-22T08:55:29.087",
+          "partitionIds": [
+            "0"
+          ]
         },
         "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.EventHub/namespaces",
-        "ResourceType": "Microsoft.EventHub/namespaces",
+        "Type": "Microsoft.EventHub/namespaces/eventhubs",
+        "ResourceType": "Microsoft.EventHub/namespaces/eventhubs",
         "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "Standard",
-            "Tier": "Standard",
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": 1
-        },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": []
-    }
+        "Sku": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": "East US",
+    "ManagedBy": null,
+    "ResourceName": "hubns-B",
+    "Name": "hubns-B",
+    "ExtensionResourceName": null,
+    "Properties": {
+      "disableLocalAuth": false,
+      "zoneRedundant": true,
+      "isAutoInflateEnabled": true,
+      "maximumThroughputUnits": 2,
+      "kafkaEnabled": true,
+      "minimumTlsVersion": "1.1",
+      "provisioningState": "Succeeded",
+      "createdAt": "2022-01-22T08:53:47.343Z",
+      "updatedAt": "2022-01-22T08:54:38.617Z",
+      "serviceBusEndpoint": "https://hubns-B.servicebus.windows.net:443/",
+      "status": "Active"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.EventHub/namespaces",
+    "ResourceType": "Microsoft.EventHub/namespaces",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard",
+      "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": []
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.EventHub/namespaces/hubns-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "East US",
+    "ManagedBy": null,
+    "ResourceName": "hubns-C",
+    "Name": "hubns-C",
+    "ExtensionResourceName": null,
+    "Properties": {
+      "disableLocalAuth": false,
+      "zoneRedundant": true,
+      "isAutoInflateEnabled": true,
+      "maximumThroughputUnits": 2,
+      "kafkaEnabled": true,
+      "minimumTlsVersion": "1.2",
+      "provisioningState": "Succeeded",
+      "createdAt": "2022-01-22T08:53:47.343Z",
+      "updatedAt": "2022-01-22T08:54:38.617Z",
+      "serviceBusEndpoint": "https://hubns-C.servicebus.windows.net:443/",
+      "status": "Active"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.EventHub/namespaces",
+    "ResourceType": "Microsoft.EventHub/namespaces",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard",
+      "Tier": "Standard",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 ]

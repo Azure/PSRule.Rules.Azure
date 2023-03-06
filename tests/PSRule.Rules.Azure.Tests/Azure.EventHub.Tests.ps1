@@ -67,6 +67,24 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'hubns-A';
         }
+
+        It 'Azure.EventHub.MinTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.EventHub.MinTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'hubns-A', 'hubns-B';
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.minimumTlsVersion: Does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.minimumTlsVersion: Is set to '1.1'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'hubns-C';
+        }
     }
 
     Context 'With Template' {

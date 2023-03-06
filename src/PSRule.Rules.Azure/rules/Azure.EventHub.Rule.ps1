@@ -13,4 +13,9 @@ Rule 'Azure.EventHub.Usage' -Ref 'AZR-000101' -Type 'Microsoft.EventHub/namespac
     $Assert.GreaterOrEqual($items, '.', 1);
 }
 
+# Synopsis: Event Hubs namespaces should reject TLS versions older than 1.2.
+Rule 'Azure.EventHub.MinTLS' -Ref 'AZR-000356' -Type 'Microsoft.EventHub/namespaces' -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
+    '1.2' | global:MinimumTLSVersion
+}
+
 #endregion Rules
