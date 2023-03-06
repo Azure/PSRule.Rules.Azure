@@ -4,7 +4,7 @@ Includes rules for Azure GA and preview features.
 
 ## Rules
 
-The following rules are included within `Azure.Preview`. This baseline includes a total of 354 rules.
+The following rules are included within `Azure.Preview`. This baseline includes a total of 355 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -362,3 +362,5 @@ Name | Synopsis | Severity
 [Azure.vWAN.Name](../rules/Azure.vWAN.Name.md) | Virtual WAN (vWAN) names should meet naming requirements. | Awareness
 [Azure.WebPubSub.ManagedIdentity](../rules/Azure.WebPubSub.ManagedIdentity.md) | Configure Web PubSub Services to use managed identities to access Azure resources securely. | Important
 [Azure.WebPubSub.SLA](../rules/Azure.WebPubSub.SLA.md) | Use SKUs that include an SLA when configuring Web PubSub Services. | Important
+[Azure.KeyVault.Firewall](../rules/Azure.KeyVault.Firewall.md) | KeyVault should only accept explicitly allowed traffic. | Important
+

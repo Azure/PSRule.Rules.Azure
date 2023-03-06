@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Key Vault:
+    - Check if the KeyVault firewall is set to allow or to deny by @zilberd.
+      [#2067](https://github.com/Azure/PSRule.Rules.Azure/issues/2067)
+
 ## v1.25.0-B0065 (pre-release)
 
 What's changed since pre-release v1.25.0-B0035:
