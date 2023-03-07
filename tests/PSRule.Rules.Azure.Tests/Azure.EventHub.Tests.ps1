@@ -58,8 +58,8 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'hubns-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -76,7 +76,7 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'hubns-A', 'hubns-B';
-            $ruleResult[0].Reason | Should -BeExactly "Path properties.minimumTlsVersion: Does not exist.";
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.minimumTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
             $ruleResult[1].Reason | Should -BeExactly "Path properties.minimumTlsVersion: Is set to '1.1'.";
 
             # Pass
