@@ -537,9 +537,9 @@ function global:HasOMSOrAMAExtension {
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachineScaleSets') {
             $property = $TargetObject.Properties.virtualMachineProfile.extensionProfile.extensions.properties |
-            Where-Object { ($_.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -or ($_.publisher -eq 'Microsoft.Azure.Monitor') }
-            $subresource = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachineScaleSets/extensions' |
-                Where-Object { ($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -or ($_.Properties.publisher -eq 'Microsoft.Azure.Monitor') })
+                Where-Object { ($_.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -or ($_.publisher -eq 'Microsoft.Azure.Monitor') }
+                    $subresource = @(GetSubResources -ResourceType 'Microsoft.Compute/virtualMachineScaleSets/extensions' |
+                        Where-Object { ($_.Properties.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -or ($_.Properties.publisher -eq 'Microsoft.Azure.Monitor') })
                       
             $extensions = @($property; $subresource)
             $Assert.Greater($extensions, '.', 0).Result
