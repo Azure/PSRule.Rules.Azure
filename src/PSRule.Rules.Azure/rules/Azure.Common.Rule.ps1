@@ -546,14 +546,3 @@ function global:HasOMSOrAMAExtension {
         }
     }
 }
-
-function global:MinimumTLSVersion {
-    [CmdletBinding()]
-    param (
-        [Parameter(ValueFromPipeline)]
-        [string]$Version
-    )
-    process {
-        $Assert.HasFieldValue($TargetObject, 'properties.minimumTlsVersion', $Version)
-    }
-}
