@@ -24,6 +24,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.25.0-B0138 (pre-release)
+
+What's changed since pre-release v1.25.0-B0100:
+
 - New rules:
   - Event Hub:
     - Check Event Hub namespaces only uses TLS 1.2 version by @BenjaminEngeset.
