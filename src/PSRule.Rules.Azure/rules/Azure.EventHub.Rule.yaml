@@ -22,9 +22,28 @@ metadata:
     Azure.MCSB.v1/control: 'IM-1'
 spec:
   type:
-  - Microsoft.EventHub/namespaces
+    - Microsoft.EventHub/namespaces
   condition:
     field: properties.disableLocalAuth
     equals: true
 
+---
+# Synopsis: Event Hubs namespaces should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EventHub.MinTLS
+  ref: AZR-000356
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: DP-3
+spec:
+  type:
+    - Microsoft.EventHub/namespaces
+  condition:
+    field: properties.minimumTlsVersion
+    version: '>=1.2'
 #endregion Rules

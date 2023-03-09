@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Event Hub:
+    - Check Event Hub namespaces only uses TLS 1.2 version by @BenjaminEngeset.
+      [#1995](https://github.com/Azure/PSRule.Rules.Azure/issues/1995)
+
 ## v1.25.0-B0100 (pre-release)
 
 What's changed since pre-release v1.25.0-B0065:
