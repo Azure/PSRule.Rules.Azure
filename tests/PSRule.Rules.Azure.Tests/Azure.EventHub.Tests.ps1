@@ -77,7 +77,7 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'hubns-A', 'hubns-B';
             $ruleResult[0].Reason | Should -BeExactly "Path properties.minimumTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
-            $ruleResult[1].Reason | Should -BeExactly "Path properties.minimumTlsVersion: Is set to '1.1'.";
+            $ruleResult[1].Reason | Should -BeLike "Path properties.minimumTlsVersion: The version '1.1.*' does not match the constraint *";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
