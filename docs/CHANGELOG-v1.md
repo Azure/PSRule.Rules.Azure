@@ -24,6 +24,63 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.25.0
+
+What's changed since v1.24.2:
+
+- New features:
+  - **Experimental**: Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Benchmark by @BernieWhite.
+    [#1634](https://github.com/Azure/PSRule.Rules.Azure/issues/1634)
+- New rules:
+  - Defender for Cloud:
+    - Check Microsoft Defender for Key Vault is enabled by @BernieWhite.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for DNS is enabled by @BernieWhite.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check Microsoft Defender for ARM is enabled by @BernieWhite.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+  - Event Hub:
+    - Check Event Hub namespaces only uses TLS 1.2 version by @BenjaminEngeset.
+      [#1995](https://github.com/Azure/PSRule.Rules.Azure/issues/1995)
+  - Key Vault:
+    - Check if firewall is set to deny by @zilberd.
+      [#2067](https://github.com/Azure/PSRule.Rules.Azure/issues/2067)
+  - Virtual Machine:
+    - Virtual machines should be fully deallocated and not stopped by @dcrreynolds.
+      [#88](https://github.com/Azure/PSRule.Rules.Azure/issues/88)
+- General improvements:
+  - Added support for Bicep `toObject` function by @BernieWhite.
+    [#2014](https://github.com/Azure/PSRule.Rules.Azure/issues/2014)
+  - Added support for configuring a minimum version of Bicep by @BernieWhite.
+    [#1935](https://github.com/Azure/PSRule.Rules.Azure/issues/1935)
+    - Configure this option to increase the visibility of the version of the Bicep CLI used by PSRule for Azure.
+    - Set `AZURE_BICEP_CHECK_TOOL` to `true` to check the Bicep CLI.
+    - Set `AZURE_BICEP_MINIMUM_VERSION` to configure the minimum version.
+    - If the Bicep CLI is not installed or the version is less than the minimum version an error will be reported.
+    - By default, the minimum Bicep version defaults to `0.4.451`.
+  - Added support for Bicep custom types by @BernieWhite.
+    [#2026](https://github.com/Azure/PSRule.Rules.Azure/issues/2026)
+- Engineering:
+  - Bump BenchmarkDotNet to v0.13.5.
+    [#2052](https://github.com/Azure/PSRule.Rules.Azure/pull/2052)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.5.
+    [#2052](https://github.com/Azure/PSRule.Rules.Azure/pull/2052)
+  - Bump Microsoft.NET.Test.Sdk to v17.5.0.
+    [#2055](https://github.com/Azure/PSRule.Rules.Azure/pull/2055)
+  - Bump Az.Resources to v6.5.2.
+    [#2037](https://github.com/Azure/PSRule.Rules.Azure/pull/2037)
+  - Updated build to use GitHub Actions by @BernieWhite.
+    [#1696](https://github.com/Azure/PSRule.Rules.Azure/issues/1696)
+- Bug fixes:
+  - Fixed SQL transparent data Encryption (TDE) works properly on all resources including exported resources by @zilberd.
+    [#2059](https://github.com/Azure/PSRule.Rules.Azure/issues/2059)
+  - Fixed cases of exit code 5 with path probing by @BernieWhite.
+    [#1901](https://github.com/Azure/PSRule.Rules.Azure/issues/1901)
+
+What's changed since pre-release v1.25.0-B0100:
+
+- No additional changes.
+
 ## v1.25.0-B0138 (pre-release)
 
 What's changed since pre-release v1.25.0-B0100:
