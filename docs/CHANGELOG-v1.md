@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - IoT Hub:
+    - Check IoT Hubs in supported regions only uses TLS 1.2 version by @BenjaminEngeset.
+      [#1996](https://github.com/Azure/PSRule.Rules.Azure/issues/1996)
+
 ## v1.25.0
 
 What's changed since v1.24.2:

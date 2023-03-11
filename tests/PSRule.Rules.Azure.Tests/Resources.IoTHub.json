@@ -1,0 +1,411 @@
+[
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "hub-A",
+    "Name": "hub-A",
+    "ExtensionResourceName": null,
+    "properties": {
+      "eventHubEndpoints": {
+        "events": {
+          "retentionTimeInDays": 1,
+          "partitionCount": 4
+        }
+      },
+      "routing": {
+        "endpoints": {
+          "storageContainers": [
+            {
+              "connectionString": "DefaultEndpointsProtocol=https;AccountName=storage-A;AccountKey=0000000000/0000000/00000000",
+              "containerName": "container-a",
+              "fileNameFormat": "{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}",
+              "batchFrequencyInSeconds": 100,
+              "maxChunkSizeInBytes": 104857600,
+              "encoding": "JSON",
+              "name": "contosoStorageEndpoint-a"
+            }
+          ]
+        },
+        "routes": [
+          {
+            "name": "ContosoStorageRoute",
+            "source": "DeviceMessages",
+            "condition": "level=\"storage\"",
+            "endpointNames": [
+              "contosoStorageEndpoint-a"
+            ],
+            "isEnabled": true
+          }
+        ],
+        "fallbackRoute": {
+          "name": "$fallback",
+          "source": "DeviceMessages",
+          "condition": "true",
+          "endpointNames": [
+            "events"
+          ],
+          "isEnabled": true
+        }
+      },
+      "messagingEndpoints": {
+        "fileNotifications": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      },
+      "enableFileUploadNotifications": false,
+      "cloudToDevice": {
+        "maxDeliveryCount": 10,
+        "defaultTtlAsIso8601": "PT1H",
+        "feedback": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Devices/IotHubs",
+    "ResourceType": "Microsoft.Devices/IotHubs",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "S1",
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": "westeurope",
+    "ManagedBy": null,
+    "ResourceName": "hub-B",
+    "Name": "hub-B",
+    "ExtensionResourceName": null,
+    "properties": {
+      "minTlsVersion": "1.0",
+      "eventHubEndpoints": {
+        "events": {
+          "retentionTimeInDays": 1,
+          "partitionCount": 4
+        }
+      },
+      "routing": {
+        "endpoints": {
+          "storageContainers": [
+            {
+              "connectionString": "DefaultEndpointsProtocol=https;AccountName=storage-B;AccountKey=0000000000/0000000/00000000",
+              "containerName": "container-b",
+              "fileNameFormat": "{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}",
+              "batchFrequencyInSeconds": 100,
+              "maxChunkSizeInBytes": 104857600,
+              "encoding": "JSON",
+              "name": "contosoStorageEndpoint-b"
+            }
+          ]
+        },
+        "routes": [
+          {
+            "name": "ContosoStorageRoute",
+            "source": "DeviceMessages",
+            "condition": "level=\"storage\"",
+            "endpointNames": [
+              "contosoStorageEndpoint-b"
+            ],
+            "isEnabled": true
+          }
+        ],
+        "fallbackRoute": {
+          "name": "$fallback",
+          "source": "DeviceMessages",
+          "condition": "true",
+          "endpointNames": [
+            "events"
+          ],
+          "isEnabled": true
+        }
+      },
+      "messagingEndpoints": {
+        "fileNotifications": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      },
+      "enableFileUploadNotifications": false,
+      "cloudToDevice": {
+        "maxDeliveryCount": 10,
+        "defaultTtlAsIso8601": "PT1H",
+        "feedback": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Devices/IotHubs",
+    "ResourceType": "Microsoft.Devices/IotHubs",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "S1",
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "hub-C",
+    "Name": "hub-C",
+    "ExtensionResourceName": null,
+    "properties": {
+      "minTlsVersion": "1.1",
+      "eventHubEndpoints": {
+        "events": {
+          "retentionTimeInDays": 1,
+          "partitionCount": 4
+        }
+      },
+      "routing": {
+        "endpoints": {
+          "storageContainers": [
+            {
+              "connectionString": "DefaultEndpointsProtocol=https;AccountName=storage-C;AccountKey=0000000000/0000000/00000000",
+              "containerName": "container-c",
+              "fileNameFormat": "{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}",
+              "batchFrequencyInSeconds": 100,
+              "maxChunkSizeInBytes": 104857600,
+              "encoding": "JSON",
+              "name": "contosoStorageEndpoint-c"
+            }
+          ]
+        },
+        "routes": [
+          {
+            "name": "ContosoStorageRoute",
+            "source": "DeviceMessages",
+            "condition": "level=\"storage\"",
+            "endpointNames": [
+              "contosoStorageEndpoint-c"
+            ],
+            "isEnabled": true
+          }
+        ],
+        "fallbackRoute": {
+          "name": "$fallback",
+          "source": "DeviceMessages",
+          "condition": "true",
+          "endpointNames": [
+            "events"
+          ],
+          "isEnabled": true
+        }
+      },
+      "messagingEndpoints": {
+        "fileNotifications": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      },
+      "enableFileUploadNotifications": false,
+      "cloudToDevice": {
+        "maxDeliveryCount": 10,
+        "defaultTtlAsIso8601": "PT1H",
+        "feedback": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Devices/IotHubs",
+    "ResourceType": "Microsoft.Devices/IotHubs",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "S1",
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-D",
+    "Identity": null,
+    "Kind": null,
+    "Location": "southcentralus",
+    "ManagedBy": null,
+    "ResourceName": "hub-D",
+    "Name": "hub-D",
+    "ExtensionResourceName": null,
+    "properties": {
+      "minTlsVersion": "1.2",
+      "eventHubEndpoints": {
+        "events": {
+          "retentionTimeInDays": 1,
+          "partitionCount": 4
+        }
+      },
+      "routing": {
+        "endpoints": {
+          "storageContainers": [
+            {
+              "connectionString": "DefaultEndpointsProtocol=https;AccountName=storage-D;AccountKey=0000000000/0000000/00000000",
+              "containerName": "container-d",
+              "fileNameFormat": "{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}",
+              "batchFrequencyInSeconds": 100,
+              "maxChunkSizeInBytes": 104857600,
+              "encoding": "JSON",
+              "name": "contosoStorageEndpoint-d"
+            }
+          ]
+        },
+        "routes": [
+          {
+            "name": "ContosoStorageRoute",
+            "source": "DeviceMessages",
+            "condition": "level=\"storage\"",
+            "endpointNames": [
+              "contosoStorageEndpoint-d"
+            ],
+            "isEnabled": true
+          }
+        ],
+        "fallbackRoute": {
+          "name": "$fallback",
+          "source": "DeviceMessages",
+          "condition": "true",
+          "endpointNames": [
+            "events"
+          ],
+          "isEnabled": true
+        }
+      },
+      "messagingEndpoints": {
+        "fileNotifications": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      },
+      "enableFileUploadNotifications": false,
+      "cloudToDevice": {
+        "maxDeliveryCount": 10,
+        "defaultTtlAsIso8601": "PT1H",
+        "feedback": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Devices/IotHubs",
+    "ResourceType": "Microsoft.Devices/IotHubs",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "S1",
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Devices/IotHubs/hub-E",
+    "Identity": null,
+    "Kind": null,
+    "Location": "westeurope",
+    "ManagedBy": null,
+    "ResourceName": "hub-E",
+    "Name": "hub-E",
+    "ExtensionResourceName": null,
+    "properties": {
+      "minTlsVersion": "1.2",
+      "eventHubEndpoints": {
+        "events": {
+          "retentionTimeInDays": 1,
+          "partitionCount": 4
+        }
+      },
+      "routing": {
+        "endpoints": {
+          "storageContainers": [
+            {
+              "connectionString": "DefaultEndpointsProtocol=https;AccountName=storage-E;AccountKey=0000000000/0000000/00000000",
+              "containerName": "container-e",
+              "fileNameFormat": "{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}",
+              "batchFrequencyInSeconds": 100,
+              "maxChunkSizeInBytes": 104857600,
+              "encoding": "JSON",
+              "name": "contosoStorageEndpoint-e"
+            }
+          ]
+        },
+        "routes": [
+          {
+            "name": "ContosoStorageRoute",
+            "source": "DeviceMessages",
+            "condition": "level=\"storage\"",
+            "endpointNames": [
+              "contosoStorageEndpoint-e"
+            ],
+            "isEnabled": true
+          }
+        ],
+        "fallbackRoute": {
+          "name": "$fallback",
+          "source": "DeviceMessages",
+          "condition": "true",
+          "endpointNames": [
+            "events"
+          ],
+          "isEnabled": true
+        }
+      },
+      "messagingEndpoints": {
+        "fileNotifications": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      },
+      "enableFileUploadNotifications": false,
+      "cloudToDevice": {
+        "maxDeliveryCount": 10,
+        "defaultTtlAsIso8601": "PT1H",
+        "feedback": {
+          "lockDurationAsIso8601": "PT1M",
+          "ttlAsIso8601": "PT1H",
+          "maxDeliveryCount": 10
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Devices/IotHubs",
+    "ResourceType": "Microsoft.Devices/IotHubs",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "S1",
+      "Capacity": 1
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
+]
