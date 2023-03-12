@@ -1,0 +1,37 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for IoT Hub
+#
+
+#region Rules
+
+---
+# Synopsis: IoT Hubs should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.IoTHub.MinTLS
+  ref: AZR-000357
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: DP-3
+spec:
+  type:
+    - Microsoft.Devices/IotHubs
+  where:
+    field: 'location'
+    in:
+      - 'eastus'
+      - 'southcentralus'
+      - 'westus2'
+      - 'usgovarizona'
+      - 'usgovvirginia'
+  condition:
+    field: properties.minTlsVersion
+    version: '>=1.2'
+#endregion Rules
