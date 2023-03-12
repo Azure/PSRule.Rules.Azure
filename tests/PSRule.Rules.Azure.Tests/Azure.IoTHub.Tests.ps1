@@ -44,7 +44,7 @@ Describe 'Azure.IoTHub' -Tag 'IoTHub' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'hub-A', 'hub-C';
-            $ruleResult[0].Reason | Should -BeExactly "Path properties.minTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.minTlsVersion: The field 'properties.minTlsVersion' does not exist.";
             $ruleResult[1].Reason | Should -BeLike "Path properties.minTlsVersion: The version '1.1.*' does not match the constraint *";
 
             # Pass
