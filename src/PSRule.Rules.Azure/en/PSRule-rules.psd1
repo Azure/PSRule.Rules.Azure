@@ -94,4 +94,5 @@
     VMSSAzureMonitorAgent = "The virtual machine scale set should have Azure Monitor Agent installed."
     AzureCacheRedisVersion = "The Azure Cache for Redis should use the latest supported version of Redis."
     BicepCLIVersion = "The Bicep version is '{0}' however the configured minimum version is '{1}'."
+    ServiceBusAuditDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
 }
