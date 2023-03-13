@@ -48,8 +48,8 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'servicens-B', 'servicens-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'servicens-B', 'servicens-C, 'servicens-D', 'servicens-E';
         }
 
         It 'Azure.ServiceBus.Usage' {
@@ -58,8 +58,8 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'servicens-A';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'servicens-A', 'servicens-D', 'servicens-E';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
