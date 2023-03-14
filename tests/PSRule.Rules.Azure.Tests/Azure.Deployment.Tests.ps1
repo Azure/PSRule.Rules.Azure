@@ -177,4 +177,62 @@ Describe 'Azure.Deployment.OuterSecret' -Tag 'Deployment' {
 
 }
 
+Context 'Resource name - Azure.Deployment.Name' {
+    BeforeAll {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
 
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Resources/deployments'
+        }
+    }
+
+    BeforeDiscovery {
+        $validNames = @(
+            'nestedtemplate'
+            'nestedtemplate1'
+            'nestedtemplate-1'
+            'NESTEDTEMPLATE'
+            'nestedtemplate(1)'
+            'linkedtemplate'
+            'linkedtemplate1'
+            'linkedtemplate-1'
+            'LINKEDTEMPLATE'
+            'linkedtemplate(1)'
+        )
+
+        $invalidNames = @(
+            'nestedtemplate!'
+            '!NESTEDTEMPLATE'
+            'nestedtemplate?'
+            'nestedtemplate!!NESTEDTEMPLATE'
+            'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnestedtemplateeeeeeeeee'
+            'linkedtemplate!'
+            '!LINKEDTEMPLATE'
+            'linkedtemplate?'
+            'linkedtemplate!!LINKEDTEMPLATE'
+            'lllllllllllllllllllllllllllllllllllllllllllllllllllinkedtemplateeeeeeeeee'
+        )
+    }
+
+    # Pass
+    It '<_>' -ForEach $validNames {
+        $testObject.Name = $_;
+        $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Deployment.Name';
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Outcome | Should -Be 'Pass';
+    }
+
+    # Fail
+    It '<_>' -ForEach $invalidNames {
+        $testObject.Name = $_;
+        $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Deployment.Name';
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Outcome | Should -Be 'Fail';
+    }
+}
