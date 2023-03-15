@@ -13,7 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.Deployment.Name
-  ref: AZR-000358
+  ref: AZR-000359
   tags:
     release: GA
     ruleSet: 2023_03
