@@ -24,16 +24,21 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.25.0:
+
 - New rules:
+  - Deployment:
+    - Check that the names of nested deployments meets the naming requirements of deployments by @BenjaminEngeset.
+      [#1915](https://github.com/Azure/PSRule.Rules.Azure/issues/1915)
   - IoT Hub:
     - Check IoT Hubs in supported regions only uses TLS 1.2 version by @BenjaminEngeset.
       [#1996](https://github.com/Azure/PSRule.Rules.Azure/issues/1996)
   - Service Bus:
     - Check namespaces audit diagnostic logs are enabled by @BenjaminEngeset.
       [#1862](https://github.com/Azure/PSRule.Rules.Azure/issues/1862)
-  - Deployment:
-    - Check that the names of nested deployments meets the naming requirements of deployments by @BenjaminEngeset.
-      [#1915](https://github.com/Azure/PSRule.Rules.Azure/issues/1915)
+- Engineering:
+  - Bump Microsoft.CodeAnalysis.NetAnalyzers to v7.0.1.
+    [#2082](https://github.com/Azure/PSRule.Rules.Azure/pull/2082)
 
 ## v1.25.0
 
