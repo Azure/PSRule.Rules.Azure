@@ -1,0 +1,32 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure deployments
+#
+
+#region Rules
+
+---
+# Synopsis: Nested deployments should meet naming requirements of deployments.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Deployment.Name
+  ref: AZR-000359
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+    - Microsoft.Resources/deployments
+  condition:
+    allOf:
+      - name: '.'
+        greaterOrEquals: 1
+      - name: '.'
+        lessOrEquals: 64
+      - name: '.'
+        match: '^[A-Za-z0-9-._()]{1,64}$'
+#endregion Rules
