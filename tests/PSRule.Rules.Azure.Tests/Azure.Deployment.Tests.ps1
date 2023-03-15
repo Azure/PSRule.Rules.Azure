@@ -199,11 +199,7 @@ Context 'Resource name - Azure.Deployment.Name' {
             'nestedtemplate-1'
             'NESTEDTEMPLATE'
             'nestedtemplate(1)'
-            'linkedtemplate'
-            'linkedtemplate1'
-            'linkedtemplate-1'
-            'LINKEDTEMPLATE'
-            'linkedtemplate(1)'
+            'nested.Template1'
         )
 
         $invalidNames = @(
@@ -212,11 +208,6 @@ Context 'Resource name - Azure.Deployment.Name' {
             'nestedtemplate?'
             'nestedtemplate!!NESTEDTEMPLATE'
             'nnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnestedtemplateeeeeeeeee'
-            'linkedtemplate!'
-            '!LINKEDTEMPLATE'
-            'linkedtemplate?'
-            'linkedtemplate!!LINKEDTEMPLATE'
-            'lllllllllllllllllllllllllllllllllllllllllllllllllllinkedtemplateeeeeeeeee'
         )
     }
 
