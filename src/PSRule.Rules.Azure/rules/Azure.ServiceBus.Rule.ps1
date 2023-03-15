@@ -18,4 +18,20 @@ Rule 'Azure.ServiceBus.MinTLS' -Ref 'AZR-000315' -Type 'Microsoft.ServiceBus/nam
     $Assert.HasFieldValue($TargetObject, 'Properties.minimumTlsVersion', '1.2').Reason($LocalizedData.ServiceBusMinTLS, $PSRule.TargetName)
 }
 
+# Synopsis: Ensure namespaces audit diagnostic logs are enabled.
+Rule 'Azure.ServiceBus.AuditLogs' -Ref 'AZR-000358' -Type 'Microsoft.ServiceBus/namespaces' -If { HasPropertyValue -Property 'sku.name' -Value 'Premium' } -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
+    $logCategoryGroups = 'audit', 'allLogs'
+    $joinedLogCategoryGroups = $logCategoryGroups -join ', '
+    $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings' |
+        ForEach-Object { $_.Properties.logs |
+            Where-Object { ($_.category -eq 'RuntimeAuditLogs' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled }
+        } )
+    
+    $Assert.GreaterOrEqual($diagnostics, '.', 1).Reason(
+        $LocalizedData.ServiceBusAuditDiagnosticSetting,
+        'RuntimeAuditLogs',
+        $joinedLogCategoryGroups
+    ).PathPrefix('resources')
+}
+
 #endregion Rules
