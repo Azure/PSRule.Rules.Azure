@@ -61,8 +61,8 @@
     "ResourceType": "Microsoft.ServiceBus/namespaces",
     "ExtensionResourceType": null,
     "Sku": {
-      "Name": "Standard",
-      "Tier": "Standard",
+      "Name": "Premium",
+      "Tier": "Premium",
       "Size": null,
       "Family": null,
       "Model": null,
@@ -156,6 +156,50 @@
         "Sku": null,
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-B/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-B/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "East US",
+        "ManagedBy": null,
+        "ResourceName": "logs",
+        "Name": "logs",
+        "ExtensionResourceName": "logs",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [],
+          "logs": [
+            {
+              "category": "RuntimeAuditLogs",
+              "categoryGroup": null,
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ServiceBus/namespaces",
+        "ResourceType": "Microsoft.ServiceBus/namespaces",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
       }
     ]
   },
@@ -186,8 +230,8 @@
     "ResourceType": "Microsoft.ServiceBus/namespaces",
     "ExtensionResourceType": null,
     "Sku": {
-      "Name": "Standard",
-      "Tier": "Standard",
+      "Name": "Premium",
+      "Tier": "Premium",
       "Size": null,
       "Family": null,
       "Model": null,
@@ -281,6 +325,216 @@
         "Sku": null,
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-C/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-C/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "West Europe",
+        "ManagedBy": null,
+        "ResourceName": "logs",
+        "Name": "logs",
+        "ExtensionResourceName": "logs",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [],
+          "logs": [
+            {
+              "category": "RuntimeAuditLogs",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": true,
+                "days": 7
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ServiceBus/namespaces",
+        "ResourceType": "Microsoft.ServiceBus/namespaces",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-D",
+    "Identity": null,
+    "Kind": null,
+    "Location": "East US",
+    "ManagedBy": null,
+    "ResourceName": "servicens-D",
+    "Name": "servicens-D",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "disableLocalAuth": true,
+      "minimumTlsVersion": "1.2",
+      "zoneRedundant": false,
+      "provisioningState": "Succeeded",
+      "createdAt": "2020-06-30T13:23:58.58Z",
+      "updatedAt": "2020-08-04T10:21:56.053Z",
+      "serviceBusEndpoint": "https://servicens-B.servicebus.windows.net:443/",
+      "status": "Active"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ServiceBus/namespaces",
+    "ResourceType": "Microsoft.ServiceBus/namespaces",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-D/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-D/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "East US",
+        "ManagedBy": null,
+        "ResourceName": "logs",
+        "Name": "logs",
+        "ExtensionResourceName": "logs",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [],
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": "audit",
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ServiceBus/namespaces",
+        "ResourceType": "Microsoft.ServiceBus/namespaces",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-E",
+    "Identity": null,
+    "Kind": null,
+    "Location": "East US",
+    "ManagedBy": null,
+    "ResourceName": "servicens-E",
+    "Name": "servicens-E",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "disableLocalAuth": true,
+      "minimumTlsVersion": "1.2",
+      "zoneRedundant": false,
+      "provisioningState": "Succeeded",
+      "createdAt": "2020-06-30T13:23:58.58Z",
+      "updatedAt": "2020-08-04T10:21:56.053Z",
+      "serviceBusEndpoint": "https://servicens-B.servicebus.windows.net:443/",
+      "status": "Active"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ServiceBus/namespaces",
+    "ResourceType": "Microsoft.ServiceBus/namespaces",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Premium",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-E/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-E/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "East US",
+        "ManagedBy": null,
+        "ResourceName": "logs",
+        "Name": "logs",
+        "ExtensionResourceName": "logs",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [],
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": "audit",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": true,
+                "days": 7
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ServiceBus/namespaces",
+        "ResourceType": "Microsoft.ServiceBus/namespaces",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
       }
     ]
   }

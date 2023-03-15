@@ -48,8 +48,8 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'servicens-B', 'servicens-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'servicens-B', 'servicens-C, 'servicens-D', 'servicens-E';
         }
 
         It 'Azure.ServiceBus.Usage' {
@@ -58,8 +58,8 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'servicens-A';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'servicens-A', 'servicens-D', 'servicens-E';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -85,8 +85,29 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'servicens-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'servicens-C', 'servicens-D', 'servicens-E';
+        }
+
+        It 'Azure.ServiceBus.AuditLogs' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.ServiceBus.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ServiceBus.AuditLogs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'servicens-B', 'servicens-D';
+
+            $ruleResult[0].Reason | Should -BeExactly "Minimum one diagnostic setting should have (RuntimeAuditLogs) configured or category group (audit, allLogs) configured.";
+            $ruleResult[1].Reason | Should -BeExactly "Minimum one diagnostic setting should have (RuntimeAuditLogs) configured or category group (audit, allLogs) configured.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'servicens-C', 'servicens-E';
         }
     }
 
