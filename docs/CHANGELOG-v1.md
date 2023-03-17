@@ -36,6 +36,9 @@ What's changed since v1.25.0:
   - Service Bus:
     - Check namespaces audit diagnostic logs are enabled by @BenjaminEngeset.
       [#1862](https://github.com/Azure/PSRule.Rules.Azure/issues/1862)
+- General improvements:
+  - Added a selector for premium Service Bus namespaces by @BernieWhite.
+    [#2091](https://github.com/Azure/PSRule.Rules.Azure/issues/2091)
 - Engineering:
   - Bump Microsoft.CodeAnalysis.NetAnalyzers to v7.0.1.
     [#2082](https://github.com/Azure/PSRule.Rules.Azure/pull/2082)

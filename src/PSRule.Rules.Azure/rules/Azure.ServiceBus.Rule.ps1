@@ -19,7 +19,7 @@ Rule 'Azure.ServiceBus.MinTLS' -Ref 'AZR-000315' -Type 'Microsoft.ServiceBus/nam
 }
 
 # Synopsis: Ensure namespaces audit diagnostic logs are enabled.
-Rule 'Azure.ServiceBus.AuditLogs' -Ref 'AZR-000358' -Type 'Microsoft.ServiceBus/namespaces' -If { HasPropertyValue -Property 'sku.name' -Value 'Premium' } -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
+Rule 'Azure.ServiceBus.AuditLogs' -Ref 'AZR-000358' -Type 'Microsoft.ServiceBus/namespaces' -With 'Azure.ServiceBus.IsPremium' -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
     $logCategoryGroups = 'audit', 'allLogs'
     $joinedLogCategoryGroups = $logCategoryGroups -join ', '
     $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings' |
