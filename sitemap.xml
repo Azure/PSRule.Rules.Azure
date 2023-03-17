@@ -2161,6 +2161,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/selectors/Azure.ServiceBus.IsPremium/</loc>
+         <lastmod>2023-03-17</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/es/asb-v3/</loc>
          <lastmod>2023-03-17</lastmod>
          <changefreq>daily</changefreq>
