@@ -22,9 +22,30 @@ metadata:
     Azure.MCSB.v1/control: 'IM-1'
 spec:
   type:
-  - Microsoft.ServiceBus/namespaces
+    - Microsoft.ServiceBus/namespaces
   condition:
-    field: 'properties.disableLocalAuth'
+    field: properties.disableLocalAuth
     equals: true
 
 #endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Service Bus namespaces with a premium SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.ServiceBus.IsPremium
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+      - type: '.'
+        in:
+          - Microsoft.ServiceBus/namespaces
+      - field: sku.name
+        equals: Premium
+
+#endregion Selectors

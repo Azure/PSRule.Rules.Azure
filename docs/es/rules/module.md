@@ -76,9 +76,15 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.APIM.MinAPIVersion](Azure.APIM.MinAPIVersion.md) | API Management instances should limit control plane API calls to API Management with version '2021-08-01' or newer. | Important | Error
 [Azure.ASE.MigrateV3](Azure.ASE.MigrateV3.md) | Use ASEv3 as replacement for the classic app service environment versions ASEv1 and ASEv2. | Important | Error
 [Azure.MySQL.UseFlexible](Azure.MySQL.UseFlexible.md) | Use Azure Database for MySQL Flexible Server deployment model. | Important | Warning
+
+### Instrumentation
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.APIM.APIDescriptors](Azure.APIM.APIDescriptors.md) | API Management APIs should have a display name and description. | Awareness | Warning
+[Azure.APIM.ProductDescriptors](Azure.APIM.ProductDescriptors.md) | API Management products should have a display name and description. | Awareness | Warning
 
 ### Monitoring
 
@@ -123,6 +129,7 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ACR.Name](Azure.ACR.Name.md) | Container registry names should meet naming requirements. | Awareness | Error
 [Azure.AKS.Name](Azure.AKS.Name.md) | Azure Kubernetes Service (AKS) cluster names should meet naming requirements. | Awareness | Error
+[Azure.APIM.MinAPIVersion](Azure.APIM.MinAPIVersion.md) | API Management instances should limit control plane API calls to API Management with version '2021-08-01' or newer. | Important | Error
 [Azure.APIM.Name](Azure.APIM.Name.md) | API Management service names should meet naming requirements. | Awareness | Error
 [Azure.AppConfig.Name](Azure.AppConfig.Name.md) | App Configuration store names should meet naming requirements. | Awareness | Error
 [Azure.AppGw.Name](Azure.AppGw.Name.md) | Application Gateways should meet naming requirements. | Awareness | Error
@@ -131,6 +138,7 @@ Name | Synopsis | Severity | Level
 [Azure.Bastion.Name](Azure.Bastion.Name.md) | Bastion hosts should meet naming requirements. | Awareness | Error
 [Azure.CDN.EndpointName](Azure.CDN.EndpointName.md) | Azure CDN Endpoint names should meet naming requirements. | Awareness | Error
 [Azure.Cosmos.AccountName](Azure.Cosmos.AccountName.md) | Cosmos DB account names should meet naming requirements. | Awareness | Error
+[Azure.Deployment.Name](Azure.Deployment.Name.md) | Nested deployments should meet naming requirements of deployments. | Awareness | Error
 [Azure.Firewall.Name](Azure.Firewall.Name.md) | Firewall names should meet naming requirements. | Awareness | Error
 [Azure.Firewall.PolicyName](Azure.Firewall.PolicyName.md) | Firewall policy names should meet naming requirements. | Awareness | Error
 [Azure.FrontDoor.Name](Azure.FrontDoor.Name.md) | Front Door names should meet naming requirements. | Awareness | Error
@@ -195,8 +203,6 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.AKS.DNSPrefix](Azure.AKS.DNSPrefix.md) | Azure Kubernetes Service (AKS) cluster DNS prefix should meet naming requirements. | Awareness | Error
-[Azure.APIM.APIDescriptors](Azure.APIM.APIDescriptors.md) | API Management APIs should have a display name and description. | Awareness | Warning
-[Azure.APIM.ProductDescriptors](Azure.APIM.ProductDescriptors.md) | API Management products should have a display name and description. | Awareness | Warning
 [Azure.PublicIP.DNSLabel](Azure.PublicIP.DNSLabel.md) | Public IP domain name labels should meet naming requirements. | Awareness | Error
 [Azure.Resource.UseTags](Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | Awareness | Error
 
@@ -272,7 +278,7 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.VNET.BastionSubnet](Azure.VNET.BastionSubnet.md) | VNETs with a GatewaySubnet should have an AzureBastionSubnet to allow for out of band remote access to VMs. | Important | Error
 
-### Data Management
+### Data management
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
@@ -381,6 +387,7 @@ Name | Synopsis | Severity | Level
 [Azure.Cognitive.PublicAccess](Azure.Cognitive.PublicAccess.md) | Restrict access of Cognitive Services accounts to authorized virtual networks. | Important | Error
 [Azure.FrontDoor.UseWAF](Azure.FrontDoor.UseWAF.md) | Enable Web Application Firewall (WAF) policies on each Front Door endpoint. | Critical | Error
 [Azure.FrontDoor.WAF.Enabled](Azure.FrontDoor.WAF.Enabled.md) | Front Door Web Application Firewall (WAF) policy must be enabled to protect back end resources. | Critical | Error
+[Azure.KeyVault.Firewall](Azure.KeyVault.Firewall.md) | Key Vault should only accept explicitly allowed traffic. | Important | Error
 [Azure.NSG.AnyInboundSource](Azure.NSG.AnyInboundSource.md) | Network security groups (NSGs) should avoid rules that allow "any" as an inbound source. | Critical | Error
 [Azure.Redis.PublicNetworkAccess](Azure.Redis.PublicNetworkAccess.md) | Redis cache should disable public network access. | Critical | Error
 [Azure.Storage.Firewall](Azure.Storage.Firewall.md) | Storage Accounts should only accept explicitly allowed traffic. | Important | Error
@@ -392,6 +399,7 @@ Name | Synopsis | Severity | Level
 [Azure.ACR.AdminUser](Azure.ACR.AdminUser.md) | Use Azure AD identities instead of using the registry admin user. | Critical | Error
 [Azure.ADX.ManagedIdentity](Azure.ADX.ManagedIdentity.md) | Configure Data Explorer clusters to use managed identities to access Azure resources securely. | Important | Error
 [Azure.AKS.PodIdentity](Azure.AKS.PodIdentity.md) | Configure AKS clusters to use AAD pod identities to access Azure resources securely. | Important | Error
+[Azure.APIM.ManagedIdentity](Azure.APIM.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
 [Azure.AppConfig.DisableLocalAuth](Azure.AppConfig.DisableLocalAuth.md) | Authenticate App Configuration clients with Azure AD identities. | Important | Error
 [Azure.Cognitive.DisableLocalAuth](Azure.Cognitive.DisableLocalAuth.md) | Authenticate requests to Cognitive Services with Azure AD identities. | Important | Error
 [Azure.EventGrid.DisableLocalAuth](Azure.EventGrid.DisableLocalAuth.md) | Authenticate publishing clients with Azure AD identities. | Important | Error
@@ -429,10 +437,8 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ACR.ContentTrust](Azure.ACR.ContentTrust.md) | Use container images signed by a trusted image publisher. | Important | Error
-[Azure.APIM.Ciphers](Azure.APIM.Ciphers.md) | API Management should not accept weak or deprecated ciphers. | Important | Error
 [Azure.APIM.EncryptValues](Azure.APIM.EncryptValues.md) | API Management named values should be encrypted. | Important | Error
 [Azure.APIM.HTTPEndpoint](Azure.APIM.HTTPEndpoint.md) | Enforce HTTPS for communication to API clients. | Important | Error
-[Azure.APIM.Protocols](Azure.APIM.Protocols.md) | API Management should only accept a minimum of TLS 1.2. | Important | Error
 [Azure.AppGw.SSLPolicy](Azure.AppGw.SSLPolicy.md) | Application Gateway should only accept a minimum of TLS 1.2. | Critical | Error
 [Azure.AppGw.UseHTTPS](Azure.AppGw.UseHTTPS.md) | Application Gateways should only expose frontend HTTP endpoints over HTTPS. | Critical | Error
 [Azure.AppService.UseHTTPS](Azure.AppService.UseHTTPS.md) | Azure App Service apps should only accept encrypted connections. | Important | Error
@@ -471,11 +477,15 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ADX.DiskEncryption](Azure.ADX.DiskEncryption.md) | Use disk encryption for Azure Data Explorer (ADX) clusters. | Important | Error
+[Azure.APIM.Ciphers](Azure.APIM.Ciphers.md) | API Management should not accept weak or deprecated ciphers for client or backend communication. | Critical | Error
 [Azure.APIM.HTTPBackend](Azure.APIM.HTTPBackend.md) | Use HTTPS for communication to backend services. | Critical | Error
+[Azure.APIM.Protocols](Azure.APIM.Protocols.md) | API Management should only accept a minimum of TLS 1.2 for client and backend communication. | Critical | Error
 [Azure.AppService.MinTLS](Azure.AppService.MinTLS.md) | App Service should reject TLS versions older than 1.2. | Critical | Error
 [Azure.CDN.MinTLS](Azure.CDN.MinTLS.md) | Azure CDN endpoints should reject TLS versions older than 1.2. | Important | Error
 [Azure.ContainerApp.Insecure](Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important | Error
+[Azure.EventHub.MinTLS](Azure.EventHub.MinTLS.md) | Event Hub namespaces should reject TLS versions older than 1.2. | Critical | Error
 [Azure.FrontDoor.MinTLS](Azure.FrontDoor.MinTLS.md) | Front Door Classic instances should reject TLS versions older than 1.2. | Critical | Error
+[Azure.IoTHub.MinTLS](Azure.IoTHub.MinTLS.md) | IoT Hubs should reject TLS versions older than 1.2. | Critical | Error
 [Azure.MariaDB.MinTLS](Azure.MariaDB.MinTLS.md) | Azure Database for MariaDB servers should reject TLS versions older than 1.2. | Critical | Error
 [Azure.MySQL.MinTLS](Azure.MySQL.MinTLS.md) | MySQL DB servers should reject TLS versions older than 1.2. | Critical | Error
 [Azure.PostgreSQL.MinTLS](Azure.PostgreSQL.MinTLS.md) | PostgreSQL DB servers should reject TLS versions older than 1.2. | Critical | Error
@@ -491,7 +501,6 @@ Name | Synopsis | Severity | Level
 [Azure.AKS.LocalAccounts](Azure.AKS.LocalAccounts.md) | Enforce named user accounts with RBAC assigned permissions. | Important | Error
 [Azure.AKS.ManagedAAD](Azure.AKS.ManagedAAD.md) | Use AKS-managed Azure AD to simplify authorization and improve security. | Important | Error
 [Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | Deploy AKS cluster with role-based access control (RBAC) enabled. | Important | Error
-[Azure.APIM.ManagedIdentity](Azure.APIM.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
 [Azure.APIM.ProductApproval](Azure.APIM.ProductApproval.md) | Configure products to require approval. | Important | Error
 [Azure.APIM.ProductSubscription](Azure.APIM.ProductSubscription.md) | Configure products to require a subscription. | Important | Error
 [Azure.AppService.ManagedIdentity](Azure.AppService.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
@@ -542,6 +551,7 @@ Name | Synopsis | Severity | Level
 [Azure.AKS.AuditLogs](Azure.AKS.AuditLogs.md) | AKS clusters should collect security-based audit logs to assess and monitor the compliance status of workloads. | Important | Error
 [Azure.AppConfig.AuditLogs](Azure.AppConfig.AuditLogs.md) | Ensure app configuration store audit diagnostic logs are enabled. | Important | Error
 [Azure.Automation.AuditLogs](Azure.Automation.AuditLogs.md) | Ensure automation account audit diagnostic logs are enabled. | Important | Error
+[Azure.ServiceBus.AuditLogs](Azure.ServiceBus.AuditLogs.md) | Ensure namespaces audit diagnostic logs are enabled. | Important | Error
 
 ### Network security and containment
 

@@ -23,6 +23,9 @@
   "[csharp]": {
     "editor.tabSize": 4,
   },
+  "[yaml]": {
+    "editor.formatOnSave": false
+  },
   "[powershell]": {
     "editor.tabSize": 4,
     "editor.formatOnSave": false
