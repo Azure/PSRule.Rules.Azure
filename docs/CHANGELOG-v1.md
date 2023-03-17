@@ -39,6 +39,8 @@ What's changed since v1.25.0:
 - Engineering:
   - Bump Microsoft.CodeAnalysis.NetAnalyzers to v7.0.1.
     [#2082](https://github.com/Azure/PSRule.Rules.Azure/pull/2082)
+  - Bump Newtonsoft.Json to v13.0.3.
+    [#2080](https://github.com/Azure/PSRule.Rules.Azure/pull/2080)
 
 ## v1.25.0
 
