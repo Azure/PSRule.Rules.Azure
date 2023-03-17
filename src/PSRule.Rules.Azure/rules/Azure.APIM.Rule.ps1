@@ -251,14 +251,14 @@ Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000321' -Type 'Microsoft.ApiManagement
         [datetime]$minimumVersionExpected = $Configuration.AZURE_APIM_MIN_API_VERSION -replace '-preview', ''
 
         $Assert.Create($versionConfigured -ge $minimumVersionExpected, $LocalizedData.APIMApiVersionMin, $TargetObject.apiVersion,
-        $Configuration.AZURE_APIM_MIN_API_VERSION).PathPrefix('apiVersion')
+            $Configuration.AZURE_APIM_MIN_API_VERSION).PathPrefix('apiVersion')
     }
     if ($TargetObject.properties.apiVersionConstraint.minApiVersion) {
         [datetime]$minApiVersionConfigured = $TargetObject.properties.apiVersionConstraint.minApiVersion -replace '-preview', ''
         [datetime]$minApiVersionExpected = $Configuration.AZURE_APIM_MIN_API_VERSION -replace '-preview', ''
 
         $Assert.Create($minApiVersionConfigured -ge $minApiVersionExpected, $LocalizedData.APIMApiVersionConstraintMinApiVersion,
-        $TargetObject.properties.apiVersionConstraint.minApiVersion, $Configuration.AZURE_APIM_MIN_API_VERSION).
+            $TargetObject.properties.apiVersionConstraint.minApiVersion, $Configuration.AZURE_APIM_MIN_API_VERSION).
         PathPrefix('properties.apiVersionConstraint.minApiVersion')
     }
     else {
@@ -279,6 +279,14 @@ Rule 'Azure.APIM.MultiRegionGateway' -Ref 'AZR-000341' -Type 'Microsoft.ApiManag
     }
 }
 
+# Synopsis: Wildcard * for any configuration option in CORS policies settings should not be used.
+Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000360' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/policies', 'Microsoft.ApiManagement/service/apis/resolvers/policies', 'Microsoft.ApiManagement/service/products/policies', 'Microsoft.ApiManagement/service/apis/policies',
+'Microsoft.ApiManagement/service/apis/operations/policies' -If { UtilsCORSPolicy -FunctionHelperName 'HasCORSPolicyPattern' } -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
+    $BadCORSPolicy = UtilsCORSPolicy
+    $Assert.GreaterOrEqual($BadCORSPolicy, '.', 1)
+
+}
+
 #region Helper functions
 
 function global:IsPremiumAPIM {
@@ -296,6 +304,74 @@ function global:IsMultiRegion {
     param ()
     process {
         $Assert.GreaterOrEqual($TargetObject, 'properties.additionalLocations', 1).Result
+    }
+}
+
+function global:HasElementWildcard {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [string]$CorsPolicy
+    )
+    process {
+        $corsPolicyElementWildcardPattern = '<{0}> *\* *<\/{0}>'
+
+        switch -Regex ($CorsPolicy) {
+            $($corsPolicyElementWildcardPattern -f 'origin') { 'Bad CORS origin' }
+            $($corsPolicyElementWildcardPattern -f 'method') { 'Bad CORS method' }  
+        }
+    }
+}
+
+function global:HasCORSPolicyPattern {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [string]$Policy
+    )
+    process {
+        $Assert.Match($Policy, '.', '(?s)<cors.+\/cors>').Result
+    }
+}
+
+function global:UtilsCORSPolicy {
+    [CmdletBinding()]
+    param (
+        [Parameter()]
+        [string]$FunctionHelperName
+    )
+    process {
+        $ignoredFormats = 'rawxml-link', 'xml-link'
+        if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
+            if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
+                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/policies' |
+                    Where-Object { $_.properties.format -notin $ignoredFormats } |
+                    ForEach-Object { $_.properties.value } | HasCORSPolicyPattern)
+            }
+            else {
+                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/policies' |
+                    Where-Object { $_.properties.format -notin $ignoredFormats } |
+                    ForEach-Object { $_.properties.value } | HasElementWildcard)
+            }
+        }
+        else {
+            if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
+                if ($TargetObject.properties.format -notin $ignoredFormats) {
+                    $result = @($TargetObject.properties.value | HasCORSPolicyPattern)
+                }
+            }
+            else {
+                if ($TargetObject.properties.format -notin $ignoredFormats) {
+                    $result = @($TargetObject.properties.value | HasElementWildcard)
+                }
+            }
+        }
+        if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
+            $Assert.GreaterOrEqual($result, '.', 1).Result
+        }
+        else { 
+            $result
+        }
     }
 }
 
