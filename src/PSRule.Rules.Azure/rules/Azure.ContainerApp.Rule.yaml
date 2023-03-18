@@ -27,6 +27,29 @@ spec:
     field: 'properties.configuration.ingress.allowInsecure'
     hasDefault: false
 
+---
+# Synopsis: Container Apps should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.Name
+  ref: AZR-000360
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+    - Microsoft.App/containerApps
+  condition:
+    allOf:
+      - name: '.'
+        greaterOrEquals: 2
+      - name: '.'
+        lessOrEquals: 32
+      - name: '.'
+        match: '^([a-z][0-9a-z-]{1,30}[0-9]|[a-z][0-9])$'
+
 #endregion Rules
 
 #region Selectors

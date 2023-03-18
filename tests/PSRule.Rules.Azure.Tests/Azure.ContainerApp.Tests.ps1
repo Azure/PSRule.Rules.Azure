@@ -54,3 +54,52 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
         }
     }
 }
+
+Context 'Resource name - Azure.ContainerApp.Name' {
+    BeforeAll {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.Resources/deployments'
+        }
+    }
+
+    BeforeDiscovery {
+        $validNames = @(
+            'app-01'
+            'a1'
+            'application-01'
+        )
+
+        $invalidNames = @(
+            'a'
+            'app-a'
+            'app-a-'
+            'APP-A'
+            'app-01!'
+            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapplication-01'
+        )
+    }
+
+    # Pass
+    It '<_>' -ForEach $validNames {
+        $testObject.Name = $_;
+        $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ContainerApp.Name';
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Outcome | Should -Be 'Pass';
+    }
+
+    # Fail
+    It '<_>' -ForEach $invalidNames {
+        $testObject.Name = $_;
+        $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ContainerApp.Name';
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Outcome | Should -Be 'Fail';
+    }
+}
