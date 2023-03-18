@@ -307,7 +307,18 @@ function global:IsMultiRegion {
     }
 }
 
-function global:HasElementWildcard {
+function global:HasCORSPolicyPattern {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory, ValueFromPipeline)]
+        [string]$Policy
+    )
+    process {
+        $Assert.Match($Policy, '.', '(?s)<cors.+\/cors>').Result
+    }
+}
+
+function global:HasCORSPolicyElementWildcard {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory, ValueFromPipeline)]
@@ -323,14 +334,18 @@ function global:HasElementWildcard {
     }
 }
 
-function global:HasCORSPolicyPattern {
+function global:HasCORSPolicyFilter {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory, ValueFromPipeline)]
-        [string]$Policy
+        [psobject]$Policy,
+
+        [Parameter(Mandatory)]
+        [string[]]$ExcludedFormat
     )
     process {
-        $Assert.Match($Policy, '.', '(?s)<cors.+\/cors>').Result
+        $Policy | Where-Object { $_.properties.format -notin $ExcludedFormat } |
+        ForEach-Object { $_.properties.value }
     }
 }
 
@@ -345,37 +360,31 @@ function global:UtilsCORSPolicy {
         if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
             if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
                 $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/policies' |
-                    Where-Object { $_.properties.format -notin $ignoredFormats } |
-                    ForEach-Object { $_.properties.value } | HasCORSPolicyPattern)
+                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyPattern)
             }
             else {
                 $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/policies' |
-                    Where-Object { $_.properties.format -notin $ignoredFormats } |
-                    ForEach-Object { $_.properties.value } | HasElementWildcard)
+                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyElementWildcard)
             }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis/operations') {
             if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
                 $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/policies' |
-                    Where-Object { $_.properties.format -notin $ignoredFormats } |
-                    ForEach-Object { $_.properties.value } | HasCORSPolicyPattern)
+                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyPattern)
             }
             else {
                 $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/policies' |
-                    Where-Object { $_.properties.format -notin $ignoredFormats } |
-                    ForEach-Object { $_.properties.value } | HasElementWildcard)
+                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyElementWildcard)
             }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement service/apis/resolvers') {
             if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
                 $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/resolvers/policies' |
-                    Where-Object { $_.properties.format -notin $ignoredFormats } |
-                    ForEach-Object { $_.properties.value } | HasCORSPolicyPattern)
+                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyPattern)
             }
             else {
                 $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/resolvers/policies' |
-                    Where-Object { $_.properties.format -notin $ignoredFormats } |
-                    ForEach-Object { $_.properties.value } | HasElementWildcard)
+                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyElementWildcard)
             }
         }
         else {
@@ -386,7 +395,7 @@ function global:UtilsCORSPolicy {
             }
             else {
                 if ($TargetObject.properties.format -notin $ignoredFormats) {
-                    $result = @($TargetObject.properties.value | HasElementWildcard)
+                    $result = @($TargetObject.properties.value | HasCORSPolicyElementWildcard)
                 }
             }
         }
