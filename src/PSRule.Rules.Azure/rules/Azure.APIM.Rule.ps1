@@ -280,7 +280,7 @@ Rule 'Azure.APIM.MultiRegionGateway' -Ref 'AZR-000341' -Type 'Microsoft.ApiManag
 }
 
 # Synopsis: Wildcard * for any configuration option in CORS policies settings should not be used.
-Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000360' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/policies', 'Microsoft.ApiManagement/service/apis/resolvers/policies', 'Microsoft.ApiManagement/service/products/policies', 'Microsoft.ApiManagement/service/apis/policies',
+Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000360' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/policies', 'Microsoft.ApiManagement/service/apis/resolvers', 'Microsoft.ApiManagement/service/apis/operations', 'Microsoft.ApiManagement/service/apis/resolvers/policies', 'Microsoft.ApiManagement/service/products/policies', 'Microsoft.ApiManagement/service/apis/policies',
 'Microsoft.ApiManagement/service/apis/operations/policies' -If { UtilsCORSPolicy -FunctionHelperName 'HasCORSPolicyPattern' } -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
     $BadCORSPolicy = UtilsCORSPolicy
     $Assert.GreaterOrEqual($BadCORSPolicy, '.', 1)
@@ -350,6 +350,30 @@ function global:UtilsCORSPolicy {
             }
             else {
                 $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/policies' |
+                    Where-Object { $_.properties.format -notin $ignoredFormats } |
+                    ForEach-Object { $_.properties.value } | HasElementWildcard)
+            }
+        }
+        elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis/operations') {
+            if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
+                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/policies' |
+                    Where-Object { $_.properties.format -notin $ignoredFormats } |
+                    ForEach-Object { $_.properties.value } | HasCORSPolicyPattern)
+            }
+            else {
+                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/policies' |
+                    Where-Object { $_.properties.format -notin $ignoredFormats } |
+                    ForEach-Object { $_.properties.value } | HasElementWildcard)
+            }
+        }
+        elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement service/apis/resolvers') {
+            if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
+                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/resolvers/policies' |
+                    Where-Object { $_.properties.format -notin $ignoredFormats } |
+                    ForEach-Object { $_.properties.value } | HasCORSPolicyPattern)
+            }
+            else {
+                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/resolvers/policies' |
                     Where-Object { $_.properties.format -notin $ignoredFormats } |
                     ForEach-Object { $_.properties.value } | HasElementWildcard)
             }
