@@ -83,6 +83,7 @@ Context 'Resource name - Azure.ContainerApp.Name' {
             'app-a-'
             'APP-A'
             'app-01!'
+            'app.-01'
             'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapplication-01'
         )
     }
