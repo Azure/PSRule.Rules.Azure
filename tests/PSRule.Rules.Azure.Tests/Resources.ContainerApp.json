@@ -199,7 +199,7 @@
               "latestRevision": true
             }
           ],
-          "allowInsecure": true
+          "allowInsecure": false
         }
       },
       "template": {
