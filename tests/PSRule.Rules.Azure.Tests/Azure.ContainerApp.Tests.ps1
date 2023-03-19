@@ -72,19 +72,19 @@ Context 'Resource name - Azure.ContainerApp.Name' {
 
     BeforeDiscovery {
         $validNames = @(
-            'app-01'
+            'capp-01'
             'a1'
-            'application-01'
+            'capplication-01'
         )
 
         $invalidNames = @(
             'a'
-            'app-a'
-            'app-a-'
-            'APP-A'
-            'app-01!'
-            'app.-01'
-            'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapplication-01'
+            'capp-.'
+            'capp-a-'
+            'CAPP-A'
+            'capp-01!'
+            'capp.-01'
+            'caaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapplication-01'
         )
     }
 

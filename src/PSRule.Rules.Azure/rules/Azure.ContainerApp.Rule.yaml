@@ -48,7 +48,8 @@ spec:
       - name: '.'
         lessOrEquals: 32
       - name: '.'
-        match: '^([a-z][0-9a-z-]{1,30}[0-9]|[a-z][0-9])$'
+        isLower: true
+        match: '^([a-z][0-9a-z-]{0,30}[0-9a-z])$'
 
 #endregion Rules
 
