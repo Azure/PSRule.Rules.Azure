@@ -1,166 +1,276 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
-        "Identity": null,
-        "Kind": "containerenvironment",
-        "Location": "canadacentral",
-        "ManagedBy": null,
-        "ResourceName": "app-env-A",
-        "Name": "app-env-A",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "type": "managed",
-            "environmentType": "managed",
-            "extendedLocation": null,
-            "provisioningState": "Succeeded",
-            "deploymentErrors": null,
-            "internalLoadBalancerEnabled": null,
-            "defaultDomain": "env-A.canadacentral.azurecontainerapps.io",
-            "staticIp": "0.0.0.0",
-            "arcConfiguration": null,
-            "appLogsConfiguration": {
-                "destination": "log-analytics",
-                "logAnalyticsConfiguration": {
-                    "customerId": "00000000-0000-0000-0000-000000000000",
-                    "sharedKey": null
-                }
-            },
-            "workerAppsConfiguration": null,
-            "containerAppsConfiguration": {
-                "subnetResourceId": null,
-                "aciSubnetResourceName": null,
-                "controlPlaneSubnetResourceId": null,
-                "appSubnetResourceId": null,
-                "daprAIInstrumentationKey": null,
-                "dockerBridgeCidr": null,
-                "platformReservedCidr": null,
-                "platformReservedDnsIP": null,
-                "internalOnly": false
-            },
-            "aksResourceID": null
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.Web/kubeenvironments",
-        "ResourceType": "Microsoft.Web/kubeenvironments",
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
+    "Identity": null,
+    "Kind": "containerenvironment",
+    "Location": "canadacentral",
+    "ManagedBy": null,
+    "ResourceName": "app-env-A",
+    "Name": "app-env-A",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "type": "managed",
+      "environmentType": "managed",
+      "extendedLocation": null,
+      "provisioningState": "Succeeded",
+      "deploymentErrors": null,
+      "internalLoadBalancerEnabled": null,
+      "defaultDomain": "env-A.canadacentral.azurecontainerapps.io",
+      "staticIp": "0.0.0.0",
+      "arcConfiguration": null,
+      "appLogsConfiguration": {
+        "destination": "log-analytics",
+        "logAnalyticsConfiguration": {
+          "customerId": "00000000-0000-0000-0000-000000000000",
+          "sharedKey": null
+        }
+      },
+      "workerAppsConfiguration": null,
+      "containerAppsConfiguration": {
+        "subnetResourceId": null,
+        "aciSubnetResourceName": null,
+        "controlPlaneSubnetResourceId": null,
+        "appSubnetResourceId": null,
+        "daprAIInstrumentationKey": null,
+        "dockerBridgeCidr": null,
+        "platformReservedCidr": null,
+        "platformReservedDnsIP": null,
+        "internalOnly": false
+      },
+      "aksResourceID": null
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-A",
-        "Identity": null,
-        "Kind": null,
-        "Location": "Canada Central",
-        "ManagedBy": null,
-        "ResourceName": "capp-A",
-        "Name": "capp-A",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "kubeEnvironmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
-            "latestRevisionName": "revision-01",
-            "latestRevisionFqdn": "revision-01.env-A.canadacentral.azurecontainerapps.io",
-            "configuration": {
-                "activeRevisionsMode": "Multiple",
-                "ingress": {
-                    "fqdn": "capp-A.env-A.canadacentral.azurecontainerapps.io",
-                    "external": true,
-                    "targetPort": 80,
-                    "transport": "Auto",
-                    "traffic": [
-                        {
-                            "weight": 100,
-                            "latestRevision": true
-                        }
-                    ],
-                    "allowInsecure": false
-                }
-            },
-            "template": {
-                "revisionSuffix": "",
-                "containers": [
-                    {
-                        "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
-                        "name": "simple-hello-world-container",
-                        "resources": {
-                            "cpu": 0.25,
-                            "memory": ".5Gi"
-                        }
-                    }
-                ],
-                "scale": {
-                    "maxReplicas": 10
-                }
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Web/kubeenvironments",
+    "ResourceType": "Microsoft.Web/kubeenvironments",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "Canada Central",
+    "ManagedBy": null,
+    "ResourceName": "capp-A",
+    "Name": "capp-A",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "kubeEnvironmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
+      "latestRevisionName": "revision-01",
+      "latestRevisionFqdn": "revision-01.env-A.canadacentral.azurecontainerapps.io",
+      "configuration": {
+        "activeRevisionsMode": "Multiple",
+        "ingress": {
+          "fqdn": "capp-A.env-A.canadacentral.azurecontainerapps.io",
+          "external": false,
+          "targetPort": 80,
+          "transport": "Auto",
+          "traffic": [
+            {
+              "weight": 100,
+              "latestRevision": true
             }
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.App/containerApps",
-        "ResourceType": "Microsoft.App/containerApps",
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+          ],
+          "allowInsecure": false
+        }
+      },
+      "template": {
+        "revisionSuffix": "",
+        "containers": [
+          {
+            "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+            "name": "simple-hello-world-container",
+            "resources": {
+              "cpu": 0.25,
+              "memory": ".5Gi"
+            }
+          }
+        ],
+        "scale": {
+          "maxReplicas": 10
+        }
+      }
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-B",
-        "Identity": null,
-        "Kind": null,
-        "Location": "Canada Central",
-        "ManagedBy": null,
-        "ResourceName": "capp-B",
-        "Name": "capp-B",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "kubeEnvironmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
-            "latestRevisionName": "revision-01",
-            "latestRevisionFqdn": "revision-01.env-A.canadacentral.azurecontainerapps.io",
-            "configuration": {
-                "activeRevisionsMode": "Multiple",
-                "ingress": {
-                    "fqdn": "capp-B.env-A.canadacentral.azurecontainerapps.io",
-                    "external": true,
-                    "targetPort": 80,
-                    "transport": "Auto",
-                    "traffic": [
-                        {
-                            "weight": 100,
-                            "latestRevision": true
-                        }
-                    ],
-                    "allowInsecure": true
-                }
-            },
-            "template": {
-                "revisionSuffix": "",
-                "containers": [
-                    {
-                        "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
-                        "name": "simple-hello-world-container",
-                        "resources": {
-                            "cpu": 0.25,
-                            "memory": ".5Gi"
-                        }
-                    }
-                ],
-                "scale": {
-                    "maxReplicas": 10
-                }
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.App/containerApps",
+    "ResourceType": "Microsoft.App/containerApps",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-B",
+    "Identity": {
+      "type": "None",
+      "userAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "Canada Central",
+    "ManagedBy": null,
+    "ResourceName": "capp-B",
+    "Name": "capp-B",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "kubeEnvironmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
+      "latestRevisionName": "revision-01",
+      "latestRevisionFqdn": "revision-01.env-A.canadacentral.azurecontainerapps.io",
+      "configuration": {
+        "activeRevisionsMode": "Multiple",
+        "ingress": {
+          "fqdn": "capp-B.env-A.canadacentral.azurecontainerapps.io",
+          "external": true,
+          "targetPort": 80,
+          "transport": "Auto",
+          "traffic": [
+            {
+              "weight": 100,
+              "latestRevision": true
             }
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.App/containerApps",
-        "ResourceType": "Microsoft.App/containerApps",
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    }
+          ],
+          "allowInsecure": true
+        }
+      },
+      "template": {
+        "revisionSuffix": "",
+        "containers": [
+          {
+            "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+            "name": "simple-hello-world-container",
+            "resources": {
+              "cpu": 0.25,
+              "memory": ".5Gi"
+            }
+          }
+        ],
+        "scale": {
+          "maxReplicas": 10
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.App/containerApps",
+    "ResourceType": "Microsoft.App/containerApps",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-C",
+    "Identity": {
+      "type": "SystemAssigned",
+      "userAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "Canada Central",
+    "ManagedBy": null,
+    "ResourceName": "capp-C",
+    "Name": "capp-C",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "kubeEnvironmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
+      "latestRevisionName": "revision-01",
+      "latestRevisionFqdn": "revision-01.env-A.canadacentral.azurecontainerapps.io",
+      "configuration": {
+        "activeRevisionsMode": "Multiple",
+        "ingress": {
+          "fqdn": "capp-C.env-A.canadacentral.azurecontainerapps.io",
+          "external": true,
+          "targetPort": 80,
+          "transport": "Auto",
+          "traffic": [
+            {
+              "weight": 100,
+              "latestRevision": true
+            }
+          ],
+          "allowInsecure": false
+        }
+      },
+      "template": {
+        "revisionSuffix": "",
+        "containers": [
+          {
+            "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+            "name": "simple-hello-world-container",
+            "resources": {
+              "cpu": 0.25,
+              "memory": ".5Gi"
+            }
+          }
+        ],
+        "scale": {
+          "maxReplicas": 10
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.App/containerApps",
+    "ResourceType": "Microsoft.App/containerApps",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-D",
+    "Identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "Canada Central",
+    "ManagedBy": null,
+    "ResourceName": "capp-D",
+    "Name": "capp-D",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "kubeEnvironmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
+      "latestRevisionName": "revision-01",
+      "latestRevisionFqdn": "revision-01.env-A.canadacentral.azurecontainerapps.io",
+      "configuration": {
+        "activeRevisionsMode": "Multiple"
+      },
+      "template": {
+        "revisionSuffix": "",
+        "containers": [
+          {
+            "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
+            "name": "simple-hello-world-container",
+            "resources": {
+              "cpu": 0.25,
+              "memory": ".5Gi"
+            }
+          }
+        ],
+        "scale": {
+          "maxReplicas": 10
+        }
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.App/containerApps",
+    "ResourceType": "Microsoft.App/containerApps",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 ]

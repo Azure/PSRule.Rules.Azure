@@ -52,5 +52,22 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'capp-A';
         }
+
+        It 'Azure.ContainerApp.ExternalAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.ExternalAccess' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-B', 'capp-D';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.configuration.configuration.ingress.external'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'capp-C';
+        }
     }
 }
