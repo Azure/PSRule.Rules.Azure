@@ -67,7 +67,7 @@ spec:
   with:
   - Azure.ContainerApp.WithIngress
   condition:
-    field: properties.configuration.configuration.ingress.external
+    field: properties.configuration.ingress.external
     hasDefault: false
 
 #endregion Rules
