@@ -96,6 +96,6 @@ resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
 
 ## LINKS
 
-- [UNetworking architecture in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/networking)
+- [Networking architecture in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/networking)
 - [Set up HTTPS or TCP ingress in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/ingress)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#ingress)
