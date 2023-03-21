@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Container App:
+    - Check that managed identity for container apps are configured by @BenjaminEngeset.
+      [#2096](https://github.com/Azure/PSRule.Rules.Azure/issues/2096)
+
 What's changed since v1.25.0:
 
 - New rules:
