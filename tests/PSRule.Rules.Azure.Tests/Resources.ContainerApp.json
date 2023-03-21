@@ -70,7 +70,11 @@
         "activeRevisionsMode": "Multiple",
         "ingress": {
           "fqdn": "capp-A.env-A.canadacentral.azurecontainerapps.io",
+<<<<<<< HEAD
           "external": false,
+=======
+          "external": true,
+>>>>>>> main
           "targetPort": 80,
           "transport": "Auto",
           "traffic": [
@@ -247,7 +251,24 @@
       "latestRevisionName": "revision-01",
       "latestRevisionFqdn": "revision-01.env-A.canadacentral.azurecontainerapps.io",
       "configuration": {
+<<<<<<< HEAD
         "activeRevisionsMode": "Multiple"
+=======
+        "activeRevisionsMode": "Multiple",
+        "ingress": {
+          "fqdn": "capp-D.env-A.canadacentral.azurecontainerapps.io",
+          "external": true,
+          "targetPort": 80,
+          "transport": "Auto",
+          "traffic": [
+            {
+              "weight": 100,
+              "latestRevision": true
+            }
+          ],
+          "allowInsecure": true
+        }
+>>>>>>> main
       },
       "template": {
         "revisionSuffix": "",

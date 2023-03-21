@@ -28,6 +28,29 @@ spec:
     hasDefault: false
 
 ---
+# Synopsis: Ensure managed identity is used for authentication.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.ManagedIdentity
+  ref: AZR-000361
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: IM-3
+spec:
+  type:
+  - Microsoft.App/containerApps
+  condition:
+    field: identity.type
+    in:
+    - SystemAssigned
+    - UserAssigned
+    - SystemAssigned,UserAssigned
+
+---
 # Synopsis: Ensure inbound communication for Container Apps is limited to callers within the Container Apps environment.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
