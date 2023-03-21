@@ -83,7 +83,7 @@ Context 'Resource name - Azure.ContainerApp.Name' {
 
         $testObject = [PSCustomObject]@{
             Name = ''
-            ResourceType = 'Microsoft.Resources/deployments'
+            ResourceType = 'Microsoft.App/containerApps'
         }
     }
 
