@@ -28,6 +28,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Container App:
     - Check that the names of container apps meets the naming requirements by @BenjaminEngeset.
       [#2094](https://github.com/Azure/PSRule.Rules.Azure/issues/2094)
+    - Check that managed identity for container apps are configured by @BenjaminEngeset.
+      [#2096](https://github.com/Azure/PSRule.Rules.Azure/issues/2096)
 
 What's changed since v1.25.0:
 
