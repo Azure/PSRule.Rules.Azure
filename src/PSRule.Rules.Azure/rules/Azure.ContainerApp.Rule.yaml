@@ -50,6 +50,26 @@ spec:
     - UserAssigned
     - SystemAssigned,UserAssigned
 
+---
+# Synopsis: Ensure public network access for Container Apps environment is disabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.PublicAccess
+  ref: AZR-000363
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: NS-2
+spec:
+  type:
+  - Microsoft.App/managedEnvironments
+  condition:
+    field: properties.vnetConfiguration.internal
+    equals: true
+
 #endregion Rules
 
 #region Selectors
