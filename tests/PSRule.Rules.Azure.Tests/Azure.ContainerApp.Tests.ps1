@@ -78,7 +78,7 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'capp-B', 'capp-C';
-            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.configuration.configuration.ingress.external'
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.configuration.ingress.external'
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
