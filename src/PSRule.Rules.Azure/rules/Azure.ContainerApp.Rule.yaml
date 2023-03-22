@@ -72,6 +72,7 @@ spec:
         lessOrEquals: 32
       - name: '.'
         isLower: true
+      - name: '.'
         match: '^([a-z][0-9a-z-]{0,30}[0-9a-z])$'
 
 #endregion Rules
