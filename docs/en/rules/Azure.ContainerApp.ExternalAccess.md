@@ -46,7 +46,7 @@ For example:
     "userAssignedIdentities": {}
   },
   "properties": {
-        "kubeEnvironmentId": "[resourceId('Microsoft.Web/kubeEnvironments', parameters('envName'))]",
+        "environmentId": "[parameters('environmentId')]",
         "template": {
             "revisionSuffix": "",
             "containers": "[variables('containers')]"
@@ -56,10 +56,7 @@ For example:
                 "external": false
             }
         }
-    },
-    "dependsOn": [
-        "[resourceId('Microsoft.Web/kubeEnvironments', parameters('envName'))]"
-    ]
+    }
 }
 ```
 
@@ -80,7 +77,7 @@ resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
     userAssignedIdentities: {}
   }
    properties: {
-    kubeEnvironmentId: kubeEnv.id
+    environmentId: environmentId
     template: {
       revisionSuffix: ''
       containers: containers
