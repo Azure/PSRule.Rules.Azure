@@ -22,7 +22,7 @@ metadata:
     Azure.MCSB.v1/control: 'NS-2'
 spec:
   with:
-  - Azure.ContainerApp.WithIngress
+    - Azure.ContainerApp.WithIngress
   condition:
     field: 'properties.configuration.ingress.allowInsecure'
     hasDefault: false
@@ -42,13 +42,13 @@ metadata:
     Azure.MCSB.v1/control: IM-3
 spec:
   type:
-  - Microsoft.App/containerApps
+    - Microsoft.App/containerApps
   condition:
     field: identity.type
     in:
-    - SystemAssigned
-    - UserAssigned
-    - SystemAssigned,UserAssigned
+      - SystemAssigned
+      - UserAssigned
+      - SystemAssigned,UserAssigned
 
 ---
 # Synopsis: Container Apps should meet naming requirements.
@@ -90,10 +90,13 @@ metadata:
     Azure.MCSB.v1/control: NS-2
 spec:
   type:
-  - Microsoft.App/managedEnvironments
+    - Microsoft.App/managedEnvironments
   condition:
-    field: properties.vnetConfiguration.internal
-    equals: true
+    allOf:
+      - field: properties.vnetConfiguration.internal
+        equals: true
+      - field: properties.vnetConfiguration.infrastructureSubnetId
+        hasValue: true
 
 #endregion Rules
 
@@ -108,9 +111,8 @@ metadata:
 spec:
   if:
     allOf:
-    - type: '.'
-      equals: Microsoft.App/containerApps
-    - field: 'properties.configuration.ingress'
-      exists: true
-
+      - type: '.'
+        equals: Microsoft.App/containerApps
+      - field: 'properties.configuration.ingress'
+        exists: true
 #endregion Selectors

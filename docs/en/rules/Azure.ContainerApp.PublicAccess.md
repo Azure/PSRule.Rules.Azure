@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network security and containment
+category: Application endpoints
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.PublicAccess/
 ---
@@ -14,11 +14,15 @@ Ensure public network access for Container Apps environment is disabled.
 
 ## DESCRIPTION
 
-Container apps environments allows you to expose your container app to the public web. 
+Container apps environments allows you to expose your container app to the Internet.
 
 Container apps environments deployed as external resources are available for public requests. External environments are deployed with a virtual IP on an external, public facing IP address.
 
-Disable public network access to improve security by exposing the Container Apps environment through an internal load balancer. This removes the need for a public IP address and prevents internet access to all Container Apps within the environment.
+Disable public network access to improve security by exposing the Container Apps environment through an internal load balancer.
+
+This removes the need for a public IP address and prevents internet access to all Container Apps within the environment.
+
+To provide secure access, instead consider using an Application Gateway or Azure Front Door premium in front of your Container Apps on your private VNET.
 
 ## RECOMMENDATION
 
@@ -30,7 +34,7 @@ Consider disabling public network access.
 
 To deploy Container Apps environments that pass this rule:
 
-- Provide a custom VNET.
+- Set a custom VNET by configuring `properties.vnetConfiguration.infrastructureSubnetId` with the resource Id of a subnet.
 - Set `properties.vnetConfiguration.internal` to `true`.
 
 For example:
@@ -58,7 +62,7 @@ For example:
 
 To deploy Container Apps environments that pass this rule:
 
-- Provide a custom VNET.
+- Set a custom VNET by configuring `properties.vnetConfiguration.infrastructureSubnetId` with the resource Id of a subnet.
 - Set `properties.vnetConfiguration.internal` to `true`.
 
 For example:
@@ -73,7 +77,6 @@ resource containerAppEnv 'Microsoft.App/managedEnvironments@2022-10-01' = {
     infrastructureSubnetId: infrastructureSubnetId
     internal: true
     outboundSettings: {}
-    }
     platformReservedCidr: platformReservedCidr
     platformReservedDnsIP: platformReservedDnsIP
   }
@@ -82,5 +85,6 @@ resource containerAppEnv 'Microsoft.App/managedEnvironments@2022-10-01' = {
 
 ## LINKS
 
+- [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Networking architecture in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/networking)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/managedenvironments#vnetconfiguration)
