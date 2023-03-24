@@ -80,6 +80,7 @@ resource containerAppEnv 'Microsoft.App/managedEnvironments@2022-10-01' = {
     platformReservedCidr: platformReservedCidr
     platformReservedDnsIP: platformReservedDnsIP
   }
+ }
 }
 ```
 
