@@ -24,6 +24,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.26.0-B0011 (pre-release)
+
+What's changed since v1.25.0:
+
 - New rules:
   - Container App:
     - Check that the names of container apps meets the naming requirements by @BenjaminEngeset.
@@ -32,10 +36,6 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#2096](https://github.com/Azure/PSRule.Rules.Azure/issues/2096)
     - Check that public network access for container apps environments are disabled by @BenjaminEngeset.
       [#2098](https://github.com/Azure/PSRule.Rules.Azure/issues/2098)
-
-What's changed since v1.25.0:
-
-- New rules:
   - Deployment:
     - Check that the names of nested deployments meets the naming requirements of deployments by @BenjaminEngeset.
       [#1915](https://github.com/Azure/PSRule.Rules.Azure/issues/1915)
