@@ -22,7 +22,7 @@ metadata:
     Azure.MCSB.v1/control: 'NS-2'
 spec:
   with:
-  - Azure.ContainerApp.WithIngress
+    - Azure.ContainerApp.WithIngress
   condition:
     field: 'properties.configuration.ingress.allowInsecure'
     hasDefault: false
@@ -42,13 +42,13 @@ metadata:
     Azure.MCSB.v1/control: IM-3
 spec:
   type:
-  - Microsoft.App/containerApps
+    - Microsoft.App/containerApps
   condition:
     field: identity.type
     in:
-    - SystemAssigned
-    - UserAssigned
-    - SystemAssigned,UserAssigned
+      - SystemAssigned
+      - UserAssigned
+      - SystemAssigned,UserAssigned
 
 ---
 # Synopsis: Container Apps should meet naming requirements.
@@ -74,6 +74,29 @@ spec:
         isLower: true
       - name: '.'
         match: '^([a-z][0-9a-z-]{0,30}[0-9a-z])$'
+
+---
+# Synopsis: Ensure public network access for Container Apps environment is disabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.PublicAccess
+  ref: AZR-000363
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: NS-2
+spec:
+  type:
+    - Microsoft.App/managedEnvironments
+  condition:
+    allOf:
+      - field: properties.vnetConfiguration.internal
+        equals: true
+      - field: properties.vnetConfiguration.infrastructureSubnetId
+        hasValue: true
 
 ---
 # Synopsis: Ensure the use of volume mounts for Container Apps to ensure availability of persistent storage capacity.
@@ -110,9 +133,8 @@ metadata:
 spec:
   if:
     allOf:
-    - type: '.'
-      equals: Microsoft.App/containerApps
-    - field: 'properties.configuration.ingress'
-      exists: true
-
+      - type: '.'
+        equals: Microsoft.App/containerApps
+      - field: 'properties.configuration.ingress'
+        exists: true
 #endregion Selectors

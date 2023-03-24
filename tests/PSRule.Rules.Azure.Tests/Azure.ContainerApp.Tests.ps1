@@ -70,6 +70,23 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
         }
 
+        It 'Azure.ContainerApp.PublicAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.PublicAccess' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-env-A', 'capp-env-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.vnetConfiguration.internal'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'capp-env-C';
+        }
+
         It 'Azure.ContainerApp.PersistantStorage' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.PersistantStorage' };
 
