@@ -73,14 +73,14 @@ resource containerAppEnv 'Microsoft.App/managedEnvironments@2022-10-01' = {
   location: location
   properties: {
     vnetConfiguration: {
-    dockerBridgeCidr: dockerBridgeCidr
-    infrastructureSubnetId: infrastructureSubnetId
-    internal: true
-    outboundSettings: {}
-    platformReservedCidr: platformReservedCidr
-    platformReservedDnsIP: platformReservedDnsIP
+      dockerBridgeCidr: dockerBridgeCidr
+      infrastructureSubnetId: infrastructureSubnetId
+      internal: true
+      outboundSettings: {}
+      platformReservedCidr: platformReservedCidr
+      platformReservedDnsIP: platformReservedDnsIP
+    }
   }
- }
 }
 ```
 
