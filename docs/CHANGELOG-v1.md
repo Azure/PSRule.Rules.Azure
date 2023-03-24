@@ -30,6 +30,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#2094](https://github.com/Azure/PSRule.Rules.Azure/issues/2094)
     - Check that managed identity for container apps are configured by @BenjaminEngeset.
       [#2096](https://github.com/Azure/PSRule.Rules.Azure/issues/2096)
+    - Check that public network access for container apps environments are disabled by @BenjaminEngeset.
+      [#2098](https://github.com/Azure/PSRule.Rules.Azure/issues/2098)
 
 What's changed since v1.25.0:
 

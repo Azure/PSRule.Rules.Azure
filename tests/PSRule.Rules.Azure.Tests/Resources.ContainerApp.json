@@ -1,26 +1,17 @@
 [
   {
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/kubeenvironments/app-env-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/managedEnvironments/capp-env-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/managedEnvironments/capp-env-A",
     "Identity": null,
-    "Kind": "containerenvironment",
+    "Kind": null,
     "Location": "canadacentral",
     "ManagedBy": null,
-    "ResourceName": "app-env-A",
-    "Name": "app-env-A",
+    "ResourceName": "capp-env-A",
+    "Name": "capp-env-A",
     "ExtensionResourceName": null,
     "ParentResource": null,
     "Plan": null,
     "Properties": {
-      "type": "managed",
-      "environmentType": "managed",
-      "extendedLocation": null,
-      "provisioningState": "Succeeded",
-      "deploymentErrors": null,
-      "internalLoadBalancerEnabled": null,
-      "defaultDomain": "env-A.canadacentral.azurecontainerapps.io",
-      "staticIp": "0.0.0.0",
-      "arcConfiguration": null,
       "appLogsConfiguration": {
         "destination": "log-analytics",
         "logAnalyticsConfiguration": {
@@ -28,23 +19,135 @@
           "sharedKey": null
         }
       },
-      "workerAppsConfiguration": null,
-      "containerAppsConfiguration": {
-        "subnetResourceId": null,
-        "aciSubnetResourceName": null,
-        "controlPlaneSubnetResourceId": null,
-        "appSubnetResourceId": null,
-        "daprAIInstrumentationKey": null,
-        "dockerBridgeCidr": null,
-        "platformReservedCidr": null,
-        "platformReservedDnsIP": null,
-        "internalOnly": false
+      "customDomainConfiguration": {
+        "certificatePassword": null,
+        "certificateValue": {},
+        "dnsSuffix": null
       },
-      "aksResourceID": null
+      "daprAIConnectionString": null,
+      "daprAIInstrumentationKey": null,
+      "workloadProfiles": [
+        {
+          "maximumCount": null,
+          "minimumCount": null,
+          "workloadProfileType": null
+        }
+      ],
+      "zoneRedundant": false
     },
     "ResourceGroupName": "test-rg",
-    "Type": "Microsoft.Web/kubeenvironments",
-    "ResourceType": "Microsoft.Web/kubeenvironments",
+    "Type": "Microsoft.App/managedEnvironments",
+    "ResourceType": "Microsoft.App/managedEnvironments",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/managedEnvironments/capp-env-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/managedEnvironments/capp-env-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "capp-env-B",
+    "Name": "capp-env-B",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "appLogsConfiguration": {
+        "destination": "log-analytics",
+        "logAnalyticsConfiguration": {
+          "customerId": "00000000-0000-0000-0000-000000000000",
+          "sharedKey": null
+        }
+      },
+      "customDomainConfiguration": {
+        "certificatePassword": null,
+        "certificateValue": {},
+        "dnsSuffix": null
+      },
+      "daprAIConnectionString": null,
+      "daprAIInstrumentationKey": null,
+      "vnetConfiguration": {
+        "dockerBridgeCidr": "172.16.0.1/28",
+        "infrastructureSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "internal": false,
+        "outboundSettings": {
+          "outBoundType": null,
+          "virtualNetworkApplianceIp": null
+        },
+        "platformReservedCidr": "172.17.17.0/24",
+        "platformReservedDnsIP": "172.17.17.17",
+        "runtimeSubnetId": null
+      },
+      "workloadProfiles": [
+        {
+          "maximumCount": null,
+          "minimumCount": null,
+          "workloadProfileType": null
+        }
+      ],
+      "zoneRedundant": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.App/managedEnvironments",
+    "ResourceType": "Microsoft.App/managedEnvironments",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/managedEnvironments/capp-env-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/managedEnvironments/capp-env-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "capp-env-C",
+    "Name": "capp-env-C",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "appLogsConfiguration": {
+        "destination": "log-analytics",
+        "logAnalyticsConfiguration": {
+          "customerId": "00000000-0000-0000-0000-000000000000",
+          "sharedKey": null
+        }
+      },
+      "customDomainConfiguration": {
+        "certificatePassword": null,
+        "certificateValue": {},
+        "dnsSuffix": null
+      },
+      "daprAIConnectionString": null,
+      "daprAIInstrumentationKey": null,
+      "vnetConfiguration": {
+        "dockerBridgeCidr": "172.16.0.1/28",
+        "infrastructureSubnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+        "internal": true,
+        "outboundSettings": {
+          "outBoundType": null,
+          "virtualNetworkApplianceIp": null
+        },
+        "platformReservedCidr": "172.17.17.0/24",
+        "platformReservedDnsIP": "172.17.17.17",
+        "runtimeSubnetId": null
+      },
+      "workloadProfiles": [
+        {
+          "maximumCount": null,
+          "minimumCount": null,
+          "workloadProfileType": null
+        }
+      ],
+      "zoneRedundant": false
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.App/managedEnvironments",
+    "ResourceType": "Microsoft.App/managedEnvironments",
     "Sku": null,
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
@@ -70,7 +173,7 @@
         "activeRevisionsMode": "Multiple",
         "ingress": {
           "fqdn": "capp-A.env-A.canadacentral.azurecontainerapps.io",
-          "external": true,
+          "external": false,
           "targetPort": 80,
           "transport": "Auto",
           "traffic": [
@@ -250,7 +353,6 @@
         "activeRevisionsMode": "Multiple",
         "ingress": {
           "fqdn": "capp-D.env-A.canadacentral.azurecontainerapps.io",
-          "external": true,
           "targetPort": 80,
           "transport": "Auto",
           "traffic": [
