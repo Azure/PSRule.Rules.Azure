@@ -75,6 +75,28 @@ spec:
       - name: '.'
         match: '^([a-z][0-9a-z-]{0,30}[0-9a-z])$'
 
+---
+# Synopsis: Ensure the use of volume mounts for Container Apps to ensure availability of persistent storage capacity.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.PersistantStorage
+  ref: AZR-000364
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Reliability
+spec:
+  level: Warning
+  type:
+  - Microsoft.App/containerApps
+  condition:
+    allOf:
+      - field: properties.template.containers.volumeMounts
+        greater: 0
+      - field: properties.template.volumes
+        greater: 0
+
 #endregion Rules
 
 #region Selectors
