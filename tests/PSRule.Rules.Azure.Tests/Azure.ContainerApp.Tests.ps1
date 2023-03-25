@@ -34,7 +34,9 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
                 Outcome = 'All'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.ContainerApp.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option @{
+                'Configuration.AZURE_CONTAINERAPPS_RESTRICT_INGRESS' = $True
+            }
         }
 
         It 'Azure.ContainerApp.Insecure' {

@@ -94,6 +94,13 @@ resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
 }
 ```
 
+## NOTES
+
+This rule is skipped by default because there are common cases where external ingress is required.
+If you don't need external ingress, enable this rule by:
+
+- Setting the `AZURE_CONTAINERAPPS_RESTRICT_INGRESS` configuration option to `true`.
+
 ## LINKS
 
 - [Networking architecture in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/networking)

@@ -111,8 +111,12 @@ metadata:
     Azure.WAF/pillar: Security
 spec:
   with:
-  - Azure.ContainerApp.ConfigurationExternalIngress
-  - Azure.ContainerApp.WithIngress
+    - Azure.ContainerApp.WithIngress
+  where:
+    value:
+      $:
+        configuration: AZURE_CONTAINERAPPS_RESTRICT_INGRESS
+    equals: true
   condition:
     field: properties.configuration.ingress.external
     hasDefault: false
@@ -134,18 +138,5 @@ spec:
         equals: Microsoft.App/containerApps
       - field: 'properties.configuration.ingress'
         exists: true
-
----
-# Synopsis: Get container apps external ingress configuration option value.
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Selector
-metadata:
-  name: Azure.ContainerApp.ConfigurationExternalIngress
-spec:
-  if:
-    value:
-      $:
-        configuration: AZURE_CONTAINERAPPS_RESTRICT_INGRESS
-    equals: true
 
 #endregion Selectors
