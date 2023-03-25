@@ -3,27 +3,30 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Container App
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.ExternalAccess/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.ExternalIngress/
 ---
 
-# Disable external access
+# Disable external ingress
 
 ## SYNOPSIS
 
-Ensure inbound communication for Container Apps is limited to callers within the Container Apps environment.
+Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment.
 
 ## DESCRIPTION
 
-Container apps allows you to expose your container app to the public web, to your VNET, or to other container apps within your environment by enabling ingress.
+Container apps allows you to expose your container app to the Internet, your VNET, or to other container apps within the same environment by enabling ingress.
 
-Container apps by default will automatically by default have visibility within app environment only if ingress is enabled.
-This secure by default behaviour can be overriden by enabling visibility from internet or VNET, depending on app environment endpoint configured.
+When inbound access to the app is required, configure the ingress.
+Applications that do batch processing or consume events may not require ingress to be enabled.
 
-Disable external network access to container apps by enforcing internal-only ingress. This will ensure inbound communication for container apps is limited to callers within the container apps environment.
+When external ingress is configured, communication outside the container apps environment is enabled from your private VNET or the Internet.
+To restrict communication to a private VNET your Container App Environment must be deployed on a custom VNET with an Internal load balancer.
+
+If communication outside your Container Apps Environment is not required, disable external ingress.
 
 ## RECOMMENDATION
 
-Consider enforcing internal-only ingress.
+Consider disabling external ingress.
 
 ## EXAMPLES
 
