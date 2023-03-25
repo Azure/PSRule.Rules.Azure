@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.25.0:
+
+- Bug fixes:
+  - Fixed dependency issue of deployments across resource group scopes by @BernieWhite.
+    [#2111](https://github.com/Azure/PSRule.Rules.Azure/issues/2111)
+
 ## v1.25.0
 
 What's changed since v1.24.2:
