@@ -786,6 +786,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (resourceType.Length != name.Length)
                 throw MismatchingResourceSegments(nameof(ExtensionResourceId));
 
+            //if (ResourceHelper.TryResourceGroup(resourceId, out var subscriptionId, out var resourceGroup))
+            //    return ResourceHelper.CombineResourceId(subscriptionId, resourceGroup, resourceType, name);
+
             return string.Concat(resourceId, ResourceHelper.CombineResourceId(null, null, resourceType, name));
         }
 
