@@ -81,15 +81,16 @@ namespace PSRule.Rules.Azure
         /// <summary>
         /// Get the name of the resource group from the specified resource Id.
         /// </summary>
-        internal static bool TryResourceGroup(string resourceId, out string resourceGroupName)
+        internal static bool TryResourceGroup(string resourceId, out string subscriptionId, out string resourceGroupName)
         {
+            subscriptionId = null;
             resourceGroupName = null;
             if (string.IsNullOrEmpty(resourceId))
                 return false;
 
             var idParts = resourceId.Split(SLASH_C);
             var i = 0;
-            return ConsumeSubscriptionIdPart(idParts, ref i, out _) &&
+            return ConsumeSubscriptionIdPart(idParts, ref i, out subscriptionId) &&
                 ConsumeResourceGroupPart(idParts, ref i, out resourceGroupName);
         }
 
@@ -191,8 +192,8 @@ namespace PSRule.Rules.Azure
             nameComponents = null;
             var idParts = resourceId.Split(SLASH_C);
             var i = 0;
-            if (!(ConsumeSubscriptionIdPart(idParts, ref i, out subscriptionId) &&
-                ConsumeResourceGroupPart(idParts, ref i, out resourceGroupName) &&
+            if (!(ConsumeSubscriptionIdPartOrNull(idParts, ref i, out subscriptionId) &&
+                ConsumeResourceGroupPartOrNull(idParts, ref i, out resourceGroupName) &&
                 ConsumeProvidersPart(idParts, ref i, out var provider, out var type, out var name)))
                 return false;
 
@@ -218,8 +219,8 @@ namespace PSRule.Rules.Azure
         {
             var idParts = resourceId.Split(SLASH_C);
             var i = 0;
-            if (!(ConsumeSubscriptionIdPart(idParts, ref i, out _) &&
-                ConsumeResourceGroupPart(idParts, ref i, out _) &&
+            if (!(ConsumeSubscriptionIdPartOrNull(idParts, ref i, out _) &&
+                ConsumeResourceGroupPartOrNull(idParts, ref i, out _) &&
                 ConsumeProvidersPart(idParts, ref i, out var provider, out var type, out _)))
                 return Array.Empty<string>();
 
@@ -234,6 +235,12 @@ namespace PSRule.Rules.Azure
             return result;
         }
 
+        private static bool ConsumeSubscriptionIdPartOrNull(string[] parts, ref int start, out string subscriptionId)
+        {
+            ConsumeSubscriptionIdPart(parts, ref start, out subscriptionId);
+            return true;
+        }
+
         private static bool ConsumeSubscriptionIdPart(string[] parts, ref int start, out string subscriptionId)
         {
             subscriptionId = null;
@@ -242,6 +249,12 @@ namespace PSRule.Rules.Azure
                 subscriptionId = parts[start + 2];
                 start += 3;
             }
+            return subscriptionId != null;
+        }
+
+        private static bool ConsumeResourceGroupPartOrNull(string[] parts, ref int start, out string resourceGroupName)
+        {
+            ConsumeResourceGroupPart(parts, ref start, out resourceGroupName);
             return true;
         }
 
@@ -253,7 +266,7 @@ namespace PSRule.Rules.Azure
                 resourceGroupName = parts[start + 1];
                 start += 2;
             }
-            return true;
+            return resourceGroupName != null;
         }
 
         private static bool ConsumeProvidersPart(string[] parts, ref int start, out string provider, out string type, out string name)

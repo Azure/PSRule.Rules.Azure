@@ -28,7 +28,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Container App:
     - Check that internal-only ingress for container apps are configured by @BenjaminEngeset.
       [#2098](https://github.com/Azure/PSRule.Rules.Azure/issues/2098)
-    
+
+What's changed since pre-release v1.26.0-B0011:
+
+- Bug fixes:
+  - Fixed dependency issue of deployments across resource group scopes by @BernieWhite.
+    [#2111](https://github.com/Azure/PSRule.Rules.Azure/issues/2111)
+
 ## v1.26.0-B0011 (pre-release)
 
 What's changed since v1.25.0:
@@ -58,6 +64,14 @@ What's changed since v1.25.0:
     [#2082](https://github.com/Azure/PSRule.Rules.Azure/pull/2082)
   - Bump Newtonsoft.Json to v13.0.3.
     [#2080](https://github.com/Azure/PSRule.Rules.Azure/pull/2080)
+
+## v1.25.1
+
+What's changed since v1.25.0:
+
+- Bug fixes:
+  - Fixed dependency issue of deployments across resource group scopes by @BernieWhite.
+    [#2111](https://github.com/Azure/PSRule.Rules.Azure/issues/2111)
 
 ## v1.25.0
 
