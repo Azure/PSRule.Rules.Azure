@@ -1,0 +1,175 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.15.31.15270",
+      "templateHash": "8147785933488456057"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {
+    "names": [
+      "ws1",
+      "ws2"
+    ],
+    "phases": {
+      "phase1": {
+        "workspace": "ws1"
+      },
+      "phase2": {
+        "workspace": "w2"
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "keyvault",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "names": "[if(greater(length(variables('names')), 1), createObject('value', variables('names')), createObject('value', createArray()))]",
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "prefix": {
+            "value": "logs-"
+          },
+          "ids": {
+            "value": "[reference(extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, 'rg-monitoring'), 'Microsoft.Resources/deployments', 'workspace'), '2020-10-01').outputs.ids.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.15.31.15270",
+              "templateHash": "8235756447397794015"
+            }
+          },
+          "parameters": {
+            "names": {
+              "type": "array"
+            },
+            "location": {
+              "type": "string"
+            },
+            "ids": {
+              "type": "array"
+            },
+            "prefix": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "copy": {
+                "name": "logs",
+                "count": "[length(parameters('ids'))]"
+              },
+              "type": "Microsoft.Insights/diagnosticSettings",
+              "apiVersion": "2021-05-01-preview",
+              "scope": "[format('Microsoft.KeyVault/vaults/{0}', 'vault')]",
+              "name": "[format('{0}{1}', parameters('prefix'), parameters('names')[copyIndex()])]",
+              "properties": {
+                "workspaceId": "[parameters('ids')[copyIndex()]]"
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.KeyVault/vaults', 'vault')]"
+              ]
+            },
+            {
+              "type": "Microsoft.KeyVault/vaults",
+              "apiVersion": "2022-11-01",
+              "name": "vault",
+              "location": "[parameters('location')]",
+              "properties": {
+                "sku": {
+                  "name": "standard",
+                  "family": "A"
+                },
+                "tenantId": "[tenant().tenantId]"
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[extensionResourceId(format('/subscriptions/{0}/resourceGroups/{1}', subscription().subscriptionId, 'rg-monitoring'), 'Microsoft.Resources/deployments', 'workspace')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "workspace",
+      "resourceGroup": "rg-monitoring",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "phases": "[if(not(empty(variables('phases'))), createObject('value', variables('phases')), createObject('value', createObject()))]"
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.15.31.15270",
+              "templateHash": "12040446637715549099"
+            }
+          },
+          "parameters": {
+            "phases": {
+              "type": "object"
+            },
+            "location": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "copy": {
+                "name": "workspace",
+                "count": "[length(items(parameters('phases')))]"
+              },
+              "type": "Microsoft.OperationalInsights/workspaces",
+              "apiVersion": "2022-10-01",
+              "name": "[items(parameters('phases'))[copyIndex()].value.workspace]",
+              "location": "[parameters('location')]"
+            }
+          ],
+          "outputs": {
+            "ids": {
+              "type": "array",
+              "copy": {
+                "count": "[length(items(parameters('phases')))]",
+                "input": {
+                  "id": "[resourceId('Microsoft.OperationalInsights/workspaces', items(parameters('phases'))[copyIndex()].value.workspace)]"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
