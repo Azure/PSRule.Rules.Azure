@@ -1126,10 +1126,31 @@ namespace PSRule.Rules.Azure.Data.Template
             resource.TryGetProperty(PROPERTY_NAME, out var name);
             resource.TryGetProperty(PROPERTY_TYPE, out var type);
             resource.TryGetDependencies(out var dependencies);
-            var resourceId = ResourceHelper.CombineResourceId(context.Subscription.SubscriptionId, context.ResourceGroup.Name, type, name);
+
+            var subscriptionId = context.Subscription.SubscriptionId;
+            var resourceGroupName = context.ResourceGroup.Name;
+
+            // Handle special case for cross-scope deployments which may have an alternative subscription or resource group set
+            if (IsDeploymentResource(type))
+            {
+                subscriptionId = ResolveDeploymentScopeProperty(context, resource, PROPERTY_SUBSCRIPTIONID, subscriptionId);
+                resourceGroupName = ResolveDeploymentScopeProperty(context, resource, PROPERTY_RESOURCEGROUP, resourceGroupName);
+            }
+
+            var resourceId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, type, name);
             context.UpdateResourceScope(resource);
             resource[PROPERTY_ID] = resourceId;
             return new ResourceValue(resourceId, name, type, resource, dependencies, copyIndex.Clone());
+        }
+
+        private static string ResolveDeploymentScopeProperty(TemplateContext context, JObject resource, string propertyName, string defaultValue)
+        {
+            if (resource.TryGetProperty<JValue>(propertyName, out var value))
+            {
+                defaultValue = ResolveToken(context, value).Value<string>();
+                resource[propertyName] = defaultValue;
+            }
+            return defaultValue;
         }
 
         private void ResourceOuter(TemplateContext context, IResourceValue resource)
@@ -1159,7 +1180,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private bool TryDeploymentResource(TemplateContext context, JObject resource)
         {
             var resourceType = ExpandProperty<string>(context, resource, PROPERTY_TYPE);
-            if (IsDeploymentResource(resourceType))
+            if (!IsDeploymentResource(resourceType))
                 return false;
 
             var deploymentName = ExpandProperty<string>(context, resource, PROPERTY_NAME);
@@ -1182,7 +1203,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected static bool IsDeploymentResource(string resourceType)
         {
-            return !string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase);
+            return string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase);
         }
 
         private static TemplateContext GetDeploymentContext(TemplateContext context, string deploymentName, JObject resource, JObject properties)
