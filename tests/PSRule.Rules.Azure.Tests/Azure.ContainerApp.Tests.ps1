@@ -87,8 +87,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.TargetName | Should -BeIn 'capp-env-C';
         }
 
-        It 'Azure.ContainerApp.PersistantStorage' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.PersistantStorage' };
+        It 'Azure.ContainerApp.Storage' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.Storage' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

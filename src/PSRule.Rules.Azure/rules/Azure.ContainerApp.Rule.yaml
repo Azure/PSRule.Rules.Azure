@@ -103,7 +103,7 @@ spec:
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.ContainerApp.PersistantStorage
+  name: Azure.ContainerApp.Storage
   ref: AZR-000364
   tags:
     release: GA

@@ -3,7 +3,7 @@ severity: Awareness
 pillar: Reliability
 category: Design for reliability
 resource: Container App
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.PersistantStorage/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.Storage/
 ---
 
 # Persistant storage
