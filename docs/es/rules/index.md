@@ -75,8 +75,8 @@ AZR-000050 | [Azure.APIM.ProductTerms](Azure.APIM.ProductTerms.md) | Set legal t
 AZR-000051 | [Azure.APIM.CertificateExpiry](Azure.APIM.CertificateExpiry.md) | Renew certificates used for custom domain bindings. | GA
 AZR-000052 | [Azure.APIM.AvailabilityZone](Azure.APIM.AvailabilityZone.md) | API management services deployed with Premium SKU should use availability zones in supported regions for high availability. | GA
 AZR-000053 | [Azure.APIM.ManagedIdentity](Azure.APIM.ManagedIdentity.md) | Configure managed identities to access Azure resources. | GA
-AZR-000054 | [Azure.APIM.Protocols](Azure.APIM.Protocols.md) | API Management should only accept a minimum of TLS 1.2. | GA
-AZR-000055 | [Azure.APIM.Ciphers](Azure.APIM.Ciphers.md) | API Management should not accept weak or deprecated ciphers. | GA
+AZR-000054 | [Azure.APIM.Protocols](Azure.APIM.Protocols.md) | API Management should only accept a minimum of TLS 1.2 for client and backend communication. | GA
+AZR-000055 | [Azure.APIM.Ciphers](Azure.APIM.Ciphers.md) | API Management should not accept weak or deprecated ciphers for client or backend communication. | GA
 AZR-000056 | [Azure.APIM.Name](Azure.APIM.Name.md) | API Management service names should meet naming requirements. | GA
 AZR-000057 | [Azure.AppConfig.SKU](Azure.AppConfig.SKU.md) | App Configuration should use a minimum size of Standard. | GA
 AZR-000058 | [Azure.AppConfig.Name](Azure.AppConfig.Name.md) | App Configuration store names should meet naming requirements. | GA
@@ -376,5 +376,10 @@ AZR-000351 | [Azure.VM.ShouldNotBeStopped](Azure.VM.ShouldNotBeStopped.md) | Azu
 AZR-000352 | [Azure.Defender.KeyVault](Azure.Defender.KeyVault.md) | Enable Microsoft Defender for Key Vault. | GA
 AZR-000353 | [Azure.Defender.Dns](Azure.Defender.Dns.md) | Enable Microsoft Defender for DNS. | GA
 AZR-000354 | [Azure.Defender.Arm](Azure.Defender.Arm.md) | Enable Microsoft Defender for Azure Resource Manager (ARM). | GA
+AZR-000355 | [Azure.KeyVault.Firewall](Azure.KeyVault.Firewall.md) | Key Vault should only accept explicitly allowed traffic. | GA
+AZR-000356 | [Azure.EventHub.MinTLS](Azure.EventHub.MinTLS.md) | Event Hub namespaces should reject TLS versions older than 1.2. | GA
+AZR-000357 | [Azure.IoTHub.MinTLS](Azure.IoTHub.MinTLS.md) | IoT Hubs should reject TLS versions older than 1.2. | GA
+AZR-000358 | [Azure.ServiceBus.AuditLogs](Azure.ServiceBus.AuditLogs.md) | Ensure namespaces audit diagnostic logs are enabled. | GA
+AZR-000359 | [Azure.Deployment.Name](Azure.Deployment.Name.md) | Nested deployments should meet naming requirements of deployments. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

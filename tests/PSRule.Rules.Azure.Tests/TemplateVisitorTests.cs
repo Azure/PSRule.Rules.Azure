@@ -767,6 +767,14 @@ namespace PSRule.Rules.Azure
             Assert.Equal("cosmos-repro/b", actual["name"].Value<string>());
         }
 
+        [Fact]
+        public void DependsOnCrossScope()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.17.json"), null, out _);
+            Assert.NotNull(resources);
+            Assert.Equal(6, resources.Length);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

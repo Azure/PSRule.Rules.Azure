@@ -49,7 +49,7 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'servicens-B', 'servicens-C, 'servicens-D', 'servicens-E';
+            $ruleResult.TargetName | Should -BeIn 'servicens-B', 'servicens-C', 'servicens-D', 'servicens-E';
         }
 
         It 'Azure.ServiceBus.Usage' {

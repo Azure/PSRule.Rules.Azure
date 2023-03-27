@@ -43,14 +43,98 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'capp-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-B', 'capp-D';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-C';
+        }
+
+        It 'Azure.ContainerApp.ManagedIdentity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.ManagedIdentity' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'identity.type'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
+        }
+
+        It 'Azure.ContainerApp.PublicAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.PublicAccess' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-env-A', 'capp-env-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.vnetConfiguration.internal'
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'capp-A';
+            $ruleResult.TargetName | Should -BeIn 'capp-env-C';
         }
+    }
+}
+
+Context 'Resource name - Azure.ContainerApp.Name' {
+    BeforeAll {
+        $invokeParams = @{
+            Baseline = 'Azure.All'
+            Module = 'PSRule.Rules.Azure'
+            WarningAction = 'Ignore'
+            ErrorAction = 'Stop'
+        }
+
+        $testObject = [PSCustomObject]@{
+            Name = ''
+            ResourceType = 'Microsoft.App/containerApps'
+        }
+    }
+
+    BeforeDiscovery {
+        $validNames = @(
+            'capp-01'
+            'a1'
+            'capplication-01'
+        )
+
+        $invalidNames = @(
+            'a'
+            'capp-.'
+            'capp-a-'
+            'CAPP-A'
+            'capp-01!'
+            'capp.-01'
+            'caaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaapplication-01'
+        )
+    }
+
+    # Pass
+    It '<_>' -ForEach $validNames {
+        $testObject.Name = $_;
+        $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ContainerApp.Name';
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Outcome | Should -Be 'Pass';
+    }
+
+    # Fail
+    It '<_>' -ForEach $invalidNames {
+        $testObject.Name = $_;
+        $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.ContainerApp.Name';
+        $ruleResult | Should -Not -BeNullOrEmpty;
+        $ruleResult.Outcome | Should -Be 'Fail';
     }
 }

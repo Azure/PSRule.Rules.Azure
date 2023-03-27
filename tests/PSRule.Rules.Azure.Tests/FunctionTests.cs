@@ -556,13 +556,19 @@ namespace PSRule.Rules.Azure
 
             var actual1 = Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", "a" }) as string;
             var actual2 = Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type/subtype", "a", "b" }) as string;
-            Assert.Equal(parentId + "/providers/Extension.Test/type/a", actual1);
-            Assert.Equal(parentId + "/providers/Extension.Test/type/a/subtype/b", actual2);
+
+            Assert.Equal($"{parentId}/providers/Extension.Test/type/a", actual1);
+            Assert.Equal($"{parentId}/providers/Extension.Test/type/a/subtype/b", actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.ExtensionResourceId(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ExtensionResourceId(context, new object[] { "Extension.Test/type", "a" }));
             Assert.Throws<TemplateFunctionException>(() => Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", "a", "b" }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ExtensionResourceId(context, new object[] { parentId, "Extension.Test/type", 1 }));
+
+            // With resource group deployment
+            parentId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test-001";
+            actual1 = Functions.ExtensionResourceId(context, new object[] { parentId, "Microsoft.Resources/deployments", "a" }) as string;
+            Assert.Equal($"{parentId}/providers/Microsoft.Resources/deployments/a", actual1);
         }
 
         [Fact]

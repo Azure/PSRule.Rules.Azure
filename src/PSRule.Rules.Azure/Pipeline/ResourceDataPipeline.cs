@@ -189,7 +189,7 @@ namespace PSRule.Rules.Azure.Pipeline
             foreach (var r in await context.GetResourceGroupsAsync())
             {
                 // If resource group filtering is specified only queue resources in the specified resource group
-                if (_ResourceGroup == null || (ResourceHelper.TryResourceGroup(r[PROPERTY_ID].Value<string>(), out var resourceGroupName) &&
+                if (_ResourceGroup == null || (ResourceHelper.TryResourceGroup(r[PROPERTY_ID].Value<string>(), out _, out var resourceGroupName) &&
                     _ResourceGroup.Contains(resourceGroupName)))
                 {
                     r.Add(PROPERTY_TENANTID, context.TenantId);
@@ -209,7 +209,7 @@ namespace PSRule.Rules.Azure.Pipeline
             foreach (var r in await context.GetResourcesAsync())
             {
                 // If resource group filtering is specified only queue resources in the specified resource group
-                if (_ResourceGroup == null || (ResourceHelper.TryResourceGroup(r[PROPERTY_ID].Value<string>(), out var resourceGroupName) &&
+                if (_ResourceGroup == null || (ResourceHelper.TryResourceGroup(r[PROPERTY_ID].Value<string>(), out _, out var resourceGroupName) &&
                     _ResourceGroup.Contains(resourceGroupName)))
                 {
                     r.Add(PROPERTY_TENANTID, context.TenantId);

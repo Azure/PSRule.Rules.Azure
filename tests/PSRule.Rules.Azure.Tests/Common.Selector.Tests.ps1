@@ -25,11 +25,15 @@ BeforeAll {
 
 Describe 'SupportsTags' -Tag 'Common', 'Filters', 'SupportsTags' {
     BeforeAll {
+        $options = @{
+            'Binding.TargetType' = @('Type')
+        }
         $invokeParams = @{
             Baseline      = 'Azure.All'
             Module        = 'PSRule.Rules.Azure'
             WarningAction = 'Ignore'
             ErrorAction   = 'Stop'
+            Option = $options
         }
         $tempResource = [PSCustomObject]@{
             Type = 'None'
