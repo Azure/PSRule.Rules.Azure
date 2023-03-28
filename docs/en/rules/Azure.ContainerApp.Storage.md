@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Reliability
-category: Design for reliability
+category: Reliability design principles
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.Storage/
 ---
@@ -10,7 +10,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Contai
 
 ## SYNOPSIS
 
-Ensure the use of volume mounts for Container Apps to ensure availability of persistent storage capacity.
+Use of Azure Files volume mounts to persistent storage container data.
 
 ## DESCRIPTION
 
@@ -45,63 +45,11 @@ Usage examples for this can be a main app container that write log files that ar
 
 ## RECOMMENDATION
 
-Consider using volume mounts to ensure availability of persistent storage capacity.
+Consider using Azure File volume mounts to persistent storage across containers and replicas.
 
 ## EXAMPLES
 
 ### Configure with Azure template
-
-To deploy Container Apps that pass this rule:
-
-- Configure the `properties.template.mounts` array to define a volume or several volumes.
-- For each container in the template that you want to mount storage, define a volume mount in the `properties.template.containers.volumeMounts` array.
-
-For example with an ephemeral volume:
-
-```json
-{
-  "type": "Microsoft.App/containerApps",
-  "apiVersion": "2022-10-01",
-  "name": "[parameters('appName')]",
-  "location": "[parameters('location')]",
-  "identity": {
-    "type": "SystemAssigned",
-    "userAssignedIdentities": {}
-  },
-  "properties": {
-    "environmentId": "[parameters('environmentId')]",
-    "template": {
-      "revisionSuffix": "",
-      "containers": [
-        {
-          "image": "mcr.microsoft.com/azuredocs/containerapps-helloworld:latest",
-          "name": "simple-hello-world-container",
-          "resources": {
-            "cpu": "[json('.25')]",
-            "memory": ".5Gi"
-          },
-          "volumeMounts": [
-            {
-              "mountPath": "/myempty",
-              "volumeName": "myempty"
-            }
-          ]
-        }
-      ],
-      "scale": {
-        "minReplicas": 1,
-        "maxReplicas": 3
-      },
-      "volumes": [
-        {
-          "storageType": "myempty",
-          "storageName": "EmptyDir"
-        }
-      ]
-    }
-  }
-}
-```
 
 To deploy Container Apps that pass this rule:
 
@@ -163,56 +111,6 @@ To deploy Container Apps that pass this rule:
 - Configure the `properties.template.mounts` array to define a volume or several volumes.
 - For each container in the template that you want to mount storage, define a volume mount in the `properties.template.containers.volumeMounts` array.
 
-For example with an ephemeral volume:
-
-```bicep
-resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
-  name: appName
-  location: location
-  identity: {
-    type: 'SystemAssigned'
-    userAssignedIdentities: {}
-  }
-  properties: {
-    environmentId: environmentId
-    template: {
-      revisionSuffix: ''
-      containers: [
-        {
-          image: 'mcr.microsoft.com/azuredocs/containerapps-helloworld:latest'
-          name: 'simple-hello-world-container'
-          resources: {
-            cpu: json('.25')
-            memory: '.5Gi'
-          }
-          volumeMounts: [
-            {
-              mountPath: '/myempty'
-              volumeName: 'myempty'
-            }
-          ]
-        }
-      ]
-      scale: {
-        minReplicas: 1
-        maxReplicas: 3
-      }
-      volumes: [
-        {
-          storageType: 'myempty'
-          storageName: 'EmptyDir'
-        }
-      ]
-    }
-  }
-}
-```
-
-To deploy Container Apps that pass this rule:
-
-- Configure the `properties.template.mounts` array to define a volume or several volumes.
-- For each container in the template that you want to mount storage, define a volume mount in the `properties.template.containers.volumeMounts` array.
-
 For example with an Azure Files volume:
 
 ```bicep
@@ -261,5 +159,6 @@ resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
 
 ## LINKS
 
+- [Reliability design principles](https://learn.microsoft.com/azure/architecture/framework/resiliency/principles#design-for-scale-out)
 - [Use storage mounts in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/storage-mounts)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#volumemount)

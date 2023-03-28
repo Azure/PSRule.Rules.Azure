@@ -99,7 +99,7 @@ spec:
         hasValue: true
 
 ---
-# Synopsis: Ensure the use of volume mounts for Container Apps to ensure availability of persistent storage capacity.
+# Synopsis: Use of Azure Files volume mounts to persistent storage container data.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
@@ -113,13 +113,15 @@ spec:
   level: Warning
   type:
   - Microsoft.App/containerApps
+  where:
+    field: properties.template.volumes
+    greater: 0
   condition:
+    field: properties.template.volumes
     allOf:
-      - field: properties.template.containers.volumeMounts
-        greater: 0
-      - field: properties.template.volumes
-        greater: 0
-
+      - field: storageType
+        equals: AzureFile
+    
 #endregion Rules
 
 #region Selectors

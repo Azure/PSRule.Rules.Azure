@@ -93,15 +93,15 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-B';
-            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.template.containers.volumeMounts'
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'capp-C';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.template.volumes'
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-B', 'capp-D';
         }
     }
 }

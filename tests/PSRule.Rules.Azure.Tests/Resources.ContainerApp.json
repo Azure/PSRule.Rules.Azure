@@ -260,7 +260,8 @@
         ],
         "scale": {
           "maxReplicas": 10
-        }
+        },
+        "volumes": []
       }
     },
     "ResourceGroupName": "test-rg",
