@@ -409,6 +409,25 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'apim-l', 'apim-M', 'apim-N', 'apim-P';
         }
+
+        It 'Azure.APIM.CORSPolicy' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.CORSPolicy' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D';
+
+            $ruleResult[0].Reason | Should -BeExactly "Wildcard * for configuration options in CORS policies settings should not be configured.";
+            $ruleResult[1].Reason | Should -BeExactly "Wildcard * for configuration options in CORS policies settings should not be configured.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'apim-E';
+        }
     }
 
     Context 'With Template' {

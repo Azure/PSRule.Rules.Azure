@@ -67,7 +67,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": null,
       "virtualNetworkConfiguration": null,
@@ -121,7 +123,9 @@
           "description": "An API for an application.",
           "serviceUrl": "https://endpoint-a.contoso.com",
           "path": "api-a",
-          "protocols": ["https"],
+          "protocols": [
+            "https"
+          ],
           "authenticationSettings": {
             "oAuth2": null,
             "openid": null
@@ -158,7 +162,10 @@
           "subscriptionRequired": false,
           "serviceUrl": "http://endpoint-b.contoso.com",
           "path": "api-b",
-          "protocols": ["https", "http"],
+          "protocols": [
+            "https",
+            "http"
+          ],
           "authenticationSettings": {
             "oAuth2": null,
             "openid": null
@@ -470,7 +477,9 @@
           "defaultSslBinding": true
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": null,
       "virtualNetworkConfiguration": null,
@@ -518,7 +527,9 @@
           "description": "Azure Logic App.",
           "serviceUrl": "https://endpoint-a.contoso.com",
           "path": "api-a",
-          "protocols": ["https"],
+          "protocols": [
+            "https"
+          ],
           "authenticationSettings": {
             "oAuth2": null,
             "openid": null
@@ -555,7 +566,9 @@
           "subscriptionRequired": false,
           "serviceUrl": "https://endpoint-b.contoso.com",
           "path": "api-b",
-          "protocols": ["https"],
+          "protocols": [
+            "https"
+          ],
           "authenticationSettings": {
             "oAuth2": null,
             "openid": null
@@ -737,6 +750,30 @@
         "Sku": null,
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-B/policies/policy-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-B/policies/policy-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "policy-A",
+        "Name": "policy-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "value": "<policies><inbound><cors allow-credentials=\"true\"><allowed-origins><origin>https://apim-B.developer.azure-api.net</origin></allowed-origins><allowed-methods preflight-result-max-age=\"300\"><method>*</method></allowed-methods><allowed-headers><header>*</header></allowed-headers><expose-headers><header>*</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
+          "format": "xml"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service/policies",
+        "ResourceType": "Microsoft.ApiManagement/service/policies",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -810,7 +847,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": null,
       "virtualNetworkConfiguration": null,
@@ -864,7 +903,9 @@
           "description": "Azure Logic App.",
           "serviceUrl": "https://endpoint-a.contoso.com",
           "path": "api-a",
-          "protocols": ["https"],
+          "protocols": [
+            "https"
+          ],
           "authenticationSettings": {
             "oAuth2": null,
             "openid": null
@@ -901,7 +942,9 @@
           "subscriptionRequired": false,
           "serviceUrl": "https://endpoint-b.contoso.com",
           "path": "api-b",
-          "protocols": ["https"],
+          "protocols": [
+            "https"
+          ],
           "authenticationSettings": {
             "oAuth2": null,
             "openid": null
@@ -1114,6 +1157,54 @@
         "Tags": null,
         "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-C/policies/policy-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-C/policies/policy-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "policy-A",
+        "Name": "policy-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "value": "<policies><inbound><cors allow-credentials=\"true\"><allowed-origins><origin>https://apim-C.developer.azure-api.net</origin></allowed-origins><allowed-methods preflight-result-max-age=\"300\"><method>*</method></allowed-methods><allowed-headers><header>*</header></allowed-headers><expose-headers><header>*</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
+          "format": "xml"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service/policies",
+        "ResourceType": "Microsoft.ApiManagement/service/policies",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-C/policies/policy-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-C/policies/policy-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "policy-B",
+        "Name": "policy-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "value": "<policies><inbound><cors allow-credentials=\"true\"><allowed-origins><origin>*</origin></allowed-origins><allowed-methods preflight-result-max-age=\"300\"><method>*</method></allowed-methods><allowed-headers><header>*</header></allowed-headers><expose-headers><header>*</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
+          "format": "xml"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service/policies",
+        "ResourceType": "Microsoft.ApiManagement/service/policies",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -1188,7 +1279,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": null,
       "virtualNetworkConfiguration": null,
@@ -1225,7 +1318,56 @@
     },
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "resources": []
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/policies/policy-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/policies/policy-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "policy-A",
+        "Name": "policy-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "value": "<policies><inbound><cors allow-credentials=\"true\"><allowed-origins><origin>https://apim-D.developer.azure-api.net</origin></allowed-origins><allowed-methods preflight-result-max-age=\"300\"><method>GET</method></allowed-methods><allowed-headers><header>x-application</header></allowed-headers><expose-headers><header>x-application-id</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
+          "format": "xml"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service/policies",
+        "ResourceType": "Microsoft.ApiManagement/service/policies",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/policies/policy-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/policies/policy-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "policy-B",
+        "Name": "policy-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "value": "<policies><inbound><cors allow-credentials=\"true\"><allowed-origins><origin>*</origin></allowed-origins><allowed-methods preflight-result-max-age=\"300\"><method>*</method></allowed-methods><allowed-headers><header>*</header></allowed-headers><expose-headers><header>*</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
+          "format": "xml"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service/policies",
+        "ResourceType": "Microsoft.ApiManagement/service/policies",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-E",
@@ -1298,7 +1440,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": null,
       "virtualNetworkConfiguration": null,
@@ -1335,7 +1479,32 @@
     },
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-    "resources": [],
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-E/policies/policy-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-E/policies/policy-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "policy-A",
+        "Name": "policy-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "value": "<policies><inbound><cors allow-credentials=\"true\"><allowed-origins><origin>https://apim-E.developer.azure-api.net</origin></allowed-origins><allowed-methods preflight-result-max-age=\"300\"><method>GET</method></allowed-methods><allowed-headers><header>x-application</header></allowed-headers><expose-headers><header>x-application-id</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
+          "format": "xml"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service/policies",
+        "ResourceType": "Microsoft.ApiManagement/service/policies",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ],
     "Zones": null
   },
   {
@@ -1405,7 +1574,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": [
         {
@@ -1414,8 +1585,12 @@
             "name": "Premium",
             "capacity": 1
           },
-          "zones": ["1"],
-          "publicIPAddresses": ["xx.xx.xx.xx"],
+          "zones": [
+            "1"
+          ],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
@@ -1457,7 +1632,9 @@
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
-    "Zones": ["1"]
+    "Zones": [
+      "1"
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-G",
@@ -1526,7 +1703,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": [
         {
@@ -1536,7 +1715,9 @@
             "capacity": 1
           },
           "zones": null,
-          "publicIPAddresses": ["xx.xx.xx.xx"],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
@@ -1578,7 +1759,9 @@
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
-    "Zones": ["1"]
+    "Zones": [
+      "1"
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-H",
@@ -1648,7 +1831,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": null,
       "virtualNetworkConfiguration": null,
@@ -1756,7 +1941,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": null,
       "virtualNetworkConfiguration": null,
@@ -1867,7 +2054,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": null,
       "virtualNetworkConfiguration": null,
@@ -1978,7 +2167,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": [
         {
@@ -1988,7 +2179,9 @@
             "capacity": 1
           },
           "zones": null,
-          "publicIPAddresses": ["xx.xx.xx.xx"],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-K-eastus-01.regional.azure-api.ne",
@@ -2100,7 +2293,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": [
         {
@@ -2110,7 +2305,9 @@
             "capacity": 1
           },
           "zones": null,
-          "publicIPAddresses": ["xx.xx.xx.xx"],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
@@ -2222,7 +2419,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": [
         {
@@ -2231,8 +2430,14 @@
             "name": "Premium",
             "capacity": 3
           },
-          "zones": ["1", "2", "3"],
-          "publicIPAddresses": ["xx.xx.xx.xx"],
+          "zones": [
+            "1",
+            "2",
+            "3"
+          ],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
@@ -2274,7 +2479,11 @@
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
-    "Zones": ["1", "2", "3"]
+    "Zones": [
+      "1",
+      "2",
+      "3"
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-N",
@@ -2344,7 +2553,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": [
         {
@@ -2353,8 +2564,13 @@
             "name": "Premium",
             "capacity": 2
           },
-          "zones": ["1", "2"],
-          "publicIPAddresses": ["xx.xx.xx.xx"],
+          "zones": [
+            "1",
+            "2"
+          ],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
@@ -2396,7 +2612,10 @@
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
-    "Zones": ["1", "2"]
+    "Zones": [
+      "1",
+      "2"
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-O",
@@ -2466,7 +2685,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": null,
       "virtualNetworkConfiguration": null,
@@ -2504,7 +2725,10 @@
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
-    "Zones": ["1", "2"]
+    "Zones": [
+      "1",
+      "2"
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-P",
@@ -2573,7 +2797,9 @@
           "defaultSslBinding": false
         }
       ],
-      "publicIPAddresses": ["0.0.0.0"],
+      "publicIPAddresses": [
+        "0.0.0.0"
+      ],
       "privateIPAddresses": null,
       "additionalLocations": [
         {
@@ -2583,7 +2809,9 @@
             "capacity": 1
           },
           "zones": null,
-          "publicIPAddresses": ["xx.xx.xx.xx"],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
           "privateIPAddresses": null,
           "virtualNetworkConfiguration": null,
           "gatewayRegionalUrl": "https://apim-F-eastus-01.regional.azure-api.ne",
@@ -2625,6 +2853,9 @@
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
-    "Zones": ["1", "2"]
+    "Zones": [
+      "1",
+      "2"
+    ]
   }
 ]

@@ -280,11 +280,33 @@ Rule 'Azure.APIM.MultiRegionGateway' -Ref 'AZR-000341' -Type 'Microsoft.ApiManag
 }
 
 # Synopsis: Wildcard * for any configuration option in CORS policies settings should not be used.
-Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000360' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis', 'Microsoft.ApiManagement/service/policies', 'Microsoft.ApiManagement/service/apis/resolvers', 'Microsoft.ApiManagement/service/apis/operations', 'Microsoft.ApiManagement/service/apis/resolvers/policies', 'Microsoft.ApiManagement/service/products/policies', 'Microsoft.ApiManagement/service/apis/policies',
-'Microsoft.ApiManagement/service/apis/operations/policies' -If { UtilsCORSPolicy -FunctionHelperName 'HasCORSPolicyPattern' } -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
-    $BadCORSPolicy = UtilsCORSPolicy
-    $Assert.GreaterOrEqual($BadCORSPolicy, '.', 1)
+Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000365' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis', 'Microsoft.ApiManagement/service/policies', 'Microsoft.ApiManagement/service/apis/resolvers', 'Microsoft.ApiManagement/service/apis/operations', 'Microsoft.ApiManagement/service/apis/resolvers/policies', 'Microsoft.ApiManagement/service/products/policies', 'Microsoft.ApiManagement/service/apis/policies',
+'Microsoft.ApiManagement/service/apis/operations/policies' -If { $Null -ne (GetAPIMPolicyNode -Node 'cors') } -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
+    $policies = GetAPIMPolicyNode -Node 'cors'
+    foreach ($policy in $policies) {
+        Write-Debug "Got policy: $($policy.OuterXml)"
 
+        $allowedOrigins = @($policy.'allowed-origins'.origin)
+        $Assert.NotIn($allowedOrigins , '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $origin = @($policy.origin)
+        $Assert.NotIn($origin, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $allowedMethods = @($policy.'allowed-methods'.method)
+        $Assert.NotIn($allowedMethods, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $method = @($policy.method)
+        $Assert.NotIn($method, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $allowedHeaders = @($policy.'allowed-headers'.header)
+        $Assert.NotIn($allowedHeaders, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $exposeHeaders = @($policy.'expose-headers'.header)
+        $Assert.NotIn($exposeHeaders, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $header = @($policy.header)
+        $Assert.NotIn($header, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+    }
 }
 
 #region Helper functions
@@ -307,113 +329,23 @@ function global:IsMultiRegion {
     }
 }
 
-function global:HasCORSPolicyPattern {
+function global:GetAPIMPolicyNode {
     [CmdletBinding()]
     param (
-        [Parameter(Mandatory, ValueFromPipeline)]
-        [string]$Policy
-    )
-    process {
-        $Assert.Match($Policy, '.', '(?s)<cors.+\/cors>').Result
-    }
-}
-
-function global:HasCORSPolicyElementWildcard {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory, ValueFromPipeline)]
-        [string]$CorsPolicy
-    )
-    process {
-        $corsPolicyElementWildcardPattern = '<{0}> *\* *<\/{0}>'
-
-        switch -Regex ($CorsPolicy) {
-            $($corsPolicyElementWildcardPattern -f 'origin') { 'Bad CORS origin' }
-            $($corsPolicyElementWildcardPattern -f 'method') { 'Bad CORS method' }  
-        }
-    }
-}
-
-function global:HasCORSPolicyFilter {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory, ValueFromPipeline)]
-        [psobject]$Policy,
-
         [Parameter(Mandatory)]
-        [string[]]$ExcludedFormat
+        [string]$Node
     )
     process {
-        $Policy | Where-Object { $_.properties.format -notin $ExcludedFormat } |
-        ForEach-Object { $_.properties.value }
-    }
-}
-
-function global:UtilsCORSPolicy {
-    [CmdletBinding()]
-    param (
-        [Parameter()]
-        [string]$FunctionHelperName
-    )
-    process {
-        $ignoredFormats = 'rawxml-link', 'xml-link'
-        if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
-            if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
-                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/policies' |
-                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyPattern)
-            }
-            else {
-                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/policies' |
-                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyElementWildcard)
-            }
+        $policies = @($TargetObject)
+        if ($PSRule.TargetType -notlike '*/policies') {
+            $policies = $PSRule.GetPath($TargetObject, '..resources[?@.type == ''Microsoft.ApiManagement/service/policies'' || @.type == ''Microsoft.ApiManagement/service/apis/resolvers/policies'' || @.type == ''Microsoft.ApiManagement/service/products/policies'' || @.type == ''Microsoft.ApiManagement/service/apis/policies'' || @.type == ''Microsoft.ApiManagement/service/apis/operations/policies'']')
+            Write-Debug "[GetAPIMPolicyNode] - Found $($policies.Count) policy nodes."
         }
-        elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis') {
-            if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
-                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/policies' |
-                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyPattern)
+        $policies | ForEach-Object {
+            if ($_.properties.format -in 'rawxml', 'xml' -and $_.properties.value) {
+                $xml = [Xml]$_.properties.value
+                $xml.SelectNodes("//${Node}")
             }
-            else {
-                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/policies' |
-                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyElementWildcard)
-            }
-        }
-        elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service/apis/operations') {
-            if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
-                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/operations/policies' |
-                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyPattern)
-            }
-            else {
-                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/operations/policies' |
-                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyElementWildcard)
-            }
-        }
-        elseif ($PSRule.TargetType -eq 'Microsoft.ApiManagement service/apis/resolvers') {
-            if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
-                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/resolvers/policies' |
-                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyPattern)
-            }
-            else {
-                $result = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis/resolvers/policies' |
-                HasCORSPolicyFilter -ExcludedFormat $ignoredFormats | HasCORSPolicyElementWildcard)
-            }
-        }
-        else {
-            if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
-                if ($TargetObject.properties.format -notin $ignoredFormats) {
-                    $result = @($TargetObject.properties.value | HasCORSPolicyPattern)
-                }
-            }
-            else {
-                if ($TargetObject.properties.format -notin $ignoredFormats) {
-                    $result = @($TargetObject.properties.value | HasCORSPolicyElementWildcard)
-                }
-            }
-        }
-        if ($FunctionHelperName -eq 'HasCORSPolicyPattern') {
-            $Assert.GreaterOrEqual($result, '.', 1).Result
-        }
-        else { 
-            $result
         }
     }
 }
