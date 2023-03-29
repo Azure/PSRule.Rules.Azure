@@ -34,7 +34,9 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
                 Outcome = 'All'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.ContainerApp.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option @{
+                'Configuration.AZURE_CONTAINERAPPS_RESTRICT_INGRESS' = $True
+            }
         }
 
         It 'Azure.ContainerApp.Insecure' {
@@ -85,6 +87,22 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'capp-env-C';
+
+        It 'Azure.ContainerApp.ExternalIngress' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.ExternalIngress' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-B', 'capp-C';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.configuration.ingress.external'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-D';
         }
     }
 }

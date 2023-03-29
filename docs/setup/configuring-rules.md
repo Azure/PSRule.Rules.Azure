@@ -346,3 +346,30 @@ configuration:
   - 'aLinuxOffer'
   - 'anotherLinuxOffer'
 ```
+
+### Azure Container Apps external ingress
+
+This configuration specifies whether if external ingress should be enabled or disabled.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_CONTAINERAPPS_RESTRICT_INGRESS: boolean # An boolean value
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_CONTAINERAPPS_RESTRICT_INGRESS configuration option
+configuration:
+  AZURE_CONTAINERAPPS_RESTRICT_INGRESS: false
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_CONTAINERAPPS_RESTRICT_INGRESS configuration option to enabled
+configuration:
+  AZURE_CONTAINERAPPS_RESTRICT_INGRESS: true
+```

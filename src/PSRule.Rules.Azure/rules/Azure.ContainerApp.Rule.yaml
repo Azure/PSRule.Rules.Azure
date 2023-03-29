@@ -98,6 +98,29 @@ spec:
       - field: properties.vnetConfiguration.infrastructureSubnetId
         hasValue: true
 
+---
+# Synopsis: Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.ExternalIngress
+  ref: AZR-000362
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Security
+spec:
+  with:
+    - Azure.ContainerApp.WithIngress
+  where:
+    value:
+      $:
+        configuration: AZURE_CONTAINERAPPS_RESTRICT_INGRESS
+    equals: true
+  condition:
+    field: properties.configuration.ingress.external
+    hasDefault: false
+
 #endregion Rules
 
 #region Selectors
@@ -115,4 +138,5 @@ spec:
         equals: Microsoft.App/containerApps
       - field: 'properties.configuration.ingress'
         exists: true
+
 #endregion Selectors
