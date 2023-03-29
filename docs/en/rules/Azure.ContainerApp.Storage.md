@@ -53,7 +53,8 @@ Consider using Azure File volume mounts to persistent storage across containers 
 
 To deploy Container Apps that pass this rule:
 
-- Configure the `properties.template.mounts` array to define a volume or several volumes.
+- Configure the `properties.template.volumes` array to define a volume or several volumes.
+- For each volume use the `storageType` of `AzureFile`.
 - For each container in the template that you want to mount storage, define a volume mount in the `properties.template.containers.volumeMounts` array.
 
 For example with an Azure Files volume:
@@ -108,7 +109,8 @@ For example with an Azure Files volume:
 
 To deploy Container Apps that pass this rule:
 
-- Configure the `properties.template.mounts` array to define a volume or several volumes.
+- Configure the `properties.template.volumes` array to define a volume or several volumes.
+- For each volume use the `storageType` of `AzureFile`.
 - For each container in the template that you want to mount storage, define a volume mount in the `properties.template.containers.volumeMounts` array.
 
 For example with an Azure Files volume:
@@ -156,6 +158,9 @@ resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
   }
 }
 ```
+## NOTES
+
+To enable Azure Files storage, a storage definition must be defined in the Container Apps Environment.
 
 ## LINKS
 

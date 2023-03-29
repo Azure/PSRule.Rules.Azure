@@ -110,7 +110,6 @@ metadata:
     ruleSet: 2023_03
     Azure.WAF/pillar: Reliability
 spec:
-  level: Warning
   type:
   - Microsoft.App/containerApps
   where:
