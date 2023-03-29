@@ -37,7 +37,7 @@ For example an global CORS policy:
   "apiVersion": "2021-08-01",
   "name": "[format('{0}/{1}', parameters('name'), 'policy')]",
   "properties": {
-    "value": "<policies><inbound><cors allow-credentials="true"><allowed-origins><origin>__APIM__</origin></allowed-origins><allowed-methods preflight-result-max-age="300"><method>GET</method></allowed-methods><allowed-headers><header>x-application</header></allowed-headers><expose-headers><header>x-application-id</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
+    "value": "<policies><inbound><cors allow-credentials=\"true\"><allowed-origins><origin>__APIM__</origin></allowed-origins><allowed-methods preflight-result-max-age=\"300\"><method>GET</method></allowed-methods><allowed-headers><header>x-application</header></allowed-headers><expose-headers><header>x-application-id</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
     "format": "xml"
   },
   "dependsOn": [
