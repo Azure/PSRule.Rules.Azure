@@ -98,7 +98,7 @@ spec:
       - field: properties.vnetConfiguration.infrastructureSubnetId
         hasValue: true
 
----
+--- 
 # Synopsis: Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
@@ -120,6 +120,29 @@ spec:
   condition:
     field: properties.configuration.ingress.external
     hasDefault: false
+
+---
+# Synopsis: Use of Azure Files volume mounts to persistent storage container data.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.Storage
+  ref: AZR-000364
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.App/containerApps
+  where:
+    field: properties.template.volumes
+    greater: 0
+  condition:
+    field: properties.template.volumes
+    allOf:
+      - field: storageType
+        equals: AzureFile
 
 #endregion Rules
 
