@@ -1637,6 +1637,30 @@
     ]
   },
   {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-F/policies/policy-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-F/policies/policy-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": null,
+    "ManagedBy": null,
+    "ResourceName": "policy-A",
+    "Name": "policy-A",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "value": "<policies><inbound><cors allow-credentials=\"true\"><allowed-origins><origin>*</origin></allowed-origins><allowed-methods preflight-result-max-age=\"300\"><method>*</method></allowed-methods><allowed-headers><header>*</header></allowed-headers><expose-headers><header>*</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
+      "format": "xml"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.ApiManagement/service/policies",
+    "ResourceType": "Microsoft.ApiManagement/service/policies",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-G",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-G",
     "Identity": {
@@ -1762,6 +1786,30 @@
     "Zones": [
       "1"
     ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-G/policies/policy-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-G/policies/policy-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": null,
+    "ManagedBy": null,
+    "ResourceName": "policy-B",
+    "Name": "policy-B",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "value": "<policies><inbound><cors allow-credentials=\"true\"><allowed-origins><origin>https://apim-G.developer.azure-api.net</origin></allowed-origins><allowed-methods preflight-result-max-age=\"300\"><method>GET</method></allowed-methods><allowed-headers><header>x-application</header></allowed-headers><expose-headers><header>x-application-id</header></expose-headers></cors></inbound><backend><forward-request /></backend><outbound /><on-error /></policies>",
+      "format": "xml"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.ApiManagement/service/policies",
+    "ResourceType": "Microsoft.ApiManagement/service/policies",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-H",

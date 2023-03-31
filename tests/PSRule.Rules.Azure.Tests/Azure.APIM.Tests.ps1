@@ -416,17 +416,17 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'policy-A';
 
-            $ruleResult[0].Reason | Should -BeExactly "Wildcard * for configuration options in CORS policies settings should not be configured.";
-            $ruleResult[1].Reason | Should -BeExactly "Wildcard * for configuration options in CORS policies settings should not be configured.";
+            $ruleResult[0].Reason | Should -BeIn "Wildcard * for configuration options in CORS policies settings should not be configured.";
+            $ruleResult[1].Reason | Should -BeIn "Wildcard * for configuration options in CORS policies settings should not be configured.";
             
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'apim-E';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'apim-E', 'policy-B';
         }
     }
 

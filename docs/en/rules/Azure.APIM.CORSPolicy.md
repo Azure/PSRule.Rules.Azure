@@ -27,7 +27,8 @@ Consider configuring the CORS policy and don't use wildcard * for any configurat
 To deploy API Management CORS policies that pass this rule:
 
 - Configure an policy sub-resource.
-- Don't specify wildcard * for any element in `properties.format` property and explicitly list allowed values.
+- Avoid using wildcards `*` for any CORS policy element in `properties.value` property.
+  Instead provide exact values.
 
 For example an global CORS policy:
 
@@ -54,7 +55,8 @@ For example an global CORS policy:
 To deploy API Management CORS policies that pass this rule:
 
 - Configure an policy sub-resource.
-- Don't specify wildcard * for any element in `properties.format` property and explicitly list allowed values.
+- Avoid using wildcards `*` for any CORS policy element in `properties.value` property.
+  Instead provide exact values.
 
 For example:
 
@@ -71,10 +73,11 @@ resource serviceName_policy 'Microsoft.ApiManagement/service/policies@2021-08-01
 
 ## NOTES
 
-The rule is only checking against `rawxml` and `xml` policy format content.
+The rule only checks against `rawxml` and `xml` policy formatted content.
 
 ## LINKS
 
+- [Application threat analysis](https://learn.microsoft.com/azure/architecture/framework/security/design-threat-model#2--evaluate-the-application-design-progressively)
 - [CORS policy](https://learn.microsoft.com/azure/api-management/cors-policy)
 - [Mitigate OWASP API threats](https://learn.microsoft.com/azure/api-management/mitigate-owasp-api-threats#recommendations-6)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)
