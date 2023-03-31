@@ -1,0 +1,204 @@
+[
+  {
+    "Name": "server-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/managedInstances/server-A",
+    "ResourceName": "server-A",
+    "ResourceType": "Microsoft.Sql/managedInstances",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "administratorLoginPassword": null,
+      "administrators": {
+        "administratorType": "ActiveDirectory",
+        "azureADOnlyAuthentication": false,
+        "login": "admin@contoso.com",
+        "principalType": "User",
+        "sid": "00000000-0000-0000-0000-000000000000",
+        "tenantId": "00000000-0000-0000-0000-000000000000"
+      },
+      "federatedClientId": null,
+      "keyId": null,
+      "minimalTlsVersion": "1.2",
+      "primaryUserAssignedIdentityId": null,
+      "publicNetworkAccess": null,
+      "restrictOutboundNetworkAccess": null,
+      "version": null
+    }
+  },
+  {
+    "Name": "server-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/managedInstances/server-B",
+    "ResourceName": "server-B",
+    "ResourceType": "Microsoft.Sql/managedInstances",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "administratorLoginPassword": null,
+      "administrators": {
+        "administratorType": "ActiveDirectory",
+        "azureADOnlyAuthentication": true,
+        "login": "admin@contoso.com",
+        "principalType": "User",
+        "sid": "00000000-0000-0000-0000-000000000000",
+        "tenantId": "00000000-0000-0000-0000-000000000000"
+      },
+      "federatedClientId": null,
+      "keyId": null,
+      "minimalTlsVersion": "1.2",
+      "primaryUserAssignedIdentityId": null,
+      "publicNetworkAccess": null,
+      "restrictOutboundNetworkAccess": null,
+      "version": null
+    }
+  },
+  {
+    "Name": "server-C",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/managedInstances/server-C",
+    "ResourceName": "server-C",
+    "ResourceType": "Microsoft.Sql/managedInstances",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "administratorLoginPassword": null,
+      "administrators": {
+        "administratorType": "ActiveDirectory",
+        "azureADOnlyAuthentication": null,
+        "login": "admin@contoso.com",
+        "principalType": "User",
+        "sid": "00000000-0000-0000-0000-000000000000",
+        "tenantId": "00000000-0000-0000-0000-000000000000"
+      },
+      "federatedClientId": null,
+      "keyId": null,
+      "minimalTlsVersion": "1.2",
+      "primaryUserAssignedIdentityId": null,
+      "publicNetworkAccess": null,
+      "restrictOutboundNetworkAccess": null,
+      "version": null
+    },
+    "resources": [
+      {
+        "ResourceName": "ActiveDirectory",
+        "Name": "ActiveDirectory",
+        "Properties": {
+          "administratorType": "ActiveDirectory",
+          "login": "admin@contoso.com",
+          "sid": "00000000-0000-0000-0000-000000000000",
+          "tenantId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/managedInstances/administrators",
+        "ResourceType": "Microsoft.Sql/managedInstances/administrators",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "azureADOnlyAuthentication": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications",
+        "ResourceType": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Name": "server-D",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/managedInstances/server-D",
+    "ResourceName": "server-D",
+    "ResourceType": "Microsoft.Sql/managedInstances",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "administratorLoginPassword": null,
+      "administrators": {
+        "administratorType": "ActiveDirectory",
+        "azureADOnlyAuthentication": null,
+        "login": "admin@contoso.com",
+        "principalType": "User",
+        "sid": "00000000-0000-0000-0000-000000000000",
+        "tenantId": "00000000-0000-0000-0000-000000000000"
+      },
+      "federatedClientId": null,
+      "keyId": null,
+      "minimalTlsVersion": "1.2",
+      "primaryUserAssignedIdentityId": null,
+      "publicNetworkAccess": null,
+      "restrictOutboundNetworkAccess": null,
+      "version": null
+    },
+    "resources": [
+      {
+        "ResourceName": "ActiveDirectory",
+        "Name": "ActiveDirectory",
+        "Properties": {
+          "administratorType": "ActiveDirectory",
+          "login": "admin@contoso.com",
+          "sid": "00000000-0000-0000-0000-000000000000",
+          "tenantId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/managedInstances/administrators",
+        "ResourceType": "Microsoft.Sql/managedInstances/administrators",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "azureADOnlyAuthentication": true
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications",
+        "ResourceType": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Name": "AzureADOnlyAuthentication-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/managedInstances/server-E/azureADOnlyAuthentications/AzureADOnlyAuthentication-A",
+    "ResourceName": "AzureADOnlyAuthentication-A",
+    "ResourceType": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "azureADOnlyAuthentication": false
+    }
+  },
+  {
+    "Name": "AzureADOnlyAuthentication-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/managedInstances/server-F/azureADOnlyAuthentications/AzureADOnlyAuthentication-B",
+    "ResourceName": "AzureADOnlyAuthentication-B",
+    "ResourceType": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "azureADOnlyAuthentication": true
+    }
+  }
+]

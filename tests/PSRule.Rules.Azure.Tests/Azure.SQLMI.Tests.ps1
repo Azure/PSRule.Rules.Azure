@@ -24,17 +24,49 @@ BeforeAll {
 }
 
 Describe 'Azure.SQLMI' -Tag 'SQLMI' {
+    Context 'Conditions' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.SQLMI.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+        }
+
+        It 'Azure.SQLMI.AADOnly' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQLMI.AADOnly' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C', 'AzureADOnlyAuthentication-A';
+
+            $ruleResult[0].Reason | Should -BeExactly "Azure AD-only authentication should be enabled for the service.";
+            $ruleResult[1].Reason | Should -BeExactly "Azure AD-only authentication should be enabled for the service.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C', 'AzureADOnlyAuthentication-B';
+        }
+    }
+
     Context 'Resource name - Azure.SQLMI.Name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Sql/managedInstances'
             }
         }

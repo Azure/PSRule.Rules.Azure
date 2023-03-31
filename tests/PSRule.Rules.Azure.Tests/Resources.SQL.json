@@ -1,492 +1,492 @@
 [
-    {
-        "Name": "server-A",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A",
-        "ResourceName": "server-A",
-        "ResourceType": "Microsoft.Sql/servers",
-        "Kind": "v12.0",
+  {
+    "Name": "server-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A",
+    "ResourceName": "server-A",
+    "ResourceType": "Microsoft.Sql/servers",
+    "Kind": "v12.0",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "fullyQualifiedDomainName": "server-A.database.windows.net",
+      "administratorLogin": "db-admin",
+      "administratorLoginPassword": null,
+      "externalAdministratorLogin": null,
+      "externalAdministratorSid": null,
+      "version": "12.0",
+      "minimalTlsVersion": "1.2",
+      "publicNetworkAccess": "Enabled",
+      "state": "Ready"
+    },
+    "resources": [
+      {
+        "ResourceName": "ClientIPAddress_1",
+        "Name": "ClientIPAddress_1",
+        "Properties": {
+          "startIpAddress": "10.1.1.1",
+          "endIpAddress": "10.1.1.1"
+        },
         "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/securityAlertPolicies/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/securityAlertPolicies/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "state": "Enabled",
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
+          "emailAccountAdmins": true,
+          "storageEndpoint": "",
+          "storageAccountAccessKey": "",
+          "retentionDays": 0
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/securityAlertPolicies",
+        "ResourceType": "Microsoft.Sql/servers/securityAlertPolicies",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/vulnerabilityAssessments/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/vulnerabilityAssessments/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "storageContainerPath": "https://storage-A.blob.core.windows.net/",
+          "recurringScans": {
+            "isEnabled": true,
+            "emailSubscriptionAdmins": true,
+            "emails": []
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/vulnerabilityAssessments",
+        "ResourceType": "Microsoft.Sql/servers/vulnerabilityAssessments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/auditingSettings/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/auditingSettings/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "state": "Enabled",
+          "storageEndpoint": "https://storage-A.blob.core.windows.net/",
+          "retentionDays": 730,
+          "auditActionsAndGroups": [
+            "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+            "FAILED_DATABASE_AUTHENTICATION_GROUP",
+            "BATCH_COMPLETED_GROUP"
+          ],
+          "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000",
+          "isStorageSecondaryKeyInUse": false,
+          "isAzureMonitorTargetEnabled": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/auditingSettings",
+        "ResourceType": "Microsoft.Sql/servers/auditingSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/administrators/ActiveDirectory",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/administrators/ActiveDirectory",
+        "Identity": null,
+        "Kind": null,
         "Location": "region",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "ManagedBy": null,
+        "ResourceName": "ActiveDirectory",
+        "Name": "ActiveDirectory",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "administratorType": "ActiveDirectory",
+          "login": "sa@contoso.com",
+          "sid": "00000000-0000-0000-0000-000000000000",
+          "tenantId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/administrators",
+        "ResourceType": "Microsoft.Sql/servers/administrators",
+        "ExtensionResourceType": null,
+        "Sku": null,
         "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Name": "server-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-B",
+    "ResourceName": "server-B",
+    "ResourceType": "Microsoft.Sql/servers",
+    "Kind": "v12.0",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "fullyQualifiedDomainName": "server-B.database.windows.net",
+      "administratorLogin": "db-admin",
+      "administratorLoginPassword": null,
+      "externalAdministratorLogin": null,
+      "externalAdministratorSid": null,
+      "version": "12.0",
+      "minimalTlsVersion": "1.0",
+      "publicNetworkAccess": "Enabled",
+      "state": "Ready"
+    },
+    "resources": [
+      {
+        "ResourceName": "AllowAllWindowsAzureIps",
+        "Name": "AllowAllWindowsAzureIps",
         "Properties": {
-            "fullyQualifiedDomainName": "server-A.database.windows.net",
-            "administratorLogin": "db-admin",
-            "administratorLoginPassword": null,
-            "externalAdministratorLogin": null,
-            "externalAdministratorSid": null,
-            "version": "12.0",
-            "minimalTlsVersion": "1.2",
-            "publicNetworkAccess": "Enabled",
-            "state": "Ready"
+          "startIpAddress": "0.0.0.0",
+          "endIpAddress": "0.0.0.0"
         },
-        "resources": [
-            {
-                "ResourceName": "ClientIPAddress_1",
-                "Name": "ClientIPAddress_1",
-                "Properties": {
-                    "startIpAddress": "10.1.1.1",
-                    "endIpAddress": "10.1.1.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/securityAlertPolicies/Default",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/securityAlertPolicies/Default",
-                "ResourceName": "Default",
-                "Name": "Default",
-                "Properties": {
-                    "state": "Enabled",
-                    "disabledAlerts": [
-                        ""
-                    ],
-                    "emailAddresses": [
-                        ""
-                    ],
-                    "emailAccountAdmins": true,
-                    "storageEndpoint": "",
-                    "storageAccountAccessKey": "",
-                    "retentionDays": 0
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/securityAlertPolicies",
-                "ResourceType": "Microsoft.Sql/servers/securityAlertPolicies",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/vulnerabilityAssessments/Default",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/vulnerabilityAssessments/Default",
-                "ResourceName": "Default",
-                "Name": "Default",
-                "Properties": {
-                    "storageContainerPath": "https://storage-A.blob.core.windows.net/",
-                    "recurringScans": {
-                        "isEnabled": true,
-                        "emailSubscriptionAdmins": true,
-                        "emails": []
-                    }
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/vulnerabilityAssessments",
-                "ResourceType": "Microsoft.Sql/servers/vulnerabilityAssessments",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/auditingSettings/Default",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/auditingSettings/Default",
-                "ResourceName": "Default",
-                "Name": "Default",
-                "Properties": {
-                    "state": "Enabled",
-                    "storageEndpoint": "https://storage-A.blob.core.windows.net/",
-                    "retentionDays": 730,
-                    "auditActionsAndGroups": [
-                        "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
-                        "FAILED_DATABASE_AUTHENTICATION_GROUP",
-                        "BATCH_COMPLETED_GROUP"
-                    ],
-                    "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000",
-                    "isStorageSecondaryKeyInUse": false,
-                    "isAzureMonitorTargetEnabled": false
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/auditingSettings",
-                "ResourceType": "Microsoft.Sql/servers/auditingSettings",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/administrators/ActiveDirectory",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/administrators/ActiveDirectory",
-                "Identity": null,
-                "Kind": null,
-                "Location": "region",
-                "ManagedBy": null,
-                "ResourceName": "ActiveDirectory",
-                "Name": "ActiveDirectory",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "administratorType": "ActiveDirectory",
-                    "login": "sa@contoso.com",
-                    "sid": "00000000-0000-0000-0000-000000000000",
-                    "tenantId": "00000000-0000-0000-0000-000000000000"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/administrators",
-                "ResourceType": "Microsoft.Sql/servers/administrators",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            }
-        ]
-    },
-    {
-        "Name": "server-B",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-B",
-        "ResourceName": "server-B",
-        "ResourceType": "Microsoft.Sql/servers",
-        "Kind": "v12.0",
         "ResourceGroupName": "test-rg",
-        "Location": "region",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": null,
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_1",
+        "Name": "ClientIPAddress_1",
         "Properties": {
-            "fullyQualifiedDomainName": "server-B.database.windows.net",
-            "administratorLogin": "db-admin",
-            "administratorLoginPassword": null,
-            "externalAdministratorLogin": null,
-            "externalAdministratorSid": null,
-            "version": "12.0",
-            "minimalTlsVersion": "1.0",
-            "publicNetworkAccess": "Enabled",
-            "state": "Ready"
+          "startIpAddress": "10.1.1.1",
+          "endIpAddress": "10.1.1.1"
         },
-        "resources": [
-            {
-                "ResourceName": "AllowAllWindowsAzureIps",
-                "Name": "AllowAllWindowsAzureIps",
-                "Properties": {
-                    "startIpAddress": "0.0.0.0",
-                    "endIpAddress": "0.0.0.0"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_1",
-                "Name": "ClientIPAddress_1",
-                "Properties": {
-                    "startIpAddress": "10.1.1.1",
-                    "endIpAddress": "10.1.1.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_2",
-                "Name": "ClientIPAddress_2",
-                "Properties": {
-                    "startIpAddress": "10.1.2.1",
-                    "endIpAddress": "10.1.2.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_3",
-                "Name": "ClientIPAddress_3",
-                "Properties": {
-                    "startIpAddress": "10.1.3.1",
-                    "endIpAddress": "10.1.3.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_4",
-                "Name": "ClientIPAddress_4",
-                "Properties": {
-                    "startIpAddress": "10.1.4.1",
-                    "endIpAddress": "10.1.4.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_5",
-                "Name": "ClientIPAddress_5",
-                "Properties": {
-                    "startIpAddress": "10.1.5.1",
-                    "endIpAddress": "10.1.5.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_6",
-                "Name": "ClientIPAddress_6",
-                "Properties": {
-                    "startIpAddress": "10.1.6.1",
-                    "endIpAddress": "10.1.6.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_7",
-                "Name": "ClientIPAddress_7",
-                "Properties": {
-                    "startIpAddress": "10.1.7.1",
-                    "endIpAddress": "10.1.7.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_8",
-                "Name": "ClientIPAddress_8",
-                "Properties": {
-                    "startIpAddress": "10.1.8.1",
-                    "endIpAddress": "10.1.8.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_9",
-                "Name": "ClientIPAddress_9",
-                "Properties": {
-                    "startIpAddress": "10.1.9.1",
-                    "endIpAddress": "10.1.9.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceName": "ClientIPAddress_10",
-                "Name": "ClientIPAddress_10",
-                "Properties": {
-                    "startIpAddress": "17.1.10.1",
-                    "endIpAddress": "17.1.10.255"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            }
-        ]
-    },
-    {
-        "Name": "server-C",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C",
-        "ResourceName": "server-C",
-        "ResourceType": "Microsoft.Sql/servers",
-        "Kind": "v12.0",
         "ResourceGroupName": "test-rg",
-        "Location": "region",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Tags": null,
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_2",
+        "Name": "ClientIPAddress_2",
         "Properties": {
-            "fullyQualifiedDomainName": "server-C.database.windows.net",
-            "administratorLogin": "db-admin",
-            "administratorLoginPassword": null,
-            "externalAdministratorLogin": null,
-            "externalAdministratorSid": null,
-            "version": "12.0",
-            "state": "Ready"
+          "startIpAddress": "10.1.2.1",
+          "endIpAddress": "10.1.2.1"
         },
-        "resources": [
-            {
-                "ResourceName": "ClientIPAddress_1",
-                "Name": "ClientIPAddress_1",
-                "Properties": {
-                    "startIpAddress": "10.1.1.1",
-                    "endIpAddress": "10.1.1.1"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/firewallRules",
-                "ResourceType": "Microsoft.Sql/servers/firewallRules",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/securityAlertPolicies/Default",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/securityAlertPolicies/Default",
-                "ResourceName": "Default",
-                "Name": "Default",
-                "Properties": {
-                    "state": "Disabled",
-                    "disabledAlerts": [
-                        ""
-                    ],
-                    "emailAddresses": [
-                        ""
-                    ],
-                    "emailAccountAdmins": true,
-                    "storageEndpoint": "",
-                    "storageAccountAccessKey": "",
-                    "retentionDays": 0
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/securityAlertPolicies",
-                "ResourceType": "Microsoft.Sql/servers/securityAlertPolicies",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/vulnerabilityAssessments/Default",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/vulnerabilityAssessments/Default",
-                "ResourceName": "Default",
-                "Name": "Default",
-                "Properties": {
-                    "storageContainerPath": "https://storage-A.blob.core.windows.net/",
-                    "recurringScans": {
-                        "isEnabled": false,
-                        "emailSubscriptionAdmins": true,
-                        "emails": []
-                    }
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/vulnerabilityAssessments",
-                "ResourceType": "Microsoft.Sql/servers/vulnerabilityAssessments",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/auditingSettings/Default",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/auditingSettings/Default",
-                "ResourceName": "Default",
-                "Name": "Default",
-                "Properties": {
-                    "state": "Disabled",
-                    "storageEndpoint": "https://storage-A.blob.core.windows.net/",
-                    "retentionDays": 730,
-                    "auditActionsAndGroups": [
-                        "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
-                        "FAILED_DATABASE_AUTHENTICATION_GROUP",
-                        "BATCH_COMPLETED_GROUP"
-                    ],
-                    "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000",
-                    "isStorageSecondaryKeyInUse": false,
-                    "isAzureMonitorTargetEnabled": false
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/auditingSettings",
-                "ResourceType": "Microsoft.Sql/servers/auditingSettings",
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            }
-        ]
-    },
-    {
-        "Name": "master",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/master",
-        "ResourceName": "server-A/master",
-        "ResourceType": "Microsoft.Sql/servers/databases",
-        "Kind": "v12.0,system",
         "ResourceGroupName": "test-rg",
-        "Location": "region",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_3",
+        "Name": "ClientIPAddress_3",
         "Properties": {
-            "edition": "System",
-            "status": "Online",
-            "serviceLevelObjective": "System1",
-            "collation": "SQL_Latin1_General_CP1_CI_AS",
-            "maxSizeBytes": "32212254720",
-            "requestedServiceObjectiveName": "System1",
-            "sampleName": null,
-            "defaultSecondaryLocation": "region-B",
-            "earliestRestoreDate": null,
-            "elasticPoolName": null,
-            "containmentState": 2,
-            "readScale": "Disabled",
-            "failoverGroupId": null,
-            "zoneRedundant": false,
-            "isUpgradeRequested": false
-        }
-    },
-    {
-        "Name": "database-A",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-A",
-        "ResourceName": "server-A/database-A",
-        "ResourceType": "Microsoft.Sql/servers/databases",
-        "Kind": "v12.0,user",
-        "ResourceGroupName": "test-rg",
-        "Location": "region",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Properties": {
-            "edition": "Standard",
-            "status": "Online",
-            "serviceLevelObjective": "S2",
-            "collation": "SQL_Latin1_General_CP1_CI_AS",
-            "maxSizeBytes": "268435456000",
-            "requestedServiceObjectiveName": "S2",
-            "sampleName": null,
-            "defaultSecondaryLocation": "region-B",
-            "earliestRestoreDate": "2019-01-01T00:00:00Z",
-            "elasticPoolName": null,
-            "containmentState": 2,
-            "readScale": "Disabled",
-            "failoverGroupId": null,
-            "zoneRedundant": false,
-            "isUpgradeRequested": false
-        }
-    },
-    {
-        "Name": "database-B",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-B",
-        "ResourceName": "server-A/database-B",
-        "ResourceType": "Microsoft.Sql/servers/databases",
-        "Kind": "v12.0,user",
-        "ResourceGroupName": "test-rg",
-        "Location": "region",
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "Properties": {
-            "edition": "Standard",
-            "status": "Online",
-            "serviceLevelObjective": "S2",
-            "collation": "SQL_Latin1_General_CP1_CI_AS",
-            "maxSizeBytes": "268435456000",
-            "requestedServiceObjectiveName": "S2",
-            "sampleName": null,
-            "defaultSecondaryLocation": "region-B",
-            "earliestRestoreDate": "2019-01-01T00:00:00Z",
-            "elasticPoolName": null,
-            "containmentState": 2,
-            "readScale": "Disabled",
-            "failoverGroupId": null,
-            "zoneRedundant": false,
-            "isUpgradeRequested": false
+          "startIpAddress": "10.1.3.1",
+          "endIpAddress": "10.1.3.1"
         },
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-B/transparentDataEncryption/current",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-B/transparentDataEncryption/current",
-                "Identity": null,
-                "Kind": null,
-                "Location": "region",
-                "ManagedBy": null,
-                "ResourceName": "current",
-                "Name": "current",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "state": "Enabled"
-                },
-                "ResourceGroupName": "test-rg",
-                "Type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
-                "ResourceType": "Microsoft.Sql/servers/databases/transparentDataEncryption",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_4",
+        "Name": "ClientIPAddress_4",
+        "Properties": {
+          "startIpAddress": "10.1.4.1",
+          "endIpAddress": "10.1.4.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_5",
+        "Name": "ClientIPAddress_5",
+        "Properties": {
+          "startIpAddress": "10.1.5.1",
+          "endIpAddress": "10.1.5.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_6",
+        "Name": "ClientIPAddress_6",
+        "Properties": {
+          "startIpAddress": "10.1.6.1",
+          "endIpAddress": "10.1.6.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_7",
+        "Name": "ClientIPAddress_7",
+        "Properties": {
+          "startIpAddress": "10.1.7.1",
+          "endIpAddress": "10.1.7.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_8",
+        "Name": "ClientIPAddress_8",
+        "Properties": {
+          "startIpAddress": "10.1.8.1",
+          "endIpAddress": "10.1.8.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_9",
+        "Name": "ClientIPAddress_9",
+        "Properties": {
+          "startIpAddress": "10.1.9.1",
+          "endIpAddress": "10.1.9.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ClientIPAddress_10",
+        "Name": "ClientIPAddress_10",
+        "Properties": {
+          "startIpAddress": "17.1.10.1",
+          "endIpAddress": "17.1.10.255"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Name": "server-C",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C",
+    "ResourceName": "server-C",
+    "ResourceType": "Microsoft.Sql/servers",
+    "Kind": "v12.0",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "fullyQualifiedDomainName": "server-C.database.windows.net",
+      "administratorLogin": "db-admin",
+      "administratorLoginPassword": null,
+      "externalAdministratorLogin": null,
+      "externalAdministratorSid": null,
+      "version": "12.0",
+      "state": "Ready"
+    },
+    "resources": [
+      {
+        "ResourceName": "ClientIPAddress_1",
+        "Name": "ClientIPAddress_1",
+        "Properties": {
+          "startIpAddress": "10.1.1.1",
+          "endIpAddress": "10.1.1.1"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/firewallRules",
+        "ResourceType": "Microsoft.Sql/servers/firewallRules",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/securityAlertPolicies/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/securityAlertPolicies/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "state": "Disabled",
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
+          "emailAccountAdmins": true,
+          "storageEndpoint": "",
+          "storageAccountAccessKey": "",
+          "retentionDays": 0
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/securityAlertPolicies",
+        "ResourceType": "Microsoft.Sql/servers/securityAlertPolicies",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/vulnerabilityAssessments/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/vulnerabilityAssessments/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "storageContainerPath": "https://storage-A.blob.core.windows.net/",
+          "recurringScans": {
+            "isEnabled": false,
+            "emailSubscriptionAdmins": true,
+            "emails": []
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/vulnerabilityAssessments",
+        "ResourceType": "Microsoft.Sql/servers/vulnerabilityAssessments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/auditingSettings/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/auditingSettings/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "state": "Disabled",
+          "storageEndpoint": "https://storage-A.blob.core.windows.net/",
+          "retentionDays": 730,
+          "auditActionsAndGroups": [
+            "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+            "FAILED_DATABASE_AUTHENTICATION_GROUP",
+            "BATCH_COMPLETED_GROUP"
+          ],
+          "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000",
+          "isStorageSecondaryKeyInUse": false,
+          "isAzureMonitorTargetEnabled": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/auditingSettings",
+        "ResourceType": "Microsoft.Sql/servers/auditingSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Name": "master",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/master",
+    "ResourceName": "server-A/master",
+    "ResourceType": "Microsoft.Sql/servers/databases",
+    "Kind": "v12.0,system",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "edition": "System",
+      "status": "Online",
+      "serviceLevelObjective": "System1",
+      "collation": "SQL_Latin1_General_CP1_CI_AS",
+      "maxSizeBytes": "32212254720",
+      "requestedServiceObjectiveName": "System1",
+      "sampleName": null,
+      "defaultSecondaryLocation": "region-B",
+      "earliestRestoreDate": null,
+      "elasticPoolName": null,
+      "containmentState": 2,
+      "readScale": "Disabled",
+      "failoverGroupId": null,
+      "zoneRedundant": false,
+      "isUpgradeRequested": false
     }
+  },
+  {
+    "Name": "database-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-A",
+    "ResourceName": "server-A/database-A",
+    "ResourceType": "Microsoft.Sql/servers/databases",
+    "Kind": "v12.0,user",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "edition": "Standard",
+      "status": "Online",
+      "serviceLevelObjective": "S2",
+      "collation": "SQL_Latin1_General_CP1_CI_AS",
+      "maxSizeBytes": "268435456000",
+      "requestedServiceObjectiveName": "S2",
+      "sampleName": null,
+      "defaultSecondaryLocation": "region-B",
+      "earliestRestoreDate": "2019-01-01T00:00:00Z",
+      "elasticPoolName": null,
+      "containmentState": 2,
+      "readScale": "Disabled",
+      "failoverGroupId": null,
+      "zoneRedundant": false,
+      "isUpgradeRequested": false
+    }
+  },
+  {
+    "Name": "database-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-B",
+    "ResourceName": "server-A/database-B",
+    "ResourceType": "Microsoft.Sql/servers/databases",
+    "Kind": "v12.0,user",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "edition": "Standard",
+      "status": "Online",
+      "serviceLevelObjective": "S2",
+      "collation": "SQL_Latin1_General_CP1_CI_AS",
+      "maxSizeBytes": "268435456000",
+      "requestedServiceObjectiveName": "S2",
+      "sampleName": null,
+      "defaultSecondaryLocation": "region-B",
+      "earliestRestoreDate": "2019-01-01T00:00:00Z",
+      "elasticPoolName": null,
+      "containmentState": 2,
+      "readScale": "Disabled",
+      "failoverGroupId": null,
+      "zoneRedundant": false,
+      "isUpgradeRequested": false
+    },
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-B/transparentDataEncryption/current",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-A/databases/database-B/transparentDataEncryption/current",
+        "Identity": null,
+        "Kind": null,
+        "Location": "region",
+        "ManagedBy": null,
+        "ResourceName": "current",
+        "Name": "current",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "state": "Enabled"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+        "ResourceType": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  }
 ]
