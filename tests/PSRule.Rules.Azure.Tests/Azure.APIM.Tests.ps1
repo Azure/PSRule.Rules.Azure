@@ -306,7 +306,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
         }
 
         It 'Azure.APIM.AvailabilityZone' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.AvailabilityZone' };
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.AvailabilityZone' -and $_.TargetType -eq 'Microsoft.ApiManagement/service' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -539,7 +539,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
                 )
             }
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option -Outcome All;
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.AvailabilityZone' };
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.AvailabilityZone' -and $_.TargetType -eq 'Microsoft.ApiManagement/service' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -595,7 +595,7 @@ Describe 'Azure.APIM' -Tag 'APIM' {
 
         It 'Azure.APIM.AvailabilityZone - YAML file option' {
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $configPath -Outcome All;
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.AvailabilityZone' };
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.AvailabilityZone' -and $_.TargetType -eq 'Microsoft.ApiManagement/service' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
