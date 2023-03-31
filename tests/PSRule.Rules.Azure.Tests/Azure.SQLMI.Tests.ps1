@@ -52,7 +52,7 @@ Describe 'Azure.SQLMI' -Tag 'SQLMI' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C', 'AzureADOnlyAuthentication-B';
+            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-D', 'AzureADOnlyAuthentication-B';
         }
     }
 
