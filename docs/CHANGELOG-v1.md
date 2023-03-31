@@ -30,6 +30,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#2098](https://github.com/Azure/PSRule.Rules.Azure/issues/2098)
     - Check that Azure File volumes for container apps are configured by @BenjaminEngeset.
       [#2101](https://github.com/Azure/PSRule.Rules.Azure/issues/2101)
+  - API Management:
+    - Check that wildcard `*` for any configuration option in CORS policies settings is not in use by @BenjaminEngeset.
+      [#2073](https://github.com/Azure/PSRule.Rules.Azure/issues/2073)
 
 What's changed since pre-release v1.26.0-B0011:
 
