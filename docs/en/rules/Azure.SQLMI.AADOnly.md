@@ -41,6 +41,10 @@ For example:
   "apiVersion": "2022-05-01-preview",
   "name": "[parameters('managedInstanceName')]",
   "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned",
+    "userAssignedIdentities": {}
+  },
   "properties": {
     "administratorLogin": "[parameters('administratorLogin')]",
     "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
@@ -68,6 +72,10 @@ For example:
 resource managedInstance 'Microsoft.Sql/managedInstances@2022-05-01-preview' = {
   name: managedInstanceName
   location: location
+  identity: {
+    type: 'SystemAssigned'
+    userAssignedIdentities: {}
+  }
   properties: {
     administratorLogin: administratorLogin
     administratorLoginPassword: administratorLoginPassword
@@ -127,7 +135,7 @@ resource aadOnly 'Microsoft.Sql/managedInstances/azureADOnlyAuthentications@2022
 
 ## NOTES
 
-The Azure AD admin must be set before enabling Azure AD-only authentication.
+The Azure AD admin must be set before enabling Azure AD-only authentication. Managed identity is required to allow support for Azure AD authentication in SQL Managed Instance.
 
 ## LINKS
 
