@@ -254,12 +254,14 @@
             "resources": {
               "cpu": 0.25,
               "memory": ".5Gi"
-            }
+            },
+            "volumeMounts": []
           }
         ],
         "scale": {
           "maxReplicas": 10
-        }
+        },
+        "volumes": []
       }
     },
     "ResourceGroupName": "test-rg",
@@ -314,12 +316,24 @@
             "resources": {
               "cpu": 0.25,
               "memory": ".5Gi"
-            }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/myempty",
+                "volumeName": "myempty"
+              }
+            ]
           }
         ],
         "scale": {
           "maxReplicas": 10
-        }
+        },
+        "volumes": [
+          {
+            "name": "myempty",
+            "storageType": "EmptyDir"
+          }
+        ]
       }
     },
     "ResourceGroupName": "test-rg",
@@ -373,12 +387,25 @@
             "resources": {
               "cpu": 0.25,
               "memory": ".5Gi"
-            }
+            },
+            "volumeMounts": [
+              {
+                "mountPath": "/myfiles",
+                "volumeName": "azure-files-volume"
+              }
+            ]
           }
         ],
         "scale": {
           "maxReplicas": 10
-        }
+        },
+        "volumes": [
+          {
+            "name": "azure-files-volume",
+            "storageType": "AzureFile",
+            "storageName": "myazurefiles"
+          }
+        ]
       }
     },
     "ResourceGroupName": "test-rg",

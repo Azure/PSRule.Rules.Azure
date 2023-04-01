@@ -251,14 +251,14 @@ Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000321' -Type 'Microsoft.ApiManagement
         [datetime]$minimumVersionExpected = $Configuration.AZURE_APIM_MIN_API_VERSION -replace '-preview', ''
 
         $Assert.Create($versionConfigured -ge $minimumVersionExpected, $LocalizedData.APIMApiVersionMin, $TargetObject.apiVersion,
-        $Configuration.AZURE_APIM_MIN_API_VERSION).PathPrefix('apiVersion')
+            $Configuration.AZURE_APIM_MIN_API_VERSION).PathPrefix('apiVersion')
     }
     if ($TargetObject.properties.apiVersionConstraint.minApiVersion) {
         [datetime]$minApiVersionConfigured = $TargetObject.properties.apiVersionConstraint.minApiVersion -replace '-preview', ''
         [datetime]$minApiVersionExpected = $Configuration.AZURE_APIM_MIN_API_VERSION -replace '-preview', ''
 
         $Assert.Create($minApiVersionConfigured -ge $minApiVersionExpected, $LocalizedData.APIMApiVersionConstraintMinApiVersion,
-        $TargetObject.properties.apiVersionConstraint.minApiVersion, $Configuration.AZURE_APIM_MIN_API_VERSION).
+            $TargetObject.properties.apiVersionConstraint.minApiVersion, $Configuration.AZURE_APIM_MIN_API_VERSION).
         PathPrefix('properties.apiVersionConstraint.minApiVersion')
     }
     else {
@@ -279,6 +279,36 @@ Rule 'Azure.APIM.MultiRegionGateway' -Ref 'AZR-000341' -Type 'Microsoft.ApiManag
     }
 }
 
+# Synopsis: Wildcard * for any configuration option in CORS policies settings should not be used.
+Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000365' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis', 'Microsoft.ApiManagement/service/policies', 'Microsoft.ApiManagement/service/apis/resolvers', 'Microsoft.ApiManagement/service/apis/operations', 'Microsoft.ApiManagement/service/apis/resolvers/policies', 'Microsoft.ApiManagement/service/products/policies', 'Microsoft.ApiManagement/service/apis/policies',
+'Microsoft.ApiManagement/service/apis/operations/policies' -If { $Null -ne (GetAPIMPolicyNode -Node 'cors') } -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
+    $policies = GetAPIMPolicyNode -Node 'cors'
+    foreach ($policy in $policies) {
+        Write-Debug "Got policy: $($policy.OuterXml)"
+
+        $allowedOrigins = @($policy.'allowed-origins'.origin)
+        $Assert.NotIn($allowedOrigins , '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $origin = @($policy.origin)
+        $Assert.NotIn($origin, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $allowedMethods = @($policy.'allowed-methods'.method)
+        $Assert.NotIn($allowedMethods, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $method = @($policy.method)
+        $Assert.NotIn($method, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $allowedHeaders = @($policy.'allowed-headers'.header)
+        $Assert.NotIn($allowedHeaders, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $exposeHeaders = @($policy.'expose-headers'.header)
+        $Assert.NotIn($exposeHeaders, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+
+        $header = @($policy.header)
+        $Assert.NotIn($header, '.', '*').Reason($LocalizedData.APIMCORSPolicy).PathPrefix('resources')
+    }
+}
+
 #region Helper functions
 
 function global:IsPremiumAPIM {
@@ -296,6 +326,27 @@ function global:IsMultiRegion {
     param ()
     process {
         $Assert.GreaterOrEqual($TargetObject, 'properties.additionalLocations', 1).Result
+    }
+}
+
+function global:GetAPIMPolicyNode {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory)]
+        [string]$Node
+    )
+    process {
+        $policies = @($TargetObject)
+        if ($PSRule.TargetType -notlike '*/policies') {
+            $policies = $PSRule.GetPath($TargetObject, '..resources[?@.type == ''Microsoft.ApiManagement/service/policies'' || @.type == ''Microsoft.ApiManagement/service/apis/resolvers/policies'' || @.type == ''Microsoft.ApiManagement/service/products/policies'' || @.type == ''Microsoft.ApiManagement/service/apis/policies'' || @.type == ''Microsoft.ApiManagement/service/apis/operations/policies'']')
+            Write-Debug "[GetAPIMPolicyNode] - Found $($policies.Count) policy nodes."
+        }
+        $policies | ForEach-Object {
+            if ($_.properties.format -in 'rawxml', 'xml' -and $_.properties.value) {
+                $xml = [Xml]$_.properties.value
+                $xml.SelectNodes("//${Node}")
+            }
+        }
     }
 }
 
