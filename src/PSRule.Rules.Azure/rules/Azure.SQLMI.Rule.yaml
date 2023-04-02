@@ -13,7 +13,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.SQLMI.ManagedIdentity
-  ref: AZR-0003667
+  ref: AZR-000367
   tags:
     release: GA
     ruleSet: 2023_03
