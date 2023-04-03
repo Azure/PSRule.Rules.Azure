@@ -10,13 +10,17 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQLMI.
 
 ## SYNOPSIS
 
-Ensure Azure AD-only authentication is enabled.
+Ensure Azure AD-only authentication is enabled with Azure SQL Managed Instance.
 
 ## DESCRIPTION
 
-Azure AD authentication is a mechanism to connect to your SQL resource by using identities in Azure AD.
+Azure SQL Managed Instance supports authentication with SQL logins and Azure AD authentication.
 
-SQL Managed Instance should be using Azure AD authentication. SQL legacy authentication mechanisms such as SQL logins are unable to provide sufficient protection for identities. Azure AD authentication provides strong protection controls including conditional access, identity governance, and privileged identity management.
+By default, authentication with SQL logins is enabled.
+SQL logins are unable to provide sufficient protection for identities.
+Azure AD authentication provides strong protection controls including conditional access, identity governance, and privileged identity management.
+
+Once you decide to use Azure AD authentication, you can disable authentication with SQL logins.
 
 ## RECOMMENDATION
 
@@ -60,6 +64,27 @@ For example:
 }
 ```
 
+Alternatively, you can configure the `Microsoft.Sql/managedInstances/azureADOnlyAuthentications` sub-resource.
+To deploy `Microsoft.Sql/managedInstances/azureADOnlyAuthentications` sub-resources that pass this rule:
+
+- Set the `properties.azureADOnlyAuthentication` property to `true`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications",
+  "apiVersion": "2022-05-01-preview",
+  "name": "[format('{0}/{1}', parameters('managedInstanceName'), 'Default')]",
+  "properties": {
+    "azureADOnlyAuthentication": true
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Sql/managedInstances', parameters('managedInstanceName'))]"
+  ]
+}
+```
+
 ### Configure with Bicep
 
 To deploy SQL Managed Instances that pass this rule:
@@ -91,34 +116,9 @@ resource managedInstance 'Microsoft.Sql/managedInstances@2022-05-01-preview' = {
 }
 ```
 
-### Configure with Azure template
+Alternatively, you can configure the `Microsoft.Sql/managedInstances/azureADOnlyAuthentications` sub-resource.
+To deploy `Microsoft.Sql/managedInstances/azureADOnlyAuthentications` sub-resources that pass this rule:
 
-To deploy SQL Managed Instances that pass this rule:
-
-- Configure an `Microsoft.Sql/managedInstances/azureADOnlyAuthentications` sub-resource.
-- Set the `properties.azureADOnlyAuthentication` property to `true`.
-
-For example:
-
-```json
-{
-  "type": "Microsoft.Sql/managedInstances/azureADOnlyAuthentications",
-  "apiVersion": "2022-05-01-preview",
-  "name": "[format('{0}/{1}', parameters('managedInstanceName'), 'Default')]",
-  "properties": {
-    "azureADOnlyAuthentication": true
-  },
-  "dependsOn": [
-    "[resourceId('Microsoft.Sql/managedInstances', parameters('managedInstanceName'))]"
-  ]
-}
-```
-
-### Configure with Bicep
-
-To deploy SQL Managed Instances that pass this rule:
-
-- Configure an `Microsoft.Sql/managedInstances/azureADOnlyAuthentications` sub-resource.
 - Set the `properties.azureADOnlyAuthentication` property to `true`.
 
 For example:

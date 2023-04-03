@@ -20,10 +20,10 @@ Rule 'Azure.SQLMI.Name' -Ref 'AZR-000194' -Type 'Microsoft.Sql/managedInstances'
     $Assert.Match($PSRule, 'TargetName', '^[a-z0-9]([a-z0-9-]*[a-z0-9]){0,62}$', $True);
 }
 
-# Synopsis: Ensure Azure AD-only authentication is enabled.
+# Synopsis: Ensure Azure AD-only authentication is enabled with Azure SQL Managed Instance.
 Rule 'Azure.SQLMI.AADOnly' -Ref 'AZR-000366' -Type 'Microsoft.Sql/managedInstances', 'Microsoft.Sql/managedInstances/azureADOnlyAuthentications' -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
     $types = 'Microsoft.Sql/managedInstances', 'Microsoft.Sql/managedInstances/azureADOnlyAuthentications'
-    $enabledAADOnly = @(GetAzureADOnlyAuthentication -ResourceType $types | Where-Object { $_ })
+    $enabledAADOnly = @(GetAzureSQLADOnlyAuthentication -ResourceType $types | Where-Object { $_ })
     $Assert.GreaterOrEqual($enabledAADOnly, '.', 1).Reason($LocalizedData.AzureADOnlyAuthentication)
 }
 

@@ -547,7 +547,7 @@ function global:HasOMSOrAMAExtension {
     }
 }
 
-function global:GetAzureADOnlyAuthentication {
+function global:GetAzureSQLADOnlyAuthentication {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
