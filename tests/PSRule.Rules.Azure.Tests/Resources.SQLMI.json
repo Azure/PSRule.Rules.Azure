@@ -39,6 +39,10 @@
     "Location": "region",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Tags": null,
+    "Identity": {
+      "type": "None",
+      "userAssignedIdentities": null
+    },
     "Properties": {
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
@@ -69,6 +73,10 @@
     "Location": "region",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Tags": null,
+    "Identity": {
+      "type": "SystemAssigned",
+      "userAssignedIdentities": null
+    },
     "Properties": {
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
@@ -126,6 +134,10 @@
     "Location": "region",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Tags": null,
+    "Identity": {
+      "type": "UserAssigned",
+      "userAssignedIdentities": null
+    },
     "Properties": {
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,

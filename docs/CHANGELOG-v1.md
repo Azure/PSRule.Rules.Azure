@@ -34,6 +34,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that wildcard `*` for any configuration option in CORS policies settings is not in use by @BenjaminEngeset.
       [#2073](https://github.com/Azure/PSRule.Rules.Azure/issues/2073)
   - SQL Managed Instance:
+    - Check that managed identity for SQL Managed Instances are configured by @BenjaminEngeset.
+      [#2120](https://github.com/Azure/PSRule.Rules.Azure/issues/2120)
     - Check that Azure AD-only authentication is enabled by @BenjaminEngeset.
       [#2118](https://github.com/Azure/PSRule.Rules.Azure/issues/2118)
 

@@ -36,6 +36,23 @@ Describe 'Azure.SQLMI' -Tag 'SQLMI' {
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
 
+        It 'Azure.SQLMI.ManagedIdentity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQLMI.ManagedIdentity' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'identity.type'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-C', 'server-D';
+        }
+
         It 'Azure.SQLMI.AADOnly' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQLMI.AADOnly' };
 
