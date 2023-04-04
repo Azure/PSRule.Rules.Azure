@@ -6,33 +6,35 @@ resource: SQL Managed Instance
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQLMI.AAD/
 ---
 
-# Use AAD authentication with SQL Managed Instances
+# Use AAD authentication with SQL Managed Instance
 
 ## SYNOPSIS
 
-Use Azure Active Directory (AAD) authentication with Azure SQL Managed Instances.
+Use Azure Active Directory (AAD) authentication with Azure SQL Managed Instance.
 
 ## DESCRIPTION
 
-Azure SQL Managed Instance offer two authentication models, Azure Active Directory (AAD) and SQL logins.
-AAD authentication supports centialized identity management in addition to modern password protections.
-Some of the benefits of AAD authentication over SQL authentication including:
+Azure SQL Managed Instance supports authentication with SQL logins and Azure AD authentication.
+
+By default, authentication with SQL logins is enabled.
+SQL logins are unable to provide sufficient protection for identities.
+Azure AD authentication provides strong protection controls including conditional access, identity governance, and privileged identity management.
 
 - Support for Azure Multi-Factor Authentication (MFA).
 - Conditional-based access with Conditional Access.
 
-Using AAD authentication requires an Active Directory administrator provisioned, if a instance does not have an Azure Active Directory administrator, then Azure Active Directory logins and users receive a `Cannot connect` to instance error.
+Using Azure AD authentication requires an Azure AD administrator provisioned, if a instance does not have an Azure AD administrator, then Azure AD logins and users receive a `Cannot connect` to instance error.
 
-It is also possible to disable SQL authentication entirely by enabling Azure AD-only authentication.
+Once you decide to use Azure AD authentication, you can disable authentication with SQL logins.
 
 ## RECOMMENDATION
 
-Consider using Azure Active Directory (AAD) authentication with SQL Managed Instances.
+Consider using Azure Active Directory (AAD) authentication with SQL Managed Instance.
 Additionally, consider disabling SQL authentication.
 
 ## EXAMPLES
 
-An Active Directory administrator can be provisioned in two different ways.
+An Azure AD administrator can be provisioned in two different ways.
 
 ### Configure with Azure template
 
@@ -69,6 +71,31 @@ For example:
 }
 ```
 
+Alternatively, you can configure the `Microsoft.Sql/managedInstances/administrators` sub-resource.
+To deploy `Microsoft.Sql/managedInstances/administrators` sub-resources that pass this rule:
+
+- Set the `properties.administratorType` to `ActiveDirectory`.
+- Set the `properties.login` to the administrator login object name.
+- Set the `properties.sid` to the object ID GUID of the administrator user, group, or application.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Sql/managedInstances/administrators",
+  "apiVersion": "2022-05-01-preview",
+  "name":  "[format('{0}/{1}', parameters('managedInstanceName'), 'ActiveDirectory')]",
+  "properties": {
+      "administratorType": "ActiveDirectory",
+      "login": "[parameters('login')]",
+      "sid": "[parameters('sid')]"
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Sql/managedInstances', parameters('managedInstanceName'))]"
+  ]
+}
+```
+
 ### Configure with Bicep
 
 To deploy SQL Managed Instances that pass this rule:
@@ -102,35 +129,9 @@ resource managedInstance 'Microsoft.Sql/managedInstances@2022-05-01-preview' = {
 }
 ```
 
-### Configure with Azure template
+Alternatively, you can configure the `Microsoft.Sql/managedInstances/administrators` sub-resource.
+To deploy `Microsoft.Sql/managedInstances/administrators` sub-resources that pass this rule:
 
-To deploy SQL Managed Instances that pass this rule:
-
-- Configure an `Microsoft.Sql/managedInstances/administrators` sub-resource.
-- Set the `properties.administratorType` to `ActiveDirectory`.
-- Set the `properties.login` to the administrator login object name.
-- Set the `properties.sid` to the object ID GUID of the administrator user, group, or application.
-
-For example:
-
-```json
-{
-  "type": "Microsoft.Sql/managedInstances/administrators",
-  "apiVersion": "2022-05-01-preview",
-  "name":  "[format('{0}/{1}', parameters('managedInstanceName'), 'ActiveDirectory')]",
-  "properties": {
-      "administratorType": "ActiveDirectory",
-      "login": "[parameters('login')]",
-      "sid": "[parameters('sid')]"
-  }
-}
-```
-
-### Configure with Bicep
-
-To deploy SQL Managed Instances that pass this rule:
-
-- Configure an `Microsoft.Sql/managedInstances/administrators` sub-resource.
 - Set the `properties.administratorType` to `ActiveDirectory`.
 - Set the `properties.login` to the administrator login object name.
 - Set the `properties.sid` to the object ID GUID of the administrator user, group, or application.
@@ -159,9 +160,7 @@ Managed identity is required to allow support for Azure AD authentication in SQL
 ## LINKS
 
 - [Use modern password protection](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-modern-password-protection)
-- [Configure and manage Azure AD authentication with Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- [Using multi-factor Azure Active Directory authentication](https://docs.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
-- [Conditional Access with Azure SQL Database and Azure Synapse Analytics](https://docs.microsoft.com/azure/azure-sql/database/conditional-access-configure)
-- [Azure AD-only authentication with Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication)
-- [Azure Policy for Azure Active Directory only authentication with Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication-policy)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/administrators)
+- [Use Azure Active Directory authentication](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-overview)
+- [Configure and manage Azure AD authentication](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/managedinstances#managedinstanceexternaladministrator)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/managedinstances/administrators#managedinstanceadministratorproperties)
