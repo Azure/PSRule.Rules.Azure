@@ -36,6 +36,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - SQL Managed Instance:
     - Check that managed identity for SQL Managed Instances are configured by @BenjaminEngeset.
       [#2120](https://github.com/Azure/PSRule.Rules.Azure/issues/2120)
+    - Check that Azure AD-only authentication is enabled by @BenjaminEngeset.
+      [#2118](https://github.com/Azure/PSRule.Rules.Azure/issues/2118)
     - Check that Azure AD authentication is configured for SQL Managed Instances by @BenjaminEngeset.
       [#2117](https://github.com/Azure/PSRule.Rules.Azure/issues/2117)
 

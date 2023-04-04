@@ -53,6 +53,25 @@ Describe 'Azure.SQLMI' -Tag 'SQLMI' {
             $ruleResult.TargetName | Should -BeIn 'server-C', 'server-D';
         }
 
+        It 'Azure.SQLMI.AADOnly' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQLMI.AADOnly' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C', 'AzureADOnlyAuthentication-A';
+
+            $ruleResult[0].Reason | Should -BeExactly "Azure AD-only authentication should be enabled for the service.";
+            $ruleResult[1].Reason | Should -BeExactly "Azure AD-only authentication should be enabled for the service.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-D', 'AzureADOnlyAuthentication-B';
+        }
+        
         It 'Azure.SQLMI.AAD' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQLMI.AAD' };
 

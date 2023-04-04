@@ -546,3 +546,21 @@ function global:HasOMSOrAMAExtension {
         }
     }
 }
+
+function global:GetAzureSQLADOnlyAuthentication {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory)]
+        [string[]]$ResourceType
+    )
+    process {
+        if ($PSRule.TargetType -eq $ResourceType[0]) {
+            $TargetObject.properties.administrators.azureADOnlyAuthentication
+            GetSubResources -ResourceType $ResourceType[1] |
+            ForEach-Object { $_.properties.azureADOnlyAuthentication }
+        }
+        else {
+            $TargetObject.properties.azureADOnlyAuthentication
+        }
+    }
+}

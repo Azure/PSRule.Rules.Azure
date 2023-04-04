@@ -96,4 +96,5 @@
     BicepCLIVersion = "The Bicep version is '{0}' however the configured minimum version is '{1}'."
     ServiceBusAuditDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
     APIMCORSPolicy = "Wildcard * for configuration options in CORS policies settings should not be configured."
+    AzureADOnlyAuthentication = "Azure AD-only authentication should be enabled for the service."
 }
