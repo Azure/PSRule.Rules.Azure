@@ -160,7 +160,7 @@ Managed identity is required to allow support for Azure AD authentication in SQL
 ## LINKS
 
 - [Use modern password protection](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-modern-password-protection)
-- [Use Azure Active Directory authentication](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-overview)
+- [Use Azure AD authentication](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-overview)
 - [Configure and manage Azure AD authentication](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/managedinstances#managedinstanceexternaladministrator)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/managedinstances/administrators#managedinstanceadministratorproperties)
