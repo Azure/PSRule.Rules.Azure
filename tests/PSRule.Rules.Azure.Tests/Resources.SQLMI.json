@@ -13,10 +13,6 @@
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
       "administrators": {
-<<<<<<< HEAD
-=======
-        "administratorType": "ActiveDirectory",
->>>>>>> main
         "azureADOnlyAuthentication": false,
         "login": "admin@contoso.com",
         "principalType": "User",
@@ -83,17 +79,6 @@
     "Properties": {
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
-<<<<<<< HEAD
-=======
-      "administrators": {
-        "administratorType": "ActiveDirectory",
-        "azureADOnlyAuthentication": null,
-        "login": "admin@contoso.com",
-        "principalType": "User",
-        "sid": "00000000-0000-0000-0000-000000000000",
-        "tenantId": "00000000-0000-0000-0000-000000000000"
-      },
->>>>>>> main
       "federatedClientId": null,
       "keyId": null,
       "minimalTlsVersion": "1.2",
@@ -107,15 +92,9 @@
         "ResourceName": "ActiveDirectory",
         "Name": "ActiveDirectory",
         "Properties": {
-<<<<<<< HEAD
           "administratorType": null,
           "login": null,
           "sid": null,
-=======
-          "administratorType": "ActiveDirectory",
-          "login": "admin@contoso.com",
-          "sid": "00000000-0000-0000-0000-000000000000",
->>>>>>> main
           "tenantId": "00000000-0000-0000-0000-000000000000"
         },
         "ResourceGroupName": "test-rg",
@@ -153,17 +132,6 @@
     "Properties": {
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
-<<<<<<< HEAD
-=======
-      "administrators": {
-        "administratorType": "ActiveDirectory",
-        "azureADOnlyAuthentication": null,
-        "login": "admin@contoso.com",
-        "principalType": "User",
-        "sid": "00000000-0000-0000-0000-000000000000",
-        "tenantId": "00000000-0000-0000-0000-000000000000"
-      },
->>>>>>> main
       "federatedClientId": null,
       "keyId": null,
       "minimalTlsVersion": "1.2",
@@ -227,7 +195,6 @@
     "Properties": {
       "azureADOnlyAuthentication": true
     }
-<<<<<<< HEAD
   },
   {
     "Name": "ActiveDirectoryAdmin-A",
@@ -261,7 +228,5 @@
       "sid": "00000000-0000-0000-0000-000000000000",
       "tenantId": "00000000-0000-0000-0000-000000000000"
     }
-=======
->>>>>>> main
   }
 ]
