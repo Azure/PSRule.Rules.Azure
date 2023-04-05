@@ -45,6 +45,11 @@ What's changed since pre-release v1.26.0-B0011:
       [#2120](https://github.com/Azure/PSRule.Rules.Azure/issues/2120)
     - Check that Azure AD-only authentication is enabled by @BenjaminEngeset.
       [#2118](https://github.com/Azure/PSRule.Rules.Azure/issues/2118)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.25.6` by @BernieWhite.
+      [#2136](https://github.com/Azure/PSRule.Rules.Azure/issues/2136)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
 - Bug fixes:
   - Fixed dependency issue of deployments across resource group scopes by @BernieWhite.
     [#2111](https://github.com/Azure/PSRule.Rules.Azure/issues/2111)

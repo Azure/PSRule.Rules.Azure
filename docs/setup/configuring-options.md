@@ -46,7 +46,7 @@ Use comments to add context.
       AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 15
 
       # Configure the minimum AKS cluster version.
-      AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.25.4
+      AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.25.6
 
     rule:
       # Enable custom rules that don't exist in the baseline
