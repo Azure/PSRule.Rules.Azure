@@ -1,10 +1,10 @@
-# Azure.Default
+# Azure.GA_2023_03
 
-Default baseline for Azure rules.
+Include rules released March 2023 or prior for Azure GA features.
 
 ## Rules
 
-The following rules are included within `Azure.Default`. This baseline includes a total of 363 rules.
+The following rules are included within `Azure.GA_2023_03`. This baseline includes a total of 363 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------

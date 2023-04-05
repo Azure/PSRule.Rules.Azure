@@ -173,5 +173,19 @@ Describe 'Baselines' -Tag Baseline {
             $filteredResult | Should -Not -BeNullOrEmpty;
             $filteredResult.Length | Should -Be 7;
         }
+
+        It 'With Azure.GA_2023_03' {
+            $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2023_03' -WarningAction Ignore);
+            $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
+            $filteredResult | Should -Not -BeNullOrEmpty;
+            $filteredResult.Length | Should -Be 363;
+        }
+
+        It 'With Azure.Preview_2023_03' {
+            $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.Preview_2023_03' -WarningAction Ignore);
+            $filteredResult = @($result | Where-Object { $_.Tag.release -in 'preview'});
+            $filteredResult | Should -Not -BeNullOrEmpty;
+            $filteredResult.Length | Should -Be 7;
+        }
     }
 }
