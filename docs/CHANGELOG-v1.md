@@ -48,6 +48,8 @@ What's changed since pre-release v1.26.0-B0011:
 - Bug fixes:
   - Fixed dependency issue of deployments across resource group scopes by @BernieWhite.
     [#2111](https://github.com/Azure/PSRule.Rules.Azure/issues/2111)
+  - Fixed false positive with `Azure.Deployment.Name` by @BernieWhite.
+    [#2109](https://github.com/Azure/PSRule.Rules.Azure/issues/2109)
 
 ## v1.26.0-B0011 (pre-release)
 

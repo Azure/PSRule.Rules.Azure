@@ -22,7 +22,10 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(resources);
             Assert.Equal(8, resources.Length);
 
-            var actual = resources[1];
+            var actual = resources[0];
+            Assert.True(actual["rootDeployment"].Value<bool>());
+
+            actual = resources[1];
             Assert.Equal("vnet-001", actual["name"].Value<string>());
             Assert.Equal("10.1.0.0/24", actual["properties"]["addressSpace"]["addressPrefixes"][0].Value<string>());
             Assert.Equal(3, actual["properties"]["subnets"].Value<JArray>().Count);
@@ -39,6 +42,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("vnet-001/subnet2/Microsoft.Authorization/c7db2a25-b75f-d22b-f692-bbb38c83d9d0", actual["name"].Value<string>());
 
             actual = resources[2];
+            Assert.False(actual["rootDeployment"].Value<bool>());
             Assert.Equal("vnetDelegation", actual["name"].Value<string>());
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
 
