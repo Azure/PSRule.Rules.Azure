@@ -387,6 +387,24 @@ spec:
     field: Properties.addonProfiles.omsAgent.enabled
     equals: true
 
+---
+# Synopsis: Enable the Defender profile with Azure Kubernetes Service (AKS) cluster.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.DefenderProfile
+  ref: AZR-000370
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.ContainerService/managedClusters
+  condition:
+    field: properties.securityProfile.defender.securityMonitoring.enabled
+    equals: true
+
 #endregion Rules
 
 #region Selectors
