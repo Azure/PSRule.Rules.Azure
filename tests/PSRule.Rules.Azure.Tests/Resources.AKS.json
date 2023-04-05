@@ -234,7 +234,7 @@
         "defender": {
           "logAnalyticsWorkspaceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
           "securityMonitoring": {
-            "enabled": true
+            "enabled": null
           }
         }
       }
@@ -407,6 +407,14 @@
           "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/MC_test-rg_cluster-D_region/providers/Microsoft.ManagedIdentity/userAssignedIdentities/cluster-D-agentpool",
           "clientId": "00000000-0000-0000-0000-000000000000",
           "objectId": "00000000-0000-0000-0000-000000000000"
+        }
+      },
+      "securityProfile": {
+        "defender": {
+          "logAnalyticsWorkspaceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+          "securityMonitoring": {
+            "enabled": true
+          }
         }
       }
     },
@@ -1351,7 +1359,15 @@
         "dnsServiceIP": "10.4.1.10",
         "dockerBridgeCidr": "172.17.0.1/16"
       },
-      "maxAgentPools": 1
+      "maxAgentPools": 1,
+      "securityProfile": {
+        "defender": {
+          "logAnalyticsWorkspaceResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/defaultresourcegroup-region/providers/microsoft.operationalinsights/workspaces/defaultworkspace-00000000-0000-0000-0000-000000000000-region",
+          "securityMonitoring": {
+            "enabled": true
+          }
+        }
+      }
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerService/managedClusters",

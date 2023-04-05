@@ -1357,6 +1357,17 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-K', 'cluster-L';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.securityProfile.defender.securityMonitoring.enabled: The field 'properties.securityProfile.defender.securityMonitoring.enabled' does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.securityProfile.defender.securityMonitoring.enabled: Is set to 'False'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'cluster-D', 'cluster-J';
         }
     }
 }
