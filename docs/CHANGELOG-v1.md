@@ -26,6 +26,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.26.0-B0011:
 
+- New features:
+  - Added March 2023 baselines `Azure.GA_2023_03` and `Azure.Preview_2023_03` by @BernieWhite.
+    [#2138](https://github.com/Azure/PSRule.Rules.Azure/issues/2138)
+    - Includes rules released before or during March 2023.
+    - Marked `Azure.GA_2022_12` and `Azure.Preview_2022_12` baselines as obsolete.
 - New rules:
   - API Management:
     - Check that wildcard `*` for any configuration option in CORS policies settings is not in use by @BenjaminEngeset.
