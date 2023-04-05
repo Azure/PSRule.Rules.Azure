@@ -127,7 +127,7 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
+            $ruleResult.Length | Should -Be 3;
         }
 
         It 'Azure.Deployment.Name' {
@@ -140,7 +140,7 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
+            $ruleResult.Length | Should -Be 2;
         }
     }
 }
