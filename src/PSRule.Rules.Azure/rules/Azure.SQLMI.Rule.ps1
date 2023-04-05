@@ -27,4 +27,30 @@ Rule 'Azure.SQLMI.AADOnly' -Ref 'AZR-000366' -Type 'Microsoft.Sql/managedInstanc
     $Assert.GreaterOrEqual($enabledAADOnly, '.', 1).Reason($LocalizedData.AzureADOnlyAuthentication)
 }
 
+# Synopsis: Use Azure Active Directory (AAD) authentication with Azure SQL Managed Instances.
+Rule 'Azure.SQLMI.AAD' -Ref 'AZR-000368' -Type 'Microsoft.Sql/managedInstances', 'Microsoft.Sql/managedInstances/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
+    # NB: Microsoft.Sql/managedInstances/administrators overrides properties.administrators property.
+    if ($PSRule.TargetType -eq 'Microsoft.Sql/managedInstances') {
+        $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/managedInstances/administrators' -Name 'ActiveDirectory')
+
+        if ($configs.Length -eq 0 -and $PSRule.TargetType -eq 'Microsoft.Sql/managedInstances') {
+            $Assert.HasFieldValue($TargetObject, 'properties.administrators.administratorType', 'ActiveDirectory')
+            $Assert.HasFieldValue($TargetObject, 'properties.administrators.login')
+            $Assert.HasFieldValue($TargetObject, 'properties.administrators.sid') 
+        }
+        else {
+            foreach ($config in $configs) {
+                $Assert.HasFieldValue($config, 'properties.administratorType', 'ActiveDirectory')
+                $Assert.HasFieldValue($config, 'properties.login')
+                $Assert.HasFieldValue($config, 'properties.sid')
+            }
+        }
+    }
+    else {
+        $Assert.HasFieldValue($TargetObject, 'properties.administratorType', 'ActiveDirectory')
+        $Assert.HasFieldValue($TargetObject, 'properties.login')
+        $Assert.HasFieldValue($TargetObject, 'properties.sid')
+    }
+}
+
 #endregion SQL Managed Instance
