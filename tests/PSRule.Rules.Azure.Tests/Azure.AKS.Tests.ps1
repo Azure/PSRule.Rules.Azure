@@ -1350,5 +1350,13 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.Length | Should -Be 10;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'system', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-L';
         }
+
+        It 'Azure.AKS.DefenderProfile' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.DefenderProfile' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+        }
     }
 }
