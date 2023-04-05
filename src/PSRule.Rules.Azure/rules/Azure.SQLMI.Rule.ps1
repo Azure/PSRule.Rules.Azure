@@ -51,5 +51,6 @@ Rule 'Azure.SQLMI.AAD' -Ref 'AZR-000368' -Type 'Microsoft.Sql/managedInstances',
         $Assert.HasFieldValue($TargetObject, 'properties.login')
         $Assert.HasFieldValue($TargetObject, 'properties.sid')
     }
+}
 
 #endregion SQL Managed Instance
