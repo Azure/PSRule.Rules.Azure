@@ -65,6 +65,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_DEPENDSON = "dependsOn";
         private const string PROPERTY_DEFINITIONS = "definitions";
         private const string PROPERTY_REF = "$ref";
+        private const string PROPERTY_ROOTDEPLOYMENT = "rootDeployment";
 
         internal sealed class TemplateContext : ITemplateContext
         {
@@ -482,13 +483,17 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 var deployment = new JObject
                 {
-                    { PROPERTY_RESOURCENAME, ParameterFile ?? TemplateFile },
+                    { PROPERTY_RESOURCENAME, isNested ? deploymentName : ParameterFile ?? TemplateFile },
                     { PROPERTY_NAME, deploymentName },
                     { PROPERTY_PROPERTIES, properties },
                     { PROPERTY_LOCATION, ResourceGroup.Location },
                     { PROPERTY_TYPE, RESOURCETYPE_DEPLOYMENT },
-                    { PROPERTY_METADATA, metadata }
+                    { PROPERTY_METADATA, metadata },
+
+                    // Add a property to allow rules to detect root deployment. Related to: https://github.com/Azure/PSRule.Rules.Azure/issues/2109
+                    { PROPERTY_ROOTDEPLOYMENT, !isNested }
                 };
+
                 var path = template.GetResourcePath(parentLevel: 2);
                 deployment.SetTargetInfo(TemplateFile, ParameterFile, path);
                 var deploymentValue = new DeploymentValue(string.Concat(ResourceGroup.Id, "/providers/", RESOURCETYPE_DEPLOYMENT, "/", deploymentName), deploymentName, deployment, null, null);

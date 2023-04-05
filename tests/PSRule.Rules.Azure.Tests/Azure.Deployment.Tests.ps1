@@ -127,6 +127,19 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+        }
+
+        It 'Azure.Deployment.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.Name' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
         }
     }

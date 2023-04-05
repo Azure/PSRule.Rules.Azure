@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.26.0-B0011:
+
 - New rules:
   - Container App:
     - Check that internal-only ingress for container apps are configured by @BenjaminEngeset.
@@ -38,12 +40,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#2120](https://github.com/Azure/PSRule.Rules.Azure/issues/2120)
     - Check that Azure AD-only authentication is enabled by @BenjaminEngeset.
       [#2118](https://github.com/Azure/PSRule.Rules.Azure/issues/2118)
-
-What's changed since pre-release v1.26.0-B0011:
-
 - Bug fixes:
   - Fixed dependency issue of deployments across resource group scopes by @BernieWhite.
     [#2111](https://github.com/Azure/PSRule.Rules.Azure/issues/2111)
+  - Fixed false positive with `Azure.Deployment.Name` by @BernieWhite.
+    [#2109](https://github.com/Azure/PSRule.Rules.Azure/issues/2109)
 
 ## v1.26.0-B0011 (pre-release)
 
