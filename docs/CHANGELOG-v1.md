@@ -45,6 +45,9 @@ What's changed since pre-release v1.26.0-B0011:
       [#2120](https://github.com/Azure/PSRule.Rules.Azure/issues/2120)
     - Check that Azure AD-only authentication is enabled by @BenjaminEngeset.
       [#2118](https://github.com/Azure/PSRule.Rules.Azure/issues/2118)
+  - Azure Kubernetes Service:
+    - Check that the Defender profile with Azure Kubernetes Service clusters are enabled by @BenjaminEngeset.
+      [#2123](https://github.com/Azure/PSRule.Rules.Azure/issues/2123)
 - Bug fixes:
   - Fixed dependency issue of deployments across resource group scopes by @BernieWhite.
     [#2111](https://github.com/Azure/PSRule.Rules.Azure/issues/2111)
