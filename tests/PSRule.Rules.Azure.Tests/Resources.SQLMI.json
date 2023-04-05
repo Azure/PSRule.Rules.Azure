@@ -13,7 +13,6 @@
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
       "administrators": {
-        "administratorType": "ActiveDirectory",
         "azureADOnlyAuthentication": false,
         "login": "admin@contoso.com",
         "principalType": "User",
@@ -80,14 +79,6 @@
     "Properties": {
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
-      "administrators": {
-        "administratorType": "ActiveDirectory",
-        "azureADOnlyAuthentication": null,
-        "login": "admin@contoso.com",
-        "principalType": "User",
-        "sid": "00000000-0000-0000-0000-000000000000",
-        "tenantId": "00000000-0000-0000-0000-000000000000"
-      },
       "federatedClientId": null,
       "keyId": null,
       "minimalTlsVersion": "1.2",
@@ -101,9 +92,9 @@
         "ResourceName": "ActiveDirectory",
         "Name": "ActiveDirectory",
         "Properties": {
-          "administratorType": "ActiveDirectory",
-          "login": "admin@contoso.com",
-          "sid": "00000000-0000-0000-0000-000000000000",
+          "administratorType": null,
+          "login": null,
+          "sid": null,
           "tenantId": "00000000-0000-0000-0000-000000000000"
         },
         "ResourceGroupName": "test-rg",
@@ -141,14 +132,6 @@
     "Properties": {
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
-      "administrators": {
-        "administratorType": "ActiveDirectory",
-        "azureADOnlyAuthentication": null,
-        "login": "admin@contoso.com",
-        "principalType": "User",
-        "sid": "00000000-0000-0000-0000-000000000000",
-        "tenantId": "00000000-0000-0000-0000-000000000000"
-      },
       "federatedClientId": null,
       "keyId": null,
       "minimalTlsVersion": "1.2",
@@ -211,6 +194,39 @@
     "Tags": null,
     "Properties": {
       "azureADOnlyAuthentication": true
+    }
+  },
+  {
+    "Name": "ActiveDirectoryAdmin-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/managedInstances/server-E/administrators/ActiveDirectoryAdmin-A",
+    "ResourceName": "ActiveDirectoryAdmin-A",
+    "ResourceType": "Microsoft.Sql/managedInstances/administrators",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "login": null,
+      "sid": null,
+      "tenantId": null
+    }
+  },
+  {
+    "Name": "ActiveDirectoryAdmin-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/managedInstances/server-F/administrators/ActiveDirectoryAdmin-B",
+    "ResourceName": "ActiveDirectoryAdmin-B",
+    "ResourceType": "Microsoft.Sql/managedInstances/administrators",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "administratorType": "ActiveDirectory",
+      "login": "admin@contoso.com",
+      "sid": "00000000-0000-0000-0000-000000000000",
+      "tenantId": "00000000-0000-0000-0000-000000000000"
     }
   }
 ]
