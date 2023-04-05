@@ -80,7 +80,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2023-01-02-preview'
 
 ## NOTES
 
-The Defender profile requires egress.
+Outbound access so that the Defender profile can connect to Microsoft Defender for Cloud to send security data and events is required.
 
 ## LINKS
 
@@ -88,4 +88,5 @@ The Defender profile requires egress.
 - [Introduction to Microsoft Defender for Containers](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction)
 - [Defender for Containers architecture](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-architecture?tabs=defender-for-container-arch-aks)
 - [Deploy the Defender profile](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-enable?tabs=aks-deploy-arm%2Ck8s-deploy-asc%2Ck8s-verify-asc%2Ck8s-remove-arc%2Caks-removeprofile-api&pivots=defender-for-container-aks#deploy-the-defender-profile)
+- [Required FQDN / application rules](https://learn.microsoft.com/azure/aks/limit-egress-traffic#microsoft-defender-for-containers)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#managedclustersecurityprofiledefendersecuritymonitoring)

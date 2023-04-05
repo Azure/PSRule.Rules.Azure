@@ -71,6 +71,25 @@ Describe 'Azure.SQLMI' -Tag 'SQLMI' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'server-B', 'server-D', 'AzureADOnlyAuthentication-B';
         }
+        
+        It 'Azure.SQLMI.AAD' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQLMI.AAD' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C', 'ActiveDirectoryAdmin-A';
+
+            $ruleResult[0].Reason | Should -BeExactly 'Path properties.administrators.administratorType: Does not exist.';
+            $ruleResult[1].Reason | Should -BeExactly 'Path properties.administratorType: Is null or empty.', 'Path properties.login: Is null or empty.', 'Path properties.sid: Is null or empty.';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-D', 'ActiveDirectoryAdmin-B';
+        }
     }
 
     Context 'Resource name - Azure.SQLMI.Name' {

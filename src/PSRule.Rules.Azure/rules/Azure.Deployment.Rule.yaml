@@ -21,6 +21,9 @@ metadata:
 spec:
   type:
     - Microsoft.Resources/deployments
+  where:
+    field: rootDeployment
+    notEquals: true
   condition:
     allOf:
       - name: '.'
@@ -29,4 +32,5 @@ spec:
         lessOrEquals: 64
       - name: '.'
         match: '^[A-Za-z0-9-._()]{1,64}$'
+
 #endregion Rules

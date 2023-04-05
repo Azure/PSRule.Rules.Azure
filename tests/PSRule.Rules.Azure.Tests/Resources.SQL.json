@@ -10,6 +10,9 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Tags": null,
     "Properties": {
+      "administrators": {
+        "azureADOnlyAuthentication": false
+      },
       "fullyQualifiedDomainName": "server-A.database.windows.net",
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
@@ -136,6 +139,9 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Tags": null,
     "Properties": {
+      "administrators": {
+        "azureADOnlyAuthentication": true
+      },
       "fullyQualifiedDomainName": "server-B.database.windows.net",
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
@@ -292,6 +298,9 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Tags": null,
     "Properties": {
+      "administrators": {
+        "azureADOnlyAuthentication": null
+      },
       "fullyQualifiedDomainName": "server-C.database.windows.net",
       "administratorLogin": "db-admin",
       "administratorLoginPassword": null,
@@ -375,6 +384,55 @@
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Sql/servers/auditingSettings",
         "ResourceType": "Microsoft.Sql/servers/auditingSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "azureADOnlyAuthentication": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/azureADOnlyAuthentications",
+        "ResourceType": "Microsoft.Sql/servers/azureADOnlyAuthentications",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Name": "server-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-D",
+    "ResourceName": "server-D",
+    "ResourceType": "Microsoft.Sql/servers",
+    "Kind": "v12.0",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "administrators": {
+        "azureADOnlyAuthentication": null
+      },
+      "fullyQualifiedDomainName": "server-D.database.windows.net",
+      "administratorLogin": "db-admin",
+      "administratorLoginPassword": null,
+      "externalAdministratorLogin": null,
+      "externalAdministratorSid": null,
+      "version": "12.0",
+      "minimalTlsVersion": "1.0",
+      "publicNetworkAccess": "Enabled",
+      "state": "Ready"
+    },
+    "resources": [
+      {
+        "ResourceName": "Default",
+        "Name": "Default",
+        "Properties": {
+          "azureADOnlyAuthentication": true
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/azureADOnlyAuthentications",
+        "ResourceType": "Microsoft.Sql/servers",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
@@ -488,5 +546,33 @@
         "ETag": null
       }
     ]
+  },
+  {
+    "Name": "AzureADOnlyAuthentication-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-E/azureADOnlyAuthentications/AzureADOnlyAuthentication-A",
+    "ResourceName": "AzureADOnlyAuthentication-A",
+    "ResourceType": "Microsoft.Sql/servers/azureADOnlyAuthentications",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "azureADOnlyAuthentication": false
+    }
+  },
+  {
+    "Name": "AzureADOnlyAuthentication-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-F/azureADOnlyAuthentications/AzureADOnlyAuthentication-B",
+    "ResourceName": "AzureADOnlyAuthentication-B",
+    "ResourceType": "Microsoft.Sql/servers/azureADOnlyAuthentications",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "azureADOnlyAuthentication": true
+    }
   }
 ]
