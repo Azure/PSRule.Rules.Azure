@@ -30,6 +30,9 @@ What's changed since pre-release v1.26.0-B0011:
   - API Management:
     - Check that wildcard `*` for any configuration option in CORS policies settings is not in use by @BenjaminEngeset.
       [#2073](https://github.com/Azure/PSRule.Rules.Azure/issues/2073)
+  - Azure Kubernetes Service:
+    - Check that the Defender profile with Azure Kubernetes Service clusters are enabled by @BenjaminEngeset.
+      [#2123](https://github.com/Azure/PSRule.Rules.Azure/issues/2123)
   - Container App:
     - Check that internal-only ingress for container apps are configured by @BenjaminEngeset.
       [#2098](https://github.com/Azure/PSRule.Rules.Azure/issues/2098)
@@ -45,9 +48,11 @@ What's changed since pre-release v1.26.0-B0011:
       [#2120](https://github.com/Azure/PSRule.Rules.Azure/issues/2120)
     - Check that Azure AD-only authentication is enabled by @BenjaminEngeset.
       [#2118](https://github.com/Azure/PSRule.Rules.Azure/issues/2118)
+- Updated rules:
   - Azure Kubernetes Service:
-    - Check that the Defender profile with Azure Kubernetes Service clusters are enabled by @BenjaminEngeset.
-      [#2123](https://github.com/Azure/PSRule.Rules.Azure/issues/2123)
+    - Updated `Azure.AKS.Version` to use latest stable version `1.25.6` by @BernieWhite.
+      [#2136](https://github.com/Azure/PSRule.Rules.Azure/issues/2136)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
 - Bug fixes:
   - Fixed dependency issue of deployments across resource group scopes by @BernieWhite.
     [#2111](https://github.com/Azure/PSRule.Rules.Azure/issues/2111)
