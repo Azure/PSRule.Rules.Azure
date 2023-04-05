@@ -10624,6 +10624,11 @@
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2073">#2073</a></li>
 </ul>
 </li>
+<li>Azure Kubernetes Service:<ul>
+<li>Check that the Defender profile with Azure Kubernetes Service clusters are enabled by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2123">#2123</a></li>
+</ul>
+</li>
 <li>Container App:<ul>
 <li>Check that internal-only ingress for container apps are configured by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2098">#2098</a></li>
@@ -10645,9 +10650,15 @@
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2118">#2118</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li>Updated rules:<ul>
 <li>Azure Kubernetes Service:<ul>
-<li>Check that the Defender profile with Azure Kubernetes Service clusters are enabled by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
-  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2123">#2123</a></li>
+<li>Updated <code>Azure.AKS.Version</code> to use latest stable version <code>1.25.6</code> by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2136">#2136</a><ul>
+<li>Use <code>AZURE_AKS_CLUSTER_MINIMUM_VERSION</code> to configure the minimum version of the cluster.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -15160,7 +15171,7 @@ What's changed since v1.24.0:</p>
   <small>
     
       Last update:
-      2023-04-05
+      2023-04-06
     
   </small>
 </div>
