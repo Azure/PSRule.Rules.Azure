@@ -3,7 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: SQL Managed Instance
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQLMI.AADOnly/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.AADOnly/
 ---
 
 # Azure AD-only authentication
