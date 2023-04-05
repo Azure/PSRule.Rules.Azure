@@ -91,6 +91,13 @@ Rule 'Azure.SQL.ServerName' -Ref 'AZR-000190' -Type 'Microsoft.Sql/servers' -Tag
     $Assert.Match($PSRule, 'TargetName', '^[a-z0-9]([a-z0-9-]*[a-z0-9]){0,62}$', $True);
 }
 
+# Synopsis: Ensure Azure AD-only authentication is enabled with Azure SQL Database.
+Rule 'Azure.SQL.AADOnly' -Ref 'AZR-000369' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/azureADOnlyAuthentications' -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
+    $types = 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/azureADOnlyAuthentications'
+    $enabledAADOnly = @(GetAzureSQLADOnlyAuthentication -ResourceType $types | Where-Object { $_ })
+    $Assert.GreaterOrEqual($enabledAADOnly, '.', 1).Reason($LocalizedData.AzureADOnlyAuthentication)
+}
+
 #endregion SQL Logical Server
 
 #region SQL Database
