@@ -309,6 +309,25 @@ Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000365' -Type 'Microsoft.ApiManagement/se
     }
 }
 
+# Synopsis: 
+Rule 'Azure.APIM.PolicyBase' -Ref 'AZR-000371' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis', 'Microsoft.ApiManagement/service/apis/resolvers', 'Microsoft.ApiManagement/service/apis/operations', 'Microsoft.ApiManagement/service/apis/resolvers/policies', 'Microsoft.ApiManagement/service/products/policies', 'Microsoft.ApiManagement/service/apis/policies',
+'Microsoft.ApiManagement/service/apis/operations/policies' -If { $Null -ne (GetAPIMPolicyNode -Node 'policies') } -Tag @{ release = 'GA'; ruleSet = '2023_06'; } {
+    $policies = GetAPIMPolicyNode -Node 'policies'
+    foreach ($policy in $policies) {
+        Write-Debug "Got policy: $($policy.OuterXml)"
+        
+        $inboundSection = @($policy.inbound)
+        $Assert.HasField($inboundSection, 'base').Reason($LocalizedData.APIMPolicyBase).PathPrefix('resources')
+
+        $backendSection = @($policy.backend)
+        $Assert.HasField($backendSection, 'base').Reason($LocalizedData.APIMPolicyBase).PathPrefix('resources')
+
+        $outboundSection = @($policy.outbound)
+        $Assert.HasField($outboundSection, 'base').Reason($LocalizedData.APIMPolicyBase).PathPrefix('resources')
+
+        $onerrorSection = @($policy.'on-error')
+        $Assert.HasField($onerrorSection, 'base').Reason($LocalizedData.APIMPolicyBase).PathPrefix('resources')
+    } 
 #region Helper functions
 
 function global:IsPremiumAPIM {
