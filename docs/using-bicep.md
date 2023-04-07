@@ -188,17 +188,26 @@ Storing modules in a private registry gives you a central location to reference 
 To test Bicep deployments which uses modules stored in a private registry, these modules must be restored.
 The restore process automatically occurs when PSRule is run, however some additional steps are required to authenticate.
 
-To configure authentication to a private registry:
+To prepare your registry for storing Bicep modules see [Create private registry for Bicep modules][13].
+
+To configure authentication for PSRule to a private registry:
 
 - [Configure `bicepconfig.json`](#configure-bicepconfigjson)
 - [Granting access to a private registry](#granting-access-to-a-private-registry)
 - [Set pipeline environment variables](#set-pipeline-environment-variables)
 
-!!! Note
-    Currently it is not possible to connect to a private registry without any authentication.
-    See issue [#2015][10] for details on annoymous access.
+Some organizations may want to expose Bicep modules publically.
+This can be configured by enabling anonymous pull access.
+To configure your registry see [Make your container registry content publicly available][14].
 
-  [10]: https://github.com/Azure/PSRule.Rules.Azure/issues/2015
+!!! Note
+    To use anonymous pull access to a registry you must use a minimum of Bicep CLI version **0.15.31**.
+    You can configure PSRule to check for the minimum Bicep version.
+    See [configuring minimum version][10] for information on how to enable this check.
+
+  [13]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/private-module-registry
+  [14]: https://learn.microsoft.com/azure/container-registry/anonymous-pull-access
+  [10]: setup/setup-bicep.md#configuring-minimum-version
 
 ### Configure `bicepconfig.json`
 
@@ -261,7 +270,7 @@ Typically, the following three environment variables should be set:
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.7.0
+      uses: microsoft/ps-rule@v2.8.0
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
