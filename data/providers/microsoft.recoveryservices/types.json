@@ -52,6 +52,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-02-01",
       "2023-01-01",
       "2022-10-01",
       "2022-09-30-preview",
@@ -178,6 +179,7 @@
     "aliases": null,
     "resourceType": "locations/backupAadProperties",
     "apiVersions": [
+      "2023-01-15",
       "2021-11-15",
       "2018-12-20-preview",
       "2018-12-20"
@@ -226,6 +228,7 @@
     "aliases": null,
     "resourceType": "locations/backupCrossRegionRestore",
     "apiVersions": [
+      "2023-01-15",
       "2021-11-15",
       "2018-12-20-preview",
       "2018-12-20"
@@ -274,6 +277,7 @@
     "aliases": null,
     "resourceType": "locations/backupCrrJob",
     "apiVersions": [
+      "2023-01-15",
       "2021-11-15",
       "2018-12-20-preview",
       "2018-12-20"
@@ -322,6 +326,7 @@
     "aliases": null,
     "resourceType": "locations/backupCrrJobs",
     "apiVersions": [
+      "2023-01-15",
       "2021-11-15",
       "2018-12-20-preview",
       "2018-12-20"
@@ -370,6 +375,7 @@
     "aliases": null,
     "resourceType": "locations/backupCrrOperationResults",
     "apiVersions": [
+      "2023-01-15",
       "2021-11-15",
       "2018-12-20-preview",
       "2018-12-20"
@@ -418,6 +424,7 @@
     "aliases": null,
     "resourceType": "locations/backupCrrOperationsStatus",
     "apiVersions": [
+      "2023-01-15",
       "2021-11-15",
       "2018-12-20-preview",
       "2018-12-20"
@@ -466,6 +473,7 @@
     "aliases": null,
     "resourceType": "locations/backupPreValidateProtection",
     "apiVersions": [
+      "2023-02-01",
       "2023-01-01",
       "2022-10-01",
       "2022-09-30-preview",
@@ -531,6 +539,7 @@
     "aliases": null,
     "resourceType": "locations/backupStatus",
     "apiVersions": [
+      "2023-02-01",
       "2023-01-01",
       "2022-10-01",
       "2022-09-30-preview",
@@ -597,6 +606,7 @@
     "aliases": null,
     "resourceType": "locations/backupValidateFeatures",
     "apiVersions": [
+      "2023-02-01",
       "2023-01-01",
       "2022-10-01",
       "2022-09-30-preview",
@@ -662,6 +672,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-02-01",
       "2023-01-01",
       "2022-10-01",
       "2022-09-30-preview",
@@ -759,6 +770,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-02-01",
       "2023-01-01",
       "2022-10-01",
       "2022-09-30-preview",
@@ -817,6 +829,7 @@
     "aliases": null,
     "resourceType": "replicationEligibilityResults",
     "apiVersions": [
+      "2023-02-01",
       "2023-01-01",
       "2022-10-01",
       "2022-09-30-preview",
@@ -928,6 +941,9 @@
       "Microsoft.RecoveryServices/vaults/redundancySettings": "properties.redundancySettings",
       "Microsoft.RecoveryServices/vaults/redundancySettings.crossRegionRestore": "properties.redundancySettings.crossRegionRestore",
       "Microsoft.RecoveryServices/vaults/redundancySettings.standardTierStorageRedundancy": "properties.redundancySettings.standardTierStorageRedundancy",
+      "Microsoft.RecoveryServices/vaults/restoreSettings": "properties.restoreSettings",
+      "Microsoft.RecoveryServices/vaults/restoreSettings.crossSubscriptionRestoreSettings": "properties.restoreSettings.crossSubscriptionRestoreSettings",
+      "Microsoft.RecoveryServices/vaults/restoreSettings.crossSubscriptionRestoreSettings.crossSubscriptionRestoreState": "properties.restoreSettings.crossSubscriptionRestoreSettings.crossSubscriptionRestoreState",
       "Microsoft.RecoveryServices/vaults/securitySettings": "properties.securitySettings",
       "Microsoft.RecoveryServices/vaults/securitySettings.immutabilitySettings": "properties.securitySettings.immutabilitySettings",
       "Microsoft.RecoveryServices/vaults/securitySettings.immutabilitySettings.state": "properties.securitySettings.immutabilitySettings.state",
@@ -950,6 +966,7 @@
     },
     "resourceType": "vaults",
     "apiVersions": [
+      "2023-02-01",
       "2023-01-01",
       "2022-10-01",
       "2022-09-30-preview",
@@ -2001,6 +2018,7 @@
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails": "properties.providerSpecificDetails",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.instanceType": "properties.providerSpecificDetails.instanceType",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt": "properties.providerSpecificDetails",
+      "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.confidentialVmKeyVaultId": "properties.providerSpecificDetails.confidentialVmKeyVaultId",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.dataMoverRunAsAccountId": "properties.providerSpecificDetails.dataMoverRunAsAccountId",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.licenseType": "properties.providerSpecificDetails.licenseType",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.performAutoResync": "properties.providerSpecificDetails.performAutoResync",
@@ -2016,6 +2034,12 @@
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetProximityPlacementGroupId": "properties.providerSpecificDetails.targetProximityPlacementGroupId",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetResourceGroupId": "properties.providerSpecificDetails.targetResourceGroupId",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmName": "properties.providerSpecificDetails.targetVmName",
+      "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmSecurityProfile": "properties.providerSpecificDetails.targetVmSecurityProfile",
+      "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmSecurityProfile.isTargetVmConfidentialEncryptionEnabled": "properties.providerSpecificDetails.targetVmSecurityProfile.isTargetVmConfidentialEncryptionEnabled",
+      "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmSecurityProfile.isTargetVmIntegrityMonitoringEnabled": "properties.providerSpecificDetails.targetVmSecurityProfile.isTargetVmIntegrityMonitoringEnabled",
+      "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmSecurityProfile.isTargetVmSecureBootEnabled": "properties.providerSpecificDetails.targetVmSecurityProfile.isTargetVmSecureBootEnabled",
+      "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmSecurityProfile.isTargetVmTpmEnabled": "properties.providerSpecificDetails.targetVmSecurityProfile.isTargetVmTpmEnabled",
+      "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmSecurityProfile.targetVmSecurityType": "properties.providerSpecificDetails.targetVmSecurityProfile.targetVmSecurityType",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmSize": "properties.providerSpecificDetails.targetVmSize",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.targetVmTags": "properties.providerSpecificDetails.targetVmTags",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationMigrationItems/providerSpecificDetails.VMwareCbt.testNetworkId": "properties.providerSpecificDetails.testNetworkId",

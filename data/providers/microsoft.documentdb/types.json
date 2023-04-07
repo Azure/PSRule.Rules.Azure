@@ -32,6 +32,9 @@
     },
     "resourceType": "cassandraClusters",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -69,6 +72,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -92,6 +96,9 @@
     "aliases": null,
     "resourceType": "databaseAccountNames",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -262,6 +269,9 @@
     },
     "resourceType": "databaseAccounts",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -316,6 +326,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -339,6 +350,9 @@
     "aliases": null,
     "resourceType": "databaseAccounts/encryptionScopes",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -376,6 +390,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -399,6 +414,9 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -436,8 +454,26 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/checkMongoClusterNameAvailability",
+    "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-01-preview",
+      "2022-10-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -492,6 +528,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -513,8 +550,41 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/mongoClusterAzureAsyncOperation",
+    "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-01-preview",
+      "2022-10-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/mongoClusterOperationResults",
+    "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-01-preview",
+      "2022-10-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -569,6 +639,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -592,6 +663,9 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -646,6 +720,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -669,6 +744,9 @@
     "aliases": null,
     "resourceType": "locations/restorableDatabaseAccounts",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -708,6 +786,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -729,8 +808,26 @@
   },
   {
     "aliases": null,
+    "resourceType": "mongoClusters",
+    "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-01-preview",
+      "2022-10-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -770,6 +867,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -809,6 +909,9 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -848,6 +951,9 @@
     "aliases": null,
     "resourceType": "restorableDatabaseAccounts",
     "apiVersions": [
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
       "2022-11-15-preview",
       "2022-11-15",
       "2022-08-15-preview",
@@ -887,6 +993,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",

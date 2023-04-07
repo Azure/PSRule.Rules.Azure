@@ -25,6 +25,7 @@
     },
     "resourceType": "digitalTwinsInstances",
     "apiVersions": [
+      "2023-01-31",
       "2022-10-31",
       "2022-05-31",
       "2021-06-30-preview",
@@ -71,6 +72,7 @@
     },
     "resourceType": "digitalTwinsInstances/endpoints",
     "apiVersions": [
+      "2023-01-31",
       "2022-10-31",
       "2022-05-31",
       "2021-06-30-preview",
@@ -100,6 +102,7 @@
     "aliases": null,
     "resourceType": "digitalTwinsInstances/operationResults",
     "apiVersions": [
+      "2023-01-31",
       "2022-10-31",
       "2022-05-31",
       "2021-06-30-preview",
@@ -129,6 +132,7 @@
     "aliases": null,
     "resourceType": "digitalTwinsInstances/timeSeriesDatabaseConnections",
     "apiVersions": [
+      "2023-01-31",
       "2022-10-31",
       "2022-05-31",
       "2021-06-30-preview"
@@ -155,6 +159,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-08-31-preview",
       "2023-01-31",
       "2022-10-31",
       "2022-05-31",
@@ -170,6 +175,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-01-31",
       "2022-10-31",
       "2022-05-31",
       "2021-06-30-preview",
@@ -199,6 +205,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-01-31",
       "2022-10-31",
       "2022-05-31",
       "2021-06-30-preview",
@@ -228,6 +235,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatuses",
     "apiVersions": [
+      "2023-01-31",
       "2022-10-31",
       "2022-05-31",
       "2021-06-30-preview",
@@ -257,6 +265,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-08-31-preview",
+      "2023-01-31",
       "2022-10-31",
       "2022-05-31",
       "2021-06-30-preview",

@@ -87,6 +87,23 @@
   },
   {
     "aliases": null,
+    "resourceType": "alertRuleRecommendations",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Germany West Central",
+      "Global",
+      "North Central US",
+      "North Europe",
+      "Sweden Central",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "alerts",
     "apiVersions": [
       "2019-05-05-preview",
@@ -152,6 +169,7 @@
     "aliases": null,
     "resourceType": "prometheusRuleGroups",
     "apiVersions": [
+      "2023-03-01",
       "2021-07-22-preview"
     ],
     "locations": [

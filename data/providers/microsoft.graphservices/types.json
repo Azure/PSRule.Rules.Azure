@@ -1,0 +1,44 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2022-09-22-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-09-22-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationstatuses",
+    "apiVersions": [
+      "2022-09-22-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-09-22-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

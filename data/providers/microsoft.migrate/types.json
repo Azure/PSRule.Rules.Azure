@@ -31,8 +31,10 @@
     },
     "resourceType": "assessmentProjects",
     "apiVersions": [
+      "2023-03-03",
       "2022-02-02-preview",
       "2020-05-01-preview",
+      "2020-01-01",
       "2019-10-01",
       "2019-05-01",
       "2018-06-30-preview"
@@ -54,6 +56,7 @@
       "Korea South",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South India",
       "Southeast Asia",
@@ -135,6 +138,7 @@
       "Korea Central",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "Southeast Asia",
       "Switzerland North",
       "UAE North",
@@ -198,6 +202,7 @@
       "Korea South",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South India",
       "Southeast Asia",
@@ -208,6 +213,39 @@
       "UK West",
       "West Europe",
       "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "modernizeProjects",
+    "apiVersions": [
+      "2022-05-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "East Asia",
+      "France Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -247,6 +285,7 @@
       "Korea Central",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "Southeast Asia",
       "Switzerland North",
       "UAE North",

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview"
     ],
@@ -23,8 +25,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "onboard",
+    "apiVersions": [
+      "2023-02-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview",
       "2022-05-10-beta"
@@ -36,6 +48,7 @@
     "aliases": null,
     "resourceType": "reports",
     "apiVersions": [
+      "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview",
       "2022-05-10-beta"
@@ -47,9 +60,28 @@
     "aliases": null,
     "resourceType": "reports/snapshots",
     "apiVersions": [
+      "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview",
       "2022-05-10-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "reports/webhooks",
+    "apiVersions": [
+      "2023-02-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "triggerEvaluation",
+    "apiVersions": [
+      "2023-02-15-preview"
     ],
     "locations": [],
     "zoneMappings": null

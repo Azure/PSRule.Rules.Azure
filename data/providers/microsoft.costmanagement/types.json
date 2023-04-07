@@ -167,6 +167,7 @@
     "aliases": null,
     "resourceType": "Exports",
     "apiVersions": [
+      "2023-04-01-preview",
       "2022-10-01",
       "2021-10-01",
       "2021-01-01",
@@ -401,6 +402,15 @@
     "resourceType": "Insights",
     "apiVersions": [
       "2020-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "MarkupRules",
+    "apiVersions": [
+      "2022-10-05-preview"
     ],
     "locations": [],
     "zoneMappings": null
