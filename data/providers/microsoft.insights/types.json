@@ -78,6 +78,7 @@
     },
     "resourceType": "actiongroups",
     "apiVersions": [
+      "2023-01-01",
       "2022-06-01",
       "2022-04-01",
       "2021-09-01",
@@ -349,6 +350,7 @@
     },
     "resourceType": "autoscalesettings",
     "apiVersions": [
+      "2023-01-01-preview",
       "2022-10-01",
       "2021-05-01-preview",
       "2015-04-01",
@@ -380,6 +382,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2050,6 +2053,7 @@
     "aliases": null,
     "resourceType": "createnotifications",
     "apiVersions": [
+      "2023-01-01",
       "2022-06-01",
       "2022-04-01",
       "2021-09-01"
@@ -2071,6 +2075,7 @@
     },
     "resourceType": "dataCollectionEndpoints",
     "apiVersions": [
+      "2022-06-01",
       "2021-09-01-preview",
       "2021-04-01"
     ],
@@ -2188,6 +2193,7 @@
     },
     "resourceType": "dataCollectionRuleAssociations",
     "apiVersions": [
+      "2022-06-01",
       "2021-09-01-preview",
       "2021-04-01",
       "2019-11-01-preview"
@@ -2299,6 +2305,7 @@
     },
     "resourceType": "dataCollectionRules",
     "apiVersions": [
+      "2022-06-01",
       "2021-09-01-preview",
       "2021-04-01",
       "2019-11-01-preview"
@@ -2412,6 +2419,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2466,6 +2474,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2541,6 +2550,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2895,6 +2905,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -2950,6 +2961,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -3012,6 +3024,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -3123,6 +3136,7 @@
     "aliases": null,
     "resourceType": "notificationstatus",
     "apiVersions": [
+      "2023-01-01",
       "2022-06-01",
       "2022-04-01",
       "2021-09-01"
@@ -3384,6 +3398,7 @@
     },
     "resourceType": "scheduledqueryrules",
     "apiVersions": [
+      "2023-03-15-preview",
       "2022-08-01-preview",
       "2022-06-15",
       "2021-08-01",
@@ -3408,6 +3423,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -3421,6 +3437,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -3437,6 +3454,15 @@
       "West US 2",
       "West US 3"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "tenantactiongroups",
+    "apiVersions": [
+      "2023-03-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {

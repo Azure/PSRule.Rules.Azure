@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkDomainAvailability",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -26,6 +27,7 @@
     "aliases": null,
     "resourceType": "domains",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -49,6 +51,7 @@
     "aliases": null,
     "resourceType": "domains/domainOwnershipIdentifiers",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -72,6 +75,7 @@
     "aliases": null,
     "resourceType": "generateSsoRequest",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -95,6 +99,7 @@
     "aliases": null,
     "resourceType": "listDomainRecommendations",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -118,6 +123,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -141,6 +147,7 @@
     "aliases": null,
     "resourceType": "topLevelDomains",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -164,6 +171,7 @@
     "aliases": null,
     "resourceType": "validateDomainRegistrationInformation",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",

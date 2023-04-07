@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Identities",
     "apiVersions": [
+      "2023-01-31",
       "2022-01-31-PREVIEW",
       "2021-09-30-PREVIEW",
       "2018-11-30",
@@ -42,7 +43,9 @@
       "North Europe",
       "Norway",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
+      "Singapore",
       "South Africa",
       "South Africa North",
       "South Africa West",
@@ -72,6 +75,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-01-31",
       "2022-01-31-PREVIEW",
       "2021-09-30-PREVIEW",
       "2018-11-30",
@@ -99,6 +103,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -129,6 +134,7 @@
     },
     "resourceType": "userAssignedIdentities",
     "apiVersions": [
+      "2023-01-31",
       "2022-01-31-PREVIEW",
       "2021-09-30-PREVIEW",
       "2018-11-30",
@@ -156,6 +162,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -186,6 +193,7 @@
     },
     "resourceType": "userAssignedIdentities/federatedIdentityCredentials",
     "apiVersions": [
+      "2023-01-31",
       "2022-01-31-PREVIEW"
     ],
     "locations": [
@@ -210,6 +218,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "availableStacks",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -80,6 +81,7 @@
     "aliases": null,
     "resourceType": "billingMeters",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -185,6 +187,7 @@
     },
     "resourceType": "certificates",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -263,6 +266,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -818,6 +822,7 @@
     "aliases": null,
     "resourceType": "customhostnameSites",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -892,6 +897,7 @@
     "aliases": null,
     "resourceType": "deletedSites",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -969,6 +975,7 @@
     "aliases": null,
     "resourceType": "deploymentLocations",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -1045,6 +1052,7 @@
     "aliases": null,
     "resourceType": "functionAppStacks",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -1106,6 +1114,7 @@
     "aliases": null,
     "resourceType": "generateGithubAccessTokenForAppserviceCLI",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -1168,6 +1177,7 @@
     "aliases": null,
     "resourceType": "georegions",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -1321,6 +1331,7 @@
     },
     "resourceType": "hostingEnvironments",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -1576,6 +1587,7 @@
     "aliases": null,
     "resourceType": "hostingEnvironments/eventGridFilters",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -1708,6 +1720,7 @@
     },
     "resourceType": "hostingEnvironments/multiRolePools",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -1814,6 +1827,7 @@
     },
     "resourceType": "hostingEnvironments/workerPools",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -1894,6 +1908,7 @@
     "aliases": null,
     "resourceType": "ishostingenvironmentnameavailable",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -1925,6 +1940,7 @@
     "aliases": null,
     "resourceType": "ishostnameavailable",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2002,6 +2018,7 @@
     "aliases": null,
     "resourceType": "isusernameavailable",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2126,6 +2143,7 @@
     "aliases": null,
     "resourceType": "listSitesAssignedToHostName",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2322,6 +2340,7 @@
     "aliases": null,
     "resourceType": "locations/deletedSites",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2399,6 +2418,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2534,6 +2554,7 @@
     "aliases": null,
     "resourceType": "locations/functionAppStacks",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2595,6 +2616,7 @@
     "aliases": null,
     "resourceType": "locations/getNetworkPolicies",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2707,6 +2729,7 @@
     "aliases": null,
     "resourceType": "locations/managedApis",
     "apiVersions": [
+      "2022-09-01-preview",
       "2018-07-01-preview",
       "2018-03-01-preview",
       "2016-06-01",
@@ -2763,6 +2786,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2832,6 +2856,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2901,6 +2926,7 @@
     "aliases": null,
     "resourceType": "locations/previewStaticSiteWorkflowFile",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -2982,6 +3008,7 @@
     "aliases": null,
     "resourceType": "locations/validateDeleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3062,6 +3089,7 @@
     "aliases": null,
     "resourceType": "locations/webAppStacks",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3123,6 +3151,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3213,6 +3242,7 @@
     },
     "resourceType": "publishingUsers",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3290,6 +3320,7 @@
     "aliases": null,
     "resourceType": "recommendations",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3321,6 +3352,7 @@
     "aliases": null,
     "resourceType": "resourceHealthMetadata",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3352,6 +3384,7 @@
     "aliases": null,
     "resourceType": "runtimes",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3435,6 +3468,7 @@
     },
     "resourceType": "serverFarms",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3514,6 +3548,7 @@
     "aliases": null,
     "resourceType": "serverFarms/eventGridFilters",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3595,6 +3630,7 @@
     "aliases": null,
     "resourceType": "serverFarms/firstPartyApps",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -3676,6 +3712,7 @@
     "aliases": null,
     "resourceType": "serverFarms/firstPartyApps/keyVaultSettings",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -4075,6 +4112,7 @@
     },
     "resourceType": "sites",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -4158,6 +4196,7 @@
     "aliases": null,
     "resourceType": "sites/eventGridFilters",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -4254,6 +4293,7 @@
     },
     "resourceType": "sites/hostNameBindings",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -4333,6 +4373,7 @@
     },
     "resourceType": "sites/networkConfig",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -4417,6 +4458,7 @@
     },
     "resourceType": "sites/premieraddons",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -4824,6 +4866,7 @@
     },
     "resourceType": "sites/slots",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -4906,6 +4949,7 @@
     "aliases": null,
     "resourceType": "sites/slots/eventGridFilters",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5001,6 +5045,7 @@
     },
     "resourceType": "sites/slots/hostNameBindings",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5080,6 +5125,7 @@
     },
     "resourceType": "sites/slots/networkConfig",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5160,6 +5206,7 @@
     },
     "resourceType": "sourceControls",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5406,6 +5453,7 @@
     },
     "resourceType": "staticSites",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5432,6 +5480,34 @@
     "aliases": null,
     "resourceType": "staticSites/builds",
     "apiVersions": [
+      "2022-09-01",
+      "2022-03-01",
+      "2021-03-01",
+      "2021-02-01",
+      "2021-01-15",
+      "2021-01-01",
+      "2020-12-01",
+      "2020-10-01",
+      "2020-09-01",
+      "2020-06-01",
+      "2019-12-01-preview",
+      "2019-08-01"
+    ],
+    "locations": [
+      "Central US",
+      "East Asia",
+      "East Asia (Stage)",
+      "East US 2",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "staticSites/builds/databaseConnections",
+    "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5463,6 +5539,7 @@
     },
     "resourceType": "staticSites/builds/linkedBackends",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5493,12 +5570,40 @@
     },
     "resourceType": "staticSites/builds/userProvidedFunctionApps",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
       "2021-01-15",
       "2021-01-01",
       "2020-12-01"
+    ],
+    "locations": [
+      "Central US",
+      "East Asia",
+      "East Asia (Stage)",
+      "East US 2",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "staticSites/databaseConnections",
+    "apiVersions": [
+      "2022-09-01",
+      "2022-03-01",
+      "2021-03-01",
+      "2021-02-01",
+      "2021-01-15",
+      "2021-01-01",
+      "2020-12-01",
+      "2020-10-01",
+      "2020-09-01",
+      "2020-06-01",
+      "2019-12-01-preview",
+      "2019-08-01"
     ],
     "locations": [
       "Central US",
@@ -5519,6 +5624,7 @@
     },
     "resourceType": "staticSites/linkedBackends",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5549,6 +5655,7 @@
     },
     "resourceType": "staticSites/userProvidedFunctionApps",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5570,6 +5677,7 @@
     "aliases": null,
     "resourceType": "validate",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5645,6 +5753,7 @@
     "aliases": null,
     "resourceType": "verifyHostingEnvironmentVnet",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",
@@ -5722,6 +5831,7 @@
     "aliases": null,
     "resourceType": "webAppStacks",
     "apiVersions": [
+      "2022-09-01",
       "2022-03-01",
       "2021-03-01",
       "2021-02-01",

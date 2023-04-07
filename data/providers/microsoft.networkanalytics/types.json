@@ -28,8 +28,36 @@
   },
   {
     "aliases": null,
+    "resourceType": "MetricsIngestionEndpoints",
+    "apiVersions": [
+      "2023-04-30-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "North Europe",
+      "South Central US",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2022-11-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2023-03-31-preview",
       "2022-11-15-preview"
     ],
     "locations": [],

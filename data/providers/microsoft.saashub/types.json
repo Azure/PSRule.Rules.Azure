@@ -1,0 +1,31 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "cloudServices",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationStatuses",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

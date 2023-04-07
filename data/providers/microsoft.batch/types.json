@@ -241,6 +241,7 @@
       "Microsoft.Batch/batchAccounts/pools/creationTime": "properties.creationTime",
       "Microsoft.Batch/batchAccounts/pools/currentDedicatedNodes": "properties.currentDedicatedNodes",
       "Microsoft.Batch/batchAccounts/pools/currentLowPriorityNodes": "properties.currentLowPriorityNodes",
+      "Microsoft.Batch/batchAccounts/pools/currentNodeCommunicationMode": "properties.currentNodeCommunicationMode",
       "Microsoft.Batch/batchAccounts/pools/deploymentConfiguration": "properties.deploymentConfiguration",
       "Microsoft.Batch/batchAccounts/pools/deploymentConfiguration.cloudServiceConfiguration": "properties.deploymentConfiguration.cloudServiceConfiguration",
       "Microsoft.Batch/batchAccounts/pools/deploymentConfiguration.cloudServiceConfiguration.currentOSVersion": "properties.deploymentConfiguration.cloudServiceConfiguration.currentOSVersion",
@@ -415,6 +416,7 @@
       "Microsoft.Batch/batchAccounts/pools/startTask.userIdentity.autoUser.scope": "properties.startTask.userIdentity.autoUser.scope",
       "Microsoft.Batch/batchAccounts/pools/startTask.userIdentity.userName": "properties.startTask.userIdentity.userName",
       "Microsoft.Batch/batchAccounts/pools/startTask.waitForSuccess": "properties.startTask.waitForSuccess",
+      "Microsoft.Batch/batchAccounts/pools/targetNodeCommunicationMode": "properties.targetNodeCommunicationMode",
       "Microsoft.Batch/batchAccounts/pools/taskSchedulingPolicy": "properties.taskSchedulingPolicy",
       "Microsoft.Batch/batchAccounts/pools/taskSchedulingPolicy.nodeFillType": "properties.taskSchedulingPolicy.nodeFillType",
       "Microsoft.Batch/batchAccounts/pools/taskSlotsPerNode": "properties.taskSlotsPerNode",
@@ -897,6 +899,7 @@
       "Microsoft.Batch/batchAccounts/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
       "Microsoft.Batch/batchAccounts/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
       "Microsoft.Batch/batchAccounts/privateEndpointConnections/privateLinkServiceConnectionState.actionRequired": "properties.privateLinkServiceConnectionState.actionRequired",
+      "Microsoft.Batch/batchAccounts/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
       "Microsoft.Batch/batchAccounts/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
       "Microsoft.Batch/batchAccounts/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
       "Microsoft.Batch/batchAccounts/privateEndpointConnections/provisioningState": "properties.provisioningState"

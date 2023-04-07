@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-02-01-preview",
+      "2022-12-01-preview",
       "2022-09-01-preview",
       "2021-05-01-preview"
     ],
@@ -40,18 +42,16 @@
       "South Africa North",
       "South Africa West",
       "South Central US",
-      "South India",
       "SouthEast Asia",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
-      "UAE Central",
       "UAE North",
       "UK South",
       "UK West",
+      "United States",
       "West Central US",
       "West Europe",
-      "West India",
       "West US",
       "West US 2",
       "West US 3"

@@ -1,13 +1,36 @@
 [
   {
     "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
       "2023-01-01-preview"
     ],
     "locations": [
+      "Korea Central",
       "South Central US",
       "Southeast Asia"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "global"
     ],
     "zoneMappings": null
   }

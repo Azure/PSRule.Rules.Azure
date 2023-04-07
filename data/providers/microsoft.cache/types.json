@@ -26,6 +26,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-06-01",
       "2022-05-01",
@@ -83,6 +84,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -106,6 +108,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
@@ -174,6 +177,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -197,6 +201,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
@@ -228,6 +233,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-06-01",
       "2022-05-01",
@@ -336,6 +342,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -464,6 +471,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
         "zones": [
           "1",
           "2",
@@ -609,6 +624,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -664,6 +680,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -716,6 +733,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -776,6 +794,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -828,6 +847,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -874,6 +894,7 @@
     },
     "resourceType": "redisEnterprise",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
@@ -1033,6 +1054,7 @@
     },
     "resourceType": "redisEnterprise/databases",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
@@ -1064,6 +1086,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
@@ -1095,6 +1118,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/operationresults",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
@@ -1126,6 +1150,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
@@ -1165,6 +1190,7 @@
     },
     "resourceType": "RedisEnterprise/privateEndpointConnections",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
@@ -1196,6 +1222,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnections/operationresults",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",
@@ -1227,6 +1254,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateLinkResources",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
       "2021-08-01",

@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "clusters",
     "apiVersions": [
+      "2023-03-01",
+      "2023-02-01",
       "2022-12-01",
       "2022-10-01",
       "2022-09-01",
@@ -16,7 +18,9 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "East US",
+      "Japan East",
       "South Central US",
       "Southeast Asia",
       "West Europe"
@@ -27,6 +31,8 @@
     "aliases": null,
     "resourceType": "clusters/arcSettings",
     "apiVersions": [
+      "2023-03-01",
+      "2023-02-01",
       "2022-12-01",
       "2022-10-01",
       "2022-09-01",
@@ -39,7 +45,9 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "East US",
+      "Japan East",
       "South Central US",
       "Southeast Asia",
       "West Europe"
@@ -50,6 +58,8 @@
     "aliases": null,
     "resourceType": "clusters/arcSettings/extensions",
     "apiVersions": [
+      "2023-03-01",
+      "2023-02-01",
       "2022-12-01",
       "2022-10-01",
       "2022-09-01",
@@ -62,7 +72,9 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "East US",
+      "Japan East",
       "South Central US",
       "Southeast Asia",
       "West Europe"
@@ -78,7 +90,9 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "East US",
+      "Japan East",
       "South Central US",
       "Southeast Asia",
       "West Europe"
@@ -94,7 +108,9 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "East US",
+      "Japan East",
       "South Central US",
       "Southeast Asia",
       "West Europe"
@@ -110,7 +126,9 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "East US",
+      "Japan East",
       "South Central US",
       "Southeast Asia",
       "West Europe"
@@ -126,7 +144,9 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "East US",
+      "Japan East",
       "South Central US",
       "Southeast Asia",
       "West Europe"
@@ -135,7 +155,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "GalleryImages",
+    "resourceType": "galleryImages",
     "apiVersions": [
       "2021-09-01-preview",
       "2021-07-01-preview"
@@ -151,6 +171,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-03-01",
+      "2023-02-01",
       "2022-12-15-preview",
       "2022-12-01",
       "2022-10-01",
@@ -173,6 +195,8 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-03-01",
+      "2023-02-01",
       "2022-12-15-preview",
       "2022-12-01",
       "2022-11-01-preview",
@@ -218,7 +242,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "networkinterfaces",
+    "resourceType": "networkInterfaces",
     "apiVersions": [
       "2021-09-01-preview",
       "2021-07-01-preview"
@@ -234,6 +258,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-03-01",
+      "2023-02-01",
       "2022-12-15-preview",
       "2022-12-01",
       "2022-10-01",
@@ -257,6 +283,8 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2023-03-01",
+      "2023-02-01",
       "2022-12-01",
       "2022-10-01",
       "2022-09-01"
@@ -279,7 +307,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "virtualharddisks",
+    "resourceType": "virtualHardDisks",
     "apiVersions": [
       "2021-09-01-preview",
       "2021-07-01-preview"
@@ -293,7 +321,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "virtualmachines",
+    "resourceType": "virtualMachines",
     "apiVersions": [
       "2021-09-01-preview",
       "2021-07-01-preview"
@@ -333,7 +361,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "virtualnetworks",
+    "resourceType": "virtualNetworks",
     "apiVersions": [
       "2021-09-01-preview",
       "2021-07-01-preview"
