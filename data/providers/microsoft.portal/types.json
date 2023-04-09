@@ -7,6 +7,7 @@
     },
     "resourceType": "consoles",
     "apiVersions": [
+      "2023-02-01-preview",
       "2020-04-01-preview",
       "2018-10-01",
       "2017-12-01-preview",
@@ -161,6 +162,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-02-01-preview",
       "2020-04-01-preview",
       "2018-10-01",
       "2017-12-01-preview",
@@ -174,6 +176,7 @@
     "aliases": null,
     "resourceType": "locations/consoles",
     "apiVersions": [
+      "2023-02-01-preview",
       "2020-04-01-preview",
       "2018-10-01",
       "2017-12-01-preview",
@@ -197,6 +200,7 @@
     "aliases": null,
     "resourceType": "locations/userSettings",
     "apiVersions": [
+      "2023-02-01-preview",
       "2020-04-01-preview",
       "2018-10-01",
       "2017-12-01-preview",
@@ -342,6 +346,7 @@
     },
     "resourceType": "userSettings",
     "apiVersions": [
+      "2023-02-01-preview",
       "2020-04-01-preview",
       "2018-10-01",
       "2017-12-01-preview",

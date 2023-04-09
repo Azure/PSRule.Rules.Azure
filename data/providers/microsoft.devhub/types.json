@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-10-11-preview",
       "2022-04-01-preview"
     ],
     "locations": [],
@@ -10,8 +11,62 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/generatePreviewArtifacts",
+    "apiVersions": [
+      "2022-10-11-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Japan East",
+      "Japan West",
+      "Jio India Central",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/githuboauth",
     "apiVersions": [
+      "2022-10-11-preview",
       "2022-04-01-preview"
     ],
     "locations": [
@@ -65,6 +120,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-10-11-preview",
       "2022-04-01-preview"
     ],
     "locations": [
@@ -76,6 +132,7 @@
     "aliases": null,
     "resourceType": "workflows",
     "apiVersions": [
+      "2022-10-11-preview",
       "2022-04-01-preview"
     ],
     "locations": [

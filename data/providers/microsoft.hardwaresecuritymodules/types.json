@@ -14,6 +14,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-08-31-preview",
       "2021-11-30",
       "2018-10-31-preview",
       "2018-10-31"
@@ -24,6 +25,7 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "Central US EUAP",
       "East Asia",
       "East US",
       "East US 2",

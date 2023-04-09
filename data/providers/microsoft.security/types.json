@@ -125,6 +125,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "apiCollections",
+    "apiVersions": [
+      "2022-11-20-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "applications",
     "apiVersions": [
       "2022-07-01-preview"
@@ -580,6 +589,66 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "dataScanners",
+    "apiVersions": [
+      "2021-12-01-preview"
+    ],
+    "locations": [
+      "Central US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "defenderForStorageSettings",
+    "apiVersions": [
+      "2022-12-01-preview",
+      "2017-08-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Security/deviceSecurityGroups/allowlistRules": "properties.allowlistRules",
       "Microsoft.Security/deviceSecurityGroups/allowlistRules[*]": "properties.allowlistRules[*]",
@@ -719,6 +788,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Switzerland North",
       "UAE Central",
       "UAE North",
       "UK South",
@@ -727,7 +797,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -766,6 +837,15 @@
     "resourceType": "governanceRules",
     "apiVersions": [
       "2022-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "healthReports",
+    "apiVersions": [
+      "2023-02-01-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -865,6 +945,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Switzerland North",
       "UAE Central",
       "UAE North",
       "UK South",
@@ -873,7 +954,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -914,6 +996,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Switzerland North",
       "UAE Central",
       "UAE North",
       "UK South",
@@ -922,7 +1005,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -963,6 +1047,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Switzerland North",
       "UAE Central",
       "UAE North",
       "UK South",
@@ -971,7 +1056,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1012,6 +1098,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Switzerland North",
       "UAE Central",
       "UAE North",
       "UK South",
@@ -1020,7 +1107,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1060,6 +1148,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Switzerland North",
       "UAE Central",
       "UAE North",
       "UK South",
@@ -1068,7 +1157,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1108,6 +1198,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Switzerland North",
       "UAE Central",
       "UAE North",
       "UK South",
@@ -1116,7 +1207,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1156,6 +1248,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Switzerland North",
       "UAE Central",
       "UAE North",
       "UK South",
@@ -1164,7 +1257,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1204,6 +1298,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Switzerland North",
       "UAE Central",
       "UAE North",
       "UK South",
@@ -1212,7 +1307,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1691,6 +1787,7 @@
     "aliases": null,
     "resourceType": "securityConnectors",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-08-01-preview",
       "2022-05-01-preview",
       "2021-12-01-preview",
@@ -1826,6 +1923,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "sensitivitySettings",
+    "apiVersions": [
+      "2023-02-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "serverVulnerabilityAssessments",
     "apiVersions": [
       "2020-01-01",
@@ -1877,6 +1983,7 @@
     "aliases": null,
     "resourceType": "sqlVulnerabilityAssessments",
     "apiVersions": [
+      "2023-02-01-preview",
       "2020-07-01-preview"
     ],
     "locations": [

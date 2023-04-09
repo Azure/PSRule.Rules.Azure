@@ -29,6 +29,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Updated `Azure.APIM.EncryptValues` to check all API Management named values are encrypted with Key Vault secrets @BenjaminEngeset.
       [#2146](https://github.com/Azure/PSRule.Rules.Azure/issues/2146)
 
+What's changed since pre-release v1.26.0-B0040:
+
+- Engineering:
+  - Updated resource providers and policy aliases.
+    [#2144](https://github.com/Azure/PSRule.Rules.Azure/pull/2144)
+
+## v1.26.0-B0040 (pre-release)
+
 What's changed since pre-release v1.26.0-B0011:
 
 - New features:

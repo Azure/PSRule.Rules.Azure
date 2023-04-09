@@ -23,6 +23,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -68,6 +69,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -100,6 +102,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -132,6 +135,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -260,6 +264,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
         "zones": [
           "1",
           "2",
@@ -379,6 +391,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -411,6 +424,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -539,6 +553,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
         "zones": [
           "1",
           "2",
@@ -729,6 +751,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -857,6 +880,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
         "zones": [
           "1",
           "2",
@@ -986,6 +1017,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1034,6 +1066,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1084,6 +1117,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1132,6 +1166,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1182,6 +1217,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1220,6 +1256,7 @@
     },
     "resourceType": "diskAccesses",
     "apiVersions": [
+      "2023-01-02",
       "2022-07-02",
       "2022-03-02",
       "2021-12-01",
@@ -1252,6 +1289,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1302,6 +1340,7 @@
     },
     "resourceType": "diskEncryptionSets",
     "apiVersions": [
+      "2023-01-02",
       "2022-07-02",
       "2022-03-02",
       "2021-12-01",
@@ -1336,6 +1375,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1459,6 +1499,7 @@
     },
     "resourceType": "disks",
     "apiVersions": [
+      "2023-01-02",
       "2022-07-02",
       "2022-03-02",
       "2021-12-01",
@@ -1499,6 +1540,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1627,6 +1669,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
         "zones": [
           "1",
           "2",
@@ -1823,6 +1873,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1898,6 +1949,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2033,6 +2085,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2123,6 +2176,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2262,6 +2316,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2295,6 +2350,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -2331,6 +2387,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2459,6 +2516,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
         "zones": [
           "1",
           "2",
@@ -2578,6 +2643,7 @@
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -2614,6 +2680,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2742,6 +2809,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
         "zones": [
           "1",
           "2",
@@ -2879,6 +2954,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -2921,6 +2997,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -2944,6 +3021,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -3047,6 +3125,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3096,6 +3175,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3145,6 +3225,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3168,6 +3249,7 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-03",
@@ -3216,6 +3298,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3266,6 +3349,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3381,6 +3465,7 @@
     "aliases": null,
     "resourceType": "locations/diskoperations",
     "apiVersions": [
+      "2023-01-02",
       "2022-07-02",
       "2022-03-02",
       "2021-12-01",
@@ -3421,6 +3506,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3444,6 +3530,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -3460,6 +3547,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -3491,6 +3579,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3514,6 +3603,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/vmimages",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -3545,6 +3635,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3602,6 +3693,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3625,6 +3717,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -3664,6 +3757,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3687,6 +3781,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -3733,6 +3828,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3756,6 +3852,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-03",
@@ -3804,6 +3901,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3827,6 +3925,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -3855,6 +3954,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3878,6 +3978,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -3918,6 +4019,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -3941,6 +4043,7 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-03",
@@ -3989,6 +4092,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -4012,6 +4116,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -4044,6 +4149,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -4067,6 +4173,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -4099,6 +4206,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -4122,6 +4230,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -4167,6 +4276,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -4190,6 +4300,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -4231,6 +4342,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -4254,6 +4366,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -4295,6 +4408,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -4318,6 +4432,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -4363,6 +4478,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -4386,6 +4502,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -4430,6 +4547,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -4493,6 +4611,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -4531,6 +4650,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -4659,6 +4779,14 @@
       },
       {
         "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
         "zones": [
           "1",
           "2",
@@ -4885,6 +5013,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -4925,6 +5054,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -5068,6 +5198,7 @@
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -5108,6 +5239,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -5131,6 +5263,7 @@
     "aliases": null,
     "resourceType": "restorePointCollections/restorePoints/diskRestorePoints",
     "apiVersions": [
+      "2023-01-02",
       "2022-07-02",
       "2022-03-02",
       "2021-12-01",
@@ -5161,6 +5294,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -5344,6 +5478,7 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2023-01-02",
       "2022-07-02",
       "2022-03-02",
       "2021-12-01",
@@ -5384,6 +5519,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -5409,6 +5545,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -5442,6 +5579,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -5717,6 +5855,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -5762,6 +5901,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -5897,6 +6037,14 @@
         ]
       },
       {
+        "location": "Poland Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Qatar Central",
         "zones": [
           "1",
@@ -5994,6 +6142,7 @@
     "aliases": null,
     "resourceType": "virtualMachines/applications",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -6022,6 +6171,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -6076,6 +6226,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -6121,6 +6272,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -6168,6 +6320,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -6211,6 +6364,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -6244,6 +6398,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -6570,6 +6725,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -6616,6 +6772,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -6751,6 +6908,14 @@
         ]
       },
       {
+        "location": "Poland Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Qatar Central",
         "zones": [
           "1",
@@ -6848,6 +7013,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/applications",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -6876,6 +7042,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -6918,6 +7085,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -6964,6 +7132,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -6987,6 +7156,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -7035,6 +7205,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -7058,6 +7229,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -7098,6 +7270,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -7210,7 +7383,6 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].enableAcceleratedNetworking": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.enableAcceleratedNetworking",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfileConfiguration.networkInterfaceConfigurations[*].enableFpga": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.enableFpga",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].enableIPForwarding": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.enableIPForwarding",
-      "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].id": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*]": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*]",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].applicationGatewayBackendAddressPools": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.applicationGatewayBackendAddressPools",
@@ -7219,7 +7391,6 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].applicationSecurityGroups": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.applicationSecurityGroups",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].applicationSecurityGroups[*]": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.applicationSecurityGroups[*]",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].applicationSecurityGroups[*].id": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.applicationSecurityGroups[*].id",
-      "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].id": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].loadBalancerBackendAddressPools": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.loadBalancerBackendAddressPools",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].loadBalancerBackendAddressPools[*]": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.loadBalancerBackendAddressPools[*]",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].loadBalancerBackendAddressPools[*].id": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.loadBalancerBackendAddressPools[*].id",
@@ -7387,6 +7558,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -7433,6 +7605,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -7471,6 +7644,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -7517,6 +7691,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -7540,6 +7715,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2023-03-01",
       "2022-11-01",
       "2022-08-01",
       "2022-03-01",
@@ -7588,6 +7764,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",

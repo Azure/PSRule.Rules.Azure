@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-01-26-preview",
       "2022-09-08-preview",
       "2022-05-13",
       "2021-05-13-preview",
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "Ledgers",
     "apiVersions": [
+      "2023-01-26-preview",
       "2022-09-08-preview",
       "2022-05-13",
       "2021-05-13-preview",
@@ -31,6 +33,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-01-26-preview",
       "2022-09-08-preview",
       "2022-05-13",
       "2021-05-13-preview",
@@ -73,6 +76,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-01-26-preview",
       "2022-09-08-preview",
       "2022-05-13",
       "2021-05-13-preview",

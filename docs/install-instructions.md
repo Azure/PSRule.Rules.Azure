@@ -24,7 +24,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.7.0
+      uses: microsoft/ps-rule@v2.8.0
       with:
         modules: 'PSRule.Rules.Azure'
     ```
@@ -35,7 +35,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.7.0
+      uses: microsoft/ps-rule@v2.8.0
       with:
         modules: 'PSRule.Rules.Azure'
         prerelease: true
@@ -232,8 +232,7 @@ If the `./build.ps1` script fails, you can start troubleshooting this by:
 - Checking the prerequisites are installed installed (and the specific versions)
   - Check the **PowerShell** version enter the following statement in the PowerShell terminal: `$PSVersionTable.PSVersion`
   - Check the installed **.NET** version by entering the `dotnet --list-sdks` command in your terminal.
-- Check if your .NET setup is connected to any Nuget repositories and if there's any 
-connectivity or authentication issues.
+- Check if your .NET setup is connected to any Nuget repositories and if there's any connectivity or authentication issues.
 - Installation of some pre-reqs may require admin privileges.
 
 ### Limited access networks

@@ -204,6 +204,7 @@
     },
     "resourceType": "containerGroups",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -224,6 +225,7 @@
       "2017-08-01-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -235,6 +237,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -246,6 +250,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -257,6 +262,7 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
@@ -267,6 +273,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -293,6 +300,7 @@
     "aliases": null,
     "resourceType": "locations/cachedImages",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -313,6 +321,7 @@
       "2017-08-01-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -324,6 +333,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -335,6 +346,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -346,6 +358,7 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
@@ -356,6 +369,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -376,6 +390,7 @@
       "2017-08-01-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -387,6 +402,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -398,6 +415,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -409,6 +427,7 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
@@ -419,6 +438,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -440,6 +460,7 @@
       "2017-08-01-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -451,6 +472,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -462,6 +485,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -473,6 +497,7 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
@@ -483,6 +508,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -503,6 +529,7 @@
       "2017-08-01-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -514,6 +541,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -525,6 +554,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -536,6 +566,7 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
@@ -546,6 +577,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -566,6 +598,7 @@
       "2017-08-01-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -577,6 +610,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -588,6 +623,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -599,6 +635,7 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
@@ -609,6 +646,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -629,6 +667,7 @@
       "2017-08-01-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -640,6 +679,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -651,6 +692,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -662,6 +704,7 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
@@ -672,6 +715,7 @@
     "aliases": null,
     "resourceType": "locations/validateDeleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -693,6 +737,7 @@
       "2017-08-01-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -704,6 +749,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -715,6 +762,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -726,6 +774,7 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
@@ -736,6 +785,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -762,6 +812,7 @@
     "aliases": null,
     "resourceType": "serviceAssociationLinks",
     "apiVersions": [
+      "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-09-01",
       "2022-04-01-preview",
@@ -782,6 +833,7 @@
       "2017-08-01-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -793,6 +845,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -804,6 +858,7 @@
       "Norway West",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -815,6 +870,7 @@
       "UK West",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"

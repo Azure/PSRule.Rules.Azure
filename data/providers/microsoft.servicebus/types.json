@@ -262,9 +262,7 @@
       "2021-06-01-preview",
       "2021-01-01-preview",
       "2018-01-01-preview",
-      "2017-04-01",
-      "2015-08-01",
-      "2014-09-01"
+      "2017-04-01"
     ],
     "locations": [],
     "zoneMappings": null
@@ -316,6 +314,32 @@
       "West US 2",
       "West US 3"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.migrationState": "properties.migrationState",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.pendingReplicationOperationsCount": "properties.pendingReplicationOperationsCount",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.postMigrationName": "properties.postMigrationName",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.provisioningState": "properties.provisioningState",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.targetNamespace": "properties.targetNamespace",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/migrationState": "properties.migrationState",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/pendingReplicationOperationsCount": "properties.pendingReplicationOperationsCount",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/postMigrationName": "properties.postMigrationName",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/provisioningState": "properties.provisioningState",
+      "Microsoft.ServiceBus/namespaces/migrationConfigurations/targetNamespace": "properties.targetNamespace"
+    },
+    "resourceType": "namespaces/migrationConfigurations",
+    "apiVersions": [
+      "2022-10-01-preview",
+      "2022-01-01-preview",
+      "2021-11-01",
+      "2021-06-01-preview",
+      "2021-01-01-preview",
+      "2018-01-01-preview",
+      "2017-04-01"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {
@@ -799,21 +823,6 @@
       "Microsoft.ServiceBus/namespaces/messagingPlan/updatedAt": "properties.updatedAt"
     },
     "resourceType": "namespaces/messagingplan"
-  },
-  {
-    "aliases": {
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.migrationState": "properties.migrationState",
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.pendingReplicationOperationsCount": "properties.pendingReplicationOperationsCount",
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.postMigrationName": "properties.postMigrationName",
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.provisioningState": "properties.provisioningState",
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/$default.targetNamespace": "properties.targetNamespace",
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/migrationState": "properties.migrationState",
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/pendingReplicationOperationsCount": "properties.pendingReplicationOperationsCount",
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/postMigrationName": "properties.postMigrationName",
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/provisioningState": "properties.provisioningState",
-      "Microsoft.ServiceBus/namespaces/migrationConfigurations/targetNamespace": "properties.targetNamespace"
-    },
-    "resourceType": "namespaces/migrationconfigurations"
   },
   {
     "aliases": {
