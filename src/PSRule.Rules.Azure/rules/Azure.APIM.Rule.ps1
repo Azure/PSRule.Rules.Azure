@@ -5,6 +5,8 @@
 # Validation rules for API Management
 #
 
+#region Rules
+
 # Synopsis: Enforce HTTPS for communication to API clients.
 Rule 'Azure.APIM.HTTPEndpoint' -Ref 'AZR-000042' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
@@ -79,19 +81,18 @@ Rule 'Azure.APIM.HTTPBackend' -Ref 'AZR-000044' -Type 'Microsoft.ApiManagement/s
     }
 }
 
-# Synopsis: Encrypt all named values
-Rule 'Azure.APIM.EncryptValues' -Ref 'AZR-000045' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-8', 'DP-7') } {
-    $properties = @($TargetObject);
+# Synopsis: Encrypt all API Management named values with Key Vault secrets.
+Rule 'Azure.APIM.EncryptValues' -Ref 'AZR-000045' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/namedValues' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('IM-8', 'DP-7') } {
+    $namedValues = @($TargetObject)
     if ($PSRule.TargetType -eq 'Microsoft.ApiManagement/service') {
-        $properties = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/properties', 'Microsoft.ApiManagement/service/namedValues');
+        $namedValues = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/namedValues')
     }
-    if ($properties.Length -eq 0) {
-        return $Assert.Pass();
+    if ($namedValues.Count -eq 0) {
+        $Assert.Pass()
     }
-    foreach ($property in $properties) {
-        $Assert.
-        HasFieldValue($property, 'properties.secret', $True).
-        WithReason(($LocalizedData.APIMSecretNamedValues -f $property.name), $True);
+    foreach ($value in $namedValues) {
+        $Assert.HasField($value, 'properties.keyVault.secretIdentifier').
+        Reason($LocalizedData.APIMSecretNamedValues, $value.name)
     }
 }
 
@@ -309,6 +310,8 @@ Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000365' -Type 'Microsoft.ApiManagement/se
     }
 }
 
+#endregion Rules
+
 #region Helper functions
 
 function global:IsPremiumAPIM {
@@ -333,7 +336,9 @@ function global:GetAPIMPolicyNode {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
-        [string]$Node
+        [string]$Node,
+        [Parameter()]
+        [switch]$GlobalPolicy
     )
     process {
         $policies = @($TargetObject)
