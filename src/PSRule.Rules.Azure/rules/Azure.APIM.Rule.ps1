@@ -327,7 +327,9 @@ Rule 'Azure.APIM.PolicyBase' -Ref 'AZR-000371' -Type 'Microsoft.ApiManagement/se
 
         $onerrorSection = @($policy.'on-error')
         $Assert.HasField($onerrorSection, 'base').Reason($LocalizedData.APIMPolicyBase).PathPrefix('resources')
-    } 
+    }
+}
+
 #region Helper functions
 
 function global:IsPremiumAPIM {
@@ -361,7 +363,7 @@ function global:GetAPIMPolicyNode {
             Write-Debug "[GetAPIMPolicyNode] - Found $($policies.Count) policy nodes."
         }
         $policies | ForEach-Object {
-            if ($_.properties.format -in 'rawxml', 'xml' -and $_.properties.value) {
+            if ($_.type -ne 'Microsoft.ApiManagement/service/policies' -and $_.properties.format -in 'rawxml', 'xml' -and $_.properties.value) {
                 $xml = [Xml]$_.properties.value
                 $xml.SelectNodes("//${Node}")
             }
