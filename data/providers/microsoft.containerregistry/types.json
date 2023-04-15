@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -65,6 +67,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -229,6 +233,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -340,6 +346,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -613,6 +621,8 @@
     },
     "resourceType": "registries",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -1133,6 +1143,57 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "registries/cacheRules",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India Central",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.ContainerRegistry/registries/connectedRegistries/activation": "properties.activation",
       "Microsoft.ContainerRegistry/registries/connectedRegistries/activation.status": "properties.activation.status",
@@ -1174,6 +1235,7 @@
     },
     "resourceType": "registries/connectedRegistries",
     "apiVersions": [
+      "2023-01-01-preview",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-08-01-preview",
@@ -1229,6 +1291,7 @@
     "aliases": null,
     "resourceType": "registries/connectedRegistries/deactivate",
     "apiVersions": [
+      "2023-01-01-preview",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-08-01-preview",
@@ -1282,8 +1345,60 @@
   },
   {
     "aliases": null,
+    "resourceType": "registries/credentialSets",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India Central",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "registries/eventGridFilters",
     "apiVersions": [
+      "2022-12-01",
       "2019-05-01",
       "2017-10-01"
     ],
@@ -1344,6 +1459,7 @@
     },
     "resourceType": "registries/exportPipelines",
     "apiVersions": [
+      "2023-01-01-preview",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-08-01-preview",
@@ -1400,6 +1516,8 @@
     "aliases": null,
     "resourceType": "registries/generateCredentials",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-08-01-preview",
@@ -1521,6 +1639,8 @@
     "aliases": null,
     "resourceType": "registries/importImage",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -1591,6 +1711,7 @@
     },
     "resourceType": "registries/importPipelines",
     "apiVersions": [
+      "2023-01-01-preview",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-08-01-preview",
@@ -1700,6 +1821,8 @@
     "aliases": null,
     "resourceType": "registries/listCredentials",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -1811,6 +1934,8 @@
     "aliases": null,
     "resourceType": "registries/listUsages",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -1905,6 +2030,7 @@
     },
     "resourceType": "registries/pipelineRuns",
     "apiVersions": [
+      "2023-01-01-preview",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-08-01-preview",
@@ -1961,6 +2087,8 @@
     "aliases": null,
     "resourceType": "registries/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -2018,6 +2146,8 @@
     "aliases": null,
     "resourceType": "registries/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -2083,6 +2213,8 @@
     },
     "resourceType": "registries/privateEndpointConnections",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -2140,6 +2272,8 @@
     "aliases": null,
     "resourceType": "registries/privateLinkResources",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -2248,6 +2382,8 @@
     "aliases": null,
     "resourceType": "registries/regenerateCredential",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -2330,6 +2466,8 @@
     },
     "resourceType": "registries/replications",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -2608,6 +2746,8 @@
     },
     "resourceType": "registries/scopeMaps",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-08-01-preview",
@@ -3125,6 +3265,8 @@
     },
     "resourceType": "registries/tokens",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-08-01-preview",
@@ -3237,6 +3379,8 @@
     },
     "resourceType": "registries/webhooks",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -3296,6 +3440,8 @@
     "aliases": null,
     "resourceType": "registries/webhooks/getCallbackConfig",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -3355,6 +3501,8 @@
     "aliases": null,
     "resourceType": "registries/webhooks/listEvents",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",
@@ -3414,6 +3562,8 @@
     "aliases": null,
     "resourceType": "registries/webhooks/ping",
     "apiVersions": [
+      "2023-01-01-preview",
+      "2022-12-01",
       "2022-02-01-preview",
       "2021-12-01-preview",
       "2021-09-01",

@@ -32,7 +32,7 @@ Within the root directory of your infrastructure as code repository:
 
         # Analyze Azure resources using PSRule for Azure
         - name: Analyze Azure template files
-          uses: microsoft/ps-rule@v2.7.0
+          uses: microsoft/ps-rule@v2.8.0
           with:
             modules: 'PSRule.Rules.Azure'
     ```
@@ -83,12 +83,13 @@ For a full list of parameters see the readme for [GitHub Actions][6] or [Azure P
 ### Limiting input to a specific path
 
 By default, PSRule will scan all files and folders within the repository or current working path.
-You can use the `inputPath` parameter to limit the analysis to a specific path.
+You can use the `inputPath` parameter to limit the analysis to a specific file or directory path.
 
 !!! Tip
     The `inputPath` parameter only accepts a relative path.
+    Both file and directory paths are supported.
     For example: `azure/modules/` if you have a `azure/modules/` directory in the root of your repository.
-    Becareful not to specify a leading `/` such as `/azure/modules/`.
+    Be careful not to specify a leading `/` such as `/azure/modules/`.
     On Linux `/` is the root directory, which makes this a fully qualified path instead of a relative path.
 
 === "GitHub Actions"
@@ -96,7 +97,7 @@ You can use the `inputPath` parameter to limit the analysis to a specific path.
     ```yaml hl_lines="6"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.7.0
+      uses: microsoft/ps-rule@v2.8.0
       with:
         modules: 'PSRule.Rules.Azure'
         inputPath: azure/modules/
@@ -136,7 +137,7 @@ See [working with baselines][8] for more information.
     ```yaml hl_lines="6"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.7.0
+      uses: microsoft/ps-rule@v2.8.0
       with:
         modules: 'PSRule.Rules.Azure'
         baseline: Azure.GA_2022_12
@@ -176,7 +177,7 @@ To do this, configure the PSRule for Azure step to _continue on error_.
     ```yaml hl_lines="4"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.7.0
+      uses: microsoft/ps-rule@v2.8.0
       continue-on-error: true
       with:
         modules: 'PSRule.Rules.Azure'
@@ -215,7 +216,7 @@ You can add additional modules to the `modules` parameter by using comma (`,`) s
     ```yaml hl_lines="5"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.7.0
+      uses: microsoft/ps-rule@v2.8.0
       with:
         modules: 'PSRule.Rules.Azure,PSRule.Monitor'
     ```
@@ -249,7 +250,7 @@ For details on the formats that are supported see [analysis output][9].
     ```yaml hl_lines="6-7"
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.7.0
+      uses: microsoft/ps-rule@v2.8.0
       with:
         modules: 'PSRule.Rules.Azure'
         outputFormat: Sarif

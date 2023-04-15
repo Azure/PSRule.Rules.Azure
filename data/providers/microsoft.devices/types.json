@@ -38,6 +38,7 @@
     "aliases": null,
     "resourceType": "checkProvisioningServiceNameAvailability",
     "apiVersions": [
+      "2022-12-12",
       "2022-02-05",
       "2021-10-15",
       "2020-03-01",
@@ -574,6 +575,7 @@
     "aliases": null,
     "resourceType": "locations/provisioningServiceOperationResults",
     "apiVersions": [
+      "2022-12-12",
       "2022-02-05",
       "2021-10-15",
       "2020-03-01",
@@ -696,6 +698,7 @@
     "aliases": null,
     "resourceType": "provisioningServiceOperationResults",
     "apiVersions": [
+      "2022-12-12",
       "2022-02-05",
       "2021-10-15",
       "2020-09-01-preview",
@@ -769,6 +772,7 @@
     },
     "resourceType": "ProvisioningServices",
     "apiVersions": [
+      "2022-12-12",
       "2022-02-05",
       "2021-10-15",
       "2020-03-01",

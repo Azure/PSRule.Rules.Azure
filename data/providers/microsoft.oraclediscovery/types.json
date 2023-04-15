@@ -1,18 +1,7 @@
 [
   {
     "aliases": null,
-    "resourceType": "locations",
-    "apiVersions": [
-      "2022-11-22-preview"
-    ],
-    "locations": [
-      "global"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/operationStatuses",
+    "resourceType": "operations",
     "apiVersions": [
       "2022-11-22-preview"
     ],

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "availableEngineVersions",
     "apiVersions": [
+      "2023-03-02-preview",
       "2022-11-08",
       "2020-10-05-privatepreview"
     ],
@@ -43,6 +44,7 @@
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
+      "2022-05-01-preview",
       "2022-03-08-privatepreview",
       "2022-03-08-preview",
       "2022-01-20-preview",
@@ -82,6 +84,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -178,6 +181,7 @@
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
+      "2022-05-01-preview",
       "2022-03-08-privatepreview",
       "2022-03-08-preview",
       "2022-01-20-preview",
@@ -190,6 +194,7 @@
       "2020-02-14-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -477,6 +482,7 @@
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
+      "2022-05-01-preview",
       "2022-03-08-privatepreview",
       "2022-03-08-preview",
       "2022-01-20-preview",
@@ -487,6 +493,7 @@
       "2020-02-14-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -534,6 +541,7 @@
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
+      "2022-05-01-preview",
       "2022-03-08-privatepreview",
       "2022-03-08-preview",
       "2022-01-20-preview",
@@ -544,6 +552,7 @@
       "2020-02-14-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -587,8 +596,20 @@
   {
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
-    "apiVersions": [],
+    "apiVersions": [
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-05-01-privatepreview",
+      "2022-05-01-preview",
+      "2022-03-08-preview",
+      "2021-06-01-preview",
+      "2021-06-01",
+      "2020-11-05-preview",
+      "2020-02-14-privatepreview",
+      "2020-02-14-preview"
+    ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -1261,6 +1282,7 @@
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
+      "2022-05-01-preview",
       "2022-03-08-preview",
       "2022-01-20-preview",
       "2021-06-01-preview",
@@ -1296,6 +1318,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -1322,6 +1345,7 @@
     "aliases": null,
     "resourceType": "serverGroupsv2",
     "apiVersions": [
+      "2023-03-02-preview",
       "2022-11-08",
       "2020-10-05-privatepreview"
     ],
@@ -2044,15 +2068,21 @@
   },
   {
     "aliases": {
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/cancel": "properties.cancel",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus": "properties.currentStatus",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails": "properties.currentStatus.currentSubStateDetails",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.currentSubState": "properties.currentStatus.currentSubStateDetails.currentSubState",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.error": "properties.currentStatus.error",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.state": "properties.currentStatus.state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToCancelMigrationOn": "properties.dBsToCancelMigrationOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToCancelMigrationOn[*]": "properties.dBsToCancelMigrationOn[*]",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToMigrate": "properties.dBsToMigrate",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToMigrate[*]": "properties.dBsToMigrate[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToTiggerCutoverOn": "properties.dBsToTiggerCutoverOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToTiggerCutoverOn[*]": "properties.dBsToTiggerCutoverOn[*]",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationDetailsLevel": "properties.migrationDetailsLevel",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationId": "properties.migrationId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationMode": "properties.migrationMode",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationName": "properties.migrationName",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup": "properties.migrationResourceGroup",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup.resourceId": "properties.migrationResourceGroup.resourceId",
@@ -2068,6 +2098,7 @@
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.sourceServerPassword": "properties.secretParameters.adminCredentials.sourceServerPassword",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.targetServerPassword": "properties.secretParameters.adminCredentials.targetServerPassword",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/setupLogicalReplicationOnSourceDBIfNeeded": "properties.setupLogicalReplicationOnSourceDBIfNeeded",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerFullyQualifiedDomainName": "properties.sourceDBServerFullyQualifiedDomainName",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata": "properties.sourceDBServerMetadata",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.location": "properties.sourceDBServerMetadata.location",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku": "properties.sourceDBServerMetadata.sku",
@@ -2077,6 +2108,7 @@
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.version": "properties.sourceDBServerMetadata.version",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerResourceId": "properties.sourceDBServerResourceId",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/startDataMigration": "properties.startDataMigration",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerFullyQualifiedDomainName": "properties.targetDBServerFullyQualifiedDomainName",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata": "properties.targetDBServerMetadata",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.location": "properties.targetDBServerMetadata.location",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku": "properties.targetDBServerMetadata.sku",
@@ -2089,6 +2121,20 @@
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/userAssignedIdentityResourceId": "properties.userAssignedIdentityResourceId"
     },
     "resourceType": "flexibleservers/migrations"
+  },
+  {
+    "aliases": {
+      "Microsoft.DBforPostgreSQL/serverGroupsv2/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.DBforPostgreSQL/serverGroupsv2/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
+      "Microsoft.DBforPostgreSQL/serverGroupsv2/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.DBforPostgreSQL/serverGroupsv2/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.DBforPostgreSQL/serverGroupsv2/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.DBforPostgreSQL/serverGroupsv2/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DBforPostgreSQL/serverGroupsv2/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DBforPostgreSQL/serverGroupsv2/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DBforPostgreSQL/serverGroupsv2/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "servergroupsv2/privateendpointconnections"
   },
   {
     "aliases": {

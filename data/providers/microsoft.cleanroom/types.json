@@ -1,18 +1,18 @@
 [
   {
     "aliases": null,
-    "resourceType": "NotebookProxies",
+    "resourceType": "Locations",
     "apiVersions": [
-      "2019-10-11-preview"
+      "2022-12-31-preview"
     ],
     "locations": [],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "operations",
+    "resourceType": "Operations",
     "apiVersions": [
-      "2019-10-11-preview"
+      "2022-12-31-preview"
     ],
     "locations": [],
     "zoneMappings": null

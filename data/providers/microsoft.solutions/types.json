@@ -78,6 +78,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -185,6 +186,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -256,6 +258,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -362,8 +365,7 @@
       "2018-03-01",
       "2018-02-01",
       "2017-12-01",
-      "2017-09-01",
-      "2016-09-01-preview"
+      "2017-09-01"
     ],
     "locations": [
       "Australia Central",
@@ -387,6 +389,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",

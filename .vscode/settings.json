@@ -16,6 +16,9 @@
   "editor.detectIndentation": false,
   "files.insertFinalNewline": true,
   "yaml.format.singleQuote": true,
+  "[markdown]": {
+    "editor.formatOnSave": false
+  },
   "[arm-template]": {
     "editor.tabSize": 4,
     "editor.defaultFormatter": "msazurermtools.azurerm-vscode-tools"

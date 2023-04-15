@@ -1,28 +1,31 @@
 [
   {
     "aliases": null,
-    "resourceType": "communities",
+    "resourceType": "catalogs",
     "apiVersions": [
-      "2022-12-07-preview",
-      "2022-10-31-preview"
+      "2023-02-01-preview"
     ],
     "locations": [
       "East US",
       "North Central US",
-      "West US"
+      "South Central US",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "communities/virtualEnclaves",
+    "resourceType": "communities",
     "apiVersions": [
-      "2022-10-31-preview"
+      "2023-02-01-preview"
     ],
     "locations": [
       "East US",
       "North Central US",
-      "West US"
+      "South Central US",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -30,9 +33,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
-      "2022-12-07-preview",
-      "2022-10-31-preview",
-      "2022-08-02-preview"
+      "2023-02-01-preview"
     ],
     "locations": [
       "global"
@@ -43,15 +44,15 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
-      "2022-12-07-preview",
-      "2022-10-31-preview",
-      "2022-08-02-preview"
+      "2023-02-01-preview"
     ],
     "locations": [
       "East US",
       "North Central US",
+      "South Central US",
       "West Central US",
-      "West US"
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -59,9 +60,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
-      "2022-12-07-preview",
-      "2022-10-31-preview",
-      "2022-08-02-preview"
+      "2023-02-01-preview"
     ],
     "locations": [
       "global"
@@ -71,12 +70,30 @@
   {
     "aliases": null,
     "resourceType": "virtualEnclaves",
-    "apiVersions": [],
+    "apiVersions": [
+      "2023-02-01-preview"
+    ],
     "locations": [
       "East US",
       "North Central US",
-      "West Central US",
-      "West US"
+      "South Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualEnclaves/workloads",
+    "apiVersions": [
+      "2023-02-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   }

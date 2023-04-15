@@ -50,6 +50,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string TYPE_KUSTO_CLUSTER = "Microsoft.Kusto/Clusters";
         private const string TYPE_EVENTHUB_NAMESPACE = "Microsoft.EventHub/namespaces";
         private const string TYPE_SERVICEBUS_NAMESPACE = "Microsoft.ServiceBus/namespaces";
+        private const string TYPE_VISUALSTUDIO_ACCOUNT = "Microsoft.VisualStudio/account";
 
         private const string PROVIDERTYPE_DIAGNOSTICSETTINGS = "/providers/microsoft.insights/diagnosticSettings";
         private const string PROVIDERTYPE_ROLEASSIGNMENTS = "/providers/Microsoft.Authorization/roleAssignments";
@@ -65,8 +66,8 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string APIVERSION_2021_11_01 = "2021-11-01";
         private const string APIVERSION_2014_04_01 = "2014-04-01";
         private const string APIVERSION_2017_12_01 = "2017-12-01";
-        private const string APIVERSION_2021_08_01 = "2021-08-01";
         private const string APIVERSION_2022_07_01 = "2022-07-01";
+        private const string APIVERSION_2022_08_01 = "2022-08-01";
 
         private readonly ProviderData _ProviderData;
 
@@ -116,6 +117,10 @@ namespace PSRule.Rules.Azure.Pipeline.Export
 
             // Set the subscription Id.
             SetSubscriptionId(resource, resourceId);
+
+            // Ignore expand of these.
+            if (string.Equals(resourceType, TYPE_VISUALSTUDIO_ACCOUNT, StringComparison.OrdinalIgnoreCase))
+                return true;
 
             // Expand properties for the resource.
             await GetProperties(resourceContext, resource, resourceType, resourceId);
@@ -440,34 +445,71 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                 return false;
 
             // APIs
-            var apis = await GetSubResourcesByType(context, resourceId, "apis", APIVERSION_2021_08_01);
+            var apis = await GetSubResourcesByType(context, resourceId, "apis", APIVERSION_2022_08_01);
             AddSubResource(resource, apis);
+            foreach (var api in apis)
+            {
+                var apiResourceId = api[PROPERTY_ID].Value<string>();
+                var apiType = api[PROPERTY_TYPE].Value<string>();
+                var isGraphQL = string.Equals(apiType, "graphql");
 
-            var backends = await GetSubResourcesByType(context, resourceId, "backends", APIVERSION_2021_08_01);
+                // Get policies for each API
+                AddSubResource(resource, await GetSubResourcesByType(context, apiResourceId, "policies", APIVERSION_2022_08_01));
+
+                if (!isGraphQL)
+                {
+                    // Get each operation
+                    var operations = await GetSubResourcesByType(context, apiResourceId, "operations", APIVERSION_2022_08_01);
+                    foreach (var operation in operations)
+                    {
+                        AddSubResource(resource, await GetSubResourcesByType(context, operation[PROPERTY_ID].Value<string>(), "policies", APIVERSION_2022_08_01));
+                    }
+                }
+
+                // Get each resolver
+                if (isGraphQL)
+                {
+                    var resolvers = await GetSubResourcesByType(context, apiResourceId, "resolvers", APIVERSION_2022_08_01);
+                    foreach (var resolver in resolvers)
+                    {
+                        AddSubResource(resource, await GetSubResourcesByType(context, resolver[PROPERTY_ID].Value<string>(), "policies", APIVERSION_2022_08_01));
+                    }
+                }
+            }
+
+            var backends = await GetSubResourcesByType(context, resourceId, "backends", APIVERSION_2022_08_01);
             AddSubResource(resource, backends);
 
-            var products = await GetSubResourcesByType(context, resourceId, "products", APIVERSION_2021_08_01);
+            var products = await GetSubResourcesByType(context, resourceId, "products", APIVERSION_2022_08_01);
             AddSubResource(resource, products);
+            foreach (var product in products)
+            {
+                // Get policies for each product
+                AddSubResource(resource, await GetSubResourcesByType(context, product[PROPERTY_ID].Value<string>(), "policies", APIVERSION_2022_08_01));
+            }
 
-            var policies = await GetSubResourcesByType(context, resourceId, "policies", APIVERSION_2021_08_01);
+            var policies = await GetSubResourcesByType(context, resourceId, "policies", APIVERSION_2022_08_01);
             AddSubResource(resource, policies);
 
-            var identityProviders = await GetSubResourcesByType(context, resourceId, "identityProviders", APIVERSION_2021_08_01);
+            var identityProviders = await GetSubResourcesByType(context, resourceId, "identityProviders", APIVERSION_2022_08_01);
             AddSubResource(resource, identityProviders);
 
-            var diagnostics = await GetSubResourcesByType(context, resourceId, "diagnostics", APIVERSION_2021_08_01);
+            var diagnostics = await GetSubResourcesByType(context, resourceId, "diagnostics", APIVERSION_2022_08_01);
             AddSubResource(resource, diagnostics);
 
-            var loggers = await GetSubResourcesByType(context, resourceId, "loggers", APIVERSION_2021_08_01);
+            var loggers = await GetSubResourcesByType(context, resourceId, "loggers", APIVERSION_2022_08_01);
             AddSubResource(resource, loggers);
 
-            var certificates = await GetSubResourcesByType(context, resourceId, "certificates", APIVERSION_2021_08_01);
+            var certificates = await GetSubResourcesByType(context, resourceId, "certificates", APIVERSION_2022_08_01);
             AddSubResource(resource, certificates);
 
-            var namedValues = await GetSubResourcesByType(context, resourceId, "namedValues", APIVERSION_2021_08_01);
+            var namedValues = await GetSubResourcesByType(context, resourceId, "namedValues", APIVERSION_2022_08_01);
             AddSubResource(resource, namedValues);
 
-            var portalSettings = await GetSubResourcesByType(context, resourceId, "portalsettings", APIVERSION_2021_08_01);
+            var authorizationServers = await GetSubResourcesByType(context, resourceId, "authorizationServers", APIVERSION_2022_08_01);
+            AddSubResource(resource, authorizationServers);
+
+            var portalSettings = await GetSubResourcesByType(context, resourceId, "portalsettings", APIVERSION_2022_08_01);
             AddSubResource(resource, portalSettings);
 
             return true;
