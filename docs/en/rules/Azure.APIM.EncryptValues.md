@@ -86,10 +86,11 @@ resource apimNamedValue 'Microsoft.ApiManagement/service/namedValues@2022-08-01'
 
 ## NOTES
 
-Using Key Vault secrets requires to enable a system-assigned or user-assigned managed identity in the API Management instance and the identity needs permissions to get and list secrets from the Key Vault. Also make sure to read the `Prerequisites for key vault integration` section in links.
+Using Key Vault secrets requires a system-assigned or user-assigned managed identity assigned to the API Management instance.
+The identity needs permissions to get and list secrets from the Key Vault. Also make sure to read the `Prerequisites for key vault integration` section in links.
 
 ## LINKS
 
-- [Use named values in Azure API Management policies](https://learn.microsoft.com/azure/api-management/api-management-howto-properties)
+- [Key storage](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-keys#key-storage)
 - [Prerequisites for key vault integration](https://learn.microsoft.com/azure/api-management/api-management-howto-properties?tabs=azure-portal#prerequisites-for-key-vault-integration)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/namedvalues#keyvaultcontractcreatepropertiesorkeyvaultcontractpr)
