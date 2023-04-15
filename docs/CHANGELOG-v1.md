@@ -29,6 +29,9 @@ What's changed since pre-release v1.26.0-B0040:
 - Engineering:
   - Updated resource providers and policy aliases.
     [#2144](https://github.com/Azure/PSRule.Rules.Azure/pull/2144)
+- Bug fixes:
+  - Fixed false positives for `Azure.AppService.AlwaysOn` with Functions and Workflows by @BernieWhite.
+    [#943](https://github.com/Azure/PSRule.Rules.Azure/issues/943)
 
 ## v1.26.0-B0040 (pre-release)
 
