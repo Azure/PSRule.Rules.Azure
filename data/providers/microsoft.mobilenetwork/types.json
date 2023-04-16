@@ -5,9 +5,7 @@
     "apiVersions": [
       "2022-12-01-privatepreview",
       "2022-11-01",
-      "2022-04-01-preview",
-      "2022-03-01-preview",
-      "2021-04-01-preview"
+      "2022-04-01-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -18,9 +16,7 @@
     "apiVersions": [
       "2022-12-01-privatepreview",
       "2022-11-01",
-      "2022-04-01-preview",
-      "2022-03-01-preview",
-      "2021-04-01-preview"
+      "2022-04-01-preview"
     ],
     "locations": [
       "Central US EUAP",
@@ -37,9 +33,7 @@
     "apiVersions": [
       "2022-12-01-privatepreview",
       "2022-11-01",
-      "2022-04-01-preview",
-      "2022-03-01-preview",
-      "2021-04-01-preview"
+      "2022-04-01-preview"
     ],
     "locations": [],
     "zoneMappings": null

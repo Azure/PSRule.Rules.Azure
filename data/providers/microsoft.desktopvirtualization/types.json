@@ -21,6 +21,9 @@
     },
     "resourceType": "applicationgroups",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -80,6 +83,9 @@
     },
     "resourceType": "applicationgroups/applications",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -127,6 +133,9 @@
     },
     "resourceType": "applicationgroups/desktops",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -171,6 +180,9 @@
     "aliases": null,
     "resourceType": "applicationgroups/startmenuitems",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -273,6 +285,9 @@
     },
     "resourceType": "hostpools",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -341,6 +356,9 @@
     },
     "resourceType": "hostpools/msixpackages",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -389,6 +407,9 @@
     },
     "resourceType": "hostpools/sessionhosts",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -433,6 +454,9 @@
     "aliases": null,
     "resourceType": "hostpools/sessionhosts/usersessions",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -477,6 +501,9 @@
     "aliases": null,
     "resourceType": "hostpools/usersessions",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -521,8 +548,13 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-03-21-privatepreview",
+      "2023-03-03-privatepreview",
+      "2023-01-28-privatepreview",
+      "2022-12-09-privatepreview",
       "2022-10-14-preview",
       "2022-09-09",
+      "2022-09-01-privatepreview",
       "2022-08-09-privatepreview",
       "2022-07-05-preview",
       "2022-06-03-privatepreview",
@@ -553,6 +585,9 @@
     "aliases": null,
     "resourceType": "scalingplans",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",
@@ -624,6 +659,9 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2022-10-14-preview",
+      "2022-09-09",
+      "2022-06-03-privatepreview",
       "2022-04-01-preview",
       "2022-02-10-preview",
       "2022-01-12-privatepreview",

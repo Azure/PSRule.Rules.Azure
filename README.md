@@ -109,7 +109,7 @@ jobs:
 
     # STEP 2: Run analysis against exported data
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.7.0
+      uses: microsoft/ps-rule@v2.8.0
       with:
         modules: 'PSRule.Rules.Azure'  # Analyze objects using the rules within the PSRule.Rules.Azure PowerShell module.
 ```

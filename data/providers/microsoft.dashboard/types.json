@@ -67,6 +67,62 @@
     "zoneMappings": null
   },
   {
+    "aliases": {
+      "Microsoft.Dashboard/grafana/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Dashboard/grafana/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "grafana/privateEndpointConnections",
+    "apiVersions": [
+      "2022-10-01-preview",
+      "2022-08-01",
+      "2022-05-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "grafana/privateLinkResources",
+    "apiVersions": [
+      "2022-10-01-preview",
+      "2022-08-01",
+      "2022-05-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
@@ -127,19 +183,5 @@
     ],
     "locations": [],
     "zoneMappings": null
-  },
-  {
-    "aliases": {
-      "Microsoft.Dashboard/grafana/privateEndpointConnections/groupIds": "properties.groupIds",
-      "Microsoft.Dashboard/grafana/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
-      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
-      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
-      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
-      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
-      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
-      "Microsoft.Dashboard/grafana/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
-      "Microsoft.Dashboard/grafana/privateEndpointConnections/provisioningState": "properties.provisioningState"
-    },
-    "resourceType": "grafana/privateendpointconnections"
   }
 ]

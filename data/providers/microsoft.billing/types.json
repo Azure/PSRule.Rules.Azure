@@ -59,6 +59,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingPermissions",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
@@ -70,6 +71,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
       "2020-11-01-privatepreview",
       "2020-05-01",
@@ -95,6 +97,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/billingPermissions",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
@@ -106,6 +109,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/billingRoleAssignments",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
@@ -128,6 +132,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/billingSubscriptions",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview",
@@ -153,6 +158,87 @@
     "apiVersions": [
       "2020-05-01",
       "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/departments",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/departments/billingPermissions",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/departments/billingRoleAssignments",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/departments/billingRoleDefinitions",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/departments/billingSubscriptions",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/departments/enrollmentAccounts",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/enrollmentAccounts",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/enrollmentAccounts/billingPermissions",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/enrollmentAccounts/billingSubscriptions",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -333,6 +419,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/notificationContacts",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/BillingProfiles/patchOperations",
     "apiVersions": [
       "2018-11-01-preview"
@@ -364,6 +459,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/policies",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-11-01-privatepreview",
       "2020-05-01",
       "2019-10-01-preview",
@@ -446,6 +542,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingRoleAssignments",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
@@ -1026,6 +1123,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/policies",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-11-01-privatepreview"
     ],
     "locations": [],

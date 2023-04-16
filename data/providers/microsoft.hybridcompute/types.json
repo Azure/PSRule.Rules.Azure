@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -30,6 +31,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -84,6 +86,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -138,6 +141,7 @@
     "aliases": null,
     "resourceType": "locations/privateLinkScopes",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -186,6 +190,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview"
     ],
@@ -225,6 +230,7 @@
     "aliases": null,
     "resourceType": "locations/publishers/extensionTypes",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview"
     ],
@@ -264,6 +270,7 @@
     "aliases": null,
     "resourceType": "locations/publishers/extensionTypes/versions",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview"
     ],
@@ -303,6 +310,7 @@
     "aliases": null,
     "resourceType": "locations/updateCenterOperationResults",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -442,6 +450,7 @@
     },
     "resourceType": "machines",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -497,6 +506,7 @@
     "aliases": null,
     "resourceType": "machines/assessPatches",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -561,6 +571,7 @@
     },
     "resourceType": "machines/extensions",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -615,6 +626,7 @@
     "aliases": null,
     "resourceType": "machines/installPatches",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -659,6 +671,7 @@
     "aliases": null,
     "resourceType": "machines/privateLinkScopes",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -707,6 +720,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -751,6 +765,7 @@
     },
     "resourceType": "privateLinkScopes",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -800,6 +815,7 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",
@@ -859,6 +875,7 @@
     },
     "resourceType": "privateLinkScopes/privateEndpointConnections",
     "apiVersions": [
+      "2022-12-27-preview",
       "2022-11-10",
       "2022-08-11-preview",
       "2022-05-10-preview",

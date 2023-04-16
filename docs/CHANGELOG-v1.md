@@ -24,6 +24,28 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.26.0-B0078 (pre-release)
+
+What's changed since pre-release v1.26.0-B0040:
+
+- General improvements:
+  - Improved export of in-flight deeply nested API Management policies by @BernieWhite.
+    [#2153](https://github.com/Azure/PSRule.Rules.Azure/issues/2153)
+- Engineering:
+  - Updated resource providers and policy aliases.
+    [#2144](https://github.com/Azure/PSRule.Rules.Azure/pull/2144)
+  - Bump PSRule to v2.8.1.
+    [#2155](https://github.com/Azure/PSRule.Rules.Azure/pull/2155)
+  - Bump Az.Resources to v6.6.0.
+    [#2155](https://github.com/Azure/PSRule.Rules.Azure/pull/2155)
+  - Bump Pester to v5.4.1.
+    [#2155](https://github.com/Azure/PSRule.Rules.Azure/pull/2155)
+- Bug fixes:
+  - Fixed false positives for `Azure.AppService.AlwaysOn` with Functions and Workflows by @BernieWhite.
+    [#943](https://github.com/Azure/PSRule.Rules.Azure/issues/943)
+
+## v1.26.0-B0040 (pre-release)
+
 What's changed since pre-release v1.26.0-B0011:
 
 - New features:

@@ -11,6 +11,17 @@
   },
   {
     "aliases": null,
+    "resourceType": "attestations",
+    "apiVersions": [
+      "2022-09-01",
+      "2021-01-01",
+      "2019-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "checkPolicyRestrictions",
     "apiVersions": [
       "2022-03-01",

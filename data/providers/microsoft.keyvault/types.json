@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkMhsmNameAvailability",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -34,6 +36,7 @@
     "aliases": null,
     "resourceType": "deletedManagedHSMs",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -56,12 +59,14 @@
       "East US 2",
       "France Central",
       "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "SouthEast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -80,6 +85,7 @@
     "aliases": null,
     "resourceType": "deletedVaults",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -138,6 +144,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -158,6 +165,7 @@
     "aliases": null,
     "resourceType": "locations/deletedManagedHSMs",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -180,12 +188,14 @@
       "East US 2",
       "France Central",
       "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "SouthEast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -204,6 +214,7 @@
     "aliases": null,
     "resourceType": "locations/deletedVaults",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -262,6 +273,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -320,6 +332,7 @@
     "aliases": null,
     "resourceType": "locations/managedHsmOperationResults",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -342,12 +355,14 @@
       "East US 2",
       "France Central",
       "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "SouthEast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -366,6 +381,7 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview"
@@ -381,6 +397,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -473,6 +490,7 @@
     },
     "resourceType": "managedHSMs",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -496,12 +514,14 @@
       "East US 2",
       "France Central",
       "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "SouthEast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -520,6 +540,7 @@
     "aliases": null,
     "resourceType": "managedHSMs/keys",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01"
     ],
     "locations": [
@@ -535,12 +556,14 @@
       "East US 2",
       "France Central",
       "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "SouthEast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -559,6 +582,7 @@
     "aliases": null,
     "resourceType": "managedHSMs/keys/versions",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01"
     ],
     "locations": [
@@ -574,12 +598,14 @@
       "East US 2",
       "France Central",
       "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "SouthEast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -598,6 +624,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -673,6 +700,7 @@
     },
     "resourceType": "vaults",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -732,6 +760,7 @@
     "aliases": null,
     "resourceType": "vaults/accessPolicies",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -791,6 +820,7 @@
     "aliases": null,
     "resourceType": "vaults/eventGridFilters",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -875,6 +905,7 @@
     },
     "resourceType": "vaults/keys",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -930,6 +961,7 @@
     "aliases": null,
     "resourceType": "vaults/keys/versions",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",
@@ -996,6 +1028,7 @@
     },
     "resourceType": "vaults/secrets",
     "apiVersions": [
+      "2023-02-01",
       "2022-11-01",
       "2022-07-01",
       "2022-02-01-preview",

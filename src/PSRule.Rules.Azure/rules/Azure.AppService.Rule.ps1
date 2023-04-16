@@ -83,7 +83,7 @@ Rule 'Azure.AppService.PHPVersion' -Ref 'AZR-000076' -Type 'Microsoft.Web/sites'
 }
 
 # Synopsis: Configure Always On for App Service apps.
-Rule 'Azure.AppService.AlwaysOn' -Ref 'AZR-000077' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
+Rule 'Azure.AppService.AlwaysOn' -Ref 'AZR-000077' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -With 'Azure.AppService.IsWebApp', 'Azure.AppService.IsAPIApp' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.alwaysOn', $True);

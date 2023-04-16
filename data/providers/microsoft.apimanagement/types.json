@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkFeedbackRequired",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",
@@ -28,6 +30,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",
@@ -102,6 +106,8 @@
     "aliases": null,
     "resourceType": "deletedServices",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",
@@ -156,6 +162,8 @@
     "aliases": null,
     "resourceType": "getDomainOwnershipIdentifier",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",
@@ -209,6 +217,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",
@@ -224,6 +234,8 @@
     "aliases": null,
     "resourceType": "locations/deletedServices",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",
@@ -278,6 +290,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",
@@ -303,6 +317,8 @@
     "aliases": null,
     "resourceType": "reportFeedback",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",
@@ -458,6 +474,8 @@
     },
     "resourceType": "service",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",
@@ -731,6 +749,8 @@
     "aliases": null,
     "resourceType": "service/eventGridFilters",
     "apiVersions": [
+      "2022-09-01-preview",
+      "2022-08-01",
       "2022-04-01-preview",
       "2021-12-01-preview",
       "2021-08-01",

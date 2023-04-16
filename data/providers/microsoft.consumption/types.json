@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "AggregatedCost",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -18,6 +19,7 @@
     "aliases": null,
     "resourceType": "Balances",
     "apiVersions": [
+      "2023-03-01",
       "2022-09-01",
       "2021-10-01",
       "2019-10-01",
@@ -92,6 +94,7 @@
     },
     "resourceType": "Budgets",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -114,6 +117,7 @@
     "aliases": null,
     "resourceType": "Charges",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01-preview",
@@ -130,6 +134,7 @@
     "aliases": null,
     "resourceType": "CostTags",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-11-01",
       "2019-10-01",
@@ -147,6 +152,7 @@
     "aliases": null,
     "resourceType": "credits",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2021-05-01",
       "2019-10-01",
@@ -161,6 +167,7 @@
     "aliases": null,
     "resourceType": "events",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2021-05-01",
       "2019-10-01",
@@ -175,6 +182,7 @@
     "aliases": null,
     "resourceType": "Forecasts",
     "apiVersions": [
+      "2023-03-01",
       "2019-10-01",
       "2019-05-01",
       "2019-01-01",
@@ -190,6 +198,7 @@
     "aliases": null,
     "resourceType": "lots",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2021-05-01",
       "2019-10-01",
@@ -204,6 +213,7 @@
     "aliases": null,
     "resourceType": "Marketplaces",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -222,6 +232,7 @@
     "aliases": null,
     "resourceType": "OperationResults",
     "apiVersions": [
+      "2023-03-01",
       "2022-06-01",
       "2021-10-01",
       "2021-01-01",
@@ -242,6 +253,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-03-01",
       "2022-06-01",
       "2021-10-01",
       "2019-10-01",
@@ -265,6 +277,7 @@
     "aliases": null,
     "resourceType": "OperationStatus",
     "apiVersions": [
+      "2023-03-01",
       "2022-09-01",
       "2022-06-01",
       "2021-10-01",
@@ -286,6 +299,7 @@
     "aliases": null,
     "resourceType": "Pricesheets",
     "apiVersions": [
+      "2023-03-01",
       "2022-06-01",
       "2021-10-01",
       "2020-01-01-preview",
@@ -308,6 +322,7 @@
     "aliases": null,
     "resourceType": "products",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2018-10-01",
@@ -320,6 +335,7 @@
     "aliases": null,
     "resourceType": "ReservationDetails",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -340,6 +356,7 @@
     "aliases": null,
     "resourceType": "ReservationRecommendationDetails",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01"
     ],
@@ -350,6 +367,7 @@
     "aliases": null,
     "resourceType": "ReservationRecommendations",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -367,6 +385,7 @@
     "aliases": null,
     "resourceType": "ReservationSummaries",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -387,6 +406,7 @@
     "aliases": null,
     "resourceType": "ReservationTransactions",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -407,6 +427,7 @@
     "aliases": null,
     "resourceType": "Tags",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-11-01",
       "2019-10-01",
@@ -429,6 +450,7 @@
     "aliases": null,
     "resourceType": "tenants",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -442,6 +464,7 @@
     "aliases": null,
     "resourceType": "Terms",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2019-10-01",
       "2019-05-01",
@@ -460,6 +483,7 @@
     "aliases": null,
     "resourceType": "UsageDetails",
     "apiVersions": [
+      "2023-03-01",
       "2021-10-01",
       "2021-01-01",
       "2019-11-01",

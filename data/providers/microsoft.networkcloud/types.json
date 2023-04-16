@@ -36,5 +36,17 @@
       "global"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2022-12-12-preview",
+      "2022-09-30-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
   }
 ]
