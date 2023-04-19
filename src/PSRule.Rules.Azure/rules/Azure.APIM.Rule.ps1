@@ -317,17 +317,10 @@ Rule 'Azure.APIM.PolicyBase' -Ref 'AZR-000371' -Type 'Microsoft.ApiManagement/se
     foreach ($policy in $policies) {
         Write-Debug "Got policy: $($policy.OuterXml)"
         
-        $inboundSection = @($policy.inbound)
-        $Assert.HasField($inboundSection, 'base')
-
-        $backendSection = @($policy.backend)
-        $Assert.HasField($backendSection, 'base')
-
-        $outboundSection = @($policy.outbound)
-        $Assert.HasField($outboundSection, 'base')
-
-        $onerrorSection = @($policy.'on-error')
-        $Assert.HasField($onerrorSection, 'base')
+        $Assert.HasField($policy, 'inbound.base')
+        $Assert.HasField($policy, 'backend.base')
+        $Assert.HasField($policy, 'outbound.base')
+        $Assert.HasField($policy, 'on-error.base')
     }
 }
 #endregion Rules
