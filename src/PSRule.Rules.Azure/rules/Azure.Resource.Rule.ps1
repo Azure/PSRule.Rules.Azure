@@ -5,15 +5,15 @@
 # Validation rules for Azure resources
 #
 
-# Synopsis: Resources should be tagged
-Rule 'Azure.Resource.UseTags' -Ref 'AZR-000166' -With 'Azure.Resource.SupportsTags' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+# Synopsis: Azure resources should be tagged using a standard convention.
+Rule 'Azure.Resource.UseTags' -Ref 'AZR-000166' -With 'Azure.Resource.SupportsTags' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Cost Optimization'; } {
     Reason $LocalizedData.ResourceNotTagged
     # List of resource that support tags can be found here: https://docs.microsoft.com/en-us/azure/azure-resource-manager/tag-support
     $Assert.HasField($TargetObject, 'tags')
     $Assert.Create(($TargetObject.Tags.PSObject.Members | Where-Object { $_.MemberType -eq 'NoteProperty' }) -ne $Null)
 }
 
-# Synopsis: Resources should be deployed to allowed regions
+# Synopsis:Resources should be deployed to allowed regions.
 Rule 'Azure.Resource.AllowedRegions' -Ref 'AZR-000167' -If { ($Null -ne $Configuration.Azure_AllowedRegions) -and ($Configuration.Azure_AllowedRegions.Length -gt 0) -and (SupportsRegions) -and $PSRule.TargetType -ne 'Microsoft.Resources/deployments' } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $region = @($Configuration.Azure_AllowedRegions);
     foreach ($r in $Configuration.Azure_AllowedRegions) {

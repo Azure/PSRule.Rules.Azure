@@ -31,6 +31,16 @@ What's changed since v1.26.0:
     - Updated `Azure.APIM.EncryptValues` to check all API Management named values are encrypted with Key Vault secrets @BenjaminEngeset.
       [#2146](https://github.com/Azure/PSRule.Rules.Azure/issues/2146)
 
+## v1.26.1
+
+What's changed since v1.26.0:
+
+- Bug fixes:
+  - Fixed null union with first value being null by @BernieWhite.
+    [#2075](https://github.com/Azure/PSRule.Rules.Azure/issues/2075)
+  - Fixed `Azure.Resource.UseTags` for additional resources that don't support tags by @BernieWhite.
+    [#2129](https://github.com/Azure/PSRule.Rules.Azure/issues/2129)
+
 ## v1.26.0
 
 What's changed since v1.25.0:

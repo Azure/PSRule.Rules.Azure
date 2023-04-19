@@ -683,14 +683,17 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) < 2)
                 throw ArgumentsOutOfRange(nameof(Union), args);
 
-            // Array
-            if (ExpressionHelpers.IsArray(args[0]))
-                return ExpressionHelpers.UnionArray(args);
+            // Find first non-null case
+            for (var i = 0; i < args.Length; i++)
+            {
+                // Array
+                if (ExpressionHelpers.IsArray(args[i]))
+                    return ExpressionHelpers.UnionArray(args);
 
-            // Object
-            if (ExpressionHelpers.IsObject(args[0]))
-                return ExpressionHelpers.UnionObject(args);
-
+                // Object
+                if (ExpressionHelpers.IsObject(args[i]))
+                    return ExpressionHelpers.UnionObject(args);
+            }
             return null;
         }
 
