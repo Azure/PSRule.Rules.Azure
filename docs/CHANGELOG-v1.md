@@ -24,6 +24,94 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.26.0:
+
+- Updated rules:
+  - API Management:
+    - Updated `Azure.APIM.EncryptValues` to check all API Management named values are encrypted with Key Vault secrets @BenjaminEngeset.
+      [#2146](https://github.com/Azure/PSRule.Rules.Azure/issues/2146)
+
+## v1.26.0
+
+What's changed since v1.25.0:
+
+- New features:
+  - Added March 2023 baselines `Azure.GA_2023_03` and `Azure.Preview_2023_03` by @BernieWhite.
+    [#2138](https://github.com/Azure/PSRule.Rules.Azure/issues/2138)
+    - Includes rules released before or during March 2023.
+    - Marked `Azure.GA_2022_12` and `Azure.Preview_2022_12` baselines as obsolete.
+- New rules:
+  - API Management:
+    - Check that wildcard `*` for any configuration option in CORS policies settings is not in use by @BenjaminEngeset.
+      [#2073](https://github.com/Azure/PSRule.Rules.Azure/issues/2073)
+  - Azure Kubernetes Service:
+    - Check that the Defender profile with Azure Kubernetes Service clusters are enabled by @BenjaminEngeset.
+      [#2123](https://github.com/Azure/PSRule.Rules.Azure/issues/2123)
+  - Container App:
+    - Check that internal-only ingress for container apps are configured by @BenjaminEngeset.
+      [#2098](https://github.com/Azure/PSRule.Rules.Azure/issues/2098)
+    - Check that Azure File volumes for container apps are configured by @BenjaminEngeset.
+      [#2101](https://github.com/Azure/PSRule.Rules.Azure/issues/2101)
+    - Check that the names of container apps meets the naming requirements by @BenjaminEngeset.
+      [#2094](https://github.com/Azure/PSRule.Rules.Azure/issues/2094)
+    - Check that managed identity for container apps are configured by @BenjaminEngeset.
+      [#2096](https://github.com/Azure/PSRule.Rules.Azure/issues/2096)
+    - Check that public network access for container apps environments are disabled by @BenjaminEngeset.
+      [#2098](https://github.com/Azure/PSRule.Rules.Azure/issues/2098)
+  - Deployment:
+    - Check that the names of nested deployments meets the naming requirements of deployments by @BenjaminEngeset.
+      [#1915](https://github.com/Azure/PSRule.Rules.Azure/issues/1915)
+  - IoT Hub:
+    - Check IoT Hubs in supported regions only uses TLS 1.2 version by @BenjaminEngeset.
+      [#1996](https://github.com/Azure/PSRule.Rules.Azure/issues/1996)
+  - Service Bus:
+    - Check namespaces audit diagnostic logs are enabled by @BenjaminEngeset.
+      [#1862](https://github.com/Azure/PSRule.Rules.Azure/issues/1862)
+  - SQL Database:
+    - Check that Azure AD-only authentication is enabled by @BenjaminEngeset.
+      [#2119](https://github.com/Azure/PSRule.Rules.Azure/issues/2119)
+    - Check that Azure AD authentication is configured for SQL Managed Instances by @BenjaminEngeset.
+      [#2117](https://github.com/Azure/PSRule.Rules.Azure/issues/2117)
+  - SQL Managed Instance:
+    - Check that managed identity for SQL Managed Instances are configured by @BenjaminEngeset.
+      [#2120](https://github.com/Azure/PSRule.Rules.Azure/issues/2120)
+    - Check that Azure AD-only authentication is enabled by @BenjaminEngeset.
+      [#2118](https://github.com/Azure/PSRule.Rules.Azure/issues/2118)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.25.6` by @BernieWhite.
+      [#2136](https://github.com/Azure/PSRule.Rules.Azure/issues/2136)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- General improvements:
+  - Added a selector for premium Service Bus namespaces by @BernieWhite.
+    [#2091](https://github.com/Azure/PSRule.Rules.Azure/issues/2091)
+  - Improved export of in-flight deeply nested API Management policies by @BernieWhite.
+    [#2153](https://github.com/Azure/PSRule.Rules.Azure/issues/2153)
+- Engineering:
+  - Bump Microsoft.CodeAnalysis.NetAnalyzers to v7.0.1.
+    [#2082](https://github.com/Azure/PSRule.Rules.Azure/pull/2082)
+  - Bump Newtonsoft.Json to v13.0.3.
+    [#2080](https://github.com/Azure/PSRule.Rules.Azure/pull/2080)
+  - Updated resource providers and policy aliases.
+    [#2144](https://github.com/Azure/PSRule.Rules.Azure/pull/2144)
+  - Bump PSRule to v2.8.1.
+    [#2155](https://github.com/Azure/PSRule.Rules.Azure/pull/2155)
+  - Bump Az.Resources to v6.6.0.
+    [#2155](https://github.com/Azure/PSRule.Rules.Azure/pull/2155)
+  - Bump Pester to v5.4.1.
+    [#2155](https://github.com/Azure/PSRule.Rules.Azure/pull/2155)
+- Bug fixes:
+  - Fixed dependency issue of deployments across resource group scopes by @BernieWhite.
+    [#2111](https://github.com/Azure/PSRule.Rules.Azure/issues/2111)
+  - Fixed false positive with `Azure.Deployment.Name` by @BernieWhite.
+    [#2109](https://github.com/Azure/PSRule.Rules.Azure/issues/2109)
+  - Fixed false positives for `Azure.AppService.AlwaysOn` with Functions and Workflows by @BernieWhite.
+    [#943](https://github.com/Azure/PSRule.Rules.Azure/issues/943)
+
+What's changed since pre-release v1.26.0-B0078:
+
+- No additional changes.
+
 ## v1.26.0-B0078 (pre-release)
 
 What's changed since pre-release v1.26.0-B0040:
