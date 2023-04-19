@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.26.0:
+
+- Bug fixes:
+  - Fixed null union with first value being null by @BernieWhite.
+    [#2075](https://github.com/Azure/PSRule.Rules.Azure/issues/2075)
+
 ## v1.26.0
 
 What's changed since v1.25.0:
