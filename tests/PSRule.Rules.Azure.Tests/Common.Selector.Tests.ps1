@@ -55,6 +55,11 @@ Describe 'SupportsTags' -Tag 'Common', 'Filters', 'SupportsTags' {
             'microsoft.insights/dataCollectionEndpoints'
             'microsoft.insights/components'
             'microsoft.insights/workbooks'
+            'Microsoft.KubernetesConfiguration/privateLinkScopes'
+            'Microsoft.Kubernetes/connectedClusters'
+            'Microsoft.ManagedIdentity/userAssignedIdentities'
+            'Microsoft.Authorization/resourceManagementPrivateLinks'
+            'Microsoft.Network/privateDnsZones'
         )
 
         $notSupportedTypes = @(
@@ -68,6 +73,18 @@ Describe 'SupportsTags' -Tag 'Common', 'Filters', 'SupportsTags' {
             'microsoft.insights/dataCollectionRuleAssociations'
             'microsoft.insights/logs'
             'Microsoft.AzureActiveDirectory/b2ctenants'
+            'Microsoft.KubernetesConfiguration/extensions'
+            'Microsoft.Kubernetes/registeredSubscriptions'
+            'Microsoft.ManagedServices/registrationDefinitions'
+            'Microsoft.ManagedIdentity/Identities'
+            'Microsoft.ManagedIdentity/userAssignedIdentities/federatedIdentityCredentials'
+            'Microsoft.Management/resources'
+            'Microsoft.OperationsManagement/solutions'
+            'Microsoft.PolicyInsights/remediations'
+            'Microsoft.AAD/domainServices/oucontainer'
+            'Microsoft.Automation/automationAccounts/softwareUpdateConfigurations'
+            'Microsoft.Network/privateDnsZonesInternal'
+            'Microsoft.Network/privateDnsZones/AAAA'
         )
     }
 

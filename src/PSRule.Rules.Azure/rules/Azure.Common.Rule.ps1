@@ -260,10 +260,13 @@ function global:SupportsTags {
             ($TargetType -eq 'Microsoft.Subscription') -or
             ($TargetType -eq 'Microsoft.Resources/deployments') -or
             ($TargetType -eq 'Microsoft.AzureActiveDirectory/b2ctenants') -or
+            ($TargetType -eq 'Microsoft.OperationsManagement/solutions') -or
+            # ($TargetType -eq 'Microsoft.AAD/domainServices/oucontainer') -or
+            ($TargetType -eq 'Microsoft.Kubernetes/registeredSubscriptions') -or
+            ($TargetType -eq 'Microsoft.Network/privateDnsZonesInternal') -or
             ($TargetType -notLike 'Microsoft.*/*') -or
             ($TargetType -like 'Microsoft.Addons/*') -or
             ($TargetType -like 'Microsoft.Advisor/*') -or
-            ($TargetType -like 'Microsoft.Authorization/*') -or
             ($TargetType -like 'Microsoft.Billing/*') -or
             ($TargetType -like 'Microsoft.Blueprint/*') -or
             ($TargetType -like 'Microsoft.Capacity/*') -or
@@ -273,6 +276,9 @@ function global:SupportsTags {
             ($TargetType -like 'Microsoft.Security/*') -or
             ($TargetType -like 'microsoft.support/*') -or
             ($TargetType -like 'Microsoft.WorkloadMonitor/*') -or
+            ($TargetType -like 'Microsoft.ManagedServices/*') -or
+            ($TargetType -like 'Microsoft.Management/*') -or
+            ($TargetType -like 'Microsoft.PolicyInsights/*') -or
             ($TargetType -like '*/providers/roleAssignments') -or
             ($TargetType -like '*/providers/diagnosticSettings') -or
 
@@ -318,6 +324,18 @@ function global:SupportsTags {
             # Some exceptions to resources (https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftcostmanagement)
             ($TargetType -like 'Microsoft.CostManagement/*' -and !(
                 $TargetType -eq 'Microsoft.CostManagement/Connectors'
+            )) -or
+
+            ($TargetType -like 'Microsoft.KubernetesConfiguration/*' -and !(
+                $TargetType -eq 'Microsoft.KubernetesConfiguration/privateLinkScopes'
+            )) -or
+
+            ($TargetType -like 'Microsoft.ManagedIdentity/*' -and !(
+                $TargetType -eq 'Microsoft.ManagedIdentity/userAssignedIdentities'
+            )) -or
+
+            ($TargetType -like 'Microsoft.Authorization/*' -and !(
+                $TargetType -eq 'Microsoft.Authorization/resourceManagementPrivateLinks'
             ))
         ) {
             return $False;
