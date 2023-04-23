@@ -30,6 +30,9 @@ What's changed since v1.26.0:
   - API Management:
     - Updated `Azure.APIM.EncryptValues` to check all API Management named values are encrypted with Key Vault secrets @BenjaminEngeset.
       [#2146](https://github.com/Azure/PSRule.Rules.Azure/issues/2146)
+- Bug fixes:
+  - Fixed reference for runtime subnet ID property by @BernieWhite.
+    [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
 
 ## v1.26.1
 

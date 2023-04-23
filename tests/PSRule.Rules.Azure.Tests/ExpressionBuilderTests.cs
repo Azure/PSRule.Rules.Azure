@@ -88,7 +88,7 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionReferenceException>(() => Build(context, "[variables('environments').prod]"));
             Assert.Throws<ExpressionReferenceException>(() => Build(context, "[variables('environments')['prod']]"));
             Assert.Throws<InvalidOperationException>(() => Build(context, "[variables('environments')[0]]"));
-            Assert.Throws<ArgumentOutOfRangeException>(() => Build(context, "[variables('items')[0]]"));
+            Assert.Throws<IndexOutOfRangeException>(() => Build(context, "[variables('items')[0]]"));
         }
 
         [Fact]
