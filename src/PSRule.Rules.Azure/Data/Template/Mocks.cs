@@ -190,6 +190,12 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public JArray Value { get; }
 
+        public override bool TryGetValue(out object value)
+        {
+            value = Value;
+            return true;
+        }
+
         public override bool TryGetIndex(int index, out IMock value)
         {
             return TryGetIndexFromValue(index, out value);
@@ -202,7 +208,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public override string ToString()
         {
-            return TryGetValue(out var value) ? value.ToString() : string.Empty;
+            return TryGetValue(out var value) && value != null ? value.ToString() : string.Empty;
         }
 
         private bool TryGetIndexFromValue(int index, out IMock value)

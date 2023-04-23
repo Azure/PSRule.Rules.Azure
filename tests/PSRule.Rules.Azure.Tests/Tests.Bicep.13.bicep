@@ -4,31 +4,31 @@
 // Tests for lambda expressions
 
 param arrayToTest array = [
-  ['one', 'two']
-  ['three']
-  ['four', 'five']
+  [ 'one', 'two' ]
+  [ 'three' ]
+  [ 'four', 'five' ]
 ]
 
 var dogs = [
   {
     name: 'Evie'
     age: 5
-    interests: ['Ball', 'Frisbee']
+    interests: [ 'Ball', 'Frisbee' ]
   }
   {
     name: 'Casper'
     age: 3
-    interests: ['Other dogs']
+    interests: [ 'Other dogs' ]
   }
   {
     name: 'Indy'
     age: 2
-    interests: ['Butter']
+    interests: [ 'Butter' ]
   }
   {
     name: 'Kira'
     age: 8
-    interests: ['Rubs']
+    interests: [ 'Rubs' ]
   }
 ]
 
@@ -38,14 +38,21 @@ output arrayOutput array = flatten(arrayToTest)
 // Filter
 output oldDogs array = filter(dogs, dog => dog.age >= 5)
 
+module vnet 'Tests.Bicep.13.child.bicep' = {
+  name: 'vnet'
+}
+
+output vnetId string = filter(vnet.outputs.subnets, s => s.name == 'subnet1')[0].id
+
 // Map
 output dogNames array = map(dogs, dog => dog.name)
 output sayHi array = map(dogs, dog => 'Hello ${dog.name}!')
 output mapObject array = map(range(0, length(dogs)), i => {
-  i: i
-  dog: dogs[i].name
-  greeting: 'Ahoy, ${dogs[i].name}!'
-})
+    i: i
+    dog: dogs[i].name
+    greeting: 'Ahoy, ${dogs[i].name}!'
+  }
+)
 
 // Reduce
 var ages = map(dogs, dog => dog.age)
@@ -56,10 +63,11 @@ output totalAgeAdd1 int = reduce(ages, 1, (cur, next) => cur + next)
 output dogsByAge array = sort(dogs, (a, b) => a.age < b.age)
 
 // To Object
-param numbers array = [0, 1, 2, 3]
-output objectMap object = toObject([123, 456, 789], i => '${i / 100}')
+param numbers array = [ 0, 1, 2, 3 ]
+output objectMap object = toObject([ 123, 456, 789 ], i => '${i / 100}')
 output objectMap2 object = toObject(numbers, i => '${i}', i => {
-  isEven: (i % 2) == 0
-  isGreaterThan2: (i > 2)
-})
-output objectMapNull object = toObject([123, 456, 789, null], i => '${i}')
+    isEven: (i % 2) == 0
+    isGreaterThan2: (i > 2)
+  }
+)
+output objectMapNull object = toObject([ 123, 456, 789, null ], i => '${i}')
