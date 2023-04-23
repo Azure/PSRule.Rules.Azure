@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Defender for Cloud:
+    - Check that Microsoft Defender Cloud Security Posture Management is using `Standard` plan by @BenjaminEngeset.
+      [#2151](https://github.com/Azure/PSRule.Rules.Azure/issues/2151)
+
 ## v1.27.0-B0003 (pre-release)
 
 What's changed since v1.26.1:
