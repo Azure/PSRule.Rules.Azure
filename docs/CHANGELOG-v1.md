@@ -24,7 +24,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.26.0:
+## v1.27.0-B0003 (pre-release)
+
+What's changed since v1.26.1:
 
 - Updated rules:
   - API Management:
