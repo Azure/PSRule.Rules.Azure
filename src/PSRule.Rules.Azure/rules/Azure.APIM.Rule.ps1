@@ -313,7 +313,7 @@ Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000365' -Type 'Microsoft.ApiManagement/se
 # Synopsis: Base element for any policy element in a section should be configured.
 Rule 'Azure.APIM.PolicyBase' -Ref 'AZR-000371' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis', 'Microsoft.ApiManagement/service/apis/resolvers', 'Microsoft.ApiManagement/service/apis/operations', 'Microsoft.ApiManagement/service/apis/resolvers/policies', 'Microsoft.ApiManagement/service/products/policies', 'Microsoft.ApiManagement/service/apis/policies',
 'Microsoft.ApiManagement/service/apis/operations/policies' -If { $Null -ne (GetAPIMPolicyNode -Node 'policies' -IgnoreGlobal) } -Tag @{ release = 'GA'; ruleSet = '2023_06'; } {
-    $policies = GetAPIMPolicyNode -Node 'policies'
+    $policies = GetAPIMPolicyNode -Node 'policies' -IgnoreGlobal
     foreach ($policy in $policies) {
         Write-Debug "Got policy: $($policy.OuterXml)"
         
