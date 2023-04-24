@@ -24,7 +24,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.8.0
+      uses: microsoft/ps-rule@v2.8.1
       with:
         modules: 'PSRule.Rules.Azure'
     ```
@@ -35,7 +35,7 @@ Install and use PSRule for Azure with GitHub Actions by referencing the `microso
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.8.0
+      uses: microsoft/ps-rule@v2.8.1
       with:
         modules: 'PSRule.Rules.Azure'
         prerelease: true

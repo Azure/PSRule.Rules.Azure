@@ -1,6 +1,6 @@
 ---
-title: Reference
 generated: True
+title: Reference
 ---
 
 # Reference
@@ -66,7 +66,7 @@ AZR-000041 | [Azure.AKS.ContainerInsights](Azure.AKS.ContainerInsights.md) | Ena
 AZR-000042 | [Azure.APIM.HTTPEndpoint](Azure.APIM.HTTPEndpoint.md) | Enforce HTTPS for communication to API clients. | GA
 AZR-000043 | [Azure.APIM.APIDescriptors](Azure.APIM.APIDescriptors.md) | API Management APIs should have a display name and description. | GA
 AZR-000044 | [Azure.APIM.HTTPBackend](Azure.APIM.HTTPBackend.md) | Use HTTPS for communication to backend services. | GA
-AZR-000045 | [Azure.APIM.EncryptValues](Azure.APIM.EncryptValues.md) | API Management named values should be encrypted. | GA
+AZR-000045 | [Azure.APIM.EncryptValues](Azure.APIM.EncryptValues.md) | Encrypt all API Management named values with Key Vault secrets. | GA
 AZR-000046 | [Azure.APIM.ProductSubscription](Azure.APIM.ProductSubscription.md) | Configure products to require a subscription. | GA
 AZR-000047 | [Azure.APIM.ProductApproval](Azure.APIM.ProductApproval.md) | Configure products to require approval. | GA
 AZR-000048 | [Azure.APIM.SampleProducts](Azure.APIM.SampleProducts.md) | Remove starter and unlimited sample products. | GA
