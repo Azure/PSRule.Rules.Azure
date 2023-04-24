@@ -6,18 +6,18 @@ resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Cspm/
 ---
 
-# Set Microsoft Defender Cloud Security Posture Management to the Standard tier
+# Set Microsoft Defender Cloud Security Posture Management to the Standard plan
 
 ## SYNOPSIS
 
-Enable Microsoft Defender Cloud Security Posture Management.
+Enable Microsoft Defender Cloud Security Posture Management Standard plan.
 
 ## DESCRIPTION
 
 Microsoft Defender Cloud Security Posture Management (CSPM) provides additional visibility across cloud environments to quickly detect configuration errors and remediate them through automation.
 It does this by keeping constant eye on the security state of your cloud resources in different environments.
 
-By enabling the Defender Cloud CSPM standard plan, Microsoft Defender provides advanced posture management capabilities such as:
+By enabling the Defender Cloud CSPM Standard plan, Microsoft Defender provides advanced posture management capabilities such as:
 
 - Attack path analysis
 - Cloud security explorer 
@@ -29,13 +29,13 @@ Microsoft Defender Cloud Security Posture Management (CSPM) can be enabled at th
 
 ## RECOMMENDATION
 
-Consider using Microsoft Defender Cloud Security Posture Management (CSPM) to provide additional visibility across cloud environments.
+Consider using Microsoft Defender Cloud Security Posture Management (CSPM) Standard plan to provide additional visibility across cloud environments.
 
 ## EXAMPLES
 
 ### Configure with Azure template
 
-To enable Microsoft Defender Cloud Security Posture Management:
+To enable Microsoft Defender Cloud Security Posture Management Standard plan:
 
 - Set the `Standard` pricing tier for Microsoft Defender Cloud Security Posture Management.
 
@@ -54,14 +54,14 @@ For example:
 
 ### Configure with Bicep
 
-To enable Microsoft Defender Cloud Security Posture Management:
+To enable Microsoft Defender Cloud Security Posture Management Standard plan:
 
 - Set the `Standard` pricing tier for Microsoft Defender Cloud Security Posture Management.
 
 For example:
 
 ```bicep
-resource defenderForCspm 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderCspm 'Microsoft.Security/pricings@2022-03-01' = {
   name: 'CloudPosture'
   properties: {
     pricingTier: 'Standard'
@@ -71,7 +71,7 @@ resource defenderForCspm 'Microsoft.Security/pricings@2022-03-01' = {
 
 ### Configure with Azure CLI
 
-TTo enable Microsoft Defender Cloud Security Posture Management:
+TTo enable Microsoft Defender Cloud Security Posture Management Standard plan:
 
 - Set the `Standard` pricing tier for Microsoft Defender Cloud Security Posture Management.
 
@@ -83,7 +83,7 @@ az security pricing create -n 'CloudPosture' --tier 'standard'
 
 ### Configure with Azure PowerShell
 
-To enable Microsoft Defender Cloud Security Posture Management:
+To enable Microsoft Defender Cloud Security Posture Management Standard plan:
 
 - Set the `Standard` pricing tier for Microsoft Defender Cloud Security Posture Management.
 

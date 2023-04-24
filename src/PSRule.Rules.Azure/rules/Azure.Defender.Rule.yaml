@@ -219,7 +219,7 @@ spec:
     equals: Standard
 
 ---
-# Synopsis: Enable Microsoft Defender Cloud Security Posture Management.
+# Synopsis: Enable Microsoft Defender Cloud Security Posture Management Standard plan.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
