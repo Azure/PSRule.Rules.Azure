@@ -218,4 +218,28 @@ spec:
     field: properties.pricingTier
     equals: Standard
 
+---
+# Synopsis: Enable Microsoft Defender Cloud Security Posture Management Standard plan.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Defender.Cspm
+  ref: AZR-000372
+  tags:
+    release: 'GA'
+    ruleSet: '2023_06'
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: LT-1
+spec:
+  level: Error
+  where:
+    name: '.'
+    equals: CloudPosture
+  type:
+  - Microsoft.Security/pricings
+  condition:
+    field: properties.pricingTier
+    equals: Standard
+
 #endregion Rules

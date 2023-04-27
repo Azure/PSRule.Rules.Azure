@@ -531,6 +531,14 @@ namespace PSRule.Rules.Azure
             Assert.Equal(200, actual1["a"]);
             Assert.True(actual1.ContainsKey("e"));
             Assert.Equal("f", actual1["e"]);
+            actual1 = Functions.Union(context, new object[] { null, JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }") }) as JObject;
+            Assert.False(actual1.ContainsKey("a"));
+            Assert.True(actual1.ContainsKey("e"));
+            Assert.True(actual1.ContainsKey("g"));
+            actual1 = Functions.Union(context, new object[] { hashtable, null }) as JObject;
+            Assert.True(actual1.ContainsKey("a"));
+            Assert.False(actual1.ContainsKey("e"));
+            Assert.False(actual1.ContainsKey("g"));
 
             // Union arrays
             var actual2 = Functions.Union(context, new string[][] { new string[] { "one", "two", "three" }, new string[] { "three", "four" } }) as object[];
@@ -540,6 +548,8 @@ namespace PSRule.Rules.Azure
             actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, null, new string[] { "one", "three" } }) as object[];
             Assert.Equal(3, actual2.Length);
             actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, new MockArray(null) }) as object[];
+            Assert.Equal(2, actual2.Length);
+            actual2 = Functions.Union(context, new object[] { null, new string[] { "three", "four" } }) as object[];
             Assert.Equal(2, actual2.Length);
         }
 

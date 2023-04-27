@@ -193,5 +193,25 @@
     "Properties": {
       "pricingTier": "Free"
     }
+  },
+  {
+    "Name": "defenderT",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/CloudPosture",
+    "ResourceName": "CloudPosture",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderU",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/CloudPosture",
+    "ResourceName": "CloudPosture",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Free"
+    }
   }
 ]

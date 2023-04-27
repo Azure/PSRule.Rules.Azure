@@ -1,13 +1,11 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "languageVersion": "1.9-experimental",
   "contentVersion": "1.0.0.0",
   "metadata": {
-    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.14.85.62628",
-      "templateHash": "11595356597778450057"
+      "version": "0.16.2.56959",
+      "templateHash": "15464645948943371395"
     }
   },
   "parameters": {
@@ -71,7 +69,73 @@
     ],
     "ages": "[map(variables('dogs'), lambda('dog', lambdaVariables('dog').age))]"
   },
-  "resources": {},
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "vnet",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.16.2.56959",
+              "templateHash": "654374419493010363"
+            }
+          },
+          "variables": {
+            "subnets": [
+              {
+                "name": "subnet1",
+                "addressPrefix": "10.0.0.0/24"
+              },
+              {
+                "name": "subnet2",
+                "addressPrefix": "10.0.1.0/24"
+              },
+              {
+                "name": "subnet3",
+                "addressPrefix": "10.0.2.0/24"
+              }
+            ]
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2022-09-01",
+              "name": "vnet1",
+              "properties": {
+                "copy": [
+                  {
+                    "name": "subnets",
+                    "count": "[length(variables('subnets'))]",
+                    "input": {
+                      "name": "[variables('subnets')[copyIndex('subnets')].name]",
+                      "properties": {
+                        "addressPrefix": "[variables('subnets')[copyIndex('subnets')].addressPrefix]"
+                      }
+                    }
+                  }
+                ]
+              }
+            }
+          ],
+          "outputs": {
+            "subnets": {
+              "type": "array",
+              "value": "[reference(resourceId('Microsoft.Network/virtualNetworks', 'vnet1'), '2022-09-01').subnets]"
+            }
+          }
+        }
+      }
+    }
+  ],
   "outputs": {
     "arrayOutput": {
       "type": "array",
@@ -80,6 +144,10 @@
     "oldDogs": {
       "type": "array",
       "value": "[filter(variables('dogs'), lambda('dog', greaterOrEquals(lambdaVariables('dog').age, 5)))]"
+    },
+    "vnetId": {
+      "type": "string",
+      "value": "[filter(reference(resourceId('Microsoft.Resources/deployments', 'vnet'), '2022-09-01').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, 'subnet1')))[0].id]"
     },
     "dogNames": {
       "type": "array",

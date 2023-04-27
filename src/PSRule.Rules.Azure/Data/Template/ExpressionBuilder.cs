@@ -130,8 +130,8 @@ namespace PSRule.Rules.Azure.Data.Template
             var source = inner(context);
             var indexResult = index(context);
 
-            if (source is JArray jArray && ExpressionHelpers.TryConvertInt(indexResult, out var arrayIndex))
-                return jArray[arrayIndex];
+            if (ExpressionHelpers.TryArray(source, out var array) && ExpressionHelpers.TryConvertInt(indexResult, out var arrayIndex))
+                return array.GetValue(arrayIndex);
 
             if (source is JObject jObject && ExpressionHelpers.TryString(indexResult, out var propertyName))
             {

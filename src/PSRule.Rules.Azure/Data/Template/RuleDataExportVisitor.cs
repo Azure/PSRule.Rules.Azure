@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Net.NetworkInformation;
 using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -18,6 +19,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_CONDITION = "condition";
         private const string PROPERTY_RESOURCES = "resources";
         private const string PROPERTY_ID = "id";
+        private const string PROPERTY_NAME = "name";
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_CLIENTID = "clientId";
         private const string PROPERTY_PRINCIPALID = "principalId";
@@ -26,6 +28,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_IDENTITY = "identity";
         private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_SITECONFIG = "siteConfig";
+        private const string PROPERTY_SUBNETS = "subnets";
+        private const string PROPERTY_NETWORKINTERFACES = "networkInterfaces";
 
         private const string PLACEHOLDER_GUID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
         private const string IDENTITY_SYSTEMASSIGNED = "SystemAssigned";
@@ -37,6 +41,9 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string TYPE_WEBAPP_CONFIG = "Microsoft.Web/sites/config";
         private const string TYPE_WEBAPPSLOT = "Microsoft.Web/sites/slots";
         private const string TYPE_WEBAPPSLOT_CONFIG = "Microsoft.Web/sites/slots/config";
+        private const string TYPE_VIRTUALNETWORK = "Microsoft.Network/virtualNetworks";
+        private const string TYPE_PRIVATEENDPOINT = "Microsoft.Network/privateEndpoints";
+        private const string TYPE_NETWORKINTERFACE = "Microsoft.Network/networkInterfaces";
 
         private static readonly JsonMergeSettings _MergeSettings = new()
         {
@@ -113,6 +120,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private static void ProjectRuntimeProperties(TemplateContext context, IResourceValue resource)
         {
             _ = ProjectManagedIdentity(context, resource) ||
+                ProjectVirtualNetwork(context, resource) ||
+                ProjectPrivateEndpoints(context, resource) ||
                 ProjectResource(context, resource);
         }
 
@@ -147,6 +156,47 @@ namespace PSRule.Rules.Azure.Data.Template
             if (!properties.ContainsKeyInsensitive(PROPERTY_TENANTID))
                 properties.Add(PROPERTY_TENANTID, context.Tenant.TenantId);
 
+            return true;
+        }
+
+        private static bool ProjectVirtualNetwork(TemplateContext context, IResourceValue resource)
+        {
+            if (!resource.IsType(TYPE_VIRTUALNETWORK))
+                return false;
+
+            resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+
+            // Get subnets
+            if (properties.TryArrayProperty(PROPERTY_SUBNETS, out var subnets))
+            {
+                foreach (var subnet in subnets.Values<JObject>())
+                {
+                    if (subnet.TryGetProperty(PROPERTY_NAME, out var name))
+                        subnet[PROPERTY_ID] = string.Concat(resource.Id, "/subnets/", name);
+                }
+            }
+            return true;
+        }
+
+        private static bool ProjectPrivateEndpoints(TemplateContext context, IResourceValue resource)
+        {
+            if (!resource.IsType(TYPE_PRIVATEENDPOINT))
+                return false;
+
+            if (!ResourceHelper.TryResourceGroup(resource.Id, out var subscriptionId, out var resourceGroupName))
+                return true;
+
+            resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+
+            // Add network interfaces
+            if (!properties.ContainsKeyInsensitive(PROPERTY_NETWORKINTERFACES))
+            {
+                var networkInterface = new JObject
+                {
+                    [PROPERTY_ID] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, TYPE_NETWORKINTERFACE, $"pe.nic.{ExpressionHelpers.GetUniqueString(new object[] { resource.Id })}")
+                };
+                properties[PROPERTY_NETWORKINTERFACES] = new JArray(new JObject[] { networkInterface });
+            }
             return true;
         }
 

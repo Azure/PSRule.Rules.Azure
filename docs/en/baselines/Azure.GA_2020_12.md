@@ -6,7 +6,7 @@ Include rules released December 2020 or prior for Azure GA features.
 
 ## Rules
 
-The following rules are included within `Azure.GA_2020_12`. This baseline includes a total of 178 rules.
+The following rules are included within `Azure.GA_2020_12`. This baseline includes a total of 177 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -32,7 +32,6 @@ Name | Synopsis | Severity
 [Azure.AKS.Version](../rules/Azure.AKS.Version.md) | AKS control plane and nodes pools should use a current stable release. | Important
 [Azure.APIM.APIDescriptors](../rules/Azure.APIM.APIDescriptors.md) | API Management APIs should have a display name and description. | Awareness
 [Azure.APIM.CertificateExpiry](../rules/Azure.APIM.CertificateExpiry.md) | Renew certificates used for custom domain bindings. | Important
-[Azure.APIM.EncryptValues](../rules/Azure.APIM.EncryptValues.md) | API Management named values should be encrypted. | Important
 [Azure.APIM.HTTPBackend](../rules/Azure.APIM.HTTPBackend.md) | Use HTTPS for communication to backend services. | Critical
 [Azure.APIM.HTTPEndpoint](../rules/Azure.APIM.HTTPEndpoint.md) | Enforce HTTPS for communication to API clients. | Important
 [Azure.APIM.ManagedIdentity](../rules/Azure.APIM.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important

@@ -24,12 +24,32 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.26.0:
+- New rules:
+  - Defender for Cloud:
+    - Check that Microsoft Defender Cloud Security Posture Management is using `Standard` plan by @BenjaminEngeset.
+      [#2151](https://github.com/Azure/PSRule.Rules.Azure/issues/2151)
+
+## v1.27.0-B0003 (pre-release)
+
+What's changed since v1.26.1:
 
 - Updated rules:
   - API Management:
     - Updated `Azure.APIM.EncryptValues` to check all API Management named values are encrypted with Key Vault secrets @BenjaminEngeset.
       [#2146](https://github.com/Azure/PSRule.Rules.Azure/issues/2146)
+- Bug fixes:
+  - Fixed reference for runtime subnet ID property by @BernieWhite.
+    [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+
+## v1.26.1
+
+What's changed since v1.26.0:
+
+- Bug fixes:
+  - Fixed null union with first value being null by @BernieWhite.
+    [#2075](https://github.com/Azure/PSRule.Rules.Azure/issues/2075)
+  - Fixed `Azure.Resource.UseTags` for additional resources that don't support tags by @BernieWhite.
+    [#2129](https://github.com/Azure/PSRule.Rules.Azure/issues/2129)
 
 ## v1.26.0
 
