@@ -136,19 +136,17 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'namedvalue-A', 'namedvalue-B';
 
-            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The named value 'property-B' is not secret.";
-            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly "The named value 'property-B' is not secret.";
+            $ruleResult[0].Reason | Should -BeExactly "The named value 'namedvalue-A' is not a secret securely stored within a key vault.";
+            $ruleResult[1].Reason | Should -BeExactly "The named value 'namedvalue-A' is not a secret securely stored within a key vault.", "The named value 'namedvalue-B' is not a secret securely stored within a key vault.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 14;
-            $ruleResult.TargetName | Should -Be 'apim-B', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
+            $ruleResult.Length | Should -Be 15;
+            $ruleResult.TargetName | Should -Be 'apim-C','apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P', 'namedvalue-C';
         }
 
         It 'Azure.APIM.ProductSubscription' {
