@@ -65,7 +65,7 @@ Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redi
     }
 
     $capacityUnitMapping = @{
-        'Enterprise' = @(2, 4, 6, 8, 10)
+        'Enterprise'      = @(2, 4, 6, 8, 10)
         'EnterpriseFlash' = @(3, 9)
     }
 
@@ -84,7 +84,7 @@ Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redi
 } -Configure @{ AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Determine if there is an excessive number of firewall rules for the Redis Cache
-Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -If { HasPublicNetworkAccess } -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
 
     $services = @($TargetObject);
 
@@ -101,13 +101,13 @@ Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/re
 
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Cache/redis/firewallRules');
     $Assert.
-        LessOrEqual($firewallRules, '.', 10).
-        WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
+    LessOrEqual($firewallRules, '.', 10).
+    WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
     
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses for the Redis Cache
-Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000300' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000300' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -If { HasPublicNetworkAccess } -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
 
     $services = @($TargetObject);
 
@@ -123,8 +123,8 @@ Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000300' -Type 'Microsoft.Cache/redi
     $summary.Public = [int32]$summary.Public # Had to convert $summary.Public to int32 from uint64.
 
     $Assert.
-        LessOrEqual($summary, 'Public', 10).
-        WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True); 
+    LessOrEqual($summary, 'Public', 10).
+    WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True); 
     
 }
 
@@ -181,13 +181,21 @@ function global:IsEnterpriseCache {
     param ()
     process {
         return $Assert.In($TargetObject, 'sku.name', @(
-            'Enterprise_E10', 
-            'Enterprise_E20', 
-            'Enterprise_E50',
-            'Enterprise_E100',
-            'EnterpriseFlash_F300',
-            'EnterpriseFlash_F700',
-            'EnterpriseFlash_F1500'));
+                'Enterprise_E10', 
+                'Enterprise_E20', 
+                'Enterprise_E50',
+                'Enterprise_E100',
+                'EnterpriseFlash_F300',
+                'EnterpriseFlash_F700',
+                'EnterpriseFlash_F1500'));
+    }
+}
+
+function global:HasPublicNetworkAccess {
+    [CmdletBinding()]
+    param ()
+    process {
+        return $PSRule.TargetType -eq 'Microsoft.Cache/redis/firewallRules' -or ($PSRule.TargetType -eq 'Microsoft.Cache/redis' -and $TargetObject.properties.publicNetworkAccess -ne 'Disabled')
     }
 }
 
