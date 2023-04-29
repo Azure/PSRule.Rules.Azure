@@ -31,6 +31,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - API Management:
     - Check that base element for any policy element in a section is configured by @BenjaminEngeset.
       [#2072](https://github.com/Azure/PSRule.Rules.Azure/issues/2072)
+- Updated rules:
+  - Container Apps:
+    - Promoted `Azure.ContainerApp.Insecure` to GA rule set by @BernieWhite.
+      [#2174](https://github.com/Azure/PSRule.Rules.Azure/issues/2174)
 
 ## v1.27.0-B0003 (pre-release)
 

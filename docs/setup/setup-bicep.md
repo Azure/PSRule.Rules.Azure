@@ -176,7 +176,7 @@ configuration:
   AZURE_BICEP_CHECK_TOOL: true
 
   # Optionally, configure the minimum version of the Bicep CLI.
-  AZURE_BICEP_MINIMUM_VERSION: '0.13.0'
+  AZURE_BICEP_MINIMUM_VERSION: '0.16.2'
 ```
 
 ### Configuring minimum version
@@ -202,7 +202,7 @@ configuration:
   AZURE_BICEP_CHECK_TOOL: true
 
   # Configure the minimum version of the Bicep CLI.
-  AZURE_BICEP_MINIMUM_VERSION: '0.13.0'
+  AZURE_BICEP_MINIMUM_VERSION: '0.16.2'
 ```
 
 !!! Important

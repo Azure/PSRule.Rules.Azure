@@ -1,8 +1,8 @@
 ---
-reviewed: 2022-02-14
+reviewed: 2023-04-29
 severity: Important
 pillar: Security
-category: Encryption
+category: Design
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.Insecure/
 ---
@@ -17,7 +17,7 @@ Ensure insecure inbound traffic is not permitted to the container app.
 
 Container Apps by default will automatically redirect any HTTP requests to HTTPS.
 In this default configuration any inbound requests will occur over a minimum of TLS 1.2.
-This secure by default behaviour can be overriden by allowing insecure HTTP traffic.
+This secure by default behavior can be overridden by allowing insecure HTTP traffic.
 
 Unencrypted communication to Container Apps could allow disclosure of information to an untrusted party.
 
@@ -37,25 +37,25 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.App/containerApps",
-    "apiVersion": "2021-03-01",
-    "name": "[parameters('appName')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "kubeEnvironmentId": "[resourceId('Microsoft.Web/kubeEnvironments', parameters('envName'))]",
-        "template": {
-            "revisionSuffix": "",
-            "containers": "[variables('containers')]"
-        },
-        "configuration": {
-            "ingress": {
-                "allowInsecure": false
-            }
-        }
+  "type": "Microsoft.App/containerApps",
+  "apiVersion": "2022-10-01",
+  "name": "[parameters('appName')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
+    "template": {
+      "revisionSuffix": "",
+      "containers": "[variables('containers')]"
     },
-    "dependsOn": [
-        "[resourceId('Microsoft.Web/kubeEnvironments', parameters('envName'))]"
-    ]
+    "configuration": {
+      "ingress": {
+        "allowInsecure": false
+      }
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]"
+  ]
 }
 ```
 
@@ -68,11 +68,11 @@ To deploy resource that pass this rule:
 For example:
 
 ```bicep
-resource containerApp 'Microsoft.App/containerApps@2021-03-01' = {
+resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
   name: appName
   location: location
   properties: {
-    kubeEnvironmentId: kubeEnv.id
+    managedEnvironmentId: containerEnv.id
     template: {
       revisionSuffix: ''
       containers: containers
@@ -86,12 +86,9 @@ resource containerApp 'Microsoft.App/containerApps@2021-03-01' = {
 }
 ```
 
-## NOTES
-
-Azure Container Apps are currently in preview.
-
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Set up HTTPS ingress in Azure Container Apps](https://docs.microsoft.com/azure/container-apps/ingress#configuration)
-- [Azure deployment reference](https://docs.microsoft.com/azure/container-apps/azure-resource-manager-api-spec)
+- [Ingress in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/ingress-overview#configuration)
+- [Container Apps ARM template API specification](https://learn.microsoft.com/azure/container-apps/azure-resource-manager-api-spec?tabs=arm-template)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps)

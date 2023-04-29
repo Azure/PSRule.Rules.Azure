@@ -8,7 +8,7 @@ discussion: false
 ## Learn by example
 
 PSRule for Azure helps you quickly identify and fix issues to improve the quality of solutions deployed on Azure.
-Tests include documentation with offical documentation references and examples.
+Tests include documentation with official documentation references and examples.
 Use the Azure Bicep or template examples to adapt your solution to recommendations.
 
 ## Framework aligned
@@ -52,6 +52,8 @@ As new built-in rules are added and improved, download the latest version to sta
     - [Enforcing custom tags][3].
     - [Enforcing code ownership][4].
 
+  [3]: customization/enforce-custom-tags.md
+  [4]: customization/enforce-codeowners.md
 
 ## DevOps integrated
 
