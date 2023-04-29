@@ -32,8 +32,8 @@ Use comments to add context.
 
     ```yaml
     requires:
-      # Require a minimum of PSRule for Azure v1.22.2
-      PSRule.Rules.Azure: '>=1.22.2'
+      # Require a minimum of PSRule for Azure v1.26.1
+      PSRule.Rules.Azure: '>=1.26.1'
 
     configuration:
       # Enable expansion of Azure Template files.
@@ -44,6 +44,12 @@ Use comments to add context.
 
       # Configure the timeout for bicep build to 15 seconds.
       AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 15
+
+      # Enable Bicep CLI checks.
+      AZURE_BICEP_CHECK_TOOL: true
+
+      # Optionally, configure the minimum version of the Bicep CLI.
+      AZURE_BICEP_MINIMUM_VERSION: '0.16.2'
 
       # Configure the minimum AKS cluster version.
       AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.25.6
