@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Security design principles
+category: Design
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.PolicyBase/
 ---
@@ -14,9 +14,18 @@ Base element for any policy element in a section should be configured.
 
 ## DESCRIPTION
 
-Determine the policy evaluation order by placement of the base element in each section in the policy definition at each scope. The base element inherits the policies configured in that section at the next broader (parent) scope. Otherwise inherited security or other controls may not apply.
+Determine the policy evaluation order by placement of the base (`<base />`) element in each section in the policy definition at each scope.
 
-The base element can be placed before or after any policy element in a section, depending on the wanted evaluation order.
+API Management supports the following scopes _Global_ (all API), _Workspace_, _Product_, _API_, or _Operation_.
+
+The _base_ element inherits the policies configured in that section at the next broader (parent) scope.
+Otherwise inherited security or other controls may not apply.
+The _base_ element can be placed before or after any policy element in a section, depending on the wanted evaluation order.
+However, if security controls are defined in inherited scopes it may decrease the effectiveness of these controls.
+For most cases, unless otherwise specified in the policy reference (such as `cors`) the _base_ element should be specified as the first element in each section.
+
+A specific exception is at the _Global_ scope.
+The _Global_ scope does not need the _base_ element because this is the peak scope from which all others inherit.
 
 ## RECOMMENDATION
 
@@ -39,7 +48,7 @@ For example an API policy:
   "apiVersion": "2021-08-01",
   "name": "[format('{0}/{1}', parameters('name'), 'policy')]",
   "properties": {
-    "value": "<policies><inbound><base /><ip-filter action=\"allow\"><address-range from=\"51.175.196.188\" to=\"51.175.196.188\" /></ip-filter></inbound><backend><base /></backend><outbound><base /></outbound><on-error><base /></on-error></policies>",
+    "value": "<policies><inbound><base /><ip-filter action=\"allow\"><address-range from=\"10.1.0.1\" to=\"10.1.0.255\" /></ip-filter></inbound><backend><base /></backend><outbound><base /></outbound><on-error><base /></on-error></policies>",
     "format": "xml"
   },
   "dependsOn": [
@@ -62,7 +71,7 @@ resource apiName_policy 'Microsoft.ApiManagement/service/apis/policies@2021-08-0
   parent: api
   name: 'policy'
   properties: {
-    value: '<policies><inbound><base /><ip-filter action=\"allow\"><address-range from=\"51.175.196.188\" to=\"51.175.196.188\" /></ip-filter></inbound><backend><base /></backend><outbound><base /></outbound><on-error><base /></on-error></policies>'
+    value: '<policies><inbound><base /><ip-filter action=\"allow\"><address-range from=\"10.1.0.1\" to=\"10.1.0.255\" /></ip-filter></inbound><backend><base /></backend><outbound><base /></outbound><on-error><base /></on-error></policies>'
     format: 'xml'
   }
 }
@@ -74,10 +83,11 @@ The rule only checks against `rawxml` and `xml` policy formatted content. Global
 
 ## LINKS
 
+- [Secure application configuration and dependencies](https://learn.microsoft.com/azure/well-architected/security/design-app-dependencies)
 - [Things to know](https://learn.microsoft.com/azure/api-management/api-management-howto-policies#things-to-know)
 - [Mitigate OWASP API threats](https://learn.microsoft.com/azure/api-management/mitigate-owasp-api-threats#recommendations-6)
 - [Apply policies specified at different scopes](https://learn.microsoft.com/azure/api-management/api-management-howto-policies#apply-policies-specified-at-different-scopes)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/apis/resolvers/policies)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/products/policies)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/apis/policies)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/apis//operations/policies)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/apis/operations/policies)
