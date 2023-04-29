@@ -34,7 +34,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#2174](https://github.com/Azure/PSRule.Rules.Azure/issues/2174)
 - Bug fixes:
   - Fixed ignoring Redis firewall rules when Redis is configured to allow private connectivity by @BenjaminEngeset.
-    [#2172](https://github.com/Azure/PSRule.Rules.Azure/issues/2172)
+    [#2171](https://github.com/Azure/PSRule.Rules.Azure/issues/2171)
 
 ## v1.27.0-B0003 (pre-release)
 
