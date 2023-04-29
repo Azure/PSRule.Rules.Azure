@@ -193,16 +193,9 @@ function global:IsEnterpriseCache {
 
 function global:HasPublicNetworkAccess {
     [CmdletBinding()]
-    param (
-        
-    )
+    param ()
     process {
-        if ($PSRule.TargetType -eq 'Microsoft.Cache/redis' -and $TargetObject.properties.publicNetworkAccess -ne 'Disabled') {
-            $True
-        }
-        else {
-            $False
-        }
+        return $PSRule.TargetType -eq 'Microsoft.Cache/redis/firewallRules' -or ($PSRule.TargetType -eq 'Microsoft.Cache/redis' -and $TargetObject.properties.publicNetworkAccess -ne 'Disabled')
     }
 }
 
