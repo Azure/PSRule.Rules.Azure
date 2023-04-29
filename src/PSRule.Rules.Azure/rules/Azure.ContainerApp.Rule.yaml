@@ -15,16 +15,16 @@ metadata:
   name: Azure.ContainerApp.Insecure
   ref: AZR-000094
   tags:
-    release: 'preview'
-    ruleSet: '2022_03'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2023_06
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-2'
+    Azure.MCSB.v1/control: NS-2
 spec:
   with:
     - Azure.ContainerApp.WithIngress
   condition:
-    field: 'properties.configuration.ingress.allowInsecure'
+    field: properties.configuration.ingress.allowInsecure
     hasDefault: false
 
 ---

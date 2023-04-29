@@ -28,6 +28,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Defender for Cloud:
     - Check that Microsoft Defender Cloud Security Posture Management is using `Standard` plan by @BenjaminEngeset.
       [#2151](https://github.com/Azure/PSRule.Rules.Azure/issues/2151)
+- Updated rules:
+  - Container Apps:
+    - Promoted `Azure.ContainerApp.Insecure` to GA rule set by @BernieWhite.
+      [#2174](https://github.com/Azure/PSRule.Rules.Azure/issues/2174)
 
 ## v1.27.0-B0003 (pre-release)
 
