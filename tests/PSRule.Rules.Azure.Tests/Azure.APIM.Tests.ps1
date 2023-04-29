@@ -426,6 +426,24 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'apim-E', 'policy-B';
         }
+
+        It 'Azure.APIM.PolicyBase' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.PolicyBase' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'api-policy-A', 'api-policy-B';
+
+            $ruleResult[0].Reason | Should -BeIn "Path inbound.base: Does not exist.", "Path backend.base: Does not exist.", "Path outbound.base: Does not exist.", "Path on-error.base: Does not exist.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'apim-D', 'api-policy-C';
+        }
     }
 
     Context 'With Template' {
