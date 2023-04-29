@@ -310,6 +310,19 @@ Rule 'Azure.APIM.CORSPolicy' -Ref 'AZR-000365' -Type 'Microsoft.ApiManagement/se
     }
 }
 
+# Synopsis: Base element for any policy element in a section should be configured.
+Rule 'Azure.APIM.PolicyBase' -Ref 'AZR-000371' -Type 'Microsoft.ApiManagement/service', 'Microsoft.ApiManagement/service/apis', 'Microsoft.ApiManagement/service/apis/resolvers', 'Microsoft.ApiManagement/service/apis/operations', 'Microsoft.ApiManagement/service/apis/resolvers/policies', 'Microsoft.ApiManagement/service/products/policies', 'Microsoft.ApiManagement/service/apis/policies',
+'Microsoft.ApiManagement/service/apis/operations/policies' -If { $Null -ne (GetAPIMPolicyNode -Node 'policies' -IgnoreGlobal) } -Tag @{ release = 'GA'; ruleSet = '2023_06'; } {
+    $policies = GetAPIMPolicyNode -Node 'policies' -IgnoreGlobal
+    foreach ($policy in $policies) {
+        Write-Debug "Got policy: $($policy.OuterXml)"
+        
+        $Assert.HasField($policy.inbound, 'base').PathPrefix('inbound')
+        $Assert.HasField($policy.backend, 'base').PathPrefix('backend')
+        $Assert.HasField($policy.outbound, 'base').PathPrefix('outbound')
+        $Assert.HasField($policy.'on-error', 'base').PathPrefix('on-error')
+    }
+}
 #endregion Rules
 
 #region Helper functions
@@ -336,7 +349,9 @@ function global:GetAPIMPolicyNode {
     [CmdletBinding()]
     param (
         [Parameter(Mandatory)]
-        [string]$Node
+        [string]$Node,
+
+        [switch]$IgnoreGlobal
     )
     process {
         $policies = @($TargetObject)
@@ -345,7 +360,7 @@ function global:GetAPIMPolicyNode {
             Write-Debug "[GetAPIMPolicyNode] - Found $($policies.Count) policy nodes."
         }
         $policies | ForEach-Object {
-            if ($_.properties.format -in 'rawxml', 'xml' -and $_.properties.value) {
+            if (!($IgnoreGlobal -and $_.type -eq 'Microsoft.ApiManagement/service/policies') -and $_.properties.format -in 'rawxml', 'xml' -and $_.properties.value) {
                 $xml = [Xml]$_.properties.value
                 $xml.SelectNodes("//${Node}")
             }
