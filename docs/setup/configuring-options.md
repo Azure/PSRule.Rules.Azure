@@ -16,7 +16,7 @@ Configuration options are set within the `ps-rule.yaml` file.
 PSRule will automatically find this file within the current working directory.
 To set options, create a new file named `ps-rule.yaml` in the root directory of your repository.
 
-For configuring in-flight analysis, create a `ps-rule.yaml` in your current working directory.
+For configuring pre-flight analysis, create a `ps-rule.yaml` in your current working directory.
 
 !!! Tip
     This file should be committed to your repository so it is available when your pipeline runs.
