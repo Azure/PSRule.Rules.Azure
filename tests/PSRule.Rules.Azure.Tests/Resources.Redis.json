@@ -721,7 +721,11 @@
         }
       }
     ],
-    "zones": ["2", "3", "1"]
+    "zones": [
+      "2",
+      "3",
+      "1"
+    ]
   },
   {
     "Name": "redis-F",
@@ -740,6 +744,7 @@
         "capacity": 2
       },
       "minimumTlsVersion": "1.2",
+      "publicNetworkAccess": "Disabled",
       "enableNonSslPort": false,
       "redisConfiguration": {
         "maxclients": "2000",
@@ -752,7 +757,9 @@
       "linkedServers": [],
       "replicasPerMaster": 2
     },
-    "zones": ["1"]
+    "zones": [
+      "1"
+    ]
   },
   {
     "Name": "redis-G",
@@ -783,7 +790,11 @@
       "linkedServers": [],
       "replicasPerMaster": 1
     },
-    "zones": ["1", "2", "3"]
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ]
   },
   {
     "Name": "redis-H",
@@ -876,7 +887,11 @@
       "linkedServers": [],
       "replicasPerMaster": 1
     },
-    "zones": ["1", "2", "3"]
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ]
   },
   {
     "Name": "redis-K",
@@ -895,7 +910,11 @@
       "name": "Enterprise_E10",
       "capacity": 2
     },
-    "zones": ["1", "2", "3"]
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ]
   },
   {
     "Name": "redis-L",
@@ -971,7 +990,11 @@
       "name": "EnterpriseFlash_F300",
       "capacity": 3
     },
-    "zones": ["1", "2", "3"]
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ]
   },
   {
     "Name": "redis-P",

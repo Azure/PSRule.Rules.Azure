@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-09-22
+reviewed: 2023-04-29
 severity: Awareness
 pillar: Security
 category: Network security and containment
@@ -35,7 +35,7 @@ To deploy caches that pass this rule:
 ```json
 {
   "type": "Microsoft.Cache/redis/firewallRules",
-  "apiVersion": "2022-05-01",
+  "apiVersion": "2022-06-01",
   "name": "string",
   "properties": {
     "startIP": "string",
@@ -52,7 +52,7 @@ To deploy caches that pass this rule:
 - Set the `properties.endIP` property to the end of the IP address range.
 
 ```bicep
-resource symbolicname 'Microsoft.Cache/redis/firewallRules@2022-05-01' = {
+resource symbolicname 'Microsoft.Cache/redis/firewallRules@2022-06-01' = {
   name: 'string'
   parent: resourceSymbolicName
   properties: {
@@ -61,8 +61,13 @@ resource symbolicname 'Microsoft.Cache/redis/firewallRules@2022-05-01' = {
   }
 }
 ```
+## NOTES
+
+This rule is not applicable when Redis is configured to allow private connectivity by setting `properties.publicNetworkAccess` to `Disabled`.
+Firewall rules can be used with VNet injected caches, but not private endpoints.
 
 ## LINKS
 
-- [How to configure Azure Cache for Redis - Firewall](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#default-redis-server-configuration#firewall)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)
+- [How to configure Azure Cache for Redis - Firewall](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-configure#default-redis-server-configuration#firewall)
+- [Limitations of firewall rules](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-network-isolation#limitations-of-firewall-rules)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis/firewallrules)
