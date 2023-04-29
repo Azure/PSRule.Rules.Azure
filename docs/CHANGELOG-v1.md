@@ -32,6 +32,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Container Apps:
     - Promoted `Azure.ContainerApp.Insecure` to GA rule set by @BernieWhite.
       [#2174](https://github.com/Azure/PSRule.Rules.Azure/issues/2174)
+- Bug fixes:
+  - Fixed ignoring Redis firewall rules when Redis is configured to allow private connectivity by @BenjaminEngeset.
+    [#2172](https://github.com/Azure/PSRule.Rules.Azure/issues/2172)
 
 ## v1.27.0-B0003 (pre-release)
 
