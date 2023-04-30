@@ -24,15 +24,19 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.27.0-B0015 (pre-release)
+
+What's changed since pre-release v1.27.0-B0003:
+
 - New rules:
-  - Defender for Cloud:
-    - Check that Microsoft Defender Cloud Security Posture Management is using `Standard` plan by @BenjaminEngeset.
-      [#2151](https://github.com/Azure/PSRule.Rules.Azure/issues/2151)
   - API Management:
     - Check that base element for any policy element in a section is configured by @BenjaminEngeset.
       [#2072](https://github.com/Azure/PSRule.Rules.Azure/issues/2072)
+  - Defender for Cloud:
+    - Check that Microsoft Defender Cloud Security Posture Management is using `Standard` plan by @BenjaminEngeset.
+      [#2151](https://github.com/Azure/PSRule.Rules.Azure/issues/2151)
 - Updated rules:
-  - Container Apps:
+  - Container App:
     - Promoted `Azure.ContainerApp.Insecure` to GA rule set by @BernieWhite.
       [#2174](https://github.com/Azure/PSRule.Rules.Azure/issues/2174)
 - Bug fixes:
