@@ -118,12 +118,20 @@ There is a few common causes of this issue including:
   Expansion occurs automatically in memory when enabled.
   For this to work, the module `PSRule.Rules.Azure` must be run with any custom rules.
   See [using templates][2] and [using Bicep source][3] for details on how to enable expansion.
+- **Check include local option** &mdash; When running PSRule for Azure with a baseline.
+  Baselines such as [quarterly baselines][12] may use filters to limit the rules that are included.
+  As a result, custom rules may not be included.
+  To include custom rules set the [Rule.IncludeLocal][13] option to `true`.
+  See [Including custom rules][14] for more information.
 
 !!! Tip
     You may be able to use `git mv` to change the case of a file if it is committed to the repository incorrectly.
 
   [5]: https://aka.ms/ps-rule/naming
   [6]: customization/enforce-custom-tags.md#binding-type
+  [12]: working-with-baselines.md#quarterly-baseline
+  [13]: https://aka.ms/ps-rule/options#ruleincludelocal
+  [14]: working-with-baselines.md#including-custom-rules
 
 ## Parameter file warns of metadata property
 
