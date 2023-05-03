@@ -29,7 +29,6 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that Microsoft Defender for Containers extension for Arc-enabled Kubernetes clusters is configured by @BenjaminEngeset.
       [#2124](https://github.com/Azure/PSRule.Rules.Azure/issues/2124)
 
-
 ## v1.27.0-B0015 (pre-release)
 
 What's changed since pre-release v1.27.0-B0003:
