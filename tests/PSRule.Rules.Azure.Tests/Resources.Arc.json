@@ -1,0 +1,86 @@
+[
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kubernetes/connectedClusters/cluster-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kubernetes/connectedClusters/cluster-A",
+    "Location": "region",
+    "ResourceName": "cluster-A",
+    "Name": "cluster-A",
+    "Identity": {
+      "type": "SystemAssigned"
+    },
+    "Properties": {
+      "agentPublicKeyCertificate": null,
+      "azureHybridBenefit": false,
+      "distribution": "gke",
+      "distributionVersion": "1.26",
+      "infrastructure": "gcp",
+      "privateLinkScopeResourceId": null,
+      "privateLinkState": "Disabled",
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Kubernetes/connectedClusters",
+    "ResourceType": "Microsoft.Kubernetes/connectedClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": []
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kubernetes/connectedClusters/cluster-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kubernetes/connectedClusters/cluster-B",
+    "Location": "region",
+    "ResourceName": "cluster-B",
+    "Name": "cluster-B",
+    "Identity": {
+      "type": "SystemAssigned"
+    },
+    "Properties": {
+      "agentPublicKeyCertificate": null,
+      "azureHybridBenefit": false,
+      "distribution": "gke",
+      "distributionVersion": "1.26",
+      "infrastructure": "gcp",
+      "privateLinkScopeResourceId": null,
+      "privateLinkState": "Disabled",
+      "provisioningState": "Succeeded"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Kubernetes/connectedClusters",
+    "ResourceType": "Microsoft.Kubernetes/connectedClusters",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kubernetes/connectedClusters/cluster-B/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Kubernetes/connectedClusters/cluster-B/providers/Microsoft.KubernetesConfiguration/extensions/microsoft.azuredefender.kubernetes",
+        "ResourceName": "microsoft.azuredefender.kubernetes",
+        "Name": "microsoft.azuredefender.kubernetes",
+        "Identity": {
+          "type": "SystemAssigned"
+        },
+        "Properties": {
+          "extensionType": "microsoft.azuredefender.kubernetes",
+          "configurationSettings": {
+            "logAnalyticsWorkspaceResourceID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/workspaces/workspace-A",
+            "auditLogPath": "/var/log/kube-apiserver/audit.log"
+          },
+          "configurationProtectedSettings": {
+            "omsagent.secret.wsid": "00000000-0000-0000-0000-000000000000",
+            "omsagent.secret.key": "_primary-key_"
+          },
+          "autoUpgradeMinorVersion": true,
+          "releaseTrain": "Stable",
+          "scope": {
+            "Cluster": {
+              "releaseNamespace": "azuredefender"
+            }
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.KubernetesConfiguration/extensions",
+        "ResourceType": "Microsoft.KubernetesConfiguration/extensions",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
+]
