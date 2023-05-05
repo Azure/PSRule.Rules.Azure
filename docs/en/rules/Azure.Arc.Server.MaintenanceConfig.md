@@ -1,0 +1,76 @@
+---
+severity: Important
+pillar: Operational Excellence
+category: Repeatable infrastructure
+resource: Arc
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Arc.Server.MaintenanceConfig/
+---
+
+# Associate a maintenance configuration
+
+## SYNOPSIS
+
+Use a maintenance configuration for Arc-enabled servers.
+
+## DESCRIPTION
+
+Arc-enabled servers can be attached to a maintenance configuration which allows customer managed assessments and updates for machine patches within the guest operating system.
+
+## RECOMMENDATION
+
+Consider associating a maintenance configuration for Arc-enabled servers.
+
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy Arc-enabled servers that pass this rule:
+
+- Deploy a `Microsoft.Maintenance/configurationAssignments` sub-resource (extension resource).
+- Set the `properties.maintenanceConfigurationId` property to the linked maintenance configuration resource Id.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Maintenance/configurationAssignments",
+  "apiVersion": "2022-11-01-preview",
+  "name": "[parameters('assignmentName')]",
+  "location": "[parameters('location')]",
+  "scope": "[format('Microsoft.HybridCompute/machines/{0}', parameters('name'))]",
+  "properties": {
+    "maintenanceConfigurationId": "[format('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Maintenance/maintenanceConfigurations/{0}', parameters('maintenanceConfigName'))]",
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.HybridCompute/machines', parameters('name'))]"
+  ]
+}
+```
+
+### Configure with Bicep
+
+To deploy Arc-enabled servers that pass this rule:
+
+- Deploy a `Microsoft.Maintenance/configurationAssignments` sub-resource (extension resource).
+- Set the `properties.maintenanceConfigurationId` property to the linked maintenance configuration resource Id.
+
+For example:
+
+```bicep
+resource assosciateMaintenanceConfig 'Microsoft.Maintenance/configurationAssignments@2022-11-01-preview' = {
+  name: assignmentName
+  location: location
+  scope: arcServer
+  properties: {
+    maintenanceConfigurationId: maintenanceConfigurationId
+  }
+}
+```
+
+## LINKS
+
+- [Repeatable infrastructure](https://learn.microsoft.com/azure/well-architected/devops/automation-infrastructure)
+- [About Update management center](https://learn.microsoft.com/azure/update-center/overview)
+- [How to programmatically manage updates for Azure Arc-enabled servers](https://learn.microsoft.com/azure/update-center/manage-arc-enabled-servers-programmatically)
+- [Manage Update configuration settings](https://learn.microsoft.com/azure/update-center/manage-update-settings)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.maintenance/configurationassignments)

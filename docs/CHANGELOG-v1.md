@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Arc-enabled servers:
+    - Check that a maintenance configuration for Arc-enabled servers is associated by @BenjaminEngeset.
+      [#2122](https://github.com/Azure/PSRule.Rules.Azure/issues/2122)
+
 ## v1.27.0-B0015 (pre-release)
 
 What's changed since pre-release v1.27.0-B0003:
