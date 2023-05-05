@@ -109,4 +109,5 @@ resource defenderExtension 'Microsoft.KubernetesConfiguration/extensions@2022-11
 - [Security operations](https://learn.microsoft.com/azure/architecture/framework/security/security-operations)
 - [Defender for Containers architecture](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-architecture)
 - [Enable Microsoft Defender for Containers](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-enable?pivots=defender-for-container-arc)
+- [LT-1: Enable threat detection capabilities](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-arc-enabled-kubernetes-security-baseline#lt-1-enable-threat-detection-capabilities)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.kubernetesconfiguration/extensions)
