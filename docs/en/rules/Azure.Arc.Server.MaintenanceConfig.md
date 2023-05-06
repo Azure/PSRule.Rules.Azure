@@ -66,6 +66,9 @@ resource assosciateMaintenanceConfig 'Microsoft.Maintenance/configurationAssignm
   }
 }
 ```
+## NOTES
+
+Not all regions or operating systems are supported, check out the `LINKS` section for more information. Update management center doesn't support driver updates.
 
 ## LINKS
 
@@ -73,4 +76,6 @@ resource assosciateMaintenanceConfig 'Microsoft.Maintenance/configurationAssignm
 - [About Update management center](https://learn.microsoft.com/azure/update-center/overview)
 - [How to programmatically manage updates for Azure Arc-enabled servers](https://learn.microsoft.com/azure/update-center/manage-arc-enabled-servers-programmatically)
 - [Manage Update configuration settings](https://learn.microsoft.com/azure/update-center/manage-update-settings)
+- [Supported regions](https://learn.microsoft.com/azure/update-center/support-matrix?tabs=azurearc%2Cazurearc-os#supported-regions)
+- [Supported operating systems](https://learn.microsoft.com/azure/update-center/support-matrix?tabs=azurearc%2Cazurearc-os#supported-operating-systems)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.maintenance/configurationassignments)
