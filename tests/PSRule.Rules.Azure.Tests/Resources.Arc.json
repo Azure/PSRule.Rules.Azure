@@ -156,7 +156,7 @@
     "resources": [
       {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-B/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
-        "Id":  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-B/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-B/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
         "ResourceName": "configassignment-A",
         "Name": "configassignment-A",
         "Properties": {
