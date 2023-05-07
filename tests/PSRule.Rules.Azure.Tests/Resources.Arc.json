@@ -109,7 +109,7 @@
           "startupType": "Enabled",
           "status": "Running"
         },
-        "vmId": "BC5BCA47-A882-4096-BB2D-D76E6C170534"
+        "vmId": "00000000-0000-0000-0000-000000000000"
       }
     },
     "ResourceGroupName": "test-rg",
