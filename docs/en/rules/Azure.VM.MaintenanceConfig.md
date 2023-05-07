@@ -57,7 +57,7 @@ To deploy virtual machines that pass this rule:
 For example:
 
 ```bicep
-resource assosciateMaintenanceConfig 'Microsoft.Maintenance/configurationAssignments@2022-11-01-preview' = {
+resource config 'Microsoft.Maintenance/configurationAssignments@2022-11-01-preview' = {
   name: assignmentName
   location: location
   scope: vm
