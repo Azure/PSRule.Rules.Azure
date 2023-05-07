@@ -18,7 +18,7 @@ Virtual machines can be attached to a maintenance configuration which allows cus
 
 ## RECOMMENDATION
 
-Consider associating a maintenance configuration for virtual machines.
+Consider automatically managing and applying operating system updates by associating a maintenance configuration.
 
 ## EXAMPLES
 
