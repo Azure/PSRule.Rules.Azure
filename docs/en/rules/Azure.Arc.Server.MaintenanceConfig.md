@@ -18,7 +18,7 @@ Arc-enabled servers can be attached to a maintenance configuration which allows 
 
 ## RECOMMENDATION
 
-Consider associating a maintenance configuration for Arc-enabled servers.
+Consider automatically managing and applying operating system updates with a maintenance configuration.
 
 ## EXAMPLES
 
