@@ -69,7 +69,9 @@ resource assosciateMaintenanceConfig 'Microsoft.Maintenance/configurationAssignm
 
 ## NOTES
 
-Not all regions or operating systems are supported, check out the `LINKS` section for more information. Update management center doesn't support driver updates.
+Operating system updates with Update Managment center is a preview feature.
+Not all regions or operating systems are supported, check out the `LINKS` section for supported regions.
+Update management center doesn't support driver updates.
 
 ## LINKS
 
