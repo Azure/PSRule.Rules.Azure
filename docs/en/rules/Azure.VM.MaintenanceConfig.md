@@ -39,7 +39,7 @@ For example:
   "location": "[parameters('location')]",
   "scope": "[format('Microsoft.Compute/virtualMachines/{0}', parameters('name'))]",
   "properties": {
-    "maintenanceConfigurationId": "[format('/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Maintenance/maintenanceConfigurations/{0}', parameters('maintenanceConfigName'))]",
+    "maintenanceConfigurationId": "[parameters('maintenanceConfigurationId')]"
   },
   "dependsOn": [
     "[resourceId('Microsoft.Compute/virtualMachines', parameters('name'))]"
