@@ -185,6 +185,26 @@ spec:
     field: properties.webApplicationFirewallConfiguration.disabledRuleGroups
     lessOrEquals: 0
 
+---
+# Synopsis: Use a Application Gateway v2 SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.MigrateV2
+  ref: AZR-000376
+  tags:
+    release: GA
+    ruleSet: 2023_06
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+  - Microsoft.Network/applicationGateways
+  condition:
+    field: properties.sku.tier
+    in:
+      - Standard_v2
+      - WAF_v2
+
 #endregion Rules
 
 #region Selectors

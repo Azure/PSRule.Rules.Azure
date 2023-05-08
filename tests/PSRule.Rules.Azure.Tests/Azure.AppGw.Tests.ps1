@@ -222,6 +222,23 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B';
         }
+
+        It 'Azure.AppGw.MigrateV2' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppGw.MigrateV2' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.sku.tier';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
+        }
     }
 
     Context 'With Configuration Option' {
