@@ -293,6 +293,17 @@ Rule 'Azure.VM.AMA' -Ref 'AZR-000345' -Type 'Microsoft.Compute/virtualMachines' 
 
 #endregion Azure Monitor Agent
 
+#region Maintenance Configuration
+
+# Synopsis: Use a maintenance configuration for virtual machines. 
+Rule 'Azure.VM.MaintenanceConfig' -Ref 'AZR-000375' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'Preview'; ruleSet = '2023_06'; } {
+    $maintenanceConfig = @(GetSubResources -ResourceType 'Microsoft.Maintenance/configurationAssignments' |
+        Where-Object { $_.properties.maintenanceConfigurationId })
+    $Assert.GreaterOrEqual($maintenanceConfig, '.', 1).Reason($LocalizedData.VMMaintenanceConfig, $PSRule.TargetName)
+}
+
+#endregion Maintenance Configuration
+
 #region Helper functions
 
 function global:HasPublisherMicrosoftSQLServer {

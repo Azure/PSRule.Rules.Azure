@@ -53,5 +53,24 @@ Describe 'Azure.Arc' -Tag 'Arc' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'cluster-B';
         }
+        
+        It 'Azure.Arc.Server.MaintenanceConfig' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Arc.Server.MaintenanceConfig' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
+
+            $ruleResult[0].Reason | Should -BeExactly "The Arc-enabled server 'server-A' should have a maintenance configuration associated.";
+            $ruleResult[1].Reason | Should -BeExactly "The Arc-enabled server 'server-B' should have a maintenance configuration associated.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-C';
+        }
     }
 }

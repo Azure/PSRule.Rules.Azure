@@ -601,6 +601,25 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 10
         }
+
+        It 'Azure.VM.MaintenanceConfig' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.MaintenanceConfig' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine 'vm-A' should have a maintenance configuration associated.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine 'vm-B' should have a maintenance configuration associated.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vm-C';
+        }
     }
 
     Context 'Resource name - Azure.VM.Name' {
