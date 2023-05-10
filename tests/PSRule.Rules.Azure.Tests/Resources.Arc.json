@@ -82,5 +82,141 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-A",
+    "Location": "region",
+    "ResourceName": "server-A",
+    "Name": "server-A",
+    "Identity": {
+      "type": "SystemAssigned"
+    },
+    "Properties": {
+      "clientPublicKey": null,
+      "cloudMetadata": {},
+      "osProfile": {
+        "windowsConfiguration": {
+          "patchSettings": {
+            "assessmentMode": "FromImage",
+            "patchMode": "FromImage"
+          }
+        }
+      },
+      "osType": "windows",
+      "serviceStatuses": {
+        "extensionService": {
+          "startupType": "Enabled",
+          "status": "Running"
+        },
+        "vmId": "00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.HybridCompute/machines",
+    "ResourceType": "Microsoft.HybridCompute/machines",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": []
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-B",
+    "Location": "region",
+    "ResourceName": "server-B",
+    "Name": "server-B",
+    "Identity": {
+      "type": "SystemAssigned"
+    },
+    "Properties": {
+      "clientPublicKey": null,
+      "cloudMetadata": {},
+      "osProfile": {
+        "windowsConfiguration": {
+          "patchSettings": {
+            "assessmentMode": "AutomaticByPlatform",
+            "patchMode": "AutomaticByPlatform"
+          }
+        }
+      },
+      "osType": "windows",
+      "serviceStatuses": {
+        "extensionService": {
+          "startupType": "Enabled",
+          "status": "Running"
+        },
+        "vmId": "00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.HybridCompute/machines",
+    "ResourceType": "Microsoft.HybridCompute/machines",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-B/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-B/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
+        "ResourceName": "configassignment-A",
+        "Name": "configassignment-A",
+        "Properties": {
+          "maintenanceConfigurationId": null
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-C",
+    "Location": "region",
+    "ResourceName": "server-C",
+    "Name": "server-C",
+    "Identity": {
+      "type": "SystemAssigned"
+    },
+    "Properties": {
+      "clientPublicKey": null,
+      "cloudMetadata": {},
+      "osProfile": {
+        "windowsConfiguration": {
+          "patchSettings": {
+            "assessmentMode": "AutomaticByPlatform",
+            "patchMode": "AutomaticByPlatform"
+          }
+        }
+      },
+      "osType": "windows",
+      "serviceStatuses": {
+        "extensionService": {
+          "startupType": "Enabled",
+          "status": "Running"
+        },
+        "vmId": "00000000-0000-0000-0000-000000000000"
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.HybridCompute/machines",
+    "ResourceType": "Microsoft.HybridCompute/machines",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-C/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.HybridCompute/machines/server-C/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
+        "ResourceName": "configassignment-A",
+        "Name": "configassignment-A",
+        "Properties": {
+          "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Maintenance/maintenanceConfigurations/maintenanceconfig-A"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   }
 ]

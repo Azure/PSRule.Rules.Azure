@@ -28,6 +28,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Arc-enabled Kubernetes cluster:
     - Check that Microsoft Defender for Containers extension for Arc-enabled Kubernetes clusters is configured by @BenjaminEngeset.
       [#2124](https://github.com/Azure/PSRule.Rules.Azure/issues/2124)
+  - Arc-enabled server:
+    - Check that a maintenance configuration for Arc-enabled servers is associated by @BenjaminEngeset.
+      [#2122](https://github.com/Azure/PSRule.Rules.Azure/issues/2122)
   - Virtual Machine:
     - Check that a maintenance configuration for virtual machines is associated by @BenjaminEngeset.
       [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
