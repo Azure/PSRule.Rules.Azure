@@ -200,10 +200,15 @@ spec:
   type:
   - Microsoft.Network/applicationGateways
   condition:
-    field: properties.sku.tier
-    in:
-      - Standard_v2
-      - WAF_v2
+    anyOf:
+    - field: properties.sku.tier
+      in:
+        - Standard_v2
+        - WAF_v2
+    - field: properties.sku.name
+      in:
+        - Standard_v2
+        - WAF_v2
 
 #endregion Rules
 
