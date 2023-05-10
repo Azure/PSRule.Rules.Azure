@@ -98,5 +98,6 @@
     APIMCORSPolicy = "Wildcard * for configuration options in CORS policies settings should not be configured."
     AzureADOnlyAuthentication = "Azure AD-only authentication should be enabled for the service."
     ArcKubernetesDefender = "The Arc-enabled Kubernetes cluster '{0}' should have a Microsoft Defender for Containers extension configured."
+    VMMaintenanceConfig = "The virtual machine '{0}' should have a maintenance configuration associated."
     ArcServerMaintenanceConfig = "The Arc-enabled server '{0}' should have a maintenance configuration associated."
 }

@@ -550,6 +550,19 @@
         "ExtensionResourceType": null,
         "Sku": null,
         "SubscriptionId": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-B/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-B/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
+        "ResourceName": "configassignment-A",
+        "Name": "configassignment-A",
+        "Properties": {
+          "maintenanceConfigurationId": null
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -1349,6 +1362,19 @@
         "Sku": null,
         "Tags": null,
         "SubscriptionId": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-C/providers/Microsoft.Maintenance/configurationAssignments/configassignment-A",
+        "ResourceName": "configassignment-A",
+        "Name": "configassignment-A",
+        "Properties": {
+          "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Maintenance/maintenanceConfigurations/maintenanceconfig-A"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
