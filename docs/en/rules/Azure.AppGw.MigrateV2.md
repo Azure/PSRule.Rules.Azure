@@ -20,7 +20,7 @@ The v2 SKUs offers performance enhancements, security controls and adds support 
 
 ## RECOMMENDATION
 
-Migrate Application Gateways from a v1 SKU to a v2 SKU. 
+Migrate deprecated v1 Application Gateways to a v2 SKU before retirement to avoid service disruption.
 
 ## EXAMPLES
 
