@@ -28,7 +28,7 @@ Migrate deprecated v1 Application Gateways to a v2 SKU before retirement to avoi
 
 To deploy Application Gateways that pass this rule:
 
-- Set `properties.sku.tier` to `Standard_v2` (Application Gateway) or `WAF_v2` (Web Application Firewall).
+- Set `properties.sku.tier` or `properties.sku.name` to `Standard_v2` (Application Gateway) or `WAF_v2` (Web Application Firewall).
 
 For example:
 
@@ -52,7 +52,7 @@ For example:
 
 To deploy Application Gateways that pass this rule:
 
-- Set `properties.sku.tier` to `Standard_v2` (Application Gateway) or `WAF_v2` (Web Application Firewall).
+- Set `properties.sku.tier` or `properties.sku.name` to `Standard_v2` (Application Gateway) or `WAF_v2` (Web Application Firewall).
 
 For example:
 
