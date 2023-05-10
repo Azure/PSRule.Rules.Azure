@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.27.0-B0015:
+
 - New rules:
   - Arc-enabled Kubernetes cluster:
     - Check that Microsoft Defender for Containers extension for Arc-enabled Kubernetes clusters is configured by @BenjaminEngeset.
@@ -34,6 +36,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine:
     - Check that a maintenance configuration for virtual machines is associated by @BenjaminEngeset.
       [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
+- Bug fixes:
+  - Fixed handling of database name in `Azure.MariaDB.Database` by @BernieWhite.
+    [#2191](https://github.com/Azure/PSRule.Rules.Azure/issues/2191)
 
 ## v1.27.0-B0015 (pre-release)
 
