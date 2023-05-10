@@ -14,4 +14,11 @@ Rule 'Azure.Arc.Kubernetes.Defender' -Ref 'AZR-000373' -Type 'Microsoft.Kubernet
     $Assert.GreaterOrEqual($defender, '.', 1).Reason($LocalizedData.ArcKubernetesDefender, $PSRule.TargetName)
 }
 
+# Synopsis: Use a maintenance configuration for Arc-enabled servers. 
+Rule 'Azure.Arc.Server.MaintenanceConfig' -Ref 'AZR-000374' -Type 'Microsoft.HybridCompute/machines' -Tag @{ release = 'Preview'; ruleSet = '2023_06'; } {
+    $maintenanceConfig = @(GetSubResources -ResourceType 'Microsoft.Maintenance/configurationAssignments' |
+        Where-Object { $_.properties.maintenanceConfigurationId })
+    $Assert.GreaterOrEqual($maintenanceConfig, '.', 1).Reason($LocalizedData.ArcServerMaintenanceConfig, $PSRule.TargetName)
+}
+
 #endregion Rules
