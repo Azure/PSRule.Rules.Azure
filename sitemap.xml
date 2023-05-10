@@ -2016,6 +2016,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.MaintenanceConfig/</loc>
+         <lastmod>2023-05-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.MigrateAMA/</loc>
          <lastmod>2023-05-10</lastmod>
          <changefreq>daily</changefreq>
