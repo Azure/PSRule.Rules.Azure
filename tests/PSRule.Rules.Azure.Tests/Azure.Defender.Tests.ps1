@@ -203,7 +203,7 @@ Describe 'Azure.Defender' -Tag 'MDC', 'Defender' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetObject.Name | Should -BeIn 'defendernW';
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderW';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
