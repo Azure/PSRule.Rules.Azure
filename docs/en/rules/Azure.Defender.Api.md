@@ -29,7 +29,7 @@ Microsoft Defender for APIs can be enabled at the subscription level.
 
 ## RECOMMENDATION
 
-Consider using Microsoft Defender for APIs to provide additional security for APIs published in Azure API Management. 
+Consider using Microsoft Defender for APIs to provide additional security for APIs published in Azure API Management.
 
 ## EXAMPLES
 
@@ -92,10 +92,6 @@ For example:
 ```powershell
 Set-AzSecurityPricing -Name 'Api' -PricingTier 'Standard'
 ```
-
-## NOTES
-
-This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## NOTES
 
