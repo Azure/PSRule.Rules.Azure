@@ -34,6 +34,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine:
     - Check that a maintenance configuration for virtual machines is associated by @BenjaminEngeset.
       [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
+  - Container App:
+    - Check that container apps has disabled session affinity to prevent unbalanced distribution by @BenjaminEngeset.
+      [#2188](https://github.com/Azure/PSRule.Rules.Azure/issues/2188)
 
 ## v1.27.0-B0015 (pre-release)
 

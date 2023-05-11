@@ -122,6 +122,23 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'capp-D';
         }
+
+        It 'Azure.ContainerApp.DisableAffinity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.DisableAffinity' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'capp-A';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.configuration.ingress.stickySessions.affinity'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'capp-B', 'capp-C', 'capp-D';
+        }
     }
 
     Context 'Resource name - Azure.ContainerApp.Name' {
