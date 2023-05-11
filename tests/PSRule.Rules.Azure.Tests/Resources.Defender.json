@@ -213,5 +213,25 @@
     "Properties": {
       "pricingTier": "Free"
     }
+  },
+  {
+    "Name": "defenderV",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/Api",
+    "ResourceName": "Api",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderW",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/Api",
+    "ResourceName": "Api",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Free"
+    }
   }
 ]
