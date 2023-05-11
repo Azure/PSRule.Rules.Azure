@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Performance Efficiency
-category: Network security and containment
+category: Design for performance efficiency
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.DisableAffinity/
 ---
@@ -16,7 +16,7 @@ Disable session affinity to prevent unbalanced distribution.
 
 Container apps allows you to configure session affinity (sticky sessions). It is feature that allows you to route all requests from a client to the same replica.
 
-This feature might be useful fo stateful applications that require a consistent connection to the same replica. However, if your application does not store large amounts of state or cached data in memory (stateless application design pattern), session affinity might decrease your throughput because one replica could get overloaded with requests, while others are dormant.
+This feature might be useful for stateful applications that require a consistent connection to the same replica. However, if your application does not store large amounts of state or cached data in memory (stateless application design pattern), session affinity might decrease your throughput because one replica could get overloaded with requests, while others are dormant.
 
 ## RECOMMENDATION
 
@@ -95,6 +95,7 @@ resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
 
 ## LINKS
 
+- [Avoid a requirement to store server-side session state](https://learn.microsoft.com/azure/well-architected/scalability/design-checklist#implementation)
 - [Session affinity](https://learn.microsoft.com/azure/well-architected/scalability/design-efficiency#improve-scalability-with-session-affinity)
 - [Session Affinity in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/sticky-sessions)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#ingressstickysessions)
