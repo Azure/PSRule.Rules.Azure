@@ -195,5 +195,21 @@ Describe 'Azure.Defender' -Tag 'MDC', 'Defender' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetObject.Name | Should -BeIn 'defenderT';
         }
+
+        It 'Azure.Defender.Api' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.Api' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderW';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderV';
+        }
     }
 }
