@@ -33,6 +33,9 @@ What's changed since pre-release v1.27.0-B0015:
   - Arc-enabled server:
     - Check that a maintenance configuration for Arc-enabled servers is associated by @BenjaminEngeset.
       [#2122](https://github.com/Azure/PSRule.Rules.Azure/issues/2122)
+  - Defender for Cloud:
+    - Check that Microsoft Defender for APIs is enabled by @BenjaminEngeset.
+      [#2186](https://github.com/Azure/PSRule.Rules.Azure/issues/2186)
   - Virtual Machine:
     - Check that a maintenance configuration for virtual machines is associated by @BenjaminEngeset.
       [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
