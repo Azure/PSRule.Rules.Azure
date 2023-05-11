@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Configure a dedicated path for health probe requests.">
+        <meta name="description" content="Use a Application Gateway v2 SKU.">
       
       
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.ProbePath/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.MigrateV2/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Azure.FrontDoor.ProbePath - PSRule for Azure</title>
+        <title>Azure.AppGw.MigrateV2 - PSRule for Azure</title>
       
     
     
@@ -79,20 +79,20 @@
   <!-- Open graph meta tags -->
   <meta property="og:site_name" content="PSRule for Azure" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="PSRule for Azure - Azure.FrontDoor.ProbePath" />
-  <meta property="og:description" content="Configure a dedicated path for health probe requests." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.ProbePath/" />
+  <meta property="og:title" content="PSRule for Azure - Azure.AppGw.MigrateV2" />
+  <meta property="og:description" content="Use a Application Gateway v2 SKU." />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.MigrateV2/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
   <meta property="og:image:height" content="640" />
-  <meta property="og:image:alt" content="Configure a dedicated path for health probe requests." />
+  <meta property="og:image:alt" content="Use a Application Gateway v2 SKU." />
 
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.FrontDoor.ProbePath" />
-  <meta name="twitter:description" content="Configure a dedicated path for health probe requests." />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.AppGw.MigrateV2" />
+  <meta name="twitter:description" content="Use a Application Gateway v2 SKU." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
 
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#use-a-dedicated-health-endpoint-for-front-door-backends" class="md-skip">
+        <a href="#migrate-to-application-gateway-v2" class="md-skip">
           Skip to content
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.FrontDoor.ProbePath
+              Azure.AppGw.MigrateV2
             
           </span>
         </div>
@@ -3188,11 +3188,100 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.AppGw.MigrateV2/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.AppGw.MigrateV2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.AppGw.MigrateV2
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-template" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-bicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4420,107 +4509,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.FrontDoor.ProbePath
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.FrontDoor.ProbePath/" class="md-nav__link">
         Azure.FrontDoor.ProbePath
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#examples" class="md-nav__link">
-    Examples
-  </a>
-  
-    <nav class="md-nav" aria-label="Examples">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-template" class="md-nav__link">
-    Configure with Azure template
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-bicep" class="md-nav__link">
-    Configure with Bicep
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-cli" class="md-nav__link">
-    Configure with Azure CLI
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-powershell" class="md-nav__link">
-    Configure with Azure PowerShell
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -8342,22 +8335,15 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-cli" class="md-nav__link">
-    Configure with Azure CLI
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#configure-with-azure-powershell" class="md-nav__link">
-    Configure with Azure PowerShell
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
   
 </li>
       
@@ -8385,7 +8371,7 @@
   
     
       <a
-        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.FrontDoor.ProbePath.md"
+        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.AppGw.MigrateV2.md"
         title=""
         class="md-content__button md-icon"
       >
@@ -8402,179 +8388,65 @@
   
 
   <!-- Markdown content -->
-  <h1 id="use-a-dedicated-health-endpoint-for-front-door-backends">Use a Dedicated Health Endpoint for Front Door backends<a class="headerlink" href="#use-a-dedicated-health-endpoint-for-front-door-backends" title="Permanent link">#</a></h1>
-<nav class="md-tags"><span class="md-tag">Azure.FrontDoor.ProbePath</span><span class="md-tag">AZR-000110</span><span class="md-tag">Error</span></nav>
-<p><a href="../module/#reliability"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0Zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0Z"/></svg></span> Reliability</a>
- · <a href="../resource/#front-door"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.152.682a2.251 2.251 0 0 1 2.269 0l.007.004 6.957 4.276a2.277 2.277 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003c-.706.41-1.578.41-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026c.197-.342.48-.627.82-.827h.002L13.152.681Zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.775.775 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003ZM8.517 14.33a2.286 2.286 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232V14.33ZM18 9.709l-3.25 1.9v7.548L18 17.245Zm-7.59 4.438-.002.002a2.296 2.296 0 0 1-.391.18v7.612l3.233-1.902v-7.552Zm9.09-5.316v7.532l2.124-1.25a.776.776 0 0 0 .387-.671V7.363Z"/></svg></span> Front Door</a>
- · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.497 1.497 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1Zm0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> 2021_03</p>
-<p>Configure a dedicated path for health probe requests.</p>
+  <h1 id="migrate-to-application-gateway-v2">Migrate to Application Gateway v2<a class="headerlink" href="#migrate-to-application-gateway-v2" title="Permanent link">#</a></h1>
+<nav class="md-tags"><span class="md-tag">Azure.AppGw.MigrateV2</span><span class="md-tag">AZR-000376</span><span class="md-tag">Error</span></nav>
+<p><a href="../module/#operational-excellence"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0Zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0Z"/></svg></span> Operational Excellence</a>
+ · <a href="../resource/#application-gateway"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.152.682a2.251 2.251 0 0 1 2.269 0l.007.004 6.957 4.276a2.277 2.277 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003c-.706.41-1.578.41-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026c.197-.342.48-.627.82-.827h.002L13.152.681Zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.775.775 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003ZM8.517 14.33a2.286 2.286 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232V14.33ZM18 9.709l-3.25 1.9v7.548L18 17.245Zm-7.59 4.438-.002.002a2.296 2.296 0 0 1-.391.18v7.612l3.233-1.902v-7.552Zm9.09-5.316v7.532l2.124-1.25a.776.776 0 0 0 .387-.671V7.363Z"/></svg></span> Application Gateway</a>
+ · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.497 1.497 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1Zm0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> 2023_06</p>
+<p>Use a Application Gateway v2 SKU.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>Azure Front Door monitors a specific path for each backend to determine health status.
-The monitored path should implement functional checks to determine if the backend is performing correctly.
-The checks should include dependencies including those that may not be regularly called.</p>
-<p>Regular checks of the monitored path allow Front Door to make load balancing decisions based on status.</p>
+<p>The Application Gateway v1 SKUs (Standard and WAF) will be retired on April 28, 2026. To avoid service disruption, migrate to Application Gateway v2 SKUs.</p>
+<p>The v2 SKUs offers performance enhancements, security controls and adds support for critical new features like autoscaling, zone redundancy, support for static VIPs, header rewrite, key vault integration, mutual authentication (mTLS), Azure Kubernetes Service ingress controller and private link.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider using a dedicated health probe endpoint that implements functional checks.</p>
+<p>Migrate deprecated v1 Application Gateways to a v2 SKU before retirement to avoid service disruption.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
 <h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">Premium / Standard</label><label for="__tabbed_1_2">Classic</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>To deploy a Front Door resource that passes this rule:</p>
+<p>To deploy Application Gateways that pass this rule:</p>
 <ul>
-<li>Set the <code>properties.healthProbeSettings.probePath</code> property to a dedicated path of the <code>originGroups</code> sub-resource.</li>
+<li>Set <code>properties.sku.tier</code> or <code>properties.sku.name</code> to <code>Standard_v2</code> (Application Gateway) or <code>WAF_v2</code> (Web Application Firewall).</li>
 </ul>
 <p>For example:</p>
 <div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Cdn/profiles&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Global&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Premium_AzureFrontDoor&quot;</span>
-<span class="w">  </span><span class="p">}</span>
-<span class="p">},</span>
-<span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Cdn/profiles/originGroups&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}/{1}&#39;, parameters(&#39;name&#39;), parameters(&#39;name&#39;))]&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/applicationGateways&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-07-01&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[resourceGroup().location]&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;loadBalancingSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;sampleSize&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">4</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;successfulSamplesRequired&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">3</span>
-<span class="w">    </span><span class="p">},</span>
-<span class="w">    </span><span class="nt">&quot;healthProbeSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">      </span><span class="nt">&quot;probePath&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/healthz&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;probeRequestType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEAD&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;probeProtocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Http&quot;</span><span class="p">,</span>
-<span class="w">      </span><span class="nt">&quot;probeIntervalInSeconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span>
+<span class="w">    </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;capacity&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAF_v2&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;tier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;WAF_v2&quot;</span>
 <span class="w">    </span><span class="p">}</span>
-<span class="w">  </span><span class="p">},</span>
-<span class="w">  </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">    </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span>
-<span class="w">  </span><span class="p">]</span>
-<span class="p">}</span>
-</code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>To deploy a Front Door resource that passes this rule:</p>
-<ul>
-<li>Set each <code>properties.healthProbeSettings[*].properties.path</code> property to a dedicated path.</li>
-</ul>
-<p>For example:</p>
-<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span>
-<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Network/frontDoors&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-06-01&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;name&#39;)]&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;global&quot;</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;enabledState&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;frontendEndpoints&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;frontendEndpoints&#39;)]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;loadBalancingSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;loadBalancingSettings&#39;)]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;backendPools&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;backendPools&#39;)]&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;healthProbeSettings&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<span class="w">      </span><span class="p">{</span>
-<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;healthProbeSettingsName&#39;)]&quot;</span><span class="p">,</span>
-<span class="w">        </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">          </span><span class="nt">&quot;enabledState&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Enabled&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/healthz&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Http&quot;</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;intervalInSeconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">120</span><span class="p">,</span>
-<span class="w">          </span><span class="nt">&quot;healthProbeMethod&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;HEAD&quot;</span>
-<span class="w">        </span><span class="p">}</span>
-<span class="w">      </span><span class="p">}</span>
-<span class="w">    </span><span class="p">],</span>
-<span class="w">    </span><span class="nt">&quot;routingRules&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[variables(&#39;routingRules&#39;)]&quot;</span>
 <span class="w">  </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
-</div>
-</div>
-</div>
 <h3 id="configure-with-bicep">Configure with Bicep<a class="headerlink" href="#configure-with-bicep" title="Permanent link">#</a></h3>
-<div class="tabbed-set tabbed-alternate" data-tabs="2:2"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><input id="__tabbed_2_2" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Premium / Standard</label><label for="__tabbed_2_2">Classic</label></div>
-<div class="tabbed-content">
-<div class="tabbed-block">
-<p>To deploy a Front Door resource that passes this rule:</p>
+<p>To deploy Application Gateways that pass this rule:</p>
 <ul>
-<li>Set the <code>properties.healthProbeSettings.probePath</code> property to a dedicated path of the <code>originGroups</code> sub-resource.</li>
+<li>Set <code>properties.sku.tier</code> or <code>properties.sku.name</code> to <code>Standard_v2</code> (Application Gateway) or <code>WAF_v2</code> (Web Application Firewall).</li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource afd_premium &#39;Microsoft.Cdn/profiles@2021-06-01&#39; = {
-  name: name
-  location: &#39;Global&#39;
-  sku: {
-    name: &#39;Premium_AzureFrontDoor&#39;
-  }
-}
-
-resource frontDoorOriginGroup &#39;Microsoft.Cdn/profiles/originGroups@2021-06-01&#39; = {
-  name: name
-  parent: afd_premium
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource appGw &#39;Microsoft.Network/applicationGateways@2022-07-01&#39; = {
+  name: 
+  location: location
   properties: {
-    loadBalancingSettings: {
-      sampleSize: 4
-      successfulSamplesRequired: 3
-    }
-    healthProbeSettings: {
-      probePath: &#39;/healthz&#39;
-      probeRequestType: &#39;HEAD&#39;
-      probeProtocol: &#39;Http&#39;
-      probeIntervalInSeconds: 100
+    sku: {
+      capacity: 2
+      name: &#39;WAF_v2&#39;
+      tier: &#39;WAF_v2&#39;
     }
   }
 }
 </code></pre></div>
-</div>
-<div class="tabbed-block">
-<p>To deploy a Front Door resource that passes this rule:</p>
-<ul>
-<li>Set each <code>properties.healthProbeSettings[*].properties.path</code> property to a dedicated path.</li>
-</ul>
-<p>For example:</p>
-<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource afd_classic &#39;Microsoft.Network/frontDoors@2021-06-01&#39; = {
-  name: name
-  location: &#39;global&#39;
-  properties: {
-    enabledState: &#39;Enabled&#39;
-    frontendEndpoints: frontendEndpoints
-    loadBalancingSettings: loadBalancingSettings
-    backendPools: backendPools
-    healthProbeSettings: [
-      {
-        name: healthProbeSettingsName
-        properties: {
-          enabledState: &#39;Enabled&#39;
-          path: &#39;/healthz&#39;
-          protocol: &#39;Http&#39;
-          intervalInSeconds: 120
-          healthProbeMethod: &#39;HEAD&#39;
-        }
-      }
-    ]
-    routingRules: routingRules
-  }
-}
-</code></pre></div>
-</div>
-</div>
-</div>
-<h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
-<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az<span class="w"> </span>network<span class="w"> </span>front-door<span class="w"> </span>probe<span class="w"> </span>update<span class="w"> </span>--front-door-name<span class="w"> </span><span class="s1">&#39;&lt;front_door&gt;&#39;</span><span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;&lt;probe_name&gt;&#39;</span><span class="w"> </span>-g<span class="w"> </span><span class="s1">&#39;&lt;resource_group&gt;&#39;</span><span class="w"> </span>--path<span class="w"> </span><span class="s1">&#39;/healthz&#39;</span>
-</code></pre></div>
-<h3 id="configure-with-azure-powershell">Configure with Azure PowerShell<a class="headerlink" href="#configure-with-azure-powershell" title="Permanent link">#</a></h3>
-<div class="highlight"><span class="filename">Azure PowerShell snippet</span><pre><span></span><code><span class="nv">$probeSetting</span> <span class="p">=</span> <span class="nb">New-AzFrontDoorHealthProbeSettingObject</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;probe_name&gt;&#39;</span> <span class="n">-Path</span> <span class="s1">&#39;/healthz&#39;</span>
-<span class="nb">Set-AzFrontDoor</span> <span class="n">-Name</span> <span class="s1">&#39;&lt;front_door&gt;&#39;</span> <span class="n">-ResourceGroupName</span> <span class="s1">&#39;&lt;resource_group&gt;&#39;</span> <span class="n">-HealthProbeSetting</span> <span class="nv">$probeSetting</span>
-</code></pre></div>
+<h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
+<p>This rule is applicable for both Application Gateways and Application Gateways with Web Application Firewall (WAF).</p>
+<p>Not all existing features under the v1 SKUs are supported in the v2 SKUs. The v2 SKUs are not currently available in all regions.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://learn.microsoft.com/azure/architecture/framework/resiliency/monitor-model#create-good-health-probes">Creating good health probes</a></li>
-<li><a href="https://learn.microsoft.com/azure/frontdoor/front-door-health-probes">Health probes</a></li>
-<li><a href="https://learn.microsoft.com/azure/frontdoor/health-probes#supported-http-methods-for-health-probes">Supported HTTP methods for health probes</a></li>
-<li><a href="https://learn.microsoft.com/azure/frontdoor/health-probes#how-front-door-determines-backend-health">How Front Door determines backend health</a></li>
-<li><a href="https://learn.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring">Health Endpoint Monitoring pattern</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.cdn/profiles/origingroups">Azure deployment reference (Premium / Standard)</a></li>
-<li><a href="https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors#HealthProbeSettingsProperties">Azure deployment reference (Classic)</a></li>
+<li><a href="https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure">Infrastructure provisioning</a></li>
+<li><a href="https://learn.microsoft.com/azure/application-gateway/v1-retirement">Migrate your Application Gateways</a></li>
+<li><a href="https://learn.microsoft.com/azure/application-gateway/overview-v2">What is Azure Application Gateway v2?</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways#applicationgatewaysku">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -8585,7 +8457,7 @@ resource frontDoorOriginGroup &#39;Microsoft.Cdn/profiles/originGroups@2021-06-0
   <small>
     
       Last update:
-      2023-02-18
+      2023-05-11
     
   </small>
 </div>
@@ -8608,7 +8480,7 @@ resource frontDoorOriginGroup &#39;Microsoft.Cdn/profiles/originGroups@2021-06-0
       data-category="Documentation"
       data-category-id="DIC_kwDOCvn6LM4CQqE6"
       data-mapping="specific"
-      data-term="Azure.FrontDoor.ProbePath"
+      data-term="Azure.AppGw.MigrateV2"
       data-strict="0"
       data-reactions-enabled="1"
       data-emit-metadata="0"
