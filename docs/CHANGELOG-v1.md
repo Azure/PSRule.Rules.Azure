@@ -27,6 +27,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.27.0-B0015:
 
 - New rules:
+  - Application Gateway:
+    - Check that Application Gateways uses a v2 SKU by @BenjaminEngeset.
+      [#2185](https://github.com/Azure/PSRule.Rules.Azure/issues/2185)
   - Arc-enabled Kubernetes cluster:
     - Check that Microsoft Defender for Containers extension for Arc-enabled Kubernetes clusters is configured by @BenjaminEngeset.
       [#2124](https://github.com/Azure/PSRule.Rules.Azure/issues/2124)
