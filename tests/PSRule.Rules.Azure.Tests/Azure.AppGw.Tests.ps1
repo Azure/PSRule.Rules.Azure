@@ -231,7 +231,7 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B';
-            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.sku.tier';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.sku.tier', 'properties.sku.tier';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
