@@ -97,4 +97,4 @@ resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
 
 - [Session affinity](https://learn.microsoft.com/azure/well-architected/scalability/design-efficiency#improve-scalability-with-session-affinity)
 - [Session Affinity in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/sticky-sessions)
-- [Azure deployment reference](https://learn.microsoft.com/nb-no/azure/templates/microsoft.app/containerapps#ingressstickysessions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#ingressstickysessions)
