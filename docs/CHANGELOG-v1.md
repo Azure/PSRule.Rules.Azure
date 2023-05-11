@@ -37,6 +37,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine:
     - Check that a maintenance configuration for virtual machines is associated by @BenjaminEngeset.
       [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
+  - Application Gateway:
+    - Check that Application Gateways uses a v2 SKU by @BenjaminEngeset.
+      [#2185](https://github.com/Azure/PSRule.Rules.Azure/issues/2185)
   - Container App:
     - Check that container apps has disabled session affinity to prevent unbalanced distribution by @BenjaminEngeset.
       [#2188](https://github.com/Azure/PSRule.Rules.Azure/issues/2188)
