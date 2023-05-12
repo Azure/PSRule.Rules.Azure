@@ -155,10 +155,10 @@ function global:GetMariaDBDatabaseName {
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
             GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/databases' |
-            ForEach-Object { $_.name }
+            ForEach-Object { ($_.name -split '/')[-1] }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/databases') {
-            $PSRule.TargetName
+            ($PSRule.TargetName -split '/')[-1]
         }
     }
 }

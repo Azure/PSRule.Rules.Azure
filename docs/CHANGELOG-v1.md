@@ -24,25 +24,30 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.27.0-B0015:
+
 - New rules:
+  - Application Gateway:
+    - Check that Application Gateways uses a v2 SKU by @BenjaminEngeset.
+      [#2185](https://github.com/Azure/PSRule.Rules.Azure/issues/2185)
   - Arc-enabled Kubernetes cluster:
     - Check that Microsoft Defender for Containers extension for Arc-enabled Kubernetes clusters is configured by @BenjaminEngeset.
       [#2124](https://github.com/Azure/PSRule.Rules.Azure/issues/2124)
   - Arc-enabled server:
     - Check that a maintenance configuration for Arc-enabled servers is associated by @BenjaminEngeset.
       [#2122](https://github.com/Azure/PSRule.Rules.Azure/issues/2122)
+  - Container App:
+    - Check that container apps has disabled session affinity to prevent unbalanced distribution by @BenjaminEngeset.
+      [#2188](https://github.com/Azure/PSRule.Rules.Azure/issues/2188)
   - Defender for Cloud:
     - Check that Microsoft Defender for APIs is enabled by @BenjaminEngeset.
       [#2186](https://github.com/Azure/PSRule.Rules.Azure/issues/2186)
   - Virtual Machine:
     - Check that a maintenance configuration for virtual machines is associated by @BenjaminEngeset.
       [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
-  - Application Gateway:
-    - Check that Application Gateways uses a v2 SKU by @BenjaminEngeset.
-      [#2185](https://github.com/Azure/PSRule.Rules.Azure/issues/2185)
-  - Container App:
-    - Check that container apps has disabled session affinity to prevent unbalanced distribution by @BenjaminEngeset.
-      [#2188](https://github.com/Azure/PSRule.Rules.Azure/issues/2188)
+- Bug fixes:
+  - Fixed handling of database name in `Azure.MariaDB.Database` by @BernieWhite.
+    [#2191](https://github.com/Azure/PSRule.Rules.Azure/issues/2191)
 
 ## v1.27.0-B0015 (pre-release)
 
