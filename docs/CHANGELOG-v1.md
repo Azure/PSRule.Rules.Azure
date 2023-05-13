@@ -37,6 +37,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine:
     - Check that a maintenance configuration for virtual machines is associated by @BenjaminEngeset.
       [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
+  - Defender for Cloud:
+    - Check that Microsoft Defender for Azure Cosmos DB is enabled by @BenjaminEngeset.
+      [#2204](https://github.com/Azure/PSRule.Rules.Azure/issues/2204)
 
 ## v1.27.0-B0015 (pre-release)
 

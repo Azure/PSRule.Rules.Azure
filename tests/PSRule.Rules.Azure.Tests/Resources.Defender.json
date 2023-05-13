@@ -233,5 +233,25 @@
     "Properties": {
       "pricingTier": "Free"
     }
+  },
+  {
+    "Name": "defenderX",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/Api",
+    "ResourceName": "CosmosDbs",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderY",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/Api",
+    "ResourceName": "CosmosDbs",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Free"
+    }
   }
 ]
