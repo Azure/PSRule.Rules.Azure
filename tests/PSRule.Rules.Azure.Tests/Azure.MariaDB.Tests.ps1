@@ -236,6 +236,7 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
                 'MARIADBDATABASE1'
                 'mariadb-DATABASE1'
                 'MARIADB-DATABASE1'
+                'server1/MARIADB-DATABASE1'
             )
 
             $invalidNames = @(
@@ -243,6 +244,7 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
                 'mariadbdatabase1_'
                 'mariadbdatabase.1'
                 'MARIA.DB.DATABASE.1'
+                'server/MARIA.DB.DATABASE.1'
             )
         }
 

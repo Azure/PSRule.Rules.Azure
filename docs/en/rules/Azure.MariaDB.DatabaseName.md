@@ -33,4 +33,4 @@ This rule does not check if Azure Database for MariaDB database names are unique
 
 - [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Naming rules and restrictions Azure Database for MariaDB resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb)
-- [Template reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers/databases)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers/databases)
