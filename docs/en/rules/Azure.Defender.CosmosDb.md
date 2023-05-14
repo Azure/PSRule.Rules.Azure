@@ -14,7 +14,7 @@ Enable Microsoft Defender for Azure Cosmos DB.
 
 ## DESCRIPTION
 
-MMicrosoft Defender for Azure Cosmos DB provides additional security for Azure Cosmos DB accounts.
+Microsoft Defender for Azure Cosmos DB provides additional security for Azure Cosmos DB accounts.
 
 Protection is provided by analyzing onboarded Cosmos DB accounts for unusual and potentially harmful attempts to access or exploit the accounts.
 Which allows Microsoft Defender for Cloud to produce security alerts that are triggered when anomalies in activity occur.
