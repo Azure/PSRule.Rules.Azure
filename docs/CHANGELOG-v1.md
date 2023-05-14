@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+ New rules:
+  - Container App:
+    - Check that container apps with IP ingress restrictions mode configured is set to allow for all rules defined by @BenjaminEngeset.
+      [#2189](https://github.com/Azure/PSRule.Rules.Azure/issues/2189)
+
 What's changed since pre-release v1.27.0-B0015:
 
 - New rules:

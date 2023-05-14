@@ -122,6 +122,25 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'capp-D';
         }
+
+        It 'Azure.ContainerApp.IP.IngressRestrict' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.IP.IngressRestrict' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-B', 'capp-C';
+
+            $ruleResult[0].Reason | Should -BeLike "Path action: Is set to 'Deny'.";
+            $ruleResult[1].Reason | Should -BeLike "Path action: Is set to 'Deny'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-D';
+        }
     }
 
     Context 'Resource name - Azure.ContainerApp.Name' {
