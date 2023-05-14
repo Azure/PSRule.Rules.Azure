@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Defender for Cloud:
+    - Check that Microsoft Defender for open-source relational databases is enabled by @BenjaminEngeset.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+
 What's changed since pre-release v1.27.0-B0015:
 
 - New rules:
