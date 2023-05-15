@@ -14,7 +14,8 @@ Disable session affinity to prevent unbalanced distribution.
 
 ## DESCRIPTION
 
-Container apps allows you to configure session affinity (sticky sessions). It is feature that allows you to route all requests from a client to the same replica.
+Container apps allows you to configure session affinity (sticky sessions).
+When enabled, this feature route requests from the same client to the same replica.
 
 This feature might be useful for stateful applications that require a consistent connection to the same replica. However, if your application does not store large amounts of state or cached data in memory (stateless application design pattern), session affinity might decrease your throughput because one replica could get overloaded with requests, while others are dormant.
 
