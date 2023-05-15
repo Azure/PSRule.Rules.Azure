@@ -65,7 +65,7 @@ For example:
 
 To deploy Container Apps that pass this rule:
 
-- Set `properties.configuration.ingress.stickySessions.affinity` to `none` or dont specify the property at all.
+- Set `properties.configuration.ingress.stickySessions.affinity` to `none` or don't specify the property at all.
 
 For example:
 
