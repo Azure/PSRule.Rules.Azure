@@ -26,6 +26,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - Bug fixes:
   - Updated `Azure.AKS.UptimeSLA` with new pricing by @BenjaminEngeset.
+    [#2065](https://github.com/Azure/PSRule.Rules.Azure/issues/2065)
     [#2202](https://github.com/Azure/PSRule.Rules.Azure/issues/2202)
 
 What's changed since pre-release v1.27.0-B0015:
