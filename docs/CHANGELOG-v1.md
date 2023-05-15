@@ -48,6 +48,8 @@ What's changed since pre-release v1.27.0-B0015:
 - Bug fixes:
   - Fixed handling of database name in `Azure.MariaDB.Database` by @BernieWhite.
     [#2191](https://github.com/Azure/PSRule.Rules.Azure/issues/2191)
+    - Fixed typing error in `Azure.Defender.Api` documentation by @BenjaminEngeset.
+    [#2209](https://github.com/Azure/PSRule.Rules.Azure/issues/2209)
 
 ## v1.27.0-B0015 (pre-release)
 
