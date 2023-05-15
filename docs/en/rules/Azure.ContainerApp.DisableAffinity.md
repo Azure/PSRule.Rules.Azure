@@ -21,7 +21,7 @@ This feature might be useful for stateful applications that require a consistent
 
 ## RECOMMENDATION
 
-Consider disabling session affinity to prevent unbalanced distribution.
+Consider disabling session affinity to evenly distribute requests across each replica.
 
 ## EXAMPLES
 
