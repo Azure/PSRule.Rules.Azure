@@ -101,6 +101,7 @@ Microsoft Defender for Azure Cosmos DB is currently available only for the NoSQL
 - [Enable Microsoft Defender for Azure Cosmos DB](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-enable-cosmos-protections)
 - [Quickstart: Enable enhanced security features](https://learn.microsoft.com/azure/defender-for-cloud/enable-enhanced-security)
 - [Azure security baseline for Azure Cosmos DB](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline)
+- [DP-2: Monitor anomalies and threats targeting sensitive data](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#dp-2-monitor-anomalies-and-threats-targeting-sensitive-data)
 - [LT-1: Enable threat detection capabilities](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#lt-1-enable-threat-detection-capabilities)
 - [Azure Policy built-in policy definitions](https://learn.microsoft.com/azure/governance/policy/samples/built-in-policies#security-center)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/pricings)
