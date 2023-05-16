@@ -41,6 +41,9 @@ What's changed since pre-release v1.27.0-B0015:
   - Arc-enabled server:
     - Check that a maintenance configuration for Arc-enabled servers is associated by @BenjaminEngeset.
       [#2122](https://github.com/Azure/PSRule.Rules.Azure/issues/2122)
+  - Container App:
+    - Check that container apps has disabled session affinity to prevent unbalanced distribution by @BenjaminEngeset.
+      [#2188](https://github.com/Azure/PSRule.Rules.Azure/issues/2188)
   - Defender for Cloud:
     - Check that Microsoft Defender for APIs is enabled by @BenjaminEngeset.
       [#2186](https://github.com/Azure/PSRule.Rules.Azure/issues/2186)
