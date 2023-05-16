@@ -423,7 +423,7 @@
     "ResourceType": "Microsoft.ContainerService/managedClusters",
     "ExtensionResourceType": null,
     "Sku": {
-      "Name": "Basic",
+      "Name": "Base",
       "Tier": "Free",
       "Size": null,
       "Family": null,
@@ -740,7 +740,7 @@
     "Type": "Microsoft.ContainerService/managedClusters",
     "ResourceType": "Microsoft.ContainerService/managedClusters",
     "Sku": {
-      "Name": "Basic",
+      "Name": "Base",
       "Tier": "Free",
       "Size": null,
       "Family": null,
@@ -964,6 +964,7 @@
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-H",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-H",
     "Location": "australiaeast",
+    "apiVersion": "2023-03-02",
     "ResourceName": "cluster-H",
     "Name": "cluster-H",
     "Properties": {
@@ -1018,6 +1019,10 @@
         "dockerBridgeCidr": "172.17.0.1/16"
       },
       "maxAgentPools": 1
+    },
+    "sku": {
+      "name": "Basic",
+      "tier": "Paid"
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerService/managedClusters",
@@ -1138,6 +1143,7 @@
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-I",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-I",
     "Location": "antarcticanorth",
+    "apiVersion": "2022-04-01",
     "ResourceName": "cluster-I",
     "Name": "cluster-I",
     "Properties": {
@@ -1192,6 +1198,10 @@
         "dockerBridgeCidr": "172.17.0.1/16"
       },
       "maxAgentPools": 1
+    },
+    "sku": {
+      "name": "Basic",
+      "tier": "Paid"
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerService/managedClusters",
@@ -1369,6 +1379,10 @@
         }
       }
     },
+    "sku": {
+      "name": "Basic",
+      "tier": "Standard"
+    },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerService/managedClusters",
     "ResourceType": "Microsoft.ContainerService/managedClusters",
@@ -1487,6 +1501,7 @@
   {
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-K",
     "location": "eastus",
+    "apiVersion": "2023-02-01",
     "name": "cluster-K",
     "tags": null,
     "type": "Microsoft.ContainerService/ManagedClusters",
@@ -1659,12 +1674,13 @@
     },
     "sku": {
       "name": "Basic",
-      "tier": "Paid"
+      "tier": "Standard"
     }
   },
   {
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ContainerService/managedClusters/cluster-L",
     "location": "eastus",
+    "apiVersion": "2023-03-02-preview",
     "name": "cluster-L",
     "tags": null,
     "type": "Microsoft.ContainerService/ManagedClusters",
@@ -1846,7 +1862,7 @@
     },
     "sku": {
       "name": "Basic",
-      "tier": "Paid"
+      "tier": "Standard"
     }
   }
 ]
