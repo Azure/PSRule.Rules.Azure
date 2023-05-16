@@ -1016,6 +1016,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.CosmosDb/</loc>
+         <lastmod>2023-05-16</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Cspm/</loc>
          <lastmod>2023-05-16</lastmod>
          <changefreq>daily</changefreq>
