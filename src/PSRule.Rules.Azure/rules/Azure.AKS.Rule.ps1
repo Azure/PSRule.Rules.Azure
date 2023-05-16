@@ -242,7 +242,13 @@ Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerServic
 
 # Synopsis: AKS clusters should have Uptime SLA enabled to ensure availability of control plane components for production workloads.
 Rule 'Azure.AKS.UptimeSLA' -Ref 'AZR-000285' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
-    $Assert.Contains($TargetObject, 'sku.tier', 'Paid');
+    $priorApi = $Assert.APIVersion($TargetObject, 'apiVersion', '<2023-02-01', $True).Result
+    if ($priorApi) {
+        $Assert.Contains($TargetObject, 'sku.tier', 'Paid')
+    }
+    else {
+        $Assert.Contains($TargetObject, 'sku.tier', 'Standard')  
+    }
 }
 
 # Synopsis: AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades.
