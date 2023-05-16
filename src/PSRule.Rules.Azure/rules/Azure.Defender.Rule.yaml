@@ -278,7 +278,7 @@ metadata:
     ruleSet: 2023_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: LT-1
+    Azure.MCSB.v1/control: [ 'DP-2', 'LT-1' ]
 spec:
   level: Error
   where:
