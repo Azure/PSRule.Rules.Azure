@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Cosmos DB:
+    - Check that Cosmos DB accounts has enabled Microsoft Defender by @BenjaminEngeset.
+      [#2203](https://github.com/Azure/PSRule.Rules.Azure/issues/2203)
+
 What's changed since pre-release v1.27.0-B0015:
 
 - New rules:
