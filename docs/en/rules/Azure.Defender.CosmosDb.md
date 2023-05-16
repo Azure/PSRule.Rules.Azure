@@ -25,7 +25,7 @@ Microsoft Defender for Cosmos DB can be enabled at the subscription level and by
 
 ## RECOMMENDATION
 
-Consider using Microsoft Defender for Azure Cosmos DB to provide additional security for Azure Cosmos DB accounts.
+Consider using Microsoft Defender for Azure Cosmos DB to provide additional security insights for Azure Cosmos DB accounts.
 
 ## EXAMPLES
 
