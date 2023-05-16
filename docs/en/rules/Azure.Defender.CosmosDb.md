@@ -91,7 +91,7 @@ Set-AzSecurityPricing -Name 'CosmosDbs' -PricingTier 'Standard'
 
 ## NOTES
 
-Microsoft Defender for Azure Cosmos DB is currently available only for the API for NoSQL.
+Microsoft Defender for Azure Cosmos DB is currently available only for the NoSQL API.
 
 ## LINKS
 
