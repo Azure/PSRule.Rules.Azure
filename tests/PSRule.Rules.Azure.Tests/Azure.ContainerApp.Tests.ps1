@@ -123,8 +123,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.TargetName | Should -BeIn 'capp-D';
         }
 
-        It 'Azure.ContainerApp.IP.IngressRestrict' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.IP.IngressRestrict' };
+        It 'Azure.ContainerApp.RestrictIngress' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.RestrictIngress' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
