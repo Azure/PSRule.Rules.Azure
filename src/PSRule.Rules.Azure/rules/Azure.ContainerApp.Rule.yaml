@@ -144,6 +144,24 @@ spec:
       - field: storageType
         equals: AzureFile
 
+--- 
+# Synopsis: Disable session affinity to prevent unbalanced distribution.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.DisableAffinity
+  ref: AZR-000378
+  tags:
+    release: Preview
+    ruleSet: 2023_06
+    Azure.WAF/pillar: Performance Efficiency
+spec:
+  with:
+    - Azure.ContainerApp.WithIngress
+  condition:
+    field: properties.configuration.ingress.stickySessions.affinity
+    hasDefault: none
+
 #endregion Rules
 
 #region Selectors

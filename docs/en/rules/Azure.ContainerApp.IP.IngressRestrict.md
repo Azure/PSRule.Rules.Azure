@@ -3,14 +3,14 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Container App
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.IP.IngressRestrict/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.RestrictIngress/
 ---
 
 # IP ingress restrictions mode
 
 ## SYNOPSIS
 
-IP ingress restrictions mode should be set to allow for all rules defined.
+IP ingress restrictions mode should be set to allow action for all rules defined.
 
 ## DESCRIPTION
 
@@ -28,7 +28,7 @@ IP ingress restrictions mode can be used for container apps within external and 
 
 ## RECOMMENDATION
 
-Consider configuring IP ingress restrictions mode to allow for all rules defined.
+Consider configuring IP ingress restrictions mode to allow action for all rules defined.
 
 ## EXAMPLES
 
@@ -127,6 +127,7 @@ resource containerApp 'Microsoft.App/containerApps@2022-11-01-preview' = {
 ## NOTES
 
 All rules must be the same type. It is not supported to combine allow rules and deny rules.
+If no rules are defined at all, the rule will not pass as it expects at least one allow rule to be configured.
 
 ## LINKS
 

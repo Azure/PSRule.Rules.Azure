@@ -7,7 +7,7 @@
 
 #region Rules
 
-# Synopsis: IP ingress restrictions mode should be set to allow for all rules defined.
+# Synopsis: IP ingress restrictions mode should be set to allow action for all rules defined.
 Rule 'Azure.ContainerApp.RestrictIngress' -Ref 'AZR-000380' -Type 'Microsoft.App/containerApps' -If { HasIngress } -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'NS-2' } {
     $restrictions = @($TargetObject.properties.configuration.ingress.ipSecurityRestrictions)
     if (!$restrictions) {

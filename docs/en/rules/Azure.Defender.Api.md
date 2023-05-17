@@ -14,7 +14,7 @@ Enable Microsoft Defender for APIs.
 
 ## DESCRIPTION
 
-Microsoft Defender for ARM provides additional security for APIs published in Azure API Management.
+Microsoft Defender for APIs provides additional security for APIs published in Azure API Management.
 
 Protection is provided by analyzing onboarded APIs.
 Which allows Microsoft Defender for Cloud to produce security findings.
@@ -104,6 +104,7 @@ Currently only REST APIs published in Azure API Management is supported. Not all
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for APIs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-apis-introduction)
 - [Support and prerequisites for Defender for APIs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-apis-prepare)
+- [Onboard Defender for APIs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-apis-deploy)
 - [Quickstart: Enable enhanced security features](https://learn.microsoft.com/azure/defender-for-cloud/enable-enhanced-security)
 - [Azure security baseline for API Management](https://learn.microsoft.com/security/benchmark/azure/baselines/api-management-security-baseline)
 - [LT-1: Enable threat detection capabilities](https://learn.microsoft.com/security/benchmark/azure/baselines/api-management-security-baseline#lt-1-enable-threat-detection-capabilities)
