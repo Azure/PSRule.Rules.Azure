@@ -110,9 +110,11 @@ metadata:
   name: Azure.Defender.Storage
   ref: AZR-000296
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2023_06
     Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: [ 'DP-2', 'LT-1' ]
 spec:
   level: Error
   where:
@@ -121,8 +123,11 @@ spec:
   type:
   - Microsoft.Security/pricings
   condition:
-    field: properties.pricingTier
-    equals: Standard
+     allOf:
+      - field: properties.pricingTier
+        equals: Standard
+      - field: properties.subPlan
+        equals: DefenderForStorageV2
 
 ---
 # Synopsis: Enable Microsoft Defender for SQL servers on machines.

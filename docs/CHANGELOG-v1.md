@@ -24,6 +24,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Updated rules:
+  - Defender for Cloud:
+    - Check that Microsoft Defender for Storage (new) is enabled by @BenjaminEngeset.
+      [#2205](https://github.com/Azure/PSRule.Rules.Azure/issues/2205)
 - Bug fixes:
   - Updated `Azure.AKS.UptimeSLA` with new pricing by @BenjaminEngeset.
     [#2065](https://github.com/Azure/PSRule.Rules.Azure/issues/2065)
