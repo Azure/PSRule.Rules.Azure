@@ -83,6 +83,8 @@ Set-AzSecurityPricing -Name 'StorageAccounts' -PricingTier 'Standard' -SubPlan '
 
 The `DefenderForStorageV2` sub plan represents the new Defender for Storage plan which offers several new benefits that aren't included in the classic plan. The new plan includes more advanced capabilities that can help improve the security of the data and help prevent malicious file uploads, sensitive data exfiltration, and data corruption. Some features within the new plan is still in preview, but these are configurable.
 
+Currently only the `Blob Storage`, `Azure Files` and `Azure Data Lake Storage Gen2` service is supported by Defender for Storage.
+
 ## LINKS
 
 - [Storage security guide](https://learn.microsoft.com/azure/storage/blobs/security-recommendations?toc=%2Fazure%2Fsecurity%2Ffundamentals%2Ftoc.json&bc=%2Fazure%2Fsecurity%2Fbreadcrumb%2Ftoc.json)
