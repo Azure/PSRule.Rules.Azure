@@ -101,7 +101,8 @@
     "ResourceType": "Microsoft.Security/pricings",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Properties": {
-      "pricingTier": "Standard"
+      "pricingTier": "Standard",
+      "subPlan": "DefenderForStorageV2"
     }
   },
   {
@@ -252,6 +253,46 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Properties": {
       "pricingTier": "Free"
+    }
+  },
+  {
+    "Name": "defenderB2",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/StorageAccounts",
+    "ResourceName": "StorageAccounts",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Standard",
+      "subPlan": "DefenderForStorageV2",
+      "extensions": [
+        {
+          "name": "OnUploadMalwareScanning",
+          "isEnabled": "True",
+          "additionalExtensionProperties": {
+            "CapGBPerMonthPerStorageAccount": "5000"
+          }
+        }
+      ]
+    }
+  },
+  {
+    "Name": "defenderC2",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/StorageAccounts",
+    "ResourceName": "StorageAccounts",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Standard",
+      "subPlan": "DefenderForStorageV2",
+      "extensions": [
+        {
+          "name": "OnUploadMalwareScanning",
+          "isEnabled": "False",
+          "additionalExtensionProperties": {
+            "CapGBPerMonthPerStorageAccount": "5000"
+          }
+        }
+      ]
     }
   }
 ]
