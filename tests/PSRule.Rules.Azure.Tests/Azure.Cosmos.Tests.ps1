@@ -41,13 +41,30 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'graph-A';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'graph-A', 'nosql-A', 'nosql-B', 'nosql-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'graph-B';
+        }
+
+        It 'Azure.Cosmos.DefenderCloud' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.DefenderCloud' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B','nosql-A', 'nosql-B';
+
+            $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/advancedThreatProtectionSettings' has not been specified.";
+            $ruleResult[1].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/advancedThreatProtectionSettings' has not been specified.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'nosql-C';
         }
     }
 
@@ -122,23 +139,6 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'gremlin-001';
-        }
-
-        It 'Azure.Cosmos.DefenderCloud' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.DefenderCloud' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B','nosql-A', 'nosql-B';
-
-            $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/advancedThreatProtectionSettings' has not been specified.";
-            $ruleResult[1].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/advancedThreatProtectionSettings' has not been specified.";
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'nosql-C';
         }
     }
 }
