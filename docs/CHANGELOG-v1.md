@@ -24,6 +24,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Storage Account:
+    - Check that Malware Scanning in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
+      [#2206](https://github.com/Azure/PSRule.Rules.Azure/issues/2206)
 - Bug fixes:
   - Updated `Azure.AKS.UptimeSLA` with new pricing by @BenjaminEngeset.
     [#2065](https://github.com/Azure/PSRule.Rules.Azure/issues/2065)

@@ -8,11 +8,11 @@
 # Synopsis: Storage Accounts not using geo-replicated storage (GRS) may be at risk.
 Rule 'Azure.Storage.UseReplication' -Ref 'AZR-000195' -Type 'Microsoft.Storage/storageAccounts' -If { (ShouldStorageReplicate) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $Assert.In($TargetObject, 'sku.name', @(
-        'Standard_GRS'
-        'Standard_RAGRS'
-        'Standard_GZRS'
-        'Standard_RAGZRS'
-    ));
+            'Standard_GRS'
+            'Standard_RAGRS'
+            'Standard_GZRS'
+            'Standard_RAGZRS'
+        ));
 }
 
 # Synopsis: Enable soft delete on Storage Accounts
@@ -40,7 +40,7 @@ Rule 'Azure.Storage.BlobAccessType' -Ref 'AZR-000199' -Type 'Microsoft.Storage/s
     }
     foreach ($container in $containers) {
         $Assert.HasDefaultValue($container, 'Properties.publicAccess', 'None').
-            Reason($LocalizedData.PublicAccessStorageContainer, $container.name, $container.Properties.publicAccess);
+        Reason($LocalizedData.PublicAccessStorageContainer, $container.name, $container.Properties.publicAccess);
     }
 }
 
@@ -57,7 +57,7 @@ Rule 'Azure.Storage.Name' -Ref 'AZR-000201' -Type 'Microsoft.Storage/storageAcco
 }
 
 # Synopsis: Enable soft delete for file shares
-Rule 'Azure.Storage.FileShareSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/fileServices' -If {(IsFileStorage) -and !(IsCloudShell) -and !(IsHnsStorage)} -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+Rule 'Azure.Storage.FileShareSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/fileServices' -If { (IsFileStorage) -and !(IsCloudShell) -and !(IsHnsStorage) } -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
     $services = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
         $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/fileServices');
@@ -88,6 +88,13 @@ Rule 'Azure.Storage.ContainerSoftDelete' -Ref 'AZR-000289' -Type 'Microsoft.Stor
     }
 }
 
+# Synopsis: Enable Malware Scanning in Microsoft Defender for Storage.
+Rule 'Azure.Storage.DefenderCloud.MalwareScan' -Ref 'AZR-000384' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'Preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
+    $malwareConfigured = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
+        Where-Object { $_.properties.malwareScanning.onUpload.isEnabled -eq $True })
+    $Assert.GreaterOrEqual($malwareConfigured, '.', 1).Reason($LocalizedData.ResStorageMalwareScanning, $PSRule.TargetName)
+}
+
 #region Helper functions
 
 function global:ShouldStorageReplicate {
@@ -96,10 +103,10 @@ function global:ShouldStorageReplicate {
     param ()
     process {
         return (IsStandardStorage) -and
-            !(IsCloudShell) -and
-            !(IsFunctionStorage) -and
-            !(IsMonitorStorage) -and
-            !(IsLargeFileSharesEnabled)
+        !(IsCloudShell) -and
+        !(IsFunctionStorage) -and
+        !(IsMonitorStorage) -and
+        !(IsLargeFileSharesEnabled)
     }
 }
 

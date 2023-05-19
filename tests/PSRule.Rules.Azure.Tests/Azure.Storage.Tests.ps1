@@ -256,6 +256,23 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-C', 'storage-D', 'storage-E', 'storage-G';
         }
+
+        It 'Azure.Storage.DefenderCloud.MalwareScan' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.DefenderCloud.MalwareScan' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B','storage-D', 'storage-E', 'storage-F','storage-G', 'storage-H';
+
+            $ruleResult[0].Reason | Should -BeExactly "The storage account 'storage-A' should have malware scanning in Microsoft Defender for Storage configured.";
+            $ruleResult[1].Reason | Should -BeExactly "The storage account 'storage-B' should have malware scanning in Microsoft Defender for Storage configured.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-C';
+        }
     }
 
     Context 'Resource name' {
