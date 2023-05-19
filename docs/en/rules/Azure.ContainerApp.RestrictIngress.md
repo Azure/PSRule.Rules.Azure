@@ -36,7 +36,8 @@ Consider configuring IP restrictions to limit ingress traffic to allowed IP addr
 
 To deploy Container Apps that pass this rule:
 
-- Set each rule defined in `properties.configuration.ingress.ipSecurityRestrictions` to action `Allow`.
+- Create one or more rules to allow traffic by configuring `properties.configuration.ingress.ipSecurityRestrictions`.
+- For each rule defined in `properties.configuration.ingress.ipSecurityRestrictions` to action `Allow`.
 
 For example:
 
