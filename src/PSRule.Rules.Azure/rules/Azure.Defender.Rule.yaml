@@ -295,4 +295,28 @@ spec:
     field: properties.pricingTier
     equals: Standard
 
+---
+# Synopsis: Enable Microsoft Defender for open-source relational databases.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Defender.OssRdb
+  ref: AZR-000381
+  tags:
+    release: GA
+    ruleSet: 2023_06
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: LT-1
+spec:
+  level: Error
+  where:
+    name: '.'
+    equals: OpenSourceRelationalDatabases
+  type:
+  - Microsoft.Security/pricings
+  condition:
+    field: properties.pricingTier
+    equals: Standard
+
 #endregion Rules
