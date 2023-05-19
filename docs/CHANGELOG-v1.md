@@ -50,11 +50,19 @@ What's changed since pre-release v1.27.0-B0015:
   - Virtual Machine:
     - Check that a maintenance configuration for virtual machines is associated by @BenjaminEngeset.
       [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
+  - Defender for Cloud:
+    - Check that Microsoft Defender for Azure Cosmos DB is enabled by @BenjaminEngeset.
+      [#2204](https://github.com/Azure/PSRule.Rules.Azure/issues/2204)
+    - Check that Microsoft Defender for open-source relational databases is enabled by @BenjaminEngeset.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
 - Bug fixes:
   - Fixed handling of database name in `Azure.MariaDB.Database` by @BernieWhite.
     [#2191](https://github.com/Azure/PSRule.Rules.Azure/issues/2191)
-    - Fixed typing error in `Azure.Defender.Api` documentation by @BenjaminEngeset.
+  - Fixed typing error in `Azure.Defender.Api` documentation by @BenjaminEngeset.
     [#2209](https://github.com/Azure/PSRule.Rules.Azure/issues/2209)
+  - Fixed `Azure.AKS.UptimeSLA` with new pricing by @BenjaminEngeset.
+    [#2065](https://github.com/Azure/PSRule.Rules.Azure/issues/2065)
+    [#2202](https://github.com/Azure/PSRule.Rules.Azure/issues/2202)
 
 ## v1.27.0-B0015 (pre-release)
 
