@@ -12,7 +12,7 @@ Rule 'Azure.Defender.Storage.MalwareScan' -Ref  'AZR-000383' -Type 'Microsoft.Se
     $malwareConfigured = @($TargetObject.properties.extensions |
         Where-Object name -eq 'OnUploadMalwareScanning' |
         Where-Object isEnabled -eq 'True')
-    $Assert.GreaterOrEqual($malwareConfigured, '.', 1).Reason($LocalizedData.StorageMalwareScanning)
+    $Assert.GreaterOrEqual($malwareConfigured, '.', 1).Reason($LocalizedData.SubStorageMalwareScanning)
 }
 
 #endregion Rules
