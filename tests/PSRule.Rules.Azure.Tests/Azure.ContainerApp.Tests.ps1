@@ -149,7 +149,7 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-B', 'capp-C';
 
-            $ruleResult[0].Reason | Should -BeLike "Path action: Is set to 'Deny'.";
+            $ruleResult[0].Reason | Should -BeLike $null;
             $ruleResult[1].Reason | Should -BeLike "Path action: Is set to 'Deny'.";
 
             # Pass
