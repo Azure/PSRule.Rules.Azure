@@ -28,7 +28,7 @@ IP ingress restrictions mode can be used for container apps within external and 
 
 ## RECOMMENDATION
 
-Consider configuring IP ingress restrictions mode to allow action for all rules defined.
+Consider configuring IP restrictions to limit ingress traffic to allowed IP addresses.
 
 ## EXAMPLES
 
