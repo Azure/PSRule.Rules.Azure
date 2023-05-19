@@ -146,8 +146,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'capp-B', 'capp-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-B', 'capp-C';
 
             $ruleResult[0].Reason | Should -BeLike "Path action: Is set to 'Deny'.";
             $ruleResult[1].Reason | Should -BeLike "Path action: Is set to 'Deny'.";
