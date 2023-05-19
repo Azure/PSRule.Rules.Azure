@@ -267,6 +267,30 @@ spec:
     equals: Standard
 
 ---
+# Synopsis: Enable Microsoft Defender for Azure Cosmos DB.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Defender.CosmosDb
+  ref: AZR-000379
+  tags:
+    release: GA
+    ruleSet: 2023_06
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: [ 'DP-2', 'LT-1' ]
+spec:
+  level: Error
+  where:
+    name: '.'
+    equals: CosmosDbs
+  type:
+  - Microsoft.Security/pricings
+  condition:
+    field: properties.pricingTier
+    equals: Standard
+
+---
 # Synopsis: Enable Microsoft Defender for open-source relational databases.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule

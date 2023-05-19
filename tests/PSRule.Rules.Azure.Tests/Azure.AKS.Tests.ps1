@@ -1320,15 +1320,15 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'sku.tier';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'cluster-K', 'cluster-L';  
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'cluster-I', 'cluster-J', 'cluster-K', 'cluster-L';  
         }
 
         It 'Azure.AKS.EphemeralOSDisk' {

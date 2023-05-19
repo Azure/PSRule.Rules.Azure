@@ -212,6 +212,22 @@ Describe 'Azure.Defender' -Tag 'MDC', 'Defender' {
             $ruleResult.TargetObject.Name | Should -BeIn 'defenderV';
         }
 
+        It 'Azure.Defender.CosmosDb' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.CosmosDb' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderY';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderX';
+        }
+
         It 'Azure.Defender.OssRdb' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.OssRdb' };
 
