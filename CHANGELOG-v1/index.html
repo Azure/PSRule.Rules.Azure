@@ -3455,6 +3455,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
@@ -5409,6 +5411,20 @@
     <li class="md-nav__item">
       <a href="../en/rules/Azure.Defender.KeyVault/" class="md-nav__link">
         Azure.Defender.KeyVault
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.Defender.OssRdb/" class="md-nav__link">
+        Azure.Defender.OssRdb
       </a>
     </li>
   
@@ -10878,14 +10894,6 @@
   See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
-<ul>
-<li>Bug fixes:<ul>
-<li>Updated <code>Azure.AKS.UptimeSLA</code> with new pricing by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
-  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2065">#2065</a>
-  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2202">#2202</a></li>
-</ul>
-</li>
-</ul>
 <p>What's changed since pre-release v1.27.0-B0015:</p>
 <ul>
 <li>New rules:<ul>
@@ -10922,17 +10930,20 @@
 <li>Defender for Cloud:<ul>
 <li>Check that Microsoft Defender for Azure Cosmos DB is enabled by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2204">#2204</a></li>
+<li>Check that Microsoft Defender for open-source relational databases is enabled by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1632">#1632</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>Bug fixes:<ul>
 <li>Fixed handling of database name in <code>Azure.MariaDB.Database</code> by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
-  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2191">#2191</a><ul>
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2191">#2191</a></li>
 <li>Fixed typing error in <code>Azure.Defender.Api</code> documentation by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
-<a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2209">#2209</a></li>
-</ul>
-</li>
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2209">#2209</a></li>
+<li>Fixed <code>Azure.AKS.UptimeSLA</code> with new pricing by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2065">#2065</a>
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2202">#2202</a></li>
 </ul>
 </li>
 </ul>
@@ -15698,7 +15709,7 @@ What's changed since v1.24.0:</p>
   <small>
     
       Last update:
-      2023-05-17
+      2023-05-19
     
   </small>
 </div>

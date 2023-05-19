@@ -6,13 +6,13 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="Virtual Machine Scale Set (VMSS) names should meet naming requirements.">
+        <meta name="description" content="Enable Microsoft Defender for open-source relational databases.">
       
       
         <meta name="author" content="Microsoft">
       
       
-        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.Name/">
+        <link rel="canonical" href="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.OssRdb/">
       
       
       
@@ -21,7 +21,7 @@
     
     
       
-        <title>Azure.VMSS.Name - PSRule for Azure</title>
+        <title>Azure.Defender.OssRdb - PSRule for Azure</title>
       
     
     
@@ -79,20 +79,20 @@
   <!-- Open graph meta tags -->
   <meta property="og:site_name" content="PSRule for Azure" />
   <meta property="og:type" content="article" />
-  <meta property="og:title" content="PSRule for Azure - Azure.VMSS.Name" />
-  <meta property="og:description" content="Virtual Machine Scale Set (VMSS) names should meet naming requirements." />
-  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.Name/" />
+  <meta property="og:title" content="PSRule for Azure - Azure.Defender.OssRdb" />
+  <meta property="og:description" content="Enable Microsoft Defender for open-source relational databases." />
+  <meta property="og:url" content="https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.OssRdb/" />
   <meta property="og:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1280" />
   <meta property="og:image:height" content="640" />
-  <meta property="og:image:alt" content="Virtual Machine Scale Set (VMSS) names should meet naming requirements." />
+  <meta property="og:image:alt" content="Enable Microsoft Defender for open-source relational databases." />
 
   <!-- Twitter meta tags -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:site" content="@github" />
-  <meta name="twitter:title" content="PSRule for Azure - Azure.VMSS.Name" />
-  <meta name="twitter:description" content="Virtual Machine Scale Set (VMSS) names should meet naming requirements." />
+  <meta name="twitter:title" content="PSRule for Azure - Azure.Defender.OssRdb" />
+  <meta name="twitter:description" content="Enable Microsoft Defender for open-source relational databases." />
   <meta name="twitter:image" content="https://repository-images.githubusercontent.com/184154668/58818c00-d496-11eb-9b77-016145022654" />
 
 
@@ -114,7 +114,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#use-valid-vmss-names" class="md-skip">
+        <a href="#set-microsoft-defender-for-open-source-relational-databases-to-the-standard-tier" class="md-skip">
           Skip to content
         </a>
       
@@ -150,7 +150,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Azure.VMSS.Name
+              Azure.Defender.OssRdb
             
           </span>
         </div>
@@ -4104,11 +4104,114 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../Azure.Defender.OssRdb/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Azure.Defender.OssRdb
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Azure.Defender.OssRdb
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#description" class="md-nav__link">
+    Description
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recommendation" class="md-nav__link">
+    Recommendation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-template" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-bicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-cli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-powershell" class="md-nav__link">
+    Configure with Azure PowerShell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    Notes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#links" class="md-nav__link">
+    Links
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -7184,73 +7287,11 @@
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Azure.VMSS.Name
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Azure.VMSS.Name/" class="md-nav__link">
         Azure.VMSS.Name
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#description" class="md-nav__link">
-    Description
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#recommendation" class="md-nav__link">
-    Recommendation
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#notes" class="md-nav__link">
-    Notes
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#links" class="md-nav__link">
-    Links
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -8335,6 +8376,47 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#examples" class="md-nav__link">
+    Examples
+  </a>
+  
+    <nav class="md-nav" aria-label="Examples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-template" class="md-nav__link">
+    Configure with Azure template
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-bicep" class="md-nav__link">
+    Configure with Bicep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-cli" class="md-nav__link">
+    Configure with Azure CLI
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configure-with-azure-powershell" class="md-nav__link">
+    Configure with Azure PowerShell
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#notes" class="md-nav__link">
     Notes
   </a>
@@ -8365,7 +8447,7 @@
   
     
       <a
-        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.VMSS.Name.md"
+        href="https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/en/rules/Azure.Defender.OssRdb.md"
         title=""
         class="md-content__button md-icon"
       >
@@ -8382,33 +8464,85 @@
   
 
   <!-- Markdown content -->
-  <h1 id="use-valid-vmss-names">Use valid VMSS names<a class="headerlink" href="#use-valid-vmss-names" title="Permanent link">#</a></h1>
-<nav class="md-tags"><span class="md-tag">Azure.VMSS.Name</span><span class="md-tag">AZR-000261</span><span class="md-tag">Error</span></nav>
-<p><a href="../module/#operational-excellence"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0Zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0Z"/></svg></span> Operational Excellence</a>
- · <a href="../resource/#virtual-machine-scale-sets"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.152.682a2.251 2.251 0 0 1 2.269 0l.007.004 6.957 4.276a2.277 2.277 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003c-.706.41-1.578.41-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026c.197-.342.48-.627.82-.827h.002L13.152.681Zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.775.775 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003ZM8.517 14.33a2.286 2.286 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232V14.33ZM18 9.709l-3.25 1.9v7.548L18 17.245Zm-7.59 4.438-.002.002a2.296 2.296 0 0 1-.391.18v7.612l3.233-1.902v-7.552Zm9.09-5.316v7.532l2.124-1.25a.776.776 0 0 0 .387-.671V7.363Z"/></svg></span> Virtual Machine Scale Sets</a>
- · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.497 1.497 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1Zm0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> 2020_06</p>
-<p>Virtual Machine Scale Set (VMSS) names should meet naming requirements.</p>
+  <h1 id="set-microsoft-defender-for-open-source-relational-databases-to-the-standard-tier">Set Microsoft Defender for open-source relational databases to the Standard tier<a class="headerlink" href="#set-microsoft-defender-for-open-source-relational-databases-to-the-standard-tier" title="Permanent link">#</a></h1>
+<nav class="md-tags"><span class="md-tag">Azure.Defender.OssRdb</span><span class="md-tag">AZR-000381</span><span class="md-tag">Error</span></nav>
+<p><a href="../module/#security"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.527 13.237a1.75 1.75 0 0 1 0-2.474l9.272-9.273a1.75 1.75 0 0 1 2.475 0l9.272 9.273a1.75 1.75 0 0 1 0 2.474l-9.272 9.272a1.75 1.75 0 0 1-2.475 0Zm1.06-1.414a.25.25 0 0 0 0 .354l9.273 9.272a.25.25 0 0 0 .353 0l9.272-9.272a.25.25 0 0 0 0-.354l-9.272-9.272a.25.25 0 0 0-.353 0Z"/></svg></span> Security</a>
+ · <a href="../resource/#microsoft-defender-for-cloud"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13.152.682a2.251 2.251 0 0 1 2.269 0l.007.004 6.957 4.276a2.277 2.277 0 0 1 1.126 1.964v7.516c0 .81-.432 1.56-1.133 1.968l-.002.001-11.964 7.037-.004.003c-.706.41-1.578.41-2.284 0l-.026-.015-6.503-4.502a2.268 2.268 0 0 1-1.096-1.943V9.438c0-.392.1-.77.284-1.1l.003-.006.014-.026c.197-.342.48-.627.82-.827h.002L13.152.681Zm.757 1.295h-.001L2.648 8.616l6.248 4.247a.775.775 0 0 0 .758-.01h.001l11.633-6.804-6.629-4.074a.75.75 0 0 0-.75.003ZM8.517 14.33a2.286 2.286 0 0 1-.393-.18l-.023-.014-6.102-4.147v7.003c0 .275.145.528.379.664l.025.014 6.114 4.232V14.33ZM18 9.709l-3.25 1.9v7.548L18 17.245Zm-7.59 4.438-.002.002a2.296 2.296 0 0 1-.391.18v7.612l3.233-1.902v-7.552Zm9.09-5.316v7.532l2.124-1.25a.776.776 0 0 0 .387-.671V7.363Z"/></svg></span> Microsoft Defender for Cloud</a>
+ · <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.75 6.5a1.25 1.25 0 1 0 0 2.5 1.25 1.25 0 0 0 0-2.5Z"/><path d="M2.5 1h8.44a1.5 1.5 0 0 1 1.06.44l10.25 10.25a1.5 1.5 0 0 1 0 2.12l-8.44 8.44a1.5 1.5 0 0 1-2.12 0L1.44 12A1.497 1.497 0 0 1 1 10.94V2.5A1.5 1.5 0 0 1 2.5 1Zm0 1.5v8.44l10.25 10.25 8.44-8.44L10.94 2.5Z"/></svg></span> 2023_06</p>
+<p>Enable Microsoft Defender for open-source relational databases.</p>
 <h2 id="description">Description<a class="headerlink" href="#description" title="Permanent link">#</a></h2>
-<p>When naming Azure resources, resource names must meet service requirements.
-The requirements for VMSS names are:</p>
+<p>Microsoft Defender for open-source relational databases provides additional security for open-source relational databases.</p>
+<p>The following open-source relational databases are supported:</p>
 <ul>
-<li>Between 1 and 64 characters long.</li>
-<li>Alphanumerics, underscores, periods, and hyphens.</li>
-<li>Start with alphanumeric.</li>
-<li>End alphanumeric or underscore.</li>
-<li>VM names must be unique within a resource group.</li>
+<li>Azure Database for PostgreSQL</li>
+<li>Azure Database for MySQL</li>
+<li>Azure Database for MariaDB</li>
 </ul>
+<p>Protection is provided by analyzing onboarded databases for unusual and potentially harmful attempts to access or exploit databases.
+Which allows Microsoft Defender for Cloud to produce security alerts that are triggered when anomalies in activity occur.</p>
+<p>Security alerts for onboarded databases shows up in Defender for Cloud with details of the suspicious activity and recommendations on how to investigate and remediate the threats.</p>
+<p>Microsoft Defender for open-source relational databases can be enabled at the subscription level and by doing so ensures all supported databases in the subscription will be protected, including future ones.</p>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
-<p>Consider using names that meet VMSS resource name requirements.
-Additionally, consider using a resource name that meeting OS naming requirements.</p>
+<p>Consider using Microsoft Defender for for open-source relational databases to provide additional security for open-source relational databases.</p>
+<h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
+<h3 id="configure-with-azure-template">Configure with Azure template<a class="headerlink" href="#configure-with-azure-template" title="Permanent link">#</a></h3>
+<p>To enable Microsoft Defender for open-source relational databases:</p>
+<ul>
+<li>Set the <code>Standard</code> pricing tier for Microsoft Defender for open-source relational databases.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Security/pricings&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-03-01&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenSourceRelationalDatabases&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;pricingTier&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Standard&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<h3 id="configure-with-bicep">Configure with Bicep<a class="headerlink" href="#configure-with-bicep" title="Permanent link">#</a></h3>
+<p>To enable Microsoft Defender for open-source relational databases:</p>
+<ul>
+<li>Set the <code>Standard</code> pricing tier for Microsoft Defender for open-source relational databases.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource defenderForOssRdb &#39;Microsoft.Security/pricings@2022-03-01&#39; = {
+  name: &#39;OpenSourceRelationalDatabases&#39;
+  properties: {
+    pricingTier: &#39;Standard&#39;
+  }
+}
+</code></pre></div>
+<h3 id="configure-with-azure-cli">Configure with Azure CLI<a class="headerlink" href="#configure-with-azure-cli" title="Permanent link">#</a></h3>
+<p>To enable Microsoft Defender for open-source relational databases:</p>
+<ul>
+<li>Set the <code>Standard</code> pricing tier for Microsoft Defender for open-source relational databases.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><span class="filename">Azure CLI snippet</span><pre><span></span><code>az<span class="w"> </span>security<span class="w"> </span>pricing<span class="w"> </span>create<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;OpenSourceRelationalDatabases&#39;</span><span class="w"> </span>--tier<span class="w"> </span><span class="s1">&#39;standard&#39;</span>
+</code></pre></div>
+<h3 id="configure-with-azure-powershell">Configure with Azure PowerShell<a class="headerlink" href="#configure-with-azure-powershell" title="Permanent link">#</a></h3>
+<p>To enable Microsoft Defender for open-source relational databases:</p>
+<ul>
+<li>Set the <code>Standard</code> pricing tier for Microsoft Defender for open-source relational databases.</li>
+</ul>
+<p>For example:</p>
+<div class="highlight"><span class="filename">Azure PowerShell snippet</span><pre><span></span><code><span class="nb">Set-AzSecurityPricing</span> <span class="n">-Name</span> <span class="s1">&#39;OpenSourceRelationalDatabases&#39;</span> <span class="n">-PricingTier</span> <span class="s1">&#39;Standard&#39;</span>
+</code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
-<p>This rule does not check if VMSS names are unique.
-Additionally, VMSS computer names have additional restrictions.
-See <code>Azure.VMSS.ComputerName</code> for details.</p>
+<p>Microsoft Defender for open-source relational databases is currently available only for the single server deployment model for PostgreSQL and the single server deployment model for MySQL. For PostgreSQL, MySQL and MariaDB <code>General Purpose</code> and <code>Memory Optimized</code> tiers are required in order to be protected.</p>
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
-<li><a href="https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure">Repeatable infrastructure</a></li>
-<li><a href="https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules">Naming rules and restrictions for Azure resources</a></li>
+<li><a href="https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations">Security operations in Azure</a></li>
+<li><a href="https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction">What is Microsoft Defender for Cloud?</a></li>
+<li><a href="https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-introduction">Overview of Microsoft Defender for open-source relational databases</a></li>
+<li><a href="https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-usage">Enable Defender for OSS RDBs</a></li>
+<li><a href="https://learn.microsoft.com/azure/defender-for-cloud/enable-enhanced-security">Quickstart: Enable enhanced security features</a></li>
+<li><a href="https://learn.microsoft.com/security/benchmark/azure/baselines/postgresql-security-baseline">Azure security baseline for Azure Database for PostgreSQL - Single Server</a></li>
+<li><a href="https://learn.microsoft.com/security/benchmark/azure/baselines/azure-database-for-mysql-security-baseline">Azure security baseline for Azure Database for MySQL - Single Server</a></li>
+<li><a href="https://learn.microsoft.com/security/benchmark/azure/baselines/azure-database-for-mariadb-security-baseline">Azure security baseline for Azure Database for MariaDB</a></li>
+<li><a href="https://learn.microsoft.com/azure/governance/policy/samples/built-in-policies#security-center">Azure Policy built-in policy definitions</a></li>
+<li><a href="https://learn.microsoft.com/azure/templates/microsoft.security/pricings">Azure deployment reference</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -8419,7 +8553,7 @@ See <code>Azure.VMSS.ComputerName</code> for details.</p>
   <small>
     
       Last update:
-      2022-10-17
+      2023-05-19
     
   </small>
 </div>
@@ -8442,7 +8576,7 @@ See <code>Azure.VMSS.ComputerName</code> for details.</p>
       data-category="Documentation"
       data-category-id="DIC_kwDOCvn6LM4CQqE6"
       data-mapping="specific"
-      data-term="Azure.VMSS.Name"
+      data-term="Azure.Defender.OssRdb"
       data-strict="0"
       data-reactions-enabled="1"
       data-emit-metadata="0"
