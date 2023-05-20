@@ -227,7 +227,7 @@ Describe 'Azure.Defender' -Tag 'MDC', 'Defender' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetObject.Name | Should -BeIn 'defenderX';
         }
-
+        
         It 'Azure.Defender.Storage.MalwareScan' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.Storage.MalwareScan' };
 
@@ -236,12 +236,28 @@ Describe 'Azure.Defender' -Tag 'MDC', 'Defender' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetObject.Name | Should -BeIn 'defenderJ', 'defenderC2';
-
+            
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetObject.Name | Should -BeIn 'defenderB2';
+        }
+
+        It 'Azure.Defender.OssRdb' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.OssRdb' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderA2';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetObject.Name | Should -BeIn 'defenderZ';
         }
     }
 }

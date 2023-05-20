@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-18-05
 severity: Critical
 pillar: Security
 category: Data protection
@@ -14,19 +15,23 @@ Enable Microsoft Defender for Storage.
 
 ## DESCRIPTION
 
-Storage Accounts can be subject to many security threats.
-Data corruption, malicious exposure of data, data exfiltration, unauthorized access are only a few.
+Microsoft Defender for Storage provides additional security for storage accounts.
 
-Microsoft Defender for Storage provides protection against unusual and potential harmful access to your Storage Accounts.
-Based on Microsoft Threat Intelligence, it continuously monitor the telemetry stream to raise alerts when needed.
+Protection is provided by:
 
-All those alerts come along with investigation steps, remediation actions, and security recommendations.
+- Continuously analyzing data and control plane logs from protected storage accounts.
+- Malicious scanning by performing a full malware scan on uploaded content in near real time, leveraging Microsoft Defender Antivirus capabilities.
+- Sensitive data threat detection by a smart sampling method to find resources with sensitive data.
 
-Defender for Storage doesn't access the Storage account data and has no impact on its performance.
+Which allows Microsoft Defender for Cloud to discover and mitigate potential threats.
+
+Security findings for onboarded storage accounts shows up in Defender for Cloud with details of the security threats with contextual information.
+
+Microsoft Defender for Storage can be enabled at the subscription level and by doing so ensures all storage accounts in the subscription will be protected, including future ones.
 
 ## RECOMMENDATION
 
-Consider using Microsoft Defender for Storage to protect your data hosted in Storage Accounts.
+Consider using Microsoft Defender for Storage to protect your data hosted in storage accounts.
 
 ## EXAMPLES
 
@@ -34,7 +39,7 @@ Consider using Microsoft Defender for Storage to protect your data hosted in Sto
 
 To enable Defender for Storage:
 
-- Set the `Standard` pricing tier for Microsoft Defender for Storage.
+- Set the `Standard` pricing tier for Microsoft Defender for Storage and set the `DefenderForStorageV2` sub plan.
 
 For example:
 
@@ -44,7 +49,8 @@ For example:
     "apiVersion": "2022-03-01",
     "name": "StorageAccounts",
     "properties": {
-        "pricingTier": "Standard"
+        "pricingTier": "Standard",
+        "subPlan": "DefenderForStorageV2"
     }
 }
 ```
@@ -53,7 +59,7 @@ For example:
 
 To enable Defender for Storage:
 
-- Set the `Standard` pricing tier for Microsoft Defender for Storage.
+- Set the `Standard` pricing tier for Microsoft Defender for Storage and set the `DefenderForStorageV2` sub plan.
 
 For example:
 
@@ -62,28 +68,34 @@ resource defenderForStorage 'Microsoft.Security/pricings@2022-03-01' = {
   name: 'StorageAccounts'
   properties: {
     pricingTier: 'Standard'
+    subPlan: 'DefenderForStorageV2'
   }
 }
-```
-
-### Configure with Azure CLI
-
-```bash
-az security pricing create -n 'StorageAccounts' --tier 'standard'
 ```
 
 ### Configure with Azure PowerShell
 
 ```powershell
-Set-AzSecurityPricing -Name 'StorageAccounts' -PricingTier 'Standard'
+Set-AzSecurityPricing -Name 'StorageAccounts' -PricingTier 'Standard' -SubPlan 'DefenderForStorageV2'
 ```
 
 ## NOTES
 
-This rule applies when analyzing resources deployed (in-flight) to Azure.
+The `DefenderForStorageV2` sub plan represents the new Defender for Storage plan which offers several new benefits that aren't included in the classic plan. The new plan includes more advanced capabilities that can help improve the security of the data and help prevent malicious file uploads, sensitive data exfiltration, and data corruption. Some features within the new plan is still in preview, but these are configurable.
+
+Currently only the `Blob Storage`, `Azure Files` and `Azure Data Lake Storage Gen2` service is supported by Defender for Storage.
 
 ## LINKS
 
-- [Storage security guide](https://docs.microsoft.com/azure/storage/blobs/security-recommendations?toc=%2Fazure%2Fsecurity%2Ffundamentals%2Ftoc.json&bc=%2Fazure%2Fsecurity%2Fbreadcrumb%2Ftoc.json)
-- [Introduction to Microsoft Defender for Storage](https://docs.microsoft.com/azure/defender-for-cloud/defender-for-storage-introduction)
-- [Microsoft Threat Intelligence](https://www.microsoft.com/en-us/insidetrack/microsoft-uses-threat-intelligence-to-protect-detect-and-respond-to-threats)
+- [Storage security guide](https://learn.microsoft.com/azure/storage/blobs/security-recommendations?toc=%2Fazure%2Fsecurity%2Ffundamentals%2Ftoc.json&bc=%2Fazure%2Fsecurity%2Fbreadcrumb%2Ftoc.json)
+- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
+- [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
+- [Overview of Microsoft Defender for Storage](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-introduction)
+- [Migrate from Defender for Storage (classic) to the new plan](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-classic-migrate)
+- [Enable and configure Microsoft Defender for Storage](https://learn.microsoft.com/azure/storage/common/azure-defender-storage-configure)
+- [Quickstart: Enable enhanced security features](https://learn.microsoft.com/azure/defender-for-cloud/enable-enhanced-security)
+- [Azure security baseline for Storage](https://learn.microsoft.com/security/benchmark/azure/baselines/storage-security-baseline)
+- [DP-2: Monitor anomalies and threats targeting sensitive data](https://learn.microsoft.com/security/benchmark/azure/baselines/storage-security-baseline#dp-2-monitor-anomalies-and-threats-targeting-sensitive-data)
+- [LT-1: Enable threat detection capabilities](https://learn.microsoft.com/security/benchmark/azure/baselines/storage-security-baseline#lt-1-enable-threat-detection-capabilities)
+- [Azure Policy built-in policy definitions](https://learn.microsoft.com/azure/governance/policy/samples/built-in-policies#security-center)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/pricings)
