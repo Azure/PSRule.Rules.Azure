@@ -24,15 +24,6 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
- New rules:
-  - Container App:
-    - Check that container apps with IP ingress restrictions mode configured is set to allow for all rules defined by @BenjaminEngeset.
-      [#2189](https://github.com/Azure/PSRule.Rules.Azure/issues/2189)
-- Bug fixes:
-  - Updated `Azure.AKS.UptimeSLA` with new pricing by @BenjaminEngeset.
-    [#2065](https://github.com/Azure/PSRule.Rules.Azure/issues/2065)
-    [#2202](https://github.com/Azure/PSRule.Rules.Azure/issues/2202)
-
 What's changed since pre-release v1.27.0-B0015:
 
 - New rules:
@@ -48,6 +39,8 @@ What's changed since pre-release v1.27.0-B0015:
   - Container App:
     - Check that container apps has disabled session affinity to prevent unbalanced distribution by @BenjaminEngeset.
       [#2188](https://github.com/Azure/PSRule.Rules.Azure/issues/2188)
+    - Check that container apps with IP ingress restrictions mode configured is set to allow for all rules defined by @BenjaminEngeset.
+      [#2189](https://github.com/Azure/PSRule.Rules.Azure/issues/2189)
   - Defender for Cloud:
     - Check that Microsoft Defender for APIs is enabled by @BenjaminEngeset.
       [#2186](https://github.com/Azure/PSRule.Rules.Azure/issues/2186)
@@ -59,6 +52,10 @@ What's changed since pre-release v1.27.0-B0015:
       [#2204](https://github.com/Azure/PSRule.Rules.Azure/issues/2204)
     - Check that Microsoft Defender for open-source relational databases is enabled by @BenjaminEngeset.
       [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+- Updated rules:
+  - Defender for Cloud:
+    - Check that Microsoft Defender for Storage (new) is enabled by @BenjaminEngeset.
+      [#2205](https://github.com/Azure/PSRule.Rules.Azure/issues/2205)
 - Bug fixes:
   - Fixed handling of database name in `Azure.MariaDB.Database` by @BernieWhite.
     [#2191](https://github.com/Azure/PSRule.Rules.Azure/issues/2191)
