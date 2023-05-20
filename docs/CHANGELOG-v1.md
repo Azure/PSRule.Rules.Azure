@@ -323,7 +323,7 @@ What's changed since v1.24.2:
     [#1935](https://github.com/Azure/PSRule.Rules.Azure/issues/1935)
     - Configure this option to increase the visibility of the version of the Bicep CLI used by PSRule for Azure.
     - Set `AZURE_BICEP_CHECK_TOOL` to `true` to check the Bicep CLI.
-    - Set `AZURE_BICEP_MINIMUM_VERSION` to  the minimum version.
+    - Set `AZURE_BICEP_MINIMUM_VERSION` to configure the minimum version.
     - If the Bicep CLI is not installed or the version is less than the minimum version an error will be reported.
     - By default, the minimum Bicep version defaults to `0.4.451`.
   - Added support for Bicep custom types by @BernieWhite.
@@ -400,7 +400,7 @@ What's changed since pre-release v1.25.0-B0013:
 - General improvements:
   - Added support for configuring a minimum version of Bicep by @BernieWhite.
     [#1935](https://github.com/Azure/PSRule.Rules.Azure/issues/1935)
-    -  this option to increase the visibility of the version of the Bicep CLI used by PSRule for Azure.
+    - Configure this option to increase the visibility of the version of the Bicep CLI used by PSRule for Azure.
     - Set `AZURE_BICEP_CHECK_TOOL` to `true` to check the Bicep CLI.
     - Set `AZURE_BICEP_MINIMUM_VERSION` to configure the minimum version.
     - If the Bicep CLI is not installed or the version is less than the minimum version an error will be reported.
