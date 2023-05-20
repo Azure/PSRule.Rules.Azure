@@ -237,6 +237,14 @@
         "ingress": {
           "fqdn": "capp-B.env-A.canadacentral.azurecontainerapps.io",
           "external": true,
+          "ipSecurityRestrictions": [
+            {
+              "action": "Deny",
+              "description": "ClientIPAddress_1",
+              "ipAddressRange": "192.168.1.1/32",
+              "name": "ClientIPAddress_1"
+            }
+          ],
           "stickySessions": {
             "affinity": "None"
           },
@@ -302,6 +310,32 @@
         "ingress": {
           "fqdn": "capp-C.env-A.canadacentral.azurecontainerapps.io",
           "external": true,
+          "ipSecurityRestrictions": [
+            {
+              "action": "Deny",
+              "description": "ClientIPAddress_1",
+              "ipAddressRange": "192.168.1.1/32",
+              "name": "ClientIPAddress_1"
+            },
+            {
+              "action": "Deny",
+              "description": "ClientIPAddress_2",
+              "ipAddressRange": "10.1.2.1/32",
+              "name": "ClientIPAddress_2"
+            },
+            {
+              "action": "Allow",
+              "description": "ClientIPAddress_3",
+              "ipAddressRange": "192.168.3.1/32",
+              "name": "ClientIPAddress_3"
+            },
+            {
+              "action": "Allow",
+              "description": "ClientIPAddress_4",
+              "ipAddressRange": "10.1.4.1/32",
+              "name": "ClientIPAddress_4"
+            }
+          ],
           "targetPort": 80,
           "transport": "Auto",
           "traffic": [
@@ -373,6 +407,32 @@
         "activeRevisionsMode": "Multiple",
         "ingress": {
           "fqdn": "capp-D.env-A.canadacentral.azurecontainerapps.io",
+          "ipSecurityRestrictions": [
+            {
+              "action": "Allow",
+              "description": "ClientIPAddress_1",
+              "ipAddressRange": "10.1.1.1/32",
+              "name": "ClientIPAddress_1"
+            },
+            {
+              "action": "Allow",
+              "description": "ClientIPAddress_2",
+              "ipAddressRange": "10.1.2.1/32",
+              "name": "ClientIPAddress_2"
+            },
+            {
+              "action": "Allow",
+              "description": "ClientIPAddress_3",
+              "ipAddressRange": "10.1.3.1/32",
+              "name": "ClientIPAddress_3"
+            },
+            {
+              "action": "Allow",
+              "description": "ClientIPAddress_4",
+              "ipAddressRange": "10.1.4.1/32",
+              "name": "ClientIPAddress_4"
+            }
+          ],
           "targetPort": 80,
           "transport": "Auto",
           "traffic": [
