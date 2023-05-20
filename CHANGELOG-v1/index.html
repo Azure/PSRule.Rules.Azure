@@ -3457,6 +3457,8 @@
         
           
         
+          
+        
       
       
         <label class="md-nav__link" for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
@@ -5243,6 +5245,20 @@
     <li class="md-nav__item">
       <a href="../en/rules/Azure.ContainerApp.PublicAccess/" class="md-nav__link">
         Azure.ContainerApp.PublicAccess
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.ContainerApp.RestrictIngress/" class="md-nav__link">
+        Azure.ContainerApp.RestrictIngress
       </a>
     </li>
   
@@ -10894,22 +10910,6 @@
   See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
-<ul>
-<li>Updated rules:<ul>
-<li>Defender for Cloud:<ul>
-<li>Check that Microsoft Defender for Storage (new) is enabled by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
-  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2205">#2205</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>Bug fixes:<ul>
-<li>Updated <code>Azure.AKS.UptimeSLA</code> with new pricing by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
-  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2065">#2065</a>
-  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2202">#2202</a></li>
-</ul>
-</li>
-</ul>
 <p>What's changed since pre-release v1.27.0-B0015:</p>
 <ul>
 <li>New rules:<ul>
@@ -10931,6 +10931,8 @@
 <li>Container App:<ul>
 <li>Check that container apps has disabled session affinity to prevent unbalanced distribution by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2188">#2188</a></li>
+<li>Check that container apps with IP ingress restrictions mode configured is set to allow for all rules defined by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2189">#2189</a></li>
 </ul>
 </li>
 <li>Defender for Cloud:<ul>
@@ -10948,6 +10950,14 @@
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2204">#2204</a></li>
 <li>Check that Microsoft Defender for open-source relational databases is enabled by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/1632">#1632</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Updated rules:<ul>
+<li>Defender for Cloud:<ul>
+<li>Check that Microsoft Defender for Storage (new) is enabled by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2205">#2205</a></li>
 </ul>
 </li>
 </ul>
