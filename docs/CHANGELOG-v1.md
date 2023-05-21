@@ -30,6 +30,11 @@ What's changed since pre-release v1.27.0-B0050:
   - Defender for Cloud:
     - Check that Malware Scanning in Microsoft Defender for Storage is enabled by @BenjaminEngeset.
       [#2206](https://github.com/Azure/PSRule.Rules.Azure/issues/2206)
+- Bug fixes:
+  - Fixed left-side `or` function evaluation by @BernieWhite.
+    [#2220](https://github.com/Azure/PSRule.Rules.Azure/issues/2220)
+  - Fixed interdependent variable copy loop count by @BernieWhite.
+    [#2221](https://github.com/Azure/PSRule.Rules.Azure/issues/2221)
 
 ## v1.27.0-B0050 (pre-release)
 

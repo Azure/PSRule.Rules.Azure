@@ -779,6 +779,20 @@ namespace PSRule.Rules.Azure
             Assert.Equal(6, resources.Length);
         }
 
+        [Fact]
+        public void OrLeftHandEvaluation()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.19.json"), null, out _);
+            Assert.Equal(2, resources.Length);
+        }
+
+        [Fact]
+        public void InterdependentVariableCopyLoop()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.20.json"), null, out _);
+            Assert.Equal(2, resources.Length);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

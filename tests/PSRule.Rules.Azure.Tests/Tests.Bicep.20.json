@@ -1,0 +1,49 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.16.2.56959",
+      "templateHash": "8465348476999175966"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {
+    "copy": [
+      {
+        "name": "array2",
+        "count": "[length(variables('array1'))]",
+        "input": "[union(createObject('Value', ''), variables('array1')[copyIndex('array2')])]"
+      },
+      {
+        "name": "array3",
+        "count": "[length(variables('array2'))]",
+        "input": {
+          "name": "task",
+          "parameters": "[variables('array2')[copyIndex('array3')]]"
+        }
+      }
+    ],
+    "array1": []
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "name",
+      "location": "[parameters('location')]",
+      "properties": {
+        "mode": "Incremental",
+        "parameters": {
+          "downloadSnapshots": "[variables('array3')]"
+        }
+      }
+    }
+  ]
+}
