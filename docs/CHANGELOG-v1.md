@@ -24,6 +24,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.27.0-B0050:
+
+- New rules:
+  - Defender for Cloud:
+    - Check that Malware Scanning in Microsoft Defender for Storage is enabled by @BenjaminEngeset.
+      [#2206](https://github.com/Azure/PSRule.Rules.Azure/issues/2206)
+
 ## v1.27.0-B0050 (pre-release)
 
 What's changed since pre-release v1.27.0-B0015:
@@ -49,8 +56,6 @@ What's changed since pre-release v1.27.0-B0015:
   - Defender for Cloud:
     - Check that Microsoft Defender for APIs is enabled by @BenjaminEngeset.
       [#2186](https://github.com/Azure/PSRule.Rules.Azure/issues/2186)
-    - Check that Malware Scanning in Microsoft Defender for Storage is enabled by @BenjaminEngeset.
-      [#2206](https://github.com/Azure/PSRule.Rules.Azure/issues/2206)
     - Check that Microsoft Defender for Azure Cosmos DB is enabled by @BenjaminEngeset.
       [#2204](https://github.com/Azure/PSRule.Rules.Azure/issues/2204)
     - Check that Microsoft Defender for open-source relational databases is enabled by @BenjaminEngeset.
