@@ -27,10 +27,10 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Cosmos.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
@@ -41,8 +41,8 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'graph-A';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'graph-A', 'nosql-A', 'nosql-B', 'nosql-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -54,14 +54,14 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
     Context 'Resource name - Azure.Cosmos.AccountName' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.DocumentDb/databaseAccounts'
             }
         }
@@ -102,10 +102,10 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
         BeforeAll {
             $templatePath = Join-Path -Path $here -ChildPath 'Resources.Cosmos.Parameters.*.json';
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Option = (Join-Path -Path $here -ChildPath 'test-template-options.yaml')
+                Baseline      = 'Azure.All'
+                Option        = (Join-Path -Path $here -ChildPath 'test-template-options.yaml')
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $result = Invoke-PSRule @invokeParams -InputPath $templatePath;
         }
@@ -122,6 +122,38 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'gremlin-001';
+        }
+    }
+
+    Context 'With Configuration Option' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Cosmos.json';
+            $configPath = Join-Path -Path $here -ChildPath 'ps-rule-options.yaml';
+        }
+        
+        It 'Azure.Cosmos.DefenderCloud -  YAML file option' {
+            # With AZURE_COSMOS_DEFENDER_PER_ACCOUNT
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $configPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.DefenderCloud' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B', 'nosql-A', 'nosql-B';
+
+            $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/advancedThreatProtectionSettings' has not been specified.";
+            $ruleResult[1].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/advancedThreatProtectionSettings' has not been specified.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'nosql-C';
         }
     }
 }

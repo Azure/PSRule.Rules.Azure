@@ -102,3 +102,4 @@ configuration:
   AZURE_POLICY_RULE_PREFIX: 'AzureCustomPrefix'
   AZURE_LINUX_OS_OFFERS:
   - 'anOfferName'
+  AZURE_COSMOS_DEFENDER_PER_ACCOUNT: true

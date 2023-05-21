@@ -28,6 +28,7 @@ The following configurations options are available for use:
 - [AZURE_POLICY_IGNORE_LIST](#azure_policy_ignore_list)
 - [AZURE_POLICY_RULE_PREFIX](#azure_policy_rule_prefix)
 - [AZURE_APIM_MIN_API_VERSION](#azure_apim_min_api_version)
+- [AZURE_COSMOS_DEFENDER_PER_ACCOUNT](#azure_cosmos_defender_per_account)
 
   [1]: https://aka.ms/ps-rule/options
 
@@ -378,6 +379,34 @@ Example:
 # YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to '2021-12-01-preview'
 configuration:
   AZURE_APIM_MIN_API_VERSION: '2021-12-01-preview'
+```
+
+### AZURE_COSMOS_DEFENDER_PER_ACCOUNT
+
+This configuration option enables validation for that each Cosmos DB account is associated with a Microsoft Defender for Cosmos DB resource level plan.
+Configure this option to enable the per account validation, which defaults to `false`.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_COSMOS_DEFENDER_PER_ACCOUNT: boolean
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_COSMOS_DEFENDER_PER_ACCOUNT configuration option
+configuration:
+  AZURE_COSMOS_DEFENDER_PER_ACCOUNT: false
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_COSMOS_DEFENDER_PER_ACCOUNT configuration option to true
+configuration:
+  AZURE_COSMOS_DEFENDER_PER_ACCOUNT: true
 ```
 
 ## NOTE
