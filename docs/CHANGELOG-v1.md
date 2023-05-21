@@ -24,10 +24,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-- New rules:
-  - Cosmos DB:
-    - Check that Cosmos DB accounts has enabled Microsoft Defender by @BenjaminEngeset.
-      [#2203](https://github.com/Azure/PSRule.Rules.Azure/issues/2203)
+## v1.27.0-B0050 (pre-release)
 
 What's changed since pre-release v1.27.0-B0015:
 
@@ -46,6 +43,9 @@ What's changed since pre-release v1.27.0-B0015:
       [#2188](https://github.com/Azure/PSRule.Rules.Azure/issues/2188)
     - Check that container apps with IP ingress restrictions mode configured is set to allow for all rules defined by @BenjaminEngeset.
       [#2189](https://github.com/Azure/PSRule.Rules.Azure/issues/2189)
+  - Cosmos DB:
+    - Check that Cosmos DB accounts has enabled Microsoft Defender by @BenjaminEngeset.
+      [#2203](https://github.com/Azure/PSRule.Rules.Azure/issues/2203)
   - Defender for Cloud:
     - Check that Microsoft Defender for APIs is enabled by @BenjaminEngeset.
       [#2186](https://github.com/Azure/PSRule.Rules.Azure/issues/2186)
