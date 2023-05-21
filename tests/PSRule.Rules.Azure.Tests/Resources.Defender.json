@@ -101,7 +101,8 @@
     "ResourceType": "Microsoft.Security/pricings",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Properties": {
-      "pricingTier": "Standard"
+      "pricingTier": "Standard",
+      "subPlan": "DefenderForStorageV2"
     }
   },
   {
@@ -248,6 +249,26 @@
     "Name": "defenderY",
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/CosmosDbs",
     "ResourceName": "CosmosDbs",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Free"
+    }
+  },
+  {
+    "Name": "defenderZ",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/OpenSourceRelationalDatabases",
+    "ResourceName": "OpenSourceRelationalDatabases",
+    "ResourceType": "Microsoft.Security/pricings",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "pricingTier": "Standard"
+    }
+  },
+  {
+    "Name": "defenderA2",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Security/pricings/OpenSourceRelationalDatabases",
+    "ResourceName": "OpenSourceRelationalDatabases",
     "ResourceType": "Microsoft.Security/pricings",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Properties": {

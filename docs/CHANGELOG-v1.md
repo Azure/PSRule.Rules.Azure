@@ -24,14 +24,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.27.0-B0050:
+
 - New rules:
   - Storage Account:
     - Check that Malware Scanning in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
       [#2206](https://github.com/Azure/PSRule.Rules.Azure/issues/2206)
-- Bug fixes:
-  - Updated `Azure.AKS.UptimeSLA` with new pricing by @BenjaminEngeset.
-    [#2065](https://github.com/Azure/PSRule.Rules.Azure/issues/2065)
-    [#2202](https://github.com/Azure/PSRule.Rules.Azure/issues/2202)
+
+## v1.27.0-B0050 (pre-release)
 
 What's changed since pre-release v1.27.0-B0015:
 
@@ -48,6 +48,11 @@ What's changed since pre-release v1.27.0-B0015:
   - Container App:
     - Check that container apps has disabled session affinity to prevent unbalanced distribution by @BenjaminEngeset.
       [#2188](https://github.com/Azure/PSRule.Rules.Azure/issues/2188)
+    - Check that container apps with IP ingress restrictions mode configured is set to allow for all rules defined by @BenjaminEngeset.
+      [#2189](https://github.com/Azure/PSRule.Rules.Azure/issues/2189)
+  - Cosmos DB:
+    - Check that Cosmos DB accounts has enabled Microsoft Defender by @BenjaminEngeset.
+      [#2203](https://github.com/Azure/PSRule.Rules.Azure/issues/2203)
   - Defender for Cloud:
     - Check that Microsoft Defender for APIs is enabled by @BenjaminEngeset.
       [#2186](https://github.com/Azure/PSRule.Rules.Azure/issues/2186)
@@ -57,11 +62,23 @@ What's changed since pre-release v1.27.0-B0015:
   - Defender for Cloud:
     - Check that Microsoft Defender for Azure Cosmos DB is enabled by @BenjaminEngeset.
       [#2204](https://github.com/Azure/PSRule.Rules.Azure/issues/2204)
+    - Check that Microsoft Defender for open-source relational databases is enabled by @BenjaminEngeset.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+- Updated rules:
+  - Defender for Cloud:
+    - Check that Microsoft Defender for Storage (new) is enabled by @BenjaminEngeset.
+      [#2205](https://github.com/Azure/PSRule.Rules.Azure/issues/2205)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to 17.6.0.
+    [#2216](https://github.com/Azure/PSRule.Rules.Azure/pull/2216)
 - Bug fixes:
   - Fixed handling of database name in `Azure.MariaDB.Database` by @BernieWhite.
     [#2191](https://github.com/Azure/PSRule.Rules.Azure/issues/2191)
-    - Fixed typing error in `Azure.Defender.Api` documentation by @BenjaminEngeset.
+  - Fixed typing error in `Azure.Defender.Api` documentation by @BenjaminEngeset.
     [#2209](https://github.com/Azure/PSRule.Rules.Azure/issues/2209)
+  - Fixed `Azure.AKS.UptimeSLA` with new pricing by @BenjaminEngeset.
+    [#2065](https://github.com/Azure/PSRule.Rules.Azure/issues/2065)
+    [#2202](https://github.com/Azure/PSRule.Rules.Azure/issues/2202)
 
 ## v1.27.0-B0015 (pre-release)
 

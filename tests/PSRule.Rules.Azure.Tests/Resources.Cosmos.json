@@ -1,244 +1,365 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-A",
-        "Identity": {
-            "PrincipalId": null,
-            "TenantId": null,
-            "Type": "None",
-            "UserAssignedIdentities": null
-        },
-        "Kind": "GlobalDocumentDB",
-        "Location": "East US",
-        "ManagedBy": null,
-        "ResourceName": "graph-A",
-        "Name": "graph-A",
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "documentEndpoint": "https://graph-A.documents.azure.com:443/",
-            "gremlinEndpoint": "https://graph-A.gremlin.cosmos.azure.com:443/",
-            "publicNetworkAccess": "Enabled",
-            "enableAutomaticFailover": false,
-            "enableMultipleWriteLocations": false,
-            "enablePartitionKeyMonitor": false,
-            "isVirtualNetworkFilterEnabled": false,
-            "virtualNetworkRules": [],
-            "EnabledApiTypes": "Gremlin, Sql",
-            "disableKeyBasedMetadataWriteAccess": false,
-            "enableFreeTier": false,
-            "enableAnalyticalStorage": false,
-            "analyticalStorageConfiguration": null,
-            "createMode": "Default",
-            "databaseAccountOfferType": "Standard",
-            "defaultIdentity": "FirstPartyIdentity",
-            "networkAclBypass": "None",
-            "consistencyPolicy": {
-                "defaultConsistencyLevel": "Session",
-                "maxIntervalInSeconds": 5,
-                "maxStalenessPrefix": 100
-            },
-            "configurationOverrides": {},
-            "writeLocations": [
-                {
-                    "id": "graph-A-eastus",
-                    "locationName": "East US",
-                    "documentEndpoint": "https://graph-A-eastus.documents.azure.com:443/",
-                    "failoverPriority": 0,
-                    "isZoneRedundant": true
-                }
-            ],
-            "readLocations": [
-                {
-                    "id": "graph-A-eastus",
-                    "locationName": "East US",
-                    "documentEndpoint": "https://graph-A-eastus.documents.azure.com:443/",
-                    "failoverPriority": 0,
-                    "isZoneRedundant": true
-                }
-            ],
-            "locations": [
-                {
-                    "id": "graph-A-eastus",
-                    "locationName": "East US",
-                    "documentEndpoint": "https://graph-A-eastus.documents.azure.com:443/",
-                    "failoverPriority": 0,
-                    "isZoneRedundant": true
-                }
-            ],
-            "failoverPolicies": [
-                {
-                    "id": "graph-A-eastus",
-                    "locationName": "East US",
-                    "failoverPriority": 0
-                }
-            ],
-            "cors": [],
-            "capabilities": [
-                {
-                    "name": "EnableGremlin"
-                },
-                {
-                    "name": "EnableServerless"
-                }
-            ],
-            "ipRules": [
-                {
-                    "ipAddressOrRange": "104.42.195.92"
-                },
-                {
-                    "ipAddressOrRange": "40.76.54.131"
-                },
-                {
-                    "ipAddressOrRange": "52.176.6.30"
-                },
-                {
-                    "ipAddressOrRange": "52.169.50.45"
-                },
-                {
-                    "ipAddressOrRange": "52.187.184.26"
-                }
-            ],
-            "backupPolicy": {
-                "type": "Periodic",
-                "periodicModeProperties": {
-                    "backupIntervalInMinutes": 240,
-                    "backupRetentionIntervalInHours": 8,
-                    "backupStorageRedundancy": "Local"
-                }
-            },
-            "networkAclBypassResourceIds": []
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.DocumentDB/databaseAccounts",
-        "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
-        "Sku": null,
-        "Tags": {
-            "defaultExperience": "Gremlin (graph)",
-            "CosmosAccountType": "Production",
-            "hidden-cosmos-mmspecial": ""
-        },
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-A",
+    "Identity": {
+      "PrincipalId": null,
+      "TenantId": null,
+      "Type": "None",
+      "UserAssignedIdentities": null
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-B",
-        "Identity": {
-            "PrincipalId": null,
-            "TenantId": null,
-            "Type": "None",
-            "UserAssignedIdentities": null
+    "Kind": "GlobalDocumentDB",
+    "Location": "East US",
+    "ManagedBy": null,
+    "ResourceName": "graph-A",
+    "Name": "graph-A",
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "documentEndpoint": "https://graph-A.documents.azure.com:443/",
+      "gremlinEndpoint": "https://graph-A.gremlin.cosmos.azure.com:443/",
+      "publicNetworkAccess": "Enabled",
+      "enableAutomaticFailover": false,
+      "enableMultipleWriteLocations": false,
+      "enablePartitionKeyMonitor": false,
+      "isVirtualNetworkFilterEnabled": false,
+      "virtualNetworkRules": [],
+      "EnabledApiTypes": "Gremlin, Sql",
+      "disableKeyBasedMetadataWriteAccess": false,
+      "enableFreeTier": false,
+      "enableAnalyticalStorage": false,
+      "analyticalStorageConfiguration": null,
+      "createMode": "Default",
+      "databaseAccountOfferType": "Standard",
+      "defaultIdentity": "FirstPartyIdentity",
+      "networkAclBypass": "None",
+      "consistencyPolicy": {
+        "defaultConsistencyLevel": "Session",
+        "maxIntervalInSeconds": 5,
+        "maxStalenessPrefix": 100
+      },
+      "configurationOverrides": {},
+      "writeLocations": [
+        {
+          "id": "graph-A-eastus",
+          "locationName": "East US",
+          "documentEndpoint": "https://graph-A-eastus.documents.azure.com:443/",
+          "failoverPriority": 0,
+          "isZoneRedundant": true
+        }
+      ],
+      "readLocations": [
+        {
+          "id": "graph-A-eastus",
+          "locationName": "East US",
+          "documentEndpoint": "https://graph-A-eastus.documents.azure.com:443/",
+          "failoverPriority": 0,
+          "isZoneRedundant": true
+        }
+      ],
+      "locations": [
+        {
+          "id": "graph-A-eastus",
+          "locationName": "East US",
+          "documentEndpoint": "https://graph-A-eastus.documents.azure.com:443/",
+          "failoverPriority": 0,
+          "isZoneRedundant": true
+        }
+      ],
+      "failoverPolicies": [
+        {
+          "id": "graph-A-eastus",
+          "locationName": "East US",
+          "failoverPriority": 0
+        }
+      ],
+      "cors": [],
+      "capabilities": [
+        {
+          "name": "EnableGremlin"
         },
-        "Kind": "GlobalDocumentDB",
-        "Location": "East US",
-        "ManagedBy": null,
-        "ResourceName": "graph-B",
-        "Name": "graph-B",
-        "Plan": null,
+        {
+          "name": "EnableServerless"
+        }
+      ],
+      "ipRules": [
+        {
+          "ipAddressOrRange": "104.42.195.92"
+        },
+        {
+          "ipAddressOrRange": "40.76.54.131"
+        },
+        {
+          "ipAddressOrRange": "52.176.6.30"
+        },
+        {
+          "ipAddressOrRange": "52.169.50.45"
+        },
+        {
+          "ipAddressOrRange": "52.187.184.26"
+        }
+      ],
+      "backupPolicy": {
+        "type": "Periodic",
+        "periodicModeProperties": {
+          "backupIntervalInMinutes": 240,
+          "backupRetentionIntervalInHours": 8,
+          "backupStorageRedundancy": "Local"
+        }
+      },
+      "networkAclBypassResourceIds": []
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Sku": null,
+    "Tags": {
+      "defaultExperience": "Gremlin (graph)",
+      "CosmosAccountType": "Production",
+      "hidden-cosmos-mmspecial": ""
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/graph-B",
+    "Identity": {
+      "PrincipalId": null,
+      "TenantId": null,
+      "Type": "None",
+      "UserAssignedIdentities": null
+    },
+    "Kind": "GlobalDocumentDB",
+    "Location": "East US",
+    "ManagedBy": null,
+    "ResourceName": "graph-B",
+    "Name": "graph-B",
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "documentEndpoint": "https://graph-B.documents.azure.com:443/",
+      "gremlinEndpoint": "https://graph-B.gremlin.cosmos.azure.com:443/",
+      "publicNetworkAccess": "Enabled",
+      "enableAutomaticFailover": false,
+      "enableMultipleWriteLocations": false,
+      "enablePartitionKeyMonitor": false,
+      "isVirtualNetworkFilterEnabled": false,
+      "virtualNetworkRules": [],
+      "EnabledApiTypes": "Gremlin, Sql",
+      "disableKeyBasedMetadataWriteAccess": true,
+      "enableFreeTier": false,
+      "enableAnalyticalStorage": false,
+      "analyticalStorageConfiguration": null,
+      "createMode": "Default",
+      "databaseAccountOfferType": "Standard",
+      "defaultIdentity": "FirstPartyIdentity",
+      "networkAclBypass": "None",
+      "consistencyPolicy": {
+        "defaultConsistencyLevel": "Session",
+        "maxIntervalInSeconds": 5,
+        "maxStalenessPrefix": 100
+      },
+      "configurationOverrides": {},
+      "writeLocations": [
+        {
+          "id": "graph-B-eastus",
+          "locationName": "East US",
+          "documentEndpoint": "https://graph-B-eastus.documents.azure.com:443/",
+          "failoverPriority": 0,
+          "isZoneRedundant": true
+        }
+      ],
+      "readLocations": [
+        {
+          "id": "graph-B-eastus",
+          "locationName": "East US",
+          "documentEndpoint": "https://graph-B-eastus.documents.azure.com:443/",
+          "failoverPriority": 0,
+          "isZoneRedundant": true
+        }
+      ],
+      "locations": [
+        {
+          "id": "graph-B-eastus",
+          "locationName": "East US",
+          "documentEndpoint": "https://graph-B-eastus.documents.azure.com:443/",
+          "failoverPriority": 0,
+          "isZoneRedundant": true
+        }
+      ],
+      "failoverPolicies": [
+        {
+          "id": "graph-B-eastus",
+          "locationName": "East US",
+          "failoverPriority": 0
+        }
+      ],
+      "cors": [],
+      "capabilities": [
+        {
+          "name": "EnableGremlin"
+        },
+        {
+          "name": "EnableServerless"
+        }
+      ],
+      "ipRules": [
+        {
+          "ipAddressOrRange": "104.42.195.92"
+        },
+        {
+          "ipAddressOrRange": "40.76.54.131"
+        },
+        {
+          "ipAddressOrRange": "52.176.6.30"
+        },
+        {
+          "ipAddressOrRange": "52.169.50.45"
+        },
+        {
+          "ipAddressOrRange": "52.187.184.26"
+        }
+      ],
+      "backupPolicy": {
+        "type": "Periodic",
+        "periodicModeProperties": {
+          "backupIntervalInMinutes": 240,
+          "backupRetentionIntervalInHours": 8,
+          "backupStorageRedundancy": "Local"
+        }
+      },
+      "networkAclBypassResourceIds": []
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Sku": null,
+    "Tags": {
+      "defaultExperience": "Gremlin (graph)",
+      "CosmosAccountType": "Production",
+      "hidden-cosmos-mmspecial": ""
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-A",
+    "Location": "region",
+    "ResourceName": "nosql-A",
+    "Name": "nosql-A",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": "Session",
+      "locations": [
+        {
+          "failoverPriority": 0,
+          "isZoneRedundant": false,
+          "locationName": "primaryRegion"
+        },
+        {
+          "failoverPriority": 1,
+          "isZoneRedundant": false,
+          "locationName": " secondaryRegion"
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableAutomaticFailover": true
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": []
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B",
+    "Location": "region",
+    "ResourceName": "nosql-B",
+    "Name": "nosql-B",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": "Session",
+      "locations": [
+        {
+          "failoverPriority": 0,
+          "isZoneRedundant": false,
+          "locationName": "primaryRegion"
+        },
+        {
+          "failoverPriority": 1,
+          "isZoneRedundant": false,
+          "locationName": " secondaryRegion"
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableAutomaticFailover": true
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-B/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
+        "ResourceName": "Current",
+        "Name": "Current",
         "Properties": {
-            "provisioningState": "Succeeded",
-            "documentEndpoint": "https://graph-B.documents.azure.com:443/",
-            "gremlinEndpoint": "https://graph-B.gremlin.cosmos.azure.com:443/",
-            "publicNetworkAccess": "Enabled",
-            "enableAutomaticFailover": false,
-            "enableMultipleWriteLocations": false,
-            "enablePartitionKeyMonitor": false,
-            "isVirtualNetworkFilterEnabled": false,
-            "virtualNetworkRules": [],
-            "EnabledApiTypes": "Gremlin, Sql",
-            "disableKeyBasedMetadataWriteAccess": true,
-            "enableFreeTier": false,
-            "enableAnalyticalStorage": false,
-            "analyticalStorageConfiguration": null,
-            "createMode": "Default",
-            "databaseAccountOfferType": "Standard",
-            "defaultIdentity": "FirstPartyIdentity",
-            "networkAclBypass": "None",
-            "consistencyPolicy": {
-                "defaultConsistencyLevel": "Session",
-                "maxIntervalInSeconds": 5,
-                "maxStalenessPrefix": 100
-            },
-            "configurationOverrides": {},
-            "writeLocations": [
-                {
-                    "id": "graph-B-eastus",
-                    "locationName": "East US",
-                    "documentEndpoint": "https://graph-B-eastus.documents.azure.com:443/",
-                    "failoverPriority": 0,
-                    "isZoneRedundant": true
-                }
-            ],
-            "readLocations": [
-                {
-                    "id": "graph-B-eastus",
-                    "locationName": "East US",
-                    "documentEndpoint": "https://graph-B-eastus.documents.azure.com:443/",
-                    "failoverPriority": 0,
-                    "isZoneRedundant": true
-                }
-            ],
-            "locations": [
-                {
-                    "id": "graph-B-eastus",
-                    "locationName": "East US",
-                    "documentEndpoint": "https://graph-B-eastus.documents.azure.com:443/",
-                    "failoverPriority": 0,
-                    "isZoneRedundant": true
-                }
-            ],
-            "failoverPolicies": [
-                {
-                    "id": "graph-B-eastus",
-                    "locationName": "East US",
-                    "failoverPriority": 0
-                }
-            ],
-            "cors": [],
-            "capabilities": [
-                {
-                    "name": "EnableGremlin"
-                },
-                {
-                    "name": "EnableServerless"
-                }
-            ],
-            "ipRules": [
-                {
-                    "ipAddressOrRange": "104.42.195.92"
-                },
-                {
-                    "ipAddressOrRange": "40.76.54.131"
-                },
-                {
-                    "ipAddressOrRange": "52.176.6.30"
-                },
-                {
-                    "ipAddressOrRange": "52.169.50.45"
-                },
-                {
-                    "ipAddressOrRange": "52.187.184.26"
-                }
-            ],
-            "backupPolicy": {
-                "type": "Periodic",
-                "periodicModeProperties": {
-                    "backupIntervalInMinutes": 240,
-                    "backupRetentionIntervalInHours": 8,
-                    "backupStorageRedundancy": "Local"
-                }
-            },
-            "networkAclBypassResourceIds": []
+          "isEnabled": false
         },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.DocumentDB/databaseAccounts",
-        "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
-        "Sku": null,
-        "Tags": {
-            "defaultExperience": "Gremlin (graph)",
-            "CosmosAccountType": "Production",
-            "hidden-cosmos-mmspecial": ""
-        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Security/advancedThreatProtectionSettings",
+        "ResourceType": "Microsoft.Security/advancedThreatProtectionSettings",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C",
+    "Location": "region",
+    "ResourceName": "nosql-C",
+    "Name": "nosql-C",
+    "Kind": "GlobalDocumentDB",
+    "Properties": {
+      "consistencyPolicy": "Session",
+      "locations": [
+        {
+          "failoverPriority": 0,
+          "isZoneRedundant": false,
+          "locationName": "primaryRegion"
+        },
+        {
+          "failoverPriority": 1,
+          "isZoneRedundant": false,
+          "locationName": " secondaryRegion"
+        }
+      ],
+      "databaseAccountOfferType": "Standard",
+      "enableAutomaticFailover": true
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DocumentDB/databaseAccounts",
+    "ResourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DocumentDB/databaseAccounts/nosql-C/providers/Microsoft.Security/advancedThreatProtectionSettings/Current",
+        "ResourceName": "Current",
+        "Name": "Current",
+        "Properties": {
+          "isEnabled": true
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Security/advancedThreatProtectionSettings",
+        "ResourceType": "Microsoft.Security/advancedThreatProtectionSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
 ]
