@@ -27,6 +27,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.27.0-B0050:
 
 - New rules:
+  - Storage Account:
+    - Check that Malware Scanning in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
   - Defender for Cloud:
     - Check that Malware Scanning in Microsoft Defender for Storage is enabled by @BenjaminEngeset.
       [#2206](https://github.com/Azure/PSRule.Rules.Azure/issues/2206)

@@ -101,4 +101,5 @@
     VMMaintenanceConfig = "The virtual machine '{0}' should have a maintenance configuration associated."
     ArcServerMaintenanceConfig = "The Arc-enabled server '{0}' should have a maintenance configuration associated."
     SubStorageMalwareScanning = "The Microsoft Defender for Storage plan should have malware scanning configured."
+    ResStorageMalwareScanning = "The storage account '{0}' should have malware scanning in Microsoft Defender for Storage configured."
 }
