@@ -100,4 +100,5 @@
     ArcKubernetesDefender = "The Arc-enabled Kubernetes cluster '{0}' should have a Microsoft Defender for Containers extension configured."
     VMMaintenanceConfig = "The virtual machine '{0}' should have a maintenance configuration associated."
     ArcServerMaintenanceConfig = "The Arc-enabled server '{0}' should have a maintenance configuration associated."
+    SubStorageMalwareScanning = "The Microsoft Defender for Storage plan should have malware scanning configured."
 }
