@@ -89,10 +89,10 @@ Rule 'Azure.Storage.ContainerSoftDelete' -Ref 'AZR-000289' -Type 'Microsoft.Stor
 }
 
 # Synopsis: Enable Malware Scanning in Microsoft Defender for Storage.
-Rule 'Azure.Storage.DefenderCloud.MalwareScan' -Ref 'AZR-000384' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'Preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
-    $malwareConfigured = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
-        Where-Object { $_.properties.malwareScanning.onUpload.isEnabled -eq $True })
-    $Assert.GreaterOrEqual($malwareConfigured, '.', 1).Reason($LocalizedData.ResStorageMalwareScanning, $PSRule.TargetName)
+Rule 'Azure.Storage.DefenderCloud.MalwareScan' -Ref 'AZR-000384' -Type 'Microsoft.Storage/storageAccounts' -If { IsPublicNetworkAccessEnabled } -Tag @{ release = 'Preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
+    $malwareDisabled = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
+        Where-Object { $_.properties.malwareScanning.onUpload.isEnabled -eq $False })
+    $Assert.Count($malwareDisabled, '.', 0).Reason($LocalizedData.ResStorageMalwareScanning, $PSRule.TargetName)
 }
 
 #region Helper functions
@@ -192,6 +192,14 @@ function global:IsLargeFileSharesEnabled {
             return $False;
         }
         return $Assert.HasFieldValue($TargetObject, 'Properties.largeFileSharesState', 'Enabled').Result;
+    }
+}
+
+function global:IsPublicNetworkAccessEnabled {
+    [CmdletBinding()]
+    param ()     
+    process {
+        $Assert.HasDefaultValue($TargetObject, 'properties.publicNetworkAccess', 'Enabled').Result
     }
 }
 
