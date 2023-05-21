@@ -61,6 +61,9 @@ What's changed since pre-release v1.27.0-B0015:
   - Defender for Cloud:
     - Check that Microsoft Defender for Storage (new) is enabled by @BenjaminEngeset.
       [#2205](https://github.com/Azure/PSRule.Rules.Azure/issues/2205)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to 17.6.0.
+    [#2216](https://github.com/Azure/PSRule.Rules.Azure/pull/2216)
 - Bug fixes:
   - Fixed handling of database name in `Azure.MariaDB.Database` by @BernieWhite.
     [#2191](https://github.com/Azure/PSRule.Rules.Azure/issues/2191)
