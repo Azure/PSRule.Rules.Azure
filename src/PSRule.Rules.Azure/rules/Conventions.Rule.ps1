@@ -102,4 +102,27 @@ Export-PSRuleConvention 'Azure.ExpandBicep' -If { $Configuration.AZURE_BICEP_FIL
     Write-Verbose "[Azure.ExpandBicep] -- Complete expanding bicep source: $($TargetObject.FullName)";
 }
 
+# Synopsis: Expand .bicepparam files for analysis.
+Export-PSRuleConvention 'Azure.ExpandBicepParam' -If { $Configuration.AZURE_BICEP_PARAMS_FILE_EXPANSION -eq $True -and $TargetObject.Extension -eq '.bicepparam' } -Begin {
+    Write-Verbose "[Azure.ExpandBicepParam] -- Start expanding bicep from parameter file: $($TargetObject.FullName)";
+    $context = $PSRule.GetService('Azure.Context');
+    try {
+        $data = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepParamResources($context, $TargetObject.FullName);
+        if ($Null -ne $data) {
+            Write-Verbose "[Azure.ExpandBicepParam] -- Importing $($data.Length) Bicep resources.";
+            $PSRule.Import($data);
+        }
+    }
+    catch [PSRule.Rules.Azure.Pipeline.BicepCompileException] {
+        Write-Error -Exception $_.Exception -ErrorId 'Azure.ExpandBicepParam.BicepCompileException';
+    }
+    catch [System.IO.FileNotFoundException] {
+        Write-Error -Exception $_.Exception;
+    }
+    catch {
+        Write-Error -Message "Failed to expand bicep source '$($TargetObject.FullName)'. $($_.Exception.Message)" -ErrorId 'Azure.ExpandBicepParam.ConventionException';
+    }
+    Write-Verbose "[Azure.ExpandBicepParam] -- Complete expanding bicep source: $($TargetObject.FullName)";
+}
+
 #endregion Bicep

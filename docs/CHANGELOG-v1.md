@@ -26,6 +26,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.27.0-B0050:
 
+- New features:
+  - **Experimental:** Added support for expanding deployments from `.bicepparam` files by @BernieWhite.
+    [#2132](https://github.com/Azure/PSRule.Rules.Azure/issues/2132)
 - New rules:
   - Storage Account:
     - Check that Malware Scanning in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
@@ -313,7 +316,7 @@ What's changed since v1.25.0:
 What's changed since v1.24.2:
 
 - New features:
-  - **Experimental**: Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Benchmark by @BernieWhite.
+  - **Experimental:** Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Benchmark by @BernieWhite.
     [#1634](https://github.com/Azure/PSRule.Rules.Azure/issues/1634)
 - New rules:
   - Defender for Cloud:
@@ -433,7 +436,7 @@ What's changed since pre-release v1.25.0-B0013:
 What's changed since v1.24.2:
 
 - New features:
-  - **Experimental**: Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Benchmark by @BernieWhite.
+  - **Experimental:** Added `Azure.MCSB.v1` which include rules aligned to the Microsoft Cloud Security Benchmark by @BernieWhite.
     [#1634](https://github.com/Azure/PSRule.Rules.Azure/issues/1634)
 - New rules:
   - Virtual Machine:
@@ -1946,7 +1949,7 @@ What's changed since v1.13.4:
   - Added March 2022 baselines `Azure.GA_2022_03` and `Azure.Preview_2022_03`. [#1334](https://github.com/Azure/PSRule.Rules.Azure/issues/1334)
     - Includes rules released before or during March 2022.
     - Marked `Azure.GA_2021_12` and `Azure.Preview_2021_12` baselines as obsolete.
-  - **Experimental**: Cmdlets to validate objects with Azure policy conditions:
+  - **Experimental:** Cmdlets to validate objects with Azure policy conditions:
     - `Export-AzPolicyAssignmentData` - Exports policy assignment data. [#1266](https://github.com/Azure/PSRule.Rules.Azure/issues/1266)
     - `Export-AzPolicyAssignmentRuleData` - Exports JSON rules from policy assignment data. [#1278](https://github.com/Azure/PSRule.Rules.Azure/issues/1278)
     - `Get-AzPolicyAssignmentDataSource` - Discovers policy assignment data. [#1340](https://github.com/Azure/PSRule.Rules.Azure/issues/1340)
@@ -1997,7 +2000,7 @@ What's changed since pre-release v1.14.0-B2203117:
 What's changed since pre-release v1.14.0-B2203088:
 
 - New features:
-  - **Experimental**: Cmdlets to validate objects with Azure policy conditions:
+  - **Experimental:** Cmdlets to validate objects with Azure policy conditions:
     - `Export-AzPolicyAssignmentData` - Exports policy assignment data. [#1266](https://github.com/Azure/PSRule.Rules.Azure/issues/1266)
     - `Export-AzPolicyAssignmentRuleData` - Exports JSON rules from policy assignment data. [#1278](https://github.com/Azure/PSRule.Rules.Azure/issues/1278)
     - `Get-AzPolicyAssignmentDataSource` - Discovers policy assignment data. [#1340](https://github.com/Azure/PSRule.Rules.Azure/issues/1340)
@@ -2916,7 +2919,7 @@ What's changed since v1.6.0:
 What's changed since v1.5.1:
 
 - New features:
-  - **Experimental**: Added support for expansion from Bicep source files. [#848](https://github.com/Azure/PSRule.Rules.Azure/issues/848) [#670](https://github.com/Azure/PSRule.Rules.Azure/issues/670) [#858](https://github.com/Azure/PSRule.Rules.Azure/issues/858)
+  - **Experimental:** Added support for expansion from Bicep source files. [#848](https://github.com/Azure/PSRule.Rules.Azure/issues/848) [#670](https://github.com/Azure/PSRule.Rules.Azure/issues/670) [#858](https://github.com/Azure/PSRule.Rules.Azure/issues/858)
     - Bicep support is currently experimental.
     - To opt-in set the `AZURE_BICEP_FILE_EXPANSION` configuration to `true`.
     - For more information see [Using Bicep](https://azure.github.io/PSRule.Rules.Azure/using-bicep/).
@@ -2944,7 +2947,7 @@ What's changed since pre-release v1.6.0-B2108023:
 What's changed since pre-release v1.6.0-B2107028:
 
 - New features:
-  - **Experimental**: Added support for expansion from Bicep source files. [#848](https://github.com/Azure/PSRule.Rules.Azure/issues/848) [#670](https://github.com/Azure/PSRule.Rules.Azure/issues/670)
+  - **Experimental:** Added support for expansion from Bicep source files. [#848](https://github.com/Azure/PSRule.Rules.Azure/issues/848) [#670](https://github.com/Azure/PSRule.Rules.Azure/issues/670)
     - Bicep support is currently experimental.
     - To opt-in set the `AZURE_BICEP_FILE_EXPANSION` configuration to `true`.
     - For more information see [Using Bicep](https://azure.github.io/PSRule.Rules.Azure/using-bicep/).

@@ -130,11 +130,21 @@ To do this configure `ps-rule.yaml` with the `input.pathIgnore` option.
 !!! Note
     In this example, Bicep files such as `deploy.bicep` in other directories will be expanded.
 
-### Using parameter files
+## Using parameter files
 
 When using Bicep, you don't need to use parameter files.
 You can call `.bicep` files directly from other `.bicep` files with modules by using the `module` keyword.
-Alternatively, you can choose to expand and test a Bicep module from JSON parameter files [by metadata][7].
+
+Alternatively, Bicep supports two options for parameter files:
+
+- **JSON parameter files** &mdash; This format uses conventional JSON syntax compatible with ARM templates.
+- **Bicep parameter files** &mdash; This format uses Bicep language from a `.bicepparam` file to reference a Bicep module.
+
+Each option is described in more detail in the following sections.
+
+### Using JSON parameter files
+
+You can choose to expand and test a Bicep module from JSON parameter files [by metadata][7].
 
 When using parameter files exclusively,
 the `AZURE_BICEP_FILE_EXPANSION` configuration option does not need to be set.
@@ -180,6 +190,50 @@ This option will discover Bicep files from parameter metadata.
 
   [7]: using-templates.md#by-metadata
 
+### Using Bicep parameter files
+
+:octicons-beaker-24:{ .experimental } Experimental · :octicons-milestone-24: v1.27.0
+
+You can use `.bicepparam` files to reference your Bicep modules as a method for providing parameters.
+Using the Bicep parameter file format, allows you to get many of the benefits of the Bicep language.
+
+For example:
+
+```bicepparam
+using 'template.bicep'
+
+param storageAccountName = 'bicepstorage001'
+param tags = {
+  env: 'test'
+}
+```
+
+Presently, to use this feature you must:
+
+1. Enable the experimental feature in `bicepconfig.json`.
+2. Enable expansion of Bicep parameter files in `ps-rule.yaml`.
+
+For example:
+
+```json title="bicepconfig.json"
+{
+  "experimentalFeaturesEnabled": {
+    "paramsFiles": true
+  }
+}
+```
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_BICEP_PARAMS_FILE_EXPANSION: true
+```
+
+!!! Experimental "Experimental - [Learn more][13]"
+    Bicep parameter files are a work in progress.
+    This feature will be transitioned to stable after the Bicep CLI support is finalized.
+
+  [13]: versioning.md#experimental-features
+
 ## Restoring modules from a private registry
 
 Bicep modules can be stored in a private registry.
@@ -196,7 +250,7 @@ To configure authentication for PSRule to a private registry:
 - [Granting access to a private registry](#granting-access-to-a-private-registry)
 - [Set pipeline environment variables](#set-pipeline-environment-variables)
 
-Some organizations may want to expose Bicep modules publically.
+Some organizations may want to expose Bicep modules publicly.
 This can be configured by enabling anonymous pull access.
 To configure your registry see [Make your container registry content publicly available][14].
 

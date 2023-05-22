@@ -1,8 +1,12 @@
 {
-    "analyzers": {
-        "core": {
-            "enabled": true,
-            "verbose": true
-        }
+  "analyzers": {
+    "core": {
+      "enabled": true,
+      "verbose": true
     }
+  },
+  "experimentalFeaturesEnabled": {
+    "paramsFiles": true,
+    "userDefinedTypes": false
+  }
 }
