@@ -13,10 +13,19 @@ Export resource configuration data from Azure templates.
 
 ## SYNTAX
 
+### Template (Default)
+
 ```text
 Export-AzRuleTemplateData [[-Name] <String>] -TemplateFile <String> [-ParameterFile <String[]>]
  [-ResourceGroup <ResourceGroupReference>] [-Subscription <SubscriptionReference>] [-OutputPath <String>]
  [-PassThru] [<CommonParameters>]
+```
+
+### Source
+
+```text
+Export-AzRuleTemplateData [[-Name] <String>] -SourceFile <String> [-ResourceGroup <ResourceGroupReference>]
+ [-Subscription <SubscriptionReference>] [-OutputPath <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -137,7 +146,7 @@ The absolute or relative file path to an Azure Resource Manager template file.
 
 ```yaml
 Type: String
-Parameter Sets: (All)
+Parameter Sets: Template
 Aliases:
 
 Required: True
@@ -153,10 +162,26 @@ The absolute or relative file path to one or more Azure Resource Manager templat
 
 ```yaml
 Type: String[]
-Parameter Sets: (All)
+Parameter Sets: Template
 Aliases: TemplateParameterFile
 
 Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByPropertyName)
+Accept wildcard characters: False
+```
+
+### -SourceFile
+
+The absolute or relative file path to a file of a Bicep file.
+
+```yaml
+Type: String
+Parameter Sets: Source
+Aliases: f, FullName
+
+Required: True
 Position: Named
 Default value: None
 Accept pipeline input: True (ByPropertyName)
@@ -256,7 +281,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

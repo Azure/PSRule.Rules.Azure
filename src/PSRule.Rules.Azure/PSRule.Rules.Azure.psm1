@@ -165,19 +165,24 @@ function Export-AzRuleData {
 
 # .ExternalHelp PSRule.Rules.Azure-help.xml
 function Export-AzRuleTemplateData {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName = "Template")]
     [OutputType([System.IO.FileInfo])]
     [OutputType([PSObject])]
     param (
         [Parameter(Position = 0, Mandatory = $False)]
         [String]$Name,
 
-        [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True)]
+        [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True, ParameterSetName = "Template")]
         [String]$TemplateFile,
 
-        [Parameter(Mandatory = $False, ValueFromPipelineByPropertyName = $True)]
+        [Parameter(Mandatory = $False, ValueFromPipelineByPropertyName = $True, ParameterSetName = "Template")]
         [Alias('TemplateParameterFile')]
         [String[]]$ParameterFile,
+
+        [Parameter(Mandatory = $True, ValueFromPipelineByPropertyName = $True, ParameterSetName = "Source")]
+        [Alias('f')]
+        [Alias('FullName')]
+        [String]$SourceFile,
 
         [Parameter(Mandatory = $False)]
         [Alias('ResourceGroupName')]
@@ -234,8 +239,15 @@ function Export-AzRuleTemplateData {
     process {
         if ($Null -ne (Get-Variable -Name pipeline -ErrorAction SilentlyContinue)) {
             try {
-                $source = [PSRule.Rules.Azure.Pipeline.TemplateSource]::new($TemplateFile, $ParameterFile);
-                $pipeline.Process($source);
+
+                if ($PSCmdlet.ParameterSetName -eq 'Source') {
+                    $source = [PSRule.Rules.Azure.Pipeline.TemplateSource]::new($SourceFile);
+                    $pipeline.Process($source);
+                }
+                else {
+                    $source = [PSRule.Rules.Azure.Pipeline.TemplateSource]::new($TemplateFile, $ParameterFile);
+                    $pipeline.Process($source);
+                }
             }
             catch {
                 $pipeline.Dispose();

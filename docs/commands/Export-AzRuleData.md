@@ -17,7 +17,8 @@ Export resource configuration data from one or more Azure subscriptions.
 
 ```text
 Export-AzRuleData [[-OutputPath] <String>] [-Subscription <String[]>] [-Tenant <String[]>]
- [-ResourceGroupName <String[]>] [-Tag <Hashtable>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+ [-ResourceGroupName <String[]>] [-Tag <Hashtable>] [-PassThru] [-SkipDiscovery] [-ResourceId <String[]>]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### All
@@ -205,6 +206,39 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
+### -ResourceId
+
+A list of resource Ids to expand.
+
+```yaml
+Type: String[]
+Parameter Sets: Default
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: True (ByValue)
+Accept wildcard characters: False
+```
+
+### -SkipDiscovery
+
+Determines if resource discovery is skipped.
+When skipped resources are expanded based on provided resource Ids.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: Default
+Aliases:
+
+Required: False
+Position: Named
+Default value: None
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
 ### -Confirm
 
 Prompts you for confirmation before running the cmdlet.
@@ -239,7 +273,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](http://go.microsoft.com/fwlink/?LinkID=113216).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

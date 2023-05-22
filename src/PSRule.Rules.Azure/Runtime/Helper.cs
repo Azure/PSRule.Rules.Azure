@@ -137,6 +137,14 @@ namespace PSRule.Rules.Azure.Runtime
         }
 
         /// <summary>
+        /// Expand resources from a bicep param file.
+        /// </summary>
+        public static PSObject[] GetBicepParamResources(IService service, string bicepFile)
+        {
+            return GetBicepParamResources(service as RuntimeService, bicepFile);
+        }
+
+        /// <summary>
         /// Get the linked template path.
         /// </summary>
         public static string GetMetadataLinkPath(string parameterFile, string templateFile)
@@ -200,6 +208,16 @@ namespace PSRule.Rules.Azure.Runtime
                 service
             );
             return bicep.ProcessFile(templateFile, parameterFile);
+        }
+
+        private static PSObject[] GetBicepParamResources(RuntimeService service, string parameterFile)
+        {
+            var context = GetContext();
+            var bicep = new BicepHelper(
+                context,
+                service
+            );
+            return bicep.ProcessParamFile(parameterFile);
         }
 
         private static PipelineContext GetContext()

@@ -26,6 +26,8 @@ namespace PSRule.Rules.Azure.Data.Bicep
     internal sealed class BicepHelper
     {
         private const int ERROR_FILE_NOT_FOUND = 2;
+        private const string ENV_AZURE_BICEP_ARGS = "PSRULE_AZURE_BICEP_ARGS";
+        private const string ENV_AZURE_BICEP_USE_AZURE_CLI = "PSRULE_AZURE_BICEP_USE_AZURE_CLI";
 
         private readonly PipelineContext _Context;
         private readonly RuntimeService _Service;
@@ -295,6 +297,18 @@ namespace PSRule.Rules.Azure.Data.Bicep
             return json == null ? Array.Empty<PSObject>() : ProcessJson(json, templateFile, parameterFile);
         }
 
+        internal PSObject[] ProcessParamFile(string parameterFile)
+        {
+            if (!File.Exists(parameterFile))
+                throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateFileNotFound, parameterFile), parameterFile);
+
+            var json = ReadBicepFile(parameterFile);
+            if (json == null || !json.TryGetProperty("templateJson", out var templateJson) || !json.TryGetProperty("parametersJson", out var parametersJson))
+                return Array.Empty<PSObject>();
+
+            return ProcessJson(JObject.Parse(templateJson), JObject.Parse(parametersJson), parameterFile);
+        }
+
         private PSObject[] ProcessJson(JObject templateObject, string templateFile, string parameterFile)
         {
             var visitor = new RuleDataExportVisitor();
@@ -330,6 +344,44 @@ namespace PSRule.Rules.Azure.Data.Bicep
             }
 
             // Return results
+            return GetResources(templateContext);
+        }
+
+        private PSObject[] ProcessJson(JObject templateObject, JObject parametersObject, string parameterFile)
+        {
+            var visitor = new RuleDataExportVisitor();
+
+            // Load context
+            var templateContext = new TemplateVisitor.TemplateContext(_Context);
+            try
+            {
+                templateContext.Load(parametersObject);
+            }
+            catch (Exception inner)
+            {
+                throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateExpandInvalid, null, parameterFile, inner.Message), inner, null, parameterFile);
+            }
+
+            // Process
+            try
+            {
+                templateContext.SetSource(null, parameterFile);
+                visitor.Visit(templateContext, "helper", templateObject);
+            }
+            catch (Exception inner)
+            {
+                throw new TemplateReadException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepExpandInvalid, parameterFile, inner.Message), inner, null, parameterFile);
+            }
+
+            // Return results
+            return GetResources(templateContext);
+        }
+
+        /// <summary>
+        /// Get resulting resources from expansion.
+        /// </summary>
+        private static PSObject[] GetResources(TemplateVisitor.TemplateContext templateContext)
+        {
             var results = new List<PSObject>();
             var serializer = new JsonSerializer();
             serializer.Converters.Add(new PSObjectJsonConverter());
@@ -430,8 +482,14 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
         private static string GetBicepBuildArgs(string sourcePath, bool useAzCLI)
         {
-            GetBicepBuildAdditionalArgs(out var args);
-            return string.Concat("build --stdout ", args, useAzCLI ? " --file" : string.Empty, " \"", sourcePath, "\"");
+            var command = GetBicepBuildCommand(sourcePath);
+            var args = GetBicepBuildAdditionalArgs();
+            return string.Concat(command, args, useAzCLI ? " --file" : string.Empty, " \"", sourcePath, "\"");
+        }
+
+        private static string GetBicepBuildCommand(string sourcePath)
+        {
+            return sourcePath.EndsWith(".bicepparam") ? "build-params --stdout " : "build --stdout ";
         }
 
         private static string GetBicepVersionArgs(bool useAzCLI)
@@ -439,17 +497,20 @@ namespace PSRule.Rules.Azure.Data.Bicep
             return useAzCLI ? "version" : "--version";
         }
 
-        private static void GetBicepBuildAdditionalArgs(out string args)
+        /// <summary>
+        /// Check if the <c>PSRULE_AZURE_BICEP_ARGS</c> environment variable is set.
+        /// </summary>
+        private static string GetBicepBuildAdditionalArgs()
         {
-            args = Environment.GetEnvironmentVariable("PSRULE_AZURE_BICEP_ARGS") ?? string.Empty;
+            return Environment.GetEnvironmentVariable(ENV_AZURE_BICEP_ARGS) ?? string.Empty;
         }
 
         /// <summary>
-        /// Check if the <c>PSRULE_AZURE_BICEP_USE_AZURE_CLI</c> environment is set.
+        /// Check if the <c>PSRULE_AZURE_BICEP_USE_AZURE_CLI</c> environment variable is set.
         /// </summary>
         private static bool UseAzCLI()
         {
-            return EnvironmentHelper.Default.TryBool("PSRULE_AZURE_BICEP_USE_AZURE_CLI", out var value) && value;
+            return EnvironmentHelper.Default.TryBool(ENV_AZURE_BICEP_USE_AZURE_CLI, out var value) && value;
         }
     }
 }
