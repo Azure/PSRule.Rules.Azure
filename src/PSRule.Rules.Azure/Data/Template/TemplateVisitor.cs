@@ -1433,10 +1433,10 @@ namespace PSRule.Rules.Azure.Data.Template
         private static T ExpandProperty<T>(ITemplateContext context, JObject value, string propertyName)
         {
             if (!value.ContainsKey(propertyName))
-                return default(T);
+                return default;
 
             var propertyValue = value[propertyName].Value<JValue>();
-            return (propertyValue.Type == JTokenType.String) ? ExpandToken<T>(context, propertyValue) : (T)propertyValue.Value<T>();
+            return (propertyValue.Type == JTokenType.String) ? ExpandToken<T>(context, propertyValue) : propertyValue.Value<T>();
         }
 
         private static int ExpandPropertyInt(ITemplateContext context, JObject value, string propertyName)
@@ -1580,11 +1580,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 return new TemplateContext.CopyIndexState[] { new TemplateContext.CopyIndexState { Input = value } };
         }
 
-        private static TemplateContext.CopyIndexState[] GetVariableIterator(ITemplateContext context, JObject value, bool pushToStack = true)
+        private static IEnumerable<TemplateContext.CopyIndexState> GetVariableIterator(ITemplateContext context, JObject value, bool pushToStack = true)
         {
             if (value.ContainsKey(PROPERTY_COPY))
             {
-                var result = new List<TemplateContext.CopyIndexState>();
                 var copyObjectArray = value[PROPERTY_COPY].Value<JArray>();
                 for (var i = 0; i < copyObjectArray.Count; i++)
                 {
@@ -1602,12 +1601,11 @@ namespace PSRule.Rules.Azure.Data.Template
                         context.CopyIndex.Add(state);
 
                     value.Remove(PROPERTY_COPY);
-                    result.Add(state);
+                    yield return state;
                 }
-                return result.ToArray();
             }
             else
-                return new TemplateContext.CopyIndexState[] { new TemplateContext.CopyIndexState { Input = value } };
+                yield return new TemplateContext.CopyIndexState { Input = value };
         }
 
         /// <summary>

@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure.Data.Template

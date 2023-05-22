@@ -42,18 +42,37 @@ namespace PSRule.Rules.Azure.Data
         [JsonProperty(PropertyName = "graphAudience")]
         public string GraphAudience { get; set; }
 
+        /// <summary>
+        /// The audience for Azure Data Lake.
+        /// Defaults to <c>https://datalake.azure.net/</c>.
+        /// </summary>
         [JsonProperty(PropertyName = "activeDirectoryDataLake")]
         public string ActiveDirectoryDataLake { get; set; }
 
+        /// <summary>
+        /// The audience for Azure Branch.
+        /// Defaults to <c>https://batch.core.windows.net/</c>.
+        /// </summary>
         [JsonProperty(PropertyName = "batch")]
         public string Batch { get; set; }
 
+        /// <summary>
+        /// The audience for Azure Media Services.
+        /// Defaults to <c>https://rest.media.azure.net</c>.
+        /// </summary>
         [JsonProperty(PropertyName = "media")]
         public string Media { get; set; }
 
+        /// <summary>
+        /// The audience for Sql Management.
+        /// Defaults to <c>https://management.core.windows.net:8443/</c>.
+        /// </summary>
         [JsonProperty(PropertyName = "sqlManagement")]
         public string SqlManagement { get; set; }
 
+        /// <summary>
+        /// Documentation reference for VM image aliases.
+        /// </summary>
         [JsonProperty(PropertyName = "vmImageAliasDoc")]
         public string VmImageAliasDoc { get; set; }
 
@@ -64,6 +83,9 @@ namespace PSRule.Rules.Azure.Data
         [JsonProperty(PropertyName = "resourceManager")]
         public string ResourceManager { get; set; }
 
+        /// <summary>
+        /// Authentication properties for the cloud environment.
+        /// </summary>
         [JsonProperty(PropertyName = "authentication")]
         public CloudEnvironmentAuthentication Authentication { get; set; }
 
@@ -75,17 +97,35 @@ namespace PSRule.Rules.Azure.Data
         public CloudEnvironmentSuffixes Suffixes { get; set; }
     }
 
+    /// <summary>
+    /// Authentication properties for the cloud environment.
+    /// </summary>
     public sealed class CloudEnvironmentAuthentication
     {
+        /// <summary>
+        /// Azure AD login endpoint.
+        /// Defaults to <c>https://login.microsoftonline.com/</c>.
+        /// </summary>
         [JsonProperty(PropertyName = "loginEndpoint")]
         public string loginEndpoint { get; set; }
 
+        /// <summary>
+        /// Azure Resource Manager audiences.
+        /// </summary>
         [JsonProperty(PropertyName = "audiences")]
         public string[] audiences { get; set; }
 
+        /// <summary>
+        /// Azure AD tenant to use.
+        /// Default to <c>common</c>.
+        /// </summary>
         [JsonProperty(PropertyName = "tenant")]
         public string tenant { get; set; }
 
+        /// <summary>
+        /// The identity provider to use.
+        /// Defaults to <c>AAD</c>.
+        /// </summary>
         [JsonProperty(PropertyName = "identityProvider")]
         public string identityProvider { get; set; }
     }

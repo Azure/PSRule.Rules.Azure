@@ -84,7 +84,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("false", False),
             new FunctionDescriptor("if", If, delayBinding: true),
             new FunctionDescriptor("not", Not),
-            new FunctionDescriptor("or", Or),
+            new FunctionDescriptor("or", Or, delayBinding: true),
             new FunctionDescriptor("true", True),
 
             // Numeric
@@ -1387,7 +1387,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
             for (var i = 0; i < args.Length; i++)
             {
-                if (ExpressionHelpers.TryBool(args[i], out var value) && value)
+                var expression = GetExpression(context, args[i]);
+                if (ExpressionHelpers.TryBool(expression, out var value) && value)
                     return true;
             }
             return false;
