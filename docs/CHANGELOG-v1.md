@@ -29,6 +29,7 @@ What's changed since pre-release v1.27.0-B0050:
 - New features:
   - **Experimental:** Added support for expanding deployments from `.bicepparam` files by @BernieWhite.
     [#2132](https://github.com/Azure/PSRule.Rules.Azure/issues/2132)
+    - See [Using Bicep source](https://aka.ms/ps-rule-azure/bicep) for details.
 - New rules:
   - Storage Account:
     - Check that Malware Scanning in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
