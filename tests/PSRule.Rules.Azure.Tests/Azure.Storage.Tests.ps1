@@ -272,6 +272,22 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.Length | Should -Be 7;
             $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
         }
+
+        It 'Azure.Storage.DefenderCloud.SensitiveData' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.DefenderCloud.SensitiveData' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-B';
+
+            $ruleResult[0].Reason | Should -BeExactly "The storage account 'storage-B' should have sensitive data threat detection in Microsoft Defender for Storage configured.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
+        }
     }
 
     Context 'Resource name' {

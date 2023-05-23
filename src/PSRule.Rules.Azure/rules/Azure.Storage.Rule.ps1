@@ -95,6 +95,13 @@ Rule 'Azure.Storage.DefenderCloud.MalwareScan' -Ref 'AZR-000384' -Type 'Microsof
     $Assert.Count($malwareDisabled, '.', 0).Reason($LocalizedData.ResStorageMalwareScanning, $PSRule.TargetName)
 }
 
+# Synopsis: Enable sensitive data threat detection in Microsoft Defender for Storage.
+Rule 'Azure.Storage.DefenderCloud.SensitiveData' -Ref 'AZR-000386' -Type 'Microsoft.Storage/storageAccounts' -If { IsPublicNetworkAccessEnabled } -Tag @{ release = 'Preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
+    $sensitiveDisabled = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
+        Where-Object { $_.properties.sensitiveDataDiscovery.isEnabled -eq $False })
+    $Assert.Count($sensitiveDisabled, '.', 0).Reason($LocalizedData.ResStorageSensitiveDataThreatDetection, $PSRule.TargetName)
+}
+
 #region Helper functions
 
 function global:ShouldStorageReplicate {

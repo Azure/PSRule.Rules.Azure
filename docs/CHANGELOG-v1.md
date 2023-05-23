@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Storage Account:
+    - Check that sensitive data threat detection in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
+      [#2207](https://github.com/Azure/PSRule.Rules.Azure/issues/2207)
+
 What's changed since pre-release v1.27.0-B0050:
 
 - New rules:

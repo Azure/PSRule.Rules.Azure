@@ -102,4 +102,5 @@
     ArcServerMaintenanceConfig = "The Arc-enabled server '{0}' should have a maintenance configuration associated."
     SubStorageMalwareScanning = "The Microsoft Defender for Storage plan should have malware scanning configured."
     ResStorageMalwareScanning = "The storage account '{0}' should have malware scanning in Microsoft Defender for Storage configured."
+    ResStorageSensitiveDataThreatDetection = "The storage account '{0}' should have sensitive data threat detection in Microsoft Defender for Storage configured."
 }
