@@ -13,6 +13,8 @@ namespace PSRule.Rules.Azure.Configuration
     public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
     {
         private const string DEFAULT_POLICYRULEPREFIX = "Azure";
+        private const string DEFAULT_BICEP_MINIMUM_VERSION = "0.4.451";
+        private const int DEFAULT_BICEP_FILE_EXPANSION_TIMEOUT = 5;
 
         internal static readonly ConfigurationOption Default = new()
         {
@@ -23,6 +25,8 @@ namespace PSRule.Rules.Azure.Configuration
             ParameterDefaults = ParameterDefaultsOption.Default,
             Deployment = DeploymentOption.Default,
             PolicyRulePrefix = DEFAULT_POLICYRULEPREFIX,
+            BicepMinimumVersion = DEFAULT_BICEP_MINIMUM_VERSION,
+            BicepFileExpansionTimeout = DEFAULT_BICEP_FILE_EXPANSION_TIMEOUT,
         };
 
         /// <summary>
@@ -38,6 +42,8 @@ namespace PSRule.Rules.Azure.Configuration
             Deployment = null;
             PolicyIgnoreList = null;
             PolicyRulePrefix = null;
+            BicepMinimumVersion = null;
+            BicepFileExpansionTimeout = null;
         }
 
         internal ConfigurationOption(ConfigurationOption option)
@@ -53,6 +59,8 @@ namespace PSRule.Rules.Azure.Configuration
             Deployment = option.Deployment;
             PolicyIgnoreList = option.PolicyIgnoreList;
             PolicyRulePrefix = option.PolicyRulePrefix;
+            BicepMinimumVersion = option.BicepMinimumVersion;
+            BicepFileExpansionTimeout = option.BicepFileExpansionTimeout;
         }
 
         /// <inheritdoc/>
@@ -72,7 +80,9 @@ namespace PSRule.Rules.Azure.Configuration
                 ParameterDefaults == other.ParameterDefaults &&
                 Deployment == other.Deployment &&
                 PolicyIgnoreList == other.PolicyIgnoreList &&
-                PolicyRulePrefix == other.PolicyRulePrefix;
+                PolicyRulePrefix == other.PolicyRulePrefix &&
+                BicepMinimumVersion == other.BicepMinimumVersion &&
+                BicepFileExpansionTimeout == other.BicepFileExpansionTimeout;
         }
 
         /// <inheritdoc/>
@@ -89,13 +99,15 @@ namespace PSRule.Rules.Azure.Configuration
                 hash = hash * 23 + (Deployment != null ? Deployment.GetHashCode() : 0);
                 hash = hash * 23 + (PolicyIgnoreList != null ? PolicyIgnoreList.GetHashCode() : 0);
                 hash = hash * 23 + (PolicyRulePrefix != null ? PolicyRulePrefix.GetHashCode() : 0);
+                hash = hash * 23 + (BicepMinimumVersion != null ? BicepMinimumVersion.GetHashCode() : 0);
+                hash = hash * 23 + (BicepFileExpansionTimeout != null ? BicepFileExpansionTimeout.GetHashCode() : 0);
                 return hash;
             }
         }
 
         internal static ConfigurationOption Combine(ConfigurationOption o1, ConfigurationOption o2)
         {
-            var result = new ConfigurationOption
+            return new ConfigurationOption
             {
                 ResourceGroup = ResourceGroupOption.Combine(o1?.ResourceGroup, o2?.ResourceGroup),
                 Subscription = SubscriptionOption.Combine(o1?.Subscription, o2?.Subscription),
@@ -104,9 +116,10 @@ namespace PSRule.Rules.Azure.Configuration
                 ParameterDefaults = ParameterDefaultsOption.Combine(o1?.ParameterDefaults, o2?.ParameterDefaults),
                 Deployment = DeploymentOption.Combine(o1?.Deployment, o2?.Deployment),
                 PolicyIgnoreList = o1?.PolicyIgnoreList ?? o2?.PolicyIgnoreList,
-                PolicyRulePrefix = o1?.PolicyRulePrefix ?? o2?.PolicyRulePrefix
+                PolicyRulePrefix = o1?.PolicyRulePrefix ?? o2?.PolicyRulePrefix,
+                BicepMinimumVersion = o1?.BicepMinimumVersion ?? o2?.BicepMinimumVersion,
+                BicepFileExpansionTimeout = o1?.BicepFileExpansionTimeout ?? o2?.BicepFileExpansionTimeout,
             };
-            return result;
         }
 
         /// <summary>
@@ -142,7 +155,6 @@ namespace PSRule.Rules.Azure.Configuration
         /// </summary>
         [DefaultValue(null)]
         [YamlMember(Alias = "AZURE_PARAMETER_DEFAULTS", ApplyNamingConventions = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Usage", "CA2227:Collection properties should be read only", Justification = "Must be able to be deserialized using standard pattern.")]
         public ParameterDefaultsOption ParameterDefaults { get; set; }
 
         /// <summary>
@@ -165,5 +177,19 @@ namespace PSRule.Rules.Azure.Configuration
         [DefaultValue(null)]
         [YamlMember(Alias = "AZURE_POLICY_IGNORE_LIST", ApplyNamingConventions = false)]
         public string[] PolicyIgnoreList { get; set; }
+
+        /// <summary>
+        /// Configures the minimum version of Bicep to support.
+        /// </summary>
+        [DefaultValue(null)]
+        [YamlMember(Alias = "AZURE_BICEP_MINIMUM_VERSION", ApplyNamingConventions = false)]
+        public string BicepMinimumVersion { get; set; }
+
+        /// <summary>
+        /// Configures the timeout when expanding Bicep files.
+        /// </summary>
+        [DefaultValue(null)]
+        [YamlMember(Alias = "AZURE_BICEP_FILE_EXPANSION_TIMEOUT", ApplyNamingConventions = false)]
+        public int? BicepFileExpansionTimeout { get; set; }
     }
 }

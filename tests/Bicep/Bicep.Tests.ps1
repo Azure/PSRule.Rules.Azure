@@ -41,6 +41,7 @@ Describe 'Bicep' -Tag 'Bicep' {
             # Expand source files
             $option = @{
                 'Configuration.AZURE_BICEP_FILE_EXPANSION' = $True
+                'Configuration.AZURE_BICEP_FILE_EXPANSION_TIMEOUT' = 60
             }
             $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option);
             $result.Length | Should -BeGreaterThan 1;
@@ -70,6 +71,7 @@ Describe 'Bicep' -Tag 'Bicep' {
                 # Expand source files
                 $option = @{
                     'Configuration.AZURE_BICEP_FILE_EXPANSION' = $True
+                    'Configuration.AZURE_BICEP_FILE_EXPANSION_TIMEOUT' = 60
                 }
                 $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true';
                 $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option);
@@ -83,7 +85,7 @@ Describe 'Bicep' -Tag 'Bicep' {
             }
         }
 
-        It 'Expands Bicep with parameters file' {
+        It 'Expands Bicep with JSON parameters file' {
             $invokeParams = @{
                 Module = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
@@ -101,6 +103,7 @@ Describe 'Bicep' -Tag 'Bicep' {
                 # Expand source files
                 $option = @{
                     'Configuration.AZURE_PARAMETER_FILE_EXPANSION' = $True
+                    'Configuration.AZURE_BICEP_FILE_EXPANSION_TIMEOUT' = 60
                 }
                 $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true';
                 $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option);
@@ -113,6 +116,29 @@ Describe 'Bicep' -Tag 'Bicep' {
             finally {
                 Remove-Item 'Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI' -Force;
             }
+        }
+
+        It 'Expands Bicep with .bicepparams file' {
+            $invokeParams = @{
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+                Name = 'Azure.Storage.Name'
+            }
+
+            # Default
+            $sourceFile = Join-Path -Path $here -ChildPath 'template.bicepparam';
+
+            # Expand source files
+            $option = @{
+                'Configuration.AZURE_BICEP_PARAMS_FILE_EXPANSION' = $True
+            }
+            $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option);
+            $result.Length | Should -Be 1;
+            $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Storage/storageAccounts' };
+            $resource | Should -Not -BeNullOrEmpty;
+            $resource.TargetName | Should -Be 'bicepstorage001';
+            $resource.TargetObject.tags.env | Should -Be 'test';
         }
 
         It 'Bicep expand completes with errors' {
@@ -132,6 +158,7 @@ Describe 'Bicep' -Tag 'Bicep' {
                 # Expand source files
                 $option = @{
                     'Configuration.AZURE_BICEP_FILE_EXPANSION' = $True
+                    'Configuration.AZURE_BICEP_FILE_EXPANSION_TIMEOUT' = 60
                 }
                 $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true';
                 $sourceFile = Join-Path -Path $here -ChildPath 'template.bicep';
@@ -157,6 +184,7 @@ Describe 'Bicep' -Tag 'Bicep' {
                 # Expand source files
                 $option = @{
                     'Configuration.AZURE_BICEP_FILE_EXPANSION' = $True
+                    'Configuration.AZURE_BICEP_FILE_EXPANSION_TIMEOUT' = 60
                 }
                 $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true';
 

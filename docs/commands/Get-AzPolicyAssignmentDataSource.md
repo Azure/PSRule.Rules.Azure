@@ -14,7 +14,7 @@ Get policy assignment sources.
 ## SYNTAX
 
 ```text
-Get-AzPolicyAssignmentDataSource [[-InputPath] <string[]>] [[-Path] <string>] [<CommonParameters>]
+Get-AzPolicyAssignmentDataSource [-InputPath <String[]>] [[-Path] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -54,7 +54,7 @@ To perform a shallow search, prefix input paths with `./`.
 
 ```yaml
 Type: String[]
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases: f, AssignmentFile, FullName
 
 Required: False
@@ -71,7 +71,7 @@ By default, this is the current working path.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases: p
 
 Required: False
@@ -83,9 +83,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction,
--InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see [about_CommonParameters](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_commonparameters).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

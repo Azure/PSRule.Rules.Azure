@@ -28,6 +28,7 @@ spec:
     AZURE_PARAMETER_FILE_EXPANSION: false
     AZURE_PARAMETER_FILE_METADATA_LINK: false
     AZURE_BICEP_FILE_EXPANSION: false
+    AZURE_BICEP_PARAMS_FILE_EXPANSION: false
     AZURE_BICEP_MINIMUM_VERSION: '0.4.451'
     AZURE_BICEP_CHECK_TOOL: false 
 
@@ -43,11 +44,12 @@ spec:
 
   convention:
     include:
-    - 'Azure.Context'
-    - 'Azure.DeprecatedOptions'
-    - 'Azure.ExpandTemplate'
-    - 'Azure.BicepInstall'
-    - 'Azure.ExpandBicep'
+    - Azure.Context
+    - Azure.DeprecatedOptions
+    - Azure.ExpandTemplate
+    - Azure.BicepInstall
+    - Azure.ExpandBicep
+    - Azure.ExpandBicepParam
   rule:
     baseline: Azure.Default
   output:

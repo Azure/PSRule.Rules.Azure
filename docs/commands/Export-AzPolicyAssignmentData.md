@@ -16,25 +16,28 @@ Export policy assignment data.
 ### Default (Default)
 
 ```text
-Export-AzPolicyAssignmentData [-OutputPath <string>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzPolicyAssignmentData [-OutputPath <String>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Name
 
 ```text
-Export-AzPolicyAssignmentData [-Name <string>] [-Scope <string>] [-PolicyDefinitionId <string>] [-OutputPath <string>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzPolicyAssignmentData [-Name <String>] [-Scope <String>] [-PolicyDefinitionId <String>]
+ [-OutputPath <String>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### Id
 
 ```text
-Export-AzPolicyAssignmentData -Id <string> [-PolicyDefinitionId <string>] [-OutputPath <string>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzPolicyAssignmentData -Id <String> [-PolicyDefinitionId <String>] [-OutputPath <String>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### IncludeDescendent
 
 ```text
-Export-AzPolicyAssignmentData -IncludeDescendent [-Scope <string>] [-OutputPath <string>] [-PassThru] [-WhatIf] [-Confirm] [<CommonParameters>]
+Export-AzPolicyAssignmentData [-Scope <String>] [-IncludeDescendent] [-OutputPath <String>] [-PassThru]
+ [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -111,7 +114,7 @@ Specifies the name of the policy assignment.
 
 ```yaml
 Type: String
-Parameter Sets: (Name)
+Parameter Sets: Name
 Aliases:
 
 Required: False
@@ -127,7 +130,7 @@ Specifies the fully qualified resource ID for the policy assignment.
 
 ```yaml
 Type: String
-Parameter Sets: (Id)
+Parameter Sets: Id
 Aliases: AssignmentId
 
 Required: True
@@ -143,7 +146,7 @@ Specifies the scope at which the policy is applied for the assignment.
 
 ```yaml
 Type: String
-Parameter Sets: (Name, IncludeDescendent)
+Parameter Sets: Name, IncludeDescendent
 Aliases:
 
 Required: False
@@ -159,7 +162,7 @@ Specifies the ID of the policy definition of the policy assignment.
 
 ```yaml
 Type: String
-Parameter Sets: (Name, Id)
+Parameter Sets: Name, Id
 Aliases:
 
 Required: False
@@ -175,8 +178,8 @@ Causes the list of returned policy assignments to include all assignments relate
 including those from ancestor scopes and those from descendent scopes.
 
 ```yaml
-Type: String
-Parameter Sets: (IncludeDescendent)
+Type: SwitchParameter
+Parameter Sets: IncludeDescendent
 Aliases:
 
 Required: True
@@ -192,10 +195,10 @@ The path to store generated JSON files containing policy assignment data.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
-Required: True
+Required: False
 Position: Named
 Default value: $PWD
 Accept pipeline input: False
@@ -210,7 +213,7 @@ the pipeline instead.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -222,9 +225,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction,
--InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see [about_CommonParameters](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_commonparameters).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 
