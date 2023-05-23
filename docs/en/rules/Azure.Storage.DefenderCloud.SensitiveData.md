@@ -14,23 +14,16 @@ Enable sensitive data threat detection in Microsoft Defender for Storage.
 
 ## DESCRIPTION
 
-Microsoft Defender for Storage provides additional security for storage accounts.
+Sensitive data threat detection is an additional security feature for Microsoft Defender for Storage.
+When enabled Defender for Storage provides alerts when sensitive data is discovered.
 
-One of the features in the Defender for Storage service is sensitive data threat detection that is powered by the Sensitive Data Discovery engine that uses a smart sampling method to find storage accounts with sensitive data.
+The sensitive data threat detection capability helps teams:
 
-The service is integrated with Microsoft Purview's sensitive information types (SITs) and classification labels.
+- Identity where sensitive data is stored.
+- Detect possible security incidents resulting is data exposure.
 
-The sensitive data threat detection capability helps teams identify and prioritize data security incidents for faster response times. Defender for Storage alerts include findings of sensitivity scanning and indications of operations that have been performed on resources containing sensitive data.
-
-This can be useful when:
-
-- Reduce the likelihood of data breaches
-- Detect exposure events
-- Detect suspicious activities on resources containing sensitive data 
-
-When enabling sensitive data threat detection, the sensitive data categories include built-in sensitive information types (SITs) in the default list of Microsoft Purview. This will affect the alerts received from Defender for Storage, storage or containers that are found with these SITs are marked as containing sensitive data.
-
-It is also possible to customize the Data Sensitivity Discovery for a organization, you can create custom sensitive information types (SITs) and connect to your organizational settings.
+When enabling sensitive data threat detection, the sensitive data categories include built-in sensitive information types (SITs) in the default list of Microsoft Purview. 
+It is possible to customize the Data Sensitivity Discovery for a organization, by creating custom sensitive information types (SITs).
 
 Sensitive data threat detection in Microsoft Defender for Storage can be enabled at the resource level. However, the general recommandation is to enable it at the subscription level and by doing so ensures all storage accounts in the subscription will be protected, including future ones. Defender for Storage settings on each storage account is inherited by the subscription level settings.
 
