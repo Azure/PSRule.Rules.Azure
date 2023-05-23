@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that sensitive data threat detection in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
       [#2207](https://github.com/Azure/PSRule.Rules.Azure/issues/2207)
 
+What's changed since pre-release v1.27.0-B0091:
+
+- Bug fixes:
+  - Fixed false positive on managed identity without space by @BernieWhite.
+    [#2235](https://github.com/Azure/PSRule.Rules.Azure/issues/2235)
+
 ## v1.27.0-B0091 (pre-release)
 
 What's changed since pre-release v1.27.0-B0050:
