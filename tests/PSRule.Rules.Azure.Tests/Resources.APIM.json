@@ -1264,7 +1264,7 @@
     "Identity": {
       "PrincipalId": "00000000-0000-0000-0000-000000000000",
       "TenantId": "00000000-0000-0000-0000-000000000000",
-      "Type": "UserAssigned",
+      "Type": "SystemAssigned,UserAssigned",
       "UserAssignedIdentities": null
     },
     "Kind": null,
@@ -1449,7 +1449,7 @@
     "Identity": {
       "PrincipalId": "00000000-0000-0000-0000-000000000000",
       "TenantId": "00000000-0000-0000-0000-000000000000",
-      "Type": "UserAssigned",
+      "Type": "SystemAssigned, UserAssigned",
       "UserAssignedIdentities": null
     },
     "Kind": null,
