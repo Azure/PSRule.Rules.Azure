@@ -22,7 +22,7 @@ The service is integrated with Microsoft Purview's sensitive information types (
 
 The sensitive data threat detection capability helps teams identify and prioritize data security incidents for faster response times. Defender for Storage alerts include findings of sensitivity scanning and indications of operations that have been performed on resources containing sensitive data.
 
-Some benefits:
+This can be useful when:
 
 - Reduce the likelihood of data breaches
 - Detect exposure events
