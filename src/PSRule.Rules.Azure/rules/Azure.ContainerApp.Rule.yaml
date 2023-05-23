@@ -49,6 +49,7 @@ spec:
       - SystemAssigned
       - UserAssigned
       - SystemAssigned,UserAssigned
+      - SystemAssigned, UserAssigned
 
 ---
 # Synopsis: Container Apps should meet naming requirements.

@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.27.0-B0091:
+
+- Bug fixes:
+  - Fixed false positive on managed identity without space by @BernieWhite.
+    [#2235](https://github.com/Azure/PSRule.Rules.Azure/issues/2235)
+
 ## v1.27.0-B0091 (pre-release)
 
 What's changed since pre-release v1.27.0-B0050:
