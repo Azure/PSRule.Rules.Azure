@@ -1,226 +1,231 @@
 {
-    // See https://go.microsoft.com/fwlink/?LinkId=733558
-    // for the documentation about the tasks.json format
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "test",
-            "detail": "Build and run unit tests.",
-            "type": "shell",
-            "command": "Invoke-Build Test -AssertStyle Client",
-            "group": {
-                "kind": "test",
-                "isDefault": true
-            },
-            "problemMatcher": [
-                "$pester"
-            ],
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "run pester test group",
-            "detail": "Runs a specific group for Pester tests.",
-            "type": "shell",
-            "command": "Invoke-Build Test -AssertStyle Client -TestGroup '${input:pesterTestGroup}'",
-            "group": "test",
-            "problemMatcher": [
-                "$pester"
-            ],
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "coverage",
-            "type": "shell",
-            "command": "Invoke-Build Test -CodeCoverage",
-            "problemMatcher": [
-                "$pester"
-            ],
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            }
-        },
-        {
-            "label": "build",
-            "detail": "Build module.",
-            "type": "shell",
-            "command": "Invoke-Build Build",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": [],
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "clean",
-            "type": "shell",
-            "command": "Invoke-Build Clean",
-            "problemMatcher": [],
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "script analyzer",
-            "type": "shell",
-            "command": "Invoke-Build Analyze",
-            "problemMatcher": [],
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            }
-        },
-        {
-            "label": "build docs",
-            "type": "shell",
-            "command": "Invoke-Build BuildHelp",
-            "problemMatcher": [],
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "scaffold docs",
-            "type": "shell",
-            "command": "Invoke-Build ScaffoldHelp",
-            "problemMatcher": []
-        },
-        {
-            "label": "rule docs",
-            "detail": "Generate rule and baseline documentation.",
-            "type": "shell",
-            "command": "Invoke-Build BuildDocs",
-            "problemMatcher": [],
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "export data",
-            "detail": "Export a list of resource providers from an Azure subscription.",
-            "type": "shell",
-            "command": "Invoke-Build ExportData",
-            "problemMatcher": [],
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "benchmark",
-            "type": "shell",
-            "command": "Invoke-Build Benchmark",
-            "problemMatcher": [],
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            },
-            "linux": {
-                "options": {
-                    "shell": {
-                        "executable": "pwsh",
-                        "args": [
-                            "-c"
-                        ]
-                    }
-                }
-            }
-        },
-        {
-            "label": "serve docs",
-            "detail": "Build and run documentation site locally.",
-            "type": "shell",
-            "command": "mkdocs serve",
-            "problemMatcher": [],
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            }
-        },
-        {
-            "label": "install python dependencies",
-            "detail": "Install or upgrade dependencies to build and debug mkdocs documentation locally.",
-            "type": "shell",
-            "command": "python3 -m pip install -r requirements-docs.txt",
-            "problemMatcher": [],
-            "presentation": {
-                "clear": true,
-                "panel": "dedicated"
-            }
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "test",
+      "detail": "Build and run unit tests.",
+      "type": "shell",
+      "command": "Invoke-Build Test -AssertStyle Client",
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
+      "problemMatcher": [
+        "$pester"
+      ],
+      "presentation": {
+        "clear": true,
+        "panel": "dedicated"
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
         }
-    ],
-    "inputs": [
-        {
-            "id": "pesterTestGroup",
-            "type": "promptString",
-            "description": "A group to use for Pester tests."
+      },
+      "options": {
+        "env": {
+          "RUN_BICEP_INTEGRATION": "true"
         }
-    ]
+      }
+    },
+    {
+      "label": "run pester test group",
+      "detail": "Runs a specific group for Pester tests.",
+      "type": "shell",
+      "command": "Invoke-Build Test -AssertStyle Client -TestGroup '${input:pesterTestGroup}'",
+      "group": "test",
+      "problemMatcher": [
+        "$pester"
+      ],
+      "presentation": {
+        "clear": true,
+        "panel": "dedicated"
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "coverage",
+      "type": "shell",
+      "command": "Invoke-Build Test -CodeCoverage",
+      "problemMatcher": [
+        "$pester"
+      ],
+      "presentation": {
+        "clear": true,
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "build",
+      "detail": "Build module.",
+      "type": "shell",
+      "command": "Invoke-Build Build",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "presentation": {
+        "clear": true,
+        "panel": "dedicated"
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "clean",
+      "type": "shell",
+      "command": "Invoke-Build Clean",
+      "problemMatcher": [],
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "script analyzer",
+      "type": "shell",
+      "command": "Invoke-Build Analyze",
+      "problemMatcher": [],
+      "presentation": {
+        "clear": true,
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "build docs",
+      "type": "shell",
+      "command": "Invoke-Build BuildHelp",
+      "problemMatcher": [],
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "scaffold docs",
+      "type": "shell",
+      "command": "Invoke-Build ScaffoldHelp",
+      "problemMatcher": []
+    },
+    {
+      "label": "rule docs",
+      "detail": "Generate rule and baseline documentation.",
+      "type": "shell",
+      "command": "Invoke-Build BuildDocs",
+      "problemMatcher": [],
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "export data",
+      "detail": "Export a list of resource providers from an Azure subscription.",
+      "type": "shell",
+      "command": "Invoke-Build ExportData",
+      "problemMatcher": [],
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "benchmark",
+      "type": "shell",
+      "command": "Invoke-Build Benchmark",
+      "problemMatcher": [],
+      "presentation": {
+        "clear": true,
+        "panel": "dedicated"
+      },
+      "linux": {
+        "options": {
+          "shell": {
+            "executable": "pwsh",
+            "args": [
+              "-c"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "label": "serve docs",
+      "detail": "Build and run documentation site locally.",
+      "type": "shell",
+      "command": "mkdocs serve",
+      "problemMatcher": [],
+      "presentation": {
+        "clear": true,
+        "panel": "dedicated"
+      }
+    },
+    {
+      "label": "install python dependencies",
+      "detail": "Install or upgrade dependencies to build and debug mkdocs documentation locally.",
+      "type": "shell",
+      "command": "python3 -m pip install -r requirements-docs.txt",
+      "problemMatcher": [],
+      "presentation": {
+        "clear": true,
+        "panel": "dedicated"
+      }
+    }
+  ],
+  "inputs": [
+    {
+      "id": "pesterTestGroup",
+      "type": "promptString",
+      "description": "A group to use for Pester tests."
+    }
+  ]
 }

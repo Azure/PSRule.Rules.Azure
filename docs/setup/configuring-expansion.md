@@ -80,6 +80,38 @@ configuration:
   AZURE_BICEP_FILE_EXPANSION: true
 ```
 
+### Bicep parameter expansion
+
+:octicons-milestone-24: v1.27.0
+
+This configuration option determines if Azure Bicep parameter files (`.bicepparam`) are expanded.
+Currently while this is an experimental feature this is not enabled by default.
+
+Bicep files are expanded when PSRule cmdlets with the `-Format File` parameter are used.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_BICEP_PARAMS_FILE_EXPANSION: bool
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_BICEP_PARAMS_FILE_EXPANSION configuration option
+configuration:
+  AZURE_BICEP_PARAMS_FILE_EXPANSION: false
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_BICEP_PARAMS_FILE_EXPANSION configuration option to enable expansion
+configuration:
+  AZURE_BICEP_PARAMS_FILE_EXPANSION: true
+```
+
 ### Bicep compilation timeout
 
 :octicons-milestone-24: v1.13.3

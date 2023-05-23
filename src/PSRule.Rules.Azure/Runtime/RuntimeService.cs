@@ -15,6 +15,11 @@ namespace PSRule.Rules.Azure.Runtime
 
         private bool _Disposed;
 
+        /// <summary>
+        /// Create a runtime service.
+        /// </summary>
+        /// <param name="minimum">The minimum version of Bicep.</param>
+        /// <param name="timeout">The timeout in seconds for expansion.</param>
         public RuntimeService(string minimum, int timeout)
         {
             Minimum = minimum;
@@ -28,10 +33,12 @@ namespace PSRule.Rules.Azure.Runtime
         /// </summary>
         public int Timeout { get; }
 
+        /// <summary>
+        /// The minimum version of Bicep.
+        /// </summary>
         public string Minimum { get; }
 
         public BicepHelper.BicepInfo Bicep { get; internal set; }
-
 
         #region IDisposable
 

@@ -13,10 +13,10 @@ Export JSON based rules from policy assignment data.
 
 ## SYNTAX
 
-### Default (Default)
-
 ```text
-Export-AzPolicyAssignmentRuleData [[-Name] <string>] [-AssignmentFile] <string> [[-ResourceGroup] <ResourceGroupReference>] [[-Subscription] <SubscriptionReference>] [[-OutputPath] <string>] [[-RulePrefix] <string>] [-PassThru] [<CommonParameters>]
+Export-AzPolicyAssignmentRuleData [-Name <String>] -AssignmentFile <String>
+ [-ResourceGroup <ResourceGroupReference>] [-Subscription <SubscriptionReference>] [-OutputPath <String>]
+ [-RulePrefix <String>] [-PassThru] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -118,7 +118,7 @@ If not specified `export-<xxxxxxxx>` will be used as the name of the assignment.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -134,7 +134,7 @@ The absolute or relative path to an assignment data file.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: True
@@ -157,7 +157,7 @@ This parameter has no affect when `-PassThru` is used.
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -177,7 +177,7 @@ For example, with `-RulePrefix 'CustomPolicyPrefix'` this would generate the pol
 
 ```yaml
 Type: String
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -195,7 +195,7 @@ the pipeline instead.
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -221,7 +221,7 @@ For more details see about_PSRule_Azure_Configuration.
 
 ```yaml
 Type: ResourceGroupReference
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases: ResourceGroupName
 
 Required: False
@@ -247,7 +247,7 @@ For more details see about_PSRule_Azure_Configuration.
 
 ```yaml
 Type: SubscriptionReference
-Parameter Sets: Default
+Parameter Sets: (All)
 Aliases:
 
 Required: False
@@ -259,9 +259,7 @@ Accept wildcard characters: False
 
 ### CommonParameters
 
-This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction,
--InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
-For more information, see [about_CommonParameters](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_commonparameters).
+This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable. For more information, see [about_CommonParameters](https://go.microsoft.com/fwlink/?LinkID=113216).
 
 ## INPUTS
 

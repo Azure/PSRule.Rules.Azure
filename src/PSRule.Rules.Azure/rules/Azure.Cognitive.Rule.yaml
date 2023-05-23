@@ -51,6 +51,7 @@ spec:
     in:
     - SystemAssigned
     - UserAssigned
+    - SystemAssigned,UserAssigned
     - SystemAssigned, UserAssigned
 
 ---
