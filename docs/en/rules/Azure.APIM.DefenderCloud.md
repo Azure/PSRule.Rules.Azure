@@ -77,8 +77,8 @@ Microsoft Defender for APIs is a preview feature.
 
 Onboarding APIs to Defender for APIs is a two-step process:
 
-1. Enable the Defender for APIs plan for the subscription
-2. Onboard unprotected APIs in API Management instances
+1. Enable the Defender for APIs plan for the subscription.
+2. Onboard unprotected APIs in API Management instances.
   
 Currently only REST APIs published in Azure API Management is supported. Defender for APIs currently doesn't onboard APIs that are exposed using the API Management self-hosted gateway or managed using API Management workspaces. The rule can therefore emit false results as it doesn't currently filter on self-hosted gateways or managed using workspaces. Not all regions are supported.
 
