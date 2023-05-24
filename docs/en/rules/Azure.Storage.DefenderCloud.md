@@ -101,6 +101,10 @@ Some of the features included in Defender for Storage is in preview.
 
 Currently only the `Blob Storage`, `Azure Files` and `Azure Data Lake Storage Gen2` service is supported by Defender for Storage.
 
+- When the plan is already enabled at the subscription level and the resource level override property `overrideSubscriptionLevelSettings` value is `false`, the resource level enablement will be ignored and the subscription level (plan) will still be used.
+- If the override property `overrideSubscriptionLevelSettings` value is `true`, the resource level enablement will be honored and a dedicated plan will be configured for the storage account.
+- If there is no plan at the subcription level, the resource level enablement will be honored and a dedicated plan will be configured for the storage account.
+
 ## LINKS
 
 - [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
