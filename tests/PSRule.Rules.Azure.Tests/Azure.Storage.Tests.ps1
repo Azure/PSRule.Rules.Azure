@@ -27,10 +27,10 @@ Describe 'Azure.Storage' -Tag Storage {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Storage.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
@@ -276,10 +276,10 @@ Describe 'Azure.Storage' -Tag Storage {
 
     Context 'Resource name' {
         $invokeParams = @{
-            Baseline = 'Azure.All'
-            Module = 'PSRule.Rules.Azure'
+            Baseline      = 'Azure.All'
+            Module        = 'PSRule.Rules.Azure'
             WarningAction = 'Ignore'
-            ErrorAction = 'Stop'
+            ErrorAction   = 'Stop'
         }
         $validNames = @(
             'storage1'
@@ -293,20 +293,20 @@ Describe 'Azure.Storage' -Tag Storage {
             'storage.1'
         )
         $testObject = [PSCustomObject]@{
-            Name = ''
+            Name         = ''
             ResourceType = 'Microsoft.Storage/storageAccounts'
         }
 
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Storage/storageAccounts'
             }
         }
@@ -420,9 +420,9 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             @($ruleResult[0].TargetObject.resources | Where-Object {
-                $_.type -eq 'Microsoft.Storage/storageAccounts/blobServices/containers' -and
-                $_.name -eq 'storage1/default/arm'
-            }).Length | Should -Be 1
+                    $_.type -eq 'Microsoft.Storage/storageAccounts/blobServices/containers' -and
+                    $_.name -eq 'storage1/default/arm'
+                }).Length | Should -Be 1
             # $ruleResult.TargetName | Should -BeIn 'storage1', 'storage1/default/arm';
         }
 
@@ -439,6 +439,37 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'storage1';
         }
+    }
 
+    Context 'With Configuration Option' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Storage.json';
+            $configPath = Join-Path -Path $here -ChildPath 'ps-rule-options.yaml';
+        }
+        
+        It 'Azure.Storage.DefenderCloud -  YAML file option' {
+            # With AZURE_STORAGEACCOUNT_DEFENDER_PER_ACCOUNT
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $configPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.DefenderCloud' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-B';
+
+            $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/DefenderForStorageSettings' has not been specified.";
+            $ruleResult[1].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/DefenderForStorageSettings' has not been specified.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-C';
+        }
     }
 }

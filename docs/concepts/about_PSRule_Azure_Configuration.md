@@ -29,6 +29,7 @@ The following configurations options are available for use:
 - [AZURE_POLICY_RULE_PREFIX](#azure_policy_rule_prefix)
 - [AZURE_APIM_MIN_API_VERSION](#azure_apim_min_api_version)
 - [AZURE_COSMOS_DEFENDER_PER_ACCOUNT](#azure_cosmos_defender_per_account)
+- [AZURE_STORAGE_DEFENDER_PER_ACCOUNT](#azure_storage_defender_per_account)
 
   [1]: https://aka.ms/ps-rule/options
 
@@ -407,6 +408,34 @@ Example:
 # YAML: Set the AZURE_COSMOS_DEFENDER_PER_ACCOUNT configuration option to true
 configuration:
   AZURE_COSMOS_DEFENDER_PER_ACCOUNT: true
+```
+
+### AZURE_STORAGE_DEFENDER_PER_ACCOUNT
+
+This configuration option enables validation for that each storage account is associated with a Microsoft Defender for Storage resource level plan.
+Configure this option to enable the per account validation, which defaults to `false`.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_STORAGE_DEFENDER_PER_ACCOUNT: boolean
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_STORAGE_DEFENDER_PER_ACCOUNT configuration option
+configuration:
+  AZURE_STORAGE_DEFENDER_PER_ACCOUNT: false
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_STORAGE_DEFENDER_PER_ACCOUNT configuration option to true
+configuration:
+  AZURE_STORAGE_DEFENDER_PER_ACCOUNT: true
 ```
 
 ## NOTE

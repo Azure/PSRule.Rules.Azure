@@ -95,6 +95,13 @@ Rule 'Azure.Storage.DefenderCloud.MalwareScan' -Ref 'AZR-000384' -Type 'Microsof
     $Assert.Count($malwareDisabled, '.', 0).Reason($LocalizedData.ResStorageMalwareScanning, $PSRule.TargetName)
 }
 
+# Synopsis: Enable Microsoft Defender for Storage for storage accounts.
+Rule 'Azure.Storage.DefenderCloud' -Ref 'AZR-000386' -Type 'Microsoft.Storage/storageAccounts' -If { $Configuration.AZURE_STORAGE_DEFENDER_PER_ACCOUNT } -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
+    $defender = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
+    Where-Object { $_.properties.isEnabled -eq $True })
+    $Assert.GreaterOrEqual($defender, '.', 1).Reason($LocalizedData.SubResourceNotFound, 'Microsoft.Security/DefenderForStorageSettings')
+} -Configure @{ AZURE_STORAGE_DEFENDER_PER_ACCOUNT = $False }
+
 #region Helper functions
 
 function global:ShouldStorageReplicate {
