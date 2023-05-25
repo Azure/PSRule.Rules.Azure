@@ -1,15 +1,17 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "1.10-experimental",
   "contentVersion": "1.0.0.0",
   "metadata": {
+    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.4.1318.3566",
-      "templateHash": "16885571879021213447"
+      "version": "0.16.2.56959",
+      "templateHash": "10984129434448340817"
     }
   },
-  "resources": [
-    {
+  "resources": {
+    "storageaccount": {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2021-02-01",
       "name": "storage1",
@@ -19,9 +21,9 @@
         "name": "Premium_LRS"
       }
     },
-    {
+    "blobService": {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "blob_deploy",
       "properties": {
         "expressionEvaluationOptions": {
@@ -35,12 +37,14 @@
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
+            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.4.1318.3566",
-              "templateHash": "9791268524428469564"
+              "version": "0.16.2.56959",
+              "templateHash": "4180487587676765390"
             }
           },
           "parameters": {
@@ -48,8 +52,8 @@
               "type": "string"
             }
           },
-          "resources": [
-            {
+          "resources": {
+            "blobServices": {
               "type": "Microsoft.Storage/storageAccounts/blobServices",
               "apiVersion": "2021-08-01",
               "name": "[format('{0}/default', parameters('storageAccountName'))]",
@@ -60,16 +64,16 @@
                 }
               }
             }
-          ]
+          }
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', 'storage1')]"
+        "storageaccount"
       ]
     },
-    {
+    "pe_deploy": {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "pe_deploy",
       "properties": {
         "expressionEvaluationOptions": {
@@ -83,12 +87,14 @@
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
+            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.4.1318.3566",
-              "templateHash": "11099921060564112756"
+              "version": "0.16.2.56959",
+              "templateHash": "1493664755680646667"
             }
           },
           "parameters": {
@@ -96,8 +102,14 @@
               "type": "string"
             }
           },
-          "resources": [
-            {
+          "resources": {
+            "storage": {
+              "existing": true,
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2021-08-01",
+              "name": "[parameters('storageAccountName')]"
+            },
+            "pe": {
               "type": "Microsoft.Network/privateEndpoints",
               "apiVersion": "2021-05-01",
               "name": "[format('pe-{0}', parameters('storageAccountName'))]",
@@ -115,22 +127,22 @@
                 ]
               }
             }
-          ],
+          },
           "outputs": {
             "nicId": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('storageAccountName')))).networkInterfaces[0].id]"
+              "value": "[reference('pe').networkInterfaces[0].id]"
             }
           }
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', 'storage1')]"
+        "storageaccount"
       ]
     },
-    {
+    "dns_deploy": {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "pe_dns_deploy",
       "properties": {
         "expressionEvaluationOptions": {
@@ -142,17 +154,19 @@
             "value": "storage1"
           },
           "nicId": {
-            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'pe_deploy')).outputs.nicId.value]"
+            "value": "[reference('pe_deploy').outputs.nicId.value]"
           }
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
+            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.4.1318.3566",
-              "templateHash": "4917512018750506523"
+              "version": "0.16.2.56959",
+              "templateHash": "8913488498461658204"
             }
           },
           "parameters": {
@@ -163,26 +177,32 @@
               "type": "string"
             }
           },
-          "resources": [
-            {
+          "resources": {
+            "nic": {
+              "existing": true,
+              "type": "Microsoft.Network/networkInterfaces",
+              "apiVersion": "2021-05-01",
+              "name": "[split(parameters('nicId'), '/')[8]]"
+            },
+            "dns": {
               "type": "Microsoft.Network/privateDnsZones/A",
               "apiVersion": "2020-06-01",
               "name": "[format('privatelink.blob.core.windows.net/{0}', parameters('storageAccountName'))]",
               "properties": {
                 "aRecords": [
                   {
-                    "ipv4Address": "[reference(resourceId('Microsoft.Network/networkInterfaces', split(parameters('nicId'), '/')[8]), '2021-05-01').ipConfigurations[0].properties.privateIPAddress]"
+                    "ipv4Address": "[reference('nic').ipConfigurations[0].properties.privateIPAddress]"
                   }
                 ]
               }
             }
-          ]
+          }
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Resources/deployments', 'pe_deploy')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', 'storage1')]"
+        "pe_deploy",
+        "storageaccount"
       ]
     }
-  ]
+  }
 }
