@@ -30,6 +30,9 @@ What's changed since pre-release v1.27.0-B0091:
   - Defender for Cloud:
     - Check that sensitive data threat detection in Microsoft Defender for Storage is enabled by @BenjaminEngeset.
       [#2207](https://github.com/Azure/PSRule.Rules.Azure/issues/2207)
+- General improvements:
+  - Added support for Bicep symbolic names by @BernieWhite.
+    [#2238](https://github.com/Azure/PSRule.Rules.Azure/issues/2238)
 - Bug fixes:
   - Fixed false positive on managed identity without space by @BernieWhite.
     [#2235](https://github.com/Azure/PSRule.Rules.Azure/issues/2235)

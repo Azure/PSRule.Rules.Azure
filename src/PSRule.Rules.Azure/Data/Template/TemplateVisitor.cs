@@ -85,6 +85,7 @@ namespace PSRule.Rules.Azure.Data.Template
             private readonly TemplateValidator _Validator;
             private readonly HashSet<object> _SecureValues;
             private readonly Dictionary<string, ITypeDefinition> _Definitions;
+            private readonly Dictionary<string, IDeploymentSymbol> _Symbols;
 
             private DeploymentValue _CurrentDeployment;
             private bool? _IsGenerated;
@@ -111,6 +112,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _IsGenerated = null;
                 _SecureValues = new HashSet<object>();
                 _Definitions = new Dictionary<string, ITypeDefinition>(StringComparer.OrdinalIgnoreCase);
+                _Symbols = new Dictionary<string, IDeploymentSymbol>(StringComparer.OrdinalIgnoreCase);
             }
 
             internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, ParameterDefaultsOption parameterDefaults)
@@ -217,6 +219,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public bool TryGetResource(string resourceId, out IResourceValue resource)
             {
+                if (_Symbols.TryGetValue(resourceId, out var symbol))
+                    resourceId = symbol.GetId(0);
+
                 if (_ResourceIds.TryGetValue(resourceId, out resource))
                     return true;
 
@@ -703,6 +708,11 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 return _Definitions.TryGetValue(definitionName, out definition);
             }
+
+            internal void AddSymbol(IDeploymentSymbol symbol)
+            {
+                _Symbols.Add(symbol.Name, symbol);
+            }
         }
 
         internal sealed class UserDefinedFunctionContext : BaseTemplateContext
@@ -879,8 +889,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (TryObjectProperty(template, PROPERTY_VARIABLES, out variables))
                     Variables(context, variables);
 
-                if (TryArrayProperty(template, PROPERTY_RESOURCES, out var resources))
-                    Resources(context, resources);
+                if (TryObjectProperty(template, PROPERTY_RESOURCES, out var oResources))
+                    Resources(context, oResources);
+
+                if (TryArrayProperty(template, PROPERTY_RESOURCES, out var aResources))
+                    Resources(context, aResources);
 
                 if (TryObjectProperty(template, PROPERTY_OUTPUTS, out var outputs))
                     Outputs(context, outputs);
@@ -1094,19 +1107,43 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var expanded = new List<ResourceValue>();
             for (var i = 0; i < resources.Length; i++)
-                expanded.AddRange(ResourceExpand(context, resources[i]));
+                expanded.AddRange(ResourceExpand(context, null, resources[i]));
 
-            var sorted = SortResources(context, expanded.ToArray());
+            Resources(context, expanded.ToArray());
+        }
+
+        private void Resources(TemplateContext context, ResourceValue[] resources)
+        {
+            if (resources.Length == 0)
+                return;
+
+            var sorted = SortResources(context, resources);
             for (var i = 0; i < sorted.Length; i++)
                 ResourceOuter(context, sorted[i]);
+        }
+
+        private void Resources(TemplateContext context, JObject resources)
+        {
+            if (resources == null || resources.IsEmpty())
+                return;
+
+            // Collect resources
+            var r = new List<ResourceValue>(resources.Count);
+            foreach (var p in resources.Properties())
+            {
+                if (p.Value.Type == JTokenType.Object && p.Value.Value<JObject>() is JObject resource)
+                    r.AddRange(ResourceExpand(context, p.Name, resource));
+            }
+            Resources(context, r.ToArray());
         }
 
         /// <summary>
         /// Expand copied resources.
         /// </summary>
-        private static IEnumerable<ResourceValue> ResourceExpand(TemplateContext context, JObject resource)
+        private static IEnumerable<ResourceValue> ResourceExpand(TemplateContext context, string symbolicName, JObject resource)
         {
             var copyIndex = GetResourceIterator(context, resource);
+            var symbol = copyIndex.IsCopy() ? DeploymentSymbol.NewArray(symbolicName) : DeploymentSymbol.NewObject(symbolicName);
             while (copyIndex.Next())
             {
                 var instance = copyIndex.CloneInput<JObject>();
@@ -1114,10 +1151,17 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (!condition)
                     continue;
 
-                yield return ResourceInstance(context, instance, copyIndex);
+                var r = ResourceInstance(context, instance, copyIndex);
+                if (symbol != null)
+                    symbol.Configure(r);
+
+                yield return r;
             }
             if (copyIndex.IsCopy())
                 context.CopyIndex.Pop();
+
+            if (symbol != null)
+                context.AddSymbol(symbol);
         }
 
         private static ResourceValue ResourceInstance(TemplateContext context, JObject resource, TemplateContext.CopyIndexState copyIndex)
@@ -1766,6 +1810,9 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         protected virtual void Emit(TemplateContext context, IResourceValue resource)
         {
+            if (resource == null || resource.IsExisting())
+                return;
+
             resource.Value.SetTargetInfo(context.TemplateFile, context.ParameterFile);
             context.AddResource(resource);
         }
