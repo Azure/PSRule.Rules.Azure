@@ -80,8 +80,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 15;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.APIDescriptors' {
@@ -126,8 +126,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 15;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.EncryptValues' {
