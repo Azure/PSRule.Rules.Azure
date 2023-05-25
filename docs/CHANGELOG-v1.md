@@ -26,6 +26,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.27.0-B0091:
 
+- General improvements:
+  - Added support for Bicep symbolic names by @BernieWhite.
+    [#2238](https://github.com/Azure/PSRule.Rules.Azure/issues/2238)
 - Bug fixes:
   - Fixed false positive on managed identity without space by @BernieWhite.
     [#2235](https://github.com/Azure/PSRule.Rules.Azure/issues/2235)
