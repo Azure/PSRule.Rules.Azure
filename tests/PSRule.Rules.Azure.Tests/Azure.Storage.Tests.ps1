@@ -460,8 +460,8 @@ Describe 'Azure.Storage' -Tag Storage {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'storage-B';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
 
             $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/DefenderForStorageSettings' has not been specified.";
             $ruleResult[1].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/DefenderForStorageSettings' has not been specified.";
