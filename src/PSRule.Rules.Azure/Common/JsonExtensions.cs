@@ -398,6 +398,17 @@ namespace PSRule.Rules.Azure
             return true;
         }
 
+        internal static bool TryBoolProperty(this JObject o, string propertyName, out bool? value)
+        {
+            value = null;
+            if (o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var v) && v.Type == JTokenType.Boolean)
+            {
+                value = v.Value<bool>();
+                return value != null;
+            }
+            return false;
+        }
+
         /// <summary>
         /// Check if the script uses an expression.
         /// </summary>

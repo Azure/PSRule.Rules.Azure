@@ -1,11 +1,13 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "1.10-experimental",
   "contentVersion": "1.0.0.0",
   "metadata": {
+    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.12.40.16777",
-      "templateHash": "4463296209999688608"
+      "version": "0.16.2.56959",
+      "templateHash": "10585187775011836453"
     }
   },
   "parameters": {
@@ -14,12 +16,18 @@
       "defaultValue": "[resourceGroup().location]"
     },
     "secret": {
-      "type": "secureString",
+      "type": "securestring",
       "defaultValue": "[newGuid()]"
     }
   },
-  "resources": [
-    {
+  "resources": {
+    "vault": {
+      "existing": true,
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2021-10-01",
+      "name": "vault1"
+    },
+    "kvSecret": {
       "type": "Microsoft.KeyVault/vaults/secrets",
       "apiVersion": "2021-10-01",
       "name": "[format('{0}/{1}', 'vault1', 'secret1')]",
@@ -27,7 +35,7 @@
         "value": "[parameters('secret')]"
       }
     },
-    {
+    "storage": {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2021-09-01",
       "name": "storage1",
@@ -37,9 +45,9 @@
       },
       "kind": "StorageV2"
     },
-    {
+    "child": {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "child",
       "properties": {
         "expressionEvaluationOptions": {
@@ -58,21 +66,29 @@
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
+            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.12.40.16777",
-              "templateHash": "7540507475036321031"
+              "version": "0.16.2.56959",
+              "templateHash": "13134284129733494715"
             }
           },
           "parameters": {
             "secret": {
-              "type": "secureString"
+              "type": "securestring"
             }
           },
-          "resources": [
-            {
+          "resources": {
+            "vault": {
+              "existing": true,
+              "type": "Microsoft.KeyVault/vaults",
+              "apiVersion": "2021-10-01",
+              "name": "vault1"
+            },
+            "kvSecret": {
               "type": "Microsoft.KeyVault/vaults/secrets",
               "apiVersion": "2021-10-01",
               "name": "[format('{0}/{1}', 'vault1', 'secret1')]",
@@ -80,7 +96,7 @@
                 "value": "[parameters('secret')]"
               }
             }
-          ],
+          },
           "outputs": {
             "secretFromParameter": {
               "type": "string",
@@ -90,9 +106,9 @@
         }
       }
     },
-    {
+    "good": {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "good",
       "properties": {
         "expressionEvaluationOptions": {
@@ -101,21 +117,23 @@
         "mode": "Incremental",
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
+            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.12.40.16777",
-              "templateHash": "5419326011865364836"
+              "version": "0.16.2.56959",
+              "templateHash": "11626155488460482268"
             }
           },
           "parameters": {
             "empty": {
-              "type": "secureString",
+              "type": "securestring",
               "defaultValue": ""
             }
           },
-          "resources": [],
+          "resources": {},
           "outputs": {
             "value": {
               "type": "string",
@@ -129,7 +147,7 @@
         }
       }
     }
-  ],
+  },
   "outputs": {
     "id": {
       "type": "string",
@@ -137,7 +155,7 @@
     },
     "contentType": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.KeyVault/vaults/secrets', 'vault1', 'secret1'), '2021-10-01').contentType]"
+      "value": "[reference('kvSecret').contentType]"
     },
     "secret": {
       "type": "string",
@@ -149,7 +167,7 @@
     },
     "secretFromChild": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'child'), '2020-10-01').outputs.secretFromParameter.value]"
+      "value": "[reference('child').outputs.secretFromParameter.value]"
     }
   }
 }
