@@ -19,9 +19,19 @@
           "tenantId": "00000000-0000-0000-0000-000000000000",
           "objectId": "00000000-0000-0000-0000-000000000000",
           "permissions": {
-            "certificates": ["Get", "List"],
-            "keys": ["Get", "List"],
-            "secrets": ["Get", "List", "Set"]
+            "certificates": [
+              "Get",
+              "List"
+            ],
+            "keys": [
+              "Get",
+              "List"
+            ],
+            "secrets": [
+              "Get",
+              "List",
+              "Set"
+            ]
           }
         }
       ],
@@ -30,7 +40,7 @@
       "enabledForTemplateDeployment": true,
       "enableSoftDelete": true,
       "enablePurgeProtection": true,
-      "networkAcls":  {
+      "networkAcls": {
         "defaultAction": "Deny",
         "bypass": "AzureServices",
         "ipRules": [],
@@ -113,9 +123,18 @@
           "tenantId": "00000000-0000-0000-0000-000000000000",
           "objectId": "00000000-0000-0000-0000-000000000000",
           "permissions": {
-            "certificates": ["All"],
-            "keys": ["All"],
-            "secrets": ["Get", "Set", "List", "Purge"]
+            "certificates": [
+              "All"
+            ],
+            "keys": [
+              "All"
+            ],
+            "secrets": [
+              "Get",
+              "Set",
+              "List",
+              "Purge"
+            ]
           }
         }
       ],
@@ -123,6 +142,7 @@
       "enabledForDiskEncryption": true,
       "enabledForTemplateDeployment": true,
       "enableSoftDelete": false,
+      "enableRbacAuthorization": false,
       "vaultUri": "https://keyvault-B.vault.azure.net/",
       "provisioningState": "Succeeded"
     },
@@ -153,6 +173,7 @@
       "enabledForTemplateDeployment": true,
       "enableSoftDelete": true,
       "enablePurgeProtection": false,
+      "enableRbacAuthorization": true,
       "vaultUri": "https://keyvault-C.vault.azure.net/",
       "provisioningState": "Succeeded"
     },
@@ -324,7 +345,9 @@
           "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
           "eventHubAuthorizationRuleId": null,
           "eventHubName": null,
-          "metrics": [""],
+          "metrics": [
+            ""
+          ],
           "logs": [
             {
               "categoryGroup": "audit",
@@ -461,7 +484,9 @@
           "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
           "eventHubAuthorizationRuleId": null,
           "eventHubName": null,
-          "metrics": [""],
+          "metrics": [
+            ""
+          ],
           "logs": [
             {
               "categoryGroup": "audit",
@@ -590,7 +615,9 @@
           "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
           "eventHubAuthorizationRuleId": null,
           "eventHubName": null,
-          "metrics": [""],
+          "metrics": [
+            ""
+          ],
           "logs": [
             {
               "categoryGroup": "allLogs",
@@ -634,6 +661,7 @@
       "enabledForTemplateDeployment": true,
       "enableSoftDelete": true,
       "enablePurgeProtection": true,
+      "enableRbacAuthorization": true,
       "vaultUri": "https://keyvault-H.vault.azure.net/",
       "provisioningState": "Succeeded"
     },
@@ -703,7 +731,9 @@
           "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
           "eventHubAuthorizationRuleId": null,
           "eventHubName": null,
-          "metrics": [""],
+          "metrics": [
+            ""
+          ],
           "logs": [
             {
               "categoryGroup": "allLogs",

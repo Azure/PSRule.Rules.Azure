@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Key Vault:
+    - Check that key vaults uses Azure RBAC as the authorization system for the data plane by @BenjaminEngeset.
+      [#1916](https://github.com/Azure/PSRule.Rules.Azure/issues/1916)
+
 What's changed since pre-release v1.27.0-B0091:
 
 - General improvements:
