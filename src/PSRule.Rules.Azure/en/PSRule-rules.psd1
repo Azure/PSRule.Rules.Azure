@@ -103,4 +103,5 @@
     SubStorageMalwareScanning = "The Microsoft Defender for Storage plan should have malware scanning configured."
     ResStorageMalwareScanning = "The storage account '{0}' should have malware scanning in Microsoft Defender for Storage configured."
     ResStorageSensitiveDataThreatDetection = "The storage account '{0}' should have sensitive data threat detection in Microsoft Defender for Storage configured."
+    SubStorageSensitiveDataThreatDetection = "The Microsoft Defender for Storage plan should have sensitive data threat detection configured."
 }
