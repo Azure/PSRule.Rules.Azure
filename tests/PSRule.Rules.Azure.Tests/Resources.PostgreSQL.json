@@ -333,6 +333,10 @@
     "Name": "server-E",
     "Properties": {
       "administratorLogin": "db-admin",
+      "authConfig": {
+        "activeDirectoryAuth": "Disabled",
+        "passwordAuth": "Enabled"
+      },
       "storage": {
         "storageSizeGB": 20
       },
@@ -363,6 +367,10 @@
     "Name": "server-F",
     "Properties": {
       "administratorLogin": "db-admin",
+      "authConfig": {
+        "activeDirectoryAuth": "Enabled",
+        "passwordAuth": "Disabled"
+      },
       "storage": {
         "storageSizeGB": 20
       },
