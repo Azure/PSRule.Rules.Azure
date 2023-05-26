@@ -103,4 +103,5 @@
     SubStorageMalwareScanning = "The Microsoft Defender for Storage plan should have malware scanning configured."
     ResStorageMalwareScanning = "The storage account '{0}' should have malware scanning in Microsoft Defender for Storage configured."
     ResAPIDefender = "The API '{0}' should be onboarded to Microsoft Defender for APIs."
+    SubStorageSensitiveDataThreatDetection = "The Microsoft Defender for Storage plan should have sensitive data threat detection configured."
 }
