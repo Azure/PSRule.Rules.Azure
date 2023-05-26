@@ -26,7 +26,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Azure Database for PostgreSQL:
-    - Check that Azure AD authentication is configured for Azure Database for PostgreSQL servers by @BenjaminEngeset.
+    - Check that Azure AD authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
       [#2226](https://github.com/Azure/PSRule.Rules.Azure/issues/2226)
 
 
