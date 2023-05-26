@@ -161,6 +161,25 @@ Describe 'Azure.PostgreSQL' -Tag 'PostgreSQL' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'server-C';
         }
+
+        It 'Azure.PostgreSQL.AAD' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.AAD' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-D', 'server-E', 'ActiveDirectoryAdmin-A', 'ActiveDirectoryAdmin-C';
+
+            $ruleResult[0].Reason | Should -BeIn 'Path properties.administratorType: Is null or empty.', 'Path properties.login: Is null or empty.', 'Path properties.sid: Is null or empty.';
+            $ruleResult[3].Reason | Should -BeIn 'Path properties.principalName: Is null or empty.', 'Path properties.principalType: Is null or empty.';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'server-C', 'server-F', 'ActiveDirectoryAdmin-B', 'ActiveDirectoryAdmin-D';
+        }
     }
 
     Context 'Resource name - Azure.PostgreSQL.ServerName' {

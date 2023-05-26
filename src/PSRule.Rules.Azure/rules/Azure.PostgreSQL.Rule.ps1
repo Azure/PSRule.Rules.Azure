@@ -9,16 +9,16 @@
 Rule 'Azure.PostgreSQL.FirewallRuleCount' -Ref 'AZR-000149' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/servers/firewallRules');
     $Assert.
-        LessOrEqual($firewallRules, '.', 10).
-        WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
+    LessOrEqual($firewallRules, '.', 10).
+    WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
 }
 
 # Synopsis: Determine if access from Azure services is required
 Rule 'Azure.PostgreSQL.AllowAzureAccess' -Ref 'AZR-000150' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/servers/firewallRules' | Where-Object {
-        $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
+            $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
         ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0')
-    })
+        })
     $firewallRules.Length -eq 0;
 }
 
@@ -26,8 +26,8 @@ Rule 'Azure.PostgreSQL.AllowAzureAccess' -Ref 'AZR-000150' -Type 'Microsoft.DBfo
 Rule 'Azure.PostgreSQL.FirewallIPRange' -Ref 'AZR-000151' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     $summary = GetIPAddressSummary
     $Assert.
-        LessOrEqual($summary, 'Public', 10).
-        WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
+    LessOrEqual($summary, 'Public', 10).
+    WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
 }
 
 # Synopsis: Azure SQL logical server names should meet naming requirements.
@@ -72,6 +72,18 @@ Rule 'Azure.PostgreSQL.DefenderCloud' -Ref 'AZR-000327' -Type 'Microsoft.DBforPo
     }
 }
 
+# Synopsis: Use Azure Active Directory (AAD) authentication with Azure Database for PostgreSQL databases.
+Rule 'Azure.PostgreSQL.AAD' -Ref 'AZR-000389' -Type 'Microsoft.DBforPostgreSQL/flexibleServers', 'Microsoft.DBforPostgreSQL/servers', 'Microsoft.DBforPostgreSQL/flexibleServers/administrators', 'Microsoft.DBforPostgreSQL/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
+    switch ($PSRule.TargetType) {
+        'Microsoft.DBforPostgreSQL/flexibleServers' { FlexibleServerAAD }
+        'Microsoft.DBforPostgreSQL/servers' { SingleServerAAD }
+        'Microsoft.DBforPostgreSQL/flexibleServers/administrators' { FlexibleServerAAD }
+        'Microsoft.DBforPostgreSQL/servers/administrators' { SingleServerAAD }
+    }
+}
+
+#endregion SQL Managed Instance
+
 #region Helper functions
 
 function global:HasPostgreSQLTierSupportingGeoRedundantBackup {
@@ -85,6 +97,42 @@ function global:HasPostgreSQLTierSupportingGeoRedundantBackup {
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/servers') {
             $Assert.in($TargetObject, 'sku.tier', @('GeneralPurpose', 'MemoryOptimized')).Result
         }
+    }
+}
+
+function global:FlexibleServerAAD {
+    [CmdletBinding()]
+    param ()
+    if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/flexibleServers') {
+        $configs = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/flexibleServers/administrators')
+        
+        foreach ($config in $configs) {
+            $Assert.HasFieldValue($config, 'properties.principalName')
+            $Assert.HasFieldValue($config, 'properties.principalType')
+        }
+    }
+    else {
+        $Assert.HasFieldValue($TargetObject, 'properties.principalName')
+        $Assert.HasFieldValue($TargetObject, 'properties.principalType')
+    }
+}
+
+function global:SingleServerAAD {
+    [CmdletBinding()]
+    param ()
+    if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/servers') {
+        $configs = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/servers/administrators' -Name 'ActiveDirectory')
+        
+        foreach ($config in $configs) {
+            $Assert.HasFieldValue($config, 'properties.administratorType', 'ActiveDirectory')
+            $Assert.HasFieldValue($config, 'properties.login')
+            $Assert.HasFieldValue($config, 'properties.sid')
+        }
+    }
+    else {
+        $Assert.HasFieldValue($TargetObject, 'properties.administratorType', 'ActiveDirectory')
+        $Assert.HasFieldValue($TargetObject, 'properties.login')
+        $Assert.HasFieldValue($TargetObject, 'properties.sid')
     }
 }
 
