@@ -1,6 +1,6 @@
 ---
 severity: Awareness
-pillar: Security 
+pillar: Security
 category: Identity and access management
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.RBAC/
