@@ -90,7 +90,9 @@ Update-AzKeyVault -ResourceGroupName '<resource_group>' -Name '<name>' -EnableRb
 
 ## NOTES
 
-The Azure RBAC permission model has disadvantages when compared to access policies, that might effect e.g infrastructure as code deployments. There are scenarios where Azure RBAC might not be suitable. More about this in the `LINKS` section.
+The RBAC permission model may not be suitable for all use cases.
+If this rule is not suitable for your use case, you can exclude or suppress the rule.
+For information about limitations see _Azure role-based access control vs. access policies_ in the `LINKS` section.
 
 ## LINKS
 
