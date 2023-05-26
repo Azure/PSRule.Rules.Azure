@@ -105,6 +105,9 @@ function global:FlexibleServerAAD {
     param ()
     if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/flexibleServers') {
         $configs = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/flexibleServers/administrators')
+        if ($configs.Count -eq 0) {
+             return $Assert.Fail().Reason($LocalizedData.SubResourceNotFound, 'Microsoft.DBforPostgreSQL/flexibleServers/administrators')
+        }
         
         foreach ($config in $configs) {
             $Assert.HasFieldValue($config, 'properties.principalName')
@@ -122,6 +125,9 @@ function global:SingleServerAAD {
     param ()
     if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/servers') {
         $configs = @(GetSubResources -ResourceType 'Microsoft.DBforPostgreSQL/servers/administrators' -Name 'ActiveDirectory')
+        if ($configs.Count -eq 0) {
+            return $Assert.Fail().Reason($LocalizedData.SubResourceNotFound, 'Microsoft.DBforPostgreSQL/servers/administrators')
+       }
         
         foreach ($config in $configs) {
             $Assert.HasFieldValue($config, 'properties.administratorType', 'ActiveDirectory')

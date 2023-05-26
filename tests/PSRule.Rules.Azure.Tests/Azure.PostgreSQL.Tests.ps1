@@ -172,6 +172,8 @@ Describe 'Azure.PostgreSQL' -Tag 'PostgreSQL' {
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-D', 'server-E', 'ActiveDirectoryAdmin-A', 'ActiveDirectoryAdmin-C';
 
             $ruleResult[0].Reason | Should -BeIn 'Path properties.administratorType: Is null or empty.', 'Path properties.login: Is null or empty.', 'Path properties.sid: Is null or empty.';
+            $ruleResult[1].Reason | Should -BeIn "A sub-resource of type 'Microsoft.DBforPostgreSQL/servers/administrators' has not been specified.";
+            $ruleResult[2].Reason | Should -BeIn "A sub-resource of type 'Microsoft.DBforPostgreSQL/flexibleServers/administrators' has not been specified.";
             $ruleResult[3].Reason | Should -BeIn 'Path properties.principalName: Is null or empty.', 'Path properties.principalType: Is null or empty.';
 
             # Pass
