@@ -327,7 +327,7 @@ Rule 'Azure.APIM.PolicyBase' -Ref 'AZR-000371' -Type 'Microsoft.ApiManagement/se
 # Synopsis: APIs published in Azure API Management should be onboarded to Microsoft Defender for APIs.
 Rule 'Azure.APIM.DefenderCloud' -Ref 'AZR-000387' -Type 'Microsoft.ApiManagement/service' -If { HasRestApi } -Tag @{ release = 'Preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-1' } {
     $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis' |
-    Where-Object { $_.properties.apiType -eq 'http' -or -not $_.properties.PSObject.Properties['apiType'] })
+    Where-Object { $Assert.HasDefaultValue($_, 'properties.apiType', 'http').Result })
     $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.Security/apiCollections')
     foreach ($api in $apis) {
         $Assert.In($api, 'name', @($defenderConfigs.name)).Reason($LocalizedData.ResAPIDefender, $api.name)
