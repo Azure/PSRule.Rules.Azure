@@ -74,14 +74,14 @@ resource onboardDefender 'Microsoft.Security/apiCollections@2022-11-20-preview' 
 
 ## NOTES
 
-Microsoft Defender for APIs is a preview feature.
+Microsoft Defender for APIs is a preview feature and has the following limitations:
 
-Onboarding APIs to Defender for APIs is a two-step process:
+- Not all regions are supported.
+- Only REST APIs published through Azure API Management are supported.
+- APIs published through a self-hosted gateway are not supported.
+- APIs defined within an API Management workspace are not supported.
 
-1. Enable the Defender for APIs plan for the subscription.
-2. Onboard unprotected APIs in API Management instances.
-  
-Currently only REST APIs published in Azure API Management is supported. Defender for APIs currently doesn't onboard APIs that are exposed using the API Management self-hosted gateway or managed using API Management workspaces. The rule can therefore emit false results as it doesn't currently filter on self-hosted gateways or managed using workspaces. Not all regions are supported.
+This rule may currently generate false positive results for APIs only hosted on self-hosted gateways or managed using workspaces.
 
 ## LINKS
 
