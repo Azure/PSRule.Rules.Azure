@@ -15,17 +15,18 @@ APIs published in Azure API Management should be onboarded to Microsoft Defender
 ## DESCRIPTION
 
 Microsoft Defender for APIs provides additional security for APIs published in Azure API Management.
-
 Protection is provided by analyzing onboarded APIs.
+
 Which allows Microsoft Defender for Cloud to produce security findings.
-
-The inventory and security findings for onboarded APIs is reviewed in the Defender for Cloud API Security dashboard.
-
 These security findings includes API recommendations and runtime threats.
 
+The inventory and security findings for onboarded APIs is reviewed in the Defender for Cloud API Security dashboard.
 Defender for APIs can be enabled together with the Defender CSPM plan, offering further capabilities.
 
-Microsoft Defender for APIs can be enabled at the subscription level.
+To use Microsoft Defender for APIs:
+
+1. Enable the plan at the subscription level.
+2. Onboard each API to Microsoft Defender for APIs.
 
 ## RECOMMENDATION
 
