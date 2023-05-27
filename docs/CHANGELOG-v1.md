@@ -29,6 +29,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that APIs published in Azure API Management are onboarded to Microsoft Defender for APIs by @BenjaminEngeset.
       [#2187](https://github.com/Azure/PSRule.Rules.Azure/issues/2187)
 
+## v1.27.0-B0136 (pre-release)
+
 What's changed since pre-release v1.27.0-B0091:
 
 - New rules:
