@@ -14,7 +14,7 @@ Enable Microsoft Defender for Storage for storage accounts.
 
 ## DESCRIPTION
 
-Microsoft Defender for Storage analyzes data and control plane logs from protected Storage Sccounts.
+Microsoft Defender for Storage analyzes data and control plane logs from protected Storage Accounts.
 Which allows Microsoft Defender for Cloud to surface findings with details of the security threats and contextual information.
 
 Additionally, Microsoft Defender for Storage provides security extensions to analyze data stored within Storage Accounts:
