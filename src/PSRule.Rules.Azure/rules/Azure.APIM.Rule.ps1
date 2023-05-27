@@ -381,10 +381,10 @@ function global:GetAPIMPolicyNode {
 
 function global:HasRestApi {
     [CmdletBinding()]
-    param ()     
+    param ()
     process {
         $restApi = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis' |
-            Where-Object { $_.properties.apiType -eq 'http' -or -not $_.properties.PSObject.Properties['apiType'] })
+            Where-Object { $Assert.HasDefaultValue($_, 'properties.apiType', 'http').Result })
         $Assert.GreaterOrEqual($restApi, '.', 1).Result
     }
 }
