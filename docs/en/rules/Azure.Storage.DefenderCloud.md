@@ -77,19 +77,19 @@ For example:
 resource defenderForStorageSettings 'Microsoft.Security/DefenderForStorageSettings@2022-12-01-preview' = {
   name: 'current'
   scope: storageAccount
-  properties: {
-    isEnabled: true
-    malwareScanning: {
-      onUpload: {
-        isEnabled: true
-        capGBPerMonth: 5000
-      }
-    }
-    sensitiveDataDiscovery: {
-      isEnabled: true
-    }
-    overrideSubscriptionLevelSettings: false
-  }
+  properties: {
+    isEnabled: true
+    malwareScanning: {
+      onUpload: {
+        isEnabled: true
+        capGBPerMonth: 5000
+      }
+    }
+    sensitiveDataDiscovery: {
+      isEnabled: true
+    }
+    overrideSubscriptionLevelSettings: false
+  }
 }
 ```
 
