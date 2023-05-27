@@ -29,6 +29,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
       [#2225](https://github.com/Azure/PSRule.Rules.Azure/issues/2225)
 
+## v1.27.0-B0136 (pre-release)
+
 What's changed since pre-release v1.27.0-B0091:
 
 - New rules:
