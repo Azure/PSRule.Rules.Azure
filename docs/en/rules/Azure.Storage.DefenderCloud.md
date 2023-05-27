@@ -14,19 +14,17 @@ Enable Microsoft Defender for Storage for storage accounts.
 
 ## DESCRIPTION
 
-Microsoft Defender for Storage provides additional security for storage accounts.
+Microsoft Defender for Storage analyzes data and control plane logs from protected Storage Sccounts.
+Which allows Microsoft Defender for Cloud to surface findings with details of the security threats and contextual information.
 
-Protection is provided by:
+Additionally, Microsoft Defender for Storage provides security extensions to analyze data stored within Storage Accounts:
 
-- Continuously analyzing data and control plane logs from protected storage accounts.
-- Malicious scanning by performing a full malware scan on uploaded content in near real time, leveraging Microsoft Defender Antivirus capabilities.
-- Sensitive data threat detection by a smart sampling method to find resources with sensitive data.
+- Antimalware scanning of uploaded content in near real time, leveraging Microsoft Defender Antivirus capabilities.
+- Sensitive data threat detection to find resources with sensitive data.
 
-Which allows Microsoft Defender for Cloud to discover and mitigate potential threats.
-
-Security findings for onboarded storage accounts shows up in Defender for Cloud with details of the security threats with contextual information.
-
-Microsoft Defender for Storage can be enabled at the resource level, but the general recommandation is to enable it at the subscription level and by doing so ensures all storage accounts in the subscription will be protected, including future ones. However, enabling it at resource level can be done to protect a specific storage account or  apply custom settings to a storage account.
+Microsoft Defender for Storage can be enabled on a per subscription or per resource basis.
+Enabling at the subscription level is recommended because it protects current and future Storage Accounts.
+However, enabling at the resource level may be prefered for specific Storage Account to apply custom settings.
 
 ## RECOMMENDATION
 
