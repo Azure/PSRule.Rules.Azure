@@ -95,13 +95,17 @@ resource defenderForStorageSettings 'Microsoft.Security/DefenderForStorageSettin
 
 ## NOTES
 
-Some of the features included in Defender for Storage is in preview.
+This rule is not processed by default.
+To enable this rule, set the `AZURE_STORAGE_DEFENDER_PER_ACCOUNT` configuration value to `true`.
 
-Currently only the `Blob Storage`, `Azure Files` and `Azure Data Lake Storage Gen2` service is supported by Defender for Storage.
+The following limitations currently apply for Microsoft Defender for Storage:
 
-- When the plan is already enabled at the subscription level and the resource level override property `overrideSubscriptionLevelSettings` value is `false`, the resource level enablement will be ignored and the subscription level (plan) will still be used.
-- If the override property `overrideSubscriptionLevelSettings` value is `true`, the resource level enablement will be honored and a dedicated plan will be configured for the storage account.
-- If there is no plan at the subcription level, the resource level enablement will be honored and a dedicated plan will be configured for the storage account.
+- Malware scanning and sensitive data discovery are preview features.
+- Storage types supported are `Blob Storage`, `Azure Files` and `Azure Data Lake Storage Gen2`.
+  Other storage types are not supported.
+- When Microsoft Defender is enabled at subscription and resource level, the subscription configuration will take priority.
+  To override settings on a Storage Account, set the `properties.overrideSubscriptionLevelSettings` property to `true`.
+- If there is no plan at the subcription level, Microsoft Defender for Storage can be configured without an override.
 
 ## LINKS
 
