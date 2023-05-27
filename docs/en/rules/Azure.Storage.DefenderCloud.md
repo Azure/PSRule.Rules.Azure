@@ -29,7 +29,7 @@ However, enabling at the resource level may be prefered for specific Storage Acc
 ## RECOMMENDATION
 
 Consider using Microsoft Defender for Storage to protect your data hosted in storage accounts.
-Alternatively, use Microsoft Defender for Storage for all storage accounts within a subscription.
+Additionally, consider using Microsoft Defender for Storage to protect all storage accounts within a subscription.
 
 ## EXAMPLES
 
