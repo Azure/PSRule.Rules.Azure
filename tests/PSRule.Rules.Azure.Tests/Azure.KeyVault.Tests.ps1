@@ -141,6 +141,23 @@ Describe 'Azure.KeyVault' -Tag 'KeyVault' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'keyvault-A';
         }
+
+        It 'Azure.KeyVault.RBAC' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.KeyVault.RBAC' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-A', 'keyvault-B', 'keyvault-D', 'keyvault-E', 'keyvault-F', 'keyvault-G';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.enableRbacAuthorization'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'keyvault-C', 'keyvault-H';
+        }
     }
 
     Context 'Resource name - Azure.KeyVault.Name' {

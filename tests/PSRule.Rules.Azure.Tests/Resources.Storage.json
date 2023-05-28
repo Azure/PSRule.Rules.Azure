@@ -217,7 +217,7 @@
         "ResourceName": "current",
         "Name": "current",
         "Properties": {
-          "isEnabled": true,
+          "isEnabled": false,
           "malwareScanning": {
             "onUpload": {
               "isEnabled": false,
