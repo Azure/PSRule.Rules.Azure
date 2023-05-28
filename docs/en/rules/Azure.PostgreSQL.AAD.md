@@ -44,7 +44,7 @@ For example:
 {
     "type": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
     "apiVersion": "2022-12-01",
-    "name": "[format('{0}/{1}', parameters('serverName'), parameters('principalObjectId'))]",
+    "name": "[format('{0}/{1}', parameters('serverName'), parameters('name'))]",
       "properties": {
         "principalName": "[parameters('principalName')]",
         "principalType": "[parameters('principalType')]"
@@ -67,7 +67,7 @@ For example:
 
 ```bicep
 resource aadAdmin 'Microsoft.DBforPostgreSQL/flexibleServers/administrators@2022-12-01' = {
-  name: principalObjectId
+  name: name
   parent: postgreSqlFlexibleServer
   properties: {
     principalName: principalName
@@ -89,7 +89,7 @@ For example:
 {
     "type": "Microsoft.DBforPostgreSQL/servers/administrators",
     "apiVersion": "2017-12-01",
-    "name": "[format('{0}/{1}', parameters('serverName'), parameters('principalObjectId'))]",
+    "name": "[format('{0}/{1}', parameters('serverName'), 'ActiveDirectory')]",
       "properties": {
         "administratorType": "ActiveDirectory",
         "login": "[parameters('location')]",
@@ -114,7 +114,7 @@ For example:
 
 ```bicep
 resource aadAdmin 'Microsoft.DBforPostgreSQL/servers/administrators@2017-12-01' = {
-  name: 'activeDirectory'
+  name: 'ActiveDirectory'
   parent: postgreSqlSingleServer
   properties: {
     administratorType: 'ActiveDirectory'
