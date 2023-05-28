@@ -89,7 +89,7 @@ For example:
 {
     "type": "Microsoft.DBforPostgreSQL/servers/administrators",
     "apiVersion": "2017-12-01",
-    "name": "[format('{0}/{1}', parameters('serverName'), 'ActiveDirectory')]",
+    "name": "[format('{0}/{1}', parameters('serverName'), 'activeDirectory')]",
       "properties": {
         "administratorType": "ActiveDirectory",
         "login": "[parameters('location')]",
@@ -114,7 +114,7 @@ For example:
 
 ```bicep
 resource aadAdmin 'Microsoft.DBforPostgreSQL/servers/administrators@2017-12-01' = {
-  name: 'ActiveDirectory'
+  name: 'activeDirectory'
   parent: postgreSqlSingleServer
   properties: {
     administratorType: 'ActiveDirectory'
