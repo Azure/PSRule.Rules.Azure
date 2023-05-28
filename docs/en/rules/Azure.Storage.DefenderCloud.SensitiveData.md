@@ -34,7 +34,7 @@ It is also worth to mention that the resouce level enablement can be useful when
 ## RECOMMENDATION
 
 Consider enabling sensitive data threat detection using Microsoft Defender for Storage on the Storage Account.
-Alternatively, enable Sensitive data threat detection for all Storage Accounts within a subscription.
+Additionally, consider enabling sensitive data threat detection for all Storage Accounts within a subscription.
 
 ## EXAMPLES
 
