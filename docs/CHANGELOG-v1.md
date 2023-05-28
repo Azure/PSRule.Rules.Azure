@@ -24,10 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.27.0-B0186 (pre-release)
+
+What's changed since pre-release v1.27.0-B0136:
+
 - New rules:
-  - Storage Account:
-    - Check that sensitive data threat detection in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
-      [#2207](https://github.com/Azure/PSRule.Rules.Azure/issues/2207)
   - API Management:
     - Check that APIs published in Azure API Management are onboarded to Microsoft Defender for APIs by @BenjaminEngeset.
       [#2187](https://github.com/Azure/PSRule.Rules.Azure/issues/2187)
@@ -37,6 +38,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Storage Account:
     - Check that Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
       [#2225](https://github.com/Azure/PSRule.Rules.Azure/issues/2225)
+    - Check that sensitive data threat detection in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
+      [#2207](https://github.com/Azure/PSRule.Rules.Azure/issues/2207)
 
 ## v1.27.0-B0136 (pre-release)
 
