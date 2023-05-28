@@ -25,6 +25,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - Key Vault:
+    - Check that key vaults uses Azure RBAC as the authorization system for the data plane by @BenjaminEngeset.
+      [#1916](https://github.com/Azure/PSRule.Rules.Azure/issues/1916)
   - Storage Account:
     - Check that Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
       [#2225](https://github.com/Azure/PSRule.Rules.Azure/issues/2225)
