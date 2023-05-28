@@ -43,4 +43,25 @@ spec:
     field: Properties.enablePurgeProtection
     equals: true
 
+---
+# Synopsis: Key Vaults should use Azure RBAC as the authorization system for the data plane.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.KeyVault.RBAC
+  ref: AZR-000388
+  tags:
+    release: GA
+    ruleSet: 2023_06
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: IM-1
+spec:
+  type:
+  - Microsoft.KeyVault/vaults
+  level: Warning
+  condition:
+    field: properties.enableRbacAuthorization
+    equals: true
+
 #endregion Rules

@@ -551,7 +551,8 @@
             "header": "Ocp-Apim-Subscription-Key",
             "query": "subscription-key"
           },
-          "isCurrent": true
+          "isCurrent": true,
+          "type": "http"
         },
         "ResourceGroupName": "rg-test",
         "Type": "Microsoft.ApiManagement/service/apis",
@@ -772,6 +773,26 @@
         "Sku": null,
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-B/providers/Microsoft.Security/apiCollections/api-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-B/providers/Microsoft.Security/apiCollections/api-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "api-B",
+        "Name": "api-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Security/apiCollections",
+        "ResourceType": "Microsoft.Security/apiCollections",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -951,7 +972,8 @@
             "header": "Ocp-Apim-Subscription-Key",
             "query": "subscription-key"
           },
-          "isCurrent": true
+          "isCurrent": true,
+          "type": "graphql"
         },
         "ResourceGroupName": "rg-test",
         "Type": "Microsoft.ApiManagement/service/apis",
@@ -1255,6 +1277,26 @@
         "Sku": null,
         "Tags": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-C/providers/Microsoft.Security/apiCollections/api-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-C/providers/Microsoft.Security/apiCollections/api-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "api-B",
+        "Name": "api-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Security/apiCollections",
+        "ResourceType": "Microsoft.Security/apiCollections",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -1370,6 +1412,87 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [
       {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-A/apis/api-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-A/apis/api-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "api-A",
+        "Name": "api-A",
+        "Plan": null,
+        "Properties": {
+          "displayName": "api-A",
+          "apiRevision": "1",
+          "description": "An API for an application.",
+          "serviceUrl": "https://endpoint-a.contoso.com",
+          "path": "api-a",
+          "protocols": [
+            "https"
+          ],
+          "authenticationSettings": {
+            "oAuth2": null,
+            "openid": null
+          },
+          "subscriptionKeyParameterNames": {
+            "header": "Ocp-Apim-Subscription-Key",
+            "query": "subscription-key"
+          },
+          "isCurrent": true
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service/apis",
+        "ResourceType": "Microsoft.ApiManagement/service/apis",
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-A/apis/api-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-A/apis/api-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "api-B",
+        "Name": "api-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "displayName": "api-B",
+          "apiRevision": "1",
+          "description": "An API for an application.",
+          "subscriptionRequired": false,
+          "serviceUrl": "http://endpoint-b.contoso.com",
+          "path": "api-b",
+          "protocols": [
+            "https",
+            "http"
+          ],
+          "authenticationSettings": {
+            "oAuth2": null,
+            "openid": null
+          },
+          "subscriptionKeyParameterNames": {
+            "header": "Ocp-Apim-Subscription-Key",
+            "query": "subscription-key"
+          },
+          "isCurrent": true,
+          "type": "http"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.ApiManagement/service/apis",
+        "ResourceType": "Microsoft.ApiManagement/service/apis",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      },
+      {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/policies/policy-A",
         "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/policies/policy-A",
         "Identity": null,
@@ -1436,6 +1559,46 @@
         "ResourceGroupName": "rg-test",
         "Type": "Microsoft.ApiManagement/service/apis/policies",
         "ResourceType": "Microsoft.ApiManagement/service/apis/policies",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/providers/Microsoft.Security/apiCollections/api-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/providers/Microsoft.Security/apiCollections/api-A",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "api-A",
+        "Name": "api-A",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Security/apiCollections",
+        "ResourceType": "Microsoft.Security/apiCollections",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/providers/Microsoft.Security/apiCollections/api-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-D/providers/Microsoft.Security/apiCollections/api-B",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "api-B",
+        "Name": "api-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
+        "Plan": null,
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Security/apiCollections",
+        "ResourceType": "Microsoft.Security/apiCollections",
         "ExtensionResourceType": null,
         "Sku": null,
         "Tags": null,
