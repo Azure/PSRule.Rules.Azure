@@ -75,12 +75,12 @@ For example:
 resource defenderForStorageSettings 'Microsoft.Security/DefenderForStorageSettings@2022-12-01-preview' = {
   name: 'current'
   scope: storageAccount
-  properties: {
-    sensitiveDataDiscovery: {
+  properties: {
+    sensitiveDataDiscovery: {
       isEnabled: true
     }
-    overrideSubscriptionLevelSettings: false
-  }
+    overrideSubscriptionLevelSettings: false
+  }
 }
 ```
 
