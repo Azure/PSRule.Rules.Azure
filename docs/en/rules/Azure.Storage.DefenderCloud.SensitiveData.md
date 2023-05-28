@@ -22,14 +22,12 @@ The sensitive data threat detection capability helps teams:
 - Identity where sensitive data is stored.
 - Detect possible security incidents resulting is data exposure.
 
-When enabling sensitive data threat detection, the sensitive data categories include built-in sensitive information types (SITs) in the default list of Microsoft Purview. 
+When enabling sensitive data threat detection, the sensitive data categories include built-in sensitive information types (SITs) in the default list of Microsoft Purview.
 It is possible to customize the Data Sensitivity Discovery for a organization, by creating custom sensitive information types (SITs).
 
-Sensitive data threat detection in Microsoft Defender for Storage can be enabled at the resource level. However, the general recommandation is to enable it at the subscription level and by doing so ensures all storage accounts in the subscription will be protected, including future ones. Defender for Storage settings on each storage account is inherited by the subscription level settings.
+Sensitive data threat detection in Microsoft Defender for Storage can be enabled at the subscription level and by doing so ensures all storage accounts in the subscription will be protected, including future ones.
 
-It is also worth to mention that the resouce level enablement can be useful when:
-
-- Override subscription level settings to configure specific storage accounts with custom sensitive data threat detection settings that differ from the settings configured at the subscription level.
+When overriding sensitive data threat detection on individual Storage Account it is possible to configure custom sensitive data threat detection settings that differ from the settings configured at the subscription level.
 
 ## RECOMMENDATION
 
