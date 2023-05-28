@@ -96,11 +96,18 @@ Rule 'Azure.Storage.DefenderCloud.MalwareScan' -Ref 'AZR-000384' -Type 'Microsof
 }
 
 # Synopsis: Enable sensitive data threat detection in Microsoft Defender for Storage.
-Rule 'Azure.Storage.DefenderCloud.SensitiveData' -Ref 'AZR-000386' -Type 'Microsoft.Storage/storageAccounts' -If { IsPublicNetworkAccessEnabled } -Tag @{ release = 'Preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
+Rule 'Azure.Storage.DefenderCloud.SensitiveData' -Ref 'AZR-000391' -Type 'Microsoft.Storage/storageAccounts' -If { IsPublicNetworkAccessEnabled } -Tag @{ release = 'Preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
     $sensitiveDisabled = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
         Where-Object { $_.properties.sensitiveDataDiscovery.isEnabled -eq $False })
     $Assert.Count($sensitiveDisabled, '.', 0).Reason($LocalizedData.ResStorageSensitiveDataThreatDetection, $PSRule.TargetName)
 }
+
+# Synopsis: Enable Microsoft Defender for Storage for storage accounts.
+Rule 'Azure.Storage.DefenderCloud' -Ref 'AZR-000386' -Type 'Microsoft.Storage/storageAccounts' -If { $Configuration.AZURE_STORAGE_DEFENDER_PER_ACCOUNT -eq $True } -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
+    $defender = @(GetSubResources -ResourceType 'Microsoft.Security/DefenderForStorageSettings' |
+    Where-Object { $_.properties.isEnabled -eq $True })
+    $Assert.GreaterOrEqual($defender, '.', 1).Reason($LocalizedData.SubResourceNotFound, 'Microsoft.Security/DefenderForStorageSettings')
+} -Configure @{ AZURE_STORAGE_DEFENDER_PER_ACCOUNT = $False }
 
 #region Helper functions
 
