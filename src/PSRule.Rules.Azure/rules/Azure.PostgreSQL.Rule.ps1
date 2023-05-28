@@ -75,10 +75,10 @@ Rule 'Azure.PostgreSQL.DefenderCloud' -Ref 'AZR-000327' -Type 'Microsoft.DBforPo
 # Synopsis: Use Azure Active Directory (AAD) authentication with Azure Database for PostgreSQL databases.
 Rule 'Azure.PostgreSQL.AAD' -Ref 'AZR-000389' -Type 'Microsoft.DBforPostgreSQL/flexibleServers', 'Microsoft.DBforPostgreSQL/servers', 'Microsoft.DBforPostgreSQL/flexibleServers/administrators', 'Microsoft.DBforPostgreSQL/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
     switch ($PSRule.TargetType) {
-        'Microsoft.DBforPostgreSQL/flexibleServers' { FlexibleServerAAD }
-        'Microsoft.DBforPostgreSQL/servers' { SingleServerAAD }
-        'Microsoft.DBforPostgreSQL/flexibleServers/administrators' { FlexibleServerAAD }
-        'Microsoft.DBforPostgreSQL/servers/administrators' { SingleServerAAD }
+        'Microsoft.DBforPostgreSQL/flexibleServers' { PostgreSQLFlexibleServerAAD }
+        'Microsoft.DBforPostgreSQL/servers' { PostgreSQLSingleServerAAD }
+        'Microsoft.DBforPostgreSQL/flexibleServers/administrators' { PostgreSQLFlexibleServerAAD }
+        'Microsoft.DBforPostgreSQL/servers/administrators' { PostgreSQLSingleServerAAD }
     }
 }
 
@@ -100,7 +100,7 @@ function global:HasPostgreSQLTierSupportingGeoRedundantBackup {
     }
 }
 
-function global:FlexibleServerAAD {
+function global:PostgreSQLFlexibleServerAAD {
     [CmdletBinding()]
     param ()
     if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/flexibleServers') {
@@ -120,7 +120,7 @@ function global:FlexibleServerAAD {
     }
 }
 
-function global:SingleServerAAD {
+function global:PostgreSQLSingleServerAAD {
     [CmdletBinding()]
     param ()
     if ($PSRule.TargetType -eq 'Microsoft.DBforPostgreSQL/servers') {
