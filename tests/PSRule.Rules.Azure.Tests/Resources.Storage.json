@@ -225,7 +225,7 @@
             }
           },
           "sensitiveDataDiscovery": {
-            "isEnabled": true
+            "isEnabled": false
           },
           "overrideSubscriptionLevelSettings": false
         },
@@ -321,7 +321,7 @@
             }
           },
           "sensitiveDataDiscovery": {
-            "isEnabled": false
+            "isEnabled": true
           },
           "overrideSubscriptionLevelSettings": false
         },
