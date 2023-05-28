@@ -87,12 +87,13 @@ resource defenderForStorageSettings 'Microsoft.Security/DefenderForStorageSettin
 ## NOTES
 
 This feature is currently in preview.
+The following limitations currently apply for Microsoft Defender for Storage:
 
-Sensitive data threat detection is not supported for storage accounts with public network access set to disabled. Not all services within storage accounts are currently supported.
-
-- When the plan is already enabled at the subscription level and the resource level override property `overrideSubscriptionLevelSettings` value is `false`, the resource level enablement will be ignored and the subscription level (plan) will still be used.
-- If the override property `overrideSubscriptionLevelSettings` value is `true`, the resource level enablement will be honored and a dedicated plan will be configured for the storage account.
-- If there is no plan at the subcription level, the resource level enablement will be honored and a dedicated plan will be configured for the storage account.
+- Only Storage Accounts with public network access set to enabled are supported.
+- Not all storage services within Storage Accounts are currently supported.
+- When Microsoft Defender is enabled at subscription and resource level, the subscription configuration will take priority.
+  To override settings on a Storage Account, set the `properties.overrideSubscriptionLevelSettings` property to `true`.
+- If there is no plan at the subcription level, Microsoft Defender for Storage can be configured without an override.
 
 ## LINKS
 
