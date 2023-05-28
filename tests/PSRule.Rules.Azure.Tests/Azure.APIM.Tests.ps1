@@ -74,14 +74,14 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'apim-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'apim-A', 'apim-D';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 15;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.APIDescriptors' {
@@ -113,8 +113,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'apim-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'apim-A', 'apim-D';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -HaveCount 2;
@@ -126,8 +126,8 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 15;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-D', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'apim-E', 'apim-F', 'apim-G', 'apim-H', 'apim-I', 'apim-J', 'apim-K', 'apim-L', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
         }
 
         It 'Azure.APIM.EncryptValues' {
@@ -437,12 +437,33 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'api-policy-A', 'api-policy-B';
 
             $ruleResult[0].Reason | Should -BeIn "Path inbound.base: Does not exist.", "Path backend.base: Does not exist.", "Path outbound.base: Does not exist.", "Path on-error.base: Does not exist.";
-            
+            $ruleResult[1].Reason | Should -BeIn "Path inbound.base: Does not exist.", "Path backend.base: Does not exist.", "Path outbound.base: Does not exist.", "Path on-error.base: Does not exist.";
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'apim-D', 'api-policy-C';
+        }
+
+        It 'Azure.APIM.DefenderCloud' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.DefenderCloud' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'apim-A', 'apim-B', 'apim-C';
+
+            $ruleResult[0].Reason | Should -BeIn "The API 'api-A' should be onboarded to Microsoft Defender for APIs.", "The API 'api-B' should be onboarded to Microsoft Defender for APIs.";
+            $ruleResult[1].Reason | Should -BeIn "The API 'api-A' should be onboarded to Microsoft Defender for APIs."
+            $ruleResult[2].Reason | Should -BeIn "The API 'api-A' should be onboarded to Microsoft Defender for APIs.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'apim-D';
         }
     }
 

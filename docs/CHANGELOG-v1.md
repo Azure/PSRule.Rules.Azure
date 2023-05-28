@@ -25,6 +25,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - API Management:
+    - Check that APIs published in Azure API Management are onboarded to Microsoft Defender for APIs by @BenjaminEngeset.
+      [#2187](https://github.com/Azure/PSRule.Rules.Azure/issues/2187)
   - Key Vault:
     - Check that key vaults uses Azure RBAC as the authorization system for the data plane by @BenjaminEngeset.
       [#1916](https://github.com/Azure/PSRule.Rules.Azure/issues/1916)
