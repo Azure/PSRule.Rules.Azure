@@ -97,7 +97,7 @@ For example:
     "name": "[format('{0}/{1}', parameters('serverName'), 'activeDirectory')]",
       "properties": {
         "administratorType": "ActiveDirectory",
-        "login": "[parameters('location')]",
+        "login": "[parameters('login')]",
         "sid": "[parameters('sid')]",
         "tenantId": "[parameters('tenantId')]"
       },
@@ -125,7 +125,7 @@ resource aadAdmin 'Microsoft.DBforPostgreSQL/servers/administrators@2017-12-01' 
   parent: postgreSqlSingleServer
   properties: {
     administratorType: 'ActiveDirectory'
-    login: location
+    login: login
     sid: sid
     tenantId: tenantId
   }
