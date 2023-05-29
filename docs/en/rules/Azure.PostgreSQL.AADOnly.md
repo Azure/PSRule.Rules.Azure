@@ -50,7 +50,7 @@ For example:
     "authConfig": {
       "activeDirectoryAuth": "Enabled",
       "passwordAuth": "Disabled",
-      "tenantId": "[tenant().tenantId]"
+      "tenantId": "[parameters('tenantId')]"
     }
   }
 }
@@ -73,7 +73,7 @@ resource postgreSqlFlexibleServer 'Microsoft.DBforPostgreSQL/flexibleServers@202
     authConfig: {
       activeDirectoryAuth: 'Enabled'
       passwordAuth: 'Disabled'
-      tenantId: tenant().tenantId
+      tenantId: tenantId
     }
   }
 }
