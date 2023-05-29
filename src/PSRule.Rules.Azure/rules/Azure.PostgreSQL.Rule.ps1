@@ -112,11 +112,13 @@ function global:PostgreSQLFlexibleServerAAD {
         foreach ($config in $configs) {
             $Assert.HasFieldValue($config, 'properties.principalName')
             $Assert.HasFieldValue($config, 'properties.principalType')
+            $Assert.HasFieldValue($config, 'properties.tenantId')
         }
     }
     else {
         $Assert.HasFieldValue($TargetObject, 'properties.principalName')
         $Assert.HasFieldValue($TargetObject, 'properties.principalType')
+        $Assert.HasFieldValue($TargetObject, 'properties.tenantId')
     }
 }
 
@@ -133,12 +135,14 @@ function global:PostgreSQLSingleServerAAD {
             $Assert.HasFieldValue($config, 'properties.administratorType', 'ActiveDirectory')
             $Assert.HasFieldValue($config, 'properties.login')
             $Assert.HasFieldValue($config, 'properties.sid')
+            $Assert.HasFieldValue($config, 'properties.tenantId')
         }
     }
     else {
         $Assert.HasFieldValue($TargetObject, 'properties.administratorType', 'ActiveDirectory')
         $Assert.HasFieldValue($TargetObject, 'properties.login')
         $Assert.HasFieldValue($TargetObject, 'properties.sid')
+        $Assert.HasFieldValue($TargetObject, 'properties.tenantId')
     }
 }
 
