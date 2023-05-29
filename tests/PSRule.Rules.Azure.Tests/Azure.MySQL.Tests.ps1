@@ -181,6 +181,27 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'server-F';
         }
+
+        It 'Azure.MySQL.AAD' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.AAD' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-D', 'server-E', 'ActiveDirectoryAdmin-A', 'ActiveDirectoryAdmin-C';
+
+            $ruleResult[0].Reason | Should -BeIn 'Path properties.administratorType: Is null or empty.', 'Path properties.login: Is null or empty.', 'Path properties.sid: Is null or empty.';
+            $ruleResult[1].Reason | Should -BeIn "A sub-resource of type 'Microsoft.DBforMySQL/servers/administrators' has not been specified.";
+            $ruleResult[2].Reason | Should -BeIn "A sub-resource of type 'Microsoft.DBforMySQL/flexibleServers/administrators' has not been specified.";
+            $ruleResult[3].Reason | Should -BeIn 'Path properties.administratorType: Is null or empty.', 'Path properties.identityResourceId: Is null or empty.', 'Path properties.login: Is null or empty.', 'Path properties.sid: Is null or empty.';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'server-C', 'server-F', 'ActiveDirectoryAdmin-B', 'ActiveDirectoryAdmin-D';
+        }
     }
 
     Context 'Resource name - Azure.MySQL.ServerName' {

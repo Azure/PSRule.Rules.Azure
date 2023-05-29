@@ -77,7 +77,15 @@ Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/s
     }
 }
 
-
+# Synopsis: Use Azure Active Directory (AAD) authentication with Azure Database for MySQL databases.
+Rule 'Azure.MySQL.AAD' -Ref 'AZR-000392' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/flexibleServers/administrators', 'Microsoft.DBforMySQL/servers/administrators' -Tag @{ release = 'GA'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
+    switch ($PSRule.TargetType) {
+        'Microsoft.DBforMySQL/flexibleServers' { MySQLFlexibleServerAAD }
+        'Microsoft.DBforMySQL/servers' { MySQLSingleServerAAD }
+        'Microsoft.DBforMySQL/flexibleServers/administrators' { MySQLFlexibleServerAAD }
+        'Microsoft.DBforMySQL/servers/administrators' { MySQLSingleServerAAD }
+    }
+}
 
 #region Helper functions
 
@@ -92,6 +100,56 @@ function global:HasMySQLTierSupportingGeoRedundantBackup {
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers') {
             $Assert.In($TargetObject, 'sku.tier', @('GeneralPurpose', 'MemoryOptimized')).Result
         }
+    }
+}
+
+function global:MySQLFlexibleServerAAD {
+    [CmdletBinding()]
+    param ()
+    if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers') {
+        $configs = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/flexibleServers/administrators' -Name 'ActiveDirectory')
+        if ($configs.Count -eq 0) {
+            return $Assert.Fail().Reason($LocalizedData.SubResourceNotFound, 'Microsoft.DBforMySQL/flexibleServers/administrators')
+        }
+
+        foreach ($config in $configs) {
+            $Assert.HasFieldValue($config, 'properties.administratorType', 'ActiveDirectory')
+            $Assert.HasFieldValue($config, 'properties.identityResourceId')
+            $Assert.HasFieldValue($config, 'properties.login')
+            $Assert.HasFieldValue($config, 'properties.sid')
+            $Assert.HasFieldValue($config, 'properties.tenantId')
+        }
+    }
+    else {
+        $Assert.HasFieldValue($TargetObject, 'properties.administratorType', 'ActiveDirectory')
+        $Assert.HasFieldValue($TargetObject, 'properties.identityResourceId')
+        $Assert.HasFieldValue($TargetObject, 'properties.login')
+        $Assert.HasFieldValue($TargetObject, 'properties.sid')
+        $Assert.HasFieldValue($TargetObject, 'properties.tenantId')
+    }
+}
+
+function global:MySQLSingleServerAAD {
+    [CmdletBinding()]
+    param ()
+    if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers') {
+        $configs = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/administrators' -Name 'ActiveDirectory')
+        if ($configs.Count -eq 0) {
+            return $Assert.Fail().Reason($LocalizedData.SubResourceNotFound, 'Microsoft.DBforMySQL/servers/administrators')
+        }
+
+        foreach ($config in $configs) {
+            $Assert.HasFieldValue($config, 'properties.administratorType', 'ActiveDirectory')
+            $Assert.HasFieldValue($config, 'properties.login')
+            $Assert.HasFieldValue($config, 'properties.sid')
+            $Assert.HasFieldValue($config, 'properties.tenantId')
+        }
+    }
+    else {
+        $Assert.HasFieldValue($TargetObject, 'properties.administratorType', 'ActiveDirectory')
+        $Assert.HasFieldValue($TargetObject, 'properties.login')
+        $Assert.HasFieldValue($TargetObject, 'properties.sid')
+        $Assert.HasFieldValue($TargetObject, 'properties.tenantId')
     }
 }
 
