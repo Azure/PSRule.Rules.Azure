@@ -37,6 +37,7 @@ To deploy Azure Database for PostgreSQL flexible servers that pass this rule:
 - Configure the `Microsoft.DBforPostgreSQL/flexibleServers/administrators` sub-resource.
 - Set the `properties.principalName` to the user principal name of the AAD administrator user, group, or application.
 - Set the `properties.principalType` to the principal type used to represent the type of AAD administrator.
+- Set the `properties.tenantId` to the tenant ID of the the administrator user, group, or application.
 
 For example:
 
@@ -47,7 +48,8 @@ For example:
     "name": "[format('{0}/{1}', parameters('serverName'), parameters('name'))]",
       "properties": {
         "principalName": "[parameters('principalName')]",
-        "principalType": "[parameters('principalType')]"
+        "principalType": "[parameters('principalType')]",
+        "tenantId": "[parameters('tenantId')]"
       },
       "dependsOn": [
         "postgreSqlFlexibleServer"
@@ -62,6 +64,7 @@ To deploy Azure Database for PostgreSQL flexible servers that pass this rule:
 - Configure the `Microsoft.DBforPostgreSQL/flexibleServers/administrators` sub-resource.
 - Set the `properties.principalName` to the user principal name of the AAD administrator user, group, or application.
 - Set the `properties.principalType` to the principal type used to represent the type of AAD administrator.
+- Set the `properties.tenantId` to the tenant ID of the the administrator user, group, or application.
 
 For example:
 
@@ -72,6 +75,7 @@ resource aadAdmin 'Microsoft.DBforPostgreSQL/flexibleServers/administrators@2022
   properties: {
     principalName: principalName
     principalType: principalType
+    tenantId: tenantId
   }
 }
 ```
@@ -82,6 +86,7 @@ To deploy Azure Database for PostgreSQL single servers that pass this rule:
 - Set the `properties.administratorType` to `ActiveDirectory`.
 - Set the `properties.login` to the administrator login object name.
 - Set the `properties.sid` to the object ID GUID of the administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the the administrator user, group, or application.
 
 For example:
 
@@ -93,7 +98,8 @@ For example:
       "properties": {
         "administratorType": "ActiveDirectory",
         "login": "[parameters('location')]",
-        "sid": "[parameters('sid')]"
+        "sid": "[parameters('sid')]",
+        "tenantId": "[parameters('tenantId')]"
       },
       "dependsOn": [
         "postgreSqlSingleServer"
@@ -108,7 +114,8 @@ To deploy Azure Database for PostgreSQL single servers that pass this rule:
 - Configure the `Microsoft.DBforPostgreSQL/servers/administrators` sub-resource.
 - Set the `properties.administratorType` to `ActiveDirectory`.
 - Set the `properties.login` to the administrator login object name.
-- Set the `properties.sid` to the object ID GUID of the administrator user, group, or application.e
+- Set the `properties.sid` to the object ID GUID of the administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the the administrator user, group, or application.
 
 For example:
 
@@ -120,6 +127,7 @@ resource aadAdmin 'Microsoft.DBforPostgreSQL/servers/administrators@2017-12-01' 
     administratorType: 'ActiveDirectory'
     login: location
     sid: sid
+    tenantId: tenantId
   }
 }
 ```
