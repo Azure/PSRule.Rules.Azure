@@ -37,7 +37,7 @@ To deploy Azure Database for PostgreSQL flexible servers that pass this rule:
 - Configure the `Microsoft.DBforPostgreSQL/flexibleServers/administrators` sub-resource.
 - Set the `properties.principalName` to the user principal name of the AAD administrator user, group, or application.
 - Set the `properties.principalType` to the principal type used to represent the type of AAD administrator.
-- Set the `properties.tenantId` to the tenant ID of the the administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
 
 For example:
 
@@ -64,7 +64,7 @@ To deploy Azure Database for PostgreSQL flexible servers that pass this rule:
 - Configure the `Microsoft.DBforPostgreSQL/flexibleServers/administrators` sub-resource.
 - Set the `properties.principalName` to the user principal name of the AAD administrator user, group, or application.
 - Set the `properties.principalType` to the principal type used to represent the type of AAD administrator.
-- Set the `properties.tenantId` to the tenant ID of the the administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
 
 For example:
 
@@ -86,7 +86,7 @@ To deploy Azure Database for PostgreSQL single servers that pass this rule:
 - Set the `properties.administratorType` to `ActiveDirectory`.
 - Set the `properties.login` to the administrator login object name.
 - Set the `properties.sid` to the object ID GUID of the administrator user, group, or application.
-- Set the `properties.tenantId` to the tenant ID of the the administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
 
 For example:
 
@@ -115,7 +115,7 @@ To deploy Azure Database for PostgreSQL single servers that pass this rule:
 - Set the `properties.administratorType` to `ActiveDirectory`.
 - Set the `properties.login` to the administrator login object name.
 - Set the `properties.sid` to the object ID GUID of the administrator user, group, or application.
-- Set the `properties.tenantId` to the tenant ID of the the administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
 
 For example:
 
