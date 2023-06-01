@@ -24,6 +24,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.27.0:
+
+- New rules:
+  - Azure Database for PostgreSQL:
+    - Check that Azure AD authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
+      [#2249](https://github.com/Azure/PSRule.Rules.Azure/issues/2249)
+
 ## v1.27.0
 
 What's changed since v1.26.1:
@@ -125,9 +132,6 @@ What's changed since pre-release v1.27.0-B0186:
 What's changed since pre-release v1.27.0-B0136:
 
 - New rules:
-  - Azure Database for PostgreSQL:
-    - Check that Azure AD authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
-      [#2249](https://github.com/Azure/PSRule.Rules.Azure/issues/2249)
   - API Management:
     - Check that APIs published in Azure API Management are on-boarded to Microsoft Defender for APIs by @BenjaminEngeset.
       [#2187](https://github.com/Azure/PSRule.Rules.Azure/issues/2187)
