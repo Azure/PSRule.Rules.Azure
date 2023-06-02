@@ -29,13 +29,109 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that Azure AD authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
       [#2226](https://github.com/Azure/PSRule.Rules.Azure/issues/2226)
 
+## v1.27.0
+
+What's changed since v1.26.1:
+
+- New features:
+  - **Experimental:** Added support for expanding deployments from `.bicepparam` files by @BernieWhite.
+    [#2132](https://github.com/Azure/PSRule.Rules.Azure/issues/2132)
+    - See [Using Bicep source](https://aka.ms/ps-rule-azure/bicep) for details.
+- New rules:
+  - Application Gateway:
+    - Check that Application Gateways uses a v2 SKU by @BenjaminEngeset.
+      [#2185](https://github.com/Azure/PSRule.Rules.Azure/issues/2185)
+  - API Management:
+    - Check that APIs published in Azure API Management are on-boarded to Microsoft Defender for APIs by @BenjaminEngeset.
+      [#2187](https://github.com/Azure/PSRule.Rules.Azure/issues/2187)
+    - Check that base element for any policy element in a section is configured by @BenjaminEngeset.
+      [#2072](https://github.com/Azure/PSRule.Rules.Azure/issues/2072)
+  - Arc-enabled Kubernetes cluster:
+    - Check that Microsoft Defender for Containers extension for Arc-enabled Kubernetes clusters is configured by @BenjaminEngeset.
+      [#2124](https://github.com/Azure/PSRule.Rules.Azure/issues/2124)
+  - Arc-enabled server:
+    - Check that a maintenance configuration for Arc-enabled servers is associated by @BenjaminEngeset.
+      [#2122](https://github.com/Azure/PSRule.Rules.Azure/issues/2122)
+  - Container App:
+    - Check that container apps has disabled session affinity to prevent unbalanced distribution by @BenjaminEngeset.
+      [#2188](https://github.com/Azure/PSRule.Rules.Azure/issues/2188)
+    - Check that container apps with IP ingress restrictions mode configured is set to allow for all rules defined by @BenjaminEngeset.
+      [#2189](https://github.com/Azure/PSRule.Rules.Azure/issues/2189)
+  - Cosmos DB:
+    - Check that Cosmos DB accounts has enabled Microsoft Defender by @BenjaminEngeset.
+      [#2203](https://github.com/Azure/PSRule.Rules.Azure/issues/2203)
+  - Defender for Cloud:
+    - Check that sensitive data threat detection in Microsoft Defender for Storage is enabled by @BenjaminEngeset.
+      [#2207](https://github.com/Azure/PSRule.Rules.Azure/issues/2207)
+    - Check that Malware Scanning in Microsoft Defender for Storage is enabled by @BenjaminEngeset.
+      [#2206](https://github.com/Azure/PSRule.Rules.Azure/issues/2206)
+    - Check that Microsoft Defender for APIs is enabled by @BenjaminEngeset.
+      [#2186](https://github.com/Azure/PSRule.Rules.Azure/issues/2186)
+    - Check that Microsoft Defender for Azure Cosmos DB is enabled by @BenjaminEngeset.
+      [#2204](https://github.com/Azure/PSRule.Rules.Azure/issues/2204)
+    - Check that Microsoft Defender for open-source relational databases is enabled by @BenjaminEngeset.
+      [#1632](https://github.com/Azure/PSRule.Rules.Azure/issues/1632)
+    - Check that Microsoft Defender Cloud Security Posture Management is using `Standard` plan by @BenjaminEngeset.
+      [#2151](https://github.com/Azure/PSRule.Rules.Azure/issues/2151)
+  - Key Vault:
+    - Check that key vaults uses Azure RBAC as the authorization system for the data plane by @BenjaminEngeset.
+      [#1916](https://github.com/Azure/PSRule.Rules.Azure/issues/1916)
+  - Storage Account:
+    - Check that Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
+      [#2225](https://github.com/Azure/PSRule.Rules.Azure/issues/2225)
+    - Check that sensitive data threat detection in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
+      [#2207](https://github.com/Azure/PSRule.Rules.Azure/issues/2207)
+    - Check that Malware Scanning in Microsoft Defender for Storage is enabled for storage accounts by @BenjaminEngeset.
+      [#2206](https://github.com/Azure/PSRule.Rules.Azure/issues/2206)
+  - Virtual Machine:
+    - Check that a maintenance configuration for virtual machines is associated by @BenjaminEngeset.
+      [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
+- General improvements:
+  - Added support for Bicep symbolic names by @BernieWhite.
+    [#2238](https://github.com/Azure/PSRule.Rules.Azure/issues/2238)
+- Updated rules:
+  - API Management:
+    - Updated `Azure.APIM.EncryptValues` to check all API Management named values are encrypted with Key Vault secrets @BenjaminEngeset.
+      [#2146](https://github.com/Azure/PSRule.Rules.Azure/issues/2146)
+  - Container App:
+    - Promoted `Azure.ContainerApp.Insecure` to GA rule set by @BernieWhite.
+      [#2174](https://github.com/Azure/PSRule.Rules.Azure/issues/2174)
+  - Defender for Cloud:
+    - Check that Microsoft Defender for Storage v2 is enabled by @BenjaminEngeset.
+      [#2205](https://github.com/Azure/PSRule.Rules.Azure/issues/2205)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to 17.6.0.
+    [#2216](https://github.com/Azure/PSRule.Rules.Azure/pull/2216)
+- Bug fixes:
+  - Fixed ignoring Redis firewall rules when Redis is configured to allow private connectivity by @BenjaminEngeset.
+    [#2171](https://github.com/Azure/PSRule.Rules.Azure/issues/2171)
+  - Fixed left-side `or` function evaluation by @BernieWhite.
+    [#2220](https://github.com/Azure/PSRule.Rules.Azure/issues/2220)
+  - Fixed interdependent variable copy loop count by @BernieWhite.
+    [#2221](https://github.com/Azure/PSRule.Rules.Azure/issues/2221)
+  - Fixed handling of database name in `Azure.MariaDB.Database` by @BernieWhite.
+    [#2191](https://github.com/Azure/PSRule.Rules.Azure/issues/2191)
+  - Fixed typing error in `Azure.Defender.Api` documentation by @BenjaminEngeset.
+    [#2209](https://github.com/Azure/PSRule.Rules.Azure/issues/2209)
+  - Fixed `Azure.AKS.UptimeSLA` with new pricing by @BenjaminEngeset.
+    [#2065](https://github.com/Azure/PSRule.Rules.Azure/issues/2065)
+    [#2202](https://github.com/Azure/PSRule.Rules.Azure/issues/2202)
+  - Fixed false positive on managed identity without space by @BernieWhite.
+    [#2235](https://github.com/Azure/PSRule.Rules.Azure/issues/2235)
+  - Fixed reference for runtime subnet ID property by @BernieWhite.
+    [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+
+What's changed since pre-release v1.27.0-B0186:
+
+- No additional changes.
+
 ## v1.27.0-B0186 (pre-release)
 
 What's changed since pre-release v1.27.0-B0136:
 
 - New rules:
   - API Management:
-    - Check that APIs published in Azure API Management are onboarded to Microsoft Defender for APIs by @BenjaminEngeset.
+    - Check that APIs published in Azure API Management are on-boarded to Microsoft Defender for APIs by @BenjaminEngeset.
       [#2187](https://github.com/Azure/PSRule.Rules.Azure/issues/2187)
   - Key Vault:
     - Check that key vaults uses Azure RBAC as the authorization system for the data plane by @BenjaminEngeset.
@@ -115,7 +211,7 @@ What's changed since pre-release v1.27.0-B0015:
       [#2121](https://github.com/Azure/PSRule.Rules.Azure/issues/2121)
 - Updated rules:
   - Defender for Cloud:
-    - Check that Microsoft Defender for Storage (new) is enabled by @BenjaminEngeset.
+    - Check that Microsoft Defender for Storage v2 is enabled by @BenjaminEngeset.
       [#2205](https://github.com/Azure/PSRule.Rules.Azure/issues/2205)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to 17.6.0.
