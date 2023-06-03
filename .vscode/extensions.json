@@ -1,12 +1,12 @@
 {
-    "recommendations": [
-        "ms-azure-devops.azure-pipelines",
-        "github.vscode-pull-request-github",
-        "davidanson.vscode-markdownlint",
-        "bewhite.psrule-vscode-preview",
-        "streetsidesoftware.code-spell-checker",
-        "ms-azuretools.vscode-bicep",
-        "msazurermtools.azurerm-vscode-tools",
-        "ms-dotnettools.csharp"
-    ]
+  "recommendations": [
+    "ms-dotnettools.csharp",
+    "ms-azure-devops.azure-pipelines",
+    "github.vscode-pull-request-github",
+    "davidanson.vscode-markdownlint",
+    "streetsidesoftware.code-spell-checker",
+    "ms-azuretools.vscode-bicep",
+    "msazurermtools.azurerm-vscode-tools",
+    "bewhite.psrule-vscode-preview",
+  ]
 }
