@@ -22,7 +22,7 @@ metadata:
     Azure.MCSB.v1/control: 'NS-2'
 spec:
   type:
-  - Microsoft.DBforPostgreSQL/servers
+    - Microsoft.DBforPostgreSQL/servers
   condition:
     field: properties.sslEnforcement
     equals: Enabled
@@ -42,9 +42,32 @@ metadata:
     Azure.MCSB.v1/control: 'DP-3'
 spec:
   type:
-  - Microsoft.DBforPostgreSQL/servers
+    - Microsoft.DBforPostgreSQL/servers
   condition:
     field: properties.minimalTlsVersion
     equals: TLS1_2
+
+---
+# Synopsis: Ensure Azure AD-only authentication is enabled with Azure Database for PostgreSQL databases.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.PostgreSQL.AADOnly
+  ref: AZR-000390
+  tags:
+    release: GA
+    ruleSet: 2023_06
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: IM-1
+spec:
+  type:
+    - Microsoft.DBforPostgreSQL/flexibleServers
+  condition:
+    allOf:
+      - field: properties.authConfig.activeDirectoryAuth
+        equals: Enabled
+      - field: properties.authConfig.passwordAuth
+        equals: Disabled
 
 #endregion Region
