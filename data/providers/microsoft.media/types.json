@@ -2644,6 +2644,45 @@
   },
   {
     "aliases": {
+      "Microsoft.Media/mediaServices/mediaGraphs/created": "properties.created",
+      "Microsoft.Media/mediaServices/mediaGraphs/description": "properties.description",
+      "Microsoft.Media/mediaServices/mediaGraphs/lastModified": "properties.lastModified",
+      "Microsoft.Media/mediaServices/mediaGraphs/sinks": "properties.sinks",
+      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*]": "properties.sinks[*]",
+      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].#Microsoft-Media-MediaGraphAssetSink": "properties.sinks[*]",
+      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].#Microsoft-Media-MediaGraphAssetSink.assetName": "properties.sinks[*].assetName",
+      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].inputs": "properties.sinks[*].inputs",
+      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].inputs[*]": "properties.sinks[*].inputs[*]",
+      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].name": "properties.sinks[*].name",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources": "properties.sources",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*]": "properties.sources[*]",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource": "properties.sources[*]",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.credentials": "properties.sources[*].credentials",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.credentials.password": "properties.sources[*].credentials.password",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.credentials.username": "properties.sources[*].credentials.username",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint": "properties.sources[*].endpoint",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint": "properties.sources[*].endpoint",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.trustedCertificates": "properties.sources[*].endpoint.trustedCertificates",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.trustedCertificates.#Microsoft-Media-MediaGraphPemCertificateList": "properties.sources[*].endpoint.trustedCertificates",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.trustedCertificates.#Microsoft-Media-MediaGraphPemCertificateList.certificates": "properties.sources[*].endpoint.trustedCertificates.certificates",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.trustedCertificates.#Microsoft-Media-MediaGraphPemCertificateList.certificates[*]": "properties.sources[*].endpoint.trustedCertificates.certificates[*]",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.validationOptions": "properties.sources[*].endpoint.validationOptions",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.validationOptions.ignoreHostname": "properties.sources[*].endpoint.validationOptions.ignoreHostname",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.validationOptions.ignoreSignature": "properties.sources[*].endpoint.validationOptions.ignoreSignature",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.credentials": "properties.sources[*].endpoint.credentials",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.credentials.#Microsoft-Media-MediaGraphUsernamePasswordCredentials": "properties.sources[*].endpoint.credentials",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.credentials.#Microsoft-Media-MediaGraphUsernamePasswordCredentials.password": "properties.sources[*].endpoint.credentials.password",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.credentials.#Microsoft-Media-MediaGraphUsernamePasswordCredentials.username": "properties.sources[*].endpoint.credentials.username",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.url": "properties.sources[*].endpoint.url",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.rtspUrl": "properties.sources[*].rtspUrl",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.transport": "properties.sources[*].transport",
+      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].name": "properties.sources[*].name",
+      "Microsoft.Media/mediaServices/mediaGraphs/state": "properties.state"
+    },
+    "resourceType": "mediaservices/mediagraphs"
+  },
+  {
+    "aliases": {
       "Microsoft.Media/videoAnalyzers/accessPolicies/authentication": "properties.authentication",
       "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication": "properties.authentication",
       "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.audiences": "properties.authentication.audiences",
@@ -2667,47 +2706,13 @@
       "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].kid": "properties.authentication.keys[*].kid",
       "Microsoft.Media/videoAnalyzers/accessPolicies/role": "properties.role"
     },
-    "resourceType": "videoAnalyzers/accessPolicies",
-    "apiVersions": [
-      "2021-11-01-preview",
-      "2021-05-01-privatepreview",
-      "2021-05-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central India",
-      "East US 2",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "resourceType": "videoanalyzers/accesspolicies"
   },
   {
     "aliases": {
       "Microsoft.Media/videoAnalyzers/edgeModules/edgeModuleId": "properties.edgeModuleId"
     },
-    "resourceType": "videoAnalyzers/edgeModules",
-    "apiVersions": [
-      "2021-11-01-preview",
-      "2021-05-01-privatepreview",
-      "2021-05-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central India",
-      "East US 2",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "resourceType": "videoanalyzers/edgemodules"
   },
   {
     "aliases": {
@@ -2720,23 +2725,7 @@
       "Microsoft.Media/videoAnalyzers/livePipelines/state": "properties.state",
       "Microsoft.Media/videoAnalyzers/livePipelines/topologyName": "properties.topologyName"
     },
-    "resourceType": "videoAnalyzers/livePipelines",
-    "apiVersions": [
-      "2021-11-01-preview",
-      "2021-05-01-privatepreview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central India",
-      "East US 2",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "resourceType": "videoanalyzers/livepipelines"
   },
   {
     "aliases": {
@@ -2752,22 +2741,7 @@
       "Microsoft.Media/videoAnalyzers/pipelineJobs/state": "properties.state",
       "Microsoft.Media/videoAnalyzers/pipelineJobs/topologyName": "properties.topologyName"
     },
-    "resourceType": "videoAnalyzers/pipelineJobs",
-    "apiVersions": [
-      "2021-11-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central India",
-      "East US 2",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "resourceType": "videoanalyzers/pipelinejobs"
   },
   {
     "aliases": {
@@ -2846,23 +2820,19 @@
       "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-VideoSource.videoName": "properties.sources[*].videoName",
       "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].name": "properties.sources[*].name"
     },
-    "resourceType": "videoAnalyzers/pipelineTopologies",
-    "apiVersions": [
-      "2021-11-01-preview",
-      "2021-05-01-privatepreview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central India",
-      "East US 2",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "resourceType": "videoanalyzers/pipelinetopologies"
+  },
+  {
+    "aliases": {
+      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "videoanalyzers/privateendpointconnections"
   },
   {
     "aliases": {
@@ -2889,74 +2859,6 @@
       "Microsoft.Media/videoAnalyzers/videos/title": "properties.title",
       "Microsoft.Media/videoAnalyzers/videos/type": "properties.type"
     },
-    "resourceType": "videoAnalyzers/videos",
-    "apiVersions": [
-      "2021-11-01-preview",
-      "2021-05-01-privatepreview",
-      "2021-05-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central India",
-      "East US 2",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/mediaServices/mediaGraphs/created": "properties.created",
-      "Microsoft.Media/mediaServices/mediaGraphs/description": "properties.description",
-      "Microsoft.Media/mediaServices/mediaGraphs/lastModified": "properties.lastModified",
-      "Microsoft.Media/mediaServices/mediaGraphs/sinks": "properties.sinks",
-      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*]": "properties.sinks[*]",
-      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].#Microsoft-Media-MediaGraphAssetSink": "properties.sinks[*]",
-      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].#Microsoft-Media-MediaGraphAssetSink.assetName": "properties.sinks[*].assetName",
-      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].inputs": "properties.sinks[*].inputs",
-      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].inputs[*]": "properties.sinks[*].inputs[*]",
-      "Microsoft.Media/mediaServices/mediaGraphs/sinks[*].name": "properties.sinks[*].name",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources": "properties.sources",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*]": "properties.sources[*]",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource": "properties.sources[*]",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.credentials": "properties.sources[*].credentials",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.credentials.password": "properties.sources[*].credentials.password",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.credentials.username": "properties.sources[*].credentials.username",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint": "properties.sources[*].endpoint",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint": "properties.sources[*].endpoint",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.trustedCertificates": "properties.sources[*].endpoint.trustedCertificates",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.trustedCertificates.#Microsoft-Media-MediaGraphPemCertificateList": "properties.sources[*].endpoint.trustedCertificates",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.trustedCertificates.#Microsoft-Media-MediaGraphPemCertificateList.certificates": "properties.sources[*].endpoint.trustedCertificates.certificates",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.trustedCertificates.#Microsoft-Media-MediaGraphPemCertificateList.certificates[*]": "properties.sources[*].endpoint.trustedCertificates.certificates[*]",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.validationOptions": "properties.sources[*].endpoint.validationOptions",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.validationOptions.ignoreHostname": "properties.sources[*].endpoint.validationOptions.ignoreHostname",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.#Microsoft-Media-MediaGraphTlsEndpoint.validationOptions.ignoreSignature": "properties.sources[*].endpoint.validationOptions.ignoreSignature",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.credentials": "properties.sources[*].endpoint.credentials",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.credentials.#Microsoft-Media-MediaGraphUsernamePasswordCredentials": "properties.sources[*].endpoint.credentials",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.credentials.#Microsoft-Media-MediaGraphUsernamePasswordCredentials.password": "properties.sources[*].endpoint.credentials.password",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.credentials.#Microsoft-Media-MediaGraphUsernamePasswordCredentials.username": "properties.sources[*].endpoint.credentials.username",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.endpoint.url": "properties.sources[*].endpoint.url",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.rtspUrl": "properties.sources[*].rtspUrl",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].#Microsoft-Media-MediaGraphRtspSource.transport": "properties.sources[*].transport",
-      "Microsoft.Media/mediaServices/mediaGraphs/sources[*].name": "properties.sources[*].name",
-      "Microsoft.Media/mediaServices/mediaGraphs/state": "properties.state"
-    },
-    "resourceType": "mediaservices/mediagraphs"
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/provisioningState": "properties.provisioningState"
-    },
-    "resourceType": "videoanalyzers/privateendpointconnections"
+    "resourceType": "videoanalyzers/videos"
   }
 ]

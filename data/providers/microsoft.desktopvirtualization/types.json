@@ -550,6 +550,7 @@
     "apiVersions": [
       "2023-03-21-privatepreview",
       "2023-03-03-privatepreview",
+      "2023-01-30-preview",
       "2023-01-28-privatepreview",
       "2022-12-09-privatepreview",
       "2022-10-14-preview",

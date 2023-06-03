@@ -23,6 +23,11 @@
       "Microsoft.DocumentDB/cassandraClusters/initialCassandraAdminPassword": "properties.initialCassandraAdminPassword",
       "Microsoft.DocumentDB/cassandraClusters/prometheusEndpoint": "properties.prometheusEndpoint",
       "Microsoft.DocumentDB/cassandraClusters/prometheusEndpoint.ipAddress": "properties.prometheusEndpoint.ipAddress",
+      "Microsoft.DocumentDB/cassandraClusters/provisionError": "properties.provisionError",
+      "Microsoft.DocumentDB/cassandraClusters/provisionError.additionalErrorInfo": "properties.provisionError.additionalErrorInfo",
+      "Microsoft.DocumentDB/cassandraClusters/provisionError.code": "properties.provisionError.code",
+      "Microsoft.DocumentDB/cassandraClusters/provisionError.message": "properties.provisionError.message",
+      "Microsoft.DocumentDB/cassandraClusters/provisionError.target": "properties.provisionError.target",
       "Microsoft.DocumentDB/cassandraClusters/provisioningState": "properties.provisioningState",
       "Microsoft.DocumentDB/cassandraClusters/repairEnabled": "properties.repairEnabled",
       "Microsoft.DocumentDB/cassandraClusters/restoreFromBackupId": "properties.restoreFromBackupId",
@@ -32,6 +37,7 @@
     },
     "resourceType": "cassandraClusters",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -96,6 +102,7 @@
     "aliases": null,
     "resourceType": "databaseAccountNames",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -181,10 +188,12 @@
       "Microsoft.DocumentDB/databaseAccounts/documentEndpoint": "properties.documentEndpoint",
       "Microsoft.DocumentDB/databaseAccounts/enableAnalyticalStorage": "properties.enableAnalyticalStorage",
       "Microsoft.DocumentDB/databaseAccounts/enableAutomaticFailover": "properties.enableAutomaticFailover",
+      "Microsoft.DocumentDB/databaseAccounts/enableBurstCapacity": "properties.enableBurstCapacity",
       "Microsoft.DocumentDB/databaseAccounts/enableCassandraConnector": "properties.enableCassandraConnector",
       "Microsoft.DocumentDB/databaseAccounts/enableFreeTier": "properties.enableFreeTier",
       "Microsoft.DocumentDB/databaseAccounts/enableMaterializedViews": "properties.enableMaterializedViews",
       "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations": "properties.enableMultipleWriteLocations",
+      "Microsoft.DocumentDB/databaseAccounts/enablePartitionMerge": "properties.enablePartitionMerge",
       "Microsoft.DocumentDB/databaseAccounts/failoverPolicies": "properties.failoverPolicies",
       "Microsoft.DocumentDB/databaseAccounts/failoverPolicies[*]": "properties.failoverPolicies[*]",
       "Microsoft.DocumentDB/databaseAccounts/failoverPolicies[*].failoverPriority": "properties.failoverPolicies[*].failoverPriority",
@@ -214,6 +223,7 @@
       "Microsoft.DocumentDB/databaseAccounts/locations[*].isZoneRedundant": "properties.locations[*].isZoneRedundant",
       "Microsoft.DocumentDB/databaseAccounts/Locations[*].locationName": "properties.locations[*].locationName",
       "Microsoft.DocumentDB/databaseAccounts/locations[*].provisioningState": "properties.locations[*].provisioningState",
+      "Microsoft.DocumentDB/databaseAccounts/minimalTlsVersion": "properties.minimalTlsVersion",
       "Microsoft.DocumentDB/databaseAccounts/networkAclBypass": "properties.networkAclBypass",
       "Microsoft.DocumentDB/databaseAccounts/networkAclBypassResourceIds": "properties.networkAclBypassResourceIds",
       "Microsoft.DocumentDB/databaseAccounts/networkAclBypassResourceIds[*]": "properties.networkAclBypassResourceIds[*]",
@@ -251,6 +261,7 @@
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreMode": "properties.restoreParameters.restoreMode",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreSource": "properties.restoreParameters.restoreSource",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreTimestampInUtc": "properties.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/restoreParameters.sourceBackupLocation": "properties.restoreParameters.sourceBackupLocation",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.tablesToRestore": "properties.restoreParameters.tablesToRestore",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.tablesToRestore[*]": "properties.restoreParameters.tablesToRestore[*]",
       "Microsoft.DocumentDB/databaseAccounts/sku.name": "properties.databaseAccountOfferType",
@@ -269,6 +280,7 @@
     },
     "resourceType": "databaseAccounts",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -350,6 +362,7 @@
     "aliases": null,
     "resourceType": "databaseAccounts/encryptionScopes",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -414,6 +427,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -471,6 +485,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -580,8 +595,75 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
+    "apiVersions": [
+      "2023-04-15",
+      "2023-03-15-preview",
+      "2023-03-15",
+      "2023-03-01-preview",
+      "2022-11-15-preview",
+      "2022-11-15",
+      "2022-08-15-preview",
+      "2022-08-15"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Brazil SouthEast",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "Central US EUAP",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "East US 2 EUAP",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India Central",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -663,6 +745,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -744,6 +827,7 @@
     "aliases": null,
     "resourceType": "locations/restorableDatabaseAccounts",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -825,6 +909,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -867,6 +952,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -909,6 +995,7 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -951,6 +1038,7 @@
     "aliases": null,
     "resourceType": "restorableDatabaseAccounts",
     "apiVersions": [
+      "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
       "2023-03-01-preview",
@@ -1016,6 +1104,7 @@
   {
     "aliases": {
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties": "properties.authenticationMethodLdapProperties",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.connectionTimeoutInMs": "properties.authenticationMethodLdapProperties.connectionTimeoutInMs",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.searchBaseDistinguishedName": "properties.authenticationMethodLdapProperties.searchBaseDistinguishedName",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.searchFilterTemplate": "properties.authenticationMethodLdapProperties.searchFilterTemplate",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/authenticationMethodLdapProperties.serverCertificates": "properties.authenticationMethodLdapProperties.serverCertificates",
@@ -1029,11 +1118,17 @@
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/backupStorageCustomerKeyUri": "properties.backupStorageCustomerKeyUri",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/base64EncodedCassandraYamlFragment": "properties.base64EncodedCassandraYamlFragment",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/dataCenterLocation": "properties.dataCenterLocation",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/deallocated": "properties.deallocated",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/delegatedSubnetId": "properties.delegatedSubnetId",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/diskCapacity": "properties.diskCapacity",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/diskSku": "properties.diskSku",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/managedDiskCustomerKeyUri": "properties.managedDiskCustomerKeyUri",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/nodeCount": "properties.nodeCount",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/provisionError": "properties.provisionError",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/provisionError.additionalErrorInfo": "properties.provisionError.additionalErrorInfo",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/provisionError.code": "properties.provisionError.code",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/provisionError.message": "properties.provisionError.message",
+      "Microsoft.DocumentDB/cassandraClusters/dataCenters/provisionError.target": "properties.provisionError.target",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/provisioningState": "properties.provisioningState",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/seedNodes": "properties.seedNodes",
       "Microsoft.DocumentDB/cassandraClusters/dataCenters/seedNodes[*]": "properties.seedNodes[*]",
@@ -1275,6 +1370,7 @@
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.instantMaximumThroughput": "properties.resource.instantMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.provisionedThroughputSettings": "properties.resource.provisionedThroughputSettings",
@@ -1284,6 +1380,7 @@
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.provisionedThroughputSettings.maxThroughput": "properties.resource.provisionedThroughputSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.provisionedThroughputSettings.targetMaxThroughput": "properties.resource.provisionedThroughputSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.softAllowedMaximumThroughput": "properties.resource.softAllowedMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/tables/throughputSettings/resource.throughput": "properties.resource.throughput"
     },
     "resourceType": "databaseaccounts/cassandrakeyspaces/tables/throughputsettings"
@@ -1323,6 +1420,7 @@
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.instantMaximumThroughput": "properties.resource.instantMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.provisionedThroughputSettings": "properties.resource.provisionedThroughputSettings",
@@ -1332,6 +1430,7 @@
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.provisionedThroughputSettings.maxThroughput": "properties.resource.provisionedThroughputSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.provisionedThroughputSettings.targetMaxThroughput": "properties.resource.provisionedThroughputSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.softAllowedMaximumThroughput": "properties.resource.softAllowedMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/cassandraKeyspaces/throughputSettings/resource.throughput": "properties.resource.throughput"
     },
     "resourceType": "databaseaccounts/cassandrakeyspaces/throughputsettings"
@@ -1382,7 +1481,11 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/options.autoscaleSettings.maxThroughput": "properties.options.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/options.throughput": "properties.options.throughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource": "properties.resource",
-      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.id": "properties.resource.id"
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.createMode": "properties.resource.createMode",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.id": "properties.resource.id",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.restoreParameters": "properties.resource.restoreParameters",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc"
     },
     "resourceType": "databaseaccounts/gremlindatabases"
   },
@@ -1398,6 +1501,7 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.conflictResolutionPolicy.conflictResolutionPath": "properties.resource.conflictResolutionPolicy.conflictResolutionPath",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.conflictResolutionPolicy.conflictResolutionProcedure": "properties.resource.conflictResolutionPolicy.conflictResolutionProcedure",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.conflictResolutionPolicy.mode": "properties.resource.conflictResolutionPolicy.mode",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.createMode": "properties.resource.createMode",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.defaultTtl": "properties.resource.defaultTtl",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.id": "properties.resource.id",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.indexingPolicy": "properties.resource.indexingPolicy",
@@ -1429,6 +1533,9 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.partitionKey.paths[*]": "properties.resource.partitionKey.paths[*]",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.partitionKey.systemKey": "properties.resource.partitionKey.systemKey",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.partitionKey.version": "properties.resource.partitionKey.version",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.restoreParameters": "properties.resource.restoreParameters",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.uniqueKeyPolicy": "properties.resource.uniqueKeyPolicy",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.uniqueKeyPolicy.uniqueKeys": "properties.resource.uniqueKeyPolicy.uniqueKeys",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.uniqueKeyPolicy.uniqueKeys[*]": "properties.resource.uniqueKeyPolicy.uniqueKeys[*]",
@@ -1472,6 +1579,7 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.instantMaximumThroughput": "properties.resource.instantMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.provisionedThroughputSettings": "properties.resource.provisionedThroughputSettings",
@@ -1481,6 +1589,7 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.provisionedThroughputSettings.maxThroughput": "properties.resource.provisionedThroughputSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.provisionedThroughputSettings.targetMaxThroughput": "properties.resource.provisionedThroughputSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.softAllowedMaximumThroughput": "properties.resource.softAllowedMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/throughputSettings/resource.throughput": "properties.resource.throughput"
     },
     "resourceType": "databaseaccounts/gremlindatabases/graphs/throughputsettings"
@@ -1520,6 +1629,7 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.instantMaximumThroughput": "properties.resource.instantMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.provisionedThroughputSettings": "properties.resource.provisionedThroughputSettings",
@@ -1529,6 +1639,7 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.provisionedThroughputSettings.maxThroughput": "properties.resource.provisionedThroughputSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.provisionedThroughputSettings.targetMaxThroughput": "properties.resource.provisionedThroughputSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.softAllowedMaximumThroughput": "properties.resource.softAllowedMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/throughputSettings/resource.throughput": "properties.resource.throughput"
     },
     "resourceType": "databaseaccounts/gremlindatabases/throughputsettings"
@@ -1540,7 +1651,11 @@
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/options.autoscaleSettings.maxThroughput": "properties.options.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/options.throughput": "properties.options.throughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource": "properties.resource",
-      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.id": "properties.resource.id"
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.createMode": "properties.resource.createMode",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.id": "properties.resource.id",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.restoreParameters": "properties.resource.restoreParameters",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc"
     },
     "resourceType": "databaseaccounts/mongodbdatabases"
   },
@@ -1552,6 +1667,7 @@
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/options.throughput": "properties.options.throughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource": "properties.resource",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.analyticalStorageTtl": "properties.resource.analyticalStorageTtl",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.createMode": "properties.resource.createMode",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.id": "properties.resource.id",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.indexes": "properties.resource.indexes",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.indexes[*]": "properties.resource.indexes[*]",
@@ -1561,6 +1677,9 @@
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.indexes[*].options": "properties.resource.indexes[*].options",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.indexes[*].options.expireAfterSeconds": "properties.resource.indexes[*].options.expireAfterSeconds",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.indexes[*].options.unique": "properties.resource.indexes[*].options.unique",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.restoreParameters": "properties.resource.restoreParameters",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.shardKey": "properties.resource.shardKey"
     },
     "resourceType": "databaseaccounts/mongodbdatabases/collections"
@@ -1600,6 +1719,7 @@
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.instantMaximumThroughput": "properties.resource.instantMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.provisionedThroughputSettings": "properties.resource.provisionedThroughputSettings",
@@ -1609,6 +1729,7 @@
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.provisionedThroughputSettings.maxThroughput": "properties.resource.provisionedThroughputSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.provisionedThroughputSettings.targetMaxThroughput": "properties.resource.provisionedThroughputSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.softAllowedMaximumThroughput": "properties.resource.softAllowedMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/throughputSettings/resource.throughput": "properties.resource.throughput"
     },
     "resourceType": "databaseaccounts/mongodbdatabases/collections/throughputsettings"
@@ -1648,6 +1769,7 @@
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.instantMaximumThroughput": "properties.resource.instantMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.provisionedThroughputSettings": "properties.resource.provisionedThroughputSettings",
@@ -1657,9 +1779,43 @@
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.provisionedThroughputSettings.maxThroughput": "properties.resource.provisionedThroughputSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.provisionedThroughputSettings.targetMaxThroughput": "properties.resource.provisionedThroughputSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.softAllowedMaximumThroughput": "properties.resource.softAllowedMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/throughputSettings/resource.throughput": "properties.resource.throughput"
     },
     "resourceType": "databaseaccounts/mongodbdatabases/throughputsettings"
+  },
+  {
+    "aliases": {
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/databaseName": "properties.databaseName",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/privileges": "properties.privileges",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/privileges[*]": "properties.privileges[*]",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/privileges[*].actions": "properties.privileges[*].actions",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/privileges[*].actions[*]": "properties.privileges[*].actions[*]",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/privileges[*].resource": "properties.privileges[*].resource",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/privileges[*].resource.collection": "properties.privileges[*].resource.collection",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/privileges[*].resource.db": "properties.privileges[*].resource.db",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/roleName": "properties.roleName",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/roles": "properties.roles",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/roles[*]": "properties.roles[*]",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/roles[*].db": "properties.roles[*].db",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/roles[*].role": "properties.roles[*].role",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbRoleDefinitions/type": "properties.type"
+    },
+    "resourceType": "databaseaccounts/mongodbroledefinitions"
+  },
+  {
+    "aliases": {
+      "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/customData": "properties.customData",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/databaseName": "properties.databaseName",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/mechanisms": "properties.mechanisms",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/password": "properties.password",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/roles": "properties.roles",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/roles[*]": "properties.roles[*]",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/roles[*].db": "properties.roles[*].db",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/roles[*].role": "properties.roles[*].role",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbUserDefinitions/userName": "properties.userName"
+    },
+    "resourceType": "databaseaccounts/mongodbuserdefinitions"
   },
   {
     "aliases": {
@@ -1705,7 +1861,11 @@
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/options.autoscaleSettings.maxThroughput": "properties.options.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/options.throughput": "properties.options.throughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource": "properties.resource",
-      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.id": "properties.resource.id"
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.createMode": "properties.resource.createMode",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.id": "properties.resource.id",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.restoreParameters": "properties.resource.restoreParameters",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc"
     },
     "resourceType": "databaseaccounts/sqldatabases"
   },
@@ -1743,6 +1903,7 @@
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.conflictResolutionPolicy.conflictResolutionPath": "properties.resource.conflictResolutionPolicy.conflictResolutionPath",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.conflictResolutionPolicy.conflictResolutionProcedure": "properties.resource.conflictResolutionPolicy.conflictResolutionProcedure",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.conflictResolutionPolicy.mode": "properties.resource.conflictResolutionPolicy.mode",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.createMode": "properties.resource.createMode",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.defaultTtl": "properties.resource.defaultTtl",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.id": "properties.resource.id",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.indexingPolicy": "properties.resource.indexingPolicy",
@@ -1774,6 +1935,9 @@
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.partitionKey.paths[*]": "properties.resource.partitionKey.paths[*]",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.partitionKey.systemKey": "properties.resource.partitionKey.systemKey",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.partitionKey.version": "properties.resource.partitionKey.version",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.restoreParameters": "properties.resource.restoreParameters",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.uniqueKeyPolicy": "properties.resource.uniqueKeyPolicy",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.uniqueKeyPolicy.uniqueKeys": "properties.resource.uniqueKeyPolicy.uniqueKeys",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.uniqueKeyPolicy.uniqueKeys[*]": "properties.resource.uniqueKeyPolicy.uniqueKeys[*]",
@@ -1825,6 +1989,7 @@
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.instantMaximumThroughput": "properties.resource.instantMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.provisionedThroughputSettings": "properties.resource.provisionedThroughputSettings",
@@ -1834,6 +1999,7 @@
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.provisionedThroughputSettings.maxThroughput": "properties.resource.provisionedThroughputSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.provisionedThroughputSettings.targetMaxThroughput": "properties.resource.provisionedThroughputSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.softAllowedMaximumThroughput": "properties.resource.softAllowedMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/throughputSettings/resource.throughput": "properties.resource.throughput"
     },
     "resourceType": "databaseaccounts/sqldatabases/containers/throughputsettings"
@@ -1891,6 +2057,7 @@
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.instantMaximumThroughput": "properties.resource.instantMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.provisionedThroughputSettings": "properties.resource.provisionedThroughputSettings",
@@ -1900,6 +2067,7 @@
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.provisionedThroughputSettings.maxThroughput": "properties.resource.provisionedThroughputSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.provisionedThroughputSettings.targetMaxThroughput": "properties.resource.provisionedThroughputSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.softAllowedMaximumThroughput": "properties.resource.softAllowedMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/throughputSettings/resource.throughput": "properties.resource.throughput"
     },
     "resourceType": "databaseaccounts/sqldatabases/throughputsettings"
@@ -1934,7 +2102,11 @@
       "Microsoft.DocumentDB/databaseAccounts/tables/options.autoscaleSettings.maxThroughput": "properties.options.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/tables/options.throughput": "properties.options.throughput",
       "Microsoft.DocumentDB/databaseAccounts/tables/resource": "properties.resource",
-      "Microsoft.DocumentDB/databaseAccounts/tables/resource.id": "properties.resource.id"
+      "Microsoft.DocumentDB/databaseAccounts/tables/resource.createMode": "properties.resource.createMode",
+      "Microsoft.DocumentDB/databaseAccounts/tables/resource.id": "properties.resource.id",
+      "Microsoft.DocumentDB/databaseAccounts/tables/resource.restoreParameters": "properties.resource.restoreParameters",
+      "Microsoft.DocumentDB/databaseAccounts/tables/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
+      "Microsoft.DocumentDB/databaseAccounts/tables/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc"
     },
     "resourceType": "databaseaccounts/tables"
   },
@@ -1973,6 +2145,7 @@
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.autoscaleSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.autoscaleSettings.maxThroughput": "properties.resource.autoscaleSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.autoscaleSettings.targetMaxThroughput": "properties.resource.autoscaleSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.instantMaximumThroughput": "properties.resource.instantMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.minimumThroughput": "properties.resource.minimumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.offerReplacePending": "properties.resource.offerReplacePending",
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.provisionedThroughputSettings": "properties.resource.provisionedThroughputSettings",
@@ -1982,6 +2155,7 @@
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled": "properties.resource.provisionedThroughputSettings.autoUpgradePolicy.throughputPolicy.isEnabled",
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.provisionedThroughputSettings.maxThroughput": "properties.resource.provisionedThroughputSettings.maxThroughput",
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.provisionedThroughputSettings.targetMaxThroughput": "properties.resource.provisionedThroughputSettings.targetMaxThroughput",
+      "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.softAllowedMaximumThroughput": "properties.resource.softAllowedMaximumThroughput",
       "Microsoft.DocumentDB/databaseAccounts/tables/throughputSettings/resource.throughput": "properties.resource.throughput"
     },
     "resourceType": "databaseaccounts/tables/throughputsettings"

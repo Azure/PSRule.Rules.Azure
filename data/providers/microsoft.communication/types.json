@@ -8,7 +8,6 @@
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2021-10-01-preview",
-      "2020-08-20-preview",
       "2020-08-20"
     ],
     "locations": [
@@ -25,7 +24,6 @@
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2021-10-01-preview",
-      "2020-08-20-preview",
       "2020-08-20"
     ],
     "locations": [
@@ -91,13 +89,13 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2022-03-29-preview",
       "2021-10-01-preview",
-      "2020-08-20-preview",
       "2020-08-20"
     ],
     "locations": [],
@@ -107,13 +105,13 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2022-03-29-preview",
       "2021-10-01-preview",
-      "2020-08-20-preview",
       "2020-08-20"
     ],
     "locations": [
@@ -125,13 +123,13 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2022-03-29-preview",
       "2021-10-01-preview",
-      "2020-08-20-preview",
       "2020-08-20"
     ],
     "locations": [],
@@ -146,7 +144,6 @@
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2021-10-01-preview",
-      "2020-08-20-preview",
       "2020-08-20"
     ],
     "locations": [],

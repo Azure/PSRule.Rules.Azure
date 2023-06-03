@@ -97,6 +97,7 @@
     },
     "resourceType": "caches",
     "apiVersions": [
+      "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
       "2022-09-01-preview",
@@ -113,6 +114,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -135,6 +137,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
         "zones": [
           "1",
           "2",
@@ -313,6 +323,7 @@
     },
     "resourceType": "caches/storageTargets",
     "apiVersions": [
+      "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
       "2022-09-01-preview",
@@ -329,6 +340,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -354,6 +366,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
       "2022-09-01-preview",
@@ -376,6 +389,7 @@
     "aliases": null,
     "resourceType": "locations/ascoperations",
     "apiVersions": [
+      "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
       "2022-09-01-preview",
@@ -393,6 +407,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -418,6 +433,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
       "2022-09-01-preview",
@@ -426,6 +442,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -451,6 +468,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
       "2022-09-01-preview",
@@ -468,6 +486,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -493,6 +512,7 @@
     "aliases": null,
     "resourceType": "usageModels",
     "apiVersions": [
+      "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
       "2022-09-01-preview",
@@ -509,6 +529,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",

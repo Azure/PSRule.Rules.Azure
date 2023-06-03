@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-03-01-preview",
       "2023-02-01",
       "2022-08-01-preview",
       "2022-02-01",
@@ -22,6 +23,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-03-01-preview",
       "2023-02-01",
       "2022-08-01-preview",
       "2022-02-01",
@@ -74,6 +76,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-03-01-preview",
       "2023-02-01",
       "2022-08-01-preview",
       "2022-02-01",
@@ -126,6 +129,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-03-01-preview",
       "2023-02-01",
       "2022-08-01-preview",
       "2022-02-01",
@@ -178,6 +182,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-03-01-preview",
       "2023-02-01",
       "2022-08-01-preview",
       "2022-02-01",
@@ -230,6 +235,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-03-01-preview",
       "2023-02-01",
       "2022-08-01-preview",
       "2022-02-01",
@@ -358,6 +364,7 @@
     },
     "resourceType": "SignalR",
     "apiVersions": [
+      "2023-03-01-preview",
       "2023-02-01",
       "2022-08-01-preview",
       "2022-02-01",
@@ -410,6 +417,7 @@
     "aliases": null,
     "resourceType": "SignalR/eventGridFilters",
     "apiVersions": [
+      "2023-03-01-preview",
       "2023-02-01",
       "2022-08-01-preview",
       "2022-02-01",
@@ -554,6 +562,7 @@
     },
     "resourceType": "WebPubSub",
     "apiVersions": [
+      "2023-03-01-preview",
       "2023-02-01",
       "2022-08-01-preview",
       "2021-10-01",

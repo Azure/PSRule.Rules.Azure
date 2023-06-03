@@ -10,6 +10,24 @@
   },
   {
     "aliases": null,
+    "resourceType": "dsmsAllowlists",
+    "apiVersions": [
+      "2021-08-10-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "dsmsRootFolders",
+    "apiVersions": [
+      "2021-08-10-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "dstsServiceAccounts",
     "apiVersions": [
       "2021-08-10-privatepreview"

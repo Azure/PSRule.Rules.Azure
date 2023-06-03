@@ -283,5 +283,14 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "subscriptionStatuses",
+    "apiVersions": [
+      "2023-01-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]

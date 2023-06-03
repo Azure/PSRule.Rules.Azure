@@ -122,6 +122,7 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -150,6 +151,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -279,6 +281,10 @@
       },
       {
         "location": "Norway East",
+        "zones": []
+      },
+      {
+        "location": "Poland Central",
         "zones": []
       },
       {
@@ -472,6 +478,7 @@
     },
     "resourceType": "clusters/applications",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -500,6 +507,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -632,6 +640,10 @@
         "zones": []
       },
       {
+        "location": "Poland Central",
+        "zones": []
+      },
+      {
         "location": "Qatar Central",
         "zones": []
       },
@@ -717,6 +729,7 @@
     "aliases": null,
     "resourceType": "clusters/operationresults",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -745,6 +758,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -769,6 +783,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -797,6 +812,7 @@
     "aliases": null,
     "resourceType": "locations/azureasyncoperations",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -825,6 +841,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -849,6 +866,7 @@
     "aliases": null,
     "resourceType": "locations/billingSpecs",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -877,6 +895,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -901,6 +920,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -929,6 +949,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -953,6 +974,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -985,6 +1007,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -1013,6 +1036,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1055,6 +1079,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -1083,6 +1108,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1107,6 +1133,7 @@
     "aliases": null,
     "resourceType": "locations/validateCreateRequest",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"
@@ -1135,6 +1162,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -1159,6 +1187,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
       "2015-03-01-preview"

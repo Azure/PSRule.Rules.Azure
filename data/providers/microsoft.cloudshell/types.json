@@ -3,9 +3,17 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2018-10-01"
+      "2023-02-01-preview",
+      "2020-04-01-preview",
+      "2018-10-01",
+      "2017-12-01-preview",
+      "2017-08-01-preview",
+      "2017-01-01-preview"
     ],
-    "locations": [],
+    "locations": [
+      "Central US",
+      "East US 2"
+    ],
     "zoneMappings": null
   }
 ]

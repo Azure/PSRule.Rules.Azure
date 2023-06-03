@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-04-03",
       "2023-01-31",
       "2022-12-01-preview"
     ],
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-04-03",
       "2023-01-31",
       "2022-12-01-preview"
     ],
@@ -27,6 +29,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-04-03",
       "2023-01-31",
       "2022-12-01-preview"
     ],

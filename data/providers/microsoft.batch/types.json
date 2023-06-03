@@ -33,6 +33,7 @@
     },
     "resourceType": "batchAccounts",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -76,6 +77,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -103,6 +105,7 @@
     },
     "resourceType": "batchAccounts/certificates",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -140,6 +143,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -163,6 +167,7 @@
     "aliases": null,
     "resourceType": "batchAccounts/detectors",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01"
@@ -190,6 +195,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -435,6 +441,7 @@
     },
     "resourceType": "batchAccounts/pools",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -472,6 +479,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -495,6 +503,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -520,6 +529,7 @@
     "aliases": null,
     "resourceType": "locations/accountOperationResults",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -563,6 +573,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -586,6 +597,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -624,6 +636,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -647,6 +660,7 @@
     "aliases": null,
     "resourceType": "locations/cloudServiceSkus",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -675,6 +689,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -698,6 +713,7 @@
     "aliases": null,
     "resourceType": "locations/quotas",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -739,6 +755,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -762,6 +779,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineSkus",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -790,6 +808,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -813,6 +832,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-05-01",
       "2022-10-01",
       "2022-06-01",
       "2022-01-01",
@@ -854,6 +874,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",

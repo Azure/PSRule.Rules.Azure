@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "AvailabilitySets",
     "apiVersions": [
+      "2022-05-21-preview",
       "2020-06-05-preview"
     ],
     "locations": [
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "Clouds",
     "apiVersions": [
+      "2022-05-21-preview",
       "2020-06-05-preview"
     ],
     "locations": [
@@ -27,6 +29,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-04-01-preview",
       "2022-05-21-preview",
       "2020-06-05-preview"
     ],
@@ -37,12 +40,15 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-04-01-preview",
       "2022-05-21-preview",
       "2020-06-05-preview"
     ],
     "locations": [
       "East US",
+      "East US 2",
       "East US 2 EUAP",
+      "North Europe",
       "West Europe",
       "West US 2"
     ],
@@ -52,6 +58,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-04-01-preview",
       "2022-05-21-preview",
       "2020-06-05-preview"
     ],
@@ -62,7 +69,44 @@
     "aliases": null,
     "resourceType": "VirtualMachines",
     "apiVersions": [
+      "2022-05-21-preview",
       "2020-06-05-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "VirtualMachines/Extensions",
+    "apiVersions": [
+      "2022-05-21-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "VirtualMachines/GuestAgents",
+    "apiVersions": [
+      "2022-05-21-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "VirtualMachines/HybridIdentityMetadata",
+    "apiVersions": [
+      "2022-05-21-preview"
     ],
     "locations": [
       "East US",
@@ -74,6 +118,7 @@
     "aliases": null,
     "resourceType": "VirtualMachineTemplates",
     "apiVersions": [
+      "2022-05-21-preview",
       "2020-06-05-preview"
     ],
     "locations": [
@@ -86,6 +131,7 @@
     "aliases": null,
     "resourceType": "VirtualNetworks",
     "apiVersions": [
+      "2022-05-21-preview",
       "2020-06-05-preview"
     ],
     "locations": [
@@ -98,6 +144,7 @@
     "aliases": null,
     "resourceType": "VMMServers",
     "apiVersions": [
+      "2022-05-21-preview",
       "2020-06-05-preview"
     ],
     "locations": [
@@ -110,6 +157,7 @@
     "aliases": null,
     "resourceType": "VMMServers/InventoryItems",
     "apiVersions": [
+      "2022-05-21-preview",
       "2020-06-05-preview"
     ],
     "locations": [

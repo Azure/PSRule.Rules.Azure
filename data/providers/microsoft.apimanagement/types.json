@@ -73,6 +73,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -139,6 +140,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -194,6 +196,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -267,6 +270,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -517,6 +521,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -652,6 +657,14 @@
         ]
       },
       {
+        "location": "Poland Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Qatar Central",
         "zones": [
           "1",
@@ -780,6 +793,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",

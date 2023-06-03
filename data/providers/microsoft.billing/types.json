@@ -29,6 +29,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/alerts",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/appliedReservationOrders",
     "apiVersions": [
       "2020-12-15-privatepreview",
@@ -77,6 +86,15 @@
       "2020-05-01",
       "2019-10-01-preview",
       "2018-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/alerts",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -439,6 +457,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/paymentMethodLinks",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2021-10-01",
       "2020-11-01-privatepreview"
     ],
@@ -1043,6 +1062,15 @@
       "2020-05-01",
       "2019-10-01-preview",
       "2018-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/listProductRecommendations",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": null

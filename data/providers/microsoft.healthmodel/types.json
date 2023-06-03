@@ -3,7 +3,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
-      "2020-12-01-privatepreview"
+      "2022-11-01-preview"
     ],
     "locations": [],
     "zoneMappings": null

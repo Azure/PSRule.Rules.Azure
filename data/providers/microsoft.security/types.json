@@ -255,7 +255,21 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Security/assessments/governanceAssignments/additionalData": "properties.additionalData",
+      "Microsoft.Security/assessments/governanceAssignments/additionalData.ticketLink": "properties.additionalData.ticketLink",
+      "Microsoft.Security/assessments/governanceAssignments/additionalData.ticketNumber": "properties.additionalData.ticketNumber",
+      "Microsoft.Security/assessments/governanceAssignments/additionalData.ticketStatus": "properties.additionalData.ticketStatus",
+      "Microsoft.Security/assessments/governanceAssignments/governanceEmailNotification": "properties.governanceEmailNotification",
+      "Microsoft.Security/assessments/governanceAssignments/governanceEmailNotification.disableManagerEmailNotification": "properties.governanceEmailNotification.disableManagerEmailNotification",
+      "Microsoft.Security/assessments/governanceAssignments/governanceEmailNotification.disableOwnerEmailNotification": "properties.governanceEmailNotification.disableOwnerEmailNotification",
+      "Microsoft.Security/assessments/governanceAssignments/isGracePeriod": "properties.isGracePeriod",
+      "Microsoft.Security/assessments/governanceAssignments/owner": "properties.owner",
+      "Microsoft.Security/assessments/governanceAssignments/remediationDueDate": "properties.remediationDueDate",
+      "Microsoft.Security/assessments/governanceAssignments/remediationEta": "properties.remediationEta",
+      "Microsoft.Security/assessments/governanceAssignments/remediationEta.eta": "properties.remediationEta.eta",
+      "Microsoft.Security/assessments/governanceAssignments/remediationEta.justification": "properties.remediationEta.justification"
+    },
     "resourceType": "assessments/governanceAssignments",
     "apiVersions": [
       "2022-01-01-preview"
@@ -400,7 +414,8 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -833,7 +848,33 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Security/governanceRules/conditionSets": "properties.conditionSets",
+      "Microsoft.Security/governanceRules/conditionSets[*]": "properties.conditionSets[*]",
+      "Microsoft.Security/governanceRules/description": "properties.description",
+      "Microsoft.Security/governanceRules/displayName": "properties.displayName",
+      "Microsoft.Security/governanceRules/excludedScopes": "properties.excludedScopes",
+      "Microsoft.Security/governanceRules/excludedScopes[*]": "properties.excludedScopes[*]",
+      "Microsoft.Security/governanceRules/governanceEmailNotification": "properties.governanceEmailNotification",
+      "Microsoft.Security/governanceRules/governanceEmailNotification.disableManagerEmailNotification": "properties.governanceEmailNotification.disableManagerEmailNotification",
+      "Microsoft.Security/governanceRules/governanceEmailNotification.disableOwnerEmailNotification": "properties.governanceEmailNotification.disableOwnerEmailNotification",
+      "Microsoft.Security/governanceRules/includeMemberScopes": "properties.includeMemberScopes",
+      "Microsoft.Security/governanceRules/isDisabled": "properties.isDisabled",
+      "Microsoft.Security/governanceRules/isGracePeriod": "properties.isGracePeriod",
+      "Microsoft.Security/governanceRules/metadata": "properties.metadata",
+      "Microsoft.Security/governanceRules/metadata.createdBy": "properties.metadata.createdBy",
+      "Microsoft.Security/governanceRules/metadata.createdOn": "properties.metadata.createdOn",
+      "Microsoft.Security/governanceRules/metadata.updatedBy": "properties.metadata.updatedBy",
+      "Microsoft.Security/governanceRules/metadata.updatedOn": "properties.metadata.updatedOn",
+      "Microsoft.Security/governanceRules/ownerSource": "properties.ownerSource",
+      "Microsoft.Security/governanceRules/ownerSource.type": "properties.ownerSource.type",
+      "Microsoft.Security/governanceRules/ownerSource.value": "properties.ownerSource.value",
+      "Microsoft.Security/governanceRules/remediationTimeframe": "properties.remediationTimeframe",
+      "Microsoft.Security/governanceRules/rulePriority": "properties.rulePriority",
+      "Microsoft.Security/governanceRules/ruleType": "properties.ruleType",
+      "Microsoft.Security/governanceRules/sourceResourceType": "properties.sourceResourceType",
+      "Microsoft.Security/governanceRules/tenantId": "properties.tenantId"
+    },
     "resourceType": "governanceRules",
     "apiVersions": [
       "2022-01-01-preview"
@@ -1623,8 +1664,20 @@
   },
   {
     "aliases": {
+      "Microsoft.Security/pricings/deprecated": "properties.deprecated",
+      "Microsoft.Security/pricings/enablementTime": "properties.enablementTime",
+      "Microsoft.Security/pricings/extensions": "properties.extensions",
+      "Microsoft.Security/pricings/extensions[*]": "properties.extensions[*]",
+      "Microsoft.Security/pricings/extensions[*].additionalExtensionProperties": "properties.extensions[*].additionalExtensionProperties",
+      "Microsoft.Security/pricings/extensions[*].isEnabled": "properties.extensions[*].isEnabled",
+      "Microsoft.Security/pricings/extensions[*].name": "properties.extensions[*].name",
+      "Microsoft.Security/pricings/extensions[*].operationStatus": "properties.extensions[*].operationStatus",
+      "Microsoft.Security/pricings/extensions[*].operationStatus.code": "properties.extensions[*].operationStatus.code",
+      "Microsoft.Security/pricings/extensions[*].operationStatus.message": "properties.extensions[*].operationStatus.message",
       "Microsoft.Security/pricings/freeTrialRemainingTime": "properties.freeTrialRemainingTime",
       "Microsoft.Security/pricings/pricingTier": "properties.pricingTier",
+      "Microsoft.Security/pricings/replacedBy": "properties.replacedBy",
+      "Microsoft.Security/pricings/replacedBy[*]": "properties.replacedBy[*]",
       "Microsoft.Security/pricings/subPlan": "properties.subPlan"
     },
     "resourceType": "pricings",
@@ -2008,6 +2061,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",

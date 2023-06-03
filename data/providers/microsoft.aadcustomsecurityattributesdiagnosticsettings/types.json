@@ -1,0 +1,31 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "diagnosticSettings",
+    "apiVersions": [
+      "2023-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "diagnosticSettingsCategories",
+    "apiVersions": [
+      "2023-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-03-01-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  }
+]

@@ -51,6 +51,7 @@
     "aliases": null,
     "resourceType": "calculateTemplateHash",
     "apiVersions": [
+      "2022-09-01",
       "2019-09-01",
       "2019-05-01",
       "2019-04-01",
@@ -82,6 +83,7 @@
     "aliases": null,
     "resourceType": "changes",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-05-01",
       "2022-03-01-preview"
     ],
@@ -170,6 +172,7 @@
     },
     "resourceType": "deployments",
     "apiVersions": [
+      "2022-09-01",
       "2021-04-01",
       "2021-01-01",
       "2020-10-01",
@@ -206,6 +209,7 @@
     "aliases": null,
     "resourceType": "deployments/operations",
     "apiVersions": [
+      "2022-09-01",
       "2021-04-01",
       "2021-01-01",
       "2020-10-01",
@@ -1030,6 +1034,7 @@
     "aliases": null,
     "resourceType": "subscriptions/tagnames",
     "apiVersions": [
+      "2022-09-01",
       "2019-05-01",
       "2019-04-01",
       "2019-03-01",
@@ -1060,6 +1065,7 @@
     "aliases": null,
     "resourceType": "subscriptions/tagNames/tagValues",
     "apiVersions": [
+      "2022-09-01",
       "2019-05-01",
       "2019-04-01",
       "2019-03-01",
@@ -1087,12 +1093,47 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "tagNamespaceOperationResults",
+    "apiVersions": [
+      "2023-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "tagnamespaces",
+    "apiVersions": [
+      "2023-03-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "Central US EUAP",
+      "East US",
+      "East US 2",
+      "East US 2 EUAP",
+      "East US STG",
+      "North Central US",
+      "South Central US",
+      "South Central US STG",
+      "West Central US",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Resources/tags/default.tags": "properties.tags",
       "Microsoft.Resources/tags/tags": "properties.tags"
     },
     "resourceType": "tags",
     "apiVersions": [
+      "2022-09-01",
       "2019-10-01",
       "2019-05-01",
       "2019-04-01",

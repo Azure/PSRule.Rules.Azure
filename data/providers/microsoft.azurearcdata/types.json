@@ -34,6 +34,7 @@
     },
     "resourceType": "DataControllers",
     "apiVersions": [
+      "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview",
       "2021-11-01",
@@ -92,6 +93,7 @@
     },
     "resourceType": "DataControllers/ActiveDirectoryConnectors",
     "apiVersions": [
+      "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview"
     ],
@@ -198,6 +200,7 @@
     },
     "resourceType": "PostgresInstances",
     "apiVersions": [
+      "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview",
       "2021-07-01-preview"
@@ -258,11 +261,39 @@
     },
     "resourceType": "SqlManagedInstances",
     "apiVersions": [
+      "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview",
       "2021-11-01",
       "2021-08-01",
       "2021-07-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "SqlManagedInstances/FailoverGroups",
+    "apiVersions": [
+      "2023-01-15-preview"
     ],
     "locations": [
       "Australia East",
@@ -308,6 +339,7 @@
     },
     "resourceType": "SqlServerInstances",
     "apiVersions": [
+      "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview",
       "2021-11-01",
@@ -339,6 +371,7 @@
     "aliases": null,
     "resourceType": "SqlServerInstances/Databases",
     "apiVersions": [
+      "2023-01-15-preview",
       "2022-06-15-preview"
     ],
     "locations": [
