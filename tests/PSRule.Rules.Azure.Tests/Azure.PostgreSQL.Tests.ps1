@@ -161,6 +161,23 @@ Describe 'Azure.PostgreSQL' -Tag 'PostgreSQL' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'server-C';
         }
+
+        It 'Azure.PostgreSQL.AADOnly' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PostgreSQL.AADOnly' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.authConfig.activeDirectoryAuth'
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-F';
+        }
     }
 
     Context 'Resource name - Azure.PostgreSQL.ServerName' {

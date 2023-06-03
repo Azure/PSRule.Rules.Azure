@@ -30,6 +30,9 @@ What's changed since v1.27.1:
   - Azure Database for MySQL:
     - Check that Azure AD authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
       [#2226](https://github.com/Azure/PSRule.Rules.Azure/issues/2226)
+  - Azure Database for PostgreSQL:
+    - Check that Azure AD-only authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
+      [#2250](https://github.com/Azure/PSRule.Rules.Azure/issues/2250)
 
 ## v1.27.1
 
