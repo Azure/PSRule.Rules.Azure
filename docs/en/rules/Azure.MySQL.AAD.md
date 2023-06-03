@@ -48,17 +48,44 @@ For example:
     "type": "Microsoft.DBforMySQL/flexibleServers/administrators",
     "apiVersion": "2022-12-01-preview",
     "name": "[format('{0}/{1}', parameters('serverName'), 'activeDirectory')]",
-      "properties": {
-        "administratorType": "ActiveDirectory",
-        "identityResourceId": "[parameters('identityResourceId')]",
-        "login": "[parameters('login')]",
-        "sid": "[parameters('sid')]",
-        "tenantId": "[parameters('tenantId')]"
+    "properties": {
+      "administratorType": "ActiveDirectory",
+      "identityResourceId": "[parameters('identityResourceId')]",
+      "login": "[parameters('login')]",
+      "sid": "[parameters('sid')]",
+      "tenantId": "[parameters('tenantId')]"
 
-      },
-      "dependsOn": [
-        "mySqlFlexibleServer"
-      ]
+    },
+    "dependsOn": [
+      "mySqlFlexibleServer"
+    ]
+}
+```
+
+To deploy Azure Database for MySQL single servers that pass this rule:
+
+- Configure the `Microsoft.DBforMySQL/servers/administrators` sub-resource.
+- Set the `properties.administratorType` to `ActiveDirectory`.
+- Set the `properties.login` to the AAD administrator login object name.
+- Set the `properties.sid` to the object ID GUID of the AAD administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
+
+For example:
+
+```json
+{
+    "type": "Microsoft.DBforMySQL/servers/administrators",
+    "apiVersion": "2017-12-01",
+    "name": "[format('{0}/{1}', parameters('serverName'), 'activeDirectory')]",
+    "properties": {
+      "administratorType": "ActiveDirectory",
+      "login": "[parameters('login')]",
+      "sid": "[parameters('sid')]",
+      "tenantId": "[parameters('tenantId')]"
+    },
+    "dependsOn": [
+      "mySqlSingleServer"
+    ]
 }
 ```
 
@@ -99,35 +126,6 @@ To deploy Azure Database for MySQL single servers that pass this rule:
 
 For example:
 
-```json
-{
-    "type": "Microsoft.DBforMySQL/servers/administrators",
-    "apiVersion": "2017-12-01",
-    "name": "[format('{0}/{1}', parameters('serverName'), 'activeDirectory')]",
-      "properties": {
-        "administratorType": "ActiveDirectory",
-        "login": "[parameters('login')]",
-        "sid": "[parameters('sid')]",
-        "tenantId": "[parameters('tenantId')]"
-      },
-      "dependsOn": [
-        "mySqlSingleServer"
-      ]
-}
-```
-
-### Configure with Bicep
-
-To deploy Azure Database for MySQL single servers that pass this rule:
-
-- Configure the `Microsoft.DBforMySQL/servers/administrators` sub-resource.
-- Set the `properties.administratorType` to `ActiveDirectory`.
-- Set the `properties.login` to the AAD administrator login object name.
-- Set the `properties.sid` to the object ID GUID of the AAD administrator user, group, or application.
-- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
-
-For example:
-
 ```bicep
 resource aadAdmin 'Microsoft.DBforMySQL/servers/administrators@2017-12-01' = {
   name: 'activeDirectory'
@@ -143,7 +141,8 @@ resource aadAdmin 'Microsoft.DBforMySQL/servers/administrators@2017-12-01' = {
 
 ## NOTES
 
-For the flexible server deployment model a user-assigned identity is required in order to use AAD-authentication. The single server deployment model does not support enforcing AAD-authentication only.
+For the flexible server deployment model a user-assigned identity is required in order to use AAD-authentication.
+The single server deployment model does not support enforcing AAD-authentication only.
 
 ## LINKS
 
