@@ -370,7 +370,7 @@
       "administratorLogin": "db-admin",
       "authConfig": {
         "activeDirectoryAuth": "Enabled",
-        "passwordAuth": "Disabled"
+        "passwordAuth": "Disabled",
         "tenantId": "00000000-0000-0000-0000-000000000000"
       },
       "storage": {
