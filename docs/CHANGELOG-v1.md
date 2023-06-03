@@ -24,6 +24,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.27.1:
+
+- New rules:
+  - Azure Database for MySQL:
+    - Check that Azure AD authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
+      [#2226](https://github.com/Azure/PSRule.Rules.Azure/issues/2226)
+
 ## v1.27.1
 
 What's changed since v1.27.0:
