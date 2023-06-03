@@ -36,6 +36,28 @@ namespace PSRule.Rules.Azure
 
             actual = resources[3];
             Assert.Equal("vnet-001/subnet-001", actual.Value["name"].Value<string>());
+
+            // https://github.com/Azure/PSRule.Rules.Azure/issues/2255
+            resources = new IResourceValue[]
+            {
+                GetResourceValue(context, JObject.Parse("{ \"type\": \"Microsoft.Network/virtualNetworks\", \"name\": \"vnet-001\", \"dependsOn\": [ \"/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Network/routeTables/rt-002\" ] }")),
+                GetResourceValue(context, JObject.Parse("{ \"type\": \"Microsoft.Network/routeTables\", \"name\": \"rt-001\", \"dependsOn\": [ ] }")),
+                GetResourceValue(context, JObject.Parse("{ \"type\": \"Microsoft.Network/routeTables\", \"name\": \"rt-002\" }")),
+                GetResourceValue(context, JObject.Parse("{ \"type\": \"Microsoft.Network/virtualNetworks/subnets\", \"name\": \"vnet-001/subnet-001\", \"dependsOn\": [ \"/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001\" ] }")),
+            };
+            Array.Sort(resources, comparer);
+
+            actual = resources[0];
+            Assert.Equal("rt-001", actual.Value["name"].Value<string>());
+
+            actual = resources[1];
+            Assert.Equal("rt-002", actual.Value["name"].Value<string>());
+
+            actual = resources[2];
+            Assert.Equal("vnet-001", actual.Value["name"].Value<string>());
+
+            actual = resources[3];
+            Assert.Equal("vnet-001/subnet-001", actual.Value["name"].Value<string>());
         }
 
         #region Helper methods
