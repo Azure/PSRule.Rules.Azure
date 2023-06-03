@@ -43,17 +43,44 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
-    "apiVersion": "2022-12-01",
-    "name": "[format('{0}/{1}', parameters('serverName'), parameters('name'))]",
-      "properties": {
-        "principalName": "[parameters('principalName')]",
-        "principalType": "[parameters('principalType')]",
-        "tenantId": "[parameters('tenantId')]"
-      },
-      "dependsOn": [
-        "postgreSqlFlexibleServer"
-      ]
+  "type": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
+  "apiVersion": "2022-12-01",
+  "name": "[format('{0}/{1}', parameters('serverName'), parameters('name'))]",
+  "properties": {
+    "principalName": "[parameters('principalName')]",
+    "principalType": "[parameters('principalType')]",
+    "tenantId": "[parameters('tenantId')]"
+  },
+  "dependsOn": [
+    "postgreSqlFlexibleServer"
+  ]
+}
+```
+
+To deploy Azure Database for PostgreSQL single servers that pass this rule:
+
+- Configure the `Microsoft.DBforPostgreSQL/servers/administrators` sub-resource.
+- Set the `properties.administratorType` to `ActiveDirectory`.
+- Set the `properties.login` to the AAD administrator login object name.
+- Set the `properties.sid` to the object ID GUID of the AAD administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.DBforPostgreSQL/servers/administrators",
+  "apiVersion": "2017-12-01",
+  "name": "[format('{0}/{1}', parameters('serverName'), 'activeDirectory')]",
+  "properties": {
+    "administratorType": "ActiveDirectory",
+    "login": "[parameters('login')]",
+    "sid": "[parameters('sid')]",
+    "tenantId": "[parameters('tenantId')]"
+  },
+  "dependsOn": [
+    "postgreSqlSingleServer"
+  ]
 }
 ```
 
@@ -79,35 +106,6 @@ resource aadAdmin 'Microsoft.DBforPostgreSQL/flexibleServers/administrators@2022
   }
 }
 ```
-
-To deploy Azure Database for PostgreSQL single servers that pass this rule:
-
-- Configure the `Microsoft.DBforPostgreSQL/servers/administrators` sub-resource.
-- Set the `properties.administratorType` to `ActiveDirectory`.
-- Set the `properties.login` to the AAD administrator login object name.
-- Set the `properties.sid` to the object ID GUID of the AAD administrator user, group, or application.
-- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
-
-For example:
-
-```json
-{
-    "type": "Microsoft.DBforPostgreSQL/servers/administrators",
-    "apiVersion": "2017-12-01",
-    "name": "[format('{0}/{1}', parameters('serverName'), 'activeDirectory')]",
-      "properties": {
-        "administratorType": "ActiveDirectory",
-        "login": "[parameters('login')]",
-        "sid": "[parameters('sid')]",
-        "tenantId": "[parameters('tenantId')]"
-      },
-      "dependsOn": [
-        "postgreSqlSingleServer"
-      ]
-}
-```
-
-### Configure with Bicep
 
 To deploy Azure Database for PostgreSQL single servers that pass this rule:
 
