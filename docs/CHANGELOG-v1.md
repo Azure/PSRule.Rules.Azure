@@ -35,6 +35,9 @@ What's changed since v1.27.1:
       [#2250](https://github.com/Azure/PSRule.Rules.Azure/issues/2250)
     - Check that Azure AD authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
       [#2249](https://github.com/Azure/PSRule.Rules.Azure/issues/2249)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.6.1.
+    [#2256](https://github.com/Azure/PSRule.Rules.Azure/pull/2256)
 
 ## v1.27.1
 
@@ -115,7 +118,7 @@ What's changed since v1.26.1:
     - Check that Microsoft Defender for Storage v2 is enabled by @BenjaminEngeset.
       [#2205](https://github.com/Azure/PSRule.Rules.Azure/issues/2205)
 - Engineering:
-  - Bump Microsoft.NET.Test.Sdk to 17.6.0.
+  - Bump Microsoft.NET.Test.Sdk to v17.6.0.
     [#2216](https://github.com/Azure/PSRule.Rules.Azure/pull/2216)
 - Bug fixes:
   - Fixed ignoring Redis firewall rules when Redis is configured to allow private connectivity by @BenjaminEngeset.
@@ -229,7 +232,7 @@ What's changed since pre-release v1.27.0-B0015:
     - Check that Microsoft Defender for Storage v2 is enabled by @BenjaminEngeset.
       [#2205](https://github.com/Azure/PSRule.Rules.Azure/issues/2205)
 - Engineering:
-  - Bump Microsoft.NET.Test.Sdk to 17.6.0.
+  - Bump Microsoft.NET.Test.Sdk to v17.6.0.
     [#2216](https://github.com/Azure/PSRule.Rules.Azure/pull/2216)
 - Bug fixes:
   - Fixed handling of database name in `Azure.MariaDB.Database` by @BernieWhite.
