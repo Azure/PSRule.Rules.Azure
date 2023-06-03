@@ -28,6 +28,37 @@
   },
   {
     "aliases": null,
+    "resourceType": "enterprisePolicies",
+    "apiVersions": [
+      "2020-10-30-preview",
+      "2020-10-30"
+    ],
+    "locations": [
+      "Asia",
+      "Australia",
+      "Brazil",
+      "Canada",
+      "Central US",
+      "East US",
+      "Europe",
+      "France",
+      "Germany",
+      "India",
+      "Japan",
+      "Korea",
+      "Norway",
+      "Singapore",
+      "South Africa",
+      "Switzerland",
+      "UAE",
+      "UK",
+      "United States",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2020-10-30-preview",

@@ -21,12 +21,70 @@
   },
   {
     "aliases": null,
+    "resourceType": "licenseSkus",
+    "apiVersions": [
+      "2023-02-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-02-01-preview",
       "2021-09-01-preview",
       "2021-02-01-preview"
     ],
     "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/alertSuppressionRules",
+    "apiVersions": [
+      "2022-08-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2 EUAP",
+      "West Europe"
+    ],
     "zoneMappings": null
   },
   {
@@ -87,6 +145,44 @@
     ],
     "locations": [
       "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/endpoints",
+    "apiVersions": [
+      "2023-02-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/remoteConfigurations",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2 EUAP",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/sensors",
+    "apiVersions": [
+      "2021-09-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2 EUAP",
       "West Europe"
     ],
     "zoneMappings": null
@@ -191,6 +287,7 @@
     "aliases": null,
     "resourceType": "sites",
     "apiVersions": [
+      "2023-02-01-preview",
       "2021-09-01-preview",
       "2021-02-01-preview"
     ],

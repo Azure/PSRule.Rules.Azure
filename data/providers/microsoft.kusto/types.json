@@ -101,6 +101,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -112,6 +113,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -130,7 +132,224 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Central US",
+        "zones": []
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UAE North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US",
+        "zones": []
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
   },
   {
     "aliases": {
@@ -183,6 +402,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -194,6 +414,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -271,6 +492,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -282,6 +504,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -373,6 +596,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -384,6 +608,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -440,6 +665,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -451,6 +677,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -510,6 +737,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -521,6 +749,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -567,6 +796,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -578,6 +808,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -637,6 +868,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -648,6 +880,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -726,6 +959,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -737,6 +971,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -792,6 +1027,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -803,6 +1039,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -845,6 +1082,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -856,6 +1094,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",

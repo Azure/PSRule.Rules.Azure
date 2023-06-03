@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-01-15-preview",
       "2023-01-01-preview",
       "2022-12-15-preview",
       "2022-12-01-preview",
@@ -24,6 +25,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-01-15-preview",
       "2023-01-01-preview",
       "2022-12-15-preview",
       "2022-12-01-preview",
@@ -48,6 +50,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-01-15-preview",
       "2023-01-01-preview",
       "2022-12-15-preview",
       "2022-12-01-preview",
@@ -69,6 +72,7 @@
     "aliases": null,
     "resourceType": "skus",
     "apiVersions": [
+      "2023-01-15-preview",
       "2023-01-01-preview",
       "2022-12-15-preview",
       "2022-12-01-preview",
@@ -101,6 +105,17 @@
       "2021-12-01",
       "2021-09-01",
       "2020-12-16-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/actionRequests",
+    "apiVersions": [
+      "2023-01-01-preview"
     ],
     "locations": [
       "global"

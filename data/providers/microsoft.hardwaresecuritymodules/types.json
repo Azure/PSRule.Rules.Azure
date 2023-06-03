@@ -1,6 +1,17 @@
 [
   {
     "aliases": null,
+    "resourceType": "cloudHsmClusters",
+    "apiVersions": [
+      "2022-08-31-preview"
+    ],
+    "locations": [
+      "UK West"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
       "2021-11-30",

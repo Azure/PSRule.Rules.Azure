@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -26,6 +28,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-06-01",
@@ -55,6 +59,8 @@
     "aliases": null,
     "resourceType": "locations/asyncOperations",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -132,7 +138,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -140,6 +147,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -225,7 +234,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -233,6 +243,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-06-01",
@@ -305,6 +317,8 @@
     },
     "resourceType": "Redis",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -583,6 +597,8 @@
     "aliases": null,
     "resourceType": "Redis/EventGridFilters",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -651,6 +667,8 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -704,6 +722,8 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -765,6 +785,8 @@
     },
     "resourceType": "Redis/privateEndpointConnections",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -818,6 +840,8 @@
     "aliases": null,
     "resourceType": "Redis/privateLinkResources",
     "apiVersions": [
+      "2023-05-01-preview",
+      "2023-04-01",
       "2022-06-01",
       "2022-05-01",
       "2021-06-01",
@@ -918,7 +942,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": [
       {
@@ -1024,6 +1049,14 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       }
     ]
   },
@@ -1078,7 +1111,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1110,7 +1144,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1142,7 +1177,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1174,7 +1210,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1214,7 +1251,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1246,7 +1284,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1278,7 +1317,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },

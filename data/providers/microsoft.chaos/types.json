@@ -15,6 +15,7 @@
       "East US 2",
       "Japan East",
       "North Central US",
+      "Sweden Central",
       "UK South",
       "West Central US",
       "West Europe",
@@ -56,6 +57,7 @@
       "West Central US",
       "West Europe",
       "West US",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null
@@ -97,6 +99,7 @@
       "West Central US",
       "West Europe",
       "West US",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null

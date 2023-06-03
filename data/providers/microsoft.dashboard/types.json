@@ -67,6 +67,27 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "grafana/managedPrivateEndpoints",
+    "apiVersions": [
+      "2022-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Dashboard/grafana/privateEndpointConnections/groupIds": "properties.groupIds",
       "Microsoft.Dashboard/grafana/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
@@ -164,10 +185,13 @@
       "East US 2 EUAP",
       "North Europe",
       "South Central US",
+      "Southeast Asia",
       "Sweden Central",
       "UK South",
       "West Central US",
       "West Europe",
+      "West US",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null

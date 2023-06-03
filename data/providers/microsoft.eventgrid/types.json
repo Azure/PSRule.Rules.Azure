@@ -543,6 +543,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
@@ -820,8 +821,28 @@
   },
   {
     "aliases": null,
+    "resourceType": "namespaces",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "Central US",
+      "East Asia",
+      "East US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UAE North",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
@@ -846,6 +867,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
@@ -911,6 +933,7 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-06-15",
       "2021-12-01",
       "2021-10-15-preview",
@@ -935,6 +958,7 @@
     "aliases": null,
     "resourceType": "partnerConfigurations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-06-15",
       "2021-10-15-preview"
     ],
@@ -1252,6 +1276,7 @@
     },
     "resourceType": "partnerRegistrations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-06-15",
       "2021-10-15-preview",
       "2021-06-01-preview",

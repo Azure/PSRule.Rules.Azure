@@ -118,8 +118,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2022-11-01",
-      "2022-03-01"
+      "2022-11-01"
     ],
     "locations": [
       "Australia East",
@@ -129,6 +128,7 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "UK South",
       "West US",
       "West US 2",
       "West US 3"
@@ -140,6 +140,7 @@
     "resourceType": "locations/operationResults",
     "apiVersions": [
       "2022-11-01",
+      "2022-06-01-preview",
       "2022-03-01"
     ],
     "locations": [
@@ -161,9 +162,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2022-11-01",
-      "2022-03-01",
-      "2021-04-04-preview"
+      "2022-11-01"
     ],
     "locations": [
       "Australia East",
@@ -174,6 +173,7 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "UK South",
       "West US",
       "West US 2",
       "West US 3"

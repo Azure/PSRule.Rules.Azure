@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "azureDevOpsConnectors",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -16,6 +17,7 @@
     "aliases": null,
     "resourceType": "azureDevOpsConnectors/orgs",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -29,6 +31,7 @@
     "aliases": null,
     "resourceType": "azureDevOpsConnectors/orgs/projects",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -42,6 +45,7 @@
     "aliases": null,
     "resourceType": "azureDevOpsConnectors/orgs/projects/repos",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -55,6 +59,7 @@
     "aliases": null,
     "resourceType": "azureDevOpsConnectors/repos",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -68,6 +73,7 @@
     "aliases": null,
     "resourceType": "azureDevOpsConnectors/stats",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -81,6 +87,7 @@
     "aliases": null,
     "resourceType": "gitHubConnectors",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2021-10-01-preview"
     ],
@@ -93,8 +100,35 @@
   },
   {
     "aliases": null,
+    "resourceType": "gitHubConnectors/gitHubInstallations",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitHubConnectors/gitHubInstallations/gitHubRepositories",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "gitHubConnectors/owners",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -108,6 +142,7 @@
     "aliases": null,
     "resourceType": "gitHubConnectors/owners/repos",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -121,6 +156,7 @@
     "aliases": null,
     "resourceType": "gitHubConnectors/repos",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -134,7 +170,73 @@
     "aliases": null,
     "resourceType": "gitHubConnectors/stats",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitLabConnectors",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitLabConnectors/groups",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitLabConnectors/groups/projects",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitLabConnectors/projects",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "gitLabConnectors/stats",
+    "apiVersions": [
+      "2023-06-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -147,6 +249,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2021-10-01-preview"
     ],
@@ -157,6 +260,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2021-10-01-preview"
     ],
@@ -171,6 +275,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2021-10-01-preview"
     ],

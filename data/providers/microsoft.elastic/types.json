@@ -17,6 +17,24 @@
   },
   {
     "aliases": null,
+    "resourceType": "elasticVersions",
+    "apiVersions": [
+      "2023-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "getOrganizationApiKey",
+    "apiVersions": [
+      "2023-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
       "2023-02-01-preview",

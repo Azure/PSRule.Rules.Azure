@@ -109,9 +109,9 @@
       "Microsoft.DBForMySql/flexibleServers/byokEnforcement": "properties.byokEnforcement",
       "Microsoft.DBForMySql/flexibleServers/createMode": "properties.createMode",
       "Microsoft.DBForMySql/flexibleServers/dataEncryption": "properties.dataEncryption",
-      "Microsoft.DBForMySql/flexibleServers/dataEncryption.geoBackupKeyUri": "properties.dataEncryption.geoBackupKeyUri",
+      "Microsoft.DBForMySql/flexibleServers/dataEncryption.geoBackupKeyUri": "properties.dataEncryption.geoBackupKeyURI",
       "Microsoft.DBForMySql/flexibleServers/dataEncryption.geoBackupUserAssignedIdentityId": "properties.dataEncryption.geoBackupUserAssignedIdentityId",
-      "Microsoft.DBForMySql/flexibleServers/dataEncryption.primaryKeyUri": "properties.dataEncryption.primaryKeyUri",
+      "Microsoft.DBForMySql/flexibleServers/dataEncryption.primaryKeyUri": "properties.dataEncryption.primaryKeyURI",
       "Microsoft.DBForMySql/flexibleServers/dataEncryption.primaryUserAssignedIdentityId": "properties.dataEncryption.primaryUserAssignedIdentityId",
       "Microsoft.DBForMySql/flexibleServers/dataEncryption.type": "properties.dataEncryption.type",
       "Microsoft.DBForMySql/flexibleServers/delegatedSubnetArguments": "properties.delegatedSubnetArguments",
@@ -150,6 +150,7 @@
       "Microsoft.DBForMySql/flexibleServers/state": "properties.state",
       "Microsoft.DBForMySql/flexibleServers/storage": "properties.storage",
       "Microsoft.DBForMySql/flexibleServers/storage.autoGrow": "properties.storage.autoGrow",
+      "Microsoft.DBforMySQL/flexibleServers/storage.autoIoScaling": "properties.storage.autoIoScaling",
       "Microsoft.DBForMySql/flexibleServers/storage.iops": "properties.storage.iops",
       "Microsoft.DBForMySql/flexibleServers/storage.storageSizeGB": "properties.storage.storageSizeGB",
       "Microsoft.DBForMySql/flexibleServers/storage.storageSku": "properties.storage.storageSku",
@@ -167,6 +168,8 @@
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
+      "2022-06-01-preview",
+      "2022-01-01",
       "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
@@ -178,6 +181,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -187,6 +191,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -196,8 +201,10 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -213,13 +220,190 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": []
+      },
+      {
+        "location": "Brazil South",
+        "zones": []
+      },
+      {
+        "location": "Canada Central",
+        "zones": []
+      },
+      {
+        "location": "Central India",
+        "zones": []
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": []
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": []
+      },
+      {
+        "location": "North Central US",
+        "zones": []
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": []
+      },
+      {
+        "location": "Poland Central",
+        "zones": []
+      },
+      {
+        "location": "Qatar Central",
+        "zones": []
+      },
+      {
+        "location": "South Africa North",
+        "zones": []
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UAE North",
+        "zones": []
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US",
+        "zones": []
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
   },
   {
     "aliases": null,
     "resourceType": "getPrivateDnsZoneSuffix",
     "apiVersions": [
+      "2022-09-30-privatepreview",
+      "2022-09-30-preview",
       "2022-06-01-privatepreview",
+      "2022-06-01-preview",
+      "2022-01-01",
       "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
@@ -429,6 +613,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -449,6 +634,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -477,6 +663,8 @@
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
+      "2022-06-01-preview",
+      "2022-01-01",
       "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
@@ -488,6 +676,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -497,6 +686,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -506,8 +696,10 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -532,6 +724,8 @@
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
+      "2022-06-01-preview",
+      "2022-01-01",
       "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01"
@@ -541,6 +735,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -550,6 +745,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -559,8 +755,10 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -585,6 +783,8 @@
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
+      "2022-06-01-preview",
+      "2022-01-01",
       "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
@@ -596,6 +796,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -605,6 +806,7 @@
       "East US 2",
       "France Central",
       "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -614,8 +816,65 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/listMigrations",
+    "apiVersions": [
+      "2022-09-30-privatepreview",
+      "2022-09-30-preview",
+      "2022-06-01-preview",
+      "2022-01-01"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -643,6 +902,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -663,6 +923,7 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -1242,9 +1503,68 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/updateMigration",
+    "apiVersions": [
+      "2022-09-30-privatepreview",
+      "2022-09-30-preview",
+      "2022-06-01-preview",
+      "2022-01-01"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-09-30-privatepreview",
+      "2022-09-30-preview",
       "2022-06-01-privatepreview",
+      "2022-06-01-preview",
+      "2022-01-01",
       "2021-12-01-preview",
       "2021-05-01-preview",
       "2021-05-01",
@@ -2103,6 +2423,16 @@
       "West US 3"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.DBforMySQL/flexibleServers/administrators/administratorType": "properties.administratorType",
+      "Microsoft.DBforMySQL/flexibleServers/administrators/identityResourceId": "properties.identityResourceId",
+      "Microsoft.DBforMySQL/flexibleServers/administrators/login": "properties.login",
+      "Microsoft.DBforMySQL/flexibleServers/administrators/sid": "properties.sid",
+      "Microsoft.DBforMySQL/flexibleServers/administrators/tenantId": "properties.tenantId"
+    },
+    "resourceType": "flexibleservers/administrators"
   },
   {
     "aliases": {

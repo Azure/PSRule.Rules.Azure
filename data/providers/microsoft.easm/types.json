@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-04-01-preview",
       "2022-04-01-preview"
     ],
     "locations": [],
@@ -12,15 +13,22 @@
     "aliases": null,
     "resourceType": "workspaces",
     "apiVersions": [
+      "2023-04-01-preview",
       "2022-04-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
+      "Central US",
       "East Asia",
       "East US",
+      "France Central",
       "Japan East",
+      "North Europe",
+      "Norway East",
       "South Central US",
       "Sweden Central",
+      "Switzerland North",
       "West Europe",
       "West US 3"
     ],
@@ -30,15 +38,46 @@
     "aliases": null,
     "resourceType": "workspaces/labels",
     "apiVersions": [
+      "2023-04-01-preview",
       "2022-04-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
+      "Central US",
       "East Asia",
       "East US",
+      "France Central",
       "Japan East",
+      "North Europe",
+      "Norway East",
       "South Central US",
       "Sweden Central",
+      "Switzerland North",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/tasks",
+    "apiVersions": [
+      "2023-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "East Asia",
+      "East US",
+      "France Central",
+      "Japan East",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Sweden Central",
+      "Switzerland North",
       "West Europe",
       "West US 3"
     ],

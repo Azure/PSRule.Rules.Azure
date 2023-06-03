@@ -8,5 +8,29 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces",
+    "apiVersions": [
+      "2023-02-08-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/firmwares",
+    "apiVersions": [
+      "2023-02-08-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": null
   }
 ]

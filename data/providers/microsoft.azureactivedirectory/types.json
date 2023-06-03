@@ -72,6 +72,23 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "ciamDirectories",
+    "apiVersions": [
+      "2023-01-18-preview",
+      "2022-03-01-preview"
+    ],
+    "locations": [
+      "Asia Pacific",
+      "Australia",
+      "Europe",
+      "Global",
+      "Japan",
+      "United States"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.AzureActiveDirectory/guestUsages/tenantId": "properties.tenantId"
     },

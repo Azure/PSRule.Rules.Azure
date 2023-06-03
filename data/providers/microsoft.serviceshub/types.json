@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "connectors",
     "apiVersions": [
+      "2023-04-17-preview",
       "2019-08-15-preview"
     ],
     "locations": [
@@ -26,6 +27,15 @@
       "West US",
       "West US 2"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "getRecommendationsContent",
+    "apiVersions": [
+      "2023-03-24-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {

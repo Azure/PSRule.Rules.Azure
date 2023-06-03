@@ -97,6 +97,20 @@
   },
   {
     "aliases": null,
+    "resourceType": "provisionedClusters/upgradeProfiles",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "virtualNetworks",
     "apiVersions": [
       "2022-09-01-preview",

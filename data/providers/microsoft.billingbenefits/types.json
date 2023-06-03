@@ -15,8 +15,30 @@
   },
   {
     "aliases": null,
+    "resourceType": "incentiveSchedules",
+    "apiVersions": [
+      "2023-07-01-beta"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "incentiveSchedules/milestones",
+    "apiVersions": [
+      "2023-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -43,6 +65,8 @@
     "aliases": null,
     "resourceType": "reservationOrderAliases",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -55,6 +79,8 @@
     "aliases": null,
     "resourceType": "savingsPlanOrderAliases",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -69,6 +95,8 @@
     "aliases": null,
     "resourceType": "savingsPlanOrders",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -83,6 +111,8 @@
     "aliases": null,
     "resourceType": "savingsPlanOrders/savingsPlans",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -97,6 +127,8 @@
     "aliases": null,
     "resourceType": "savingsPlans",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",

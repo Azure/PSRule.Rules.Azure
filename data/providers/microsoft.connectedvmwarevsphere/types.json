@@ -21,7 +21,7 @@
       "Microsoft.ConnectedVMwarevSphere/clusters/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/clusters/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "clusters",
+    "resourceType": "Clusters",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -55,7 +55,7 @@
       "Microsoft.ConnectedVMwarevSphere/datastores/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/datastores/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "datastores",
+    "resourceType": "Datastores",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -89,7 +89,7 @@
       "Microsoft.ConnectedVMwarevSphere/hosts/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/hosts/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "hosts",
+    "resourceType": "Hosts",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -109,6 +109,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-07-15-preview",
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -120,6 +121,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-07-15-preview",
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -128,10 +130,15 @@
       "Australia East",
       "Canada Central",
       "East US",
+      "East US 2",
       "East US 2 EUAP",
+      "North Europe",
+      "South Central US",
       "Southeast Asia",
       "UK South",
-      "West Europe"
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -139,6 +146,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-07-15-preview",
       "2022-01-10-preview",
       "2020-10-01-preview"
@@ -170,7 +178,7 @@
       "Microsoft.ConnectedVMwarevSphere/resourcePools/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/resourcePools/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "resourcepools",
+    "resourceType": "ResourcePools",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -263,7 +271,7 @@
       "Microsoft.ConnectedVMwarevSphere/vcenters/inventoryItems/VirtualMachineTemplate.osName": "properties.osName",
       "Microsoft.ConnectedVMwarevSphere/vcenters/inventoryItems/VirtualMachineTemplate.osType": "properties.osType"
     },
-    "resourceType": "vcenters/inventoryitems",
+    "resourceType": "VCenters/InventoryItems",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -392,7 +400,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/vCenterId": "properties.vCenterId",
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/vmId": "properties.vmId"
     },
-    "resourceType": "virtualmachines",
+    "resourceType": "VirtualMachines",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -427,7 +435,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/extensions/type": "properties.type",
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/extensions/typeHandlerVersion": "properties.typeHandlerVersion"
     },
-    "resourceType": "virtualmachines/extensions",
+    "resourceType": "VirtualMachines/Extensions",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -464,7 +472,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/guestAgents/statuses[*].type": "properties.statuses[*].type",
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/guestAgents/uuid": "properties.uuid"
     },
-    "resourceType": "virtualmachines/guestagents",
+    "resourceType": "VirtualMachines/GuestAgents",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -490,7 +498,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/hybridIdentityMetadata/publicKey": "properties.publicKey",
       "Microsoft.ConnectedVMwarevSphere/virtualMachines/hybridIdentityMetadata/vmId": "properties.vmId"
     },
-    "resourceType": "virtualmachines/hybrididentitymetadata",
+    "resourceType": "VirtualMachines/HybridIdentityMetadata",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -573,7 +581,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/virtualMachineTemplates/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "virtualmachinetemplates",
+    "resourceType": "VirtualMachineTemplates",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",
@@ -607,7 +615,7 @@
       "Microsoft.ConnectedVMwarevSphere/virtualNetworks/uuid": "properties.uuid",
       "Microsoft.ConnectedVMwarevSphere/virtualNetworks/vCenterId": "properties.vCenterId"
     },
-    "resourceType": "virtualnetworks",
+    "resourceType": "VirtualNetworks",
     "apiVersions": [
       "2022-07-15-preview",
       "2022-01-10-preview",

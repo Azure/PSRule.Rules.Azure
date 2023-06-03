@@ -42,7 +42,29 @@
     ],
     "locations": [
       "Central US EUAP",
-      "East US 2 EUAP"
+      "East US",
+      "East US 2",
+      "East US 2 EUAP",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2021-06-06-Preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -88,6 +110,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -97,6 +120,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -204,6 +228,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -213,6 +238,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",

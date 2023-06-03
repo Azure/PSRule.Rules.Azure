@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-06-01",
       "2023-03-23-preview",
       "2023-03-03-preview",
       "2023-01-01-preview"
@@ -14,6 +15,7 @@
     "aliases": null,
     "resourceType": "diagnostics",
     "apiVersions": [
+      "2023-06-01",
       "2023-01-01-preview"
     ],
     "locations": [],
@@ -23,6 +25,7 @@
     "aliases": null,
     "resourceType": "discoverySolutions",
     "apiVersions": [
+      "2023-06-01",
       "2023-01-01-preview"
     ],
     "locations": [],
@@ -32,6 +35,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-06-01",
       "2023-03-03-preview",
       "2023-01-01-preview"
     ],
@@ -42,6 +46,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-01",
       "2023-03-23-preview",
       "2023-03-03-preview",
       "2023-01-01-preview"

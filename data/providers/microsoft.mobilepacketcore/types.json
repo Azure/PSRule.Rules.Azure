@@ -1,0 +1,23 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2023-04-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2023-04-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Central US"
+    ],
+    "zoneMappings": null
+  }
+]

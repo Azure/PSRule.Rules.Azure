@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "applyUpdates",
     "apiVersions": [
+      "2023-04-01",
       "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
@@ -45,6 +46,7 @@
       "Norway East",
       "Norway West",
       "Poland Central",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -72,20 +74,7 @@
       "Microsoft.Maintenance/configurationAssignments/resourceId": "properties.resourceId"
     },
     "resourceType": "configurationAssignments",
-    "apiVersions": [
-      "2022-11-01-preview",
-      "2022-07-01-preview",
-      "2021-09-01-preview",
-      "2021-05-01",
-      "2021-04-01-preview",
-      "2020-07-01-preview",
-      "2020-04-01",
-      "2018-10-01",
-      "2018-06-01-preview",
-      "2017-04-26",
-      "2017-01-01",
-      "2016-01-01"
-    ],
+    "apiVersions": [],
     "locations": [
       "Australia Central",
       "Australia Central 2",
@@ -115,6 +104,7 @@
       "Norway East",
       "Norway West",
       "Poland Central",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -179,6 +169,7 @@
     },
     "resourceType": "maintenanceConfigurations",
     "apiVersions": [
+      "2023-04-01",
       "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
@@ -221,6 +212,7 @@
       "Norway East",
       "Norway West",
       "Poland Central",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -246,6 +238,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-04-01",
       "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
@@ -288,6 +281,7 @@
       "Norway East",
       "Norway West",
       "Poland Central",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
@@ -313,6 +307,7 @@
     "aliases": null,
     "resourceType": "publicMaintenanceConfigurations",
     "apiVersions": [
+      "2023-04-01",
       "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
@@ -327,6 +322,7 @@
     "aliases": null,
     "resourceType": "updates",
     "apiVersions": [
+      "2023-04-01",
       "2022-11-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
@@ -369,6 +365,7 @@
       "Norway East",
       "Norway West",
       "Poland Central",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",

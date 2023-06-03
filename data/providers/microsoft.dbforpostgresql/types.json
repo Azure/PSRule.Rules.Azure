@@ -41,6 +41,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
@@ -178,6 +179,8 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2023-03-01-preview",
+      "2023-01-01-privatepreview",
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
@@ -187,14 +190,371 @@
       "2022-01-20-preview",
       "2021-06-01-preview",
       "2021-06-01",
-      "2021-05-01-privatepreview",
-      "2021-04-10-privatepreview",
-      "2020-11-05-preview",
       "2020-02-14-privatepreview",
       "2020-02-14-preview"
     ],
     "locations": [
       "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Central US",
+        "zones": []
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UAE North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US",
+        "zones": []
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": null,
+    "resourceType": "flexibleServers/privateEndpointConnectionProxies",
+    "apiVersions": [
+      "2023-01-01-privatepreview",
+      "2022-06-01-privatepreview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "flexibleServers/privateEndpointConnections",
+    "apiVersions": [
+      "2023-01-01-privatepreview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "flexibleServers/privateLinkResources",
+    "apiVersions": [
+      "2023-01-01-privatepreview"
+    ],
+    "locations": [
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -454,6 +814,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -479,6 +840,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
@@ -488,7 +850,6 @@
       "2022-01-20-preview",
       "2021-06-01-preview",
       "2021-06-01",
-      "2020-11-05-preview",
       "2020-02-14-privatepreview",
       "2020-02-14-preview"
     ],
@@ -515,6 +876,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -538,6 +900,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
@@ -547,7 +910,6 @@
       "2022-01-20-preview",
       "2021-06-01-preview",
       "2021-06-01",
-      "2020-11-05-preview",
       "2020-02-14-privatepreview",
       "2020-02-14-preview"
     ],
@@ -574,6 +936,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -597,6 +960,7 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",
@@ -604,7 +968,6 @@
       "2022-03-08-preview",
       "2021-06-01-preview",
       "2021-06-01",
-      "2020-11-05-preview",
       "2020-02-14-privatepreview",
       "2020-02-14-preview"
     ],
@@ -631,6 +994,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -698,6 +1062,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Africa West",
@@ -1279,6 +1644,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
       "2022-05-01-privatepreview",

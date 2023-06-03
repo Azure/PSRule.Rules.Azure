@@ -10,6 +10,17 @@
   },
   {
     "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2022-12-31-preview"
+    ],
+    "locations": [
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
       "2022-12-31-preview"
