@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.27.0:
+
+- Bug fixes:
+  - Fixed depends on ordering fails to expand deployment by @BernieWhite.
+    [#2255](https://github.com/Azure/PSRule.Rules.Azure/issues/2255)
+
 ## v1.27.0
 
 What's changed since v1.26.1:

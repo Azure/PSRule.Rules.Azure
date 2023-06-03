@@ -10,10 +10,21 @@ namespace PSRule.Rules.Azure
     {
         public int Compare(IResourceValue x, IResourceValue y)
         {
-            if (x.DependsOn(y))
+            if (x.DependsOn(y, out var xc))
                 return 1;
 
-            return y.DependsOn(x) ? -1 : 0;
+            if (y.DependsOn(x, out var yc))
+                return -1;
+
+            if (xc == 0 && yc == 0)
+                return 0;
+
+            if (yc == 0) return 1;
+            if (xc == 0) return -1;
+
+            return 0;
+
+            //return xc == 0 && yc == 0 ? 0 : yc == 0 || yc > 0 ? -1 : 1;
         }
     }
 }
