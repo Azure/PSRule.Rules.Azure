@@ -166,6 +166,20 @@
         "Type": "Microsoft.DBforPostgreSQL/servers/firewallRules",
         "ResourceType": "Microsoft.DBforPostgreSQL/servers/firewallRules",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ActiveDirectory",
+        "Name": "ActiveDirectory",
+        "Properties": {
+          "administratorType": null,
+          "login": null,
+          "sid": null,
+          "tenantId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforPostgreSQL/servers/administrators",
+        "ResourceType": "Microsoft.DBforPostgreSQL/servers/administrators",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -291,6 +305,20 @@
         "Type": "Microsoft.DBforPostgreSQL/servers/securityAlertPolicies",
         "ResourceType": "Microsoft.DBforPostgreSQL/servers/securityAlertPolicies",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "ActiveDirectory",
+        "Name": "ActiveDirectory",
+        "Properties": {
+          "administratorType": "ActiveDirectory",
+          "login": "admin@contoso.com",
+          "sid": "00000000-0000-0000-0000-000000000000",
+          "tenantId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforPostgreSQL/servers/administrators",
+        "ResourceType": "Microsoft.DBforPostgreSQL/servers/administrators",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -358,7 +386,22 @@
       "Tier": "GeneralPurpose"
     },
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceName": "ActiveDirectoryAdmin-A",
+        "Name": "ActiveDirectoryAdmin-A",
+        "Properties": {
+          "principalName": null,
+          "principalType": null,
+          "tenantId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
+        "ResourceType": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/server-F",
@@ -394,6 +437,86 @@
       "Tier": "MemoryOptimized"
     },
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceName": "ActiveDirectoryAdmin-A",
+        "Name": "ActiveDirectoryAdmin-A",
+        "Properties": {
+          "principalName": "admin@contoso.com",
+          "principalType": "User",
+          "tenantId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
+        "ResourceType": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "Name": "ActiveDirectoryAdmin-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/servers/server-B/administrators/ActiveDirectoryAdmin-A",
+    "ResourceName": "ActiveDirectoryAdmin-A",
+    "ResourceType": "Microsoft.DBforPostgreSQL/servers/administrators",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "login": null,
+      "sid": null,
+      "tenantId": null
+    }
+  },
+  {
+    "Name": "ActiveDirectoryAdmin-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/servers/server-C/administrators/ActiveDirectoryAdmin-B",
+    "ResourceName": "ActiveDirectoryAdmin-B",
+    "ResourceType": "Microsoft.DBforPostgreSQL/servers/administrators",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "administratorType": "ActiveDirectory",
+      "login": "admin@contoso.com",
+      "sid": "00000000-0000-0000-0000-000000000000",
+      "tenantId": "00000000-0000-0000-0000-000000000000"
+    }
+  },
+  {
+    "Name": "ActiveDirectoryAdmin-C",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/server-E/administrators/ActiveDirectoryAdmin-C",
+    "ResourceName": "ActiveDirectoryAdmin-C",
+    "ResourceType": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "principalName": null,
+      "principalType": null,
+      "tenantId": "00000000-0000-0000-0000-000000000000"
+    }
+  },
+  {
+    "Name": "ActiveDirectoryAdmin-D",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforPostgreSQL/flexibleServers/server-F/administrators/ActiveDirectoryAdmin-D",
+    "ResourceName": "ActiveDirectoryAdmin-D",
+    "ResourceType": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "principalName": "admin@contoso.com",
+      "principalType": "User",
+      "tenantId": "00000000-0000-0000-0000-000000000000"
+    }
   }
 ]

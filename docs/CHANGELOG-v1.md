@@ -33,6 +33,8 @@ What's changed since v1.27.1:
   - Azure Database for PostgreSQL:
     - Check that Azure AD-only authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
       [#2250](https://github.com/Azure/PSRule.Rules.Azure/issues/2250)
+    - Check that Azure AD authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
+      [#2249](https://github.com/Azure/PSRule.Rules.Azure/issues/2249)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.6.1.
     [#2256](https://github.com/Azure/PSRule.Rules.Azure/pull/2256)
