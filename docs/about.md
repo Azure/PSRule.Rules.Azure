@@ -28,4 +28,13 @@ We also give an quick overview of baselines, handling exceptions, and reporting 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/L4CIDqnXLPk" title="YouTube - Introducing PSRule for Azure" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
+## Who uses PSRule for Azure?
+
+Several first-party repositories use PSRule for Azure.
+Here's a few you may be familiar with:
+
+- [Azure/ResourceModules](https://github.com/Azure/ResourceModules) - Common Azure Resource Modules Library
+- [Azure/ALZ-Bicep](https://github.com/Azure/ALZ-Bicep) - Azure Landing Zones (ALZ)
+- [Azure/AKS-Construction](https://github.com/Azure/AKS-Construction) - AKS Construction
+
 *[IaC]: Infrastructure as Code
