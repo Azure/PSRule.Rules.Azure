@@ -1,6 +1,5 @@
 {
-  "$schema": "https://raw.githubusercontent.com/devcontainers/spec/main/schemas/devContainer.schema.json",
-  "name": "PSRule for Azure dev",
+  "name": "PSRule for Azure Developer Codespace",
   "customizations": {
     "vscode": {
       "settings": {
@@ -13,15 +12,22 @@
       },
       "extensions": [
         "ms-dotnettools.csharp",
-        "bewhite.psrule-vscode-preview",
         "msazurermtools.azurerm-vscode-tools",
-        "ms-azuretools.vscode-bicep"
+        "ms-vscode.powershell",
+        "ms-azuretools.vscode-bicep",
+        "bewhite.psrule-vscode-preview",
+        "GitHub.vscode-pull-request-github",
+        "github.vscode-github-actions"
       ]
     }
   },
   "features": {
-    "github-cli": "latest",
-    "powershell": "latest"
+    "ghcr.io/devcontainers/features/github-cli": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/powershell": {
+      "version": "latest"
+    }
   },
   "onCreateCommand": "/opt/microsoft/powershell/7/pwsh -f .devcontainer/container-build.ps1",
   "postStartCommand": "/opt/microsoft/powershell/7/pwsh -f .devcontainer/container-start.ps1",

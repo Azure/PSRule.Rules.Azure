@@ -1,23 +1,23 @@
 {
-    "Azure rule with type": {
-        "prefix": "rule-azure-with-type",
-        "description": "Rule definition for Azure",
-        "body": [
-            "---",
-            "# Synopsis: ${2}",
-            "apiVersion: github.com/microsoft/PSRule/v1",
-            "kind: Rule",
-            "metadata:",
-            "  name: ${1}",
-            "  ref: AZR-000nnn",
-            "  tags:",
-            "    release: 'GA'",
-            "    ruleSet: '${3}'",
-            "spec:",
-            "  type:",
-            "  - ${4}",
-            "  condition:",
-            "    ${5}"
-        ]
-    }
+  "Azure rule with type": {
+    "prefix": "rule-azure-with-type",
+    "description": "Rule definition for Azure",
+    "body": [
+      "---",
+      "# Synopsis: ${2}",
+      "apiVersion: github.com/microsoft/PSRule/v1",
+      "kind: Rule",
+      "metadata:",
+      "  name: ${1}",
+      "  ref: AZR-000nnn",
+      "  tags:",
+      "    release: 'GA'",
+      "    ruleSet: '${3}'",
+      "spec:",
+      "  type:",
+      "  - ${4}",
+      "  condition:",
+      "    ${5}"
+    ]
+  }
 }
