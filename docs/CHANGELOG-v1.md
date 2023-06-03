@@ -30,6 +30,9 @@ What's changed since v1.27.1:
   - Azure Database for MySQL:
     - Check that Azure AD authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
       [#2226](https://github.com/Azure/PSRule.Rules.Azure/issues/2226)
+  - Azure Database for PostgreSQL:
+    - Check that Azure AD-only authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
+      [#2250](https://github.com/Azure/PSRule.Rules.Azure/issues/2250)
 
 ## v1.27.1
 
@@ -140,9 +143,6 @@ What's changed since pre-release v1.27.0-B0186:
 What's changed since pre-release v1.27.0-B0136:
 
 - New rules:
-  - Azure Database for PostgreSQL:
-    - Check that Azure AD-only authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
-      [#2250](https://github.com/Azure/PSRule.Rules.Azure/issues/2250)
   - API Management:
     - Check that APIs published in Azure API Management are on-boarded to Microsoft Defender for APIs by @BenjaminEngeset.
       [#2187](https://github.com/Azure/PSRule.Rules.Azure/issues/2187)
