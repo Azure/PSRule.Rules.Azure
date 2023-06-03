@@ -1,13 +1,13 @@
 {
-    "rule-azure": {
-        "scope": "powershell",
-        "prefix": "rule-azure",
-        "description": "Rule definition for Azure",
-        "body": [
-            "# Synopsis: ${2}",
-            "Rule '${1}' -Type '${3}' -Tag @{ release = ''; ruleSet = ''; } {",
-            "\t$0",
-            "}"
-        ]
-    }
+  "rule-azure": {
+    "scope": "powershell",
+    "prefix": "rule-azure",
+    "description": "Rule definition for Azure",
+    "body": [
+      "# Synopsis: ${2}",
+      "Rule '${1}' -Type '${3}' -Tag @{ release = ''; ruleSet = ''; } {",
+      "\t$0",
+      "}"
+    ]
+  }
 }
