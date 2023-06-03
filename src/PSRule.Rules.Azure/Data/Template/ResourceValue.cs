@@ -21,7 +21,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         TemplateContext.CopyIndexState Copy { get; }
 
-        bool DependsOn(IResourceValue other);
+        bool DependsOn(IResourceValue other, out int count);
     }
 
     internal static class ResourceValueExtensions
@@ -73,11 +73,13 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public string Name { get; }
 
-        public bool DependsOn(IResourceValue other)
+        public bool DependsOn(IResourceValue other, out int count)
         {
+            count = 0;
             if (_Dependencies == null)
                 return false;
 
+            count = _Dependencies.Count;
             return _Dependencies.Contains(other.Id) ||
                 other.Copy != null && !string.IsNullOrEmpty(other.Copy.Name) && _Dependencies.Contains(other.Copy.Name) ||
                 !string.IsNullOrEmpty(other.Name) && _Dependencies.Contains(other.Name);
