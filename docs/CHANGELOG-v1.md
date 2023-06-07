@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.27.1:
+
+- Bug fixes:
+  - Fixed union function for merge of object properties by @BernieWhite.
+    [#2264](https://github.com/Azure/PSRule.Rules.Azure/issues/2264)
+
 ## v1.27.1
 
 What's changed since v1.27.0:
