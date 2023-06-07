@@ -533,8 +533,12 @@ namespace PSRule.Rules.Azure.Data.Template
                 return (long)s.Length;
             else if (args[0] is Array a)
                 return (long)a.Length;
-            else if (args[0] is JArray jArray)
-                return (long)jArray.Count;
+            else if (args[0] is JToken jToken)
+                return (long)jToken.Count();
+            else if (args[0] is IDictionary dictionary)
+                return (long)dictionary.Count;
+            else if (args[0] is IEnumerable enumerable)
+                return enumerable.OfType<object>().LongCount();
 
             return (long)args[0].GetType().GetProperties().Length;
         }

@@ -29,6 +29,8 @@ What's changed since v1.27.1:
 - Bug fixes:
   - Fixed union function for merge of object properties by @BernieWhite.
     [#2264](https://github.com/Azure/PSRule.Rules.Azure/issues/2264)
+  - Fixed length function counting properties in object by @BernieWhite.
+    [#2263](https://github.com/Azure/PSRule.Rules.Azure/issues/2263)
 
 ## v1.27.1
 
