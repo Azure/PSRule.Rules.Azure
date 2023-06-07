@@ -24,6 +24,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.28.0-B0010:
+
+- Bug fixes:
+  - Fixed union function for merge of object properties by @BernieWhite.
+    [#2264](https://github.com/Azure/PSRule.Rules.Azure/issues/2264)
+  - Fixed length function counting properties in object by @BernieWhite.
+    [#2263](https://github.com/Azure/PSRule.Rules.Azure/issues/2263)
+
 ## v1.28.0-B0010 (pre-release)
 
 What's changed since v1.27.1:
@@ -42,6 +50,16 @@ What's changed since v1.27.1:
     [#2261](https://github.com/Azure/PSRule.Rules.Azure/pull/2261)
   - Bump Microsoft.NET.Test.Sdk to v17.6.1.
     [#2256](https://github.com/Azure/PSRule.Rules.Azure/pull/2256)
+
+## v1.27.2
+
+What's changed since v1.27.1:
+
+- Bug fixes:
+  - Fixed union function for merge of object properties by @BernieWhite.
+    [#2264](https://github.com/Azure/PSRule.Rules.Azure/issues/2264)
+  - Fixed length function counting properties in object by @BernieWhite.
+    [#2263](https://github.com/Azure/PSRule.Rules.Azure/issues/2263)
 
 ## v1.27.1
 

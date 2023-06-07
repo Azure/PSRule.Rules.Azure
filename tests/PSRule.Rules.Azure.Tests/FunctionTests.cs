@@ -346,16 +346,24 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
 
             // Length arrays
-            var actual1 = (long)Functions.Length(context, new object[] { new string[] { "one", "two", "three" } });
-            Assert.Equal(3, actual1);
+            var actual = (long)Functions.Length(context, new object[] { new string[] { "one", "two", "three" } });
+            Assert.Equal(3, actual);
+            actual = (long)Functions.Length(context, new object[] { new JArray(new string[] { "one", "two", "three" }) });
+            Assert.Equal(3, actual);
+            actual = (long)Functions.Length(context, new object[] { JToken.Parse("[ \"one\", \"two\" ]") });
+            Assert.Equal(2, actual);
 
             // Length strings
-            var actual2 = (long)Functions.Length(context, new object[] { "One Two Three" });
-            Assert.Equal(13, actual2);
+            actual = (long)Functions.Length(context, new object[] { "One Two Three" });
+            Assert.Equal(13, actual);
+            actual = (long)Functions.Length(context, new object[] { new JValue("One Two Three") });
+            Assert.Equal(13, actual);
 
             // Length objects
-            var actual3 = (long)Functions.Length(context, new object[] { new TestLengthObject() });
-            Assert.Equal(4, actual3);
+            actual = (long)Functions.Length(context, new object[] { new TestLengthObject() });
+            Assert.Equal(4, actual);
+            actual = (long)Functions.Length(context, new object[] { JToken.Parse("{ \"one\": \"two\", \"three\": \"four\" }") });
+            Assert.Equal(2, actual);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, System.Array.Empty<object>()));
@@ -516,7 +524,7 @@ namespace PSRule.Rules.Azure
             // Union objects
             var actual1 = Functions.Union(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"a\": \"100\" }") }) as JObject;
             Assert.True(actual1.ContainsKey("a"));
-            Assert.Equal("b", actual1["a"]);
+            Assert.Equal("100", actual1["a"]);
             Assert.True(actual1.ContainsKey("e"));
             Assert.Equal("f", actual1["e"]);
             Assert.True(actual1.ContainsKey("i"));
