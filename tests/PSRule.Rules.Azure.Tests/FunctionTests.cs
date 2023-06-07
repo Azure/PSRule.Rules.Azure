@@ -516,7 +516,7 @@ namespace PSRule.Rules.Azure
             // Union objects
             var actual1 = Functions.Union(context, new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"a\": \"100\" }") }) as JObject;
             Assert.True(actual1.ContainsKey("a"));
-            Assert.Equal("b", actual1["a"]);
+            Assert.Equal("100", actual1["a"]);
             Assert.True(actual1.ContainsKey("e"));
             Assert.Equal("f", actual1["e"]);
             Assert.True(actual1.ContainsKey("i"));

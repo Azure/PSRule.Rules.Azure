@@ -522,7 +522,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static bool IsObject(object o)
         {
-            return o is JObject || o is IDictionary || o is IDictionary<string, string> || o is Dictionary<string, object>;
+            return o is JObject ||
+                o is IDictionary ||
+                o is IDictionary<string, string> ||
+                o is Dictionary<string, object>;
         }
 
         internal static bool TryJObject(object o, out JObject value)
@@ -567,13 +570,16 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        /// <summary>
+        /// Union an object by merging in properties.
+        /// </summary>
         internal static object UnionObject(object[] o)
         {
             var result = new JObject();
             if (o == null || o.Length == 0)
                 return result;
 
-            for (var i = 0; i < o.Length; i++)
+            for (var i = o.Length - 1; i >= 0; i--)
             {
                 if (o[i] is JObject jObject)
                 {
