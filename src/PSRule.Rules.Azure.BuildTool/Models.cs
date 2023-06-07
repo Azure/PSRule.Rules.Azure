@@ -78,7 +78,7 @@ namespace PSRule.Rules.Azure.BuildTool
         {
             get
             {
-                return _Expanded.ZoneMappings == null ? null : _Expanded.ZoneMappings.Select(x => new AvailabilityZoneMappingMin { Location = x.Location, Zones = x.Zones }).ToArray();
+                return _Expanded.ZoneMappings?.Select(x => new AvailabilityZoneMappingMin { Location = x.Location, Zones = x.Zones }).ToArray();
             }
         }
     }

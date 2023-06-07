@@ -407,8 +407,8 @@ namespace PSRule.Rules.Azure.Data.Bicep
 
                 try
                 {
-                    using (var reader = new JsonTextReader(new StringReader(bicep.GetOutput())))
-                        return JObject.Load(reader);
+                    using var reader = new JsonTextReader(new StringReader(bicep.GetOutput()));
+                    return JObject.Load(reader);
                 }
                 catch (Exception e)
                 {

@@ -24,7 +24,7 @@ namespace PSRule.Rules.Azure.Configuration
         private const string ID_PREFIX = "/subscriptions/";
         private const string RGID_PREFIX = "/resourceGroups/";
 
-        internal readonly static ResourceGroupOption Default = new()
+        internal static readonly ResourceGroupOption Default = new()
         {
             SubscriptionId = DEFAULT_SUBSCRIPTIONID,
             Name = DEFAULT_NAME,

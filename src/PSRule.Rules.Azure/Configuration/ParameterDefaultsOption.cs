@@ -14,7 +14,7 @@ namespace PSRule.Rules.Azure.Configuration
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Naming", "CA1710:Identifiers should have correct suffix", Justification = "Not a generic dictionary.")]
     public sealed class ParameterDefaultsOption : IEquatable<ParameterDefaultsOption>, IDictionary<string, object>
     {
-        internal readonly static ParameterDefaultsOption Default = new();
+        internal static readonly ParameterDefaultsOption Default = new();
 
         private readonly Dictionary<string, object> _Defaults;
 
