@@ -36,8 +36,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private const char ParenthesesClose = ')';
         private const char BracketOpen = '[';
         private const char BracketClose = ']';
-        private readonly static char[] FunctionNameStopCharacter = new char[] { '(', ']', '[', ')', '\'', ' ', ',' };
-        private readonly static char[] PropertyStopCharacters = new char[] { '(', ']', '[', ',', ')', ' ', '\'', '.', '\r', '\n' };
+        private static readonly char[] FunctionNameStopCharacter = new char[] { '(', ']', '[', ')', '\'', ' ', ',' };
+        private static readonly char[] PropertyStopCharacters = new char[] { '(', ']', '[', ',', ')', ' ', '\'', '.', '\r', '\n' };
 
         internal ExpressionStream(string expression)
         {

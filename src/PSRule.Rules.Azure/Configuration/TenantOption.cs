@@ -18,7 +18,7 @@ namespace PSRule.Rules.Azure.Configuration
 
         private const string ID_PREFIX = "/tenants/";
 
-        internal readonly static TenantOption Default = new()
+        internal static readonly TenantOption Default = new()
         {
             CountryCode = DEFAULT_COUNTRYCODE,
             TenantId = DEFAULT_TENANTID,

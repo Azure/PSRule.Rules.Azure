@@ -20,7 +20,7 @@ namespace PSRule.Rules.Azure.Configuration
 
         private const string ID_PREFIX = "/subscriptions/";
 
-        internal readonly static SubscriptionOption Default = new()
+        internal static readonly SubscriptionOption Default = new()
         {
             SubscriptionId = DEFAULT_SUBSCRIPTIONID,
             TenantId = DEFAULT_TENANTID,

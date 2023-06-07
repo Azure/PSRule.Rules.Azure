@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PSRule.Rules.Azure.BuildTool
 {
-    class Program
+    static class Program
     {
         /// <summary>
         /// Entry point for build tool.

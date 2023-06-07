@@ -36,7 +36,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const char SINGLE_QUOTE = '\'';
         private const char DOUBLE_QUOTE = '"';
 
-        internal readonly static IFunctionDescriptor[] Common = new IFunctionDescriptor[]
+        internal static readonly IFunctionDescriptor[] Common = new IFunctionDescriptor[]
         {
             // Array and object
             new FunctionDescriptor("array", Array),
@@ -168,7 +168,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// Functions specific to Azure Policy.
         /// See <seealso href="https://learn.microsoft.com/azure/governance/policy/concepts/definition-structure#policy-functions">Policy Functions</seealso>.
         /// </summary>
-        internal readonly static IFunctionDescriptor[] Policy = new IFunctionDescriptor[]
+        internal static readonly IFunctionDescriptor[] Policy = new IFunctionDescriptor[]
         {
             //new FunctionDescriptor("addDays", AddDays),
             //new FunctionDescriptor("field", Field),
