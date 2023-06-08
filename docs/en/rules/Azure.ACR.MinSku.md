@@ -47,32 +47,36 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.ContainerRegistry/registries",
-    "apiVersion": "2021-06-01-preview",
-    "name": "[parameters('registryName')]",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Premium"
-    },
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "adminUserEnabled": false,
-        "policies": {
-            "quarantinePolicy": {
-                "status": "enabled"
-            },
-            "trustPolicy": {
-                "status": "enabled",
-                "type": "Notary"
-            },
-            "retentionPolicy": {
-                "status": "enabled",
-                "days": 30
-            }
-        }
+  "type": "Microsoft.ContainerRegistry/registries",
+  "apiVersion": "2023-01-01-preview",
+  "name": "[parameters('registryName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Premium"
+  },
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "adminUserEnabled": false,
+    "policies": {
+      "quarantinePolicy": {
+        "status": "enabled"
+      },
+      "trustPolicy": {
+        "status": "enabled",
+        "type": "Notary"
+      },
+      "retentionPolicy": {
+        "days": 30,
+        "status": "enabled"
+      },
+      "softDeletePolicy": {
+        "retentionDays": 90,
+        "status": "enabled"
+      }
     }
+  }
 }
 ```
 
@@ -85,7 +89,7 @@ To deploy Container Registries that pass this rule:
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
+resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
   name: registryName
   location: location
   sku: {
@@ -105,8 +109,12 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
         type: 'Notary'
       }
       retentionPolicy: {
-        status: 'enabled'
         days: 30
+        status: 'enabled'
+      }
+      softDeletePolicy: {
+        retentionDays: 90
+        status: 'enabled'
       }
     }
   }
@@ -119,4 +127,4 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
 - [Azure Container Registry SKUs](https://docs.microsoft.com/azure/container-registry/container-registry-skus)
 - [Geo-replication in Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)
 - [Best practices for Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

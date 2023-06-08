@@ -1,5 +1,5 @@
 ---
-reviewed: 2021-11-13
+reviewed: 2023-06-09
 severity: Critical
 pillar: Security
 category: Authentication
@@ -40,32 +40,36 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.ContainerRegistry/registries",
-    "apiVersion": "2021-06-01-preview",
-    "name": "[parameters('registryName')]",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Premium"
-    },
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "adminUserEnabled": false,
-        "policies": {
-            "quarantinePolicy": {
-                "status": "enabled"
-            },
-            "trustPolicy": {
-                "status": "enabled",
-                "type": "Notary"
-            },
-            "retentionPolicy": {
-                "status": "enabled",
-                "days": 30
-            }
-        }
+  "type": "Microsoft.ContainerRegistry/registries",
+  "apiVersion": "2023-01-01-preview",
+  "name": "[parameters('registryName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Premium"
+  },
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "adminUserEnabled": false,
+    "policies": {
+      "quarantinePolicy": {
+        "status": "enabled"
+      },
+      "trustPolicy": {
+        "status": "enabled",
+        "type": "Notary"
+      },
+      "retentionPolicy": {
+        "days": 30,
+        "status": "enabled"
+      },
+      "softDeletePolicy": {
+        "retentionDays": 90,
+        "status": "enabled"
+      }
     }
+  }
 }
 ```
 
@@ -78,7 +82,7 @@ To deploy Container Registries that pass this rule:
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
+resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
   name: registryName
   location: location
   sku: {
@@ -98,8 +102,12 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
         type: 'Notary'
       }
       retentionPolicy: {
-        status: 'enabled'
         days: 30
+        status: 'enabled'
+      }
+      softDeletePolicy: {
+        retentionDays: 90
+        status: 'enabled'
       }
     }
   }
@@ -121,9 +129,9 @@ Update-AzContainerRegistry -ResourceGroupName '<resource_group>' -Name '<name>' 
 ## LINKS
 
 - [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
-- [Authenticate with a private Docker container registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication)
-- [Best practices for Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#authentication-and-authorization)
-- [Use an Azure managed identity to authenticate to an Azure container registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)
-- [Azure Container Registry roles and permissions](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
-- [What is Azure role-based access control (Azure RBAC)?](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Authenticate with a private Docker container registry](https://learn.microsoft.com/azure/container-registry/container-registry-authentication)
+- [Best practices for Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-best-practices#authentication-and-authorization)
+- [Use an Azure managed identity to authenticate to an Azure container registry](https://learn.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)
+- [Azure Container Registry roles and permissions](https://learn.microsoft.com/azure/container-registry/container-registry-roles)
+- [What is Azure role-based access control (Azure RBAC)?](https://learn.microsoft.com/azure/role-based-access-control/overview)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

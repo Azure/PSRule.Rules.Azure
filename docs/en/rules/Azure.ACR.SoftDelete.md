@@ -43,7 +43,7 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2022-02-01-preview",
+  "apiVersion": "2023-01-01-preview",
   "name": "[parameters('registryName')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -61,6 +61,10 @@ For example:
       "trustPolicy": {
         "status": "enabled",
         "type": "Notary"
+      },
+      "retentionPolicy": {
+        "days": 30,
+        "status": "enabled"
       },
       "softDeletePolicy": {
         "retentionDays": 90,
@@ -80,7 +84,7 @@ To deploy an Azure Container Registry that pass this rule:
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2022-02-01-preview' = {
+resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
   name: registryName
   location: location
   sku: {
@@ -98,6 +102,10 @@ resource acr 'Microsoft.ContainerRegistry/registries@2022-02-01-preview' = {
       trustPolicy: {
         status: 'enabled'
         type: 'Notary'
+      }
+      retentionPolicy: {
+        days: 30
+        status: 'enabled'
       }
       softDeletePolicy: {
         retentionDays: 90

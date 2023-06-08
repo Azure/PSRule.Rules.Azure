@@ -39,32 +39,36 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.ContainerRegistry/registries",
-    "apiVersion": "2021-06-01-preview",
-    "name": "[parameters('registryName')]",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Premium"
-    },
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "adminUserEnabled": false,
-        "policies": {
-            "quarantinePolicy": {
-                "status": "enabled"
-            },
-            "trustPolicy": {
-                "status": "enabled",
-                "type": "Notary"
-            },
-            "retentionPolicy": {
-                "status": "enabled",
-                "days": 30
-            }
-        }
+  "type": "Microsoft.ContainerRegistry/registries",
+  "apiVersion": "2023-01-01-preview",
+  "name": "[parameters('registryName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Premium"
+  },
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "adminUserEnabled": false,
+    "policies": {
+      "quarantinePolicy": {
+        "status": "enabled"
+      },
+      "trustPolicy": {
+        "status": "enabled",
+        "type": "Notary"
+      },
+      "retentionPolicy": {
+        "days": 30,
+        "status": "enabled"
+      },
+      "softDeletePolicy": {
+        "retentionDays": 90,
+        "status": "enabled"
+      }
     }
+  }
 }
 ```
 
@@ -77,7 +81,7 @@ To deploy Container Registries that pass this rule:
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
+resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
   name: registryName
   location: location
   sku: {
@@ -97,8 +101,12 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
         type: 'Notary'
       }
       retentionPolicy: {
-        status: 'enabled'
         days: 30
+        status: 'enabled'
+      }
+      softDeletePolicy: {
+        retentionDays: 90
+        status: 'enabled'
       }
     }
   }
@@ -114,4 +122,4 @@ Retention policies for Azure Container Registry is currently in preview.
 - [Scalable storage](https://docs.microsoft.com/azure/container-registry/container-registry-storage#scalable-storage)
 - [Set a retention policy for untagged manifests](https://docs.microsoft.com/azure/container-registry/container-registry-retention-policy)
 - [Lock a container image in an Azure container registry](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)
