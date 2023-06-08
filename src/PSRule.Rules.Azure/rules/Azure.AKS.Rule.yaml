@@ -276,28 +276,6 @@ spec:
       notEquals: none
 
 ---
-# Synopsis: Configure AKS clusters to use AAD pod identities to access Azure resources securely.
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Rule
-metadata:
-  name: Azure.AKS.PodIdentity
-  ref: AZR-000037
-  tags:
-    release: 'preview'
-    ruleSet: '2021_12'
-    Azure.WAF/pillar: 'Security'
-  labels:
-    Azure.MCSB.v1/control: [ 'IM-1', 'IM-2' ]
-spec:
-  type:
-  - Microsoft.ContainerService/managedClusters
-  with:
-    - Azure.AKS.AzureCNI
-  condition:
-    field: Properties.podIdentityProfile.enabled
-    equals: true
-
----
 # Synopsis: Deploy AKS cluster with role-based access control (RBAC) enabled.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
