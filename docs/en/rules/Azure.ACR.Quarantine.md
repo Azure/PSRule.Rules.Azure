@@ -1,10 +1,9 @@
 ---
-reviewed: 2021-11-13
+reviewed: 2023-06-09
 severity: Important
 pillar: Security
 category: Azure resources
 resource: Container Registry
-preview: true
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Quarantine/
 ---
 
@@ -39,32 +38,36 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.ContainerRegistry/registries",
-    "apiVersion": "2021-06-01-preview",
-    "name": "[parameters('registryName')]",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Premium"
-    },
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "adminUserEnabled": false,
-        "policies": {
-            "quarantinePolicy": {
-                "status": "enabled"
-            },
-            "trustPolicy": {
-                "status": "enabled",
-                "type": "Notary"
-            },
-            "retentionPolicy": {
-                "status": "enabled",
-                "days": 30
-            }
-        }
+  "type": "Microsoft.ContainerRegistry/registries",
+  "apiVersion": "2023-01-01-preview",
+  "name": "[parameters('registryName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Premium"
+  },
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "adminUserEnabled": false,
+    "policies": {
+      "quarantinePolicy": {
+        "status": "enabled"
+      },
+      "trustPolicy": {
+        "status": "enabled",
+        "type": "Notary"
+      },
+      "retentionPolicy": {
+        "days": 30,
+        "status": "enabled"
+      },
+      "softDeletePolicy": {
+        "retentionDays": 90,
+        "status": "enabled"
+      }
     }
+  }
 }
 ```
 
@@ -77,7 +80,7 @@ To deploy Container Registries that pass this rule:
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
+resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
   name: registryName
   location: location
   sku: {
@@ -97,8 +100,12 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
         type: 'Notary'
       }
       retentionPolicy: {
-        status: 'enabled'
         days: 30
+        status: 'enabled'
+      }
+      softDeletePolicy: {
+        retentionDays: 90
+        status: 'enabled'
       }
     }
   }
@@ -112,7 +119,7 @@ Image quarantine for Azure Container Registry is currently in preview.
 ## LINKS
 
 - [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
-- [How do I enable automatic image quarantine for a registry?](https://docs.microsoft.com/azure/container-registry/container-registry-faq#how-do-i-enable-automatic-image-quarantine-for-a-registry-)
+- [How do I enable automatic image quarantine for a registry?](https://learn.microsoft.com/azure/container-registry/container-registry-faq#how-do-i-enable-automatic-image-quarantine-for-a-registry-)
 - [Quarantine Pattern](https://github.com/Azure/acr/tree/main/docs/preview/quarantine)
-- [Secure the images and run time](https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Secure the images and run time](https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

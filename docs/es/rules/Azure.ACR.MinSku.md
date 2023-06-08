@@ -118,4 +118,4 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
 - [Niveles del servicio Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-skus)
 - [Replicación geográfica en Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)
 - [Implementación de la replicación geográfica en varias regiones](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
-- [Referencia de implementación de Azure](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Referencia de implementación de Azure](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

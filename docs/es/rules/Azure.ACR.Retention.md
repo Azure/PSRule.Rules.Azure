@@ -114,4 +114,4 @@ Las directivas de retención para Azure Container Registry están actualmente en
 - [Almacenamiento escalable](https://docs.microsoft.com/azure/container-registry/container-registry-storage#scalable-storage)
 - [Establecimiento de una directiva de retención para manifiestos sin etiqueta](https://docs.microsoft.com/azure/container-registry/container-registry-retention-policy)
 - [Bloqueo de una imagen de contenedor en una instancia de Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock)
-- [Referencia de implementación de Azure](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Referencia de implementación de Azure](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

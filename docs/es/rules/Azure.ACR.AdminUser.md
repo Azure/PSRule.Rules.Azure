@@ -125,4 +125,4 @@ Update-AzContainerRegistry -ResourceGroupName '<resource_group>' -Name '<name>' 
 - [Use la identidad administrada de Azure para autenticarse en Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)
 - [Roles y permisos de Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
 - [¿Qué es el control de acceso basado en rol de Azure (RBAC)?](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Referencia de implementación de Azure](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Referencia de implementación de Azure](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

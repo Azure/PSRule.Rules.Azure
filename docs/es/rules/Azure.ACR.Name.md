@@ -139,4 +139,4 @@ Esta regla no comprueba si los nombres de registro de contenedores son únicos.
 - [Infraestructura repetible](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
 - [Reglas y restricciones de nomenclatura para los recursos de Azure](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Abreviaturas recomendadas para los tipos de recursos de Azure](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
-- [Referencia de implementación de Azure](https://docs.microsoft.com/azure/templates/microsoft.containerregistry/registries)
+- [Referencia de implementación de Azure](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)
