@@ -1,6 +1,6 @@
 ---
-title: Reference
 generated: True
+title: Reference
 ---
 
 # Reference
@@ -58,7 +58,6 @@ AZR-000033 | [Azure.AKS.SecretStore](Azure.AKS.SecretStore.md) | Deploy AKS clus
 AZR-000034 | [Azure.AKS.SecretStoreRotation](Azure.AKS.SecretStoreRotation.md) | Enable autorotation of Secrets Store CSI Driver secrets for AKS clusters. | GA
 AZR-000035 | [Azure.AKS.HttpAppRouting](Azure.AKS.HttpAppRouting.md) | Disable HTTP application routing add-on in AKS clusters. | GA
 AZR-000036 | [Azure.AKS.AutoUpgrade](Azure.AKS.AutoUpgrade.md) | Configure AKS to automatically upgrade to newer supported AKS versions as they are made available. | GA
-AZR-000037 | [Azure.AKS.PodIdentity](Azure.AKS.PodIdentity.md) | Configure AKS clusters to use AAD pod identities to access Azure resources securely. | Preview
 AZR-000038 | [Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | Deploy AKS cluster with role-based access control (RBAC) enabled. | GA
 AZR-000039 | [Azure.AKS.Name](Azure.AKS.Name.md) | Azure Kubernetes Service (AKS) cluster names should meet naming requirements. | GA
 AZR-000040 | [Azure.AKS.DNSPrefix](Azure.AKS.DNSPrefix.md) | Azure Kubernetes Service (AKS) cluster DNS prefix should meet naming requirements. | GA
@@ -404,5 +403,15 @@ AZR-000379 | [Azure.Defender.CosmosDb](Azure.Defender.CosmosDb.md) | Enable Micr
 AZR-000380 | [Azure.ContainerApp.RestrictIngress](Azure.ContainerApp.RestrictIngress.md) | IP ingress restrictions mode should be set to allow action for all rules defined. | GA
 AZR-000381 | [Azure.Defender.OssRdb](Azure.Defender.OssRdb.md) | Enable Microsoft Defender for open-source relational databases. | GA
 AZR-000382 | [Azure.Cosmos.DefenderCloud](Azure.Cosmos.DefenderCloud.md) | Enable Microsoft Defender for Azure Cosmos DB. | GA
+AZR-000383 | [Azure.Defender.Storage.MalwareScan](Azure.Defender.Storage.MalwareScan.md) | Enable Malware Scanning in Microsoft Defender for Storage. | Preview
+AZR-000384 | [Azure.Storage.DefenderCloud.MalwareScan](Azure.Storage.DefenderCloud.MalwareScan.md) | Enable Malware Scanning in Microsoft Defender for Storage. | Preview
+AZR-000385 | [Azure.Defender.Storage.SensitiveData](Azure.Defender.Storage.SensitiveData.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Preview
+AZR-000386 | [Azure.Storage.DefenderCloud](Azure.Storage.DefenderCloud.md) | Enable Microsoft Defender for Storage for storage accounts. | GA
+AZR-000387 | [Azure.APIM.DefenderCloud](Azure.APIM.DefenderCloud.md) | APIs published in Azure API Management should be onboarded to Microsoft Defender for APIs. | Preview
+AZR-000388 | [Azure.KeyVault.RBAC](Azure.KeyVault.RBAC.md) | Key Vaults should use Azure RBAC as the authorization system for the data plane. | GA
+AZR-000389 | [Azure.PostgreSQL.AAD](Azure.PostgreSQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure Database for PostgreSQL databases. | GA
+AZR-000390 | [Azure.PostgreSQL.AADOnly](Azure.PostgreSQL.AADOnly.md) | Ensure Azure AD-only authentication is enabled with Azure Database for PostgreSQL databases. | GA
+AZR-000391 | [Azure.Storage.DefenderCloud.SensitiveData](Azure.Storage.DefenderCloud.SensitiveData.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Preview
+AZR-000392 | [Azure.MySQL.AAD](Azure.MySQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure Database for MySQL databases. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

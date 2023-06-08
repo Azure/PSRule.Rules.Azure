@@ -26,6 +26,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.28.0-B0024:
 
+- Removed rules:
+  - Azure Kubernetes Service:
+    - Removed `Azure.AKS.PodIdentity` as pod identities has been replaced by workload identities by @BernieWhite.
+      [#2273](https://github.com/Azure/PSRule.Rules.Azure/issues/2273)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.6.2.
     [#2266](https://github.com/Azure/PSRule.Rules.Azure/pull/2266)
