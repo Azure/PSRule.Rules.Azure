@@ -33,6 +33,8 @@ What's changed since pre-release v1.28.0-B0024:
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.6.2.
     [#2266](https://github.com/Azure/PSRule.Rules.Azure/pull/2266)
+  - Bump Az.Resources to v6.7.0.
+    [#2274](https://github.com/Azure/PSRule.Rules.Azure/pull/2274)
 
 ## v1.28.0-B0024 (pre-release)
 
