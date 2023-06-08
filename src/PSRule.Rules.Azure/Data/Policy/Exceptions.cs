@@ -132,6 +132,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// Creates an empty condition exception based on an assignment and policy definition.
         /// </summary>
         /// <param name="message">The detail of the exception.</param>
+        /// <param name="sourceFile">The source file.</param>
         /// <param name="assignmentId">Specifies Id of the assignment the exception relates to.</param>
         /// <param name="policyDefinitionId">Specifies the Id of the policy definition the exception relates to.</param>
         internal PolicyDefinitionEmptyConditionException(string message, string sourceFile, string assignmentId, string policyDefinitionId)

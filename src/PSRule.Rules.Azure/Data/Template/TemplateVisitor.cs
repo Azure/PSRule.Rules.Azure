@@ -307,7 +307,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public void UpdateResourceScope(JObject resource)
             {
-                if (!TryResourceScope(resource, out string scopeId) &&
+                if (!TryResourceScope(resource, out var scopeId) &&
                     !TryParentScope(resource, out scopeId))
                     return;
 
@@ -1152,8 +1152,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     continue;
 
                 var r = ResourceInstance(context, instance, copyIndex);
-                if (symbol != null)
-                    symbol.Configure(r);
+                symbol?.Configure(r);
 
                 yield return r;
             }

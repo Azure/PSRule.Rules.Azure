@@ -22,7 +22,7 @@ namespace PSRule.Rules.Azure.Configuration
 
         private const string DEFAULT_TYPE = "/providers/Microsoft.Management/managementGroups";
 
-        internal readonly static ManagementGroupOption Default = new()
+        internal static readonly ManagementGroupOption Default = new()
         {
             Name = DEFAULT_NAME,
             Properties = new ManagementGroupProperties(DEFAULT_DISPLAYNAME, DEFAULT_TENANTID),

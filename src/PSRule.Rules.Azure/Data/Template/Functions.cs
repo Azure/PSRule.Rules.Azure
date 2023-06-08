@@ -36,7 +36,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const char SINGLE_QUOTE = '\'';
         private const char DOUBLE_QUOTE = '"';
 
-        internal readonly static IFunctionDescriptor[] Common = new IFunctionDescriptor[]
+        internal static readonly IFunctionDescriptor[] Common = new IFunctionDescriptor[]
         {
             // Array and object
             new FunctionDescriptor("array", Array),
@@ -168,7 +168,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// Functions specific to Azure Policy.
         /// See <seealso href="https://learn.microsoft.com/azure/governance/policy/concepts/definition-structure#policy-functions">Policy Functions</seealso>.
         /// </summary>
-        internal readonly static IFunctionDescriptor[] Policy = new IFunctionDescriptor[]
+        internal static readonly IFunctionDescriptor[] Policy = new IFunctionDescriptor[]
         {
             //new FunctionDescriptor("addDays", AddDays),
             //new FunctionDescriptor("field", Field),
@@ -533,8 +533,12 @@ namespace PSRule.Rules.Azure.Data.Template
                 return (long)s.Length;
             else if (args[0] is Array a)
                 return (long)a.Length;
-            else if (args[0] is JArray jArray)
-                return (long)jArray.Count;
+            else if (args[0] is JToken jToken)
+                return (long)jToken.Count();
+            else if (args[0] is IDictionary dictionary)
+                return (long)dictionary.Count;
+            else if (args[0] is IEnumerable enumerable)
+                return enumerable.OfType<object>().LongCount();
 
             return (long)args[0].GetType().GetProperties().Length;
         }

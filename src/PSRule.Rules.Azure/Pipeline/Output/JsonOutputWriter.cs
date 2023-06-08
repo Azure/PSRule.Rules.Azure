@@ -14,23 +14,19 @@ namespace PSRule.Rules.Azure.Pipeline.Output
 
         protected override string Serialize(object[] o)
         {
-            using (var stringWriter = new StringWriter())
+            using var stringWriter = new StringWriter();
+            using var jsonTextWriter = new JsonCommentWriter(stringWriter);
+            var jsonSerializer = new JsonSerializer
             {
-                using (var jsonTextWriter = new JsonCommentWriter(stringWriter))
-                {
-                    var jsonSerializer = new JsonSerializer
-                    {
-                        NullValueHandling = NullValueHandling.Ignore
-                    };
+                NullValueHandling = NullValueHandling.Ignore
+            };
 
-                    jsonSerializer.Converters.Add(new PSObjectJsonConverter());
-                    jsonSerializer.Converters.Add(new PolicyDefinitionConverter());
+            jsonSerializer.Converters.Add(new PSObjectJsonConverter());
+            jsonSerializer.Converters.Add(new PolicyDefinitionConverter());
 
-                    jsonSerializer.Serialize(jsonTextWriter, o);
+            jsonSerializer.Serialize(jsonTextWriter, o);
 
-                    return stringWriter.ToString();
-                }
-            }
+            return stringWriter.ToString();
         }
     }
 }

@@ -17,7 +17,7 @@ namespace PSRule.Rules.Azure.Data
         /// <summary>
         /// Create an instance of the resource loader.
         /// </summary>
-        internal protected ResourceLoader() { }
+        protected internal ResourceLoader() { }
 
         /// <summary>
         /// Get the content of a resource stream by name.

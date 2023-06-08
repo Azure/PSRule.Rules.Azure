@@ -14,7 +14,7 @@ namespace PSRule.Rules.Azure.Configuration
     {
         private const string DEFAULT_NAME = "ps-rule-test-deployment";
 
-        internal readonly static DeploymentOption Default = new()
+        internal static readonly DeploymentOption Default = new()
         {
             Name = DEFAULT_NAME
         };
