@@ -10,11 +10,6 @@ Rule 'Azure.AppService.PlanInstanceCount' -Ref 'AZR-000071' -Type 'Microsoft.Web
     $Assert.GreaterOrEqual($TargetObject, 'sku.capacity', 2);
 }
 
-# Synopsis: Use at least a Standard App Service Plan.
-Rule 'Azure.AppService.MinPlan' -Ref 'AZR-000072' -Type 'Microsoft.Web/serverfarms' -If { !(IsConsumptionPlan) -and !(IsElasticPlan) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
-    $Assert.In($TargetObject, 'sku.tier', @('PremiumV3', 'PremiumV2', 'Premium', 'Standard'))
-}
-
 # Synopsis: App Service should reject TLS versions older than 1.2.
 Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
     $siteConfigs = @(GetWebSiteConfig);

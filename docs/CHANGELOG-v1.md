@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.27.2:
+
+- Bug fixes:
+  - Fixed false positive of `IsolatedV2` with `Azure.AppService.MinPlan` by @BernieWhite.
+    [#2277](https://github.com/Azure/PSRule.Rules.Azure/issues/2277)
+
 ## v1.27.2
 
 What's changed since v1.27.1:
