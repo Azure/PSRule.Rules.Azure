@@ -35,6 +35,9 @@ What's changed since pre-release v1.28.0-B0024:
     [#2266](https://github.com/Azure/PSRule.Rules.Azure/pull/2266)
   - Bump Az.Resources to v6.7.0.
     [#2274](https://github.com/Azure/PSRule.Rules.Azure/pull/2274)
+- Bug fixes:
+  - Fixed false positive of `IsolatedV2` with `Azure.AppService.MinPlan` by @BernieWhite.
+    [#2277](https://github.com/Azure/PSRule.Rules.Azure/issues/2277)
 
 ## v1.28.0-B0024 (pre-release)
 
@@ -64,6 +67,14 @@ What's changed since v1.27.1:
     [#2261](https://github.com/Azure/PSRule.Rules.Azure/pull/2261)
   - Bump Microsoft.NET.Test.Sdk to v17.6.1.
     [#2256](https://github.com/Azure/PSRule.Rules.Azure/pull/2256)
+
+## v1.27.3
+
+What's changed since v1.27.2:
+
+- Bug fixes:
+  - Fixed false positive of `IsolatedV2` with `Azure.AppService.MinPlan` by @BernieWhite.
+    [#2277](https://github.com/Azure/PSRule.Rules.Azure/issues/2277)
 
 ## v1.27.2
 
