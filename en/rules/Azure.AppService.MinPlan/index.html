@@ -8624,7 +8624,7 @@ Production workloads are best suited to standard and premium plans with <code>Pr
 <p>For example:</p>
 <div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span>
 <span class="w">    </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Web/serverfarms&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2021-01-15&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-09-01&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;planName&#39;)]&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;location&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[parameters(&#39;location&#39;)]&quot;</span><span class="p">,</span>
 <span class="w">    </span><span class="nt">&quot;sku&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
@@ -8641,7 +8641,7 @@ Production workloads are best suited to standard and premium plans with <code>Pr
   For example: <code>PremiumV3</code>, <code>PremiumV2</code>, <code>Premium</code>, <code>Standard</code></li>
 </ul>
 <p>For example:</p>
-<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource appPlan &#39;Microsoft.Web/serverfarms@2021-01-15&#39; = {
+<div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource plan &#39;Microsoft.Web/serverfarms@2022-09-01&#39; = {
   name: planName
   location: location
   sku: {
@@ -8669,7 +8669,7 @@ Production workloads are best suited to standard and premium plans with <code>Pr
   <small>
     
       Last update:
-      2022-12-03
+      2023-06-16
     
   </small>
 </div>
