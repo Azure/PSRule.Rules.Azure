@@ -43,7 +43,7 @@ For example:
 ```json
 {
     "type": "Microsoft.Web/serverfarms",
-    "apiVersion": "2021-01-15",
+    "apiVersion": "2022-09-01",
     "name": "[parameters('planName')]",
     "location": "[parameters('location')]",
     "sku": {
@@ -64,7 +64,7 @@ To deploy App Services Plans that pass this rule:
 For example:
 
 ```bicep
-resource appPlan 'Microsoft.Web/serverfarms@2021-01-15' = {
+resource plan 'Microsoft.Web/serverfarms@2022-09-01' = {
   name: planName
   location: location
   sku: {

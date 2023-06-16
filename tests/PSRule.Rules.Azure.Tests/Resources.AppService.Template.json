@@ -90,6 +90,7 @@
         },
         "planName2": "plan-b",
         "planName3": "plan-c",
+        "planName4": "plan-d",
         "appName2": "app-b",
         "appName3": "app-c"
     },
@@ -244,6 +245,18 @@
             "sku": {
                 "name": "EP1",
                 "tier": "ElasticPremium"
+            },
+            "properties": {}
+        },
+        {
+            "type": "Microsoft.Web/serverfarms",
+            "apiVersion": "2022-09-01",
+            "name": "[variables('planName4')]",
+            "location": "[parameters('location')]",
+            "sku": {
+                "name": "I2v2",
+                "tier": "IsolatedV2",
+                "capacity": 2
             },
             "properties": {}
         },
