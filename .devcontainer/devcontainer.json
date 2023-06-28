@@ -11,13 +11,14 @@
         }
       },
       "extensions": [
-        "ms-dotnettools.csharp",
         "msazurermtools.azurerm-vscode-tools",
+        "ms-dotnettools.csharp",
         "ms-vscode.powershell",
         "ms-azuretools.vscode-bicep",
         "bewhite.psrule-vscode-preview",
         "GitHub.vscode-pull-request-github",
-        "github.vscode-github-actions"
+        "github.vscode-github-actions",
+        "eamodio.gitlens"
       ]
     }
   },

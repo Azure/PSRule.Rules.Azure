@@ -8,5 +8,6 @@
     "ms-azuretools.vscode-bicep",
     "msazurermtools.azurerm-vscode-tools",
     "bewhite.psrule-vscode-preview",
+    "eamodio.gitlens"
   ]
 }
