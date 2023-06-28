@@ -324,7 +324,7 @@ Typically, the following three environment variables should be set:
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.8.1
+      uses: microsoft/ps-rule@v2.9.0
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
