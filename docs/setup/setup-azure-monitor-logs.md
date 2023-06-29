@@ -70,7 +70,7 @@ Import analysis results into Azure Monitor with GitHub Actions by:
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.8.1
+      uses: microsoft/ps-rule@v2.9.0
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
@@ -86,7 +86,7 @@ Import analysis results into Azure Monitor with GitHub Actions by:
 
     ```yaml
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.8.1
+      uses: microsoft/ps-rule@v2.9.0
       with:
         modules: PSRule.Rules.Azure,PSRule.Monitor
         conventions: Monitor.LogAnalytics.Import
