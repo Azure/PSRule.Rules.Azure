@@ -26,6 +26,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.28.0-B0045:
 
+- General improvements:
+  - Added support for `managementGroupResourceId` Bicep function by @BernieWhite.
+    [#2294](https://github.com/Azure/PSRule.Rules.Azure/issues/2294)
 - Engineering:
   - Bump PSRule to v2.9.0.
     [#2293](https://github.com/Azure/PSRule.Rules.Azure/pull/2293)

@@ -730,6 +730,29 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.TenantResourceId(context, new object[] { "Unit.Test/type", 1 }));
         }
 
+        [Fact]
+        [Trait(TRAIT, TRAIT_RESOURCE)]
+        public void ManagementGroupResourceId()
+        {
+            var context = GetContext();
+
+            var actual = Functions.ManagementGroupResourceId(context, new object[] { "Unit.Test/type", "a" }) as string;
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/psrule-test/providers/Unit.Test/type/a", actual);
+
+            context.ManagementGroup.Name = "mg1";
+            actual = Functions.ManagementGroupResourceId(context, new object[] { "Unit.Test/type/subtype", "a", "b" }) as string;
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/mg1/providers/Unit.Test/type/a/subtype/b", actual);
+
+            actual = Functions.ManagementGroupResourceId(context, new object[] { "Unit.Test/type/subtype/subsubtype", "a", "b", "c" }) as string;
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/mg1/providers/Unit.Test/type/a/subtype/b/subsubtype/c", actual);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ManagementGroupResourceId(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ManagementGroupResourceId(context, new object[] { "Unit.Test/type" }));
+            Assert.Throws<TemplateFunctionException>(() => Functions.ManagementGroupResourceId(context, new object[] { "00000000-0000-0000-0000-000000000000", "Unit.Test/type" }));
+            Assert.Throws<TemplateFunctionException>(() => Functions.ManagementGroupResourceId(context, new object[] { "Unit.Test/type", "a", "b" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ManagementGroupResourceId(context, new object[] { "Unit.Test/type", 1 }));
+        }
+
         #endregion Resource
 
         #region Scope
