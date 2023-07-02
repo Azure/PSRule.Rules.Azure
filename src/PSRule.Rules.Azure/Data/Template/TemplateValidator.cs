@@ -66,7 +66,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool IsSecretReferenceOrKey(string s)
         {
             return s.StartsWith("{{SecretReference", StringComparison.OrdinalIgnoreCase) ||
-                s.StartsWith("{{SecretList", StringComparison.OrdinalIgnoreCase);
+                s.StartsWith("{{SecretList", StringComparison.OrdinalIgnoreCase) ||
+                s.Equals("{{Secret}}", StringComparison.OrdinalIgnoreCase);
         }
 
         private static bool IsSecureValue(IValidationContext context, object value)
@@ -81,7 +82,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool IsSecureParameter(ParameterType type, string s)
         {
-            return type.Type == TypePrimitive.SecureString || type.Type == TypePrimitive.SecureObject;
+            return type.Type is TypePrimitive.SecureString or TypePrimitive.SecureObject;
         }
 
         private void ParameterStrongType(IValidationContext context, string parameterName, JObject parameter, object value)

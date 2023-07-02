@@ -151,17 +151,17 @@ namespace PSRule.Rules.Azure
         /// </summary>
         internal static bool HasValue(this JToken o)
         {
-            return o.Type == JTokenType.String ||
-                o.Type == JTokenType.Integer ||
-                o.Type == JTokenType.Object ||
-                o.Type == JTokenType.Array ||
-                o.Type == JTokenType.Boolean ||
-                o.Type == JTokenType.Bytes ||
-                o.Type == JTokenType.Date ||
-                o.Type == JTokenType.Float ||
-                o.Type == JTokenType.Guid ||
-                o.Type == JTokenType.TimeSpan ||
-                o.Type == JTokenType.Uri;
+            return o.Type is JTokenType.String or
+                JTokenType.Integer or
+                JTokenType.Object or
+                JTokenType.Array or
+                JTokenType.Boolean or
+                JTokenType.Bytes or
+                JTokenType.Date or
+                JTokenType.Float or
+                JTokenType.Guid or
+                JTokenType.TimeSpan or
+                JTokenType.Uri;
         }
 
         /// <summary>

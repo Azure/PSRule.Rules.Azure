@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
+using System.Collections.Generic;
 using System.Text;
 using Newtonsoft.Json.Linq;
 
@@ -8,372 +10,439 @@ namespace PSRule.Rules.Azure.Data.Template
 {
     internal interface IMock
     {
-        IMock Parent { get; }
+        TypePrimitive BaseType { get; }
 
-        bool TryProperty(string propertyName, out IMock value);
+        bool IsSecret { get; }
 
-        bool TryGetIndex(int index, out IMock value);
+        TValue GetValue<TValue>();
 
-        bool TryGetValue(out object value);
+        JToken GetValue(TypePrimitive type);
 
-        bool TryGetValue<TValue>(out TValue value);
+        JToken GetValue(object key);
 
-        bool TryGetToken(out JToken value);
+        string GetString();
     }
 
-    internal abstract class Mock : IMock
+    internal sealed class Mock
     {
-        protected Mock(IMock parent)
+        /// <summary>
+        /// Mock an unknown property or value.
+        /// </summary>
+        internal class MockUnknownObject : MockObject, IMock
         {
-            Parent = parent;
-        }
+            public MockUnknownObject()
+                : base(secret: false) { }
 
-        public IMock Parent { get; }
+            public MockUnknownObject(bool secret)
+                : base(secret) { }
 
-        public virtual bool TryProperty(string propertyName, out IMock value)
-        {
-            value = null;
-            return false;
-        }
+            TypePrimitive IMock.BaseType => TypePrimitive.None;
 
-        public virtual bool TryGetIndex(int index, out IMock value)
-        {
-            value = null;
-            return false;
-        }
-
-        public virtual bool TryGetValue(out object value)
-        {
-            value = null;
-            return false;
-        }
-
-        public virtual bool TryGetValue<TValue>(out TValue value)
-        {
-            value = default;
-            if (TryGetValue(out var v) && v != null && typeof(TValue).IsAssignableFrom(v.GetType()))
-                value = (TValue)v;
-
-            return value != null;
-        }
-
-        public virtual bool TryGetToken(out JToken value)
-        {
-            value = null;
-            return false;
-        }
-
-        public override string ToString()
-        {
-            return TryGetValue(out var value) ? value.ToString() : string.Empty;
-        }
-
-        public static explicit operator int(Mock mock) => mock != null && mock.TryGetValue<int>(out var value) ? value : default;
-
-        public static explicit operator long(Mock mock) => mock != null && mock.TryGetValue<long>(out var value) ? value : default;
-
-        public static explicit operator bool(Mock mock) => mock != null && mock.TryGetValue<bool>(out var value) ? value : default;
-
-        public static explicit operator string(Mock mock) => mock != null && mock.TryGetValue<string>(out var value) ? value : default;
-    }
-
-    internal abstract class MockLiteral<T> : Mock, IMock
-    {
-        protected MockLiteral(T value, IMock parent)
-            : base(parent)
-        {
-            Value = value;
-        }
-
-        public T Value { get; }
-
-        public override bool TryGetValue(out object value)
-        {
-            value = Value;
-            return true;
-        }
-
-        public override bool TryGetToken(out JToken value)
-        {
-            value = new JValue(Value);
-            return true;
-        }
-    }
-
-    internal sealed class MockString : MockLiteral<string>
-    {
-        public MockString(string value, IMock parent = null)
-            : base(value, parent) { }
-    }
-
-    internal sealed class MockInteger : MockLiteral<long>
-    {
-        public MockInteger(long value, IMock parent = null)
-            : base(value, parent) { }
-    }
-
-    internal sealed class MockBool : MockLiteral<bool>
-    {
-        public MockBool(bool value, IMock parent = null)
-            : base(value, parent) { }
-    }
-
-    internal abstract class MockNode : Mock, ILazyObject, IMock
-    {
-        protected MockNode(IMock parent)
-            : base(parent) { }
-
-        public override string ToString()
-        {
-            var builder = new StringBuilder();
-            builder.Insert(0, GetString());
-            var parent = Parent as MockNode;
-            while (parent != null)
+            public static new JToken FromObject(object o)
             {
-                builder.Insert(0, ".");
-                builder.Insert(0, parent.GetString());
-                parent = parent.Parent as MockNode;
+                return Mock.FromObject(o);
             }
-            builder.Insert(0, "{{");
-            builder.Append("}}");
-            return builder.ToString();
+
+            public override JToken GetValue(TypePrimitive type)
+            {
+                return TryMutate(type, this, out var replaced) ? replaced : null;
+            }
+
+            public override JToken GetValue(object key)
+            {
+                if ((key is int || key is long) && TryMutate<JArray>(this, out var replaced))
+                {
+                    var result = new MockUnknownObject(IsSecret);
+                    replaced.Add(result);
+                    return result;
+                }
+                return base.GetValue(key);
+            }
+
+            public override TValue GetValue<TValue>()
+            {
+                if (TryMutate<TValue>(this, out var replaced))
+                    return replaced;
+
+                return GetSimpleValue<TValue>(this);
+            }
         }
 
-        public static explicit operator string(MockNode mock) => mock != null ? mock.ToString() : default;
-
-        protected abstract string GetString();
-
-        protected MockString Mock(string value)
+        internal class MockUnknownArray : MockArray, IMock
         {
-            return new MockString(value, this);
+            public MockUnknownArray()
+                : base(secret: false) { }
+
+            public MockUnknownArray(bool secret)
+                : base(secret) { }
         }
 
-        protected MockInteger Mock(long value)
+        internal sealed class MockSecret : MockUnknownObject
         {
-            return new MockInteger(value, this);
+            public MockSecret(string resourceId)
+                : base(secret: true)
+            {
+                ResourceId = resourceId;
+            }
+
+            public string ResourceId { get; }
+
+            public override string ToString()
+            {
+                return "SecretList";
+            }
         }
 
-        protected MockBool Mock(bool value)
+        internal sealed class MockResource : MockUnknownObject
         {
-            return new MockBool(value, this);
+            public MockResource(string resourceId)
+                : base()
+            {
+                ResourceId = resourceId;
+                ResourceHelper.TryResourceIdComponents(resourceId, out var subscriptionId, out var resourceGroupName, out string resourceType, out string name);
+                if (resourceId != null)
+                    Add("id", new JValue(resourceId));
+
+                if (subscriptionId != null)
+                    Add("subscriptionId", new JValue(subscriptionId));
+
+                if (resourceType != null)
+                    Add("type", new JValue(resourceType));
+
+                if (name != null)
+                    Add("name", new JValue(name));
+
+                var properties = new MockUnknownObject();
+                Add("properties", properties);
+            }
+
+            public string ResourceId { get; }
+
+            public override JToken this[object key] { get => base[key]; set => base[key] = value; }
+
+            public override string GetString()
+            {
+                return "Resource";
+            }
         }
 
-        protected MockArray MockArray(JArray value)
+        /// <summary>
+        /// Mock a simple value.
+        /// </summary>
+        internal sealed class MockValue : JValue, IMock
         {
-            return new MockArray(value, this);
+            public MockValue(JValue value)
+                : base(value)
+            {
+                BaseType = GetTypePrimitive(value);
+            }
+
+            public MockValue(string value)
+                : base(value)
+            {
+                BaseType = TypePrimitive.String;
+            }
+
+            public MockValue(int value)
+                : base(value)
+            {
+                BaseType = TypePrimitive.Int;
+            }
+
+            public MockValue(bool value)
+                : base(value)
+            {
+                BaseType = TypePrimitive.Bool;
+            }
+
+            public bool IsSecret => false;
+
+            public TypePrimitive BaseType { get; }
+
+            public override JToken this[object key] { get => base[key]; set => base[key] = value; }
+
+            public TValue GetValue<TValue>()
+            {
+                return GetSimpleValue<TValue>(this);
+            }
+
+            public JToken GetValue(TypePrimitive type)
+            {
+                throw new NotImplementedException();
+            }
+
+            public JToken GetValue(object key)
+            {
+                throw new NotImplementedException();
+            }
+
+            public string GetString()
+            {
+                throw new NotImplementedException();
+            }
         }
 
-        protected MockObject MockObject(JObject value)
+        internal class MockArray : JArray, IMock
         {
-            return new MockObject(value, this);
+            public MockArray(JArray value)
+                : base(value) { }
+
+            public MockArray(bool secret = false)
+                : base()
+            {
+                IsSecret = secret;
+            }
+
+            TypePrimitive IMock.BaseType => TypePrimitive.Array;
+
+            public bool IsSecret { get; }
+
+            public TValue GetValue<TValue>()
+            {
+                return GetArrayValue<TValue>(this);
+            }
+
+            public JToken GetValue(TypePrimitive type)
+            {
+                return type == TypePrimitive.Array ? this : null;
+            }
+
+            public JToken GetValue(object key)
+            {
+                if (key is not int i)
+                    return new MockUnknownObject(IsSecret);
+
+                if (i == -1)
+                    i = Count == 0 ? 0 : Count - 1;
+
+                var t = base[i];
+                return t == null ? new MockUnknownObject(IsSecret) : Mock.FromObject(t);
+            }
+
+            public override JToken this[object key]
+            {
+                get
+                {
+                    return GetValue(key);
+                }
+                set { base[key] = value; }
+            }
+
+            public new JToken this[int index]
+            {
+                get { return GetValue(index); }
+                set { base[index] = value; }
+            }
+
+            public override IEnumerable<T?> Values<T>() where T : default
+            {
+                return base.Values<T>();
+            }
+
+            public override T? Value<T>(object key) where T : default
+            {
+                return base.Value<T>(key);
+            }
+
+            public string GetString()
+            {
+                return "Object";
+            }
         }
 
-        internal MockMember MockMember(string name)
+        internal class MockObject : JObject, IMock
         {
-            return new MockMember(null, this, name);
+            public MockObject(JObject value)
+                : base(value) { }
+
+            public MockObject(bool secret = false)
+                : base()
+            {
+                IsSecret = secret;
+            }
+
+            public new JToken? this[string propertyName]
+            {
+                get { return GetValue(propertyName); }
+                set { base[propertyName] = value; }
+            }
+
+            public override JToken this[object key]
+            {
+                get
+                {
+                    return GetValue(key);
+                }
+                set { base[key] = value; }
+            }
+
+            public override T? Value<T>(object key) where T : default
+            {
+                return base.Value<T>(key);
+            }
+
+            public override IEnumerable<T?> Values<T>() where T : default
+            {
+                return base.Values<T>();
+            }
+
+            public bool IsSecret { get; }
+
+            TypePrimitive IMock.BaseType => TypePrimitive.Object;
+
+            public virtual TValue GetValue<TValue>()
+            {
+                return GetSimpleValue<TValue>(this);
+            }
+
+            public virtual JToken GetValue(TypePrimitive type)
+            {
+                return this;
+            }
+
+            public virtual JToken GetValue(object key)
+            {
+                var result = base[key];
+                if (result == null)
+                {
+                    result = new MockUnknownObject(IsSecret);
+                    base[key] = result;
+                }
+                return result;
+            }
+
+            public override string ToString()
+            {
+                var builder = new StringBuilder();
+                builder.Insert(0, GetString());
+                var parent = Parent as IMock ?? Parent?.Parent as IMock;
+                while (parent != null)
+                {
+                    builder.Insert(0, ".");
+                    builder.Insert(0, parent.GetString());
+                    parent = (parent as JToken).Parent as IMock ?? (parent as JToken).Parent?.Parent as IMock;
+                }
+                builder.Insert(0, "{{");
+                builder.Append("}}");
+                return builder.ToString();
+            }
+
+            public virtual string GetString()
+            {
+                return "Object";
+            }
         }
 
-        bool ILazyObject.TryProperty(string propertyName, out object value)
+        private static TValue GetSimpleValue<TValue>(JToken value)
         {
-            value = MockMember(propertyName);
-            return true;
-        }
-    }
+            if (typeof(TValue).IsAssignableFrom(value.GetType()) && value is TValue castTValue)
+                return castTValue;
 
-    internal sealed class MockArray : MockNode, IMock
-    {
-        public MockArray(JArray value, IMock parent = null)
-            : base(parent)
-        {
-            Value = value;
-        }
+            if (value != null)
+                return value.Value<TValue>();
 
-        public JArray Value { get; }
+            if (typeof(TValue) == typeof(string) && string.Empty is TValue s)
+                return s;
 
-        public override bool TryGetValue(out object value)
-        {
-            value = Value;
-            return true;
+            return default;
         }
 
-        public override bool TryGetIndex(int index, out IMock value)
+        /// <summary>
+        /// Tokens are mutated when orginally the type of token is unknown.
+        /// </summary>
+        private static bool TryMutate<TValue>(JToken current, out TValue replaced)
         {
-            return TryGetIndexFromValue(index, out value);
+            replaced = default;
+            if (current is TValue value)
+            {
+                replaced = value;
+                return true;
+            }
+
+            var isSecret = current is IMock mock && mock.IsSecret;
+
+            if (typeof(JArray).IsAssignableFrom(typeof(TValue)))
+            {
+                var replacement = new MockUnknownArray(isSecret);
+                current.Replace(replacement);
+                replaced = replacement is TValue replacementResult ? replacementResult : default;
+                return true;
+            }
+            else if (typeof(JObject).IsAssignableFrom(typeof(TValue)))
+            {
+                var replacement = new MockUnknownObject(isSecret);
+                current.Replace(replacement);
+                replaced = replacement is TValue replacementResult ? replacementResult : default;
+            }
+            return false;
         }
 
-        protected override string GetString()
+        /// <summary>
+        /// Tokens are mutated when orginally the type of token is unknown.
+        /// </summary>
+        private static bool TryMutate(TypePrimitive type, JToken current, out JToken replaced)
         {
-            return ToString();
+            replaced = default;
+            if (type is TypePrimitive.Object or TypePrimitive.SecureObject)
+            {
+                replaced = TryMutate<MockUnknownObject>(current, out var uo) ? uo : default;
+                return replaced != default;
+            }
+            else if (type == TypePrimitive.Array)
+            {
+                replaced = TryMutate<MockUnknownArray>(current, out var uo) ? uo : default;
+                return replaced != default;
+            }
+            else if (type is TypePrimitive.String or TypePrimitive.SecureString)
+            {
+                var isSecret = type == TypePrimitive.SecureString || current is IMock mock && mock.IsSecret;
+                replaced = new MockValue(isSecret ? "{{Secret}}" : string.Empty);
+                current.Replace(replaced);
+                return true;
+            }
+            return false;
         }
 
-        public override string ToString()
+        private static TValue GetArrayValue<TValue>(JToken value)
         {
-            return TryGetValue(out var value) && value != null ? value.ToString() : string.Empty;
+            throw new NotImplementedException();
         }
 
-        private bool TryGetIndexFromValue(int index, out IMock value)
+        private static JToken FromObject(object o)
         {
-            value = null;
-            if (Value == null || index < 0 || index > Value.Count - 1)
-                return false;
+            var token = JToken.FromObject(o);
 
-            var token = Value[index];
-            if (token.Type == JTokenType.String)
-                value = Mock(token.Value<string>());
-
-            if (token.Type == JTokenType.Integer)
-                value = Mock(token.Value<long>());
-
-            if (token.Type == JTokenType.Boolean)
-                value = Mock(token.Value<bool>());
+            if (token.Type is JTokenType.String or
+                JTokenType.Integer or
+                JTokenType.Boolean or
+                JTokenType.Float or
+                JTokenType.Date or
+                JTokenType.Guid or
+                JTokenType.TimeSpan or
+                JTokenType.Uri)
+                return new MockValue(token.Value<JValue>());
 
             if (token.Type == JTokenType.Array)
-                value = MockArray(token.Value<JArray>());
+                return new MockArray(token.Value<JArray>());
 
             if (token.Type == JTokenType.Object)
-                value = MockObject(token.Value<JObject>());
+                return new MockObject(token.Value<JObject>());
 
-            return true;
-        }
-    }
-
-    internal abstract class MockObjectBase : MockNode, IMock, ILazyObject
-    {
-        internal MockObjectBase(MockNode parent)
-            : base(parent) { }
-
-        public JObject Value { get; protected set; }
-
-        public override bool TryProperty(string propertyName, out IMock value)
-        {
-            return TryGetPropertyFromValue(propertyName, out value);
+            throw new NotImplementedException();
         }
 
-        public override bool TryGetValue(out object value)
+        private static TypePrimitive GetTypePrimitive(JToken token)
         {
-            value = Value;
-            return value != null;
-        }
-
-        public override bool TryGetToken(out JToken value)
-        {
-            value = Value;
-            return Value != null;
-        }
-
-        private bool TryGetPropertyFromValue(string propertyName, out IMock value)
-        {
-            value = null;
-            if (Value == null || !Value.TryGetProperty(propertyName, out JToken token))
-                return false;
-
             if (token.Type == JTokenType.String)
-                value = Mock(token.Value<string>());
+                return TypePrimitive.String;
 
             if (token.Type == JTokenType.Integer)
-                value = Mock(token.Value<long>());
+                return TypePrimitive.Int;
 
             if (token.Type == JTokenType.Boolean)
-                value = Mock(token.Value<bool>());
+                return TypePrimitive.Bool;
 
-            if (token.Type == JTokenType.Array)
-                value = MockArray(token.Value<JArray>());
-
-            if (token.Type == JTokenType.Object)
-                value = MockObject(token.Value<JObject>());
-
-            return true;
-        }
-
-        public bool TryProperty(string propertyName, out object value)
-        {
-            value = null;
-            if (TryProperty(propertyName, out IMock fake))
-                value = fake;
-
-            if (value == null)
-                value = MockObject(null);
-
-            return value != null;
-        }
-    }
-
-    internal sealed class MockObject : MockObjectBase
-    {
-        internal MockObject(JObject o, MockNode parent = null)
-            : base(parent)
-        {
-            Value = o;
-        }
-
-        protected override string GetString()
-        {
-            return "Object";
-        }
-
-        public override bool TryGetToken(out JToken value)
-        {
-            if (!base.TryGetToken(out value))
-                value = new JObject();
-
-            return true;
-        }
-    }
-
-    internal sealed class MockList : MockNode
-    {
-        internal MockList(string resourceId)
-            : base(null)
-        {
-            ResourceId = resourceId;
-        }
-
-        public string ResourceId { get; }
-
-        protected override string GetString()
-        {
-            return "SecretList";
-        }
-    }
-
-    internal sealed class MockMember : MockNode
-    {
-        internal MockMember(JToken token, MockNode parent, string name)
-            : base(parent)
-        {
-            Name = name;
-            Value = token;
-        }
-
-        public string Name { get; }
-
-        public JToken Value { get; }
-
-        protected override string GetString()
-        {
-            return Name;
-        }
-
-        public override bool TryGetToken(out JToken value)
-        {
-            value = Value;
-            return Value != null || base.TryGetToken(out value);
-        }
-    }
-
-    internal sealed class MockResource : MockObjectBase
-    {
-        internal MockResource(string resourceType)
-            : base(null)
-        {
-            ResourceType = resourceType;
-        }
-
-        public string ResourceType { get; }
-
-        protected override string GetString()
-        {
-            return "Resource";
+            throw new NotImplementedException();
         }
     }
 }

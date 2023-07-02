@@ -491,7 +491,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         }
 
                         // Recurse any objects or arrays
-                        else if (child.Value.Type == JTokenType.Object || child.Value.Type == JTokenType.Array)
+                        else if (child.Value.Type is JTokenType.Object or JTokenType.Array)
                             ExpandPolicyRule(child.Value, types);
                     }
                 }

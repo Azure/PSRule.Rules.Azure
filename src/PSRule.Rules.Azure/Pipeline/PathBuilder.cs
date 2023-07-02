@@ -160,7 +160,7 @@ namespace PSRule.Rules.Azure.Pipeline
         [DebuggerStepThrough]
         private static bool IsSeparator(char c)
         {
-            return c == Slash || c == BackSlash;
+            return c is Slash or BackSlash;
         }
     }
 }

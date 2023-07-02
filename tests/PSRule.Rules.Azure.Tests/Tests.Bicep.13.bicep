@@ -38,11 +38,20 @@ output arrayOutput array = flatten(arrayToTest)
 // Filter
 output oldDogs array = filter(dogs, dog => dog.age >= 5)
 
+param environment string = 'subnet1'
+
 module vnet 'Tests.Bicep.13.child.bicep' = {
   name: 'vnet'
 }
 
-output vnetId string = filter(vnet.outputs.subnets, s => s.name == 'subnet1')[0].id
+module child2 'Tests.Bicep.13.child2.bicep' = {
+  name: 'child2'
+  params: {
+    subnetId: filter(vnet.outputs.subnets, s => s.name == 'subnet1')[0].id
+  }
+}
+
+output vnetId string = filter(vnet.outputs.subnets, s => s.name == environment)[0].id
 
 // Map
 output dogNames array = map(dogs, dog => dog.name)

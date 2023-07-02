@@ -15,26 +15,15 @@ namespace PSRule.Rules.Azure
         /// <returns></returns>
         internal static Encoding GetEncoding(this OutputEncoding? encoding)
         {
-            switch (encoding)
+            return encoding switch
             {
-                case OutputEncoding.UTF8:
-                    return Encoding.UTF8;
-
-                case OutputEncoding.UTF7:
-                    return Encoding.UTF7;
-
-                case OutputEncoding.Unicode:
-                    return Encoding.Unicode;
-
-                case OutputEncoding.UTF32:
-                    return Encoding.UTF32;
-
-                case OutputEncoding.ASCII:
-                    return Encoding.ASCII;
-
-                default:
-                    return new UTF8Encoding(encoderShouldEmitUTF8Identifier: false);
-            }
+                OutputEncoding.UTF8 => Encoding.UTF8,
+                OutputEncoding.UTF7 => Encoding.UTF7,
+                OutputEncoding.Unicode => Encoding.Unicode,
+                OutputEncoding.UTF32 => Encoding.UTF32,
+                OutputEncoding.ASCII => Encoding.ASCII,
+                _ => new UTF8Encoding(encoderShouldEmitUTF8Identifier: false),
+            };
         }
     }
 }

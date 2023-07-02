@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.13.1.58284",
-      "templateHash": "1497947304986475936"
+      "version": "0.18.4.5664",
+      "templateHash": "13072726016688761550"
     }
   },
   "parameters": {
@@ -31,7 +31,7 @@
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "storage3",
       "properties": {
         "expressionEvaluationOptions": {
@@ -40,23 +40,25 @@
         "mode": "Incremental",
         "parameters": {
           "name": {
-            "value": "[format('{0}{1}', split(reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.id.value, '/')[8], reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.unique.value)]"
+            "value": "[format('{0}{1}', split(reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2022-09-01').outputs.id.value, '/')[8], reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2022-09-01').outputs.unique.value)]"
           },
           "location": {
             "value": "[parameters('location')]"
           },
           "tags": {
-            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.tags.value]"
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2022-09-01').outputs.tags.value]"
           }
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
+            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "10683227264194439860"
+              "version": "0.18.4.5664",
+              "templateHash": "12402495427496768581"
             }
           },
           "parameters": {
@@ -83,8 +85,26 @@
               }
             }
           },
-          "resources": [
-            {
+          "resources": {
+            "vnet": {
+              "existing": true,
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2021-05-01",
+              "name": "vnet-001",
+              "metadata": {
+                "description": "A reference to an example VNET."
+              }
+            },
+            "subnet": {
+              "existing": true,
+              "type": "Microsoft.Network/virtualNetworks/subnets",
+              "apiVersion": "2021-05-01",
+              "name": "[format('{0}/{1}', 'vnet-001', 'subnet-001')]",
+              "metadata": {
+                "description": "A reference to an exampe subnet."
+              }
+            },
+            "storageAccount": {
               "type": "Microsoft.Storage/storageAccounts",
               "apiVersion": "2021-06-01",
               "name": "[parameters('name')]",
@@ -108,7 +128,7 @@
                 "description": "An example Storage Account."
               }
             },
-            {
+            "endpoint": {
               "type": "Microsoft.Network/privateEndpoints",
               "apiVersion": "2020-03-01",
               "name": "[format('pe-{0}', parameters('name'))]",
@@ -130,38 +150,45 @@
                 ]
               },
               "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+                "storageAccount"
               ]
             }
-          ],
+          },
           "outputs": {
             "id": {
               "type": "string",
-              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
               "metadata": {
                 "description": "A unique resource Id for the storage account."
-              }
+              },
+              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
             },
             "tags": {
               "type": "object",
-              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
               "metadata": {
                 "description": "Any tags set on the storage account."
-              }
+              },
+              "value": "[reference('storageAccount', '2021-06-01', 'full').tags]"
             },
             "unique": {
               "type": "string",
-              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]",
               "metadata": {
                 "description": "A unique string that is generated from the blob endpoint."
-              }
+              },
+              "value": "[uniqueString(reference('storageAccount').primaryEndpoints.blob)]"
+            },
+            "blobEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "The endpoint of the storage account."
+              },
+              "value": "[reference('storageAccount').primaryEndpoints.blob]"
             },
             "endpointNIC": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]",
               "metadata": {
                 "description": "The ID of the endpoint NIC."
-              }
+              },
+              "value": "[reference('endpoint').networkInterfaces[0].id]"
             }
           }
         }
@@ -172,7 +199,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "storage1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -187,12 +214,14 @@
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
+            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "10683227264194439860"
+              "version": "0.18.4.5664",
+              "templateHash": "12402495427496768581"
             }
           },
           "parameters": {
@@ -219,8 +248,26 @@
               }
             }
           },
-          "resources": [
-            {
+          "resources": {
+            "vnet": {
+              "existing": true,
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2021-05-01",
+              "name": "vnet-001",
+              "metadata": {
+                "description": "A reference to an example VNET."
+              }
+            },
+            "subnet": {
+              "existing": true,
+              "type": "Microsoft.Network/virtualNetworks/subnets",
+              "apiVersion": "2021-05-01",
+              "name": "[format('{0}/{1}', 'vnet-001', 'subnet-001')]",
+              "metadata": {
+                "description": "A reference to an exampe subnet."
+              }
+            },
+            "storageAccount": {
               "type": "Microsoft.Storage/storageAccounts",
               "apiVersion": "2021-06-01",
               "name": "[parameters('name')]",
@@ -244,7 +291,7 @@
                 "description": "An example Storage Account."
               }
             },
-            {
+            "endpoint": {
               "type": "Microsoft.Network/privateEndpoints",
               "apiVersion": "2020-03-01",
               "name": "[format('pe-{0}', parameters('name'))]",
@@ -266,38 +313,45 @@
                 ]
               },
               "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+                "storageAccount"
               ]
             }
-          ],
+          },
           "outputs": {
             "id": {
               "type": "string",
-              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
               "metadata": {
                 "description": "A unique resource Id for the storage account."
-              }
+              },
+              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
             },
             "tags": {
               "type": "object",
-              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
               "metadata": {
                 "description": "Any tags set on the storage account."
-              }
+              },
+              "value": "[reference('storageAccount', '2021-06-01', 'full').tags]"
             },
             "unique": {
               "type": "string",
-              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]",
               "metadata": {
                 "description": "A unique string that is generated from the blob endpoint."
-              }
+              },
+              "value": "[uniqueString(reference('storageAccount').primaryEndpoints.blob)]"
+            },
+            "blobEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "The endpoint of the storage account."
+              },
+              "value": "[reference('storageAccount').primaryEndpoints.blob]"
             },
             "endpointNIC": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]",
               "metadata": {
                 "description": "The ID of the endpoint NIC."
-              }
+              },
+              "value": "[reference('endpoint').networkInterfaces[0].id]"
             }
           }
         }
@@ -305,7 +359,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "storage2",
       "properties": {
         "expressionEvaluationOptions": {
@@ -320,17 +374,19 @@
             "value": "[parameters('location')]"
           },
           "tags": {
-            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.tags.value]"
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2022-09-01').outputs.tags.value]"
           }
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
+            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "10683227264194439860"
+              "version": "0.18.4.5664",
+              "templateHash": "12402495427496768581"
             }
           },
           "parameters": {
@@ -357,8 +413,26 @@
               }
             }
           },
-          "resources": [
-            {
+          "resources": {
+            "vnet": {
+              "existing": true,
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2021-05-01",
+              "name": "vnet-001",
+              "metadata": {
+                "description": "A reference to an example VNET."
+              }
+            },
+            "subnet": {
+              "existing": true,
+              "type": "Microsoft.Network/virtualNetworks/subnets",
+              "apiVersion": "2021-05-01",
+              "name": "[format('{0}/{1}', 'vnet-001', 'subnet-001')]",
+              "metadata": {
+                "description": "A reference to an exampe subnet."
+              }
+            },
+            "storageAccount": {
               "type": "Microsoft.Storage/storageAccounts",
               "apiVersion": "2021-06-01",
               "name": "[parameters('name')]",
@@ -382,7 +456,7 @@
                 "description": "An example Storage Account."
               }
             },
-            {
+            "endpoint": {
               "type": "Microsoft.Network/privateEndpoints",
               "apiVersion": "2020-03-01",
               "name": "[format('pe-{0}', parameters('name'))]",
@@ -404,38 +478,45 @@
                 ]
               },
               "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+                "storageAccount"
               ]
             }
-          ],
+          },
           "outputs": {
             "id": {
               "type": "string",
-              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
               "metadata": {
                 "description": "A unique resource Id for the storage account."
-              }
+              },
+              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
             },
             "tags": {
               "type": "object",
-              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
               "metadata": {
                 "description": "Any tags set on the storage account."
-              }
+              },
+              "value": "[reference('storageAccount', '2021-06-01', 'full').tags]"
             },
             "unique": {
               "type": "string",
-              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]",
               "metadata": {
                 "description": "A unique string that is generated from the blob endpoint."
-              }
+              },
+              "value": "[uniqueString(reference('storageAccount').primaryEndpoints.blob)]"
+            },
+            "blobEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "The endpoint of the storage account."
+              },
+              "value": "[reference('storageAccount').primaryEndpoints.blob]"
             },
             "endpointNIC": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]",
               "metadata": {
                 "description": "The ID of the endpoint NIC."
-              }
+              },
+              "value": "[reference('endpoint').networkInterfaces[0].id]"
             }
           }
         }

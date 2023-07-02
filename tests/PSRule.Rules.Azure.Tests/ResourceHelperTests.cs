@@ -53,7 +53,7 @@ namespace PSRule.Rules.Azure
                 "Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet"
             };
 
-            Assert.True(ResourceHelper.TryResourceIdComponents(id[0], out var subscriptionId, out var resourceGroupName, out var resourceTypeComponents, out var nameComponents));
+            Assert.True(ResourceHelper.TryResourceIdComponents(id[0], out var subscriptionId, out var resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents));
             Assert.Equal("00000000-0000-0000-0000-000000000000", subscriptionId);
             Assert.Equal("rg-test", resourceGroupName);
             Assert.Equal("microsoft.operationalinsights/workspaces", resourceTypeComponents[0]);

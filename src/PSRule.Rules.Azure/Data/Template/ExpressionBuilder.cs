@@ -130,6 +130,9 @@ namespace PSRule.Rules.Azure.Data.Template
             var source = inner(context);
             var indexResult = index(context);
 
+            if (source is IMock mock)
+                return mock.GetValue(indexResult);
+
             if (ExpressionHelpers.TryArray(source, out var array) && ExpressionHelpers.TryConvertInt(indexResult, out var arrayIndex))
                 return array.GetValue(arrayIndex);
 
@@ -160,6 +163,9 @@ namespace PSRule.Rules.Azure.Data.Template
             var result = inner(context);
             if (result == null)
                 throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
+
+            if (result is IMock mock)
+                return mock.GetValue(propertyName);
 
             if (result is JObject jObject)
             {

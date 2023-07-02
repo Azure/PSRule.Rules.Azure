@@ -134,7 +134,7 @@ namespace PSRule.Rules.Azure
 
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
         {
-            if (reader.TokenType != JsonToken.StartObject && reader.TokenType != JsonToken.StartArray)
+            if (reader.TokenType is not JsonToken.StartObject and not JsonToken.StartArray)
                 throw new PipelineSerializationException(PSRuleResources.ReadJsonFailed);
 
             var result = new List<PSObject>();

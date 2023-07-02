@@ -352,12 +352,12 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(First), args);
 
-            if (args[0] is Array avalue)
+            if (args[0] is IMock mock && mock.BaseType != TypePrimitive.String && mock is JToken token)
+                return token.First;
+            else if (args[0] is Array avalue)
                 return avalue.GetValue(0);
             else if (args[0] is JArray jArray)
-                return jArray[0];
-            else if (args[0] is IMock mock)
-                return mock.TryGetIndex(0, out var mvalue) ? mvalue : mock;
+                return jArray.First;
             else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[0], 1);
 
@@ -512,12 +512,12 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 1)
                 throw ArgumentsOutOfRange(nameof(Last), args);
 
-            if (args[0] is Array avalue)
+            if (args[0] is IMock mock && mock.BaseType != TypePrimitive.String && mock is JToken token)
+                return token.Last;
+            else if (args[0] is Array avalue)
                 return avalue.GetValue(avalue.Length - 1);
             else if (args[0] is JArray jArray)
-                return jArray[jArray.Count - 1];
-            else if (args[0] is IMock mock)
-                return mock.TryGetIndex(0, out var mvalue) ? mvalue : mock;
+                return jArray.Last;
             else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[svalue.Length - 1], 1);
 
@@ -805,11 +805,11 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object List(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
-            if (argCount < 2 || argCount > 3)
+            if (argCount is < 2 or > 3)
                 throw ArgumentsOutOfRange(nameof(List), args);
 
             ExpressionHelpers.TryString(args[0], out var resourceId);
-            return new MockList(resourceId);
+            return new Mock.MockSecret(resourceId);
         }
 
         /// <summary>
@@ -818,7 +818,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object PickZones(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
-            if (argCount < 3 || argCount > 5)
+            if (argCount is < 3 or > 5)
                 throw ArgumentsOutOfRange(nameof(PickZones), args);
 
             if (!ExpressionHelpers.TryString(args[0], out var providerNamespace))
@@ -859,7 +859,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Providers(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
-            if (argCount < 1 || argCount > 2)
+            if (argCount is < 1 or > 2)
                 throw ArgumentsOutOfRange(nameof(Providers), args);
 
             if (!ExpressionHelpers.TryString(args[0], out var providerNamespace))
@@ -885,7 +885,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Reference(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
-            if (argCount < 1 || argCount > 3)
+            if (argCount is < 1 or > 3)
                 throw ArgumentsOutOfRange(nameof(Reference), args);
 
             // Resource type
@@ -899,7 +899,7 @@ namespace PSRule.Rules.Azure.Data.Template
             // If the resource is part of the deployment try to get the object
             return context.TryGetResource(resourceId, out var resourceValue)
                 ? GetReferenceResult(resourceValue, full)
-                : new MockResource(resourceId);
+                : full ? new Mock.MockResource(resourceId) : new Mock.MockResource(resourceId)["properties"];
         }
 
         private static object GetReferenceResult(IResourceValue resource, bool full)
@@ -908,9 +908,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 return full ? deployment : deployment.Properties;
 
             if (!full && resource.Value.TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var properties))
-                return new MockObject(properties);
+                return new Mock.MockObject(properties);
 
-            return new MockObject(full ? resource.Value : new JObject());
+            return new Mock.MockObject(full ? resource.Value : new JObject());
         }
 
         /// <summary>
@@ -1242,7 +1242,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object DateTimeAdd(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
-            if (argCount < 2 || argCount > 3)
+            if (argCount is < 2 or > 3)
                 throw ArgumentsOutOfRange(nameof(DateTimeAdd), args);
 
             if (!ExpressionHelpers.TryConvertDateTime(args[0], out var startTime))
@@ -1624,7 +1624,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object PadLeft(ITemplateContext context, object[] args)
         {
             var argCount = CountArgs(args);
-            if (argCount < 2 || argCount > 3)
+            if (argCount is < 2 or > 3)
                 throw ArgumentsOutOfRange(nameof(PadLeft), args);
 
             var paddingCharacter = " ";
@@ -1733,7 +1733,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             for (var i = 0; i < args.Length; i++)
             {
-                if (!ExpressionHelpers.IsString(args[i]))
+                if (!ExpressionHelpers.IsString(args[i]) && args[i] is not IMock)
                     throw ArgumentInvalidString(nameof(UniqueString), i == 0 ? "baseString" : "additional parameters as needed");
             }
             return ExpressionHelpers.GetUniqueString(args).Substring(0, 13);
@@ -1800,12 +1800,15 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 2)
                 throw ArgumentsOutOfRange(nameof(Split), args);
 
-            if (!ExpressionHelpers.TryString(args[0], out var inputString))
+            if (!ExpressionHelpers.TryString(args[0], out var inputString) && args[0] is not IMock mock)
                 throw ArgumentInvalidString(nameof(Split), "inputString");
 
             // Handle mocks to prevent exception
+            if (args[0] is IMock)
+                return new Mock.MockArray();
+
             if (inputString.StartsWith("{{", StringComparison.OrdinalIgnoreCase) && inputString.EndsWith("}}", StringComparison.OrdinalIgnoreCase))
-                return new MockArray(null, null);
+                return new Mock.MockArray();
 
             string[] delimiter = null;
             if (ExpressionHelpers.TryString(args[1], out var single))
@@ -1918,7 +1921,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object ToObject(ITemplateContext context, object[] args)
         {
             var count = CountArgs(args);
-            if (count < 2 || count > 3)
+            if (count is < 2 or > 3)
                 throw ArgumentsOutOfRange(nameof(ToObject), args);
 
             args[0] = GetExpression(context, args[0]);
@@ -1947,7 +1950,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static object Lambda(ITemplateContext context, object[] args)
         {
             var count = CountArgs(args);
-            if (count < 2 || count > 3)
+            if (count is < 2 or > 3)
                 throw ArgumentsOutOfRange(nameof(Lambda), args);
 
             return new LambdaExpressionFn(args);
