@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-07-02
 severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
@@ -34,6 +35,7 @@ This rule does not check if Azure Cognitive Search service names are unique.
 ## LINKS
 
 - [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
-- [REST API reference](https://docs.microsoft.com/rest/api/searchmanagement/2021-04-01-preview/services/create-or-update)
-- [Define your naming convention](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
-- [Recommended abbreviations for Azure resource types](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [REST API reference](https://learn.microsoft.com/rest/api/searchmanagement/2022-09-01/services/create-or-update)
+- [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.search/searchservices)

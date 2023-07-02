@@ -112,6 +112,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("resourceId", ResourceId),
             new FunctionDescriptor("subscriptionResourceId", SubscriptionResourceId),
             new FunctionDescriptor("tenantResourceId", TenantResourceId),
+            new FunctionDescriptor("managementGroupResourceId", ManagementGroupResourceId),
 
             // Scope
             new FunctionDescriptor("resourceGroup", ResourceGroup),
@@ -1001,6 +1002,37 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw MismatchingResourceSegments(nameof(TenantResourceId));
 
             return ResourceHelper.CombineResourceId(null, null, resourceType, name);
+        }
+
+        /// <summary>
+        /// managementGroupResourceId(resourceType, resourceName1, [resourceName2], ...)
+        /// See <see href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-resource#managementgroupresourceid"/>.
+        /// </summary>
+        /// <returns>
+        /// /providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{resourceType}/{resourceName}
+        /// </returns>
+        internal static object ManagementGroupResourceId(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) < 2)
+                throw ArgumentsOutOfRange(nameof(ManagementGroupResourceId), args);
+
+            var segments = new string[args.Length];
+            for (var i = 0; i < segments.Length; i++)
+            {
+                if (!ExpressionHelpers.TryString(args[i], out var value))
+                    throw ArgumentFormatInvalid(nameof(ManagementGroupResourceId));
+
+                segments[i] = value;
+            }
+
+            // Copy segments
+            var start = FindResourceTypePart(segments);
+            GetResourceIdParts(segments, start, out var resourceType, out var name);
+            if (resourceType.Length != name.Length)
+                throw MismatchingResourceSegments(nameof(ManagementGroupResourceId));
+
+            var managementGroupName = context.ManagementGroup.Name;
+            return ResourceHelper.CombineResourceId(managementGroupName, resourceType, name);
         }
 
         #endregion Resource
