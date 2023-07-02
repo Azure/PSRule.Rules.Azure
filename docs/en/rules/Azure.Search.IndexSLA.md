@@ -1,7 +1,8 @@
 ---
+reviewed: 2023-07-02
 severity: Important
 pillar: Reliability
-category: Availability
+category: Application design
 resource: Cognitive Search
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.IndexSLA/
 ---
@@ -39,28 +40,52 @@ For example:
 
 ```json
 {
-    "apiVersion": "2020-08-01",
-    "name": "[parameters('serviceName')]",
-    "location": "[parameters('location')]",
-    "type": "Microsoft.Search/searchServices",
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "sku": {
-        "name": "[parameters('sku')]"
-    },
-    "properties": {
-        "replicaCount": 3,
-        "partitionCount": 1,
-        "hostingMode": "default"
-    },
-    "tags": {},
-    "dependsOn": []
+  "type": "Microsoft.Search/searchServices",
+  "apiVersion": "2022-09-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "sku": {
+    "name": "standard"
+  },
+  "properties": {
+    "replicaCount": 3,
+    "partitionCount": 1,
+    "hostingMode": "default"
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy Cognitive Search services that pass this rule:
+
+- Set the `replicaCount` to a minimum of 3.
+
+For example:
+
+```bicep
+resource search 'Microsoft.Search/searchServices@2022-09-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  sku: {
+    name: 'standard'
+  }
+  properties: {
+    replicaCount: 3
+    partitionCount: 1
+    hostingMode: 'default'
+  }
 }
 ```
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.search/searchservices#searchserviceproperties-object)
-- [SLA for Azure Cognitive Search](https://azure.microsoft.com/support/legal/sla/search)
-- [Resiliency checklist for specific Azure services](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service#search)
+- [Resiliency checklist for specific Azure services](https://learn.microsoft.com/azure/architecture/checklist/resiliency-per-service#search)
+- [SLA for Azure Cognitive Search](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.search/searchservices)

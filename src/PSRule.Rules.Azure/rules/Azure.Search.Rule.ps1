@@ -6,19 +6,19 @@
 #
 
 # Synopsis: Use a minimum of a basic SKU.
-Rule 'Azure.Search.SKU' -Ref 'AZR-000172' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
+Rule 'Azure.Search.SKU' -Ref 'AZR-000172' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $Assert.NotIn($TargetObject, 'Sku.Name', @(
         'free'
     ));
 }
 
 # Synopsis: Use a minimum of 2 replicas to receive an SLA for index queries.
-Rule 'Azure.Search.QuerySLA' -Ref 'AZR-000173' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
+Rule 'Azure.Search.QuerySLA' -Ref 'AZR-000173' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.GreaterOrEqual($TargetObject, 'Properties.replicaCount', 2);
 }
 
 # Synopsis: Use a minimum of 3 replicas to receive an SLA for query and index updates.
-Rule 'Azure.Search.IndexSLA' -Ref 'AZR-000174' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
+Rule 'Azure.Search.IndexSLA' -Ref 'AZR-000174' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.GreaterOrEqual($TargetObject, 'Properties.replicaCount', 3);
 }
 
@@ -28,7 +28,7 @@ Rule 'Azure.Search.ManagedIdentity' -Ref 'AZR-000175' -Type 'Microsoft.Search/se
 }
 
 # Synopsis: Use Cognitive Search naming requirements.
-Rule 'Azure.Search.Name' -Ref 'AZR-000176' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; } {
+Rule 'Azure.Search.Name' -Ref 'AZR-000176' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate
 
     # Between 2 and 60 characters long
