@@ -31,6 +31,8 @@ What's changed since pre-release v1.28.0-B0045:
     [#2281](https://github.com/Azure/PSRule.Rules.Azure/pull/2281)
   - Bump Microsoft.NET.Test.Sdk to v17.6.3.
     [#2290](https://github.com/Azure/PSRule.Rules.Azure/pull/2290)
+  - Bump coverlet.collector to v6.0.0.
+    [#2232](https://github.com/Azure/PSRule.Rules.Azure/pull/2232)
 
 ## v1.28.0-B0045 (pre-release)
 
