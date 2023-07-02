@@ -108,6 +108,12 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
+        public void CombineResourceIdManagementGroup()
+        {
+            Assert.Equal("/providers/Microsoft.Management/managementGroups/mg1/providers/Microsoft.Authorization/policyAssignments/assignment1", ResourceHelper.CombineResourceId("mg1", new string[] { "Microsoft.Authorization/policyAssignments" }, new string[] { "assignment1" }));
+        }
+
+        [Fact]
         public void GetParentResourceId()
         {
             var resourceType = new string[]
