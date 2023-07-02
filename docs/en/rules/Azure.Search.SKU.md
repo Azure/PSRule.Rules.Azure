@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-07-02
 severity: Critical
 pillar: Performance Efficiency
 category: Capacity planning
@@ -31,35 +32,59 @@ Consider deploying Cognitive Search services using basic or higher tier.
 
 To deploy Cognitive Search services that pass this rule:
 
-- Set the `sku.name` to a minimum of basic.
+- Set the `sku.name` to a minimum of `basic`.
 
 For example:
 
 ```json
 {
-    "apiVersion": "2020-08-01",
-    "name": "[parameters('serviceName')]",
-    "location": "[parameters('location')]",
-    "type": "Microsoft.Search/searchServices",
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "sku": {
-        "name": "basic"
-    },
-    "properties": {
-        "replicaCount": 3,
-        "partitionCount": 1,
-        "hostingMode": "default"
-    },
-    "tags": {},
-    "dependsOn": []
+  "type": "Microsoft.Search/searchServices",
+  "apiVersion": "2022-09-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "sku": {
+    "name": "standard"
+  },
+  "properties": {
+    "replicaCount": 3,
+    "partitionCount": 1,
+    "hostingMode": "default"
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy Cognitive Search services that pass this rule:
+
+- Set the `sku.name` to a minimum of `basic`.
+
+For example:
+
+```bicep
+resource search 'Microsoft.Search/searchServices@2022-09-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  sku: {
+    name: 'standard'
+  }
+  properties: {
+    replicaCount: 3
+    partitionCount: 1
+    hostingMode: 'default'
+  }
 }
 ```
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.search/searchservices#sku-object)
-- [SLA for Azure Cognitive Search](https://azure.microsoft.com/support/legal/sla/search)
-- [Estimate and manage capacity of an Azure Cognitive Search service](https://docs.microsoft.com/azure/search/search-capacity-planning)
 - [Choosing the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
+- [SLA for Azure Cognitive Search](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services)
+- [Estimate and manage capacity of an Azure Cognitive Search service](https://learn.microsoft.com/azure/search/search-capacity-planning)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.search/searchservices)

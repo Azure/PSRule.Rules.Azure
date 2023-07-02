@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-07-02
 severity: Important
 pillar: Security
 category: Identity and access management
@@ -41,29 +42,54 @@ For example:
 
 ```json
 {
-    "apiVersion": "2020-08-01",
-    "name": "[parameters('serviceName')]",
-    "location": "[parameters('location')]",
-    "type": "Microsoft.Search/searchServices",
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "sku": {
-        "name": "[parameters('sku')]"
-    },
-    "properties": {
-        "replicaCount": 3,
-        "partitionCount": 1,
-        "hostingMode": "default"
-    },
-    "tags": {},
-    "dependsOn": []
+  "type": "Microsoft.Search/searchServices",
+  "apiVersion": "2022-09-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "sku": {
+    "name": "standard"
+  },
+  "properties": {
+    "replicaCount": 3,
+    "partitionCount": 1,
+    "hostingMode": "default"
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy Cognitive Search services that pass this rule:
+
+- Set the `identity.type` to `SystemAssigned`.
+
+For example:
+
+```bicep
+resource search 'Microsoft.Search/searchServices@2022-09-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  sku: {
+    name: 'standard'
+  }
+  properties: {
+    replicaCount: 3
+    partitionCount: 1
+    hostingMode: 'default'
+  }
 }
 ```
 
 ## LINKS
 
 - [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
-- [What are managed identities for Azure resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
-- [Set up an indexer connection to a data source using a managed identity](https://docs.microsoft.com/azure/search/search-howto-managed-identities-data-sources)
-- [Indexer access to Azure Storage using the trusted service exception (Azure Cognitive Search)](https://docs.microsoft.com/azure/search/search-indexer-howto-access-trusted-service-exception)
+- [What are managed identities for Azure resources?](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+- [Connect a search service to other Azure resources using a managed identity](https://learn.microsoft.com/azure/search/search-howto-managed-identities-data-sources)
+- [Make indexer connections to Azure Storage as a trusted service](https://learn.microsoft.com/azure/search/search-indexer-howto-access-trusted-service-exception)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.search/searchservices)
