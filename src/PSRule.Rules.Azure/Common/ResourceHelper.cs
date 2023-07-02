@@ -13,6 +13,7 @@ namespace PSRule.Rules.Azure
         private const string SUBSCRIPTIONS = "subscriptions";
         private const string RESOURCEGROUPS = "resourceGroups";
         private const string PROVIDERS = "providers";
+        private const string MANAGEMENTGROUPTYPE = "/providers/Microsoft.Management/managementGroups/";
         private const char SLASH_C = '/';
 
         /// <summary>
@@ -151,6 +152,41 @@ namespace PSRule.Rules.Azure
         {
             TryResourceIdComponents(resourceType, name, out var typeComponents, out var nameComponents);
             return CombineResourceId(subscriptionId, resourceGroup, typeComponents, nameComponents, depth);
+        }
+
+        /// <summary>
+        /// Combines Id fragments to form a resource Id at a management group scope.
+        /// </summary>
+        /// <remarks>
+        /// /providers/Microsoft.Management/managementGroups/{managementGroupName}/providers/{resourceType}/{resourceName}
+        /// </remarks>
+        internal static string CombineResourceId(string managementGroupName, string[] resourceType, string[] name, int depth = int.MaxValue)
+        {
+            var resourceTypeLength = resourceType?.Length ?? 0;
+            var nameLength = name?.Length ?? 0;
+            if (resourceTypeLength != nameLength)
+                throw new TemplateFunctionException(nameof(resourceType), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
+
+            var parts = resourceTypeLength + nameLength + 2;
+            var result = new string[parts * 2];
+            var i = 0;
+            var j = 0;
+
+            result[i++] = MANAGEMENTGROUPTYPE;
+            result[i++] = managementGroupName;
+            if (resourceTypeLength > 0 && depth >= 0)
+            {
+                result[i++] = SLASH;
+                result[i++] = PROVIDERS;
+                while (i < result.Length && j <= depth)
+                {
+                    result[i++] = SLASH;
+                    result[i++] = resourceType[j];
+                    result[i++] = SLASH;
+                    result[i++] = name[j++];
+                }
+            }
+            return string.Concat(result);
         }
 
         internal static string GetParentResourceId(string subscriptionId, string resourceGroup, string[] resourceType, string[] name)
