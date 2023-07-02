@@ -24,6 +24,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.28.0-B0045:
+
+- Engineering:
+  - Bump Microsoft.CodeAnalysis.NetAnalyzers to v7.0.3.
+    [#2281](https://github.com/Azure/PSRule.Rules.Azure/pull/2281)
+  - Bump Microsoft.NET.Test.Sdk to v17.6.3.
+    [#2290](https://github.com/Azure/PSRule.Rules.Azure/pull/2290)
+
 ## v1.28.0-B0045 (pre-release)
 
 What's changed since pre-release v1.28.0-B0024:

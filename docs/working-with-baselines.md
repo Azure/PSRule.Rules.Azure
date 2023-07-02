@@ -82,7 +82,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
     ```yaml
     # Analyze Azure resources using PSRule for Azure
     - name: Analyze Azure template files
-      uses: microsoft/ps-rule@v2.8.1
+      uses: microsoft/ps-rule@v2.9.0
       with:
         modules: 'PSRule.Rules.Azure'
         baseline: 'Azure.GA_2023_03'
