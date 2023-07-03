@@ -45,7 +45,7 @@ nav:
       - About: about.md
       - Features: features.md
       - FAQ: faq.md
-    - Installation: install-instructions.md
+    - Install: install.md
     - Testing infrastructure code:
       - Expanding source files: expanding-source-files.md
       - Using templates: using-templates.md
@@ -55,7 +55,8 @@ nav:
     - Testing deployed resources:
       - Exporting rule data: export-rule-data.md
       - Analyzing resources: analyzing-resources.md
-    - Validating locally: validating-locally.md
+    - Concepts:
+      - Suppression: concepts/suppression.md
     - Customization:
       - Storing custom rules: customization/storing-custom-rules.md
       - Enforcing custom tags: customization/enforce-custom-tags.md
@@ -128,14 +129,13 @@ plugins:
 - tags
 - redirects:
     redirect_maps:
+      install-instructions.md: install.md
+      validating-locally.md: install.md
       using-metadata.md: using-templates.md
       customization/index.md: customization/storing-custom-rules.md
       en/asb-v3.md: en/mcsb-v1.md
 
 extra:
-  version:
-    provider: mike
-
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/Azure/PSRule.Rules.Azure/
