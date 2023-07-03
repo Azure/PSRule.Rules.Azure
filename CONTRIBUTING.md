@@ -243,6 +243,6 @@ Thank you for taking the time to contribute.
 [github-fork]: https://help.github.com/en/github/getting-started-with-github/fork-a-repo
 [github-pr]: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests
 [github-pr-create]: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork
-[build]: docs/install-instructions.md#building-from-source
+[build]: docs/install.md#building-from-source
 [vscode]: https://code.visualstudio.com/
 [issues]: https://github.com/Azure/PSRule.Rules.Azure/issues

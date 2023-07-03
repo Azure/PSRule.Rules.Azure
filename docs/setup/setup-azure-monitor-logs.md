@@ -199,7 +199,7 @@ Once the results have been published to the Log Analytics workspace, they can be
 results against the `PSRule_CL` table (under Custom Logs). For more information on how to write Log
 Analytics querys, review the [Log Analytics tutortial][11].
 
-  [11]: https://docs.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial
+  [11]: https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-tutorial
 
 ### Workbook
 
@@ -209,5 +209,5 @@ A [sample Azure Monitor Workbook][13] is available in the PSRule for Azure GitHu
 This workbook can be imported directly into Azure Monitor and used as a foundation to build from.
 Review the [Workbook creation tutorial][12] for instructions on how to work with the sample Workbook.
 
-  [12]: https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-create-workbook
+  [12]: https://learn.microsoft.com/azure/azure-monitor/visualize/workbooks-create-workbook
   [13]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/setup/workbook.json

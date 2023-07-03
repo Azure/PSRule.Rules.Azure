@@ -25,7 +25,7 @@ The exported state is processed later during analysis.
 - **What's not exported** &mdash; Resource data such as:
   - The contents of blobs stored on a storage account, or databases tables.
 
-  [1]: install-instructions.md#installing-locally
+  [1]: install.md#installing-locally
 
 ## Export an Azure subscription
 

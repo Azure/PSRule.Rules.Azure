@@ -324,85 +324,6 @@ configuration:
 
   [2]: setup/configuring-expansion.md#bicep-source-expansion
 
-### Ignoring rules
-
-To prevent a rule executing you can either:
-
-- **Exclude** &mdash; The rule is not executed for any resource.
-- **Suppress** &mdash; The rule is not executed for a specific resource by name.
-
-To exclude a rule, set `Rule.Exclude` option within the `ps-rule.yaml` file.
-
-[:octicons-book-24: Docs][3]
-
-```yaml title="ps-rule.yaml"
-rule:
-  exclude:
-  # Ignore the following rules for all resources
-  - Azure.VM.UseHybridUseBenefit
-  - Azure.VM.Standalone
-```
-
-To suppress a rule, set `Suppression` option within the `ps-rule.yaml` file.
-
-[:octicons-book-24: Docs][4]
-
-```yaml title="ps-rule.yaml"
-suppression:
-  Azure.AKS.AuthorizedIPs:
-  # Exclude the following externally managed AKS clusters
-  - aks-cluster-prod-eus-001
-  Azure.Storage.SoftDelete:
-  # Exclude the following non-production storage accounts
-  - storagedeveus6jo36t
-  - storagedeveus1df278
-```
-
-!!! tip
-    Use comments within `ps-rule.yaml` to describe the reason why rules are excluded or suppressed.
-    Meaningful comments help during peer review within a Pull Request (PR).
-    Also consider including a date if the exclusions or suppressions are temporary.
-
-  [3]: https://aka.ms/ps-rule/options#ruleexclude
-  [4]: https://aka.ms/ps-rule/options#suppression
-
-### Ignoring files
-
-[:octicons-book-24: Docs][10]
-
-To exclude or ignore files from being processed, configure the [Input.PathIgnore][10] option.
-This option allows you to ignore files using a path spec.
-
-To ignore files with common extensions, set the `Input.PathIgnore` option within the `ps-rule.yaml` file.
-
-```yaml title="ps-rule.yaml"
-input:
-  pathIgnore:
-  # Exclude files with these extensions
-  - '*.md'
-  - '*.png'
-  # Exclude specific configuration files
-  - 'bicepconfig.json'
-```
-
-To ignore all files with some exceptions, set the `Input.PathIgnore` option within the `ps-rule.yaml` file.
-
-```yaml title="ps-rule.yaml"
-input:
-  pathIgnore:
-  # Exclude all files
-  - '*'
-  # Only process deploy.bicep files
-  - '!**/deploy.bicep'
-```
-
-!!! Tip
-    Some common file exclusions are recommended for working with Azure Bicep source files.
-    See [Configuring path exclusions][11] for details.
-
-  [10]: https://aka.ms/ps-rule/options#inputpathignore
-  [11]: using-bicep.md#configuring-path-exclusions
-
 ### Advanced configuration
 
 [:octicons-book-24: Docs][5]
@@ -411,3 +332,11 @@ PSRule for Azure comes with many configuration options.
 The setup section explains in detail how to configure each option.
 
   [5]: setup/configuring-options.md
+
+## Recommended content
+
+- [Suppression and excluding rules][10]
+- [Using Bicep source][11]
+
+  [10]: concepts/suppression.md
+  [11]: using-bicep.md
