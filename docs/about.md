@@ -19,7 +19,7 @@ PSRule for Azure uses the principles of the Azure Well-Architected Framework (WA
 - **Demonstrate** &mdash; how you can implement the change with examples.
 
 If you want to write your own tests, you can do that too in your choice of YAML, JSON, or PowerShell.
-However with over 360 tests already built, you can identify and fix issues day one.
+However with over 390 tests already built, you can identify and fix issues day one.
 
 ## Introducing PSRule for Azure
 

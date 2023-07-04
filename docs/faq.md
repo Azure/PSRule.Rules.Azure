@@ -124,7 +124,7 @@ To start writing your own custom rules you can use YAML, JSON, or PowerShell.
 PowerShell experience is required for some scenarios.
 We have a walk through scenario [Enforcing custom tags][9] to get you started.
 
-  [7]: install-instructions.md
+  [7]: install.md
   [8]: validating-locally.md
   [9]: customization/enforce-custom-tags.md
 

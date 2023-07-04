@@ -232,7 +232,11 @@ configuration:
     Bicep parameter files are a work in progress.
     This feature will be transitioned to stable after the Bicep CLI support is finalized.
 
+!!! Learn
+    To learn more about Bicep parameter files see [Create parameters files for Bicep deployment][16].
+
   [13]: versioning.md#experimental-features
+  [16]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameter-files?tabs=Bicep
 
 ## Restoring modules from a private registry
 
@@ -242,7 +246,7 @@ Storing modules in a private registry gives you a central location to reference 
 To test Bicep deployments which uses modules stored in a private registry, these modules must be restored.
 The restore process automatically occurs when PSRule is run, however some additional steps are required to authenticate.
 
-To prepare your registry for storing Bicep modules see [Create private registry for Bicep modules][13].
+To prepare your registry for storing Bicep modules see [Create private registry for Bicep modules][15].
 
 To configure authentication for PSRule to a private registry:
 
@@ -259,7 +263,7 @@ To configure your registry see [Make your container registry content publicly av
     You can configure PSRule to check for the minimum Bicep version.
     See [configuring minimum version][10] for information on how to enable this check.
 
-  [13]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/private-module-registry
+  [15]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/private-module-registry
   [14]: https://learn.microsoft.com/azure/container-registry/anonymous-pull-access
   [10]: setup/setup-bicep.md#configuring-minimum-version
 

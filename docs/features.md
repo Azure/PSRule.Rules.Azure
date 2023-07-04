@@ -11,6 +11,11 @@ PSRule for Azure helps you quickly identify and fix issues to improve the qualit
 Tests include documentation with official documentation references and examples.
 Use the Azure Bicep or template examples to adapt your solution to recommendations.
 
+!!! Note
+    Start exploring the list of [rules included with PSRule for Azure][14].
+
+  [14]: en/rules/index.md
+
 ## Framework aligned
 
 PSRule for Azure is aligned to the [Azure Well-Architected Framework (WAF)][2].
@@ -66,6 +71,12 @@ Pre-flight validation can be integrated into a continuous integration (CI) pipel
 - **Quality gates** &mdash; Implement quality gates between environments such as dev, test, and production.
 - **Monitor continuously** &mdash; Perform ongoing checks for configuration optimization opportunities.
 
+!!! Learn
+    You can learn more about Azure Bicep with the following links:
+
+    - [What is Bicep?](https://learn.microsoft.com/azure/azure-resource-manager/bicep/overview?tabs=bicep)
+    - [Learn modules for Azure Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/learn-bicep)
+
 ## Cross-platform
 
 PSRule for Azure uses modern PowerShell libraries at its core,
@@ -86,7 +97,7 @@ For installation options see [installation][8].
   [5]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
   [6]: https://github.com/marketplace/actions/psrule
   [7]: https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode
-  [8]: install-instructions.md
+  [8]: install.md
 
 *[ARM]: Azure Resource Manager
 *[WAF]: Well-Architected Framework
