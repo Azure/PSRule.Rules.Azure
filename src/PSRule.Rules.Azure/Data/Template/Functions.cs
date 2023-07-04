@@ -183,10 +183,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         /// <summary>
         /// array(convertToArray)
+        /// See <see href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#array"/>.
         /// </summary>
-        /// <remarks>
-        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#array
-        /// </remarks>
         internal static object Array(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) != 1)
@@ -201,6 +199,12 @@ namespace PSRule.Rules.Azure.Data.Template
             return new object[] { args[0] };
         }
 
+        /// <summary>
+        /// coalesce(arg1, arg2, arg3, ...)
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-comparison#coalesce"/>.
+        /// </remarks>
         internal static object Coalesce(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
@@ -214,15 +218,28 @@ namespace PSRule.Rules.Azure.Data.Template
             return args[0];
         }
 
+        /// <summary>
+        /// concat(arg1, arg2, arg3, ...)
+        /// </summary>
+        /// <remarks>
+        /// Combines multiple arrays and returns the concatenated array, or combines multiple string values and returns the concatenated string.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#concat"/>.
+        /// </remarks>
         internal static object Concat(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 1)
                 throw ArgumentsOutOfRange(nameof(Concat), args);
 
             // String
-            if (ExpressionHelpers.TryConvertStringArray(args, out var s))
+            if (ExpressionHelpers.IsAnyString(args))
             {
-                return string.Concat(s);
+                var result = new StringBuilder();
+                for (var i = 0; i < args.Length; i++)
+                {
+                    if (ExpressionHelpers.TryConvertString(args[i], out var s))
+                        result.Append(s);
+                }
+                return result.ToString();
             }
             // Array
             else if (args[0] is Array || args[0] is JArray)
@@ -280,7 +297,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// contains(container, itemToFind)
         /// </summary>
         /// <remarks>
-        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#contains
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#contains"/>.
         /// </remarks>
         internal static object Contains(ITemplateContext context, object[] args)
         {
@@ -305,7 +322,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// createArray (arg1, arg2, arg3, ...)
         /// </summary>
         /// <remarks>
-        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#createarray
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#createarray"/>.
         /// </remarks>
         internal static object CreateArray(ITemplateContext context, object[] args)
         {

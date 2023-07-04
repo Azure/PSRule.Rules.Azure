@@ -23,12 +23,17 @@ namespace PSRule.Rules.Azure.Data.Template
         string GetString();
     }
 
+    internal interface IUnknownMock : IMock
+    {
+
+    }
+
     internal sealed class Mock
     {
         /// <summary>
         /// Mock an unknown property or value.
         /// </summary>
-        internal class MockUnknownObject : MockObject, IMock
+        internal class MockUnknownObject : MockObject, IUnknownMock
         {
             public MockUnknownObject()
                 : base(secret: false) { }
@@ -68,7 +73,7 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
-        internal class MockUnknownArray : MockArray, IMock
+        internal class MockUnknownArray : MockArray, IUnknownMock
         {
             public MockUnknownArray()
                 : base(secret: false) { }
@@ -338,7 +343,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (typeof(TValue).IsAssignableFrom(value.GetType()) && value is TValue castTValue)
                 return castTValue;
 
-            if (value != null)
+            if (value != null && value is not IUnknownMock)
                 return value.Value<TValue>();
 
             if (typeof(TValue) == typeof(string) && string.Empty is TValue s)
@@ -348,7 +353,7 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
-        /// Tokens are mutated when orginally the type of token is unknown.
+        /// Tokens are mutated when originally the type of token is unknown.
         /// </summary>
         private static bool TryMutate<TValue>(JToken current, out TValue replaced)
         {
@@ -378,7 +383,7 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
-        /// Tokens are mutated when orginally the type of token is unknown.
+        /// Tokens are mutated when originally the type of token is unknown.
         /// </summary>
         private static bool TryMutate(TypePrimitive type, JToken current, out JToken replaced)
         {

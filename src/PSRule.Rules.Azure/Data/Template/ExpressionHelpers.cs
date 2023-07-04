@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json.Linq;
+using YamlDotNet.Core.Tokens;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -28,6 +29,15 @@ namespace PSRule.Rules.Azure.Data.Template
                 o is IMock mock && mock.BaseType == TypePrimitive.String;
         }
 
+        internal static bool IsAnyString(object[] o)
+        {
+            for (var i = 0; o != null && i < o.Length; i++)
+                if (IsString(o[i]))
+                    return true;
+
+            return false;
+        }
+
         internal static bool TryString(object o, out string value)
         {
             if (o is string s)
@@ -40,7 +50,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = token.Value<string>();
                 return true;
             }
-            else if (o is IMock mock && mock.BaseType == TypePrimitive.String)
+            else if (o is IMock mock && (mock.BaseType == TypePrimitive.String || mock is IUnknownMock))
             {
                 value = mock.GetValue<string>();
                 return true;
@@ -718,9 +728,9 @@ namespace PSRule.Rules.Azure.Data.Template
             algorithm.TransformBlock(url_uid, 0, url_uid.Length, null, 0);
             for (var i = 0; i < args.Length; i++)
             {
-                if (TryString(args[i], out var svalue) || GetStringForMock(args[i], out svalue))
+                if (GetStringForMock(args[i], out var s) || TryString(args[i], out s))
                 {
-                    var bvalue = Encoding.UTF8.GetBytes(svalue);
+                    var bvalue = Encoding.UTF8.GetBytes(s);
                     if (i == args.Length - 1)
                         algorithm.TransformFinalBlock(bvalue, 0, bvalue.Length);
                     else
@@ -733,7 +743,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool GetStringForMock(object o, out string value)
         {
             value = null;
-            if (o is not IMock mock)
+            if (o is not IUnknownMock mock)
                 return false;
 
             value = mock.ToString();
