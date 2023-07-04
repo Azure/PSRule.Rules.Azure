@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json.Linq;
+using YamlDotNet.Core.Tokens;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -25,7 +26,16 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             return o is string ||
                 o is JToken token && token.Type == JTokenType.String ||
-                o is IMock;
+                o is IMock mock && mock.BaseType == TypePrimitive.String;
+        }
+
+        internal static bool IsAnyString(object[] o)
+        {
+            for (var i = 0; o != null && i < o.Length; i++)
+                if (IsString(o[i]))
+                    return true;
+
+            return false;
         }
 
         internal static bool TryString(object o, out string value)
@@ -40,9 +50,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = token.Value<string>();
                 return true;
             }
-            else if (o is IMock mock)
+            else if (o is IMock mock && (mock.BaseType == TypePrimitive.String || mock is IUnknownMock))
             {
-                value = mock.ToString();
+                value = mock.GetValue<string>();
                 return true;
             }
             value = null;
@@ -294,7 +304,12 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static bool TryLong(object o, out long value)
         {
-            if (o is int i)
+            if (o is IMock mock)
+            {
+                value = mock.GetValue<long>();
+                return true;
+            }
+            else if (o is int i)
             {
                 value = i;
                 return true;
@@ -307,11 +322,6 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (o is JToken token && token.Type == JTokenType.Integer)
             {
                 value = token.Value<long>();
-                return true;
-            }
-            else if (o is MockInteger mock)
-            {
-                value = mock.Value;
                 return true;
             }
             value = default;
@@ -338,12 +348,17 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static bool TryInt(object o, out int value)
         {
-            if (o is int i)
+            if (o is IMock mock)
+            {
+                value = mock.GetValue<int>();
+                return true;
+            }
+            else if (o is int i)
             {
                 value = i;
                 return true;
             }
-            if (o is long l)
+            else if (o is long l)
             {
                 value = (int)l;
                 return true;
@@ -351,11 +366,6 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (o is JToken token && token.Type == JTokenType.Integer)
             {
                 value = token.Value<int>();
-                return true;
-            }
-            else if (o is MockInteger mock)
-            {
-                value = (int)mock.Value;
                 return true;
             }
             value = default;
@@ -388,7 +398,12 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static bool TryBool(object o, out bool value)
         {
-            if (o is bool b)
+            if (o is IMock mock)
+            {
+                value = mock.GetValue<bool>();
+                return true;
+            }
+            else if (o is bool b)
             {
                 value = b;
                 return true;
@@ -396,11 +411,6 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (o is JToken token && token.Type == JTokenType.Boolean)
             {
                 value = token.Value<bool>();
-                return true;
-            }
-            else if (o is MockBool mock)
-            {
-                value = mock.Value;
                 return true;
             }
             value = default;
@@ -437,11 +447,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = array as T;
                 return true;
             }
-            else if (o is MockArray mock)
-            {
-                value = mock as T;
-                return true;
-            }
+            //else if (o is MockArray mock)
+            //{
+            //    value = mock as T;
+            //    return true;
+            //}
             return false;
         }
 
@@ -465,7 +475,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = GetStringArray(o);
                 return true;
             }
-            else if (o is IEnumerable<long> || o is IEnumerable<int>)
+            else if (o is IEnumerable<long> or IEnumerable<int>)
             {
                 value = GetLongArray(o);
                 return true;
@@ -475,7 +485,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static bool IsArray(object o)
         {
-            return o is JArray || o is Array || o is MockArray;
+            return o is JArray or Array or Mock.MockArray;
         }
 
         internal static object UnionArray(object[] o)
@@ -498,15 +508,15 @@ namespace PSRule.Rules.Azure.Data.Template
                             result.Add(element);
                     }
                 }
-                else if (o[i] is MockArray mock && mock.Value != null && mock.Value.Count > 0)
-                {
-                    for (var j = 0; j < mock.Value.Count; j++)
-                    {
-                        var element = mock.Value[j];
-                        if (!result.Contains(element))
-                            result.Add(element);
-                    }
-                }
+                //else if (o[i] is Mock.MockArray mock && mock.Value != null && mock.Value.Count > 0)
+                //{
+                //    for (var j = 0; j < mock.Value.Count; j++)
+                //    {
+                //        var element = mock.Value[j];
+                //        if (!result.Contains(element))
+                //            result.Add(element);
+                //    }
+                //}
                 else if (o[i] is Array array && array.Length > 0)
                 {
                     for (var j = 0; j < array.Length; j++)
@@ -522,10 +532,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static bool IsObject(object o)
         {
-            return o is JObject ||
-                o is IDictionary ||
-                o is IDictionary<string, string> ||
-                o is Dictionary<string, object>;
+            return o is JObject or
+                IDictionary or
+                IDictionary<string, string> or
+                Dictionary<string, object>;
         }
 
         internal static bool TryJObject(object o, out JObject value)
@@ -683,6 +693,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal static JToken GetJToken(object o)
         {
+            //if (o is IMock mock)
+            //    return mock;
+
             if (o is JToken token)
                 return token;
 
@@ -704,12 +717,6 @@ namespace PSRule.Rules.Azure.Data.Template
             if (o is Hashtable hashtable)
                 return JObject.FromObject(hashtable);
 
-            if (o is IMock mock && mock.TryGetToken(out token))
-                return token;
-
-            if (o is MockMember mockMember)
-                return new JValue(mockMember.ToString());
-
             return new JValue(o);
         }
 
@@ -719,12 +726,11 @@ namespace PSRule.Rules.Azure.Data.Template
             using var algorithm = SHA256.Create();
             var url_uid = new Guid("6ba7b811-9dad-11d1-80b4-00c04fd430c8").ToByteArray();
             algorithm.TransformBlock(url_uid, 0, url_uid.Length, null, 0);
-
             for (var i = 0; i < args.Length; i++)
             {
-                if (TryString(args[i], out var svalue))
+                if (GetStringForMock(args[i], out var s) || TryString(args[i], out s))
                 {
-                    var bvalue = Encoding.UTF8.GetBytes(svalue);
+                    var bvalue = Encoding.UTF8.GetBytes(s);
                     if (i == args.Length - 1)
                         algorithm.TransformFinalBlock(bvalue, 0, bvalue.Length);
                     else
@@ -732,6 +738,16 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
             }
             return algorithm.Hash;
+        }
+
+        private static bool GetStringForMock(object o, out string value)
+        {
+            value = null;
+            if (o is not IUnknownMock mock)
+                return false;
+
+            value = mock.ToString();
+            return true;
         }
 
         internal static string GetUniqueString(object[] args)

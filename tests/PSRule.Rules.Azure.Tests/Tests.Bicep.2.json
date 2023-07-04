@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.13.1.58284",
-      "templateHash": "1497947304986475936"
+      "version": "0.18.4.5664",
+      "templateHash": "3779593601797321668"
     }
   },
   "parameters": {
@@ -31,7 +31,7 @@
   "resources": [
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "storage3",
       "properties": {
         "expressionEvaluationOptions": {
@@ -40,13 +40,13 @@
         "mode": "Incremental",
         "parameters": {
           "name": {
-            "value": "[format('{0}{1}', split(reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.id.value, '/')[8], reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.unique.value)]"
+            "value": "[format('{0}{1}', split(reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2022-09-01').outputs.id.value, '/')[8], reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2022-09-01').outputs.unique.value)]"
           },
           "location": {
             "value": "[parameters('location')]"
           },
           "tags": {
-            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.tags.value]"
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2022-09-01').outputs.tags.value]"
           }
         },
         "template": {
@@ -55,8 +55,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "10683227264194439860"
+              "version": "0.18.4.5664",
+              "templateHash": "6125327561820837923"
             }
           },
           "parameters": {
@@ -137,31 +137,52 @@
           "outputs": {
             "id": {
               "type": "string",
-              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
               "metadata": {
                 "description": "A unique resource Id for the storage account."
-              }
+              },
+              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
             },
             "tags": {
               "type": "object",
-              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
               "metadata": {
                 "description": "Any tags set on the storage account."
-              }
+              },
+              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]"
             },
             "unique": {
               "type": "string",
-              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]",
               "metadata": {
                 "description": "A unique string that is generated from the blob endpoint."
-              }
+              },
+              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]"
+            },
+            "blobEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "The endpoint of the storage account."
+              },
+              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob]"
+            },
+            "containerEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "A container endpoint."
+              },
+              "value": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob, '/container')]"
+            },
+            "unknownValue": {
+              "type": "string",
+              "metadata": {
+                "description": "A value for testing that does not exist."
+              },
+              "value": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').unknownValue, '/container')]"
             },
             "endpointNIC": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]",
               "metadata": {
                 "description": "The ID of the endpoint NIC."
-              }
+              },
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]"
             }
           }
         }
@@ -172,7 +193,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "storage1",
       "properties": {
         "expressionEvaluationOptions": {
@@ -191,8 +212,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "10683227264194439860"
+              "version": "0.18.4.5664",
+              "templateHash": "6125327561820837923"
             }
           },
           "parameters": {
@@ -273,31 +294,52 @@
           "outputs": {
             "id": {
               "type": "string",
-              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
               "metadata": {
                 "description": "A unique resource Id for the storage account."
-              }
+              },
+              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
             },
             "tags": {
               "type": "object",
-              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
               "metadata": {
                 "description": "Any tags set on the storage account."
-              }
+              },
+              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]"
             },
             "unique": {
               "type": "string",
-              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]",
               "metadata": {
                 "description": "A unique string that is generated from the blob endpoint."
-              }
+              },
+              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]"
+            },
+            "blobEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "The endpoint of the storage account."
+              },
+              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob]"
+            },
+            "containerEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "A container endpoint."
+              },
+              "value": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob, '/container')]"
+            },
+            "unknownValue": {
+              "type": "string",
+              "metadata": {
+                "description": "A value for testing that does not exist."
+              },
+              "value": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').unknownValue, '/container')]"
             },
             "endpointNIC": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]",
               "metadata": {
                 "description": "The ID of the endpoint NIC."
-              }
+              },
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]"
             }
           }
         }
@@ -305,7 +347,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "storage2",
       "properties": {
         "expressionEvaluationOptions": {
@@ -320,7 +362,7 @@
             "value": "[parameters('location')]"
           },
           "tags": {
-            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2020-10-01').outputs.tags.value]"
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'storage1'), '2022-09-01').outputs.tags.value]"
           }
         },
         "template": {
@@ -329,8 +371,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "10683227264194439860"
+              "version": "0.18.4.5664",
+              "templateHash": "6125327561820837923"
             }
           },
           "parameters": {
@@ -411,31 +453,52 @@
           "outputs": {
             "id": {
               "type": "string",
-              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]",
               "metadata": {
                 "description": "A unique resource Id for the storage account."
-              }
+              },
+              "value": "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
             },
             "tags": {
               "type": "object",
-              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]",
               "metadata": {
                 "description": "Any tags set on the storage account."
-              }
+              },
+              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01', 'full').tags]"
             },
             "unique": {
               "type": "string",
-              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]",
               "metadata": {
                 "description": "A unique string that is generated from the blob endpoint."
-              }
+              },
+              "value": "[uniqueString(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob)]"
+            },
+            "blobEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "The endpoint of the storage account."
+              },
+              "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob]"
+            },
+            "containerEndpoint": {
+              "type": "string",
+              "metadata": {
+                "description": "A container endpoint."
+              },
+              "value": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').primaryEndpoints.blob, '/container')]"
+            },
+            "unknownValue": {
+              "type": "string",
+              "metadata": {
+                "description": "A value for testing that does not exist."
+              },
+              "value": "[concat(reference(resourceId('Microsoft.Storage/storageAccounts', parameters('name')), '2021-06-01').unknownValue, '/container')]"
             },
             "endpointNIC": {
               "type": "string",
-              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]",
               "metadata": {
                 "description": "The ID of the endpoint NIC."
-              }
+              },
+              "value": "[reference(resourceId('Microsoft.Network/privateEndpoints', format('pe-{0}', parameters('name'))), '2020-03-01').networkInterfaces[0].id]"
             }
           }
         }

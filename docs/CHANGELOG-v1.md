@@ -38,6 +38,9 @@ What's changed since pre-release v1.28.0-B0045:
     [#2290](https://github.com/Azure/PSRule.Rules.Azure/pull/2290)
   - Bump coverlet.collector to v6.0.0.
     [#2232](https://github.com/Azure/PSRule.Rules.Azure/pull/2232)
+- Bug fixes:
+  - Fixed handling of JArray outputs with runtime values by @BernieWhite.
+    [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
 
 ## v1.28.0-B0045 (pre-release)
 

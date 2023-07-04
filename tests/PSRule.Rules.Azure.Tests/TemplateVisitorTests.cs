@@ -818,6 +818,13 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, resources.Length);
         }
 
+        [Fact]
+        public void FilterBug()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.21.json"), null, out _);
+            Assert.Equal(2, resources.Length);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

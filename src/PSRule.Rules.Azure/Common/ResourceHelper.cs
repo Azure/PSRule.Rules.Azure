@@ -208,6 +208,18 @@ namespace PSRule.Rules.Azure
             return CombineResourceId(subscriptionId, resourceGroup, typeComponents, nameComponents, depth);
         }
 
+        internal static bool TryResourceIdComponents(string resourceId, out string subscriptionId, out string resourceGroupName, out string resourceType, out string name)
+        {
+            resourceType = null;
+            name = null;
+            if (!TryResourceIdComponents(resourceId, out subscriptionId, out resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents))
+                return false;
+
+            resourceType = string.Join(SLASH, resourceTypeComponents);
+            name = string.Join(SLASH, nameComponents);
+            return true;
+        }
+
         internal static bool TryResourceIdComponents(string resourceType, string name, out string[] resourceTypeComponents, out string[] nameComponents)
         {
             var typeParts = resourceType.Split(SLASH_C);

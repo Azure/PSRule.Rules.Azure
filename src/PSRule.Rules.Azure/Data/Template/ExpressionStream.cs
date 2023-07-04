@@ -46,7 +46,7 @@ namespace PSRule.Rules.Azure.Data.Template
             _Position = 0;
             _EscapeLength = 0;
 
-            if (_Length < 0 || _Length > MaxLength)
+            if (_Length is < 0 or > MaxLength)
                 throw new ArgumentOutOfRangeException(nameof(expression), string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateExpressionTooLong, expression));
 
             UpdateCurrent();
@@ -248,7 +248,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 var next = _Source[position + 1];
 
                 // Check against list of escapable characters
-                if (next == Backslash || next == BracketOpen || next == ParenthesesOpen || next == BracketClose || next == ParenthesesClose)
+                if (next is Backslash or BracketOpen or ParenthesesOpen or BracketClose or ParenthesesClose)
                     return 1;
             }
             return 0;

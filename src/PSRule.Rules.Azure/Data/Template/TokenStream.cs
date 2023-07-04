@@ -335,7 +335,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool IsStartOrEndToken(ExpressionToken token)
         {
-            return token.Type == ExpressionTokenType.GroupStart || token.Type == ExpressionTokenType.GroupEnd || token.Type == ExpressionTokenType.IndexStart || token.Type == ExpressionTokenType.IndexEnd;
+            return token.Type is ExpressionTokenType.GroupStart or ExpressionTokenType.GroupEnd or ExpressionTokenType.IndexStart or ExpressionTokenType.IndexEnd;
         }
     }
 }

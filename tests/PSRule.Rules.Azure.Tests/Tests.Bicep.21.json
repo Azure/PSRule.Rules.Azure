@@ -1,0 +1,59 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.18.4.5664",
+      "templateHash": "9008578387429972429"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "[format('{0}-bastion', deployment().name)]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetList": {
+            "value": "[reference(resourceId('Microsoft.Network/virtualNetworks', 'vnet001'), '2022-11-01').subnets]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.18.4.5664",
+              "templateHash": "12332915748536545411"
+            }
+          },
+          "parameters": {
+            "subnetList": {
+              "type": "array",
+              "metadata": {
+                "description": "A list of subnets within the VNET."
+              }
+            }
+          },
+          "variables": {
+            "subnetAzureBastion": "[filter(parameters('subnetList'), lambda('item', equals(lambdaVariables('item').name, 'AzureBastionSubnet')))]",
+            "subnetAzureBastionSubnetaddressPrefix": "[if(not(empty(variables('subnetAzureBastion'))), variables('subnetAzureBastion')[0].properties.addressPrefix, '')]"
+          },
+          "resources": [],
+          "outputs": {
+            "rules": {
+              "type": "array",
+              "value": "[if(not(empty(variables('subnetAzureBastion'))), createArray(createObject('name', 'allow-inbound-ssh-from-bastion', 'properties', createObject('description', 'Allow SSH from bastion subnet.', 'direction', 'Inbound', 'priority', 100, 'access', 'Allow', 'protocol', 'Tcp', 'sourcePortRange', '*', 'destinationPortRange', '22', 'sourceAddressPrefix', variables('subnetAzureBastionSubnetaddressPrefix'), 'destinationAddressPrefix', '*')), createObject('name', 'allow-inbound-rdp-from-bastion', 'properties', createObject('description', 'Allow RDP from bastion subnet.', 'direction', 'Inbound', 'priority', 110, 'access', 'Allow', 'protocol', 'Tcp', 'sourcePortRange', '*', 'destinationPortRange', '3389', 'sourceAddressPrefix', variables('subnetAzureBastionSubnetaddressPrefix'), 'destinationAddressPrefix', '*'))), createArray())]"
+            }
+          }
+        }
+      }
+    }
+  ]
+}

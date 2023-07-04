@@ -74,5 +74,16 @@ output tags object = storageAccount.tags
 @description('A unique string that is generated from the blob endpoint.')
 output unique string = uniqueString(storageAccount.properties.primaryEndpoints.blob)
 
+@description('The endpoint of the storage account.')
+output blobEndpoint string = storageAccount.properties.primaryEndpoints.blob
+
+@description('A container endpoint.')
+#disable-next-line prefer-interpolation
+output containerEndpoint string = concat(storageAccount.properties.primaryEndpoints.blob, '/container')
+
+@description('A value for testing that does not exist.')
+#disable-next-line prefer-interpolation BCP053
+output unknownValue string = concat(storageAccount.properties.unknownValue, '/container')
+
 @description('The ID of the endpoint NIC.')
 output endpointNIC string = endpoint.properties.networkInterfaces[0].id

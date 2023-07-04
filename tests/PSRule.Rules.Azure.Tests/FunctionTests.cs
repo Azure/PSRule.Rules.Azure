@@ -125,7 +125,7 @@ namespace PSRule.Rules.Azure
             var actual5 = Functions.CreateArray(context, System.Array.Empty<object>()) as JArray;
             var actual6 = Functions.CreateArray(context, new object[] {
                 "value1",
-                new MockResource("Microsoft.Resources/deployments").MockMember("outputs").MockMember("aksSubnetId").MockMember("value"),
+                new Mock.MockResource("Microsoft.Resources/deployments/test1")["outputs"]["aksSubnetId"]["value"],
             }) as JArray;
             Assert.Equal(3, actual1.Count);
             Assert.Equal(1, actual1[0]);
@@ -149,16 +149,16 @@ namespace PSRule.Rules.Azure
                 "boolProp", true,
                 "arrayProp", Functions.CreateArray(context, new object[] { "a", "b", "c" }),
                 "objectProp", Functions.CreateObject(context, new object[] { "key1", "value1" }),
-                "mockProp", new MockResource("Microsoft.Resources/deployments").MockMember("outputs").MockMember("aksSubnetId").MockMember("value"),
+                "mockProp", new Mock.MockResource("Microsoft.Resources/deployments/test1")["outputs"]["aksSubnetId"]["value"],
             }) as JObject;
             var actual2 = Functions.CreateObject(context, System.Array.Empty<object>()) as JObject;
             var actual3 = Functions.CreateObject(context, new object[] {
-                "intProp", new MockInteger(1),
-                "stringProp", new MockString("mock"),
-                "boolProp", new MockBool(true),
+                "intProp", new Mock.MockValue(1),
+                "stringProp", new Mock.MockValue("mock"),
+                "boolProp", new Mock.MockValue(true),
                 "arrayProp", Functions.CreateArray(context, new object[] { "a", "b", "c" }),
                 "objectProp", Functions.CreateObject(context, new object[] { "key1", "value1" }),
-                "mockProp", new MockObject(null),
+                "mockProp", new Mock.MockObject(),
             }) as JObject;
 
             Assert.Equal(1, actual1["intProp"]);
@@ -166,7 +166,8 @@ namespace PSRule.Rules.Azure
             Assert.Equal(true, actual1["boolProp"]);
             Assert.Equal("b", actual1["arrayProp"][1]);
             Assert.Equal("value1", actual1["objectProp"]["key1"]);
-            Assert.Equal("{{Resource.outputs.aksSubnetId.value}}", actual1["mockProp"].Value<string>());
+            //Assert.Equal("{{Resource.outputs.aksSubnetId.value}}", actual1["mockProp"].Path);
+            Assert.Equal("{}", actual1["mockProp"].ToString());
 
             Assert.NotNull(actual2);
             Assert.NotNull(actual3);
@@ -218,8 +219,8 @@ namespace PSRule.Rules.Azure
             // Array
             actual1 = Functions.First(context, new object[] { new string[] { "one", "two", "three" } }) as string;
             Assert.Equal("one", actual1);
-            var actual2 = Functions.First(context, new object[] { new MockArray(null) });
-            Assert.NotNull(actual2);
+            var actual2 = Functions.First(context, new object[] { new Mock.MockArray() });
+            Assert.Null(actual2);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, System.Array.Empty<object>()));
@@ -335,8 +336,8 @@ namespace PSRule.Rules.Azure
             // Array
             actual1 = Functions.Last(context, new object[] { new string[] { "one", "two", "three" } }) as string;
             Assert.Equal("three", actual1);
-            var actual2 = Functions.Last(context, new object[] { new MockArray(null) });
-            Assert.NotNull(actual2);
+            var actual2 = Functions.Last(context, new object[] { new Mock.MockArray() });
+            Assert.Null(actual2);
         }
 
         [Fact]
@@ -555,7 +556,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, actual2.Length);
             actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, null, new string[] { "one", "three" } }) as object[];
             Assert.Equal(3, actual2.Length);
-            actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, new MockArray(null) }) as object[];
+            actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, new Mock.MockArray() }) as object[];
             Assert.Equal(2, actual2.Length);
             actual2 = Functions.Union(context, new object[] { null, new string[] { "three", "four" } }) as object[];
             Assert.Equal(2, actual2.Length);
@@ -596,7 +597,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
             var parentId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Unit.Test/type/a";
 
-            var actual1 = Functions.List(context, new object[] { parentId, "2019-01-01" }) as MockList;
+            var actual1 = Functions.List(context, new object[] { parentId, "2019-01-01" }) as Mock.MockSecret;
             Assert.NotNull(actual1);
 
             // TODO: Improve test cases
@@ -657,11 +658,17 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
             var parentId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Unit.Test/type/a";
 
-            var actual = Functions.Reference(context, new object[] { parentId }) as MockResource;
+            var actual = Functions.Reference(context, new object[] { parentId }) as Mock.MockObject;
             Assert.NotNull(actual);
-            Assert.Equal("{{Resource}}", actual.ToString());
-            Assert.Equal("{{Resource.value}}", actual.MockMember("value").ToString());
-            Assert.Equal("{{Resource.extra.value}}", actual.MockMember("extra").MockMember("value").ToString());
+            Assert.Equal("properties", actual.Path);
+            Assert.Equal("properties.value", actual["value"].Path);
+            Assert.Equal("properties.extra.value", actual["extra"]["value"].Path);
+
+            actual = Functions.Reference(context, new object[] { parentId, "2023-01-01", "Full" }) as Mock.MockObject;
+            Assert.NotNull(actual);
+            Assert.Equal(string.Empty, actual.Path);
+            Assert.Equal(parentId, actual["id"].Value<string>());
+            Assert.Equal("a", actual["name"].Value<string>());
         }
 
         [Fact]
@@ -1956,8 +1963,8 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
             var actual = Functions.Array(context, new object[] { Functions.Reference(context, new object[] { Functions.ExtensionResourceId(context, new object[] { "/subscriptions/000/resourceGroups/rg-001", "Microsoft.Resources/deployments", "deploy-001" }) }) });
 
-            Assert.IsType<object[]>(actual);
-            Assert.Single(actual as Array);
+            Assert.IsType<JArray>(actual);
+            Assert.Single(actual as JArray);
         }
 
         #endregion Complex scenarios

@@ -262,7 +262,7 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 resourceId = null;
                 if (!TryResourceScope(resource, out var id) ||
-                    !ResourceHelper.TryResourceIdComponents(id, out var subscriptionId, out var resourceGroupName, out var resourceTypeComponents, out var nameComponents))
+                    !ResourceHelper.TryResourceIdComponents(id, out var subscriptionId, out var resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents))
                     return false;
 
                 resourceId = new string[nameComponents.Length];
@@ -286,7 +286,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     return false;
 
                 var scope = ExpandProperty<string>(this, resource, PROPERTY_SCOPE);
-                ResourceHelper.TryResourceIdComponents(scope, out var subscriptionId, out var resourceGroupName, out var resourceTypeComponents, out var nameComponents);
+                ResourceHelper.TryResourceIdComponents(scope, out var subscriptionId, out var resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents);
                 subscriptionId ??= Subscription.SubscriptionId;
                 resourceGroupName ??= ResourceGroup.Name;
                 scopeId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, resourceTypeComponents, nameComponents);
@@ -575,28 +575,15 @@ namespace PSRule.Rules.Azure.Data.Template
             internal bool TryParameterDefault(string parameterName, ParameterType type, out JToken value)
             {
                 value = default;
-                switch (type.Type)
+                return type.Type switch
                 {
-                    case TypePrimitive.String:
-                    case TypePrimitive.SecureString:
-                        return ParameterDefaults.TryGetString(parameterName, out value);
-
-                    case TypePrimitive.Bool:
-                        return ParameterDefaults.TryGetBool(parameterName, out value);
-
-                    case TypePrimitive.Int:
-                        return ParameterDefaults.TryGetLong(parameterName, out value);
-
-                    case TypePrimitive.Array:
-                        return ParameterDefaults.TryGetArray(parameterName, out value);
-
-                    case TypePrimitive.Object:
-                    case TypePrimitive.SecureObject:
-                        return ParameterDefaults.TryGetObject(parameterName, out value);
-
-                    default:
-                        return false;
-                }
+                    TypePrimitive.String or TypePrimitive.SecureString => ParameterDefaults.TryGetString(parameterName, out value),
+                    TypePrimitive.Bool => ParameterDefaults.TryGetBool(parameterName, out value),
+                    TypePrimitive.Int => ParameterDefaults.TryGetLong(parameterName, out value),
+                    TypePrimitive.Array => ParameterDefaults.TryGetArray(parameterName, out value),
+                    TypePrimitive.Object or TypePrimitive.SecureObject => ParameterDefaults.TryGetObject(parameterName, out value),
+                    _ => false,
+                };
             }
 
             internal bool TryParameter(string parameterName)
@@ -939,8 +926,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool TryDefinition(JObject definition, out ITypeDefinition value)
         {
             value = null;
-            if (!definition.TryGetProperty(PROPERTY_TYPE, out var t) ||
-                !Enum.TryParse(t, ignoreCase: true, result: out TypePrimitive type))
+            var type = GetTypePrimitive(definition);
+            if (type == TypePrimitive.None)
                 return false;
 
             value = new TypeDefinition(type, definition);
@@ -1048,7 +1035,7 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (type.Type == TypePrimitive.Object)
                 context.Parameter(new LazyParameter<JObject>(context, parameterName, type, value));
             else
-                context.Parameter(parameterName, type, ExpandPropertyToken(context, value));
+                context.Parameter(parameterName, type, ExpandPropertyToken(context, type.Type, value));
         }
 
         #endregion Parameters
@@ -1258,7 +1245,8 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             if (!TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out var options) ||
                 !TryStringProperty(options, PROPERTY_SCOPE, out var scope) ||
-                !StringComparer.OrdinalIgnoreCase.Equals(DEPLOYMENTSCOPE_INNER, scope))
+                !StringComparer.OrdinalIgnoreCase.Equals(DEPLOYMENTSCOPE_INNER, scope) ||
+                !TryObjectProperty(properties, "template", out var template))
                 return context;
 
             // Handle inner scope
@@ -1274,18 +1262,23 @@ namespace PSRule.Rules.Azure.Data.Template
                 resourceGroup.Name = ExpandString(context, resourceGroupName);
 
             resourceGroup.SubscriptionId = subscription.SubscriptionId;
+            TryObjectProperty(template, PROPERTY_PARAMETERS, out var templateParameters);
+
             var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup, parameterDefaults);
             if (TryObjectProperty(properties, PROPERTY_PARAMETERS, out var innerParameters))
             {
                 foreach (var parameter in innerParameters.Properties())
                 {
+                    var parameterType = templateParameters.TryGetProperty<JObject>(parameter.Name, out var templateParameter) &&
+                        TryParameterType(context, templateParameter, out var t) ? t.Value.Type : TypePrimitive.None;
+
                     if (parameter.Value is JValue parameterValueExpression)
-                        parameter.Value = ResolveToken(context, ResolveVariable(context, parameterValueExpression));
+                        parameter.Value = ResolveToken(context, ResolveVariable(context, parameterType, parameterValueExpression));
 
                     if (parameter.Value is JObject parameterInner)
                     {
                         if (parameterInner.TryGetProperty(PROPERTY_VALUE, out JToken parameterValue))
-                            parameterInner[PROPERTY_VALUE] = ResolveToken(context, ResolveVariable(context, parameterValue));
+                            parameterInner[PROPERTY_VALUE] = ResolveToken(context, ResolveVariable(context, parameterType, parameterValue));
 
                         if (parameterInner.TryGetProperty(PROPERTY_COPY, out JArray _))
                         {
@@ -1421,12 +1414,19 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual void Output(TemplateContext context, string name, JObject output)
         {
-            ResolveProperty(context, output, PROPERTY_VALUE);
+            ResolveProperty(context, output, PROPERTY_VALUE, GetTypePrimitive(output));
             context.CheckOutput(name, output);
             context.AddOutput(name, output);
         }
 
         #endregion Outputs
+
+        private static TypePrimitive GetTypePrimitive(JObject value)
+        {
+            return value == null ||
+                !value.TryGetProperty(PROPERTY_TYPE, out var t) ||
+                !Enum.TryParse(t, ignoreCase: true, result: out TypePrimitive type) ? TypePrimitive.None : type;
+        }
 
         protected static StringExpression<T> Expression<T>(ITemplateContext context, string s)
         {
@@ -1453,6 +1453,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (typeof(T) == typeof(string) && (value.Type == JTokenType.Object || value.Type == JTokenType.Array))
                 return default;
 
+            if (value is IMock mock)
+                return mock.GetValue<T>();
+
             return value.IsExpressionString() ? EvaluateExpression<T>(context, value) : value.Value<T>();
         }
 
@@ -1461,16 +1464,21 @@ namespace PSRule.Rules.Azure.Data.Template
             return value != null && value.IsExpressionString() ? EvaluateExpression<string>(context, value, null) : value;
         }
 
-        internal static JToken ExpandPropertyToken(ITemplateContext context, JToken value)
+        internal static JToken ExpandPropertyToken(ITemplateContext context, TypePrimitive type, JToken value)
         {
             if (value == null || !value.IsExpressionString())
                 return value;
 
             var result = EvaluateExpression<object>(context, value);
-            if (result is IMock mock && !mock.TryGetValue(out result))
-                result = mock.ToString();
+            if (result is IMock mock)
+                return mock.GetValue(type);
 
             return result == null ? null : JToken.FromObject(result);
+        }
+
+        internal static JToken ExpandPropertyToken(ITemplateContext context, JToken value)
+        {
+            return ExpandPropertyToken(context, TypePrimitive.None, value);
         }
 
         private static T ExpandProperty<T>(ITemplateContext context, JObject value, string propertyName)
@@ -1488,7 +1496,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return (int)result;
         }
 
-        private static JToken ResolveVariable(ITemplateContext context, JToken value)
+        private static JToken ResolveVariable(ITemplateContext context, TypePrimitive primitive, JToken value)
         {
             if (value is JObject jObject)
             {
@@ -1515,12 +1523,17 @@ namespace PSRule.Rules.Azure.Data.Template
             }
             else if (value is JToken jToken && jToken.Type == JTokenType.String)
             {
-                return ExpandPropertyToken(context, jToken);
+                return ExpandPropertyToken(context, primitive, jToken);
             }
             return value;
         }
 
-        private static void ResolveProperty(ITemplateContext context, JObject obj, string propertyName)
+        private static JToken ResolveVariable(ITemplateContext context, JToken value)
+        {
+            return ResolveVariable(context, TypePrimitive.None, value);
+        }
+
+        private static void ResolveProperty(ITemplateContext context, JObject obj, string propertyName, TypePrimitive type = TypePrimitive.None)
         {
             if (!obj.ContainsKey(propertyName))
                 return;
@@ -1551,7 +1564,7 @@ namespace PSRule.Rules.Azure.Data.Template
             }
             else if (value is JToken jToken && jToken.Type == JTokenType.String)
             {
-                obj[propertyName] = ExpandPropertyToken(context, jToken);
+                obj[propertyName] = ExpandPropertyToken(context, type, jToken);
             }
         }
 
