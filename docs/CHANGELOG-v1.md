@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.28.0-B0079 (pre-release)
+
 What's changed since pre-release v1.28.0-B0045:
 
 - General improvements:
