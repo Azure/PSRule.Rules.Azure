@@ -123,6 +123,12 @@
   <data name="ArgumentInvalidBoolean" xml:space="preserve">
     <value>The argument '{0}' for '{1}' is not a valid boolean.</value>
   </data>
+  <data name="ArgumentInvalidCIDR" xml:space="preserve">
+    <value>The specified CIDR '{0}' is not valid.</value>
+  </data>
+  <data name="ArgumentInvalidCIDRLength" xml:space="preserve">
+    <value>The specified prefix length '{0}' is out of range for the CIDR '{1}'.</value>
+  </data>
   <data name="ArgumentInvalidDateTime" xml:space="preserve">
     <value>The argument '{0}' for '{1}' is not a valid time.</value>
   </data>
