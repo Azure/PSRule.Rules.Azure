@@ -1,13 +1,11 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "languageVersion": "1.10-experimental",
   "contentVersion": "1.0.0.0",
   "metadata": {
-    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.16.2.56959",
-      "templateHash": "11969872331881049732"
+      "version": "0.18.4.5664",
+      "templateHash": "11736978922554133719"
     }
   },
   "parameters": {
@@ -75,8 +73,8 @@
     ],
     "ages": "[map(variables('dogs'), lambda('dog', lambdaVariables('dog').age))]"
   },
-  "resources": {
-    "vnet": {
+  "resources": [
+    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
       "name": "vnet",
@@ -87,34 +85,33 @@
         "mode": "Incremental",
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
-            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.16.2.56959",
-              "templateHash": "6732145744862004887"
+              "version": "0.18.4.5664",
+              "templateHash": "13364432189836274534"
             }
           },
           "variables": {
+            "base": "10.0.0.0/8",
             "subnets": [
               {
                 "name": "subnet1",
-                "addressPrefix": "10.0.0.0/24"
+                "addressPrefix": "[cidrSubnet(variables('base'), 24, 0)]"
               },
               {
                 "name": "subnet2",
-                "addressPrefix": "10.0.1.0/24"
+                "addressPrefix": "[cidrSubnet(variables('base'), 24, 1)]"
               },
               {
                 "name": "subnet3",
-                "addressPrefix": "10.0.2.0/24"
+                "addressPrefix": "[cidrSubnet(variables('base'), 24, 2)]"
               }
             ]
           },
-          "resources": {
-            "vnet": {
+          "resources": [
+            {
               "type": "Microsoft.Network/virtualNetworks",
               "apiVersion": "2022-09-01",
               "name": "vnet1",
@@ -133,17 +130,17 @@
                 ]
               }
             }
-          },
+          ],
           "outputs": {
             "subnets": {
               "type": "array",
-              "value": "[reference('vnet').subnets]"
+              "value": "[reference(resourceId('Microsoft.Network/virtualNetworks', 'vnet1'), '2022-09-01').subnets]"
             }
           }
         }
       }
     },
-    "child2": {
+    {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
       "name": "child2",
@@ -154,7 +151,7 @@
         "mode": "Incremental",
         "parameters": {
           "subnetId": {
-            "value": "[filter(reference('vnet').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, 'subnet1')))[0].id]"
+            "value": "[filter(reference(resourceId('Microsoft.Resources/deployments', 'vnet'), '2022-09-01').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, 'subnet1')))[0].id]"
           }
         },
         "template": {
@@ -165,8 +162,8 @@
             "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.16.2.56959",
-              "templateHash": "9874962359524344048"
+              "version": "0.18.4.5664",
+              "templateHash": "13077654233608092220"
             }
           },
           "parameters": {
@@ -178,10 +175,10 @@
         }
       },
       "dependsOn": [
-        "vnet"
+        "[resourceId('Microsoft.Resources/deployments', 'vnet')]"
       ]
     }
-  },
+  ],
   "outputs": {
     "arrayOutput": {
       "type": "array",
@@ -193,7 +190,7 @@
     },
     "vnetId": {
       "type": "string",
-      "value": "[filter(reference('vnet').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, parameters('environment'))))[0].id]"
+      "value": "[filter(reference(resourceId('Microsoft.Resources/deployments', 'vnet'), '2022-09-01').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, parameters('environment'))))[0].id]"
     },
     "dogNames": {
       "type": "array",

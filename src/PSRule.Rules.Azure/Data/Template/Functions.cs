@@ -163,6 +163,11 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("toObject", ToObject, delayBinding: true),
             new FunctionDescriptor("lambda", Lambda, delayBinding: true),
             new FunctionDescriptor("lambdaVariables", LambdaVariables, delayBinding: true),
+
+            // CIDR
+            new FunctionDescriptor("parseCidr", ParseCidr),
+            new FunctionDescriptor("cidrSubnet", CidrSubnet),
+            new FunctionDescriptor("cidrHost", CidrHost),
         };
 
         /// <summary>
@@ -2021,6 +2026,99 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         #endregion Lambda
+
+        #region CIDR
+
+        /// <summary>
+        /// parseCidr(network)
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-cidr#parsecidr"/>.
+        /// </remarks>
+        internal static object ParseCidr(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw ArgumentsOutOfRange(nameof(ParseCidr), args);
+
+            if (!ExpressionHelpers.TryString(args[0], out var network))
+                throw ArgumentInvalidString(nameof(ParseCidr), "network");
+
+            try
+            {
+                if (CidrParsing.TryParse(network, out var info))
+                    return JObject.FromObject(info);
+            }
+            catch
+            {
+
+            }
+            throw new ExpressionArgumentException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidCIDR, network));
+        }
+
+        /// <summary>
+        /// cidrSubnet(network, newCIDR, subnetIndex)
+        /// </summary>
+        /// <remarks>
+        /// Splits the specified IP address range in CIDR notation into subnets with a new CIDR value and returns the IP address range of the subnet with the specified index.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-cidr#cidrsubnet"/>.
+        /// </remarks>
+        internal static object CidrSubnet(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 3)
+                throw ArgumentsOutOfRange(nameof(CidrSubnet), args);
+
+            if (!ExpressionHelpers.TryString(args[0], out var network))
+                throw ArgumentInvalidString(nameof(CidrSubnet), "network");
+
+            if (!ExpressionHelpers.TryInt(args[1], out var newCIDR))
+                throw ArgumentInvalidInteger(nameof(CidrSubnet), "newCIDR");
+
+            if (!ExpressionHelpers.TryInt(args[2], out var subnetIndex))
+                throw ArgumentInvalidInteger(nameof(CidrSubnet), "subnetIndex");
+
+            try
+            {
+                if (CidrParsing.TryGetSubnet(network, newCIDR, subnetIndex, out var subnet))
+                    return subnet;
+            }
+            catch
+            {
+
+            }
+            throw new ExpressionArgumentException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidCIDR, network));
+        }
+
+        /// <summary>
+        /// cidrHost(network, hostIndex)
+        /// </summary>
+        /// <remarks>
+        /// Calculates the usable IP address of the host with the specified index on the specified IP address range in CIDR notation.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-cidr#cidrhost"/>.
+        /// </remarks>
+        internal static object CidrHost(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw ArgumentsOutOfRange(nameof(CidrHost), args);
+
+            if (!ExpressionHelpers.TryString(args[0], out var network))
+                throw ArgumentInvalidString(nameof(CidrHost), "network");
+
+            if (!ExpressionHelpers.TryInt(args[1], out var hostIndex))
+                throw ArgumentInvalidInteger(nameof(CidrHost), "hostIndex");
+
+            try
+            {
+                if (CidrParsing.TryGetHost(network, hostIndex, out var host))
+                    return host;
+            }
+            catch
+            {
+
+            }
+            throw new ExpressionArgumentException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentInvalidCIDR, network));
+        }
+
+        #endregion CIDR
 
         #region Helper functions
 

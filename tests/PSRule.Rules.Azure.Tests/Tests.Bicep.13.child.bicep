@@ -1,18 +1,20 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+var base = '10.0.0.0/8'
+
 var subnets = [
   {
     name: 'subnet1'
-    addressPrefix: '10.0.0.0/24'
+    addressPrefix: cidrSubnet(base, 24, 0)
   }
   {
     name: 'subnet2'
-    addressPrefix: '10.0.1.0/24'
+    addressPrefix: cidrSubnet(base, 24, 1)
   }
   {
     name: 'subnet3'
-    addressPrefix: '10.0.2.0/24'
+    addressPrefix: cidrSubnet(base, 24, 2)
   }
 ]
 

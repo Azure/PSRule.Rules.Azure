@@ -30,6 +30,7 @@ namespace PSRule.Rules.Azure
         private const string TRAIT_RESOURCE = "Resource";
         private const string TRAIT_SCOPE = "Scope";
         private const string TRAIT_LAMBDA = "Lambda";
+        private const string TRAIT_CIDR = "CIDR";
 
         #region Array and object
 
@@ -1954,6 +1955,101 @@ namespace PSRule.Rules.Azure
         }
 
         #endregion Lambda
+
+        #region CIDR
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_CIDR)]
+        public void ParseCidr()
+        {
+            var context = GetContext();
+
+            var actual = Functions.ParseCidr(context, new object[] { "10.144.0.0/20" }) as JObject;
+            Assert.NotNull(actual);
+            Assert.Equal("10.144.0.0", actual["network"].Value<string>());
+            Assert.Equal("255.255.240.0", actual["netmask"].Value<string>());
+            Assert.Equal("10.144.15.255", actual["broadcast"].Value<string>());
+            Assert.Equal("10.144.0.1", actual["firstUsable"].Value<string>());
+            Assert.Equal("10.144.15.254", actual["lastUsable"].Value<string>());
+            Assert.Equal(20, actual["cidr"].Value<int>());
+
+            actual = Functions.ParseCidr(context, new object[] { "fdad:3236:5555::/48" }) as JObject;
+            Assert.NotNull(actual);
+            Assert.Equal("fdad:3236:5555::", actual["network"].Value<string>());
+            Assert.Equal("ffff:ffff:ffff::", actual["netmask"].Value<string>());
+            Assert.False(actual.ContainsKeyInsensitive("broadcast"));
+            Assert.Equal("fdad:3236:5555::", actual["firstUsable"].Value<string>());
+            Assert.Equal("fdad:3236:5555:ffff:ffff:ffff:ffff:ffff", actual["lastUsable"].Value<string>());
+            Assert.Equal(48, actual["cidr"].Value<int>());
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ParseCidr(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ParseCidr(context, new object[] { 5 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ParseCidr(context, new object[] { "one", "two" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ParseCidr(context, new object[] { "1000.144.0.0/20" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ParseCidr(context, new object[] { "1000.144.0.0.0.0.0.0.0.0.0.0.0.0/20" }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ParseCidr(context, new object[] { "fdad:nnnn:5555::/48" }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_CIDR)]
+        public void CidrSubnet()
+        {
+            var context = GetContext();
+
+            // IPv4
+            Assert.Equal("10.144.0.0/20", Functions.CidrSubnet(context, new object[] { "10.144.0.0/20", 20, 0 }) as string);
+            Assert.Equal("10.144.16.0/20", Functions.CidrSubnet(context, new object[] { "10.144.0.0/20", 20, 1 }) as string);
+            Assert.Equal("10.144.0.0/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 0 }) as string);
+            Assert.Equal("10.144.0.32/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 1 }) as string);
+            Assert.Equal("10.144.0.64/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 2 }) as string);
+            Assert.Equal("10.144.0.96/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 3 }) as string);
+            Assert.Equal("10.144.0.128/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 4 }) as string);
+            Assert.Equal("10.144.0.160/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 5 }) as string);
+            Assert.Equal("10.144.0.192/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 6 }) as string);
+
+            Assert.Equal("10.144.0.0/24", Functions.CidrSubnet(context, new object[] { "10.144.0.0/20", 24, 0 }) as string);
+            Assert.Equal("10.144.1.0/24", Functions.CidrSubnet(context, new object[] { "10.144.0.0/20", 24, 1 }) as string);
+            Assert.Equal("10.144.2.0/24", Functions.CidrSubnet(context, new object[] { "10.144.0.0/20", 24, 2 }) as string);
+            Assert.Equal("10.144.3.0/24", Functions.CidrSubnet(context, new object[] { "10.144.0.0/20", 24, 3 }) as string);
+            Assert.Equal("10.144.4.0/24", Functions.CidrSubnet(context, new object[] { "10.144.0.0/20", 24, 4 }) as string);
+
+            // IPv6
+            Assert.Equal("fdad:3236:5555::/52", Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/48", 52, 0 }) as string);
+            Assert.Equal("fdad:3236:5555:1000::/52", Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/48", 52, 1 }) as string);
+            Assert.Equal("fdad:3236:5555:2000::/52", Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/48", 52, 2 }) as string);
+            Assert.Equal("fdad:3236:5555:3000::/52", Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/48", 52, 3 }) as string);
+            Assert.Equal("fdad:3236:5555:4000::/52", Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/48", 52, 4 }) as string);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.CidrSubnet(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.CidrSubnet(context, new object[] { 5 }));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/48", 200, 0 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_CIDR)]
+        public void CidrHost()
+        {
+            var context = GetContext();
+
+            // IPv4
+            Assert.Equal("10.144.3.1", Functions.CidrHost(context, new object[] { "10.144.3.0/24", 0 }) as string);
+            Assert.Equal("10.144.3.2", Functions.CidrHost(context, new object[] { "10.144.3.0/24", 1 }) as string);
+            Assert.Equal("10.144.3.3", Functions.CidrHost(context, new object[] { "10.144.3.0/24", 2 }) as string);
+            Assert.Equal("10.144.3.4", Functions.CidrHost(context, new object[] { "10.144.3.0/24", 3 }) as string);
+            Assert.Equal("10.144.3.5", Functions.CidrHost(context, new object[] { "10.144.3.0/24", 4 }) as string);
+
+            // IPv6
+            Assert.Equal("fdad:3236:5555:3000::1", Functions.CidrHost(context, new object[] { "fdad:3236:5555:3000::/52", 0 }) as string);
+            Assert.Equal("fdad:3236:5555:3000::2", Functions.CidrHost(context, new object[] { "fdad:3236:5555:3000::/52", 1 }) as string);
+            Assert.Equal("fdad:3236:5555:3000::3", Functions.CidrHost(context, new object[] { "fdad:3236:5555:3000::/52", 2 }) as string);
+            Assert.Equal("fdad:3236:5555:3000::4", Functions.CidrHost(context, new object[] { "fdad:3236:5555:3000::/52", 3 }) as string);
+            Assert.Equal("fdad:3236:5555:3000::5", Functions.CidrHost(context, new object[] { "fdad:3236:5555:3000::/52", 4 }) as string);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.CidrHost(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.CidrHost(context, new object[] { 5 }));
+        }
+
+        #endregion CIDR
 
         #region Complex scenarios
 

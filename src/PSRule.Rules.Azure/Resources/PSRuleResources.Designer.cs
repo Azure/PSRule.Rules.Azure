@@ -79,6 +79,24 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The specified CIDR &apos;{0}&apos; is not valid..
+        /// </summary>
+        internal static string ArgumentInvalidCIDR {
+            get {
+                return ResourceManager.GetString("ArgumentInvalidCIDR", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The specified prefix length &apos;{0}&apos; is out of range for the CIDR &apos;{1}&apos;..
+        /// </summary>
+        internal static string ArgumentInvalidCIDRLength {
+            get {
+                return ResourceManager.GetString("ArgumentInvalidCIDRLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The argument &apos;{0}&apos; for &apos;{1}&apos; is not a valid time..
         /// </summary>
         internal static string ArgumentInvalidDateTime {

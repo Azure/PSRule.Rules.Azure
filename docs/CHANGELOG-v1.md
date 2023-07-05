@@ -24,6 +24,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.28.0-B0079:
+
+- General improvements:
+  - Added support for Bicep CIDR functions by @BernieWhite.
+    [#2279](https://github.com/Azure/PSRule.Rules.Azure/issues/2279)
+    - Added support for `parseCidr`, `cidrSubnet`, and `cidrHost`.
+
 ## v1.28.0-B0079 (pre-release)
 
 What's changed since pre-release v1.28.0-B0045:
