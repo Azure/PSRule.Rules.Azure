@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-04-29
+reviewed: 2023-07-08
 severity: Awareness
 pillar: Security
-category: Network security and containment
+category: Connectivity
 resource: Azure Cache for Redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.FirewallRuleCount/
 ---
@@ -15,8 +15,19 @@ Determine if there is an excessive number of firewall rules for the Redis cache.
 
 ## DESCRIPTION
 
-Azure Cache for Redis provides the functionality to create firewall rules, limiting the IP addresses that can access the resources.
-Normally, you want to limit the number of firewall rules.
+When using Azure Cache for Redis, injected into a VNET you are able to create firewall rules to limit access to the cache.
+Each firewall rules specifies a range of IP addresses that are allowed to access the cache.
+
+If no firewall rules are set and public access is not disabled, then all IP addresses are allowed to access the cache.
+By default, the cache is configured to allow access from all IP addresses.
+
+Consider using private endpoints to limit access to the cache.
+If this is not possible, use firewall rules to limit access to the cache.
+However, avoid using overly permissive firewall rules that are:
+
+- Not needed.
+- Too broad.
+- Too many.
 
 ## RECOMMENDATION
 
@@ -31,16 +42,21 @@ To deploy caches that pass this rule:
 
 - Set the `properties.startIP` property to the start of the IP address range.
 - Set the `properties.endIP` property to the end of the IP address range.
+- Configure a minimum number of firewall rules.
+  This rule will fail if more then ten (10) public IP address firewall rules are configured.
 
 ```json
 {
   "type": "Microsoft.Cache/redis/firewallRules",
-  "apiVersion": "2022-06-01",
-  "name": "string",
+  "apiVersion": "2023-04-01",
+  "name": "[format('{0}/{1}', parameters('name'), 'allow-on-premises')]",
   "properties": {
-    "startIP": "string",
-    "endIP": "string"
-  }
+    "endIP": "10.0.1.1",
+    "startIP": "10.0.1.31"
+  },
+  "dependsOn": [
+    "cache"
+  ]
 }
 ```
 
@@ -50,17 +66,20 @@ To deploy caches that pass this rule:
 
 - Set the `properties.startIP` property to the start of the IP address range.
 - Set the `properties.endIP` property to the end of the IP address range.
+- Configure a minimum number of firewall rules.
+  This rule will fail if more then ten (10) public IP address firewall rules are configured.
 
 ```bicep
-resource symbolicname 'Microsoft.Cache/redis/firewallRules@2022-06-01' = {
-  name: 'string'
-  parent: resourceSymbolicName
+resource rule 'Microsoft.Cache/redis/firewallRules@2023-04-01' = {
+  parent: cache
+  name: 'allow-on-premises'
   properties: {
-    startIP: 'string'
-    endIP: 'string'
+    endIP: '10.0.1.1'
+    startIP: '10.0.1.31'
   }
 }
 ```
+
 ## NOTES
 
 This rule is not applicable when Redis is configured to allow private connectivity by setting `properties.publicNetworkAccess` to `Disabled`.
@@ -68,6 +87,9 @@ Firewall rules can be used with VNet injected caches, but not private endpoints.
 
 ## LINKS
 
-- [How to configure Azure Cache for Redis - Firewall](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-configure#default-redis-server-configuration#firewall)
+- [Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)
+- [Azure best practices for network security](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices)
+- [Azure Cache for Redis network isolation options](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-network-isolation)
 - [Limitations of firewall rules](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-network-isolation#limitations-of-firewall-rules)
+- [Migrate from VNet injection caches to Private Link caches](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-vnet-migration)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis/firewallrules)

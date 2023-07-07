@@ -29,8 +29,79 @@ To prevent unencrypted connections, disable the non-SSL port.
 
 Unless explicitly required, consider disabling the non-SSL port.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy caches that pass this rule:
+
+- Set the `properties.enableNonSslPort` property to `false`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Cache/redis",
+  "apiVersion": "2023-04-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "minimumTlsVersion": "1.2",
+    "redisVersion": "latest",
+    "sku": {
+      "name": "Premium",
+      "family": "P",
+      "capacity": 1
+    },
+    "redisConfiguration": {
+      "maxmemory-reserved": "615"
+    },
+    "enableNonSslPort": false
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
+}
+```
+
+### Configure with Bicep
+
+To deploy caches that pass this rule:
+
+- Set the `properties.enableNonSslPort` property to `false`.
+
+For example:
+
+```bicep
+resource cache 'Microsoft.Cache/redis@2023-04-01' = {
+  name: name
+  location: location
+  properties: {
+    minimumTlsVersion: '1.2'
+    redisVersion: 'latest'
+    sku: {
+      name: 'Premium'
+      family: 'P'
+      capacity: 1
+    }
+    redisConfiguration: {
+      'maxmemory-reserved': '615'
+    }
+    enableNonSslPort: false
+  }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
+}
+```
+
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
 - [when should I enable the non-SSL port for connecting to Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
 - [How to configure Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)
