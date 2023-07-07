@@ -24,9 +24,83 @@ Basic tier or Standard C0 caches are not suitable for production workloads.
 
 Consider using a minimum of a Standard C1 instance for production workloads.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy caches that pass this rule:
+
+- Set the `properties.sku.name` property to `Premium` or `Standard`.
+- Set the `properties.sku.family` property to `P` or `C`.
+- Set the `properties.sku.capacity` property to a capacity valid for the SKU `1` or higher.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Cache/redis",
+  "apiVersion": "2023-04-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "minimumTlsVersion": "1.2",
+    "redisVersion": "latest",
+    "sku": {
+      "name": "Premium",
+      "family": "P",
+      "capacity": 1
+    },
+    "redisConfiguration": {
+      "maxmemory-reserved": "615"
+    },
+    "enableNonSslPort": false
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
+}
+```
+
+### Configure with Bicep
+
+To deploy caches that pass this rule:
+
+- Set the `properties.sku.name` property to `Premium` or `Standard`.
+- Set the `properties.sku.family` property to `P` or `C`.
+- Set the `properties.sku.capacity` property to a capacity valid for the SKU `1` or higher.
+
+For example:
+
+```bicep
+resource cache 'Microsoft.Cache/redis@2023-04-01' = {
+  name: name
+  location: location
+  properties: {
+    minimumTlsVersion: '1.2'
+    redisVersion: 'latest'
+    sku: {
+      name: 'Premium'
+      family: 'P'
+      capacity: 1
+    }
+    redisConfiguration: {
+      'maxmemory-reserved': '615'
+    }
+    enableNonSslPort: false
+  }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
+}
+```
+
 ## LINKS
 
 - [Best practices for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-best-practices)
 - [Azure Cache for Redis pricing](https://azure.microsoft.com/pricing/details/cache/)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#sku-object)
 - [Choosing the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)
