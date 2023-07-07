@@ -19,6 +19,12 @@ on:
   - cron: '26 21 * * 0' # At 09:26 PM, on Sunday each week
   workflow_dispatch:
 
+permissions: {}
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
 jobs:
   oss:
     name: Analyze with PSRule
@@ -51,7 +57,7 @@ jobs:
     - name: Run DevSkim scanner
       uses: microsoft/DevSkim-Action@v1
       with:
-        directory-to-scan: src/
+        directory-to-scan: .
 
     - name: Upload results to security tab
       uses: github/codeql-action/upload-sarif@v2
@@ -73,7 +79,7 @@ jobs:
     - name: Initialize CodeQL
       uses: github/codeql-action/init@v2
       with:
-        languages: 'csharp'
+        languages: csharp
 
     - name: Autobuild
       uses: github/codeql-action/autobuild@v2

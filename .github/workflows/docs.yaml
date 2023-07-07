@@ -12,6 +12,12 @@ on:
     - main
   workflow_dispatch:
 
+permissions: {}
+
+env:
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
+
 jobs:
   deploy:
     name: Publish docs
@@ -33,8 +39,8 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
-          architecture: 'x64'
+          python-version: '3.11'
+          architecture: x64
 
       - name: Install dependencies
         run: |

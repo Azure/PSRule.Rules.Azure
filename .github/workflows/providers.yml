@@ -12,8 +12,12 @@ on:
     - cron:  '0 0 1 * *' # 00:00 on first day of each month
   workflow_dispatch:
 
+permissions: {}
+
 env:
   WORKING_BRANCH: dependencies/providers-bump
+  DOTNET_NOLOGO: true
+  DOTNET_CLI_TELEMETRY_OPTOUT: true
 
 jobs:
   bump:
