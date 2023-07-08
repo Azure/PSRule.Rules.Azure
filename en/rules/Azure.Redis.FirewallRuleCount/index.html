@@ -8703,15 +8703,15 @@ Some rules may not be needed.</p>
 <li>Set the <code>properties.startIP</code> property to the start of the IP address range.</li>
 <li>Set the <code>properties.endIP</code> property to the end of the IP address range.</li>
 <li>Configure a minimum number of firewall rules.
-  This rule will fail if more then ten (10) public IP address firewall rules are configured.</li>
+  This rule will fail if more then ten (10) firewall rules are configured.</li>
 </ul>
 <div class="highlight"><span class="filename">Azure Template snippet</span><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Microsoft.Cache/redis/firewallRules&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;apiVersion&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2023-04-01&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;[format(&#39;{0}/{1}&#39;, parameters(&#39;name&#39;), &#39;allow-on-premises&#39;)]&quot;</span><span class="p">,</span>
 <span class="w">  </span><span class="nt">&quot;properties&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<span class="w">    </span><span class="nt">&quot;endIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.0.1.1&quot;</span><span class="p">,</span>
-<span class="w">    </span><span class="nt">&quot;startIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.0.1.31&quot;</span>
+<span class="w">    </span><span class="nt">&quot;startIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.0.1.1&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;endIP&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;10.0.1.31&quot;</span>
 <span class="w">  </span><span class="p">},</span>
 <span class="w">  </span><span class="nt">&quot;dependsOn&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
 <span class="w">    </span><span class="s2">&quot;cache&quot;</span>
@@ -8724,14 +8724,14 @@ Some rules may not be needed.</p>
 <li>Set the <code>properties.startIP</code> property to the start of the IP address range.</li>
 <li>Set the <code>properties.endIP</code> property to the end of the IP address range.</li>
 <li>Configure a minimum number of firewall rules.
-  This rule will fail if more then ten (10) public IP address firewall rules are configured.</li>
+  This rule will fail if more then ten (10) firewall rules are configured.</li>
 </ul>
 <div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>resource rule &#39;Microsoft.Cache/redis/firewallRules@2023-04-01&#39; = {
   parent: cache
   name: &#39;allow-on-premises&#39;
   properties: {
-    endIP: &#39;10.0.1.1&#39;
-    startIP: &#39;10.0.1.31&#39;
+    startIP: &#39;10.0.1.1&#39;
+    endIP: &#39;10.0.1.31&#39;
   }
 }
 </code></pre></div>

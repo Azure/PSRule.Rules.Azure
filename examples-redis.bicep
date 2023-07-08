@@ -39,7 +39,7 @@ resource rule 'Microsoft.Cache/redis/firewallRules@2023-04-01' = {
   parent: cache
   name: 'allow-on-premises'
   properties: {
-    endIP: '10.0.1.1'
-    startIP: '10.0.1.31'
+    startIP: '10.0.1.1'
+    endIP: '10.0.1.31'
   }
 }
