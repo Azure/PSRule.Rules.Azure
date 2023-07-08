@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.28.0-B0115:
+
+- Bug fixes:
+  - Fixed Redis firewall rules can not bind to start by @BernieWhite.
+    [#2303](https://github.com/Azure/PSRule.Rules.Azure/issues/2303)
+
 ## v1.28.0-B0115 (pre-release)
 
 What's changed since pre-release v1.28.0-B0079:

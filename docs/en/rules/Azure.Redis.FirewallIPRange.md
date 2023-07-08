@@ -50,8 +50,8 @@ To deploy caches that pass this rule:
   "apiVersion": "2023-04-01",
   "name": "[format('{0}/{1}', parameters('name'), 'allow-on-premises')]",
   "properties": {
-    "endIP": "10.0.1.1",
-    "startIP": "10.0.1.31"
+    "startIP": "10.0.1.1",
+    "endIP": "10.0.1.31"
   },
   "dependsOn": [
     "cache"
@@ -72,8 +72,8 @@ resource rule 'Microsoft.Cache/redis/firewallRules@2023-04-01' = {
   parent: cache
   name: 'allow-on-premises'
   properties: {
-    endIP: '10.0.1.1'
-    startIP: '10.0.1.31'
+    startIP: '10.0.1.1'
+    endIP: '10.0.1.31'
   }
 }
 ```

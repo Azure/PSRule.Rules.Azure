@@ -7,7 +7,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.18.4.5664",
-      "templateHash": "17311430670943825633"
+      "templateHash": "13212070657845815407"
     }
   },
   "parameters": {
@@ -56,8 +56,8 @@
       "apiVersion": "2023-04-01",
       "name": "[format('{0}/{1}', parameters('name'), 'allow-on-premises')]",
       "properties": {
-        "endIP": "10.0.1.1",
-        "startIP": "10.0.1.31"
+        "startIP": "10.0.1.1",
+        "endIP": "10.0.1.31"
       },
       "dependsOn": [
         "cache"

@@ -43,7 +43,7 @@ To deploy caches that pass this rule:
 - Set the `properties.startIP` property to the start of the IP address range.
 - Set the `properties.endIP` property to the end of the IP address range.
 - Configure a minimum number of firewall rules.
-  This rule will fail if more then ten (10) public IP address firewall rules are configured.
+  This rule will fail if more then ten (10) firewall rules are configured.
 
 ```json
 {
@@ -51,8 +51,8 @@ To deploy caches that pass this rule:
   "apiVersion": "2023-04-01",
   "name": "[format('{0}/{1}', parameters('name'), 'allow-on-premises')]",
   "properties": {
-    "endIP": "10.0.1.1",
-    "startIP": "10.0.1.31"
+    "startIP": "10.0.1.1",
+    "endIP": "10.0.1.31"
   },
   "dependsOn": [
     "cache"
@@ -67,15 +67,15 @@ To deploy caches that pass this rule:
 - Set the `properties.startIP` property to the start of the IP address range.
 - Set the `properties.endIP` property to the end of the IP address range.
 - Configure a minimum number of firewall rules.
-  This rule will fail if more then ten (10) public IP address firewall rules are configured.
+  This rule will fail if more then ten (10) firewall rules are configured.
 
 ```bicep
 resource rule 'Microsoft.Cache/redis/firewallRules@2023-04-01' = {
   parent: cache
   name: 'allow-on-premises'
   properties: {
-    endIP: '10.0.1.1'
-    startIP: '10.0.1.31'
+    startIP: '10.0.1.1'
+    endIP: '10.0.1.31'
   }
 }
 ```
