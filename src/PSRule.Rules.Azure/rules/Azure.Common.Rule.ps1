@@ -414,23 +414,34 @@ function global:GetIPAddressSummary {
     [OutputType([PSObject])]
     param ()
     process {
-        $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
-                $_.Type -like '*/firewallRules'
+        $firewallRules = @($TargetObject);
+        if ($TargetObject.type -notlike '*/firewallRules') {
+            $firewallRules = @($TargetObject.resources | Where-Object -FilterScript {
+                $_.type -like '*/firewallRules'
             } | ForEach-Object -Process {
-                if (!($_.ResourceName -eq 'AllowAllWindowsAzureIps' -or ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0'))) {
+                if (!($_.name -eq 'AllowAllWindowsAzureIps' -or
+                ($_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0') -or
+                ($_.properties.startIP -eq '0.0.0.0' -and $_.properties.endIP -eq '0.0.0.0'))) {
                     $_;
                 }
             })
+        }
 
         $private = 0;
         $public = 0;
 
         foreach ($fwRule in $firewallRules) {
-            if ($fwRule.Properties.startIpAddress -like '10.*' -or $fwRule.Properties.startIpAddress -like '172.*' -or $fwRule.Properties.startIpAddress -like '192.168.*') {
-                $private += GetIPAddressCount -Start $fwRule.Properties.startIpAddress -End $fwRule.Properties.endIpAddress;
+            if ($fwRule.Properties.startIpAddress -like '10.*' -or $fwRule.properties.startIpAddress -like '172.*' -or $fwRule.properties.startIpAddress -like '192.168.*') {
+                $private += GetIPAddressCount -Start $fwRule.properties.startIpAddress -End $fwRule.properties.endIpAddress;
+            }
+            elseif ($fwRule.properties.startIP -like '10.*' -or $fwRule.properties.startIP -like '172.*' -or $fwRule.properties.startIP -like '192.168.*') {
+                $private += GetIPAddressCount -Start $fwRule.properties.startIP -End $fwRule.properties.endIP;
+            }
+            elseif (![String]::IsNullOrEmpty($fwRule.properties.startIP) -and ![String]::IsNullOrEmpty($fwRule.properties.endIP)) {
+                $public += GetIPAddressCount -Start $fwRule.properties.startIP -End $fwRule.properties.endIP;
             }
             else {
-                $public += GetIPAddressCount -Start $fwRule.Properties.startIpAddress -End $fwRule.Properties.endIpAddress;
+                $public += GetIPAddressCount -Start $fwRule.properties.startIpAddress -End $fwRule.properties.endIpAddress;
             }
         }
         return [PSCustomObject]@{
