@@ -8661,7 +8661,7 @@ This helps other contributors understand the purpose of the resource.</p>
 <h3 id="configure-with-bicep">Configure with Bicep<a class="headerlink" href="#configure-with-bicep" title="Permanent link">#</a></h3>
 <p>To define Bicep template files that pass this rule:</p>
 <ul>
-<li>Specify the <code>@description()</code> decorator for each resource in the template.</li>
+<li>Specify the <code>@description()</code> or <code>@sys.description()</code> decorator for each resource in the template.</li>
 </ul>
 <p>For example:</p>
 <div class="highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code>// An example container registry
@@ -8696,7 +8696,7 @@ resource acr &#39;Microsoft.ContainerRegistry/registries@2021-06-01-preview&#39;
 <h2 id="links">Links<a class="headerlink" href="#links" title="Permanent link">#</a></h2>
 <ul>
 <li><a href="https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#better-understand-your-cloud-resources">Better understand your cloud resources</a></li>
-<li><a href="https://docs.microsoft.com/azure/azure-resource-manager/bicep/parameters#decorators">Decorators</a></li>
+<li><a href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters#decorators">Decorators</a></li>
 </ul>
 
   <!-- Last update of source file -->
@@ -8707,7 +8707,7 @@ resource acr &#39;Microsoft.ContainerRegistry/registries@2021-06-01-preview&#39;
   <small>
     
       Last update:
-      2022-10-17
+      2023-07-09
     
   </small>
 </div>
