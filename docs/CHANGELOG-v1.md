@@ -43,6 +43,9 @@ What's changed since pre-release v1.28.0-B0079:
   - Added support for Bicep CIDR functions by @BernieWhite.
     [#2279](https://github.com/Azure/PSRule.Rules.Azure/issues/2279)
     - Added support for `parseCidr`, `cidrSubnet`, and `cidrHost`.
+- Engineering:
+  - Bump xunit to v2.5.0.
+    [#2306](https://github.com/Azure/PSRule.Rules.Azure/pull/2306)
 
 ## v1.28.0-B0079 (pre-release)
 
