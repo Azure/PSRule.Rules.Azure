@@ -1,5 +1,5 @@
 ---
-reviewed: 2022/01/22
+reviewed: 2022-01-22
 severity: Important
 pillar: Cost Optimization
 category: Reports

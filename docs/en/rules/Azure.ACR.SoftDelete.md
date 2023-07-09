@@ -16,9 +16,12 @@ Azure Container Registries should have soft delete policy enabled.
 
 Azure Container Registry (ACR) allows you to enable the soft delete policy to recover any accidentally deleted artifacts for a set retention period.
 
-This feature is available in all the service tiers (also known as SKUs). For information about registry service tiers, see Azure Container Registry service tiers.
+This feature is available in all the service tiers (also known as SKUs).
+For information about registry service tiers, see Azure Container Registry service tiers.
 
-Once you enable the soft delete policy, ACR manages the deleted artifacts as the soft deleted artifacts with a set retention period. Thereby you have ability to list, filter, and restore the soft deleted artifacts. Once the retention period is complete, all the soft deleted artifacts are auto-purged.
+Once you enable the soft delete policy, ACR manages the deleted artifacts as the soft deleted artifacts with a set retention period.
+Thereby you have ability to list, filter, and restore the soft deleted artifacts.
+Once the retention period is complete, all the soft deleted artifacts are auto-purged.
 
 Current preview limitations:
 
@@ -28,7 +31,7 @@ Current preview limitations:
 
 ## RECOMMENDATION
 
-Azure Container Registries should have soft delete policy enabled.
+Azure Container Registries should have soft delete enabled to enable recovery of accidentally deleted artifacts.
 
 ## EXAMPLES
 
@@ -36,7 +39,7 @@ Azure Container Registries should have soft delete policy enabled.
 
 To deploy an Azure Container Registry that pass this rule:
 
-- Set `properties.policies.softDeletePolicy.status` to `enabled`.
+- Set the `properties.policies.softDeletePolicy.status` property to `enabled`.
 
 For example:
 
@@ -79,7 +82,7 @@ For example:
 
 To deploy an Azure Container Registry that pass this rule:
 
-- Set `properties.policies.softDeletePolicy.status` to `enabled`.
+- Set the `properties.policies.softDeletePolicy.status` property to `enabled`.
 
 For example:
 
@@ -119,7 +122,7 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
 ### Configure with Azure CLI
 
 ```bash
-az acr config soft-delete update -r MyRegistry --days 90 --status enabled
+az acr config soft-delete update -r '<name>' --days 90 --status enabled
 ```
 
 ## LINKS

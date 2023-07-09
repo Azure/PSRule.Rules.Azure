@@ -19,10 +19,10 @@ metadata:
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'IM-1', 'IM-3', 'PA-1', 'PA-7' ]
+    Azure.MCSB.v1/control: ['IM-1', 'IM-3', 'PA-1']
 spec:
   type:
-  - Microsoft.ContainerRegistry/registries
+    - Microsoft.ContainerRegistry/registries
   condition:
     field: Properties.adminUserEnabled
     hasDefault: false
@@ -40,10 +40,10 @@ metadata:
     Azure.WAF/pillar: Reliability
 spec:
   type:
-  - Microsoft.ContainerRegistry/registries
+    - Microsoft.ContainerRegistry/registries
   condition:
     field: sku.name
-    in: [ 'Premium', 'Standard' ]
+    in: ['Premium', 'Standard']
 
 ---
 # Synopsis: Container registry names should meet naming requirements.
@@ -58,15 +58,15 @@ metadata:
     Azure.WAF/pillar: Operational Excellence
 spec:
   type:
-  - Microsoft.ContainerRegistry/registries
+    - Microsoft.ContainerRegistry/registries
   condition:
     allOf:
-    - name: '.'
-      greaterOrEquals: 5
-    - name: '.'
-      lessOrEquals: 50
-    - name: '.'
-      match: '^[a-zA-Z0-9]*$'
+      - name: '.'
+        greaterOrEquals: 5
+      - name: '.'
+        lessOrEquals: 50
+      - name: '.'
+        match: '^[a-zA-Z0-9]*$'
 
 ---
 # Synopsis: Enable container image quarantine, scan, and mark images as verified.
@@ -80,10 +80,10 @@ metadata:
     ruleSet: 2020_12
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'DS-6', 'PV-5' ]
+    Azure.MCSB.v1/control: ['DS-6', 'PV-5']
 spec:
   type:
-  - Microsoft.ContainerRegistry/registries
+    - Microsoft.ContainerRegistry/registries
   condition:
     field: properties.policies.quarantinePolicy.status
     equals: enabled
@@ -101,9 +101,9 @@ metadata:
     Azure.WAF/pillar: Security
 spec:
   with:
-  - Azure.ACR.IsPremiumSKU
+    - Azure.ACR.IsPremiumSKU
   type:
-  - Microsoft.ContainerRegistry/registries
+    - Microsoft.ContainerRegistry/registries
   where:
     field: properties.encryption.keyVaultProperties.identity
     exists: false
@@ -124,11 +124,11 @@ metadata:
     Azure.WAF/pillar: Cost Optimization
 spec:
   with:
-  - Azure.ACR.IsPremiumSKU
+    - Azure.ACR.IsPremiumSKU
   type:
-  - Microsoft.ContainerRegistry/registries
+    - Microsoft.ContainerRegistry/registries
   condition:
-    field: Properties.policies.retentionPolicy.status
+    field: properties.policies.retentionPolicy.status
     equals: enabled
 
 #endregion Rules
@@ -144,12 +144,12 @@ metadata:
 spec:
   if:
     allOf:
-    - type: '.'
-      equals: 'Microsoft.ContainerRegistry/registries'
-    - anyOf:
-      - field: Sku.name
-        equals: 'Premium'
-      - field: Sku.tier
-        equals: 'Premium'
+      - type: '.'
+        equals: Microsoft.ContainerRegistry/registries
+      - anyOf:
+          - field: sku.name
+            equals: Premium
+          - field: sku.tier
+            equals: Premium
 
 #endregion Selectors

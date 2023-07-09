@@ -134,4 +134,8 @@ Update-AzContainerRegistry -ResourceGroupName '<resource_group>' -Name '<name>' 
 - [Use an Azure managed identity to authenticate to an Azure container registry](https://learn.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)
 - [Azure Container Registry roles and permissions](https://learn.microsoft.com/azure/container-registry/container-registry-roles)
 - [What is Azure role-based access control (Azure RBAC)?](https://learn.microsoft.com/azure/role-based-access-control/overview)
+- [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#im-1-use-centralized-identity-and-authentication-system)
+- [IM-3: Manage application identities securely and automatically](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#im-3-manage-application-identities-securely-and-automatically)
+- [PA-1: Separate and limit highly privileged/administrative users](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#pa-1-separate-and-limit-highly-privilegedadministrative-users)
+- [Azure Policy Regulatory Compliance controls for Azure Container Registry](https://learn.microsoft.com/azure/container-registry/security-controls-policy)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)
