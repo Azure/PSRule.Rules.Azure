@@ -5,14 +5,6 @@
 # Validation rules for Azure Redis Cache
 #
 
-# Synopsis: Use Azure Cache for Redis instances of at least Standard C1.
-Rule 'Azure.Redis.MinSKU' -Ref 'AZR-000159' -Type 'Microsoft.Cache/Redis' -With 'Azure.Redis.HasSku' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
-    $Assert.In($TargetObject, 'Properties.sku.name', @('Standard', 'Premium'));
-    if ($TargetObject.Properties.sku.name -eq 'Standard') {
-        $Assert.GreaterOrEqual($TargetObject, 'Properties.sku.capacity', 1);
-    }
-}
-
 # Synopsis: Configure `maxmemory-reserved` to reserve memory for non-cache operations.
 Rule 'Azure.Redis.MaxMemoryReserved' -Ref 'AZR-000160' -Type 'Microsoft.Cache/Redis' -With 'Azure.Redis.HasSku' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $sku = "$($TargetObject.Properties.sku.family)$($TargetObject.Properties.sku.capacity)";
@@ -99,7 +91,7 @@ Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/re
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Cache/redis/firewallRules');
     $Assert.
     LessOrEqual($firewallRules, '.', 10).
-    WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
+    WithReason(($LocalizedData.ExceededFirewallRuleCount -f $firewallRules.Length, 10), $True);
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses for the Redis cache.

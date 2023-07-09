@@ -17,6 +17,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_12'
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/virtualWans

@@ -4,7 +4,6 @@ pillar: Security
 category: Data protection
 resource: Azure Cache for Redis Enterprise
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisEnterprise.MinTLS/
-ms-content-id: 31240bca-b04f-4267-9c31-cfca4e91cfbf
 ---
 
 # Redis Cache minimum TLS version
@@ -26,18 +25,81 @@ By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.
 Consider configuring the minimum supported TLS version to be 1.2.
 Support for TLS 1.0/ 1.1 version will be removed.
 
-## Examples
+## EXAMPLES
 
-To disable old versions of TLS on Redis Cache Enterprise using PowerShell
+### Configure with Azure template
+
+To deploy caches that pass this rule:
+
+- Set the `properties.minimumTlsVersion` property to `1.2`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Cache/redisEnterprise",
+  "apiVersion": "2022-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Enterprise_E10"
+  },
+  "properties": {
+    "minimumTlsVersion": "1.2"
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy caches that pass this rule:
+
+- Set the `properties.minimumTlsVersion` property to `1.2`.
+
+For example:
+
+```bicep
+resource cache 'Microsoft.Cache/redisEnterprise@2022-01-01' = {
+  name: name
+  location: location
+  sku: {
+    name: 'Enterprise_E10'
+  }
+  properties: {
+    minimumTlsVersion: '1.2'
+  }
+}
+```
+
+### Configure with Azure CLI
+
+To deploy caches that pass this rule:
+
+- Use the `--set` parameter.
+
+For example:
+
+```bash
+az redis update -n '<name>' -g '<resource_group>' --set minimumTlsVersion=1.2
+```
+
+### Configure with Azure PowerShell
+
+To deploy caches that pass this rule:
+
+- Use the `-MinimumTlsVersion` parameter.
+
+For example:
 
 ```powershell
-Set-AzRedisCache -Name <YourRedisName> -MinimumTlsVersion '1.2'
+Set-AzRedisCache -Name '<name>' -MinimumTlsVersion '1.2'
 ```
 
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Remove TLS 1.0 and 1.1 from use with Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-remove-tls-10-11)
-- [Configure Azure Cache for Redis settings](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
+- [Remove TLS 1.0 and 1.1 from use with Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-remove-tls-10-11)
+- [Configure Azure Cache for Redis settings](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redis#RedisCreateProperties)
+- [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cache-for-redis-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redisenterprise)

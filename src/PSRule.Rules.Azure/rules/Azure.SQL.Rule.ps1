@@ -12,7 +12,7 @@ Rule 'Azure.SQL.FirewallRuleCount' -Ref 'AZR-000183' -Type 'Microsoft.Sql/server
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules');
     $Assert.
         LessOrEqual($firewallRules, '.', 10).
-        WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
+        WithReason(($LocalizedData.ExceededFirewallRuleCount -f $firewallRules.Length, 10), $True);
 }
 
 # Synopsis: Determine if access from Azure services is required

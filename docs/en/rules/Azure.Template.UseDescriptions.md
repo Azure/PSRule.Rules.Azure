@@ -27,7 +27,7 @@ Specify descriptions for each resource in the template.
 
 To define Bicep template files that pass this rule:
 
-- Specify the `@description()` decorator for each resource in the template.
+- Specify the `@description()` or `@sys.description()` decorator for each resource in the template.
 
 For example:
 
@@ -65,4 +65,4 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
 ## LINKS
 
 - [Better understand your cloud resources](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#better-understand-your-cloud-resources)
-- [Decorators](https://docs.microsoft.com/azure/azure-resource-manager/bicep/parameters#decorators)
+- [Decorators](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters#decorators)

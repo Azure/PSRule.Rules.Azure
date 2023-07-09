@@ -26,7 +26,7 @@ Use a minimum of Standard for production container registries.
 The Premium SKU provides higher image throughput and included storage, and is required for:
 
 - Geo-replication
-- Availablity zones
+- Availability zones
 - Private Endpoints
 - Firewall restrictions
 - Tokens and scope-maps
@@ -39,9 +39,9 @@ Consider using the Premium Container Registry SKU for production deployments.
 
 ### Configure with Azure template
 
-To deploy Container Registries that pass this rule:
+To deploy registries that pass this rule:
 
-- Set `sku.name` to `Premium` or `Standard`.
+- Set the `sku.name` property to `Premium` or `Standard`.
 
 For example:
 
@@ -82,9 +82,9 @@ For example:
 
 ### Configure with Bicep
 
-To deploy Container Registries that pass this rule:
+To deploy registries that pass this rule:
 
-- Set `sku.name` to `Premium` or `Standard`.
+- Set the `sku.name` property to `Premium` or `Standard`.
 
 For example:
 

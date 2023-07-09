@@ -11,13 +11,14 @@
       "  name: ${1}",
       "  ref: AZR-000nnn",
       "  tags:",
-      "    release: 'GA'",
-      "    ruleSet: '${3}'",
+      "    release: GA",
+      "    ruleSet: ${3}",
+      "    Azure.WAF/pillar: ${4}",
       "spec:",
       "  type:",
-      "  - ${4}",
+      "  - ${5}",
       "  condition:",
-      "    ${5}"
+      "    ${6}"
     ]
   }
 }

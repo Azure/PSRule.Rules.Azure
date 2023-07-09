@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-07-08
 severity: Critical
 pillar: Security
 category: Connectivity
@@ -6,7 +7,7 @@ resource: Azure Cache for Redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.PublicNetworkAccess/
 ---
 
-# Limit public network access to Redis cache instances
+# Use private endpoints with Azure Cache for Redis
 
 ## SYNOPSIS
 
@@ -14,15 +15,24 @@ Redis cache should disable public network access.
 
 ## DESCRIPTION
 
-Public access to redis instances can be disabled.
-This ensures secure and private connectivity to redis instances using private endpoints instead.
+When using Azure Cache for Redis, you can configure the cache to be private or accessible from the public Internet.
+By default, the cache is configured to be accessible from the public Internet.
 
-Private endpoint is a network interface that connects you privately and securely to Azure Cache for
-Redis powered by Azure Private Link.
+To limit network access to the cache you can use firewall rules or private endpoints.
+Using private endpoints with Azure Cache for Redis is the recommend approach for most scenarios.
+
+Use private endpoints to improve the security posture of your Redis cache and reduce the risk of data breaches.
+
+A private endpoint provides secure and private connectivity to Redis instances by:
+
+- Using a private IP address from your VNET.
+- Blocking all traffic from public networks.
+
+If you are using VNET injection, it is recommended to migrate to private endpoints.
 
 ## RECOMMENDATION
 
-Redis cache should disable public network access when public connectivity is not required.
+Consider using private endpoints to limit network connectivity to the cache and help reduce data exfiltration risks.
 
 ## EXAMPLES
 
@@ -30,7 +40,7 @@ Redis cache should disable public network access when public connectivity is not
 
 To deploy caches that pass this rule:
 
-- Set `properties.publicNetworkAccess` property to `Disabled`.
+- Set the `properties.publicNetworkAccess` property to `Disabled`.
 
 For example:
 
@@ -66,7 +76,7 @@ For example:
 
 To deploy caches that pass this rule:
 
-- Set `properties.publicNetworkAccess` property to `Disabled`.
+- Set the `properties.publicNetworkAccess` property to `Disabled`.
 
 For example:
 
@@ -101,5 +111,8 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 - [Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)
 - [Azure Cache for Redis with Azure Private Link](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-private-link)
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [Migrate from VNet injection caches to Private Link caches](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-vnet-migration)
 - [What is Azure Private Endpoint?](https://learn.microsoft.com/azure/private-link/private-endpoint-overview)
+- [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cache-for-redis-security-baseline#ns-2-secure-cloud-services-with-network-controls)
+- [Azure Policy Regulatory Compliance controls for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/security-controls-policy)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)

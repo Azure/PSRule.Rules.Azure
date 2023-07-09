@@ -7,7 +7,6 @@
 
 #region Rules
 
-
 ---
 # Synopsis: Redis Cache Enterprise should reject TLS versions older than 1.2.
 apiVersion: github.com/microsoft/PSRule/v1
@@ -18,12 +17,14 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_09
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: 'DP-3'
 spec:
   type:
-  - 'Microsoft.Cache/redisEnterprise'
+  - Microsoft.Cache/redisEnterprise
   condition:
     field: properties.minimumTlsVersion
     version: '>=1.2'
-
 
 #endregion Rules
