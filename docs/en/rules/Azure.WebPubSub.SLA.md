@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-03-15
+reviewed: 2023-07-09
 severity: Important
 pillar: Reliability
 category: Requirements
@@ -81,4 +81,4 @@ resource service 'Microsoft.SignalRService/webPubSub@2021-10-01' = {
 
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#availability-targets)
 - [Azure Web PubSub pricing](https://azure.microsoft.com/pricing/details/web-pubsub/)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.signalrservice/webpubsub)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.signalrservice/webpubsub)

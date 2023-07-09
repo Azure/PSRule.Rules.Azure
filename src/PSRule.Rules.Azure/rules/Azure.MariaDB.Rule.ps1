@@ -123,7 +123,7 @@ Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMa
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules')
 
     $Assert.LessOrEqual($firewallRules, '.', 10).
-    Reason($LocalizedData.DBServerFirewallRuleCount, $firewallRules.Length, 10).PathPrefix('resources')
+    Reason($LocalizedData.ExceededFirewallRuleCount, $firewallRules.Length, 10).PathPrefix('resources')
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses.

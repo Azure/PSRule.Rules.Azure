@@ -14,7 +14,8 @@ Azure Cache for Redis should use the latest supported version of Redis.
 
 ## DESCRIPTION
 
-Azure Cache for Redis supports Redis 6. Redis 6 brings new security features and better performance.
+Azure Cache for Redis supports Redis 6.
+Redis 6 brings new security features and better performance.
 
 Version 4 for Azure Cache for Redis instances will be retired on June 30, 3023.
 
@@ -26,7 +27,7 @@ Consider upgrading Redis version for Azure Cache for Redis to the latest support
 
 ### Configure with Azure template
 
-To deploy Azure Cache for Redis instances that pass this rule:
+To deploy caches that pass this rule:
 
 - Set the `properties.redisVersion` property to `latest` or `6`.
 
@@ -35,42 +36,60 @@ For example:
 ```json
 {
   "type": "Microsoft.Cache/redis",
-  "apiVersion": "2022-06-01",
-  "name": "[parameters('redisCacheName')]",
+  "apiVersion": "2023-04-01",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
+    "minimumTlsVersion": "1.2",
     "redisVersion": "latest",
-    "minimumTlsVersion": "[parameters('minTlsVersion')]",
     "sku": {
-      "capacity": "[parameters('redisCacheCapacity')]",
-      "family": "[parameters('redisCacheFamily')]",
-      "name": "[parameters('redisCacheSKU')]"
-    }
-  }
+      "name": "Premium",
+      "family": "P",
+      "capacity": 1
+    },
+    "redisConfiguration": {
+      "maxmemory-reserved": "615"
+    },
+    "enableNonSslPort": false
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
 }
 ```
 
 ### Configure with Bicep
 
-To deploy Azure Cache for Redis instances that pass this rule:
+To deploy caches that pass this rule:
 
 - Set the `properties.redisVersion` property to `latest` or `6`.
 
 For example:
 
 ```bicep
-resource redisCache 'Microsoft.Cache/Redis@2022-06-01' = {
-  name: redisCacheName
+resource cache 'Microsoft.Cache/redis@2023-04-01' = {
+  name: name
   location: location
   properties: {
-    minimumTlsVersion: minTlsVersion
+    minimumTlsVersion: '1.2'
     redisVersion: 'latest'
     sku: {
-      capacity: redisCacheCapacity
-      family: redisCacheFamily
-      name: redisCacheSKU
+      name: 'Premium'
+      family: 'P'
+      capacity: 1
     }
+    redisConfiguration: {
+      'maxmemory-reserved': '615'
+    }
+    enableNonSslPort: false
   }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
 }
 ```
 

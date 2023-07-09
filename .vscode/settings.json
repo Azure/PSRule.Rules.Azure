@@ -64,6 +64,7 @@
     "DEPLOYIFNOTEXISTS",
     "DISPLAYNAME",
     "endregion",
+    "exfiltration",
     "failover",
     "GREATEROREQUAL",
     "GREATEROREQUALS",

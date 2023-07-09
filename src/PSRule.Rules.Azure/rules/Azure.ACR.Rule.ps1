@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: Consider freeing up registry space.
-Rule 'Azure.ACR.Usage' -Ref 'AZR-000001' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_12'; method = 'in-flight'; } {
+Rule 'Azure.ACR.Usage' -Ref 'AZR-000001' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Cost Optimization'; method = 'in-flight'; } {
     $usages = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/listUsages' | ForEach-Object {
         $_.value | Where-Object { $_.Name -eq 'Size' }
     });
@@ -34,7 +34,7 @@ Rule 'Azure.ACR.ImageHealth' -Ref 'AZR-000003' -Type 'Microsoft.ContainerRegistr
 }
 
 # Synopsis: Consider geo-replicating container images.
-Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_12'; method = 'in-flight'; } {
+Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Reliability'; method = 'in-flight'; } {
     $replications = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/replications');
     $registryLocation = GetNormalLocation -Location $TargetObject.Location;
     foreach ($replica in $replications) {
@@ -49,7 +49,7 @@ Rule 'Azure.ACR.GeoReplica' -Ref 'AZR-000004' -Type 'Microsoft.ContainerRegistry
 }
 
 # Synopsis: Azure Container Registries should have soft delete policy enabled.
-Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry/registries' -If { GetACRSoftDeletePreviewLimitations } -Tag @{ release = 'preview'; ruleSet = '2022_09'; } {
+Rule 'Azure.ACR.SoftDelete' -Ref 'AZR-000310' -Type 'Microsoft.ContainerRegistry/registries' -If { GetACRSoftDeletePreviewLimitations } -Tag @{ release = 'preview'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.status', 'enabled').Reason($LocalizedData.ACRSoftDeletePolicy, $TargetObject.name)
     $Assert.HasFieldValue($TargetObject, 'properties.policies.softDeletePolicy.retentionDays').Reason($LocalizedData.ACRSoftDeletePolicyRetention, $TargetObject.name)
 }

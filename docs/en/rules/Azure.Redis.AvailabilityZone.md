@@ -26,7 +26,7 @@ Consider using availability zones for Premium Redis Cache deployed in supported 
 
 This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
 
-This rule fails when `"zones"` is `null`, `[]` or less than two zones are used when there are availability zones for the given region. 
+This rule fails when `"zones"` is `null`, `[]` or less than two zones are used when there are availability zones for the given region.
 
 This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.
 
@@ -47,7 +47,7 @@ To set availability zones for Premium SKU Redis Cache:
 - Set `zones` to a minimum of two zones from `["1", "2", "3"]`.
 - Set `Properties.replicasPerMaster` to number of zones - 1, to ensure you have at least as many nodes as zones you are replicating to.
 - Set `Properties.sku.name` to `Premium`.
-- Set `Properties.sku.family` to `P`. 
+- Set `Properties.sku.family` to `P`.
 - Set `Properties.sku.capacity` to one of `[1, 2, 3, 4, 5]`, depending on the SKU you picked:
   - `P1` - 6 GB
   - `P2` - 13 GB
@@ -59,28 +59,28 @@ For example:
 
 ```json
 {
-    "name": "testrediscache",
-    "type": "Microsoft.Cache/redis",
-    "apiVersion": "2021-06-01",
-    "location": "australiaeast",
-    "dependsOn": [],
-    "properties": {
-        "sku": {
-            "name": "Premium",
-            "family": "P",
-            "capacity": 1
-        },
-        "redisConfiguration": {},
-        "enableNonSslPort": false,
-        "redisVersion": "4",
-        "replicasPerMaster": 2
+  "type": "Microsoft.Cache/redis",
+  "apiVersion": "2023-04-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "minimumTlsVersion": "1.2",
+    "redisVersion": "latest",
+    "sku": {
+      "name": "Premium",
+      "family": "P",
+      "capacity": 1
     },
-    "zones": [
-        "1",
-        "2",
-        "3"
-    ],
-    "tags": {}
+    "redisConfiguration": {
+      "maxmemory-reserved": "615"
+    },
+    "enableNonSslPort": false
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
 }
 ```
 
@@ -91,7 +91,7 @@ To set availability zones for Premium SKU Redis Cache:
 - Set `zones` to a minimum of two zones from `["1", "2", "3"]`.
 - Set `Properties.replicasPerMaster` to number of zones - 1, to ensure you have at least as many nodes as zones you are replicating to.
 - Set `Properties.sku.name` to `Premium`.
-- Set `Properties.sku.family` to `P`. 
+- Set `Properties.sku.family` to `P`.
 - Set `Properties.sku.capacity` to one of `[1, 2, 3, 4, 5]`, depending on the SKU you picked:
   - `P1` - 6 GB
   - `P2` - 13 GB
@@ -102,27 +102,27 @@ To set availability zones for Premium SKU Redis Cache:
 For example:
 
 ```bicep
-resource testrediscache 'Microsoft.Cache/redis@2021-06-01' = {
-  name: 'testrediscache'
-  location: 'australiaeast'
+resource cache 'Microsoft.Cache/redis@2023-04-01' = {
+  name: name
+  location: location
   properties: {
+    minimumTlsVersion: '1.2'
+    redisVersion: 'latest'
     sku: {
       name: 'Premium'
       family: 'P'
       capacity: 1
     }
-    redisConfiguration: {}
+    redisConfiguration: {
+      'maxmemory-reserved': '615'
+    }
     enableNonSslPort: false
-    redisVersion: '4'
-    replicasPerMaster: 2
   }
   zones: [
     '1'
     '2'
     '3'
   ]
-  tags: {}
-  dependsOn: []
 }
 ```
 
@@ -131,4 +131,4 @@ resource testrediscache 'Microsoft.Cache/redis@2021-06-01' = {
 - [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
 - [Enable zone redundancy for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy)
 - [High availability for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cache/2018-03-01/redis?tabs=json)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)

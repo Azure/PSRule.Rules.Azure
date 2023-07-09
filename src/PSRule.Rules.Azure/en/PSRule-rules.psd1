@@ -37,7 +37,7 @@
     RoleAssignmentCount = "The number of assignments is {0}."
     UnmanagedDisk = "The VM disk '{0}' is unmanaged."
     UnmanagedSubscription = "The subscription is not managed."
-    DBServerFirewallRuleCount = "The number of firewall rules ({0}) exceeded {1}."
+    ExceededFirewallRuleCount = "The number of firewall rules ({0}) exceeded {1}."
     DBServerFirewallPublicIPRange = "The number of public IP addresses permitted ({0}) exceeded {1}."
     TemplateParameterDescription = "The parameter '{0}' does not have a description set."
     ParameterNotFound = "The parameter '{0}' was not used within the template."

@@ -8,6 +8,32 @@
 #region Rules
 
 ---
+# Synopsis: Use Azure Cache for Redis instances of at least Standard C1.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Redis.MinSKU
+  ref: AZR-000159
+  tags:
+    release: GA
+    ruleSet: 2020_12
+    Azure.WAF/pillar: Performance Efficiency
+spec:
+  type:
+    - Microsoft.Cache/Redis
+  with:
+    - Azure.Redis.HasSku
+  condition:
+    anyOf:
+      - field: properties.sku.name
+        equals: Premium
+      - allOf:
+          - field: properties.sku.name
+            equals: Standard
+          - field: properties.sku.capacity
+            greaterOrEquals: 1
+
+---
 # Synopsis: Redis Cache should only accept secure connections.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
@@ -17,12 +43,12 @@ metadata:
   tags:
     release: GA
     ruleSet: 2020_06
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-2'
+    Azure.MCSB.v1/control: 'DP-3'
 spec:
   type:
-  - 'Microsoft.Cache/Redis'
+    - Microsoft.Cache/Redis
   condition:
     field: properties.enableNonSslPort
     equals: false
@@ -37,12 +63,12 @@ metadata:
   tags:
     release: GA
     ruleSet: 2020_06
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'DP-3'
 spec:
   type:
-  - 'Microsoft.Cache/Redis'
+    - Microsoft.Cache/Redis
   condition:
     field: properties.minimumTlsVersion
     version: '>=1.2'
@@ -57,12 +83,12 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_03
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'NS-2'
 spec:
   type:
-  - 'Microsoft.Cache/Redis'
+    - Microsoft.Cache/Redis
   condition:
     field: properties.publicNetworkAccess
     equals: Disabled
@@ -82,13 +108,13 @@ metadata:
 spec:
   if:
     allOf:
-    - type: '.'
-      equals: Microsoft.Cache/Redis
-    - field: properties.sku.capacity
-      exists: true
-    - field: properties.sku.family
-      exists: true
-    - field: properties.sku.name
-      exists: true
+      - type: '.'
+        equals: Microsoft.Cache/Redis
+      - field: properties.sku.capacity
+        exists: true
+      - field: properties.sku.family
+        exists: true
+      - field: properties.sku.name
+        exists: true
 
 #endregion Selectors

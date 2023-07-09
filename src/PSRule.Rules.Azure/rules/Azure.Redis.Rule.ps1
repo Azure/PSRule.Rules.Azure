@@ -5,16 +5,8 @@
 # Validation rules for Azure Redis Cache
 #
 
-# Synopsis: Use Azure Cache for Redis instances of at least Standard C1.
-Rule 'Azure.Redis.MinSKU' -Ref 'AZR-000159' -Type 'Microsoft.Cache/Redis' -With 'Azure.Redis.HasSku' -Tag @{ release = 'GA'; ruleSet = '2020_12' } {
-    $Assert.In($TargetObject, 'Properties.sku.name', @('Standard', 'Premium'));
-    if ($TargetObject.Properties.sku.name -eq 'Standard') {
-        $Assert.GreaterOrEqual($TargetObject, 'Properties.sku.capacity', 1);
-    }
-}
-
 # Synopsis: Configure `maxmemory-reserved` to reserve memory for non-cache operations.
-Rule 'Azure.Redis.MaxMemoryReserved' -Ref 'AZR-000160' -Type 'Microsoft.Cache/Redis' -With 'Azure.Redis.HasSku' -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.Redis.MaxMemoryReserved' -Ref 'AZR-000160' -Type 'Microsoft.Cache/Redis' -With 'Azure.Redis.HasSku' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $sku = "$($TargetObject.Properties.sku.family)$($TargetObject.Properties.sku.capacity)";
     if (![String]::IsNullOrEmpty($sku)) {
         $memSize = (GetCacheMemory -Sku $sku) / 1MB;
@@ -23,7 +15,7 @@ Rule 'Azure.Redis.MaxMemoryReserved' -Ref 'AZR-000160' -Type 'Microsoft.Cache/Re
 }
 
 # Synopsis: Premium Redis cache should be deployed with availability zones for high availability.
-Rule 'Azure.Redis.AvailabilityZone' -Ref 'AZR-000161' -Type 'Microsoft.Cache/Redis' -If { IsPremiumCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Redis.AvailabilityZone' -Ref 'AZR-000161' -Type 'Microsoft.Cache/Redis' -If { IsPremiumCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $redisCacheProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Cache', 'Redis');
 
     $configurationZoneMappings = $Configuration.AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
@@ -51,7 +43,7 @@ Rule 'Azure.Redis.AvailabilityZone' -Ref 'AZR-000161' -Type 'Microsoft.Cache/Red
 } -Configure @{ AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Enterprise Redis cache should be zone-redundant for high availability.
-Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redisEnterprise' -If { IsEnterpriseCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redisEnterprise' -If { IsEnterpriseCache } -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $redisEnterpriseCacheProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Cache', 'redisEnterprise');
 
     $configurationZoneMappings = $Configuration.AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
@@ -83,8 +75,8 @@ Rule 'Azure.RedisEnterprise.Zones' -Ref 'AZR-000162' -Type 'Microsoft.Cache/redi
 
 } -Configure @{ AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
-# Synopsis: Determine if there is an excessive number of firewall rules for the Redis Cache
-Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -If { HasPublicNetworkAccess } -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+# Synopsis: Determine if there is an excessive number of firewall rules for the Redis cache.
+Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -If { HasPublicNetworkAccess } -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } {
 
     $services = @($TargetObject);
 
@@ -96,18 +88,14 @@ Rule 'Azure.Redis.FirewallRuleCount' -Ref 'AZR-000299' -Type 'Microsoft.Cache/re
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Cache/redis/firewallRules');
     }
 
-    $summary = GetIPAddressSummary
-    $summary.Public = [int32]$summary.Public # Had to convert $summary.Public to int32 from uint64.
-
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Cache/redis/firewallRules');
     $Assert.
     LessOrEqual($firewallRules, '.', 10).
-    WithReason(($LocalizedData.DBServerFirewallRuleCount -f $firewallRules.Length, 10), $True);
-    
+    WithReason(($LocalizedData.ExceededFirewallRuleCount -f $firewallRules.Length, 10), $True);
 }
 
-# Synopsis: Determine if there is an excessive number of permitted IP addresses for the Redis Cache
-Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000300' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -If { HasPublicNetworkAccess } -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+# Synopsis: Determine if there is an excessive number of permitted IP addresses for the Redis cache.
+Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000300' -Type 'Microsoft.Cache/redis', 'Microsoft.Cache/redis/firewallRules' -If { HasPublicNetworkAccess } -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } {
 
     $services = @($TargetObject);
 
@@ -125,11 +113,10 @@ Rule 'Azure.Redis.FirewallIPRange' -Ref 'AZR-000300' -Type 'Microsoft.Cache/redi
     $Assert.
     LessOrEqual($summary, 'Public', 10).
     WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True); 
-    
 }
 
 # Synopsis: Azure Cache for Redis should use the latest supported version of Redis.
-Rule 'Azure.Redis.Version' -Ref 'AZR-000347' -Type 'Microsoft.Cache/redis' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.Redis.Version' -Ref 'AZR-000347' -Type 'Microsoft.Cache/redis' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.AnyOf(
         $Assert.HasDefaultValue($TargetObject, 'properties.redisVersion', 'latest'),
         $Assert.Version($TargetObject, 'properties.redisVersion', '>=6')
