@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Data protection
+category: Encryption
 resource: Azure Cache for Redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.NonSslPort/
 ms-content-id: cf433410-8a30-4b74-b046-0b8c7c708368
@@ -15,19 +15,16 @@ Azure Cache for Redis should only accept secure connections.
 
 ## DESCRIPTION
 
-Azure Cache for Redis is configured to accept unencrypted connections using a non-SSL port.
-Unencrypted connections are disabled by default.
+Azure Cache for Redis can be configured to accept encrypted and unencrypted connections.
+By default, only encrypted communication is accepted.
+To accept unencrypted connections, the non-SSL port must be enabled.
+Using the non-SSL port for Azure Redis cache allows unencrypted communication to Redis cache.
 
-Unencrypted communication to Redis Cache could allow disclosure of information to an untrusted party.
+Unencrypted communication can potentially allow disclosure of sensitive information to an untrusted party.
 
 ## RECOMMENDATION
 
-Azure Cache for Redis should be configured to only accept secure connections.
-
-When the non-SSL port is enabled, encrypted and unencrypted connections are permitted.
-To prevent unencrypted connections, disable the non-SSL port.
-
-Unless explicitly required, consider disabling the non-SSL port.
+Consider only using secure connections to Redis cache by enabling SSL and disabling the non-SSL port.
 
 ## EXAMPLES
 
@@ -102,6 +99,7 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [when should I enable the non-SSL port for connecting to Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-faq#when-should-i-enable-the-non-ssl-port-for-connecting-to-redis)
-- [How to configure Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
+- [How to configure Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
+- [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cache-for-redis-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
+- [Azure Policy Regulatory Compliance controls for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/security-controls-policy)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)

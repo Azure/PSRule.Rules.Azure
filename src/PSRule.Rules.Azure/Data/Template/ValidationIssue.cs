@@ -12,15 +12,15 @@ namespace PSRule.Rules.Azure.Data.Template
 
     internal sealed class ValidationIssue
     {
-        private readonly ValidationKind kind;
-        private readonly string name;
-        private readonly string message;
+        private readonly ValidationKind _Kind;
+        private readonly string _Name;
+        private readonly string _Message;
 
         public ValidationIssue(ValidationKind kind, string name, string message)
         {
-            this.kind = kind;
-            this.name = name;
-            this.message = message;
+            _Kind = kind;
+            _Name = name;
+            _Message = message;
         }
     }
 }

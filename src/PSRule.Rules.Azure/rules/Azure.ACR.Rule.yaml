@@ -15,9 +15,9 @@ metadata:
   name: Azure.ACR.AdminUser
   ref: AZR-000005
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'IM-3', 'PA-1', 'PA-7' ]
 spec:
@@ -35,13 +35,14 @@ metadata:
   name: Azure.ACR.MinSku
   ref: AZR-000006
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.ContainerRegistry/registries
   condition:
-    field: Sku.name
+    field: sku.name
     in: [ 'Premium', 'Standard' ]
 
 ---
@@ -52,8 +53,9 @@ metadata:
   name: Azure.ACR.Name
   ref: AZR-000007
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.ContainerRegistry/registries
@@ -74,16 +76,16 @@ metadata:
   name: Azure.ACR.Quarantine
   ref: AZR-000008
   tags:
-    release: 'preview'
-    ruleSet: '2020_12'
-    Azure.WAF/pillar: 'Security'
+    release: preview
+    ruleSet: 2020_12
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'DS-6', 'PV-5' ]
 spec:
   type:
   - Microsoft.ContainerRegistry/registries
   condition:
-    field: Properties.policies.quarantinePolicy.status
+    field: properties.policies.quarantinePolicy.status
     equals: enabled
 
 ---
@@ -94,9 +96,9 @@ metadata:
   name: Azure.ACR.ContentTrust
   ref: AZR-000009
   tags:
-    release: 'GA'
-    ruleSet: '2020_12'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_12
+    Azure.WAF/pillar: Security
 spec:
   with:
   - Azure.ACR.IsPremiumSKU
@@ -117,8 +119,9 @@ metadata:
   name: Azure.ACR.Retention
   ref: AZR-000010
   tags:
-    release: 'preview'
-    ruleSet: '2020_12'
+    release: preview
+    ruleSet: 2020_12
+    Azure.WAF/pillar: Cost Optimization
 spec:
   with:
   - Azure.ACR.IsPremiumSKU

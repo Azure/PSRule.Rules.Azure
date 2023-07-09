@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Performance Efficiency
-category: Capacity planning
+category: Application capacity
 resource: Azure Cache for Redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MinSKU/
 ---
@@ -100,7 +100,9 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 
 ## LINKS
 
-- [Best practices for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-best-practices)
-- [Azure Cache for Redis pricing](https://azure.microsoft.com/pricing/details/cache/)
-- [Choosing the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
+- [Choose the right resources](https://learn.microsoft.com/azure/well-architected/scalability/design-capacity#choose-the-right-resources)
+- [Choosing the right tier](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-overview#choosing-the-right-tier)
+- [Scaling and memory](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-best-practices-scale#scaling-and-memory)
+- [Memory management](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-best-practices-memory-management)
+- [SKU sizes](https://azure.microsoft.com/pricing/details/cache/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)

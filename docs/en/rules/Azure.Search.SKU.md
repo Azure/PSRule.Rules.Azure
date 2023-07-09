@@ -2,7 +2,7 @@
 reviewed: 2023-07-02
 severity: Critical
 pillar: Performance Efficiency
-category: Capacity planning
+category: Application capacity
 resource: Cognitive Search
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.SKU/
 ---
@@ -84,7 +84,7 @@ resource search 'Microsoft.Search/searchServices@2022-09-01' = {
 
 ## LINKS
 
-- [Choosing the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/capacity#choosing-the-right-resources)
+- [Choose the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/design-capacity#choose-the-right-resources)
 - [SLA for Azure Cognitive Search](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services)
 - [Estimate and manage capacity of an Azure Cognitive Search service](https://learn.microsoft.com/azure/search/search-capacity-planning)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.search/searchservices)
