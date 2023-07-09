@@ -26,6 +26,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.28.0-B0115:
 
+- New features:
+  - Added June 2023 baselines `Azure.GA_2023_06` and `Azure.Preview_2023_06` by @BernieWhite.
+    [#2310](https://github.com/Azure/PSRule.Rules.Azure/issues/2310)
+    - Includes rules released before or during June 2023.
+    - Marked `Azure.GA_2023_03` and `Azure.Preview_2023_03` baselines as obsolete.
 - Bug fixes:
   - Fixed Redis firewall rules can not bind to start by @BernieWhite.
     [#2303](https://github.com/Azure/PSRule.Rules.Azure/issues/2303)
