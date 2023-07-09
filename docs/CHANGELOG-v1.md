@@ -31,6 +31,11 @@ What's changed since pre-release v1.28.0-B0115:
     [#2310](https://github.com/Azure/PSRule.Rules.Azure/issues/2310)
     - Includes rules released before or during June 2023.
     - Marked `Azure.GA_2023_03` and `Azure.Preview_2023_03` baselines as obsolete.
+- Engineering:
+  - Bump xunit to v2.5.0.
+    [#2306](https://github.com/Azure/PSRule.Rules.Azure/pull/2306)
+  - Bump xunit.runner.visualstudio to v2.5.0.
+    [#2307](https://github.com/Azure/PSRule.Rules.Azure/pull/2307)
 - Bug fixes:
   - Fixed Redis firewall rules can not bind to start by @BernieWhite.
     [#2303](https://github.com/Azure/PSRule.Rules.Azure/issues/2303)
@@ -43,9 +48,6 @@ What's changed since pre-release v1.28.0-B0079:
   - Added support for Bicep CIDR functions by @BernieWhite.
     [#2279](https://github.com/Azure/PSRule.Rules.Azure/issues/2279)
     - Added support for `parseCidr`, `cidrSubnet`, and `cidrHost`.
-- Engineering:
-  - Bump xunit to v2.5.0.
-    [#2306](https://github.com/Azure/PSRule.Rules.Azure/pull/2306)
 
 ## v1.28.0-B0079 (pre-release)
 
