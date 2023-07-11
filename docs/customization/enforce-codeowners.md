@@ -83,14 +83,14 @@ If neither property exists, PSRule will use the object type.
 
 ## Testing locally
 
-To test the custom rule within Visual Studio Code, see [validating locally][4].
+To test the custom rule within Visual Studio Code, see [How to install PSRule for Azure][4].
 Alternatively you can test the rule manually by running the following from a PowerShell terminal.
 
 ```powershell
 Assert-PSRule -Path '.ps-rule/' -Module 'PSRule.Rules.Azure' -InputPath . -Format File
 ```
 
-  [4]: ../validating-locally.md
+  [4]: ../install.md#with-visual-studio-code
 
 ## Sample code
 
