@@ -73,7 +73,12 @@ PSRule for Azure provides two methods for analyzing Azure resources:
 - _In-flight_ - After resources are deployed to an Azure subscription.
 
 For specific use cases see [scenarios](#scenarios).
-For additional details see the [FAQ](https://azure.github.io/PSRule.Rules.Azure/faq/).
+For additional details see the [FAQ][12].
+
+To get started with a sample repository, see [PSRule for Azure Quick Start][13] on GitHub.
+
+  [12]: https://azure.github.io/PSRule.Rules.Azure/faq/
+  [13]: https://github.com/Azure/PSRule.Rules.Azure-quickstart
 
 ### Using with GitHub Actions
 
@@ -357,8 +362,8 @@ PSRule for Azure included the following cmdlets:
 To find out more, look at these conceptual topics:
 
 - Getting started:
+  - [How to install PSRule for Azure](https://azure.github.io/PSRule.Rules.Azure/install/)
   - [Creating your pipeline](https://azure.github.io/PSRule.Rules.Azure/creating-your-pipeline/)
-  - [Validating locally](https://azure.github.io/PSRule.Rules.Azure/validating-locally/)
 - Testing infrastructure as code:
   - [Expanding source files](https://azure.github.io/PSRule.Rules.Azure/expanding-source-files/)
   - [Using templates](https://azure.github.io/PSRule.Rules.Azure/using-templates/)
