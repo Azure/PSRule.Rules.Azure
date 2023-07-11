@@ -21,6 +21,11 @@ PSRule for Azure uses the principles of the Azure Well-Architected Framework (WA
 If you want to write your own tests, you can do that too in your choice of YAML, JSON, or PowerShell.
 However with over 390 tests already built, you can identify and fix issues day one.
 
+!!! Learn "Get started with a sample repository"
+    To get started with a sample repository, see [PSRule for Azure Quick Start][1] on GitHub.
+
+  [1]: https://github.com/Azure/PSRule.Rules.Azure-quickstart
+
 ## Introducing PSRule for Azure
 
 An introduction to PSRule for Azure and how it relates to the Azure Well-Architected Framework.
