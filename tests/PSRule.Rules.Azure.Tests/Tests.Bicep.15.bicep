@@ -19,6 +19,12 @@ param name string = deployment().name
 @sys.description('A User-Assigned Managed Identity for the profile. This identity is used to access Key Vault.')
 param identityId string = ''
 
+@metadata({
+  strongType: 'Microsoft.ManagedIdentity/userAssignedIdentities'
+})
+@sys.description('A User-Assigned Managed Identity for the profile. This identity is used to access Key Vault.')
+param identityId2 string = '/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-001'
+
 @sys.description('Configures the send and receive timeout on forwarding request to the origin.')
 param originResponseTimeoutSeconds int = 60
 
@@ -39,3 +45,23 @@ resource profile 'Microsoft.Cdn/profiles@2022-11-01-preview' = {
     originResponseTimeoutSeconds: originResponseTimeoutSeconds
   }
 }
+
+@sys.description('Create or update a Front Door.')
+resource profile2 'Microsoft.Cdn/profiles@2022-11-01-preview' = {
+  name: '${name}2'
+  location: 'Global'
+  sku: {
+    name: 'Premium_AzureFrontDoor'
+  }
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${identityId2}': {}
+    }
+  }
+  properties: {
+    originResponseTimeoutSeconds: originResponseTimeoutSeconds
+  }
+}
+
+output identity object = profile2.identity.userAssignedIdentities[identityId2]

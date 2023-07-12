@@ -1202,10 +1202,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (TryDeploymentResource(context, resource.Value))
                 return;
 
-            // Expand resource properties
-            foreach (var property in resource.Value.Properties())
-                ResolveProperty(context, resource.Value, property.Name);
-
+            ResolveProperties(context, resource.Value);
             Trim(resource.Value);
             Emit(context, resource);
         }
@@ -1398,7 +1395,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual JToken VariableObject(TemplateContext context, JObject value)
         {
-            ExpandObjectInstance2(context, value);
+            ResolveProperties(context, value);
             return value;
         }
 
@@ -1564,10 +1561,27 @@ namespace PSRule.Rules.Azure.Data.Template
             return ResolveVariable(context, TypePrimitive.None, value);
         }
 
+        /// <summary>
+        /// Expand each property.
+        /// </summary>
+        private static void ResolveProperties(ITemplateContext context, JObject obj)
+        {
+            foreach (var property in obj.Properties().ToArray())
+                ResolveProperty(context, obj, property.Name);
+        }
+
         private static void ResolveProperty(ITemplateContext context, JObject obj, string propertyName, TypePrimitive type = TypePrimitive.None)
         {
-            if (!obj.ContainsKey(propertyName))
+            if (!obj.ContainsKey(propertyName) || propertyName == null)
                 return;
+
+            // Replace property
+            if (propertyName.IsExpressionString())
+            {
+                var property = obj.Property(propertyName);
+                propertyName = ExpandString(context, propertyName);
+                property.Replace(new JProperty(propertyName, property.Value));
+            }
 
             var value = obj[propertyName];
             if (value is JObject jObject)
@@ -1741,21 +1755,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
                 else
                 {
-                    foreach (var property in obj.Properties())
-                    {
-                        ResolveProperty(context, obj, property.Name);
-                    }
+                    ResolveProperties(context, obj);
                 }
             }
             return obj;
-        }
-
-        private static void ExpandObjectInstance2(TemplateContext context, JObject obj)
-        {
-            foreach (var property in obj.Properties())
-            {
-                ResolveProperty(context, obj, property.Name);
-            }
         }
 
         private static JToken ExpandArray(ITemplateContext context, JArray array)

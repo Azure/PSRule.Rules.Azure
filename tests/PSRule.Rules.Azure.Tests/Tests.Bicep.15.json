@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.14.46.61228",
-      "templateHash": "10500092375568922133"
+      "version": "0.18.4.5664",
+      "templateHash": "11801454895333561402"
     },
     "name": "Front Door profile",
     "description": "Deploys and configures an Azure Front Door profile.",
@@ -22,6 +22,14 @@
     "identityId": {
       "type": "string",
       "defaultValue": "",
+      "metadata": {
+        "description": "A User-Assigned Managed Identity for the profile. This identity is used to access Key Vault.",
+        "strongType": "Microsoft.ManagedIdentity/userAssignedIdentities"
+      }
+    },
+    "identityId2": {
+      "type": "string",
+      "defaultValue": "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/identity-001",
       "metadata": {
         "description": "A User-Assigned Managed Identity for the profile. This identity is used to access Key Vault.",
         "strongType": "Microsoft.ManagedIdentity/userAssignedIdentities"
@@ -51,6 +59,33 @@
       "metadata": {
         "description": "Create or update a Front Door."
       }
+    },
+    {
+      "type": "Microsoft.Cdn/profiles",
+      "apiVersion": "2022-11-01-preview",
+      "name": "[format('{0}2', parameters('name'))]",
+      "location": "Global",
+      "sku": {
+        "name": "Premium_AzureFrontDoor"
+      },
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[format('{0}', parameters('identityId2'))]": {}
+        }
+      },
+      "properties": {
+        "originResponseTimeoutSeconds": "[parameters('originResponseTimeoutSeconds')]"
+      },
+      "metadata": {
+        "description": "Create or update a Front Door."
+      }
     }
-  ]
+  ],
+  "outputs": {
+    "identity": {
+      "type": "object",
+      "value": "[reference(resourceId('Microsoft.Cdn/profiles', format('{0}2', parameters('name'))), '2022-11-01-preview', 'full').identity.userAssignedIdentities[parameters('identityId2')]]"
+    }
+  }
 }
