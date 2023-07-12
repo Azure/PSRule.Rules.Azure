@@ -431,7 +431,7 @@ namespace PSRule.Rules.Azure
 
             actual = resources[1];
             Assert.Equal("Namespace/resourceType", actual["type"].Value<string>());
-            Assert.Equal(JTokenType.Null, actual["properties"]["settings"].Type);
+            Assert.False(actual["properties"].Value<JObject>().ContainsKeyInsensitive("settings"));
 
             actual = resources[2];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
@@ -823,6 +823,19 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.21.json"), null, out _);
             Assert.Equal(2, resources.Length);
+        }
+
+        [Fact]
+        public void NullConditionHandling()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.22.json"), null, out _);
+            Assert.Equal(3, resources.Length);
+
+            var actual = resources[2];
+            var taskOptions = actual["properties"]["taskOptions"].Value<JObject>();
+            Assert.NotNull(taskOptions);
+            Assert.Equal("one", taskOptions["prop1"].Value<string>());
+            Assert.False(taskOptions.ContainsKeyInsensitive("enable"));
         }
 
         #region Helper methods
