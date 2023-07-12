@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "1.10-experimental",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
+    "_generator": {
+      "name": "bicep",
+      "version": "0.18.4.5664",
+      "templateHash": "8120568799626420434"
+    }
+  },
+  "parameters": {
+    "enableOption": {
+      "type": "bool",
+      "defaultValue": false
+    }
+  },
+  "variables": {
+    "optionsPrep": {
+      "enable": "[if(parameters('enableOption'), 'notnull', null())]"
+    },
+    "options": {
+      "prop1": "one",
+      "enable": "[if(equals(variables('optionsPrep').enable, null()), null(), 'doit!')]"
+    }
+  },
+  "resources": {
+    "taskDeployment": {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "name",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "apiVersion": "2019-12-01",
+              "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+              "name": "example",
+              "properties": {
+                "taskOptions": "[variables('options')]"
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -173,8 +173,8 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static bool Equal(object o1, object o2)
         {
             // One null
-            if (o1 == null || o2 == null)
-                return o1 == o2;
+            if (IsNull(o1) || IsNull(o2))
+                return IsNull(o1) && IsNull(o2);
 
             // Arrays
             if (o1 is Array array1 && o2 is Array array2)
@@ -198,6 +198,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
             // Objects
             return ObjectEquals(o1, o2);
+        }
+
+        private static bool IsNull(object o)
+        {
+            return o == null || (o is JToken token && token.Type == JTokenType.Null);
         }
 
         private static bool JTokenEquals(JToken t1, JToken t2)

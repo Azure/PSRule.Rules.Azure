@@ -1206,7 +1206,38 @@ namespace PSRule.Rules.Azure.Data.Template
             foreach (var property in resource.Value.Properties())
                 ResolveProperty(context, resource.Value, property.Name);
 
+            Trim(resource.Value);
             Emit(context, resource);
+        }
+
+        /// <summary>
+        /// Trim objects to remove null properties.
+        /// </summary>
+        private static void Trim(JToken value)
+        {
+            if (value == null) return;
+
+            if (value is JObject jObject)
+            {
+                foreach (var property in jObject.Properties().ToArray())
+                {
+                    if (property.Value == null || property.Value.Type == JTokenType.Null)
+                    {
+                        property.Remove();
+                    }
+                    else
+                    {
+                        Trim(property.Value);
+                    }
+                }
+            }
+            else if (value is JArray jArray)
+            {
+                foreach (var item in jArray)
+                {
+                    Trim(item);
+                }
+            }
         }
 
         /// <summary>
