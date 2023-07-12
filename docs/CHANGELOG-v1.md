@@ -27,6 +27,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 - Bug fixes:
   - Fixed null condition handling by @BernieWhite.
     [#2316](https://github.com/Azure/PSRule.Rules.Azure/issues/2316)
+  - Fixed reference expression in property name @BernieWhite.
+    [#2321](https://github.com/Azure/PSRule.Rules.Azure/issues/2321)
 
 ## v1.28.0-B0159 (pre-release)
 
