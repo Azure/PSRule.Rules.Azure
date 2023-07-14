@@ -214,6 +214,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public JToken GetValue(object key)
             {
+                if (key is long l)
+                    key = (int)l;
+                else if (key is byte b)
+                    key = (int)b;
+
                 if (key is not int i)
                     return new MockUnknownObject(IsSecret);
 
@@ -311,6 +316,16 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (result == null)
                 {
                     result = new MockUnknownObject(IsSecret);
+                    base[key] = result;
+                }
+                else if (result is JObject jObject)
+                {
+                    result = new MockObject(jObject);
+                    base[key] = result;
+                }
+                else if (result is JArray jArray)
+                {
+                    result = new MockArray(jArray);
                     base[key] = result;
                 }
                 return result;
