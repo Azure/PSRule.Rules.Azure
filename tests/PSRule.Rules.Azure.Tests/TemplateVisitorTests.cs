@@ -838,6 +838,13 @@ namespace PSRule.Rules.Azure
             Assert.False(taskOptions.ContainsKeyInsensitive("enable"));
         }
 
+        [Fact]
+        public void NestedMock()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.23.json"), null, out _);
+            Assert.Equal(2, resources.Length);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

@@ -1,0 +1,79 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "1.10-experimental",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
+    "_generator": {
+      "name": "bicep",
+      "version": "0.19.5.34762",
+      "templateHash": "10835172705049310715"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "defaultValue": "[deployment().name]"
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]"
+    },
+    "identityId": {
+      "type": "string",
+      "defaultValue": "/subscriptions/nnn/resourceGroups/nnn/providers/Microsoft.ManagedIdentity/userAssignedIdentities/nnn"
+    },
+    "values": {
+      "type": "array",
+      "defaultValue": [
+        {
+          "name": "test",
+          "displayName": "test",
+          "secretIdentifier": "test"
+        }
+      ]
+    }
+  },
+  "resources": {
+    "service": {
+      "type": "Microsoft.ApiManagement/service",
+      "apiVersion": "2022-08-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned, UserAssigned",
+        "userAssignedIdentities": {
+          "[format('{0}', parameters('identityId'))]": {}
+        }
+      },
+      "properties": {
+        "publisherEmail": "",
+        "publisherName": ""
+      },
+      "metadata": {
+        "description": "Create or update an APIM service."
+      }
+    },
+    "value": {
+      "copy": {
+        "name": "value",
+        "count": "[length(parameters('values'))]"
+      },
+      "type": "Microsoft.ApiManagement/service/namedValues",
+      "apiVersion": "2022-08-01",
+      "name": "[format('{0}/{1}', parameters('name'), parameters('values')[copyIndex()].name)]",
+      "properties": {
+        "displayName": "[if(contains(parameters('values')[copyIndex()], 'displayName'), parameters('values')[copyIndex()].displayName, parameters('values')[copyIndex()].name)]",
+        "secret": "[contains(parameters('values')[copyIndex()], 'secretIdentifier')]",
+        "value": "[if(contains(parameters('values')[copyIndex()], 'secretIdentifier'), null(), parameters('values')[copyIndex()].value)]",
+        "keyVault": "[if(contains(parameters('values')[copyIndex()], 'secretIdentifier'), createObject('identityClientId', reference('service', '2022-08-01', 'full').identity.userAssignedIdentities[parameters('identityId')].clientId, 'secretIdentifier', parameters('values')[copyIndex()].secretIdentifier), null())]"
+      },
+      "dependsOn": [
+        "service"
+      ],
+      "metadata": {
+        "description": "Configures additional named values within the service."
+      }
+    }
+  }
+}
