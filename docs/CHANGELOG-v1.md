@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.28.0-B0159:
+
+- Engineering:
+  - Bump BenchmarkDotNet to v0.13.6.
+    [#2317](https://github.com/Azure/PSRule.Rules.Azure/pull/2317)
 - Bug fixes:
   - Fixed null condition handling by @BernieWhite.
     [#2316](https://github.com/Azure/PSRule.Rules.Azure/issues/2316)
