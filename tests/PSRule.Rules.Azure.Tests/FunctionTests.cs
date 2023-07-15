@@ -58,21 +58,19 @@ namespace PSRule.Rules.Azure
         [Trait(TRAIT, TRAIT_ARRAY)]
         public void Coalesce()
         {
+            ExpressionFnOuter throws = (context) => throw new NotImplementedException();
             var context = GetContext();
 
-            var actual1 = Functions.Coalesce(context, new object[] { null, null, 1, 2, 3 });
-            var actual2 = Functions.Coalesce(context, new object[] { null, null, "a", "b", "c" });
-            var actual3 = Functions.Coalesce(context, new object[] { null, JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }") }) as JToken;
-            var actual4 = Functions.Coalesce(context, new object[] { null });
-            var actual5 = Functions.Coalesce(context, new object[] { null, null });
-            Assert.Equal(1, actual1);
-            Assert.Equal("a", actual2);
-            Assert.Equal("b", actual3["a"]);
-            Assert.Null(actual4);
-            Assert.Null(actual5);
+            Assert.Equal(1, Functions.Coalesce(context, new object[] { null, null, 1, 2, 3 }));
+            Assert.Equal("a", Functions.Coalesce(context, new object[] { null, null, "a", "b", "c" }));
+            Assert.Equal("b", (Functions.Coalesce(context, new object[] { null, JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }") }) as JToken)["a"]);
+            Assert.Null(Functions.Coalesce(context, new object[] { null }));
+            Assert.Null(Functions.Coalesce(context, new object[] { null, null }));
+            Assert.Equal("a", Functions.Coalesce(context, new object[] { null, "a", throws }));
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, System.Array.Empty<object>()));
+            Assert.Throws<NotImplementedException>(() => Functions.Coalesce(context, new object[] { null, throws }));
         }
 
         [Fact]
@@ -561,6 +559,36 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, actual2.Length);
             actual2 = Functions.Union(context, new object[] { null, new string[] { "three", "four" } }) as object[];
             Assert.Equal(2, actual2.Length);
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
+        public void TryGet()
+        {
+            var context = GetContext();
+            var testObject = new JObject
+            {
+                {
+                    "properties", new JObject
+                    {
+                        { "displayName", "Test 001" },
+                        { "values", new JArray("Value 1", "Value 2") }
+                    }
+                }
+            };
+
+            Assert.Equal("Test 001", (Functions.TryGet(context, new object[] { testObject, "properties" }) as JObject)["displayName"].Value<string>());
+            Assert.Equal("Test 001", (Functions.TryGet(context, new object[] { testObject, "properties", "displayName" }) as JValue).Value<string>());
+            Assert.Equal("Value 2", (Functions.TryGet(context, new object[] { testObject, "properties", "values", 1 }) as JValue).Value<string>());
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "properties", "values", 2 }));
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "notValue" }));
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "notValue", 0 }));
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "properties", "notValue" }));
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "properties", "notValue", "value" }));
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, System.Array.Empty<object>()));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, new object[] { "one" }));
         }
 
         #endregion Array and object

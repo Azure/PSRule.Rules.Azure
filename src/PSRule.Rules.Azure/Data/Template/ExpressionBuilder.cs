@@ -147,7 +147,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (source is ILazyObject lazy && ExpressionHelpers.TryConvertString(indexResult, out var memberName) && lazy.TryProperty(memberName, out var value))
                 return value;
 
-            if (ExpressionHelpers.TryString(indexResult, out propertyName) && TryPropertyOrField(source, propertyName, out value))
+            if (ExpressionHelpers.TryString(indexResult, out propertyName) && ExpressionHelpers.TryPropertyOrField(source, propertyName, out value))
                 return value;
 
             throw new InvalidOperationException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.IndexInvalid, indexResult));
@@ -161,66 +161,10 @@ namespace PSRule.Rules.Azure.Data.Template
         private static object Property(ITemplateContext context, ExpressionFnOuter inner, string propertyName)
         {
             var result = inner(context);
-            if (result == null)
-                throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
-
-            if (result is IMock mock)
-                return mock.GetValue(propertyName);
-
-            if (result is JObject jObject)
-            {
-                if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var property))
-                    throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
-
-                return property;
-            }
-
-            if (result is JToken jToken)
-            {
-                var property = jToken[propertyName];
-                if (property == null)
-                    throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
-
-                return property.Value<object>();
-            }
-
-            if (result is ILazyObject lazy && lazy.TryProperty(propertyName, out var value))
-                return value;
-
-            if (TryPropertyOrField(result, propertyName, out value))
+            if (ExpressionHelpers.TryPropertyOrField(result, propertyName, out var value))
                 return value;
 
             throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
-        }
-
-        private static bool TryPropertyOrField(object obj, string propertyName, out object value)
-        {
-            value = null;
-            var resultType = obj.GetType();
-
-            // Try dictionary
-            if (obj is IDictionary dictionary && dictionary.Contains(propertyName))
-            {
-                value = dictionary[propertyName];
-                return true;
-            }
-
-            // Try property
-            var property = resultType.GetProperty(propertyName, BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.GetProperty | BindingFlags.Public);
-            if (property != null)
-            {
-                value = property.GetValue(obj);
-                return true;
-            }
-
-            // Try field
-            var field = resultType.GetField(propertyName, BindingFlags.IgnoreCase | BindingFlags.Instance | BindingFlags.GetField | BindingFlags.Public);
-            if (field != null)
-            {
-                value = field.GetValue(obj);
-                return true;
-            }
-            return false;
         }
     }
 

@@ -29,7 +29,7 @@ resource taskDeployment 'Microsoft.Resources/deployments@2020-10-01' = {
   properties: {
     mode: 'Incremental'
     parameters: {
-      Enabled: (!contains(task.Config, 'Disable')) || (!task.Config.Disable)
+      Enabled: (!contains(task.Config, 'Disable')) || (!task.?Config.Disable)
     }
   }
 }

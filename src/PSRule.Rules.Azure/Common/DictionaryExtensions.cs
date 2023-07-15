@@ -1,11 +1,15 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 
 namespace PSRule.Rules.Azure
 {
+    /// <summary>
+    /// Extension methods for dictionary instances.
+    /// </summary>
     internal static class DictionaryExtensions
     {
         [DebuggerStepThrough]
@@ -33,6 +37,18 @@ namespace PSRule.Rules.Azure
             if (dictionary.TryGetValue(key, out var v) && v is T result)
             {
                 value = result;
+                return true;
+            }
+            return false;
+        }
+
+        [DebuggerStepThrough]
+        public static bool TryGetValue(this IDictionary dictionary, string key, out object value)
+        {
+            value = default;
+            if (dictionary.Contains(key))
+            {
+                value = dictionary[key];
                 return true;
             }
             return false;

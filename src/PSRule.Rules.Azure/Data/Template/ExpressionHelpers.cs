@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -155,6 +156,84 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
             }
             return index >= 0;
+        }
+
+        internal static bool TryIndex(object o, object index, out object value)
+        {
+            value = null;
+            if (o == null) return false;
+
+            if (o is IMock mock)
+            {
+                value = mock.GetValue(index);
+                return true;
+            }
+
+            if (TryArray(o, out var array) && TryConvertInt(index, out var arrayIndex))
+            {
+                if (array.Length <= arrayIndex)
+                    return false;
+
+                value = array.GetValue(arrayIndex);
+                return true;
+            }
+
+            if (o is JObject jObject && TryString(index, out var propertyName))
+            {
+                if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var property))
+                    return false;
+
+                value = property;
+                return true;
+            }
+
+            if (o is ILazyObject lazy && TryConvertString(index, out var memberName) && lazy.TryProperty(memberName, out value))
+                return true;
+
+            return TryString(index, out propertyName) && TryPropertyOrField(o, propertyName, out value);
+        }
+
+        internal static bool TryPropertyOrField(object o, string propertyName, out object value)
+        {
+            value = null;
+            if (o == null) return false;
+
+            var resultType = o.GetType();
+
+            if (o is IMock mock)
+            {
+                value = mock.GetValue(propertyName);
+                return true;
+            }
+
+            if (o is JObject jObject)
+            {
+                if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var propertyToken))
+                    return false;
+
+                value = propertyToken;
+                return true;
+            }
+
+            if (o is JToken jToken)
+            {
+                var propertyToken = jToken[propertyName];
+                if (propertyToken == null)
+                    return false;
+
+                value = propertyToken.Value<object>();
+                return true;
+            }
+
+            if (o is ILazyObject lazy && lazy.TryProperty(propertyName, out value))
+                return true;
+
+            // Try dictionary
+            if (o is IDictionary dictionary && dictionary.TryGetValue(propertyName, out value))
+                return true;
+
+            // Try property or field
+            return resultType.TryGetValue(o, propertyName, out value);
         }
 
         internal static bool SequenceEqual(Array array1, Array array2)

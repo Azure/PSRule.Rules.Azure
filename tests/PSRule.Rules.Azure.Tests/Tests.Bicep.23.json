@@ -7,7 +7,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.19.5.34762",
-      "templateHash": "10835172705049310715"
+      "templateHash": "2098796325415382221"
     }
   },
   "parameters": {
@@ -28,7 +28,7 @@
       "defaultValue": [
         {
           "name": "test",
-          "displayName": "test",
+          "displayName": "Test 001",
           "secretIdentifier": "test"
         }
       ]
@@ -63,10 +63,10 @@
       "apiVersion": "2022-08-01",
       "name": "[format('{0}/{1}', parameters('name'), parameters('values')[copyIndex()].name)]",
       "properties": {
-        "displayName": "[if(contains(parameters('values')[copyIndex()], 'displayName'), parameters('values')[copyIndex()].displayName, parameters('values')[copyIndex()].name)]",
+        "displayName": "[coalesce(tryGet(parameters('values')[copyIndex()], 'displayName'), parameters('values')[copyIndex()].name)]",
         "secret": "[contains(parameters('values')[copyIndex()], 'secretIdentifier')]",
         "value": "[if(contains(parameters('values')[copyIndex()], 'secretIdentifier'), null(), parameters('values')[copyIndex()].value)]",
-        "keyVault": "[if(contains(parameters('values')[copyIndex()], 'secretIdentifier'), createObject('identityClientId', reference('service', '2022-08-01', 'full').identity.userAssignedIdentities[parameters('identityId')].clientId, 'secretIdentifier', parameters('values')[copyIndex()].secretIdentifier), null())]"
+        "keyVault": "[if(contains(parameters('values')[copyIndex()], 'secretIdentifier'), createObject('identityClientId', tryGet(reference('service', '2022-08-01', 'full').identity, 'userAssignedIdentities', parameters('identityId'), 'clientId'), 'secretIdentifier', parameters('values')[copyIndex()].secretIdentifier), null())]"
       },
       "dependsOn": [
         "service"

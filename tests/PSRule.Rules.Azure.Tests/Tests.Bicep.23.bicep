@@ -10,7 +10,7 @@ param identityId string = '/subscriptions/nnn/resourceGroups/nnn/providers/Micro
 param values array = [
   {
     name: 'test'
-    displayName: 'test'
+    displayName: 'Test 001'
     secretIdentifier: 'test'
   }
 ]
@@ -36,11 +36,11 @@ resource value 'Microsoft.ApiManagement/service/namedValues@2022-08-01' = [for i
   parent: service
   name: item.name
   properties: {
-    displayName: contains(item, 'displayName') ? item.displayName : item.name
+    displayName: item.?displayName ?? item.name
     secret: contains(item, 'secretIdentifier')
     value: contains(item, 'secretIdentifier') ? null : item.value
     keyVault: contains(item, 'secretIdentifier') ? {
-      identityClientId: service.identity.userAssignedIdentities[identityId].clientId
+      identityClientId: service.identity.?userAssignedIdentities[identityId].clientId
       secretIdentifier: item.secretIdentifier
     } : null
   }
