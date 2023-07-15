@@ -58,21 +58,19 @@ namespace PSRule.Rules.Azure
         [Trait(TRAIT, TRAIT_ARRAY)]
         public void Coalesce()
         {
+            ExpressionFnOuter throws = (context) => throw new NotImplementedException();
             var context = GetContext();
 
-            var actual1 = Functions.Coalesce(context, new object[] { null, null, 1, 2, 3 });
-            var actual2 = Functions.Coalesce(context, new object[] { null, null, "a", "b", "c" });
-            var actual3 = Functions.Coalesce(context, new object[] { null, JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }") }) as JToken;
-            var actual4 = Functions.Coalesce(context, new object[] { null });
-            var actual5 = Functions.Coalesce(context, new object[] { null, null });
-            Assert.Equal(1, actual1);
-            Assert.Equal("a", actual2);
-            Assert.Equal("b", actual3["a"]);
-            Assert.Null(actual4);
-            Assert.Null(actual5);
+            Assert.Equal(1, Functions.Coalesce(context, new object[] { null, null, 1, 2, 3 }));
+            Assert.Equal("a", Functions.Coalesce(context, new object[] { null, null, "a", "b", "c" }));
+            Assert.Equal("b", (Functions.Coalesce(context, new object[] { null, JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }") }) as JToken)["a"]);
+            Assert.Null(Functions.Coalesce(context, new object[] { null }));
+            Assert.Null(Functions.Coalesce(context, new object[] { null, null }));
+            Assert.Equal("a", Functions.Coalesce(context, new object[] { null, "a", throws }));
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, System.Array.Empty<object>()));
+            Assert.Throws<NotImplementedException>(() => Functions.Coalesce(context, new object[] { null, throws }));
         }
 
         [Fact]

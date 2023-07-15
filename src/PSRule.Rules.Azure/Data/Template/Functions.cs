@@ -60,7 +60,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("union", Union),
 
             // Comparison
-            new FunctionDescriptor("coalesce", Coalesce),
+            new FunctionDescriptor("coalesce", Coalesce, delayBinding: true),
             new FunctionDescriptor("equals", Equals),
             new FunctionDescriptor("greater", Greater),
             new FunctionDescriptor("greaterOrEquals", GreaterOrEquals),
@@ -218,6 +218,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             for (var i = 0; i < args.Length; i++)
             {
+                args[i] = GetExpression(context, args[i]);
                 if (!IsNull(args[i]))
                     return args[i];
             }

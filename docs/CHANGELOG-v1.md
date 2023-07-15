@@ -42,6 +42,8 @@ What's changed since pre-release v1.28.0-B0159:
     [#2321](https://github.com/Azure/PSRule.Rules.Azure/issues/2321)
   - Fixed handling of nested mock objects @BernieWhite.
     [#2325](https://github.com/Azure/PSRule.Rules.Azure/issues/2325)
+  - Fixed late binding of `coalesce` function by @BernieWhite.
+    [#2328](https://github.com/Azure/PSRule.Rules.Azure/issues/2328)
 
 ## v1.28.0-B0159 (pre-release)
 
