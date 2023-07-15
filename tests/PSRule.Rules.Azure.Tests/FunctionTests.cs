@@ -563,6 +563,36 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, actual2.Length);
         }
 
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
+        public void TryGet()
+        {
+            var context = GetContext();
+            var testObject = new JObject
+            {
+                {
+                    "properties", new JObject
+                    {
+                        { "displayName", "Test 001" },
+                        { "values", new JArray("Value 1", "Value 2") }
+                    }
+                }
+            };
+
+            Assert.Equal("Test 001", (Functions.TryGet(context, new object[] { testObject, "properties" }) as JObject)["displayName"].Value<string>());
+            Assert.Equal("Test 001", (Functions.TryGet(context, new object[] { testObject, "properties", "displayName" }) as JValue).Value<string>());
+            Assert.Equal("Value 2", (Functions.TryGet(context, new object[] { testObject, "properties", "values", 1 }) as JValue).Value<string>());
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "properties", "values", 2 }));
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "notValue" }));
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "notValue", 0 }));
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "properties", "notValue" }));
+            Assert.Null(Functions.TryGet(context, new object[] { testObject, "properties", "notValue", "value" }));
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, System.Array.Empty<object>()));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, new object[] { "one" }));
+        }
+
         #endregion Array and object
 
         #region Resource

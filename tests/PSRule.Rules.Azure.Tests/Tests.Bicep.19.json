@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.16.2.56959",
-      "templateHash": "5576463692274334464"
+      "version": "0.19.5.34762",
+      "templateHash": "18012838074292175007"
     }
   },
   "parameters": {
@@ -46,7 +46,7 @@
       "properties": {
         "mode": "Incremental",
         "parameters": {
-          "Enabled": "[or(not(contains(variables('task').Config, 'Disable')), not(variables('task').Config.Disable))]"
+          "Enabled": "[or(not(contains(variables('task').Config, 'Disable')), not(tryGet(variables('task'), 'Config', 'Disable')))]"
         }
       }
     }

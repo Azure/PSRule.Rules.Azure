@@ -56,6 +56,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("range", Range),
             new FunctionDescriptor("skip", Skip),
             new FunctionDescriptor("take", Take),
+            new FunctionDescriptor("tryGet", TryGet),
             new FunctionDescriptor("union", Union),
 
             // Comparison
@@ -310,17 +311,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Contains), args);
 
             var objectToFind = args[1];
-
-            if (args[0] is Array avalue)
-                return Contains(avalue, objectToFind);
-            else if (args[0] is JArray jArray)
-                return jArray.Contains(JToken.FromObject(objectToFind));
-            else if (args[0] is string svalue)
-                return svalue.Contains(objectToFind.ToString());
-            else if (args[0] is JObject jObject)
-                return jObject.ContainsKeyInsensitive(objectToFind.ToString());
-
-            return false;
+            return HasChild(args[0], objectToFind);
         }
 
         /// <summary>
@@ -703,6 +694,23 @@ namespace PSRule.Rules.Azure.Data.Template
             }
 
             throw ArgumentFormatInvalid(nameof(Take));
+        }
+
+        internal static object TryGet(ITemplateContext context, object[] args)
+        {
+            if (args == null || args.Length < 2)
+                throw ArgumentsOutOfRange(nameof(TryGet), args);
+
+            var o = args[0];
+            for (var i = 1; i < args.Length; i++)
+            {
+                if (args[i] is string propertyName && ExpressionHelpers.TryPropertyOrField(o, propertyName, out var value) ||
+                    args[i] is int index && ExpressionHelpers.TryIndex(o, index, out value))
+                    o = value;
+                else
+                    return null;
+            }
+            return o;
         }
 
         internal static object Union(ITemplateContext context, object[] args)
@@ -2161,6 +2169,20 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = jObject;
                 return true;
             }
+            return false;
+        }
+
+        private static bool HasChild(object value, object child)
+        {
+            if (value is Array avalue)
+                return Contains(avalue, child);
+            else if (value is JArray jArray)
+                return jArray.Contains(JToken.FromObject(child));
+            else if (value is string svalue)
+                return svalue.Contains(child.ToString());
+            else if (value is JObject jObject)
+                return jObject.ContainsKeyInsensitive(child.ToString());
+
             return false;
         }
 

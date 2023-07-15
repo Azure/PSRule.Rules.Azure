@@ -843,6 +843,11 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.23.json"), null, out _);
             Assert.Equal(2, resources.Length);
+
+            var actual = resources[1]["resources"][0].Value<JObject>();
+            Assert.NotNull(actual);
+            Assert.Equal("ps-rule-test-deployment/test", actual["name"].Value<string>());
+            Assert.Equal("Test 001", actual["properties"]["displayName"].Value<string>());
         }
 
         #region Helper methods
