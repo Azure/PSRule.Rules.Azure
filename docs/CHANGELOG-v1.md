@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.28.0-B0213 (pre-release)
+
 What's changed since pre-release v1.28.0-B0159:
 
 - General improvements:
@@ -38,9 +40,9 @@ What's changed since pre-release v1.28.0-B0159:
 - Bug fixes:
   - Fixed null condition handling by @BernieWhite.
     [#2316](https://github.com/Azure/PSRule.Rules.Azure/issues/2316)
-  - Fixed reference expression in property name @BernieWhite.
+  - Fixed reference expression in property name by @BernieWhite.
     [#2321](https://github.com/Azure/PSRule.Rules.Azure/issues/2321)
-  - Fixed handling of nested mock objects @BernieWhite.
+  - Fixed handling of nested mock objects by @BernieWhite.
     [#2325](https://github.com/Azure/PSRule.Rules.Azure/issues/2325)
   - Fixed late binding of `coalesce` function by @BernieWhite.
     [#2328](https://github.com/Azure/PSRule.Rules.Azure/issues/2328)
