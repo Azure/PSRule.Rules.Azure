@@ -122,5 +122,23 @@
       "",
       "```"
     ]
+  },
+  "rule-azure-example-bicep-br": {
+    "scope": "markdown",
+    "prefix": "rule-azure-example-bicep-br",
+    "description": "Example for Bicep Public Registry",
+    "body": [
+      "### Configure with Bicep Public Registry",
+      "",
+      "To deploy ${1:resource} that pass this rule:",
+      "",
+      "- ${2:steps}",
+      "",
+      "For example:",
+      "",
+      "```bicep",
+      "",
+      "```"
+    ]
   }
 }

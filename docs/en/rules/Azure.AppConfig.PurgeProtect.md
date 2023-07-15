@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-07-15
 severity: Important
 pillar: Reliability
 category: Data management
@@ -14,13 +15,15 @@ Consider purge protection for app configuration store to ensure store cannot be 
 
 ## DESCRIPTION
 
-With purge protection enabled, soft deleted stores can't be purged in the retention period. If disabled, the soft deleted store can be purged before the retention period expires. Once purge protection is enabled on a store, it can't be disabled.
+With purge protection enabled, soft deleted stores can't be purged in the retention period.
+If disabled, the soft deleted store can be purged before the retention period expires.
+Once purge protection is enabled on a store, it can't be disabled.
 
-Purge protection currently requires a **standard** SKU.
+Purge protection is only available for configuration stores that use the **standard** SKU.
 
 ## RECOMMENDATION
 
-Consider enabling purge protection for app configuration store.
+Consider enabling purge protection for app configuration stores.
 
 ## EXAMPLES
 
@@ -28,14 +31,14 @@ Consider enabling purge protection for app configuration store.
 
 To deploy App Configuration Stores that pass this rule:
 
-- Set `properties.enablePurgeProtection` to `true`.
+- Set the `properties.enablePurgeProtection` property to `true`.
 
 For example:
 
 ```json
 {
   "type": "Microsoft.AppConfiguration/configurationStores",
-  "apiVersion": "2022-05-01",
+  "apiVersion": "2023-03-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -43,7 +46,8 @@ For example:
   },
   "properties": {
     "disableLocalAuth": true,
-    "enablePurgeProtection": true
+    "enablePurgeProtection": true,
+    "publicNetworkAccess": "Disabled"
   }
 }
 ```
@@ -52,12 +56,12 @@ For example:
 
 To deploy App Configuration Stores that pass this rule:
 
-- Set `properties.enablePurgeProtection` to `true`.
+- Set the `properties.enablePurgeProtection` property to `true`.
 
 For example:
 
 ```bicep
-resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
+resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
   name: name
   location: location
   sku: {
@@ -66,6 +70,27 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
   properties: {
     disableLocalAuth: true
     enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
+  }
+}
+```
+
+### Configure with Bicep Public Registry
+
+To deploy App Configuration Stores that pass this rule:
+
+- Set the `params.enablePurgeProtection` parameter to `true`.
+
+For example:
+
+```bicep
+module store 'br/public:app/app-configuration:1.1.1' = {
+  name: 'store'
+  params: {
+    skuName: 'Standard'
+    disableLocalAuth: true
+    enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
   }
 }
 ```
@@ -74,4 +99,5 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
 
 - [Data management for reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/data-management)
 - [Purge protection](https://learn.microsoft.com/azure/azure-app-configuration/concept-soft-delete#purge-protection)
+- [Public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)

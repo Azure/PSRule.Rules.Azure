@@ -16,7 +16,10 @@ Consider replication for app configuration store to ensure resiliency to region 
 
 A app configuration store is stored and maintained by default in a single region.
 
-The app configuration geo-replication feature allows you to replicate your configuration store at-will to the regions of your choice. Each new `replica` will be in a different region and creates a new endpoint for your applications to send requests to. The original endpoint of your configuration store is called the `Origin`. The origin can't be removed, but otherwise behaves like any replica.
+The app configuration geo-replication feature allows you to replicate your configuration store at-will to the regions of your choice.
+Each new `replica` will be in a different region and creates a new endpoint for your applications to send requests to.
+The original endpoint of your configuration store is called the `Origin`.
+The origin can't be removed, but otherwise behaves like any replica.
 
 Replicating your configuration store adds the following benefits:
 
@@ -123,7 +126,7 @@ param replicaName string = 'replica01'
 param appConfigLocation string = resourceGroup().location
 
 @description('The location where the replica will be deployed.')
-param replicaLocation string = 'northeurope' 
+param replicaLocation string = 'northeurope'
 
 resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
   name: appConfigName

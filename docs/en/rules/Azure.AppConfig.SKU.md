@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-09-24
+reviewed: 2023-07-15
 severity: Important
 pillar: Reliability
 category: Requirements
@@ -30,14 +30,14 @@ Free instances are intended only for early development and testing scenarios.
 
 To deploy configuration stores that pass this rule:
 
-- Set `sku.name` to `standard`.
+- Set the `sku.name` property to `standard`.
 
 For example:
 
 ```json
 {
   "type": "Microsoft.AppConfiguration/configurationStores",
-  "apiVersion": "2022-05-01",
+  "apiVersion": "2023-03-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -45,7 +45,8 @@ For example:
   },
   "properties": {
     "disableLocalAuth": true,
-    "enablePurgeProtection": true
+    "enablePurgeProtection": true,
+    "publicNetworkAccess": "Disabled"
   }
 }
 ```
@@ -54,12 +55,12 @@ For example:
 
 To deploy configuration stores that pass this rule:
 
-- Set `sku.name` to `standard`.
+- Set the `sku.name` property to `standard`.
 
 For example:
 
 ```bicep
-resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
+resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
   name: name
   location: location
   sku: {
@@ -68,6 +69,27 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
   properties: {
     disableLocalAuth: true
     enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
+  }
+}
+```
+
+### Configure with Bicep Public Registry
+
+To deploy App Configuration Stores that pass this rule:
+
+- Set the `params.skuName` parameter to `Standard`.
+
+For example:
+
+```bicep
+module store 'br/public:app/app-configuration:1.1.1' = {
+  name: 'store'
+  params: {
+    skuName: 'Standard'
+    disableLocalAuth: true
+    enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
   }
 }
 ```
@@ -77,4 +99,5 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
 - [Meet application platform requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
 - [App Configuration pricing](https://azure.microsoft.com/pricing/details/app-configuration/)
 - [Which App Configuration tier should I use?](https://learn.microsoft.com/azure/azure-app-configuration/faq#which-app-configuration-tier-should-i-use)
+- [Public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)
