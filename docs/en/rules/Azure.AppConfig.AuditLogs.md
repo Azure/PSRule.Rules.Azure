@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-07-15
 severity: Important
 pillar: Security
 category: Monitor
@@ -112,16 +113,7 @@ To deploy an App Configuration Store that pass this rule:
 For example:
 
 ```bicep
-@description('The name of the App Configuration Store.')
-param name string
-
-@description('The location resources will be deployed.')
-param location string = resourceGroup().location
-
-@description('The resource id of the Log Analytics workspace to send diagnostic logs to.')
-param workspaceId string
-
-resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
+resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
   name: name
   location: location
   sku: {
@@ -130,12 +122,13 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
   properties: {
     disableLocalAuth: true
     enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
   }
 }
 
 resource diagnostic 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
-  name: '${name}-diagnostic'
   scope: store
+  name: '${name}-diagnostic'
   properties: {
     logs: [
       {
@@ -152,7 +145,44 @@ resource diagnostic 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' =
 }
 ```
 
+### Configure with Bicep Public Registry
+
+To deploy an App Configuration Store that pass this rule:
+
+- Configure the `diagnosticSettingsProperties.logs` parameter.
+- Enable `Audit` category or `audit` category group or `allLogs` category group.
+
+For example:
+
+```bicep
+module store 'br/public:app/app-configuration:1.1.1' = {
+  name: 'store'
+  params: {
+    skuName: 'Standard'
+    disableLocalAuth: true
+    enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
+    diagnosticSettingsProperties: {
+      diagnosticReceivers: {
+        workspaceId: workspaceId
+      }
+      logs: [
+        {
+          categoryGroup: 'audit'
+          enabled: true
+          retentionPolicy: {
+            days: 90
+            enabled: true
+          }
+        }
+      ]
+    }
+  }
+}
+```
+
 ## LINKS
 
 - [Security audits](https://learn.microsoft.com/azure/architecture/framework/security/monitor-audit)
+- [Public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsetting)
