@@ -24,6 +24,76 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.28.0
+
+What's changed since v1.27.3:
+
+- New features:
+  - Added June 2023 baselines `Azure.GA_2023_06` and `Azure.Preview_2023_06` by @BernieWhite.
+    [#2310](https://github.com/Azure/PSRule.Rules.Azure/issues/2310)
+    - Includes rules released before or during June 2023.
+    - Marked `Azure.GA_2023_03` and `Azure.Preview_2023_03` baselines as obsolete.
+- New rules:
+  - Azure Database for MySQL:
+    - Check that Azure AD authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
+      [#2226](https://github.com/Azure/PSRule.Rules.Azure/issues/2226)
+  - Azure Database for PostgreSQL:
+    - Check that Azure AD-only authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
+      [#2250](https://github.com/Azure/PSRule.Rules.Azure/issues/2250)
+    - Check that Azure AD authentication is configured for Azure Database for PostgreSQL databases by @BenjaminEngeset.
+      [#2249](https://github.com/Azure/PSRule.Rules.Azure/issues/2249)
+- Removed rules:
+  - Azure Kubernetes Service:
+    - Removed `Azure.AKS.PodIdentity` as pod identities has been replaced by workload identities by @BernieWhite.
+      [#2273](https://github.com/Azure/PSRule.Rules.Azure/issues/2273)
+- General improvements:
+  - Added support for safe dereference operator by @BernieWhite.
+    [#2322](https://github.com/Azure/PSRule.Rules.Azure/issues/2322)
+    - Added support for `tryGet` Bicep function.
+  - Added support for Bicep CIDR functions by @BernieWhite.
+    [#2279](https://github.com/Azure/PSRule.Rules.Azure/issues/2279)
+    - Added support for `parseCidr`, `cidrSubnet`, and `cidrHost`.
+  - Added support for `managementGroupResourceId` Bicep function by @BernieWhite.
+    [#2294](https://github.com/Azure/PSRule.Rules.Azure/issues/2294)
+- Engineering:
+  - Bump PSRule to v2.9.0.
+    [#2293](https://github.com/Azure/PSRule.Rules.Azure/pull/2293)
+  - Updated resource providers and policy aliases.
+    [#2261](https://github.com/Azure/PSRule.Rules.Azure/pull/2261)
+  - Bump Microsoft.CodeAnalysis.NetAnalyzers to v7.0.3.
+    [#2281](https://github.com/Azure/PSRule.Rules.Azure/pull/2281)
+  - Bump Microsoft.NET.Test.Sdk to v17.6.3.
+    [#2290](https://github.com/Azure/PSRule.Rules.Azure/pull/2290)
+  - Bump coverlet.collector to v6.0.0.
+    [#2232](https://github.com/Azure/PSRule.Rules.Azure/pull/2232)
+  - Bump Az.Resources to v6.7.0.
+    [#2274](https://github.com/Azure/PSRule.Rules.Azure/pull/2274)
+  - Bump xunit to v2.5.0.
+    [#2306](https://github.com/Azure/PSRule.Rules.Azure/pull/2306)
+  - Bump xunit.runner.visualstudio to v2.5.0.
+    [#2307](https://github.com/Azure/PSRule.Rules.Azure/pull/2307)
+  - Bump BenchmarkDotNet to v0.13.6.
+    [#2317](https://github.com/Azure/PSRule.Rules.Azure/pull/2317)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.6.
+    [#2318](https://github.com/Azure/PSRule.Rules.Azure/pull/2318)
+- Bug fixes:
+  - Fixed Redis firewall rules can not bind to start by @BernieWhite.
+    [#2303](https://github.com/Azure/PSRule.Rules.Azure/issues/2303)
+  - Fixed null condition handling by @BernieWhite.
+    [#2316](https://github.com/Azure/PSRule.Rules.Azure/issues/2316)
+  - Fixed reference expression in property name by @BernieWhite.
+    [#2321](https://github.com/Azure/PSRule.Rules.Azure/issues/2321)
+  - Fixed handling of nested mock objects by @BernieWhite.
+    [#2325](https://github.com/Azure/PSRule.Rules.Azure/issues/2325)
+  - Fixed late binding of `coalesce` function by @BernieWhite.
+    [#2328](https://github.com/Azure/PSRule.Rules.Azure/issues/2328)
+  - Fixed handling of JArray outputs with runtime values by @BernieWhite.
+    [#2159](https://github.com/Azure/PSRule.Rules.Azure/issues/2159)
+
+What's changed since pre-release v1.28.0-B0213:
+
+- No additional changes.
+
 ## v1.28.0-B0213 (pre-release)
 
 What's changed since pre-release v1.28.0-B0159:
