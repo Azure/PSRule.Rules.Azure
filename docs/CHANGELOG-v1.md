@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.28.0:
+
+- Bug fixes:
+  - Fixed `parseCidr` with `/32` is not valid by @BernieWhite.
+    [#2336](https://github.com/Azure/PSRule.Rules.Azure/issues/2336)
+
 ## v1.28.0
 
 What's changed since v1.27.3:
