@@ -155,7 +155,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool TryGetInfo(byte[] address, int prefixLength, int subnetOffset, int hostOffset, out ICidrInfo info)
         {
             var numBytes = address.Length;
-            var offset = (byte)(numBytes == 4 ? 1 : 0);
+            var offset = (byte)(numBytes == 4 && prefixLength < 32 ? 1 : 0);
 
             // Fill in the mask
             var netmask = new byte[numBytes];
@@ -176,6 +176,9 @@ namespace PSRule.Rules.Azure.Data.Template
             var carry = subnetOffset << (8 - (prefixLength % 8));
             for (var i = numBytes - (numBytes - prefixLength / 8); i >= 0; i--)
             {
+                if (i == numBytes)
+                    i--;
+
                 networkAddress[i] = (byte)((address[i] & network[i]) + carry);
                 carry = (byte)(((address[i] & network[i]) + carry) >> 8);
             }

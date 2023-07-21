@@ -2001,6 +2001,15 @@ namespace PSRule.Rules.Azure
             Assert.Equal("10.144.15.254", actual["lastUsable"].Value<string>());
             Assert.Equal(20, actual["cidr"].Value<int>());
 
+            actual = Functions.ParseCidr(context, new object[] { "10.144.1.1/32" }) as JObject;
+            Assert.NotNull(actual);
+            Assert.Equal("10.144.1.1", actual["network"].Value<string>());
+            Assert.Equal("255.255.255.255", actual["netmask"].Value<string>());
+            Assert.Equal("10.144.1.1", actual["broadcast"].Value<string>());
+            Assert.Equal("10.144.1.1", actual["firstUsable"].Value<string>());
+            Assert.Equal("10.144.1.1", actual["lastUsable"].Value<string>());
+            Assert.Equal(32, actual["cidr"].Value<int>());
+
             actual = Functions.ParseCidr(context, new object[] { "fdad:3236:5555::/48" }) as JObject;
             Assert.NotNull(actual);
             Assert.Equal("fdad:3236:5555::", actual["network"].Value<string>());
@@ -2009,6 +2018,15 @@ namespace PSRule.Rules.Azure
             Assert.Equal("fdad:3236:5555::", actual["firstUsable"].Value<string>());
             Assert.Equal("fdad:3236:5555:ffff:ffff:ffff:ffff:ffff", actual["lastUsable"].Value<string>());
             Assert.Equal(48, actual["cidr"].Value<int>());
+
+            actual = Functions.ParseCidr(context, new object[] { "fdad:3236:5555::/128" }) as JObject;
+            Assert.NotNull(actual);
+            Assert.Equal("fdad:3236:5555::", actual["network"].Value<string>());
+            Assert.Equal("ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff", actual["netmask"].Value<string>());
+            Assert.False(actual.ContainsKeyInsensitive("broadcast"));
+            Assert.Equal("fdad:3236:5555::", actual["firstUsable"].Value<string>());
+            Assert.Equal("fdad:3236:5555::", actual["lastUsable"].Value<string>());
+            Assert.Equal(128, actual["cidr"].Value<int>());
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.ParseCidr(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.ParseCidr(context, new object[] { 5 }));
@@ -2034,6 +2052,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("10.144.0.128/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 4 }) as string);
             Assert.Equal("10.144.0.160/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 5 }) as string);
             Assert.Equal("10.144.0.192/27", Functions.CidrSubnet(context, new object[] { "10.144.0.0/27", 27, 6 }) as string);
+            Assert.Equal("10.144.1.1/32", Functions.CidrSubnet(context, new object[] { "10.144.1.1/32", 32, 0 }) as string);
 
             Assert.Equal("10.144.0.0/24", Functions.CidrSubnet(context, new object[] { "10.144.0.0/20", 24, 0 }) as string);
             Assert.Equal("10.144.1.0/24", Functions.CidrSubnet(context, new object[] { "10.144.0.0/20", 24, 1 }) as string);
@@ -2047,6 +2066,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("fdad:3236:5555:2000::/52", Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/48", 52, 2 }) as string);
             Assert.Equal("fdad:3236:5555:3000::/52", Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/48", 52, 3 }) as string);
             Assert.Equal("fdad:3236:5555:4000::/52", Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/48", 52, 4 }) as string);
+            Assert.Equal("fdad:3236:5555::/128", Functions.CidrSubnet(context, new object[] { "fdad:3236:5555::/128", 128, 0 }) as string);
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.CidrSubnet(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.CidrSubnet(context, new object[] { 5 }));
