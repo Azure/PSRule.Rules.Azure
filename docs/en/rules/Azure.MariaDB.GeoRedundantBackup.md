@@ -38,20 +38,23 @@ For example:
 {
   "type": "Microsoft.DBforMariaDB/servers",
   "apiVersion": "2018-06-01",
-  "name": "[parameters('serverName')]",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
-    "name": "[parameters('skuName')]",
+    "name": "[parameters('sku')]",
     "tier": "GeneralPurpose",
-    "capacity": "[parameters('SkuCapacity')]",
+    "capacity": "[parameters('skuCapacity')]",
     "size": "[format('{0}', parameters('skuSizeMB'))]",
-    "family": "[parameters('skuFamily')]"
+    "family": "Gen5"
   },
   "properties": {
+    "sslEnforcement": "Enabled",
+    "minimalTlsVersion": "TLS1_2",
     "createMode": "Default",
-    "version": "[parameters('mariadbVersion')]",
+    "version": "10.3",
     "administratorLogin": "[parameters('administratorLogin')]",
     "administratorLoginPassword": "[parameters('administratorLoginPassword')]",
+    "publicNetworkAccess": "Disabled",
     "storageProfile": {
       "storageMB": "[parameters('skuSizeMB')]",
       "backupRetentionDays": 7,
@@ -70,21 +73,24 @@ To deploy Azure Database for MariaDB Servers that pass this rule:
 For example:
 
 ```bicep
-resource mariaDbServer 'Microsoft.DBforMariaDB/servers@2018-06-01' = {
-  name: serverName
+resource server 'Microsoft.DBforMariaDB/servers@2018-06-01' = {
+  name: name
   location: location
   sku: {
-    name: skuName
+    name: sku
     tier: 'GeneralPurpose'
     capacity: skuCapacity
-    size: '${skuSizeMB}' 
-    family: skuFamily
+    size: '${skuSizeMB}'
+    family: 'Gen5'
   }
   properties: {
+    sslEnforcement: 'Enabled'
+    minimalTlsVersion: 'TLS1_2'
     createMode: 'Default'
-    version: mariadbVersion
+    version: '10.3'
     administratorLogin: administratorLogin
     administratorLoginPassword: administratorLoginPassword
+    publicNetworkAccess: 'Disabled'
     storageProfile: {
       storageMB: skuSizeMB
       backupRetentionDays: 7
@@ -96,7 +102,8 @@ resource mariaDbServer 'Microsoft.DBforMariaDB/servers@2018-06-01' = {
 
 ## NOTES
 
-This rule is only applicable for Azure Database for Maria DB Servers with `General Purpose` and `Memory Optimized` tiers. The `Basic` tier does not support geo-redundant backup storage.
+This rule is only applicable for Azure Database for Maria DB Servers with `General Purpose` and `Memory Optimized` tiers.
+The `Basic` tier does not support geo-redundant backup storage.
 
 ## LINKS
 

@@ -83,7 +83,6 @@
     APIMApiVersionConstraintMinApiVersionNotFound = "The api management instance is missing minimum api version configuration."
     MySQLGeoRedundantBackupNotConfigured = "The Azure Database for MySQL '{0}' should have geo-redundant backup configured."
     SingleDeploymentModelRetirement = "The Azure Database for MySQL Single Server deployment model is on the retirement path. Migrate to the Azure Database for MySQL Flexible Server deployment model."
-    MariaDBGeoRedundantBackupNotConfigured = "The Azure Database for MariaDB '{0}' should have geo-redundant backup configured."
     PostgreSQLGeoRedundantBackupNotConfigured = "The Azure Database for PostgreSQL '{0}' should have geo-redundant backup configured."
     SQLServerVMDisks = "The virtual machine used for running SQL Server should use Premium disks or greater."
     KeyVaultAuditDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."

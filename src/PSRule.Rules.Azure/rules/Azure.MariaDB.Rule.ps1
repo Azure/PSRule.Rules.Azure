@@ -7,14 +7,8 @@
 
 #region Rules
 
-# Synopsis: Azure Database for MariaDB should store backups in a geo-redundant storage.
-Rule 'Azure.MariaDB.GeoRedundantBackup' -Ref 'AZR-000329' -Type 'Microsoft.DBforMariaDB/servers' -If { HasMariaDBTierSupportingGeoRedundantBackup } -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
-    $Assert.HasFieldValue($TargetObject, 'properties.storageProfile.geoRedundantBackup', 'Enabled').
-    Reason($LocalizedData.MariaDBGeoRedundantBackupNotConfigured, $PSRule.TargetName)
-}
-
 # Synopsis: Enable Microsoft Defender for Cloud for Azure Database for MariaDB.
-Rule 'Azure.MariaDB.DefenderCloud' -Ref 'AZR-000330' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MariaDB.DefenderCloud' -Ref 'AZR-000330' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
     if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
         $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/securityAlertPolicies')
         if ($defenderConfigs.Length -eq 0) {
@@ -31,17 +25,17 @@ Rule 'Azure.MariaDB.DefenderCloud' -Ref 'AZR-000330' -Type 'Microsoft.DBforMaria
 }
 
 # Synopsis: Azure Database for MariaDB servers should only accept encrypted connections.
-Rule 'Azure.MariaDB.UseSSL' -Ref 'AZR-000334' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MariaDB.UseSSL' -Ref 'AZR-000334' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.sslEnforcement', 'Enabled').Reason($LocalizedData.MariaDBEncryptedConnection)
 }
 
 # Synopsis: Azure Database for MariaDB servers should reject TLS versions older than 1.2.
-Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000335' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000335' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.minimalTlsVersion', 'TLS1_2')
 }
 
 # Synopsis: Azure Database for MariaDB servers should meet naming requirements.
-Rule 'Azure.MariaDB.ServerName' -Ref 'AZR-000336' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MariaDB.ServerName' -Ref 'AZR-000336' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
 
     # Between 3 and 63 characters long
@@ -54,7 +48,7 @@ Rule 'Azure.MariaDB.ServerName' -Ref 'AZR-000336' -Type 'Microsoft.DBforMariaDB/
 }
 
 # Synopsis: Azure Database for MariaDB databases should meet naming requirements.
-Rule 'Azure.MariaDB.DatabaseName' -Ref 'AZR-000337' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/databases' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MariaDB.DatabaseName' -Ref 'AZR-000337' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/databases' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
 
     $databases = @(GetMariaDBDatabaseName)
@@ -73,12 +67,10 @@ Rule 'Azure.MariaDB.DatabaseName' -Ref 'AZR-000337' -Type 'Microsoft.DBforMariaD
 }
 
 # Synopsis: Azure Database for MariaDB firewall rules should meet naming requirements.
-Rule 'Azure.MariaDB.FirewallRuleName' -Ref 'AZR-000338' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
-    # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
-
+Rule 'Azure.MariaDB.FirewallRuleName' -Ref 'AZR-000338' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $firewallRules = @(GetMariaDBFirewallRuleName)
     if ($firewallRules.Length -eq 0) {
-        $Assert.Pass()
+        return $Assert.Pass()
     }
 
     foreach ($firewallRule in $firewallRules) {
@@ -92,12 +84,10 @@ Rule 'Azure.MariaDB.FirewallRuleName' -Ref 'AZR-000338' -Type 'Microsoft.DBforMa
 }
 
 # Synopsis: Azure Database for MariaDB VNET rules should meet naming requirements.
-Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
-    # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
-
+Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $virtualNetworkRules = @(GetMariaDBVNETRuleName)
     if ($virtualNetworkRules.Length -eq 0) {
-        $Assert.Pass()
+        return $Assert.Pass()
     }
 
     foreach ($virtualNetworkRule in $virtualNetworkRules) {
@@ -111,15 +101,15 @@ Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaD
 }
 
 # Synopsis: Determine if access from Azure services is required.
-Rule 'Azure.MariaDB.AllowAzureAccess' -Ref 'AZR-000342' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+Rule 'Azure.MariaDB.AllowAzureAccess' -Ref 'AZR-000342' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
     $firewallAllowAzureServices = @(GetMariaDBFirewallRule |
         Where-Object { $_.properties.startIpAddress -eq '0.0.0.0' -and $_.properties.endIpAddress -eq '0.0.0.0' })
-    
+
     $Assert.Less($firewallAllowAzureServices, '.', 1).Reason($LocalizedData.MariaDBFirewallAllowAzureServices)
 }
 
 # Synopsis: Determine if there is an excessive number of firewall rules.
-Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules')
 
     $Assert.LessOrEqual($firewallRules, '.', 10).
@@ -127,7 +117,7 @@ Rule 'Azure.MariaDB.FirewallRuleCount'-Ref 'AZR-000343' -Type 'Microsoft.DBforMa
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses.
-Rule 'Azure.MariaDB.FirewallIPRange' -Ref 'AZR-000344' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MariaDB.FirewallIPRange' -Ref 'AZR-000344' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
     $summary = GetIPAddressSummary
 
     [int]$public = [int]$summary.Public
@@ -138,15 +128,6 @@ Rule 'Azure.MariaDB.FirewallIPRange' -Ref 'AZR-000344' -Type 'Microsoft.DBforMar
 #endregion Rules
 
 #region Helper functions
-
-function global:HasMariaDBTierSupportingGeoRedundantBackup {
-    [CmdletBinding()]
-    [OutputType([System.Boolean])]
-    param ()
-    process {
-        $Assert.in($TargetObject, 'sku.tier', @('GeneralPurpose', 'MemoryOptimized')).Result
-    }
-}
 
 function global:GetMariaDBDatabaseName {
     [CmdletBinding()]
@@ -170,10 +151,10 @@ function global:GetMariaDBFirewallRuleName {
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
             GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/firewallRules' |
-            ForEach-Object { $_.name }
+            ForEach-Object { ($_.name -split '/')[-1] }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/firewallRules') {
-            $PSRule.TargetName
+            ($PSRule.TargetName -split '/')[-1]
         }
     }
 }
@@ -185,10 +166,10 @@ function global:GetMariaDBVNETRuleName {
     process {
         if ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers') {
             GetSubResources -ResourceType 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' |
-            ForEach-Object { $_.name }
+            ForEach-Object { ($_.name -split '/')[-1] }
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.DBforMariaDB/servers/virtualNetworkRules') {
-            $PSRule.TargetName
+            ($PSRule.TargetName -split '/')[-1]
         }
     }
 }

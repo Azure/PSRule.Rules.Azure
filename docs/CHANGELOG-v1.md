@@ -33,6 +33,10 @@ What's changed since v1.28.0:
     [#2338](https://github.com/Azure/PSRule.Rules.Azure/issues/2338)
   - Fixed length cannot be less than zero when converting policy to rules by @BernieWhite.
     [#1802](https://github.com/Azure/PSRule.Rules.Azure/issues/1802)
+  - Fixed naming rules for MariaDB by @BernieWhite.
+    [#2335](https://github.com/Azure/PSRule.Rules.Azure/issues/2335)
+    - Updated `Azure.MariaDB.VNETRuleName` to allow for parent resources.
+    - Updated `Azure.MariaDB.FirewallRuleName` to allow for parent resources.
 
 ## v1.28.0
 

@@ -1,0 +1,65 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Azure Database for MariaDB
+#
+
+#region Rules
+
+---
+# Synopsis: Azure Database for MariaDB should store backups in a geo-redundant storage.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.MariaDB.GeoRedundantBackup
+  ref: AZR-000329
+  tags:
+    release: GA
+    ruleSet: 2022_12
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.DBforMariaDB/servers
+  with:
+    - Azure.MariaDB.IsGeneralPurpose
+    - Azure.MariaDB.IsMemoryOptimized
+  condition:
+    field: properties.storageProfile.geoRedundantBackup
+    equals: Enabled
+
+#endregion Rules
+
+#
+# Selectors for Azure Database for MariaDB
+#
+
+#region Selectors
+
+---
+# Synopsis: MariaDB instances using the general purpose tier.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.MariaDB.IsGeneralPurpose
+  annotations:
+    exportable: false
+spec:
+  if:
+    field: sku.tier
+    equals: GeneralPurpose
+
+---
+# Synopsis: MariaDB instances using the memory optimized tier.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.MariaDB.IsMemoryOptimized
+  annotations:
+    exportable: false
+spec:
+  if:
+    field: sku.tier
+    equals: MemoryOptimized
+
+#endregion Selectors
