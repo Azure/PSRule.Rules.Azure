@@ -82,6 +82,8 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string TYPE_SECURITYASSESSMENTS = "Microsoft.Security/assessments";
         private const string TYPE_GUESTCONFIGURATIONASSIGNMENTS = "Microsoft.GuestConfiguration/guestConfigurationAssignments";
         private const string TYPE_BACKUPPROTECTEDITEMS = "Microsoft.RecoveryServices/backupprotecteditems";
+        private const string TYPE_SUBSCRIPTION_RESOURCEGROUP = "Microsoft.Resources/subscriptions/resourceGroups";
+        private const string TYPE_RESOURCEGROUP = "Microsoft.Resources/resourceGroups";
 
         private static readonly CultureInfo AzureCulture = new("en-US");
 
@@ -417,6 +419,9 @@ namespace PSRule.Rules.Azure.Data.Policy
                         // Set policy rule type
                         else if (hasFieldType && child.TryGetProperty(PROPERTY_EQUALS, out field))
                         {
+                            if (string.Equals(TYPE_SUBSCRIPTION_RESOURCEGROUP, field, StringComparison.OrdinalIgnoreCase))
+                                field = TYPE_RESOURCEGROUP;
+
                             types.Add(field);
                             SetPolicyRuleType(field);
                         }

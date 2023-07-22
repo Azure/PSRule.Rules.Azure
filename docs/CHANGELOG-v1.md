@@ -29,6 +29,8 @@ What's changed since v1.28.0:
 - Bug fixes:
   - Fixed `parseCidr` with `/32` is not valid by @BernieWhite.
     [#2336](https://github.com/Azure/PSRule.Rules.Azure/issues/2336)
+  - Fixed mismatch of resource group type on policy as code rules by @BernieWhite.
+    [#2338](https://github.com/Azure/PSRule.Rules.Azure/issues/2338)
 
 ## v1.28.0
 
