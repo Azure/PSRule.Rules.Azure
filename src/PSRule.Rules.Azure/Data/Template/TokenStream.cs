@@ -4,6 +4,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -177,6 +178,19 @@ namespace PSRule.Rules.Azure.Data.Template
             return true;
         }
 
+        internal static bool ConsumeInteger(this TokenStream stream, out int? i)
+        {
+            i = null;
+            if (stream == null ||
+                stream.Count == 0 ||
+                stream.Current.Type != ExpressionTokenType.Numeric)
+                return false;
+
+            i = (int)stream.Current.Value;
+            stream.Pop();
+            return true;
+        }
+
         internal static bool ConsumeGroup(this TokenStream stream)
         {
             if (stream == null ||
@@ -186,6 +200,14 @@ namespace PSRule.Rules.Azure.Data.Template
 
             stream.SkipGroup();
             return true;
+        }
+
+        internal static bool HasPolicyRuntimeTokens(this TokenStream stream)
+        {
+            return stream.ToArray().Any(t =>
+                t.Type == ExpressionTokenType.Element &&
+                string.Equals("current", t.Content, StringComparison.OrdinalIgnoreCase)
+            );
         }
     }
 
