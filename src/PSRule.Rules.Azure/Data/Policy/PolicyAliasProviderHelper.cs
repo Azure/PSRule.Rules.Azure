@@ -7,16 +7,21 @@ namespace PSRule.Rules.Azure.Data.Policy
     {
         private const char SLASH = '/';
         private readonly ProviderData _Providers;
-        private TypeIndexEntry _DefaultRuleType;
+        private TypeIndexEntry _DefaultResourceType;
 
         public PolicyAliasProviderHelper()
         {
             _Providers = new ProviderData();
         }
 
-        internal void SetPolicyRuleType(string providerNamespace, string resourceType)
+        internal void SetDefaultResourceType(string providerNamespace, string resourceType)
         {
-            _DefaultRuleType = _Providers.FindResourceType(providerNamespace, resourceType);
+            _DefaultResourceType = _Providers.FindResourceType(providerNamespace, resourceType);
+        }
+
+        internal void ClearDefaultResourceType()
+        {
+            _DefaultResourceType = null;
         }
 
         internal bool ResolvePolicyAliasPath(string aliasName, out string aliasPath)
@@ -34,8 +39,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             // Handle aliases like Microsoft.Compute/imageId with only one slash
             if (slashOccurrences == 1)
             {
-                return _DefaultRuleType != null
-                    && _Providers.TryResourceType(_DefaultRuleType, out var type2)
+                return _DefaultResourceType != null
+                    && _Providers.TryResourceType(_DefaultResourceType, out var type2)
                     && type2.Aliases != null
                     && type2.Aliases.TryGetValue(aliasName, out aliasPath);
             }

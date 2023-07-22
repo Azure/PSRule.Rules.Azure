@@ -219,6 +219,49 @@ namespace PSRule.Rules.Azure
                 p.Value = value;
         }
 
+        internal static void ReplaceProperty(this JObject o, string propertyName, string value)
+        {
+            var p = o.Property(propertyName, StringComparison.OrdinalIgnoreCase);
+            if (p != null)
+                p.Value = JValue.CreateString(value);
+        }
+
+        internal static void ReplaceProperty(this JObject o, string propertyName, bool value)
+        {
+            var p = o.Property(propertyName, StringComparison.OrdinalIgnoreCase);
+            if (p != null)
+                p.Value = new JValue(value);
+        }
+
+        internal static void ReplaceProperty(this JObject o, string propertyName, int value)
+        {
+            var p = o.Property(propertyName, StringComparison.OrdinalIgnoreCase);
+            if (p != null)
+                p.Value = new JValue(value);
+        }
+
+        /// <summary>
+        /// Convert a string property to an integer.
+        /// </summary>
+        /// <param name="o">The target object with properties.</param>
+        /// <param name="propertyName">The name of the property to convert.</param>
+        internal static void ConvertPropertyToInt(this JObject o, string propertyName)
+        {
+            if (o.TryStringProperty(propertyName, out var s) && int.TryParse(s, out var value))
+                o.ReplaceProperty(propertyName, value);
+        }
+
+        /// <summary>
+        /// Convert a string property to a boolean.
+        /// </summary>
+        /// <param name="o">The target object with properties.</param>
+        /// <param name="propertyName">The name of the property to convert.</param>
+        internal static void ConvertPropertyToBool(this JObject o, string propertyName)
+        {
+            if (o.TryStringProperty(propertyName, out var s) && bool.TryParse(s, out var value))
+                o.ReplaceProperty(propertyName, value);
+        }
+
         internal static bool TryRenameProperty(this JProperty property, string oldName, string newName)
         {
             if (property == null || !property.Name.Equals(oldName, StringComparison.OrdinalIgnoreCase))

@@ -31,6 +31,8 @@ What's changed since v1.28.0:
     [#2336](https://github.com/Azure/PSRule.Rules.Azure/issues/2336)
   - Fixed mismatch of resource group type on policy as code rules by @BernieWhite.
     [#2338](https://github.com/Azure/PSRule.Rules.Azure/issues/2338)
+  - Fixed length cannot be less than zero when converting policy to rules by @BernieWhite.
+    [#1802](https://github.com/Azure/PSRule.Rules.Azure/issues/1802)
 
 ## v1.28.0
 

@@ -26,7 +26,7 @@ namespace PSRule.Rules.Azure
             policyAliasProviderHelper.ResolvePolicyAliasPath("Microsoft.AAD/domainServices/deploymentId", out var test2);
             Assert.Equal("properties.deploymentId", test2);
 
-            policyAliasProviderHelper.SetPolicyRuleType("Microsoft.Compute", "virtualMachines");
+            policyAliasProviderHelper.SetDefaultResourceType("Microsoft.Compute", "virtualMachines");
             policyAliasProviderHelper.ResolvePolicyAliasPath("Microsoft.Compute/imageId", out var test4);
             Assert.Equal("properties.storageProfile.imageReference.id", test4);
         }

@@ -44,8 +44,10 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_EQUALS = "equals";
         private const string PROPERTY_NOTEQUALS = "notEquals";
         private const string PROPERTY_GREATER = "greater";
+        private const string PROPERTY_GREATEROREQUAL = "greaterOrEqual";
         private const string PROPERTY_GREATEROREQUALS = "greaterOrEquals";
         private const string PROPERTY_LESS = "less";
+        private const string PROPERTY_LESSOREQUAL = "lessOrEqual";
         private const string PROPERTY_LESSOREQUALS = "lessOrEquals";
         private const string PROPERTY_IN = "in";
         private const string PROPERTY_NOTIN = "notIn";
@@ -57,12 +59,16 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_CATEGORY = "category";
         private const string PROPERTY_DEPLOYMENT = "deployment";
         private const string PROPERTY_VALUE = "value";
+        private const string PROPERTY_NOT = "not";
         private const string PROPERTY_COUNT = "count";
         private const string PROPERTY_NOTCOUNT = "notCount";
         private const string PROPERTY_WHERE = "where";
         private const string PROPERTY_RESOURCES = "resources";
         private const string PROPERTY_REQUESTCONTEXT = "requestContext";
         private const string PROPERTY_APIVERSION = "apiVersion";
+        private const string PROPERTY_PADLEFT = "padLeft";
+        private const string PROPERTY_PATH = "path";
+        private const string PROPERTY_CONVERT = "convert";
         private const string EFFECT_DISABLED = "Disabled";
         private const string EFFECT_AUDITIFNOTEXISTS = "AuditIfNotExists";
         private const string EFFECT_DEPLOYIFNOTEXISTS = "DeployIfNotExists";
@@ -76,6 +82,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string GREATER_OPERATOR = ">";
         private const string GREATEROREQUAL_OPERATOR = ">=";
         private const string DOT = ".";
+        private const string DOLLAR = "$";
         private const char SLASH = '/';
         private const char GROUP_OPEN = '(';
         private const char GROUP_CLOSE = ')';
@@ -84,6 +91,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string TYPE_BACKUPPROTECTEDITEMS = "Microsoft.RecoveryServices/backupprotecteditems";
         private const string TYPE_SUBSCRIPTION_RESOURCEGROUP = "Microsoft.Resources/subscriptions/resourceGroups";
         private const string TYPE_RESOURCEGROUP = "Microsoft.Resources/resourceGroups";
+        private const string FUNCTION_CURRENT = "current";
 
         private static readonly CultureInfo AzureCulture = new("en-US");
 
@@ -99,6 +107,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             private readonly IList<PolicyDefinition> _Definitions;
             internal readonly IDictionary<string, IDictionary<string, IParameterValue>> DefinitionParameterMap;
             internal readonly PipelineContext Pipeline;
+            private readonly Stack<string> _FieldPrefix;
             private readonly TemplateValidator _Validator;
             private readonly IDictionary<string, JToken> _ParameterAssignments;
             private readonly HashSet<string> _PolicyIgnore;
@@ -113,6 +122,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _Validator = new TemplateValidator();
                 _ParameterAssignments = new Dictionary<string, JToken>();
                 Pipeline = context;
+                _FieldPrefix = new Stack<string>();
 
                 ResourceGroup = ResourceGroupOption.Default;
                 if (context?.Option?.Configuration?.ResourceGroup != null)
@@ -148,6 +158,13 @@ namespace PSRule.Rules.Azure.Data.Policy
             public TenantOption Tenant { get; }
             public ManagementGroupOption ManagementGroup { get; }
             public string PolicyRulePrefix { get; }
+            public string FieldPrefix
+            {
+                get
+                {
+                    return _FieldPrefix.Count == 0 ? null : _FieldPrefix.Peek();
+                }
+            }
 
             /// <summary>
             /// A unique identifer for the current assignment that is being processed.
@@ -190,6 +207,11 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _Definitions.Add(policyDefinition);
             }
 
+            bool ITemplateContext.TryDefinition(string type, out ITypeDefinition definition)
+            {
+                throw new NotImplementedException();
+            }
+
             private static string ExpressionToObjectPathComparisonOperator(string expression) => expression switch
             {
                 PROPERTY_EQUALS => EQUALITY_OPERATOR,
@@ -201,15 +223,20 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _ => null
             };
 
-            private void SetPolicyRuleType(string type)
+            internal void SetDefaultResourceType(string type)
             {
                 if (type.CountCharacterOccurrences(SLASH) > 0)
                 {
                     var contents = type.Split(new char[] { SLASH }, count: 2);
                     var providerNamespace = contents[0];
                     var resourceType = contents[1];
-                    _PolicyAliasProviderHelper.SetPolicyRuleType(providerNamespace, resourceType);
+                    _PolicyAliasProviderHelper.SetDefaultResourceType(providerNamespace, resourceType);
                 }
+            }
+
+            internal void ClearDefaultResourceType()
+            {
+                _PolicyAliasProviderHelper.ClearDefaultResourceType();
             }
 
             internal void SetDefinitionParameterAssignment(PolicyDefinition definition, JProperty parameter)
@@ -247,7 +274,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         obj.TryStringProperty(PROPERTY_EQUALS, out var fieldType))
                     {
                         subProperty = $".{PROPERTY_TYPE}";
-                        SetPolicyRuleType(fieldType);
+                        SetDefaultResourceType(fieldType);
                     }
                     else if (TryPolicyAliasPath(fieldProperty, out var fieldAliasPath))
                     {
@@ -423,7 +450,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                                 field = TYPE_RESOURCEGROUP;
 
                             types.Add(field);
-                            SetPolicyRuleType(field);
+                            SetDefaultResourceType(field);
                         }
 
                         // Replace equals with count if field count expression is currently being visited
@@ -625,8 +652,15 @@ namespace PSRule.Rules.Azure.Data.Policy
             internal void ExitAssignment()
             {
                 AssignmentId = null;
-                PolicyDefinitionId = null;
                 _ParameterAssignments.Clear();
+            }
+
+            /// <summary>
+            /// Clean up after processing a definition.
+            /// </summary>
+            internal void ExitDefinition()
+            {
+                PolicyDefinitionId = null;
             }
 
             /// <summary>
@@ -651,9 +685,18 @@ namespace PSRule.Rules.Azure.Data.Policy
                 throw new NotImplementedException();
             }
 
-            bool ITemplateContext.TryDefinition(string type, out ITypeDefinition definition)
+            internal void EnterFieldPrefix(string prefix)
             {
-                throw new NotImplementedException();
+                _FieldPrefix.Push(prefix);
+            }
+
+            internal void ExitFieldPrefix(string prefix)
+            {
+                if (_FieldPrefix.Count == 0 ||
+                    _FieldPrefix.Peek() != prefix)
+                    return;
+
+                _FieldPrefix.Pop();
             }
         }
 
@@ -727,6 +770,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                 catch (Exception inner)
                 {
                     context.Pipeline.Writer?.WriteError(inner, inner.GetBaseException().GetType().FullName, errorCategory: ErrorCategory.NotSpecified, targetObject: definition);
+                }
+                finally
+                {
+                    context.ExitDefinition();
                 }
             }
         }
@@ -824,64 +871,61 @@ namespace PSRule.Rules.Azure.Data.Policy
                     if (foundDuplicateDefinition)
                         return false;
                 }
-
                 context.DefinitionParameterMap[policyDefinitionId] = result.Parameters;
             }
 
-            // Modify policy rule
-            TrimPolicyRule(policyRule);
-            VisitPolicyRule(context, policyRule);
-
-            context.ExpandPolicyRule(policyRule, result.Types);
-            if (!TryPolicyRuleEffect(then, out var effect) ||
+            if (!TryPolicyRuleEffect(context, then, out var effect) ||
                 ShouldFilterRule(then, effect))
                 return false;
 
-            if (policyRule.TryObjectProperty(PROPERTY_IF, out var condition))
-                result.Condition = condition;
-
+            // Modify policy rule
+            TrimPolicyRule(policyRule);
+            VisitPolicyRule(context, result, policyRule);
             AddSelectors(result, policyMode);
-            EffectConditions(result, policyRule);
             OptimizeConditions(result);
-            policyDefinition = result;
 
             // Check for an resulting empty condition.
-            if (policyDefinition.Condition == null || policyDefinition.Condition.Count == 0)
+            if (result.Condition == null || result.Condition.Count == 0)
                 throw ThrowEmptyConditionExpandResult(context, policyDefinitionId);
 
-            var policyRuleHash = GetPolicyRuleHash(policyDefinitionId, policyDefinition.Condition, policyDefinition.Where);
-            policyDefinition.Name = $"{context.PolicyRulePrefix}.Policy.{policyRuleHash}";
-
+            var policyRuleHash = GetPolicyRuleHash(policyDefinitionId, result.Condition, result.Where);
+            result.Name = $"{context.PolicyRulePrefix}.Policy.{policyRuleHash}";
+            policyDefinition = result;
             return true;
         }
 
         /// <summary>
         /// Visit the policyRule node.
         /// </summary>
-        private static void VisitPolicyRule(PolicyAssignmentContext context, JObject policyRule)
+        private static void VisitPolicyRule(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject policyRule)
         {
+            // Handle if condition block
             if (policyRule.TryObjectProperty(PROPERTY_IF, out var condition))
-                VisitCondition(context, condition);
+            {
+                VisitCondition(context, policyDefinition, condition);
+                policyDefinition.Condition = condition;
+            }
+
+            // Handle conditions in then block
+            EffectConditions(context, policyDefinition, policyRule);
         }
 
         /// <summary>
         /// Visit a policy condition node.
         /// </summary>
-        private static void VisitCondition(PolicyAssignmentContext context, JObject condition)
+        private static void VisitCondition(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject condition)
         {
-            if (condition.TryArrayProperty(PROPERTY_ALLOF, out var allOf))
+            if (condition.TryArrayProperty(PROPERTY_ALLOF, out var all) ||
+                condition.TryArrayProperty(PROPERTY_ANYOF, out all))
             {
-                foreach (var item in allOf.Values<JObject>())
+                foreach (var item in all.Values<JObject>())
                 {
-                    VisitCondition(context, item);
+                    VisitCondition(context, policyDefinition, item);
                 }
             }
-            else if (condition.TryArrayProperty(PROPERTY_ANYOF, out var anyOf))
+            else if (condition.TryObjectProperty(PROPERTY_NOT, out var item))
             {
-                foreach (var item in anyOf.Values<JObject>())
-                {
-                    VisitCondition(context, item);
-                }
+                VisitCondition(context, policyDefinition, item);
             }
             else
             {
@@ -889,6 +933,242 @@ namespace PSRule.Rules.Azure.Data.Policy
                 {
                     VisitValueExpression(context, condition, s);
                 }
+                else if (condition.TryStringProperty(PROPERTY_FIELD, out var field))
+                {
+                    if (VisitField(context, policyDefinition, condition, field) == null)
+                        condition.Remove();
+                }
+                else if (condition.TryObjectProperty(PROPERTY_COUNT, out var count))
+                {
+                    VisitCountExpression(context, policyDefinition, condition, count);
+                }
+                ResolveObject(context, condition);
+                ConvertCondition(context, condition);
+            }
+        }
+
+        private static void VisitCountExpression(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject parent, JObject count)
+        {
+            // Remove from parent
+            parent.Remove(PROPERTY_COUNT);
+
+            if (count.TryGetProperty(PROPERTY_FIELD, out var field))
+            {
+                try
+                {
+                    field = ExpandField(context, TemplateVisitor.ExpandString(context, field));
+                    context.EnterFieldPrefix(field);
+                    parent.Add(PROPERTY_FIELD, field);
+                    if (count.TryObjectProperty(PROPERTY_WHERE, out var where))
+                    {
+                        VisitCondition(context, policyDefinition, where);
+                        if (where.TryArrayProperty(PROPERTY_ALLOF, out var allOf))
+                        {
+                            parent.Add(PROPERTY_ALLOF, allOf);
+                        }
+                        else if (where.TryArrayProperty(PROPERTY_ANYOF, out var anyOf))
+                        {
+                            parent.Add(PROPERTY_ANYOF, anyOf);
+                        }
+                        else
+                        {
+                            parent.Add(PROPERTY_ALLOF, new JArray(where));
+                        }
+                        ConvertQuantifiers(context, parent);
+                    }
+                }
+                finally
+                {
+                    context.ExitFieldPrefix(field);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Convert quantifiers from policy to PSRule expressions.
+        /// </summary>
+        private static void ConvertQuantifiers(PolicyAssignmentContext context, JObject o)
+        {
+            if (o.TryGetProperty<JToken>(PROPERTY_LESSOREQUALS, out var lessOrEquals))
+            {
+                lessOrEquals.Parent.Replace(new JProperty(PROPERTY_LESSOREQUAL, lessOrEquals.Value<int>()));
+            }
+            else if (o.TryGetProperty<JToken>(PROPERTY_GREATEROREQUALS, out var greaterOrEquals))
+            {
+                greaterOrEquals.Parent.Replace(new JProperty(PROPERTY_GREATEROREQUAL, greaterOrEquals.Value<int>()));
+            }
+            else if (o.TryGetProperty<JToken>(PROPERTY_EQUALS, out var equals))
+            {
+                equals.Parent.Replace(new JProperty(PROPERTY_COUNT, equals.Value<int>()));
+            }
+            else if (o.TryGetProperty<JToken>(PROPERTY_NOTEQUALS, out var notEquals))
+            {
+                notEquals.Parent.Replace(new JProperty(PROPERTY_GREATER, notEquals.Value<int>()));
+            }
+        }
+
+        private static string ExpandField(PolicyAssignmentContext context, string field)
+        {
+            return context.TryPolicyAliasPath(field, out var aliasPath) ? aliasPath : field;
+        }
+
+        private static void ConvertCondition(PolicyAssignmentContext context, JObject condition)
+        {
+            _ = TryConditionExists(context, condition) ||
+                TryConditionLess(context, condition) ||
+                TryConditionLessOrEquals(context, condition) ||
+                TryConditionGreater(context, condition) ||
+                TryConditionGreaterOrEquals(context, condition) ||
+                TryConditionIn(context, condition) ||
+                TryConditionNotIn(context, condition) ||
+                TryConditionNotEquals(context, condition);
+        }
+
+        private static void ResolveObject(PolicyAssignmentContext context, JObject o)
+        {
+            foreach (var p in o.Properties())
+                p.Value = TemplateVisitor.ExpandToken<JToken>(context, p.Value);
+        }
+
+        private static bool TryConditionNotIn(PolicyAssignmentContext context, JObject condition)
+        {
+            if (!condition.ContainsKeyInsensitive(PROPERTY_NOTIN))
+                return false;
+
+
+            return true;
+        }
+
+        private static bool TryConditionIn(PolicyAssignmentContext context, JObject condition)
+        {
+            if (!condition.ContainsKeyInsensitive(PROPERTY_IN))
+                return false;
+
+
+            return true;
+        }
+
+        private static bool TryConditionNotEquals(PolicyAssignmentContext context, JObject condition)
+        {
+            if (!condition.TryGetProperty<JToken>(PROPERTY_NOTEQUALS, out var notEquals))
+                return false;
+
+            notEquals.Parent.Replace(new JProperty(PROPERTY_NOTEQUALS, notEquals));
+            return true;
+        }
+
+        private static bool TryConditionLess(PolicyAssignmentContext context, JObject condition)
+        {
+            if (!condition.ContainsKeyInsensitive(PROPERTY_LESS))
+                return false;
+
+            // Convert a string form to an integer
+            condition.ConvertPropertyToInt(PROPERTY_LESS);
+
+            if (!condition.ContainsKeyInsensitive(PROPERTY_ALLOF) &&
+                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF))
+                condition.Add(PROPERTY_CONVERT, true);
+
+            return true;
+        }
+
+        private static bool TryConditionLessOrEquals(PolicyAssignmentContext context, JObject condition)
+        {
+            if (!condition.ContainsKeyInsensitive(PROPERTY_LESSOREQUALS))
+                return false;
+
+            // Convert a string form to an integer
+            condition.ConvertPropertyToInt(PROPERTY_LESSOREQUALS);
+
+            if (!condition.ContainsKeyInsensitive(PROPERTY_ALLOF) &&
+                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF))
+                condition.Add(PROPERTY_CONVERT, true);
+
+            return true;
+        }
+
+        private static bool TryConditionGreater(PolicyAssignmentContext context, JObject condition)
+        {
+            if (!condition.ContainsKeyInsensitive(PROPERTY_GREATER))
+                return false;
+
+            // Convert a string form to an integer
+            condition.ConvertPropertyToInt(PROPERTY_GREATER);
+
+            if (!condition.ContainsKeyInsensitive(PROPERTY_ALLOF) &&
+                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF))
+                condition.Add(PROPERTY_CONVERT, true);
+
+            return true;
+        }
+
+        private static bool TryConditionGreaterOrEquals(PolicyAssignmentContext context, JObject condition)
+        {
+            if (!condition.ContainsKeyInsensitive(PROPERTY_GREATEROREQUALS))
+                return false;
+
+            // Convert a string form to an integer
+            condition.ConvertPropertyToInt(PROPERTY_GREATEROREQUALS);
+
+            if (!condition.ContainsKeyInsensitive(PROPERTY_ALLOF) &&
+                !condition.ContainsKeyInsensitive(PROPERTY_ANYOF))
+                condition.Add(PROPERTY_CONVERT, true);
+
+            return true;
+        }
+
+        private static bool TryConditionExists(PolicyAssignmentContext context, JObject condition)
+        {
+            if (!condition.ContainsKeyInsensitive(PROPERTY_EXISTS))
+                return false;
+
+            // Convert a string form to a boolean
+            condition.ConvertPropertyToBool(PROPERTY_EXISTS);
+            return true;
+        }
+
+        private static JObject VisitField(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject condition, string field)
+        {
+            field = TemplateVisitor.ExpandString(context, field);
+            if (string.Equals(field, PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
+            {
+                condition.Remove(PROPERTY_FIELD);
+                condition.Add(PROPERTY_TYPE, DOT);
+                AddTypes(context, policyDefinition, condition);
+            }
+            else if (context.TryPolicyAliasPath(field, out var aliasPath))
+            {
+                condition.ReplaceProperty(PROPERTY_FIELD, TrimFieldName(context, aliasPath));
+            }
+            return condition;
+        }
+
+        private static string TrimFieldName(PolicyAssignmentContext context, string field)
+        {
+            if (context.FieldPrefix == null || !field.StartsWith(context.FieldPrefix))
+                return field;
+
+            var toTrim = context.FieldPrefix.Length;
+            if (field.Length > toTrim && field[toTrim] == '.')
+                toTrim++;
+
+            field = field.Substring(toTrim);
+            return string.IsNullOrEmpty(field) ? DOT : field;
+        }
+
+        private static void AddTypes(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject condition)
+        {
+            if (condition.TryGetProperty(PROPERTY_EQUALS, out var resourceType))
+            {
+                if (string.Equals(TYPE_SUBSCRIPTION_RESOURCEGROUP, resourceType, StringComparison.OrdinalIgnoreCase))
+                    resourceType = TYPE_RESOURCEGROUP;
+
+                policyDefinition.Types.Add(resourceType);
+                context.SetDefaultResourceType(resourceType);
+            }
+            else if (condition.TryArrayProperty(PROPERTY_IN, out var resourceTypes))
+            {
+                policyDefinition.Types.AddRange(resourceTypes.Values<string>());
             }
         }
 
@@ -949,6 +1229,60 @@ namespace PSRule.Rules.Azure.Data.Policy
                     condition.Add(PROPERTY_FIELD, field);
                 }
             }
+
+            // Handle runtime token
+            else if (tokens.HasPolicyRuntimeTokens())
+            {
+                var value = VisitRuntimeTokens(context, tokens);
+                if (value != null)
+                    condition.ReplaceProperty(PROPERTY_VALUE, value);
+            }
+        }
+
+        private static JObject VisitRuntimeTokens(PolicyAssignmentContext context, TokenStream tokens)
+        {
+            var o = VisitRuntimeToken(context, tokens);
+            return o == null ? null : new JObject
+            {
+                { DOLLAR, o }
+            };
+        }
+
+        private static JObject VisitRuntimeToken(PolicyAssignmentContext context, TokenStream tokens)
+        {
+            if (tokens.ConsumeFunction(PROPERTY_PADLEFT) && tokens.Skip(ExpressionTokenType.GroupStart))
+            {
+                var child = VisitRuntimeToken(context, tokens);
+                var o = new JObject
+                {
+                    { PROPERTY_PADLEFT, child },
+                };
+                if (tokens.ConsumeInteger(out var totalLength))
+                    o.Add("totalLength", totalLength);
+
+                if (tokens.ConsumeString(out var paddingCharacter))
+                    o.Add("paddingCharacter", paddingCharacter);
+
+                tokens.Skip(ExpressionTokenType.GroupEnd);
+                return o;
+            }
+            else if (tokens.ConsumeFunction(FUNCTION_CURRENT) && tokens.Skip(ExpressionTokenType.GroupStart))
+            {
+                var fieldTarget = "";
+                if (tokens.TryTokenType(ExpressionTokenType.String, out var current))
+                {
+                    fieldTarget = current.Content;
+                    if (context.TryPolicyAliasPath(current.Content, out var policyAlias))
+                        fieldTarget = TrimFieldName(context, policyAlias);
+                }
+                var o = new JObject
+                {
+                    { PROPERTY_PATH, fieldTarget },
+                };
+                tokens.Skip(ExpressionTokenType.GroupEnd);
+                return o;
+            }
+            return null;
         }
 
         /// <summary>
@@ -1052,29 +1386,29 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <summary>
         /// Handle conditions or pre-conditions associated with the effect of the policy definition.
         /// </summary>
-        private static void EffectConditions(PolicyDefinition policyDefinition, JObject policyRule)
+        private static void EffectConditions(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject policyRule)
         {
             if (!policyRule.TryObjectProperty(PROPERTY_THEN, out var then) ||
                 !then.TryObjectProperty(PROPERTY_DETAILS, out var details))
                 return;
 
-            if (IsIfNotExistsEffect(then))
+            if (IsIfNotExistsEffect(context, then))
             {
                 policyDefinition.Where = policyDefinition.Condition;
-                policyDefinition.Condition = AndExistanceExpression(details, DefaultEffectConditions(details));
+                policyDefinition.Condition = AndExistanceExpression(context, details, DefaultEffectConditions(context, details));
             }
             else
             {
-                policyDefinition.Condition = AndCondition(policyDefinition.Condition, DefaultEffectConditions(details));
+                policyDefinition.Condition = AndCondition(policyDefinition.Condition, DefaultEffectConditions(context, details));
             }
         }
 
         /// <summary>
         /// Determines if the effect is AuditIfNotExists or DeployIfNotExists.
         /// </summary>
-        private static bool IsIfNotExistsEffect(JObject then)
+        private static bool IsIfNotExistsEffect(PolicyAssignmentContext context, JObject then)
         {
-            return TryPolicyRuleEffect(then, out var effect) &&
+            return TryPolicyRuleEffect(context, then, out var effect) &&
                 (StringComparer.OrdinalIgnoreCase.Equals(effect, EFFECT_AUDITIFNOTEXISTS) ||
                 StringComparer.OrdinalIgnoreCase.Equals(effect, EFFECT_DEPLOYIFNOTEXISTS));
         }
@@ -1082,20 +1416,24 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <summary>
         /// Update the condition if then policy effect is Audit, Deny, Modify, or Append.
         /// </summary>
-        private static JObject DefaultEffectConditions(JObject details)
+        private static JObject DefaultEffectConditions(PolicyAssignmentContext context, JObject details)
         {
-            return AndNameCondition(details, TypeExpression(details));
+            return AndNameCondition(details, TypeExpression(context, details));
         }
 
-        private static JObject TypeExpression(JObject details)
+        private static JObject TypeExpression(PolicyAssignmentContext context, JObject details)
         {
-            return details == null || !details.TryStringProperty(PROPERTY_TYPE, out var type) ? null : new JObject {
+            if (details == null || !details.TryStringProperty(PROPERTY_TYPE, out var type))
+                return null;
+
+            context.SetDefaultResourceType(type);
+            return new JObject {
                 { PROPERTY_TYPE, DOT },
                 { PROPERTY_EQUALS, type }
             };
         }
 
-        private static JObject AndExistanceExpression(JObject details, JObject subselector)
+        private static JObject AndExistanceExpression(PolicyAssignmentContext context, JObject details, JObject subselector)
         {
             if (details == null || !details.TryObjectProperty(PROPERTY_EXISTENCECONDITION, out var existenceCondition))
             {
@@ -1105,6 +1443,8 @@ namespace PSRule.Rules.Azure.Data.Policy
                     { PROPERTY_EQUALS, true }
                 };
             }
+
+            VisitCondition(context, null, existenceCondition);
 
             var allOf = new JArray
             {
@@ -1150,8 +1490,9 @@ namespace PSRule.Rules.Azure.Data.Policy
             return left == null || left.Count == 0 ? right : left;
         }
 
-        private static bool TryPolicyRuleEffect(JObject then, out string effect)
+        private static bool TryPolicyRuleEffect(PolicyAssignmentContext context, JObject then, out string effect)
         {
+            ResolveObject(context, then);
             return then.TryStringProperty(PROPERTY_EFFECT, out effect);
         }
 
