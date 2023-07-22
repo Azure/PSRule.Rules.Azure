@@ -45,8 +45,8 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
 
-            $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MariaDB 'server-A' should have geo-redundant backup configured.";
-            $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MariaDB 'server-B' should have geo-redundant backup configured.";
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.storageProfile.geoRedundantBackup: Is set to 'Disabled'.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.storageProfile.geoRedundantBackup: The field 'properties.storageProfile.geoRedundantBackup' does not exist.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -127,7 +127,7 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'server-C', 'rule-B';
+            $ruleResult.TargetName | Should -BeIn 'server-C', 'server-D/rule-B';
         }
 
         It 'Azure.MariaDB.FirewallRuleCount' {
@@ -283,7 +283,7 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
         BeforeDiscovery {
             $validNames = @(
                 'rule1'
-                'default'
+                'server1/default'
                 'allowed-developer'
                 'blocked-all'
                 'BLOCKED-ALL'
@@ -333,7 +333,7 @@ Describe 'Azure.MariaDB' -Tag 'MariaDB' {
             $validNames = @(
                 'AllowSubnet'
                 'Out-Default'
-                'IN-DEFAULT'
+                'server1/IN-DEFAULT'
                 'AllowPeeredSubnet'
             )
 

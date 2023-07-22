@@ -199,8 +199,12 @@
         "Name": "Default",
         "Properties": {
           "state": "Disabled",
-          "disabledAlerts": [""],
-          "emailAddresses": [""],
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",
@@ -273,8 +277,12 @@
         "Name": "Default",
         "Properties": {
           "state": "Enabled",
-          "disabledAlerts": [""],
-          "emailAddresses": [""],
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
           "emailAccountAdmins": true,
           "storageEndpoint": "https://account.blob.core.windows.net",
           "storageAccountAccessKey": "",
@@ -318,8 +326,8 @@
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-D/firewallRules/rule-B",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMariaDB/servers/server-D/firewallRules/rule-B",
     "Location": "region",
-    "ResourceName": "rule-B",
-    "Name": "rule-B",
+    "ResourceName": "server-D/rule-B",
+    "Name": "server-D/rule-B",
     "Properties": {
       "startIpAddress": "20.67.176.40",
       "endIpAddress": "20.67.176.40"
