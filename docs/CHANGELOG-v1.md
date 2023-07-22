@@ -37,6 +37,8 @@ What's changed since v1.28.0:
     [#2335](https://github.com/Azure/PSRule.Rules.Azure/issues/2335)
     - Updated `Azure.MariaDB.VNETRuleName` to allow for parent resources.
     - Updated `Azure.MariaDB.FirewallRuleName` to allow for parent resources.
+  - Fixed network watcher existence check by @BernieWhite.
+    [#2342](https://github.com/Azure/PSRule.Rules.Azure/issues/2342)
 
 ## v1.28.0
 
