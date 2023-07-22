@@ -396,7 +396,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.86912b6a2faa",
+      "name": "Azure.Policy.4b8bdb54293f",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -408,8 +408,14 @@
       "condition": {
         "allOf": [
           {
-            "greaterOrEquals": 1,
-            "field": "properties.loadBalancingRules[?@.properties.disableOutboundSnat == False]"
+            "greaterOrEqual": 1,
+            "field": "properties.loadBalancingRules[*]",
+            "allOf": [
+              {
+                "field": "properties.disableOutboundSnat",
+                "equals": false
+              }
+            ]
           }
         ]
       }
@@ -420,7 +426,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.ec67e4794000",
+      "name": "Azure.Policy.e0a0a926f27e",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -433,7 +439,8 @@
         "allOf": [
           {
             "greaterOrEquals": 1,
-            "field": "properties.loadBalancingRules[*]"
+            "field": "properties.loadBalancingRules[*]",
+            "convert": true
           }
         ]
       }
@@ -444,7 +451,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.43c78c4c36bf",
+      "name": "Azure.Policy.c8ba55a0d6a3",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -456,8 +463,14 @@
       "condition": {
         "allOf": [
           {
-            "field": "properties.securityRules[?@.properties.description == 'My unique description']",
-            "count": 1
+            "count": 1,
+            "field": "properties.securityRules[*]",
+            "allOf": [
+              {
+                "field": "properties.description",
+                "equals": "My unique description"
+              }
+            ]
           }
         ]
       }
@@ -468,17 +481,34 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.5c4e6dfa7d1d",
+      "name": "Azure.Policy.c36731b78c7b",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
     },
     "spec": {
+      "type": [
+        "Microsoft.Network/networkSecurityGroups/securityRules"
+      ],
       "condition": {
         "allOf": [
           {
             "greater": 0,
-            "field": "properties.securityRules[?@.type == 'Microsoft.Network/networkSecurityGroups/securityRules' && @.properties.direction == 'Inbound' && @.properties.access == 'Allow' && @.properties.destinationPortRange == '3389']"
+            "field": "properties.securityRules[*]",
+            "allOf": [
+              {
+                "field": "properties.direction",
+                "equals": "Inbound"
+              },
+              {
+                "field": "properties.access",
+                "equals": "Allow"
+              },
+              {
+                "field": "properties.destinationPortRange",
+                "equals": "3389"
+              }
+            ]
           }
         ]
       }
@@ -489,7 +519,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.5a3cb5575682",
+      "name": "Azure.Policy.31bff098a98c",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -535,7 +565,25 @@
               },
               {
                 "greater": 0,
-                "field": "properties.securityRules[?@.properties.sourceAddressPrefix == '*' && (@.properties.destinationPortRange == '22' || @.properties.destinationPortRange == '3389')]"
+                "field": "properties.securityRules[*]",
+                "allOf": [
+                  {
+                    "field": "properties.sourceAddressPrefix",
+                    "equals": "*"
+                  },
+                  {
+                    "anyOf": [
+                      {
+                        "field": "properties.destinationPortRange",
+                        "equals": "22"
+                      },
+                      {
+                        "field": "properties.destinationPortRange",
+                        "equals": "3389"
+                      }
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -548,7 +596,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.9c992e3a1370",
+      "name": "Azure.Policy.6209be6df674",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -586,8 +634,21 @@
                 "type": "."
               },
               {
-                "field": "properties.subnets[?@.properties.routeTable.id == null && (@.name != 'AzureFirewallManagementSubnet' && @.name != 'AzureFirewallSubnet')]",
-                "notCount": 0
+                "greater": 0,
+                "field": "properties.subnets[*]",
+                "allOf": [
+                  {
+                    "exists": false,
+                    "field": "properties.routeTable.id"
+                  },
+                  {
+                    "field": "name",
+                    "notIn": [
+                      "AzureFirewallManagementSubnet",
+                      "AzureFirewallSubnet"
+                    ]
+                  }
+                ]
               }
             ]
           }
@@ -600,7 +661,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.be8dd5f1c412",
+      "name": "Azure.Policy.af3342ac6626",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -616,8 +677,17 @@
             "notContains": "pls"
           },
           {
-            "greaterOrEquals": 1,
-            "field": "properties.privateLinkServiceConnections[*].properties.groupIds[?(@ != 'blob' && @ != 'sqlServer')]"
+            "greaterOrEqual": 1,
+            "field": "properties.privateLinkServiceConnections[*].properties.groupIds[*]",
+            "allOf": [
+              {
+                "field": ".",
+                "notIn": [
+                  "blob",
+                  "sqlServer"
+                ]
+              }
+            ]
           }
         ]
       }

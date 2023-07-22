@@ -997,6 +997,14 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 greaterOrEquals.Parent.Replace(new JProperty(PROPERTY_GREATEROREQUAL, greaterOrEquals.Value<int>()));
             }
+            else if (o.TryGetProperty<JToken>(PROPERTY_EQUALS, out var equals))
+            {
+                equals.Parent.Replace(new JProperty(PROPERTY_COUNT, equals.Value<int>()));
+            }
+            else if (o.TryGetProperty<JToken>(PROPERTY_NOTEQUALS, out var notEquals))
+            {
+                notEquals.Parent.Replace(new JProperty(PROPERTY_GREATER, notEquals.Value<int>()));
+            }
         }
 
         private static string ExpandField(PolicyAssignmentContext context, string field)
@@ -1144,7 +1152,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             if (field.Length > toTrim && field[toTrim] == '.')
                 toTrim++;
 
-            return field.Substring(toTrim);
+            field = field.Substring(toTrim);
+            return string.IsNullOrEmpty(field) ? DOT : field;
         }
 
         private static void AddTypes(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject condition)
