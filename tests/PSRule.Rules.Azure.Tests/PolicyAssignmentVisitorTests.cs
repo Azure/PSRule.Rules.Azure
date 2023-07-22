@@ -126,6 +126,31 @@ namespace PSRule.Rules.Azure
             Assert.Single(definitions);
         }
 
+        [Fact]
+        public void GetResourceGroupLocation()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData("Policy.assignment.2.json").Where(a => a["Name"].Value<string>() == "8a3e449a009c485b930b36f2"))
+                visitor.Visit(context, assignment);
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Single(definitions);
+
+            // Check category and version
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988");
+            Assert.NotNull(actual);
+            Assert.Equal("Azure.Policy.0bf4ad02faba", actual.Name);
+            Assert.Equal("General", actual.Category);
+            Assert.Equal("1.0.0", actual.Version);
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.Resources/resourceGroups", actual.Types[0]);
+            Assert.Null(actual.Where);
+            Assert.Equal("{\"allOf\":[{\"field\":\"location\",\"notIn\":[\"australiaeast\",\"australiasoutheast\",\"eastus\",\"westus\"]}]}", actual.Condition.ToString(Formatting.None));
+            Assert.Null(actual.With);
+        }
+
         #region Helper methods
 
         private static PipelineContext GetContext(PSRuleOption option = null)

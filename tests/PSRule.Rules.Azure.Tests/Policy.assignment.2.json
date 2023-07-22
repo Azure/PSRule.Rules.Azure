@@ -1,0 +1,91 @@
+[
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "8a3e449a009c485b930b36f2",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/8a3e449a009c485b930b36f2",
+    "ResourceName": "8a3e449a009c485b930b36f2",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/8a3e449a009c485b930b36f2",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "Allowed locations for resource groups",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "",
+        "parameterScopes": {
+          "listOfAllowedLocations": "/subscriptions/00000000-0000-0000-0000-000000000000"
+        },
+        "createdBy": "",
+        "createdOn": "",
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 0,
+      "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988",
+      "Parameters": {
+        "listOfAllowedLocations": {
+          "value": [
+            "australiaeast",
+            "australiasoutheast",
+            "eastus",
+            "westus"
+          ]
+        }
+      },
+      "NonComplianceMessages": []
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "e765b5de-1225-4ba3-bd56-1ac6695af988",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988",
+        "ResourceName": "e765b5de-1225-4ba3-bd56-1ac6695af988",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "This policy enables you to restrict the locations your organization can create resource groups in. Use to enforce your geo-compliance requirements.",
+          "DisplayName": "Allowed locations for resource groups",
+          "Metadata": {
+            "version": "1.0.0",
+            "category": "General"
+          },
+          "Mode": "All",
+          "Parameters": {
+            "listOfAllowedLocations": {
+              "type": "Array",
+              "metadata": {
+                "description": "The list of locations that resource groups can be created in.",
+                "strongType": "location",
+                "displayName": "Allowed locations"
+              }
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                },
+                {
+                  "field": "location",
+                  "notIn": "[parameters('listOfAllowedLocations')]"
+                }
+              ]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988"
+      }
+    ],
+    "exemptions": []
+  }
+]
