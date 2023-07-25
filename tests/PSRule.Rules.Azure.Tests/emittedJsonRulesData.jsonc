@@ -4,7 +4,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.34672cb6f738",
+      "name": "Azure.Policy.0d486e605b3a",
       "tags": {
         "Azure.Policy/category": "Storage"
       },
@@ -20,13 +20,17 @@
       "with": [
         "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
       ],
-      "condition": {
+      "where": {
         "allOf": [
           {
             "field": "properties.minimumTlsVersion",
             "notEquals": "TLS1_2"
           }
         ]
+      },
+      "condition": {
+        "value": "Deny",
+        "equals": false
       }
     }
   },
@@ -396,7 +400,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.4b8bdb54293f",
+      "name": "Azure.Policy.f421d4659ad1",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -405,7 +409,7 @@
       "type": [
         "Microsoft.Network/loadBalancers"
       ],
-      "condition": {
+      "where": {
         "allOf": [
           {
             "greaterOrEqual": 1,
@@ -418,6 +422,10 @@
             ]
           }
         ]
+      },
+      "condition": {
+        "value": "deny",
+        "equals": false
       }
     }
   },
@@ -426,7 +434,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.e0a0a926f27e",
+      "name": "Azure.Policy.97914be0519e",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -435,7 +443,7 @@
       "type": [
         "Microsoft.Network/loadBalancers"
       ],
-      "condition": {
+      "where": {
         "allOf": [
           {
             "greaterOrEquals": 1,
@@ -443,6 +451,10 @@
             "convert": true
           }
         ]
+      },
+      "condition": {
+        "value": "deny",
+        "equals": false
       }
     }
   },
@@ -451,7 +463,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.498bc19e6141",
+      "name": "Azure.Policy.7e58484baa4c",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -460,7 +472,7 @@
       "type": [
         "Microsoft.Network/networkSecurityGroups"
       ],
-      "condition": {
+      "where": {
         "allOf": [
           {
             "count": 1,
@@ -473,6 +485,10 @@
             ]
           }
         ]
+      },
+      "condition": {
+        "value": "deny",
+        "equals": false
       }
     }
   },
@@ -481,7 +497,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.c36731b78c7b",
+      "name": "Azure.Policy.046f501cad45",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -490,7 +506,7 @@
       "type": [
         "Microsoft.Network/networkSecurityGroups/securityRules"
       ],
-      "condition": {
+      "where": {
         "allOf": [
           {
             "greater": 0,
@@ -511,6 +527,10 @@
             ]
           }
         ]
+      },
+      "condition": {
+        "value": "deny",
+        "equals": false
       }
     }
   },
@@ -519,7 +539,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.31bff098a98c",
+      "name": "Azure.Policy.9b51258eff45",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -529,7 +549,7 @@
         "Microsoft.Network/networkSecurityGroups/securityRules",
         "Microsoft.Network/networkSecurityGroups"
       ],
-      "condition": {
+      "where": {
         "anyOf": [
           {
             "allOf": [
@@ -588,6 +608,10 @@
             ]
           }
         ]
+      },
+      "condition": {
+        "value": "deny",
+        "equals": false
       }
     }
   },
@@ -596,7 +620,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.42f5ed8f087c",
+      "name": "Azure.Policy.df2cdebb72f5",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -606,7 +630,7 @@
         "Microsoft.Network/virtualNetworks/subnets",
         "Microsoft.Network/virtualNetworks"
       ],
-      "condition": {
+      "where": {
         "anyOf": [
           {
             "allOf": [
@@ -653,6 +677,10 @@
             ]
           }
         ]
+      },
+      "condition": {
+        "value": "deny",
+        "equals": false
       }
     }
   },
@@ -661,7 +689,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.af3342ac6626",
+      "name": "Azure.Policy.fe294bf42b80",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -670,7 +698,7 @@
       "type": [
         "Microsoft.Network/privateEndpoints"
       ],
-      "condition": {
+      "where": {
         "allOf": [
           {
             "field": "properties.subnet.id",
@@ -690,6 +718,10 @@
             ]
           }
         ]
+      },
+      "condition": {
+        "value": "deny",
+        "equals": false
       }
     }
   },
@@ -698,7 +730,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.95078a87385b",
+      "name": "Azure.Policy.237646e7bc12",
       "tags": {
         "Azure.Policy/category": "Regulatory Compliance"
       },
@@ -712,8 +744,8 @@
         "Microsoft.Resources/subscriptions"
       ],
       "condition": {
-        "equals": "Microsoft.Resources/subscriptions",
-        "type": "."
+        "value": "Manual",
+        "equals": false
       }
     }
   }
