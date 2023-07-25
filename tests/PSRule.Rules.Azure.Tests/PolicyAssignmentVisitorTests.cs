@@ -40,13 +40,13 @@ namespace PSRule.Rules.Azure
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
             Assert.NotNull(actual);
-            Assert.Equal("Azure.Policy.8e612cbd8718", actual.Name);
+            Assert.Equal("Azure.Policy.982623536a93", actual.Name);
             Assert.Equal("Storage", actual.Category);
             Assert.Equal("1.1.1", actual.Version);
             Assert.Single(actual.Types);
             Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
-            Assert.Null(actual.Where);
-            Assert.Equal("{\"allOf\":[{\"field\":\"properties.networkAcls.defaultAction\",\"notEquals\":\"Deny\"}]}", actual.Condition.ToString(Formatting.None));
+            Assert.Equal("{\"allOf\":[{\"field\":\"properties.networkAcls.defaultAction\",\"notEquals\":\"Deny\"}]}", actual.Where.ToString(Formatting.None));
+            Assert.Equal("{\"value\":\"Audit\",\"equals\":false}", actual.Condition.ToString(Formatting.None));
             Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" }, actual.With);
 
             actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/04c4380f-3fae-46e8-96c9-30193528f602");
@@ -152,13 +152,13 @@ namespace PSRule.Rules.Azure
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988");
             Assert.NotNull(actual);
-            Assert.Equal("Azure.Policy.0bf4ad02faba", actual.Name);
+            Assert.Equal("Azure.Policy.900f3f3b1913", actual.Name);
             Assert.Equal("General", actual.Category);
             Assert.Equal("1.0.0", actual.Version);
             Assert.Single(actual.Types);
             Assert.Equal("Microsoft.Resources/resourceGroups", actual.Types[0]);
-            Assert.Null(actual.Where);
-            Assert.Equal("{\"allOf\":[{\"field\":\"location\",\"notIn\":[\"australiaeast\",\"australiasoutheast\",\"eastus\",\"westus\"]}]}", actual.Condition.ToString(Formatting.None));
+            Assert.Equal("{\"allOf\":[{\"field\":\"location\",\"notIn\":[\"australiaeast\",\"australiasoutheast\",\"eastus\",\"westus\"]}]}", actual.Where.ToString(Formatting.None));
+            Assert.Equal("{\"value\":\"deny\",\"equals\":false}", actual.Condition.ToString(Formatting.None));
             Assert.Null(actual.With);
         }
 

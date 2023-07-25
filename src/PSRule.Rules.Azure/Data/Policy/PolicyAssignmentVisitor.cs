@@ -880,7 +880,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             // Modify policy rule
             TrimPolicyRule(policyRule);
-            VisitPolicyRule(context, result, policyRule);
+            VisitPolicyRule(context, result, policyRule, effect);
             AddSelectors(result, policyMode);
             OptimizeConditions(result);
 
@@ -897,17 +897,18 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <summary>
         /// Visit the policyRule node.
         /// </summary>
-        private static void VisitPolicyRule(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject policyRule)
+        private static void VisitPolicyRule(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject policyRule, string effect)
         {
             // Handle if condition block
             if (policyRule.TryObjectProperty(PROPERTY_IF, out var condition))
             {
                 VisitCondition(context, policyDefinition, condition);
-                policyDefinition.Condition = condition;
+                policyDefinition.Where = condition;
             }
 
             // Handle conditions in then block
-            EffectConditions(context, policyDefinition, policyRule);
+            EffectConditions(context, policyDefinition, policyRule, effect);
+            policyDefinition.Condition ??= AlwaysFail(effect);
         }
 
         /// <summary>
@@ -1386,7 +1387,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <summary>
         /// Handle conditions or pre-conditions associated with the effect of the policy definition.
         /// </summary>
-        private static void EffectConditions(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject policyRule)
+        private static void EffectConditions(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject policyRule, string effect)
         {
             if (!policyRule.TryObjectProperty(PROPERTY_THEN, out var then) ||
                 !then.TryObjectProperty(PROPERTY_DETAILS, out var details))
@@ -1394,13 +1395,22 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             if (IsIfNotExistsEffect(context, then))
             {
-                policyDefinition.Where = policyDefinition.Condition;
+                //policyDefinition.Where = policyDefinition.Condition;
                 policyDefinition.Condition = AndExistanceExpression(context, details, DefaultEffectConditions(context, details));
             }
             else
             {
-                policyDefinition.Condition = AndCondition(policyDefinition.Condition, DefaultEffectConditions(context, details));
+                policyDefinition.Condition = DefaultEffectConditions(context, details) ?? AlwaysFail(effect);
             }
+        }
+
+        private static JObject AlwaysFail(string effect)
+        {
+            return new JObject
+            {
+                { PROPERTY_VALUE, effect },
+                { PROPERTY_EQUALS, false },
+            };
         }
 
         /// <summary>
