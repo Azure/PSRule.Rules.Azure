@@ -18,6 +18,7 @@
         "bewhite.psrule-vscode-preview",
         "GitHub.vscode-pull-request-github",
         "github.vscode-github-actions",
+        "davidanson.vscode-markdownlint",
         "eamodio.gitlens"
       ]
     }
