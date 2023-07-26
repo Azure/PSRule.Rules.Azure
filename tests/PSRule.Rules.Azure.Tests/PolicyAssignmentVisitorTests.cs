@@ -40,23 +40,23 @@ namespace PSRule.Rules.Azure
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
             Assert.NotNull(actual);
-            Assert.Equal("Azure.Policy.982623536a93", actual.Name);
+            Assert.Equal("Azure.Policy.ff989b7c6a22", actual.Name);
             Assert.Equal("Storage", actual.Category);
             Assert.Equal("1.1.1", actual.Version);
             Assert.Single(actual.Types);
             Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
-            Assert.Equal("{\"allOf\":[{\"field\":\"properties.networkAcls.defaultAction\",\"notEquals\":\"Deny\"}]}", actual.Where.ToString(Formatting.None));
-            Assert.Equal("{\"value\":\"Audit\",\"equals\":false}", actual.Condition.ToString(Formatting.None));
+            Assert.Null(actual.Where);
+            Assert.Equal("{\"field\":\"properties.networkAcls.defaultAction\",\"equals\":\"Deny\"}", actual.Condition.ToString(Formatting.None));
             Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" }, actual.With);
 
             actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/04c4380f-3fae-46e8-96c9-30193528f602");
             Assert.NotNull(actual);
-            Assert.Equal("Azure.Policy.7f5fef3eba89", actual.Name);
+            Assert.Equal("Azure.Policy.4e24c971a1ac", actual.Name);
             Assert.Equal("Monitoring", actual.Category);
             Assert.Equal("1.0.2-preview", actual.Version);
             Assert.Single(actual.Types);
             Assert.Equal("Microsoft.Compute/virtualMachines", actual.Types[0]);
-            Assert.Equal("{\"allOf\":[{\"anyOf\":[{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"Canonical\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"UbuntuServer\"},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"18.04-LTS\",\"16.04-LTS\",\"16.04.0-LTS\",\"14.04.0-LTS\",\"14.04.1-LTS\",\"14.04.5-LTS\"]}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"RedHat\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"RHEL\",\"RHEL-SAP-HANA\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"SUSE\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"SLES\",\"SLES-HPC\",\"SLES-HPC-Priority\",\"SLES-SAP\",\"SLES-SAP-BYOS\",\"SLES-Priority\",\"SLES-BYOS\",\"SLES-SAPCAL\",\"SLES-Standard\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"12-SP2\",\"12-SP3\",\"12-SP4\"]}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"OpenLogic\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"CentOS\",\"Centos-LVM\",\"CentOS-SRIOV\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"cloudera\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"cloudera-centos-os\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]}]}", actual.Where.ToString(Formatting.None));
+            Assert.Equal("{\"anyOf\":[{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"Canonical\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"UbuntuServer\"},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"18.04-LTS\",\"16.04-LTS\",\"16.04.0-LTS\",\"14.04.0-LTS\",\"14.04.1-LTS\",\"14.04.5-LTS\"]}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"RedHat\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"RHEL\",\"RHEL-SAP-HANA\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"SUSE\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"SLES\",\"SLES-HPC\",\"SLES-HPC-Priority\",\"SLES-SAP\",\"SLES-SAP-BYOS\",\"SLES-Priority\",\"SLES-BYOS\",\"SLES-SAPCAL\",\"SLES-Standard\"]},{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"12-SP2\",\"12-SP3\",\"12-SP4\"]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"OpenLogic\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"CentOS\",\"Centos-LVM\",\"CentOS-SRIOV\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"cloudera\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"cloudera-centos-os\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]}", actual.Where.ToString(Formatting.None));
             Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" }, actual.With);
 
             actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/f9be5368-9bf5-4b84-9e0a-7850da98bb46");
@@ -152,13 +152,13 @@ namespace PSRule.Rules.Azure
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988");
             Assert.NotNull(actual);
-            Assert.Equal("Azure.Policy.900f3f3b1913", actual.Name);
+            Assert.Equal("Azure.Policy.8fc87228ae18", actual.Name);
             Assert.Equal("General", actual.Category);
             Assert.Equal("1.0.0", actual.Version);
             Assert.Single(actual.Types);
             Assert.Equal("Microsoft.Resources/resourceGroups", actual.Types[0]);
-            Assert.Equal("{\"allOf\":[{\"field\":\"location\",\"notIn\":[\"australiaeast\",\"australiasoutheast\",\"eastus\",\"westus\"]}]}", actual.Where.ToString(Formatting.None));
-            Assert.Equal("{\"value\":\"deny\",\"equals\":false}", actual.Condition.ToString(Formatting.None));
+            Assert.Null(actual.Where);
+            Assert.Equal("{\"field\":\"location\",\"in\":[\"australiaeast\",\"australiasoutheast\",\"eastus\",\"westus\"]}", actual.Condition.ToString(Formatting.None));
             Assert.Null(actual.With);
         }
 

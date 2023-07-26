@@ -43,6 +43,8 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_ANYOF = "anyOf";
         private const string PROPERTY_EQUALS = "equals";
         private const string PROPERTY_NOTEQUALS = "notEquals";
+        private const string PROPERTY_CONTAINS = "contains";
+        private const string PROPERTY_NOTCONTAINS = "notContains";
         private const string PROPERTY_GREATER = "greater";
         private const string PROPERTY_GREATEROREQUAL = "greaterOrEqual";
         private const string PROPERTY_GREATEROREQUALS = "greaterOrEquals";
@@ -52,6 +54,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_IN = "in";
         private const string PROPERTY_NOTIN = "notIn";
         private const string PROPERTY_EXISTS = "exists";
+        private const string PROPERTY_NOTEXISTS = "notExists";
         private const string PROPERTY_DISPLAYNAME = "displayName";
         private const string PROPERTY_DESCRIPTION = "description";
         private const string PROPERTY_METADATA = "metadata";
@@ -882,7 +885,6 @@ namespace PSRule.Rules.Azure.Data.Policy
             TrimPolicyRule(policyRule);
             VisitPolicyRule(context, result, policyRule, effect);
             AddSelectors(result, policyMode);
-            OptimizeConditions(result);
 
             // Check for an resulting empty condition.
             if (result.Condition == null || result.Condition.Count == 0)
@@ -908,7 +910,8 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             // Handle conditions in then block
             EffectConditions(context, policyDefinition, policyRule, effect);
-            policyDefinition.Condition ??= AlwaysFail(effect);
+            OptimizeConditions(policyDefinition);
+            CompleteCondition(context, policyDefinition, effect);
         }
 
         /// <summary>
@@ -919,9 +922,15 @@ namespace PSRule.Rules.Azure.Data.Policy
             if (condition.TryArrayProperty(PROPERTY_ALLOF, out var all) ||
                 condition.TryArrayProperty(PROPERTY_ANYOF, out all))
             {
-                foreach (var item in all.Values<JObject>())
+                foreach (var item in all.Values<JObject>().ToArray())
                 {
                     VisitCondition(context, policyDefinition, item);
+                }
+
+                // Pull up child condition
+                if (all.Count == 1)
+                {
+                    condition.Replace(all[0]);
                 }
             }
             else if (condition.TryObjectProperty(PROPERTY_NOT, out var item))
@@ -1004,7 +1013,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
             else if (o.TryGetProperty<JToken>(PROPERTY_NOTEQUALS, out var notEquals))
             {
-                notEquals.Parent.Replace(new JProperty(PROPERTY_GREATER, notEquals.Value<int>()));
+                notEquals.Parent.Replace(new JProperty(PROPERTY_NOTCOUNT, notEquals.Value<int>()));
             }
         }
 
@@ -1351,6 +1360,12 @@ namespace PSRule.Rules.Azure.Data.Policy
                     if (OptimizeConditionObject(policyDefinition, item) == null)
                         item.Remove();
                 }
+
+                // Pull up child condition if not a sub-selector or quantifier
+                if (items.Count == 1 && condition.Count == 1)
+                {
+                    return items[0].Value<JObject>();
+                }
             }
             // Handle field merge
             else if (condition.TryGetProperty(PROPERTY_FIELD, out var field))
@@ -1402,6 +1417,39 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 policyDefinition.Condition = DefaultEffectConditions(context, details) ?? AlwaysFail(effect);
             }
+        }
+
+        private static void CompleteCondition(PolicyAssignmentContext context, PolicyDefinition policyDefinition, string effect)
+        {
+            if (policyDefinition.Condition != null)
+                return;
+
+            if (policyDefinition.Where == null ||
+                (policyDefinition.Where.ContainsKeyInsensitive(PROPERTY_ALLOF) ||
+                policyDefinition.Where.ContainsKeyInsensitive(PROPERTY_ANYOF)) &&
+                !policyDefinition.Where.ContainsKeyInsensitive(PROPERTY_FIELD))
+            {
+                policyDefinition.Condition = AlwaysFail(effect);
+                return;
+            }
+
+            // Convert precondition to condition.
+            policyDefinition.Condition = ReverseCondition(policyDefinition.Where);
+            policyDefinition.Where = null;
+        }
+
+        private static JObject ReverseCondition(JObject condition)
+        {
+            _ = condition.TryRenameProperty(PROPERTY_IN, PROPERTY_NOTIN) ||
+                condition.TryRenameProperty(PROPERTY_NOTIN, PROPERTY_IN) ||
+                condition.TryRenameProperty(PROPERTY_EQUALS, PROPERTY_NOTEQUALS) ||
+                condition.TryRenameProperty(PROPERTY_NOTEQUALS, PROPERTY_EQUALS) ||
+                condition.TryRenameProperty(PROPERTY_CONTAINS, PROPERTY_NOTCONTAINS) ||
+                condition.TryRenameProperty(PROPERTY_NOTCONTAINS, PROPERTY_CONTAINS) ||
+                condition.TryRenameProperty(PROPERTY_EXISTS, PROPERTY_NOTEXISTS) ||
+                condition.TryRenameProperty(PROPERTY_NOTEXISTS, PROPERTY_EXISTS);
+
+            return condition;
         }
 
         private static JObject AlwaysFail(string effect)

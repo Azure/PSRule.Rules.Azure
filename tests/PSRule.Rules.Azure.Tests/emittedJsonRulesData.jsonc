@@ -4,7 +4,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.0d486e605b3a",
+      "name": "Azure.Policy.65db1c629a22",
       "tags": {
         "Azure.Policy/category": "Storage"
       },
@@ -20,17 +20,9 @@
       "with": [
         "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
       ],
-      "where": {
-        "allOf": [
-          {
-            "field": "properties.minimumTlsVersion",
-            "notEquals": "TLS1_2"
-          }
-        ]
-      },
       "condition": {
-        "value": "Deny",
-        "equals": false
+        "field": "properties.minimumTlsVersion",
+        "equals": "TLS1_2"
       }
     }
   },
@@ -39,7 +31,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.3314b9415338",
+      "name": "Azure.Policy.d49c9ce3b804",
       "tags": {
         "Azure.Policy/category": "Monitoring"
       },
@@ -56,253 +48,249 @@
         "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
       ],
       "where": {
-        "allOf": [
+        "anyOf": [
           {
-            "anyOf": [
+            "field": "properties.storageProfile.imageReference.id",
+            "in": [
+              "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Compute/galleries/gallery_image/images/image_name/versions/0.0.1"
+            ]
+          },
+          {
+            "allOf": [
               {
-                "field": "properties.storageProfile.imageReference.id",
+                "field": "properties.storageProfile.imageReference.publisher",
+                "equals": "RedHat"
+              },
+              {
+                "field": "properties.storageProfile.imageReference.offer",
                 "in": [
-                  "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/PolicyRG/providers/Microsoft.Compute/galleries/gallery_image/images/image_name/versions/0.0.1"
+                  "RHEL",
+                  "RHEL-SAP-HANA"
                 ]
               },
               {
-                "allOf": [
+                "anyOf": [
                   {
-                    "field": "properties.storageProfile.imageReference.publisher",
-                    "equals": "RedHat"
-                  },
-                  {
-                    "field": "properties.storageProfile.imageReference.offer",
-                    "in": [
-                      "RHEL",
-                      "RHEL-SAP-HANA"
-                    ]
-                  },
-                  {
-                    "anyOf": [
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "6.*"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "7*"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "8*"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "allOf": [
-                  {
-                    "field": "properties.storageProfile.imageReference.publisher",
-                    "equals": "SUSE"
-                  },
-                  {
-                    "anyOf": [
-                      {
-                        "allOf": [
-                          {
-                            "field": "properties.storageProfile.imageReference.offer",
-                            "in": [
-                              "SLES",
-                              "SLES-HPC",
-                              "SLES-HPC-Priority",
-                              "SLES-SAP",
-                              "SLES-SAP-BYOS",
-                              "SLES-Priority",
-                              "SLES-BYOS",
-                              "SLES-SAPCAL",
-                              "SLES-Standard"
-                            ]
-                          },
-                          {
-                            "anyOf": [
-                              {
-                                "field": "properties.storageProfile.imageReference.sku",
-                                "like": "12*"
-                              },
-                              {
-                                "field": "properties.storageProfile.imageReference.sku",
-                                "like": "15*"
-                              }
-                            ]
-                          }
-                        ]
-                      },
-                      {
-                        "allOf": [
-                          {
-                            "anyOf": [
-                              {
-                                "field": "properties.storageProfile.imageReference.offer",
-                                "like": "sles-12-sp*"
-                              },
-                              {
-                                "field": "properties.storageProfile.imageReference.offer",
-                                "like": "sles-15-sp*"
-                              }
-                            ]
-                          },
-                          {
-                            "field": "properties.storageProfile.imageReference.sku",
-                            "in": [
-                              "gen1",
-                              "gen2"
-                            ]
-                          }
-                        ]
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "allOf": [
-                  {
-                    "field": "properties.storageProfile.imageReference.publisher",
-                    "equals": "Canonical"
-                  },
-                  {
-                    "field": "properties.storageProfile.imageReference.offer",
-                    "in": [
-                      "UbuntuServer",
-                      "0001-com-ubuntu-server-focal"
-                    ]
-                  },
-                  {
-                    "anyOf": [
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "14.04*LTS"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "16.04*LTS"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "16_04*lts-gen2"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "18.04*LTS"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "18_04*lts-gen2"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "20_04*lts"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "20_04*lts-gen2"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "allOf": [
-                  {
-                    "field": "properties.storageProfile.imageReference.publisher",
-                    "equals": "credativ"
-                  },
-                  {
-                    "field": "properties.storageProfile.imageReference.offer",
-                    "equals": "Debian"
-                  },
-                  {
-                    "anyOf": [
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "8*"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "9*"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "allOf": [
-                  {
-                    "field": "properties.storageProfile.imageReference.publisher",
-                    "equals": "Oracle"
-                  },
-                  {
-                    "field": "properties.storageProfile.imageReference.offer",
-                    "equals": "Oracle-Linux"
-                  },
-                  {
-                    "anyOf": [
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "6.*"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "7.*"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "allOf": [
-                  {
-                    "field": "properties.storageProfile.imageReference.publisher",
-                    "equals": "OpenLogic"
-                  },
-                  {
-                    "field": "properties.storageProfile.imageReference.offer",
-                    "in": [
-                      "CentOS",
-                      "Centos-LVM",
-                      "CentOS-SRIOV"
-                    ]
-                  },
-                  {
-                    "anyOf": [
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "6.*"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "7*"
-                      },
-                      {
-                        "field": "properties.storageProfile.imageReference.sku",
-                        "like": "8*"
-                      }
-                    ]
-                  }
-                ]
-              },
-              {
-                "allOf": [
-                  {
-                    "field": "properties.storageProfile.imageReference.publisher",
-                    "equals": "cloudera"
-                  },
-                  {
-                    "field": "properties.storageProfile.imageReference.offer",
-                    "equals": "cloudera-centos-os"
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "6.*"
                   },
                   {
                     "field": "properties.storageProfile.imageReference.sku",
                     "like": "7*"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "8*"
                   }
                 ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "properties.storageProfile.imageReference.publisher",
+                "equals": "SUSE"
+              },
+              {
+                "anyOf": [
+                  {
+                    "allOf": [
+                      {
+                        "field": "properties.storageProfile.imageReference.offer",
+                        "in": [
+                          "SLES",
+                          "SLES-HPC",
+                          "SLES-HPC-Priority",
+                          "SLES-SAP",
+                          "SLES-SAP-BYOS",
+                          "SLES-Priority",
+                          "SLES-BYOS",
+                          "SLES-SAPCAL",
+                          "SLES-Standard"
+                        ]
+                      },
+                      {
+                        "anyOf": [
+                          {
+                            "field": "properties.storageProfile.imageReference.sku",
+                            "like": "12*"
+                          },
+                          {
+                            "field": "properties.storageProfile.imageReference.sku",
+                            "like": "15*"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "allOf": [
+                      {
+                        "anyOf": [
+                          {
+                            "field": "properties.storageProfile.imageReference.offer",
+                            "like": "sles-12-sp*"
+                          },
+                          {
+                            "field": "properties.storageProfile.imageReference.offer",
+                            "like": "sles-15-sp*"
+                          }
+                        ]
+                      },
+                      {
+                        "field": "properties.storageProfile.imageReference.sku",
+                        "in": [
+                          "gen1",
+                          "gen2"
+                        ]
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "properties.storageProfile.imageReference.publisher",
+                "equals": "Canonical"
+              },
+              {
+                "field": "properties.storageProfile.imageReference.offer",
+                "in": [
+                  "UbuntuServer",
+                  "0001-com-ubuntu-server-focal"
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "14.04*LTS"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "16.04*LTS"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "16_04*lts-gen2"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "18.04*LTS"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "18_04*lts-gen2"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "20_04*lts"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "20_04*lts-gen2"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "properties.storageProfile.imageReference.publisher",
+                "equals": "credativ"
+              },
+              {
+                "field": "properties.storageProfile.imageReference.offer",
+                "equals": "Debian"
+              },
+              {
+                "anyOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "8*"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "9*"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "properties.storageProfile.imageReference.publisher",
+                "equals": "Oracle"
+              },
+              {
+                "field": "properties.storageProfile.imageReference.offer",
+                "equals": "Oracle-Linux"
+              },
+              {
+                "anyOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "6.*"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "7.*"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "properties.storageProfile.imageReference.publisher",
+                "equals": "OpenLogic"
+              },
+              {
+                "field": "properties.storageProfile.imageReference.offer",
+                "in": [
+                  "CentOS",
+                  "Centos-LVM",
+                  "CentOS-SRIOV"
+                ]
+              },
+              {
+                "anyOf": [
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "6.*"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "7*"
+                  },
+                  {
+                    "field": "properties.storageProfile.imageReference.sku",
+                    "like": "8*"
+                  }
+                ]
+              }
+            ]
+          },
+          {
+            "allOf": [
+              {
+                "field": "properties.storageProfile.imageReference.publisher",
+                "equals": "cloudera"
+              },
+              {
+                "field": "properties.storageProfile.imageReference.offer",
+                "equals": "cloudera-centos-os"
+              },
+              {
+                "field": "properties.storageProfile.imageReference.sku",
+                "like": "7*"
               }
             ]
           }
@@ -340,7 +328,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.3a83b926fd9e",
+      "name": "Azure.Policy.eeb7e34479ef",
       "tags": {
         "Azure.Policy/category": "App Service"
       },
@@ -357,12 +345,8 @@
         "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
       ],
       "where": {
-        "allOf": [
-          {
-            "field": "kind",
-            "contains": "functionapp"
-          }
-        ]
+        "field": "kind",
+        "contains": "functionapp"
       },
       "condition": {
         "field": "resources",
@@ -400,7 +384,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.f421d4659ad1",
+      "name": "Azure.Policy.48eab4644919",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -409,23 +393,15 @@
       "type": [
         "Microsoft.Network/loadBalancers"
       ],
-      "where": {
+      "condition": {
+        "greaterOrEqual": 1,
+        "field": "properties.loadBalancingRules[*]",
         "allOf": [
           {
-            "greaterOrEqual": 1,
-            "field": "properties.loadBalancingRules[*]",
-            "allOf": [
-              {
-                "field": "properties.disableOutboundSnat",
-                "equals": false
-              }
-            ]
+            "field": "properties.disableOutboundSnat",
+            "equals": false
           }
         ]
-      },
-      "condition": {
-        "value": "deny",
-        "equals": false
       }
     }
   },
@@ -434,7 +410,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.97914be0519e",
+      "name": "Azure.Policy.dd003b6a0803",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -443,18 +419,10 @@
       "type": [
         "Microsoft.Network/loadBalancers"
       ],
-      "where": {
-        "allOf": [
-          {
-            "greaterOrEquals": 1,
-            "field": "properties.loadBalancingRules[*]",
-            "convert": true
-          }
-        ]
-      },
       "condition": {
-        "value": "deny",
-        "equals": false
+        "greaterOrEquals": 1,
+        "field": "properties.loadBalancingRules[*]",
+        "convert": true
       }
     }
   },
@@ -463,7 +431,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.7e58484baa4c",
+      "name": "Azure.Policy.6ce831b6b744",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -472,23 +440,15 @@
       "type": [
         "Microsoft.Network/networkSecurityGroups"
       ],
-      "where": {
+      "condition": {
+        "count": 1,
+        "field": "properties.securityRules[*]",
         "allOf": [
           {
-            "count": 1,
-            "field": "properties.securityRules[*]",
-            "allOf": [
-              {
-                "field": "properties.description",
-                "equals": "My unique description"
-              }
-            ]
+            "field": "properties.description",
+            "equals": "My unique description"
           }
         ]
-      },
-      "condition": {
-        "value": "deny",
-        "equals": false
       }
     }
   },
@@ -497,7 +457,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.046f501cad45",
+      "name": "Azure.Policy.09175cf78e7c",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -506,31 +466,23 @@
       "type": [
         "Microsoft.Network/networkSecurityGroups/securityRules"
       ],
-      "where": {
+      "condition": {
+        "greater": 0,
+        "field": "properties.securityRules[*]",
         "allOf": [
           {
-            "greater": 0,
-            "field": "properties.securityRules[*]",
-            "allOf": [
-              {
-                "field": "properties.direction",
-                "equals": "Inbound"
-              },
-              {
-                "field": "properties.access",
-                "equals": "Allow"
-              },
-              {
-                "field": "properties.destinationPortRange",
-                "equals": "3389"
-              }
-            ]
+            "field": "properties.direction",
+            "equals": "Inbound"
+          },
+          {
+            "field": "properties.access",
+            "equals": "Allow"
+          },
+          {
+            "field": "properties.destinationPortRange",
+            "equals": "3389"
           }
         ]
-      },
-      "condition": {
-        "value": "deny",
-        "equals": false
       }
     }
   },
@@ -620,7 +572,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.df2cdebb72f5",
+      "name": "Azure.Policy.b54abd1594e6",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
@@ -658,7 +610,7 @@
                 "type": "."
               },
               {
-                "greater": 0,
+                "notCount": 0,
                 "field": "properties.subnets[*]",
                 "allOf": [
                   {
