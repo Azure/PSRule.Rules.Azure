@@ -212,6 +212,17 @@ namespace PSRule.Rules.Azure
             return true;
         }
 
+        internal static bool TryRenameProperty(this JObject o, string oldName, string newName)
+        {
+            var p = o.Property(oldName, StringComparison.OrdinalIgnoreCase);
+            if (p != null)
+            {
+                p.Replace(new JProperty(newName, p.Value));
+                return true;
+            }
+            return false;
+        }
+
         internal static void ReplaceProperty<TValue>(this JObject o, string propertyName, TValue value) where TValue : JToken
         {
             var p = o.Property(propertyName, StringComparison.OrdinalIgnoreCase);

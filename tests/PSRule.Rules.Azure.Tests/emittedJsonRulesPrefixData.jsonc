@@ -4,7 +4,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "AzureCustomPrefix.Policy.5ab09e70cb94",
+      "name": "AzureCustomPrefix.Policy.61bca30d0de3",
       "tags": {
         "Azure.Policy/category": "General"
       },
@@ -17,7 +17,7 @@
       "with": [
         "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
       ],
-      "condition": {
+      "where": {
         "allOf": [
           {
             "field": "location",
@@ -35,6 +35,10 @@
             "type": "."
           }
         ]
+      },
+      "condition": {
+        "value": "deny",
+        "equals": false
       }
     }
   }

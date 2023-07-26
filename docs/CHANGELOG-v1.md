@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.28.1:
+
+- Bug fixes:
+  - Fixed policy rules with no effect conditions are evaluated incorrectly by @BernieWhite.
+    [#2346](https://github.com/Azure/PSRule.Rules.Azure/issues/2346)
+
 ## v1.28.1
 
 What's changed since v1.28.0:
