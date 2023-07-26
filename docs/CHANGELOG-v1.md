@@ -30,6 +30,9 @@ What's changed since v1.28.2:
   - Databricks:
     - Check that workspaces use secure cluster connectivity by @BernieWhite.
       [#2334](https://github.com/Azure/PSRule.Rules.Azure/issues/2334)
+- Bug fixes:
+  - Fixed policy expansion with unquoted field property by @BernieWhite.
+    [#2352](https://github.com/Azure/PSRule.Rules.Azure/issues/2352)
 
 ## v1.28.2
 

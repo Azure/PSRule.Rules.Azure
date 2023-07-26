@@ -1,0 +1,88 @@
+[
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "eba0bb3d870549789539e7d2",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/eba0bb3d870549789539e7d2",
+    "ResourceName": "eba0bb3d870549789539e7d2",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/eba0bb3d870549789539e7d2",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "Require a tag on resource groups",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "",
+        "parameterScopes": {},
+        "createdBy": "",
+        "createdOn": "",
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 1,
+      "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
+      "Parameters": {
+        "tagName": {
+          "value": "env"
+        }
+      },
+      "NonComplianceMessages": [
+        {
+          "Message": "Resource groups must have an env tag.",
+          "PolicyDefinitionReferenceId": null
+        }
+      ]
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "96670d01-0a4d-4649-9c89-2d3abc0a5025",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025",
+        "ResourceName": "96670d01-0a4d-4649-9c89-2d3abc0a5025",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "Enforces existence of a tag on resource groups.",
+          "DisplayName": "Require a tag on resource groups",
+          "Metadata": {
+            "version": "1.0.0",
+            "category": "Tags"
+          },
+          "Mode": "All",
+          "Parameters": {
+            "tagName": {
+              "type": "String",
+              "metadata": {
+                "displayName": "Tag Name",
+                "description": "Name of the tag, such as 'environment'"
+              }
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Resources/subscriptions/resourceGroups"
+                },
+                {
+                  "field": "[concat('tags[', parameters('tagName'), ']')]",
+                  "exists": "false"
+                }
+              ]
+            },
+            "then": {
+              "effect": "deny"
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025"
+      }
+    ],
+    "exemptions": []
+  }
+]
