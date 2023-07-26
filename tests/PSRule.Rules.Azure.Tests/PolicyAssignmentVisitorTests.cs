@@ -149,7 +149,6 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(definitions);
             Assert.Single(definitions);
 
-            // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988");
             Assert.NotNull(actual);
             Assert.Equal("Azure.Policy.8fc87228ae18", actual.Name);
@@ -159,6 +158,30 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Resources/resourceGroups", actual.Types[0]);
             Assert.Null(actual.Where);
             Assert.Equal("{\"field\":\"location\",\"in\":[\"australiaeast\",\"australiasoutheast\",\"eastus\",\"westus\"]}", actual.Condition.ToString(Formatting.None));
+            Assert.Null(actual.With);
+        }
+
+        [Fact]
+        public void GetFieldConcat()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData("Policy.assignment.3.json").Where(a => a["Name"].Value<string>() == "eba0bb3d870549789539e7d2"))
+                visitor.Visit(context, assignment);
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Single(definitions);
+
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025");
+            Assert.NotNull(actual);
+            Assert.Equal("Azure.Policy.6db2a8060ade", actual.Name);
+            Assert.Equal("Tags", actual.Category);
+            Assert.Equal("1.0.0", actual.Version);
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.Resources/resourceGroups", actual.Types[0]);
+            Assert.Null(actual.Where);
+            Assert.Equal("{\"field\":\"tags['env']\",\"exists\":true}", actual.Condition.ToString(Formatting.None));
             Assert.Null(actual.With);
         }
 

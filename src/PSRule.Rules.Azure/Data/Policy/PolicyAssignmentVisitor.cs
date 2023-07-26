@@ -1139,6 +1139,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         private static JObject VisitField(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject condition, string field)
         {
+            var isExpression = field.IsExpressionString();
             field = TemplateVisitor.ExpandString(context, field);
             if (string.Equals(field, PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
             {
@@ -1149,6 +1150,11 @@ namespace PSRule.Rules.Azure.Data.Policy
             else if (context.TryPolicyAliasPath(field, out var aliasPath))
             {
                 condition.ReplaceProperty(PROPERTY_FIELD, TrimFieldName(context, aliasPath));
+            }
+            else if (isExpression && field.Contains("[") && !(field.Contains("['") || field.Contains("[\"")))
+            {
+                field = field.Replace("[", "['").Replace("]", "']");
+                condition.ReplaceProperty(PROPERTY_FIELD, TrimFieldName(context, field));
             }
             return condition;
         }
@@ -1445,9 +1451,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                 condition.TryRenameProperty(PROPERTY_EQUALS, PROPERTY_NOTEQUALS) ||
                 condition.TryRenameProperty(PROPERTY_NOTEQUALS, PROPERTY_EQUALS) ||
                 condition.TryRenameProperty(PROPERTY_CONTAINS, PROPERTY_NOTCONTAINS) ||
-                condition.TryRenameProperty(PROPERTY_NOTCONTAINS, PROPERTY_CONTAINS) ||
-                condition.TryRenameProperty(PROPERTY_EXISTS, PROPERTY_NOTEXISTS) ||
-                condition.TryRenameProperty(PROPERTY_NOTEXISTS, PROPERTY_EXISTS);
+                condition.TryRenameProperty(PROPERTY_NOTCONTAINS, PROPERTY_CONTAINS);
+
+            if (condition.TryBoolProperty(PROPERTY_EXISTS, out var exists))
+                condition[PROPERTY_EXISTS] = !exists;
 
             return condition;
         }
