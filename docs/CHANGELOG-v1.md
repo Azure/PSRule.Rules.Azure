@@ -24,6 +24,15 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.28.2:
+
+- New rules:
+  - Databricks:
+    - Check that workspaces use secure cluster connectivity by @BernieWhite.
+      [#2334](https://github.com/Azure/PSRule.Rules.Azure/issues/2334)
+
+## v1.28.2
+
 What's changed since v1.28.1:
 
 - Bug fixes:

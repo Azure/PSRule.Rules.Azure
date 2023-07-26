@@ -1,0 +1,152 @@
+[
+  {
+    "properties": {
+      "managedResourceGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aasdasd",
+      "parameters": {
+        "enableFedRampCertification": {
+          "type": "Bool",
+          "value": false
+        },
+        "enableNoPublicIp": {
+          "type": "Bool",
+          "value": true
+        },
+        "natGatewayName": {
+          "type": "String",
+          "value": "nat-gateway"
+        },
+        "prepareEncryption": {
+          "type": "Bool",
+          "value": false
+        },
+        "publicIpName": {
+          "type": "String",
+          "value": "nat-gw-public-ip"
+        },
+        "requireInfrastructureEncryption": {
+          "type": "Bool",
+          "value": false
+        },
+        "resourceTags": {
+          "type": "Object",
+          "value": {
+            "application": "databricks",
+            "databricks-environment": "true"
+          }
+        },
+        "storageAccountName": {
+          "type": "String",
+          "value": "nnn"
+        },
+        "storageAccountSkuName": {
+          "type": "String",
+          "value": "Standard_GRS"
+        },
+        "vnetAddressPrefix": {
+          "type": "String",
+          "value": "10.1"
+        }
+      },
+      "provisioningState": "Succeeded",
+      "authorizations": [
+        {
+          "principalId": "00000000-0000-0000-0000-000000000000",
+          "roleDefinitionId": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
+        }
+      ],
+      "createdBy": {
+        "oid": "00000000-0000-0000-0000-000000000000",
+        "puid": "000",
+        "applicationId": "00000000-0000-0000-0000-000000000000"
+      },
+      "updatedBy": {
+        "oid": "00000000-0000-0000-0000-000000000000",
+        "puid": "000",
+        "applicationId": "00000000-0000-0000-0000-000000000000"
+      },
+      "workspaceId": "000",
+      "workspaceUrl": "adb-000.3.azuredatabricks.net",
+      "createdDateTime": "2023-07-20T03:44:07.4171187Z"
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Databricks/workspaces/databricks-A",
+    "name": "databricks-A",
+    "type": "Microsoft.Databricks/workspaces",
+    "sku": {
+      "name": "premium"
+    },
+    "location": "eastus"
+  },
+  {
+    "properties": {
+      "managedResourceGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/aasdasd",
+      "parameters": {
+        "enableFedRampCertification": {
+          "type": "Bool",
+          "value": false
+        },
+        "natGatewayName": {
+          "type": "String",
+          "value": "nat-gateway"
+        },
+        "prepareEncryption": {
+          "type": "Bool",
+          "value": false
+        },
+        "publicIpName": {
+          "type": "String",
+          "value": "nat-gw-public-ip"
+        },
+        "requireInfrastructureEncryption": {
+          "type": "Bool",
+          "value": false
+        },
+        "resourceTags": {
+          "type": "Object",
+          "value": {
+            "application": "databricks",
+            "databricks-environment": "true"
+          }
+        },
+        "storageAccountName": {
+          "type": "String",
+          "value": "nnn"
+        },
+        "storageAccountSkuName": {
+          "type": "String",
+          "value": "Standard_GRS"
+        },
+        "vnetAddressPrefix": {
+          "type": "String",
+          "value": "10.1"
+        }
+      },
+      "provisioningState": "Succeeded",
+      "authorizations": [
+        {
+          "principalId": "00000000-0000-0000-0000-000000000000",
+          "roleDefinitionId": "8e3af657-a8ff-443c-a75c-2fe8c4bcb635"
+        }
+      ],
+      "createdBy": {
+        "oid": "00000000-0000-0000-0000-000000000000",
+        "puid": "000",
+        "applicationId": "00000000-0000-0000-0000-000000000000"
+      },
+      "updatedBy": {
+        "oid": "00000000-0000-0000-0000-000000000000",
+        "puid": "000",
+        "applicationId": "00000000-0000-0000-0000-000000000000"
+      },
+      "workspaceId": "000",
+      "workspaceUrl": "adb-000.3.azuredatabricks.net",
+      "createdDateTime": "2023-07-20T03:44:07.4171187Z"
+    },
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Databricks/workspaces/databricks-B",
+    "name": "databricks-B",
+    "type": "Microsoft.Databricks/workspaces",
+    "sku": {
+      "name": "premium"
+    },
+    "location": "eastus"
+  }
+]
