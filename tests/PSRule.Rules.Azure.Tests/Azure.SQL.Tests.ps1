@@ -96,8 +96,8 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'server-B', 'server-C', 'server-D';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'server-B', 'server-C';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Sql/servers/securityAlertPolicies'' has not been specified.';
@@ -107,8 +107,8 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'server-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-D';
         }
 
         It 'Azure.SQL.Auditing' {
@@ -117,8 +117,8 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'server-B', 'server-C', 'server-D';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'server-B', 'server-C';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'A sub-resource of type ''Microsoft.Sql/servers/auditingSettings'' has not been specified.';
@@ -128,8 +128,8 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'server-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-D';
         }
 
         It 'Azure.SQL.AAD' {

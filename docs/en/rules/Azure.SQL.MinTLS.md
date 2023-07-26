@@ -36,20 +36,22 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Sql/servers",
-    "apiVersion": "2022-02-01-preview",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "minimalTlsVersion": "1.2",
-        "administrators": {
-            "administratorType": "ActiveDirectory",
-            "login": "[parameters('adminLogin')]",
-            "principalType": "Group",
-            "sid": "[parameters('adminPrincipalId')]",
-            "tenantId": "[tenant().tenantId]"
-        }
+  "type": "Microsoft.Sql/servers",
+  "apiVersion": "2022-11-01-preview",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "publicNetworkAccess": "Disabled",
+    "minimalTlsVersion": "1.2",
+    "administrators": {
+      "azureADOnlyAuthentication": true,
+      "administratorType": "ActiveDirectory",
+      "login": "[parameters('adminLogin')]",
+      "principalType": "Group",
+      "sid": "[parameters('adminPrincipalId')]",
+      "tenantId": "[tenant().tenantId]"
     }
+  }
 }
 ```
 
@@ -62,12 +64,17 @@ To deploy logical SQL Servers that pass this rule:
 For example:
 
 ```bicep
-resource server 'Microsoft.Sql/servers@2022-02-01-preview' = {
+resource server 'Microsoft.Sql/servers@2022-11-01-preview' = {
   name: name
   location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   properties: {
+    publicNetworkAccess: 'Disabled'
     minimalTlsVersion: '1.2'
     administrators: {
+      azureADOnlyAuthentication: true
       administratorType: 'ActiveDirectory'
       login: adminLogin
       principalType: 'Group'
