@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-07-26
 severity: Critical
 pillar: Security
 category: Authentication
@@ -14,14 +15,14 @@ Use Azure Active Directory (AAD) authentication with Azure SQL databases.
 
 ## DESCRIPTION
 
-Azure SQL Database offer two authentication models, Azure Active Directory (AAD) and SQL logins.
-AAD authentication supports centialized identity management in addition to modern password protections.
+Azure SQL Database offer two authentication models, Azure Active Directory (AAD) and SQL authentication.
+AAD authentication supports centralized identity management in addition to modern password protections.
 Some of the benefits of AAD authentication over SQL authentication including:
 
 - Support for Azure Multi-Factor Authentication (MFA).
 - Conditional-based access with Conditional Access.
 
-It is also possible to disable SQL authentication entirely.
+It is also possible to disable SQL authentication entirely and only use AAD authentication.
 
 ## RECOMMENDATION
 
@@ -42,20 +43,22 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Sql/servers",
-    "apiVersion": "2022-02-01-preview",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "minimalTlsVersion": "1.2",
-        "administrators": {
-            "administratorType": "ActiveDirectory",
-            "login": "[parameters('adminLogin')]",
-            "principalType": "Group",
-            "sid": "[parameters('adminPrincipalId')]",
-            "tenantId": "[tenant().tenantId]"
-        }
+  "type": "Microsoft.Sql/servers",
+  "apiVersion": "2022-11-01-preview",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "publicNetworkAccess": "Disabled",
+    "minimalTlsVersion": "1.2",
+    "administrators": {
+      "azureADOnlyAuthentication": true,
+      "administratorType": "ActiveDirectory",
+      "login": "[parameters('adminLogin')]",
+      "principalType": "Group",
+      "sid": "[parameters('adminPrincipalId')]",
+      "tenantId": "[tenant().tenantId]"
     }
+  }
 }
 ```
 
@@ -70,17 +73,17 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Sql/servers/administrators",
-    "apiVersion": "2022-02-01-preview",
-    "name": "[format('{0}/{1}', parameters('name'), 'ActiveDirectory')]",
-    "properties": {
-        "administratorType": "ActiveDirectory",
-        "login": "[parameters('adminLogin')]",
-        "sid": "[parameters('adminPrincipalId')]"
-    },
-    "dependsOn": [
-        "[resourceId('Microsoft.Sql/servers', parameters('name'))]"
-    ]
+  "type": "Microsoft.Sql/servers/administrators",
+  "apiVersion": "2022-02-01-preview",
+  "name": "[format('{0}/{1}', parameters('name'), 'ActiveDirectory')]",
+  "properties": {
+    "administratorType": "ActiveDirectory",
+    "login": "[parameters('adminLogin')]",
+    "sid": "[parameters('adminPrincipalId')]"
+  },
+  "dependsOn": [
+    "server"
+  ]
 }
 ```
 
@@ -95,12 +98,17 @@ To deploy logical SQL Servers that pass this rule:
 For example:
 
 ```bicep
-resource server 'Microsoft.Sql/servers@2022-02-01-preview' = {
+resource server 'Microsoft.Sql/servers@2022-11-01-preview' = {
   name: name
   location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   properties: {
+    publicNetworkAccess: 'Disabled'
     minimalTlsVersion: '1.2'
     administrators: {
+      azureADOnlyAuthentication: true
       administratorType: 'ActiveDirectory'
       login: adminLogin
       principalType: 'Group'
@@ -150,14 +158,14 @@ In newer API versions the `properties.administrators` property can be configured
 Azure AD authentication can also be configured using the `Microsoft.Sql/servers/administrators` sub-resource.
 
 If both the `properties.administrators` property and `Microsoft.Sql/servers/administrators` are set,
-the sub-resoure will override the property.
+the sub-resource will override the property.
 
 ## LINKS
 
 - [Use modern password protection](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-modern-password-protection)
-- [Configure and manage Azure AD authentication with Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- [Using multi-factor Azure Active Directory authentication](https://docs.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
-- [Conditional Access with Azure SQL Database and Azure Synapse Analytics](https://docs.microsoft.com/azure/azure-sql/database/conditional-access-configure)
-- [Azure AD-only authentication with Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication)
-- [Azure Policy for Azure Active Directory only authentication with Azure SQL](https://docs.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication-policy)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/administrators)
+- [Configure and manage Azure AD authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
+- [Using multi-factor Azure Active Directory authentication](https://learn.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
+- [Conditional Access with Azure SQL Database and Azure Synapse Analytics](https://learn.microsoft.com/azure/azure-sql/database/conditional-access-configure)
+- [Azure AD-only authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication)
+- [Azure Policy for Azure Active Directory only authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication-policy)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers)
