@@ -67,6 +67,10 @@ Before improving rule recommendations familiarize yourself with writing [rule ma
 Rule documentation requires the following annotations for use with PSRule for Azure:
 
 - `severity` - The rule's severity.
+  Available severities are:
+  - `Critical`
+  - `Important`
+  - `Awareness`
 - `pillar` - A Azure Well-Architected Framework pillar.
   Either `Cost Optimization`, `Operational Excellence`, `Performance Efficiency`, `Reliability`, `Security`.
 - `category` - A category of Azure Well-Architected Framework pillar.

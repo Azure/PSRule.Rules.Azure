@@ -4,3 +4,24 @@
 #
 # Validation rules for Azure Databricks
 #
+
+---
+# Synopsis: Use Databricks workspaces configured for secure cluster connectivity.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Databricks.SecureConnectivity
+  ref: AZR-000393
+  tags:
+    release: GA
+    ruleSet: 2023_09
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.Databricks/workspaces
+  condition:
+    allOf:
+      - field: properties.parameters.enableNoPublicIp.value
+        isBoolean: true
+      - field: properties.parameters.enableNoPublicIp.value
+        equals: true
