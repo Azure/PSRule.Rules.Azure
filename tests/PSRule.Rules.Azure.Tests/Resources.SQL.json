@@ -400,7 +400,7 @@
     ]
   },
   {
-    "Name": "server-B",
+    "Name": "server-D",
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-D",
     "ResourceName": "server-D",
     "ResourceType": "Microsoft.Sql/servers",
@@ -433,6 +433,52 @@
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.Sql/servers/azureADOnlyAuthentications",
         "ResourceType": "Microsoft.Sql/servers",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-D/securityAlertPolicies/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-D/securityAlertPolicies/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "properties": {
+          "state": "Enabled",
+          "disabledAlerts": [
+            ""
+          ],
+          "emailAddresses": [
+            ""
+          ],
+          "emailAccountAdmins": true,
+          "storageEndpoint": "",
+          "storageAccountAccessKey": "",
+          "retentionDays": 0
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/securityAlertPolicies",
+        "ResourceType": "Microsoft.Sql/servers/securityAlertPolicies",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-D/auditingSettings/Default",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-D/auditingSettings/Default",
+        "ResourceName": "Default",
+        "Name": "Default",
+        "properties": {
+          "state": "Enabled",
+          "storageEndpoint": "https://storage-A.blob.core.windows.net/",
+          "retentionDays": 730,
+          "auditActionsAndGroups": [
+            "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+            "FAILED_DATABASE_AUTHENTICATION_GROUP",
+            "BATCH_COMPLETED_GROUP"
+          ],
+          "storageAccountSubscriptionId": "00000000-0000-0000-0000-000000000000",
+          "isStorageSecondaryKeyInUse": false,
+          "isAzureMonitorTargetEnabled": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/auditingSettings",
+        "ResourceType": "Microsoft.Sql/servers/auditingSettings",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]

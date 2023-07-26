@@ -26,61 +26,77 @@ Consider enabling auditing for each SQL Database logical server and review repor
 
 ### Configure with Azure template
 
+To deploy logical servers that pass this rule:
+
+- Define a `Microsoft.Sql/servers/auditingSettings` sub-resource with each logical server.
+- Set the `properties.state` property to `Enabled` for the `Microsoft.Sql/servers/auditingSettings` sub-resource.
+
+For example:
+
 ```json
 {
-    "comments": "Create or update an Azure SQL logical server.",
-    "type": "Microsoft.Sql/servers",
-    "apiVersion": "2019-06-01-preview",
-    "name": "[parameters('serverName')]",
-    "location": "[parameters('location')]",
-    "tags": "[parameters('tags')]",
-    "kind": "v12.0",
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "administratorLogin": "[parameters('adminUsername')]",
-        "version": "12.0",
-        "publicNetworkAccess": "[if(parameters('allowPublicAccess'), 'Enabled', 'Disabled')]",
-        "administratorLoginPassword": "[parameters('adminPassword')]",
-        "minimalTLSVersion": "1.2"
-    },
-    "resources": [
-        {
-            "type": "Microsoft.Sql/servers/auditingPolicies",
-            "apiVersion": "2014-04-01",
-            "name": "[concat(parameters('serverName'), '/Default')]",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
-            ],
-            "properties": {
-                "auditingState": "Enabled"
-            }
-        },
-        {
-            "type": "Microsoft.Sql/servers/auditingSettings",
-            "apiVersion": "2017-03-01-preview",
-            "name": "[concat(parameters('serverName'), '/Default')]",
-            "dependsOn": [
-                "[resourceId('Microsoft.Sql/servers', parameters('serverName'))]"
-            ],
-            "properties": {
-                "state": "Enabled",
-                "retentionDays": 7,
-                "auditActionsAndGroups": [
-                    "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
-                    "FAILED_DATABASE_AUTHENTICATION_GROUP",
-                    "BATCH_COMPLETED_GROUP"
-                ],
-                "storageAccountSubscriptionId": "[split(parameters('securityStorageAccountId'), '/')[2]]",
-                "isStorageSecondaryKeyInUse": false,
-                "isAzureMonitorTargetEnabled": false,
-                "storageEndpoint": "[reference(parameters('securityStorageAccountId'),'2019-06-01').primaryendpoints.blob]",
-                "storageAccountAccessKey": "[listKeys(parameters('securityStorageAccountId'),'2019-06-01').keys[0].value]"
-            }
-        }
+  "type": "Microsoft.Sql/servers/auditingSettings",
+  "apiVersion": "2022-08-01-preview",
+  "name": "[format('{0}/{1}', parameters('name'), 'default')]",
+  "properties": {
+    "isAzureMonitorTargetEnabled": true,
+    "state": "Enabled",
+    "retentionDays": 7,
+    "auditActionsAndGroups": [
+      "SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP",
+      "FAILED_DATABASE_AUTHENTICATION_GROUP",
+      "BATCH_COMPLETED_GROUP"
     ]
+  },
+  "dependsOn": [
+    "server"
+  ]
+}
+```
+
+### Configure with Bicep
+
+To deploy logical servers that pass this rule:
+
+- Define a `Microsoft.Sql/servers/auditingSettings` sub-resource with each logical server.
+- Set the `properties.state` property to `Enabled` for the `Microsoft.Sql/servers/auditingSettings` sub-resource.
+
+For example:
+
+```bicep
+resource server 'Microsoft.Sql/servers@2022-11-01-preview' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    publicNetworkAccess: 'Disabled'
+    minimalTlsVersion: '1.2'
+    administrators: {
+      azureADOnlyAuthentication: true
+      administratorType: 'ActiveDirectory'
+      login: adminLogin
+      principalType: 'Group'
+      sid: adminPrincipalId
+      tenantId: tenant().tenantId
+    }
+  }
+}
+
+resource sqlAuditSettings 'Microsoft.Sql/servers/auditingSettings@2022-08-01-preview' = {
+  name: 'default'
+  parent: server
+  properties: {
+    isAzureMonitorTargetEnabled: true
+    state: 'Enabled'
+    retentionDays: 7
+    auditActionsAndGroups: [
+      'SUCCESSFUL_DATABASE_AUTHENTICATION_GROUP'
+      'FAILED_DATABASE_AUTHENTICATION_GROUP'
+      'BATCH_COMPLETED_GROUP'
+    ]
+  }
 }
 ```
 

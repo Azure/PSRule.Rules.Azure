@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-07-26
 severity: Important
 pillar: Security
 category: Identity and access management
@@ -15,12 +16,25 @@ Ensure Azure AD-only authentication is enabled with Azure SQL Database.
 ## DESCRIPTION
 
 Azure SQL Database supports authentication with SQL logins and Azure AD authentication.
-
 By default, authentication with SQL logins is enabled.
 SQL logins are unable to provide sufficient protection for identities.
-Azure AD authentication provides strong protection controls including conditional access, identity governance, and privileged identity management.
 
-Once you decide to use Azure AD authentication, you can disable authentication with SQL logins.
+Azure AD authentication provides:
+
+- Strong protection controls including conditional access, identity governance, and privileged identity management.
+- Centralized identity management with Azure AD.
+
+Additionally you can disable SQL authentication entirely, by enabling Azure AD-only authentication.
+
+Some features may have limitations when using Azure AD-only authentication is enabled, including:
+
+- Elastic jobs
+- SQL Data Sync
+- Change Data Capture (CDC)
+- Transactional replication
+- SQL insights
+
+Continue reading [Limitations for Azure AD-only authentication in SQL Database](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication#limitations-for-azure-ad-only-authentication-in-sql-database).
 
 ## RECOMMENDATION
 
@@ -135,12 +149,15 @@ resource aadOnly 'Microsoft.Sql/servers/azureADOnlyAuthentications@2022-05-01-pr
 
 ## NOTES
 
-The Azure AD admin must be set before enabling Azure AD-only authentication. Managed identity is required if an Azure AD service principal (Azure AD application) oversees creating and managing Azure AD users, groups, or applications in the logical server.
+The Azure AD admin must be set before enabling Azure AD-only authentication.
+A managed identity is required if an Azure AD service principal (Azure AD application) oversees creating and managing Azure AD users, groups, or applications in the logical server.
+
 ## LINKS
 
 - [Use modern password protection](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-modern-password-protection)
 - [Azure AD-only authentication with Azure SQL Database](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication)
 - [Configure and manage Azure AD authentication with Azure SQL Database](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
+- [Limitations for Azure AD-only authentication in SQL Database](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication?#limitations-for-azure-ad-only-authentication-in-sql-database)
 - [Azure Policy for Azure AD-only authentication with Azure SQL Database](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication-policy)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers#managedinstanceexternaladministrator)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/azureadonlyauthentications#managedinstanceazureadonlyauthproperties)
