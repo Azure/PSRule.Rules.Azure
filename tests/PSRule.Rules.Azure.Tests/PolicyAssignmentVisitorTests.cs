@@ -152,6 +152,8 @@ namespace PSRule.Rules.Azure
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/e765b5de-1225-4ba3-bd56-1ac6695af988");
             Assert.NotNull(actual);
             Assert.Equal("Azure.Policy.8fc87228ae18", actual.Name);
+            Assert.Equal("Allowed locations for resource groups", actual.DisplayName);
+            Assert.Equal("This policy enables you to restrict the locations your organization can create resource groups in. Use to enforce your geo-compliance requirements.", actual.Description);
             Assert.Equal("General", actual.Category);
             Assert.Equal("1.0.0", actual.Version);
             Assert.Single(actual.Types);
@@ -176,6 +178,8 @@ namespace PSRule.Rules.Azure
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025");
             Assert.NotNull(actual);
             Assert.Equal("Azure.Policy.6db2a8060ade", actual.Name);
+            Assert.Equal("Require a tag on resource groups", actual.DisplayName);
+            Assert.Equal("Enforces existence of a tag on resource groups.", actual.Description);
             Assert.Equal("Tags", actual.Category);
             Assert.Equal("1.0.0", actual.Version);
             Assert.Single(actual.Types);

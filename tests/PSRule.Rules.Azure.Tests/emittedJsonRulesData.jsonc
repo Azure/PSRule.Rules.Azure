@@ -5,6 +5,7 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.65db1c629a22",
+      "displayName": "Deny Storage Account Not Using Minumum TLS version",
       "tags": {
         "Azure.Policy/category": "Storage"
       },
@@ -14,6 +15,7 @@
       }
     },
     "spec": {
+      "recommend": "Minmum TLS version must be used on Storage accounts",
       "type": [
         "Microsoft.Storage/storageAccounts"
       ],
@@ -32,6 +34,7 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.d49c9ce3b804",
+      "displayName": "Deploy Log Analytics extension for Linux VMs",
       "tags": {
         "Azure.Policy/category": "Monitoring"
       },
@@ -41,6 +44,7 @@
       }
     },
     "spec": {
+      "recommend": "Deploy Log Analytics extension for Linux VMs if the VM Image (OS) is in the list defined and the extension is not installed.",
       "type": [
         "Microsoft.Compute/virtualMachines"
       ],
@@ -329,6 +333,7 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.eeb7e34479ef",
+      "displayName": "FunctionAppPullFromSpecifiedRegistry",
       "tags": {
         "Azure.Policy/category": "App Service"
       },
@@ -338,6 +343,7 @@
       }
     },
     "spec": {
+      "recommend": "Function app must pull from specified registry",
       "type": [
         "Microsoft.Web/sites"
       ],
@@ -385,11 +391,13 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.48eab4644919",
+      "displayName": "DisableLBRuleSNAT",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
     },
     "spec": {
+      "recommend": "Enforce disabling of SNAT on load balancing rules",
       "type": [
         "Microsoft.Network/loadBalancers"
       ],
@@ -411,11 +419,13 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.dd003b6a0803",
+      "displayName": "EnsureAtleastOneLBRule",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
     },
     "spec": {
+      "recommend": "Enforce atleast more than one LB rule",
       "type": [
         "Microsoft.Network/loadBalancers"
       ],
@@ -432,11 +442,13 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.6ce831b6b744",
+      "displayName": "UniqueDescriptionNSG",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
     },
     "spec": {
+      "recommend": "Enforce unique description on one NSG rule",
       "type": [
         "Microsoft.Network/networkSecurityGroups"
       ],
@@ -458,11 +470,13 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.09175cf78e7c",
+      "displayName": "DenyNSGRDPInboundPort",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
     },
     "spec": {
+      "recommend": "Denies RDP port on inbound NSG rules",
       "type": [
         "Microsoft.Network/networkSecurityGroups/securityRules"
       ],
@@ -492,11 +506,13 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.9b51258eff45",
+      "displayName": "DenyPortsNSG",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
     },
     "spec": {
+      "recommend": "Deny common ports on NSG rules",
       "type": [
         "Microsoft.Network/networkSecurityGroups/securityRules",
         "Microsoft.Network/networkSecurityGroups"
@@ -573,11 +589,13 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.b54abd1594e6",
+      "displayName": "PreventSubnetsWithoutNSG",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
     },
     "spec": {
+      "recommend": "Prevent subnets without NSG",
       "type": [
         "Microsoft.Network/virtualNetworks/subnets",
         "Microsoft.Network/virtualNetworks"
@@ -642,11 +660,13 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.fe294bf42b80",
+      "displayName": "DenyPrivateEndpointSpecificSubnet",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
       }
     },
     "spec": {
+      "recommend": "Prevent private endpoint being created in specific subnet",
       "type": [
         "Microsoft.Network/privateEndpoints"
       ],
@@ -683,6 +703,7 @@
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.237646e7bc12",
+      "displayName": "View and configure system diagnostic data",
       "tags": {
         "Azure.Policy/category": "Regulatory Compliance"
       },
@@ -692,6 +713,7 @@
       }
     },
     "spec": {
+      "recommend": "View and configure system diagnostic data",
       "type": [
         "Microsoft.Resources/subscriptions"
       ],

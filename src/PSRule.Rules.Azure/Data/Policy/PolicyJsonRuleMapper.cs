@@ -19,7 +19,9 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string KIND_VALUE = "Rule";
         private const string PROPERTY_METADATA = "metadata";
         private const string PROPERTY_NAME = "name";
+        private const string PROPERTY_DISPLAYNAME = "displayName";
         private const string PROPERTY_SPEC = "spec";
+        private const string PROPERTY_RECOMMEND = "recommend";
         private const string PROPERTY_CONDITION = "condition";
         private const string PROPERTY_WHERE = "where";
         private const string PROPERTY_WITH = "with";
@@ -50,6 +52,11 @@ namespace PSRule.Rules.Azure.Data.Policy
             writer.WriteStartObject();
             writer.WritePropertyName(PROPERTY_NAME);
             writer.WriteValue(definition.Name);
+            if (definition.DisplayName != null)
+            {
+                writer.WritePropertyName(PROPERTY_DISPLAYNAME);
+                writer.WriteValue(definition.DisplayName);
+            }
             WriteTags(writer, definition);
             WriteAnnotations(writer, definition);
             writer.WriteEndObject();
@@ -57,6 +64,8 @@ namespace PSRule.Rules.Azure.Data.Policy
             // Spec
             writer.WritePropertyName(PROPERTY_SPEC);
             writer.WriteStartObject();
+            writer.WritePropertyName(PROPERTY_RECOMMEND);
+            writer.WriteValue(definition.Description);
             WriteType(writer, serializer, definition);
             WriteWith(writer, serializer, definition);
             WriteWhere(writer, serializer, definition);
