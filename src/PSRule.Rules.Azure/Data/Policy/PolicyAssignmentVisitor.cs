@@ -72,6 +72,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_PADLEFT = "padLeft";
         private const string PROPERTY_PATH = "path";
         private const string PROPERTY_CONVERT = "convert";
+        private const string PROPERTY_NONCOMPLIANCEMESSAGES = "NonComplianceMessages";
         private const string EFFECT_DISABLED = "Disabled";
         private const string EFFECT_AUDITIFNOTEXISTS = "AuditIfNotExists";
         private const string EFFECT_DEPLOYIFNOTEXISTS = "DeployIfNotExists";
@@ -727,6 +728,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                     // Get assignment parameters
                     if (properties.TryObjectProperty(PROPERTY_PARAMETERS, out var parameters))
                         AssignmentParameters(context, parameters);
+
+                    // Get non-compliance messages
+                    if (properties.TryArrayProperty(PROPERTY_NONCOMPLIANCEMESSAGES, out var nonComplianceMessages))
+                        AssignmentNonComplianceMessages(context, nonComplianceMessages.Values<JObject>());
                 }
 
                 // Get assignment policy definitions Definitions
@@ -749,6 +754,15 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             foreach (var parameter in parameters.Children<JProperty>())
                 context.AddParameterAssignment(parameter.Name, parameter.Value);
+        }
+
+        /// <summary>
+        /// Add any non-compliance messages.
+        /// </summary>
+        protected virtual void AssignmentNonComplianceMessages(PolicyAssignmentContext context, IEnumerable<JObject> nonComplianceMessages)
+        {
+            if (nonComplianceMessages == null)
+                return;
         }
 
         /// <summary>
@@ -836,7 +850,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             properties.TryStringProperty(PROPERTY_DISPLAYNAME, out var displayName);
             properties.TryStringProperty(PROPERTY_DESCRIPTION, out var description);
-            var result = new PolicyDefinition(policyDefinitionId, description, definition);
+            var result = new PolicyDefinition(policyDefinitionId, description, definition, displayName);
 
             // Set annotations
             if (properties.TryObjectProperty(PROPERTY_METADATA, out var metadata))
