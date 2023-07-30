@@ -24,7 +24,8 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         /// <param name="tenantId">The tenant Id for the request.</param>
         /// <param name="requestUri">The resource URI.</param>
         /// <param name="apiVersion">The apiVersion of the resource provider.</param>
-        Task<JObject[]> ListAsync(string tenantId, string requestUri, string apiVersion);
+        /// <param name="ignoreNotFound">Determines if not found status is ignored. Otherwise a warning is logged.</param>
+        Task<JObject[]> ListAsync(string tenantId, string requestUri, string apiVersion, bool ignoreNotFound);
     }
 
     /// <summary>
@@ -52,9 +53,9 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         }
 
         /// <inheritdoc/>
-        public async Task<JObject[]> ListAsync(string tenantId, string requestUri, string apiVersion)
+        public async Task<JObject[]> ListAsync(string tenantId, string requestUri, string apiVersion, bool ignoreNotFound)
         {
-            return await ListAsync(tenantId, GetEndpointUri(RESOURCE_MANAGER_URL, requestUri, apiVersion));
+            return await ListAsync(tenantId, GetEndpointUri(RESOURCE_MANAGER_URL, requestUri, apiVersion), ignoreNotFound);
         }
 
         protected override void Dispose(bool disposing)

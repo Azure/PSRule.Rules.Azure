@@ -75,13 +75,13 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         /// <inheritdoc/>
         public async Task<JObject[]> GetResourcesAsync()
         {
-            return await ListAsync(TenantId, _ResourceEndpoint);
+            return await ListAsync(TenantId, _ResourceEndpoint, ignoreNotFound: false);
         }
 
         /// <inheritdoc/>
         public async Task<JObject[]> GetResourceGroupsAsync()
         {
-            return await ListAsync(TenantId, _ResourceGroupEndpoint);
+            return await ListAsync(TenantId, _ResourceGroupEndpoint, ignoreNotFound: false);
         }
 
         /// <inheritdoc/>

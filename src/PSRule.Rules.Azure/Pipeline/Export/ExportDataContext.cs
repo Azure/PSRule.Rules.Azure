@@ -95,10 +95,10 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             return string.Concat(baseEndpoint, "/", requestUri, "?api-version=", apiVersion);
         }
 
-        protected async Task<JObject[]> ListAsync(string tenantId, string uri)
+        protected async Task<JObject[]> ListAsync(string tenantId, string uri, bool ignoreNotFound)
         {
             var results = new List<JObject>();
-            var json = await GetRequestAsync(tenantId, uri);
+            var json = await GetRequestAsync(tenantId, uri, ignoreNotFound);
             while (!string.IsNullOrEmpty(json))
             {
                 var payload = JsonConvert.DeserializeObject<JObject>(json);
@@ -106,14 +106,14 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                     results.AddRange(data.Values<JObject>());
 
                 json = payload.TryGetProperty("nextLink", out var nextLink) &&
-                    !string.IsNullOrEmpty(nextLink) ? await GetRequestAsync(tenantId, nextLink) : null;
+                    !string.IsNullOrEmpty(nextLink) ? await GetRequestAsync(tenantId, nextLink, ignoreNotFound) : null;
             }
             return results.ToArray();
         }
 
         protected async Task<JObject> GetAsync(string tenantId, string uri)
         {
-            var json = await GetRequestAsync(tenantId, uri);
+            var json = await GetRequestAsync(tenantId, uri, ignoreNotFound: false);
             if (string.IsNullOrEmpty(json))
                 return null;
 
@@ -121,7 +121,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             return result;
         }
 
-        private async Task<string> GetRequestAsync(string tenantId, string uri)
+        private async Task<string> GetRequestAsync(string tenantId, string uri, bool ignoreNotFound)
         {
             var attempt = 0;
             using var client = GetClient(tenantId);
@@ -136,6 +136,13 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                     {
                         var json = await response.Content.ReadAsStringAsync();
                         return json;
+                    }
+                    else if (response.StatusCode == HttpStatusCode.NotFound)
+                    {
+                        if (!ignoreNotFound)
+                            this.WarnFailedToGet(uri, response.StatusCode, _CorrelationId[0], await response.Content.ReadAsStringAsync());
+
+                        return null;
                     }
                     else if (!ShouldRetry(response.StatusCode))
                     {
