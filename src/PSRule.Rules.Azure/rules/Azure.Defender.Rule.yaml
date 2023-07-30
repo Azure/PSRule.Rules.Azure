@@ -15,8 +15,8 @@ metadata:
   name: Azure.Defender.Containers
   ref: AZR-000290
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
@@ -39,9 +39,11 @@ metadata:
   name: Azure.Defender.Servers
   ref: AZR-000293
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
     Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: LT-1
 spec:
   level: Error
   where:
@@ -64,8 +66,8 @@ metadata:
   name: Azure.Defender.SQL
   ref: AZR-000294
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'DP-2', 'LT-1' ]
@@ -88,9 +90,11 @@ metadata:
   name: Azure.Defender.AppServices
   ref: AZR-000295
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
     Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: LT-1
 spec:
   level: Error
   where:
@@ -137,9 +141,11 @@ metadata:
   name: Azure.Defender.SQLOnVM
   ref: AZR-000297
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
     Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: LT-1
 spec:
   level: Error
   where:
@@ -159,8 +165,8 @@ metadata:
   name: Azure.Defender.KeyVault
   ref: AZR-000352
   tags:
-    release: 'GA'
-    ruleSet: '2023_03'
+    release: GA
+    ruleSet: 2023_03
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
@@ -183,8 +189,8 @@ metadata:
   name: Azure.Defender.Dns
   ref: AZR-000353
   tags:
-    release: 'GA'
-    ruleSet: '2023_03'
+    release: GA
+    ruleSet: 2023_03
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
@@ -207,8 +213,8 @@ metadata:
   name: Azure.Defender.Arm
   ref: AZR-000354
   tags:
-    release: 'GA'
-    ruleSet: '2023_03'
+    release: GA
+    ruleSet: 2023_03
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
@@ -231,8 +237,8 @@ metadata:
   name: Azure.Defender.Cspm
   ref: AZR-000372
   tags:
-    release: 'GA'
-    ruleSet: '2023_06'
+    release: GA
+    ruleSet: 2023_06
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
