@@ -1,8 +1,12 @@
 ---
+description: This topic covers how you can configuration continuous integration (CI) pipelines to tests Bicep and ARM templates automatically.
 author: BernieWhite
 ---
 
 # Creating your pipeline
+
+!!! Abstract
+    This topic covers how you can configuration continuous integration (CI) pipelines to tests Bicep and ARM templates automatically.
 
 You can use PSRule for Azure to validate Azure resources throughout their lifecycle.
 By using validation within a continuous integration (CI) pipeline, any issues provide fast feedback.

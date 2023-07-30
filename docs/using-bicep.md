@@ -1,4 +1,5 @@
 ---
+description: This topic covers how you can test Azure resources within Bicep source files with PSRule for Azure.
 author: BernieWhite
 ---
 

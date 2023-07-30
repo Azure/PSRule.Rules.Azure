@@ -1,4 +1,6 @@
 ---
+title: Setup Azure Monitor logs
+description: This topic covers setting up PSRule for Azure to log rule results into a Log Analytics workspace.
 author: BernieWhite
 ---
 

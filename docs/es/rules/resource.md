@@ -336,6 +336,12 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.DataFactory.Version](Azure.DataFactory.Version.md) | Consider migrating to DataFactory v2. | Awareness | Error
 
+## Databricks
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Databricks.SecureConnectivity](Azure.Databricks.SecureConnectivity.md) | Use Databricks workspaces configured for secure cluster connectivity. | Critical | Error
+
 ## Deployment
 
 Name | Synopsis | Severity | Level
