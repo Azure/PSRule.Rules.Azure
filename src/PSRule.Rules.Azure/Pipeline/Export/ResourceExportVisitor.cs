@@ -27,6 +27,10 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string PROPERTY_NETOWORKPLUGIN = "networkPlugin";
         private const string PROPERTY_AGENTPOOLPROFILES = "agentPoolProfiles";
         private const string PROPERTY_TENANTID = "tenantId";
+        private const string PROPERTY_POLICIES = "policies";
+        private const string PROPERTY_FIREWALLRULES = "firewallRules";
+        private const string PROPERTY_SECURITYALERTPOLICIES = "securityAlertPolicies";
+        private const string PROPERTY_CONFIGURATIONS = "configurations";
 
         private const string TYPE_CONTAINERSERVICE_MANAGEDCLUSTERS = "Microsoft.ContainerService/managedClusters";
         private const string TYPE_CONTAINERREGISTRY_REGISTRIES = "Microsoft.ContainerRegistry/registries";
@@ -60,14 +64,23 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string PROVIDERTYPE_SECURITYPRICINGS = "/providers/Microsoft.Security/pricings";
         private const string PROVIDERTYPE_POLICYASSIGNMENTS = "/providers/Microsoft.Authorization/policyAssignments";
         private const string PROVIDERTYPE_CLASSICADMINISTRATORS = "/providers/Microsoft.Authorization/classicAdministrators";
+        private const string PROVIDERTYPE_APICOLLECTIONS = "/providers/Microsoft.Security/apiCollections";
+        private const string PROVIDERTYPE_DEFENDERFORSTORAGESETTINGS = "/providers/Microsoft.Security/DefenderForStorageSettings";
 
         private const string MASKED_VALUE = "*** MASKED ***";
 
-        private const string APIVERSION_2021_11_01 = "2021-11-01";
         private const string APIVERSION_2014_04_01 = "2014-04-01";
+        private const string APIVERSION_2016_09_01 = "2016-09-01";
         private const string APIVERSION_2017_12_01 = "2017-12-01";
+        private const string APIVERSION_2021_05_01_PREVIEW = "2021-05-01-preview";
+        private const string APIVERSION_2021_06_01 = "2021-06-01";
+        private const string APIVERSION_2021_11_01 = "2021-11-01";
         private const string APIVERSION_2022_07_01 = "2022-07-01";
         private const string APIVERSION_2022_08_01 = "2022-08-01";
+        private const string APIVERSION_2022_11_20_PREVIEW = "2022-11-20-preview";
+        private const string APIVERSION_2022_04_01 = "2022-04-01";
+        private const string APIVERSION_2022_09_10 = "2022-09-10";
+        private const string APIVERSION_2022_05_01 = "2022-05-01";
 
         private readonly ProviderData _ProviderData;
 
@@ -93,9 +106,9 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                 return await _Context.GetAsync(TenantId, resourceId, apiVersion);
             }
 
-            internal async Task<JObject[]> ListAsync(string resourceId, string apiVersion)
+            internal async Task<JObject[]> ListAsync(string resourceId, string apiVersion, bool ignoreNotFound)
             {
-                return await _Context.ListAsync(TenantId, resourceId, apiVersion);
+                return await _Context.ListAsync(TenantId, resourceId, apiVersion, ignoreNotFound);
             }
         }
 
@@ -299,8 +312,8 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (!string.Equals(resourceType, TYPE_RECOVERYSERVICES_VAULT, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "replicationRecoveryPlans", "2022-09-10"));
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "replicationAlertSettings", "2022-09-10"));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "replicationRecoveryPlans", APIVERSION_2022_09_10));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "replicationAlertSettings", APIVERSION_2022_09_10));
             AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "backupstorageconfig/vaultstorageconfig", "2022-09-01-preview"));
             return true;
         }
@@ -323,13 +336,14 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (resource.TryGetProperty(PROPERTY_KIND, out var kind) &&
                 !string.Equals(kind, "FileStorage", StringComparison.OrdinalIgnoreCase))
             {
-                var blobServices = await GetSubResourcesByType(context, resourceId, "blobServices", "2022-05-01");
+                var blobServices = await GetSubResourcesByType(context, resourceId, "blobServices", APIVERSION_2022_05_01);
                 AddSubResource(resource, blobServices);
                 foreach (var blobService in blobServices)
                 {
-                    AddSubResource(resource, await GetSubResourcesByType(context, blobService[PROPERTY_ID].Value<string>(), "containers", "2022-05-01"));
+                    AddSubResource(resource, await GetSubResourcesByType(context, blobService[PROPERTY_ID].Value<string>(), "containers", APIVERSION_2022_05_01));
                 }
             }
+            AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_DEFENDERFORSTORAGESETTINGS, "2022-12-01-preview", ignoreNotFound: true));
             return true;
         }
 
@@ -338,9 +352,9 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (!string.Equals(resourceType, TYPE_MYSQL_SERVERS, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "firewallRules", APIVERSION_2017_12_01));
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "securityAlertPolicies", APIVERSION_2017_12_01));
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "configurations", APIVERSION_2017_12_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALLRULES, APIVERSION_2017_12_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITYALERTPOLICIES, APIVERSION_2017_12_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_CONFIGURATIONS, APIVERSION_2017_12_01));
             return true;
         }
 
@@ -349,9 +363,9 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (!string.Equals(resourceType, TYPE_POSTGRESQL_SERVERS, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "firewallRules", APIVERSION_2017_12_01));
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "securityAlertPolicies", APIVERSION_2017_12_01));
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "configurations", APIVERSION_2017_12_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALLRULES, APIVERSION_2017_12_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITYALERTPOLICIES, APIVERSION_2017_12_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_CONFIGURATIONS, APIVERSION_2017_12_01));
             return true;
         }
 
@@ -373,9 +387,9 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (!string.Equals(resourceType, TYPE_SQL_SERVERS, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "firewallRules", APIVERSION_2021_11_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALLRULES, APIVERSION_2021_11_01));
             AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "administrators", APIVERSION_2021_11_01));
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "securityAlertPolicies", APIVERSION_2021_11_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITYALERTPOLICIES, APIVERSION_2021_11_01));
             AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "vulnerabilityAssessments", APIVERSION_2021_11_01));
             AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "auditingSettings", APIVERSION_2021_11_01));
             return true;
@@ -425,7 +439,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (!string.Equals(resourceType, TYPE_CDN_PROFILES_ENDPOINTS, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "customDomains", "2021-06-01"));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "customDomains", APIVERSION_2021_06_01));
             return true;
         }
 
@@ -454,7 +468,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                 var isGraphQL = string.Equals(apiType, "graphql");
 
                 // Get policies for each API
-                AddSubResource(resource, await GetSubResourcesByType(context, apiResourceId, "policies", APIVERSION_2022_08_01));
+                AddSubResource(resource, await GetSubResourcesByType(context, apiResourceId, PROPERTY_POLICIES, APIVERSION_2022_08_01));
 
                 if (!isGraphQL)
                 {
@@ -462,7 +476,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                     var operations = await GetSubResourcesByType(context, apiResourceId, "operations", APIVERSION_2022_08_01);
                     foreach (var operation in operations)
                     {
-                        AddSubResource(resource, await GetSubResourcesByType(context, operation[PROPERTY_ID].Value<string>(), "policies", APIVERSION_2022_08_01));
+                        AddSubResource(resource, await GetSubResourcesByType(context, operation[PROPERTY_ID].Value<string>(), PROPERTY_POLICIES, APIVERSION_2022_08_01));
                     }
                 }
 
@@ -472,7 +486,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                     var resolvers = await GetSubResourcesByType(context, apiResourceId, "resolvers", APIVERSION_2022_08_01);
                     foreach (var resolver in resolvers)
                     {
-                        AddSubResource(resource, await GetSubResourcesByType(context, resolver[PROPERTY_ID].Value<string>(), "policies", APIVERSION_2022_08_01));
+                        AddSubResource(resource, await GetSubResourcesByType(context, resolver[PROPERTY_ID].Value<string>(), PROPERTY_POLICIES, APIVERSION_2022_08_01));
                     }
                 }
             }
@@ -485,10 +499,10 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             foreach (var product in products)
             {
                 // Get policies for each product
-                AddSubResource(resource, await GetSubResourcesByType(context, product[PROPERTY_ID].Value<string>(), "policies", APIVERSION_2022_08_01));
+                AddSubResource(resource, await GetSubResourcesByType(context, product[PROPERTY_ID].Value<string>(), PROPERTY_POLICIES, APIVERSION_2022_08_01));
             }
 
-            var policies = await GetSubResourcesByType(context, resourceId, "policies", APIVERSION_2022_08_01);
+            var policies = await GetSubResourcesByType(context, resourceId, PROPERTY_POLICIES, APIVERSION_2022_08_01);
             AddSubResource(resource, policies);
 
             var identityProviders = await GetSubResourcesByType(context, resourceId, "identityProviders", APIVERSION_2022_08_01);
@@ -512,6 +526,9 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             var portalSettings = await GetSubResourcesByType(context, resourceId, "portalsettings", APIVERSION_2022_08_01);
             AddSubResource(resource, portalSettings);
 
+            var apiCollections = await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_APICOLLECTIONS, APIVERSION_2022_11_20_PREVIEW);
+            AddSubResource(resource, apiCollections);
+
             return true;
         }
 
@@ -520,17 +537,17 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         /// </summary>
         private static async Task GetDiagnosticSettings(ResourceContext context, JObject resource, string resourceId)
         {
-            AddSubResource(resource, await GetResource(context, string.Concat(resourceId, PROVIDERTYPE_DIAGNOSTICSETTINGS), "2021-05-01-preview"));
+            AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_DIAGNOSTICSETTINGS, APIVERSION_2021_05_01_PREVIEW));
         }
 
         private static async Task GetRoleAssignments(ResourceContext context, JObject resource, string resourceId)
         {
-            AddSubResource(resource, await GetResource(context, string.Concat(resourceId, PROVIDERTYPE_ROLEASSIGNMENTS), "2022-04-01"));
+            AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_ROLEASSIGNMENTS, APIVERSION_2022_04_01));
         }
 
         private static async Task GetResourceLocks(ResourceContext context, JObject resource, string resourceId)
         {
-            AddSubResource(resource, await GetResource(context, string.Concat(resourceId, PROVIDERTYPE_RESOURCELOCKS), "2016-09-01"));
+            AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_RESOURCELOCKS, APIVERSION_2016_09_01));
         }
 
         private static void AddSubResource(JObject parent, JObject child)
@@ -557,9 +574,14 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             return await context.GetAsync(resourceId, apiVersion);
         }
 
-        private static async Task<JObject[]> GetSubResourcesByType(ResourceContext context, string resourceId, string type, string apiVersion)
+        private static async Task<JObject[]> GetSubResourcesByType(ResourceContext context, string resourceId, string type, string apiVersion, bool ignoreNotFound = false)
         {
-            return await context.ListAsync(string.Concat(resourceId, '/', type), apiVersion);
+            return await context.ListAsync(string.Concat(resourceId, '/', type), apiVersion, ignoreNotFound);
+        }
+
+        private static async Task<JObject[]> GetSubResourcesByProvider(ResourceContext context, string resourceId, string type, string apiVersion, bool ignoreNotFound = false)
+        {
+            return await context.ListAsync(string.Concat(resourceId, type), apiVersion, ignoreNotFound);
         }
     }
 }

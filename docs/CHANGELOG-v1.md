@@ -24,6 +24,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.29.0-B0015:
+
+- General improvements:
+  - Added export in-flight data for Defender for Storage from Storage Accounts by @BernieWhite.
+    [#2248](https://github.com/Azure/PSRule.Rules.Azure/issues/2248)
+  - Added export in-flight data for Defender for APIs from API Management by @BernieWhite.
+    [#2247](https://github.com/Azure/PSRule.Rules.Azure/issues/2247)
+
 ## v1.29.0-B0015
 
 What's changed since v1.28.2:
