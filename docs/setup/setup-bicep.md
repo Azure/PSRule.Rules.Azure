@@ -1,4 +1,6 @@
 ---
+title: Setup Azure Bicep
+description: This topic covers setting up support for analyzing Azure resources within Bicep source files using PSRule for Azure.
 author: BernieWhite
 ---
 
@@ -125,7 +127,7 @@ configuration:
     Set `Configuration.AZURE_PARAMETER_FILE_EXPANSION` to `true` instead.
     See [Using parameter files][5] and [By metadata][6] for more information.
 
-  [4]: configuring-expansion#bicep-source-expansion
+  [4]: ./configuring-expansion.md#bicep-source-expansion
   [5]: ../using-bicep.md#using-parameter-files
   [6]: ../using-templates.md#by-metadata
 
@@ -152,7 +154,7 @@ configuration:
   AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 15
 ```
 
-  [7]: configuring-expansion.md#bicep-compilation-timeout
+  [7]: ./configuring-expansion.md#bicep-compilation-timeout
 
 ### Checking Bicep version
 
