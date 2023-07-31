@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.29.0-B0036 (pre-release)
+
 What's changed since pre-release v1.29.0-B0015:
 
 - General improvements:
@@ -32,7 +34,7 @@ What's changed since pre-release v1.29.0-B0015:
   - Added export in-flight data for Defender for APIs from API Management by @BernieWhite.
     [#2247](https://github.com/Azure/PSRule.Rules.Azure/issues/2247)
 
-## v1.29.0-B0015
+## v1.29.0-B0015 (pre-release)
 
 What's changed since v1.28.2:
 
