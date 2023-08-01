@@ -1,4 +1,5 @@
 ---
+description: This topic covers how you can configure PSRule to ignore files, specific rules, or rules for special cases.
 author: BernieWhite
 ---
 

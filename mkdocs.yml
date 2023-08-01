@@ -57,6 +57,7 @@ nav:
       - Analyzing resources: analyzing-resources.md
     - Concepts:
       - Suppression: concepts/suppression.md
+      - Policy as rules: concepts/policy-as-rules.md
     - Customization:
       - Storing custom rules: customization/storing-custom-rules.md
       - Enforcing custom tags: customization/enforce-custom-tags.md
