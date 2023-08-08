@@ -37,6 +37,8 @@ output arrayOutput array = flatten(arrayToTest)
 
 // Filter
 output oldDogs array = filter(dogs, dog => dog.age >= 5)
+output firstOldDogs object = first(filter(dogs, dog => dog.age >= 5))
+output firstOldDogsEmpty object = first(filter(dogs, dog => dog.age >= 10))
 
 param environment string = 'subnet1'
 

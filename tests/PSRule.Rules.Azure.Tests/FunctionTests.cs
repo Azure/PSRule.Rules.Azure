@@ -220,6 +220,13 @@ namespace PSRule.Rules.Azure
             // Array
             actual1 = Functions.First(context, new object[] { new string[] { "one", "two", "three" } }) as string;
             Assert.Equal("one", actual1);
+            actual1 = Functions.First(context, new object[] { System.Array.Empty<string>() }) as string;
+            Assert.Null(actual1);
+            actual1 = Functions.First(context, new object[] { new JArray() }) as string;
+            Assert.Null(actual1);
+            actual1 = Functions.First(context, new object[] { null }) as string;
+            Assert.Null(actual1);
+
             var actual2 = Functions.First(context, new object[] { new Mock.MockArray() });
             Assert.Null(actual2);
 
@@ -333,6 +340,12 @@ namespace PSRule.Rules.Azure
             // String
             var actual1 = Functions.Last(context, new object[] { "one" }) as string;
             Assert.Equal("e", actual1);
+            actual1 = Functions.Last(context, new object[] { System.Array.Empty<string>() }) as string;
+            Assert.Null(actual1);
+            actual1 = Functions.Last(context, new object[] { new JArray() }) as string;
+            Assert.Null(actual1);
+            actual1 = Functions.Last(context, new object[] { null }) as string;
+            Assert.Null(actual1);
 
             // Array
             actual1 = Functions.Last(context, new object[] { new string[] { "one", "two", "three" } }) as string;
