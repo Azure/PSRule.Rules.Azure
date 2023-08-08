@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.18.4.5664",
-      "templateHash": "11736978922554133719"
+      "version": "0.20.4.51522",
+      "templateHash": "7710253816038152126"
     }
   },
   "parameters": {
@@ -89,8 +89,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.18.4.5664",
-              "templateHash": "13364432189836274534"
+              "version": "0.20.4.51522",
+              "templateHash": "11278873704136171034"
             }
           },
           "variables": {
@@ -156,14 +156,12 @@
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-          "languageVersion": "1.10-experimental",
           "contentVersion": "1.0.0.0",
           "metadata": {
-            "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
             "_generator": {
               "name": "bicep",
-              "version": "0.18.4.5664",
-              "templateHash": "13077654233608092220"
+              "version": "0.20.4.51522",
+              "templateHash": "16150672466446768033"
             }
           },
           "parameters": {
@@ -171,7 +169,7 @@
               "type": "string"
             }
           },
-          "resources": {}
+          "resources": []
         }
       },
       "dependsOn": [
@@ -187,6 +185,14 @@
     "oldDogs": {
       "type": "array",
       "value": "[filter(variables('dogs'), lambda('dog', greaterOrEquals(lambdaVariables('dog').age, 5)))]"
+    },
+    "firstOldDogs": {
+      "type": "object",
+      "value": "[first(filter(variables('dogs'), lambda('dog', greaterOrEquals(lambdaVariables('dog').age, 5))))]"
+    },
+    "firstOldDogsEmpty": {
+      "type": "object",
+      "value": "[first(filter(variables('dogs'), lambda('dog', greaterOrEquals(lambdaVariables('dog').age, 10))))]"
     },
     "vnetId": {
       "type": "string",

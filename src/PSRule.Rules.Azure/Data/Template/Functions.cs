@@ -370,9 +370,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args[0] is IMock mock && mock.BaseType != TypePrimitive.String && mock is JToken token)
                 return token.First;
             else if (args[0] is Array avalue)
-                return avalue.GetValue(0);
+                return avalue.Length > 0 ? avalue.GetValue(0) : null;
             else if (args[0] is JArray jArray)
-                return jArray.First;
+                return jArray.Count > 0 ? jArray.First : null;
             else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[0], 1);
 
@@ -530,9 +530,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args[0] is IMock mock && mock.BaseType != TypePrimitive.String && mock is JToken token)
                 return token.Last;
             else if (args[0] is Array avalue)
-                return avalue.GetValue(avalue.Length - 1);
+                return avalue.Length > 0 ? avalue.GetValue(avalue.Length - 1) : null;
             else if (args[0] is JArray jArray)
-                return jArray.Last;
+                return jArray.Count > 0 ? jArray.Last : null;
             else if (ExpressionHelpers.TryString(args[0], out var svalue))
                 return new string(svalue[svalue.Length - 1], 1);
 

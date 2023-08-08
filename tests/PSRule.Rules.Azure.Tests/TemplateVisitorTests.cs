@@ -697,6 +697,10 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, oldDogs["value"].Value<JArray>().Count);
             Assert.Equal("Evie", oldDogs["value"][0]["name"].Value<string>());
             Assert.Equal("Kira", oldDogs["value"][1]["name"].Value<string>());
+            Assert.True(templateContext.RootDeployment.TryOutput("firstOldDogs", out JObject firstOldDogs));
+            Assert.Equal("Evie", firstOldDogs["value"]["name"].Value<string>());
+            Assert.True(templateContext.RootDeployment.TryOutput("firstOldDogsEmpty", out JObject firstOldDogsEmpty));
+            Assert.True(firstOldDogsEmpty["value"].Type == JTokenType.Null);
 
             // Map
             Assert.True(templateContext.RootDeployment.TryOutput("dogNames", out JObject dogNames));
