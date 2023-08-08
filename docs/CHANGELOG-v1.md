@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Public IP address:
+    - Check that Public IP addresses uses Standard SKU by @BenjaminEngeset.
+      [#2376](https://github.com/Azure/PSRule.Rules.Azure/issues/2376)
+
 What's changed since pre-release v1.29.0-B0036:
 
 - Bug fixes:

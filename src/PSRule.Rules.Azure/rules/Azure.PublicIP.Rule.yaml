@@ -24,6 +24,24 @@ spec:
     field: sku.name
     equals: Standard
 
+---
+# Synopsis: Use the Standard SKU for Public IP addresses. Basic SKU for Public IP addresses will be retired.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.PublicIP.MigrateStandard
+  ref: AZR-000395
+  tags:
+    release: GA
+    ruleSet: 2023_09
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+  - Microsoft.Network/publicIPAddresses
+  condition:
+    field: sku.name
+    equals: Standard
+
 #endregion Rules
 
 #region Selectors

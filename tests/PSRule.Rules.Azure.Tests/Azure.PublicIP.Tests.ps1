@@ -129,6 +129,22 @@ Describe 'Azure.PublicIP' -Tag 'publicip' {
             $ruleResult.Length | Should -Be 11;
             $ruleResult.TargetName | Should -BeIn 'ip-B', 'ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K', 'ip-L';
         }
+
+        It 'Azure.PublicIP.MigrateStandard' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PublicIP.MigrateStandard' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'ip-A';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path sku.name: Is set to 'Basic'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -BeIn 'ip-B', 'ip-C', 'ip-D', 'ip-E', 'ip-F', 'ip-G', 'ip-H', 'ip-I', 'ip-J', 'ip-K', 'ip-L';
+        }
     }
 
     Context 'Resource name -- Azure.PublicIP.Name' {
