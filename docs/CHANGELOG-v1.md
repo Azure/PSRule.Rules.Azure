@@ -29,6 +29,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that Azure AD-only authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
     [#2227](https://github.com/Azure/PSRule.Rules.Azure/issues/2227)
 
+## v1.29.0-B0062 (pre-release)
+
 What's changed since pre-release v1.29.0-B0036:
 
 - Bug fixes:
