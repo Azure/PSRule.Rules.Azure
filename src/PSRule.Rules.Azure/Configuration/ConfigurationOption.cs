@@ -57,7 +57,7 @@ namespace PSRule.Rules.Azure.Configuration
             ManagementGroup = new ManagementGroupOption(option.ManagementGroup);
             ParameterDefaults = new ParameterDefaultsOption(option.ParameterDefaults);
             Deployment = new DeploymentOption(option.Deployment);
-            PolicyIgnoreList = option.PolicyIgnoreList;
+            PolicyIgnoreList = (string[])option.PolicyIgnoreList.Clone();
             PolicyRulePrefix = option.PolicyRulePrefix;
             BicepMinimumVersion = option.BicepMinimumVersion;
             BicepFileExpansionTimeout = option.BicepFileExpansionTimeout;
