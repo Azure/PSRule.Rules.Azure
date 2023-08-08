@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.29.0-B0036:
+
+- Bug fixes:
+  - Fixed array contains with JArray by @BernieWhite.
+    [#2368](https://github.com/Azure/PSRule.Rules.Azure/issues/2368)
+
 ## v1.29.0-B0036 (pre-release)
 
 What's changed since pre-release v1.29.0-B0015:

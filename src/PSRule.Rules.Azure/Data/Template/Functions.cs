@@ -2175,10 +2175,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static bool HasChild(object value, object child)
         {
-            if (value is Array avalue)
-                return Contains(avalue, child);
-            else if (value is JArray jArray)
-                return jArray.Contains(JToken.FromObject(child));
+            if (ExpressionHelpers.TryArray(value, out var array))
+                return Contains(array, child);
             else if (value is string svalue)
                 return svalue.Contains(child.ToString());
             else if (value is JObject jObject)

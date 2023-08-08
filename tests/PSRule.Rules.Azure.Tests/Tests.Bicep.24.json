@@ -1,0 +1,58 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "languageVersion": "1.10-experimental",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
+    "_generator": {
+      "name": "bicep",
+      "version": "0.20.4.51522",
+      "templateHash": "11774623753017902755"
+    }
+  },
+  "parameters": {
+    "enableSecurityCenterFor": {
+      "type": "array",
+      "defaultValue": [
+        "VirtualMachines",
+        "AppServices",
+        "SqlServers",
+        "SqlServerVirtualMachines",
+        "OpenSourceRelationalDatabases",
+        "StorageAccounts",
+        "Containers",
+        "KeyVaults",
+        "Arm",
+        "DNS"
+      ]
+    }
+  },
+  "variables": {
+    "disableSecurityCenterFor": [
+      "VirtualMachines",
+      "AppServices",
+      "SqlServers",
+      "SqlServerVirtualMachines",
+      "OpenSourceRelationalDatabases",
+      "StorageAccounts",
+      "Containers",
+      "KeyVaults",
+      "Arm",
+      "DNS"
+    ]
+  },
+  "resources": {
+    "securityCenterPricing": {
+      "copy": {
+        "name": "securityCenterPricing",
+        "count": "[length(variables('disableSecurityCenterFor'))]"
+      },
+      "type": "Microsoft.Security/pricings",
+      "apiVersion": "2018-06-01",
+      "name": "[variables('disableSecurityCenterFor')[copyIndex()]]",
+      "properties": {
+        "pricingTier": "[if(contains(parameters('enableSecurityCenterFor'), variables('disableSecurityCenterFor')[copyIndex()]), 'Standard', 'Free')]"
+      }
+    }
+  }
+}
