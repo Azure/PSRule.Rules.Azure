@@ -106,6 +106,8 @@ namespace PSRule.Rules.Azure
             // Array
             Assert.True((bool)Functions.Contains(context, new object[] { new string[] { "one", "two", "three" }, "two" }));
             Assert.True((bool)Functions.Contains(context, new object[] { new object[] { "one", "two", "three" }, "two" }));
+            Assert.True((bool)Functions.Contains(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]"), "two" }));
+            Assert.True((bool)Functions.Contains(context, new object[] { JArray.Parse("[ \"one\", \"two\", \"three\" ]"), new JValue("two") }));
             Assert.False((bool)Functions.Contains(context, new object[] { new object[] { "one", "two", "three" }, "Two" }));
             Assert.False((bool)Functions.Contains(context, new object[] { new object[] { "one", "two", "three" }, "four" }));
             Assert.True((bool)Functions.Contains(context, new object[] { new object[] { 1, 2, 3 }, 3 }));

@@ -850,6 +850,22 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Test 001", actual["properties"]["displayName"].Value<string>());
         }
 
+        [Fact]
+        public void ArrayContains()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.24.json"), null, out _);
+            Assert.Equal(11, resources.Length);
+
+            Assert.Equal("VirtualMachines", resources[1]["name"].Value<string>());
+            Assert.Equal("Standard", resources[1]["properties"]["pricingTier"].Value<string>());
+            Assert.Equal("AppServices", resources[2]["name"].Value<string>());
+            Assert.Equal("Standard", resources[2]["properties"]["pricingTier"].Value<string>());
+            Assert.Equal("SqlServers", resources[3]["name"].Value<string>());
+            Assert.Equal("Standard", resources[3]["properties"]["pricingTier"].Value<string>());
+            Assert.Equal("DNS", resources[10]["name"].Value<string>());
+            Assert.Equal("Standard", resources[10]["properties"]["pricingTier"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
