@@ -88,9 +88,9 @@ Rule 'Azure.MySQL.AAD' -Ref 'AZR-000392' -Type 'Microsoft.DBforMySQL/flexibleSer
 }
 
 # Synopsis: Ensure Azure AD-only authentication is enabled with Azure Database for MySQL databases.    
-Rule 'Azure.MySQL.AADOnly' -Ref 'AZR-000394' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/flexibleServers/configurations' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2023_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
+Rule 'Azure.MySQL.AADOnly' -Ref 'AZR-000394' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/flexibleServers/configurations' -Tag @{ release = 'GA'; ruleSet = '2023_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'IM-1' } {
     if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers') {
-        $configurations = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/flexibleServers/configurations' -Name "$($PSRule.TargetName)/aad_auth_only")
+        $configurations = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/flexibleServers/configurations' -Name "aad_auth_only")
         if ($configurations.Count -eq 0) {
             return $Assert.Fail().Reason($LocalizedData.SubResourceNotFound, 'Microsoft.DBforMySQL/flexibleServers/configurations')
         }
