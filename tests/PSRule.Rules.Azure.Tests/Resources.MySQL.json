@@ -403,13 +403,8 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
-<<<<<<< HEAD
         "ResourceName": "aad_auth_only",
         "Name": "aad_auth_only",
-=======
-        "ResourceName": "server-E/aad_auth_only",
-        "Name": "server-E/aad_auth_only",
->>>>>>> 0aef565ff0b2cabd4d26bf176721b0f59aad96a3
         "Properties": {
           "value": "OFF",
           "currentValue": "OFF",
@@ -471,13 +466,8 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       },
       {
-<<<<<<< HEAD
         "ResourceName": "aad_auth_only",
         "Name": "aad_auth_only",
-=======
-        "ResourceName": "server-F/aad_auth_only",
-        "Name": "server-F/aad_auth_only",
->>>>>>> 0aef565ff0b2cabd4d26bf176721b0f59aad96a3
         "Properties": {
           "value": "ON",
           "currentValue": "ON",
