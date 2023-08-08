@@ -51,12 +51,12 @@ namespace PSRule.Rules.Azure.Configuration
             if (option == null)
                 throw new ArgumentNullException(nameof(option));
 
-            Subscription = option.Subscription;
-            ResourceGroup = option.ResourceGroup;
-            Tenant = option.Tenant;
-            ManagementGroup = option.ManagementGroup;
-            ParameterDefaults = option.ParameterDefaults;
-            Deployment = option.Deployment;
+            Subscription = new SubscriptionOption(option.Subscription);
+            ResourceGroup = new ResourceGroupOption(option.ResourceGroup);
+            Tenant = new TenantOption(option.Tenant);
+            ManagementGroup = new ManagementGroupOption(option.ManagementGroup);
+            ParameterDefaults = new ParameterDefaultsOption(option.ParameterDefaults);
+            Deployment = new DeploymentOption(option.Deployment);
             PolicyIgnoreList = option.PolicyIgnoreList;
             PolicyRulePrefix = option.PolicyRulePrefix;
             BicepMinimumVersion = option.BicepMinimumVersion;
