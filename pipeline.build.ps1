@@ -459,7 +459,7 @@ task BuildHelp BuildModule, Dependencies, {
         &$pwshPath -Command {
             # Generate MAML and about topics
             Import-Module -Name PlatyPS -Verbose:$False;
-            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path './docs/commands', './docs/concepts' -Force;
+            $Null = New-ExternalHelp -OutputPath 'out/docs/PSRule.Rules.Azure' -Path './docs/commands', './docs/concepts/about_*' -Force;
 
             # Copy generated help into module out path
             $Null = Copy-Item -Path out/docs/PSRule.Rules.Azure/* -Destination out/modules/PSRule.Rules.Azure/en-US/ -Recurse;
