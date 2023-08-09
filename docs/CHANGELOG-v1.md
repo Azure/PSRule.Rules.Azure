@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Front Door:
+    - Check that managed identity for Azure Front Door instances are configured by @BenjaminEngeset.
+      [#2378](https://github.com/Azure/PSRule.Rules.Azure/issues/2378)
+
 ## v1.29.0-B0062 (pre-release)
 
 What's changed since pre-release v1.29.0-B0036:

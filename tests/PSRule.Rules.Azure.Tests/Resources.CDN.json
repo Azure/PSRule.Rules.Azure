@@ -1,418 +1,429 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-A",
-        "Identity": null,
-        "Kind": null,
-        "Location": "Global",
-        "ManagedBy": null,
-        "ResourceName": "cdn-endpoint-A",
-        "Name": "cdn-endpoint-A",
-        "Plan": null,
-        "Properties": {
-            "hostName": "cdn-endpoint-A.azureedge.net",
-            "originHostHeader": "origin-A",
-            "provisioningState": "Succeeded",
-            "resourceState": "Running",
-            "isHttpAllowed": true,
-            "isHttpsAllowed": true,
-            "queryStringCachingBehavior": "IgnoreQueryString",
-            "originPath": null,
-            "origins": [
-                {
-                    "name": "origin-A",
-                    "properties": {
-                        "hostName": "origin-A",
-                        "httpPort": 80,
-                        "httpsPort": 443
-                    }
-                }
-            ],
-            "customDomains": [],
-            "contentTypesToCompress": [
-                "application/eot",
-                "application/font",
-                "application/font-sfnt",
-                "application/javascript",
-                "application/json",
-                "application/opentype",
-                "application/otf",
-                "application/pkcs7-mime",
-                "application/truetype",
-                "application/ttf",
-                "application/vnd.ms-fontobject",
-                "application/xhtml+xml",
-                "application/xml",
-                "application/xml+rss",
-                "application/x-font-opentype",
-                "application/x-font-truetype",
-                "application/x-font-ttf",
-                "application/x-httpd-cgi",
-                "application/x-javascript",
-                "application/x-mpegurl",
-                "application/x-opentype",
-                "application/x-otf",
-                "application/x-perl",
-                "application/x-ttf",
-                "font/eot",
-                "font/ttf",
-                "font/otf",
-                "font/opentype",
-                "image/svg+xml",
-                "text/css",
-                "text/csv",
-                "text/html",
-                "text/javascript",
-                "text/js",
-                "text/plain",
-                "text/richtext",
-                "text/tab-separated-values",
-                "text/xml",
-                "text/x-script",
-                "text/x-component",
-                "text/x-java-source"
-            ],
-            "isCompressionEnabled": true,
-            "optimizationType": "GeneralWebDelivery",
-            "probePath": null,
-            "geoFilters": [],
-            "deliveryPolicy": {
-                "description": "",
-                "rules": []
-            }
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Cdn/profiles/endpoints",
-        "ResourceType": "Microsoft.Cdn/profiles/endpoints",
-        "Sku": null,
-        "Tags": {},
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "Global",
+    "ManagedBy": null,
+    "ResourceName": "cdn-endpoint-A",
+    "Name": "cdn-endpoint-A",
+    "Plan": null,
+    "Properties": {
+      "hostName": "cdn-endpoint-A.azureedge.net",
+      "originHostHeader": "origin-A",
+      "provisioningState": "Succeeded",
+      "resourceState": "Running",
+      "isHttpAllowed": true,
+      "isHttpsAllowed": true,
+      "queryStringCachingBehavior": "IgnoreQueryString",
+      "originPath": null,
+      "origins": [
+        {
+          "name": "origin-A",
+          "properties": {
+            "hostName": "origin-A",
+            "httpPort": 80,
+            "httpsPort": 443
+          }
+        }
+      ],
+      "customDomains": [],
+      "contentTypesToCompress": [
+        "application/eot",
+        "application/font",
+        "application/font-sfnt",
+        "application/javascript",
+        "application/json",
+        "application/opentype",
+        "application/otf",
+        "application/pkcs7-mime",
+        "application/truetype",
+        "application/ttf",
+        "application/vnd.ms-fontobject",
+        "application/xhtml+xml",
+        "application/xml",
+        "application/xml+rss",
+        "application/x-font-opentype",
+        "application/x-font-truetype",
+        "application/x-font-ttf",
+        "application/x-httpd-cgi",
+        "application/x-javascript",
+        "application/x-mpegurl",
+        "application/x-opentype",
+        "application/x-otf",
+        "application/x-perl",
+        "application/x-ttf",
+        "font/eot",
+        "font/ttf",
+        "font/otf",
+        "font/opentype",
+        "image/svg+xml",
+        "text/css",
+        "text/csv",
+        "text/html",
+        "text/javascript",
+        "text/js",
+        "text/plain",
+        "text/richtext",
+        "text/tab-separated-values",
+        "text/xml",
+        "text/x-script",
+        "text/x-component",
+        "text/x-java-source"
+      ],
+      "isCompressionEnabled": true,
+      "optimizationType": "GeneralWebDelivery",
+      "probePath": null,
+      "geoFilters": [],
+      "deliveryPolicy": {
+        "description": "",
+        "rules": []
+      }
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-B",
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Cdn/profiles/endpoints",
+    "ResourceType": "Microsoft.Cdn/profiles/endpoints",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": "Global",
+    "ManagedBy": null,
+    "ResourceName": "cdn-endpoint-B",
+    "Name": "cdn-endpoint-B",
+    "Plan": null,
+    "Properties": {
+      "hostName": "cdn-endpoint-B.azureedge.net",
+      "originHostHeader": "origin-B",
+      "provisioningState": "Succeeded",
+      "resourceState": "Running",
+      "isHttpAllowed": false,
+      "isHttpsAllowed": true,
+      "queryStringCachingBehavior": "IgnoreQueryString",
+      "originPath": null,
+      "origins": [
+        {
+          "name": "origin-B",
+          "properties": {
+            "hostName": "origin-B",
+            "httpPort": 80,
+            "httpsPort": 443
+          }
+        }
+      ],
+      "customDomains": [],
+      "contentTypesToCompress": [
+        "application/eot",
+        "application/font",
+        "application/font-sfnt",
+        "application/javascript",
+        "application/json",
+        "application/opentype",
+        "application/otf",
+        "application/pkcs7-mime",
+        "application/truetype",
+        "application/ttf",
+        "application/vnd.ms-fontobject",
+        "application/xhtml+xml",
+        "application/xml",
+        "application/xml+rss",
+        "application/x-font-opentype",
+        "application/x-font-truetype",
+        "application/x-font-ttf",
+        "application/x-httpd-cgi",
+        "application/x-javascript",
+        "application/x-mpegurl",
+        "application/x-opentype",
+        "application/x-otf",
+        "application/x-perl",
+        "application/x-ttf",
+        "font/eot",
+        "font/ttf",
+        "font/otf",
+        "font/opentype",
+        "image/svg+xml",
+        "text/css",
+        "text/csv",
+        "text/html",
+        "text/javascript",
+        "text/js",
+        "text/plain",
+        "text/richtext",
+        "text/tab-separated-values",
+        "text/xml",
+        "text/x-script",
+        "text/x-component",
+        "text/x-java-source"
+      ],
+      "isCompressionEnabled": true,
+      "optimizationType": "GeneralWebDelivery",
+      "probePath": null,
+      "geoFilters": [],
+      "deliveryPolicy": {
+        "description": "",
+        "rules": []
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Cdn/profiles/endpoints",
+    "ResourceType": "Microsoft.Cdn/profiles/endpoints",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-B/customdomains/custom-domain-B",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-B/customdomains/custom-domain-B",
         "Identity": null,
         "Kind": null,
-        "Location": "Global",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "cdn-endpoint-B",
-        "Name": "cdn-endpoint-B",
+        "ResourceName": "custom-domain-B",
+        "Name": "custom-domain-B",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
         "Plan": null,
         "Properties": {
-            "hostName": "cdn-endpoint-B.azureedge.net",
-            "originHostHeader": "origin-B",
-            "provisioningState": "Succeeded",
-            "resourceState": "Running",
-            "isHttpAllowed": false,
-            "isHttpsAllowed": true,
-            "queryStringCachingBehavior": "IgnoreQueryString",
-            "originPath": null,
-            "origins": [
-                {
-                    "name": "origin-B",
-                    "properties": {
-                        "hostName": "origin-B",
-                        "httpPort": 80,
-                        "httpsPort": 443
-                    }
-                }
-            ],
-            "customDomains": [],
-            "contentTypesToCompress": [
-                "application/eot",
-                "application/font",
-                "application/font-sfnt",
-                "application/javascript",
-                "application/json",
-                "application/opentype",
-                "application/otf",
-                "application/pkcs7-mime",
-                "application/truetype",
-                "application/ttf",
-                "application/vnd.ms-fontobject",
-                "application/xhtml+xml",
-                "application/xml",
-                "application/xml+rss",
-                "application/x-font-opentype",
-                "application/x-font-truetype",
-                "application/x-font-ttf",
-                "application/x-httpd-cgi",
-                "application/x-javascript",
-                "application/x-mpegurl",
-                "application/x-opentype",
-                "application/x-otf",
-                "application/x-perl",
-                "application/x-ttf",
-                "font/eot",
-                "font/ttf",
-                "font/otf",
-                "font/opentype",
-                "image/svg+xml",
-                "text/css",
-                "text/csv",
-                "text/html",
-                "text/javascript",
-                "text/js",
-                "text/plain",
-                "text/richtext",
-                "text/tab-separated-values",
-                "text/xml",
-                "text/x-script",
-                "text/x-component",
-                "text/x-java-source"
-            ],
-            "isCompressionEnabled": true,
-            "optimizationType": "GeneralWebDelivery",
-            "probePath": null,
-            "geoFilters": [],
-            "deliveryPolicy": {
-                "description": "",
-                "rules": []
-            }
+          "provisioningState": "Succeeded",
+          "resourceState": "Active",
+          "hostName": "host.contoso.com",
+          "validationData": null,
+          "customHttpsProvisioningState": "Enabled",
+          "customHttpsProvisioningSubstate": "CertificateDeployed",
+          "customHttpsParameters": {
+            "certificateSource": "AzureKeyVault",
+            "certificateSourceParameters": {
+              "@odata.type": "#Microsoft.Azure.Cdn.Models.KeyVaultCertificateSourceParameters",
+              "subscriptionId": "00000000-0000-0000-0000-000000000000",
+              "resourceGroupName": "rg-test",
+              "vaultName": "vault-B",
+              "secretName": "secret-B",
+              "secretVersion": "00000000000000000000000000000000",
+              "updateRule": "NoAction",
+              "deleteRule": "NoAction"
+            },
+            "minimumTlsVersion": "TLS12",
+            "protocolType": "ServerNameIndication"
+          }
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Cdn/profiles/endpoints",
-        "ResourceType": "Microsoft.Cdn/profiles/endpoints",
+        "Type": "Microsoft.Cdn/profiles/endpoints/customdomains",
+        "ResourceType": "Microsoft.Cdn/profiles/endpoints/customdomains",
+        "ExtensionResourceType": null,
         "Sku": null,
-        "Tags": {},
+        "Tags": null,
+        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-B/customdomains/custom-domain-B",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-B/customdomains/custom-domain-B",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "custom-domain-B",
-                "Name": "custom-domain-B",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "provisioningState": "Succeeded",
-                    "resourceState": "Active",
-                    "hostName": "host.contoso.com",
-                    "validationData": null,
-                    "customHttpsProvisioningState": "Enabled",
-                    "customHttpsProvisioningSubstate": "CertificateDeployed",
-                    "customHttpsParameters": {
-                        "certificateSource": "AzureKeyVault",
-                        "certificateSourceParameters": {
-                            "@odata.type": "#Microsoft.Azure.Cdn.Models.KeyVaultCertificateSourceParameters",
-                            "subscriptionId": "00000000-0000-0000-0000-000000000000",
-                            "resourceGroupName": "rg-test",
-                            "vaultName": "vault-B",
-                            "secretName": "secret-B",
-                            "secretVersion": "00000000000000000000000000000000",
-                            "updateRule": "NoAction",
-                            "deleteRule": "NoAction"
-                        },
-                        "minimumTlsVersion": "TLS12",
-                        "protocolType": "ServerNameIndication"
-                    }
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Cdn/profiles/endpoints/customdomains",
-                "ResourceType": "Microsoft.Cdn/profiles/endpoints/customdomains",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "Global",
+    "ManagedBy": null,
+    "ResourceName": "cdn-endpoint-C",
+    "Name": "cdn-endpoint-C",
+    "Plan": null,
+    "Properties": {
+      "hostName": "cdn-endpoint-C.azureedge.net",
+      "originHostHeader": "origin-C",
+      "provisioningState": "Succeeded",
+      "resourceState": "Running",
+      "isHttpAllowed": false,
+      "isHttpsAllowed": true,
+      "queryStringCachingBehavior": "IgnoreQueryString",
+      "originPath": null,
+      "origins": [
+        {
+          "name": "origin-C",
+          "properties": {
+            "hostName": "origin-C",
+            "httpPort": 80,
+            "httpsPort": 443
+          }
+        }
+      ],
+      "customDomains": [],
+      "contentTypesToCompress": [
+        "application/eot",
+        "application/font",
+        "application/font-sfnt",
+        "application/javascript",
+        "application/json",
+        "application/opentype",
+        "application/otf",
+        "application/pkcs7-mime",
+        "application/truetype",
+        "application/ttf",
+        "application/vnd.ms-fontobject",
+        "application/xhtml+xml",
+        "application/xml",
+        "application/xml+rss",
+        "application/x-font-opentype",
+        "application/x-font-truetype",
+        "application/x-font-ttf",
+        "application/x-httpd-cgi",
+        "application/x-javascript",
+        "application/x-mpegurl",
+        "application/x-opentype",
+        "application/x-otf",
+        "application/x-perl",
+        "application/x-ttf",
+        "font/eot",
+        "font/ttf",
+        "font/otf",
+        "font/opentype",
+        "image/svg+xml",
+        "text/css",
+        "text/csv",
+        "text/html",
+        "text/javascript",
+        "text/js",
+        "text/plain",
+        "text/richtext",
+        "text/tab-separated-values",
+        "text/xml",
+        "text/x-script",
+        "text/x-component",
+        "text/x-java-source"
+      ],
+      "isCompressionEnabled": true,
+      "optimizationType": "GeneralWebDelivery",
+      "probePath": null,
+      "geoFilters": [],
+      "deliveryPolicy": {
+        "description": "",
+        "rules": []
+      }
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Cdn/profiles/endpoints",
+    "ResourceType": "Microsoft.Cdn/profiles/endpoints",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C/customdomains/custom-domain-C",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C/customdomains/custom-domain-C",
         "Identity": null,
         "Kind": null,
-        "Location": "Global",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "cdn-endpoint-C",
-        "Name": "cdn-endpoint-C",
+        "ResourceName": "custom-domain-C",
+        "Name": "custom-domain-C",
+        "ExtensionResourceName": null,
+        "ParentResource": null,
         "Plan": null,
         "Properties": {
-            "hostName": "cdn-endpoint-C.azureedge.net",
-            "originHostHeader": "origin-C",
-            "provisioningState": "Succeeded",
-            "resourceState": "Running",
-            "isHttpAllowed": false,
-            "isHttpsAllowed": true,
-            "queryStringCachingBehavior": "IgnoreQueryString",
-            "originPath": null,
-            "origins": [
-                {
-                    "name": "origin-C",
-                    "properties": {
-                        "hostName": "origin-C",
-                        "httpPort": 80,
-                        "httpsPort": 443
-                    }
-                }
-            ],
-            "customDomains": [],
-            "contentTypesToCompress": [
-                "application/eot",
-                "application/font",
-                "application/font-sfnt",
-                "application/javascript",
-                "application/json",
-                "application/opentype",
-                "application/otf",
-                "application/pkcs7-mime",
-                "application/truetype",
-                "application/ttf",
-                "application/vnd.ms-fontobject",
-                "application/xhtml+xml",
-                "application/xml",
-                "application/xml+rss",
-                "application/x-font-opentype",
-                "application/x-font-truetype",
-                "application/x-font-ttf",
-                "application/x-httpd-cgi",
-                "application/x-javascript",
-                "application/x-mpegurl",
-                "application/x-opentype",
-                "application/x-otf",
-                "application/x-perl",
-                "application/x-ttf",
-                "font/eot",
-                "font/ttf",
-                "font/otf",
-                "font/opentype",
-                "image/svg+xml",
-                "text/css",
-                "text/csv",
-                "text/html",
-                "text/javascript",
-                "text/js",
-                "text/plain",
-                "text/richtext",
-                "text/tab-separated-values",
-                "text/xml",
-                "text/x-script",
-                "text/x-component",
-                "text/x-java-source"
-            ],
-            "isCompressionEnabled": true,
-            "optimizationType": "GeneralWebDelivery",
-            "probePath": null,
-            "geoFilters": [],
-            "deliveryPolicy": {
-                "description": "",
-                "rules": []
-            }
+          "provisioningState": "Succeeded",
+          "resourceState": "Active",
+          "hostName": "host.contoso.com",
+          "validationData": null,
+          "customHttpsProvisioningState": "Enabled",
+          "customHttpsProvisioningSubstate": "CertificateDeployed",
+          "customHttpsParameters": {
+            "certificateSource": "AzureKeyVault",
+            "certificateSourceParameters": {
+              "@odata.type": "#Microsoft.Azure.Cdn.Models.KeyVaultCertificateSourceParameters",
+              "subscriptionId": "00000000-0000-0000-0000-000000000000",
+              "resourceGroupName": "rg-test",
+              "vaultName": "vault-B",
+              "secretName": "secret-B",
+              "secretVersion": "00000000000000000000000000000000",
+              "updateRule": "NoAction",
+              "deleteRule": "NoAction"
+            },
+            "minimumTlsVersion": "TLS10",
+            "protocolType": "ServerNameIndication"
+          }
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Cdn/profiles/endpoints",
-        "ResourceType": "Microsoft.Cdn/profiles/endpoints",
+        "Type": "Microsoft.Cdn/profiles/endpoints/customdomains",
+        "ResourceType": "Microsoft.Cdn/profiles/endpoints/customdomains",
+        "ExtensionResourceType": null,
         "Sku": null,
-        "Tags": {},
+        "Tags": null,
+        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C/customdomains/custom-domain-C",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C/customdomains/custom-domain-C",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "custom-domain-C",
-                "Name": "custom-domain-C",
-                "ExtensionResourceName": null,
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "provisioningState": "Succeeded",
-                    "resourceState": "Active",
-                    "hostName": "host.contoso.com",
-                    "validationData": null,
-                    "customHttpsProvisioningState": "Enabled",
-                    "customHttpsProvisioningSubstate": "CertificateDeployed",
-                    "customHttpsParameters": {
-                        "certificateSource": "AzureKeyVault",
-                        "certificateSourceParameters": {
-                            "@odata.type": "#Microsoft.Azure.Cdn.Models.KeyVaultCertificateSourceParameters",
-                            "subscriptionId": "00000000-0000-0000-0000-000000000000",
-                            "resourceGroupName": "rg-test",
-                            "vaultName": "vault-B",
-                            "secretName": "secret-B",
-                            "secretVersion": "00000000000000000000000000000000",
-                            "updateRule": "NoAction",
-                            "deleteRule": "NoAction"
-                        },
-                        "minimumTlsVersion": "TLS10",
-                        "protocolType": "ServerNameIndication"
-                    }
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Cdn/profiles/endpoints/customdomains",
-                "ResourceType": "Microsoft.Cdn/profiles/endpoints/customdomains",
-                "ExtensionResourceType": null,
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+    "type": "Microsoft.Cdn/profiles",
+    "name": "frontDoorProfile-A",
+    "location": "global",
+    "tags": {
+      "tagName1": null,
+      "tagName2": null
     },
-    {   "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
-        "type": "Microsoft.Cdn/profiles",
-        "name": "frontDoorProfile-A",
-        "location": "global",
-        "tags": {
-          "tagName1": null,
-          "tagName2": null
-        },
-        "sku": {
-          "name": "Standard_Microsoft"
-        },
-        "properties": {
-          "extendedProperties": {},
-          "originResponseTimeoutSeconds": "int"
-        }
+    "sku": {
+      "name": "Standard_Microsoft"
     },
-    {   "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
-        "type": "Microsoft.Cdn/profiles",
-        "name": "frontDoorProfile-B",
-        "location": "global",
-        "tags": {
-          "tagName1": null,
-          "tagName2": null
-        },
-        "sku": {
-          "name": "Standard_AzureFrontDoor"
-        },
-        "properties": {
-          "extendedProperties": {},
-          "originResponseTimeoutSeconds": "int"
-        }
-    },
-    {   "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
-        "type": "Microsoft.Cdn/profiles",
-        "name": "frontDoorProfile-C",
-        "location": "global",
-        "tags": {
-          "tagName1": null,
-          "tagName2": null
-        },
-        "sku": {
-          "name": "Premium_AzureFrontDoor"
-        },
-        "properties": {
-          "extendedProperties": {},
-          "originResponseTimeoutSeconds": "int"
-        }
+    "properties": {
+      "extendedProperties": {},
+      "originResponseTimeoutSeconds": "int"
     }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+    "type": "Microsoft.Cdn/profiles",
+    "name": "frontDoorProfile-B",
+    "location": "global",
+    "tags": {
+      "tagName1": null,
+      "tagName2": null
+    },
+    "sku": {
+      "name": "Standard_AzureFrontDoor"
+    },
+    "identity": {
+      "type": "None",
+      "userAssignedIdentities": null
+    },
+    "properties": {
+      "extendedProperties": {},
+      "originResponseTimeoutSeconds": "int"
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/cdn-A/endpoints/cdn-endpoint-C",
+    "type": "Microsoft.Cdn/profiles",
+    "name": "frontDoorProfile-C",
+    "location": "global",
+    "tags": {
+      "tagName1": null,
+      "tagName2": null
+    },
+    "sku": {
+      "name": "Premium_AzureFrontDoor"
+    },
+    "identity": {
+      "type": "SystemAssigned",
+      "userAssignedIdentities": null
+    },
+    "properties": {
+      "extendedProperties": {},
+      "originResponseTimeoutSeconds": "int"
+    }
+  }
 ]

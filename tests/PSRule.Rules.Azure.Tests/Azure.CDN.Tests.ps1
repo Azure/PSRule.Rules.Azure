@@ -69,6 +69,43 @@ Describe 'Azure.CDN' -Tag 'CDN' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'cdn-endpoint-A', 'cdn-endpoint-B';
         }
+
+        It 'Azure.CDN.UseFrontDoor' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.CDN.json'
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.CDN.UseFrontDoor' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-A';
+            $ruleResult.Detail.Reason.Path | Should -Be 'sku.name';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-B', 'frontDoorProfile-C';
+        }
+
+        It 'Azure.CDN.ManagedIdentity' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.CDN.json'
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.CDN.ManagedIdentity' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-B';
+            $ruleResult.Detail.Reason.Path | Should -Be 'identity.type';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-C';
+        }
     }
 
     Context 'Resource name' {
@@ -117,25 +154,6 @@ Describe 'Azure.CDN' -Tag 'CDN' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Outcome | Should -Be 'Fail';
             # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn 'name';
-        }
-        
-        It 'Azure.CDN.UseFrontDoor' {
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.CDN.json'
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.CDN.UseFrontDoor' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-A';
-            $ruleResult.Detail.Reason.Path | Should -Be 'sku.name';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-B', 'frontDoorProfile-C';
         }
     }
 }
