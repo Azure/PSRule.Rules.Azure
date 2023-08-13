@@ -69,6 +69,21 @@ Describe 'Azure.RSV' -Tag 'RSV' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'replication-alert-b', 'vault-g', 'replication-alert-c';
         }
+
+        It 'Azure.RSV.Immutable' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.RSV.Immutable' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vault-e', 'vault-f';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.securitySettings.immutabilitySettings.state';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vault-g';
+        }
     }
 
     Context 'Resource name - Azure.RSV.Name' {
