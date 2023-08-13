@@ -92,4 +92,4 @@ Note that immutability locking `Locked` is irreversible, so ensure to take a wel
 - [Manage Azure Backup Immutable vault operations](https://learn.microsoft.com/azure/backup/backup-azure-immutable-vault-how-to-manage)
 - [Azure security baseline for Azure Backup](https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/backup-security-baseline)
 - [DP-2: Protect sensitive data](https://learn.microsoft.com/security/benchmark/azure/baselines/backup-security-baseline#dp-2-protect-sensitive-data)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.recoveryservices/vaults#securitysettings)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.recoveryservices/vaults#immutabilitysettings)
