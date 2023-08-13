@@ -1,0 +1,32 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Backup Vault (BV)
+#
+
+#region Rules
+
+---
+# Synopsis: Ensure immutability is configured to protect backup data.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.BV.Immutable
+  ref: AZR-000398
+  tags:
+    release: GA
+    ruleSet: 2023_09
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.MCSB.v1/control: 'DP-2'
+spec:
+  type:
+    - Microsoft.DataProtection/backupVaults
+  condition:
+    field: properties.securitySettings.immutabilitySettings.state
+    in:
+      - Unlocked
+      - Locked
+
+#endregion Rules
