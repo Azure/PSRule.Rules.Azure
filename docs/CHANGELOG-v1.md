@@ -29,6 +29,33 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that immutability is configured for Backup vaults by @BenjaminEngeset.
     [#2387](https://github.com/Azure/PSRule.Rules.Azure/issues/2387)
 
+## v1.29.0
+
+What's changed since v1.28.2:
+
+- New rules:
+  - Databricks:
+    - Check that workspaces use secure cluster connectivity by @BernieWhite.
+      [#2334](https://github.com/Azure/PSRule.Rules.Azure/issues/2334)
+- General improvements:
+  - Use policy definition name when generating a rule from it by @BernieWhite.
+    [#1959](https://github.com/Azure/PSRule.Rules.Azure/issues/1959)
+  - Added export in-flight data for Defender for Storage from Storage Accounts by @BernieWhite.
+    [#2248](https://github.com/Azure/PSRule.Rules.Azure/issues/2248)
+  - Added export in-flight data for Defender for APIs from API Management by @BernieWhite.
+    [#2247](https://github.com/Azure/PSRule.Rules.Azure/issues/2247)
+- Bug fixes:
+  - Fixed policy expansion with unquoted field property by @BernieWhite.
+    [#2352](https://github.com/Azure/PSRule.Rules.Azure/issues/2352)
+  - Fixed array contains with JArray by @BernieWhite.
+    [#2368](https://github.com/Azure/PSRule.Rules.Azure/issues/2368)
+  - Fixed index out of bounds of array with first function on empty array by @BernieWhite.
+    [#2372](https://github.com/Azure/PSRule.Rules.Azure/issues/2372)
+
+What's changed since pre-release v1.29.0-B0062:
+
+- No additional changes.
+
 ## v1.29.0-B0062 (pre-release)
 
 What's changed since pre-release v1.29.0-B0036:
