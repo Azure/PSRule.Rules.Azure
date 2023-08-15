@@ -96,5 +96,6 @@ For cases where you are creating and destroying backups and vaults on a regulary
 - [Restricted operations](https://learn.microsoft.com/azure/backup/backup-azure-immutable-vault-concept#restricted-operations)
 - [Manage Azure Backup Immutable vault operations](https://learn.microsoft.com/azure/backup/backup-azure-immutable-vault-how-to-manage)
 - [Azure security baseline for Azure Backup](https://learn.microsoft.com/security/benchmark/azure/baselines/backup-security-baseline)
+- [Backup and restore plan to protect against ransomware](https://learn.microsoft.com/azure/security/fundamentals/backup-plan-to-protect-against-ransomware)
 - [BR-2: Protect backup and recovery data](https://learn.microsoft.com/security/benchmark/azure/mcsb-backup-recovery#br-2-protect-backup-and-recovery-data)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.recovfiyservices/vaults#immutabilitysettings)
