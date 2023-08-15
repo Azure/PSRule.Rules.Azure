@@ -16,13 +16,16 @@ Ensure immutability is configured to protect backup data.
 
 Immutability is supported for Recovery Services vaults by configuring the Immutable vault setting.
 
-Immutable vault helps protecting backup data by blocking any operations that could lead to loss of recovery points. Additionally, locking the Immutable vault setting makes it irreversible to prevent any malicious actors from disabling immutability and deleting backups.
+Immutable vault helps protecting backup data by blocking any operations that could lead to loss of recovery points.
+Additionally, locking the Immutable vault setting makes it irreversible to prevent any malicious actors from disabling immutability and deleting backups.
+
+For example, an malicious attack may attempt to remove data or delete vaults to prevent recovery to a known good state.
 
 The Immutable vault setting is not enabled per default.
 
 ## RECOMMENDATION
 
-Consider configuring immutability to protect backup data.
+Consider configuring immutability to protect backup data from accidental or malicious deletion.
 
 ## EXAMPLES
 
@@ -83,6 +86,8 @@ resource recoveryServicesVault 'Microsoft.RecoveryServices/vaults@2023-01-01' = 
 ## NOTES
 
 Note that immutability locking `Locked` is irreversible, so ensure to take a well-informed decision when opting to lock.
+For example, for vaults containing production workloads consider using `Locked`.
+For cases where you are creating and destroying backups and vaults on a regulary basis such as temporary environments consider `Unlocked`.
 
 ## LINKS
 
@@ -90,6 +95,6 @@ Note that immutability locking `Locked` is irreversible, so ensure to take a wel
 - [Immutable vault for Azure Backup](https://learn.microsoft.com/azure/backup/backup-azure-immutable-vault-concept)
 - [Restricted operations](https://learn.microsoft.com/azure/backup/backup-azure-immutable-vault-concept#restricted-operations)
 - [Manage Azure Backup Immutable vault operations](https://learn.microsoft.com/azure/backup/backup-azure-immutable-vault-how-to-manage)
-- [Azure security baseline for Azure Backup](https://learn.microsoft.com/en-us/security/benchmark/azure/baselines/backup-security-baseline)
-- [DP-2: Protect sensitive data](https://learn.microsoft.com/security/benchmark/azure/baselines/backup-security-baseline#dp-2-protect-sensitive-data)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.recoveryservices/vaults#immutabilitysettings)
+- [Azure security baseline for Azure Backup](https://learn.microsoft.com/security/benchmark/azure/baselines/backup-security-baseline)
+- [BR-2: Protect backup and recovery data](https://learn.microsoft.com/security/benchmark/azure/mcsb-backup-recovery#br-2-protect-backup-and-recovery-data)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.recovfiyservices/vaults#immutabilitysettings)
