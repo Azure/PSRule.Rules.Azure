@@ -1,0 +1,107 @@
+[
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DataProtection/backupVaults/vault-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DataProtection/backupVaults/vault-A",
+    "ResourceName": "vault-A",
+    "Name": "vault-A",
+    "Location": "westeurope",
+    "Identity": null,
+    "Properties": {
+      "monitoringSettings": {
+        "azureMonitorAlertSettings": {
+          "alertsForAllJobFailures": "string"
+        }
+      },
+      "securitySettings": {
+        "softDeleteSettings": {
+          "retentionDurationInDays": "int",
+          "state": "string"
+        }
+      },
+      "storageSettings": [
+        {
+          "datastoreType": "string",
+          "type": "string"
+        }
+      ]
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DataProtection/backupVaults",
+    "ResourceType": "Microsoft.DataProtection/backupVaults",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DataProtection/backupVaults/vault-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DataProtection/backupVaults/vault-B",
+    "ResourceName": "vault-B",
+    "Name": "vault-B",
+    "Location": "westeurope",
+    "Identity": null,
+    "Properties": {
+      "monitoringSettings": {
+        "azureMonitorAlertSettings": {
+          "alertsForAllJobFailures": "string"
+        }
+      },
+      "securitySettings": {
+        "immutabilitySettings": {
+          "state": "Disabled"
+        },
+        "softDeleteSettings": {
+          "retentionDurationInDays": "int",
+          "state": "string"
+        }
+      },
+      "storageSettings": [
+        {
+          "datastoreType": "string",
+          "type": "string"
+        }
+      ]
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DataProtection/backupVaults",
+    "ResourceType": "Microsoft.DataProtection/backupVaults",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DataProtection/backupVaults/vault-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DataProtection/backupVaults/vault-C",
+    "ResourceName": "vault-C",
+    "Name": "vault-C",
+    "Location": "westeurope",
+    "Identity": null,
+    "Properties": {
+      "monitoringSettings": {
+        "azureMonitorAlertSettings": {
+          "alertsForAllJobFailures": "string"
+        }
+      },
+      "securitySettings": {
+        "immutabilitySettings": {
+          "state": "Locked"
+        },
+        "softDeleteSettings": {
+          "retentionDurationInDays": "int",
+          "state": "string"
+        }
+      },
+      "storageSettings": [
+        {
+          "datastoreType": "string",
+          "type": "string"
+        }
+      ]
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.DataProtection/backupVaults",
+    "ResourceType": "Microsoft.DataProtection/backupVaults",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
+]
