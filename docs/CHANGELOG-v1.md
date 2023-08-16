@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.29.0:
+
+- Engineering:
+  - Bump BenchmarkDotNet to v0.13.7.
+    [#2385](https://github.com/Azure/PSRule.Rules.Azure/pull/2385)
+
 ## v1.29.0
 
 What's changed since v1.28.2:
