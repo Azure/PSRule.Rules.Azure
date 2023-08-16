@@ -213,8 +213,8 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'aad_auth_only-A';
 
             $ruleResult[0].Reason | Should -BeIn "A sub-resource of type 'Microsoft.DBforMySQL/flexibleServers/configurations' has not been specified.";
-            $ruleResult[1].Reason | Should -BeIn "Path properties.currentValue: Is set to 'OFF'.";
-            $ruleResult[2].Reason | Should -BeIn "Path properties.currentValue: Is set to 'OFF'.";
+            $ruleResult[1].Reason | Should -BeIn "Path properties.value: Is set to 'OFF'.";
+            $ruleResult[2].Reason | Should -BeIn "Path properties.value: Is set to 'OFF'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

@@ -37,7 +37,8 @@ To deploy Azure Database for MySQL flexible servers that pass this rule:
 
 - Configure the `Microsoft.DBforMySQL/flexibleServers/configurations` sub-resource.
 - Set the `name` to `aad_auth_only`.
-- Set the `properties.currentValue` to `ON`.
+- Set the `properties.value` to `ON`.
+- Set the `properties.source` to `user-override`.
 
 For example:
 
@@ -47,7 +48,8 @@ For example:
   "apiVersion": "2022-01-01",
   "name": "[format('{0}/{1}', parameters('serverName'), 'aad_auth_only')]",
   "properties": {
-    "currentValue": "ON"
+    "value": "ON",
+    "source": "user-override"
   },
   "dependsOn": [
      "[resourceId('Microsoft.DBforMySQL/flexibleServers', parameters('serverName'))]"
@@ -61,7 +63,8 @@ To deploy Azure Database for MySQL flexible servers that pass this rule:
 
 - Configure the `Microsoft.DBforMySQL/flexibleServers/configurations` sub-resource.
 - Set the `name` to `aad_auth_only`.
-- Set the `properties.currentValue` to `ON`.
+- Set the `properties.value` to `ON`.
+- Set the `properties.source` to `user-override`.
 
 For example:
 

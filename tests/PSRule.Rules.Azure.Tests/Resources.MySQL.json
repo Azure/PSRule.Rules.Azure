@@ -470,7 +470,7 @@
         "Name": "aad_auth_only",
         "Properties": {
           "value": "ON",
-          "currentValue": "ON",
+          "currentValue": "OFF",
           "source": "user-override"
         },
         "ResourceGroupName": "test-rg",
@@ -578,7 +578,6 @@
     "Tags": null,
     "Properties": {
       "value": "ON",
-      "currentValue": "ON",
       "source": "user-override"
     }
   }
