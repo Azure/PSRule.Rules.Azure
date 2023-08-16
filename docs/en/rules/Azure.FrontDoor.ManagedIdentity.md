@@ -3,22 +3,33 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Front Door
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.ManagedIdentity/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.ManagedIdentity/
 ---
 
 # Managed identity
 
 ## SYNOPSIS
 
-Ensure managed identity is used for Azure Front Door to allow support for Azure AD authentication.
+Ensure Front Door uses a managed identity to authorize access to Azure resources.
 
 ## DESCRIPTION
 
-A managed identity is the recommmeded for allowing support for Azure AD authentication in a Azure Front Door instance.
+When configuring a Standard or Premium SKU with a custom domain using bring your own certificate (BYOC) access to a Key Vault is required.
+Standard and Premium Front Door profiles support two methods for authorizing access to Azure resources:
+- Using the Microsoft managed multi-tenant app registration.
 
-You can enable the instance identity (SMI or UMI) to allow support for Azure AD authentication in Azure Front Door.
+  - Standard SKU profiles use the client ID `205478c0-bd83-4e1b-a9d6-db63a3e1e1c8`.
+  - Premium SKU profiles use the client ID `d4631ece-daab-479b-be77-ccb713491fc0`.
+- With a system or user assigned managed identity.
 
-Additionally, a managed identity is required in the future, as the Azure Active Directory App solution will be retired for Azure Front Door.
+The multi-tenant app registration has a number of challenges:
+
+- Only a single client ID is used for each SKU for all Azure Front Door profiles.
+  If multiple Front Door profiles are deployed into a single subscription,
+  it is not possible to restrict access so that each profile has access to it's own Key Vault.
+- A Entra ID (Azure AD) Global Administrator of must register the multi-tenant application for each tenant once before it can be used.
+
+Using an managed identity allows access to Key Vault to be granted using RBAC on an individual basis.
 
 ## RECOMMENDATION
 
@@ -50,7 +61,7 @@ For example:
   }
 }
 ```
- 
+
 ### Configure with Bicep
 
 To deploy Azure Front Door instances that pass this rule:
@@ -76,7 +87,11 @@ resource frontDoorProfile 'Microsoft.Cdn/profiles@2022-11-01-preview' = {
 
 ## NOTES
 
-Azure Front Door Standard or Premium SKU is required for managed identity.
+Currently Azure Front Door only supports authentication using an Entra ID (Azure AD) to Key Vault.
+To use a managed identity, the Standard or Premium SKU is required.
+Managed identities are not supported with the Classic SKU.
+
+If you only use Azure Front Door (AFD) managed certificates for custom domains, a managed identity is not required.
 
 ## LINKS
 

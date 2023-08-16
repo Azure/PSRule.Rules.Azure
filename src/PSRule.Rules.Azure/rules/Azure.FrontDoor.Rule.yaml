@@ -113,4 +113,47 @@ spec:
     - name: '.'
       match: '^[A-Za-z][A-Za-z0-9]{0,127}$'
 
+---
+# Synopsis: Ensure Front Door uses a managed identity to authorize access to Azure resources.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.FrontDoor.ManagedIdentity
+  ref: AZR-000396
+  tags:
+    release: GA
+    ruleSet: 2023_09
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.MCSB.v1/control: 'IM-2'
+spec:
+  type:
+    - Microsoft.Cdn/profiles
+  with:
+    - Azure.FrontDoor.IsStandardOrPremium
+  condition:
+    field: identity.type
+    in:
+      - SystemAssigned
+      - UserAssigned
+      - SystemAssigned,UserAssigned
+      - SystemAssigned, UserAssigned
+
 #endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Azure Front Door instances using the Standard or Premium SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.FrontDoor.IsStandardOrPremium
+spec:
+  if:
+    field: sku.name
+    in:
+      - Standard_AzureFrontDoor
+      - Premium_AzureFrontDoor
+
+#endregion Selectors

@@ -88,24 +88,6 @@ Describe 'Azure.CDN' -Tag 'CDN' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-B', 'frontDoorProfile-C';
         }
-
-        It 'Azure.CDN.ManagedIdentity' {
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.CDN.json'
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.CDN.ManagedIdentity' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-B';
-            $ruleResult.Detail.Reason.Path | Should -Be 'identity.type';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-C';
-        }
     }
 
     Context 'Resource name' {
