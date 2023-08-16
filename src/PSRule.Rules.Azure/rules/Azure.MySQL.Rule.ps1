@@ -115,6 +115,9 @@ Rule 'Azure.MySQL.AADOnly' -Ref 'AZR-000394' -Type 'Microsoft.DBforMySQL/flexibl
     else {
       $Assert.Pass()
     }
+    else {
+      $Assert.Pass()
+    }
 }
 
 #region Helper functions
