@@ -96,7 +96,12 @@ Rule 'Azure.MySQL.AADOnly' -Ref 'AZR-000394' -Type 'Microsoft.DBforMySQL/flexibl
         }
 
         foreach ($config in $configurations) {
-            $Assert.HasFieldValue($config, 'properties.currentValue', 'ON')
+            if ($Assert.HasFieldValue($config, 'properties.value').Result) {
+                $Assert.HasFieldValue($config, 'properties.value', 'ON')  
+            }
+            else {
+                $Assert.HasFieldValue($config, 'properties.currentValue', 'ON')
+            }
         }
     }
     elseif ($PSRule.TargetName.Split('/')[-1] -cmatch 'aad_auth_only') {
