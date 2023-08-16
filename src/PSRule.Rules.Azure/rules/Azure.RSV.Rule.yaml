@@ -30,4 +30,26 @@ spec:
     - name: '.'
       match: '^[A-Za-z][A-Za-z0-9-]{1,49}$'
 
+---
+# Synopsis: Ensure immutability is configured to protect backup data.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.RSV.Immutable
+  ref: AZR-000397
+  tags:
+    release: GA
+    ruleSet: 2023_09
+    Azure.WAF/pillar: 'Security'
+  labels:
+    Azure.MCSB.v1/control: 'BR-2'
+spec:
+  type:
+    - Microsoft.RecoveryServices/vaults
+  condition:
+    field: properties.securitySettings.immutabilitySettings.state
+    in:
+      - Unlocked
+      - Locked
+
 #endregion Rules
