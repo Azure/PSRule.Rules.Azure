@@ -28,6 +28,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Backup vault:
     - Check that immutability is configured for Backup vaults by @BenjaminEngeset.
     [#2387](https://github.com/Azure/PSRule.Rules.Azure/issues/2387)
+  - Recovery Services vault:
+    - Check that immutability is configured for Recovery Services vaults by @BenjaminEngeset.
+    [#2386](https://github.com/Azure/PSRule.Rules.Azure/issues/2386)
 
 ## v1.29.0
 
