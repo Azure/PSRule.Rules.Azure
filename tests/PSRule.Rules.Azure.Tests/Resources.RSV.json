@@ -64,14 +64,19 @@
   {
     "location": "australiaeast",
     "name": "vault-f",
-    "properties": {
-      "provisioningState": "Succeeded"
-    },
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/vaultconfig-f",
     "type": "Microsoft.RecoveryServices/vaults",
     "sku": {
       "name": "RS0",
       "tier": "Standard"
+    },
+    "properties": {
+      "provisioningState": "Succeeded",
+      "securitySettings": {
+        "immutabilitySettings": {
+          "state": "Disabled"
+        }
+      }
     },
     "resources": [
       {
@@ -113,14 +118,19 @@
   {
     "location": "australiaeast",
     "name": "vault-g",
-    "properties": {
-      "provisioningState": "Succeeded"
-    },
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.RecoveryServices/vaults/vaultconfig-g",
     "type": "Microsoft.RecoveryServices/vaults",
     "sku": {
       "name": "RS0",
       "tier": "Standard"
+    },
+    "properties": {
+      "provisioningState": "Succeeded",
+      "securitySettings": {
+        "immutabilitySettings": {
+          "state": "Locked"
+        }
+      }
     },
     "resources": [
       {

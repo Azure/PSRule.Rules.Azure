@@ -26,6 +26,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.29.0:
 
+- New rules:
+  - Backup vault:
+    - Check that immutability is configured for Backup vaults by @BenjaminEngeset.
+    [#2387](https://github.com/Azure/PSRule.Rules.Azure/issues/2387)
+  - Recovery Services vault:
+    - Check that immutability is configured for Recovery Services vaults by @BenjaminEngeset.
+    [#2386](https://github.com/Azure/PSRule.Rules.Azure/issues/2386)
 - Engineering:
   - Bump BenchmarkDotNet to v0.13.7.
     [#2385](https://github.com/Azure/PSRule.Rules.Azure/pull/2385)
