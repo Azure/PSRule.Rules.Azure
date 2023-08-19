@@ -1416,6 +1416,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.AADOnly/</loc>
+         <lastmod>2023-08-19</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.AllowAzureAccess/</loc>
          <lastmod>2023-08-19</lastmod>
          <changefreq>daily</changefreq>
