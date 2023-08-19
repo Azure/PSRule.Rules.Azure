@@ -36,6 +36,8 @@ What's changed since v1.29.0:
 - Engineering:
   - Bump BenchmarkDotNet to v0.13.7.
     [#2385](https://github.com/Azure/PSRule.Rules.Azure/pull/2385)
+  - Bump Microsoft.NET.Test.Sdk to v17.7.1.
+    [#2393](https://github.com/Azure/PSRule.Rules.Azure/pull/2393)
 
 ## v1.29.0
 
