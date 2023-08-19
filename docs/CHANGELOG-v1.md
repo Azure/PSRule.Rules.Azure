@@ -24,6 +24,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.29.0:
+
 - New rules:
   - Azure Database for MySQL:
     - Check that Azure AD-only authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
@@ -34,6 +36,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Recovery Services vault:
     - Check that immutability is configured for Recovery Services vaults by @BenjaminEngeset.
     [#2386](https://github.com/Azure/PSRule.Rules.Azure/issues/2386)
+- Engineering:
+  - Bump BenchmarkDotNet to v0.13.7.
+    [#2385](https://github.com/Azure/PSRule.Rules.Azure/pull/2385)
 
 ## v1.29.0
 

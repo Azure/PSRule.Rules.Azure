@@ -15,9 +15,9 @@
         "ms-dotnettools.csharp",
         "ms-vscode.powershell",
         "ms-azuretools.vscode-bicep",
-        "bewhite.psrule-vscode-preview",
         "GitHub.vscode-pull-request-github",
         "github.vscode-github-actions",
+        "bewhite.psrule-vscode-preview",
         "davidanson.vscode-markdownlint",
         "eamodio.gitlens"
       ]
