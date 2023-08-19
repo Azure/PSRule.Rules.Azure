@@ -73,7 +73,8 @@ resource aadOnly 'Microsoft.DBforMySQL/flexibleServers/configurations@2022-01-01
   name: 'aad_auth_only'
   parent: mySqlFlexibleServer
   properties: {
-    currentValue: 'ON'
+    value: 'ON'
+    source: 'user-override'
   }
 }
 ```
