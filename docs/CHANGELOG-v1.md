@@ -27,6 +27,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since v1.29.0:
 
 - New rules:
+  - Azure Database for MySQL:
+    - Check that Azure AD-only authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
+    [#2227](https://github.com/Azure/PSRule.Rules.Azure/issues/2227)
   - Backup vault:
     - Check that immutability is configured for Backup vaults by @BenjaminEngeset.
     [#2387](https://github.com/Azure/PSRule.Rules.Azure/issues/2387)
