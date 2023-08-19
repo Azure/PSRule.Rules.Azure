@@ -143,7 +143,7 @@ jobs:
 - job: 'analyze_arm'
   displayName: 'Analyze templates'
   pool:
-    vmImage: 'ubuntu-20.04'
+    vmImage: 'ubuntu-22.04'
   steps:
 
   # STEP 3: Install PSRule.Rules.Azure from the PowerShell Gallery

@@ -1,6 +1,6 @@
 ---
-generated: True
 title: Reference
+generated: True
 ---
 
 # Reference
@@ -414,5 +414,8 @@ AZR-000390 | [Azure.PostgreSQL.AADOnly](Azure.PostgreSQL.AADOnly.md) | Ensure Az
 AZR-000391 | [Azure.Storage.DefenderCloud.SensitiveData](Azure.Storage.DefenderCloud.SensitiveData.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Preview
 AZR-000392 | [Azure.MySQL.AAD](Azure.MySQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure Database for MySQL databases. | GA
 AZR-000393 | [Azure.Databricks.SecureConnectivity](Azure.Databricks.SecureConnectivity.md) | Use Databricks workspaces configured for secure cluster connectivity. | GA
+AZR-000394 | [Azure.MySQL.AADOnly](Azure.MySQL.AADOnly.md) | Ensure Azure AD-only authentication is enabled with Azure Database for MySQL databases. | GA
+AZR-000397 | [Azure.RSV.Immutable](Azure.RSV.Immutable.md) | Ensure immutability is configured to protect backup data. | GA
+AZR-000398 | [Azure.BV.Immutable](Azure.BV.Immutable.md) | Ensure immutability is configured to protect backup data. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
