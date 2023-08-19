@@ -1,127 +1,372 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "firewall-A",
-        "Name": "firewall-A",
-        "Properties": {
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "firewall-A",
+    "Name": "firewall-A",
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "sku": {
+        "name": "AZFW_VNet",
+        "tier": "Standard"
+      },
+      "threatIntelMode": "Alert",
+      "additionalProperties": {},
+      "ipConfigurations": [
+        {
+          "name": "configuration",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A/azureFirewallIpConfigurations/configuration",
+          "type": "Microsoft.Network/azureFirewalls/azureFirewallIpConfigurations",
+          "properties": {
             "provisioningState": "Succeeded",
-            "sku": {
-                "name": "AZFW_VNet",
-                "tier": "Standard"
+            "privateIPAddress": "10.0.0.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip"
             },
-            "threatIntelMode": "Alert",
-            "additionalProperties": {},
-            "ipConfigurations": [
-                {
-                    "name": "configuration",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A/azureFirewallIpConfigurations/configuration",
-                    "type": "Microsoft.Network/azureFirewalls/azureFirewallIpConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.0.0.4",
-                        "privateIPAllocationMethod": "Dynamic",
-                        "publicIPAddress": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip"
-                        },
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
-                        }
-                    }
-                }
-            ],
-            "networkRuleCollections": [],
-            "applicationRuleCollections": [],
-            "natRuleCollections": []
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Network/azureFirewalls",
-        "ResourceType": "Microsoft.Network/azureFirewalls",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "firewall-B",
-        "Name": "firewall-B",
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "sku": {
-                "name": "AZFW_VNet",
-                "tier": "Standard"
-            },
-            "threatIntelMode": "Deny",
-            "additionalProperties": {},
-            "ipConfigurations": [
-                {
-                    "name": "configuration",
-                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B/azureFirewallIpConfigurations/configuration",
-                    "type": "Microsoft.Network/azureFirewalls/azureFirewallIpConfigurations",
-                    "properties": {
-                        "provisioningState": "Succeeded",
-                        "privateIPAddress": "10.0.0.4",
-                        "privateIPAllocationMethod": "Dynamic",
-                        "publicIPAddress": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-B-pip"
-                        },
-                        "subnet": {
-                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
-                        }
-                    }
-                }
-            ],
-            "networkRuleCollections": [],
-            "applicationRuleCollections": [],
-            "natRuleCollections": []
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Network/azureFirewalls",
-        "ResourceType": "Microsoft.Network/azureFirewalls",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "firewall-A-pip",
-        "Name": "firewall-A-pip",
-        "Properties": {
-            "ipAddress": "0.0.0.0",
-            "publicIPAddressVersion": "IPv4",
-            "publicIPAllocationMethod": "Static",
-            "idleTimeoutInMinutes": 4,
-            "ipTags": [],
-            "ipConfiguration": {
-                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A/azureFirewallIpConfigurations/configuration"
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
             }
+          }
+        }
+      ],
+      "networkRuleCollections": [],
+      "applicationRuleCollections": [],
+      "natRuleCollections": []
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Network/azureFirewalls",
+    "ResourceType": "Microsoft.Network/azureFirewalls",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "firewall-B",
+    "Name": "firewall-B",
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "sku": {
+        "name": "AZFW_VNet",
+        "tier": "Standard"
+      },
+      "threatIntelMode": "Deny",
+      "additionalProperties": {},
+      "ipConfigurations": [
+        {
+          "name": "configuration",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B/azureFirewallIpConfigurations/configuration",
+          "type": "Microsoft.Network/azureFirewalls/azureFirewallIpConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.0.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-B-pip"
+            },
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
+            }
+          }
+        }
+      ],
+      "networkRuleCollections": [],
+      "applicationRuleCollections": [],
+      "natRuleCollections": []
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Network/azureFirewalls",
+    "ResourceType": "Microsoft.Network/azureFirewalls",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "firewall-A-pip",
+    "Name": "firewall-A-pip",
+    "Properties": {
+      "ipAddress": "0.0.0.0",
+      "publicIPAddressVersion": "IPv4",
+      "publicIPAllocationMethod": "Static",
+      "idleTimeoutInMinutes": 4,
+      "ipTags": [],
+      "ipConfiguration": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A/azureFirewallIpConfigurations/configuration"
+      }
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Network/publicIPAddresses",
+    "ResourceType": "Microsoft.Network/publicIPAddresses",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "Standard",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-A",
+    "Name": "policy-A",
+    "ResourceName": "policy-A",
+    "Type": "Microsoft.Network/firewallPolicies",
+    "ResourceType": "Microsoft.Network/firewallPolicies",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "basePolicy": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/firewallPolicies/policy-X"
+      }
+    },
+    "Resources": [
+      {
+        "ResourceName": "collection-A",
+        "Name": "collection-A",
+        "Properties": {
+          "priority": 200,
+          "ruleCollections": [
+            {
+              "ruleType": "ApplicationRule",
+              "name": "application_rule-A",
+              "protocols": [
+                {
+                  "protocolType": "Https",
+                  "port": 443
+                }
+              ],
+              "targetFqdns": [
+                "*azure.com",
+                "*microsoft.com"
+              ],
+              "sourceAddresses": [
+                "*"
+              ]
+            }
+          ]
         },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Network/publicIPAddresses",
-        "ResourceType": "Microsoft.Network/publicIPAddresses",
-        "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "Standard",
-            "Tier": null,
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+        "ResourceType": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-B",
+    "Name": "policy-B",
+    "ResourceName": "policy-B",
+    "Type": "Microsoft.Network/firewallPolicies",
+    "ResourceType": "Microsoft.Network/firewallPolicies",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "basePolicy": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/firewallPolicies/policy-X",
+        "threatIntelMode": "Alert"
+      }
+    },
+    "Resources": [
+      {
+        "ResourceName": "collection-A",
+        "Name": "collection-A",
+        "Properties": {
+          "priority": 200,
+          "ruleCollections": [
+            {
+              "ruleType": "ApplicationRule",
+              "name": "application_rule-A",
+              "protocols": [
+                {
+                  "protocolType": "Https",
+                  "port": 443
+                }
+              ],
+              "targetFqdns": [
+                "*azure.com",
+                "*microsoft.com"
+              ],
+              "sourceAddresses": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+        "ResourceType": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-C",
+    "Name": "policy-C",
+    "ResourceName": "policy-C",
+    "Type": "Microsoft.Network/firewallPolicies",
+    "ResourceType": "Microsoft.Network/firewallPolicies",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "threatIntelMode": "Off"
+    },
+    "Resources": [
+      {
+        "ResourceName": "collection-A",
+        "Name": "collection-A",
+        "Properties": {
+          "priority": 200,
+          "ruleCollections": [
+            {
+              "ruleType": "ApplicationRule",
+              "name": "application_rule-A",
+              "protocols": [
+                {
+                  "protocolType": "Https",
+                  "port": 443
+                }
+              ],
+              "targetFqdns": [
+                "*azure.com",
+                "*microsoft.com"
+              ],
+              "sourceAddresses": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+        "ResourceType": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-D",
+    "Name": "policy-D",
+    "ResourceName": "policy-D",
+    "Type": "Microsoft.Network/firewallPolicies",
+    "ResourceType": "Microsoft.Network/firewallPolicies",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "threatIntelMode": "Alert"
+    },
+    "Resources": [
+      {
+        "ResourceName": "collection-A",
+        "Name": "collection-A",
+        "Properties": {
+          "priority": 200,
+          "ruleCollections": [
+            {
+              "ruleType": "ApplicationRule",
+              "name": "application_rule-A",
+              "protocols": [
+                {
+                  "protocolType": "Https",
+                  "port": 443
+                }
+              ],
+              "targetFqdns": [
+                "*azure.com",
+                "*microsoft.com"
+              ],
+              "sourceAddresses": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+        "ResourceType": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/firewallPolicies/policy-E",
+    "Name": "policy-E",
+    "ResourceName": "policy-E",
+    "Type": "Microsoft.Network/firewallPolicies",
+    "ResourceType": "Microsoft.Network/firewallPolicies",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "threatIntelMode": "Deny"
+    },
+    "Resources": [
+      {
+        "ResourceName": "collection-A",
+        "Name": "collection-A",
+        "Properties": {
+          "priority": 200,
+          "ruleCollections": [
+            {
+              "ruleType": "ApplicationRule",
+              "name": "application_rule-A",
+              "protocols": [
+                {
+                  "protocolType": "Https",
+                  "port": 443
+                }
+              ],
+              "targetFqdns": [
+                "*azure.com",
+                "*microsoft.com"
+              ],
+              "sourceAddresses": [
+                "*"
+              ]
+            }
+          ]
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+        "ResourceType": "Microsoft.Network/firewallPolicies/ruleCollectionGroups",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
+  }
 ]
