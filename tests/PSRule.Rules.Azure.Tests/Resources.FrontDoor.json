@@ -105,8 +105,12 @@
                 "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/FrontendEndpoints/frontdoor-A"
               }
             ],
-            "acceptedProtocols": ["Https"],
-            "patternsToMatch": ["/*"],
+            "acceptedProtocols": [
+              "Https"
+            ],
+            "patternsToMatch": [
+              "/*"
+            ],
             "enabledState": "Enabled",
             "resourceState": "Enabled",
             "routeConfiguration": {
@@ -133,8 +137,12 @@
                 "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-A/FrontendEndpoints/frontdoor-A"
               }
             ],
-            "acceptedProtocols": ["Http"],
-            "patternsToMatch": ["/*"],
+            "acceptedProtocols": [
+              "Http"
+            ],
+            "patternsToMatch": [
+              "/*"
+            ],
             "enabledState": "Enabled",
             "resourceState": "Enabled",
             "routeConfiguration": {
@@ -258,11 +266,15 @@
               "matchConditions": [
                 {
                   "negateCondition": "bool",
-                  "rulesEngineMatchValue": ["string"],
+                  "rulesEngineMatchValue": [
+                    "string"
+                  ],
                   "rulesEngineMatchVariable": "string",
                   "rulesEngineOperator": "string",
                   "selector": "string",
-                  "transforms": ["string"]
+                  "transforms": [
+                    "string"
+                  ]
                 }
               ],
               "matchProcessingBehavior": "string",
@@ -389,8 +401,12 @@
                 "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/FrontendEndpoints/frontdoor-B"
               }
             ],
-            "acceptedProtocols": ["Https"],
-            "patternsToMatch": ["/*"],
+            "acceptedProtocols": [
+              "Https"
+            ],
+            "patternsToMatch": [
+              "/*"
+            ],
             "enabledState": "Enabled",
             "resourceState": "Enabled",
             "routeConfiguration": {
@@ -417,8 +433,12 @@
                 "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-B/FrontendEndpoints/frontdoor-B"
               }
             ],
-            "acceptedProtocols": ["Http"],
-            "patternsToMatch": ["/*"],
+            "acceptedProtocols": [
+              "Http"
+            ],
+            "patternsToMatch": [
+              "/*"
+            ],
             "enabledState": "Enabled",
             "resourceState": "Enabled",
             "routeConfiguration": {
@@ -485,11 +505,15 @@
               "matchConditions": [
                 {
                   "negateCondition": "bool",
-                  "rulesEngineMatchValue": ["string"],
+                  "rulesEngineMatchValue": [
+                    "string"
+                  ],
                   "rulesEngineMatchVariable": "string",
                   "rulesEngineOperator": "string",
                   "selector": "string",
-                  "transforms": ["string"]
+                  "transforms": [
+                    "string"
+                  ]
                 }
               ],
               "matchProcessingBehavior": "string",
@@ -619,8 +643,12 @@
                 "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/FrontendEndpoints/frontdoor-C"
               }
             ],
-            "acceptedProtocols": ["Https"],
-            "patternsToMatch": ["/*"],
+            "acceptedProtocols": [
+              "Https"
+            ],
+            "patternsToMatch": [
+              "/*"
+            ],
             "enabledState": "Enabled",
             "resourceState": "Enabled",
             "routeConfiguration": {
@@ -644,8 +672,12 @@
                 "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-C/FrontendEndpoints/frontdoor-C"
               }
             ],
-            "acceptedProtocols": ["Http"],
-            "patternsToMatch": ["/*"],
+            "acceptedProtocols": [
+              "Http"
+            ],
+            "patternsToMatch": [
+              "/*"
+            ],
             "enabledState": "Enabled",
             "resourceState": "Enabled",
             "routeConfiguration": {
@@ -843,8 +875,12 @@
                 "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-D/FrontendEndpoints/frontdoor-D"
               }
             ],
-            "acceptedProtocols": ["Https"],
-            "patternsToMatch": ["/*"],
+            "acceptedProtocols": [
+              "Https"
+            ],
+            "patternsToMatch": [
+              "/*"
+            ],
             "enabledState": "Enabled",
             "resourceState": "Enabled",
             "routeConfiguration": {
@@ -868,8 +904,12 @@
                 "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Network/Frontdoors/frontdoor-D/FrontendEndpoints/frontdoor-D"
               }
             ],
-            "acceptedProtocols": ["Http"],
-            "patternsToMatch": ["/*"],
+            "acceptedProtocols": [
+              "Http"
+            ],
+            "patternsToMatch": [
+              "/*"
+            ],
             "enabledState": "Enabled",
             "resourceState": "Enabled",
             "routeConfiguration": {
@@ -993,7 +1033,9 @@
                 "selector": null,
                 "operator": "IPMatch",
                 "negateCondition": false,
-                "matchValue": ["10.0.0.0"],
+                "matchValue": [
+                  "10.0.0.0"
+                ],
                 "transforms": []
               }
             ],
@@ -1058,7 +1100,9 @@
                 "selector": null,
                 "operator": "IPMatch",
                 "negateCondition": false,
-                "matchValue": ["10.0.0.0"],
+                "matchValue": [
+                  "10.0.0.0"
+                ],
                 "transforms": []
               }
             ],
@@ -1088,5 +1132,49 @@
     "Sku": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "ETag": null
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/frontDoorProfile-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/frontDoorProfile-E",
+    "type": "Microsoft.Cdn/profiles",
+    "name": "frontDoorProfile-E",
+    "location": "global",
+    "tags": {
+      "tagName1": null,
+      "tagName2": null
+    },
+    "sku": {
+      "name": "Standard_AzureFrontDoor"
+    },
+    "identity": {
+      "type": "None",
+      "userAssignedIdentities": null
+    },
+    "properties": {
+      "extendedProperties": {},
+      "originResponseTimeoutSeconds": "int"
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/frontDoorProfile-F",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/frontDoorProfile-F",
+    "type": "Microsoft.Cdn/profiles",
+    "name": "frontDoorProfile-F",
+    "location": "global",
+    "tags": {
+      "tagName1": null,
+      "tagName2": null
+    },
+    "sku": {
+      "name": "Premium_AzureFrontDoor"
+    },
+    "identity": {
+      "type": "SystemAssigned",
+      "userAssignedIdentities": null
+    },
+    "properties": {
+      "extendedProperties": {},
+      "originResponseTimeoutSeconds": "int"
+    }
   }
 ]

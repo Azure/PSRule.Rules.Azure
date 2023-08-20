@@ -401,6 +401,19 @@
         "Type": "Microsoft.DBforMySQL/flexibleServers/administrators",
         "ResourceType": "Microsoft.DBforMySQL/flexibleServers/administrators",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "aad_auth_only",
+        "Name": "aad_auth_only",
+        "Properties": {
+          "value": "OFF",
+          "currentValue": "OFF",
+          "source": "user-override"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMySQL/flexibleServers/configurations",
+        "ResourceType": "Microsoft.DBforMySQL/flexibleServers/configurations",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -450,6 +463,19 @@
         "ResourceGroupName": "test-rg",
         "Type": "Microsoft.DBforMySQL/flexibleServers/administrators",
         "ResourceType": "Microsoft.DBforMySQL/flexibleServers/administrators",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceName": "aad_auth_only",
+        "Name": "aad_auth_only",
+        "Properties": {
+          "value": "ON",
+          "currentValue": "OFF",
+          "source": "user-override"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.DBforMySQL/flexibleServers/configurations",
+        "ResourceType": "Microsoft.DBforMySQL/flexibleServers/configurations",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
@@ -522,6 +548,37 @@
       "login": "admin@contoso.com",
       "sid": "00000000-0000-0000-0000-000000000000",
       "tenantId": "00000000-0000-0000-0000-000000000000"
+    }
+  },
+  {
+    "Name": "aad_auth_only-A",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-F/configurations/aad_auth_only-A",
+    "ResourceName": "aad_auth_only-A",
+    "ResourceType": "Microsoft.DBforMySQL/flexibleServers/configurations",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "value": "OFF",
+      "currentValue": "OFF",
+      "source": "user-override"
+    }
+  },
+  {
+    "Name": "aad_auth_only-B",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-F/configurations/aad_auth_only-B",
+    "ResourceName": "aad_auth_only-B",
+    "ResourceType": "Microsoft.DBforMySQL/flexibleServers/configurations",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "value": "ON",
+      "source": "user-override"
     }
   }
 ]

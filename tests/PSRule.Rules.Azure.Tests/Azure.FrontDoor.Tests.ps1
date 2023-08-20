@@ -207,21 +207,18 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
         }
 
         It 'Azure.FrontDoor.ManagedIdentity' {
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.FrontDoor.json'
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.FrontDoor.ManagedIdentity' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-B';
+            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-E';
             $ruleResult.Detail.Reason.Path | Should -Be 'identity.type';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-C';
+            $ruleResult.TargetName | Should -BeIn 'frontDoorProfile-F';
         }
     }
 

@@ -395,10 +395,6 @@
     "sku": {
       "name": "Standard_AzureFrontDoor"
     },
-    "identity": {
-      "type": "None",
-      "userAssignedIdentities": null
-    },
     "properties": {
       "extendedProperties": {},
       "originResponseTimeoutSeconds": "int"
@@ -416,10 +412,6 @@
     },
     "sku": {
       "name": "Premium_AzureFrontDoor"
-    },
-    "identity": {
-      "type": "SystemAssigned",
-      "userAssignedIdentities": null
     },
     "properties": {
       "extendedProperties": {},

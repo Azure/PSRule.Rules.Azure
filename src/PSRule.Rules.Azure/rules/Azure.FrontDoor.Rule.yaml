@@ -20,7 +20,7 @@ metadata:
     Azure.WAF/pillar: Cost Optimization
 spec:
   type:
-  - Microsoft.Network/frontDoors
+    - Microsoft.Network/frontDoors
   condition:
     field: properties.enabledState
     equals: Enabled
@@ -38,17 +38,17 @@ metadata:
     Azure.WAF/pillar: Operational Excellence
 spec:
   type:
-  - Microsoft.Network/frontDoors
+    - Microsoft.Network/frontDoors
   condition:
     allOf:
-    - name: '.'
-      greaterOrEquals: 5
-    - name: '.'
-      lessOrEquals: 64
-    # Alphanumerics and hyphens
-    # Start and end with alphanumeric
-    - name: '.'
-      match: '^[A-Za-z](-|[A-Za-z0-9])*[A-Za-z0-9]$'
+      - name: '.'
+        greaterOrEquals: 5
+      - name: '.'
+        lessOrEquals: 64
+      # Alphanumerics and hyphens
+      # Start and end with alphanumeric
+      - name: '.'
+        match: '^[A-Za-z](-|[A-Za-z0-9])*[A-Za-z0-9]$'
 
 ---
 # Synopsis: Use Front Door WAF policy in prevention mode
@@ -63,7 +63,7 @@ metadata:
     Azure.WAF/pillar: Security
 spec:
   type:
-  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+    - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
     field: properties.policySettings.mode
     equals: Prevention
@@ -83,7 +83,7 @@ metadata:
     Azure.MCSB.v1/control: 'NS-6'
 spec:
   type:
-  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+    - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
     field: properties.policySettings.enabledState
     equals: Enabled
@@ -101,17 +101,17 @@ metadata:
     Azure.WAF/pillar: Operational Excellence
 spec:
   type:
-  - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
+    - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
     allOf:
-    - name: '.'
-      greaterOrEquals: 1
-    - name: '.'
-      lessOrEquals: 128
-    # Letters or numbers
-    # Start letter
-    - name: '.'
-      match: '^[A-Za-z][A-Za-z0-9]{0,127}$'
+      - name: '.'
+        greaterOrEquals: 1
+      - name: '.'
+        lessOrEquals: 128
+      # Letters or numbers
+      # Start letter
+      - name: '.'
+        match: '^[A-Za-z][A-Za-z0-9]{0,127}$'
 
 ---
 # Synopsis: Ensure Front Door uses a managed identity to authorize access to Azure resources.
@@ -123,9 +123,9 @@ metadata:
   tags:
     release: GA
     ruleSet: 2023_09
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'IM-2'
+    Azure.MCSB.v1/control: IM-2
 spec:
   type:
     - Microsoft.Cdn/profiles
@@ -151,9 +151,12 @@ metadata:
   name: Azure.FrontDoor.IsStandardOrPremium
 spec:
   if:
-    field: sku.name
-    in:
-      - Standard_AzureFrontDoor
-      - Premium_AzureFrontDoor
+    allOf:
+      - type: '.'
+        equals: Microsoft.Cdn/profiles
+      - field: sku.name
+        in:
+          - Standard_AzureFrontDoor
+          - Premium_AzureFrontDoor
 
 #endregion Selectors

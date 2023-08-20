@@ -202,6 +202,26 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             $ruleResult.Length | Should -Be 4;
             $ruleResult.TargetName | Should -BeIn 'server-C', 'server-F', 'ActiveDirectoryAdmin-B', 'ActiveDirectoryAdmin-D';
         }
+
+        It 'Azure.MySQL.AADOnly' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.AADOnly' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'aad_auth_only-A';
+
+            $ruleResult[0].Reason | Should -BeIn "A sub-resource of type 'Microsoft.DBforMySQL/flexibleServers/configurations' has not been specified.";
+            $ruleResult[1].Reason | Should -BeIn "Path properties.value: Is set to 'OFF'.";
+            $ruleResult[2].Reason | Should -BeIn "Path properties.value: Is set to 'OFF'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-F', 'aad_auth_only-B';
+        }
     }
 
     Context 'Resource name - Azure.MySQL.ServerName' {
