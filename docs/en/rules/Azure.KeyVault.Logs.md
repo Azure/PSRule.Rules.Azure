@@ -1,7 +1,8 @@
 ---
+reviewed: 2023-08-20
 severity: Important
 pillar: Security
-category: Security operations
+category: Logs and alerts
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.Logs/
 ---
@@ -41,40 +42,45 @@ For example:
 
 ```json
 {
-    "comments": "Create or update a Key Vault.",
-    "type": "Microsoft.KeyVault/vaults",
-    "name": "[parameters('vaultName')]",
-    "apiVersion": "2022-07-01",
-    "location": "[parameters('location')]",
-    "properties": {
-        "accessPolicies": [],
-        "tenantId": "[subscription().tenantId]",
-        "sku": {
-            "name": "Standard",
-            "family": "A"
-        }
+  "type": "Microsoft.KeyVault/vaults",
+  "apiVersion": "2023-02-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "sku": {
+      "family": "A",
+      "name": "premium"
     },
-    "resources": [
-        {
-            "comments": "Enable monitoring of Key Vault operations.",
-            "type": "Microsoft.KeyVault/vaults/providers/diagnosticSettings",
-            "name": "[concat(parameters('vaultName'), '/Microsoft.Insights/service')]",
-            "apiVersion": "2021-05-01-preview",
-            "location": "[parameters('location')]",
-            "dependsOn": [
-                "[concat('Microsoft.KeyVault/vaults/', parameters('vaultName'))]"
-            ],
-            "properties": {
-                "workspaceId": "[parameters('workspaceId')]",
-                "logs": [
-                    {
-                        "category": "AuditEvent",
-                        "enabled": true
-                    }
-                ]
-            }
-        }
-    ]
+    "tenantId": "[tenant().tenantId]",
+    "softDeleteRetentionInDays": 90,
+    "enableSoftDelete": true,
+    "enablePurgeProtection": true,
+    "enableRbacAuthorization": true,
+    "networkAcls": {
+      "defaultAction": "Deny",
+      "bypass": "AzureServices"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Insights/diagnosticSettings",
+      "apiVersion": "2021-05-01-preview",
+      "scope": "[format('Microsoft.KeyVault/vaults/{0}', parameters('name'))]",
+      "name": "logs",
+      "properties": {
+        "workspaceId": "[parameters('workspaceId')]",
+        "logs": [
+          {
+            "category": "AuditEvent",
+            "enabled": true
+          }
+        ]
+      },
+      "dependsOn": [
+        "[parameters('name')]"
+      ]
+    }
+  ]
 }
 ```
 
@@ -88,27 +94,31 @@ To deploy key vaults that pass this rule:
 For example:
 
 ```bicep
-resource keyVaultResource 'Microsoft.KeyVault/vaults@2022-07-01' = {
-  name: parmVaultName
-  location: parmLocation
+resource vault 'Microsoft.KeyVault/vaults@2023-02-01' = {
+  name: name
+  location: location
   properties: {
-    accessPolicies: []
-    tenantId: subscription().tenantId
     sku: {
-      name: 'standard'
       family: 'A'
+      name: 'premium'
+    }
+    tenantId: tenant().tenantId
+    softDeleteRetentionInDays: 90
+    enableSoftDelete: true
+    enablePurgeProtection: true
+    enableRbacAuthorization: true
+    networkAcls: {
+      defaultAction: 'Deny'
+      bypass: 'AzureServices'
     }
   }
 }
 
-resource keyVaultInsightsResource 'Microsoft.KeyVault/vaults/providers/diagnosticSettings@2022-05-01-preview' = {
-  name: '${parmVaultName}/Microsoft.Insights/service'
-  dependsOn: [
-    keyVaultResource
-  ]
-  location: parmLocation
+resource logs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'logs'
+  scope: vault
   properties: {
-    workspaceId: parmWorkspaceId
+    workspaceId: workspaceId
     logs: [
       {
         category: 'AuditEvent'
@@ -123,7 +133,7 @@ resource keyVaultInsightsResource 'Microsoft.KeyVault/vaults/providers/diagnosti
 
 - [Security logs and alerts using Azure services](https://learn.microsoft.com/azure/architecture/framework/security/monitor-logs-alerts)
 - [Best practices to use Key Vault](https://learn.microsoft.com/azure/key-vault/general/best-practices)
-- [Azure Key Vault logging](hhttps://learn.microsoft.com/azure/key-vault/general/logging)
+- [Azure Key Vault logging](https://learn.microsoft.com/azure/key-vault/general/logging)
 - [Azure Key Vault security](https://learn.microsoft.com/azure/key-vault/general/security-features#logging-and-monitoring)
 - [Monitoring your Key Vault service with Key Vault insights](https://learn.microsoft.com/azure/key-vault/key-vault-insights-overview)
-- [Template Reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings)
