@@ -51,6 +51,26 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'firewall-B';
         }
+
+        It 'Azure.Firewall.PolicyMode' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Firewall.PolicyMode' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'policy-C', 'policy-D';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.threatIntelMode';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'policy-E';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B', 'firewall-A-pip', 'policy-A', 'policy-B';
+        }
     }
 
     Context 'Resource name - Azure.Firewall.Name' {

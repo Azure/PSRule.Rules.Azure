@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Firewall:
+    - Check that Azure Firewall polices has configured threat intelligence-based filtering in `alert and deny` mode by @BenjaminEngeset.
+    [#2354](https://github.com/Azure/PSRule.Rules.Azure/issues/2354)
+
 What's changed since v1.29.0:
 
 - New rules:
