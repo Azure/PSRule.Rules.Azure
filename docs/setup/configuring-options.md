@@ -32,8 +32,8 @@ Use comments to add context.
 
     ```yaml
     requires:
-      # Require a minimum of PSRule for Azure v1.26.1
-      PSRule.Rules.Azure: '>=1.26.1'
+      # Require a minimum of PSRule for Azure v1.29.0
+      PSRule.Rules.Azure: '>=1.29.0'
 
     configuration:
       # Enable expansion of Azure Template files.

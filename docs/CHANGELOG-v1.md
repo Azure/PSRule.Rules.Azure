@@ -24,10 +24,58 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.29.0:
+
 - New rules:
+  - Azure Database for MySQL:
+    - Check that Azure AD-only authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
+    [#2227](https://github.com/Azure/PSRule.Rules.Azure/issues/2227)
+  - Azure Firewall:
+    - Check that Azure Firewall polices has configured threat intelligence-based filtering in `alert and deny` mode by @BenjaminEngeset.
+    [#2354](https://github.com/Azure/PSRule.Rules.Azure/issues/2354)
+  - Backup vault:
+    - Check that immutability is configured for Backup vaults by @BenjaminEngeset.
+    [#2387](https://github.com/Azure/PSRule.Rules.Azure/issues/2387)
   - Public IP address:
     - Check that Public IP addresses uses Standard SKU by @BenjaminEngeset.
       [#2376](https://github.com/Azure/PSRule.Rules.Azure/issues/2376)
+  - Recovery Services vault:
+    - Check that immutability is configured for Recovery Services vaults by @BenjaminEngeset.
+    [#2386](https://github.com/Azure/PSRule.Rules.Azure/issues/2386)
+- Engineering:
+  - Bump BenchmarkDotNet to v0.13.7.
+    [#2385](https://github.com/Azure/PSRule.Rules.Azure/pull/2385)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.7.
+    [#2382](https://github.com/Azure/PSRule.Rules.Azure/pull/2382)
+  - Bump Microsoft.NET.Test.Sdk to v17.7.1.
+    [#2393](https://github.com/Azure/PSRule.Rules.Azure/pull/2393)
+
+## v1.29.0
+
+What's changed since v1.28.2:
+
+- New rules:
+  - Databricks:
+    - Check that workspaces use secure cluster connectivity by @BernieWhite.
+      [#2334](https://github.com/Azure/PSRule.Rules.Azure/issues/2334)
+- General improvements:
+  - Use policy definition name when generating a rule from it by @BernieWhite.
+    [#1959](https://github.com/Azure/PSRule.Rules.Azure/issues/1959)
+  - Added export in-flight data for Defender for Storage from Storage Accounts by @BernieWhite.
+    [#2248](https://github.com/Azure/PSRule.Rules.Azure/issues/2248)
+  - Added export in-flight data for Defender for APIs from API Management by @BernieWhite.
+    [#2247](https://github.com/Azure/PSRule.Rules.Azure/issues/2247)
+- Bug fixes:
+  - Fixed policy expansion with unquoted field property by @BernieWhite.
+    [#2352](https://github.com/Azure/PSRule.Rules.Azure/issues/2352)
+  - Fixed array contains with JArray by @BernieWhite.
+    [#2368](https://github.com/Azure/PSRule.Rules.Azure/issues/2368)
+  - Fixed index out of bounds of array with first function on empty array by @BernieWhite.
+    [#2372](https://github.com/Azure/PSRule.Rules.Azure/issues/2372)
+
+What's changed since pre-release v1.29.0-B0062:
+
+- No additional changes.
 
 ## v1.29.0-B0062 (pre-release)
 

@@ -75,6 +75,28 @@ spec:
 
     # Ignore if there is a firewall policy attached (properties.firewallPolicy.id not empty) or if properties.sku.name = AZFW_Hub
 
+---
+# Synopsis: Deny high confidence malicious IP addresses, domains and URLs.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Firewall.PolicyMode
+  ref: AZR-000399
+  tags:
+    release: GA
+    ruleSet: 2023_09
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: NS-1 
+spec:
+  type:
+  - Microsoft.Network/firewallPolicies
+  with:
+  - Azure.Firewall.IsBasePolicy
+  condition:
+    field: Properties.threatIntelMode
+    equals: Deny
+
 #endregion Rules
 
 #region Selectors
@@ -94,5 +116,19 @@ spec:
       exists: false
     - field: properties.sku.name
       notEquals: AZFW_Hub
+
+---
+# Synopsis: Azure Firewall policy is a base policy.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Firewall.IsBasePolicy
+spec:
+  if:
+    allOf:
+      - type: '.'
+        equals: Microsoft.Network/firewallPolicies
+      - field: properties.basePolicy.id
+        exists: false
 
 #endregion Selectors

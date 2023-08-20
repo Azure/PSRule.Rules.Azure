@@ -1,4 +1,5 @@
 ---
+description: Learn how you can test the state of resources already deployed to Azure.
 author: BernieWhite
 ---
 
