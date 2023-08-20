@@ -1,5 +1,5 @@
 ---
-description: This topic covers how you can configuration continuous integration (CI) pipelines to tests Bicep and ARM templates automatically.
+description: Learn how you can configure pipelines to tests Bicep and ARM templates automatically.
 author: BernieWhite
 ---
 

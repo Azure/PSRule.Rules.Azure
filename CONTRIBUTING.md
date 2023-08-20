@@ -241,7 +241,7 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 Your contributions to open source, large or small, make great projects like this possible.
 Thank you for taking the time to contribute.
 
-[learn-git]: https://help.github.com/en/articles/git-and-github-learning-resources
+[learn-git]: https://help.github.com/articles/git-and-github-learning-resources
 [github-flow]: https://guides.github.com/introduction/flow/
 [github-signup]: https://github.com/signup/free
 [github-fork]: https://help.github.com/en/github/getting-started-with-github/fork-a-repo

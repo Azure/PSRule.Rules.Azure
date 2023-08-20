@@ -1,4 +1,5 @@
 ---
+description: Learn how to create a custom rule to validate the file path of code artifacts.
 author: BernieWhite
 ---
 
@@ -18,7 +19,7 @@ In these cases, it may be important that specific paths are used for Infrastruct
     Code ownership is implemented through [CODEOWNERS][1] in GitHub and [required reviewers][2] in Azure Repos.
 
 !!! Abstract
-    The following scenario shows how to create a custom rule to validate the path of artifacts.
+    The following scenario shows how to create a custom rule to validate the file path of code artifacts.
     The scenario walks you through the process so that you can apply the same concepts for similar requirements.
 
   [1]: https://docs.github.com/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-code-owners

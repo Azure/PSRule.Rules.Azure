@@ -20,7 +20,7 @@ This allows you to:
     As always if you find bugs/ errors or if something just doesn't work as your expect it to, please let us know.
     You can log a bug on GitHub or [provide feedback here][2].
 
-  [1]: versioning.md#experimental-features
+  [1]: ../versioning.md#experimental-features
   [2]: https://github.com/Azure/PSRule.Rules.Azure/discussions/1345
 
 ## Limitations

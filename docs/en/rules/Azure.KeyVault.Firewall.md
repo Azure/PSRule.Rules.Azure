@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-08-20
 severity: Important
 pillar: Security
 category: Application endpoints
@@ -49,24 +50,22 @@ For example:
 ```json
 {
   "type": "Microsoft.KeyVault/vaults",
-  "apiVersion": "2022-07-01",
+  "apiVersion": "2023-02-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
     "sku": {
       "family": "A",
-      "name": "standard"
+      "name": "premium"
     },
     "tenantId": "[tenant().tenantId]",
     "softDeleteRetentionInDays": 90,
     "enableSoftDelete": true,
     "enablePurgeProtection": true,
-    "accessPolicies": "[parameters('accessPolicies')]",
+    "enableRbacAuthorization": true,
     "networkAcls": {
       "defaultAction": "Deny",
-      "bypass": "AzureServices",
-      "ipRules": [],
-      "virtualNetworkRules": []
+      "bypass": "AzureServices"
     }
   }
 }
@@ -81,24 +80,22 @@ To deploy Key Vaults that pass this rule:
 For example:
 
 ```bicep
-resource vault 'Microsoft.KeyVault/vaults@2022-07-01' = {
+resource vault 'Microsoft.KeyVault/vaults@2023-02-01' = {
   name: name
   location: location
   properties: {
     sku: {
       family: 'A'
-      name: 'standard'
+      name: 'premium'
     }
     tenantId: tenant().tenantId
     softDeleteRetentionInDays: 90
     enableSoftDelete: true
     enablePurgeProtection: true
-    accessPolicies: accessPolicies
+    enableRbacAuthorization: true
     networkAcls: {
       defaultAction: 'Deny'
       bypass: 'AzureServices'
-      ipRules: []
-      virtualNetworkRules: []
     }
   }
 }
