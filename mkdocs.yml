@@ -46,6 +46,11 @@ nav:
       - Features: features.md
       - FAQ: faq.md
     - Install: install.md
+    - Quickstarts:
+      - Test a Bicep deployment:
+        - With GitHub Actions: quickstarts/test-bicep-with-github.md
+        # - With Visual Studio Code: quickstarts/test-bicep-with-vscode.md
+    # - Tutorials:
     - Testing infrastructure code:
       - Expanding source files: expanding-source-files.md
       - Using templates: using-templates.md
@@ -105,7 +110,9 @@ markdown_extensions:
   - pymdownx.snippets
   - pymdownx.highlight:
       auto_title: false
-      anchor_linenums: false
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
   - pymdownx.superfences
   - pymdownx.pathconverter
   - pymdownx.tabbed:

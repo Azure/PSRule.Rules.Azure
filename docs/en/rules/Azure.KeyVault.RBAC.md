@@ -1,7 +1,8 @@
 ---
+reviewed: 2023-08-20
 severity: Awareness
 pillar: Security
-category: Identity and access management
+category: Authorization
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.RBAC/
 ---
@@ -16,7 +17,8 @@ Key Vaults should use Azure RBAC as the authorization system for the data plane.
 
 Azure RBAC is the recommended authorization system for the Azure Key Vault data plane.
 
-Azure RBAC allows users to manage key, secrets, and certificates permissions. It provides one place to manage all permissions across all Key Vaults.
+Azure RBAC allows users to manage key, secrets, and certificates permissions.
+It provides one place to manage all permissions across all Key Vaults.
 
 Azure RBAC for Key Vault also allows users to have separate permissions on individual keys, secrets, and certificates.
 
@@ -38,18 +40,25 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.KeyVault/vaults",
-    "apiVersion": "2022-07-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "sku": {
-            "family": "A",
-            "name": "standard"
-        },
-        "tenantId": "[subscription().tenantId]",
-        "enableRbacAuthorization": true
+  "type": "Microsoft.KeyVault/vaults",
+  "apiVersion": "2023-02-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "sku": {
+      "family": "A",
+      "name": "premium"
+    },
+    "tenantId": "[tenant().tenantId]",
+    "softDeleteRetentionInDays": 90,
+    "enableSoftDelete": true,
+    "enablePurgeProtection": true,
+    "enableRbacAuthorization": true,
+    "networkAcls": {
+      "defaultAction": "Deny",
+      "bypass": "AzureServices"
     }
+  }
 }
 ```
 
@@ -62,16 +71,23 @@ To deploy Key Vaults that pass this rule:
 For example:
 
 ```bicep
-resource vault 'Microsoft.KeyVault/vaults@2022-07-01' = {
+resource vault 'Microsoft.KeyVault/vaults@2023-02-01' = {
   name: name
   location: location
   properties: {
     sku: {
       family: 'A'
-      name: 'standard'
+      name: 'premium'
     }
-    tenantId: subscription().tenantId
+    tenantId: tenant().tenantId
+    softDeleteRetentionInDays: 90
+    enableSoftDelete: true
+    enablePurgeProtection: true
     enableRbacAuthorization: true
+    networkAcls: {
+      defaultAction: 'Deny'
+      bypass: 'AzureServices'
+    }
   }
 }
 ```
@@ -97,7 +113,7 @@ For information about limitations see _Azure role-based access control vs. acces
 ## LINKS
 
 - [Role-based authorization](https://learn.microsoft.com/azure/well-architected/security/design-identity-authorization#role-based-authorization)
-- [What is Azure role-based access control?](https://learn.microsoft.com/azure/key-vault/general/soft-delete-overview)
+- [What is Azure role-based access control?](https://learn.microsoft.com/azure/role-based-access-control/overview)
 - [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](https://learn.microsoft.com/azure/key-vault/general/rbac-guide)
 - [Azure role-based access control vs. access policies](https://learn.microsoft.com/azure/key-vault/general/rbac-access-policy)
 - [Migrate from vault access policy to an Azure role-based access control permission model](https://learn.microsoft.com/azure/key-vault/general/rbac-migration)
