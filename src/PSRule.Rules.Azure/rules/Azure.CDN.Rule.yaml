@@ -22,7 +22,7 @@ metadata:
     Azure.MCSB.v1/control: 'DP-3'
 spec:
   type:
-  - Microsoft.Cdn/profiles/endpoints
+    - Microsoft.Cdn/profiles/endpoints
   condition:
     field: properties.isHttpAllowed
     equals: false

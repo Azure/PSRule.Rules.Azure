@@ -36,6 +36,9 @@ What's changed since v1.29.0:
   - Backup vault:
     - Check that immutability is configured for Backup vaults by @BenjaminEngeset.
     [#2387](https://github.com/Azure/PSRule.Rules.Azure/issues/2387)
+  - Front Door:
+    - Check that managed identity for Azure Front Door instances are configured by @BenjaminEngeset.
+      [#2378](https://github.com/Azure/PSRule.Rules.Azure/issues/2378)
   - Public IP address:
     - Check that Public IP addresses uses Standard SKU by @BenjaminEngeset.
       [#2376](https://github.com/Azure/PSRule.Rules.Azure/issues/2376)
