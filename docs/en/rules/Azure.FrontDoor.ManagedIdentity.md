@@ -16,11 +16,11 @@ Ensure Front Door uses a managed identity to authorize access to Azure resources
 
 When configuring a Standard or Premium SKU with a custom domain using bring your own certificate (BYOC) access to a Key Vault is required.
 Standard and Premium Front Door profiles support two methods for authorizing access to Azure resources:
-- Using the Microsoft managed multi-tenant app registration.
 
-  - Standard SKU profiles use the client ID `205478c0-bd83-4e1b-a9d6-db63a3e1e1c8`.
-  - Premium SKU profiles use the client ID `d4631ece-daab-479b-be77-ccb713491fc0`.
-- With a system or user assigned managed identity.
+1. Using the Microsoft managed multi-tenant app registration.
+   - Standard SKU profiles use the client ID `205478c0-bd83-4e1b-a9d6-db63a3e1e1c8`.
+   - Premium SKU profiles use the client ID `d4631ece-daab-479b-be77-ccb713491fc0`.
+2. With a system or user assigned managed identity.
 
 The multi-tenant app registration has a number of challenges:
 
