@@ -208,9 +208,10 @@
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.App/containerApps",
     "ResourceType": "Microsoft.App/containerApps",
+    "apiVersion": " 2022-06-01-preview",
     "Sku": null,
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.App/containerApps/capp-B",
@@ -281,6 +282,7 @@
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.App/containerApps",
     "ResourceType": "Microsoft.App/containerApps",
+    "apiVersion": "2022-11-01-preview",
     "Sku": null,
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
@@ -379,6 +381,7 @@
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.App/containerApps",
     "ResourceType": "Microsoft.App/containerApps",
+    "apiVersion": "2023-04-01-preview",
     "Sku": null,
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
@@ -477,6 +480,7 @@
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.App/containerApps",
     "ResourceType": "Microsoft.App/containerApps",
+    "apiVersion": "2023-05-01",
     "Sku": null,
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"

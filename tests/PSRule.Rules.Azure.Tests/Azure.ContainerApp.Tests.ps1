@@ -158,6 +158,22 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'capp-D';
         }
+
+        It 'Azure.ContainerApp.MigrateAPIVersion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.MigrateAPIVersion' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-B';
+
+            $ruleResult.Detail.Reason.Path | Should -Be 'apiVersion';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
+        }
     }
 
     Context 'Resource name - Azure.ContainerApp.Name' {

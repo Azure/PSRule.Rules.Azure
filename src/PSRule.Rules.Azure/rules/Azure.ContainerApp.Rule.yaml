@@ -99,7 +99,7 @@ spec:
       - field: properties.vnetConfiguration.infrastructureSubnetId
         hasValue: true
 
---- 
+---
 # Synopsis: Limit inbound communication for Container Apps is limited to callers within the Container Apps Environment.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
@@ -135,7 +135,7 @@ metadata:
     Azure.WAF/pillar: Reliability
 spec:
   type:
-  - Microsoft.App/containerApps
+    - Microsoft.App/containerApps
   where:
     field: properties.template.volumes
     greater: 0
@@ -145,7 +145,7 @@ spec:
       - field: storageType
         equals: AzureFile
 
---- 
+---
 # Synopsis: Disable session affinity to prevent unbalanced distribution.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
@@ -162,6 +162,26 @@ spec:
   condition:
     field: properties.configuration.ingress.stickySessions.affinity
     hasDefault: none
+
+---
+# Synopsis: Migrate from retired API version to a supported version.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.MigrateAPIVersion
+  ref: AZR-000400
+  tags:
+    release: GA
+    ruleSet: 2023_09
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+    - Microsoft.App/containerApps
+  condition:
+    field: apiVersion
+    notIn:
+      - 2022-06-01-preview
+      - 2022-11-01-preview
 
 #endregion Rules
 
@@ -180,5 +200,4 @@ spec:
         equals: Microsoft.App/containerApps
       - field: 'properties.configuration.ingress'
         exists: true
-
 #endregion Selectors
