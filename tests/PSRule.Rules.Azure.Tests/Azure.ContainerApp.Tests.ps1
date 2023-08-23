@@ -159,8 +159,8 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.TargetName | Should -BeIn 'capp-D';
         }
 
-        It 'Azure.ContainerApp.MigrateAPIVersion' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.MigrateAPIVersion' };
+        It 'Azure.ContainerApp.APIVersion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.APIVersion' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

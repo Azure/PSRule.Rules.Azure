@@ -168,7 +168,7 @@ spec:
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.ContainerApp.MigrateAPIVersion
+  name: Azure.ContainerApp.APIVersion
   ref: AZR-000400
   tags:
     release: GA
@@ -200,4 +200,5 @@ spec:
         equals: Microsoft.App/containerApps
       - field: 'properties.configuration.ingress'
         exists: true
+
 #endregion Selectors

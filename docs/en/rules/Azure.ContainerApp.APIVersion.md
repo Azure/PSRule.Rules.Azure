@@ -3,7 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Container App
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.MigrateAPIVersion/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.APIVersion/
 ---
 
 # Retired API version
