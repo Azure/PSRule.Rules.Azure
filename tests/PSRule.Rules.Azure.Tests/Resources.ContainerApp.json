@@ -208,7 +208,7 @@
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.App/containerApps",
     "ResourceType": "Microsoft.App/containerApps",
-    "apiVersion": " 2022-06-01-preview",
+    "apiVersion": "2022-06-01-preview",
     "Sku": null,
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
