@@ -167,7 +167,7 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-B';
 
-            $ruleResult.Detail.Reason.Path | Should -Be 'apiVersion';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'apiVersion';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
