@@ -24,6 +24,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Container Apps:
+    - Check that Container Apps uses a supported API version by @BenjaminEngeset.
+    [#2398](https://github.com/Azure/PSRule.Rules.Azure/issues/2398)
+
 ## v1.30.0-B0011 (pre-release)
 
 What's changed since v1.29.0:

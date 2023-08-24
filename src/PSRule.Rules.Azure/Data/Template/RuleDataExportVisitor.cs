@@ -14,7 +14,6 @@ namespace PSRule.Rules.Azure.Data.Template
     {
         private const string PROPERTY_DEPENDSON = "dependsOn";
         private const string PROPERTY_COMMENTS = "comments";
-        private const string PROPERTY_APIVERSION = "apiVersion";
         private const string PROPERTY_CONDITION = "condition";
         private const string PROPERTY_RESOURCES = "resources";
         private const string PROPERTY_ID = "id";
@@ -54,9 +53,6 @@ namespace PSRule.Rules.Azure.Data.Template
         protected override void Resource(TemplateContext context, IResourceValue resource)
         {
             // Remove resource properties that not required in rule data
-            if (resource.Value.ContainsKey(PROPERTY_APIVERSION))
-                resource.Value.Remove(PROPERTY_APIVERSION);
-
             if (resource.Value.ContainsKey(PROPERTY_CONDITION))
                 resource.Value.Remove(PROPERTY_CONDITION);
 
