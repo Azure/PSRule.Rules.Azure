@@ -27,7 +27,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 - New rules:
   - Azure Container Apps:
     - Check that Container Apps uses a supported API version by @BenjaminEngeset.
-    [#2398](https://github.com/Azure/PSRule.Rules.Azure/issues/2398)
+      [#2398](https://github.com/Azure/PSRule.Rules.Azure/issues/2398)
+- Bug fixes:
+  - Fixed non-resource group rule triggering for a resource group by @BernieWhite.
+    [#2401](https://github.com/Azure/PSRule.Rules.Azure/issues/2401)
 
 ## v1.30.0-B0011 (pre-release)
 

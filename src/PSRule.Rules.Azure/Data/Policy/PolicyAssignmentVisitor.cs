@@ -1354,10 +1354,9 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         private static void AddSelectors(PolicyDefinition policyDefinition, PolicyMode policyMode)
         {
-            if (policyMode != PolicyMode.Indexed)
-                return;
-
-            policyDefinition.With = new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" };
+            policyDefinition.With = policyMode == PolicyMode.Indexed
+                ? new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }
+                : new string[] { "PSRule.Rules.Azure\\Azure.Policy.All" };
         }
 
         private static void OptimizeConditions(PolicyDefinition policyDefinition)

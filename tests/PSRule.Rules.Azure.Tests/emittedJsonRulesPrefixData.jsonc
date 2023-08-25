@@ -17,7 +17,7 @@
     "spec": {
       "recommend": "This policy enables you to restrict the locations your organization can specify when deploying resources. Use to enforce your geo-compliance requirements. Excludes resource groups, Microsoft.AzureActiveDirectory/b2cDirectories, and resources that use the 'global' region.",
       "with": [
-        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
+        "PSRule.Rules.Azure\\Azure.Policy.Indexed"
       ],
       "where": {
         "allOf": [

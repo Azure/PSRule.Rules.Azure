@@ -20,7 +20,7 @@
         "Microsoft.Storage/storageAccounts"
       ],
       "with": [
-        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
+        "PSRule.Rules.Azure\\Azure.Policy.Indexed"
       ],
       "condition": {
         "field": "properties.minimumTlsVersion",
@@ -49,7 +49,7 @@
         "Microsoft.Compute/virtualMachines"
       ],
       "with": [
-        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
+        "PSRule.Rules.Azure\\Azure.Policy.Indexed"
       ],
       "where": {
         "anyOf": [
@@ -348,7 +348,7 @@
         "Microsoft.Web/sites"
       ],
       "with": [
-        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
+        "PSRule.Rules.Azure\\Azure.Policy.Indexed"
       ],
       "where": {
         "field": "kind",
