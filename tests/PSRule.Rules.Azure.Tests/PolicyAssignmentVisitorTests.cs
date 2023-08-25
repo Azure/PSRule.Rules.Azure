@@ -47,7 +47,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
             Assert.Null(actual.Where);
             Assert.Equal("{\"field\":\"properties.networkAcls.defaultAction\",\"equals\":\"Deny\"}", actual.Condition.ToString(Formatting.None));
-            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" }, actual.With);
+            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
 
             actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/04c4380f-3fae-46e8-96c9-30193528f602");
             Assert.NotNull(actual);
@@ -57,7 +57,7 @@ namespace PSRule.Rules.Azure
             Assert.Single(actual.Types);
             Assert.Equal("Microsoft.Compute/virtualMachines", actual.Types[0]);
             Assert.Equal("{\"anyOf\":[{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"Canonical\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"UbuntuServer\"},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"18.04-LTS\",\"16.04-LTS\",\"16.04.0-LTS\",\"14.04.0-LTS\",\"14.04.1-LTS\",\"14.04.5-LTS\"]}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"RedHat\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"RHEL\",\"RHEL-SAP-HANA\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"SUSE\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"SLES\",\"SLES-HPC\",\"SLES-HPC-Priority\",\"SLES-SAP\",\"SLES-SAP-BYOS\",\"SLES-Priority\",\"SLES-BYOS\",\"SLES-SAPCAL\",\"SLES-Standard\"]},{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"12-SP2\",\"12-SP3\",\"12-SP4\"]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"OpenLogic\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"CentOS\",\"Centos-LVM\",\"CentOS-SRIOV\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"cloudera\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"cloudera-centos-os\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]}", actual.Where.ToString(Formatting.None));
-            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" }, actual.With);
+            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
 
             actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/f9be5368-9bf5-4b84-9e0a-7850da98bb46");
             Assert.NotNull(actual);
@@ -68,7 +68,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.StreamAnalytics/streamingJobs", actual.Types[0]);
             var condition = actual.Condition.ToString(Formatting.None);
             Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"greaterOrEqual\":1,\"field\":\"properties.logs[*]\",\"anyOf\":[{\"allOf\":[{\"field\":\"retentionPolicy.enabled\",\"equals\":\"true\"},{\"anyOf\":[{\"field\":\"retentionPolicy.days\",\"equals\":\"0\"},{\"value\":{\"$\":{\"padLeft\":{\"path\":\"retentionPolicy.days\"},\"totalLength\":3,\"paddingCharacter\":\"0\"}},\"greaterOrEquals\":365,\"convert\":true}]},{\"field\":\"enabled\",\"equals\":\"true\"}]},{\"allOf\":[{\"field\":\"enabled\",\"equals\":\"true\"},{\"anyOf\":[{\"field\":\"retentionPolicy.enabled\",\"notEquals\":\"true\"},{\"field\":\"properties.storageAccountId\",\"exists\":false}]}]}]}],\"where\":{\"type\":\".\",\"equals\":\"Microsoft.Insights/diagnosticSettings\"}}", actual.Condition.ToString(Formatting.None));
-            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Resource.SupportsTags" }, actual.With);
+            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
         }
 
         [Fact]
@@ -160,7 +160,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Resources/resourceGroups", actual.Types[0]);
             Assert.Null(actual.Where);
             Assert.Equal("{\"field\":\"location\",\"in\":[\"australiaeast\",\"australiasoutheast\",\"eastus\",\"westus\"]}", actual.Condition.ToString(Formatting.None));
-            Assert.Null(actual.With);
+            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.All" }, actual.With);
         }
 
         [Fact]
@@ -186,7 +186,7 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Resources/resourceGroups", actual.Types[0]);
             Assert.Null(actual.Where);
             Assert.Equal("{\"field\":\"tags['env']\",\"exists\":true}", actual.Condition.ToString(Formatting.None));
-            Assert.Null(actual.With);
+            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.All" }, actual.With);
         }
 
         #region Helper methods

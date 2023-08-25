@@ -149,6 +149,148 @@ spec:
         - Microsoft.Resources/templateSpecs/versions
 
 ---
+# Synopsis: Resources that supports tags but not resource groups.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Policy.Indexed
+  annotations:
+    export: false
+spec:
+  if:
+    allOf:
+
+    - type: '.'
+      notIn: 
+        - Microsoft.Resources/resourceGroups
+        - Microsoft.Resources/subscriptions/resourceGroups
+
+    # Only include resource types
+    - type: '.'
+      like: 'Microsoft.*/*'
+
+    # Exclude resource providers that do not support tags
+    - type: '.'
+      notStartsWith:
+      - Microsoft.Addons/
+      - Microsoft.Advisor/
+      - Microsoft.Billing/
+      - Microsoft.Blueprint/
+      - Microsoft.Capacity/
+      - Microsoft.Classic
+      - Microsoft.Consumption/
+      - Microsoft.Gallery/
+      - Microsoft.Security/
+      - microsoft.support/
+      - Microsoft.WorkloadMonitor/
+      - Microsoft.ManagedServices/
+      - Microsoft.Management/
+      - Microsoft.PolicyInsights/
+
+    # Exclude resource types that do not support tags
+    - type: '.'
+      notIn:
+      - Microsoft.Subscription
+      - Microsoft.AzureActiveDirectory/b2ctenants
+      - Microsoft.OperationsManagement/solutions
+      - Microsoft.Kubernetes/registeredSubscriptions
+      - Microsoft.Network/privateDnsZonesInternal
+    - type: '.'
+      notEndsWith:
+      - /providers/roleAssignments
+      - /providers/diagnosticSettings
+
+    # Specific exception cases
+    - anyOf:
+      - type: '.'
+        notStartsWith: Microsoft.Resources/
+      - type: '.'
+        in:
+        - Microsoft.Resources/deploymentScripts
+        # - Microsoft.Resources/resourceGroups
+        - Microsoft.Resources/templateSpecs
+        - Microsoft.Resources/templateSpecs/versions
+
+    - anyOf:
+      - type: '.'
+        notStartsWith: Microsoft.CostManagement/
+      - type: '.'
+        in:
+        - Microsoft.CostManagement/Connectors
+
+    - anyOf:
+      - type: '.'
+        notStartsWith: Microsoft.KubernetesConfiguration/
+      - type: '.'
+        in:
+        - Microsoft.KubernetesConfiguration/privateLinkScopes
+
+    - anyOf:
+      - type: '.'
+        notStartsWith: Microsoft.ManagedIdentity/
+      - type: '.'
+        in:
+        - Microsoft.ManagedIdentity/userAssignedIdentities
+
+    - anyOf:
+      - type: '.'
+        notStartsWith: Microsoft.Authorization/
+      - type: '.'
+        in:
+        - Microsoft.Authorization/resourceManagementPrivateLinks
+
+    - anyOf:
+      - type: '.'
+        notStartsWith: Microsoft.Insights/
+      - type: '.'
+        in:
+        - Microsoft.Insights/actionGroups
+        - Microsoft.Insights/activityLogAlerts
+        - Microsoft.Insights/alertRules
+        - Microsoft.Insights/autoscaleSettings
+        - Microsoft.Insights/components
+        - Microsoft.Insights/dataCollectionEndpoints
+        - Microsoft.Insights/dataCollectionRules
+        - Microsoft.Insights/guestDiagnosticSettings
+        - Microsoft.Insights/metricAlerts
+        - Microsoft.Insights/notificationGroups
+        - Microsoft.Insights/privateLinkScopes
+        - Microsoft.Insights/scheduledQueryRules
+        - Microsoft.Insights/webTests
+        - Microsoft.Insights/workbooks
+        - Microsoft.Insights/workbookTemplates
+
+    - anyOf:
+      - type: '.'
+        notLike: 'Microsoft.*/*/*'
+      - type: '.'
+        in:
+        - Microsoft.Automation/automationAccounts/runbooks
+        - Microsoft.Automation/automationAccounts/configurations
+        - Microsoft.Automation/automationAccounts/compilationJobs
+        - Microsoft.Automation/automationAccounts/modules
+        - Microsoft.Automation/automationAccounts/nodeConfigurations
+        - Microsoft.Automation/automationAccounts/python2Packages
+        - Microsoft.Automation/automationAccounts/watchers
+        - Microsoft.Resources/templateSpecs/versions
+
+---
+# Synopsis: Any Azure resource type.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Policy.All
+  annotations:
+    export: false
+spec:
+  if:
+    allOf:
+
+    # Only include resource types
+    - type: '.'
+      like: 'Microsoft.*/*'
+
+---
 # Synopsis: Identities resources that have been exported from an Azure subscription.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector

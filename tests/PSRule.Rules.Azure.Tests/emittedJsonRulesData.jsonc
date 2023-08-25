@@ -20,7 +20,7 @@
         "Microsoft.Storage/storageAccounts"
       ],
       "with": [
-        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
+        "PSRule.Rules.Azure\\Azure.Policy.Indexed"
       ],
       "condition": {
         "field": "properties.minimumTlsVersion",
@@ -49,7 +49,7 @@
         "Microsoft.Compute/virtualMachines"
       ],
       "with": [
-        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
+        "PSRule.Rules.Azure\\Azure.Policy.Indexed"
       ],
       "where": {
         "anyOf": [
@@ -348,7 +348,7 @@
         "Microsoft.Web/sites"
       ],
       "with": [
-        "PSRule.Rules.Azure\\Azure.Resource.SupportsTags"
+        "PSRule.Rules.Azure\\Azure.Policy.Indexed"
       ],
       "where": {
         "field": "kind",
@@ -401,6 +401,9 @@
       "type": [
         "Microsoft.Network/loadBalancers"
       ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Policy.All"
+      ],
       "condition": {
         "greaterOrEqual": 1,
         "field": "properties.loadBalancingRules[*]",
@@ -429,6 +432,9 @@
       "type": [
         "Microsoft.Network/loadBalancers"
       ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Policy.All"
+      ],
       "condition": {
         "greaterOrEquals": 1,
         "field": "properties.loadBalancingRules[*]",
@@ -451,6 +457,9 @@
       "recommend": "Enforce unique description on one NSG rule",
       "type": [
         "Microsoft.Network/networkSecurityGroups"
+      ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Policy.All"
       ],
       "condition": {
         "count": 1,
@@ -479,6 +488,9 @@
       "recommend": "Denies RDP port on inbound NSG rules",
       "type": [
         "Microsoft.Network/networkSecurityGroups/securityRules"
+      ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Policy.All"
       ],
       "condition": {
         "greater": 0,
@@ -516,6 +528,9 @@
       "type": [
         "Microsoft.Network/networkSecurityGroups/securityRules",
         "Microsoft.Network/networkSecurityGroups"
+      ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Policy.All"
       ],
       "where": {
         "anyOf": [
@@ -600,6 +615,9 @@
         "Microsoft.Network/virtualNetworks/subnets",
         "Microsoft.Network/virtualNetworks"
       ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Policy.All"
+      ],
       "where": {
         "anyOf": [
           {
@@ -670,6 +688,9 @@
       "type": [
         "Microsoft.Network/privateEndpoints"
       ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Policy.All"
+      ],
       "where": {
         "allOf": [
           {
@@ -716,6 +737,9 @@
       "recommend": "View and configure system diagnostic data",
       "type": [
         "Microsoft.Resources/subscriptions"
+      ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Policy.All"
       ],
       "condition": {
         "value": "Manual",
