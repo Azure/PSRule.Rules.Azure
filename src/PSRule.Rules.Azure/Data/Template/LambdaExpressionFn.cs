@@ -195,7 +195,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return null;
 
             fn = arg1;
-            return new LambdaContext(context);
+            return context is LambdaContext existing ? existing : new LambdaContext(context);
         }
 
         private LambdaContext GetArgs3(ITemplateContext context, out string varName1, out string varName2, out ExpressionFnOuter fn)
@@ -210,7 +210,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return null;
 
             fn = arg2;
-            return new LambdaContext(context);
+            return context is LambdaContext existing ? existing : new LambdaContext(context);
         }
 
         private static object ObjectMapper(object input, LambdaContext context, string varName, ExpressionFnOuter mapper)
