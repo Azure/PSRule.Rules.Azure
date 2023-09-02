@@ -99,7 +99,7 @@
         {
             "comments": "Storage Account",
             "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2019-06-01",
+            "apiVersion": "2022-09-01",
             "name": "[parameters('storageAccountName')]",
             "location": "[parameters('location')]",
             "sku": {
@@ -116,7 +116,6 @@
                     ],
                     "defaultAction": "Deny"
                 },
-                "supportsHttpsTrafficOnly": true,
                 "encryption": {
                     "services": {
                         "file": {
