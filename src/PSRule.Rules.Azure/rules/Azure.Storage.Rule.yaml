@@ -17,6 +17,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2021_09'
+    Azure.WAF/pillar: 'Security'
 spec:
   type:
   - Microsoft.Storage/storageAccounts

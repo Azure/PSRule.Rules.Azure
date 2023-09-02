@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-09-19
+reviewed: 2023-09-02
 severity: Important
 pillar: Reliability
 category: Data Management
@@ -7,27 +7,38 @@ resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.FileShareSoftDelete/
 ---
 
-# Use fileshare soft delete
+# Use soft delete on files shares
 
 ## Synopsis
 
-Enable fileshare soft delete on Storage Accounts
+Enable soft delete on Storage Accounts file shares.
 
 ## Description
 
-Azure Files offers soft delete for fileshares within Storage Accounts to recover deleted or modified files.
+Soft delete for Azure Files protects your shares from being accidentally deleted.
+This feature **does not** protect against individual files being deleted or modified.
+When soft delete is enabled for a Azure Files on a Storage Account, a share and its contents may be recovered
+after it has been deleted, within a retention period that you specify.
+
+Soft delete on file shares should be considered _part_ of the strategy to protect and retain data for Azure Files.
+Also consider:
+
+- Enabling Azure File Share Backup.
+- Implementing role-based access control (RBAC).
+
+Storage Accounts can be configured to retain deleted share for a period of time between 1 and 365 days.
 
 ## Recommendation
 
-Consider enabling soft delete on fileshares to protect files from accidential deletion or modification.
+Consider enabling soft delete on Azure Files to protect against accidental deletion of shares.
 
 ## Examples
 
 ### Configure with Azure template
 
-To deploy Fileshares via ARM that pass this rule:
+To deploy Storage Accounts that pass this rule:
 
-- Set the `properties.deleteRetentionPolicy.enabled` property to `true` on the fileshare services sub-resource
+- Set the `properties.deleteRetentionPolicy.enabled` property to `true` on the `fileServices` sub-resource
 - Configure the `properties.deleteRetentionPolicy.days` property to the number of days to retain files.
 
 For example:
@@ -48,34 +59,36 @@ For example:
 
 ### Configure with Bicep
 
-To deploy Fileshares via Bicep that pass this rule:
+To deploy Storage Accounts that pass this rule:
 
-- Set the `properties.deleteRetentionPolicy.enabled` property to `true` on the fileshare services sub-resource
+- Set the `properties.deleteRetentionPolicy.enabled` property to `true` on the `fileServices` sub-resource
 - Configure the `properties.deleteRetentionPolicy.days` property to the number of days to retain files.
 
 For example:
 
 ```bicep
-
-resource  'Microsoft.Storage/storageAccounts/fileServices@2022-05-01' = {
+resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2023-01-01' = {
+  parent: storageAccount
   name: 'default'
-  parent: st0000001
+  properties: {
     shareDeleteRetentionPolicy: {
-      days: 7
       enabled: true
+      days: 7
     }
   }
 }
-
 ```
 
 ## Notes
 
-Cloud Shell storage with the tag `ms-resource-usage = 'azure-cloud-shell'` is excluded. Storage accounts used for Cloud Shell are not intended to store data.
+Cloud Shell storage with the tag `ms-resource-usage = 'azure-cloud-shell'` is excluded.
+Storage accounts used for Cloud Shell are not intended to store data.
 
 ## Links
 
-- [Enable soft delete on Azure file shares](https://docs.microsoft.com/azure/storage/files/storage-files-enable-soft-delete?tabs=azure-portal)
-- [RBAC operations for storage](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftstorage)
-- [What is Azure Files?](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)
-- [Microsoft.Storage storageAccounts/fileServices](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts/fileservices)
+- [Data management for reliability](https://learn.microsoft.com/azure/well-architected/resiliency/data-management)
+- [Storage Accounts and reliability](https://learn.microsoft.com/azure/well-architected/services/storage/storage-accounts/reliability)
+- [Enable soft delete on Azure file shares](https://learn.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)
+- [About Azure file share backup](https://learn.microsoft.com/azure/backup/azure-file-share-backup-overview)
+- [Authorize access to file data](https://learn.microsoft.com/azure/storage/files/authorize-data-operations-portal)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts/fileservices)

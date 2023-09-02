@@ -42,23 +42,24 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2021-04-01",
-    "name": "st0000001",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Standard_GRS"
-    },
-    "kind": "StorageV2",
-    "properties": {
-        "supportsHttpsTrafficOnly": true,
-        "accessTier": "Hot",
-        "allowBlobPublicAccess": false,
-        "minimumTlsVersion": "TLS1_2",
-        "networkAcls": {
-            "defaultAction": "Deny"
-        }
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_GRS"
+  },
+  "kind": "StorageV2",
+  "properties": {
+    "allowBlobPublicAccess": false,
+    "supportsHttpsTrafficOnly": true,
+    "minimumTlsVersion": "TLS1_2",
+    "accessTier": "Hot",
+    "allowSharedKeyAccess": false,
+    "networkAcls": {
+      "defaultAction": "Deny"
     }
+  }
 }
 ```
 
@@ -71,18 +72,19 @@ To deploy Storage Accounts that pass this rule:
 For example:
 
 ```bicep
-resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: 'st0000001'
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: name
   location: location
   sku: {
     name: 'Standard_GRS'
   }
   kind: 'StorageV2'
   properties: {
-    supportsHttpsTrafficOnly: true
-    accessTier: 'Hot'
     allowBlobPublicAccess: false
+    supportsHttpsTrafficOnly: true
     minimumTlsVersion: 'TLS1_2'
+    accessTier: 'Hot'
+    allowSharedKeyAccess: false
     networkAcls: {
       defaultAction: 'Deny'
     }
@@ -101,4 +103,4 @@ Azure storage firewall is not supported for Cloud Shell storage accounts.
 - [Configure Azure Storage firewalls and virtual networks](https://docs.microsoft.com/azure/storage/common/storage-network-security)
 - [Use private endpoints for Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-private-endpoints)
 - [Persist files in Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/persisting-shell-storage)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts#NetworkRuleSet)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

@@ -31,4 +31,4 @@ spec:
     - SystemAssigned,UserAssigned
     - SystemAssigned, UserAssigned
 
-    #endregion Rules
+#endregion Rules
