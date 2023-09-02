@@ -29,6 +29,9 @@ What's changed since pre-release v1.30.0-B0047:
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.7.2.
     [#2407](https://github.com/Azure/PSRule.Rules.Azure/pull/2407)
+- Bug fixes:
+  - Fixed false positive with `Azure.Storage.SecureTransfer` on new API versions by @BernieWhite.
+    [#2414](https://github.com/Azure/PSRule.Rules.Azure/issues/2414)
 
 ## v1.30.0-B0047 (pre-release)
 

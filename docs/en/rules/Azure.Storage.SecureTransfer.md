@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-09-02
 severity: Important
 pillar: Security
 category: Encryption
@@ -23,6 +24,9 @@ To do this set the _Secure transfer required_ option.
 When _secure transfer required_ is enabled,
 attempts to connect to storage using HTTP or unencrypted SMB connections are rejected.
 
+Storage Accounts that are deployed with a newer API version will have this option enabled by default.
+However, this does not prevent the option from being disabled.
+
 ## RECOMMENDATION
 
 Storage accounts should only accept secure traffic.
@@ -35,28 +39,33 @@ Also consider using Azure Policy to audit or enforce this configuration.
 
 To deploy Storage Accounts that pass this rule:
 
-- Set the `properties.supportsHttpsTrafficOnly` property to `true`.
+- For API versions older then _2019-04-01_, set the `properties.supportsHttpsTrafficOnly` property to `true`.
+- For API versions _2019-04-01_ and newer:
+  - Omit the `properties.supportsHttpsTrafficOnly` property OR
+  - Explicitly set the `properties.supportsHttpsTrafficOnly` property to `true`.
 
 For example:
 
 ```json
 {
-    "comments": "Storage Account",
-    "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2019-06-01",
-    "name": "st0000001",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Standard_GRS",
-        "tier": "Standard"
-    },
-    "kind": "StorageV2",
-    "properties": {
-        "supportsHttpsTrafficOnly": true,
-        "minimumTlsVersion": "TLS1_2",
-        "allowBlobPublicAccess": false,
-        "accessTier": "Hot"
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_GRS"
+  },
+  "kind": "StorageV2",
+  "properties": {
+    "allowBlobPublicAccess": false,
+    "supportsHttpsTrafficOnly": true,
+    "minimumTlsVersion": "TLS1_2",
+    "accessTier": "Hot",
+    "allowSharedKeyAccess": false,
+    "networkAcls": {
+      "defaultAction": "Deny"
     }
+  }
 }
 ```
 
@@ -64,23 +73,30 @@ For example:
 
 To deploy Storage Accounts that pass this rule:
 
-- Set the `properties.supportsHttpsTrafficOnly` property to `true`.
+- For API versions older then _2019-04-01_, set the `properties.supportsHttpsTrafficOnly` property to `true`.
+- For API versions _2019-04-01_ and newer:
+  - Omit the `properties.supportsHttpsTrafficOnly` property OR
+  - Explicitly set the `properties.supportsHttpsTrafficOnly` property to `true`.
 
 For example:
 
 ```bicep
-resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: 'st0000001'
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: name
   location: location
   sku: {
     name: 'Standard_GRS'
   }
   kind: 'StorageV2'
   properties: {
-    supportsHttpsTrafficOnly: true
-    accessTier: 'Hot'
     allowBlobPublicAccess: false
+    supportsHttpsTrafficOnly: true
     minimumTlsVersion: 'TLS1_2'
+    accessTier: 'Hot'
+    allowSharedKeyAccess: false
+    networkAcls: {
+      defaultAction: 'Deny'
+    }
   }
 }
 ```
@@ -88,6 +104,7 @@ resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Require secure transfer in Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer)
-- [Sample policy for ensuring https traffic](https://docs.microsoft.com/azure/governance/policy/samples/ensure-https-stor-acct)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)
+- [Require secure transfer in Azure Storage](https://learn.microsoft.com/azure/storage/common/storage-require-secure-transfer)
+- [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/storage-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
+- [Sample policy for ensuring https traffic](https://learn.microsoft.com/azure/governance/policy/samples/built-in-policies#storage)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts)
