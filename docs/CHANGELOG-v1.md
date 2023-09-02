@@ -24,6 +24,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.30.0-B0047:
+
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.7.2.
+    [#2407](https://github.com/Azure/PSRule.Rules.Azure/pull/2407)
+
 ## v1.30.0-B0047 (pre-release)
 
 What's changed since pre-release v1.30.0-B0026:
