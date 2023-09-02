@@ -318,7 +318,7 @@ AZR-000294 | [Azure.Defender.SQL](Azure.Defender.SQL.md) | Enable Microsoft Defe
 AZR-000295 | [Azure.Defender.AppServices](Azure.Defender.AppServices.md) | Enable Microsoft Defender for App Service. | GA
 AZR-000296 | [Azure.Defender.Storage](Azure.Defender.Storage.md) | Enable Microsoft Defender for Storage. | GA
 AZR-000297 | [Azure.Defender.SQLOnVM](Azure.Defender.SQLOnVM.md) | Enable Microsoft Defender for SQL servers on machines. | GA
-AZR-000298 | [Azure.Storage.FileShareSoftDelete](Azure.Storage.FileShareSoftDelete.md) | Enable fileshare soft delete on Storage Accounts | GA
+AZR-000298 | [Azure.Storage.FileShareSoftDelete](Azure.Storage.FileShareSoftDelete.md) | Enable soft delete on Storage Accounts file shares. | GA
 AZR-000299 | [Azure.Redis.FirewallRuleCount](Azure.Redis.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules for the Redis cache. | GA
 AZR-000300 | [Azure.Redis.FirewallIPRange](Azure.Redis.FirewallIPRange.md) | Determine if there is an excessive number of permitted IP addresses for the Redis cache. | GA
 AZR-000301 | [Azure.RedisEnterprise.MinTLS](Azure.RedisEnterprise.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | GA
@@ -415,7 +415,11 @@ AZR-000391 | [Azure.Storage.DefenderCloud.SensitiveData](Azure.Storage.DefenderC
 AZR-000392 | [Azure.MySQL.AAD](Azure.MySQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure Database for MySQL databases. | GA
 AZR-000393 | [Azure.Databricks.SecureConnectivity](Azure.Databricks.SecureConnectivity.md) | Use Databricks workspaces configured for secure cluster connectivity. | GA
 AZR-000394 | [Azure.MySQL.AADOnly](Azure.MySQL.AADOnly.md) | Ensure Azure AD-only authentication is enabled with Azure Database for MySQL databases. | GA
+AZR-000395 | [Azure.PublicIP.MigrateStandard](Azure.PublicIP.MigrateStandard.md) | Use the Standard SKU for Public IP addresses. Basic SKU for Public IP addresses will be retired. | GA
+AZR-000396 | [Azure.FrontDoor.ManagedIdentity](Azure.FrontDoor.ManagedIdentity.md) | Ensure Front Door uses a managed identity to authorize access to Azure resources. | GA
 AZR-000397 | [Azure.RSV.Immutable](Azure.RSV.Immutable.md) | Ensure immutability is configured to protect backup data. | GA
 AZR-000398 | [Azure.BV.Immutable](Azure.BV.Immutable.md) | Ensure immutability is configured to protect backup data. | GA
+AZR-000399 | [Azure.Firewall.PolicyMode](Azure.Firewall.PolicyMode.md) | Deny high confidence malicious IP addresses, domains and URLs. | GA
+AZR-000400 | [Azure.ContainerApp.APIVersion](Azure.ContainerApp.APIVersion.md) | Migrate from retired API version to a supported version. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

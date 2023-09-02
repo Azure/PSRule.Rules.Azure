@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Storage Accounts not using geo-replicated storage (GRS) may be at risk.
-Rule 'Azure.Storage.UseReplication' -Ref 'AZR-000195' -Type 'Microsoft.Storage/storageAccounts' -If { (ShouldStorageReplicate) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Storage.UseReplication' -Ref 'AZR-000195' -Type 'Microsoft.Storage/storageAccounts' -If { (ShouldStorageReplicate) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.In($TargetObject, 'sku.name', @(
             'Standard_GRS'
             'Standard_RAGRS'
@@ -16,7 +16,7 @@ Rule 'Azure.Storage.UseReplication' -Ref 'AZR-000195' -Type 'Microsoft.Storage/s
 }
 
 # Synopsis: Enable soft delete on Storage Accounts
-Rule 'Azure.Storage.SoftDelete' -Ref 'AZR-000197' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Storage.SoftDelete' -Ref 'AZR-000197' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $services = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
         $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices');
@@ -30,7 +30,7 @@ Rule 'Azure.Storage.SoftDelete' -Ref 'AZR-000197' -Type 'Microsoft.Storage/stora
 }
 
 # Synopsis: Use containers configured with a private access type that requires authorization.
-Rule 'Azure.Storage.BlobAccessType' -Ref 'AZR-000199' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices/containers' -If { !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Storage.BlobAccessType' -Ref 'AZR-000199' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices/containers' -If { !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $containers = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
         $containers = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices/containers');
@@ -45,7 +45,7 @@ Rule 'Azure.Storage.BlobAccessType' -Ref 'AZR-000199' -Type 'Microsoft.Storage/s
 }
 
 # Synopsis: Use Storage naming requirements
-Rule 'Azure.Storage.Name' -Ref 'AZR-000201' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Storage.Name' -Ref 'AZR-000201' -Type 'Microsoft.Storage/storageAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftstorage
 
     # Between 3 and 24 characters long
@@ -56,8 +56,8 @@ Rule 'Azure.Storage.Name' -Ref 'AZR-000201' -Type 'Microsoft.Storage/storageAcco
     Match 'Name' '^[a-z0-9]{3,24}$' -CaseSensitive
 }
 
-# Synopsis: Enable soft delete for file shares
-Rule 'Azure.Storage.FileShareSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/fileServices' -If { (IsFileStorage) -and !(IsCloudShell) -and !(IsHnsStorage) } -Tag @{ release = 'GA'; ruleSet = '2022_09'; } {
+# Synopsis: Enable soft delete on Storage Accounts file shares.
+Rule 'Azure.Storage.FileShareSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/fileServices' -If { (IsFileStorage) -and !(IsCloudShell) -and !(IsHnsStorage) } -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $services = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
         $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/fileServices');
@@ -73,8 +73,8 @@ Rule 'Azure.Storage.FileShareSoftDelete' -Ref 'AZR-000298' -Type 'Microsoft.Stor
     }
 }
 
-# Synopsis: Enable soft delete on blob containers
-Rule 'Azure.Storage.ContainerSoftDelete' -Ref 'AZR-000289' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+# Synopsis: Enable container soft delete on Storage Accounts.
+Rule 'Azure.Storage.ContainerSoftDelete' -Ref 'AZR-000289' -Type 'Microsoft.Storage/storageAccounts', 'Microsoft.Storage/storageAccounts/blobServices' -If { !(IsCloudShell) -and !(IsHnsStorage) -and !(IsFileStorage) } -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $services = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Storage/storageAccounts') {
         $services = @(GetSubResources -ResourceType 'Microsoft.Storage/storageAccounts/blobServices');
@@ -211,7 +211,7 @@ function global:IsLargeFileSharesEnabled {
 
 function global:IsPublicNetworkAccessEnabled {
     [CmdletBinding()]
-    param ()     
+    param ()
     process {
         $Assert.HasDefaultValue($TargetObject, 'properties.publicNetworkAccess', 'Enabled').Result
     }

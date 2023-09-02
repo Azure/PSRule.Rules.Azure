@@ -1,5 +1,5 @@
 ---
-reviewed: 2022/01/20
+reviewed: 2022-01-20
 severity: Important
 pillar: Security
 category: Authentication
@@ -77,4 +77,4 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
 - [About anonymous public read access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-configure#about-anonymous-public-read-access)
 - [Use Azure Policy to enforce authorized access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#use-azure-policy-to-enforce-authorized-access)
 - [How a shared access signature works](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

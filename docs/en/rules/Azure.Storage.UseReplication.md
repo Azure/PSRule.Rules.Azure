@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Data management
+category: Requirements
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.UseReplication/
 ---
@@ -43,22 +43,24 @@ For example:
 
 ```json
 {
-    "comments": "Storage Account",
-    "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2019-06-01",
-    "name": "st0000001",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Standard_GRS",
-        "tier": "Standard"
-    },
-    "kind": "StorageV2",
-    "properties": {
-        "supportsHttpsTrafficOnly": true,
-        "minimumTlsVersion": "TLS1_2",
-        "allowBlobPublicAccess": false,
-        "accessTier": "Hot"
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_GRS"
+  },
+  "kind": "StorageV2",
+  "properties": {
+    "allowBlobPublicAccess": false,
+    "supportsHttpsTrafficOnly": true,
+    "minimumTlsVersion": "TLS1_2",
+    "accessTier": "Hot",
+    "allowSharedKeyAccess": false,
+    "networkAcls": {
+      "defaultAction": "Deny"
     }
+  }
 }
 ```
 
@@ -72,18 +74,19 @@ To deploy Storage Accounts that pass this rule:
 For example:
 
 ```bicep
-resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: 'st0000001'
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: name
   location: location
   sku: {
     name: 'Standard_GRS'
   }
   kind: 'StorageV2'
   properties: {
-    supportsHttpsTrafficOnly: true
-    accessTier: 'Hot'
     allowBlobPublicAccess: false
+    supportsHttpsTrafficOnly: true
     minimumTlsVersion: 'TLS1_2'
+    accessTier: 'Hot'
+    allowSharedKeyAccess: false
     networkAcls: {
       defaultAction: 'Deny'
     }
@@ -105,6 +108,6 @@ Storage Accounts with the following tags are automatically excluded from this ru
 
 ## LINKS
 
-- [Multiple and paired regions](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
-- [Azure Storage redundancy](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts)
+- [Meet application platform requirements](https://learn.microsoft.com/azure/well-architected/resiliency/design-requirements#meet-application-platform-requirements)
+- [Azure Storage redundancy](https://learn.microsoft.com/azure/storage/common/storage-redundancy)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

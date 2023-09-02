@@ -37,22 +37,24 @@ For example:
 
 ```json
 {
-    "comments": "Storage Account",
-    "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2019-06-01",
-    "name": "st0000001",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Standard_GRS",
-        "tier": "Standard"
-    },
-    "kind": "StorageV2",
-    "properties": {
-        "supportsHttpsTrafficOnly": true,
-        "minimumTlsVersion": "TLS1_2",
-        "allowBlobPublicAccess": false,
-        "accessTier": "Hot"
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_GRS"
+  },
+  "kind": "StorageV2",
+  "properties": {
+    "allowBlobPublicAccess": false,
+    "supportsHttpsTrafficOnly": true,
+    "minimumTlsVersion": "TLS1_2",
+    "accessTier": "Hot",
+    "allowSharedKeyAccess": false,
+    "networkAcls": {
+      "defaultAction": "Deny"
     }
+  }
 }
 ```
 
@@ -65,18 +67,19 @@ To deploy Storage Accounts that pass this rule:
 For example:
 
 ```bicep
-resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
-  name: 'st0000001'
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: name
   location: location
   sku: {
     name: 'Standard_GRS'
   }
   kind: 'StorageV2'
   properties: {
-    supportsHttpsTrafficOnly: true
-    accessTier: 'Hot'
     allowBlobPublicAccess: false
+    supportsHttpsTrafficOnly: true
     minimumTlsVersion: 'TLS1_2'
+    accessTier: 'Hot'
+    allowSharedKeyAccess: false
     networkAcls: {
       defaultAction: 'Deny'
     }
@@ -87,8 +90,9 @@ resource st0000001 'Microsoft.Storage/storageAccounts@2021-04-01' = {
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [TLS encryption in Azure](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
-- [Enforce a minimum required version of Transport Layer Security (TLS) for requests to a storage account](https://docs.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version)
+- [TLS encryption in Azure](https://learn.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
+- [Enforce a minimum required version of Transport Layer Security (TLS) for requests to a storage account](https://learn.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version)
+- [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/storage-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
-- [Use Azure Policy to enforce the minimum TLS version](https://docs.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version#use-azure-policy-to-enforce-the-minimum-tls-version)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts#StorageAccountPropertiesCreateParameters)
+- [Use Azure Policy to enforce the minimum TLS version](https://learn.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version?tabs=portal#use-azure-policy-to-enforce-the-minimum-tls-version)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

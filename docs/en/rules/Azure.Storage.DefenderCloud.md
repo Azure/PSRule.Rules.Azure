@@ -19,12 +19,12 @@ Which allows Microsoft Defender for Cloud to surface findings with details of th
 
 Additionally, Microsoft Defender for Storage provides security extensions to analyze data stored within Storage Accounts:
 
-- Antimalware scanning of uploaded content in near real time, leveraging Microsoft Defender Antivirus capabilities.
+- Anti-malware scanning of uploaded content in near real time, leveraging Microsoft Defender Antivirus capabilities.
 - Sensitive data threat detection to find resources with sensitive data.
 
 Microsoft Defender for Storage can be enabled on a per subscription or per resource basis.
 Enabling at the subscription level is recommended because it protects current and future Storage Accounts.
-However, enabling at the resource level may be prefered for specific Storage Account to apply custom settings.
+However, enabling at the resource level may be preferred for specific Storage Account to apply custom settings.
 
 ## RECOMMENDATION
 
@@ -105,7 +105,7 @@ The following limitations currently apply for Microsoft Defender for Storage:
   Other storage types are not supported.
 - When Microsoft Defender is enabled at subscription and resource level, the subscription configuration will take priority.
   To override settings on a Storage Account, set the `properties.overrideSubscriptionLevelSettings` property to `true`.
-- If there is no plan at the subcription level, Microsoft Defender for Storage can be configured without an override.
+- If there is no plan at the subscription level, Microsoft Defender for Storage can be configured without an override.
 
 ## LINKS
 

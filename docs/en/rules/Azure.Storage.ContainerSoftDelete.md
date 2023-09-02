@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-09-02
 severity: Important
 pillar: Reliability
 category: Data management
@@ -42,49 +43,44 @@ To deploy Storage Accounts that pass this rule:
 
 ```json
 {
-    "comments": "Storage Account",
-    "type": "Microsoft.Storage/storageAccounts",
-    "apiVersion": "2021-04-01",
-    "name": "st0000001",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Standard_GRS",
-        "tier": "Standard"
-    },
-    "kind": "StorageV2",
-    "properties": {
-        "supportsHttpsTrafficOnly": true,
-        "accessTier": "Hot",
-        "allowBlobPublicAccess": false,
-        "minimumTlsVersion": "TLS1_2"
-    },
-    "resources": [
-        {
-            "comments": "Configure blob storage services",
-            "type": "Microsoft.Storage/storageAccounts/blobServices",
-            "apiVersion": "2019-06-01",
-            "name": "st0000001/default",
-            "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', 'st0000001')]"
-            ],
-            "sku": {
-                "name": "Standard_GRS"
-            },
-            "properties": {
-                "cors": {
-                    "corsRules": []
-                },
-                "deleteRetentionPolicy": {
-                    "enabled": true,
-                    "days": 7
-                },
-                "containerDeleteRetentionPolicy": {
-                    "enabled": true,
-                    "days": 7
-                }
-            }
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_GRS"
+  },
+  "kind": "StorageV2",
+  "properties": {
+    "allowBlobPublicAccess": false,
+    "supportsHttpsTrafficOnly": true,
+    "minimumTlsVersion": "TLS1_2",
+    "accessTier": "Hot",
+    "allowSharedKeyAccess": false,
+    "networkAcls": {
+      "defaultAction": "Deny"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices",
+      "apiVersion": "2023-01-01",
+      "name": "[format('{0}/{1}', parameters('name'), 'default')]",
+      "properties": {
+        "deleteRetentionPolicy": {
+          "enabled": true,
+          "days": 7
+        },
+        "containerDeleteRetentionPolicy": {
+          "enabled": true,
+          "days": 7
         }
-    ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+      ]
+    }
+  ]
 }
 ```
 
@@ -98,9 +94,28 @@ To deploy Storage Accounts that pass this rule:
 For example:
 
 ```bicep
-resource st0000001_blob 'Microsoft.Storage/storageAccounts/blobServices@2021-04-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+  name: name
+  location: location
+  sku: {
+    name: 'Standard_GRS'
+  }
+  kind: 'StorageV2'
+  properties: {
+    allowBlobPublicAccess: false
+    supportsHttpsTrafficOnly: true
+    minimumTlsVersion: 'TLS1_2'
+    accessTier: 'Hot'
+    allowSharedKeyAccess: false
+    networkAcls: {
+      defaultAction: 'Deny'
+    }
+  }
+}
+
+resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2023-01-01' = {
+  parent: storageAccount
   name: 'default'
-  parent: st0000001
   properties: {
     deleteRetentionPolicy: {
       enabled: true
@@ -138,7 +153,8 @@ Storage accounts with:
 
 ## LINKS
 
+- [Data management for reliability](https://learn.microsoft.com/azure/well-architected/resiliency/data-management)
+- [Storage Accounts and reliability](https://learn.microsoft.com/azure/well-architected/services/storage/storage-accounts/reliability)
 - [Soft delete for containers](https://learn.microsoft.com/azure/storage/blobs/soft-delete-container-overview)
-- [Enable and manage soft delete for containers](https://learn.microsoft.com/azure/storage/blobs/soft-delete-container-enable?tabs=azure-portal)
-- [RBAC operations for Storage](https://docs.microsoft.com/azure/role-based-access-control/resource-provider-operations#microsoftstorage)
-- [Azure resource template](https://docs.microsoft.com/azure/templates/microsoft.storage/storageaccounts/blobservices)
+- [Enable and manage soft delete for containers](https://learn.microsoft.com/azure/storage/blobs/soft-delete-container-enable)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts/blobservices)
