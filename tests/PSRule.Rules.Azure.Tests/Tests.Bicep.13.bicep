@@ -82,3 +82,17 @@ output objectMap2 object = toObject(numbers, i => '${i}', i => {
   }
 )
 output objectMapNull object = toObject([ 123, 456, 789, null ], i => '${i}')
+
+// Additional cases map in map
+
+var mapNested = [
+  {
+    item: [
+      'item1'
+      'item2'
+    ]
+    value: 'value1'
+  }
+]
+
+output mapInMap array = flatten(map(mapNested, a => map(a.item, b => a.value)))

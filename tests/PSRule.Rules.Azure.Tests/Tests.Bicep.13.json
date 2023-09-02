@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.20.4.51522",
-      "templateHash": "7710253816038152126"
+      "templateHash": "12689734029213343259"
     }
   },
   "parameters": {
@@ -71,7 +71,16 @@
         ]
       }
     ],
-    "ages": "[map(variables('dogs'), lambda('dog', lambdaVariables('dog').age))]"
+    "ages": "[map(variables('dogs'), lambda('dog', lambdaVariables('dog').age))]",
+    "mapNested": [
+      {
+        "item": [
+          "item1",
+          "item2"
+        ],
+        "value": "value1"
+      }
+    ]
   },
   "resources": [
     {
@@ -233,6 +242,10 @@
     "objectMapNull": {
       "type": "object",
       "value": "[toObject(createArray(123, 456, 789, null()), lambda('i', format('{0}', lambdaVariables('i'))))]"
+    },
+    "mapInMap": {
+      "type": "array",
+      "value": "[flatten(map(variables('mapNested'), lambda('a', map(lambdaVariables('a').item, lambda('b', lambdaVariables('a').value)))))]"
     }
   }
 }

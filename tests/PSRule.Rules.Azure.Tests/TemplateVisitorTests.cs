@@ -765,6 +765,12 @@ namespace PSRule.Rules.Azure
             Assert.Equal(123, objectMapNull["value"]["123"].Value<int>());
             Assert.Equal(456, objectMapNull["value"]["456"].Value<int>());
             Assert.Equal(789, objectMapNull["value"]["789"].Value<int>());
+
+            // Additional test cases
+            Assert.True(templateContext.RootDeployment.TryOutput("mapInMap", out JObject mapInMap));
+            Assert.Equal(2, mapInMap["value"].Value<JArray>().Count);
+            Assert.Equal("value1", mapInMap["value"][0].Value<string>());
+            Assert.Equal("value1", mapInMap["value"][1].Value<string>());
         }
 
         [Fact]
