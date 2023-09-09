@@ -37,7 +37,7 @@ Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetw
 Rule 'Azure.VNET.SingleDNS' -Ref 'AZR-000264' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     # If DNS servers are customized, at least two IP addresses should be defined
     if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
-        $True;
+        $Assert.Pass()
     }
     else {
         $Assert.GreaterOrEqual($TargetObject, 'properties.dhcpOptions.dnsServers', 2);
@@ -45,10 +45,10 @@ Rule 'Azure.VNET.SingleDNS' -Ref 'AZR-000264' -Type 'Microsoft.Network/virtualNe
 }
 
 # Synopsis: Virtual networks (VNETs) should use Azure local DNS servers.
-Rule 'Azure.VNET.LocalDNS' -Ref 'AZR-000265' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.VNET.LocalDNS' -Ref 'AZR-000265' -Type 'Microsoft.Network/virtualNetworks' -If { (IsExport) -and !($Configuration.GetBoolOrDefault('AZURE_VNET_DNS_WITH_IDENTITY', $False)) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     # If DNS servers are customized, check what range the IPs are in
     if ($Assert.NullOrEmpty($TargetObject, 'properties.dhcpOptions.dnsServers').Result) {
-        $True;
+        $Assert.Pass()
     }
     else {
         # Primary DNS server must be within VNET address space or peered VNET
@@ -56,7 +56,7 @@ Rule 'Azure.VNET.LocalDNS' -Ref 'AZR-000265' -Type 'Microsoft.Network/virtualNet
         $primary = $dnsServers[0]
         $localRanges = @();
         $localRanges += $TargetObject.properties.addressSpace.addressPrefixes
-        if ($Assert.HasFieldValue($TargetObject, 'Properties.virtualNetworkPeerings').Result) {
+        if ($Assert.HasFieldValue($TargetObject, 'properties.virtualNetworkPeerings').Result) {
             $localRanges += $TargetObject.properties.virtualNetworkPeerings.properties.remoteAddressSpace.addressPrefixes
         }
 
@@ -67,7 +67,7 @@ Rule 'Azure.VNET.LocalDNS' -Ref 'AZR-000265' -Type 'Microsoft.Network/virtualNet
 
 # Synopsis: VNET peering connections must be connected.
 Rule 'Azure.VNET.PeerState' -Ref 'AZR-000266' -If { (HasPeerNetwork) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
-    $peers = @($TargetObject.Properties.virtualNetworkPeerings);
+    $peers = @($TargetObject.properties.virtualNetworkPeerings);
     foreach ($peer in $peers) {
         $Assert.HasFieldValue($peer, 'Properties.peeringState', 'Connected');
     }
@@ -77,7 +77,7 @@ Rule 'Azure.VNET.PeerState' -Ref 'AZR-000266' -If { (HasPeerNetwork) } -Tag @{ r
 Rule 'Azure.VNET.SubnetName' -Ref 'AZR-000267' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
-        $subnets = @($TargetObject.Properties.subnets)
+        $subnets = @($TargetObject.properties.subnets)
         if ($subnets.Length -eq 0 -or !$Assert.HasFieldValue($TargetObject, 'properties.subnets').Result) {
             $Assert.Pass();
         }

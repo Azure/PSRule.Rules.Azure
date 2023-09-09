@@ -353,9 +353,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'vnet-001';
+            $ruleResult | Should -BeNullOrEmpty;
         }
 
         It 'Azure.VNET.PeerState' {
@@ -374,6 +372,34 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'vnet-001';
+        }
+    }
+
+    Context 'With configuration' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+                Option = @{
+                    'Configuration.AZURE_VNET_DNS_WITH_IDENTITY' = $true
+                }
+            }
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Name 'Azure.VNET.LocalDNS';
+        }
+
+        It 'Azure.VNET.LocalDNS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.LocalDNS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -BeNullOrEmpty;
         }
     }
 }

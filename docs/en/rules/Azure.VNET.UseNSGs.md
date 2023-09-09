@@ -32,7 +32,7 @@ These subnets are:
 
 ## RECOMMENDATION
 
-For virtual network subnets, ensure that a network security groups (NSGs) are assigned.
+Consider assigning a network security group (NSG) to each virtual network subnet.
 
 ## EXAMPLES
 
@@ -46,43 +46,43 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Network/virtualNetworks",
-    "apiVersion": "2021-02-01",
-    "name": "vnet-001",
-    "location": "[parameters('location')]",
-    "properties": {
-        "addressSpace": {
-            "addressPrefixes": [
-                "10.0.0.0/16"
-            ]
-        },
-        "dhcpOptions": {
-            "dnsServers": [
-                "10.0.1.4",
-                "10.0.1.5"
-            ]
-        },
-        "subnets": [
-            {
-                "name": "GatewaySubnet",
-                "properties": {
-                    "addressPrefix": "10.0.0.0/24"
-                }
-            },
-            {
-                "name": "snet-001",
-                "properties": {
-                    "addressPrefix": "10.0.1.0/24",
-                    "networkSecurityGroup": {
-                        "id": "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-001')]"
-                    }
-                }
-            }
-        ]
+  "type": "Microsoft.Network/virtualNetworks",
+  "apiVersion": "2023-05-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "addressSpace": {
+      "addressPrefixes": [
+        "10.0.0.0/16"
+      ]
     },
-    "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityGroups', 'nsg-001')]"
+    "dhcpOptions": {
+      "dnsServers": [
+        "10.0.1.4",
+        "10.0.1.5"
+      ]
+    },
+    "subnets": [
+      {
+        "name": "GatewaySubnet",
+        "properties": {
+          "addressPrefix": "10.0.0.0/24"
+        }
+      },
+      {
+        "name": "snet-001",
+        "properties": {
+          "addressPrefix": "10.0.1.0/24",
+          "networkSecurityGroup": {
+            "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
+          }
+        }
+      }
     ]
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('nsgName'))]"
+  ]
 }
 ```
 
@@ -95,8 +95,8 @@ To deploy virtual network subnets that pass this rule:
 For example:
 
 ```bicep
-resource vnet 'Microsoft.Network/virtualNetworks@2021-02-01' = {
-  name: 'vnet-001'
+resource vnet 'Microsoft.Network/virtualNetworks@2023-05-01' = {
+  name: name
   location: location
   properties: {
     addressSpace: {

@@ -44,9 +44,9 @@ For example:
 
 ```json
 {
-  "apiVersion": "2022-01-01",
+  "apiVersion": "2023-05-01",
   "type": "Microsoft.Network/virtualNetworks",
-  "name": "vnet-01",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
     "addressSpace": {
@@ -78,13 +78,13 @@ For example:
 
 ```json
 {
-  "apiVersion": "2022-01-01",
+  "apiVersion": "2023-05-01",
   "type": "Microsoft.Network/virtualNetworks/subnets",
-  "name": "[format('{0}/{1}', 'vnet-01', 'AzureBastionSubnet')]",
+  "name": "[format('{0}/{1}', parameters('name'), 'AzureBastionSubnet')]",
   "properties": {
     "addressPrefix": "10.0.1.64/26"
   },
-  "dependsOn": ["[resourceId('Microsoft.Network/virtualNetworks', 'vnet-02')]"]
+  "dependsOn": ["[resourceId('Microsoft.Network/virtualNetworks', parameters('name'))]"]
 }
 ```
 
@@ -97,8 +97,8 @@ To deploy Virtual Networks that pass this rule:
 For example:
 
 ```bicep
-resource vnet 'Microsoft.Network/virtualNetworks@2022-01-01' = {
-  name: 'vnet-01'
+resource vnet 'Microsoft.Network/virtualNetworks@2023-05-01' = {
+  name: name
   location: location
   properties: {
     addressSpace: {
@@ -131,7 +131,7 @@ To deploy Virtual Networks with a subnet sub-resource that pass this rule:
 For example:
 
 ```bicep
-resource bastionSubnet 'Microsoft.Network/virtualNetworks/subnets@2022-01-01' = {
+resource bastionSubnet 'Microsoft.Network/virtualNetworks/subnets@2023-05-01' = {
   name: 'AzureBastionSubnet'
   parent: vnet
   properties: {

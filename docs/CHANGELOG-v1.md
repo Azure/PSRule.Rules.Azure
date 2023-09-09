@@ -32,6 +32,10 @@ What's changed since pre-release v1.30.0-B0047:
 - Bug fixes:
   - Fixed false positive with `Azure.Storage.SecureTransfer` on new API versions by @BernieWhite.
     [#2414](https://github.com/Azure/PSRule.Rules.Azure/issues/2414)
+  - Fixed false positive with `Azure.VNET.LocalDNS` for DNS server addresses out of local scope by @BernieWhite.
+    [#2370](https://github.com/Azure/PSRule.Rules.Azure/issues/2370)
+    - This bug fix introduces a configuration option to flag when DNS from an Identity subscription is used.
+    - Set `AZURE_VNET_DNS_WITH_IDENTITY` to `true` when using an Identity subscription for DNS.
 
 ## v1.30.0-B0047 (pre-release)
 
