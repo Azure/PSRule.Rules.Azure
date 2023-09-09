@@ -10,7 +10,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.S
 
 ## SYNOPSIS
 
-VNETs should have at least two DNS servers assigned.
+Virtual networks (VNETs) should have at least two DNS servers assigned.
 
 ## DESCRIPTION
 
@@ -35,8 +35,8 @@ For example:
 ```json
 {
   "type": "Microsoft.Network/virtualNetworks",
-  "apiVersion": "2022-05-01",
-  "name": "vnet-01",
+  "apiVersion": "2023-05-01",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
     "addressSpace": {
@@ -64,8 +64,8 @@ To deploy Virtual Networks that pass this rule:
 For example:
 
 ```bicep
-resource virtualnetwork01 'Microsoft.Network/virtualNetworks@2022-05-01' = {
-  name: 'vnet-01'
+resource vnet 'Microsoft.Network/virtualNetworks@2023-05-01' = {
+  name: name
   location: location
   properties: {
     addressSpace: {

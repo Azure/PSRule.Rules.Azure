@@ -17,7 +17,7 @@ For details of setting configuration options see [PSRule options][1].
 
 The following configurations options are available for use:
 
-- [Azure_AKSMinimumVersion](#azure_aksminimumversion)
+- [AZURE_AKS_CLUSTER_MINIMUM_VERSION](#azure_aks_cluster_minimum_version)
 - [Azure_AKSNodeMinimumMaxPods](#azure_aksnodeminimummaxpods)
 - [Azure_AllowedRegions](#azure_allowedregions)
 - [Azure_MinimumCertificateLifetime](#azure_minimumcertificatelifetime)
@@ -33,7 +33,7 @@ The following configurations options are available for use:
 
   [1]: https://aka.ms/ps-rule/options
 
-### Azure_AKSMinimumVersion
+### AZURE_AKS_CLUSTER_MINIMUM_VERSION
 
 This configuration option determines the minimum version of Kubernetes for AKS clusters and node pools.
 Rules that check the Kubernetes version fail when the version is older than the version specified.

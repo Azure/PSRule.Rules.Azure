@@ -284,8 +284,8 @@ AZR-000260 | [Azure.VM.PPGName](Azure.VM.PPGName.md) | Proximity Placement Group
 AZR-000261 | [Azure.VMSS.Name](Azure.VMSS.Name.md) | Virtual Machine Scale Set (VMSS) names should meet naming requirements. | GA
 AZR-000262 | [Azure.VMSS.ComputerName](Azure.VMSS.ComputerName.md) | Virtual Machine Scale Set (VMSS) computer name should meet naming requirements. | GA
 AZR-000263 | [Azure.VNET.UseNSGs](Azure.VNET.UseNSGs.md) | Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned. | GA
-AZR-000264 | [Azure.VNET.SingleDNS](Azure.VNET.SingleDNS.md) | VNETs should have at least two DNS servers assigned. | GA
-AZR-000265 | [Azure.VNET.LocalDNS](Azure.VNET.LocalDNS.md) | Virtual networks (VNETs) should use Azure local DNS servers. | GA
+AZR-000264 | [Azure.VNET.SingleDNS](Azure.VNET.SingleDNS.md) | Virtual networks (VNETs) should have at least two DNS servers assigned. | GA
+AZR-000265 | [Azure.VNET.LocalDNS](Azure.VNET.LocalDNS.md) | Virtual networks (VNETs) should use DNS servers deployed within the same Azure region. | GA
 AZR-000266 | [Azure.VNET.PeerState](Azure.VNET.PeerState.md) | VNET peering connections must be connected. | GA
 AZR-000267 | [Azure.VNET.SubnetName](Azure.VNET.SubnetName.md) | Subnet names should meet naming requirements. | GA
 AZR-000268 | [Azure.VNET.Name](Azure.VNET.Name.md) | Virtual Network (VNET) names should meet naming requirements. | GA

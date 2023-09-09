@@ -82,7 +82,7 @@ function global:HasPeerNetwork {
         if ($PSRule.TargetType -ne 'Microsoft.Network/virtualNetworks') {
             return $False;
         }
-        $peers = $TargetObject.Properties.virtualNetworkPeerings;
+        $peers = $TargetObject.properties.virtualNetworkPeerings;
         if ($Null -eq $peers) {
             return $False;
         }
