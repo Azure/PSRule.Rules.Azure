@@ -4,6 +4,7 @@
 @{
     MinTLSVersion = "Minimum TLS version is set to {0}."
     ResourceNotTagged = "The resource is not tagged."
+    LocationNotAllowed = "The location '{0}' is not in the allowed set of resource locations."
     TcpHealthProbe = "The health probe ({0}) is using TCP."
     RootHttpProbePath = "The health probe ({0}) is using '{1}'."
     AKSVersion = "The Kubernetes version is v{0}."

@@ -30,6 +30,7 @@ To locate any configurations, search for the old option names within your Infras
 New name                                  | Old name                             | Available from
 --------                                  | --------                             | --------------
 `AZURE_AKS_CLUSTER_MINIMUM_VERSION`       | `Azure_AKSMinimumVersion`            | :octicons-milestone-24: v1.12.0
+`AZURE_RESOURCE_ALLOWED_LOCATIONS`        | `Azure_AllowedRegions`               | :octicons-milestone-24: v1.30.0
 
 To update your configuration, use the new name instead.
 
@@ -54,7 +55,7 @@ To update your configuration, use the new name instead.
 
     ```bash
     # Bash: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.25.6
-    export PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION=1.25.6
+    export PSRULE_CONFIGURATION_AZURE_AKS_CLUSTER_MINIMUM_VERSION="1.25.6"
     ```
 
 === "GitHub Actions"
