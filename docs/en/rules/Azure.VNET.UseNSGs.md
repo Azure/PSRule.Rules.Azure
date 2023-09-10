@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-09-10
 severity: Critical
 pillar: Security
 category: Network segmentation
@@ -147,10 +148,11 @@ Set-AzVirtualNetworkSubnetConfig -Name '<subnet>' -VirtualNetwork $vnet -Address
 
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
-- [Network Security Best Practices](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
-- [Azure Firewall FAQ](https://docs.microsoft.com/azure/firewall/firewall-faq#are-network-security-groups-nsgs-supported-on-the-azure-firewall-subnet)
-- [Forced tunneling configuration](https://docs.microsoft.com/azure/firewall/forced-tunneling#forced-tunneling-configuration)
-- [Azure Route Server FAQ](https://docs.microsoft.com/azure/route-server/route-server-faq#can-i-associate-a-network-security-group-nsg-to-the-routeserversubnet)
-- [Azure Dedicated HSM networking](https://docs.microsoft.com/azure/dedicated-hsm/networking#subnets)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
+- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/well-architected/security/design-network-segmentation)
+- [Network Security Best Practices](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
+- [Azure Firewall FAQ](https://learn.microsoft.com/azure/firewall/firewall-faq#are-network-security-groups--nsgs--supported-on-the-azurefirewallsubnet)
+- [Forced tunneling configuration](https://learn.microsoft.com/azure/firewall/forced-tunneling#forced-tunneling-configuration)
+- [Azure Route Server FAQ](https://learn.microsoft.com/azure/route-server/route-server-faq#can-i-associate-a-network-security-group-nsg-to-the-routeserversubnet)
+- [Azure Dedicated HSM networking](https://learn.microsoft.com/azure/dedicated-hsm/networking#subnets)
+- [Azure VNET deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks?pivots=deployment-language-bicep)
+- [Azure NSG deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)

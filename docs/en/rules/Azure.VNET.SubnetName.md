@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-09-10
 severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
@@ -34,5 +35,5 @@ This rule does not check if subnet names are unique.
 
 ## LINKS
 
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Repeatable infrastructure](https://learn.microsoft.com/azure/well-architected/devops/automation-infrastructure)
+- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)

@@ -88,7 +88,7 @@ resource adx 'Microsoft.Kusto/clusters@2021-08-27' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Managed identities overview](https://docs.microsoft.com/azure/data-explorer/managed-identities-overview)
 - [Configure managed identities for your Azure Data Explorer cluster](https://docs.microsoft.com/azure/data-explorer/configure-managed-identities-cluster)
 - [Managed identities for Azure resources](https://docs.microsoft.com/azure/data-explorer/security#managed-identities-for-azure-resources)

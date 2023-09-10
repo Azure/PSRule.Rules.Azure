@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: Front Door
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.ManagedIdentity/
 ---
@@ -95,6 +95,6 @@ If you only use Azure Front Door (AFD) managed certificates for custom domains, 
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Managed identities for Azure Front Door](https://learn.microsoft.com/azure/frontdoor/managed-identity)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cdn/profiles#managedserviceidentity)

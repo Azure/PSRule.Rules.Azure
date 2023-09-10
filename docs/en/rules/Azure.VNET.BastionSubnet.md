@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-09-10
 severity: Important
 pillar: Reliability
 category: Best practices
@@ -142,8 +143,9 @@ resource bastionSubnet 'Microsoft.Network/virtualNetworks/subnets@2023-05-01' = 
 
 ## LINKS
 
-- [Best practices](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices)
+- [Best practices](https://learn.microsoft.com/azure/well-architected/resiliency/design-best-practices)
 - [Plan for virtual machine remote access](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-virtual-machine-remote-access)
 - [Hub-spoke network topology in Azure](https://learn.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)
+- [What is Azure Bastion?](https://learn.microsoft.com/azure/bastion/bastion-overview)
 - [Azure VNET deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
 - [Azure subnet deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)

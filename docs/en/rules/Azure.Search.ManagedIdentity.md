@@ -2,7 +2,7 @@
 reviewed: 2023-07-02
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: Cognitive Search
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.ManagedIdentity/
 ---
@@ -88,7 +88,7 @@ resource search 'Microsoft.Search/searchServices@2022-09-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [What are managed identities for Azure resources?](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 - [Connect a search service to other Azure resources using a managed identity](https://learn.microsoft.com/azure/search/search-howto-managed-identities-data-sources)
 - [Make indexer connections to Azure Storage as a trusted service](https://learn.microsoft.com/azure/search/search-indexer-howto-access-trusted-service-exception)

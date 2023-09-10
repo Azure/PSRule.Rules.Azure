@@ -78,7 +78,7 @@ resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [IM-1: Use centralized identity and authentication system](https://docs.microsoft.com/security/benchmark/azure/security-controls-v3-identity-management#im-1-use-centralized-identity-and-authentication-system)
 - [Authentication and authorization with Azure Active Directory](https://docs.microsoft.com/azure/event-grid/authenticate-with-active-directory)
 - [Disable key and shared access signature authentication](https://docs.microsoft.com/azure/event-grid/authenticate-with-active-directory#disable-key-and-shared-access-signature-authentication)

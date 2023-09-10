@@ -100,6 +100,6 @@ resource service 'Microsoft.SignalRService/signalR@2021-10-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Managed identities for Azure SignalR Service](https://docs.microsoft.com/azure/azure-signalr/howto-use-managed-identity)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.signalrservice/signalr)

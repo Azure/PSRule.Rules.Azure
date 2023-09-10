@@ -81,6 +81,6 @@ resource ns 'Microsoft.ServiceBus/namespaces@2021-11-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Service Bus authentication and authorization](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-authentication-and-authorization)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.servicebus/namespaces)

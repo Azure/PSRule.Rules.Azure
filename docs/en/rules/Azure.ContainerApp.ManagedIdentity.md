@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.ManagedIdentity/
 ---
@@ -79,6 +79,6 @@ Using managed identities in scale rules isn't supported.
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Managed identities in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/managed-identity)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#managedserviceidentity)

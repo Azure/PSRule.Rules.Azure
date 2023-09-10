@@ -2,7 +2,7 @@
 reviewed: 2022-05-14
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: Automation Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.ManagedIdentity/
 ---
@@ -93,7 +93,7 @@ resource automation_account_name_resource 'Microsoft.Automation/automationAccoun
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Managed identities](https://docs.microsoft.com/azure/automation/automation-security-overview#managed-identities)
 - [Using a system-assigned managed identity for an Azure Automation account](https://docs.microsoft.com/azure/automation/enable-managed-identity-for-automation)
 - [Using a user-assigned managed identity for an Azure Automation account](https://docs.microsoft.com/azure/automation/add-user-assigned-identity)
