@@ -89,6 +89,7 @@
     "NOTIN",
     "NSGs",
     "OWASP",
+    "Peerings",
     "POLICYDEFINITIONID",
     "POLICYRULE",
     "pricings",
@@ -139,5 +140,8 @@
     "main",
     "release/*"
   ],
-  "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true
+  "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+  "cSpell.enableFiletypes": [
+    "bicep"
+  ]
 }

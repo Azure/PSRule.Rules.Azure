@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: SQL Managed Instance
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQLMI.ManagedIdentity/
 ---
@@ -74,10 +74,11 @@ resource managedInstance 'Microsoft.Sql/managedInstances@2022-05-01-preview' = {
 
 ## NOTES
 
-To grant permissions to access Microsoft Graph through an SMI or a UMI, you need to use PowerShell. You can't grant these permissions by using the Azure portal.
+To grant permissions to access Microsoft Graph through an SMI or a UMI, you need to use PowerShell.
+You can't grant these permissions by using the Azure portal.
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Managed identities in Azure AD for Azure SQL Managed Instance](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-user-assigned-managed-identity)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/managedinstances)

@@ -1,7 +1,8 @@
 ---
+reviewed: 2023-09-10
 severity: Important
 pillar: Operational Excellence
-category: Infrastructure provisioning
+category: Repeatable infrastructure
 resource: Public IP address
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.MigrateStandard/
 ---
@@ -10,13 +11,14 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Public
 
 ## SYNOPSIS
 
-Use the Standard SKU for Public IP addresses. Basic SKU for Public IP addresses will be retired.
+Use the Standard SKU for Public IP addresses as the Basic SKU will be retired.
 
 ## DESCRIPTION
 
-The Basic SKU for Public IP addresses will be retired on September 30, 2025. To avoid service disruption, migrate to Standard SKU for Public IP addresses.
+The Basic SKU for Public IP addresses will be retired on September 30, 2025.
+To avoid service disruption, migrate to Standard SKU for Public IP addresses.
 
-The Standard SKU aditionally offers security by default and supports redundancy.
+The Standard SKU additionally offers security by default and supports redundancy.
 
 ## RECOMMENDATION
 
@@ -26,7 +28,7 @@ Migrate Basic SKU for Public IP addresses to the Standard SKU before retirement 
 
 ### Configure with Azure template
 
-To deploy Public IP adresses that pass this rule:
+To deploy Public IP addresses that pass this rule:
 
 - Set `sku.name` to `Standard`.
 
@@ -35,40 +37,58 @@ For example:
 ```json
 {
   "type": "Microsoft.Network/publicIPAddresses",
-  "apiVersion": "2023-04-01",
+  "apiVersion": "2023-05-01",
   "name": "[parameters('name')]",
-  "location": "[resourceGroup().location]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard",
+    "tier": "Regional"
+  },
   "properties": {
-    "sku": {
-      "name": "Standard",
-      "tier": "Regional"
-    }
-  }
+    "publicIPAddressVersion": "IPv4",
+    "publicIPAllocationMethod": "Static",
+    "idleTimeoutInMinutes": 4
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
 }
 ```
 
 ### Configure with Bicep
 
-To deploy Public IP adresses that pass this rule:
+To deploy Public IP addresses that pass this rule:
 
 - Set `sku.name` to `Standard`.
 
 For example:
 
 ```bicep
-resource pip 'Microsoft.Network/publicIPAddresses@2023-04-01' = {
+resource pip 'Microsoft.Network/publicIPAddresses@2023-05-01' = {
   name: name
-  location: resourceGroup().location
+  location: location
   sku: {
     name: 'Standard'
     tier: 'Regional'
   }
+  properties: {
+    publicIPAddressVersion: 'IPv4'
+    publicIPAllocationMethod: 'Static'
+    idleTimeoutInMinutes: 4
+  }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
 }
 ```
 
 ## LINKS
 
-- [Infrastructure provisioning](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [Infrastructure provisioning](https://learn.microsoft.com/azure/well-architected/devops/automation-infrastructure)
 - [Basic SKU will be retired](https://azure.microsoft.com/updates/upgrade-to-standard-sku-public-ip-addresses-in-azure-by-30-september-2025-basic-sku-will-be-retired)
 - [Migrate a Basic SKU Public IP address to Standard SKU](https://learn.microsoft.com/azure/virtual-network/ip-services/public-ip-basic-upgrade-guidance)
 - [Standard vs Basic SKU comparison](https://learn.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#sku)

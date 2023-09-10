@@ -2,12 +2,12 @@
 reviewed: 2022-07-26
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: Cognitive Services
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cognitive.ManagedIdentity/
 ---
 
-# Use Managed Identity for Cogitive Services accounts
+# Use Managed Identity for Cognitive Services accounts
 
 ## SYNOPSIS
 
@@ -27,7 +27,7 @@ Azure automatically generates tokens and performs rotation.
 
 ## RECOMMENDATION
 
-Consider configuring a managed identity for each Cogitive Services account.
+Consider configuring a managed identity for each Cognitive Services account.
 
 ## EXAMPLES
 
@@ -95,6 +95,6 @@ resource account 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Azure Policy built-in policy definitions for Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/policy-reference)
 - [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts)

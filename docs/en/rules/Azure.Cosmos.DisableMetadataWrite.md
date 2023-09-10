@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Identity and access management
+category: Authentication
 resource: Cosmos DB
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.DisableMetadataWrite/
 ---
@@ -94,7 +94,7 @@ resource dbAccount 'Microsoft.DocumentDB/databaseAccounts@2021-06-15' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Restrict user access to data operations in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data)
 - [Secure access to data in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data)
 - [How does Azure Cosmos DB secure my database?](https://docs.microsoft.com/azure/cosmos-db/database-security#how-does-azure-cosmos-db-secure-my-database)

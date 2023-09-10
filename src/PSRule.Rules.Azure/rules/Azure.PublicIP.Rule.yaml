@@ -15,8 +15,9 @@ metadata:
   name: Azure.PublicIP.StandardSKU
   ref: AZR-000158
   tags:
-    release: 'GA'
-    ruleSet: '2021_12'
+    release: GA
+    ruleSet: 2021_12
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.Network/publicIPAddresses
@@ -25,7 +26,7 @@ spec:
     equals: Standard
 
 ---
-# Synopsis: Use the Standard SKU for Public IP addresses. Basic SKU for Public IP addresses will be retired.
+# Synopsis: Use the Standard SKU for Public IP addresses as the Basic SKU will be retired.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:

@@ -1,7 +1,8 @@
 ---
+reviewed: 2023-09-10
 severity: Important
 pillar: Reliability
-category: Design
+category: Requirements
 resource: Public IP address
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.StandardSKU/
 ---
@@ -14,11 +15,20 @@ Public IP addresses should be deployed with Standard SKU for production workload
 
 ## DESCRIPTION
 
-Standard Public IPs are designed with the "secure by default" model and are closed to inbound traffic when uses as a frontend.
-Network security groups are required to allow inbound traffic.
-For example, a network security group can be attached on the NIC of a virtual machine with a Standard Public IP address attached.
-It also enables zone-redundancy(all three zones), zonal(constrained to a single zone) or no-zone(no pre-selected availability zone).
-It can also choose routing preferences between Microsoft global network and the internet.
+Public IP addresses allow Internet resources to communicate inbound to Azure resources.
+Currently two SKUs are supported: Basic and Standard.
+
+However, the Basic SKU for Public IP addresses will be retired on September 30, 2025.
+
+The Standard SKU additionally offers security and redundancy improvements over the Basic SKU.
+Including:
+
+- Secure by default model and be closed to inbound traffic when used as a frontend.
+  Network security groups are required to allow inbound traffic.
+- Support for zone-redundancy and zonal deployments at creation.
+  Zone-redundancy should mach the zone-redundancy of the resource it is attached to.
+- Have an adjustable inbound originated flow idle timeout.
+- More granular control of how traffic is routed between Azure and the Internet.
 
 ## RECOMMENDATION
 
@@ -36,26 +46,24 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Network/publicIPAddresses",
-    "apiVersion": "2020-11-01",
-    "name": "[parameters('publicIPAddresses_test_ip_name')]",
-    "location": "australiaeast",
-    "sku": {
-        "name": "Standard",
-        "tier": "Regional"
-    },
-    "zones": [
-        "2",
-        "3",
-        "1"
-    ],
-    "properties": {
-        "ipAddress": "[parameters('publicIPAddresses_ip_address')]",
-        "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Static",
-        "idleTimeoutInMinutes": 4,
-        "ipTags": []
-    }
+  "type": "Microsoft.Network/publicIPAddresses",
+  "apiVersion": "2023-05-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard",
+    "tier": "Regional"
+  },
+  "properties": {
+    "publicIPAddressVersion": "IPv4",
+    "publicIPAllocationMethod": "Static",
+    "idleTimeoutInMinutes": 4
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
 }
 ```
 
@@ -70,31 +78,29 @@ For example:
 For example:
 
 ```bicep
-resource publicIPAddresses_resource 'Microsoft.Network/publicIPAddresses@2020-11-01' = {
+resource pip 'Microsoft.Network/publicIPAddresses@2023-05-01' = {
   name: name
   location: location
   sku: {
     name: 'Standard'
     tier: 'Regional'
   }
-  zones: [
-    '2'
-    '3'
-    '1'
-  ]
   properties: {
-    ipAddress: ipAddress
     publicIPAddressVersion: 'IPv4'
     publicIPAllocationMethod: 'Static'
     idleTimeoutInMinutes: 4
-    ipTags: []
   }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
 }
 ```
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses?tabs=json)
-- [Standard Public IP addresses](https://docs.microsoft.com/azure/virtual-network/public-ip-addresses#standard)
-- [Load Balancer and Availability Zones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
-- [Meet application platform requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
+- [Meet application platform requirements](https://learn.microsoft.com/azure/well-architected/resiliency/design-requirements#meet-application-platform-requirements)
+- [Standard Public IP addresses](https://learn.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#sku)
+- [Load Balancer and Availability Zones](https://learn.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/publicipaddresses)

@@ -43,19 +43,19 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.SignalRService/webPubSub",
-    "apiVersion": "2021-10-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Standard_S1"
-    },
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "disableLocalAuth": true
-    }
+  "type": "Microsoft.SignalRService/webPubSub",
+  "apiVersion": "2023-02-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+      "name": "Standard_S1"
+  },
+  "identity": {
+      "type": "SystemAssigned"
+  },
+  "properties": {
+      "disableLocalAuth": true
+  }
 }
 ```
 
@@ -69,7 +69,7 @@ To deploy services that pass this rule:
 For example:
 
 ```bicep
-resource service 'Microsoft.SignalRService/webPubSub@2021-10-01' = {
+resource service 'Microsoft.SignalRService/webPubSub@2023-02-01' = {
   name: name
   location: location
   sku: {
@@ -86,7 +86,7 @@ resource service 'Microsoft.SignalRService/webPubSub@2021-10-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-identity-based-authentication)
+- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
 - [Managed identities for Azure Web PubSub Service](https://learn.microsoft.com/azure/azure-web-pubsub/howto-use-managed-identity)
 - [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-web-pubsub-security-baseline#im-1-use-centralized-identity-and-authentication-system)
 - [IM-3: Manage application identities securely and automatically](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-web-pubsub-security-baseline#im-3-manage-application-identities-securely-and-automatically)

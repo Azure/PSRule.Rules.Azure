@@ -101,7 +101,8 @@ Rule 'Rule.NonCultureMSDocs' -Type 'PSRule.Rules.Rule' -If { $Assert.Greater($Ta
 # Synopsis: Rules must reference the Azure Well-Architected Framework.
 Rule 'Rule.WAFReference' -Type 'PSRule.Rules.Rule' -Level Warning {
     $references = @($TargetObject.Info.Links | Where-Object {
-        $_.Uri -like 'https://learn.microsoft.com/azure/architecture/framework/*'
+        $_.Uri -like 'https://learn.microsoft.com/azure/architecture/framework/*' -or
+        $_.Uri -like 'https://learn.microsoft.com/azure/well-architected/*'
     })
     $Assert.GreaterOrEqual($references, '.', 1);
 }

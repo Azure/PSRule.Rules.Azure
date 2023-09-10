@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Cost Optimization
-category: Resource usage
+category: Principles
 resource: Public IP address
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.IsAttached/
 ms-content-id: 9222ec9f-7eea-4301-bee6-3022c9008874
@@ -11,7 +11,7 @@ ms-content-id: 9222ec9f-7eea-4301-bee6-3022c9008874
 
 ## SYNOPSIS
 
-Public IP address should be attached or removed.
+Public IP addresses should be attached or cleaned up if not in use.
 
 ## DESCRIPTION
 
@@ -23,5 +23,6 @@ Consider removing Public IP addresses that are no longer required reduce complex
 
 ## LINKS
 
-- [Principles of cost optimization](https://learn.microsoft.com/azure/architecture/framework/cost/overview)
+- [Cost optimization design principles](https://learn.microsoft.com/azure/well-architected/cost/principles)
 - [Public IP address pricing](https://azure.microsoft.com/pricing/details/ip-addresses/)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
