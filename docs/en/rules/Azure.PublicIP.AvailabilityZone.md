@@ -22,6 +22,70 @@ Furthermore, this ensures Public Standard Load balancer frontend IPs using a zon
 
 Consider using zone-redundant Public IP addresses deployed with Standard SKU.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To configure zone-redundancy for a Public IP address.
+
+- Set `sku.name` to `Standard`.
+- Set `zones` to `["1", "2", "3"]`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/publicIPAddresses",
+  "apiVersion": "2023-05-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard",
+    "tier": "Regional"
+  },
+  "properties": {
+    "publicIPAddressVersion": "IPv4",
+    "publicIPAllocationMethod": "Static",
+    "idleTimeoutInMinutes": 4
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
+}
+```
+
+### Configure with Bicep
+
+To configure zone-redundancy for a Public IP address.
+
+- Set `sku.name` to `Standard`.
+- Set `zones` to `['1', '2', '3']`.
+
+For example:
+
+```bicep
+resource pip 'Microsoft.Network/publicIPAddresses@2023-05-01' = {
+  name: name
+  location: location
+  sku: {
+    name: 'Standard'
+    tier: 'Regional'
+  }
+  properties: {
+    publicIPAddressVersion: 'IPv4'
+    publicIPAllocationMethod: 'Static'
+    idleTimeoutInMinutes: 4
+  }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
+}
+```
+
 ## NOTES
 
 This rule is not applicable for public IP addresses used for Azure Bastion.
@@ -42,76 +106,8 @@ configuration:
   AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
 ```
 
-## EXAMPLES
-
-### Configure with Azure template
-
-To configure zone-redundancy for a Public IP address.
-
-- Set `sku.name` to `Standard`.
-- Set `zones` to `["1", "2", "3"]`.
-
-For example:
-
-```json
-{
-    "type": "Microsoft.Network/publicIPAddresses",
-    "apiVersion": "2020-11-01",
-    "name": "[parameters('publicIPAddresses_test_ip_name')]",
-    "location": "australiaeast",
-    "sku": {
-        "name": "Standard",
-        "tier": "Regional"
-    },
-    "zones": [
-        "2",
-        "3",
-        "1"
-    ],
-    "properties": {
-        "ipAddress": "[parameters('publicIPAddresses_ip_address')]",
-        "publicIPAddressVersion": "IPv4",
-        "publicIPAllocationMethod": "Static",
-        "idleTimeoutInMinutes": 4,
-        "ipTags": []
-    }
-}
-```
-
-### Configure with Bicep
-
-To configure zone-redundancy for a Public IP address.
-
-- Set `sku.name` to `Standard`.
-- Set `zones` to `['1', '2', '3']`.
-
-For example:
-
-```bicep
-resource publicIPAddresses_resource 'Microsoft.Network/publicIPAddresses@2020-11-01' = {
-  name: name
-  location: location
-  sku: {
-    name: 'Standard'
-    tier: 'Regional'
-  }
-  zones: [
-    '2'
-    '3'
-    '1'
-  ]
-  properties: {
-    ipAddress: ipAddress
-    publicIPAddressVersion: 'IPv4'
-    publicIPAllocationMethod: 'Static'
-    idleTimeoutInMinutes: 4
-    ipTags: []
-  }
-}
-```
-
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/publicipaddresses?tabs=json)
-- [Load Balancer and Availability Zones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
-- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [Use zone-aware services](https://learn.microsoft.com/azure/well-architected/resiliency/design-best-practices#use-zone-aware-services)
+- [Load Balancer and Availability Zones](https://learn.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/publicipaddresses)

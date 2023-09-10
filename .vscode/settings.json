@@ -140,5 +140,8 @@
     "main",
     "release/*"
   ],
-  "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true
+  "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+  "cSpell.enableFiletypes": [
+    "bicep"
+  ]
 }

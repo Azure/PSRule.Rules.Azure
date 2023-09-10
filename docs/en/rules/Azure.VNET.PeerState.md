@@ -124,7 +124,7 @@ This rule applies when analyzing resources deployed to Azure (in-flight).
 
 ## LINKS
 
-- [Monitoring operations of cloud applications](https://learn.microsoft.com/en-gb/azure/well-architected/devops/checklist)
+- [Monitoring operations of cloud applications](https://learn.microsoft.com/azure/well-architected/devops/checklist)
 - [Virtual network peering](https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview)
 - [Create, change, or delete a virtual network peering](https://learn.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)
 - [Networking limits](https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)

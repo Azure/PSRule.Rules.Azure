@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Tagging and resource naming
+category: Repeatable infrastructure
 resource: Public IP address
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.DNSLabel/
 ---
@@ -34,4 +34,6 @@ This rule does not check if Public IP domain name labels are unique.
 
 ## LINKS
 
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Repeatable infrastructure](https://learn.microsoft.com/azure/well-architected/devops/automation-infrastructure)
+- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/publicipaddresses)
