@@ -23,7 +23,7 @@ namespace PSRule.Rules.Azure.Runtime
         /// <summary>
         /// Create a singleton context for running within PSRule.
         /// </summary>
-        public static IService CreateService(string minimum, int timeout)
+        public static IRuntimeService CreateService(string minimum, int timeout)
         {
             return new RuntimeService(minimum, timeout);
         }

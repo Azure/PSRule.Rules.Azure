@@ -14,7 +14,7 @@ Export-PSRuleConvention 'Azure.DeprecatedOptions' -Initialize {
 
     $allowedRegions = $Configuration.GetValueOrDefault('Azure_AllowedRegions', $Null);
     if ($Null -ne $allowedRegions) {
-        # Write-Warning -Message $LocalizedData.AKSMinimumVersionReplace;
+        Write-Warning -Message $LocalizedData.AzureAllowedRegionsReplace;
     }
 }
 
