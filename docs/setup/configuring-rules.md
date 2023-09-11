@@ -322,19 +322,22 @@ configuration:
   AZURE_COSMOS_DEFENDER_PER_ACCOUNT: true
 ```
 
-### Azure_AllowedRegions
+### AZURE_RESOURCE_ALLOWED_LOCATIONS
+
+:octicons-milestone-24: v1.30.0
+
+> Applies to [Azure.Resource.AllowedRegions](../en/rules/Resource.AllowedRegions.md).
 
 This configuration option specifies a list of allowed locations that resources can be deployed to.
 Rules that check the location of Azure resources fail when a resource or resource group is created in a different region.
 
-By default, `Azure_AllowedRegions` is not configured.
-The rule `Azure.Resource.AllowedRegions` is skipped when no allowed locations are configured.
+By default, `AZURE_RESOURCE_ALLOWED_LOCATIONS` is not configured.
 
 Syntax:
 
 ```yaml
 configuration:
-  Azure_AllowedRegions: array # An array of regions
+  AZURE_RESOURCE_ALLOWED_LOCATIONS: array # An array of regions
 ```
 
 Default:
@@ -342,17 +345,28 @@ Default:
 ```yaml
 # YAML: The default Azure_AllowedRegions configuration option
 configuration:
-  Azure_AllowedRegions: []
+  AZURE_RESOURCE_ALLOWED_LOCATIONS: []
 ```
 
 Example:
 
 ```yaml
-# YAML: Set the Azure_AllowedRegions configuration option to Australia East, Australia South East
+# YAML: Set the AZURE_RESOURCE_ALLOWED_LOCATIONS configuration option to Australia East, Australia South East
 configuration:
-  Azure_AllowedRegions:
+  AZURE_RESOURCE_ALLOWED_LOCATIONS:
   - australiaeast
   - australiasoutheast
+```
+
+If you configure the `AZURE_RESOURCE_ALLOWED_LOCATIONS` configuration value,
+also consider setting `AZURE_RESOURCE_GROUP` the configuration value to when resources use the location of the resource group.
+
+For example:
+
+```yaml
+configuration:
+  AZURE_RESOURCE_GROUP:
+    location: australiaeast
 ```
 
 ### Azure_MinimumCertificateLifetime

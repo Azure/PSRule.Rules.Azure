@@ -13,13 +13,11 @@ Rule 'Azure.Resource.UseTags' -Ref 'AZR-000166' -With 'Azure.Resource.SupportsTa
     $Assert.Create(($TargetObject.Tags.PSObject.Members | Where-Object { $_.MemberType -eq 'NoteProperty' }) -ne $Null)
 }
 
-# Synopsis:Resources should be deployed to allowed regions.
-Rule 'Azure.Resource.AllowedRegions' -Ref 'AZR-000167' -If { ($Null -ne $Configuration.Azure_AllowedRegions) -and ($Configuration.Azure_AllowedRegions.Length -gt 0) -and (SupportsRegions) -and $PSRule.TargetType -ne 'Microsoft.Resources/deployments' } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $region = @($Configuration.Azure_AllowedRegions);
-    foreach ($r in $Configuration.Azure_AllowedRegions) {
-        $region += ($r -replace ' ', '')
-    }
-    $Assert.In($TargetObject, 'location', $region);
+# Synopsis: Resources should be deployed to allowed regions.
+Rule 'Azure.Resource.AllowedRegions' -Ref 'AZR-000167' -If { (SupportsRegions) -and $PSRule.TargetType -ne 'Microsoft.Resources/deployments' -and $Assert.HasFieldValue($TargetObject, 'location').Result } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+    $context = $PSRule.GetService('Azure.Context');
+    $location = $TargetObject.location;
+    $Assert.Create($context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, $location);
 }
 
 # Synopsis: Use Resource Group naming requirements

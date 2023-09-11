@@ -11,6 +11,11 @@ Export-PSRuleConvention 'Azure.DeprecatedOptions' -Initialize {
     if ($Null -ne $aksMinimumVersion) {
         Write-Warning -Message $LocalizedData.AKSMinimumVersionReplace;
     }
+
+    $allowedRegions = $Configuration.GetValueOrDefault('Azure_AllowedRegions', $Null);
+    if ($Null -ne $allowedRegions) {
+        Write-Warning -Message $LocalizedData.AzureAllowedRegionsReplace;
+    }
 }
 
 # Synopsis: Create a context singleton.
@@ -19,7 +24,13 @@ Export-PSRuleConvention 'Azure.Context' -Initialize {
     $minimum = $Configuration.GetValueOrDefault('AZURE_BICEP_MINIMUM_VERSION', '0.4.451');
     $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
     $check = $Configuration.GetBoolOrDefault('AZURE_BICEP_CHECK_TOOL', $False);
+    $allowedRegions = @($Configuration.GetValueOrDefault('Azure_AllowedRegions', $Configuration.AZURE_RESOURCE_ALLOWED_LOCATIONS));
     $service = [PSRule.Rules.Azure.Runtime.Helper]::CreateService($minimum, $timeout);
+
+    if ($allowedRegions.Length -gt 0) {
+        $service.WithAllowedLocations($allowedRegions);
+    }
+
     if ($check) {
         Write-Verbose "[Azure.Context] -- Checking Bicep CLI.";
         $version = [PSRule.Rules.Azure.Runtime.Helper]::GetBicepVersion($service);

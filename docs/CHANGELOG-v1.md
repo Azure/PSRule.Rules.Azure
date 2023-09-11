@@ -17,6 +17,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   If you have this option configured, please update it to `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
   Support for `Azure_AKSMinimumVersion` will be removed in v2.
   See [upgrade notes][1] for more information.
+- The configuration option `Azure_AllowedRegions` is replaced with `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
+  If you have this option configured, please update it to `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
+  Support for `Azure_AllowedRegions` will be removed in v2.
+  See [upgrade notes][1] for more information.
 - The `SupportsTag` PowerShell function has been replaced with the `Azure.Resource.SupportsTags` selector.
   Update PowerShell rules to use the `Azure.Resource.SupportsTags` selector instead.
   Support for the `SupportsTag` function will be removed in v2.
@@ -26,6 +30,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.30.0-B0047:
 
+- General improvements:
+  - **Important change:** Replaced `Azure_AllowedRegions` option with `AZURE_RESOURCE_ALLOWED_LOCATIONS`. [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
+    - For compatibility, if `Azure_AllowedRegions` is set it will be used instead of `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
+    - If only `AZURE_RESOURCE_ALLOWED_LOCATIONS` is set, this value will be used.
+    - The default will be used neither options are configured.
+    - If `Azure_AllowedRegions` is set a warning will be generated until the configuration is removed.
+    - Support for `Azure_AllowedRegions` is deprecated and will be removed in v2.
+    - See [upgrade notes][1] for details.
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.7.2.
     [#2407](https://github.com/Azure/PSRule.Rules.Azure/pull/2407)

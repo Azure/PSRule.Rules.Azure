@@ -23,7 +23,7 @@ namespace PSRule.Rules.Azure.Runtime
         /// <summary>
         /// Create a singleton context for running within PSRule.
         /// </summary>
-        public static IService CreateService(string minimum, int timeout)
+        public static IRuntimeService CreateService(string minimum, int timeout)
         {
             return new RuntimeService(minimum, timeout);
         }
@@ -88,7 +88,7 @@ namespace PSRule.Rules.Azure.Runtime
         }
 
         /// <summary>
-        /// Checks if the value of the expresion is secure, whether by using secure parameters, references to KeyVault, or the ListKeys function.
+        /// Checks if the value of the expression is secure, whether by using secure parameters, references to KeyVault, or the ListKeys function.
         /// </summary>
         public static bool HasSecureValue(string expression, string[] secureParameters)
         {

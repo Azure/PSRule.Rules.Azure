@@ -89,7 +89,7 @@ Describe 'Azure.Resource' -Tag 'Resource' {
             $parameterPath = Join-Path -Path $here -ChildPath 'Resources.Parameters.json';
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Resource.json;
             Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-            $option = New-PSRuleOption -BaselineConfiguration @{ 'Azure_AllowedRegions' = @('region-A') };
+            $option = New-PSRuleOption -BaselineConfiguration @{ 'AZURE_RESOURCE_ALLOWED_LOCATIONS' = @('region-A') };
             $invokeParams = @{
                 Baseline      = 'Azure.All'
                 Module        = 'PSRule.Rules.Azure'
