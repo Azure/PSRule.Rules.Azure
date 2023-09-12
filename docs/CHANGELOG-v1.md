@@ -28,10 +28,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.30.0-B0080 (pre-release)
+
 What's changed since pre-release v1.30.0-B0047:
 
 - General improvements:
-  - **Important change:** Replaced `Azure_AllowedRegions` option with `AZURE_RESOURCE_ALLOWED_LOCATIONS`. [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
+  - **Important change:** Replaced the `Azure_AllowedRegions` option with `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
+    [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
     - For compatibility, if `Azure_AllowedRegions` is set it will be used instead of `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
     - If only `AZURE_RESOURCE_ALLOWED_LOCATIONS` is set, this value will be used.
     - The default will be used neither options are configured.
