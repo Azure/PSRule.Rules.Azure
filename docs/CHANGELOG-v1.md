@@ -28,6 +28,96 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.30.0
+
+What's changed since v1.29.0:
+
+- New features:
+  - Added September 2023 baselines `Azure.GA_2023_09` and `Azure.Preview_2023_09` by @BernieWhite.
+    [#2451](https://github.com/Azure/PSRule.Rules.Azure/issues/2451)
+    - Includes rules released before or during September 2023.
+    - Marked `Azure.GA_2023_06` and `Azure.Preview_2023_06` baselines as obsolete.
+- New rules:
+  - Azure Container Apps:
+    - Check that Container Apps uses a supported API version by @BenjaminEngeset.
+      [#2398](https://github.com/Azure/PSRule.Rules.Azure/issues/2398)
+  - Azure Container Registry:
+    - Check that Container Registries restricts network access by @BenjaminEngeset.
+      [#2423](https://github.com/Azure/PSRule.Rules.Azure/issues/2423)
+    - Check that Container Registries disables anonymous pull access by @BenjaminEngeset.
+      [#2422](https://github.com/Azure/PSRule.Rules.Azure/issues/2422)
+  - Azure Database for MySQL:
+    - Check that Azure AD-only authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
+      [#2227](https://github.com/Azure/PSRule.Rules.Azure/issues/2227)
+  - Azure Firewall:
+    - Check that Azure Firewall polices has configured threat intelligence-based filtering in `alert and deny` mode by @BenjaminEngeset.
+      [#2354](https://github.com/Azure/PSRule.Rules.Azure/issues/2354)
+  - Backup vault:
+    - Check that immutability is configured for Backup vaults by @BenjaminEngeset.
+      [#2387](https://github.com/Azure/PSRule.Rules.Azure/issues/2387)
+  - Front Door:
+    - Check that managed identity for Azure Front Door instances are configured by @BenjaminEngeset.
+      [#2378](https://github.com/Azure/PSRule.Rules.Azure/issues/2378)
+  - Public IP address:
+    - Check that Public IP addresses uses Standard SKU by @BenjaminEngeset.
+      [#2376](https://github.com/Azure/PSRule.Rules.Azure/issues/2376)
+  - Recovery Services vault:
+    - Check that immutability is configured for Recovery Services vaults by @BenjaminEngeset.
+      [#2386](https://github.com/Azure/PSRule.Rules.Azure/issues/2386)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.26.6` by @BernieWhite.
+      [#2404](https://github.com/Azure/PSRule.Rules.Azure/issues/2404)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+    - Promoted `Azure.AKS.LocalAccounts` to GA rule set by @BernieWhite.
+      [#2448](https://github.com/Azure/PSRule.Rules.Azure/issues/2448)
+  - Container App:
+    - Promoted `Azure.ContainerApp.DisableAffinity` to GA rule set by @BernieWhite.
+      [#2455](https://github.com/Azure/PSRule.Rules.Azure/issues/2455)
+- General improvements:
+  - **Important change:** Replaced the `Azure_AllowedRegions` option with `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
+    [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
+    - For compatibility, if `Azure_AllowedRegions` is set it will be used instead of `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
+    - If only `AZURE_RESOURCE_ALLOWED_LOCATIONS` is set, this value will be used.
+    - The default will be used neither options are configured.
+    - If `Azure_AllowedRegions` is set a warning will be generated until the configuration is removed.
+    - Support for `Azure_AllowedRegions` is deprecated and will be removed in v2.
+    - See [upgrade notes][1] for details.
+  - Add source link for rule in docs by @BernieWhite.
+    [#2115](https://github.com/Azure/PSRule.Rules.Azure/issues/2115)
+- Engineering:
+  - Updated resource providers and policy aliases.
+    [#2442](https://github.com/Azure/PSRule.Rules.Azure/pull/2442)
+  - Bump xunit to v2.5.1.
+    [#2436](https://github.com/Azure/PSRule.Rules.Azure/pull/2436)
+  - Bump xunit.runner.visualstudio to v2.5.1.
+    [#2435](https://github.com/Azure/PSRule.Rules.Azure/pull/2435)
+  - Bump Microsoft.NET.Test.Sdk to v17.7.2.
+    [#2407](https://github.com/Azure/PSRule.Rules.Azure/pull/2407)
+  - Bump BenchmarkDotNet to v0.13.8.
+    [#2425](https://github.com/Azure/PSRule.Rules.Azure/pull/2425)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.8.
+    [#2425](https://github.com/Azure/PSRule.Rules.Azure/pull/2425)
+  - Bump Microsoft.CodeAnalysis.NetAnalyzers to v7.0.4.
+    [#2405](https://github.com/Azure/PSRule.Rules.Azure/pull/2405)
+- Bug fixes:
+  - Fixed false positive with `Azure.Storage.SecureTransfer` on new API versions by @BernieWhite.
+    [#2414](https://github.com/Azure/PSRule.Rules.Azure/issues/2414)
+  - Fixed false positive with `Azure.VNET.LocalDNS` for DNS server addresses out of local scope by @BernieWhite.
+    [#2370](https://github.com/Azure/PSRule.Rules.Azure/issues/2370)
+    - This bug fix introduces a configuration option to flag when DNS from an Identity subscription is used.
+    - Set `AZURE_VNET_DNS_WITH_IDENTITY` to `true` when using an Identity subscription for DNS.
+  - Fixed non-resource group rule triggering for a resource group by @BernieWhite.
+    [#2401](https://github.com/Azure/PSRule.Rules.Azure/issues/2401)
+  - Fixed lambda map in map variable by @BernieWhite.
+    [#2410](https://github.com/Azure/PSRule.Rules.Azure/issues/2410)
+  - Fixed `Azure.AKS.Version` by excluding `node-image` channel by @BernieWhite.
+    [#2446](https://github.com/Azure/PSRule.Rules.Azure/issues/2446)
+
+What's changed since pre-release v1.30.0-B0127:
+
+- No additional changes.
+
 ## v1.30.0-B0127 (pre-release)
 
 What's changed since pre-release v1.30.0-B0080:
