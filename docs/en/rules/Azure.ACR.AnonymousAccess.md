@@ -87,4 +87,6 @@ Anonymous pull access is only available in the `Standard` and `Premium` service 
 
 - [Authentication with Azure AD](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication)
 - [Make your container registry content publicly available](https://learn.microsoft.com/azure/container-registry/anonymous-pull-access)
+- [Azure security baseline for Container Registry](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline)
+- [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#im-1-use-centralized-identity-and-authentication-system)
 - [Azure deployment reference](https://learn.microsoft.com/en-us/azure/templates/microsoft.containerregistry/registries#registryproperties)
