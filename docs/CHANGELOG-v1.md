@@ -28,6 +28,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Container Registry:
+    - Check that Container Registries restricts network access by @BenjaminEngeset.
+      [#2423](https://github.com/Azure/PSRule.Rules.Azure/issues/2423)
+
 ## v1.30.0-B0080 (pre-release)
 
 What's changed since pre-release v1.30.0-B0047:

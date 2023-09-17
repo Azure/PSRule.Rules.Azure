@@ -238,6 +238,26 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'registry-G', 'registry-I', 'registry-J';
         }
+
+        It 'Azure.ACR.Firewall' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.Firewall' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'registry-D', 'registry-E';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.publicNetworkAccess', 'properties.networkRuleSet.defaultAction';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'registry-I', 'registry-J';
+            
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult.Length | Should -Be ;
+            $ruleResult.TargetName | Should -BeIn ;
+        }
     }
 
     Context 'Resource name' {

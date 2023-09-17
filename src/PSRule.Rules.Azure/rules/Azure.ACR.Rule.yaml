@@ -133,6 +133,29 @@ spec:
 
 #endregion Rules
 
+---
+# Synopsis: Restrict network access.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.Firewall
+  ref: AZR-000402
+  tags:
+    release: GA
+    ruleSet: 2023_09
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: 'NS-2'
+spec:
+  with:
+    - Azure.ACR.IsPremiumSKU
+  condition:
+    anyOf:
+      - field: properties.publicNetworkAccess
+        equals: Disabled
+      - field: properties.networkRuleSet.defaultAction
+        equals: Deny
+
 #region Selectors
 
 ---
