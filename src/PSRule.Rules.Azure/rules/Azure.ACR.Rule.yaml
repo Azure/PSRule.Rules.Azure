@@ -146,7 +146,8 @@ metadata:
     Azure.MCSB.v1/control: 'IM-1'
 spec:
   with:
-    - Azure.ACR.IsStandardOrPremiumSKU
+    - Azure.ACR.IsPremiumSKU
+    - Azure.ACR.IsStandardSKU
   condition:
     field: properties.anonymousPullEnabled
     hasDefault: false
@@ -173,11 +174,11 @@ spec:
             equals: Premium
 
 ---
-# Synopsis: Azure Container Registries using a Standard or Premium SKU.
+# Synopsis: Azure Container Registries using a Standard SKU.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:
-  name: Azure.ACR.IsStandardOrPremiumSKU
+  name: Azure.ACR.IsStandardSKU
 spec:
   if:
     allOf:
@@ -185,12 +186,8 @@ spec:
         equals: Microsoft.ContainerRegistry/registries
       - anyOf:
           - field: sku.name
-            in: 
-              - Standard
-              - Premium
+            equals: Standard
           - field: sku.tier
-            in: 
-              - Standard
-              - Premium
+            equals: Standard
 
 #endregion Selectors
