@@ -31,6 +31,7 @@
     "Name": "registry-B",
     "Properties": {
       "loginServer": "registry-B.azurecr.io",
+      "anonymousPullEnabled": true,
       "adminUserEnabled": false,
       "policies": {
         "quarantinePolicy": {
@@ -187,6 +188,7 @@
     "ResourceName": "registry-C",
     "Name": "registry-C",
     "Properties": {
+      "anonymousPullEnabled": false,
       "loginServer": "registry-C.azurecr.io",
       "policies": {
         "quarantinePolicy": {

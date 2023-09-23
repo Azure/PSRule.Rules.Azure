@@ -131,6 +131,27 @@ spec:
     field: properties.policies.retentionPolicy.status
     equals: enabled
 
+---
+# Synopsis: Disable anonymous pull access.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.AnonymousAccess
+  ref: AZR-000401
+  tags:
+    release: preview
+    ruleSet: 2023_09
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: 'IM-1'
+spec:
+  with:
+    - Azure.ACR.IsPremiumSKU
+    - Azure.ACR.IsStandardSKU
+  condition:
+    field: properties.anonymousPullEnabled
+    hasDefault: false
+
 #endregion Rules
 
 ---
@@ -174,5 +195,22 @@ spec:
             equals: Premium
           - field: sku.tier
             equals: Premium
+
+---
+# Synopsis: Azure Container Registries using a Standard SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.ACR.IsStandardSKU
+spec:
+  if:
+    allOf:
+      - type: '.'
+        equals: Microsoft.ContainerRegistry/registries
+      - anyOf:
+          - field: sku.name
+            equals: Standard
+          - field: sku.tier
+            equals: Standard
 
 #endregion Selectors

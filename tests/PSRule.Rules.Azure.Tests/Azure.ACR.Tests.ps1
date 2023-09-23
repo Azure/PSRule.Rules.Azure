@@ -239,6 +239,26 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             $ruleResult.TargetName | Should -BeIn 'registry-G', 'registry-I', 'registry-J';
         }
 
+        It 'Azure.ACR.AnonymousAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.AnonymousAccess' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'registry-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.anonymousPullEnabled';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 8;
+            $ruleResult.TargetName | Should -BeIn 'registry-C', 'registry-D', 'registry-E', 'registry-F', 'registry-G', 'registry-H', 'registry-I', 'registry-J';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'registry-A';
+        }
+
         It 'Azure.ACR.Firewall' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ACR.Firewall' };
 
