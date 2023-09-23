@@ -275,8 +275,8 @@ Describe 'Azure.ACR' -Tag 'ACR' {
             
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-            $ruleResult.Length | Should -Be ;
-            $ruleResult.TargetName | Should -BeIn ;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'registry-A', 'registry-B', 'registry-C', 'registry-F', 'registry-G', 'registry-H';
         }
     }
 

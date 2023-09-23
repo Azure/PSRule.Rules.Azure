@@ -6,24 +6,25 @@ resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Firewall/
 ---
 
-# Restrict network access
+# Restrict network access to container registries
 
 ## SYNOPSIS
 
-Restrict network access.
+Limit network access of container registries to only trusted clients.
 
 ## DESCRIPTION
 
-Azure Container Registry (ACR) allows you to restrict network access.
-Network restriction can be implemented by firewall rules or private endpoints.
+Azure Container Registry (ACR) allows you to restrict network access to trusted clients and networks instead of any client.
 
-A container registry should accept explicitly allowed traffic only.
+Container registries using the Premium SKU can limit network access by setting firewall rules or using private endpoints.
+Firewall and private endpoints are not supported when using the Basic or Standard SKU.
 
-However, no network access restriction can be used in scenarios that do not require network restriction such as distributing public container images.
+In general, network access should be restricted to harden against unauthorized access or exfiltration attempts.
+However may not be required when publishing and distributing public container images to external parties.
 
 ## RECOMMENDATION
 
-Consider restricting network access in scenarios that require explicitly allowed traffic only.
+Consider restricting network access to trusted clients to harden against unauthorized access or exfiltration attempts.
 
 ## EXAMPLES
 
@@ -31,7 +32,8 @@ Consider restricting network access in scenarios that require explicitly allowed
 
 To deploy Azure Container Registries that pass this rule:
 
-- Set the `properties.publicNetworkAccess` property to `Disabled` or `properties.networkRuleSet.defaultAction` property to `Deny`.
+- Set the `properties.publicNetworkAccess` property to `Disabled`. OR
+- Set the `properties.networkRuleSet.defaultAction` property to `Deny`.
 
 For example:
 
@@ -64,7 +66,8 @@ For example:
 
 To deploy Azure Container Registries that pass this rule:
 
-- Set the `properties.publicNetworkAccess` property to `Disabled` or `properties.networkRuleSet.defaultAction` property to `Deny`.
+- Set the `properties.publicNetworkAccess` property to `Disabled`. OR
+- Set the `properties.networkRuleSet.defaultAction` property to `Deny`.
 
 For example:
 
@@ -106,4 +109,4 @@ When used with Microsoft Defender for Containers, you must enable trusted Micros
 - [Vulnerability assessments for Azure with Microsoft Defender Vulnerability Management](https://learn.microsoft.com/azure/defender-for-cloud/agentless-container-registry-vulnerability-assessment)
 - [Azure security baseline for Container Registry](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline)
 - [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#ns-2-secure-cloud-services-with-network-controls)
-- [Azure deployment reference](https://learn.microsoft.com/en-us/azure/templates/microsoft.containerregistry/registries#registryproperties)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries#registryproperties)
