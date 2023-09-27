@@ -23,6 +23,7 @@
     },
     "resourceType": "addresses",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],
@@ -37,6 +38,7 @@
     "aliases": null,
     "resourceType": "listConfigurations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],
@@ -51,6 +53,7 @@
     "aliases": null,
     "resourceType": "listProductFamilies",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],
@@ -65,6 +68,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],
@@ -75,8 +79,105 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/hciCatalog",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/hciCatalog/platforms",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/hciCatalog/projects",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/hciCatalog/vendors",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/hciFlightCatalog",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/hciFlightCatalog/platforms",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/hciFlightCatalog/projects",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/hciFlightCatalog/vendors",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],
@@ -91,6 +192,7 @@
     "aliases": null,
     "resourceType": "locations/orders",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],
@@ -105,6 +207,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],
@@ -247,6 +350,7 @@
     },
     "resourceType": "orderItems",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],
@@ -261,6 +365,7 @@
     "aliases": null,
     "resourceType": "orders",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],
@@ -275,6 +380,7 @@
     "aliases": null,
     "resourceType": "productFamiliesMetadata",
     "apiVersions": [
+      "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
     ],

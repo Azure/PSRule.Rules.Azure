@@ -3,6 +3,10 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-08-15-preview",
+      "2023-08-01-preview",
+      "2023-06-01-preview",
+      "2023-05-15-preview",
       "2023-01-15-preview",
       "2023-01-01-preview",
       "2022-12-15-preview",
@@ -25,6 +29,10 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-08-15-preview",
+      "2023-08-01-preview",
+      "2023-06-01-preview",
+      "2023-05-15-preview",
       "2023-01-15-preview",
       "2023-01-01-preview",
       "2022-12-15-preview",
@@ -50,6 +58,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-08-15-preview",
+      "2023-08-01-preview",
+      "2023-06-01-preview",
+      "2023-05-15-preview",
       "2023-01-15-preview",
       "2023-01-01-preview",
       "2022-12-15-preview",
@@ -72,6 +84,10 @@
     "aliases": null,
     "resourceType": "skus",
     "apiVersions": [
+      "2023-08-15-preview",
+      "2023-08-01-preview",
+      "2023-06-01-preview",
+      "2023-05-15-preview",
       "2023-01-15-preview",
       "2023-01-01-preview",
       "2022-12-15-preview",
@@ -96,6 +112,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -115,6 +133,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/actionRequests",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [
@@ -126,6 +146,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/availableInplaceUpgradeOSs",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview"
@@ -139,6 +161,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/availableOSs",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -158,6 +182,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/customerEvents",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -175,8 +201,21 @@
   },
   {
     "aliases": null,
+    "resourceType": "testBaseAccounts/customImages",
+    "apiVersions": [
+      "2023-08-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "testBaseAccounts/draftPackages",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview"
     ],
@@ -189,6 +228,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/emailEvents",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -208,6 +249,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/featureUpdateSupportedOses",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -222,6 +265,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/firstPartyApps",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview"
@@ -235,6 +280,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/flightingRings",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -252,8 +299,45 @@
   },
   {
     "aliases": null,
+    "resourceType": "testBaseAccounts/galleryApps",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/galleryApps/galleryAppSkus",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/imageDefinitions",
+    "apiVersions": [
+      "2023-08-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "testBaseAccounts/packages",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -273,6 +357,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/packages/favoriteProcesses",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -292,6 +378,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/packages/osUpdates",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -311,6 +399,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/packages/testResults",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -330,6 +420,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/packages/testResults/analysisResults",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -349,6 +441,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/testSummaries",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -368,6 +462,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/testTypes",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -387,6 +483,8 @@
     "aliases": null,
     "resourceType": "testBaseAccounts/usages",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-06-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2022-11-01-preview",
@@ -396,6 +494,17 @@
       "2021-12-01",
       "2021-09-01",
       "2020-12-16-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/vhds",
+    "apiVersions": [
+      "2023-08-01-preview"
     ],
     "locations": [
       "global"

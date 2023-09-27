@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "experiments",
     "apiVersions": [
+      "2023-04-15-preview",
+      "2023-04-01-preview",
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2021-09-15-preview"
@@ -15,6 +17,7 @@
       "East US 2",
       "Japan East",
       "North Central US",
+      "Southeast Asia",
       "Sweden Central",
       "UK South",
       "West Central US",
@@ -27,6 +30,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-04-15-preview",
+      "2023-04-01-preview",
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2021-09-15-preview"
@@ -38,6 +43,8 @@
     "aliases": null,
     "resourceType": "locations/targetTypes",
     "apiVersions": [
+      "2023-04-15-preview",
+      "2023-04-01-preview",
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2021-09-15-preview"
@@ -52,6 +59,7 @@
       "Japan East",
       "North Central US",
       "North Europe",
+      "Southeast Asia",
       "Sweden Central",
       "UK South",
       "West Central US",
@@ -66,6 +74,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-04-15-preview",
+      "2023-04-01-preview",
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2021-09-15-preview",
@@ -80,6 +90,8 @@
     "aliases": null,
     "resourceType": "targets",
     "apiVersions": [
+      "2023-04-15-preview",
+      "2023-04-01-preview",
       "2022-10-01-preview",
       "2022-07-01-preview",
       "2021-09-15-preview"
@@ -94,6 +106,7 @@
       "Japan East",
       "North Central US",
       "North Europe",
+      "Southeast Asia",
       "Sweden Central",
       "UK South",
       "West Central US",

@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-04-01",
       "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",
@@ -16,6 +18,8 @@
     "aliases": null,
     "resourceType": "locations/openshiftversions",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-04-01",
       "2022-09-04"
     ],
     "locations": [
@@ -64,6 +68,8 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-04-01",
       "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",
@@ -115,6 +121,8 @@
     "aliases": null,
     "resourceType": "locations/operationsstatus",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-04-01",
       "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",
@@ -206,6 +214,8 @@
     },
     "resourceType": "OpenShiftClusters",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-04-01",
       "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",
@@ -257,6 +267,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-04-01",
       "2022-09-04",
       "2022-04-01",
       "2021-09-01-preview",

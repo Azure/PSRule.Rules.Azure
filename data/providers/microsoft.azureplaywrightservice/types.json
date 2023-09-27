@@ -1,0 +1,94 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2023-10-01-preview",
+      "2023-06-01-preview",
+      "2022-04-05-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "East US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2023-10-01-preview",
+      "2023-06-01-preview",
+      "2022-04-05-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2023-10-01-preview",
+      "2023-06-01-preview",
+      "2022-04-05-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2023-10-01-preview",
+      "2023-06-01-preview",
+      "2022-04-05-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "East US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/Quotas",
+    "apiVersions": [
+      "2023-10-01-preview",
+      "2023-06-01-preview",
+      "2022-04-05-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "East US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-10-01-preview",
+      "2023-06-01-preview",
+      "2022-04-05-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2023-10-01-preview",
+      "2023-06-01-preview",
+      "2022-04-05-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

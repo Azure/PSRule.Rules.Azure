@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",
@@ -25,6 +27,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",
@@ -75,6 +79,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",
@@ -125,6 +131,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",
@@ -175,6 +183,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",
@@ -197,6 +207,8 @@
     "aliases": null,
     "resourceType": "runtimeVersions",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",
@@ -334,6 +346,8 @@
     },
     "resourceType": "Spring",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",
@@ -428,6 +442,8 @@
     },
     "resourceType": "Spring/apps",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",
@@ -596,6 +612,8 @@
     },
     "resourceType": "Spring/apps/deployments",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",

@@ -1,18 +1,80 @@
 [
   {
     "aliases": null,
+    "resourceType": "canCreate",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "cloudServices",
     "apiVersions": [
       "2023-01-01-preview"
     ],
     "locations": [
-      "global"
+      "Australia East",
+      "Brazil South",
+      "Canada East",
+      "Central US",
+      "East Asia",
+      "East US 2",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 3"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "Operations",
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada East",
+      "Central US",
+      "East Asia",
+      "East US 2",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
     "apiVersions": [
       "2023-01-01-preview"
     ],
@@ -22,6 +84,15 @@
   {
     "aliases": null,
     "resourceType": "operationStatuses",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
     "apiVersions": [
       "2023-01-01-preview"
     ],

@@ -1,0 +1,38 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "arcNwLoadBalancers",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "East US 2 EUAP",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  }
+]

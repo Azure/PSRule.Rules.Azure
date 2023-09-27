@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "backupInstances",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2022-11-01-preview",
       "2022-10-01-preview",
@@ -23,6 +24,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -55,6 +57,8 @@
   {
     "aliases": {
       "Microsoft.DataProtection/backupVaults/featureSettings": "properties.featureSettings",
+      "Microsoft.DataProtection/backupVaults/featureSettings.crossRegionRestoreSettings": "properties.featureSettings.crossRegionRestoreSettings",
+      "Microsoft.DataProtection/backupVaults/featureSettings.crossRegionRestoreSettings.state": "properties.featureSettings.crossRegionRestoreSettings.state",
       "Microsoft.DataProtection/backupVaults/featureSettings.crossSubscriptionRestoreSettings": "properties.featureSettings.crossSubscriptionRestoreSettings",
       "Microsoft.DataProtection/backupVaults/featureSettings.crossSubscriptionRestoreSettings.state": "properties.featureSettings.crossSubscriptionRestoreSettings.state",
       "Microsoft.DataProtection/backupVaults/isVaultProtectedByResourceGuard": "properties.isVaultProtectedByResourceGuard",
@@ -69,6 +73,7 @@
       "Microsoft.DataProtection/backupVaults/resourceMoveDetails.startTimeUtc": "properties.resourceMoveDetails.startTimeUtc",
       "Microsoft.DataProtection/backupVaults/resourceMoveDetails.targetResourcePath": "properties.resourceMoveDetails.targetResourcePath",
       "Microsoft.DataProtection/backupVaults/resourceMoveState": "properties.resourceMoveState",
+      "Microsoft.DataProtection/backupVaults/secureScore": "properties.secureScore",
       "Microsoft.DataProtection/backupVaults/securitySettings": "properties.securitySettings",
       "Microsoft.DataProtection/backupVaults/securitySettings.immutabilitySettings": "properties.securitySettings.immutabilitySettings",
       "Microsoft.DataProtection/backupVaults/securitySettings.immutabilitySettings.state": "properties.securitySettings.immutabilitySettings.state",
@@ -82,6 +87,8 @@
     },
     "resourceType": "BackupVaults",
     "apiVersions": [
+      "2023-06-01-preview",
+      "2023-05-01",
       "2023-04-01-preview",
       "2023-01-01",
       "2022-12-01",
@@ -115,6 +122,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -148,6 +156,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-06-01-preview",
+      "2023-05-01",
       "2023-04-01-preview",
       "2023-01-01",
       "2022-12-01",
@@ -174,6 +184,8 @@
     "aliases": null,
     "resourceType": "locations/checkFeatureSupport",
     "apiVersions": [
+      "2023-06-01-preview",
+      "2023-05-01",
       "2023-04-01-preview",
       "2023-01-01",
       "2022-12-01",
@@ -207,6 +219,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -240,6 +253,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-06-01-preview",
+      "2023-05-01",
       "2023-04-01-preview",
       "2023-01-01",
       "2022-12-01",
@@ -273,6 +288,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -306,6 +322,7 @@
     "aliases": null,
     "resourceType": "locations/crossRegionRestore",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [
@@ -322,6 +339,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -355,6 +373,7 @@
     "aliases": null,
     "resourceType": "locations/fetchCrossRegionRestoreJob",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [
@@ -371,6 +390,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -404,6 +424,7 @@
     "aliases": null,
     "resourceType": "locations/fetchCrossRegionRestoreJobs",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [
@@ -420,6 +441,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -453,6 +475,7 @@
     "aliases": null,
     "resourceType": "locations/fetchSecondaryRecoveryPoints",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [
@@ -469,6 +492,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -502,6 +526,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-06-01-preview",
+      "2023-05-01",
       "2023-04-01-preview",
       "2023-01-01",
       "2022-12-01",
@@ -535,6 +561,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -568,6 +595,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2023-06-01-preview",
+      "2023-05-01",
       "2023-04-01-preview",
       "2023-01-01",
       "2022-12-01",
@@ -601,6 +630,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -634,6 +664,7 @@
     "aliases": null,
     "resourceType": "locations/validateCrossRegionRestore",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [
@@ -650,6 +681,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -683,6 +715,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-01-preview",
+      "2023-05-01",
       "2023-04-01-preview",
       "2023-01-01",
       "2022-12-01",
@@ -709,6 +743,8 @@
     "aliases": null,
     "resourceType": "ResourceGuards",
     "apiVersions": [
+      "2023-06-01-preview",
+      "2023-05-01",
       "2023-04-01-preview",
       "2023-01-01",
       "2022-12-01",
@@ -739,6 +775,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -803,6 +840,9 @@
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceType": "properties.dataSourceSetInfo.resourceType",
       "Microsoft.DataProtection/backupVaults/backupInstances/dataSourceSetInfo.resourceUri": "properties.dataSourceSetInfo.resourceUri",
       "Microsoft.DataProtection/backupVaults/backupInstances/friendlyName": "properties.friendlyName",
+      "Microsoft.DataProtection/backupVaults/backupInstances/identityDetails": "properties.identityDetails",
+      "Microsoft.DataProtection/backupVaults/backupInstances/identityDetails.userAssignedIdentityArmUrl": "properties.identityDetails.userAssignedIdentityArmUrl",
+      "Microsoft.DataProtection/backupVaults/backupInstances/identityDetails.useSystemAssignedIdentity": "properties.identityDetails.useSystemAssignedIdentity",
       "Microsoft.DataProtection/backupVaults/backupInstances/objectType": "properties.objectType",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo": "properties.policyInfo",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyId": "properties.policyInfo.policyId",
@@ -813,6 +853,10 @@
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].BlobBackupDatasourceParameters.containersList": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].containersList",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].BlobBackupDatasourceParameters.containersList[*]": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].containersList[*]",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.backupHookReferences": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].backupHookReferences",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.backupHookReferences[*]": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].backupHookReferences[*]",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.backupHookReferences[*].name": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].backupHookReferences[*].name",
+      "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.backupHookReferences[*].namespace": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].backupHookReferences[*].namespace",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.excludedNamespaces": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].excludedNamespaces",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.excludedNamespaces[*]": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].excludedNamespaces[*]",
       "Microsoft.DataProtection/backupVaults/backupInstances/policyInfo.policyParameters.backupDatasourceParametersList[*].KubernetesClusterBackupDatasourceParameters.excludedResourceTypes": "properties.policyInfo.policyParameters.backupDatasourceParametersList[*].excludedResourceTypes",

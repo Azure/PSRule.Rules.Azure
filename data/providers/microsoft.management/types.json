@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-04-01",
       "2021-04-01",
       "2020-10-01",
       "2020-05-01",
@@ -19,6 +20,7 @@
     "aliases": null,
     "resourceType": "getEntities",
     "apiVersions": [
+      "2023-04-01",
       "2021-04-01",
       "2020-10-01",
       "2020-05-01",
@@ -63,6 +65,7 @@
     },
     "resourceType": "managementGroups",
     "apiVersions": [
+      "2023-04-01",
       "2021-04-01",
       "2020-10-01",
       "2020-05-01",
@@ -83,6 +86,7 @@
     "aliases": null,
     "resourceType": "managementGroups/settings",
     "apiVersions": [
+      "2023-04-01",
       "2021-04-01",
       "2020-10-01",
       "2020-05-01",
@@ -96,6 +100,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-04-01",
       "2021-04-01",
       "2020-10-01",
       "2020-05-01",
@@ -112,6 +117,7 @@
     "aliases": null,
     "resourceType": "operationResults/asyncOperation",
     "apiVersions": [
+      "2023-04-01",
       "2021-04-01",
       "2020-10-01",
       "2020-05-01",
@@ -132,6 +138,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-04-01",
       "2021-04-01",
       "2020-10-01",
       "2020-05-01",
@@ -164,6 +171,7 @@
     "aliases": null,
     "resourceType": "startTenantBackfill",
     "apiVersions": [
+      "2023-04-01",
       "2021-04-01",
       "2020-10-01",
       "2020-05-01",
@@ -179,6 +187,7 @@
     "aliases": null,
     "resourceType": "tenantBackfillStatus",
     "apiVersions": [
+      "2023-04-01",
       "2021-04-01",
       "2020-10-01",
       "2020-05-01",

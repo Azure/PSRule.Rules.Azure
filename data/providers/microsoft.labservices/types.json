@@ -97,6 +97,7 @@
     },
     "resourceType": "labplans",
     "apiVersions": [
+      "2023-06-07",
       "2022-08-01",
       "2021-11-15-preview",
       "2021-10-01-preview",
@@ -194,6 +195,7 @@
     },
     "resourceType": "labs",
     "apiVersions": [
+      "2023-06-07",
       "2022-08-01",
       "2021-11-15-preview",
       "2021-10-01-preview",
@@ -234,6 +236,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-06-07",
       "2022-08-01",
       "2021-11-15-preview",
       "2021-10-01-preview",
@@ -249,6 +252,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-06-07",
       "2022-08-01",
       "2021-11-15-preview",
       "2021-10-01-preview",
@@ -334,6 +338,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-06-07",
       "2022-08-01",
       "2021-11-15-preview"
     ],
@@ -372,6 +377,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-07",
       "2022-08-01",
       "2021-11-15-preview",
       "2021-10-01-preview",

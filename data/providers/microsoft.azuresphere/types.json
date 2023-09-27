@@ -1,11 +1,86 @@
 [
   {
     "aliases": null,
+    "resourceType": "catalogs",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "catalogs/certificates",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "catalogs/images",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "catalogs/products",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "catalogs/products/devicegroups",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "catalogs/products/devicegroups/deployments",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "catalogs/products/devicegroups/devices",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2022-09-01-preview",
-      "2022-02-01-privatepreview",
-      "2021-02-01-preview"
+      "2022-09-01-preview"
     ],
     "locations": [
       "global"
@@ -16,9 +91,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
-      "2022-09-01-preview",
-      "2022-02-01-privatepreview",
-      "2021-02-01-preview"
+      "2022-09-01-preview"
     ],
     "locations": [
       "East US 2",
@@ -32,9 +105,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2022-09-01-preview",
-      "2022-02-01-privatepreview",
-      "2021-02-01-preview"
+      "2022-09-01-preview"
     ],
     "locations": [
       "global"

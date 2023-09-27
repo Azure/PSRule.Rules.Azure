@@ -35,8 +35,44 @@
   },
   {
     "aliases": null,
+    "resourceType": "listSellerResources",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-11-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "maccs",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-11-01-beta"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "maccs/contributors",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-11-01-beta",
+      "2023-07-01-preview",
+      "2023-07-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-11-01-preview",
+      "2023-11-01-beta",
       "2023-07-01-preview",
       "2023-07-01-beta",
       "2022-11-01-beta",
@@ -143,6 +179,8 @@
     "aliases": null,
     "resourceType": "validate",
     "apiVersions": [
+      "2023-11-01-preview",
+      "2023-11-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",

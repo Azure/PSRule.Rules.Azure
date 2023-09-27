@@ -37,6 +37,8 @@ What's changed since pre-release v1.30.0-B0080:
     - Check that Container Registries disables anonymous pull access by @BenjaminEngeset.
       [#2422](https://github.com/Azure/PSRule.Rules.Azure/issues/2422)
 - Engineering:
+  - Updated resource providers and policy aliases.
+    [#2442](https://github.com/Azure/PSRule.Rules.Azure/pull/2442)
   - Bump xunit to v2.5.1.
     [#2436](https://github.com/Azure/PSRule.Rules.Azure/pull/2436)
   - Bump xunit.runner.visualstudio to v2.5.1.

@@ -55,6 +55,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -91,6 +93,7 @@
     "aliases": null,
     "resourceType": "deletedWorkspaces",
     "apiVersions": [
+      "2022-10-01",
       "2021-12-01-preview",
       "2020-10-01",
       "2020-08-01",
@@ -114,6 +117,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -183,8 +188,13 @@
       "2021-10-01"
     ],
     "locations": [
+      "East US",
+      "East US 2",
       "East US 2 EUAP",
-      "North Central US"
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -225,6 +235,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -437,6 +449,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -467,6 +481,17 @@
       "West US 2",
       "West US 3"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/api",
+    "apiVersions": [
+      "2020-08-01",
+      "2020-03-01-preview",
+      "2017-01-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {
@@ -508,6 +533,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -573,6 +600,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -636,6 +665,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -694,6 +725,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -737,6 +770,31 @@
   },
   {
     "aliases": null,
+    "resourceType": "workspaces/operations",
+    "apiVersions": [
+      "2022-10-01",
+      "2020-08-01",
+      "2017-04-26-preview",
+      "2015-03-20"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/purge",
+    "apiVersions": [
+      "2022-10-01",
+      "2020-10-01",
+      "2020-08-01",
+      "2017-04-26-preview",
+      "2015-03-20"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "workspaces/query",
     "apiVersions": [
       "2017-10-01"
@@ -770,6 +828,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -844,6 +904,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -975,6 +1037,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",

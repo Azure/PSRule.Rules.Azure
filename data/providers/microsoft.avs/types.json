@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "locations/checkQuotaAvailability",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -41,12 +43,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -54,6 +59,7 @@
     "aliases": null,
     "resourceType": "locations/checkTrialAvailability",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -80,12 +86,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -93,6 +102,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -164,6 +174,7 @@
     },
     "resourceType": "privateClouds",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -192,12 +203,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": [
       {
@@ -333,6 +347,10 @@
         ]
       },
       {
+        "location": "Switzerland North",
+        "zones": []
+      },
+      {
         "location": "UK South",
         "zones": [
           "1",
@@ -359,6 +377,14 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       }
     ]
   },
@@ -373,6 +399,7 @@
     },
     "resourceType": "privateClouds/addons",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -399,12 +426,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -417,6 +447,7 @@
     },
     "resourceType": "privateClouds/authorizations",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -443,12 +474,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -456,6 +490,7 @@
     "aliases": null,
     "resourceType": "privateClouds/cloudLinks",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01"
@@ -481,12 +516,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -502,6 +540,7 @@
     },
     "resourceType": "privateClouds/clusters",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -529,12 +568,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -556,6 +598,7 @@
     },
     "resourceType": "privateClouds/clusters/datastores",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -582,12 +625,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -595,6 +641,7 @@
     "aliases": null,
     "resourceType": "privateClouds/clusters/placementPolicies",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01"
     ],
@@ -619,12 +666,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -632,6 +682,7 @@
     "aliases": null,
     "resourceType": "privateClouds/clusters/virtualMachines",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01"
     ],
@@ -656,12 +707,54 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateClouds/eventGridFilters",
+    "apiVersions": [
+      "2023-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "North Europe",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -676,6 +769,7 @@
     },
     "resourceType": "privateClouds/globalReachConnections",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -702,12 +796,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -718,6 +815,7 @@
     },
     "resourceType": "privateClouds/hcxEnterpriseSites",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -744,12 +842,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -757,6 +858,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptExecutions",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01"
@@ -782,12 +884,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -795,6 +900,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptPackages",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01"
@@ -820,12 +926,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -833,6 +942,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptPackages/scriptCmdlets",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01"
@@ -858,12 +968,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -871,6 +984,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -897,12 +1011,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -921,6 +1038,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/dhcpConfigurations",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -947,12 +1065,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -970,6 +1091,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/dnsServices",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -996,12 +1118,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1019,6 +1144,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/dnsZones",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -1045,12 +1171,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1058,6 +1187,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/gateways",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -1084,12 +1214,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1105,6 +1238,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/portMirroringProfiles",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -1131,12 +1265,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1144,6 +1281,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/publicIPs",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01"
@@ -1169,12 +1307,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1195,6 +1336,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/segments",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -1221,12 +1363,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1234,6 +1379,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/virtualMachines",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -1260,12 +1406,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -1280,6 +1429,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/vmGroups",
     "apiVersions": [
+      "2023-03-01",
       "2022-05-01",
       "2021-12-01",
       "2021-06-01",
@@ -1306,12 +1456,15 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   }

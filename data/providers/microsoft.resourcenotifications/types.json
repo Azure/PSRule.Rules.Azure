@@ -1,0 +1,24 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "eventGridFilters",
+    "apiVersions": [
+      "2022-03-15-privatepreview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-03-15-privatepreview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": null
+  }
+]

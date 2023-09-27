@@ -8,9 +8,11 @@
       "2020-10-05-privatepreview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
       "Central India",
       "Central US",
       "East Asia",
@@ -23,6 +25,7 @@
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Qatar Central",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
@@ -41,6 +44,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
@@ -75,6 +79,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -179,6 +184,7 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-03-01-preview",
       "2023-01-01-privatepreview",
       "2022-12-01",
@@ -840,6 +846,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
@@ -900,6 +907,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
@@ -960,6 +968,7 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
@@ -1644,6 +1653,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-03-01-preview",
       "2022-12-01",
       "2022-11-01-preview",
@@ -1674,6 +1684,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -1716,9 +1727,11 @@
       "2020-10-05-privatepreview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
       "Central India",
       "Central US",
       "East Asia",
@@ -1731,6 +1744,7 @@
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Qatar Central",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",

@@ -31,6 +31,7 @@
     },
     "resourceType": "imageTemplates",
     "apiVersions": [
+      "2023-07-01",
       "2022-07-01",
       "2022-02-14",
       "2021-10-01",
@@ -77,6 +78,7 @@
     "aliases": null,
     "resourceType": "imageTemplates/runOutputs",
     "apiVersions": [
+      "2023-07-01",
       "2022-07-01",
       "2022-02-14",
       "2021-10-01",
@@ -123,6 +125,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-07-01",
       "2022-07-01",
       "2022-02-14",
       "2021-10-01",
@@ -141,6 +144,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Jio India West",
       "Korea Central",
@@ -169,6 +173,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2023-07-01",
       "2022-07-01",
       "2022-02-14",
       "2021-10-01",
@@ -215,6 +220,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-01",
       "2022-07-01",
       "2022-02-14",
       "2021-10-01",

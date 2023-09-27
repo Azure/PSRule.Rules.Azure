@@ -15,15 +15,7 @@
     "zoneMappings": null
   },
   {
-    "aliases": {
-      "Microsoft.Codespaces/plans/defaultAutoSuspendDelayMinutes": "properties.defaultAutoSuspendDelayMinutes",
-      "Microsoft.Codespaces/plans/defaultCodespaceSku": "properties.defaultCodespaceSku",
-      "Microsoft.Codespaces/plans/sku": "sku",
-      "Microsoft.Codespaces/plans/sku.name": "sku.name",
-      "Microsoft.Codespaces/plans/sku.tier": "sku.tier",
-      "Microsoft.Codespaces/plans/vnetProperties": "properties.vnetProperties",
-      "Microsoft.Codespaces/plans/vnetProperties.subnetId": "properties.vnetProperties.subnetId"
-    },
+    "aliases": null,
     "resourceType": "plans",
     "apiVersions": [
       "2020-07-10-beta",

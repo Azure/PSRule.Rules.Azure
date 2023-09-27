@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-05-15-preview",
       "2023-04-15-preview"
     ],
     "locations": [],
@@ -12,10 +13,12 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-05-15-preview",
       "2023-04-15-preview"
     ],
     "locations": [
       "East US",
+      "East US 2 EUAP",
       "West Central US"
     ],
     "zoneMappings": null

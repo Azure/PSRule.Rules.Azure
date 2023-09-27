@@ -3,16 +3,19 @@
     "aliases": null,
     "resourceType": "appliances",
     "apiVersions": [
+      "2022-10-27",
       "2021-10-31-preview"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "West Europe",
       "West US 2",
@@ -36,17 +39,20 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2022-10-27",
       "2021-10-31-preview",
       "2020-07-15-privatepreview"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "West Europe",
       "West US 2",
@@ -58,17 +64,20 @@
     "aliases": null,
     "resourceType": "locations/operationsstatus",
     "apiVersions": [
+      "2022-10-27",
       "2021-10-31-preview",
       "2020-07-15-privatepreview"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "West Europe",
       "West US 2",
@@ -80,6 +89,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-10-27",
       "2022-04-15-preview",
       "2021-10-31-preview",
       "2021-02-01",

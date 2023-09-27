@@ -552,7 +552,17 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/validateDetachPaymentMethodEligibility",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfilesSummaries",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -593,6 +603,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingSubscriptions",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2021-10-01",
       "2020-12-15-privatepreview",
       "2020-11-01-privatepreview",
@@ -607,6 +618,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingSubscriptions/elevateRole",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
       "2020-12-15-beta"
     ],
@@ -620,6 +632,15 @@
       "2020-11-01-privatepreview",
       "2020-05-01",
       "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingSubscriptions/policies",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -875,6 +896,24 @@
     "resourceType": "billingAccounts/enrollmentAccounts/billingSubscriptions",
     "apiVersions": [
       "2020-12-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/incentiveSchedules",
+    "apiVersions": [
+      "2022-10-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/incentiveSchedules/milestones",
+    "apiVersions": [
+      "2022-10-01-beta"
     ],
     "locations": [],
     "zoneMappings": null
@@ -1182,7 +1221,6 @@
     "resourceType": "billingAccounts/reservationOrders",
     "apiVersions": [
       "2023-04-01-beta",
-      "2023-04-01",
       "2022-10-01-privatepreview",
       "2022-10-01-beta",
       "2020-11-01-privatepreview",
@@ -1196,7 +1234,6 @@
     "resourceType": "billingAccounts/reservationOrders/reservations",
     "apiVersions": [
       "2023-04-01-beta",
-      "2023-04-01",
       "2022-10-01-privatepreview",
       "2022-10-01-beta",
       "2020-11-01-privatepreview",
@@ -1210,7 +1247,6 @@
     "resourceType": "billingAccounts/reservations",
     "apiVersions": [
       "2023-04-01-beta",
-      "2023-04-01",
       "2022-10-01-privatepreview",
       "2022-10-01-beta",
       "2020-11-01-privatepreview",
@@ -1226,7 +1262,6 @@
     "resourceType": "billingAccounts/savingsPlanOrders",
     "apiVersions": [
       "2023-04-01-beta",
-      "2023-04-01",
       "2022-10-01-privatepreview",
       "2022-10-01-beta",
       "2020-12-15-privatepreview",
@@ -1242,7 +1277,6 @@
     "resourceType": "billingAccounts/savingsPlanOrders/savingsPlans",
     "apiVersions": [
       "2023-04-01-beta",
-      "2023-04-01",
       "2022-10-01-privatepreview",
       "2022-10-01-beta",
       "2020-12-15-privatepreview",
@@ -1258,7 +1292,6 @@
     "resourceType": "billingAccounts/savingsPlans",
     "apiVersions": [
       "2023-04-01-beta",
-      "2023-04-01",
       "2022-10-01-privatepreview",
       "2022-10-01-beta",
       "2020-12-15-privatepreview",
@@ -1425,6 +1458,15 @@
     "resourceType": "permissionRequests",
     "apiVersions": [
       "2020-11-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "policies",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": null
