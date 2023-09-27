@@ -342,7 +342,8 @@
     "Name": "registry-D",
     "Properties": {
       "loginServer": "registry-D.azurecr.io",
-      "adminUserEnabled": true
+      "adminUserEnabled": true,
+      "publicNetworkAccess": "Enabled"
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
@@ -379,6 +380,17 @@
           "days": 180,
           "status": "enabled"
         }
+      },
+      "publicNetworkAccess": "Enabled",
+      "networkRuleBypassOptions": "AzureServices",
+      "networkRuleSet": {
+        "defaultAction": "Allow",
+        "ipRules": [
+          {
+            "action": "Allow",
+            "value": "_IPv4Address_"
+          }
+        ]
       }
     },
     "ResourceGroupName": "test-rg",
@@ -655,14 +667,15 @@
           "retentionDays": 90,
           "status": "enabled"
         }
-      }
+      },
+      "publicNetworkAccess": "Disabled"
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ContainerRegistry/registries",
     "ResourceType": "Microsoft.ContainerRegistry/registries",
     "Sku": {
-      "Name": "Standard",
-      "Tier": "Standard",
+      "Name": "Premium",
+      "Tier": "Premium",
       "Size": null,
       "Family": null,
       "Model": null,
@@ -699,6 +712,17 @@
           "retentionDays": 90,
           "status": "enabled"
         }
+      },
+      "publicNetworkAccess": "Enabled",
+      "networkRuleBypassOptions": "AzureServices",
+      "networkRuleSet": {
+        "defaultAction": "Deny",
+        "ipRules": [
+          {
+            "action": "Allow",
+            "value": "_IPv4Address_"
+          }
+        ]
       }
     },
     "ResourceGroupName": "test-rg",

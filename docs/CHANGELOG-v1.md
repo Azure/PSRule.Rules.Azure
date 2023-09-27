@@ -32,6 +32,8 @@ What's changed since pre-release v1.30.0-B0080:
 
 - New rules:
   - Azure Container Registry:
+    - Check that Container Registries restricts network access by @BenjaminEngeset.
+      [#2423](https://github.com/Azure/PSRule.Rules.Azure/issues/2423)
     - Check that Container Registries disables anonymous pull access by @BenjaminEngeset.
       [#2422](https://github.com/Azure/PSRule.Rules.Azure/issues/2422)
 - Engineering:

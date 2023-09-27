@@ -152,26 +152,32 @@ spec:
     field: properties.anonymousPullEnabled
     hasDefault: false
 
+---
+# Synopsis: Limit network access of container registries to only trusted clients.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ACR.Firewall
+  ref: AZR-000402
+  tags:
+    release: GA
+    ruleSet: 2023_09
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: 'NS-2'
+spec:
+  with:
+    - Azure.ACR.IsPremiumSKU
+  condition:
+    anyOf:
+      - field: properties.publicNetworkAccess
+        equals: Disabled
+      - field: properties.networkRuleSet.defaultAction
+        equals: Deny
+
 #endregion Rules
 
 #region Selectors
-
----
-# Synopsis: Azure Container Registries using a Premium SKU.
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Selector
-metadata:
-  name: Azure.ACR.IsPremiumSKU
-spec:
-  if:
-    allOf:
-      - type: '.'
-        equals: Microsoft.ContainerRegistry/registries
-      - anyOf:
-          - field: sku.name
-            equals: Premium
-          - field: sku.tier
-            equals: Premium
 
 ---
 # Synopsis: Azure Container Registries using a Standard SKU.
@@ -189,5 +195,22 @@ spec:
             equals: Standard
           - field: sku.tier
             equals: Standard
+
+---
+# Synopsis: Azure Container Registries using a Premium SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.ACR.IsPremiumSKU
+spec:
+  if:
+    allOf:
+      - type: '.'
+        equals: Microsoft.ContainerRegistry/registries
+      - anyOf:
+          - field: sku.name
+            equals: Premium
+          - field: sku.tier
+            equals: Premium
 
 #endregion Selectors
