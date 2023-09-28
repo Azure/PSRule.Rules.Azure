@@ -44,6 +44,7 @@
     "aliases": null,
     "resourceType": "checkNamespaceAvailability",
     "apiVersions": [
+      "2023-01-01-preview",
       "2020-01-01-preview",
       "2017-04-01",
       "2016-03-01",
@@ -109,6 +110,7 @@
     },
     "resourceType": "namespaces",
     "apiVersions": [
+      "2023-01-01-preview",
       "2020-01-01-preview",
       "2017-04-01",
       "2016-03-01",
@@ -200,6 +202,7 @@
     },
     "resourceType": "namespaces/notificationHubs",
     "apiVersions": [
+      "2023-01-01-preview",
       "2020-01-01-preview",
       "2017-04-01",
       "2016-03-01",
@@ -242,6 +245,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-01-01-preview",
       "2020-01-01-preview",
       "2017-04-01",
       "2016-03-01",

@@ -10,6 +10,24 @@
   },
   {
     "aliases": null,
+    "resourceType": "getCollectionCount",
+    "apiVersions": [
+      "2023-02-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "getOverviewStatus",
+    "apiVersions": [
+      "2023-02-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "listInUseStorageAccounts",
     "apiVersions": [
       "2023-02-15-preview"

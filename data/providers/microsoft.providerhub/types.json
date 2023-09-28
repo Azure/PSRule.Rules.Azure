@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "availableAccounts",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-04-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
       "2021-05-01-preview",
@@ -19,6 +21,8 @@
     "aliases": null,
     "resourceType": "operationStatuses",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-04-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
@@ -37,6 +41,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-04-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
@@ -52,8 +58,21 @@
   },
   {
     "aliases": null,
+    "resourceType": "providerRegistrations/authorizedApplications",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-04-01-preview",
+      "2023-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "providerRegistrations/checkinmanifest",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-04-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
@@ -71,6 +90,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/customRollouts",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-04-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
@@ -88,6 +109,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/defaultRollouts",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-04-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
@@ -105,6 +128,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/resourceActions",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-04-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",
       "2021-05-01-preview",
@@ -122,6 +147,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/resourceTypeRegistrations",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-04-01-preview",
       "2022-07-01-preview",
       "2021-09-01-preview",
       "2021-06-01-preview",

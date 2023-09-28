@@ -1,8 +1,139 @@
 [
   {
     "aliases": null,
+    "resourceType": "accesscontrollists",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "internetgatewayrules",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "InternetGateways",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "IpCommunities",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "IpExtendedCommunities",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "IpPrefixes",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "L2IsolationDomains",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "L3IsolationDomains",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "L3IsolationDomains/externalNetworks",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "L3IsolationDomains/internalNetworks",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-06-15",
       "2023-02-01-preview",
       "2022-01-15-privatepreview"
     ],
@@ -11,12 +142,169 @@
   },
   {
     "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "neighborgroups",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "NetworkDevices",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "NetworkDevices/NetworkInterfaces",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "NetworkFabricControllers",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "NetworkFabrics",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "NetworkFabrics/NetworkToNetworkInterconnects",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "networkpacketbrokers",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "NetworkRacks",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "networktaprules",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "networktaps",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-06-15",
       "2023-02-01-preview",
       "2022-01-15-privatepreview"
     ],
     "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "RoutePolicies",
+    "apiVersions": [
+      "2023-06-15"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West US 3"
+    ],
     "zoneMappings": null
   }
 ]

@@ -193,5 +193,14 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "validateCancel",
+    "apiVersions": [
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]

@@ -142,6 +142,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2023-03-01-preview",
+      "2023-01-01-preview",
       "2023-01-01",
       "2022-09-01",
       "2022-07-31",
@@ -534,6 +535,42 @@
       "2021-10-01",
       "2021-06-01",
       "2018-08-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "products/reviews",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "products/reviews/comments",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "products/reviews/helpful",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "products/usermetadata",
+    "apiVersions": [
+      "2023-01-01-preview"
     ],
     "locations": [],
     "zoneMappings": null

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "CheckNameAvailability",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -19,10 +20,12 @@
     "aliases": null,
     "resourceType": "CommunicationServices",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
       "2022-07-01-preview",
+      "2022-03-29-preview",
       "2021-10-01-preview",
       "2020-08-20"
     ],
@@ -47,6 +50,7 @@
     "aliases": null,
     "resourceType": "EmailServices",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -62,6 +66,7 @@
     "aliases": null,
     "resourceType": "EmailServices/Domains",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -77,6 +82,7 @@
     "aliases": null,
     "resourceType": "EmailServices/Domains/SenderUsernames",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31",
       "2023-03-01-preview"
     ],
@@ -139,6 +145,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",

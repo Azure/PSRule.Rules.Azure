@@ -53,6 +53,7 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2023-06-01",
       "2023-03-01",
       "2023-02-01",
       "2022-12-01",
@@ -98,6 +99,7 @@
     },
     "resourceType": "clusters/arcSettings",
     "apiVersions": [
+      "2023-06-01",
       "2023-03-01",
       "2023-02-01",
       "2022-12-01",
@@ -152,6 +154,7 @@
     },
     "resourceType": "clusters/arcSettings/extensions",
     "apiVersions": [
+      "2023-06-01",
       "2023-03-01",
       "2023-02-01",
       "2022-12-01",
@@ -248,6 +251,78 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "clusters/updates",
+    "apiVersions": [
+      "2023-06-01",
+      "2023-03-01",
+      "2023-02-01",
+      "2022-12-15-preview",
+      "2022-12-01",
+      "2022-10-01",
+      "2022-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "East US",
+      "Japan East",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusters/updates/updateRuns",
+    "apiVersions": [
+      "2023-06-01",
+      "2023-03-01",
+      "2023-02-01",
+      "2022-12-15-preview",
+      "2022-12-01",
+      "2022-10-01",
+      "2022-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "East US",
+      "Japan East",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusters/updateSummaries",
+    "apiVersions": [
+      "2023-06-01",
+      "2023-03-01",
+      "2023-02-01",
+      "2022-12-15-preview",
+      "2022-12-01",
+      "2022-10-01",
+      "2022-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "East US",
+      "Japan East",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.AzureStackHCI/galleryimages/cloudInitDataSource": "properties.cloudInitDataSource",
       "Microsoft.AzureStackHCI/galleryimages/containerName": "properties.containerName",
@@ -277,8 +352,11 @@
     },
     "resourceType": "galleryImages",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2022-12-15-preview",
       "2021-09-01-preview",
-      "2021-07-01-preview"
+      "2021-07-01-preview",
+      "2020-11-01-preview"
     ],
     "locations": [
       "East US",
@@ -291,6 +369,9 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-07-01-preview",
+      "2023-06-01",
       "2023-03-01",
       "2023-02-01",
       "2022-12-15-preview",
@@ -315,6 +396,9 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-07-01-preview",
+      "2023-06-01",
       "2023-03-01",
       "2023-02-01",
       "2022-12-15-preview",
@@ -379,10 +463,13 @@
     },
     "resourceType": "marketplaceGalleryImages",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2022-12-15-preview",
       "2021-09-01-preview"
     ],
     "locations": [
       "East US",
+      "Southeast Asia",
       "West Europe"
     ],
     "zoneMappings": null
@@ -413,8 +500,11 @@
     },
     "resourceType": "networkInterfaces",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2022-12-15-preview",
       "2021-09-01-preview",
-      "2021-07-01-preview"
+      "2021-07-01-preview",
+      "2020-11-01-preview"
     ],
     "locations": [
       "East US",
@@ -427,6 +517,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-08-01-preview",
+      "2023-07-01-preview",
+      "2023-06-01",
       "2023-03-01",
       "2023-02-01",
       "2022-12-15-preview",
@@ -452,6 +545,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2023-06-01",
       "2023-03-01",
       "2023-02-01",
       "2022-12-01",
@@ -479,6 +573,8 @@
     },
     "resourceType": "storageContainers",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2022-12-15-preview",
       "2021-09-01-preview"
     ],
     "locations": [
@@ -494,6 +590,7 @@
       "Microsoft.AzureStackHCI/virtualharddisks/containerId": "properties.containerId",
       "Microsoft.AzureStackHCI/virtualharddisks/diskFileFormat": "properties.diskFileFormat",
       "Microsoft.AzureStackHCI/virtualharddisks/diskSizeBytes": "properties.diskSizeBytes",
+      "Microsoft.AzureStackHCI/virtualharddisks/diskSizeGB": "properties.diskSizeGB",
       "Microsoft.AzureStackHCI/virtualharddisks/dynamic": "properties.dynamic",
       "Microsoft.AzureStackHCI/virtualharddisks/hyperVGeneration": "properties.hyperVGeneration",
       "Microsoft.AzureStackHCI/virtualharddisks/logicalSectorBytes": "properties.logicalSectorBytes",
@@ -509,8 +606,24 @@
     },
     "resourceType": "virtualHardDisks",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2022-12-15-preview",
       "2021-09-01-preview",
-      "2021-07-01-preview"
+      "2021-07-01-preview",
+      "2020-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualMachineInstances",
+    "apiVersions": [
+      "2023-07-01-preview"
     ],
     "locations": [
       "East US",
@@ -547,9 +660,12 @@
       "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile": "properties.hardwareProfile",
       "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.dynamicMemoryConfig": "properties.hardwareProfile.dynamicMemoryConfig",
       "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.dynamicMemoryConfig.maximumMemoryGB": "properties.hardwareProfile.dynamicMemoryConfig.maximumMemoryGB",
+      "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.dynamicMemoryConfig.maximumMemoryMB": "properties.hardwareProfile.dynamicMemoryConfig.maximumMemoryMB",
       "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.dynamicMemoryConfig.minimumMemoryGB": "properties.hardwareProfile.dynamicMemoryConfig.minimumMemoryGB",
+      "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.dynamicMemoryConfig.minimumMemoryMB": "properties.hardwareProfile.dynamicMemoryConfig.minimumMemoryMB",
       "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.dynamicMemoryConfig.targetMemoryBuffer": "properties.hardwareProfile.dynamicMemoryConfig.targetMemoryBuffer",
       "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.memoryGB": "properties.hardwareProfile.memoryGB",
+      "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.memoryMB": "properties.hardwareProfile.memoryMB",
       "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.processors": "properties.hardwareProfile.processors",
       "Microsoft.AzureStackHCI/virtualmachines/hardwareProfile.vmSize": "properties.hardwareProfile.vmSize",
       "Microsoft.AzureStackHCI/virtualmachines/networkProfile": "properties.networkProfile",
@@ -594,18 +710,23 @@
       "Microsoft.AzureStackHCI/virtualmachines/storageProfile": "properties.storageProfile",
       "Microsoft.AzureStackHCI/virtualmachines/storageProfile.dataDisks": "properties.storageProfile.dataDisks",
       "Microsoft.AzureStackHCI/virtualmachines/storageProfile.dataDisks[*]": "properties.storageProfile.dataDisks[*]",
+      "Microsoft.AzureStackHCI/virtualmachines/storageProfile.dataDisks[*].id": "properties.storageProfile.dataDisks[*].id",
       "Microsoft.AzureStackHCI/virtualmachines/storageProfile.dataDisks[*].name": "properties.storageProfile.dataDisks[*].name",
       "Microsoft.AzureStackHCI/virtualmachines/storageProfile.imageReference": "properties.storageProfile.imageReference",
+      "Microsoft.AzureStackHCI/virtualmachines/storageProfile.imageReference.id": "properties.storageProfile.imageReference.id",
       "Microsoft.AzureStackHCI/virtualmachines/storageProfile.imageReference.name": "properties.storageProfile.imageReference.name",
       "Microsoft.AzureStackHCI/virtualmachines/storageProfile.osDisk": "properties.storageProfile.osDisk",
       "Microsoft.AzureStackHCI/virtualmachines/storageProfile.osDisk.id": "properties.storageProfile.osDisk.id",
       "Microsoft.AzureStackHCI/virtualmachines/storageProfile.vmConfigContainerName": "properties.storageProfile.vmConfigContainerName",
+      "Microsoft.AzureStackHCI/virtualmachines/storageProfile.vmConfigStoragePathId": "properties.storageProfile.vmConfigStoragePathId",
       "Microsoft.AzureStackHCI/virtualmachines/vmId": "properties.vmId"
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2022-12-15-preview",
       "2021-09-01-preview",
-      "2021-07-01-preview"
+      "2021-07-01-preview",
+      "2020-11-01-preview"
     ],
     "locations": [
       "East US",
@@ -635,6 +756,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2022-12-15-preview",
       "2021-09-01-preview"
     ],
     "locations": [
@@ -648,6 +770,7 @@
     "aliases": null,
     "resourceType": "virtualMachines/hybrididentitymetadata",
     "apiVersions": [
+      "2022-12-15-preview",
       "2021-09-01-preview"
     ],
     "locations": [
@@ -659,6 +782,9 @@
   },
   {
     "aliases": {
+      "Microsoft.AzureStackHCI/virtualnetworks/dhcpOptions": "properties.dhcpOptions",
+      "Microsoft.AzureStackHCI/virtualnetworks/dhcpOptions.dnsServers": "properties.dhcpOptions.dnsServers",
+      "Microsoft.AzureStackHCI/virtualnetworks/dhcpOptions.dnsServers[*]": "properties.dhcpOptions.dnsServers[*]",
       "Microsoft.AzureStackHCI/virtualnetworks/networkType": "properties.networkType",
       "Microsoft.AzureStackHCI/virtualnetworks/provisioningState": "properties.provisioningState",
       "Microsoft.AzureStackHCI/virtualnetworks/resourceName": "properties.resourceName",
@@ -695,12 +821,16 @@
       "Microsoft.AzureStackHCI/virtualnetworks/subnets[*].routeTable.routes[*].name": "properties.subnets[*].properties.routeTable.properties.routes[*].name",
       "Microsoft.AzureStackHCI/virtualnetworks/subnets[*].routeTable.routes[*].nextHopIpAddress": "properties.subnets[*].properties.routeTable.properties.routes[*].properties.nextHopIpAddress",
       "Microsoft.AzureStackHCI/virtualnetworks/subnets[*].routeTable.type": "properties.subnets[*].properties.routeTable.type",
-      "Microsoft.AzureStackHCI/virtualnetworks/subnets[*].vlan": "properties.subnets[*].properties.vlan"
+      "Microsoft.AzureStackHCI/virtualnetworks/subnets[*].vlan": "properties.subnets[*].properties.vlan",
+      "Microsoft.AzureStackHCI/virtualnetworks/vmSwitchName": "properties.vmSwitchName"
     },
     "resourceType": "virtualNetworks",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2022-12-15-preview",
       "2021-09-01-preview",
-      "2021-07-01-preview"
+      "2021-07-01-preview",
+      "2020-11-01-preview"
     ],
     "locations": [
       "East US",

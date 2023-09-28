@@ -7,5 +7,23 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "queryCarbonEmissionDataAvailableDateRange",
+    "apiVersions": [
+      "2023-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]

@@ -9,5 +9,20 @@
       "East US"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "services",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "East US",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": null
   }
 ]

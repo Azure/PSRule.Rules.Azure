@@ -282,6 +282,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2021-07-01",
+      "2021-02-01-preview",
       "2020-08-21-preview",
       "2019-07-01",
       "2018-09-01-preview",
@@ -289,67 +290,9 @@
       "2018-03-01",
       "2018-02-01",
       "2017-12-01",
-      "2017-09-01",
-      "2016-09-01-preview"
+      "2017-09-01"
     ],
-    "locations": [
-      "West Central US"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/operationresults",
-    "apiVersions": [
-      "2021-07-01",
-      "2020-08-21-preview",
-      "2019-07-01",
-      "2018-09-01-preview",
-      "2018-06-01",
-      "2018-03-01",
-      "2018-02-01",
-      "2017-12-01",
-      "2017-09-01",
-      "2016-09-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West India",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
+    "locations": [],
     "zoneMappings": null
   },
   {
@@ -410,9 +353,10 @@
   },
   {
     "aliases": null,
-    "resourceType": "operations",
+    "resourceType": "Operations",
     "apiVersions": [
       "2021-07-01",
+      "2021-02-01-preview",
       "2020-08-21-preview",
       "2019-07-01",
       "2018-09-01-preview",

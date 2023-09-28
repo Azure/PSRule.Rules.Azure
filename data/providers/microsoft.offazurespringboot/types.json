@@ -17,9 +17,19 @@
       "2023-01-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
+      "Japan West",
       "Korea Central",
+      "North Europe",
       "South Central US",
-      "Southeast Asia"
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -31,6 +41,116 @@
     ],
     "locations": [
       "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "springbootsites",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "springbootsites/errorsummaries",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "springbootsites/springbootapps",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "springbootsites/springbootservers",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "springbootsites/summaries",
+    "apiVersions": [
+      "2023-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   }

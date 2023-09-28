@@ -143,6 +143,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -252,6 +253,10 @@
         ]
       },
       {
+        "location": "Italy North",
+        "zones": []
+      },
+      {
         "location": "Japan East",
         "zones": [
           "1",
@@ -281,15 +286,27 @@
       },
       {
         "location": "Norway East",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Poland Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Qatar Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "South Africa North",
@@ -317,7 +334,11 @@
       },
       {
         "location": "Sweden Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Switzerland North",
@@ -365,7 +386,11 @@
       },
       {
         "location": "West US 3",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       }
     ]
   },
@@ -499,6 +524,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -608,6 +634,10 @@
         ]
       },
       {
+        "location": "Italy North",
+        "zones": []
+      },
+      {
         "location": "Japan East",
         "zones": [
           "1",
@@ -637,15 +667,27 @@
       },
       {
         "location": "Norway East",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Poland Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Qatar Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "South Africa North",
@@ -673,7 +715,11 @@
       },
       {
         "location": "Sweden Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Switzerland North",
@@ -721,7 +767,11 @@
       },
       {
         "location": "West US 3",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       }
     ]
   },
@@ -750,6 +800,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -833,6 +884,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -887,6 +939,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -941,6 +994,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -1028,6 +1082,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -1061,10 +1116,12 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-06-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
       "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "Korea Central",
@@ -1100,6 +1157,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -1154,6 +1212,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -1187,10 +1246,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2023-04-15-preview",
-      "2021-06-01",
-      "2018-06-01-preview",
-      "2015-03-01-preview"
+      "2023-06-01-preview",
+      "2021-09-15-preview"
     ],
     "locations": [
       "Australia East",

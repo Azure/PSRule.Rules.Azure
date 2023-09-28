@@ -152,6 +152,7 @@
       "Microsoft.DBForMySql/flexibleServers/storage.autoGrow": "properties.storage.autoGrow",
       "Microsoft.DBforMySQL/flexibleServers/storage.autoIoScaling": "properties.storage.autoIoScaling",
       "Microsoft.DBForMySql/flexibleServers/storage.iops": "properties.storage.iops",
+      "Microsoft.DBforMySQL/flexibleServers/storage.logOnDisk": "properties.storage.logOnDisk",
       "Microsoft.DBForMySql/flexibleServers/storage.storageSizeGB": "properties.storage.storageSizeGB",
       "Microsoft.DBForMySql/flexibleServers/storage.storageSku": "properties.storage.storageSku",
       "Microsoft.DBForMySql/flexibleServers/storageProfile": "properties.storageProfile",
@@ -165,6 +166,8 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2023-06-30",
+      "2023-06-01-preview",
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
@@ -193,8 +196,10 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -280,6 +285,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "Italy North",
+        "zones": []
       },
       {
         "location": "Japan East",
@@ -399,6 +408,8 @@
     "aliases": null,
     "resourceType": "getPrivateDnsZoneSuffix",
     "apiVersions": [
+      "2023-06-30",
+      "2023-06-01-preview",
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
@@ -625,6 +636,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -660,6 +672,8 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-06-30",
+      "2023-06-01-preview",
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
@@ -688,8 +702,10 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -721,6 +737,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-06-30",
+      "2023-06-01-preview",
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
@@ -747,8 +765,10 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -780,6 +800,8 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2023-06-30",
+      "2023-06-01-preview",
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
@@ -808,8 +830,10 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -841,6 +865,8 @@
     "aliases": null,
     "resourceType": "locations/listMigrations",
     "apiVersions": [
+      "2023-06-30",
+      "2023-06-01-preview",
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-preview",
@@ -863,8 +889,10 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -914,6 +942,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1505,6 +1534,8 @@
     "aliases": null,
     "resourceType": "locations/updateMigration",
     "apiVersions": [
+      "2023-06-30",
+      "2023-06-01-preview",
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-preview",
@@ -1527,8 +1558,10 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1560,6 +1593,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-30",
+      "2023-06-01-preview",
       "2022-09-30-privatepreview",
       "2022-09-30-preview",
       "2022-06-01-privatepreview",
@@ -2437,9 +2472,11 @@
   {
     "aliases": {
       "Microsoft.DBForMySql/flexibleServers/configurations/allowedValues": "properties.allowedValues",
+      "Microsoft.DBforMySQL/flexibleServers/configurations/currentValue": "properties.currentValue",
       "Microsoft.DBForMySql/flexibleServers/configurations/dataType": "properties.dataType",
       "Microsoft.DBForMySql/flexibleServers/configurations/defaultValue": "properties.defaultValue",
       "Microsoft.DBForMySql/flexibleServers/configurations/description": "properties.description",
+      "Microsoft.DBforMySQL/flexibleServers/configurations/documentationLink": "properties.documentationLink",
       "Microsoft.DBForMySql/flexibleServers/configurations/isConfigPendingRestart": "properties.isConfigPendingRestart",
       "Microsoft.DBForMySql/flexibleServers/configurations/isDynamicConfig": "properties.isDynamicConfig",
       "Microsoft.DBForMySql/flexibleServers/configurations/isReadOnly": "properties.isReadOnly",
@@ -2461,6 +2498,20 @@
       "Microsoft.DBForMySql/flexibleServers/firewallRules/startIpAddress": "properties.startIpAddress"
     },
     "resourceType": "flexibleservers/firewallrules"
+  },
+  {
+    "aliases": {
+      "Microsoft.DBforMySQL/flexibleServers/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.DBforMySQL/flexibleServers/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
+      "Microsoft.DBforMySQL/flexibleServers/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.DBforMySQL/flexibleServers/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.DBforMySQL/flexibleServers/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.DBforMySQL/flexibleServers/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DBforMySQL/flexibleServers/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DBforMySQL/flexibleServers/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DBforMySQL/flexibleServers/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "flexibleservers/privateendpointconnections"
   },
   {
     "aliases": {

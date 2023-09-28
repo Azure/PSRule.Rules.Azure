@@ -28,6 +28,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "dstsApplications",
+    "apiVersions": [
+      "2021-08-10-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "dstsServiceAccounts",
     "apiVersions": [
       "2021-08-10-privatepreview"

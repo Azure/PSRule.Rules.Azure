@@ -44,5 +44,15 @@
     ],
     "locations": [],
     "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "RegisteredSubscriptions",
+    "apiVersions": [
+      "2023-04-13",
+      "2022-09-22-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
   }
 ]

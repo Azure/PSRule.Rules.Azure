@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2022-10-15-preview",
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2022-10-15-preview",
@@ -22,13 +24,18 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
       "Japan East",
       "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -276,6 +283,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2022-10-15-preview",

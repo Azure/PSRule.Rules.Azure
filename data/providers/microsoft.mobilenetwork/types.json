@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-01",
       "2022-12-01-privatepreview",
       "2022-11-01",
       "2022-04-01-preview"
@@ -14,6 +16,8 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-01",
       "2022-12-01-privatepreview",
       "2022-11-01",
       "2022-04-01-preview"
@@ -22,6 +26,7 @@
       "Central US EUAP",
       "East US",
       "East US 2 EUAP",
+      "UAE North",
       "West Central US",
       "West Europe"
     ],
@@ -31,6 +36,8 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-01",
       "2022-12-01-privatepreview",
       "2022-11-01",
       "2022-04-01-preview"
@@ -42,6 +49,8 @@
     "aliases": null,
     "resourceType": "packetCoreControlPlaneVersions",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-01",
       "2022-12-01-privatepreview",
       "2022-11-01",
       "2022-04-01-preview"

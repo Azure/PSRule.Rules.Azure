@@ -1,7 +1,7 @@
 [
   {
     "aliases": null,
-    "resourceType": "CacheNodes",
+    "resourceType": "cacheNodes",
     "apiVersions": [
       "2021-09-15-preview",
       "2019-12-04-preview"
@@ -56,6 +56,7 @@
     "aliases": null,
     "resourceType": "ispCustomers",
     "apiVersions": [
+      "2023-04-01-preview",
       "2022-03-21-preview"
     ],
     "locations": [
@@ -67,8 +68,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "ispCustomers/ispCacheNodes",
+    "resourceType": "ispCustomers/ispcachenodes",
     "apiVersions": [
+      "2023-04-01-preview",
       "2022-03-21-preview"
     ],
     "locations": [
@@ -90,13 +92,14 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationStatuses",
+    "resourceType": "locations/operationstatuses",
     "apiVersions": [
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
     "locations": [
-      "Central US EUAP",
+      "Korea Central",
+      "North Europe",
       "West US"
     ],
     "zoneMappings": null
@@ -105,6 +108,17 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-04-01-preview",
+      "2022-03-21-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],

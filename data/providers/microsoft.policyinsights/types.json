@@ -34,6 +34,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "componentPolicyStates",
+    "apiVersions": [
+      "2022-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "eventGridFilters",
     "apiVersions": [
       "2020-10-01"

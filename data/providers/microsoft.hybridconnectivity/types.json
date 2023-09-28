@@ -9,6 +9,7 @@
     ],
     "locations": [
       "Australia East",
+      "Australia Southeast",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -22,6 +23,7 @@
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -56,11 +58,13 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-03-15",
       "2022-05-01-preview",
       "2021-10-06-preview"
     ],
     "locations": [
       "Australia East",
+      "Australia Southeast",
       "Brazil South",
       "Canada Central",
       "Canada East",
@@ -74,6 +78,7 @@
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",

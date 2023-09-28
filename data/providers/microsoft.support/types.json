@@ -37,6 +37,31 @@
   },
   {
     "aliases": null,
+    "resourceType": "fileWorkspaces/files",
+    "apiVersions": [
+      "2022-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "lookUpResourceId",
     "apiVersions": [
       "2022-09-01-preview",

@@ -1,32 +1,6 @@
 [
   {
     "aliases": null,
-    "resourceType": "accounts",
-    "apiVersions": [
-      "2020-06-30-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Australia Southeast",
-      "Canada Central",
-      "Central US",
-      "East US",
-      "East US 2",
-      "Japan East",
-      "North Central US",
-      "North Europe",
-      "South Central US",
-      "Southeast Asia",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
     "resourceType": "bestPractices",
     "apiVersions": [
       "2022-05-04",
@@ -46,31 +20,6 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
-    "resourceType": "configurationProfileAssignmentIntents",
-    "apiVersions": [
-      "2021-03-30-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Australia Southeast",
-      "Canada Central",
-      "Central US",
-      "East US",
-      "East US 2",
-      "Japan East",
-      "North Europe",
-      "South Central US",
-      "Southeast Asia",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
     "aliases": {
       "Microsoft.Automanage/configurationProfileAssignments/accountId": "properties.accountId",
       "Microsoft.Automanage/configurationProfileAssignments/compliance": "properties.compliance",
@@ -87,8 +36,7 @@
     "resourceType": "configurationProfileAssignments",
     "apiVersions": [
       "2022-05-04",
-      "2021-04-30-preview",
-      "2020-06-30-preview"
+      "2021-04-30-preview"
     ],
     "locations": [
       "Australia East",
@@ -98,32 +46,6 @@
       "East US",
       "East US 2",
       "Japan East",
-      "North Europe",
-      "South Central US",
-      "Southeast Asia",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "configurationProfilePreferences",
-    "apiVersions": [
-      "2020-06-30-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Australia Southeast",
-      "Canada Central",
-      "Central US",
-      "East US",
-      "East US 2",
-      "Japan East",
-      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -199,12 +121,12 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-31-preview",
       "2022-06-01-preview",
       "2022-05-04",
       "2022-03-30-preview",
-      "2021-04-30-preview",
-      "2020-06-30-preview"
+      "2021-04-30-preview"
     ],
     "locations": [
       "Central US",

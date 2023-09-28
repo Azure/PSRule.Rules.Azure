@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-02-21-preview",
       "2022-12-01-preview",
       "2022-07-21-preview",
       "2022-04-04-preview",
@@ -15,12 +16,14 @@
     "aliases": null,
     "resourceType": "energyServices",
     "apiVersions": [
+      "2023-02-21-preview",
       "2022-12-01-preview",
       "2022-07-21-preview",
       "2022-04-04-preview",
       "2021-06-01-preview"
     ],
     "locations": [
+      "Brazil South",
       "East US",
       "North Europe",
       "South Central US",
@@ -32,12 +35,14 @@
     "aliases": null,
     "resourceType": "energyServices/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-02-21-preview",
       "2022-12-01-preview",
       "2022-07-21-preview",
       "2022-04-04-preview",
       "2021-06-01-preview"
     ],
     "locations": [
+      "Brazil South",
       "East US",
       "North Europe",
       "South Central US",
@@ -49,12 +54,14 @@
     "aliases": null,
     "resourceType": "energyServices/privateEndpointConnections",
     "apiVersions": [
+      "2023-02-21-preview",
       "2022-12-01-preview",
       "2022-07-21-preview",
       "2022-04-04-preview",
       "2021-06-01-preview"
     ],
     "locations": [
+      "Brazil South",
       "East US",
       "North Europe",
       "South Central US",
@@ -66,12 +73,14 @@
     "aliases": null,
     "resourceType": "energyServices/privateLinkResources",
     "apiVersions": [
+      "2023-02-21-preview",
       "2022-12-01-preview",
       "2022-07-21-preview",
       "2022-04-04-preview",
       "2021-06-01-preview"
     ],
     "locations": [
+      "Brazil South",
       "East US",
       "North Europe",
       "South Central US",
@@ -83,6 +92,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-02-21-preview",
       "2022-12-01-preview",
       "2022-07-21-preview",
       "2022-04-04-preview",
@@ -95,12 +105,14 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-02-21-preview",
       "2022-12-01-preview",
       "2022-07-21-preview",
       "2022-04-04-preview",
       "2021-06-01-preview"
     ],
     "locations": [
+      "Brazil South",
       "East US",
       "North Europe",
       "South Central US",
@@ -112,6 +124,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-02-21-preview",
       "2022-12-01-preview",
       "2022-07-21-preview",
       "2022-04-04-preview",

@@ -1,9 +1,9 @@
 [
   {
     "aliases": null,
-    "resourceType": "locations",
+    "resourceType": "EnterpriseSupports",
     "apiVersions": [
-      "2021-03-01-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "global"
@@ -12,11 +12,13 @@
   },
   {
     "aliases": null,
-    "resourceType": "Operations",
+    "resourceType": "operationStatuses",
     "apiVersions": [
-      "2021-03-01-preview"
+      "2023-05-01-preview"
     ],
-    "locations": [],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": null
   }
 ]

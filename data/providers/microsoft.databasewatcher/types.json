@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-01-preview",
       "2023-03-01-preview"
     ],
     "locations": [],
@@ -12,6 +13,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-01-preview",
       "2023-03-01-preview"
     ],
     "locations": [],

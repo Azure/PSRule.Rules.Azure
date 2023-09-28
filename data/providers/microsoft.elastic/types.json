@@ -3,6 +3,10 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-15-preview",
+      "2023-06-01",
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-09-01-preview",
       "2022-07-01-preview",
@@ -19,7 +23,20 @@
     "aliases": null,
     "resourceType": "elasticVersions",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-15-preview",
+      "2023-06-01",
+      "2023-05-01-preview",
       "2023-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "getElasticOrganizationToAzureSubscriptionMapping",
+    "apiVersions": [
+      "2023-06-15-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -28,6 +45,10 @@
     "aliases": null,
     "resourceType": "getOrganizationApiKey",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-15-preview",
+      "2023-06-01",
+      "2023-05-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [],
@@ -37,6 +58,10 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-15-preview",
+      "2023-06-01",
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-09-01-preview",
       "2022-07-01-preview",
@@ -53,6 +78,10 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-15-preview",
+      "2023-06-01",
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-09-01-preview",
       "2022-07-01-preview",
@@ -88,6 +117,10 @@
     "aliases": null,
     "resourceType": "monitors",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-15-preview",
+      "2023-06-01",
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-09-01-preview",
       "2022-07-01-preview",
@@ -121,6 +154,10 @@
     "aliases": null,
     "resourceType": "monitors/tagRules",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-15-preview",
+      "2023-06-01",
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-09-01-preview",
       "2022-07-01-preview",
@@ -154,6 +191,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-06-15-preview",
+      "2023-06-01",
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-09-01-preview",
       "2022-07-01-preview",

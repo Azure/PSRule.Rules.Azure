@@ -21,6 +21,7 @@
     },
     "resourceType": "accounts",
     "apiVersions": [
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
@@ -58,6 +59,7 @@
     },
     "resourceType": "accounts/instances",
     "apiVersions": [
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
@@ -84,6 +86,7 @@
     },
     "resourceType": "accounts/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
@@ -118,6 +121,7 @@
     },
     "resourceType": "accounts/privateEndpointConnections",
     "apiVersions": [
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
@@ -141,6 +145,7 @@
     "aliases": null,
     "resourceType": "accounts/privateLinkResources",
     "apiVersions": [
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
@@ -165,6 +170,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
@@ -177,6 +184,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
@@ -189,6 +198,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
@@ -214,6 +225,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
@@ -226,6 +239,8 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-07-01",
       "2022-12-01-preview",
       "2022-10-01",
       "2022-04-01-preview",
