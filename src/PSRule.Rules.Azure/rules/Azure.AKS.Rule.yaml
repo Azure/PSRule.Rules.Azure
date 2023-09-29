@@ -15,8 +15,8 @@ metadata:
   name: Azure.AKS.MinNodeCount
   ref: AZR-000024
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Reliability
 spec:
   type:
@@ -33,19 +33,19 @@ metadata:
   name: Azure.AKS.ManagedIdentity
   ref: AZR-000025
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'IM-2' ]
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
   condition:
-    field: 'Identity.Type'
+    field: Identity.Type
     in:
-      - 'SystemAssigned'
-      - 'UserAssigned'
+      - SystemAssigned
+      - UserAssigned
 
 ---
 # Synopsis: Use a Standard load-balancer with AKS clusters.
@@ -55,15 +55,15 @@ metadata:
   name: Azure.AKS.StandardLB
   ref: AZR-000026
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Performance Efficiency
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
   condition:
-    field: 'Properties.networkProfile.loadBalancerSku'
-    equals: 'standard'
+    field: properties.networkProfile.loadBalancerSku
+    equals: standard
 
 ---
 # Synopsis: Deploy AKS clusters with Network Policies enabled.
@@ -73,9 +73,9 @@ metadata:
   name: Azure.AKS.NetworkPolicy
   ref: AZR-000027
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'NS-1'
 spec:
@@ -95,16 +95,16 @@ metadata:
   name: Azure.AKS.AzurePolicyAddOn
   ref: AZR-000028
   tags:
-    release: 'GA'
-    ruleSet: '2020_12'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_12
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'AM-2'
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
   condition:
-    field: 'Properties.addonProfiles.azurePolicy.enabled'
+    field: properties.addonProfiles.azurePolicy.enabled
     equals: true
 
 ---
@@ -115,16 +115,16 @@ metadata:
   name: Azure.AKS.ManagedAAD
   ref: AZR-000029
   tags:
-    release: 'GA'
-    ruleSet: '2021_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2021_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'IM-2' ]
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
   condition:
-    field: 'Properties.aadProfile.managed'
+    field: properties.aadProfile.managed
     equals: true
 
 ---
@@ -135,16 +135,16 @@ metadata:
   name: Azure.AKS.AuthorizedIPs
   ref: AZR-000030
   tags:
-    release: 'GA'
-    ruleSet: '2021_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2021_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'NS-1'
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
   condition:
-    field: 'Properties.apiServerAccessProfile.authorizedIPRanges'
+    field: properties.apiServerAccessProfile.authorizedIPRanges
     greaterOrEquals: 1
 
 ---
@@ -155,9 +155,9 @@ metadata:
   name: Azure.AKS.LocalAccounts
   ref: AZR-000031
   tags:
-    release: 'preview'
-    ruleSet: '2021_06'
-    Azure.WAF/pillar: 'Security'
+    release: preview
+    ruleSet: 2021_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'PA-7' ]
 spec:
@@ -175,9 +175,9 @@ metadata:
   name: Azure.AKS.AzureRBAC
   ref: AZR-000032
   tags:
-    release: 'GA'
-    ruleSet: '2021_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2021_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'PA-7' ]
 spec:
@@ -195,9 +195,9 @@ metadata:
   name: Azure.AKS.SecretStore
   ref: AZR-000033
   tags:
-    release: 'GA'
-    ruleSet: '2021_12'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2021_12
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'IM-8'
 spec:
@@ -215,9 +215,9 @@ metadata:
   name: Azure.AKS.SecretStoreRotation
   ref: AZR-000034
   tags:
-    release: 'GA'
-    ruleSet: '2021_12'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2021_12
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'DP-7'
 spec:
@@ -237,9 +237,9 @@ metadata:
   name: Azure.AKS.HttpAppRouting
   ref: AZR-000035
   tags:
-    release: 'GA'
-    ruleSet: '2021_12'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2021_12
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'NS-1', 'DP-4' ]
 spec:
@@ -260,9 +260,9 @@ metadata:
   name: Azure.AKS.AutoUpgrade
   ref: AZR-000036
   tags:
-    release: 'GA'
-    ruleSet: '2021_12'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2021_12
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'PV-7'
 spec:
@@ -283,9 +283,9 @@ metadata:
   name: Azure.AKS.UseRBAC
   ref: AZR-000038
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1','PA-7' ]
 spec:
@@ -303,8 +303,8 @@ metadata:
   name: Azure.AKS.Name
   ref: AZR-000039
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Operational Excellence
 spec:
   type:
@@ -328,8 +328,8 @@ metadata:
   name: Azure.AKS.DNSPrefix
   ref: AZR-000040
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Operational Excellence
 spec:
   type:
@@ -353,9 +353,9 @@ metadata:
   name: Azure.AKS.ContainerInsights
   ref: AZR-000041
   tags:
-    release: 'GA'
-    ruleSet: '2021_09'
-    Azure.WAF/pillar: 'Operational Excellence'
+    release: GA
+    ruleSet: 2021_09
+    Azure.WAF/pillar: Operational Excellence
   labels:
     Azure.MCSB.v1/control: 'LT-3'
 spec:

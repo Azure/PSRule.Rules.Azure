@@ -6,7 +6,7 @@
     "ResourceName": "cluster-A",
     "Name": "cluster-A",
     "Properties": {
-      "kubernetesVersion": "1.25.6",
+      "kubernetesVersion": "1.26.6",
       "dnsPrefix": "cluster-A",
       "fqdn": "cluster-A-00000000.nnn.region.azmk8s.io",
       "agentPoolProfiles": [
@@ -18,7 +18,7 @@
           "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
           "maxPods": 30,
           "type": "AvailabilitySet",
-          "orchestratorVersion": "1.25.6",
+          "orchestratorVersion": "1.26.6",
           "osType": "Linux",
           "enableAutoScaling": false,
           "availabilityZones": null
@@ -172,7 +172,7 @@
     "ParentResource": null,
     "Properties": {
       "provisioningState": "Succeeded",
-      "kubernetesVersion": "1.25.6",
+      "kubernetesVersion": "1.26.6",
       "dnsPrefix": "cluster-C",
       "fqdn": "cluster-C-00000000.nnn.region.azmk8s.io",
       "agentPoolProfiles": [
@@ -186,7 +186,7 @@
           "maxPods": 50,
           "type": "VirtualMachineScaleSets",
           "provisioningState": "Succeeded",
-          "orchestratorVersion": "1.25.6",
+          "orchestratorVersion": "1.26.6",
           "osType": "Linux",
           "enableAutoScaling": false
         }
@@ -300,7 +300,7 @@
     "Plan": null,
     "Properties": {
       "provisioningState": "Succeeded",
-      "kubernetesVersion": "1.25.6",
+      "kubernetesVersion": "1.26.6",
       "dnsPrefix": "cluster-D",
       "fqdn": "cluster-D-nnnnnnnn.hcp.region.azmk8s.io",
       "agentPoolProfiles": [
@@ -313,7 +313,7 @@
           "maxPods": 50,
           "type": "VirtualMachineScaleSets",
           "provisioningState": "Succeeded",
-          "orchestratorVersion": "1.25.6",
+          "orchestratorVersion": "1.26.6",
           "nodeLabels": {},
           "mode": "System",
           "osType": "Linux",
@@ -495,7 +495,7 @@
       "powerState": {
         "code": "Running"
       },
-      "orchestratorVersion": "1.25.6",
+      "orchestratorVersion": "1.26.6",
       "nodeLabels": {},
       "mode": "System",
       "osType": "Linux",
@@ -565,7 +565,7 @@
       "powerState": {
         "code": "Running"
       },
-      "kubernetesVersion": "1.25.6",
+      "kubernetesVersion": "1.26.6",
       "dnsPrefix": "cluster-F",
       "fqdn": "cluster-F-00000000.hcp.region.azmk8s.io",
       "azurePortalFQDN": "cluster-F-00000000.portal.hcp.region.azmk8s.io",
@@ -586,7 +586,7 @@
           "powerState": {
             "code": "Running"
           },
-          "orchestratorVersion": "1.25.6",
+          "orchestratorVersion": "1.26.6",
           "nodeLabels": {},
           "mode": "System",
           "osType": "Linux",
@@ -793,7 +793,7 @@
     "ResourceName": "cluster-G",
     "Name": "cluster-G",
     "Properties": {
-      "kubernetesVersion": "1.25.6",
+      "kubernetesVersion": "1.26.6",
       "dnsPrefix": "cluster-G",
       "fqdn": "cluster-G-00000000.nnn.region.azmk8s.io",
       "agentPoolProfiles": [
@@ -805,7 +805,7 @@
           "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
           "maxPods": 30,
           "type": "VirtualMachineScaleSets",
-          "orchestratorVersion": "1.25.6",
+          "orchestratorVersion": "1.26.6",
           "osType": "Linux",
           "enableAutoScaling": false,
           "availabilityZones": null
@@ -968,7 +968,7 @@
     "ResourceName": "cluster-H",
     "Name": "cluster-H",
     "Properties": {
-      "kubernetesVersion": "1.25.6",
+      "kubernetesVersion": "1.26.6",
       "dnsPrefix": "cluster-H",
       "fqdn": "cluster-H-00000000.nnn.region.azmk8s.io",
       "agentPoolProfiles": [
@@ -980,7 +980,7 @@
           "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
           "maxPods": 30,
           "type": "VirtualMachineScaleSets",
-          "orchestratorVersion": "1.25.6",
+          "orchestratorVersion": "1.26.6",
           "osType": "Linux",
           "enableAutoScaling": false,
           "availabilityZones": []
@@ -1147,7 +1147,7 @@
     "ResourceName": "cluster-I",
     "Name": "cluster-I",
     "Properties": {
-      "kubernetesVersion": "1.25.6",
+      "kubernetesVersion": "1.26.6",
       "dnsPrefix": "cluster-I",
       "fqdn": "cluster-I-00000000.nnn.region.azmk8s.io",
       "agentPoolProfiles": [
@@ -1159,7 +1159,7 @@
           "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
           "maxPods": 30,
           "type": "VirtualMachineScaleSets",
-          "orchestratorVersion": "1.25.6",
+          "orchestratorVersion": "1.26.6",
           "osType": "Linux",
           "enableAutoScaling": false,
           "availabilityZones": null
@@ -1325,7 +1325,7 @@
     "ResourceName": "cluster-J",
     "Name": "cluster-J",
     "Properties": {
-      "kubernetesVersion": "1.25.6",
+      "kubernetesVersion": "1.26.6",
       "dnsPrefix": "cluster-J",
       "fqdn": "cluster-J-00000000.nnn.region.azmk8s.io",
       "agentPoolProfiles": [
@@ -1337,7 +1337,7 @@
           "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
           "maxPods": 30,
           "type": "VirtualMachineScaleSets",
-          "orchestratorVersion": "1.25.6",
+          "orchestratorVersion": "1.26.6",
           "osType": "Linux",
           "enableAutoScaling": false,
           "availabilityZones": null
@@ -1510,7 +1510,7 @@
       "powerState": {
         "code": "Running"
       },
-      "kubernetesVersion": "1.25.6",
+      "kubernetesVersion": "1.26.6",
       "dnsPrefix": "cluster-K",
       "fqdn": "cluster-K-00000000.hcp.eastus.azmk8s.io",
       "azurePortalFQDN": "cluster-K-00000000.portal.hcp.eastus.azmk8s.io",
@@ -1532,7 +1532,7 @@
           "powerState": {
             "code": "Running"
           },
-          "orchestratorVersion": "1.25.6",
+          "orchestratorVersion": "1.26.6",
           "mode": "System",
           "osType": "Linux",
           "osSKU": "Ubuntu",

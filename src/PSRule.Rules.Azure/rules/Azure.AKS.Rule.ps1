@@ -10,7 +10,7 @@ Rule 'Azure.AKS.Version' -Ref 'AZR-000015' -Type 'Microsoft.ContainerService/man
     $minVersion = $Configuration.GetValueOrDefault('Azure_AKSMinimumVersion', $Configuration.AZURE_AKS_CLUSTER_MINIMUM_VERSION);
     if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
         $upgradeChannel = $TargetObject.properties.autoUpgradeProfile.upgradeChannel
-        $expectedUpgradeChannels = @('rapid', 'stable', 'node-image')
+        $expectedUpgradeChannels = @('rapid', 'stable')
         if ($upgradeChannel -in $expectedUpgradeChannels -and !(IsExport)) {
             $Assert.Pass();
         }

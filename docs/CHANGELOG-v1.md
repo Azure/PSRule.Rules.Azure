@@ -36,6 +36,11 @@ What's changed since pre-release v1.30.0-B0080:
       [#2423](https://github.com/Azure/PSRule.Rules.Azure/issues/2423)
     - Check that Container Registries disables anonymous pull access by @BenjaminEngeset.
       [#2422](https://github.com/Azure/PSRule.Rules.Azure/issues/2422)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.26.6` by @BernieWhite.
+      [#2404](https://github.com/Azure/PSRule.Rules.Azure/issues/2404)
+      - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
 - Engineering:
   - Updated resource providers and policy aliases.
     [#2442](https://github.com/Azure/PSRule.Rules.Azure/pull/2442)
@@ -43,6 +48,9 @@ What's changed since pre-release v1.30.0-B0080:
     [#2436](https://github.com/Azure/PSRule.Rules.Azure/pull/2436)
   - Bump xunit.runner.visualstudio to v2.5.1.
     [#2435](https://github.com/Azure/PSRule.Rules.Azure/pull/2435)
+- Bug fixes:
+  - Fixed `Azure.AKS.Version` by excluding `node-image` channel by @BernieWhite.
+    [#2446](https://github.com/Azure/PSRule.Rules.Azure/issues/2446)
 
 ## v1.30.0-B0080 (pre-release)
 

@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-09-29
 severity: Important
 pillar: Reliability
 category: Requirements
@@ -15,12 +16,32 @@ AKS control plane and nodes pools should use a current stable release.
 
 ## DESCRIPTION
 
-The AKS support policy for Kubernetes is include N-2 stable minor releases.
-Additionally two patch releases for each minor version are supported.
+The AKS Kubernetes support policy provides support for the latest generally available (GA) three minor versions (N-2).
+This version support policy is based on the Kubernetes community support policy, who maintain the Kubernetes project.
+As the Kubernetes releases new minor versions, the old minor versions are deprecated and eventually removed from support.
+
+When your cluster or cluster nodes are running a version that is no longer supported, you may:
+
+- Encounter issues that may adversely affect the reliability of your cluster and cause down time.
+- Have bugs or security vulnerabilities that have already been mitigated by the Kubernetes community.
+- Introduce additional risk to your cluster and applications when you upgrade to a supported version.
+
+Additionally, AKS provides _Platform Support_ for subset of components following an N-3.
+
+AKS supports a feature called cluster auto-upgrade, which can be used to reduce operational overhead of upgrading your cluster.
+This feature allows you to configure your cluster to automatically upgrade to the latest supported minor version of Kubernetes.
+When you enable cluster auto-upgrade, the control plane and node pools are upgraded to the latest supported minor version.
+Two channels are available for cluster auto-upgrade that maintain Kubernetes minor versions `stable` and `rapid`.
+For details on the differences between the two channels, see the references below.
+
+You are able to define a planned maintenance window to schedule and control upgrades to your cluster.
+Use the Planned Maintenance window to schedule upgrades to your cluster during times of low business impact.
+Alternatively, consider using blue / green clusters.
 
 ## RECOMMENDATION
 
 Consider upgrading AKS control plane and nodes pools to the latest stable version of Kubernetes.
+Also consider enabling cluster auto-upgrade within a maintenance window to minimize operational overhead of cluster upgrades.
 
 ## EXAMPLES
 
@@ -28,14 +49,15 @@ Consider upgrading AKS control plane and nodes pools to the latest stable versio
 
 To deploy AKS clusters that pass this rule:
 
-- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable` or `node-image` or set `properties.kubernetesVersion` to a newer stable version.
+- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable`. OR
+- Set `properties.kubernetesVersion` to a newer stable version.
 
 For example:
 
 ```json
 {
     "type": "Microsoft.ContainerService/managedClusters",
-    "apiVersion": "2021-10-01",
+    "apiVersion": "2023-07-01",
     "name": "[parameters('clusterName')]",
     "location": "[parameters('location')]",
     "identity": {
@@ -45,7 +67,7 @@ For example:
         }
     },
     "properties": {
-        "kubernetesVersion": "1.25.6",
+        "kubernetesVersion": "1.26.6",
         "enableRBAC": true,
         "dnsPrefix": "[parameters('dnsPrefix')]",
         "agentPoolProfiles": "[variables('allPools')]",
@@ -107,12 +129,13 @@ For example:
 
 To deploy AKS clusters that pass this rule:
 
-- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable` or `node-image` or set `properties.kubernetesVersion` to a newer stable version.
+- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable`. OR
+- Set `properties.kubernetesVersion` to a newer stable version.
 
 For example:
 
 ```bicep
-resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
+resource cluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
   location: location
   name: clusterName
   identity: {
@@ -122,7 +145,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
     }
   }
   properties: {
-    kubernetesVersion: '1.25.6'
+    kubernetesVersion: '1.26.6'
     enableRBAC: true
     dnsPrefix: dnsPrefix
     agentPoolProfiles: allPools
@@ -184,13 +207,13 @@ az aks update -n '<name>' -g '<resource_group>' --auto-upgrade-channel 'stable'
 ```
 
 ```bash
-az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.25.6'
+az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.26.6'
 ```
 
 ### Configure with Azure PowerShell
 
 ```powershell
-Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.25.6'
+Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.26.6'
 ```
 
 ## NOTES
@@ -200,10 +223,17 @@ To configure this rule:
 
 - Override the `AZURE_AKS_CLUSTER_MINIMUM_VERSION` configuration value with the minimum Kubernetes version.
 
+If you must maintain AKS clusters for longer then the community support period, consider switch to Long Term Support (LTS).
+AKS LTS provides support for a specific Kubernetes version for a longer period of time.
+The first LTS release is 1.27.
+
 ## LINKS
 
-- [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
+- [Target and non-functional requirements](https://learn.microsoft.com/azure/well-architected/resiliency/design-requirements#meet-application-platform-requirements)
 - [Automatically upgrade an Azure Kubernetes Service cluster](https://learn.microsoft.com/azure/aks/auto-upgrade-cluster)
-- [Supported Kubernetes versions in Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/supported-kubernetes-versions)
-- [Support policies for Azure Kubernetes Service](https://docs.microsoft.com/azure/aks/support-policies)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Supported Kubernetes versions in Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/supported-kubernetes-versions#kubernetes-version-support-policy)
+- [Support policies for Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/support-policies)
+- [Platform support policy](https://learn.microsoft.com/azure/aks/supported-kubernetes-versions#platform-support-policy)
+- [Blue-green deployment of AKS clusters](https://learn.microsoft.com/azure/architecture/guide/aks/blue-green-deployment-for-aks)
+- [Long Term Support (LTS)](https://learn.microsoft.com/azure/aks/supported-kubernetes-version#long-term-support-lts)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
