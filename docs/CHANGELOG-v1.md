@@ -46,6 +46,9 @@ What's changed since pre-release v1.30.0-B0080:
     - Updated `Azure.AKS.Version` to use latest stable version `1.26.6` by @BernieWhite.
       [#2404](https://github.com/Azure/PSRule.Rules.Azure/issues/2404)
       - Use `AZURE_AKS_CLUSTER_MINIMUM_VERSION` to configure the minimum version of the cluster.
+- General improvements:
+  - Add source link for rule in docs by @BernieWhite.
+    [#2115](https://github.com/Azure/PSRule.Rules.Azure/issues/2115)
 - Engineering:
   - Updated resource providers and policy aliases.
     [#2442](https://github.com/Azure/PSRule.Rules.Azure/pull/2442)
