@@ -17,7 +17,7 @@ Document 'index' {
     @"
 !!! Info
     The rule _release_ indicates if the Azure feature is _generally available (GA)_ or available under _preview_.
-    Features provided under previews may have additional limits, availablity restrictions, or [terms][1].
+    Features provided under previews may have additional limits, availability restrictions, or [terms][1].
     By default, PSRule for Azure will not provide recommendations that relate to preview features.
     To include rules for preview features see [working with baselines][2].
 

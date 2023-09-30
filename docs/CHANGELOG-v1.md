@@ -30,6 +30,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.30.0-B0080:
 
+- New features:
+  - Added September 2023 baselines `Azure.GA_2023_09` and `Azure.Preview_2023_09` by @BernieWhite.
+    [#2451](https://github.com/Azure/PSRule.Rules.Azure/issues/2451)
+    - Includes rules released before or during September 2023.
+    - Marked `Azure.GA_2023_06` and `Azure.Preview_2023_06` baselines as obsolete.
 - New rules:
   - Azure Container Registry:
     - Check that Container Registries restricts network access by @BenjaminEngeset.
