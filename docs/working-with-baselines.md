@@ -65,7 +65,7 @@ In additional to quarterly baselines, some additional baselines exist:
 - `Azure.Default` - Includes rules for GA Azure features.
   This is the default baseline that is used when no baseline is specified.
   Rules for Azure features that are within the scope of a public or private preview are not included.
-- `Azure.Preview` - Includes rules for GA and preview Azure features.
+- `Azure.Preview` - Includes all rules for GA and preview Azure features.
 - `Azure.All` - Includes all Azure rules shipped with PSRule for Azure.
   This is functionally the same as `Azure.Preview` however intended for internal use only.
 - `Azure.MCSB.v1` - Includes rules related to Microsoft cloud security benchmark (MCSB) controls.
