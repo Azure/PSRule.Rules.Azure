@@ -1,4 +1,5 @@
 ---
+reviewed: 2023-10-01
 severity: Important
 pillar: Performance Efficiency
 category: Design for performance efficiency
@@ -16,12 +17,15 @@ Disable session affinity to prevent unbalanced distribution.
 
 Container apps allows you to configure session affinity (sticky sessions).
 When enabled, this feature route requests from the same client to the same replica.
+This feature might be useful for stateful applications that require a consistent connection to the same replica.
 
-This feature might be useful for stateful applications that require a consistent connection to the same replica. However, if your application does not store large amounts of state or cached data in memory (stateless application design pattern), session affinity might decrease your throughput because one replica could get overloaded with requests, while others are dormant.
+However, for stateless applications there is drawbacks to using session affinity.
+As connections are opened and closed, a subset of replicas might become overloaded with requests, while others are dormant.
+This can lead to: poor performance and resource utilization; less predictable scaling.
 
 ## RECOMMENDATION
 
-Consider disabling session affinity to evenly distribute requests across each replica.
+Consider using stateful application design and disabling session affinity to evenly distribute requests across each replica.
 
 ## EXAMPLES
 
@@ -36,28 +40,30 @@ For example:
 ```json
 {
   "type": "Microsoft.App/containerApps",
-  "apiVersion": "2022-10-01",
+  "apiVersion": "2023-05-01",
   "name": "[parameters('appName')]",
   "location": "[parameters('location')]",
   "identity": {
-    "type": "SystemAssigned",
-    "userAssignedIdentities": {}
+    "type": "SystemAssigned"
   },
   "properties": {
-    "environmentId": "[parameters('environmentId')]",
+    "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
     "template": {
-      "revisionSuffix": "",
+      "revisionSuffix": "[parameters('revision')]",
       "containers": "[variables('containers')]"
     },
     "configuration": {
       "ingress": {
-        "external": false,
+        "allowInsecure": false,
         "stickySessions": {
-          "affinity": "None"
+          "affinity": "none"
         }
       }
     }
-  }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]"
+  ]
 }
 ```
 
@@ -70,33 +76,37 @@ To deploy Container Apps that pass this rule:
 For example:
 
 ```bicep
-resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
+resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
   name: appName
   location: location
   identity: {
     type: 'SystemAssigned'
-    userAssignedIdentities: {}
   }
-   properties: {
-    environmentId: environmentId
+  properties: {
+    environmentId: containerEnv.id
     template: {
-      revisionSuffix: ''
+      revisionSuffix: revision
       containers: containers
     }
     configuration: {
       ingress: {
-        external: false
+        allowInsecure: false
         stickySessions: {
           affinity: 'none'
+        }
       }
     }
   }
 }
 ```
 
+### NOTES
+
+This rule may generate false positive results for stateful applications.
+
 ## LINKS
 
-- [Avoid a requirement to store server-side session state](https://learn.microsoft.com/azure/well-architected/scalability/design-checklist#implementation)
-- [Session affinity](https://learn.microsoft.com/azure/well-architected/scalability/design-efficiency#improve-scalability-with-session-affinity)
+- [Avoid a requirement to store server-side session state](https://learn.microsoft.com/azure/well-architected/scalability/performance-efficiency#implementation)
+- [Session affinity](https://learn.microsoft.com/azure/well-architected/scalability/design-efficiency#improve-performance-with-session-affinity)
 - [Session Affinity in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/sticky-sessions)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#ingressstickysessions)

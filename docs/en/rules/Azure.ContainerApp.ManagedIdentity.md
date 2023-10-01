@@ -41,17 +41,33 @@ For example:
 ```json
 {
   "type": "Microsoft.App/containerApps",
-  "apiVersion": "2022-10-01",
+  "apiVersion": "2023-05-01",
   "name": "[parameters('appName')]",
   "location": "[parameters('location')]",
   "identity": {
-    "type": "SystemAssigned",
-    "userAssignedIdentities": {}
+    "type": "SystemAssigned"
   },
-  "properties": {}
+  "properties": {
+    "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
+    "template": {
+      "revisionSuffix": "[parameters('revision')]",
+      "containers": "[variables('containers')]"
+    },
+    "configuration": {
+      "ingress": {
+        "allowInsecure": false,
+        "stickySessions": {
+          "affinity": "none"
+        }
+      }
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]"
+  ]
 }
 ```
- 
+
 ### Configure with Bicep
 
 To deploy Container Apps that pass this rule:
@@ -62,20 +78,34 @@ To deploy Container Apps that pass this rule:
 For example:
 
 ```bicep
-resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
+resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
   name: appName
   location: location
   identity: {
     type: 'SystemAssigned'
-    userAssignedIdentities: {}
   }
-  properties: {}
+  properties: {
+    environmentId: containerEnv.id
+    template: {
+      revisionSuffix: revision
+      containers: containers
+    }
+    configuration: {
+      ingress: {
+        allowInsecure: false
+        stickySessions: {
+          affinity: 'none'
+        }
+      }
+    }
+  }
 }
 ```
 
 ## NOTES
 
 Using managed identities in scale rules isn't supported.
+Init containers can't access managed identities.
 
 ## LINKS
 

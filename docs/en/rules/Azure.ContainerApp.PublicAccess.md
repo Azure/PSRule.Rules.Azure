@@ -16,7 +16,8 @@ Ensure public network access for Container Apps environment is disabled.
 
 Container apps environments allows you to expose your container app to the Internet.
 
-Container apps environments deployed as external resources are available for public requests. External environments are deployed with a virtual IP on an external, public facing IP address.
+Container apps environments deployed as external resources are available for public requests.
+External environments are deployed with a virtual IP on an external, public facing IP address.
 
 Disable public network access to improve security by exposing the Container Apps environment through an internal load balancer.
 
