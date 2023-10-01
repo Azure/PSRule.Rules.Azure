@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-07-26
+reviewed: 2023-10-01
 severity: Important
 pillar: Security
 category: Authentication
@@ -21,7 +21,7 @@ To authenticate to Azure resources, Cognitive Services can use managed identitie
 Using Azure managed identities have the following benefits:
 
 - You don't need to store or manage credentials.
-Azure automatically generates tokens and performs rotation.
+  Azure automatically generates tokens and performs rotation.
 - You can use managed identities to authenticate to any Azure service that supports Azure AD authentication.
 - Managed identities can be used without any additional cost.
 
@@ -42,24 +42,24 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.CognitiveServices/accounts",
-    "apiVersion": "2022-03-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "SystemAssigned"
+  "type": "Microsoft.CognitiveServices/accounts",
+  "apiVersion": "2023-05-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "sku": {
+    "name": "S0"
+  },
+  "kind": "CognitiveServices",
+  "properties": {
+    "publicNetworkAccess": "Disabled",
+    "networkAcls": {
+      "defaultAction": "Deny"
     },
-    "sku": {
-        "name": "S0"
-    },
-    "kind": "CognitiveServices",
-    "properties": {
-        "publicNetworkAccess": "Disabled",
-        "networkAcls": {
-            "defaultAction": "Deny"
-        },
-        "disableLocalAuth": true
-    }
+    "disableLocalAuth": true
+  }
 }
 ```
 
@@ -73,7 +73,7 @@ To deploy accounts that pass this rule:
 For example:
 
 ```bicep
-resource account 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
+resource account 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   name: name
   location: location
   identity: {
@@ -93,8 +93,18 @@ resource account 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+```text
+/providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418
+```
+
 ## LINKS
 
 - [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
-- [Azure Policy built-in policy definitions for Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/policy-reference)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts)
+- [Azure Policy built-in policy definitions for Azure AI services](https://learn.microsoft.com/azure/ai-services/policy-reference)
+- [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/cognitive-services-security-baseline#im-1-use-centralized-identity-and-authentication-system)
+- [IM-3: Manage application identities securely and automatically](https://learn.microsoft.com/security/benchmark/azure/baselines/cognitive-services-security-baseline#im-3-manage-application-identities-securely-and-automatically)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts)

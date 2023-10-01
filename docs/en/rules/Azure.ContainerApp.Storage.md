@@ -16,7 +16,8 @@ Use of Azure Files volume mounts to persistent storage container data.
 
 Container apps allows you to use different types of storage. This can be achieved by using volume mounts.
 
-There are considerations to be taken, whether persistant storage is suitable for your app or if non-persistant storage is suitable. Apps may require no storage.
+There are considerations to be taken, whether persistent storage is suitable for your app or if non-persistent storage is suitable.
+Apps may require no storage.
 
 By default all files created inside a container are stored on a writable container layer.
 
@@ -37,7 +38,7 @@ Some considerations when using storage volume mounts:
 - Azure Files volume
   - Files written under the mount location are persisted to the file share.
   - Files in the share are available via the mount location.
-  - Multiple containers can mount the same file share, including ones that are in another replica, revision, or container app
+  - Multiple containers can mount the same file share, including ones that are in another replica, revision, or container app.
   - All containers that mount the share can access files written by any other container or method.
   - More than one Azure Files volume can be mounted in a single container.
 
@@ -158,6 +159,7 @@ resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
   }
 }
 ```
+
 ## NOTES
 
 To enable Azure Files storage, a storage definition must be defined in the Container Apps Environment.

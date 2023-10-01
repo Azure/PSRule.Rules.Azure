@@ -38,18 +38,24 @@ For example:
 ```json
 {
   "type": "Microsoft.App/containerApps",
-  "apiVersion": "2022-10-01",
+  "apiVersion": "2023-05-01",
   "name": "[parameters('appName')]",
   "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
   "properties": {
-    "managedEnvironmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
+    "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
     "template": {
-      "revisionSuffix": "",
+      "revisionSuffix": "[parameters('revision')]",
       "containers": "[variables('containers')]"
     },
     "configuration": {
       "ingress": {
-        "allowInsecure": false
+        "allowInsecure": false,
+        "stickySessions": {
+          "affinity": "none"
+        }
       }
     }
   },
@@ -68,18 +74,24 @@ To deploy resource that pass this rule:
 For example:
 
 ```bicep
-resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
+resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
   name: appName
   location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   properties: {
-    managedEnvironmentId: containerEnv.id
+    environmentId: containerEnv.id
     template: {
-      revisionSuffix: ''
+      revisionSuffix: revision
       containers: containers
     }
     configuration: {
       ingress: {
         allowInsecure: false
+        stickySessions: {
+          affinity: 'none'
+        }
       }
     }
   }
