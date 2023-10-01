@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Report errors or unexpected behaviour
+about: Report errors or unexpected behavior
 labels: 'bug', 'Needs: Triage :mag:'
 ---
 
@@ -31,7 +31,7 @@ Steps to reproduce the issue:
 **Module in use and version:**
 
 - Module: PSRule.Rules.Azure
-- Version: **[e.g. 1.24.0]**
+- Version: **[e.g. 1.29.0]**
 
 Captured output from `$PSVersionTable`:
 
