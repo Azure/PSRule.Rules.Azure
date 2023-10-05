@@ -28,6 +28,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.30.0:
+
+- Bug fixes:
+  - Fixed `Azure.Resource.AllowedRegions` which was failing when no allowed regions were configured by @BernieWhite.
+    [#2461](https://github.com/Azure/PSRule.Rules.Azure/issues/2461)
+
 ## v1.30.0
 
 What's changed since v1.29.0:
