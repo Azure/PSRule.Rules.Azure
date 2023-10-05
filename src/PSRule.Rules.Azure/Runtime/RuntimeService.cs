@@ -74,7 +74,12 @@ namespace PSRule.Rules.Azure.Runtime
             if (locations == null || locations.Length == 0)
                 return;
 
-            _AllowedLocations = new HashSet<string>(locations, LocationHelper.Comparer);
+            _AllowedLocations = new HashSet<string>(LocationHelper.Comparer);
+            for (var i = 0; i < locations.Length; i++)
+            {
+                if (!string.IsNullOrEmpty(locations[i]))
+                    _AllowedLocations.Add(locations[i]);
+            }
         }
 
         /// <inheritdoc/>
@@ -82,6 +87,7 @@ namespace PSRule.Rules.Azure.Runtime
         {
             return location == null ||
                 _AllowedLocations == null ||
+                _AllowedLocations.Count == 0 ||
                 _AllowedLocations.Contains(location);
         }
 
