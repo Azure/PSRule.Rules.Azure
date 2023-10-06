@@ -4,3 +4,28 @@
 #
 # Validation rules for Azure Machine Learning
 #
+
+---
+# Synopsis: ML Compute Instances have idle shutdown enabled 
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ML.ComputeIdleShutdown
+  ref: AZR-000394
+  tags:
+    release: GA
+    ruleSet: 2023_10
+    Azure.WAF/pillar: Cost Optimization
+spec:
+  type:
+  - Microsoft.MachineLearningServices/workspaces/computes
+  condition:
+    allOf:
+      - field: computeType
+        equals: 'ComputeInstance'
+      - field: properties.parameters.idleTimeBeforeShutdown
+        exists: true
+      - field: properties.parameters.idleTimeBeforeShutdown
+        isNumeric: true
+
+# Synopsis: ML Compute clusters should have local authentication methods disabled 
