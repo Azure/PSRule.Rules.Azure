@@ -20,6 +20,7 @@ namespace PSRule.Rules.Azure
             var resource = GetResourceObject("Microsoft.ContainerService/managedClusters");
             await visitor.VisitAsync(context, resource);
 
+            Assert.Equal("rg-test", resource["resourceGroupName"].Value<string>());
             Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", resource["subscriptionId"].Value<string>());
             Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", resource["tenantId"].Value<string>());
         }
