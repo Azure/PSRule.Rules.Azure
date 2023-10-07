@@ -12304,7 +12304,7 @@ The Visual Studio Code extension includes a built-in task to test locally and co
 <p>To learn about Visual Studio Code support see the <a href="https://marketplace.visualstudio.com/items?itemName=bewhite.psrule-vscode">marketplace extension</a>.</p>
 <p>For best results, configure the <code>PSRule.Rules.Azure</code> module using <code>ps-rule.yaml</code> by setting <code>requires</code> and <code>include</code> options.</p>
 <div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-4-1"><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">requires</span><span class="p">:</span>
-</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">PSRule.Rules.Azure</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=1.27.0&#39;</span>
+</span><span id="__span-4-2"><a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span><span class="nt">PSRule.Rules.Azure</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;&gt;=1.29.0&#39;</span>
 </span><span id="__span-4-3"><a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
 </span><span id="__span-4-4"><a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nt">include</span><span class="p">:</span>
 </span><span id="__span-4-5"><a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span><span class="nt">module</span><span class="p">:</span>
@@ -12445,7 +12445,7 @@ To build PSRule for Azure from source code:</p>
 <tr>
 <td>Windows, MacOS, Linux</td>
 <td>PowerShell</td>
-<td>Version 7.2 or greater is support.</td>
+<td>Version 7.3 or greater is support.</td>
 <td><a href="https://github.com/PowerShell/PowerShell#get-powershell">link</a></td>
 </tr>
 <tr>
@@ -12457,13 +12457,13 @@ To build PSRule for Azure from source code:</p>
 <tr>
 <td>-</td>
 <td>.NET</td>
-<td>.NET SDK v6 is required.</td>
+<td>.NET SDK v7 is required.</td>
 <td><a href="https://dotnet.microsoft.com/en-us/download/dotnet/6.0">link</a></td>
 </tr>
 <tr>
 <td>-</td>
 <td>Bicep CLI</td>
-<td>PSRule depends on the Bicep CLI to decompile (expand) Bicep modules to ARM</td>
+<td>PSRule depends on the Bicep CLI to expand Bicep modules to ARM</td>
 <td><a href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install">link</a></td>
 </tr>
 </tbody>
@@ -12524,7 +12524,7 @@ After downloading the modules, copy the module directories to devices with restr
   <small>
     
       Last update:
-      2023-07-04
+      2023-10-08
     
   </small>
 </div>
