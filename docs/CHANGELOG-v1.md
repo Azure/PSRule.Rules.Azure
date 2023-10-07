@@ -28,6 +28,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.30.2:
+
+- Engineering:
+  - Bump development tools to .NET 7.0 SDK by @BernieWhite.
+    [#1870](https://github.com/Azure/PSRule.Rules.Azure/issues/1870)
+
 ## v1.30.2
 
 What's changed since v1.30.1:
