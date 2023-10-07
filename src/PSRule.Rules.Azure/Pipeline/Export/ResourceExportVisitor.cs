@@ -20,6 +20,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string PROPERTY_ZONES = "zones";
         private const string PROPERTY_RESOURCES = "resources";
         private const string PROPERTY_SUBSCRIPTIONID = "subscriptionId";
+        private const string PROPERTY_RESOURCEGROUPNAME = "resourceGroupName";
         private const string PROPERTY_KIND = "kind";
         private const string PROPERTY_SHAREDKEY = "sharedKey";
         private const string PROPERTY_NETWORKPROFILE = "networkProfile";
@@ -128,8 +129,8 @@ namespace PSRule.Rules.Azure.Pipeline.Export
 
             var resourceContext = new ResourceContext(context, tenantId);
 
-            // Set the subscription Id.
-            SetSubscriptionId(resource, resourceId);
+            // Set subscriptionId and resourceGroupName.
+            SetResourceIdentifiers(resource, resourceType, resourceId);
 
             // Ignore expand of these.
             if (string.Equals(resourceType, TYPE_VISUALSTUDIO_ACCOUNT, StringComparison.OrdinalIgnoreCase))
@@ -181,9 +182,16 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                 resource.Add(PROPERTY_PROPERTIES, properties);
         }
 
-        private static void SetSubscriptionId(JObject resource, string resourceId)
+        /// <summary>
+        /// Set <c>subscriptionId</c> and <c>resourceGroupName</c> on the resource based on the provided <c>resourceId</c>.
+        /// </summary>
+        private static void SetResourceIdentifiers(JObject resource, string resourceType, string resourceId)
         {
-            if (ResourceHelper.TrySubscriptionId(resourceId, out var subscriptionId))
+            if (ResourceHelper.TryResourceGroup(resourceId, out var subscriptionId, out var resourceGroupName) &&
+                !string.Equals(resourceType, TYPE_RESOURCES_RESOURCEGROUP, StringComparison.OrdinalIgnoreCase))
+                resource.Add(PROPERTY_RESOURCEGROUPNAME, resourceGroupName);
+            
+            if (!string.IsNullOrEmpty(subscriptionId))
                 resource.Add(PROPERTY_SUBSCRIPTIONID, subscriptionId);
         }
 
