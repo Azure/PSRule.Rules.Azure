@@ -28,10 +28,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.30.2
+
 What's changed since v1.30.1:
 
 - Bug fixes:
-  - Fixed binding of results resourceId and resourceGroupName by @BenrieWhite.
+  - Fixed binding of results resourceId and resourceGroupName by @BernieWhite.
     [#2460](https://github.com/Azure/PSRule.Rules.Azure/issues/2460)
 
 ## v1.30.1
