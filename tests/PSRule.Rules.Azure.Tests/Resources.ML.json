@@ -11,6 +11,7 @@
     "properties": {
         "managedResourceGroupId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg",
         "computeType": "ComputeInstance",
+        "disableLocalAuth": True,
         "properties": {
             "vmSize": "STANDARD_D2_V2",
             "idleTimeBeforeShutdown": "PT15M"
