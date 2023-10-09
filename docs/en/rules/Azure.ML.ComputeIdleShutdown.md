@@ -17,7 +17,7 @@ Use ML - Compute Instances configured for idle shutdown.
 
 Machine Learning uses compute instances as a training or inference compute for development and testing. It's similar to a virtual machine on the cloud.
 
-To avoid getting charged for a compute instance that is switched on but inactive, you can configure when to shut down your compute instance due to inactivity.
+To avoid getting charged for a compute instance that is switched on but not being actively used, you can configure when to automatically shut down compute instances due to inactivity.
 
 
 ## RECOMMENDATION

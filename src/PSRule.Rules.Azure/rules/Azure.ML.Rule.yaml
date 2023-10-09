@@ -11,7 +11,7 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
   name: Azure.ML.ComputeIdleShutdown
-  ref: AZR-000394
+  ref: AZR-000403
   tags:
     release: GA
     ruleSet: 2023_10
@@ -21,11 +21,10 @@ spec:
   - Microsoft.MachineLearningServices/workspaces/computes
   condition:
     allOf:
-      - field: computeType
+      - field: properties.parameters.computeType
         equals: 'ComputeInstance'
-      - field: properties.parameters.idleTimeBeforeShutdown
+      - field: properties.properties.parameters.idleTimeBeforeShutdown
         exists: true
-      - field: properties.parameters.idleTimeBeforeShutdown
-        isNumeric: true
+
 
 # Synopsis: ML Compute clusters should have local authentication methods disabled 
