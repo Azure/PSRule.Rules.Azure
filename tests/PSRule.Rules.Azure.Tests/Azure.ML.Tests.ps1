@@ -43,13 +43,13 @@ Describe 'Azure.ML' -Tag 'ML' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'amlb';
+            $ruleResult.TargetName | Should -Be 'ml-b';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'amla';
+            $ruleResult.TargetName | Should -Be 'ml-a';
         }
     }
 }

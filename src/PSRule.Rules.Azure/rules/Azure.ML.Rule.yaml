@@ -15,16 +15,13 @@ metadata:
   tags:
     release: GA
     ruleSet: 2023_10
-    Azure.WAF/pillar: Cost Optimization
+    Azure.WAF/pillar: 'Cost Optimization'
 spec:
   type:
   - Microsoft.MachineLearningServices/workspaces/computes
   condition:
     allOf:
-      - field: properties.parameters.computeType
-        equals: 'ComputeInstance'
-      - field: properties.properties.parameters.idleTimeBeforeShutdown
+      - field: properties.computeType
+        equals: ComputeInstance
+      - field: properties.properties.idleTimeBeforeShutdown
         exists: true
-
-
-# Synopsis: ML Compute clusters should have local authentication methods disabled 
