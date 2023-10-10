@@ -28,7 +28,7 @@ Consider configuring ML - Compute Instances to automatically shutdown after a pe
 
 ### Configure with Azure template
 
-To deploy an ML - compute instance that pass this rule:
+To deploy an ML - compute instance that complies with this rule:
 
 - Provide a idle shutdown time as an ISO 8601 format string, i.e. 15mins = "PT15M"
 - Define the "idleTimeBeforeShutdown" as this value 
@@ -54,7 +54,7 @@ For example:
 
 ### Configure with Bicep
 
-To deploy an ML - compute instance that pass this rule:
+To deploy an ML - compute instance that complies with this rule:
 
 - Provide a idle shutdown time as an ISO 8601 format string, i.e. 15mins = 'PT15M'
 - Define the "idleTimeBeforeShutdown" as this value 

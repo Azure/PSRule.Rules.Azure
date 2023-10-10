@@ -25,7 +25,7 @@ spec:
         equals: ComputeInstance
       - field: properties.properties.idleTimeBeforeShutdown
         exists: true
-
+---
 # Synopsis: ML Compute has local authentication disabled 
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
@@ -40,5 +40,5 @@ spec:
   type:
   - Microsoft.MachineLearningServices/workspaces/computes
   condition:
-    field: properties.properties.disableLocalAuth.value
+    field: properties.disableLocalAuth
     equals: true

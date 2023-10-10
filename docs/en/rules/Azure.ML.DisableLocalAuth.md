@@ -25,27 +25,54 @@ ML - Compute should be configured with local authentication disabled as part of 
 
 ### Configure with Azure template
 
-To deploy resource that pass this rule:
+To deploy an ML - compute that complies with this rule:
 
-- steps
+- Set the `disableLocalAuth` property value to true.
 
 For example:
 
 ```json
 
+{
+    "type": "Microsoft.MachineLearningServices/workspaces/computes",
+    "apiVersion": "2023-04-01",
+    "name": "[format('{0}/{1}', 'example-ws', parameters('name'))]",
+    "location": "[parameters('location')]",
+    "properties": {
+      "managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', 'psrule')]",
+      "computeType": "[parameters('computeType')]",
+      "disableLocalAuth": true,
+      "properties": {
+        "vmSize": "[parameters('vmSize')]",
+      }
+    }
+}
+
 ```
 
 ### Configure with Bicep
 
-To deploy resource that pass this rule:
+To deploy an ML - compute that complies with this rule:
 
-- steps
+- Set the `disableLocalAuth` property value to `true`.
 
 For example:
 
 ```bicep
 
-```
+resource aml_compute_instance 'Microsoft.MachineLearningServices/workspaces/computes@2023-04-01' ={
+  name: '${mlWorkspace.name}/${name}'
+  location: location
+
+  properties:{
+    managedResourceGroupId: managedRg.id
+    computeType: ComputeType
+    disableLocalAuth: true
+    properties: {
+      vmSize: vmSize 
+    }
+  }
+}
 
 ## LINKS
 
