@@ -14,7 +14,10 @@
         "disableLocalAuth": true,
         "properties": {
             "vmSize": "STANDARD_D2_V2",
-            "idleTimeBeforeShutdown": "PT15M"
+            "idleTimeBeforeShutdown": "PT15M",
+            "subnet":{
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.Network/virtualNetworks/test-vnet/subnets/test-sub"
+            }
         }
     }
   }, 

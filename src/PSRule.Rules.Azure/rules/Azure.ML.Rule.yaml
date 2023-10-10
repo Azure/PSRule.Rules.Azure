@@ -42,3 +42,21 @@ spec:
   condition:
     field: properties.disableLocalAuth
     equals: true
+
+---
+# Synopsis: ML Compute should be in a virtual network 
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ML.ComputeVnet
+  ref: AZR-000405
+  tags:
+    release: GA
+    ruleSet: 2023_10
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.MachineLearningServices/workspaces/computes
+  condition:
+    field: properties.properties.subnet
+    exists: true
