@@ -43,13 +43,13 @@ Describe 'Azure.ML' -Tag 'ML' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-b';
+            $ruleResult.TargetName | Should -Be 'ml-comp-b';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-a';
+            $ruleResult.TargetName | Should -Be 'ml-comp-a';
         }
 
         It 'Azure.ML.DisableLocalAuth' {
@@ -59,13 +59,13 @@ Describe 'Azure.ML' -Tag 'ML' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-b';
+            $ruleResult.TargetName | Should -Be 'ml-comp-b';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-a';
+            $ruleResult.TargetName | Should -Be 'ml-comp-a';
         }
 
         It 'Azure.ML.ComputeVnet' {
@@ -75,13 +75,13 @@ Describe 'Azure.ML' -Tag 'ML' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-b';
+            $ruleResult.TargetName | Should -Be 'ml-comp-b';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-a';
+            $ruleResult.TargetName | Should -Be 'ml-comp-a';
         }
     }
 }
