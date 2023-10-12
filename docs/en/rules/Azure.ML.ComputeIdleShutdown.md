@@ -7,7 +7,7 @@ resource: ML
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.ComputeIdleShutdown/
 ---
 
-# Name of rule
+# ML Compute Idle Shutdown
 
 ## SYNOPSIS
 

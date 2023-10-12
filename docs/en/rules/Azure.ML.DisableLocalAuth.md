@@ -7,7 +7,7 @@ resource: ML
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.DisableLocalAuth/
 ---
 
-# Name of rule
+# ML Compute has local authentication disabled
 
 ## SYNOPSIS
 

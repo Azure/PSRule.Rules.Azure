@@ -7,7 +7,7 @@ resource: ML
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.ComputeVnet/
 ---
 
-# Name of rule
+# ML Compute hosted in VNet
 
 ## SYNOPSIS
 
@@ -83,6 +83,7 @@ resource aml_compute_instance 'Microsoft.MachineLearningServices/workspaces/comp
 ## LINKS
 
 - [Managed compute in a managed virtual network](https://learn.microsoft.com/azure/machine-learning/how-to-managed-network-compute?view=azureml-api-2&tabs=azure-cli)
+- [ML - Network security and isolation](https://learn.microsoft.com/azure/machine-learning/concept-enterprise-security?view=azureml-api-2#network-security-and-isolation)
 - [ML - Compute objects](https://learn.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?pivots=deployment-language-bicep#resource-format)
 - [ML - Workspaces](https://learn.microsoft.com/azure/templates/microsoft.machinelearningservices/2023-04-01/workspaces?pivots=deployment-language-bicep)
 - [ML Compute](https://learn.microsoft.com/azure/machine-learning/azure-machine-learning-glossary?view=azureml-api-2#compute)
