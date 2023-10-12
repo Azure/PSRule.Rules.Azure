@@ -2,24 +2,24 @@
 reviewed: 2023-10-10
 severity: Critical
 pillar: Security
-category: Identity and Access Management
+category: Networking
 resource: ML
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.DisableLocalAuth/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.ComputeVnet/
 ---
 
-# ML Compute has local authentication disabled
+# ML Compute hosted in VNet
 
 ## SYNOPSIS
 
-Azure Machine Learning compute resources should have local authentication methods disabled.
+Azure Machine Learning Computes should be hosted in a virtual network (VNet).
 
 ## DESCRIPTION
 
-Disabling local authentication methods improves security by ensuring that Machine Learning Computes require Azure Active Directory identities exclusively for authentication. 
+Azure Virtual Networks (VNets) provide enhanced security and isolation for your Azure Machine Learning Compute Clusters and Instances, as well as subnets, access control policies, and other features to further restrict access. When a compute is configured with a virtual network, it is not publicly addressable and can only be accessed from virtual machines and applications within the virtual network.
 
 ## RECOMMENDATION
 
-ML - Compute should be configured with local authentication disabled as part of a broader security strategy. 
+ML - Compute should be hosted in a virtual network (VNet) as part of a broader security strategy. 
 
 ## EXAMPLES
 
@@ -27,7 +27,7 @@ ML - Compute should be configured with local authentication disabled as part of 
 
 To deploy an ML - compute that complies with this rule:
 
-- Set the `disableLocalAuth` property value to true.
+- update the compute properties to reference a specific subnet.
 
 For example:
 
@@ -41,9 +41,11 @@ For example:
     "properties": {
       "managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', 'example-rg')]",
       "computeType": "[parameters('computeType')]",
-      "disableLocalAuth": true,
       "properties": {
         "vmSize": "[parameters('vmSize')]",
+          "subnet": {
+            "id": "[parameters('subnetId')]"
+          }
       }
     }
 }
@@ -54,7 +56,7 @@ For example:
 
 To deploy an ML - compute that complies with this rule:
 
-- Set the `disableLocalAuth` property value to `true`.
+- update the compute properties to reference a specific subnet.
 
 For example:
 
@@ -67,19 +69,23 @@ resource aml_compute_instance 'Microsoft.MachineLearningServices/workspaces/comp
   properties:{
     managedResourceGroupId: managedRg.id
     computeType: ComputeType
-    disableLocalAuth: true
     properties: {
       vmSize: vmSize 
+      subnet:{
+        id: subnet.id
+      }
     }
   }
 }
 ```
 
+
 ## LINKS
 
-- [Disable local authentication](https://learn.microsoft.com/azure/machine-learning/how-to-integrate-azure-policy?view=azureml-api-2#disable-local-authentication)
+- [Managed compute in a managed virtual network](https://learn.microsoft.com/azure/machine-learning/how-to-managed-network-compute?view=azureml-api-2&tabs=azure-cli)
+- [ML - Network security and isolation](https://learn.microsoft.com/azure/machine-learning/concept-enterprise-security?view=azureml-api-2#network-security-and-isolation)
 - [ML - Compute objects](https://learn.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces/computes?pivots=deployment-language-bicep#resource-format)
 - [ML - Workspaces](https://learn.microsoft.com/azure/templates/microsoft.machinelearningservices/2023-04-01/workspaces?pivots=deployment-language-bicep)
 - [ML Compute](https://learn.microsoft.com/azure/machine-learning/azure-machine-learning-glossary?view=azureml-api-2#compute)
-- [Azure Policy Regulatory Compliance controls for Azure Machine Learning](https://learn.microsoft.com/azure/machine-learning/security-controls-policy?view=azureml-api-2)
-- [WAF - Authentication with Azure AD](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication)
+- [WAF - Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)
+
