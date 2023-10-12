@@ -66,7 +66,7 @@ spec:
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.ML.WrkspPublicAccess
+  name: Azure.ML.WrkspVnetPubAccess
   ref: AZR-000406
   tags:
     release: GA
@@ -81,3 +81,21 @@ spec:
         exists: true
       - field: properties.allowPublicAccessWhenBehindVnet
         equals: false
+
+---
+# Synopsis: Disable public network access from a ML Workspace 
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ML.WrkspPublicAccess
+  ref: AZR-000407
+  tags:
+    release: GA
+    ruleSet: 2023_10
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.MachineLearningServices/workspaces
+  condition:
+    field: properties.publicNetworkAccess
+    equals: "Disabled"

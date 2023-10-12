@@ -56,7 +56,8 @@
     },
     "properties": {
         "friendlyName": "WorkspaceFriendlyName",
-        "allowPublicAccessWhenBehindVnet": false
+        "allowPublicAccessWhenBehindVnet": false,
+        "publicNetworkAccess": "Disabled"
     }
   },
   {
@@ -76,7 +77,8 @@
         "type": "SystemAssigned"
     },
     "properties": {
-        "friendlyName": "WorkspaceFriendlyName"
+        "friendlyName": "WorkspaceFriendlyName", 
+        "publicNetworkAccess": "Enabled"
     }
   }
 ]
