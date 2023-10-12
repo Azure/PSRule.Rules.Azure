@@ -90,5 +90,4 @@ resource Ml_Workspace 'Microsoft.MachineLearningServices/workspaces@2023-04-01' 
 - [ML - Public access to Workspaces](https://learn.microsoft.com/azure/machine-learning/how-to-secure-workspace-vnet?view=azureml-api-2&tabs=required%2Cpe%2Ccli#public-access-to-workspace)
 - [ML - Workspaces](https://learn.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces?pivots=deployment-language-bicep#workspaceproperties)
 - [Security and governance for ML](https://learn.microsoft.com/azure/machine-learning/concept-enterprise-security?view=azureml-api-2)
-- [ML - Workspaces](https://learn.microsoft.com/azure/templates/microsoft.machinelearningservices/2023-04-01/workspaces?pivots=deployment-language-bicep)
 - [WAF - Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)
