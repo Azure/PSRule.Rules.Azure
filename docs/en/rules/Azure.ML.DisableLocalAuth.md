@@ -15,7 +15,7 @@ Azure Machine Learning compute resources should have local authentication method
 
 ## DESCRIPTION
 
-Disabling local authentication methods improves security by ensuring that Machine Learning Computes require Azure Active Directory identities exclusively for authentication. Learn more at: https://aka.ms/azure-ml-aad-policy.
+Disabling local authentication methods improves security by ensuring that Machine Learning Computes require Azure Active Directory identities exclusively for authentication. 
 
 ## RECOMMENDATION
 

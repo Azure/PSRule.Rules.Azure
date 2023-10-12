@@ -19,7 +19,7 @@ Disable public network access from a ML - Workspace when behind VNet.
 
 ## RECOMMENDATION
 
-Consider setting the 'allowPublicAccessWhenBehindVnet' parameter of the Workspace properties to false.
+Consider setting the 'allowPublicAccessWhenBehindVnet' parameter of the Workspace properties to false, as part of a broader security strategy. 
 
 ## EXAMPLES
 
