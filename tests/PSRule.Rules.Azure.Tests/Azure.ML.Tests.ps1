@@ -116,5 +116,21 @@ Describe 'Azure.ML' -Tag 'ML' {
             $ruleResult.TargetName | Should -Be 'ml-wks-a';
         }
 
+        It 'Azure.ML.WrkspUserMgId' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ML.WrkspUserMgId' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'ml-wks-b';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'ml-wks-a';
+        }
+
     }
 }

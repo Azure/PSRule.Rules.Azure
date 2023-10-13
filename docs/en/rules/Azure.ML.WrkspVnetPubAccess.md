@@ -52,7 +52,7 @@ For example:
       "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries', parameters('ContainerRegistryName'))]",
       "allowPublicAccessWhenBehindVnet": false
     }
-
+}
 ```
 
 ### Configure with Bicep

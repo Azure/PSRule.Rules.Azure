@@ -99,3 +99,21 @@ spec:
   condition:
     field: properties.publicNetworkAccess
     equals: "Disabled"
+
+---
+# Synopsis: ML Workspaces should use user-assigned managed identity 
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ML.WrkspUserMgId
+  ref: AZR-000408
+  tags:
+    release: GA
+    ruleSet: 2023_10
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.MachineLearningServices/workspaces
+  condition:
+    field: properties.primaryUserAssignedIdentity
+    equals: "UserAssignedManagedIdentity"
