@@ -24,7 +24,7 @@ Export-PSRuleConvention 'Azure.Context' -Initialize {
     $minimum = $Configuration.GetValueOrDefault('AZURE_BICEP_MINIMUM_VERSION', '0.4.451');
     $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
     $check = $Configuration.GetBoolOrDefault('AZURE_BICEP_CHECK_TOOL', $False);
-    $allowedRegions = @($Configuration.GetValueOrDefault('Azure_AllowedRegions', $Configuration.AZURE_RESOURCE_ALLOWED_LOCATIONS));
+    $allowedRegions = @($Configuration.GetValueOrDefault('Azure_AllowedRegions', $Configuration.GetStringValues('AZURE_RESOURCE_ALLOWED_LOCATIONS')));
     $service = [PSRule.Rules.Azure.Runtime.Helper]::CreateService($minimum, $timeout);
 
     if ($allowedRegions.Length -gt 0) {

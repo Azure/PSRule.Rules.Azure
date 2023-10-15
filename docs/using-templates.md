@@ -103,7 +103,7 @@ Additional benefits you get by using metadata links include:
 
 !!! Note
     Bicep modules can also be expanded from parameter files.
-    Instead of specifing a template path, you can specify the path to a Bicep file.
+    Instead of specifying a template path, you can specify the path to a Bicep file.
 
 !!! Note
     You may find while editing a `.json` parameter file the root `metadata` property is flagged with a warning.

@@ -21,19 +21,20 @@ spec:
     - ResourceType
     - type
     field:
-      resourceId: [ 'ResourceId' ]
-      subscriptionId: [ 'SubscriptionId' ]
-      resourceGroupName: [ 'ResourceGroupName' ]
+      resourceId: [ 'ResourceId', 'id' ]
+      subscriptionId: [ 'subscriptionId' ]
+      resourceGroupName: [ 'resourceGroupName' ]
   configuration:
     AZURE_PARAMETER_FILE_EXPANSION: false
     AZURE_PARAMETER_FILE_METADATA_LINK: false
     AZURE_BICEP_FILE_EXPANSION: false
     AZURE_BICEP_PARAMS_FILE_EXPANSION: false
     AZURE_BICEP_MINIMUM_VERSION: '0.4.451'
-    AZURE_BICEP_CHECK_TOOL: false 
+    AZURE_BICEP_CHECK_TOOL: false
 
     # Configure minimum AKS cluster version
     AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.26.6'
+
     AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
     - adminUsername
     - administratorLogin
