@@ -25,15 +25,15 @@ resource mlWorkspace 'Microsoft.MachineLearningServices/workspaces@2023-04-01' e
   name: 'example-ws'
 }
 
-resource aml_compute_instance 'Microsoft.MachineLearningServices/workspaces/computes@2023-04-01' ={
+resource aml_compute_instance 'Microsoft.MachineLearningServices/workspaces/computes@2023-04-01' = {
   name: '${mlWorkspace.name}/${name}'
   location: location
-  properties:{
+  properties: {
     managedResourceGroupId: managedRg.id
     computeType: 'ComputeInstance'
     properties: {
-      vmSize: vmSize 
-      idleTimeBeforeShutdown: idleTimeBeforeShutdown 
+      vmSize: vmSize
+      idleTimeBeforeShutdown: idleTimeBeforeShutdown
     }
   }
 }

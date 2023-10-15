@@ -15,11 +15,11 @@ Azure Machine Learning compute resources should have local authentication method
 
 ## DESCRIPTION
 
-Disabling local authentication methods improves security by ensuring that Machine Learning Computes require Azure Active Directory identities exclusively for authentication. 
+Disabling local authentication methods improves security by ensuring that Machine Learning Computes require Azure Active Directory identities exclusively for authentication.
 
 ## RECOMMENDATION
 
-ML - Compute should be configured with local authentication disabled as part of a broader security strategy. 
+ML - Compute should be configured with local authentication disabled as part of a broader security strategy.
 
 ## EXAMPLES
 
@@ -27,34 +27,32 @@ ML - Compute should be configured with local authentication disabled as part of 
 
 To deploy an ML - compute that complies with this rule:
 
-- Set the `disableLocalAuth` property value to true.
+- Set the `properties.disableLocalAuth` property to `true`.
 
 For example:
 
 ```json
-
 {
-    "type": "Microsoft.MachineLearningServices/workspaces/computes",
-    "apiVersion": "2023-04-01",
-    "name": "[format('{0}/{1}', 'example-ws', parameters('name'))]",
-    "location": "[parameters('location')]",
+  "type": "Microsoft.MachineLearningServices/workspaces/computes",
+  "apiVersion": "2023-04-01",
+  "name": "[format('{0}/{1}', 'example-ws', parameters('name'))]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', 'example-rg')]",
+    "computeType": "[parameters('computeType')]",
+    "disableLocalAuth": true,
     "properties": {
-      "managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', 'example-rg')]",
-      "computeType": "[parameters('computeType')]",
-      "disableLocalAuth": true,
-      "properties": {
-        "vmSize": "[parameters('vmSize')]",
-      }
+      "vmSize": "[parameters('vmSize')]",
     }
+  }
 }
-
 ```
 
 ### Configure with Bicep
 
 To deploy an ML - compute that complies with this rule:
 
-- Set the `disableLocalAuth` property value to `true`.
+- Set the `properties.disableLocalAuth` property to `true`.
 
 For example:
 

@@ -2,8 +2,8 @@
 reviewed: 2023-10-12
 severity: Critical
 pillar: Security
-category: Networking
-resource: ML
+category: Connectivity
+resource: Machine Learning
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.WrkspVnetPubAccess/
 ---
 
@@ -11,15 +11,15 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.Wrk
 
 ## SYNOPSIS
 
-Disable public network access from a ML - Workspace when behind a VNet. 
+Disable public network access from a ML - Workspace when behind a VNet.
 
 ## DESCRIPTION
 
-Disable public network access from a ML - Workspace when behind a VNet. 
+Disable public network access from a ML - Workspace when behind a VNet.
 
 ## RECOMMENDATION
 
-Consider setting the 'allowPublicAccessWhenBehindVnet' parameter of the Workspace properties to false, as part of a broader security strategy. 
+Consider setting the 'allowPublicAccessWhenBehindVnet' parameter of the Workspace properties to false, as part of a broader security strategy.
 
 ## EXAMPLES
 
@@ -27,39 +27,39 @@ Consider setting the 'allowPublicAccessWhenBehindVnet' parameter of the Workspac
 
 To deploy an ML - Workspace that complies with this rule:
 
-- update the 'allowPublicAccessWhenBehindVnet' parameter of the Workspace properties to false.
+- Set the `properties.allowPublicAccessWhenBehindVnet` property to `false`.
 
 For example:
 
 ```json
 {
-    "type": "Microsoft.MachineLearningServices/workspaces",
-    "apiVersion": "2023-04-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "sku": {
-      "name": "basic",
-      "tier": "basic"
-    },
-    "identity": {
-      "type": "SystemAssigned"
-    },
-    "properties": {
-      "friendlyName": "[parameters('name')]",
-      "keyVault": "[resourceId('Microsoft.KeyVault/vaults', parameters('KeyVaultName'))]",
-      "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName'))]",
-      "applicationInsights": "[resourceId('Microsoft.Insights/components', parameters('AppInsightsName'))]",
-      "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries', parameters('ContainerRegistryName'))]",
-      "allowPublicAccessWhenBehindVnet": false
-    }
-
+  "type": "Microsoft.MachineLearningServices/workspaces",
+  "apiVersion": "2023-04-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "basic",
+    "tier": "basic"
+  },
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "friendlyName": "[parameters('name')]",
+    "keyVault": "[resourceId('Microsoft.KeyVault/vaults', parameters('KeyVaultName'))]",
+    "storageAccount": "[resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName'))]",
+    "applicationInsights": "[resourceId('Microsoft.Insights/components', parameters('AppInsightsName'))]",
+    "containerRegistry": "[resourceId('Microsoft.ContainerRegistry/registries', parameters('ContainerRegistryName'))]",
+    "allowPublicAccessWhenBehindVnet": false
+  }
+}
 ```
 
 ### Configure with Bicep
 
 To deploy an ML - Workspace that complies with this rule:
 
-- update the 'allowPublicAccessWhenBehindVnet' parameter of the Workspace properties to false.
+- Set the `properties.allowPublicAccessWhenBehindVnet` property to `false`.
 
 For example:
 
@@ -83,11 +83,11 @@ resource Ml_Workspace 'Microsoft.MachineLearningServices/workspaces@2023-04-01' 
     allowPublicAccessWhenBehindVnet: false
   }
 }
-
 ```
 
 ## LINKS
+
+- [WAF - Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)
 - [ML - Public access to Workspaces](https://learn.microsoft.com/azure/machine-learning/how-to-secure-workspace-vnet?view=azureml-api-2&tabs=required%2Cpe%2Ccli#public-access-to-workspace)
 - [ML - Workspaces](https://learn.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces?pivots=deployment-language-bicep#workspaceproperties)
 - [Security and governance for ML](https://learn.microsoft.com/azure/machine-learning/concept-enterprise-security?view=azureml-api-2)
-- [WAF - Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)
