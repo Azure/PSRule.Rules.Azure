@@ -10,10 +10,7 @@
       "2017-08-01-preview",
       "2017-01-01-preview"
     ],
-    "locations": [
-      "Central US",
-      "East US 2"
-    ],
+    "locations": [],
     "zoneMappings": null
   }
 ]

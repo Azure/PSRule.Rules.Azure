@@ -1,0 +1,64 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "credentials",
+    "apiVersions": [
+      "2023-06-12-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
+      "Korea Central",
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-06-12-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationstatuses",
+    "apiVersions": [
+      "2023-06-12-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
+      "Korea Central",
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-06-12-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

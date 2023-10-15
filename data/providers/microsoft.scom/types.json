@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-07-07-preview",
+      "2023-06-30",
       "2022-09-13-preview",
       "2022-04-30-preview",
       "2021-06-30-preview"
@@ -14,6 +16,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-07-07-preview",
       "2022-09-13-preview",
       "2022-04-30-preview",
       "2021-06-30-preview"
@@ -30,6 +33,7 @@
     "aliases": null,
     "resourceType": "managedInstances",
     "apiVersions": [
+      "2023-07-07-preview",
       "2022-09-13-preview",
       "2022-04-30-preview",
       "2021-06-30-preview"
@@ -42,8 +46,34 @@
   },
   {
     "aliases": null,
+    "resourceType": "managedInstances/managedGateways",
+    "apiVersions": [
+      "2023-07-07-preview"
+    ],
+    "locations": [
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "managedInstances/monitoredResources",
+    "apiVersions": [
+      "2023-07-07-preview"
+    ],
+    "locations": [
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-07-preview",
+      "2023-06-30",
       "2022-09-13-preview",
       "2022-04-30-preview",
       "2021-06-30-preview"

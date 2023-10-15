@@ -23,6 +23,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -61,6 +62,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -102,6 +105,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -127,6 +131,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -228,6 +234,18 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -391,6 +409,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -416,6 +435,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -517,6 +538,18 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -745,6 +778,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -846,6 +881,18 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -1011,6 +1058,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1060,6 +1109,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1111,6 +1162,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1160,6 +1213,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1211,6 +1266,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1258,6 +1315,7 @@
     },
     "resourceType": "diskAccesses",
     "apiVersions": [
+      "2023-04-02",
       "2023-01-02",
       "2022-07-02",
       "2022-03-02",
@@ -1283,6 +1341,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1342,6 +1402,7 @@
     },
     "resourceType": "diskEncryptionSets",
     "apiVersions": [
+      "2023-04-02",
       "2023-01-02",
       "2022-07-02",
       "2022-03-02",
@@ -1369,6 +1430,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1501,6 +1564,7 @@
     },
     "resourceType": "disks",
     "apiVersions": [
+      "2023-04-02",
       "2023-01-02",
       "2022-07-02",
       "2022-03-02",
@@ -1534,6 +1598,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1635,6 +1701,18 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -1841,6 +1919,7 @@
     },
     "resourceType": "galleries",
     "apiVersions": [
+      "2023-07-03",
       "2022-08-03",
       "2022-03-03",
       "2022-01-03",
@@ -1867,6 +1946,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1918,6 +1999,7 @@
     },
     "resourceType": "galleries/applications",
     "apiVersions": [
+      "2023-07-03",
       "2022-08-03",
       "2022-03-03",
       "2022-01-03",
@@ -1943,6 +2025,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -2054,6 +2138,7 @@
     },
     "resourceType": "galleries/applications/versions",
     "apiVersions": [
+      "2023-07-03",
       "2022-08-03",
       "2022-03-03",
       "2022-01-03",
@@ -2079,6 +2164,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -2144,6 +2231,7 @@
     },
     "resourceType": "galleries/images",
     "apiVersions": [
+      "2023-07-03",
       "2022-08-03",
       "2022-03-03",
       "2022-01-03",
@@ -2170,6 +2258,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -2284,6 +2374,7 @@
     },
     "resourceType": "galleries/images/versions",
     "apiVersions": [
+      "2023-07-03",
       "2022-08-03",
       "2022-03-03",
       "2022-01-03",
@@ -2310,6 +2401,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -2352,6 +2445,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -2381,6 +2475,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -2482,6 +2578,18 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -2645,6 +2753,7 @@
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -2674,6 +2783,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -2775,6 +2886,18 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -2956,6 +3079,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -2991,6 +3115,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3023,6 +3149,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -3092,6 +3219,7 @@
     "aliases": null,
     "resourceType": "locations/capsoperations",
     "apiVersions": [
+      "2023-07-03",
       "2022-08-03",
       "2022-03-03",
       "2022-01-03",
@@ -3119,6 +3247,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3169,6 +3299,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3219,6 +3351,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3251,6 +3385,8 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2023-07-03",
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-03",
@@ -3293,6 +3429,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3344,6 +3482,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3468,6 +3608,7 @@
     "aliases": null,
     "resourceType": "locations/diskoperations",
     "apiVersions": [
+      "2023-04-02",
       "2023-01-02",
       "2022-07-02",
       "2022-03-02",
@@ -3501,6 +3642,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3533,6 +3676,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -3550,6 +3694,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -3574,6 +3719,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3606,6 +3753,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/vmimages",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -3630,6 +3778,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3662,6 +3812,7 @@
     "aliases": null,
     "resourceType": "locations/galleries",
     "apiVersions": [
+      "2023-07-03",
       "2022-08-03",
       "2022-03-03",
       "2022-01-03",
@@ -3688,6 +3839,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3720,6 +3873,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -3752,6 +3906,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3784,6 +3940,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -3823,6 +3980,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3855,6 +4014,8 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2023-07-03",
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-03",
@@ -3897,6 +4058,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3929,6 +4092,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -3950,6 +4114,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -3982,6 +4148,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -4015,6 +4182,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4047,6 +4216,8 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2023-07-03",
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-03",
@@ -4089,6 +4260,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4121,6 +4294,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -4146,6 +4320,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4178,6 +4354,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -4203,6 +4380,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4235,6 +4414,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -4273,6 +4453,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4305,6 +4487,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -4339,6 +4522,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4371,6 +4556,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -4405,6 +4591,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4437,6 +4625,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -4475,6 +4664,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4507,6 +4698,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -4544,6 +4736,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4616,6 +4810,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -4647,6 +4842,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -4748,6 +4945,18 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -5048,6 +5257,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -5081,6 +5291,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -5259,6 +5471,7 @@
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -5292,6 +5505,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -5324,6 +5539,7 @@
     "aliases": null,
     "resourceType": "restorePointCollections/restorePoints/diskRestorePoints",
     "apiVersions": [
+      "2023-04-02",
       "2023-01-02",
       "2022-07-02",
       "2022-03-02",
@@ -5347,6 +5563,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -5539,6 +5757,7 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2023-04-02",
       "2023-01-02",
       "2022-07-02",
       "2022-03-02",
@@ -5572,6 +5791,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -5606,6 +5827,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -5632,6 +5854,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -5925,6 +6149,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -5963,6 +6188,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -6064,6 +6291,18 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -6209,59 +6448,6 @@
     ]
   },
   {
-    "aliases": null,
-    "resourceType": "virtualMachines/applications",
-    "apiVersions": [
-      "2023-03-01",
-      "2022-11-01",
-      "2022-08-01",
-      "2022-03-01",
-      "2021-11-01",
-      "2021-07-01"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West India",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
     "aliases": {
       "Microsoft.Compute/virtualMachines/extensions/autoUpgradeMinorVersion": "properties.autoUpgradeMinorVersion",
       "Microsoft.Compute/virtualMachines/extensions/enableAutomaticUpgrade": "properties.enableAutomaticUpgrade",
@@ -6298,6 +6484,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -6336,6 +6523,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -6384,6 +6573,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -6446,6 +6637,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -6472,6 +6664,64 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualMachines/VMApplications",
+    "apiVersions": [
+      "2023-07-01",
+      "2023-03-01",
+      "2022-11-01",
+      "2022-08-01",
+      "2022-03-01",
+      "2021-11-01",
+      "2021-07-01"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -6844,6 +7094,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -6883,6 +7134,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -6984,6 +7237,18 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -7132,6 +7397,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/applications",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -7153,6 +7419,76 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualMachineScaleSets/disks",
+    "apiVersions": [
+      "2023-04-02",
+      "2023-01-02",
+      "2022-07-02",
+      "2022-03-02",
+      "2021-12-01",
+      "2021-08-01",
+      "2021-04-01",
+      "2020-12-01",
+      "2020-09-30",
+      "2020-06-30",
+      "2020-05-01",
+      "2019-11-01",
+      "2019-07-01",
+      "2019-03-01",
+      "2018-09-30",
+      "2018-06-01",
+      "2018-04-01",
+      "2017-03-30",
+      "2016-04-30-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -7204,6 +7540,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -7243,6 +7580,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -7275,6 +7614,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -7316,6 +7656,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -7348,6 +7690,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -7381,6 +7724,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -7687,6 +8032,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -7726,6 +8072,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -7775,6 +8123,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -7814,6 +8163,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -7846,6 +8197,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01",
       "2022-11-01",
       "2022-08-01",
@@ -7887,6 +8239,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",

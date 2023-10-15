@@ -12,20 +12,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationStatuses",
-    "apiVersions": [
-      "2023-05-01-preview"
-    ],
-    "locations": [
-      "East US",
-      "East US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "Operations",
+    "resourceType": "operations",
     "apiVersions": [
       "2023-05-01-preview"
     ],

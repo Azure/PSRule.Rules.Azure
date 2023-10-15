@@ -41,6 +41,8 @@
     "aliases": null,
     "resourceType": "checknameavailability",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-08-01-preview",
       "2023-06-02-preview",
       "2022-08-01",
       "2022-07-20-preview",
@@ -56,6 +58,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-08-01-preview",
       "2023-06-02-preview",
       "2022-08-01",
       "2022-07-20-preview",
@@ -108,6 +112,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-06-02-preview",
       "2022-08-01",
       "2022-07-20-preview",
@@ -192,6 +197,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-08-01-preview",
       "2023-06-02-preview",
       "2022-08-01",
       "2022-07-20-preview",

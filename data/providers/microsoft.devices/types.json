@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-06-30-preview",
+      "2023-06-30",
       "2022-04-30-preview",
       "2021-07-15-preview",
       "2021-07-02-preview",
@@ -38,6 +40,7 @@
     "aliases": null,
     "resourceType": "checkProvisioningServiceNameAvailability",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-12-12",
       "2022-02-05",
       "2021-10-15",
@@ -206,6 +209,8 @@
     },
     "resourceType": "IotHubs",
     "apiVersions": [
+      "2023-06-30-preview",
+      "2023-06-30",
       "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
@@ -333,6 +338,8 @@
     "aliases": null,
     "resourceType": "IotHubs/failover",
     "apiVersions": [
+      "2023-06-30-preview",
+      "2023-06-30",
       "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
@@ -458,6 +465,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-06-30-preview",
+      "2023-06-30",
       "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
@@ -499,6 +508,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-06-30-preview",
+      "2023-06-30",
       "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
@@ -575,6 +586,7 @@
     "aliases": null,
     "resourceType": "locations/provisioningServiceOperationResults",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-12-12",
       "2022-02-05",
       "2021-10-15",
@@ -615,7 +627,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -623,6 +636,8 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-06-30-preview",
+      "2023-06-30",
       "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
@@ -664,6 +679,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-30-preview",
+      "2023-06-30",
       "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",
@@ -698,6 +715,7 @@
     "aliases": null,
     "resourceType": "provisioningServiceOperationResults",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-12-12",
       "2022-02-05",
       "2021-10-15",
@@ -772,6 +790,7 @@
     },
     "resourceType": "ProvisioningServices",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-12-12",
       "2022-02-05",
       "2021-10-15",
@@ -812,7 +831,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -820,6 +840,8 @@
     "aliases": null,
     "resourceType": "usages",
     "apiVersions": [
+      "2023-06-30-preview",
+      "2023-06-30",
       "2022-04-30-preview",
       "2021-07-02-preview",
       "2021-07-02",

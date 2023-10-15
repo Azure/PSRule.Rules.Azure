@@ -11,7 +11,6 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json.Linq;
-using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Data.Template
 {

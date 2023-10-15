@@ -1,98 +1,11 @@
 [
   {
     "aliases": null,
-    "resourceType": "checkAzureDataFactoryNameAvailability",
+    "resourceType": "CheckNameAvailability",
     "apiVersions": [
-      "2015-10-01",
-      "2015-09-01",
-      "2015-08-01",
-      "2015-07-01-preview",
-      "2015-05-01-preview",
-      "2015-01-01-preview"
-    ],
-    "locations": [
-      "East US",
-      "North Europe",
-      "West Central US",
-      "West US"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "checkDataFactoryNameAvailability",
-    "apiVersions": [
-      "2015-05-01-preview",
-      "2015-01-01-preview"
+      "2018-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "dataFactories",
-    "apiVersions": [
-      "2015-10-01",
-      "2015-09-01",
-      "2015-08-01",
-      "2015-07-01-preview",
-      "2015-05-01-preview",
-      "2015-01-01-preview",
-      "2014-04-01"
-    ],
-    "locations": [
-      "East US",
-      "North Europe",
-      "West Central US",
-      "West US"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "dataFactories/diagnosticSettings",
-    "apiVersions": [
-      "2014-04-01"
-    ],
-    "locations": [
-      "East US",
-      "North Europe",
-      "West Central US",
-      "West US"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "dataFactories/metricDefinitions",
-    "apiVersions": [
-      "2014-04-01"
-    ],
-    "locations": [
-      "East US",
-      "North Europe",
-      "West Central US",
-      "West US"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "dataFactorySchema",
-    "apiVersions": [
-      "2015-10-01",
-      "2015-09-01",
-      "2015-08-01",
-      "2015-07-01-preview",
-      "2015-05-01-preview",
-      "2015-01-01-preview"
-    ],
-    "locations": [
-      "East US",
-      "North Europe",
-      "West Central US",
-      "West US"
-    ],
     "zoneMappings": null
   },
   {
@@ -176,6 +89,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UAE North",
@@ -362,6 +276,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UAE North",
@@ -417,6 +332,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UAE North",
@@ -461,6 +377,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UAE North",
@@ -480,13 +397,7 @@
     "apiVersions": [
       "2018-06-01",
       "2017-09-01-preview",
-      "2017-03-01-preview",
-      "2015-10-01",
-      "2015-09-01",
-      "2015-08-01",
-      "2015-07-01-preview",
-      "2015-05-01-preview",
-      "2015-01-01-preview"
+      "2017-03-01-preview"
     ],
     "locations": [
       "East US",

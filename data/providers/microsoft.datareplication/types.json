@@ -19,8 +19,13 @@
     "locations": [
       "Canada Central",
       "Central US",
+      "East Asia",
       "East US",
-      "West Europe"
+      "North Europe",
+      "Southeast Asia",
+      "West Central US",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -33,8 +38,13 @@
     "locations": [
       "Canada Central",
       "Central US",
+      "East Asia",
       "East US",
-      "West Europe"
+      "North Europe",
+      "Southeast Asia",
+      "West Central US",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   }

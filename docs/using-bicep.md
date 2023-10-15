@@ -43,7 +43,7 @@ For details on how to configure Bicep for PSRule for Azure see [Setup Bicep][1].
 
 ### Building files
 
-It's not nessecary to build `.bicep` files with `bicep build` or `az bicep build`.
+It's not necessary to build `.bicep` files with `bicep build` or `az bicep build`.
 PSRule will automatically detect and build `.bicep` files.
 You may choose to pre-build `.bicep` files if the Bicep CLI is not available when PSRule is run.
 
@@ -57,7 +57,7 @@ Bicep allows you to separate out complex details into separate files called [mod
 To expand resources, any parameters must be resolved.
 
 !!! Tip
-    If you are not familar with the concept of expansion within PSRule for Azure see [Expanding source files][8].
+    If you are not familiar with the concept of expansion within PSRule for Azure see [Expanding source files][8].
 
 Two types of parameters exist, _required_ (also called mandatory) and _optional_.
 An optional parameter is any parameter with a default value.

@@ -383,6 +383,7 @@ task BuildRuleDocs Build, Dependencies, {
             Recommendation = $_.Info.Recommendation
             Pillar = $_.Tag.'Azure.WAF/pillar'
             Control = $_.Tag.'Azure.MCSB.v1/control'
+            Source = "https://github.com/Azure/PSRule.Rules.Azure/blob/main/src/PSRule.Rules.Azure/rules/$(($_.Source.Path -split '/')[-1])"
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;
@@ -407,6 +408,7 @@ task BuildRuleDocs Build, Dependencies, {
             Recommendation = $_.Info.Recommendation
             Pillar = $_.Tag.'Azure.WAF/pillar'
             Control = $_.Tag.'Azure.MCSB.v1/control'
+            Source = "https://github.com/Azure/PSRule.Rules.Azure/blob/main/src/PSRule.Rules.Azure/rules/$(($_.Source.Path -split '/')[-1])"
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/es/rules/metadata.json -Force;
@@ -480,7 +482,7 @@ task ScaffoldHelp Build, BuildRuleDocs, {
 
 task Benchmark {
     if ($Benchmark -or $BuildTask -eq 'Benchmark') {
-        dotnet run --project src/PSRule.Rules.Azure.Benchmark -f net6.0 -c Release -- benchmark --output $PWD;
+        dotnet run --project src/PSRule.Rules.Azure.Benchmark -f net7.0 -c Release -- benchmark --output $PWD;
     }
 }
 

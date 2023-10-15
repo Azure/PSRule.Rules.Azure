@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "availabilityStatuses",
     "apiVersions": [
+      "2023-07-01-rc",
+      "2023-07-01-preview",
       "2022-10-01-preview",
       "2022-10-01",
       "2022-05-01-preview",
@@ -24,6 +26,9 @@
     "aliases": null,
     "resourceType": "childAvailabilityStatuses",
     "apiVersions": [
+      "2023-07-01-rc",
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-10-01",
       "2018-11-06-beta",
       "2018-08-01-rc",
@@ -45,6 +50,7 @@
     "aliases": null,
     "resourceType": "childResources",
     "apiVersions": [
+      "2023-07-01-preview",
       "2022-10-01",
       "2018-11-06-beta",
       "2018-08-01-rc",
@@ -66,6 +72,10 @@
     "aliases": null,
     "resourceType": "emergingissues",
     "apiVersions": [
+      "2023-07-01-rc",
+      "2023-07-01-preview",
+      "2023-07-01-beta",
+      "2023-07-01-alpha",
       "2022-10-01-rc",
       "2022-10-01-preview",
       "2022-10-01-beta",
@@ -86,6 +96,7 @@
     "aliases": null,
     "resourceType": "events",
     "apiVersions": [
+      "2023-07-01-rc",
       "2022-10-01-rc",
       "2022-10-01",
       "2022-05-01-rc",
@@ -101,6 +112,15 @@
     "aliases": null,
     "resourceType": "metadata",
     "apiVersions": [
+      "2023-07-01-rc",
+      "2023-07-01-preview",
+      "2023-07-01-beta",
+      "2023-07-01-alpha",
+      "2022-10-01-rc",
+      "2022-10-01-preview",
+      "2022-10-01-beta",
+      "2022-10-01-alpha",
+      "2022-10-01",
       "2018-07-01-rc",
       "2018-07-01-preview",
       "2018-07-01-beta",
@@ -114,6 +134,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-01-rc",
+      "2023-07-01-preview",
+      "2023-07-01-beta",
+      "2023-07-01-alpha",
       "2022-10-01-rc",
       "2022-10-01-preview",
       "2022-10-01-beta",

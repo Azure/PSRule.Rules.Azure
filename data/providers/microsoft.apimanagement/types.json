@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkFeedbackRequired",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",
@@ -30,6 +31,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",
@@ -107,6 +109,7 @@
     "aliases": null,
     "resourceType": "deletedServices",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",
@@ -164,6 +167,7 @@
     "aliases": null,
     "resourceType": "getDomainOwnershipIdentifier",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",
@@ -220,6 +224,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",
@@ -237,6 +242,7 @@
     "aliases": null,
     "resourceType": "locations/deletedServices",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",
@@ -294,6 +300,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",
@@ -321,6 +328,7 @@
     "aliases": null,
     "resourceType": "reportFeedback",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",
@@ -478,6 +486,7 @@
     },
     "resourceType": "service",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",
@@ -762,6 +771,7 @@
     "aliases": null,
     "resourceType": "service/eventGridFilters",
     "apiVersions": [
+      "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
       "2022-04-01-preview",

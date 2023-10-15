@@ -39,24 +39,24 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.CognitiveServices/accounts",
-    "apiVersion": "2022-03-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "SystemAssigned"
+  "type": "Microsoft.CognitiveServices/accounts",
+  "apiVersion": "2023-05-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "sku": {
+    "name": "S0"
+  },
+  "kind": "CognitiveServices",
+  "properties": {
+    "publicNetworkAccess": "Disabled",
+    "networkAcls": {
+      "defaultAction": "Deny"
     },
-    "sku": {
-        "name": "S0"
-    },
-    "kind": "CognitiveServices",
-    "properties": {
-        "publicNetworkAccess": "Disabled",
-        "networkAcls": {
-            "defaultAction": "Deny"
-        },
-        "disableLocalAuth": true
-    }
+    "disableLocalAuth": true
+  }
 }
 ```
 
@@ -70,7 +70,7 @@ To deploy accounts that pass this rule:
 For example:
 
 ```bicep
-resource account 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
+resource account 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
   name: name
   location: location
   identity: {

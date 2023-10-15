@@ -65,7 +65,7 @@ In additional to quarterly baselines, some additional baselines exist:
 - `Azure.Default` - Includes rules for GA Azure features.
   This is the default baseline that is used when no baseline is specified.
   Rules for Azure features that are within the scope of a public or private preview are not included.
-- `Azure.Preview` - Includes rules for GA and preview Azure features.
+- `Azure.Preview` - Includes all rules for GA and preview Azure features.
 - `Azure.All` - Includes all Azure rules shipped with PSRule for Azure.
   This is functionally the same as `Azure.Preview` however intended for internal use only.
 - `Azure.MCSB.v1` - Includes rules related to Microsoft cloud security benchmark (MCSB) controls.
@@ -89,7 +89,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
       uses: microsoft/ps-rule@v2.9.0
       with:
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2023_03'
+        baseline: 'Azure.GA_2023_09'
     ```
 
 === "Azure Pipelines"
@@ -102,7 +102,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
       displayName: Analyze Azure template files
       inputs:
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2023_03'
+        baseline: 'Azure.GA_2023_09'
     ```
 
 === "PowerShell"
@@ -110,11 +110,11 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
     Update your PowerShell command-line with `-Baseline <name_of_baseline>`.
 
     ```powershell title="With Assert-PSRule"
-    Assert-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2023_03'
+    Assert-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2023_09'
     ```
 
     ```powershell title="With Invoke-PSRule"
-    Invoke-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2023_03'
+    Invoke-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2023_09'
     ```
 
   [1]: en/baselines/Azure.All.md

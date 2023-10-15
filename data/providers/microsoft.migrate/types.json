@@ -31,6 +31,7 @@
     },
     "resourceType": "assessmentProjects",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-03",
       "2022-02-02-preview",
       "2020-05-01-preview",
@@ -56,6 +57,7 @@
       "Korea South",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South India",
@@ -74,6 +76,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-04-01-preview",
       "2023-03-03",
       "2022-02-02-preview",
       "2020-05-01-preview",
@@ -90,44 +93,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/assessmentOptions",
-    "apiVersions": [
-      "2018-02-02",
-      "2017-11-11-preview",
-      "2017-09-25-privatepreview"
-    ],
-    "locations": [
-      "East Asia",
-      "East US",
-      "North Europe",
-      "Southeast Asia",
-      "West Central US",
-      "West Europe"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/checkNameAvailability",
-    "apiVersions": [
-      "2018-02-02",
-      "2017-11-11-preview",
-      "2017-09-25-privatepreview"
-    ],
-    "locations": [
-      "East Asia",
-      "East US",
-      "North Europe",
-      "Southeast Asia",
-      "West Central US",
-      "West Europe"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
     "resourceType": "locations/rmsOperationResults",
     "apiVersions": [
+      "2023-08-01",
       "2022-08-01",
       "2021-08-01",
       "2021-01-01",
@@ -145,8 +113,10 @@
       "Korea Central",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "UAE North",
       "UK South"
@@ -209,6 +179,7 @@
       "Korea South",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South India",
@@ -275,6 +246,7 @@
     },
     "resourceType": "moveCollections",
     "apiVersions": [
+      "2023-08-01",
       "2022-08-01",
       "2021-08-01",
       "2021-01-01",
@@ -292,8 +264,10 @@
       "Korea Central",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "UAE North",
       "UK South"
@@ -313,37 +287,6 @@
     ],
     "locations": [
       "West Central US"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": {
-      "Microsoft.Migrate/projects/createdTimestamp": "properties.createdTimestamp",
-      "Microsoft.Migrate/projects/customerWorkspaceId": "properties.customerWorkspaceId",
-      "Microsoft.Migrate/projects/customerWorkspaceLocation": "properties.customerWorkspaceLocation",
-      "Microsoft.Migrate/projects/discoveryStatus": "properties.discoveryStatus",
-      "Microsoft.Migrate/projects/lastAssessmentTimestamp": "properties.lastAssessmentTimestamp",
-      "Microsoft.Migrate/projects/lastDiscoverySessionId": "properties.lastDiscoverySessionId",
-      "Microsoft.Migrate/projects/lastDiscoveryTimestamp": "properties.lastDiscoveryTimestamp",
-      "Microsoft.Migrate/projects/numberOfAssessments": "properties.numberOfAssessments",
-      "Microsoft.Migrate/projects/numberOfGroups": "properties.numberOfGroups",
-      "Microsoft.Migrate/projects/numberOfMachines": "properties.numberOfMachines",
-      "Microsoft.Migrate/projects/provisioningState": "properties.provisioningState",
-      "Microsoft.Migrate/projects/updatedTimestamp": "properties.updatedTimestamp"
-    },
-    "resourceType": "projects",
-    "apiVersions": [
-      "2018-02-02",
-      "2017-11-11-preview",
-      "2017-09-25-privatepreview"
-    ],
-    "locations": [
-      "East Asia",
-      "East US",
-      "North Europe",
-      "Southeast Asia",
-      "West Central US",
-      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -720,42 +663,5 @@
       "Microsoft.Migrate/moveCollections/moveResources/targetId": "properties.targetId"
     },
     "resourceType": "movecollections/moveresources"
-  },
-  {
-    "aliases": {
-      "Microsoft.Migrate/projects/groups/assessments": "properties.assessments",
-      "Microsoft.Migrate/projects/groups/assessments[*]": "properties.assessments[*]",
-      "Microsoft.Migrate/projects/groups/createdTimestamp": "properties.createdTimestamp",
-      "Microsoft.Migrate/projects/groups/machines": "properties.machines",
-      "Microsoft.Migrate/projects/groups/machines[*]": "properties.machines[*]",
-      "Microsoft.Migrate/projects/groups/updatedTimestamp": "properties.updatedTimestamp"
-    },
-    "resourceType": "projects/groups"
-  },
-  {
-    "aliases": {
-      "Microsoft.Migrate/projects/groups/assessments/azureHybridUseBenefit": "properties.azureHybridUseBenefit",
-      "Microsoft.Migrate/projects/groups/assessments/azureLocation": "properties.azureLocation",
-      "Microsoft.Migrate/projects/groups/assessments/azureOfferCode": "properties.azureOfferCode",
-      "Microsoft.Migrate/projects/groups/assessments/azurePricingTier": "properties.azurePricingTier",
-      "Microsoft.Migrate/projects/groups/assessments/azureStorageRedundancy": "properties.azureStorageRedundancy",
-      "Microsoft.Migrate/projects/groups/assessments/confidenceRatingInPercentage": "properties.confidenceRatingInPercentage",
-      "Microsoft.Migrate/projects/groups/assessments/createdTimestamp": "properties.createdTimestamp",
-      "Microsoft.Migrate/projects/groups/assessments/currency": "properties.currency",
-      "Microsoft.Migrate/projects/groups/assessments/discountPercentage": "properties.discountPercentage",
-      "Microsoft.Migrate/projects/groups/assessments/monthlyBandwidthCost": "properties.monthlyBandwidthCost",
-      "Microsoft.Migrate/projects/groups/assessments/monthlyComputeCost": "properties.monthlyComputeCost",
-      "Microsoft.Migrate/projects/groups/assessments/monthlyStorageCost": "properties.monthlyStorageCost",
-      "Microsoft.Migrate/projects/groups/assessments/numberOfMachines": "properties.numberOfMachines",
-      "Microsoft.Migrate/projects/groups/assessments/percentile": "properties.percentile",
-      "Microsoft.Migrate/projects/groups/assessments/pricesTimestamp": "properties.pricesTimestamp",
-      "Microsoft.Migrate/projects/groups/assessments/scalingFactor": "properties.scalingFactor",
-      "Microsoft.Migrate/projects/groups/assessments/sizingCriterion": "properties.sizingCriterion",
-      "Microsoft.Migrate/projects/groups/assessments/stage": "properties.stage",
-      "Microsoft.Migrate/projects/groups/assessments/status": "properties.status",
-      "Microsoft.Migrate/projects/groups/assessments/timeRange": "properties.timeRange",
-      "Microsoft.Migrate/projects/groups/assessments/updatedTimestamp": "properties.updatedTimestamp"
-    },
-    "resourceType": "projects/groups/assessments"
   }
 ]

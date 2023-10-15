@@ -37,6 +37,8 @@
     },
     "resourceType": "cassandraClusters",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -70,6 +72,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -102,6 +105,8 @@
     "aliases": null,
     "resourceType": "databaseAccountNames",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -280,6 +285,8 @@
     },
     "resourceType": "databaseAccounts",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -330,6 +337,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -362,6 +370,8 @@
     "aliases": null,
     "resourceType": "databaseAccounts/encryptionScopes",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -395,6 +405,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -427,6 +438,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -470,14 +483,22 @@
     "aliases": null,
     "resourceType": "locations/checkMongoClusterNameAvailability",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-03-15-preview",
       "2023-03-01-preview",
       "2022-10-15-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
+      "Central US",
       "East US",
-      "West Europe"
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -485,6 +506,8 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -535,6 +558,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -567,14 +591,22 @@
     "aliases": null,
     "resourceType": "locations/mongoClusterAzureAsyncOperation",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-03-15-preview",
       "2023-03-01-preview",
       "2022-10-15-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
+      "Central US",
       "East US",
-      "West Europe"
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -582,14 +614,22 @@
     "aliases": null,
     "resourceType": "locations/mongoClusterOperationResults",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-03-15-preview",
       "2023-03-01-preview",
       "2022-10-15-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
+      "Central US",
       "East US",
-      "West Europe"
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -597,6 +637,8 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -626,6 +668,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -663,6 +706,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -713,6 +758,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -745,6 +791,8 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -795,6 +843,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -827,6 +876,8 @@
     "aliases": null,
     "resourceType": "locations/restorableDatabaseAccounts",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -862,6 +913,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -894,14 +946,22 @@
     "aliases": null,
     "resourceType": "mongoClusters",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-03-15-preview",
       "2023-03-01-preview",
       "2022-10-15-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
+      "Central US",
       "East US",
-      "West Europe"
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -909,6 +969,8 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -952,6 +1014,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -995,6 +1059,8 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -1038,6 +1104,8 @@
     "aliases": null,
     "resourceType": "restorableDatabaseAccounts",
     "apiVersions": [
+      "2023-09-15-preview",
+      "2023-09-15",
       "2023-04-15",
       "2023-03-15-preview",
       "2023-03-15",
@@ -1073,6 +1141,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",

@@ -20,7 +20,7 @@ This means you'll no longer be able to create or manage your Azure Container App
 
 ## RECOMMENDATION
 
-Consider migrating from retired API version to a supported version.
+Consider migrating from a retired API version to a supported version.
 
 ## EXAMPLES
 

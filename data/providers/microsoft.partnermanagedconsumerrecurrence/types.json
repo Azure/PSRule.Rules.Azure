@@ -1,0 +1,38 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkEligibility",
+    "apiVersions": [
+      "2022-01-20-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2022-01-20-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationStatuses",
+    "apiVersions": [
+      "2022-01-20-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "recurrences",
+    "apiVersions": [
+      "2022-01-20-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

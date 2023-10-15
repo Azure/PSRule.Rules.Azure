@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2022-06-01",
@@ -28,6 +29,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-07-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2023-03-01-preview",
@@ -59,6 +61,7 @@
     "aliases": null,
     "resourceType": "locations/asyncOperations",
     "apiVersions": [
+      "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2022-06-01",
@@ -82,6 +85,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -114,6 +118,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -125,6 +130,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -147,6 +153,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2022-06-01",
@@ -178,6 +185,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -210,6 +218,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -221,6 +230,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -243,6 +253,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2023-03-01-preview",
@@ -291,6 +302,7 @@
       "Microsoft.Cache/Redis/provisioningState": "properties.provisioningState",
       "Microsoft.Cache/Redis/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.Cache/Redis/redisConfiguration": "properties.redisConfiguration",
+      "Microsoft.Cache/Redis/redisConfiguration.authnotrequired": "properties.redisConfiguration.authnotrequired",
       "Microsoft.Cache/Redis/redisConfiguration.maxclients": "properties.redisConfiguration.maxclients",
       "Microsoft.Cache/Redis/redisVersion": "properties.redisVersion",
       "Microsoft.Cache/Redis/replicasPerMaster": "properties.replicasPerMaster",
@@ -317,6 +329,7 @@
     },
     "resourceType": "Redis",
     "apiVersions": [
+      "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2022-06-01",
@@ -348,6 +361,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -449,6 +463,14 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -597,6 +619,7 @@
     "aliases": null,
     "resourceType": "Redis/EventGridFilters",
     "apiVersions": [
+      "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2022-06-01",
@@ -631,6 +654,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -667,6 +691,7 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2022-06-01",
@@ -690,6 +715,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -722,6 +748,7 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2022-06-01",
@@ -745,6 +772,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -785,6 +813,7 @@
     },
     "resourceType": "Redis/privateEndpointConnections",
     "apiVersions": [
+      "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2022-06-01",
@@ -808,6 +837,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -840,6 +870,7 @@
     "aliases": null,
     "resourceType": "Redis/privateLinkResources",
     "apiVersions": [
+      "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
       "2022-06-01",
@@ -863,6 +894,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -893,6 +925,12 @@
   },
   {
     "aliases": {
+      "Microsoft.Cache/redisEnterprise/encryption": "properties.encryption",
+      "Microsoft.Cache/redisEnterprise/encryption.customerManagedKeyEncryption": "properties.encryption.customerManagedKeyEncryption",
+      "Microsoft.Cache/redisEnterprise/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity",
+      "Microsoft.Cache/redisEnterprise/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.identityType": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.identityType",
+      "Microsoft.Cache/redisEnterprise/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.userAssignedIdentityResourceId": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.userAssignedIdentityResourceId",
+      "Microsoft.Cache/redisEnterprise/encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl",
       "Microsoft.Cache/redisEnterprise/hostName": "properties.hostName",
       "Microsoft.Cache/redisEnterprise/minimumTlsVersion": "properties.minimumTlsVersion",
       "Microsoft.Cache/redisEnterprise/privateEndpointConnections": "properties.privateEndpointConnections",
@@ -918,6 +956,7 @@
     },
     "resourceType": "redisEnterprise",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -929,6 +968,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -948,6 +988,14 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
         "zones": [
           "1",
           "2",
@@ -1087,6 +1135,7 @@
     },
     "resourceType": "redisEnterprise/databases",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -1098,6 +1147,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -1120,6 +1170,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -1131,6 +1182,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -1153,6 +1205,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/operationresults",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -1164,6 +1217,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -1186,6 +1240,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -1197,6 +1252,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -1227,6 +1283,7 @@
     },
     "resourceType": "RedisEnterprise/privateEndpointConnections",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -1238,6 +1295,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -1260,6 +1318,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnections/operationresults",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -1271,6 +1330,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -1293,6 +1353,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateLinkResources",
     "apiVersions": [
+      "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
       "2022-01-01",
@@ -1304,6 +1365,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -1324,6 +1386,23 @@
   },
   {
     "aliases": {
+      "Microsoft.Cache/redis/accessPolicies/permissions": "properties.permissions",
+      "Microsoft.Cache/redis/accessPolicies/provisioningState": "properties.provisioningState",
+      "Microsoft.Cache/redis/accessPolicies/type": "properties.type"
+    },
+    "resourceType": "redis/accesspolicies"
+  },
+  {
+    "aliases": {
+      "Microsoft.Cache/redis/accessPolicyAssignments/accessPolicyName": "properties.accessPolicyName",
+      "Microsoft.Cache/redis/accessPolicyAssignments/objectId": "properties.objectId",
+      "Microsoft.Cache/redis/accessPolicyAssignments/objectIdAlias": "properties.objectIdAlias",
+      "Microsoft.Cache/redis/accessPolicyAssignments/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "redis/accesspolicyassignments"
+  },
+  {
+    "aliases": {
       "Microsoft.Cache/Redis/firewallrules/endIP": "properties.endIP",
       "Microsoft.Cache/Redis/firewallrules/startIP": "properties.startIP"
     },
@@ -1331,8 +1410,10 @@
   },
   {
     "aliases": {
+      "Microsoft.Cache/Redis/linkedServers/geoReplicatedPrimaryHostName": "properties.geoReplicatedPrimaryHostName",
       "Microsoft.Cache/redis/linkedservers/linkedRedisCacheId": "properties.linkedRedisCacheId",
       "Microsoft.Cache/redis/linkedservers/linkedRedisCacheLocation": "properties.linkedRedisCacheLocation",
+      "Microsoft.Cache/Redis/linkedServers/primaryHostName": "properties.primaryHostName",
       "Microsoft.Cache/redis/linkedservers/serverRole": "properties.serverRole"
     },
     "resourceType": "redis/linkedservers"

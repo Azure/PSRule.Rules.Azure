@@ -1,8 +1,184 @@
 [
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.ElasticSan/elasticSans/availabilityZones": "properties.availabilityZones",
+      "Microsoft.ElasticSan/elasticSans/availabilityZones[*]": "properties.availabilityZones[*]",
+      "Microsoft.ElasticSan/elasticSans/baseSizeTiB": "properties.baseSizeTiB",
+      "Microsoft.ElasticSan/elasticSans/extendedCapacitySizeTiB": "properties.extendedCapacitySizeTiB",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.ElasticSan/elasticSans/provisioningState": "properties.provisioningState",
+      "Microsoft.ElasticSan/elasticSans/sku": "properties.sku",
+      "Microsoft.ElasticSan/elasticSans/sku.name": "properties.sku.name",
+      "Microsoft.ElasticSan/elasticSans/sku.tier": "properties.sku.tier",
+      "Microsoft.ElasticSan/elasticSans/totalIops": "properties.totalIops",
+      "Microsoft.ElasticSan/elasticSans/totalMBps": "properties.totalMBps",
+      "Microsoft.ElasticSan/elasticSans/totalSizeTiB": "properties.totalSizeTiB",
+      "Microsoft.ElasticSan/elasticSans/totalVolumeSizeGiB": "properties.totalVolumeSizeGiB",
+      "Microsoft.ElasticSan/elasticSans/volumeGroupCount": "properties.volumeGroupCount"
+    },
     "resourceType": "elasticSans",
     "apiVersions": [
+      "2023-01-01",
+      "2022-12-01-preview",
+      "2021-11-20-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "East US 2",
+      "East US 2 (Stage)",
+      "France Central",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": {
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryption": "properties.encryption",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/networkAcls": "properties.networkAcls",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/networkAcls.virtualNetworkRules": "properties.networkAcls.virtualNetworkRules",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/networkAcls.virtualNetworkRules[*]": "properties.networkAcls.virtualNetworkRules[*]",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/networkAcls.virtualNetworkRules[*].action": "properties.networkAcls.virtualNetworkRules[*].action",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/networkAcls.virtualNetworkRules[*].id": "properties.networkAcls.virtualNetworkRules[*].id",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/networkAcls.virtualNetworkRules[*].state": "properties.networkAcls.virtualNetworkRules[*].state",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/protocolType": "properties.protocolType",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "elasticSans/volumeGroups",
+    "apiVersions": [
+      "2023-01-01",
+      "2022-12-01-preview",
       "2021-11-20-preview"
     ],
     "locations": [
@@ -132,6 +308,8 @@
     "aliases": null,
     "resourceType": "locations/asyncoperations",
     "apiVersions": [
+      "2023-01-01",
+      "2022-12-01-preview",
       "2021-11-20-preview"
     ],
     "locations": [
@@ -155,6 +333,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-01-01",
       "2022-12-01-preview",
       "2021-11-20-preview"
     ],
@@ -174,5 +353,21 @@
       "West US 3"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/creationData": "properties.creationData",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/creationData.createSource": "properties.creationData.createSource",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/creationData.sourceUri": "properties.creationData.sourceUri",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/sizeGiB": "properties.sizeGiB",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/storageTarget": "properties.storageTarget",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/storageTarget.provisioningState": "properties.storageTarget.provisioningState",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/storageTarget.status": "properties.storageTarget.status",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/storageTarget.targetIqn": "properties.storageTarget.targetIqn",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/storageTarget.targetPortalHostname": "properties.storageTarget.targetPortalHostname",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/storageTarget.targetPortalPort": "properties.storageTarget.targetPortalPort",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/volumeId": "properties.volumeId"
+    },
+    "resourceType": "elasticsans/volumegroups/volumes"
   }
 ]

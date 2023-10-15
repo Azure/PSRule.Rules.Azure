@@ -119,7 +119,7 @@ For best results, configure the `PSRule.Rules.Azure` module using `ps-rule.yaml`
 
 ```yaml title="ps-rule.yaml"
 requires:
-  PSRule.Rules.Azure: '>=1.27.0'
+  PSRule.Rules.Azure: '>=1.29.0'
 
 include:
   module:
@@ -259,10 +259,10 @@ This build script will compile the module and documentation then output the resu
 | Operating System | Tool               | Overview | Installation Link |
 | ---------------- | ----               | -------- | ----------------- |
 | Windows          | Windows PowerShell | Support for version 5.1 with .NET Framework 4.7.2 or greater. |  [link](https://dotnet.microsoft.com/download/dotnet-framework/net48) |
-| Windows, MacOS, Linux | PowerShell    | Version 7.2 or greater is support. | [link](https://github.com/PowerShell/PowerShell#get-powershell) |
+| Windows, MacOS, Linux | PowerShell    | Version 7.3 or greater is support. | [link](https://github.com/PowerShell/PowerShell#get-powershell) |
 | -                | -                  | Multiple PowerShell modules are required (PlatyPS, Pester, PSScriptAnalyzer, PowerShellGet, PackageManagement, InvokeBuild, PSRule). | Installed when you run the `build.ps1` script |
-| -                | .NET               | .NET SDK v6 is required. | [link](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) |
-| -                | Bicep CLI          | PSRule depends on the Bicep CLI to decompile (expand) Bicep modules to ARM | [link](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install) |
+| -                | .NET               | .NET SDK v7 is required. | [link](https://dotnet.microsoft.com/en-us/download/dotnet/6.0) |
+| -                | Bicep CLI          | PSRule depends on the Bicep CLI to expand Bicep modules to ARM | [link](https://learn.microsoft.com/en-us/azure/azure-resource-manager/bicep/install) |
 
 The following dependencies will be automatically installed if the required versions are not present:
 
@@ -320,4 +320,4 @@ After downloading the modules, copy the module directories to devices with restr
 *[CI]: continuous integration
 
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
-[dotnet]: https://dotnet.microsoft.com/download/dotnet/6.0
+[dotnet]: https://dotnet.microsoft.com/download/dotnet/7.0

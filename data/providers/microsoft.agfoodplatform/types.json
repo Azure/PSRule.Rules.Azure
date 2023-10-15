@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-06-01-preview",
       "2021-09-01-preview",
       "2020-05-12-preview"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "farmBeatsExtensionDefinitions",
     "apiVersions": [
+      "2023-06-01-preview",
       "2021-09-01-preview",
       "2020-05-12-preview"
     ],
@@ -23,6 +25,7 @@
     "aliases": null,
     "resourceType": "farmBeatsSolutionDefinitions",
     "apiVersions": [
+      "2023-06-01-preview",
       "2021-09-01-preview",
       "2020-05-12-preview"
     ],
@@ -33,6 +36,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2021-09-01-preview",
       "2020-05-12-preview"
     ],
@@ -43,6 +47,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2021-09-01-preview",
       "2020-05-12-preview"
     ],

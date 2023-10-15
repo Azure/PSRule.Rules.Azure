@@ -3,29 +3,72 @@
     "aliases": null,
     "resourceType": "catalogs",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
       "East US",
+      "East US 2",
       "North Central US",
       "South Central US",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-02-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {
     "aliases": null,
     "resourceType": "communities",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
       "East US",
+      "East US 2",
       "North Central US",
       "South Central US",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "externalConnections",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-02-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -33,14 +76,20 @@
     "aliases": null,
     "resourceType": "internalConnections",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
       "East US",
+      "East US 2",
       "North Central US",
       "South Central US",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -48,6 +97,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
@@ -59,15 +109,21 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
       "East US",
+      "East US 2",
       "North Central US",
       "South Central US",
       "West Central US",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -75,6 +131,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
@@ -86,14 +143,20 @@
     "aliases": null,
     "resourceType": "virtualEnclaves",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
       "East US",
+      "East US 2",
       "North Central US",
       "South Central US",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -101,14 +164,20 @@
     "aliases": null,
     "resourceType": "virtualEnclaves/endpoints",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
       "East US",
+      "East US 2",
       "North Central US",
       "South Central US",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -116,14 +185,20 @@
     "aliases": null,
     "resourceType": "virtualEnclaves/workloads",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
       "East US",
+      "East US 2",
       "North Central US",
       "South Central US",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   }

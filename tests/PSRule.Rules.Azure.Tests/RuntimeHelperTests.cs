@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System.Management.Automation;
@@ -51,6 +51,30 @@ namespace PSRule.Rules.Azure
             Assert.True(eval.Outbound("virtualNetwork", 80) == Data.Network.Access.Allow);
         }
 
+        [Fact]
+        public void CreateService()
+        {
+            var service = Helper.CreateService("1.0.0", 90);
+            Assert.NotNull(service);
+            Assert.Equal("1.0.0", service.Minimum);
+            Assert.Equal(90, service.Timeout);
+
+            service.WithAllowedLocations(null);
+            Assert.True(service.IsAllowedLocation("eastus"));
+
+            service.WithAllowedLocations(System.Array.Empty<string>());
+            Assert.True(service.IsAllowedLocation("eastus"));
+
+            service.WithAllowedLocations(new string[] { "westus" });
+            Assert.True(service.IsAllowedLocation("westus"));
+            Assert.False(service.IsAllowedLocation("eastus"));
+
+            service.WithAllowedLocations(new string[] { "" });
+            Assert.True(service.IsAllowedLocation("eastus"));
+        }
+
+        #region Helper methods
+
         private static PSObject NewSecurityRule(int priority, string access, string direction, string destinationAddressPrefix = null, string destinationPortRange = null)
         {
             var result = new PSObject();
@@ -68,5 +92,7 @@ namespace PSRule.Rules.Azure
             result.Properties.Add(new PSNoteProperty("properties", properties));
             return result;
         }
+
+        #endregion Helper methods
     }
 }

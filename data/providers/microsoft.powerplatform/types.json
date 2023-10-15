@@ -38,8 +38,6 @@
       "Australia",
       "Brazil",
       "Canada",
-      "Central US",
-      "East US",
       "Europe",
       "France",
       "Germany",
@@ -52,7 +50,45 @@
       "Switzerland",
       "UAE",
       "UK",
-      "United States",
+      "United States"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2020-10-30-preview",
+      "2020-10-30"
+    ],
+    "locations": [
+      "East US",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deleteVirtualNetworkOrSubnets",
+    "apiVersions": [
+      "2020-10-30-preview",
+      "2020-10-30"
+    ],
+    "locations": [
+      "East US",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/validateDeleteVirtualNetworkOrSubnets",
+    "apiVersions": [
+      "2020-10-30-preview",
+      "2020-10-30"
+    ],
+    "locations": [
+      "East US",
       "West US"
     ],
     "zoneMappings": null

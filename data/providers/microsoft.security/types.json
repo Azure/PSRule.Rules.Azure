@@ -34,6 +34,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -51,10 +52,13 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Norway West",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "UAE North",
       "UK South",
@@ -66,6 +70,15 @@
       "West US 2",
       "West US 3"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "aggregations",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   },
   {
@@ -278,7 +291,19 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Security/assignments/additionalData": "properties.additionalData",
+      "Microsoft.Security/assignments/additionalData.exemptionCategory": "properties.additionalData.exemptionCategory",
+      "Microsoft.Security/assignments/assignedComponent": "properties.assignedComponent",
+      "Microsoft.Security/assignments/assignedComponent.key": "properties.assignedComponent.key",
+      "Microsoft.Security/assignments/assignedStandard": "properties.assignedStandard",
+      "Microsoft.Security/assignments/assignedStandard.id": "properties.assignedStandard.id",
+      "Microsoft.Security/assignments/description": "properties.description",
+      "Microsoft.Security/assignments/displayName": "properties.displayName",
+      "Microsoft.Security/assignments/effect": "properties.effect",
+      "Microsoft.Security/assignments/expiresOn": "properties.expiresOn",
+      "Microsoft.Security/assignments/scope": "properties.scope"
+    },
     "resourceType": "assignments",
     "apiVersions": [
       "2021-08-01-preview"
@@ -575,6 +600,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "customRecommendations",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "dataCollectionAgents",
     "apiVersions": [
       "2015-06-01-preview"
@@ -615,7 +649,22 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Security/defenderForStorageSettings/isEnabled": "properties.isEnabled",
+      "Microsoft.Security/defenderForStorageSettings/malwareScanning": "properties.malwareScanning",
+      "Microsoft.Security/defenderForStorageSettings/malwareScanning.onUpload": "properties.malwareScanning.onUpload",
+      "Microsoft.Security/defenderForStorageSettings/malwareScanning.onUpload.capGBPerMonth": "properties.malwareScanning.onUpload.capGBPerMonth",
+      "Microsoft.Security/defenderForStorageSettings/malwareScanning.onUpload.isEnabled": "properties.malwareScanning.onUpload.isEnabled",
+      "Microsoft.Security/defenderForStorageSettings/malwareScanning.operationStatus": "properties.malwareScanning.operationStatus",
+      "Microsoft.Security/defenderForStorageSettings/malwareScanning.operationStatus.code": "properties.malwareScanning.operationStatus.code",
+      "Microsoft.Security/defenderForStorageSettings/malwareScanning.operationStatus.message": "properties.malwareScanning.operationStatus.message",
+      "Microsoft.Security/defenderForStorageSettings/overrideSubscriptionLevelSettings": "properties.overrideSubscriptionLevelSettings",
+      "Microsoft.Security/defenderForStorageSettings/sensitiveDataDiscovery": "properties.sensitiveDataDiscovery",
+      "Microsoft.Security/defenderForStorageSettings/sensitiveDataDiscovery.isEnabled": "properties.sensitiveDataDiscovery.isEnabled",
+      "Microsoft.Security/defenderForStorageSettings/sensitiveDataDiscovery.operationStatus": "properties.sensitiveDataDiscovery.operationStatus",
+      "Microsoft.Security/defenderForStorageSettings/sensitiveDataDiscovery.operationStatus.code": "properties.sensitiveDataDiscovery.operationStatus.code",
+      "Microsoft.Security/defenderForStorageSettings/sensitiveDataDiscovery.operationStatus.message": "properties.sensitiveDataDiscovery.operationStatus.message"
+    },
     "resourceType": "defenderForStorageSettings",
     "apiVersions": [
       "2022-12-01-preview",
@@ -886,6 +935,7 @@
     "aliases": null,
     "resourceType": "healthReports",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [],
@@ -917,6 +967,15 @@
     "resourceType": "ingestionSettings",
     "apiVersions": [
       "2021-01-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "integrations",
+    "apiVersions": [
+      "2023-07-01-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -1948,6 +2007,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "securityStandards",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "securityStatuses",
     "apiVersions": [
       "2015-06-01-preview"
@@ -1994,6 +2062,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Italy North",
       "North Europe",
       "Sweden Central",
       "Switzerland North",
@@ -2004,9 +2073,12 @@
     "zoneMappings": null
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Security/serverVulnerabilityAssessmentsSettings/AzureServersSetting.selectedProvider": "properties.selectedProvider"
+    },
     "resourceType": "serverVulnerabilityAssessmentsSettings",
     "apiVersions": [
+      "2023-05-01",
       "2022-01-01-preview"
     ],
     "locations": [],
@@ -2041,6 +2113,7 @@
     ],
     "locations": [
       "Australia Central",
+      "Australia Central 2",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -2052,6 +2125,8 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
+      "Germany North",
       "Germany West Central",
       "Japan East",
       "Japan West",
@@ -2064,6 +2139,7 @@
       "Poland Central",
       "Qatar Central",
       "South Africa North",
+      "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
@@ -2084,6 +2160,25 @@
   },
   {
     "aliases": null,
+    "resourceType": "standardAssignments",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.Security/standards/category": "properties.category",
+      "Microsoft.Security/standards/components": "properties.components",
+      "Microsoft.Security/standards/components[*]": "properties.components[*]",
+      "Microsoft.Security/standards/components[*].key": "properties.components[*].key",
+      "Microsoft.Security/standards/description": "properties.description",
+      "Microsoft.Security/standards/displayName": "properties.displayName",
+      "Microsoft.Security/standards/standardType": "properties.standardType",
+      "Microsoft.Security/standards/supportedClouds": "properties.supportedClouds",
+      "Microsoft.Security/standards/supportedClouds[*]": "properties.supportedClouds[*]"
+    },
     "resourceType": "standards",
     "apiVersions": [
       "2021-08-01-preview"

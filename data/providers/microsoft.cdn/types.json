@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "canMigrate",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -38,6 +39,7 @@
     "aliases": null,
     "resourceType": "CdnWebApplicationFirewallManagedRuleSets",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -126,6 +128,7 @@
     },
     "resourceType": "CdnWebApplicationFirewallPolicies",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -144,6 +147,7 @@
     "aliases": null,
     "resourceType": "checkEndpointNameAvailability",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -180,6 +184,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -228,6 +233,7 @@
     "aliases": null,
     "resourceType": "checkResourceUsage",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -274,6 +280,7 @@
     "aliases": null,
     "resourceType": "edgenodes",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -322,6 +329,7 @@
     "aliases": null,
     "resourceType": "migrate",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -357,6 +365,7 @@
     "aliases": null,
     "resourceType": "operationresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -405,6 +414,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -453,6 +463,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/afdendpointresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -489,6 +500,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/afdendpointresults/routeresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -525,6 +537,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/customdomainresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -561,6 +574,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -609,6 +623,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults/customdomainresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -657,6 +672,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults/origingroupresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -696,6 +712,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults/originresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -744,6 +761,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/origingroupresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -780,6 +798,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/origingroupresults/originresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -814,8 +833,45 @@
   },
   {
     "aliases": null,
+    "resourceType": "operationresults/profileresults/policyresults",
+    "apiVersions": [
+      "2023-07-01-preview",
+      "2023-05-01",
+      "2023-02-01-preview",
+      "2022-11-01-preview",
+      "2022-05-01-preview",
+      "2022-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "global",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "West Europe",
+      "West India",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operationresults/profileresults/rulesetresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -852,6 +908,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/rulesetresults/ruleresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -888,6 +945,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/secretresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -924,6 +982,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/securitypoliciesresults",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -960,6 +1019,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1021,6 +1081,7 @@
     },
     "resourceType": "profiles",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1077,6 +1138,7 @@
     },
     "resourceType": "profiles/afdendpoints",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1147,6 +1209,7 @@
     },
     "resourceType": "profiles/afdendpoints/routes",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1202,6 +1265,7 @@
     },
     "resourceType": "profiles/customdomains",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1603,6 +1667,7 @@
     },
     "resourceType": "profiles/endpoints",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1653,6 +1718,7 @@
     },
     "resourceType": "profiles/endpoints/customdomains",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1720,6 +1786,7 @@
     },
     "resourceType": "profiles/endpoints/origingroups",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1775,6 +1842,7 @@
     },
     "resourceType": "profiles/endpoints/origins",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1820,6 +1888,72 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "profiles/keygroups",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "global",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "West Europe",
+      "West India",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "profiles/networkpolicies",
+    "apiVersions": [
+      "2023-07-01-preview",
+      "2023-05-01",
+      "2023-02-01-preview",
+      "2022-11-01-preview",
+      "2022-05-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "global",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "West Europe",
+      "West India",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Cdn/profiles/originGroups/deploymentStatus": "properties.deploymentStatus",
       "Microsoft.Cdn/profiles/originGroups/healthProbeSettings": "properties.healthProbeSettings",
@@ -1845,6 +1979,7 @@
     },
     "resourceType": "profiles/origingroups",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1902,6 +2037,7 @@
     },
     "resourceType": "profiles/origingroups/origins",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1936,8 +2072,40 @@
   },
   {
     "aliases": null,
+    "resourceType": "profiles/policies",
+    "apiVersions": [
+      "2022-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "global",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "West Europe",
+      "West India",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "profiles/rulesets",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2224,6 +2392,7 @@
     },
     "resourceType": "profiles/rulesets/rules",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2285,6 +2454,7 @@
     },
     "resourceType": "profiles/secrets",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2338,6 +2508,7 @@
     },
     "resourceType": "profiles/securitypolicies",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2374,6 +2545,7 @@
     "aliases": null,
     "resourceType": "validateProbe",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2419,6 +2591,7 @@
     "aliases": null,
     "resourceType": "validateSecret",
     "apiVersions": [
+      "2023-07-01-preview",
       "2023-05-01",
       "2023-02-01-preview",
       "2022-11-01-preview",

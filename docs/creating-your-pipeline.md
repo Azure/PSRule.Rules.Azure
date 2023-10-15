@@ -144,7 +144,7 @@ See [working with baselines][8] for more information.
       uses: microsoft/ps-rule@v2.9.0
       with:
         modules: 'PSRule.Rules.Azure'
-        baseline: Azure.GA_2022_12
+        baseline: Azure.GA_2023_09
     ```
 
 === "Azure Pipelines"
@@ -155,7 +155,7 @@ See [working with baselines][8] for more information.
       displayName: Analyze Azure template files
       inputs:
         modules: 'PSRule.Rules.Azure'
-        baseline: Azure.GA_2022_12
+        baseline: Azure.GA_2023_09
     ```
 
 === "Generic with PowerShell"
@@ -164,7 +164,7 @@ See [working with baselines][8] for more information.
     # Analyze Azure resources using PSRule for Azure
     $modules = @('PSRule.Rules.Azure')
     Install-Module -Name $modules -Scope CurrentUser -Force -ErrorAction Stop;
-    Assert-PSRule -InputPath '.' -Baseline 'Azure.GA_2022_12' -Module $modules -Format File -ErrorAction Stop;
+    Assert-PSRule -InputPath '.' -Baseline 'Azure.GA_2023_09' -Module $modules -Format File -ErrorAction Stop;
     ```
 
 ### Continue on error
