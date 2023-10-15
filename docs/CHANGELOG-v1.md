@@ -30,6 +30,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.30.2:
 
+- New rules:
+  - Machine Learning:
+    - Check that compute has an idle shutdown set by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check compute SSH keys are disabled by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check compute is connected to a VNET by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check public workspace endpoints are disabled by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
 - Engineering:
   - Bump development tools to .NET 7.0 SDK by @BernieWhite.
     [#1870](https://github.com/Azure/PSRule.Rules.Azure/issues/1870)

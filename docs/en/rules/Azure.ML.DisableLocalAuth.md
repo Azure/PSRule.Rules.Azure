@@ -3,7 +3,7 @@ reviewed: 2023-10-10
 severity: Critical
 pillar: Security
 category: Identity and Access Management
-resource: ML
+resource: Machine Learning
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.DisableLocalAuth/
 ---
 
@@ -57,7 +57,6 @@ To deploy an ML - compute that complies with this rule:
 For example:
 
 ```bicep
-
 resource aml_compute_instance 'Microsoft.MachineLearningServices/workspaces/computes@2023-04-01' ={
   name: '${mlWorkspace.name}/${name}'
   location: location
