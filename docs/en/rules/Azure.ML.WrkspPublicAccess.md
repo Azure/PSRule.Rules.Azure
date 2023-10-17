@@ -17,7 +17,14 @@ Disable public network access from a ML - Workspace.
 
 Disabling public network access improves security by ensuring that the Machine Learning Workspaces aren't exposed on the public internet.
 You can control exposure of your workspaces by creating private endpoints instead.
+By default, a public endpoint is enabled for Machine Learning workspaces.
+The public endpoint is used for all access except for requests that use a Private Endpoint.
+Access through the public endpoint can be disabled or restricted to authorized virtual networks.
 
+Data exfiltration is an attack where an malicious actor does an unauthorized data transfer.
+Private Endpoints help control exposure of a workspace to data exfiltration by an internal or external malicious actor.
+They do this by providing clear separation between public and private endpoints.
+As a result, broad access to public endpoints which could be operated by a malicious actor are not required.
 ## RECOMMENDATION
 
 Consider setting the 'publicNetworkAccess' parameter of the Workspace properties to "Disabled", as part of a broader security strategy.
