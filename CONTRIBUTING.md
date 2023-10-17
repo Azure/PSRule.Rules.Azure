@@ -66,11 +66,14 @@ When writing documentation in Markdown, please follow these formatting guideline
 Before improving rule recommendations familiarize yourself with writing [rule markdown documentation][4].
 Rule documentation requires the following annotations for use with PSRule for Azure:
 
-- `severity` - The rule's severity.
+- `severity` - A subjective rating of the impact of a rule the solution or platform.
+  *NB* - the severity ratings reflect a productionised implementation, consideration should be applied for pre-production environments.
+  
   Available severities are:
-  - `Critical`
-  - `Important`
-  - `Awareness`
+  - `Critical` - A 'must have' if the solution is to be considered 'fit for purpose', secure, well governed and managed inline with the Microsoft Azure [Well-Architected Framework](https://learn.microsoft.com/en-us/azure/well-architected/). 
+  - `Important` - A 'to be considered' within the context of the solution and domain. In some cases, can introduce cost or complexity that should be considered as a trade off and explicity documented as a [Key Design Decision](https://learn.microsoft.com/azure/cloud-adoption-framework/decision-guides/).
+  - `Awareness` - A 'good to have' feature, normally reserved for solutions with the highest [non-functional requirements](https://learn.microsoft.com/azure/well-architected/resiliency/design-requirements).
+  
 - `pillar` - A Azure Well-Architected Framework pillar.
   Either `Cost Optimization`, `Operational Excellence`, `Performance Efficiency`, `Reliability`, `Security`.
 - `category` - A category of Azure Well-Architected Framework pillar.
