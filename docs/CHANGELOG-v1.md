@@ -28,6 +28,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.30.2:
+
+- Bug fixes:
+  - Fixed nullable parameters for built-in types by @BernieWhite.
+    [#2488](https://github.com/Azure/PSRule.Rules.Azure/issues/2488)
+
 ## v1.30.2
 
 What's changed since v1.30.1:
