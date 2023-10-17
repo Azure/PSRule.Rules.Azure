@@ -118,5 +118,5 @@ spec:
     allOf:
       - field: properties.primaryUserAssignedIdentity
         equals: "UserAssignedManagedIdentity"
-      - field: identity.type
-        equals: "UserAssigned"
+      - field: identity.userAssignedIdentities
+        exists: true
