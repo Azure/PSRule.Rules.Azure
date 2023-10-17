@@ -66,7 +66,7 @@ When writing documentation in Markdown, please follow these formatting guideline
 Before improving rule recommendations familiarize yourself with writing [rule markdown documentation][4].
 Rule documentation requires the following annotations for use with PSRule for Azure:
 
-- `severity` - A subjective rating of the impact of a rule the solution or platform.
+- `severity` - A subjective rating of the impact of a rule on the solution or platform.
   *NB* - the severity ratings reflect a productionised implementation, consideration should be applied for pre-production environments.
   
   Available severities are:
