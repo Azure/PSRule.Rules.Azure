@@ -54,6 +54,8 @@ metadata:
     release: GA
     ruleSet: 2023_10
     Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: [ 'NS-1' ]
 spec:
   type:
   - Microsoft.MachineLearningServices/workspaces/computes
