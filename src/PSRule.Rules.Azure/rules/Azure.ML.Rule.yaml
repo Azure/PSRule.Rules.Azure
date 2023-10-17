@@ -52,7 +52,7 @@ metadata:
   ref: AZR-000405
   tags:
     release: GA
-    ruleSet: 2023_10
+    ruleSet: 2023_12
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'NS-1' ]
