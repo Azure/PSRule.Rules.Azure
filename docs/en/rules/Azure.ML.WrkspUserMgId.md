@@ -4,7 +4,7 @@ severity: Important
 pillar: Security
 category: Identity and Access Management
 resource: ML
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/WrkspUserMgId/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.WrkspUserMgId/
 ---
 
 # Azure Machine Learning workspaces should use user-assigned managed identity
