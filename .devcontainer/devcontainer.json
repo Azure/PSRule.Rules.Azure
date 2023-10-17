@@ -36,7 +36,7 @@
   "build": {
     "dockerfile": "Dockerfile",
     "args": {
-      "VARIANT": "6.0-bullseye-slim"
+      "VARIANT": "7.0-bullseye-slim"
     }
   },
   "remoteUser": "vscode",
