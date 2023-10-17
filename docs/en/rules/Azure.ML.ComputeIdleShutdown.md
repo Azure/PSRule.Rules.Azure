@@ -45,7 +45,7 @@ For example:
     "computeType": "ComputeInstance",
     "properties": {
       "vmSize": "[parameters('vmSize')]",
-      "idleTimeBeforeShutdown": "[parameters('idleTimeBeforeShutdown')]"
+      "idleTimeBeforeShutdown": "PT15M"
     }
   }
 }
