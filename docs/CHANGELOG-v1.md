@@ -35,6 +35,8 @@ What's changed since v1.30.3:
     [#1870](https://github.com/Azure/PSRule.Rules.Azure/issues/1870)
   - Bump BenchmarkDotNet to v0.13.9.
     [#2469](https://github.com/Azure/PSRule.Rules.Azure/pull/2469)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.9.
+    [#2470](https://github.com/Azure/PSRule.Rules.Azure/pull/2470)
 
 ## v1.30.3
 
