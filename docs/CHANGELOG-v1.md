@@ -33,6 +33,8 @@ What's changed since v1.30.2:
 - Engineering:
   - Bump development tools to .NET 7.0 SDK by @BernieWhite.
     [#1870](https://github.com/Azure/PSRule.Rules.Azure/issues/1870)
+  - Bump BenchmarkDotNet to v0.13.9.
+    [#2469](https://github.com/Azure/PSRule.Rules.Azure/pull/2469)
 
 ## v1.30.2
 
