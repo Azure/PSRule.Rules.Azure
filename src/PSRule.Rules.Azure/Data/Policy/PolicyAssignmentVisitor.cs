@@ -825,8 +825,6 @@ namespace PSRule.Rules.Azure.Data.Policy
             if (typeA == ParameterType.Object && typeB == ParameterType.Object)
                 return JToken.DeepEquals(JObject.FromObject(valueA), JObject.FromObject(valueB));
 
-            // TODO: Handle more types
-
             return true;
         }
 
