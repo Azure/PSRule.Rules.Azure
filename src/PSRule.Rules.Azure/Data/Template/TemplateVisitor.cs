@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
+using YamlDotNet.Core.Tokens;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -66,6 +67,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_DEFINITIONS = "definitions";
         private const string PROPERTY_REF = "$ref";
         private const string PROPERTY_ROOTDEPLOYMENT = "rootDeployment";
+        private const string PROPERTY_NULLABLE = "nullable";
 
         internal sealed class TemplateContext : ITemplateContext
         {
@@ -960,7 +962,8 @@ namespace PSRule.Rules.Azure.Data.Template
             return parameter == null ||
                 TryParameterAssignment(context, parameterName, parameter) ||
                 TryParameterDefaultValue(context, parameterName, parameter) ||
-                TryParameterDefault(context, parameterName, parameter);
+                TryParameterDefault(context, parameterName, parameter) ||
+                TryParameterNullable(context, parameterName, parameter);
         }
 
         private static bool TryParameterAssignment(TemplateContext context, string parameterName, JObject parameter)
@@ -1000,6 +1003,21 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
 
             AddParameterFromType(context, parameterName, type.Value, value);
+            return true;
+        }
+
+        /// <summary>
+        /// Handle cases when the parameter has been marked as nullable.
+        /// </summary>
+        private static bool TryParameterNullable(TemplateContext context, string parameterName, JObject parameter)
+        {
+            if (!parameter.TryBoolProperty(PROPERTY_NULLABLE, out var nullable) || !nullable.HasValue)
+                return false;
+
+            if (!TryParameterType(context, parameter, out var type))
+                throw ThrowTemplateParameterException(parameterName);
+
+            AddParameterFromType(context, parameterName, type.Value, JToken.Parse("null"));
             return true;
         }
 
