@@ -876,6 +876,17 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Standard", resources[10]["properties"]["pricingTier"].Value<string>());
         }
 
+        [Fact]
+        public void NullableParameters()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.27.json"), null, out _);
+            Assert.Equal(3, resources.Length);
+
+            var actual = resources[2];
+            Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
+            Assert.Equal("TLS1_2", actual["properties"]["minimumTlsVersion"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
