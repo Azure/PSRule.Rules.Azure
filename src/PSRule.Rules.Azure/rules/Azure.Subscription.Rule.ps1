@@ -77,35 +77,6 @@ Rule 'Azure.RBAC.PIM' -Ref 'AZR-000208' -Type 'Microsoft.Subscription' -Tag @{ r
 
 #endregion RBAC
 
-#region Security Center
-
-# Synopsis: Microsoft Defender for Cloud email and phone contact details should be set
-Rule 'Azure.DefenderCloud.Contact' -Alias 'Azure.SecurityCenter.Contact' -Ref 'AZR-000209' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Reason $LocalizedData.SecurityCenterNotConfigured;
-    $contacts = @(GetSubResources -ResourceType 'Microsoft.Security/securityContacts');
-    $Null -ne $contacts -and $contacts.Length -gt 0;
-    foreach ($c in $contacts) {
-        $Assert.HasFieldValue($c, 'Properties.Email')
-        $Assert.HasFieldValue($c, 'Properties.Phone');
-    }
-}
-
-# TODO: Check Security Center recommendations
-
-# Synopsis: Enable auto-provisioning on VMs to improve Microsoft Defender for Cloud insights
-Rule 'Azure.DefenderCloud.Provisioning' -Alias 'Azure.SecurityCenter.Provisioning' -Ref 'AZR-000210' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4' } {
-    $provisioning = @(GetSubResources -ResourceType 'Microsoft.Security/autoProvisioningSettings');
-    $Null -ne $provisioning -and $provisioning.Length -gt 0;
-    foreach ($s in $provisioning) {
-        $Assert.HasFieldValue($s, 'Properties.autoProvision', 'On');
-    }
-}
-
-#endregion Security Center
-
-# TODO: Use policy
-# TODO: Use resource locks
-
 #region Monitor
 
 # Synopsis: Configure Azure service logs

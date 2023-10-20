@@ -23,4 +23,6 @@ Consider configuring Microsoft Defender for Cloud email and phone contact detail
 
 ## LINK
 
-- [Quickstart: Configure email notifications for security alerts](https://docs.microsoft.com/azure/defender-for-cloud/configure-email-notifications)
+- [Security operations in Azure](https://learn.microsoft.com/azure/well-architected/security/monitor-security-operations#assign-incident-notification-contact)
+- [Quickstart: Configure email notifications for security alerts](https://learn.microsoft.com/azure/defender-for-cloud/configure-email-notifications)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/securitycontacts)

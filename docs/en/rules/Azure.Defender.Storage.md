@@ -2,7 +2,7 @@
 reviewed: 2023-18-05
 severity: Critical
 pillar: Security
-category: Data protection
+category: Tools
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Storage/
 ---
@@ -45,13 +45,26 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Security/pricings",
-    "apiVersion": "2022-03-01",
-    "name": "StorageAccounts",
-    "properties": {
-        "pricingTier": "Standard",
-        "subPlan": "DefenderForStorageV2"
-    }
+  "type": "Microsoft.Security/pricings",
+  "apiVersion": "2023-01-01",
+  "name": "StorageAccounts",
+  "properties": {
+    "pricingTier": "Standard",
+    "subPlan": "DefenderForStorageV2",
+    "extensions": [
+      {
+        "name": "OnUploadMalwareScanning",
+        "isEnabled": "True",
+        "additionalExtensionProperties": {
+          "CapGBPerMonthPerStorageAccount": "5000"
+        }
+      },
+      {
+        "name": "SensitiveDataDiscovery",
+        "isEnabled": "True"
+      }
+    ]
+  }
 }
 ```
 
@@ -64,11 +77,24 @@ To enable Defender for Storage:
 For example:
 
 ```bicep
-resource defenderForStorage 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForStorage 'Microsoft.Security/pricings@2023-01-01' = {
   name: 'StorageAccounts'
   properties: {
     pricingTier: 'Standard'
     subPlan: 'DefenderForStorageV2'
+    extensions: [
+      {
+        name: 'OnUploadMalwareScanning'
+        isEnabled: 'True'
+        additionalExtensionProperties: {
+          CapGBPerMonthPerStorageAccount: '5000'
+        }
+      }
+      {
+        name: 'SensitiveDataDiscovery'
+        isEnabled: 'True'
+      }
+    ]
   }
 }
 ```
@@ -81,14 +107,16 @@ Set-AzSecurityPricing -Name 'StorageAccounts' -PricingTier 'Standard' -SubPlan '
 
 ## NOTES
 
-The `DefenderForStorageV2` sub plan represents the new Defender for Storage plan which offers several new benefits that aren't included in the classic plan. The new plan includes more advanced capabilities that can help improve the security of the data and help prevent malicious file uploads, sensitive data exfiltration, and data corruption. Some features within the new plan is still in preview, but these are configurable.
+The `DefenderForStorageV2` sub plan represents the new Defender for Storage plan which offers several new benefits that aren't included in the classic plan.
+The new plan includes more advanced capabilities that can help improve the security of the data and help prevent malicious file uploads, sensitive data exfiltration, and data corruption.
+Some features within the new plan is still in preview, but these are configurable.
 
 Currently only the `Blob Storage`, `Azure Files` and `Azure Data Lake Storage Gen2` service is supported by Defender for Storage.
 
 ## LINKS
 
-- [Storage security guide](https://learn.microsoft.com/azure/storage/blobs/security-recommendations?toc=%2Fazure%2Fsecurity%2Ffundamentals%2Ftoc.json&bc=%2Fazure%2Fsecurity%2Fbreadcrumb%2Ftoc.json)
-- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
+- [Azure security monitoring tools](https://learn.microsoft.com/azure/well-architected/security/monitor-tools)
+- [Storage security guide](https://learn.microsoft.com/azure/storage/blobs/security-recommendations)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for Storage](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-introduction)
 - [Migrate from Defender for Storage (classic) to the new plan](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-classic-migrate)
