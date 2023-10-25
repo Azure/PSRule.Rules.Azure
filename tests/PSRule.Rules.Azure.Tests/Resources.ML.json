@@ -67,32 +67,6 @@
   {
     "type": "Microsoft.MachineLearningServices/workspaces",
     "apiVersion": "2023-04-01",
-    "name": "ml-wks-a",
-    "location": "westus",
-    "tags": {
-      "application": "ML"
-    },
-    "sku": {
-      "name": "Basic",
-      "tier": "Basic"
-    },
-    "kind": "Default",
-    "identity": {
-      "type": "UserAssigned",
-      "userAssignedIdentities": {
-        "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/UserAssignedManagedIdentity": {}
-      }
-    },
-    "properties": {
-      "friendlyName": "WorkspaceFriendlyName",
-      "allowPublicAccessWhenBehindVnet": false,
-      "primaryUserAssignedIdentity": "UserAssignedManagedIdentity",
-      "publicNetworkAccess": "Disabled"
-    }
-  },
-  {
-    "type": "Microsoft.MachineLearningServices/workspaces",
-    "apiVersion": "2023-04-01",
     "name": "ml-wks-b",
     "location": "westus",
     "tags": {
