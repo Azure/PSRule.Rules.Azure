@@ -4,7 +4,7 @@ severity: Important
 pillar: Security
 category: Identity and Access Management
 resource: Machine Learning
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.WrkspUserMgId/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.UserManagedIdentity/
 ---
 
 # Azure Machine Learning workspaces should use user-assigned managed identity
@@ -21,7 +21,7 @@ User-assigned managed identity allows you to create the identity as an Azure res
 
 ## RECOMMENDATION
 
-ML - Compute should be configured to use a user-assigned managed identity, as part of a broader security and lifecycle management strategy.
+Consider using a User-Assigned Managed Identity, as part of a broader security and lifecycle management strategy.
 
 ## EXAMPLES
 
@@ -105,4 +105,4 @@ resource workspace 'Microsoft.MachineLearningServices/workspaces@2023-04-01' = {
 - [Set up authentication between Azure Machine Learning and other services](https://learn.microsoft.com/azure/machine-learning/how-to-identity-based-service-authentication)
 - [IM-3: Manage application identities securely and automatically](https://learn.microsoft.com/security/benchmark/azure/baselines/machine-learning-service-security-baseline#im-3-manage-application-identities-securely-and-automatically)
 - [Azure Policy Regulatory Compliance controls for Azure Machine Learning](https://learn.microsoft.com/azure/machine-learning/security-controls-policy)
-- [Azure deployment reference - ML - Workspaces](https://learn.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces#workspaceproperties)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.machinelearningservices/workspaces#workspaceproperties)

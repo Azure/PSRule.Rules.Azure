@@ -84,14 +84,14 @@ Describe 'Azure.ML' -Tag 'ML' {
             $ruleResult.TargetName | Should -Be 'mlcomp-a';
         }
 
-        It 'Azure.ML.WrkspVnetPubAccess' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ML.WrkspVnetPubAccess' };
+        It 'Azure.ML.PublicAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ML.PublicAccess' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-wks-b';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'ml-wks-b', 'ml-wks-c';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -100,8 +100,8 @@ Describe 'Azure.ML' -Tag 'ML' {
             $ruleResult.TargetName | Should -Be 'ml-wks-a';
         }
 
-        It 'Azure.ML.WrkspPublicAccess' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ML.WrkspPublicAccess' };
+        It 'Azure.ML.UserManagedIdentity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ML.UserManagedIdentity' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -112,24 +112,8 @@ Describe 'Azure.ML' -Tag 'ML' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-wks-a';
-        }
-
-        It 'Azure.ML.WrkspUserMgId' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ML.WrkspUserMgId' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-wks-b';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'ml-wks-a';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'ml-wks-a', 'ml-wks-c';
         }
 
     }

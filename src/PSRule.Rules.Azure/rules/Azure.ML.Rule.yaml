@@ -65,11 +65,11 @@ spec:
     hasValue: true
 
 ---
-# Synopsis: Disable public network access from a ML Workspace when behind vnet.
+# Synopsis: Disable public network access from a Azure Machine Learning workspace.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.ML.WrkspVnetPubAccess
+  name: Azure.ML.PublicAccess
   ref: AZR-000406
   tags:
     release: GA
@@ -81,39 +81,19 @@ spec:
   type:
   - Microsoft.MachineLearningServices/workspaces
   condition:
-   allOf:
+    allOf:
       - field: properties.allowPublicAccessWhenBehindVnet
-        exists: true
-      - field: properties.allowPublicAccessWhenBehindVnet
-        equals: false
-
----
-# Synopsis: Disable public network access from a ML Workspace.
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Rule
-metadata:
-  name: Azure.ML.WrkspPublicAccess
-  ref: AZR-000407
-  tags:
-    release: GA
-    ruleSet: 2023_12
-    Azure.WAF/pillar: Security
-  labels:
-    Azure.MCSB.v1/control: [ 'NS-2' ]
-spec:
-  type:
-  - Microsoft.MachineLearningServices/workspaces
-  condition:
-    field: properties.publicNetworkAccess
-    equals: Disabled
+        hasDefault: false
+      - field: properties.publicNetworkAccess
+        equals: Disabled
 
 ---
 # Synopsis: ML Workspaces should use user-assigned managed identity.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.ML.WrkspUserMgId
-  ref: AZR-000408
+  name: Azure.ML.UserManagedIdentity
+  ref: AZR-000407
   tags:
     release: GA
     ruleSet: 2023_12
