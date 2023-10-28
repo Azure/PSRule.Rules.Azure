@@ -106,4 +106,5 @@
     SubStorageSensitiveDataThreatDetection = "The Microsoft Defender for Storage plan should have sensitive data threat detection configured."
     ResStorageSensitiveDataThreatDetection = "The storage account '{0}' should have sensitive data threat detection in Microsoft Defender for Storage configured."
     ResAPIDefender = "The API '{0}' should be onboarded to Microsoft Defender for APIs."
+    InsecureParameterType = "The parameter '{0}' with type '{1}' is not secure."
 }

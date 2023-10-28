@@ -1,240 +1,304 @@
 [
-    {
-        "name": "nestedDeployment-A",
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "properties": {
-            "expressionEvaluationOptions": {
-                "scope": "inner"
-            },
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {},
-                "variables": {},
-                "resources": [
-                    {
-                        "type": "Microsoft.Sql/servers",
-                        "apiVersion": "2022-02-01-preview",
-                        "name": "sql-example",
-                        "location": "australiaeast",
-                        "properties": {
-                            "administratorLogin": "admin"
-                        }
-                    }
-                ]
+  {
+    "name": "nestedDeployment-A",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {},
+        "resources": [
+          {
+            "type": "Microsoft.Sql/servers",
+            "apiVersion": "2022-02-01-preview",
+            "name": "sql-example",
+            "location": "australiaeast",
+            "properties": {
+              "administratorLogin": "admin"
             }
-        }
-    },
-    {
-        "name": "nestedDeployment-B",
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "properties": {
-            "expressionEvaluationOptions": {
-                "scope": "inner"
-            },
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {
-                    "adminUser": {
-                        "type": "SecureString"
-                    }
-                },
-                "variables": {},
-                "resources": [
-                    {
-                        "type": "Microsoft.Sql/servers",
-                        "apiVersion": "2022-02-01-preview",
-                        "name": "sql-example",
-                        "location": "australiaeast",
-                        "properties": {
-                            "administratorLogin": "[parameters('adminUser')]"
-                        }
-                    }
-                ]
-            }
-        }
-    },
-    {
-        "name": "nestedDeployment-C",
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "properties": {
-            "expressionEvaluationOptions": {
-                "scope": "inner"
-            },
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {
-                    "adminUser": {
-                        "type": "SecureString"
-                    }
-                },
-                "variables": {},
-                "resources": [
-                    {
-                        "apiVersion": "2019-12-01",
-                        "type": "Microsoft.Compute/virtualMachines",
-                        "name": "vm-example",
-                        "location": "australiaeast",
-                        "properties": {
-                            "osProfile": {
-                                "computerName": "vm-example",
-                                "adminUsername": "[parameters('adminUser')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        }
-    },
-    {
-        "name": "nestedDeployment-D",
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "properties": {
-            "expressionEvaluationOptions": {
-                "scope": "inner"
-            },
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {
-                    "adminUser": {
-                        "type": "SecureString"
-                    }
-                },
-                "variables": {},
-                "resources": [
-                    {
-                        "apiVersion": "2019-12-01",
-                        "type": "Microsoft.Compute/virtualMachines",
-                        "name": "vm-example",
-                        "location": "australiaeast",
-                        "properties": {
-                            "osProfile": {
-                                "computerName": "vm-example",
-                                "adminUsername": "username"
-                            }
-                        }
-                    }
-                ]
-            }
-        }
-    },
-    {
-        "name": "nestedDeployment-E",
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "properties": {
-            "expressionEvaluationOptions": {
-                "scope": "inner"
-            },
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {},
-                "variables": {
-                    "adminUsername": "sensitive"
-                },
-                "resources": [
-                    {
-                        "apiVersion": "2019-12-01",
-                        "type": "Microsoft.Compute/virtualMachines",
-                        "name": "vm-example",
-                        "location": "australiaeast",
-                        "properties": {
-                            "osProfile": {
-                                "computerName": "vm-example",
-                                "adminUsername": "[variables('adminUsername')]"
-                            }
-                        }
-                    }
-                ]
-            }
-        }
-    },
-    {
-        "name": "nestedDeployment-F",
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "properties": {
-            "expressionEvaluationOptions": {
-                "scope": "inner"
-            },
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {},
-                "variables": {},
-                "resources": []
-            }
-        }
-    },
-    {
-        "name": "nestedDeployment-G",
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "properties": {
-            "expressionEvaluationOptions": {
-                "scope": "inner"
-            },
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {},
-                "variables": {},
-                "resources": [
-                    {
-                        "apiVersion": "2019-12-01",
-                        "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
-                        "name": "vm-example",
-                        "location": "australiaeast",
-                        "properties": {}
-                    }
-                ]
-            }
-        }
-    },
-    {
-        "name": "nestedDeployment-H",
-        "type": "Microsoft.Resources/deployments",
-        "apiVersion": "2020-10-01",
-        "properties": {
-            "expressionEvaluationOptions": {
-                "scope": "inner"
-            },
-            "mode": "Incremental",
-            "template": {
-                "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-                "contentVersion": "1.0.0.0",
-                "parameters": {},
-                "variables": {},
-                "resources": [
-                    {
-                        "apiVersion": "2019-12-01",
-                        "type": "Microsoft.Compute/virtualMachines",
-                        "name": "vm-example",
-                        "location": "australiaeast",
-                        "properties": {
-                            "osProfile": {
-                                "computerName": "vm-example",
-                                "adminUsername": "[if(true(), null(), parameters('adminUser'))]"
-                            }
-                        }
-                    }
-                ]
-            }
-        }
+          }
+        ]
+      }
     }
+  },
+  {
+    "name": "nestedDeployment-B",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "adminUser": {
+            "type": "SecureString"
+          }
+        },
+        "variables": {},
+        "resources": [
+          {
+            "type": "Microsoft.Sql/servers",
+            "apiVersion": "2022-02-01-preview",
+            "name": "sql-example",
+            "location": "australiaeast",
+            "properties": {
+              "administratorLogin": "[parameters('adminUser')]"
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "nestedDeployment-C",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "adminUser": {
+            "type": "SecureString"
+          }
+        },
+        "variables": {},
+        "resources": [
+          {
+            "apiVersion": "2019-12-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "vm-example",
+            "location": "australiaeast",
+            "properties": {
+              "osProfile": {
+                "computerName": "vm-example",
+                "adminUsername": "[parameters('adminUser')]"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "nestedDeployment-D",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "adminUser": {
+            "type": "SecureString"
+          }
+        },
+        "variables": {},
+        "resources": [
+          {
+            "apiVersion": "2019-12-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "vm-example",
+            "location": "australiaeast",
+            "properties": {
+              "osProfile": {
+                "computerName": "vm-example",
+                "adminUsername": "username"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "nestedDeployment-E",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {
+          "adminUsername": "sensitive"
+        },
+        "resources": [
+          {
+            "apiVersion": "2019-12-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "vm-example",
+            "location": "australiaeast",
+            "properties": {
+              "osProfile": {
+                "computerName": "vm-example",
+                "adminUsername": "[variables('adminUsername')]"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "nestedDeployment-F",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {},
+        "resources": []
+      }
+    }
+  },
+  {
+    "name": "nestedDeployment-G",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {},
+        "resources": [
+          {
+            "apiVersion": "2019-12-01",
+            "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+            "name": "vm-example",
+            "location": "australiaeast",
+            "properties": {}
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "nestedDeployment-H",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {},
+        "variables": {},
+        "resources": [
+          {
+            "apiVersion": "2019-12-01",
+            "type": "Microsoft.Compute/virtualMachines",
+            "name": "vm-example",
+            "location": "australiaeast",
+            "properties": {
+              "osProfile": {
+                "computerName": "vm-example",
+                "adminUsername": "[if(true(), null(), parameters('adminUser'))]"
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  {
+    "name": "nestedDeployment-I",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "adminPassword": {
+            "type": "string"
+          },
+          "privateKey": {
+            "type": "string"
+          },
+          "adminUser": {
+            "type": "string"
+          },
+          "secretValue": {
+            "type": "string"
+          }
+        },
+        "variables": {},
+        "resources": []
+      },
+      "parameters": {}
+    }
+  },
+  {
+    "name": "nestedDeployment-J",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "parameters": {
+          "adminPassword": {
+            "type": "SecureString"
+          },
+          "privateKey": {
+            "type": "SecureString"
+          },
+          "adminUser": {
+            "type": "SecureString"
+          },
+          "secretValue": {
+            "type": "SecureString"
+          }
+        },
+        "variables": {},
+        "resources": []
+      },
+      "parameters": {}
+    }
+  }
 ]
