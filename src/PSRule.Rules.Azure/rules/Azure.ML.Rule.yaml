@@ -4,3 +4,110 @@
 #
 # Validation rules for Azure Machine Learning
 #
+
+---
+# Synopsis: ML Compute Instances have idle shutdown enabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ML.ComputeIdleShutdown
+  ref: AZR-000403
+  tags:
+    release: GA
+    ruleSet: 2023_12
+    Azure.WAF/pillar: Cost Optimization
+spec:
+  type:
+  - Microsoft.MachineLearningServices/workspaces/computes
+  where:
+    field: properties.computeType
+    equals: ComputeInstance
+  condition:
+    field: properties.properties.idleTimeBeforeShutdown
+    hasValue: true
+
+---
+# Synopsis: ML Compute has local authentication disabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ML.DisableLocalAuth
+  ref: AZR-000404
+  tags:
+    release: GA
+    ruleSet: 2023_12
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.MachineLearningServices/workspaces/computes
+  condition:
+    field: properties.disableLocalAuth
+    equals: true
+
+---
+# Synopsis: ML Compute should be in a virtual network.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ML.ComputeVnet
+  ref: AZR-000405
+  tags:
+    release: GA
+    ruleSet: 2023_12
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: [ 'NS-1' ]
+spec:
+  type:
+  - Microsoft.MachineLearningServices/workspaces/computes
+  condition:
+    field: properties.properties.subnet.id
+    hasValue: true
+
+---
+# Synopsis: Disable public network access from a Azure Machine Learning workspace.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ML.PublicAccess
+  ref: AZR-000406
+  tags:
+    release: GA
+    ruleSet: 2023_12
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: [ 'NS-2' ]
+spec:
+  type:
+  - Microsoft.MachineLearningServices/workspaces
+  condition:
+    allOf:
+      - field: properties.allowPublicAccessWhenBehindVnet
+        hasDefault: false
+      - field: properties.publicNetworkAccess
+        equals: Disabled
+
+---
+# Synopsis: ML Workspaces should use user-assigned managed identity.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ML.UserManagedIdentity
+  ref: AZR-000407
+  tags:
+    release: GA
+    ruleSet: 2023_12
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: [ 'IM-3' ]
+spec:
+  type:
+  - Microsoft.MachineLearningServices/workspaces
+  condition:
+    allOf:
+      - field: identity.type
+        equals: UserAssigned
+      - field: identity.userAssignedIdentities
+        exists: true
+      - field: properties.primaryUserAssignedIdentity
+        hasValue: true
