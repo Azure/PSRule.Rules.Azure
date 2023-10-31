@@ -34,6 +34,17 @@ What's changed since v1.30.3:
   - Deployment:
     - Check parameters potentially containing secure values by @BernieWhite.
       [#1476](https://github.com/Azure/PSRule.Rules.Azure/issues/1476)
+  - Machine Learning:
+    - Check compute instances are configured for an idle shutdown by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check workspace compute has local authentication disabled by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check workspace compute is connected to a VNET by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check public access to a workspace is disabled by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check workspaces use a user-assigned identity by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
 - Engineering:
   - Bump development tools to .NET 7.0 SDK by @BernieWhite.
     [#1870](https://github.com/Azure/PSRule.Rules.Azure/issues/1870)
