@@ -31,6 +31,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since v1.30.3:
 
 - New rules:
+  - Deployment:
+    - Check parameters potentially containing secure values by @BernieWhite.
+      [#1476](https://github.com/Azure/PSRule.Rules.Azure/issues/1476)
   - Machine Learning:
     - Check compute instances are configured for an idle shutdown by @batemansogq.
       [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)

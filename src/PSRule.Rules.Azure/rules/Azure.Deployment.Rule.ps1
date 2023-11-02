@@ -17,6 +17,11 @@ Rule 'Azure.Deployment.AdminUsername' -Ref 'AZR-000284' -Type 'Microsoft.Resourc
     RecurseDeploymentSensitive -Deployment $TargetObject
 }
 
+# Synopsis: Use secure parameters for any parameter that contains sensitive information.
+Rule 'Azure.Deployment.SecureParameter' -Ref 'AZR-000408' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2023_12'; 'Azure.WAF/pillar' = 'Security'; } {
+    GetSecureParameter -Deployment $TargetObject
+}
+
 # Synopsis: Use secure parameters for setting properties of resources that contain sensitive information.
 Rule 'Azure.Deployment.SecureValue' -Ref 'AZR-000316' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
     RecurseSecureValue -Deployment $TargetObject
@@ -50,6 +55,38 @@ Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000331' -Type 'Microsoft.Resources
 #endregion Rules
 
 #region Helpers
+
+function global:GetSecureParameter {
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Deployment
+    )
+    process {
+        $count = 0;
+        if ($Null -ne $Deployment.properties.template.parameters.PSObject.properties) {
+            foreach ($parameter in $Deployment.properties.template.parameters.PSObject.properties.GetEnumerator()) {
+                if (
+                    $Assert.Like($parameter, 'Name', @(
+                        '*password*'
+                        '*secret*'
+                        '*token*'
+                        '*key'
+                        '*keys'
+                    )).Result -and
+                    $parameter.Name -notlike '*publickey' -and
+                    $parameter.Name -notlike '*publickeys' -and
+                    $Null -ne $parameter.Value.type
+                ) {
+                    $count++
+                    $Assert.In($parameter.Value.type, '.', @('secureString', 'secureObject')).ReasonFrom($parameter.Name, $LocalizedData.InsecureParameterType, $parameter.Name, $parameter.Value.type);
+                }
+            }
+        }
+        if ($count -eq 0) {
+            return $Assert.Pass();
+        }
+    }
+}
 
 function global:RecurseDeploymentSensitive {
     param (
@@ -285,6 +322,7 @@ function global:RecurseSecureValue {
                 'Microsoft.Network/Connections' {
                     CheckPropertyUsesSecureParameter -Resource $resource -SecureParameters $secureParameters -PropertyPath "properties.virtualNetworkGateway1.properties.vpnClientConfiguration.radiusServerSecret"
                     CheckPropertyUsesSecureParameter -Resource $resource -SecureParameters $secureParameters -PropertyPath "properties.virtualNetworkGateway2.properties.vpnClientConfiguration.radiusServerSecret"
+                    CheckPropertyUsesSecureParameter -Resource $resource -SecureParameters $secureParameters -PropertyPath "properties.sharedKey"
                 }
                 'Microsoft.Network/VirtualNetworkGateways' {
                     CheckPropertyUsesSecureParameter -Resource $resource -SecureParameters $secureParameters -PropertyPath "properties.vpnClientConfiguration.radiusServerSecret"
