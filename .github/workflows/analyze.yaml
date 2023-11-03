@@ -12,9 +12,9 @@
 name: Analyze
 on:
   push:
-    branches: [ main, 'release/*' ]
+    branches: [main, 'release/*']
   pull_request:
-    branches: [ main, 'release/*' ]
+    branches: [main, 'release/*']
   schedule:
   - cron: '26 21 * * 0' # At 09:26 PM, on Sunday each week
   workflow_dispatch:
@@ -31,16 +31,33 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      security-events: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Run PSRule analysis
+        uses: microsoft/ps-rule@v2.9.0
+        with:
+          modules: PSRule.Rules.MSFT.OSS
+          prerelease: true
+          outputFormat: Sarif
+          outputPath: reports/ps-rule-results.sarif
 
-    - name: Run PSRule analysis
-      uses: microsoft/ps-rule@v2.9.0
-      with:
-        modules: PSRule.Rules.MSFT.OSS
-        prerelease: true
+      - name: Upload results to security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: reports/ps-rule-results.sarif
+
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: PSRule-Sarif
+          path: reports/ps-rule-results.sarif
+          retention-days: 1
+          if-no-files-found: error
 
   devskim:
     name: Analyze with DevSkim
@@ -50,19 +67,28 @@ jobs:
       contents: read
       security-events: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Run DevSkim scanner
+        uses: microsoft/DevSkim-Action@v1
+        with:
+          directory-to-scan: .
 
-    - name: Run DevSkim scanner
-      uses: microsoft/DevSkim-Action@v1
-      with:
-        directory-to-scan: .
+      - name: Upload results to security tab
+        uses: github/codeql-action/upload-sarif@v2
+        if: always()
+        with:
+          sarif_file: devskim-results.sarif
 
-    - name: Upload results to security tab
-      uses: github/codeql-action/upload-sarif@v2
-      with:
-        sarif_file: devskim-results.sarif
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: DevSkim-Sarif
+          path: devskim-results.sarif
+          retention-days: 1
+          if-no-files-found: error
 
   codeql:
     name: Analyze with CodeQL
@@ -72,17 +98,26 @@ jobs:
       contents: read
       security-events: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v2
+        with:
+          languages: 'csharp'
 
-    - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2
-      with:
-        languages: csharp
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v2
 
-    - name: Autobuild
-      uses: github/codeql-action/autobuild@v2
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v2
+        id: codeql-analyze
 
-    - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2
+      - name: Upload results
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: CodeQL-Sarif
+          path: ${{ steps.codeql-analyze.outputs.sarif-output }}
+          retention-days: 1
+          if-no-files-found: error
