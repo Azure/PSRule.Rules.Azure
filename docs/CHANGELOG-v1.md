@@ -33,6 +33,8 @@ What's changed since pre-release v1.31.0-B0020:
 - Engineering:
   - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.10.
     [#2508](https://github.com/Azure/PSRule.Rules.Azure/pull/2508)
+  - Bump xunit to v2.6.1.
+    [#2514](https://github.com/Azure/PSRule.Rules.Azure/pull/2514)
 
 ## v1.31.0-B0020 (pre-release)
 
