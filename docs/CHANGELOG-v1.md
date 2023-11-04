@@ -40,6 +40,8 @@ What's changed since pre-release v1.31.0-B0020:
     [#2505](https://github.com/Azure/PSRule.Rules.Azure/issues/2505)
   - Fixed nullable parameters for custom types by @BernieWhite.
     [#2489](https://github.com/Azure/PSRule.Rules.Azure/issues/2489)
+  - Fixed API Connection might be missing dynamic properties by @BernieWhite.
+    [#2424](https://github.com/Azure/PSRule.Rules.Azure/issues/2424)
 
 ## v1.31.0-B0020 (pre-release)
 
