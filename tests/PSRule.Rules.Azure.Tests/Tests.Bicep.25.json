@@ -1,0 +1,100 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.23.1.45101",
+      "templateHash": "173148998126086273"
+    }
+  },
+  "definitions": {
+    "FooConfig": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "allowedValues": [
+            "foo"
+          ]
+        },
+        "value": {
+          "type": "int"
+        }
+      }
+    },
+    "BarConfig": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "allowedValues": [
+            "bar"
+          ]
+        },
+        "value": {
+          "type": "bool"
+        }
+      }
+    },
+    "ServiceConfig": {
+      "type": "object",
+      "discriminator": {
+        "propertyName": "type",
+        "mapping": {
+          "foo": {
+            "$ref": "#/definitions/FooConfig"
+          },
+          "bar": {
+            "$ref": "#/definitions/BarConfig"
+          },
+          "baz": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string",
+                "allowedValues": [
+                  "baz"
+                ]
+              }
+            },
+            "additionalProperties": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "parameters": {
+    "serviceConfig": {
+      "$ref": "#/definitions/ServiceConfig",
+      "defaultValue": {
+        "type": "bar",
+        "value": true
+      }
+    }
+  },
+  "resources": {
+    "value": {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2023-01-01",
+      "name": "example",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "publicNetworkAccess": "[parameters('serviceConfig').value]"
+      }
+    }
+  },
+  "outputs": {
+    "config": {
+      "type": "object",
+      "value": "[parameters('serviceConfig')]"
+    }
+  }
+}

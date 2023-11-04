@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.22.6.54827",
-      "templateHash": "3111791179159915120"
+      "version": "0.23.1.45101",
+      "templateHash": "10495223775905612115"
     }
   },
   "resources": [
@@ -26,17 +26,71 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.22.6.54827",
-              "templateHash": "965836287794218595"
+              "version": "0.23.1.45101",
+              "templateHash": "8612041935519591936"
+            }
+          },
+          "definitions": {
+            "corsRule": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "allowedHeaders": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "allowedMethods": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "allowedOrigins": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "exposedHeaders": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  },
+                  "maxAgeInSeconds": {
+                    "type": "int"
+                  }
+                }
+              },
+              "nullable": true
             }
           },
           "parameters": {
             "minTLSVersion": {
               "type": "string",
               "nullable": true
+            },
+            "corsRules": {
+              "$ref": "#/definitions/corsRule"
             }
           },
           "resources": {
+            "storage::blob": {
+              "type": "Microsoft.Storage/storageAccounts/blobServices",
+              "apiVersion": "2023-01-01",
+              "name": "[format('{0}/{1}', 'test', 'default')]",
+              "properties": {
+                "cors": {
+                  "corsRules": "[coalesce(parameters('corsRules'), createArray())]"
+                }
+              },
+              "dependsOn": [
+                "storage"
+              ]
+            },
             "storage": {
               "type": "Microsoft.Storage/storageAccounts",
               "apiVersion": "2023-01-01",

@@ -877,6 +877,32 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
+        public void Decriminators()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.25.json"), null, out var templateContext);
+            Assert.Equal(2, resources.Length);
+
+            Assert.True(templateContext.RootDeployment.TryOutput("config", out JObject config));
+            Assert.Equal("bar", config["value"]["type"].Value<string>());
+            Assert.True(config["value"]["value"].Value<bool>());
+        }
+
+        [Fact]
+        public void SymbolicDependsOn()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.26.json"), null, out var templateContext);
+            Assert.Equal(4, resources.Length);
+
+            var actual = resources[3].Value<JObject>();
+            Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
+            Assert.Equal("example", actual["name"].Value<string>());
+            Assert.Equal(new string[] { "a", "b" }, actual["properties"]["fakeOptions"].Values<string>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("result", out JObject result));
+            Assert.Equal(new string[] { "a", "b" }, result["value"].Values<string>());
+        }
+
+        [Fact]
         public void NullableParameters()
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.27.json"), null, out _);
@@ -885,6 +911,7 @@ namespace PSRule.Rules.Azure
             var actual = resources[2];
             Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
             Assert.Equal("TLS1_2", actual["properties"]["minimumTlsVersion"].Value<string>());
+            Assert.Empty(actual["resources"][0]["properties"]["cors"]["corsRules"].Value<JArray>());
         }
 
         #region Helper methods

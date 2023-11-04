@@ -33,6 +33,11 @@ What's changed since pre-release v1.31.0-B0020:
 - Engineering:
   - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.10.
     [#2508](https://github.com/Azure/PSRule.Rules.Azure/pull/2508)
+- Bug fixes:
+  - Fixed dependency ordering with symbolic name by @BernieWhite.
+    [#2505](https://github.com/Azure/PSRule.Rules.Azure/issues/2505)
+  - Fixed nullable parameters for custom types by @BernieWhite.
+    [#2489](https://github.com/Azure/PSRule.Rules.Azure/issues/2489)
 
 ## v1.31.0-B0020 (pre-release)
 

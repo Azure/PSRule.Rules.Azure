@@ -1,13 +1,12 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
-  "languageVersion": "1.9-experimental",
+  "languageVersion": "2.0",
   "contentVersion": "1.0.0.0",
   "metadata": {
-    "_EXPERIMENTAL_WARNING": "Symbolic name support in ARM is experimental, and should be enabled for testing purposes only. Do not enable this setting for any production usage, or you may be unexpectedly broken at any time!",
     "_generator": {
       "name": "bicep",
-      "version": "0.14.46.61228",
-      "templateHash": "6078490264616788024"
+      "version": "0.23.1.45101",
+      "templateHash": "1423150262937573918"
     }
   },
   "definitions": {
@@ -16,10 +15,6 @@
       "prefixItems": [
         {
           "type": "object",
-          "required": [
-            "name",
-            "value"
-          ],
           "properties": {
             "name": {
               "type": "string"
@@ -31,10 +26,6 @@
         },
         {
           "type": "object",
-          "required": [
-            "name",
-            "value"
-          ],
           "properties": {
             "name": {
               "type": "string"
@@ -56,20 +47,12 @@
     },
     "custom": {
       "type": "object",
-      "required": [
-        "name",
-        "properties"
-      ],
       "properties": {
         "name": {
           "type": "string"
         },
         "properties": {
           "type": "object",
-          "required": [
-            "enabled",
-            "settings"
-          ],
           "properties": {
             "enabled": {
               "$ref": "#/definitions/enabled"
@@ -89,7 +72,16 @@
         "name": "abc",
         "properties": {
           "enabled": true,
-          "settings": []
+          "settings": [
+            {
+              "name": "key1",
+              "value": 1
+            },
+            {
+              "name": "key2",
+              "value": "value2"
+            }
+          ]
         }
       }
     }

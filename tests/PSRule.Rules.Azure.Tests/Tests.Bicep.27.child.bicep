@@ -2,15 +2,15 @@
 // Licensed under the MIT License.
 
 param minTLSVersion string?
-// param corsRules corsRule
+param corsRules corsRule
 
-// type corsRule = {
-//   allowedHeaders: string[]
-//   allowedMethods: string[]
-//   allowedOrigins: string[]
-//   exposedHeaders: string[]
-//   maxAgeInSeconds: int
-// }[]?
+type corsRule = {
+  allowedHeaders: string[]
+  allowedMethods: string[]
+  allowedOrigins: string[]
+  exposedHeaders: string[]
+  maxAgeInSeconds: int
+}[]?
 
 resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
   name: 'test'
@@ -24,12 +24,12 @@ resource storage 'Microsoft.Storage/storageAccounts@2023-01-01' = {
     minimumTlsVersion: minTLSVersion ?? 'TLS1_2'
   }
 
-  // resource blob 'blobServices' = {
-  //   name: 'default'
-  //   properties: {
-  //     cors: {
-  //       corsRules: corsRules ?? []
-  //     }
-  //   }
-  // }
+  resource blob 'blobServices' = {
+    name: 'default'
+    properties: {
+      cors: {
+        corsRules: corsRules ?? []
+      }
+    }
+  }
 }
