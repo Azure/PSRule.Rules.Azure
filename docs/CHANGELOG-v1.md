@@ -28,6 +28,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.31.0-B0048 (pre-release)
+
 What's changed since pre-release v1.31.0-B0020:
 
 - Engineering:
