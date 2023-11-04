@@ -191,6 +191,12 @@
     <None Update="Tests.Bicep.24.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Tests.Bicep.25.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="Tests.Bicep.26.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Tests.Bicep.27.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

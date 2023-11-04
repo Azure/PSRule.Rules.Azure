@@ -3,11 +3,21 @@
 
 // Tests for custom types
 
+#disable-next-line no-unused-params
 param props custom = {
   name: 'abc'
   properties: {
     enabled: true
-    settings: []
+    settings: [
+      {
+        name: 'key1'
+        value: 1
+      }
+      {
+        name: 'key2'
+        value: 'value2'
+      }
+    ]
   }
 }
 
@@ -31,4 +41,3 @@ type custom = {
     settings: keyValue
   }
 }
-

@@ -1,0 +1,125 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.23.1.45101",
+      "templateHash": "10019446839389039807"
+    }
+  },
+  "parameters": {
+    "notUsedTypedParam": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Name": {
+            "type": "string"
+          }
+        }
+      },
+      "defaultValue": []
+    }
+  },
+  "resources": {
+    "value": {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2023-01-01",
+      "name": "example",
+      "location": "[resourceGroup().location]",
+      "sku": {
+        "name": "Standard_LRS"
+      },
+      "kind": "StorageV2",
+      "properties": {
+        "fakeOptions": "[concat(reference('modTwo').outputs.result.value)]"
+      },
+      "dependsOn": [
+        "modTwo"
+      ]
+    },
+    "modOne": {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "one",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {},
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "13554383312098168766"
+            }
+          },
+          "resources": [],
+          "outputs": {
+            "result": {
+              "type": "string",
+              "value": "one"
+            }
+          }
+        }
+      }
+    },
+    "modTwo": {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "two",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "input": {
+            "value": "[reference('modOne').outputs.result.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "17594851740663763580"
+            }
+          },
+          "parameters": {
+            "input": {
+              "type": "string"
+            }
+          },
+          "resources": [],
+          "outputs": {
+            "result": {
+              "type": "array",
+              "value": [
+                "a",
+                "b"
+              ]
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "modOne"
+      ]
+    }
+  },
+  "outputs": {
+    "result": {
+      "type": "array",
+      "value": "[reference('value').fakeOptions]"
+    }
+  }
+}

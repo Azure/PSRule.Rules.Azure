@@ -503,7 +503,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 var path = template.GetResourcePath(parentLevel: 2);
                 deployment.SetTargetInfo(TemplateFile, ParameterFile, path);
-                var deploymentValue = new DeploymentValue(string.Concat(ResourceGroup.Id, "/providers/", RESOURCETYPE_DEPLOYMENT, "/", deploymentName), deploymentName, deployment, null, null);
+                var deploymentValue = new DeploymentValue(string.Concat(ResourceGroup.Id, "/providers/", RESOURCETYPE_DEPLOYMENT, "/", deploymentName), deploymentName, null, deployment, null, null);
                 AddResource(deploymentValue);
                 _CurrentDeployment = deploymentValue;
                 _Deployment.Push(deploymentValue);
@@ -932,7 +932,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (type == TypePrimitive.None)
                 return false;
 
-            value = new TypeDefinition(type, definition);
+            var isNullable = definition.TryBoolProperty(PROPERTY_NULLABLE, out var nullable) && nullable.HasValue;
+
+            value = new TypeDefinition(type, definition, isNullable);
             return true;
         }
 
@@ -1011,7 +1013,15 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         private static bool TryParameterNullable(TemplateContext context, string parameterName, JObject parameter)
         {
-            if (!parameter.TryBoolProperty(PROPERTY_NULLABLE, out var nullable) || !nullable.HasValue)
+            var isNullable = false;
+            if (parameter.TryGetProperty(PROPERTY_REF, out var typeRef) &&
+                context.TryDefinition(typeRef, out var definition) && definition.Nullable)
+                isNullable = true;
+
+            if (parameter.TryBoolProperty(PROPERTY_NULLABLE, out var nullable) && nullable.HasValue)
+                isNullable = true;
+
+            if (!isNullable)
                 return false;
 
             if (!TryParameterType(context, parameter, out var type))
@@ -1156,7 +1166,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (!condition)
                     continue;
 
-                var r = ResourceInstance(context, instance, copyIndex);
+                var r = ResourceInstance(context, instance, copyIndex, symbolicName);
                 symbol?.Configure(r);
 
                 yield return r;
@@ -1168,7 +1178,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 context.AddSymbol(symbol);
         }
 
-        private static ResourceValue ResourceInstance(TemplateContext context, JObject resource, TemplateContext.CopyIndexState copyIndex)
+        private static ResourceValue ResourceInstance(TemplateContext context, JObject resource, TemplateContext.CopyIndexState copyIndex, string symbolicName)
         {
             if (resource.TryGetProperty<JValue>(PROPERTY_NAME, out var nameValue))
                 resource[PROPERTY_NAME] = ResolveToken(context, nameValue);
@@ -1193,7 +1203,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var resourceId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, type, name);
             context.UpdateResourceScope(resource);
             resource[PROPERTY_ID] = resourceId;
-            return new ResourceValue(resourceId, name, type, resource, dependencies, copyIndex.Clone());
+            return new ResourceValue(resourceId, name, type, symbolicName, resource, dependencies, copyIndex.Clone());
         }
 
         private static string ResolveDeploymentScopeProperty(TemplateContext context, JObject resource, string propertyName, string defaultValue)
