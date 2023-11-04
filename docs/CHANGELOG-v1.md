@@ -37,6 +37,8 @@ What's changed since pre-release v1.31.0-B0020:
     [#2508](https://github.com/Azure/PSRule.Rules.Azure/pull/2508)
   - Bump xunit to v2.6.1.
     [#2514](https://github.com/Azure/PSRule.Rules.Azure/pull/2514)
+  - Bump xunit.runner.visualstudio to v2.5.3.
+    [#2486](https://github.com/Azure/PSRule.Rules.Azure/pull/2486)
 - Bug fixes:
   - Fixed dependency ordering with symbolic name by @BernieWhite.
     [#2505](https://github.com/Azure/PSRule.Rules.Azure/issues/2505)
