@@ -173,7 +173,13 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public JToken GetValue(TypePrimitive type)
             {
-                throw new NotImplementedException();
+                if (type == TypePrimitive.None || BaseType == type)
+                    return this;
+
+                if (TryMutate(type, this, out var value))
+                    return value;
+
+                return null;
             }
 
             public JToken GetValue(object key)
@@ -315,7 +321,12 @@ namespace PSRule.Rules.Azure.Data.Template
                 var result = base[key];
                 if (result == null)
                 {
-                    result = new MockUnknownObject(IsSecret);
+                    // Guess string type for common scenarios.
+                    if (key is string s_key && TryWellKnownStringProperty(this, s_key, out var s_value))
+                        result = s_value;
+                    else
+                        result = new MockUnknownObject(IsSecret);
+
                     base[key] = result;
                 }
                 else if (result is JObject jObject)
@@ -463,6 +474,42 @@ namespace PSRule.Rules.Azure.Data.Template
                 return TypePrimitive.Bool;
 
             throw new NotImplementedException();
+        }
+
+        private static bool TryWellKnownStringProperty(JObject o, string key, out JValue value)
+        {
+            value = default;
+            if (StringComparer.OrdinalIgnoreCase.Equals(key, "primaryConnectionString") ||
+                StringComparer.OrdinalIgnoreCase.Equals(key, "secondaryConnectionString"))
+            {
+                value = new JValue(key);
+                return true;
+            }
+            
+            // Handle name and type
+            if (StringComparer.OrdinalIgnoreCase.Equals(key, "name"))
+            {
+                value = TryExpandId(o) && o.TryGetProperty<JValue>("name", out var nameValue) ? nameValue : new JValue(key);
+                return true;
+            }
+            else if (StringComparer.OrdinalIgnoreCase.Equals(key, "type") && TryExpandId(o))
+            {
+                value = o.TryGetProperty<JValue>("type", out var nameValue) ? nameValue : default;
+                return true;
+            }
+            return false;
+        }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE0007:Use implicit type", Justification = "Don't convert to var to ignore ambiguous type reference.")]
+        private static bool TryExpandId(JObject o)
+        {
+            if (o.TryGetProperty("id", out var id) && ResourceHelper.TryResourceIdComponents(id, out _, out _, out string resourceType, out string resourceName))
+            {
+                o["name"] = resourceName;
+                o["type"] = resourceType;
+                return true;
+            }
+            return false;
         }
     }
 }

@@ -914,6 +914,24 @@ namespace PSRule.Rules.Azure
             Assert.Empty(actual["resources"][0]["properties"]["cors"]["corsRules"].Value<JArray>());
         }
 
+        [Fact]
+        public void MockWellKnownProperties()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.29.json"), null, out _);
+            Assert.Equal(6, resources.Length);
+
+            var actual = resources[2];
+            Assert.Equal("Microsoft.ServiceBus/namespaces", actual["type"].Value<string>());
+
+            actual = resources[3];
+            Assert.Equal("Microsoft.Web/connections", actual["type"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.Web/locations/eastus/managedApis/servicebus", actual["properties"]["api"]["id"].Value<string>());
+
+            actual = resources[4];
+            Assert.Equal("Microsoft.Web/connections", actual["type"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.Web/locations/eastus/managedApis/servicebus", actual["properties"]["api"]["id"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
