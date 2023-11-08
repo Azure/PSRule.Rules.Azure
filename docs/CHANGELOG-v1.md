@@ -28,6 +28,48 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.31.0
+
+What's changed since v1.30.3:
+
+- New rules:
+  - Deployment:
+    - Check parameters potentially containing secure values by @BernieWhite.
+      [#1476](https://github.com/Azure/PSRule.Rules.Azure/issues/1476)
+  - Machine Learning:
+    - Check compute instances are configured for an idle shutdown by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check workspace compute has local authentication disabled by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check workspace compute is connected to a VNET by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check public access to a workspace is disabled by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+    - Check workspaces use a user-assigned identity by @batemansogq.
+      [#2484](https://github.com/Azure/PSRule.Rules.Azure/issues/2484)
+- Engineering:
+  - Bump development tools to .NET 7.0 SDK by @BernieWhite.
+    [#1870](https://github.com/Azure/PSRule.Rules.Azure/issues/1870)
+  - Bump BenchmarkDotNet to v0.13.10.
+    [#2518](https://github.com/Azure/PSRule.Rules.Azure/pull/2518)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.10.
+    [#2508](https://github.com/Azure/PSRule.Rules.Azure/pull/2508)
+  - Bump xunit to v2.6.1.
+    [#2514](https://github.com/Azure/PSRule.Rules.Azure/pull/2514)
+  - Bump xunit.runner.visualstudio to v2.5.3.
+    [#2486](https://github.com/Azure/PSRule.Rules.Azure/pull/2486)
+- Bug fixes:
+  - Fixed dependency ordering with symbolic name by @BernieWhite.
+    [#2505](https://github.com/Azure/PSRule.Rules.Azure/issues/2505)
+  - Fixed nullable parameters for custom types by @BernieWhite.
+    [#2489](https://github.com/Azure/PSRule.Rules.Azure/issues/2489)
+  - Fixed API Connection might be missing dynamic properties by @BernieWhite.
+    [#2424](https://github.com/Azure/PSRule.Rules.Azure/issues/2424)
+
+What's changed since pre-release v1.31.0-B0048:
+
+- No additional changes.
+
 ## v1.31.0-B0048 (pre-release)
 
 What's changed since pre-release v1.31.0-B0020:
