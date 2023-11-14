@@ -932,6 +932,21 @@ namespace PSRule.Rules.Azure
             Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/providers/Microsoft.Web/locations/eastus/managedApis/servicebus", actual["properties"]["api"]["id"].Value<string>());
         }
 
+        [Fact]
+        public void ContainsWithJValue()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.30.json"), null, out _);
+            Assert.Equal(3, resources.Length);
+
+            var actual = resources[2];
+            Assert.Equal("Microsoft.ManagedIdentity/userAssignedIdentities", actual["type"].Value<string>());
+            Assert.False(actual["properties"]["doesNotContain"].Value<bool>());
+            Assert.True(actual["properties"]["doesContain"].Value<bool>());
+            Assert.Equal(1, actual["properties"]["indexOfSubstring"].Value<int>());
+            Assert.Equal("abcd", actual["properties"]["stringToCheck"].Value<string>());
+            Assert.Equal("bc", actual["properties"]["stringToFind"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

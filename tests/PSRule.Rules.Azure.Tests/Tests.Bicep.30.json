@@ -1,0 +1,46 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.23.1.45101",
+      "templateHash": "15051303941734638046"
+    }
+  },
+  "variables": {
+    "stringToCheck": "abcd",
+    "stringToFind": "bc",
+    "doesNotContain": "[not(contains(variables('stringToCheck'), variables('stringToFind')))]",
+    "doesContain": "[contains(variables('stringToCheck'), variables('stringToFind'))]",
+    "indexOfSubstring": "[indexOf(variables('stringToCheck'), variables('stringToFind'))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "name",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "apiVersion": "2019-12-01",
+              "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+              "name": "test",
+              "properties": {
+                "doesNotContain": "[variables('doesNotContain')]",
+                "doesContain": "[variables('doesContain')]",
+                "indexOfSubstring": "[variables('indexOfSubstring')]",
+                "stringToCheck": "[variables('stringToCheck')]",
+                "stringToFind": "[variables('stringToFind')]"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
