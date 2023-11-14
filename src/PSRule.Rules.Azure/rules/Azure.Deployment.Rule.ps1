@@ -73,8 +73,14 @@ function global:GetSecureParameter {
                         '*key'
                         '*keys'
                     )).Result -and
-                    $parameter.Name -notlike '*publickey' -and
-                    $parameter.Name -notlike '*publickeys' -and
+                    $parameter.Name -notLike '*publickey' -and
+                    $parameter.Name -notLike '*publickeys' -and
+                    $parameter.Name -notLike '*passwordlength*' -and
+                    $parameter.Name -notLike '*secretname*' -and
+                    $parameter.Name -notLike '*secreturl*' -and
+                    $parameter.Name -notLike '*secreturi*' -and
+                    $parameter.Name -notLike '*tokenname*' -and
+                    $Assert.NotIn($parameter, 'Name', $Configuration.GetStringValues('AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES')).Result -and
                     $Null -ne $parameter.Value.type
                 ) {
                     $count++

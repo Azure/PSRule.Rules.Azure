@@ -293,6 +293,18 @@
           },
           "secretValue": {
             "type": "SecureString"
+          },
+          "publicKey": {
+            "type": "string"
+          },
+          "KeyVaultSecretName": {
+            "type": "string"
+          },
+          "targetSecretUrl": {
+            "type": "string"
+          },
+          "notSecret": {
+            "type": "string"
           }
         },
         "variables": {},

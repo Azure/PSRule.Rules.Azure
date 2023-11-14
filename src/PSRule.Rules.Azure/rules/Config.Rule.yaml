@@ -40,6 +40,8 @@ spec:
     - administratorLogin
     - administratorLoginPassword
 
+    AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES: []
+
     # Configure Container Apps external ingress
     AZURE_CONTAINERAPPS_RESTRICT_INGRESS: false
 

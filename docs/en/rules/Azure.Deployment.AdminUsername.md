@@ -15,7 +15,7 @@ Use secure parameters for sensitive resource properties.
 ## DESCRIPTION
 
 Resource properties can be configured using a hardcoded value or Azure Bicep/ template expressions.
-When specifing sensitive values use _secure_ parameters such as `secureString` or `secureObject`.
+When specifying sensitive values use _secure_ parameters such as `secureString` or `secureObject`.
 
 Sensitive values that use deterministic expressions such as hardcodes string literals or variables are not secure.
 
@@ -30,7 +30,7 @@ Avoid using deterministic values for sensitive properties.
 
 To deploy resources that pass this rule:
 
-- Use parameters to specify sensitive properties.
+- Use secure parameters to specify sensitive properties.
 
 For example:
 
@@ -87,7 +87,7 @@ For example:
 
 To deploy resources that pass this rule:
 
-- steps
+- Use secure parameters to specify sensitive properties.
 
 For example:
 
@@ -146,7 +146,7 @@ resource vm1 'Microsoft.Compute/virtualMachines@2022-03-01' = {
 ## NOTES
 
 Configure `AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES` to specify sensitive property names.
-By default the following values are used:
+By default, the following values are used:
 
 - `adminUsername`
 - `administratorLogin`

@@ -1,5 +1,5 @@
 ---
-reviewed: 2023-10-25
+reviewed: 2023-11-13
 severity: Critical
 pillar: Security
 category: Infrastructure provisioning
@@ -84,8 +84,14 @@ resource goodSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
 This rule uses a heuristics to determine if a parameter should use a secure type:
 
 - Any parameter with a name containing `password`, `secret`, or `token` will be considered sensitive.
+  - Except parameter names containing `passwordlength`, `secretname`, `secreturl`, `secreturi`, or `tokenname`.
 - Any parameter with a name ending in `key` or `keys` will be considered sensitive.
-- Any parameter with a name ending in `publickey` or `publickeys` will not be considered sensitive.
+  - Except parameter names ending in `publickey` or `publickeys`.
+
+If you identify a parameter that is _not sensitive_, and is incorrectly flagged by this rule, you can override the rule.
+To override this rule:
+
+- Set the `AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES` configuration value to identify parameters that are not sensitive.
 
 ## LINKS
 

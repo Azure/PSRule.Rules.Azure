@@ -86,6 +86,9 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
                 Module = 'PSRule.Rules.Azure'
                 WarningAction = 'SilentlyContinue'
                 ErrorAction = 'Stop'
+                Option = @{
+                    'Configuration.AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES' = @('notSecret')
+                }
             }
         }
 
@@ -97,13 +100,13 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            # $ruleResult.Length | Should -Be 2;
+            $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-I';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            # $ruleResult.Length | Should -Be 1;
+            $ruleResult.Length | Should -Be 9;
             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-D', 'nestedDeployment-E', 'nestedDeployment-F', 'nestedDeployment-G', 'nestedDeployment-H', 'nestedDeployment-J';
         }
     }
