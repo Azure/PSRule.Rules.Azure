@@ -2177,8 +2177,8 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             if (ExpressionHelpers.TryArray(value, out var array))
                 return Contains(array, child);
-            else if (value is string svalue)
-                return svalue.Contains(child.ToString());
+            else if (ExpressionHelpers.TryString(value, out var s))
+                return s.Contains(child.ToString());
             else if (value is JObject jObject)
                 return jObject.ContainsKeyInsensitive(child.ToString());
 

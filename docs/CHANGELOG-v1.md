@@ -34,6 +34,8 @@ What's changed since v1.31.0:
   - Fixed additional non-sensitive parameter name patterns by `Azure.Deployment.SecureParameter` by @BernieWhite.
     [#2528](https://github.com/Azure/PSRule.Rules.Azure/issues/2528)
     - Added support for configuration of the rule by setting `AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES`.
+  - Fixed incorrect handling of expressions with contains with JValue string by @BernieWhite.
+    [#2531](https://github.com/Azure/PSRule.Rules.Azure/issues/2531)
 
 ## v1.31.0
 
