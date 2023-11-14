@@ -322,6 +322,80 @@ configuration:
   AZURE_COSMOS_DEFENDER_PER_ACCOUNT: true
 ```
 
+### AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES
+
+:octicons-milestone-24: v1.31.1
+
+> Applies to [Azure.Deployment.SecureParameter](../en/rules/Azure.Deployment.SecureParameter.md).
+
+This configuration overrides the default list of parameter names that are considered sensitive.
+By setting this configuration option, any parameters names specified are not considered sensitive.
+
+By default, `AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES` is not configured.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES: array
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES configuration option
+configuration:
+  AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES: []
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES configuration option to enabled
+configuration:
+  AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES:
+    - notSecret
+```
+
+### AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES
+
+:octicons-milestone-24: v1.20.0
+
+> Applies to [Azure.Deployment.AdminUsername](../en/rules/Azure.Deployment.AdminUsername.md).
+
+This configuration identifies potentially sensitive properties that should not use hardcoded values.
+By setting this configuration option, properties with the specified names will generate a failure when a hardcoded value is detected.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES: array
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES configuration option
+configuration:
+  AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
+    - adminUsername
+    - administratorLogin
+    - administratorLoginPassword
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES configuration option to enabled
+configuration:
+  AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
+    - adminUsername
+    - administratorLogin
+    - administratorLoginPassword
+    - loginName
+```
+
 ### AZURE_RESOURCE_ALLOWED_LOCATIONS
 
 :octicons-milestone-24: v1.30.0

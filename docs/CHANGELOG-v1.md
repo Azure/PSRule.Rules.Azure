@@ -28,6 +28,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.31.0:
+
+- Bug fixes:
+  - Fixed additional non-sensitive parameter name patterns by `Azure.Deployment.SecureParameter` by @BernieWhite.
+    [#2528](https://github.com/Azure/PSRule.Rules.Azure/issues/2528)
+    - Added support for configuration of the rule by setting `AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES`.
+
 ## v1.31.0
 
 What's changed since v1.30.3:
