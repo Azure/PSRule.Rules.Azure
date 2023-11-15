@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.23.1.45101",
-      "templateHash": "10495223775905612115"
+      "templateHash": "15341554075500882140"
     }
   },
   "resources": [
@@ -27,7 +27,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.23.1.45101",
-              "templateHash": "8612041935519591936"
+              "templateHash": "1045026030740697206"
             }
           },
           "definitions": {
@@ -75,7 +75,29 @@
             },
             "corsRules": {
               "$ref": "#/definitions/corsRule"
+            },
+            "accessPolicies": {
+              "type": "array",
+              "nullable": true
+            },
+            "secrets": {
+              "type": "secureObject",
+              "nullable": true
             }
+          },
+          "variables": {
+            "copy": [
+              {
+                "name": "formattedAccessPolicies",
+                "count": "[length(coalesce(parameters('accessPolicies'), createArray()))]",
+                "input": {
+                  "objectId": "[coalesce(parameters('accessPolicies'), createArray())[copyIndex('formattedAccessPolicies')].objectId]",
+                  "tenantId": "[if(contains(coalesce(parameters('accessPolicies'), createArray())[copyIndex('formattedAccessPolicies')], 'tenantId'), coalesce(parameters('accessPolicies'), createArray())[copyIndex('formattedAccessPolicies')].tenantId, tenant().tenantId)]",
+                  "permissions": {}
+                }
+              }
+            ],
+            "secretList": "[coalesce(tryGet(parameters('secrets'), 'secureList'), createArray())]"
           },
           "resources": {
             "storage::blob": {
@@ -102,6 +124,32 @@
               "kind": "StorageV2",
               "properties": {
                 "minimumTlsVersion": "[coalesce(parameters('minTLSVersion'), 'TLS1_2')]"
+              }
+            },
+            "kv": {
+              "type": "Microsoft.KeyVault/vaults",
+              "apiVersion": "2023-07-01",
+              "name": "keyVault",
+              "location": "[resourceGroup().location]",
+              "properties": {
+                "sku": {
+                  "family": "A",
+                  "name": "standard"
+                },
+                "tenantId": "[tenant().tenantId]",
+                "accessPolicies": "[variables('formattedAccessPolicies')]"
+              }
+            },
+            "kvSecret": {
+              "copy": {
+                "name": "kvSecret",
+                "count": "[length(variables('secretList'))]"
+              },
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2023-07-01",
+              "name": "[variables('secretList')[copyIndex()].name]",
+              "properties": {
+                "value": "[variables('secretList')[copyIndex()].value]"
               }
             }
           }

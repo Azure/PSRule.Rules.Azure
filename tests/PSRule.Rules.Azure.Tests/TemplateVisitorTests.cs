@@ -906,12 +906,16 @@ namespace PSRule.Rules.Azure
         public void NullableParameters()
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.27.json"), null, out _);
-            Assert.Equal(3, resources.Length);
+            Assert.Equal(4, resources.Length);
 
             var actual = resources[2];
             Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
             Assert.Equal("TLS1_2", actual["properties"]["minimumTlsVersion"].Value<string>());
             Assert.Empty(actual["resources"][0]["properties"]["cors"]["corsRules"].Value<JArray>());
+
+            actual = resources[3];
+            Assert.Equal("Microsoft.KeyVault/vaults", actual["type"].Value<string>());
+            Assert.Empty(actual["properties"]["accessPolicies"].Value<JArray>());
         }
 
         [Fact]

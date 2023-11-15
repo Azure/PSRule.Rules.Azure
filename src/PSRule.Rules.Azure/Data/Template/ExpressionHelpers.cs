@@ -195,7 +195,7 @@ namespace PSRule.Rules.Azure.Data.Template
         internal static bool TryPropertyOrField(object o, string propertyName, out object value)
         {
             value = null;
-            if (o == null) return false;
+            if (IsNull(o)) return false;
 
             var resultType = o.GetType();
 
@@ -214,7 +214,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
 
-            if (o is JToken jToken)
+            if (o is JToken jToken && o is not JValue)
             {
                 var propertyToken = jToken[propertyName];
                 if (propertyToken == null)
