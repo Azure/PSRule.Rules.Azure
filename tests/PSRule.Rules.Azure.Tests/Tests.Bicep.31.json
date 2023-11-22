@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.23.1.45101",
+      "templateHash": "1432163185374769317"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Subscription/aliases",
+      "apiVersion": "2021-10-01",
+      "scope": "/",
+      "name": "sub1",
+      "properties": {
+        "workload": "DevTest",
+        "displayName": "sub1",
+        "billingScope": " /billingAccounts/nn/enrollmentAccounts/nn"
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "rbac",
+      "subscriptionId": "00000000-0000-0000-0000-000000000000",
+      "location": "[deployment().location]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "17477755083280448345"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2022-04-01",
+              "name": "8a869b90-6d6c-4307-9d0f-22dbc136ccd9",
+              "properties": {
+                "principalId": "8a869b90-6d6c-4307-9d0f-22dbc136ccd9",
+                "roleDefinitionId": "8a869b90-6d6c-4307-9d0f-22dbc136ccd9",
+                "principalType": "ServicePrincipal",
+                "description": "Test role assignment for checking scope and ID."
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

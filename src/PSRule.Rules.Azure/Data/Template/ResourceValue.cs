@@ -121,17 +121,18 @@ namespace PSRule.Rules.Azure.Data.Template
         private readonly Lazy<JObject> _Value;
         private readonly Dictionary<string, ILazyValue> _Outputs;
 
-        internal DeploymentValue(string id, string name, string symbolicName, JObject value, string[] dependencies, TemplateContext.CopyIndexState copy)
-            : this(id, name, symbolicName, () => value, dependencies, copy) { }
+        internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, JObject value, string[] dependencies, TemplateContext.CopyIndexState copy)
+            : this(id, name, symbolicName, scope, deploymentScope, () => value, dependencies, copy) { }
 
-        internal DeploymentValue(string id, string name, string symbolicName, Func<JObject> value, string[] dependencies, TemplateContext.CopyIndexState copy)
+        internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, Func<JObject> value, string[] dependencies, TemplateContext.CopyIndexState copy)
             : base(id, name, symbolicName, dependencies)
         {
-
             _Value = new Lazy<JObject>(value);
             Copy = copy;
             Properties = new DeploymentProperties(this);
             _Outputs = new Dictionary<string, ILazyValue>(StringComparer.OrdinalIgnoreCase);
+            Scope = scope;
+            DeploymentScope = deploymentScope;
         }
 
         private sealed class DeploymentProperties : ILazyObject
@@ -186,6 +187,10 @@ namespace PSRule.Rules.Azure.Data.Template
         public TemplateContext.CopyIndexState Copy { get; }
 
         public ILazyObject Properties { get; }
+
+        public string Scope { get; }
+
+        public DeploymentScope DeploymentScope { get; }
 
         public void AddOutput(string name, ILazyValue output)
         {

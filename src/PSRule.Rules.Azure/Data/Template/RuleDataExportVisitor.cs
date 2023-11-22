@@ -28,6 +28,12 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_SITECONFIG = "siteConfig";
         private const string PROPERTY_SUBNETS = "subnets";
         private const string PROPERTY_NETWORKINTERFACES = "networkInterfaces";
+        private const string PROPERTY_SUBSCRIPTIONID = "subscriptionId";
+        private const string PROPERTY_ACCEPTOWNERSHIPSTATE = "acceptOwnershipState";
+        private const string PROPERTY_ACCEPTOWNERSHIPURL = "acceptOwnershipUrl";
+        private const string PROPERTY_LOGINSERVER = "loginServer";
+        private const string PROPERTY_RULES = "rules";
+        private const string PROPERTY_RULEID = "ruleId";
 
         private const string PLACEHOLDER_GUID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
         private const string IDENTITY_SYSTEMASSIGNED = "SystemAssigned";
@@ -42,6 +48,9 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string TYPE_VIRTUALNETWORK = "Microsoft.Network/virtualNetworks";
         private const string TYPE_PRIVATEENDPOINT = "Microsoft.Network/privateEndpoints";
         private const string TYPE_NETWORKINTERFACE = "Microsoft.Network/networkInterfaces";
+        private const string TYPE_SUBSCRIPTIONALIAS = "Microsoft.Subscription/aliases";
+        private const string TYPE_CONTAINERREGISTRY = "Microsoft.ContainerRegistry/registries";
+        private const string TYPE_STORAGE_OBJECTREPLICATIONPOLICIES = "Microsoft.Storage/storageAccounts/objectReplicationPolicies";
 
         private static readonly JsonMergeSettings _MergeSettings = new()
         {
@@ -116,7 +125,10 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             _ = ProjectManagedIdentity(context, resource) ||
                 ProjectVirtualNetwork(context, resource) ||
+                ProjectContainerRegistry(context, resource) ||
                 ProjectPrivateEndpoints(context, resource) ||
+                ProjectSubscriptionAlias(context, resource) ||
+                StorageObjectReplicationPolicies(context, resource) ||
                 ProjectResource(context, resource);
         }
 
@@ -191,6 +203,68 @@ namespace PSRule.Rules.Azure.Data.Template
                     [PROPERTY_ID] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, TYPE_NETWORKINTERFACE, $"pe.nic.{ExpressionHelpers.GetUniqueString(new object[] { resource.Id })}")
                 };
                 properties[PROPERTY_NETWORKINTERFACES] = new JArray(new JObject[] { networkInterface });
+            }
+            return true;
+        }
+
+        private static bool ProjectSubscriptionAlias(TemplateContext context, IResourceValue resource)
+        {
+            if (!resource.IsType(TYPE_SUBSCRIPTIONALIAS))
+                return false;
+
+            resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+
+            // Add subscriptionId
+            if (!properties.ContainsKeyInsensitive(PROPERTY_SUBSCRIPTIONID))
+            {
+                properties[PROPERTY_SUBSCRIPTIONID] = Guid.NewGuid().ToString();
+            }
+
+            // Add acceptOwnershipState
+            if (!properties.ContainsKeyInsensitive(PROPERTY_ACCEPTOWNERSHIPSTATE))
+            {
+                properties[PROPERTY_ACCEPTOWNERSHIPSTATE] = "Completed";
+            }
+
+            // Add acceptOwnershipUrl
+            if (!properties.ContainsKeyInsensitive(PROPERTY_ACCEPTOWNERSHIPURL))
+            {
+                properties[PROPERTY_ACCEPTOWNERSHIPURL] = string.Empty;
+            }
+            return true;
+        }
+
+        private static bool ProjectContainerRegistry(TemplateContext context, IResourceValue resource)
+        {
+            if (!resource.IsType(TYPE_CONTAINERREGISTRY))
+                return false;
+
+            resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+
+            // Add loginServer
+            if (!properties.ContainsKeyInsensitive(PROPERTY_LOGINSERVER))
+            {
+                properties[PROPERTY_LOGINSERVER] = $"{resource.Name}.azurecr.io";
+            }
+            return true;
+        }
+
+        private static bool StorageObjectReplicationPolicies(TemplateContext context, IResourceValue resource)
+        {
+            if (!resource.IsType(TYPE_STORAGE_OBJECTREPLICATIONPOLICIES))
+                return false;
+
+            resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+
+            // Add rules.ruleId
+            if (properties.TryArrayProperty(PROPERTY_RULES, out var rules))
+            {
+                foreach (var rule in rules.Values<JObject>())
+                {
+                    if (!rule.ContainsKeyInsensitive(PROPERTY_RULEID))
+                        rule[PROPERTY_RULEID] = Guid.NewGuid().ToString();
+                }
+                
             }
             return true;
         }

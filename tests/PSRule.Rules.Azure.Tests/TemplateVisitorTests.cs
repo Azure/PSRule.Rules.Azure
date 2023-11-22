@@ -951,6 +951,23 @@ namespace PSRule.Rules.Azure
             Assert.Equal("bc", actual["properties"]["stringToFind"].Value<string>());
         }
 
+        [Fact]
+        public void ManagementGroupScopedResource()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.31.json"), null, out _);
+            Assert.Equal(4, resources.Length);
+
+            var actual = resources[1];
+            Assert.Equal("Microsoft.Subscription/aliases", actual["type"].Value<string>());
+            Assert.Equal("/", actual["scope"].Value<string>());
+            Assert.Equal("/providers/Microsoft.Subscription/aliases/sub1", actual["id"].Value<string>());
+
+            actual = resources[3];
+            Assert.Equal("Microsoft.Authorization/roleAssignments", actual["type"].Value<string>());
+            Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000", actual["scope"].Value<string>());
+            Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/8a869b90-6d6c-4307-9d0f-22dbc136ccd9", actual["id"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
