@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.23.1.45101",
-      "templateHash": "15341554075500882140"
+      "templateHash": "1063354008601109842"
     }
   },
   "resources": [
@@ -18,7 +18,6 @@
           "scope": "inner"
         },
         "mode": "Incremental",
-        "parameters": {},
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "languageVersion": "2.0",
@@ -27,7 +26,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.23.1.45101",
-              "templateHash": "1045026030740697206"
+              "templateHash": "11238883118622659404"
             }
           },
           "definitions": {
@@ -151,10 +150,77 @@
               "properties": {
                 "value": "[variables('secretList')[copyIndex()].value]"
               }
+            },
+            "storageAccount_objectReplicationPolicy": {
+              "type": "Microsoft.Storage/storageAccounts/objectReplicationPolicies",
+              "apiVersion": "2022-09-01",
+              "name": "[format('{0}/{1}', 'test', 'default')]",
+              "properties": {
+                "sourceAccount": "sourceId",
+                "destinationAccount": "destId",
+                "rules": [
+                  {
+                    "ruleId": null,
+                    "sourceContainer": "source",
+                    "destinationContainer": "dest",
+                    "filters": null
+                  }
+                ]
+              },
+              "dependsOn": [
+                "storage"
+              ]
+            },
+            "storageAccount_objectReplicationPolicyItems": {
+              "copy": {
+                "name": "storageAccount_objectReplicationPolicyItems",
+                "count": "[length(createArray(1))]"
+              },
+              "type": "Microsoft.Storage/storageAccounts/objectReplicationPolicies",
+              "apiVersion": "2022-09-01",
+              "name": "[format('{0}/{1}', 'test', format('default{0}', copyIndex()))]",
+              "properties": {
+                "sourceAccount": "sourceId",
+                "destinationAccount": "destId",
+                "rules": [
+                  {
+                    "ruleId": null,
+                    "sourceContainer": "source",
+                    "destinationContainer": "dest",
+                    "filters": null
+                  }
+                ]
+              },
+              "dependsOn": [
+                "storage"
+              ]
+            }
+          },
+          "outputs": {
+            "policyId": {
+              "type": "string",
+              "value": "[reference('storageAccount_objectReplicationPolicy').policyId]"
+            },
+            "ruleIds": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "value": "[map(reference('storageAccount_objectReplicationPolicy').rules, lambda('rule', lambdaVariables('rule').ruleId))]"
+            },
+            "fromFor": {
+              "type": "string",
+              "value": "[reference(format('storageAccount_objectReplicationPolicyItems[{0}]', 0)).sourceAccount]"
             }
           }
         }
       }
     }
-  ]
+  ],
+  "outputs": {
+    "childFromFor": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'child'), '2022-09-01').outputs.fromFor.value]"
+    }
+  }
 }

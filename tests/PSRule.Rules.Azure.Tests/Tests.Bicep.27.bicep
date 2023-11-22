@@ -3,5 +3,6 @@
 
 module child 'Tests.Bicep.27.child.bicep' = {
   name: 'child'
-  params: {}
 }
+
+output childFromFor string = child.outputs.fromFor

@@ -161,6 +161,9 @@ namespace PSRule.Rules.Azure.Data.Policy
             public SubscriptionOption Subscription { get; }
             public TenantOption Tenant { get; }
             public ManagementGroupOption ManagementGroup { get; }
+
+            public bool ShouldThrowMissingProperty => true;
+
             public string PolicyRulePrefix { get; }
             public string FieldPrefix
             {
@@ -171,12 +174,12 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
 
             /// <summary>
-            /// A unique identifer for the current assignment that is being processed.
+            /// A unique identifier for the current assignment that is being processed.
             /// </summary>
             internal string AssignmentId { get; private set; }
 
             /// <summary>
-            /// A unique identifer for the current policy definition that is being processed.
+            /// A unique identifier for the current policy definition that is being processed.
             /// </summary>
             internal string PolicyDefinitionId { get; private set; }
 
@@ -554,10 +557,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                 switch (type)
                 {
                     case ParameterType.Boolean:
-                        definition.AddParameter(new LazyParameter<bool>(parameterName, type, value));
+                        definition.AddParameter(new LazyParameter<bool?>(parameterName, type, value));
                         break;
                     case ParameterType.Integer:
-                        definition.AddParameter(new LazyParameter<long>(parameterName, type, value));
+                        definition.AddParameter(new LazyParameter<long?>(parameterName, type, value));
                         break;
                     case ParameterType.String:
                         definition.AddParameter(new LazyParameter<string>(parameterName, type, value));
@@ -569,10 +572,10 @@ namespace PSRule.Rules.Azure.Data.Policy
                         definition.AddParameter(new LazyParameter<JObject>(parameterName, type, value));
                         break;
                     case ParameterType.Float:
-                        definition.AddParameter(new LazyParameter<float>(parameterName, type, value));
+                        definition.AddParameter(new LazyParameter<float?>(parameterName, type, value));
                         break;
                     case ParameterType.DateTime:
-                        definition.AddParameter(new LazyParameter<DateTime>(parameterName, type, value));
+                        definition.AddParameter(new LazyParameter<DateTime?>(parameterName, type, value));
                         break;
                 }
             }
@@ -1526,15 +1529,15 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 existenceCondition
             };
-            var existanceExpression = new JObject
+            var existenceExpression = new JObject
             {
                 { PROPERTY_FIELD, PROPERTY_RESOURCES },
                 { PROPERTY_ALLOF, allOf }
             };
             if (subselector != null && subselector.Count > 0)
-                existanceExpression[PROPERTY_WHERE] = subselector;
+                existenceExpression[PROPERTY_WHERE] = subselector;
 
-            return existanceExpression;
+            return existenceExpression;
         }
 
         private static JObject AndNameCondition(JObject details, JObject condition)

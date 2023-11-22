@@ -905,10 +905,14 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void NullableParameters()
         {
-            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.27.json"), null, out _);
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.27.json"), null, out var templateContext);
             Assert.Equal(4, resources.Length);
 
-            var actual = resources[2];
+            var actual = resources[1];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("child", actual["name"].Value<string>());
+
+            actual = resources[2];
             Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
             Assert.Equal("TLS1_2", actual["properties"]["minimumTlsVersion"].Value<string>());
             Assert.Empty(actual["resources"][0]["properties"]["cors"]["corsRules"].Value<JArray>());
@@ -916,6 +920,10 @@ namespace PSRule.Rules.Azure
             actual = resources[3];
             Assert.Equal("Microsoft.KeyVault/vaults", actual["type"].Value<string>());
             Assert.Empty(actual["properties"]["accessPolicies"].Value<JArray>());
+
+            // Check outputs.
+            Assert.True(templateContext.RootDeployment.TryOutput("childFromFor", out JObject result));
+            Assert.Equal("sourceId", result["value"].Value<string>());
         }
 
         [Fact]

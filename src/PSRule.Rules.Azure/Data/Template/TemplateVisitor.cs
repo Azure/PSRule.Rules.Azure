@@ -11,7 +11,6 @@ using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
-using YamlDotNet.Core.Tokens;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -171,6 +170,8 @@ namespace PSRule.Rules.Azure.Data.Template
             public TenantOption Tenant { get; internal set; }
 
             public ManagementGroupOption ManagementGroup { get; internal set; }
+
+            public bool ShouldThrowMissingProperty => true;
 
             public ParameterDefaultsOption ParameterDefaults { get; private set; }
 
@@ -1227,6 +1228,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 var r = ResourceInstance(context, instance, copyIndex, symbolicName);
                 symbol?.Configure(r);
 
+                // Add symbols for each array index.
+                if (symbol != null && symbol.Kind == DeploymentSymbolKind.Array)
+                    context.AddSymbol(DeploymentSymbol.NewObject(string.Concat(symbolicName, '[', copyIndex.Index, ']'), r));
+
                 yield return r;
             }
             if (copyIndex.IsCopy())
@@ -1576,6 +1581,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (typeof(T) == typeof(string) && (value.Type == JTokenType.Object || value.Type == JTokenType.Array))
                 return default;
 
+            if (value.Type == JTokenType.Null)
+                return default;
+
             if (value is IMock mock)
                 return mock.GetValue<T>();
 
@@ -1749,7 +1757,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return result.ToArray();
             }
             else
-                return new TemplateContext.CopyIndexState[] { new TemplateContext.CopyIndexState { Input = value } };
+                return new TemplateContext.CopyIndexState[] { new() { Input = value } };
         }
 
         /// <summary>
@@ -1773,7 +1781,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 return result.ToArray();
             }
             else
-                return new TemplateContext.CopyIndexState[] { new TemplateContext.CopyIndexState { Input = value } };
+                return new TemplateContext.CopyIndexState[] { new() { Input = value } };
         }
 
         private static IEnumerable<TemplateContext.CopyIndexState> GetVariableIterator(ITemplateContext context, JObject value, bool pushToStack = true)

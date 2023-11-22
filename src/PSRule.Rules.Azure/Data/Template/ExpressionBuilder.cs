@@ -162,6 +162,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (ExpressionHelpers.TryPropertyOrField(result, propertyName, out var value))
                 return value;
 
+            if (!context.ShouldThrowMissingProperty)
+                return null;
+
             throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
         }
     }

@@ -264,7 +264,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     if (!rule.ContainsKeyInsensitive(PROPERTY_RULEID))
                         rule[PROPERTY_RULEID] = Guid.NewGuid().ToString();
                 }
-                
+
             }
             return true;
         }

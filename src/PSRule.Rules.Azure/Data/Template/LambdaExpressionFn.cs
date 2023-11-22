@@ -32,6 +32,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 _Variables = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
             }
 
+            public override bool ShouldThrowMissingProperty => false;
+
             public override bool TryLambdaVariable(string variableName, out object value)
             {
                 return _Variables.TryGetValue(variableName, out value);
