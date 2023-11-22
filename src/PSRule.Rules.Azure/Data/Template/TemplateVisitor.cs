@@ -25,6 +25,7 @@ namespace PSRule.Rules.Azure.Data.Template
     /// </summary>
     internal abstract class TemplateVisitor : ResourceManagerVisitor
     {
+        private const string TENANT_SCOPE = "/";
         private const string RESOURCETYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
         private const string DEPLOYMENTSCOPE_INNER = "inner";
         private const string PROPERTY_SCHEMA = "$schema";
@@ -174,7 +175,7 @@ namespace PSRule.Rules.Azure.Data.Template
             public ParameterDefaultsOption ParameterDefaults { get; private set; }
 
             /// <inheritdoc/>
-            public DeploymentValue Deployment => _Deployment.Peek();
+            public DeploymentValue Deployment => _Deployment.Count > 0 ? _Deployment.Peek() : null;
 
             public string TemplateFile { get; private set; }
 
@@ -288,6 +289,15 @@ namespace PSRule.Rules.Azure.Data.Template
                     return false;
 
                 var scope = ExpandProperty<string>(this, resource, PROPERTY_SCOPE);
+
+                // Check for tenant scope.
+                if (scope == TENANT_SCOPE)
+                {
+                    //scopeId = Deployment.Scope;
+                    scopeId = scope;
+                    return true;
+                }
+
                 ResourceHelper.TryResourceIdComponents(scope, out var subscriptionId, out var resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents);
                 subscriptionId ??= Subscription.SubscriptionId;
                 resourceGroupName ??= ResourceGroup.Name;
@@ -307,10 +317,17 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
 
+            private bool TryDeploymentScope(out string scopeId)
+            {
+                scopeId = Deployment?.Scope;
+                return scopeId != null;
+            }
+
             public void UpdateResourceScope(JObject resource)
             {
                 if (!TryResourceScope(resource, out var scopeId) &&
-                    !TryParentScope(resource, out scopeId))
+                    !TryParentScope(resource, out scopeId) &&
+                    !TryDeploymentScope(out scopeId))
                     return;
 
                 resource[PROPERTY_SCOPE] = scopeId;
@@ -471,6 +488,11 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 var templateHash = template.GetHashCode().ToString(Thread.CurrentThread.CurrentCulture);
                 TryObjectProperty(template, PROPERTY_METADATA, out var metadata);
+                TryStringProperty(template, PROPERTY_SCHEMA, out var schema);
+                var scope = GetDeploymentScope(schema, out var deploymentScope);
+                var id = string.Concat(scope, "/providers/", RESOURCETYPE_DEPLOYMENT, "/", deploymentName);
+                var location = ResourceGroup.Location;
+
                 var templateLink = new JObject
                 {
                     { PROPERTY_ID, ResourceGroup.Id },
@@ -493,9 +515,12 @@ namespace PSRule.Rules.Azure.Data.Template
                     { PROPERTY_RESOURCENAME, isNested ? deploymentName : ParameterFile ?? TemplateFile },
                     { PROPERTY_NAME, deploymentName },
                     { PROPERTY_PROPERTIES, properties },
-                    { PROPERTY_LOCATION, ResourceGroup.Location },
+                    { PROPERTY_LOCATION, location },
                     { PROPERTY_TYPE, RESOURCETYPE_DEPLOYMENT },
                     { PROPERTY_METADATA, metadata },
+
+                    { PROPERTY_ID, id },
+                    { PROPERTY_SCOPE, scope },
 
                     // Add a property to allow rules to detect root deployment. Related to: https://github.com/Azure/PSRule.Rules.Azure/issues/2109
                     { PROPERTY_ROOTDEPLOYMENT, !isNested }
@@ -503,12 +528,45 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 var path = template.GetResourcePath(parentLevel: 2);
                 deployment.SetTargetInfo(TemplateFile, ParameterFile, path);
-                var deploymentValue = new DeploymentValue(string.Concat(ResourceGroup.Id, "/providers/", RESOURCETYPE_DEPLOYMENT, "/", deploymentName), deploymentName, null, deployment, null, null);
+                var deploymentValue = new DeploymentValue(id, deploymentName, null, scope, deploymentScope, deployment, null, null);
                 AddResource(deploymentValue);
                 _CurrentDeployment = deploymentValue;
                 _Deployment.Push(deploymentValue);
                 if (!isNested)
                     RootDeployment = _CurrentDeployment;
+            }
+
+            private string GetDeploymentScope(string schema, out DeploymentScope deploymentScope)
+            {
+                if (!string.IsNullOrEmpty(schema))
+                {
+                    schema = schema.TrimEnd('#', ' ');
+                    var parts = schema.Split('/');
+                    var template = parts[parts.Length - 1];
+
+                    // Management Group
+                    if (string.Equals(template, "managementGroupDeploymentTemplate.json", StringComparison.OrdinalIgnoreCase))
+                    {
+                        deploymentScope = DeploymentScope.ManagementGroup;
+                        return ManagementGroup.Id;
+                    }
+                    // Subscription
+                    if (string.Equals(template, "subscriptionDeploymentTemplate.json", StringComparison.OrdinalIgnoreCase))
+                    {
+                        deploymentScope = DeploymentScope.Subscription;
+                        return Subscription.Id;
+                    }
+                    // Tenant
+                    if (string.Equals(template, "tenantDeploymentTemplate.json", StringComparison.OrdinalIgnoreCase))
+                    {
+                        deploymentScope = DeploymentScope.Tenant;
+                        return Tenant.Id;
+                    }
+                }
+
+                // Resource Group
+                deploymentScope = DeploymentScope.ResourceGroup;
+                return ResourceGroup.Id;
             }
 
             internal void ExitDeployment()
@@ -1200,7 +1258,16 @@ namespace PSRule.Rules.Azure.Data.Template
                 resourceGroupName = ResolveDeploymentScopeProperty(context, resource, PROPERTY_RESOURCEGROUP, resourceGroupName);
             }
 
-            var resourceId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, type, name);
+            string resourceId = null;
+            if (context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup)
+                resourceId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, type, name);
+
+            if (context.Deployment.DeploymentScope == DeploymentScope.Subscription)
+                resourceId = ResourceHelper.CombineResourceId(subscriptionId, null, type, name);
+
+            if (context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup || context.Deployment.DeploymentScope == DeploymentScope.Tenant)
+                resourceId = ResourceHelper.CombineResourceId(null, null, type, name);
+
             context.UpdateResourceScope(resource);
             resource[PROPERTY_ID] = resourceId;
             return new ResourceValue(resourceId, name, type, symbolicName, resource, dependencies, copyIndex.Clone());

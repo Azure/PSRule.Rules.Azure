@@ -28,6 +28,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.31.2:
+
+- Bug fixes:
+  - Fixed incorrect scope generated for subscription aliases by @BernieWhite.
+    [#2545](https://github.com/Azure/PSRule.Rules.Azure/issues/2545)
+
 ## v1.31.2
 
 What's changed since v1.31.1:
