@@ -9,7 +9,7 @@ namespace PSRule.Rules.Azure.Data.Template
     {
         None = 0,
         Array = 1,
-        Object = 2,
+        Object = 2
     }
 
     internal interface IDeploymentSymbol
@@ -37,9 +37,9 @@ namespace PSRule.Rules.Azure.Data.Template
             return name == null ? null : new ArrayDeploymentSymbol(name);
         }
 
-        internal static IDeploymentSymbol NewObject(string name)
+        internal static IDeploymentSymbol NewObject(string name, ResourceValue resource = null)
         {
-            return name == null ? null : new ObjectDeploymentSymbol(name);
+            return name == null ? null : new ObjectDeploymentSymbol(name, resource);
         }
     }
 
@@ -47,8 +47,12 @@ namespace PSRule.Rules.Azure.Data.Template
     {
         private ResourceValue _Resource;
 
-        public ObjectDeploymentSymbol(string name)
-            : base(name) { }
+        public ObjectDeploymentSymbol(string name, ResourceValue resource)
+            : base(name)
+        {
+            if (resource != null)
+                Configure(resource);
+        }
 
         public DeploymentSymbolKind Kind => DeploymentSymbolKind.Object;
 

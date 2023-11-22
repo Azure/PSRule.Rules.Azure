@@ -485,7 +485,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = new JValue(key);
                 return true;
             }
-            
+
             // Handle name and type
             if (StringComparer.OrdinalIgnoreCase.Equals(key, "name"))
             {

@@ -33,6 +33,10 @@ What's changed since v1.31.2:
 - Bug fixes:
   - Fixed incorrect scope generated for subscription aliases by @BernieWhite.
     [#2545](https://github.com/Azure/PSRule.Rules.Azure/issues/2545)
+  - Fixed null dereferenced properties in map lambda by @BernieWhite.
+    [#2535](https://github.com/Azure/PSRule.Rules.Azure/issues/2535)
+  - Fixed handling of for array index symbols by @BernieWhite.
+    [#2548](https://github.com/Azure/PSRule.Rules.Azure/issues/2548)
 
 ## v1.31.2
 

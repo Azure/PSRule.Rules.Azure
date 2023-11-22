@@ -53,6 +53,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         ManagementGroupOption ManagementGroup { get; }
 
+        bool ShouldThrowMissingProperty { get; }
+
         ExpressionFnOuter BuildExpression(string s);
 
         CloudEnvironment GetEnvironment();
@@ -117,6 +119,8 @@ namespace PSRule.Rules.Azure.Data.Template
         public TenantOption Tenant => _Inner.Tenant;
 
         public ManagementGroupOption ManagementGroup => _Inner.ManagementGroup;
+
+        public virtual bool ShouldThrowMissingProperty => true;
 
         public ExpressionFnOuter BuildExpression(string s)
         {

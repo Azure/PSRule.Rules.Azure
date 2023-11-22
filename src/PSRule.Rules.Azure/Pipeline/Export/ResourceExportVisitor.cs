@@ -190,7 +190,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (ResourceHelper.TryResourceGroup(resourceId, out var subscriptionId, out var resourceGroupName) &&
                 !string.Equals(resourceType, TYPE_RESOURCES_RESOURCEGROUP, StringComparison.OrdinalIgnoreCase))
                 resource.Add(PROPERTY_RESOURCEGROUPNAME, resourceGroupName);
-            
+
             if (!string.IsNullOrEmpty(subscriptionId))
                 resource.Add(PROPERTY_SUBSCRIPTIONID, subscriptionId);
         }
