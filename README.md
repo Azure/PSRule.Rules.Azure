@@ -33,7 +33,7 @@ Features of PSRule for Azure include:
    - Rules can be directly adopted and additional enterprise specific rules can be layed on.
    - Provide regular baselines to allow progressive adoption.
 
-  [5]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
+  [5]: https://learn.microsoft.com/azure/well-architected/
 
 ## Support
 
@@ -45,7 +45,7 @@ Please search the existing issues before filing new issues to avoid duplicates.
 - For new issues, file your bug or feature request as a new [issue].
 - For help, discussion, and support questions about using this project, join or start a [discussion].
 
-If you have any problems with the [PSRule][engine] engine, please check the project GitHub [issues](https://github.com/Microsoft/PSRule/issues) page instead.
+If you have any problems with the [PSRule][engine] engine, please check the project GitHub [issues](https://github.com/microsoft/PSRule/issues) page instead.
 
 Support for this project/ product is limited to the resources listed above.
 
@@ -418,6 +418,6 @@ Any use of third-party trademarks or logos are subject to those third-party's po
 [issue]: https://github.com/Azure/PSRule.Rules.Azure/issues
 [discussion]: https://github.com/Azure/PSRule.Rules.Azure/discussions
 [engine]: https://github.com/microsoft/PSRule
-[create-workflow]: https://help.github.com/en/articles/configuring-a-workflow#creating-a-workflow-file
+[create-workflow]: https://docs.github.com/actions/using-workflows#creating-a-workflow-file
 [extension]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
 [troubleshooting guide]: https://azure.github.io/PSRule.Rules.Azure/troubleshooting/

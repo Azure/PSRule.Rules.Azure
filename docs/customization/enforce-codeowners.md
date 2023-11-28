@@ -22,8 +22,8 @@ In these cases, it may be important that specific paths are used for Infrastruct
     The following scenario shows how to create a custom rule to validate the file path of code artifacts.
     The scenario walks you through the process so that you can apply the same concepts for similar requirements.
 
-  [1]: https://docs.github.com/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-code-owners
-  [2]: https://docs.microsoft.com/azure/devops/repos/git/branch-policies?view=azure-devops#automatically-include-code-reviewers
+  [1]: https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+  [2]: https://learn.microsoft.com/azure/devops/repos/git/branch-policies#automatically-include-code-reviewers
 
 ## Creating a new rule
 

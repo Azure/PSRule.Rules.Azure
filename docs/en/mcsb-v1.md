@@ -7,7 +7,7 @@ Controls from the MCSB are also mapped to industry frameworks, such as CIS, PCI-
 If you are new to MCSB or are looking for guidance on how to use it,
 please see the [Introduction to the Microsoft cloud security benchmark][1].
 
-  [1]: https://docs.microsoft.com/security/benchmark/azure/introduction
+  [1]: https://learn.microsoft.com/security/benchmark/azure/introduction
 
 ## Microsoft cloud security benchmark v1
 

@@ -220,7 +220,7 @@ PSRule and PSRule for Azure currently do not collect any telemetry during instal
 PowerShell (used by PSRule for Azure) does collect basic telemetry by default.
 Collection of telemetry in PowerShell and how to opt-out is explained in [about_Telemetry][12].
 
-  [12]: https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_telemetry
+  [12]: https://learn.microsoft.com/powershell/module/microsoft.powershell.core/about/about_telemetry
 
 *[ARM]: Azure Resource Manager
 *[WAF]: Well-Architected Framework
