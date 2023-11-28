@@ -400,7 +400,7 @@ configuration:
 
 :octicons-milestone-24: v1.30.0
 
-> Applies to [Azure.Resource.AllowedRegions](../en/rules/Resource.AllowedRegions.md).
+> Applies to [Azure.Resource.AllowedRegions](../en/rules/Azure.Resource.AllowedRegions.md).
 
 This configuration option specifies a list of allowed locations that resources can be deployed to.
 Rules that check the location of Azure resources fail when a resource or resource group is created in a different region.

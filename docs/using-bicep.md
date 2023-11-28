@@ -101,7 +101,7 @@ To specify required parameters for a module, create a deployment or test that re
     }
     ```
 
-  [2]: https://docs.microsoft.com/azure/azure-resource-manager/bicep/modules
+  [2]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/modules
 
 ### Configuring path exclusions
 
@@ -365,10 +365,10 @@ Typically, the following three environment variables should be set:
         To keep `BICEPREGISTRYCLIENTSECRET` secure, use a [variable group][6] linked to an Azure Key Vault.
 
   [3]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-config-modules#configure-profiles-and-credentials
-  [4]: https://docs.microsoft.com/dotnet/api/azure.identity.environmentcredential
-  [5]: https://docs.github.com/actions/reference/encrypted-secrets
-  [6]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
-  [11]: https://learn.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal
+  [4]: https://learn.microsoft.com/dotnet/api/azure.identity.environmentcredential
+  [5]: https://docs.github.com/actions/security-guides/using-secrets-in-github-actions
+  [6]: https://learn.microsoft.com/azure/devops/pipelines/library/variable-groups
+  [11]: https://learn.microsoft.com/entra/identity-platform/howto-create-service-principal-portal
 
 ## Recommended content
 

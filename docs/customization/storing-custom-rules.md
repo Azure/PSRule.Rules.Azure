@@ -15,7 +15,7 @@ For example:
 PSRule allows custom rules to be layered on.
 These custom rules work side-by-side with PSRule for Azure.
 
-  [1]: https://docs.microsoft.com/en-gb/azure/architecture/framework/
+  [1]: https://learn.microsoft.com/azure/well-architected/
 
 ## Using a standard file path
 
@@ -39,7 +39,7 @@ To store standalone rules we recommend that you:
     Build pipelines are often case-sensitive or run on Linux-based systems.
     Using the casing rule above reduces confusion latter when you configure continuous integration (CI).
 
-  [2]: https://github.com/microsoft/PSRule/blob/main/docs/scenarios/rule-module/rule-module.md
+  [2]: https://microsoft.github.io/PSRule/stable/authoring/packaging-rules/
 
 ## Naming rules
 

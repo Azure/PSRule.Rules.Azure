@@ -42,7 +42,7 @@ Use a reaction in place of a "+1" comment:
 * 👍 - upvote
 * 👎 - downvote
 
-  [3]: https://github.com/blog/2119-add-reactions-to-pull-requests-issues-and-comments
+  [3]: https://github.blog/2016-03-10-add-reactions-to-pull-requests-issues-and-comments/
 
 ## Improving documentation
 
@@ -70,9 +70,9 @@ Rule documentation requires the following annotations for use with PSRule for Az
   *NB* - the severity ratings reflect a productionised implementation, consideration should be applied for pre-production environments.
   
   Available severities are:
-  - `Critical` - A 'must have' if the solution is to be considered 'fit for purpose', secure, well governed and managed inline with the Microsoft Azure [Well-Architected Framework](https://learn.microsoft.com/en-us/azure/well-architected/). 
+  - `Critical` - A 'must have' if the solution is to be considered 'fit for purpose', secure, well governed and managed inline with the Microsoft Azure [Well-Architected Framework](https://learn.microsoft.com/azure/well-architected/).
   - `Important` - A 'to be considered' within the context of the solution and domain. In some cases, can introduce cost or complexity that should be considered as a trade off and explicity documented as a [Key Design Decision](https://learn.microsoft.com/azure/cloud-adoption-framework/decision-guides/).
-  - `Awareness` - A 'good to have' feature, normally reserved for solutions with the highest [non-functional requirements](https://learn.microsoft.com/azure/well-architected/resiliency/design-requirements).
+  - `Awareness` - A 'good to have' feature, normally reserved for solutions with the highest [non-functional requirements](https://learn.microsoft.com/azure/well-architected/reliability/checklist).
   
 - `pillar` - A Azure Well-Architected Framework pillar.
   Either `Cost Optimization`, `Operational Excellence`, `Performance Efficiency`, `Reliability`, `Security`.
@@ -244,12 +244,12 @@ or contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any addi
 Your contributions to open source, large or small, make great projects like this possible.
 Thank you for taking the time to contribute.
 
-[learn-git]: https://help.github.com/articles/git-and-github-learning-resources
-[github-flow]: https://guides.github.com/introduction/flow/
+[learn-git]: https://docs.github.com/get-started/quickstart/git-and-github-learning-resources
+[github-flow]: https://docs.github.com/get-started/quickstart/github-flow
 [github-signup]: https://github.com/signup/free
-[github-fork]: https://help.github.com/en/github/getting-started-with-github/fork-a-repo
-[github-pr]: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests
-[github-pr-create]: https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request-from-a-fork
+[github-fork]: https://docs.github.com/get-started/quickstart/fork-a-repo
+[github-pr]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests
+[github-pr-create]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request-from-a-fork
 [build]: docs/install.md#building-from-source
 [vscode]: https://code.visualstudio.com/
 [issues]: https://github.com/Azure/PSRule.Rules.Azure/issues

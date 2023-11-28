@@ -127,7 +127,7 @@ When using PSRule for Azure, these functions have a default meaning that can be 
 When configuring scope functions, only the properties you want to override has to be specified.
 Unspecified properties will inherit from the defaults.
 
-  [4]: https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-scope
+  [4]: https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-scope
 
 ### Subscription
 
