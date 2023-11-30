@@ -1,6 +1,6 @@
 ---
-generated: True
 title: Reference
+generated: True
 ---
 
 # Reference
@@ -26,7 +26,7 @@ AZR-000001 | [Azure.ACR.Usage](Azure.ACR.Usage.md) | Regularly remove deprecated
 AZR-000002 | [Azure.ACR.ContainerScan](Azure.ACR.ContainerScan.md) | Enable vulnerability scanning for container images. | GA
 AZR-000003 | [Azure.ACR.ImageHealth](Azure.ACR.ImageHealth.md) | Remove container images with known vulnerabilities. | GA
 AZR-000004 | [Azure.ACR.GeoReplica](Azure.ACR.GeoReplica.md) | Use geo-replicated container registries to compliment a multi-region container deployments. | GA
-AZR-000005 | [Azure.ACR.AdminUser](Azure.ACR.AdminUser.md) | Use Azure AD identities instead of using the registry admin user. | GA
+AZR-000005 | [Azure.ACR.AdminUser](Azure.ACR.AdminUser.md) | Use Entra ID identities instead of using the registry admin user. | GA
 AZR-000006 | [Azure.ACR.MinSku](Azure.ACR.MinSku.md) | ACR should use the Premium or Standard SKU for production deployments. | GA
 AZR-000007 | [Azure.ACR.Name](Azure.ACR.Name.md) | Container registry names should meet naming requirements. | GA
 AZR-000008 | [Azure.ACR.Quarantine](Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Preview
@@ -423,5 +423,11 @@ AZR-000399 | [Azure.Firewall.PolicyMode](Azure.Firewall.PolicyMode.md) | Deny hi
 AZR-000400 | [Azure.ContainerApp.APIVersion](Azure.ContainerApp.APIVersion.md) | Migrate from retired API version to a supported version. | GA
 AZR-000401 | [Azure.ACR.AnonymousAccess](Azure.ACR.AnonymousAccess.md) | Disable anonymous pull access. | Preview
 AZR-000402 | [Azure.ACR.Firewall](Azure.ACR.Firewall.md) | Limit network access of container registries to only trusted clients. | GA
+AZR-000403 | [Azure.ML.ComputeIdleShutdown](Azure.ML.ComputeIdleShutdown.md) | Configure an idle shutdown timeout for Machine Learning compute instances. | GA
+AZR-000404 | [Azure.ML.DisableLocalAuth](Azure.ML.DisableLocalAuth.md) | Azure Machine Learning compute resources should have local authentication methods disabled. | GA
+AZR-000405 | [Azure.ML.ComputeVnet](Azure.ML.ComputeVnet.md) | Azure Machine Learning Computes should be hosted in a virtual network (VNet). | GA
+AZR-000406 | [Azure.ML.PublicAccess](Azure.ML.PublicAccess.md) | Disable public network access from a Azure Machine Learning workspace. | GA
+AZR-000407 | [Azure.ML.UserManagedIdentity](Azure.ML.UserManagedIdentity.md) | ML workspaces should use user-assigned managed identity, rather than the default system-assigned managed identity. | GA
+AZR-000408 | [Azure.Deployment.SecureParameter](Azure.Deployment.SecureParameter.md) | Use secure parameters for any parameter that contains sensitive information. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

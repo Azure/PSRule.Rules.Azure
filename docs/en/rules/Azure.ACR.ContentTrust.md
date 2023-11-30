@@ -30,7 +30,7 @@ Consider enabling content trust on registries, clients, and sign container image
 
 ### Configure with Azure template
 
-To deploy Container Registries that pass this rule:
+To deploy registries that pass this rule:
 
 - Set `properties.trustPolicy.status` to `enabled`.
 - Set `properties.trustPolicy.type` to `Notary`.
@@ -39,38 +39,35 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.ContainerRegistry/registries",
-    "apiVersion": "2021-06-01-preview",
-    "name": "[parameters('registryName')]",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Premium"
-    },
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "adminUserEnabled": false,
-        "policies": {
-            "quarantinePolicy": {
-                "status": "enabled"
-            },
-            "trustPolicy": {
-                "status": "enabled",
-                "type": "Notary"
-            },
-            "retentionPolicy": {
-                "status": "enabled",
-                "days": 30
-            }
-        }
+  "type": "Microsoft.ContainerRegistry/registries",
+  "apiVersion": "2023-08-01-preview",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Premium"
+  },
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "adminUserEnabled": false,
+    "policies": {
+      "trustPolicy": {
+        "status": "enabled",
+        "type": "Notary"
+      },
+      "retentionPolicy": {
+        "days": 30,
+        "status": "enabled"
+      }
     }
+  }
 }
 ```
 
 ### Configure with Bicep
 
-To deploy Container Registries that pass this rule:
+To deploy registries that pass this rule:
 
 - Set `properties.trustPolicy.status` to `enabled`.
 - Set `properties.trustPolicy.type` to `Notary`.
@@ -78,8 +75,8 @@ To deploy Container Registries that pass this rule:
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
-  name: registryName
+resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = {
+  name: name
   location: location
   sku: {
     name: 'Premium'
@@ -90,16 +87,13 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
   properties: {
     adminUserEnabled: false
     policies: {
-      quarantinePolicy: {
-        status: 'enabled'
-      }
       trustPolicy: {
         status: 'enabled'
         type: 'Notary'
       }
       retentionPolicy: {
-        status: 'enabled'
         days: 30
+        status: 'enabled'
       }
     }
   }

@@ -17,7 +17,7 @@ metadata:
   tags:
     release: GA
     ruleSet: 2020_06
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'PA-7' ]
 spec:
@@ -39,9 +39,9 @@ metadata:
   name: Azure.APIM.Protocols
   ref: AZR-000054
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'DP-3', 'DP-4' ] 
 spec:
@@ -70,9 +70,9 @@ metadata:
   name: Azure.APIM.Ciphers
   ref: AZR-000055
   tags:
-    release: 'GA'
-    ruleSet: '2022_03'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2022_03
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'DP-4'
 spec:
@@ -105,9 +105,9 @@ metadata:
   name: Azure.APIM.Name
   ref: AZR-000056
   tags:
-    release: 'GA'
-    ruleSet: '2020_09'
-    Azure.WAF/pillar: 'Operational Excellence'
+    release: GA
+    ruleSet: 2020_09
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.ApiManagement/service

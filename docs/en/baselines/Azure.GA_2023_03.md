@@ -10,7 +10,7 @@ The following rules are included within `Azure.GA_2023_03`. This baseline includ
 
 Name | Synopsis | Severity
 ---- | -------- | --------
-[Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | Use Azure AD identities instead of using the registry admin user. | Critical
+[Azure.ACR.AdminUser](../rules/Azure.ACR.AdminUser.md) | Use Entra ID identities instead of using the registry admin user. | Critical
 [Azure.ACR.ContainerScan](../rules/Azure.ACR.ContainerScan.md) | Enable vulnerability scanning for container images. | Critical
 [Azure.ACR.ContentTrust](../rules/Azure.ACR.ContentTrust.md) | Use container images signed by a trusted image publisher. | Important
 [Azure.ACR.GeoReplica](../rules/Azure.ACR.GeoReplica.md) | Use geo-replicated container registries to compliment a multi-region container deployments. | Important

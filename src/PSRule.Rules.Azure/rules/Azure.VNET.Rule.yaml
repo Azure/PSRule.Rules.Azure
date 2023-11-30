@@ -15,9 +15,9 @@ metadata:
   name: Azure.VNET.Name
   ref: AZR-000268
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Operational Excellence'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/virtualNetworks

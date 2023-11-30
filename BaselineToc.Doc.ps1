@@ -18,7 +18,7 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
         '<!-- OBSOLETE -->'
     }
 
-    $rules = $PSDocs.TargetObject.Rules | Sort-Object -Property RuleName;
+    $rules = $PSDocs.TargetObject.Rules | Sort-Object -Property Name;
     $ruleCount = $rules.Length;
 
     $PSDocs.TargetObject.Synopsis;
@@ -28,7 +28,7 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
     Section 'Rules' -If { $ruleCount -gt 0 } {
         "The following rules are included within ``$baselineName``. This baseline includes a total of $ruleCount rules.";
         $rules | Table -Property @{ Name = 'Name'; Expression = {
-            "[$($_.RuleName)](../rules/$($_.RuleName).md)"
+            "[$($_.Name)](../rules/$($_.Name).md)"
         }}, Synopsis, @{ Name = 'Severity'; Expression = {
             $_.Info.Annotations.severity
         }}
@@ -54,7 +54,7 @@ Document 'asb.baseline' -If { $PSDocs.TargetObject.Name -eq 'Azure.MCSB.v1' } {
         '<!-- OBSOLETE -->'
     }
 
-    $rules = $PSDocs.TargetObject.Rules | Sort-Object -Property RuleName;
+    $rules = $PSDocs.TargetObject.Rules | Sort-Object -Property Name;
     $ruleCount = $rules.Length;
 
     $PSDocs.TargetObject.Synopsis;
@@ -64,7 +64,7 @@ Document 'asb.baseline' -If { $PSDocs.TargetObject.Name -eq 'Azure.MCSB.v1' } {
     Section 'Controls' -If { $ruleCount -gt 0 } {
         "The following rules are included within ``$baselineName``. This baseline includes a total of $ruleCount rules.";
         $rules | Table -Property @{ Name = 'Name'; Expression = {
-            "[$($_.RuleName)](../rules/$($_.RuleName).md)"
+            "[$($_.Name)](../rules/$($_.Name).md)"
         }}, Synopsis, @{ Name = 'Severity'; Expression = {
             $_.Info.Annotations.severity
         }}

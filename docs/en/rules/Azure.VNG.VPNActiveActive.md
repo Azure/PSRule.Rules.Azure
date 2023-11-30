@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Load balancing and failover
+category: RE:05 Redundancy
 resource: Virtual Network Gateway
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.VPNActiveActive/
 ---
@@ -36,6 +36,7 @@ To use Active-Active VPN connections, migrate to a gateway configured as VpnGw1 
 
 ## LINKS
 
-- [Highly Available Cross-Premises and VNet-to-VNet Connectivity](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)
-- [Update an existing VPN gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell#update-an-existing-vpn-gateway)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways#virtualnetworkgatewaypropertiesformat-object)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [Highly Available Cross-Premises and VNet-to-VNet Connectivity](https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-highlyavailable)
+- [Update an existing VPN gateway](https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-activeactive-rm-powershell#update-an-existing-vpn-gateway)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways)

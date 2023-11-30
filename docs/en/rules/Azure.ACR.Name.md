@@ -1,7 +1,8 @@
 ---
+reviewed: 2023-12-01
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable infrastructure
+category: OE:04 Continuous integration
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Name/
 ---
@@ -30,8 +31,10 @@ Additionally consider naming resources with a standard naming convention.
 
 ### Configure with Azure template
 
-You could ensure that `acrName` parameter meets naming requirements by using `MinLength` and `maxLength` parameter properties.
-You could also use a `uniqueString()` function to ensure the name is globally unique.
+To deploy registries that pass this rule, consider:
+
+- Configuring a `minLength` and `maxLength` constraint for the resource name parameter.
+- Optionally, you could also use a `uniqueString()` function to generate a unique name.
 
 For example:
 
@@ -40,94 +43,93 @@ For example:
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "acrName": {
+    "name": {
       "type": "string",
-      "defaultValue": "[format('acr{0}', uniqueString(resourceGroup().id))]",
-      "maxLength": 50,
       "minLength": 5,
+      "maxLength": 50,
       "metadata": {
-        "description": "Globally unique name of your Azure Container Registry"
+        "description": "The name of the resource."
       }
     },
     "location": {
       "type": "string",
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
-        "description": "Location for registry home replica."
-      }
-    },
-    "acrSku": {
-      "type": "string",
-      "defaultValue": "Premium",
-      "allowedValues": [
-        "Standard"
-        "Premium"
-      ],
-      "metadata": {
-        "description": "Tier of your Azure Container Registry."
+        "description": "The location resources will be deployed."
       }
     }
   },
   "resources": [
     {
       "type": "Microsoft.ContainerRegistry/registries",
-      "apiVersion": "2019-12-01-preview",
-      "name": "[parameters('acrName')]",
+      "apiVersion": "2023-08-01-preview",
+      "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "[parameters('acrSku')]"
+        "name": "Premium"
       },
-      "tags": {
-        "displayName": "Container Registry",
-        "container.registry": "[parameters('acrName')]"
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "adminUserEnabled": false,
+        "policies": {
+          "trustPolicy": {
+            "status": "enabled",
+            "type": "Notary"
+          },
+          "retentionPolicy": {
+            "days": 30,
+            "status": "enabled"
+          }
+        }
       }
     }
-  ],
-  "outputs": {
-    "acrLoginServer": {
-      "type": "string",
-      "value": "[reference(resourceId('Microsoft.ContainerRegistry/registries', parameters('acrName'))).loginServer]"
-    }
-  }
+  ]
 }
 ```
 
 ### Configure with Bicep
 
-You could ensure that `acrName` parameter meets naming requirements by using `@MinLength` and `@maxLength` parameter decorators.
-You could also use a `uniqueString()` function to ensure the name is globally unique.
+To deploy registries that pass this rule, consider:
+
+- Configuring a `minLength` and `maxLength` constraint for the resource name parameter.
+- Optionally, you could also use a `uniqueString()` function to generate a unique name.
 
 For example:
 
 ```bicep
-@description('Globally unique name of your Azure Container Registry')
 @minLength(5)
 @maxLength(50)
-param acrName string = 'acr${uniqueString(resourceGroup().id)}'
+@sys.description('The name of the resource.')
+param name string
 
-@description('Location for registry home replica.')
+@sys.description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-@description('Tier of your Azure Container Registry. Geo-replication requires Premium SKU.')
-@allowed([
-  'Standard'
-  'Premium'
-])
-param acrSku string = 'Premium'
-
-resource containerRegistry 'Microsoft.ContainerRegistry/registries@2019-12-01-preview' = {
-  name: acrName
+resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = {
+  name: name
   location: location
   sku: {
-    name: acrSku
+    name: 'Premium'
   }
-  tags: {
-    displayName: 'Container Registry'
-    'container.registry': acrName
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    adminUserEnabled: false
+    policies: {
+      trustPolicy: {
+        status: 'enabled'
+        type: 'Notary'
+      }
+      retentionPolicy: {
+        days: 30
+        status: 'enabled'
+      }
+    }
   }
 }
-
-output acrLoginServer string = containerRegistry.properties.loginServer
 ```
 
 ## NOTES
@@ -136,7 +138,9 @@ This rule does not check if container registry names are unique.
 
 ## LINKS
 
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
-- [Recommended abbreviations for Azure resource types](https://docs.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
+- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

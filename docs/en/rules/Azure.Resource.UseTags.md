@@ -2,7 +2,7 @@
 reviewed: 2023-04-20
 severity: Awareness
 pillar: Cost Optimization
-category: Governance
+category: CO:03 Cost data and reporting
 resource: All resources
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Resource.UseTags/
 ms-content-id: d8480c0d-e41c-441a-9b03-0dc9c340c149
@@ -95,7 +95,7 @@ If you find resources that incorrectly report they should be tagged, please let 
 
 ## LINKS
 
-- [Enforce resource tagging](https://learn.microsoft.com/azure/architecture/framework/cost/design-governance#enforce-resource-tagging)
+- [CO:03 Cost data and reporting](https://learn.microsoft.com/azure/well-architected/cost-optimization/collect-review-cost-data)
 - [Tag support for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/tag-support)
 - [Develop your naming and tagging strategy for Azure resources](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
 - [Define your tagging strategy](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-tagging)
