@@ -83,8 +83,11 @@ resource goodSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
 
 This rule uses a heuristics to determine if a parameter should use a secure type:
 
+- Parameters with the type `int` or `bool` are ignored regardless of how they are named.
 - Any parameter with a name containing `password`, `secret`, or `token` will be considered sensitive.
-  - Except parameter names containing `passwordlength`, `secretname`, `secreturl`, `secreturi`, or `tokenname`.
+  - Except parameter names containing any of the following:
+    `passwordlength`, `secretname`, `secreturl`, `secreturi`, `secretrotation`, `secretinterval`, `secretprovider`,
+    `secretsprovider`, `secretref`, `secretid`, `disablepassword`, `sync*passwords`, or `tokenname`.
 - Any parameter with a name ending in `key` or `keys` will be considered sensitive.
   - Except parameter names ending in `publickey` or `publickeys`.
 
