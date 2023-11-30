@@ -5,8 +5,8 @@
 Rule 'Rule.Name' -Type 'PSRule.Rules.Rule' {
     Recommend 'Rule name should be less than 35 characters to prevent being truncated.'
     Reason 'The rule name is too long.'
-    $Assert.LessOrEqual($TargetObject, 'RuleName', 35)
-    $Assert.StartsWith($TargetObject, 'RuleName', 'Azure.')
+    $Assert.LessOrEqual($TargetObject, 'Name', 35)
+    $Assert.StartsWith($TargetObject, 'Name', 'Azure.')
 }
 
 # Synopsis: Rules must use a valid opaque identifier.
@@ -83,7 +83,7 @@ Rule 'Rule.Annotations' -Type 'PSRule.Rules.Rule' {
 Rule 'Rule.OnlineHelp' -Type 'PSRule.Rules.Rule' {
     $Assert.HasFieldValue($TargetObject, 'Info.Annotations.''online version''')
     $Assert.StartsWith($TargetObject, 'Info.Annotations.''online version''', 'https://azure.github.io/PSRule.Rules.Azure/')
-    $Assert.EndsWith($TargetObject, 'Info.Annotations.''online version''', [String]::Concat('/rules/', $TargetObject.RuleName, '/'))
+    $Assert.EndsWith($TargetObject, 'Info.Annotations.''online version''', [String]::Concat('/rules/', $PSRule.TargetName, '/'))
 }
 
 # Synopsis: Use non-culture specific URLs for references to docs.microsoft.com.

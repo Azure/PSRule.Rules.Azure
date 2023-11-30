@@ -305,6 +305,18 @@
           },
           "notSecret": {
             "type": "string"
+          },
+          "verysecret": {
+            "type": "bool"
+          },
+          "secretinterval": {
+            "type": "string"
+          },
+          "secretreferenceid": {
+            "type": "string"
+          },
+          "verysecretint": {
+            "type": "int"
           }
         },
         "variables": {},

@@ -28,6 +28,15 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.31.3:
+
+- General improvements:
+  - Updates to documentation by @BernieWhite.
+    [#2557](https://github.com/Azure/PSRule.Rules.Azure/issues/2557)
+- Bug fixes:
+  - Fixed additional false positives of `Azure.Deployment.SecureParameter` by @BernieWhite.
+    [#2556](https://github.com/Azure/PSRule.Rules.Azure/issues/2556)
+
 ## v1.31.3
 
 What's changed since v1.31.2:
