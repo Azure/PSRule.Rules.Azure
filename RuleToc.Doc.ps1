@@ -31,7 +31,7 @@ Document 'index' {
         $rules | Sort-Object -Property Ref | Table -Property @{ Name = 'Reference'; Expression = {
             $_.Ref.Name
         }}, @{ Name = 'Name'; Expression = {
-            "[$($_.RuleName)]($($_.RuleName).md)"
+            "[$($_.Name)]($($_.Name).md)"
         }}, Synopsis, @{ Name = 'Release'; Expression = {
             if ($_.Tag.release -eq 'GA') {
                 'GA'
@@ -69,9 +69,9 @@ Document 'module' {
             foreach ($category in $categories) {
                 Section $category.Name {
                     $category.Group |
-                        Sort-Object -Property RuleName |
+                        Sort-Object -Property Name |
                         Table -Property @{ Name = 'Name'; Expression = {
-                            "[$($_.RuleName)]($($_.RuleName).md)"
+                            "[$($_.Name)]($($_.Name).md)"
                         }}, Synopsis, @{ Name = 'Severity'; Expression = {
                             $_.Info.Annotations.severity
                         }}, @{ Name = 'Level'; Expression = {
@@ -102,9 +102,9 @@ Document 'resource' {
     foreach ($resource in $resources) {
         Section "$($resource.Name)" {
             $resource.Group |
-                Sort-Object -Property RuleName |
+                Sort-Object -Property Name |
                 Table -Property @{ Name = 'Name'; Expression = {
-                    "[$($_.RuleName)]($($_.RuleName).md)"
+                    "[$($_.Name)]($($_.Name).md)"
                 }}, Synopsis, @{ Name = 'Severity'; Expression = {
                     $_.Info.Annotations.severity
                 }}, @{ Name = 'Level'; Expression = {

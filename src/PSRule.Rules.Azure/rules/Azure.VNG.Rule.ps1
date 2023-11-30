@@ -7,16 +7,6 @@
 
 #region Rules
 
-# Synopsis: Migrate from legacy VPN gateway SKUs
-Rule 'Azure.VNG.VPNLegacySKU' -Ref 'AZR-000269' -Type 'Microsoft.Network/virtualNetworkGateways' -With 'Azure.VNG.VPNGateway' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Within 'Properties.sku.name' -Not 'Basic', 'Standard', 'HighPerformance';
-}
-
-# Synopsis: Use Active-Active configuration
-Rule 'Azure.VNG.VPNActiveActive' -Ref 'AZR-000270' -Type 'Microsoft.Network/virtualNetworkGateways' -With 'Azure.VNG.VPNGateway' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.HasFieldValue($TargetObject, 'Properties.activeActive', $True);
-}
-
 # Synopsis: Migrate from legacy ExpressRoute gateway SKUs
 Rule 'Azure.VNG.ERLegacySKU' -Ref 'AZR-000271' -Type 'Microsoft.Network/virtualNetworkGateways' -With 'Azure.VNG.ERGateway' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
     Within 'Properties.sku.name' -Not 'Basic';

@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-06-09
+reviewed: 2023-12-01
 severity: Critical
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.AdminUser/
 ms-content-id: bbf194a7-6ca3-4b1d-9170-6217eb26620d
@@ -12,17 +12,23 @@ ms-content-id: bbf194a7-6ca3-4b1d-9170-6217eb26620d
 
 ## SYNOPSIS
 
-Use Azure AD identities instead of using the registry admin user.
+Use Entra ID identities instead of using the registry admin user.
 
 ## DESCRIPTION
 
-Azure Container Registry (ACR) includes a built-in admin user account.
+Azure Container Registry (ACR) includes a built-in local admin user account.
 The admin user account is a single user account with administrative access to the registry.
 This account provides single user access for early test and development.
 The admin user account is not intended for use with production container registries.
 
-Instead use role-based access control (RBAC).
-RBAC can be used to delegate registry permissions to an Azure AD (AAD) identity.
+Instead of using the admin user account, consider using Entra ID (previously Azure AD) identities.
+Entra ID provides a centralized identity and authentication system for Azure.
+This provides a number of benefits including:
+
+- Strong account protection controls with conditional access, identity governance, and privileged identity management.
+- Auditing and reporting of account activity.
+- Granular access control with role-based access control (RBAC).
+- Separation of account types for users and applications.
 
 ## RECOMMENDATION
 
@@ -32,7 +38,7 @@ Consider disabling the admin user account and only use identity-based authentica
 
 ### Configure with Azure template
 
-To deploy Container Registries that pass this rule:
+To deploy registries that pass this rule:
 
 - Set `properties.adminUserEnabled` to `false`.
 
@@ -41,8 +47,8 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2023-01-01-preview",
-  "name": "[parameters('registryName')]",
+  "apiVersion": "2023-08-01-preview",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
     "name": "Premium"
@@ -53,19 +59,12 @@ For example:
   "properties": {
     "adminUserEnabled": false,
     "policies": {
-      "quarantinePolicy": {
-        "status": "enabled"
-      },
       "trustPolicy": {
         "status": "enabled",
         "type": "Notary"
       },
       "retentionPolicy": {
         "days": 30,
-        "status": "enabled"
-      },
-      "softDeletePolicy": {
-        "retentionDays": 90,
         "status": "enabled"
       }
     }
@@ -75,15 +74,15 @@ For example:
 
 ### Configure with Bicep
 
-To deploy Container Registries that pass this rule:
+To deploy registries that pass this rule:
 
 - Set `properties.adminUserEnabled` to `false`.
 
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
-  name: registryName
+resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = {
+  name: name
   location: location
   sku: {
     name: 'Premium'
@@ -94,19 +93,12 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
   properties: {
     adminUserEnabled: false
     policies: {
-      quarantinePolicy: {
-        status: 'enabled'
-      }
       trustPolicy: {
         status: 'enabled'
         type: 'Notary'
       }
       retentionPolicy: {
         days: 30
-        status: 'enabled'
-      }
-      softDeletePolicy: {
-        retentionDays: 90
         status: 'enabled'
       }
     }
@@ -128,7 +120,7 @@ Update-AzContainerRegistry -ResourceGroupName '<resource_group>' -Name '<name>' 
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
 - [Authenticate with a private Docker container registry](https://learn.microsoft.com/azure/container-registry/container-registry-authentication)
 - [Best practices for Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-best-practices#authentication-and-authorization)
 - [Use an Azure managed identity to authenticate to an Azure container registry](https://learn.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)

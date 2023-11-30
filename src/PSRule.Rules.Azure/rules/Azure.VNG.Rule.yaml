@@ -7,6 +7,51 @@
 
 #region Rules
 
+
+---
+# Synopsis: Migrate from legacy SKUs to improve reliability and performance of VPN gateways.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VNG.VPNLegacySKU
+  ref: AZR-000269
+  tags:
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+  - Microsoft.Network/virtualNetworkGateways
+  with:
+  - Azure.VNG.VPNGateway
+  condition:
+    field: properties.sku.name
+    notIn:
+      - Basic
+      - Standard
+      - HighPerformance
+
+
+---
+# Synopsis: Use VPN gateways configured to operate in an Active-Active configuration to reduce connectivity downtime.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VNG.VPNActiveActive
+  ref: AZR-000270
+  tags:
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.Network/virtualNetworkGateways
+  with:
+  - Azure.VNG.VPNGateway
+  condition:
+    field: properties.activeActive
+    equals: true
+
 ---
 # Synopsis: Virtual Network Gateway (VNG) names should meet naming requirements.
 apiVersion: github.com/microsoft/PSRule/v1
@@ -15,8 +60,9 @@ metadata:
   name: Azure.VNG.Name
   ref: AZR-000274
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/virtualNetworkGateways
@@ -37,8 +83,9 @@ metadata:
   name: Azure.VNG.ConnectionName
   ref: AZR-000275
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/connections
