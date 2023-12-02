@@ -33,6 +33,9 @@ What's changed since v1.31.3:
 - General improvements:
   - Updates to documentation by @BernieWhite.
     [#2557](https://github.com/Azure/PSRule.Rules.Azure/issues/2557)
+- Engineering:
+  - Bump Microsoft.NET.Test.Sdk to v17.8.0.
+    [#2527](https://github.com/Azure/PSRule.Rules.Azure/pull/2527)
 - Bug fixes:
   - Fixed additional false positives of `Azure.Deployment.SecureParameter` by @BernieWhite.
     [#2556](https://github.com/Azure/PSRule.Rules.Azure/issues/2556)
