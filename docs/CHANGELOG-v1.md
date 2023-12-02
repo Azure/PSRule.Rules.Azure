@@ -36,6 +36,8 @@ What's changed since v1.31.3:
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.8.0.
     [#2527](https://github.com/Azure/PSRule.Rules.Azure/pull/2527)
+  - Bump xunit to v2.6.2.
+    [#2544](https://github.com/Azure/PSRule.Rules.Azure/pull/2544)
 - Bug fixes:
   - Fixed additional false positives of `Azure.Deployment.SecureParameter` by @BernieWhite.
     [#2556](https://github.com/Azure/PSRule.Rules.Azure/issues/2556)
