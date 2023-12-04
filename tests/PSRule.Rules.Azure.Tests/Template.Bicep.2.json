@@ -158,7 +158,7 @@
             "value": "kv-bicep-app-002"
           },
           "workspaceId": {
-              "value": "notworkspace"
+            "value": "notworkspace"
           }
         },
         "template": {
@@ -346,7 +346,7 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2020-06-01",
-      "name": "keyvault-deployment",
+      "name": "keyvault-deployment-2",
       "properties": {
         "expressionEvaluationOptions": {
           "scope": "inner"
@@ -357,7 +357,7 @@
             "value": "kv-bicep-app-003"
           },
           "workspaceId": {
-              "value": "[parameters('workspaceId')]"
+            "value": "[parameters('workspaceId')]"
           }
         },
         "template": {

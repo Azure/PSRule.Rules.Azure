@@ -127,6 +127,14 @@ namespace PSRule.Rules.Azure
             return results.Count > 0;
         }
 
+        internal static bool TryGetResourcesArray(this JObject resource, out JArray resources)
+        {
+            if (resource.TryGetProperty(PROPERTY_RESOURCES, out resources))
+                return true;
+
+            return false;
+        }
+
         internal static bool PropertyEquals(this JObject o, string propertyName, string value)
         {
             return o.TryGetProperty(propertyName, out var s) && string.Equals(s, value, StringComparison.OrdinalIgnoreCase);
@@ -173,6 +181,18 @@ namespace PSRule.Rules.Azure
         {
             foreach (var item in items)
                 o.Add(item);
+        }
+
+        /// <summary>
+        /// Add items to the start of the array instead of the end.
+        /// </summary>
+        /// <param name="o">The <seealso cref="JArray"/> to add items to.</param>
+        /// <param name="items">A set of items to add.</param>
+        internal static void AddRangeFromStart(this JArray o, IEnumerable<JToken> items)
+        {
+            var counter = 0;
+            foreach (var item in items)
+                o.Insert(counter++, item);
         }
 
         internal static IEnumerable<JObject> GetPeerConditionByField(this JObject o, string field)

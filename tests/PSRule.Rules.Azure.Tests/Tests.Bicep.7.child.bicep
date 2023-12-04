@@ -10,7 +10,7 @@ resource vault 'Microsoft.KeyVault/vaults@2021-10-01' existing = {
 
 resource kvSecret 'Microsoft.KeyVault/vaults/secrets@2021-10-01' = {
   parent: vault
-  name: 'secret1'
+  name: 'secret2'
   properties: {
     value: secret
   }

@@ -75,3 +75,11 @@ resource sqlAdmins 'Microsoft.Sql/servers/administrators@2022-02-01-preview' = {
     sid: '00000000-0000-0000-0000-000000000000'
   }
 }
+
+module servicebus './Tests.Bicep.8.sb.bicep' = [for item in [ 'd1', 'd2' ]: {
+  name: item
+  params: {
+    location: location
+    iteration: item
+  }
+}]

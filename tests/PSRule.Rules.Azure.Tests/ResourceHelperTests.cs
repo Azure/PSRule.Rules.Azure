@@ -85,13 +85,15 @@ namespace PSRule.Rules.Azure
             {
                 "microsoft.operationalinsights/workspaces",
                 "Microsoft.Network/virtualNetworks/subnets",
-                "Microsoft.KeyVault/vaults/providers/diagnosticSettings"
+                "Microsoft.KeyVault/vaults/providers/diagnosticSettings",
+                "Microsoft.Insights/diagnosticSettings"
             };
             var resourceName = new string[]
             {
                 "workspace001",
                 "vnet-A/GatewaySubnet",
-                "kv-bicep-app-002/Microsoft.Insights/service"
+                "kv-bicep-app-002/Microsoft.Insights/service",
+                "service"
             };
             var id = new string[]
             {
@@ -100,11 +102,13 @@ namespace PSRule.Rules.Azure
                 "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/kv-bicep-app-002/providers/Microsoft.Insights/diagnosticSettings/service",
                 "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/test-rg"
             };
+            var scope = "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/test-rg/providers/Microsoft.KeyVault/vaults/kv-bicep-app-002";
 
             Assert.Equal(id[0], ResourceHelper.CombineResourceId("00000000-0000-0000-0000-000000000000", "rg-test", resourceType[0], resourceName[0]));
             Assert.Equal(id[1], ResourceHelper.CombineResourceId("ffffffff-ffff-ffff-ffff-ffffffffffff", "test-rg", resourceType[1], resourceName[1]));
             Assert.Equal(id[2], ResourceHelper.CombineResourceId("ffffffff-ffff-ffff-ffff-ffffffffffff", "test-rg", resourceType[2], resourceName[2]));
             Assert.Equal(id[3], ResourceHelper.CombineResourceId("ffffffff-ffff-ffff-ffff-ffffffffffff", "test-rg", (string[])null, null));
+            Assert.Equal(id[2], ResourceHelper.CombineResourceId("ffffffff-ffff-ffff-ffff-ffffffffffff", "test-rg", resourceType[3], resourceName[3], scope: scope));
         }
 
         [Fact]

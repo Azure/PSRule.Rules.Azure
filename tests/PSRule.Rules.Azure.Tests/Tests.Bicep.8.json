@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.13.1.58284",
-      "templateHash": "11956986385837715242"
+      "version": "0.23.1.45101",
+      "templateHash": "12418087360216097267"
     }
   },
   "parameters": {
@@ -61,7 +61,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "storage",
       "properties": {
         "expressionEvaluationOptions": {
@@ -85,8 +85,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "4480766204783076209"
+              "version": "0.23.1.45101",
+              "templateHash": "18148995500193283141"
             }
           },
           "parameters": {
@@ -128,7 +128,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "storage2",
       "properties": {
         "expressionEvaluationOptions": {
@@ -149,8 +149,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "4480766204783076209"
+              "version": "0.23.1.45101",
+              "templateHash": "18148995500193283141"
             }
           },
           "parameters": {
@@ -195,7 +195,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "blobServices",
       "properties": {
         "expressionEvaluationOptions": {
@@ -208,8 +208,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "2067010727711821958"
+              "version": "0.23.1.45101",
+              "templateHash": "17745890083576888678"
             }
           },
           "parameters": {
@@ -238,7 +238,7 @@
     },
     {
       "type": "Microsoft.Resources/deployments",
-      "apiVersion": "2020-10-01",
+      "apiVersion": "2022-09-01",
       "name": "blobServices2",
       "properties": {
         "expressionEvaluationOptions": {
@@ -256,8 +256,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.13.1.58284",
-              "templateHash": "2067010727711821958"
+              "version": "0.23.1.45101",
+              "templateHash": "17745890083576888678"
             }
           },
           "parameters": {
@@ -283,6 +283,75 @@
       "dependsOn": [
         "[resourceId('Microsoft.Resources/deployments', 'storage')]"
       ]
+    },
+    {
+      "copy": {
+        "name": "servicebus",
+        "count": "[length(createArray('d1', 'd2'))]"
+      },
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "[createArray('d1', 'd2')[copyIndex()]]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "iteration": {
+            "value": "[createArray('d1', 'd2')[copyIndex()]]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "14604370522227617104"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]"
+            },
+            "iteration": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.ServiceBus/namespaces",
+              "apiVersion": "2021-11-01",
+              "name": "servicebus",
+              "location": "[parameters('location')]"
+            },
+            {
+              "type": "Microsoft.Insights/diagnosticSettings",
+              "apiVersion": "2021-05-01-preview",
+              "scope": "[format('Microsoft.ServiceBus/namespaces/{0}', 'servicebus')]",
+              "name": "logs",
+              "properties": {
+                "other": "[parameters('iteration')]",
+                "logs": [
+                  {
+                    "enabled": true,
+                    "categoryGroup": "AllLogs"
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.ServiceBus/namespaces', 'servicebus')]"
+              ]
+            }
+          ]
+        }
+      }
     }
   ]
 }
