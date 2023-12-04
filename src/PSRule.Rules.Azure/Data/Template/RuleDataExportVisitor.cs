@@ -322,27 +322,34 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         private static void MergeResource(TemplateContext context, IResourceValue resource, List<IResourceValue> unprocessed, HashSet<string> processed)
         {
-            if (!ShouldMerge(resource.Type))
-                return;
+            _ = MergeResourceLeft(context, resource, unprocessed, processed) ||
+                MergeResourceRight(context, resource, unprocessed, processed);
+        }
+
+        private static bool MergeResourceLeft(TemplateContext context, IResourceValue resource, List<IResourceValue> unprocessed, HashSet<string> processed)
+        {
+            if (!ShouldMergeLeft(resource.Type))
+                return false;
 
             var duplicates = unprocessed.FindAll(x => x.Id == resource.Id);
             for (var i = 1; duplicates.Count > 1 && i < duplicates.Count; i++)
             {
-                MergeResource(duplicates[0].Value, duplicates[i].Value, processed);
+                MergeResourceLeft(duplicates[0].Value, duplicates[i].Value, processed);
                 unprocessed.Remove(duplicates[i]);
                 context.RemoveResource(duplicates[i]);
             }
+            return true;
         }
 
         /// <summary>
         /// Merge specific resources and thier sub-resources.
         /// </summary>
-        private static void MergeResource(JObject resourceA, JObject resourceB, HashSet<string> processed)
+        private static void MergeResourceLeft(JObject left, JObject right, HashSet<string> processed)
         {
-            resourceA.Merge(resourceB, _MergeSettings);
+            left.Merge(right, _MergeSettings);
 
             // Handle child resources
-            if (resourceA.TryGetResources(out var resources))
+            if (left.TryGetResources(out var resources))
             {
                 for (var i = 0; resources != null && i < resources.Length; i++)
                 {
@@ -352,11 +359,62 @@ namespace PSRule.Rules.Azure.Data.Template
                     var duplicates = Array.FindAll(resources, x => x[PROPERTY_ID].ToString() == childResourceId);
                     for (var j = 1; duplicates.Length > 1 && j < duplicates.Length; j++)
                     {
-                        MergeResource(duplicates[0].Value<JObject>(), duplicates[j].Value<JObject>(), processed);
+                        MergeResourceLeft(duplicates[0].Value<JObject>(), duplicates[j].Value<JObject>(), processed);
                         duplicates[j].Remove();
                     }
                     processed.Add(childResourceId);
                 }
+            }
+        }
+
+        /// <summary>
+        /// Merge resources based on duplicates which could occur across modules.
+        /// Last instance wins but sub-resources are accumulated.
+        /// </summary>
+        private static bool MergeResourceRight(TemplateContext context, IResourceValue resource, List<IResourceValue> unprocessed, HashSet<string> processed)
+        {
+            var duplicates = unprocessed.FindAll(x => x.Id == resource.Id);
+            for (var i = 1; duplicates.Count > 1 && i < duplicates.Count; i++)
+            {
+                MergeResourceRight(duplicates[i - 1].Value, duplicates[i].Value, processed);
+                unprocessed.Remove(duplicates[i - 1]);
+                context.RemoveResource(duplicates[i - 1]);
+            }
+
+            var right = duplicates[duplicates.Count - 1];
+            if (duplicates.Count > 1 && right.Value.TryGetResources(out var subResources))
+            {
+                for (var i = subResources.Length - 1; i >= 0; i--)
+                {
+                    if (!subResources[i].TryGetProperty(PROPERTY_ID, out var childResourceId))
+                        continue;
+
+                    if (processed.Contains(childResourceId))
+                    {
+                        subResources[i].Remove();
+                    }
+                    else
+                    {
+                        processed.Add(childResourceId);
+                    }
+                }
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Merge resources sub-resources only.
+        /// </summary>
+        private static void MergeResourceRight(JObject left, JObject right, HashSet<string> processed)
+        {
+            // Get sub-resources.
+            if (left.TryGetResources(out var leftResources))
+            {
+                if (!right.TryGetResourcesArray(out var rightResources))
+                    rightResources = new JArray();
+
+                rightResources.AddRangeFromStart(leftResources);
+                right.ReplaceProperty(PROPERTY_RESOURCES, rightResources);
             }
         }
 
@@ -398,7 +456,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// Determines if the specific resource type should be merged.
         /// </summary>
-        private static bool ShouldMerge(string resourceType)
+        private static bool ShouldMergeLeft(string resourceType)
         {
             return string.Equals(resourceType, "Microsoft.Storage/storageAccounts", StringComparison.OrdinalIgnoreCase);
         }

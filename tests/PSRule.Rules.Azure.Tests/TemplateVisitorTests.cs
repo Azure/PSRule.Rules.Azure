@@ -644,7 +644,7 @@ namespace PSRule.Rules.Azure
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.8.json"), null);
             Assert.NotNull(resources);
-            Assert.Equal(8, resources.Length);
+            Assert.Equal(11, resources.Length);
 
             var storage = resources.FirstOrDefault(r => r["type"].ToString() == "Microsoft.Storage/storageAccounts");
             Assert.NotNull(storage);
@@ -662,6 +662,12 @@ namespace PSRule.Rules.Azure
             Assert.Equal("abc", sqlServer["properties"]["administrators"]["login"].ToString());
             Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", sqlServer["identity"]["principalId"]);
             Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", sqlServer["identity"]["tenantId"]);
+
+            var serviceBus = resources.FirstOrDefault(r => r["type"].ToString() == "Microsoft.ServiceBus/namespaces");
+            subResources = serviceBus["resources"].Values<JObject>().ToArray();
+            Assert.Single(subResources);
+            Assert.Equal("d2", subResources[0]["properties"]["other"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.ServiceBus/namespaces/servicebus/providers/Microsoft.Insights/diagnosticSettings/logs", subResources[0]["id"].Value<string>());
         }
 
         [Fact]

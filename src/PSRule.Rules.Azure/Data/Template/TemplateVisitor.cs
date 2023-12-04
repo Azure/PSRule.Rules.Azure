@@ -1256,16 +1256,19 @@ namespace PSRule.Rules.Azure.Data.Template
             var subscriptionId = context.Subscription.SubscriptionId;
             var resourceGroupName = context.ResourceGroup.Name;
 
-            // Handle special case for cross-scope deployments which may have an alternative subscription or resource group set
+            // Handle special case for cross-scope deployments which may have an alternative subscription or resource group set.
             if (IsDeploymentResource(type))
             {
                 subscriptionId = ResolveDeploymentScopeProperty(context, resource, PROPERTY_SUBSCRIPTIONID, subscriptionId);
                 resourceGroupName = ResolveDeploymentScopeProperty(context, resource, PROPERTY_RESOURCEGROUP, resourceGroupName);
             }
 
+            // Get scope if specified.
+            var scope = context.TryParentResourceId(resource, out var parentIds) && parentIds != null && parentIds.Length > 0 ? parentIds[0] : null;
+
             string resourceId = null;
             if (context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup)
-                resourceId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, type, name);
+                resourceId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, type, name, scope: scope);
 
             if (context.Deployment.DeploymentScope == DeploymentScope.Subscription)
                 resourceId = ResourceHelper.CombineResourceId(subscriptionId, null, type, name);

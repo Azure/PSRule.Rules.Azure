@@ -41,6 +41,8 @@ What's changed since v1.31.3:
 - Bug fixes:
   - Fixed additional false positives of `Azure.Deployment.SecureParameter` by @BernieWhite.
     [#2556](https://github.com/Azure/PSRule.Rules.Azure/issues/2556)
+  - Fixed expansion with sub-resource handling of deployments with duplicate resources by @BernieWhite.
+    [#2564](https://github.com/Azure/PSRule.Rules.Azure/issues/2564)
 
 ## v1.31.3
 

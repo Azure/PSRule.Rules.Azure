@@ -10,6 +10,7 @@ namespace PSRule.Rules.Azure
     internal static class ResourceHelper
     {
         private const string SLASH = "/";
+        private const string DOT = ".";
         private const string SUBSCRIPTIONS = "subscriptions";
         private const string RESOURCEGROUPS = "resourceGroups";
         private const string PROVIDERS = "providers";
@@ -37,6 +38,25 @@ namespace PSRule.Rules.Azure
                 i++;
 
             return i == idParts.Length;
+        }
+
+        /// <summary>
+        /// Determine if the resource type is a sub-resource of the parent resource Id.
+        /// </summary>
+        /// <param name="parentId">The resource Id of the parent resource.</param>
+        /// <param name="resourceType">The resource type of sub-resource.</param>
+        /// <returns>Returns <c>true</c> if the resource type is a sub-resource. Otherwise <c>false</c> is returned.</returns>
+        internal static bool IsSubResourceType(string parentId, string resourceType)
+        {
+            if (string.IsNullOrEmpty(parentId) || string.IsNullOrEmpty(parentId))
+                return false;
+
+            // Is the resource type has no provider namespace dot it is a sub type.
+            if (!resourceType.Contains(DOT)) return true;
+
+            // Compare full type names.
+            var parentType = GetResourceType(parentId);
+            return resourceType.StartsWith(parentType, StringComparison.OrdinalIgnoreCase);
         }
 
         /// <summary>
@@ -111,9 +131,14 @@ namespace PSRule.Rules.Azure
                 throw new TemplateFunctionException(nameof(resourceType), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
 
             var parts = resourceTypeLength + nameLength;
-            parts += parts > 0 ? 1 : 0;
             parts += subscriptionId != null ? 2 : 0;
             parts += resourceGroup != null ? 2 : 0;
+
+            for (var p = 0; resourceType != null && p < resourceType.Length; p++)
+            {
+                if (resourceType[p].Contains(DOT))
+                    parts++;
+            }
 
             var result = new string[parts * 2];
             var i = 0;
@@ -135,10 +160,15 @@ namespace PSRule.Rules.Azure
             }
             if (resourceTypeLength > 0 && depth >= 0)
             {
-                result[i++] = SLASH;
-                result[i++] = PROVIDERS;
                 while (i < result.Length && j <= depth)
                 {
+                    // If a resource provider is included prepend /providers.
+                    if (resourceType[j].Contains(DOT))
+                    {
+                        result[i++] = SLASH;
+                        result[i++] = PROVIDERS;
+                    }
+
                     result[i++] = SLASH;
                     result[i++] = resourceType[j];
                     result[i++] = SLASH;
@@ -148,10 +178,28 @@ namespace PSRule.Rules.Azure
             return string.Concat(result);
         }
 
-        internal static string CombineResourceId(string subscriptionId, string resourceGroup, string resourceType, string name, int depth = int.MaxValue)
+        internal static string CombineResourceId(string subscriptionId, string resourceGroup, string resourceType, string name, int depth = int.MaxValue, string scope = null)
         {
             TryResourceIdComponents(resourceType, name, out var typeComponents, out var nameComponents);
+
+            // Handle scoped resource IDs.
+            if (!string.IsNullOrEmpty(scope) && scope != SLASH && TryResourceIdComponents(scope, out subscriptionId, out resourceGroup, out var parentTypeComponents, nameComponents: out var parentNameComponents))
+            {
+                typeComponents = MergeComponents(parentTypeComponents, typeComponents);
+                nameComponents = MergeComponents(parentNameComponents, nameComponents);
+            }
             return CombineResourceId(subscriptionId, resourceGroup, typeComponents, nameComponents, depth);
+        }
+
+        /// <summary>
+        /// Merge type or name components from parent and child.
+        /// </summary>
+        private static string[] MergeComponents(string[] parent, string[] child)
+        {
+            var combined = new string[parent.Length + child.Length];
+            Array.Copy(parent, combined, parent.Length);
+            Array.Copy(child, 0, combined, parent.Length, child.Length);
+            return combined;
         }
 
         /// <summary>
