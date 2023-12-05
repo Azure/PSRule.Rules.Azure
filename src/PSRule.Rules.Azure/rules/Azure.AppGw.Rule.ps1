@@ -28,7 +28,7 @@ Rule 'Azure.AppGw.UseHTTPS' -Ref 'AZR-000059' -Type 'Microsoft.Network/applicati
 }
 
 # Synopsis: Application gateways deployed with should use availability zones in supported regions for high availability.
-Rule 'Azure.AppGw.AvailabilityZone' -Ref 'AZR-000060' -With 'Azure.IsAppGwV2Sku' -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.AppGw.AvailabilityZone' -Ref 'AZR-000060' -With 'Azure.IsAppGwV2Sku' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $appGatewayProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Network', 'applicationGateways');
 
     $configurationZoneMappings = $Configuration.AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;
@@ -47,7 +47,7 @@ Rule 'Azure.AppGw.AvailabilityZone' -Ref 'AZR-000060' -With 'Azure.IsAppGwV2Sku'
 } -Configure @{ AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Application Gateways should meet naming requirements.
-Rule 'Azure.AppGw.Name' -Ref 'AZR-000348' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.AppGw.Name' -Ref 'AZR-000348' -Type 'Microsoft.Network/applicationGateways' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
     # Between 1 and 80 characters long

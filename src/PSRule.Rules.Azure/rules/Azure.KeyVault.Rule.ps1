@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Limit access to Key Vault data
-Rule 'Azure.KeyVault.AccessPolicy' -Ref 'AZR-000118' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/accessPolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.KeyVault.AccessPolicy' -Ref 'AZR-000118' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/accessPolicies' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     Reason $LocalizedData.AccessPolicyLeastPrivilege;
     $accessPolicies = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.KeyVault/vaults') {
@@ -24,7 +24,7 @@ Rule 'Azure.KeyVault.AccessPolicy' -Ref 'AZR-000118' -Type 'Microsoft.KeyVault/v
 }
 
 # Synopsis: Ensure audit diagnostics logs are enabled to audit Key Vault access.
-Rule 'Azure.KeyVault.Logs' -Ref 'AZR-000119' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.KeyVault.Logs' -Ref 'AZR-000119' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('LT-4') } {
     $logCategoryGroups = 'audit', 'allLogs'
     $joinedLogCategoryGroups = $logCategoryGroups -join ', '
     $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.KeyVault/vaults/providers/diagnosticSettings' |
@@ -40,7 +40,7 @@ Rule 'Azure.KeyVault.Logs' -Ref 'AZR-000119' -Type 'Microsoft.KeyVault/vaults' -
 }
 
 # Synopsis: Key Vault names should meet naming requirements.
-Rule 'Azure.KeyVault.Name' -Ref 'AZR-000120' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
+Rule 'Azure.KeyVault.Name' -Ref 'AZR-000120' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 
     # Between 3 and 24 characters long
@@ -55,7 +55,7 @@ Rule 'Azure.KeyVault.Name' -Ref 'AZR-000120' -Type 'Microsoft.KeyVault/vaults' -
 }
 
 # Synopsis: Key Vault Secret names should meet naming requirements.
-Rule 'Azure.KeyVault.SecretName' -Ref 'AZR-000121' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/secrets' -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
+Rule 'Azure.KeyVault.SecretName' -Ref 'AZR-000121' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/secrets' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 
     $secrets = @($TargetObject);
@@ -79,7 +79,7 @@ Rule 'Azure.KeyVault.SecretName' -Ref 'AZR-000121' -Type 'Microsoft.KeyVault/vau
 }
 
 # Synopsis: Key Vault Key names should meet naming requirements.
-Rule 'Azure.KeyVault.KeyName' -Ref 'AZR-000122' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
+Rule 'Azure.KeyVault.KeyName' -Ref 'AZR-000122' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 
     $keys = @($TargetObject);

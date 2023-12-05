@@ -96,6 +96,7 @@ If you find resources that incorrectly report they should be tagged, please let 
 ## LINKS
 
 - [CO:03 Cost data and reporting](https://learn.microsoft.com/azure/well-architected/cost-optimization/collect-review-cost-data)
+- [Design review checklist for Cost Optimization](https://learn.microsoft.com/azure/well-architected/cost-optimization/checklist)
 - [Tag support for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/tag-support)
 - [Develop your naming and tagging strategy for Azure resources](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)
 - [Define your tagging strategy](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-tagging)

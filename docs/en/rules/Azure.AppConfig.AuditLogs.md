@@ -2,7 +2,7 @@
 reviewed: 2023-07-15
 severity: Important
 pillar: Security
-category: Monitor
+category: SE:10 Monitoring and threat detection
 resource: App Configuration
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.AuditLogs/
 ---
@@ -183,6 +183,7 @@ module store 'br/public:app/app-configuration:1.1.1' = {
 
 ## LINKS
 
-- [Security audits](https://learn.microsoft.com/azure/architecture/framework/security/monitor-audit)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [LT-4: Enable logging for security investigation](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-app-configuration-security-baseline#lt-4-enable-logging-for-security-investigation)
 - [Public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsetting)

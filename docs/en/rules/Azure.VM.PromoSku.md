@@ -29,4 +29,5 @@ Consider moving from promotional SKUs to the regular SKU once the promotional pe
 
 ## LINKS
 
+- [Design review checklist for Cost Optimization](https://learn.microsoft.com/azure/well-architected/cost-optimization/checklist)
 - [Virtual Machine pricing](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)

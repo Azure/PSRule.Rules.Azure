@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: Ensure app configuration store audit diagnostic logs are enabled.
-Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfiguration/configurationStores' -Tag @{ release = 'GA'; ruleSet = '2022_09' } { 
+Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfiguration/configurationStores' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('LT-4') } { 
     $logCategoryGroups = 'audit', 'allLogs'
     $joinedLogCategoryGroups = $logCategoryGroups -join ', '
     $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings' | ForEach-Object {
@@ -26,7 +26,7 @@ Rule 'Azure.AppConfig.AuditLogs' -Ref 'AZR-000311' -Type 'Microsoft.AppConfigura
 }
 
 # Synopsis: Consider replication for app configuration store to ensure resiliency to region outages.
-Rule 'Azure.AppConfig.GeoReplica' -Ref 'AZR-000312' -Type 'Microsoft.AppConfiguration/configurationStores' -If { IsAppConfigStandardSKU } -Tag @{ release = 'Preview'; ruleSet = '2022_09' } {
+Rule 'Azure.AppConfig.GeoReplica' -Ref 'AZR-000312' -Type 'Microsoft.AppConfiguration/configurationStores' -If { IsAppConfigStandardSKU } -Tag @{ release = 'Preview'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $appConfigLocation = GetNormalLocation -Location $TargetObject.Location
     $replicas = @(GetSubResources -ResourceType 'Microsoft.AppConfiguration/configurationStores/replicas' | 
         ForEach-Object { GetNormalLocation -Location $_.Location } |
@@ -36,7 +36,7 @@ Rule 'Azure.AppConfig.GeoReplica' -Ref 'AZR-000312' -Type 'Microsoft.AppConfigur
 }
 
 # Synopsis: Consider purge protection for app configuration store to ensure store cannot be purged in the retention period.
-Rule 'Azure.AppConfig.PurgeProtect' -Ref 'AZR-000313' -Type 'Microsoft.AppConfiguration/configurationStores' -If { IsAppConfigStandardSKU } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+Rule 'Azure.AppConfig.PurgeProtect' -Ref 'AZR-000313' -Type 'Microsoft.AppConfiguration/configurationStores' -If { IsAppConfigStandardSKU } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.enablePurgeProtection', $true).Reason($LocalizedData.AppConfigPurgeProtection, $TargetObject.name)
 }
 

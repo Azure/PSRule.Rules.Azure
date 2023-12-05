@@ -132,6 +132,7 @@ resource logs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
 ## LINKS
 
 - [Security logs and alerts using Azure services](https://learn.microsoft.com/azure/architecture/framework/security/monitor-logs-alerts)
+- [LT-4: Enable logging for security investigation](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline#lt-4-enable-logging-for-security-investigation)
 - [Best practices to use Key Vault](https://learn.microsoft.com/azure/key-vault/general/best-practices)
 - [Azure Key Vault logging](https://learn.microsoft.com/azure/key-vault/general/logging)
 - [Azure Key Vault security](https://learn.microsoft.com/azure/key-vault/general/security-features#logging-and-monitoring)

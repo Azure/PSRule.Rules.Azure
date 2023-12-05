@@ -77,5 +77,5 @@ resource afd_classic 'Microsoft.Network/frontDoors@2021-06-01' = {
 
 ## LINKS
 
-- [Checklist - Optimize cost](https://learn.microsoft.com/azure/architecture/framework/cost/optimize-checklist)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors#frontdoorproperties)
+- [Design review checklist for Cost Optimization](https://learn.microsoft.com/azure/well-architected/cost-optimization/checklist)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors)
