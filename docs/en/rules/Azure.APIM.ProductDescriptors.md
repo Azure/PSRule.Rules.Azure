@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-03-05
+reviewed: 2023-21-05
 severity: Awareness
 pillar: Operational Excellence
-category: Instrumentation
+category: OE:04 Tools and processes
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.ProductDescriptors/
 ---
@@ -16,7 +16,7 @@ API Management products should have a display name and description.
 ## DESCRIPTION
 
 Each product created in API Management can have a display name and description set.
-Using easy to understand descriptions and metadata greatly assist identification for management and usage.
+Using easy to understand descriptions and metadata greatly assists identification for management and usage.
 
 During monitoring from service provider perspective:
 
@@ -25,6 +25,7 @@ During monitoring from service provider perspective:
 - Allows for accurate access control decisions.
 
 This information is visible within the developer portal.
+Accurate information can be used to assist developers in understanding the purpose of a product.
 
 ## RECOMMENDATION
 
@@ -45,7 +46,7 @@ For example:
 ```json
 {
   "type": "Microsoft.ApiManagement/service/products",
-  "apiVersion": "2021-08-01",
+  "apiVersion": "2022-08-01",
   "name": "[format('{0}/{1}', parameters('name'), 'echo')]",
   "properties": {
     "displayName": "Echo",
@@ -69,7 +70,7 @@ To deploy API Management Products that pass this rule:
 For example:
 
 ```bicep
-resource product 'Microsoft.ApiManagement/service/products@2021-08-01' = {
+resource product 'Microsoft.ApiManagement/service/products@2022-08-01' = {
   parent: service
   name: 'echo'
   properties: {
@@ -83,6 +84,7 @@ resource product 'Microsoft.ApiManagement/service/products@2021-08-01' = {
 
 ## LINKS
 
-- [Human-readable data](https://learn.microsoft.com/azure/architecture/framework/devops/monitor-instrument#human-readable-data)
-- [Create and publish a product](https://learn.microsoft.com/azure/api-management/api-management-howto-add-products?tabs=azure-portal)
+- [OE:04 Tools and processes](https://learn.microsoft.com/azure/well-architected/operational-excellence/tools-processes)
+- [Design review checklist for Operational Excellence](https://learn.microsoft.com/azure/well-architected/operational-excellence/checklist)
+- [Create and publish a product](https://learn.microsoft.com/azure/api-management/api-management-howto-add-products)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/products)

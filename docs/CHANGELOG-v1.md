@@ -33,8 +33,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since v1.31.3:
 
 - General improvements:
-  - Updates to documentation by @BernieWhite.
+  - Quality updates to documentation by @BernieWhite.
     [#2557](https://github.com/Azure/PSRule.Rules.Azure/issues/2557)
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+    [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.8.0.
     [#2527](https://github.com/Azure/PSRule.Rules.Azure/pull/2527)

@@ -1,8 +1,8 @@
 ---
-reviewed: 2022/01/22
+reviewed: 2022-01-22
 severity: Important
 pillar: Cost Optimization
-category: Reports
+category: CO:14 Consolidation
 resource: Service Bus
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceBus.Usage/
 ---
@@ -29,5 +29,6 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
-- [Generate cost reports](https://learn.microsoft.com/azure/architecture/framework/cost/monitor-reports)
+- [CO:14 Consolidation](https://learn.microsoft.com/azure/well-architected/cost-optimization/consolidation)
+- [Design review checklist for Cost Optimization](https://learn.microsoft.com/azure/well-architected/cost-optimization/checklist)
 - [Pricing](https://azure.microsoft.com/pricing/details/service-bus/)
