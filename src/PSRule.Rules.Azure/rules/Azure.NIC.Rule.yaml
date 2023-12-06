@@ -1,0 +1,82 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Network Interfaces
+#
+
+#region Rules
+
+---
+# Synopsis: Network interfaces (NICs) that are not used should be removed.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.NIC.Attached
+  ref: AZR-000257
+  alias:
+    - Azure.VM.NICAttached
+  tags:
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Cost Optimization
+spec:
+  type:
+  - Microsoft.Network/networkInterfaces
+  with:
+  - Azure.Resource.Export
+  condition:
+    anyOf:
+      - field: properties.virtualMachine.id
+        hasValue: true
+      - field: properties.privateEndpoint.id
+        hasValue: true
+      - field: properties.privateLinkService.id
+        hasValue: true
+
+---
+# Synopsis: Network interfaces (NICs) should inherit DNS from virtual networks.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.NIC.UniqueDns
+  ref: AZR-000258
+  alias:
+  - Azure.VM.UniqueDns
+  tags:
+    release: 'GA'
+    ruleSet: '2020_06'
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+  - Microsoft.Network/networkInterfaces
+  condition:
+    field: properties.dnsSettings.dnsServers
+    hasValue: false
+
+---
+# Synopsis: Network Interface (NIC) names should meet naming requirements.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.NIC.Name
+  ref: AZR-000259
+  alias:
+  - Azure.VM.NICName
+  tags:
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+  - Microsoft.Network/networkInterfaces
+  condition:
+    allOf:
+    - name: '.'
+      greaterOrEquals: 1
+    - name: '.'
+      lessOrEquals: 80
+    - name: '.'
+      match: '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
+
+#endregion Rules

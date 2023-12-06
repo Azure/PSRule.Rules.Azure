@@ -187,32 +187,6 @@ Rule 'Azure.VM.ASName' -Ref 'AZR-000256' -Type 'Microsoft.Compute/availabilitySe
 
 #endregion Availability set
 
-#region Network Interface
-
-# Synopsis: Network interfaces (NICs) should be attached.
-Rule 'Azure.VM.NICAttached' -Ref 'AZR-000257' -Type 'Microsoft.Network/networkInterfaces' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    $Assert.AnyOf(
-        $Assert.HasFieldValue($TargetObject, 'Properties.virtualMachine.id'),
-        $Assert.HasFieldValue($TargetObject, 'Properties.privateEndpoint.id')
-    )
-}
-
-# Synopsis: Use NIC naming requirements
-Rule 'Azure.VM.NICName' -Ref 'AZR-000259' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
-
-    # Between 1 and 80 characters long
-    $Assert.GreaterOrEqual($TargetObject, 'Name', 1)
-    $Assert.LessOrEqual($TargetObject, 'Name', 80)
-
-    # Alphanumerics, underscores, periods, and hyphens
-    # Start with alphanumeric
-    # End with alphanumeric or underscore
-    Match 'Name' '^[A-Za-z0-9]((-|\.)*\w){0,79}$'
-}
-
-#endregion Network Interface
-
 #region Proximity Placement Groups
 
 # Synopsis: Use Proximity Placement Groups naming requirements

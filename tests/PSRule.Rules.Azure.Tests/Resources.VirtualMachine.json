@@ -2172,5 +2172,52 @@
       }
     ],
     "PowerState": "PowerState/stopped"
+  },
+  {
+    "name": "private-link.nic.00000000-0000-0000-0000-000000000000",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkInterfaces/private-link.nic.00000000-0000-0000-0000-000000000000",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "ipConfigurations": [
+        {
+          "name": "snet-test",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkInterfaces/private-link.nic.00000000-0000-0000-0000-000000000000/ipConfigurations/snet-test",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.1.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/vnet-test-001"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4"
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": [],
+        "appliedDnsServers": [],
+        "internalDomainNameSuffix": "nnnnn.bx.internal.cloudapp.net"
+      },
+      "macAddress": "",
+      "enableAcceleratedNetworking": false,
+      "vnetEncryptionSupported": false,
+      "enableIPForwarding": false,
+      "disableTcpStateTracking": false,
+      "hostedWorkloads": [],
+      "tapConfigurations": [],
+      "privateLinkService": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/privateLinkServices/private-link"
+      },
+      "nicType": "Standard",
+      "allowPort25Out": true,
+      "auxiliaryMode": "None",
+      "auxiliarySku": "None"
+    },
+    "type": "Microsoft.Network/networkInterfaces",
+    "location": "region",
+    "kind": "Regular",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]

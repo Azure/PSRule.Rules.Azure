@@ -188,22 +188,6 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D';
         }
 
-        It 'Azure.VM.UniqueDns' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.UniqueDns' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'nic-A', 'nic-B', 'nic-C';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-nic-1', 'aks-agentpool-00000000-nic-2', 'aks-agentpool-00000000-nic-3', 'pe-001';
-        }
-
         It 'Azure.VM.DiskAttached' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.DiskAttached' };
 
@@ -459,22 +443,6 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -Be 'vm-A', 'vm-E', 'vm-F';
-        }
-
-        It 'Azure.VM.NICAttached' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.NICAttached' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'nic-C';
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'nic-A', 'nic-B', 'aks-agentpool-00000000-nic-1', 'aks-agentpool-00000000-nic-2', 'aks-agentpool-00000000-nic-3', 'pe-001';
         }
 
         It 'Azure.VM.Name' {
@@ -884,55 +852,6 @@ Describe 'Azure.VM' -Tag 'VM' {
         }
     }
 
-    Context 'Resource name - Azure.VM.NICName' {
-        BeforeAll {
-            $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
-                WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
-            }
-
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'Microsoft.Network/networkInterfaces'
-            }    
-        }
-
-        BeforeDiscovery {
-            $validNames = @(
-                'nic-001'
-                'nic-001_'
-                'NIC.001'
-                'n'
-            )
-
-            $invalidNames = @(
-                '_nic-001'
-                '-nic-001'
-                '.nic-001'
-                'nic-001-'
-                'nic-001.'
-            )
-        }
-
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.NICName';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
-
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.NICName';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
-        }
-    }
-
     Context 'Resource name - Azure.VM.PPGName' {
         BeforeAll {
             $invokeParams = @{
@@ -1127,20 +1046,6 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult | Should -BeNullOrEmpty;
         }
 
-        It 'Azure.VM.UniqueDns' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.UniqueDns' };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vm-A-nic1';
-        }
-
         It 'Azure.VM.DiskAttached' {
             $filteredResult = $result | Where-Object {
                 $_.RuleName -eq 'Azure.VM.DiskAttached' -and
@@ -1298,27 +1203,6 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B';
-        }
-
-        It 'Azure.VM.NICAttached' {
-            $filteredResult = $result | Where-Object {
-                $_.RuleName -eq 'Azure.VM.NICAttached' -and
-                $_.TargetType -eq 'Microsoft.Network/networkInterfaces'
-            };
-
-            # Fail
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -BeNullOrEmpty;
-
-            # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -BeNullOrEmpty;
-
-            # None
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'vm-A-nic1';
         }
 
         It 'Azure.VM.ScriptExtensions' {
