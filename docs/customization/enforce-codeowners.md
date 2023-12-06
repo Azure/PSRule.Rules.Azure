@@ -5,29 +5,37 @@ author: BernieWhite
 
 # Enforcing code ownership
 
-With PSRule, you can layer on custom rules with to implement organization specific requirements.
-These custom rules work side-by-side with PSRule for Azure.
+!!! Abstract
+    The following scenario _extends_ on existing code ownership features available in your tool of choice.
+    This topic covers static analysis testing for the content (specific Azure resource) within file paths.
+    This allows you to:
 
-Pull requests are a key concept within common Git workflows used with DevOps to enforce peer review.
-To support peer review across a team tools such as GitHub and Azure DevOps provide code ownership.
-Code ownership, allows mix discipline teams to direct peer reviews based the path of a changed file.
+    - Identify if specific Azure resource types are added to file paths they shouldn't be.
 
-For sensitive changes such as firewall or policy exemptions, peer reviews may form a security control.
-In these cases, it may be important that specific paths are used for Infrastructure as Code artifacts.
+Pull requests (PRs) are a key concept within common Git workflows and DevOps culture to enforce peer review.
+Code ownership provides a mechanism to require one or more specific people review changes prior to merging a PR.
+
+For Git repositories in GitHub and Azure Repos, code ownership is controlled based on file path.
+If a person or team owns a file or file path they are required to review the changes proposed in the PR.
+The specifics of how many approvals and if approval is optional vs required is controlled by branch protection/ policies.
+
+In the context of Azure Infrastructure as Code (IaC) - Azure Bicep/ ARM templates, these changes may:
+
+- Add, change, or remove infrastructure components.
+- Include sensitive changes such as updates to firewall rules or policy exemptions.
+- Introduce concerns that sentitive changes could be moved to a different file path to bypass review by a specific team.
+
+PSRule allows teams to layer on additional rules to ensure Azure resources fall within the paths expected by code ownership.
 
 !!! Info
     Code ownership is implemented through [CODEOWNERS][1] in GitHub and [required reviewers][2] in Azure Repos.
-
-!!! Abstract
-    The following scenario shows how to create a custom rule to validate the file path of code artifacts.
-    The scenario walks you through the process so that you can apply the same concepts for similar requirements.
 
   [1]: https://docs.github.com/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
   [2]: https://learn.microsoft.com/azure/devops/repos/git/branch-policies#automatically-include-code-reviewers
 
 ## Creating a new rule
 
-Within the `.ps-rule` sub-directory create a new file called `Org.Azure.Rule.ps1`.
+Within the `.ps-rule/` sub-directory create a new file called `Org.Azure.Rule.ps1`.
 Use the following snippet to populate the rule file:
 
 ```powershell
@@ -66,7 +74,7 @@ To configure type binding:
 - Create/ update the `ps-rule.yaml` file within the root of the repository.
 - Add the following configuration snippet.
 
-```yaml
+```yaml title="ps-rule.yaml"
 # Configure binding options
 binding:
   targetType:
@@ -87,8 +95,9 @@ If neither property exists, PSRule will use the object type.
 To test the custom rule within Visual Studio Code, see [How to install PSRule for Azure][4].
 Alternatively you can test the rule manually by running the following from a PowerShell terminal.
 
-```powershell
-Assert-PSRule -Path '.ps-rule/' -Module 'PSRule.Rules.Azure' -InputPath . -Format File
+```powershell title="PowerShell"
+Assert-PSRule -Path '.ps-rule/' -Module 'PSRule.Rules.Azure' `
+  -InputPath . -Format File
 ```
 
   [4]: ../install.md#with-visual-studio-code
