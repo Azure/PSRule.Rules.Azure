@@ -25,9 +25,26 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   Update PowerShell rules to use the `Azure.Resource.SupportsTags` selector instead.
   Support for the `SupportsTag` function will be removed in v2.
   See [upgrade notes][1] for more information.
+- Renamed network interface rules to reflect current usage.
+  If you have excluded or suppressed these rules, please update your configuration to reference the new names.
+  Support for the old names will be removed in v2.
+  See [upgrade notes][1] for more information.
 
 ## Unreleased
 
+What's changed since pre-release v1.32.0-B0021:
+
+- Updated rules:
+  - Network Interface:
+    - **Important change**: Renamed NIC rules to reflect current usage by @BernieWhite.
+      [#2574](https://github.com/Azure/PSRule.Rules.Azure/issues/2574)
+      - Rename `Azure.VM.NICAttached` to `Azure.NIC.Attached`.
+      - Rename `Azure.VM.NICName` to `Azure.NIC.Name`.
+      - Rename `Azure.VM.UniqueDns` to `Azure.NIC.UniqueDns`.
+      - Added aliases to reference the old names for suppression and exclusion.
+      - Old names will be removed from v2.
+    - Added support for private link services to `Azure.VM.NICAttached` by @BernieWhite.
+      [#2563](https://github.com/Azure/PSRule.Rules.Azure/issues/2563)
 - General improvements:
   - Quality updates to documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
