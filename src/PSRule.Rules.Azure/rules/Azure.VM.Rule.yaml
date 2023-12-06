@@ -93,24 +93,6 @@ spec:
     equals: aligned
 
 ---
-# Synopsis: Network interfaces (NICs) should inherit DNS from virtual networks.
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Rule
-metadata:
-  name: Azure.VM.UniqueDns
-  ref: AZR-000258
-  tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: Operational Excellence
-spec:
-  type:
-  - Microsoft.Network/networkInterfaces
-  condition:
-    field: properties.dnsSettings.dnsServers
-    hasValue: false
-
----
 # Synopsis: VMs should be deallocated instead of stopped.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule

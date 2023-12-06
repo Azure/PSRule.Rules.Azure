@@ -79,6 +79,33 @@ To update your configuration, use the new name instead.
       value: '1.27.3'
     ```
 
+### Realignment of rule names for network interfaces
+
+Orginally when many of the rules targeting network interfaces were created, network interfaces only applied to virtual machines.
+Today, network interfaces can be attached to different types of resources including:
+
+- Virtual machines.
+- Private endpoints.
+- Private link services.
+
+To better reflect that network interfaces are not only related to VMs, the following rules have been renamed:
+
+- From `Azure.VM.NICAttached` to `Azure.NIC.Attached`.
+- From `Azure.VM.NICName` to `Azure.NIC.Name`.
+- From `Azure.VM.UniqueDns` to `Azure.NIC.UniqueDns`.
+
+Aliases have been added to ensure any existing suppression and exclusion to these rules continues to work.
+
+From _v2.0.0_ these aliases will no longer work.
+
+To update your configuration, use the new rule names instead.
+Possible locations where the old rule names may be used include:
+
+- Within the `suppression` option defined within `ps-rule.yaml` or by using `New-PSRuleOption`.
+- Within the `rule.exclude` or `rule.include` option defined within `ps-rule.yaml` or by using `New-PSRuleOption`.
+- Within the `rule.exclude` or `rule.include` option defined within a custom baseline.
+- Other custom scripts that run PSRule cmdlets directly.
+
 ### Removal of SupportsTags function
 
 The `SupportsTags` function is a PowerShell function used for filtering rules.
