@@ -23,6 +23,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -105,6 +106,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -242,7 +244,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
@@ -409,6 +415,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -546,7 +553,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
@@ -889,7 +900,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
@@ -1315,6 +1330,7 @@
     },
     "resourceType": "diskAccesses",
     "apiVersions": [
+      "2023-10-02",
       "2023-04-02",
       "2023-01-02",
       "2022-07-02",
@@ -1402,6 +1418,7 @@
     },
     "resourceType": "diskEncryptionSets",
     "apiVersions": [
+      "2023-10-02",
       "2023-04-02",
       "2023-01-02",
       "2022-07-02",
@@ -1468,6 +1485,7 @@
       "Microsoft.Compute/disks/completionPercent": "properties.completionPercent",
       "Microsoft.Compute/disks/creationData": "properties.creationData",
       "Microsoft.Compute/disks/creationData.createOption": "properties.creationData.createOption",
+      "Microsoft.Compute/disks/creationData.elasticSanResourceId": "properties.creationData.elasticSanResourceId",
       "Microsoft.Compute/disks/creationData.galleryImageReference": "properties.creationData.galleryImageReference",
       "Microsoft.Compute/disks/creationData.galleryImageReference.communityGalleryImageId": "properties.creationData.galleryImageReference.communityGalleryImageId",
       "Microsoft.Compute/disks/creationData.galleryImageReference.id": "properties.creationData.galleryImageReference.id",
@@ -1522,6 +1540,7 @@
       "Microsoft.Compute/disks/encryptionSettingsCollection.encryptionSettings[*].keyEncryptionKey.sourceVault.id": "properties.encryptionSettingsCollection.encryptionSettings[*].keyEncryptionKey.sourceVault.id",
       "Microsoft.Compute/disks/encryptionSettingsCollection.encryptionSettingsVersion": "properties.encryptionSettingsCollection.encryptionSettingsVersion",
       "Microsoft.Compute/disks/hyperVGeneration": "properties.hyperVGeneration",
+      "Microsoft.Compute/disks/LastOwnershipUpdateTime": "properties.LastOwnershipUpdateTime",
       "Microsoft.Compute/disks/managedBy": "managedBy",
       "Microsoft.Compute/disks/maxShares": "properties.maxShares",
       "Microsoft.Compute/disks/networkAccessPolicy": "properties.networkAccessPolicy",
@@ -1564,6 +1583,7 @@
     },
     "resourceType": "disks",
     "apiVersions": [
+      "2023-10-02",
       "2023-04-02",
       "2023-01-02",
       "2022-07-02",
@@ -1709,7 +1729,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
@@ -2445,6 +2469,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -2586,7 +2611,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
@@ -2753,6 +2782,7 @@
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -2894,7 +2924,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
@@ -3079,6 +3113,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -3149,6 +3184,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -3385,6 +3421,7 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-03",
       "2023-07-01",
       "2023-03-01",
@@ -3608,6 +3645,7 @@
     "aliases": null,
     "resourceType": "locations/diskoperations",
     "apiVersions": [
+      "2023-10-02",
       "2023-04-02",
       "2023-01-02",
       "2022-07-02",
@@ -3676,6 +3714,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -3694,6 +3733,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -3753,6 +3793,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/vmimages",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -3873,6 +3914,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -3940,6 +3982,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4014,6 +4057,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-03",
       "2023-07-01",
       "2023-03-01",
@@ -4092,6 +4136,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4148,6 +4193,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4216,6 +4262,7 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-03",
       "2023-07-01",
       "2023-03-01",
@@ -4294,6 +4341,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4354,6 +4402,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4414,6 +4463,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4487,6 +4537,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4556,6 +4607,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4625,6 +4677,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4698,6 +4751,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4810,6 +4864,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -4953,7 +5008,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
@@ -5257,6 +5316,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -5471,6 +5531,7 @@
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -5539,6 +5600,7 @@
     "aliases": null,
     "resourceType": "restorePointCollections/restorePoints/diskRestorePoints",
     "apiVersions": [
+      "2023-10-02",
       "2023-04-02",
       "2023-01-02",
       "2022-07-02",
@@ -5678,6 +5740,7 @@
       "Microsoft.Compute/snapshots/copyCompletionError.errorMessage": "properties.copyCompletionError.errorMessage",
       "Microsoft.Compute/snapshots/creationData": "properties.creationData",
       "Microsoft.Compute/snapshots/creationData.createOption": "properties.creationData.createOption",
+      "Microsoft.Compute/snapshots/creationData.elasticSanResourceId": "properties.creationData.elasticSanResourceId",
       "Microsoft.Compute/snapshots/creationData.galleryImageReference": "properties.creationData.galleryImageReference",
       "Microsoft.Compute/snapshots/creationData.galleryImageReference.communityGalleryImageId": "properties.creationData.galleryImageReference.communityGalleryImageId",
       "Microsoft.Compute/snapshots/creationData.galleryImageReference.id": "properties.creationData.galleryImageReference.id",
@@ -5757,6 +5820,7 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2023-10-02",
       "2023-04-02",
       "2023-01-02",
       "2022-07-02",
@@ -5827,6 +5891,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -5941,6 +6006,8 @@
       "Microsoft.Compute/virtualMachines/networkProfile.networkApiVersion": "properties.networkProfile.networkApiVersion",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations": "properties.networkProfile.networkInterfaceConfigurations",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*]": "properties.networkProfile.networkInterfaceConfigurations[*]",
+      "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].auxiliaryMode": "properties.networkProfile.networkInterfaceConfigurations[*].properties.auxiliaryMode",
+      "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].auxiliarySku": "properties.networkProfile.networkInterfaceConfigurations[*].properties.auxiliarySku",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].deleteOption": "properties.networkProfile.networkInterfaceConfigurations[*].properties.deleteOption",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].disableTcpStateTracking": "properties.networkProfile.networkInterfaceConfigurations[*].properties.disableTcpStateTracking",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].dnsSettings": "properties.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings",
@@ -5969,6 +6036,7 @@
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.deleteOption": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.deleteOption",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings.domainNameLabel": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings.domainNameLabel",
+      "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings.domainNameLabelScope": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings.domainNameLabelScope",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.idleTimeoutInMinutes": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.idleTimeoutInMinutes",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.ipTags": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.ipTags",
       "Microsoft.Compute/virtualMachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.ipTags[*]": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.ipTags[*]",
@@ -6149,6 +6217,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -6299,7 +6368,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
@@ -6484,6 +6557,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -6637,6 +6711,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -6698,6 +6773,7 @@
     "aliases": null,
     "resourceType": "virtualMachines/VMApplications",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -6894,6 +6970,8 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkApiVersion": "properties.virtualMachineProfile.networkProfile.networkApiVersion",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*]": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*]",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].auxiliaryMode": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.auxiliaryMode",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].auxiliarySku": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.auxiliarySku",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].deleteOption": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.deleteOption",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].disableTcpStateTracking": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.disableTcpStateTracking",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].dnsSettings": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings",
@@ -6925,6 +7003,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.deleteOption": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.deleteOption",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings.domainNameLabel": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings.domainNameLabel",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings.domainNameLabelScope": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings.domainNameLabelScope",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.idleTimeoutInMinutes": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.idleTimeoutInMinutes",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.ipTags": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.ipTags",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.ipTags[*]": "properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.ipTags[*]",
@@ -7094,6 +7173,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -7245,7 +7325,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
@@ -7397,6 +7481,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/applications",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -7453,6 +7538,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/disks",
     "apiVersions": [
+      "2023-10-02",
       "2023-04-02",
       "2023-01-02",
       "2022-07-02",
@@ -7540,6 +7626,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -7614,6 +7701,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -7690,6 +7778,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -7784,6 +7873,8 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkApiVersion": "properties.networkProfile.networkApiVersion",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations": "properties.networkProfile.networkInterfaceConfigurations",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*]": "properties.networkProfile.networkInterfaceConfigurations[*]",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].auxiliaryMode": "properties.networkProfile.networkInterfaceConfigurations[*].properties.auxiliaryMode",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].auxiliarySku": "properties.networkProfile.networkInterfaceConfigurations[*].properties.auxiliarySku",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].deleteOption": "properties.networkProfile.networkInterfaceConfigurations[*].properties.deleteOption",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].disableTcpStateTracking": "properties.networkProfile.networkInterfaceConfigurations[*].properties.disableTcpStateTracking",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].dnsSettings": "properties.networkProfile.networkInterfaceConfigurations[*].properties.dnsSettings",
@@ -7812,6 +7903,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.deleteOption": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.deleteOption",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings.domainNameLabel": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings.domainNameLabel",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings.domainNameLabelScope": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings.domainNameLabelScope",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.idleTimeoutInMinutes": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.idleTimeoutInMinutes",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.ipTags": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.ipTags",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfile.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.ipTags[*]": "properties.networkProfile.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.ipTags[*]",
@@ -7839,6 +7931,8 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration": "properties.networkProfileConfiguration",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations": "properties.networkProfileConfiguration.networkInterfaceConfigurations",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*]": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*]",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfileConfiguration.networkInterfaceConfigurations[*].auxiliaryMode": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.auxiliaryMode",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfileConfiguration.networkInterfaceConfigurations[*].auxiliarySku": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.auxiliarySku",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfileConfiguration.networkInterfaceConfigurations[*].deleteOption": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.deleteOption",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfileConfiguration.networkInterfaceConfigurations[*].disableTcpStateTracking": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.disableTcpStateTracking",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].dnsSettings": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.dnsSettings",
@@ -7868,6 +7962,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.deleteOption": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.deleteOption",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings.domainNameLabel": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings.domainNameLabel",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.dnsSettings.domainNameLabelScope": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.dnsSettings.domainNameLabelScope",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.idleTimeoutInMinutes": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.idleTimeoutInMinutes",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.ipTags": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.ipTags",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/networkProfileConfiguration.networkInterfaceConfigurations[*].ipConfigurations[*].publicIPAddressConfiguration.ipTags[*]": "properties.networkProfileConfiguration.networkInterfaceConfigurations[*].properties.ipConfigurations[*].properties.publicIPAddressConfiguration.properties.ipTags[*]",
@@ -8025,6 +8120,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.vhd": "properties.storageProfile.osDisk.vhd",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.vhd.uri": "properties.storageProfile.osDisk.vhd.uri",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.osDisk.writeAcceleratorEnabled": "properties.storageProfile.osDisk.writeAcceleratorEnabled",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/timeCreated": "properties.timeCreated",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/userData": "properties.userData",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/vmId": "properties.vmId",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/zones": "zones",
@@ -8032,6 +8128,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -8123,6 +8220,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",
@@ -8197,6 +8295,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2023-09-01",
       "2023-07-01",
       "2023-03-01",
       "2022-11-01",

@@ -3,16 +3,22 @@
     "aliases": null,
     "resourceType": "AvailabilitySets",
     "apiVersions": [
-      "2023-04-01-preview",
-      "2022-05-21-preview",
-      "2020-06-05-preview"
+      "2023-10-07",
+      "2023-04-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -20,16 +26,22 @@
     "aliases": null,
     "resourceType": "Clouds",
     "apiVersions": [
-      "2023-04-01-preview",
-      "2022-05-21-preview",
-      "2020-06-05-preview"
+      "2023-10-07",
+      "2023-04-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -37,6 +49,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-10-07",
       "2023-04-01-preview",
       "2022-05-21-preview",
       "2020-06-05-preview"
@@ -48,17 +61,25 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-10-07",
       "2023-04-01-preview",
       "2022-05-21-preview",
       "2020-06-05-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central US",
       "East US",
       "East US 2",
       "East US 2 EUAP",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -66,6 +87,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-07",
       "2023-04-01-preview",
       "2022-05-21-preview",
       "2020-06-05-preview"
@@ -77,14 +99,22 @@
     "aliases": null,
     "resourceType": "VirtualMachineInstances",
     "apiVersions": [
+      "2023-10-07",
       "2023-04-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -114,7 +144,10 @@
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -127,7 +160,10 @@
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -140,7 +176,10 @@
     ],
     "locations": [
       "East US",
-      "West Europe"
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": null
   },
@@ -148,16 +187,22 @@
     "aliases": null,
     "resourceType": "VirtualMachineTemplates",
     "apiVersions": [
-      "2023-04-01-preview",
-      "2022-05-21-preview",
-      "2020-06-05-preview"
+      "2023-10-07",
+      "2023-04-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -165,16 +210,22 @@
     "aliases": null,
     "resourceType": "VirtualNetworks",
     "apiVersions": [
-      "2023-04-01-preview",
-      "2022-05-21-preview",
-      "2020-06-05-preview"
+      "2023-10-07",
+      "2023-04-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -182,16 +233,22 @@
     "aliases": null,
     "resourceType": "VMMServers",
     "apiVersions": [
-      "2023-04-01-preview",
-      "2022-05-21-preview",
-      "2020-06-05-preview"
+      "2023-10-07",
+      "2023-04-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   },
@@ -199,16 +256,22 @@
     "aliases": null,
     "resourceType": "VMMServers/InventoryItems",
     "apiVersions": [
-      "2023-04-01-preview",
-      "2022-05-21-preview",
-      "2020-06-05-preview"
+      "2023-10-07",
+      "2023-04-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central US",
       "East US",
       "East US 2",
       "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   }

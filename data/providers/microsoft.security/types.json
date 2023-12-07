@@ -140,6 +140,7 @@
     "aliases": null,
     "resourceType": "apiCollections",
     "apiVersions": [
+      "2023-11-15",
       "2022-11-20-preview"
     ],
     "locations": [],
@@ -395,6 +396,7 @@
     },
     "resourceType": "automations",
     "apiVersions": [
+      "2023-12-01-preview",
       "2019-01-01-preview"
     ],
     "locations": [
@@ -1741,15 +1743,13 @@
     },
     "resourceType": "pricings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-01-01",
       "2022-03-01",
       "2018-06-01",
       "2017-08-01-preview"
     ],
-    "locations": [
-      "Central US",
-      "East US"
-    ],
+    "locations": [],
     "zoneMappings": null
   },
   {
@@ -1899,11 +1899,8 @@
     "aliases": null,
     "resourceType": "securityConnectors",
     "apiVersions": [
-      "2023-03-01-preview",
-      "2022-08-01-preview",
-      "2022-05-01-preview",
-      "2021-12-01-preview",
-      "2021-07-01-preview"
+      "2023-10-01-preview",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia Central",
@@ -1936,6 +1933,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UAE Central",
@@ -1946,7 +1944,27 @@
       "West Europe",
       "West India",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "securityConnectors/devops",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "East Asia",
+      "East US",
+      "North Europe",
+      "Sweden Central",
+      "UK South",
+      "West Europe"
     ],
     "zoneMappings": null
   },
@@ -1966,6 +1984,7 @@
     },
     "resourceType": "securityContacts",
     "apiVersions": [
+      "2023-12-01-preview",
       "2020-01-01-preview",
       "2017-08-01-preview"
     ],
@@ -2128,6 +2147,8 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",

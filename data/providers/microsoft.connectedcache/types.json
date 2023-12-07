@@ -30,6 +30,7 @@
     "aliases": null,
     "resourceType": "enterpriseMccCustomers",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [
@@ -43,6 +44,7 @@
     "aliases": null,
     "resourceType": "enterpriseMccCustomers/enterpriseMccCacheNodes",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [
@@ -56,6 +58,7 @@
     "aliases": null,
     "resourceType": "ispCustomers",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
@@ -68,8 +71,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "ispCustomers/ispcachenodes",
+    "resourceType": "ispCustomers/ispCacheNodes",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
@@ -84,6 +88,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
@@ -94,6 +99,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
@@ -108,6 +114,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],

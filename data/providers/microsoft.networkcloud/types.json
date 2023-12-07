@@ -4,8 +4,7 @@
     "resourceType": "bareMetalMachines",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -19,8 +18,7 @@
     "resourceType": "cloudServicesNetworks",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -34,8 +32,7 @@
     "resourceType": "clusterManagers",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -49,8 +46,7 @@
     "resourceType": "clusters",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -73,8 +69,7 @@
     "resourceType": "clusters/bareMetalMachineKeySets",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -88,8 +83,7 @@
     "resourceType": "clusters/bmcKeySets",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -103,34 +97,7 @@
     "resourceType": "clusters/metricsConfigurations",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
-    ],
-    "locations": [
-      "East US",
-      "South Central US",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "defaultCniNetworks",
-    "apiVersions": [
-      "2022-12-12-preview"
-    ],
-    "locations": [
-      "East US",
-      "South Central US",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "hybridAksClusters",
-    "apiVersions": [
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -172,8 +139,7 @@
     "resourceType": "l2Networks",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -187,8 +153,7 @@
     "resourceType": "l3Networks",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -201,9 +166,9 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "global"
@@ -215,8 +180,7 @@
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -229,9 +193,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "global"
@@ -243,8 +207,7 @@
     "resourceType": "racks",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -258,8 +221,7 @@
     "resourceType": "rackSkus",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -272,9 +234,9 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "global"
@@ -286,8 +248,7 @@
     "resourceType": "storageAppliances",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -301,8 +262,7 @@
     "resourceType": "trunkedNetworks",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -316,8 +276,7 @@
     "resourceType": "virtualMachines",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -331,8 +290,7 @@
     "resourceType": "virtualMachines/consoles",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",
@@ -346,8 +304,7 @@
     "resourceType": "volumes",
     "apiVersions": [
       "2023-07-01",
-      "2023-05-01-preview",
-      "2022-12-12-preview"
+      "2023-05-01-preview"
     ],
     "locations": [
       "East US",

@@ -1,6 +1,87 @@
 [
   {
     "aliases": null,
+    "resourceType": "groupQuotas",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/groupQuotaLimits",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/groupQuotaOperationsStatus",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/groupQuotaRequests",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/quotaAllocationOperationsStatus",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/quotaAllocationRequests",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/quotaAllocations",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/subscriptionRequests",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/subscriptions",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2023-02-01",
@@ -13,6 +94,7 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2023-02-01",
       "2021-03-15-preview"
     ],
     "locations": [],
@@ -22,6 +104,7 @@
     "aliases": null,
     "resourceType": "quotaRequests",
     "apiVersions": [
+      "2023-02-01",
       "2021-03-15-preview"
     ],
     "locations": [],
@@ -31,6 +114,7 @@
     "aliases": null,
     "resourceType": "quotas",
     "apiVersions": [
+      "2023-02-01",
       "2021-03-15-preview"
     ],
     "locations": [],
@@ -40,6 +124,7 @@
     "aliases": null,
     "resourceType": "usages",
     "apiVersions": [
+      "2023-02-01",
       "2021-03-15-preview"
     ],
     "locations": [],

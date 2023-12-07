@@ -1,18 +1,15 @@
 [
   {
     "aliases": null,
-    "resourceType": "listinvitations",
+    "resourceType": "instances",
     "apiVersions": [
-      "2022-05-04-preview",
-      "2020-05-04-preview"
+      "2023-10-04-preview"
     ],
     "locations": [
-      "Australia East",
       "East US",
       "East US 2",
       "North Europe",
       "Southeast Asia",
-      "UK South",
       "West Europe",
       "West US",
       "West US 2",
@@ -24,68 +21,28 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2022-05-04-preview",
-      "2020-05-04-preview"
+      "2023-10-04-preview"
     ],
     "locations": [
-      "Australia East"
+      "global"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "locations/consumerInvitations",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
-      "2022-05-04-preview",
-      "2020-05-04-preview"
+      "2023-10-04-preview"
     ],
     "locations": [
-      "Australia East",
       "East US",
       "East US 2",
       "North Europe",
       "Southeast Asia",
-      "UK South",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/consumerInvitations/reject",
-    "apiVersions": [
-      "2022-05-04-preview",
-      "2020-05-04-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "Southeast Asia",
-      "UK South",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/operationResults",
-    "apiVersions": [
-      "2022-05-04-preview",
-      "2020-05-04-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "East US",
-      "North Europe",
-      "Southeast Asia"
     ],
     "zoneMappings": null
   },
@@ -93,11 +50,44 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2022-05-04-preview",
-      "2020-05-04-preview"
+      "2023-10-04-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "solutions",
+    "apiVersions": [
+      "2023-10-04-preview"
     ],
     "locations": [
-      "Australia East"
+      "East US",
+      "East US 2",
+      "North Europe",
+      "Southeast Asia",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "targets",
+    "apiVersions": [
+      "2023-10-04-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Europe",
+      "Southeast Asia",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": null
   }

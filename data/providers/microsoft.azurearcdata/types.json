@@ -34,6 +34,8 @@
     },
     "resourceType": "DataControllers",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-16-preview",
       "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview",
@@ -100,6 +102,8 @@
     },
     "resourceType": "DataControllers/ActiveDirectoryConnectors",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-16-preview",
       "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview"
@@ -136,6 +140,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",
@@ -152,6 +157,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",
@@ -196,6 +202,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",
@@ -227,6 +234,8 @@
     },
     "resourceType": "PostgresInstances",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-16-preview",
       "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview",
@@ -314,6 +323,8 @@
     },
     "resourceType": "SqlManagedInstances",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-16-preview",
       "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview",
@@ -364,6 +375,8 @@
     },
     "resourceType": "SqlManagedInstances/FailoverGroups",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-16-preview",
       "2023-01-15-preview"
     ],
     "locations": [
@@ -418,6 +431,7 @@
     },
     "resourceType": "SqlServerInstances",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",
@@ -459,6 +473,7 @@
     "aliases": null,
     "resourceType": "SqlServerInstances/AvailabilityGroups",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview"
     ],
@@ -516,6 +531,7 @@
     },
     "resourceType": "SqlServerInstances/Databases",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",

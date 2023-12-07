@@ -1,6 +1,42 @@
 [
   {
     "aliases": null,
+    "resourceType": "connectors",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "connectors/acssBackups",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
       "2023-10-01-preview",
@@ -46,18 +82,26 @@
     "aliases": null,
     "resourceType": "Locations/sapVirtualInstanceMetadata",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2021-12-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
       "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null
@@ -110,18 +154,26 @@
     },
     "resourceType": "monitors",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2021-12-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
       "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null
@@ -225,18 +277,26 @@
     },
     "resourceType": "monitors/providerInstances",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2021-12-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
       "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null
@@ -264,17 +324,25 @@
     },
     "resourceType": "monitors/sapLandscapeMonitor",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
       "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null
@@ -757,18 +825,26 @@
     },
     "resourceType": "sapVirtualInstances",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2021-12-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
       "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null
@@ -812,18 +888,26 @@
     },
     "resourceType": "sapVirtualInstances/applicationInstances",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2021-12-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
       "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null
@@ -882,18 +966,26 @@
     },
     "resourceType": "sapVirtualInstances/centralInstances",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2021-12-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
       "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null
@@ -927,18 +1019,26 @@
     },
     "resourceType": "sapVirtualInstances/databaseInstances",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
       "2021-12-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
       "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Europe",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": null

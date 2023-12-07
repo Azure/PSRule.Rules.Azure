@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "bareMetalInstances",
     "apiVersions": [
+      "2023-11-01-preview",
+      "2023-08-04-preview",
       "2023-04-06",
       "2021-08-09",
       "2020-08-06-preview"
@@ -25,6 +27,8 @@
     "aliases": null,
     "resourceType": "bareMetalStorageInstances",
     "apiVersions": [
+      "2023-11-01-preview",
+      "2023-08-04-preview",
       "2023-04-06"
     ],
     "locations": [
@@ -45,6 +49,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01-preview",
+      "2023-08-04-preview",
       "2023-04-06",
       "2021-08-09",
       "2020-08-06-preview"
@@ -56,6 +62,8 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2023-11-01-preview",
+      "2023-08-04-preview",
       "2020-08-06-preview"
     ],
     "locations": [
@@ -76,6 +84,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-01-preview",
+      "2023-08-04-preview",
       "2023-04-06",
       "2021-08-09",
       "2020-08-06-preview"

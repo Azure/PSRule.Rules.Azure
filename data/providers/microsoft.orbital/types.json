@@ -119,12 +119,11 @@
   {
     "aliases": null,
     "resourceType": "locations",
-    "apiVersions": [
-      "2022-11-01"
-    ],
+    "apiVersions": [],
     "locations": [
       "Australia East",
       "Brazil South",
+      "East US",
       "Norway East",
       "South Africa North",
       "South Central US",
@@ -154,6 +153,7 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "UK South",
       "West US",
       "West US 2",
       "West US 3"
@@ -164,7 +164,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2022-11-01"
+      "2024-01-31-preview",
+      "2022-11-01",
+      "2022-03-01",
+      "2021-04-04-preview"
     ],
     "locations": [
       "Australia East",

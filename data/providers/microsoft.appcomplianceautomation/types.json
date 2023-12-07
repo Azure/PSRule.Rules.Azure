@@ -103,6 +103,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "reports/scopingConfigurations",
+    "apiVersions": [
+      "2023-02-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "reports/snapshots",
     "apiVersions": [
       "2023-02-15-preview",

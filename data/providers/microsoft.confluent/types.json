@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "agreements",
     "apiVersions": [
+      "2023-10-03-preview",
       "2023-08-22",
       "2023-07-11-preview",
       "2023-02-09-preview",
@@ -22,6 +23,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-10-03-preview",
       "2023-08-22",
       "2023-07-11-preview",
       "2023-02-09-preview",
@@ -41,6 +43,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-10-03-preview",
       "2023-08-22",
       "2023-07-11-preview",
       "2023-02-09-preview",
@@ -60,6 +63,7 @@
     "aliases": null,
     "resourceType": "locations/OperationStatuses",
     "apiVersions": [
+      "2023-10-03-preview",
       "2023-08-22",
       "2023-07-11-preview",
       "2023-02-09-preview",
@@ -108,6 +112,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-03-preview",
       "2023-08-22",
       "2023-07-11-preview",
       "2023-02-09-preview",
@@ -127,6 +132,7 @@
     "aliases": null,
     "resourceType": "organizations",
     "apiVersions": [
+      "2023-10-03-preview",
       "2023-08-22",
       "2023-07-11-preview",
       "2023-02-09-preview",
@@ -173,6 +179,7 @@
     "aliases": null,
     "resourceType": "organizations/access",
     "apiVersions": [
+      "2023-10-03-preview",
       "2023-08-22",
       "2023-07-11-preview",
       "2023-02-09-preview"
@@ -209,8 +216,45 @@
   },
   {
     "aliases": null,
+    "resourceType": "organizations/access/deleteRoleBinding",
+    "apiVersions": [
+      "2023-10-03-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea Central",
+      "North Europe",
+      "Norway East",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "validations",
     "apiVersions": [
+      "2023-10-03-preview",
       "2023-08-22",
       "2023-07-11-preview",
       "2023-02-09-preview",

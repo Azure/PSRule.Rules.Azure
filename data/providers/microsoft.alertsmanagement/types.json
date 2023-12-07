@@ -136,7 +136,6 @@
     "locations": [
       "East US",
       "Germany West Central",
-      "Global",
       "North Central US",
       "North Europe",
       "Sweden Central",
@@ -182,6 +181,40 @@
       "2017-11-15-privatepreview"
     ],
     "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "investigations",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
     "zoneMappings": null
   },
   {
@@ -247,12 +280,18 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France South",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Switzerland North",
       "UAE North",
       "UK South",
       "West Central US",

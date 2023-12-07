@@ -357,7 +357,11 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",

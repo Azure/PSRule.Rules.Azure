@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "availableStacks",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -45,6 +46,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -83,6 +85,7 @@
     "aliases": null,
     "resourceType": "billingMeters",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -126,6 +129,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -191,6 +195,7 @@
     },
     "resourceType": "certificates",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -234,6 +239,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -272,6 +278,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -315,6 +322,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -833,6 +841,7 @@
     "aliases": null,
     "resourceType": "customhostnameSites",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -872,6 +881,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -910,6 +920,7 @@
     "aliases": null,
     "resourceType": "deletedSites",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -952,6 +963,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -990,6 +1002,7 @@
     "aliases": null,
     "resourceType": "deploymentLocations",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -1031,6 +1044,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1067,19 +1081,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "freeTrialStaticWebApps",
-    "apiVersions": [
-      "2022-09-01"
-    ],
-    "locations": [
-      "East Asia (Stage)"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
     "resourceType": "functionAppStacks",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -1106,6 +1110,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1144,6 +1149,7 @@
     "aliases": null,
     "resourceType": "generateGithubAccessTokenForAppserviceCLI",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -1171,6 +1177,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1209,6 +1216,7 @@
     "aliases": null,
     "resourceType": "georegions",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -1363,6 +1371,7 @@
     },
     "resourceType": "hostingEnvironments",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -1410,6 +1419,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1514,6 +1524,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": []
       },
       {
         "location": "Italy North",
@@ -1629,6 +1643,7 @@
     "aliases": null,
     "resourceType": "hostingEnvironments/eventGridFilters",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -1676,6 +1691,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1764,6 +1780,7 @@
     },
     "resourceType": "hostingEnvironments/multiRolePools",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -1809,6 +1826,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1873,6 +1891,7 @@
     },
     "resourceType": "hostingEnvironments/workerPools",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -1918,6 +1937,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1956,6 +1976,7 @@
     "aliases": null,
     "resourceType": "ishostingenvironmentnameavailable",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -1988,6 +2009,7 @@
     "aliases": null,
     "resourceType": "ishostnameavailable",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -2030,6 +2052,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2068,6 +2091,7 @@
     "aliases": null,
     "resourceType": "isusernameavailable",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -2110,6 +2134,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2195,6 +2220,7 @@
     "aliases": null,
     "resourceType": "listSitesAssignedToHostName",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -2233,6 +2259,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2397,6 +2424,7 @@
     "aliases": null,
     "resourceType": "locations/deletedSites",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -2439,6 +2467,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2477,6 +2506,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -2522,6 +2552,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2616,6 +2647,7 @@
     "aliases": null,
     "resourceType": "locations/functionAppStacks",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -2642,6 +2674,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2680,6 +2713,7 @@
     "aliases": null,
     "resourceType": "locations/getNetworkPolicies",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -2852,6 +2886,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -2886,6 +2921,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2924,6 +2960,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -2958,6 +2995,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2996,6 +3034,7 @@
     "aliases": null,
     "resourceType": "locations/previewStaticSiteWorkflowFile",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3079,6 +3118,7 @@
     "aliases": null,
     "resourceType": "locations/validateDeleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3124,6 +3164,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3162,6 +3203,7 @@
     "aliases": null,
     "resourceType": "locations/webAppStacks",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3188,6 +3230,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3226,6 +3269,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3268,6 +3312,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3319,6 +3364,7 @@
     },
     "resourceType": "publishingUsers",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3361,6 +3407,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3399,6 +3446,7 @@
     "aliases": null,
     "resourceType": "recommendations",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3431,6 +3479,7 @@
     "aliases": null,
     "resourceType": "resourceHealthMetadata",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3463,6 +3512,7 @@
     "aliases": null,
     "resourceType": "runtimes",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3547,6 +3597,7 @@
     },
     "resourceType": "serverFarms",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3591,6 +3642,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3629,6 +3681,7 @@
     "aliases": null,
     "resourceType": "serverFarms/eventGridFilters",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3673,6 +3726,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3713,6 +3767,7 @@
     "aliases": null,
     "resourceType": "serverFarms/firstPartyApps",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3757,6 +3812,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3797,6 +3853,7 @@
     "aliases": null,
     "resourceType": "serverFarms/firstPartyApps/keyVaultSettings",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -3841,6 +3898,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3902,6 +3960,14 @@
       "Microsoft.Web/sites/containerSize": "properties.containerSize",
       "Microsoft.Web/sites/customDomainVerificationId": "properties.customDomainVerificationId",
       "Microsoft.Web/sites/dailyMemoryTimeQuota": "properties.dailyMemoryTimeQuota",
+      "Microsoft.Web/sites/daprConfig": "properties.daprConfig",
+      "Microsoft.Web/sites/daprConfig.appId": "properties.daprConfig.appId",
+      "Microsoft.Web/sites/daprConfig.appPort": "properties.daprConfig.appPort",
+      "Microsoft.Web/sites/daprConfig.enableApiLogging": "properties.daprConfig.enableApiLogging",
+      "Microsoft.Web/sites/daprConfig.enabled": "properties.daprConfig.enabled",
+      "Microsoft.Web/sites/daprConfig.httpMaxRequestSize": "properties.daprConfig.httpMaxRequestSize",
+      "Microsoft.Web/sites/daprConfig.httpReadBufferSize": "properties.daprConfig.httpReadBufferSize",
+      "Microsoft.Web/sites/daprConfig.logLevel": "properties.daprConfig.logLevel",
       "Microsoft.Web/sites/defaultHostName": "properties.defaultHostName",
       "Microsoft.Web/sites/enabled": "properties.enabled",
       "Microsoft.Web/sites/enabledHostNames": "properties.enabledHostNames",
@@ -3962,6 +4028,9 @@
       "Microsoft.Web/sites/redundancyMode": "properties.redundancyMode",
       "Microsoft.Web/sites/repositorySiteName": "properties.repositorySiteName",
       "Microsoft.Web/sites/reserved": "properties.reserved",
+      "Microsoft.Web/sites/resourceConfig": "properties.resourceConfig",
+      "Microsoft.Web/sites/resourceConfig.cpu": "properties.resourceConfig.cpu",
+      "Microsoft.Web/sites/resourceConfig.memory": "properties.resourceConfig.memory",
       "Microsoft.Web/sites/resourceGroup": "properties.resourceGroup",
       "Microsoft.Web/sites/scmSiteAlsoStopped": "properties.scmSiteAlsoStopped",
       "Microsoft.Web/sites/serverFarmId": "properties.serverFarmId",
@@ -4102,6 +4171,7 @@
       "Microsoft.Web/sites/siteConfig.metadata[*].name": "properties.siteConfig.metadata[*].name",
       "Microsoft.Web/sites/siteConfig.metadata[*].value": "properties.siteConfig.metadata[*].value",
       "Microsoft.Web/sites/siteConfig.minimumElasticInstanceCount": "properties.siteConfig.minimumElasticInstanceCount",
+      "Microsoft.Web/sites/siteConfig.minTlsCipherSuite": "properties.siteConfig.minTlsCipherSuite",
       "Microsoft.Web/sites/siteConfig.minTlsVersion": "properties.siteConfig.minTlsVersion",
       "Microsoft.Web/sites/siteConfig.name": "properties.siteConfig.name",
       "Microsoft.Web/sites/siteConfig.netFrameworkVersion": "properties.siteConfig.netFrameworkVersion",
@@ -4199,10 +4269,12 @@
       "Microsoft.Web/sites/virtualNetworkSubnetId": "properties.virtualNetworkSubnetId",
       "Microsoft.Web/sites/vnetContentShareEnabled": "properties.vnetContentShareEnabled",
       "Microsoft.Web/sites/vnetImagePullEnabled": "properties.vnetImagePullEnabled",
-      "Microsoft.Web/sites/vnetRouteAllEnabled": "properties.vnetRouteAllEnabled"
+      "Microsoft.Web/sites/vnetRouteAllEnabled": "properties.vnetRouteAllEnabled",
+      "Microsoft.Web/sites/workloadProfileName": "properties.workloadProfileName"
     },
     "resourceType": "sites",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -4251,6 +4323,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4289,6 +4362,7 @@
     "aliases": null,
     "resourceType": "sites/eventGridFilters",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -4337,6 +4411,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4388,6 +4463,7 @@
     },
     "resourceType": "sites/hostNameBindings",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -4427,6 +4503,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4470,6 +4547,7 @@
     },
     "resourceType": "sites/networkConfig",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -4509,6 +4587,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4557,6 +4636,7 @@
     },
     "resourceType": "sites/premieraddons",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -4594,6 +4674,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4652,6 +4733,14 @@
       "Microsoft.Web/sites/slots/containerSize": "properties.containerSize",
       "Microsoft.Web/sites/slots/customDomainVerificationId": "properties.customDomainVerificationId",
       "Microsoft.Web/sites/slots/dailyMemoryTimeQuota": "properties.dailyMemoryTimeQuota",
+      "Microsoft.Web/sites/slots/daprConfig": "properties.daprConfig",
+      "Microsoft.Web/sites/slots/daprConfig.appId": "properties.daprConfig.appId",
+      "Microsoft.Web/sites/slots/daprConfig.appPort": "properties.daprConfig.appPort",
+      "Microsoft.Web/sites/slots/daprConfig.enableApiLogging": "properties.daprConfig.enableApiLogging",
+      "Microsoft.Web/sites/slots/daprConfig.enabled": "properties.daprConfig.enabled",
+      "Microsoft.Web/sites/slots/daprConfig.httpMaxRequestSize": "properties.daprConfig.httpMaxRequestSize",
+      "Microsoft.Web/sites/slots/daprConfig.httpReadBufferSize": "properties.daprConfig.httpReadBufferSize",
+      "Microsoft.Web/sites/slots/daprConfig.logLevel": "properties.daprConfig.logLevel",
       "Microsoft.Web/sites/slots/defaultHostName": "properties.defaultHostName",
       "Microsoft.Web/sites/slots/enabled": "properties.enabled",
       "Microsoft.Web/sites/slots/enabledHostNames": "properties.enabledHostNames",
@@ -4730,6 +4819,9 @@
       "Microsoft.Web/sites/slots/redundancyMode": "properties.redundancyMode",
       "Microsoft.Web/sites/slots/repositorySiteName": "properties.repositorySiteName",
       "Microsoft.Web/sites/slots/reserved": "properties.reserved",
+      "Microsoft.Web/sites/slots/resourceConfig": "properties.resourceConfig",
+      "Microsoft.Web/sites/slots/resourceConfig.cpu": "properties.resourceConfig.cpu",
+      "Microsoft.Web/sites/slots/resourceConfig.memory": "properties.resourceConfig.memory",
       "Microsoft.Web/sites/slots/resourceGroup": "properties.resourceGroup",
       "Microsoft.Web/sites/slots/scmSiteAlsoStopped": "properties.scmSiteAlsoStopped",
       "Microsoft.Web/sites/slots/serverFarmId": "properties.serverFarmId",
@@ -4870,6 +4962,7 @@
       "Microsoft.Web/sites/slots/siteConfig.metadata[*].name": "properties.siteConfig.metadata[*].name",
       "Microsoft.Web/sites/slots/siteConfig.metadata[*].value": "properties.siteConfig.metadata[*].value",
       "Microsoft.Web/sites/slots/siteConfig.minimumElasticInstanceCount": "properties.siteConfig.minimumElasticInstanceCount",
+      "Microsoft.Web/sites/slots/siteConfig.minTlsCipherSuite": "properties.siteConfig.minTlsCipherSuite",
       "Microsoft.Web/sites/slots/siteConfig.minTlsVersion": "properties.siteConfig.minTlsVersion",
       "Microsoft.Web/sites/slots/siteConfig.name": "properties.siteConfig.name",
       "Microsoft.Web/sites/slots/siteConfig.netFrameworkVersion": "properties.siteConfig.netFrameworkVersion",
@@ -4967,10 +5060,12 @@
       "Microsoft.Web/sites/slots/virtualNetworkSubnetId": "properties.virtualNetworkSubnetId",
       "Microsoft.Web/sites/slots/vnetContentShareEnabled": "properties.vnetContentShareEnabled",
       "Microsoft.Web/sites/slots/vnetImagePullEnabled": "properties.vnetImagePullEnabled",
-      "Microsoft.Web/sites/slots/vnetRouteAllEnabled": "properties.vnetRouteAllEnabled"
+      "Microsoft.Web/sites/slots/vnetRouteAllEnabled": "properties.vnetRouteAllEnabled",
+      "Microsoft.Web/sites/slots/workloadProfileName": "properties.workloadProfileName"
     },
     "resourceType": "sites/slots",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5018,6 +5113,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5056,6 +5152,7 @@
     "aliases": null,
     "resourceType": "sites/slots/eventGridFilters",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5103,6 +5200,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5154,6 +5252,7 @@
     },
     "resourceType": "sites/slots/hostNameBindings",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5193,6 +5292,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5236,6 +5336,7 @@
     },
     "resourceType": "sites/slots/networkConfig",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5275,6 +5376,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5319,6 +5421,7 @@
     },
     "resourceType": "sourceControls",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5361,6 +5464,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5579,6 +5683,7 @@
     },
     "resourceType": "staticSites",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5606,6 +5711,7 @@
     "aliases": null,
     "resourceType": "staticSites/builds",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5643,6 +5749,7 @@
     },
     "resourceType": "staticSites/builds/databaseConnections",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5675,6 +5782,7 @@
     },
     "resourceType": "staticSites/builds/linkedBackends",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5706,6 +5814,7 @@
     },
     "resourceType": "staticSites/builds/userProvidedFunctionApps",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5738,6 +5847,7 @@
     },
     "resourceType": "staticSites/databaseConnections",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5770,6 +5880,7 @@
     },
     "resourceType": "staticSites/linkedBackends",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5801,6 +5912,7 @@
     },
     "resourceType": "staticSites/userProvidedFunctionApps",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5823,6 +5935,7 @@
     "aliases": null,
     "resourceType": "validate",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5865,6 +5978,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5901,6 +6015,7 @@
     "aliases": null,
     "resourceType": "verifyHostingEnvironmentVnet",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -5943,6 +6058,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5981,6 +6097,7 @@
     "aliases": null,
     "resourceType": "webAppStacks",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -6007,6 +6124,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6038,20 +6156,6 @@
       "West US",
       "West US 2",
       "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "workerApps",
-    "apiVersions": [
-      "2021-02-01",
-      "2021-01-15",
-      "2021-01-01",
-      "2020-12-01"
-    ],
-    "locations": [
-      "North Central US (Stage)"
     ],
     "zoneMappings": null
   },
@@ -6423,6 +6527,7 @@
       "Microsoft.Web/sites/config/metadata[*].name": "properties.metadata[*].name",
       "Microsoft.Web/sites/config/metadata[*].value": "properties.metadata[*].value",
       "Microsoft.Web/sites/config/minimumElasticInstanceCount": "properties.minimumElasticInstanceCount",
+      "Microsoft.Web/sites/config/minTlsCipherSuite": "properties.minTlsCipherSuite",
       "Microsoft.Web/sites/config/minTlsVersion": "properties.minTlsVersion",
       "Microsoft.Web/sites/config/netFrameworkVersion": "properties.netFrameworkVersion",
       "Microsoft.Web/sites/config/nodeVersion": "properties.nodeVersion",
@@ -7066,6 +7171,7 @@
       "Microsoft.Web/sites/slots/config/metadata[*].name": "properties.metadata[*].name",
       "Microsoft.Web/sites/slots/config/metadata[*].value": "properties.metadata[*].value",
       "Microsoft.Web/sites/slots/config/minimumElasticInstanceCount": "properties.minimumElasticInstanceCount",
+      "Microsoft.Web/sites/slots/config/minTlsCipherSuite": "properties.minTlsCipherSuite",
       "Microsoft.Web/sites/slots/config/minTlsVersion": "properties.minTlsVersion",
       "Microsoft.Web/sites/slots/config/netFrameworkVersion": "properties.netFrameworkVersion",
       "Microsoft.Web/sites/slots/config/nodeVersion": "properties.nodeVersion",

@@ -4,6 +4,7 @@
     "resourceType": "CheckNameAvailability",
     "apiVersions": [
       "2023-04-01-preview",
+      "2023-04-01",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -21,6 +22,7 @@
     "resourceType": "CommunicationServices",
     "apiVersions": [
       "2023-04-01-preview",
+      "2023-04-01",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -51,6 +53,7 @@
     "resourceType": "EmailServices",
     "apiVersions": [
       "2023-04-01-preview",
+      "2023-04-01",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -67,6 +70,7 @@
     "resourceType": "EmailServices/Domains",
     "apiVersions": [
       "2023-04-01-preview",
+      "2023-04-01",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -83,6 +87,7 @@
     "resourceType": "EmailServices/Domains/SenderUsernames",
     "apiVersions": [
       "2023-04-01-preview",
+      "2023-04-01",
       "2023-03-31",
       "2023-03-01-preview"
     ],
@@ -96,6 +101,7 @@
     "resourceType": "Locations",
     "apiVersions": [
       "2023-04-01-preview",
+      "2023-04-01",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -112,6 +118,7 @@
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
       "2023-04-01-preview",
+      "2023-04-01",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -130,6 +137,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2023-04-01-preview",
+      "2023-04-01",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",
@@ -146,6 +154,7 @@
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
       "2023-04-01-preview",
+      "2023-04-01",
       "2023-03-31",
       "2023-03-01-preview",
       "2022-10-01-preview",

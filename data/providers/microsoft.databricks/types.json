@@ -54,6 +54,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
@@ -106,6 +107,7 @@
     "aliases": null,
     "resourceType": "locations/getNetworkPolicies",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
@@ -156,6 +158,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
@@ -206,10 +209,13 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
-      "2018-04-01"
+      "2018-04-01",
+      "2018-03-15",
+      "2018-03-01"
     ],
     "locations": [
       "Australia Central",
@@ -372,6 +378,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",
@@ -486,6 +493,7 @@
     },
     "resourceType": "workspaces/virtualNetworkPeerings",
     "apiVersions": [
+      "2023-09-15-preview",
       "2023-02-01",
       "2022-04-01-preview",
       "2021-04-01-preview",

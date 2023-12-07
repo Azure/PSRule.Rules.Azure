@@ -1,0 +1,57 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-08-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-08-01"
+    ],
+    "locations": [
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "offers",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-08-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-08-01",
+      "2023-06-01-preview",
+      "2023-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "publishers",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-08-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

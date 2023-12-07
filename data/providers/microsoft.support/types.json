@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2020-04-01",
       "2019-05-01-preview"
@@ -14,6 +15,7 @@
     "aliases": null,
     "resourceType": "fileWorkspaces",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -39,6 +41,7 @@
     "aliases": null,
     "resourceType": "fileWorkspaces/files",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -64,6 +67,7 @@
     "aliases": null,
     "resourceType": "lookUpResourceId",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2021-06-01-preview"
     ],
@@ -74,6 +78,7 @@
     "aliases": null,
     "resourceType": "operationresults",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2020-04-01",
       "2019-05-01-preview"
@@ -101,6 +106,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2021-06-01-preview",
       "2020-04-01",
@@ -131,6 +137,7 @@
     "aliases": null,
     "resourceType": "operationsstatus",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2020-04-01",
       "2019-05-01-preview"
@@ -158,6 +165,7 @@
     "aliases": null,
     "resourceType": "services",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2020-04-01",
       "2019-05-01-preview"
@@ -185,6 +193,7 @@
     "aliases": null,
     "resourceType": "services/problemclassifications",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2020-04-01",
       "2019-05-01-preview"
@@ -212,6 +221,7 @@
     "aliases": null,
     "resourceType": "supporttickets",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2020-04-01",
       "2019-05-01-preview"
@@ -239,6 +249,7 @@
     "aliases": null,
     "resourceType": "supporttickets/communications",
     "apiVersions": [
+      "2023-06-01-preview",
       "2022-09-01-preview",
       "2020-04-01",
       "2019-05-01-preview"

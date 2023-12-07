@@ -159,6 +159,24 @@
     "zoneMappings": null
   },
   {
+    "aliases": null,
+    "resourceType": "listPolicyDefinitionVersions",
+    "apiVersions": [
+      "2023-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "listPolicySetDefinitionVersions",
+    "apiVersions": [
+      "2023-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.Authorization/locks/level": "properties.level",
       "Microsoft.Authorization/locks/notes": "properties.notes",
@@ -241,6 +259,7 @@
     },
     "resourceType": "policyAssignments",
     "apiVersions": [
+      "2023-04-01",
       "2022-06-01",
       "2021-06-01",
       "2020-09-01",
@@ -271,6 +290,7 @@
     },
     "resourceType": "policyDefinitions",
     "apiVersions": [
+      "2023-04-01",
       "2021-06-01",
       "2020-09-01",
       "2020-08-01",
@@ -283,6 +303,15 @@
       "2016-12-01",
       "2016-04-01",
       "2015-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "policyDefinitions/versions",
+    "apiVersions": [
+      "2023-04-01"
     ],
     "locations": [],
     "zoneMappings": null
@@ -329,6 +358,7 @@
     },
     "resourceType": "policySetDefinitions",
     "apiVersions": [
+      "2023-04-01",
       "2021-06-01",
       "2020-09-01",
       "2020-08-01",
@@ -339,6 +369,15 @@
       "2018-05-01",
       "2018-03-01",
       "2017-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "policySetDefinitions/versions",
+    "apiVersions": [
+      "2023-04-01"
     ],
     "locations": [],
     "zoneMappings": null

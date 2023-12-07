@@ -1,0 +1,99 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "assetEndpointProfiles",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "assets",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-10-01-preview",
+      "2023-09-01-preview",
+      "2023-08-01-preview",
+      "2023-06-21-preview",
+      "2022-05-21-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-10-01-preview",
+      "2023-09-01-preview",
+      "2023-08-01-preview",
+      "2023-06-21-preview",
+      "2022-05-21-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationStatuses",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-10-01-preview",
+      "2023-09-01-preview",
+      "2023-08-01-preview",
+      "2023-06-21-preview",
+      "2022-05-21-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "capacities",
     "apiVersions": [
+      "2023-11-01",
       "2022-07-01-preview"
     ],
     "locations": [
@@ -20,6 +21,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -35,6 +37,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UAE Central",
@@ -54,6 +57,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01",
       "2022-07-01-preview"
     ],
     "locations": [],
@@ -63,6 +67,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-11-01",
       "2022-07-01-preview"
     ],
     "locations": [
@@ -80,6 +85,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -95,6 +101,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UAE Central",
@@ -114,6 +121,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2023-11-01",
       "2022-07-01-preview"
     ],
     "locations": [
@@ -131,6 +139,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -146,6 +155,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UAE Central",
@@ -165,6 +175,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-11-01",
       "2022-07-01-preview"
     ],
     "locations": [
@@ -182,6 +193,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -197,6 +209,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UAE Central",
@@ -216,6 +229,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-01",
       "2022-07-01-preview"
     ],
     "locations": [

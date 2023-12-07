@@ -20,6 +20,7 @@
       "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
       "Microsoft.ElasticSan/elasticSans/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
       "Microsoft.ElasticSan/elasticSans/provisioningState": "properties.provisioningState",
+      "Microsoft.ElasticSan/elasticSans/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.ElasticSan/elasticSans/sku": "properties.sku",
       "Microsoft.ElasticSan/elasticSans/sku.name": "properties.sku.name",
       "Microsoft.ElasticSan/elasticSans/sku.tier": "properties.sku.tier",
@@ -152,6 +153,16 @@
   {
     "aliases": {
       "Microsoft.ElasticSan/elasticSans/volumeGroups/encryption": "properties.encryption",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties": "properties.encryptionProperties",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties.identity": "properties.encryptionProperties.identity",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties.identity.userAssignedIdentity": "properties.encryptionProperties.identity.userAssignedIdentity",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties.keyVaultProperties": "properties.encryptionProperties.keyVaultProperties",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties.keyVaultProperties.currentVersionedKeyExpirationTimestamp": "properties.encryptionProperties.keyVaultProperties.currentVersionedKeyExpirationTimestamp",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties.keyVaultProperties.currentVersionedKeyIdentifier": "properties.encryptionProperties.keyVaultProperties.currentVersionedKeyIdentifier",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties.keyVaultProperties.keyName": "properties.encryptionProperties.keyVaultProperties.keyName",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties.keyVaultProperties.keyVaultUri": "properties.encryptionProperties.keyVaultProperties.keyVaultUri",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties.keyVaultProperties.keyVersion": "properties.encryptionProperties.keyVaultProperties.keyVersion",
+      "Microsoft.ElasticSan/elasticSans/volumeGroups/encryptionProperties.keyVaultProperties.lastKeyRotationTimestamp": "properties.encryptionProperties.keyVaultProperties.lastKeyRotationTimestamp",
       "Microsoft.ElasticSan/elasticSans/volumeGroups/networkAcls": "properties.networkAcls",
       "Microsoft.ElasticSan/elasticSans/volumeGroups/networkAcls.virtualNetworkRules": "properties.networkAcls.virtualNetworkRules",
       "Microsoft.ElasticSan/elasticSans/volumeGroups/networkAcls.virtualNetworkRules[*]": "properties.networkAcls.virtualNetworkRules[*]",
@@ -356,9 +367,23 @@
   },
   {
     "aliases": {
+      "Microsoft.ElasticSan/elasticSans/volumegroups/snapshots/creationData": "properties.creationData",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/snapshots/creationData.sourceId": "properties.creationData.sourceId",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/snapshots/provisioningState": "properties.provisioningState",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/snapshots/sourceVolumeSizeGiB": "properties.sourceVolumeSizeGiB",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/snapshots/volumeName": "properties.volumeName"
+    },
+    "resourceType": "elasticsans/volumegroups/snapshots"
+  },
+  {
+    "aliases": {
       "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/creationData": "properties.creationData",
       "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/creationData.createSource": "properties.creationData.createSource",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/creationData.sourceId": "properties.creationData.sourceId",
       "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/creationData.sourceUri": "properties.creationData.sourceUri",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/managedBy": "properties.managedBy",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/managedBy.resourceId": "properties.managedBy.resourceId",
+      "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/provisioningState": "properties.provisioningState",
       "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/sizeGiB": "properties.sizeGiB",
       "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/storageTarget": "properties.storageTarget",
       "Microsoft.ElasticSan/elasticSans/volumegroups/volumes/storageTarget.provisioningState": "properties.storageTarget.provisioningState",

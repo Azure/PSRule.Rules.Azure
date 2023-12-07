@@ -1,0 +1,34 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "bgpPeers",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "loadBalancers",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  }
+]

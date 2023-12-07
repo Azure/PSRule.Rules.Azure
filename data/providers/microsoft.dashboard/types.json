@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
@@ -46,6 +48,8 @@
     },
     "resourceType": "grafana",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
@@ -76,6 +80,8 @@
     "aliases": null,
     "resourceType": "grafana/managedPrivateEndpoints",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2022-10-01-preview"
     ],
     "locations": [
@@ -113,6 +119,8 @@
     },
     "resourceType": "grafana/privateEndpointConnections",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview"
@@ -142,6 +150,8 @@
     "aliases": null,
     "resourceType": "grafana/privateLinkResources",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview"
@@ -171,6 +181,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
@@ -183,6 +195,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
@@ -195,6 +209,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",
@@ -202,6 +218,7 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
@@ -210,10 +227,14 @@
       "East US",
       "East US 2",
       "East US 2 EUAP",
+      "France Central",
+      "Japan East",
       "North Europe",
+      "Norway East",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "UAE North",
       "UK South",
       "West Central US",
       "West Europe",
@@ -227,6 +248,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2022-10-01-preview",
       "2022-08-01",
       "2022-05-01-preview",

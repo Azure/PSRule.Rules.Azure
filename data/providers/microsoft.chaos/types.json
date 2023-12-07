@@ -3,6 +3,9 @@
     "aliases": null,
     "resourceType": "experiments",
     "apiVersions": [
+      "2023-11-01",
+      "2023-10-27-preview",
+      "2023-09-01-preview",
       "2023-04-15-preview",
       "2023-04-01-preview",
       "2022-10-01-preview",
@@ -30,6 +33,9 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01",
+      "2023-10-27-preview",
+      "2023-09-01-preview",
       "2023-04-15-preview",
       "2023-04-01-preview",
       "2022-10-01-preview",
@@ -41,8 +47,69 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2023-11-01",
+      "2023-10-27-preview",
+      "2023-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "North Central US",
+      "North Europe",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2023-11-01",
+      "2023-10-27-preview",
+      "2023-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "North Central US",
+      "North Europe",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/targetTypes",
     "apiVersions": [
+      "2023-11-01",
+      "2023-10-27-preview",
+      "2023-09-01-preview",
       "2023-04-15-preview",
       "2023-04-01-preview",
       "2022-10-01-preview",
@@ -74,6 +141,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-01",
+      "2023-10-27-preview",
+      "2023-09-01-preview",
       "2023-04-15-preview",
       "2023-04-01-preview",
       "2022-10-01-preview",
@@ -88,8 +158,38 @@
   },
   {
     "aliases": null,
+    "resourceType": "privateAccesses",
+    "apiVersions": [
+      "2023-10-27-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "North Central US",
+      "North Europe",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "targets",
     "apiVersions": [
+      "2023-11-01",
+      "2023-10-27-preview",
+      "2023-09-01-preview",
       "2023-04-15-preview",
       "2023-04-01-preview",
       "2022-10-01-preview",

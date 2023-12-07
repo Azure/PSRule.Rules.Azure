@@ -1,5 +1,100 @@
 [
   {
+    "aliases": null,
+    "resourceType": "clusterPools",
+    "apiVersions": [
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Central India",
+      "East US",
+      "East US 2",
+      "Korea Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusterPools/clusters",
+    "apiVersions": [
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Central India",
+      "East US",
+      "East US 2",
+      "Korea Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusterPools/clusters/instanceViews",
+    "apiVersions": [
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Central India",
+      "East US",
+      "East US 2",
+      "Korea Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusterPools/clusters/jobs",
+    "apiVersions": [
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Central India",
+      "East US",
+      "East US 2",
+      "Korea Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusterPools/clusters/serviceConfigs",
+    "apiVersions": [
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Central India",
+      "East US",
+      "East US 2",
+      "Korea Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
     "aliases": {
       "Microsoft.HDInsight/clusters/clusterDefinition": "properties.clusterDefinition",
       "Microsoft.HDInsight/clusters/clusterDefinition.blueprint": "properties.clusterDefinition.blueprint",
@@ -861,6 +956,44 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/availableClusterPoolVersions",
+    "apiVersions": [
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Central India",
+      "East US",
+      "East US 2",
+      "Korea Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/availableClusterVersions",
+    "apiVersions": [
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Central India",
+      "East US",
+      "East US 2",
+      "Korea Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/azureasyncoperations",
     "apiVersions": [
       "2023-04-15-preview",
@@ -1059,6 +1192,25 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/clusterOfferingVersions",
+    "apiVersions": [
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Central India",
+      "East US",
+      "East US 2",
+      "Korea Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
       "2023-04-15-preview",
@@ -1124,6 +1276,7 @@
       "East Asia",
       "East US",
       "East US 2",
+      "East US 2 EUAP",
       "Korea Central",
       "UK South",
       "West Europe",

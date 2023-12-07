@@ -3,7 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
-      "2023-02-01-preview"
+      "2023-10-30-preview"
     ],
     "locations": [],
     "zoneMappings": null
@@ -12,28 +12,36 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
-      "2023-02-01-preview"
+      "2023-10-30-preview"
     ],
     "locations": [
-      "Central US",
-      "East US",
-      "East US 2",
-      "East US 2 EUAP",
-      "West US 2"
+      "West US"
     ],
     "zoneMappings": null
   },
   {
     "aliases": null,
-    "resourceType": "managedstorageclass",
+    "resourceType": "Operations",
     "apiVersions": [
-      "2023-02-01-preview"
+      "2023-10-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "pools",
+    "apiVersions": [
+      "2023-10-30-preview"
     ],
     "locations": [
       "Central US",
       "East US",
       "East US 2",
-      "West US 2"
+      "North Central US",
+      "North Europe",
+      "West US",
+      "West US 3"
     ],
     "zoneMappings": null
   }

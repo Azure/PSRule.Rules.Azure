@@ -31,6 +31,7 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2022-10-01",
       "2021-06-01",
       "2020-10-01",
       "2020-08-01",
@@ -273,6 +274,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-01",
       "2022-10-01",
       "2021-12-01-preview",
       "2020-10-01",
@@ -417,6 +419,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2023-09-01",
       "2022-10-01",
       "2021-12-01-preview",
       "2021-06-01",

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-10-15",
       "2023-05-15-preview",
       "2023-04-15-preview"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-10-15",
       "2023-05-15-preview",
       "2023-04-15-preview"
     ],
@@ -21,6 +23,17 @@
       "East US 2 EUAP",
       "West Central US"
     ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2023-10-15",
+      "2023-05-15-preview",
+      "2023-04-15-preview"
+    ],
+    "locations": [],
     "zoneMappings": null
   }
 ]

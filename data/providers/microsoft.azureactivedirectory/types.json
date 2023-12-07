@@ -7,6 +7,7 @@
     },
     "resourceType": "b2cDirectories",
     "apiVersions": [
+      "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
       "2021-04-01-preview",
@@ -32,6 +33,7 @@
     "aliases": null,
     "resourceType": "b2ctenants",
     "apiVersions": [
+      "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
       "2021-04-01-preview",
@@ -53,6 +55,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
       "2021-04-01-preview",
@@ -75,6 +78,7 @@
     "aliases": null,
     "resourceType": "ciamDirectories",
     "apiVersions": [
+      "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview"
     ],
@@ -94,6 +98,7 @@
     },
     "resourceType": "guestUsages",
     "apiVersions": [
+      "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
       "2021-04-01-preview",
@@ -114,6 +119,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-05-17-preview",
       "2023-01-18-preview",
       "2022-03-01-preview",
       "2021-04-01-preview",
@@ -124,6 +130,22 @@
       "2017-01-30",
       "2016-12-13-preview",
       "2016-02-10-privatepreview"
+    ],
+    "locations": [
+      "Asia Pacific",
+      "Australia",
+      "Europe",
+      "Global",
+      "Japan",
+      "United States"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationStatuses",
+    "apiVersions": [
+      "2023-05-17-preview"
     ],
     "locations": [
       "Asia Pacific",

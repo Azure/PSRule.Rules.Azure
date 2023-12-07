@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "Alerts",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -18,6 +20,8 @@
     "aliases": null,
     "resourceType": "BenefitRecommendations",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -31,6 +35,8 @@
     "aliases": null,
     "resourceType": "BenefitUtilizationSummaries",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -44,6 +50,8 @@
     "aliases": null,
     "resourceType": "BenefitUtilizationSummariesOperationResults",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-03-01"
     ],
@@ -54,6 +62,8 @@
     "aliases": null,
     "resourceType": "BillingAccounts",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-03-01",
       "2018-03-31"
@@ -65,6 +75,8 @@
     "aliases": null,
     "resourceType": "Budgets",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -90,6 +102,8 @@
     "aliases": null,
     "resourceType": "calculatePrice",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -113,6 +127,8 @@
     "aliases": null,
     "resourceType": "CheckNameAvailability",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -148,6 +164,8 @@
     "aliases": null,
     "resourceType": "costAllocationRules",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2020-03-01-preview"
     ],
@@ -158,6 +176,8 @@
     "aliases": null,
     "resourceType": "CostDetailsOperationResults",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -171,6 +191,8 @@
     "aliases": null,
     "resourceType": "Departments",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-03-01",
       "2018-03-31"
@@ -182,6 +204,8 @@
     "aliases": null,
     "resourceType": "Dimensions",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -206,6 +230,8 @@
     "aliases": null,
     "resourceType": "EnrollmentAccounts",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-03-01",
       "2018-03-31"
@@ -217,7 +243,10 @@
     "aliases": null,
     "resourceType": "Exports",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
+      "2023-07-01-preview",
       "2023-04-01-preview",
       "2023-03-01",
       "2022-10-01",
@@ -248,6 +277,8 @@
     "aliases": null,
     "resourceType": "ExternalBillingAccounts/Alerts",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -263,6 +294,8 @@
     "aliases": null,
     "resourceType": "ExternalBillingAccounts/Dimensions",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -281,6 +314,8 @@
     "aliases": null,
     "resourceType": "ExternalBillingAccounts/Forecast",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -300,6 +335,8 @@
     "aliases": null,
     "resourceType": "ExternalBillingAccounts/Query",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -318,6 +355,8 @@
     "aliases": null,
     "resourceType": "ExternalSubscriptions",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-03-01",
       "2019-03-01-preview"
@@ -329,6 +368,8 @@
     "aliases": null,
     "resourceType": "ExternalSubscriptions/Alerts",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -344,6 +385,8 @@
     "aliases": null,
     "resourceType": "ExternalSubscriptions/Dimensions",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -362,6 +405,8 @@
     "aliases": null,
     "resourceType": "ExternalSubscriptions/Forecast",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -381,6 +426,8 @@
     "aliases": null,
     "resourceType": "ExternalSubscriptions/Query",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -399,6 +446,8 @@
     "aliases": null,
     "resourceType": "fetchMarketplacePrices",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -413,6 +462,8 @@
     "aliases": null,
     "resourceType": "fetchMicrosoftPrices",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -437,6 +488,8 @@
     "aliases": null,
     "resourceType": "Forecast",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -456,6 +509,8 @@
     "aliases": null,
     "resourceType": "GenerateBenefitUtilizationSummariesReport",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-03-01"
     ],
@@ -466,6 +521,8 @@
     "aliases": null,
     "resourceType": "GenerateCostDetailsReport",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -479,6 +536,8 @@
     "aliases": null,
     "resourceType": "GenerateDetailedCostReport",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -494,6 +553,8 @@
     "aliases": null,
     "resourceType": "GenerateReservationDetailsReport",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -526,6 +587,8 @@
     "aliases": null,
     "resourceType": "OperationResults",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -544,6 +607,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -562,6 +627,8 @@
     "aliases": null,
     "resourceType": "OperationStatus",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -580,6 +647,8 @@
     "aliases": null,
     "resourceType": "Pricesheets",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -604,6 +673,8 @@
     "aliases": null,
     "resourceType": "Query",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -637,6 +708,8 @@
     "aliases": null,
     "resourceType": "Reportconfigs",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2018-05-31"
     ],
@@ -657,6 +730,8 @@
     "aliases": null,
     "resourceType": "ReservationDetailsOperationResults",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -671,6 +746,8 @@
     "aliases": null,
     "resourceType": "ScheduledActions",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -695,6 +772,8 @@
     "aliases": null,
     "resourceType": "Settings",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",
@@ -711,6 +790,8 @@
     "aliases": null,
     "resourceType": "showbackRules",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2019-03-01-preview",
       "2019-02-03-alpha",
@@ -733,6 +814,8 @@
     "aliases": null,
     "resourceType": "Views",
     "apiVersions": [
+      "2023-11-01",
+      "2023-09-01",
       "2023-08-01",
       "2023-04-01-preview",
       "2023-03-01",

@@ -1,0 +1,32 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/operationstatuses",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "UK South"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": null
+  }
+]

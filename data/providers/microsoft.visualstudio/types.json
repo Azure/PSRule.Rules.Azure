@@ -64,68 +64,6 @@
     "zoneMappings": null
   },
   {
-    "aliases": {
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate": "properties.bootstrapPipelineTemplate",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationSource": "properties.bootstrapPipelineTemplate.applicationSource",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationSource.applicationConfiguration": "properties.bootstrapPipelineTemplate.applicationSource.applicationConfiguration",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationSource.applicationType": "properties.bootstrapPipelineTemplate.applicationSource.applicationType",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationSource.sourceType": "properties.bootstrapPipelineTemplate.applicationSource.sourceType",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget": "properties.bootstrapPipelineTemplate.applicationTarget",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources": "properties.bootstrapPipelineTemplate.applicationTarget.resources",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources[*]": "properties.bootstrapPipelineTemplate.applicationTarget.resources[*]",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources[*].authorizationReference": "properties.bootstrapPipelineTemplate.applicationTarget.resources[*].authorizationReference",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources[*].id": "properties.bootstrapPipelineTemplate.applicationTarget.resources[*].id",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources[*].role": "properties.bootstrapPipelineTemplate.applicationTarget.resources[*].role",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.targetType": "properties.bootstrapPipelineTemplate.applicationTarget.targetType",
-      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.authorizationDetails": "properties.bootstrapPipelineTemplate.authorizationDetails",
-      "Microsoft.VisualStudio/account/project/ownerUpn": "properties.ownerUpn",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations": "properties.pipelineBootstrapConfigurations",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*]": "properties.pipelineBootstrapConfigurations[*]",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].name": "properties.pipelineBootstrapConfigurations[*].name",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository": "properties.pipelineBootstrapConfigurations[*].repository",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.authorization": "properties.pipelineBootstrapConfigurations[*].repository.authorization",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.authorization.authorizationType": "properties.pipelineBootstrapConfigurations[*].repository.authorization.authorizationType",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.authorization.parameters": "properties.pipelineBootstrapConfigurations[*].repository.authorization.parameters",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.defaultBranch": "properties.pipelineBootstrapConfigurations[*].repository.defaultBranch",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.id": "properties.pipelineBootstrapConfigurations[*].repository.id",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.repositoryType": "properties.pipelineBootstrapConfigurations[*].repository.repositoryType",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].templateId": "properties.pipelineBootstrapConfigurations[*].templateId",
-      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].templateParameters": "properties.pipelineBootstrapConfigurations[*].templateParameters",
-      "Microsoft.VisualStudio/account/project/processTemplateId": "properties.processTemplateId",
-      "Microsoft.VisualStudio/account/project/tfsUniqueIdentifier": "properties.tfsUniqueIdentifier",
-      "Microsoft.VisualStudio/account/project/versionControlOption": "properties.versionControlOption"
-    },
-    "resourceType": "account/project",
-    "apiVersions": [
-      "2014-04-01-preview",
-      "2014-02-26"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "Canada Central",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "Japan East",
-      "Japan West",
-      "North Central US",
-      "North Europe",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West India",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
@@ -187,5 +125,39 @@
       "West US 2"
     ],
     "zoneMappings": null
+  },
+  {
+    "aliases": {
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate": "properties.bootstrapPipelineTemplate",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationSource": "properties.bootstrapPipelineTemplate.applicationSource",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationSource.applicationConfiguration": "properties.bootstrapPipelineTemplate.applicationSource.applicationConfiguration",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationSource.applicationType": "properties.bootstrapPipelineTemplate.applicationSource.applicationType",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationSource.sourceType": "properties.bootstrapPipelineTemplate.applicationSource.sourceType",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget": "properties.bootstrapPipelineTemplate.applicationTarget",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources": "properties.bootstrapPipelineTemplate.applicationTarget.resources",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources[*]": "properties.bootstrapPipelineTemplate.applicationTarget.resources[*]",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources[*].authorizationReference": "properties.bootstrapPipelineTemplate.applicationTarget.resources[*].authorizationReference",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources[*].id": "properties.bootstrapPipelineTemplate.applicationTarget.resources[*].id",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.resources[*].role": "properties.bootstrapPipelineTemplate.applicationTarget.resources[*].role",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.applicationTarget.targetType": "properties.bootstrapPipelineTemplate.applicationTarget.targetType",
+      "Microsoft.VisualStudio/account/project/bootstrapPipelineTemplate.authorizationDetails": "properties.bootstrapPipelineTemplate.authorizationDetails",
+      "Microsoft.VisualStudio/account/project/ownerUpn": "properties.ownerUpn",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations": "properties.pipelineBootstrapConfigurations",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*]": "properties.pipelineBootstrapConfigurations[*]",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].name": "properties.pipelineBootstrapConfigurations[*].name",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository": "properties.pipelineBootstrapConfigurations[*].repository",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.authorization": "properties.pipelineBootstrapConfigurations[*].repository.authorization",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.authorization.authorizationType": "properties.pipelineBootstrapConfigurations[*].repository.authorization.authorizationType",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.authorization.parameters": "properties.pipelineBootstrapConfigurations[*].repository.authorization.parameters",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.defaultBranch": "properties.pipelineBootstrapConfigurations[*].repository.defaultBranch",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.id": "properties.pipelineBootstrapConfigurations[*].repository.id",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].repository.repositoryType": "properties.pipelineBootstrapConfigurations[*].repository.repositoryType",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].templateId": "properties.pipelineBootstrapConfigurations[*].templateId",
+      "Microsoft.VisualStudio/account/project/pipelineBootstrapConfigurations[*].templateParameters": "properties.pipelineBootstrapConfigurations[*].templateParameters",
+      "Microsoft.VisualStudio/account/project/processTemplateId": "properties.processTemplateId",
+      "Microsoft.VisualStudio/account/project/tfsUniqueIdentifier": "properties.tfsUniqueIdentifier",
+      "Microsoft.VisualStudio/account/project/versionControlOption": "properties.versionControlOption"
+    },
+    "resourceType": "account/project"
   }
 ]

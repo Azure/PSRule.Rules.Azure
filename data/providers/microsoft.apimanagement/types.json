@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkFeedbackRequired",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
@@ -31,6 +32,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
@@ -109,6 +111,7 @@
     "aliases": null,
     "resourceType": "deletedServices",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
@@ -167,6 +170,7 @@
     "aliases": null,
     "resourceType": "getDomainOwnershipIdentifier",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
@@ -224,6 +228,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
@@ -242,6 +247,7 @@
     "aliases": null,
     "resourceType": "locations/deletedServices",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
@@ -300,6 +306,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
@@ -328,6 +335,7 @@
     "aliases": null,
     "resourceType": "reportFeedback",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
@@ -486,6 +494,7 @@
     },
     "resourceType": "service",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",
@@ -521,6 +530,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India Central",
@@ -623,6 +634,22 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -771,6 +798,7 @@
     "aliases": null,
     "resourceType": "service/eventGridFilters",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2022-09-01-preview",
       "2022-08-01",

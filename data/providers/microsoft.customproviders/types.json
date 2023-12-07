@@ -22,6 +22,24 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Canada East",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
       "2018-09-01-preview"
@@ -64,6 +82,42 @@
       "Microsoft.CustomProviders/resourceProviders/validations[*].validationType": "properties.validations[*].validationType"
     },
     "resourceType": "resourceProviders",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Canada East",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourceProviders/operationResults",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Canada East",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": null
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourceProviders/operationStatuses",
     "apiVersions": [
       "2018-09-01-preview"
     ],

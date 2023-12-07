@@ -22,6 +22,7 @@
     },
     "resourceType": "connectedClusters",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",
@@ -44,6 +45,7 @@
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -51,6 +53,7 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
       "West Central US",
       "West Europe",
       "West US",
@@ -63,6 +66,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",
@@ -77,6 +81,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",
@@ -121,6 +126,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",
@@ -137,6 +143,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",

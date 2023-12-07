@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "amlFilesystems",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2021-11-01-preview"
@@ -15,12 +16,15 @@
       "Central US",
       "East US",
       "East US 2",
+      "France Central",
+      "Italy North",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -82,6 +86,22 @@
         ]
       },
       {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Italy North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "North Europe",
         "zones": [
           "1",
@@ -123,6 +143,14 @@
       },
       {
         "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US",
         "zones": [
           "1",
           "2",
@@ -245,6 +273,7 @@
     },
     "resourceType": "caches",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
@@ -269,7 +298,9 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
+      "Italy North",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -348,7 +379,23 @@
         ]
       },
       {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -471,6 +518,7 @@
     },
     "resourceType": "caches/storageTargets",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
@@ -495,7 +543,9 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
+      "Italy North",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -514,6 +564,7 @@
     "aliases": null,
     "resourceType": "checkAmlFSSubnets",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2021-11-01-preview"
@@ -526,12 +577,15 @@
       "Central US",
       "East US",
       "East US 2",
+      "France Central",
+      "Italy North",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -541,6 +595,7 @@
     "aliases": null,
     "resourceType": "getRequiredAmlFSSubnetsSize",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2021-11-01-preview"
@@ -553,12 +608,15 @@
       "Central US",
       "East US",
       "East US 2",
+      "France Central",
+      "Italy North",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -568,6 +626,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
@@ -591,6 +650,7 @@
     "aliases": null,
     "resourceType": "locations/ascoperations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
@@ -616,7 +676,9 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
+      "Italy North",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -635,6 +697,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
@@ -651,7 +714,9 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
+      "Italy North",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -670,6 +735,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
@@ -695,7 +761,9 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
+      "Italy North",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -714,6 +782,7 @@
     "aliases": null,
     "resourceType": "usageModels",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
       "2023-01-01",
@@ -738,7 +807,9 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
+      "Italy North",
       "Korea Central",
       "North Central US",
       "North Europe",
