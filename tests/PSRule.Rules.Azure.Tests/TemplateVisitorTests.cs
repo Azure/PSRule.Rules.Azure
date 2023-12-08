@@ -38,9 +38,6 @@ namespace PSRule.Rules.Azure
             Assert.Equal("nsg-subnet2", actual["name"].Value<string>());
 
             actual = resources[5];
-            Assert.Equal("nsg-extra", actual["name"].Value<string>());
-
-            actual = resources[6];
             Assert.Equal("vnet-001", actual["name"].Value<string>());
             Assert.Equal("10.1.0.0/24", actual["properties"]["addressSpace"]["addressPrefixes"][0].Value<string>());
             Assert.Equal(3, actual["properties"]["subnets"].Value<JArray>().Count);
@@ -56,10 +53,13 @@ namespace PSRule.Rules.Azure
             actual = subResources[2] as JObject;
             Assert.Equal("vnet-001/subnet2/Microsoft.Authorization/c7db2a25-b75f-d22b-f692-bbb38c83d9d0", actual["name"].Value<string>());
 
-            actual = resources[7];
+            actual = resources[6];
             Assert.False(actual["rootDeployment"].Value<bool>());
             Assert.Equal("vnetDelegation", actual["name"].Value<string>());
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+
+            actual = resources[7];
+            Assert.Equal("nsg-extra", actual["name"].Value<string>());
         }
 
         [Fact]
@@ -265,18 +265,19 @@ namespace PSRule.Rules.Azure
 
             actual = resources[5];
             Assert.EndsWith("Resources.Template.json", actual["_PSRule"]["source"][0]["file"].Value<string>());
-            Assert.Equal("nsg-extra", actual["name"].Value<string>());
-            Assert.Equal("Microsoft.Network/networkSecurityGroups", actual["type"].Value<string>());
-
-            actual = resources[6];
-            Assert.EndsWith("Resources.Template.json", actual["_PSRule"]["source"][0]["file"].Value<string>());
             Assert.Equal("vnet-001", actual["name"].Value<string>());
             Assert.Equal("Microsoft.Network/virtualNetworks", actual["type"].Value<string>());
 
-            actual = resources[7];
+            actual = resources[6];
             Assert.EndsWith("Resources.Template.json", actual["_PSRule"]["source"][0]["file"].Value<string>());
             Assert.Equal("vnetDelegation", actual["name"].Value<string>());
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+
+
+            actual = resources[7];
+            Assert.EndsWith("Resources.Template.json", actual["_PSRule"]["source"][0]["file"].Value<string>());
+            Assert.Equal("nsg-extra", actual["name"].Value<string>());
+            Assert.Equal("Microsoft.Network/networkSecurityGroups", actual["type"].Value<string>());
         }
 
         [Fact]
@@ -579,19 +580,19 @@ namespace PSRule.Rules.Azure
             Assert.Equal("mi", actual["name"].Value<string>());
 
             actual = resources[3];
+            Assert.Equal("Microsoft.Authorization/roleAssignments", actual["type"].Value<string>());
+            Assert.Equal("af653e5f-3bb6-d1bd-fa61-e314ddbfb39c", actual["name"].Value<string>());
+
+            actual = resources[4];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
             Assert.Equal("kv", actual["name"].Value<string>());
 
-            actual = resources[4];
+            actual = resources[5];
             var subResources = actual["resources"].Value<JArray>();
             Assert.Equal("Microsoft.KeyVault/vaults", actual["type"].Value<string>());
             Assert.Equal("keyvault001", actual["name"].Value<string>());
             Assert.Single(subResources);
             Assert.Equal("service", subResources[0]["name"].Value<string>());
-
-            actual = resources[5];
-            Assert.Equal("Microsoft.Authorization/roleAssignments", actual["type"].Value<string>());
-            Assert.Equal("af653e5f-3bb6-d1bd-fa61-e314ddbfb39c", actual["name"].Value<string>());
         }
 
         [Fact]
@@ -980,6 +981,67 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Authorization/roleAssignments", actual["type"].Value<string>());
             Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000", actual["scope"].Value<string>());
             Assert.Equal("/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/roleAssignments/8a869b90-6d6c-4307-9d0f-22dbc136ccd9", actual["id"].Value<string>());
+        }
+
+        [Fact]
+        public void DependencyOrdering()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.32.json"), null, out _);
+
+            var actual = resources[1];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/subnet1", actual["id"].Value<string>());
+
+            actual = resources[2];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet1_1", actual["id"].Value<string>());
+
+            actual = resources[3];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/subnet2", actual["id"].Value<string>());
+
+            actual = resources[4];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/subnet3", actual["id"].Value<string>());
+
+            actual = resources[5];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/subnet4-0", actual["id"].Value<string>());
+
+            actual = resources[6];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/subnet4-1", actual["id"].Value<string>());
+
+            actual = resources[7];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/subnet4-2", actual["id"].Value<string>());
+
+            actual = resources[8];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet2_1", actual["id"].Value<string>());
+
+            actual = resources[9];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet1_2", actual["id"].Value<string>());
+
+            actual = resources[10];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet1_3", actual["id"].Value<string>());
+
+            actual = resources[11];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet1_4", actual["id"].Value<string>());
+
+            actual = resources[12];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet1_5", actual["id"].Value<string>());
+
+            actual = resources[13];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet1_6", actual["id"].Value<string>());
+
+            actual = resources[14];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet3_1", actual["id"].Value<string>());
+
+            actual = resources[15];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet4_0", actual["id"].Value<string>());
+
+            actual = resources[16];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet4_1", actual["id"].Value<string>());
+
+            actual = resources[17];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/deployments/dep_subnet4_2", actual["id"].Value<string>());
+
+            actual = resources[18];
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Resources/tags/default", actual["id"].Value<string>());
+            Assert.Equal("dep_subnet4_2", actual["properties"]["tags"]["deployment"].Value<string>());
         }
 
         #region Helper methods
