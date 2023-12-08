@@ -9,21 +9,32 @@ using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
-    internal interface IResourceValue
+    internal interface IResourceValue : IResourceIdentity
     {
         JObject Value { get; }
 
-        string Id { get; }
+        //string Id { get; }
 
-        string Name { get; }
+        //string Name { get; }
 
-        string SymbolicName { get; }
+        //string SymbolicName { get; }
 
         string Type { get; }
 
         TemplateContext.CopyIndexState Copy { get; }
 
-        bool DependsOn(IResourceValue other, out int count);
+        //bool DependsOn(IResourceValue other, out int count);
+    }
+
+    internal interface IResourceIdentity
+    {
+        public string Id { get; }
+
+        public string Name { get; }
+
+        public string SymbolicName { get; }
+
+        //public string CopyName { get; }
     }
 
     internal static class ResourceValueExtensions
@@ -62,14 +73,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
     internal abstract class BaseResourceValue
     {
-        private readonly HashSet<string> _Dependencies;
-
-        protected BaseResourceValue(string id, string name, string symbolicName, string[] dependencies)
+        protected BaseResourceValue(string id, string name, string symbolicName)
         {
             Id = id;
             Name = name;
             SymbolicName = symbolicName;
-            _Dependencies = dependencies == null || dependencies.Length == 0 ? null : new HashSet<string>(dependencies, StringComparer.OrdinalIgnoreCase);
         }
 
         public string Id { get; }
@@ -77,26 +85,13 @@ namespace PSRule.Rules.Azure.Data.Template
         public string Name { get; }
 
         public string SymbolicName { get; }
-
-        public bool DependsOn(IResourceValue other, out int count)
-        {
-            count = 0;
-            if (_Dependencies == null)
-                return false;
-
-            count = _Dependencies.Count;
-            return _Dependencies.Contains(other.Id) ||
-                other.Copy != null && !string.IsNullOrEmpty(other.Copy.Name) && _Dependencies.Contains(other.Copy.Name) ||
-                !string.IsNullOrEmpty(other.Name) && _Dependencies.Contains(other.Name) ||
-                !string.IsNullOrEmpty(other.SymbolicName) && _Dependencies.Contains(other.SymbolicName);
-        }
     }
 
     [DebuggerDisplay("{Id}")]
     internal sealed class ResourceValue : BaseResourceValue, IResourceValue
     {
-        internal ResourceValue(string id, string name, string type, string symbolicName, JObject value, string[] dependencies, TemplateContext.CopyIndexState copy)
-            : base(id, name, symbolicName, dependencies)
+        internal ResourceValue(string id, string name, string type, string symbolicName, JObject value, TemplateContext.CopyIndexState copy)
+            : base(id, name, symbolicName)
         {
             Type = type;
             Value = value;
@@ -121,11 +116,11 @@ namespace PSRule.Rules.Azure.Data.Template
         private readonly Lazy<JObject> _Value;
         private readonly Dictionary<string, ILazyValue> _Outputs;
 
-        internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, JObject value, string[] dependencies, TemplateContext.CopyIndexState copy)
-            : this(id, name, symbolicName, scope, deploymentScope, () => value, dependencies, copy) { }
+        internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, JObject value, TemplateContext.CopyIndexState copy)
+            : this(id, name, symbolicName, scope, deploymentScope, () => value, copy) { }
 
-        internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, Func<JObject> value, string[] dependencies, TemplateContext.CopyIndexState copy)
-            : base(id, name, symbolicName, dependencies)
+        internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, Func<JObject> value, TemplateContext.CopyIndexState copy)
+            : base(id, name, symbolicName)
         {
             _Value = new Lazy<JObject>(value);
             Copy = copy;

@@ -353,6 +353,12 @@ namespace PSRule.Rules.Azure
             return string.IsNullOrEmpty(child) ? parent : string.Concat(parent, ".", child);
         }
 
+        /// <summary>
+        /// Get the dependencies for a resource by extracting any identifiers configured on the <c>dependsOn</c> property.
+        /// </summary>
+        /// <param name="resource">The resource object to check.</param>
+        /// <param name="dependencies">An array of dependencies if set.</param>
+        /// <returns></returns>
         internal static bool TryGetDependencies(this JObject resource, out string[] dependencies)
         {
             dependencies = null;

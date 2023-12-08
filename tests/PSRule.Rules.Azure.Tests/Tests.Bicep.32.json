@@ -1,0 +1,647 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.23.1.45101",
+      "templateHash": "10386262533837465363"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "subnet1",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetNum": {
+            "value": "1"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "16899663435843083696"
+            }
+          },
+          "parameters": {
+            "subnetNum": {
+              "type": "string"
+            }
+          },
+          "resources": [],
+          "outputs": {
+            "subnetResourceId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', split(format('vnet/subnet{0}', parameters('subnetNum')), '/')[0], split(format('vnet/subnet{0}', parameters('subnetNum')), '/')[1])]"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "subnet2",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetNum": {
+            "value": "2"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "16899663435843083696"
+            }
+          },
+          "parameters": {
+            "subnetNum": {
+              "type": "string"
+            }
+          },
+          "resources": [],
+          "outputs": {
+            "subnetResourceId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', split(format('vnet/subnet{0}', parameters('subnetNum')), '/')[0], split(format('vnet/subnet{0}', parameters('subnetNum')), '/')[1])]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'dep_subnet1_1')]",
+        "[resourceId('Microsoft.Resources/deployments', 'subnet1')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "subnet3",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetNum": {
+            "value": "3"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "16899663435843083696"
+            }
+          },
+          "parameters": {
+            "subnetNum": {
+              "type": "string"
+            }
+          },
+          "resources": [],
+          "outputs": {
+            "subnetResourceId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', split(format('vnet/subnet{0}', parameters('subnetNum')), '/')[0], split(format('vnet/subnet{0}', parameters('subnetNum')), '/')[1])]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet2')]"
+      ]
+    },
+    {
+      "copy": {
+        "name": "subnet4",
+        "count": "[length(range(1, 3))]"
+      },
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "[format('subnet4-{0}', copyIndex())]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetNum": {
+            "value": "[format('4-{0}', copyIndex())]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "16899663435843083696"
+            }
+          },
+          "parameters": {
+            "subnetNum": {
+              "type": "string"
+            }
+          },
+          "resources": [],
+          "outputs": {
+            "subnetResourceId": {
+              "type": "string",
+              "value": "[resourceId('Microsoft.Network/virtualNetworks/subnets', split(format('vnet/subnet{0}', parameters('subnetNum')), '/')[0], split(format('vnet/subnet{0}', parameters('subnetNum')), '/')[1])]"
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet2')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "dep_subnet1_1",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetResourceId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'subnet1'), '2022-09-01').outputs.subnetResourceId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "6631975685067976495"
+            }
+          },
+          "parameters": {
+            "subnetResourceId": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "splitSubnetId": "[split(parameters('subnetResourceId'), '/')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/tags",
+              "apiVersion": "2022-09-01",
+              "name": "default",
+              "properties": {
+                "tags": {
+                  "subnetId": "[variables('splitSubnetId')[8]]",
+                  "deployment": "[deployment().name]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet1')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "dep_subnet2_1",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetResourceId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'subnet2'), '2022-09-01').outputs.subnetResourceId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "6631975685067976495"
+            }
+          },
+          "parameters": {
+            "subnetResourceId": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "splitSubnetId": "[split(parameters('subnetResourceId'), '/')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/tags",
+              "apiVersion": "2022-09-01",
+              "name": "default",
+              "properties": {
+                "tags": {
+                  "subnetId": "[variables('splitSubnetId')[8]]",
+                  "deployment": "[deployment().name]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet2')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "dep_subnet1_2",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetResourceId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'subnet1'), '2022-09-01').outputs.subnetResourceId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "6631975685067976495"
+            }
+          },
+          "parameters": {
+            "subnetResourceId": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "splitSubnetId": "[split(parameters('subnetResourceId'), '/')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/tags",
+              "apiVersion": "2022-09-01",
+              "name": "default",
+              "properties": {
+                "tags": {
+                  "subnetId": "[variables('splitSubnetId')[8]]",
+                  "deployment": "[deployment().name]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet1')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "dep_subnet1_3",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetResourceId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'subnet1'), '2022-09-01').outputs.subnetResourceId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "6631975685067976495"
+            }
+          },
+          "parameters": {
+            "subnetResourceId": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "splitSubnetId": "[split(parameters('subnetResourceId'), '/')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/tags",
+              "apiVersion": "2022-09-01",
+              "name": "default",
+              "properties": {
+                "tags": {
+                  "subnetId": "[variables('splitSubnetId')[8]]",
+                  "deployment": "[deployment().name]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet1')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "dep_subnet1_4",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetResourceId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'subnet1'), '2022-09-01').outputs.subnetResourceId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "6631975685067976495"
+            }
+          },
+          "parameters": {
+            "subnetResourceId": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "splitSubnetId": "[split(parameters('subnetResourceId'), '/')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/tags",
+              "apiVersion": "2022-09-01",
+              "name": "default",
+              "properties": {
+                "tags": {
+                  "subnetId": "[variables('splitSubnetId')[8]]",
+                  "deployment": "[deployment().name]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet1')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "dep_subnet1_5",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetResourceId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'subnet1'), '2022-09-01').outputs.subnetResourceId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "6631975685067976495"
+            }
+          },
+          "parameters": {
+            "subnetResourceId": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "splitSubnetId": "[split(parameters('subnetResourceId'), '/')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/tags",
+              "apiVersion": "2022-09-01",
+              "name": "default",
+              "properties": {
+                "tags": {
+                  "subnetId": "[variables('splitSubnetId')[8]]",
+                  "deployment": "[deployment().name]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet1')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "dep_subnet1_6",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetResourceId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'subnet1'), '2022-09-01').outputs.subnetResourceId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "6631975685067976495"
+            }
+          },
+          "parameters": {
+            "subnetResourceId": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "splitSubnetId": "[split(parameters('subnetResourceId'), '/')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/tags",
+              "apiVersion": "2022-09-01",
+              "name": "default",
+              "properties": {
+                "tags": {
+                  "subnetId": "[variables('splitSubnetId')[8]]",
+                  "deployment": "[deployment().name]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet1')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "dep_subnet3_1",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetResourceId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', 'subnet3'), '2022-09-01').outputs.subnetResourceId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "6631975685067976495"
+            }
+          },
+          "parameters": {
+            "subnetResourceId": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "splitSubnetId": "[split(parameters('subnetResourceId'), '/')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/tags",
+              "apiVersion": "2022-09-01",
+              "name": "default",
+              "properties": {
+                "tags": {
+                  "subnetId": "[variables('splitSubnetId')[8]]",
+                  "deployment": "[deployment().name]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', 'subnet3')]",
+        "subnet4"
+      ]
+    },
+    {
+      "copy": {
+        "name": "dep_subnet4_1",
+        "count": "[length(range(1, 3))]"
+      },
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "[format('dep_subnet4_{0}', copyIndex())]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "subnetResourceId": {
+            "value": "[reference(resourceId('Microsoft.Resources/deployments', format('subnet4-{0}', copyIndex())), '2022-09-01').outputs.subnetResourceId.value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.23.1.45101",
+              "templateHash": "6631975685067976495"
+            }
+          },
+          "parameters": {
+            "subnetResourceId": {
+              "type": "string"
+            }
+          },
+          "variables": {
+            "splitSubnetId": "[split(parameters('subnetResourceId'), '/')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Resources/tags",
+              "apiVersion": "2022-09-01",
+              "name": "default",
+              "properties": {
+                "tags": {
+                  "subnetId": "[variables('splitSubnetId')[8]]",
+                  "deployment": "[deployment().name]"
+                }
+              }
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Resources/deployments', format('subnet4-{0}', copyIndex()))]"
+      ]
+    }
+  ]
+}
