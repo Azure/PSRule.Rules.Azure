@@ -93,6 +93,7 @@ namespace PSRule.Rules.Azure.Data.Template
             private bool? _IsGenerated;
             private JObject _Parameters;
             private EnvironmentData _Environments;
+            private ResourceDependencyGraph _DependencyMap;
 
             internal TemplateContext()
             {
@@ -529,7 +530,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 var path = template.GetResourcePath(parentLevel: 2);
                 deployment.SetTargetInfo(TemplateFile, ParameterFile, path);
-                var deploymentValue = new DeploymentValue(id, deploymentName, null, scope, deploymentScope, deployment, null, null);
+                var deploymentValue = new DeploymentValue(id, deploymentName, null, scope, deploymentScope, deployment, null);
                 AddResource(deploymentValue);
                 _CurrentDeployment = deploymentValue;
                 _Deployment.Push(deploymentValue);
@@ -760,6 +761,24 @@ namespace PSRule.Rules.Azure.Data.Template
             internal void AddSymbol(IDeploymentSymbol symbol)
             {
                 _Symbols.Add(symbol.Name, symbol);
+            }
+
+            internal IResourceValue[] SortDependencies(IResourceValue[] resources)
+            {
+                return _DependencyMap == null ? resources : _DependencyMap.Sort(resources);
+            }
+
+            /// <summary>
+            /// Track dependencies against the resource.
+            /// </summary>
+            /// <param name="resource">The resource with dependencies to track.</param>
+            /// <param name="dependencies">An array of dependencies as resource IDs or symbolic names.</param>
+            internal void TrackDependencies(IResourceValue resource, string[] dependencies)
+            {
+                if (resource == null) return;
+
+                _DependencyMap ??= new ResourceDependencyGraph();
+                _DependencyMap.Track(resource, dependencies);
             }
         }
 
@@ -1251,7 +1270,6 @@ namespace PSRule.Rules.Azure.Data.Template
 
             resource.TryGetProperty(PROPERTY_NAME, out var name);
             resource.TryGetProperty(PROPERTY_TYPE, out var type);
-            resource.TryGetDependencies(out var dependencies);
 
             var subscriptionId = context.Subscription.SubscriptionId;
             var resourceGroupName = context.ResourceGroup.Name;
@@ -1278,7 +1296,13 @@ namespace PSRule.Rules.Azure.Data.Template
 
             context.UpdateResourceScope(resource);
             resource[PROPERTY_ID] = resourceId;
-            return new ResourceValue(resourceId, name, type, symbolicName, resource, dependencies, copyIndex.Clone());
+            var result = new ResourceValue(resourceId, name, type, symbolicName, resource, copyIndex.Clone());
+
+            // Map dependencies if any are defined.
+            resource.TryGetDependencies(out var dependencies);
+            context.TrackDependencies(result, dependencies);
+
+            return result;
         }
 
         private static string ResolveDeploymentScopeProperty(TemplateContext context, JObject resource, string propertyName, string defaultValue)
@@ -1974,8 +1998,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         protected virtual IResourceValue[] SortResources(TemplateContext context, IResourceValue[] resources)
         {
-            Array.Sort(resources, new ResourceDependencyComparer());
-            return resources;
+            return context.SortDependencies(resources);
         }
 
         /// <summary>

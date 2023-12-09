@@ -32,6 +32,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.32.0-B0053 (pre-release)
+
 What's changed since pre-release v1.32.0-B0021:
 
 - Updated rules:
@@ -52,6 +54,9 @@ What's changed since pre-release v1.32.0-B0021:
 - Engineering:
   - Bump xunit.runner.visualstudio to v2.5.4.
     [#2567](https://github.com/Azure/PSRule.Rules.Azure/pull/2567)
+- Bug fixes:
+  - Fixed dependency ordered is incorrect by @BernieWhite.
+    [#2578](https://github.com/Azure/PSRule.Rules.Azure/issues/2578)
 
 ## v1.32.0-B0021 (pre-release)
 
