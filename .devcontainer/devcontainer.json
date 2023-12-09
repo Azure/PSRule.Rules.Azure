@@ -8,7 +8,8 @@
           "pwsh": {
             "path": "/opt/microsoft/powershell/7/pwsh"
           }
-        }
+        },
+        "powershell.powerShellDefaultVersion": "PowerShell"
       },
       "extensions": [
         "ms-dotnettools.vscode-dotnet-runtime",
@@ -20,7 +21,8 @@
         "github.vscode-github-actions",
         "bewhite.psrule-vscode-preview",
         "davidanson.vscode-markdownlint",
-        "eamodio.gitlens"
+        "eamodio.gitlens",
+        "streetsidesoftware.code-spell-checker"
       ]
     }
   },
