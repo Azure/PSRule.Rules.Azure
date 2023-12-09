@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "CheckNameAvailability",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
       "2023-03-31",
@@ -15,12 +16,13 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "CommunicationServices",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
       "2023-03-31",
@@ -34,7 +36,7 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -46,12 +48,13 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "EmailServices",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
       "2023-03-31",
@@ -63,12 +66,13 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "EmailServices/Domains",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
       "2023-03-31",
@@ -80,12 +84,13 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "EmailServices/Domains/SenderUsernames",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
       "2023-03-31",
@@ -94,12 +99,13 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
       "2023-03-31",
@@ -111,12 +117,13 @@
       "2020-08-20"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
       "2023-03-31",
@@ -130,12 +137,13 @@
     "locations": [
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
       "2023-03-31",
@@ -147,12 +155,13 @@
       "2020-08-20"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-04-01-preview",
       "2023-04-01",
       "2023-03-31",
@@ -163,6 +172,6 @@
       "2020-08-20"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

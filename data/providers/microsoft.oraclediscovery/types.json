@@ -8,7 +8,7 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -24,7 +24,7 @@
       "West Central US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -35,7 +35,7 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -47,7 +47,7 @@
       "Korea Central",
       "Southeast Asia"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -59,7 +59,7 @@
       "Korea Central",
       "Southeast Asia"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -71,7 +71,7 @@
       "Korea Central",
       "Southeast Asia"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -83,7 +83,7 @@
       "Korea Central",
       "Southeast Asia"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -95,6 +95,6 @@
       "Korea Central",
       "Southeast Asia"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

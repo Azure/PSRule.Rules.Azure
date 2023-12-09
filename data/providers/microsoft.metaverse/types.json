@@ -6,7 +6,7 @@
       "2022-02-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -17,6 +17,6 @@
     "locations": [
       "West Central US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

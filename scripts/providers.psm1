@@ -89,7 +89,7 @@ function UpdateProviders {
                     resourceType = $_.resourceType
                     apiVersions  = $_.apiVersions
                     locations    = @($_.locations | Sort-Object)
-                    zoneMappings = ($_.ZoneMappings | Sort-Object -Property location | ForEach-Object {
+                    zoneMappings = @($_.ZoneMappings | Sort-Object -Property location | ForEach-Object {
                             $zones = $_.zones
                             if ($Null -ne $zones) {
                                 $zones = @($_.zones | Sort-Object)

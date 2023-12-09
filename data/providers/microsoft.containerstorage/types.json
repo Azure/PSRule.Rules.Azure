@@ -8,7 +8,7 @@
     "locations": [
       "East US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -19,7 +19,7 @@
     "locations": [
       "East US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -30,7 +30,7 @@
     "locations": [
       "East US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -41,14 +41,16 @@
     "locations": [
       "East US 2"
     ],
-    "zoneMappings": {
-      "location": "East US 2",
-      "zones": [
-        "1",
-        "2",
-        "3"
-      ]
-    }
+    "zoneMappings": [
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
   },
   {
     "aliases": null,
@@ -59,14 +61,16 @@
     "locations": [
       "East US 2"
     ],
-    "zoneMappings": {
-      "location": "East US 2",
-      "zones": [
-        "1",
-        "2",
-        "3"
-      ]
-    }
+    "zoneMappings": [
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
   },
   {
     "aliases": null,
@@ -77,13 +81,15 @@
     "locations": [
       "East US 2"
     ],
-    "zoneMappings": {
-      "location": "East US 2",
-      "zones": [
-        "1",
-        "2",
-        "3"
-      ]
-    }
+    "zoneMappings": [
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
   }
 ]

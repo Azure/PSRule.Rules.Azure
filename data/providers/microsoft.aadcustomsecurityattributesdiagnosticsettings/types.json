@@ -6,7 +6,7 @@
       "2017-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -15,7 +15,7 @@
       "2017-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -26,6 +26,6 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

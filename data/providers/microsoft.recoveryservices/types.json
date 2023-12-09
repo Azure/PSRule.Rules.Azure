@@ -49,12 +49,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-08-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2023-04-01",
@@ -83,7 +84,7 @@
       "2016-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -134,7 +135,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -185,7 +186,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -234,7 +235,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -283,7 +284,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -332,7 +333,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -381,7 +382,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -430,7 +431,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -479,12 +480,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/backupPreValidateProtection",
     "apiVersions": [
+      "2023-08-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2023-04-01",
@@ -551,12 +553,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/backupStatus",
     "apiVersions": [
+      "2023-08-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2023-04-01",
@@ -624,12 +627,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/backupValidateFeatures",
     "apiVersions": [
+      "2023-08-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2023-04-01",
@@ -696,12 +700,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-08-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2023-04-01",
@@ -753,7 +758,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -803,12 +808,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-08-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2023-04-01",
@@ -865,12 +871,13 @@
       "2015-03-15"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "replicationEligibilityResults",
     "apiVersions": [
+      "2023-08-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2023-04-01",
@@ -937,7 +944,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1019,6 +1026,7 @@
     },
     "resourceType": "vaults",
     "apiVersions": [
+      "2023-08-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2023-04-01",
@@ -1116,7 +1124,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
