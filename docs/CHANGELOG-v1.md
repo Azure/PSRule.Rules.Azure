@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.32.0-B0053:
+
+- Engineering:
+  - Updated resource providers and policy aliases.
+    [#2579](https://github.com/Azure/PSRule.Rules.Azure/pull/2579)
+
 ## v1.32.0-B0053 (pre-release)
 
 What's changed since pre-release v1.32.0-B0021:
