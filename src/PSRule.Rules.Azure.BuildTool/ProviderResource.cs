@@ -118,8 +118,17 @@ namespace PSRule.Rules.Azure.BuildTool
         {
             using var stream = new StreamReader(path);
             using var reader = new JsonTextReader(stream);
-            var d = new JsonSerializer();
-            return d.Deserialize<T>(reader);
+            try
+            {
+
+                var d = new JsonSerializer();
+                return d.Deserialize<T>(reader);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"ERROR - Failed to read file: {path}");
+                throw;
+            }
         }
 
         private static void WriteFile<T>(string path, T o)

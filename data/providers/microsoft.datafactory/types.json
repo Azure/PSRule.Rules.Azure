@@ -6,7 +6,7 @@
       "2018-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -84,6 +84,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -101,7 +102,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -271,6 +272,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -288,7 +290,54 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "factories/privateEndpointConnectionProxies",
+    "apiVersions": [
+      "2018-06-01",
+      "2017-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -298,7 +347,7 @@
       "2017-09-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -327,6 +376,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -344,7 +394,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -372,6 +422,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
       "Qatar Central",
       "South Africa North",
       "South Central US",
@@ -389,7 +440,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -405,7 +456,7 @@
       "West Central US",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

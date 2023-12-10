@@ -1,7 +1,8 @@
 [
   {
     "aliases": {
-      "Microsoft.Attestation/attestationProviders/publicNetworkAccess": "properties.publicNetworkAccess"
+      "Microsoft.Attestation/attestationProviders/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.Attestation/attestationProviders/tpmAttestationAuthentication": "properties.tpmAttestationAuthentication"
     },
     "resourceType": "attestationProviders",
     "apiVersions": [
@@ -20,6 +21,8 @@
       "Central US",
       "East US",
       "East US 2",
+      "Germany North",
+      "Germany West Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -28,12 +31,15 @@
       "South Central US",
       "Southeast Asia",
       "Switzerland North",
+      "UAE Central",
+      "UAE North",
       "UK South",
       "UK West",
       "West Europe",
-      "West US"
+      "West US",
+      "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -54,6 +60,8 @@
       "Central US",
       "East US",
       "East US 2",
+      "Germany North",
+      "Germany West Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -62,12 +70,15 @@
       "South Central US",
       "Southeast Asia",
       "Switzerland North",
+      "UAE Central",
+      "UAE North",
       "UK South",
       "UK West",
       "West Europe",
-      "West US"
+      "West US",
+      "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -80,7 +91,7 @@
       "2018-09-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -101,6 +112,8 @@
       "Central US",
       "East US",
       "East US 2",
+      "Germany North",
+      "Germany West Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -109,12 +122,15 @@
       "South Central US",
       "Southeast Asia",
       "Switzerland North",
+      "UAE Central",
+      "UAE North",
       "UK South",
       "UK West",
       "West Europe",
-      "West US"
+      "West US",
+      "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -128,7 +144,7 @@
       "2018-09-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

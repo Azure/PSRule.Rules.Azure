@@ -9,7 +9,7 @@
       "2022-03-02-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -23,7 +23,7 @@
     "locations": [
       "East US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -35,6 +35,6 @@
       "2022-03-02-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

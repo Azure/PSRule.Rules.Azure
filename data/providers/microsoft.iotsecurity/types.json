@@ -6,7 +6,7 @@
       "2021-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -17,7 +17,7 @@
       "2021-02-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -26,7 +26,7 @@
       "2023-02-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -37,7 +37,7 @@
       "2021-02-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -50,7 +50,7 @@
       "East US 2 EUAP",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -64,7 +64,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -77,7 +77,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -89,7 +89,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -102,7 +102,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -114,7 +114,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -126,7 +126,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -138,7 +138,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -151,7 +151,7 @@
       "East US 2 EUAP",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -164,7 +164,7 @@
       "East US 2 EUAP",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -176,7 +176,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -188,7 +188,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -198,7 +198,7 @@
       "2021-02-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -207,7 +207,7 @@
       "2021-02-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -216,7 +216,7 @@
       "2021-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -260,7 +260,7 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -306,6 +306,6 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

@@ -117,6 +117,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -144,7 +145,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -171,6 +172,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -198,7 +200,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -226,6 +228,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -253,7 +256,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -281,6 +284,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -308,7 +312,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -336,6 +340,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -363,6 +368,6 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

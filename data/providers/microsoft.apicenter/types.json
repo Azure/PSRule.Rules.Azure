@@ -3,17 +3,19 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-03-01",
       "2023-07-01-preview"
     ],
     "locations": [
       "East US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "services",
     "apiVersions": [
+      "2024-03-01",
       "2023-07-01-preview"
     ],
     "locations": [
@@ -23,6 +25,6 @@
       "UK South",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

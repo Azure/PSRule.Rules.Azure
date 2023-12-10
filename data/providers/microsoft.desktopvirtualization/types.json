@@ -1,8 +1,51 @@
 [
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DesktopVirtualization/appAttachPackages/failHealthCheckOnStagingFailure": "properties.failHealthCheckOnStagingFailure",
+      "Microsoft.DesktopVirtualization/appAttachPackages/hostPoolReferences": "properties.hostPoolReferences",
+      "Microsoft.DesktopVirtualization/appAttachPackages/hostPoolReferences[*]": "properties.hostPoolReferences[*]",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image": "properties.image",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.certificateExpiry": "properties.image.certificateExpiry",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.certificateName": "properties.image.certificateName",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.displayName": "properties.image.displayName",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.imagePath": "properties.image.imagePath",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.isActive": "properties.image.isActive",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.isPackageTimestamped": "properties.image.isPackageTimestamped",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.isRegularRegistration": "properties.image.isRegularRegistration",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.lastUpdated": "properties.image.lastUpdated",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageAlias": "properties.image.packageAlias",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageApplications": "properties.image.packageApplications",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageApplications[*]": "properties.image.packageApplications[*]",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageApplications[*].appId": "properties.image.packageApplications[*].appId",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageApplications[*].appUserModelID": "properties.image.packageApplications[*].appUserModelID",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageApplications[*].description": "properties.image.packageApplications[*].description",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageApplications[*].friendlyName": "properties.image.packageApplications[*].friendlyName",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageApplications[*].iconImageName": "properties.image.packageApplications[*].iconImageName",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageApplications[*].rawIcon": "properties.image.packageApplications[*].rawIcon",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageApplications[*].rawPng": "properties.image.packageApplications[*].rawPng",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageDependencies": "properties.image.packageDependencies",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageDependencies[*]": "properties.image.packageDependencies[*]",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageDependencies[*].dependencyName": "properties.image.packageDependencies[*].dependencyName",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageDependencies[*].minVersion": "properties.image.packageDependencies[*].minVersion",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageDependencies[*].publisher": "properties.image.packageDependencies[*].publisher",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageFamilyName": "properties.image.packageFamilyName",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageFullName": "properties.image.packageFullName",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageName": "properties.image.packageName",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.packageRelativePath": "properties.image.packageRelativePath",
+      "Microsoft.DesktopVirtualization/appAttachPackages/image.version": "properties.image.version",
+      "Microsoft.DesktopVirtualization/appAttachPackages/keyVaultURL": "properties.keyVaultURL",
+      "Microsoft.DesktopVirtualization/appAttachPackages/managedBy": "managedBy",
+      "Microsoft.DesktopVirtualization/appAttachPackages/provisioningState": "properties.provisioningState",
+      "Microsoft.DesktopVirtualization/appAttachPackages/sku": "sku",
+      "Microsoft.DesktopVirtualization/appAttachPackages/sku.capacity": "sku.capacity",
+      "Microsoft.DesktopVirtualization/appAttachPackages/sku.family": "sku.family",
+      "Microsoft.DesktopVirtualization/appAttachPackages/sku.name": "sku.name",
+      "Microsoft.DesktopVirtualization/appAttachPackages/sku.size": "sku.size",
+      "Microsoft.DesktopVirtualization/appAttachPackages/sku.tier": "sku.tier"
+    },
     "resourceType": "appattachpackages",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -31,7 +74,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -45,6 +88,7 @@
       "Microsoft.DesktopVirtualization/applicationGroups/migrationRequest.migrationPath": "properties.migrationRequest.migrationPath",
       "Microsoft.DesktopVirtualization/applicationGroups/migrationRequest.operation": "properties.migrationRequest.operation",
       "Microsoft.DesktopVirtualization/applicationGroups/objectId": "properties.objectId",
+      "Microsoft.DesktopVirtualization/applicationGroups/showInFeed": "properties.showInFeed",
       "Microsoft.DesktopVirtualization/applicationGroups/sku": "sku",
       "Microsoft.DesktopVirtualization/applicationGroups/sku.capacity": "sku.capacity",
       "Microsoft.DesktopVirtualization/applicationGroups/sku.family": "sku.family",
@@ -55,6 +99,7 @@
     },
     "resourceType": "applicationgroups",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -102,7 +147,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -123,6 +168,7 @@
     },
     "resourceType": "applicationgroups/applications",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -170,7 +216,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -179,6 +225,7 @@
     },
     "resourceType": "applicationgroups/desktops",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -226,12 +273,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "applicationgroups/startmenuitems",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -279,7 +327,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -291,6 +339,8 @@
       "Microsoft.DesktopVirtualization/hostPools/agentUpdate.maintenanceWindowTimeZone": "properties.agentUpdate.maintenanceWindowTimeZone",
       "Microsoft.DesktopVirtualization/hostPools/agentUpdate.type": "properties.agentUpdate.type",
       "Microsoft.DesktopVirtualization/hostPools/agentUpdate.useSessionHostLocalTime": "properties.agentUpdate.useSessionHostLocalTime",
+      "Microsoft.DesktopVirtualization/hostPools/appAttachPackageReferences": "properties.appAttachPackageReferences",
+      "Microsoft.DesktopVirtualization/hostPools/appAttachPackageReferences[*]": "properties.appAttachPackageReferences[*]",
       "Microsoft.DesktopVirtualization/hostPools/applicationGroupReferences": "properties.applicationGroupReferences",
       "Microsoft.DesktopVirtualization/hostPools/applicationGroupReferences[*]": "properties.applicationGroupReferences[*]",
       "Microsoft.DesktopVirtualization/hostPools/cloudPcResource": "properties.cloudPcResource",
@@ -343,6 +393,7 @@
     },
     "resourceType": "hostpools",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -390,7 +441,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -420,6 +471,7 @@
     },
     "resourceType": "hostpools/msixpackages",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -467,7 +519,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -477,6 +529,7 @@
     },
     "resourceType": "hostpools/sessionhosts",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -524,12 +577,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "hostpools/sessionhosts/usersessions",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -577,12 +631,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "hostpools/usersessions",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -630,12 +685,16 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-29-privatepreview",
+      "2023-11-01-preview",
+      "2023-10-09-privatepreview",
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-05-18-privatepreview",
@@ -674,12 +733,61 @@
       "2019-01-23-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DesktopVirtualization/scalingPlans/description": "properties.description",
+      "Microsoft.DesktopVirtualization/scalingPlans/exclusionTag": "properties.exclusionTag",
+      "Microsoft.DesktopVirtualization/scalingPlans/friendlyName": "properties.friendlyName",
+      "Microsoft.DesktopVirtualization/scalingPlans/hostPoolReferences": "properties.hostPoolReferences",
+      "Microsoft.DesktopVirtualization/scalingPlans/hostPoolReferences[*]": "properties.hostPoolReferences[*]",
+      "Microsoft.DesktopVirtualization/scalingPlans/hostPoolReferences[*].hostPoolArmPath": "properties.hostPoolReferences[*].hostPoolArmPath",
+      "Microsoft.DesktopVirtualization/scalingPlans/hostPoolReferences[*].scalingPlanEnabled": "properties.hostPoolReferences[*].scalingPlanEnabled",
+      "Microsoft.DesktopVirtualization/scalingPlans/hostPoolType": "properties.hostPoolType",
+      "Microsoft.DesktopVirtualization/scalingPlans/managedBy": "managedBy",
+      "Microsoft.DesktopVirtualization/scalingPlans/objectId": "properties.objectId",
+      "Microsoft.DesktopVirtualization/scalingPlans/ring": "properties.ring",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules": "properties.schedules",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*]": "properties.schedules[*]",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].daysOfWeek": "properties.schedules[*].daysOfWeek",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].daysOfWeek[*]": "properties.schedules[*].daysOfWeek[*]",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].name": "properties.schedules[*].name",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].offPeakLoadBalancingAlgorithm": "properties.schedules[*].offPeakLoadBalancingAlgorithm",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].offPeakStartTime": "properties.schedules[*].offPeakStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].offPeakStartTime.hour": "properties.schedules[*].offPeakStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].offPeakStartTime.minute": "properties.schedules[*].offPeakStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].peakLoadBalancingAlgorithm": "properties.schedules[*].peakLoadBalancingAlgorithm",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].peakStartTime": "properties.schedules[*].peakStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].peakStartTime.hour": "properties.schedules[*].peakStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].peakStartTime.minute": "properties.schedules[*].peakStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownCapacityThresholdPct": "properties.schedules[*].rampDownCapacityThresholdPct",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownForceLogoffUsers": "properties.schedules[*].rampDownForceLogoffUsers",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownLoadBalancingAlgorithm": "properties.schedules[*].rampDownLoadBalancingAlgorithm",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownMinimumHostsPct": "properties.schedules[*].rampDownMinimumHostsPct",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownNotificationMessage": "properties.schedules[*].rampDownNotificationMessage",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownStartTime": "properties.schedules[*].rampDownStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownStartTime.hour": "properties.schedules[*].rampDownStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownStartTime.minute": "properties.schedules[*].rampDownStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownStopHostsWhen": "properties.schedules[*].rampDownStopHostsWhen",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampDownWaitTimeMinutes": "properties.schedules[*].rampDownWaitTimeMinutes",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampUpCapacityThresholdPct": "properties.schedules[*].rampUpCapacityThresholdPct",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampUpLoadBalancingAlgorithm": "properties.schedules[*].rampUpLoadBalancingAlgorithm",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampUpMinimumHostsPct": "properties.schedules[*].rampUpMinimumHostsPct",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampUpStartTime": "properties.schedules[*].rampUpStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampUpStartTime.hour": "properties.schedules[*].rampUpStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/schedules[*].rampUpStartTime.minute": "properties.schedules[*].rampUpStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/sku": "sku",
+      "Microsoft.DesktopVirtualization/scalingPlans/sku.capacity": "sku.capacity",
+      "Microsoft.DesktopVirtualization/scalingPlans/sku.family": "sku.family",
+      "Microsoft.DesktopVirtualization/scalingPlans/sku.name": "sku.name",
+      "Microsoft.DesktopVirtualization/scalingPlans/sku.size": "sku.size",
+      "Microsoft.DesktopVirtualization/scalingPlans/sku.tier": "sku.tier",
+      "Microsoft.DesktopVirtualization/scalingPlans/timeZone": "properties.timeZone"
+    },
     "resourceType": "scalingplans",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -727,7 +835,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -760,6 +868,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2023-10-04-preview",
       "2023-09-05",
       "2023-07-07-preview",
       "2023-03-21-privatepreview",
@@ -807,6 +916,101 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DesktopVirtualization/hostPools/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "hostpools/privateendpointconnections"
+  },
+  {
+    "aliases": {
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/daysOfWeek": "properties.daysOfWeek",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/daysOfWeek[*]": "properties.daysOfWeek[*]",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/offPeakActionOnDisconnect": "properties.offPeakActionOnDisconnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/offPeakActionOnLogoff": "properties.offPeakActionOnLogoff",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/offPeakMinutesToWaitOnDisconnect": "properties.offPeakMinutesToWaitOnDisconnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/offPeakMinutesToWaitOnLogoff": "properties.offPeakMinutesToWaitOnLogoff",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/offPeakStartTime": "properties.offPeakStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/offPeakStartTime.hour": "properties.offPeakStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/offPeakStartTime.minute": "properties.offPeakStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/offPeakStartVMOnConnect": "properties.offPeakStartVMOnConnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/peakActionOnDisconnect": "properties.peakActionOnDisconnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/peakActionOnLogoff": "properties.peakActionOnLogoff",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/peakMinutesToWaitOnDisconnect": "properties.peakMinutesToWaitOnDisconnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/peakMinutesToWaitOnLogoff": "properties.peakMinutesToWaitOnLogoff",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/peakStartTime": "properties.peakStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/peakStartTime.hour": "properties.peakStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/peakStartTime.minute": "properties.peakStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/peakStartVMOnConnect": "properties.peakStartVMOnConnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampDownActionOnDisconnect": "properties.rampDownActionOnDisconnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampDownActionOnLogoff": "properties.rampDownActionOnLogoff",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampDownMinutesToWaitOnDisconnect": "properties.rampDownMinutesToWaitOnDisconnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampDownMinutesToWaitOnLogoff": "properties.rampDownMinutesToWaitOnLogoff",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampDownStartTime": "properties.rampDownStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampDownStartTime.hour": "properties.rampDownStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampDownStartTime.minute": "properties.rampDownStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampDownStartVMOnConnect": "properties.rampDownStartVMOnConnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampUpActionOnDisconnect": "properties.rampUpActionOnDisconnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampUpActionOnLogoff": "properties.rampUpActionOnLogoff",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampUpAutoStartHosts": "properties.rampUpAutoStartHosts",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampUpMinutesToWaitOnDisconnect": "properties.rampUpMinutesToWaitOnDisconnect",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampUpMinutesToWaitOnLogoff": "properties.rampUpMinutesToWaitOnLogoff",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampUpStartTime": "properties.rampUpStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampUpStartTime.hour": "properties.rampUpStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampUpStartTime.minute": "properties.rampUpStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/personalSchedules/rampUpStartVMOnConnect": "properties.rampUpStartVMOnConnect"
+    },
+    "resourceType": "scalingplans/personalschedules"
+  },
+  {
+    "aliases": {
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/daysOfWeek": "properties.daysOfWeek",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/daysOfWeek[*]": "properties.daysOfWeek[*]",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/offPeakLoadBalancingAlgorithm": "properties.offPeakLoadBalancingAlgorithm",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/offPeakStartTime": "properties.offPeakStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/offPeakStartTime.hour": "properties.offPeakStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/offPeakStartTime.minute": "properties.offPeakStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/peakLoadBalancingAlgorithm": "properties.peakLoadBalancingAlgorithm",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/peakStartTime": "properties.peakStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/peakStartTime.hour": "properties.peakStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/peakStartTime.minute": "properties.peakStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownCapacityThresholdPct": "properties.rampDownCapacityThresholdPct",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownForceLogoffUsers": "properties.rampDownForceLogoffUsers",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownLoadBalancingAlgorithm": "properties.rampDownLoadBalancingAlgorithm",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownMinimumHostsPct": "properties.rampDownMinimumHostsPct",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownNotificationMessage": "properties.rampDownNotificationMessage",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownStartTime": "properties.rampDownStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownStartTime.hour": "properties.rampDownStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownStartTime.minute": "properties.rampDownStartTime.minute",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownStopHostsWhen": "properties.rampDownStopHostsWhen",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampDownWaitTimeMinutes": "properties.rampDownWaitTimeMinutes",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampUpCapacityThresholdPct": "properties.rampUpCapacityThresholdPct",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampUpLoadBalancingAlgorithm": "properties.rampUpLoadBalancingAlgorithm",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampUpMinimumHostsPct": "properties.rampUpMinimumHostsPct",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampUpStartTime": "properties.rampUpStartTime",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampUpStartTime.hour": "properties.rampUpStartTime.hour",
+      "Microsoft.DesktopVirtualization/scalingPlans/pooledSchedules/rampUpStartTime.minute": "properties.rampUpStartTime.minute"
+    },
+    "resourceType": "scalingplans/pooledschedules"
+  },
+  {
+    "aliases": {
+      "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DesktopVirtualization/workspaces/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "workspaces/privateendpointconnections"
   }
 ]

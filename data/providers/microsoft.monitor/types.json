@@ -8,17 +8,23 @@
     ],
     "locations": [
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Korea Central",
       "North Europe",
       "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Switzerland North",
       "UAE North",
       "UK South",
       "West Central US",
@@ -26,7 +32,7 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -38,7 +44,42 @@
       "2021-06-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/locationOperationStatuses",
+    "apiVersions": [
+      "2023-04-03",
+      "2021-06-03-preview"
+    ],
+    "locations": [
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -49,17 +90,23 @@
     ],
     "locations": [
       "Australia Southeast",
+      "Brazil South",
       "Canada Central",
       "Central India",
       "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Korea Central",
       "North Europe",
       "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Switzerland North",
       "UAE North",
       "UK South",
       "West Central US",
@@ -67,36 +114,7 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/operationStatuses",
-    "apiVersions": [
-      "2023-04-03",
-      "2021-06-03-preview"
-    ],
-    "locations": [
-      "Australia Southeast",
-      "Canada Central",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "North Europe",
-      "Norway East",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "UAE North",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -117,12 +135,17 @@
       "East Asia",
       "East US",
       "East US 2",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Switzerland North",
       "UAE North",
       "UK South",
       "West Central US",
@@ -130,6 +153,6 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

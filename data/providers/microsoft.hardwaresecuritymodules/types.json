@@ -3,12 +3,13 @@
     "aliases": null,
     "resourceType": "cloudHsmClusters",
     "apiVersions": [
+      "2023-12-10-preview",
       "2022-08-31-preview"
     ],
     "locations": [
       "UK West"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -19,12 +20,13 @@
       "2018-10-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-12-10-preview",
       "2022-08-31-preview",
       "2021-11-30",
       "2018-10-31-preview",
@@ -54,6 +56,6 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

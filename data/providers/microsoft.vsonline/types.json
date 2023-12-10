@@ -13,7 +13,7 @@
       "West Europe",
       "West Us 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -29,7 +29,7 @@
       "2019-07-01-alpha"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -48,7 +48,7 @@
       "West Europe",
       "West Us 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -64,6 +64,6 @@
       "2019-07-01-alpha"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

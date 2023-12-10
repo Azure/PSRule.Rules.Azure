@@ -9,7 +9,7 @@
       "2020-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -23,7 +23,7 @@
       "2017-03-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -39,7 +39,7 @@
       "2016-05-09-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -59,12 +59,13 @@
       "2016-07-12-rc"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-01-preview",
       "2023-01-01-alpha",
       "2022-10-01",
       "2020-07-01-preview",
@@ -75,7 +76,7 @@
       "2016-05-09-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -86,7 +87,7 @@
       "2022-09-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -102,7 +103,7 @@
       "2016-05-09-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -118,6 +119,6 @@
       "2016-05-09-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

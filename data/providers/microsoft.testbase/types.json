@@ -3,6 +3,9 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-15-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -23,12 +26,15 @@
       "2020-12-16-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-15-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -52,12 +58,15 @@
       "East US 2 EUAP",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-15-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -78,12 +87,15 @@
       "2020-12-16-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "skus",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-15-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -106,12 +118,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -127,12 +142,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/actionRequests",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview"
@@ -140,12 +158,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/availableInplaceUpgradeOSs",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -155,12 +176,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/availableOSs",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -176,12 +200,50 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/availableVMConfigurationTypes",
+    "apiVersions": [
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/chatSessions",
+    "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/credentials",
+    "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/customerEvents",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -197,23 +259,29 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/customImages",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview"
     ],
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/draftPackages",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -222,12 +290,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/emailEvents",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -243,12 +314,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/featureUpdateSupportedOses",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -259,12 +333,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/firstPartyApps",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -274,12 +351,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/flightingRings",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -295,47 +375,72 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/freeHourBalances",
+    "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/galleryApps",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview"
     ],
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/galleryApps/galleryAppSkus",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview"
     ],
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/imageDefinitions",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview"
     ],
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/packages",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -351,12 +456,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/packages/favoriteProcesses",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -372,12 +480,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/packages/osUpdates",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -393,12 +504,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/packages/testResults",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -414,12 +528,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/packages/testResults/analysisResults",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -435,12 +552,37 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/testConfigurations",
+    "apiVersions": [
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "testBaseAccounts/testConfigurations/testResults",
+    "apiVersions": [
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/testSummaries",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -456,12 +598,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/testTypes",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -477,12 +622,15 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/usages",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -498,17 +646,20 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "testBaseAccounts/vhds",
     "apiVersions": [
+      "2023-12-01-preview",
+      "2023-11-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview"
     ],
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

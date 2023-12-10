@@ -38,6 +38,9 @@ What's changed since pre-release v1.32.0-B0053:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use latest stable version `1.27.7` by @BernieWhite.
       [#2581](https://github.com/Azure/PSRule.Rules.Azure/issues/2581)
+- Engineering:
+  - Updated resource providers and policy aliases.
+    [#2579](https://github.com/Azure/PSRule.Rules.Azure/pull/2579)
 
 ## v1.32.0-B0053 (pre-release)
 
@@ -59,6 +62,8 @@ What's changed since pre-release v1.32.0-B0021:
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
     [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
 - Engineering:
+  - Updated resource providers and policy aliases.
+    [#2579](https://github.com/Azure/PSRule.Rules.Azure/pull/2579)
   - Bump xunit.runner.visualstudio to v2.5.4.
     [#2567](https://github.com/Azure/PSRule.Rules.Azure/pull/2567)
 - Bug fixes:

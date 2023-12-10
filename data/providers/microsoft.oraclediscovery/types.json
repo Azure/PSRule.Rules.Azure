@@ -1,6 +1,33 @@
 [
   {
     "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2022-11-22-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2022-11-22-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "North Central US",
+      "South Central US",
+      "Southeast Asia",
+      "West Central US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2022-11-22-preview"
@@ -8,6 +35,66 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "oraclesites",
+    "apiVersions": [
+      "2022-11-22-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "oraclesites/errorSummaries",
+    "apiVersions": [
+      "2022-11-22-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "oraclesites/oracledatabases",
+    "apiVersions": [
+      "2022-11-22-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "oraclesites/oracleservers",
+    "apiVersions": [
+      "2022-11-22-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "oraclesites/summaries",
+    "apiVersions": [
+      "2022-11-22-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
   }
 ]

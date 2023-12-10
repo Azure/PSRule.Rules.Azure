@@ -8,7 +8,7 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -19,7 +19,7 @@
     "locations": [
       "Central US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -30,6 +30,6 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

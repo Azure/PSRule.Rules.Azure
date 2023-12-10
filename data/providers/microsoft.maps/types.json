@@ -36,7 +36,7 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -59,7 +59,7 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -81,7 +81,7 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -99,6 +99,6 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

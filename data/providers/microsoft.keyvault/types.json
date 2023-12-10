@@ -4,18 +4,20 @@
     "resourceType": "checkMhsmNameAvailability",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -32,13 +34,14 @@
       "2015-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "deletedManagedHSMs",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -51,8 +54,10 @@
     ],
     "locations": [
       "Australia Central",
+      "Australia Central 2",
       "Australia East",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -84,17 +89,19 @@
       "UK South",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "deletedVaults",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -151,13 +158,14 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -173,13 +181,14 @@
       "2016-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/deletedManagedHSMs",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -192,8 +201,10 @@
     ],
     "locations": [
       "Australia Central",
+      "Australia Central 2",
       "Australia East",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -225,17 +236,19 @@
       "UK South",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/deletedVaults",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -292,13 +305,14 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -355,13 +369,14 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedHsmOperationResults",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -374,8 +389,10 @@
     ],
     "locations": [
       "Australia Central",
+      "Australia Central 2",
       "Australia East",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -407,17 +424,19 @@
       "UK South",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -473,13 +492,14 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -536,7 +556,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -577,6 +597,7 @@
     "resourceType": "managedHSMs",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -590,8 +611,10 @@
     ],
     "locations": [
       "Australia Central",
+      "Australia Central 2",
       "Australia East",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -623,24 +646,28 @@
       "UK South",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "managedHSMs/keys",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01"
     ],
     "locations": [
       "Australia Central",
+      "Australia Central 2",
       "Australia East",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -672,24 +699,28 @@
       "UK South",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "managedHSMs/keys/versions",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01"
     ],
     "locations": [
       "Australia Central",
+      "Australia Central 2",
       "Australia East",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -721,17 +752,19 @@
       "UK South",
       "West Central US",
       "West Europe",
+      "West India",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -749,7 +782,7 @@
       "2014-12-19-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -809,6 +842,7 @@
     "resourceType": "vaults",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -866,13 +900,14 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "vaults/accessPolicies",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -930,13 +965,14 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "vaults/eventGridFilters",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -992,7 +1028,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1026,6 +1062,7 @@
     "resourceType": "vaults/keys",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -1079,13 +1116,14 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "vaults/keys/versions",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -1139,7 +1177,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1157,6 +1195,7 @@
     "resourceType": "vaults/secrets",
     "apiVersions": [
       "2023-08-01-PREVIEW",
+      "2023-07-01",
       "2023-02-01",
       "2022-11-01",
       "2022-07-01",
@@ -1214,7 +1253,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

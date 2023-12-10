@@ -6,7 +6,7 @@
       "2019-09-16-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -18,7 +18,7 @@
       "East US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -27,6 +27,6 @@
       "2019-09-16-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

@@ -31,10 +31,79 @@
       "Microsoft.BotService/botServices/msaAppMSIResourceId": "properties.msaAppMSIResourceId",
       "Microsoft.BotService/botServices/msaAppTenantId": "properties.msaAppTenantId",
       "Microsoft.BotService/botServices/msaAppType": "properties.msaAppType",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations": "properties.networkSecurityPerimeterConfigurations",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*]": "properties.networkSecurityPerimeterConfigurations[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].id": "properties.networkSecurityPerimeterConfigurations[*].id",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].name": "properties.networkSecurityPerimeterConfigurations[*].name",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].networkSecurityPerimeter": "properties.networkSecurityPerimeterConfigurations[*].properties.networkSecurityPerimeter",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].networkSecurityPerimeter.id": "properties.networkSecurityPerimeterConfigurations[*].properties.networkSecurityPerimeter.id",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].networkSecurityPerimeter.location": "properties.networkSecurityPerimeterConfigurations[*].properties.networkSecurityPerimeter.location",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].networkSecurityPerimeter.perimeterGuid": "properties.networkSecurityPerimeterConfigurations[*].properties.networkSecurityPerimeter.perimeterGuid",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile": "properties.networkSecurityPerimeterConfigurations[*].properties.profile",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].addressPrefixes": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.addressPrefixes",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].addressPrefixes[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.addressPrefixes[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].direction": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.direction",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].emailAddresses": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.emailAddresses",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].emailAddresses[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.emailAddresses[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].fullyQualifiedDomainNames": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.fullyQualifiedDomainNames",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].fullyQualifiedDomainNames[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.fullyQualifiedDomainNames[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].name": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].name",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].networkSecurityPerimeters": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.networkSecurityPerimeters",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].networkSecurityPerimeters[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.networkSecurityPerimeters[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].networkSecurityPerimeters[*].id": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.networkSecurityPerimeters[*].id",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].networkSecurityPerimeters[*].location": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.networkSecurityPerimeters[*].location",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].networkSecurityPerimeters[*].perimeterGuid": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.networkSecurityPerimeters[*].perimeterGuid",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].phoneNumbers": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.phoneNumbers",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].phoneNumbers[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.phoneNumbers[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].subscriptions": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.subscriptions",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].subscriptions[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.subscriptions[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRules[*].subscriptions[*].id": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRules[*].properties.subscriptions[*].id",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.accessRulesVersion": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.accessRulesVersion",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.diagnosticSettingsVersion": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.diagnosticSettingsVersion",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.enabledLogCategories": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.enabledLogCategories",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.enabledLogCategories[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.enabledLogCategories[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].profile.name": "properties.networkSecurityPerimeterConfigurations[*].properties.profile.name",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].description": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.description",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].issueType": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.issueType",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].name": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].name",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].severity": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.severity",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].addressPrefixes": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.addressPrefixes",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].addressPrefixes[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.addressPrefixes[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].direction": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.direction",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].emailAddresses": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.emailAddresses",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].emailAddresses[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.emailAddresses[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].fullyQualifiedDomainNames": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.fullyQualifiedDomainNames",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].fullyQualifiedDomainNames[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.fullyQualifiedDomainNames[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].name": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].name",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].networkSecurityPerimeters": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.networkSecurityPerimeters",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].networkSecurityPerimeters[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.networkSecurityPerimeters[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].networkSecurityPerimeters[*].id": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.networkSecurityPerimeters[*].id",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].networkSecurityPerimeters[*].location": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.networkSecurityPerimeters[*].location",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].networkSecurityPerimeters[*].perimeterGuid": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.networkSecurityPerimeters[*].perimeterGuid",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].phoneNumbers": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.phoneNumbers",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].phoneNumbers[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.phoneNumbers[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].subscriptions": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.subscriptions",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].subscriptions[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.subscriptions[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedAccessRules[*].subscriptions[*].id": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedAccessRules[*].properties.subscriptions[*].id",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedResourceIds": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedResourceIds",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningIssues[*].suggestedResourceIds[*]": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningIssues[*].properties.suggestedResourceIds[*]",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].provisioningState": "properties.networkSecurityPerimeterConfigurations[*].properties.provisioningState",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].resourceAssociation": "properties.networkSecurityPerimeterConfigurations[*].properties.resourceAssociation",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].resourceAssociation.accessMode": "properties.networkSecurityPerimeterConfigurations[*].properties.resourceAssociation.accessMode",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].resourceAssociation.name": "properties.networkSecurityPerimeterConfigurations[*].properties.resourceAssociation.name",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations[*].type": "properties.networkSecurityPerimeterConfigurations[*].type",
       "Microsoft.BotService/botServices/openWithHint": "properties.openWithHint",
       "Microsoft.BotService/botServices/parameters": "properties.parameters",
       "Microsoft.BotService/botServices/privateEndpointConnections": "properties.privateEndpointConnections",
       "Microsoft.BotService/botServices/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.BotService/botServices/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
       "Microsoft.BotService/botServices/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
       "Microsoft.BotService/botServices/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
       "Microsoft.BotService/botServices/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
@@ -52,11 +121,14 @@
       "Microsoft.BotService/botServices/sku": "sku",
       "Microsoft.BotService/botServices/sku.name": "sku.name",
       "Microsoft.BotService/botServices/sku.tier": "sku.tier",
+      "Microsoft.BotService/botServices/storageResourceId": "properties.storageResourceId",
+      "Microsoft.BotService/botServices/tenantId": "properties.tenantId",
       "Microsoft.BotService/botServices/zones": "zones",
       "Microsoft.BotService/botServices/zones[*]": "zones[*]"
     },
     "resourceType": "botServices",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -70,7 +142,7 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -83,22 +155,34 @@
       "Microsoft.BotService/botServices/channels/channelName": "properties.channelName",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.DirectLineEmbedCode": "properties.properties.DirectLineEmbedCode",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.etag": "properties.etag",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.extensionKey1": "properties.properties.extensionKey1",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.extensionKey2": "properties.properties.extensionKey2",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.location": "properties.location",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.provisioningState": "properties.provisioningState",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites": "properties.properties.sites",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*]": "properties.properties.sites[*]",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].appId": "properties.properties.sites[*].appId",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].eTag": "properties.properties.sites[*].eTag",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isBlockUserUploadEnabled": "properties.properties.sites[*].isBlockUserUploadEnabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isDetailedLoggingEnabled": "properties.properties.sites[*].isDetailedLoggingEnabled",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isEnabled": "properties.properties.sites[*].isEnabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isEndpointParametersEnabled": "properties.properties.sites[*].isEndpointParametersEnabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isNoStorageEnabled": "properties.properties.sites[*].isNoStorageEnabled",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isSecureSiteEnabled": "properties.properties.sites[*].isSecureSiteEnabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isTokenEnabled": "properties.properties.sites[*].isTokenEnabled",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isV1Enabled": "properties.properties.sites[*].isV1Enabled",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isV3Enabled": "properties.properties.sites[*].isV3Enabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isWebchatPreviewEnabled": "properties.properties.sites[*].isWebchatPreviewEnabled",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].isWebChatSpeechEnabled": "properties.properties.sites[*].isWebChatSpeechEnabled",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].key": "properties.properties.sites[*].key",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].key2": "properties.properties.sites[*].key2",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].siteId": "properties.properties.sites[*].siteId",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].siteName": "properties.properties.sites[*].siteName",
+      "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].tenantId": "properties.properties.sites[*].tenantId",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].trustedOrigins": "properties.properties.sites[*].trustedOrigins",
       "Microsoft.BotService/botServices/channels/DirectLineChannel.sites[*].trustedOrigins[*]": "properties.properties.sites[*].trustedOrigins[*]",
       "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.cognitiveServiceRegion": "properties.properties.cognitiveServiceRegion",
+      "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.cognitiveServiceResourceId": "properties.properties.cognitiveServiceResourceId",
       "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.cognitiveServicesSubscriptionId": "properties.properties.cognitiveServicesSubscriptionId",
       "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.cognitiveServiceSubscriptionKey": "properties.properties.cognitiveServiceSubscriptionKey",
       "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.customSpeechModelId": "properties.properties.customSpeechModelId",
@@ -107,9 +191,11 @@
       "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.isDefaultBotForCogSvcAccount": "properties.properties.isDefaultBotForCogSvcAccount",
       "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.isEnabled": "properties.properties.isEnabled",
       "Microsoft.BotService/botServices/channels/DirectLineSpeechChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/EmailChannel.authMethod": "properties.properties.authMethod",
       "Microsoft.BotService/botServices/channels/EmailChannel.emailAddress": "properties.properties.emailAddress",
       "Microsoft.BotService/botServices/channels/EmailChannel.etag": "properties.etag",
       "Microsoft.BotService/botServices/channels/EmailChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/EmailChannel.magicCode": "properties.properties.magicCode",
       "Microsoft.BotService/botServices/channels/EmailChannel.password": "properties.properties.password",
       "Microsoft.BotService/botServices/channels/EmailChannel.provisioningState": "properties.provisioningState",
       "Microsoft.BotService/botServices/channels/etag": "properties.etag",
@@ -139,6 +225,7 @@
       "Microsoft.BotService/botServices/channels/LineChannel.lineRegistrations[*].channelAccessToken": "properties.properties.lineRegistrations[*].channelAccessToken",
       "Microsoft.BotService/botServices/channels/LineChannel.lineRegistrations[*].channelSecret": "properties.properties.lineRegistrations[*].channelSecret",
       "Microsoft.BotService/botServices/channels/LineChannel.lineRegistrations[*].generatedId": "properties.properties.lineRegistrations[*].generatedId",
+      "Microsoft.BotService/botServices/channels/location": "properties.location",
       "Microsoft.BotService/botServices/channels/MsTeamsChannel.acceptedTerms": "properties.properties.acceptedTerms",
       "Microsoft.BotService/botServices/channels/MsTeamsChannel.callingWebHook": "properties.properties.callingWebHook",
       "Microsoft.BotService/botServices/channels/MsTeamsChannel.callMode": "properties.properties.callMode",
@@ -152,6 +239,7 @@
       "Microsoft.BotService/botServices/channels/MsTeamsChannel.isEnabled": "properties.properties.isEnabled",
       "Microsoft.BotService/botServices/channels/MsTeamsChannel.location": "properties.location",
       "Microsoft.BotService/botServices/channels/MsTeamsChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/provisioningState": "properties.provisioningState",
       "Microsoft.BotService/botServices/channels/sku": "sku",
       "Microsoft.BotService/botServices/channels/sku.name": "sku.name",
       "Microsoft.BotService/botServices/channels/sku.tier": "sku.tier",
@@ -190,24 +278,64 @@
       "Microsoft.BotService/botServices/channels/TelegramChannel.isEnabled": "properties.properties.isEnabled",
       "Microsoft.BotService/botServices/channels/TelegramChannel.isValidated": "properties.properties.isValidated",
       "Microsoft.BotService/botServices/channels/TelegramChannel.provisioningState": "properties.provisioningState",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.apiConfigurations": "properties.properties.apiConfigurations",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.apiConfigurations[*]": "properties.properties.apiConfigurations[*]",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.apiConfigurations[*].cognitiveServiceRegion": "properties.properties.apiConfigurations[*].cognitiveServiceRegion",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.apiConfigurations[*].cognitiveServiceResourceId": "properties.properties.apiConfigurations[*].cognitiveServiceResourceId",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.apiConfigurations[*].cognitiveServiceSubscriptionKey": "properties.properties.apiConfigurations[*].cognitiveServiceSubscriptionKey",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.apiConfigurations[*].defaultLocale": "properties.properties.apiConfigurations[*].defaultLocale",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.apiConfigurations[*].id": "properties.properties.apiConfigurations[*].id",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.apiConfigurations[*].providerName": "properties.properties.apiConfigurations[*].providerName",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.cognitiveServiceRegion": "properties.properties.cognitiveServiceRegion",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.cognitiveServiceSubscriptionKey": "properties.properties.cognitiveServiceSubscriptionKey",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.defaultLocale": "properties.properties.defaultLocale",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.isEnabled": "properties.properties.isEnabled",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers": "properties.properties.phoneNumbers",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*]": "properties.properties.phoneNumbers[*]",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].acsEndpoint": "properties.properties.phoneNumbers[*].acsEndpoint",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].acsResourceId": "properties.properties.phoneNumbers[*].acsResourceId",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].acsSecret": "properties.properties.phoneNumbers[*].acsSecret",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].cognitiveServiceRegion": "properties.properties.phoneNumbers[*].cognitiveServiceRegion",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].cognitiveServiceResourceId": "properties.properties.phoneNumbers[*].cognitiveServiceResourceId",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].cognitiveServiceSubscriptionKey": "properties.properties.phoneNumbers[*].cognitiveServiceSubscriptionKey",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].defaultLocale": "properties.properties.phoneNumbers[*].defaultLocale",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].id": "properties.properties.phoneNumbers[*].id",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].offerType": "properties.properties.phoneNumbers[*].offerType",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.phoneNumbers[*].phoneNumber": "properties.properties.phoneNumbers[*].phoneNumber",
+      "Microsoft.BotService/botServices/channels/TelephonyChannel.premiumSKU": "properties.properties.premiumSKU",
       "Microsoft.BotService/botServices/channels/WebChatChannel.etag": "properties.etag",
       "Microsoft.BotService/botServices/channels/WebChatChannel.location": "properties.location",
       "Microsoft.BotService/botServices/channels/WebChatChannel.provisioningState": "properties.provisioningState",
       "Microsoft.BotService/botServices/channels/WebChatChannel.sites": "properties.properties.sites",
       "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*]": "properties.properties.sites[*]",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].appId": "properties.properties.sites[*].appId",
       "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].enablePreview": "properties.properties.sites[*].enablePreview",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].eTag": "properties.properties.sites[*].eTag",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isBlockUserUploadEnabled": "properties.properties.sites[*].isBlockUserUploadEnabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isDetailedLoggingEnabled": "properties.properties.sites[*].isDetailedLoggingEnabled",
       "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isEnabled": "properties.properties.sites[*].isEnabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isEndpointParametersEnabled": "properties.properties.sites[*].isEndpointParametersEnabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isNoStorageEnabled": "properties.properties.sites[*].isNoStorageEnabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isSecureSiteEnabled": "properties.properties.sites[*].isSecureSiteEnabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isTokenEnabled": "properties.properties.sites[*].isTokenEnabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isV1Enabled": "properties.properties.sites[*].isV1Enabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isV3Enabled": "properties.properties.sites[*].isV3Enabled",
       "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isWebchatPreviewEnabled": "properties.properties.sites[*].isWebchatPreviewEnabled",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].isWebChatSpeechEnabled": "properties.properties.sites[*].isWebChatSpeechEnabled",
       "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].key": "properties.properties.sites[*].key",
       "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].key2": "properties.properties.sites[*].key2",
       "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].siteId": "properties.properties.sites[*].siteId",
       "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].siteName": "properties.properties.sites[*].siteName",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].tenantId": "properties.properties.sites[*].tenantId",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].trustedOrigins": "properties.properties.sites[*].trustedOrigins",
+      "Microsoft.BotService/botServices/channels/WebChatChannel.sites[*].trustedOrigins[*]": "properties.properties.sites[*].trustedOrigins[*]",
       "Microsoft.BotService/botServices/channels/WebChatChannel.webChatEmbedCode": "properties.properties.webChatEmbedCode",
       "Microsoft.BotService/botServices/channels/zones": "zones",
       "Microsoft.BotService/botServices/channels/zones[*]": "zones[*]"
     },
     "resourceType": "botServices/channels",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -221,12 +349,14 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
       "Microsoft.BotService/botServices/connections/clientId": "properties.clientId",
       "Microsoft.BotService/botServices/connections/clientSecret": "properties.clientSecret",
+      "Microsoft.BotService/botServices/Connections/id": "properties.id",
+      "Microsoft.BotService/botServices/Connections/name": "properties.name",
       "Microsoft.BotService/botServices/connections/parameters": "properties.parameters",
       "Microsoft.BotService/botServices/connections/parameters[*]": "properties.parameters[*]",
       "Microsoft.BotService/botServices/connections/parameters[*].key": "properties.parameters[*].key",
@@ -244,6 +374,7 @@
     },
     "resourceType": "botServices/connections",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -257,12 +388,13 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "botServices/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -273,10 +405,12 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
+      "Microsoft.BotService/botServices/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.BotService/botServices/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
       "Microsoft.BotService/botServices/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
       "Microsoft.BotService/botServices/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
       "Microsoft.BotService/botServices/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
@@ -287,6 +421,7 @@
     },
     "resourceType": "botServices/privateEndpointConnections",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -297,12 +432,13 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "botServices/privateLinkResources",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -313,12 +449,13 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -330,12 +467,13 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "hostSettings",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -344,12 +482,13 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "listAuthServiceProviders",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -361,24 +500,26 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "listQnAMakerEndpointKeys",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview"
     ],
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -390,12 +531,13 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -409,12 +551,13 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -423,12 +566,13 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-15-preview",
       "2022-09-15",
       "2022-06-15-preview",
       "2021-05-01-preview",
@@ -440,6 +584,6 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

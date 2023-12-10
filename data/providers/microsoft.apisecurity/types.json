@@ -7,7 +7,7 @@
       "2022-03-02-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -16,7 +16,7 @@
       "2022-03-02-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -25,7 +25,7 @@
       "2022-03-02-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -34,7 +34,7 @@
       "2022-03-02-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -43,7 +43,7 @@
       "2021-03-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -54,7 +54,7 @@
     "locations": [
       "East US 2 EUAP"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -65,6 +65,6 @@
       "2021-03-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

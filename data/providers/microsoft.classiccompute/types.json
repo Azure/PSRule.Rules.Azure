@@ -11,7 +11,7 @@
       "2014-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -26,7 +26,7 @@
       "2014-01-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -60,6 +60,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -88,7 +89,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -102,7 +103,7 @@
       "2014-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -118,7 +119,7 @@
       "2014-01-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -132,7 +133,7 @@
       "2014-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -164,6 +165,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -192,7 +194,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -221,6 +223,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -249,7 +252,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -258,7 +261,7 @@
       "2014-04-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -281,6 +284,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -309,7 +313,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -321,7 +325,7 @@
       "2015-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -335,7 +339,7 @@
       "2014-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -349,7 +353,7 @@
       "2014-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -366,7 +370,7 @@
       "2014-01-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -378,7 +382,7 @@
       "2015-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -393,7 +397,7 @@
       "2014-01-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -407,7 +411,7 @@
       "2014-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -419,7 +423,7 @@
       "2015-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -450,6 +454,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -478,7 +483,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -501,6 +506,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -529,7 +535,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -552,6 +558,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -580,7 +587,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -603,6 +610,7 @@
       "East US 2 (Stage)",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -631,6 +639,6 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

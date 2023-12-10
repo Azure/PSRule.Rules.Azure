@@ -34,6 +34,8 @@
     },
     "resourceType": "DataControllers",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-16-preview",
       "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview",
@@ -67,7 +69,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -100,6 +102,8 @@
     },
     "resourceType": "DataControllers/ActiveDirectoryConnectors",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-16-preview",
       "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview"
@@ -130,12 +134,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",
@@ -146,12 +151,13 @@
       "2021-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",
@@ -190,12 +196,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",
@@ -206,7 +213,7 @@
       "2021-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -227,6 +234,8 @@
     },
     "resourceType": "PostgresInstances",
     "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-16-preview",
       "2023-01-15-preview",
       "2022-06-15-preview",
       "2022-03-01-preview",
@@ -258,7 +267,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -314,110 +323,6 @@
     },
     "resourceType": "SqlManagedInstances",
     "apiVersions": [
-      "2023-01-15-preview",
-      "2022-06-15-preview",
-      "2022-03-01-preview",
-      "2021-11-01",
-      "2021-08-01",
-      "2021-07-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Japan East",
-      "Korea Central",
-      "North Central US",
-      "North Europe",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Switzerland North",
-      "UAE North",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": {
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/partnerManagedInstanceId": "properties.partnerManagedInstanceId",
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/provisioningState": "properties.provisioningState",
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec": "properties.spec",
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.partnerMI": "properties.spec.partnerMI",
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.partnerMirroringCert": "properties.spec.partnerMirroringCert",
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.partnerMirroringURL": "properties.spec.partnerMirroringURL",
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.partnerSyncMode": "properties.spec.partnerSyncMode",
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.role": "properties.spec.role",
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.sharedName": "properties.spec.sharedName",
-      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.sourceMI": "properties.spec.sourceMI"
-    },
-    "resourceType": "SqlManagedInstances/FailoverGroups",
-    "apiVersions": [
-      "2023-01-15-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Japan East",
-      "Korea Central",
-      "North Central US",
-      "North Europe",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Switzerland North",
-      "UAE North",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": {
-      "Microsoft.AzureArcData/sqlServerInstances/azureDefenderStatus": "properties.azureDefenderStatus",
-      "Microsoft.AzureArcData/sqlServerInstances/azureDefenderStatusLastUpdated": "properties.azureDefenderStatusLastUpdated",
-      "Microsoft.AzureArcData/sqlServerInstances/collation": "properties.collation",
-      "Microsoft.AzureArcData/sqlServerInstances/containerResourceId": "properties.containerResourceId",
-      "Microsoft.AzureArcData/sqlServerInstances/cores": "properties.cores",
-      "Microsoft.AzureArcData/sqlServerInstances/createTime": "properties.createTime",
-      "Microsoft.AzureArcData/sqlServerInstances/currentVersion": "properties.currentVersion",
-      "Microsoft.AzureArcData/sqlServerInstances/edition": "properties.edition",
-      "Microsoft.AzureArcData/sqlServerInstances/hostType": "properties.hostType",
-      "Microsoft.AzureArcData/sqlServerInstances/instanceName": "properties.instanceName",
-      "Microsoft.AzureArcData/sqlServerInstances/licenseType": "properties.licenseType",
-      "Microsoft.AzureArcData/sqlServerInstances/patchLevel": "properties.patchLevel",
-      "Microsoft.AzureArcData/sqlServerInstances/productId": "properties.productId",
-      "Microsoft.AzureArcData/sqlServerInstances/provisioningState": "properties.provisioningState",
-      "Microsoft.AzureArcData/sqlServerInstances/status": "properties.status",
-      "Microsoft.AzureArcData/sqlServerInstances/tcpDynamicPorts": "properties.tcpDynamicPorts",
-      "Microsoft.AzureArcData/sqlServerInstances/tcpStaticPorts": "properties.tcpStaticPorts",
-      "Microsoft.AzureArcData/sqlServerInstances/vCore": "properties.vCore",
-      "Microsoft.AzureArcData/sqlServerInstances/version": "properties.version"
-    },
-    "resourceType": "SqlServerInstances",
-    "apiVersions": [
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",
@@ -453,12 +358,122 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/partnerManagedInstanceId": "properties.partnerManagedInstanceId",
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/provisioningState": "properties.provisioningState",
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec": "properties.spec",
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.partnerMI": "properties.spec.partnerMI",
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.partnerMirroringCert": "properties.spec.partnerMirroringCert",
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.partnerMirroringURL": "properties.spec.partnerMirroringURL",
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.partnerSyncMode": "properties.spec.partnerSyncMode",
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.role": "properties.spec.role",
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.sharedName": "properties.spec.sharedName",
+      "Microsoft.AzureArcData/sqlManagedInstances/failoverGroups/spec.sourceMI": "properties.spec.sourceMI"
+    },
+    "resourceType": "SqlManagedInstances/FailoverGroups",
+    "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-16-preview",
+      "2023-01-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.AzureArcData/sqlServerInstances/azureDefenderStatus": "properties.azureDefenderStatus",
+      "Microsoft.AzureArcData/sqlServerInstances/azureDefenderStatusLastUpdated": "properties.azureDefenderStatusLastUpdated",
+      "Microsoft.AzureArcData/sqlServerInstances/collation": "properties.collation",
+      "Microsoft.AzureArcData/sqlServerInstances/containerResourceId": "properties.containerResourceId",
+      "Microsoft.AzureArcData/sqlServerInstances/cores": "properties.cores",
+      "Microsoft.AzureArcData/sqlServerInstances/createTime": "properties.createTime",
+      "Microsoft.AzureArcData/sqlServerInstances/currentVersion": "properties.currentVersion",
+      "Microsoft.AzureArcData/sqlServerInstances/edition": "properties.edition",
+      "Microsoft.AzureArcData/sqlServerInstances/hostType": "properties.hostType",
+      "Microsoft.AzureArcData/sqlServerInstances/instanceName": "properties.instanceName",
+      "Microsoft.AzureArcData/sqlServerInstances/licenseType": "properties.licenseType",
+      "Microsoft.AzureArcData/sqlServerInstances/patchLevel": "properties.patchLevel",
+      "Microsoft.AzureArcData/sqlServerInstances/productId": "properties.productId",
+      "Microsoft.AzureArcData/sqlServerInstances/provisioningState": "properties.provisioningState",
+      "Microsoft.AzureArcData/sqlServerInstances/status": "properties.status",
+      "Microsoft.AzureArcData/sqlServerInstances/tcpDynamicPorts": "properties.tcpDynamicPorts",
+      "Microsoft.AzureArcData/sqlServerInstances/tcpStaticPorts": "properties.tcpStaticPorts",
+      "Microsoft.AzureArcData/sqlServerInstances/vCore": "properties.vCore",
+      "Microsoft.AzureArcData/sqlServerInstances/version": "properties.version"
+    },
+    "resourceType": "SqlServerInstances",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-09-01-preview",
+      "2023-05-16-preview",
+      "2023-01-15-preview",
+      "2022-06-15-preview",
+      "2022-03-01-preview",
+      "2021-11-01",
+      "2021-08-01",
+      "2021-07-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "SqlServerInstances/AvailabilityGroups",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview"
     ],
@@ -488,7 +503,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -516,6 +531,7 @@
     },
     "resourceType": "SqlServerInstances/Databases",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-05-16-preview",
       "2023-01-15-preview",
@@ -547,6 +563,6 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

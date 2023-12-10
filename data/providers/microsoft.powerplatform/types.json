@@ -24,7 +24,7 @@
       "UK",
       "United States"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -52,7 +52,7 @@
       "UK",
       "United States"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -65,7 +65,7 @@
       "East US",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -78,7 +78,7 @@
       "East US",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -91,7 +91,7 @@
       "East US",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -125,6 +125,6 @@
       "United States",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

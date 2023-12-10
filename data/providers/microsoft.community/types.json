@@ -1,0 +1,56 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "communityTrainings",
+    "apiVersions": [
+      "2023-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "Sweden Central",
+      "UK South",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2023-11-01",
+      "2023-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2023-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "Sweden Central",
+      "UK South",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2023-11-01",
+      "2023-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  }
+]

@@ -1,6 +1,49 @@
 [
   {
     "aliases": null,
+    "resourceType": "accounts",
+    "apiVersions": [
+      "2023-01-04-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "documentProcessors",
     "apiVersions": [
       "2022-09-15-preview"
@@ -40,7 +83,7 @@
       "West India",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -49,7 +92,7 @@
       "2022-09-15-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -92,7 +135,7 @@
       "West India",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -104,6 +147,6 @@
       "2021-10-20-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

@@ -27,6 +27,7 @@
       "North Europe",
       "Qatar Central",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -38,7 +39,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -79,6 +80,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -111,7 +113,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -131,6 +133,10 @@
       "Microsoft.DBForPostgreSql/flexibleServers/byokEnforcement": "properties.byokEnforcement",
       "Microsoft.DBForPostgreSql/flexibleServers/createMode": "properties.createMode",
       "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption": "properties.dataEncryption",
+      "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.geoBackupEncryptionKeyStatus": "properties.dataEncryption.geoBackupEncryptionKeyStatus",
+      "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.geoBackupKeyURI": "properties.dataEncryption.geoBackupKeyURI",
+      "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.geoBackupUserAssignedIdentityId": "properties.dataEncryption.geoBackupUserAssignedIdentityId",
+      "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.primaryEncryptionKeyStatus": "properties.dataEncryption.primaryEncryptionKeyStatus",
       "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.primaryKeyURI": "properties.dataEncryption.primaryKeyURI",
       "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.primaryUserAssignedIdentityId": "properties.dataEncryption.primaryUserAssignedIdentityId",
       "Microsoft.DBForPostgreSql/flexibleServers/dataEncryption.type": "properties.dataEncryption.type",
@@ -159,7 +165,27 @@
       "Microsoft.DBForPostgreSql/flexibleServers/pointInTimeUTC": "properties.pointInTimeUTC",
       "Microsoft.DBForPostgreSql/flexibleServers/privateDnsZoneArguments": "properties.privateDnsZoneArguments",
       "Microsoft.DBForPostgreSql/flexibleServers/privateDnsZoneArguments.privateDnsZoneArmResourceId": "properties.privateDnsZoneArguments.privateDnsZoneArmResourceId",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.DBForPostgreSql/flexibleServers/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
       "Microsoft.DBForPostgreSql/flexibleServers/publicNetworkAccess": "properties.network.publicNetworkAccess",
+      "Microsoft.DBForPostgreSql/flexibleServers/replica": "properties.replica",
+      "Microsoft.DBForPostgreSql/flexibleServers/replica.capacity": "properties.replica.capacity",
+      "Microsoft.DBForPostgreSql/flexibleServers/replica.promoteMode": "properties.replica.promoteMode",
+      "Microsoft.DBForPostgreSql/flexibleServers/replica.promoteOption": "properties.replica.promoteOption",
+      "Microsoft.DBForPostgreSql/flexibleServers/replica.replicationState": "properties.replica.replicationState",
+      "Microsoft.DBForPostgreSql/flexibleServers/replica.role": "properties.replica.role",
       "Microsoft.DBForPostgreSql/flexibleServers/replicaCapacity": "properties.replicaCapacity",
       "Microsoft.DBForPostgreSql/flexibleServers/replicationRole": "properties.replicationRole",
       "Microsoft.DBForPostgreSql/flexibleServers/sku": "sku",
@@ -173,7 +199,12 @@
       "Microsoft.DBForPostgreSql/flexibleServers/standbyCount": "properties.standbyCount",
       "Microsoft.DBForPostgreSql/flexibleServers/state": "properties.state",
       "Microsoft.DBForPostgreSql/flexibleServers/storage": "properties.storage",
+      "Microsoft.DBForPostgreSql/flexibleServers/storage.autoGrow": "properties.storage.autoGrow",
+      "Microsoft.DBForPostgreSql/flexibleServers/storage.iops": "properties.storage.iops",
       "Microsoft.DBForPostgreSql/flexibleServers/storage.storageSizeGB": "properties.storage.storageSizeGB",
+      "Microsoft.DBForPostgreSql/flexibleServers/storage.throughput": "properties.storage.throughput",
+      "Microsoft.DBForPostgreSql/flexibleServers/storage.tier": "properties.storage.tier",
+      "Microsoft.DBForPostgreSql/flexibleServers/storage.type": "properties.storage.type",
       "Microsoft.DBForPostgreSql/flexibleServers/storageProfile": "properties.storageProfile",
       "Microsoft.DBForPostgreSql/flexibleServers/storageProfile.backupRetentionDays": "properties.storageProfile.backupRetentionDays",
       "Microsoft.DBForPostgreSql/flexibleServers/storageProfile.earliestRestoreDate": "properties.storageProfile.earliestRestoreDate",
@@ -214,6 +245,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -315,6 +347,14 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -461,148 +501,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "flexibleServers/privateEndpointConnectionProxies",
-    "apiVersions": [
-      "2023-01-01-privatepreview",
-      "2022-06-01-privatepreview"
-    ],
-    "locations": [
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "flexibleServers/privateEndpointConnections",
-    "apiVersions": [
-      "2023-01-01-privatepreview"
-    ],
-    "locations": [
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "flexibleServers/privateLinkResources",
-    "apiVersions": [
-      "2023-01-01-privatepreview"
-    ],
-    "locations": [
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
     "resourceType": "getPrivateDnsZoneSuffix",
     "apiVersions": [],
     "locations": [
@@ -640,7 +538,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -690,7 +588,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -740,7 +638,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -790,7 +688,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -812,6 +710,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -840,7 +739,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -875,6 +774,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -901,7 +801,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -936,6 +836,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -962,7 +863,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -995,6 +896,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1021,7 +923,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1041,7 +943,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1063,6 +965,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -1091,7 +994,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1141,7 +1044,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1192,7 +1095,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1243,7 +1146,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1294,7 +1197,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1345,7 +1248,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1396,7 +1299,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1447,7 +1350,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1496,7 +1399,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1545,7 +1448,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1596,7 +1499,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1647,7 +1550,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1684,6 +1587,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1716,7 +1620,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1746,6 +1650,7 @@
       "North Europe",
       "Qatar Central",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -1757,7 +1662,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1831,7 +1736,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1882,7 +1787,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1937,7 +1842,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1988,7 +1893,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2047,7 +1952,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2098,7 +2003,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2149,7 +2054,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2199,7 +2104,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2250,7 +2155,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2301,7 +2206,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2355,7 +2260,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2406,7 +2311,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2415,6 +2320,13 @@
       "Microsoft.DBforPostgreSQL/flexibleServers/administrators/tenantId": "properties.tenantId"
     },
     "resourceType": "flexibleservers/administrators"
+  },
+  {
+    "aliases": {
+      "Microsoft.DBforPostgreSQL/flexibleServers/advancedThreatProtectionSettings/creationTime": "properties.creationTime",
+      "Microsoft.DBforPostgreSQL/flexibleServers/advancedThreatProtectionSettings/state": "properties.state"
+    },
+    "resourceType": "flexibleservers/advancedthreatprotectionsettings"
   },
   {
     "aliases": {
@@ -2452,6 +2364,32 @@
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus": "properties.currentStatus",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails": "properties.currentStatus.currentSubStateDetails",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.currentSubState": "properties.currentStatus.currentSubStateDetails.currentSubState",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.dbDetails": "properties.currentStatus.currentSubStateDetails.dbDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails": "properties.currentStatus.currentSubStateDetails.validationDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].databaseName": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].databaseName",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].endedOn": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].endedOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].startedOn": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].startedOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].message": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].message",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].type": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].type",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].message": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].message",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].type": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].type",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.status": "properties.currentStatus.currentSubStateDetails.validationDetails.status",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.validationEndTimeInUtc": "properties.currentStatus.currentSubStateDetails.validationDetails.validationEndTimeInUtc",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.validationStartTimeInUtc": "properties.currentStatus.currentSubStateDetails.validationDetails.validationStartTimeInUtc",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.error": "properties.currentStatus.error",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.state": "properties.currentStatus.state",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToCancelMigrationOn": "properties.dBsToCancelMigrationOn",
@@ -2460,13 +2398,17 @@
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToMigrate[*]": "properties.dBsToMigrate[*]",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToTiggerCutoverOn": "properties.dBsToTiggerCutoverOn",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToTiggerCutoverOn[*]": "properties.dBsToTiggerCutoverOn[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dbsToTriggerCutoverOn": "properties.dbsToTriggerCutoverOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dbsToTriggerCutoverOn[*]": "properties.dbsToTriggerCutoverOn[*]",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationDetailsLevel": "properties.migrationDetailsLevel",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationId": "properties.migrationId",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationMode": "properties.migrationMode",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationName": "properties.migrationName",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationOption": "properties.migrationOption",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup": "properties.migrationResourceGroup",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup.resourceId": "properties.migrationResourceGroup.resourceId",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup.subnetResourceId": "properties.migrationResourceGroup.subnetResourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationWindowEndTimeInUtc": "properties.migrationWindowEndTimeInUtc",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationWindowStartTimeInUtc": "properties.migrationWindowStartTimeInUtc",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/overwriteDBsInTarget": "properties.overwriteDBsInTarget",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters": "properties.secretParameters",
@@ -2477,6 +2419,8 @@
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials": "properties.secretParameters.adminCredentials",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.sourceServerPassword": "properties.secretParameters.adminCredentials.sourceServerPassword",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.targetServerPassword": "properties.secretParameters.adminCredentials.targetServerPassword",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.sourceServerUsername": "properties.secretParameters.sourceServerUsername",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.targetServerUsername": "properties.secretParameters.targetServerUsername",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/setupLogicalReplicationOnSourceDBIfNeeded": "properties.setupLogicalReplicationOnSourceDBIfNeeded",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerFullyQualifiedDomainName": "properties.sourceDBServerFullyQualifiedDomainName",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata": "properties.sourceDBServerMetadata",
@@ -2487,6 +2431,8 @@
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.storageMB": "properties.sourceDBServerMetadata.storageMB",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.version": "properties.sourceDBServerMetadata.version",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerResourceId": "properties.sourceDBServerResourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceType": "properties.sourceType",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sslMode": "properties.sslMode",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/startDataMigration": "properties.startDataMigration",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerFullyQualifiedDomainName": "properties.targetDBServerFullyQualifiedDomainName",
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata": "properties.targetDBServerMetadata",
@@ -2501,6 +2447,30 @@
       "Microsoft.DBforPostgreSQL/flexibleServers/migrations/userAssignedIdentityResourceId": "properties.userAssignedIdentityResourceId"
     },
     "resourceType": "flexibleservers/migrations"
+  },
+  {
+    "aliases": {
+      "Microsoft.DBforPostgreSQL/flexibleServers/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.DBforPostgreSQL/flexibleServers/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.DBforPostgreSQL/flexibleServers/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.DBforPostgreSQL/flexibleServers/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.DBforPostgreSQL/flexibleServers/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DBforPostgreSQL/flexibleServers/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DBforPostgreSQL/flexibleServers/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DBforPostgreSQL/flexibleServers/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "flexibleservers/privateendpointconnections"
+  },
+  {
+    "aliases": {
+      "Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints/endpointType": "properties.endpointType",
+      "Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints/members": "properties.members",
+      "Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints/members[*]": "properties.members[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints/virtualEndpoints": "properties.virtualEndpoints",
+      "Microsoft.DBforPostgreSQL/flexibleServers/virtualendpoints/virtualEndpoints[*]": "properties.virtualEndpoints[*]"
+    },
+    "resourceType": "flexibleservers/virtualendpoints"
   },
   {
     "aliases": {

@@ -11,7 +11,7 @@
       "West Central US",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -24,12 +24,13 @@
       "West Central US",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "enterpriseMccCustomers",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [
@@ -37,12 +38,13 @@
       "North Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "enterpriseMccCustomers/enterpriseMccCacheNodes",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [
@@ -50,12 +52,13 @@
       "North Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "ispCustomers",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
@@ -64,12 +67,13 @@
       "North Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "ispCustomers/ispcachenodes",
+    "resourceType": "ispCustomers/ispCacheNodes",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
@@ -78,22 +82,24 @@
       "North Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
@@ -102,17 +108,18 @@
       "North Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -123,6 +130,6 @@
       "2022-03-21-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

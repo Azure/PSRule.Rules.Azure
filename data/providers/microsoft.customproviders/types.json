@@ -9,7 +9,7 @@
       "2018-09-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -18,7 +18,25 @@
       "2018-09-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Canada East",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -36,7 +54,7 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -45,7 +63,7 @@
       "2018-09-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -77,6 +95,42 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourceProviders/operationResults",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Canada East",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourceProviders/operationStatuses",
+    "apiVersions": [
+      "2018-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Canada East",
+      "East US",
+      "North Europe",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
   }
 ]

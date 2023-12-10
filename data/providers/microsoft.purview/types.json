@@ -35,6 +35,7 @@
     },
     "resourceType": "accounts",
     "apiVersions": [
+      "2023-05-01-preview",
       "2021-12-01",
       "2021-07-01",
       "2020-12-01-preview"
@@ -65,12 +66,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "accounts/kafkaConfigurations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2021-12-01"
     ],
     "locations": [
@@ -99,7 +101,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -110,7 +112,7 @@
       "2020-12-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -122,7 +124,7 @@
       "2020-12-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -133,12 +135,13 @@
       "2020-12-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/listFeatures",
     "apiVersions": [
+      "2023-05-01-preview",
       "2021-12-01"
     ],
     "locations": [
@@ -166,12 +169,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2021-12-01",
       "2021-07-01",
       "2020-12-01-preview"
@@ -202,12 +206,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-05-01-preview",
       "2021-12-01"
     ],
     "locations": [
@@ -236,7 +241,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -250,7 +255,7 @@
       "2020-12-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -284,7 +289,7 @@
       "West US",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -296,7 +301,7 @@
       "2020-12-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -308,7 +313,7 @@
       "2020-12-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

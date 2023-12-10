@@ -36,6 +36,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -48,6 +49,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -58,7 +60,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -94,6 +96,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -106,6 +109,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -116,7 +120,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -154,6 +158,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -166,6 +171,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -176,7 +182,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -334,6 +340,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -346,6 +353,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -356,7 +364,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -381,6 +389,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -393,6 +402,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -403,7 +413,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -428,6 +438,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -440,6 +451,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -450,7 +462,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -475,6 +487,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -487,6 +500,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -497,7 +511,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -554,6 +568,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -566,6 +581,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -576,7 +592,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -601,6 +617,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -613,6 +630,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -623,7 +641,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -648,6 +666,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -660,6 +679,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -670,7 +690,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -695,6 +715,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -707,6 +728,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -717,7 +739,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -742,6 +764,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -754,6 +777,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -764,7 +788,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -789,6 +813,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -801,6 +826,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -811,7 +837,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -836,6 +862,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -848,6 +875,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -858,7 +886,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -883,6 +911,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -895,6 +924,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -905,7 +935,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -930,6 +960,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -942,6 +973,7 @@
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "Switzerland West",
       "UAE North",
       "UK South",
       "UK West",
@@ -952,6 +984,6 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

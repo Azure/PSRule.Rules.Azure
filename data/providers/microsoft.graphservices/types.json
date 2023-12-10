@@ -9,7 +9,7 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -21,7 +21,7 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -33,7 +33,7 @@
     "locations": [
       "East US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -43,7 +43,7 @@
       "2022-09-22-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -53,6 +53,6 @@
       "2022-09-22-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

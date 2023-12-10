@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2022-12-01-privatepreview",
@@ -10,12 +12,14 @@
       "2022-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2022-12-01-privatepreview",
@@ -30,12 +34,14 @@
       "West Central US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2022-12-01-privatepreview",
@@ -43,12 +49,14 @@
       "2022-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "packetCoreControlPlaneVersions",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
       "2023-07-01-preview",
       "2023-06-01",
       "2022-12-01-privatepreview",
@@ -56,6 +64,6 @@
       "2022-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

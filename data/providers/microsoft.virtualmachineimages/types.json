@@ -50,6 +50,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Jio India West",
       "Korea Central",
@@ -72,58 +73,11 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "imageTemplates/runOutputs",
-    "apiVersions": [
-      "2023-07-01",
-      "2022-07-01",
-      "2022-02-14",
-      "2021-10-01",
-      "2020-02-14",
-      "2019-05-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Canada Central",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Germany West Central",
-      "Japan East",
-      "Jio India West",
-      "Korea Central",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations",
     "apiVersions": [
       "2023-07-01",
       "2022-07-01",
@@ -167,7 +121,100 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "imageTemplates/triggers",
+    "apiVersions": [
+      "2023-07-01",
+      "2022-07-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Jio India West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-07-01",
+      "2022-07-01",
+      "2022-02-14",
+      "2021-10-01",
+      "2020-02-14",
+      "2019-05-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Jio India West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -192,6 +239,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Jio India West",
       "Korea Central",
@@ -214,7 +262,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -239,6 +287,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Jio India West",
       "Korea Central",
@@ -261,6 +310,6 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

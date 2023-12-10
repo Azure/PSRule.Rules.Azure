@@ -23,12 +23,13 @@
       "2014-04-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -55,7 +56,7 @@
       "2014-04-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -85,6 +86,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -112,12 +114,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -134,8 +137,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -147,7 +152,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -185,6 +190,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -212,12 +218,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -234,8 +241,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -247,12 +256,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -278,7 +288,7 @@
       "2014-04-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -361,6 +371,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -463,6 +474,14 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
         "zones": [
           "1",
           "2",
@@ -654,6 +673,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -685,7 +705,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -715,6 +735,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -742,7 +763,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -772,6 +793,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -799,7 +821,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -837,6 +859,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -864,7 +887,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -894,6 +917,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -921,7 +945,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -956,6 +980,7 @@
     },
     "resourceType": "redisEnterprise",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -972,8 +997,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -1027,6 +1054,14 @@
         ]
       },
       {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East US",
         "zones": [
           "1",
@@ -1036,6 +1071,14 @@
       },
       {
         "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
         "zones": [
           "1",
           "2",
@@ -1135,6 +1178,7 @@
     },
     "resourceType": "redisEnterprise/databases",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -1151,8 +1195,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -1164,12 +1210,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -1186,8 +1233,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -1199,12 +1248,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/operationresults",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -1221,8 +1271,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -1234,12 +1286,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -1256,8 +1309,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -1269,7 +1324,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1283,6 +1338,7 @@
     },
     "resourceType": "RedisEnterprise/privateEndpointConnections",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -1299,8 +1355,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -1312,12 +1370,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnections/operationresults",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -1334,8 +1393,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -1347,12 +1408,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "RedisEnterprise/privateLinkResources",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-03-01-preview",
       "2022-11-01-preview",
@@ -1369,8 +1431,10 @@
       "Canada Central",
       "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Central US",
       "North Europe",
       "South Central US",
@@ -1382,7 +1446,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

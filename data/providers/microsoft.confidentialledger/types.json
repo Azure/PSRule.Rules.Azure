@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-06-28-preview",
       "2023-01-26-preview",
       "2022-09-08-preview",
       "2022-05-13",
@@ -10,12 +11,13 @@
       "2020-12-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Ledgers",
     "apiVersions": [
+      "2023-06-28-preview",
       "2023-01-26-preview",
       "2022-09-08-preview",
       "2022-05-13",
@@ -29,12 +31,13 @@
       "South Central US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-06-28-preview",
       "2023-01-26-preview",
       "2022-09-08-preview",
       "2022-05-13",
@@ -44,7 +47,7 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -55,12 +58,13 @@
       "2020-12-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations/operationstatuses",
     "apiVersions": [
+      "2023-06-28-preview",
       "2023-01-26-preview",
       "2022-09-08-preview",
       "2022-05-13",
@@ -68,17 +72,35 @@
       "2020-12-01-preview"
     ],
     "locations": [
+      "Australia East",
       "East US",
       "East US 2 EUAP",
       "South Central US",
+      "Southeast Asia",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ManagedCCFs",
+    "apiVersions": [
+      "2023-06-28-preview",
+      "2023-01-26-preview",
+      "2022-09-08-preview"
+    ],
+    "locations": [
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-28-preview",
       "2023-01-26-preview",
       "2022-09-08-preview",
       "2022-05-13",
@@ -86,6 +108,6 @@
       "2020-12-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

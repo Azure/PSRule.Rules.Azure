@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "availabilityStatuses",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01-rc",
       "2023-07-01-preview",
       "2022-10-01-preview",
@@ -20,12 +21,13 @@
       "2015-01-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "childAvailabilityStatuses",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01-rc",
       "2023-07-01-preview",
       "2023-07-01-beta",
@@ -44,12 +46,13 @@
       "2015-01-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "childResources",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01-preview",
       "2022-10-01",
       "2018-11-06-beta",
@@ -66,12 +69,13 @@
       "2015-01-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "emergingissues",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01-rc",
       "2023-07-01-preview",
       "2023-07-01-beta",
@@ -90,12 +94,13 @@
       "2017-07-01-beta"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "events",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01-rc",
       "2022-10-01-rc",
       "2022-10-01",
@@ -106,12 +111,13 @@
       "2018-07-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "metadata",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01-rc",
       "2023-07-01-preview",
       "2023-07-01-beta",
@@ -128,12 +134,13 @@
       "2018-07-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01-rc",
       "2023-07-01-preview",
       "2023-07-01-beta",
@@ -155,6 +162,6 @@
       "2015-01-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

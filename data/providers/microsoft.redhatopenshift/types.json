@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-04",
       "2023-07-01-preview",
       "2023-04-01",
       "2022-09-04",
@@ -12,12 +13,13 @@
       "2019-12-31-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/openshiftversions",
     "apiVersions": [
+      "2023-09-04",
       "2023-07-01-preview",
       "2023-04-01",
       "2022-09-04"
@@ -38,6 +40,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -62,12 +65,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2023-09-04",
       "2023-07-01-preview",
       "2023-04-01",
       "2022-09-04",
@@ -91,6 +95,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -115,12 +120,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationsstatus",
     "apiVersions": [
+      "2023-09-04",
       "2023-07-01-preview",
       "2023-04-01",
       "2022-09-04",
@@ -144,6 +150,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -168,7 +175,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -214,6 +221,7 @@
     },
     "resourceType": "OpenShiftClusters",
     "apiVersions": [
+      "2023-09-04",
       "2023-07-01-preview",
       "2023-04-01",
       "2022-09-04",
@@ -237,6 +245,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -261,12 +270,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-04",
       "2023-07-01-preview",
       "2023-04-01",
       "2022-09-04",
@@ -276,6 +286,6 @@
       "2019-12-31-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

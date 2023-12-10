@@ -28,7 +28,7 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -40,7 +40,7 @@
     "locations": [
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -50,7 +50,7 @@
       "2015-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -68,7 +68,7 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -80,6 +80,6 @@
     "locations": [
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

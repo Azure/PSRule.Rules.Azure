@@ -1,8 +1,89 @@
 [
   {
     "aliases": null,
+    "resourceType": "builders",
+    "apiVersions": [
+      "2023-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Central US (Stage)",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "builders/builds",
+    "apiVersions": [
+      "2023-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Central US (Stage)",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "connectedEnvironments",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -15,14 +96,16 @@
       "East US",
       "North Central US",
       "North Central US (Stage)",
+      "Southeast Asia",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "connectedEnvironments/certificates",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -35,9 +118,10 @@
       "East US",
       "North Central US",
       "North Central US (Stage)",
+      "Southeast Asia",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -225,6 +309,7 @@
     },
     "resourceType": "containerApps",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -237,6 +322,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -256,23 +343,28 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "getCustomDomainVerificationId",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview"
     ],
     "locations": [
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -292,17 +384,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "jobs",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -312,6 +407,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -331,17 +428,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -351,12 +451,13 @@
       "2022-03-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/availableManagedEnvironmentsWorkloadProfileTypes",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -368,6 +469,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -387,17 +490,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/billingMeters",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -409,6 +515,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -428,17 +536,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/connectedEnvironmentOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -451,14 +562,16 @@
       "East US",
       "North Central US",
       "North Central US (Stage)",
+      "Southeast Asia",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/connectedEnvironmentOperationStatuses",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -471,14 +584,16 @@
       "East US",
       "North Central US",
       "North Central US (Stage)",
+      "Southeast Asia",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/containerappOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -491,6 +606,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -510,17 +627,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/containerappOperationStatuses",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -533,6 +653,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -552,17 +674,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/containerappsjobOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -572,6 +697,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -591,17 +718,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/containerappsjobOperationStatuses",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -611,6 +741,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -630,17 +762,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedCertificateOperationStatuses",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -650,6 +785,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -669,17 +806,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedEnvironmentOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -692,6 +832,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -711,17 +853,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedEnvironmentOperationStatuses",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -734,6 +879,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -753,17 +900,100 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/OperationResults",
+    "apiVersions": [
+      "2023-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Central US (Stage)",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/OperationStatuses",
+    "apiVersions": [
+      "2023-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Central US (Stage)",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/sourceControlOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -776,6 +1006,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -795,17 +1027,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/sourceControlOperationStatuses",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -818,6 +1053,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -837,23 +1074,28 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview"
     ],
     "locations": [
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -873,12 +1115,14 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -929,6 +1173,7 @@
     },
     "resourceType": "managedEnvironments",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -941,6 +1186,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -960,12 +1207,14 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -984,6 +1233,7 @@
     },
     "resourceType": "managedEnvironments/certificates",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -996,6 +1246,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -1015,17 +1267,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "managedEnvironments/managedCertificates",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -1035,6 +1290,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -1054,17 +1311,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-02-preview",
       "2023-05-01",
       "2023-04-01-preview",
@@ -1078,6 +1338,8 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Canada East",
+      "Central India",
       "Central US",
       "Central US EUAP",
       "East Asia",
@@ -1099,12 +1361,14 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

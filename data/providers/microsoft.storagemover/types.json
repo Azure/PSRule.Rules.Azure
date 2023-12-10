@@ -3,17 +3,19 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
       "2022-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
       "2022-07-01-preview"
@@ -24,23 +26,25 @@
       "Sweden Central",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
       "2022-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "storageMovers",
     "apiVersions": [
+      "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
       "2022-07-01-preview"
@@ -51,12 +55,13 @@
       "Sweden Central",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "storageMovers/agents",
     "apiVersions": [
+      "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
       "2022-07-01-preview"
@@ -67,12 +72,13 @@
       "Sweden Central",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "storageMovers/endpoints",
     "apiVersions": [
+      "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
       "2022-07-01-preview"
@@ -83,12 +89,13 @@
       "Sweden Central",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "storageMovers/projects",
     "apiVersions": [
+      "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
       "2022-07-01-preview"
@@ -99,12 +106,13 @@
       "Sweden Central",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "storageMovers/projects/jobDefinitions",
     "apiVersions": [
+      "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
       "2022-07-01-preview"
@@ -115,12 +123,13 @@
       "Sweden Central",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "storageMovers/projects/jobDefinitions/jobRuns",
     "apiVersions": [
+      "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
       "2022-07-01-preview"
@@ -131,6 +140,6 @@
       "Sweden Central",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

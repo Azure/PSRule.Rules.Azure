@@ -1,0 +1,95 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/asyncoperations",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "East US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "pools",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "East US 2"
+    ],
+    "zoneMappings": [
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": null,
+    "resourceType": "pools/snapshots",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "East US 2"
+    ],
+    "zoneMappings": [
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": null,
+    "resourceType": "pools/volumes",
+    "apiVersions": [
+      "2023-07-01-preview"
+    ],
+    "locations": [
+      "East US 2"
+    ],
+    "zoneMappings": [
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  }
+]

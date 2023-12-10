@@ -134,6 +134,7 @@
     },
     "resourceType": "accounts",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -168,6 +169,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -180,7 +182,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -212,6 +214,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -224,12 +227,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "accounts/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -263,6 +267,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -275,7 +280,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -292,6 +297,7 @@
     },
     "resourceType": "accounts/privateEndpointConnections",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -325,6 +331,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -337,12 +344,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "accounts/privateLinkResources",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -376,6 +384,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -388,12 +397,107 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "attestationDefinitions",
+    "apiVersions": [
+      "2023-10-01-preview",
+      "2023-06-01-preview",
+      "2023-05-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Global",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "attestations",
+    "apiVersions": [
+      "2023-10-01-preview",
+      "2023-06-01-preview",
+      "2023-05-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Global",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "checkDomainAvailability",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -428,6 +532,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -440,12 +545,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "commitmentPlans",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01"
@@ -474,6 +580,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -486,12 +593,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "deletedAccounts",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -524,6 +632,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -536,12 +645,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -576,6 +686,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -588,12 +699,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/checkSkuAvailability",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -628,6 +740,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -640,12 +753,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/commitmentTiers",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -677,6 +791,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -689,12 +804,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -729,6 +845,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -741,12 +858,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/models",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01"
     ],
@@ -774,6 +892,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -786,7 +905,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -820,6 +939,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -832,12 +952,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -872,6 +993,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -884,12 +1006,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/raiContentFilters",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview"
     ],
     "locations": [
@@ -916,6 +1039,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -928,12 +1052,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/resourceGroups",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -966,6 +1091,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -978,12 +1104,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/resourceGroups/deletedAccounts",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -1016,6 +1143,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -1028,12 +1156,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01"
     ],
@@ -1061,6 +1190,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -1073,12 +1203,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
       "2022-12-01",
@@ -1113,6 +1244,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -1125,7 +1257,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

@@ -1,0 +1,64 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Gateways",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "OpenApiGatewayOfferings",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "OpenApiGateways",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  }
+]

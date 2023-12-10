@@ -7,7 +7,7 @@
       "2019-12-20-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -22,7 +22,7 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -32,7 +32,7 @@
       "2019-12-20-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -45,6 +45,6 @@
       "West Europe",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

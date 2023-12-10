@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "appliedReservations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -22,12 +24,14 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "calculateExchange",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -46,12 +50,14 @@
       "2018-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "calculatePrice",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -71,7 +77,7 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -81,12 +87,14 @@
       "2019-06-01-beta"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "catalogs",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -107,7 +115,7 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -117,7 +125,7 @@
       "2021-03-01-beta"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -134,7 +142,7 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -144,7 +152,7 @@
       "2019-06-01-beta"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -161,7 +169,7 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -173,12 +181,14 @@
       "2018-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "exchange",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -198,7 +208,7 @@
       "2018-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -208,7 +218,7 @@
       "2019-04-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -218,12 +228,14 @@
       "2021-01-01-beta"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -238,12 +250,14 @@
       "2020-10-01-beta"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -262,7 +276,7 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -272,7 +286,7 @@
       "2020-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -282,12 +296,14 @@
       "2019-06-01-beta"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservationOrders",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -310,7 +326,7 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -327,12 +343,14 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservationOrders/calculateRefund",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -350,12 +368,14 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservationOrders/changeDirectory",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -370,12 +390,14 @@
       "2020-11-15"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservationOrders/merge",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -395,12 +417,14 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservationOrders/reservations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -422,12 +446,14 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservationOrders/reservations/availableScopes",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -440,12 +466,14 @@
       "2019-04-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservationOrders/reservations/revisions",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -465,12 +493,14 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservationOrders/return",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -489,12 +519,14 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservationOrders/split",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -514,7 +546,7 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -528,12 +560,14 @@
       "2018-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reservations",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -554,7 +588,7 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -564,7 +598,7 @@
       "2019-07-19-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -574,7 +608,7 @@
       "2019-07-19-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -593,7 +627,7 @@
       "2019-07-19-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -603,7 +637,7 @@
       "2019-07-19-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -616,12 +650,14 @@
     "locations": [
       "South Central US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "validateReservationOrder",
     "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
       "2022-11-01-beta",
       "2022-11-01",
       "2022-06-02-privatepreview",
@@ -637,6 +673,6 @@
       "2017-11-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

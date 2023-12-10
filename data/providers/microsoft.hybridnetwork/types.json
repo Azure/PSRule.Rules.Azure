@@ -1,6 +1,27 @@
 [
   {
     "aliases": null,
+    "resourceType": "configurationGroupValues",
+    "apiVersions": [
+      "2023-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "devices",
     "apiVersions": [
       "2022-01-01-preview",
@@ -12,7 +33,7 @@
       "Southeast Asia",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -23,7 +44,7 @@
       "2020-01-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -48,12 +69,13 @@
       "West US",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "networkfunctions",
     "apiVersions": [
+      "2023-09-01",
       "2023-01-01",
       "2022-09-01-preview",
       "2022-01-01-preview",
@@ -74,12 +96,13 @@
       "West US",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "networkFunctions/components",
     "apiVersions": [
+      "2023-09-01",
       "2023-01-01",
       "2022-09-01-preview"
     ],
@@ -96,7 +119,7 @@
       "West US",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -107,12 +130,13 @@
       "2020-01-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-09-01",
       "2023-04-01-preview",
       "2023-01-01",
       "2022-09-01-preview",
@@ -121,7 +145,7 @@
       "2020-01-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -142,7 +166,7 @@
       "West US",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -163,7 +187,7 @@
       "West US",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -184,7 +208,49 @@
       "West US",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "publishers/artifactstores/artifacts",
+    "apiVersions": [
+      "2023-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "publishers/artifactstores/artifactversions",
+    "apiVersions": [
+      "2023-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -205,7 +271,7 @@
       "West US",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -226,6 +292,48 @@
       "West US",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "siteNetworkServices",
+    "apiVersions": [
+      "2023-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "sites",
+    "apiVersions": [
+      "2023-09-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UAE North",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 3"
+    ],
+    "zoneMappings": []
   }
 ]

@@ -6,7 +6,7 @@
       "2021-11-16-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -18,7 +18,7 @@
       "2018-05-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -30,7 +30,7 @@
       "2018-05-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -39,7 +39,7 @@
       "2018-09-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -48,7 +48,7 @@
       "2018-09-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -62,7 +62,7 @@
       "2014-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -73,7 +73,7 @@
       "2018-06-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -82,7 +82,7 @@
       "2020-09-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -94,7 +94,7 @@
       "2018-07-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -103,7 +103,7 @@
       "2017-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -112,7 +112,7 @@
       "2017-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -128,7 +128,7 @@
       "2014-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -138,7 +138,7 @@
       "2020-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -147,7 +147,7 @@
       "2023-03-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -156,7 +156,25 @@
       "2019-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "listPolicyDefinitionVersions",
+    "apiVersions": [
+      "2023-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "listPolicySetDefinitionVersions",
+    "apiVersions": [
+      "2023-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -176,7 +194,7 @@
       "2015-01-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -190,7 +208,7 @@
       "2014-06-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -199,7 +217,7 @@
       "2020-05-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -218,7 +236,7 @@
       "2014-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -241,6 +259,7 @@
     },
     "resourceType": "policyAssignments",
     "apiVersions": [
+      "2023-04-01",
       "2022-06-01",
       "2021-06-01",
       "2020-09-01",
@@ -257,7 +276,7 @@
       "2015-10-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -271,6 +290,7 @@
     },
     "resourceType": "policyDefinitions",
     "apiVersions": [
+      "2023-04-01",
       "2021-06-01",
       "2020-09-01",
       "2020-08-01",
@@ -285,7 +305,16 @@
       "2015-10-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "policyDefinitions/versions",
+    "apiVersions": [
+      "2023-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -303,7 +332,7 @@
       "2020-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -329,6 +358,7 @@
     },
     "resourceType": "policySetDefinitions",
     "apiVersions": [
+      "2023-04-01",
       "2021-06-01",
       "2020-09-01",
       "2020-08-01",
@@ -341,7 +371,16 @@
       "2017-06-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "policySetDefinitions/versions",
+    "apiVersions": [
+      "2023-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -352,7 +391,7 @@
       "2020-05-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -367,7 +406,7 @@
       "2015-07-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -378,7 +417,7 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -387,7 +426,7 @@
       "2021-01-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -431,7 +470,7 @@
       "2014-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -472,7 +511,7 @@
       "2020-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -522,7 +561,7 @@
       "2020-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -532,7 +571,7 @@
       "2020-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -541,7 +580,7 @@
       "2019-08-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -580,7 +619,7 @@
       "2014-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -590,7 +629,7 @@
       "2020-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -639,7 +678,7 @@
       "2020-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -649,7 +688,7 @@
       "2020-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -658,7 +697,7 @@
       "2022-08-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -667,7 +706,7 @@
       "2022-08-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -676,7 +715,7 @@
       "2022-08-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -685,7 +724,7 @@
       "2022-08-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -811,7 +850,7 @@
       "2020-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -821,6 +860,6 @@
       "2020-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

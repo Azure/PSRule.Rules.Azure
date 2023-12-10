@@ -10,7 +10,7 @@
       "East US 2",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -19,7 +19,7 @@
       "2023-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -33,6 +33,6 @@
       "East US 2 EUAP",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

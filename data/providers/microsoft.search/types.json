@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-11-01",
       "2022-09-01",
       "2021-06-06-Preview",
       "2021-04-01-Preview",
@@ -13,7 +14,7 @@
       "2015-08-19"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -23,7 +24,7 @@
       "2014-07-31-Preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -32,7 +33,7 @@
       "2021-06-06-Preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -82,7 +83,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -98,37 +99,13 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "operations",
+    "resourceType": "locations/usages",
     "apiVersions": [
-      "2022-09-01",
-      "2021-06-06-Preview",
-      "2021-04-01-Preview",
-      "2020-08-01-Preview",
-      "2020-08-01",
-      "2020-03-13",
-      "2019-10-01-Preview",
-      "2015-08-19",
-      "2015-02-28"
-    ],
-    "locations": [],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "resourceHealthMetadata",
-    "apiVersions": [
-      "2022-09-01",
-      "2021-06-06-Preview",
-      "2021-04-01-Preview",
-      "2020-08-01-Preview",
-      "2020-08-01",
-      "2020-03-13",
-      "2019-10-01-Preview",
-      "2015-08-19"
+      "2023-11-01"
     ],
     "locations": [
       "Australia East",
@@ -144,6 +121,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -170,7 +148,82 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-11-01",
+      "2022-09-01",
+      "2021-06-06-Preview",
+      "2021-04-01-Preview",
+      "2020-08-01-Preview",
+      "2020-08-01",
+      "2020-03-13",
+      "2019-10-01-Preview",
+      "2015-08-19",
+      "2015-02-28"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourceHealthMetadata",
+    "apiVersions": [
+      "2023-11-01",
+      "2022-09-01",
+      "2021-06-06-Preview",
+      "2021-04-01-Preview",
+      "2020-08-01-Preview",
+      "2020-08-01",
+      "2020-03-13",
+      "2019-10-01-Preview",
+      "2015-08-19"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany North",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -238,6 +291,7 @@
     },
     "resourceType": "searchServices",
     "apiVersions": [
+      "2023-11-01",
       "2022-09-01",
       "2021-06-06-Preview",
       "2021-04-01-Preview",
@@ -263,6 +317,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -289,7 +344,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

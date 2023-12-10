@@ -31,7 +31,9 @@
     },
     "resourceType": "assessmentProjects",
     "apiVersions": [
+      "2023-07-07-preview",
       "2023-04-01-preview",
+      "2023-03-15",
       "2023-03-03",
       "2022-02-02-preview",
       "2020-05-01-preview",
@@ -70,13 +72,15 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-07-07-preview",
       "2023-04-01-preview",
+      "2023-03-15",
       "2023-03-03",
       "2022-02-02-preview",
       "2020-05-01-preview",
@@ -89,7 +93,7 @@
       "2017-09-25-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -121,7 +125,7 @@
       "UAE North",
       "UK South"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -192,7 +196,7 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -225,7 +229,7 @@
       "UK West",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -272,7 +276,7 @@
       "UAE North",
       "UK South"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -288,7 +292,7 @@
     "locations": [
       "West Central US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

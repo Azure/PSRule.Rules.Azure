@@ -1,0 +1,83 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "azureLargeInstances",
+    "apiVersions": [
+      "2023-07-20-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "azureLargeStorageInstances",
+    "apiVersions": [
+      "2023-07-20-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-07-20-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationsStatus",
+    "apiVersions": [
+      "2023-07-20-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-07-20-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "North Europe",
+      "South Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  }
+]

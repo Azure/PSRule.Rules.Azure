@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "certificateOrders",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -20,12 +21,13 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "certificateOrders/certificates",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -43,12 +45,13 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -66,12 +69,13 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "validateCertificateRegistrationInformation",
     "apiVersions": [
+      "2023-01-01",
       "2022-09-01",
       "2022-03-01",
       "2021-03-01",
@@ -89,6 +93,6 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

@@ -8,7 +8,7 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -19,7 +19,7 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -30,7 +30,7 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -41,7 +41,7 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -52,7 +52,7 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -63,7 +63,7 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -74,7 +74,7 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -85,7 +85,7 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -96,7 +96,7 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -107,6 +107,6 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

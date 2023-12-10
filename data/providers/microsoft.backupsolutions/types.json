@@ -17,7 +17,7 @@
       "2016-09-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -30,7 +30,7 @@
       "West Central US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -46,7 +46,7 @@
       "2017-09-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -59,6 +59,6 @@
       "West Central US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

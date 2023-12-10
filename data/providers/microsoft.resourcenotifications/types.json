@@ -8,7 +8,7 @@
     "locations": [
       "East US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -19,6 +19,6 @@
     "locations": [
       "East US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

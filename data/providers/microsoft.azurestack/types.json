@@ -9,7 +9,7 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -20,7 +20,7 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -33,7 +33,7 @@
       "Southeast Asia",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -45,7 +45,7 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -58,7 +58,7 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -70,7 +70,7 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -83,6 +83,6 @@
     "locations": [
       "Global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

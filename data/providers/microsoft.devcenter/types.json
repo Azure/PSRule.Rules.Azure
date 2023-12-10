@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -12,12 +14,25 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/devcenters/devCenterUri": "properties.devCenterUri",
+      "Microsoft.DevCenter/devcenters/displayName": "properties.displayName",
+      "Microsoft.DevCenter/devcenters/encryption": "properties.encryption",
+      "Microsoft.DevCenter/devcenters/encryption.customerManagedKeyEncryption": "properties.encryption.customerManagedKeyEncryption",
+      "Microsoft.DevCenter/devcenters/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity",
+      "Microsoft.DevCenter/devcenters/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.delegatedIdentityClientId": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.delegatedIdentityClientId",
+      "Microsoft.DevCenter/devcenters/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.identityType": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.identityType",
+      "Microsoft.DevCenter/devcenters/encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.userAssignedIdentityResourceId": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyIdentity.userAssignedIdentityResourceId",
+      "Microsoft.DevCenter/devcenters/encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl",
+      "Microsoft.DevCenter/devcenters/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "devcenters",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -42,12 +57,20 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/devcenters/attachednetworks/domainJoinType": "properties.domainJoinType",
+      "Microsoft.DevCenter/devcenters/attachednetworks/healthCheckStatus": "properties.healthCheckStatus",
+      "Microsoft.DevCenter/devcenters/attachednetworks/networkConnectionId": "properties.networkConnectionId",
+      "Microsoft.DevCenter/devcenters/attachednetworks/networkConnectionLocation": "properties.networkConnectionLocation",
+      "Microsoft.DevCenter/devcenters/attachednetworks/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "devcenters/attachednetworks",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -72,12 +95,38 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/devcenters/catalogs/adoGit": "properties.adoGit",
+      "Microsoft.DevCenter/devcenters/catalogs/adoGit.branch": "properties.adoGit.branch",
+      "Microsoft.DevCenter/devcenters/catalogs/adoGit.path": "properties.adoGit.path",
+      "Microsoft.DevCenter/devcenters/catalogs/adoGit.secretIdentifier": "properties.adoGit.secretIdentifier",
+      "Microsoft.DevCenter/devcenters/catalogs/adoGit.uri": "properties.adoGit.uri",
+      "Microsoft.DevCenter/devcenters/catalogs/connectionState": "properties.connectionState",
+      "Microsoft.DevCenter/devcenters/catalogs/gitHub": "properties.gitHub",
+      "Microsoft.DevCenter/devcenters/catalogs/gitHub.branch": "properties.gitHub.branch",
+      "Microsoft.DevCenter/devcenters/catalogs/gitHub.path": "properties.gitHub.path",
+      "Microsoft.DevCenter/devcenters/catalogs/gitHub.secretIdentifier": "properties.gitHub.secretIdentifier",
+      "Microsoft.DevCenter/devcenters/catalogs/gitHub.uri": "properties.gitHub.uri",
+      "Microsoft.DevCenter/devcenters/catalogs/lastConnectionTime": "properties.lastConnectionTime",
+      "Microsoft.DevCenter/devcenters/catalogs/lastSyncStats": "properties.lastSyncStats",
+      "Microsoft.DevCenter/devcenters/catalogs/lastSyncStats.added": "properties.lastSyncStats.added",
+      "Microsoft.DevCenter/devcenters/catalogs/lastSyncStats.removed": "properties.lastSyncStats.removed",
+      "Microsoft.DevCenter/devcenters/catalogs/lastSyncStats.synchronizationErrors": "properties.lastSyncStats.synchronizationErrors",
+      "Microsoft.DevCenter/devcenters/catalogs/lastSyncStats.unchanged": "properties.lastSyncStats.unchanged",
+      "Microsoft.DevCenter/devcenters/catalogs/lastSyncStats.updated": "properties.lastSyncStats.updated",
+      "Microsoft.DevCenter/devcenters/catalogs/lastSyncStats.validationErrors": "properties.lastSyncStats.validationErrors",
+      "Microsoft.DevCenter/devcenters/catalogs/lastSyncTime": "properties.lastSyncTime",
+      "Microsoft.DevCenter/devcenters/catalogs/provisioningState": "properties.provisioningState",
+      "Microsoft.DevCenter/devcenters/catalogs/syncState": "properties.syncState",
+      "Microsoft.DevCenter/devcenters/catalogs/syncType": "properties.syncType"
+    },
     "resourceType": "devcenters/catalogs",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -102,12 +151,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "devcenters/catalogs/devboxdefinitions",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview"
     ],
@@ -126,12 +177,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "devcenters/catalogs/environmentdefinitions",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview"
     ],
     "locations": [
@@ -149,12 +202,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "devcenters/catalogs/tasks",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview"
     ],
     "locations": [
@@ -172,12 +227,41 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/activeImageReference": "properties.activeImageReference",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/activeImageReference.exactVersion": "properties.activeImageReference.exactVersion",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/activeImageReference.id": "properties.activeImageReference.id",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/activeImageReference.offer": "properties.activeImageReference.offer",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/activeImageReference.publisher": "properties.activeImageReference.publisher",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/activeImageReference.sku": "properties.activeImageReference.sku",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/hibernateSupport": "properties.hibernateSupport",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageReference": "properties.imageReference",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageReference.exactVersion": "properties.imageReference.exactVersion",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageReference.id": "properties.imageReference.id",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageReference.offer": "properties.imageReference.offer",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageReference.publisher": "properties.imageReference.publisher",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageReference.sku": "properties.imageReference.sku",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageValidationErrorDetails": "properties.imageValidationErrorDetails",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageValidationErrorDetails.code": "properties.imageValidationErrorDetails.code",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageValidationErrorDetails.message": "properties.imageValidationErrorDetails.message",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/imageValidationStatus": "properties.imageValidationStatus",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/osStorageType": "properties.osStorageType",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/provisioningState": "properties.provisioningState",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/sku": "properties.sku",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/sku.capacity": "properties.sku.capacity",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/sku.family": "properties.sku.family",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/sku.name": "properties.sku.name",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/sku.size": "properties.sku.size",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/sku.tier": "properties.sku.tier",
+      "Microsoft.DevCenter/devcenters/devboxdefinitions/validationStatus": "properties.validationStatus"
+    },
     "resourceType": "devcenters/devboxdefinitions",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -202,12 +286,17 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/devcenters/environmentTypes/displayName": "properties.displayName",
+      "Microsoft.DevCenter/devcenters/environmentTypes/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "devcenters/environmentTypes",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -232,12 +321,17 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/devcenters/galleries/galleryResourceId": "properties.galleryResourceId",
+      "Microsoft.DevCenter/devcenters/galleries/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "devcenters/galleries",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -262,12 +356,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "devcenters/galleries/images",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -292,12 +388,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "devcenters/galleries/images/versions",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -322,12 +420,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "devcenters/images",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -352,12 +452,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -368,12 +470,14 @@
       "2022-08-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -398,12 +502,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations/usages",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01"
@@ -411,12 +517,24 @@
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/networkConnections/domainJoinType": "properties.domainJoinType",
+      "Microsoft.DevCenter/networkConnections/domainName": "properties.domainName",
+      "Microsoft.DevCenter/networkConnections/domainPassword": "properties.domainPassword",
+      "Microsoft.DevCenter/networkConnections/domainUsername": "properties.domainUsername",
+      "Microsoft.DevCenter/networkConnections/healthCheckStatus": "properties.healthCheckStatus",
+      "Microsoft.DevCenter/networkConnections/networkingResourceGroupName": "properties.networkingResourceGroupName",
+      "Microsoft.DevCenter/networkConnections/organizationUnit": "properties.organizationUnit",
+      "Microsoft.DevCenter/networkConnections/provisioningState": "properties.provisioningState",
+      "Microsoft.DevCenter/networkConnections/subnetId": "properties.subnetId"
+    },
     "resourceType": "networkconnections",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -441,12 +559,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "networkconnections/healthchecks",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -471,12 +591,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "networkconnections/outboundNetworkDependenciesEndpoints",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -497,12 +619,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -513,12 +637,21 @@
       "2022-08-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/projects/description": "properties.description",
+      "Microsoft.DevCenter/projects/devCenterId": "properties.devCenterId",
+      "Microsoft.DevCenter/projects/devCenterUri": "properties.devCenterUri",
+      "Microsoft.DevCenter/projects/displayName": "properties.displayName",
+      "Microsoft.DevCenter/projects/maxDevBoxesPerUser": "properties.maxDevBoxesPerUser",
+      "Microsoft.DevCenter/projects/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "projects",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -543,12 +676,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "projects/allowedEnvironmentTypes",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -572,12 +707,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "projects/attachednetworks",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -602,12 +739,14 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "projects/devboxdefinitions",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -632,12 +771,23 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/projects/environmentTypes/creatorRoleAssignment": "properties.creatorRoleAssignment",
+      "Microsoft.DevCenter/projects/environmentTypes/creatorRoleAssignment.roles": "properties.creatorRoleAssignment.roles",
+      "Microsoft.DevCenter/projects/environmentTypes/deploymentTargetId": "properties.deploymentTargetId",
+      "Microsoft.DevCenter/projects/environmentTypes/displayName": "properties.displayName",
+      "Microsoft.DevCenter/projects/environmentTypes/environmentCount": "properties.environmentCount",
+      "Microsoft.DevCenter/projects/environmentTypes/provisioningState": "properties.provisioningState",
+      "Microsoft.DevCenter/projects/environmentTypes/status": "properties.status",
+      "Microsoft.DevCenter/projects/environmentTypes/userRoleAssignments": "properties.userRoleAssignments"
+    },
     "resourceType": "projects/environmentTypes",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -662,12 +812,34 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/projects/pools/devBoxCount": "properties.devBoxCount",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinitionName": "properties.devBoxDefinitionName",
+      "Microsoft.DevCenter/projects/pools/displayName": "properties.displayName",
+      "Microsoft.DevCenter/projects/pools/healthStatus": "properties.healthStatus",
+      "Microsoft.DevCenter/projects/pools/healthStatusDetails": "properties.healthStatusDetails",
+      "Microsoft.DevCenter/projects/pools/healthStatusDetails[*]": "properties.healthStatusDetails[*]",
+      "Microsoft.DevCenter/projects/pools/healthStatusDetails[*].code": "properties.healthStatusDetails[*].code",
+      "Microsoft.DevCenter/projects/pools/healthStatusDetails[*].message": "properties.healthStatusDetails[*].message",
+      "Microsoft.DevCenter/projects/pools/licenseType": "properties.licenseType",
+      "Microsoft.DevCenter/projects/pools/localAdministrator": "properties.localAdministrator",
+      "Microsoft.DevCenter/projects/pools/managedVirtualNetworkRegions": "properties.managedVirtualNetworkRegions",
+      "Microsoft.DevCenter/projects/pools/managedVirtualNetworkRegions[*]": "properties.managedVirtualNetworkRegions[*]",
+      "Microsoft.DevCenter/projects/pools/networkConnectionName": "properties.networkConnectionName",
+      "Microsoft.DevCenter/projects/pools/provisioningState": "properties.provisioningState",
+      "Microsoft.DevCenter/projects/pools/singleSignOnStatus": "properties.singleSignOnStatus",
+      "Microsoft.DevCenter/projects/pools/stopOnDisconnect": "properties.stopOnDisconnect",
+      "Microsoft.DevCenter/projects/pools/stopOnDisconnect.gracePeriodMinutes": "properties.stopOnDisconnect.gracePeriodMinutes",
+      "Microsoft.DevCenter/projects/pools/stopOnDisconnect.status": "properties.stopOnDisconnect.status",
+      "Microsoft.DevCenter/projects/pools/virtualNetworkType": "properties.virtualNetworkType"
+    },
     "resourceType": "projects/pools",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -692,12 +864,21 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/projects/pools/schedules/frequency": "properties.frequency",
+      "Microsoft.DevCenter/projects/pools/schedules/provisioningState": "properties.provisioningState",
+      "Microsoft.DevCenter/projects/pools/schedules/state": "properties.state",
+      "Microsoft.DevCenter/projects/pools/schedules/time": "properties.time",
+      "Microsoft.DevCenter/projects/pools/schedules/timeZone": "properties.timeZone",
+      "Microsoft.DevCenter/projects/pools/schedules/type": "properties.type"
+    },
     "resourceType": "projects/pools/schedules",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01",
@@ -722,6 +903,6 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

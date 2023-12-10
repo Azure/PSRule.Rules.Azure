@@ -30,11 +30,13 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -50,7 +52,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -72,11 +74,13 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -92,7 +96,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -124,11 +128,13 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -144,7 +150,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -154,7 +160,7 @@
       "2020-07-15-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -174,11 +180,13 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -194,7 +202,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -214,11 +222,13 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -234,7 +244,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -246,6 +256,6 @@
       "2020-07-15-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

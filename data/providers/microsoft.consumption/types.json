@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "AggregatedCost",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -14,12 +15,13 @@
       "2018-06-30"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Balances",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2022-09-01",
@@ -37,7 +39,7 @@
       "2017-06-30-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -96,6 +98,7 @@
     },
     "resourceType": "Budgets",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -114,12 +117,13 @@
       "2017-12-30-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Charges",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -132,12 +136,13 @@
       "2018-08-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "CostTags",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -151,12 +156,13 @@
       "2018-03-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "credits",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -167,12 +173,13 @@
       "2018-08-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "events",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -183,12 +190,13 @@
       "2018-08-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Forecasts",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2019-10-01",
@@ -200,12 +208,13 @@
       "2018-05-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "lots",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -216,12 +225,13 @@
       "2018-08-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Marketplaces",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -236,12 +246,13 @@
       "2018-01-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "OperationResults",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2022-06-01",
@@ -258,12 +269,13 @@
       "2018-08-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2022-06-01",
@@ -283,12 +295,13 @@
       "2017-06-30-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "OperationStatus",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2022-09-01",
@@ -306,12 +319,13 @@
       "2018-08-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Pricesheets",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2022-06-01",
@@ -330,12 +344,13 @@
       "2017-06-30-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "products",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -344,12 +359,13 @@
       "2018-08-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "ReservationDetails",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -366,24 +382,26 @@
       "2017-06-30-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "ReservationRecommendationDetails",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
       "2019-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "ReservationRecommendations",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -397,12 +415,13 @@
       "2018-03-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "ReservationSummaries",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -419,12 +438,13 @@
       "2017-06-30-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "ReservationTransactions",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -441,12 +461,13 @@
       "2017-06-30-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Tags",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -465,12 +486,13 @@
       "2018-03-31"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "tenants",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -480,12 +502,13 @@
       "2018-10-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Terms",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -500,12 +523,13 @@
       "2017-12-30-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "UsageDetails",
     "apiVersions": [
+      "2023-11-01",
       "2023-05-01",
       "2023-03-01",
       "2021-10-01",
@@ -528,6 +552,6 @@
       "2017-06-30-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

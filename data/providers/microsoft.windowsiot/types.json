@@ -10,7 +10,7 @@
       "East US",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -24,6 +24,6 @@
       "West Central US",
       "West US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

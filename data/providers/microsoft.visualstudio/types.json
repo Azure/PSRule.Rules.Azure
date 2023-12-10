@@ -29,7 +29,7 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -61,7 +61,70 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2014-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2014-04-01-preview",
+      "2014-02-26"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -95,97 +158,6 @@
       "Microsoft.VisualStudio/account/project/tfsUniqueIdentifier": "properties.tfsUniqueIdentifier",
       "Microsoft.VisualStudio/account/project/versionControlOption": "properties.versionControlOption"
     },
-    "resourceType": "account/project",
-    "apiVersions": [
-      "2014-04-01-preview",
-      "2014-02-26"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "Canada Central",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "Japan East",
-      "Japan West",
-      "North Central US",
-      "North Europe",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West India",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "checkNameAvailability",
-    "apiVersions": [
-      "2014-04-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "Canada Central",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "Japan East",
-      "Japan West",
-      "North Central US",
-      "North Europe",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West India",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "operations",
-    "apiVersions": [
-      "2014-04-01-preview",
-      "2014-02-26"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "Canada Central",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "Japan East",
-      "Japan West",
-      "North Central US",
-      "North Europe",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "UK South",
-      "West Central US",
-      "West Europe",
-      "West India",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "resourceType": "account/project"
   }
 ]

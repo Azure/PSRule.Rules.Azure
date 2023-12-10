@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "accounts",
     "apiVersions": [
+      "2024-01-01",
       "2022-08-01",
       "2022-07-20-preview",
       "2022-04-13-preview",
@@ -35,12 +36,13 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "checknameavailability",
     "apiVersions": [
+      "2024-01-01",
       "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-02-preview",
@@ -52,12 +54,13 @@
       "2021-10-18-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-01-01",
       "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-02-preview",
@@ -69,7 +72,7 @@
       "2021-10-18-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -106,12 +109,13 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2024-01-01",
       "2023-08-01-preview",
       "2023-06-02-preview",
       "2022-08-01",
@@ -154,7 +158,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -191,12 +195,13 @@
       "West US",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-01-01",
       "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-02-preview",
@@ -208,6 +213,6 @@
       "2021-10-18-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

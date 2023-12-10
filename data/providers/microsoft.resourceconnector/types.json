@@ -9,19 +9,23 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -33,7 +37,7 @@
       "2020-09-15-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -46,19 +50,23 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -71,19 +79,23 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
       "Central US",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -96,6 +108,15 @@
       "2020-07-15-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "telemetryconfig",
+    "apiVersions": [
+      "2022-10-27"
+    ],
+    "locations": [],
+    "zoneMappings": []
   }
 ]

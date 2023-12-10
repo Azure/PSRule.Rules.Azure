@@ -20,15 +20,22 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Japan East",
       "Japan West",
       "JIO India West",
+      "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "UK West",
       "West Central US",
@@ -38,12 +45,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "checkNamespaceAvailability",
     "apiVersions": [
+      "2023-09-01",
       "2023-01-01-preview",
       "2020-01-01-preview",
       "2017-04-01",
@@ -63,14 +71,24 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Japan East",
       "Japan West",
+      "JIO India West",
+      "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
@@ -80,7 +98,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -110,6 +128,7 @@
     },
     "resourceType": "namespaces",
     "apiVersions": [
+      "2023-09-01",
       "2023-01-01-preview",
       "2020-01-01-preview",
       "2017-04-01",
@@ -129,15 +148,24 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Japan East",
       "Japan West",
       "JIO India West",
+      "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
@@ -147,7 +175,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -202,6 +230,7 @@
     },
     "resourceType": "namespaces/notificationHubs",
     "apiVersions": [
+      "2023-09-01",
       "2023-01-01-preview",
       "2020-01-01-preview",
       "2017-04-01",
@@ -221,15 +250,24 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Japan East",
       "Japan West",
       "JIO India West",
+      "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
@@ -239,12 +277,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-09-01",
       "2023-01-01-preview",
       "2020-01-01-preview",
       "2017-04-01",
@@ -264,14 +303,24 @@
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
       "Germany West Central",
       "Japan East",
       "Japan West",
+      "JIO India West",
+      "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
@@ -281,7 +330,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {

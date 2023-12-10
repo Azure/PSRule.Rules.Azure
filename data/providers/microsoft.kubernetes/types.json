@@ -22,6 +22,7 @@
     },
     "resourceType": "connectedClusters",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",
@@ -44,6 +45,7 @@
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
@@ -51,18 +53,20 @@
       "Switzerland North",
       "UAE North",
       "UK South",
+      "UK West",
       "West Central US",
       "West Europe",
       "West US",
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",
@@ -71,12 +75,13 @@
       "2020-01-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",
@@ -115,12 +120,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",
@@ -131,12 +137,13 @@
       "2019-09-01-privatepreview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2022-10-01-preview",
       "2022-05-01-preview",
       "2021-10-01",
@@ -145,6 +152,6 @@
       "2020-01-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

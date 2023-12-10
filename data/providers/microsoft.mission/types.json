@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "catalogs",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
@@ -18,22 +19,24 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "communities",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
@@ -49,12 +52,79 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "communities/communityEndpoints",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-08-01-preview",
+      "2023-02-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "communities/transitHubs",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-08-01-preview",
+      "2023-02-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "enclaveConnections",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-08-01-preview",
+      "2023-02-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "externalConnections",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
@@ -70,12 +140,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "internalConnections",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
@@ -91,24 +162,26 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
@@ -125,24 +198,26 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
       "global"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "virtualEnclaves",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
@@ -158,7 +233,29 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "virtualEnclaves/enclaveEndpoints",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-08-01-preview",
+      "2023-02-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -179,12 +276,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "virtualEnclaves/workloads",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-02-01-preview"
     ],
@@ -200,6 +298,6 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

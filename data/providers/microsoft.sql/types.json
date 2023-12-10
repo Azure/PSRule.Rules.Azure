@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -39,6 +40,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -66,11 +68,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
+      "Microsoft.Sql/instancePools/dnsZone": "properties.dnsZone",
       "Microsoft.Sql/instancePools/licenseType": "properties.licenseType",
+      "Microsoft.Sql/instancePools/maintenanceConfigurationId": "properties.maintenanceConfigurationId",
       "Microsoft.Sql/instancePools/sku": "sku",
       "Microsoft.Sql/instancePools/sku.capacity": "sku.capacity",
       "Microsoft.Sql/instancePools/sku.family": "sku.family",
@@ -82,6 +86,7 @@
     },
     "resourceType": "instancePools",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -112,6 +117,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -139,7 +145,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -163,6 +169,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -190,12 +197,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/administratorAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -228,6 +236,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -255,12 +264,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/administratorOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -293,6 +303,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -320,12 +331,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/advancedThreatProtectionAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -348,6 +360,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -375,12 +388,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/advancedThreatProtectionOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -403,6 +417,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -430,12 +445,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/auditingSettingsAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -468,6 +484,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -495,12 +512,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/auditingSettingsOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -533,6 +551,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -560,12 +579,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -603,6 +623,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -630,12 +651,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/connectionPoliciesAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -669,6 +691,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -696,12 +719,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/connectionPoliciesOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -735,6 +759,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -762,12 +787,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/databaseAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -800,6 +826,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -827,12 +854,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/databaseEncryptionProtectorRevalidateAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -855,6 +883,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -882,12 +911,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/databaseEncryptionProtectorRevalidateOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -910,6 +940,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -937,12 +968,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/databaseEncryptionProtectorRevertAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -963,6 +995,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -990,12 +1023,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/databaseEncryptionProtectorRevertOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1016,6 +1050,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1043,12 +1078,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/databaseOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1081,6 +1117,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1108,12 +1145,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/databaseRestoreAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1146,6 +1184,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1173,12 +1212,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1213,6 +1253,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1240,12 +1281,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnetsAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1280,6 +1322,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1307,12 +1350,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnetsOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1347,6 +1391,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1374,12 +1419,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/devOpsAuditingSettingsAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1408,6 +1454,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1435,12 +1482,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/devOpsAuditingSettingsOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1469,6 +1517,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1496,12 +1545,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/distributedAvailabilityGroupsAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1526,6 +1576,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1553,12 +1604,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/distributedAvailabilityGroupsOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1583,6 +1635,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1610,12 +1663,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/dnsAliasAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1648,6 +1702,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1675,12 +1730,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/dnsAliasOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1713,6 +1769,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1740,12 +1797,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/elasticPoolAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1780,6 +1838,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1807,12 +1866,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/elasticPoolOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1847,6 +1907,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1874,12 +1935,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/encryptionProtectorAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1913,6 +1975,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1940,12 +2003,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/encryptionProtectorOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -1979,6 +2043,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2006,12 +2071,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/extendedAuditingSettingsAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2044,6 +2110,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2071,12 +2138,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/extendedAuditingSettingsOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2109,6 +2177,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2136,12 +2205,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/externalPolicyBasedAuthorizationsAzureAsycOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2164,6 +2234,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2191,12 +2262,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/externalPolicyBasedAuthorizationsOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2219,6 +2291,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2246,12 +2319,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/failoverGroupAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2285,6 +2359,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2312,12 +2387,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/failoverGroupOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2351,6 +2427,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2378,12 +2455,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/firewallRulesAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2417,6 +2495,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2444,12 +2523,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/firewallRulesOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2483,6 +2563,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2510,12 +2591,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/importExportAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2545,6 +2627,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2572,12 +2655,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/importExportOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2607,6 +2691,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2634,12 +2719,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/instanceFailoverGroupAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2671,6 +2757,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2698,12 +2785,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/instanceFailoverGroupOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2735,6 +2823,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2762,7 +2851,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2785,6 +2874,7 @@
     },
     "resourceType": "locations/instanceFailoverGroups",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2816,6 +2906,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2843,12 +2934,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/instancePoolAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2879,6 +2971,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2906,12 +2999,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/instancePoolOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2942,6 +3036,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2969,12 +3064,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/ipv6FirewallRulesAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -2997,6 +3093,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3024,12 +3121,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/ipv6FirewallRulesOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3052,6 +3150,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3079,12 +3178,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/jobAgentAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3117,6 +3217,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3144,12 +3245,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/jobAgentOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3182,6 +3284,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3209,12 +3312,113 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/jobAgentPrivateEndpointAzureAsyncOperation",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/jobAgentPrivateEndpointOperationResults",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/ledgerDigestUploadsAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3240,6 +3444,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3267,12 +3472,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/ledgerDigestUploadsOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3298,6 +3504,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3325,12 +3532,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionBackupAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3363,6 +3571,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3390,12 +3599,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionBackupOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3428,6 +3638,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3455,12 +3666,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionBackups",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3493,6 +3705,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3520,12 +3733,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionManagedInstanceBackupAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3556,6 +3770,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3583,12 +3798,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionManagedInstanceBackupOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3619,6 +3835,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3646,12 +3863,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionManagedInstanceBackups",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3682,6 +3900,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3709,12 +3928,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionManagedInstances",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3745,6 +3965,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3772,12 +3993,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionPolicyAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3810,6 +4032,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3837,12 +4060,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionPolicyOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3875,6 +4099,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3902,12 +4127,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/longTermRetentionServers",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -3940,6 +4166,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3967,12 +4194,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDatabaseAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4005,6 +4233,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4032,12 +4261,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDatabaseCompleteRestoreAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4068,6 +4298,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4095,12 +4326,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDatabaseCompleteRestoreOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4131,6 +4363,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4158,12 +4391,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDatabaseMoveAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4189,6 +4423,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4216,12 +4451,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDatabaseMoveOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4247,6 +4483,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4274,12 +4511,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDatabaseOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4312,6 +4550,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4339,12 +4578,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDatabaseRestoreAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4377,6 +4617,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4404,12 +4645,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDatabaseRestoreOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4442,6 +4684,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4469,12 +4712,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDnsAliasAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4497,6 +4741,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4524,12 +4769,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedDnsAliasOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4552,6 +4798,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4579,12 +4826,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceAdvancedThreatProtectionAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4605,6 +4853,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4632,12 +4881,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceAdvancedThreatProtectionOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4658,6 +4908,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4685,12 +4936,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4724,6 +4976,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4751,12 +5004,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceDtcAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4777,6 +5031,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4804,12 +5059,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceEncryptionProtectorAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4841,6 +5097,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4868,12 +5125,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceEncryptionProtectorOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4905,6 +5163,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4932,12 +5191,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceKeyAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -4969,6 +5229,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -4996,12 +5257,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceKeyOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5033,6 +5295,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5060,12 +5323,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceLongTermRetentionPolicyAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5096,6 +5360,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5123,12 +5388,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceLongTermRetentionPolicyOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5159,6 +5425,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5186,12 +5453,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5225,6 +5493,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5252,12 +5521,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstancePrivateEndpointConnectionAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5287,6 +5557,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5314,12 +5585,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstancePrivateEndpointConnectionOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5349,6 +5621,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5376,12 +5649,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstancePrivateEndpointConnectionProxyAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5411,6 +5685,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5438,12 +5713,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstancePrivateEndpointConnectionProxyOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5473,6 +5749,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5500,12 +5777,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceTdeCertAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5537,6 +5815,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5564,12 +5843,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedInstanceTdeCertOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5601,6 +5881,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5628,12 +5909,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedLedgerDigestUploadsAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview"
@@ -5652,6 +5934,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5679,12 +5962,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedLedgerDigestUploadsOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview"
@@ -5703,6 +5987,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5730,12 +6015,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedServerSecurityAlertPoliciesAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5768,6 +6054,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5795,12 +6082,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedServerSecurityAlertPoliciesOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5833,6 +6121,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5860,12 +6149,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedShortTermRetentionPolicyAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5898,6 +6188,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5925,12 +6216,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedShortTermRetentionPolicyOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -5963,6 +6255,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -5990,12 +6283,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedtransparentDataEncryptionAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6025,6 +6319,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6052,12 +6347,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/managedtransparentDataEncryptionOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6087,6 +6383,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6114,12 +6411,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/notifyAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6153,6 +6451,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6180,12 +6479,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6217,6 +6517,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6249,12 +6550,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/outboundFirewallRulesAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6280,6 +6582,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6307,12 +6610,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/outboundFirewallRulesOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6338,6 +6642,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6365,12 +6670,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/privateEndpointConnectionAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6401,6 +6707,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6428,12 +6735,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/privateEndpointConnectionOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6464,6 +6772,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6491,12 +6800,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/privateEndpointConnectionProxyAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6527,6 +6837,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6554,12 +6865,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/privateEndpointConnectionProxyOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6590,6 +6902,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6617,12 +6930,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/refreshExternalGovernanceStatusAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview"
@@ -6641,6 +6955,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6668,12 +6983,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/refreshExternalGovernanceStatusMIAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
@@ -6690,6 +7006,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6717,12 +7034,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/refreshExternalGovernanceStatusMIOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview"
     ],
     "locations": [
@@ -6739,6 +7057,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6766,12 +7085,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/refreshExternalGovernanceStatusOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview"
@@ -6790,6 +7110,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6817,12 +7138,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/replicationLinksAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6856,6 +7178,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6883,12 +7206,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/replicationLinksOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6922,6 +7246,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -6949,12 +7274,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/securityAlertPoliciesAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -6987,6 +7313,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7014,12 +7341,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/securityAlertPoliciesOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7052,6 +7380,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7079,12 +7408,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverAdministratorAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7115,6 +7445,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7142,12 +7473,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverAdministratorOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7178,6 +7510,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7205,12 +7538,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7244,6 +7578,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7271,12 +7606,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverConfigurationOptionAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview"
@@ -7295,6 +7631,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7322,12 +7659,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverKeyAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7361,6 +7699,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7388,12 +7727,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverKeyOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7427,6 +7767,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7454,12 +7795,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7493,6 +7835,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7520,12 +7863,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverTrustCertificatesAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7550,6 +7894,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7577,12 +7922,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverTrustCertificatesOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7607,6 +7953,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7634,12 +7981,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverTrustGroupAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7668,6 +8016,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7695,12 +8044,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/serverTrustGroupOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7729,6 +8079,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7756,7 +8107,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -7768,6 +8119,7 @@
     },
     "resourceType": "locations/serverTrustGroups",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7796,6 +8148,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7823,12 +8176,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/shortTermRetentionPolicyAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7860,6 +8214,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7887,12 +8242,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/shortTermRetentionPolicyOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7924,6 +8280,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -7951,12 +8308,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/sqlVulnerabilityAssessmentAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -7977,6 +8335,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8004,12 +8363,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/sqlVulnerabilityAssessmentOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8030,6 +8390,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8057,12 +8418,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/startManagedInstanceAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8087,6 +8449,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8114,12 +8477,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/startManagedInstanceOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8144,6 +8508,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8171,12 +8536,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/stopManagedInstanceAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8201,6 +8567,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8228,12 +8595,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/stopManagedInstanceOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8258,6 +8626,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8285,12 +8654,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/syncAgentOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8324,6 +8694,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8351,12 +8722,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/syncDatabaseIds",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8390,6 +8762,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8417,12 +8790,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/syncGroupAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8456,6 +8830,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8483,12 +8858,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/syncGroupOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8522,6 +8898,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8549,12 +8926,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/syncMemberOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8588,6 +8966,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8615,12 +8994,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/tdeCertAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8652,6 +9032,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8679,12 +9060,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/tdeCertOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8716,6 +9098,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8743,12 +9126,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/transparentDataEncryptionAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8778,6 +9162,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8805,12 +9190,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/transparentDataEncryptionOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8840,6 +9226,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8867,12 +9254,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/updateManagedInstanceDnsServersAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8892,6 +9280,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8919,12 +9308,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/updateManagedInstanceDnsServersOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -8944,6 +9334,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -8971,12 +9362,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9012,6 +9404,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9039,12 +9432,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/virtualClusterAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9078,6 +9472,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9105,12 +9500,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/virtualClusterOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9144,6 +9540,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9171,12 +9568,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/virtualNetworkRulesAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9211,6 +9609,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9238,12 +9637,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/virtualNetworkRulesOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9278,6 +9678,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9305,12 +9706,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/vulnerabilityAssessmentScanAzureAsyncOperation",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9342,6 +9744,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9369,12 +9772,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/vulnerabilityAssessmentScanOperationResults",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9406,6 +9810,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9433,7 +9838,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -9446,17 +9851,25 @@
       "Microsoft.Sql/managedInstances/administrators.principalType": "properties.administrators.principalType",
       "Microsoft.Sql/managedInstances/administrators.sid": "properties.administrators.sid",
       "Microsoft.Sql/managedInstances/administrators.tenantId": "properties.administrators.tenantId",
+      "Microsoft.Sql/managedInstances/authenticationMetadata": "properties.authenticationMetadata",
       "Microsoft.Sql/managedInstances/collation": "properties.collation",
+      "Microsoft.Sql/managedInstances/createTime": "properties.createTime",
       "Microsoft.Sql/managedInstances/currentBackupStorageRedundancy": "properties.currentBackupStorageRedundancy",
+      "Microsoft.Sql/managedInstances/databaseFormat": "properties.databaseFormat",
       "Microsoft.Sql/managedInstances/dnsZone": "properties.dnsZone",
       "Microsoft.Sql/managedInstances/dnsZonePartner": "properties.dnsZonePartner",
+      "Microsoft.Sql/managedInstances/externalGovernanceStatus": "properties.externalGovernanceStatus",
       "Microsoft.Sql/managedInstances/fullyQualifiedDomainName": "properties.fullyQualifiedDomainName",
+      "Microsoft.Sql/managedInstances/hybridSecondaryUsage": "properties.hybridSecondaryUsage",
+      "Microsoft.Sql/managedInstances/hybridSecondaryUsageDetected": "properties.hybridSecondaryUsageDetected",
       "Microsoft.Sql/managedInstances/instancePoolId": "properties.instancePoolId",
+      "Microsoft.Sql/managedInstances/isGeneralPurposeV2": "properties.isGeneralPurposeV2",
       "Microsoft.Sql/managedInstances/keyId": "properties.keyId",
       "Microsoft.Sql/managedInstances/licenseType": "properties.licenseType",
       "Microsoft.Sql/managedInstances/maintenanceConfigurationId": "properties.maintenanceConfigurationId",
       "Microsoft.Sql/managedInstances/managedInstanceCreateMode": "properties.managedInstanceCreateMode",
       "Microsoft.Sql/managedInstances/minimalTlsVersion": "properties.minimalTlsVersion",
+      "Microsoft.Sql/managedInstances/pricingModel": "properties.pricingModel",
       "Microsoft.Sql/managedInstances/primaryUserAssignedIdentityId": "properties.primaryUserAssignedIdentityId",
       "Microsoft.Sql/managedInstances/privateEndpointConnections": "properties.privateEndpointConnections",
       "Microsoft.Sql/managedInstances/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
@@ -9487,14 +9900,18 @@
       "Microsoft.Sql/managedInstances/sourceManagedInstanceId": "properties.sourceManagedInstanceId",
       "Microsoft.Sql/managedInstances/state": "properties.state",
       "Microsoft.Sql/managedInstances/storageAccountType": "properties.requestedBackupStorageRedundancy",
+      "Microsoft.Sql/managedInstances/storageIOps": "properties.storageIOps",
       "Microsoft.Sql/managedInstances/storageSizeInGB": "properties.storageSizeInGB",
+      "Microsoft.Sql/managedInstances/storageThroughputMBps": "properties.storageThroughputMBps",
       "Microsoft.Sql/managedInstances/subnetId": "properties.subnetId",
       "Microsoft.Sql/managedInstances/timezoneId": "properties.timezoneId",
       "Microsoft.Sql/managedInstances/vCores": "properties.vCores",
+      "Microsoft.Sql/managedInstances/virtualClusterId": "properties.virtualClusterId",
       "Microsoft.Sql/managedInstances/zoneRedundant": "properties.zoneRedundant"
     },
     "resourceType": "managedInstances",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9528,6 +9945,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9555,7 +9973,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -9570,6 +9988,7 @@
     },
     "resourceType": "managedInstances/administrators",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9602,6 +10021,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9629,7 +10049,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -9638,6 +10058,7 @@
     },
     "resourceType": "managedInstances/advancedThreatProtectionSettings",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9658,6 +10079,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9685,7 +10107,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -9700,6 +10122,7 @@
       "Microsoft.Sql/managedInstances/databases/defaultSecondaryLocation": "properties.defaultSecondaryLocation",
       "Microsoft.Sql/managedInstances/databases/earliestRestorePoint": "properties.earliestRestorePoint",
       "Microsoft.Sql/managedInstances/databases/failoverGroupId": "properties.failoverGroupId",
+      "Microsoft.Sql/managedInstances/databases/isLedgerOn": "properties.isLedgerOn",
       "Microsoft.Sql/managedInstances/databases/lastBackupName": "properties.lastBackupName",
       "Microsoft.Sql/managedInstances/databases/longTermRetentionBackupResourceId": "properties.longTermRetentionBackupResourceId",
       "Microsoft.Sql/managedInstances/databases/recoverableDatabaseId": "properties.recoverableDatabaseId",
@@ -9713,6 +10136,7 @@
     },
     "resourceType": "managedInstances/databases",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9745,6 +10169,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9772,7 +10197,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -9781,6 +10206,7 @@
     },
     "resourceType": "managedInstances/databases/advancedThreatProtectionSettings",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9801,6 +10227,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9828,10 +10255,11 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
+      "Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicies/backupStorageAccessTier": "properties.backupStorageAccessTier",
       "Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicies/default.monthlyRetention": "properties.monthlyRetention",
       "Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicies/default.weeklyRetention": "properties.weeklyRetention",
       "Microsoft.Sql/managedInstances/databases/backupLongTermRetentionPolicies/default.weekOfYear": "properties.weekOfYear",
@@ -9843,6 +10271,7 @@
     },
     "resourceType": "managedInstances/databases/backupLongTermRetentionPolicies",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -9873,6 +10302,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9900,12 +10330,16 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Sql/managedInstances/databases/ledgerDigestUploads/digestStorageEndpoint": "properties.digestStorageEndpoint",
+      "Microsoft.Sql/managedInstances/databases/ledgerDigestUploads/state": "properties.state"
+    },
     "resourceType": "managedInstances/databases/ledgerDigestUploads",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview"
@@ -9924,6 +10358,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -9951,7 +10386,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -9980,6 +10415,7 @@
     },
     "resourceType": "managedInstances/databases/vulnerabilityAssessments",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10012,6 +10448,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10039,12 +10476,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "managedInstances/dnsAliases",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10067,6 +10505,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10094,12 +10533,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "managedInstances/metricDefinitions",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10132,6 +10572,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10159,12 +10600,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "managedInstances/metrics",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10197,6 +10639,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10224,12 +10667,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "managedInstances/recoverableDatabases",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10261,6 +10705,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10288,12 +10733,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "managedInstances/sqlAgent",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10325,6 +10771,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10352,12 +10799,24 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Sql/managedInstances/startStopSchedules/description": "properties.description",
+      "Microsoft.Sql/managedInstances/startStopSchedules/nextExecutionTime": "properties.nextExecutionTime",
+      "Microsoft.Sql/managedInstances/startStopSchedules/nextRunAction": "properties.nextRunAction",
+      "Microsoft.Sql/managedInstances/startStopSchedules/scheduleList": "properties.scheduleList",
+      "Microsoft.Sql/managedInstances/startStopSchedules/scheduleList[*]": "properties.scheduleList[*]",
+      "Microsoft.Sql/managedInstances/startStopSchedules/scheduleList[*].startDay": "properties.scheduleList[*].startDay",
+      "Microsoft.Sql/managedInstances/startStopSchedules/scheduleList[*].startTime": "properties.scheduleList[*].startTime",
+      "Microsoft.Sql/managedInstances/startStopSchedules/scheduleList[*].stopDay": "properties.scheduleList[*].stopDay",
+      "Microsoft.Sql/managedInstances/startStopSchedules/scheduleList[*].stopTime": "properties.scheduleList[*].stopTime",
+      "Microsoft.Sql/managedInstances/startStopSchedules/timeZoneId": "properties.timeZoneId"
+    },
     "resourceType": "managedInstances/startStopSchedules",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10382,6 +10841,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10409,12 +10869,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "managedInstances/tdeCertificates",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10446,6 +10907,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10473,7 +10935,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -10496,6 +10958,7 @@
     },
     "resourceType": "managedInstances/vulnerabilityAssessments",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10526,6 +10989,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10553,12 +11017,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10596,6 +11061,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10623,7 +11089,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -10640,8 +11106,10 @@
       "Microsoft.Sql/servers/dnsAliases.azureDnsRecord": "properties.azureDnsRecord",
       "Microsoft.Sql/servers/externalAdministratorLogin": "properties.externalAdministratorLogin",
       "Microsoft.Sql/servers/externalAdministratorSid": "properties.externalAdministratorSid",
+      "Microsoft.Sql/servers/externalGovernanceStatus": "properties.externalGovernanceStatus",
       "Microsoft.Sql/servers/federatedClientId": "properties.federatedClientId",
       "Microsoft.Sql/servers/fullyQualifiedDomainName": "properties.fullyQualifiedDomainName",
+      "Microsoft.Sql/servers/isIPv6Enabled": "properties.isIPv6Enabled",
       "Microsoft.Sql/servers/keyId": "properties.keyId",
       "Microsoft.Sql/servers/minimalTlsVersion": "properties.minimalTlsVersion",
       "Microsoft.Sql/servers/primaryUserAssignedIdentityId": "properties.primaryUserAssignedIdentityId",
@@ -10665,6 +11133,7 @@
     },
     "resourceType": "servers",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10701,6 +11170,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10728,7 +11198,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -10752,6 +11222,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10779,7 +11250,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -10796,6 +11267,7 @@
     },
     "resourceType": "servers/administrators",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10829,6 +11301,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10856,7 +11329,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -10865,6 +11338,7 @@
     },
     "resourceType": "servers/advancedThreatProtectionSettings",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -10887,6 +11361,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -10914,7 +11389,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -10983,6 +11458,7 @@
     },
     "resourceType": "servers/advisors",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -11019,6 +11495,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -11046,7 +11523,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -11070,6 +11547,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -11097,7 +11575,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -11127,6 +11605,7 @@
     },
     "resourceType": "servers/auditingSettings",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -11160,6 +11639,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -11187,7 +11667,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -11201,6 +11681,7 @@
     },
     "resourceType": "servers/automaticTuning",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -11233,6 +11714,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -11260,7 +11742,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -11287,6 +11769,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -11314,7 +11797,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -11323,6 +11806,7 @@
     },
     "resourceType": "servers/connectionPolicies",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -11359,6 +11843,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -11386,11 +11871,12 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
       "Microsoft.Sql/servers/databases/autoPauseDelay": "properties.autoPauseDelay",
+      "Microsoft.Sql/servers/databases/availabilityZone": "properties.availabilityZone",
       "Microsoft.Sql/servers/databases/catalogCollation": "properties.catalogCollation",
       "Microsoft.Sql/servers/databases/collation": "properties.collation",
       "Microsoft.Sql/servers/databases/containmentState": "properties.containmentState",
@@ -11411,19 +11897,25 @@
       "Microsoft.Sql/servers/databases/edition": "sku.tier",
       "Microsoft.Sql/servers/databases/elasticPoolId": "properties.elasticPoolId",
       "Microsoft.Sql/servers/databases/elasticPoolName": "properties.elasticPoolName",
+      "Microsoft.Sql/servers/databases/encryptionProtector": "properties.encryptionProtector",
+      "Microsoft.Sql/servers/databases/encryptionProtectorAutoRotation": "properties.encryptionProtectorAutoRotation",
       "Microsoft.Sql/servers/databases/failoverGroupId": "properties.failoverGroupId",
       "Microsoft.Sql/servers/databases/federatedClientId": "properties.federatedClientId",
+      "Microsoft.Sql/servers/databases/freeLimitExhaustionBehavior": "properties.freeLimitExhaustionBehavior",
       "Microsoft.Sql/servers/databases/highAvailabilityReplicaCount": "properties.highAvailabilityReplicaCount",
       "Microsoft.Sql/servers/databases/isInfraEncryptionEnabled": "properties.isInfraEncryptionEnabled",
       "Microsoft.Sql/servers/databases/isLedgerOn": "properties.isLedgerOn",
+      "Microsoft.Sql/servers/databases/keys": "properties.keys",
       "Microsoft.Sql/servers/databases/licenseType": "properties.licenseType",
       "Microsoft.Sql/servers/databases/longTermRetentionBackupResourceId": "properties.longTermRetentionBackupResourceId",
       "Microsoft.Sql/servers/databases/maintenanceConfigurationId": "properties.maintenanceConfigurationId",
       "Microsoft.Sql/servers/databases/managedBy": "managedBy",
+      "Microsoft.Sql/servers/databases/manualCutover": "properties.manualCutover",
       "Microsoft.Sql/servers/databases/maxLogSizeBytes": "properties.maxLogSizeBytes",
       "Microsoft.Sql/servers/databases/maxSizeBytes": "properties.maxSizeBytes",
       "Microsoft.Sql/servers/databases/minCapacity": "properties.minCapacity",
       "Microsoft.Sql/servers/databases/pausedDate": "properties.pausedDate",
+      "Microsoft.Sql/servers/databases/performCutover": "properties.performCutover",
       "Microsoft.Sql/servers/databases/preferredEnclaveType": "properties.preferredEnclaveType",
       "Microsoft.Sql/servers/databases/primaryDelegatedIdentityClientId": "properties.primaryDelegatedIdentityClientId",
       "Microsoft.Sql/servers/databases/readReplicaCount": "properties.readReplicaCount",
@@ -11516,10 +12008,12 @@
       "Microsoft.Sql/servers/databases/transparentDataEncryption[*].name": "properties.transparentDataEncryption[*].name",
       "Microsoft.Sql/servers/databases/transparentDataEncryption[*].status": "properties.transparentDataEncryption[*].properties.status",
       "Microsoft.Sql/servers/databases/transparentDataEncryption[*].type": "properties.transparentDataEncryption[*].type",
+      "Microsoft.Sql/servers/databases/useFreeLimit": "properties.useFreeLimit",
       "Microsoft.Sql/servers/databases/zoneRedundant": "properties.zoneRedundant"
     },
     "resourceType": "servers/databases",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -11557,6 +12051,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -11659,6 +12154,14 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
         "zones": [
           "1",
           "2",
@@ -11818,6 +12321,7 @@
     },
     "resourceType": "servers/databases/advancedThreatProtectionSettings",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -11840,6 +12344,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -11867,7 +12372,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -11936,6 +12441,7 @@
     },
     "resourceType": "servers/databases/advisors",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -11972,6 +12478,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -11999,7 +12506,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -12028,6 +12535,7 @@
     },
     "resourceType": "servers/databases/auditingSettings",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12061,6 +12569,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12088,12 +12597,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/databases/auditRecords",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12127,6 +12637,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12154,7 +12665,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -12168,6 +12679,7 @@
     },
     "resourceType": "servers/databases/automaticTuning",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12201,6 +12713,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12228,7 +12741,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -12238,6 +12751,7 @@
       "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/default.weeklyRetention": "properties.weeklyRetention",
       "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/default.weekOfYear": "properties.weekOfYear",
       "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/default.yearlyRetention": "properties.yearlyRetention",
+      "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/makeBackupsImmutable": "properties.makeBackupsImmutable",
       "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/monthlyRetention": "properties.monthlyRetention",
       "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/recoveryServicesBackupPolicyResourceId": "properties.recoveryServicesBackupPolicyResourceId",
       "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/state": "properties.state",
@@ -12247,6 +12761,7 @@
     },
     "resourceType": "servers/databases/backupLongTermRetentionPolicies",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12279,6 +12794,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12306,7 +12822,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -12317,6 +12833,7 @@
     },
     "resourceType": "servers/databases/backupShortTermRetentionPolicies",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12348,6 +12865,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12375,7 +12893,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -12390,6 +12908,7 @@
     },
     "resourceType": "servers/databases/dataMaskingPolicies",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12426,6 +12945,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12453,12 +12973,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/databases/dataMaskingPolicies/rules",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12495,6 +13016,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12522,7 +13044,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -12546,6 +13068,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12573,7 +13096,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -12584,6 +13107,7 @@
     },
     "resourceType": "servers/databases/geoBackupPolicies",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12620,6 +13144,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12647,7 +13172,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -12656,6 +13181,7 @@
     },
     "resourceType": "servers/databases/ledgerDigestUploads",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12681,6 +13207,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12708,7 +13235,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -12732,6 +13259,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12759,7 +13287,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -12783,6 +13311,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12810,12 +13339,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/databases/recommendedSensitivityLabels",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12848,6 +13378,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12875,7 +13406,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -12907,6 +13438,7 @@
     },
     "resourceType": "servers/databases/securityAlertPolicies",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12940,6 +13472,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -12967,12 +13500,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/databases/sqlvulnerabilityassessments",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -12993,6 +13527,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13020,7 +13555,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -13054,6 +13589,7 @@
     },
     "resourceType": "servers/databases/syncGroups",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13087,6 +13623,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13114,7 +13651,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -13133,6 +13670,7 @@
     },
     "resourceType": "servers/databases/syncGroups/syncMembers",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13166,6 +13704,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13193,7 +13732,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -13217,6 +13756,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13244,7 +13784,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -13268,6 +13808,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13295,7 +13836,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -13306,6 +13847,7 @@
     },
     "resourceType": "servers/databases/transparentDataEncryption",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13339,6 +13881,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13366,12 +13909,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/databases/VulnerabilityAssessment",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13401,6 +13945,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13428,7 +13973,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -13457,6 +14002,7 @@
     },
     "resourceType": "servers/databases/vulnerabilityAssessments",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13489,6 +14035,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13516,12 +14063,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/databases/VulnerabilityAssessmentScans",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13555,6 +14103,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13582,12 +14131,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/databases/VulnerabilityAssessmentSettings",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13621,6 +14171,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13648,7 +14199,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -13661,6 +14212,7 @@
     },
     "resourceType": "servers/databases/workloadGroups",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13690,6 +14242,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13717,7 +14270,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -13741,6 +14294,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13768,7 +14322,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -13781,6 +14335,7 @@
     },
     "resourceType": "servers/devOpsAuditingSettings",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13809,6 +14364,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13836,7 +14392,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -13868,6 +14424,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13895,12 +14452,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/dnsAliases",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13933,6 +14491,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -13960,12 +14519,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/elasticPoolEstimates",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -13999,6 +14559,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14026,10 +14587,12 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
+      "Microsoft.Sql/servers/elasticPools/autoPauseDelay": "properties.autoPauseDelay",
+      "Microsoft.Sql/servers/elasticPools/availabilityZone": "properties.availabilityZone",
       "Microsoft.Sql/servers/elasticpools/creationDate": "properties.creationDate",
       "Microsoft.Sql/servers/elasticpools/databaseDtuMax": "properties.databaseDtuMax",
       "Microsoft.Sql/servers/elasticpools/databaseDtuMin": "properties.databaseDtuMin",
@@ -14041,8 +14604,10 @@
       "Microsoft.Sql/servers/elasticpools/maxSizeBytes": "properties.maxSizeBytes",
       "Microsoft.Sql/servers/elasticPools/minCapacity": "properties.minCapacity",
       "Microsoft.Sql/servers/elasticpools/perDatabaseSettings": "properties.perDatabaseSettings",
+      "Microsoft.Sql/servers/elasticPools/perDatabaseSettings.autoPauseDelay": "properties.perDatabaseSettings.autoPauseDelay",
       "Microsoft.Sql/servers/elasticpools/perDatabaseSettings.maxCapacity": "properties.perDatabaseSettings.maxCapacity",
       "Microsoft.Sql/servers/elasticpools/perDatabaseSettings.minCapacity": "properties.perDatabaseSettings.minCapacity",
+      "Microsoft.Sql/servers/elasticPools/preferredEnclaveType": "properties.preferredEnclaveType",
       "Microsoft.Sql/servers/elasticpools/sku": "sku",
       "Microsoft.Sql/servers/elasticpools/sku.capacity": "sku.capacity",
       "Microsoft.Sql/servers/elasticpools/sku.family": "sku.family",
@@ -14055,6 +14620,7 @@
     },
     "resourceType": "servers/elasticpools",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -14093,6 +14659,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14195,6 +14762,14 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
         "zones": [
           "1",
           "2",
@@ -14351,6 +14926,7 @@
     "aliases": null,
     "resourceType": "servers/elasticPools/advisors",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -14384,6 +14960,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14411,7 +14988,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -14435,6 +15012,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14462,7 +15040,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -14486,6 +15064,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14513,7 +15092,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -14531,6 +15110,7 @@
     },
     "resourceType": "servers/encryptionProtector",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -14564,6 +15144,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14591,7 +15172,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -14622,6 +15203,7 @@
     },
     "resourceType": "servers/extendedAuditingSettings",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -14654,6 +15236,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14681,7 +15264,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -14694,14 +15277,17 @@
       "Microsoft.Sql/servers/failoverGroups/partnerServers[*].replicationRole": "properties.partnerServers[*].replicationRole",
       "Microsoft.Sql/servers/failoverGroups/readOnlyEndpoint": "properties.readOnlyEndpoint",
       "Microsoft.Sql/servers/failoverGroups/readOnlyEndpoint.failoverPolicy": "properties.readOnlyEndpoint.failoverPolicy",
+      "Microsoft.Sql/servers/failoverGroups/readOnlyEndpoint.targetServer": "properties.readOnlyEndpoint.targetServer",
       "Microsoft.Sql/servers/failoverGroups/readWriteEndpoint": "properties.readWriteEndpoint",
       "Microsoft.Sql/servers/failoverGroups/readWriteEndpoint.failoverPolicy": "properties.readWriteEndpoint.failoverPolicy",
       "Microsoft.Sql/servers/failoverGroups/readWriteEndpoint.failoverWithDataLossGracePeriodMinutes": "properties.readWriteEndpoint.failoverWithDataLossGracePeriodMinutes",
       "Microsoft.Sql/servers/failoverGroups/replicationRole": "properties.replicationRole",
-      "Microsoft.Sql/servers/failoverGroups/replicationState": "properties.replicationState"
+      "Microsoft.Sql/servers/failoverGroups/replicationState": "properties.replicationState",
+      "Microsoft.Sql/servers/failoverGroups/secondaryType": "properties.secondaryType"
     },
     "resourceType": "servers/failoverGroups",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -14735,6 +15321,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14762,12 +15349,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/failoverGroups/tryPlannedBeforeForcedFailover",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview"
     ],
@@ -14785,6 +15373,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14812,12 +15401,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/import",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -14849,6 +15439,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14876,7 +15467,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -14900,6 +15491,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14927,7 +15519,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -14949,6 +15541,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -14976,7 +15569,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -15026,6 +15619,7 @@
     },
     "resourceType": "servers/jobAgents",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15058,6 +15652,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15085,7 +15680,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -15100,6 +15695,7 @@
     },
     "resourceType": "servers/jobAgents/jobs",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15132,6 +15728,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15159,12 +15756,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/jobAgents/jobs/executions",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15197,6 +15795,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15224,7 +15823,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -15253,6 +15852,7 @@
     },
     "resourceType": "servers/jobAgents/jobs/steps",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15285,6 +15885,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15312,7 +15913,60 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.Sql/servers/jobAgents/privateEndpoints/privateEndpointId": "properties.privateEndpointId",
+      "Microsoft.Sql/servers/jobAgents/privateEndpoints/targetServerAzureResourceId": "properties.targetServerAzureResourceId"
+    },
+    "resourceType": "servers/jobAgents/privateEndpoints",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -15325,6 +15979,7 @@
     },
     "resourceType": "servers/keys",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15358,6 +16013,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15385,7 +16041,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -15409,6 +16065,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15436,7 +16093,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -15460,6 +16117,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15487,12 +16145,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/recoverableDatabases",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15529,6 +16188,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15556,12 +16216,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/restorableDroppedDatabases",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15590,6 +16251,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15617,7 +16279,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -15647,6 +16309,7 @@
     },
     "resourceType": "servers/securityAlertPolicies",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15680,6 +16343,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15707,7 +16371,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -15731,6 +16395,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15758,7 +16423,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -15766,6 +16431,7 @@
     },
     "resourceType": "servers/sqlvulnerabilityassessments",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15786,6 +16452,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15813,7 +16480,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -15827,6 +16494,7 @@
     },
     "resourceType": "servers/syncAgents",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15860,6 +16528,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15887,12 +16556,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/tdeCertificates",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15924,6 +16594,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -15951,12 +16622,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "servers/usages",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -15993,6 +16665,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -16020,7 +16693,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -16030,6 +16703,7 @@
     },
     "resourceType": "servers/virtualNetworkRules",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -16063,6 +16737,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -16090,7 +16765,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -16113,6 +16788,7 @@
     },
     "resourceType": "servers/vulnerabilityAssessments",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -16143,6 +16819,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -16170,7 +16847,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -16183,6 +16860,7 @@
     },
     "resourceType": "virtualClusters",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
       "2022-08-01-preview",
@@ -16216,6 +16894,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -16243,7 +16922,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -16260,6 +16939,7 @@
   },
   {
     "aliases": {
+      "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/clientClassificationSource": "properties.clientClassificationSource",
       "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/columnName": "properties.columnName",
       "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/current.informationType": "properties.informationType",
       "Microsoft.Sql/managedInstances/databases/schemas/tables/columns/sensitivityLabels/current.informationTypeId": "properties.informationTypeId",
@@ -16325,13 +17005,45 @@
   },
   {
     "aliases": {
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases": "properties.databases",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*]": "properties.databases[*]",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].connectedState": "properties.databases[*].connectedState",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].databaseName": "properties.databases[*].databaseName",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].instanceRedoReplicationLagSeconds": "properties.databases[*].instanceRedoReplicationLagSeconds",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].instanceReplicaId": "properties.databases[*].instanceReplicaId",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].instanceSendReplicationLagSeconds": "properties.databases[*].instanceSendReplicationLagSeconds",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastBackupLsn": "properties.databases[*].lastBackupLsn",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastBackupTime": "properties.databases[*].lastBackupTime",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastCommitLsn": "properties.databases[*].lastCommitLsn",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastCommitTime": "properties.databases[*].lastCommitTime",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastHardenedLsn": "properties.databases[*].lastHardenedLsn",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastHardenedTime": "properties.databases[*].lastHardenedTime",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastReceivedLsn": "properties.databases[*].lastReceivedLsn",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastReceivedTime": "properties.databases[*].lastReceivedTime",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastSentLsn": "properties.databases[*].lastSentLsn",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].lastSentTime": "properties.databases[*].lastSentTime",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].mostRecentLinkError": "properties.databases[*].mostRecentLinkError",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].partnerAuthCertValidity": "properties.databases[*].partnerAuthCertValidity",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].partnerAuthCertValidity.certificateName": "properties.databases[*].partnerAuthCertValidity.certificateName",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].partnerAuthCertValidity.expiryDate": "properties.databases[*].partnerAuthCertValidity.expiryDate",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].partnerReplicaId": "properties.databases[*].partnerReplicaId",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].replicaState": "properties.databases[*].replicaState",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/databases[*].synchronizationHealth": "properties.databases[*].synchronizationHealth",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/distributedAvailabilityGroupId": "properties.distributedAvailabilityGroupId",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/distributedAvailabilityGroupName": "properties.distributedAvailabilityGroupName",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/failoverMode": "properties.failoverMode",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/instanceAvailabilityGroupName": "properties.instanceAvailabilityGroupName",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/instanceLinkRole": "properties.instanceLinkRole",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/instanceRole": "properties.instanceRole",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/lastHardenedLsn": "properties.lastHardenedLsn",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/linkState": "properties.linkState",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/partnerAvailabilityGroupName": "properties.partnerAvailabilityGroupName",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/partnerEndpoint": "properties.partnerEndpoint",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/partnerLinkRole": "properties.partnerLinkRole",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/primaryAvailabilityGroupName": "properties.primaryAvailabilityGroupName",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/replicationMode": "properties.replicationMode",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/secondaryAvailabilityGroupName": "properties.secondaryAvailabilityGroupName",
+      "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/seedingMode": "properties.seedingMode",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/sourceEndpoint": "properties.sourceEndpoint",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/sourceReplicaId": "properties.sourceReplicaId",
       "Microsoft.Sql/managedInstances/distributedAvailabilityGroups/targetDatabase": "properties.targetDatabase",
@@ -16425,6 +17137,13 @@
       "Microsoft.Sql/managedInstances/securityAlertPolicies/storageEndpoint": "properties.storageEndpoint"
     },
     "resourceType": "managedinstances/securityalertpolicies"
+  },
+  {
+    "aliases": {
+      "Microsoft.Sql/managedInstances/serverConfigurationOptions/provisioningState": "properties.provisioningState",
+      "Microsoft.Sql/managedInstances/serverConfigurationOptions/serverConfigurationOptionValue": "properties.serverConfigurationOptionValue"
+    },
+    "resourceType": "managedinstances/serverconfigurationoptions"
   },
   {
     "aliases": {
@@ -16616,6 +17335,24 @@
   },
   {
     "aliases": {
+      "Microsoft.Sql/servers/databases/replicationLinks/isTerminationAllowed": "properties.isTerminationAllowed",
+      "Microsoft.Sql/servers/databases/replicationLinks/linkType": "properties.linkType",
+      "Microsoft.Sql/servers/databases/replicationLinks/partnerDatabase": "properties.partnerDatabase",
+      "Microsoft.Sql/servers/databases/replicationLinks/partnerDatabaseId": "properties.partnerDatabaseId",
+      "Microsoft.Sql/servers/databases/replicationLinks/partnerLocation": "properties.partnerLocation",
+      "Microsoft.Sql/servers/databases/replicationLinks/partnerRole": "properties.partnerRole",
+      "Microsoft.Sql/servers/databases/replicationLinks/partnerServer": "properties.partnerServer",
+      "Microsoft.Sql/servers/databases/replicationLinks/percentComplete": "properties.percentComplete",
+      "Microsoft.Sql/servers/databases/replicationLinks/replicationMode": "properties.replicationMode",
+      "Microsoft.Sql/servers/databases/replicationLinks/replicationState": "properties.replicationState",
+      "Microsoft.Sql/servers/databases/replicationLinks/role": "properties.role",
+      "Microsoft.Sql/servers/databases/replicationLinks/startTime": "properties.startTime"
+    },
+    "resourceType": "servers/databases/replicationlinks"
+  },
+  {
+    "aliases": {
+      "Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/clientClassificationSource": "properties.clientClassificationSource",
       "Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/columnName": "properties.columnName",
       "Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/current.informationType": "properties.informationType",
       "Microsoft.Sql/servers/databases/schemas/tables/columns/sensitivityLabels/current.informationTypeId": "properties.informationTypeId",

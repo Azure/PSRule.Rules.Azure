@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Identities",
     "apiVersions": [
+      "2023-07-31-PREVIEW",
       "2023-01-31",
       "2022-01-31-PREVIEW",
       "2021-09-30-PREVIEW",
@@ -71,12 +72,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-07-31-PREVIEW",
       "2023-01-31",
       "2022-01-31-PREVIEW",
       "2021-09-30-PREVIEW",
@@ -127,7 +129,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -138,6 +140,7 @@
     },
     "resourceType": "userAssignedIdentities",
     "apiVersions": [
+      "2023-07-31-PREVIEW",
       "2023-01-31",
       "2022-01-31-PREVIEW",
       "2021-09-30-PREVIEW",
@@ -188,7 +191,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -199,6 +202,7 @@
     },
     "resourceType": "userAssignedIdentities/federatedIdentityCredentials",
     "apiVersions": [
+      "2023-07-31-PREVIEW",
       "2023-01-31",
       "2022-01-31-PREVIEW"
     ],
@@ -246,6 +250,6 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

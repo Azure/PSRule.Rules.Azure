@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -17,9 +18,7 @@
       "2019-12-01-preview",
       "2019-05-01",
       "2017-10-01",
-      "2017-06-01-preview",
-      "2017-03-01",
-      "2016-06-27-preview"
+      "2017-03-01"
     ],
     "locations": [
       "Australia Central",
@@ -39,6 +38,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -69,12 +69,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -89,8 +90,7 @@
       "2019-12-01-preview",
       "2019-05-01-preview",
       "2019-05-01",
-      "2017-10-01",
-      "2017-06-01-preview"
+      "2017-10-01"
     ],
     "locations": [
       "Australia Central",
@@ -110,6 +110,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -140,63 +141,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/authorize",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -223,6 +168,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -253,12 +199,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -293,6 +240,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -323,68 +271,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/setupAuth",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -399,7 +292,6 @@
       "2019-12-01-preview",
       "2019-05-01",
       "2017-10-01",
-      "2017-06-01-preview",
       "2017-03-01"
     ],
     "locations": [
@@ -420,6 +312,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -450,7 +343,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -668,6 +561,7 @@
     },
     "resourceType": "registries",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -702,6 +596,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -732,7 +627,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -757,7 +652,7 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -776,7 +671,7 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -795,442 +690,7 @@
       "West Europe",
       "West US 2"
     ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "registries/builds",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "registries/builds/cancel",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "registries/builds/getLogLink",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": {
-      "Microsoft.ContainerRegistry/registries/buildTasks/alias": "properties.alias",
-      "Microsoft.ContainerRegistry/registries/buildTasks/creationDate": "properties.creationDate",
-      "Microsoft.ContainerRegistry/registries/buildTasks/platform": "properties.platform",
-      "Microsoft.ContainerRegistry/registries/buildTasks/platform.cpu": "properties.platform.cpu",
-      "Microsoft.ContainerRegistry/registries/buildTasks/platform.osType": "properties.platform.osType",
-      "Microsoft.ContainerRegistry/registries/buildTasks/provisioningState": "properties.provisioningState",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository": "properties.sourceRepository",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.isCommitTriggerEnabled": "properties.sourceRepository.isCommitTriggerEnabled",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.repositoryUrl": "properties.sourceRepository.repositoryUrl",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties": "properties.sourceRepository.sourceControlAuthProperties",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.expiresIn": "properties.sourceRepository.sourceControlAuthProperties.expiresIn",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.refreshToken": "properties.sourceRepository.sourceControlAuthProperties.refreshToken",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.scope": "properties.sourceRepository.sourceControlAuthProperties.scope",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.token": "properties.sourceRepository.sourceControlAuthProperties.token",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.tokenType": "properties.sourceRepository.sourceControlAuthProperties.tokenType",
-      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlType": "properties.sourceRepository.sourceControlType",
-      "Microsoft.ContainerRegistry/registries/buildTasks/status": "properties.status",
-      "Microsoft.ContainerRegistry/registries/buildTasks/timeout": "properties.timeout"
-    },
-    "resourceType": "registries/buildTasks",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "registries/buildTasks/listSourceRepositoryProperties",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": {
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies": "properties.baseImageDependencies",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*]": "properties.baseImageDependencies[*]",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].digest": "properties.baseImageDependencies[*].digest",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].registry": "properties.baseImageDependencies[*].registry",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].repository": "properties.baseImageDependencies[*].repository",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].tag": "properties.baseImageDependencies[*].tag",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].type": "properties.baseImageDependencies[*].type",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageTrigger": "properties.baseImageTrigger",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.branch": "properties.branch",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments": "properties.buildArguments",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*]": "properties.buildArguments[*]",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*].isSecret": "properties.buildArguments[*].isSecret",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*].name": "properties.buildArguments[*].name",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*].type": "properties.buildArguments[*].type",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*].value": "properties.buildArguments[*].value",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.contextPath": "properties.contextPath",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.dockerFilePath": "properties.dockerFilePath",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.imageNames": "properties.imageNames",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.imageNames[*]": "properties.imageNames[*]",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.isPushEnabled": "properties.isPushEnabled",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.noCache": "properties.noCache",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/provisioningState": "properties.provisioningState",
-      "Microsoft.ContainerRegistry/registries/buildTasks/steps/type": "properties.type"
-    },
-    "resourceType": "registries/buildTasks/steps",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "registries/buildTasks/steps/listBuildArguments",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1242,6 +702,7 @@
     },
     "resourceType": "registries/cacheRules",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -1265,6 +726,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1295,7 +757,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1339,6 +801,7 @@
     },
     "resourceType": "registries/connectedRegistries",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -1366,6 +829,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1396,12 +860,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/connectedRegistries/deactivate",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -1429,6 +894,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1459,7 +925,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1478,6 +944,7 @@
     },
     "resourceType": "registries/credentialSets",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -1501,6 +968,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1531,7 +999,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1560,6 +1028,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1590,7 +1059,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1604,6 +1073,7 @@
     },
     "resourceType": "registries/exportPipelines",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -1632,6 +1102,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1662,12 +1133,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/generateCredentials",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -1698,6 +1170,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1728,82 +1201,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "registries/getBuildSourceUploadUrl",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "registries/GetCredentials",
-    "apiVersions": [
-      "2016-06-27-preview"
-    ],
-    "locations": [
-      "East US",
-      "South Central US",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/importImage",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -1837,6 +1241,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1867,7 +1272,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1884,6 +1289,7 @@
     },
     "resourceType": "registries/importPipelines",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -1912,6 +1318,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1942,7 +1349,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1970,6 +1377,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2000,12 +1408,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/listCredentials",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -2040,6 +1449,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2070,7 +1480,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2096,6 +1506,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2126,12 +1537,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/listUsages",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -2165,6 +1577,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2195,7 +1608,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2236,6 +1649,7 @@
     },
     "resourceType": "registries/pipelineRuns",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-01-01-preview",
@@ -2264,6 +1678,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2294,12 +1709,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -2331,6 +1747,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2361,12 +1778,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -2398,6 +1816,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2428,7 +1847,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2442,6 +1861,7 @@
     },
     "resourceType": "registries/privateEndpointConnections",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -2473,6 +1893,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2503,12 +1924,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/privateLinkResources",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -2540,6 +1962,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2570,68 +1993,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "registries/queueBuild",
-    "apiVersions": [
-      "2018-02-01-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/regenerateCredential",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -2666,6 +2034,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2696,21 +2065,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "registries/regenerateCredentials",
-    "apiVersions": [
-      "2016-06-27-preview"
-    ],
-    "locations": [
-      "East US",
-      "South Central US",
-      "West Europe",
-      "West US"
-    ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2724,6 +2079,7 @@
     },
     "resourceType": "registries/replications",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -2757,6 +2113,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2787,7 +2144,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2815,6 +2172,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2845,7 +2203,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2873,6 +2231,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2903,7 +2262,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2931,6 +2290,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -2961,7 +2321,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -2989,6 +2349,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3019,7 +2380,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -3032,6 +2393,7 @@
     },
     "resourceType": "registries/scopeMaps",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -3062,6 +2424,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3092,7 +2455,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -3264,6 +2627,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3294,7 +2658,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -3320,6 +2684,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3350,7 +2715,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -3463,6 +2828,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3493,7 +2859,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -3521,6 +2887,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3551,7 +2918,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -3579,6 +2946,7 @@
     },
     "resourceType": "registries/tokens",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -3609,6 +2977,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3639,7 +3008,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -3665,6 +3034,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3695,7 +3065,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -3706,6 +3076,7 @@
     },
     "resourceType": "registries/webhooks",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -3739,6 +3110,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3769,12 +3141,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/webhooks/getCallbackConfig",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -3808,6 +3181,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3838,12 +3212,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/webhooks/listEvents",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -3877,6 +3252,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3907,12 +3283,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registries/webhooks/ping",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
       "2023-06-01-preview",
@@ -3946,6 +3323,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -3976,7 +3354,58 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.ContainerRegistry/registries/buildTasks/alias": "properties.alias",
+      "Microsoft.ContainerRegistry/registries/buildTasks/creationDate": "properties.creationDate",
+      "Microsoft.ContainerRegistry/registries/buildTasks/platform": "properties.platform",
+      "Microsoft.ContainerRegistry/registries/buildTasks/platform.cpu": "properties.platform.cpu",
+      "Microsoft.ContainerRegistry/registries/buildTasks/platform.osType": "properties.platform.osType",
+      "Microsoft.ContainerRegistry/registries/buildTasks/provisioningState": "properties.provisioningState",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository": "properties.sourceRepository",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.isCommitTriggerEnabled": "properties.sourceRepository.isCommitTriggerEnabled",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.repositoryUrl": "properties.sourceRepository.repositoryUrl",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties": "properties.sourceRepository.sourceControlAuthProperties",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.expiresIn": "properties.sourceRepository.sourceControlAuthProperties.expiresIn",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.refreshToken": "properties.sourceRepository.sourceControlAuthProperties.refreshToken",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.scope": "properties.sourceRepository.sourceControlAuthProperties.scope",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.token": "properties.sourceRepository.sourceControlAuthProperties.token",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlAuthProperties.tokenType": "properties.sourceRepository.sourceControlAuthProperties.tokenType",
+      "Microsoft.ContainerRegistry/registries/buildTasks/sourceRepository.sourceControlType": "properties.sourceRepository.sourceControlType",
+      "Microsoft.ContainerRegistry/registries/buildTasks/status": "properties.status",
+      "Microsoft.ContainerRegistry/registries/buildTasks/timeout": "properties.timeout"
+    },
+    "resourceType": "registries/buildtasks"
+  },
+  {
+    "aliases": {
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies": "properties.baseImageDependencies",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*]": "properties.baseImageDependencies[*]",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].digest": "properties.baseImageDependencies[*].digest",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].registry": "properties.baseImageDependencies[*].registry",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].repository": "properties.baseImageDependencies[*].repository",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].tag": "properties.baseImageDependencies[*].tag",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageDependencies[*].type": "properties.baseImageDependencies[*].type",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.baseImageTrigger": "properties.baseImageTrigger",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.branch": "properties.branch",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments": "properties.buildArguments",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*]": "properties.buildArguments[*]",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*].isSecret": "properties.buildArguments[*].isSecret",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*].name": "properties.buildArguments[*].name",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*].type": "properties.buildArguments[*].type",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.buildArguments[*].value": "properties.buildArguments[*].value",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.contextPath": "properties.contextPath",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.dockerFilePath": "properties.dockerFilePath",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.imageNames": "properties.imageNames",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.imageNames[*]": "properties.imageNames[*]",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.isPushEnabled": "properties.isPushEnabled",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/Docker.noCache": "properties.noCache",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/provisioningState": "properties.provisioningState",
+      "Microsoft.ContainerRegistry/registries/buildTasks/steps/type": "properties.type"
+    },
+    "resourceType": "registries/buildtasks/steps"
   },
   {
     "aliases": {

@@ -1,7 +1,14 @@
 [
   {
     "aliases": {
+      "Microsoft.DeviceUpdate/accounts/encryption": "properties.encryption",
+      "Microsoft.DeviceUpdate/accounts/encryption.keyVaultKeyUri": "properties.encryption.keyVaultKeyUri",
+      "Microsoft.DeviceUpdate/accounts/encryption.userAssignedIdentity": "properties.encryption.userAssignedIdentity",
       "Microsoft.DeviceUpdate/accounts/hostName": "properties.hostName",
+      "Microsoft.DeviceUpdate/accounts/locations": "properties.locations",
+      "Microsoft.DeviceUpdate/accounts/locations[*]": "properties.locations[*]",
+      "Microsoft.DeviceUpdate/accounts/locations[*].name": "properties.locations[*].name",
+      "Microsoft.DeviceUpdate/accounts/locations[*].role": "properties.locations[*].role",
       "Microsoft.DeviceUpdate/accounts/privateEndpointConnections": "properties.privateEndpointConnections",
       "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
       "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
@@ -17,7 +24,8 @@
       "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
       "Microsoft.DeviceUpdate/accounts/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
       "Microsoft.DeviceUpdate/accounts/provisioningState": "properties.provisioningState",
-      "Microsoft.DeviceUpdate/accounts/publicNetworkAccess": "properties.publicNetworkAccess"
+      "Microsoft.DeviceUpdate/accounts/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.DeviceUpdate/accounts/sku": "properties.sku"
     },
     "resourceType": "accounts",
     "apiVersions": [
@@ -40,7 +48,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -78,7 +86,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -105,7 +113,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -139,7 +147,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -164,12 +172,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-09-01-preview",
       "2023-07-01",
       "2022-12-01-preview",
@@ -178,12 +187,13 @@
       "2020-03-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-09-01-preview",
       "2023-07-01",
       "2022-12-01-preview",
@@ -192,12 +202,13 @@
       "2020-03-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-09-01-preview",
       "2023-07-01",
       "2022-12-01-preview",
@@ -219,12 +230,13 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-09-01-preview",
       "2023-07-01",
       "2022-12-01-preview",
@@ -233,12 +245,13 @@
       "2020-03-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-09-01-preview",
       "2023-07-01",
       "2022-12-01-preview",
@@ -247,6 +260,6 @@
       "2020-03-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

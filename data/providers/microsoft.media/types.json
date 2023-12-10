@@ -7,18 +7,15 @@
       "2015-04-01"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
       "2023-01-01",
-      "2021-11-01-preview",
       "2021-11-01",
       "2021-06-01",
-      "2021-05-01-privatepreview",
-      "2021-05-01-preview",
       "2021-05-01",
       "2020-05-01",
       "2018-07-01",
@@ -27,18 +24,15 @@
       "2016-05-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
       "2023-01-01",
-      "2021-11-01-preview",
       "2021-11-01",
       "2021-06-01",
-      "2021-05-01-privatepreview",
-      "2021-05-01-preview",
       "2021-05-01",
       "2020-05-01",
       "2018-07-01",
@@ -88,7 +82,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -147,7 +141,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -206,45 +200,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/videoAnalyzerOperationResults",
-    "apiVersions": [
-      "2021-11-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central India",
-      "East US 2",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/videoAnalyzerOperationStatuses",
-    "apiVersions": [
-      "2021-11-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central India",
-      "East US 2",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -348,7 +304,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -420,7 +376,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -486,7 +442,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -558,7 +514,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -610,7 +566,111 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "mediaservices/assets/tracks/operationResults",
+    "apiVersions": [
+      "2023-01-01",
+      "2022-08-01",
+      "2021-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "mediaservices/assets/tracks/operationstatuses",
+    "apiVersions": [
+      "2023-01-01",
+      "2022-08-01",
+      "2021-11-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -747,7 +807,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -797,7 +857,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -855,7 +915,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -975,7 +1035,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1046,7 +1106,123 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "mediaservices/liveevents/liveoutputs/operationlocations",
+    "apiVersions": [
+      "2022-11-01",
+      "2022-08-01",
+      "2021-11-01",
+      "2021-06-01",
+      "2020-05-01",
+      "2019-05-01-preview",
+      "2018-07-01",
+      "2018-06-01-preview",
+      "2018-03-30-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "mediaservices/liveevents/operationlocations",
+    "apiVersions": [
+      "2022-11-01",
+      "2022-08-01",
+      "2021-11-01",
+      "2021-06-01",
+      "2020-05-01",
+      "2019-05-01-preview",
+      "2018-07-01",
+      "2018-06-01-preview",
+      "2018-03-30-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1104,7 +1280,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1158,7 +1334,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1212,7 +1388,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1274,7 +1450,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -1332,7 +1508,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1425,7 +1601,65 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "mediaservices/streamingendpoints/operationlocations",
+    "apiVersions": [
+      "2022-11-01",
+      "2022-08-01",
+      "2021-11-01",
+      "2021-06-01",
+      "2020-05-01",
+      "2019-05-01-preview",
+      "2018-07-01",
+      "2018-06-01-preview",
+      "2018-03-30-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1508,7 +1742,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -1679,7 +1913,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2038,7 +2272,7 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2550,18 +2784,15 @@
       "West US 2",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2023-01-01",
-      "2021-11-01-preview",
       "2021-11-01",
       "2021-06-01",
-      "2021-05-01-privatepreview",
-      "2021-05-01-preview",
       "2021-05-01",
       "2020-05-01",
       "2018-07-01",
@@ -2573,74 +2804,7 @@
       "2015-04-01"
     ],
     "locations": [],
-    "zoneMappings": null
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/videoAnalyzers/encryption": "properties.encryption",
-      "Microsoft.Media/videoAnalyzers/encryption.identity": "properties.encryption.identity",
-      "Microsoft.Media/videoAnalyzers/encryption.identity.userAssignedIdentity": "properties.encryption.identity.userAssignedIdentity",
-      "Microsoft.Media/videoAnalyzers/encryption.keyVaultProperties": "properties.encryption.keyVaultProperties",
-      "Microsoft.Media/videoAnalyzers/encryption.keyVaultProperties.currentKeyIdentifier": "properties.encryption.keyVaultProperties.currentKeyIdentifier",
-      "Microsoft.Media/videoAnalyzers/encryption.keyVaultProperties.keyIdentifier": "properties.encryption.keyVaultProperties.keyIdentifier",
-      "Microsoft.Media/videoAnalyzers/encryption.status": "properties.encryption.status",
-      "Microsoft.Media/videoAnalyzers/encryption.type": "properties.encryption.type",
-      "Microsoft.Media/videoAnalyzers/endpoints": "properties.endpoints",
-      "Microsoft.Media/videoAnalyzers/endpoints[*]": "properties.endpoints[*]",
-      "Microsoft.Media/videoAnalyzers/endpoints[*].endpointUrl": "properties.endpoints[*].endpointUrl",
-      "Microsoft.Media/videoAnalyzers/endpoints[*].type": "properties.endpoints[*].type",
-      "Microsoft.Media/videoAnalyzers/iotHubs": "properties.iotHubs",
-      "Microsoft.Media/videoAnalyzers/iotHubs[*]": "properties.iotHubs[*]",
-      "Microsoft.Media/videoAnalyzers/iotHubs[*].id": "properties.iotHubs[*].id",
-      "Microsoft.Media/videoAnalyzers/iotHubs[*].identity": "properties.iotHubs[*].identity",
-      "Microsoft.Media/videoAnalyzers/iotHubs[*].identity.userAssignedIdentity": "properties.iotHubs[*].identity.userAssignedIdentity",
-      "Microsoft.Media/videoAnalyzers/iotHubs[*].status": "properties.iotHubs[*].status",
-      "Microsoft.Media/videoAnalyzers/networkAccessControl": "properties.networkAccessControl",
-      "Microsoft.Media/videoAnalyzers/networkAccessControl.consumption": "properties.networkAccessControl.consumption",
-      "Microsoft.Media/videoAnalyzers/networkAccessControl.consumption.publicNetworkAccess": "properties.networkAccessControl.consumption.publicNetworkAccess",
-      "Microsoft.Media/videoAnalyzers/networkAccessControl.ingestion": "properties.networkAccessControl.ingestion",
-      "Microsoft.Media/videoAnalyzers/networkAccessControl.ingestion.publicNetworkAccess": "properties.networkAccessControl.ingestion.publicNetworkAccess",
-      "Microsoft.Media/videoAnalyzers/networkAccessControl.integration": "properties.networkAccessControl.integration",
-      "Microsoft.Media/videoAnalyzers/networkAccessControl.integration.publicNetworkAccess": "properties.networkAccessControl.integration.publicNetworkAccess",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections": "properties.privateEndpointConnections",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
-      "Microsoft.Media/videoAnalyzers/provisioningState": "properties.provisioningState",
-      "Microsoft.Media/videoAnalyzers/publicNetworkAccess": "properties.publicNetworkAccess",
-      "Microsoft.Media/videoAnalyzers/storageAccounts": "properties.storageAccounts",
-      "Microsoft.Media/videoAnalyzers/storageAccounts[*]": "properties.storageAccounts[*]",
-      "Microsoft.Media/videoAnalyzers/storageAccounts[*].id": "properties.storageAccounts[*].id",
-      "Microsoft.Media/videoAnalyzers/storageAccounts[*].identity": "properties.storageAccounts[*].identity",
-      "Microsoft.Media/videoAnalyzers/storageAccounts[*].identity.userAssignedIdentity": "properties.storageAccounts[*].identity.userAssignedIdentity",
-      "Microsoft.Media/videoAnalyzers/storageAccounts[*].status": "properties.storageAccounts[*].status"
-    },
-    "resourceType": "videoAnalyzers",
-    "apiVersions": [
-      "2021-11-01-preview",
-      "2021-05-01-privatepreview",
-      "2021-05-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central India",
-      "East US 2",
-      "Japan East",
-      "Korea Central",
-      "North Europe",
-      "Southeast Asia",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -2680,185 +2844,5 @@
       "Microsoft.Media/mediaServices/mediaGraphs/state": "properties.state"
     },
     "resourceType": "mediaservices/mediagraphs"
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication": "properties.authentication",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication": "properties.authentication",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.audiences": "properties.authentication.audiences",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.audiences[*]": "properties.authentication.audiences[*]",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.claims": "properties.authentication.claims",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.claims[*]": "properties.authentication.claims[*]",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.claims[*].name": "properties.authentication.claims[*].name",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.claims[*].value": "properties.authentication.claims[*].value",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.issuers": "properties.authentication.issuers",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.issuers[*]": "properties.authentication.issuers[*]",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys": "properties.authentication.keys",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*]": "properties.authentication.keys[*]",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].#Microsoft-VideoAnalyzer-EccTokenKey": "properties.authentication.keys[*]",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].#Microsoft-VideoAnalyzer-EccTokenKey.alg": "properties.authentication.keys[*].alg",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].#Microsoft-VideoAnalyzer-EccTokenKey.x": "properties.authentication.keys[*].x",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].#Microsoft-VideoAnalyzer-EccTokenKey.y": "properties.authentication.keys[*].y",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].#Microsoft-VideoAnalyzer-RsaTokenKey": "properties.authentication.keys[*]",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].#Microsoft-VideoAnalyzer-RsaTokenKey.alg": "properties.authentication.keys[*].alg",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].#Microsoft-VideoAnalyzer-RsaTokenKey.e": "properties.authentication.keys[*].e",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].#Microsoft-VideoAnalyzer-RsaTokenKey.n": "properties.authentication.keys[*].n",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/authentication.#Microsoft-VideoAnalyzer-JwtAuthentication.keys[*].kid": "properties.authentication.keys[*].kid",
-      "Microsoft.Media/videoAnalyzers/accessPolicies/role": "properties.role"
-    },
-    "resourceType": "videoanalyzers/accesspolicies"
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/videoAnalyzers/edgeModules/edgeModuleId": "properties.edgeModuleId"
-    },
-    "resourceType": "videoanalyzers/edgemodules"
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/videoAnalyzers/livePipelines/bitrateKbps": "properties.bitrateKbps",
-      "Microsoft.Media/videoAnalyzers/livePipelines/description": "properties.description",
-      "Microsoft.Media/videoAnalyzers/livePipelines/parameters": "properties.parameters",
-      "Microsoft.Media/videoAnalyzers/livePipelines/parameters[*]": "properties.parameters[*]",
-      "Microsoft.Media/videoAnalyzers/livePipelines/parameters[*].name": "properties.parameters[*].name",
-      "Microsoft.Media/videoAnalyzers/livePipelines/parameters[*].value": "properties.parameters[*].value",
-      "Microsoft.Media/videoAnalyzers/livePipelines/state": "properties.state",
-      "Microsoft.Media/videoAnalyzers/livePipelines/topologyName": "properties.topologyName"
-    },
-    "resourceType": "videoanalyzers/livepipelines"
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/description": "properties.description",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/error": "properties.error",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/error.code": "properties.error.code",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/error.message": "properties.error.message",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/expiration": "properties.expiration",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/parameters": "properties.parameters",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/parameters[*]": "properties.parameters[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/parameters[*].name": "properties.parameters[*].name",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/parameters[*].value": "properties.parameters[*].value",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/state": "properties.state",
-      "Microsoft.Media/videoAnalyzers/pipelineJobs/topologyName": "properties.topologyName"
-    },
-    "resourceType": "videoanalyzers/pipelinejobs"
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/description": "properties.description",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/parameters": "properties.parameters",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/parameters[*]": "properties.parameters[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/parameters[*].default": "properties.parameters[*].default",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/parameters[*].description": "properties.parameters[*].description",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/parameters[*].name": "properties.parameters[*].name",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/parameters[*].type": "properties.parameters[*].type",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors": "properties.processors",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*]": "properties.processors[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor": "properties.processors[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset": "properties.processors[*].preset",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset": "properties.processors[*].preset",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset.audioEncoder": "properties.processors[*].preset.audioEncoder",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset.audioEncoder.bitrateKbps": "properties.processors[*].preset.audioEncoder.bitrateKbps",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset.videoEncoder": "properties.processors[*].preset.videoEncoder",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset.videoEncoder.bitrateKbps": "properties.processors[*].preset.videoEncoder.bitrateKbps",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset.videoEncoder.frameRate": "properties.processors[*].preset.videoEncoder.frameRate",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset.videoEncoder.scale": "properties.processors[*].preset.videoEncoder.scale",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset.videoEncoder.scale.height": "properties.processors[*].preset.videoEncoder.scale.height",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset.videoEncoder.scale.mode": "properties.processors[*].preset.videoEncoder.scale.mode",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderCustomPreset.videoEncoder.scale.width": "properties.processors[*].preset.videoEncoder.scale.width",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderSystemPreset": "properties.processors[*].preset",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].#Microsoft-VideoAnalyzer-EncoderProcessor.preset.#Microsoft-VideoAnalyzer-EncoderSystemPreset.name": "properties.processors[*].preset.name",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].inputs": "properties.processors[*].inputs",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].inputs[*]": "properties.processors[*].inputs[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].inputs[*].nodeName": "properties.processors[*].inputs[*].nodeName",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/processors[*].name": "properties.processors[*].name",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks": "properties.sinks",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*]": "properties.sinks[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink": "properties.sinks[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink.videoCreationProperties": "properties.sinks[*].videoCreationProperties",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink.videoCreationProperties.description": "properties.sinks[*].videoCreationProperties.description",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink.videoCreationProperties.retentionPeriod": "properties.sinks[*].videoCreationProperties.retentionPeriod",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink.videoCreationProperties.segmentLength": "properties.sinks[*].videoCreationProperties.segmentLength",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink.videoCreationProperties.title": "properties.sinks[*].videoCreationProperties.title",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink.videoName": "properties.sinks[*].videoName",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink.videoPublishingOptions": "properties.sinks[*].videoPublishingOptions",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink.videoPublishingOptions.disableArchive": "properties.sinks[*].videoPublishingOptions.disableArchive",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].#Microsoft-VideoAnalyzer-VideoSink.videoPublishingOptions.disableRtspPublishing": "properties.sinks[*].videoPublishingOptions.disableRtspPublishing",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].inputs": "properties.sinks[*].inputs",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].inputs[*]": "properties.sinks[*].inputs[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].inputs[*].nodeName": "properties.sinks[*].inputs[*].nodeName",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sinks[*].name": "properties.sinks[*].name",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sku": "sku",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sku.name": "sku.name",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sku.tier": "sku.tier",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources": "properties.sources",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*]": "properties.sources[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource": "properties.sources[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint": "properties.sources[*].endpoint",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.#Microsoft-VideoAnalyzer-TlsEndpoint": "properties.sources[*].endpoint",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.#Microsoft-VideoAnalyzer-TlsEndpoint.trustedCertificates": "properties.sources[*].endpoint.trustedCertificates",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.#Microsoft-VideoAnalyzer-TlsEndpoint.trustedCertificates.#Microsoft-VideoAnalyzer-PemCertificateList": "properties.sources[*].endpoint.trustedCertificates",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.#Microsoft-VideoAnalyzer-TlsEndpoint.trustedCertificates.#Microsoft-VideoAnalyzer-PemCertificateList.certificates": "properties.sources[*].endpoint.trustedCertificates.certificates",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.#Microsoft-VideoAnalyzer-TlsEndpoint.trustedCertificates.#Microsoft-VideoAnalyzer-PemCertificateList.certificates[*]": "properties.sources[*].endpoint.trustedCertificates.certificates[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.#Microsoft-VideoAnalyzer-TlsEndpoint.validationOptions": "properties.sources[*].endpoint.validationOptions",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.#Microsoft-VideoAnalyzer-TlsEndpoint.validationOptions.ignoreHostname": "properties.sources[*].endpoint.validationOptions.ignoreHostname",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.#Microsoft-VideoAnalyzer-TlsEndpoint.validationOptions.ignoreSignature": "properties.sources[*].endpoint.validationOptions.ignoreSignature",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.credentials": "properties.sources[*].endpoint.credentials",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.credentials.#Microsoft-VideoAnalyzer-UsernamePasswordCredentials": "properties.sources[*].endpoint.credentials",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.credentials.#Microsoft-VideoAnalyzer-UsernamePasswordCredentials.password": "properties.sources[*].endpoint.credentials.password",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.credentials.#Microsoft-VideoAnalyzer-UsernamePasswordCredentials.username": "properties.sources[*].endpoint.credentials.username",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.tunnel": "properties.sources[*].endpoint.tunnel",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.tunnel.#Microsoft-VideoAnalyzer-SecureIotDeviceRemoteTunnel": "properties.sources[*].endpoint.tunnel",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.tunnel.#Microsoft-VideoAnalyzer-SecureIotDeviceRemoteTunnel.deviceId": "properties.sources[*].endpoint.tunnel.deviceId",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.tunnel.#Microsoft-VideoAnalyzer-SecureIotDeviceRemoteTunnel.iotHubName": "properties.sources[*].endpoint.tunnel.iotHubName",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.endpoint.url": "properties.sources[*].endpoint.url",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-RtspSource.transport": "properties.sources[*].transport",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-VideoSource": "properties.sources[*]",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-VideoSource.timeSequences": "properties.sources[*].timeSequences",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-VideoSource.timeSequences.#Microsoft-VideoAnalyzer-VideoSequenceAbsoluteTimeMarkers": "properties.sources[*].timeSequences",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-VideoSource.timeSequences.#Microsoft-VideoAnalyzer-VideoSequenceAbsoluteTimeMarkers.ranges": "properties.sources[*].timeSequences.ranges",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].#Microsoft-VideoAnalyzer-VideoSource.videoName": "properties.sources[*].videoName",
-      "Microsoft.Media/videoAnalyzers/pipelineTopologies/sources[*].name": "properties.sources[*].name"
-    },
-    "resourceType": "videoanalyzers/pipelinetopologies"
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
-      "Microsoft.Media/videoAnalyzers/privateEndpointConnections/provisioningState": "properties.provisioningState"
-    },
-    "resourceType": "videoanalyzers/privateendpointconnections"
-  },
-  {
-    "aliases": {
-      "Microsoft.Media/videoAnalyzers/videos/archival": "properties.archival",
-      "Microsoft.Media/videoAnalyzers/videos/archival.retentionPeriod": "properties.archival.retentionPeriod",
-      "Microsoft.Media/videoAnalyzers/videos/contentUrls": "properties.contentUrls",
-      "Microsoft.Media/videoAnalyzers/videos/contentUrls.archiveBaseUrl": "properties.contentUrls.archiveBaseUrl",
-      "Microsoft.Media/videoAnalyzers/videos/contentUrls.downloadUrl": "properties.contentUrls.downloadUrl",
-      "Microsoft.Media/videoAnalyzers/videos/contentUrls.previewImageUrls": "properties.contentUrls.previewImageUrls",
-      "Microsoft.Media/videoAnalyzers/videos/contentUrls.previewImageUrls.large": "properties.contentUrls.previewImageUrls.large",
-      "Microsoft.Media/videoAnalyzers/videos/contentUrls.previewImageUrls.medium": "properties.contentUrls.previewImageUrls.medium",
-      "Microsoft.Media/videoAnalyzers/videos/contentUrls.previewImageUrls.small": "properties.contentUrls.previewImageUrls.small",
-      "Microsoft.Media/videoAnalyzers/videos/contentUrls.rtspTunnelUrl": "properties.contentUrls.rtspTunnelUrl",
-      "Microsoft.Media/videoAnalyzers/videos/description": "properties.description",
-      "Microsoft.Media/videoAnalyzers/videos/flags": "properties.flags",
-      "Microsoft.Media/videoAnalyzers/videos/flags.canStream": "properties.flags.canStream",
-      "Microsoft.Media/videoAnalyzers/videos/flags.hasData": "properties.flags.hasData",
-      "Microsoft.Media/videoAnalyzers/videos/flags.isInUse": "properties.flags.isInUse",
-      "Microsoft.Media/videoAnalyzers/videos/flags.isRecording": "properties.flags.isRecording",
-      "Microsoft.Media/videoAnalyzers/videos/mediaInfo": "properties.mediaInfo",
-      "Microsoft.Media/videoAnalyzers/videos/mediaInfo.segmentLength": "properties.mediaInfo.segmentLength",
-      "Microsoft.Media/videoAnalyzers/videos/streaming": "properties.streaming",
-      "Microsoft.Media/videoAnalyzers/videos/streaming.archiveBaseUrl": "properties.streaming.archiveBaseUrl",
-      "Microsoft.Media/videoAnalyzers/videos/title": "properties.title",
-      "Microsoft.Media/videoAnalyzers/videos/type": "properties.type"
-    },
-    "resourceType": "videoanalyzers/videos"
   }
 ]

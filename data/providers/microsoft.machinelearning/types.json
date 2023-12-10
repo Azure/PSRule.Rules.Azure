@@ -34,7 +34,7 @@
       "West Central US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -46,7 +46,7 @@
     "locations": [
       "South Central US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -63,7 +63,7 @@
       "West Central US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -80,7 +80,7 @@
       "West Central US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -92,7 +92,7 @@
     "locations": [
       "South Central US"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -205,7 +205,7 @@
       "West Central US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -232,6 +232,6 @@
       "West Central US",
       "West Europe"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]

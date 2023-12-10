@@ -1,8 +1,23 @@
 [
   {
     "aliases": null,
+    "resourceType": "kubernetesVersions",
+    "apiVersions": [
+      "2023-11-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-15-preview",
       "2023-11-01",
       "2022-09-01-preview",
@@ -12,12 +27,13 @@
       "2021-08-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Locations/operationStatuses",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-15-preview",
       "2023-11-01",
       "2022-09-01-preview",
@@ -27,18 +43,22 @@
       "2021-08-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central India",
       "East US",
       "East US 2 EUAP",
       "South Central US",
+      "Southeast Asia",
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-15-preview",
       "2023-11-01",
       "2022-09-01-preview",
@@ -48,7 +68,21 @@
       "2021-08-01-preview"
     ],
     "locations": [],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "provisionedClusterInstances",
+    "apiVersions": [
+      "2023-11-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -66,7 +100,7 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -82,7 +116,7 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -99,7 +133,7 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   },
   {
     "aliases": null,
@@ -113,12 +147,27 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "skus",
+    "apiVersions": [
+      "2023-11-15-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "virtualNetworks",
     "apiVersions": [
+      "2023-11-15-preview",
       "2022-09-01-preview",
       "2022-05-01-preview"
     ],
@@ -128,6 +177,6 @@
       "West Europe",
       "West US 3"
     ],
-    "zoneMappings": null
+    "zoneMappings": []
   }
 ]
