@@ -33,7 +33,7 @@ spec:
     AZURE_BICEP_CHECK_TOOL: false
 
     # Configure minimum AKS cluster version
-    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.26.6'
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.27.7'
 
     AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
     - adminUsername

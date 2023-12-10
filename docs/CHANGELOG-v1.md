@@ -32,6 +32,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.32.0-B0053:
+
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.27.7` by @BernieWhite.
+      [#2581](https://github.com/Azure/PSRule.Rules.Azure/issues/2581)
+
 ## v1.32.0-B0053 (pre-release)
 
 What's changed since pre-release v1.32.0-B0021:
