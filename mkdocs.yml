@@ -34,9 +34,12 @@ theme:
   - navigation.sections:
       level: 1
   - navigation.tabs
+  - navigation.footer
   - content.code.annotate
   - content.tabs.link
   - content.code.copy
+  - content.action.edit
+  - content.action.view
 
 nav:
   - Home: index.md

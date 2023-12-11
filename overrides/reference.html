@@ -3,18 +3,8 @@
 <!-- Content -->
 {% block content %}
 
-  <!-- Edit button -->
-  {% if not page.meta.generated %}
-    {% if page.edit_url %}
-      <a
-        href="{{ page.edit_url }}"
-        title="{{ lang.t('edit.link.title') }}"
-        class="md-content__button md-icon"
-      >
-        {% include ".icons/material/pencil.svg" %}
-      </a>
-    {% endif %}
-  {% endif %}
+  <!-- Actions -->
+  {% include "partials/actions.html" %}
 
   <!--
     Hack: check whether the content contains a h1 headline. If it
@@ -25,17 +15,16 @@
     <h1>{{ page.title | d(config.site_name, true)}}</h1>
   {% endif %}
 
-  <!-- Markdown content -->
+  <!-- Page content -->
   {{ page.content }}
 
-  <!-- Last update of source file -->
-  {% if page and page.meta %}
-    {% if page.meta.git_revision_date_localized or
-          page.meta.revision_date
-    %}
-      {% include "partials/source-file.html" %}
-    {% endif %}
-  {% endif %}
+  <!-- Source file information -->
+  {% include "partials/source-file.html" %}
 
-  {% include "partials/giscus.html" %}
+  <!-- Was this page helpful? -->
+  {% include "partials/feedback.html" %}
+
+  <!-- Comment system -->
+  {% include "partials/comments.html" %}
+
 {% endblock %}
