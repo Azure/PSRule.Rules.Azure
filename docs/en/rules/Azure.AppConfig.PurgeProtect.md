@@ -84,13 +84,19 @@ To deploy App Configuration Stores that pass this rule:
 For example:
 
 ```bicep
-module store 'br/public:app/app-configuration:1.1.1' = {
+module br_public_store 'br/public:app/app-configuration:1.1.2' = {
   name: 'store'
   params: {
     skuName: 'Standard'
     disableLocalAuth: true
     enablePurgeProtection: true
     publicNetworkAccess: 'Disabled'
+    replicas: [
+      {
+        name: 'eastus'
+        location: 'eastus'
+      }
+    ]
   }
 }
 ```
@@ -99,5 +105,5 @@ module store 'br/public:app/app-configuration:1.1.1' = {
 
 - [Data management for reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/data-management)
 - [Purge protection](https://learn.microsoft.com/azure/azure-app-configuration/concept-soft-delete#purge-protection)
-- [Public registry](https://azure.github.io/bicep-registry-modules/#app)
+- [Bicep public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)
