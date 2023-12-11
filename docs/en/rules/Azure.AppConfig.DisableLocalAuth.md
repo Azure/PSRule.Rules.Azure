@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-07-15
+reviewed: 2023-12-11
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: App Configuration
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.DisableLocalAuth/
 ---
@@ -11,26 +11,29 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppCon
 
 ## SYNOPSIS
 
-Authenticate App Configuration clients with Azure AD identities.
+Authenticate App Configuration clients with Entra ID identities.
 
 ## DESCRIPTION
 
 Every request to an Azure App Configuration resource must be authenticated.
-By default, requests can be authenticated with either Azure Active Directory (Azure AD) credentials,
-or by using an access key.
-Of these two types of authentication schemes, Azure AD provides superior
-security and ease of use over access keys, and is recommended by Microsoft.
-To require clients to use Azure AD to authenticate requests, you can disable the usage of access keys for an Azure App Configuration
+App Configuration supports authenticating requests using either Entra ID (previously Azure AD) identities or access keys.
+Using Entra ID identities:
+
+- Centralizes identity management and auditing.
+- Allows granting of permissions using role-based access control (RBAC).
+- Provides support for advanced security features such as conditional access and multi-factor authentication (MFA) when applicable.
+
+To require clients to use Entra ID to authenticate requests, you can disable the usage of access keys for an Azure App Configuration
 resource.
 
 When you disable access key authentication for an Azure App Configuration resource, any existing access
 keys for that resource are deleted.
 Any subsequent requests to the resource using the previously existing access keys will be rejected.
-Only requests that are authenticated using Azure AD will succeed.
+Only requests that are authenticated using Entra ID will succeed.
 
 ## RECOMMENDATION
 
-Consider only using Azure AD identities to access App Configuration data.
+Consider only using Entra ID identities to access App Configuration data.
 Then disable authentication based on access keys or SAS tokens.
 
 ## EXAMPLES
@@ -92,22 +95,39 @@ To deploy App Configuration Stores that pass this rule:
 For example:
 
 ```bicep
-module store 'br/public:app/app-configuration:1.1.1' = {
+module br_public_store 'br/public:app/app-configuration:1.1.2' = {
   name: 'store'
   params: {
     skuName: 'Standard'
     disableLocalAuth: true
     enablePurgeProtection: true
     publicNetworkAccess: 'Disabled'
+    replicas: [
+      {
+        name: 'eastus'
+        location: 'eastus'
+      }
+    ]
   }
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+Name | Resource
+---- | --------
+App Configuration stores should have local authentication methods disabled | `/providers/Microsoft.Authorization/policyDefinitions/b08ab3ca-1062-4db3-8803-eec9cae605d6`
+Configure App Configuration stores to disable local authentication methods | `/providers/Microsoft.Authorization/policyDefinitions/72bc14af-4ab8-43af-b4e4-38e7983f9a1f`
+
 ## LINKS
 
-- [Centralize all identity systems](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#centralize-all-identity-systems)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
 - [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/security-controls-v3-identity-management#im-1-use-centralized-identity-and-authentication-system)
-- [Authorize access to Azure App Configuration using Azure Active Directory](https://learn.microsoft.com/azure/azure-app-configuration/concept-enable-rbac)
+- [Authorize access to Azure App Configuration using Microsoft Entra ID](https://learn.microsoft.com/azure/azure-app-configuration/concept-enable-rbac)
 - [Disable access key authentication](https://learn.microsoft.com/azure/azure-app-configuration/howto-disable-access-key-authentication)
-- [Public registry](https://azure.github.io/bicep-registry-modules/#app)
+- [Azure security baseline for Azure App Configuration](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-app-configuration-security-baseline)
+- [Azure Policy built-in definitions for Azure App Configuration](https://learn.microsoft.com/azure/azure-app-configuration/policy-reference)
+- [Bicep public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)

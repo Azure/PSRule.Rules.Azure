@@ -1,7 +1,8 @@
 ---
+reviewed: 2023-12-11
 severity: Important
 pillar: Reliability
-category: Data management
+category: RE:05 Redundancy
 resource: App Configuration
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.GeoReplica/
 ---
@@ -10,29 +11,31 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppCon
 
 ## SYNOPSIS
 
-Consider replication for app configuration store to ensure resiliency to region outages.
+Replicate app configuration store across all points of presence for an application.
 
 ## DESCRIPTION
 
-A app configuration store is stored and maintained by default in a single region.
+By default, an app configuration store is stored and maintained in a single region.
 
-The app configuration geo-replication feature allows you to replicate your configuration store at-will to the regions of your choice.
-Each new `replica` will be in a different region and creates a new endpoint for your applications to send requests to.
-The original endpoint of your configuration store is called the `Origin`.
+The app configuration geo-replication feature allows you to replicate your configuration store to additional regions.
+Each new _replica_ will be in a different region with a new endpoint for your applications to send requests to.
+The original endpoint of your configuration store is called the _origin_.
 The origin can't be removed, but otherwise behaves like any replica.
 
 Replicating your configuration store adds the following benefits:
 
-- Added resiliency for Azure outages.
+- Added resiliency for localized outages contained to a region.
 - Redistribution of request limits.
 - Regional compartmentalization.
 
-Geo-replication is currently a **preview** feature.
-During the preview geo-replication has additional limitations including support and regional availability.
+When considering where to place replicas, consider the following; where does the application run from?
+
+- For server-side applications, consider deploying replicas to regions where the application is hosted and recovered.
+- For client-side applications, consider deploying replicas to regions closest to where the users are located.
 
 ## RECOMMENDATION
 
-Consider replication for app configuration store to ensure resiliency to region outages.
+Consider replicating app configuration stores to improve resiliency to region outages.
 
 ## EXAMPLES
 
@@ -48,57 +51,28 @@ For example:
 
 ```json
 {
-  "parameters": {
-    "appConfigName": {
-      "type": "string",
-      "defaultValue": "configstore01",
-      "metadata": {
-        "description": "The name of the app configuration store."
-      }
-    },
-    "replicaName": {
-      "type": "string",
-      "defaultValue": "replica01",
-      "metadata": {
-        "description": "The name of the replica."
-      }
-    },
-    "appConfigLocation": {
-      "type": "string",
-      "defaultValue": "[resourceGroup().location]",
-      "metadata": {
-        "description": "The location resources will be deployed."
-      }
-    },
-    "replicaLocation": {
-      "type": "string",
-      "defaultValue": "northeurope",
-      "metadata": {
-        "description": "The location where the replica will be deployed."
-      }
-    }
-  },
   "resources": [
     {
       "type": "Microsoft.AppConfiguration/configurationStores",
-      "apiVersion": "2022-05-01",
-      "name": "[parameters('appConfigName')]",
-      "location": "[parameters('appConfigLocation')]",
+      "apiVersion": "2023-03-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
       "sku": {
         "name": "standard"
       },
       "properties": {
         "disableLocalAuth": true,
-        "enablePurgeProtection": true
+        "enablePurgeProtection": true,
+        "publicNetworkAccess": "Disabled"
       }
     },
     {
       "type": "Microsoft.AppConfiguration/configurationStores/replicas",
-      "apiVersion": "2022-03-01-preview",
-      "name": "[format('{0}/{1}', parameters('appConfigName'), parameters('replicaName'))]",
+      "apiVersion": "2023-03-01",
+      "name": "[format('{0}/{1}', parameters('name'), parameters('replicaName'))]",
       "location": "[parameters('replicaLocation')]",
       "dependsOn": [
-        "[resourceId('Microsoft.AppConfiguration/configurationStores', parameters('appConfigName'))]"
+        "[resourceId('Microsoft.AppConfiguration/configurationStores', parameters('name'))]"
       ]
     }
   ]
@@ -116,41 +90,59 @@ To deploy App Configuration Stores that pass this rule:
 For example:
 
 ```bicep
-@description('The name of the app configuration store.')
-param appConfigName string = 'configstore01'
-
-@description('The name of the replica.')
-param replicaName string = 'replica01'
-
-@description('The location resources will be deployed.')
-param appConfigLocation string = resourceGroup().location
-
-@description('The location where the replica will be deployed.')
-param replicaLocation string = 'northeurope'
-
-resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
-  name: appConfigName
-  location: appConfigLocation
+resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
+  name: name
+  location: location
   sku: {
     name: 'standard'
   }
   properties: {
     disableLocalAuth: true
     enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
   }
 }
 
-resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2022-03-01-preview' = {
+resource replica 'Microsoft.AppConfiguration/configurationStores/replicas@2023-03-01' = {
+  parent: store
   name: replicaName
   location: replicaLocation
-  parent: store
+}
+```
+
+### Configure with Bicep Public Registry
+
+To deploy App Configuration Stores that pass this rule:
+
+- Set `params.skuName` to `Standard` (required for geo-replication).
+- Configure one or more replicas by setting `params.replicas` to an array of objects.
+- Set `location` on each replica to a different location than the app configuration store.
+
+For example:
+
+```bicep
+module br_public_store 'br/public:app/app-configuration:1.1.2' = {
+  name: 'store'
+  params: {
+    skuName: 'Standard'
+    disableLocalAuth: true
+    enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
+    replicas: [
+      {
+        name: 'eastus'
+        location: 'eastus'
+      }
+    ]
+  }
 }
 ```
 
 ## LINKS
 
-- [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
 - [Resiliency and diaster recovery](https://learn.microsoft.com/azure/azure-app-configuration/concept-disaster-recovery)
 - [Geo-replication overview](https://learn.microsoft.com/azure/azure-app-configuration/concept-geo-replication)
 - [Enable geo-replication](https://learn.microsoft.com/azure/azure-app-configuration/howto-geo-replication)
+- [Bicep public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores/replicas)
