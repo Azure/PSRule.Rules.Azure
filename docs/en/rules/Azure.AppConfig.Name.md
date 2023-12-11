@@ -76,6 +76,32 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
 }
 ```
 
+### Configure with Bicep Public Registry
+
+To deploy App Configuration Stores that pass this rule:
+
+- Set `params.name` to a value that meets the requirements.
+
+For example:
+
+```bicep
+module br_public_store 'br/public:app/app-configuration:1.1.2' = {
+  name: 'store'
+  params: {
+    skuName: 'Standard'
+    disableLocalAuth: true
+    enablePurgeProtection: true
+    publicNetworkAccess: 'Disabled'
+    replicas: [
+      {
+        name: 'eastus'
+        location: 'eastus'
+      }
+    ]
+  }
+}
+```
+
 ## NOTES
 
 This rule does not check if App Configuration store names are unique.
