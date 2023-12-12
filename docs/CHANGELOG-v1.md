@@ -46,6 +46,9 @@ What's changed since pre-release v1.32.0-B0053:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use latest stable version `1.27.7` by @BernieWhite.
       [#2581](https://github.com/Azure/PSRule.Rules.Azure/issues/2581)
+- General improvements:
+  - Improved reporting of null argument in length function by @BernieWhite.
+    [#2597](https://github.com/Azure/PSRule.Rules.Azure/issues/2597)
 - Engineering:
   - Updated resource providers and policy aliases.
     [#2579](https://github.com/Azure/PSRule.Rules.Azure/pull/2579)
@@ -53,6 +56,8 @@ What's changed since pre-release v1.32.0-B0053:
     [#2538](https://github.com/Azure/PSRule.Rules.Azure/pull/2538)
   - Bump BenchmarkDotNet.Diagnostics.Windows and BenchmarkDotNet to v0.13.11.
     [#2575](https://github.com/Azure/PSRule.Rules.Azure/pull/2575)
+  - Bump Microsoft.CodeAnalysis.NetAnalyzers to v8.0.0.
+    [#2568](https://github.com/Azure/PSRule.Rules.Azure/pull/2568)
 
 ## v1.32.0-B0053 (pre-release)
 

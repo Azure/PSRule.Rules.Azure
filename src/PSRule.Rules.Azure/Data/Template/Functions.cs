@@ -544,6 +544,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (CountArgs(args) != 1)
                 throw ArgumentsOutOfRange(nameof(Length), args);
 
+            if (IsNull(args[0]))
+                throw ArgumentNullNotExpected(nameof(Length));
+
             if (ExpressionHelpers.TryString(args[0], out var s))
                 return (long)s.Length;
             else if (args[0] is Array a)
@@ -2334,6 +2337,17 @@ namespace PSRule.Rules.Azure.Data.Template
                 expression,
                 FunctionErrorType.MismatchingResourceSegments,
                 PSRuleResources.MismatchingResourceSegments
+            );
+        }
+
+        /// <summary>
+        /// One or more arguments for '{0}' are null when null was not expected.
+        /// </summary>
+        private static ExpressionArgumentException ArgumentNullNotExpected(string expression)
+        {
+            return new ExpressionArgumentException(
+                expression,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentNullNotExpected, expression)
             );
         }
 
