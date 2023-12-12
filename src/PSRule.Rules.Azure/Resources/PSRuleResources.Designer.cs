@@ -142,6 +142,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to One or more arguments for &apos;{0}&apos; are null when null was not expected..
+        /// </summary>
+        internal static string ArgumentNullNotExpected {
+            get {
+                return ResourceManager.GetString("ArgumentNullNotExpected", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The number of arguments &apos;{1}&apos; is not within the allowed range for &apos;{0}&apos;..
         /// </summary>
         internal static string ArgumentsOutOfRange {
