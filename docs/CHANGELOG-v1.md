@@ -34,6 +34,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.32.0-B0053:
 
+- New features:
+  - Added December 2023 baselines `Azure.GA_2023_12` and `Azure.Preview_2023_12` by @BernieWhite.
+    [#2580](https://github.com/Azure/PSRule.Rules.Azure/issues/2580)
+    - Includes rules released before or during December 2023.
+    - Marked `Azure.GA_2023_09` and `Azure.Preview_2023_09` baselines as obsolete.
 - Updated rules:
   - App Configuration:
     - Promoted `Azure.AppConfig.GeoReplica` to GA rule set by @BernieWhite.
