@@ -386,6 +386,7 @@ namespace PSRule.Rules.Azure
 
             Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, null));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, System.Array.Empty<object>()));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, new object[] { null }));
         }
 
         [Fact]
