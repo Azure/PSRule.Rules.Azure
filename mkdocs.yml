@@ -128,12 +128,17 @@ markdown_extensions:
       separator: '-'
 
 plugins:
+- git-revision-date-localized:
+    enable_creation_date: true
+    fallback_to_build_date: true
+- git-committers:
+    repository: Azure/PSRule.Rules.Azure
+    branch: main
 - mkdocs-simple-hooks:
     hooks:
       on_page_markdown: "docs.hooks:replace_maml"
       on_nav: "docs.hooks:build_reference_nav"
 - search
-- git-revision-date
 - tags
 - redirects:
     redirect_maps:
