@@ -51,6 +51,8 @@ What's changed since pre-release v1.32.0-B0053:
     [#2538](https://github.com/Azure/PSRule.Rules.Azure/pull/2538)
   - Bump BenchmarkDotNet.Diagnostics.Windows and BenchmarkDotNet to v0.13.11.
     [#2575](https://github.com/Azure/PSRule.Rules.Azure/pull/2575)
+  - Bump Microsoft.CodeAnalysis.NetAnalyzers to v8.0.0.
+    [#2568](https://github.com/Azure/PSRule.Rules.Azure/pull/2568)
 
 ## v1.32.0-B0053 (pre-release)
 
