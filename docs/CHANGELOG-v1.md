@@ -44,6 +44,8 @@ What's changed since pre-release v1.32.0-B0053:
 - Engineering:
   - Updated resource providers and policy aliases.
     [#2579](https://github.com/Azure/PSRule.Rules.Azure/pull/2579)
+  - Bump Microsoft.SourceLink.GitHub to v8.0.0.
+    [#2538](https://github.com/Azure/PSRule.Rules.Azure/pull/2538)
 
 ## v1.32.0-B0053 (pre-release)
 
