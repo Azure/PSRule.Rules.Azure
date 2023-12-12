@@ -41,6 +41,9 @@ What's changed since pre-release v1.32.0-B0053:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use latest stable version `1.27.7` by @BernieWhite.
       [#2581](https://github.com/Azure/PSRule.Rules.Azure/issues/2581)
+- General improvements:
+  - Improved reporting of null argument in length function by @BernieWhite.
+    [#2597](https://github.com/Azure/PSRule.Rules.Azure/issues/2597)
 - Engineering:
   - Updated resource providers and policy aliases.
     [#2579](https://github.com/Azure/PSRule.Rules.Azure/pull/2579)

@@ -144,6 +144,9 @@
   <data name="ArgumentInvalidStringArray" xml:space="preserve">
     <value>The argument '{0}' for '{1}' is not a valid string array.</value>
   </data>
+  <data name="ArgumentNullNotExpected" xml:space="preserve">
+    <value>One or more arguments for '{0}' are null when null was not expected.</value>
+  </data>
   <data name="ArgumentsOutOfRange" xml:space="preserve">
     <value>The number of arguments '{1}' is not within the allowed range for '{0}'.</value>
   </data>
