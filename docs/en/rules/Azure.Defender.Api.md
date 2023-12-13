@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Security operations
+category: SE:10 Monitoring and threat detection
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Api/
 ---
@@ -35,35 +35,41 @@ Consider using Microsoft Defender for APIs to provide additional security for AP
 
 ### Configure with Azure template
 
-To enable Microsoft Defender for APIs:
+To deploy and enable Defender for APIs configurations that pass this rule:
 
-- Set the `Standard` pricing tier for Microsoft Defender for APIs.
+- Set the `properties.pricingTier` property to to `Standard`.
+- Set the `properties.subPlan` property to a plan such as `P1`.
+  Other plans are available, currently these are: `P1`, `P2`, `P3`, `P4`, and `P5`.
 
 For example:
 
 ```json
 {
-    "type": "Microsoft.Security/pricings",
-    "apiVersion": "2022-03-01",
-    "name": "Api",
-    "properties": {
-        "pricingTier": "Standard"
-    }
+  "type": "Microsoft.Security/pricings",
+  "apiVersion": "2023-01-01",
+  "name": "Api",
+  "properties": {
+    "subPlan": "P1",
+    "pricingTier": "Standard"
+  }
 }
 ```
 
 ### Configure with Bicep
 
-To enable Microsoft Defender for APIs:
+To deploy and enable Defender for APIs configurations that pass this rule:
 
-- Set the `Standard` pricing tier for Microsoft Defender for APIs.
+- Set the `properties.pricingTier` property to to `Standard`.
+- Set the `properties.subPlan` property to a plan such as `P1`.
+  Other plans are available, currently these are: `P1`, `P2`, `P3`, `P4`, and `P5`.
 
 For example:
 
 ```bicep
-resource defenderForApi 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForApi 'Microsoft.Security/pricings@2023-01-01' = {
   name: 'Api'
   properties: {
+    subPlan: 'P1'
     pricingTier: 'Standard'
   }
 }
@@ -78,7 +84,7 @@ To enable Microsoft Defender for APIs:
 For example:
 
 ```bash
-az security pricing create -n 'Api' --tier 'standard'
+az security pricing create -n Api --tier standard --subplan P1
 ```
 
 ### Configure with Azure PowerShell
@@ -90,17 +96,16 @@ To enable Microsoft Defender for APIs:
 For example:
 
 ```powershell
-Set-AzSecurityPricing -Name 'Api' -PricingTier 'Standard'
+Set-AzSecurityPricing -Name 'Api' -PricingTier 'Standard' -SubPlan 'P1'
 ```
 
 ## NOTES
 
-Microsoft Defender for APIs is a preview feature.
 Currently only REST APIs published in Azure API Management is supported. Not all regions are supported.
 
 ## LINKS
 
-- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for APIs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-apis-introduction)
 - [Support and prerequisites for Defender for APIs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-apis-prepare)

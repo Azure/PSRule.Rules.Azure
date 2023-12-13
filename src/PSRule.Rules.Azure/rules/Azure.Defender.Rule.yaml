@@ -261,8 +261,8 @@ metadata:
   name: Azure.Defender.Api
   ref: AZR-000377
   tags:
-    release: Preview
-    ruleSet: 2023_06
+    release: GA
+    ruleSet: 2023_12
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: LT-1
@@ -274,8 +274,11 @@ spec:
   type:
   - Microsoft.Security/pricings
   condition:
-    field: properties.pricingTier
-    equals: Standard
+    allOf:
+      - field: properties.pricingTier
+        equals: Standard
+      - field: properties.subPlan
+        hasValue: true
 
 ---
 # Synopsis: Enable Microsoft Defender for Azure Cosmos DB.

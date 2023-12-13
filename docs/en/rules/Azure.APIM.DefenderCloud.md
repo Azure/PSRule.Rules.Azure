@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Security operations
+category: SE:10 Monitoring and threat detection
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.DefenderCloud/
 ---
@@ -74,7 +74,7 @@ resource onboardDefender 'Microsoft.Security/apiCollections@2022-11-20-preview' 
 
 ## NOTES
 
-Microsoft Defender for APIs is a preview feature and has the following limitations:
+Microsoft Defender for APIs has the following limitations:
 
 - Not all regions are supported.
 - Only REST APIs published through Azure API Management are supported.
@@ -85,7 +85,7 @@ This rule may currently generate false positive results for APIs only hosted on 
 
 ## LINKS
 
-- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for APIs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-apis-introduction)
 - [Support and prerequisites for Defender for APIs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-apis-prepare)

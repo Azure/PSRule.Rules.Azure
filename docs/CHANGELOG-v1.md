@@ -43,9 +43,15 @@ What's changed since pre-release v1.32.0-B0053:
   - App Configuration:
     - Promoted `Azure.AppConfig.GeoReplica` to GA rule set by @BernieWhite.
       [#2592](https://github.com/Azure/PSRule.Rules.Azure/issues/2592)
+    - API Management:
+      - Promoted `Azure.APIM.DefenderCloud` to GA rule set by @BernieWhite.
+        [#2591](https://github.com/Azure/PSRule.Rules.Azure/issues/2591)
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use latest stable version `1.27.7` by @BernieWhite.
       [#2581](https://github.com/Azure/PSRule.Rules.Azure/issues/2581)
+  - Defender for Cloud:
+    - Promoted `Azure.Defender.Api` to GA rule set by @BernieWhite.
+      [#2591](https://github.com/Azure/PSRule.Rules.Azure/issues/2591)
 - General improvements:
   - Improved reporting of null argument in length function by @BernieWhite.
     [#2597](https://github.com/Azure/PSRule.Rules.Azure/issues/2597)
