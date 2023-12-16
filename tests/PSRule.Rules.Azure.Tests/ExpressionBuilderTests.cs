@@ -143,7 +143,7 @@ namespace PSRule.Rules.Azure
             var context = GetContext();
             var actual = Build(context, expression) as JObject;
             Assert.NotNull(actual);
-            Assert.Equal("[parameters(''effect'')]", actual["effect"].Value<string>());
+            Assert.Equal("[parameters('effect')]", actual["effect"].Value<string>());
 
             expression = "[json('{ \"value\": \"[int(last(split(replace(field(''test''), ''t'', ''''), ''/'')))]\" }')]";
             actual = Build(context, expression) as JObject;

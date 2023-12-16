@@ -1,0 +1,62 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.24.24.22086",
+      "templateHash": "9157129407835921175"
+    }
+  },
+  "variables": {
+    "task": {
+      "name": "task1",
+      "parameters": {
+        "B": 5
+      }
+    },
+    "tasks": [
+      {
+        "name": "[variables('task').name]",
+        "parameters": {
+          "debug": "[format('A''{0}''', string(variables('task').parameters))]",
+          "debugLength": "[length(format('A''{0}''', string(variables('task').parameters)))]"
+        }
+      }
+    ]
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "name",
+      "properties": {
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "resources": [
+            {
+              "apiVersion": "2019-12-01",
+              "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+              "name": "test",
+              "properties": {
+                "tasks": "[variables('tasks')]"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "outTask": {
+      "type": "object",
+      "value": "[variables('task')]"
+    },
+    "outTasks": {
+      "type": "array",
+      "value": "[variables('tasks')]"
+    }
+  }
+}
