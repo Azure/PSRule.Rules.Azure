@@ -32,6 +32,72 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.32.0
+
+What's changed since v1.31.3:
+
+- New features:
+  - Added December 2023 baselines `Azure.GA_2023_12` and `Azure.Preview_2023_12` by @BernieWhite.
+    [#2580](https://github.com/Azure/PSRule.Rules.Azure/issues/2580)
+    - Includes rules released before or during December 2023.
+    - Marked `Azure.GA_2023_09` and `Azure.Preview_2023_09` baselines as obsolete.
+- Updated rules:
+  - App Configuration:
+    - Promoted `Azure.AppConfig.GeoReplica` to GA rule set by @BernieWhite.
+      [#2592](https://github.com/Azure/PSRule.Rules.Azure/issues/2592)
+  - API Management:
+    - Promoted `Azure.APIM.DefenderCloud` to GA rule set by @BernieWhite.
+      [#2591](https://github.com/Azure/PSRule.Rules.Azure/issues/2591)
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use latest stable version `1.27.7` by @BernieWhite.
+      [#2581](https://github.com/Azure/PSRule.Rules.Azure/issues/2581)
+  - Defender for Cloud:
+    - Promoted `Azure.Defender.Api` to GA rule set by @BernieWhite.
+      [#2591](https://github.com/Azure/PSRule.Rules.Azure/issues/2591)
+  - Network Interface:
+    - **Important change**: Renamed NIC rules to reflect current usage by @BernieWhite.
+      [#2574](https://github.com/Azure/PSRule.Rules.Azure/issues/2574)
+      - Rename `Azure.VM.NICAttached` to `Azure.NIC.Attached`.
+      - Rename `Azure.VM.NICName` to `Azure.NIC.Name`.
+      - Rename `Azure.VM.UniqueDns` to `Azure.NIC.UniqueDns`.
+      - Added aliases to reference the old names for suppression and exclusion.
+      - Old names will be removed from v2.
+    - Added support for private link services to `Azure.VM.NICAttached` by @BernieWhite.
+      [#2563](https://github.com/Azure/PSRule.Rules.Azure/issues/2563)
+- General improvements:
+  - Improved reporting of null argument in length function by @BernieWhite.
+    [#2597](https://github.com/Azure/PSRule.Rules.Azure/issues/2597)
+  - Quality updates to documentation by @BernieWhite.
+    [#2557](https://github.com/Azure/PSRule.Rules.Azure/issues/2557)
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+    [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
+- Engineering:
+  - Updated resource providers and policy aliases.
+    [#2579](https://github.com/Azure/PSRule.Rules.Azure/pull/2579)
+  - Bump xunit to v2.6.2.
+    [#2544](https://github.com/Azure/PSRule.Rules.Azure/pull/2544)
+  - Bump xunit.runner.visualstudio to v2.5.4.
+    [#2567](https://github.com/Azure/PSRule.Rules.Azure/pull/2567)
+  - Bump Microsoft.SourceLink.GitHub to v8.0.0.
+    [#2538](https://github.com/Azure/PSRule.Rules.Azure/pull/2538)
+  - Bump BenchmarkDotNet.Diagnostics.Windows and BenchmarkDotNet to v0.13.11.
+    [#2575](https://github.com/Azure/PSRule.Rules.Azure/pull/2575)
+  - Bump Microsoft.CodeAnalysis.NetAnalyzers to v8.0.0.
+    [#2568](https://github.com/Azure/PSRule.Rules.Azure/pull/2568)
+  - Bump Microsoft.NET.Test.Sdk to v17.8.0.
+    [#2527](https://github.com/Azure/PSRule.Rules.Azure/pull/2527)
+- Bug fixes:
+  - Fixed additional false positives of `Azure.Deployment.SecureParameter` by @BernieWhite.
+    [#2556](https://github.com/Azure/PSRule.Rules.Azure/issues/2556)
+  - Fixed expansion with sub-resource handling of deployments with duplicate resources by @BernieWhite.
+    [#2564](https://github.com/Azure/PSRule.Rules.Azure/issues/2564)
+  - Fixed dependency ordered is incorrect by @BernieWhite.
+    [#2578](https://github.com/Azure/PSRule.Rules.Azure/issues/2578)
+
+What's changed since pre-release v1.32.0-B0099:
+
+- No additional changes.
+
 ## v1.32.0-B0099 (pre-release)
 
 What's changed since pre-release v1.32.0-B0053:
@@ -45,9 +111,9 @@ What's changed since pre-release v1.32.0-B0053:
   - App Configuration:
     - Promoted `Azure.AppConfig.GeoReplica` to GA rule set by @BernieWhite.
       [#2592](https://github.com/Azure/PSRule.Rules.Azure/issues/2592)
-    - API Management:
-      - Promoted `Azure.APIM.DefenderCloud` to GA rule set by @BernieWhite.
-        [#2591](https://github.com/Azure/PSRule.Rules.Azure/issues/2591)
+  - API Management:
+    - Promoted `Azure.APIM.DefenderCloud` to GA rule set by @BernieWhite.
+      [#2591](https://github.com/Azure/PSRule.Rules.Azure/issues/2591)
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use latest stable version `1.27.7` by @BernieWhite.
       [#2581](https://github.com/Azure/PSRule.Rules.Azure/issues/2581)
@@ -87,8 +153,6 @@ What's changed since pre-release v1.32.0-B0021:
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
     [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
 - Engineering:
-  - Updated resource providers and policy aliases.
-    [#2579](https://github.com/Azure/PSRule.Rules.Azure/pull/2579)
   - Bump xunit.runner.visualstudio to v2.5.4.
     [#2567](https://github.com/Azure/PSRule.Rules.Azure/pull/2567)
 - Bug fixes:
