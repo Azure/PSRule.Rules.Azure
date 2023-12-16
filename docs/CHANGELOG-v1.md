@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.32.0:
+
+- Bug fixes:
+  - Fixed quotes get incorrectly duplicated by @BernieWhite.
+    [#2593](https://github.com/Azure/PSRule.Rules.Azure/issues/2593)
+
 ## v1.32.0
 
 What's changed since v1.31.3:

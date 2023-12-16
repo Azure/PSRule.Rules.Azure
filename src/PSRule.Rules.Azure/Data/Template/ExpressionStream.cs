@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
@@ -140,7 +141,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 Next();
                 SkipQuotePairs(ref length);
             }
-            s = Substring(start, length);
+            s = Substring(start, length, ignoreDoubleQuotes: false);
             IsString();
             return true;
         }
@@ -215,7 +216,7 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             while (!IsEscaped && Apostrophe == Current && Offset(1, out var offset) && offset == Apostrophe)
             {
-                length += 2;
+                length += 1;
                 Next();
                 Next();
             }
@@ -240,15 +241,35 @@ namespace PSRule.Rules.Azure.Data.Template
             _Current = _Source[_Position + _EscapeLength];
         }
 
+        /// <summary>
+        /// Count excape is used to offset a position if an escape sequence exists.
+        /// </summary>
         private int GetEscapeCount(int position)
         {
-            // Check for escape sequences
+            // Check for escape sequences.
             if (position < _Length && _Source[position] == Backslash)
             {
                 var next = _Source[position + 1];
 
-                // Check against list of escapable characters
+                // Check against list of escapable characters.
                 if (next is Backslash or BracketOpen or ParenthesesOpen or BracketClose or ParenthesesClose)
+                    return 1;
+            }
+            return 0;
+        }
+
+        /// <summary>
+        /// Count dobule quote is used to offset a postion if double quoting exists with an apostrophe.
+        /// </summary>
+        private int GetDoubleQuoteCount(int position)
+        {
+            // Check for apostrophe quote character.
+            if (position < _Length && _Source[position] == Apostrophe)
+            {
+                var next = _Source[position + 1];
+
+                // Check for secondary apostrophe quote character.
+                if (next is Apostrophe)
                     return 1;
             }
             return 0;
@@ -269,7 +290,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return Substring(start, length, ignoreEscaping);
         }
 
-        private string Substring(int start, int length, bool ignoreEscaping = false)
+        private string Substring(int start, int length, bool ignoreEscaping = false, bool ignoreDoubleQuotes = true)
         {
             if (ignoreEscaping)
                 return _Source.Substring(start, length);
@@ -280,6 +301,9 @@ namespace PSRule.Rules.Azure.Data.Template
             while (i < length)
             {
                 var offset = GetEscapeCount(position);
+                if (!ignoreDoubleQuotes && offset == 0)
+                    offset = GetDoubleQuoteCount(position);
+
                 buffer[i] = _Source[position + offset];
                 position += offset + 1;
                 i++;

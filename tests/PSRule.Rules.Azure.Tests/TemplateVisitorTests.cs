@@ -1044,6 +1044,19 @@ namespace PSRule.Rules.Azure
             Assert.Equal("dep_subnet4_2", actual["properties"]["tags"]["deployment"].Value<string>());
         }
 
+        [Fact]
+        public void Quoting()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.33.json"), null, out var templateContext);
+            Assert.Equal(3, resources.Length);
+
+            Assert.True(templateContext.RootDeployment.TryOutput("outTask", out JObject result));
+            Assert.Equal(5, result["value"]["parameters"]["B"].Value<int>());
+            Assert.True(templateContext.RootDeployment.TryOutput("outTasks", out result));
+            Assert.Equal("A'{\"B\":5}'", result["value"][0]["parameters"]["debug"].Value<string>());
+            Assert.Equal(10, result["value"][0]["parameters"]["debugLength"].Value<int>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
