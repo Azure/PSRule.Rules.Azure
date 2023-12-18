@@ -1764,10 +1764,9 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         private static TemplateContext.CopyIndexState[] GetPropertyIterator(ITemplateContext context, JObject value)
         {
-            if (value.ContainsKey(PROPERTY_COPY))
+            if (value.TryArrayProperty(PROPERTY_COPY, out var copyObjectArray))
             {
                 var result = new List<TemplateContext.CopyIndexState>();
-                var copyObjectArray = value[PROPERTY_COPY].Value<JArray>();
                 for (var i = 0; i < copyObjectArray.Count; i++)
                 {
                     var copyObject = copyObjectArray[i] as JObject;
@@ -1792,13 +1791,12 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         private static TemplateContext.CopyIndexState[] GetOutputIterator(ITemplateContext context, JObject value)
         {
-            if (value.ContainsKey(PROPERTY_COPY))
+            if (value.TryObjectProperty(PROPERTY_COPY, out var copyObject))
             {
                 var result = new List<TemplateContext.CopyIndexState>();
-                var copyObject = value[PROPERTY_COPY].Value<JObject>();
                 var state = new TemplateContext.CopyIndexState
                 {
-                    Name = "",
+                    Name = string.Empty,
                     Input = copyObject[PROPERTY_INPUT],
                     Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT)
                 };
@@ -1813,9 +1811,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static IEnumerable<TemplateContext.CopyIndexState> GetVariableIterator(ITemplateContext context, JObject value, bool pushToStack = true)
         {
-            if (value.ContainsKey(PROPERTY_COPY))
+            if (value.TryArrayProperty(PROPERTY_COPY, out var copyObjectArray))
             {
-                var copyObjectArray = value[PROPERTY_COPY].Value<JArray>();
                 for (var i = 0; i < copyObjectArray.Count; i++)
                 {
                     var copyObject = copyObjectArray[i] as JObject;
@@ -1848,9 +1845,8 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 Input = value
             };
-            if (value.ContainsKey(PROPERTY_COPY))
+            if (value.TryObjectProperty(PROPERTY_COPY, out var copyObject))
             {
-                var copyObject = value[PROPERTY_COPY].Value<JObject>();
                 result.Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME);
                 result.Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT);
                 context.CopyIndex.PushResourceType(result);

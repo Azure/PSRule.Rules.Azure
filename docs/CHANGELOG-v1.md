@@ -37,6 +37,8 @@ What's changed since v1.32.0:
 - Bug fixes:
   - Fixed quotes get incorrectly duplicated by @BernieWhite.
     [#2593](https://github.com/Azure/PSRule.Rules.Azure/issues/2593)
+  - Fixed failure to expand copy loop in a Azure Policy deployment by @BernieWhite.
+    [#2605](https://github.com/Azure/PSRule.Rules.Azure/issues/2605)
 
 ## v1.32.0
 
