@@ -1057,6 +1057,13 @@ namespace PSRule.Rules.Azure
             Assert.Equal(10, result["value"][0]["parameters"]["debugLength"].Value<int>());
         }
 
+        [Fact]
+        public void PolicyCopyLoop()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Template.Policy.WithDeployment.json"), null, out var templateContext);
+            Assert.Equal(2, resources.Length);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
