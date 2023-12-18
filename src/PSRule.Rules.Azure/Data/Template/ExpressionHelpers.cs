@@ -585,8 +585,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 {
                     for (var j = 0; j < jArray.Count; j++)
                     {
-                        var element = jArray[j];
-                        if (!result.Contains(element))
+                        var element = GetBaseObject(jArray[j]);
+                        if (element != null && !result.Contains(element))
                             result.Add(element);
                     }
                 }
@@ -610,6 +610,28 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
             }
             return result.ToArray();
+        }
+
+        private static object GetBaseObject(JToken token)
+        {
+            object result = token;
+            if (token.Type == JTokenType.String)
+            {
+                result = token.Value<string>();
+            }
+            else if (token.Type == JTokenType.Integer)
+            {
+                result = token.Value<long>();
+            }
+            else if (token.Type == JTokenType.Boolean)
+            {
+                result = token.Value<bool>();
+            }
+            else if (token.Type == JTokenType.Null)
+            {
+                result = null;
+            }
+            return result;
         }
 
         internal static bool IsObject(object o)

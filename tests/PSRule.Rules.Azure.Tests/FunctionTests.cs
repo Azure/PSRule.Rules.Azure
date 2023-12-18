@@ -575,9 +575,13 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, actual2.Length);
             actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, null, new string[] { "one", "three" } }) as object[];
             Assert.Equal(3, actual2.Length);
+            actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, null, new JArray { "one", "three" } }) as object[];
+            Assert.Equal(3, actual2.Length);
             actual2 = Functions.Union(context, new object[] { new string[] { "one", "two" }, new Mock.MockArray() }) as object[];
             Assert.Equal(2, actual2.Length);
             actual2 = Functions.Union(context, new object[] { null, new string[] { "three", "four" } }) as object[];
+            Assert.Equal(2, actual2.Length);
+            actual2 = Functions.Union(context, new object[] { new Mock.MockUnknownObject(), new JArray { "one", "two" } }) as object[];
             Assert.Equal(2, actual2.Length);
         }
 

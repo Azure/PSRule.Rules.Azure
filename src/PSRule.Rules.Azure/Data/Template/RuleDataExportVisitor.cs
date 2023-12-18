@@ -34,6 +34,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_LOGINSERVER = "loginServer";
         private const string PROPERTY_RULES = "rules";
         private const string PROPERTY_RULEID = "ruleId";
+        private const string PROPERTY_ACCESSPOLICIES = "accessPolicies";
 
         private const string PLACEHOLDER_GUID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
         private const string IDENTITY_SYSTEMASSIGNED = "SystemAssigned";
@@ -50,6 +51,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string TYPE_NETWORKINTERFACE = "Microsoft.Network/networkInterfaces";
         private const string TYPE_SUBSCRIPTIONALIAS = "Microsoft.Subscription/aliases";
         private const string TYPE_CONTAINERREGISTRY = "Microsoft.ContainerRegistry/registries";
+        private const string TYPE_KEYVAULT = "Microsoft.KeyVault/vaults";
         private const string TYPE_STORAGE_OBJECTREPLICATIONPOLICIES = "Microsoft.Storage/storageAccounts/objectReplicationPolicies";
 
         private static readonly JsonMergeSettings _MergeSettings = new()
@@ -128,7 +130,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 ProjectContainerRegistry(context, resource) ||
                 ProjectPrivateEndpoints(context, resource) ||
                 ProjectSubscriptionAlias(context, resource) ||
-                StorageObjectReplicationPolicies(context, resource) ||
+                ProjectStorageObjectReplicationPolicies(context, resource) ||
+                ProjectKeyVault(context, resource) ||
                 ProjectResource(context, resource);
         }
 
@@ -246,10 +249,31 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 properties[PROPERTY_LOGINSERVER] = $"{resource.Name}.azurecr.io";
             }
+            return ProjectResource(context, resource);
+        }
+
+        private static bool ProjectKeyVault(TemplateContext context, IResourceValue resource)
+        {
+            if (!resource.IsType(TYPE_KEYVAULT))
+                return false;
+
+            resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+
+            // Add properties.accessPolicies
+            if (!properties.ContainsKeyInsensitive(PROPERTY_ACCESSPOLICIES))
+            {
+                properties[PROPERTY_ACCESSPOLICIES] = new JArray();
+            }
+
+            // Add properties.tenantId
+            if (!properties.ContainsKeyInsensitive(PROPERTY_TENANTID))
+            {
+                properties[PROPERTY_TENANTID] = context.Tenant.TenantId;
+            }
             return true;
         }
 
-        private static bool StorageObjectReplicationPolicies(TemplateContext context, IResourceValue resource)
+        private static bool ProjectStorageObjectReplicationPolicies(TemplateContext context, IResourceValue resource)
         {
             if (!resource.IsType(TYPE_STORAGE_OBJECTREPLICATIONPOLICIES))
                 return false;
