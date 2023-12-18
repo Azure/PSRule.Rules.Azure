@@ -39,6 +39,8 @@ What's changed since v1.32.0:
     [#2593](https://github.com/Azure/PSRule.Rules.Azure/issues/2593)
   - Fixed failure to expand copy loop in a Azure Policy deployment by @BernieWhite.
     [#2605](https://github.com/Azure/PSRule.Rules.Azure/issues/2605)
+  - Fixed cast exception when expanding the union of an array and mock by @BernieWhite.
+    [#2614](https://github.com/Azure/PSRule.Rules.Azure/issues/2614)
 
 ## v1.32.0
 

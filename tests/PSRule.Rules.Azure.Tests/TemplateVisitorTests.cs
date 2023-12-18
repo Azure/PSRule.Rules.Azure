@@ -1060,8 +1060,23 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void PolicyCopyLoop()
         {
-            var resources = ProcessTemplate(GetSourcePath("Template.Policy.WithDeployment.json"), null, out var templateContext);
+            var resources = ProcessTemplate(GetSourcePath("Template.Policy.WithDeployment.json"), null, out _);
             Assert.Equal(2, resources.Length);
+        }
+
+        [Fact]
+        public void UnionMockWithArray()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.34.json"), null, out _);
+            Assert.Equal(4, resources.Length);
+
+            var actual = resources[1];
+            Assert.Equal("Microsoft.KeyVault/vaults", actual["type"].Value<string>());
+            Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual["properties"]["tenantId"].Value<string>());
+            Assert.Empty(actual["properties"]["accessPolicies"].Value<JArray>());
+
+            actual = resources[3];
+            Assert.Equal("Microsoft.KeyVault/vaults/accessPolicies", actual["type"].Value<string>());
         }
 
         #region Helper methods

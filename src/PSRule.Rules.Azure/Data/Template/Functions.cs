@@ -717,14 +717,30 @@ namespace PSRule.Rules.Azure.Data.Template
             return o;
         }
 
+        /// <summary>
+        /// union(arg1, arg2, arg3, ...)
+        /// </summary>
+        /// <remarks>
+        /// Returns a single array or object with all elements from the parameters. For arrays, duplicate values are included once.
+        /// For objects, duplicate property names are only included once.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#union"/>.
+        /// </remarks>
         internal static object Union(ITemplateContext context, object[] args)
         {
             if (CountArgs(args) < 2)
                 throw ArgumentsOutOfRange(nameof(Union), args);
 
-            // Find first non-null case
+            var hasMocks = false;
+
+            // Find first non-null case.
             for (var i = 0; i < args.Length; i++)
             {
+                if (args[i] is IMock)
+                {
+                    hasMocks = true;
+                    continue;
+                }
+
                 // Array
                 if (ExpressionHelpers.IsArray(args[i]))
                     return ExpressionHelpers.UnionArray(args);
@@ -733,7 +749,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (ExpressionHelpers.IsObject(args[i]))
                     return ExpressionHelpers.UnionObject(args);
             }
-            return null;
+
+            // Handle mocks as objects if no other object or array is found.
+            return hasMocks ? ExpressionHelpers.UnionObject(args) : null;
         }
 
         #endregion Array and object

@@ -1,0 +1,96 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.24.24.22086",
+      "templateHash": "13351406772210248604"
+    }
+  },
+  "parameters": {
+    "keyVaultName": {
+      "type": "string",
+      "defaultValue": "vault1"
+    },
+    "objectId": {
+      "type": "string",
+      "defaultValue": "[newGuid()]"
+    }
+  },
+  "variables": {
+    "newAccessPolicies": [
+      {
+        "tenantId": "[tenant().tenantId]",
+        "objectId": "[parameters('objectId')]",
+        "permissions": {
+          "keys": [
+            "Get",
+            "List"
+          ],
+          "secrets": [
+            "Get",
+            "List"
+          ],
+          "certificates": []
+        }
+      }
+    ]
+  },
+  "resources": [
+    {
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2023-07-01",
+      "name": "[format('{0}-2', parameters('keyVaultName'))]",
+      "properties": {}
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "[format('addPolicies-{0}', uniqueString('addPolicies', deployment().name))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "accessPolicies": {
+            "value": "[union(reference(resourceId('Microsoft.KeyVault/vaults', parameters('keyVaultName')), '2021-11-01-preview').accessPolicies, variables('newAccessPolicies'))]"
+          },
+          "keyVaultName": {
+            "value": "[parameters('keyVaultName')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.24.24.22086",
+              "templateHash": "11282630508739439881"
+            }
+          },
+          "parameters": {
+            "keyVaultName": {
+              "type": "string"
+            },
+            "accessPolicies": {
+              "type": "array"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/accessPolicies",
+              "apiVersion": "2023-07-01",
+              "name": "[format('{0}/add', parameters('keyVaultName'))]",
+              "properties": {
+                "accessPolicies": "[parameters('accessPolicies')]"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
