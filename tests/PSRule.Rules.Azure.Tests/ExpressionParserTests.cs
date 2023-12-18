@@ -193,5 +193,31 @@ namespace PSRule.Rules.Azure
             Assert.Equal("item1", actual[14].Content);
             Assert.Equal(ExpressionTokenType.IndexEnd, actual[15].Type);
         }
+
+        [Fact]
+        public void ParseQuoting()
+        {
+            var expression = "[format('A''{0}''', string(variables('task').parameters))]";
+            var actual = ExpressionParser.Parse(expression).ToArray();
+
+            Assert.Equal(ExpressionTokenType.Element, actual[0].Type); // format
+            Assert.Equal("format", actual[0].Content);
+            Assert.Equal(ExpressionTokenType.GroupStart, actual[1].Type);
+            Assert.Equal(ExpressionTokenType.String, actual[2].Type); // 'A'{0}''
+            Assert.Equal("A'{0}'", actual[2].Content);
+            Assert.Equal(ExpressionTokenType.Element, actual[3].Type); // string
+            Assert.Equal("string", actual[3].Content);
+            Assert.Equal(ExpressionTokenType.GroupStart, actual[4].Type);
+            Assert.Equal(ExpressionTokenType.Element, actual[5].Type); // variables
+            Assert.Equal("variables", actual[5].Content);
+            Assert.Equal(ExpressionTokenType.GroupStart, actual[6].Type);
+            Assert.Equal(ExpressionTokenType.String, actual[7].Type); // 'task'
+            Assert.Equal("task", actual[7].Content);
+            Assert.Equal(ExpressionTokenType.GroupEnd, actual[8].Type);
+            Assert.Equal(ExpressionTokenType.Property, actual[9].Type); // parameters
+            Assert.Equal("parameters", actual[9].Content);
+            Assert.Equal(ExpressionTokenType.GroupEnd, actual[10].Type);
+            Assert.Equal(ExpressionTokenType.GroupEnd, actual[11].Type);
+        }
     }
 }
