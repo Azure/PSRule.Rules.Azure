@@ -1,756 +1,756 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a",
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-a",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "automation-a",
+    "Name": "automation-a",
+    "Plan": null,
+    "Properties": {
+      "sku": {
+        "name": "Basic",
+        "family": null,
+        "capacity": null
+      },
+      "state": "Ok",
+      "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+      "creationTime": "2019-12-23T20:31:18.75+00:00",
+      "lastModifiedBy": null,
+      "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts",
+    "ResourceType": "Microsoft.Automation/automationAccounts",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/variables/variable-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/variables/variable-a",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "automation-a",
-        "Name": "automation-a",
+        "ResourceName": "variable-a",
+        "Name": "variable-a",
         "Plan": null,
         "Properties": {
-            "sku": {
-                "name": "Basic",
-                "family": null,
-                "capacity": null
-            },
-            "state": "Ok",
-            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
-            "creationTime": "2019-12-23T20:31:18.75+00:00",
-            "lastModifiedBy": null,
-            "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+          "creationTime": "2019-12-23T22:21:53.827+00:00",
+          "lastModifiedTime": "2019-12-23T22:21:53.827+00:00",
+          "isEncrypted": true,
+          "value": "\"value-a\"",
+          "description": ""
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts",
-        "ResourceType": "Microsoft.Automation/automationAccounts",
+        "Type": "Microsoft.Automation/AutomationAccounts/variables",
+        "ResourceType": "Microsoft.Automation/AutomationAccounts/variables",
         "Sku": null,
-        "Tags": {},
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/variables/variable-a",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/variables/variable-a",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "variable-a",
-                "Name": "variable-a",
-                "Plan": null,
-                "Properties": {
-                    "creationTime": "2019-12-23T22:21:53.827+00:00",
-                    "lastModifiedTime": "2019-12-23T22:21:53.827+00:00",
-                    "isEncrypted": true,
-                    "value": "\"value-a\"",
-                    "description": ""
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Automation/AutomationAccounts/variables",
-                "ResourceType": "Microsoft.Automation/AutomationAccounts/variables",
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/webhooks/webhook-a",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/webhooks/webhook-a",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "webhook-a",
-                "Name": "webhook-a",
-                "Plan": null,
-                "Properties": {
-                    "isEnabled": true,
-                    "expiryTime": "2020-12-23T20:33:24+00:00",
-                    "runbook": {
-                        "name": "runbook-a"
-                    },
-                    "lastInvokedTime": null,
-                    "runOn": null,
-                    "parameters": {},
-                    "uri": "",
-                    "creationTime": "2019-12-23T20:33:36.7056055+00:00",
-                    "lastModifiedBy": "",
-                    "lastModifiedTime": "2019-12-23T20:33:46.7572915+00:00"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Automation/AutomationAccounts/webhooks",
-                "ResourceType": "Microsoft.Automation/AutomationAccounts/webhooks",
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-a/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-a/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "JobLogs",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "JobStreams",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "DscNodeStatus",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "AuditEvent",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.automation/automationaccounts",
-                "ResourceType": "microsoft.automation/automationaccounts",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-b",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-b",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/webhooks/webhook-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-a/webhooks/webhook-a",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "automation-b",
-        "Name": "automation-b",
+        "ResourceName": "webhook-a",
+        "Name": "webhook-a",
         "Plan": null,
         "Properties": {
-            "sku": {
-                "name": "Basic",
-                "family": null,
-                "capacity": null
-            },
-            "state": "Ok",
-            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
-            "creationTime": "2019-12-23T20:31:18.75+00:00",
-            "lastModifiedBy": null,
-            "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+          "isEnabled": true,
+          "expiryTime": "2020-12-23T20:33:24+00:00",
+          "runbook": {
+            "name": "runbook-a"
+          },
+          "lastInvokedTime": null,
+          "runOn": null,
+          "parameters": {},
+          "uri": "",
+          "creationTime": "2019-12-23T20:33:36.7056055+00:00",
+          "lastModifiedBy": "",
+          "lastModifiedTime": "2019-12-23T20:33:46.7572915+00:00"
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts",
-        "ResourceType": "Microsoft.Automation/automationAccounts",
+        "Type": "Microsoft.Automation/AutomationAccounts/webhooks",
+        "ResourceType": "Microsoft.Automation/AutomationAccounts/webhooks",
         "Sku": null,
-        "Tags": {},
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/variables/variable-a",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/variables/variable-a",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "variable-a",
-                "Name": "variable-a",
-                "Plan": null,
-                "Properties": {
-                    "creationTime": "2019-12-23T22:21:53.827+00:00",
-                    "lastModifiedTime": "2019-12-23T22:21:53.827+00:00",
-                    "isEncrypted": false,
-                    "value": "\"value-a\"",
-                    "description": ""
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Automation/AutomationAccounts/variables",
-                "ResourceType": "Microsoft.Automation/AutomationAccounts/variables",
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/webhooks/webhook-a",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/webhooks/webhook-a",
-                "Identity": null,
-                "Kind": null,
-                "Location": null,
-                "ManagedBy": null,
-                "ResourceName": "webhook-a",
-                "Name": "webhook-a",
-                "Plan": null,
-                "Properties": {
-                    "isEnabled": true,
-                    "expiryTime": "2024-12-23T20:33:24+00:00",
-                    "runbook": {
-                        "name": "runbook-a"
-                    },
-                    "lastInvokedTime": null,
-                    "runOn": null,
-                    "parameters": {},
-                    "uri": "",
-                    "creationTime": "2019-12-23T20:33:36.7056055+00:00",
-                    "lastModifiedBy": "",
-                    "lastModifiedTime": "2019-12-23T20:33:46.7572915+00:00"
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "Microsoft.Automation/AutomationAccounts/webhooks",
-                "ResourceType": "Microsoft.Automation/AutomationAccounts/webhooks",
-                "Sku": null,
-                "Tags": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-            },
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-b/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-b/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [],
-                    "logs": [
-                        {
-                            "category": "AuditEvent",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.automation/automationaccounts",
-                "ResourceType": "microsoft.automation/automationaccounts",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
-    },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-c",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-c",
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-a/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-a/providers/microsoft.insights/diagnosticSettings/metrics",
         "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": "australiaeast",
         "ManagedBy": null,
-        "ResourceName": "automation-c",
-        "Name": "automation-c",
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
         "Plan": null,
         "Properties": {
-            "sku": {
-                "name": "Basic",
-                "family": null,
-                "capacity": null
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "JobLogs",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
             },
-            "state": "Ok",
-            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
-            "creationTime": "2019-12-23T20:31:18.75+00:00",
-            "lastModifiedBy": null,
-            "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+            {
+              "category": "JobStreams",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "DscNodeStatus",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "AuditEvent",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts",
-        "ResourceType": "Microsoft.Automation/automationAccounts",
+        "Type": "microsoft.automation/automationaccounts",
+        "ResourceType": "microsoft.automation/automationaccounts",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
         "Sku": null,
-        "Tags": {},
+        "Tags": null,
+        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-c/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-c/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [],
-                    "logs": [
-                        {
-                            "category": null,
-                            "categoryGroup": "audit",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.automation/automationaccounts",
-                "ResourceType": "microsoft.automation/automationaccounts",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-b",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-b",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "automation-b",
+    "Name": "automation-b",
+    "Plan": null,
+    "Properties": {
+      "sku": {
+        "name": "Basic",
+        "family": null,
+        "capacity": null
+      },
+      "state": "Ok",
+      "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+      "creationTime": "2019-12-23T20:31:18.75+00:00",
+      "lastModifiedBy": null,
+      "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-d",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-d",
-        "Identity": {
-            "PrincipalId": "00000000-0000-0000-0000-000000000000",
-            "TenantId": "00000000-0000-0000-0000-000000000000",
-            "Type": "SystemAssigned",
-            "UserAssignedIdentities": null
-        },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts",
+    "ResourceType": "Microsoft.Automation/automationAccounts",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/variables/variable-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/variables/variable-a",
+        "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": null,
         "ManagedBy": null,
-        "ResourceName": "automation-d",
-        "Name": "automation-d",
+        "ResourceName": "variable-a",
+        "Name": "variable-a",
         "Plan": null,
         "Properties": {
-            "sku": {
-                "name": "Basic",
-                "family": null,
-                "capacity": null
-            },
-            "state": "Ok",
-            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
-            "creationTime": "2019-12-23T20:31:18.75+00:00",
-            "lastModifiedBy": null,
-            "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+          "creationTime": "2019-12-23T22:21:53.827+00:00",
+          "lastModifiedTime": "2019-12-23T22:21:53.827+00:00",
+          "isEncrypted": false,
+          "value": "\"value-a\"",
+          "description": ""
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts",
-        "ResourceType": "Microsoft.Automation/automationAccounts",
+        "Type": "Microsoft.Automation/AutomationAccounts/variables",
+        "ResourceType": "Microsoft.Automation/AutomationAccounts/variables",
         "Sku": null,
-        "Tags": {},
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/webhooks/webhook-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/AutomationAccounts/automation-b/webhooks/webhook-a",
+        "Identity": null,
+        "Kind": null,
+        "Location": null,
+        "ManagedBy": null,
+        "ResourceName": "webhook-a",
+        "Name": "webhook-a",
+        "Plan": null,
+        "Properties": {
+          "isEnabled": true,
+          "expiryTime": "2026-12-23T20:33:24+00:00",
+          "runbook": {
+            "name": "runbook-a"
+          },
+          "lastInvokedTime": null,
+          "runOn": null,
+          "parameters": {},
+          "uri": "",
+          "creationTime": "2019-12-23T20:33:36.7056055+00:00",
+          "lastModifiedBy": "",
+          "lastModifiedTime": "2019-12-23T20:33:46.7572915+00:00"
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Automation/AutomationAccounts/webhooks",
+        "ResourceType": "Microsoft.Automation/AutomationAccounts/webhooks",
+        "Sku": null,
+        "Tags": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-b/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-b/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [],
+          "logs": [
             {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-d/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-d/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": null,
-                            "categoryGroup": "allLogs",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.automation/automationaccounts",
-                "ResourceType": "microsoft.automation/automationaccounts",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
+              "category": "AuditEvent",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
             }
-        ]
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "microsoft.automation/automationaccounts",
+        "ResourceType": "microsoft.automation/automationaccounts",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-c",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-c",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "automation-c",
+    "Name": "automation-c",
+    "Plan": null,
+    "Properties": {
+      "sku": {
+        "name": "Basic",
+        "family": null,
+        "capacity": null
+      },
+      "state": "Ok",
+      "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+      "creationTime": "2019-12-23T20:31:18.75+00:00",
+      "lastModifiedBy": null,
+      "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-e",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-e",
-        "Identity": {
-            "PrincipalId": null,
-            "TenantId": null,
-            "Type": "UserAssigned",
-            "UserAssignedIdentities": null
-        },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts",
+    "ResourceType": "Microsoft.Automation/automationAccounts",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-c/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-c/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": "australiaeast",
         "ManagedBy": null,
-        "ResourceName": "automation-e",
-        "Name": "automation-e",
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
         "Plan": null,
         "Properties": {
-            "sku": {
-                "name": "Basic",
-                "family": null,
-                "capacity": null
-            },
-            "state": "Ok",
-            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
-            "creationTime": "2019-12-23T20:31:18.75+00:00",
-            "lastModifiedBy": null,
-            "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [],
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": "audit",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts",
-        "ResourceType": "Microsoft.Automation/automationAccounts",
+        "Type": "microsoft.automation/automationaccounts",
+        "ResourceType": "microsoft.automation/automationaccounts",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
         "Sku": null,
-        "Tags": {},
+        "Tags": null,
+        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-e/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-e/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "JobLogs",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "JobStreams",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "DscNodeStatus",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.automation/automationaccounts",
-                "ResourceType": "microsoft.automation/automationaccounts",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-d",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-d",
+    "Identity": {
+      "PrincipalId": "00000000-0000-0000-0000-000000000000",
+      "TenantId": "00000000-0000-0000-0000-000000000000",
+      "Type": "SystemAssigned",
+      "UserAssignedIdentities": null
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-f",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-f",
-        "Identity": {
-            "PrincipalId": null,
-            "TenantId": null,
-            "Type": "UserAssigned",
-            "UserAssignedIdentities": null
-        },
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "automation-f",
-        "Name": "automation-f",
-        "Plan": null,
-        "Properties": {
-            "sku": {
-                "name": "Basic",
-                "family": null,
-                "capacity": null
-            },
-            "state": "Ok",
-            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
-            "creationTime": "2019-12-23T20:31:18.75+00:00",
-            "lastModifiedBy": null,
-            "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts",
-        "ResourceType": "Microsoft.Automation/automationAccounts",
-        "Sku": null,
-        "Tags": {},
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
-            {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-f/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-f/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "JobLogs",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.automation/automationaccounts",
-                "ResourceType": "microsoft.automation/automationaccounts",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
-            }
-        ]
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "automation-d",
+    "Name": "automation-d",
+    "Plan": null,
+    "Properties": {
+      "sku": {
+        "name": "Basic",
+        "family": null,
+        "capacity": null
+      },
+      "state": "Ok",
+      "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+      "creationTime": "2019-12-23T20:31:18.75+00:00",
+      "lastModifiedBy": null,
+      "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-g",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-g",
-        "Identity": {
-            "PrincipalId": null,
-            "TenantId": null,
-            "Type": "UserAssigned",
-            "UserAssignedIdentities": null
-        },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts",
+    "ResourceType": "Microsoft.Automation/automationAccounts",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-d/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-d/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
         "Kind": null,
-        "Location": "region",
+        "Location": "australiaeast",
         "ManagedBy": null,
-        "ResourceName": "automation-g",
-        "Name": "automation-g",
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
         "Plan": null,
         "Properties": {
-            "sku": {
-                "name": "Basic",
-                "family": null,
-                "capacity": null
-            },
-            "state": "Ok",
-            "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
-            "creationTime": "2019-12-23T20:31:18.75+00:00",
-            "lastModifiedBy": null,
-            "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": null,
+              "categoryGroup": "allLogs",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
         },
         "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.Automation/automationAccounts",
-        "ResourceType": "Microsoft.Automation/automationAccounts",
+        "Type": "microsoft.automation/automationaccounts",
+        "ResourceType": "microsoft.automation/automationaccounts",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
         "Sku": null,
-        "Tags": {},
+        "Tags": null,
+        "TagsTable": null,
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-        "resources": [
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-e",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-e",
+    "Identity": {
+      "PrincipalId": null,
+      "TenantId": null,
+      "Type": "UserAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "automation-e",
+    "Name": "automation-e",
+    "Plan": null,
+    "Properties": {
+      "sku": {
+        "name": "Basic",
+        "family": null,
+        "capacity": null
+      },
+      "state": "Ok",
+      "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+      "creationTime": "2019-12-23T20:31:18.75+00:00",
+      "lastModifiedBy": null,
+      "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts",
+    "ResourceType": "Microsoft.Automation/automationAccounts",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-e/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-e/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
             {
-                "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-g/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-g/providers/microsoft.insights/diagnosticSettings/metrics",
-                "Identity": null,
-                "Kind": null,
-                "Location": "australiaeast",
-                "ManagedBy": null,
-                "ResourceName": "metrics",
-                "Name": "metrics",
-                "ExtensionResourceName": "metrics",
-                "ParentResource": null,
-                "Plan": null,
-                "Properties": {
-                    "storageAccountId": null,
-                    "serviceBusRuleId": null,
-                    "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
-                    "eventHubAuthorizationRuleId": null,
-                    "eventHubName": null,
-                    "metrics": [
-                        {
-                            "category": "AllMetrics",
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logs": [
-                        {
-                            "category": "JobLogs",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        },
-                        {
-                            "category": "JobStreams",
-                            "categoryGroup": null,
-                            "enabled": true,
-                            "retentionPolicy": {
-                                "enabled": false,
-                                "days": 0
-                            }
-                        }
-                    ],
-                    "logAnalyticsDestinationType": null
-                },
-                "ResourceGroupName": "rg-test",
-                "Type": "microsoft.automation/automationaccounts",
-                "ResourceType": "microsoft.automation/automationaccounts",
-                "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
-                "Sku": null,
-                "Tags": null,
-                "TagsTable": null,
-                "SubscriptionId": "00000000-0000-0000-0000-000000000000",
-                "CreatedTime": null,
-                "ChangedTime": null,
-                "ETag": null
+              "category": "AllMetrics",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
             }
-        ]
-    }
+          ],
+          "logs": [
+            {
+              "category": "JobLogs",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "JobStreams",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "DscNodeStatus",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "microsoft.automation/automationaccounts",
+        "ResourceType": "microsoft.automation/automationaccounts",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-f",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-f",
+    "Identity": {
+      "PrincipalId": null,
+      "TenantId": null,
+      "Type": "UserAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "automation-f",
+    "Name": "automation-f",
+    "Plan": null,
+    "Properties": {
+      "sku": {
+        "name": "Basic",
+        "family": null,
+        "capacity": null
+      },
+      "state": "Ok",
+      "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+      "creationTime": "2019-12-23T20:31:18.75+00:00",
+      "lastModifiedBy": null,
+      "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts",
+    "ResourceType": "Microsoft.Automation/automationAccounts",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-f/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-f/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "JobLogs",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "microsoft.automation/automationaccounts",
+        "ResourceType": "microsoft.automation/automationaccounts",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-g",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Automation/automationAccounts/automation-g",
+    "Identity": {
+      "PrincipalId": null,
+      "TenantId": null,
+      "Type": "UserAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "automation-g",
+    "Name": "automation-g",
+    "Plan": null,
+    "Properties": {
+      "sku": {
+        "name": "Basic",
+        "family": null,
+        "capacity": null
+      },
+      "state": "Ok",
+      "RegistrationUrl": "https://nnn-agentservice-nnnn-1.azure-automation.net/accounts/00000000-0000-0000-0000-000000000000",
+      "creationTime": "2019-12-23T20:31:18.75+00:00",
+      "lastModifiedBy": null,
+      "lastModifiedTime": "2019-12-23T20:31:18.75+00:00"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Automation/automationAccounts",
+    "ResourceType": "Microsoft.Automation/automationAccounts",
+    "Sku": null,
+    "Tags": {},
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-g/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.automation/automationaccounts/automation-g/providers/microsoft.insights/diagnosticSettings/metrics",
+        "Identity": null,
+        "Kind": null,
+        "Location": "australiaeast",
+        "ManagedBy": null,
+        "ResourceName": "metrics",
+        "Name": "metrics",
+        "ExtensionResourceName": "metrics",
+        "ParentResource": null,
+        "Plan": null,
+        "Properties": {
+          "storageAccountId": null,
+          "serviceBusRuleId": null,
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.OperationalInsights/workspaces/log-workspace",
+          "eventHubAuthorizationRuleId": null,
+          "eventHubName": null,
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "JobLogs",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            },
+            {
+              "category": "JobStreams",
+              "categoryGroup": null,
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "microsoft.automation/automationaccounts",
+        "ResourceType": "microsoft.automation/automationaccounts",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "Sku": null,
+        "Tags": null,
+        "TagsTable": null,
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+        "CreatedTime": null,
+        "ChangedTime": null,
+        "ETag": null
+      }
+    ]
+  }
 ]
