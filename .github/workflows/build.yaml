@@ -16,6 +16,7 @@ on:
 env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
+  DOTNET_VERSION: 7.x
 
 jobs:
   build:
@@ -32,7 +33,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 7.x
+        dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Install dependencies
       shell: pwsh
@@ -45,7 +46,7 @@ jobs:
       run: Invoke-Build -Configuration Release -AssertStyle GitHubActions
 
     - name: Upload module
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Module
         path: ./out/modules/PSRule.Rules.Azure/*
@@ -53,7 +54,7 @@ jobs:
         if-no-files-found: error
 
     # - name: Upload Test Results
-    #   uses: actions/upload-artifact@v3
+    #   uses: actions/upload-artifact@v4
     #   if: always()
     #   with:
     #     name: Module.DotNet.TestResults
@@ -62,10 +63,10 @@ jobs:
     #     if-no-files-found: error
 
     - name: Upload PSRule Results
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       if: always()
       with:
-        name: Module.PSRule.TestResults
+        name: Results-PSRule
         path: ./reports/ps-rule*.xml
         retention-days: 3
         if-no-files-found: error
@@ -110,7 +111,7 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 6.x
+        dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - if: ${{ matrix.shell == 'pwsh' }}
       name: Install dependencies (PowerShell)
@@ -125,7 +126,7 @@ jobs:
       run: ./scripts/pipeline-deps.ps1
 
     - name: Download module
-      uses: actions/download-artifact@v3
+      uses: actions/download-artifact@v4
       with:
         name: Module
         path: ./out/modules/PSRule.Rules.Azure
