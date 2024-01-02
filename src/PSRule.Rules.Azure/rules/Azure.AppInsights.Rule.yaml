@@ -15,8 +15,9 @@ metadata:
   name: Azure.AppInsights.Workspace
   ref: AZR-000069
   tags:
-    release: 'GA'
-    ruleSet: '2021_06'
+    release: GA
+    ruleSet: 2021_06
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - microsoft.insights/components
@@ -32,8 +33,9 @@ metadata:
   name: Azure.AppInsights.Name
   ref: AZR-000070
   tags:
-    release: 'GA'
-    ruleSet: '2021_06'
+    release: GA
+    ruleSet: 2021_06
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - microsoft.insights/components

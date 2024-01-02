@@ -15,8 +15,9 @@ metadata:
   name: Azure.PrivateEndpoint.Name
   ref: AZR-000153
   tags:
-    release: 'GA'
-    ruleSet: '2021_12'
+    release: GA
+    ruleSet: 2021_12
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/privateEndpoints

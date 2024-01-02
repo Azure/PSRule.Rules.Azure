@@ -1,5 +1,5 @@
 ---
-reviewed: 2021/12/20
+reviewed: 2021-12-20
 severity: Important
 pillar: Operational Excellence
 category: Deployment

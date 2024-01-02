@@ -15,8 +15,9 @@ metadata:
   name: Azure.LB.Name
   ref: AZR-000129
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/loadBalancers

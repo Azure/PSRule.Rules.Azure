@@ -8,7 +8,7 @@
 #region SQL Logical Server
 
 # Synopsis: Determine if there is an excessive number of firewall rules
-Rule 'Azure.SQL.FirewallRuleCount' -Ref 'AZR-000183' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.FirewallRuleCount' -Ref 'AZR-000183' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules');
     $Assert.
         LessOrEqual($firewallRules, '.', 10).
@@ -16,7 +16,7 @@ Rule 'Azure.SQL.FirewallRuleCount' -Ref 'AZR-000183' -Type 'Microsoft.Sql/server
 }
 
 # Synopsis: Determine if access from Azure services is required
-Rule 'Azure.SQL.AllowAzureAccess' -Ref 'AZR-000184' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.AllowAzureAccess' -Ref 'AZR-000184' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules' | Where-Object {
         $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
         ($_.properties.StartIpAddress -eq '0.0.0.0' -and $_.properties.EndIpAddress -eq '0.0.0.0')
@@ -25,7 +25,7 @@ Rule 'Azure.SQL.AllowAzureAccess' -Ref 'AZR-000184' -Type 'Microsoft.Sql/servers
 }
 
 # Synopsis: Determine if there is an excessive number of permitted IP addresses
-Rule 'Azure.SQL.FirewallIPRange' -Ref 'AZR-000185' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.FirewallIPRange' -Ref 'AZR-000185' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $summary = GetIPAddressSummary
     $Assert.
         LessOrEqual($summary, 'Public', 10).
@@ -44,7 +44,7 @@ Rule 'Azure.SQL.DefenderCloud' -Alias 'Azure.SQL.ThreatDetection' -Ref 'AZR-0001
 }
 
 # Synopsis: Enable auditing for Azure SQL logical server
-Rule 'Azure.SQL.Auditing' -Ref 'AZR-000187' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.SQL.Auditing' -Ref 'AZR-000187' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/auditingSettings');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/auditingSettings');
@@ -92,7 +92,7 @@ Rule 'Azure.SQL.ServerName' -Ref 'AZR-000190' -Type 'Microsoft.Sql/servers' -Tag
 }
 
 # Synopsis: Ensure Azure AD-only authentication is enabled with Azure SQL Database.
-Rule 'Azure.SQL.AADOnly' -Ref 'AZR-000369' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/azureADOnlyAuthentications' -Tag @{ release = 'GA'; ruleSet = '2023_03'; } {
+Rule 'Azure.SQL.AADOnly' -Ref 'AZR-000369' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/azureADOnlyAuthentications' -Tag @{ release = 'GA'; ruleSet = '2023_03'; 'Azure.WAF/pillar' = 'Security'; } {
     $types = 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/azureADOnlyAuthentications'
     $enabledAADOnly = @(GetAzureSQLADOnlyAuthentication -ResourceType $types | Where-Object { $_ })
     $Assert.GreaterOrEqual($enabledAADOnly, '.', 1).Reason($LocalizedData.AzureADOnlyAuthentication)
@@ -125,7 +125,7 @@ Rule 'Azure.SQL.TDE' -Ref 'AZR-000191' -Type 'Microsoft.Sql/servers/databases', 
 }
 
 # Synopsis: Azure SQL Database names should meet naming requirements.
-Rule 'Azure.SQL.DBName' -Ref 'AZR-000192' -Type 'Microsoft.Sql/servers/databases' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.SQL.DBName' -Ref 'AZR-000192' -Type 'Microsoft.Sql/servers/databases' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
 
     $name = $PSRule.TargetName.Split('/', 2, [System.StringSplitOptions]::RemoveEmptyEntries)[-1];
@@ -147,7 +147,7 @@ Rule 'Azure.SQL.DBName' -Ref 'AZR-000192' -Type 'Microsoft.Sql/servers/databases
 #region Failover group
 
 # Synopsis: Azure SQL failover group names should meet naming requirements.
-Rule 'Azure.SQL.FGName' -Ref 'AZR-000193' -Type 'Microsoft.Sql/servers/failoverGroups' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; } {
+Rule 'Azure.SQL.FGName' -Ref 'AZR-000193' -Type 'Microsoft.Sql/servers/failoverGroups' -If { !(IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
 
     $name = $PSRule.TargetName.Split('/')[-1];

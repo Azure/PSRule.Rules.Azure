@@ -39,7 +39,7 @@ Rule 'Azure.CDN.MinTLS' -Ref 'AZR-000092' -Type 'Microsoft.Cdn/profiles/endpoint
 }
 
 # Synopsis: Use Azure Front Door Standard or Premium SKU to improve the performance of web pages with dynamic content and overall capabilities.
-Rule 'Azure.CDN.UseFrontDoor' -Ref 'AZR-000286' -Type 'Microsoft.Cdn/profiles' -If { IsStandard_MicrosoftSKU } -Tag @{ release = 'GA'; ruleSet = '2022_09' } {
+Rule 'Azure.CDN.UseFrontDoor' -Ref 'AZR-000286' -Type 'Microsoft.Cdn/profiles' -If { IsStandard_MicrosoftSKU } -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $Assert.In($TargetObject, 'sku.name', @('Standard_AzureFrontDoor', 'Premium_AzureFrontDoor'));
 }
 
