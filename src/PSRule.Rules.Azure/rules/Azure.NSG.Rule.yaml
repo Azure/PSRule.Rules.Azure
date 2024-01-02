@@ -15,8 +15,9 @@ metadata:
   name: Azure.NSG.Name
   ref: AZR-000141
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/networkSecurityGroups
@@ -29,8 +30,8 @@ spec:
     - name: '.'
       match: '^[a-z0-9]([a-z0-9_.-]{0,78}[a-z0-9_])?$'
 
---- 
-
+---
+# Synopsis: Network Security Groups that are managed by AKS.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:
@@ -51,8 +52,9 @@ metadata:
   name: Azure.NSG.AKSRules
   ref: AZR-000292
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Operational Excellence
 spec:
   with: 
   - Azure.NSG.AKSManaged

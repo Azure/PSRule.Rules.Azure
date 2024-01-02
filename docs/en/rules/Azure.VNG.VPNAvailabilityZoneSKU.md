@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:05 Redundancy
 resource: Virtual Network Gateway
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.VPNAvailabilityZoneSKU/
 ---
@@ -29,10 +29,6 @@ Deploying VPN gateways in Azure Availability Zones physically and logically sepa
 
 Consider deploying VPN gateways with an availability zone SKU to improve reliability of virtual network gateways.
 
-## NOTES
-
-VPN gateway availability zones are managed via Public IP addresses, and are flagged separately under the `Azure.PublicIP.AvailabilityZone` rule.
-
 ## EXAMPLES
 
 ### Configure with Azure template
@@ -51,37 +47,33 @@ For example:
 
 ```json
 {
-    "apiVersion": "2020-11-01",
-    "name": "[parameters('name')]",
-    "type": "Microsoft.Network/virtualNetworkGateways",
-    "location": "[parameters('location')]",
-    "dependsOn": [
-        "[concat('Microsoft.Network/publicIPAddresses/', parameters('newPublicIpAddressName'))]"
-    ],
-    "tags": {},
-    "properties": {
-        "gatewayType": "Vpn",
-        "ipConfigurations": [
-            {
-                "name": "default",
-                "properties": {
-                    "privateIPAllocationMethod": "Dynamic",
-                    "subnet": {
-                        "id": "[parameters('subnetId')]"
-                    },
-                    "publicIpAddress": {
-                        "id": "[resourceId('vpn-rg', 'Microsoft.Network/publicIPAddresses', parameters('newPublicIpAddressName'))]"
-                    }
-                }
-            }
-        ],
-        "vpnType": "[parameters('vpnType')]",
-        "vpnGatewayGeneration": "[parameters('vpnGatewayGeneration')]",
-        "sku": {
-            "name": "VpnGw1AZ",
-            "tier": "VpnGw1AZ"
+  "type": "Microsoft.Network/virtualNetworkGateways",
+  "apiVersion": "2023-06-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "gatewayType": "Vpn",
+    "ipConfigurations": [
+      {
+        "name": "default",
+        "properties": {
+          "privateIPAllocationMethod": "Dynamic",
+          "subnet": {
+            "id": "[parameters('subnetId')]"
+          },
+          "publicIPAddress": {
+            "id": "[parameters('pipId')]"
+          }
         }
+      }
+    ],
+    "vpnType": "RouteBased",
+    "vpnGatewayGeneration": "Generation2",
+    "sku": {
+      "name": "VpnGw1AZ",
+      "tier": "VpnGw1AZ"
     }
+  }
 }
 ```
 
@@ -100,10 +92,9 @@ To configure an AZ SKU for a VPN gateway:
 For example:
 
 ```bicep
-resource name_resource 'Microsoft.Network/virtualNetworkGateways@2020-11-01' = {
+resource vng 'Microsoft.Network/virtualNetworkGateways@2023-06-01' = {
   name: name
   location: location
-  tags: {}
   properties: {
     gatewayType: 'Vpn'
     ipConfigurations: [
@@ -115,27 +106,29 @@ resource name_resource 'Microsoft.Network/virtualNetworkGateways@2020-11-01' = {
             id: subnetId
           }
           publicIPAddress: {
-            id: resourceId('vpn-rg', 'Microsoft.Network/publicIPAddresses', newPublicIpAddressName)
+            id: pipId
           }
         }
       }
     ]
-    vpnType: vpnType
-    vpnGatewayGeneration: vpnGatewayGeneration
+    vpnType: 'RouteBased'
+    vpnGatewayGeneration: 'Generation2'
     sku: {
       name: 'VpnGw1AZ'
       tier: 'VpnGw1AZ'
     }
   }
-  dependsOn: [
-    newPublicIpAddressName_resource
-  ]
 }
+
 ```
+
+## NOTES
+
+VPN gateway availability zones are managed via Public IP addresses, and are flagged separately under the `Azure.PublicIP.AvailabilityZone` rule.
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways?tabs=json)
-- [About zone-redundant virtual network gateways in Azure Availability Zones](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)
-- [VPN gateway SKUs](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#gwsku)
-- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [About zone-redundant virtual network gateway in Azure availability zones](https://learn.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)
+- [VPN gateway SKUs](https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways#gwsku)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways)

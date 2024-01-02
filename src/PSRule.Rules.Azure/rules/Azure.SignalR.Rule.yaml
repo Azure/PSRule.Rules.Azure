@@ -39,6 +39,7 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_03
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.SignalRService/signalR

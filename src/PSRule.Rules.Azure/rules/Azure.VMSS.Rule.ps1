@@ -8,7 +8,7 @@
 #region Virtual machine scale set
 
 # Synopsis: Use VM naming requirements
-Rule 'Azure.VMSS.Name' -Ref 'AZR-000261' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VMSS.Name' -Ref 'AZR-000261' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute
 
     # Between 1 and 64 characters long
@@ -22,7 +22,7 @@ Rule 'Azure.VMSS.Name' -Ref 'AZR-000261' -Type 'Microsoft.Compute/virtualMachine
 }
 
 # Synopsis: Use VM naming requirements
-Rule 'Azure.VMSS.ComputerName' -Ref 'AZR-000262' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.VMSS.ComputerName' -Ref 'AZR-000262' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute
 
     $maxLength = 64
@@ -51,7 +51,7 @@ Rule 'Azure.VMSS.PublicKey' -Ref 'AZR-000288' -Type 'Microsoft.Compute/virtualMa
 }
 
 # Synopsis: Protect Custom Script Extensions commands
-Rule 'Azure.VMSS.ScriptExtensions' -Ref 'AZR-000333' -Type 'Microsoft.Compute/virtualMachineScaleSets', 'Microsoft.Computer/virtualMachineScaleSets/CustomScriptExtension', 'Microsoft.Compute/virtualMachineScaleSets/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+Rule 'Azure.VMSS.ScriptExtensions' -Ref 'AZR-000333' -Type 'Microsoft.Compute/virtualMachineScaleSets', 'Microsoft.Computer/virtualMachineScaleSets/CustomScriptExtension', 'Microsoft.Compute/virtualMachineScaleSets/extensions' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
     $vmssConfig = @($TargetObject);
 
     ## Extension Prof
@@ -67,7 +67,7 @@ Rule 'Azure.VMSS.ScriptExtensions' -Ref 'AZR-000333' -Type 'Microsoft.Compute/vi
 }
 
 # Synopsis: Use Azure Monitor Agent as replacement for Log Analytics Agent.
-Rule 'Azure.VMSS.MigrateAMA' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { HasOMSOrAMAExtension } -Tag @{ release = 'GA'; ruleSet = '2022_12' } {
+Rule 'Azure.VMSS.MigrateAMA' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualMachineScaleSets' -If { HasOMSOrAMAExtension } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $property = $TargetObject.Properties.virtualMachineProfile.extensionProfile.extensions.properties |
         Where-Object { (($_.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.type -eq 'MicrosoftMonitoringAgent')) -or
             (($_.publisher -eq 'Microsoft.EnterpriseCloud.Monitoring') -and ($_.type -eq 'OmsAgentForLinux')) }
@@ -80,7 +80,7 @@ Rule 'Azure.VMSS.MigrateAMA' -Ref 'AZR-000318' -Type 'Microsoft.Compute/virtualM
 }
 
 # Synopsis: Use Azure Monitor Agent for collecting monitoring data.
-Rule 'Azure.VMSS.AMA' -Ref 'AZR-000346' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.VMSS.AMA' -Ref 'AZR-000346' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $amaTypes = @('AzureMonitorWindowsAgent', 'AzureMonitorLinuxAgent')
         $property = $TargetObject.Properties.virtualMachineProfile.extensionProfile.extensions.properties |
             Where-Object { $_.publisher -eq 'Microsoft.Azure.Monitor' -or $_.type -in $amaTypes }

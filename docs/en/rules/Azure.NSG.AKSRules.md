@@ -1,5 +1,5 @@
 ---
-reviewed: 2022/09/21
+reviewed: 2022-09-21
 severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure

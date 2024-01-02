@@ -8,14 +8,14 @@
 #region Template
 
 # Synopsis: Use ARM template file structure.
-Rule 'Azure.Template.TemplateFile' -Ref 'AZR-000212' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Template.TemplateFile' -Ref 'AZR-000212' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $Assert.HasFields($jsonObject, @('$schema', 'contentVersion', 'resources'));
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters', 'functions', 'variables', 'resources', 'outputs';
 }
 
 # Synopsis: Use a more recent version of the Azure template schema.
-Rule 'Azure.Template.TemplateSchema' -Ref 'AZR-000213' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.Template.TemplateSchema' -Ref 'AZR-000213' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $Assert.HasJsonSchema($jsonObject, @(
         'https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json'
@@ -26,13 +26,13 @@ Rule 'Azure.Template.TemplateSchema' -Ref 'AZR-000213' -Type '.json' -If { (IsTe
 }
 
 # Synopsis: Use a Azure template schema with the https scheme.
-Rule 'Azure.Template.TemplateScheme' -Ref 'AZR-000214' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.Template.TemplateScheme' -Ref 'AZR-000214' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $Assert.StartsWith($jsonObject, '$schema', 'https://');
 }
 
 # Synopsis: Use template parameter descriptions.
-Rule 'Azure.Template.ParameterMetadata' -Ref 'AZR-000215' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.Template.ParameterMetadata' -Ref 'AZR-000215' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $parameters = @(GetTemplateParameters);
     if ($parameters.Length -eq 0) {
         return $Assert.Pass();
@@ -44,13 +44,13 @@ Rule 'Azure.Template.ParameterMetadata' -Ref 'AZR-000215' -Type '.json' -If { (I
 }
 
 # Synopsis: ARM templates should include at least one resource.
-Rule 'Azure.Template.Resources' -Ref 'AZR-000216' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.Template.Resources' -Ref 'AZR-000216' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContent($TargetObject)[0];
     $Assert.GreaterOrEqual($jsonObject, 'resources', 1);
 }
 
 # Synopsis: ARM template parameters should be used at least once.
-Rule 'Azure.Template.UseParameters' -Ref 'AZR-000217' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.Template.UseParameters' -Ref 'AZR-000217' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
     $parameters = @(GetTemplateParameters);
     if ($parameters.Length -eq 0) {
@@ -63,13 +63,13 @@ Rule 'Azure.Template.UseParameters' -Ref 'AZR-000217' -Type '.json' -If { (IsTem
 }
 
 # Synopsis: Each Azure Resource Manager (ARM) template file should contain a minimal number of parameters.
-Rule 'Azure.Template.DefineParameters' -Ref 'AZR-000218' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.DefineParameters' -Ref 'AZR-000218' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $parameters = @(GetTemplateParameters);
     $Assert.GreaterOrEqual($parameters, '.', 1);
 }
 
 # Synopsis: ARM template variables should be used at least once.
-Rule 'Azure.Template.UseVariables' -Ref 'AZR-000219' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09' } {
+Rule 'Azure.Template.UseVariables' -Ref 'AZR-000219' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContent($TargetObject)[0];
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
     $variableNames = @($jsonObject.variables.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' } | ForEach-Object {
@@ -93,7 +93,7 @@ Rule 'Azure.Template.UseVariables' -Ref 'AZR-000219' -Type '.json' -If { (IsTemp
 }
 
 # Synopsis: Set the default value for location parameters within ARM template to the default value to `[resourceGroup().location]`.
-Rule 'Azure.Template.LocationDefault' -Ref 'AZR-000220' -Type '.json' -If { (HasLocationParameter) } -Tag @{ release = 'GA'; ruleSet = '2021_03' } {
+Rule 'Azure.Template.LocationDefault' -Ref 'AZR-000220' -Type '.json' -If { (HasLocationParameter) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Reliability'; } {
     # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Location-Should-Not-Be-Hardcoded.test.ps1
 
     $parameters = @(GetTemplateParameters -Name 'location');
@@ -110,7 +110,7 @@ Rule 'Azure.Template.LocationDefault' -Ref 'AZR-000220' -Type '.json' -If { (Has
 }
 
 # Synopsis: Location parameters should use a string value.
-Rule 'Azure.Template.LocationType' -Ref 'AZR-000221' -Type '.json' -If { (HasLocationParameter) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.LocationType' -Ref 'AZR-000221' -Type '.json' -If { (HasLocationParameter) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Location-Should-Not-Be-Hardcoded.test.ps1
 
     $parameters = @(GetTemplateParameters -Name 'location');
@@ -120,7 +120,7 @@ Rule 'Azure.Template.LocationType' -Ref 'AZR-000221' -Type '.json' -If { (HasLoc
 }
 
 # Synopsis: Template resource location should be an expression or `global`.
-Rule 'Azure.Template.ResourceLocation' -Ref 'AZR-000222' -Type '.json' -If { (HasTemplateResources) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.ResourceLocation' -Ref 'AZR-000222' -Type '.json' -If { (HasTemplateResources) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Resources-Should-Have-Location.test.ps1
 
     $resources = @(GetTemplateResources);
@@ -137,7 +137,7 @@ Rule 'Azure.Template.ResourceLocation' -Ref 'AZR-000222' -Type '.json' -If { (Ha
 }
 
 # Synopsis: Template should reference a location parameter to specify resource location.
-Rule 'Azure.Template.UseLocationParameter' -Ref 'AZR-000223' -Level Warning -Type '.json' -If { (IsTemplateFile -Suffix '/deploymentTemplate.json') -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.UseLocationParameter' -Ref 'AZR-000223' -Level Warning -Type '.json' -If { (IsTemplateFile -Suffix '/deploymentTemplate.json') -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContent($TargetObject)[0];
     if ($Assert.HasField($jsonObject, 'parameters.location').Result) {
         $jsonObject.parameters.PSObject.Properties.Remove('location')
@@ -148,7 +148,7 @@ Rule 'Azure.Template.UseLocationParameter' -Ref 'AZR-000223' -Level Warning -Typ
 }
 
 # Synopsis: Template parameters `minValue` and `maxValue` constraints must be valid.
-Rule 'Azure.Template.ParameterMinMaxValue' -Ref 'AZR-000224' -Type '.json' -If { (HasTemplateParameters) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.ParameterMinMaxValue' -Ref 'AZR-000224' -Type '.json' -If { (HasTemplateParameters) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Min-And-Max-Value-Are-Numbers.test.ps1
 
     # Get parameters with either minValue or maxValue
@@ -172,7 +172,7 @@ Rule 'Azure.Template.ParameterMinMaxValue' -Ref 'AZR-000224' -Type '.json' -If {
 }
 
 # Synopsis: Use default deployment detail level for nested deployments.
-Rule 'Azure.Template.DebugDeployment' -Ref 'AZR-000225' -Type '.json' -If { (HasTemplateResources) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.DebugDeployment' -Ref 'AZR-000225' -Type '.json' -If { (HasTemplateResources) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://github.com/Azure/arm-ttk/blob/master/arm-ttk/testcases/deploymentTemplate/Deployment-Resources-Must-Not-Be-Debug.test.ps1
 
     # Get deployments
@@ -188,7 +188,7 @@ Rule 'Azure.Template.DebugDeployment' -Ref 'AZR-000225' -Type '.json' -If { (Has
 }
 
 # Synopsis: Set the parameter default value to a value of the same type.
-Rule 'Azure.Template.ParameterDataTypes' -Ref 'AZR-000226' -Type '.json' -If { (HasTemplateParameters) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; } {
+Rule 'Azure.Template.ParameterDataTypes' -Ref 'AZR-000226' -Type '.json' -If { (HasTemplateParameters) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContent($TargetObject)[0];
     $parameters = @($jsonObject.parameters.PSObject.Properties);
     if ($parameters.Length -eq 0) {
@@ -232,12 +232,12 @@ Rule 'Azure.Template.ParameterDataTypes' -Ref 'AZR-000226' -Type '.json' -If { (
 }
 
 # Synopsis: Set the parameter value to a value that matches the specified strong type.
-Rule 'Azure.Template.ParameterStrongType' -Ref 'AZR-000227' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Template.ParameterStrongType' -Ref 'AZR-000227' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ParameterStrongType'));
 }
 
 # Synopsis: Template expressions should not exceed the maximum length.
-Rule 'Azure.Template.ExpressionLength' -Ref 'AZR-000228' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Template.ExpressionLength' -Ref 'AZR-000228' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ExpressionLength'));
 }
 
@@ -246,20 +246,20 @@ Rule 'Azure.Template.ExpressionLength' -Ref 'AZR-000228' -Type 'Microsoft.Resour
 #region Parameters
 
 # Synopsis: Use ARM parameter file structure.
-Rule 'Azure.Template.ParameterFile' -Ref 'AZR-000229' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Template.ParameterFile' -Ref 'AZR-000229' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $Assert.HasFields($jsonObject, @('$schema', 'contentVersion', 'parameters'));
     $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters';
 }
 
 # Synopsis: Use a Azure template parameter schema with the https scheme.
-Rule 'Azure.Template.ParameterScheme' -Ref 'AZR-000230' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.Template.ParameterScheme' -Ref 'AZR-000230' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $Assert.StartsWith($jsonObject, '$schema', 'https://');
 }
 
 # Synopsis: Configure a metadata link for each parameter file.
-Rule 'Azure.Template.MetadataLink' -Ref 'AZR-000231' -Type '.json' -If { $Configuration.AZURE_PARAMETER_FILE_METADATA_LINK -eq $True -and (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09' } {
+Rule 'Azure.Template.MetadataLink' -Ref 'AZR-000231' -Type '.json' -If { $Configuration.AZURE_PARAMETER_FILE_METADATA_LINK -eq $True -and (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $field = $Assert.HasFieldValue($jsonObject, 'metadata.template');
     if (!$field.Result) {
@@ -271,7 +271,7 @@ Rule 'Azure.Template.MetadataLink' -Ref 'AZR-000231' -Type '.json' -If { $Config
 }
 
 # Synopsis: Specify a value for each parameter in template parameter files.
-Rule 'Azure.Template.ParameterValue' -Ref 'AZR-000232' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.Template.ParameterValue' -Ref 'AZR-000232' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object {
         $_.MemberType -eq 'NoteProperty'
@@ -290,7 +290,7 @@ Rule 'Azure.Template.ParameterValue' -Ref 'AZR-000232' -Type '.json' -If { (IsPa
 }
 
 # Synopsis: Use a valid secret reference within parameter files.
-Rule 'Azure.Template.ValidSecretRef' -Ref 'AZR-000233' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; } {
+Rule 'Azure.Template.ValidSecretRef' -Ref 'AZR-000233' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object {
         $_.MemberType -eq 'NoteProperty' -and $Assert.HasField($_.Value, 'reference').Result
@@ -305,7 +305,7 @@ Rule 'Azure.Template.ValidSecretRef' -Ref 'AZR-000233' -Type '.json' -If { (IsPa
 }
 
 # Synopsis: Use comments for each resource in ARM template to communicate purpose.
-Rule 'Azure.Template.UseComments' -Ref 'AZR-000234' -Level Information -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Template.UseComments' -Ref 'AZR-000234' -Level Information -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $resources = @(GetTemplateResources | Where-Object { $Assert.NullOrEmpty($_, 'comments').Result });
 
     $Assert.Count($resources, '.', 0).Reason(
@@ -316,7 +316,7 @@ Rule 'Azure.Template.UseComments' -Ref 'AZR-000234' -Level Information -Type '.j
 }
 
 # Synopsis: Use descriptions for each resource in generated template(bicep, psarm, AzOps) to communicate purpose.
-Rule 'Azure.Template.UseDescriptions' -Ref 'AZR-000235' -Level Information -Type '.json' -If { (IsTemplateFile) -and (IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Template.UseDescriptions' -Ref 'AZR-000235' -Level Information -Type '.json' -If { (IsTemplateFile) -and (IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $resources = @(GetTemplateResources | Where-Object { $Assert.NullOrEmpty($_, 'metadata.description').Result });
 
     $Assert.Count($resources, '.', 0).Reason(

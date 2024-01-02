@@ -18,7 +18,7 @@ Rule 'Azure.Automation.EncryptVariables' -Ref 'AZR-000086' -Type 'Microsoft.Auto
 }
 
 # Synopsis: Ensure webhook expiry is not longer than one year
-Rule 'Azure.Automation.WebHookExpiry' -Ref 'AZR-000087' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.Automation.WebHookExpiry' -Ref 'AZR-000087' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $webhooks = GetSubResources -ResourceType 'Microsoft.Automation/automationAccounts/webhooks';
     if ($webhooks.Length -eq 0) {
         return $Assert.Pass();
@@ -47,7 +47,7 @@ Rule 'Azure.Automation.AuditLogs' -Ref 'AZR-000088' -Type 'Microsoft.Automation/
 }
 
 # Synopsis: Ensure automation account platform diagnostic logs are enabled.
-Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; } {
+Rule 'Azure.Automation.PlatformLogs' -Ref 'AZR-000089' -Type 'Microsoft.Automation/automationAccounts' -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $configurationLogCategoriesList = $Configuration.GetStringValues('AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST');
 
     if ($configurationLogCategoriesList.Length -eq 0) {

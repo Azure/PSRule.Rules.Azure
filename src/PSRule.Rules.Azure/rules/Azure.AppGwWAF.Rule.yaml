@@ -15,8 +15,9 @@ metadata:
   name: Azure.AppGwWAF.Enabled
   ref: AZR-000309
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
@@ -34,8 +35,9 @@ metadata:
   name: Azure.AppGwWAF.PreventionMode
   ref: AZR-000302
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
@@ -54,8 +56,9 @@ metadata:
   name: Azure.AppGwWAF.Exclusions
   ref: AZR-000303
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
@@ -76,8 +79,9 @@ metadata:
   name: Azure.AppGwWAF.RuleGroups
   ref: AZR-000304
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
