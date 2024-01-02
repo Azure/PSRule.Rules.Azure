@@ -51,7 +51,7 @@ jobs:
           sarif_file: reports/ps-rule-results.sarif
 
       - name: Upload results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: PSRule-Sarif
@@ -82,7 +82,7 @@ jobs:
           sarif_file: devskim-results.sarif
 
       - name: Upload results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: DevSkim-Sarif
@@ -114,7 +114,7 @@ jobs:
         id: codeql-analyze
 
       - name: Upload results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: CodeQL-Sarif
