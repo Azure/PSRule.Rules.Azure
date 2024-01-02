@@ -20,7 +20,6 @@ Rule 'Azure.VNG.VPNAvailabilityZoneSKU' -Ref 'AZR-000272' -Type 'Microsoft.Netwo
 }
 
 # Synopsis: Use availability zone SKU for virtual network gateways deployed with ExpressRoute gateway type
-    Azure.WAF/pillar: Security
 Rule 'Azure.VNG.ERAvailabilityZoneSKU' -Ref 'AZR-000273' -Type 'Microsoft.Network/virtualNetworkGateways' -With 'Azure.VNG.ERGateway' -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $erAvailabilityZoneSKUs = @('ErGw1AZ', 'ErGw2AZ', 'ErGw3AZ');
     $Assert.In($TargetObject, 'Properties.sku.name', $erAvailabilityZoneSKUs).
