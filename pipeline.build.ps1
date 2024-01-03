@@ -409,7 +409,7 @@ task BuildRuleDocs Build, Dependencies, {
             Recommendation = $_.Info.Recommendation
             Pillar = $_.Tag.'Azure.WAF/pillar'
             Control = $_.Tag.'Azure.MCSB.v1/control'
-            Source = "https://github.com/Azure/PSRule.Rules.Azure/blob/main/src/PSRule.Rules.Azure/rules/$(($_.Source.Path -split '/', '\')[-1])"
+            Source = "https://github.com/Azure/PSRule.Rules.Azure/blob/main/src/PSRule.Rules.Azure/rules/$(($_.Source.Path -split @('/', '\'))[-1])"
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/es/rules/metadata.json -Force;
