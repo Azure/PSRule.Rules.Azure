@@ -119,7 +119,8 @@
     "VNET",
     "VNETs",
     "webhook",
-    "webhooks"
+    "webhooks",
+    "xunit"
   ],
   "cSpell.enabledLanguageIds": [
     "csharp",

@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-09-10
+reviewed: 2024-01-02
 severity: Critical
 pillar: Security
-category: Network segmentation
+category: SE:06 Network controls
 resource: Virtual Network
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.UseNSGs/
 ---
@@ -146,13 +146,31 @@ $nsg = Get-AzNetworkSecurityGroup -Name '<nsg_name>' -ResourceGroupName '<resour
 Set-AzVirtualNetworkSubnetConfig -Name '<subnet>' -VirtualNetwork $vnet -AddressPrefix '10.0.1.0/24' -NetworkSecurityGroup $nsg
 ```
 
+## NOTES
+
+If you identify a false postive for an Azure service that does not support NSGs,
+please [open an issue](https://github.com/Azure/PSRule.Rules.Azure/issues/new) to help us improve this rule.
+
+To exclude subnets that are specific to your environment, use the `AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG` configuration option.
+Any subnet names specified by this option will be ignored by this rule.
+
+For example:
+
+```yaml
+configuration:
+  AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG:
+  - subnet-1
+  - subnet-2
+```
+
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/well-architected/security/design-network-segmentation)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [Network Security Best Practices](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [Azure Firewall FAQ](https://learn.microsoft.com/azure/firewall/firewall-faq#are-network-security-groups--nsgs--supported-on-the-azurefirewallsubnet)
 - [Forced tunneling configuration](https://learn.microsoft.com/azure/firewall/forced-tunneling#forced-tunneling-configuration)
 - [Azure Route Server FAQ](https://learn.microsoft.com/azure/route-server/route-server-faq#can-i-associate-a-network-security-group-nsg-to-the-routeserversubnet)
 - [Azure Dedicated HSM networking](https://learn.microsoft.com/azure/dedicated-hsm/networking#subnets)
+- [NS-1: Establish network segmentation boundaries](https://learn.microsoft.com/security/benchmark/azure/baselines/virtual-network-security-baseline#ns-1-establish-network-segmentation-boundaries)
 - [Azure VNET deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks?pivots=deployment-language-bicep)
 - [Azure NSG deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)
