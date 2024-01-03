@@ -7,6 +7,9 @@ author: BernieWhite
 PSRule for Azure include several rules that can be configured.
 Setting these values overrides the default configuration with organization specific values.
 
+To use a configuration option, you **must** use the minimum version specified.
+Earlier versions of PSRule for Azure will ignore the configuration option.
+
 !!! Tip
     Each of these configuration options are set within the `ps-rule.yaml` file.
     To learn how to set configuration options see [Configuring options][1].
@@ -15,21 +18,22 @@ Setting these values overrides the default configuration with organization speci
 
 ### AZURE_AKS_CLUSTER_MINIMUM_VERSION
 
-:octicons-milestone-24: v1.12.0
+<!-- module:version v1.12.0 -->
+<!-- module:rule Azure.AKS.Version -->
 
 This configuration option determines the minimum version of Kubernetes for AKS clusters and node pools.
 Rules that check the Kubernetes version fail when the version is older than the version specified.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_AKS_CLUSTER_MINIMUM_VERSION: string # A version string
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option
 configuration:
   AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.27.7
@@ -37,7 +41,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.22.4
 configuration:
   AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.22.4
@@ -45,18 +49,21 @@ configuration:
 
 ### AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE
 
+<!-- module:version v1.7.0 -->
+<!-- module:rule Azure.AKS.CNISubnetSize -->
+
 This configuration option determines the minimum subnet size for Azure AKS CNI.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: integer
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option
 configuration:
   AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 23
@@ -64,7 +71,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option to 26
 configuration:
   AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 26
@@ -95,14 +102,14 @@ The following rules and configuration options are supported:
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: array
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
 configuration:
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
@@ -110,7 +117,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option to Antarctica North and Antarctica South, with zones 1, 2, 3.
 configuration:
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
@@ -145,14 +152,14 @@ This configuration option sets selective platform diagnostic categories to repor
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: array
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option
 configuration:
   AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST:
@@ -166,7 +173,7 @@ configuration:
 Example:
 
 ```yaml
-# YAML: Set the AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to cluster-autoscaler and AllMetrics categories only. 
+# YAML: Set the AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to cluster-autoscaler and AllMetrics categories only.
 configuration:
   AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST:
   - cluster-autoscaler
@@ -179,14 +186,14 @@ This configuration option sets selective platform diagnostic categories to repor
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: array
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option
 configuration:
   AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST:
@@ -198,8 +205,8 @@ configuration:
 
 Example:
 
-```yaml
-# YAML: Set the AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to JobLogs and AllMetrics categories only. 
+```yaml title='ps-rule.yaml'
+# YAML: Set the AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to JobLogs and AllMetrics categories only.
 configuration:
   AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST:
   - JobLogs
@@ -207,6 +214,8 @@ configuration:
 ```
 
 ### Set the minimum MaxPods for a node pool
+
+<!-- module:version v1.0.0 -->
 
 This configuration option determines the minimum allowed max pods setting per node pool.
 When an AKS cluster node pool is created, a `maxPods` option is used to determine the maximum number of pods for each node in the node pool.
@@ -218,14 +227,14 @@ Depending on your workloads it may make sense to change this option:
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   Azure_AKSNodeMinimumMaxPods: integer
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default Azure_AKSNodeMinimumMaxPods configuration option
 configuration:
   Azure_AKSNodeMinimumMaxPods: 50
@@ -233,7 +242,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30
 configuration:
   Azure_AKSNodeMinimumMaxPods: 30
@@ -241,19 +250,22 @@ configuration:
 
 ### AZURE_APIM_MIN_API_VERSION
 
+<!-- module:version v1.22.0 -->
+<!-- module:rule Azure.APIM.MinAPIVersion -->
+
 This configuration option sets the minimum API version used for control plane API calls to API Management instances.
 Configure this option to change the minimum API version, which defaults to `'2021-08-01'`.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_APIM_MIN_API_VERSION: string
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_APIM_MIN_API_VERSION configuration option
 configuration:
   AZURE_APIM_MIN_API_VERSION: '2021-08-01'
@@ -261,7 +273,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to '2021-12-01-preview'
 configuration:
   AZURE_APIM_MIN_API_VERSION: '2021-12-01-preview'
@@ -273,14 +285,14 @@ This configuration specifies whether if external ingress should be enabled or di
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_CONTAINERAPPS_RESTRICT_INGRESS: boolean # An boolean value
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_CONTAINERAPPS_RESTRICT_INGRESS configuration option
 configuration:
   AZURE_CONTAINERAPPS_RESTRICT_INGRESS: false
@@ -288,7 +300,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_CONTAINERAPPS_RESTRICT_INGRESS configuration option to enabled
 configuration:
   AZURE_CONTAINERAPPS_RESTRICT_INGRESS: true
@@ -301,14 +313,14 @@ Configure this option to enable the per account validation, which defaults to `f
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_COSMOS_DEFENDER_PER_ACCOUNT: boolean
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_COSMOS_DEFENDER_PER_ACCOUNT configuration option
 configuration:
   AZURE_COSMOS_DEFENDER_PER_ACCOUNT: false
@@ -316,7 +328,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_COSMOS_DEFENDER_PER_ACCOUNT configuration option to true
 configuration:
   AZURE_COSMOS_DEFENDER_PER_ACCOUNT: true
@@ -324,9 +336,8 @@ configuration:
 
 ### AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES
 
-:octicons-milestone-24: v1.31.1
-
-> Applies to [Azure.Deployment.SecureParameter](../en/rules/Azure.Deployment.SecureParameter.md).
+<!-- module:version v1.31.1 -->
+<!-- module:rule Azure.Deployment.SecureParameter -->
 
 This configuration overrides the default list of parameter names that are considered sensitive.
 By setting this configuration option, any parameters names specified are not considered sensitive.
@@ -335,14 +346,14 @@ By default, `AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES` is not configured.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES: array
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES configuration option
 configuration:
   AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES: []
@@ -350,7 +361,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES configuration option to enabled
 configuration:
   AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES:
@@ -359,23 +370,22 @@ configuration:
 
 ### AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES
 
-:octicons-milestone-24: v1.20.0
-
-> Applies to [Azure.Deployment.AdminUsername](../en/rules/Azure.Deployment.AdminUsername.md).
+<!-- module:version v1.20.0 -->
+<!-- module:rule Azure.Deployment.AdminUsername -->
 
 This configuration identifies potentially sensitive properties that should not use hardcoded values.
 By setting this configuration option, properties with the specified names will generate a failure when a hardcoded value is detected.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES: array
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES configuration option
 configuration:
   AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
@@ -386,7 +396,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES configuration option to enabled
 configuration:
   AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
@@ -398,9 +408,8 @@ configuration:
 
 ### AZURE_RESOURCE_ALLOWED_LOCATIONS
 
-:octicons-milestone-24: v1.30.0
-
-> Applies to [Azure.Resource.AllowedRegions](../en/rules/Azure.Resource.AllowedRegions.md).
+<!-- module:version v1.30.0 -->
+<!-- module:rule Azure.Resource.AllowedRegions -->
 
 This configuration option specifies a list of allowed locations that resources can be deployed to.
 Rules that check the location of Azure resources fail when a resource or resource group is created in a different region.
@@ -409,7 +418,7 @@ By default, `AZURE_RESOURCE_ALLOWED_LOCATIONS` is not configured.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_RESOURCE_ALLOWED_LOCATIONS: array # An array of regions
 ```
@@ -424,7 +433,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_RESOURCE_ALLOWED_LOCATIONS configuration option to Australia East, Australia South East
 configuration:
   AZURE_RESOURCE_ALLOWED_LOCATIONS:
@@ -437,7 +446,7 @@ also consider setting `AZURE_RESOURCE_GROUP` the configuration value to when res
 
 For example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_RESOURCE_GROUP:
     location: australiaeast
@@ -450,7 +459,7 @@ Rules that check certificate lifetime fail when the days remaining before expiry
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   Azure_MinimumCertificateLifetime: integer
 ```
@@ -465,7 +474,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90
 configuration:
   Azure_MinimumCertificateLifetime: 90
@@ -473,7 +482,7 @@ configuration:
 
 ### AZURE_LINUX_OS_OFFERS
 
-:octicons-milestone-24: v1.20.0
+<!-- module:version v1.20.0 -->
 
 This configurations specifies names of offers corresponding to the Linux OS.
 It's mostly intended to be used when analyzing templates that use private Linux offerings.
@@ -481,7 +490,7 @@ Rules that check if a VM or VMSS has Linux OS also validate against the values s
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_LINUX_OS_OFFERS: array # An array of offer names
 ```
@@ -496,7 +505,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_LINUX_OS_OFFERS configuration option to aLinuxOffer, anotherLinuxOffer
 configuration:
   AZURE_LINUX_OS_OFFERS:
@@ -506,7 +515,7 @@ configuration:
 
 ### AZURE_POLICY_IGNORE_LIST
 
-:octicons-milestone-24: v1.21.0
+<!-- module:version v1.21.0 -->
 
 This configuration option configures a custom list policy definitions to ignore when exporting policy to rules.
 In addition to the custom list, a built-in list of policies are ignored.
@@ -519,14 +528,14 @@ Configure this option to ignore policy definitions that:
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_POLICY_IGNORE_LIST: array
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_POLICY_IGNORE_LIST configuration option
 configuration:
   AZURE_POLICY_IGNORE_LIST: []
@@ -534,7 +543,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Add a custom policy definition to ignore
   AZURE_POLICY_IGNORE_LIST:
   - '/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9'
@@ -550,14 +559,14 @@ This configuration option will be ignored when `-Prefix` is used with `Export-Az
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_POLICY_RULE_PREFIX: string
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_POLICY_RULE_PREFIX configuration option
 configuration:
   AZURE_POLICY_RULE_PREFIX: Azure
@@ -565,7 +574,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Override the prefix of exported policy rules
   AZURE_POLICY_RULE_PREFIX: AzureCustomPrefix
 ```
@@ -576,14 +585,14 @@ This configuration option determines the maximum number of days in the future fo
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_POLICY_WAIVER_MAX_EXPIRY: integer
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option
 configuration:
   AZURE_POLICY_WAIVER_MAX_EXPIRY: 366
@@ -591,7 +600,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90
 configuration:
   AZURE_POLICY_WAIVER_MAX_EXPIRY: 90
@@ -599,14 +608,15 @@ configuration:
 
 ### AZURE_STORAGE_DEFENDER_PER_ACCOUNT
 
-:octicons-milestone-24: v1.27.0
+<!-- module:version v1.27.0 -->
+<!-- module:rule Azure.Storage.DefenderCloud -->
 
 This configuration option enables validation for that each storage account is associated with a Microsoft Defender for Storage resource level plan.
 Configure this option to enable the per account validation, which defaults to `false`.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_STORAGE_DEFENDER_PER_ACCOUNT: boolean
 ```
@@ -621,7 +631,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_STORAGE_DEFENDER_PER_ACCOUNT configuration option to true
 configuration:
   AZURE_STORAGE_DEFENDER_PER_ACCOUNT: true
@@ -629,9 +639,8 @@ configuration:
 
 ### AZURE_VNET_DNS_WITH_IDENTITY
 
-:octicons-milestone-24: v1.30.0
-
-> Applies to [Azure.VNET.LocalDNS](../en/rules/Azure.VNET.LocalDNS.md).
+<!-- module:version v1.30.0 -->
+<!-- module:rule Azure.VNET.LocalDNS -->
 
 Set this configuration option to `true` when DNS is deployed within the Identity subscription to avoid false positives.
 
@@ -645,14 +654,14 @@ By default, this configuration option is set to `false`.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_VNET_DNS_WITH_IDENTITY: boolean # An boolean value
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_VNET_DNS_WITH_IDENTITY configuration option
 configuration:
   AZURE_VNET_DNS_WITH_IDENTITY: false
@@ -660,7 +669,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_VNET_DNS_WITH_IDENTITY configuration option to enabled
 configuration:
   AZURE_VNET_DNS_WITH_IDENTITY: true
@@ -668,9 +677,8 @@ configuration:
 
 ### AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG
 
-:octicons-milestone-24: v1.33.0
-
-> Applies to [Azure.VNET.UseNSGs](../en/rules/Azure.VNET.UseNSGs.md).
+<!-- module:version v1.33.0 -->
+<!-- module:rule Azure.VNET.UseNSGs -->
 
 This configuration option excludes subnets from requiring a Network Security Group (NSG).
 You can use this configuration option to exclude subnets that are specific to your environment.
@@ -678,14 +686,14 @@ To configure this option, specify a list of subnet names to exclude.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG: array
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG configuration option
 configuration:
   AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG: []
@@ -693,8 +701,8 @@ configuration:
 
 Example:
 
-```yaml
-# YAML: Set the AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG configuration option with two user defined subnets.
+```yaml title='ps-rule.yaml'
+# YAML: Set the AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG configuration option with two customs subnets.
 configuration:
   AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG:
   - subnet-1
