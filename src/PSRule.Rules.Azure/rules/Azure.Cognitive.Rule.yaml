@@ -40,13 +40,17 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_09
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'IM-3' ]
     Azure.Policy/id: /providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418
 spec:
   type:
   - Microsoft.CognitiveServices/accounts
+  where:
+    field: kind
+    in:
+    - TextAnalytics
   condition:
     field: Identity.Type
     in:
