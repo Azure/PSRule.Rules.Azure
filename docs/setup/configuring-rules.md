@@ -665,3 +665,38 @@ Example:
 configuration:
   AZURE_VNET_DNS_WITH_IDENTITY: true
 ```
+
+### AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG
+
+:octicons-milestone-24: v1.33.0
+
+> Applies to [Azure.VNET.UseNSGs](../en/rules/Azure.VNET.UseNSGs.md).
+
+This configuration option excludes subnets from requiring a Network Security Group (NSG).
+You can use this configuration option to exclude subnets that are specific to your environment.
+To configure this option, specify a list of subnet names to exclude.
+
+Syntax:
+
+```yaml
+configuration:
+  AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG: array
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG configuration option
+configuration:
+  AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG: []
+```
+
+Example:
+
+```yaml
+# YAML: Set the AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG configuration option with two user defined subnets.
+configuration:
+  AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG:
+  - subnet-1
+  - subnet-2
+```

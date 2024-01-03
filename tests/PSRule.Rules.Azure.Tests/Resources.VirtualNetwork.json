@@ -761,6 +761,46 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-G",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-G",
+    "Location": "region",
+    "ResourceName": "vnet-G",
+    "Name": "vnet-G",
+    "Properties": {
+      "addressSpace": {
+        "addressPrefixes": [
+          "10.6.0.0/24"
+        ]
+      },
+      "dhcpOptions": {
+        "dnsServers": [
+          "10.99.0.36",
+          "10.99.0.37"
+        ]
+      },
+      "virtualNetworkPeerings": [],
+      "enableDdosProtection": false,
+      "enableVmProtection": false,
+      "subnets": [
+        {
+          "name": "subnet-ZZ",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-G/subnets/subnet-ZZ",
+          "properties": {
+            "addressPrefix": "10.6.0.32/28",
+            "serviceEndpoints": [],
+            "delegations": []
+          },
+          "type": "Microsoft.Network/virtualNetworks/subnets"
+        }
+      ]
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/virtualNetworks",
+    "ResourceType": "Microsoft.Network/virtualNetworks",
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A",
     "Location": "region",

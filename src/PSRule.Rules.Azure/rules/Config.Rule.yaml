@@ -25,14 +25,21 @@ spec:
       subscriptionId: [ 'subscriptionId' ]
       resourceGroupName: [ 'resourceGroupName' ]
   configuration:
+    # Enable expansion from .json files.
     AZURE_PARAMETER_FILE_EXPANSION: false
     AZURE_PARAMETER_FILE_METADATA_LINK: false
+
+    # Enable expansion from .bicep files.
     AZURE_BICEP_FILE_EXPANSION: false
+
+    # Enable expansion from .bicepparam files.
     AZURE_BICEP_PARAMS_FILE_EXPANSION: false
+
+    # Check for a minimum version of the Bicep CLI.
     AZURE_BICEP_MINIMUM_VERSION: '0.4.451'
     AZURE_BICEP_CHECK_TOOL: false
 
-    # Configure minimum AKS cluster version
+    # Configure minimum AKS cluster version.
     AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.27.7'
 
     AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
@@ -42,11 +49,14 @@ spec:
 
     AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES: []
 
-    # Configure Container Apps external ingress
+    # Configure Container Apps external ingress.
     AZURE_CONTAINERAPPS_RESTRICT_INGRESS: false
 
-    # Configure DNS is within the identity subscription
+    # Configure DNS is within the identity subscription.
     AZURE_VNET_DNS_WITH_IDENTITY: false
+
+    # Exclude subnets by name from requiring and NSG.
+    AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG: []
 
   convention:
     include:
