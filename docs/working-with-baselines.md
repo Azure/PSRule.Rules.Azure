@@ -89,7 +89,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
       uses: microsoft/ps-rule@v2.9.0
       with:
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2023_09'
+        baseline: 'Azure.GA_2023_12'
     ```
 
 === "Azure Pipelines"
@@ -102,7 +102,7 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
       displayName: Analyze Azure template files
       inputs:
         modules: 'PSRule.Rules.Azure'
-        baseline: 'Azure.GA_2023_09'
+        baseline: 'Azure.GA_2023_12'
     ```
 
 === "PowerShell"
@@ -110,11 +110,11 @@ See [reference][1] for a list baselines shipped with PSRule for Azure.
     Update your PowerShell command-line with `-Baseline <name_of_baseline>`.
 
     ```powershell title="With Assert-PSRule"
-    Assert-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2023_09'
+    Assert-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2023_12'
     ```
 
     ```powershell title="With Invoke-PSRule"
-    Invoke-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2023_09'
+    Invoke-PSRule -Format File -InputPath '.' -Module 'PSRule.Rules.Azure' -Baseline 'Azure.GA_2023_12'
     ```
 
   [1]: en/baselines/Azure.All.md
@@ -127,7 +127,7 @@ To create your own baselines see the PSRule help topic [about_PSRule_Baseline][2
 
 ## Including custom rules
 
-:octicons-milestone-24: v1.8.0
+<!-- module:version v1.8.0 -->
 
 The quarterly baselines shipped with PSRule for Azure target a subset of rules for GA Azure features.
 When you specify a baseline, custom rules you create and store in `.ps-rule/` will be ignored by default.
