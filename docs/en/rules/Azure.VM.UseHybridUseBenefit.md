@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-01-03
 severity: Awareness
 pillar: Cost Optimization
-category: Pricing and billing model
+category: CO:05 Rate optimization
 resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.UseHybridUseBenefit/
 ---
@@ -14,11 +15,31 @@ Use Azure Hybrid Benefit for applicable virtual machine (VM) workloads.
 
 ## DESCRIPTION
 
-Azure Hybrid Benefit is a licensing benefit that helps you to reduce costs of running virtual machine (VM) workloads.
+The running cost of Virtual machine (VM) workloads in Azure is composed of several components, including:
+
+- Compute usage for the VM size and image billed per second of run time, which may include:
+  - Base compute rate for the VM size.
+  - Software included on the VM image billed per second of run time, such as Windows Server or SQL Server.
+- Storage usage for the VM disks.
+- Network usage for data transfer in and out of the VM.
+- Usage of other supporting Azure resources, such as load balancers, public IP addresses, or log ingestion.
+- Licensing costs for other software installed on the VM.
+
+Azure Hybrid Benefit is a licensing benefit that helps you to reduce your overall cost of ownership.
+With Azure Hybrid Benefit you to use your existing on-premises licenses to pay a reduced rate on Azure.
+
+When Azure Hybrid Benefit enabled on supported VM images:
+
+- The billing rate for the VM is adjusted to the base compute rate.
+- You must separately have eligible licenses, such as Windows Server or SQL Server because Azure does not include these anymore.
+
+For additional information on Azure Hybrid Benefit, see the [Azure Hybrid Benefit FAQ][1].
+
+  [1]: https://azure.microsoft.com/pricing/hybrid-benefit/#faq
 
 ## RECOMMENDATION
 
-Consider using Azure Hybrid Benefit for eligible workloads.
+Consider using Azure Hybrid Benefit for eligible virtual machine (VM) workloads.
 
 ## EXAMPLES
 
@@ -34,44 +55,50 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Compute/virtualMachines",
-    "apiVersion": "2021-07-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "hardwareProfile": {
-            "vmSize": "Standard_D2s_v3"
-        },
-        "osProfile": {
-            "computerName": "[parameters('name')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]"
-        },
-        "storageProfile": {
-            "imageReference": {
-                "publisher": "MicrosoftWindowsServer",
-                "offer": "WindowsServer",
-                "sku": "[parameters('sku')]",
-                "version": "latest"
-            },
-            "osDisk": {
-                "name": "[format('{0}-disk0', parameters('name'))]",
-                "caching": "ReadWrite",
-                "createOption": "FromImage"
-            }
-        },
-        "licenseType": "Windows_Server",
-        "networkProfile": {
-            "networkInterfaces": [
-                {
-                    "id": "[resourceId('Microsoft.Network/networkInterfaces', format('{0}-nic0', parameters('name')))]"
-                }
-            ]
-        }
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2023-09-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "zones": [
+    "1"
+  ],
+  "properties": {
+    "hardwareProfile": {
+      "vmSize": "Standard_D2s_v3"
     },
-    "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', format('{0}-nic0', parameters('name')))]"
-    ]
+    "osProfile": {
+      "computerName": "[parameters('name')]",
+      "adminUsername": "[parameters('adminUsername')]",
+      "adminPassword": "[parameters('adminPassword')]"
+    },
+    "storageProfile": {
+      "imageReference": {
+        "publisher": "MicrosoftWindowsServer",
+        "offer": "WindowsServer",
+        "sku": "[parameters('sku')]",
+        "version": "latest"
+      },
+      "osDisk": {
+        "name": "[format('{0}-disk0', parameters('name'))]",
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "managedDisk": {
+          "storageAccountType": "Premium_LRS"
+        }
+      }
+    },
+    "licenseType": "Windows_Server",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
+        }
+      ]
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
+  ]
 }
 ```
 
@@ -86,9 +113,12 @@ To deploy VMs that pass this rule:
 For example:
 
 ```bicep
-resource vm 'Microsoft.Compute/virtualMachines@2021-07-01' = {
+resource vm_with_benefit 'Microsoft.Compute/virtualMachines@2023-09-01' = {
   name: name
   location: location
+  zones: [
+    '1'
+  ]
   properties: {
     hardwareProfile: {
       vmSize: 'Standard_D2s_v3'
@@ -109,6 +139,9 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-07-01' = {
         name: '${name}-disk0'
         caching: 'ReadWrite'
         createOption: 'FromImage'
+        managedDisk: {
+          storageAccountType: 'Premium_LRS'
+        }
       }
     }
     licenseType: 'Windows_Server'
@@ -129,8 +162,26 @@ resource vm 'Microsoft.Compute/virtualMachines@2021-07-01' = {
 az vm update -n '<name>' -g '<resource_group>' --set licenseType=Windows_Server
 ```
 
+### NOTES
+
+This rule is not processed by default.
+To enable this rule, set the `AZURE_VM_USE_AZURE_HYBRID_BENEFIT` configuration value to `true`.
+
+For example:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_VM_USE_AZURE_HYBRID_BENEFIT: true
+```
+
+The following limitations currently apply:
+
+- This rule only applies to Azure Hybrid Benefit for Windows VMs.
+  Linux VM images are ignored.
+
 ## LINKS
 
-- [Design review checklist for Cost Optimization](https://learn.microsoft.com/azure/well-architected/cost-optimization/checklist)
-- [Azure Hybrid Benefit FAQ](https://azure.microsoft.com/pricing/hybrid-benefit/faq/)
+- [CO:05 Rate optimization](https://learn.microsoft.com/azure/well-architected/cost-optimization/get-best-rates)
+- [Azure Hybrid Benefit FAQ](https://azure.microsoft.com/pricing/hybrid-benefit/#faq)
 - [Explore Azure Hybrid Benefit for Windows VMs](https://learn.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)

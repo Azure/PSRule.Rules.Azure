@@ -52,6 +52,9 @@ spec:
     # Configure Container Apps external ingress.
     AZURE_CONTAINERAPPS_RESTRICT_INGRESS: false
 
+    # Check supported VMs use Azure Hybrid Benefit.
+    AZURE_VM_USE_AZURE_HYBRID_BENEFIT: false
+
     # Configure DNS is within the identity subscription.
     AZURE_VNET_DNS_WITH_IDENTITY: false
 

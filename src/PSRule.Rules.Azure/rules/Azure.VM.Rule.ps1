@@ -44,7 +44,7 @@ Rule 'Azure.VM.DiskCaching' -Ref 'AZR-000242' -Type 'Microsoft.Compute/virtualMa
 }
 
 # Synopsis: Use Hybrid Use Benefit
-Rule 'Azure.VM.UseHybridUseBenefit' -Ref 'AZR-000243' -If { SupportsHybridUse } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Cost Optimization'; } {
+Rule 'Azure.VM.UseHybridUseBenefit' -Ref 'AZR-000243' -If { (SupportsHybridUse) -and $Configuration.GetBoolOrDefault('AZURE_VM_USE_AZURE_HYBRID_BENEFIT', $False) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Cost Optimization'; } {
     $Assert.HasFieldValue($TargetObject, 'properties.licenseType', 'Windows_Server');
 }
 

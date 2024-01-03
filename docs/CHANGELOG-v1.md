@@ -34,14 +34,21 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.32.1:
 
+- Updated rules:
+  - Cognitive Services:
+    - Relaxed `Azure.Cognitive.ManagedIdentity` to configurations that require managed identities by @BernieWhite.
+      [#2559](https://github.com/Azure/PSRule.Rules.Azure/issues/2559)
+  - Virtual Machine:
+    - Checks for Azure Hybrid Benefit `Azure.VM.UseHybridUseBenefit` are not enabled by default by @BernieWhite.
+      [#2493](https://github.com/Azure/PSRule.Rules.Azure/issues/2493)
+      - To enable, set the `AZURE_VM_USE_HYBRID_USE_BENEFIT` option to `true`.
+  - Virtual Network:
+    - Added option for excluding subnets to `Azure.VNET.UseNSGs` by @BernieWhite.
+      [#2572](https://github.com/Azure/PSRule.Rules.Azure/issues/2572)
+      - To add a subnet exclusion, set the `AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG` option.
 - General improvements:
   - Quality updates to rules and documentation by @BernieWhite.
     [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
-  - Added option for excluding subnets to `Azure.VNET.UseNSGs` by @BernieWhite.
-    [#2572](https://github.com/Azure/PSRule.Rules.Azure/issues/2572)
-    - To add a subnet exclusion, set the `AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG` option.
-  - Relax `Azure.Cognitive.ManagedIdentity` to required configurations by @BernieWhite.
-    [#2559](https://github.com/Azure/PSRule.Rules.Azure/issues/2559)
 - Engineering:
   - Bump xunit to v2.6.4.
     [#2618](https://github.com/Azure/PSRule.Rules.Azure/pull/2618)
