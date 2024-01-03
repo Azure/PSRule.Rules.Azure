@@ -39,7 +39,7 @@ What's changed since v1.32.1:
     [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
   - Added option for excluding subnets to `Azure.VNET.UseNSGs` by @BernieWhite.
     [#2572](https://github.com/Azure/PSRule.Rules.Azure/issues/2572)
-    - To add a subnet exlcusion, set the `AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG` option.
+    - To add a subnet exclusion, set the `AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG` option.
 - Engineering:
   - Bump xunit to v2.6.4.
     [#2618](https://github.com/Azure/PSRule.Rules.Azure/pull/2618)
