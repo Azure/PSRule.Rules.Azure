@@ -32,10 +32,8 @@ resource account02 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
   sku: {
     name: 'S0'
   }
-  kind: 'CognitiveServices'
-  properties: {
-
-  }
+  kind: 'TextAnalytics'
+  properties: {}
 }
 
 resource account03 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
@@ -47,7 +45,7 @@ resource account03 'Microsoft.CognitiveServices/accounts@2022-03-01' = {
   sku: {
     name: 'S0'
   }
-  kind: 'CognitiveServices'
+  kind: 'TextAnalytics'
   properties: {
     networkAcls: {
       defaultAction: 'Deny'

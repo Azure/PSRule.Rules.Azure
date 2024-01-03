@@ -1,576 +1,570 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.CognitiveServices/accounts/luis-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.CognitiveServices/accounts/luis-A",
-        "Identity": null,
-        "Kind": "LUIS",
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "luis-A",
-        "Name": "luis-A",
-        "Plan": null,
-        "Properties": {
-            "endpoint": "https://luis-A.cognitiveservices.azure.com/",
-            "customSubDomainName": "luis-A",
-            "networkAcls": {
-                "defaultAction": "Allow",
-                "virtualNetworkRules": [],
-                "ipRules": []
-            },
-            "privateEndpointConnections": [],
-            "publicNetworkAccess": "Enabled",
-            "capabilities": [
-                {
-                    "name": "VirtualNetworks"
-                },
-                {
-                    "name": "Container",
-                    "value": "LUIS.LUIS"
-                }
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.CognitiveServices/accounts/luis-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.CognitiveServices/accounts/luis-A",
+    "Identity": null,
+    "Kind": "LUIS",
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "luis-A",
+    "Name": "luis-A",
+    "Plan": null,
+    "Properties": {
+      "endpoint": "https://luis-A.cognitiveservices.azure.com/",
+      "customSubDomainName": "luis-A",
+      "networkAcls": {
+        "defaultAction": "Allow",
+        "virtualNetworkRules": [],
+        "ipRules": []
+      },
+      "privateEndpointConnections": [],
+      "publicNetworkAccess": "Enabled",
+      "capabilities": [
+        {
+          "name": "VirtualNetworks"
+        },
+        {
+          "name": "Container",
+          "value": "LUIS.LUIS"
+        }
+      ]
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.CognitiveServices/accounts",
+    "ResourceType": "Microsoft.CognitiveServices/accounts",
+    "Sku": {
+      "Name": "F0",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.CognitiveServices/accounts/luis-A-Authoring",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.CognitiveServices/accounts/luis-A-Authoring",
+    "Identity": null,
+    "Kind": "LUIS.Authoring",
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "luis-A-Authoring",
+    "Name": "luis-A-Authoring",
+    "Plan": null,
+    "Properties": {
+      "endpoint": "https://luis-A-authoring.cognitiveservices.azure.com/",
+      "customSubDomainName": "luis-A-authoring",
+      "privateEndpointConnections": [],
+      "publicNetworkAccess": "Enabled",
+      "capabilities": [
+        {
+          "name": "VirtualNetworks"
+        }
+      ]
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.CognitiveServices/accounts",
+    "ResourceType": "Microsoft.CognitiveServices/accounts",
+    "Sku": {
+      "Name": "F0",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.CognitiveServices/accounts/textanalytics-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.CognitiveServices/accounts/textanalytics-A",
+    "Kind": "TextAnalytics",
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "textanalytics-A",
+    "Name": "textanalytics-A",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "endpoint": "https://textanalytics-A.cognitiveservices.azure.com/",
+      "provisioningState": "Succeeded",
+      "apiProperties": {
+        "qnaAzureSearchEndpointId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Search/searchServices/textanalytics-A-search",
+        "qnaAzureSearchEndpointKey": null
+      },
+      "quotaLimit": {
+        "rules": [
+          {
+            "key": "workflow.endpoint.postcalls",
+            "renewalPeriod": 2592000,
+            "count": 5000,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "/language/:analyze-conversations",
+                "method": "*"
+              }
             ]
+          }
+        ]
+      },
+      "isMigrated": false,
+      "customSubDomainName": "textanalytics-A",
+      "networkAcls": {
+        "defaultAction": "Deny",
+        "virtualNetworkRules": [],
+        "ipRules": []
+      },
+      "privateEndpointConnections": [],
+      "publicNetworkAccess": "Enabled",
+      "capabilities": [
+        {
+          "name": "DynamicThrottling"
         },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.CognitiveServices/accounts",
-        "ResourceType": "Microsoft.CognitiveServices/accounts",
-        "Sku": {
-            "Name": "F0",
-            "Tier": null,
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
+        {
+          "name": "VirtualNetworks"
         },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        {
+          "name": "CustomerManagedKey"
+        },
+        {
+          "name": "CustomerManagedStorage"
+        },
+        {
+          "name": "Container",
+          "value": "TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview"
+        },
+        {
+          "name": "Cloud",
+          "value": "TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis"
+        }
+      ],
+      "endpoints": {
+        "Text Analytics": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "Custom Text Authoring": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "Conversational Language Understanding Authoring": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "ConversationalLURuntime": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "Language": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "Language-2022-05-01": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "QnAMaker": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "turing": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "Turing DeepWrite": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "QuestionAnswering": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "QuestionAnsweringBizQA": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "QuestionAnsweringQnAGen": "https://textanalytics-A.cognitiveservices.azure.com/",
+        "LUIS.Authoring": "https://textanalytics-A.cognitiveservices.azure.com/"
+      }
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.CognitiveServices/accounts/luis-A-Authoring",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.CognitiveServices/accounts/luis-A-Authoring",
-        "Identity": null,
-        "Kind": "LUIS.Authoring",
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "luis-A-Authoring",
-        "Name": "luis-A-Authoring",
-        "Plan": null,
-        "Properties": {
-            "endpoint": "https://luis-A-authoring.cognitiveservices.azure.com/",
-            "customSubDomainName": "luis-A-authoring",
-            "privateEndpointConnections": [],
-            "publicNetworkAccess": "Enabled",
-            "capabilities": [
-                {
-                    "name": "VirtualNetworks"
-                }
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.CognitiveServices/accounts",
+    "ResourceType": "Microsoft.CognitiveServices/accounts",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "F0",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.CognitiveServices/accounts/textanalytics-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.CognitiveServices/accounts/textanalytics-B",
+    "Identity": {
+      "PrincipalId": "00000000-0000-0000-0000-000000000000",
+      "TenantId": "00000000-0000-0000-0000-000000000000",
+      "Type": "SystemAssigned",
+      "UserAssignedIdentities": null
+    },
+    "Kind": "TextAnalytics",
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "textanalytics-B",
+    "Name": "textanalytics-B",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "endpoint": "https://textanalytics-B.cognitiveservices.azure.com/",
+      "provisioningState": "Succeeded",
+      "apiProperties": {
+        "qnaAzureSearchEndpointKey": null
+      },
+      "callRateLimit": {
+        "rules": [
+          {
+            "key": "workflow.endpoint.postcalls",
+            "renewalPeriod": 60,
+            "count": 1000,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "/language/:analyze-conversations",
+                "method": "*"
+              }
             ]
+          },
+          {
+            "key": "textAnalytics.authoring.customtext.getcalls",
+            "renewalPeriod": 60,
+            "count": 100,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/analyze-text/projects/*",
+                "method": "GET"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.unifiedAuthoring.updatecalls",
+            "renewalPeriod": 60,
+            "count": 10,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/analyze-text/projects/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.authoring.customtext.march.getcalls",
+            "renewalPeriod": 60,
+            "count": 100,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/authoring/analyze-text/projects/*",
+                "method": "GET"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.unifiedAuthoring.march.updatecalls",
+            "renewalPeriod": 60,
+            "count": 10,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/authoring/analyze-text/projects/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.authoring.customtext.internal.getcalls",
+            "renewalPeriod": 60,
+            "count": 100,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/analyze-text/internal/projects/*",
+                "method": "GET"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.unifiedAuthoring.internal.updatecalls",
+            "renewalPeriod": 60,
+            "count": 10,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/analyze-text/internal/projects/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.unifiedAuthoring.clu.getCalls",
+            "renewalPeriod": 60,
+            "count": 100,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/analyze-conversations/projects/*",
+                "method": "GET"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.unifiedAuthoring.clu.updateCalls",
+            "renewalPeriod": 60,
+            "count": 10,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/analyze-conversations/projects/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.unifiedAuthoring.clu.march.getCalls",
+            "renewalPeriod": 60,
+            "count": 100,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/authoring/analyze-conversations/projects/*",
+                "method": "GET"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.unifiedAuthoring.clu.march.updateCalls",
+            "renewalPeriod": 60,
+            "count": 10,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/authoring/analyze-conversations/projects/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.unifiedAuthoring.clu.internal.getCalls",
+            "renewalPeriod": 60,
+            "count": 100,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/analyze-conversations/internal/projects/*",
+                "method": "GET"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.unifiedAuthoring.clu.internal.updateCalls",
+            "renewalPeriod": 60,
+            "count": 10,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/analyze-conversations/internal/projects/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.customText",
+            "renewalPeriod": 60,
+            "count": 100,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "text/analytics/v3.1-preview.ct.1/analyze/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.analyze",
+            "renewalPeriod": 60,
+            "count": 300,
+            "dynamicThrottlingEnabled": true,
+            "matchPatterns": [
+              {
+                "path": "text/analytics/v3.1/analyze/*",
+                "method": "*"
+              },
+              {
+                "path": "text/analytics/v3.2-preview.1/analyze/*",
+                "method": "*"
+              },
+              {
+                "path": "text/analytics/v3.2-preview.2/analyze/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.healthcare",
+            "renewalPeriod": 60,
+            "count": 300,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "text/analytics/v3.1/entities/health/*",
+                "method": "*"
+              },
+              {
+                "path": "text/analytics/v3.2-preview.1/health/*",
+                "method": "*"
+              },
+              {
+                "path": "text/analytics/v3.2-preview.2/health/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics",
+            "renewalPeriod": 60,
+            "count": 1000,
+            "dynamicThrottlingEnabled": true,
+            "matchPatterns": [
+              {
+                "path": "text/analytics/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "container.billing",
+            "renewalPeriod": 10,
+            "count": 500,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "billing/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "questionanswering",
+            "renewalPeriod": 60,
+            "count": 600,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "qnamaker/*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "unifiedlanguage.questionanswering",
+            "renewalPeriod": 60,
+            "count": 600,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "language/query-knowledgebases/*",
+                "method": "*"
+              },
+              {
+                "path": "language/:query-*",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "textAnalytics.analyze.internal.autoTagging",
+            "renewalPeriod": 60,
+            "count": 150,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "TextAnalytics/ct-auto-tagging",
+                "method": "*"
+              }
+            ]
+          },
+          {
+            "key": "default",
+            "renewalPeriod": 1,
+            "count": 20,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "*",
+                "method": "*"
+              }
+            ]
+          }
+        ]
+      },
+      "quotaLimit": {
+        "rules": [
+          {
+            "key": "workflow.endpoint.postcalls",
+            "renewalPeriod": 2592000,
+            "count": 100000,
+            "dynamicThrottlingEnabled": false,
+            "matchPatterns": [
+              {
+                "path": "/language/:analyze-conversations",
+                "method": "*"
+              }
+            ]
+          }
+        ]
+      },
+      "isMigrated": false,
+      "customSubDomainName": "textanalytics-B",
+      "networkAcls": {
+        "defaultAction": "Deny",
+        "virtualNetworkRules": [],
+        "ipRules": []
+      },
+      "userOwnedStorage": [
+        {
+          "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage"
+        }
+      ],
+      "privateEndpointConnections": [],
+      "publicNetworkAccess": "Disabled",
+      "disableLocalAuth": true,
+      "capabilities": [
+        {
+          "name": "DynamicThrottling"
         },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.CognitiveServices/accounts",
-        "ResourceType": "Microsoft.CognitiveServices/accounts",
-        "Sku": {
-            "Name": "F0",
-            "Tier": null,
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
+        {
+          "name": "VirtualNetworks"
         },
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        {
+          "name": "CustomerManagedKey"
+        },
+        {
+          "name": "CustomerManagedStorage"
+        },
+        {
+          "name": "Container",
+          "value": "TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview"
+        },
+        {
+          "name": "Cloud",
+          "value": "TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis"
+        }
+      ],
+      "endpoints": {
+        "Text Analytics": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "Custom Text Authoring": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "Conversational Language Understanding Authoring": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "ConversationalLURuntime": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "Language": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "Language-2022-05-01": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "QnAMaker": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "turing": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "Turing DeepWrite": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "QuestionAnswering": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "QuestionAnsweringBizQA": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "QuestionAnsweringQnAGen": "https://textanalytics-B.cognitiveservices.azure.com/",
+        "LUIS.Authoring": "https://textanalytics-B.cognitiveservices.azure.com/"
+      }
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.CognitiveServices/accounts/textanalytics-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.CognitiveServices/accounts/textanalytics-A",
-        "Identity": {
-            "PrincipalId": "00000000-0000-0000-0000-000000000000",
-            "TenantId": "00000000-0000-0000-0000-000000000000",
-            "Type": "SystemAssigned",
-            "UserAssignedIdentities": null
-        },
-        "Kind": "TextAnalytics",
-        "Location": "eastus",
-        "ManagedBy": null,
-        "ResourceName": "textanalytics-A",
-        "Name": "textanalytics-A",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "endpoint": "https://textanalytics-A.cognitiveservices.azure.com/",
-            "provisioningState": "Succeeded",
-            "apiProperties": {
-                "qnaAzureSearchEndpointId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Search/searchServices/textanalytics-A-search",
-                "qnaAzureSearchEndpointKey": null
-            },
-            "quotaLimit": {
-                "rules": [
-                    {
-                        "key": "workflow.endpoint.postcalls",
-                        "renewalPeriod": 2592000,
-                        "count": 5000,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "/language/:analyze-conversations",
-                                "method": "*"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "isMigrated": false,
-            "customSubDomainName": "textanalytics-A",
-            "networkAcls": {
-                "defaultAction": "Deny",
-                "virtualNetworkRules": [],
-                "ipRules": []
-            },
-            "privateEndpointConnections": [],
-            "publicNetworkAccess": "Enabled",
-            "capabilities": [
-                {
-                    "name": "DynamicThrottling"
-                },
-                {
-                    "name": "VirtualNetworks"
-                },
-                {
-                    "name": "CustomerManagedKey"
-                },
-                {
-                    "name": "CustomerManagedStorage"
-                },
-                {
-                    "name": "Container",
-                    "value": "TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview"
-                },
-                {
-                    "name": "Cloud",
-                    "value": "TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis"
-                }
-            ],
-            "endpoints": {
-                "Text Analytics": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "Custom Text Authoring": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "Conversational Language Understanding Authoring": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "ConversationalLURuntime": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "Language": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "Language-2022-05-01": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "QnAMaker": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "turing": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "Turing DeepWrite": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "QuestionAnswering": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "QuestionAnsweringBizQA": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "QuestionAnsweringQnAGen": "https://textanalytics-A.cognitiveservices.azure.com/",
-                "LUIS.Authoring": "https://textanalytics-A.cognitiveservices.azure.com/"
-            }
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.CognitiveServices/accounts",
-        "ResourceType": "Microsoft.CognitiveServices/accounts",
-        "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "F0",
-            "Tier": null,
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.CognitiveServices/accounts",
+    "ResourceType": "Microsoft.CognitiveServices/accounts",
+    "ExtensionResourceType": null,
+    "Sku": {
+      "Name": "S",
+      "Tier": null,
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.CognitiveServices/accounts/textanalytics-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.CognitiveServices/accounts/textanalytics-B",
-        "Identity": {
-            "PrincipalId": "00000000-0000-0000-0000-000000000000",
-            "TenantId": "00000000-0000-0000-0000-000000000000",
-            "Type": "SystemAssigned",
-            "UserAssignedIdentities": null
-        },
-        "Kind": "TextAnalytics",
-        "Location": "eastus",
-        "ManagedBy": null,
-        "ResourceName": "textanalytics-B",
-        "Name": "textanalytics-B",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "endpoint": "https://textanalytics-B.cognitiveservices.azure.com/",
-            "provisioningState": "Succeeded",
-            "apiProperties": {
-                "qnaAzureSearchEndpointKey": null
-            },
-            "callRateLimit": {
-                "rules": [
-                    {
-                        "key": "workflow.endpoint.postcalls",
-                        "renewalPeriod": 60,
-                        "count": 1000,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "/language/:analyze-conversations",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.authoring.customtext.getcalls",
-                        "renewalPeriod": 60,
-                        "count": 100,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/analyze-text/projects/*",
-                                "method": "GET"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.unifiedAuthoring.updatecalls",
-                        "renewalPeriod": 60,
-                        "count": 10,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/analyze-text/projects/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.authoring.customtext.march.getcalls",
-                        "renewalPeriod": 60,
-                        "count": 100,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/authoring/analyze-text/projects/*",
-                                "method": "GET"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.unifiedAuthoring.march.updatecalls",
-                        "renewalPeriod": 60,
-                        "count": 10,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/authoring/analyze-text/projects/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.authoring.customtext.internal.getcalls",
-                        "renewalPeriod": 60,
-                        "count": 100,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/analyze-text/internal/projects/*",
-                                "method": "GET"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.unifiedAuthoring.internal.updatecalls",
-                        "renewalPeriod": 60,
-                        "count": 10,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/analyze-text/internal/projects/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.unifiedAuthoring.clu.getCalls",
-                        "renewalPeriod": 60,
-                        "count": 100,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/analyze-conversations/projects/*",
-                                "method": "GET"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.unifiedAuthoring.clu.updateCalls",
-                        "renewalPeriod": 60,
-                        "count": 10,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/analyze-conversations/projects/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.unifiedAuthoring.clu.march.getCalls",
-                        "renewalPeriod": 60,
-                        "count": 100,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/authoring/analyze-conversations/projects/*",
-                                "method": "GET"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.unifiedAuthoring.clu.march.updateCalls",
-                        "renewalPeriod": 60,
-                        "count": 10,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/authoring/analyze-conversations/projects/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.unifiedAuthoring.clu.internal.getCalls",
-                        "renewalPeriod": 60,
-                        "count": 100,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/analyze-conversations/internal/projects/*",
-                                "method": "GET"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.unifiedAuthoring.clu.internal.updateCalls",
-                        "renewalPeriod": 60,
-                        "count": 10,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/analyze-conversations/internal/projects/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.customText",
-                        "renewalPeriod": 60,
-                        "count": 100,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "text/analytics/v3.1-preview.ct.1/analyze/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.analyze",
-                        "renewalPeriod": 60,
-                        "count": 300,
-                        "dynamicThrottlingEnabled": true,
-                        "matchPatterns": [
-                            {
-                                "path": "text/analytics/v3.1/analyze/*",
-                                "method": "*"
-                            },
-                            {
-                                "path": "text/analytics/v3.2-preview.1/analyze/*",
-                                "method": "*"
-                            },
-                            {
-                                "path": "text/analytics/v3.2-preview.2/analyze/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.healthcare",
-                        "renewalPeriod": 60,
-                        "count": 300,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "text/analytics/v3.1/entities/health/*",
-                                "method": "*"
-                            },
-                            {
-                                "path": "text/analytics/v3.2-preview.1/health/*",
-                                "method": "*"
-                            },
-                            {
-                                "path": "text/analytics/v3.2-preview.2/health/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics",
-                        "renewalPeriod": 60,
-                        "count": 1000,
-                        "dynamicThrottlingEnabled": true,
-                        "matchPatterns": [
-                            {
-                                "path": "text/analytics/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "container.billing",
-                        "renewalPeriod": 10,
-                        "count": 500,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "billing/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "questionanswering",
-                        "renewalPeriod": 60,
-                        "count": 600,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "qnamaker/*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "unifiedlanguage.questionanswering",
-                        "renewalPeriod": 60,
-                        "count": 600,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "language/query-knowledgebases/*",
-                                "method": "*"
-                            },
-                            {
-                                "path": "language/:query-*",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "textAnalytics.analyze.internal.autoTagging",
-                        "renewalPeriod": 60,
-                        "count": 150,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "TextAnalytics/ct-auto-tagging",
-                                "method": "*"
-                            }
-                        ]
-                    },
-                    {
-                        "key": "default",
-                        "renewalPeriod": 1,
-                        "count": 20,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "*",
-                                "method": "*"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "quotaLimit": {
-                "rules": [
-                    {
-                        "key": "workflow.endpoint.postcalls",
-                        "renewalPeriod": 2592000,
-                        "count": 100000,
-                        "dynamicThrottlingEnabled": false,
-                        "matchPatterns": [
-                            {
-                                "path": "/language/:analyze-conversations",
-                                "method": "*"
-                            }
-                        ]
-                    }
-                ]
-            },
-            "isMigrated": false,
-            "customSubDomainName": "textanalytics-B",
-            "networkAcls": {
-                "defaultAction": "Deny",
-                "virtualNetworkRules": [],
-                "ipRules": []
-            },
-            "userOwnedStorage": [
-                {
-                    "resourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Storage/storageAccounts/storage"
-                }
-            ],
-            "privateEndpointConnections": [],
-            "publicNetworkAccess": "Disabled",
-            "disableLocalAuth": true,
-            "capabilities": [
-                {
-                    "name": "DynamicThrottling"
-                },
-                {
-                    "name": "VirtualNetworks"
-                },
-                {
-                    "name": "CustomerManagedKey"
-                },
-                {
-                    "name": "CustomerManagedStorage"
-                },
-                {
-                    "name": "Container",
-                    "value": "TextAnalytics.*,TextAnalytics.Healthcare,TextAnalytics.Keyphrase,TextAnalytics.KeyphraseV2,TextAnalytics.KeyPhraseONNX,TextAnalytics.LanguageFastText,TextAnalytics.Language,TextAnalytics.LanguageV2,TextAnalytics.Sentiment,TextAnalytics.SentimentV2,TextAnalytics.SentimentV3,TextAnalytics.SentimentV3Preview"
-                },
-                {
-                    "name": "Cloud",
-                    "value": "TextAnalytics.Healthcare,TextAnalytics.Analyze,QuestionAnswer.AllApis,LanguageService.QuestionAnsweringApis"
-                }
-            ],
-            "endpoints": {
-                "Text Analytics": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "Custom Text Authoring": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "Conversational Language Understanding Authoring": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "ConversationalLURuntime": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "Language": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "Language-2022-05-01": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "QnAMaker": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "turing": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "Turing DeepWrite": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "QuestionAnswering": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "QuestionAnsweringBizQA": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "QuestionAnsweringQnAGen": "https://textanalytics-B.cognitiveservices.azure.com/",
-                "LUIS.Authoring": "https://textanalytics-B.cognitiveservices.azure.com/"
-            }
-        },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.CognitiveServices/accounts",
-        "ResourceType": "Microsoft.CognitiveServices/accounts",
-        "ExtensionResourceType": null,
-        "Sku": {
-            "Name": "S",
-            "Tier": null,
-            "Size": null,
-            "Family": null,
-            "Model": null,
-            "Capacity": null
-        },
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 ]

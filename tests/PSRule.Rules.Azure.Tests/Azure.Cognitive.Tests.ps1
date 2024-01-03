@@ -33,7 +33,7 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
                 ErrorAction = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.Cognitive.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
         }
 
         It 'Azure.Cognitive.PublicAccess' {
@@ -58,14 +58,20 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'luis-A', 'luis-A-authoring';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'textanalytics-A';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'textanalytics-B';
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'textanalytics-A', 'textanalytics-B';
+            $ruleResult.TargetName | Should -BeIn 'luis-A', 'luis-A-authoring';
         }
 
         It 'Azure.Cognitive.DisableLocalAuth' {
@@ -148,8 +154,14 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'cognitive-01', 'cognitive-03';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'cognitive-03';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'cognitive-01';
         }
 
         It 'Azure.Cognitive.DisableLocalAuth' {

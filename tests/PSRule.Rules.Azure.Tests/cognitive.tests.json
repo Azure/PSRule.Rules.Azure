@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.8.9.13224",
-      "templateHash": "11908813895130022399"
+      "version": "0.24.24.22086",
+      "templateHash": "18405374500797131306"
     }
   },
   "parameters": {
@@ -13,7 +13,7 @@
       "type": "string",
       "defaultValue": "cognitive",
       "metadata": {
-        "description": "The name of the cognitive services account."
+        "description": "The name of the resource."
       }
     },
     "location": {
@@ -53,7 +53,7 @@
       "sku": {
         "name": "S0"
       },
-      "kind": "CognitiveServices",
+      "kind": "TextAnalytics",
       "properties": {}
     },
     {
@@ -67,7 +67,7 @@
       "sku": {
         "name": "S0"
       },
-      "kind": "CognitiveServices",
+      "kind": "TextAnalytics",
       "properties": {
         "networkAcls": {
           "defaultAction": "Deny"
