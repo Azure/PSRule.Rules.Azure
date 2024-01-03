@@ -908,7 +908,14 @@ Describe 'Azure.VM' -Tag 'VM' {
             $parameterPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.Parameters.json';
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMachineTemplate.json;
             Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
-            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+            $invokeParams = @{
+                InputPath = $outputFile
+                Module = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction = 'Stop'
+                Option = (Join-Path -Path $here -ChildPath 'ps-rule-options.yaml')
+            }
+            $result = Invoke-PSRule @invokeParams -Outcome All;
         }
 
         It 'Azure.VM.UseManagedDisks' {
