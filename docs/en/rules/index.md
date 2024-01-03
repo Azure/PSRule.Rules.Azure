@@ -1,6 +1,6 @@
 ---
-generated: True
 title: Reference
+generated: True
 ---
 
 # Reference
@@ -311,7 +311,7 @@ AZR-000287 | [Azure.AKS.EphemeralOSDisk](Azure.AKS.EphemeralOSDisk.md) | AKS clu
 AZR-000288 | [Azure.VMSS.PublicKey](Azure.VMSS.PublicKey.md) | Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities. | GA
 AZR-000289 | [Azure.Storage.ContainerSoftDelete](Azure.Storage.ContainerSoftDelete.md) | Enable container soft delete on Storage Accounts. | GA
 AZR-000290 | [Azure.Defender.Containers](Azure.Defender.Containers.md) | Enable Microsoft Defender for Containers. | GA
-AZR-000291 | [Azure.AppConfig.DisableLocalAuth](Azure.AppConfig.DisableLocalAuth.md) | Authenticate App Configuration clients with Azure AD identities. | GA
+AZR-000291 | [Azure.AppConfig.DisableLocalAuth](Azure.AppConfig.DisableLocalAuth.md) | Authenticate App Configuration clients with Entra ID identities. | GA
 AZR-000292 | [Azure.NSG.AKSRules](Azure.NSG.AKSRules.md) | AKS Network Security Group (NSG) should not have custom rules. | GA
 AZR-000293 | [Azure.Defender.Servers](Azure.Defender.Servers.md) | Enable Microsoft Defender for Servers. | GA
 AZR-000294 | [Azure.Defender.SQL](Azure.Defender.SQL.md) | Enable Microsoft Defender for SQL servers. | GA
@@ -332,7 +332,7 @@ AZR-000308 | [Azure.FrontDoorWAF.RuleGroups](Azure.FrontDoorWAF.RuleGroups.md) |
 AZR-000309 | [Azure.AppGwWAF.Enabled](Azure.AppGwWAF.Enabled.md) | Application Gateway Web Application Firewall (WAF) must be enabled to protect backend resources. | GA
 AZR-000310 | [Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Azure Container Registries should have soft delete policy enabled. | Preview
 AZR-000311 | [Azure.AppConfig.AuditLogs](Azure.AppConfig.AuditLogs.md) | Ensure app configuration store audit diagnostic logs are enabled. | GA
-AZR-000312 | [Azure.AppConfig.GeoReplica](Azure.AppConfig.GeoReplica.md) | Consider replication for app configuration store to ensure resiliency to region outages. | Preview
+AZR-000312 | [Azure.AppConfig.GeoReplica](Azure.AppConfig.GeoReplica.md) | Replicate app configuration store across all points of presence for an application. | GA
 AZR-000313 | [Azure.AppConfig.PurgeProtect](Azure.AppConfig.PurgeProtect.md) | Consider purge protection for app configuration store to ensure store cannot be purged in the retention period. | GA
 AZR-000314 | [Azure.VNET.BastionSubnet](Azure.VNET.BastionSubnet.md) | VNETs with a GatewaySubnet should have an AzureBastionSubnet to allow for out of band remote access to VMs. | GA
 AZR-000315 | [Azure.ServiceBus.MinTLS](Azure.ServiceBus.MinTLS.md) | Enforce namespaces to require that clients send and receive data with TLS 1.2 version. | GA
@@ -397,7 +397,7 @@ AZR-000373 | [Azure.Arc.Kubernetes.Defender](Azure.Arc.Kubernetes.Defender.md) |
 AZR-000374 | [Azure.Arc.Server.MaintenanceConfig](Azure.Arc.Server.MaintenanceConfig.md) | Use a maintenance configuration for Arc-enabled servers. | Preview
 AZR-000375 | [Azure.VM.MaintenanceConfig](Azure.VM.MaintenanceConfig.md) | Use a maintenance configuration for virtual machines. | Preview
 AZR-000376 | [Azure.AppGw.MigrateV2](Azure.AppGw.MigrateV2.md) | Use a Application Gateway v2 SKU. | GA
-AZR-000377 | [Azure.Defender.Api](Azure.Defender.Api.md) | Enable Microsoft Defender for APIs. | Preview
+AZR-000377 | [Azure.Defender.Api](Azure.Defender.Api.md) | Enable Microsoft Defender for APIs. | GA
 AZR-000378 | [Azure.ContainerApp.DisableAffinity](Azure.ContainerApp.DisableAffinity.md) | Disable session affinity to prevent unbalanced distribution. | GA
 AZR-000379 | [Azure.Defender.CosmosDb](Azure.Defender.CosmosDb.md) | Enable Microsoft Defender for Azure Cosmos DB. | GA
 AZR-000380 | [Azure.ContainerApp.RestrictIngress](Azure.ContainerApp.RestrictIngress.md) | IP ingress restrictions mode should be set to allow action for all rules defined. | GA
@@ -407,7 +407,7 @@ AZR-000383 | [Azure.Defender.Storage.MalwareScan](Azure.Defender.Storage.Malware
 AZR-000384 | [Azure.Storage.DefenderCloud.MalwareScan](Azure.Storage.DefenderCloud.MalwareScan.md) | Enable Malware Scanning in Microsoft Defender for Storage. | Preview
 AZR-000385 | [Azure.Defender.Storage.SensitiveData](Azure.Defender.Storage.SensitiveData.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Preview
 AZR-000386 | [Azure.Storage.DefenderCloud](Azure.Storage.DefenderCloud.md) | Enable Microsoft Defender for Storage for storage accounts. | GA
-AZR-000387 | [Azure.APIM.DefenderCloud](Azure.APIM.DefenderCloud.md) | APIs published in Azure API Management should be onboarded to Microsoft Defender for APIs. | Preview
+AZR-000387 | [Azure.APIM.DefenderCloud](Azure.APIM.DefenderCloud.md) | APIs published in Azure API Management should be onboarded to Microsoft Defender for APIs. | GA
 AZR-000388 | [Azure.KeyVault.RBAC](Azure.KeyVault.RBAC.md) | Key Vaults should use Azure RBAC as the authorization system for the data plane. | GA
 AZR-000389 | [Azure.PostgreSQL.AAD](Azure.PostgreSQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure Database for PostgreSQL databases. | GA
 AZR-000390 | [Azure.PostgreSQL.AADOnly](Azure.PostgreSQL.AADOnly.md) | Ensure Azure AD-only authentication is enabled with Azure Database for PostgreSQL databases. | GA

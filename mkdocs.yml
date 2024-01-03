@@ -151,6 +151,9 @@ plugins:
       customization/index.md: customization/storing-custom-rules.md
       en/asb-v3.md: en/mcsb-v1.md
 
+hooks:
+  - docs/hooks/shortcodes.py
+
 extra:
   social:
     - icon: fontawesome/brands/github

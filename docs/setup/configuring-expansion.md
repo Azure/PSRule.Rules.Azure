@@ -17,7 +17,7 @@ This feature can be enabled by using the following configuration options.
 
 ### Parameter file expansion
 
-:octicons-milestone-24: v1.4.1
+<!-- module:version v1.4.1 -->
 
 This configuration option determines if Azure template parameter files will automatically be expanded.
 By default, parameter files will not be automatically expanded.
@@ -27,14 +27,14 @@ Parameter files are expanded when PSRule cmdlets with the `-Format File` paramet
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_PARAMETER_FILE_EXPANSION: bool
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_PARAMETER_FILE_EXPANSION configuration option
 configuration:
   AZURE_PARAMETER_FILE_EXPANSION: false
@@ -42,7 +42,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_PARAMETER_FILE_EXPANSION configuration option to enable expansion
 configuration:
   AZURE_PARAMETER_FILE_EXPANSION: true
@@ -50,7 +50,7 @@ configuration:
 
 ### Bicep source expansion
 
-:octicons-milestone-24: v1.11.0
+<!-- module:version v1.11.0 -->
 
 This configuration option determines if Azure Bicep source files will automatically be expanded.
 By default, Bicep files will not be automatically expanded.
@@ -59,14 +59,14 @@ Bicep files are expanded when PSRule cmdlets with the `-Format File` parameter a
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_BICEP_FILE_EXPANSION: bool
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_BICEP_FILE_EXPANSION configuration option
 configuration:
   AZURE_BICEP_FILE_EXPANSION: false
@@ -74,7 +74,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_BICEP_FILE_EXPANSION configuration option to enable expansion
 configuration:
   AZURE_BICEP_FILE_EXPANSION: true
@@ -82,7 +82,7 @@ configuration:
 
 ### Bicep parameter expansion
 
-:octicons-milestone-24: v1.27.0
+<!-- module:version v1.27.0 -->
 
 This configuration option determines if Azure Bicep parameter files (`.bicepparam`) are expanded.
 Currently while this is an experimental feature this is not enabled by default.
@@ -91,14 +91,14 @@ Bicep files are expanded when PSRule cmdlets with the `-Format File` parameter a
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_BICEP_PARAMS_FILE_EXPANSION: bool
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_BICEP_PARAMS_FILE_EXPANSION configuration option
 configuration:
   AZURE_BICEP_PARAMS_FILE_EXPANSION: false
@@ -106,7 +106,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_BICEP_PARAMS_FILE_EXPANSION configuration option to enable expansion
 configuration:
   AZURE_BICEP_PARAMS_FILE_EXPANSION: true
@@ -114,7 +114,7 @@ configuration:
 
 ### Bicep compilation timeout
 
-:octicons-milestone-24: v1.13.3
+<!-- module:version v1.13.3 -->
 
 This configuration option determines the maximum time to spend building a single Bicep source file.
 The timeout is configured in seconds.
@@ -126,14 +126,14 @@ The default timeout is 5 seconds, however the timeout can be set to an integer b
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_BICEP_FILE_EXPANSION_TIMEOUT: int
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_BICEP_FILE_EXPANSION_TIMEOUT configuration option
 configuration:
   AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 5
@@ -141,7 +141,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_BICEP_FILE_EXPANSION_TIMEOUT configuration option to enable expansion
 configuration:
   AZURE_BICEP_FILE_EXPANSION_TIMEOUT: 15
@@ -149,7 +149,7 @@ configuration:
 
 ### Require template metadata link
 
-:octicons-milestone-24: v1.7.0
+<!-- module:version v1.7.0 -->
 
 This configuration option determines if Azure template parameter files require a metadata link.
 When configured to `true`, the `Azure.Template.MetadataLink` rule is enabled.
@@ -160,14 +160,14 @@ Additionally, when enabled this rule can still be excluded or suppressed like al
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_PARAMETER_FILE_METADATA_LINK: bool
 ```
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_PARAMETER_FILE_METADATA_LINK configuration option
 configuration:
   AZURE_PARAMETER_FILE_METADATA_LINK: false
@@ -175,7 +175,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_PARAMETER_FILE_METADATA_LINK configuration option to enable expansion
 configuration:
   AZURE_PARAMETER_FILE_METADATA_LINK: true
@@ -183,7 +183,7 @@ configuration:
 
 ### Deployment properties
 
-:octicons-milestone-24: v1.17.0
+<!-- module:version v1.17.0 -->
 
 This configuration option sets the deployment object use by the `deployment()` function.
 Configure this option to change the details of the deployment when exporting templates for analysis.
@@ -196,7 +196,7 @@ Additionally, this configuration option will be ignore when `-Name` is used with
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_DEPLOYMENT:
     name: string
@@ -204,7 +204,7 @@ configuration:
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_DEPLOYMENT configuration option
 configuration:
   AZURE_DEPLOYMENT:
@@ -213,7 +213,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Override the name of the deployment object.
 configuration:
   AZURE_DEPLOYMENT:
@@ -222,7 +222,7 @@ configuration:
 
 ### Deployment resource group
 
-:octicons-milestone-24: v1.1.0
+<!-- module:version v1.1.0 -->
 
 This configuration option sets the resource group object used by the `resourceGroup()` function.
 Configure this option to change the resource group object when using exporting templates for analysis.
@@ -233,7 +233,7 @@ This configuration option will be ignored when `-ResourceGroup` is used with `Ex
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_RESOURCE_GROUP:
     name: string
@@ -245,7 +245,7 @@ configuration:
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_RESOURCE_GROUP configuration option
 configuration:
   AZURE_RESOURCE_GROUP:
@@ -258,7 +258,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Override the location of the resource group object.
 configuration:
   AZURE_RESOURCE_GROUP:
@@ -267,7 +267,7 @@ configuration:
 
 ### Deployment subscription
 
-:octicons-milestone-24: v1.1.0
+<!-- module:version v1.1.0 -->
 
 This configuration option sets the subscription object used by the `subscription()` function.
 Configure this option to change the subscription object when using exporting templates for analysis.
@@ -278,7 +278,7 @@ This configuration option will be ignored when `-Subscription` is used with `Exp
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_SUBSCRIPTION:
     subscriptionId: string
@@ -288,7 +288,7 @@ configuration:
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_SUBSCRIPTION configuration option
 configuration:
   AZURE_SUBSCRIPTION:
@@ -299,7 +299,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Override the display name of the subscription object
 configuration:
   AZURE_SUBSCRIPTION:
@@ -308,7 +308,7 @@ configuration:
 
 ### Deployment tenant
 
-:octicons-milestone-24: v1.11.0
+<!-- module:version v1.11.0 -->
 
 This configuration option sets the tenant object used by the `tenant()` function.
 Configure this option to change the tenant object when using exporting templates for analysis.
@@ -317,7 +317,7 @@ Any properties that are not provided with use the defaults as specified below.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_TENANT:
     countryCode: string
@@ -327,7 +327,7 @@ configuration:
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_TENANT configuration option
 configuration:
   AZURE_TENANT:
@@ -338,7 +338,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Override the display name of the tenant object
 configuration:
   AZURE_TENANT:
@@ -347,7 +347,7 @@ configuration:
 
 ### Deployment management group
 
-:octicons-milestone-24: v1.11.0
+<!-- module:version v1.11.0 -->
 
 This configuration option sets the management group object used by the `managementGroup()` function.
 Configure this option to change the management group object when using exporting templates for analysis.
@@ -356,7 +356,7 @@ Any properties that are not provided with use the defaults as specified below.
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_MANAGEMENT_GROUP:
     name: string
@@ -366,7 +366,7 @@ configuration:
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_MANAGEMENT_GROUP configuration option
 configuration:
   AZURE_MANAGEMENT_GROUP:
@@ -377,7 +377,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Override the display name of the management group object
 configuration:
   AZURE_MANAGEMENT_GROUP:
@@ -387,7 +387,7 @@ configuration:
 
 ### Required parameter defaults
 
-:octicons-milestone-24: v1.13.0
+<!-- module:version v1.13.0 -->
 
 This configuration option allows a fallback value to be configured for required parameters.
 When a parameter value is not provided and a default is not set, the fallback value will be used.
@@ -397,7 +397,7 @@ In this scenario, it may not make sense to add the parameters to a parameter fil
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 configuration:
   AZURE_PARAMETER_DEFAULTS:
     <parameter>: <value>
@@ -405,7 +405,7 @@ configuration:
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_PARAMETER_DEFAULTS configuration option
 configuration:
   AZURE_PARAMETER_DEFAULTS: { }
@@ -413,7 +413,7 @@ configuration:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Set fallback values for adminPassword and workspaceId parameters.
 configuration:
   AZURE_PARAMETER_DEFAULTS:
@@ -428,7 +428,7 @@ To exclude a file, configure the `input.pathIgnore` option by providing a path s
 
 Syntax:
 
-```yaml
+```yaml title='ps-rule.yaml'
 input:
   pathIgnore:
   - string
@@ -437,7 +437,7 @@ input:
 
 Default:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: The default input.pathIgnore option
 input:
   pathIgnore: []
@@ -445,7 +445,7 @@ input:
 
 Example:
 
-```yaml
+```yaml title='ps-rule.yaml'
 # YAML: Exclude a file from being processed by PSRule and expansion
 input:
   pathIgnore:
