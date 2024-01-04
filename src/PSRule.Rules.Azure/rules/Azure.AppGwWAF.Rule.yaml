@@ -87,7 +87,7 @@ spec:
   - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
   condition:
     allOf:
-    # WAF policy has at least two rule groups. OWASP 3.1 is the minimum. Microsoft_BotManagerRuleSet 0.1 is the minimum.
+    # WAF policy has at least two rule groups. OWASP 3.1 is the minimum. Microsoft_BotManagerRuleSet 1.0 is the minimum.
     - field: Properties.managedRules.managedRuleSets
       greaterOrEquals: 2
     - field: Properties.managedRules.managedRuleSets[0].ruleSetType
@@ -97,7 +97,7 @@ spec:
     - field: Properties.managedRules.managedRuleSets[1].ruleSetType
       equals: Microsoft_BotManagerRuleSet
     - field: Properties.managedRules.managedRuleSets[1].ruleSetVersion
-      version: '^0.1'
+      version: '^1.0'
 
 
 #endregion Rules

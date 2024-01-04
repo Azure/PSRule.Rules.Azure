@@ -32,6 +32,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+ Updated rules:
+  - Azure Web Application Firewall (WAF):
+    - Updated `Azure.AppGwWAF.RuleGroups` to use the latest bot manager rule set `1.0` by @BenjaminEngeset.
+      [#2404](https://github.com/Azure/PSRule.Rules.Azure/issues/2404)
+
 What's changed since v1.32.1:
 
 - Updated rules:
