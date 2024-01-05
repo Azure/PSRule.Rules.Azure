@@ -2,7 +2,7 @@
 reviewed: 2023-10-06
 severity: Critical
 pillar: Cost Optimization
-category: Provision
+category: CO:06 Usage and billing increments
 resource: Machine Learning
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.ComputeIdleShutdown/
 ---
@@ -83,6 +83,7 @@ resource compute_instance 'Microsoft.MachineLearningServices/workspaces/computes
 
 ## LINKS
 
+- [CO:06 Usage and billing increments](https://learn.microsoft.com/azure/well-architected/cost-optimization/align-usage-to-billing-increments)
 - [AI + Machine Learning cost estimates](https://learn.microsoft.com/azure/well-architected/cost/provision-ai-ml)
 - [Configure idle shutdown](https://learn.microsoft.com/azure/machine-learning/how-to-create-compute-instance#configure-idle-shutdown)
 - [ML Compute](https://learn.microsoft.com/azure/machine-learning/azure-machine-learning-glossary#compute)

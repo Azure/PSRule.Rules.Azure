@@ -2,7 +2,7 @@
 reviewed: 2023-02-18
 severity: Important
 pillar: Cost Optimization
-category: Optimize
+category: CO:14 Consolidation
 resource: Front Door
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.State/
 ---
@@ -77,5 +77,5 @@ resource afd_classic 'Microsoft.Network/frontDoors@2021-06-01' = {
 
 ## LINKS
 
-- [Design review checklist for Cost Optimization](https://learn.microsoft.com/azure/well-architected/cost-optimization/checklist)
+- [CO:14 Consolidation](https://learn.microsoft.com/azure/well-architected/cost-optimization/consolidation)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors)
