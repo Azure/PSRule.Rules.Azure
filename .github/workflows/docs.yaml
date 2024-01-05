@@ -56,6 +56,8 @@ jobs:
 
       - name: Build site
         run: mkdocs build
+        with:
+          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3

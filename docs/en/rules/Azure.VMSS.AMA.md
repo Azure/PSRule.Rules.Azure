@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Operational Excellence
-category: Monitoring
+category: OE:07 Monitoring system
 resource: Virtual Machine Scale Sets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.AMA/
 ---
@@ -10,18 +10,18 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.A
 
 ## SYNOPSIS
 
-Use Azure Monitor Agent for collecting monitoring data.
+Use Azure Monitor Agent for collecting monitoring data from VM scale sets.
 
 ## DESCRIPTION
 
-Azure Monitor Agent (AMA) collects monitoring data from the guest operating system of virtual machines in virtual machine scale sets.
+Azure Monitor Agent (AMA) collects monitoring data from the guest operating system of virtual machine scale sets (VMSS) instances.
 Data collected gets delivered to Azure Monitor for use by features, insights and other services, such as Microsoft Defender for Cloud.
 
 Azure Monitor Agent replaces all of Azure Monitor's legacy monitoring agents.
 
 ## RECOMMENDATION
 
-Consider monitoring Virtual Machine Scale Sets using the Azure Monitor Agent.
+Consider monitoring Virtual Machine Scale Sets instances using the Azure Monitor Agent.
 
 ## EXAMPLES
 
@@ -337,11 +337,13 @@ resource linuxAgent 'Microsoft.Compute/virtualMachineScaleSets/extensions@2022-0
 
 ## NOTES
 
-The Azure Monitor Agent (AMA) itself does not include all configuration needed, additionally data collection rules and associations are required.
+The Azure Monitor Agent (AMA) itself does not include all configuration needed,
+additionally data collection rules and associations are required.
 
 ## LINKS
 
-- [Monitoring](https://learn.microsoft.com/azure/architecture/framework/devops/checklist)
+- [OE:07 Monitoring system](https://learn.microsoft.com/azure/well-architected/operational-excellence/observability)
 - [Azure Monitor Agent overview](https://learn.microsoft.com/azure/azure-monitor/agents/agents-overview)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)
+- [Manage Azure Monitor Agent](https://learn.microsoft.com/azure/azure-monitor/agents/azure-monitor-agent-manage)
+- [Azure virtual machine scale set deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)
+- [Azure extension deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)
