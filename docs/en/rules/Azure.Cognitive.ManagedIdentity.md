@@ -97,9 +97,8 @@ resource language 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
 
 To address this issue at runtime use the following policies:
 
-```text
-/providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418
-```
+- [Cognitive Services accounts should use a managed identity](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_ManagedIdentity_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418`.
 
 ## NOTES
 

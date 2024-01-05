@@ -30,7 +30,7 @@ Consider disabling anonymous pull access in scenarios that require user authenti
 
 ### Configure with Azure template
 
-To deploy Azure Container Registries that pass this rule:
+To deploy registries that pass this rule:
 
 - Set the `properties.anonymousPullEnabled` property to `false`.
 
@@ -39,43 +39,87 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2023-01-01-preview",
-  "name": "[parameters('registryName')]",
+  "apiVersion": "2023-08-01-preview",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
-    "name": "Standard"
+    "name": "Premium"
+  },
+  "identity": {
+    "type": "SystemAssigned"
   },
   "properties": {
-    "anonymousPullEnabled": false
+    "adminUserEnabled": false,
+    "anonymousPullEnabled": false,
+    "policies": {
+      "quarantinePolicy": {
+        "status": "enabled"
+      },
+      "trustPolicy": {
+        "status": "enabled",
+        "type": "Notary"
+      },
+      "retentionPolicy": {
+        "days": 30,
+        "status": "enabled"
+      },
+      "softDeletePolicy": {
+        "retentionDays": 90,
+        "status": "enabled"
+      }
+    }
   }
 }
 ```
 
 ### Configure with Bicep
 
-To deploy Azure Container Registries that pass this rule:
+To deploy registries that pass this rule:
 
 - Set the `properties.anonymousPullEnabled` property to `false`.
 
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
-  name: registryName
+resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = {
+  name: name
   location: location
   sku: {
-    name: 'Standard'
+    name: 'Premium'
+  }
+  identity: {
+    type: 'SystemAssigned'
   }
   properties: {
+    adminUserEnabled: false
     anonymousPullEnabled: false
+    policies: {
+      quarantinePolicy: {
+        status: 'enabled'
+      }
+      trustPolicy: {
+        status: 'enabled'
+        type: 'Notary'
+      }
+      retentionPolicy: {
+        days: 30
+        status: 'enabled'
+      }
+      softDeletePolicy: {
+        retentionDays: 90
+        status: 'enabled'
+      }
+    }
   }
 }
 ```
 
 ### Configure with Azure CLI
 
+To configure registries that pass this rule:
+
 ```bash
-az acr update --name myregistry --anonymous-pull-enabled false
+az acr update  -n '<name>' -g '<resource_group>' --anonymous-pull-enabled false
 ```
 
 ## NOTES

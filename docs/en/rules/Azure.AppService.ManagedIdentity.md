@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: App Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.ManagedIdentity/
 ---
@@ -102,8 +102,8 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access#resource-identity)
 - [What are managed identities for Azure resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 - [Tutorial: Secure Azure SQL Database connection from App Service using a managed identity](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-connect-msi)
 - [How to use managed identities for App Service and Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#managedserviceidentity-object)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites)

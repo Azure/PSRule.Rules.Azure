@@ -40,8 +40,8 @@ Por ejemplo:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2021-06-01-preview",
-  "name": "[parameters('registryName')]",
+  "apiVersion": "2023-07-01",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
     "name": "Premium"
@@ -52,16 +52,13 @@ Por ejemplo:
   "properties": {
     "adminUserEnabled": false,
     "policies": {
-      "quarantinePolicy": {
-        "status": "enabled"
-      },
       "trustPolicy": {
         "status": "enabled",
         "type": "Notary"
       },
       "retentionPolicy": {
-        "status": "enabled",
-        "days": 30
+        "days": 30,
+        "status": "enabled"
       }
     }
   }
@@ -77,8 +74,8 @@ Para implementar Container Registries, pasa la siguiente regla:
 Por ejemplo:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
-  name: registryName
+resource registry 'Microsoft.ContainerRegistry/registries@2023-07-01' = {
+  name: name
   location: location
   sku: {
     name: 'Premium'
@@ -89,16 +86,13 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
   properties: {
     adminUserEnabled: false
     policies: {
-      quarantinePolicy: {
-        status: 'enabled'
-      }
       trustPolicy: {
         status: 'enabled'
         type: 'Notary'
       }
       retentionPolicy: {
-        status: 'enabled'
         days: 30
+        status: 'enabled'
       }
     }
   }
@@ -108,7 +102,7 @@ resource acr 'Microsoft.ContainerRegistry/registries@2021-06-01-preview' = {
 ### Configurar con Azure CLI
 
 ```bash
-az acr update --admin-enabled false -n '<name>' -g '<resource_group>'
+az acr update -n '<name>' -g '<resource_group>' --admin-enabled false
 ```
 
 ### Configurar con Azure PowerShell

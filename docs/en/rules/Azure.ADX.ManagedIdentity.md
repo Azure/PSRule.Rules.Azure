@@ -2,7 +2,7 @@
 reviewed: 2022-05-14
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: Data Explorer
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ADX.ManagedIdentity/
 ---
@@ -88,8 +88,9 @@ resource adx 'Microsoft.Kusto/clusters@2021-08-27' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
-- [Managed identities overview](https://docs.microsoft.com/azure/data-explorer/managed-identities-overview)
-- [Configure managed identities for your Azure Data Explorer cluster](https://docs.microsoft.com/azure/data-explorer/configure-managed-identities-cluster)
-- [Managed identities for Azure resources](https://docs.microsoft.com/azure/data-explorer/security#managed-identities-for-azure-resources)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.kusto/clusters)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access#resource-identity)
+- [What are managed identities for Azure resources?](https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview)
+- [Managed identities overview](https://learn.microsoft.com/azure/data-explorer/managed-identities-overview)
+- [Configure managed identities for your Azure Data Explorer cluster](https://learn.microsoft.com/azure/data-explorer/configure-managed-identities-cluster)
+- [Managed identities for Azure resources](https://learn.microsoft.com/azure/data-explorer/security#managed-identities-for-azure-resources)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.kusto/clusters)

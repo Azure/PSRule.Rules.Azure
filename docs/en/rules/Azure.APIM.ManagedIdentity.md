@@ -2,7 +2,7 @@
 reviewed: 2023-03-05
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.ManagedIdentity/
 ---
@@ -123,7 +123,8 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access#resource-identity)
+- [What are managed identities for Azure resources?](https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview)
 - [Use managed identities in Azure API Management](https://learn.microsoft.com/azure/api-management/api-management-howto-use-managed-service-identity)
 - [Authenticate with managed identity](https://learn.microsoft.com/azure/api-management/api-management-policies#authentication-policies)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)

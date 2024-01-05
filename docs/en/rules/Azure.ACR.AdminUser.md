@@ -1,5 +1,5 @@
 ---
-reviewed: 2023-12-01
+reviewed: 2024-01-05
 severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
@@ -47,7 +47,7 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2023-08-01-preview",
+  "apiVersion": "2023-07-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -81,7 +81,7 @@ To deploy registries that pass this rule:
 For example:
 
 ```bicep
-resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = {
+resource registry 'Microsoft.ContainerRegistry/registries@2023-07-01' = {
   name: name
   location: location
   sku: {
@@ -108,15 +108,28 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = 
 
 ### Configure with Azure CLI
 
+To configure registries that pass this rule:
+
 ```bash
-az acr update --admin-enabled false -n '<name>' -g '<resource_group>'
+az acr update -n '<name>' -g '<resource_group>' --admin-enabled false
 ```
 
 ### Configure with Azure PowerShell
 
+To configure registries that pass this rule:
+
 ```powershell
 Update-AzContainerRegistry -ResourceGroupName '<resource_group>' -Name '<name>' -DisableAdminUser
 ```
+
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Container registries should have local admin account disabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_AdminAccountDisabled_AuditDeny.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/dc921057-6b28-4fbe-9b83-f7bec05db6c2`.
+- [Configure container registries to disable local admin account](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_AdminAccountDisabled_Modify.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/79fdfe03-ffcb-4e55-b4d0-b925b8241759`.
 
 ## LINKS
 
