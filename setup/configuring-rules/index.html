@@ -1924,6 +1924,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#azure_vm_use_azure_hybrid_benefit" class="md-nav__link">
+    <span class="md-ellipsis">
+      AZURE_VM_USE_AZURE_HYBRID_BENEFIT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#azure_vnet_dns_with_identity" class="md-nav__link">
     <span class="md-ellipsis">
       AZURE_VNET_DNS_WITH_IDENTITY
@@ -13014,6 +13023,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#azure_vm_use_azure_hybrid_benefit" class="md-nav__link">
+    <span class="md-ellipsis">
+      AZURE_VM_USE_AZURE_HYBRID_BENEFIT
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#azure_vnet_dns_with_identity" class="md-nav__link">
     <span class="md-ellipsis">
       AZURE_VNET_DNS_WITH_IDENTITY
@@ -13271,7 +13289,7 @@ Configure this option to change the minimum API version, which defaults to <code
 <p>This configuration specifies whether if external ingress should be enabled or disabled.</p>
 <p>Syntax:</p>
 <div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-21-1"><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="nt">AZURE_CONTAINERAPPS_RESTRICT_INGRESS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w"> </span><span class="c1"># An boolean value</span>
+</span><span id="__span-21-2"><a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="w">  </span><span class="nt">AZURE_CONTAINERAPPS_RESTRICT_INGRESS</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
 </span></code></pre></div>
 <p>Default:</p>
 <div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-22-1"><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="c1"># YAML: The default AZURE_CONTAINERAPPS_RESTRICT_INGRESS configuration option</span>
@@ -13491,6 +13509,26 @@ Configure this option to enable the per account validation, which defaults to <c
 </span><span id="__span-54-2"><a id="__codelineno-54-2" name="__codelineno-54-2" href="#__codelineno-54-2"></a><span class="nt">configuration</span><span class="p">:</span>
 </span><span id="__span-54-3"><a id="__codelineno-54-3" name="__codelineno-54-3" href="#__codelineno-54-3"></a><span class="w">  </span><span class="nt">AZURE_STORAGE_DEFENDER_PER_ACCOUNT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span></code></pre></div>
+<h3 id="azure_vm_use_azure_hybrid_benefit">AZURE_VM_USE_AZURE_HYBRID_BENEFIT<a class="headerlink" href="#azure_vm_use_azure_hybrid_benefit" title="Permanent link">#</a></h3>
+<p><span class="badge"><span class="badge__icon"><a href="../../CHANGELOG-v1/#v1330" title="Minimum version"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.75 1a.75.75 0 0 1 .75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 0 1 0 2.65l-3.187 2.75a1.75 1.75 0 0 1-1.143.425H12.5v9.25a.75.75 0 0 1-1.5 0V13H3.75A1.75 1.75 0 0 1 2 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 0 1 .75-.75Zm7.282 4.5H3.75a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h15.282c.06 0 .118-.021.163-.06l3.188-2.75a.248.248 0 0 0 0-.38l-3.188-2.75a.249.249 0 0 0-.163-.06Z"/></svg></span></a></span><span class="badge__text"><a href="../../CHANGELOG-v1/#v1330">v1.33.0</a></span></span>
+<span class="badge"><span class="badge__icon"><a href="../../en/rules/Azure.VM.UseHybridUseBenefit/" title="Applies to rule"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.78 3.653a3.936 3.936 0 1 1 5.567 5.567l-3.627 3.627a3.936 3.936 0 0 1-5.88-.353.75.75 0 0 0-1.18.928 5.436 5.436 0 0 0 8.12.486l3.628-3.628a5.436 5.436 0 1 0-7.688-7.688l-3 3a.75.75 0 0 0 1.06 1.061l3-3Z"/><path d="M7.28 11.153a3.936 3.936 0 0 1 5.88.353.75.75 0 0 0 1.18-.928 5.436 5.436 0 0 0-8.12-.486L2.592 13.72a5.436 5.436 0 1 0 7.688 7.688l3-3a.75.75 0 1 0-1.06-1.06l-3 3a3.936 3.936 0 0 1-5.567-5.568l3.627-3.627Z"/></svg></span></a></span><span class="badge__text"><a href="../../en/rules/Azure.VM.UseHybridUseBenefit/">Azure.VM.UseHybridUseBenefit</a></span></span></p>
+<p>This configuration option determines whether to check for Azure Hybrid Benefit (AHB) when deploying Windows VMs.
+When enabled, rules that check for AHB fail when the VM is not configured to use AHB.</p>
+<p>To use AHB, you must separately have eligible licenses, such as Windows Server or SQL Server.</p>
+<p>By default, this configuration option is set to <code>false</code>.</p>
+<p>Syntax:</p>
+<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="nt">configuration</span><span class="p">:</span>
+</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a><span class="w">  </span><span class="nt">AZURE_VM_USE_AZURE_HYBRID_BENEFIT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
+</span></code></pre></div>
+<p>Default:</p>
+<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="nt">configuration</span><span class="p">:</span>
+</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="w">  </span><span class="nt">AZURE_VM_USE_AZURE_HYBRID_BENEFIT</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+</span></code></pre></div>
+<p>Example:</p>
+<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="c1"># Set the configuration option to enabled.</span>
+</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="nt">configuration</span><span class="p">:</span>
+</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="w">  </span><span class="nt">AZURE_VNET_DNS_WITH_IDENTITY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</span></code></pre></div>
 <h3 id="azure_vnet_dns_with_identity">AZURE_VNET_DNS_WITH_IDENTITY<a class="headerlink" href="#azure_vnet_dns_with_identity" title="Permanent link">#</a></h3>
 <p><span class="badge"><span class="badge__icon"><a href="../../CHANGELOG-v1/#v1300" title="Minimum version"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.75 1a.75.75 0 0 1 .75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 0 1 0 2.65l-3.187 2.75a1.75 1.75 0 0 1-1.143.425H12.5v9.25a.75.75 0 0 1-1.5 0V13H3.75A1.75 1.75 0 0 1 2 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 0 1 .75-.75Zm7.282 4.5H3.75a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h15.282c.06 0 .118-.021.163-.06l3.188-2.75a.248.248 0 0 0 0-.38l-3.188-2.75a.249.249 0 0 0-.163-.06Z"/></svg></span></a></span><span class="badge__text"><a href="../../CHANGELOG-v1/#v1300">v1.30.0</a></span></span>
 <span class="badge"><span class="badge__icon"><a href="../../en/rules/Azure.VNET.LocalDNS/" title="Applies to rule"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.78 3.653a3.936 3.936 0 1 1 5.567 5.567l-3.627 3.627a3.936 3.936 0 0 1-5.88-.353.75.75 0 0 0-1.18.928 5.436 5.436 0 0 0 8.12.486l3.628-3.628a5.436 5.436 0 1 0-7.688-7.688l-3 3a.75.75 0 0 0 1.06 1.061l3-3Z"/><path d="M7.28 11.153a3.936 3.936 0 0 1 5.88.353.75.75 0 0 0 1.18-.928 5.436 5.436 0 0 0-8.12-.486L2.592 13.72a5.436 5.436 0 1 0 7.688 7.688l3-3a.75.75 0 1 0-1.06-1.06l-3 3a3.936 3.936 0 0 1-5.567-5.568l3.627-3.627Z"/></svg></span></a></span><span class="badge__text"><a href="../../en/rules/Azure.VNET.LocalDNS/">Azure.VNET.LocalDNS</a></span></span></p>
@@ -13503,18 +13541,17 @@ Configure this option to enable the per account validation, which defaults to <c
 <p>If you are using this configuration, we recommend you set the configuration option <code>AZURE_VNET_DNS_WITH_IDENTITY</code> to <code>true</code>.
 By default, this configuration option is set to <code>false</code>.</p>
 <p>Syntax:</p>
-<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-55-1"><a id="__codelineno-55-1" name="__codelineno-55-1" href="#__codelineno-55-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-55-2"><a id="__codelineno-55-2" name="__codelineno-55-2" href="#__codelineno-55-2"></a><span class="w">  </span><span class="nt">AZURE_VNET_DNS_WITH_IDENTITY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span><span class="w"> </span><span class="c1"># An boolean value</span>
+<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="nt">configuration</span><span class="p">:</span>
+</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="w">  </span><span class="nt">AZURE_VNET_DNS_WITH_IDENTITY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">boolean</span>
 </span></code></pre></div>
 <p>Default:</p>
-<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-56-1"><a id="__codelineno-56-1" name="__codelineno-56-1" href="#__codelineno-56-1"></a><span class="c1"># YAML: The default AZURE_VNET_DNS_WITH_IDENTITY configuration option</span>
-</span><span id="__span-56-2"><a id="__codelineno-56-2" name="__codelineno-56-2" href="#__codelineno-56-2"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-56-3"><a id="__codelineno-56-3" name="__codelineno-56-3" href="#__codelineno-56-3"></a><span class="w">  </span><span class="nt">AZURE_VNET_DNS_WITH_IDENTITY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="nt">configuration</span><span class="p">:</span>
+</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a><span class="w">  </span><span class="nt">AZURE_VNET_DNS_WITH_IDENTITY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </span></code></pre></div>
 <p>Example:</p>
-<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-57-1"><a id="__codelineno-57-1" name="__codelineno-57-1" href="#__codelineno-57-1"></a><span class="c1"># YAML: Set the AZURE_VNET_DNS_WITH_IDENTITY configuration option to enabled</span>
-</span><span id="__span-57-2"><a id="__codelineno-57-2" name="__codelineno-57-2" href="#__codelineno-57-2"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-57-3"><a id="__codelineno-57-3" name="__codelineno-57-3" href="#__codelineno-57-3"></a><span class="w">  </span><span class="nt">AZURE_VNET_DNS_WITH_IDENTITY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="c1"># Set the configuration option to enabled.</span>
+</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a><span class="nt">configuration</span><span class="p">:</span>
+</span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a><span class="w">  </span><span class="nt">AZURE_VNET_DNS_WITH_IDENTITY</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </span></code></pre></div>
 <h3 id="azure_vnet_subnet_excluded_from_nsg">AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG<a class="headerlink" href="#azure_vnet_subnet_excluded_from_nsg" title="Permanent link">#</a></h3>
 <p><span class="badge"><span class="badge__icon"><a href="../../CHANGELOG-v1/#v1330" title="Minimum version"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M11.75 1a.75.75 0 0 1 .75.75V4h6.532c.42 0 .826.15 1.143.425l3.187 2.75a1.75 1.75 0 0 1 0 2.65l-3.187 2.75a1.75 1.75 0 0 1-1.143.425H12.5v9.25a.75.75 0 0 1-1.5 0V13H3.75A1.75 1.75 0 0 1 2 11.25v-5.5C2 4.783 2.784 4 3.75 4H11V1.75a.75.75 0 0 1 .75-.75Zm7.282 4.5H3.75a.25.25 0 0 0-.25.25v5.5c0 .138.112.25.25.25h15.282c.06 0 .118-.021.163-.06l3.188-2.75a.248.248 0 0 0 0-.38l-3.188-2.75a.249.249 0 0 0-.163-.06Z"/></svg></span></a></span><span class="badge__text"><a href="../../CHANGELOG-v1/#v1330">v1.33.0</a></span></span>
@@ -13523,20 +13560,19 @@ By default, this configuration option is set to <code>false</code>.</p>
 You can use this configuration option to exclude subnets that are specific to your environment.
 To configure this option, specify a list of subnet names to exclude.</p>
 <p>Syntax:</p>
-<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-58-1"><a id="__codelineno-58-1" name="__codelineno-58-1" href="#__codelineno-58-1"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-58-2"><a id="__codelineno-58-2" name="__codelineno-58-2" href="#__codelineno-58-2"></a><span class="w">  </span><span class="nt">AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
+<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-61-1"><a id="__codelineno-61-1" name="__codelineno-61-1" href="#__codelineno-61-1"></a><span class="nt">configuration</span><span class="p">:</span>
+</span><span id="__span-61-2"><a id="__codelineno-61-2" name="__codelineno-61-2" href="#__codelineno-61-2"></a><span class="w">  </span><span class="nt">AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">array</span>
 </span></code></pre></div>
 <p>Default:</p>
-<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-59-1"><a id="__codelineno-59-1" name="__codelineno-59-1" href="#__codelineno-59-1"></a><span class="c1"># YAML: The default AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG configuration option</span>
-</span><span id="__span-59-2"><a id="__codelineno-59-2" name="__codelineno-59-2" href="#__codelineno-59-2"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-59-3"><a id="__codelineno-59-3" name="__codelineno-59-3" href="#__codelineno-59-3"></a><span class="w">  </span><span class="nt">AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
+<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-62-1"><a id="__codelineno-62-1" name="__codelineno-62-1" href="#__codelineno-62-1"></a><span class="nt">configuration</span><span class="p">:</span>
+</span><span id="__span-62-2"><a id="__codelineno-62-2" name="__codelineno-62-2" href="#__codelineno-62-2"></a><span class="w">  </span><span class="nt">AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[]</span>
 </span></code></pre></div>
 <p>Example:</p>
-<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-60-1"><a id="__codelineno-60-1" name="__codelineno-60-1" href="#__codelineno-60-1"></a><span class="c1"># YAML: Set the AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG configuration option with two customs subnets.</span>
-</span><span id="__span-60-2"><a id="__codelineno-60-2" name="__codelineno-60-2" href="#__codelineno-60-2"></a><span class="nt">configuration</span><span class="p">:</span>
-</span><span id="__span-60-3"><a id="__codelineno-60-3" name="__codelineno-60-3" href="#__codelineno-60-3"></a><span class="w">  </span><span class="nt">AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG</span><span class="p">:</span>
-</span><span id="__span-60-4"><a id="__codelineno-60-4" name="__codelineno-60-4" href="#__codelineno-60-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-1</span>
-</span><span id="__span-60-5"><a id="__codelineno-60-5" name="__codelineno-60-5" href="#__codelineno-60-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-2</span>
+<div class="language-yaml highlight"><span class="filename">ps-rule.yaml</span><pre><span></span><code><span id="__span-63-1"><a id="__codelineno-63-1" name="__codelineno-63-1" href="#__codelineno-63-1"></a><span class="c1"># Configure two customs subnets to be excluded from NSG checks.</span>
+</span><span id="__span-63-2"><a id="__codelineno-63-2" name="__codelineno-63-2" href="#__codelineno-63-2"></a><span class="nt">configuration</span><span class="p">:</span>
+</span><span id="__span-63-3"><a id="__codelineno-63-3" name="__codelineno-63-3" href="#__codelineno-63-3"></a><span class="w">  </span><span class="nt">AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG</span><span class="p">:</span>
+</span><span id="__span-63-4"><a id="__codelineno-63-4" name="__codelineno-63-4" href="#__codelineno-63-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-1</span>
+</span><span id="__span-63-5"><a id="__codelineno-63-5" name="__codelineno-63-5" href="#__codelineno-63-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-2</span>
 </span></code></pre></div>
 
 
