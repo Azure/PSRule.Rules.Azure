@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-09-20
+reviewed: 2024-01-04
 severity: Critical
 pillar: Security
 category: Network security and containment
@@ -29,7 +29,7 @@ Consider configuring Application Gateway WAF policy to use the recommended rule 
 ## LINKS
 
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
-- [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
-- [Web Application Firewall CRS rule groups and rules](https://docs.microsoft.com/azure/web-application-firewall/ag/application-gateway-crs-rulegroups-rules)
-- [Bot protection overview](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-policy-configure-bot-protection)
-- [Web Application Firewall best practices](https://docs.microsoft.com/azure/web-application-firewall/ag/best-practices)
+- [Securing PaaS deployments](https://learn.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
+- [Web Application Firewall CRS rule groups and rules](https://learn.microsoft.com/azure/web-application-firewall/ag/application-gateway-crs-rulegroups-rules)
+- [Bot protection overview](https://learn.microsoft.com/azure/web-application-firewall/afds/waf-front-door-policy-configure-bot-protection)
+- [Web Application Firewall best practices](https://learn.microsoft.com/azure/web-application-firewall/ag/best-practices)

@@ -46,6 +46,11 @@ What's changed since v1.32.1:
     - Added option for excluding subnets to `Azure.VNET.UseNSGs` by @BernieWhite.
       [#2572](https://github.com/Azure/PSRule.Rules.Azure/issues/2572)
       - To add a subnet exclusion, set the `AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG` option.
+  - Azure Web Application Firewall (WAF):
+    - Updated `Azure.AppGwWAF.RuleGroups` to use the rule sets by @BenjaminEngeset.
+      [#2404](https://github.com/Azure/PSRule.Rules.Azure/issues/2404)
+      - The latest Bot Manager rule set is now `1.0`.
+      - The latest OWASP rule set is now `3.2`.
 - General improvements:
   - Quality updates to rules and documentation by @BernieWhite.
     [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)

@@ -80,24 +80,23 @@ metadata:
   ref: AZR-000304
   tags:
     release: GA
-    ruleSet: 2022_09
+    ruleSet: 2024_03
     Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
   condition:
     allOf:
-    # WAF policy has at least two rule groups. OWASP 3.1 is the minimum. Microsoft_BotManagerRuleSet 0.1 is the minimum.
+    # WAF policy has at least two rule groups. OWASP 3.2 is the minimum. Microsoft_BotManagerRuleSet 1.0 is the minimum.
     - field: Properties.managedRules.managedRuleSets
       greaterOrEquals: 2
     - field: Properties.managedRules.managedRuleSets[0].ruleSetType
       equals: OWASP 
     - field: Properties.managedRules.managedRuleSets[0].ruleSetVersion
-      version: '^3.1'
+      version: '>=3.2'
     - field: Properties.managedRules.managedRuleSets[1].ruleSetType
       equals: Microsoft_BotManagerRuleSet
     - field: Properties.managedRules.managedRuleSets[1].ruleSetVersion
-      version: '^0.1'
-
+      version: '>=1.0'
 
 #endregion Rules
