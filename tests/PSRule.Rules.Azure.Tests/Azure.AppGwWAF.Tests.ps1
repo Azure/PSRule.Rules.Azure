@@ -87,15 +87,13 @@ Describe 'Azure.AppGWWAF' -Tag 'Network', 'AppGwWAF' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'appgwwaf-C';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgwwaf-A', 'appgwwaf-B';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'appgwwaf-A', 'appgwwaf-B';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'appgwwaf-C';
         }
     }
 }
