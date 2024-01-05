@@ -56,7 +56,7 @@ jobs:
 
       - name: Build site
         run: mkdocs build
-        with:
+        env:
           MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Deploy
