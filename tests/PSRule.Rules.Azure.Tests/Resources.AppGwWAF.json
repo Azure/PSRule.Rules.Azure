@@ -18,7 +18,7 @@
         "managedRuleSets": [
           {
             "ruleSetType": "OWASP",
-            "ruleSetVersion": "2.2.9",
+            "ruleSetVersion": "3.2",
             "ruleGroupOverrides": []
           },
           {
@@ -55,12 +55,12 @@
         "managedRuleSets": [
           {
             "ruleSetType": "OWASP",
-            "ruleSetVersion": "3.2",
+            "ruleSetVersion": "3.1",
             "ruleGroupOverrides": []
           },
           {
             "ruleSetType": "Microsoft_BotManagerRuleSet",
-            "ruleSetVersion": "0.1",
+            "ruleSetVersion": "1.0",
             "ruleGroupOverrides": []
           }
         ]
