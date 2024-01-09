@@ -32,6 +32,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_OPERAND2 = "operand2";
         private const string PROPERTY_VALUETOCONVERT = "valueToConvert";
         private const string FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ssZ";
+        private const string FORMAT_AZURE_DATETIME = "M/d/yyyy h:mm:ss tt";
 
         private const char SINGLE_QUOTE = '\'';
         private const char DOUBLE_QUOTE = '"';
@@ -1341,7 +1342,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var timeToAdd = XmlConvert.ToTimeSpan(duration);
             var result = startTime.Add(timeToAdd);
-            return format == null ? result.ToString(AzureCulture) : result.ToString(format, AzureCulture);
+            return format == null ? result.ToString(FORMAT_AZURE_DATETIME, AzureCulture) : result.ToString(format, AzureCulture);
         }
 
         /// <summary>
