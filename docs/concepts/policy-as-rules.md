@@ -34,6 +34,8 @@ This feature does not support:
 - **Policies that check for assessment status** &mdash; Some policies use additional detection tools to check for compliance.
   Policies that check for assessment status are ignored.
 - **Importing rules** &mdash; Rules generated from policy assignments cannot be imported back into Azure Policy.
+- **Duplicate rules** &mdash; Currently, built-in Azure Policies that are duplicates of existing rules are ignored.
+  [#2482](https://github.com/Azure/PSRule.Rules.Azure/issues/2482)
 
 ## Using policy as rules
 
