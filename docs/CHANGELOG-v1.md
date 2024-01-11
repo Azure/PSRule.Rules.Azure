@@ -32,6 +32,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.33.0-B0023 (pre-release)
+
 What's changed since v1.32.1:
 
 - Updated rules:
