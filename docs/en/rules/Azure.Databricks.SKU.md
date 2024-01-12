@@ -66,8 +66,8 @@ resource databricks 'Microsoft.Databricks/workspaces@2023-02-01' = {
 
 ## LINKS
 
-- [Databricks Setup](https://learn.microsoft.com/en-us/azure/databricks/getting-started)
-- [Databricks Tier Features](https://azure.microsoft.com/en-gb/pricing/details/databricks)
-- [Databricks Workspace API](https://learn.microsoft.com/en-us/azure/templates/Microsoft.Databricks/workspaces)
+- [Databricks Setup](https://learn.microsoft.com/azure/databricks/getting-started/#:~:text=Bicep-,Note,-When%20you%20create)
+- [Databricks Tier Features](https://azure.microsoft.com/pricing/details/databricks)
+- [Databricks Workspace API](https://learn.microsoft.com/azure/templates/Microsoft.Databricks/workspaces)
 - [Azure Databricks architecture overview](https://learn.microsoft.com/azure/databricks/getting-started/overview)
 - [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.databricks/workspaces)
