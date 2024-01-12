@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.33.0-B0023:
+
+- Engineering:
+  - Bump xunit to v2.6.5.
+    [#2635](https://github.com/Azure/PSRule.Rules.Azure/pull/2635)
+
 ## v1.33.0-B0023 (pre-release)
 
 What's changed since v1.32.1:
