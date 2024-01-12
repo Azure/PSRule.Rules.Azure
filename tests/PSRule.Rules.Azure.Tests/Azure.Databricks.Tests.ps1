@@ -67,5 +67,21 @@ Describe 'Azure.Databricks' -Tag 'databricks' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'databricks-A';
         }
+        
+        It 'Azure.Databricks.PublicAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Databricks.PublicAccess' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'databricks-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'databricks-A';
+        }
     }
 }
