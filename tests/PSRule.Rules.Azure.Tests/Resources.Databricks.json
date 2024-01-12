@@ -145,7 +145,7 @@
     "name": "databricks-B",
     "type": "Microsoft.Databricks/workspaces",
     "sku": {
-      "name": "premium"
+      "name": "trial"
     },
     "location": "eastus"
   }

@@ -25,3 +25,22 @@ spec:
         isBoolean: true
       - field: properties.parameters.enableNoPublicIp.value
         equals: true
+
+---
+# Synopsis: Use non-Trial SKUs for Databricks workspaces.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Databricks.SKU
+  ref: AZR-000409
+  tags:
+    release: GA
+    ruleSet: 2024_01
+    Azure.WAF/pillar: Performance Efficiency
+spec:
+  type:
+  - Microsoft.Databricks/workspaces
+  condition:
+    allOf:
+      - field: sku.name
+        notEquals: trial
