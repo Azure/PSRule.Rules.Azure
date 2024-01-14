@@ -2,7 +2,7 @@
 reviewed: 2024-01-12
 severity: Critical
 pillar: Performance Efficiency
-category: Scaling and Partitioning
+category: PE:03 Selecting services
 resource: Databricks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Databricks.SKU/
 ---
@@ -22,7 +22,7 @@ The Trial SKU is a time-bound offer which has feature and compute limitations, m
 
 ## RECOMMENDATION
 
-Consider configuring Databricks workspaces to use either Standard or Premium tiers, dependant on the workload demands and NFRs.
+Consider configuring Databricks workspaces to use either Standard or Premium tiers, dependant on the workload demands non-functional requirements (NFRs).
 
 ## EXAMPLES
 
@@ -42,7 +42,7 @@ For example:
   "location": "[parameters('location')]",
   "sku": {
     "name": "standard"
-  },
+  }
 }
 ```
 
@@ -66,6 +66,7 @@ resource databricks 'Microsoft.Databricks/workspaces@2023-02-01' = {
 
 ## LINKS
 
+- [PE:03 Selecting services](https://learn.microsoft.com/azure/well-architected/performance-efficiency/select-services)
 - [Databricks Setup](https://learn.microsoft.com/azure/databricks/getting-started/#:~:text=Bicep-,Note,-When%20you%20create)
 - [Databricks Tier Features](https://azure.microsoft.com/pricing/details/databricks)
 - [Databricks Workspace API](https://learn.microsoft.com/azure/templates/Microsoft.Databricks/workspaces)

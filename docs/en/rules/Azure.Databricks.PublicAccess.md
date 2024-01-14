@@ -2,7 +2,7 @@
 reviewed: 2024-01-12
 severity: Critical
 pillar: Security
-category: Application endpoints
+category: SE:06 Network controls
 resource: Databricks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Databricks.PublicAccess/
 ---
@@ -60,12 +60,12 @@ resource databricks 'Microsoft.Databricks/workspaces@2023-02-01' = {
     managedResourceGroupId: managedRg.id
     publicNetworkAccess: 'Disabled'
     }
-  }
 }
 ```
 
 ## LINKS
 
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)  
 - [Azure Databricks WorkspaceProperties](https://learn.microsoft.com/azure/templates/Microsoft.Databricks/workspaces?pivots=deployment-language-bicep#:~:text=WorkspaceCustomParameters-,publicNetworkAccess,-The%20network%20access)
 - [Azure Databricks Private Link Overview](https://learn.microsoft.com/azure/databricks/security/network/classic/private-link)
 - [Network access](https://learn.microsoft.com/azure/databricks/security/network/)

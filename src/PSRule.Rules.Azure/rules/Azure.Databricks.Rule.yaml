@@ -40,10 +40,9 @@ metadata:
 spec:
   type:
   - Microsoft.Databricks/workspaces
-  condition:
-    allOf:
-      - field: sku.name
-        notEquals: trial
+  condition:  
+     field: sku.name  
+     notEquals: trial  
 
 ---
 # Synopsis: Azure Databricks Workspaces should disable public network access.
@@ -59,9 +58,6 @@ metadata:
 spec:
   type:
   - Microsoft.Databricks/workspaces
-  condition:
-    allOf:
-      - field: properties.publicNetworkAccess
-        exists: true
-      - field: properties.publicNetworkAccess
-        equals: Disabled
+  condition:  
+    field: properties.publicNetworkAccess  
+    equals: Disabled  
