@@ -25,3 +25,39 @@ spec:
         isBoolean: true
       - field: properties.parameters.enableNoPublicIp.value
         equals: true
+
+---
+# Synopsis: Use non-Trial SKUs for Databricks workspaces.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Databricks.SKU
+  ref: AZR-000409
+  tags:
+    release: GA
+    ruleSet: 2024_01
+    Azure.WAF/pillar: Performance Efficiency
+spec:
+  type:
+  - Microsoft.Databricks/workspaces
+  condition:  
+     field: sku.name  
+     notEquals: trial  
+
+---
+# Synopsis: Azure Databricks Workspaces should disable public network access.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Databricks.PublicAccess
+  ref: AZR-000410
+  tags:
+    release: GA
+    ruleSet: 2024_01
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.Databricks/workspaces
+  condition:  
+    field: properties.publicNetworkAccess  
+    equals: Disabled  

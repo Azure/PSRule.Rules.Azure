@@ -165,7 +165,7 @@ The following severities are defined:
   Rules identified as _critical_ often have high impact and are highly likely to affect your services.
 - `Important` &mdash; Consider addressing these next, ideally within the next sixty (60) days.
   Rules identified as _important_ often have a significant impact and are likely to affect your services.
-- `Awareness` &mdash; Consider addressing these last, ideally within the next ninty (90) days.
+- `Awareness` &mdash; Consider addressing these last, ideally within the next ninety (90) days.
   Rules identified as _awareness_ often have a moderate or low impact to the operation of your services.
 
 !!! Tip
