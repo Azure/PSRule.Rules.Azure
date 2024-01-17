@@ -1,8 +1,8 @@
 ---
-reviewed: 2021/11/13
+reviewed: 2024-01-17
 severity: Important
 pillar: Security
-category: Data flow
+category: SE:06 Network controls
 resource: Event Grid
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventGrid.TopicPublicAccess/
 ---
@@ -35,18 +35,18 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.EventGrid/topics",
-    "apiVersion": "2021-06-01-preview",
-    "name": "[parameters('topicName')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "disableLocalAuth": true,
-        "publicNetworkAccess": "Disabled",
-        "inputSchema": "CloudEventSchemaV1_0"
-    }
+  "type": "Microsoft.EventGrid/topics",
+  "apiVersion": "2022-06-15",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "disableLocalAuth": true,
+    "publicNetworkAccess": "Disabled",
+    "inputSchema": "CloudEventSchemaV1_0"
+  }
 }
 ```
 
@@ -59,8 +59,8 @@ To deploy Event Grid Topics that pass this rule:
 For example:
 
 ```bicep
-resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
-  name: topicName
+resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
+  name: name
   location: location
   identity: {
     type: 'SystemAssigned'
@@ -75,6 +75,6 @@ resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
 
 ## LINKS
 
-- [Traffic flow security in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-flow#data-exfiltration)
-- [Private Endpoints](https://docs.microsoft.com/azure/event-grid/network-security#private-endpoints)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics?tabs=json)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Private Endpoints](https://learn.microsoft.com/azure/event-grid/network-security#private-endpoints)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.eventgrid/topics)

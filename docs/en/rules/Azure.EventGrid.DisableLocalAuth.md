@@ -1,8 +1,8 @@
 ---
-reviewed: 2022-09-09
+reviewed: 2024-01-17
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: Event Grid
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventGrid.DisableLocalAuth/
 ---
@@ -38,18 +38,18 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.EventGrid/topics",
-    "apiVersion": "2021-06-01-preview",
-    "name": "[parameters('topicName')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "disableLocalAuth": true,
-        "publicNetworkAccess": "Disabled",
-        "inputSchema": "CloudEventSchemaV1_0"
-    }
+  "type": "Microsoft.EventGrid/topics",
+  "apiVersion": "2022-06-15",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "disableLocalAuth": true,
+    "publicNetworkAccess": "Disabled",
+    "inputSchema": "CloudEventSchemaV1_0"
+  }
 }
 ```
 
@@ -62,8 +62,8 @@ To deploy Event Grid Topics that pass this rule:
 For example:
 
 ```bicep
-resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
-  name: topicName
+resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
+  name: name
   location: location
   identity: {
     type: 'SystemAssigned'
@@ -78,8 +78,8 @@ resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
-- [IM-1: Use centralized identity and authentication system](https://docs.microsoft.com/security/benchmark/azure/security-controls-v3-identity-management#im-1-use-centralized-identity-and-authentication-system)
-- [Authentication and authorization with Azure Active Directory](https://docs.microsoft.com/azure/event-grid/authenticate-with-active-directory)
-- [Disable key and shared access signature authentication](https://docs.microsoft.com/azure/event-grid/authenticate-with-active-directory#disable-key-and-shared-access-signature-authentication)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/event-grid-security-baseline#im-1-use-centralized-identity-and-authentication-system)
+- [Authentication and authorization with Microsoft Entra ID](https://learn.microsoft.com/azure/event-grid/authenticate-with-microsoft-entra-id)
+- [Disable key and shared access signature authentication](https://learn.microsoft.com/azure/event-grid/authenticate-with-microsoft-entra-id#disable-key-and-shared-access-signature-authentication)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.eventgrid/topics)

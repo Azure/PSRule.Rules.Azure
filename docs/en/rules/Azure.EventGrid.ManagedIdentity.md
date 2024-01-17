@@ -1,8 +1,8 @@
 ---
-reviewed: 2022-05-14
+reviewed: 2024-01-17
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: Event Grid
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventGrid.ManagedIdentity/
 ---
@@ -36,18 +36,18 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.EventGrid/topics",
-    "apiVersion": "2021-06-01-preview",
-    "name": "[parameters('topicName')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "disableLocalAuth": true,
-        "publicNetworkAccess": "Disabled",
-        "inputSchema": "CloudEventSchemaV1_0"
-    }
+  "type": "Microsoft.EventGrid/topics",
+  "apiVersion": "2022-06-15",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "disableLocalAuth": true,
+    "publicNetworkAccess": "Disabled",
+    "inputSchema": "CloudEventSchemaV1_0"
+  }
 }
 ```
 
@@ -61,8 +61,8 @@ To deploy Event Grid Topics that pass this rule:
 For example:
 
 ```bicep
-resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
-  name: topicName
+resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
+  name: name
   location: location
   identity: {
     type: 'SystemAssigned'
@@ -77,7 +77,7 @@ resource eventGrid 'Microsoft.EventGrid/topics@2021-06-01-preview' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
-- [Assign a managed identity to an Event Grid custom topic or domain](https://docs.microsoft.com/azure/event-grid/enable-identity-custom-topics-domains)
-- [Authenticate event delivery to event handlers](https://docs.microsoft.com/azure/event-grid/security-authentication)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.eventgrid/topics)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [Assign a managed identity to an Event Grid custom topic or domain](https://learn.microsoft.com/azure/event-grid/enable-identity-custom-topics-domains)
+- [Authenticate event delivery to event handlers](https://learn.microsoft.com/azure/event-grid/security-authentication)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.eventgrid/topics)
