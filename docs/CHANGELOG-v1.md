@@ -34,6 +34,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.33.0-B0023:
 
+- New rules:
+  - Databricks:
+    - Check that Databricks workspaces use a non-trial SKU by @batemansogq.
+      [#2646](https://github.com/Azure/PSRule.Rules.Azure/issues/2646)
+    - Check that Databricks workspaces require use of private endpoints by @batemansogq.
+      [#2646](https://github.com/Azure/PSRule.Rules.Azure/issues/2646)
 - Engineering:
   - Bump xunit to v2.6.5.
     [#2635](https://github.com/Azure/PSRule.Rules.Azure/pull/2635)

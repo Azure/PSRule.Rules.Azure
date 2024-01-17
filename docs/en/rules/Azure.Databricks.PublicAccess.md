@@ -15,7 +15,8 @@ Azure Databricks workspaces should disable public network access.
 
 ## DESCRIPTION
 
-Disabling public network access improves security by ensuring that the resource isn't exposed on the public internet. You can control exposure of your resources by creating private endpoints instead.
+Disabling public network access improves security by ensuring that the resource isn't exposed on the public internet.
+You can control exposure of your resources by creating private endpoints instead.
 
 ## RECOMMENDATION
 
@@ -37,9 +38,17 @@ For example:
   "apiVersion": "2023-02-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
+  "sku": {
+    "name": "standard"
+  },
   "properties": {
     "managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', 'example-mg')]",
-    "publicNetworkAccess": "Disabled"
+    "publicNetworkAccess": "Disabled",
+    "parameters": {
+      "enableNoPublicIp": {
+        "value": true
+      }
+    }
   }
 }
 ```
@@ -56,10 +65,18 @@ For example:
 resource databricks 'Microsoft.Databricks/workspaces@2023-02-01' = {
   name: name
   location: location
+  sku: {
+    name: 'standard'
+  }
   properties: {
     managedResourceGroupId: managedRg.id
     publicNetworkAccess: 'Disabled'
+    parameters: {
+      enableNoPublicIp: {
+        value: true
+      }
     }
+  }
 }
 ```
 

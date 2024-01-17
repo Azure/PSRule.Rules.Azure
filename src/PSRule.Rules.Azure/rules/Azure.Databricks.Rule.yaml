@@ -35,7 +35,7 @@ metadata:
   ref: AZR-000409
   tags:
     release: GA
-    ruleSet: 2024_01
+    ruleSet: 2024_03
     Azure.WAF/pillar: Performance Efficiency
 spec:
   type:
@@ -53,7 +53,7 @@ metadata:
   ref: AZR-000410
   tags:
     release: GA
-    ruleSet: 2024_01
+    ruleSet: 2024_03
     Azure.WAF/pillar: Security
 spec:
   type:
