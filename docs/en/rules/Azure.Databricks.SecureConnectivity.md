@@ -2,7 +2,7 @@
 reviewed: 2023-07-26
 severity: Critical
 pillar: Security
-category: Application endpoints
+category: SE:06 Network controls
 resource: Databricks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Databricks.SecureConnectivity/
 ---
@@ -46,8 +46,12 @@ For example:
   "apiVersion": "2023-02-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
+  "sku": {
+    "name": "standard"
+  },
   "properties": {
     "managedResourceGroupId": "[subscriptionResourceId('Microsoft.Resources/resourceGroups', 'example-mg')]",
+    "publicNetworkAccess": "Disabled",
     "parameters": {
       "enableNoPublicIp": {
         "value": true
@@ -69,8 +73,12 @@ For example:
 resource databricks 'Microsoft.Databricks/workspaces@2023-02-01' = {
   name: name
   location: location
+  sku: {
+    name: 'standard'
+  }
   properties: {
     managedResourceGroupId: managedRg.id
+    publicNetworkAccess: 'Disabled'
     parameters: {
       enableNoPublicIp: {
         value: true
@@ -82,7 +90,7 @@ resource databricks 'Microsoft.Databricks/workspaces@2023-02-01' = {
 
 ## LINKS
 
-- [Public endpoints](https://learn.microsoft.com/azure/well-architected/security/design-network-endpoints#public-endpoints)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)  
 - [Secure cluster connectivity (No Public IP / NPIP)](https://learn.microsoft.com/azure/databricks/security/network/secure-cluster-connectivity)
 - [Network access](https://learn.microsoft.com/azure/databricks/security/network/)
 - [Azure Databricks architecture overview](https://learn.microsoft.com/azure/databricks/getting-started/overview)
