@@ -41,8 +41,8 @@ What's changed since pre-release v1.33.0-B0023:
     - Check that Databricks workspaces require use of private endpoints by @batemansogq.
       [#2646](https://github.com/Azure/PSRule.Rules.Azure/issues/2646)
 - Engineering:
-  - Bump xunit to v2.6.5.
-    [#2635](https://github.com/Azure/PSRule.Rules.Azure/pull/2635)
+  - Bump xunit to v2.6.6.
+    [#2645](https://github.com/Azure/PSRule.Rules.Azure/pull/2645)
   - Bump BenchmarkDotNet to v0.13.12.
     [#2636](https://github.com/Azure/PSRule.Rules.Azure/pull/2636)
   - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.12.
