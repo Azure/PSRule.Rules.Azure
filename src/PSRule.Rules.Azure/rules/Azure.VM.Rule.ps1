@@ -123,24 +123,32 @@ Rule 'Azure.VM.DiskAttached' -Ref 'AZR-000250' -Type 'Microsoft.Compute/disks' -
     Within 'properties.diskState' 'Attached', 'Reserved' -Reason $LocalizedData.ResourceNotAssociated
 }
 
-# TODO: Check IOPS
-
-# Synopsis: Managed disk is smaller than SKU size
-Rule 'Azure.VM.DiskSizeAlignment' -Ref 'AZR-000251' -Type 'Microsoft.Compute/disks' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Cost Optimization'; } {
+# Synopsis: Align to the Managed Disk billing increments to improve cost efficiency.
+Rule 'Azure.VM.DiskSizeAlignment' -Ref 'AZR-000251' -Type 'Microsoft.Compute/disks' -With 'Azure.Disk.NonMarketplaceImage' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Cost Optimization'; } {
     $diskSize = @(32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768)
+
+    # Add smaller disk sizes for premium and standard SSD.
+    if ($TargetObject.sku.name -like 'Premium_*' -or $TargetObject.sku.name -like 'StandardSSD_*') {
+        $diskSize = @(4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048, 4096, 8192, 16384, 32768)
+    }
+
+    # Add sizes for Ultra SSD.
+    if ($TargetObject.sku.name -like 'UltraSSD_*') {
+        $diskSize = @(4, 8, 16, 32, 64, 128, 256, 512)
+        1..64 | ForEach-Object { $diskSize += $_ * 1024 }
+    }
+
     $actualSize = $TargetObject.Properties.diskSizeGB
 
-    # Find the closest disk size
+    # Find the closest disk size.
     $i = 0;
     while ($actualSize -gt $diskSize[$i]) {
         $i++;
     }
 
-    # Actual disk size should be the disk size within 5GB
+    # Actual disk size should be the disk size within 5GB.
     $Assert.GreaterOrEqual($TargetObject, 'Properties.diskSizeGB', ($diskSize[$i] - 5));
 }
-
-# TODO: Check number of disks
 
 # Synopsis: Use Azure Disk Encryption
 Rule 'Azure.VM.ADE' -Ref 'AZR-000252' -Type 'Microsoft.Compute/disks' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {

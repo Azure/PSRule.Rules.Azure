@@ -38,6 +38,9 @@ What's changed since pre-release v1.33.0-B0053:
   - Dev Box:
     - Check that projects limit the number of Dev Boxes per user by @BernieWhite.
       [#2654](https://github.com/Azure/PSRule.Rules.Azure/issues/2654)
+- Bug fixes:
+  - Fixed `Azure.VM.DiskSizeAlignment` does not handle smaller sizes and ultra disks by @BernieWhite.
+    [#2656](https://github.com/Azure/PSRule.Rules.Azure/issues/2656)
 
 ## v1.33.0-B0053 (pre-release)
 

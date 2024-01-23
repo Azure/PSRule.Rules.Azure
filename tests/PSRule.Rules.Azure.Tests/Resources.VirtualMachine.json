@@ -185,6 +185,41 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/disks/disk-D",
+    "Location": "region",
+    "ResourceName": "disk-D",
+    "Name": "disk-D",
+    "Properties": {
+      "creationData": {
+        "createOption": "Empty"
+      },
+      "diskSizeGB": 4,
+      "diskIOPSReadWrite": 500,
+      "diskMBpsReadWrite": 100,
+      "encryptionSettingsCollection": {
+        "enabled": false,
+        "encryptionSettings": [],
+        "encryptionSettingsVersion": "1.0"
+      },
+      "provisioningState": "Succeeded",
+      "diskState": "Unattached"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/disks",
+    "ResourceType": "Microsoft.Compute/disks",
+    "Sku": {
+      "Name": "Premium_LRS",
+      "Tier": "Premium",
+      "Size": null,
+      "Family": null,
+      "Model": null,
+      "Capacity": null
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
     "Location": "region",

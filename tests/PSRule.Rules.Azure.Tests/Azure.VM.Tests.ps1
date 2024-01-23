@@ -201,8 +201,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'disk-B', 'disk-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'disk-B', 'disk-C', 'disk-D';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly "The resource is not associated.";
@@ -228,8 +228,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'disk-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'disk-A', 'disk-D';
         }
 
         It 'Azure.VM.UseHybridUseBenefit' {
@@ -381,8 +381,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'disk-B', 'disk-C', 'ReplicaVM_DataDisk_0-ASRReplica';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'disk-B', 'disk-C', 'ReplicaVM_DataDisk_0-ASRReplica', 'disk-D';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -484,8 +484,8 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'ReplicaVM_DataDisk_0-ASRReplica', 'disk-A', 'disk-B', 'disk-C';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'ReplicaVM_DataDisk_0-ASRReplica', 'disk-A', 'disk-B', 'disk-C', 'disk-D';
         }
 
         It 'Azure.VM.MigrateAMA' {
