@@ -135,4 +135,18 @@ spec:
       notIn:
       - MicrosoftWindowsDesktop
 
+---
+# Synopsis: Exclude disks that are deployed as part of a marketplace offering.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Disk.NonMarketplaceImage
+spec:
+  if:
+    allOf:
+      - type: .
+        equals: Microsoft.Compute/disks
+      - field: properties.purchasePlan.name
+        hasValue: false
+
 #endregion Selectors
