@@ -1,0 +1,69 @@
+[
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DevCenter/projects/project-A",
+    "name": "project-A",
+    "type": "microsoft.devcenter/projects",
+    "location": "location",
+    "properties": {
+      "provisioningState": "Succeeded",
+      "devCenterId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DevCenter/devcenters/center-A",
+      "description": "",
+      "devCenterUri": "https://00000000-0000-0000-0000-000000000000-center-A.location.devcenter.azure.com/"
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DevCenter/projects/project-B",
+    "name": "project-B",
+    "type": "microsoft.devcenter/projects",
+    "location": "location",
+    "properties": {
+      "devCenterUri": "https://00000000-0000-0000-0000-000000000000-center-A.location.devcenter.azure.com/",
+      "devCenterId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DevCenter/devcenters/center-A",
+      "description": "Demo project for customer demos.",
+      "maxDevBoxesPerUser": 100,
+      "provisioningState": "Failed"
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.DevCenter/devcenters/center-A",
+    "name": "center-A",
+    "type": "microsoft.devcenter/devcenters",
+    "location": "location",
+    "identity": {
+      "principalId": "00000000-0000-0000-0000-000000000000",
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "type": "SystemAssigned"
+    },
+    "properties": {
+      "devCenterUri": "https://00000000-0000-0000-0000-000000000000-center-A.location.devcenter.azure.com/",
+      "provisioningState": "Succeeded"
+    }
+  },
+  {
+    "type": "Microsoft.DevCenter/projects/pools",
+    "name": "project-A/pool-A",
+    "location": "location",
+    "properties": {
+      "devBoxDefinitionName": "def-A",
+      "networkConnectionName": "managedNetwork",
+      "licenseType": "Windows_Client",
+      "localAdministrator": "Enabled",
+      "singleSignOnStatus": "Disabled",
+      "virtualNetworkType": "Managed",
+      "managedVirtualNetworkRegions": [
+        "location"
+      ]
+    }
+  },
+  {
+    "type": "Microsoft.DevCenter/projects/pools/schedules",
+    "name": "project-A/pool-A/default",
+    "properties": {
+      "type": "StopDevBox",
+      "frequency": "Daily",
+      "time": "19:00",
+      "timeZone": "Australia/Brisbane",
+      "state": "Enabled"
+    }
+  }
+]

@@ -32,6 +32,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.33.0-B0053:
+
+- New rules:
+  - Dev Box:
+    - Check that projects limit the number of Dev Boxes per user by @BernieWhite.
+      [#2654](https://github.com/Azure/PSRule.Rules.Azure/issues/2654)
+
 ## v1.33.0-B0053 (pre-release)
 
 What's changed since pre-release v1.33.0-B0023:

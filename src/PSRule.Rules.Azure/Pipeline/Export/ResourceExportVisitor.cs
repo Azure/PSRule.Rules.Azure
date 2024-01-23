@@ -56,6 +56,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string TYPE_EVENTHUB_NAMESPACE = "Microsoft.EventHub/namespaces";
         private const string TYPE_SERVICEBUS_NAMESPACE = "Microsoft.ServiceBus/namespaces";
         private const string TYPE_VISUALSTUDIO_ACCOUNT = "Microsoft.VisualStudio/account";
+        private const string TYPE_DEVCENTER_PROJECT = "Microsoft.DevCenter/projects";
 
         private const string PROVIDERTYPE_DIAGNOSTICSETTINGS = "/providers/microsoft.insights/diagnosticSettings";
         private const string PROVIDERTYPE_ROLEASSIGNMENTS = "/providers/Microsoft.Authorization/roleAssignments";
@@ -82,6 +83,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string APIVERSION_2022_04_01 = "2022-04-01";
         private const string APIVERSION_2022_09_10 = "2022-09-10";
         private const string APIVERSION_2022_05_01 = "2022-05-01";
+        private const string APIVERSION_2023_04_01 = "2023-04-01";
 
         private readonly ProviderData _ProviderData;
 
@@ -160,6 +162,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                 await VisitDataExplorerCluster(resourceContext, resource, resourceType, resourceId) ||
                 await VisitEventHubNamespace(resourceContext, resource, resourceType, resourceId) ||
                 await VisitServiceBusNamespace(resourceContext, resource, resourceType, resourceId) ||
+                await VisitDevCenterProject(resourceContext, resource, resourceType, resourceId) ||
                 VisitNetworkConnection(resource, resourceType);
         }
 
@@ -223,6 +226,21 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                 return false;
 
             AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "eventhubs", "2021-11-01"));
+            return true;
+        }
+
+        private static async Task<bool> VisitDevCenterProject(ResourceContext context, JObject resource, string resourceType, string resourceId)
+        {
+            if (!string.Equals(resourceType, TYPE_DEVCENTER_PROJECT, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            var pools = await GetSubResourcesByType(context, resourceId, "pools", APIVERSION_2023_04_01);
+            foreach (var pool in pools)
+            {
+                AddSubResource(pool, await GetSubResourcesByType(context, resourceId, "schedules", APIVERSION_2023_04_01));
+            }
+            AddSubResource(resource, pools);
+
             return true;
         }
 

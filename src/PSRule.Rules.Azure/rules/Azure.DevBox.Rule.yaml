@@ -1,0 +1,24 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Dev Box resources
+#
+
+---
+# Synopsis: Limit the number of Dev Boxes a single user can create for a project.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.DevBox.ProjectLimit
+  ref: AZR-000411
+  tags:
+    release: GA
+    ruleSet: 2024_03
+    Azure.WAF/pillar: Cost Optimization
+spec:
+  type:
+  - Microsoft.DevCenter/projects
+  condition:
+    field: properties.maxDevBoxesPerUser
+    hasValue: true
