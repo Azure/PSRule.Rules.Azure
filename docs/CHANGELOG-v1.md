@@ -32,6 +32,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Updated rules:
+  - Template file
+    - Update `AZR-000212` to not fail with `languageVersion` 2.0 Templates
+
 ## v1.33.0-B0088 (pre-release)
 
 What's changed since pre-release v1.33.0-B0053:
