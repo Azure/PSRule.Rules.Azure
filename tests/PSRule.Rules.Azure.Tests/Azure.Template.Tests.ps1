@@ -48,7 +48,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
+            $ruleResult.Length | Should -Be 5;
             ($ruleResult | Where-Object { $_.TargetName -like "*Resources.Template.json" }).TargetName | Should -BeLike "*Resources.Template.json";
             ($ruleResult | Where-Object { $_.TargetName -like "*Resources.Template4.json" }).TargetName | Should -BeLike "*Resources.Template4.json";
         }
@@ -67,8 +67,8 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn 'Resources.Template2.json', 'Resources.Template4.json', 'Resources.Template.Bicep1.json', 'Resources.Template.Bicep2.json';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn 'Resources.Template2.json', 'Resources.Template4.json', 'Resources.Template.Bicep1.json', 'Resources.Template.Bicep2.json', 'Resources.Template.V2.json';
         }
 
         It 'Azure.Template.TemplateScheme' {
@@ -85,11 +85,12 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
+            $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
                 'Resources.Template.Bicep1.json'
                 'Resources.Template.Bicep2.json'
                 'Resources.Template.json'
+                'Resources.Template.V2.json'
                 'Resources.Template3.json'
                 'Resources.Template4.json'
             );
@@ -123,10 +124,11 @@ Describe 'Azure.Template' -Tag 'Template' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
+            $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
                 'Resources.Template.Bicep1.json'
                 'Resources.Template.Bicep2.json'
+                'Resources.Template.V2.json'
                 'Resources.Template3.json'
                 'Resources.Template4.json'
             );
@@ -688,7 +690,7 @@ Describe 'Azure.Template' -Tag 'Template' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' } | Sort-Object -Property { $_.TargetName.Replace('\', '/').Split('/')[-1] });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            
+
             $ruleResult.TargetName.Replace('\', '/').Split('/')[-1] | Should -BeIn @(
                 'Resources.Template2.json'
                 'Resources.Template3.json'
