@@ -11,7 +11,7 @@
 Rule 'Azure.Template.TemplateFile' -Ref 'AZR-000212' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $Assert.HasFields($jsonObject, @('$schema', 'contentVersion', 'resources'));
-    $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'contentVersion', 'metadata', 'parameters', 'functions', 'variables', 'resources', 'outputs';
+    $jsonObject.PSObject.Properties | Within 'Name' '$schema', 'languageVersion', 'contentVersion', 'definitions', 'metadata', 'parameters', 'functions', 'variables', 'resources', 'outputs';
 }
 
 # Synopsis: Use a more recent version of the Azure template schema.
