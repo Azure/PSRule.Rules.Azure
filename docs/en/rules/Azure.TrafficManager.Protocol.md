@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-01-27
 severity: Important
 pillar: Security
-category: Data protection
+category: SE:07 Encryption
 resource: Traffic Manager
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.TrafficManager.Protocol/
 ---
@@ -30,7 +31,66 @@ but do not validate if the certificate is valid.
 Consider using HTTPS to monitor web-based endpoint health.
 HTTPS-based monitoring improves security and increases accuracy of health probes.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy Traffic Manager profiles that pass this rule:
+
+- Set the `properties.monitorConfig.protocol` property to `HTTPS` for HTTP-based endpoints.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/trafficmanagerprofiles",
+  "apiVersion": "2022-04-01",
+  "name": "[parameters('name')]",
+  "location": "global",
+  "properties": {
+    "endpoints": "[parameters('endpoints')]",
+    "trafficRoutingMethod": "Performance",
+    "monitorConfig": {
+      "protocol": "HTTPS",
+      "port": 443,
+      "intervalInSeconds": 30,
+      "timeoutInSeconds": 5,
+      "toleratedNumberOfFailures": 3,
+      "path": "/healthz"
+    }
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy Traffic Manager profiles that pass this rule:
+
+- Set the `properties.monitorConfig.protocol` property to `HTTPS` for HTTP-based endpoints.
+
+For example:
+
+```bicep
+resource profile 'Microsoft.Network/trafficmanagerprofiles@2022-04-01' = {
+  name: name
+  location: 'global'
+  properties: {
+    endpoints: endpoints
+    trafficRoutingMethod: 'Performance'
+    monitorConfig: {
+      protocol: 'HTTPS'
+      port: 443
+      intervalInSeconds: 30
+      timeoutInSeconds: 5
+      toleratedNumberOfFailures: 3
+      path: '/healthz'
+    }
+  }
+}
+```
+
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Traffic Manager endpoint monitoring](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
+- [Traffic Manager endpoint monitoring](https://learn.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/trafficmanagerprofiles)

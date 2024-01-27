@@ -32,9 +32,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-- Updated rules:
-  - Template file
-    - Update `AZR-000212` to not fail with `languageVersion` 2.0 Templates
+What's changed since pre-release v1.33.0-B0088:
+
+- Bug fixes:
+  - Fixed `Azure.Template.TemplateFile` to support with `languageVersion` 2.0 template properties by @MrRoundRobin.
+    [#2660](https://github.com/Azure/PSRule.Rules.Azure/issues/2660)
 
 ## v1.33.0-B0088 (pre-release)
 
