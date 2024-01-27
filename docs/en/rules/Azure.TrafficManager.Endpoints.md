@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Load balancing and failover
+category: RE:05 Redundancy
 resource: Traffic Manager
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.TrafficManager.Endpoints/
 ---
@@ -26,5 +26,7 @@ Also consider, using endpoints deployed across different regions to provide high
 
 ## LINKS
 
-- [What is Traffic Manager?](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview)
-- [How Traffic Manager Works](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-how-it-works)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [What is Traffic Manager?](https://learn.microsoft.com/azure/traffic-manager/traffic-manager-overview)
+- [How Traffic Manager Works](https://learn.microsoft.com/azure/traffic-manager/traffic-manager-how-it-works)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/trafficmanagerprofiles)
