@@ -320,6 +320,7 @@ Example:
 
 ```yaml
 # YAML: Add a custom policy definition to ignore
+configuration:
   AZURE_POLICY_IGNORE_LIST:
   - '/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9'
   - '/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0'

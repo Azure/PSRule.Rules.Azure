@@ -15,6 +15,7 @@ using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
+using YamlDotNet.Core.Tokens;
 
 namespace PSRule.Rules.Azure.Data.Policy
 {
@@ -114,10 +115,13 @@ namespace PSRule.Rules.Azure.Data.Policy
             private readonly Stack<string> _FieldPrefix;
             private readonly TemplateValidator _Validator;
             private readonly IDictionary<string, JToken> _ParameterAssignments;
-            private readonly HashSet<string> _PolicyIgnore;
+            private readonly bool _KeepDuplicates;
+            private readonly Dictionary<string, PolicyIgnoreResult> _PolicyIgnore;
+            private readonly List<string> _ReplacementRules;
 
-            internal PolicyAssignmentContext(PipelineContext context)
+            internal PolicyAssignmentContext(PipelineContext context, bool keepDuplicates = false)
             {
+                _KeepDuplicates = keepDuplicates;
                 _ExpressionFactory = new ExpressionFactory(policy: true);
                 _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
                 _PolicyAliasProviderHelper = new PolicyAliasProviderHelper();
@@ -149,8 +153,18 @@ namespace PSRule.Rules.Azure.Data.Policy
                     PolicyRulePrefix = context?.Option?.Configuration?.PolicyRulePrefix;
 
                 _PolicyIgnore = new PolicyIgnoreData().GetIndex();
-                if (context?.Option?.Configuration?.PolicyIgnoreList != null)
-                    _PolicyIgnore.UnionWith(context?.Option?.Configuration?.PolicyIgnoreList);
+                if (context?.Option?.Configuration?.PolicyIgnoreList != null &&
+                    context.Option.Configuration.PolicyIgnoreList.Length > 0)
+                {
+                    foreach (var id in context.Option.Configuration.PolicyIgnoreList)
+                    {
+                        _PolicyIgnore[id] = new PolicyIgnoreResult
+                        {
+                            Reason = PolicyIgnoreReason.Configured
+                        };
+                    }
+                }
+                _ReplacementRules = new List<string>();
             }
 
             public TemplateVisitor.TemplateContext.CopyIndexStore CopyIndex { get; }
@@ -585,6 +599,17 @@ namespace PSRule.Rules.Azure.Data.Policy
                 return _Definitions.ToArray();
             }
 
+            public PolicyBaseline GenerateBaseline()
+            {
+                return new PolicyBaseline
+                (
+                    name: string.Concat(PolicyRulePrefix, ".PolicyBaseline.All"),
+                    description: "Generated automatically when exporting Azure Policy rules.",
+                    definitionRuleNames: _Definitions.Select(d => d.Name),
+                    replacedRuleNames: _ReplacementRules
+                );
+            }
+
             internal bool TryPolicyAliasPath(string aliasName, out string aliasPath)
             {
                 aliasPath = null;
@@ -683,7 +708,29 @@ namespace PSRule.Rules.Azure.Data.Policy
             /// </summary>
             internal bool ShouldIgnorePolicyDefinition(string definitionId)
             {
-                return _PolicyIgnore.Contains(definitionId);
+                if (!_PolicyIgnore.TryGetValue(definitionId, out var value))
+                    return false;
+
+                if (value.Reason == PolicyIgnoreReason.Configured)
+                {
+                    // Policy definition has been ignored based on configuration: {0}
+                    Pipeline?.Writer?.VerbosePolicyIgnoreConfigured(definitionId);
+                    return true;
+                }
+                else if (value.Reason == PolicyIgnoreReason.NotApplicable)
+                {
+                    // Policy definition has been ignored because it is not applicable to Infrastructure as Code: {0}
+                    Pipeline?.Writer?.VerbosePolicyIgnoreNotApplicable(definitionId);
+                    return true;
+                }
+                else if (value.Reason == PolicyIgnoreReason.Duplicate && !_KeepDuplicates)
+                {
+                    // Policy definition has been ignored because a similar built-in rule already exists ({1}): {0}
+                    Pipeline?.Writer?.VerbosePolicyIgnoreDuplicate(definitionId, value.Value);
+                    _ReplacementRules.Add(string.Concat("PSRule.Rules.Azure\\", value.Value));
+                    return true;
+                }
+                return false;
             }
 
             /// <inheritdoc/>
@@ -845,9 +892,11 @@ namespace PSRule.Rules.Azure.Data.Policy
                 !policyRule.TryObjectProperty(PROPERTY_THEN, out var then))
                 return false;
 
-            if (!properties.TryStringProperty(PROPERTY_MODE, out var mode) ||
-                !IsPolicyMode(mode, out var policyMode))
+            if (!properties.TryStringProperty(PROPERTY_MODE, out var mode) || !IsPolicyMode(mode, out var policyMode))
+            {
+                context.Pipeline?.Writer?.VerbosePolicyIgnoreNotApplicable(policyDefinitionId);
                 return false;
+            }
 
             properties.TryStringProperty(PROPERTY_DISPLAYNAME, out var displayName);
             properties.TryStringProperty(PROPERTY_DESCRIPTION, out var description);
@@ -892,8 +941,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 context.DefinitionParameterMap[policyDefinitionId] = result.Parameters;
             }
 
-            if (!TryPolicyRuleEffect(context, then, out var effect) ||
-                ShouldFilterRule(then, effect))
+            if (!TryPolicyRuleEffect(context, then, out var effect) || ShouldFilterRule(context, policyDefinitionId, then, effect))
                 return false;
 
             // Modify policy rule
@@ -1592,23 +1640,32 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <summary>
         /// Determines if the policy definition should be skipped and not generate a rule.
         /// </summary>
-        private static bool ShouldFilterRule(JObject then, string effect)
+        private static bool ShouldFilterRule(PolicyAssignmentContext context, string policyDefinitionId, JObject then, string effect)
         {
             if (effect.Equals(EFFECT_DISABLED, StringComparison.OrdinalIgnoreCase))
+            {
+                context?.Pipeline?.Writer.VerbosePolicyIgnoreDisabled(policyDefinitionId);
                 return true;
+            }
 
             // Check if AuditIfNotExists type is a runtime type.
             return then.TryObjectProperty(PROPERTY_DETAILS, out var details) &&
                 details.TryStringProperty(PROPERTY_TYPE, out var type) &&
                 effect.Equals(EFFECT_AUDITIFNOTEXISTS, StringComparison.OrdinalIgnoreCase) &&
-                IsRuntimeType(type);
+                IsRuntimeType(context, policyDefinitionId, type);
         }
 
-        private static bool IsRuntimeType(string type)
+        private static bool IsRuntimeType(PolicyAssignmentContext context, string policyDefinitionId, string type)
         {
-            return type.Equals(TYPE_SECURITYASSESSMENTS, StringComparison.OrdinalIgnoreCase) ||
+            var isRuntimeType = type.Equals(TYPE_SECURITYASSESSMENTS, StringComparison.OrdinalIgnoreCase) ||
                 type.Equals(TYPE_GUESTCONFIGURATIONASSIGNMENTS, StringComparison.OrdinalIgnoreCase) ||
                 type.Equals(TYPE_BACKUPPROTECTEDITEMS, StringComparison.OrdinalIgnoreCase);
+
+            if (isRuntimeType)
+            {
+                context?.Pipeline?.Writer.VerbosePolicyIgnoreNotApplicable(policyDefinitionId);
+            }
+            return isRuntimeType;
         }
 
         private static bool IsPolicyMode(string mode, out PolicyMode policyMode)

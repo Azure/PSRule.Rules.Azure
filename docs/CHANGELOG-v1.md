@@ -32,6 +32,24 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.33.0-B0126:
+
+- New features:
+  - Exporting policy as rules also generates a baseline by @BernieWhite.
+    [#2482](https://github.com/Azure/PSRule.Rules.Azure/issues/2482)
+    - A baseline is automatically generated that includes for all rules exported.
+      If a policy rule has been replaced by a built-in rule, the baseline will include the built-in rule instead.
+    - The baseline is named `<Prefix>.PolicyBaseline.All`. i.e. `Azure.PolicyBaseline.All` by default.
+    - For details see [Policy as rules](./concepts/policy-as-rules.md#generated-baseline).
+- General improvements:
+  - Rules that are ignored during exporting policy as rules are now generate a verbose logs by @BernieWhite.
+    [#2482](https://github.com/Azure/PSRule.Rules.Azure/issues/2482)
+    - This is to improve transparency of why rules are not exported.
+    - To see details on why a rule is ignored, enable verbose logging with `-Verbose`.
+  - Policies that duplicate built-in rules can now be exported by using the `-KeepDuplicates` parameter by @BernieWhite.
+    [#2482](https://github.com/Azure/PSRule.Rules.Azure/issues/2482)
+    - For details see [Policy as rules](./concepts/policy-as-rules.md#duplicate-policies).
+
 ## v1.33.0-B0126 (pre-release)
 
 What's changed since pre-release v1.33.0-B0088:

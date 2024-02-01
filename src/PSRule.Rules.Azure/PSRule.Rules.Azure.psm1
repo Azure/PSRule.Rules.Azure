@@ -459,7 +459,10 @@ function Export-AzPolicyAssignmentRuleData {
         [String]$RulePrefix,
 
         [Parameter(Mandatory = $False)]
-        [Switch]$PassThru = $False
+        [Switch]$PassThru = $False,
+
+        [Parameter(Mandatory = $False)]
+        [Switch]$KeepDuplicates = $False
     )
     begin {
         Write-Verbose -Message '[Export-AzPolicyAssignmentRuleData] BEGIN::';
@@ -475,6 +478,7 @@ function Export-AzPolicyAssignmentRuleData {
         $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::Assignment($option);
         $builder.Assignment($Name);
         $builder.PassThru($PassThru);
+        $builder.KeepDuplicates($KeepDuplicates);
 
         # Bind to subscription context
         if ($PSBoundParameters.ContainsKey('Subscription')) {

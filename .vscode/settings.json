@@ -133,6 +133,14 @@
     "yaml",
     "yml"
   ],
+  "json.schemas": [
+    {
+      "fileMatch": [
+        "**/data/policy-ignore.json"
+      ],
+      "url": "./.vscode/policy-ignore.schema.json"
+    }
+  ],
   "omnisharp.organizeImportsOnFormat": true,
   "omnisharp.enableEditorConfigSupport": true,
   "omnisharp.enableRoslynAnalyzers": true,

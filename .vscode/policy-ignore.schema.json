@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Policy as Code Ignore",
+  "description": "Policy ignore identifies policies that will be ignored by PSRule for generating rules during export of policies.",
+  "type": "array",
+  "items": {
+    "properties": {
+      "policyDefinitionIds": {
+        "type": "array",
+        "title": "Policy definition IDs",
+        "description": "The resource IDs of built-in policies to ignore.",
+        "minItems": 1,
+        "uniqueItems": true,
+        "items": {
+          "type": "string"
+        }
+      },
+      "reason": {
+        "type": "string",
+        "title": "The reason why the policy definition is ignored.",
+        "enum": [
+          "Duplicate",
+          "NotApplicable"
+        ],
+        "default": "Duplicate"
+      },
+      "value": {
+        "type": "string",
+        "title": "Value",
+        "description": "An additional relating to the reason the policy definition was ignored."
+      }
+    },
+    "additionalProperties": false,
+    "examples": [
+      {
+        "policyDefinitionIds": [],
+        "reason": "Duplicate",
+        "value": ""
+      }
+    ]
+  }
+}

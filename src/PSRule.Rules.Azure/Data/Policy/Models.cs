@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json.Linq;
@@ -175,5 +176,27 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
             return _Value;
         }
+    }
+
+    [JsonConverter(typeof(PolicyBaselineConverter))]
+    internal sealed class PolicyBaseline
+    {
+        public PolicyBaseline(string name, string description, IEnumerable<string> definitionRuleNames, IEnumerable<string> replacedRuleNames)
+        {
+            Name = name;
+            Description = description;
+            Include = Union(definitionRuleNames ?? Array.Empty<string>(), replacedRuleNames ?? Array.Empty<string>());
+        }
+
+        private static string[] Union(IEnumerable<string> definitionRuleNames, IEnumerable<string> replacedRuleNames)
+        {
+            return definitionRuleNames.Union(replacedRuleNames).ToArray();
+        }
+
+        public string Name { get; }
+
+        public string Description { get; }
+
+        public string[] Include { get; }
     }
 }

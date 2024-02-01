@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 using System;
-using System.ComponentModel.Design;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
