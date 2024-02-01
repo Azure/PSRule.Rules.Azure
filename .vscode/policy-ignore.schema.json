@@ -1,5 +1,5 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$schema": "https://json-schema.org/draft-07/schema#",
   "title": "Policy as Code Ignore",
   "description": "Policy ignore identifies policies that will be ignored by PSRule for generating rules during export of policies.",
   "type": "array",
