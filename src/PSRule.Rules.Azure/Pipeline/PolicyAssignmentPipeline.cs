@@ -10,10 +10,10 @@ namespace PSRule.Rules.Azure.Pipeline
     {
         private readonly PolicyAssignmentHelper _PolicyAssignmentHelper;
 
-        internal PolicyAssignmentPipeline(PipelineContext context)
+        internal PolicyAssignmentPipeline(PipelineContext context, bool keepDuplicates)
             : base(context)
         {
-            _PolicyAssignmentHelper = new PolicyAssignmentHelper(context);
+            _PolicyAssignmentHelper = new PolicyAssignmentHelper(context, keepDuplicates);
         }
 
         /// <inheritdoc/>
@@ -25,11 +25,18 @@ namespace PSRule.Rules.Azure.Pipeline
             ProcessCatch(source.AssignmentFile);
         }
 
+        public override void End()
+        {
+            Context.Writer.WriteObject(_PolicyAssignmentHelper.Context.GetDefinitions(), true);
+            Context.Writer.WriteObject(_PolicyAssignmentHelper.Context.GenerateBaseline(), false);
+            base.End();
+        }
+
         private void ProcessCatch(string assignmentFile)
         {
             try
             {
-                Context.Writer.WriteObject(ProcessAssignment(assignmentFile), true);
+                ProcessAssignment(assignmentFile);
             }
             catch (PipelineException ex)
             {
@@ -45,9 +52,9 @@ namespace PSRule.Rules.Azure.Pipeline
             }
         }
 
-        internal PolicyDefinition[] ProcessAssignment(string assignmentFile)
+        private void ProcessAssignment(string assignmentFile)
         {
-            return _PolicyAssignmentHelper.ProcessAssignment(assignmentFile, out _);
+            _PolicyAssignmentHelper.ProcessAssignment(assignmentFile);
         }
     }
 }

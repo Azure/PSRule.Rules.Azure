@@ -226,8 +226,20 @@
     <value>The template file '{0}' must be within the current working directory.</value>
     <comment>Occurs when the template file is outside of the current working path.</comment>
   </data>
+  <data name="PolicyIgnoreConfigured" xml:space="preserve">
+    <value>Policy definition has been ignored based on configuration: {0}</value>
+  </data>
+  <data name="PolicyIgnoreDisabled" xml:space="preserve">
+    <value>Policy definition has been ignored because it is disabled: {0}</value>
+  </data>
+  <data name="PolicyIgnoreDuplicate" xml:space="preserve">
+    <value>Policy definition has been ignored because a similar built-in rule already exists ({1}): {0}</value>
+  </data>
   <data name="PolicyIgnoreInvalid" xml:space="preserve">
     <value>Failed to the policy ignore content.</value>
+  </data>
+  <data name="PolicyIgnoreNotApplicable" xml:space="preserve">
+    <value>Policy definition has been ignored because it is not applicable to Infrastructure as Code: {0}</value>
   </data>
   <data name="PropertyNotFound" xml:space="preserve">
     <value>The language expression property '{0}' doesn't exist.</value>

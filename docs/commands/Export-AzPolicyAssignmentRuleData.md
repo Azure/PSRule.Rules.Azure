@@ -16,7 +16,7 @@ Export JSON based rules from policy assignment data.
 ```text
 Export-AzPolicyAssignmentRuleData [-Name <String>] -AssignmentFile <String>
  [-ResourceGroup <ResourceGroupReference>] [-Subscription <SubscriptionReference>] [-OutputPath <String>]
- [-RulePrefix <String>] [-PassThru] [<CommonParameters>]
+ [-RulePrefix <String>] [-PassThru] [-KeepDuplicates] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -200,7 +200,26 @@ Aliases:
 
 Required: False
 Position: Named
-Default value: None
+Default value: False
+Accept pipeline input: False
+Accept wildcard characters: False
+```
+
+### -KeepDuplicates
+
+Determines if Azure policy definitions that duplicate existing built-in rules are exported.
+By default, duplicates are not exported.
+
+This only applies to built-in policy definitions.
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: (All)
+Aliases:
+
+Required: False
+Position: Named
+Default value: False
 Accept pipeline input: False
 Accept wildcard characters: False
 ```

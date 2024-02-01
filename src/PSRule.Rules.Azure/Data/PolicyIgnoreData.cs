@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 using PSRule.Rules.Azure.Resources;
@@ -19,20 +18,20 @@ namespace PSRule.Rules.Azure.Data
         {
             Converters = new List<JsonConverter>
             {
-                new HashSetConverter(StringComparer.OrdinalIgnoreCase),
+                new PolicyIgnoreResultConverter(),
             }
         };
-        private HashSet<string> _Index;
+        private Dictionary<string, PolicyIgnoreResult> _Index;
 
-        internal HashSet<string> GetIndex()
+        internal Dictionary<string, PolicyIgnoreResult> GetIndex()
         {
             _Index ??= ReadIndex(GetContent(RESOURCE_PATH));
             return _Index;
         }
 
-        private static HashSet<string> ReadIndex(string content)
+        private static Dictionary<string, PolicyIgnoreResult> ReadIndex(string content)
         {
-            return JsonConvert.DeserializeObject<HashSet<string>>(content, _Settings) ?? throw new JsonException(PSRuleResources.PolicyIgnoreInvalid);
+            return JsonConvert.DeserializeObject<Dictionary<string, PolicyIgnoreResult>>(content, _Settings) ?? throw new JsonException(PSRuleResources.PolicyIgnoreInvalid);
         }
     }
 }

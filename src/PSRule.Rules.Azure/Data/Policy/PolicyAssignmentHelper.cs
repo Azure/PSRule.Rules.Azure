@@ -17,13 +17,18 @@ namespace PSRule.Rules.Azure.Data.Policy
     internal sealed class PolicyAssignmentHelper
     {
         private readonly PipelineContext _PipelineContext;
+        private readonly bool _KeepDuplicates;
 
-        public PolicyAssignmentHelper(PipelineContext pipelineContext)
+        public PolicyAssignmentHelper(PipelineContext pipelineContext, bool keepDuplicates)
         {
             _PipelineContext = pipelineContext;
+            _KeepDuplicates = keepDuplicates;
+            Context = new PolicyAssignmentVisitor.PolicyAssignmentContext(_PipelineContext, _KeepDuplicates);
         }
 
-        internal PolicyDefinition[] ProcessAssignment(string assignmentFile, out PolicyAssignmentVisitor.PolicyAssignmentContext context)
+        public PolicyAssignmentVisitor.PolicyAssignmentContext Context { get; }
+
+        internal void ProcessAssignment(string assignmentFile)
         {
             var rootedAssignmentFile = PSRuleOption.GetRootedPath(assignmentFile);
             if (!File.Exists(rootedAssignmentFile))
@@ -35,8 +40,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                     rootedAssignmentFile);
 
             var visitor = new PolicyAssignmentDataExportVisitor();
-            context = new PolicyAssignmentVisitor.PolicyAssignmentContext(_PipelineContext);
-            context.SetSource(assignmentFile);
+            Context.SetSource(assignmentFile);
 
             try
             {
@@ -47,7 +51,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 {
                     try
                     {
-                        visitor.Visit(context, assignment);
+                        visitor.Visit(Context, assignment);
                     }
                     catch (Exception inner)
                     {
@@ -66,7 +70,6 @@ namespace PSRule.Rules.Azure.Data.Policy
                     inner,
                     rootedAssignmentFile);
             }
-            return context.GetDefinitions();
         }
 
         private static JObject[] ReadFileArray(string path)

@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-
 using System;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline.Output;
@@ -18,11 +17,18 @@ namespace PSRule.Rules.Azure.Pipeline
         /// </summary>
         /// <param name="passThru">Enable pass-through.</param>
         void PassThru(bool passThru);
+
+        /// <summary>
+        /// Determines if policy definitions that duplicate existing built-in rules are exported.
+        /// </summary>
+        /// <param name="keepDuplicates">Enable exporting duplicates.</param>
+        void KeepDuplicates(bool keepDuplicates);
     }
 
     internal sealed class PolicyAssignmentPipelineBuilder : PipelineBuilderBase, IPolicyAssignmentPipelineBuilder
     {
         private bool _PassThru;
+        private bool _KeepDuplicates;
         private const string OUTPUTFILE_PREFIX = "definitions-";
         private const string OUTPUTFILE_EXTENSION = ".Rule.jsonc";
         private const string ASSIGNMENTNAME_PREFIX = "export-";
@@ -64,6 +70,12 @@ namespace PSRule.Rules.Azure.Pipeline
             _PassThru = passThru;
         }
 
+        /// <inheritdoc/>
+        public void KeepDuplicates(bool keepDuplicates)
+        {
+            _KeepDuplicates = keepDuplicates;
+        }
+
         protected override PipelineWriter GetOutput()
         {
             // Redirect to file instead
@@ -87,7 +99,7 @@ namespace PSRule.Rules.Azure.Pipeline
         /// <inheritdoc/>
         public override IPipeline Build()
         {
-            return new PolicyAssignmentPipeline(PrepareContext());
+            return new PolicyAssignmentPipeline(PrepareContext(), _KeepDuplicates);
         }
     }
 }

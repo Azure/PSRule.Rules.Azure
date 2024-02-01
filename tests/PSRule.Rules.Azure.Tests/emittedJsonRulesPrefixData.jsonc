@@ -4,13 +4,13 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "AzureCustomPrefix.Policy.61bca30d0de3",
+      "name": "AzureCustomPrefix.Policy.6546bdb3e190",
       "displayName": "Allowed locations",
       "tags": {
         "Azure.Policy/category": "General"
       },
       "annotations": {
-        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000012",
         "Azure.Policy/version": "1.0.0"
       }
     },

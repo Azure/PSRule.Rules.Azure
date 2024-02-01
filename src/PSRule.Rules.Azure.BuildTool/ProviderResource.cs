@@ -47,8 +47,8 @@ namespace PSRule.Rules.Azure.BuildTool
         private static void MinifyPolicyIgnore(ProviderResourceOption options)
         {
             Console.WriteLine("BuildTool -- Minify policy-ignore");
-            var policyIgnore = ReadFile<string[]>(GetSourcePath("./data/policy-ignore.json"));
-            WriteFile(GetSourcePath("./data/policy-ignore.min.json"), policyIgnore);
+            var entries = ReadFile<PolicyIgnoreEntry[]>(GetSourcePath("./data/policy-ignore.json"));
+            WriteFile(GetSourcePath("./data/policy-ignore.min.json"), entries.Select(e => e.Min));
         }
 
         private static void MinifyTypes(ProviderResourceOption options)
@@ -58,7 +58,7 @@ namespace PSRule.Rules.Azure.BuildTool
             foreach (var provider in GetProviders(GetSourcePath("./data/providers")))
             {
                 var entries = ReadFile<ResourceTypeEntry[]>(provider);
-                WriteMinified(provider, entries.Select(e => e.Min));
+                WriteMinifiedResourceType(provider, entries.Select(e => e.Min));
                 count++;
             }
             Console.WriteLine($"BuildTool -- {count} providers processed");
@@ -88,7 +88,7 @@ namespace PSRule.Rules.Azure.BuildTool
             Console.WriteLine($"BuildTool -- {count} providers processed");
         }
 
-        private static void WriteMinified(string provider, IEnumerable<ResourceTypeMin> entries)
+        private static void WriteMinifiedResourceType(string provider, IEnumerable<ResourceTypeMin> entries)
         {
             var file = provider.Replace("types.json", "types.min.json");
             WriteFile(file, entries);
@@ -124,7 +124,7 @@ namespace PSRule.Rules.Azure.BuildTool
                 var d = new JsonSerializer();
                 return d.Deserialize<T>(reader);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 Console.WriteLine($"ERROR - Failed to read file: {path}");
                 throw;

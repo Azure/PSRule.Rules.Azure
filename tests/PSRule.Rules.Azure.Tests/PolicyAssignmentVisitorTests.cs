@@ -19,7 +19,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void GetPolicyDefinition()
         {
-            var context = new PolicyAssignmentContext(GetContext());
+            var context = new PolicyAssignmentContext(GetContext(), keepDuplicates: true);
             var visitor = new PolicyAssignmentDataExportVisitor();
             foreach (var assignment in GetAssignmentData())
             {
@@ -35,7 +35,7 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Equal(119, definitions.Length);
+            Assert.Equal(129, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
@@ -95,7 +95,7 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Equal(118, definitions.Length);
+            Assert.Equal(117, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
@@ -105,7 +105,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void GetAssignmentWithSameParameters()
         {
-            var context = new PolicyAssignmentContext(GetContext());
+            var context = new PolicyAssignmentContext(GetContext(), keepDuplicates: true);
             var visitor = new PolicyAssignmentDataExportVisitor();
             foreach (var assignment in GetAssignmentData().Where(a => a["Name"].Value<string>().StartsWith("CustomAllowedLocations-")))
             {
@@ -127,7 +127,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void ConvertRequestContext()
         {
-            var context = new PolicyAssignmentContext(GetContext());
+            var context = new PolicyAssignmentContext(GetContext(), keepDuplicates: true);
             var visitor = new PolicyAssignmentDataExportVisitor();
             foreach (var assignment in GetAssignmentData().Where(a => a["Name"].Value<string>() == "RequestContext"))
                 visitor.Visit(context, assignment);
@@ -140,7 +140,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void GetResourceGroupLocation()
         {
-            var context = new PolicyAssignmentContext(GetContext());
+            var context = new PolicyAssignmentContext(GetContext(), keepDuplicates: true);
             var visitor = new PolicyAssignmentDataExportVisitor();
             foreach (var assignment in GetAssignmentData("Policy.assignment.2.json").Where(a => a["Name"].Value<string>() == "8a3e449a009c485b930b36f2"))
                 visitor.Visit(context, assignment);
@@ -166,7 +166,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void GetFieldConcat()
         {
-            var context = new PolicyAssignmentContext(GetContext());
+            var context = new PolicyAssignmentContext(GetContext(), keepDuplicates: true);
             var visitor = new PolicyAssignmentDataExportVisitor();
             foreach (var assignment in GetAssignmentData("Policy.assignment.3.json").Where(a => a["Name"].Value<string>() == "eba0bb3d870549789539e7d2"))
                 visitor.Visit(context, assignment);
@@ -187,6 +187,21 @@ namespace PSRule.Rules.Azure
             Assert.Null(actual.Where);
             Assert.Equal("{\"field\":\"tags['env']\",\"exists\":true}", actual.Condition.ToString(Formatting.None));
             Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.All" }, actual.With);
+        }
+
+        [Fact]
+        public void GetPolicyBaseline()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData().Where(a => a["Name"].Value<string>() == "RequestContext" || a["Name"].Value<string>() == "CustomAllowedLocations-australiaeast"))
+                visitor.Visit(context, assignment);
+
+            var baseline = context.GenerateBaseline();
+
+            Assert.Equal("Azure.PolicyBaseline.All", baseline.Name);
+            Assert.Equal("Generated automatically when exporting Azure Policy rules.", baseline.Description);
+            Assert.Equal(new string[] { "Azure.Policy.b8a4e2d03e09", "PSRule.Rules.Azure\\Azure.KeyVault.SoftDelete" }, baseline.Include);
         }
 
         #region Helper methods

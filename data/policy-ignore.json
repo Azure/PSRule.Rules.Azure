@@ -1,36 +1,130 @@
 [
-  // Azure.ACR.AdminUser
-  "/providers/Microsoft.Authorization/policyDefinitions/dc921057-6b28-4fbe-9b83-f7bec05db6c2",
-  "/providers/Microsoft.Authorization/policyDefinitions/79fdfe03-ffcb-4e55-b4d0-b925b8241759",
-  // Azure.SQL.AAD
-  "/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9",
-  // Azure.ServiceFabric.AAD
-  "/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0",
-  // Azure.Redis.NonSslPort
-  "/providers/Microsoft.Authorization/policyDefinitions/22bee202-a82f-4305-9a2a-6d7f44d4dedb",
-  // Azure.Automation.EncryptVariables
-  "/providers/Microsoft.Authorization/policyDefinitions/3657f5a0-770e-44a3-b44e-9431ba1e9735",
-  // Azure.AKS.UseRBAC
-  "/providers/Microsoft.Authorization/policyDefinitions/ac4a19c2-fa67-49b4-8ae5-0b2e78c49457",
-  // Azure.AKS.AzurePolicyAddOn
-  "/providers/Microsoft.Authorization/policyDefinitions/0a15ec92-a229-4763-bb14-0ea34a568f8d",
-  // Azure.Storage.BlobPublicAccess
-  "/providers/Microsoft.Authorization/policyDefinitions/4fa4b6c0-31ca-4c0d-b10d-24b96f62a751",
-  // Azure.PostgreSQL.UseSSL
-  "/providers/Microsoft.Authorization/policyDefinitions/d158790f-bfb0-486c-8631-2dc6b4e8e6af",
-  // Azure.MySQL.UseSSL
-  "/providers/Microsoft.Authorization/policyDefinitions/e802a67a-daf5-4436-9ea6-f6d821dd0c5d",
-  // Azure.KeyVault.SoftDelete
-  "/providers/Microsoft.Authorization/policyDefinitions/0b60c0b2-2dc2-4e1c-b5c9-abbed971de53",
-  // Checking for Network Watcher in a resource group is not enforcable by code.
-  "/providers/Microsoft.Authorization/policyDefinitions/b6e2945c-0b7b-40f5-9233-7a5323b5cdc6",
-  // Azure.AKS.LocalAccounts
-  "/providers/Microsoft.Authorization/policyDefinitions/993c2fcd-2b29-49d2-9eb0-df2c3a730c32",
-  // Azure.Cognitive.DisableLocalAuth
-  "/providers/Microsoft.Authorization/policyDefinitions/71ef260a-8f18-47b7-abcb-62d0673d94dc",
-  "/providers/Microsoft.Authorization/policyDefinitions/14de9e63-1b31-492e-a5a3-c3f7fd57f555",
-  // Azure.Cognitive.ManagedIdentity
-  "/providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418",
-  // Azure.VM.UseManagedDisks
-  "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d"
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/dc921057-6b28-4fbe-9b83-f7bec05db6c2",
+      "/providers/Microsoft.Authorization/policyDefinitions/79fdfe03-ffcb-4e55-b4d0-b925b8241759"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.ACR.AdminUser"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.SQL.AAD"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.ServiceFabric.AAD"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/22bee202-a82f-4305-9a2a-6d7f44d4dedb"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Redis.NonSslPort"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/3657f5a0-770e-44a3-b44e-9431ba1e9735"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Automation.EncryptVariables"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/ac4a19c2-fa67-49b4-8ae5-0b2e78c49457"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.AKS.UseRBAC"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/0a15ec92-a229-4763-bb14-0ea34a568f8d"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.AKS.AzurePolicyAddOn"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/4fa4b6c0-31ca-4c0d-b10d-24b96f62a751"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Storage.BlobPublicAccess"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/d158790f-bfb0-486c-8631-2dc6b4e8e6af"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.PostgreSQL.UseSSL"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/e802a67a-daf5-4436-9ea6-f6d821dd0c5d"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.MySQL.UseSSL"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/0b60c0b2-2dc2-4e1c-b5c9-abbed971de53"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.KeyVault.PurgeProtect"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/b6e2945c-0b7b-40f5-9233-7a5323b5cdc6"
+    ],
+    "reason": "NotApplicable",
+    "value": "Checking for Network Watcher in a resource group is not enforcable by code."
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/993c2fcd-2b29-49d2-9eb0-df2c3a730c32"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.AKS.LocalAccounts"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/71ef260a-8f18-47b7-abcb-62d0673d94dc",
+      "/providers/Microsoft.Authorization/policyDefinitions/14de9e63-1b31-492e-a5a3-c3f7fd57f555"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Cognitive.DisableLocalAuth"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Cognitive.ManagedIdentity"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/06a78e20-9358-41c9-923c-fb736d382a4d"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.VM.UseManagedDisks"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.KeyVault.SoftDelete"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/12d4fa5e-1f9f-4c21-97a9-b99b3c6611b5"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.KeyVault.RBAC"
+  }
 ]

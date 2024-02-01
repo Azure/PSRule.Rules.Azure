@@ -244,4 +244,83 @@ namespace PSRule.Rules.Azure
             throw new NotImplementedException();
         }
     }
+
+    internal sealed class PolicyBaselineConverter : JsonConverter
+    {
+        private const string SYNOPSIS_COMMENT = "Synopsis: ";
+        private const string PROPERTY_APIVERSION = "apiVersion";
+        private const string APIVERSION_VALUE = "github.com/microsoft/PSRule/v1";
+        private const string PROPERTY_KIND = "kind";
+        private const string KIND_VALUE = "Baseline";
+        private const string PROPERTY_METADATA = "metadata";
+        private const string PROPERTY_NAME = "name";
+        private const string PROPERTY_SPEC = "spec";
+        private const string PROPERTY_RULE = "rule";
+        private const string PROPERTY_INCLUDE = "include";
+
+        public override bool CanConvert(Type objectType)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override bool CanWrite => true;
+
+        public override bool CanRead => false;
+
+        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+        {
+            Map(writer, serializer, value as PolicyBaseline);
+        }
+
+        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void Map(JsonWriter writer, JsonSerializer serializer, PolicyBaseline baseline)
+        {
+            writer.WriteStartObject();
+
+            // Synopsis
+            writer.WriteComment(string.Concat(SYNOPSIS_COMMENT, baseline.Description));
+
+            // Api Version
+            writer.WritePropertyName(PROPERTY_APIVERSION);
+            writer.WriteValue(APIVERSION_VALUE);
+
+            // Kind
+            writer.WritePropertyName(PROPERTY_KIND);
+            writer.WriteValue(KIND_VALUE);
+
+            // Metadata
+            writer.WritePropertyName(PROPERTY_METADATA);
+            writer.WriteStartObject();
+            writer.WritePropertyName(PROPERTY_NAME);
+            writer.WriteValue(baseline.Name);
+            writer.WriteEndObject();
+
+            // Spec
+            writer.WritePropertyName(PROPERTY_SPEC);
+            writer.WriteStartObject();
+            WriteRule(writer, serializer, baseline);
+
+            writer.WriteEndObject();
+        }
+
+        private static void WriteRule(JsonWriter writer, JsonSerializer serializer, PolicyBaseline baseline)
+        {
+            if (baseline.Include == null || baseline.Include.Length == 0)
+                return;
+
+            var types = new HashSet<string>(baseline.Include, StringComparer.OrdinalIgnoreCase);
+            writer.WritePropertyName(PROPERTY_RULE);
+            writer.WriteStartObject();
+
+            writer.WritePropertyName(PROPERTY_INCLUDE);
+            serializer.Serialize(writer, types);
+            writer.WriteEndObject();
+
+            writer.WriteEndObject();
+        }
+    }
 }

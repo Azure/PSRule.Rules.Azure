@@ -367,11 +367,47 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Policy definition has been ignored based on configuration: {0}.
+        /// </summary>
+        internal static string PolicyIgnoreConfigured {
+            get {
+                return ResourceManager.GetString("PolicyIgnoreConfigured", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Policy definition has been ignored because it is disabled: {0}.
+        /// </summary>
+        internal static string PolicyIgnoreDisabled {
+            get {
+                return ResourceManager.GetString("PolicyIgnoreDisabled", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Policy definition has been ignored because a similar built-in rule already exists ({1}): {0}.
+        /// </summary>
+        internal static string PolicyIgnoreDuplicate {
+            get {
+                return ResourceManager.GetString("PolicyIgnoreDuplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to the policy ignore content..
         /// </summary>
         internal static string PolicyIgnoreInvalid {
             get {
                 return ResourceManager.GetString("PolicyIgnoreInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Policy definition has been ignored because it is not applicable to Infrastructure as Code: {0}.
+        /// </summary>
+        internal static string PolicyIgnoreNotApplicable {
+            get {
+                return ResourceManager.GetString("PolicyIgnoreNotApplicable", resourceCulture);
             }
         }
         

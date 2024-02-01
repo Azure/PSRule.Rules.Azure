@@ -573,7 +573,7 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
         $filename = Split-Path -Path $result.FullName -Leaf;
         $filename | Should -BeExactly "definitions-$Name.Rule.jsonc";
         $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
-        $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
+        $compressedResult = $resultJson[0] | ConvertTo-Json -Depth 100 -Compress;
         $compressedExpected = $jsonRulesData[$Index] | ConvertTo-Json -Depth 100 -Compress;
         $compressedResult | Should -BeExactly $compressedExpected;
     }
@@ -586,7 +586,7 @@ Describe 'Export-AzPolicyAssignmentRuleData' -Tag 'Cmdlet', 'Export-AzPolicyAssi
         $filename = Split-Path -Path $result.FullName -Leaf;
         $filename | Should -BeExactly "definitions-test12.Rule.jsonc";
         $resultJson = ((Get-Content -Path $result.FullName) -replace '^\s*//.*') | ConvertFrom-Json;
-        $compressedResult = $resultJson | ConvertTo-Json -Depth 100 -Compress;
+        $compressedResult = $resultJson[0] | ConvertTo-Json -Depth 100 -Compress;
         $compressedExpected = $jsonRulesPrefixData | ConvertTo-Json -Depth 100 -Compress;
         $compressedResult | Should -BeExactly $compressedExpected;
     }
