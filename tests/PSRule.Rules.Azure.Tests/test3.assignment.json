@@ -39,9 +39,9 @@
     },
     "PolicyDefinitions": [
       {
-        "Name": "00000000-0000-0000-0000-000000000000",
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000",
-        "ResourceName": "0000000000-0000-0000-0000-000000000000",
+        "Name": "00000000-0000-0000-0000-000000000003",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000003",
+        "ResourceName": "0000000000-0000-0000-0000-000000000003",
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Properties": {
@@ -174,7 +174,7 @@
           },
           "PolicyType": 1
         },
-        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000"
+        "PolicyDefinitionId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000003"
       }
     ]
   }

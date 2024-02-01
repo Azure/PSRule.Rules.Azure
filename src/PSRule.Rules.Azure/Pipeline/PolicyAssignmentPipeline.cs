@@ -25,6 +25,13 @@ namespace PSRule.Rules.Azure.Pipeline
             ProcessCatch(source.AssignmentFile);
         }
 
+        public override void End()
+        {
+            Context.Writer.WriteObject(_PolicyAssignmentHelper.Context.GetDefinitions(), true);
+            Context.Writer.WriteObject(_PolicyAssignmentHelper.Context.GenerateBaseline(), false);
+            base.End();
+        }
+
         private void ProcessCatch(string assignmentFile)
         {
             try
@@ -47,8 +54,7 @@ namespace PSRule.Rules.Azure.Pipeline
 
         private void ProcessAssignment(string assignmentFile)
         {
-            Context.Writer.WriteObject(_PolicyAssignmentHelper.ProcessAssignment(assignmentFile, out var context), true);
-            Context.Writer.WriteObject(context.GenerateBaseline(), false);
+            _PolicyAssignmentHelper.ProcessAssignment(assignmentFile);
         }
     }
 }

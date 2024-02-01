@@ -33,13 +33,13 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.d49c9ce3b804",
+      "name": "Azure.Policy.dda024fdd4b3",
       "displayName": "Deploy Log Analytics extension for Linux VMs",
       "tags": {
         "Azure.Policy/category": "Monitoring"
       },
       "annotations": {
-        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000002",
         "Azure.Policy/version": "2.0.1"
       }
     },
@@ -332,13 +332,13 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.eeb7e34479ef",
+      "name": "Azure.Policy.d56db8a16bcd",
       "displayName": "FunctionAppPullFromSpecifiedRegistry",
       "tags": {
         "Azure.Policy/category": "App Service"
       },
       "annotations": {
-        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000000",
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/0000000000-0000-0000-0000-000000000003",
         "Azure.Policy/version": "1.0.0"
       }
     },
@@ -390,10 +390,10 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.48eab4644919",
+      "name": "Azure.Policy.5236dec1a570",
       "displayName": "DisableLBRuleSNAT",
       "annotations": {
-        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000004"
       }
     },
     "spec": {
@@ -421,10 +421,10 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.dd003b6a0803",
+      "name": "Azure.Policy.956f4a31128a",
       "displayName": "EnsureAtleastOneLBRule",
       "annotations": {
-        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000005"
       }
     },
     "spec": {
@@ -447,10 +447,10 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.6ce831b6b744",
+      "name": "Azure.Policy.f95588f22a92",
       "displayName": "UniqueDescriptionNSG",
       "annotations": {
-        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000006"
       }
     },
     "spec": {
@@ -478,10 +478,10 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.09175cf78e7c",
+      "name": "Azure.Policy.9aefa39d26cc",
       "displayName": "DenyNSGRDPInboundPort",
       "annotations": {
-        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000007"
       }
     },
     "spec": {
@@ -517,10 +517,10 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.9b51258eff45",
+      "name": "Azure.Policy.2d46ae1952d5",
       "displayName": "DenyPortsNSG",
       "annotations": {
-        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000008"
       }
     },
     "spec": {
@@ -603,10 +603,10 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.b54abd1594e6",
+      "name": "Azure.Policy.eac8effcedc0",
       "displayName": "PreventSubnetsWithoutNSG",
       "annotations": {
-        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000009"
       }
     },
     "spec": {
@@ -677,10 +677,10 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.fe294bf42b80",
+      "name": "Azure.Policy.6e7a9b50e524",
       "displayName": "DenyPrivateEndpointSpecificSubnet",
       "annotations": {
-        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+        "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000010"
       }
     },
     "spec": {
@@ -723,13 +723,13 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.237646e7bc12",
+      "name": "Azure.Policy.55eedf5a41fd",
       "displayName": "View and configure system diagnostic data",
       "tags": {
         "Azure.Policy/category": "Regulatory Compliance"
       },
       "annotations": {
-        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-A",
         "Azure.Policy/version": "1.0.0"
       }
     },
@@ -744,6 +744,61 @@
       "condition": {
         "value": "Manual",
         "equals": false
+      }
+    }
+  },
+  {
+    // Synopsis: View and configure system diagnostic data
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Rule",
+    "metadata": {
+      "name": "Azure.Policy.1cc127cf387a",
+      "displayName": "View and configure system diagnostic data",
+      "tags": {
+        "Azure.Policy/category": "Regulatory Compliance"
+      },
+      "annotations": {
+        "Azure.Policy/id": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-B",
+        "Azure.Policy/version": "1.0.0"
+      }
+    },
+    "spec": {
+      "recommend": "View and configure system diagnostic data",
+      "type": [
+        "Microsoft.Resources/subscriptions"
+      ],
+      "with": [
+        "PSRule.Rules.Azure\\Azure.Policy.All"
+      ],
+      "condition": {
+        "value": "Manual",
+        "equals": false
+      }
+    }
+  },
+  {
+    // Synopsis: Generated automatically when exporting Azure Policy rules.
+    "apiVersion": "github.com/microsoft/PSRule/v1",
+    "kind": "Baseline",
+    "metadata": {
+      "name": "Azure.PolicyBaseline.All"
+    },
+    "spec": {
+      "rule": {
+        "include": [
+          "Azure.Policy.65db1c629a22",
+          "Azure.Policy.dda024fdd4b3",
+          "Azure.Policy.d56db8a16bcd",
+          "Azure.Policy.5236dec1a570",
+          "Azure.Policy.956f4a31128a",
+          "Azure.Policy.f95588f22a92",
+          "Azure.Policy.9aefa39d26cc",
+          "Azure.Policy.2d46ae1952d5",
+          "Azure.Policy.eac8effcedc0",
+          "Azure.Policy.6e7a9b50e524",
+          "Azure.Policy.55eedf5a41fd",
+          "Azure.Policy.1cc127cf387a"
+        ]
       }
     }
   }

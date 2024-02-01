@@ -75,7 +75,7 @@
       "/providers/Microsoft.Authorization/policyDefinitions/0b60c0b2-2dc2-4e1c-b5c9-abbed971de53"
     ],
     "reason": "Duplicate",
-    "value": "Azure.KeyVault.SoftDelete"
+    "value": "Azure.KeyVault.PurgeProtect"
   },
   {
     "policyDefinitionIds": [
@@ -119,5 +119,12 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.KeyVault.SoftDelete"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/12d4fa5e-1f9f-4c21-97a9-b99b3c6611b5"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.KeyVault.RBAC"
   }
 ]

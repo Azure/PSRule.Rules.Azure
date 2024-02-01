@@ -255,11 +255,6 @@ namespace PSRule.Rules.Azure.Data.Policy
                 }
             }
 
-            internal void ClearDefaultResourceType()
-            {
-                _PolicyAliasProviderHelper.ClearDefaultResourceType();
-            }
-
             internal void SetDefinitionParameterAssignment(PolicyDefinition definition, JProperty parameter)
             {
                 var type = GetParameterType(parameter.Value);

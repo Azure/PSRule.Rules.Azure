@@ -30,9 +30,9 @@
     },
     "PolicyDefinitions": [
       {
-        "Name": "00000000-0000-0000-0000-000000000000",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
-        "ResourceName": "00000000-0000-0000-0000-000000000000",
+        "Name": "00000000-0000-0000-0000-000000000011-A",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-A",
+        "ResourceName": "00000000-0000-0000-0000-000000000011-A",
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
@@ -71,12 +71,12 @@
           },
           "PolicyType": 2
         },
-        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-A"
       },
       {
-        "Name": "00000000-0000-0000-0000-000000000000",
-        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
-        "ResourceName": "00000000-0000-0000-0000-000000000000",
+        "Name": "00000000-0000-0000-0000-000000000011-B",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-B",
+        "ResourceName": "00000000-0000-0000-0000-000000000011-B",
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
@@ -115,7 +115,7 @@
           },
           "PolicyType": 2
         },
-        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000"
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000011-B"
       }
     ]
   }
