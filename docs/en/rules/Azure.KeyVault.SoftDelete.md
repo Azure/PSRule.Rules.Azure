@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-02-02
 severity: Important
 pillar: Reliability
-category: Data management
+category: RE:07 Self-preservation
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.SoftDelete/
 ---
@@ -38,20 +39,25 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.KeyVault/vaults",
-    "apiVersion": "2021-10-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "sku": {
-            "family": "A",
-            "name": "premium"
-        },
-        "tenantId": "[subscription().tenantId]",
-        "enableSoftDelete": true,
-        "softDeleteRetentionInDays": 90,
-        "enablePurgeProtection": true
+  "type": "Microsoft.KeyVault/vaults",
+  "apiVersion": "2023-07-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "sku": {
+      "family": "A",
+      "name": "premium"
+    },
+    "tenantId": "[tenant().tenantId]",
+    "softDeleteRetentionInDays": 90,
+    "enableSoftDelete": true,
+    "enablePurgeProtection": true,
+    "enableRbacAuthorization": true,
+    "networkAcls": {
+      "defaultAction": "Deny",
+      "bypass": "AzureServices"
     }
+  }
 }
 ```
 
@@ -64,7 +70,7 @@ To deploy Key Vaults that pass this rule:
 For example:
 
 ```bicep
-resource vault 'Microsoft.KeyVault/vaults@2021-10-01' = {
+resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: name
   location: location
   properties: {
@@ -72,16 +78,35 @@ resource vault 'Microsoft.KeyVault/vaults@2021-10-01' = {
       family: 'A'
       name: 'premium'
     }
-    tenantId: subscription().tenantId
-    enableSoftDelete: true
+    tenantId: tenant().tenantId
     softDeleteRetentionInDays: 90
+    enableSoftDelete: true
     enablePurgeProtection: true
+    enableRbacAuthorization: true
+    networkAcls: {
+      defaultAction: 'Deny'
+      bypass: 'AzureServices'
+    }
   }
 }
 ```
 
+### Configure with Azure CLI
+
+```bash
+az keyvault update -n '<name>' -g '<resource_group>' --retention-days 90
+```
+
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Key vaults should have soft delete enabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_SoftDeleteMustBeEnabled_Audit.json)
+
 ## LINKS
 
-- [Azure Key Vault soft-delete overview](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview)
-- [Azure Key Vault security](https://docs.microsoft.com/azure/key-vault/general/security-overview#backup-and-recovery)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults)
+- [RE:07 Self-preservation](https://learn.microsoft.com/azure/well-architected/reliability/self-preservation)
+- [Azure Key Vault soft-delete overview](https://learn.microsoft.com/azure/key-vault/general/soft-delete-overview)
+- [Soft-delete will be enabled on all key vaults](https://learn.microsoft.com/azure/key-vault/general/soft-delete-change)
+- [Azure Key Vault security](https://learn.microsoft.com/azure/key-vault/general/security-features)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults)
