@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-08-20
+reviewed: 2024-02-02
 severity: Awareness
 pillar: Security
-category: Authorization
+category: SE:05 Identity and access management
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.RBAC/
 ---
@@ -41,7 +41,7 @@ For example:
 ```json
 {
   "type": "Microsoft.KeyVault/vaults",
-  "apiVersion": "2023-02-01",
+  "apiVersion": "2023-07-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
@@ -71,7 +71,7 @@ To deploy Key Vaults that pass this rule:
 For example:
 
 ```bicep
-resource vault 'Microsoft.KeyVault/vaults@2023-02-01' = {
+resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: name
   location: location
   properties: {
@@ -104,6 +104,12 @@ az keyvault update -n '<name>' -g '<resource_group>' --enable-rbac-authorization
 Update-AzKeyVault -ResourceGroupName '<resource_group>' -Name '<name>' -EnableRbacAuthorization
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Azure Key Vault should use RBAC permission model](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVault_Should_Use_RBAC.json)
+
 ## NOTES
 
 The RBAC permission model may not be suitable for all use cases.
@@ -112,11 +118,12 @@ For information about limitations see _Azure role-based access control vs. acces
 
 ## LINKS
 
-- [Role-based authorization](https://learn.microsoft.com/azure/well-architected/security/design-identity-authorization#role-based-authorization)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
 - [What is Azure role-based access control?](https://learn.microsoft.com/azure/role-based-access-control/overview)
 - [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](https://learn.microsoft.com/azure/key-vault/general/rbac-guide)
 - [Azure role-based access control vs. access policies](https://learn.microsoft.com/azure/key-vault/general/rbac-access-policy)
 - [Migrate from vault access policy to an Azure role-based access control permission model](https://learn.microsoft.com/azure/key-vault/general/rbac-migration)
+- [Azure Key Vault security](https://learn.microsoft.com/azure/key-vault/general/security-features)
 - [Azure security baseline for Key Vault](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline)
 - [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline#im-1-use-centralized-identity-and-authentication-system)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults#vaultproperties)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults)
