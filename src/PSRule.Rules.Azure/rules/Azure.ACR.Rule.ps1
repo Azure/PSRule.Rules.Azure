@@ -9,13 +9,16 @@
 
 # Synopsis: Consider freeing up registry space.
 Rule 'Azure.ACR.Usage' -Ref 'AZR-000001' -Type 'Microsoft.ContainerRegistry/registries' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Cost Optimization'; method = 'in-flight'; } {
-    $usages = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/listUsages' | ForEach-Object {
-        $_.value | Where-Object { $_.Name -eq 'Size' }
+    $usages = @(GetSubResources -ResourceType 'Microsoft.ContainerRegistry/registries/listUsages' | Where-Object {
+        $_.Name -eq 'Size'
     });
-    if ($usages.Length -gt 0) {
-        foreach ($usage in $usages) {
-            $Assert.LessOrEqual([int]($usage.currentValue/$usage.limit*100), '.', 90);
-        }
+
+    if ($usages.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    foreach ($usage in $usages) {
+        $Assert.LessOrEqual([int]($usage.currentValue/$usage.limit*100), '.', 90);
     }
 }
 

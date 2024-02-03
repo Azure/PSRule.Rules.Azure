@@ -49,6 +49,11 @@ What's changed since pre-release v1.33.0-B0126:
   - Policies that duplicate built-in rules can now be exported by using the `-KeepDuplicates` parameter by @BernieWhite.
     [#2482](https://github.com/Azure/PSRule.Rules.Azure/issues/2482)
     - For details see [Policy as rules](./concepts/policy-as-rules.md#duplicate-policies).
+- Bug fixes:
+  - Fixed inconclusive result reported for `Azure.ACR.Usage` by @BernieWhite.
+    [#2494](https://github.com/Azure/PSRule.Rules.Azure/issues/2494)
+  - Fixed export of Front Door resource data is incomplete by @BernieWhite.
+    [#2668](https://github.com/Azure/PSRule.Rules.Azure/issues/2668)
 
 ## v1.33.0-B0126 (pre-release)
 

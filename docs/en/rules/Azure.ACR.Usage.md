@@ -1,8 +1,8 @@
 ---
-reviewed: 2022-01-22
+reviewed: 2024-02-04
 severity: Important
 pillar: Cost Optimization
-category: Reports
+category: CO:07 Component costs
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Usage/
 ---
@@ -32,8 +32,8 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
-- [Generate cost reports](https://learn.microsoft.com/azure/architecture/framework/cost/monitor-reports)
-- [Azure Container Registry service tiers](https://docs.microsoft.com/azure/container-registry/container-registry-skus)
-- [Scalable storage](https://docs.microsoft.com/azure/container-registry/container-registry-storage#scalable-storage)
-- [Manage registry size](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#manage-registry-size)
-- [Delete container images in Azure Container Registry using the Azure CLI](https://docs.microsoft.com/azure/container-registry/container-registry-delete)
+- [CO:07 Component costs](https://learn.microsoft.com/azure/well-architected/cost-optimization/optimize-component-costs)
+- [Azure Container Registry service tiers](https://learn.microsoft.com/azure/container-registry/container-registry-skus)
+- [Scalable storage](https://learn.microsoft.com/azure/container-registry/container-registry-storage#scalable-storage)
+- [Manage registry size](https://learn.microsoft.com/azure/container-registry/container-registry-best-practices#manage-registry-size)
+- [Delete container images in Azure Container Registry using the Azure CLI](https://learn.microsoft.com/azure/container-registry/container-registry-delete)
