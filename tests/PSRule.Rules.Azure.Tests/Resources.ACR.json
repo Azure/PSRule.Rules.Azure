@@ -126,21 +126,32 @@
         "ETag": null
       },
       {
-        "value": [
-          {
-            "name": "Size",
-            "limit": 536870912000,
-            "currentValue": 531502202880,
-            "unit": "Bytes"
-          },
-          {
-            "name": "Webhooks",
-            "limit": 500,
-            "currentValue": 0,
-            "unit": "Count"
-          }
-        ],
-        "ResourceType": "Microsoft.ContainerRegistry/registries/listUsages"
+        "name": "Size",
+        "limit": 536870912000,
+        "currentValue": 531502202880,
+        "unit": "Bytes",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
+      },
+      {
+        "name": "Webhooks",
+        "limit": 500,
+        "currentValue": 0,
+        "unit": "Count",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
+      },
+      {
+        "name": "ScopeMaps",
+        "limit": 100,
+        "currentValue": 0,
+        "unit": "Count",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
+      },
+      {
+        "name": "Tokens",
+        "limit": 100,
+        "currentValue": 0,
+        "unit": "Count",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
       },
       {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-B/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
@@ -279,21 +290,32 @@
         "ETag": null
       },
       {
-        "value": [
-          {
-            "name": "Size",
-            "limit": 536870912000,
-            "currentValue": 1073741824,
-            "unit": "Bytes"
-          },
-          {
-            "name": "Webhooks",
-            "limit": 500,
-            "currentValue": 0,
-            "unit": "Count"
-          }
-        ],
-        "ResourceType": "Microsoft.ContainerRegistry/registries/listUsages"
+        "name": "Size",
+        "limit": 536870912000,
+        "currentValue": 1073741824,
+        "unit": "Bytes",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
+      },
+      {
+        "name": "Webhooks",
+        "limit": 500,
+        "currentValue": 0,
+        "unit": "Count",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
+      },
+      {
+        "name": "ScopeMaps",
+        "limit": 100,
+        "currentValue": 0,
+        "unit": "Count",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
+      },
+      {
+        "name": "Tokens",
+        "limit": 100,
+        "currentValue": 0,
+        "unit": "Count",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
       },
       {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-C/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
@@ -468,21 +490,32 @@
         "ETag": null
       },
       {
-        "value": [
-          {
-            "name": "Size",
-            "limit": 536870912000,
-            "currentValue": 531502202880,
-            "unit": "Bytes"
-          },
-          {
-            "name": "Webhooks",
-            "limit": 500,
-            "currentValue": 0,
-            "unit": "Count"
-          }
-        ],
-        "ResourceType": "Microsoft.ContainerRegistry/registries/listUsages"
+        "name": "Size",
+        "limit": 536870912000,
+        "currentValue": 531502202880,
+        "unit": "Bytes",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
+      },
+      {
+        "name": "Webhooks",
+        "limit": 500,
+        "currentValue": 0,
+        "unit": "Count",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
+      },
+      {
+        "name": "ScopeMaps",
+        "limit": 100,
+        "currentValue": 0,
+        "unit": "Count",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
+      },
+      {
+        "name": "Tokens",
+        "limit": 100,
+        "currentValue": 0,
+        "unit": "Count",
+        "type": "Microsoft.ContainerRegistry/registries/listUsages"
       },
       {
         "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ContainerRegistry/registries/registry-E/providers/Microsoft.Security/assessments/00000000-0000-0000-0000-000000000000",
