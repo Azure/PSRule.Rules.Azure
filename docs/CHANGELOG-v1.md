@@ -32,6 +32,79 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.33.0
+
+What's changed since v1.32.1:
+
+- New features:
+  - Exporting policy as rules also generates a baseline by @BernieWhite.
+    [#2482](https://github.com/Azure/PSRule.Rules.Azure/issues/2482)
+    - A baseline is automatically generated that includes for all rules exported.
+      If a policy rule has been replaced by a built-in rule, the baseline will include the built-in rule instead.
+    - The baseline is named `<Prefix>.PolicyBaseline.All`. i.e. `Azure.PolicyBaseline.All` by default.
+    - For details see [Policy as rules](./concepts/policy-as-rules.md#generated-baseline).
+- New rules:
+  - Databricks:
+    - Check that Databricks workspaces use a non-trial SKU by @batemansogq.
+      [#2646](https://github.com/Azure/PSRule.Rules.Azure/issues/2646)
+    - Check that Databricks workspaces require use of private endpoints by @batemansogq.
+      [#2646](https://github.com/Azure/PSRule.Rules.Azure/issues/2646)
+  - Dev Box:
+    - Check that projects limit the number of Dev Boxes per user by @BernieWhite.
+      [#2654](https://github.com/Azure/PSRule.Rules.Azure/issues/2654)
+- Updated rules:
+  - Application Gateway:
+    - Updated `Azure.AppGwWAF.RuleGroups` to use the rule sets by @BenjaminEngeset.
+      [#2629](https://github.com/Azure/PSRule.Rules.Azure/issues/2629)
+      - The latest Bot Manager rule set is now `1.0`.
+      - The latest OWASP rule set is now `3.2`.
+  - Cognitive Services:
+    - Relaxed `Azure.Cognitive.ManagedIdentity` to configurations that require managed identities by @BernieWhite.
+      [#2559](https://github.com/Azure/PSRule.Rules.Azure/issues/2559)
+  - Virtual Machine:
+    - Checks for Azure Hybrid Benefit `Azure.VM.UseHybridUseBenefit` are not enabled by default by @BernieWhite.
+      [#2493](https://github.com/Azure/PSRule.Rules.Azure/issues/2493)
+      - To enable, set the `AZURE_VM_USE_HYBRID_USE_BENEFIT` option to `true`.
+  - Virtual Network:
+    - Added option for excluding subnets to `Azure.VNET.UseNSGs` by @BernieWhite.
+      [#2572](https://github.com/Azure/PSRule.Rules.Azure/issues/2572)
+      - To add a subnet exclusion, set the `AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG` option.
+- General improvements:
+  - Rules that are ignored during exporting policy as rules are now generate a verbose logs by @BernieWhite.
+    [#2482](https://github.com/Azure/PSRule.Rules.Azure/issues/2482)
+    - This is to improve transparency of why rules are not exported.
+    - To see details on why a rule is ignored, enable verbose logging with `-Verbose`.
+  - Policies that duplicate built-in rules can now be exported by using the `-KeepDuplicates` parameter by @BernieWhite.
+    [#2482](https://github.com/Azure/PSRule.Rules.Azure/issues/2482)
+    - For details see [Policy as rules](./concepts/policy-as-rules.md#duplicate-policies).
+  - Quality updates to rules and documentation by @BernieWhite.
+    [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+- Engineering:
+  - Bump xunit to v2.6.6.
+    [#2645](https://github.com/Azure/PSRule.Rules.Azure/pull/2645)
+  - Bump xunit.runner.visualstudio to v2.5.6.
+    [#2619](https://github.com/Azure/PSRule.Rules.Azure/pull/2619)
+  - Bump BenchmarkDotNet to v0.13.12.
+    [#2636](https://github.com/Azure/PSRule.Rules.Azure/pull/2636)
+  - Bump BenchmarkDotNet.Diagnostics.Windows to v0.13.12.
+    [#2636](https://github.com/Azure/PSRule.Rules.Azure/pull/2636)
+- Bug fixes:
+  - Fixed `dateTimeAdd` may fail with different localization by @BernieWhite.
+    [#2631](https://github.com/Azure/PSRule.Rules.Azure/issues/2631)
+  - Fixed inconclusive result reported for `Azure.ACR.Usage` by @BernieWhite.
+    [#2494](https://github.com/Azure/PSRule.Rules.Azure/issues/2494)
+  - Fixed export of Front Door resource data is incomplete by @BernieWhite.
+    [#2668](https://github.com/Azure/PSRule.Rules.Azure/issues/2668)
+  - Fixed `Azure.Template.TemplateFile` to support with `languageVersion` 2.0 template properties by @MrRoundRobin.
+    [#2660](https://github.com/Azure/PSRule.Rules.Azure/issues/2660)
+  - Fixed `Azure.VM.DiskSizeAlignment` does not handle smaller sizes and ultra disks by @BernieWhite.
+    [#2656](https://github.com/Azure/PSRule.Rules.Azure/issues/2656)
+
+What's changed since pre-release v1.33.0-B0169:
+
+- No additional changes.
+
 ## v1.33.0-B0169 (pre-release)
 
 What's changed since pre-release v1.33.0-B0126:
