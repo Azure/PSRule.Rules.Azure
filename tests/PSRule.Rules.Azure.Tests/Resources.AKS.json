@@ -1849,6 +1849,10 @@
       },
       "podIdentityProfile": {
         "enabled": true
+      },
+      "apiServerAccessProfile": {
+        "enablePrivateCluster": true,
+        "enablePrivateClusterPublicFQDN": false
       }
     },
     "identity": {

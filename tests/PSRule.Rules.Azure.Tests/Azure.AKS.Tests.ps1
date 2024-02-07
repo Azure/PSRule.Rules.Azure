@@ -33,7 +33,7 @@ Describe 'Azure.AKS' -Tag AKS {
                 ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.AKS.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
         }
 
         It 'Azure.AKS.MinNodeCount' {
@@ -274,14 +274,20 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 10;
-            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'cluster-L';
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'cluster-F';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.ContainerService/managedClusters' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-L';
         }
 
         It 'Azure.AKS.LocalAccounts' {
