@@ -139,10 +139,13 @@ metadata:
     ruleSet: 2021_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-1'
+    Azure.MCSB.v1/control: NS-1
 spec:
   type:
   - Microsoft.ContainerService/managedClusters
+  where:
+    field: properties.apiServerAccessProfile.enablePrivateCluster
+    notEquals: true
   condition:
     field: properties.apiServerAccessProfile.authorizedIPRanges
     greaterOrEquals: 1

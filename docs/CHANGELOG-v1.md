@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.33.0:
+
+- Bug fixes:
+  - Fixed `Azure.AKS.AuthorizedIPs` is not valid for a private cluster by @BernieWhite.
+    [#2677](https://github.com/Azure/PSRule.Rules.Azure/issues/2677)
+
 ## v1.33.0
 
 What's changed since v1.32.1:
