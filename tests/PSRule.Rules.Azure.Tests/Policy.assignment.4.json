@@ -1,0 +1,101 @@
+[
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "assignment.4",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.4",
+    "ResourceName": "assignment.4",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.4",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "Virtual machines' Guest Configuration extension should be deployed with system-assigned managed identity",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "",
+        "parameterScopes": {},
+        "createdBy": "",
+        "createdOn": "",
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 1,
+      "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/d26f7642-7545-4e18-9b75-8c9bbdee3a9a",
+      "Parameters": {
+        "tagName": {
+          "value": "env"
+        }
+      },
+      "NonComplianceMessages": [
+        {
+          "Message": "Virtual machines' Guest Configuration extension should be deployed with system-assigned managed identity",
+          "PolicyDefinitionReferenceId": null
+        }
+      ]
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "d26f7642-7545-4e18-9b75-8c9bbdee3a9a",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/d26f7642-7545-4e18-9b75-8c9bbdee3a9a",
+        "ResourceName": "d26f7642-7545-4e18-9b75-8c9bbdee3a9a",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "The Guest Configuration extension requires a system assigned managed identity. Azure virtual machines in the scope of this policy will be non-compliant when they have the Guest Configuration extension installed but do not have a system assigned managed identity. Learn more at https://aka.ms/gcpol",
+          "DisplayName": "Virtual machines' Guest Configuration extension should be deployed with system-assigned managed identity",
+          "Metadata": {
+            "version": "1.0.1",
+            "category": "Security Center"
+          },
+          "Mode": "Indexed",
+          "Parameters": {
+            "effect": {
+              "type": "String",
+              "metadata": {
+                "displayName": "Effect",
+                "description": "Enable or disable the execution of the policy"
+              },
+              "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+              ],
+              "defaultValue": "AuditIfNotExists"
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Compute/virtualMachines/extensions"
+                },
+                {
+                  "field": "Microsoft.Compute/virtualMachines/extensions/publisher",
+                  "equals": "Microsoft.GuestConfiguration"
+                }
+              ]
+            },
+            "then": {
+              "effect": "[parameters('effect')]",
+              "details": {
+                "type": "Microsoft.Compute/virtualMachines",
+                "name": "[first(split(field('fullName'), '/'))]",
+                "existenceCondition": {
+                  "field": "identity.type",
+                  "contains": "SystemAssigned"
+                }
+              }
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/d26f7642-7545-4e18-9b75-8c9bbdee3a9a"
+      }
+    ],
+    "exemptions": []
+  }
+]

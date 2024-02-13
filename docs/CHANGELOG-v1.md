@@ -37,6 +37,8 @@ What's changed since v1.33.0:
 - Bug fixes:
   - Fixed `Azure.AKS.AuthorizedIPs` is not valid for a private cluster by @BernieWhite.
     [#2677](https://github.com/Azure/PSRule.Rules.Azure/issues/2677)
+  - Fixed generating rule for VM extensions from policy is incorrect by @BernieWhite.
+    [#2608](https://github.com/Azure/PSRule.Rules.Azure/issues/2608)
 
 ## v1.33.0
 
