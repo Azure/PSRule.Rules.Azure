@@ -204,6 +204,30 @@ namespace PSRule.Rules.Azure
             Assert.Equal(new string[] { "Azure.Policy.b8a4e2d03e09", "PSRule.Rules.Azure\\Azure.KeyVault.SoftDelete" }, baseline.Include);
         }
 
+        /// <summary>
+        /// This tests for a reverse cases where the child extension is audit if a setting on the parent resource is set.
+        /// </summary>
+        [Fact]
+        public void GetParentAudit()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData("Policy.assignment.4.json").Where(a => a["Name"].Value<string>() == "assignment.4"))
+                visitor.Visit(context, assignment);
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Single(definitions);
+
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/d26f7642-7545-4e18-9b75-8c9bbdee3a9a");
+            Assert.NotNull(actual);
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.Compute/virtualMachines", actual.Types[0]);
+            Assert.Null(actual.Where);
+            Assert.Equal("{\"field\":\"identity.type\",\"contains\":\"SystemAssigned\"}", actual.Condition.ToString(Formatting.None));
+            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
+        }
+
         #region Helper methods
 
         private static PipelineContext GetContext(PSRuleOption option = null)

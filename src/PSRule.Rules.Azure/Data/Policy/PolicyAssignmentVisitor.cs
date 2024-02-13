@@ -15,7 +15,6 @@ using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
-using YamlDotNet.Core.Tokens;
 
 namespace PSRule.Rules.Azure.Data.Policy
 {
@@ -1471,15 +1470,37 @@ namespace PSRule.Rules.Azure.Data.Policy
                 !then.TryObjectProperty(PROPERTY_DETAILS, out var details))
                 return;
 
-            if (IsIfNotExistsEffect(context, then))
+            // Handle not exist effect for a parent type.
+            if (IsIfNotExistsEffect(context, then) && details.TryStringProperty(PROPERTY_TYPE, out var type) && ChildOf(policyDefinition, type))
             {
-                //policyDefinition.Where = policyDefinition.Condition;
+                // Replace with parent type.
+                policyDefinition.Types.Clear();
+                policyDefinition.Types.Add(type);
+                context.SetDefaultResourceType(type);
+
+                // Clean up condition that applies to child.
+                policyDefinition.Where = null;
+
+                policyDefinition.Condition = AndExistanceExpression(context, details, null, applyToChildren: false);
+            }
+            // Handle not exist effect.
+            else if (IsIfNotExistsEffect(context, then))
+            {
                 policyDefinition.Condition = AndExistanceExpression(context, details, DefaultEffectConditions(context, details));
             }
             else
             {
                 policyDefinition.Condition = DefaultEffectConditions(context, details) ?? AlwaysFail(effect);
             }
+        }
+
+        private static bool ChildOf(PolicyDefinition policyDefinition, string type)
+        {
+            if (policyDefinition == null || policyDefinition.Types == null || policyDefinition.Types.Count != 1 || string.IsNullOrEmpty(type))
+                return false;
+
+            var currentType = policyDefinition.Types[0];
+            return type.Length < currentType.Length && currentType.StartsWith($"{type}/", StringComparison.OrdinalIgnoreCase);
         }
 
         private static void CompleteCondition(PolicyAssignmentContext context, PolicyDefinition policyDefinition, string effect)
@@ -1555,7 +1576,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             };
         }
 
-        private static JObject AndExistanceExpression(PolicyAssignmentContext context, JObject details, JObject subselector)
+        private static JObject AndExistanceExpression(PolicyAssignmentContext context, JObject details, JObject subselector, bool applyToChildren = true)
         {
             if (details == null || !details.TryObjectProperty(PROPERTY_EXISTENCECONDITION, out var existenceCondition))
             {
@@ -1568,19 +1589,24 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             VisitCondition(context, null, existenceCondition);
 
-            var allOf = new JArray
+            if (applyToChildren)
             {
-                existenceCondition
-            };
-            var existenceExpression = new JObject
-            {
-                { PROPERTY_FIELD, PROPERTY_RESOURCES },
-                { PROPERTY_ALLOF, allOf }
-            };
-            if (subselector != null && subselector.Count > 0)
-                existenceExpression[PROPERTY_WHERE] = subselector;
+                var allOf = new JArray
+                {
+                    existenceCondition
+                };
+                var existenceExpression = new JObject
+                {
+                    { PROPERTY_FIELD, PROPERTY_RESOURCES },
+                    { PROPERTY_ALLOF, allOf }
+                };
 
-            return existenceExpression;
+                if (subselector != null && subselector.Count > 0)
+                    existenceExpression[PROPERTY_WHERE] = subselector;
+
+                existenceCondition = existenceExpression;
+            }
+            return existenceCondition;
         }
 
         private static JObject AndNameCondition(JObject details, JObject condition)
