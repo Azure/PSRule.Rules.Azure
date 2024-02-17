@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-09-29
+reviewed: 2024-02-17
 severity: Important
 pillar: Reliability
-category: Requirements
+category: RE:04 Target metrics
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.Version/
 ms-content-id: b0bd4e66-af2f-4d0a-82ae-e4738418bb7e
@@ -49,7 +49,7 @@ Also consider enabling cluster auto-upgrade within a maintenance window to minim
 
 To deploy AKS clusters that pass this rule:
 
-- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable`. OR
+- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable`. _OR_
 - Set `properties.kubernetesVersion` to a newer stable version.
 
 For example:
@@ -129,7 +129,7 @@ For example:
 
 To deploy AKS clusters that pass this rule:
 
-- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable`. OR
+- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable`. _OR_
 - Set `properties.kubernetesVersion` to a newer stable version.
 
 For example:
@@ -219,17 +219,20 @@ Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -Kubernete
 ## NOTES
 
 A list of available Kubernetes versions can be found using the `az aks get-versions -o table --location <location>` CLI command.
-To configure this rule:
 
-- Override the `AZURE_AKS_CLUSTER_MINIMUM_VERSION` configuration value with the minimum Kubernetes version.
-
-If you must maintain AKS clusters for longer then the community support period, consider switch to Long Term Support (LTS).
+If you must maintain AKS clusters for longer then the community support period, consider switching to Long Term Support (LTS).
 AKS LTS provides support for a specific Kubernetes version for a longer period of time.
 The first LTS release is 1.27.
 
+### Rule configuration
+
+<!-- module:config rule AZURE_AKS_CLUSTER_MINIMUM_VERSION -->
+
+To configure this rule override the `AZURE_AKS_CLUSTER_MINIMUM_VERSION` configuration value with the minimum Kubernetes version.
+
 ## LINKS
 
-- [Target and non-functional requirements](https://learn.microsoft.com/azure/well-architected/resiliency/design-requirements#meet-application-platform-requirements)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Automatically upgrade an Azure Kubernetes Service cluster](https://learn.microsoft.com/azure/aks/auto-upgrade-cluster)
 - [Supported Kubernetes versions in Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/supported-kubernetes-versions#kubernetes-version-support-policy)
 - [Support policies for Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/support-policies)

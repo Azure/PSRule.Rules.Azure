@@ -14,6 +14,31 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Resource.UseTags](Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | Awareness | Error
 
+### CO:04 Spending guardrails
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.DevBox.ProjectLimit](Azure.DevBox.ProjectLimit.md) | Limit the number of Dev Boxes a single user can create for a project. | Important | Error
+
+### CO:05 Rate optimization
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.VM.UseHybridUseBenefit](Azure.VM.UseHybridUseBenefit.md) | Use Azure Hybrid Benefit for applicable virtual machine (VM) workloads. | Awareness | Error
+
+### CO:06 Usage and billing increments
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.ML.ComputeIdleShutdown](Azure.ML.ComputeIdleShutdown.md) | Configure an idle shutdown timeout for Machine Learning compute instances. | Critical | Error
+[Azure.VM.DiskSizeAlignment](Azure.VM.DiskSizeAlignment.md) | Align to the Managed Disk billing increments to improve cost efficiency. | Awareness | Error
+
+### CO:07 Component costs
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.ACR.Usage](Azure.ACR.Usage.md) | Regularly remove deprecated and unneeded images to reduce storage usage. | Important | Error
+
 ### CO:13 Personnel time
 
 Name | Synopsis | Severity | Level
@@ -26,33 +51,15 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ADX.Usage](Azure.ADX.Usage.md) | Regularly remove unused resources to reduce costs. | Important | Error
 [Azure.EventHub.Usage](Azure.EventHub.Usage.md) | Regularly remove unused resources to reduce costs. | Important | Error
+[Azure.FrontDoor.State](Azure.FrontDoor.State.md) | Enable Azure Front Door Classic instance. | Important | Error
 [Azure.PublicIP.IsAttached](Azure.PublicIP.IsAttached.md) | Public IP addresses should be attached or cleaned up if not in use. | Important | Error
 [Azure.ServiceBus.Usage](Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | Important | Error
-
-### Optimize
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.FrontDoor.State](Azure.FrontDoor.State.md) | Enable Azure Front Door Classic instance. | Important | Error
 
 ### Pricing and billing model
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.VM.PromoSku](Azure.VM.PromoSku.md) | Virtual machines (VMs) should not use expired promotional SKU. | Awareness | Error
-[Azure.VM.UseHybridUseBenefit](Azure.VM.UseHybridUseBenefit.md) | Use Azure Hybrid Benefit for applicable virtual machine (VM) workloads. | Awareness | Error
-
-### Provision
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.ML.ComputeIdleShutdown](Azure.ML.ComputeIdleShutdown.md) | Configure an idle shutdown timeout for Machine Learning compute instances. | Critical | Error
-
-### Reports
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.ACR.Usage](Azure.ACR.Usage.md) | Regularly remove deprecated and unneeded images to reduce storage usage. | Important | Error
 
 ### Resource usage
 
@@ -60,7 +67,6 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ACR.Retention](Azure.ACR.Retention.md) | Use a retention policy to cleanup untagged manifests. | Important | Error
 [Azure.VM.DiskAttached](Azure.VM.DiskAttached.md) | Managed disks should be attached to virtual machines or removed. | Important | Error
-[Azure.VM.DiskSizeAlignment](Azure.VM.DiskSizeAlignment.md) | Align to the Managed Disk billing model to improve cost efficiency. | Awareness | Error
 [Azure.VM.ShouldNotBeStopped](Azure.VM.ShouldNotBeStopped.md) | Azure VMs should be running or in a deallocated state. | Important | Error
 
 ## Operational Excellence
@@ -122,9 +128,7 @@ Name | Synopsis | Severity | Level
 [Azure.Automation.PlatformLogs](Azure.Automation.PlatformLogs.md) | Ensure automation account platform diagnostic logs are enabled. | Important | Error
 [Azure.Monitor.ServiceHealth](Azure.Monitor.ServiceHealth.md) | Configure Service Health alerts to notify administrators. | Important | Error
 [Azure.VM.Agent](Azure.VM.Agent.md) | Ensure the VM agent is provisioned automatically. | Important | Error
-[Azure.VM.AMA](Azure.VM.AMA.md) | Use Azure Monitor Agent for collecting monitoring data. | Important | Error
 [Azure.VM.MigrateAMA](Azure.VM.MigrateAMA.md) | Use Azure Monitor Agent as replacement for Log Analytics Agent. | Important | Error
-[Azure.VMSS.AMA](Azure.VMSS.AMA.md) | Use Azure Monitor Agent for collecting monitoring data. | Important | Error
 [Azure.VMSS.MigrateAMA](Azure.VMSS.MigrateAMA.md) | Use Azure Monitor Agent as replacement for Log Analytics Agent. | Important | Error
 
 ### OE:04 Continuous integration
@@ -146,6 +150,20 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.APIM.ProductDescriptors](Azure.APIM.ProductDescriptors.md) | API Management products should have a display name and description. | Awareness | Warning
+
+### OE:05 Infrastructure as code
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Template.TemplateFile](Azure.Template.TemplateFile.md) | Use ARM template files that are valid. | Important | Error
+[Azure.Template.ValidSecretRef](Azure.Template.ValidSecretRef.md) | Use a valid secret reference within parameter files. | Awareness | Error
+
+### OE:07 Monitoring system
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.VM.AMA](Azure.VM.AMA.md) | Use Azure Monitor Agent for collecting monitoring data from VMs. | Important | Error
+[Azure.VMSS.AMA](Azure.VMSS.AMA.md) | Use Azure Monitor Agent for collecting monitoring data from VM scale sets. | Important | Error
 
 ### Principles
 
@@ -225,12 +243,10 @@ Name | Synopsis | Severity | Level
 [Azure.Template.ParameterScheme](Azure.Template.ParameterScheme.md) | Use an Azure template parameter file schema with the https scheme. | Awareness | Error
 [Azure.Template.ParameterStrongType](Azure.Template.ParameterStrongType.md) | Set the parameter value to a value that matches the specified strong type. | Awareness | Error
 [Azure.Template.ParameterValue](Azure.Template.ParameterValue.md) | Specify a value for each parameter in template parameter files. | Awareness | Error
-[Azure.Template.TemplateFile](Azure.Template.TemplateFile.md) | Use ARM template files that are valid. | Important | Error
 [Azure.Template.TemplateSchema](Azure.Template.TemplateSchema.md) | Use a more recent version of the Azure template schema. | Awareness | Error
 [Azure.Template.TemplateScheme](Azure.Template.TemplateScheme.md) | Use an Azure template file schema with the https scheme. | Awareness | Error
 [Azure.Template.UseComments](Azure.Template.UseComments.md) | Use comments for each resource in ARM template to communicate purpose. | Awareness | Information
 [Azure.Template.UseDescriptions](Azure.Template.UseDescriptions.md) | Use descriptions for each resource in generated template(bicep, psarm, AzOps) to communicate purpose. | Awareness | Information
-[Azure.Template.ValidSecretRef](Azure.Template.ValidSecretRef.md) | Use a valid secret reference within parameter files. | Awareness | Error
 [Azure.VM.ASName](Azure.VM.ASName.md) | Availability Set names should meet naming requirements. | Awareness | Error
 [Azure.VM.ComputerName](Azure.VM.ComputerName.md) | Virtual Machine (VM) computer name should meet naming requirements. | Awareness | Error
 [Azure.VM.DiskName](Azure.VM.DiskName.md) | Managed Disk names should meet naming requirements. | Awareness | Error
@@ -270,7 +286,6 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.AKS.NodeMinPods](Azure.AKS.NodeMinPods.md) | Azure Kubernetes Cluster (AKS) nodes should use a minimum number of pods. | Important | Error
 [Azure.AKS.PoolScaleSet](Azure.AKS.PoolScaleSet.md) | Deploy AKS clusters with nodes pools based on VM scale sets. | Important | Error
 [Azure.AKS.StandardLB](Azure.AKS.StandardLB.md) | Azure Kubernetes Clusters (AKS) should use a Standard load balancer SKU. | Important | Error
 
@@ -286,11 +301,23 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ContainerApp.DisableAffinity](Azure.ContainerApp.DisableAffinity.md) | Disable session affinity to prevent unbalanced distribution. | Important | Error
 
+### PE:03 Selecting services
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Databricks.SKU](Azure.Databricks.SKU.md) | Ensure Databricks workspaces are non-trial SKUs for production workloads. | Critical | Error
+
+### PE:05 Scaling and partitioning
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.AKS.AutoScaling](Azure.AKS.AutoScaling.md) | Use autoscaling to scale clusters based on workload requirements. | Important | Error
+[Azure.AKS.NodeMinPods](Azure.AKS.NodeMinPods.md) | Azure Kubernetes Cluster (AKS) nodes should use a minimum number of pods. | Important | Error
+
 ### Performance
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.AKS.AutoScaling](Azure.AKS.AutoScaling.md) | Use Autoscaling to ensure AKS clusters deployed with virtual machine scale sets are running efficiently with the right number of nodes for the workloads present. | Important | Error
 [Azure.VM.AcceleratedNetworking](Azure.VM.AcceleratedNetworking.md) | Use accelerated networking for supported operating systems and VM types. | Important | Error
 [Azure.VM.DiskCaching](Azure.VM.DiskCaching.md) | Check disk caching is configured correctly for the workload. | Important | Error
 
@@ -323,7 +350,6 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.VM.ASAlignment](Azure.VM.ASAlignment.md) | Use availability sets aligned with managed disks fault domains. | Important | Error
 [Azure.VM.Standalone](Azure.VM.Standalone.md) | Use VM features to increase reliability and improve covered SLA for VM configurations. | Important | Error
-[Azure.VM.UseManagedDisks](Azure.VM.UseManagedDisks.md) | Virtual machines (VMs) should use managed disks. | Important | Error
 
 ### Best practices
 
@@ -338,8 +364,6 @@ Name | Synopsis | Severity | Level
 [Azure.ACR.GeoReplica](Azure.ACR.GeoReplica.md) | Use geo-replicated container registries to compliment a multi-region container deployments. | Important | Error
 [Azure.ACR.SoftDelete](Azure.ACR.SoftDelete.md) | Azure Container Registries should have soft delete policy enabled. | Important | Error
 [Azure.AppConfig.PurgeProtect](Azure.AppConfig.PurgeProtect.md) | Consider purge protection for app configuration store to ensure store cannot be purged in the retention period. | Important | Error
-[Azure.KeyVault.PurgeProtect](Azure.KeyVault.PurgeProtect.md) | Enable Purge Protection on Key Vaults to prevent early purge of vaults and vault items. | Important | Error
-[Azure.KeyVault.SoftDelete](Azure.KeyVault.SoftDelete.md) | Enable Soft Delete on Key Vaults to protect vaults and vault items from accidental deletion. | Important | Error
 [Azure.Storage.ContainerSoftDelete](Azure.Storage.ContainerSoftDelete.md) | Enable container soft delete on Storage Accounts. | Important | Error
 [Azure.Storage.FileShareSoftDelete](Azure.Storage.FileShareSoftDelete.md) | Enable soft delete on Storage Accounts file shares. | Important | Error
 [Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable blob soft delete on Storage Accounts. | Important | Error
@@ -360,7 +384,6 @@ Name | Synopsis | Severity | Level
 [Azure.RSV.ReplicationAlert](Azure.RSV.ReplicationAlert.md) | Recovery Services Vaults (RSV) without replication alerts configured may be at risk. | Important | Error
 [Azure.RSV.StorageType](Azure.RSV.StorageType.md) | Recovery Services Vaults (RSV) not using geo-replicated storage (GRS) may be at risk. | Important | Error
 [Azure.VNG.ERAvailabilityZoneSKU](Azure.VNG.ERAvailabilityZoneSKU.md) | Use availability zone SKU for virtual network gateways deployed with ExpressRoute gateway type. | Important | Error
-[Azure.VNG.VPNAvailabilityZoneSKU](Azure.VNG.VPNAvailabilityZoneSKU.md) | Use availability zone SKU for virtual network gateways deployed with VPN gateway type. | Important | Error
 
 ### Health modeling
 
@@ -379,15 +402,35 @@ Name | Synopsis | Severity | Level
 [Azure.AKS.MinNodeCount](Azure.AKS.MinNodeCount.md) | AKS clusters should have minimum number of nodes for failover and updates. | Important | Error
 [Azure.AppGw.MinInstance](Azure.AppGw.MinInstance.md) | Application Gateways should use a minimum of two instances. | Important | Error
 [Azure.LB.Probe](Azure.LB.Probe.md) | Use a specific probe for web protocols. | Important | Error
-[Azure.TrafficManager.Endpoints](Azure.TrafficManager.Endpoints.md) | Traffic Manager should use at lest two enabled endpoints. | Important | Error
 [Azure.VM.ASMinMembers](Azure.VM.ASMinMembers.md) | Availability sets should be deployed with at least two virtual machines (VMs). | Important | Error
+
+### RE:01 Simplicity and efficiency
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.VM.UseManagedDisks](Azure.VM.UseManagedDisks.md) | Virtual machines (VMs) should use managed disks. | Important | Error
+
+### RE:04 Target metrics
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.AKS.Version](Azure.AKS.Version.md) | AKS control plane and nodes pools should use a current stable release. | Important | Error
 
 ### RE:05 Redundancy
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.AppConfig.GeoReplica](Azure.AppConfig.GeoReplica.md) | Replicate app configuration store across all points of presence for an application. | Important | Error
+[Azure.TrafficManager.Endpoints](Azure.TrafficManager.Endpoints.md) | Traffic Manager should use at lest two enabled endpoints. | Important | Error
 [Azure.VNG.VPNActiveActive](Azure.VNG.VPNActiveActive.md) | Use VPN gateways configured to operate in an Active-Active configuration to reduce connectivity downtime. | Important | Error
+[Azure.VNG.VPNAvailabilityZoneSKU](Azure.VNG.VPNAvailabilityZoneSKU.md) | Use availability zone SKU for virtual network gateways deployed with VPN gateway type. | Important | Error
+
+### RE:07 Self-preservation
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.KeyVault.PurgeProtect](Azure.KeyVault.PurgeProtect.md) | Enable Purge Protection on Key Vaults to prevent early purge of vaults and vault items. | Important | Error
+[Azure.KeyVault.SoftDelete](Azure.KeyVault.SoftDelete.md) | Enable Soft Delete on Key Vaults to protect vaults and vault items from accidental deletion. | Important | Error
 
 ### Reliability design principles
 
@@ -402,7 +445,6 @@ Name | Synopsis | Severity | Level
 [Azure.ACR.MinSku](Azure.ACR.MinSku.md) | ACR should use the Premium or Standard SKU for production deployments. | Important | Error
 [Azure.ADX.SLA](Azure.ADX.SLA.md) | Use SKUs that include an SLA when configuring Azure Data Explorer (ADX) clusters. | Important | Error
 [Azure.AKS.UptimeSLA](Azure.AKS.UptimeSLA.md) | AKS clusters should have Uptime SLA enabled for a financially backed SLA. | Important | Error
-[Azure.AKS.Version](Azure.AKS.Version.md) | AKS control plane and nodes pools should use a current stable release. | Important | Error
 [Azure.AppConfig.SKU](Azure.AppConfig.SKU.md) | App Configuration should use a minimum size of Standard. | Important | Error
 [Azure.PublicIP.StandardSKU](Azure.PublicIP.StandardSKU.md) | Public IP addresses should be deployed with Standard SKU for production workloads. | Important | Error
 [Azure.Redis.Version](Azure.Redis.Version.md) | Azure Cache for Redis should use the latest supported version of Redis. | Important | Error
@@ -451,7 +493,6 @@ Name | Synopsis | Severity | Level
 [Azure.AppGw.UseWAF](Azure.AppGw.UseWAF.md) | Internet accessible Application Gateways should use protect endpoints with WAF. | Critical | Error
 [Azure.Cognitive.PublicAccess](Azure.Cognitive.PublicAccess.md) | Restrict access of Cognitive Services accounts to authorized virtual networks. | Important | Error
 [Azure.ContainerApp.PublicAccess](Azure.ContainerApp.PublicAccess.md) | Ensure public network access for Container Apps environment is disabled. | Important | Error
-[Azure.Databricks.SecureConnectivity](Azure.Databricks.SecureConnectivity.md) | Use Databricks workspaces configured for secure cluster connectivity. | Critical | Error
 [Azure.FrontDoor.UseWAF](Azure.FrontDoor.UseWAF.md) | Enable Web Application Firewall (WAF) policies on each Front Door endpoint. | Critical | Error
 [Azure.FrontDoor.WAF.Enabled](Azure.FrontDoor.WAF.Enabled.md) | Front Door Web Application Firewall (WAF) policy must be enabled to protect back end resources. | Critical | Error
 [Azure.KeyVault.Firewall](Azure.KeyVault.Firewall.md) | Key Vault should only accept explicitly allowed traffic. | Important | Error
@@ -462,17 +503,10 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.ADX.ManagedIdentity](Azure.ADX.ManagedIdentity.md) | Configure Data Explorer clusters to use managed identities to access Azure resources securely. | Important | Error
-[Azure.AKS.ManagedIdentity](Azure.AKS.ManagedIdentity.md) | Configure AKS clusters to use managed identities for managing cluster infrastructure. | Important | Error
-[Azure.APIM.ManagedIdentity](Azure.APIM.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
-[Azure.AppService.ManagedIdentity](Azure.AppService.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
 [Azure.Automation.ManagedIdentity](Azure.Automation.ManagedIdentity.md) | Ensure Managed Identity is used for authentication. | Important | Error
 [Azure.Cognitive.DisableLocalAuth](Azure.Cognitive.DisableLocalAuth.md) | Authenticate requests to Cognitive Services with Azure AD identities. | Important | Error
-[Azure.Cognitive.ManagedIdentity](Azure.Cognitive.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
 [Azure.ContainerApp.ManagedIdentity](Azure.ContainerApp.ManagedIdentity.md) | Ensure managed identity is used for authentication. | Important | Error
 [Azure.Cosmos.DisableMetadataWrite](Azure.Cosmos.DisableMetadataWrite.md) | Use Azure AD identities for management place operations in Azure Cosmos DB. | Important | Error
-[Azure.EventGrid.DisableLocalAuth](Azure.EventGrid.DisableLocalAuth.md) | Authenticate publishing clients with Azure AD identities. | Important | Error
-[Azure.EventGrid.ManagedIdentity](Azure.EventGrid.ManagedIdentity.md) | Use managed identities to deliver Event Grid Topic events. | Important | Error
 [Azure.EventHub.DisableLocalAuth](Azure.EventHub.DisableLocalAuth.md) | Authenticate Event Hub publishers and consumers with Azure AD identities. | Important | Error
 [Azure.FrontDoor.ManagedIdentity](Azure.FrontDoor.ManagedIdentity.md) | Ensure Front Door uses a managed identity to authorize access to Azure resources. | Important | Error
 [Azure.ML.DisableLocalAuth](Azure.ML.DisableLocalAuth.md) | Azure Machine Learning compute resources should have local authentication methods disabled. | Critical | Error
@@ -493,7 +527,6 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.AKS.LocalAccounts](Azure.AKS.LocalAccounts.md) | Enforce named user accounts with RBAC assigned permissions. | Important | Error
-[Azure.KeyVault.RBAC](Azure.KeyVault.RBAC.md) | Key Vaults should use Azure RBAC as the authorization system for the data plane. | Awareness | Warning
 
 ### Azure resources
 
@@ -519,7 +552,6 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Cognitive.PrivateEndpoints](Azure.Cognitive.PrivateEndpoints.md) | Use Private Endpoints to access Cognitive Services accounts. | Important | Error
-[Azure.EventGrid.TopicPublicAccess](Azure.EventGrid.TopicPublicAccess.md) | Use Private Endpoints to access Event Grid topics and domains. | Important | Error
 
 ### Data protection
 
@@ -544,7 +576,6 @@ Name | Synopsis | Severity | Level
 [Azure.Storage.DefenderCloud](Azure.Storage.DefenderCloud.md) | Enable Microsoft Defender for Storage for storage accounts. | Critical | Error
 [Azure.Storage.DefenderCloud.MalwareScan](Azure.Storage.DefenderCloud.MalwareScan.md) | Enable Malware Scanning in Microsoft Defender for Storage. | Critical | Error
 [Azure.Storage.DefenderCloud.SensitiveData](Azure.Storage.DefenderCloud.SensitiveData.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical | Error
-[Azure.TrafficManager.Protocol](Azure.TrafficManager.Protocol.md) | Monitor Traffic Manager web-based endpoints with HTTPS. | Important | Error
 [Azure.VM.ADE](Azure.VM.ADE.md) | Use Azure Disk Encryption (ADE). | Important | Error
 
 ### Deployment
@@ -558,7 +589,6 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.AKS.AuthorizedIPs](Azure.AKS.AuthorizedIPs.md) | Restrict access to API server endpoints to authorized IP addresses. | Important | Error
 [Azure.APIM.CORSPolicy](Azure.APIM.CORSPolicy.md) | Avoid using wildcard for any configuration option in CORS policies. | Important | Error
 [Azure.APIM.PolicyBase](Azure.APIM.PolicyBase.md) | Base element for any policy element in a section should be configured. | Important | Error
 [Azure.ContainerApp.Insecure](Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important | Error
@@ -585,7 +615,7 @@ Name | Synopsis | Severity | Level
 [Azure.Storage.MinTLS](Azure.Storage.MinTLS.md) | Storage Accounts should reject TLS versions older than 1.2. | Critical | Error
 [Azure.Storage.SecureTransfer](Azure.Storage.SecureTransfer.md) | Storage accounts should only accept encrypted connections. | Important | Error
 
-### Identity and access management
+### Identity and Access Management
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
@@ -687,10 +717,8 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.AKS.NetworkPolicy](Azure.AKS.NetworkPolicy.md) | Deploy AKS clusters with Network Policies enabled. | Important | Error
 [Azure.NSG.LateralTraversal](Azure.NSG.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | Important | Error
 [Azure.VNET.FirewallSubnet](Azure.VNET.FirewallSubnet.md) | Use Azure Firewall to filter network traffic to and from Azure resources. | Important | Error
-[Azure.VNET.UseNSGs](Azure.VNET.UseNSGs.md) | Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned. | Critical | Error
 
 ### Optimize
 
@@ -704,14 +732,44 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ACR.ImageHealth](Azure.ACR.ImageHealth.md) | Remove container images with known vulnerabilities. | Critical | Error
 
+### SE:04 Segmentation
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.AKS.NetworkPolicy](Azure.AKS.NetworkPolicy.md) | Deploy AKS clusters with Network Policies enabled. | Important | Error
+
 ### SE:05 Identity and access management
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ACR.AdminUser](Azure.ACR.AdminUser.md) | Use Entra ID identities instead of using the registry admin user. | Critical | Error
+[Azure.ADX.ManagedIdentity](Azure.ADX.ManagedIdentity.md) | Configure Data Explorer clusters to use managed identities to access Azure resources securely. | Important | Error
+[Azure.AKS.ManagedIdentity](Azure.AKS.ManagedIdentity.md) | Configure AKS clusters to use managed identities for managing cluster infrastructure. | Important | Error
+[Azure.APIM.ManagedIdentity](Azure.APIM.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
 [Azure.APIM.ProductApproval](Azure.APIM.ProductApproval.md) | Configure products to require approval. | Important | Error
 [Azure.APIM.ProductSubscription](Azure.APIM.ProductSubscription.md) | Configure products to require a subscription. | Important | Error
 [Azure.AppConfig.DisableLocalAuth](Azure.AppConfig.DisableLocalAuth.md) | Authenticate App Configuration clients with Entra ID identities. | Important | Error
+[Azure.AppService.ManagedIdentity](Azure.AppService.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
+[Azure.Cognitive.ManagedIdentity](Azure.Cognitive.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
+[Azure.EventGrid.DisableLocalAuth](Azure.EventGrid.DisableLocalAuth.md) | Authenticate publishing clients with Azure AD identities. | Important | Error
+[Azure.EventGrid.ManagedIdentity](Azure.EventGrid.ManagedIdentity.md) | Use managed identities to deliver Event Grid Topic events. | Important | Error
+[Azure.KeyVault.RBAC](Azure.KeyVault.RBAC.md) | Key Vaults should use Azure RBAC as the authorization system for the data plane. | Awareness | Warning
+
+### SE:06 Network controls
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.AKS.AuthorizedIPs](Azure.AKS.AuthorizedIPs.md) | Restrict access to API server endpoints to authorized IP addresses. | Important | Error
+[Azure.Databricks.PublicAccess](Azure.Databricks.PublicAccess.md) | Azure Databricks workspaces should disable public network access. | Critical | Error
+[Azure.Databricks.SecureConnectivity](Azure.Databricks.SecureConnectivity.md) | Use Databricks workspaces configured for secure cluster connectivity. | Critical | Error
+[Azure.EventGrid.TopicPublicAccess](Azure.EventGrid.TopicPublicAccess.md) | Use Private Endpoints to access Event Grid topics and domains. | Important | Error
+[Azure.VNET.UseNSGs](Azure.VNET.UseNSGs.md) | Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned. | Critical | Error
+
+### SE:07 Encryption
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.TrafficManager.Protocol](Azure.TrafficManager.Protocol.md) | Monitor Traffic Manager web-based endpoints with HTTPS. | Important | Error
 
 ### SE:10 Monitoring and threat detection
 
