@@ -44,6 +44,8 @@ What's changed since v1.33.1:
     [#2680](https://github.com/Azure/PSRule.Rules.Azure/pull/2680)
   - Bump xunit to v2.7.0.
     [#2688](https://github.com/Azure/PSRule.Rules.Azure/pull/2688)
+  - Bump xunit.runner.visualstudio to v2.5.7.
+    [#2689](https://github.com/Azure/PSRule.Rules.Azure/pull/2689)
 
 ## v1.33.1
 
