@@ -17,7 +17,7 @@ Rule 'Azure.Resource.UseTags' -Ref 'AZR-000166' -With 'Azure.Resource.SupportsTa
 Rule 'Azure.Resource.AllowedRegions' -Ref 'AZR-000167' -If { (SupportsRegions) -and $PSRule.TargetType -ne 'Microsoft.Resources/deployments' -and $Assert.HasFieldValue($TargetObject, 'location').Result } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $context = $PSRule.GetService('Azure.Context');
     $location = $TargetObject.location;
-    $Assert.Create($context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, $location);
+    $Assert.Create('location', [bool]$context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, @($location));
 }
 
 # Synopsis: Use Resource Group naming requirements
