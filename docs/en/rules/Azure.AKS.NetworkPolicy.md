@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-02-17
 severity: Important
 pillar: Security
-category: Network segmentation
+category: SE:04 Segmentation
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NetworkPolicy/
 ---
@@ -16,7 +17,7 @@ Deploy AKS clusters with Network Policies enabled.
 
 AKS clusters provides a platform to host containerized workloads.
 The running of these applications or services is orchestrated by Kubernetes.
-Workloads may elasticly scale or change network addressing.
+Workloads may elastic scale or change network addressing.
 
 By default, all pods in an AKS cluster can send and receive traffic without limitations.
 Network Policy defines access policies for limiting network communication of pods.
@@ -39,78 +40,100 @@ Consider deploying AKS clusters with network policy enabled to extend network se
 
 To deploy AKS clusters that pass this rule:
 
-- Set `Properties.networkProfile.networkPolicy` to `azure` or `calico`.
+- Set `properties.networkProfile.networkPolicy` to `azure` or `calico`.
 
 For example:
 
 ```json
 {
-    "type": "Microsoft.ContainerService/managedClusters",
-    "apiVersion": "2021-07-01",
-    "name": "[parameters('clusterName')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "UserAssigned",
-        "userAssignedIdentities": {
-            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]": {}
-        }
+  "type": "Microsoft.ContainerService/managedClusters",
+  "apiVersion": "2023-11-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')))]": {}
+    }
+  },
+  "properties": {
+    "kubernetesVersion": "[parameters('kubernetesVersion')]",
+    "disableLocalAccounts": true,
+    "enableRBAC": true,
+    "dnsPrefix": "[parameters('dnsPrefix')]",
+    "agentPoolProfiles": [
+      {
+        "name": "system",
+        "osDiskSizeGB": 0,
+        "minCount": 3,
+        "maxCount": 5,
+        "enableAutoScaling": true,
+        "maxPods": 50,
+        "vmSize": "Standard_D4s_v5",
+        "type": "VirtualMachineScaleSets",
+        "vnetSubnetID": "[parameters('clusterSubnetId')]",
+        "mode": "System",
+        "osDiskType": "Ephemeral"
+      },
+      {
+        "name": "user",
+        "osDiskSizeGB": 0,
+        "minCount": 3,
+        "maxCount": 20,
+        "enableAutoScaling": true,
+        "maxPods": 50,
+        "vmSize": "Standard_D4s_v5",
+        "type": "VirtualMachineScaleSets",
+        "vnetSubnetID": "[parameters('clusterSubnetId')]",
+        "mode": "User",
+        "osDiskType": "Ephemeral"
+      }
+    ],
+    "aadProfile": {
+      "managed": true,
+      "enableAzureRBAC": true,
+      "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
+      "tenantID": "[subscription().tenantId]"
     },
-    "properties": {
-        "kubernetesVersion": "[parameters('kubernetesVersion')]",
-        "enableRBAC": true,
-        "dnsPrefix": "[parameters('dnsPrefix')]",
-        "agentPoolProfiles": "[variables('allPools')]",
-        "aadProfile": {
-            "managed": true,
-            "enableAzureRBAC": true,
-            "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
-            "tenantID": "[subscription().tenantId]"
-        },
-        "networkProfile": {
-            "networkPlugin": "azure",
-            "networkPolicy": "azure",
-            "loadBalancerSku": "standard",
-            "serviceCidr": "[variables('serviceCidr')]",
-            "dnsServiceIP": "[variables('dnsServiceIP')]",
-            "dockerBridgeCidr": "[variables('dockerBridgeCidr')]"
-        },
-        "autoUpgradeProfile": {
-            "upgradeChannel": "[parameters('upgradeChannel')]"
-        },
-        "addonProfiles": {
-            "httpApplicationRouting": {
-                "enabled": false
-            },
-            "azurepolicy": {
-                "enabled": true,
-                "config": {
-                    "version": "v2"
-                }
-            },
-            "omsagent": {
-                "enabled": true,
-                "config": {
-                    "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
-                }
-            },
-            "kubeDashboard": {
-                "enabled": false
-            },
-            "azureKeyvaultSecretsProvider": {
-                "enabled": true,
-                "config": {
-                    "enableSecretRotation": "[string(parameters('useSecretRotation'))]"
-                }
-            },
-            "openServiceMesh": {
-                "enabled": "[parameters('useOpenServiceMesh')]"
-            }
-        }
+    "networkProfile": {
+      "networkPlugin": "azure",
+      "networkPolicy": "azure",
+      "loadBalancerSku": "standard",
+      "serviceCidr": "[variables('serviceCidr')]",
+      "dnsServiceIP": "[variables('dnsServiceIP')]"
     },
-    "tags": "[parameters('tags')]",
-    "dependsOn": [
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
-    ]
+    "apiServerAccessProfile": {
+      "authorizedIPRanges": [
+        "0.0.0.0/32"
+      ]
+    },
+    "autoUpgradeProfile": {
+      "upgradeChannel": "stable"
+    },
+    "oidcIssuerProfile": {
+      "enabled": true
+    },
+    "addonProfiles": {
+      "azurepolicy": {
+        "enabled": true
+      },
+      "omsagent": {
+        "enabled": true,
+        "config": {
+          "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+        }
+      },
+      "azureKeyvaultSecretsProvider": {
+        "enabled": true,
+        "config": {
+          "enableSecretRotation": "true"
+        }
+      }
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
+  ]
 }
 ```
 
@@ -118,14 +141,14 @@ For example:
 
 To deploy AKS clusters that pass this rule:
 
-- Set `Properties.networkProfile.networkPolicy` to `azure` or `calico`.
+- Set `properties.networkProfile.networkPolicy` to `azure` or `calico`.
 
 For example:
 
 ```bicep
-resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
+resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-11-01' = {
   location: location
-  name: clusterName
+  name: name
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
@@ -134,9 +157,37 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
   }
   properties: {
     kubernetesVersion: kubernetesVersion
+    disableLocalAccounts: true
     enableRBAC: true
     dnsPrefix: dnsPrefix
-    agentPoolProfiles: allPools
+    agentPoolProfiles: [
+      {
+        name: 'system'
+        osDiskSizeGB: 0
+        minCount: 3
+        maxCount: 5
+        enableAutoScaling: true
+        maxPods: 50
+        vmSize: 'Standard_D4s_v5'
+        type: 'VirtualMachineScaleSets'
+        vnetSubnetID: clusterSubnetId
+        mode: 'System'
+        osDiskType: 'Ephemeral'
+      }
+      {
+        name: 'user'
+        osDiskSizeGB: 0
+        minCount: 3
+        maxCount: 20
+        enableAutoScaling: true
+        maxPods: 50
+        vmSize: 'Standard_D4s_v5'
+        type: 'VirtualMachineScaleSets'
+        vnetSubnetID: clusterSubnetId
+        mode: 'User'
+        osDiskType: 'Ephemeral'
+      }
+    ]
     aadProfile: {
       managed: true
       enableAzureRBAC: true
@@ -149,20 +200,21 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
       loadBalancerSku: 'standard'
       serviceCidr: serviceCidr
       dnsServiceIP: dnsServiceIP
-      dockerBridgeCidr: dockerBridgeCidr
+    }
+    apiServerAccessProfile: {
+      authorizedIPRanges: [
+        '0.0.0.0/32'
+      ]
     }
     autoUpgradeProfile: {
-      upgradeChannel: upgradeChannel
+      upgradeChannel: 'stable'
+    }
+    oidcIssuerProfile: {
+      enabled: true
     }
     addonProfiles: {
-      httpApplicationRouting: {
-        enabled: false
-      }
       azurepolicy: {
         enabled: true
-        config: {
-          version: 'v2'
-        }
       }
       omsagent: {
         enabled: true
@@ -170,33 +222,28 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
           logAnalyticsWorkspaceResourceID: workspaceId
         }
       }
-      kubeDashboard: {
-        enabled: false
-      }
       azureKeyvaultSecretsProvider: {
         enabled: true
         config: {
-          enableSecretRotation: string(useSecretRotation)
+          enableSecretRotation: 'true'
         }
-      }
-      openServiceMesh: {
-        enabled: useOpenServiceMesh
       }
     }
   }
-  tags: tags
 }
 ```
 
 ## NOTES
 
-Network Policy is a deployment time configuration.
-AKS clusters must be redeployed to enable Network Policy.
+Network Policy can only be set during initial cluster creation.
+Existing AKS clusters must be redeployed to enable Network Policy.
 
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
-- [Secure traffic between pods using network policies in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/use-network-policies)
-- [Best practices for network connectivity and security in Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies)
+- [SE:04 Segmentation](https://learn.microsoft.com/azure/well-architected/security/segmentation)
+- [NS-1: Establish network segmentation boundaries](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-kubernetes-service-aks-security-baseline#ns-1-establish-network-segmentation-boundaries)
+- [Secure traffic between pods using network policies in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/use-network-policies)
+- [Best practices for network connectivity and security in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/operator-best-practices-network#control-traffic-flow-with-network-policies)
 - [Network Policies](https://kubernetes.io/docs/concepts/services-networking/network-policies/)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure Well-Architected Framework review - Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/well-architected/service-guides/azure-kubernetes-service)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
