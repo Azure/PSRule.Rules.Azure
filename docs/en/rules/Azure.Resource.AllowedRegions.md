@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-09-10
+reviewed: 2024-02-17
 severity: Important
 pillar: Security
-category: Design
+category: SE:01 Security baseline
 resource: All resources
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Resource.AllowedRegions/
 ---
@@ -27,7 +27,7 @@ Some resources, particularly those related to preview services or features, may 
 ## RECOMMENDATION
 
 Consider deploying resources to allowed regions to align with your organizational requirements.
-Also consider using Azure Policy to enforce allowed regions.
+Also consider using Azure Policy to enforce allowed regions at runtime.
 
 ## EXAMPLES
 
@@ -35,7 +35,7 @@ Also consider using Azure Policy to enforce allowed regions.
 
 To deploy resources that pass this rule:
 
-- Set the `location` property to an allowed region. OR
+- Set the `location` property to an allowed region. _OR_
 - Instead of hard coding the location, use a parameter to allow the location to be specified at deployment time.
 
 For example:
@@ -67,7 +67,7 @@ For example:
 
 To deploy resources that pass this rule:
 
-- Set the `location` property to an allowed region. OR
+- Set the `location` property to an allowed region. _OR_
 - Instead of hard coding the location, use a parameter to allow the location to be specified at deployment time.
 
 For example:
@@ -101,6 +101,10 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 This rule requires one or more allowed regions to be configured.
 By default, all regions are allowed.
 
+### Configuration
+
+<!-- module:config rule AZURE_RESOURCE_ALLOWED_LOCATIONS -->
+
 To configure this rule set the `AZURE_RESOURCE_ALLOWED_LOCATIONS` configuration value to a set of allowed regions.
 
 For example:
@@ -125,6 +129,6 @@ configuration:
 
 ## LINKS
 
-- [Regulatory compliance](https://learn.microsoft.com/azure/well-architected/security/design-regulatory-compliance)
+- [SE:01 Security baseline](https://learn.microsoft.com/azure/well-architected/security/establish-baseline)
 - [Data residency in Azure](https://azure.microsoft.com/explore/global-infrastructure/data-residency/#overview)
 - [Azure geographies](https://azure.microsoft.com/explore/global-infrastructure/geographies/#geographies)

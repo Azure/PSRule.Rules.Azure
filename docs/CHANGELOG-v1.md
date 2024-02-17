@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.33.1:
+
+- Bug fixes:
+  - Fixed false positive of `Azure.Resource.AllowedRegions` raised during assertion call by @BernieWhite.
+    [#2687](https://github.com/Azure/PSRule.Rules.Azure/issues/2687)
+
 ## v1.33.1
 
 What's changed since v1.33.0:
