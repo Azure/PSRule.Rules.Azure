@@ -36,9 +36,211 @@ Separately, applications within an AKS cluster may use managed identities with A
 Consider using managed identities during AKS cluster creation.
 Additionally, consider redeploying the AKS cluster with managed identities instead of service principals.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy AKS clusters that pass this rule:
+
+- Set the `identity.type` to `SystemAssigned` or `UserAssigned`.
+- If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.ContainerService/managedClusters",
+  "apiVersion": "2023-11-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')))]": {}
+    }
+  },
+  "properties": {
+    "kubernetesVersion": "[parameters('kubernetesVersion')]",
+    "disableLocalAccounts": true,
+    "enableRBAC": true,
+    "dnsPrefix": "[parameters('dnsPrefix')]",
+    "agentPoolProfiles": [
+      {
+        "name": "system",
+        "osDiskSizeGB": 0,
+        "minCount": 3,
+        "maxCount": 5,
+        "enableAutoScaling": true,
+        "maxPods": 50,
+        "vmSize": "Standard_D4s_v5",
+        "type": "VirtualMachineScaleSets",
+        "vnetSubnetID": "[parameters('clusterSubnetId')]",
+        "mode": "System",
+        "osDiskType": "Ephemeral"
+      },
+      {
+        "name": "user",
+        "osDiskSizeGB": 0,
+        "minCount": 3,
+        "maxCount": 20,
+        "enableAutoScaling": true,
+        "maxPods": 50,
+        "vmSize": "Standard_D4s_v5",
+        "type": "VirtualMachineScaleSets",
+        "vnetSubnetID": "[parameters('clusterSubnetId')]",
+        "mode": "User",
+        "osDiskType": "Ephemeral"
+      }
+    ],
+    "aadProfile": {
+      "managed": true,
+      "enableAzureRBAC": true,
+      "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
+      "tenantID": "[subscription().tenantId]"
+    },
+    "networkProfile": {
+      "networkPlugin": "azure",
+      "networkPolicy": "azure",
+      "loadBalancerSku": "standard",
+      "serviceCidr": "[variables('serviceCidr')]",
+      "dnsServiceIP": "[variables('dnsServiceIP')]"
+    },
+    "apiServerAccessProfile": {
+      "authorizedIPRanges": [
+        "0.0.0.0/32"
+      ]
+    },
+    "autoUpgradeProfile": {
+      "upgradeChannel": "stable"
+    },
+    "oidcIssuerProfile": {
+      "enabled": true
+    },
+    "addonProfiles": {
+      "azurepolicy": {
+        "enabled": true
+      },
+      "omsagent": {
+        "enabled": true,
+        "config": {
+          "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+        }
+      },
+      "azureKeyvaultSecretsProvider": {
+        "enabled": true,
+        "config": {
+          "enableSecretRotation": "true"
+        }
+      }
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
+  ]
+}
+```
+
+### Configure with Bicep
+
+To deploy AKS clusters that pass this rule:
+
+- Set the `identity.type` to `SystemAssigned` or `UserAssigned`.
+- If `identity.type` is `UserAssigned`, reference the identity with `identity.userAssignedIdentities`.
+
+For example:
+
+```bicep
+resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-11-01' = {
+  location: location
+  name: name
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${identity.id}': {}
+    }
+  }
+  properties: {
+    kubernetesVersion: kubernetesVersion
+    disableLocalAccounts: true
+    enableRBAC: true
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: [
+      {
+        name: 'system'
+        osDiskSizeGB: 0
+        minCount: 3
+        maxCount: 5
+        enableAutoScaling: true
+        maxPods: 50
+        vmSize: 'Standard_D4s_v5'
+        type: 'VirtualMachineScaleSets'
+        vnetSubnetID: clusterSubnetId
+        mode: 'System'
+        osDiskType: 'Ephemeral'
+      }
+      {
+        name: 'user'
+        osDiskSizeGB: 0
+        minCount: 3
+        maxCount: 20
+        enableAutoScaling: true
+        maxPods: 50
+        vmSize: 'Standard_D4s_v5'
+        type: 'VirtualMachineScaleSets'
+        vnetSubnetID: clusterSubnetId
+        mode: 'User'
+        osDiskType: 'Ephemeral'
+      }
+    ]
+    aadProfile: {
+      managed: true
+      enableAzureRBAC: true
+      adminGroupObjectIDs: clusterAdmins
+      tenantID: subscription().tenantId
+    }
+    networkProfile: {
+      networkPlugin: 'azure'
+      networkPolicy: 'azure'
+      loadBalancerSku: 'standard'
+      serviceCidr: serviceCidr
+      dnsServiceIP: dnsServiceIP
+    }
+    apiServerAccessProfile: {
+      authorizedIPRanges: [
+        '0.0.0.0/32'
+      ]
+    }
+    autoUpgradeProfile: {
+      upgradeChannel: 'stable'
+    }
+    oidcIssuerProfile: {
+      enabled: true
+    }
+    addonProfiles: {
+      azurepolicy: {
+        enabled: true
+      }
+      omsagent: {
+        enabled: true
+        config: {
+          logAnalyticsWorkspaceResourceID: workspaceId
+        }
+      }
+      azureKeyvaultSecretsProvider: {
+        enabled: true
+        config: {
+          enableSecretRotation: 'true'
+        }
+      }
+    }
+  }
+}
+```
+
 ## NOTES
 
-AKS clusters can not be updated to use managed identities for cluster infrastructure after deployment.
+Managed identities can only be configured during initial cluster creation.
+Existing AKS clusters must be redeployed to enable managed identities.
 
 ## LINKS
 

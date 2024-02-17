@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Performance Efficiency
-category: Application scalability
+category: PE:05 Scaling and partitioning
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NodeMinPods/
 ---
@@ -15,12 +15,17 @@ Azure Kubernetes Cluster (AKS) nodes should use a minimum number of pods.
 ## DESCRIPTION
 
 Node pools within a Azure Kubernetes Cluster (AKS) support between 30 and 250 pods per node.
-The maximum number of pods for nodes within a node pool is set at deployment time.
+The maximum number of pods for nodes within a node pool is set at creation time.
 
 When deploying AKS clusters with _kubernet_ networking the default maximum number of pods is 110.
 For Azure CNI AKS clusters, the default maximum number of pods is 30.
 
 In many environments, deploying DaemonSets for monitoring and management tools can exhaust the CNI default.
+
+When you are using Azure CNI, ensure that there is enough IP address space in the node pool subnet.
+Each pod and host requires at least one IP address.
+Additionally, other resources such as load balancers will consuming additional IP addresses based on configuration.
+The node pools subnet should have enough IP address space to accommodate the `maxCount` nodes and nodes added during upgrades.
 
 ## RECOMMENDATION
 
@@ -39,7 +44,7 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerService/managedClusters",
-  "apiVersion": "2023-04-01",
+  "apiVersion": "2023-11-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "identity": {
@@ -94,6 +99,11 @@ For example:
       "serviceCidr": "[variables('serviceCidr')]",
       "dnsServiceIP": "[variables('dnsServiceIP')]"
     },
+    "apiServerAccessProfile": {
+      "authorizedIPRanges": [
+        "0.0.0.0/32"
+      ]
+    },
     "autoUpgradeProfile": {
       "upgradeChannel": "stable"
     },
@@ -119,7 +129,7 @@ For example:
     }
   },
   "dependsOn": [
-    "identity"
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
   ]
 }
 ```
@@ -133,7 +143,7 @@ To deploy clusters that pass this rule:
 For example:
 
 ```bicep
-resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-04-01' = {
+resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-11-01' = {
   location: location
   name: name
   identity: {
@@ -188,6 +198,11 @@ resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-04-01
       serviceCidr: serviceCidr
       dnsServiceIP: dnsServiceIP
     }
+    apiServerAccessProfile: {
+      authorizedIPRanges: [
+        '0.0.0.0/32'
+      ]
+    }
     autoUpgradeProfile: {
       upgradeChannel: 'stable'
     }
@@ -219,12 +234,12 @@ resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-04-01
 
 By default, this rule fails when node pools have `maxPods` set to less than 50.
 
-To configure this rule:
+### Rule configuration
 
-- Override the `Azure_AKSNodeMinimumMaxPods` configuration value with the minimum maxPods.
+To configure this rule override the `Azure_AKSNodeMinimumMaxPods` configuration value with the minimum maxPods.
 
 ## LINKS
 
-- [Plan for growth](https://learn.microsoft.com/azure/well-architected/scalability/design-scale#plan-for-growth)
+- [PE:05 Scaling and partitioning](https://learn.microsoft.com/azure/well-architected/performance-efficiency/scale-partition)
 - [Plan IP addressing for your cluster](https://learn.microsoft.com/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
