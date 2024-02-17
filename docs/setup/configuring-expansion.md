@@ -82,10 +82,10 @@ configuration:
 
 ### Bicep parameter expansion
 
-<!-- module:version v1.27.0 -->
+<!-- module:version v1.34.0 -->
 
 This configuration option determines if Azure Bicep parameter files (`.bicepparam`) are expanded.
-Currently while this is an experimental feature this is not enabled by default.
+By default, Bicep parameter files will be automatically expanded.
 
 Bicep files are expanded when PSRule cmdlets with the `-Format File` parameter are used.
 
@@ -101,7 +101,7 @@ Default:
 ```yaml title='ps-rule.yaml'
 # YAML: The default AZURE_BICEP_PARAMS_FILE_EXPANSION configuration option
 configuration:
-  AZURE_BICEP_PARAMS_FILE_EXPANSION: false
+  AZURE_BICEP_PARAMS_FILE_EXPANSION: true
 ```
 
 Example:
@@ -109,7 +109,7 @@ Example:
 ```yaml title='ps-rule.yaml'
 # YAML: Set the AZURE_BICEP_PARAMS_FILE_EXPANSION configuration option to enable expansion
 configuration:
-  AZURE_BICEP_PARAMS_FILE_EXPANSION: true
+  AZURE_BICEP_PARAMS_FILE_EXPANSION: false
 ```
 
 ### Bicep compilation timeout

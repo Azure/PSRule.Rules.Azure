@@ -34,6 +34,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.33.1:
 
+- General improvements:
+  - Moved `.bicepparam` file support to stable by @BernieWhite.
+    [#2682](https://github.com/Azure/PSRule.Rules.Azure/issues/2682)
+    - Bicep param files are now automatically expanded when found.
+    - To disable expansion, set the configuration option `AZURE_BICEP_PARAMS_FILE_EXPANSION` to `false`.
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.9.0.
     [#2680](https://github.com/Azure/PSRule.Rules.Azure/pull/2680)

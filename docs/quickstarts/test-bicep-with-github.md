@@ -114,33 +114,40 @@ Options in this file will automatically be detected by other PSRule commands and
 2. In the root of your repository, create a new file called `ps-rule.yaml`.
 3. Update the file with the following contents and save.
 
-    ```yaml title="ps-rule.yaml"
-    #
-    # PSRule configuration
-    #
+```yaml title="ps-rule.yaml"
+#
+# PSRule configuration
+#
 
-    # Please see the documentation for all configuration options:
-    # https://aka.ms/ps-rule-azure/options
+# Please see the documentation for all configuration options:
+# https://aka.ms/ps-rule-azure/options
 
-    # Require a minimum version of PSRule for Azure.
-    requires:
-      PSRule.Rules.Azure: '>=1.29.0'
+# Require a minimum version of PSRule for Azure.
+requires:
+  PSRule.Rules.Azure: '>=1.34.0' # (1)
 
-    # Automatically use rules for Azure.
-    include:
-      module:
-      - PSRule.Rules.Azure
+# Automatically use rules for Azure.
+include:
+  module:
+  - PSRule.Rules.Azure # (2)
 
-    # Ignore all files except .bicepparam files.
-    input:
-      pathIgnore:
-      - '**'
-      - '!**/*.bicepparam'
+# Ignore all files except .bicepparam files.
+input:
+  pathIgnore:
+  - '**' # (3)
+  - '!**/*.bicepparam' # (4)
+```
 
-    # Enable expansion of Azure .bicepparam files.
-    configuration:
-      AZURE_BICEP_PARAMS_FILE_EXPANSION: true
-    ```
+<div class="result" markdown>
+1.  Set the minimum required version of PSRule for Azure to use.
+    This does not install the required version, but will fail if the version is not available.
+    Across a team and CI/CD pipeline, this can help ensure a consistent version of PSRule is used.
+2.  Automatically use the rules in PSRule for Azure for each run.
+3.  Ignore all files by default.
+    PSRule will not try to analyze ignored files.
+4.  Add an exception for `.bicepparam` files.
+
+</div>
 
   [7]: https://code.visualstudio.com/docs/sourcecontrol/overview#_branches-and-tags
 
@@ -183,7 +190,7 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Run PSRule analysis
       uses: microsoft/ps-rule@v2.9.0 # (1)
@@ -193,10 +200,12 @@ jobs:
 
 <div class="result" markdown>
 1.  Reference the PSRule action.
-    You can find the latest version of the action on the [GitHub Marketplace](https://github.com/marketplace/actions/psrule).
+    You can find the latest version of the action on the [GitHub Marketplace][14].
 2.  Automatically download and use PSRule for Azure during analysis.
 
 </div>
+
+  [14]: https://github.com/marketplace/actions/psrule
 
 ## Commit and push changes
 

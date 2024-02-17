@@ -33,7 +33,7 @@ spec:
     AZURE_BICEP_FILE_EXPANSION: false
 
     # Enable expansion from .bicepparam files.
-    AZURE_BICEP_PARAMS_FILE_EXPANSION: false
+    AZURE_BICEP_PARAMS_FILE_EXPANSION: true
 
     # Check for a minimum version of the Bicep CLI.
     AZURE_BICEP_MINIMUM_VERSION: '0.4.451'
