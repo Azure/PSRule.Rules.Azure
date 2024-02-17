@@ -37,6 +37,8 @@ What's changed since v1.33.1:
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.9.0.
     [#2680](https://github.com/Azure/PSRule.Rules.Azure/pull/2680)
+  - Bump xunit to v2.7.0.
+    [#2688](https://github.com/Azure/PSRule.Rules.Azure/pull/2688)
 
 ## v1.33.1
 
