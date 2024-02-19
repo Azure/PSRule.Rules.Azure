@@ -32,7 +32,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.33.1:
+What's changed since v1.33.2:
 
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.9.0.
@@ -41,6 +41,14 @@ What's changed since v1.33.1:
     [#2688](https://github.com/Azure/PSRule.Rules.Azure/pull/2688)
   - Bump xunit.runner.visualstudio to v2.5.7.
     [#2689](https://github.com/Azure/PSRule.Rules.Azure/pull/2689)
+
+## v1.33.2
+
+What's changed since v1.33.1:
+
+- Bug fixes:
+  - Fixed false positive of `Azure.Resource.AllowedRegions` raised during assertion call by @BernieWhite.
+    [#2687](https://github.com/Azure/PSRule.Rules.Azure/issues/2687)
 
 ## v1.33.1
 
