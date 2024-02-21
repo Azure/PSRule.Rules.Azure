@@ -1,45 +1,53 @@
 ---
+reviewed: 2024-02-21
 severity: Important
-pillar: Performance Efficiency
-category: Application scalability
+pillar: Reliability
+category: RE:05 Redundancy
 resource: Azure Kubernetes Service
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NodeMinPods/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.MinUserPoolNodes/
 ---
 
-# Nodes use a minimum number of pods
+# Minimum number of nodes in a user node pool
 
 ## SYNOPSIS
 
-Azure Kubernetes Cluster (AKS) nodes should use a minimum number of pods.
+User node pools in an AKS cluster should have a minimum number of nodes for failover and updates.
 
 ## DESCRIPTION
 
-Node pools within a Azure Kubernetes Cluster (AKS) support between 30 and 250 pods per node.
-The maximum number of pods for nodes within a node pool is set at deployment time.
+Azure Kubernetes (AKS) clusters support multiple nodes and node pools.
+Each node is a virtual machine (VM) that runs Kubernetes components and a container runtime.
+A node pool is a grouping of nodes that run the same configuration.
+Application or system pods can be scheduled to run across multiple nodes to ensure resiliency and high availability.
+AKS supports configuring one or more system node pools, and zero or more user node pools.
 
-When deploying AKS clusters with _kubernet_ networking the default maximum number of pods is 110.
-For Azure CNI AKS clusters, the default maximum number of pods is 30.
+User node pools are intended for application pods.
 
-In many environments, deploying DaemonSets for monitoring and management tools can exhaust the CNI default.
+A minimum number of nodes in each node pool should be maintained to ensure resiliency during node failures or disruptions.
+Resiliency in application pods is also dependent on the number of replicas and the distribution of pods across nodes.
+Application pods may be configured to use specific node pools based on access features such as GPU or access to storage.
+
+Also consider how your nodes are distributed across availability zones when deploying to a supported region.
+Understanding that adding new nodes to a node pool can take time.
 
 ## RECOMMENDATION
 
-Consider deploying node pools with a minimum number of pods per node.
+Consider configuring AKS clusters with at least three (3) agent nodes in each user node pools.
 
 ## EXAMPLES
 
 ### Configure with Azure template
 
-To deploy clusters that pass this rule:
-
-- Set the `properties.agentPoolProfiles[].maxPods` property to at least `50`.
+- For each user node pool `properties.agentPoolProfiles`:
+  - Set the `minCount` property to at least `3` for node pools with auto-scale. _OR_
+  - Set the `count` property to at least `3` for node pools without auto-scale.
 
 For example:
 
 ```json
 {
   "type": "Microsoft.ContainerService/managedClusters",
-  "apiVersion": "2023-04-01",
+  "apiVersion": "2023-11-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "identity": {
@@ -94,6 +102,11 @@ For example:
       "serviceCidr": "[variables('serviceCidr')]",
       "dnsServiceIP": "[variables('dnsServiceIP')]"
     },
+    "apiServerAccessProfile": {
+      "authorizedIPRanges": [
+        "0.0.0.0/32"
+      ]
+    },
     "autoUpgradeProfile": {
       "upgradeChannel": "stable"
     },
@@ -119,21 +132,21 @@ For example:
     }
   },
   "dependsOn": [
-    "identity"
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
   ]
 }
 ```
 
 ### Configure with Bicep
 
-To deploy clusters that pass this rule:
-
-- Set the `properties.agentPoolProfiles[].maxPods` property to at least `50`.
+- For each user node pool `properties.agentPoolProfiles`:
+  - Set the `minCount` property to at least `3` for node pools with auto-scale. _OR_
+  - Set the `count` property to at least `3` for node pools without auto-scale.
 
 For example:
 
 ```bicep
-resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-04-01' = {
+resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-11-01' = {
   location: location
   name: name
   identity: {
@@ -188,6 +201,11 @@ resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-04-01
       serviceCidr: serviceCidr
       dnsServiceIP: dnsServiceIP
     }
+    apiServerAccessProfile: {
+      authorizedIPRanges: [
+        '0.0.0.0/32'
+      ]
+    }
     autoUpgradeProfile: {
       upgradeChannel: 'stable'
     }
@@ -217,14 +235,25 @@ resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-04-01
 
 ## NOTES
 
-By default, this rule fails when node pools have `maxPods` set to less than 50.
+Node pools that are configured for spot instances are excluded from this rule.
+Spot instances can be used for burst capacity but do not provide a guarantee of availability.
 
-To configure this rule:
+### Rule configuration
 
-- Override the `Azure_AKSNodeMinimumMaxPods` configuration value with the minimum maxPods.
+<!-- module:config rule AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES -->
+
+This rule fails by default if you have less than three (3) nodes in each user node pool.
+To change the default, set the `AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES` configuration option.
+
+<!-- module:config rule AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES -->
+
+To exclude a specific user node pool by name from this rule,
+set the `AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES` configuration option.
 
 ## LINKS
 
-- [Plan for growth](https://learn.microsoft.com/azure/well-architected/scalability/design-scale#plan-for-growth)
-- [Plan IP addressing for your cluster](https://learn.microsoft.com/azure/aks/configure-azure-cni#plan-ip-addressing-for-your-cluster)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [Azure Well-Architected Framework review - Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/well-architected/service-guides/azure-kubernetes-service)
+- [Manage node pools for a cluster in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/manage-node-pools)
+- [Manage system node pools in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/use-system-pools)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
