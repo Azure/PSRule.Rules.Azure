@@ -64,7 +64,7 @@ spec:
   type:
   - Microsoft.ContainerService/managedClusters
   condition:
-    field: Properties.networkProfile.networkPolicy
+    field: properties.networkProfile.networkPolicy
     in:
     - azure
     - calico
