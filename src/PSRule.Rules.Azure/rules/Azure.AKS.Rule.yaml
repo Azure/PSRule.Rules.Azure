@@ -8,24 +8,6 @@
 #region Rules
 
 ---
-# Synopsis: AKS clusters should have minimum number of nodes for failover and updates
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Rule
-metadata:
-  name: Azure.AKS.MinNodeCount
-  ref: AZR-000024
-  tags:
-    release: GA
-    ruleSet: 2020_06
-    Azure.WAF/pillar: Reliability
-spec:
-  type:
-  - Microsoft.ContainerService/managedClusters
-  condition:
-    field: 'Properties.agentPoolProfiles[0].count'
-    greaterOrEquals: 3
-
----
 # Synopsis: Configure AKS clusters to use managed identities for managing cluster infrastructure.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule

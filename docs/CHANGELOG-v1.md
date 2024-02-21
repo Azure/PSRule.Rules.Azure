@@ -34,6 +34,20 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.33.2:
 
+- New rules:
+  - Azure Kubernetes Service:
+    - Check that user mode pools have a minimum number of nodes by @BernieWhite.
+      [#2683](https://github.com/Azure/PSRule.Rules.Azure/issues/2683)
+      - Added configuration to support changing the minimum number of node and to exclude node pools.
+      - Set `AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES` to set the minimum number of user nodes.
+      - Set `AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES` to exclude a specific node pool by name.
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.MinNodeCount` the count nodes system node pools by @BernieWhite.
+      [#2683](https://github.com/Azure/PSRule.Rules.Azure/issues/2683)
+      - Improved guidance and examples specifically for system node pools.
+      - Added configuration to support changing the minimum number of node.
+      - Set `AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES` to set the minimum number of system nodes.
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.9.0.
     [#2680](https://github.com/Azure/PSRule.Rules.Azure/pull/2680)

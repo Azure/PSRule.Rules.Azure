@@ -633,7 +633,7 @@
                 "agentPoolProfiles": [
                     {
                         "name": "agentpool1",
-                        "count": 3,
+                        "count": 2,
                         "vmSize": "Standard_B2ms",
                         "osDiskSizeGB": 100,
                         "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
@@ -836,7 +836,7 @@
                 "agentPoolProfiles": [
                     {
                         "name": "agentpool1",
-                        "count": 3,
+                        "count": 2,
                         "vmSize": "Standard_B2ms",
                         "osDiskSizeGB": 100,
                         "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
@@ -844,6 +844,7 @@
                         "type": "VirtualMachineScaleSets",
                         "osType": "Linux",
                         "enableAutoScaling": true,
+                        "mode": "User",
                         "availabilityZones": [
                             "1",
                             "2",

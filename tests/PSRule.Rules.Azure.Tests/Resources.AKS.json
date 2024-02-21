@@ -1152,16 +1152,48 @@
       "fqdn": "cluster-I-00000000.nnn.region.azmk8s.io",
       "agentPoolProfiles": [
         {
-          "name": "agentpool",
-          "count": 3,
+          "name": "system",
           "vmSize": "Standard_F2s_v2",
           "osDiskSizeGB": 30,
           "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
           "maxPods": 30,
           "type": "VirtualMachineScaleSets",
-          "orchestratorVersion": "1.27.7",
-          "osType": "Linux",
+          "maxCount": 3,
+          "minCount": 3,
           "enableAutoScaling": false,
+          "provisioningState": "Succeeded",
+          "powerState": {
+            "code": "Running"
+          },
+          "orchestratorVersion": "1.27.7",
+          "mode": "System",
+          "osType": "Linux",
+          "osSKU": "Ubuntu",
+          "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",
+          "enableFIPS": false,
+          "availabilityZones": null
+        },
+        {
+          "name": "user",
+          "vmSize": "Standard_D2s_v3",
+          "osDiskSizeGB": 30,
+          "kubeletDiskType": "OS",
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 50,
+          "type": "VirtualMachineScaleSets",
+          "maxCount": 2,
+          "minCount": 2,
+          "enableAutoScaling": false,
+          "provisioningState": "Succeeded",
+          "powerState": {
+            "code": "Running"
+          },
+          "orchestratorVersion": "1.27.7",
+          "mode": "User",
+          "osType": "Linux",
+          "osSKU": "Ubuntu",
+          "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",
+          "enableFIPS": false,
           "availabilityZones": null
         }
       ],
@@ -1517,7 +1549,6 @@
       "agentPoolProfiles": [
         {
           "name": "system",
-          "count": 2,
           "vmSize": "Standard_D2s_v3",
           "osDiskSizeGB": 32,
           "osDiskType": "Managed",
@@ -1525,8 +1556,8 @@
           "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
           "maxPods": 50,
           "type": "VirtualMachineScaleSets",
-          "maxCount": 2,
-          "minCount": 2,
+          "maxCount": 3,
+          "minCount": 3,
           "enableAutoScaling": true,
           "provisioningState": "Succeeded",
           "powerState": {
@@ -1695,7 +1726,7 @@
       "azurePortalFQDN": "nnn-cluster-L-00000000.portal.hcp.eastus.azmk8s.io",
       "agentPoolProfiles": [
         {
-          "name": "system",
+          "name": "system-L",
           "count": 2,
           "vmSize": "Standard_D2s_v3",
           "osDiskSizeGB": 32,
@@ -1713,6 +1744,30 @@
           },
           "orchestratorVersion": "9.99.9",
           "mode": "System",
+          "osType": "Linux",
+          "osSKU": "Ubuntu",
+          "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",
+          "enableFIPS": false
+        },
+        {
+          "name": "user-L",
+          "count": 2,
+          "vmSize": "Standard_D2s_v3",
+          "osDiskSizeGB": 32,
+          "osDiskType": "Ephemeral",
+          "kubeletDiskType": "OS",
+          "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
+          "maxPods": 50,
+          "type": "VirtualMachineScaleSets",
+          "maxCount": 2,
+          "minCount": 2,
+          "enableAutoScaling": true,
+          "provisioningState": "Succeeded",
+          "powerState": {
+            "code": "Running"
+          },
+          "orchestratorVersion": "9.99.9",
+          "mode": "User",
           "osType": "Linux",
           "osSKU": "Ubuntu",
           "nodeImageVersion": "AKSUbuntu-1804gen2containerd-2021.07.17",

@@ -240,6 +240,47 @@ Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerServic
     )
 }
 
+# Synopsis: AKS clusters should have minimum number of nodes for failover and updates.
+Rule 'Azure.AKS.MinNodeCount' -Ref 'AZR-000024' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability' } {
+    $systemNodeCount = 0;
+    foreach ($agentPool in @(GetAgentPoolProfiles)) {
+        if ($agentPool.mode -ne 'user') {
+            if ($agentPool.minCount -gt 0) {
+                $systemNodeCount += $agentPool.minCount
+            }
+            elseif ($agentPool.count -gt 0) {
+                $systemNodeCount += $agentPool.count
+            }
+        }
+    };
+    $minNodeCount = $Configuration.GetIntegerOrDefault('AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES', 3);
+    $Assert.GreaterOrEqual($systemNodeCount, '.', $minNodeCount).PathPrefix('properties.agentPoolProfiles');
+}
+
+# Synopsis: AKS user node pools should have a minimum number of nodes for failover and updates.
+Rule 'Azure.AKS.MinUserPoolNodes' -Ref 'AZR-000412' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Reliability' } {
+    $excludedPools = $Configuration.GetStringValues('AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES');
+    $agentPools = @(GetAgentPoolProfiles | Where-Object {
+        $_.mode -eq 'user' -and $_.name -notin $excludedPools -and $_.scaleSetPriority -ne 'Spot'
+    })
+
+    if ($agentPools.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    $minNodeCount = $Configuration.GetIntegerOrDefault('AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES', 3);
+    foreach ($agentPool in $agentPools) {
+        $nodeCount = 0;
+        if ($agentPool.minCount -gt 0) {
+            $nodeCount = $agentPool.minCount
+        }
+        elseif ($agentPool.count -gt 0) {
+            $nodeCount = $agentPool.count
+        }
+        $Assert.GreaterOrEqual($nodeCount, '.', $minNodeCount).PathPrefix('properties.agentPoolProfiles');
+    }
+}
+
 # Synopsis: AKS clusters should have Uptime SLA enabled to ensure availability of control plane components for production workloads.
 Rule 'Azure.AKS.UptimeSLA' -Ref 'AZR-000285' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2022_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $priorApi = $Assert.APIVersion($TargetObject, 'apiVersion', '<2023-02-01', $True).Result
@@ -276,11 +317,16 @@ function global:GetAgentPoolProfiles {
                 [PSCustomObject]@{
                     name = $_.name
                     type = $_.properties.type
+                    mode = $_.properties.mode
                     maxPods = $_.properties.maxPods
                     orchestratorVersion = $_.properties.orchestratorVersion
                     enableAutoScaling = $_.properties.enableAutoScaling
                     availabilityZones = $_.properties.availabilityZones
                     osDiskType = $_.properties.osDiskType
+                    count = [int]$_.properties.count
+                    minCount = [int]$_.properties.minCount
+                    maxCount = [int]$_.properties.maxCount
+                    scaleSetPriority = $_.properties.scaleSetPriority
                 }
             });
         }
@@ -288,11 +334,16 @@ function global:GetAgentPoolProfiles {
             [PSCustomObject]@{
                 name = $TargetObject.name
                 type = $TargetObject.properties.type
+                mode = $TargetObject.properties.mode
                 maxPods = $TargetObject.properties.maxPods
                 orchestratorVersion = $TargetObject.properties.orchestratorVersion
                 enableAutoScaling = $TargetObject.properties.enableAutoScaling
                 availabilityZones = $TargetObject.properties.availabilityZones
                 osDiskType = $TargetObject.properties.osDiskType
+                count = [int]$TargetObject.properties.count
+                minCount = [int]$TargetObject.properties.minCount
+                maxCount = [int]$TargetObject.properties.maxCount
+                scaleSetPriority = $TargetObject.properties.scaleSetPriority
             }
         }
     }
