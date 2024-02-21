@@ -255,5 +255,4 @@ set the `AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES` configuration 
 - [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
 - [Azure Well-Architected Framework review - Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/well-architected/service-guides/azure-kubernetes-service)
 - [Manage node pools for a cluster in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/manage-node-pools)
-- [Manage system node pools in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/use-system-pools)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
