@@ -55,6 +55,8 @@ What's changed since v1.33.2:
     [#2688](https://github.com/Azure/PSRule.Rules.Azure/pull/2688)
   - Bump xunit.runner.visualstudio to v2.5.7.
     [#2689](https://github.com/Azure/PSRule.Rules.Azure/pull/2689)
+  - Bump coverlet.collector to v6.0.1.
+    [#2699](https://github.com/Azure/PSRule.Rules.Azure/pull/2699)
 
 ## v1.33.2
 
