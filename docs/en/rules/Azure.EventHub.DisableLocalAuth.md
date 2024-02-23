@@ -1,8 +1,8 @@
 ---
-reviewed: 2022-01-22
+reviewed: 2024-02-24
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: Event Hub
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventHub.DisableLocalAuth/
 ---
@@ -11,20 +11,20 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventH
 
 ## SYNOPSIS
 
-Authenticate Event Hub publishers and consumers with Azure AD identities.
+Authenticate Event Hub publishers and consumers with Entra ID identities.
 
 ## DESCRIPTION
 
-To publish or consume events from Event Hubs cryptographic keys, or Azure AD identities can be used.
+To publish or consume events from Event Hubs cryptographic keys, or Entra ID (previously Azure AD) identities can be used.
 Cryptographic keys include Shared Access Policy keys or Shared Access Signature (SAS) tokens.
-With Azure AD authentication, the identity is validated against Azure AD.
-Using Azure AD identities centralizes identity management and auditing.
+With Entra ID authentication, the identity is validated against Azure AD.
+Using Entra ID identities centralizes identity management and auditing.
 
-Once you decide to use Azure AD authentication, you can disable authentication using keys or SAS tokens.
+Once you decide to use Entra ID authentication, you can disable authentication using keys or SAS tokens.
 
 ## RECOMMENDATION
 
-Consider only using Azure AD identities to publish or consume events from Event Hub.
+Consider only using Entra ID identities to publish or consume events from Event Hub.
 Then disable authentication based on access keys or SAS tokens.
 
 ## EXAMPLES
@@ -39,22 +39,24 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.EventHub/namespaces",
-    "apiVersion": "2021-11-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "sku": {
-        "name": "Standard"
-    },
-    "properties": {
-        "disableLocalAuth": true,
-        "isAutoInflateEnabled": true,
-        "maximumThroughputUnits": 10,
-        "zoneRedundant": true
-    }
+  "type": "Microsoft.EventHub/namespaces",
+  "apiVersion": "2024-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "sku": {
+    "name": "Standard"
+  },
+  "properties": {
+    "disableLocalAuth": true,
+    "minimumTlsVersion": "1.2",
+    "publicNetworkAccess": "Disabled",
+    "isAutoInflateEnabled": true,
+    "maximumThroughputUnits": 10,
+    "zoneRedundant": true
+  }
 }
 ```
 
@@ -67,7 +69,7 @@ To deploy Event Hub namespaces that pass this rule:
 For example:
 
 ```bicep
-resource ns 'Microsoft.EventHub/namespaces@2021-11-01' = {
+resource ns 'Microsoft.EventHub/namespaces@2024-01-01' = {
   name: name
   location: location
   identity: {
@@ -78,6 +80,8 @@ resource ns 'Microsoft.EventHub/namespaces@2021-11-01' = {
   }
   properties: {
     disableLocalAuth: true
+    minimumTlsVersion: '1.2'
+    publicNetworkAccess: 'Disabled'
     isAutoInflateEnabled: true
     maximumThroughputUnits: 10
     zoneRedundant: true
@@ -87,7 +91,7 @@ resource ns 'Microsoft.EventHub/namespaces@2021-11-01' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
-- [Authorize access to Event Hubs resources using Azure Active Directory](https://docs.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory)
-- [Disabling Local/SAS Key authentication](https://docs.microsoft.com/azure/event-hubs/authenticate-shared-access-signature#disabling-localsas-key-authentication)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.eventhub/namespaces)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access#use-identity-based-authentication)
+- [Authorize access to Event Hubs resources using Microsoft Entra ID](https://learn.microsoft.com/azure/event-hubs/authorize-access-azure-active-directory)
+- [Disabling Local/SAS Key authentication](https://learn.microsoft.com/azure/event-hubs/authenticate-shared-access-signature#disabling-localsas-key-authentication)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.eventhub/namespaces)
