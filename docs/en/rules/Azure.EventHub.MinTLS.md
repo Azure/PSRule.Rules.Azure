@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-02-24
 severity: Critical
 pillar: Security
-category: Encryption
+category: SE:07 Encryption
 resource: Event Hub
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventHub.MinTLS/
 ---
@@ -30,23 +31,29 @@ Configure the minimum supported TLS version to be 1.2.
 
 To deploy Event Hub namespaces that pass this rule:
 
-- Set the `properties.minimumlTlsVersion` property to `1.2`.
+- Set the `properties.minimumTlsVersion` property to `1.2`.
 
 For example:
 
 ```json
 {
   "type": "Microsoft.EventHub/namespaces",
-  "apiVersion": "2022-01-01-preview",
-  "name": "[parameters('eventHubNamespaceName')]",
+  "apiVersion": "2024-01-01",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
   "sku": {
-    "name": "[parameters('eventHubSku')]",
-    "tier": "[parameters('eventHubSku')]",
-    "capacity": 1,
+    "name": "Standard"
   },
   "properties": {
+    "disableLocalAuth": true,
     "minimumTlsVersion": "1.2",
+    "publicNetworkAccess": "Disabled",
+    "isAutoInflateEnabled": true,
+    "maximumThroughputUnits": 10,
+    "zoneRedundant": true
   }
 }
 ```
@@ -55,28 +62,34 @@ For example:
 
 To deploy Event Hub namespaces that pass this rule:
 
-- Set the `properties.minimumlTlsVersion` property to `1.2`.
+- Set the `properties.minimumTlsVersion` property to `1.2`.
 
 For example:
 
 ```bicep
-resource eventHubNamespace 'Microsoft.EventHub/namespaces@2022-01-01-preview' = {
-  name: eventHubNamespaceName
+resource ns 'Microsoft.EventHub/namespaces@2024-01-01' = {
+  name: name
   location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   sku: {
-    name: eventHubSku
-    tier: eventHubSku
-    capacity: 1
+    name: 'Standard'
   }
   properties: {
+    disableLocalAuth: true
     minimumTlsVersion: '1.2'
+    publicNetworkAccess: 'Disabled'
+    isAutoInflateEnabled: true
+    maximumThroughputUnits: 10
+    zoneRedundant: true
   }
 }
 ```
 
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption)
 - [Enforce a minimum required version of Transport Layer Security (TLS) for requests to an Event Hubs namespace](https://learn.microsoft.com/azure/event-hubs/transport-layer-security-enforce-minimum-version)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.eventhub/namespaces)

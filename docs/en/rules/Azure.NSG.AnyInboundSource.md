@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-02-24
 severity: Critical
 pillar: Security
-category: Application endpoints
+category: SE:06 Network controls
 resource: Network Security Group
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.AnyInboundSource/
 ---
@@ -38,15 +39,15 @@ If inbound access from Internet-based sources is intended, consider using the se
 
 To deploy Network Security Groups that pass this rule:
 
-- Set the `sourceAddressPrefix` or `sourceAddressPrefixes` to a value other then `*` for inbound allow rules.
+- Set the `sourceAddressPrefix` or `sourceAddressPrefixes` property to a value other then `*` for inbound allow rules.
 
 For example:
 
 ```json
 {
   "type": "Microsoft.Network/networkSecurityGroups",
-  "apiVersion": "2022-01-01",
-  "name": "[parameters('nsgName')]",
+  "apiVersion": "2023-09-01",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
     "securityRules": [
@@ -120,8 +121,8 @@ For example:
 ```json
 {
   "type": "Microsoft.Network/applicationSecurityGroups",
-  "apiVersion": "2022-01-01",
-  "name": "[parameters('asgName')]",
+  "apiVersion": "2023-09-01",
+  "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {}
 }
@@ -131,13 +132,13 @@ For example:
 
 To deploy Network Security Groups that pass this rule:
 
-- Set the `sourceAddressPrefix` or `sourceAddressPrefixes` to a value other then `*` for inbound allow rules.
+- Set the `sourceAddressPrefix` or `sourceAddressPrefixes` property to a value other then `*` for inbound allow rules.
 
 For example:
 
 ```bicep
-resource nsg 'Microsoft.Network/networkSecurityGroups@2022-01-01' = {
-  name: nsgName
+resource nsg 'Microsoft.Network/networkSecurityGroups@2023-09-01' = {
+  name: name
   location: location
   properties: {
     securityRules: [
@@ -208,20 +209,20 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2022-01-01' = {
 To create an Application Security Group, use the `Microsoft.Network/applicationSecurityGroups` resource.
 For example:
 
-```Bicep
-resource asg 'Microsoft.Network/applicationSecurityGroups@2022-01-01' = {
-  name: asgName
-  location:location
+```bicep
+resource asg 'Microsoft.Network/applicationSecurityGroups@2023-09-01' = {
+  name: name
+  location: location
   properties: {}
 }
 ```
 
 ## LINKS
 
-- [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Network Security Groups](https://learn.microsoft.com/azure/virtual-network/network-security-groups-overview)
 - [Service Tags Overview](https://learn.microsoft.com/azure/virtual-network/service-tags-overview)
-- [Network Security Groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
-- [Logically segment subnets](https://docs.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
-- [What is Azure Application Gateway?](https://docs.microsoft.com/azure/application-gateway/overview)
-- [Azure DDoS Protection Standard overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview)
+- [Logically segment subnets](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
+- [What is Azure Application Gateway?](https://learn.microsoft.com/azure/application-gateway/overview)
+- [What is Azure DDoS Protection?](https://learn.microsoft.com/azure/ddos-protection/ddos-protection-overview)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)
