@@ -120,5 +120,5 @@ resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
 ## LINKS
 
 - [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
-- [Reliability in Load Balancer](https://learn.microsoft.com/en-gb/azure/reliability/reliability-load-balancer)
+- [Reliability in Load Balancer](https://learn.microsoft.com/azure/reliability/reliability-load-balancer)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers)
