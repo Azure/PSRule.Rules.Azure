@@ -15,9 +15,9 @@ metadata:
   name: Azure.CDN.HTTP
   ref: AZR-000093
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'DP-3'
 spec:

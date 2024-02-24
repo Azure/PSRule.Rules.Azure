@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Data protection
+category: SE:07 Encryption
 resource: Azure Cache for Redis Enterprise
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisEnterprise.MinTLS/
 ---
@@ -97,9 +97,9 @@ Set-AzRedisCache -Name '<name>' -MinimumTlsVersion '1.2'
 
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption)
+- [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cache-for-redis-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
 - [Remove TLS 1.0 and 1.1 from use with Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-remove-tls-10-11)
 - [Configure Azure Cache for Redis settings](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-configure#access-ports)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
-- [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cache-for-redis-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redisenterprise)
