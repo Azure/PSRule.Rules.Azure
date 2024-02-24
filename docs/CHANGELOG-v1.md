@@ -53,6 +53,7 @@ What's changed since v1.33.2:
       [#2704](https://github.com/Azure/PSRule.Rules.Azure/issues/2704)
       - Added a selector for premium and standard profiles `Azure.FrontDoor.IsStandardOrPremium`.
       - Added a selector for classic profiles `Azure.FrontDoor.IsClassic`.
+      - Updated rule set to `2024_03`.
 - General improvements:
   - Documentation and metadata improvements by @BernieWhite.
     [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
