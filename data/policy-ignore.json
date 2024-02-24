@@ -126,5 +126,21 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.KeyVault.RBAC"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/5d4e3c65-4873-47be-94f3-6f8b953a3598",
+      "/providers/Microsoft.Authorization/policyDefinitions/57f35901-8389-40bb-ac49-3ba4f86d889d"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.EventHub.DisableLocalAuth"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/ae9fb87f-8a17-4428-94a4-8135d431055c",
+      "/providers/Microsoft.Authorization/policyDefinitions/1c8144d9-746a-4501-b08c-093c8d29ad04"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.EventGrid.DisableLocalAuth"
   }
 ]

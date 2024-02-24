@@ -76,6 +76,13 @@ resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Azure Event Grid topics should have local authentication methods disabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Topics_DisableLocalAuth_AuditDeny.json)
+- [Configure Azure Event Grid topics to disable local authentication](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Grid/Topics_DisableLocalAuth_Modify.json)
+
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
