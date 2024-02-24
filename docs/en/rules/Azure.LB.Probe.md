@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Load balancing and failover
+category: RE:05 Redundancy
 resource: Load Balancer
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LB.Probe/
 ---
@@ -22,6 +22,7 @@ Consider using a dedicated health check endpoint for HTTP or HTTPS health probes
 
 ## LINKS
 
-- [Load Balancer health probes](https://docs.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
-- [Creating good health probes](https://learn.microsoft.com/azure/architecture/framework/resiliency/monitoring#creating-good-health-probes)
-- [Health Endpoint Monitoring pattern](https://docs.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [Load Balancer health probes](https://learn.microsoft.com/azure/load-balancer/load-balancer-custom-probe-overview)
+- [Health Endpoint Monitoring pattern](https://learn.microsoft.com/azure/architecture/patterns/health-endpoint-monitoring)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers)

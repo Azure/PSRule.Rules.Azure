@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:05 Regions and availability zones
 resource: Load Balancer
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LB.AvailabilityZone/
 ---
@@ -119,6 +119,6 @@ resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers?tabs=json)
-- [Load Balancer and Availability Zones](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
-- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
+- [Reliability in Load Balancer](https://learn.microsoft.com/en-gb/azure/reliability/reliability-load-balancer)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers)
