@@ -8,7 +8,7 @@
 #region Front Door
 
 # Synopsis: Front Door should reject TLS versions older than 1.2.
-Rule 'Azure.FrontDoor.MinTLS' -Ref 'AZR-000106' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.MCSB.v1/control' = 'DP-3' } {
+Rule 'Azure.FrontDoor.MinTLS' -Ref 'AZR-000106' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);
@@ -18,25 +18,27 @@ Rule 'Azure.FrontDoor.MinTLS' -Ref 'AZR-000106' -Type 'Microsoft.Network/frontDo
     }
 }
 
-# Synopsis: Use diagnostics to audit Front Door access
-Rule 'Azure.FrontDoor.Logs' -Ref 'AZR-000107' -Type 'Microsoft.Network/frontDoors' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
-    Reason $LocalizedData.DiagnosticSettingsNotConfigured;
-    $diagnostics = @(GetSubResources -ResourceType 'microsoft.insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings');
-    $logCategories = @($diagnostics | ForEach-Object {
-            foreach ($log in $_.Properties.logs) {
-                if ($log.category -eq 'FrontdoorAccessLog' -and $log.enabled -eq $True) {
-                    $log;
-                }
-            }
-        });
-    $Null -ne $logCategories -and $logCategories.Length -gt 0;
+# Synopsis: Audit and monitor access through Azure Front Door profiles.
+Rule 'Azure.FrontDoor.Logs' -Ref 'AZR-000107' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Cdn/profiles' -With 'Azure.FrontDoor.IsStandardOrPremium', 'Azure.FrontDoor.IsClassic' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-4' } {
+    $logCategoryGroups = 'audit', 'allLogs'
+    $diagnostics = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings', 'Microsoft.Network/frontDoors/providers/diagnosticSettings', 'Microsoft.Cdn/profiles/providers/diagnosticSettings' | ForEach-Object {
+        $_.Properties.logs | Where-Object {
+            ($_.category -eq 'FrontdoorAccessLog' -or $_.categoryGroup -in $logCategoryGroups) -and $_.enabled
+        }
+    })
+
+    $Assert.Greater($diagnostics, '.', 0).ReasonFrom(
+        'properties.logs',
+        $LocalizedData.DiagnosticSettingsLoggingNotConfigured,
+        'FrontdoorAccessLog'
+    ).PathPrefix('resources[*]')
 }
 
 # Synopsis: Configure and enable health probes for each backend pool.
 Rule 'Azure.FrontDoor.Probe' -Ref 'AZR-000108' -Type 'Microsoft.Network/frontdoors', 'Microsoft.Network/Frontdoors/HealthProbeSettings' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $probes = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
-        $probes = @($TargetObject.Properties.healthProbeSettings);
+        $probes = @($TargetObject.properties.healthProbeSettings);
     }
     foreach ($probe in $probes) {
         $Assert.HasFieldValue($probe, 'properties.enabledState', 'Enabled');
@@ -66,7 +68,7 @@ Rule 'Azure.FrontDoor.ProbePath' -Ref 'AZR-000110' -Type 'Microsoft.Network/fron
 }
 
 # Synopsis: Enable Web Application Firewall (WAF) policies on each Front Door endpoint.
-Rule 'Azure.FrontDoor.UseWAF' -Ref 'AZR-000111' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.MCSB.v1/control' = 'NS-6' } {
+Rule 'Azure.FrontDoor.UseWAF' -Ref 'AZR-000111' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/frontendEndpoints' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'NS-6' } {
     $endpoints = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $endpoints = @($TargetObject.Properties.frontendEndpoints);
@@ -77,7 +79,7 @@ Rule 'Azure.FrontDoor.UseWAF' -Ref 'AZR-000111' -Type 'Microsoft.Network/frontDo
 }
 
 # Synopsis: Use caching to reduce retrieving contents from origins.
-Rule 'Azure.FrontDoor.UseCaching' -Ref 'AZR-000320' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/rulesEngines' -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.FrontDoor.UseCaching' -Ref 'AZR-000320' -Type 'Microsoft.Network/frontDoors', 'Microsoft.Network/frontDoors/rulesEngines' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     if ($PSRule.TargetType -eq 'Microsoft.Network/frontDoors') {
         $cachingDisabledRoutingRules = @($TargetObject.properties.routingRules | Where-Object { $_.properties.enabledState -eq 'Enabled' -and
             $_.properties.routeConfiguration.'@odata.type' -eq '#Microsoft.Azure.FrontDoor.Models.FrontdoorForwardingConfiguration' -and

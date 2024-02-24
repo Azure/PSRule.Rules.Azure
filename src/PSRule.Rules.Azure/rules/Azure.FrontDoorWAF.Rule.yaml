@@ -14,9 +14,9 @@ metadata:
   name: Azure.FrontDoorWAF.Enabled
   ref: AZR-000305
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
@@ -24,7 +24,7 @@ spec:
     allOf:
     # WAF policy is enabled
     - field: properties.policySettings.enabledState
-      equals: 'Enabled'
+      equals: Enabled
 
 ---
 # Synopsis: FrontDoor WAF should be in prevention mode.
@@ -34,17 +34,17 @@ metadata:
   name: Azure.FrontDoorWAF.PreventionMode
   ref: AZR-000306
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
   condition:
     allOf:
     # WAF policy is set to prevention mode
-    - field: Properties.policySettings.mode
-      equals: 'Prevention'
+    - field: properties.policySettings.mode
+      equals: Prevention
 
 ---
 # Synopsis: FrontDoor WAF should have no exclusions.
@@ -54,9 +54,9 @@ metadata:
   name: Azure.FrontDoorWAF.Exclusions
   ref: AZR-000307
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies
@@ -80,9 +80,9 @@ metadata:
   name: Azure.FrontDoorWAF.RuleGroups
   ref: AZR-000308
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Security
 spec:
   type:
   - Microsoft.Network/frontdoorwebapplicationfirewallpolicies

@@ -2,7 +2,7 @@
 reviewed: 2023-08-20
 severity: Important
 pillar: Security
-category: Logs and alerts
+category: SE:10 Monitoring and threat detection
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.Logs/
 ---
@@ -131,7 +131,7 @@ resource logs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
 
 ## LINKS
 
-- [Security logs and alerts using Azure services](https://learn.microsoft.com/azure/architecture/framework/security/monitor-logs-alerts)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [LT-4: Enable logging for security investigation](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline#lt-4-enable-logging-for-security-investigation)
 - [Best practices to use Key Vault](https://learn.microsoft.com/azure/key-vault/general/best-practices)
 - [Azure Key Vault logging](https://learn.microsoft.com/azure/key-vault/general/logging)

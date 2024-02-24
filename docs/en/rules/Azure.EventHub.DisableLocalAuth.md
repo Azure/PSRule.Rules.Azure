@@ -89,6 +89,13 @@ resource ns 'Microsoft.EventHub/namespaces@2024-01-01' = {
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Azure Event Hub namespaces should have local authentication methods disabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_DisableLocalAuth_AuditDeny.json)
+- [Configure Azure Event Hub namespaces to disable local authentication](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Event%20Hub/EventHub_DisableLocalAuth_Modify.json)
+
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access#use-identity-based-authentication)

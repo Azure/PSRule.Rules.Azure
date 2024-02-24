@@ -48,6 +48,16 @@ What's changed since v1.33.2:
       - Improved guidance and examples specifically for system node pools.
       - Added configuration to support changing the minimum number of node.
       - Set `AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES` to set the minimum number of system nodes.
+  - Front Door:
+    - Updated `Azure.FrontDoor.Logs` to cover premium and standard profiles instead of just classic by @BernieWhite.
+      [#2704](https://github.com/Azure/PSRule.Rules.Azure/issues/2704)
+      - Added a selector for premium and standard profiles `Azure.FrontDoor.IsStandardOrPremium`.
+      - Added a selector for classic profiles `Azure.FrontDoor.IsClassic`.
+      - Updated rule set to `2024_03`.
+- General improvements:
+  - Documentation and metadata improvements by @BernieWhite.
+    [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
 - Engineering:
   - Bump Microsoft.NET.Test.Sdk to v17.9.0.
     [#2680](https://github.com/Azure/PSRule.Rules.Azure/pull/2680)

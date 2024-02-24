@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:04 Target metrics
 resource: Load Balancer
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LB.StandardSKU/
 ---
@@ -19,7 +19,7 @@ It supports inbound as well as outbound connections, provides low latency and hi
 It enables Availability Zones with zone-redundant and zonal front ends as well as cross-zone load balancing for public and internal scenarios.
 You can scale Network Virtual Appliance scenarios and make them more resilient by using internal HA Ports load balancing rules.
 It also provides new diagnostics insights with multi-dimensional metrics in Azure Monitor.
- 
+
 ## RECOMMENDATION
 
 Consider using Standard SKU for load balancers deployed in production.
@@ -112,7 +112,7 @@ resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/loadbalancers?tabs=json)
-- [Why use Azure Load Balancer?](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#why-use-azure-load-balancer)
-- [Azure Load Balancer SKUs](https://docs.microsoft.com/azure/load-balancer/skus)
-- [Meet application platform requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
+- [Why use Azure Load Balancer?](https://learn.microsoft.com/azure/load-balancer/load-balancer-overview#why-use-azure-load-balancer)
+- [Azure Load Balancer SKUs](https://learn.microsoft.com/azure/load-balancer/skus)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers)

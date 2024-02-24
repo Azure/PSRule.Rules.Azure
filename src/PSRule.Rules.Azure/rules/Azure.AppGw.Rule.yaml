@@ -15,8 +15,8 @@ metadata:
   name: Azure.AppGw.MinInstance
   ref: AZR-000061
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Reliability
 spec:
   type:
@@ -39,9 +39,9 @@ metadata:
   name: Azure.AppGw.MinSku
   ref: AZR-000062
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Operational Excellence'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
 spec:
   type:
   - Microsoft.Network/applicationGateways
@@ -63,11 +63,11 @@ metadata:
   name: Azure.AppGw.UseWAF
   ref: AZR-000063
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-6'
+    Azure.MCSB.v1/control: NS-6
 spec:
   with:
   - Azure.IsAppGwPublic
@@ -85,11 +85,11 @@ metadata:
   name: Azure.AppGw.SSLPolicy
   ref: AZR-000064
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-8'
+    Azure.MCSB.v1/control: DP-3
 spec:
   type:
   - Microsoft.Network/applicationGateways
@@ -113,9 +113,9 @@ metadata:
   name: Azure.AppGw.Prevention
   ref: AZR-000065
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
 spec:
   with:
   - Azure.AppGw.WithClassicWAF
@@ -131,11 +131,11 @@ metadata:
   name: Azure.AppGw.WAFEnabled
   ref: AZR-000066
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-6'
+    Azure.MCSB.v1/control: NS-6
 spec:
   with:
   - Azure.IsAppGwPublic
@@ -154,9 +154,9 @@ metadata:
   name: Azure.AppGw.OWASP
   ref: AZR-000067
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
 spec:
   with:
   - Azure.AppGw.WithClassicWAF
@@ -175,9 +175,9 @@ metadata:
   name: Azure.AppGw.WAFRules
   ref: AZR-000068
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
 spec:
   with:
   - Azure.AppGw.WithClassicWAF
