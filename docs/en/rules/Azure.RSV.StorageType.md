@@ -29,12 +29,12 @@ The following geo-replicated options are available for recovery services vaults:
 
 Consider using GeoRedundant for recovery services vaults that contain data.
 
-
 ## EXAMPLES
 
 ### Configure with Azure template
-The default storage type used by Recovery Services vaults is Geo-redundant. However if you're 
-defining the backup config in an ARM template:
+
+The default storage type used by Recovery Services vaults is Geo-redundant.
+However if you're defining the backup config in an ARM template:
 
 - Set `properties.storageType` to either `GeoRedundant` or `ReadAccessGeoZoneRedundant`.
 For example:
@@ -53,8 +53,9 @@ For example:
 ```
 
 ### Configure with Bicep
-The default storage type used by Recovery Services vaults is Geo-redundant. However if you're 
-defining the backup config via Bicep:
+
+The default storage type used by Recovery Services vaults is Geo-redundant.
+However if you're defining the backup config via Bicep:
 
 - Set `properties.storageType` to either `GeoRedundant` or `ReadAccessGeoZoneRedundant`.
 
@@ -73,7 +74,7 @@ resource testRecoveryServices 'Microsoft.RecoveryServices/vaults/backupconfig@20
 
 ## LINKS
 
-- [Recovery Services Vault - Overview](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview#storage-settings-in-the-recovery-services-vault)
-- [Recovery Services Vault - Storage Settings](https://docs.microsoft.com/azure/backup/backup-create-rs-vault#set-storage-redundancy)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/backupconfig?tabs=bicep)
-- [Well Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
+- [Recovery Services Vault - Overview](https://learn.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview#storage-settings-in-the-recovery-services-vault)
+- [Recovery Services Vault - Storage Settings](https://learn.microsoft.com/azure/backup/backup-create-recovery-services-vault#set-storage-redundancy)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/backupconfig)

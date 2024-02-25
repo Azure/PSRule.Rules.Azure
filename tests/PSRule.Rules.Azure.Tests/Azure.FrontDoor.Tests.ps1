@@ -74,17 +74,17 @@ Describe 'Azure.FrontDoor' -Tag 'Network', 'FrontDoor' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'frontdoor-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-B', 'frontDoorProfile-E';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "Diagnostic settings are not configured.";
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[*].properties.logs: Diagnostic settings is not configured to log events for 'FrontdoorAccessLog'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'frontdoor-A', 'frontdoor-C', 'frontdoor-D', 'frontDoorProfile-F';
         }
 
         It 'Azure.FrontDoor.Probe' {

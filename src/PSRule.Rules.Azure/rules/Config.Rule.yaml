@@ -42,6 +42,15 @@ spec:
     # Configure minimum AKS cluster version.
     AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.27.7'
 
+    # Configures the minimum number of nodes across all system node pools.
+    AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: 3
+
+    # Configures the minimum number of nodes in a user pool.
+    AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: 3
+
+    # Configures user pools that are excluded from checking for minimum nodes.
+    AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES: []
+
     AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
     - adminUsername
     - administratorLogin

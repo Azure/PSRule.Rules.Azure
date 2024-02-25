@@ -56,7 +56,7 @@ Rule 'Azure.MySQL.GeoRedundantBackup' -Ref 'AZR-000323' -Type 'Microsoft.DBforMy
 }
 
 # Synopsis: Use Azure Database for MySQL Flexible Server deployment model.
-Rule 'Azure.MySQL.UseFlexible' -Ref 'AZR-000325' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers' -Level Warning -Tag @{ release = 'GA'; ruleSet = '2022_12'; } {
+Rule 'Azure.MySQL.UseFlexible' -Ref 'AZR-000325' -Type 'Microsoft.DBforMySQL/flexibleServers', 'Microsoft.DBforMySQL/servers' -Level Warning -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.Create($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers', $LocalizedData.SingleDeploymentModelRetirement)
 }
 

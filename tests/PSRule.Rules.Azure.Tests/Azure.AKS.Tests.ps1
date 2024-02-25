@@ -31,6 +31,9 @@ Describe 'Azure.AKS' -Tag AKS {
                 Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
                 ErrorAction   = 'Stop'
+                Option        = @{
+                    'Configuration.AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES' = @('user-L')
+                }
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.AKS.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
@@ -42,14 +45,30 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -Be 'cluster-B', 'cluster-D', 'cluster-F', 'cluster-K', 'cluster-L';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'cluster-B', 'cluster-D', 'cluster-F', 'cluster-L';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-C', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-C', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K';
+        }
+
+        It 'Azure.AKS.MinUserPoolNodes' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.MinUserPoolNodes' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-I';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'system', 'cluster-G', 'cluster-H', 'cluster-F', 'cluster-J', 'cluster-K', 'cluster-L';
         }
 
         It 'Azure.AKS.Version' {
@@ -257,7 +276,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -BeExactly "The agent pool (agentpool) is not using autoscaling.";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) is not using autoscaling.";
+            $ruleResult[4].Reason | Should -BeIn @('The agent pool (system) is not using autoscaling.', 'The agent pool (user) is not using autoscaling.');
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) is not using autoscaling.";
 
@@ -606,6 +625,9 @@ Describe 'Azure.AKS' -Tag AKS {
                 Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
                 ErrorAction   = 'Stop'
+                Option        = @{
+                    'Configuration.AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES' = 2
+                }
             }
             $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
@@ -670,6 +692,20 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -BeIn 'clusterB', 'clusterC/agentpool3', 'clusterC/agentpool4', 'clusterD', 'clusterE', 'clusterF';
+        }
+
+        It 'Azure.AKS.MinUserPoolNodes' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.MinUserPoolNodes' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterB', 'clusterC/agentpool3', 'clusterC/agentpool4', 'clusterD', 'clusterE', 'clusterF';
         }
 
         It 'Azure.AKS.ManagedIdentity' {
@@ -1093,7 +1129,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [1, 2, 3].";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
+            $ruleResult[4].Reason | Should -BeIn @("The agent pool (system) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].", "The agent pool (user) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].");
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (antarcticasouth) should use following availability zones [1, 2, 3].";
 
@@ -1123,7 +1159,7 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[3].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (australiaeast) should use following availability zones [1, 2, 3].";
             $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[4].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].";
+            $ruleResult[4].Reason | Should -BeIn @('The agent pool (system) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].', 'The agent pool (user) deployed to region (antarcticanorth) should use following availability zones [1, 2, 3].');
             $ruleResult[5].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[5].Reason | Should -BeExactly "The agent pool (agentpool) deployed to region (antarcticasouth) should use following availability zones [1, 2, 3].";
 

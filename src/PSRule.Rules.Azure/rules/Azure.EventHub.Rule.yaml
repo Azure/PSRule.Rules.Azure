@@ -17,9 +17,9 @@ metadata:
   tags:
     release: GA
     ruleSet: 2022_03
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'IM-1'
+    Azure.MCSB.v1/control: IM-1
 spec:
   type:
     - Microsoft.EventHub/namespaces
@@ -46,4 +46,5 @@ spec:
   condition:
     field: properties.minimumTlsVersion
     version: '>=1.2'
+
 #endregion Rules

@@ -15,8 +15,8 @@ metadata:
   name: Azure.FrontDoor.State
   ref: AZR-000112
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Cost Optimization
 spec:
   type:
@@ -33,8 +33,8 @@ metadata:
   name: Azure.FrontDoor.Name
   ref: AZR-000113
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Operational Excellence
 spec:
   type:
@@ -58,8 +58,8 @@ metadata:
   name: Azure.FrontDoor.WAF.Mode
   ref: AZR-000114
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Security
 spec:
   type:
@@ -76,8 +76,8 @@ metadata:
   name: Azure.FrontDoor.WAF.Enabled
   ref: AZR-000115
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'NS-6'
@@ -96,8 +96,8 @@ metadata:
   name: Azure.FrontDoor.WAF.Name
   ref: AZR-000116
   tags:
-    release: 'GA'
-    ruleSet: '2020_12'
+    release: GA
+    ruleSet: 2020_12
     Azure.WAF/pillar: Operational Excellence
 spec:
   type:
@@ -144,11 +144,13 @@ spec:
 #region Selectors
 
 ---
-# Synopsis: Azure Front Door instances using the Standard or Premium SKU.
+# Synopsis: Azure Front Door profiles using the Standard or Premium SKU.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Selector
 metadata:
   name: Azure.FrontDoor.IsStandardOrPremium
+  annotations:
+    export: true
 spec:
   if:
     allOf:
@@ -158,5 +160,19 @@ spec:
         in:
           - Standard_AzureFrontDoor
           - Premium_AzureFrontDoor
+
+---
+# Synopsis: Azure Front Door profiles using the Classic SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.FrontDoor.IsClassic
+  annotations:
+    export: true
+spec:
+  if:
+    allOf:
+      - type: '.'
+        equals: Microsoft.Network/frontDoors
 
 #endregion Selectors

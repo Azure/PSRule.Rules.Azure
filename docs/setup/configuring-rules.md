@@ -16,6 +16,36 @@ Earlier versions of PSRule for Azure will ignore the configuration option.
 
   [1]: configuring-options.md
 
+### AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES
+
+<!-- module:version v1.34.0 -->
+<!-- module:rule Azure.AKS.MinNodeCount -->
+
+This configuration option determines the minimum number of nodes in an AKS clusters across all system node pools.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: integer
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES configuration option
+configuration:
+  AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: 3
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES configuration option to 2
+configuration:
+  AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: 2
+```
+
 ### AZURE_AKS_CLUSTER_MINIMUM_VERSION
 
 <!-- module:version v1.12.0 -->
@@ -246,6 +276,68 @@ Example:
 # YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30
 configuration:
   Azure_AKSNodeMinimumMaxPods: 30
+```
+
+### AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES
+
+<!-- module:version v1.34.0 -->
+<!-- module:rule Azure.AKS.MinUserPoolNodes -->
+
+This configuration option determines the minimum number of nodes in each user node pool for an AKS clusters.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: integer
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES configuration option
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: 3
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES configuration option to 2
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: 2
+```
+
+### AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES
+
+<!-- module:version v1.34.0 -->
+<!-- module:rule Azure.AKS.MinUserPoolNodes -->
+
+This configuration option excludes specific user node pools by name from requiring a minimum number of nodes.
+By default, no user node pools are configured to be excluded.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES: array
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES configuration option
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES: []
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES configuration option to exclude nodepool2
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES:
+  - nodepool2
 ```
 
 ### AZURE_APIM_MIN_API_VERSION

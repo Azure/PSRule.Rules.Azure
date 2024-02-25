@@ -1175,6 +1175,44 @@
     "properties": {
       "extendedProperties": {},
       "originResponseTimeoutSeconds": "int"
-    }
+    },
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/frontDoorProfile-F/providers/microsoft.insights/diagnosticSettings/access-logs",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.Cdn/profiles/frontDoorProfile-F/providers/microsoft.insights/diagnosticSettings/access-logs",
+        "ResourceName": "access-logs",
+        "Name": "access-logs",
+        "ExtensionResourceName": "access-logs",
+        "Properties": {
+          "workspaceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-A",
+          "metrics": [
+            {
+              "category": "AllMetrics",
+              "enabled": false,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logs": [
+            {
+              "category": "FrontdoorAccessLog",
+              "enabled": true,
+              "retentionPolicy": {
+                "enabled": false,
+                "days": 0
+              }
+            }
+          ],
+          "logAnalyticsDestinationType": null
+        },
+        "ResourceGroupName": "rg-test",
+        "Type": "Microsoft.Cdn/profiles",
+        "ResourceType": "Microsoft.Cdn/profiles",
+        "ExtensionResourceType": "microsoft.insights/diagnosticSettings",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   }
 ]
