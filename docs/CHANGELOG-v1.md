@@ -67,6 +67,9 @@ What's changed since v1.33.2:
     [#2689](https://github.com/Azure/PSRule.Rules.Azure/pull/2689)
   - Bump coverlet.collector to v6.0.1.
     [#2699](https://github.com/Azure/PSRule.Rules.Azure/pull/2699)
+- Bug fixes:
+  - Fixed missing zones property for public IP addresses by @BernieWhite.
+    [#2698](https://github.com/Azure/PSRule.Rules.Azure/issues/2698)
 
 ## v1.33.2
 

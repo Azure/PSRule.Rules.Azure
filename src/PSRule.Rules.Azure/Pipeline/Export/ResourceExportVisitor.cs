@@ -187,7 +187,10 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                 return;
 
             if (full.TryGetProperty(PROPERTY_PROPERTIES, out JObject properties))
-                resource.Add(PROPERTY_PROPERTIES, properties);
+                resource[PROPERTY_PROPERTIES] = properties;
+
+            if (full.TryGetProperty(PROPERTY_ZONES, out JArray zones))
+                resource[PROPERTY_ZONES] = zones;
         }
 
         /// <summary>
