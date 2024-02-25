@@ -5,7 +5,7 @@
     "description": "Azure rule documentation",
     "body": [
       "---",
-      "reviewed: 2023-mm-dd",
+      "reviewed: 2024-mm-dd",
       "severity: ${4:severity}",
       "pillar: ${5:pillar}",
       "category: ${6:category}",

@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Recovery Services Vault (RSV) not using geo-replicated storage (GRS) may be at risk.
-Rule 'Azure.RSV.StorageType' -Ref 'AZR-000170' -Type 'Microsoft.RecoveryServices/vaults', 'Microsoft.RecoveryServices/vaults/backupconfig' -Tag @{ release = 'GA'; ruleSet = '2022_03' } {
+Rule 'Azure.RSV.StorageType' -Ref 'AZR-000170' -Type 'Microsoft.RecoveryServices/vaults', 'Microsoft.RecoveryServices/vaults/backupconfig' -Tag @{ release = 'GA'; ruleSet = '2022_03'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $backupConfig = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.RecoveryServices/vaults') {
         $backupConfig = @(GetSubResources -ResourceType 'Microsoft.RecoveryServices/vaults/backupconfig');
@@ -28,7 +28,7 @@ Rule 'Azure.RSV.StorageType' -Ref 'AZR-000170' -Type 'Microsoft.RecoveryServices
 }
 
 # Synopsis: Recovery Services Vault (RSV) without a replication alert may be at risk.
-Rule 'Azure.RSV.ReplicationAlert' -Ref 'AZR-000171' -Type 'Microsoft.RecoveryServices/vaults', 'Microsoft.RecoveryServices/vaults/replicationAlertSettings' -Tag @{ release = 'GA'; ruleSet = '2022_03' } {
+Rule 'Azure.RSV.ReplicationAlert' -Ref 'AZR-000171' -Type 'Microsoft.RecoveryServices/vaults', 'Microsoft.RecoveryServices/vaults/replicationAlertSettings' -Tag @{ release = 'GA'; ruleSet = '2022_03'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $replicationAlert = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.RecoveryServices/vaults') {
         $replicationAlert = @(GetSubResources -ResourceType 'Microsoft.RecoveryServices/vaults/replicationAlertSettings');

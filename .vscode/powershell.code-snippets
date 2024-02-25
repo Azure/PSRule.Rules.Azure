@@ -5,7 +5,7 @@
     "description": "Rule definition for Azure",
     "body": [
       "# Synopsis: ${2}",
-      "Rule '${1}' -Type '${3}' -Tag @{ release = ''; ruleSet = ''; } {",
+      "Rule '${1}' -Type '${3}' -Tag @{ release = ''; ruleSet = ''; 'Azure.WAF/pillar' = ''; } {",
       "\t$0",
       "}"
     ]
