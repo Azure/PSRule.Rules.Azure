@@ -54,7 +54,7 @@ Rule 'Rule.Pillar' -Type 'PSRule.Rules.Rule' {
 }
 
 # Synopsis: Add tag to rules for a valid Well-Architected Framework pillar.
-Rule 'Rule.PillarTag' -Type 'PSRule.Rules.Rule' -Level Warning {
+Rule 'Rule.PillarTag' -Type 'PSRule.Rules.Rule' {
     $Assert.In($TargetObject, 'Tag.''Azure.WAF/pillar''', @(
         # English
         'Cost Optimization'
