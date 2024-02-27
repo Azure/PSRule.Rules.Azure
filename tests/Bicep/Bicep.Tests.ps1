@@ -130,10 +130,7 @@ Describe 'Bicep' -Tag 'Bicep' {
             $sourceFile = Join-Path -Path $here -ChildPath 'template.bicepparam';
 
             # Expand source files
-            $option = @{
-                'Configuration.AZURE_BICEP_PARAMS_FILE_EXPANSION' = $True
-            }
-            $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File -Option $option);
+            $result = @(Invoke-PSRule @invokeParams -InputPath $sourceFile -Format File);
             $result.Length | Should -Be 1;
             $resource = $result | Where-Object { $_.TargetType -eq 'Microsoft.Storage/storageAccounts' };
             $resource | Should -Not -BeNullOrEmpty;

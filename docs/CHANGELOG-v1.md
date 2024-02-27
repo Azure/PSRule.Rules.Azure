@@ -55,6 +55,10 @@ What's changed since v1.33.2:
       - Added a selector for classic profiles `Azure.FrontDoor.IsClassic`.
       - Updated rule set to `2024_03`.
 - General improvements:
+  - Moved `.bicepparam` file support to stable by @BernieWhite.
+    [#2682](https://github.com/Azure/PSRule.Rules.Azure/issues/2682)
+    - Bicep param files are now automatically expanded when found.
+    - To disable expansion, set the configuration option `AZURE_BICEP_PARAMS_FILE_EXPANSION` to `false`.
   - Documentation and metadata improvements by @BernieWhite.
     [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)

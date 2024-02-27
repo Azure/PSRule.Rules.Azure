@@ -193,7 +193,7 @@ This option will discover Bicep files from parameter metadata.
 
 ### Using Bicep parameter files
 
-:octicons-beaker-24:{ .experimental } Experimental · :octicons-milestone-24: v1.27.0
+<!-- module:version v1.34.0 -->
 
 You can use `.bicepparam` files to reference your Bicep modules as a method for providing parameters.
 Using the Bicep parameter file format, allows you to get many of the benefits of the Bicep language.
@@ -201,7 +201,7 @@ Using the Bicep parameter file format, allows you to get many of the benefits of
 For example:
 
 ```bicepparam
-using 'template.bicep'
+using 'main.bicep'
 
 param storageAccountName = 'bicepstorage001'
 param tags = {
@@ -209,35 +209,16 @@ param tags = {
 }
 ```
 
-Presently, to use this feature you must:
-
-1. Enable the experimental feature in `bicepconfig.json`.
-2. Enable expansion of Bicep parameter files in `ps-rule.yaml`.
-
-For example:
-
-```json title="bicepconfig.json"
-{
-  "experimentalFeaturesEnabled": {
-    "paramsFiles": true
-  }
-}
-```
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_BICEP_PARAMS_FILE_EXPANSION: true
-```
-
-!!! Experimental "Experimental - [Learn more][13]"
-    Bicep parameter files are a work in progress.
-    This feature will be transitioned to stable after the Bicep CLI support is finalized.
-
 !!! Learn
     To learn more about Bicep parameter files see [Create parameters files for Bicep deployment][16].
 
-  [13]: versioning.md#experimental-features
+!!! Note
+    To use Bicep parameter files you must use a minimum of Bicep CLI version **0.18.4**.
+    You can configure PSRule to check for the minimum Bicep version.
+    See [configuring minimum version][10] for information on how to enable this check.
+
   [16]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameter-files?tabs=Bicep
+  [10]: setup/setup-bicep.md#configuring-minimum-version
 
 ## Restoring modules from a private registry
 
@@ -266,7 +247,6 @@ To configure your registry see [Make your container registry content publicly av
 
   [15]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/private-module-registry
   [14]: https://learn.microsoft.com/azure/container-registry/anonymous-pull-access
-  [10]: setup/setup-bicep.md#configuring-minimum-version
 
 ### Configure `bicepconfig.json`
 
@@ -296,11 +276,11 @@ Use the following credential type based on your environment as the first value o
     The `bicepconfig.json` configures the Bicep CLI.
     You should commit this file into a repository along with your Bicep code.
 
-  [9]: https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview
+  [9]: https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview
 
 ### Granting access to a private registry
 
-To access a private registry use an Azure AD identity which has been granted permissions to pull Bicep modules.
+To access a private registry use an Entra ID identity which has been granted permissions to pull Bicep modules.
 When using `Environment` credential type, see [create a service principal that can access resources][11] to create the identity.
 If you are using the `ManagedIdentity` credential type, an identity is created for when you [configure the managed identity][9].
 
