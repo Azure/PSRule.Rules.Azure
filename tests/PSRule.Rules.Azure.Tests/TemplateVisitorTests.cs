@@ -934,6 +934,19 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
+        public void CompileTimeImports()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.28.json"), null, out var templateContext);
+            Assert.Equal(2, resources.Length);
+
+            Assert.True(templateContext.RootDeployment.TryOutput("outValue", out JObject outValue));
+            Assert.Equal("t1", outValue["value"].Value<string>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("hello", out JObject helloValue));
+            Assert.Equal("Hello value!", helloValue["value"].Value<string>());
+        }
+
+        [Fact]
         public void MockWellKnownProperties()
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.29.json"), null, out _);

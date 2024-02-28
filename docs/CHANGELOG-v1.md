@@ -34,6 +34,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.34.0-B0022:
 
+- General improvements:
+  - Added support for type/ variable/ and function imports from Bicep files by @BernieWhite.
+    [#2537](https://github.com/Azure/PSRule.Rules.Azure/issues/2537)
 - Engineering:
   - Improved debugging experience by providing symbols for .NET code by @BernieWhite.
     [#2712](https://github.com/Azure/PSRule.Rules.Azure/issues/2712)

@@ -37,6 +37,8 @@ To resolve this issue:
 When expanding Bicep source files you may get an error relating to the Bicep version you have installed.
 For example if you attempt to use a Bicep feature that is not supported by the version used by PSRule for Azure.
 
+Check the Bicep version reported by PSRule supports the Bicep features you are using.
+
 PSRule for Azure uses the Bicep CLI installed on your machine or CI worker.
 By default, the Bicep CLI binary will be selected by your `PATH` environment variable.
 
@@ -50,6 +52,17 @@ For more details on installing and configuring the Bicep CLI, see [Setup Bicep][
   [9]: setup/setup-bicep.md#setting-environment-variables
   [10]: setup/setup-bicep.md#using-azure-cli
   [11]: setup/setup-bicep.md
+
+## Bicep features
+
+Generally PSRule for Azure plans to support any language features that are supported by the latest version of Bicep.
+New language features are often added behind an experimental feature flag for community feedback.
+Features flagged by Bicep as experimental may not be supported by PSRule for Azure immediately.
+PSRule for Azure will plan to add support as soon as possible after the feature flag is removed.
+
+If you are using a Bicep feature that is not supported by PSRule for Azure, please [join or start a discussion][4].
+
+  [4]: https://github.com/Azure/PSRule.Rules.Azure/discussions
 
 ## Bicep compilation timeout
 
@@ -97,7 +110,6 @@ There is a few common causes of this issue including:
 
   [2]: using-templates.md
   [3]: using-bicep.md
-  [4]: https://github.com/Azure/PSRule.Rules.Azure/discussions
 
 ## Custom rules are not running
 

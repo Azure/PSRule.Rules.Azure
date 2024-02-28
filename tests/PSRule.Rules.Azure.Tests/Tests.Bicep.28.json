@@ -1,0 +1,148 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.25.53.49325",
+      "templateHash": "8761194647451614513"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "child",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "value": {
+            "value": "t1"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.25.53.49325",
+              "templateHash": "6575701661353169252"
+            }
+          },
+          "definitions": {
+            "_1.myOtherStringTypeNullable": {
+              "$ref": "#/definitions/myOtherStringType",
+              "nullable": true,
+              "metadata": {
+                "__bicep_imported_from!": {
+                  "sourceTemplate": "Tests.Bicep.28.export.bicep"
+                }
+              }
+            },
+            "_1.myStringType": {
+              "type": "string",
+              "allowedValues": [
+                "t1",
+                "t2"
+              ],
+              "metadata": {
+                "__bicep_imported_from!": {
+                  "sourceTemplate": "Tests.Bicep.28.export.bicep"
+                }
+              }
+            },
+            "myOtherStringType": {
+              "$ref": "#/definitions/_1.myStringType",
+              "metadata": {
+                "__bicep_imported_from!": {
+                  "sourceTemplate": "Tests.Bicep.28.export.bicep"
+                }
+              }
+            },
+            "myOtherStringTypeNullable2": {
+              "$ref": "#/definitions/_1.myOtherStringTypeNullable",
+              "metadata": {
+                "__bicep_imported_from!": {
+                  "sourceTemplate": "Tests.Bicep.28.export.bicep"
+                }
+              }
+            }
+          },
+          "functions": [
+            {
+              "namespace": "__bicep",
+              "members": {
+                "sayHello": {
+                  "parameters": [
+                    {
+                      "type": "string",
+                      "name": "name"
+                    }
+                  ],
+                  "output": {
+                    "type": "string",
+                    "value": "[format('Hello {0}!', parameters('name'))]"
+                  },
+                  "metadata": {
+                    "__bicep_imported_from!": {
+                      "sourceTemplate": "Tests.Bicep.28.export.bicep"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "parameters": {
+            "value": {
+              "$ref": "#/definitions/myOtherStringType",
+              "defaultValue": "t2"
+            },
+            "valueNullable": {
+              "$ref": "#/definitions/myOtherStringTypeNullable2"
+            }
+          },
+          "variables": {
+            "globals": {
+              "env": "dev",
+              "instance": 1
+            }
+          },
+          "resources": {},
+          "outputs": {
+            "outValue": {
+              "$ref": "#/definitions/myOtherStringType",
+              "value": "[parameters('value')]"
+            },
+            "outValueNullable": {
+              "$ref": "#/definitions/myOtherStringTypeNullable2",
+              "value": "[parameters('valueNullable')]"
+            },
+            "hello": {
+              "type": "string",
+              "value": "[__bicep.sayHello('value')]"
+            },
+            "outGlobal": {
+              "type": "object",
+              "value": "[variables('globals')]"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "outValue": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'child'), '2022-09-01').outputs.outValue.value]"
+    },
+    "hello": {
+      "type": "string",
+      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'child'), '2022-09-01').outputs.hello.value]"
+    }
+  }
+}

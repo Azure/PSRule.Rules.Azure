@@ -1,6 +1,6 @@
 {
   "experimentalFeaturesEnabled": {
-    "userDefinedTypes": true,
-    "optionalModuleNames": true
+    "optionalModuleNames": true,
+    "userDefinedFunctions": true
   }
 }
