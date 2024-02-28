@@ -3,8 +3,8 @@
   <PropertyGroup>
     <PackageId>Microsoft.PSRule.Rules.Azure</PackageId>
     <ProjectGuid>{d4302b6a-19d3-4f6a-8ef7-448d2c3e393c}</ProjectGuid>
-    <EnableNuget>true</EnableNuget>
     <PackageReadmeFile>README.md</PackageReadmeFile>
+    <NoWarn>NU5100,NU5110,NU5111</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>

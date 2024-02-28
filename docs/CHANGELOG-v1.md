@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.34.0-B0022:
+
+- Engineering:
+  - Improved debugging experience by providing symbols for .NET code by @BernieWhite.
+    [#2712](https://github.com/Azure/PSRule.Rules.Azure/issues/2712)
+
 ## v1.34.0-B0022 (pre-release)
 
 What's changed since v1.33.2:
