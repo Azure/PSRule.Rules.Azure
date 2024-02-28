@@ -940,7 +940,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     ContentVersion(context, contentVersion);
 
                 // Handle custom type definitions
-                if (TryObjectProperty(template, PROPERTY_DEFINITIONS, out var definitions))
+                if (!isNested && TryObjectProperty(template, PROPERTY_DEFINITIONS, out var definitions))
                     Definitions(context, definitions);
 
                 // Handle compile time function variables
@@ -993,24 +993,33 @@ namespace PSRule.Rules.Azure.Data.Template
             if (definitions == null || definitions.Count == 0)
                 return;
 
+            var graph = new CustomTypeDependencyGraph();
             foreach (var definition in definitions)
-                Definition(context, definition.Key, definition.Value as JObject);
+            {
+                graph.Track(definition.Key, definition.Value as JObject);
+            }
+
+            var ordered = graph.GetOrdered();
+            foreach (var definition in ordered)
+            {
+                Definition(context, definition.Key, definition.Value);
+            }
         }
 
-        protected virtual void Definition(TemplateContext context, string definitionName, JObject definition)
+        protected virtual void Definition(TemplateContext context, string definitionId, JObject definition)
         {
-            if (TryDefinition(definition, out var value))
-                context.AddDefinition($"#/definitions/{definitionName}", value);
+            if (TryDefinition(context, definition, out var value))
+                context.AddDefinition(definitionId, value);
         }
 
-        private static bool TryDefinition(JObject definition, out ITypeDefinition value)
+        private static bool TryDefinition(TemplateContext context, JObject definition, out ITypeDefinition value)
         {
             value = null;
-            var type = GetTypePrimitive(definition);
+            var type = GetTypePrimitive(context, definition);
             if (type == TypePrimitive.None)
                 return false;
 
-            var isNullable = definition.TryBoolProperty(PROPERTY_NULLABLE, out var nullable) && nullable.HasValue;
+            var isNullable = GetTypeNullable(context, definition);
 
             value = new TypeDefinition(type, definition, isNullable);
             return true;
@@ -1121,7 +1130,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = new ParameterType(definition.Type, type);
 
             // Try type
-            if (parameter.TryGetProperty(PROPERTY_TYPE, out type) &&
+            else if (parameter.TryGetProperty(PROPERTY_TYPE, out type) &&
                 ParameterType.TrySimpleType(type, out var v))
                 value = v;
 
@@ -1396,7 +1405,7 @@ namespace PSRule.Rules.Azure.Data.Template
             return string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase);
         }
 
-        private static TemplateContext GetDeploymentContext(TemplateContext context, string deploymentName, JObject resource, JObject properties)
+        private TemplateContext GetDeploymentContext(TemplateContext context, string deploymentName, JObject resource, JObject properties)
         {
             if (!TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out var options) ||
                 !TryStringProperty(options, PROPERTY_SCOPE, out var scope) ||
@@ -1420,12 +1429,17 @@ namespace PSRule.Rules.Azure.Data.Template
             TryObjectProperty(template, PROPERTY_PARAMETERS, out var templateParameters);
 
             var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup, parameterDefaults);
+
+            // Handle custom type definitions early to allow type mapping of parameters if required.
+            if (TryObjectProperty(template, PROPERTY_DEFINITIONS, out var definitions))
+                Definitions(deploymentContext, definitions);
+
             if (TryObjectProperty(properties, PROPERTY_PARAMETERS, out var innerParameters))
             {
                 foreach (var parameter in innerParameters.Properties())
                 {
                     var parameterType = templateParameters.TryGetProperty<JObject>(parameter.Name, out var templateParameter) &&
-                        TryParameterType(context, templateParameter, out var t) ? t.Value.Type : TypePrimitive.None;
+                        TryParameterType(deploymentContext, templateParameter, out var t) ? t.Value.Type : TypePrimitive.None;
 
                     if (parameter.Value is JValue parameterValueExpression)
                         parameter.Value = ResolveToken(context, ResolveVariable(context, parameterType, parameterValueExpression));
@@ -1569,18 +1583,40 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual void Output(TemplateContext context, string name, JObject output)
         {
-            ResolveProperty(context, output, PROPERTY_VALUE, GetTypePrimitive(output));
+            ResolveProperty(context, output, PROPERTY_VALUE, GetTypePrimitive(context, output));
             context.CheckOutput(name, output);
             context.AddOutput(name, output);
         }
 
         #endregion Outputs
 
-        private static TypePrimitive GetTypePrimitive(JObject value)
+        private static TypePrimitive GetTypePrimitive(TemplateContext context, JObject value)
         {
-            return value == null ||
-                !value.TryGetProperty(PROPERTY_TYPE, out var t) ||
-                !Enum.TryParse(t, ignoreCase: true, result: out TypePrimitive type) ? TypePrimitive.None : type;
+            if (value == null) return TypePrimitive.None;
+
+            // Find primitive.
+            if (value.TryGetProperty(PROPERTY_TYPE, out var t) && Enum.TryParse(t, ignoreCase: true, result: out TypePrimitive type))
+                return type;
+
+            // Find primitive from parent type.
+            if (context != null && value.TryGetProperty(PROPERTY_REF, out var id) && context.TryDefinition(id, out var definition))
+                return GetTypePrimitive(context, definition.Definition);
+
+            return TypePrimitive.None;
+        }
+
+        private static bool GetTypeNullable(TemplateContext context, JObject value)
+        {
+            if (value == null) return false;
+
+            // Find nullable from parent type.
+            if (value.TryBoolProperty(PROPERTY_NULLABLE, out var nullable) && nullable.Value)
+                return nullable.Value;
+
+            if (context != null && value.TryGetProperty(PROPERTY_REF, out var id) && context.TryDefinition(id, out var definition))
+                return definition.Nullable;
+
+            return false;
         }
 
         protected static StringExpression<T> Expression<T>(ITemplateContext context, string s)

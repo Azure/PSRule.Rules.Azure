@@ -9,6 +9,8 @@ namespace PSRule.Rules.Azure.Data.Template
     {
         TypePrimitive Type { get; }
 
+        JObject Definition { get; }
+
         bool Nullable { get; }
     }
 
