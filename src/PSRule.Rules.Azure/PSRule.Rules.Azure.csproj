@@ -8,8 +8,6 @@
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <!-- <TreatWarningsAsErrors>true</TreatWarningsAsErrors> -->
     <PackageId>Microsoft.PSRule.Rules.Azure.Core</PackageId>
-    <EnableNuget>false</EnableNuget>
-    <IsPackable>false</IsPackable>
     <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 

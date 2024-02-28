@@ -36,6 +36,9 @@
   "[html]": {
     "editor.formatOnSave": false
   },
+  "[xml]": {
+    "editor.formatOnSave": false
+  },
   "files.associations": {
     "**/.azure-pipelines/*.yaml": "azure-pipelines",
     "**/.azure-pipelines/jobs/*.yaml": "azure-pipelines",
