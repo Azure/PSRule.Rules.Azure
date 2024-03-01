@@ -29,6 +29,7 @@
     "aliases": null,
     "resourceType": "discoverSolutions",
     "apiVersions": [
+      "2024-03-01-preview",
       "2023-08-01-preview"
     ],
     "locations": [],
@@ -70,6 +71,15 @@
       "2023-03-23-preview",
       "2023-03-03-preview",
       "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "SelfHelp",
+    "apiVersions": [
+      "2024-03-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

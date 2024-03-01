@@ -17,6 +17,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Italy North",
       "North Europe",
       "South Central US",
@@ -87,6 +88,14 @@
       },
       {
         "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
         "zones": [
           "1",
           "2",
@@ -298,9 +307,7 @@
       "East Asia",
       "East US",
       "East US 2",
-      "France Central",
       "Germany West Central",
-      "Italy North",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -379,23 +386,7 @@
         ]
       },
       {
-        "location": "France Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
         "location": "Germany West Central",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -543,9 +534,7 @@
       "East Asia",
       "East US",
       "East US 2",
-      "France Central",
       "Germany West Central",
-      "Italy North",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -578,6 +567,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Italy North",
       "North Europe",
       "South Central US",
@@ -609,6 +599,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Italy North",
       "North Europe",
       "South Central US",
@@ -807,9 +798,7 @@
       "East Asia",
       "East US",
       "East US 2",
-      "France Central",
       "Germany West Central",
-      "Italy North",
       "Korea Central",
       "North Central US",
       "North Europe",

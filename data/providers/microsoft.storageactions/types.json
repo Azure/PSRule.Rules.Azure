@@ -7,5 +7,53 @@
     ],
     "locations": [],
     "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/asyncoperations",
+    "apiVersions": [
+      "2023-01-01"
+    ],
+    "locations": [
+      "Canada Central",
+      "France Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/previewActions",
+    "apiVersions": [
+      "2023-01-01"
+    ],
+    "locations": [
+      "Canada Central",
+      "France Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-01-01"
+    ],
+    "locations": [
+      "Canada Central",
+      "France Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageTasks",
+    "apiVersions": [
+      "2023-01-01"
+    ],
+    "locations": [
+      "Canada Central",
+      "France Central"
+    ],
+    "zoneMappings": []
   }
 ]

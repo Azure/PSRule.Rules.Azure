@@ -3,8 +3,38 @@
     "aliases": null,
     "resourceType": "connectors",
     "apiVersions": [
+      "2023-10-20-preview",
       "2023-04-17-preview",
       "2019-08-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "Korea Central",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "connectors/connectorSpaces",
+    "apiVersions": [
+      "2023-10-20-preview"
     ],
     "locations": [
       "Australia East",
@@ -42,6 +72,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-20-preview",
       "2019-08-15-preview"
     ],
     "locations": [],

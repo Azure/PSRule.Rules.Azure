@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -10,6 +11,17 @@
       "2023-04-01",
       "2023-01-01-preview",
       "2022-11-11-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkScopedNameAvailability",
+    "apiVersions": [
+      "2023-11-01-preview"
     ],
     "locations": [
       "global"
@@ -31,6 +43,7 @@
     },
     "resourceType": "devcenters",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -69,6 +82,7 @@
     },
     "resourceType": "devcenters/attachednetworks",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -125,6 +139,7 @@
     },
     "resourceType": "devcenters/catalogs",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -157,6 +172,7 @@
     "aliases": null,
     "resourceType": "devcenters/catalogs/devboxdefinitions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -181,8 +197,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "devcenters/catalogs/environmentdefinitions",
+    "resourceType": "devcenters/catalogs/environmentDefinitions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview"
@@ -208,6 +225,7 @@
     "aliases": null,
     "resourceType": "devcenters/catalogs/tasks",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview"
@@ -260,6 +278,7 @@
     },
     "resourceType": "devcenters/devboxdefinitions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -295,6 +314,7 @@
     },
     "resourceType": "devcenters/environmentTypes",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -330,6 +350,7 @@
     },
     "resourceType": "devcenters/galleries",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -362,6 +383,7 @@
     "aliases": null,
     "resourceType": "devcenters/galleries/images",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -394,6 +416,7 @@
     "aliases": null,
     "resourceType": "devcenters/galleries/images/versions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -426,6 +449,7 @@
     "aliases": null,
     "resourceType": "devcenters/images",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -458,6 +482,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -476,6 +501,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -533,6 +559,7 @@
     },
     "resourceType": "networkconnections",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -565,6 +592,7 @@
     "aliases": null,
     "resourceType": "networkconnections/healthchecks",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -597,6 +625,7 @@
     "aliases": null,
     "resourceType": "networkconnections/outboundNetworkDependenciesEndpoints",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -625,6 +654,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -650,6 +680,7 @@
     },
     "resourceType": "projects",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -682,6 +713,7 @@
     "aliases": null,
     "resourceType": "projects/allowedEnvironmentTypes",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -713,6 +745,7 @@
     "aliases": null,
     "resourceType": "projects/attachednetworks",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -745,6 +778,7 @@
     "aliases": null,
     "resourceType": "projects/devboxdefinitions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -786,6 +820,7 @@
     },
     "resourceType": "projects/environmentTypes",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -838,6 +873,7 @@
     },
     "resourceType": "projects/pools",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
@@ -877,6 +913,7 @@
     },
     "resourceType": "projects/pools/schedules",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",

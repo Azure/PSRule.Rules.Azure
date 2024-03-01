@@ -21,6 +21,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -28,13 +29,15 @@
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UK South",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -43,6 +46,7 @@
     "resourceType": "checknameavailability",
     "apiVersions": [
       "2024-01-01",
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-02-preview",
@@ -61,6 +65,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2024-01-01",
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-02-preview",
@@ -94,6 +99,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -101,13 +107,15 @@
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UK South",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -145,7 +153,9 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland West",
@@ -180,6 +190,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -187,13 +198,15 @@
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "Switzerland West",
       "UK South",
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -202,6 +215,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2024-01-01",
+      "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-06-02-preview",

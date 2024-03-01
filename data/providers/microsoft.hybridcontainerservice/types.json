@@ -3,11 +3,15 @@
     "aliases": null,
     "resourceType": "kubernetesVersions",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central India",
       "East US",
       "South Central US",
+      "Southeast Asia",
       "West Europe",
       "West US 3"
     ],
@@ -74,11 +78,15 @@
     "aliases": null,
     "resourceType": "provisionedClusterInstances",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central India",
       "East US",
       "South Central US",
+      "Southeast Asia",
       "West Europe",
       "West US 3"
     ],
@@ -153,11 +161,15 @@
     "aliases": null,
     "resourceType": "skus",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central India",
       "East US",
       "South Central US",
+      "Southeast Asia",
       "West Europe",
       "West US 3"
     ],
@@ -167,13 +179,15 @@
     "aliases": null,
     "resourceType": "virtualNetworks",
     "apiVersions": [
-      "2023-11-15-preview",
-      "2022-09-01-preview",
-      "2022-05-01-preview"
+      "2024-01-01",
+      "2023-11-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Central India",
       "East US",
       "South Central US",
+      "Southeast Asia",
       "West Europe",
       "West US 3"
     ],

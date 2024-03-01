@@ -531,6 +531,7 @@
     "aliases": null,
     "resourceType": "products",
     "apiVersions": [
+      "2023-01-01-preview",
       "2022-12-01-preview",
       "2021-10-01",
       "2021-06-01",

@@ -23,22 +23,23 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
-      "2023-10-01",
-      "2023-03-01-preview",
-      "2022-07-15-preview",
-      "2022-01-10-preview",
-      "2020-10-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -65,22 +66,23 @@
     },
     "resourceType": "datastores",
     "apiVersions": [
-      "2023-10-01",
-      "2023-03-01-preview",
-      "2022-07-15-preview",
-      "2022-01-10-preview",
-      "2020-10-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -107,22 +109,23 @@
     },
     "resourceType": "hosts",
     "apiVersions": [
-      "2023-10-01",
-      "2023-03-01-preview",
-      "2022-07-15-preview",
-      "2022-01-10-preview",
-      "2020-10-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -155,14 +158,19 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "East US 2 EUAP",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -208,22 +216,23 @@
     },
     "resourceType": "resourcepools",
     "apiVersions": [
-      "2023-10-01",
-      "2023-03-01-preview",
-      "2022-07-15-preview",
-      "2022-01-10-preview",
-      "2020-10-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -254,22 +263,23 @@
     },
     "resourceType": "VCenters",
     "apiVersions": [
-      "2023-10-01",
-      "2023-03-01-preview",
-      "2022-07-15-preview",
-      "2022-01-10-preview",
-      "2020-10-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -317,22 +327,23 @@
     },
     "resourceType": "vcenters/inventoryitems",
     "apiVersions": [
-      "2023-10-01",
-      "2023-03-01-preview",
-      "2022-07-15-preview",
-      "2022-01-10-preview",
-      "2020-10-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -343,19 +354,23 @@
     "aliases": null,
     "resourceType": "virtualmachineinstances",
     "apiVersions": [
-      "2023-10-01",
-      "2023-03-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -678,22 +693,23 @@
     },
     "resourceType": "virtualmachinetemplates",
     "apiVersions": [
-      "2023-10-01",
-      "2023-03-01-preview",
-      "2022-07-15-preview",
-      "2022-01-10-preview",
-      "2020-10-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"
@@ -720,22 +736,23 @@
     },
     "resourceType": "virtualnetworks",
     "apiVersions": [
-      "2023-10-01",
-      "2023-03-01-preview",
-      "2022-07-15-preview",
-      "2022-01-10-preview",
-      "2020-10-01-preview"
+      "2023-10-01"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central India",
+      "East Asia",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Central US",
       "North Europe",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "UK South",
+      "UK West",
       "West Europe",
       "West US 2",
       "West US 3"

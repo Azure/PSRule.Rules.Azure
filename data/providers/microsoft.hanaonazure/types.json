@@ -96,29 +96,5 @@
       "West US 2"
     ],
     "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "sapMonitors",
-    "apiVersions": [
-      "2020-02-07-preview",
-      "2017-11-03-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Australia Southeast",
-      "East US",
-      "East US 2",
-      "Germany West Central",
-      "Japan West",
-      "North Europe",
-      "South Central US",
-      "Southeast Asia",
-      "UK South",
-      "West Europe",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": []
   }
 ]

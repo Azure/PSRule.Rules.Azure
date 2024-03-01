@@ -41,13 +41,17 @@
       "Microsoft.EventHub/clusters/created": "properties.created",
       "Microsoft.EventHub/clusters/createdAt": "properties.createdAt",
       "Microsoft.EventHub/clusters/metricId": "properties.metricId",
+      "Microsoft.EventHub/clusters/provisioningState": "properties.provisioningState",
       "Microsoft.EventHub/clusters/sku": "sku",
       "Microsoft.EventHub/clusters/sku.capacity": "sku.capacity",
       "Microsoft.EventHub/clusters/sku.name": "sku.name",
       "Microsoft.EventHub/clusters/status": "properties.status",
       "Microsoft.EventHub/clusters/supportsScaling": "properties.supportsScaling",
       "Microsoft.EventHub/clusters/updated": "properties.updated",
-      "Microsoft.EventHub/clusters/updatedAt": "properties.updatedAt"
+      "Microsoft.EventHub/clusters/updatedAt": "properties.updatedAt",
+      "Microsoft.EventHub/clusters/upgradePreferences": "properties.upgradePreferences",
+      "Microsoft.EventHub/clusters/upgradePreferences.startDayOfWeek": "properties.upgradePreferences.startDayOfWeek",
+      "Microsoft.EventHub/clusters/upgradePreferences.startHourOfDay": "properties.upgradePreferences.startHourOfDay"
     },
     "resourceType": "clusters",
     "apiVersions": [
@@ -401,6 +405,13 @@
       "Microsoft.EventHub/namespaces/encryption.keyVaultProperties[*].keyVersion": "properties.encryption.keyVaultProperties[*].keyVersion",
       "Microsoft.EventHub/namespaces/encryption.requireInfrastructureEncryption": "properties.encryption.requireInfrastructureEncryption",
       "Microsoft.EventHub/namespaces/eventHubEnabled": "properties.eventHubEnabled",
+      "Microsoft.EventHub/namespaces/geoDataReplication": "properties.geoDataReplication",
+      "Microsoft.EventHub/namespaces/geoDataReplication.locations": "properties.geoDataReplication.locations",
+      "Microsoft.EventHub/namespaces/geoDataReplication.locations[*]": "properties.geoDataReplication.locations[*]",
+      "Microsoft.EventHub/namespaces/geoDataReplication.locations[*].clusterArmId": "properties.geoDataReplication.locations[*].clusterArmId",
+      "Microsoft.EventHub/namespaces/geoDataReplication.locations[*].locationName": "properties.geoDataReplication.locations[*].locationName",
+      "Microsoft.EventHub/namespaces/geoDataReplication.locations[*].roleType": "properties.geoDataReplication.locations[*].roleType",
+      "Microsoft.EventHub/namespaces/geoDataReplication.maxReplicationLagDurationInSeconds": "properties.geoDataReplication.maxReplicationLagDurationInSeconds",
       "Microsoft.EventHub/namespaces/identity": "properties.identity",
       "Microsoft.EventHub/namespaces/identity.principalId": "properties.identity.principalId",
       "Microsoft.EventHub/namespaces/identity.tenantId": "properties.identity.tenantId",
@@ -752,6 +763,9 @@
       "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.dataLakeAccountName": "properties.captureDescription.destination.properties.dataLakeAccountName",
       "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.dataLakeFolderPath": "properties.captureDescription.destination.properties.dataLakeFolderPath",
       "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.dataLakeSubscriptionId": "properties.captureDescription.destination.properties.dataLakeSubscriptionId",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.identity": "properties.captureDescription.destination.identity",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.identity.type": "properties.captureDescription.destination.identity.type",
+      "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.identity.userAssignedIdentity": "properties.captureDescription.destination.identity.userAssignedIdentity",
       "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.name": "properties.captureDescription.destination.name",
       "Microsoft.EventHub/namespaces/eventhubs/captureDescription.destination.storageAccountResourceId": "properties.captureDescription.destination.properties.storageAccountResourceId",
       "Microsoft.EventHub/namespaces/eventhubs/captureDescription.enabled": "properties.captureDescription.enabled",
@@ -764,6 +778,10 @@
       "Microsoft.EventHub/namespaces/eventhubs/partitionCount": "properties.partitionCount",
       "Microsoft.EventHub/namespaces/eventhubs/partitionIds": "properties.partitionIds",
       "Microsoft.EventHub/namespaces/eventhubs/partitionIds[*]": "properties.partitionIds[*]",
+      "Microsoft.EventHub/namespaces/eventhubs/retentionDescription": "properties.retentionDescription",
+      "Microsoft.EventHub/namespaces/eventhubs/retentionDescription.cleanupPolicy": "properties.retentionDescription.cleanupPolicy",
+      "Microsoft.EventHub/namespaces/eventhubs/retentionDescription.retentionTimeInHours": "properties.retentionDescription.retentionTimeInHours",
+      "Microsoft.EventHub/namespaces/eventhubs/retentionDescription.tombstoneRetentionTimeInHours": "properties.retentionDescription.tombstoneRetentionTimeInHours",
       "Microsoft.EventHub/namespaces/eventhubs/status": "properties.status",
       "Microsoft.EventHub/namespaces/eventhubs/updatedAt": "properties.updatedAt"
     },
@@ -1081,7 +1099,11 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.EventHub/namespaces/networkSecurityPerimeterConfigurations/networkSecurityPerimeter.id": "properties.networkSecurityPerimeter.id",
+      "Microsoft.EventHub/namespaces/networkSecurityPerimeterConfigurations/profile.name": "properties.profile.name",
+      "Microsoft.EventHub/namespaces/networkSecurityPerimeterConfigurations/resourceAssociation.accessMode": "properties.resourceAssociation.accessMode"
+    },
     "resourceType": "namespaces/networkSecurityPerimeterConfigurations",
     "apiVersions": [
       "2023-01-01-preview",

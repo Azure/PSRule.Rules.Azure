@@ -138,6 +138,7 @@
       "2017-12-01"
     ],
     "locations": [
+      "Central India",
       "Global",
       "West Europe",
       "West US"
@@ -345,6 +346,7 @@
       "2017-12-01"
     ],
     "locations": [
+      "Central India",
       "Global",
       "West Europe",
       "West US"
@@ -384,6 +386,7 @@
       "2017-12-01"
     ],
     "locations": [
+      "Central India",
       "Global",
       "West Europe",
       "West US"
@@ -401,6 +404,7 @@
       "2021-03-01"
     ],
     "locations": [
+      "Central India",
       "Global",
       "West Europe",
       "West US"
@@ -428,6 +432,7 @@
       "2021-03-01"
     ],
     "locations": [
+      "Central India",
       "Global",
       "West Europe",
       "West US"
@@ -445,6 +450,7 @@
       "2021-03-01"
     ],
     "locations": [
+      "Central India",
       "Global",
       "West Europe",
       "West US"
@@ -547,6 +553,7 @@
       "2017-12-01"
     ],
     "locations": [
+      "Central India",
       "Global",
       "West Europe",
       "West US"
@@ -585,5 +592,13 @@
       "Global"
     ],
     "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations/networkSecurityPerimeter.id": "properties.networkSecurityPerimeter.id",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations/profile.name": "properties.profile.name",
+      "Microsoft.BotService/botServices/networkSecurityPerimeterConfigurations/resourceAssociation.accessMode": "properties.resourceAssociation.accessMode"
+    },
+    "resourceType": "botservices/networksecurityperimeterconfigurations"
   }
 ]

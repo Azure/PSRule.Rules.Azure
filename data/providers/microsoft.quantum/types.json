@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "Locations/CheckNameAvailability",
     "apiVersions": [
+      "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
     ],
@@ -23,6 +25,7 @@
     "aliases": null,
     "resourceType": "locations/offerings",
     "apiVersions": [
+      "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
     ],
@@ -45,6 +48,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
     ],
@@ -69,6 +73,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
     ],
@@ -79,6 +84,7 @@
     "aliases": null,
     "resourceType": "Workspaces",
     "apiVersions": [
+      "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
     ],

@@ -3,12 +3,14 @@
     "aliases": null,
     "resourceType": "bareMetalMachines",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -17,12 +19,14 @@
     "aliases": null,
     "resourceType": "cloudServicesNetworks",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -31,12 +35,14 @@
     "aliases": null,
     "resourceType": "clusterManagers",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -45,35 +51,30 @@
     "aliases": null,
     "resourceType": "clusters",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "clusters/admissions",
-    "apiVersions": [
-      "2022-09-30-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "clusters/bareMetalMachineKeySets",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -82,12 +83,14 @@
     "aliases": null,
     "resourceType": "clusters/bmcKeySets",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -96,12 +99,14 @@
     "aliases": null,
     "resourceType": "clusters/metricsConfigurations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -110,12 +115,14 @@
     "aliases": null,
     "resourceType": "kubernetesClusters",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -124,12 +131,14 @@
     "aliases": null,
     "resourceType": "kubernetesClusters/agentPools",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -138,12 +147,14 @@
     "aliases": null,
     "resourceType": "l2Networks",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -152,12 +163,14 @@
     "aliases": null,
     "resourceType": "l3Networks",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -166,6 +179,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-12-01-preview",
       "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
@@ -179,12 +193,14 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -193,6 +209,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-12-01-preview",
       "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
@@ -206,12 +223,14 @@
     "aliases": null,
     "resourceType": "racks",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -220,12 +239,14 @@
     "aliases": null,
     "resourceType": "rackSkus",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -234,6 +255,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2023-12-01-preview",
       "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
@@ -247,12 +269,14 @@
     "aliases": null,
     "resourceType": "storageAppliances",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -261,12 +285,14 @@
     "aliases": null,
     "resourceType": "trunkedNetworks",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -275,12 +301,14 @@
     "aliases": null,
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -289,12 +317,14 @@
     "aliases": null,
     "resourceType": "virtualMachines/consoles",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []
@@ -303,12 +333,14 @@
     "aliases": null,
     "resourceType": "volumes",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-07-01",
       "2023-05-01-preview"
     ],
     "locations": [
       "East US",
       "South Central US",
+      "UAE North",
       "West US 3"
     ],
     "zoneMappings": []

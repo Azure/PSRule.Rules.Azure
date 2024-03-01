@@ -30,5 +30,71 @@
       "West US 2"
     ],
     "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2019-10-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "services",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "storageClasses",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "East US",
+      "East US 2",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
   }
 ]

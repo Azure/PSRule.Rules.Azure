@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -76,6 +77,7 @@
     "aliases": null,
     "resourceType": "deletedAccounts",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -138,6 +140,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -169,6 +172,7 @@
     "aliases": null,
     "resourceType": "locations/asyncoperations",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -243,6 +247,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -312,6 +317,7 @@
     "aliases": null,
     "resourceType": "locations/deletedAccounts",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -374,6 +380,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -445,6 +452,7 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -499,6 +507,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -569,6 +578,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -779,6 +789,7 @@
     },
     "resourceType": "storageAccounts",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1157,6 +1168,7 @@
     },
     "resourceType": "storageAccounts/blobServices",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1238,6 +1250,7 @@
     },
     "resourceType": "storageAccounts/encryptionScopes",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1346,6 +1359,7 @@
     },
     "resourceType": "storageAccounts/fileServices",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1417,6 +1431,7 @@
     "aliases": null,
     "resourceType": "storageAccounts/listAccountSas",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1488,6 +1503,7 @@
     "aliases": null,
     "resourceType": "storageAccounts/listServiceSas",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1584,6 +1600,7 @@
     },
     "resourceType": "storageAccounts/queueServices",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1755,6 +1772,7 @@
     "aliases": null,
     "resourceType": "storageAccounts/storageTaskAssignments",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1834,6 +1852,7 @@
     },
     "resourceType": "storageAccounts/tableServices",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1905,6 +1924,7 @@
     "aliases": null,
     "resourceType": "storageTasks",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -1959,6 +1979,7 @@
     "aliases": null,
     "resourceType": "usages",
     "apiVersions": [
+      "2023-05-01",
       "2023-04-01",
       "2023-01-01",
       "2022-09-01",
@@ -2041,6 +2062,8 @@
       "Microsoft.Storage/storageAccounts/inventoryPolicies/policy.rules[*].definition.filters": "properties.policy.rules[*].definition.filters",
       "Microsoft.Storage/storageAccounts/inventoryPolicies/policy.rules[*].definition.filters.blobTypes": "properties.policy.rules[*].definition.filters.blobTypes",
       "Microsoft.Storage/storageAccounts/inventoryPolicies/policy.rules[*].definition.filters.blobTypes[*]": "properties.policy.rules[*].definition.filters.blobTypes[*]",
+      "Microsoft.Storage/storageAccounts/inventoryPolicies/policy.rules[*].definition.filters.creationTime": "properties.policy.rules[*].definition.filters.creationTime",
+      "Microsoft.Storage/storageAccounts/inventoryPolicies/policy.rules[*].definition.filters.creationTime.lastNDays": "properties.policy.rules[*].definition.filters.creationTime.lastNDays",
       "Microsoft.Storage/storageAccounts/inventoryPolicies/policy.rules[*].definition.filters.excludePrefix": "properties.policy.rules[*].definition.filters.excludePrefix",
       "Microsoft.Storage/storageAccounts/inventoryPolicies/policy.rules[*].definition.filters.excludePrefix[*]": "properties.policy.rules[*].definition.filters.excludePrefix[*]",
       "Microsoft.Storage/storageAccounts/inventoryPolicies/policy.rules[*].definition.filters.includeBlobVersions": "properties.policy.rules[*].definition.filters.includeBlobVersions",

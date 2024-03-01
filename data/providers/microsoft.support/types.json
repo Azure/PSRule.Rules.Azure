@@ -13,6 +13,31 @@
   },
   {
     "aliases": null,
+    "resourceType": "classifyServices",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "fileWorkspaces",
     "apiVersions": [
       "2023-06-01-preview",

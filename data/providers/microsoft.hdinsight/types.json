@@ -8,6 +8,7 @@
     ],
     "locations": [
       "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "Korea Central",
@@ -27,6 +28,7 @@
     ],
     "locations": [
       "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "Korea Central",
@@ -46,6 +48,7 @@
     ],
     "locations": [
       "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "Korea Central",
@@ -65,6 +68,7 @@
     ],
     "locations": [
       "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "Korea Central",
@@ -84,6 +88,7 @@
     ],
     "locations": [
       "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "Korea Central",
@@ -217,6 +222,7 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -238,6 +244,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -348,8 +355,20 @@
         ]
       },
       {
+        "location": "Israel Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Italy North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Japan East",
@@ -598,6 +617,7 @@
     },
     "resourceType": "clusters/applications",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -619,6 +639,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -729,8 +750,20 @@
         ]
       },
       {
+        "location": "Israel Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Italy North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Japan East",
@@ -874,6 +907,7 @@
     "aliases": null,
     "resourceType": "clusters/operationresults",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -895,6 +929,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -929,6 +964,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -963,6 +999,7 @@
     ],
     "locations": [
       "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "Korea Central",
@@ -982,6 +1019,7 @@
     ],
     "locations": [
       "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "Korea Central",
@@ -996,6 +1034,7 @@
     "aliases": null,
     "resourceType": "locations/azureasyncoperations",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -1017,6 +1056,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1051,6 +1091,7 @@
     "aliases": null,
     "resourceType": "locations/billingSpecs",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -1072,6 +1113,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1106,6 +1148,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -1127,6 +1170,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1161,6 +1205,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -1170,18 +1215,23 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Canada Central",
       "Central India",
       "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
+      "Germany North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
       "South Central US",
       "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
       "West US",
@@ -1199,6 +1249,7 @@
     ],
     "locations": [
       "Central India",
+      "East Asia",
       "East US",
       "East US 2",
       "Korea Central",
@@ -1213,6 +1264,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -1234,6 +1286,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1268,18 +1321,32 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-06-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
+      "Central US",
       "East Asia",
       "East US",
       "East US 2",
       "East US 2 EUAP",
+      "France Central",
+      "Germany North",
+      "Japan East",
       "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -1289,6 +1356,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -1310,6 +1378,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1344,6 +1413,7 @@
     "aliases": null,
     "resourceType": "locations/validateCreateRequest",
     "apiVersions": [
+      "2023-08-15-preview",
       "2023-04-15-preview",
       "2021-06-01",
       "2018-06-01-preview",
@@ -1365,6 +1435,7 @@
       "France Central",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",

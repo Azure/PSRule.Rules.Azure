@@ -17,6 +17,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/addresses",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/agreements",
     "apiVersions": [
       "2020-11-01-privatepreview",
@@ -1297,6 +1306,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/previewAgreements",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/products",
     "apiVersions": [
       "2020-05-01",
@@ -1397,6 +1415,15 @@
       "2020-12-15-beta",
       "2020-11-01-privatepreview",
       "2020-11-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/signAgreement",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -1518,6 +1545,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2022-10-01-privatepreview",
       "2020-11-01-privatepreview",
       "2020-09-01-preview",
       "2020-05-01",
@@ -1557,6 +1585,15 @@
     "resourceType": "permissionRequests",
     "apiVersions": [
       "2020-11-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "policies",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": []

@@ -3,14 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
-      "2022-12-01",
-      "2022-08-01-preview",
-      "2022-04-15-preview",
-      "2022-04-01-preview",
-      "2021-12-01-preview",
-      "2021-11-01-preview",
-      "2021-09-01-preview",
-      "2020-09-01-preview"
+      "2023-12-01-preview",
+      "2022-12-01"
     ],
     "locations": [],
     "zoneMappings": []
@@ -28,6 +22,7 @@
     },
     "resourceType": "loadtests",
     "apiVersions": [
+      "2023-12-01-preview",
       "2022-12-01"
     ],
     "locations": [
@@ -57,6 +52,7 @@
     "aliases": null,
     "resourceType": "loadtests/outboundNetworkDependenciesEndpoints",
     "apiVersions": [
+      "2023-12-01-preview",
       "2022-12-01"
     ],
     "locations": [
@@ -86,14 +82,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
-      "2022-12-01",
-      "2022-08-01-preview",
-      "2022-04-15-preview",
-      "2022-04-01-preview",
-      "2021-12-01-preview",
-      "2021-11-01-preview",
-      "2021-09-01-preview",
-      "2020-09-01-preview"
+      "2023-12-01-preview",
+      "2022-12-01"
     ],
     "locations": [],
     "zoneMappings": []
@@ -102,6 +92,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-12-01-preview",
       "2022-12-01"
     ],
     "locations": [
@@ -131,6 +122,7 @@
     "aliases": null,
     "resourceType": "Locations/Quotas",
     "apiVersions": [
+      "2023-12-01-preview",
       "2022-12-01"
     ],
     "locations": [
@@ -160,14 +152,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2022-12-01",
-      "2022-08-01-preview",
-      "2022-04-15-preview",
-      "2022-04-01-preview",
-      "2021-12-01-preview",
-      "2021-11-01-preview",
-      "2021-09-01-preview",
-      "2020-09-01-preview"
+      "2023-12-01-preview",
+      "2022-12-01"
     ],
     "locations": [],
     "zoneMappings": []
@@ -176,14 +162,8 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
-      "2022-12-01",
-      "2022-08-01-preview",
-      "2022-04-15-preview",
-      "2022-04-01-preview",
-      "2021-12-01-preview",
-      "2021-11-01-preview",
-      "2021-09-01-preview",
-      "2020-09-01-preview"
+      "2023-12-01-preview",
+      "2022-12-01"
     ],
     "locations": [],
     "zoneMappings": []

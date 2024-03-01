@@ -26,5 +26,20 @@
       "West Europe"
     ],
     "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "services/eventGridFilters",
+    "apiVersions": [
+      "2024-03-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "East US",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
   }
 ]

@@ -80,6 +80,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-04-01",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -91,6 +92,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-04-01",
       "2022-09-01-preview"
     ],
     "locations": [
@@ -105,6 +107,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-04-01",
       "2022-09-01-preview"
     ],
     "locations": [

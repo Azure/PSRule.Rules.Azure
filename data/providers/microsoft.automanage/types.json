@@ -22,13 +22,9 @@
   {
     "aliases": {
       "Microsoft.Automanage/configurationProfileAssignments/accountId": "properties.accountId",
-      "Microsoft.Automanage/configurationProfileAssignments/compliance": "properties.compliance",
-      "Microsoft.Automanage/configurationProfileAssignments/compliance.updateStatus": "properties.compliance.updateStatus",
       "Microsoft.Automanage/configurationProfileAssignments/configurationProfile": "properties.configurationProfile",
-      "Microsoft.Automanage/configurationProfileAssignments/configurationProfilePreferenceId": "properties.configurationProfilePreferenceId",
       "Microsoft.Automanage/configurationProfileAssignments/managedBy": "managedBy",
       "Microsoft.Automanage/configurationProfileAssignments/profileOverrides": "properties.profileOverrides",
-      "Microsoft.Automanage/configurationProfileAssignments/provisioningState": "properties.provisioningState",
       "Microsoft.Automanage/configurationProfileAssignments/provisioningStatus": "properties.provisioningStatus",
       "Microsoft.Automanage/configurationProfileAssignments/status": "properties.status",
       "Microsoft.Automanage/configurationProfileAssignments/targetId": "properties.targetId"
@@ -53,7 +49,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -83,7 +80,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -113,7 +111,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },

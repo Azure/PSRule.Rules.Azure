@@ -3,9 +3,9 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-10-15-preview",
       "2023-10-15",
-      "2023-05-15-preview",
-      "2023-04-15-preview"
+      "2023-05-15-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -14,14 +14,15 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2023-10-15-preview",
       "2023-10-15",
-      "2023-05-15-preview",
-      "2023-04-15-preview"
+      "2023-05-15-preview"
     ],
     "locations": [
       "East US",
-      "East US 2 EUAP",
-      "West Central US"
+      "North Europe",
+      "South Central US",
+      "UAE North"
     ],
     "zoneMappings": []
   },
@@ -29,9 +30,9 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2023-10-15-preview",
       "2023-10-15",
-      "2023-05-15-preview",
-      "2023-04-15-preview"
+      "2023-05-15-preview"
     ],
     "locations": [],
     "zoneMappings": []

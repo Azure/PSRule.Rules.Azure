@@ -12,7 +12,29 @@
   },
   {
     "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operationStatuses",
+    "apiVersions": [
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "validate",
     "apiVersions": [
       "2023-05-01-preview"
     ],

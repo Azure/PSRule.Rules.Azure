@@ -135,6 +135,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -210,6 +211,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -253,6 +255,7 @@
       "Microsoft.Search/searchServices/privateEndpointConnections.privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
       "Microsoft.Search/searchServices/privateEndpointConnections.privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
       "Microsoft.Search/searchServices/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.Search/searchServices/privateEndpointConnections[*].groupId": "properties.privateEndpointConnections[*].properties.groupId",
       "Microsoft.Search/searchServices/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
       "Microsoft.Search/searchServices/privateEndpointConnections[*].id.externalDocs": "properties.privateEndpointConnections[*].id.externalDocs",
       "Microsoft.Search/searchServices/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
@@ -263,6 +266,7 @@
       "Microsoft.Search/searchServices/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
       "Microsoft.Search/searchServices/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
       "Microsoft.Search/searchServices/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Search/searchServices/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
       "Microsoft.Search/searchServices/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
       "Microsoft.Search/searchServices/provisioningState": "properties.provisioningState",
       "Microsoft.Search/searchServices/publicNetworkAccess": "properties.publicNetworkAccess",
@@ -331,6 +335,7 @@
       "Qatar Central",
       "South Africa North",
       "South Central US",
+      "South India",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
@@ -348,12 +353,14 @@
   },
   {
     "aliases": {
+      "Microsoft.Search/searchServices/privateEndpointConnections/groupId": "properties.groupId",
       "Microsoft.Search/searchServices/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
       "Microsoft.Search/searchServices/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
       "Microsoft.Search/searchServices/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
       "Microsoft.Search/searchServices/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
       "Microsoft.Search/searchServices/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
-      "Microsoft.Search/searchServices/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status"
+      "Microsoft.Search/searchServices/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.Search/searchServices/privateEndpointConnections/provisioningState": "properties.provisioningState"
     },
     "resourceType": "searchservices/privateendpointconnections"
   },

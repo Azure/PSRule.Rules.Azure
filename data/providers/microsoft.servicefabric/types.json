@@ -124,6 +124,8 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-01-privatepreview",
       "2020-12-01-preview",
@@ -236,6 +238,8 @@
     },
     "resourceType": "clusters/applications",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-01-privatepreview",
       "2020-12-01-preview",
@@ -346,6 +350,8 @@
     },
     "resourceType": "clusters/applications/services",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-01-privatepreview",
       "2020-12-01-preview",
@@ -410,6 +416,8 @@
     },
     "resourceType": "clusters/applicationTypes",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-01-privatepreview",
       "2020-12-01-preview",
@@ -477,6 +485,8 @@
     },
     "resourceType": "clusters/applicationTypes/versions",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-01-privatepreview",
       "2020-12-01-preview",
@@ -539,6 +549,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-15-privatepreview",
       "2020-12-15-preview",
@@ -567,6 +579,8 @@
     "aliases": null,
     "resourceType": "locations/clusterVersions",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-15-privatepreview",
       "2020-12-15-preview",
@@ -636,6 +650,8 @@
     "aliases": null,
     "resourceType": "locations/environments",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-15-privatepreview",
       "2020-12-15-preview",
@@ -705,6 +721,8 @@
     "aliases": null,
     "resourceType": "locations/environments/managedClusterVersions",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -769,6 +787,8 @@
     "aliases": null,
     "resourceType": "locations/managedClusterOperationResults",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -833,6 +853,8 @@
     "aliases": null,
     "resourceType": "locations/managedClusterOperations",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -897,6 +919,8 @@
     "aliases": null,
     "resourceType": "locations/managedClusterVersions",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -961,6 +985,8 @@
     "aliases": null,
     "resourceType": "locations/managedUnsupportedVMSizes",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -1025,6 +1051,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-15-privatepreview",
       "2020-12-15-preview",
@@ -1094,6 +1122,8 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-15-privatepreview",
       "2020-12-15-preview",
@@ -1163,6 +1193,8 @@
     "aliases": null,
     "resourceType": "locations/unsupportedVMSizes",
     "apiVersions": [
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2021-06-01",
       "2020-12-15-privatepreview",
       "2020-12-15-preview",
@@ -1324,6 +1356,8 @@
     },
     "resourceType": "managedclusters",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -1417,6 +1451,8 @@
     },
     "resourceType": "managedclusters/applications",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -1553,6 +1589,8 @@
     },
     "resourceType": "managedclusters/applications/services",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -1618,6 +1656,8 @@
     },
     "resourceType": "managedclusters/applicationTypes",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -1684,6 +1724,8 @@
     },
     "resourceType": "managedclusters/applicationTypes/versions",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -1841,6 +1883,8 @@
     },
     "resourceType": "managedclusters/nodetypes",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
       "2023-11-01-preview",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -1905,6 +1949,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-02-01-preview",
+      "2023-12-01-preview",
+      "2023-11-01-privatepreview",
+      "2023-11-01-preview",
       "2023-02-01-preview",
       "2022-10-01-preview",
       "2022-08-01-preview",

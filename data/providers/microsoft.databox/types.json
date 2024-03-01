@@ -198,6 +198,7 @@
     },
     "resourceType": "jobs",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
@@ -235,6 +236,7 @@
     "aliases": null,
     "resourceType": "jobs/eventGridFilters",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
@@ -263,6 +265,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
@@ -284,6 +287,7 @@
     "aliases": null,
     "resourceType": "locations/availableSkus",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
@@ -321,6 +325,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
@@ -358,6 +363,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
@@ -395,6 +401,7 @@
     "aliases": null,
     "resourceType": "locations/regionConfiguration",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
@@ -432,6 +439,7 @@
     "aliases": null,
     "resourceType": "locations/validateAddress",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
@@ -469,6 +477,7 @@
     "aliases": null,
     "resourceType": "locations/validateInputs",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
@@ -506,6 +515,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-12-01",
       "2023-03-01",
       "2022-12-01",
       "2022-10-01",
