@@ -68,6 +68,8 @@
       "Microsoft.DataProtection/backupVaults/monitoringSettings.azureMonitorAlertSettings": "properties.monitoringSettings.azureMonitorAlertSettings",
       "Microsoft.DataProtection/backupVaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures": "properties.monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures",
       "Microsoft.DataProtection/backupVaults/provisioningState": "properties.provisioningState",
+      "Microsoft.DataProtection/backupVaults/replicatedRegions": "properties.replicatedRegions",
+      "Microsoft.DataProtection/backupVaults/replicatedRegions[*]": "properties.replicatedRegions[*]",
       "Microsoft.DataProtection/backupVaults/resourceMoveDetails": "properties.resourceMoveDetails",
       "Microsoft.DataProtection/backupVaults/resourceMoveDetails.completionTimeUtc": "properties.resourceMoveDetails.completionTimeUtc",
       "Microsoft.DataProtection/backupVaults/resourceMoveDetails.operationId": "properties.resourceMoveDetails.operationId",
@@ -77,6 +79,14 @@
       "Microsoft.DataProtection/backupVaults/resourceMoveState": "properties.resourceMoveState",
       "Microsoft.DataProtection/backupVaults/secureScore": "properties.secureScore",
       "Microsoft.DataProtection/backupVaults/securitySettings": "properties.securitySettings",
+      "Microsoft.DataProtection/backupVaults/securitySettings.encryptionSettings": "properties.securitySettings.encryptionSettings",
+      "Microsoft.DataProtection/backupVaults/securitySettings.encryptionSettings.infrastructureEncryption": "properties.securitySettings.encryptionSettings.infrastructureEncryption",
+      "Microsoft.DataProtection/backupVaults/securitySettings.encryptionSettings.kekIdentity": "properties.securitySettings.encryptionSettings.kekIdentity",
+      "Microsoft.DataProtection/backupVaults/securitySettings.encryptionSettings.kekIdentity.identityId": "properties.securitySettings.encryptionSettings.kekIdentity.identityId",
+      "Microsoft.DataProtection/backupVaults/securitySettings.encryptionSettings.kekIdentity.identityType": "properties.securitySettings.encryptionSettings.kekIdentity.identityType",
+      "Microsoft.DataProtection/backupVaults/securitySettings.encryptionSettings.keyVaultProperties": "properties.securitySettings.encryptionSettings.keyVaultProperties",
+      "Microsoft.DataProtection/backupVaults/securitySettings.encryptionSettings.keyVaultProperties.keyUri": "properties.securitySettings.encryptionSettings.keyVaultProperties.keyUri",
+      "Microsoft.DataProtection/backupVaults/securitySettings.encryptionSettings.state": "properties.securitySettings.encryptionSettings.state",
       "Microsoft.DataProtection/backupVaults/securitySettings.immutabilitySettings": "properties.securitySettings.immutabilitySettings",
       "Microsoft.DataProtection/backupVaults/securitySettings.immutabilitySettings.state": "properties.securitySettings.immutabilitySettings.state",
       "Microsoft.DataProtection/backupVaults/securitySettings.softDeleteSettings": "properties.securitySettings.softDeleteSettings",
@@ -89,6 +99,7 @@
     },
     "resourceType": "BackupVaults",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
@@ -160,6 +171,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
@@ -189,6 +201,7 @@
     "aliases": null,
     "resourceType": "locations/checkFeatureSupport",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
@@ -260,6 +273,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
@@ -331,6 +345,7 @@
     "aliases": null,
     "resourceType": "locations/crossRegionRestore",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01-preview"
@@ -384,6 +399,7 @@
     "aliases": null,
     "resourceType": "locations/fetchCrossRegionRestoreJob",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01-preview"
@@ -437,6 +453,7 @@
     "aliases": null,
     "resourceType": "locations/fetchCrossRegionRestoreJobs",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01-preview"
@@ -490,6 +507,7 @@
     "aliases": null,
     "resourceType": "locations/fetchSecondaryRecoveryPoints",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01-preview"
@@ -543,6 +561,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
@@ -614,6 +633,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
@@ -685,6 +705,7 @@
     "aliases": null,
     "resourceType": "locations/validateCrossRegionRestore",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-04-01-preview"
@@ -738,6 +759,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-05-01",
@@ -767,6 +789,7 @@
     "aliases": null,
     "resourceType": "ResourceGuards",
     "apiVersions": [
+      "2023-11-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
       "2023-05-01",

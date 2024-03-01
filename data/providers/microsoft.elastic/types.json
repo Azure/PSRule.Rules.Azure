@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
       "2023-06-15-preview",
@@ -24,6 +25,7 @@
     "aliases": null,
     "resourceType": "elasticVersions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
       "2023-06-15-preview",
@@ -38,6 +40,7 @@
     "aliases": null,
     "resourceType": "getElasticOrganizationToAzureSubscriptionMapping",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
       "2023-06-15-preview"
@@ -49,6 +52,7 @@
     "aliases": null,
     "resourceType": "getOrganizationApiKey",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
       "2023-06-15-preview",
@@ -63,6 +67,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
       "2023-06-15-preview",
@@ -84,6 +89,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
       "2023-06-15-preview",
@@ -124,6 +130,7 @@
     "aliases": null,
     "resourceType": "monitors",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
       "2023-06-15-preview",
@@ -162,6 +169,7 @@
     "aliases": null,
     "resourceType": "monitors/tagRules",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
       "2023-06-15-preview",
@@ -200,6 +208,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
       "2023-06-15-preview",

@@ -153,6 +153,15 @@
     "zoneMappings": []
   },
   {
+    "aliases": null,
+    "resourceType": "dataBoundaries",
+    "apiVersions": [
+      "2024-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.Resources/deployments/debugSetting": "properties.debugSetting",
       "Microsoft.Resources/deployments/debugSetting.detailLevel": "properties.debugSetting.detailLevel",
@@ -1192,40 +1201,6 @@
       "2014-04-01-preview"
     ],
     "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "tagNamespaceOperationResults",
-    "apiVersions": [
-      "2023-03-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "tagnamespaces",
-    "apiVersions": [
-      "2023-03-01-preview"
-    ],
-    "locations": [
-      "Canada Central",
-      "Canada East",
-      "Central US",
-      "Central US EUAP",
-      "East US",
-      "East US 2",
-      "East US 2 EUAP",
-      "East US STG",
-      "North Central US",
-      "South Central US",
-      "South Central US STG",
-      "West Central US",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
     "zoneMappings": []
   },
   {

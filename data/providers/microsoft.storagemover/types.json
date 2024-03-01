@@ -23,7 +23,9 @@
     "locations": [
       "East US",
       "East US 2",
+      "North Europe",
       "Sweden Central",
+      "West Central US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -41,7 +43,10 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.StorageMover/storageMovers/description": "properties.description",
+      "Microsoft.StorageMover/storageMovers/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "storageMovers",
     "apiVersions": [
       "2023-10-01",
@@ -52,13 +57,30 @@
     "locations": [
       "East US",
       "East US 2",
+      "North Europe",
       "Sweden Central",
+      "West Central US",
       "West US 3"
     ],
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.StorageMover/storageMovers/agents/agentStatus": "properties.agentStatus",
+      "Microsoft.StorageMover/storageMovers/agents/agentVersion": "properties.agentVersion",
+      "Microsoft.StorageMover/storageMovers/agents/arcResourceId": "properties.arcResourceId",
+      "Microsoft.StorageMover/storageMovers/agents/arcVmUuid": "properties.arcVmUuid",
+      "Microsoft.StorageMover/storageMovers/agents/description": "properties.description",
+      "Microsoft.StorageMover/storageMovers/agents/errorDetails": "properties.errorDetails",
+      "Microsoft.StorageMover/storageMovers/agents/errorDetails.code": "properties.errorDetails.code",
+      "Microsoft.StorageMover/storageMovers/agents/errorDetails.message": "properties.errorDetails.message",
+      "Microsoft.StorageMover/storageMovers/agents/lastStatusUpdate": "properties.lastStatusUpdate",
+      "Microsoft.StorageMover/storageMovers/agents/localIPAddress": "properties.localIPAddress",
+      "Microsoft.StorageMover/storageMovers/agents/memoryInMB": "properties.memoryInMB",
+      "Microsoft.StorageMover/storageMovers/agents/numberOfCores": "properties.numberOfCores",
+      "Microsoft.StorageMover/storageMovers/agents/provisioningState": "properties.provisioningState",
+      "Microsoft.StorageMover/storageMovers/agents/uptimeInSeconds": "properties.uptimeInSeconds"
+    },
     "resourceType": "storageMovers/agents",
     "apiVersions": [
       "2023-10-01",
@@ -69,13 +91,35 @@
     "locations": [
       "East US",
       "East US 2",
+      "North Europe",
       "Sweden Central",
+      "West Central US",
       "West US 3"
     ],
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.StorageMover/storageMovers/endpoints/AzureStorageBlobContainer.blobContainerName": "properties.blobContainerName",
+      "Microsoft.StorageMover/storageMovers/endpoints/AzureStorageBlobContainer.storageAccountResourceId": "properties.storageAccountResourceId",
+      "Microsoft.StorageMover/storageMovers/endpoints/AzureStorageSmbFileShare.fileShareName": "properties.fileShareName",
+      "Microsoft.StorageMover/storageMovers/endpoints/AzureStorageSmbFileShare.storageAccountResourceId": "properties.storageAccountResourceId",
+      "Microsoft.StorageMover/storageMovers/endpoints/description": "properties.description",
+      "Microsoft.StorageMover/storageMovers/endpoints/endpointType": "properties.endpointType",
+      "Microsoft.StorageMover/storageMovers/endpoints/NfsMount.export": "properties.export",
+      "Microsoft.StorageMover/storageMovers/endpoints/NfsMount.host": "properties.host",
+      "Microsoft.StorageMover/storageMovers/endpoints/NfsMount.nfsVersion": "properties.nfsVersion",
+      "Microsoft.StorageMover/storageMovers/endpoints/provisioningState": "properties.provisioningState",
+      "Microsoft.StorageMover/storageMovers/endpoints/SmbMount.credentials": "properties.credentials",
+      "Microsoft.StorageMover/storageMovers/endpoints/SmbMount.credentials.AzureKeyVaultSmb": "properties.credentials",
+      "Microsoft.StorageMover/storageMovers/endpoints/SmbMount.credentials.AzureKeyVaultSmb.passwordUri": "properties.credentials.passwordUri",
+      "Microsoft.StorageMover/storageMovers/endpoints/SmbMount.credentials.AzureKeyVaultSmb.usernameUri": "properties.credentials.usernameUri",
+      "Microsoft.StorageMover/storageMovers/endpoints/SmbMount.credentials.passwordUri": "properties.credentials.passwordUri",
+      "Microsoft.StorageMover/storageMovers/endpoints/SmbMount.credentials.type": "properties.credentials.type",
+      "Microsoft.StorageMover/storageMovers/endpoints/SmbMount.credentials.usernameUri": "properties.credentials.usernameUri",
+      "Microsoft.StorageMover/storageMovers/endpoints/SmbMount.host": "properties.host",
+      "Microsoft.StorageMover/storageMovers/endpoints/SmbMount.shareName": "properties.shareName"
+    },
     "resourceType": "storageMovers/endpoints",
     "apiVersions": [
       "2023-10-01",
@@ -86,13 +130,18 @@
     "locations": [
       "East US",
       "East US 2",
+      "North Europe",
       "Sweden Central",
+      "West Central US",
       "West US 3"
     ],
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.StorageMover/storageMovers/projects/description": "properties.description",
+      "Microsoft.StorageMover/storageMovers/projects/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "storageMovers/projects",
     "apiVersions": [
       "2023-10-01",
@@ -103,13 +152,30 @@
     "locations": [
       "East US",
       "East US 2",
+      "North Europe",
       "Sweden Central",
+      "West Central US",
       "West US 3"
     ],
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/agentName": "properties.agentName",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/agentResourceId": "properties.agentResourceId",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/copyMode": "properties.copyMode",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/description": "properties.description",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/latestJobRunName": "properties.latestJobRunName",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/latestJobRunResourceId": "properties.latestJobRunResourceId",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/latestJobRunStatus": "properties.latestJobRunStatus",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/provisioningState": "properties.provisioningState",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/sourceName": "properties.sourceName",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/sourceResourceId": "properties.sourceResourceId",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/sourceSubpath": "properties.sourceSubpath",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/targetName": "properties.targetName",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/targetResourceId": "properties.targetResourceId",
+      "Microsoft.StorageMover/storageMovers/projects/jobDefinitions/targetSubpath": "properties.targetSubpath"
+    },
     "resourceType": "storageMovers/projects/jobDefinitions",
     "apiVersions": [
       "2023-10-01",
@@ -120,7 +186,9 @@
     "locations": [
       "East US",
       "East US 2",
+      "North Europe",
       "Sweden Central",
+      "West Central US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -137,7 +205,9 @@
     "locations": [
       "East US",
       "East US 2",
+      "North Europe",
       "Sweden Central",
+      "West Central US",
       "West US 3"
     ],
     "zoneMappings": []

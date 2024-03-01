@@ -25,6 +25,7 @@
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Poland Central",
       "Qatar Central",
       "South Central US",
       "South India",
@@ -245,6 +246,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -347,6 +349,14 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
         "zones": [
           "1",
           "2",
@@ -710,6 +720,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -774,6 +785,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -836,6 +848,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -896,6 +909,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -965,6 +979,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",
@@ -1648,6 +1663,7 @@
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Poland Central",
       "Qatar Central",
       "South Central US",
       "South India",

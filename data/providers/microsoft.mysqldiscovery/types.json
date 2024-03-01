@@ -18,7 +18,69 @@
     ],
     "locations": [
       "Central US EUAP",
-      "East US 2 EUAP"
+      "East US 2 EUAP",
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "MySQLSites",
+    "apiVersions": [
+      "2023-09-30-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "MySQLSites/ErrorSummaries",
+    "apiVersions": [
+      "2023-09-30-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "MySQLSites/MySQLServers",
+    "apiVersions": [
+      "2023-09-30-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "MySQLSites/Refresh",
+    "apiVersions": [
+      "2023-09-30-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "MySQLSites/Summaries",
+    "apiVersions": [
+      "2023-09-30-preview"
+    ],
+    "locations": [
+      "Korea Central",
+      "Southeast Asia"
     ],
     "zoneMappings": []
   },

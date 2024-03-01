@@ -23,6 +23,7 @@
     },
     "resourceType": "addresses",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
@@ -38,6 +39,7 @@
     "aliases": null,
     "resourceType": "listConfigurations",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
@@ -53,6 +55,7 @@
     "aliases": null,
     "resourceType": "listProductFamilies",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
@@ -68,6 +71,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
@@ -177,6 +181,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
@@ -192,6 +197,7 @@
     "aliases": null,
     "resourceType": "locations/orders",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
@@ -207,6 +213,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
@@ -350,6 +357,7 @@
     },
     "resourceType": "orderItems",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
@@ -365,6 +373,7 @@
     "aliases": null,
     "resourceType": "orders",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"
@@ -380,6 +389,7 @@
     "aliases": null,
     "resourceType": "productFamiliesMetadata",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01-preview",
       "2022-05-01-preview",
       "2021-12-01"

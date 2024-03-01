@@ -3,6 +3,10 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-10-01-preview",
+      "2023-09-01",
+      "2023-01-01-preview",
+      "2020-01-01-preview",
       "2017-04-01",
       "2016-03-01",
       "2014-09-01"
@@ -22,6 +26,8 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "JIO India West",
@@ -36,6 +42,8 @@
       "South India",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Central US",
@@ -51,6 +59,7 @@
     "aliases": null,
     "resourceType": "checkNamespaceAvailability",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-09-01",
       "2023-01-01-preview",
       "2020-01-01-preview",
@@ -128,6 +137,7 @@
     },
     "resourceType": "namespaces",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-09-01",
       "2023-01-01-preview",
       "2020-01-01-preview",
@@ -230,6 +240,7 @@
     },
     "resourceType": "namespaces/notificationHubs",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-09-01",
       "2023-01-01-preview",
       "2020-01-01-preview",
@@ -283,6 +294,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-09-01",
       "2023-01-01-preview",
       "2020-01-01-preview",

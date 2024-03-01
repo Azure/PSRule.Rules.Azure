@@ -79,7 +79,6 @@
     "resourceType": "actiongroups",
     "apiVersions": [
       "2023-08-01-preview",
-      "2023-05-01",
       "2023-01-01",
       "2022-06-01",
       "2022-04-01",
@@ -92,12 +91,17 @@
       "2017-03-01-preview"
     ],
     "locations": [
+      "Central India",
+      "East US",
       "East US 2",
       "Germany West Central",
       "Global",
       "North Central US",
       "South Central US",
-      "Sweden Central"
+      "South India",
+      "Sweden Central",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -138,7 +142,9 @@
       "2017-03-01-preview"
     ],
     "locations": [
-      "Global"
+      "Global",
+      "North Europe",
+      "West Europe"
     ],
     "zoneMappings": []
   },
@@ -2160,7 +2166,6 @@
     "resourceType": "createnotifications",
     "apiVersions": [
       "2023-05-01-preview",
-      "2023-05-01",
       "2023-01-01",
       "2022-06-01",
       "2022-04-01",
@@ -3112,6 +3117,7 @@
     "aliases": null,
     "resourceType": "metricDefinitions",
     "apiVersions": [
+      "2024-02-01",
       "2023-10-01",
       "2022-04-01-preview",
       "2021-05-01",
@@ -3176,6 +3182,8 @@
     "aliases": null,
     "resourceType": "metricNamespaces",
     "apiVersions": [
+      "2024-02-01",
+      "2023-10-01",
       "2017-12-01-preview"
     ],
     "locations": [
@@ -3234,6 +3242,7 @@
     "aliases": null,
     "resourceType": "metrics",
     "apiVersions": [
+      "2024-02-01",
       "2023-10-01",
       "2021-05-01",
       "2019-07-01",
@@ -3411,7 +3420,6 @@
     "resourceType": "notificationstatus",
     "apiVersions": [
       "2023-05-01-preview",
-      "2023-05-01",
       "2023-01-01",
       "2022-06-01",
       "2022-04-01",

@@ -51,75 +51,10 @@
     "aliases": null,
     "resourceType": "edgeSites",
     "apiVersions": [
+      "2024-03-01-preview",
       "2022-06-01-preview",
       "2021-04-04-preview"
     ],
-    "locations": [
-      "Brazil South",
-      "South Africa North",
-      "Southeast Asia"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "globalCommunicationsSites",
-    "apiVersions": [
-      "2022-06-01-preview",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "Brazil South",
-      "South Africa North",
-      "Southeast Asia"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "groundStations",
-    "apiVersions": [
-      "2022-06-01-preview",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "Brazil South",
-      "South Africa North",
-      "Southeast Asia"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "l2Connections",
-    "apiVersions": [
-      "2022-06-01-preview",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "Brazil South",
-      "South Africa North",
-      "Southeast Asia"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "l3Connections",
-    "apiVersions": [
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "Brazil South",
-      "South Africa North",
-      "Southeast Asia"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations",
-    "apiVersions": [],
     "locations": [
       "Australia East",
       "Brazil South",
@@ -138,8 +73,102 @@
   },
   {
     "aliases": null,
+    "resourceType": "globalCommunicationsSites",
+    "apiVersions": [
+      "2024-03-01-preview",
+      "2022-06-01-preview",
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "groundStations",
+    "apiVersions": [
+      "2024-03-01-preview",
+      "2022-06-01-preview",
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "l2Connections",
+    "apiVersions": [
+      "2024-03-01-preview",
+      "2022-06-01-preview",
+      "2021-04-04-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "global",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-03-01-preview",
       "2022-11-01",
       "2022-06-01-preview",
       "2022-03-01"
@@ -157,6 +186,20 @@
       "West US",
       "West US 2",
       "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2024-01-31-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Central US",
+      "UK South",
+      "West Europe"
     ],
     "zoneMappings": []
   },
@@ -182,19 +225,6 @@
       "West US",
       "West US 2",
       "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "orbitalGateways",
-    "apiVersions": [
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "Brazil South",
-      "South Africa North",
-      "Southeast Asia"
     ],
     "zoneMappings": []
   },

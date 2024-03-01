@@ -1,19 +1,27 @@
 [
   {
     "aliases": null,
-    "resourceType": "Gateways",
+    "resourceType": "gateways",
     "apiVersions": [
+      "2024-01-15-preview",
+      "2024-01-01-preview",
+      "2023-12-15-preview",
       "2023-11-01-preview"
     ],
     "locations": [
-      "East US"
+      "Brazil South",
+      "East US",
+      "Germany West Central"
     ],
     "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "Locations",
+    "resourceType": "locations",
     "apiVersions": [
+      "2024-01-15-preview",
+      "2024-01-01-preview",
+      "2023-12-15-preview",
       "2023-11-01-preview"
     ],
     "locations": [],
@@ -21,19 +29,26 @@
   },
   {
     "aliases": null,
-    "resourceType": "Locations/OperationStatuses",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-01-15-preview",
+      "2024-01-01-preview",
+      "2023-12-15-preview",
       "2023-11-01-preview"
     ],
     "locations": [
-      "East US"
+      "Brazil South",
+      "East US",
+      "Germany West Central"
     ],
     "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "OpenApiGatewayOfferings",
+    "resourceType": "openApiGatewayOfferings",
     "apiVersions": [
+      "2024-01-01-preview",
+      "2023-12-15-preview",
       "2023-11-01-preview"
     ],
     "locations": [
@@ -43,8 +58,10 @@
   },
   {
     "aliases": null,
-    "resourceType": "OpenApiGateways",
+    "resourceType": "openApiGateways",
     "apiVersions": [
+      "2024-01-01-preview",
+      "2023-12-15-preview",
       "2023-11-01-preview"
     ],
     "locations": [
@@ -54,11 +71,66 @@
   },
   {
     "aliases": null,
-    "resourceType": "Operations",
+    "resourceType": "operations",
     "apiVersions": [
+      "2024-01-15-preview",
+      "2024-01-01-preview",
+      "2023-12-15-preview",
       "2023-11-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operatorApiConnections",
+    "apiVersions": [
+      "2024-01-15-preview"
+    ],
+    "locations": [
+      "Brazil South",
+      "East US",
+      "Germany West Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operatorApiPlans",
+    "apiVersions": [
+      "2024-01-15-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "OperatorConnections",
+    "apiVersions": [
+      "2024-01-01-preview",
+      "2023-12-15-preview",
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "Brazil South",
+      "East US",
+      "Germany West Central"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "OperatorOfferings",
+    "apiVersions": [
+      "2024-01-01-preview",
+      "2023-12-15-preview",
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": []
   }
 ]

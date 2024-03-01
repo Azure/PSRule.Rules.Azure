@@ -47,6 +47,7 @@
     },
     "resourceType": "dashboards",
     "apiVersions": [
+      "2022-12-01-preview",
       "2020-09-01-preview",
       "2020-09-01-alpha",
       "2019-01-01-preview",

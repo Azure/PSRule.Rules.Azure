@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "experiments",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-01",
       "2023-10-27-preview",
       "2023-09-01-preview",
@@ -33,6 +34,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-01",
       "2023-10-27-preview",
       "2023-09-01-preview",
@@ -49,6 +51,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-01-01",
+      "2023-12-01-preview",
       "2023-11-01",
       "2023-10-27-preview",
       "2023-09-01-preview"
@@ -78,6 +82,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-01-01",
+      "2023-12-01-preview",
       "2023-11-01",
       "2023-10-27-preview",
       "2023-09-01-preview"
@@ -107,6 +113,7 @@
     "aliases": null,
     "resourceType": "locations/targetTypes",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-01",
       "2023-10-27-preview",
       "2023-09-01-preview",
@@ -141,6 +148,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-01",
       "2023-10-27-preview",
       "2023-09-01-preview",
@@ -187,6 +195,7 @@
     "aliases": null,
     "resourceType": "targets",
     "apiVersions": [
+      "2024-01-01",
       "2023-11-01",
       "2023-10-27-preview",
       "2023-09-01-preview",

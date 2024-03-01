@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -86,6 +87,7 @@
     },
     "resourceType": "instancePools",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -203,6 +205,7 @@
     "aliases": null,
     "resourceType": "locations/administratorAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -270,6 +273,7 @@
     "aliases": null,
     "resourceType": "locations/administratorOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -337,6 +341,7 @@
     "aliases": null,
     "resourceType": "locations/advancedThreatProtectionAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -394,6 +399,7 @@
     "aliases": null,
     "resourceType": "locations/advancedThreatProtectionOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -451,6 +457,7 @@
     "aliases": null,
     "resourceType": "locations/auditingSettingsAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -518,6 +525,7 @@
     "aliases": null,
     "resourceType": "locations/auditingSettingsOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -585,6 +593,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -655,8 +664,111 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/changeLongTermRetentionBackupAccessTierAzureAsyncOperation",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/changeLongTermRetentionBackupAccessTierOperationResults",
+    "apiVersions": [
+      "2023-08-01-preview",
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/connectionPoliciesAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -725,6 +837,7 @@
     "aliases": null,
     "resourceType": "locations/connectionPoliciesOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -793,6 +906,7 @@
     "aliases": null,
     "resourceType": "locations/databaseAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -860,6 +974,7 @@
     "aliases": null,
     "resourceType": "locations/databaseEncryptionProtectorRevalidateAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -917,6 +1032,7 @@
     "aliases": null,
     "resourceType": "locations/databaseEncryptionProtectorRevalidateOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -974,6 +1090,7 @@
     "aliases": null,
     "resourceType": "locations/databaseEncryptionProtectorRevertAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1029,6 +1146,7 @@
     "aliases": null,
     "resourceType": "locations/databaseEncryptionProtectorRevertOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1084,6 +1202,7 @@
     "aliases": null,
     "resourceType": "locations/databaseOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1151,6 +1270,7 @@
     "aliases": null,
     "resourceType": "locations/databaseRestoreAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1218,6 +1338,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1287,6 +1408,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnetsAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1356,6 +1478,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnetsOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1425,6 +1548,7 @@
     "aliases": null,
     "resourceType": "locations/devOpsAuditingSettingsAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1488,6 +1612,7 @@
     "aliases": null,
     "resourceType": "locations/devOpsAuditingSettingsOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1551,6 +1676,7 @@
     "aliases": null,
     "resourceType": "locations/distributedAvailabilityGroupsAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1610,6 +1736,7 @@
     "aliases": null,
     "resourceType": "locations/distributedAvailabilityGroupsOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1669,6 +1796,7 @@
     "aliases": null,
     "resourceType": "locations/dnsAliasAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1736,6 +1864,7 @@
     "aliases": null,
     "resourceType": "locations/dnsAliasOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1803,6 +1932,7 @@
     "aliases": null,
     "resourceType": "locations/elasticPoolAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1872,6 +2002,7 @@
     "aliases": null,
     "resourceType": "locations/elasticPoolOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -1941,6 +2072,7 @@
     "aliases": null,
     "resourceType": "locations/encryptionProtectorAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2009,6 +2141,7 @@
     "aliases": null,
     "resourceType": "locations/encryptionProtectorOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2077,6 +2210,7 @@
     "aliases": null,
     "resourceType": "locations/extendedAuditingSettingsAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2144,6 +2278,7 @@
     "aliases": null,
     "resourceType": "locations/extendedAuditingSettingsOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2211,6 +2346,7 @@
     "aliases": null,
     "resourceType": "locations/externalPolicyBasedAuthorizationsAzureAsycOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2268,6 +2404,7 @@
     "aliases": null,
     "resourceType": "locations/externalPolicyBasedAuthorizationsOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2325,6 +2462,7 @@
     "aliases": null,
     "resourceType": "locations/failoverGroupAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2393,6 +2531,7 @@
     "aliases": null,
     "resourceType": "locations/failoverGroupOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2461,6 +2600,7 @@
     "aliases": null,
     "resourceType": "locations/firewallRulesAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2529,6 +2669,7 @@
     "aliases": null,
     "resourceType": "locations/firewallRulesOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2597,6 +2738,7 @@
     "aliases": null,
     "resourceType": "locations/importExportAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2661,6 +2803,7 @@
     "aliases": null,
     "resourceType": "locations/importExportOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2725,6 +2868,7 @@
     "aliases": null,
     "resourceType": "locations/instanceFailoverGroupAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2791,6 +2935,7 @@
     "aliases": null,
     "resourceType": "locations/instanceFailoverGroupOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2874,6 +3019,7 @@
     },
     "resourceType": "locations/instanceFailoverGroups",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -2940,6 +3086,7 @@
     "aliases": null,
     "resourceType": "locations/instancePoolAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3005,6 +3152,7 @@
     "aliases": null,
     "resourceType": "locations/instancePoolOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3070,6 +3218,7 @@
     "aliases": null,
     "resourceType": "locations/ipv6FirewallRulesAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3127,6 +3276,7 @@
     "aliases": null,
     "resourceType": "locations/ipv6FirewallRulesOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3184,6 +3334,7 @@
     "aliases": null,
     "resourceType": "locations/jobAgentAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3251,6 +3402,7 @@
     "aliases": null,
     "resourceType": "locations/jobAgentOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3318,6 +3470,7 @@
     "aliases": null,
     "resourceType": "locations/jobAgentPrivateEndpointAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview"
     ],
     "locations": [
@@ -3368,6 +3521,7 @@
     "aliases": null,
     "resourceType": "locations/jobAgentPrivateEndpointOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview"
     ],
     "locations": [
@@ -3418,6 +3572,7 @@
     "aliases": null,
     "resourceType": "locations/ledgerDigestUploadsAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3478,6 +3633,7 @@
     "aliases": null,
     "resourceType": "locations/ledgerDigestUploadsOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3538,6 +3694,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionBackupAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3605,6 +3762,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionBackupOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3672,6 +3830,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionBackups",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3739,6 +3898,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionManagedInstanceBackupAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3804,6 +3964,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionManagedInstanceBackupOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3869,6 +4030,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionManagedInstanceBackups",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3934,6 +4096,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionManagedInstances",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -3999,6 +4162,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionPolicyAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4066,6 +4230,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionPolicyOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4133,6 +4298,7 @@
     "aliases": null,
     "resourceType": "locations/longTermRetentionServers",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4200,6 +4366,7 @@
     "aliases": null,
     "resourceType": "locations/managedDatabaseAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4267,6 +4434,7 @@
     "aliases": null,
     "resourceType": "locations/managedDatabaseCompleteRestoreAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4332,6 +4500,7 @@
     "aliases": null,
     "resourceType": "locations/managedDatabaseCompleteRestoreOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4397,6 +4566,7 @@
     "aliases": null,
     "resourceType": "locations/managedDatabaseMoveAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4457,6 +4627,7 @@
     "aliases": null,
     "resourceType": "locations/managedDatabaseMoveOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4517,6 +4688,7 @@
     "aliases": null,
     "resourceType": "locations/managedDatabaseOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4584,6 +4756,7 @@
     "aliases": null,
     "resourceType": "locations/managedDatabaseRestoreAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4651,6 +4824,7 @@
     "aliases": null,
     "resourceType": "locations/managedDatabaseRestoreOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4718,6 +4892,7 @@
     "aliases": null,
     "resourceType": "locations/managedDnsAliasAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4775,6 +4950,7 @@
     "aliases": null,
     "resourceType": "locations/managedDnsAliasOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4832,6 +5008,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceAdvancedThreatProtectionAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4887,6 +5064,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceAdvancedThreatProtectionOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -4942,6 +5120,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5010,6 +5189,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceDtcAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5065,6 +5245,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceEncryptionProtectorAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5131,6 +5312,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceEncryptionProtectorOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5197,6 +5379,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceKeyAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5263,6 +5446,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceKeyOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5329,6 +5513,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceLongTermRetentionPolicyAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5394,6 +5579,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceLongTermRetentionPolicyOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5459,6 +5645,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5527,6 +5714,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstancePrivateEndpointConnectionAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5591,6 +5779,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstancePrivateEndpointConnectionOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5655,6 +5844,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstancePrivateEndpointConnectionProxyAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5719,6 +5909,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstancePrivateEndpointConnectionProxyOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5783,6 +5974,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceTdeCertAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5849,6 +6041,7 @@
     "aliases": null,
     "resourceType": "locations/managedInstanceTdeCertOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5915,6 +6108,7 @@
     "aliases": null,
     "resourceType": "locations/managedLedgerDigestUploadsAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -5968,6 +6162,7 @@
     "aliases": null,
     "resourceType": "locations/managedLedgerDigestUploadsOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6021,6 +6216,7 @@
     "aliases": null,
     "resourceType": "locations/managedServerSecurityAlertPoliciesAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6088,6 +6284,7 @@
     "aliases": null,
     "resourceType": "locations/managedServerSecurityAlertPoliciesOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6155,6 +6352,7 @@
     "aliases": null,
     "resourceType": "locations/managedShortTermRetentionPolicyAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6222,6 +6420,7 @@
     "aliases": null,
     "resourceType": "locations/managedShortTermRetentionPolicyOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6289,6 +6488,7 @@
     "aliases": null,
     "resourceType": "locations/managedtransparentDataEncryptionAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6353,6 +6553,7 @@
     "aliases": null,
     "resourceType": "locations/managedtransparentDataEncryptionOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6417,6 +6618,7 @@
     "aliases": null,
     "resourceType": "locations/notifyAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6485,6 +6687,7 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6556,6 +6759,7 @@
     "aliases": null,
     "resourceType": "locations/outboundFirewallRulesAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6616,6 +6820,7 @@
     "aliases": null,
     "resourceType": "locations/outboundFirewallRulesOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6676,6 +6881,7 @@
     "aliases": null,
     "resourceType": "locations/privateEndpointConnectionAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6741,6 +6947,7 @@
     "aliases": null,
     "resourceType": "locations/privateEndpointConnectionOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6806,6 +7013,7 @@
     "aliases": null,
     "resourceType": "locations/privateEndpointConnectionProxyAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6871,6 +7079,7 @@
     "aliases": null,
     "resourceType": "locations/privateEndpointConnectionProxyOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6936,6 +7145,7 @@
     "aliases": null,
     "resourceType": "locations/refreshExternalGovernanceStatusAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -6989,6 +7199,7 @@
     "aliases": null,
     "resourceType": "locations/refreshExternalGovernanceStatusMIAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview"
     ],
@@ -7040,6 +7251,7 @@
     "aliases": null,
     "resourceType": "locations/refreshExternalGovernanceStatusMIOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview"
     ],
@@ -7091,6 +7303,7 @@
     "aliases": null,
     "resourceType": "locations/refreshExternalGovernanceStatusOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7144,6 +7357,7 @@
     "aliases": null,
     "resourceType": "locations/replicationLinksAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7212,6 +7426,7 @@
     "aliases": null,
     "resourceType": "locations/replicationLinksOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7280,6 +7495,7 @@
     "aliases": null,
     "resourceType": "locations/securityAlertPoliciesAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7347,6 +7563,7 @@
     "aliases": null,
     "resourceType": "locations/securityAlertPoliciesOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7414,6 +7631,7 @@
     "aliases": null,
     "resourceType": "locations/serverAdministratorAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7479,6 +7697,7 @@
     "aliases": null,
     "resourceType": "locations/serverAdministratorOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7544,6 +7763,7 @@
     "aliases": null,
     "resourceType": "locations/serverAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7612,6 +7832,7 @@
     "aliases": null,
     "resourceType": "locations/serverConfigurationOptionAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7665,6 +7886,7 @@
     "aliases": null,
     "resourceType": "locations/serverKeyAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7733,6 +7955,7 @@
     "aliases": null,
     "resourceType": "locations/serverKeyOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7801,6 +8024,7 @@
     "aliases": null,
     "resourceType": "locations/serverOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7869,6 +8093,7 @@
     "aliases": null,
     "resourceType": "locations/serverTrustCertificatesAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7928,6 +8153,7 @@
     "aliases": null,
     "resourceType": "locations/serverTrustCertificatesOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -7987,6 +8213,7 @@
     "aliases": null,
     "resourceType": "locations/serverTrustGroupAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8050,6 +8277,7 @@
     "aliases": null,
     "resourceType": "locations/serverTrustGroupOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8119,6 +8347,7 @@
     },
     "resourceType": "locations/serverTrustGroups",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8182,6 +8411,7 @@
     "aliases": null,
     "resourceType": "locations/shortTermRetentionPolicyAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8248,6 +8478,7 @@
     "aliases": null,
     "resourceType": "locations/shortTermRetentionPolicyOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8314,6 +8545,7 @@
     "aliases": null,
     "resourceType": "locations/sqlVulnerabilityAssessmentAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8369,6 +8601,7 @@
     "aliases": null,
     "resourceType": "locations/sqlVulnerabilityAssessmentOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8424,6 +8657,7 @@
     "aliases": null,
     "resourceType": "locations/startManagedInstanceAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8483,6 +8717,7 @@
     "aliases": null,
     "resourceType": "locations/startManagedInstanceOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8542,6 +8777,7 @@
     "aliases": null,
     "resourceType": "locations/stopManagedInstanceAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8601,6 +8837,7 @@
     "aliases": null,
     "resourceType": "locations/stopManagedInstanceOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8660,6 +8897,7 @@
     "aliases": null,
     "resourceType": "locations/syncAgentOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8728,6 +8966,7 @@
     "aliases": null,
     "resourceType": "locations/syncDatabaseIds",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8796,6 +9035,7 @@
     "aliases": null,
     "resourceType": "locations/syncGroupAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8864,6 +9104,7 @@
     "aliases": null,
     "resourceType": "locations/syncGroupOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -8932,6 +9173,7 @@
     "aliases": null,
     "resourceType": "locations/syncMemberOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9000,6 +9242,7 @@
     "aliases": null,
     "resourceType": "locations/tdeCertAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9066,6 +9309,7 @@
     "aliases": null,
     "resourceType": "locations/tdeCertOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9132,6 +9376,7 @@
     "aliases": null,
     "resourceType": "locations/transparentDataEncryptionAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9196,6 +9441,7 @@
     "aliases": null,
     "resourceType": "locations/transparentDataEncryptionOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9260,6 +9506,7 @@
     "aliases": null,
     "resourceType": "locations/updateManagedInstanceDnsServersAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9314,6 +9561,7 @@
     "aliases": null,
     "resourceType": "locations/updateManagedInstanceDnsServersOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9368,6 +9616,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9438,6 +9687,7 @@
     "aliases": null,
     "resourceType": "locations/virtualClusterAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9506,6 +9756,7 @@
     "aliases": null,
     "resourceType": "locations/virtualClusterOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9574,6 +9825,7 @@
     "aliases": null,
     "resourceType": "locations/virtualNetworkRulesAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9643,6 +9895,7 @@
     "aliases": null,
     "resourceType": "locations/virtualNetworkRulesOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9712,6 +9965,7 @@
     "aliases": null,
     "resourceType": "locations/vulnerabilityAssessmentScanAzureAsyncOperation",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9778,6 +10032,7 @@
     "aliases": null,
     "resourceType": "locations/vulnerabilityAssessmentScanOperationResults",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9911,6 +10166,7 @@
     },
     "resourceType": "managedInstances",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -9988,6 +10244,7 @@
     },
     "resourceType": "managedInstances/administrators",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10058,6 +10315,7 @@
     },
     "resourceType": "managedInstances/advancedThreatProtectionSettings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10136,6 +10394,7 @@
     },
     "resourceType": "managedInstances/databases",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10206,6 +10465,7 @@
     },
     "resourceType": "managedInstances/databases/advancedThreatProtectionSettings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10271,6 +10531,7 @@
     },
     "resourceType": "managedInstances/databases/backupLongTermRetentionPolicies",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10339,6 +10600,7 @@
     },
     "resourceType": "managedInstances/databases/ledgerDigestUploads",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10415,6 +10677,7 @@
     },
     "resourceType": "managedInstances/databases/vulnerabilityAssessments",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10482,6 +10745,7 @@
     "aliases": null,
     "resourceType": "managedInstances/dnsAliases",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10539,6 +10803,7 @@
     "aliases": null,
     "resourceType": "managedInstances/metricDefinitions",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10606,6 +10871,7 @@
     "aliases": null,
     "resourceType": "managedInstances/metrics",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10673,6 +10939,7 @@
     "aliases": null,
     "resourceType": "managedInstances/recoverableDatabases",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10739,6 +11006,7 @@
     "aliases": null,
     "resourceType": "managedInstances/sqlAgent",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10816,6 +11084,7 @@
     },
     "resourceType": "managedInstances/startStopSchedules",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10875,6 +11144,7 @@
     "aliases": null,
     "resourceType": "managedInstances/tdeCertificates",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -10958,6 +11228,7 @@
     },
     "resourceType": "managedInstances/vulnerabilityAssessments",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -11023,6 +11294,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -11133,6 +11405,7 @@
     },
     "resourceType": "servers",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -11267,6 +11540,7 @@
     },
     "resourceType": "servers/administrators",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -11338,6 +11612,7 @@
     },
     "resourceType": "servers/advancedThreatProtectionSettings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -11458,6 +11733,7 @@
     },
     "resourceType": "servers/advisors",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -11605,6 +11881,7 @@
     },
     "resourceType": "servers/auditingSettings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -11681,6 +11958,7 @@
     },
     "resourceType": "servers/automaticTuning",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -11806,6 +12084,7 @@
     },
     "resourceType": "servers/connectionPolicies",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12013,6 +12292,7 @@
     },
     "resourceType": "servers/databases",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12321,6 +12601,7 @@
     },
     "resourceType": "servers/databases/advancedThreatProtectionSettings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12441,6 +12722,7 @@
     },
     "resourceType": "servers/databases/advisors",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12535,6 +12817,7 @@
     },
     "resourceType": "servers/databases/auditingSettings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12603,6 +12886,7 @@
     "aliases": null,
     "resourceType": "servers/databases/auditRecords",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12679,6 +12963,7 @@
     },
     "resourceType": "servers/databases/automaticTuning",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12745,6 +13030,7 @@
   },
   {
     "aliases": {
+      "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/backupStorageAccessTier": "properties.backupStorageAccessTier",
       "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/default.monthlyRetention": "properties.monthlyRetention",
       "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/Default.recoveryServicesBackupPolicyResourceId": "properties.recoveryServicesBackupPolicyResourceId",
       "Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies/Default.state": "properties.state",
@@ -12761,6 +13047,7 @@
     },
     "resourceType": "servers/databases/backupLongTermRetentionPolicies",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12833,6 +13120,7 @@
     },
     "resourceType": "servers/databases/backupShortTermRetentionPolicies",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12908,6 +13196,7 @@
     },
     "resourceType": "servers/databases/dataMaskingPolicies",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -12979,6 +13268,7 @@
     "aliases": null,
     "resourceType": "servers/databases/dataMaskingPolicies/rules",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -13107,6 +13397,7 @@
     },
     "resourceType": "servers/databases/geoBackupPolicies",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -13181,6 +13472,7 @@
     },
     "resourceType": "servers/databases/ledgerDigestUploads",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -13345,6 +13637,7 @@
     "aliases": null,
     "resourceType": "servers/databases/recommendedSensitivityLabels",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -13438,6 +13731,7 @@
     },
     "resourceType": "servers/databases/securityAlertPolicies",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -13506,6 +13800,7 @@
     "aliases": null,
     "resourceType": "servers/databases/sqlvulnerabilityassessments",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -13589,6 +13884,7 @@
     },
     "resourceType": "servers/databases/syncGroups",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -13670,6 +13966,7 @@
     },
     "resourceType": "servers/databases/syncGroups/syncMembers",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -13847,6 +14144,7 @@
     },
     "resourceType": "servers/databases/transparentDataEncryption",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -13915,6 +14213,7 @@
     "aliases": null,
     "resourceType": "servers/databases/VulnerabilityAssessment",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -14002,6 +14301,7 @@
     },
     "resourceType": "servers/databases/vulnerabilityAssessments",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -14069,6 +14369,7 @@
     "aliases": null,
     "resourceType": "servers/databases/VulnerabilityAssessmentScans",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -14137,6 +14438,7 @@
     "aliases": null,
     "resourceType": "servers/databases/VulnerabilityAssessmentSettings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -14212,6 +14514,7 @@
     },
     "resourceType": "servers/databases/workloadGroups",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -14335,6 +14638,7 @@
     },
     "resourceType": "servers/devOpsAuditingSettings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -14458,6 +14762,7 @@
     "aliases": null,
     "resourceType": "servers/dnsAliases",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -14525,6 +14830,7 @@
     "aliases": null,
     "resourceType": "servers/elasticPoolEstimates",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -14620,6 +14926,7 @@
     },
     "resourceType": "servers/elasticpools",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -14926,6 +15233,7 @@
     "aliases": null,
     "resourceType": "servers/elasticPools/advisors",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -15110,6 +15418,7 @@
     },
     "resourceType": "servers/encryptionProtector",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -15203,6 +15512,7 @@
     },
     "resourceType": "servers/extendedAuditingSettings",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -15287,6 +15597,7 @@
     },
     "resourceType": "servers/failoverGroups",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -15355,6 +15666,7 @@
     "aliases": null,
     "resourceType": "servers/failoverGroups/tryPlannedBeforeForcedFailover",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview"
@@ -15407,6 +15719,7 @@
     "aliases": null,
     "resourceType": "servers/import",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -15619,6 +15932,7 @@
     },
     "resourceType": "servers/jobAgents",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -15695,6 +16009,7 @@
     },
     "resourceType": "servers/jobAgents/jobs",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -15762,6 +16077,7 @@
     "aliases": null,
     "resourceType": "servers/jobAgents/jobs/executions",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -15852,6 +16168,7 @@
     },
     "resourceType": "servers/jobAgents/jobs/steps",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -15922,6 +16239,7 @@
     },
     "resourceType": "servers/jobAgents/privateEndpoints",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview"
     ],
     "locations": [
@@ -15979,6 +16297,7 @@
     },
     "resourceType": "servers/keys",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16151,6 +16470,7 @@
     "aliases": null,
     "resourceType": "servers/recoverableDatabases",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16222,6 +16542,7 @@
     "aliases": null,
     "resourceType": "servers/restorableDroppedDatabases",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16309,6 +16630,7 @@
     },
     "resourceType": "servers/securityAlertPolicies",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16431,6 +16753,7 @@
     },
     "resourceType": "servers/sqlvulnerabilityassessments",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16494,6 +16817,7 @@
     },
     "resourceType": "servers/syncAgents",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16562,6 +16886,7 @@
     "aliases": null,
     "resourceType": "servers/tdeCertificates",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16628,6 +16953,7 @@
     "aliases": null,
     "resourceType": "servers/usages",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16703,6 +17029,7 @@
     },
     "resourceType": "servers/virtualNetworkRules",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16788,6 +17115,7 @@
     },
     "resourceType": "servers/vulnerabilityAssessments",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -16860,6 +17188,7 @@
     },
     "resourceType": "virtualClusters",
     "apiVersions": [
+      "2023-08-01-preview",
       "2023-05-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview",
@@ -17443,6 +17772,14 @@
       "Microsoft.Sql/servers/jobAgents/targetGroups/members[*].type": "properties.members[*].type"
     },
     "resourceType": "servers/jobagents/targetgroups"
+  },
+  {
+    "aliases": {
+      "Microsoft.Sql/servers/networkSecurityPerimeterConfigurations/networkSecurityPerimeter.id": "properties.networkSecurityPerimeter.id",
+      "Microsoft.Sql/servers/networkSecurityPerimeterConfigurations/profile.name": "properties.profile.name",
+      "Microsoft.Sql/servers/networkSecurityPerimeterConfigurations/resourceAssociation.accessMode": "properties.resourceAssociation.accessMode"
+    },
+    "resourceType": "servers/networksecurityperimeterconfigurations"
   },
   {
     "aliases": {

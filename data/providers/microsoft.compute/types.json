@@ -23,6 +23,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -106,6 +107,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -415,6 +417,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -2469,6 +2472,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -2782,6 +2786,7 @@
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -3113,6 +3118,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -3184,6 +3190,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -3421,6 +3428,7 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-03",
       "2023-07-01",
@@ -3714,6 +3722,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -3733,6 +3742,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -3793,6 +3803,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/vmimages",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -3914,6 +3925,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -3982,6 +3994,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4057,6 +4070,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-03",
       "2023-07-01",
@@ -4136,6 +4150,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4193,6 +4208,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4262,6 +4278,7 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-03",
       "2023-07-01",
@@ -4341,6 +4358,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4402,6 +4420,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4463,6 +4482,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4537,6 +4557,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4607,6 +4628,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4677,6 +4699,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4751,6 +4774,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -4821,6 +4845,15 @@
     "zoneMappings": []
   },
   {
+    "aliases": null,
+    "resourceType": "payloadGroups",
+    "apiVersions": [
+      "2023-07-03"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.Compute/proximityPlacementGroups/availabilitySets": "properties.availabilitySets",
       "Microsoft.Compute/proximityPlacementGroups/availabilitySets[*]": "properties.availabilitySets[*]",
@@ -4864,6 +4897,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -5316,6 +5350,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -5531,6 +5566,7 @@
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -5891,6 +5927,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -6217,6 +6254,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -6557,6 +6595,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -6711,6 +6750,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -6773,6 +6813,7 @@
     "aliases": null,
     "resourceType": "virtualMachines/VMApplications",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -7173,6 +7214,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -7481,6 +7523,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/applications",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -7626,6 +7669,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -7701,6 +7745,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -7778,6 +7823,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -8128,6 +8174,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -8220,6 +8267,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",
@@ -8295,6 +8343,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2024-03-01",
       "2023-09-01",
       "2023-07-01",
       "2023-03-01",

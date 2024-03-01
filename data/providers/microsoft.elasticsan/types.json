@@ -38,14 +38,23 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central US",
+      "East Asia",
       "East US",
       "East US 2",
       "East US 2 (Stage)",
       "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea Central",
       "North Europe",
+      "South Africa North",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
       "UK South",
       "West Europe",
       "West US 2",
@@ -54,6 +63,38 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
         "zones": [
           "1",
           "2",
@@ -85,7 +126,39 @@
         ]
       },
       {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Africa North",
         "zones": [
           "1",
           "2",
@@ -110,6 +183,14 @@
       },
       {
         "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
         "zones": [
           "1",
           "2",
@@ -194,14 +275,23 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central US",
+      "East Asia",
       "East US",
       "East US 2",
       "East US 2 (Stage)",
       "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea Central",
       "North Europe",
+      "South Africa North",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
       "UK South",
       "West Europe",
       "West US 2",
@@ -210,6 +300,38 @@
     "zoneMappings": [
       {
         "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
         "zones": [
           "1",
           "2",
@@ -241,7 +363,39 @@
         ]
       },
       {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Africa North",
         "zones": [
           "1",
           "2",
@@ -266,6 +420,14 @@
       },
       {
         "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
         "zones": [
           "1",
           "2",
@@ -325,14 +487,23 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central US",
+      "East Asia",
       "East US",
       "East US 2",
       "East US 2 (Stage)",
       "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea Central",
       "North Europe",
+      "South Africa North",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
       "UK South",
       "West Europe",
       "West US 2",
@@ -350,14 +521,23 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central US",
+      "East Asia",
       "East US",
       "East US 2",
       "East US 2 (Stage)",
       "France Central",
+      "Germany West Central",
+      "Japan East",
+      "Korea Central",
       "North Europe",
+      "South Africa North",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
       "UK South",
       "West Europe",
       "West US 2",

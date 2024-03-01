@@ -84,6 +84,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-02-01",
       "2021-03-15-preview"
     ],
@@ -94,6 +95,7 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-02-01",
       "2021-03-15-preview"
     ],
@@ -104,6 +106,7 @@
     "aliases": null,
     "resourceType": "quotaRequests",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-02-01",
       "2021-03-15-preview"
     ],
@@ -114,6 +117,7 @@
     "aliases": null,
     "resourceType": "quotas",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-02-01",
       "2021-03-15-preview"
     ],
@@ -124,6 +128,7 @@
     "aliases": null,
     "resourceType": "usages",
     "apiVersions": [
+      "2023-06-01-preview",
       "2023-02-01",
       "2021-03-15-preview"
     ],

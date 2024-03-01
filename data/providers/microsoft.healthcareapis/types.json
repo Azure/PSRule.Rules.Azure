@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -29,6 +30,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -78,6 +80,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -128,6 +131,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -200,6 +204,7 @@
       "Microsoft.HealthcareApis/services/corsConfiguration.origins": "properties.corsConfiguration.origins",
       "Microsoft.HealthcareApis/services/corsConfiguration.origins[*]": "properties.corsConfiguration.origins[*]",
       "Microsoft.HealthcareApis/services/cosmosDbConfiguration": "properties.cosmosDbConfiguration",
+      "Microsoft.HealthcareApis/services/cosmosDbConfiguration.crossTenantCmkApplicationId": "properties.cosmosDbConfiguration.crossTenantCmkApplicationId",
       "Microsoft.HealthcareApis/services/cosmosDbConfiguration.keyVaultKeyUri": "properties.cosmosDbConfiguration.keyVaultKeyUri",
       "Microsoft.HealthcareApis/services/cosmosDbConfiguration.offerThroughput": "properties.cosmosDbConfiguration.offerThroughput",
       "Microsoft.HealthcareApis/services/exportConfiguration": "properties.exportConfiguration",
@@ -225,6 +230,7 @@
     },
     "resourceType": "services",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -354,6 +360,7 @@
     "aliases": null,
     "resourceType": "services/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -406,6 +413,7 @@
     },
     "resourceType": "services/privateEndpointConnections",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -450,6 +458,7 @@
     "aliases": null,
     "resourceType": "services/privateLinkResources",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -546,6 +555,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -598,6 +608,10 @@
       "Microsoft.HealthcareApis/workspaces/dicomservices/corsConfiguration.methods[*]": "properties.corsConfiguration.methods[*]",
       "Microsoft.HealthcareApis/workspaces/dicomservices/corsConfiguration.origins": "properties.corsConfiguration.origins",
       "Microsoft.HealthcareApis/workspaces/dicomservices/corsConfiguration.origins[*]": "properties.corsConfiguration.origins[*]",
+      "Microsoft.HealthcareApis/workspaces/dicomservices/encryption": "properties.encryption",
+      "Microsoft.HealthcareApis/workspaces/dicomservices/encryption.customerManagedKeyEncryption": "properties.encryption.customerManagedKeyEncryption",
+      "Microsoft.HealthcareApis/workspaces/dicomservices/encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl",
+      "Microsoft.HealthcareApis/workspaces/dicomservices/eventState": "properties.eventState",
       "Microsoft.HealthcareApis/workspaces/dicomservices/privateEndpointConnections": "properties.privateEndpointConnections",
       "Microsoft.HealthcareApis/workspaces/dicomservices/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
       "Microsoft.HealthcareApis/workspaces/dicomservices/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
@@ -616,6 +630,7 @@
     },
     "resourceType": "workspaces/dicomservices",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -657,6 +672,7 @@
     "aliases": null,
     "resourceType": "workspaces/eventGridFilters",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -719,9 +735,14 @@
       "Microsoft.HealthcareApis/workspaces/fhirservices/corsConfiguration.methods[*]": "properties.corsConfiguration.methods[*]",
       "Microsoft.HealthcareApis/workspaces/fhirservices/corsConfiguration.origins": "properties.corsConfiguration.origins",
       "Microsoft.HealthcareApis/workspaces/fhirservices/corsConfiguration.origins[*]": "properties.corsConfiguration.origins[*]",
+      "Microsoft.HealthcareApis/workspaces/fhirservices/encryption": "properties.encryption",
+      "Microsoft.HealthcareApis/workspaces/fhirservices/encryption.customerManagedKeyEncryption": "properties.encryption.customerManagedKeyEncryption",
+      "Microsoft.HealthcareApis/workspaces/fhirservices/encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl": "properties.encryption.customerManagedKeyEncryption.keyEncryptionKeyUrl",
       "Microsoft.HealthcareApis/workspaces/fhirservices/eventState": "properties.eventState",
       "Microsoft.HealthcareApis/workspaces/fhirservices/exportConfiguration": "properties.exportConfiguration",
       "Microsoft.HealthcareApis/workspaces/fhirservices/exportConfiguration.storageAccountName": "properties.exportConfiguration.storageAccountName",
+      "Microsoft.HealthcareApis/workspaces/fhirservices/implementationGuidesConfiguration": "properties.implementationGuidesConfiguration",
+      "Microsoft.HealthcareApis/workspaces/fhirservices/implementationGuidesConfiguration.usCoreMissingData": "properties.implementationGuidesConfiguration.usCoreMissingData",
       "Microsoft.HealthcareApis/workspaces/fhirservices/importConfiguration": "properties.importConfiguration",
       "Microsoft.HealthcareApis/workspaces/fhirservices/importConfiguration.enabled": "properties.importConfiguration.enabled",
       "Microsoft.HealthcareApis/workspaces/fhirservices/importConfiguration.initialImportMode": "properties.importConfiguration.initialImportMode",
@@ -746,6 +767,7 @@
     },
     "resourceType": "workspaces/fhirservices",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -794,6 +816,7 @@
     },
     "resourceType": "workspaces/iotconnectors",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -840,6 +863,7 @@
     },
     "resourceType": "workspaces/iotconnectors/fhirdestinations",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -881,6 +905,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -929,6 +954,7 @@
     },
     "resourceType": "workspaces/privateEndpointConnections",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",
@@ -969,6 +995,7 @@
     "aliases": null,
     "resourceType": "workspaces/privateLinkResources",
     "apiVersions": [
+      "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
       "2023-10-15-preview",

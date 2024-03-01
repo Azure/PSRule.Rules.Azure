@@ -1,8 +1,33 @@
 [
   {
     "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2024-01-10",
+      "2023-02-08-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2024-01-10",
+      "2023-02-08-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-01-10",
+      "2023-02-08-preview",
       "2022-09-15-privatepreview",
       "2021-11-10-privatepreview"
     ],
@@ -13,6 +38,7 @@
     "aliases": null,
     "resourceType": "workspaces",
     "apiVersions": [
+      "2024-01-10",
       "2023-02-08-preview"
     ],
     "locations": [
@@ -25,7 +51,92 @@
     "aliases": null,
     "resourceType": "workspaces/firmwares",
     "apiVersions": [
+      "2024-01-10",
       "2023-02-08-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/firmwares/binaryHardeningResults",
+    "apiVersions": [
+      "2024-01-10"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/firmwares/cryptoCertificates",
+    "apiVersions": [
+      "2024-01-10"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/firmwares/cryptoKeys",
+    "apiVersions": [
+      "2024-01-10"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/firmwares/cves",
+    "apiVersions": [
+      "2024-01-10"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/firmwares/passwordHashes",
+    "apiVersions": [
+      "2024-01-10"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/firmwares/sbomComponents",
+    "apiVersions": [
+      "2024-01-10"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/firmwares/summaries",
+    "apiVersions": [
+      "2024-01-10"
     ],
     "locations": [
       "East US",
