@@ -36,7 +36,7 @@ What's changed since pre-release v1.34.0-B0047:
 
 - Engineering:
   - Updated resource providers and policy aliases.
-    [#n](https://github.com/Azure/PSRule.Rules.Azure/pull/n)
+    [#2717](https://github.com/Azure/PSRule.Rules.Azure/pull/2717)
 
 ## v1.34.0-B0047 (pre-release)
 
