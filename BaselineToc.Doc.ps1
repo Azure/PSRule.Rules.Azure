@@ -35,7 +35,7 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
     }
 }
 
-Document 'asb.baseline' -If { $PSDocs.TargetObject.Name -eq 'Azure.MCSB.v1' } {
+Document 'Azure.MCSB.Baseline' -If { $PSDocs.TargetObject.Name -eq 'Azure.MCSB.v1' } {
     $baselineName = $PSDocs.TargetObject.Name;
     $obsolete = $PSDocs.TargetObject.metadata.annotations.obsolete -eq $True;
     $experimental = $PSDocs.TargetObject.metadata.annotations.experimental -eq $True;

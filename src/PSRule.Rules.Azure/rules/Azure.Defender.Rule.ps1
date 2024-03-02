@@ -28,7 +28,7 @@ Rule 'Azure.DefenderCloud.Provisioning' -Alias 'Azure.SecurityCenter.Provisionin
 }
 
 # Synopsis: Enable Malware Scanning in Microsoft Defender for Storage.
-Rule 'Azure.Defender.Storage.MalwareScan' -Ref  'AZR-000383' -Type 'Microsoft.Security/pricings' -If { IsNotClassicStoragePlan } -Tag @{ release = 'Preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
+Rule 'Azure.Defender.Storage.MalwareScan' -Ref  'AZR-000383' -Type 'Microsoft.Security/pricings' -If { IsNotClassicStoragePlan } -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2', 'LT-1') } {
     $malwareConfigured = @($TargetObject.properties.extensions |
         Where-Object name -eq 'OnUploadMalwareScanning' |
         Where-Object isEnabled -eq 'True')
@@ -36,7 +36,7 @@ Rule 'Azure.Defender.Storage.MalwareScan' -Ref  'AZR-000383' -Type 'Microsoft.Se
 }
 
 # Synopsis: Enable sensitive data threat detection in Microsoft Defender for Storage.
-Rule 'Azure.Defender.Storage.SensitiveData' -Ref  'AZR-000385' -Type 'Microsoft.Security/pricings' -If { IsNotClassicStoragePlan } -Tag @{ release = 'Preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-2', 'LT-1' } {
+Rule 'Azure.Defender.Storage.DataScan' -Alias 'Azure.Defender.Storage.SensitiveData' -Ref 'AZR-000385' -Type 'Microsoft.Security/pricings' -If { IsNotClassicStoragePlan } -Tag @{ release = 'preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = @('DP-2', 'LT-1') } {
     $sensitiveConfigured = @($TargetObject.properties.extensions |
         Where-Object name -eq 'SensitiveDataDiscovery' |
         Where-Object isEnabled -eq 'True')

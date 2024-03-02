@@ -348,7 +348,7 @@ task Rules Dependencies, {
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Assert-PSRule @assertParams -InputPath $PWD -Module PSRule.Rules.MSFT.OSS -Format File -OutputPath reports/ps-rule-file.xml;
 
-    $rules = Get-PSRule -Module PSRule.Rules.Azure;
+    $rules = Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.All';
     $rules | Assert-PSRule @assertParams -OutputPath reports/ps-rule-file2.xml;
 }
 

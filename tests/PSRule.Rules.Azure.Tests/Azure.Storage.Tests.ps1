@@ -257,8 +257,8 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-B', 'storage-C', 'storage-D', 'storage-E', 'storage-G';
         }
 
-        It 'Azure.Storage.DefenderCloud.MalwareScan' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.DefenderCloud.MalwareScan' };
+        It 'Azure.Storage.Defender.MalwareScan' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.Defender.MalwareScan' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -273,8 +273,8 @@ Describe 'Azure.Storage' -Tag Storage {
             $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-C', 'storage-D', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
         }
 
-        It 'Azure.Storage.DefenderCloud.SensitiveData' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.DefenderCloud.SensitiveData' };
+        It 'Azure.Storage.Defender.DataScan' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.Defender.DataScan' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });

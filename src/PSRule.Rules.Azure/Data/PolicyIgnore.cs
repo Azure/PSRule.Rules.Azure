@@ -11,7 +11,7 @@ namespace PSRule.Rules.Azure.Data
     {
         public PolicyIgnoreReason Reason { get; set; }
 
-        public string Value { get; set; }
+        public List<string> Value { get; set; }
     }
 
     internal sealed class PolicyIgnoreEntry
@@ -64,11 +64,16 @@ namespace PSRule.Rules.Azure.Data
                 var entry = serializer.Deserialize<PolicyIgnoreEntry>(reader);
                 for (var i = 0; i < entry.PolicyDefinitionIds.Length; i++)
                 {
-                    result[entry.PolicyDefinitionIds[i]] = new PolicyIgnoreResult
+                    if (!result.TryGetValue(entry.PolicyDefinitionIds[i], out var ignoreResult))
                     {
-                        Reason = entry.Reason,
-                        Value = entry.Value,
-                    };
+                        ignoreResult = new PolicyIgnoreResult
+                        {
+                            Reason = entry.Reason,
+                            Value = new List<string>()
+                        };
+                        result.Add(entry.PolicyDefinitionIds[i], ignoreResult);
+                    }
+                    ignoreResult.Value.Add(entry.Value);
                 }
                 reader.Read();
             }

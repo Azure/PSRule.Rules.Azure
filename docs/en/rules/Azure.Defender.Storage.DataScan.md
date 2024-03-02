@@ -4,42 +4,43 @@ severity: Critical
 pillar: Security
 category: SE:10 Monitoring and threat detection
 resource: Microsoft Defender for Cloud
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Storage/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Storage.DataScan/
 ---
 
-# Configure Microsoft Defender for Storage to the Standard tier
+# Sensitive data threat detection
 
 ## SYNOPSIS
 
-Enable Microsoft Defender for Storage.
+Enable sensitive data threat detection in Microsoft Defender for Storage.
 
 ## DESCRIPTION
 
-Microsoft Defender for Storage provides additional security for storage accounts.
+Sensitive data threat detection is an additional security feature for Microsoft Defender for Storage.
+When enabled Defender for Storage provides alerts when sensitive data is discovered.
 
-Protection is provided by the following which allows Microsoft Defender for Cloud to discover and mitigate potential threats:
+The sensitive data threat detection capability helps teams:
 
-- Continuously analyzing data and control plane logs from protected storage accounts.
-- Malware scanning on uploaded content in near real time, leveraging Microsoft Defender Antivirus capabilities.
-- Sensitive data threat detection by a smart sampling method to find resources with sensitive data.
+- Identity where sensitive data is stored.
+- Detect possible security incidents resulting is data exposure.
 
-Security findings for on-boarded storage accounts shows up in Defender for Cloud with details of the security threats with contextual information.
+When enabling sensitive data threat detection, the sensitive data categories include built-in sensitive information types (SITs) in the default list of Microsoft Purview.
+It is possible to customize the Data Sensitivity Discovery for a organization, by creating custom sensitive information types (SITs).
 
-Defender for Storage can be enabled at the subscription level.
-This ensures all storage accounts in the subscription will be protected, including future ones.
+Sensitive data threat detection in Microsoft Defender for Storage can be enabled at the subscription level and by doing so ensures all storage accounts in the subscription will be protected, including future ones.
 
 ## RECOMMENDATION
 
-Consider using Microsoft Defender for Storage to protect your data hosted in storage accounts.
+Consider using sensitive data threat detection in Microsoft Defender for Storage for all storage accounts in the subscription.
 
 ## EXAMPLES
 
 ### Configure with Azure template
 
-To enable Defender for Storage:
+To enable sensitive data threat detection in Microsoft Defender for Storage:
 
 - Set the `properties.pricingTier` property to `Standard`.
 - Set the `properties.subPlan` property to `DefenderForStorageV2`.
+- Configure settings for the `SensitiveDataDiscovery` extension.
 
 For example:
 
@@ -70,10 +71,11 @@ For example:
 
 ### Configure with Bicep
 
-To enable Defender for Storage:
+To enable sensitive data threat detection in Microsoft Defender for Storage:
 
 - Set the `properties.pricingTier` property to `Standard`.
 - Set the `properties.subPlan` property to `DefenderForStorageV2`.
+- Configure settings for the `SensitiveDataDiscovery` extension.
 
 For example:
 
@@ -100,12 +102,6 @@ resource defenderForStorage 'Microsoft.Security/pricings@2024-01-01' = {
 }
 ```
 
-### Configure with Azure PowerShell
-
-```powershell
-Set-AzSecurityPricing -Name 'StorageAccounts' -PricingTier 'Standard' -SubPlan 'DefenderForStorageV2'
-```
-
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:
@@ -117,18 +113,21 @@ To address this issue at runtime use the following policies:
 
 ## NOTES
 
-The `DefenderForStorageV2` sub plan represents the new Defender for Storage plan which offers several new benefits that aren't included in the classic plan.
-The new plan includes more advanced capabilities that can help improve the security of the data and help prevent malicious file uploads, sensitive data exfiltration, and data corruption.
+This feature is currently in preview.
 
-Currently only the `Blob Storage`, `Azure Files` and `Azure Data Lake Storage Gen2` service is supported by Defender for Storage.
+Sensitive data threat detection is only available in the `DefenderForStorageV2` sub plan for Defender for Storage,
+which offers new features that aren't included in the classic plan.
+
+Not all services and blob types within storage accounts are currently supported.
+See limitations for more information.
 
 ## LINKS
 
 - [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
-- [Storage security guide](https://learn.microsoft.com/azure/storage/blobs/security-recommendations)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
+- [Sensitive data threat detection in Defender for Storage](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-data-sensitivity)
+- [Support and prerequisites for data-aware security posture](https://learn.microsoft.com/azure/defender-for-cloud/concept-data-security-posture-prepare)
 - [Overview of Microsoft Defender for Storage](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-introduction)
-- [Migrate from Defender for Storage (classic) to the new plan](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-classic-migrate)
 - [Enable and configure Microsoft Defender for Storage](https://learn.microsoft.com/azure/storage/common/azure-defender-storage-configure)
 - [Quickstart: Enable enhanced security features](https://learn.microsoft.com/azure/defender-for-cloud/enable-enhanced-security)
 - [Azure security baseline for Storage](https://learn.microsoft.com/security/benchmark/azure/baselines/storage-security-baseline)

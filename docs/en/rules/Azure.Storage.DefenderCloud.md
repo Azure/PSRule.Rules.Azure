@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-03-02
 severity: Critical
 pillar: Security
-category: Data protection
+category: SE:10 Monitoring and threat detection
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.DefenderCloud/
 ---
@@ -44,23 +45,26 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Security/DefenderForStorageSettings",
-    "apiVersion": "2022-12-01-preview",
-    "name": "current",
-    "properties": {
+  "type": "Microsoft.Security/defenderForStorageSettings",
+  "apiVersion": "2022-12-01-preview",
+  "scope": "[format('Microsoft.Storage/storageAccounts/{0}', parameters('name'))]",
+  "name": "current",
+  "properties": {
+    "isEnabled": true,
+    "malwareScanning": {
+      "onUpload": {
         "isEnabled": true,
-        "malwareScanning": {
-            "onUpload": {
-                "isEnabled": true,
-                "capGBPerMonth": 5000
-            }
-        },
-        "sensitiveDataDiscovery": {
-            "isEnabled": true
-        },
-        "overrideSubscriptionLevelSettings": false
+        "capGBPerMonth": 5000
+      }
     },
-    "scope": "[resourceId('Microsoft.Storage/storageAccounts', parameters('StorageAccountName'))]"
+    "sensitiveDataDiscovery": {
+      "isEnabled": true
+    },
+    "overrideSubscriptionLevelSettings": false
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+  ]
 }
 ```
 
@@ -74,7 +78,7 @@ To deploy storage accounts that pass this rule:
 For example:
 
 ```bicep
-resource defenderForStorageSettings 'Microsoft.Security/DefenderForStorageSettings@2022-12-01-preview' = {
+resource defenderForStorageSettings 'Microsoft.Security/defenderForStorageSettings@2022-12-01-preview' = {
   name: 'current'
   scope: storageAccount
   properties: {
@@ -95,21 +99,25 @@ resource defenderForStorageSettings 'Microsoft.Security/DefenderForStorageSettin
 
 ## NOTES
 
-This rule is not processed by default.
-To enable this rule, set the `AZURE_STORAGE_DEFENDER_PER_ACCOUNT` configuration value to `true`.
-
 The following limitations currently apply for Microsoft Defender for Storage:
 
-- Malware scanning and sensitive data discovery are preview features.
+- Sensitive data discovery are preview features.
 - Storage types supported are `Blob Storage`, `Azure Files` and `Azure Data Lake Storage Gen2`.
   Other storage types are not supported.
 - When Microsoft Defender is enabled at subscription and resource level, the subscription configuration will take priority.
   To override settings on a Storage Account, set the `properties.overrideSubscriptionLevelSettings` property to `true`.
 - If there is no plan at the subscription level, Microsoft Defender for Storage can be configured without an override.
 
+### Rule configuration
+
+<!-- module:config rule AZURE_STORAGE_DEFENDER_PER_ACCOUNT -->
+
+This rule is not processed by default because configuration at the subscription level is recommended.
+To enable this rule, set the `AZURE_STORAGE_DEFENDER_PER_ACCOUNT` configuration value to `true`.
+
 ## LINKS
 
-- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for Storage](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-storage-introduction)
 - [Enable and configure Microsoft Defender for Storage](https://learn.microsoft.com/azure/storage/common/azure-defender-storage-configure)

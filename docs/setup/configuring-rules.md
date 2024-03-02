@@ -703,7 +703,8 @@ configuration:
 <!-- module:version v1.27.0 -->
 <!-- module:rule Azure.Storage.DefenderCloud -->
 
-This configuration option enables validation for that each storage account is associated with a Microsoft Defender for Storage resource level plan.
+This configuration option enables validation that storage accounts are associated with a resource level Microsoft Defender for Storage plan.
+By default, this option is set to `false` because configuration at the subscription level is recommended.
 Configure this option to enable the per account validation, which defaults to `false`.
 
 Syntax:
