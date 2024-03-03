@@ -702,26 +702,29 @@ namespace PSRule.Rules.Azure.Data.Policy
             /// </summary>
             internal bool ShouldIgnorePolicyDefinition(string definitionId)
             {
-                if (!_PolicyIgnore.TryGetValue(definitionId, out var value))
+                if (!_PolicyIgnore.TryGetValue(definitionId, out var ignoreResult))
                     return false;
 
-                if (value.Reason == PolicyIgnoreReason.Configured)
+                if (ignoreResult.Reason == PolicyIgnoreReason.Configured)
                 {
                     // Policy definition has been ignored based on configuration: {0}
                     Pipeline?.Writer?.VerbosePolicyIgnoreConfigured(definitionId);
                     return true;
                 }
-                else if (value.Reason == PolicyIgnoreReason.NotApplicable)
+                else if (ignoreResult.Reason == PolicyIgnoreReason.NotApplicable)
                 {
                     // Policy definition has been ignored because it is not applicable to Infrastructure as Code: {0}
                     Pipeline?.Writer?.VerbosePolicyIgnoreNotApplicable(definitionId);
                     return true;
                 }
-                else if (value.Reason == PolicyIgnoreReason.Duplicate && !_KeepDuplicates)
+                else if (ignoreResult.Reason == PolicyIgnoreReason.Duplicate && !_KeepDuplicates)
                 {
                     // Policy definition has been ignored because a similar built-in rule already exists ({1}): {0}
-                    Pipeline?.Writer?.VerbosePolicyIgnoreDuplicate(definitionId, value.Value);
-                    _ReplacementRules.Add(string.Concat("PSRule.Rules.Azure\\", value.Value));
+                    foreach (var v in ignoreResult.Value)
+                    {
+                        Pipeline?.Writer?.VerbosePolicyIgnoreDuplicate(definitionId, v);
+                        _ReplacementRules.Add(string.Concat("PSRule.Rules.Azure\\", v));
+                    }
                     return true;
                 }
                 return false;

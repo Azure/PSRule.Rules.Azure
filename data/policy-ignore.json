@@ -142,5 +142,29 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.EventGrid.DisableLocalAuth"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/640d2586-54d2-465f-877f-9ffc1d2109f4",
+      "/providers/Microsoft.Authorization/policyDefinitions/cfdc5972-75b3-4418-8ae1-7f5c36839390"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Defender.Storage.MalwareScan"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/640d2586-54d2-465f-877f-9ffc1d2109f4",
+      "/providers/Microsoft.Authorization/policyDefinitions/cfdc5972-75b3-4418-8ae1-7f5c36839390"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Defender.Storage"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/640d2586-54d2-465f-877f-9ffc1d2109f4",
+      "/providers/Microsoft.Authorization/policyDefinitions/cfdc5972-75b3-4418-8ae1-7f5c36839390"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Defender.Storage.SensitiveData"
   }
 ]

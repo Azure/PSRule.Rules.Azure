@@ -69,7 +69,7 @@ resource config 'Microsoft.Maintenance/configurationAssignments@2022-11-01-previ
 
 ## NOTES
 
-Operating system updates with Update Managment center is a preview feature.
+Operating system updates with Update Management center is a preview feature.
 Not all operating systems are supported, check out the `LINKS` section for more information.
 Update management center doesn't support driver updates.
 

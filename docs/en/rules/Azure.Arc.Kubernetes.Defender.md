@@ -17,7 +17,7 @@ Deploy Microsoft Defender for Containers extension for Arc-enabled Kubernetes cl
 Defender for Containers relies on the Defender extension for several features.
 
 To collect and provide data plane protections of Microsoft Defender for Containers, the extension must be deployed to the Arc connected Kubernetes cluster.
-The extension will deploy some additional daemon set and deployments to the cluster. 
+The extension will deploy some additional daemon set and deployments to the cluster.
 
 ## RECOMMENDATION
 

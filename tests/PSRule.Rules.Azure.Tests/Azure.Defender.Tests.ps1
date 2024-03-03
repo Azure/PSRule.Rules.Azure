@@ -244,8 +244,8 @@ Describe 'Azure.Defender' -Tag 'MDC', 'Defender' {
             $ruleResult.TargetObject.Name | Should -BeIn 'defenderB2';
         }
 
-        It 'Azure.Defender.Storage.SensitiveData' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.Storage.SensitiveData' };
+        It 'Azure.Defender.Storage.DataScan' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.Storage.DataScan' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
