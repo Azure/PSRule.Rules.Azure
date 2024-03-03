@@ -1,5 +1,6 @@
 {
   "Azure rule with type": {
+    "scope": "yaml",
     "prefix": "rule-azure-with-type",
     "description": "Rule definition for Azure",
     "body": [

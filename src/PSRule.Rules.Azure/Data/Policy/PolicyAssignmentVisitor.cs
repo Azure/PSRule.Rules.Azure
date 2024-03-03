@@ -1001,7 +1001,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 if (condition.TryStringProperty(PROPERTY_VALUE, out var s) && s.IsExpressionString())
                 {
-                    VisitValueExpression(context, condition, s);
+                    condition = VisitValueExpression(context, condition, s);
                 }
                 else if (condition.TryStringProperty(PROPERTY_FIELD, out var field))
                 {
@@ -1248,7 +1248,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
         }
 
-        private static void VisitValueExpression(PolicyAssignmentContext context, JObject condition, string s)
+        private static JObject VisitValueExpression(PolicyAssignmentContext context, JObject condition, string s)
         {
             var tokens = ExpressionParser.Parse(s);
 
@@ -1288,7 +1288,24 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
 
             // Handle [field('string')]
-            else if (tokens.ConsumeFunction(PROPERTY_FIELD) &&
+            else if (tokens.HasFieldTokens())
+            {
+                condition = VisitFieldTokens(context, condition, tokens);
+            }
+
+            // Handle runtime token
+            else if (tokens.HasPolicyRuntimeTokens())
+            {
+                var value = VisitRuntimeTokens(context, tokens);
+                if (value != null)
+                    condition.ReplaceProperty(PROPERTY_VALUE, value);
+            }
+            return condition;
+        }
+
+        private static JObject VisitFieldTokens(PolicyAssignmentContext context, JObject condition, TokenStream tokens)
+        {
+            if (tokens.ConsumeFunction(PROPERTY_FIELD) &&
                 tokens.TryTokenType(ExpressionTokenType.GroupStart, out _) &&
                 tokens.ConsumeString(out var field) &&
                 tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _))
@@ -1302,17 +1319,68 @@ namespace PSRule.Rules.Azure.Data.Policy
                 else
                 {
                     condition.Remove(PROPERTY_VALUE);
+
+                    field = context.TryPolicyAliasPath(field, out var aliasPath) ? TrimFieldName(context, aliasPath) : field;
                     condition.Add(PROPERTY_FIELD, field);
                 }
             }
 
-            // Handle runtime token
-            else if (tokens.HasPolicyRuntimeTokens())
+            else if (tokens.ConsumeFunction("if") &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
             {
-                var value = VisitRuntimeTokens(context, tokens);
-                if (value != null)
-                    condition.ReplaceProperty(PROPERTY_VALUE, value);
+                var orginal = condition;
+
+                // Condition
+                var leftCondition = VisitFieldTokens(context, new JObject(), tokens);
+                var rightCondition = ReverseCondition(Clone(leftCondition));
+
+                var leftEvaluation = VisitFieldTokens(context, Clone(orginal), tokens);
+                var rightEvaluation = VisitFieldTokens(context, Clone(orginal), tokens);
+
+                var left = new JObject
+                {
+                    { PROPERTY_FIELD, DOT },
+                    { PROPERTY_WHERE, leftCondition },
+                    { PROPERTY_ALLOF, new JArray(new[] { leftEvaluation }) }
+                };
+
+                var right = new JObject
+                {
+                    { PROPERTY_FIELD, DOT },
+                    { PROPERTY_WHERE, rightCondition },
+                    { PROPERTY_ALLOF, new JArray(new[] { rightEvaluation }) }
+                };
+
+                var result = OrCondition(left, right);
+                condition.Replace(result);
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+                return result;
             }
+
+            else if (tokens.ConsumeFunction(PROPERTY_EQUALS) &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
+            {
+                VisitFieldTokens(context, condition, tokens);
+                if (tokens.ConsumeString(out var s))
+                {
+                    condition.Add(PROPERTY_EQUALS, s);
+                }
+
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+            }
+
+            else if (tokens.ConsumeFunction("empty") &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
+            {
+                if (condition.TryBoolProperty(PROPERTY_EQUALS, out var emptyEquals))
+                {
+                    condition.Remove(PROPERTY_EQUALS);
+                    condition.Add("hasValue", !emptyEquals.Value);
+                }
+                VisitFieldTokens(context, condition, tokens);
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+            }
+            return condition;
         }
 
         private static JObject VisitRuntimeTokens(PolicyAssignmentContext context, TokenStream tokens)
@@ -1540,6 +1608,11 @@ namespace PSRule.Rules.Azure.Data.Policy
             return condition;
         }
 
+        private static JObject Clone(JObject o)
+        {
+            return o.DeepClone() as JObject;
+        }
+
         private static JObject AlwaysFail(string effect)
         {
             return new JObject
@@ -1564,7 +1637,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// </summary>
         private static JObject DefaultEffectConditions(PolicyAssignmentContext context, JObject details)
         {
-            return AndNameCondition(details, TypeExpression(context, details));
+            return AndNameCondition(context, details, TypeExpression(context, details));
         }
 
         private static JObject TypeExpression(PolicyAssignmentContext context, JObject details)
@@ -1612,10 +1685,12 @@ namespace PSRule.Rules.Azure.Data.Policy
             return existenceCondition;
         }
 
-        private static JObject AndNameCondition(JObject details, JObject condition)
+        private static JObject AndNameCondition(PolicyAssignmentContext context, JObject details, JObject condition)
         {
             if (details == null || !details.TryStringProperty(PROPERTY_NAME, out var name))
                 return condition;
+
+            name = TemplateVisitor.ExpandString(context, name);
 
             var nameCondition = new JObject {
                 { PROPERTY_NAME, DOT },
@@ -1636,6 +1711,23 @@ namespace PSRule.Rules.Azure.Data.Policy
                 return new JObject
                 {
                     { PROPERTY_ALLOF, allOf }
+                };
+            }
+            return left == null || left.Count == 0 ? right : left;
+        }
+
+        private static JObject OrCondition(JObject left, JObject right)
+        {
+            if (left != null && left.Count > 0 && right != null && right.Count > 0)
+            {
+                var allOf = new JArray
+                {
+                    left,
+                    right
+                };
+                return new JObject
+                {
+                    { PROPERTY_ANYOF, allOf }
                 };
             }
             return left == null || left.Count == 0 ? right : left;

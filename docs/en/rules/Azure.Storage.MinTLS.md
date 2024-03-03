@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-03-04
 severity: Critical
 pillar: Security
-category: Encryption
+category: SE:07 Encryption
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.MinTLS/
 ---
@@ -87,9 +88,16 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Storage accounts should have the specified minimum TLS version](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountMinimumTLSVersion_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/fe83a0eb-a853-422d-aac2-1bffd182c5d0`
+
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
 - [TLS encryption in Azure](https://learn.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
 - [Enforce a minimum required version of Transport Layer Security (TLS) for requests to a storage account](https://learn.microsoft.com/azure/storage/common/transport-layer-security-configure-minimum-version)
 - [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/storage-security-baseline#dp-3-encrypt-sensitive-data-in-transit)

@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-04-29
+reviewed: 2024-03-04
 severity: Important
 pillar: Security
-category: Design
+category: SE:07 Encryption
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.Insecure/
 ---
@@ -98,9 +98,16 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Container Apps should only be accessible over HTTPS](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Apps/ContainerApps_EnableHTTPS_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/0e80e269-43a4-4ae9-b5bc-178126b8a5cb`
+
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Ingress in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/ingress-overview#configuration)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
+- [Ingress in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/ingress-overview)
 - [Container Apps ARM template API specification](https://learn.microsoft.com/azure/container-apps/azure-resource-manager-api-spec?tabs=arm-template)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps)

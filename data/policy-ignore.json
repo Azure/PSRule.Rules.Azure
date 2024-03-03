@@ -165,6 +165,42 @@
       "/providers/Microsoft.Authorization/policyDefinitions/cfdc5972-75b3-4418-8ae1-7f5c36839390"
     ],
     "reason": "Duplicate",
-    "value": "Azure.Defender.Storage.SensitiveData"
+    "value": "Azure.Defender.Storage.DataScan"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/0e80e269-43a4-4ae9-b5bc-178126b8a5cb"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.ContainerApp.Insecure"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/b874ab2d-72dd-47f1-8cb5-4a306478a4e7"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.ContainerApp.ManagedIdentity"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/13502221-8df0-4414-9937-de9c5c4e396b"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Storage.BlobPublicAccess"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/404c3081-a854-4457-ae30-26a93ef643f9",
+      "/providers/Microsoft.Authorization/policyDefinitions/f81e3117-0093-4b17-8a60-82363134f0eb"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Storage.SecureTransfer"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/fe83a0eb-a853-422d-aac2-1bffd182c5d0"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Storage.MinTLS"
   }
 ]
