@@ -32,6 +32,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.34.0-B0077 (pre-release)
+
 What's changed since pre-release v1.34.0-B0047:
 
 - Updated rules:
@@ -40,14 +42,14 @@ What's changed since pre-release v1.34.0-B0047:
       [#2718](https://github.com/Azure/PSRule.Rules.Azure/issues/2718)
       - Renamed `Azure.Defender.Storage.SensitiveData` to `Azure.Defender.Storage.DataScan`.
     - Promoted `Azure.Defender.Storage.MalwareScan` to GA rule set by @BernieWhite.
-      [#2590](https://github.com/Azure/PSRule.Rules.Azure/pull/2590)
+      [#2590](https://github.com/Azure/PSRule.Rules.Azure/issues/2590)
   - Storage Account:
     - Renamed rules to align with recommended naming length by @BernieWhite.
       [#2718](https://github.com/Azure/PSRule.Rules.Azure/issues/2718)
       - Renamed `Azure.Storage.DefenderCloud.MalwareScan` to `Azure.Storage.Defender.MalwareScan`.
       - Renamed `Azure.Storage.DefenderCloud.SensitiveData` to `Azure.Storage.Defender.DataScan`.
     - Promoted `Azure.Storage.Defender.MalwareScan` to GA rule set by @BernieWhite.
-      [#2590](https://github.com/Azure/PSRule.Rules.Azure/pull/2590)
+      [#2590](https://github.com/Azure/PSRule.Rules.Azure/issues/2590)
 - General improvements:
   - Added duplicate policies to default ignore list by @BernieWhite.
     [#1731](https://github.com/Azure/PSRule.Rules.Azure/issues/1731)
