@@ -1,8 +1,8 @@
 ---
-reviewed: 2022-01-20
+reviewed: 2024-03-04
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.BlobAccessType/
 ---
@@ -40,16 +40,16 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
-    "apiVersion": "2021-06-01",
-    "name": "[format('{0}/{1}/{2}', parameters('name'), 'default', variables('containerName'))]",
-    "properties": {
-        "publicAccess": "None"
-    },
-    "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('name'), 'default')]",
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
-    ]
+  "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+  "apiVersion": "2021-06-01",
+  "name": "[format('{0}/{1}/{2}', parameters('name'), 'default', variables('containerName'))]",
+  "properties": {
+    "publicAccess": "None"
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('name'), 'default')]",
+    "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+  ]
 }
 ```
 
@@ -73,8 +73,10 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
 
 ## LINKS
 
-- [Authentication with Azure AD](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication)
-- [About anonymous public read access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-configure#about-anonymous-public-read-access)
-- [Use Azure Policy to enforce authorized access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#use-azure-policy-to-enforce-authorized-access)
-- [How a shared access signature works](https://docs.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [Use Microsoft Entra ID for storage authentication](https://learn.microsoft.com/azure/security/fundamentals/identity-management-best-practices#use-microsoft-entra-id-for-storage-authentication)
+- [Configure anonymous read access for containers and blobs](https://learn.microsoft.com/azure/storage/blobs/anonymous-read-access-configure)
+- [Remediate anonymous read access to blob data](https://learn.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent)
+- [How a shared access signature works](https://learn.microsoft.com/azure/storage/common/storage-sas-overview#how-a-shared-access-signature-works)
+- [Authorize access to blobs using Microsoft Entra ID](https://learn.microsoft.com/azure/storage/blobs/authorize-access-azure-active-directory)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

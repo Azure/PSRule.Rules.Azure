@@ -202,6 +202,14 @@ namespace PSRule.Rules.Azure.Data.Template
             return true;
         }
 
+        internal static bool HasFieldTokens(this TokenStream stream)
+        {
+            return stream.ToArray().Any(t =>
+                t.Type == ExpressionTokenType.Element &&
+                string.Equals("field", t.Content, StringComparison.OrdinalIgnoreCase)
+            );
+        }
+
         internal static bool HasPolicyRuntimeTokens(this TokenStream stream)
         {
             return stream.ToArray().Any(t =>

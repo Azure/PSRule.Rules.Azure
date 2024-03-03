@@ -140,5 +140,15 @@
       "",
       "```"
     ]
+  },
+  "rule-azure-example-policy": {
+    "scope": "markdown",
+    "prefix": "rule-azure-example-policy",
+    "description": "Example for Azure Policy",
+    "body": [
+      "### Configure with Azure Policy",
+      "",
+      "To address this issue at runtime use the following policies:"
+    ]
   }
 }

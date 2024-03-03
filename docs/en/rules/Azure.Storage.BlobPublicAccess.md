@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.BlobPublicAccess/
 ---
@@ -89,11 +89,18 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Configure your Storage account public access to be disallowed](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountDisablePublicBlobAccess_Modify.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/13502221-8df0-4414-9937-de9c5c4e396b`
+
 ## LINKS
 
-- [Use Azure AD for storage authentication](https://docs.microsoft.com/azure/security/fundamentals/identity-management-best-practices#use-azure-ad-for-storage-authentication)
-- [Allow or disallow public read access for a storage account](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-configure#allow-or-disallow-public-read-access-for-a-storage-account)
-- [Remediate anonymous public access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#remediate-anonymous-public-access)
-- [Use Azure Policy to enforce authorized access](https://docs.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent#use-azure-policy-to-enforce-authorized-access)
-- [Authorize access to blobs using Azure Active Directory](https://docs.microsoft.com/azure/storage/blobs/authorize-access-azure-active-directory)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [Use Microsoft Entra ID for storage authentication](https://learn.microsoft.com/azure/security/fundamentals/identity-management-best-practices#use-microsoft-entra-id-for-storage-authentication)
+- [Configure anonymous read access for containers and blobs](https://learn.microsoft.com/azure/storage/blobs/anonymous-read-access-configure)
+- [Remediate anonymous read access to blob data](https://learn.microsoft.com/azure/storage/blobs/anonymous-read-access-prevent)
+- [Authorize access to blobs using Microsoft Entra ID](https://learn.microsoft.com/azure/storage/blobs/authorize-access-azure-active-directory)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts)

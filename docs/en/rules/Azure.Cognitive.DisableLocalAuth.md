@@ -95,10 +95,10 @@ resource account 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
 
 To address this issue at runtime use the following policies:
 
-```text
-/providers/Microsoft.Authorization/policyDefinitions/71ef260a-8f18-47b7-abcb-62d0673d94dc
-/providers/Microsoft.Authorization/policyDefinitions/14de9e63-1b31-492e-a5a3-c3f7fd57f555
-```
+- [Azure AI Services resources should have key access disabled (disable local authentication)](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Azure%20Ai%20Services/CognitiveServices_DisableLocalAuth_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/71ef260a-8f18-47b7-abcb-62d0673d94dc`
+- [Configure Cognitive Services accounts to disable local authentication methods](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_DisableLocalAuth_Modify.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/14de9e63-1b31-492e-a5a3-c3f7fd57f555`
 
 ## LINKS
 

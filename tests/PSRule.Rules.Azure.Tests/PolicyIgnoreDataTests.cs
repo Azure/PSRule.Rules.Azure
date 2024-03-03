@@ -25,13 +25,13 @@ namespace PSRule.Rules.Azure
             Assert.Equal(PolicyIgnoreReason.Duplicate, entry.Reason);
             Assert.Contains("Azure.Defender.Storage.MalwareScan", entry.Value);
             Assert.Contains("Azure.Defender.Storage", entry.Value);
-            Assert.Contains("Azure.Defender.Storage.SensitiveData", entry.Value);
+            Assert.Contains("Azure.Defender.Storage.DataScan", entry.Value);
 
             Assert.True(data.TryGetValue("/providers/Microsoft.Authorization/policyDefinitions/cfdc5972-75b3-4418-8ae1-7f5c36839390", out entry));
             Assert.Equal(PolicyIgnoreReason.Duplicate, entry.Reason);
             Assert.Contains("Azure.Defender.Storage.MalwareScan", entry.Value);
             Assert.Contains("Azure.Defender.Storage", entry.Value);
-            Assert.Contains("Azure.Defender.Storage.SensitiveData", entry.Value);
+            Assert.Contains("Azure.Defender.Storage.DataScan", entry.Value);
         }
 
         #region Helper methods

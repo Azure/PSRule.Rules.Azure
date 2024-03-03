@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-09-02
+reviewed: 2024-03-04
 severity: Important
 pillar: Security
-category: Encryption
+category: SE:07 Encryption
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.SecureTransfer/
 ms-content-id: 539cb7b9-5510-4aa3-b422-41a049a10a88
@@ -101,9 +101,18 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Secure transfer to storage accounts should be enabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/Storage_AuditForHTTPSEnabled_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/404c3081-a854-4457-ae30-26a93ef643f9`
+- [Configure secure transfer of data on a storage account](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Storage/StorageAccountSecureTransfer_Modify.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/f81e3117-0093-4b17-8a60-82363134f0eb`
+
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
 - [Require secure transfer in Azure Storage](https://learn.microsoft.com/azure/storage/common/storage-require-secure-transfer)
 - [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/storage-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
 - [Sample policy for ensuring https traffic](https://learn.microsoft.com/azure/governance/policy/samples/built-in-policies#storage)

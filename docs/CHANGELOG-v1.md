@@ -48,9 +48,16 @@ What's changed since pre-release v1.34.0-B0047:
       - Renamed `Azure.Storage.DefenderCloud.SensitiveData` to `Azure.Storage.Defender.DataScan`.
     - Promoted `Azure.Storage.Defender.MalwareScan` to GA rule set by @BernieWhite.
       [#2590](https://github.com/Azure/PSRule.Rules.Azure/pull/2590)
+- General improvements:
+  - Added duplicate policies to default ignore list by @BernieWhite.
+    [#1731](https://github.com/Azure/PSRule.Rules.Azure/issues/1731)
 - Engineering:
   - Updated resource providers and policy aliases.
     [#2717](https://github.com/Azure/PSRule.Rules.Azure/pull/2717)
+- Bug fixes:
+  - Fixes for policy as rules by @BernieWhite.
+    [#181](https://github.com/Azure/PSRule.Rules.Azure/issues/181)
+    [#1323](https://github.com/Azure/PSRule.Rules.Azure/issues/1323)
 
 ## v1.34.0-B0047 (pre-release)
 

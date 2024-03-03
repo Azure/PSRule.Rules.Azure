@@ -35,7 +35,7 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Equal(129, definitions.Length);
+            Assert.Equal(130, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
@@ -225,6 +225,27 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Compute/virtualMachines", actual.Types[0]);
             Assert.Null(actual.Where);
             Assert.Equal("{\"field\":\"identity.type\",\"contains\":\"SystemAssigned\"}", actual.Condition.ToString(Formatting.None));
+            Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
+        }
+
+        [Fact]
+        public void ExpandDetailsName()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData("Policy.assignment.5.json").Where(a => a["Name"].Value<string>() == "assignment.5"))
+                visitor.Visit(context, assignment);
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Single(definitions);
+
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/bef3f64c-5290-43b7-85b0-9b254eef4c47");
+            Assert.NotNull(actual);
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.KeyVault/vaults", actual.Types[0]);
+            Assert.Null(actual.Where);
+            Assert.Equal("{\"allOf\":[{\"type\":\".\",\"equals\":\"Microsoft.Insights/diagnosticSettings\"},{\"name\":\".\",\"equals\":\"setbypolicy_logAnalytics\"}]}", actual.Condition["where"].ToString(Formatting.None));
             Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
         }
 
