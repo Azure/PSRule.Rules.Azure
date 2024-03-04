@@ -32,6 +32,79 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.34.0
+
+What's changed since v1.33.2:
+
+- New rules:
+  - Azure Kubernetes Service:
+    - Check that user mode pools have a minimum number of nodes by @BernieWhite.
+      [#2683](https://github.com/Azure/PSRule.Rules.Azure/issues/2683)
+      - Added configuration to support changing the minimum number of node and to exclude node pools.
+      - Set `AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES` to set the minimum number of user nodes.
+      - Set `AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES` to exclude a specific node pool by name.
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.MinNodeCount` the count nodes system node pools by @BernieWhite.
+      [#2683](https://github.com/Azure/PSRule.Rules.Azure/issues/2683)
+      - Improved guidance and examples specifically for system node pools.
+      - Added configuration to support changing the minimum number of node.
+      - Set `AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES` to set the minimum number of system nodes.
+  - Front Door:
+    - Updated `Azure.FrontDoor.Logs` to cover premium and standard profiles instead of just classic by @BernieWhite.
+      [#2704](https://github.com/Azure/PSRule.Rules.Azure/issues/2704)
+      - Added a selector for premium and standard profiles `Azure.FrontDoor.IsStandardOrPremium`.
+      - Added a selector for classic profiles `Azure.FrontDoor.IsClassic`.
+      - Updated rule set to `2024_03`.
+  - Microsoft Defender for Cloud:
+    - Renamed rules to align with recommended naming length by @BernieWhite.
+      [#2718](https://github.com/Azure/PSRule.Rules.Azure/issues/2718)
+      - Renamed `Azure.Defender.Storage.SensitiveData` to `Azure.Defender.Storage.DataScan`.
+    - Promoted `Azure.Defender.Storage.MalwareScan` to GA rule set by @BernieWhite.
+      [#2590](https://github.com/Azure/PSRule.Rules.Azure/issues/2590)
+  - Storage Account:
+    - Renamed rules to align with recommended naming length by @BernieWhite.
+      [#2718](https://github.com/Azure/PSRule.Rules.Azure/issues/2718)
+      - Renamed `Azure.Storage.DefenderCloud.MalwareScan` to `Azure.Storage.Defender.MalwareScan`.
+      - Renamed `Azure.Storage.DefenderCloud.SensitiveData` to `Azure.Storage.Defender.DataScan`.
+    - Promoted `Azure.Storage.Defender.MalwareScan` to GA rule set by @BernieWhite.
+      [#2590](https://github.com/Azure/PSRule.Rules.Azure/issues/2590)
+- General improvements:
+  - Moved `.bicepparam` file support to stable by @BernieWhite.
+    [#2682](https://github.com/Azure/PSRule.Rules.Azure/issues/2682)
+    - Bicep param files are now automatically expanded when found.
+    - To disable expansion, set the configuration option `AZURE_BICEP_PARAMS_FILE_EXPANSION` to `false`.
+  - Added support for type/ variable/ and function imports from Bicep files by @BernieWhite.
+    [#2537](https://github.com/Azure/PSRule.Rules.Azure/issues/2537)
+  - Added duplicate policies to default ignore list by @BernieWhite.
+    [#1731](https://github.com/Azure/PSRule.Rules.Azure/issues/1731)
+  - Documentation and metadata improvements by @BernieWhite.
+    [#1772](https://github.com/Azure/PSRule.Rules.Azure/issues/1772)
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+- Engineering:
+  - Updated resource providers and policy aliases.
+    [#2717](https://github.com/Azure/PSRule.Rules.Azure/pull/2717)
+  - Improved debugging experience by providing symbols for .NET code by @BernieWhite.
+    [#2712](https://github.com/Azure/PSRule.Rules.Azure/issues/2712)
+  - Bump Microsoft.NET.Test.Sdk to v17.9.0.
+    [#2680](https://github.com/Azure/PSRule.Rules.Azure/pull/2680)
+  - Bump xunit to v2.7.0.
+    [#2688](https://github.com/Azure/PSRule.Rules.Azure/pull/2688)
+  - Bump xunit.runner.visualstudio to v2.5.7.
+    [#2689](https://github.com/Azure/PSRule.Rules.Azure/pull/2689)
+  - Bump coverlet.collector to v6.0.1.
+    [#2699](https://github.com/Azure/PSRule.Rules.Azure/pull/2699)
+- Bug fixes:
+  - Fixed missing zones property for public IP addresses by @BernieWhite.
+    [#2698](https://github.com/Azure/PSRule.Rules.Azure/issues/2698)
+  - Fixes for policy as rules by @BernieWhite.
+    [#181](https://github.com/Azure/PSRule.Rules.Azure/issues/181)
+    [#1323](https://github.com/Azure/PSRule.Rules.Azure/issues/1323)
+
+What's changed since pre-release v1.34.0-B0077:
+
+- No additional changes.
+
 ## v1.34.0-B0077 (pre-release)
 
 What's changed since pre-release v1.34.0-B0047:
