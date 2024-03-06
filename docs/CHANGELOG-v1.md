@@ -39,6 +39,7 @@ What's changed since v1.34.0:
     [#2724](https://github.com/Azure/PSRule.Rules.Azure/issues/2724)
     [#2725](https://github.com/Azure/PSRule.Rules.Azure/issues/2725)
     [#2726](https://github.com/Azure/PSRule.Rules.Azure/issues/2726)
+    [#2727](https://github.com/Azure/PSRule.Rules.Azure/issues/2727)
 
 ## v1.34.0
 

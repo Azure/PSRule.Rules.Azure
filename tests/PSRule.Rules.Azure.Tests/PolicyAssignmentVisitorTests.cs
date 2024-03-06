@@ -278,12 +278,18 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Single(definitions);
+            Assert.Equal(2, definitions.Length);
 
-            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Management/managementGroups/MyManagementGroup/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000");
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000001");
             Assert.NotNull(actual);
             Assert.Single(actual.Types);
             Assert.Equal("Microsoft.KeyVault/Vaults", actual.Types[0]);
+            Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.networkAcls.defaultAction\"},{\"equals\":\"Allow\",\"field\":\"properties.networkAcls.defaultAction\"},{\"exists\":false,\"field\":\"properties.networkAcls.virtualNetworkRules\"},{\"field\":\"properties.networkAcls.virtualNetworkRules\",\"notCount\":0},{\"exists\":false,\"field\":\"properties.networkAcls.ipRules\"},{\"field\":\"properties.networkAcls.ipRules\",\"notCount\":0}]}", actual.Where.ToString(Formatting.None));
+
+            actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000002");
+            Assert.NotNull(actual);
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
             Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.networkAcls.defaultAction\"},{\"equals\":\"Allow\",\"field\":\"properties.networkAcls.defaultAction\"},{\"exists\":false,\"field\":\"properties.networkAcls.virtualNetworkRules\"},{\"field\":\"properties.networkAcls.virtualNetworkRules\",\"notCount\":0},{\"exists\":false,\"field\":\"properties.networkAcls.ipRules\"},{\"field\":\"properties.networkAcls.ipRules\",\"notCount\":0}]}", actual.Where.ToString(Formatting.None));
         }
 
