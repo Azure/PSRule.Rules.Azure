@@ -164,7 +164,7 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void GetFieldConcat()
+        public void Expand_field_with_concat()
         {
             var context = new PolicyAssignmentContext(GetContext(), keepDuplicates: true);
             var visitor = new PolicyAssignmentDataExportVisitor();
@@ -190,7 +190,7 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void GetPolicyBaseline()
+        public void Ensure_visitor_generates_baseline()
         {
             var context = new PolicyAssignmentContext(GetContext());
             var visitor = new PolicyAssignmentDataExportVisitor();
@@ -229,7 +229,7 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void ExpandDetailsName()
+        public void Expand_policy_details_name()
         {
             var context = new PolicyAssignmentContext(GetContext());
             var visitor = new PolicyAssignmentDataExportVisitor();
@@ -247,6 +247,50 @@ namespace PSRule.Rules.Azure
             Assert.Null(actual.Where);
             Assert.Equal("{\"allOf\":[{\"type\":\".\",\"equals\":\"Microsoft.Insights/diagnosticSettings\"},{\"name\":\".\",\"equals\":\"setbypolicy_logAnalytics\"}]}", actual.Condition["where"].ToString(Formatting.None));
             Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
+        }
+
+        [Fact]
+        public void Expand_field_with_less()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData("Policy.assignment.6.json").Where(a => a["Name"].Value<string>() == "assignment.6"))
+                visitor.Visit(context, assignment);
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Single(definitions);
+
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/817dcf37-e83d-4999-a472-644eada2ea1e");
+            Assert.NotNull(actual);
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.Web/hostingEnvironments", actual.Types[0]);
+            Assert.Equal("{\"allOf\":[{\"field\":\"kind\",\"like\":\"ASE*\"},{\"less\":1,\"field\":\"properties.clusterSettings[*]\",\"allOf\":[{\"field\":\"name\",\"contains\":\"FrontEndSSLCipherSuiteOrder\"},{\"field\":\"value\",\"contains\":\"TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384\"},{\"field\":\"value\",\"contains\":\"TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256\"},{\"field\":\"value\",\"less\":80,\"convert\":true}]}]}", actual.Where.ToString(Formatting.None));
+        }
+
+        [Fact]
+        public void Expand_field_with_length()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData("Policy.assignment.7.json").Where(a => a["Name"].Value<string>() == "assignment.7"))
+                visitor.Visit(context, assignment);
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Equal(2, definitions.Length);
+
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000001");
+            Assert.NotNull(actual);
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.KeyVault/Vaults", actual.Types[0]);
+            Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.networkAcls.defaultAction\"},{\"equals\":\"Allow\",\"field\":\"properties.networkAcls.defaultAction\"},{\"exists\":false,\"field\":\"properties.networkAcls.virtualNetworkRules\"},{\"field\":\"properties.networkAcls.virtualNetworkRules\",\"notCount\":0},{\"exists\":false,\"field\":\"properties.networkAcls.ipRules\"},{\"field\":\"properties.networkAcls.ipRules\",\"notCount\":0}]}", actual.Where.ToString(Formatting.None));
+
+            actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000002");
+            Assert.NotNull(actual);
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
+            Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.networkAcls.defaultAction\"},{\"equals\":\"Allow\",\"field\":\"properties.networkAcls.defaultAction\"},{\"exists\":false,\"field\":\"properties.networkAcls.virtualNetworkRules\"},{\"field\":\"properties.networkAcls.virtualNetworkRules\",\"notCount\":0},{\"exists\":false,\"field\":\"properties.networkAcls.ipRules\"},{\"field\":\"properties.networkAcls.ipRules\",\"notCount\":0}]}", actual.Where.ToString(Formatting.None));
         }
 
         #region Helper methods

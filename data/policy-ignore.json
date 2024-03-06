@@ -202,5 +202,12 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.Storage.MinTLS"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/fbb99e8e-e444-4da0-9ff1-75c92f5a85b2"
+    ],
+    "reason": "NotApplicable",
+    "value": "Checking for BYOK of a storage account used for logging activity is not enforcable by code (#2725)."
   }
 ]

@@ -73,6 +73,10 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_PATH = "path";
         private const string PROPERTY_CONVERT = "convert";
         private const string PROPERTY_NONCOMPLIANCEMESSAGES = "NonComplianceMessages";
+        private const string PROPERTY_HASVALUE = "hasValue";
+        private const string PROPERTY_EMPTY = "empty";
+        private const string PROPERTY_LENGTH = "length";
+
         private const string EFFECT_DISABLED = "Disabled";
         private const string EFFECT_AUDITIFNOTEXISTS = "AuditIfNotExists";
         private const string EFFECT_DEPLOYIFNOTEXISTS = "DeployIfNotExists";
@@ -90,6 +94,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const char SLASH = '/';
         private const char GROUP_OPEN = '(';
         private const char GROUP_CLOSE = ')';
+
         private const string TYPE_SECURITYASSESSMENTS = "Microsoft.Security/assessments";
         private const string TYPE_GUESTCONFIGURATIONASSIGNMENTS = "Microsoft.GuestConfiguration/guestConfigurationAssignments";
         private const string TYPE_BACKUPPROTECTEDITEMS = "Microsoft.RecoveryServices/backupprotecteditems";
@@ -1020,7 +1025,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private static void VisitCountExpression(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject parent, JObject count)
         {
             // Remove from parent
-            parent.Remove(PROPERTY_COUNT);
+            parent.RemoveProperty(PROPERTY_COUNT);
 
             if (count.TryGetProperty(PROPERTY_FIELD, out var field))
             {
@@ -1203,7 +1208,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             field = TemplateVisitor.ExpandString(context, field);
             if (string.Equals(field, PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
             {
-                condition.Remove(PROPERTY_FIELD);
+                condition.RemoveProperty(PROPERTY_FIELD);
                 condition.Add(PROPERTY_TYPE, DOT);
                 AddTypes(context, policyDefinition, condition);
             }
@@ -1257,32 +1262,32 @@ namespace PSRule.Rules.Azure.Data.Policy
                 tokens.ConsumeGroup() &&
                 tokens.ConsumePropertyName(PROPERTY_APIVERSION))
             {
-                condition.Remove(PROPERTY_VALUE);
+                condition.RemoveProperty(PROPERTY_VALUE);
                 condition.Add(PROPERTY_FIELD, PROPERTY_APIVERSION);
                 if (condition.TryGetProperty(PROPERTY_LESS, out var value))
                 {
-                    condition.Remove(PROPERTY_LESS);
+                    condition.RemoveProperty(PROPERTY_LESS);
                     condition.Add(PROPERTY_APIVERSION, string.Concat(LESS_OPERATOR, value));
                 }
                 else if (condition.TryGetProperty(PROPERTY_LESSOREQUALS, out value))
                 {
-                    condition.Remove(PROPERTY_LESSOREQUALS);
+                    condition.RemoveProperty(PROPERTY_LESSOREQUALS);
                     condition.Add(PROPERTY_APIVERSION, string.Concat(LESSOREQUAL_OPERATOR, value));
 
                 }
                 else if (condition.TryGetProperty(PROPERTY_GREATER, out value))
                 {
-                    condition.Remove(PROPERTY_GREATER);
+                    condition.RemoveProperty(PROPERTY_GREATER);
                     condition.Add(PROPERTY_APIVERSION, string.Concat(GREATER_OPERATOR, value));
                 }
                 else if (condition.TryGetProperty(PROPERTY_GREATEROREQUALS, out value))
                 {
-                    condition.Remove(PROPERTY_GREATEROREQUALS);
+                    condition.RemoveProperty(PROPERTY_GREATEROREQUALS);
                     condition.Add(PROPERTY_APIVERSION, string.Concat(GREATEROREQUAL_OPERATOR, value));
                 }
                 else if (condition.TryGetProperty(PROPERTY_EQUALS, out value))
                 {
-                    condition.Remove(PROPERTY_EQUALS);
+                    condition.RemoveProperty(PROPERTY_EQUALS);
                     condition.Add(PROPERTY_APIVERSION, value);
                 }
             }
@@ -1313,19 +1318,19 @@ namespace PSRule.Rules.Azure.Data.Policy
                 // Handle [field('type')]
                 if (string.Equals(field, PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
                 {
-                    condition.Remove(PROPERTY_VALUE);
+                    condition.RemoveProperty(PROPERTY_VALUE);
                     condition.Add(PROPERTY_TYPE, DOT);
                 }
                 else
                 {
-                    condition.Remove(PROPERTY_VALUE);
+                    condition.RemoveProperty(PROPERTY_VALUE);
 
                     field = context.TryPolicyAliasPath(field, out var aliasPath) ? TrimFieldName(context, aliasPath) : field;
                     condition.Add(PROPERTY_FIELD, field);
                 }
             }
 
-            else if (tokens.ConsumeFunction("if") &&
+            else if (tokens.ConsumeFunction(PROPERTY_IF) &&
                 tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
             {
                 var orginal = condition;
@@ -1369,17 +1374,126 @@ namespace PSRule.Rules.Azure.Data.Policy
                 tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
             }
 
-            else if (tokens.ConsumeFunction("empty") &&
+            else if (tokens.ConsumeFunction(PROPERTY_EMPTY) &&
                 tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
             {
                 if (condition.TryBoolProperty(PROPERTY_EQUALS, out var emptyEquals))
                 {
-                    condition.Remove(PROPERTY_EQUALS);
-                    condition.Add("hasValue", !emptyEquals.Value);
+                    condition.RemoveProperty(PROPERTY_EQUALS);
+                    condition.Add(PROPERTY_HASVALUE, !emptyEquals.Value);
                 }
                 VisitFieldTokens(context, condition, tokens);
+
                 tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
             }
+
+            else if (tokens.ConsumeFunction(PROPERTY_LESS) &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
+            {
+                VisitFieldTokens(context, condition, tokens);
+
+                if (tokens.ConsumeInteger(out var comparisonInt) && comparisonInt.HasValue)
+                {
+                    if (condition.TryBoolProperty(PROPERTY_EQUALS, out var comparison))
+                    {
+                        condition.RemoveProperty(PROPERTY_EQUALS);
+                        condition.Add(comparison.Value ? PROPERTY_LESS : PROPERTY_GREATEROREQUALS, comparisonInt.Value);
+                    }
+                    else if (condition.TryBoolProperty(PROPERTY_NOTEQUALS, out comparison))
+                    {
+                        condition.RemoveProperty(PROPERTY_NOTEQUALS);
+                        condition.Add(comparison.Value ? PROPERTY_GREATEROREQUALS : PROPERTY_LESS, comparisonInt.Value);
+                    }
+                }
+
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+            }
+
+            else if (tokens.ConsumeFunction(PROPERTY_LESSOREQUALS) &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
+            {
+                VisitFieldTokens(context, condition, tokens);
+
+                if (tokens.ConsumeInteger(out var comparisonInt) && comparisonInt.HasValue)
+                {
+                    if (condition.TryBoolProperty(PROPERTY_EQUALS, out var comparison))
+                    {
+                        condition.RemoveProperty(PROPERTY_EQUALS);
+                        condition.Add(comparison.Value ? PROPERTY_LESSOREQUALS : PROPERTY_GREATER, comparisonInt.Value);
+                    }
+                    else if (condition.TryBoolProperty(PROPERTY_NOTEQUALS, out comparison))
+                    {
+                        condition.RemoveProperty(PROPERTY_NOTEQUALS);
+                        condition.Add(comparison.Value ? PROPERTY_GREATER : PROPERTY_LESSOREQUALS, comparisonInt.Value);
+                    }
+                }
+
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+            }
+
+            else if (tokens.ConsumeFunction(PROPERTY_GREATER) &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
+            {
+                VisitFieldTokens(context, condition, tokens);
+
+                if (tokens.ConsumeInteger(out var comparisonInt) && comparisonInt.HasValue)
+                {
+                    if (condition.TryBoolProperty(PROPERTY_EQUALS, out var comparison))
+                    {
+                        condition.RemoveProperty(PROPERTY_EQUALS);
+                        condition.Add(comparison.Value ? PROPERTY_GREATER : PROPERTY_LESSOREQUALS, comparisonInt.Value);
+                    }
+                    else if (condition.TryBoolProperty(PROPERTY_NOTEQUALS, out comparison))
+                    {
+                        condition.RemoveProperty(PROPERTY_NOTEQUALS);
+                        condition.Add(comparison.Value ? PROPERTY_LESSOREQUALS : PROPERTY_GREATER, comparisonInt.Value);
+                    }
+                }
+
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+            }
+
+            else if (tokens.ConsumeFunction(PROPERTY_GREATEROREQUALS) &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
+            {
+                VisitFieldTokens(context, condition, tokens);
+
+                if (tokens.ConsumeInteger(out var comparisonInt) && comparisonInt.HasValue)
+                {
+                    if (condition.TryBoolProperty(PROPERTY_EQUALS, out var comparison))
+                    {
+                        condition.RemoveProperty(PROPERTY_EQUALS);
+                        condition.Add(comparison.Value ? PROPERTY_GREATEROREQUALS : PROPERTY_LESS, comparisonInt.Value);
+                    }
+                    else if (condition.TryBoolProperty(PROPERTY_NOTEQUALS, out comparison))
+                    {
+                        condition.RemoveProperty(PROPERTY_NOTEQUALS);
+                        condition.Add(comparison.Value ? PROPERTY_LESS : PROPERTY_GREATEROREQUALS, comparisonInt.Value);
+                    }
+                }
+
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+            }
+
+            else if (tokens.ConsumeFunction(PROPERTY_LENGTH) &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
+            {
+                VisitFieldTokens(context, condition, tokens);
+
+                if (condition.TryIntegerProperty(PROPERTY_EQUALS, out var comparison))
+                {
+                    condition.RemoveProperty(PROPERTY_EQUALS);
+                    condition.Add(PROPERTY_COUNT, comparison.Value);
+                }
+                else if (condition.TryIntegerProperty(PROPERTY_NOTEQUALS, out comparison))
+                {
+                    condition.RemoveProperty(PROPERTY_NOTEQUALS);
+                    condition.Add(PROPERTY_NOTCOUNT, comparison.Value);
+                }
+
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+            }
+
             return condition;
         }
 
@@ -1748,7 +1862,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 effectBlock.TryObjectProperty(PROPERTY_DETAILS, out var details) &&
                 details.TryObjectProperty(PROPERTY_DEPLOYMENT, out _))
             {
-                details.Remove(PROPERTY_DEPLOYMENT);
+                details.RemoveProperty(PROPERTY_DEPLOYMENT);
                 policyRule[PROPERTY_THEN][PROPERTY_DETAILS] = details;
             }
         }

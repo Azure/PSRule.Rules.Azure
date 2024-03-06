@@ -271,6 +271,13 @@ namespace PSRule.Rules.Azure
                 p.Value = new JValue(value);
         }
 
+        internal static void RemoveProperty(this JObject o, string propertyName)
+        {
+            var p = o.Property(propertyName, StringComparison.OrdinalIgnoreCase);
+            if (p != null)
+                p.Remove();
+        }
+
         /// <summary>
         /// Convert a string property to an integer.
         /// </summary>
@@ -481,10 +488,31 @@ namespace PSRule.Rules.Azure
         internal static bool TryBoolProperty(this JObject o, string propertyName, out bool? value)
         {
             value = null;
-            if (o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var v) && v.Type == JTokenType.Boolean)
+            if (o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var token) && token.Type == JTokenType.Boolean)
             {
-                value = v.Value<bool>();
+                value = token.Value<bool>();
                 return value != null;
+            }
+            else if (token != null && token.Type == JTokenType.String && bool.TryParse(token.Value<string>(), out var v))
+            {
+                value = v;
+                return true;
+            }
+            return false;
+        }
+
+        internal static bool TryIntegerProperty(this JObject o, string propertyName, out long? value)
+        {
+            value = null;
+            if (o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var token) && token.Type == JTokenType.Integer)
+            {
+                value = token.Value<long>();
+                return value != null;
+            }
+            else if (token != null && token.Type == JTokenType.String && long.TryParse(token.Value<string>(), out var v))
+            {
+                value = v;
+                return true;
             }
             return false;
         }

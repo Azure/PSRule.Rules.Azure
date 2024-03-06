@@ -1,0 +1,183 @@
+[
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "assignment.7",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.7",
+    "ResourceName": "assignment.7",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Sku": null,
+    "PolicyAssignmentId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.7",
+    "Properties": {
+      "Scope": "/subscriptions/00000000-0000-0000-0000-000000000000",
+      "NotScopes": [],
+      "DisplayName": "Enforce key vault firewall blocking public access",
+      "Description": null,
+      "Metadata": {
+        "assignedBy": "",
+        "parameterScopes": {},
+        "createdBy": "",
+        "createdOn": "",
+        "updatedBy": null,
+        "updatedOn": null
+      },
+      "EnforcementMode": 1,
+      "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
+      "Parameters": {},
+      "NonComplianceMessages": []
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "00000000-0000-0000-0000-000000000001",
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000001",
+        "ResourceName": "00000000-0000-0000-0000-000000000001",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "Example",
+          "DisplayName": "Enforce key vault firewall blocking public access",
+          "Metadata": {
+            "version": "0.0.1",
+            "category": "Key Vault"
+          },
+          "Mode": "Indexed",
+          "Parameters": {
+            "effect": {
+              "type": "String",
+              "metadata": {
+                "description": "Enable or disable the execution of the policy",
+                "displayName": "Effect"
+              },
+              "allowedValues": [
+                "Audit",
+                "Deny",
+                "Disabled"
+              ],
+              "defaultValue": "Deny"
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "equals": "Microsoft.KeyVault/Vaults",
+                  "field": "type"
+                },
+                {
+                  "anyOf": [
+                    {
+                      "exists": "false",
+                      "field": "Microsoft.KeyVault/Vaults/networkAcls.defaultAction"
+                    },
+                    {
+                      "equals": "Allow",
+                      "field": "Microsoft.KeyVault/Vaults/networkAcls.defaultAction"
+                    },
+                    {
+                      "exists": "false",
+                      "field": "Microsoft.KeyVault/Vaults/networkAcls.virtualNetworkRules"
+                    },
+                    {
+                      "notequals": "0",
+                      "value": "[length(field('Microsoft.KeyVault/Vaults/networkAcls.virtualNetworkRules'))]"
+                    },
+                    {
+                      "exists": "false",
+                      "field": "Microsoft.KeyVault/Vaults/networkAcls.ipRules"
+                    },
+                    {
+                      "notequals": "0",
+                      "value": "[length(field('Microsoft.KeyVault/Vaults/networkAcls.ipRules'))]"
+                    }
+                  ]
+                }
+              ]
+            },
+            "then": {
+              "effect": "[parameters('effect')]"
+            }
+          },
+          "PolicyType": 1
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000001"
+      },
+      {
+        "Name": "00000000-0000-0000-0000-000000000002",
+        "ResourceId": "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000002",
+        "ResourceName": "00000000-0000-0000-0000-000000000002",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "Example",
+          "DisplayName": "Enforce storage account public firewall blocking access",
+          "Metadata": {
+            "version": "0.0.1",
+            "category": "Storage"
+          },
+          "Mode": "Indexed",
+          "Parameters": {
+            "effect": {
+              "type": "String",
+              "metadata": {
+                "description": "Enable or disable the execution of the policy",
+                "displayName": "Effect"
+              },
+              "allowedValues": [
+                "Deny",
+                "Audit",
+                "Disabled"
+              ],
+              "defaultValue": "Deny"
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "equals": "Microsoft.Storage/storageAccounts",
+                  "field": "type"
+                },
+                {
+                  "anyOf": [
+                    {
+                      "exists": "false",
+                      "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction"
+                    },
+                    {
+                      "equals": "Allow",
+                      "field": "Microsoft.Storage/storageAccounts/networkAcls.defaultAction"
+                    },
+                    {
+                      "exists": "false",
+                      "field": "Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules"
+                    },
+                    {
+                      "notequals": "0",
+                      "value": "[length(field('Microsoft.Storage/storageAccounts/networkAcls.virtualNetworkRules'))]"
+                    },
+                    {
+                      "exists": "false",
+                      "field": "Microsoft.Storage/storageAccounts/networkAcls.ipRules"
+                    },
+                    {
+                      "notequals": "0",
+                      "value": "[length(field('Microsoft.Storage/storageAccounts/networkAcls.ipRules'))]"
+                    }
+                  ]
+                }
+              ]
+            },
+            "then": {
+              "effect": "[parameters('effect')]"
+            }
+          },
+          "PolicyType": 1
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000002"
+      }
+    ],
+    "exemptions": []
+  }
+]
