@@ -32,6 +32,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.34.0:
+
+- Bug fixes:
+  - Fixed policy as rules export issues by @BernieWhite.
+    [#2724](https://github.com/Azure/PSRule.Rules.Azure/issues/2724)
+    [#2725](https://github.com/Azure/PSRule.Rules.Azure/issues/2725)
+    [#2726](https://github.com/Azure/PSRule.Rules.Azure/issues/2726)
+
 ## v1.34.0
 
 What's changed since v1.33.2:
