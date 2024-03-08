@@ -1,22 +1,23 @@
 ---
+reviewed: 2024-03-09
 severity: Critical
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: Azure Database for PostgreSQL
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.AAD/
 ---
 
-# Use AAD authentication with PostgreSQL databases
+# Use Entra ID authentication with PostgreSQL databases
 
 ## SYNOPSIS
 
-Use Azure Active Directory (AAD) authentication with Azure Database for PostgreSQL databases.
+Use Entra ID authentication with Azure Database for PostgreSQL databases.
 
 ## DESCRIPTION
 
-Azure Database for PostgreSQL offer two authentication models, Azure Active Directory (AAD) and PostgreSQL logins.
-AAD authentication supports centialized identity management in addition to modern password protections.
-Some of the benefits of AAD authentication over PostgreSQL authentication including:
+Azure Database for PostgreSQL offer two authentication models, Entra ID (previously knows as Azure AD) and PostgreSQL logins.
+Entra ID authentication supports centralized identity management in addition to modern password protections.
+Some of the benefits of Entra ID authentication over PostgreSQL authentication including:
 
 - Support for Azure Multi-Factor Authentication (MFA).
 - Conditional-based access with Conditional Access.
@@ -25,7 +26,7 @@ It is also possible to disable PostgreSQL authentication entirely for the flexib
 
 ## RECOMMENDATION
 
-Consider using Azure Active Directory (AAD) authentication with Azure Database for PostgreSQL databases.
+Consider using Entra ID authentication with Azure Database for PostgreSQL databases.
 Additionally, consider disabling PostgreSQL authentication.
 
 ## EXAMPLES
@@ -35,9 +36,9 @@ Additionally, consider disabling PostgreSQL authentication.
 To deploy Azure Database for PostgreSQL flexible servers that pass this rule:
 
 - Configure the `Microsoft.DBforPostgreSQL/flexibleServers/administrators` sub-resource.
-- Set the `properties.principalName` to the user principal name of the AAD administrator user, group, or application.
-- Set the `properties.principalType` to the principal type used to represent the type of AAD administrator.
-- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
+- Set the `properties.principalName` to the user principal name of the Entra ID administrator user, group, or application.
+- Set the `properties.principalType` to the principal type used to represent the type of Entra ID administrator.
+- Set the `properties.tenantId` to the tenant ID of the Entra ID administrator user, group, or application.
 
 For example:
 
@@ -61,9 +62,9 @@ To deploy Azure Database for PostgreSQL single servers that pass this rule:
 
 - Configure the `Microsoft.DBforPostgreSQL/servers/administrators` sub-resource.
 - Set the `properties.administratorType` to `ActiveDirectory`.
-- Set the `properties.login` to the AAD administrator login object name.
-- Set the `properties.sid` to the object ID GUID of the AAD administrator user, group, or application.
-- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
+- Set the `properties.login` to the Entra ID administrator login object name.
+- Set the `properties.sid` to the object ID GUID of the Entra ID administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the Entra ID administrator user, group, or application.
 
 For example:
 
@@ -89,9 +90,9 @@ For example:
 To deploy Azure Database for PostgreSQL flexible servers that pass this rule:
 
 - Configure the `Microsoft.DBforPostgreSQL/flexibleServers/administrators` sub-resource.
-- Set the `properties.principalName` to the user principal name of the AAD administrator user, group, or application.
-- Set the `properties.principalType` to the principal type used to represent the type of AAD administrator.
-- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
+- Set the `properties.principalName` to the user principal name of the Entra ID administrator user, group, or application.
+- Set the `properties.principalType` to the principal type used to represent the type of Entra ID administrator.
+- Set the `properties.tenantId` to the tenant ID of the Entra ID administrator user, group, or application.
 
 For example:
 
@@ -111,9 +112,9 @@ To deploy Azure Database for PostgreSQL single servers that pass this rule:
 
 - Configure the `Microsoft.DBforPostgreSQL/servers/administrators` sub-resource.
 - Set the `properties.administratorType` to `ActiveDirectory`.
-- Set the `properties.login` to the AAD administrator login object name.
-- Set the `properties.sid` to the object ID GUID of the AAD administrator user, group, or application.
-- Set the `properties.tenantId` to the tenant ID of the AAD administrator user, group, or application.
+- Set the `properties.login` to the Entra ID administrator login object name.
+- Set the `properties.sid` to the object ID GUID of the Entra ID administrator user, group, or application.
+- Set the `properties.tenantId` to the tenant ID of the Entra ID administrator user, group, or application.
 
 For example:
 
@@ -132,15 +133,18 @@ resource aadAdmin 'Microsoft.DBforPostgreSQL/servers/administrators@2017-12-01' 
 
 ## NOTES
 
-The single server deployment model is limited to only one Azure AD admin at a time and does not support enforcing AAD-authentication only.
+The single server deployment model is limited to:
+
+- Only one Azure AD admin at a time.
+- Does not support enforcing Entra ID authentication only.
 
 ## LINKS
 
-- [Use modern password protection](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-modern-password-protection)
-- [Azure Active Directory Authentication with PostgreSQL Flexible Server](https://learn.microsoft.com/azure/postgresql/flexible-server/concepts-azure-ad-authentication#how-azure-ad-works-in-flexible-server)
-- [Use Azure AD for authentication with Azure Database for PostgreSQL - Flexible Server](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
-- [Use Azure AD for authentication with Azure Database for PostgreSQL - Single Server](https://learn.microsoft.com/azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication)
-- [Azure Active Directory Authentication (Single Server VS Flexible Server)](https://learn.microsoft.com/azure/postgresql/flexible-server/concepts-azure-ad-authentication#azure-active-directory-authentication-single-server-vs-flexible-server)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [How Microsoft Entra ID Works in Azure Database for PostgreSQL flexible server](https://learn.microsoft.com/azure/postgresql/flexible-server/concepts-azure-ad-authentication#how-azure-ad-works-in-flexible-server)
+- [Use Microsoft Entra ID for authentication with Azure Database for PostgreSQL - Flexible Server](https://learn.microsoft.com/azure/postgresql/flexible-server/how-to-configure-sign-in-azure-ad-authentication)
+- [Use Microsoft Entra ID for authentication with PostgreSQL](https://learn.microsoft.com/azure/postgresql/single-server/how-to-configure-sign-in-azure-ad-authentication)
+- [Microsoft Entra authentication (Azure Database for PostgreSQL single Server vs Azure Database for PostgreSQL flexible server)](https://learn.microsoft.com/azure/postgresql/flexible-server/concepts-azure-ad-authentication#azure-active-directory-authentication-single-server-vs-flexible-server)
 - [Azure security baseline for Azure Database for PostgreSQL - Flexible Server](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-database-for-postgresql-flexible-server-security-baseline)
 - [Azure security baseline for Azure Database for PostgreSQL - Single Server](https://learn.microsoft.com/security/benchmark/azure/baselines/postgresql-security-baseline)
 - [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-database-for-postgresql-flexible-server-security-baseline#im-1-use-centralized-identity-and-authentication-system)

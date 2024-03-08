@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.34.1:
+
+- Bug fixes:
+  - Fixed export of in-flight data for flexible PostgreSQL servers by @BernieWhite.
+    [#2744](https://github.com/Azure/PSRule.Rules.Azure/issues/2744)
+
 ## v1.34.1
 
 What's changed since v1.34.0:
