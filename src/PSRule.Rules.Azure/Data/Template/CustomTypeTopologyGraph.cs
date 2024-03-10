@@ -2,11 +2,8 @@
 // Licensed under the MIT License.
 
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Resources;
-using System.Text;
 using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure.Data.Template
@@ -14,15 +11,23 @@ namespace PSRule.Rules.Azure.Data.Template
     /// <summary>
     /// A graph that tracks dependencies between type definitions.
     /// </summary>
-    internal sealed class CustomTypeDependencyGraph
+    internal sealed class CustomTypeTopologyGraph
     {
+        private const string PROPERTY_REF = "$ref";
+
         private readonly Dictionary<string, Node> _ById = new(StringComparer.OrdinalIgnoreCase);
 
-        [DebuggerDisplay("{Resource.Id}")]
+        [DebuggerDisplay("{Id}")]
         private sealed class Node
         {
             internal readonly string Id;
             internal readonly JObject Value;
+
+            /// <summary>
+            /// The color of the node in the graph.
+            /// 0 = white, 1 = gray, 2 = black.
+            /// </summary>
+            internal int Color = 0;
 
             public Node(string id, JObject value)
             {
@@ -36,7 +41,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         /// <param name="name">The custom type node to add to the graph.</param>
         /// <param name="value">The definition of the custom type.</param>
-        internal void Track(string name, JObject value)
+        internal void Add(string name, JObject value)
         {
             if (value == null)
                 return;
@@ -49,16 +54,14 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// Get a list of ordered custom types.
         /// </summary>
-        internal IEnumerable<KeyValuePair<string, JObject>> GetOrdered()
+        internal KeyValuePair<string, JObject>[] GetOrdered()
         {
-            var stack = new List<KeyValuePair<string, JObject>>(_ById.Values.Count);
-            var visited = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
-
+            var result = new List<KeyValuePair<string, JObject>>(_ById.Values.Count);
             foreach (var item in _ById.Values)
             {
-                Visit(item, visited, stack);
+                Visit(item, result);
             }
-            return stack.ToArray();
+            return result.ToArray();
         }
 
         private bool TryGet(string id, out Node item)
@@ -69,17 +72,18 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <summary>
         /// Traverse a node and parent type.
         /// </summary>
-        private void Visit(Node item, HashSet<string> visited, List<KeyValuePair<string, JObject>> stack)
+        private void Visit(Node item, List<KeyValuePair<string, JObject>> result)
         {
-            if (visited.Contains(item.Id))
+            if (item.Color != 0)
                 return;
 
-            visited.Add(item.Id);
-            if (item.Value.TryStringProperty("$ref", out var id) && TryGet(id, out var parent))
+            item.Color = 1;
+            if (item.Value.TryStringProperty(PROPERTY_REF, out var id) && TryGet(id, out var parent))
             {
-                Visit(parent, visited, stack);
+                Visit(parent, result);
             }
-            stack.Add(new KeyValuePair<string, JObject>(item.Id, item.Value));
+            item.Color = 2;
+            result.Add(new KeyValuePair<string, JObject>(item.Id, item.Value));
         }
     }
 }

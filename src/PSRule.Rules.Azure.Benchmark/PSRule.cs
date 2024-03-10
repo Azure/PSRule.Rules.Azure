@@ -6,6 +6,7 @@ using System.IO;
 using System.Management.Automation;
 using System.Reflection;
 using BenchmarkDotNet.Attributes;
+using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Policy;
 using PSRule.Rules.Azure.Data.Template;
@@ -34,6 +35,9 @@ namespace PSRule.Rules.Azure.Benchmark
         private PSObject _UserDefinedFunctionsTemplate;
         private PolicyAliasProviderHelper _PolicyAliasProviderHelper;
         private ResourceProviderHelper _ResourceProviderHelper;
+        private CustomTypeTopologyGraph _CustomTypeDependencyGraph;
+
+        #region Setup
 
         [GlobalSetup]
         public void Prepare()
@@ -43,6 +47,7 @@ namespace PSRule.Rules.Azure.Benchmark
             PrepareUserDefinedFunctionsPipeline();
             PrepareResolvePolicyAliasPath();
             PrepareGetResourceType();
+            PrepareCustomTypeDependencyGraph();
         }
 
         private void PrepareTemplatePipeline()
@@ -85,6 +90,22 @@ namespace PSRule.Rules.Azure.Benchmark
             _ResourceProviderHelper = new ResourceProviderHelper();
         }
 
+        private void PrepareCustomTypeDependencyGraph()
+        {
+            _CustomTypeDependencyGraph = new CustomTypeTopologyGraph();
+            _CustomTypeDependencyGraph.Add("base", GetCustomTypeObject());
+            _CustomTypeDependencyGraph.Add("nestedComplexType", GetCustomTypeObject("complexType"));
+            _CustomTypeDependencyGraph.Add("basicType", GetCustomTypeObject("object"));
+            _CustomTypeDependencyGraph.Add("object", GetCustomTypeObject());
+            _CustomTypeDependencyGraph.Add("array", GetCustomTypeObject("object"));
+            _CustomTypeDependencyGraph.Add("complexType", GetCustomTypeObject("array"));
+            _CustomTypeDependencyGraph.Add("newBase", GetCustomTypeObject());
+        }
+
+        #endregion Setup
+
+        #region Benchmarks
+
         [Benchmark]
         public void Template()
         {
@@ -118,6 +139,16 @@ namespace PSRule.Rules.Azure.Benchmark
             _ResourceProviderHelper.GetResourceType("Microsoft.ContainerService", "managedClusters");
         }
 
+        [Benchmark]
+        public void CustomTypeDependencyGraph_GetOrdered()
+        {
+            _CustomTypeDependencyGraph.GetOrdered();
+        }
+
+        #endregion Benchmarks
+
+        #region Helper methods
+
         private static void RunPipelineTargets(IPipeline pipeline, PSObject templateSource)
         {
             pipeline.Begin();
@@ -141,5 +172,12 @@ namespace PSRule.Rules.Azure.Benchmark
             builder.PassThru(true);
             return builder;
         }
+
+        private static JObject GetCustomTypeObject(string ancestor = null)
+        {
+            return ancestor == null ? new JObject() : JObject.Parse(string.Concat("{ \"$ref\": \"#/definitions/", ancestor, "\"}"));
+        }
+
+        #endregion Helpers methods
     }
 }

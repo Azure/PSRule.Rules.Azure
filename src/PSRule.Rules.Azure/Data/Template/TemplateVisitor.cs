@@ -988,19 +988,18 @@ namespace PSRule.Rules.Azure.Data.Template
 
         #region Definitions
 
-        protected virtual void Definitions(TemplateContext context, JObject definitions)
+        protected void Definitions(TemplateContext context, JObject definitions)
         {
             if (definitions == null || definitions.Count == 0)
                 return;
 
-            var graph = new CustomTypeDependencyGraph();
+            var graph = new CustomTypeTopologyGraph();
             foreach (var definition in definitions)
             {
-                graph.Track(definition.Key, definition.Value as JObject);
+                graph.Add(definition.Key, definition.Value as JObject);
             }
 
-            var ordered = graph.GetOrdered();
-            foreach (var definition in ordered)
+            foreach (var definition in graph.GetOrdered())
             {
                 Definition(context, definition.Key, definition.Value);
             }
