@@ -326,6 +326,31 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Pillar.CostOptimization/</loc>
+         <lastmod>2024-03-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Pillar.OperationalExcellence/</loc>
+         <lastmod>2024-03-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Pillar.PerformanceEfficiency/</loc>
+         <lastmod>2024-03-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Pillar.Reliability/</loc>
+         <lastmod>2024-03-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Pillar.Security/</loc>
+         <lastmod>2024-03-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview/</loc>
          <lastmod>2024-03-10</lastmod>
          <changefreq>daily</changefreq>
