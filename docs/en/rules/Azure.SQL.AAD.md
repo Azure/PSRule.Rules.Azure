@@ -1,32 +1,32 @@
 ---
-reviewed: 2023-07-26
+reviewed: 2024-03-11
 severity: Critical
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: SQL Database
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.AAD/
 ---
 
-# Use AAD authentication with SQL databases
+# Use Entra ID authentication with SQL databases
 
 ## SYNOPSIS
 
-Use Azure Active Directory (AAD) authentication with Azure SQL databases.
+Use Entra ID authentication with Azure SQL databases.
 
 ## DESCRIPTION
 
-Azure SQL Database offer two authentication models, Azure Active Directory (AAD) and SQL authentication.
-AAD authentication supports centralized identity management in addition to modern password protections.
-Some of the benefits of AAD authentication over SQL authentication including:
+Azure SQL Database offer two authentication models, Entra ID (previously known as Azure AD) and SQL authentication.
+Entra ID authentication supports centralized identity management in addition to modern password protections.
+Some of the benefits of Entra ID authentication over SQL authentication including:
 
 - Support for Azure Multi-Factor Authentication (MFA).
 - Conditional-based access with Conditional Access.
 
-It is also possible to disable SQL authentication entirely and only use AAD authentication.
+It is also possible to disable SQL authentication entirely and only use Entra ID authentication.
 
 ## RECOMMENDATION
 
-Consider using Azure Active Directory (AAD) authentication with SQL databases.
+Consider using Entra ID authentication with SQL databases.
 Additionally, consider disabling SQL authentication.
 
 ## EXAMPLES
@@ -155,17 +155,18 @@ Set-AzSqlServerActiveDirectoryAdministrator -ResourceGroupName '<resource_group>
 ## NOTES
 
 In newer API versions the `properties.administrators` property can be configured.
-Azure AD authentication can also be configured using the `Microsoft.Sql/servers/administrators` sub-resource.
+Entra ID authentication can also be configured using the `Microsoft.Sql/servers/administrators` sub-resource.
 
 If both the `properties.administrators` property and `Microsoft.Sql/servers/administrators` are set,
 the sub-resource will override the property.
 
 ## LINKS
 
-- [Use modern password protection](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authentication#use-modern-password-protection)
-- [Configure and manage Azure AD authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
-- [Using multi-factor Azure Active Directory authentication](https://learn.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-sql-security-baseline#im-1-use-centralized-identity-and-authentication-system)
+- [Configure and manage Microsoft Entra authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
+- [Using Microsoft Entra multi-factor authentication](https://learn.microsoft.com/azure/azure-sql/database/authentication-mfa-ssms-overview)
 - [Conditional Access with Azure SQL Database and Azure Synapse Analytics](https://learn.microsoft.com/azure/azure-sql/database/conditional-access-configure)
-- [Azure AD-only authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication)
-- [Azure Policy for Azure Active Directory only authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication-policy)
+- [Microsoft Entra-only authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication)
+- [Azure Policy for Microsoft Entra-only authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication-policy)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers)

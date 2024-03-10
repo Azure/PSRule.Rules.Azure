@@ -19,13 +19,33 @@ metadata:
     ruleSet: 2022_03
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'IM-1'
+    Azure.MCSB.v1/control: IM-1
 spec:
   type:
     - Microsoft.ServiceBus/namespaces
   condition:
     field: properties.disableLocalAuth
     equals: true
+
+---
+# Synopsis: Enforce namespaces to require that clients send and receive data with TLS 1.2 version.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ServiceBus.MinTLS
+  ref: AZR-000315
+  tags:
+    release: GA
+    ruleSet: 2022_12
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: DP-3
+spec:
+  type:
+  - Microsoft.ServiceBus/namespaces
+  condition:
+    field: properties.minimumTlsVersion
+    equals: '1.2'
 
 #endregion Rules
 

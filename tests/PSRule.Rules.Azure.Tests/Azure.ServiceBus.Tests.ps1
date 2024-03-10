@@ -79,8 +79,8 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'servicens-A', 'servicens-B';
 
-            $ruleResult[0].Reason | Should -BeExactly "The service bus namespace 'servicens-A' should minimum use TLS 1.2 version.";
-            $ruleResult[1].Reason | Should -BeExactly "The service bus namespace 'servicens-B' should minimum use TLS 1.2 version.";
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.minimumTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.minimumTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
