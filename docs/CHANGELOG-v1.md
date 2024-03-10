@@ -34,6 +34,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.34.2:
 
+- New features:
+  - Added WAF pillar specific baselines by @BernieWhite.
+    [#1633](https://github.com/Azure/PSRule.Rules.Azure/issues/1633)
+    - Use pillar specific baselines to target a specific area of the Azure Well-Architected Framework.
+    - The following baselines have been added:
+      - `Azure.Pillar.CostOptimization`
+      - `Azure.Pillar.OperationalExcellence`
+      - `Azure.Pillar.PerformanceEfficiency`
+      - `Azure.Pillar.Reliability`
+      - `Azure.Pillar.Security`
 - General improvements:
   - Documentation improvements by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)

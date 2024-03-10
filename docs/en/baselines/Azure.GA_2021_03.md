@@ -1,3 +1,7 @@
+---
+obsolete: true
+---
+
 # Azure.GA_2021_03
 
 <!-- OBSOLETE -->
@@ -6,7 +10,7 @@ Include rules released March 2021 or prior for Azure GA features.
 
 ## Rules
 
-The following rules are included within `Azure.GA_2021_03`. This baseline includes a total of 191 rules.
+The following rules are included within the `Azure.GA_2021_03` baseline. This baseline includes a total of 191 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------

@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 #
-# Taxonomies for PSRule for Azure
+# Baselines for the Microsoft Cloud Security Benchmark.
 #
 
 ---
@@ -12,7 +12,8 @@ kind: Baseline
 metadata:
   name: Azure.MCSB.v1
   annotations:
-    taxonomies: Azure.MCSB.v1
+    taxonomy: Azure.MCSB.v1
+    export: true
     experimental: true
 spec:
   rule:

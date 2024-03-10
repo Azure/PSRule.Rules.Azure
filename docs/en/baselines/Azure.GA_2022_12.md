@@ -1,3 +1,7 @@
+---
+obsolete: true
+---
+
 # Azure.GA_2022_12
 
 <!-- OBSOLETE -->
@@ -6,7 +10,7 @@ Include rules released December 2022 or prior for Azure GA features.
 
 ## Rules
 
-The following rules are included within `Azure.GA_2022_12`. This baseline includes a total of 339 rules.
+The following rules are included within the `Azure.GA_2022_12` baseline. This baseline includes a total of 339 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------

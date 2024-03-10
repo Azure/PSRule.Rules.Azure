@@ -1,3 +1,7 @@
+---
+obsolete: true
+---
+
 # Azure.Preview_2023_09
 
 <!-- OBSOLETE -->
@@ -6,7 +10,7 @@ Include rules released September 2023 or prior for Azure preview only features.
 
 ## Rules
 
-The following rules are included within `Azure.Preview_2023_09`. This baseline includes a total of 9 rules.
+The following rules are included within the `Azure.Preview_2023_09` baseline. This baseline includes a total of 9 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------

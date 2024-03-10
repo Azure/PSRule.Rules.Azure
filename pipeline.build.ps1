@@ -383,7 +383,7 @@ task BuildRuleDocs Build, Dependencies, {
             Synopsis = $_.Info.Synopsis
             Recommendation = $_.Info.Recommendation
             Pillar = $_.Tag.'Azure.WAF/pillar'
-            Control = $_.Tag.'Azure.MCSB.v1/control'
+            Control = $_.Labels.'Azure.MCSB.v1/control'
             Source = "https://github.com/Azure/PSRule.Rules.Azure/blob/main/src/PSRule.Rules.Azure/rules/$(($_.Source.Path -split '[/\\]')[-1])"
         }
     }
@@ -408,7 +408,7 @@ task BuildRuleDocs Build, Dependencies, {
             Synopsis = $_.Info.Synopsis
             Recommendation = $_.Info.Recommendation
             Pillar = $_.Tag.'Azure.WAF/pillar'
-            Control = $_.Tag.'Azure.MCSB.v1/control'
+            Control = $_.Labels.'Azure.MCSB.v1/control'
             Source = "https://github.com/Azure/PSRule.Rules.Azure/blob/main/src/PSRule.Rules.Azure/rules/$(($_.Source.Path -split '[/\\]')[-1])"
         }
     }

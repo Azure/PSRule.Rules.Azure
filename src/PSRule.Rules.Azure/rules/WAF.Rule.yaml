@@ -1,0 +1,86 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# WAF pillar specific baselines.
+#
+
+---
+# Synopsis: Microsoft Azure Well-Architected Framework - Security pillar specific baseline.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Pillar.Security
+  annotations:
+    taxonomy: Azure.WAF
+    pillar: Security
+    export: true
+spec:
+  rule:
+    tag:
+      release: GA
+      Azure.WAF/pillar: Security
+
+---
+# Synopsis: Microsoft Azure Well-Architected Framework - Operational Excellence pillar specific baseline.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Pillar.OperationalExcellence
+  annotations:
+    taxonomy: Azure.WAF
+    pillar: Operational Excellence
+    export: true
+spec:
+  rule:
+    tag:
+      release: GA
+      Azure.WAF/pillar: Operational Excellence
+
+---
+# Synopsis: Microsoft Azure Well-Architected Framework - Cost Optimization pillar specific baseline.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Pillar.CostOptimization
+  annotations:
+    taxonomy: Azure.WAF
+    pillar: Cost Optimization
+    export: true
+spec:
+  rule:
+    tag:
+      release: GA
+      Azure.WAF/pillar: Cost Optimization
+
+---
+# Synopsis: Microsoft Azure Well-Architected Framework - Reliability pillar specific baseline.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Pillar.Reliability
+  annotations:
+    taxonomy: Azure.WAF
+    pillar: Reliability
+    export: true
+spec:
+  rule:
+    tag:
+      release: GA
+      Azure.WAF/pillar: Reliability
+
+---
+# Synopsis: Microsoft Azure Well-Architected Framework - Performance Efficiency pillar specific baseline.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Pillar.PerformanceEfficiency
+  annotations:
+    taxonomy: Azure.WAF
+    pillar: Performance Efficiency
+    export: true
+spec:
+  rule:
+    tag:
+      release: GA
+      Azure.WAF/pillar: Performance Efficiency

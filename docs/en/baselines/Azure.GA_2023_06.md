@@ -1,3 +1,7 @@
+---
+obsolete: true
+---
+
 # Azure.GA_2023_06
 
 <!-- OBSOLETE -->
@@ -6,7 +10,7 @@ Include rules released June 2023 or prior for Azure GA features.
 
 ## Rules
 
-The following rules are included within `Azure.GA_2023_06`. This baseline includes a total of 374 rules.
+The following rules are included within the `Azure.GA_2023_06` baseline. This baseline includes a total of 374 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -229,7 +233,7 @@ Name | Synopsis | Severity
 [Azure.Policy.Descriptors](../rules/Azure.Policy.Descriptors.md) | Policy and initiative definitions should use a display name, description, and category. | Awareness
 [Azure.Policy.ExemptionDescriptors](../rules/Azure.Policy.ExemptionDescriptors.md) | Policy exemptions should use a display name and description. | Awareness
 [Azure.Policy.WaiverExpiry](../rules/Azure.Policy.WaiverExpiry.md) | Configure policy waiver exemptions to expire. | Awareness
-[Azure.PostgreSQL.AAD](../rules/Azure.PostgreSQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure Database for PostgreSQL databases. | Critical
+[Azure.PostgreSQL.AAD](../rules/Azure.PostgreSQL.AAD.md) | Use Entra ID authentication with Azure Database for PostgreSQL databases. | Critical
 [Azure.PostgreSQL.AADOnly](../rules/Azure.PostgreSQL.AADOnly.md) | Ensure Azure AD-only authentication is enabled with Azure Database for PostgreSQL databases. | Important
 [Azure.PostgreSQL.AllowAzureAccess](../rules/Azure.PostgreSQL.AllowAzureAccess.md) | Determine if access from Azure services is required. | Important
 [Azure.PostgreSQL.DefenderCloud](../rules/Azure.PostgreSQL.DefenderCloud.md) | Enable Microsoft Defender for Cloud for Azure Database for PostgreSQL. | Important
