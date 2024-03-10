@@ -80,7 +80,7 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             $ruleResult.TargetName | Should -BeIn 'servicens-A', 'servicens-B';
 
             $ruleResult[0].Reason | Should -BeExactly "Path properties.minimumTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
-            $ruleResult[1].Reason | Should -BeExactly "Path properties.minimumTlsVersion: The field 'properties.minimumTlsVersion' does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.minimumTlsVersion: Is set to '1.0'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
