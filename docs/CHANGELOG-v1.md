@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.34.2:
+
+- General improvements:
+  - Documentation improvements by @BernieWhite.
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+
 ## v1.34.2
 
 What's changed since v1.34.1:

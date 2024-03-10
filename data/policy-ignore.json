@@ -209,5 +209,13 @@
     ],
     "reason": "NotApplicable",
     "value": "Checking for BYOK of a storage account used for logging activity is not enforcable by code (#2725)."
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/cfb11c26-f069-4c14-8e36-56c394dae5af",
+      "/providers/Microsoft.Authorization/policyDefinitions/910711a6-8aa2-4f15-ae62-1e5b2ed3ef9e"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.ServiceBus.DisableLocalAuth"
   }
 ]
