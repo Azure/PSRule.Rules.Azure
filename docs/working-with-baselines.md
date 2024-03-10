@@ -58,17 +58,33 @@ Quarterly baselines don't address all cases where a previously passing pipeline 
   Currently rule configuration defaults are not included in quarterly baselines.
   To workaround this, override the rule configuration option by setting the value in `ps-rule.yaml`.
 
+## Pillar specific baselines
+
+Pillar specific baselines includes rules aligned to a specific Microsoft Azure Well-Architected Framework pillar.
+
+Use these baselines to focus on improvement aligned to a specific area of the Azure Well-Architected Framework.
+Only rules that related to GA Azure features are included in these baselines.
+These baselines are best used for ad-hoc scans.
+
+The following baselines are available:
+
+- `Azure.Pillar.CostOptimization` &mdash; A baseline that only includes cost optimization rules.
+- `Azure.Pillar.OperationalExcellence` &mdash; A baseline that only includes operational excellence rules.
+- `Azure.Pillar.PerformanceEfficiency` &mdash; A baseline that only includes performance efficiency rules.
+- `Azure.Pillar.Reliability` &mdash; A baseline that only includes reliability rules.
+- `Azure.Pillar.Security` &mdash; A baseline that only includes security rules.
+
 ## Additional standard baselines
 
-In additional to quarterly baselines, some additional baselines exist:
+In additional to quarterly and pillar specific baselines, some additional baselines exist:
 
-- `Azure.Default` - Includes rules for GA Azure features.
+- `Azure.Default` &mdash; Includes rules for GA Azure features.
   This is the default baseline that is used when no baseline is specified.
   Rules for Azure features that are within the scope of a public or private preview are not included.
-- `Azure.Preview` - Includes all rules for GA and preview Azure features.
-- `Azure.All` - Includes all Azure rules shipped with PSRule for Azure.
+- `Azure.Preview` &mdash; Includes all rules for GA and preview Azure features.
+- `Azure.All` &mdash; Includes all Azure rules shipped with PSRule for Azure.
   This is functionally the same as `Azure.Preview` however intended for internal use only.
-- `Azure.MCSB.v1` - Includes rules related to Microsoft cloud security benchmark (MCSB) controls.
+- `Azure.MCSB.v1` &mdash; Includes rules related to Microsoft cloud security benchmark (MCSB) controls.
   This baseline is currently experimental and may change in future releases.
   You can learn more about MCSB within PSRule for Azure in the [Microsoft cloud security benchmark (MCSB)][3] topic.
 
