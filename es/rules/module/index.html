@@ -12925,6 +12925,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#co10-data-costs" class="md-nav__link">
+    <span class="md-ellipsis">
+      CO:10 Data costs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#co13-personnel-time" class="md-nav__link">
     <span class="md-ellipsis">
       CO:13 Personnel time
@@ -12937,24 +12946,6 @@
   <a href="#co14-consolidation" class="md-nav__link">
     <span class="md-ellipsis">
       CO:14 Consolidation
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pricing-and-billing-model" class="md-nav__link">
-    <span class="md-ellipsis">
-      Pricing and billing model
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#resource-usage" class="md-nav__link">
-    <span class="md-ellipsis">
-      Resource usage
     </span>
   </a>
   
@@ -13751,6 +13742,12 @@
 </thead>
 <tbody>
 <tr>
+<td><a href="Azure.VM.PromoSku.md">Azure.VM.PromoSku</a></td>
+<td>Virtual machines (VMs) should not use expired promotional SKU.</td>
+<td>Awareness</td>
+<td>Error</td>
+</tr>
+<tr>
 <td><a href="Azure.VM.UseHybridUseBenefit.md">Azure.VM.UseHybridUseBenefit</a></td>
 <td>Use Azure Hybrid Benefit for applicable virtual machine (VM) workloads.</td>
 <td>Awareness</td>
@@ -13797,6 +13794,37 @@
 <tr>
 <td><a href="../Azure.ACR.Usage/">Azure.ACR.Usage</a></td>
 <td>Regularly remove deprecated and unneeded images to reduce storage usage.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="Azure.VM.DiskAttached.md">Azure.VM.DiskAttached</a></td>
+<td>Managed disks should be attached to virtual machines or removed.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="Azure.VM.ShouldNotBeStopped.md">Azure.VM.ShouldNotBeStopped</a></td>
+<td>Azure VMs should be running or in a deallocated state.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+</tbody>
+</table>
+<h3 id="co10-data-costs">CO:10 Data costs<a class="headerlink" href="#co10-data-costs" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Azure.ACR.Retention/">Azure.ACR.Retention</a></td>
+<td>Use a retention policy to cleanup untagged manifests.</td>
 <td>Important</td>
 <td>Error</td>
 </tr>
@@ -13859,56 +13887,6 @@
 <tr>
 <td><a href="Azure.ServiceBus.Usage.md">Azure.ServiceBus.Usage</a></td>
 <td>Regularly remove unused resources to reduce costs.</td>
-<td>Important</td>
-<td>Error</td>
-</tr>
-</tbody>
-</table>
-<h3 id="pricing-and-billing-model">Pricing and billing model<a class="headerlink" href="#pricing-and-billing-model" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Synopsis</th>
-<th>Severity</th>
-<th>Level</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="Azure.VM.PromoSku.md">Azure.VM.PromoSku</a></td>
-<td>Virtual machines (VMs) should not use expired promotional SKU.</td>
-<td>Awareness</td>
-<td>Error</td>
-</tr>
-</tbody>
-</table>
-<h3 id="resource-usage">Resource usage<a class="headerlink" href="#resource-usage" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Synopsis</th>
-<th>Severity</th>
-<th>Level</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Azure.ACR.Retention/">Azure.ACR.Retention</a></td>
-<td>Use a retention policy to cleanup untagged manifests.</td>
-<td>Important</td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="Azure.VM.DiskAttached.md">Azure.VM.DiskAttached</a></td>
-<td>Managed disks should be attached to virtual machines or removed.</td>
-<td>Important</td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="Azure.VM.ShouldNotBeStopped.md">Azure.VM.ShouldNotBeStopped</a></td>
-<td>Azure VMs should be running or in a deallocated state.</td>
 <td>Important</td>
 <td>Error</td>
 </tr>
