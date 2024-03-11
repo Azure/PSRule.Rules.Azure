@@ -28,7 +28,8 @@ Document 'baseline' -If { $PSDocs.TargetObject.Name -ne 'Azure.MCSB.v1' } {
     Write-Verbose -Message "[Baseline] -- Found $ruleCount rules.";
 
     Section 'Rules' -If { $ruleCount -gt 0 } {
-        "The following rules are included within the ``$baselineName`` baseline. This baseline includes a total of $ruleCount rules.";
+        "The following rules are included within the ``$baselineName`` baseline.";
+        "This baseline includes a total of $ruleCount rules.";
         $rules | Table -Property @{ Name = 'Name'; Expression = {
             "[$($_.Name)](../rules/$($_.Name).md)"
         }}, Synopsis, @{ Name = 'Severity'; Expression = {
@@ -66,7 +67,8 @@ Document 'Azure.MCSB.Baseline' -If { $PSDocs.TargetObject.Name -eq 'Azure.MCSB.v
     Write-Verbose -Message "[Baseline] -- Found $ruleCount rules.";
 
     Section 'Controls' -If { $ruleCount -gt 0 } {
-        "The following rules are included within the ``$baselineName`` baseline. This baseline includes a total of $ruleCount rules.";
+        "The following rules are included within the ``$baselineName`` baseline.";
+        "This baseline includes a total of $ruleCount rules.";
         $rules | Table -Property @{ Name = 'Name'; Expression = {
             "[$($_.Name)](../rules/$($_.Name).md)"
         }}, Synopsis, @{ Name = 'Severity'; Expression = {

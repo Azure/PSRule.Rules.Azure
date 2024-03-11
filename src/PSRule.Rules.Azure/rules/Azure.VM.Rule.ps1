@@ -117,7 +117,7 @@ Rule 'Azure.VM.ComputerName' -Ref 'AZR-000249' -Type 'Microsoft.Compute/virtualM
 #region Managed Disks
 
 # Synopsis: Managed disks should be attached to virtual machines
-Rule 'Azure.VM.DiskAttached' -Ref 'AZR-000250' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') -and (IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-4' } {
+Rule 'Azure.VM.DiskAttached' -Ref 'AZR-000250' -Type 'Microsoft.Compute/disks' -If { ($TargetObject.ResourceName -notlike '*-ASRReplica') -and (IsExport) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Cost Optimization'; } {
     # Disks should be attached unless they are used by ASR, which are not attached until fail over
     # Disks for VMs that are off are marked as Reserved
     Within 'properties.diskState' 'Attached', 'Reserved' -Reason $LocalizedData.ResourceNotAssociated
