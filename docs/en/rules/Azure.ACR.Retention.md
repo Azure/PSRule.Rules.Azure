@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Cost Optimization
-category: Resource usage
+category: CO:10 Data costs
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Retention/
 ---
@@ -40,7 +40,7 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2023-01-01-preview",
+  "apiVersion": "2023-11-01-preview",
   "name": "[parameters('registryName')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -81,7 +81,7 @@ To deploy Container Registries that pass this rule:
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
+resource acr 'Microsoft.ContainerRegistry/registries@2023-11-01-preview' = {
   name: registryName
   location: location
   sku: {
@@ -119,7 +119,8 @@ Retention policies for Azure Container Registry is currently in preview.
 
 ## LINKS
 
-- [Scalable storage](https://docs.microsoft.com/azure/container-registry/container-registry-storage#scalable-storage)
-- [Set a retention policy for untagged manifests](https://docs.microsoft.com/azure/container-registry/container-registry-retention-policy)
-- [Lock a container image in an Azure container registry](https://docs.microsoft.com/azure/container-registry/container-registry-image-lock)
+- [CO:10 Data costs](https://learn.microsoft.com/azure/well-architected/cost-optimization/optimize-data-costs)
+- [Set a retention policy for untagged manifests](https://learn.microsoft.com/azure/container-registry/container-registry-retention-policy)
+- [Lock a container image in an Azure container registry](https://learn.microsoft.com/azure/container-registry/container-registry-image-lock)
+- [Scalable storage](https://learn.microsoft.com/azure/container-registry/container-registry-storage#scalable-storage)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

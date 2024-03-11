@@ -20,7 +20,7 @@ To store data in an ADX cluster, you must first create a database.
 Clusters without any databases are considered unused and can be removed to reduce costs and management overhead.
 
 Additionally, ADX clusters on a paid tier can stopped.
-Stopping an ADX cluster deallocates and removes compute resources.
+Stopping an ADX cluster de-allocates and removes compute resources.
 While in the stopped state, compute charges are not incurred.
 Any data stored in the cluster is persisted while the cluster is stopped.
 
