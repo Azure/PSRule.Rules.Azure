@@ -13,6 +13,9 @@ import mkdocs.structure.files
 import mkdocs.structure.nav
 import mkdocs.structure.pages
 
+from mkdocs.structure.files import File, Files
+from mkdocs.structure.pages import Page
+
 log = logging.getLogger(f"mkdocs.plugins.{__name__}")
 rulesItem: mkdocs.structure.nav.Section = mkdocs.structure.nav.Section("Rules", [])
 

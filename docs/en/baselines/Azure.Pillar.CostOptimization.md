@@ -2,6 +2,7 @@
 taxonomy: Azure.WAF
 pillar: Cost Optimization
 export: true
+moduleVersion: v1.35.0
 ---
 
 # Azure.Pillar.CostOptimization
@@ -10,7 +11,9 @@ Microsoft Azure Well-Architected Framework - Cost Optimization pillar specific b
 
 ## Rules
 
-The following rules are included within the `Azure.Pillar.CostOptimization` baseline. This baseline includes a total of 13 rules.
+The following rules are included within the `Azure.Pillar.CostOptimization` baseline.
+
+This baseline includes a total of 14 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -23,6 +26,7 @@ Name | Synopsis | Severity
 [Azure.NIC.Attached](../rules/Azure.NIC.Attached.md) | Network interfaces (NICs) that are not used should be removed. | Awareness
 [Azure.Resource.UseTags](../rules/Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | Awareness
 [Azure.ServiceBus.Usage](../rules/Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | Important
+[Azure.VM.DiskAttached](../rules/Azure.VM.DiskAttached.md) | Managed disks should be attached to virtual machines or removed. | Important
 [Azure.VM.DiskSizeAlignment](../rules/Azure.VM.DiskSizeAlignment.md) | Align to the Managed Disk billing increments to improve cost efficiency. | Awareness
 [Azure.VM.PromoSku](../rules/Azure.VM.PromoSku.md) | Virtual machines (VMs) should not use expired promotional SKU. | Awareness
 [Azure.VM.ShouldNotBeStopped](../rules/Azure.VM.ShouldNotBeStopped.md) | Azure VMs should be running or in a deallocated state. | Important

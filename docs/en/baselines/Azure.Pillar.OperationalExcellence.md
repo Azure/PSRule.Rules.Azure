@@ -2,6 +2,7 @@
 taxonomy: Azure.WAF
 pillar: Operational Excellence
 export: true
+moduleVersion: v1.35.0
 ---
 
 # Azure.Pillar.OperationalExcellence
@@ -10,7 +11,9 @@ Microsoft Azure Well-Architected Framework - Operational Excellence pillar speci
 
 ## Rules
 
-The following rules are included within the `Azure.Pillar.OperationalExcellence` baseline. This baseline includes a total of 109 rules.
+The following rules are included within the `Azure.Pillar.OperationalExcellence` baseline.
+
+This baseline includes a total of 109 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------

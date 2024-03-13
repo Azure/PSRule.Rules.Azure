@@ -4,7 +4,9 @@ Include rules released December 2023 or prior for Azure preview only features.
 
 ## Rules
 
-The following rules are included within the `Azure.Preview_2023_12` baseline. This baseline includes a total of 9 rules.
+The following rules are included within the `Azure.Preview_2023_12` baseline.
+
+This baseline includes a total of 9 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
