@@ -10,7 +10,9 @@ Include rules released December 2020 or prior for Azure GA features.
 
 ## Rules
 
-The following rules are included within the `Azure.GA_2020_12` baseline. This baseline includes a total of 176 rules.
+The following rules are included within the `Azure.GA_2020_12` baseline.
+
+This baseline includes a total of 176 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -130,7 +132,7 @@ Name | Synopsis | Severity
 [Azure.ResourceGroup.Name](../rules/Azure.ResourceGroup.Name.md) | Resource Group names should meet naming requirements. | Awareness
 [Azure.Route.Name](../rules/Azure.Route.Name.md) | Route table names should meet naming requirements. | Awareness
 [Azure.SignalR.Name](../rules/Azure.SignalR.Name.md) | SignalR service instance names should meet naming requirements. | Awareness
-[Azure.SQL.AAD](../rules/Azure.SQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure SQL databases. | Critical
+[Azure.SQL.AAD](../rules/Azure.SQL.AAD.md) | Use Entra ID authentication with Azure SQL databases. | Critical
 [Azure.SQL.AllowAzureAccess](../rules/Azure.SQL.AllowAzureAccess.md) | Determine if access from Azure services is required. | Important
 [Azure.SQL.Auditing](../rules/Azure.SQL.Auditing.md) | Enable auditing for Azure SQL logical server. | Important
 [Azure.SQL.DBName](../rules/Azure.SQL.DBName.md) | Azure SQL Database names should meet naming requirements. | Awareness

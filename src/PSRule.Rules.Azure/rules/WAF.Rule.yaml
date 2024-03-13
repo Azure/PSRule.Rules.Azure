@@ -15,6 +15,7 @@ metadata:
     taxonomy: Azure.WAF
     pillar: Security
     export: true
+    moduleVersion: v1.35.0
 spec:
   rule:
     tag:
@@ -31,6 +32,7 @@ metadata:
     taxonomy: Azure.WAF
     pillar: Operational Excellence
     export: true
+    moduleVersion: v1.35.0
 spec:
   rule:
     tag:
@@ -47,6 +49,7 @@ metadata:
     taxonomy: Azure.WAF
     pillar: Cost Optimization
     export: true
+    moduleVersion: v1.35.0
 spec:
   rule:
     tag:
@@ -63,6 +66,7 @@ metadata:
     taxonomy: Azure.WAF
     pillar: Reliability
     export: true
+    moduleVersion: v1.35.0
 spec:
   rule:
     tag:
@@ -79,6 +83,7 @@ metadata:
     taxonomy: Azure.WAF
     pillar: Performance Efficiency
     export: true
+    moduleVersion: v1.35.0
 spec:
   rule:
     tag:

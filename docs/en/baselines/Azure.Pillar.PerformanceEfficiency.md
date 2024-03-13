@@ -2,6 +2,7 @@
 taxonomy: Azure.WAF
 pillar: Performance Efficiency
 export: true
+moduleVersion: v1.35.0
 ---
 
 # Azure.Pillar.PerformanceEfficiency
@@ -10,7 +11,9 @@ Microsoft Azure Well-Architected Framework - Performance Efficiency pillar speci
 
 ## Rules
 
-The following rules are included within the `Azure.Pillar.PerformanceEfficiency` baseline. This baseline includes a total of 18 rules.
+The following rules are included within the `Azure.Pillar.PerformanceEfficiency` baseline.
+
+This baseline includes a total of 18 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------

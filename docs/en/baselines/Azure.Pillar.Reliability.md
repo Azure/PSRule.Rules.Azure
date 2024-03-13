@@ -2,6 +2,7 @@
 taxonomy: Azure.WAF
 pillar: Reliability
 export: true
+moduleVersion: v1.35.0
 ---
 
 # Azure.Pillar.Reliability
@@ -10,7 +11,9 @@ Microsoft Azure Well-Architected Framework - Reliability pillar specific baselin
 
 ## Rules
 
-The following rules are included within the `Azure.Pillar.Reliability` baseline. This baseline includes a total of 61 rules.
+The following rules are included within the `Azure.Pillar.Reliability` baseline.
+
+This baseline includes a total of 61 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
