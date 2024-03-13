@@ -60,6 +60,8 @@ Quarterly baselines don't address all cases where a previously passing pipeline 
 
 ## Pillar specific baselines
 
+<!-- module:version v1.35.0 -->
+
 Pillar specific baselines includes rules aligned to a specific Microsoft Azure Well-Architected Framework pillar.
 
 Use these baselines to focus on improvement aligned to a specific area of the Azure Well-Architected Framework.
