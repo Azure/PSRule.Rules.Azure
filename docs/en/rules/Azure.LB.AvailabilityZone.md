@@ -27,7 +27,7 @@ Consider using zone-redundant load balancers deployed with Standard SKU.
 
 This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
 
-This rule fails when `"zones"` is constrained to a single(zonal) zone, and passes when set to `["1", "2", "3"]`.
+This rule fails when `"zones"` is constrained to a single(zonal) zone or is not configured, and passes when set to `["1", "2", "3"]`.
 
 ## EXAMPLES
 
