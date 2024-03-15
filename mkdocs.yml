@@ -137,12 +137,9 @@ plugins:
 - git-committers:
     repository: Azure/PSRule.Rules.Azure
     branch: main
-- mkdocs-simple-hooks:
-    hooks:
-      on_page_markdown: "docs.hooks:replace_maml"
-      on_nav: "docs.hooks:build_reference_nav"
 - search
-- tags
+- tags:
+    tags: false
 - redirects:
     redirect_maps:
       install-instructions.md: install.md
@@ -153,6 +150,9 @@ plugins:
 
 hooks:
   - docs/hooks/shortcodes.py
+  - docs/hooks/metadata.py
+  - docs/hooks/aliases.py
+  - docs/hooks/old_hooks.py
 
 extra:
   social:

@@ -6,7 +6,7 @@ resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.PolicyBase/
 ---
 
-# Base element
+# Use base APIM policy element
 
 ## SYNOPSIS
 
@@ -79,7 +79,8 @@ resource apiName_policy 'Microsoft.ApiManagement/service/apis/policies@2021-08-0
 
 ## NOTES
 
-The rule only checks against `rawxml` and `xml` policy formatted content. Global policies are excluded since they don't benefit from the base element.
+The rule only checks against `rawxml` and `xml` policy formatted content.
+Global policies are excluded since they don't benefit from the base element.
 
 ## LINKS
 
