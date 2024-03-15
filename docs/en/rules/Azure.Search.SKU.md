@@ -15,7 +15,7 @@ Use the basic and standard tiers for entry level workloads.
 
 ## DESCRIPTION
 
-AI Search (Previously know as Cognitive Search) services using the Free tier run on resources shared across multiple subscribers.
+AI Search (Previously known as Cognitive Search) services using the Free tier run on resources shared across multiple subscribers.
 The Free tier is only suggested for limited small scale tests such as running code samples or tutorials.
 
 Running more demanding workloads on the Free tier may experience unpredictable performance or issues.

@@ -16,7 +16,7 @@ AI Search service names should meet naming requirements.
 ## DESCRIPTION
 
 When naming Azure resources, resource names must meet service requirements.
-The requirements for AI Search (Previously know as Cognitive Search) service names are:
+The requirements for AI Search (Previously known as Cognitive Search) service names are:
 
 - Between 2 and 60 characters long.
 - Lowercase letters, numbers, and hyphens.

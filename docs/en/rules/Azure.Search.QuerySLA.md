@@ -15,7 +15,7 @@ Use a minimum of 2 replicas to receive an SLA for index queries.
 
 ## DESCRIPTION
 
-AI Search (Previously know as Cognitive Search) services support _indexing_ and _querying_.
+AI Search (Previously known as Cognitive Search) services support _indexing_ and _querying_.
 Indexing is the process of loading content into the service to make it searchable.
 Querying is the process where a client searches for content by sending queries to the index.
 

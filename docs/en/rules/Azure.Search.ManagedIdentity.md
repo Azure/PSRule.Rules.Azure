@@ -15,7 +15,7 @@ Configure managed identities to access Azure resources.
 
 ## DESCRIPTION
 
-AI Search (Previously know as Cognitive Search) may require connection to other Azure resources.
+AI Search (Previously known as Cognitive Search) may require connection to other Azure resources.
 Connections to Azure resources are required to use some features including indexing and customer managed-keys.
 AI Search can use managed identities to authenticate to Azure resources without storing credentials.
 
