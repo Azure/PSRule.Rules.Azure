@@ -1,5 +1,7 @@
 
 .vs/
+.mono/
+.cache/
 reports/
 out/
 site/
