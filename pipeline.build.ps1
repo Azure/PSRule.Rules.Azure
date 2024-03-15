@@ -370,10 +370,17 @@ task BuildRuleDocs Build, Dependencies, {
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
     $metadata = @{}
     Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Culture 'en' | ForEach-Object {
+
+        # Build aliases
+        $ruleAlias = @()
+        if ($Null -ne $_.Alias -and $_.Alias.Length -gt 0) {
+            $ruleAlias = @($_.Alias.Name)
+        }
+
         $metadata[$_.Name] = [PSCustomObject]@{
             Name = $_.Name
             Ref = $_.Ref
-            Alias = @($_.Alias)
+            Alias = $ruleAlias
             Flags = $_.Flags
             Release = $_.Tag.release
             RuleSet = $_.Tag.ruleSet
@@ -395,10 +402,17 @@ task BuildRuleDocs Build, Dependencies, {
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
     $metadata = @{}
     Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Culture 'es' | ForEach-Object {
+
+        # Build aliases
+        $ruleAlias = @()
+        if ($Null -ne $_.Alias -and $_.Alias.Length -gt 0) {
+            $ruleAlias = @($_.Alias.Name)
+        }
+
         $metadata[$_.Name] = [PSCustomObject]@{
             Name = $_.Name
             Ref = $_.Ref
-            Alias = @($_.Alias)
+            Alias = $ruleAlias
             Flags = $_.Flags
             Release = $_.Tag.release
             RuleSet = $_.Tag.ruleSet
