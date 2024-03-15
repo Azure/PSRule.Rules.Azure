@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- General improvements:
+  - Add rule severity to rule documentation pages by @BernieWhite.
+    [#1243](https://github.com/Azure/PSRule.Rules.Azure/issues/1243)
+  - Add documentation redirects for renamed rules by @BernieWhite.
+    [#2757](https://github.com/Azure/PSRule.Rules.Azure/issues/2757)
+
 ## v1.35.0-B0012 (pre-release)
 
 What's changed since v1.34.2:
