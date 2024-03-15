@@ -27,12 +27,19 @@ Rule 'Azure.LB.Probe' -Ref 'AZR-000126' -Type 'Microsoft.Network/loadBalancers' 
 
 # Synopsis: Load balancers deployed with Standard SKU should be zone-redundant for high availability.
 Rule 'Azure.LB.AvailabilityZone' -Ref 'AZR-000127' -Type 'Microsoft.Network/loadBalancers' -If { IsStandardLoadBalancer } -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    # Check for availability zones based on Azure Firewall, because it is not exposed through the provider for load balancers.
+    $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Network', 'azureFirewalls');
+    $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $provider.ZoneMappings;
+
+    # Don't flag if the region does not support AZ.
+    if (-not $availabilityZones) {
+        return $Assert.Pass();
+    }
+
     foreach ($ipConfig in $TargetObject.Properties.frontendIPConfigurations) {
-        $Assert.AnyOf(
-            $Assert.SetOf($ipConfig, 'zones', @('1', '2', '3'))
-        ).Reason(
+        $Assert.SetOf($ipConfig, 'zones', @('1', '2', '3')).Reason(
             $LocalizedData.LBAvailabilityZone,
-            $TargetObject.name, 
+            $TargetObject.name,
             $ipConfig.name
         )
     }

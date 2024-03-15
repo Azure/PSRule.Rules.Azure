@@ -1533,7 +1533,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes",
-    "Location": "region",
+    "Location": "eastus",
     "ManagedBy": null,
     "ResourceName": "kubernetes",
     "Name": "kubernetes",
@@ -1709,7 +1709,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-A",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-A",
-    "Location": "region",
+    "Location": "eastus",
     "ManagedBy": null,
     "ResourceName": "lb-A",
     "Name": "lb-A",
@@ -1880,7 +1880,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-B",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-B",
-    "Location": "region",
+    "Location": "east US",
     "ManagedBy": null,
     "ResourceName": "lb-B",
     "Name": "lb-B",
@@ -2054,7 +2054,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/lb-C",
-    "Location": "region",
+    "Location": "notRegion",
     "ManagedBy": null,
     "ResourceName": "lb-C",
     "Name": "lb-C",
@@ -2081,12 +2081,7 @@
               }
             ],
             "privateIPAddressVersion": "IPv4"
-          },
-          "zones": [
-            "2",
-            "3",
-            "1"
-          ]
+          }
         }
       ],
       "backendAddressPools": [
