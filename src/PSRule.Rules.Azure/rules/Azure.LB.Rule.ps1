@@ -29,7 +29,6 @@ Rule 'Azure.LB.Probe' -Ref 'AZR-000126' -Type 'Microsoft.Network/loadBalancers' 
 Rule 'Azure.LB.AvailabilityZone' -Ref 'AZR-000127' -Type 'Microsoft.Network/loadBalancers' -If { IsStandardLoadBalancer } -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     foreach ($ipConfig in $TargetObject.Properties.frontendIPConfigurations) {
         $Assert.AnyOf(
-            $Assert.NullOrEmpty($ipConfig, 'zones'),
             $Assert.SetOf($ipConfig, 'zones', @('1', '2', '3'))
         ).Reason(
             $LocalizedData.LBAvailabilityZone,
