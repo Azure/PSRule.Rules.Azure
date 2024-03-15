@@ -32,6 +32,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Updated rule `Azure.LB.AvailabilityZone` to remove the passing assertion for null or an empty zones list for the property of `properties.frontendIPConfigurations[*].zones`
+
 ## v1.35.0-B0012 (pre-release)
 
 What's changed since v1.34.2:
