@@ -27,7 +27,7 @@ Rule 'Azure.Search.ManagedIdentity' -Ref 'AZR-000175' -Type 'Microsoft.Search/se
     $Assert.HasFieldValue($TargetObject, 'Identity.Type', 'SystemAssigned');
 }
 
-# Synopsis: Use Cognitive Search naming requirements.
+# Synopsis: Azure Cognitive Search service names should meet naming requirements.
 Rule 'Azure.Search.Name' -Ref 'AZR-000176' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     # https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate
 
