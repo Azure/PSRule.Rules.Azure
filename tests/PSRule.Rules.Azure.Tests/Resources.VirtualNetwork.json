@@ -1560,7 +1560,12 @@
               }
             ],
             "privateIPAddressVersion": "IPv4"
-          }
+          },
+          "zones": [
+            "1",
+            "2",
+            "3"
+          ]
         }
       ],
       "backendAddressPools": [
@@ -1731,10 +1736,7 @@
               }
             ],
             "privateIPAddressVersion": "IPv4"
-          },
-          "zones": [
-            "3"
-          ]
+          }
         }
       ],
       "backendAddressPools": [
