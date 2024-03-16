@@ -1,9 +1,9 @@
 ---
-reviewed: 2023-07-02
+reviewed: 2024-03-16
 severity: Important
 pillar: Reliability
-category: Application design
-resource: Cognitive Search
+category: RE:06 Data partitioning
+resource: AI Search
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.QuerySLA/
 ---
 
@@ -15,11 +15,11 @@ Use a minimum of 2 replicas to receive an SLA for index queries.
 
 ## DESCRIPTION
 
-Cognitive Search services support _indexing_ and _querying_.
+AI Search (Previously known as Cognitive Search) services support _indexing_ and _querying_.
 Indexing is the process of loading content into the service to make it searchable.
 Querying is the process where a client searches for content by sending queries to the index.
 
-Cognitive Search supports a configurable number of replicas.
+AI Search supports a configurable number of replicas.
 Having multiple replicas allows queries and index updates to load balance across multiple replicas.
 
 To receive a Service Level Agreement (SLA) for Search index queries a minimum of 2 replicas is required.
@@ -32,9 +32,9 @@ Consider increasing the number of replicas to a minimum of 2 to receive an SLA o
 
 ### Configure with Azure template
 
-To deploy Cognitive Search services that pass this rule:
+To deploy AI Search services that pass this rule:
 
-- Set the `replicaCount` to a minimum of 2.
+- Set the `properties.replicaCount` property to a minimum of `2`.
 
 For example:
 
@@ -60,9 +60,9 @@ For example:
 
 ### Configure with Bicep
 
-To deploy Cognitive Search services that pass this rule:
+To deploy AI Search services that pass this rule:
 
-- Set the `replicaCount` to a minimum of 2.
+- Set the `properties.replicaCount` property to a minimum of `2`.
 
 For example:
 
@@ -86,6 +86,7 @@ resource search 'Microsoft.Search/searchServices@2022-09-01' = {
 
 ## LINKS
 
-- [Resiliency checklist for specific Azure services](https://learn.microsoft.com/azure/architecture/checklist/resiliency-per-service#search)
-- [SLA for Azure Cognitive Search](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services)
+- [RE:06 Data partitioning](https://learn.microsoft.com/azure/well-architected/reliability/partition-data)
+- [Resiliency checklist for specific Azure services](https://learn.microsoft.com/azure/architecture/checklist/resiliency-per-service#cognitive-search)
+- [SLA for Azure AI Search](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.search/searchservices)
