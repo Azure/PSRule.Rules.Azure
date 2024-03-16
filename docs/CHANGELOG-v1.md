@@ -39,8 +39,11 @@ What's changed since pre-release v1.35.0-B0012:
     [#1243](https://github.com/Azure/PSRule.Rules.Azure/issues/1243)
   - Add documentation redirects for renamed rules by @BernieWhite.
     [#2757](https://github.com/Azure/PSRule.Rules.Azure/issues/2757)
+- Engineering:
+  - Bump coverlet.collector to v6.0.2.
+    [#2754](https://github.com/Azure/PSRule.Rules.Azure/pull/2754)
 - Bug fixes:
-  - Fixed rule `Azure.LB.AvailabilityZone` to remove the passing assertion for null or an empty zones list for the property of `properties.frontendIPConfigurations[*].zones` by @jtracey93.
+  - Fixed false negative from `Azure.LB.AvailabilityZone` when zone list is empty or null by @jtracey93.
     [#2759](https://github.com/Azure/PSRule.Rules.Azure/issues/2759)
 
 ## v1.35.0-B0012 (pre-release)
