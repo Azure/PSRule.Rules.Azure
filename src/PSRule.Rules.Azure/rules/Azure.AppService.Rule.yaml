@@ -71,9 +71,9 @@ metadata:
   name: Azure.AppService.ARRAffinity
   ref: AZR-000083
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Performance Efficiency'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Performance Efficiency
 spec:
   type:
   - Microsoft.Web/sites
@@ -90,9 +90,9 @@ metadata:
   name: Azure.AppService.UseHTTPS
   ref: AZR-000084
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'DP-3'
 spec:
@@ -163,10 +163,12 @@ spec:
     allOf:
     - type: '.'
       in:
-      - 'Microsoft.Web/sites'
-      - 'Microsoft.Web/sites/slots'
+      - Microsoft.Web/sites
+      - Microsoft.Web/sites/slots
     - field: kind
-      equals: 'functionapp'
+      contains: functionapp
+    - field: kind
+      notContains: workflowapp
 
 ---
 # Synopsis: App Service sites that are Logic App Standard apps.
@@ -181,10 +183,10 @@ spec:
     allOf:
     - type: '.'
       in:
-      - 'Microsoft.Web/sites'
-      - 'Microsoft.Web/sites/slots'
+      - Microsoft.Web/sites
+      - Microsoft.Web/sites/slots
     - field: kind
-      endsWith: 'workflowapp'
+      contains: workflowapp
 
 ---
 # Synopsis: App Services plans that are not elastic.

@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Data protection
+category: SE:07 Encryption
 resource: App Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.WebSecureFtp/
 ---
@@ -32,37 +32,42 @@ Also consider using Azure Policy to audit or enforce this configuration.
 
 To deploy Web Apps that pass this rule:
 
-- Set `properties.siteConfig.ftpsState` to `FtpsOnly` or `Disabled`.
+- Set the `properties.siteConfig.ftpsState` property to `FtpsOnly` or `Disabled`.
 
 For example:
 
 ```json
 {
-    "type": "Microsoft.Web/sites",
-    "apiVersion": "2021-03-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "kind": "web",
-    "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
-        "httpsOnly": true,
-        "siteConfig": {
-            "alwaysOn": true,
-            "minTlsVersion": "1.2",
-            "ftpsState": "FtpsOnly",
-            "remoteDebuggingEnabled": false,
-            "http20Enabled": true,
-            "netFrameworkVersion": "v6.0",
-            "healthCheckPath": "/healthz"
+  "type": "Microsoft.Web/sites",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "kind": "web",
+  "properties": {
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
+    "httpsOnly": true,
+    "siteConfig": {
+      "alwaysOn": true,
+      "minTlsVersion": "1.2",
+      "ftpsState": "Disabled",
+      "remoteDebuggingEnabled": false,
+      "http20Enabled": true,
+      "netFrameworkVersion": "v8.0",
+      "healthCheckPath": "/healthz",
+      "metadata": [
+        {
+          "name": "CURRENT_STACK",
+          "value": "dotnet"
         }
-    },
-    "tags": "[parameters('tags')]",
-    "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
-    ]
+      ]
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
+  ]
 }
 ```
 
@@ -70,12 +75,12 @@ For example:
 
 To deploy Web Apps that pass this rule:
 
-- Set `properties.siteConfig.ftpsState` to `FtpsOnly` or `Disabled`.
+- Set the `properties.siteConfig.ftpsState` property to `FtpsOnly` or `Disabled`.
 
 For example:
 
 ```bicep
-resource webApp 'Microsoft.Web/sites@2021-03-01' = {
+resource web 'Microsoft.Web/sites@2023-01-01' = {
   name: name
   location: location
   identity: {
@@ -88,19 +93,40 @@ resource webApp 'Microsoft.Web/sites@2021-03-01' = {
     siteConfig: {
       alwaysOn: true
       minTlsVersion: '1.2'
-      ftpsState: 'FtpsOnly'
+      ftpsState: 'Disabled'
       remoteDebuggingEnabled: false
       http20Enabled: true
-      netFrameworkVersion: 'v6.0'
+      netFrameworkVersion: 'v8.0'
       healthCheckPath: '/healthz'
+      metadata: [
+        {
+          name: 'CURRENT_STACK'
+          value: 'dotnet'
+        }
+      ]
     }
   }
-  tags: tags
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [App Service apps should require FTPS only](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AuditFTPS_WebApp_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/4d24b6d4-5e53-4a4f-a7f4-618fa573ee4b`
+- [App Service app slots should require FTPS only](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AuditFTPS_WebApp_Slot_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/c285a320-8830-4665-9cc7-bbd05fc7c5c0`
+- [Function apps should require FTPS only](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AuditFTPS_FunctionApp_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/399b2637-a50f-4f95-96f8-3a145476eb15`
+- [Function app slots should require FTPS only](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AuditFTPS_FunctionApp_Slot_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/e1a09430-221d-4d4c-a337-1edb5a1fa9bb`
+- [[Deprecated]: FTPS only should be required in your API App](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Service/AuditFTPS_ApiApp_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/9a1b8c48-453a-4044-86c3-d8bfd823e4f5`
+
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Deploy your app to Azure App Service using FTP/S](https://docs.microsoft.com/eazure/app-service/deploy-ftp)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteproperties)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
+- [Deploy your app to Azure App Service using FTP/S](https://learn.microsoft.com/Azure/app-service/deploy-ftp#enforce-ftps)
+- [Insecure protocols](https://learn.microsoft.com/Azure/app-service/overview-security#insecure-protocols-http-tls-10-ftp)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites)

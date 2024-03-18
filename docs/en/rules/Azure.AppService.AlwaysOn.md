@@ -32,32 +32,42 @@ Consider enabling Always On for each App Services app.
 
 To deploy App Services that pass this rule:
 
-- Set `properties.siteConfig.alwaysOn` to `true`.
+- Set the `properties.siteConfig.alwaysOn` property to `true`.
 
 For example:
 
 ```json
 {
-    "type": "Microsoft.Web/sites",
-    "apiVersion": "2021-02-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "kind": "web",
-    "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
-        "httpsOnly": true,
-        "siteConfig": {
-            "alwaysOn": true,
-            "minTlsVersion": "1.2",
-            "ftpsState": "FtpsOnly",
-            "remoteDebuggingEnabled": false,
-            "http20Enabled": true
+  "type": "Microsoft.Web/sites",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "kind": "web",
+  "properties": {
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
+    "httpsOnly": true,
+    "siteConfig": {
+      "alwaysOn": true,
+      "minTlsVersion": "1.2",
+      "ftpsState": "Disabled",
+      "remoteDebuggingEnabled": false,
+      "http20Enabled": true,
+      "netFrameworkVersion": "v8.0",
+      "healthCheckPath": "/healthz",
+      "metadata": [
+        {
+          "name": "CURRENT_STACK",
+          "value": "dotnet"
         }
-    },
-    "tags": "[parameters('tags')]",
-    "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
-    ]
+      ]
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
+  ]
 }
 ```
 
@@ -65,27 +75,37 @@ For example:
 
 To deploy App Services that pass this rule:
 
-- Set `properties.siteConfig.alwaysOn` to `true`.
+- Set the `properties.siteConfig.alwaysOn` property to `true`.
 
 For example:
 
 ```bicep
-resource webApp 'Microsoft.Web/sites@2021-02-01' = {
+resource web 'Microsoft.Web/sites@2023-01-01' = {
   name: name
   location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   kind: 'web'
   properties: {
-    serverFarmId: appPlan.id
+    serverFarmId: plan.id
     httpsOnly: true
     siteConfig: {
       alwaysOn: true
       minTlsVersion: '1.2'
-      ftpsState: 'FtpsOnly'
+      ftpsState: 'Disabled'
       remoteDebuggingEnabled: false
       http20Enabled: true
+      netFrameworkVersion: 'v8.0'
+      healthCheckPath: '/healthz'
+      metadata: [
+        {
+          name: 'CURRENT_STACK'
+          value: 'dotnet'
+        }
+      ]
     }
   }
-  tags: tags
 }
 ```
 
@@ -100,7 +120,7 @@ On a Premium plan the platform keeps your desired number of pre-warmed instances
 
 ## LINKS
 
-- [Azure App Service and reliability](https://learn.microsoft.com/azure/architecture/framework/services/compute/azure-app-service/reliability)
+- [Azure App Service and reliability](https://learn.microsoft.com/azure/well-architected/service-guides/azure-app-service/reliability)
 - [Configure an App Service app](https://learn.microsoft.com/azure/app-service/configure-common#configure-general-settings)
 - [The Ultimate Guide to Running Healthy Apps in the Cloud](https://azure.github.io/AppService/2020/05/15/Robust-Apps-for-the-cloud.html#update-your-default-settings)
 - [Always on with Azure Functions](https://github.com/Azure/Azure-Functions/wiki/Enable-Always-On-when-running-on-dedicated-App-Service-Plan)
