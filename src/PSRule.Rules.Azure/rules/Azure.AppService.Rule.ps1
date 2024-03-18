@@ -26,7 +26,7 @@ Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'M
     }
 }
 
-# Synopsis: Disable remote debugging
+# Synopsis: Disable remote debugging on App Service apps when not in use.
 Rule 'Azure.AppService.RemoteDebug' -Ref 'AZR-000074' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'PV-2' } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {

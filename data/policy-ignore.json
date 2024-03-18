@@ -217,5 +217,16 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.ServiceBus.DisableLocalAuth"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/4d24b6d4-5e53-4a4f-a7f4-618fa573ee4b",
+      "/providers/Microsoft.Authorization/policyDefinitions/c285a320-8830-4665-9cc7-bbd05fc7c5c0",
+      "/providers/Microsoft.Authorization/policyDefinitions/399b2637-a50f-4f95-96f8-3a145476eb15",
+      "/providers/Microsoft.Authorization/policyDefinitions/e1a09430-221d-4d4c-a337-1edb5a1fa9bb",
+      "/providers/Microsoft.Authorization/policyDefinitions/9a1b8c48-453a-4044-86c3-d8bfd823e4f5"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.AppService.WebSecureFtp"
   }
 ]

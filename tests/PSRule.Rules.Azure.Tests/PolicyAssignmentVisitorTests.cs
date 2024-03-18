@@ -95,7 +95,7 @@ namespace PSRule.Rules.Azure
 
             var definitions = context.GetDefinitions();
             Assert.NotNull(definitions);
-            Assert.Equal(117, definitions.Length);
+            Assert.Equal(115, definitions.Length);
 
             // Check category and version
             var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
