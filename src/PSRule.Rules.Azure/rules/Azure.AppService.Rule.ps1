@@ -39,21 +39,33 @@ Rule 'Azure.AppService.RemoteDebug' -Ref 'AZR-000074' -Type 'Microsoft.Web/sites
 }
 
 # Synopsis: Configure applications to use newer .NET Framework versions.
-Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Security'; } {
-    $siteConfigs = @(GetWebSiteConfig | Where-Object {
-        ![String]::IsNullOrEmpty($_.Properties.netFrameworkVersion)
-    })
+Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } {
+    $siteConfigs = @(GetWebSiteConfig)
     if ($siteConfigs.Length -eq 0) {
-        return AnyOf {
-            $Assert.HasDefaultValue($TargetObject, 'properties.siteConfig.netFrameworkVersion', 'OFF');
-            $Assert.Version($TargetObject, 'properties.siteConfig.netFrameworkVersion', '>=4.0');
+        if ($Assert.HasFieldValue($TargetObject, 'properties.siteConfig.linuxFxVersion').Result -and $TargetObject.properties.siteConfig.linuxFxVersion -like 'DOTNETCORE|*') {
+            $linuxVersion = $TargetObject.properties.siteConfig.linuxFxVersion.Split('|')[1];
+            return $Assert.Version($linuxVersion, '.', '>=8.0').PathPrefix('properties.siteConfig.linuxFxVersion');
+        }
+        elseif (!$Assert.HasDefaultValue($TargetObject, 'properties.siteConfig.netFrameworkVersion', 'OFF').Result -and
+            ![String]::IsNullOrEmpty($TargetObject.properties.siteConfig.netFrameworkVersion)) {
+            return $Assert.Version($TargetObject, 'properties.siteConfig.netFrameworkVersion', '4.0 || >=8.0');
+        }
+        else {
+            return $Assert.Pass();
         }
     }
     foreach ($siteConfig in $siteConfigs) {
         $path = $siteConfig._PSRule.path;
-        AnyOf {
-            $Assert.HasFieldValue($siteConfig, 'properties.netFrameworkVersion', 'OFF').PathPrefix($path)
-            $Assert.Version($siteConfig, 'properties.netFrameworkVersion', '>=4.0').PathPrefix($path)
+        if ($Assert.HasFieldValue($siteConfig, 'properties.linuxFxVersion').Result -and $siteConfig.properties.linuxFxVersion -like 'DOTNETCORE|*') {
+            $linuxVersion = $siteConfig.properties.linuxFxVersion.Split('|')[1];
+            $Assert.Version($linuxVersion, '.', '>=8.0').PathPrefix("$path.properties.linuxFxVersion");
+        }
+        elseif (!$Assert.HasDefaultValue($siteConfig, 'properties.netFrameworkVersion', 'OFF').Result -and
+            ![String]::IsNullOrEmpty($siteConfig.properties.netFrameworkVersion)) {
+            $Assert.Version($siteConfig, 'properties.netFrameworkVersion', '4.0 || >=8.0').PathPrefix($path);
+        }
+        else {
+            $Assert.Pass();
         }
     }
 }

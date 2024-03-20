@@ -92,7 +92,9 @@
         "planName3": "plan-c",
         "planName4": "plan-d",
         "appName2": "app-b",
-        "appName3": "app-c"
+        "appName3": "app-c",
+        "appName4": "app-d",
+        "appName5": "app-e"
     },
     "resources": [
         {
@@ -322,6 +324,68 @@
             "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
             "apiVersion": "2018-11-30",
             "location": "[parameters('location')]"
+        },
+        {
+            "apiVersion": "2022-03-01",
+            "name": "[variables('appName4')]",
+            "type": "Microsoft.Web/sites",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tags')]",
+            "identity": {
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities": {
+                    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('appName3'))]": {}
+                }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', variables('planName2'))]"
+            ],
+            "properties": {
+                "siteConfig": {
+                    "appSettings": [],
+                    "phpVersion": "OFF",
+                    "netFrameworkVersion": "",
+                    "alwaysOn": "[parameters('alwaysOn')]",
+                    "minTlsVersion": "1.2",
+                    "http20Enabled": true,
+                    "healthCheckPath": "/healthz",
+                    "linuxFxVersion": "DOTNETCORE|6.0"
+                },
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('planName2'))]",
+                "clientAffinityEnabled": false,
+                "httpsOnly": true
+            }
+        },
+        {
+            "apiVersion": "2022-03-01",
+            "name": "[variables('appName5')]",
+            "type": "Microsoft.Web/sites",
+            "location": "[parameters('location')]",
+            "tags": "[parameters('tags')]",
+            "identity": {
+                "type": "SystemAssigned, UserAssigned",
+                "userAssignedIdentities": {
+                    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', variables('appName3'))]": {}
+                }
+            },
+            "dependsOn": [
+                "[concat('Microsoft.Web/serverfarms/', variables('planName2'))]"
+            ],
+            "properties": {
+                "siteConfig": {
+                    "appSettings": [],
+                    "phpVersion": "OFF",
+                    "netFrameworkVersion": "",
+                    "alwaysOn": "[parameters('alwaysOn')]",
+                    "minTlsVersion": "1.2",
+                    "http20Enabled": true,
+                    "healthCheckPath": "/healthz",
+                    "linuxFxVersion": "DOTNETCORE|8.0"
+                },
+                "serverFarmId": "[resourceId('Microsoft.Web/serverfarms/', variables('planName2'))]",
+                "clientAffinityEnabled": false,
+                "httpsOnly": true
+            }
         }
     ],
     "outputs": {

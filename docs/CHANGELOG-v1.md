@@ -34,6 +34,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.35.0-B0030:
 
+- Updated rules:
+  - Updated `Azure.AppService.NETVersion` to detect out of date .NET versions including .NET 5/6/7 by @BernieWhite.
+    [#2766](https://github.com/Azure/PSRule.Rules.Azure/issues/2766)
+    - Bumped rule set to `2024_03`.
 - General improvements:
   - Quality updates to rule documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
