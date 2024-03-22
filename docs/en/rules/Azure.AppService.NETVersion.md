@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-03-19
+reviewed: 2024-03-21
 severity: Important
 pillar: Security
 category: SE:02 Secured development lifecycle
@@ -36,7 +36,7 @@ To deploy App Services that pass this rule:
   - Set the `properties.siteConfig.netFrameworkVersion` property to `v4.0` or `v8.0`.
 - For Linux-based plans:
   - Set the `properties.siteConfig.linuxFxVersion` property to `DOTNET|8.0`.
-    .NET Framework is not support on Linux-based plans.
+    .NET Framework is not supported on Linux-based plans.
 
 For example:
 
@@ -83,7 +83,7 @@ To deploy App Services that pass this rule:
   - Set the `properties.siteConfig.netFrameworkVersion` property to `v4.0` or `v8.0`.
 - For Linux-based plans:
   - Set the `properties.siteConfig.linuxFxVersion` property to `DOTNET|8.0`.
-    .NET Framework is not support on Linux-based plans.
+    .NET Framework is not supported on Linux-based plans.
 
 For example:
 
