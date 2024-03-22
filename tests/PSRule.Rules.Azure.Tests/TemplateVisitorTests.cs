@@ -13,6 +13,9 @@ using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure
 {
+    /// <summary>
+    /// This class tests the functionality of the <see cref="TemplateVisitor"/> class that is used to expand resources from an ARM template/ Bicep file.
+    /// </summary>
     public sealed class TemplateVisitorTests
     {
         [Fact]
@@ -1090,6 +1093,15 @@ namespace PSRule.Rules.Azure
 
             actual = resources[3];
             Assert.Equal("Microsoft.KeyVault/vaults/accessPolicies", actual["type"].Value<string>());
+        }
+
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2751.
+        /// </summary>
+        [Fact]
+        public void Index_into_mock_output_object()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.35.json"), null, out _);
         }
 
         #region Helper methods

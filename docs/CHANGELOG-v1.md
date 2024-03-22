@@ -41,6 +41,9 @@ What's changed since pre-release v1.35.0-B0030:
 - General improvements:
   - Quality updates to rule documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+- Bug fixes:
+  - Fixed failed to expand JObject value with invalid key by @BernieWhite.
+    [#2751](https://github.com/Azure/PSRule.Rules.Azure/issues/2751)
 
 ## v1.35.0-B0030 (pre-release)
 
