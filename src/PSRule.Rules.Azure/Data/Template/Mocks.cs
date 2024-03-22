@@ -318,6 +318,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public virtual JToken GetValue(object key)
             {
+                key = GetBaseObject(key);
                 var result = base[key];
                 if (result == null)
                 {
@@ -510,6 +511,20 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
             return false;
+        }
+
+        /// <summary>
+        /// Unwrap the base object from a JToken.
+        /// </summary>
+        private static object GetBaseObject(object o)
+        {
+            if (o is JToken t_string && t_string.Type == JTokenType.String)
+                return t_string.Value<string>();
+
+            if (o is JToken t_int && t_int.Type == JTokenType.Integer)
+                return t_int.Value<int>();
+
+            return o;
         }
     }
 }

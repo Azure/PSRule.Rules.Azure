@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
+using static PSRule.Rules.Azure.Data.Template.Mock;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -910,7 +911,7 @@ namespace PSRule.Rules.Azure.Data.Template
             public object GetValue()
             {
                 ResolveProperty(_Context, _Value, PROPERTY_VALUE);
-                return _Value;
+                return new MockObject(_Value);
             }
         }
 
