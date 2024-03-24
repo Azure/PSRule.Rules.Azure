@@ -71,20 +71,33 @@ Rule 'Azure.AppService.NETVersion' -Ref 'AZR-000075' -Type 'Microsoft.Web/sites'
 }
 
 # Synopsis: Configure applications to use newer PHP runtime versions.
-Rule 'Azure.AppService.PHPVersion' -Ref 'AZR-000076' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Security'; } {
-    $siteConfigs = @(GetWebSiteConfig | Where-Object {
-        ![String]::IsNullOrEmpty($_.Properties.phpVersion)
-    })
+Rule 'Azure.AppService.PHPVersion' -Ref 'AZR-000076' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Security'; } {
+    $siteConfigs = @(GetWebSiteConfig)
     if ($siteConfigs.Length -eq 0) {
-        return AnyOf {
-            $Assert.HasDefaultValue($TargetObject, 'Properties.siteConfig.phpVersion', 'OFF')
-            $Assert.Version($TargetObject, 'Properties.siteConfig.phpVersion', '>=7.0')
+        if ($Assert.HasFieldValue($TargetObject, 'properties.siteConfig.linuxFxVersion').Result -and $TargetObject.properties.siteConfig.linuxFxVersion -like 'PHP|*') {
+            $linuxVersion = $TargetObject.properties.siteConfig.linuxFxVersion.Split('|')[1];
+            return $Assert.Version($linuxVersion, '.', '>=8.2').PathPrefix('properties.siteConfig.linuxFxVersion');
+        }
+        elseif (!$Assert.HasDefaultValue($TargetObject, 'properties.siteConfig.phpVersion', 'OFF').Result -and
+            ![String]::IsNullOrEmpty($TargetObject.properties.siteConfig.phpVersion)) {
+            return $Assert.Version($TargetObject, 'properties.siteConfig.phpVersion', '>=8.2');
+        }
+        else {
+            return $Assert.Pass();
         }
     }
     foreach ($siteConfig in $siteConfigs) {
-        AnyOf {
-            $Assert.HasFieldValue($siteConfig, 'Properties.phpVersion', 'OFF')
-            $Assert.Version($siteConfig, 'Properties.phpVersion', '>=7.0')
+        $path = $siteConfig._PSRule.path;
+        if ($Assert.HasFieldValue($siteConfig, 'properties.linuxFxVersion').Result -and $siteConfig.properties.linuxFxVersion -like 'PHP|*') {
+            $linuxVersion = $siteConfig.properties.linuxFxVersion.Split('|')[1];
+            $Assert.Version($linuxVersion, '.', '>=8.2').PathPrefix("$path.properties.linuxFxVersion");
+        }
+        elseif (!$Assert.HasDefaultValue($siteConfig, 'properties.phpVersion', 'OFF').Result -and
+            ![String]::IsNullOrEmpty($siteConfig.properties.phpVersion)) {
+            $Assert.Version($siteConfig, 'properties.phpVersion', '>=8.2').PathPrefix($path);
+        }
+        else {
+            $Assert.Pass();
         }
     }
 }
@@ -96,7 +109,7 @@ Rule 'Azure.AppService.AlwaysOn' -Ref 'AZR-000077' -Type 'Microsoft.Web/sites', 
         return $Assert.HasFieldValue($TargetObject, 'Properties.siteConfig.alwaysOn', $True);
     }
     foreach ($siteConfig in $siteConfigs) {
-        $Assert.HasFieldValue($siteConfig, 'Properties.alwaysOn', $True);
+        $Assert.HasFieldValue($siteConfig, 'properties.alwaysOn', $True);
     }
 }
 

@@ -124,13 +124,15 @@ spec:
     allOf:
     - type: '.'
       in:
-      - 'Microsoft.Web/sites'
-      - 'Microsoft.Web/sites/slots'
+      - Microsoft.Web/sites
+      - Microsoft.Web/sites/slots
     - anyOf:
       - field: kind
         exists: false
       - field: kind
-        equals: 'app'
+        in:
+        - app
+        - app,linux
 
 ---
 # Synopsis: App Service sites that are API apps.
@@ -145,10 +147,10 @@ spec:
     allOf:
     - type: '.'
       in:
-      - 'Microsoft.Web/sites'
-      - 'Microsoft.Web/sites/slots'
+      - Microsoft.Web/sites
+      - Microsoft.Web/sites/slots
     - field: kind
-      equals: 'api'
+      equals: api
 
 ---
 # Synopsis: App Service sites that are Function apps.

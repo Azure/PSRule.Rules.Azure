@@ -228,5 +228,13 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.AppService.WebSecureFtp"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/7261b898-8a84-4db8-9e04-18527132abb3",
+      "/providers/Microsoft.Authorization/policyDefinitions/f466b2a6-823d-470d-8ea5-b031e72d79ae"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.AppService.PHPVersion"
   }
 ]
