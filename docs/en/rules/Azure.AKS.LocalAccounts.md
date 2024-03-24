@@ -232,9 +232,8 @@ az aks update -n '<name>' -g '<resource_group>' --enable-aad --aad-admin-group-o
 
 To address this issue at runtime use the following policies:
 
-```text
-/providers/Microsoft.Authorization/policyDefinitions/993c2fcd-2b29-49d2-9eb0-df2c3a730c32
-```
+- [Azure Kubernetes Service Clusters should have local authentication methods disabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_DisableLocalAccounts_Deny.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/993c2fcd-2b29-49d2-9eb0-df2c3a730c32`
 
 ## LINKS
 

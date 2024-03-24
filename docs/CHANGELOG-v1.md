@@ -42,9 +42,13 @@ What's changed since pre-release v1.35.0-B0030:
     [#2768](https://github.com/Azure/PSRule.Rules.Azure/issues/2768)
     - Fixed `Azure.AppService.PHPVersion` check fails when phpVersion is null.
     - Bumped rule set to `2024_03`.
+  - Updated `Azure.AKS.Version` to use `1.27.9` as the minimum version by @BernieWhite.
+    [#2771](https://github.com/Azure/PSRule.Rules.Azure/issues/2771)
 - General improvements:
   - Quality updates to rule documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+  - Additional policies added to default ignore list by @BernieWhite.
+    [#1731](https://github.com/Azure/PSRule.Rules.Azure/issues/1731)
 - Bug fixes:
   - Fixed failed to expand JObject value with invalid key by @BernieWhite.
     [#2751](https://github.com/Azure/PSRule.Rules.Azure/issues/2751)
