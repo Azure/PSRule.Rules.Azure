@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-03-25
 severity: Important
 pillar: Security
-category: Optimize
+category: SE:08 Hardening resources
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AzurePolicyAddOn/
 ---
@@ -41,72 +42,93 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.ContainerService/managedClusters",
-    "apiVersion": "2021-10-01",
-    "name": "[parameters('clusterName')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "UserAssigned",
-        "userAssignedIdentities": {
-            "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')))]": {}
-        }
+  "type": "Microsoft.ContainerService/managedClusters",
+  "apiVersion": "2024-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')))]": {}
+    }
+  },
+  "properties": {
+    "kubernetesVersion": "[parameters('kubernetesVersion')]",
+    "disableLocalAccounts": true,
+    "enableRBAC": true,
+    "dnsPrefix": "[parameters('dnsPrefix')]",
+    "agentPoolProfiles": [
+      {
+        "name": "system",
+        "osDiskSizeGB": 0,
+        "minCount": 3,
+        "maxCount": 5,
+        "enableAutoScaling": true,
+        "maxPods": 50,
+        "vmSize": "Standard_D4s_v5",
+        "type": "VirtualMachineScaleSets",
+        "vnetSubnetID": "[parameters('clusterSubnetId')]",
+        "mode": "System",
+        "osDiskType": "Ephemeral"
+      },
+      {
+        "name": "user",
+        "osDiskSizeGB": 0,
+        "minCount": 3,
+        "maxCount": 20,
+        "enableAutoScaling": true,
+        "maxPods": 50,
+        "vmSize": "Standard_D4s_v5",
+        "type": "VirtualMachineScaleSets",
+        "vnetSubnetID": "[parameters('clusterSubnetId')]",
+        "mode": "User",
+        "osDiskType": "Ephemeral"
+      }
+    ],
+    "aadProfile": {
+      "managed": true,
+      "enableAzureRBAC": true,
+      "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
+      "tenantID": "[subscription().tenantId]"
     },
-    "properties": {
-        "kubernetesVersion": "[parameters('kubernetesVersion')]",
-        "enableRBAC": true,
-        "dnsPrefix": "[parameters('dnsPrefix')]",
-        "agentPoolProfiles": "[variables('allPools')]",
-        "aadProfile": {
-            "managed": true,
-            "enableAzureRBAC": true,
-            "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
-            "tenantID": "[subscription().tenantId]"
-        },
-        "networkProfile": {
-            "networkPlugin": "azure",
-            "networkPolicy": "azure",
-            "loadBalancerSku": "standard",
-            "serviceCidr": "[variables('serviceCidr')]",
-            "dnsServiceIP": "[variables('dnsServiceIP')]",
-            "dockerBridgeCidr": "[variables('dockerBridgeCidr')]"
-        },
-        "autoUpgradeProfile": {
-            "upgradeChannel": "stable"
-        },
-        "addonProfiles": {
-            "httpApplicationRouting": {
-                "enabled": false
-            },
-            "azurepolicy": {
-                "enabled": true,
-                "config": {
-                    "version": "v2"
-                }
-            },
-            "omsagent": {
-                "enabled": true,
-                "config": {
-                    "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
-                }
-            },
-            "kubeDashboard": {
-                "enabled": false
-            },
-            "azureKeyvaultSecretsProvider": {
-                "enabled": true,
-                "config": {
-                    "enableSecretRotation": "true"
-                }
-            }
-        },
-        "podIdentityProfile": {
-            "enabled": true
-        }
+    "networkProfile": {
+      "networkPlugin": "azure",
+      "networkPolicy": "azure",
+      "loadBalancerSku": "standard",
+      "serviceCidr": "[variables('serviceCidr')]",
+      "dnsServiceIP": "[variables('dnsServiceIP')]"
     },
-    "tags": "[parameters('tags')]",
-    "dependsOn": [
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
-    ]
+    "apiServerAccessProfile": {
+      "enablePrivateCluster": true,
+      "enablePrivateClusterPublicFQDN": false
+    },
+    "autoUpgradeProfile": {
+      "upgradeChannel": "stable"
+    },
+    "oidcIssuerProfile": {
+      "enabled": true
+    },
+    "addonProfiles": {
+      "azurepolicy": {
+        "enabled": true
+      },
+      "omsagent": {
+        "enabled": true,
+        "config": {
+          "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+        }
+      },
+      "azureKeyvaultSecretsProvider": {
+        "enabled": true,
+        "config": {
+          "enableSecretRotation": "true"
+        }
+      }
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
+  ]
 }
 ```
 
@@ -119,9 +141,9 @@ To deploy AKS clusters that pass this rule:
 For example:
 
 ```bicep
-resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
+resource privateCluster 'Microsoft.ContainerService/managedClusters@2024-01-01' = {
   location: location
-  name: clusterName
+  name: name
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
@@ -130,9 +152,37 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
   }
   properties: {
     kubernetesVersion: kubernetesVersion
+    disableLocalAccounts: true
     enableRBAC: true
     dnsPrefix: dnsPrefix
-    agentPoolProfiles: allPools
+    agentPoolProfiles: [
+      {
+        name: 'system'
+        osDiskSizeGB: 0
+        minCount: 3
+        maxCount: 5
+        enableAutoScaling: true
+        maxPods: 50
+        vmSize: 'Standard_D4s_v5'
+        type: 'VirtualMachineScaleSets'
+        vnetSubnetID: clusterSubnetId
+        mode: 'System'
+        osDiskType: 'Ephemeral'
+      }
+      {
+        name: 'user'
+        osDiskSizeGB: 0
+        minCount: 3
+        maxCount: 20
+        enableAutoScaling: true
+        maxPods: 50
+        vmSize: 'Standard_D4s_v5'
+        type: 'VirtualMachineScaleSets'
+        vnetSubnetID: clusterSubnetId
+        mode: 'User'
+        osDiskType: 'Ephemeral'
+      }
+    ]
     aadProfile: {
       managed: true
       enableAzureRBAC: true
@@ -145,29 +195,26 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
       loadBalancerSku: 'standard'
       serviceCidr: serviceCidr
       dnsServiceIP: dnsServiceIP
-      dockerBridgeCidr: dockerBridgeCidr
+    }
+    apiServerAccessProfile: {
+      enablePrivateCluster: true
+      enablePrivateClusterPublicFQDN: false
     }
     autoUpgradeProfile: {
       upgradeChannel: 'stable'
     }
+    oidcIssuerProfile: {
+      enabled: true
+    }
     addonProfiles: {
-      httpApplicationRouting: {
-        enabled: false
-      }
       azurepolicy: {
         enabled: true
-        config: {
-          version: 'v2'
-        }
       }
       omsagent: {
         enabled: true
         config: {
           logAnalyticsWorkspaceResourceID: workspaceId
         }
-      }
-      kubeDashboard: {
-        enabled: false
       }
       azureKeyvaultSecretsProvider: {
         enabled: true
@@ -176,13 +223,18 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
         }
       }
     }
-    podIdentityProfile: {
-      enabled: true
-    }
   }
-  tags: tags
 }
 ```
+
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Azure Policy Add-on for Kubernetes service (AKS) should be installed and enabled on your clusters](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/0a15ec92-a229-4763-bb14-0ea34a568f8d`
+- [Deploy Azure Policy Add-on to Azure Kubernetes Service clusters](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_AzurePolicyAddOn_DINE.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/a8eff44f-8c92-45c3-a3fb-9880802d67a7`
 
 ## NOTES
 
@@ -191,7 +243,7 @@ Azure Policy for AKS Engine and Arc enabled Kubernetes are currently in preview.
 
 ## LINKS
 
-- [Governance, risk, and compliance](https://learn.microsoft.com/azure/architecture/framework/security/governance#audit-and-enforce-policy-compliance)
-- [Understand Azure Policy for Kubernetes clusters](https://docs.microsoft.com/azure/governance/policy/concepts/policy-for-kubernetes)
-- [Secure your cluster with Azure Policy](https://docs.microsoft.com/azure/aks/use-azure-policy)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Understand Azure Policy for Kubernetes clusters](https://learn.microsoft.com/azure/governance/policy/concepts/policy-for-kubernetes)
+- [Secure your Azure Kubernetes Service (AKS) clusters with Azure Policy](https://learn.microsoft.com/azure/aks/use-azure-policy)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
