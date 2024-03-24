@@ -44,6 +44,8 @@ What's changed since pre-release v1.35.0-B0030:
 - Bug fixes:
   - Fixed failed to expand JObject value with invalid key by @BernieWhite.
     [#2751](https://github.com/Azure/PSRule.Rules.Azure/issues/2751)
+  - Fixed `Azure.AppService.PHPVersion` check fails when phpVersion is null @BernieWhite.
+    [#2768](https://github.com/Azure/PSRule.Rules.Azure/issues/2768)
 
 ## v1.35.0-B0030 (pre-release)
 

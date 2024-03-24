@@ -83,8 +83,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging', 'fn-app';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging', 'fn-app', 'site-c', 'site-d';
         }
 
         It 'Azure.AppService.UseHTTPS' {
@@ -100,8 +100,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging', 'fn-app';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging', 'fn-app', 'site-c', 'site-d';
         }
 
         It 'Azure.AppService.MinTLS' {
@@ -110,8 +110,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging', 'site-c', 'site-d';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.siteConfig.minTlsVersion', 'resources[0].properties.minTlsVersion';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
@@ -132,8 +132,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging', 'site-c', 'site-d';
             # TODO: $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.siteConfig.remoteDebuggingEnabled';
 
             # Pass
@@ -158,8 +158,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging', 'fn-app';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging', 'fn-app', 'site-c', 'site-d';
         }
 
         It 'Azure.AppService.PHPVersion' {
@@ -168,14 +168,17 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'site-B', 'site-B/staging', 'fn-app';
+            # $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'site-B', 'site-B/staging', 'site-d';
+            $ruleResult[0].Reason | Should -BeExactly "Path resources[0].properties.phpVersion: The version '5.6.-1' does not match the constraint '>=8.2'.";
+            $ruleResult[1].Reason | Should -BeExactly "Path resources[0].properties.phpVersion: The version '5.6.-1' does not match the constraint '>=8.2'.";
+            $ruleResult[2].Reason | Should -BeExactly "Path properties.siteConfig.linuxFxVersion..: The version '8.1.-1' does not match the constraint '>=8.2'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'site-A', 'site-A/staging';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'site-A', 'site-A/staging', 'fn-app', 'site-c';
         }
 
         It 'Azure.AppService.AlwaysOn' {
@@ -184,8 +187,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging', 'site-c', 'site-d';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -206,8 +209,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging', 'site-c', 'site-d';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -222,8 +225,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'site-B', 'site-B/staging', 'site-c', 'site-d';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -446,8 +449,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'site-B', 'site-B/staging';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'site-B', 'site-B/staging', 'site-c', 'site-d';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -462,8 +465,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'site-B', 'site-B/staging', 'site-A/staging';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'site-B', 'site-B/staging', 'site-A/staging', 'site-c', 'site-d';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -478,8 +481,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'site-B';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'site-B', 'site-c', 'site-d';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
