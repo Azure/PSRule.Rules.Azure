@@ -38,14 +38,16 @@ What's changed since pre-release v1.35.0-B0030:
   - Updated `Azure.AppService.NETVersion` to detect out of date .NET versions including .NET 5/6/7 by @BernieWhite.
     [#2766](https://github.com/Azure/PSRule.Rules.Azure/issues/2766)
     - Bumped rule set to `2024_03`.
+  - Updated `Azure.AppService.PHPVersion` to detect out of date PHP versions before 8.2 by @BernieWhite.
+    [#2768](https://github.com/Azure/PSRule.Rules.Azure/issues/2768)
+    - Fixed `Azure.AppService.PHPVersion` check fails when phpVersion is null.
+    - Bumped rule set to `2024_03`.
 - General improvements:
   - Quality updates to rule documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
 - Bug fixes:
   - Fixed failed to expand JObject value with invalid key by @BernieWhite.
     [#2751](https://github.com/Azure/PSRule.Rules.Azure/issues/2751)
-  - Fixed `Azure.AppService.PHPVersion` check fails when phpVersion is null @BernieWhite.
-    [#2768](https://github.com/Azure/PSRule.Rules.Azure/issues/2768)
 
 ## v1.35.0-B0030 (pre-release)
 
