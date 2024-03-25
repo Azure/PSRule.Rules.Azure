@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.35.0-B0055:
+
+- General improvements:
+  - Improved export of in-flight data for Event Grid and Azure Firewall Policies by @BernieWhite.
+    [#2774](https://github.com/Azure/PSRule.Rules.Azure/issues/2774)
+
 ## v1.35.0-B0055 (pre-release)
 
 What's changed since pre-release v1.35.0-B0030:

@@ -43,6 +43,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string PROPERTY_SECURITYPOLICIES = "securityPolicies";
         private const string PROPERTY_CONTAINERS = "containers";
         private const string PROPERTY_SHARES = "shares";
+        private const string PROPERTY_TOPICS = "topics";
 
         private const string TYPE_CONTAINERSERVICE_MANAGEDCLUSTERS = "Microsoft.ContainerService/managedClusters";
         private const string TYPE_CONTAINERREGISTRY_REGISTRIES = "Microsoft.ContainerRegistry/registries";
@@ -73,6 +74,11 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string TYPE_SERVICEBUS_NAMESPACE = "Microsoft.ServiceBus/namespaces";
         private const string TYPE_VISUALSTUDIO_ACCOUNT = "Microsoft.VisualStudio/account";
         private const string TYPE_DEVCENTER_PROJECT = "Microsoft.DevCenter/projects";
+        private const string TYPE_NETWORK_FIREWALLPOLICY = "Microsoft.Network/firewallPolicies";
+        private const string TYPE_NETWORK_VIRTUALHUB = "Microsoft.Network/virtualHubs";
+        private const string TYPE_EVENTGRID_TOPIC = "Microsoft.EventGrid/topics";
+        private const string TYPE_EVENTGRID_DOMAIN = "Microsoft.EventGrid/domains";
+        private const string TYPE_EVENTGRID_NAMESPACE = "Microsoft.EventGrid/namespaces";
 
         private const string PROVIDERTYPE_DIAGNOSTICSETTINGS = "/providers/microsoft.insights/diagnosticSettings";
         private const string PROVIDERTYPE_ROLEASSIGNMENTS = "/providers/Microsoft.Authorization/roleAssignments";
@@ -91,6 +97,8 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string APIVERSION_2016_09_01 = "2016-09-01";
         private const string APIVERSION_2017_12_01 = "2017-12-01";
         private const string APIVERSION_2021_05_01_PREVIEW = "2021-05-01-preview";
+        private const string APIVERSION_2021_06_01_PREVIEW = "2021-06-01-preview";
+        private const string APIVERSION_2021_08_27 = "2021-08-27";
         private const string APIVERSION_2021_11_01 = "2021-11-01";
         private const string APIVERSION_2022_07_01 = "2022-07-01";
         private const string APIVERSION_2022_08_01 = "2022-08-01";
@@ -104,6 +112,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string APIVERSION_2023_06_30 = "2023-06-30";
         private const string APIVERSION_2023_01_01_PREVIEW = "2023-01-01-preview";
         private const string APIVERSION_2023_03_01_PREVIEW = "2023-03-01-preview";
+        private const string APIVERSION_2023_12_15_PREVIEW = "2023-12-15-preview";
 
         private readonly ProviderData _ProviderData;
 
@@ -186,7 +195,12 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                 await VisitDataExplorerCluster(resourceContext, resource, resourceType, resourceId) ||
                 await VisitEventHubNamespace(resourceContext, resource, resourceType, resourceId) ||
                 await VisitServiceBusNamespace(resourceContext, resource, resourceType, resourceId) ||
+                await VisitEventGridTopic(resourceContext, resource, resourceType, resourceId) ||
+                await VisitEventGridDomain(resourceContext, resource, resourceType, resourceId) ||
+                await VisitEventGridNamespace(resourceContext, resource, resourceType, resourceId) ||
                 await VisitDevCenterProject(resourceContext, resource, resourceType, resourceId) ||
+                await VisitFirewallPolicy(resourceContext, resource, resourceType, resourceId) ||
+                await VisitVirtualHub(resourceContext, resource, resourceType, resourceId) ||
                 VisitNetworkConnection(resource, resourceType);
         }
 
@@ -242,8 +256,8 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (!string.Equals(resourceType, TYPE_SERVICEBUS_NAMESPACE, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "queues", "2021-06-01-preview"));
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "topics", "2021-06-01-preview"));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "queues", APIVERSION_2021_06_01_PREVIEW));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_TOPICS, APIVERSION_2021_06_01_PREVIEW));
             return true;
         }
 
@@ -252,7 +266,49 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (!string.Equals(resourceType, TYPE_EVENTHUB_NAMESPACE, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "eventhubs", "2021-11-01"));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "eventhubs", APIVERSION_2021_11_01));
+            return true;
+        }
+
+        private static async Task<bool> VisitEventGridTopic(ResourceContext context, JObject resource, string resourceType, string resourceId)
+        {
+            if (!string.Equals(resourceType, TYPE_EVENTGRID_TOPIC, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "eventSubscriptions", APIVERSION_2023_12_15_PREVIEW));
+            return true;
+        }
+
+        private static async Task<bool> VisitEventGridDomain(ResourceContext context, JObject resource, string resourceType, string resourceId)
+        {
+            if (!string.Equals(resourceType, TYPE_EVENTGRID_DOMAIN, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            var topics = await GetSubResourcesByType(context, resourceId, PROPERTY_TOPICS, APIVERSION_2023_12_15_PREVIEW);
+            foreach (var topic in topics)
+            {
+                if (topic.TryStringProperty(PROPERTY_ID, out var topicId))
+                    AddSubResource(topic, await GetSubResourcesByType(context, topicId, "eventSubscriptions", APIVERSION_2023_12_15_PREVIEW));
+            }
+
+            AddSubResource(resource, topics);
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "eventSubscriptions", APIVERSION_2023_12_15_PREVIEW));
+            return true;
+        }
+
+        private static async Task<bool> VisitEventGridNamespace(ResourceContext context, JObject resource, string resourceType, string resourceId)
+        {
+            if (!string.Equals(resourceType, TYPE_EVENTGRID_NAMESPACE, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            var topics = await GetSubResourcesByType(context, resourceId, PROPERTY_TOPICS, APIVERSION_2023_12_15_PREVIEW);
+            foreach (var topic in topics)
+            {
+                if (topic.TryStringProperty(PROPERTY_ID, out var topicId))
+                    AddSubResource(topic, await GetSubResourcesByType(context, topicId, "eventSubscriptions", APIVERSION_2023_12_15_PREVIEW));
+            }
+
+            AddSubResource(resource, topics);
             return true;
         }
 
@@ -267,8 +323,27 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                 if (pool.TryStringProperty(PROPERTY_ID, out var poolId))
                     AddSubResource(pool, await GetSubResourcesByType(context, poolId, "schedules", APIVERSION_2023_04_01));
             }
-            AddSubResource(resource, pools);
 
+            AddSubResource(resource, pools);
+            return true;
+        }
+
+        private static async Task<bool> VisitFirewallPolicy(ResourceContext context, JObject resource, string resourceType, string resourceId)
+        {
+            if (!string.Equals(resourceType, TYPE_NETWORK_FIREWALLPOLICY, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "ruleCollectionGroups", APIVERSION_2023_04_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "signatureOverrides", APIVERSION_2023_04_01));
+            return true;
+        }
+
+        private static async Task<bool> VisitVirtualHub(ResourceContext context, JObject resource, string resourceType, string resourceId)
+        {
+            if (!string.Equals(resourceType, TYPE_NETWORK_VIRTUALHUB, StringComparison.OrdinalIgnoreCase))
+                return false;
+
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "routingIntent", APIVERSION_2023_04_01));
             return true;
         }
 
@@ -277,7 +352,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (!string.Equals(resourceType, TYPE_KUSTO_CLUSTER, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "databases", "2021-08-27"));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "databases", APIVERSION_2021_08_27));
             return true;
         }
 
