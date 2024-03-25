@@ -75,7 +75,7 @@ Name | Synopsis | Severity
 [Azure.ResourceGroup.Name](../rules/Azure.ResourceGroup.Name.md) | Resource Group names should meet naming requirements. | Awareness
 [Azure.Route.Name](../rules/Azure.Route.Name.md) | Route table names should meet naming requirements. | Awareness
 [Azure.RSV.Name](../rules/Azure.RSV.Name.md) | Recovery Services vaults should meet naming requirements. | Awareness
-[Azure.Search.Name](../rules/Azure.Search.Name.md) | Azure Cognitive Search service names should meet naming requirements. | Awareness
+[Azure.Search.Name](../rules/Azure.Search.Name.md) | AI Search service names should meet naming requirements. | Awareness
 [Azure.SignalR.Name](../rules/Azure.SignalR.Name.md) | SignalR service instance names should meet naming requirements. | Awareness
 [Azure.SQL.DBName](../rules/Azure.SQL.DBName.md) | Azure SQL Database names should meet naming requirements. | Awareness
 [Azure.SQL.FGName](../rules/Azure.SQL.FGName.md) | Azure SQL failover group names should meet naming requirements. | Awareness

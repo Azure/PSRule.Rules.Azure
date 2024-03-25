@@ -76,6 +76,15 @@ resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
 }
 ```
 
+??? Example "Configure with [Azure Verified Modules][avm]"
+
+    - Set the `params.disableLocalAuth` parameter to `true` (default).
+
+
+    <!-- snippet:avm eventgrid.bicep -->
+
+    [avm]: https://github.com/Azure/bicep-registry-modules/tree/main/avm/res/event-grid/topic
+
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:

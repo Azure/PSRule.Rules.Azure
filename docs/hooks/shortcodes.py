@@ -21,7 +21,7 @@ log = logging.getLogger(f"mkdocs")
 def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files: Files) -> str:
     '''Hook on_page_markdown event.'''
 
-    return module(markdown, page, config, files)
+    return snippet(module(markdown, page, config, files), page, config, files)
 
 #
 # Supporting functions
@@ -46,6 +46,24 @@ def module(markdown: str, page: Page, config: MkDocsConfig, files: Files) -> str
     # Replace module shortcodes.
     return re.sub(
         r"<!-- module:(\w+)(.*?) -->",
+        replace, markdown, flags = re.I | re.M
+    )
+
+def snippet(markdown: str, page: Page, config: MkDocsConfig, files: Files) -> str:
+    '''Replace snippet shortcodes in markdown.'''
+
+    # Callback for regular expression replacement.
+    def replace(match: re.Match) -> str:
+        type, args = match.groups()
+        args = args.strip()
+        if type == "avm":
+            return _snippet_for_bicep(args, page, files, "examples/avm/")
+
+        raise RuntimeError(f"Unknown shortcode snippet:{type}")
+
+    # Replace module shortcodes.
+    return re.sub(
+        r"<!-- snippet:(\w+)(.*?) -->",
         replace, markdown, flags = re.I | re.M
     )
 
@@ -120,3 +138,14 @@ def _badge_for_configuration(text: str, page: Page, files: Files) -> str:
         icon = f"[:{icon}:]({href} 'Applies to configuration setting')",
         text = f"[{text}]({href})"
     )
+
+def _snippet_for_bicep(text: str, page: Page, files: Files, base_path: str) -> str:
+    '''Create a Bicep snippet.'''
+
+    indent = '    '
+    lines = []
+    file = f"docs/{base_path}{text}"
+    with open(file, 'r') as f:
+      lines = [ f"    {line}\n" for line in f]
+
+    return f"```bicep\n{''.join(lines)}    ```\n"
