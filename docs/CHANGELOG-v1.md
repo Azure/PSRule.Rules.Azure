@@ -32,6 +32,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.35.0-B0084:
+
+- General improvements:
+  - Renamed Cognitive Services rules to Azure AI by @BernieWhite.
+    [#2776](https://github.com/Azure/PSRule.Rules.Azure/issues/2776)
+    - Rules that were previously named `Azure.Cognitive.*` have been renamed to `Azure.AI.*`.
+    - For each rule that has been renamed, an alias has been added to reference the old name.
+
 ## v1.35.0-B0084 (pre-release)
 
 What's changed since pre-release v1.35.0-B0055:

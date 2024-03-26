@@ -1,13 +1,13 @@
 ---
-reviewed: 2024-01-03
+reviewed: 2024-03-26
 severity: Important
 pillar: Security
 category: SE:05 Identity and access management
-resource: Cognitive Services
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cognitive.ManagedIdentity/
+resource: Azure AI
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AI.ManagedIdentity/
 ---
 
-# Use Managed Identity for Cognitive Services accounts
+# Use Managed Identity for Azure AI services accounts
 
 ## SYNOPSIS
 
@@ -15,8 +15,8 @@ Configure managed identities to access Azure resources.
 
 ## DESCRIPTION
 
-Cognitive Services must authenticate to Azure resources such storage accounts.
-To authenticate to Azure resources, Cognitive Services can use managed identities.
+Azure AI services (previously known as Cognitive Services) must authenticate to Azure resources such storage accounts.
+To authenticate to Azure resources, Azure AI can use managed identities.
 
 Using Azure managed identities have the following benefits:
 
@@ -27,7 +27,7 @@ Using Azure managed identities have the following benefits:
 
 ## RECOMMENDATION
 
-Consider configuring a managed identity for each Cognitive Services account.
+Consider configuring a managed identity for each Azure AI services account.
 
 ## EXAMPLES
 
@@ -97,13 +97,13 @@ resource language 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
 
 To address this issue at runtime use the following policies:
 
-- [Cognitive Services accounts should use a managed identity](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_ManagedIdentity_Audit.json)
+- [Cognitive Services accounts should use a managed identity](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/ManagedIdentity_Audit.json)
   `/providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418`.
 
 ## NOTES
 
-Configuration of additional Azure resources is not required for all Cognitive Services.
-This rule will run for the following Cognitive Services:
+Configuration of additional Azure resources is not required for all Azure AI services.
+This rule will run for the following Azure AI services:
 
 - `TextAnalytics` - Language service.
 

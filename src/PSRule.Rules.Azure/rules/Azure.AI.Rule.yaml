@@ -8,18 +8,20 @@
 #region Rules
 
 ---
-# Synopsis: Restrict access to Cognitive Services accounts to authorized virtual networks.
+# Synopsis: Restrict access of Azure AI services to authorized virtual networks.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.Cognitive.PublicAccess
+  name: Azure.AI.PublicAccess
   ref: AZR-000280
+  alias:
+    - Azure.Cognitive.PublicAccess
   tags:
     release: GA
     ruleSet: 2022_09
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-2'
+    Azure.MCSB.v1/control: NS-2
 spec:
   type:
   - Microsoft.CognitiveServices/accounts
@@ -35,8 +37,10 @@ spec:
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.Cognitive.ManagedIdentity
+  name: Azure.AI.ManagedIdentity
   ref: AZR-000281
+  alias:
+    - Azure.Cognitive.ManagedIdentity
   tags:
     release: GA
     ruleSet: 2022_09
@@ -60,12 +64,14 @@ spec:
     - SystemAssigned, UserAssigned
 
 ---
-# Synopsis: Authenticate requests to Cognitive Services with Azure AD identities.
+# Synopsis: Authenticate requests to Azure AI services with Entra ID identities.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.Cognitive.DisableLocalAuth
+  name: Azure.AI.DisableLocalAuth
   ref: AZR-000282
+  alias:
+    - Azure.Cognitive.DisableLocalAuth
   tags:
     release: GA
     ruleSet: 2022_09
@@ -83,12 +89,14 @@ spec:
     equals: true
 
 ---
-# Synopsis: Use Private Endpoints to access Cognitive Services accounts.
+# Synopsis: Use Private Endpoints to access Azure AI services accounts.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.Cognitive.PrivateEndpoints
+  name: Azure.AI.PrivateEndpoints
   ref: AZR-000283
+  alias:
+    - Azure.Cognitive.PrivateEndpoints
   tags:
     release: GA
     ruleSet: 2022_09

@@ -105,14 +105,14 @@
       "/providers/Microsoft.Authorization/policyDefinitions/14de9e63-1b31-492e-a5a3-c3f7fd57f555"
     ],
     "reason": "Duplicate",
-    "value": "Azure.Cognitive.DisableLocalAuth"
+    "value": "Azure.AI.DisableLocalAuth"
   },
   {
     "policyDefinitionIds": [
       "/providers/Microsoft.Authorization/policyDefinitions/fe3fd216-4f83-4fc1-8984-2bbec80a3418"
     ],
     "reason": "Duplicate",
-    "value": "Azure.Cognitive.ManagedIdentity"
+    "value": "Azure.AI.ManagedIdentity"
   },
   {
     "policyDefinitionIds": [
