@@ -196,7 +196,7 @@ AZR-000172 | [Azure.Search.SKU](Azure.Search.SKU.md) | Use the basic and standar
 AZR-000173 | [Azure.Search.QuerySLA](Azure.Search.QuerySLA.md) | Use a minimum of 2 replicas to receive an SLA for index queries. | GA
 AZR-000174 | [Azure.Search.IndexSLA](Azure.Search.IndexSLA.md) | Use a minimum of 3 replicas to receive an SLA for query and index updates. | GA
 AZR-000175 | [Azure.Search.ManagedIdentity](Azure.Search.ManagedIdentity.md) | Configure managed identities to access Azure resources. | GA
-AZR-000176 | [Azure.Search.Name](Azure.Search.Name.md) | Azure Cognitive Search service names should meet naming requirements. | GA
+AZR-000176 | [Azure.Search.Name](Azure.Search.Name.md) | AI Search service names should meet naming requirements. | GA
 AZR-000177 | [Azure.ServiceBus.Usage](Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | GA
 AZR-000178 | [Azure.ServiceBus.DisableLocalAuth](Azure.ServiceBus.DisableLocalAuth.md) | Authenticate Service Bus publishers and consumers with Entra ID identities. | GA
 AZR-000179 | [Azure.ServiceFabric.AAD](Azure.ServiceFabric.AAD.md) | Use Azure Active Directory (AAD) client authentication for Service Fabric clusters. | GA
