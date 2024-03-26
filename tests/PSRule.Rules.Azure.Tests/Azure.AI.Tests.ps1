@@ -23,7 +23,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.Cognitive' -Tag 'Cognitive' {
+Describe 'Azure.AI' -Tag 'Cognitive', 'AI' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -32,12 +32,12 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
                 WarningAction = 'Ignore'
                 ErrorAction = 'Stop'
             }
-            $dataPath = Join-Path -Path $here -ChildPath 'Resources.Cognitive.json';
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.AI.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
         }
 
-        It 'Azure.Cognitive.PublicAccess' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cognitive.PublicAccess' };
+        It 'Azure.AI.PublicAccess' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AI.PublicAccess' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -52,8 +52,8 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
             $ruleResult.TargetName | Should -BeIn 'textanalytics-A', 'textanalytics-B';
         }
 
-        It 'Azure.Cognitive.ManagedIdentity' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cognitive.ManagedIdentity' };
+        It 'Azure.AI.ManagedIdentity' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AI.ManagedIdentity' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -74,8 +74,8 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
             $ruleResult.TargetName | Should -BeIn 'luis-A', 'luis-A-authoring';
         }
 
-        It 'Azure.Cognitive.DisableLocalAuth' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cognitive.DisableLocalAuth' };
+        It 'Azure.AI.DisableLocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AI.DisableLocalAuth' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -90,8 +90,8 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
             $ruleResult.TargetName | Should -BeIn 'textanalytics-B';
         }
 
-        It 'Azure.Cognitive.PrivateEndpoints' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cognitive.PrivateEndpoints' };
+        It 'Azure.AI.PrivateEndpoints' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AI.PrivateEndpoints' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -109,8 +109,8 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
 
     Context 'With Template' {
         BeforeAll {
-            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Cognitive.json;
-            Export-AzRuleTemplateData -TemplateFile (Join-Path -Path $here -ChildPath 'cognitive.tests.json') -OutputPath $outputFile;
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.AI.json;
+            Export-AzRuleTemplateData -TemplateFile (Join-Path -Path $here -ChildPath 'ai.tests.json') -OutputPath $outputFile;
             $invokeParams = @{
                 Baseline = 'Azure.All'
                 Module = 'PSRule.Rules.Azure'
@@ -120,9 +120,9 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
             $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
 
-        It 'Azure.Cognitive.PublicAccess' {
+        It 'Azure.AI.PublicAccess' {
             $filteredResult = $result | Where-Object {
-                $_.RuleName -eq 'Azure.Cognitive.PublicAccess' -and
+                $_.RuleName -eq 'Azure.AI.PublicAccess' -and
                 $_.TargetType -eq 'Microsoft.CognitiveServices/accounts'
             };
 
@@ -139,9 +139,9 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
             $ruleResult.TargetName | Should -BeIn 'cognitive-01', 'cognitive-03';
         }
 
-        It 'Azure.Cognitive.ManagedIdentity' {
+        It 'Azure.AI.ManagedIdentity' {
             $filteredResult = $result | Where-Object {
-                $_.RuleName -eq 'Azure.Cognitive.ManagedIdentity' -and
+                $_.RuleName -eq 'Azure.AI.ManagedIdentity' -and
                 $_.TargetType -eq 'Microsoft.CognitiveServices/accounts'
             };
 
@@ -164,9 +164,9 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
             $ruleResult.TargetName | Should -BeIn 'cognitive-01';
         }
 
-        It 'Azure.Cognitive.DisableLocalAuth' {
+        It 'Azure.AI.DisableLocalAuth' {
             $filteredResult = $result | Where-Object {
-                $_.RuleName -eq 'Azure.Cognitive.DisableLocalAuth' -and
+                $_.RuleName -eq 'Azure.AI.DisableLocalAuth' -and
                 $_.TargetType -eq 'Microsoft.CognitiveServices/accounts'
             };
 
@@ -183,9 +183,9 @@ Describe 'Azure.Cognitive' -Tag 'Cognitive' {
             $ruleResult.TargetName | Should -BeIn 'cognitive-01', 'cognitive-03';
         }
 
-        It 'Azure.Cognitive.PrivateEndpoints' {
+        It 'Azure.AI.PrivateEndpoints' {
             $filteredResult = $result | Where-Object {
-                $_.RuleName -eq 'Azure.Cognitive.PrivateEndpoints' -and
+                $_.RuleName -eq 'Azure.AI.PrivateEndpoints' -and
                 $_.TargetType -eq 'Microsoft.CognitiveServices/accounts'
             };
 
