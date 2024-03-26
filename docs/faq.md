@@ -182,6 +182,25 @@ The following levels are defined:
 - `Warning` &mdash; Rules defined as _warning_ will not stop CI pipelines and will produce a warning.
 - `Information` &mdash; Rules defined as _information_ will not stop CI pipelines.
 
+## How often are releases shipped?
+
+PSRule for Azure uses [semantic versioning][15] to declare breaking changes.
+
+- Major releases are infrequent in nature, but created on an as-needed basis.
+  You can check the [upgrade notes][16] to plan for the changes of the next major release.
+- Minor releases are shipped normally each month.
+- Patch releases for the most recent minor version are released on an as-needed basis.
+
+The latest module version can be installed from the PowerShell Gallery and NuGet.
+For a list of module changes please see the [change log][17].
+
+For more information on how we handles versioning and changes see [Changes and versioning][18].
+
+  [15]: https://semver.org/
+  [16]: upgrade-notes.md
+  [17]: https://aka.ms/ps-rule-azure/changelog
+  [18]: versioning.md
+
 ## Traditional unit testing vs PSRule for Azure?
 
 You may already be using a unit test framework such as Pester to test infrastructure code.
