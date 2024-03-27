@@ -1,16 +1,10 @@
----
-obsolete: true
----
+# Azure.Preview_2024_03
 
-# Azure.Preview_2023_12
-
-<!-- OBSOLETE -->
-
-Include rules released December 2023 or prior for Azure preview only features.
+Include rules released March 2024 or prior for Azure preview only features.
 
 ## Rules
 
-The following rules are included within the `Azure.Preview_2023_12` baseline.
+The following rules are included within the `Azure.Preview_2024_03` baseline.
 
 This baseline includes a total of 9 rules.
 
