@@ -34,6 +34,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.35.0-B0084:
 
+- New features:
+  - Added March 2024 baselines `Azure.GA_2024_03` and `Azure.Preview_2024_03` by @BernieWhite.
+    [#2781](https://github.com/Azure/PSRule.Rules.Azure/issues/2781)
+    - Includes rules released before or during March 2024.
+    - Marked `Azure.GA_2023_12` and `Azure.Preview_2023_12` baselines as obsolete.
 - General improvements:
   - Renamed Cognitive Services rules to Azure AI by @BernieWhite.
     [#2776](https://github.com/Azure/PSRule.Rules.Azure/issues/2776)
