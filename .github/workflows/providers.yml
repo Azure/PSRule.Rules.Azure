@@ -50,7 +50,7 @@ jobs:
           enable-AzPSSession: true
 
       - name: Bump Providers
-        uses: Azure/powershell@v1
+        uses: Azure/powershell@v2
         with:
           inlineScript: |
             Import-Module ./scripts/providers.psm1;
