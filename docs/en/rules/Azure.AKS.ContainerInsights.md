@@ -134,8 +134,8 @@ az aks enable-addons \
 ## LINKS
 
 - [Container Insights](https://learn.microsoft.com/azure/architecture/framework/devops/monitoring#container-insights)
-- [Monitor your Kubernetes cluster performance with Container insights](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-analyze)
-- [Container insights overview](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-overview)
-- [Enable monitoring of a new Azure Kubernetes Service (AKS) cluster](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-new-cluster)
-- [Enable monitoring of Azure Kubernetes Service (AKS) cluster already deployed](https://docs.microsoft.com/azure/azure-monitor/containers/container-insights-enable-existing-clusters)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Monitor your Kubernetes cluster performance with Container insights](https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-analyze)
+- [Container insights overview](https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-overview)
+- [Enable monitoring of a new Azure Kubernetes Service (AKS) cluster](https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-enable-new-cluster)
+- [Enable monitoring of Azure Kubernetes Service (AKS) cluster already deployed](https://learn.microsoft.com/azure/azure-monitor/containers/container-insights-enable-existing-clusters)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
