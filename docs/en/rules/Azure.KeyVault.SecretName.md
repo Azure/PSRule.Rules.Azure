@@ -33,6 +33,6 @@ This rule does not check if Secret names are unique.
 ## LINKS
 
 - [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
-- [Naming rules and restrictions for Azure resources](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)
+- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)
 - [Tagging and resource naming](https://learn.microsoft.com/azure/architecture/framework/devops/app-design#tagging-and-resource-naming)

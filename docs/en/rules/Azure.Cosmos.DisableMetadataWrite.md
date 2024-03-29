@@ -95,8 +95,8 @@ resource dbAccount 'Microsoft.DocumentDB/databaseAccounts@2021-06-15' = {
 ## LINKS
 
 - [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
-- [Restrict user access to data operations in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/how-to-restrict-user-data)
-- [Secure access to data in Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data)
-- [How does Azure Cosmos DB secure my database?](https://docs.microsoft.com/azure/cosmos-db/database-security#how-does-azure-cosmos-db-secure-my-database)
-- [Access control in the Azure Cosmos DB SQL API](https://docs.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)
-- [Azure resource template](https://docs.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts#databaseaccountcreateupdateproperties-object)
+- [Restrict user access to data operations in Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/how-to-restrict-user-data)
+- [Secure access to data in Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/secure-access-to-data)
+- [How does Azure Cosmos DB secure my database?](https://learn.microsoft.com/azure/cosmos-db/database-security#how-does-azure-cosmos-db-secure-my-database)
+- [Access control in the Azure Cosmos DB SQL API](https://learn.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)
+- [Azure resource template](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts#databaseaccountcreateupdateproperties-object)

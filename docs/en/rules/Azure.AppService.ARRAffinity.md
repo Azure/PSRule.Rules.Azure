@@ -29,5 +29,5 @@ Consider disabling ARR affinity for stateless applications.
 ## LINKS
 
 - [Design for performance efficiency](https://learn.microsoft.com/azure/architecture/framework/scalability/design-checklist#application-design)
-- [Configure an App Service app](https://docs.microsoft.com/azure/app-service/configure-common#configure-general-settings)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/serverfarms)
+- [Configure an App Service app](https://learn.microsoft.com/azure/app-service/configure-common#configure-general-settings)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/serverfarms)

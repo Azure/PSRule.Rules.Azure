@@ -83,7 +83,7 @@ With the `locale` property you can define the locale for the email notification.
 
 ## LINKS
 
-- [Recovery Services Vault - Overview](https://docs.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview#storage-settings-in-the-recovery-services-vault)
-- [Recovery Services Vault - Replication Alerts](https://docs.microsoft.com/azure/backup/backup-azure-manage-windows-server#configuring-notifications-for-alerts)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/replicationalertsettings?tabs=bicep)
+- [Recovery Services Vault - Overview](https://learn.microsoft.com/azure/backup/backup-azure-recovery-services-vault-overview#storage-settings-in-the-recovery-services-vault)
+- [Recovery Services Vault - Replication Alerts](https://learn.microsoft.com/azure/backup/backup-azure-manage-windows-server#configuring-notifications-for-alerts)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.recoveryservices/vaults/replicationalertsettings?tabs=bicep)
 - [Well Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)

@@ -24,5 +24,5 @@ Some rules may not be needed.
 
 ## LINKS
 
-- [Azure SQL Database and Azure Synapse IP firewall rules](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure)
-- [Create and manage IP firewall rules](https://docs.microsoft.com/azure/azure-sql/database/firewall-configure#create-and-manage-ip-firewall-rules)
+- [Azure SQL Database and Azure Synapse IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure)
+- [Create and manage IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure#create-and-manage-ip-firewall-rules)

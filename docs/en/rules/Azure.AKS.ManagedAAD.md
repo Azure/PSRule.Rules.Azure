@@ -188,6 +188,6 @@ az aks update -n '<name>' -g '<resource_group>' --enable-aad --aad-admin-group-o
 
 - [Authorization with Azure AD](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authorization)
 - [Security design principles](https://learn.microsoft.com/azure/architecture/framework/security/security-principles)
-- [Access and identity options for Azure Kubernetes Service (AKS)](https://docs.microsoft.com/azure/aks/concepts-identity#azure-ad-integration)
-- [AKS-managed Azure Active Directory integration](https://docs.microsoft.com/azure/aks/managed-aad)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAADProfile)
+- [Access and identity options for Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/concepts-identity#azure-ad-integration)
+- [AKS-managed Azure Active Directory integration](https://learn.microsoft.com/azure/aks/managed-aad)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAADProfile)

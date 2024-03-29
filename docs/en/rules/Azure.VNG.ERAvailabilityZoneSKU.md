@@ -129,7 +129,7 @@ resource name_resource 'Microsoft.Network/virtualNetworkGateways@2020-11-01' = {
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways?tabs=json)
-- [About zone-redundant virtual network gateways in Azure Availability Zones](https://docs.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)
-- [ExpressRoute gateway SKUs](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways?tabs=json)
+- [About zone-redundant virtual network gateways in Azure Availability Zones](https://learn.microsoft.com/azure/vpn-gateway/about-zone-redundant-vnet-gateways)
+- [ExpressRoute gateway SKUs](https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways#gwsku)
 - [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)

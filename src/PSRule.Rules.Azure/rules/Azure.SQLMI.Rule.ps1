@@ -9,7 +9,7 @@
 
 # Synopsis: SQL Managed Instance names should meet naming requirements.
 Rule 'Azure.SQLMI.Name' -Ref 'AZR-000194' -Type 'Microsoft.Sql/managedInstances' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
-    # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
+    # https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftsql
 
     # Between 1 and 63 characters long
     $Assert.GreaterOrEqual($PSRule, 'TargetName', 1);

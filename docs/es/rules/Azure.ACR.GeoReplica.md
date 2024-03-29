@@ -166,6 +166,6 @@ Esta regla se aplica cuando se analizan los recursos implementados en Azure.
 ## Elaces
 
 - [Resistencia y dependencias](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
-- [Implementación de la replicación geográfica en varias regiones](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
-- [Replicación geográfica en Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)
-- [Tutorial: Preparar un registro de contenedor de Azure con replicación geográfica](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-prepare-registry)
+- [Implementación de la replicación geográfica en varias regiones](https://learn.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
+- [Replicación geográfica en Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication)
+- [Tutorial: Preparar un registro de contenedor de Azure con replicación geográfica](https://learn.microsoft.com/azure/container-registry/container-registry-tutorial-prepare-registry)

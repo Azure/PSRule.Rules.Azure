@@ -183,6 +183,6 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
 ## LINKS
 
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
-- [HTTP application routing](https://docs.microsoft.com/azure/aks/http-application-routing)
-- [Enable Application Gateway Ingress Controller add-on for an existing AKS cluster](https://docs.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)
+- [HTTP application routing](https://learn.microsoft.com/azure/aks/http-application-routing)
+- [Enable Application Gateway Ingress Controller add-on for an existing AKS cluster](https://learn.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)

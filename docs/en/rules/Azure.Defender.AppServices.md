@@ -87,6 +87,6 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
-- [Securing applications and PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments)
-- [Introduction to Microsoft Defender for App Service](https://docs.microsoft.com/azure/defender-for-cloud/defender-for-app-service-introduction)
-- [App Service security best practices](https://docs.microsoft.com/azure/security/fundamentals/paas-applications-using-app-services)
+- [Securing applications and PaaS deployments](https://learn.microsoft.com/azure/security/fundamentals/paas-deployments)
+- [Introduction to Microsoft Defender for App Service](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-app-service-introduction)
+- [App Service security best practices](https://learn.microsoft.com/azure/security/fundamentals/paas-applications-using-app-services)

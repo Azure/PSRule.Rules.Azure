@@ -31,6 +31,6 @@ Windows cluster can be updated to support AAD authentication after initial deplo
 
 ## LINKS
 
-- [Security recommendations](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security#security-recommendations)
-- [Set up Azure Active Directory for client authentication](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad)
+- [Security recommendations](https://learn.microsoft.com/azure/service-fabric/service-fabric-cluster-security#security-recommendations)
+- [Set up Azure Active Directory for client authentication](https://learn.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad)
 - [Configure Azure Active Directory Authentication for Existing Cluster](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md)

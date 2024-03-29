@@ -27,5 +27,5 @@ Consider configuring legal terms for all products to declare acceptable use of i
 
 ## LINKS
 
-- [Create and publish a product](https://docs.microsoft.com/azure/api-management/api-management-howto-add-products)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service/products#ProductContractProperties)
+- [Create and publish a product](https://learn.microsoft.com/azure/api-management/api-management-howto-add-products)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/products#ProductContractProperties)

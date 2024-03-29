@@ -23,6 +23,6 @@ Consider removing unused variables from Azure template files.
 
 ## LINKS
 
-- [Variables](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax#variables)
-- [ARM template best practices](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#variables)
+- [Variables](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-syntax#variables)
+- [ARM template best practices](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#variables)
 - [Release deployment](https://learn.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)

@@ -29,5 +29,5 @@ Consider limiting the number of subscription Owners by using a more specific rol
 
 ## LINKS
 
-- [What is Azure role-based access control (Azure RBAC)?](https://docs.microsoft.com/azure/role-based-access-control/overview)
-- [Limit the number of subscription owners](https://docs.microsoft.com/azure/role-based-access-control/best-practices#limit-the-number-of-subscription-owners)
+- [What is Azure role-based access control (Azure RBAC)?](https://learn.microsoft.com/azure/role-based-access-control/overview)
+- [Limit the number of subscription owners](https://learn.microsoft.com/azure/role-based-access-control/best-practices#limit-the-number-of-subscription-owners)

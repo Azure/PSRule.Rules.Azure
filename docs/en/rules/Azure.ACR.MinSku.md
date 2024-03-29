@@ -124,7 +124,7 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
 ## LINKS
 
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
-- [Azure Container Registry SKUs](https://docs.microsoft.com/azure/container-registry/container-registry-skus)
-- [Geo-replication in Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)
-- [Best practices for Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
+- [Azure Container Registry SKUs](https://learn.microsoft.com/azure/container-registry/container-registry-skus)
+- [Geo-replication in Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication)
+- [Best practices for Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

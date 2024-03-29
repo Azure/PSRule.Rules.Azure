@@ -57,6 +57,6 @@ For example:
 
 ## LINKS
 
-- [Azure Policy exemption structure](https://docs.microsoft.com/azure/governance/policy/concepts/exemption-structure)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.authorization/policyexemptions)
+- [Azure Policy exemption structure](https://learn.microsoft.com/azure/governance/policy/concepts/exemption-structure)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.authorization/policyexemptions)
 - [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)

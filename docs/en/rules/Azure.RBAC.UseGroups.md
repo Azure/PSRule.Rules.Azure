@@ -24,4 +24,4 @@ Consider using groups for assigning permissions instead of individual user accou
 ## LINKS
 
 - [Avoid granular and custom permissions](https://learn.microsoft.com/azure/architecture/framework/security/design-admins#avoid-granular-and-custom-permissions)
-- [What is Azure role-based access control (Azure RBAC)?](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [What is Azure role-based access control (Azure RBAC)?](https://learn.microsoft.com/azure/role-based-access-control/overview)

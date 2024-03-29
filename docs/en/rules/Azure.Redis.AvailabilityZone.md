@@ -129,6 +129,6 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 ## LINKS
 
 - [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
-- [Enable zone redundancy for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy)
-- [High availability for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)
+- [Enable zone redundancy for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy)
+- [High availability for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)

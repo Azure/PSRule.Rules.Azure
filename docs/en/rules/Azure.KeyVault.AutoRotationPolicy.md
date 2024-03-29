@@ -128,6 +128,6 @@ resource vaultName_key1 'Microsoft.KeyVault/vaults/keys@2021-06-01-preview' = {
 ## LINKS
 
 - [Operational considerations](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-keys#operational-considerations)
-- [IM-3: Manage application identities securely and automatically](https://docs.microsoft.com/security/benchmark/azure/security-controls-v3-identity-management#im-3-manage-application-identities-securely-and-automatically)
-- [Configure cryptographic key auto-rotation in Azure Key Vault](https://docs.microsoft.com/azure/key-vault/keys/how-to-configure-key-rotation)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)
+- [IM-3: Manage application identities securely and automatically](https://learn.microsoft.com/security/benchmark/azure/security-controls-v3-identity-management#im-3-manage-application-identities-securely-and-automatically)
+- [Configure cryptographic key auto-rotation in Azure Key Vault](https://learn.microsoft.com/azure/key-vault/keys/how-to-configure-key-rotation)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults/keys)

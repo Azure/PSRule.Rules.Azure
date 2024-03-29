@@ -20,12 +20,12 @@ Centrally storing PSRule results enables the following scenarios:
 !!! Abstract
     This topic covers setting up PSRule to log rule results into a [Log Analytics][1] workspace.
 
-  [1]: https://docs.microsoft.com/azure/azure-monitor/logs/log-analytics-overview
-  [2]: https://docs.microsoft.com/azure/sentinel/overview
-  [3]: https://docs.microsoft.com/azure/azure-monitor/logs/queries
-  [4]: https://docs.microsoft.com/azure/azure-monitor/visualize/workbooks-overview
-  [5]: https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-log
-  [6]: https://docs.microsoft.com/azure/azure-monitor/alerts/alerts-common-schema-integrations
+  [1]: https://learn.microsoft.com/azure/azure-monitor/logs/log-analytics-overview
+  [2]: https://learn.microsoft.com/azure/sentinel/overview
+  [3]: https://learn.microsoft.com/azure/azure-monitor/logs/queries
+  [4]: https://learn.microsoft.com/azure/azure-monitor/visualize/workbooks-overview
+  [5]: https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-log
+  [6]: https://learn.microsoft.com/azure/azure-monitor/alerts/alerts-common-schema-integrations
 
 ## Logging into a Log Analytics workspace
 
@@ -166,7 +166,7 @@ Import analysis results into Azure Monitor with Azure Pipelines by:
     To keep `MONITORWORKSPACEKEY` secure, use a [variable group][10] linked to an Azure Key Vault.
 
   [9]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule
-  [10]: https://docs.microsoft.com/azure/devops/pipelines/library/variable-groups
+  [10]: https://learn.microsoft.com/azure/devops/pipelines/library/variable-groups
 
 ## Samples
 

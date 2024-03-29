@@ -91,5 +91,5 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 ## LINKS
 
 - [Performance efficiency checklist](https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
-- [Configure an App Service app](https://docs.microsoft.com/azure/app-service/configure-common#configure-general-settings)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)
+- [Configure an App Service app](https://learn.microsoft.com/azure/app-service/configure-common#configure-general-settings)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)

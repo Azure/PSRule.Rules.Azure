@@ -26,4 +26,4 @@ Consider enabling auto-provisioning to improve Azure Microsoft Defender for Clou
 
 ## LINKS
 
-- [Quickstart: Configure auto provisioning for agents and extensions from Microsoft Defender for Cloud](https://docs.microsoft.com/azure/defender-for-cloud/enable-data-collection)
+- [Quickstart: Configure auto provisioning for agents and extensions from Microsoft Defender for Cloud](https://learn.microsoft.com/azure/defender-for-cloud/enable-data-collection)

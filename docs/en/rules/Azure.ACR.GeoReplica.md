@@ -168,6 +168,6 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 ## LINKS
 
 - [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
-- [Geo-replicate multi-region deployments](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
-- [Geo-replication in Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-geo-replication)
-- [Tutorial: Prepare a geo-replicated Azure container registry](https://docs.microsoft.com/azure/container-registry/container-registry-tutorial-prepare-registry)
+- [Geo-replicate multi-region deployments](https://learn.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
+- [Geo-replication in Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication)
+- [Tutorial: Prepare a geo-replicated Azure container registry](https://learn.microsoft.com/azure/container-registry/container-registry-tutorial-prepare-registry)

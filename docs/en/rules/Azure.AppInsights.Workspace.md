@@ -84,5 +84,5 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
 ## LINKS
 
 - [Collection and storage](https://learn.microsoft.com/azure/architecture/framework/devops/monitor-collection-data-storage)
-- [Migrate to workspace-based Application Insights resources](https://docs.microsoft.com/azure/azure-monitor/app/convert-classic-resource)
-- [Azure resource template](https://docs.microsoft.com/azure/templates/microsoft.insights/components#applicationinsightscomponentproperties-object)
+- [Migrate to workspace-based Application Insights resources](https://learn.microsoft.com/azure/azure-monitor/app/convert-classic-resource)
+- [Azure resource template](https://learn.microsoft.com/azure/templates/microsoft.insights/components#applicationinsightscomponentproperties-object)

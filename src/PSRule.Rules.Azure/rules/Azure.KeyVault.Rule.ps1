@@ -41,7 +41,7 @@ Rule 'Azure.KeyVault.Logs' -Ref 'AZR-000119' -Type 'Microsoft.KeyVault/vaults' -
 
 # Synopsis: Key Vault names should meet naming requirements.
 Rule 'Azure.KeyVault.Name' -Ref 'AZR-000120' -Type 'Microsoft.KeyVault/vaults' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
+    # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 
     # Between 3 and 24 characters long
     $Assert.GreaterOrEqual($PSRule, 'TargetName', 3);
@@ -56,7 +56,7 @@ Rule 'Azure.KeyVault.Name' -Ref 'AZR-000120' -Type 'Microsoft.KeyVault/vaults' -
 
 # Synopsis: Key Vault Secret names should meet naming requirements.
 Rule 'Azure.KeyVault.SecretName' -Ref 'AZR-000121' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/secrets' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
+    # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 
     $secrets = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.KeyVault/vaults') {
@@ -80,7 +80,7 @@ Rule 'Azure.KeyVault.SecretName' -Ref 'AZR-000121' -Type 'Microsoft.KeyVault/vau
 
 # Synopsis: Key Vault Key names should meet naming requirements.
 Rule 'Azure.KeyVault.KeyName' -Ref 'AZR-000122' -Type 'Microsoft.KeyVault/vaults', 'Microsoft.KeyVault/vaults/keys' -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
+    # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault
 
     $keys = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.KeyVault/vaults') {

@@ -29,4 +29,4 @@ Determine if access from Azure services is required for the services connecting 
 
 ## LINKS
 
-- [Firewall rules in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules#connecting-from-azure)
+- [Firewall rules in Azure Database for PostgreSQL](https://learn.microsoft.com/azure/postgresql/concepts-firewall-rules#connecting-from-azure)

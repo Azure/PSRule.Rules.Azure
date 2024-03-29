@@ -17,9 +17,7 @@
       "Description": "This is the default set of policies monitored by Azure Security Center. It was automatically assigned as part of onboarding to Security Center. The default assignment contains only audit policies. For more information please visit https://aka.ms/ascpolicies",
       "Metadata": {
         "assignedBy": "Security Center",
-        "excludedOutOfTheBoxStandards": [
-          "Azure CIS 1.1.0"
-        ]
+        "excludedOutOfTheBoxStandards": ["Azure CIS 1.1.0"]
       },
       "EnforcementMode": 0,
       "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
@@ -55,10 +53,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -77,10 +72,7 @@
                 "name": "d1db3318-01ff-16de-29eb-28b344515626",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -110,19 +102,14 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
           "PolicyRule": {
             "if": {
               "field": "type",
-              "in": [
-                "Microsoft.Compute/virtualMachineScaleSets"
-              ]
+              "in": ["Microsoft.Compute/virtualMachineScaleSets"]
             },
             "then": {
               "effect": "[parameters('effect')]",
@@ -131,10 +118,7 @@
                 "name": "45cfe080-ceb1-a91e-9743-71551ed24e94",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -226,11 +210,7 @@
                 "displayName": "Effect",
                 "description": "'Audit' allows a non-compliant resource to be created, but flags it as non-compliant. 'Deny' blocks the resource creation. 'Disable' turns off the policy."
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -276,11 +256,7 @@
                 "displayName": "Effect",
                 "description": "'Audit' allows a non-compliant resource to be created, but flags it as non-compliant. 'Deny' blocks the resource creation. 'Disable' turns off the policy."
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -326,10 +302,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -345,10 +318,7 @@
                 "name": "8941d121-f740-35f6-952c-6561d2b38d36",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -378,10 +348,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -397,10 +364,7 @@
                 "name": "e71020c2-860c-3235-cd39-04f3f8c936d2",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -430,10 +394,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -449,10 +410,7 @@
                 "name": "bd20bd91-aaf1-7f14-b6e4-866de2f43146",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -482,10 +440,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -716,10 +671,7 @@
                         },
                         {
                           "field": "Microsoft.Compute/imageOffer",
-                          "in": [
-                            "osa",
-                            "rhel-byos"
-                          ]
+                          "in": ["osa", "rhel-byos"]
                         }
                       ]
                     },
@@ -807,10 +759,7 @@
                         },
                         {
                           "field": "Microsoft.Compute/imageOffer",
-                          "in": [
-                            "linux-data-science-vm-ubuntu",
-                            "azureml"
-                          ]
+                          "in": ["linux-data-science-vm-ubuntu", "azureml"]
                         }
                       ]
                     },
@@ -942,10 +891,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -990,9 +936,7 @@
           "Metadata": {
             "category": "Guest Configuration",
             "version": "2.0.0",
-            "requiredProviders": [
-              "Microsoft.GuestConfiguration"
-            ],
+            "requiredProviders": ["Microsoft.GuestConfiguration"],
             "guestConfiguration": {
               "name": "WindowsDefenderExploitGuard",
               "version": "1.*",
@@ -1010,10 +954,7 @@
                 "description": "By selecting this option, you agree to be charged monthly per Arc connected machine.",
                 "portalReview": "true"
               },
-              "allowedValues": [
-                "true",
-                "false"
-              ],
+              "allowedValues": ["true", "false"],
               "defaultValue": "false"
             },
             "NotAvailableMachineState": {
@@ -1022,10 +963,7 @@
                 "displayName": "Status if Windows Defender is not available on machine",
                 "description": "Windows Defender Exploit Guard is only available starting with Windows 10/Windows Server with update 1709. Setting this value to 'Non-Compliant' shows machines with older versions on which Windows Defender Exploit Guard is not available (such as Windows Server 2012 R2) as non-compliant. Setting this value to 'Compliant' shows these machines as compliant."
               },
-              "allowedValues": [
-                "Compliant",
-                "Non-Compliant"
-              ],
+              "allowedValues": ["Compliant", "Non-Compliant"],
               "defaultValue": "Compliant"
             },
             "effect": {
@@ -1034,10 +972,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of this policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -1277,9 +1212,7 @@
           "Metadata": {
             "category": "Guest Configuration",
             "version": "2.0.0",
-            "requiredProviders": [
-              "Microsoft.GuestConfiguration"
-            ],
+            "requiredProviders": ["Microsoft.GuestConfiguration"],
             "guestConfiguration": {
               "name": "AzureWindowsBaseline",
               "version": "1.*"
@@ -1294,10 +1227,7 @@
                 "description": "By selecting this option, you agree to be charged monthly per Arc connected machine.",
                 "portalReview": "true"
               },
-              "allowedValues": [
-                "true",
-                "false"
-              ],
+              "allowedValues": ["true", "false"],
               "defaultValue": "false"
             },
             "effect": {
@@ -1306,10 +1236,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of this policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -1541,9 +1468,7 @@
           "Metadata": {
             "category": "Guest Configuration",
             "version": "2.0.0",
-            "requiredProviders": [
-              "Microsoft.GuestConfiguration"
-            ],
+            "requiredProviders": ["Microsoft.GuestConfiguration"],
             "guestConfiguration": {
               "name": "AzureLinuxBaseline",
               "version": "1.*"
@@ -1558,10 +1483,7 @@
                 "description": "By selecting this option, you agree to be charged monthly per Arc connected machine.",
                 "portalReview": "true"
               },
-              "allowedValues": [
-                "true",
-                "false"
-              ],
+              "allowedValues": ["true", "false"],
               "defaultValue": "false"
             },
             "effect": {
@@ -1570,10 +1492,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of this policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -1664,10 +1583,7 @@
                             },
                             {
                               "field": "Microsoft.Compute/imageOffer",
-                              "in": [
-                                "osa",
-                                "rhel-byos"
-                              ]
+                              "in": ["osa", "rhel-byos"]
                             }
                           ]
                         },
@@ -1924,10 +1840,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -2024,10 +1937,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "includeAKSClusters": {
@@ -2147,11 +2057,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -2197,10 +2103,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -2246,10 +2149,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -2352,11 +2252,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -2418,10 +2314,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -2462,10 +2355,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -2568,11 +2458,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -2630,11 +2516,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -2688,10 +2570,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -2794,11 +2673,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -2844,10 +2719,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -2950,10 +2822,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -3056,10 +2925,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -3162,10 +3028,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -3268,10 +3131,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -3374,11 +3234,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -3427,11 +3283,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -3480,10 +3332,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -3586,11 +3435,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -3636,10 +3481,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -3701,10 +3543,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "setting": {
@@ -3712,10 +3551,7 @@
               "metadata": {
                 "displayName": "Desired Auditing setting"
               },
-              "allowedValues": [
-                "enabled",
-                "disabled"
-              ],
+              "allowedValues": ["enabled", "disabled"],
               "defaultValue": "enabled"
             }
           },
@@ -3769,10 +3605,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -3791,10 +3624,7 @@
                 "name": "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -3825,10 +3655,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -3847,10 +3674,7 @@
                 "name": "e1145ab1-eb4f-43d8-911b-36ddf771d13f",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -3881,11 +3705,7 @@
                 "displayName": "Policy Effect",
                 "description": "The desired effect of the policy."
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -4061,17 +3881,11 @@
                                 },
                                 {
                                   "field": "Microsoft.Compute/imageOffer",
-                                  "in": [
-                                    "sles-12-sp5",
-                                    "sles-15-sp2"
-                                  ]
+                                  "in": ["sles-12-sp5", "sles-15-sp2"]
                                 },
                                 {
                                   "field": "Microsoft.Compute/imageSKU",
-                                  "in": [
-                                    "gen1",
-                                    "gen2"
-                                  ]
+                                  "in": ["gen1", "gen2"]
                                 }
                               ]
                             },
@@ -4151,10 +3965,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4170,10 +3981,7 @@
                 "name": "805651bc-6ecd-4c73-9b55-97a19d0582d0",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4203,10 +4011,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4225,10 +4030,7 @@
                 "name": "35f45c95-27cf-4e52-891f-8390d1de5828",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4258,10 +4060,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4280,10 +4079,7 @@
                 "name": "1234abcd-1b53-4fd4-9835-2c2fa3935313",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4313,10 +4109,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4332,10 +4125,7 @@
                 "name": "eade5b56-eefd-444f-95c8-23f29e5d93cb",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4365,10 +4155,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4387,10 +4174,7 @@
                 "name": "483f12ed-ae23-447e-a2de-a67a10db4353",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4420,10 +4204,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4442,10 +4223,7 @@
                 "name": "a9341235-9389-42f0-a0bf-9bfb57960d44",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4475,10 +4253,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4497,10 +4272,7 @@
                 "name": "181ac480-f7c4-544b-9865-11b8ffe87f47",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4530,10 +4302,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4552,10 +4321,7 @@
                 "name": "83f577bd-a1b6-b7e1-0891-12ca19d1e6df",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4585,10 +4351,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4607,10 +4370,7 @@
                 "name": "d57a4221-a804-52ca-3dea-768284f06bb7",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4640,10 +4400,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4662,10 +4419,7 @@
                 "name": "ffff0522-1e88-47fc-8382-2a80ba848f5d",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4695,10 +4449,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4717,10 +4468,7 @@
                 "name": "3b20e985-f71f-483b-b078-f30d73936d43",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4750,20 +4498,14 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
           "PolicyRule": {
             "if": {
               "field": "type",
-              "in": [
-                "Microsoft.Sql/servers",
-                "Microsoft.Sql/managedinstances"
-              ]
+              "in": ["Microsoft.Sql/servers", "Microsoft.Sql/managedinstances"]
             },
             "then": {
               "effect": "[parameters('effect')]",
@@ -4772,10 +4514,7 @@
                 "name": "82e20e14-edc5-4373-bfc4-f13121257c37",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4805,10 +4544,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4827,10 +4563,7 @@
                 "name": "f97aa83c-9b63-4f9a-99f6-b22c4398f936",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4860,10 +4593,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4879,10 +4609,7 @@
                 "name": "6f90a6d6-d4d6-0794-0ec1-98fa77878c2e",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4912,10 +4639,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4931,10 +4655,7 @@
                 "name": "2c79b4af-f830-b61e-92b9-63dfa30f16e4",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -4964,10 +4685,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -4983,10 +4701,7 @@
                 "name": "94290b00-4d0c-d7b4-7cea-064a9554e681",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5016,10 +4731,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5035,10 +4747,7 @@
                 "name": "6240402e-f77c-46fa-9060-a7ce53997754",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5068,10 +4777,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5087,10 +4793,7 @@
                 "name": "57e98606-6b1e-6193-0e3d-fe621387c16b",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5120,10 +4823,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5139,10 +4839,7 @@
                 "name": "c0cb17b2-0607-48a7-b0e0-903ed22de39b",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5172,10 +4869,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5191,10 +4885,7 @@
                 "name": "151e82c5-5341-a74b-1eb0-bc38d2c84bb5",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5224,10 +4915,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5243,10 +4931,7 @@
                 "name": "dabc9bc4-b8a8-45bd-9a5a-43000df8aa1c",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5276,10 +4961,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5295,10 +4977,7 @@
                 "name": "e52064aa-6853-e252-a11e-dffc675689c2",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5328,10 +5007,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5347,10 +5023,7 @@
                 "name": "050ac097-3dda-4d24-ab6d-82568e7a50cf",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5380,10 +5053,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5399,10 +5069,7 @@
                 "name": "00c6d40b-e990-6acf-d4f3-471e747a27c4",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5432,10 +5099,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5451,10 +5115,7 @@
                 "name": "1ff0b4c9-ed56-4de6-be9c-d7ab39645926",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5484,10 +5145,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5503,10 +5161,7 @@
                 "name": "c3b6ae71-f1f0-31b4-e6c1-d5951285d03d",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5536,10 +5191,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5555,10 +5207,7 @@
                 "name": "20606e75-05c4-48c0-9d97-add6daa2109a",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5588,10 +5237,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5607,10 +5253,7 @@
                 "name": "04e7147b-0deb-9796-2e5c-0336343ceb3d",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5640,10 +5283,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5659,10 +5299,7 @@
                 "name": "0354476c-a12a-4fcc-a79d-f0ab7ffffdbb",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5692,10 +5329,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5711,10 +5345,7 @@
                 "name": "a8c6a4ad-d51e-88fe-2979-d3ee3c864f8b",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5744,10 +5375,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5763,10 +5391,7 @@
                 "name": "fde1c0c9-0fd2-4ecc-87b5-98956cbc1095",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -5796,10 +5421,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5856,10 +5478,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -5912,10 +5531,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -6005,11 +5621,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled",
-                "Deny"
-              ],
+              "allowedValues": ["Audit", "Disabled", "Deny"],
               "defaultValue": "Audit"
             }
           },
@@ -6071,10 +5683,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6131,10 +5740,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6187,10 +5793,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6206,10 +5809,7 @@
                 "name": "e3de1cc0-f4dd-3b34-e496-8b5381ba2d70",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -6239,10 +5839,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6296,10 +5893,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6345,10 +5939,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -6402,10 +5993,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -6463,10 +6051,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6520,10 +6105,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6569,10 +6151,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6588,10 +6167,7 @@
                 "name": "f9f0eed0-f143-47bf-b856-671ea2eeed62",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -6621,10 +6197,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6643,10 +6216,7 @@
                 "name": "bc303248-3d14-44c2-96a0-55f5c326b5fe",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -6676,10 +6246,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6698,10 +6265,7 @@
                 "name": "c3b51c94-588b-426b-a892-24696f9e54cc",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -6731,11 +6295,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -6813,11 +6373,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -6887,10 +6443,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -6910,10 +6463,7 @@
                 "name": "0677209d-e675-2c6f-e91a-54cef2878663",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -6944,10 +6494,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable Dependency Agent for Windows VMs monitoring"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7078,10 +6625,7 @@
                         },
                         {
                           "field": "Microsoft.Compute/imageOffer",
-                          "in": [
-                            "VisualStudio",
-                            "Windows"
-                          ]
+                          "in": ["VisualStudio", "Windows"]
                         }
                       ]
                     },
@@ -7178,10 +6722,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable Dependency Agent for Linux VMs monitoring"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7216,16 +6757,11 @@
                             },
                             {
                               "field": "Microsoft.Compute/imageSKU",
-                              "in": [
-                                "16.04-LTS",
-                                "16.04.0-LTS"
-                              ]
+                              "in": ["16.04-LTS", "16.04.0-LTS"]
                             },
                             {
                               "field": "Microsoft.Compute/imageSKU",
-                              "in": [
-                                "18.04-LTS"
-                              ]
+                              "in": ["18.04-LTS"]
                             }
                           ]
                         }
@@ -7239,10 +6775,7 @@
                         },
                         {
                           "field": "Microsoft.Compute/imageOffer",
-                          "in": [
-                            "RHEL",
-                            "RHEL-SAP-HANA"
-                          ]
+                          "in": ["RHEL", "RHEL-SAP-HANA"]
                         },
                         {
                           "anyOf": [
@@ -7282,11 +6815,7 @@
                           "anyOf": [
                             {
                               "field": "Microsoft.Compute/imageSKU",
-                              "in": [
-                                "12-SP2",
-                                "12-SP3",
-                                "12-SP4"
-                              ]
+                              "in": ["12-SP2", "12-SP3", "12-SP4"]
                             }
                           ]
                         }
@@ -7300,11 +6829,7 @@
                         },
                         {
                           "field": "Microsoft.Compute/imageOffer",
-                          "in": [
-                            "CentOS",
-                            "Centos-LVM",
-                            "CentOS-SRIOV"
-                          ]
+                          "in": ["CentOS", "Centos-LVM", "CentOS-SRIOV"]
                         },
                         {
                           "anyOf": [
@@ -7389,10 +6914,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable All Internet traffic should be routed via your deployed Azure Firewall"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7486,10 +7008,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7555,10 +7074,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7614,9 +7130,7 @@
           "Metadata": {
             "category": "Guest Configuration",
             "version": "2.0.0",
-            "requiredProviders": [
-              "Microsoft.GuestConfiguration"
-            ],
+            "requiredProviders": ["Microsoft.GuestConfiguration"],
             "guestConfiguration": {
               "name": "WindowsLogAnalyticsAgentInstalled",
               "version": "1.*"
@@ -7631,10 +7145,7 @@
                 "description": "By selecting this option, you agree to be charged monthly per Arc connected machine.",
                 "portalReview": "true"
               },
-              "allowedValues": [
-                "true",
-                "false"
-              ],
+              "allowedValues": ["true", "false"],
               "defaultValue": "false"
             },
             "effect": {
@@ -7643,10 +7154,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of this policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7695,9 +7203,7 @@
           "Metadata": {
             "category": "Guest Configuration",
             "version": "1.1.0",
-            "requiredProviders": [
-              "Microsoft.GuestConfiguration"
-            ],
+            "requiredProviders": ["Microsoft.GuestConfiguration"],
             "guestConfiguration": {
               "name": "LinuxLogAnalyticsAgentInstalled",
               "version": "1.*"
@@ -7712,10 +7218,7 @@
                 "description": "By selecting this option, you agree to be charged monthly per Arc connected machine.",
                 "portalReview": "true"
               },
-              "allowedValues": [
-                "true",
-                "false"
-              ],
+              "allowedValues": ["true", "false"],
               "defaultValue": "false"
             },
             "effect": {
@@ -7724,10 +7227,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of this policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7785,10 +7285,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7835,10 +7332,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7885,10 +7379,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7935,10 +7426,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -7985,10 +7473,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -8035,10 +7520,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -8085,10 +7567,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -8135,10 +7614,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -8193,10 +7669,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -8257,11 +7730,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -8303,12 +7772,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -8318,10 +7782,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -8362,12 +7823,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-images/v2/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -8419,11 +7876,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -8465,12 +7918,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -8480,10 +7928,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -8525,12 +7970,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/container-no-privilege/v2/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -8582,11 +8023,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -8628,12 +8065,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -8643,10 +8075,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -8679,12 +8108,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/service-allowed-ports/v1/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Service"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Service"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -8721,11 +8146,7 @@
                 "displayName": "Effect",
                 "description": "'Audit' allows a non-compliant resource to be created or updated, but flags it as non-compliant. 'Deny' blocks the non-compliant resource creation or update. 'Disabled' turns off the policy."
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             },
             "excludedNamespaces": {
@@ -8734,11 +8155,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -8780,12 +8197,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -8795,10 +8207,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -8821,12 +8230,7 @@
                 "displayName": "Severity threshold for excluding vulnerabilities without a patch",
                 "description": "Specify the maximum severity for exempting vulnerabilities without a patch. For example, specify Medium to ignore Low and Medium vulnerabilities without a patch."
               },
-              "allowedValues": [
-                "None",
-                "Low",
-                "Medium",
-                "High"
-              ],
+              "allowedValues": ["None", "Low", "Medium", "High"],
               "defaultValue": "None"
             },
             "excludeFindingIDs": {
@@ -8861,11 +8265,7 @@
                     "type": "integer"
                   }
                 },
-                "required": [
-                  "High",
-                  "Medium",
-                  "Low"
-                ],
+                "required": ["High", "Medium", "Low"],
                 "additionalProperties": false
               }
             }
@@ -8873,9 +8273,7 @@
           "PolicyRule": {
             "if": {
               "field": "type",
-              "in": [
-                "Microsoft.ContainerService/managedClusters"
-              ]
+              "in": ["Microsoft.ContainerService/managedClusters"]
             },
             "then": {
               "effect": "[parameters('effect')]",
@@ -8884,10 +8282,7 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/container-no-vulnerable-images/v1/template.yaml"
                 },
-                "apiGroups": [
-                  "",
-                  "apps"
-                ],
+                "apiGroups": ["", "apps"],
                 "kinds": [
                   "Pod",
                   "Deployment",
@@ -8951,11 +8346,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -8997,12 +8388,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -9012,10 +8398,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -9071,12 +8454,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/container-resource-limits/v3/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -9130,11 +8509,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -9176,12 +8551,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -9191,10 +8561,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -9209,11 +8576,7 @@
                 "displayName": "Run as user rule",
                 "description": "The 'RunAsUser' rule that containers are allowed to run with. MustRunAs requires at least one range to be specified. MustRunAsNonRoot requires the pod be submitted with non-zero runAsUser or have USER directive defined (using a numeric UID) in the image. RunAsAny allows any runAsUser to be specified"
               },
-              "allowedValues": [
-                "MustRunAs",
-                "MustRunAsNonRoot",
-                "RunAsAny"
-              ],
+              "allowedValues": ["MustRunAs", "MustRunAsNonRoot", "RunAsAny"],
               "defaultValue": "MustRunAsNonRoot"
             },
             "runAsUserRanges": {
@@ -9240,17 +8603,12 @@
                           "type": "integer"
                         }
                       },
-                      "required": [
-                        "min",
-                        "max"
-                      ],
+                      "required": ["min", "max"],
                       "additionalProperties": false
                     }
                   }
                 },
-                "required": [
-                  "ranges"
-                ],
+                "required": ["ranges"],
                 "additionalProperties": false
               }
             },
@@ -9260,11 +8618,7 @@
                 "displayName": "Run as group rule",
                 "description": "The 'RunAsGroup' rule that containers are allowed to run with. MustRunAs requires at least one range to be specified. MayRunAs does not require that 'RunAsGroup' be specified. RunAsAny allows any"
               },
-              "allowedValues": [
-                "MustRunAs",
-                "MayRunAs",
-                "RunAsAny"
-              ],
+              "allowedValues": ["MustRunAs", "MayRunAs", "RunAsAny"],
               "defaultValue": "RunAsAny"
             },
             "runAsGroupRanges": {
@@ -9291,17 +8645,12 @@
                           "type": "integer"
                         }
                       },
-                      "required": [
-                        "min",
-                        "max"
-                      ],
+                      "required": ["min", "max"],
                       "additionalProperties": false
                     }
                   }
                 },
-                "required": [
-                  "ranges"
-                ],
+                "required": ["ranges"],
                 "additionalProperties": false
               }
             },
@@ -9311,11 +8660,7 @@
                 "displayName": "Supplemental group rule",
                 "description": "The 'SupplementalGroups' rule that containers are allowed to run with. MustRunAs requires at least one range to be specified. MayRunAs does not require that 'SupplementalGroups' be specified. RunAsAny allows any"
               },
-              "allowedValues": [
-                "MustRunAs",
-                "MayRunAs",
-                "RunAsAny"
-              ],
+              "allowedValues": ["MustRunAs", "MayRunAs", "RunAsAny"],
               "defaultValue": "RunAsAny"
             },
             "supplementalGroupsRanges": {
@@ -9342,17 +8687,12 @@
                           "type": "integer"
                         }
                       },
-                      "required": [
-                        "min",
-                        "max"
-                      ],
+                      "required": ["min", "max"],
                       "additionalProperties": false
                     }
                   }
                 },
-                "required": [
-                  "ranges"
-                ],
+                "required": ["ranges"],
                 "additionalProperties": false
               }
             },
@@ -9362,11 +8702,7 @@
                 "displayName": "File system group rule",
                 "description": "The 'FSGroup' rule that containers are allowed to run with. MustRunAs requires at least one range to be specified. MayRunAs does not require that 'FSGroup' be specified. RunAsAny allows any"
               },
-              "allowedValues": [
-                "MustRunAs",
-                "MayRunAs",
-                "RunAsAny"
-              ],
+              "allowedValues": ["MustRunAs", "MayRunAs", "RunAsAny"],
               "defaultValue": "RunAsAny"
             },
             "fsGroupRanges": {
@@ -9393,17 +8729,12 @@
                           "type": "integer"
                         }
                       },
-                      "required": [
-                        "min",
-                        "max"
-                      ],
+                      "required": ["min", "max"],
                       "additionalProperties": false
                     }
                   }
                 },
-                "required": [
-                  "ranges"
-                ],
+                "required": ["ranges"],
                 "additionalProperties": false
               }
             },
@@ -9440,12 +8771,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/allowed-users-groups/v3/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -9483,7 +8810,7 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "Microsoft Defender for Cloud extension for Azure Arc provides threat protection for your Arc enabled Kubernetes clusters. The extension collects data from all nodes in the cluster and sends it to the Azure Defender for Kubernetes backend in the cloud for further analysis. Learn more in https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-enable?pivots=defender-for-container-arc.",
+          "Description": "Microsoft Defender for Cloud extension for Azure Arc provides threat protection for your Arc enabled Kubernetes clusters. The extension collects data from all nodes in the cluster and sends it to the Azure Defender for Kubernetes backend in the cloud for further analysis. Learn more in https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-enable?pivots=defender-for-container-arc.",
           "DisplayName": "[Preview]: Azure Arc enabled Kubernetes clusters should have Microsoft Defender for Cloud extension installed",
           "Metadata": {
             "version": "6.0.0-preview",
@@ -9498,10 +8825,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -9514,12 +8838,7 @@
                 },
                 {
                   "field": "Microsoft.Kubernetes/connectedClusters/distribution",
-                  "notIn": [
-                    "aks",
-                    "aks_management",
-                    "eks",
-                    "gke"
-                  ]
+                  "notIn": ["aks", "aks_management", "eks", "gke"]
                 }
               ]
             },
@@ -9553,7 +8872,7 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "Microsoft Defender for Containers provides cloud-native Kubernetes security capabilities including environment hardening, workload protection, and run-time protection. When you enable the SecurityProfile.AzureDefender on your Azure Kubernetes Service cluster, an agent is deployed to your cluster to collect security event data. Learn more about Microsoft Defender for Containers in https://docs.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction?tabs=defender-for-container-arch-aks",
+          "Description": "Microsoft Defender for Containers provides cloud-native Kubernetes security capabilities including environment hardening, workload protection, and run-time protection. When you enable the SecurityProfile.AzureDefender on your Azure Kubernetes Service cluster, an agent is deployed to your cluster to collect security event data. Learn more about Microsoft Defender for Containers in https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction?tabs=defender-for-container-arch-aks",
           "DisplayName": "Azure Kubernetes Service clusters should have Defender profile enabled",
           "Metadata": {
             "version": "2.0.0",
@@ -9567,10 +8886,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -9616,10 +8932,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -9635,10 +8948,7 @@
                 "name": "dbd0cb49-b563-45e7-9724-889e799fa648",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -9668,19 +8978,14 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
           "PolicyRule": {
             "if": {
               "field": "type",
-              "in": [
-                "Microsoft.ContainerService/managedClusters"
-              ]
+              "in": ["Microsoft.ContainerService/managedClusters"]
             },
             "then": {
               "effect": "[parameters('effect')]",
@@ -9689,10 +8994,7 @@
                 "name": "41503391-efa5-47ee-9282-4eff6131462c",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -9738,11 +9040,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -9784,12 +9082,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -9799,10 +9092,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -9844,12 +9134,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/container-no-privilege-escalation/v3/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -9901,11 +9187,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -9947,12 +9229,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -9962,10 +9239,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -9999,12 +9273,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/block-host-namespace/v2/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -10055,11 +9325,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -10101,12 +9367,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -10116,10 +9377,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -10161,12 +9419,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/read-only-root-filesystem/v3/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -10218,11 +9472,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -10264,12 +9514,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -10279,10 +9524,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -10340,12 +9582,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/container-allowed-capabilities/v3/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -10399,11 +9637,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -10445,12 +9679,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -10460,10 +9689,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -10478,9 +9704,7 @@
                 "displayName": "Allowed AppArmor profiles",
                 "description": "The list of AppArmor profiles that containers are allowed to use. E.g. [ \"runtime/default\", \"docker/default\" ]. Provide empty list as input to block everything."
               },
-              "defaultValue": [
-                "runtime/default"
-              ]
+              "defaultValue": ["runtime/default"]
             },
             "excludedContainers": {
               "type": "Array",
@@ -10515,12 +9739,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/enforce-apparmor-profile/v3/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -10573,11 +9793,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -10619,12 +9835,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -10634,10 +9845,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -10703,12 +9911,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/host-network-ports/v3/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -10763,11 +9967,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -10809,12 +10009,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -10824,10 +10019,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -10860,17 +10052,12 @@
                           "type": "boolean"
                         }
                       },
-                      "required": [
-                        "pathPrefix",
-                        "readOnly"
-                      ],
+                      "required": ["pathPrefix", "readOnly"],
                       "additionalProperties": false
                     }
                   }
                 },
-                "required": [
-                  "paths"
-                ],
+                "required": ["paths"],
                 "additionalProperties": false
               }
             },
@@ -10907,12 +10094,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/allowed-host-paths/v3/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -11027,10 +10210,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -11087,10 +10267,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -11156,10 +10333,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -11205,10 +10379,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -11270,10 +10441,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -11319,10 +10487,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -11408,10 +10573,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -11457,10 +10619,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -11571,10 +10730,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -11624,10 +10780,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -11677,10 +10830,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -11734,10 +10884,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -11795,10 +10942,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "PHPLatestVersion": {
@@ -11872,10 +11016,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "JavaLatestVersion": {
@@ -11949,10 +11090,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "JavaLatestVersion": {
@@ -12030,10 +11168,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "WindowsPythonLatestVersion": {
@@ -12116,10 +11251,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "WindowsPythonLatestVersion": {
@@ -12206,10 +11338,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -12254,10 +11383,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -12302,10 +11428,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -12350,10 +11473,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -12427,10 +11547,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -12458,10 +11575,7 @@
                 "name": "web",
                 "existenceCondition": {
                   "field": "Microsoft.Web/sites/config/ftpsState",
-                  "in": [
-                    "FtpsOnly",
-                    "Disabled"
-                  ]
+                  "in": ["FtpsOnly", "Disabled"]
                 }
               }
             }
@@ -12491,10 +11605,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -12518,10 +11629,7 @@
                 "name": "web",
                 "existenceCondition": {
                   "field": "Microsoft.Web/sites/config/ftpsState",
-                  "in": [
-                    "FtpsOnly",
-                    "Disabled"
-                  ]
+                  "in": ["FtpsOnly", "Disabled"]
                 }
               }
             }
@@ -12551,10 +11659,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -12644,11 +11749,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -12743,7 +11844,7 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "Disabling local authentication methods improves security by ensuring that Cosmos DB database accounts exclusively require Azure Active Directory identities for authentication. Learn more at: https://docs.microsoft.com/azure/cosmos-db/how-to-setup-rbac#disable-local-auth.",
+          "Description": "Disabling local authentication methods improves security by ensuring that Cosmos DB database accounts exclusively require Azure Active Directory identities for authentication. Learn more at: https://learn.microsoft.com/azure/cosmos-db/how-to-setup-rbac#disable-local-auth.",
           "DisplayName": "Cosmos DB database accounts should have local authentication methods disabled",
           "Metadata": {
             "version": "1.0.0",
@@ -12757,11 +11858,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -12807,11 +11904,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -12879,11 +11972,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -12953,7 +12042,7 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "Private endpoints lets you connect your virtual network to Azure services without a public IP address at the source or destination. By mapping private endpoints to your Azure Cache for Redis instances, data leakage risks are reduced. Learn more at: https://docs.microsoft.com/azure/azure-cache-for-redis/cache-private-link.",
+          "Description": "Private endpoints lets you connect your virtual network to Azure services without a public IP address at the source or destination. By mapping private endpoints to your Azure Cache for Redis instances, data leakage risks are reduced. Learn more at: https://learn.microsoft.com/azure/azure-cache-for-redis/cache-private-link.",
           "DisplayName": "Azure Cache for Redis should use private link",
           "Metadata": {
             "version": "1.0.0",
@@ -12967,10 +12056,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -13015,10 +12101,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13066,11 +12149,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the audit policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13126,11 +12205,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13176,11 +12251,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13250,10 +12321,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13305,10 +12373,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -13353,10 +12418,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13408,10 +12470,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13467,10 +12526,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13522,11 +12578,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13560,7 +12612,7 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Machine Learning workspaces, data leakage risks are reduced. Learn more about private links at: https://docs.microsoft.com/azure/machine-learning/how-to-configure-private-link.",
+          "Description": "Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to Azure Machine Learning workspaces, data leakage risks are reduced. Learn more about private links at: https://learn.microsoft.com/azure/machine-learning/how-to-configure-private-link.",
           "DisplayName": "Azure Machine Learning workspaces should use private link",
           "Metadata": {
             "version": "1.1.0",
@@ -13574,11 +12626,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13630,11 +12678,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13680,11 +12724,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13734,11 +12774,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13784,11 +12820,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13834,10 +12866,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -13894,11 +12923,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -13944,10 +12969,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -13990,7 +13012,7 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your VM Image Builder building resources, data leakage risks are reduced. Learn more about private links at: https://docs.microsoft.com/azure/virtual-machines/linux/image-builder-networking#deploy-using-an-existing-vnet.",
+          "Description": "Azure Private Link lets you connect your virtual network to Azure services without a public IP address at the source or destination. The Private Link platform handles the connectivity between the consumer and services over the Azure backbone network. By mapping private endpoints to your VM Image Builder building resources, data leakage risks are reduced. Learn more about private links at: https://learn.microsoft.com/azure/virtual-machines/linux/image-builder-networking#deploy-using-an-existing-vnet.",
           "DisplayName": "VM Image Builder templates should use private link",
           "Metadata": {
             "version": "1.1.0",
@@ -14004,11 +13026,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled",
-                "Deny"
-              ],
+              "allowedValues": ["Audit", "Disabled", "Deny"],
               "defaultValue": "Audit"
             }
           },
@@ -14040,7 +13058,7 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "Enable the key vault firewall so that the key vault is not accessible by default to any public IPs. You can then configure specific IP ranges to limit access to those networks. Learn more at: https://docs.microsoft.com/azure/key-vault/general/network-security",
+          "Description": "Enable the key vault firewall so that the key vault is not accessible by default to any public IPs. You can then configure specific IP ranges to limit access to those networks. Learn more at: https://learn.microsoft.com/azure/key-vault/general/network-security",
           "DisplayName": "Azure Key Vault should have firewall enabled",
           "Metadata": {
             "version": "3.0.0",
@@ -14054,11 +13072,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -14109,11 +13123,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -14169,11 +13179,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled",
-                "Deny"
-              ],
+              "allowedValues": ["Audit", "Disabled", "Deny"],
               "defaultValue": "Audit"
             },
             "evaluatedSkuNames": {
@@ -14182,13 +13188,8 @@
                 "displayName": "Azure Spring Cloud SKU Names",
                 "description": "List of Azure Spring Cloud SKUs against which this policy will be evaluated."
               },
-              "allowedValues": [
-                "Standard",
-                "Enterprise"
-              ],
-              "defaultValue": [
-                "Standard"
-              ]
+              "allowedValues": ["Standard", "Enterprise"],
+              "defaultValue": ["Standard"]
             }
           },
           "PolicyRule": {
@@ -14237,10 +13238,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -14285,10 +13283,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -14333,10 +13328,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -14381,10 +13373,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -14440,10 +13429,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -14474,14 +13460,12 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "Although SSH itself provides an encrypted connection, using passwords with SSH still leaves the VM vulnerable to brute-force attacks. The most secure option for authenticating to an Azure Linux virtual machine over SSH is with a public-private key pair, also known as SSH keys. Learn more: https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed.",
+          "Description": "Although SSH itself provides an encrypted connection, using passwords with SSH still leaves the VM vulnerable to brute-force attacks. The most secure option for authenticating to an Azure Linux virtual machine over SSH is with a public-private key pair, also known as SSH keys. Learn more: https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed.",
           "DisplayName": "Authentication to Linux machines should require SSH keys",
           "Metadata": {
             "category": "Guest Configuration",
             "version": "3.0.0",
-            "requiredProviders": [
-              "Microsoft.GuestConfiguration"
-            ],
+            "requiredProviders": ["Microsoft.GuestConfiguration"],
             "guestConfiguration": {
               "name": "LinuxNoPasswordForSSH",
               "version": "1.*"
@@ -14496,10 +13480,7 @@
                 "description": "By selecting this option, you agree to be charged monthly per Arc connected machine.",
                 "portalReview": "true"
               },
-              "allowedValues": [
-                "true",
-                "false"
-              ],
+              "allowedValues": ["true", "false"],
               "defaultValue": "false"
             },
             "effect": {
@@ -14508,10 +13489,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of this policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -14602,10 +13580,7 @@
                             },
                             {
                               "field": "Microsoft.Compute/imageOffer",
-                              "in": [
-                                "osa",
-                                "rhel-byos"
-                              ]
+                              "in": ["osa", "rhel-byos"]
                             }
                           ]
                         },
@@ -14862,10 +13837,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -14917,11 +13889,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -14983,11 +13951,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -15029,12 +13993,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -15044,10 +14003,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -15073,13 +14029,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/ingress-https-only/v1/template.yaml"
                 },
-                "apiGroups": [
-                  "extensions",
-                  "networking.k8s.io"
-                ],
-                "kinds": [
-                  "Ingress"
-                ],
+                "apiGroups": ["extensions", "networking.k8s.io"],
+                "kinds": ["Ingress"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]"
@@ -15102,9 +14053,7 @@
           "Metadata": {
             "category": "Guest Configuration",
             "version": "4.0.0",
-            "requiredProviders": [
-              "Microsoft.GuestConfiguration"
-            ],
+            "requiredProviders": ["Microsoft.GuestConfiguration"],
             "guestConfiguration": {
               "name": "AuditSecureProtocol",
               "version": "1.*",
@@ -15122,10 +14071,7 @@
                 "description": "By selecting this option, you agree to be charged monthly per Arc connected machine.",
                 "portalReview": "true"
               },
-              "allowedValues": [
-                "true",
-                "false"
-              ],
+              "allowedValues": ["true", "false"],
               "defaultValue": "false"
             },
             "MinimumTLSVersion": {
@@ -15134,10 +14080,7 @@
                 "displayName": "Minimum TLS version",
                 "description": "The minimum TLS protocol version that should be enabled. Windows web servers with lower TLS versions will be marked as non-compliant."
               },
-              "allowedValues": [
-                "1.1",
-                "1.2"
-              ],
+              "allowedValues": ["1.1", "1.2"],
               "defaultValue": "1.1"
             },
             "effect": {
@@ -15146,10 +14089,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of this policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -15397,11 +14337,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -15447,11 +14383,7 @@
                 "displayName": "Effect",
                 "description": "The effect determines what happens when the policy rule is evaluated to match"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -15497,10 +14429,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             },
             "evaluatedSkuNames": {
@@ -15516,10 +14445,7 @@
                 "Premium",
                 "Consumption"
               ],
-              "defaultValue": [
-                "Developer",
-                "Premium"
-              ]
+              "defaultValue": ["Developer", "Premium"]
             }
           },
           "PolicyRule": {
@@ -15576,11 +14502,7 @@
                 "displayName": "Policy Effect",
                 "description": "The desired effect of the policy."
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Deny"
             }
           },
@@ -15676,10 +14598,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "listOfLocations": {
@@ -15743,10 +14662,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -15793,10 +14709,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -15859,11 +14772,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -15871,9 +14780,7 @@
                 "displayName": "Namespace inclusions",
                 "description": "List of Kubernetes namespaces to only include in policy evaluation. An empty list means the policy is applied to all resources in all namespaces."
               },
-              "defaultValue": [
-                "default"
-              ]
+              "defaultValue": ["default"]
             },
             "labelSelector": {
               "type": "Object",
@@ -15907,12 +14814,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -15922,10 +14824,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -15951,14 +14850,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/block-default-namespace/v1/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod",
-                  "Service",
-                  "ServiceAccount"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod", "Service", "ServiceAccount"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]"
@@ -16014,11 +14907,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -16060,12 +14949,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -16075,10 +14959,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -16104,12 +14985,8 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/block-automount-token/v2/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
@@ -16160,11 +15037,7 @@
                 "displayName": "Namespace exclusions",
                 "description": "List of Kubernetes namespaces to exclude from policy evaluation. System namespaces \"kube-system\", \"gatekeeper-system\" and \"azure-arc\" are always excluded by design."
               },
-              "defaultValue": [
-                "kube-system",
-                "gatekeeper-system",
-                "azure-arc"
-              ]
+              "defaultValue": ["kube-system", "gatekeeper-system", "azure-arc"]
             },
             "namespaces": {
               "type": "Array",
@@ -16206,12 +15079,7 @@
                         "operator": {
                           "description": "operator represents a key's relationship to a set of values.",
                           "type": "string",
-                          "enum": [
-                            "In",
-                            "NotIn",
-                            "Exists",
-                            "DoesNotExist"
-                          ]
+                          "enum": ["In", "NotIn", "Exists", "DoesNotExist"]
                         },
                         "values": {
                           "description": "values is an array of string values. If the operator is In or NotIn, the values array must be non-empty. If the operator is Exists or DoesNotExist, the values array must be empty.",
@@ -16221,10 +15089,7 @@
                           }
                         }
                       },
-                      "required": [
-                        "key",
-                        "operator"
-                      ],
+                      "required": ["key", "operator"],
                       "additionalProperties": false
                     },
                     "minItems": 1
@@ -16266,19 +15131,13 @@
                   "sourceType": "PublicURL",
                   "url": "https://store.policy.core.windows.net/kubernetes/container-disallowed-capabilities/v3/template.yaml"
                 },
-                "apiGroups": [
-                  ""
-                ],
-                "kinds": [
-                  "Pod"
-                ],
+                "apiGroups": [""],
+                "kinds": ["Pod"],
                 "excludedNamespaces": "[parameters('excludedNamespaces')]",
                 "namespaces": "[parameters('namespaces')]",
                 "labelSelector": "[parameters('labelSelector')]",
                 "values": {
-                  "disallowedCapabilities": [
-                    "SYS_ADMIN"
-                  ],
+                  "disallowedCapabilities": ["SYS_ADMIN"],
                   "excludedContainers": "[parameters('excludedContainers')]",
                   "excludedImages": "[parameters('excludedImages')]"
                 }
@@ -16311,10 +15170,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -16369,10 +15225,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Disabled"],
               "defaultValue": "Audit"
             }
           },
@@ -16439,10 +15292,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -16623,10 +15473,7 @@
                     },
                     {
                       "field": "Microsoft.Compute/virtualMachines/extensions/provisioningState",
-                      "in": [
-                        "Succeeded",
-                        "Provisioning succeeded"
-                      ]
+                      "in": ["Succeeded", "Provisioning succeeded"]
                     }
                   ]
                 }
@@ -16659,10 +15506,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -16839,10 +15683,7 @@
                     },
                     {
                       "field": "Microsoft.Compute/virtualMachineScaleSets/extensions/provisioningState",
-                      "in": [
-                        "Succeeded",
-                        "Provisioning succeeded"
-                      ]
+                      "in": ["Succeeded", "Provisioning succeeded"]
                     }
                   ]
                 }
@@ -16875,10 +15716,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -16935,10 +15773,7 @@
                     },
                     {
                       "field": "Microsoft.Compute/virtualMachines/extensions/provisioningState",
-                      "in": [
-                        "Succeeded",
-                        "Provisioning succeeded"
-                      ]
+                      "in": ["Succeeded", "Provisioning succeeded"]
                     }
                   ]
                 }
@@ -16971,10 +15806,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -17023,10 +15855,7 @@
                     },
                     {
                       "field": "Microsoft.Compute/virtualMachineScaleSets/extensions/provisioningState",
-                      "in": [
-                        "Succeeded",
-                        "Provisioning succeeded"
-                      ]
+                      "in": ["Succeeded", "Provisioning succeeded"]
                     }
                   ]
                 }
@@ -17058,10 +15887,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -17085,10 +15911,7 @@
                 "name": "4fb67663-9ab9-475d-b026-8c544cced439",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -17104,7 +15927,7 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": null,
         "Properties": {
-          "Description": "Resolve endpoint protection health issues on your virtual machines to protect them from latest threats and vulnerabilities. Azure Security Center supported endpoint protection solutions are documented here - https://docs.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions. Endpoint protection assessment is documented here - https://docs.microsoft.com/azure/security-center/security-center-endpoint-protection.",
+          "Description": "Resolve endpoint protection health issues on your virtual machines to protect them from latest threats and vulnerabilities. Azure Security Center supported endpoint protection solutions are documented here - https://learn.microsoft.com/azure/security-center/security-center-services?tabs=features-windows#supported-endpoint-protection-solutions. Endpoint protection assessment is documented here - https://learn.microsoft.com/azure/security-center/security-center-endpoint-protection.",
           "DisplayName": "Endpoint protection health issues should be resolved on your machines",
           "Metadata": {
             "version": "1.0.0",
@@ -17118,10 +15941,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -17145,10 +15965,7 @@
                 "name": "37a3689a-818e-4a0e-82ac-b1392b9bb000",
                 "existenceCondition": {
                   "field": "Microsoft.Security/assessments/status.code",
-                  "in": [
-                    "NotApplicable",
-                    "Healthy"
-                  ]
+                  "in": ["NotApplicable", "Healthy"]
                 }
               }
             }
@@ -17178,10 +15995,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             },
             "requiredRetentionDays": {
@@ -17284,10 +16098,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "AuditIfNotExists",
-                "Disabled"
-              ],
+              "allowedValues": ["AuditIfNotExists", "Disabled"],
               "defaultValue": "AuditIfNotExists"
             }
           },
@@ -17341,9 +16152,7 @@
       "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
       "Parameters": {
         "listOfAllowedLocations": {
-          "value": [
-            "eastus"
-          ]
+          "value": ["eastus"]
         }
       },
       "NonComplianceMessages": [
@@ -17433,9 +16242,7 @@
       "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/e56962a6-4747-49cd-b67b-bf8b01975c4c",
       "Parameters": {
         "listOfAllowedLocations": {
-          "value": [
-            "australiaeast"
-          ]
+          "value": ["australiaeast"]
         }
       },
       "NonComplianceMessages": [
@@ -17525,9 +16332,7 @@
       "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000000",
       "Parameters": {
         "listOfAllowedLocations": {
-          "value": [
-            "australiaeast"
-          ]
+          "value": ["australiaeast"]
         }
       }
     },
@@ -17553,11 +16358,7 @@
                 "displayName": "Effect",
                 "description": "Enable or disable the execution of the policy"
               },
-              "allowedValues": [
-                "Audit",
-                "Deny",
-                "Disabled"
-              ],
+              "allowedValues": ["Audit", "Deny", "Disabled"],
               "defaultValue": "Audit"
             }
           },

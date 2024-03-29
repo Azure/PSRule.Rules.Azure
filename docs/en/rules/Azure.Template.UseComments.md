@@ -47,4 +47,4 @@ For example:
 ## LINKS
 
 - [Better understand your cloud resources](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#better-understand-your-cloud-resources)
-- [ARM template best practices](https://docs.microsoft.com/azure/azure-resource-manager/templates/best-practices#resources)
+- [ARM template best practices](https://learn.microsoft.com/azure/azure-resource-manager/templates/best-practices#resources)

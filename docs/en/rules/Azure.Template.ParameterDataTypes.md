@@ -61,5 +61,5 @@ Consider updating the parameter default value to a value of the same type.
 
 ## LINKS
 
-- [Data types](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-syntax#data-types)
+- [Data types](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-syntax#data-types)
 - [Release deployment](https://learn.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)

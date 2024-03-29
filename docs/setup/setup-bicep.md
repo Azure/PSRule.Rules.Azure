@@ -29,7 +29,7 @@ The Bicep CLI can be installed on MacOS, Linux, and Windows.
 For installation instructions see [Setup your Bicep development environment][2].
 
   [1]: https://github.com/actions/virtual-environments
-  [2]: https://docs.microsoft.com/azure/azure-resource-manager/bicep/install
+  [2]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/install
 
 !!! Tip
     When installing Bicep using the Azure CLI, Bicep is not added to the `PATH` environment variable.
@@ -97,7 +97,7 @@ To enable this option, set the `PSRULE_AZURE_BICEP_USE_AZURE_CLI` environment va
       value: true
     ```
 
-  [3]: https://docs.microsoft.com/azure/azure-resource-manager/bicep/install#azure-cli
+  [3]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/install#azure-cli
 
 ### Additional arguments
 

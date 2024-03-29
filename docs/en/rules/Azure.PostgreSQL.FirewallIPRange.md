@@ -23,5 +23,5 @@ The PostgreSQL server has greater then ten (10) public IP addresses that are per
 
 ## LINKS
 
-- [Firewall rules in Azure Database for PostgreSQL - Single Server](https://docs.microsoft.com/azure/postgresql/concepts-firewall-rules)
-- [Create and manage firewall rules for Azure Database for PostgreSQL - Single Server using the Azure portal](https://docs.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal)
+- [Firewall rules in Azure Database for PostgreSQL - Single Server](https://learn.microsoft.com/azure/postgresql/concepts-firewall-rules)
+- [Create and manage firewall rules for Azure Database for PostgreSQL - Single Server using the Azure portal](https://learn.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal)

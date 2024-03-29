@@ -154,6 +154,6 @@ resource vm1 'Microsoft.Compute/virtualMachines@2022-03-01' = {
 
 - [Meet application platform requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
 - [Virtual Machine SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)
-- [Availability options for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/availability)
-- [Manage the availability of Windows virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability)
-- [Manage the availability of Linux virtual machines](https://docs.microsoft.com/azure/virtual-machines/linux/manage-availability)
+- [Availability options for virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/availability)
+- [Manage the availability of Windows virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/windows/manage-availability)
+- [Manage the availability of Linux virtual machines](https://learn.microsoft.com/azure/virtual-machines/linux/manage-availability)

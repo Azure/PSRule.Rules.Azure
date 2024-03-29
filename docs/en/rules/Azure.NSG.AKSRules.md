@@ -25,4 +25,4 @@ Do not create custom Network Security Group (NSG) rules for an AKS managed NSG.
 ## LINKS
 
 - [AKS Network Security](https://learn.microsoft.com/azure/aks/concepts-security#network-security)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)

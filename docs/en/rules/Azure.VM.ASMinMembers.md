@@ -34,8 +34,8 @@ This rule applies when analyzing resources deployed to Azure (in-flight).
 
 ## LINKS
 
-- [Reliability checklist](https://docs.microsoft.com/azure/architecture/checklist/resiliency-per-service#virtual-machines)
-- [Availability sets overview](https://docs.microsoft.com/azure/virtual-machines/availability-set-overview)
-- [Availability options for virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/availability)
-- [Failure mode analysis](https://docs.microsoft.com/azure/architecture/resiliency/failure-mode-analysis#virtual-machine)
-- [Tutorial: Create and deploy highly available virtual machines with Azure PowerShell](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)
+- [Reliability checklist](https://learn.microsoft.com/azure/architecture/checklist/resiliency-per-service#virtual-machines)
+- [Availability sets overview](https://learn.microsoft.com/azure/virtual-machines/availability-set-overview)
+- [Availability options for virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/availability)
+- [Failure mode analysis](https://learn.microsoft.com/azure/architecture/resiliency/failure-mode-analysis#virtual-machine)
+- [Tutorial: Create and deploy highly available virtual machines with Azure PowerShell](https://learn.microsoft.com/azure/virtual-machines/windows/tutorial-availability-sets)

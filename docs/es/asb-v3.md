@@ -4,7 +4,7 @@ Azure Security Benchmark (ASB) es un conjunto de controles y recomendaciones que
 Los controles del ASB también se asignan a los marcos de la industria, como CIS, PCI-DSS y NIST.
 Si esta es su primera introduccion a ASB o esta busecano por ayudo a como utilizarlo, refiera a la [Introducción a Azure Security Benchmark][1]
 
-[1]: https://docs.microsoft.com/security/benchmark/azure/introduction
+[1]: https://learn.microsoft.com/security/benchmark/azure/introduction
 
 ## Azure Security Benchmark v3
 
@@ -27,7 +27,7 @@ Los siguientes controles están incluidos en Azure Security Benchmark v3:
 - [Seguridad de DevOps (DS)][13]
 - [Gobernanza y estrategia (GS)][14]
 
-  [2]: https://docs.microsoft.com/security/benchmark/azure/overview
+  [2]: https://learn.microsoft.com/security/benchmark/azure/overview
   [3]: https://learn.microsoft.com/security/benchmark/azure/security-controls-v3-network-security
   [4]: https://learn.microsoft.com/security/benchmark/azure/security-controls-v3-identity-management
   [5]: https://learn.microsoft.com/security/benchmark/azure/security-controls-v3-privileged-access

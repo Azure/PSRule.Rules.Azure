@@ -32,7 +32,7 @@ Rule 'Azure.MySQL.FirewallIPRange' -Ref 'AZR-000135' -Type 'Microsoft.DBforMySQL
 
 # Synopsis: Azure SQL logical server names should meet naming requirements.
 Rule 'Azure.MySQL.ServerName' -Ref 'AZR-000136' -Type 'Microsoft.DBforMySQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
-    # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformysql
+    # https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformysql
 
     # Between 3 and 63 characters long
     $Assert.GreaterOrEqual($PSRule, 'TargetName', 3);

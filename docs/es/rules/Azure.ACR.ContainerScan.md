@@ -97,6 +97,6 @@ Esta regla se aplica cuando se analizan los recursos implementados en Azure.
 ## Enlaces
 
 - [Supervisión de recursos de Azure en Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
-- [Introducción a Microsoft Defender para registros de contenedor](https://docs.microsoft.com/azure/defender-for-cloud/defender-for-container-registries-introduction)
-- [Introducción a Microsoft Defender for Containers](https://docs.microsoft.com/azure/defender-for-cloud/container-security)
-- [Proteger las imágenes y el tiempo de ejecución](https://docs.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
+- [Introducción a Microsoft Defender para registros de contenedor](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-container-registries-introduction)
+- [Introducción a Microsoft Defender for Containers](https://learn.microsoft.com/azure/defender-for-cloud/container-security)
+- [Proteger las imágenes y el tiempo de ejecución](https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
