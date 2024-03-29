@@ -31,4 +31,4 @@ Also consider using Azure Policy to audit or enforce this configuration.
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [SSL connectivity in Azure Database for MySQL](https://docs.microsoft.com/azure/mysql/concepts-ssl-connection-security)
+- [SSL connectivity in Azure Database for MySQL](https://learn.microsoft.com/azure/mysql/concepts-ssl-connection-security)

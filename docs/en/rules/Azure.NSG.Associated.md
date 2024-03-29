@@ -35,5 +35,5 @@ az network nsg list -g $rgName --query "[?(subnets==null) && (networkInterfaces=
 - [Operational excellence principles](https://learn.microsoft.com/azure/architecture/framework/devops/principles)
 - [Orphaned Resources Workbook](https://techcommunity.microsoft.com/t5/fasttrack-for-azure/azure-orphan-resources/ba-p/3492198)
 - [Modify, create and delete NSG's using the CLI](https://learn.microsoft.com/cli/azure/network/nsg?view=azure-cli-latest#az-network-nsg-delete)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)
-- [Network security groups](https://docs.microsoft.com/azure/virtual-network/security-overview)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/networksecuritygroups/securityrules)
+- [Network security groups](https://learn.microsoft.com/azure/virtual-network/security-overview)

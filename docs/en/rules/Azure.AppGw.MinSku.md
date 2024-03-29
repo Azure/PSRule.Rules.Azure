@@ -90,7 +90,7 @@ resource name_resource 'Microsoft.Network/applicationGateways@2019-09-01' = {
 
 ## LINKS
 
-- [Azure Application Gateway sizing](https://docs.microsoft.com/azure/application-gateway/overview#sizing)
+- [Azure Application Gateway sizing](https://learn.microsoft.com/azure/application-gateway/overview#sizing)
 - [Azure Application Gateway SLA](https://azure.microsoft.com/support/legal/sla/application-gateway/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways?pivots=deployment-language-bicep#applicationgatewaysku)
 - [Azure Well-Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/)

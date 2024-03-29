@@ -132,4 +132,4 @@ This rule only applies to premium tier Service Bus instances. Runtime audit logs
 
 - [Security audits](https://learn.microsoft.com/azure/architecture/framework/security/monitor-audit)
 - [Monitoring Azure Service Bus data reference](https://learn.microsoft.com/azure/service-bus-messaging/monitor-service-bus-reference)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings)

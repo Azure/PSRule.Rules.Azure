@@ -23,4 +23,4 @@ Consider removing starter and unlimited sample products from API Management.
 
 ## LINKS
 
-- [Create and publish a product](https://docs.microsoft.com/azure/api-management/api-management-howto-add-products)
+- [Create and publish a product](https://learn.microsoft.com/azure/api-management/api-management-howto-add-products)

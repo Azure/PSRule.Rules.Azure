@@ -26,5 +26,5 @@ Consider redeploying ER gateways using new SKUs to improve reliability and perfo
 
 ## LINKS
 
-- [Estimated performances by gateway SKU](https://docs.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways#aggthroughput)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways)
+- [Estimated performances by gateway SKU](https://learn.microsoft.com/azure/expressroute/expressroute-about-virtual-network-gateways#aggthroughput)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways)

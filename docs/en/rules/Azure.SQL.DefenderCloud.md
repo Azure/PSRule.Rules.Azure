@@ -68,6 +68,6 @@ Set-AzSqlDatabaseThreatDetectionPolicy -ResourceGroupName '<resource_group>' -Se
 
 ## LINKS
 
-- [Advanced Threat Protection for Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
-- [Microsoft Defender for SQL](https://docs.microsoft.com/azure/azure-sql/database/azure-defender-for-sql)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)
+- [Advanced Threat Protection for Azure SQL Database](https://learn.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+- [Microsoft Defender for SQL](https://learn.microsoft.com/azure/azure-sql/database/azure-defender-for-sql)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)

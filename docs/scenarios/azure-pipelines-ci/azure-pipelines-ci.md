@@ -233,5 +233,5 @@ steps:
 - [azuredeploy.json](azuredeploy.json) - An example template file.
 - [azuredeploy.parameters.json](azuredeploy.parameters.json) - An example parameters file.
 
-[publish-test-results]: https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results
+[publish-test-results]: https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results
 [extension]: https://marketplace.visualstudio.com/items?itemName=bewhite.ps-rule

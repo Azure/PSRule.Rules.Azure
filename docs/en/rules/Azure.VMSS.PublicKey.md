@@ -205,6 +205,6 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
 ## LINKS
 
 - [Identity and access management](https://learn.microsoft.com/azure/architecture/framework/security/design-identity)
-- [Azure security baseline for Linux Virtual Machines](https://docs.microsoft.com/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
-- [Detailed steps: Create and manage SSH keys for authentication to a Linux VM in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)
+- [Azure security baseline for Linux Virtual Machines](https://learn.microsoft.com/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
+- [Detailed steps: Create and manage SSH keys for authentication to a Linux VM in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)

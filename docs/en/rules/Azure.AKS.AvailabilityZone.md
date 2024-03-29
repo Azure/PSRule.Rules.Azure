@@ -146,6 +146,6 @@ az aks create \
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters?tabs=json)
-- [Create an Azure Kubernetes Service (AKS) cluster that uses availability zones](https://docs.microsoft.com/azure/aks/availability-zones)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters?tabs=json)
+- [Create an Azure Kubernetes Service (AKS) cluster that uses availability zones](https://learn.microsoft.com/azure/aks/availability-zones)
 - [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)

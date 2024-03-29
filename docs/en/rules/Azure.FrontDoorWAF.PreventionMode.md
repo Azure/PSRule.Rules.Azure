@@ -119,7 +119,7 @@ resource waf 'Microsoft.Network/FrontDoorWebApplicationFirewallPolicies@2022-05-
 ## LINKS
 
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
-- [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
-- [Policy settings for Web Application Firewall on Azure Front Door](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-policy-settings#waf-mode)
-- [Web Application Firewall best practices](https://docs.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices)
+- [Securing PaaS deployments](https://learn.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
+- [Policy settings for Web Application Firewall on Azure Front Door](https://learn.microsoft.com/azure/web-application-firewall/afds/waf-front-door-policy-settings#waf-mode)
+- [Web Application Firewall best practices](https://learn.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoorwebapplicationfirewallpolicies)

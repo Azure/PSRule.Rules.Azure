@@ -24,5 +24,5 @@ Some rules may not be needed.
 
 ## LINKS
 
-- [Create and manage Azure Database for MySQL firewall rules by using the Azure portal](https://docs.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)
-- [Create and manage Azure Database for MySQL VNet service endpoints and VNet rules by using the Azure portal](https://docs.microsoft.com/azure/mysql/howto-manage-vnet-using-portal)
+- [Create and manage Azure Database for MySQL firewall rules by using the Azure portal](https://learn.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)
+- [Create and manage Azure Database for MySQL VNet service endpoints and VNet rules by using the Azure portal](https://learn.microsoft.com/azure/mysql/howto-manage-vnet-using-portal)

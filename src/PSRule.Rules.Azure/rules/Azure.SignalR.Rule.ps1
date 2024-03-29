@@ -7,7 +7,7 @@
 
 # Synopsis: Use SignalR naming requirements
 Rule 'Azure.SignalR.Name' -Ref 'AZR-000180' -Type 'Microsoft.SignalRService/signalR' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
-    # https://docs.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftsignalrservice
+    # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftsignalrservice
 
     # Between 3 and 63 characters long
     $Assert.GreaterOrEqual($PSRule, 'TargetName', 3);

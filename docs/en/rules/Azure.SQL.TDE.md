@@ -75,5 +75,5 @@ Set-AzSqlDatabaseTransparentDataEncryption -ResourceGroupName '<resource_group>'
 
 ## LINKS
 
-- [Transparent data encryption for SQL Database](https://docs.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/databases/transparentdataencryption)
+- [Transparent data encryption for SQL Database](https://learn.microsoft.com/azure/sql-database/transparent-data-encryption-azure-sql)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/databases/transparentdataencryption)

@@ -52,6 +52,6 @@ For example:
 ## LINKS
 
 - [Automate deployments with ARM Templates](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure#automate-deployments-with-arm-templates)
-- [Test cases for parameter files](https://docs.microsoft.com/azure/azure-resource-manager/templates/parameter-file-test-cases#parameters-must-contain-values)
-- [Create Resource Manager parameter file](https://docs.microsoft.com/azure/azure-resource-manager/templates/parameter-files)
-- [Parameters in Azure Resource Manager templates](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-parameters)
+- [Test cases for parameter files](https://learn.microsoft.com/azure/azure-resource-manager/templates/parameter-file-test-cases#parameters-must-contain-values)
+- [Create Resource Manager parameter file](https://learn.microsoft.com/azure/azure-resource-manager/templates/parameter-files)
+- [Parameters in Azure Resource Manager templates](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-parameters)

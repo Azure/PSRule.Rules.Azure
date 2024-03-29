@@ -293,7 +293,7 @@ function global:SupportsTags {
                 $TargetType -eq 'Microsoft.Resources/templateSpecs/versions'
             )) -or
 
-            # Some exception to resources (https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftresources)
+            # Some exception to resources (https://learn.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftresources)
             ($TargetType -like 'Microsoft.Resources/*' -and !(
                 $TargetType -eq 'Microsoft.Resources/deploymentScripts' -or
                 $TargetType -eq 'Microsoft.Resources/resourceGroups' -or
@@ -301,7 +301,7 @@ function global:SupportsTags {
                 $TargetType -eq 'Microsoft.Resources/templateSpecs/versions'
             )) -or
 
-            # Some exception to resources (https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftinsights)
+            # Some exception to resources (https://learn.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftinsights)
             ($TargetType -like 'Microsoft.Insights/*' -and !(
                 $TargetType -eq 'Microsoft.Insights/actionGroups' -or
                 $TargetType -eq 'Microsoft.Insights/activityLogAlerts' -or
@@ -320,7 +320,7 @@ function global:SupportsTags {
                 $TargetType -eq 'Microsoft.Insights/workbookTemplates'
             )) -or
 
-            # Some exceptions to resources (https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftcostmanagement)
+            # Some exceptions to resources (https://learn.microsoft.com/azure/azure-resource-manager/management/tag-support#microsoftcostmanagement)
             ($TargetType -like 'Microsoft.CostManagement/*' -and !(
                 $TargetType -eq 'Microsoft.CostManagement/Connectors'
             )) -or

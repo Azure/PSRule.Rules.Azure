@@ -25,4 +25,4 @@ Consider disabling HTTP support on the CDN endpoint origin.
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Configure HTTPS on an Azure CDN custom domain](https://docs.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)
+- [Configure HTTPS on an Azure CDN custom domain](https://learn.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)

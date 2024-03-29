@@ -99,6 +99,6 @@ Deployment to these scopes does not occur against a resource group.
 
 ## LINKS
 
-- [ARM template best practices](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#location-recommendations-for-parameters)
+- [ARM template best practices](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#location-recommendations-for-parameters)
 - [Operating in multiple regions](https://learn.microsoft.com/azure/architecture/framework/resiliency/app-design#operating-in-multiple-regions)
-- [Resource group](https://docs.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#resource-group)
+- [Resource group](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#resource-group)

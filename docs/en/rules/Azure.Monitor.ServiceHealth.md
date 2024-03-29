@@ -27,5 +27,5 @@ Consider configuring an alert to notify administrators when services you are usi
 
 ## LINKS
 
-- [Service Health overview](https://docs.microsoft.com/azure/service-health/service-health-overview)
-- [Create activity log alerts on service notifications](https://docs.microsoft.com/azure/service-health/alerts-activity-log-service-notifications)
+- [Service Health overview](https://learn.microsoft.com/azure/service-health/service-health-overview)
+- [Create activity log alerts on service notifications](https://learn.microsoft.com/azure/service-health/alerts-activity-log-service-notifications)

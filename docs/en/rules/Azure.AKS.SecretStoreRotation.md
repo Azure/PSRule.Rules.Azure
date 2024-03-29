@@ -190,7 +190,7 @@ az aks update --enable-secret-rotation -n '<name>' -g '<resource_group>'
 
 - [Key and secret management considerations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-keys#operational-considerations)
 - [Operational considerations](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-keys#operational-considerations)
-- [Use the Azure Key Vault Provider for Secrets Store CSI Driver in an AKS cluster](https://docs.microsoft.com/azure/aks/csi-secrets-store-driver)
-- [Automate the rotation of a secret for resources that use one set of authentication credentials](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
-- [Automate the rotation of a secret for resources that have two sets of authentication credentials](https://docs.microsoft.com/azure/key-vault/secrets/tutorial-rotation-dual)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)
+- [Use the Azure Key Vault Provider for Secrets Store CSI Driver in an AKS cluster](https://learn.microsoft.com/azure/aks/csi-secrets-store-driver)
+- [Automate the rotation of a secret for resources that use one set of authentication credentials](https://learn.microsoft.com/azure/key-vault/secrets/tutorial-rotation)
+- [Automate the rotation of a secret for resources that have two sets of authentication credentials](https://learn.microsoft.com/azure/key-vault/secrets/tutorial-rotation-dual)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)

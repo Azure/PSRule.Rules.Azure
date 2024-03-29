@@ -25,5 +25,5 @@ Consider migration to an alternative Standard VM size.
 
 ## LINKS
 
-- [Sizes for Windows virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)
-- [Sizes for Linux virtual machines in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/sizes)
+- [Sizes for Windows virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/windows/sizes)
+- [Sizes for Linux virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/sizes)

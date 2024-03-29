@@ -31,4 +31,4 @@ Also consider using Azure Policy to audit or enforce this configuration.
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Configure SSL connectivity in Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/concepts-ssl-connection-security)
+- [Configure SSL connectivity in Azure Database for PostgreSQL](https://learn.microsoft.com/azure/postgresql/concepts-ssl-connection-security)

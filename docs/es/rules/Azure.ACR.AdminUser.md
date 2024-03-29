@@ -114,9 +114,9 @@ Update-AzContainerRegistry -ResourceGroupName '<resource_group>' -Name '<name>' 
 ## Enlaces
 
 - [Uso de la autenticación basada en identidad](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
-- [Autenticación con un registro de contenedor de Azure](https://docs.microsoft.com/azure/container-registry/container-registry-authentication?tabs=azure-cli)
-- [Procedimientos recomendados para Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-best-practices#authentication-and-authorization)
-- [Use la identidad administrada de Azure para autenticarse en Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)
-- [Roles y permisos de Azure Container Registry](https://docs.microsoft.com/azure/container-registry/container-registry-roles)
-- [¿Qué es el control de acceso basado en rol de Azure (RBAC)?](https://docs.microsoft.com/azure/role-based-access-control/overview)
+- [Autenticación con un registro de contenedor de Azure](https://learn.microsoft.com/azure/container-registry/container-registry-authentication?tabs=azure-cli)
+- [Procedimientos recomendados para Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-best-practices#authentication-and-authorization)
+- [Use la identidad administrada de Azure para autenticarse en Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-authentication-managed-identity)
+- [Roles y permisos de Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-roles)
+- [¿Qué es el control de acceso basado en rol de Azure (RBAC)?](https://learn.microsoft.com/azure/role-based-access-control/overview)
 - [Referencia de implementación de Azure](https://learn.microsoft.com/azure/templates/microsoft.containerregistry/registries)

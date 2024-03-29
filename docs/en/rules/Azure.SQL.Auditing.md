@@ -115,5 +115,5 @@ Set-AzSqlServerAudit -ResourceGroupName '<resource_group>' -ServerName '<server_
 
 ## LINKS
 
-- [Auditing for Azure SQL Database and Azure Synapse Analytics](https://docs.microsoft.com/azure/azure-sql/database/auditing-overview)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.sql/servers/auditingsettings)
+- [Auditing for Azure SQL Database and Azure Synapse Analytics](https://learn.microsoft.com/azure/azure-sql/database/auditing-overview)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/auditingsettings)

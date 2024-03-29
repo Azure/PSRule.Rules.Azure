@@ -152,6 +152,6 @@ resource testrediscache_default 'Microsoft.Cache/redisEnterprise/databases@2021-
 ## LINKS
 
 - [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
-- [Enable zone redundancy for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy)
-- [High availability for Azure Cache for Redis](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.cache/redisenterprise?tabs=json)
+- [Enable zone redundancy for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy)
+- [High availability for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redisenterprise?tabs=json)

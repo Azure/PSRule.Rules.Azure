@@ -342,4 +342,4 @@ Describe 'Azure' {
 - [template.json](template.json) - Example template file.
 - [parameters.json](parameters.json) - Example parameters file.
 
-[publish-test-results]: https://docs.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results
+[publish-test-results]: https://learn.microsoft.com/en-us/azure/devops/pipelines/tasks/test/publish-test-results

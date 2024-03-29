@@ -28,5 +28,5 @@ Consider redeploying VPN gateways using new SKUs to improve reliability and perf
 
 ## LINKS
 
-- [Change to the new gateway SKUs](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#change)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways)
+- [Change to the new gateway SKUs](https://learn.microsoft.com/azure/vpn-gateway/vpn-gateway-about-skus-legacy#change)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworkgateways)

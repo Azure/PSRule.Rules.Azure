@@ -24,6 +24,6 @@ Consider enabling a WAF policy on each Front Door endpoint.
 ## LINKS
 
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
-- [Securing PaaS deployments](https://docs.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
-- [Azure Web Application Firewall on Azure Front Door](https://docs.microsoft.com/azure/web-application-firewall/afds/afds-overview)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/frontdoors/frontendendpoints)
+- [Securing PaaS deployments](https://learn.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
+- [Azure Web Application Firewall on Azure Front Door](https://learn.microsoft.com/azure/web-application-firewall/afds/afds-overview)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors/frontendendpoints)

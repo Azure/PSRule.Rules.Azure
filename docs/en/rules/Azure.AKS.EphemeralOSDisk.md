@@ -26,7 +26,7 @@ NB: When a user does not explicitly request managed disks for the OS, AKS will d
 The rule is therefore configured with `-Level Warning` as it can give inaccurate information.
 
 When using ephemeral OS, the OS disk must fit in the VM cache.
-The sizes for VM cache are available in the [Azure documentation](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series) in parentheses next to IO throughput ("cache size in GiB").
+The sizes for VM cache are available in the [Azure documentation](https://learn.microsoft.com/azure/virtual-machines/dv2-dsv2-series) in parentheses next to IO throughput ("cache size in GiB").
 
 Examples:
 
@@ -186,6 +186,6 @@ resource userPool 'Microsoft.ContainerService/managedClusters/agentPools@2022-07
 ## LINKS
 
 - [Performance efficiency checklist](https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
-- [Azure Kubernetes Service (AKS) Ephemeral OS](https://docs.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)
-- [Azure deployment reference (managedclusters)](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
-- [Azure deployment reference (agentpools)](https://docs.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools)
+- [Azure Kubernetes Service (AKS) Ephemeral OS](https://learn.microsoft.com/azure/aks/cluster-configuration#ephemeral-os)
+- [Azure deployment reference (managedclusters)](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
+- [Azure deployment reference (agentpools)](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters/agentpools)

@@ -32,7 +32,7 @@ Rule 'Azure.PostgreSQL.FirewallIPRange' -Ref 'AZR-000151' -Type 'Microsoft.DBfor
 
 # Synopsis: Azure SQL logical server names should meet naming requirements.
 Rule 'Azure.PostgreSQL.ServerName' -Ref 'AZR-000152' -Type 'Microsoft.DBforPostgreSQL/servers' -Tag @{ release = 'GA'; ruleSet = '2020_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
-    # https://docs.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftdbforpostgresql
+    # https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftdbforpostgresql
 
     # Between 3 and 63 characters long
     $Assert.GreaterOrEqual($PSRule, 'TargetName', 3);

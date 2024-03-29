@@ -83,4 +83,4 @@ resource adx 'Microsoft.Kusto/clusters@2021-08-27' = {
 
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#availability-targets)
 - [Azure Data Explorer pricing](https://azure.microsoft.com/pricing/details/data-explorer/)
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.kusto/clusters)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.kusto/clusters)

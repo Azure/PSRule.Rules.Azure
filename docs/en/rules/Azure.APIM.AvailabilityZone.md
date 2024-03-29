@@ -175,6 +175,6 @@ resource service_api_mgmt_test2_name_resource 'Microsoft.ApiManagement/service@2
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.apimanagement/service?tabs=json)
-- [Availability zone support for Azure API Management](https://docs.microsoft.com/azure/api-management/zone-redundancy)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service?tabs=json)
+- [Availability zone support for Azure API Management](https://learn.microsoft.com/azure/api-management/zone-redundancy)
 - [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)

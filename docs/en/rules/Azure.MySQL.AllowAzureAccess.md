@@ -29,4 +29,4 @@ Determine if access from Azure services is required for the services connecting 
 
 ## LINKS
 
-- [Azure Database for MySQL server firewall rules](https://docs.microsoft.com/azure/mysql/concepts-firewall-rules#connecting-from-azure)
+- [Azure Database for MySQL server firewall rules](https://learn.microsoft.com/azure/mysql/concepts-firewall-rules#connecting-from-azure)

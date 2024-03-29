@@ -23,5 +23,5 @@ Consider limiting Logic Apps with HTTP request triggers to trusted IP addresses.
 
 ## LINKS
 
-- [Secure access and data in Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app)
-- [Azure security baseline for Logic Apps](https://docs.microsoft.com/azure/logic-apps/security-baseline#network-security)
+- [Secure access and data in Azure Logic Apps](https://learn.microsoft.com/azure/logic-apps/logic-apps-securing-a-logic-app)
+- [Azure security baseline for Logic Apps](https://learn.microsoft.com/azure/logic-apps/security-baseline#network-security)

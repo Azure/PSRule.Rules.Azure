@@ -86,7 +86,7 @@ Rule 'Rule.OnlineHelp' -Type 'PSRule.Rules.Rule' {
     $Assert.EndsWith($TargetObject, 'Info.Annotations.''online version''', [String]::Concat('/rules/', $PSRule.TargetName, '/'))
 }
 
-# Synopsis: Use non-culture specific URLs for references to docs.microsoft.com.
+# Synopsis: Use non-culture specific URLs for references to learn.microsoft.com.
 Rule 'Rule.NonCultureMSDocs' -Type 'PSRule.Rules.Rule' -If { $Assert.Greater($TargetObject, 'Info.Links', 0) } {
     $links = @($TargetObject.Info.Links)
     if ($links.Length -eq 0) {

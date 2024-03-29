@@ -30,4 +30,4 @@ Generated templates from these tools may not require any parameters to be set.
 ## LINKS
 
 - [Deployment considerations for DevOps](https://learn.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)
-- [Template limits](https://docs.microsoft.com/azure/azure-resource-manager/templates/best-practices#template-limits)
+- [Template limits](https://learn.microsoft.com/azure/azure-resource-manager/templates/best-practices#template-limits)

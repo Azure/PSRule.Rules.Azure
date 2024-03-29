@@ -338,7 +338,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// createObject(key1, value1, key2, value2, ...)
         /// </summary>
         /// <remarks>
-        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#createobject
+        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#createobject
         /// </remarks>
         internal static object CreateObject(ITemplateContext context, object[] args)
         {
@@ -446,7 +446,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// items(object)
         /// </summary>
         /// <remarks>
-        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#items
+        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#items
         /// </remarks>
         internal static object Items(ITemplateContext context, object[] args)
         {
@@ -1322,7 +1322,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// dateTimeAdd(base, duration, [format])
         /// </summary>
         /// <remarks>
-        /// See <seealso href="https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-date#datetimeadd"/>.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-date#datetimeadd"/>.
         /// </remarks>
         internal static object DateTimeAdd(ITemplateContext context, object[] args)
         {
@@ -1619,7 +1619,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// indexOf(stringToSearch, stringToFind)
         /// </summary>
         /// <remarks>
-        /// See <seealso href="https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#indexof"/>.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#indexof"/>.
         /// </remarks>
         private static object IndexOfString(string stringToSearch, string stringToFind)
         {
@@ -1635,7 +1635,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// indexOf(arrayToSearch, itemToFind)
         /// </summary>
         /// <remarks>
-        /// See <seealso href="https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#indexof"/>.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-array#indexof"/>.
         /// </remarks>
         private static object IndexOfArray(object o1, object o2, bool first)
         {
@@ -1878,7 +1878,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// split(inputString, delimiter)
         /// </summary>
         /// <remarks>
-        /// https://docs.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#split
+        /// https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-string#split
         /// </remarks>
         internal static object Split(ITemplateContext context, object[] args)
         {

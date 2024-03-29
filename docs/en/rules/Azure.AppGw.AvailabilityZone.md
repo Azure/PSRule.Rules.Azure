@@ -129,7 +129,7 @@ az network application-gateway create \
 
 ## LINKS
 
-- [Azure deployment reference](https://docs.microsoft.com/azure/templates/microsoft.network/applicationgateways?tabs=json)
-- [Autoscaling and Zone-redundant Application Gateway v2](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways?tabs=json)
+- [Autoscaling and Zone-redundant Application Gateway v2](https://learn.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
 - [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
 - [Azure Well-Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/)

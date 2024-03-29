@@ -27,5 +27,5 @@ Consider enabling accelerated networking for supported operating systems and VM 
 
 ## LINKS
 
-- [Create a Linux virtual machine with Accelerated Networking using Azure CLI](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)
-- [Create a Windows VM with accelerated networking using Azure PowerShell](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)
+- [Create a Linux virtual machine with Accelerated Networking using Azure CLI](https://learn.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)
+- [Create a Windows VM with accelerated networking using Azure PowerShell](https://learn.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)

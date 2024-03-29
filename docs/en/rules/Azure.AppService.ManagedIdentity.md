@@ -103,7 +103,7 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access#resource-identity)
-- [What are managed identities for Azure resources?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
-- [Tutorial: Secure Azure SQL Database connection from App Service using a managed identity](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-connect-msi)
-- [How to use managed identities for App Service and Azure Functions](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
+- [What are managed identities for Azure resources?](https://learn.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+- [Tutorial: Secure Azure SQL Database connection from App Service using a managed identity](https://learn.microsoft.com/azure/app-service/app-service-web-tutorial-connect-msi)
+- [How to use managed identities for App Service and Azure Functions](https://learn.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites)
