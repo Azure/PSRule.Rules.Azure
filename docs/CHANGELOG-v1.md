@@ -32,6 +32,67 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.35.0
+
+What's changed since v1.34.2:
+
+- New features:
+  - Added WAF pillar specific baselines by @BernieWhite.
+    [#1633](https://github.com/Azure/PSRule.Rules.Azure/issues/1633)
+    [#2752](https://github.com/Azure/PSRule.Rules.Azure/issues/2752)
+    - Use pillar specific baselines to target a specific area of the Azure Well-Architected Framework.
+    - The following baselines have been added:
+      - `Azure.Pillar.CostOptimization`
+      - `Azure.Pillar.OperationalExcellence`
+      - `Azure.Pillar.PerformanceEfficiency`
+      - `Azure.Pillar.Reliability`
+      - `Azure.Pillar.Security`
+  - Added March 2024 baselines `Azure.GA_2024_03` and `Azure.Preview_2024_03` by @BernieWhite.
+    [#2781](https://github.com/Azure/PSRule.Rules.Azure/issues/2781)
+    - Includes rules released before or during March 2024.
+    - Marked `Azure.GA_2023_12` and `Azure.Preview_2023_12` baselines as obsolete.
+- Updated rules:
+  - Updated `Azure.AppService.NETVersion` to detect out of date .NET versions including .NET 5/6/7 by @BernieWhite.
+    [#2766](https://github.com/Azure/PSRule.Rules.Azure/issues/2766)
+    - Bumped rule set to `2024_03`.
+  - Updated `Azure.AppService.PHPVersion` to detect out of date PHP versions before 8.2 by @BernieWhite.
+    [#2768](https://github.com/Azure/PSRule.Rules.Azure/issues/2768)
+    - Fixed `Azure.AppService.PHPVersion` check fails when phpVersion is null.
+    - Bumped rule set to `2024_03`.
+  - Updated `Azure.AKS.Version` to use `1.27.9` as the minimum version by @BernieWhite.
+    [#2771](https://github.com/Azure/PSRule.Rules.Azure/issues/2771)
+- General improvements:
+  - Renamed Cognitive Services rules to Azure AI by @BernieWhite.
+    [#2776](https://github.com/Azure/PSRule.Rules.Azure/issues/2776)
+    - Rules that were previously named `Azure.Cognitive.*` have been renamed to `Azure.AI.*`.
+    - For each rule that has been renamed, an alias has been added to reference the old name.
+  - Improved export of in-flight data for Event Grid and Azure Firewall Policies by @BernieWhite.
+    [#2774](https://github.com/Azure/PSRule.Rules.Azure/issues/2774)
+  - Additional policies added to default ignore list by @BernieWhite.
+    [#1731](https://github.com/Azure/PSRule.Rules.Azure/issues/1731)
+  - Quality updates to rule documentation by @BernieWhite.
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+    [#1243](https://github.com/Azure/PSRule.Rules.Azure/issues/1243)
+    [#2757](https://github.com/Azure/PSRule.Rules.Azure/issues/2757)
+    - Add rule severity to rule documentation pages.
+    - Add documentation redirects for renamed rules.
+  - Updated links to learn.microsoft.com (from docs.microsoft.com) by @lukemurraynz.
+    [#2785](https://github.com/Azure/PSRule.Rules.Azure/pull/2785)
+- Engineering:
+  - Bump coverlet.collector to v6.0.2.
+    [#2754](https://github.com/Azure/PSRule.Rules.Azure/pull/2754)
+- Bug fixes:
+  - Fixed false negative from `Azure.LB.AvailabilityZone` when zone list is empty or null by @jtracey93.
+    [#2759](https://github.com/Azure/PSRule.Rules.Azure/issues/2759)
+  - Fixed failed to expand JObject value with invalid key by @BernieWhite.
+    [#2751](https://github.com/Azure/PSRule.Rules.Azure/issues/2751)
+
+What's changed since pre-release v1.35.0-B0116:
+
+- General improvements:
+  - Updated links to learn.microsoft.com (from docs.microsoft.com) by @lukemurraynz.
+    [#2785](https://github.com/Azure/PSRule.Rules.Azure/pull/2785)
+
 ## v1.35.0-B0116 (pre-release)
 
 What's changed since pre-release v1.35.0-B0084:
