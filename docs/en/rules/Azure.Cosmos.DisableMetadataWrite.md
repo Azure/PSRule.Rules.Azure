@@ -28,7 +28,7 @@ You can restrict these operations to Azure Resource Manager (ARM) calls only.
 ## RECOMMENDATION
 
 Consider limiting key and resource tokens to data plane operations only.
-Use Azure AD identities for authorizing account and resource management operations.
+Use Microsoft Entra ID identities for authorizing account and resource management operations.
 
 ## EXAMPLES
 
