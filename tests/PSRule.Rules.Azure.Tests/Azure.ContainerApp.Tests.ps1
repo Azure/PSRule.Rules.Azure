@@ -174,6 +174,21 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
         }
+
+        It 'Azure.ContainerApp.MinReplicas' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.MinReplicas' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-A', 'capp-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.template.scale.minReplicas';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
+        }
     }
 
     Context 'Resource name - Azure.ContainerApp.Name' {
