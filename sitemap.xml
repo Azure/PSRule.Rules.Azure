@@ -1071,6 +1071,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.MinReplicas/</loc>
+         <lastmod>2024-04-01</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.Name/</loc>
          <lastmod>2024-04-01</lastmod>
          <changefreq>daily</changefreq>
