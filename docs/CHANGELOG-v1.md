@@ -861,14 +861,6 @@ What's changed since v1.29.0:
     - Includes rules released before or during September 2023.
     - Marked `Azure.GA_2023_06` and `Azure.Preview_2023_06` baselines as obsolete.
 - New rules:
-  - Azure Container Apps:
-    - Check that Container Apps uses a supported API version by @BenjaminEngeset.
-      [#2398](https://github.com/Azure/PSRule.Rules.Azure/issues/2398)
-  - Azure Container Registry:
-    - Check that Container Registries restricts network access by @BenjaminEngeset.
-      [#2423](https://github.com/Azure/PSRule.Rules.Azure/issues/2423)
-    - Check that Container Registries disables anonymous pull access by @BenjaminEngeset.
-      [#2422](https://github.com/Azure/PSRule.Rules.Azure/issues/2422)
   - Azure Database for MySQL:
     - Check that Azure AD-only authentication is configured for Azure Database for MySQL databases by @BenjaminEngeset.
       [#2227](https://github.com/Azure/PSRule.Rules.Azure/issues/2227)
@@ -878,6 +870,14 @@ What's changed since v1.29.0:
   - Backup vault:
     - Check that immutability is configured for Backup vaults by @BenjaminEngeset.
       [#2387](https://github.com/Azure/PSRule.Rules.Azure/issues/2387)
+  - Container App:
+    - Check that Container Apps uses a supported API version by @BenjaminEngeset.
+      [#2398](https://github.com/Azure/PSRule.Rules.Azure/issues/2398)
+  - Container Registry:
+    - Check that Container Registries restricts network access by @BenjaminEngeset.
+      [#2423](https://github.com/Azure/PSRule.Rules.Azure/issues/2423)
+    - Check that Container Registries disables anonymous pull access by @BenjaminEngeset.
+      [#2422](https://github.com/Azure/PSRule.Rules.Azure/issues/2422)
   - Front Door:
     - Check that managed identity for Azure Front Door instances are configured by @BenjaminEngeset.
       [#2378](https://github.com/Azure/PSRule.Rules.Azure/issues/2378)
@@ -1024,7 +1024,7 @@ What's changed since pre-release v1.30.0-B0026:
 What's changed since pre-release v1.30.0-B0011:
 
 - New rules:
-  - Container Apps:
+  - Container App:
     - Check that Container Apps uses a supported API version by @BenjaminEngeset.
       [#2398](https://github.com/Azure/PSRule.Rules.Azure/issues/2398)
 - Bug fixes:
