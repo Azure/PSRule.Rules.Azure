@@ -274,6 +274,7 @@
           }
         ],
         "scale": {
+          "minReplicas": 1,
           "maxReplicas": 10
         },
         "volumes": []
@@ -368,6 +369,7 @@
           }
         ],
         "scale": {
+          "minReplicas": 3,
           "maxReplicas": 10
         },
         "volumes": [
@@ -465,6 +467,7 @@
           }
         ],
         "scale": {
+          "minReplicas": 2,
           "maxReplicas": 10
         },
         "volumes": [

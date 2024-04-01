@@ -183,6 +183,24 @@ spec:
       - 2022-06-01-preview
       - 2022-11-01-preview
 
+---
+# Synopsis: Use multiple replicas to remove a single point of failure.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ContainerApp.MinReplicas
+  ref: AZR-000413
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.App/containerApps
+  condition:
+    field: properties.template.scale.minReplicas
+    greaterOrEquals: 2
+
 #endregion Rules
 
 #region Selectors
