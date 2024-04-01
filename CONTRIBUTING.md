@@ -71,7 +71,8 @@ Rule documentation requires the following annotations for use with PSRule for Az
   
   Available severities are:
   - `Critical` - A 'must have' if the solution is to be considered 'fit for purpose', secure, well governed and managed inline with the Microsoft Azure [Well-Architected Framework](https://learn.microsoft.com/azure/well-architected/).
-  - `Important` - A 'to be considered' within the context of the solution and domain. In some cases, can introduce cost or complexity that should be considered as a trade off and explicity documented as a [Key Design Decision](https://learn.microsoft.com/azure/cloud-adoption-framework/decision-guides/).
+  - `Important` - A 'to be considered' within the context of the solution and domain.
+    In some cases, can introduce cost or complexity that should be considered as a trade off and explicitly documented as a [Key Design Decision](https://learn.microsoft.com/azure/cloud-adoption-framework/decision-guides/).
   - `Awareness` - A 'good to have' feature, normally reserved for solutions with the highest [non-functional requirements](https://learn.microsoft.com/azure/well-architected/reliability/checklist).
   
 - `pillar` - A Azure Well-Architected Framework pillar.
@@ -83,16 +84,21 @@ Rule documentation requires the following annotations for use with PSRule for Az
 
 When authoring and improving rule documentation, please follow these guidelines:
 
-- Provide documentation links to the Azure service and Well-Architected Framework pillar.
+- **Reference the WAF** &mdash; by the pillar recommendation.
+  For example if the rule relates to redundancy in the Reliability pillar you could reference [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy).
+- **Add relevant links** &mdash; to the Azure service documentation.
   Examples of good documentation links include:
   - Best practices for the Azure service.
   - Instructions on how to configure the Azure service.
   - [Azure deployment reference](https://learn.microsoft.com/azure/templates/).
-- For links to _https://learn.microsoft.com/_ remove culture from path to make it more generic.
+- **Remove culture** &mdash; from links to _https://learn.microsoft.com/_ to make it more generic.
+  This will allow the link to redirect to a language based on the user's settings.
   For example _https://learn.microsoft.com/azure/aks/concepts-scale_ instead of _https://learn.microsoft.com/en-us/azure/aks/concepts-scale_.
-- Add examples of a Azure resource that would pass the rule.
-  At a minimum where applicable provide an example of a Azure template resource.
-  Also consider including example Bicep code.
+- **Add examples** &mdash; of a Azure resource that would pass the rule.
+  For rules that apply to pre-flight checks provide an example in Azure Bicep _and_ Azure template format.
+  - Additionally if a pre-built Azure Verified Module is available, reference after the Bicep example using a short-code.
+    The short-code format is `<!-- external:avm <module_path> <params> -->`.
+    For more information see the [example](https://github.com/Azure/PSRule.Rules.Azure/blob/9bb5589bd1ddb01197866d5199f3954cf6f9206b/docs/en/rules/Azure.ContainerApp.MinReplicas.md?plain=1#L113).
 
   [4]: https://microsoft.github.io/PSRule/latest/authoring/writing-rule-help/#writing-markdown-documentation
 

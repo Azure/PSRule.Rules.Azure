@@ -76,6 +76,8 @@ resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
 }
 ```
 
+<!-- external:avm avm/res/event-grid/topic disableLocalAuth -->
+
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:
