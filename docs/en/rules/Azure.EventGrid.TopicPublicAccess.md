@@ -73,6 +73,8 @@ resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
 }
 ```
 
+<!-- external:avm avm/res/event-grid/topic publicNetworkAccess -->
+
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
