@@ -110,6 +110,8 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
 }
 ```
 
+<!-- external:avm avm/res/app/container-app scaleMinReplicas -->
+
 ### Configure with Azure CLI
 
 ```bash
