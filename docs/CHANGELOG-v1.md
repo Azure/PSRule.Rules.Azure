@@ -32,6 +32,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.35.0:
+
+- New rules:
+  - Container App:
+    - Check that Container Apps have a minimum number of replicas by @BernieWhite.
+      [#2790](https://github.com/Azure/PSRule.Rules.Azure/issues/2790)
+- General improvements:
+  - Quality updates to documentation by @lukemurraynz.
+    [#2789](https://github.com/Azure/PSRule.Rules.Azure/pull/2789)
+
 ## v1.35.0
 
 What's changed since v1.34.2:
@@ -1014,7 +1024,7 @@ What's changed since pre-release v1.30.0-B0026:
 What's changed since pre-release v1.30.0-B0011:
 
 - New rules:
-  - Azure Container Apps:
+  - Container Apps:
     - Check that Container Apps uses a supported API version by @BenjaminEngeset.
       [#2398](https://github.com/Azure/PSRule.Rules.Azure/issues/2398)
 - Bug fixes:
