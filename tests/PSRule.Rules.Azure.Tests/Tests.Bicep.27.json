@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.23.1.45101",
-      "templateHash": "1063354008601109842"
+      "version": "0.26.54.24096",
+      "templateHash": "7737727980270162371"
     }
   },
   "resources": [
@@ -18,6 +18,11 @@
           "scope": "inner"
         },
         "mode": "Incremental",
+        "parameters": {
+          "skuName": {
+            "value": null
+          }
+        },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
           "languageVersion": "2.0",
@@ -25,8 +30,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.23.1.45101",
-              "templateHash": "11238883118622659404"
+              "version": "0.26.54.24096",
+              "templateHash": "14665743710501821887"
             }
           },
           "definitions": {
@@ -68,6 +73,10 @@
             }
           },
           "parameters": {
+            "skuName": {
+              "type": "string",
+              "defaultValue": "Standard_LRS"
+            },
             "minTLSVersion": {
               "type": "string",
               "nullable": true
@@ -118,7 +127,7 @@
               "name": "test",
               "location": "[resourceGroup().location]",
               "sku": {
-                "name": "Standard_LRS"
+                "name": "[parameters('skuName')]"
               },
               "kind": "StorageV2",
               "properties": {
