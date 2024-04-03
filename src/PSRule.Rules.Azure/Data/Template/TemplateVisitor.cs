@@ -352,6 +352,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
             private void AddParameterAssignment(string name, JToken value)
             {
+                if (value == null || value.Type == JTokenType.Null || value.Type == JTokenType.Undefined)
+                    return;
+
                 _ParameterAssignments.Add(name, value);
             }
 
