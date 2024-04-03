@@ -1099,9 +1099,21 @@ namespace PSRule.Rules.Azure
         /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2751.
         /// </summary>
         [Fact]
-        public void Index_into_mock_output_object()
+        public void ProcessTemplate_WhenIndexIntoMock_ShouldReturnMock()
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.35.json"), null, out _);
+        }
+
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2795.
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenParameterNullWithDefault_ShouldUseDefault()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.27.json"), null, out _);
+
+            var actual = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.Storage/storageAccounts");
+            Assert.Equal("Standard_LRS", actual["sku"]["name"].Value<string>());
         }
 
         #region Helper methods
