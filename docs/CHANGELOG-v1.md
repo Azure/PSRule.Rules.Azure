@@ -32,7 +32,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.35.0:
+What's changed since v1.35.1:
 
 - New rules:
   - Container App:
@@ -41,6 +41,14 @@ What's changed since v1.35.0:
 - General improvements:
   - Quality updates to documentation by @lukemurraynz.
     [#2789](https://github.com/Azure/PSRule.Rules.Azure/pull/2789)
+
+## v1.35.1
+
+What's changed since v1.35.0:
+
+- Bug fixes:
+  - Fixed null parameter overrides default value by @BernieWhite.
+    [#2795](https://github.com/Azure/PSRule.Rules.Azure/issues/2795)
 
 ## v1.35.0
 
