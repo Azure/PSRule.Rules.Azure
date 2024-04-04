@@ -39,6 +39,7 @@ We also give an quick overview of baselines, handling exceptions, and reporting 
 Several first-party repositories use PSRule for Azure.
 Here's a few you may be familiar with:
 
+- [Azure/bicep-registry-modules](https://aka.ms/brm) - Azure Verified Modules (AVM) (Bicep)
 - [Azure/ResourceModules](https://github.com/Azure/ResourceModules) - Common Azure Resource Modules Library
 - [Azure/ALZ-Bicep](https://github.com/Azure/ALZ-Bicep) - Azure Landing Zones (ALZ)
 - [Azure/AKS-Construction](https://github.com/Azure/AKS-Construction) - AKS Construction
