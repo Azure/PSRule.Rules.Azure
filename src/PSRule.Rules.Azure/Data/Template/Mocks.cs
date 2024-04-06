@@ -215,7 +215,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public JToken GetValue(TypePrimitive type)
             {
-                return type == TypePrimitive.Array ? this : null;
+                return type == TypePrimitive.None || type == TypePrimitive.Array ? this : null;
             }
 
             public JToken GetValue(object key)

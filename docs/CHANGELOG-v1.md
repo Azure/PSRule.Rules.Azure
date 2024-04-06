@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.35.1:
+
+- Bug fixes:
+  - Fixed regression when handing ambiguous mock array outputs by @BernieWhite.
+    [#2801](https://github.com/Azure/PSRule.Rules.Azure/issues/2801)
+
 ## v1.35.1
 
 What's changed since v1.35.0:
