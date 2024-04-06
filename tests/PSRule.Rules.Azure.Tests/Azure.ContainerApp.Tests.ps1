@@ -189,6 +189,21 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'capp-C', 'capp-D';
         }
+
+        It 'Azure.ContainerApp.AvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ContainerApp.AvailabilityZone' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'capp-env-A', 'capp-env-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.zoneRedundant';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'capp-env-C';
+        }
     }
 
     Context 'Resource name - Azure.ContainerApp.Name' {

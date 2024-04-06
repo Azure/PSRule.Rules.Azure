@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Application endpoints
+category: SE:06 Network controls
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.PublicAccess/
 ---
@@ -87,6 +87,6 @@ resource containerAppEnv 'Microsoft.App/managedEnvironments@2022-10-01' = {
 
 ## LINKS
 
-- [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
-- [Networking architecture in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/networking)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Networking in Azure Container Apps environment](https://learn.microsoft.com/azure/container-apps/networking)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/managedenvironments#vnetconfiguration)

@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.RestrictIngress/
 ---
@@ -133,8 +133,8 @@ If no rules are defined at all, the rule will not pass as it expects at least on
 
 ## LINKS
 
-- [Network security and containment](https://learn.microsoft.com/azure/well-architected/security/design-network)
-- [Networking architecture in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/networking)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Networking in Azure Container Apps environment](https://learn.microsoft.com/azure/container-apps/networking)
 - [IP restrictions](https://learn.microsoft.com/azure/container-apps/ingress-overview#ip-restrictions)
 - [Set up IP ingress restrictions in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/ip-restrictions)
 - [Azure security baseline for Azure Container Apps](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-container-apps-security-baseline)

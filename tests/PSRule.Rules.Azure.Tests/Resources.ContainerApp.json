@@ -87,8 +87,7 @@
           "minimumCount": null,
           "workloadProfileType": null
         }
-      ],
-      "zoneRedundant": false
+      ]
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.App/managedEnvironments",
@@ -143,7 +142,7 @@
           "workloadProfileType": null
         }
       ],
-      "zoneRedundant": false
+      "zoneRedundant": true
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.App/managedEnvironments",

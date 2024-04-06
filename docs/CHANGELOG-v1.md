@@ -38,6 +38,8 @@ What's changed since v1.35.1:
   - Container App:
     - Check that Container Apps have a minimum number of replicas by @BernieWhite.
       [#2790](https://github.com/Azure/PSRule.Rules.Azure/issues/2790)
+    - Check that Container App environments are zone redundant by @BernieWhite.
+      [#2791](https://github.com/Azure/PSRule.Rules.Azure/issues/2791)
 - General improvements:
   - Quality updates to documentation by @lukemurraynz.
     [#2789](https://github.com/Azure/PSRule.Rules.Azure/pull/2789)

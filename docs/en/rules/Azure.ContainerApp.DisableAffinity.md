@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-10-01
+reviewed: 2024-04-07
 severity: Important
 pillar: Performance Efficiency
-category: Design for performance efficiency
+category: PE:05 Scaling and partitioning
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.DisableAffinity/
 ---
@@ -50,7 +50,10 @@ For example:
     "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
     "template": {
       "revisionSuffix": "[parameters('revision')]",
-      "containers": "[variables('containers')]"
+      "containers": "[variables('containers')]",
+      "scale": {
+        "minReplicas": 2
+      }
     },
     "configuration": {
       "ingress": {
@@ -87,6 +90,9 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
     template: {
       revisionSuffix: revision
       containers: containers
+      scale: {
+        minReplicas: 2
+      }
     }
     configuration: {
       ingress: {
@@ -106,7 +112,6 @@ This rule may generate false positive results for stateful applications.
 
 ## LINKS
 
-- [Avoid a requirement to store server-side session state](https://learn.microsoft.com/azure/well-architected/scalability/performance-efficiency#implementation)
-- [Session affinity](https://learn.microsoft.com/azure/well-architected/scalability/design-efficiency#improve-performance-with-session-affinity)
+- [PE:05 Scaling and partitioning](https://learn.microsoft.com/azure/well-architected/performance-efficiency/scale-partition)
 - [Session Affinity in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/sticky-sessions)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#ingressstickysessions)

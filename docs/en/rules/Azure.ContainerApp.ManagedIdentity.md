@@ -54,7 +54,10 @@ For example:
     "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
     "template": {
       "revisionSuffix": "[parameters('revision')]",
-      "containers": "[variables('containers')]"
+      "containers": "[variables('containers')]",
+      "scale": {
+        "minReplicas": 2
+      }
     },
     "configuration": {
       "ingress": {
@@ -92,6 +95,9 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
     template: {
       revisionSuffix: revision
       containers: containers
+      scale: {
+        minReplicas: 2
+      }
     }
     configuration: {
       ingress: {
