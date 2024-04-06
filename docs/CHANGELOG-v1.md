@@ -42,6 +42,14 @@ What's changed since v1.35.1:
   - Quality updates to documentation by @lukemurraynz.
     [#2789](https://github.com/Azure/PSRule.Rules.Azure/pull/2789)
 
+## v1.35.2
+
+What's changed since v1.35.1:
+
+- Bug fixes:
+  - Fixed regression when handing ambiguous mock array outputs by @BernieWhite.
+    [#2801](https://github.com/Azure/PSRule.Rules.Azure/issues/2801)
+
 ## v1.35.1
 
 What's changed since v1.35.0:
