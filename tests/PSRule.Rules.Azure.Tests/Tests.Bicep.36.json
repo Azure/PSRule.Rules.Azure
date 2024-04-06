@@ -1,0 +1,52 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.26.54.24096",
+      "templateHash": "12279334207887669240"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "child",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.26.54.24096",
+              "templateHash": "14837468981850150943"
+            }
+          },
+          "resources": [],
+          "outputs": {
+            "items": {
+              "type": "array",
+              "value": "[concat(createArray(), createArray(createObject('name', 'name1', 'value', 'value1')))]"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "outputs": {
+    "items": {
+      "type": "array",
+      "value": [
+        {
+          "items": "[reference(resourceId('Microsoft.Resources/deployments', 'child'), '2022-09-01').outputs.items.value]"
+        }
+      ]
+    }
+  }
+}

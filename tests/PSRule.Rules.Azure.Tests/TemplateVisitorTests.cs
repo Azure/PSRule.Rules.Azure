@@ -1101,7 +1101,36 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void ProcessTemplate_WhenIndexIntoMock_ShouldReturnMock()
         {
-            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.35.json"), null, out _);
+            ProcessTemplate(GetSourcePath("Tests.Bicep.35.json"), null, out _);
+        }
+
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2795.
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenParameterNullWithDefault_ShouldUseDefault()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.27.json"), null, out _);
+
+            var actual = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.Storage/storageAccounts");
+            Assert.Equal("Standard_LRS", actual["sku"]["name"].Value<string>());
+        }
+
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2801.
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenMockArrayOutputAndTypeIsUnknown_ShouldReturnArray()
+        {
+            ProcessTemplate(GetSourcePath("Tests.Bicep.36.json"), null, out var templateContext);
+
+            Assert.True(templateContext.RootDeployment.TryOutput("items", out JObject result));
+            var items = result["value"][0]["items"].Value<JArray>();
+
+            Assert.Single(items);
+            var actual = items[0].Value<JObject>();
+            Assert.Equal("name1", actual["name"].Value<string>());
+            Assert.Equal("value1", actual["value"].Value<string>());
         }
 
         /// <summary>
