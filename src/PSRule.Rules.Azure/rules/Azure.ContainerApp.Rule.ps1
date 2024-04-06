@@ -18,6 +18,20 @@ Rule 'Azure.ContainerApp.RestrictIngress' -Ref 'AZR-000380' -Type 'Microsoft.App
     }
 }
 
+# Synopsis: Use Container Apps environments that are zone redundant to improve reliability.
+Rule 'Azure.ContainerApp.AvailabilityZone' -Ref 'AZR-000414' -Type 'Microsoft.App/managedEnvironments' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    # Check for availability zones based on Compute, because it is not exposed through the provider for container apps.
+    $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets');
+    $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $provider.ZoneMappings;
+
+    # Don't flag if the region does not support AZ.
+    if (-not $availabilityZones) {
+        return $Assert.Pass();
+    }
+
+    $Assert.HasFieldValue($TargetObject, 'properties.zoneRedundant', $True);
+}
+
 #endregion Rules
 
 #region Helper functions

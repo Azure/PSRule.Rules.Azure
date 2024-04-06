@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-04-07
 severity: Important
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.ExternalIngress/
 ---
@@ -14,14 +15,15 @@ Limit inbound communication for Container Apps is limited to callers within the 
 
 ## DESCRIPTION
 
-Container apps allows you to expose your container app to the Internet, your VNET, or to other container apps within the same environment by enabling ingress.
+Inbound access to a Container App is configured by enabling ingress.
+Container Apps can be configured to allow external ingress or not.
+External ingress permits communication outside the Container App environment from a private VNET or the Internet.
+To restrict communication to a private VNET your Container App Environment must be:
 
-When inbound access to the app is required, configure the ingress.
+- Configured with a custom VNET.
+- Configured with an internal load balancer.
+
 Applications that do batch processing or consume events may not require ingress to be enabled.
-
-When external ingress is configured, communication outside the container apps environment is enabled from your private VNET or the Internet.
-To restrict communication to a private VNET your Container App Environment must be deployed on a custom VNET with an Internal load balancer.
-
 If communication outside your Container Apps Environment is not required, disable external ingress.
 
 ## RECOMMENDATION
@@ -41,25 +43,34 @@ For example:
 ```json
 {
   "type": "Microsoft.App/containerApps",
-  "apiVersion": "2022-10-01",
+  "apiVersion": "2023-05-01",
   "name": "[parameters('appName')]",
   "location": "[parameters('location')]",
   "identity": {
-    "type": "SystemAssigned",
-    "userAssignedIdentities": {}
+    "type": "SystemAssigned"
   },
   "properties": {
-        "environmentId": "[parameters('environmentId')]",
-        "template": {
-            "revisionSuffix": "",
-            "containers": "[variables('containers')]"
-        },
-        "configuration": {
-            "ingress": {
-                "external": false
-            }
+    "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
+    "template": {
+      "revisionSuffix": "[parameters('revision')]",
+      "containers": "[variables('containers')]",
+      "scale": {
+        "minReplicas": 2
+      }
+    },
+    "configuration": {
+      "ingress": {
+        "external": false,
+        "allowInsecure": false,
+        "stickySessions": {
+          "affinity": "none"
         }
+      }
     }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]"
+  ]
 }
 ```
 
@@ -72,22 +83,28 @@ To deploy Container Apps that pass this rule:
 For example:
 
 ```bicep
-resource containerApp 'Microsoft.App/containerApps@2022-10-01' = {
+resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
   name: appName
   location: location
   identity: {
     type: 'SystemAssigned'
-    userAssignedIdentities: {}
   }
-   properties: {
-    environmentId: environmentId
+  properties: {
+    environmentId: containerEnv.id
     template: {
-      revisionSuffix: ''
+      revisionSuffix: revision
       containers: containers
+      scale: {
+        minReplicas: 2
+      }
     }
     configuration: {
       ingress: {
         external: false
+        allowInsecure: false
+        stickySessions: {
+          affinity: 'none'
+        }
       }
     }
   }
@@ -103,6 +120,7 @@ If you don't need external ingress, enable this rule by:
 
 ## LINKS
 
-- [Networking architecture in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/networking)
-- [Set up HTTPS or TCP ingress in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/ingress)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Networking in Azure Container Apps environment](https://learn.microsoft.com/azure/container-apps/networking)
+- [Ingress in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/ingress-overview)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#ingress)
