@@ -174,6 +174,6 @@ This rule does not check if container app names are unique.
 
 ## LINKS
 
-- [OE:04 Tools and processes](https://learn.microsoft.com/en-gb/azure/well-architected/operational-excellence/tools-processes)
+- [OE:04 Tools and processes](https://learn.microsoft.com/azure/well-architected/operational-excellence/tools-processes)
 - [Naming rules and restrictions for container app resource](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftapp)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps)
