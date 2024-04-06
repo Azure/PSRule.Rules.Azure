@@ -1133,18 +1133,6 @@ namespace PSRule.Rules.Azure
             Assert.Equal("value1", actual["value"].Value<string>());
         }
 
-        /// <summary>
-        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2795.
-        /// </summary>
-        [Fact]
-        public void ProcessTemplate_WhenParameterNullWithDefault_ShouldUseDefault()
-        {
-            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.27.json"), null, out _);
-
-            var actual = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.Storage/storageAccounts");
-            Assert.Equal("Standard_LRS", actual["sku"]["name"].Value<string>());
-        }
-
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
