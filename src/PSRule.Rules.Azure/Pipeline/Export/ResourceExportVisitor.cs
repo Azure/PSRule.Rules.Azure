@@ -107,11 +107,12 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string APIVERSION_2022_09_01 = "2022-09-01";
         private const string APIVERSION_2022_09_10 = "2022-09-10";
         private const string APIVERSION_2023_01_01 = "2023-01-01";
+        private const string APIVERSION_2023_01_01_PREVIEW = "2023-01-01-preview";
+        private const string APIVERSION_2023_03_01_PREVIEW = "2023-03-01-preview";
         private const string APIVERSION_2023_04_01 = "2023-04-01";
         private const string APIVERSION_2023_05_01 = "2023-05-01";
         private const string APIVERSION_2023_06_30 = "2023-06-30";
-        private const string APIVERSION_2023_01_01_PREVIEW = "2023-01-01-preview";
-        private const string APIVERSION_2023_03_01_PREVIEW = "2023-03-01-preview";
+        private const string APIVERSION_2023_09_01 = "2023-09-01";
         private const string APIVERSION_2023_12_15_PREVIEW = "2023-12-15-preview";
 
         private readonly ProviderData _ProviderData;
@@ -333,8 +334,16 @@ namespace PSRule.Rules.Azure.Pipeline.Export
             if (!string.Equals(resourceType, TYPE_NETWORK_FIREWALLPOLICY, StringComparison.OrdinalIgnoreCase))
                 return false;
 
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "ruleCollectionGroups", APIVERSION_2023_04_01));
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "signatureOverrides", APIVERSION_2023_04_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "ruleCollectionGroups", APIVERSION_2023_09_01));
+
+            // Add signature overrides for premium firewall policies.
+            if (resource.TryGetProperty(PROPERTY_PROPERTIES, out JObject properties) &&
+                properties.TryGetProperty("sku", out JObject sku) &&
+                sku.TryStringProperty("tier", out var tier) &&
+                string.Equals(tier, "Premium", StringComparison.OrdinalIgnoreCase))
+            {
+                AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "signatureOverrides", APIVERSION_2023_09_01));
+            }
             return true;
         }
 
