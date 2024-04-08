@@ -100,6 +100,8 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = 
 }
 ```
 
+<!-- external:avm avm/res/container-registry/registry trustPolicyStatus -->
+
 ## LINKS
 
 - [Follow best practices for container security](https://learn.microsoft.com/azure/architecture/framework/security/applications-services#follow-best-practices-for-container-security)

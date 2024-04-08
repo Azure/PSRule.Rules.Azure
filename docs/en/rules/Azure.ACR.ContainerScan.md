@@ -1,8 +1,8 @@
 ---
-reviewed: 2021/11/13
+reviewed: 2021-11-13
 severity: Critical
 pillar: Security
-category: Azure resources
+category: SE:10 Monitoring and threat detection
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ContainerScan/
 ---
@@ -33,9 +33,9 @@ Container image vulnerability scanning with Microsoft Defender for container reg
 
 - Is currently only available for Linux-hosted ACR registries.
 - The container registry must be accessible by Microsoft Defender for Container registries.
-Network access can not be restricted by firewall, Service Endpoints, or Private Endpoints.
+  Network access can not be restricted by firewall, Service Endpoints, or Private Endpoints.
 - Is supported in commercial clouds.
-Is not currently supported in sovereign or national clouds (e.g. US Gov, China Gov, etc.).
+  Is not currently supported in sovereign or national clouds (e.g. US Gov, China Gov, etc.).
 
 ## RECOMMENDATION
 
@@ -97,7 +97,7 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
-- [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [Introduction to Microsoft Defender for container registries](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-container-registries-introduction)
 - [Container security in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction)
 - [Secure the images and run time](https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)

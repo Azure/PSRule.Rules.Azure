@@ -106,6 +106,8 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-07-01' = {
 }
 ```
 
+<!-- external:avm avm/res/container-registry/registry acrAdminUserEnabled -->
+
 ### Configure with Azure CLI
 
 To configure registries that pass this rule:
