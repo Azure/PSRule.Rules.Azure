@@ -43,6 +43,9 @@ What's changed since v1.35.1:
 - General improvements:
   - Quality updates to documentation by @lukemurraynz.
     [#2789](https://github.com/Azure/PSRule.Rules.Azure/pull/2789)
+- Bug fixes:
+  - Fixed not found warning when exporting firewall policy signatureOverrides by @BernieWhite.
+    [#2806](https://github.com/Azure/PSRule.Rules.Azure/issues/2806)
 
 ## v1.35.2
 
