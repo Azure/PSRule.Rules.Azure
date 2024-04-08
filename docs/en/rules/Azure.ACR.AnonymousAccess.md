@@ -114,6 +114,8 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = 
 }
 ```
 
+<!-- external:avm avm/res/container-registry/registry anonymousPullEnabled -->
+
 ### Configure with Azure CLI
 
 To configure registries that pass this rule:

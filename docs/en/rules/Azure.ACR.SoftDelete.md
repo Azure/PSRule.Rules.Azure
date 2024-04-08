@@ -119,6 +119,8 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
 }
 ```
 
+<!-- external:avm avm/res/container-registry/registry softDeletePolicyStatus -->
+
 ### Configure with Azure CLI
 
 ```bash
