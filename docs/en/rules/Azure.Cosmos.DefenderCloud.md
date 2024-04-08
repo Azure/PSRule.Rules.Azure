@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Security operations
+category: SE:10 Monitoring and threat detection
 resource: Cosmos DB
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.DefenderCloud/
 ---
@@ -21,7 +21,8 @@ Which allows Microsoft Defender for Cloud to produce security alerts that are tr
 
 Security alerts for onboarded Cosmos DB accounts shows up in Defender for Cloud with details of the suspicious activity and recommendations on how to investigate and remediate the threats.
 
-Microsoft Defender for Cosmos DB can be enabled at the resource level, but the general recommandation is to enable it at the subscription level and by doing so ensures all Cosmos DB accounts in the subscription will be protected, including future ones. However, enabling it at resource level can be done to protect a specific Azure Cosmos DB account.
+Microsoft Defender for Cosmos DB can be enabled at the resource level, but the general recommendation is to enable it at the subscription level and by doing so ensures all Cosmos DB accounts in the subscription will be protected, including future ones.
+However, enabling it at resource level can be done to protect a specific Azure Cosmos DB account.
 
 ## RECOMMENDATION
 
@@ -74,11 +75,12 @@ resource defenderForCosmosDb 'Microsoft.Security/advancedThreatProtectionSetting
 
 ## NOTES
 
-Microsoft Defender for Azure Cosmos DB is currently available only for the NoSQL API. When Microsoft Defender for Cosmos DB is enabled at the subscription level, the resource level enablement has no effect as it will be handled by the plan at the subscription level.
+Microsoft Defender for Azure Cosmos DB is currently available only for the NoSQL API.
+When Microsoft Defender for Cosmos DB is enabled at the subscription level, the resource level enablement has no effect as it will be handled by the plan at the subscription level.
 
 ## LINKS
 
-- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for Azure Cosmos DB](https://learn.microsoft.com/azure/defender-for-cloud/concept-defender-for-cosmos)
 - [Enable Microsoft Defender for Azure Cosmos DB](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-enable-cosmos-protections)

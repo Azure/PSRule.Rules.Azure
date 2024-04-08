@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-04-09
 severity: Important
 pillar: Security
-category: Authentication
+category: SE:05 Identity and access management
 resource: Cosmos DB
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.DisableMetadataWrite/
 ---
@@ -10,13 +11,13 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos
 
 ## SYNOPSIS
 
-Use Azure AD identities for management place operations in Azure Cosmos DB.
+Use Entra ID identities for management place operations in Azure Cosmos DB.
 
 ## DESCRIPTION
 
 Cosmos DB provides two authorization options for interacting with the database:
 
-- Azure Active Directory identity (Azure AD).
+- Entra ID identities (previously known as Azure AD).
   Can be used to authorize account and resource management operations.
 - Keys and resource tokens.
   Can be used to authorize resource management and data operations.
@@ -42,24 +43,24 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.DocumentDB/databaseAccounts",
-    "apiVersion": "2021-06-15",
-    "name": "[parameters('dbAccountName')]",
-    "location": "[parameters('location')]",
-    "properties": {
-        "consistencyPolicy": {
-            "defaultConsistencyLevel": "Session"
-        },
-        "databaseAccountOfferType": "Standard",
-        "locations": [
-            {
-                "locationName": "[parameters('location')]",
-                "failoverPriority": 0,
-                "isZoneRedundant": false
-            }
-        ],
-        "disableKeyBasedMetadataWriteAccess": true
-    }
+  "type": "Microsoft.DocumentDB/databaseAccounts",
+  "apiVersion": "2023-04-15",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "consistencyPolicy": {
+      "defaultConsistencyLevel": "Session"
+    },
+    "databaseAccountOfferType": "Standard",
+    "locations": [
+      {
+        "locationName": "[parameters('location')]",
+        "failoverPriority": 0,
+        "isZoneRedundant": true
+      }
+    ],
+    "disableKeyBasedMetadataWriteAccess": true
+  }
 }
 ```
 
@@ -72,8 +73,8 @@ To deploy Cosmos DB accounts that pass this rule:
 For example:
 
 ```bicep
-resource dbAccount 'Microsoft.DocumentDB/databaseAccounts@2021-06-15' = {
-  name: dbAccountName
+resource account 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
+  name: name
   location: location
   properties: {
     consistencyPolicy: {
@@ -84,7 +85,7 @@ resource dbAccount 'Microsoft.DocumentDB/databaseAccounts@2021-06-15' = {
       {
         locationName: location
         failoverPriority: 0
-        isZoneRedundant: false
+        isZoneRedundant: true
       }
     ]
     disableKeyBasedMetadataWriteAccess: true
@@ -94,9 +95,9 @@ resource dbAccount 'Microsoft.DocumentDB/databaseAccounts@2021-06-15' = {
 
 ## LINKS
 
-- [Use identity-based authentication](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication#use-identity-based-authentication)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
 - [Restrict user access to data operations in Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/how-to-restrict-user-data)
 - [Secure access to data in Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/secure-access-to-data)
 - [How does Azure Cosmos DB secure my database?](https://learn.microsoft.com/azure/cosmos-db/database-security#how-does-azure-cosmos-db-secure-my-database)
 - [Access control in the Azure Cosmos DB SQL API](https://learn.microsoft.com/rest/api/cosmos-db/access-control-on-cosmosdb-resources)
-- [Azure resource template](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts#databaseaccountcreateupdateproperties-object)
+- [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts)

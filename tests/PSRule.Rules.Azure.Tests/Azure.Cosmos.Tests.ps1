@@ -49,6 +49,20 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'graph-B';
         }
+
+        It 'Azure.Cosmos.MinTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.MinTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'graph-A';
+        }
     }
 
     Context 'Resource name - Azure.Cosmos.AccountName' {

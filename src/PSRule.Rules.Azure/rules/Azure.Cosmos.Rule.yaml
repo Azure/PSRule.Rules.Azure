@@ -52,4 +52,22 @@ spec:
     - name: '.'
       match: '^[a-z0-9](-|[a-z0-9]){1,41}[a-z0-9]$'
 
+---
+# Synopsis: Cosmos DB accounts should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cosmos.MinTLS
+  ref: AZR-000415
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.DocumentDb/databaseAccounts
+  condition:
+    field: properties.minimalTlsVersion
+    equals: Tls12
+
 #endregion Rules
