@@ -33,6 +33,7 @@
       "databaseAccountOfferType": "Standard",
       "defaultIdentity": "FirstPartyIdentity",
       "networkAclBypass": "None",
+      "minimalTlsVersion": "Tls12",
       "consistencyPolicy": {
         "defaultConsistencyLevel": "Session",
         "maxIntervalInSeconds": 5,
@@ -263,7 +264,8 @@
         }
       ],
       "databaseAccountOfferType": "Standard",
-      "enableAutomaticFailover": true
+      "enableAutomaticFailover": true,
+      "minimalTlsVersion": "Tls"
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/databaseAccounts",

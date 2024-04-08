@@ -40,6 +40,9 @@ What's changed since v1.35.1:
       [#2790](https://github.com/Azure/PSRule.Rules.Azure/issues/2790)
     - Check that Container App environments are zone redundant by @BernieWhite.
       [#2791](https://github.com/Azure/PSRule.Rules.Azure/issues/2791)
+  - Cosmos DB:
+    - Check that database accounts only accept a minimum of TLS 1.2 by @BernieWhite.
+      [#2809](https://github.com/Azure/PSRule.Rules.Azure/issues/2809)
 - General improvements:
   - Quality updates to documentation by @lukemurraynz.
     [#2789](https://github.com/Azure/PSRule.Rules.Azure/pull/2789)
