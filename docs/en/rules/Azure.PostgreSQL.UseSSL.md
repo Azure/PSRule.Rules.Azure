@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-04-09
 severity: Critical
 pillar: Security
-category: Data protection
+category: SE:07 Encryption
 resource: Azure Database for PostgreSQL
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.UseSSL/
 ms-content-id: 80d34e65-8ab5-4cf3-a0dd-3b5e56e06f40
@@ -28,7 +29,64 @@ Unless explicitly required, consider enabling _enforce SSL connections_.
 
 Also consider using Azure Policy to audit or enforce this configuration.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy servers that pass this rule:
+
+- Set the `properties.sslEnforcement` property to `Enabled`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.DBforPostgreSQL/servers",
+  "apiVersion": "2017-12-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "createMode": "Default",
+    "administratorLogin": "[parameters('localAdministrator')]",
+    "administratorLoginPassword": "[parameters('localAdministratorPassword')]",
+    "minimalTlsVersion": "TLS1_2",
+    "sslEnforcement": "Enabled",
+    "publicNetworkAccess": "Disabled",
+    "version": "11"
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy servers that pass this rule:
+
+- Set the `properties.sslEnforcement` property to `Enabled`.
+
+For example:
+
+```bicep
+resource single 'Microsoft.DBforPostgreSQL/servers@2017-12-01' = {
+  name: name
+  location: location
+  properties: {
+    createMode: 'Default'
+    administratorLogin: localAdministrator
+    administratorLoginPassword: localAdministratorPassword
+    minimalTlsVersion: 'TLS1_2'
+    sslEnforcement: 'Enabled'
+    publicNetworkAccess: 'Disabled'
+    version: '11'
+  }
+}
+```
+
+## NOTES
+
+This rule is not applicable to PostgreSQL using the flexible server model.
+
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Configure SSL connectivity in Azure Database for PostgreSQL](https://learn.microsoft.com/azure/postgresql/concepts-ssl-connection-security)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
+- [Configure SSL connectivity in Azure Database for PostgreSQL](https://learn.microsoft.com/azure/postgresql/single-server/concepts-ssl-connection-security)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbforpostgresql/servers)
