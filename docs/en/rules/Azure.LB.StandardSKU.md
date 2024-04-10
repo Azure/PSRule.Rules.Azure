@@ -36,41 +36,32 @@ For example:
 
 ```json
 {
-    "apiVersion": "2020-07-01",
-    "name": "[parameters('name')]",
-    "type": "Microsoft.Network/loadBalancers",
-    "location": "[parameters('location')]",
-    "dependsOn": [],
-    "tags": {},
-    "properties": {
-        "frontendIPConfigurations": [
-            {
-                "name": "frontend-ip-config",
-                "properties": {
-                    "privateIPAddress": null,
-                    "privateIPAddressVersion": "IPv4",
-                    "privateIPAllocationMethod": "Dynamic",
-                    "subnet": {
-                        "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/virtualNetworks/lb-vnet/subnets/default"
-                    }
-                },
-                "zones": [
-                    "1",
-                    "2",
-                    "3"
-                ]
-            }
-        ],
-        "backendAddressPools": [],
-        "probes": [],
-        "loadBalancingRules": [],
-        "inboundNatRules": [],
-        "outboundRules": []
-    },
-    "sku": {
-        "name": "Standard",
-        "tier": "[parameters('tier')]"
-    }
+  "type": "Microsoft.Network/loadBalancers",
+  "apiVersion": "2023-09-01",
+  "name": "[parameters('lbName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard",
+    "tier": "Regional"
+  },
+  "properties": {
+    "frontendIPConfigurations": [
+      {
+        "name": "frontendIPConfig",
+        "properties": {
+          "privateIPAllocationMethod": "Dynamic",
+          "subnet": {
+            "id": "[reference(resourceId('Microsoft.Network/virtualNetworks', parameters('name')), '2023-09-01').subnets[1].id]"
+          }
+        },
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -83,11 +74,12 @@ To configure Standard SKU for a load balancer.
 For example:
 
 ```bicep
-resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
+resource internal_lb 'Microsoft.Network/loadBalancers@2023-09-01' = {
   name: lbName
   location: location
   sku: {
     name: 'Standard'
+    tier: 'Regional'
   }
   properties: {
     frontendIPConfigurations: [
@@ -109,6 +101,8 @@ resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
   }
 }
 ```
+
+<!-- external:avm avm/res/network/load-balancer skuName -->
 
 ## LINKS
 
