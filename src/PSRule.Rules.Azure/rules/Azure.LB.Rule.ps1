@@ -36,12 +36,18 @@ Rule 'Azure.LB.AvailabilityZone' -Ref 'AZR-000127' -Type 'Microsoft.Network/load
         return $Assert.Pass();
     }
 
-    foreach ($ipConfig in $TargetObject.Properties.frontendIPConfigurations) {
-        $Assert.SetOf($ipConfig, 'zones', @('1', '2', '3')).Reason(
-            $LocalizedData.LBAvailabilityZone,
-            $TargetObject.name,
-            $ipConfig.name
-        )
+    foreach ($ipconfig in $TargetObject.properties.frontendIPConfigurations) {
+        # The zones property only applies to internal load balancers.
+        if ($Assert.HasFieldValue($ipconfig, 'properties.publicIPAddress.id').Result) {
+            $Assert.Pass()
+        }
+        else {
+            $Assert.GreaterOrEqual($ipconfig, 'zones', 2).Reason(
+                $LocalizedData.LBAvailabilityZone,
+                $TargetObject.name,
+                $ipConfig.name
+            )
+        }
     }
 }
 

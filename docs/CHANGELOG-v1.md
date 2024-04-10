@@ -32,6 +32,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.35.2:
+
+- Bug fixes:
+  - Fixed false positive with load balancers that use a public IP by @BernieWhite.
+    [#2814](https://github.com/Azure/PSRule.Rules.Azure/issues/2814)
+
 ## v1.35.2
 
 What's changed since v1.35.1:

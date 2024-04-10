@@ -1,4 +1,5 @@
 ---
+reviewed: 2024-04-11
 severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
@@ -6,7 +7,7 @@ resource: Load Balancer
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LB.AvailabilityZone/
 ---
 
-# Load balancers should be zone-redundant
+# Internal load balancers should be zone-redundant
 
 ## SYNOPSIS
 
@@ -14,20 +15,20 @@ Load balancers deployed with Standard SKU should be zone-redundant for high avai
 
 ## DESCRIPTION
 
-Load balancers using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region.
-A single zone redundant frontend IP address will survive zone failure.
-The frontend IP may be used to reach all (non-impacted) backend pool members no matter the zone.
-One or more availability zones can fail and the data path survives as long as one zone in the region remains healthy.
+A load balancer is an Azure service that distributes traffic among instances of a service in a backend pool (such as VMs).
+Load balancers route traffic to healthy instances in the backend pool based on configured rules.
+However if the load balancer itself becomes unavailable, traffic sent through the load balancer may become disrupted.
+
+In a region that supports availability zones, Standard Load Balancers can be deployed across multiple zones (zone-redundant).
+A zone-redundant Load Balancer allows traffic to be served by a single frontend IP address that can survive zone failure.
+
+Also consider the data path to the backend pool, and ensure that the backend pool is deployed with zone-redundancy in mind.
+
+In a region that supports availability zones, Standard Load Balancers should be deployed with zone-redundancy.
 
 ## RECOMMENDATION
 
-Consider using zone-redundant load balancers deployed with Standard SKU.
-
-## NOTES
-
-This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
-
-This rule fails when `"zones"` is constrained to a single(zonal) zone or is not configured, and passes when set to `["1", "2", "3"]`.
+Consider using load balancers deployed across at least two availability zones.
 
 ## EXAMPLES
 
@@ -35,48 +36,40 @@ This rule fails when `"zones"` is constrained to a single(zonal) zone or is not 
 
 To configure zone-redundancy for a load balancer.
 
-- Set `sku.name` to `Standard`.
-- Set `properties.frontendIPConfigurations[*].zones` to `["1", "2", "3"]`.
+- Set the `sku.name` property to `Standard`.
+- Set the `properties.frontendIPConfigurations[*].zones` property to at least two availability zones.
+  e.g. `1`, `2`, `3`.
 
 For example:
 
 ```json
 {
-    "apiVersion": "2020-07-01",
-    "name": "[parameters('name')]",
-    "type": "Microsoft.Network/loadBalancers",
-    "location": "[parameters('location')]",
-    "dependsOn": [],
-    "tags": {},
-    "properties": {
-        "frontendIPConfigurations": [
-            {
-                "name": "frontend-ip-config",
-                "properties": {
-                    "privateIPAddress": null,
-                    "privateIPAddressVersion": "IPv4",
-                    "privateIPAllocationMethod": "Dynamic",
-                    "subnet": {
-                        "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/lb-rg/providers/Microsoft.Network/virtualNetworks/lb-vnet/subnets/default"
-                    }
-                },
-                "zones": [
-                    "1",
-                    "2",
-                    "3"
-                ]
-            }
-        ],
-        "backendAddressPools": [],
-        "probes": [],
-        "loadBalancingRules": [],
-        "inboundNatRules": [],
-        "outboundRules": []
-    },
-    "sku": {
-        "name": "[parameters('sku')]",
-        "tier": "[parameters('tier')]"
-    }
+  "type": "Microsoft.Network/loadBalancers",
+  "apiVersion": "2023-09-01",
+  "name": "[parameters('lbName')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard",
+    "tier": "Regional"
+  },
+  "properties": {
+    "frontendIPConfigurations": [
+      {
+        "name": "frontendIPConfig",
+        "properties": {
+          "privateIPAllocationMethod": "Dynamic",
+          "subnet": {
+            "id": "[reference(resourceId('Microsoft.Network/virtualNetworks', parameters('name')), '2023-09-01').subnets[1].id]"
+          }
+        },
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  }
 }
 ```
 
@@ -84,17 +77,19 @@ For example:
 
 To configure zone-redundancy for a load balancer.
 
-- Set `sku.name` to `Standard`.
-- Set `properties.frontendIPConfigurations[*].zones` to `['1', '2', '3']`.
+- Set the `sku.name` property to `Standard`.
+- Set the `properties.frontendIPConfigurations[*].zones` property to at least two availability zones.
+  e.g. `1`, `2`, `3`.
 
 For example:
 
 ```bicep
-resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
+resource internal_lb 'Microsoft.Network/loadBalancers@2023-09-01' = {
   name: lbName
   location: location
   sku: {
     name: 'Standard'
+    tier: 'Regional'
   }
   properties: {
     frontendIPConfigurations: [
@@ -117,8 +112,26 @@ resource lb_001 'Microsoft.Network/loadBalancers@2021-02-01' = {
 }
 ```
 
+<!-- external:avm avm/res/network/load-balancer frontendIPConfigurations[*].zones -->
+
+## NOTES
+
+This rule applies to internal load balancers deployed with Standard SKU.
+Internal load balancers do not have a public IP address and are used to load balance traffic inside a virtual network.
+
+The `zones` property is not supported with:
+
+- Public load balancers, which are load balancers with a public IP address.
+  To address availability zones for public load balancers, use a Standard tier zone-redundant public IP address.
+- Load balancers deployed with Basic SKU, which are not zone-redundant.
+
+For regions that support availability zones, the `zones` property should be set to at least two zones.
+
 ## LINKS
 
 - [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
+- [What is Azure Load Balancer?](https://learn.microsoft.com/azure/load-balancer/load-balancer-overview)
+- [Azure Load Balancer components](https://learn.microsoft.com/azure/load-balancer/components#frontend-ip-configurations)
 - [Reliability in Load Balancer](https://learn.microsoft.com/azure/reliability/reliability-load-balancer)
+- [Zone redundant load balancer](https://learn.microsoft.com/azure/reliability/reliability-load-balancer#zone-redundant-load-balancer)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/loadbalancers)
