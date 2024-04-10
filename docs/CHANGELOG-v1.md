@@ -32,7 +32,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.35.1:
+What's changed since v1.35.3:
 
 - New rules:
   - Container App:
@@ -47,8 +47,16 @@ What's changed since v1.35.1:
   - Quality updates to documentation by @lukemurraynz.
     [#2789](https://github.com/Azure/PSRule.Rules.Azure/pull/2789)
 - Bug fixes:
-  - Fixed not found warning when exporting firewall policy signatureOverrides by @BernieWhite.
+  - Fixed not found warning when exporting firewall policy `signatureOverrides` by @BernieWhite.
     [#2806](https://github.com/Azure/PSRule.Rules.Azure/issues/2806)
+
+## v1.35.3
+
+What's changed since v1.35.2:
+
+- Bug fixes:
+  - Fixed false positive with load balancers that use a public IP by @BernieWhite.
+    [#2814](https://github.com/Azure/PSRule.Rules.Azure/issues/2814)
 
 ## v1.35.2
 
