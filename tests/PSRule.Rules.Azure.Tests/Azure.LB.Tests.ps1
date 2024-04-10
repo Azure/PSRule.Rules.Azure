@@ -66,16 +66,16 @@ Describe 'Azure.LB' -Tag 'Network', 'LB' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'lb-A';
+            $ruleResult.TargetName | Should -Be 'lb-B';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -BeExactly "The load balancer (lb-A) frontend IP configuration (frontend-A) should be zone-redundant.";
+            $ruleResult[0].Reason | Should -BeExactly "The load balancer (lb-B) frontend IP configuration (frontend-A) should be zone-redundant.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'kubernetes', 'lb-B', 'lb-C';
+            $ruleResult.TargetName | Should -Be 'kubernetes', 'lb-A', 'lb-C';
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' -and $_.TargetType -eq 'Microsoft.Network/loadBalancers' });
