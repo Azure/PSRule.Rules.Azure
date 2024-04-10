@@ -1,0 +1,7 @@
+.vs/
+hooks/
+reports/
+*.py
+examples-*.bicep
+examples-*.json
+examples-*.xml
