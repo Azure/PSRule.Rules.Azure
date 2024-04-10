@@ -69,6 +69,7 @@ jobs:
           cd site/
           git config user.name github-actions
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add *
           git commit -m "deploy ${{ github.sha }}"
           git push
 
