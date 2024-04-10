@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.25.53.49325",
-      "templateHash": "15957041710021771979"
+      "version": "0.26.54.24096",
+      "templateHash": "10466611904245566781"
     }
   },
   "parameters": {
@@ -21,14 +21,6 @@
       "metadata": {
         "description": "The location resources will be deployed."
       }
-    },
-    "asgName": {
-      "type": "string",
-      "defaultValue": "asg-001"
-    },
-    "nsgName": {
-      "type": "string",
-      "defaultValue": "nsg-001"
     },
     "lbName": {
       "type": "string",
@@ -171,7 +163,8 @@
       "name": "[parameters('lbName')]",
       "location": "[parameters('location')]",
       "sku": {
-        "name": "Standard"
+        "name": "Standard",
+        "tier": "Regional"
       },
       "properties": {
         "frontendIPConfigurations": [
@@ -193,6 +186,51 @@
       },
       "dependsOn": [
         "[resourceId('Microsoft.Network/virtualNetworks', parameters('name'))]"
+      ]
+    },
+    {
+      "type": "Microsoft.Network/publicIPAddresses",
+      "apiVersion": "2023-09-01",
+      "name": "pip-001",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "properties": {
+        "publicIPAddressVersion": "IPv4",
+        "publicIPAllocationMethod": "Static",
+        "idleTimeoutInMinutes": 4
+      },
+      "zones": [
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    {
+      "type": "Microsoft.Network/loadBalancers",
+      "apiVersion": "2023-09-01",
+      "name": "[parameters('lbName')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard",
+        "tier": "Regional"
+      },
+      "properties": {
+        "frontendIPConfigurations": [
+          {
+            "name": "frontendIPConfig",
+            "properties": {
+              "publicIPAddress": {
+                "id": "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-001')]"
+              }
+            }
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/publicIPAddresses', 'pip-001')]"
       ]
     },
     {
