@@ -21,6 +21,8 @@ Older TLS versions are no longer considered secure by industry standards, such a
 Storage Accounts lets you disable outdated protocols and enforce TLS 1.2.
 By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.
 
+When clients connect using an older version of TLS that is disabled, the connection will fail.
+
 ## RECOMMENDATION
 
 Consider configuring the minimum supported TLS version to be 1.2.

@@ -28,7 +28,7 @@ When clients connect using an older version of TLS that is disabled, the connect
 ## RECOMMENDATION
 
 Consider configuring the minimum supported TLS version for Service Bus clients to be 1.2.
-Support for TLS 1.0/ 1.1 version will be removed.
+Also consider enforcing this setting using Azure Policy.
 
 ## EXAMPLES
 
@@ -83,6 +83,8 @@ resource ns 'Microsoft.ServiceBus/namespaces@2022-10-01-preview' = {
   }
 }
 ```
+
+<!-- external:avm avm/res/service-bus/namespace minimumTlsVersion -->
 
 ### Configure with Azure CLI
 

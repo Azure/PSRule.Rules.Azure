@@ -81,6 +81,8 @@ resource ns 'Microsoft.ServiceBus/namespaces@2022-10-01-preview' = {
 }
 ```
 
+<!-- external:avm avm/res/service-bus/namespace disableLocalAuth -->
+
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:

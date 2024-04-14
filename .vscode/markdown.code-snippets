@@ -65,7 +65,7 @@
   },
   "rule-azure-example-arm": {
     "scope": "markdown",
-    "prefix": "rule-azure-example-arm",
+    "prefix": "example-arm",
     "description": "Example for Azure template",
     "body": [
       "### Configure with Azure template",
@@ -83,7 +83,7 @@
   },
   "rule-azure-example-cli": {
     "scope": "markdown",
-    "prefix": "rule-azure-example-cli",
+    "prefix": "example-cli",
     "description": "Example for Azure CLI",
     "body": [
       "### Configure with Azure CLI",
@@ -95,7 +95,7 @@
   },
   "rule-azure-example-pwsh": {
     "scope": "markdown",
-    "prefix": "rule-azure-example-pwsh",
+    "prefix": "example-pwsh",
     "description": "Example for Azure PowerShell",
     "body": [
       "### Configure with Azure PowerShell",
@@ -107,7 +107,7 @@
   },
   "rule-azure-example-bicep": {
     "scope": "markdown",
-    "prefix": "rule-azure-example-bicep",
+    "prefix": "example-bicep",
     "description": "Example for Bicep",
     "body": [
       "### Configure with Bicep",
@@ -123,27 +123,15 @@
       "```"
     ]
   },
-  "rule-azure-example-bicep-br": {
+  "rule-azure-example-bicep-avm": {
     "scope": "markdown",
-    "prefix": "rule-azure-example-bicep-br",
-    "description": "Example for Bicep Public Registry",
-    "body": [
-      "### Configure with Bicep Public Registry",
-      "",
-      "To deploy ${1:resource} that pass this rule:",
-      "",
-      "- ${2:steps}",
-      "",
-      "For example:",
-      "",
-      "```bicep",
-      "",
-      "```"
-    ]
+    "prefix": "example-avm",
+    "description": "Link to AVM example for Bicep",
+    "body": "<!-- external:avm ${1:module} ${2:property} -->"
   },
   "rule-azure-example-policy": {
     "scope": "markdown",
-    "prefix": "rule-azure-example-policy",
+    "prefix": "example-policy",
     "description": "Example for Azure Policy",
     "body": [
       "### Configure with Azure Policy",

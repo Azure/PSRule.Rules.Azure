@@ -111,6 +111,8 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
 }
 ```
 
+<!-- external:avm avm/res/app/container-app ingressExternal -->
+
 ## NOTES
 
 This rule is skipped by default because there are common cases where external ingress is required.
