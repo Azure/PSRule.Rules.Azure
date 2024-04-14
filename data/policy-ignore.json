@@ -244,5 +244,20 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.AppService.PHPVersion"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/32e6bbec-16b6-44c2-be37-c5b672d103cf"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.SQL.MinTLS"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/a6fb4358-5bf4-4ad7-ba82-2cd2f41ce5e9",
+      "/providers/Microsoft.Authorization/policyDefinitions/f4c68484-132f-41f9-9b6d-3e4b1cb55036"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.SQL.Auditing"
   }
 ]

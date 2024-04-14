@@ -21,9 +21,12 @@ Older TLS versions are no longer considered secure by industry standards, such a
 Azure lets you disable outdated protocols and require connections to use a minimum of TLS 1.2.
 By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.
 
+When clients connect using an older version of TLS that is disabled, the connection will fail.
+
 ## RECOMMENDATION
 
 Configure the minimum supported TLS version to be 1.2.
+Also consider enforcing this setting using Azure Policy.
 
 ## EXAMPLES
 
@@ -87,9 +90,12 @@ resource ns 'Microsoft.EventHub/namespaces@2024-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/event-hub/namespace minimumTlsVersion -->
+
 ## LINKS
 
-- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
+- [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/event-hubs-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
 - [Enforce a minimum required version of Transport Layer Security (TLS) for requests to an Event Hubs namespace](https://learn.microsoft.com/azure/event-hubs/transport-layer-security-enforce-minimum-version)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.eventhub/namespaces)

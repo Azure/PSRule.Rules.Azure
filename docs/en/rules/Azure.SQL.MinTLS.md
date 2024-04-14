@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-04-15
 severity: Critical
 pillar: Security
-category: Encryption
+category: SE:07 Encryption
 resource: SQL Database
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.MinTLS/
 ---
@@ -20,9 +21,12 @@ Older TLS versions are no longer considered secure by industry standards, such a
 Azure lets you disable outdated protocols and require connections to use a minimum of TLS 1.2.
 By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.
 
+When clients connect using an older version of TLS that is disabled, the connection will fail.
+
 ## RECOMMENDATION
 
 Consider configuring the minimum supported TLS version to be 1.2.
+Also consider enforcing this setting using Azure Policy.
 
 ## EXAMPLES
 
@@ -85,9 +89,19 @@ resource server 'Microsoft.Sql/servers@2022-11-01-preview' = {
 }
 ```
 
+<!-- external:avm avm/res/sql/server minimalTlsVersion -->
+
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Azure SQL Database should be running TLS version 1.2 or newer](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/SQL/SqlServer_MiniumTLSVersion_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/32e6bbec-16b6-44c2-be37-c5b672d103cf`
+
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
+- [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-sql-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
 - [Minimal TLS Version](https://learn.microsoft.com/azure/azure-sql/database/connectivity-settings#minimal-tls-version)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers#serverproperties)

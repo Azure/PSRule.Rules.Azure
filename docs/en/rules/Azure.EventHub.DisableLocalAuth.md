@@ -89,6 +89,8 @@ resource ns 'Microsoft.EventHub/namespaces@2024-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/event-hub/namespace disableLocalAuth -->
+
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:

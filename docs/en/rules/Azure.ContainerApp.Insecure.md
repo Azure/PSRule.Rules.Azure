@@ -104,6 +104,8 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
 }
 ```
 
+<!-- external:avm avm/res/app/container-app ingressAllowInsecure -->
+
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:

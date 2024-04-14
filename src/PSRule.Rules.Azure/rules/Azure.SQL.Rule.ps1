@@ -43,8 +43,8 @@ Rule 'Azure.SQL.DefenderCloud' -Alias 'Azure.SQL.ThreatDetection' -Ref 'AZR-0001
     }
 }
 
-# Synopsis: Enable auditing for Azure SQL logical server
-Rule 'Azure.SQL.Auditing' -Ref 'AZR-000187' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+# Synopsis: Enable auditing for Azure SQL logical server.
+Rule 'Azure.SQL.Auditing' -Ref 'AZR-000187' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-3' } {
     $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/auditingSettings');
     if ($configs.Length -eq 0) {
         return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/auditingSettings');

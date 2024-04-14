@@ -99,6 +99,8 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2023-05-01' = {
 }
 ```
 
+<!-- external:avm avm/res/app/managed-environment zoneRedundant -->
+
 ## LINKS
 
 - [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)

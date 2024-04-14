@@ -44,8 +44,11 @@ What's changed since v1.35.3:
     - Check that database accounts only accept a minimum of TLS 1.2 by @BernieWhite.
       [#2809](https://github.com/Azure/PSRule.Rules.Azure/issues/2809)
 - General improvements:
-  - Quality updates to documentation by @lukemurraynz.
+  - Quality updates to documentation by @lukemurraynz @BernieWhite.
     [#2789](https://github.com/Azure/PSRule.Rules.Azure/pull/2789)
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+  - Additional policies added to default ignore list by @BernieWhite.
+    [#1731](https://github.com/Azure/PSRule.Rules.Azure/issues/1731)
 - Bug fixes:
   - Fixed not found warning when exporting firewall policy `signatureOverrides` by @BernieWhite.
     [#2806](https://github.com/Azure/PSRule.Rules.Azure/issues/2806)
