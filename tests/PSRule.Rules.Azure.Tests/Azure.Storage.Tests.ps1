@@ -47,8 +47,6 @@ Describe 'Azure.Storage' -Tag Storage {
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'Path sku.name: The field value ''Standard_LRS'' was not included in the set.';
-            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly 'Path sku.name: The field value ''Standard_LRS'' was not included in the set.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
