@@ -5,13 +5,17 @@
 # Validation rules for Azure Storage Accounts
 #
 
-# Synopsis: Storage Accounts not using geo-replicated storage (GRS) may be at risk.
+# Synopsis: Storage Accounts not using geo-replicated storage (GRS) or zone-redundant (ZRS) may be at risk.
 Rule 'Azure.Storage.UseReplication' -Ref 'AZR-000195' -Type 'Microsoft.Storage/storageAccounts' -If { (ShouldStorageReplicate) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.In($TargetObject, 'sku.name', @(
             'Standard_GRS'
             'Standard_RAGRS'
             'Standard_GZRS'
             'Standard_RAGZRS'
+            'Premium_ZRS'
+            'Standard_GZRS'
+            'Standard_RAGZRS'
+            'Standard_ZRS'
         ));
 }
 

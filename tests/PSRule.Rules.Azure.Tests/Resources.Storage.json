@@ -436,7 +436,7 @@
     "ResourceType": "Microsoft.Storage/storageAccounts",
     "ExtensionResourceType": null,
     "Sku": {
-      "Name": "Standard_LRS",
+      "Name": "Standard_ZRS",
       "Tier": "Standard",
       "Size": null,
       "Family": null,

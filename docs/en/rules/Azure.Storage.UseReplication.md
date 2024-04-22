@@ -6,11 +6,11 @@ resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.UseReplication/
 ---
 
-# Use geo-replicated storage
+# Use geo-replicated or zone-replicated storage
 
 ## SYNOPSIS
 
-Storage Accounts not using geo-replicated storage (GRS) may be at risk.
+Storage Accounts not using geo-replicated storage (GRS) or zone-redundant (ZRS) may be at risk.
 
 ## DESCRIPTION
 
@@ -19,12 +19,16 @@ Azure provides a number of geo-replicated options including;
 Geo-redundant storage and geo-zone-redundant storage.
 Geo-zone-redundant storage is only available in supported regions.
 
-The following geo-replicated options are available within Azure:
+The following geo-replicated and zone-replicated options are available within Azure:
 
 - `Standard_GRS`
 - `Standard_RAGRS`
 - `Standard_GZRS`
 - `Standard_RAGZRS`
+- `Premium_ZRS`
+- `Standard_GZRS`
+- `Standard_RAGZRS`
+- `Standard_ZRS`
 
 ## RECOMMENDATION
 

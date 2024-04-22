@@ -42,19 +42,17 @@ Describe 'Azure.Storage' -Tag Storage {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-E';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'storage-B';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -BeExactly 'Path sku.name: The field value ''Standard_LRS'' was not included in the set.';
-            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -BeExactly 'Path sku.name: The field value ''Standard_LRS'' was not included in the set.';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'storage-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E';
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
