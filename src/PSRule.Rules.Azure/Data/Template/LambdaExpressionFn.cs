@@ -22,7 +22,7 @@ namespace PSRule.Rules.Azure.Data.Template
             _Args = args;
         }
 
-        private sealed class LambdaContext : BaseTemplateContext
+        private sealed class LambdaContext : NestedTemplateContext
         {
             private readonly Dictionary<string, object> _Variables;
 

@@ -70,7 +70,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_ROOTDEPLOYMENT = "rootDeployment";
         private const string PROPERTY_NULLABLE = "nullable";
 
-        internal sealed class TemplateContext : ITemplateContext
+        internal sealed class TemplateContext : BaseTemplateContext, ITemplateContext
         {
             private const string CLOUD_PUBLIC = "AzureCloud";
             private const string ISSUE_PARAMETER_EXPRESSIONLENGTH = "PSRule.Rules.Azure.Template.ExpressionLength";
@@ -172,8 +172,6 @@ namespace PSRule.Rules.Azure.Data.Template
             public TenantOption Tenant { get; internal set; }
 
             public ManagementGroupOption ManagementGroup { get; internal set; }
-
-            public bool ShouldThrowMissingProperty => true;
 
             public ParameterDefaultsOption ParameterDefaults { get; private set; }
 
@@ -786,7 +784,7 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
-        internal sealed class UserDefinedFunctionContext : BaseTemplateContext
+        internal sealed class UserDefinedFunctionContext : NestedTemplateContext
         {
             private readonly Dictionary<string, object> _Parameters;
 

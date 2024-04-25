@@ -9,6 +9,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.BuildTool.Models;
 
 namespace PSRule.Rules.Azure.BuildTool
 {
@@ -35,6 +36,7 @@ namespace PSRule.Rules.Azure.BuildTool
             MinifyTypes(options);
             MinifyEnvironments(options);
             MinifyPolicyIgnore(options);
+            MinifySecretTemplate(options);
         }
 
         private static void MinifyEnvironments(ProviderResourceOption options)
@@ -49,6 +51,13 @@ namespace PSRule.Rules.Azure.BuildTool
             Console.WriteLine("BuildTool -- Minify policy-ignore");
             var entries = ReadFile<PolicyIgnoreEntry[]>(GetSourcePath("./data/policy-ignore.json"));
             WriteFile(GetSourcePath("./data/policy-ignore.min.json"), entries.Select(e => e.Min));
+        }
+
+        private static void MinifySecretTemplate(ProviderResourceOption options)
+        {
+            Console.WriteLine("BuildTool -- Minify secret-template");
+            var secretTemplate = ReadFile<JObject>(GetSourcePath("./data/secret-template.json"));
+            WriteFile(GetSourcePath("./data/secret-template.min.json"), secretTemplate);
         }
 
         private static void MinifyTypes(ProviderResourceOption options)

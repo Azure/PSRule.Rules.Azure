@@ -268,8 +268,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
         internal class MockObject : JObject, IMock
         {
-            public MockObject(JObject value)
-                : base(value) { }
+            public MockObject(JObject value, bool secret = false)
+                : base(value)
+            {
+                IsSecret = secret;
+            }
 
             public MockObject(bool secret = false)
                 : base()
