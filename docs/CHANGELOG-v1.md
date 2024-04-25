@@ -37,6 +37,8 @@ What's changed since pre-release v1.36.0-B0020:
 - Bug fixes:
   - Fixed `Azure.Storage.UseReplication` to allow for zone-redundant replication by @sebassem.
     [#2827](https://github.com/Azure/PSRule.Rules.Azure/issues/2827)
+  - Fixed nested usage of `listKeys` mocks by @BernieWhite.
+    [#2829](https://github.com/Azure/PSRule.Rules.Azure/issues/2829)
 
 ## v1.36.0-B0020 (pre-release)
 

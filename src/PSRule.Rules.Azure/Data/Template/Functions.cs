@@ -862,8 +862,9 @@ namespace PSRule.Rules.Azure.Data.Template
             if (argCount is < 2 or > 3)
                 throw ArgumentsOutOfRange(nameof(List), args);
 
-            ExpressionHelpers.TryString(args[0], out var resourceId);
-            return new Mock.MockSecret(resourceId);
+            return ExpressionHelpers.TryString(args[0], out var resourceId)
+                ? new MockSecretBuilder().Build(resourceId, context.DebugSymbol?.SymbolName)
+                : new Mock.MockSecret(resourceId);
         }
 
         /// <summary>

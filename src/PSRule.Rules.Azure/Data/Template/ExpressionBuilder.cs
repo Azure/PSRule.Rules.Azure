@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Threading;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Resources;
@@ -64,7 +63,9 @@ namespace PSRule.Rules.Azure.Data.Template
                     fnParams.Add(Inner(stream));
                 }
                 var aParams = fnParams.ToArray();
-                result = (context) => descriptor.Invoke(context, aParams);
+                var symbolName = element.Content;
+                var symbol = new DebugSymbol(descriptor.Name, symbolName);
+                result = (context) => descriptor.Invoke(context, symbol, aParams);
 
                 while (stream.TryTokenType(ExpressionTokenType.IndexStart, out var token) || stream.TryTokenType(ExpressionTokenType.Property, out token))
                 {
@@ -167,71 +168,5 @@ namespace PSRule.Rules.Azure.Data.Template
 
             throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
         }
-    }
-
-    internal sealed class ExpressionFactory
-    {
-        private readonly Dictionary<string, IFunctionDescriptor> _Descriptors;
-
-        public ExpressionFactory(bool policy = false)
-        {
-            _Descriptors = new Dictionary<string, IFunctionDescriptor>(StringComparer.OrdinalIgnoreCase);
-            foreach (var d in Functions.Common)
-                With(d);
-
-            // Azure policy specific functions should be added
-            if (policy)
-            {
-                foreach (var d in Functions.Policy)
-                    With(d);
-            }
-        }
-
-        public bool TryDescriptor(string name, out IFunctionDescriptor descriptor)
-        {
-            return IsList(name) ? _Descriptors.TryGetValue("list", out descriptor) : _Descriptors.TryGetValue(name, out descriptor);
-        }
-
-        public void With(IFunctionDescriptor descriptor)
-        {
-            _Descriptors.Add(descriptor.Name, descriptor);
-        }
-
-        private static bool IsList(string name)
-        {
-            return name.StartsWith("list", StringComparison.OrdinalIgnoreCase);
-        }
-    }
-
-    [DebuggerDisplay("Function: {Name}")]
-    internal sealed class FunctionDescriptor : IFunctionDescriptor
-    {
-        private readonly ExpressionFn _Fn;
-        private readonly bool _DelayBinding;
-
-        public FunctionDescriptor(string name, ExpressionFn fn, bool delayBinding = false)
-        {
-            Name = name;
-            _Fn = fn;
-            _DelayBinding = delayBinding;
-        }
-
-        public string Name { get; }
-
-        public object Invoke(ITemplateContext context, ExpressionFnOuter[] args)
-        {
-            var parameters = new object[args.Length];
-            for (var i = 0; i < args.Length; i++)
-                parameters[i] = _DelayBinding ? args[i] : args[i](context);
-
-            return _Fn(context, parameters);
-        }
-    }
-
-    internal interface IFunctionDescriptor
-    {
-        string Name { get; }
-
-        object Invoke(ITemplateContext context, ExpressionFnOuter[] args);
     }
 }

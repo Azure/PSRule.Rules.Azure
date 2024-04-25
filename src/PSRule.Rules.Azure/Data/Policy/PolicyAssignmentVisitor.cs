@@ -107,7 +107,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <summary>
         /// A context state used during expanding policy assignments and definitions.
         /// </summary>
-        public sealed class PolicyAssignmentContext : ITemplateContext
+        public sealed class PolicyAssignmentContext : BaseTemplateContext, ITemplateContext
         {
             private readonly ExpressionFactory _ExpressionFactory;
             private readonly ExpressionBuilder _ExpressionBuilder;
@@ -179,8 +179,6 @@ namespace PSRule.Rules.Azure.Data.Policy
             public SubscriptionOption Subscription { get; }
             public TenantOption Tenant { get; }
             public ManagementGroupOption ManagementGroup { get; }
-
-            public bool ShouldThrowMissingProperty => true;
 
             public string PolicyRulePrefix { get; }
             public string FieldPrefix

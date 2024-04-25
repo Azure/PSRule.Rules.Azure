@@ -1133,6 +1133,24 @@ namespace PSRule.Rules.Azure
             Assert.Equal("value1", actual["value"].Value<string>());
         }
 
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2829.
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenListFromKnownSecretType_ShouldReturnSecretObject()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.37.json"), null, out _);
+
+            var actual = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.KeyVault/vaults");
+            Assert.Equal("test", actual["name"].Value<string>());
+
+            var secret = actual["resources"].Values<JObject>().Where(sub => sub["type"].Value<string>() == "Microsoft.KeyVault/vaults/secrets").FirstOrDefault();
+            Assert.NotNull(secret);
+
+            var secretValue = secret["properties"]["value"].Value<string>();
+            Assert.Equal("{{Secret}}", secretValue);
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
