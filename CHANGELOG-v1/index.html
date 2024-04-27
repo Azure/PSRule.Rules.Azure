@@ -5112,6 +5112,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
       
@@ -8662,6 +8668,69 @@
   
   <span class="md-ellipsis">
     Azure.DevBox.ProjectLimit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.EntraDS.NTLM/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure.EntraDS.NTLM
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.EntraDS.RC4/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure.EntraDS.RC4
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.EntraDS.TLS/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure.EntraDS.TLS
   </span>
   
 
@@ -17623,6 +17692,18 @@
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.36.0-B0046:</p>
 <ul>
+<li>New rules:<ul>
+<li>Entra Domain Services:<ul>
+<li>Check that instances use a minimum version of NTLM by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2837">#2837</a></li>
+<li>Check that instances use a minimum version of TLS by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2837">#2837</a></li>
+<li>Check that instances do not use RC4 encryption by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2837">#2837</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li>General improvements:<ul>
 <li><strong>Important change</strong>: Deprecated rules with no clear WAF alignment by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2493">#2493</a><ul>
