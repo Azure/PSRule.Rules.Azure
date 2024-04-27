@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 #
-# Unit tests for Event Grid rules
+# Unit tests for Dev Box rules
 #
 
 [CmdletBinding()]
