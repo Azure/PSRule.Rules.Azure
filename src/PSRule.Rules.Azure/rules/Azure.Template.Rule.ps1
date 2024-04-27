@@ -50,7 +50,7 @@ Rule 'Azure.Template.Resources' -Ref 'AZR-000216' -Type '.json' -If { (IsTemplat
 }
 
 # Synopsis: ARM template parameters should be used at least once.
-Rule 'Azure.Template.UseParameters' -Ref 'AZR-000217' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.Template.UseParameters' -Ref 'AZR-000217' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'deprecated'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
     $parameters = @(GetTemplateParameters);
     if ($parameters.Length -eq 0) {
@@ -63,13 +63,13 @@ Rule 'Azure.Template.UseParameters' -Ref 'AZR-000217' -Type '.json' -If { (IsTem
 }
 
 # Synopsis: Each Azure Resource Manager (ARM) template file should contain a minimal number of parameters.
-Rule 'Azure.Template.DefineParameters' -Ref 'AZR-000218' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'GA'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.Template.DefineParameters' -Ref 'AZR-000218' -Type '.json' -If { (IsTemplateFile) -and !(IsGenerated) } -Tag @{ release = 'deprecated'; ruleSet = '2021_03'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $parameters = @(GetTemplateParameters);
     $Assert.GreaterOrEqual($parameters, '.', 1);
 }
 
 # Synopsis: ARM template variables should be used at least once.
-Rule 'Azure.Template.UseVariables' -Ref 'AZR-000219' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.Template.UseVariables' -Ref 'AZR-000219' -Type '.json' -If { (IsTemplateFile) } -Tag @{ release = 'deprecated'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContent($TargetObject)[0];
     $jsonContent = Get-Content -Path $TargetObject.FullName -Raw;
     $variableNames = @($jsonObject.variables.PSObject.Properties | Where-Object { $_.MemberType -eq 'NoteProperty' } | ForEach-Object {
@@ -290,7 +290,7 @@ Rule 'Azure.Template.ParameterValue' -Ref 'AZR-000232' -Type '.json' -If { (IsPa
 }
 
 # Synopsis: Use a valid secret reference within parameter files.
-Rule 'Azure.Template.ValidSecretRef' -Ref 'AZR-000233' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.Template.ValidSecretRef' -Ref 'AZR-000233' -Type '.json' -If { (IsParameterFile) } -Tag @{ release = 'deprecated'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
     $jsonObject = $PSRule.GetContentFirstOrDefault($TargetObject);
     $parameters = @($jsonObject.parameters.PSObject.Properties | Where-Object {
         $_.MemberType -eq 'NoteProperty' -and $Assert.HasField($_.Value, 'reference').Result
