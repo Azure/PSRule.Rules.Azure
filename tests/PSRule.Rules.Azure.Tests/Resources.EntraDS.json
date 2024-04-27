@@ -1,0 +1,120 @@
+[
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AAD/DomainServices/ds-A",
+    "name": "ds-A",
+    "type": "Microsoft.AAD/DomainServices",
+    "location": "region",
+    "tenantId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "rg-test",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "properties": {
+      "version": 2,
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "domainName": "contoso.com",
+      "deploymentId": "00000000-0000-0000-0000-000000000000",
+      "syncOwner": "00000000-0000-0000-0000-000000000000",
+      "syncApplicationId": "00000000-0000-0000-0000-000000000000",
+      "replicaSets": [
+        {
+          "replicaSetId": "00000000-0000-0000-0000-000000000000",
+          "location": "region",
+          "subnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001",
+          "domainControllerIpAddress": [
+            "10.0.1.4",
+            "10.0.1.5"
+          ],
+          "externalAccessIpAddress": "0.0.0.0",
+          "serviceStatus": "Running"
+        }
+      ],
+      "ldapsSettings": {
+        "ldaps": "Enabled",
+        "publicCertificate": "",
+        "certificateNotAfter": "0001-01-01T08:00:00Z",
+        "externalAccess": "Disabled"
+      },
+      "domainSecuritySettings": {
+        "ntlmV1": "Disabled",
+        "tlsV1": "Disabled",
+        "syncNtlmPasswords": "Disabled",
+        "syncKerberosPasswords": "Disabled",
+        "syncOnPremPasswords": "Disabled",
+        "kerberosRc4Encryption": "Disabled",
+        "kerberosArmoring": "Enabled",
+        "ldapSigning": "Enabled",
+        "channelBinding": "Enabled"
+      },
+      "filteredSync": "Disabled",
+      "syncScope": "All",
+      "resourceForestSettings": {
+        "settings": []
+      },
+      "domainConfigurationType": "FullySynced",
+      "notificationSettings": {
+        "notifyGlobalAdmins": "Enabled",
+        "notifyDcAdmins": "Enabled",
+        "additionalRecipients": []
+      },
+      "sku": "Standard"
+    }
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AAD/DomainServices/ds-B",
+    "name": "ds-B",
+    "type": "Microsoft.AAD/DomainServices",
+    "location": "region",
+    "tenantId": "00000000-0000-0000-0000-000000000000",
+    "resourceGroupName": "rg-test",
+    "subscriptionId": "00000000-0000-0000-0000-000000000000",
+    "properties": {
+      "version": 2,
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "domainName": "contoso.com",
+      "deploymentId": "00000000-0000-0000-0000-000000000000",
+      "syncOwner": "00000000-0000-0000-0000-000000000000",
+      "syncApplicationId": "00000000-0000-0000-0000-000000000000",
+      "replicaSets": [
+        {
+          "replicaSetId": "00000000-0000-0000-0000-000000000000",
+          "location": "region",
+          "subnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001",
+          "domainControllerIpAddress": [
+            "10.0.1.4",
+            "10.0.1.5"
+          ],
+          "externalAccessIpAddress": "0.0.0.0",
+          "serviceStatus": "Running"
+        }
+      ],
+      "ldapsSettings": {
+        "ldaps": "Disabled",
+        "publicCertificate": "",
+        "certificateNotAfter": "0001-01-01T08:00:00Z",
+        "externalAccess": "Disabled"
+      },
+      "domainSecuritySettings": {
+        "ntlmV1": "Enabled",
+        "tlsV1": "Enabled",
+        "syncNtlmPasswords": "Enabled",
+        "syncKerberosPasswords": "Enabled",
+        "syncOnPremPasswords": "Enabled",
+        "kerberosRc4Encryption": "Enabled",
+        "kerberosArmoring": "Disabled",
+        "ldapSigning": "Disabled",
+        "channelBinding": "Disabled"
+      },
+      "filteredSync": "Disabled",
+      "syncScope": "All",
+      "resourceForestSettings": {
+        "settings": []
+      },
+      "domainConfigurationType": "FullySynced",
+      "notificationSettings": {
+        "notifyGlobalAdmins": "Enabled",
+        "notifyDcAdmins": "Enabled",
+        "additionalRecipients": []
+      },
+      "sku": "Standard"
+    }
+  }
+]

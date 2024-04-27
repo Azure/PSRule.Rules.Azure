@@ -1,0 +1,66 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Entra ID
+#
+
+#region Rules
+
+---
+# Synopsis: Disable NTLM v1 for Microsoft Entra Domain Services.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EntraDS.NTLM
+  ref: AZR-000416
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.AAD/domainServices
+  condition:
+    field: properties.domainSecuritySettings.ntlmV1
+    equals: Disabled
+
+---
+# Synopsis: Disable TLS v1 for Microsoft Entra Domain Services.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EntraDS.TLS
+  ref: AZR-000417
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: DP-3
+spec:
+  type:
+  - Microsoft.AAD/domainServices
+  condition:
+    field: properties.domainSecuritySettings.tlsV1
+    equals: Disabled
+
+---
+# Synopsis: Disable RC4 encryption for Microsoft Entra Domain Services.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EntraDS.RC4
+  ref: AZR-000418
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.AAD/domainServices
+  condition:
+    field: properties.domainSecuritySettings.kerberosRc4Encryption
+    equals: Disabled
+
+#endregion Rules

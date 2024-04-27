@@ -95,6 +95,7 @@
     "NOTEQUALS",
     "NOTIN",
     "NSGs",
+    "NTLM",
     "OWASP",
     "Peerings",
     "POLICYDEFINITIONID",

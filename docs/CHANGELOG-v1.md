@@ -35,6 +35,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.36.0-B0046:
 
+- New rules:
+  - Entra Domain Services:
+    - Check that instances use a minimum version of NTLM by @BernieWhite.
+      [#2837](https://github.com/Azure/PSRule.Rules.Azure/issues/2837)
+    - Check that instances use a minimum version of TLS by @BernieWhite.
+      [#2837](https://github.com/Azure/PSRule.Rules.Azure/issues/2837)
+    - Check that instances do not use RC4 encryption by @BernieWhite.
+      [#2837](https://github.com/Azure/PSRule.Rules.Azure/issues/2837)
 - General improvements:
   - **Important change**: Deprecated rules with no clear WAF alignment by @BernieWhite.
     [#2493](https://github.com/Azure/PSRule.Rules.Azure/issues/2493)
