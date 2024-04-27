@@ -120,6 +120,7 @@ Each rule **must** meet the following requirements:
 - Have a `release` tag either `GA` or `preview`. e.g. `-Tag @{ release = 'GA' }`
   - Rules are marked as `GA` if they relate to generally available Azure features.
   - Rules are marked as `preview` if they relate to _preview_ Azure features.
+  - Rules are marked as `deprecated` if they are no longer relevant and will be removed in the next major release.
 - Have a `ruleSet` tag. e.g. `-Tag @{ release = 'GA'; ruleSet = '2020_09' }`
   - The rule set tag identifies the quarter that the rule was first released.
   - This is used to include rules in quarterly baselines.

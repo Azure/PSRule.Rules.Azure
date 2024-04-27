@@ -60,6 +60,12 @@ For example:
 }
 ```
 
+## NOTES
+
+This rule is deprecated from v1.36.0.
+By default, PSRule will not evaluate this rule unless explicitly enabled.
+See https://aka.ms/ps-rule-azure/deprecations.
+
 ## LINKS
 
 - [OE:05 Infrastructure as code](https://learn.microsoft.com/azure/well-architected/operational-excellence/infrastructure-as-code-design)

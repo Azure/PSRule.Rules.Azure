@@ -95,6 +95,10 @@ For example:
 This rule is not applicable and ignored for templates generated with Bicep, PSArm and AzOps.
 Generated templates from these tools may not require any parameters to be set.
 
+This rule is deprecated from v1.36.0.
+By default, PSRule will not evaluate this rule unless explicitly enabled.
+See https://aka.ms/ps-rule-azure/deprecations.
+
 ## LINKS
 
 - [Parameters](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-syntax#parameters)

@@ -8,6 +8,7 @@ link_users: true
 See [upgrade notes][1] for helpful information when upgrading from previous versions.
 
 [1]: upgrade-notes.md
+[2]: deprecations.md
 
 **Important notes**:
 
@@ -31,6 +32,19 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   See [upgrade notes][1] for more information.
 
 ## Unreleased
+
+What's changed since pre-release v1.36.0-B0046:
+
+- General improvements:
+  - **Important change**: Deprecated rules with no clear WAF alignment by @BernieWhite.
+    [#2493](https://github.com/Azure/PSRule.Rules.Azure/issues/2493)
+    - The following rules are deprecated:
+      - `Azure.Template.UseParameters`
+      - `Azure.Template.UseVariables`
+      - `Azure.Template.DefineParameters`
+      - `Azure.Template.ValidSecretRef`
+    - These rules have been deprecated and will be removed in v2.
+    - See [deprecations][2] for more information.
 
 ## v1.36.0-B0046 (pre-release)
 

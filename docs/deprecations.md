@@ -38,7 +38,7 @@ New name                                  | Old name                            
 
 ### Realignment of rule names for network interfaces
 
-Orginally when many of the rules targeting network interfaces were created, network interfaces only applied to virtual machines.
+Originally when many of the rules targeting network interfaces were created, network interfaces only applied to virtual machines.
 Today, network interfaces can be attached to different types of resources including:
 
 - Virtual machines.
@@ -62,3 +62,25 @@ Possible locations where the old rule names may be used include:
 - Within the `rule.exclude` or `rule.include` option defined within `ps-rule.yaml` or by using `New-PSRuleOption`.
 - Within the `rule.exclude` or `rule.include` option defined within a custom baseline.
 - Other custom scripts that run PSRule cmdlets directly.
+
+### Realignment of rules
+
+The Well-Architected Framework and PSRule are regularly updated.
+As a result, some rules may not have a clear linkage with the latest guidance or practices.
+
+To ensure that PSRule for Azure continues to provide clear guidance, examples, and references some rules will be removed.
+The following rules are deprecated and will be removed in v2:
+
+Reference ID | Name                             | Deprecated from | Reason
+------------ | ----                             | --------------- | ------
+AZR-000217   | Azure.Template.UseParameters     | v1.36.0         | Linting already handled by Bicep linter. No clear linkage to WAF.
+AZR-000219   | Azure.Template.UseVariables      | v1.36.0         | Linting already handled by Bicep linter. No clear linkage to WAF.
+AZR-000218   | Azure.Template.DefineParameters  | v1.36.0         | No applicable to Bicep. No clear linkage to WAF.
+AZR-000233   | Azure.Template.ValidSecretRef    | v1.36.0         | Linting already handled by Bicep linter. No clear linkage to WAF.
+
+Deprecated rules will not be run by default, but can be enabled by:
+
+- Explicitly configuring the rule name or ID in the `Rule.Include` option, when a baseline not used.
+- Adding the rule name or ID to the `Rule.Include` option in a custom baseline.
+
+From v2, the deprecated rules will be removed and will no longer be available in new releases.

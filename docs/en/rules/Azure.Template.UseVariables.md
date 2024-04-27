@@ -21,8 +21,14 @@ Variables that are not used may add template complexity for no benefit.
 
 Consider removing unused variables from Azure template files.
 
+## NOTES
+
+This rule is deprecated from v1.36.0.
+By default, PSRule will not evaluate this rule unless explicitly enabled.
+See https://aka.ms/ps-rule-azure/deprecations.
+
 ## LINKS
 
+- [Release deployment](https://learn.microsoft.com/azure/well-architected/operational-excellence/)
 - [Variables](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-syntax#variables)
 - [ARM template best practices](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-best-practices#variables)
-- [Release deployment](https://learn.microsoft.com/azure/architecture/framework/devops/release-engineering-cd#automation)
