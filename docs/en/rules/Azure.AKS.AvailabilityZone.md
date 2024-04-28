@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:05 Regions and availability zones
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AvailabilityZone/
 ---
@@ -146,6 +146,6 @@ az aks create \
 
 ## LINKS
 
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters?tabs=json)
+- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Create an Azure Kubernetes Service (AKS) cluster that uses availability zones](https://learn.microsoft.com/azure/aks/availability-zones)
-- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

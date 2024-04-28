@@ -120,9 +120,9 @@ On a Premium plan the platform keeps your desired number of pre-warmed instances
 
 ## LINKS
 
-- [Azure App Service and reliability](https://learn.microsoft.com/azure/well-architected/service-guides/azure-app-service/reliability)
+- [Service guide](https://learn.microsoft.com/azure/well-architected/service-guides/app-service-web-apps)
 - [Configure an App Service app](https://learn.microsoft.com/azure/app-service/configure-common#configure-general-settings)
 - [The Ultimate Guide to Running Healthy Apps in the Cloud](https://azure.github.io/AppService/2020/05/15/Robust-Apps-for-the-cloud.html#update-your-default-settings)
 - [Always on with Azure Functions](https://github.com/Azure/Azure-Functions/wiki/Enable-Always-On-when-running-on-dedicated-App-Service-Plan)
 - [Dedicated hosting plans for Azure Functions](https://learn.microsoft.com/azure/azure-functions/dedicated-plan)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites)

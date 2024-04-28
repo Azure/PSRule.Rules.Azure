@@ -114,6 +114,7 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 - [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
 - [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/app-service-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
 - [Enforce TLS versions](https://learn.microsoft.com/azure/app-service/configure-ssl-bindings#enforce-tls-versions)
+- [TLS encryption in Azure](https://learn.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Insecure protocols](https://learn.microsoft.com/Azure/app-service/overview-security#insecure-protocols-http-tls-10-ftp)
 - [Azure Policy built-in definitions for Azure App Service](https://learn.microsoft.com/azure/app-service/policy-reference)

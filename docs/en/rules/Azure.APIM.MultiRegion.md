@@ -14,7 +14,8 @@ API Management instances should use multi-region deployment to improve service a
 
 ## DESCRIPTION
 
-Azure API Management supports multi-region deployment. Multi-region deployment provides availability of the API gateway in more than one region and provides service availability if one region goes offline.
+Azure API Management supports multi-region deployment.
+Multi-region deployment provides availability of the API gateway in more than one region and provides service availability if one region goes offline.
 
 This feature is currently only available for the Premium tier of API Management.
 

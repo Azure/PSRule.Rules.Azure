@@ -33,7 +33,7 @@ Consider configuring the CORS policy by specifying explicit values for each prop
 
 To deploy API Management CORS policies that pass this rule:
 
-- When configuring `cors` policies provide the exact values for all propeties.
+- When configuring `cors` policies provide the exact values for all properties.
 - Avoid using wildcards for any property of the `cors` policy including:
   - `allowed-origins`
   - `allowed-methods`

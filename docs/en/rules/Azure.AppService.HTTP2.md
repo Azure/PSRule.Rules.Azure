@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-04-29
 severity: Awareness
 pillar: Performance Efficiency
-category: Application design
+category: PE:07 Code and infrastructure
 resource: App Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.HTTP2/
 ---
@@ -31,32 +32,43 @@ Consider using HTTP/2 for Azure Services apps to improve protocol efficiency.
 
 To deploy App Services that pass this rule:
 
-- Set `properties.siteConfig.http20Enabled` to `true`.
+- Set the `properties.siteConfig.http20Enabled` property to `true`.
 
 For example:
 
 ```json
 {
-    "type": "Microsoft.Web/sites",
-    "apiVersion": "2021-02-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "kind": "web",
-    "properties": {
-        "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
-        "httpsOnly": true,
-        "siteConfig": {
-            "alwaysOn": true,
-            "minTlsVersion": "1.2",
-            "ftpsState": "FtpsOnly",
-            "remoteDebuggingEnabled": false,
-            "http20Enabled": true
+  "type": "Microsoft.Web/sites",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "kind": "web",
+  "properties": {
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
+    "httpsOnly": true,
+    "clientAffinityEnabled": false,
+    "siteConfig": {
+      "alwaysOn": true,
+      "minTlsVersion": "1.2",
+      "ftpsState": "Disabled",
+      "remoteDebuggingEnabled": false,
+      "http20Enabled": true,
+      "netFrameworkVersion": "v8.0",
+      "healthCheckPath": "/healthz",
+      "metadata": [
+        {
+          "name": "CURRENT_STACK",
+          "value": "dotnet"
         }
-    },
-    "tags": "[parameters('tags')]",
-    "dependsOn": [
-        "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
-    ]
+      ]
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
+  ]
 }
 ```
 
@@ -64,32 +76,44 @@ For example:
 
 To deploy App Services that pass this rule:
 
-- Set `properties.siteConfig.http20Enabled` to `true`.
+- Set the `properties.siteConfig.http20Enabled` property to `true`.
 
 For example:
 
 ```bicep
-resource webApp 'Microsoft.Web/sites@2021-02-01' = {
+resource web 'Microsoft.Web/sites@2023-01-01' = {
   name: name
   location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   kind: 'web'
   properties: {
-    serverFarmId: appPlan.id
+    serverFarmId: plan.id
     httpsOnly: true
+    clientAffinityEnabled: false
     siteConfig: {
       alwaysOn: true
       minTlsVersion: '1.2'
-      ftpsState: 'FtpsOnly'
+      ftpsState: 'Disabled'
       remoteDebuggingEnabled: false
       http20Enabled: true
+      netFrameworkVersion: 'v8.0'
+      healthCheckPath: '/healthz'
+      metadata: [
+        {
+          name: 'CURRENT_STACK'
+          value: 'dotnet'
+        }
+      ]
     }
   }
-  tags: tags
 }
 ```
 
 ## LINKS
 
-- [Performance efficiency checklist](https://learn.microsoft.com/azure/architecture/framework/scalability/performance-efficiency)
+- [PE:07 Code and infrastructure](https://learn.microsoft.com/azure/well-architected/performance-efficiency/optimize-code-infrastructure)
+- [Service guide](https://learn.microsoft.com/azure/well-architected/service-guides/app-service-web-apps)
 - [Configure an App Service app](https://learn.microsoft.com/azure/app-service/configure-common#configure-general-settings)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites#siteconfig-object)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/sites)

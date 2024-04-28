@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:05 Regions and availability zones
 resource: Public IP address
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.AvailabilityZone/
 ---
@@ -108,6 +108,6 @@ configuration:
 
 ## LINKS
 
-- [Use zone-aware services](https://learn.microsoft.com/azure/well-architected/resiliency/design-best-practices#use-zone-aware-services)
-- [Load Balancer and Availability Zones](https://learn.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
+- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
+- [Reliability in Load Balancer](https://learn.microsoft.com/azure/reliability/reliability-load-balancer)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/publicipaddresses)

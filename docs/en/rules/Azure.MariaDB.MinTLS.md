@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Encryption
+category: SE:07 Encryption
 resource: Azure Database for MariaDB
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.MinTLS/
 ---
@@ -102,8 +102,9 @@ resource server 'Microsoft.DBforMariaDB/servers@2018-06-01' = {
 
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
 - [TLS enforcement in Azure Database for MariaDB](https://learn.microsoft.com/azure/mariadb/concepts-ssl-connection-security#tls-enforcement-in-azure-database-for-mariadb)
 - [Set TLS configurations for Azure Database for MariaDB](https://learn.microsoft.com/azure/mariadb/howto-tls-configurations)
+- [TLS encryption in Azure](https://learn.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers)
