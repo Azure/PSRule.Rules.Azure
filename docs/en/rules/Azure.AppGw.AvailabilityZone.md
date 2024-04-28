@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:05 Regions and availability zones
 resource: Application Gateway
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.AvailabilityZone/
 ---
@@ -129,7 +129,6 @@ az network application-gateway create \
 
 ## LINKS
 
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways?tabs=json)
+- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Autoscaling and Zone-redundant Application Gateway v2](https://learn.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant)
-- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
-- [Azure Well-Architected Framework - Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways)

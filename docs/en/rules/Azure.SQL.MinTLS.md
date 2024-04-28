@@ -103,5 +103,6 @@ To address this issue at runtime use the following policies:
 - [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
 - [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-sql-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
 - [Minimal TLS Version](https://learn.microsoft.com/azure/azure-sql/database/connectivity-settings#minimal-tls-version)
+- [TLS encryption in Azure](https://learn.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers#serverproperties)

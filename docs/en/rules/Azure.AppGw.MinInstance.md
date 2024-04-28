@@ -26,15 +26,12 @@ When auto-scaling is enabled with Application Gateway v2, configure the minimum 
 
 ### Configure with Azure template
 
-To set capacity for an Application gateway
+To set capacity for an Application gateway:
 
-Autoscaling:
-
-- Set `autoscaleConfiguration.minCapacity` to any or all of `2`.
-
-Manual Scaling:
-
-- Set `sku.capacitiy` to `2` or more.
+- With Autoscaling:
+  - Set `autoscaleConfiguration.minCapacity` to any or all of `2`.
+- With manual scaling:
+  - Set `sku.capacity` to `2` or more.
 
 For example:
 
@@ -72,15 +69,12 @@ For example:
 
 ### Configure with Bicep
 
-To set capacity for an Application gateway
+To set capacity for an Application gateway:
 
-Autoscaling:
-
-- Set `autoscaleConfiguration.minCapacity` to any or all of `2`.
-
-Manual Scaling:
-
-- Set `sku.capacitiy` to `2` or more.
+- With Autoscaling:
+  - Set `autoscaleConfiguration.minCapacity` to any or all of `2`.
+- With manual scaling:
+  - Set `sku.capacity` to `2` or more.
 
 For example:
 

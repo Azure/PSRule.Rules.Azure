@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Performance Efficiency
-category: Application design
+category: PE:05 Scaling and partitioning
 resource: App Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.ARRAffinity/
 ms-content-id: 3f07def6-6e5e-4f87-8b5d-3a0baf6631e5
@@ -26,8 +26,93 @@ For stateless applications, disabling ARR allows Azure App Service more evenly d
 Azure App Service sites make use of Application Request Routing (ARR) by default.
 Consider disabling ARR affinity for stateless applications.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To deploy App Services that pass this rule:
+
+- Set the `properties.clientAffinityEnabled` property to `false`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Web/sites",
+  "apiVersion": "2023-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "kind": "web",
+  "properties": {
+    "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]",
+    "httpsOnly": true,
+    "clientAffinityEnabled": false,
+    "siteConfig": {
+      "alwaysOn": true,
+      "minTlsVersion": "1.2",
+      "ftpsState": "Disabled",
+      "remoteDebuggingEnabled": false,
+      "http20Enabled": true,
+      "netFrameworkVersion": "v8.0",
+      "healthCheckPath": "/healthz",
+      "metadata": [
+        {
+          "name": "CURRENT_STACK",
+          "value": "dotnet"
+        }
+      ]
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Web/serverfarms', parameters('planName'))]"
+  ]
+}
+```
+
+### Configure with Bicep
+
+To deploy App Services that pass this rule:
+
+- Set the `properties.clientAffinityEnabled` property to `false`.
+
+For example:
+
+```bicep
+resource web 'Microsoft.Web/sites@2023-01-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  kind: 'web'
+  properties: {
+    serverFarmId: plan.id
+    httpsOnly: true
+    clientAffinityEnabled: false
+    siteConfig: {
+      alwaysOn: true
+      minTlsVersion: '1.2'
+      ftpsState: 'Disabled'
+      remoteDebuggingEnabled: false
+      http20Enabled: true
+      netFrameworkVersion: 'v8.0'
+      healthCheckPath: '/healthz'
+      metadata: [
+        {
+          name: 'CURRENT_STACK'
+          value: 'dotnet'
+        }
+      ]
+    }
+  }
+}
+```
+
 ## LINKS
 
-- [Design for performance efficiency](https://learn.microsoft.com/azure/architecture/framework/scalability/design-checklist#application-design)
+- [PE:05 Scaling and partitioning](https://learn.microsoft.com/azure/well-architected/performance-efficiency/scale-partition)
 - [Configure an App Service app](https://learn.microsoft.com/azure/app-service/configure-common#configure-general-settings)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.web/serverfarms)

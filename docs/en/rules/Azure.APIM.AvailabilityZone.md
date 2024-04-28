@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:05 Regions and availability zones
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.AvailabilityZone/
 ---
@@ -175,6 +175,6 @@ resource service_api_mgmt_test2_name_resource 'Microsoft.ApiManagement/service@2
 
 ## LINKS
 
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service?tabs=json)
+- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Availability zone support for Azure API Management](https://learn.microsoft.com/azure/api-management/zone-redundancy)
-- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)

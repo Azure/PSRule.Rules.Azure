@@ -95,6 +95,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2023-11-15' = {
 ## LINKS
 
 - [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
-- [TLS encryption in Azure](https://learn.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
 - [Self-serve minimum TLS version enforcement in Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/self-serve-minimum-tls-enforcement)
+- [TLS encryption in Azure](https://learn.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
+- [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts)
