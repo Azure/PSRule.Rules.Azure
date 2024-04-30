@@ -56,12 +56,26 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -Be 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C';
+            $ruleResult.TargetName | Should -BeIn 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'graph-A';
+            $ruleResult.TargetName | Should -BeIn 'graph-A';
+        }
+
+        It 'Azure.Cosmos.SLA' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.SLA' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'graph-A';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C';
         }
     }
 

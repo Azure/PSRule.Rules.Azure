@@ -70,4 +70,22 @@ spec:
     field: properties.minimalTlsVersion
     equals: Tls12
 
+---
+# Synopsis: Use a paid tier to qualify for a Service Level Agreement (SLA).
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cosmos.SLA
+  ref: AZR-000419
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.DocumentDb/databaseAccounts
+  condition:
+    field: properties.enableFreeTier
+    hasDefault: false
+
 #endregion Rules

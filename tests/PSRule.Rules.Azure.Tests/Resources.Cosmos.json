@@ -26,7 +26,7 @@
       "virtualNetworkRules": [],
       "EnabledApiTypes": "Gremlin, Sql",
       "disableKeyBasedMetadataWriteAccess": false,
-      "enableFreeTier": false,
+      "enableFreeTier": true,
       "enableAnalyticalStorage": false,
       "analyticalStorageConfiguration": null,
       "createMode": "Default",
