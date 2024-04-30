@@ -259,5 +259,12 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.SQL.Auditing"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/4750c32b-89c0-46af-bfcb-2e4541a818d5"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.Cosmos.DisableMetadataWrite"
   }
 ]

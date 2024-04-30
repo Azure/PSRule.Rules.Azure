@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-04-09
+reviewed: 2024-05-01
 severity: Important
 pillar: Security
 category: SE:05 Identity and access management
@@ -48,6 +48,7 @@ For example:
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
+    "enableFreeTier": false,
     "consistencyPolicy": {
       "defaultConsistencyLevel": "Session"
     },
@@ -77,6 +78,7 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
   name: name
   location: location
   properties: {
+    enableFreeTier: false
     consistencyPolicy: {
       defaultConsistencyLevel: 'Session'
     }
@@ -92,6 +94,13 @@ resource account 'Microsoft.DocumentDB/databaseAccounts@2023-04-15' = {
   }
 }
 ```
+
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Azure Cosmos DB key based metadata write access should be disabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_DisableMetadata_Append.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/4750c32b-89c0-46af-bfcb-2e4541a818d5`
 
 ## LINKS
 
