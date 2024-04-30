@@ -1,8 +1,8 @@
 ---
-reviewed: 2022-01-18
+reviewed: 2024-05-01
 severity: Important
 pillar: Reliability
-category: Requirements
+category: RE:04 Target metrics
 resource: Data Explorer
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ADX.SLA/
 ---
@@ -29,27 +29,27 @@ Consider using a production ready SKU that includes a SLA.
 
 To deploy clusters that pass this rule:
 
-- Set `sku.tier` to `Standard`.
-- Set `sku.name` to non-development SKU such as `Standard_D11_v2`.
+- Set the `sku.tier` property to `Standard`.
+- Set the `sku.name` property to non-development SKU such as `Standard_D11_v2`.
 
 For example:
 
 ```json
 {
-    "type": "Microsoft.Kusto/clusters",
-    "apiVersion": "2021-08-27",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Standard_D11_v2",
-        "tier": "Standard"
-    },
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "enableDiskEncryption": true
-    }
+  "type": "Microsoft.Kusto/clusters",
+  "apiVersion": "2023-08-15",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_D11_v2",
+    "tier": "Standard"
+  },
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "enableDiskEncryption": true
+  }
 }
 ```
 
@@ -57,13 +57,13 @@ For example:
 
 To deploy clusters that pass this rule:
 
-- Set `sku.tier` to `Standard`.
-- Set `sku.name` to non-development SKU such as `Standard_D11_v2`.
+- Set the `sku.tier` property to `Standard`.
+- Set the `sku.name` property to non-development SKU such as `Standard_D11_v2`.
 
 For example:
 
 ```bicep
-resource adx 'Microsoft.Kusto/clusters@2021-08-27' = {
+resource adx 'Microsoft.Kusto/clusters@2023-08-15' = {
   name: name
   location: location
   sku: {
@@ -81,6 +81,6 @@ resource adx 'Microsoft.Kusto/clusters@2021-08-27' = {
 
 ## LINKS
 
-- [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#availability-targets)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Azure Data Explorer pricing](https://azure.microsoft.com/pricing/details/data-explorer/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.kusto/clusters)
