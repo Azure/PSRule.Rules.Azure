@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Network security and containment
+category: SE:10 Monitoring and threat detection
 resource: Firewall
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Firewall.PolicyMode/
 ---
@@ -30,7 +30,7 @@ Consider configuring Azure Firewall to alert and deny IP addresses, domains and 
 
 To deploy Azure Firewall polices that pass this rule:
 
-- Set the `properties.threatIntelMode` to `Deny`.
+- Set the `properties.threatIntelMode` property to `Deny`.
 
 For example:
 
@@ -53,7 +53,7 @@ For example:
 
 To deploy Azure Firewall polices that pass this rule:
 
-- Set the `properties.threatIntelMode` to `Deny`.
+- Set the `properties.threatIntelMode` property to `Deny`.
 
 For example:
 
@@ -70,6 +70,8 @@ resource firewallPolicy 'Microsoft.Network/firewallPolicies@2023-04-01' = {
 }
 ```
 
+<!-- external:avm avm/res/network/firewall-policy threatIntelMode -->
+
 ### NOTES
 
 Azure Firewall Premium SKU is required for associating standalone resource firewall policies.
@@ -79,10 +81,10 @@ In order to take advantage of URL filtering with `HTTPS` traffic included in thr
 
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [NS-1: Establish network segmentation boundaries](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-firewall-security-baseline#ns-1-establish-network-segmentation-boundaries)
 - [Azure Firewall threat intelligence-based filtering](https://learn.microsoft.com/azure/firewall/threat-intel)
 - [Rule processing logic](https://learn.microsoft.com/azure/firewall/rule-processing#threat-intelligence)
 - [Azure security baseline for Azure Firewall](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-firewall-security-baseline)
-- [NS-1: Establish network segmentation boundaries](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-firewall-security-baseline#ns-1-establish-network-segmentation-boundaries)
 - [Azure network security overview](https://learn.microsoft.com/azure/security/fundamentals/network-overview#azure-firewall)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/firewallpolicies#firewallpolicypropertiesformat)

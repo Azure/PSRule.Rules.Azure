@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Network security and containment
+category: SE:10 Monitoring and threat detection
 resource: Firewall
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Firewall.Mode/
 ---
@@ -35,7 +35,7 @@ Alternatively, consider using firewall policies to manage Azure Firewalls at sca
 
 To deploy Azure Firewalls that pass this rule:
 
-- Set the `properties.threatIntelMode` to `Deny`.
+- Set the `properties.threatIntelMode` property to `Deny`.
 
 For example:
 
@@ -58,7 +58,7 @@ For example:
 
 To deploy Azure Firewalls that pass this rule:
 
-- Set the `properties.threatIntelMode` to `Deny`.
+- Set the `properties.threatIntelMode` property to `Deny`.
 
 For example:
 
@@ -77,7 +77,7 @@ resource firewall_classic 'Microsoft.Network/azureFirewalls@2021-05-01' = {
 
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [Azure Firewall threat intelligence-based filtering](https://learn.microsoft.com/azure/firewall/threat-intel)
 - [Azure network security overview](https://learn.microsoft.com/azure/security/fundamentals/network-overview#azure-firewall)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/azurefirewalls)

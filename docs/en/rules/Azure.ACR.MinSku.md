@@ -121,6 +121,8 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
 }
 ```
 
+<!-- external:avm avm/res/container-registry/registry acrSku -->
+
 ## LINKS
 
 - [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
