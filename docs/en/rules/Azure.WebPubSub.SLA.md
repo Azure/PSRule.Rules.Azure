@@ -2,7 +2,7 @@
 reviewed: 2023-07-09
 severity: Important
 pillar: Reliability
-category: Requirements
+category: RE:04 Target metrics
 resource: Web PubSub Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.WebPubSub.SLA/
 ---
@@ -31,25 +31,25 @@ Consider using a Standard SKU that includes an SLA.
 
 To deploy services that pass this rule:
 
-- Set `sku.name` to `Standard_S1`.
+- Set the `sku.name` property to `Standard_S1`.
 
 For example:
 
 ```json
 {
-    "type": "Microsoft.SignalRService/webPubSub",
-    "apiVersion": "2021-10-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "sku": {
-        "name": "Standard_S1"
-    },
-    "identity": {
-        "type": "SystemAssigned"
-    },
-    "properties": {
-        "disableLocalAuth": true
-    }
+  "type": "Microsoft.SignalRService/webPubSub",
+  "apiVersion": "2023-02-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "sku": {
+    "name": "Standard_S1"
+  },
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "properties": {
+    "disableLocalAuth": true
+  }
 }
 ```
 
@@ -57,12 +57,12 @@ For example:
 
 To deploy services that pass this rule:
 
-- Set `sku.name` to `Standard_S1`.
+- Set the `sku.name` property to `Standard_S1`.
 
 For example:
 
 ```bicep
-resource service 'Microsoft.SignalRService/webPubSub@2021-10-01' = {
+resource service 'Microsoft.SignalRService/webPubSub@2023-02-01' = {
   name: name
   location: location
   sku: {
@@ -79,6 +79,6 @@ resource service 'Microsoft.SignalRService/webPubSub@2021-10-01' = {
 
 ## LINKS
 
-- [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#availability-targets)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Azure Web PubSub pricing](https://azure.microsoft.com/pricing/details/web-pubsub/)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.signalrservice/webpubsub)
