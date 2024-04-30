@@ -33,6 +33,49 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.36.0
+
+What's changed since v1.35.3:
+
+- New rules:
+  - Container App:
+    - Check that Container Apps have a minimum number of replicas by @BernieWhite.
+      [#2790](https://github.com/Azure/PSRule.Rules.Azure/issues/2790)
+    - Check that Container App environments are zone redundant by @BernieWhite.
+      [#2791](https://github.com/Azure/PSRule.Rules.Azure/issues/2791)
+  - Cosmos DB:
+    - Check that database accounts only accept a minimum of TLS 1.2 by @BernieWhite.
+      [#2809](https://github.com/Azure/PSRule.Rules.Azure/issues/2809)
+  - Entra Domain Services:
+    - Check that instances use a minimum version of NTLM by @BernieWhite.
+      [#2837](https://github.com/Azure/PSRule.Rules.Azure/issues/2837)
+    - Check that instances use a minimum version of TLS by @BernieWhite.
+      [#2837](https://github.com/Azure/PSRule.Rules.Azure/issues/2837)
+    - Check that instances do not use RC4 encryption by @BernieWhite.
+      [#2837](https://github.com/Azure/PSRule.Rules.Azure/issues/2837)
+- General improvements:
+  - **Important change**: Deprecated rules with no clear WAF alignment by @BernieWhite.
+    [#2493](https://github.com/Azure/PSRule.Rules.Azure/issues/2493)
+    - The following rules are deprecated:
+      - `Azure.Template.UseParameters`
+      - `Azure.Template.UseVariables`
+      - `Azure.Template.DefineParameters`
+      - `Azure.Template.ValidSecretRef`
+    - These rules have been deprecated and will be removed in v2.
+    - See [deprecations][2] for more information.
+  - Quality updates to documentation by @lukemurraynz @BernieWhite.
+    [#2789](https://github.com/Azure/PSRule.Rules.Azure/pull/2789)
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+  - Additional policies added to default ignore list by @BernieWhite.
+    [#1731](https://github.com/Azure/PSRule.Rules.Azure/issues/1731)
+- Bug fixes:
+  - Fixed not found warning when exporting firewall policy `signatureOverrides` by @BernieWhite.
+    [#2806](https://github.com/Azure/PSRule.Rules.Azure/issues/2806)
+  - Fixed `Azure.Storage.UseReplication` to allow for zone-redundant replication by @sebassem.
+    [#2827](https://github.com/Azure/PSRule.Rules.Azure/issues/2827)
+  - Fixed nested usage of `listKeys` mocks by @BernieWhite.
+    [#2829](https://github.com/Azure/PSRule.Rules.Azure/issues/2829)
+
 What's changed since pre-release v1.36.0-B0077:
 
 - General improvements:
