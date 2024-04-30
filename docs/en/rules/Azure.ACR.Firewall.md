@@ -94,6 +94,8 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
 }
 ```
 
+<!-- external:avm avm/res/container-registry/registry publicNetworkAccess -->
+
 ## NOTES
 
 Configuring firewall rules or using private endpoints is only available for the Premium SKU.
