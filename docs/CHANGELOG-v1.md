@@ -42,6 +42,9 @@ What's changed since v1.36.0:
 - General improvements:
   - Quality updates to documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+- Bug fixes:
+  - Fixed dependency ordering for cross scope deployments by @BernieWhite.
+    [#2850](https://github.com/Azure/PSRule.Rules.Azure/issues/2850)
 
 ## v1.36.0
 
