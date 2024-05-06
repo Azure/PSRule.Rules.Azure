@@ -283,6 +283,12 @@ namespace PSRule.Rules.Azure.Data.Template
                 return resource != null && resource.TryGetProperty(PROPERTY_NAME, out name) && resource.TryGetProperty(PROPERTY_TYPE, out type);
             }
 
+            /// <summary>
+            /// Read the scope from a specified <c>scope</c> property.
+            /// </summary>
+            /// <param name="resource">The resource object.</param>
+            /// <param name="scopeId">The scope if set.</param>
+            /// <returns>Returns <c>true</c> if the scope property was set on the resource.</returns>
             private bool TryResourceScope(JObject resource, out string scopeId)
             {
                 scopeId = null;
@@ -306,6 +312,13 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
 
+            /// <summary>
+            /// Read the scope from the name and type properties if this is a sub-resource.
+            /// For example: A sub-resource may use name segments such as <c>vnet-1/subnet-1</c>.
+            /// </summary>
+            /// <param name="resource">The resource object.</param>
+            /// <param name="scopeId">The calculated scope.</param>
+            /// <returns>Returns <c>true</c> if the scope could be calculated from name segments.</returns>
             private bool TryParentScope(JObject resource, out string scopeId)
             {
                 scopeId = null;
@@ -318,12 +331,21 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
 
+            /// <summary>
+            /// Get the scope of the resource based on the scope of the deployment.
+            /// </summary>
+            /// <param name="scopeId">The scope of the deployment.</param>
+            /// <returns>Returns <c>true</c> if a deployment scope was found.</returns>
             private bool TryDeploymentScope(out string scopeId)
             {
                 scopeId = Deployment?.Scope;
                 return scopeId != null;
             }
 
+            /// <summary>
+            /// Updated the <c>scope</c> property with the scope that the resource will be deployed into.
+            /// </summary>
+            /// <param name="resource">The resource object.</param>
             public void UpdateResourceScope(JObject resource)
             {
                 if (!TryResourceScope(resource, out var scopeId) &&
@@ -1281,27 +1303,19 @@ namespace PSRule.Rules.Azure.Data.Template
             resource.TryGetProperty(PROPERTY_NAME, out var name);
             resource.TryGetProperty(PROPERTY_TYPE, out var type);
 
-            var subscriptionId = context.Subscription.SubscriptionId;
-            var resourceGroupName = context.ResourceGroup.Name;
-
-            // Handle special case for cross-scope deployments which may have an alternative subscription or resource group set.
-            if (IsDeploymentResource(type))
-            {
-                subscriptionId = ResolveDeploymentScopeProperty(context, resource, PROPERTY_SUBSCRIPTIONID, subscriptionId);
-                resourceGroupName = ResolveDeploymentScopeProperty(context, resource, PROPERTY_RESOURCEGROUP, resourceGroupName);
-            }
+            var deploymentScope = GetDeploymentScope(context, resource, type, out var subscriptionId, out var resourceGroupName);
 
             // Get scope if specified.
             var scope = context.TryParentResourceId(resource, out var parentIds) && parentIds != null && parentIds.Length > 0 ? parentIds[0] : null;
 
             string resourceId = null;
-            if (context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup)
+            if (deploymentScope == DeploymentScope.ResourceGroup)
                 resourceId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, type, name, scope: scope);
 
-            if (context.Deployment.DeploymentScope == DeploymentScope.Subscription)
+            else if (deploymentScope == DeploymentScope.Subscription)
                 resourceId = ResourceHelper.CombineResourceId(subscriptionId, null, type, name);
 
-            if (context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup || context.Deployment.DeploymentScope == DeploymentScope.Tenant)
+            else if (deploymentScope == DeploymentScope.ManagementGroup || deploymentScope == DeploymentScope.Tenant)
                 resourceId = ResourceHelper.CombineResourceId(null, null, type, name);
 
             context.UpdateResourceScope(resource);
@@ -1315,14 +1329,51 @@ namespace PSRule.Rules.Azure.Data.Template
             return result;
         }
 
-        private static string ResolveDeploymentScopeProperty(TemplateContext context, JObject resource, string propertyName, string defaultValue)
+        /// <summary>
+        /// Get the deployment scope for the resource.
+        /// </summary>
+        /// <param name="context">The current context.</param>
+        /// <param name="resource">The resource.</param>
+        /// <param name="type">The resource type.</param>
+        /// <param name="subscriptionId">Returns the subscription ID if the scope is within a subscription.</param>
+        /// <param name="resourceGroupName">Returns the resource group name if the scope is with a resource group.</param>
+        /// <returns>The deployment scope.</returns>
+        private static DeploymentScope GetDeploymentScope(TemplateContext context, JObject resource, string type, out string subscriptionId, out string resourceGroupName)
         {
-            if (resource.TryGetProperty<JValue>(propertyName, out var value))
+            if (!IsDeploymentResource(type))
             {
-                defaultValue = ResolveToken(context, value).Value<string>();
-                resource[propertyName] = defaultValue;
+                resourceGroupName = context.ResourceGroup.Name;
+                subscriptionId = context.Subscription.SubscriptionId;
+                return context.Deployment.DeploymentScope;
             }
-            return defaultValue;
+
+            // Handle special case for cross-scope deployments which may have an alternative subscription or resource group set.
+            subscriptionId = ResolveDeploymentScopeProperty(context, resource, PROPERTY_SUBSCRIPTIONID, contextValue:
+                context.Deployment.DeploymentScope == DeploymentScope.Subscription ||
+                context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.Subscription.SubscriptionId : null);
+            resourceGroupName = ResolveDeploymentScopeProperty(context, resource, PROPERTY_RESOURCEGROUP, contextValue:
+                context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.ResourceGroup.Name : null);
+
+            // Update the deployment scope.
+            if (context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup || resourceGroupName != null)
+            {
+                return DeploymentScope.ResourceGroup;
+            }
+            if (context.Deployment.DeploymentScope == DeploymentScope.Subscription || subscriptionId != null)
+            {
+                return DeploymentScope.Subscription;
+            }
+            return context.Deployment.DeploymentScope;
+        }
+
+        private static string ResolveDeploymentScopeProperty(TemplateContext context, JObject resource, string propertyName, string contextValue)
+        {
+            var resolvedValue = contextValue;
+            if (resource.TryGetProperty<JValue>(propertyName, out var value) && value.Type != JTokenType.Null)
+                resolvedValue = ResolveToken(context, value).Value<string>();
+
+            resource[propertyName] = resolvedValue;
+            return resolvedValue;
         }
 
         private void ResourceOuter(TemplateContext context, IResourceValue resource)
