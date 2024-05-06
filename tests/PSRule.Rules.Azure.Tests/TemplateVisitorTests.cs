@@ -1151,6 +1151,32 @@ namespace PSRule.Rules.Azure
             Assert.Equal("{{Secret}}", secretValue);
         }
 
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2850.
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenResourceReferenced_AlwaysPopulatedId()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.38.json"), null, out _);
+
+            // Check managed identity deployment.
+            var actual = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.Resources/deployments" && r["name"].Value<string>() == "mi");
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg1", actual["scope"].Value<string>());
+
+            // Check the app service deployment.
+            actual = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.Resources/deployments" && r["name"].Value<string>() == "site");
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg2", actual["scope"].Value<string>());
+
+            // Check the managed identity resource
+            actual = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.ManagedIdentity/userAssignedIdentities" && r["name"].Value<string>() == "mi");
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg1", actual["scope"].Value<string>());
+
+            // Check app service resource.
+            actual = resources.FirstOrDefault(r => r["type"].Value<string>() == "Microsoft.Web/sites" && r["name"].Value<string>() == "app");
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg2", actual["scope"].Value<string>());
+            Assert.True(actual["identity"]["userAssignedIdentities"].Value<JObject>().TryObjectProperty("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi", out var o));
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
