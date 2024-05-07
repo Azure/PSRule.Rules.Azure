@@ -75,6 +75,8 @@ resource plan 'Microsoft.Web/serverfarms@2022-09-01' = {
 }
 ```
 
+<!-- external:avm avm/res/web/serverfarm skuName -->
+
 ## LINKS
 
 - [Choose the right resources](https://learn.microsoft.com/azure/architecture/framework/scalability/design-capacity#choose-the-right-resources)

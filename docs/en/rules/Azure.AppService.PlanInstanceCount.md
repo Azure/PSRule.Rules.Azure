@@ -70,6 +70,8 @@ resource appPlan 'Microsoft.Web/serverfarms@2021-01-15' = {
 }
 ```
 
+<!-- external:avm avm/res/web/serverfarm skuCapacity -->
+
 ## LINKS
 
 - [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)

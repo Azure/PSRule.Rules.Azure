@@ -100,6 +100,8 @@ resource webApp 'Microsoft.Web/sites@2021-02-01' = {
 }
 ```
 
+<!-- external:avm avm/res/web/site managedIdentities -->
+
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access#resource-identity)

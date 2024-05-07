@@ -108,6 +108,8 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/web/site httpsOnly -->
+
 ## LINKS
 
 - [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)

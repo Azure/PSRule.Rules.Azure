@@ -36,8 +36,11 @@ Document 'index' {
             if ($_.Tag.release -eq 'GA') {
                 'GA'
             }
-            else {
+            elseif ($_.Tag.release -eq 'Preview'){
                 'Preview'
+            }
+            else {
+                $_.Tag.release.ToString()
             }
         }}
     }

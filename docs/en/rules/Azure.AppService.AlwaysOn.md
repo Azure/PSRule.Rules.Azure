@@ -109,6 +109,8 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/web/site siteConfig.alwaysOn -->
+
 ## NOTES
 
 The Always On feature of App Service is not applicable to Azure Functions and Standard Logic Apps under most circumstances.

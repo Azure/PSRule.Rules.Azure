@@ -98,6 +98,8 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/storage/storage-account skuName -->
+
 ## NOTES
 
 This rule is not applicable for premium storage accounts.

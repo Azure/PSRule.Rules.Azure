@@ -442,6 +442,8 @@ task BuildBaselineDocs Build, Dependencies, {
         }
         $baselineDoc;
     } | Invoke-PSDocument -OutputPath ./docs/en/baselines/ -Path ./BaselineToc.Doc.ps1 -Convention 'NameBaseline';
+
+    './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/en/baselines/ -Path ./BaselineIndex.Doc.ps1 -Culture en;
 }
 
 # Synopsis: Build help
