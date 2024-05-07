@@ -11,7 +11,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppIns
 
 ## SYNOPSIS
 
-Configure Application Insights resources to store data a workspace.
+Configure Application Insights resources to store data in a workspace.
 
 ## DESCRIPTION
 
@@ -86,9 +86,11 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
 }
 ```
 
+<!-- external:avm avm/res/insights/component workspaceResourceId -->
+
 ## LINKS
 
 - [OE:07 Monitoring system](https://learn.microsoft.com/azure/well-architected/operational-excellence/observability)
 - [Migrate to workspace-based Application Insights resources](https://learn.microsoft.com/azure/azure-monitor/app/convert-classic-resource)
 - [We're retiring Classic Application Insights on 29 February 2024][1]
-- [Azure resource template](https://learn.microsoft.com/azure/templates/microsoft.insights/components#applicationinsightscomponentproperties-object)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/components)

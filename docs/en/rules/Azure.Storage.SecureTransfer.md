@@ -101,6 +101,8 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/storage/storage-account supportsHttpsTrafficOnly -->
+
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:

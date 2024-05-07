@@ -92,6 +92,8 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/storage/storage-account networkAcls.defaultAction -->
+
 ## NOTES
 
 Cloud Shell storage with the tag `ms-resource-usage = 'azure-cloud-shell'` is excluded.

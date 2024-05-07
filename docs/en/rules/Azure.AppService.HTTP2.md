@@ -111,6 +111,8 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/web/site siteConfig.http20Enabled -->
+
 ## LINKS
 
 - [PE:07 Code and infrastructure](https://learn.microsoft.com/azure/well-architected/performance-efficiency/optimize-code-infrastructure)
