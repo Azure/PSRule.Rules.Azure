@@ -39,6 +39,10 @@ What's changed since v1.36.0:
   - Cosmos DB:
     - Check that database accounts use a paid tier by @BernieWhite.
       [#2845](https://github.com/Azure/PSRule.Rules.Azure/issues/2845)
+- Updated rules:
+  - Deployment:
+    - Add additional exclusions for `Azure.Deployment.SecureParameter` by @BernieWhite.
+      [#2857](https://github.com/Azure/PSRule.Rules.Azure/issues/2857)
 - General improvements:
   - Quality updates to documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
