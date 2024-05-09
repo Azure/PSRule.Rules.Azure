@@ -33,6 +33,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Cosmos DB:
+    - Check that database accounts have public network access disabled by @BenjaminEngeset.
+      [#2702](https://github.com/Azure/PSRule.Rules.Azure/issues/2702)
+
 ## v1.37.0-B0009 (pre-release)
 
 What's changed since v1.36.0:
