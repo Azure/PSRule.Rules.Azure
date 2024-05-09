@@ -92,4 +92,6 @@ Enforcing role-based access control as the only authentication method is current
 - [Enforcing role-based access control as the only authentication method](https://learn.microsoft.com/azure/cosmos-db/how-to-setup-rbac#disable-local-auth)
 - [Configure role-based access control with Microsoft Entra ID for your Azure Cosmos DB account management plane](https://learn.microsoft.com/azure/cosmos-db/role-based-access-control)
 - [Configure role-based access control with Microsoft Entra ID for your Azure Cosmos DB account data plane](https://learn.microsoft.com/azure/cosmos-db/how-to-setup-rbac)
+- [Azure security baseline for Azure Cosmos DB](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline)
+- [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cosmos-db-security-baseline#im-1-use-centralized-identity-and-authentication-system)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts)
