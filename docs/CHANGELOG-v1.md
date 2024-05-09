@@ -38,6 +38,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Check that database accounts have local authentication disabled by @BenjaminEngeset.
       [#2846](https://github.com/Azure/PSRule.Rules.Azure/issues/2846)
 
+## v1.37.0-B0009 (pre-release)
+
 What's changed since v1.36.0:
 
 - New rules:
