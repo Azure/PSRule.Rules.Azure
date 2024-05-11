@@ -18,7 +18,6 @@
       "provisioningState": "Succeeded",
       "documentEndpoint": "https://graph-A.documents.azure.com:443/",
       "gremlinEndpoint": "https://graph-A.gremlin.cosmos.azure.com:443/",
-      "publicNetworkAccess": "Enabled",
       "enableAutomaticFailover": false,
       "enableMultipleWriteLocations": false,
       "enablePartitionKeyMonitor": false,
@@ -296,7 +295,8 @@
         }
       ],
       "databaseAccountOfferType": "Standard",
-      "enableAutomaticFailover": true
+      "enableAutomaticFailover": true,
+      "publicNetworkAccess": "Enabled"
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/databaseAccounts",
@@ -341,7 +341,8 @@
         }
       ],
       "databaseAccountOfferType": "Standard",
-      "enableAutomaticFailover": true
+      "enableAutomaticFailover": true,
+      "publicNetworkAccess": "Disabled"
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/databaseAccounts",
