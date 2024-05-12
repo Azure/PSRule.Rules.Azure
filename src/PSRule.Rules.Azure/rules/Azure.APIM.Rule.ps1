@@ -327,7 +327,18 @@ Rule 'Azure.APIM.PolicyBase' -Ref 'AZR-000371' -Type 'Microsoft.ApiManagement/se
 # Synopsis: APIs published in Azure API Management should be onboarded to Microsoft Defender for APIs.
 Rule 'Azure.APIM.DefenderCloud' -Ref 'AZR-000387' -Type 'Microsoft.ApiManagement/service' -If { HasRestApi } -Tag @{ release = 'GA'; ruleSet = '2023_12'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-1' } {
     $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis' |
-    Where-Object { $Assert.HasDefaultValue($_, 'properties.apiType', 'http').Result })
+        Where-Object { $Assert.HasDefaultValue($_, 'properties.apiType', 'http').Result })
+    $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.Security/apiCollections')
+    foreach ($api in $apis) {
+        $Assert.In($api, 'name', @($defenderConfigs.name)).Reason($LocalizedData.ResAPIDefender, $api.name)
+    }
+}
+
+
+# Synopsis: APIs published in Azure API Management should be onboarded to Microsoft Defender for APIs.
+Rule 'Azure.APIM.DefenderCloud' -Ref 'AZR-000422' -Type 'Microsoft.ApiManagement/service' -If { IsPremiumAPIM } -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-1' } {
+    $apis = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis' |
+        Where-Object { $Assert.HasDefaultValue($_, 'properties.apiType', 'http').Result })
     $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.Security/apiCollections')
     foreach ($api in $apis) {
         $Assert.In($api, 'name', @($defenderConfigs.name)).Reason($LocalizedData.ResAPIDefender, $api.name)
@@ -389,4 +400,75 @@ function global:HasRestApi {
     }
 }
 
-#endregion Helper functions
+
+# Configure the same number of units as the number of availability zones. if you select 3 availability zones in a region, you could have 3 units so that each zone hosts one unit.
+function global:Test-IsCapacityMatchingZones {
+    [CmdletBinding()]
+    param ( )
+    $zones = @($TargetObject.properties.zones)
+    $additionalLocationsZones = @($TargetObject.properties.additionalLocations.zones)
+    $capacity = $TargetObject.sku.capacity
+    if ($zones.Count -eq 0) {
+        return $Assert.GreaterOrEqual($capacity, '.', 1) # If no zones are specified, zone default to '1' when APIM is deployed.
+    }
+    
+    if ($zones.Count -eq '1' -and -not (Compare-Object -DifferenceObject $zones -ReferenceObject '1')) {
+        if ($additionalLocationsZones.Count -eq 0) {
+            return $Assert.GreaterOrEqual($capacity, '.', 1)
+        }
+        else {
+            nas
+        }
+    }
+    if ($zones.Count -eq '2' -and -not (Compare-Object -DifferenceObject $zones -ReferenceObject '1', '2')) {
+        return $Assert.GreaterOrEqual($capacity, '.', 2)
+    }
+
+    if ($zones.Count -eq '3' -and -not (Compare-Object -DifferenceObject $zones -ReferenceObject '1', '2', '3')) {
+        return $Assert.GreaterOrEqual($capacity, '.', 3)
+    }
+
+    
+}
+
+$json_template = @"
+{
+    "properties": {
+      "additionalLocations": [
+        {
+          "disableGateway": "bool",
+          "location": "norge",
+          "natGatewayState": "string",
+          "publicIpAddressId": "string",
+          "sku": {
+            "capacity": "int",
+            "name": "string"
+          },
+          "virtualNetworkConfiguration": {
+            "subnetResourceId": "string"
+          },
+          "zones": [
+            "1"
+          ]
+        },
+        {
+          "disableGateway": "bool",
+          "location": "sverige",
+          "natGatewayState": "string",
+          "publicIpAddressId": "string",
+          "sku": {
+            "capacity": "int",
+            "name": "string"
+          },
+          "virtualNetworkConfiguration": {
+            "subnetResourceId": "string"
+          },
+          "zones": [
+            "1",
+            "2"
+          ]
+        }
+      ]
+    }
+  }
+"@

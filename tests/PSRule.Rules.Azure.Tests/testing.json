@@ -1,0 +1,39 @@
+{
+  "properties": {
+    "additionalLocations": [
+      {
+        "disableGateway": "bool",
+        "location": "norge",
+        "natGatewayState": "string",
+        "publicIpAddressId": "string",
+        "sku": {
+          "capacity": "int",
+          "name": "string"
+        },
+        "virtualNetworkConfiguration": {
+          "subnetResourceId": "string"
+        },
+        "zones": [
+          "1"
+        ]
+      },
+      {
+        "disableGateway": "bool",
+        "location": "sverige",
+        "natGatewayState": "string",
+        "publicIpAddressId": "string",
+        "sku": {
+          "capacity": "int",
+          "name": "string"
+        },
+        "virtualNetworkConfiguration": {
+          "subnetResourceId": "string"
+        },
+        "zones": [
+          "1",
+          "2"
+        ]
+      }
+    ]
+  }
+}
