@@ -14,13 +14,18 @@ Azure Cosmos DB should have local authentication disabled.
 
 ## DESCRIPTION
 
-Cosmos DB can have local authentication methods enabled or disabled.
+Every request to an Cosmos DB Account resource must be authenticated.
+Cosmos DB supports authenticating requests using either Entra ID (previously Azure AD) identities or local authentication.
+Local authentication uses accounts keys that are granted permissions to the entire Cosmos DB Account.
 
-Disabling local authentication ensures that Entra ID (previously Azure Active Directory) is used exclusively for authentication.
 Using Entra ID, provides consistency as a single authoritative source which:
 
 - Increases clarity and reduces security risks from human errors and configuration complexity.
+- Allows granting of permissions using role-based access control (RBAC).
 - Provides support for advanced identity security and governance features.
+
+Disabling local authentication ensures that Entra ID is used exclusively for authentication.
+Any subsequent requests to the resource using account keys will be rejected.
 
 ## RECOMMENDATION
 
