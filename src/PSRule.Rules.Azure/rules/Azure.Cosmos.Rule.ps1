@@ -28,7 +28,7 @@ function global:Test-IsNoSQL {
     if ($TargetObject.kind -ne 'GlobalDocumentDB') {
         return $false
     }
-    if ($TargetObject.kind -eq 'GlobalDocumentDB' -and -not $TargetObject.properties.capabilities) {
+    if (-not $TargetObject.properties.capabilities) {
         return $true
     }
     $TargetObject.properties.capabilities.Where({ $_.name -in @('EnableTable', 'EnableCassandra', 'EnableGremlin') }, 'First').Count -eq 0
