@@ -78,6 +78,20 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.TargetName | Should -BeIn 'graph-B', 'nosql-A', 'nosql-B', 'nosql-C';
         }
 
+        It 'Azure.Cosmos.DisableLocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.DisableLocalAuth' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B';
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'nosql-C';
+        }
+
         It 'Azure.Cosmos.PublicAccess' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.PublicAccess' };
 
@@ -186,11 +200,8 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B', 'nosql-A', 'nosql-B';
-
-            $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/advancedThreatProtectionSettings' has not been specified.";
-            $ruleResult[1].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.Security/advancedThreatProtectionSettings' has not been specified.";
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

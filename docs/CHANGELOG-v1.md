@@ -35,6 +35,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Cosmos DB:
+    - Check that database accounts have local authentication disabled by @BenjaminEngeset.
+      [#2846](https://github.com/Azure/PSRule.Rules.Azure/issues/2846)
     - Check that database accounts have public network access disabled by @BenjaminEngeset.
       [#2702](https://github.com/Azure/PSRule.Rules.Azure/issues/2702)
 

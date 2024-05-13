@@ -296,6 +296,7 @@
       ],
       "databaseAccountOfferType": "Standard",
       "enableAutomaticFailover": true,
+      "disableLocalAuth": false,
       "publicNetworkAccess": "Enabled"
     },
     "ResourceGroupName": "test-rg",
@@ -342,7 +343,14 @@
       ],
       "databaseAccountOfferType": "Standard",
       "enableAutomaticFailover": true,
+      "disableLocalAuth": true,
+      "capabilities": [
+        {
+          "name": "EnableServerless"
+        }
+      ],
       "publicNetworkAccess": "Disabled"
+
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/databaseAccounts",
