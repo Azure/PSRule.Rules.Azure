@@ -1742,7 +1742,10 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ],
-    "Zones": null
+    "Zones": [
+      "1",
+      "2"
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-F",
@@ -1820,10 +1823,12 @@
           "location": "East US",
           "sku": {
             "name": "Premium",
-            "capacity": 1
+            "capacity": 2
           },
           "zones": [
-            "1"
+            "1",
+            "2",
+            "3"
           ],
           "publicIPAddresses": [
             "xx.xx.xx.xx"
@@ -1864,13 +1869,14 @@
       "Size": null,
       "Family": null,
       "Model": null,
-      "Capacity": 1
+      "Capacity": 2
     },
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
     "Zones": [
-      "1"
+      "1",
+      "2"
     ]
   },
   {
@@ -1973,9 +1979,11 @@
           "location": "Antarctica South",
           "sku": {
             "name": "Premium",
-            "capacity": 1
+            "capacity": 2
           },
-          "zones": null,
+          "zones": [
+            "1"
+          ],
           "publicIPAddresses": [
             "xx.xx.xx.xx"
           ],
@@ -2021,7 +2029,9 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
     "Zones": [
-      "1"
+      "1",
+      "2",
+      "3"
     ]
   },
   {
@@ -2230,7 +2240,46 @@
         "0.0.0.0"
       ],
       "privateIPAddresses": null,
-      "additionalLocations": null,
+      "additionalLocations": [
+        {
+          "location": "Antarctica South",
+          "sku": {
+            "name": "Premium",
+            "capacity": 3
+          },
+          "zones": [
+            "1",
+            "2",
+            "3"
+          ],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
+          "privateIPAddresses": null,
+          "virtualNetworkConfiguration": null,
+          "gatewayRegionalUrl": "https://apim-I-eastus-01.regional.azure-api.ne",
+          "disableGateway": true
+        },
+        {
+          "location": "Norway East",
+          "sku": {
+            "name": "Premium",
+            "capacity": 2
+          },
+          "zones": [
+            "1",
+            "2",
+            "3"
+          ],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
+          "privateIPAddresses": null,
+          "virtualNetworkConfiguration": null,
+          "gatewayRegionalUrl": "https://apim-I-eastus-01.regional.azure-api.ne",
+          "disableGateway": true
+        }
+      ],
       "virtualNetworkConfiguration": null,
       "customProperties": {
         "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
@@ -2261,12 +2310,16 @@
       "Size": null,
       "Family": null,
       "Model": null,
-      "Capacity": 1
+      "Capacity": 3
     },
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
-    "Zones": null
+    "Zones": [
+      "1",
+      "2",
+      "3"
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-J",
@@ -2343,7 +2396,46 @@
         "0.0.0.0"
       ],
       "privateIPAddresses": null,
-      "additionalLocations": null,
+      "additionalLocations": [
+        {
+          "location": "Antarctica South",
+          "sku": {
+            "name": "Premium",
+            "capacity": 3
+          },
+          "zones": [
+            "1",
+            "2",
+            "3"
+          ],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
+          "privateIPAddresses": null,
+          "virtualNetworkConfiguration": null,
+          "gatewayRegionalUrl": "https://apim-J-eastus-01.regional.azure-api.ne",
+          "disableGateway": true
+        },
+        {
+          "location": "Norway East",
+          "sku": {
+            "name": "Premium",
+            "capacity": 3
+          },
+          "zones": [
+            "1",
+            "2",
+            "3"
+          ],
+          "publicIPAddresses": [
+            "xx.xx.xx.xx"
+          ],
+          "privateIPAddresses": null,
+          "virtualNetworkConfiguration": null,
+          "gatewayRegionalUrl": "https://apim-J-eastus-01.regional.azure-api.ne",
+          "disableGateway": true
+        }
+      ],
       "virtualNetworkConfiguration": null,
       "customProperties": {
         "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Protocols.Tls10": "False",
@@ -2374,12 +2466,16 @@
       "Size": null,
       "Family": null,
       "Model": null,
-      "Capacity": 1
+      "Capacity": 3
     },
     "Tags": {},
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "resources": [],
-    "Zones": []
+    "Zones": [
+      "1",
+      "2",
+      "3"
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-K",
@@ -2609,7 +2705,7 @@
         "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Backend.Protocols.Ssl30": "False",
         "Microsoft.WindowsAzure.ApiManagement.Gateway.Protocols.Server.Http2": "False",
         "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TripleDes168": "False",
-        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA": "False",
+        "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_iRSA_WITH_AES_128_CBC_SHA": "False",
         "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_256_CBC_SHA": "False",
         "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_RSA_WITH_AES_128_CBC_SHA256": "False",
         "Microsoft.WindowsAzure.ApiManagement.Gateway.Security.Ciphers.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA": "False",

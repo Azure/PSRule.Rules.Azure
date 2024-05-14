@@ -465,6 +465,26 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'apim-D';
         }
+
+        It 'Azure.APIM.AvailabilityZone.Units' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.APIM.AvailabilityZone.Units' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'apim-E', 'apim-F', 'apim-G', 'apim-I';
+
+            $ruleResult[0].Reason | Should -BeIn "Path sku.capacity: The value '1' was not >= '2'.";
+            $ruleResult[1].Reason | Should -BeIn "Path sku.capacity: The value '2' was not >= '3'.";
+            $ruleResult[2].Reason | Should -BeIn "Path sku.capacity: The value '1' was not >= '3'.";
+            $ruleResult[3].Reason | Should -BeIn "Path sku.capacity: The value '2' was not >= '3'.";
+
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'apim-J', 'apim-M', 'apim-N', 'apim-O', 'apim-P';
+        }
     }
 
     Context 'With Template' {

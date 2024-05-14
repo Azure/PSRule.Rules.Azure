@@ -334,6 +334,36 @@ Rule 'Azure.APIM.DefenderCloud' -Ref 'AZR-000387' -Type 'Microsoft.ApiManagement
     }
 }
 
+# Synopsis: Configure the same number of units as the number of availability zones or greater in a region.
+Rule 'Azure.APIM.AvailabilityZone.Units' -Ref 'AZR-000422' -Type 'Microsoft.ApiManagement/service' -If { (IsPremiumAPIM) -and (Test-IsZoneRedundant) } -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    # Configure the same number of units as the number of availability zones or greater in the primary region. If you select 3 availability zones in the region > 3 units so that each zone hosts one unit.
+    $zones = @($TargetObject.zones)
+    if ($zones.Count -eq '2' -and -not (Compare-Object -DifferenceObject $zones -ReferenceObject '1', '2')) {
+        $Assert.GreaterOrEqual($TargetObject, 'sku.capacity', 2)
+    }
+
+    if ($zones.Count -eq '3' -and -not (Compare-Object -DifferenceObject $zones -ReferenceObject '1', '2', '3')) {
+        $Assert.GreaterOrEqual($TargetObject, 'sku.capacity', 3)
+    }
+    
+    # Configure the same number of units as the number of availability zones or greater in additional regions. If you select 3 availability zones in a region > 3 units so that each zone hosts one unit.
+    $additionalLocations = @($TargetObject.properties.additionalLocations)
+    if ($additionalLocations.Count -gt 0) {
+        foreach ($location in $additionalLocations) {
+            $sku = $location.sku.name
+            $zones = @($location.zones)
+        }
+        if ($sku -eq 'Premium' -and $zones.Count -eq '2' -and -not (Compare-Object -DifferenceObject $zones -ReferenceObject '1', '2')) {
+            $Assert.GreaterOrEqual($location, 'sku.capacity', 2)
+        }
+    
+        if ($sku -eq 'Premium' -and $zones.Count -eq '3' -and -not (Compare-Object -DifferenceObject $zones -ReferenceObject '1', '2', '3')) {
+            $Assert.GreaterOrEqual($location, 'sku.capacity', 3)
+            
+        }
+    }
+}
+
 #endregion Rules
 
 #region Helper functions
@@ -386,6 +416,30 @@ function global:HasRestApi {
         $restApi = @(GetSubResources -ResourceType 'Microsoft.ApiManagement/service/apis' |
             Where-Object { $Assert.HasDefaultValue($_, 'properties.apiType', 'http').Result })
         $Assert.GreaterOrEqual($restApi, '.', 1).Result
+    }
+}
+
+function global:Test-IsZoneRedundant {
+    [CmdletBinding()]
+    param ( )
+    # Check if more than 1 zone is selected in the primary region.
+    if ($TargetObject.zones.Count -gt 1) {
+        return $true
+    }
+
+    # Check if more than 1 zone is selected in additional regions.
+    if ($additionalLocations.Count -gt 0) {
+        foreach ($location in $additionalLocations) {
+            $sku = $location.sku.name
+            $zones = @($location.zones)
+        }
+        if ($sku -eq 'Premium' -and $zones.Count -eq '2' -and -not (Compare-Object -DifferenceObject $zones -ReferenceObject '1', '2')) {
+            return $true
+        }
+    
+        if ($sku -eq 'Premium' -and $zones.Count -eq '3' -and -not (Compare-Object -DifferenceObject $zones -ReferenceObject '1', '2', '3')) {
+            return $true
+        }
     }
 }
 

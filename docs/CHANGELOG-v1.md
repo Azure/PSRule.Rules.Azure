@@ -39,6 +39,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#2846](https://github.com/Azure/PSRule.Rules.Azure/issues/2846)
     - Check that database accounts have public network access disabled by @BenjaminEngeset.
       [#2702](https://github.com/Azure/PSRule.Rules.Azure/issues/2702)
+  - API Management:
+    - Check that scale units are distributed evenly across the configured availability zones by @BenjaminEngeset.
+      [#2788](https://github.com/Azure/PSRule.Rules.Azure/issues/2788)
 
 ## v1.37.0-B0009 (pre-release)
 
