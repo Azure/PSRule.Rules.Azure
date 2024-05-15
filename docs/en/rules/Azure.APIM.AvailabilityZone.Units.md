@@ -143,5 +143,5 @@ resource apim 'Microsoft.ApiManagement/service@2023-05-01-preview' = {
 ## LINKS
 
 - [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
-- [Units distribution evenly across the zones](https://learn.microsoft.com/en-us/azure/api-management/high-availability#availability-zones)
+- [Units distribution evenly across the zones](https://learn.microsoft.com/azure/api-management/high-availability#availability-zones)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)
