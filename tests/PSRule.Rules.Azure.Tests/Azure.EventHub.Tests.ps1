@@ -27,10 +27,10 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.EventHub.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
@@ -85,6 +85,51 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'hubns-C';
         }
+
+        It 'Azure.EventHub.Firewall' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.EventHub.Firewall' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'default-A', 'default-C';
+
+            $ruleResult[0].Reason | Should -BeExactly @(
+                "Path properties.publicNetworkAccess: Does not exist."
+                "The parameter 'inputObject' is null.";
+                "The parameter 'inputObject' is null."
+            )
+
+            $ruleResult[1].Reason | Should -BeExactly @(
+                "Path properties.publicNetworkAccess: Is set to 'Enabled'."
+                "The parameter 'inputObject' is null.";
+                "The parameter 'inputObject' is null."
+            )
+
+            $ruleResult[2].Reason | Should -BeExactly @(
+                "Path properties.publicNetworkAccess: Does not exist."
+                "Path properties.publicNetworkAccess: Is set to 'Enabled'."
+                "Path properties.defaultAction: Is set to 'Allow'."
+            )
+
+            $ruleResult[3].Reason | Should -BeExactly @(
+                "Path properties.publicNetworkAccess: Is set to 'Enabled'."
+                "The parameter 'inputObject' is null.";
+                "The parameter 'inputObject' is null."
+            )
+
+            $ruleResult[4].Reason | Should -BeExactly @(
+                "Path properties.publicNetworkAccess: Is set to 'Enabled'."
+                "The parameter 'inputObject' is null.";
+                "The parameter 'inputObject' is null."
+            )
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'hubns-E', 'hubns-F', 'default-B', 'default-D';
+        }
     }
 
     Context 'With Template' {
@@ -92,10 +137,10 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.EventHub.json;
             Export-AzRuleTemplateData -TemplateFile (Join-Path -Path $here -ChildPath 'Resources.EventHub.Template.json') -OutputPath $outputFile;
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $result = Invoke-PSRule @invokeParams -InputPath $outputFile -Outcome All;
         }
