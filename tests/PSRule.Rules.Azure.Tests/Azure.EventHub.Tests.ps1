@@ -42,8 +42,8 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -58,8 +58,8 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -82,8 +82,8 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'hubns-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'hubns-C', 'hubns-D', 'hubns-E', 'hubns-F';
         }
 
         It 'Azure.EventHub.Firewall' {
@@ -91,44 +91,16 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'default-A', 'default-C';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'hubns-B', 'hubns-C', 'hubns-D', 'default-A';
 
-            $ruleResult[0].Reason | Should -BeExactly @(
-                "Path properties.publicNetworkAccess: Does not exist."
-                "The parameter 'inputObject' is null.";
-                "The parameter 'inputObject' is null."
-            )
-
-            $ruleResult[1].Reason | Should -BeExactly @(
-                "Path properties.publicNetworkAccess: Is set to 'Enabled'."
-                "The parameter 'inputObject' is null.";
-                "The parameter 'inputObject' is null."
-            )
-
-            $ruleResult[2].Reason | Should -BeExactly @(
-                "Path properties.publicNetworkAccess: Does not exist."
-                "Path properties.publicNetworkAccess: Is set to 'Enabled'."
-                "Path properties.defaultAction: Is set to 'Allow'."
-            )
-
-            $ruleResult[3].Reason | Should -BeExactly @(
-                "Path properties.publicNetworkAccess: Is set to 'Enabled'."
-                "The parameter 'inputObject' is null.";
-                "The parameter 'inputObject' is null."
-            )
-
-            $ruleResult[4].Reason | Should -BeExactly @(
-                "Path properties.publicNetworkAccess: Is set to 'Enabled'."
-                "The parameter 'inputObject' is null.";
-                "The parameter 'inputObject' is null."
-            )
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.publicNetworkAccess: Does not exist."
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.publicNetworkAccess: Is set to 'Enabled'."
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'hubns-E', 'hubns-F', 'default-B', 'default-D';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'hubns-E', 'hubns-F', 'default-B', 'default-C', 'default-D';
         }
     }
 

@@ -20,7 +20,7 @@ With the firewall feature, it is possible to either fully disabling public netwo
 
 ## RECOMMENDATION
 
-Consider configuring Event Hub namespaces to disable public network access, using private endpoints to control connectivity or configure the firewall to only allow traffic from from specific addresses.
+Consider restricting network access to the Event Hub namespace by requiring private endpoints or by limiting access to permitted client addresses with the service firewall.
 
 ## EXAMPLES
 
@@ -28,7 +28,10 @@ Consider configuring Event Hub namespaces to disable public network access, usin
 
 To deploy Event Hub namespaces that pass this rule:
 
-- Set the `properties.publicNetworkAccess` property to `Disabled` or configure the sub-resource `Microsoft.EventHub/namespaces/networkRuleSets` with the `properties.publicNetworkAccess` property to `Disabled` or/and the `properties.defaultAction` property to `Deny`.
+- Set the `properties.publicNetworkAccess` property to `Disabled` to require private endpoints. OR
+- Alternatively, you can configure the `Microsoft.EventHub/namespaces/networkRuleSets` sub-resource by:
+  - Setting the `properties.publicNetworkAccess` property to `Disabled` to require private endpoints. OR
+  - Setting the `properties.defaultAction` property to `Deny` to restrict network access to the service by default.
 
 For example:
 
@@ -57,7 +60,10 @@ For example:
 
 To deploy Event Hub namespaces that pass this rule:
 
-- Set the `properties.publicNetworkAccess` property to `Disabled` or configure the sub-resource `Microsoft.EventHub/namespaces/networkRuleSets` with the `properties.publicNetworkAccess` property to `Disabled` or/and the `properties.defaultAction` property to `Deny`.
+- Set the `properties.publicNetworkAccess` property to `Disabled` to require private endpoints. OR
+- Alternatively, you can configure the `Microsoft.EventHub/namespaces/networkRuleSets` sub-resource by:
+  - Setting the `properties.publicNetworkAccess` property to `Disabled` to require private endpoints. OR
+  - Setting the `properties.defaultAction` property to `Deny` to restrict network access to the service by default.
 
 For example:
 
