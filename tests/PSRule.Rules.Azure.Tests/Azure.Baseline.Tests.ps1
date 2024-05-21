@@ -108,7 +108,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2021_12' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 244;
+            $filteredResult.Length | Should -Be 243;
         }
 
         It 'With Azure.Preview_2021_12' {
@@ -122,7 +122,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2022_03' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 260;
+            $filteredResult.Length | Should -Be 259;
         }
 
         It 'With Azure.Preview_2022_03' {
@@ -136,7 +136,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2022_06' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 264;
+            $filteredResult.Length | Should -Be 263;
         }
 
         It 'With Azure.Preview_2022_06' {
@@ -150,7 +150,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2022_09' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 295;
+            $filteredResult.Length | Should -Be 294;
         }
 
         It 'With Azure.Preview_2022_09' {
@@ -164,7 +164,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2022_12' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 333;
+            $filteredResult.Length | Should -Be 332;
         }
 
         It 'With Azure.Preview_2022_12' {
@@ -178,7 +178,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2023_03' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 353;
+            $filteredResult.Length | Should -Be 352;
         }
 
         It 'With Azure.Preview_2023_03' {
@@ -192,7 +192,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2023_06' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 368;
+            $filteredResult.Length | Should -Be 367;
         }
 
         It 'With Azure.Preview_2023_06' {
@@ -206,7 +206,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2023_09' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 379;
+            $filteredResult.Length | Should -Be 378;
         }
 
         It 'With Azure.Preview_2023_09' {
@@ -220,7 +220,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2023_12' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 388;
+            $filteredResult.Length | Should -Be 387;
         }
 
         It 'With Azure.Preview_2023_12' {
@@ -234,7 +234,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2024_03' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 398;
+            $filteredResult.Length | Should -Be 397;
         }
 
         It 'With Azure.Preview_2024_03' {
