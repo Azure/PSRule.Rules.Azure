@@ -14,7 +14,8 @@ Grafana workspaces should be on Grafana version 10.
 
 ## DESCRIPTION
 
-Support for Grafana version 9 within Azure Managed Grafana is deprecated and will retire on 31 August 2024. To avoid support disruptions, upgrade to Grafana version 10.
+Support for Grafana version 9 within Azure Managed Grafana is deprecated and will retire on 31 August 2024.
+To avoid support disruptions, upgrade to Grafana version 10.
 
 ## RECOMMENDATION
 
@@ -26,7 +27,7 @@ Upgrade to Grafana version 10 for Azure Managed Grafana workspaces to avoid supp
 
 To deploy Azure Managed Grafana workspaces that pass this rule:
 
-- Set `properties.grafanaMajorVersion` to `10`.
+- Set the `properties.grafanaMajorVersion` property to `10`.
 
 For example:
 
@@ -52,7 +53,7 @@ For example:
 
 To deploy Azure Managed Grafana workspaces that pass this rule:
 
-- Set `properties.grafanaMajorVersion` to `10`.
+- Set the `properties.grafanaMajorVersion` property to `10`.
 
 For example:
 
