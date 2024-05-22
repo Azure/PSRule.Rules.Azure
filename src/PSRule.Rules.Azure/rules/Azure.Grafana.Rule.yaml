@@ -1,0 +1,29 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Managed Grafana
+#
+
+#region Rules
+
+---
+# Synopsis: Grafana workspaces should be on Grafana version 10.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Grafana.Version
+  ref: AZR-000424
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+    - Microsoft.Dashboard/grafana
+  condition:
+    field: properties.grafanaMajorVersion
+    greaterOrEquals: 10
+    convert: true
+
+#endregion Rules

@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Managed Grafana:
+    - Check that Azure Managed Grafana workspaces uses Grafana version 10 by @BenjaminEngeset.
+      [#2878](https://github.com/Azure/PSRule.Rules.Azure/issues/2878)
+
 What's changed since pre-release v1.37.0-B0009:
 
 - New rules:
