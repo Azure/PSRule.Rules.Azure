@@ -215,7 +215,7 @@ spec:
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
-  name: Azure.AppGw.WAF.MigratePolicy
+  name: Azure.AppGw.MigrateWAFPolicy
   ref: AZR-000423
   tags:
     release: GA

@@ -3,7 +3,7 @@ severity: Critical
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Application Gateway
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.WAF.MigratePolicy/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.MigrateWAFPolicy/
 ---
 
 # Migrate to Application Gateway WAF policy
@@ -14,15 +14,17 @@ Migrate to Application Gateway WAF policy.
 
 ## DESCRIPTION
 
-App Gateway V2 supports two configuration modes for WAF:
+Application Gateway V2 supports two configuration modes for WAF:
 
-- Reference an existing WAF policy reference via `properties.firewallPolicy.id`. This option is recommended.
-- Specify the legacy WAF configuration via setting the `properties.webApplicationFirewallConfiguration`. This option is deprecated for retirement on 15 March 2027.
+- Define and reference an WAF policy that can be reused across multiple Application Gateways.
+- Specify the WAF configuration tied directly a specific Application Gateway.
+  This is done by setting the `properties.webApplicationFirewallConfiguration` property.
 
+Setting the Application Gateway WAF configuration is depreciated and will be retired on 15 March 2027.
 
 ## RECOMMENDATION
 
-Upgrade WAF v2 with legacy WAF configuration to WAF policy.
+Consider upgrading Application Gateway to use WAF v2 referencing a WAF policy.
 
 ## EXAMPLES
 
@@ -31,25 +33,26 @@ Upgrade WAF v2 with legacy WAF configuration to WAF policy.
 To deploy Application Gateways that pass this rule:
 
 - Deploy an Application Gateway with the `WAF_v2` SKU.
-- Configure the `properties.firewallPolicy.id` property and don't specify the legacy `properties.webApplicationFirewallConfiguration` property.
+- Migrate any WAF configuration from `properties.webApplicationFirewallConfiguration` to a separate WAF policy.
+- Set the `properties.firewallPolicy.id` property to reference the WAF policy resource by ID.
 
 For example:
 
 ```json
 {
-    "name": "[parameters('name')]",
-    "type": "Microsoft.Network/applicationGateways",
-    "apiVersion": "2023-11-01",
-    "location": "[resourceGroup().location]",
-    "properties": {
-        "sku": {
-            "name": "WAF_v2",
-            "tier": "WAF_v2"
-        },
-        "firewallPolicy": {
-          "id": "[parameters('firewallPolicyId')]"
-        }
+  "name": "[parameters('name')]",
+  "type": "Microsoft.Network/applicationGateways",
+  "apiVersion": "2023-11-01",
+  "location": "[resourceGroup().location]",
+  "properties": {
+    "sku": {
+      "name": "WAF_v2",
+      "tier": "WAF_v2"
+    },
+    "firewallPolicy": {
+      "id": "[parameters('firewallPolicyId')]"
     }
+  }
 }
 ```
 
@@ -58,7 +61,8 @@ For example:
 To deploy Application Gateways that pass this rule:
 
 - Deploy an Application Gateway with the `WAF_v2` SKU.
-- Configure the `properties.firewallPolicy.id` property and don't specify the legacy `properties.webApplicationFirewallConfiguration` property.
+- Migrate any WAF configuration from `properties.webApplicationFirewallConfiguration` to a separate WAF policy.
+- Set the `properties.firewallPolicy.id` property to reference the WAF policy resource by ID.
 
 For example:
 
