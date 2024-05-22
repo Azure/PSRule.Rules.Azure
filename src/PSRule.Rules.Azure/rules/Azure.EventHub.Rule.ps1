@@ -28,10 +28,10 @@ Rule 'Azure.EventHub.Firewall' -Ref 'AZR-000422' -Type 'Microsoft.EventHub/names
 
     else {
         foreach ($firewall in $firewalls) {
-            $Assert.AnyOf(
-                $Assert.HasFieldValue($firewall, 'properties.publicNetworkAccess', 'Disabled'),
+            AnyOf {
+                $Assert.HasFieldValue($firewall, 'properties.publicNetworkAccess', 'Disabled')
                 $Assert.HasFieldValue($firewall, 'properties.defaultAction', 'Deny')
-            )
+            }
         }
     }
 }

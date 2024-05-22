@@ -96,6 +96,8 @@ Describe 'Azure.EventHub' -Tag 'EventHub' {
 
             $ruleResult[0].Reason | Should -BeExactly "Path properties.publicNetworkAccess: Does not exist."
             $ruleResult[1].Reason | Should -BeExactly "Path properties.publicNetworkAccess: Is set to 'Enabled'."
+            $ruleResult[2].Reason | Should -BeIn "Path properties.publicNetworkAccess: Is set to 'Enabled'.", "Path properties.defaultAction: Is set to 'Allow'."
+            $ruleResult[3].Reason | Should -BeIn "Path properties.publicNetworkAccess: Is set to 'Enabled'.", "Path properties.defaultAction: Is set to 'Allow'."
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
