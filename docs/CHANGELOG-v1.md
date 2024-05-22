@@ -39,6 +39,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#2846](https://github.com/Azure/PSRule.Rules.Azure/issues/2846)
     - Check that database accounts have public network access disabled by @BenjaminEngeset.
       [#2702](https://github.com/Azure/PSRule.Rules.Azure/issues/2702)
+  - Event Hub:
+    - Check that access to the namespace endpoints is restricted to only allowed sources by @BenjaminEngeset.
+      [#2701](https://github.com/Azure/PSRule.Rules.Azure/issues/2701)
 - Updated rules:
   - API Management:
     - **Important change**: Updated `Azure.APIM.AvailabilityZone` to improve accuracy with non-premium SKUs by @BenjaminEngeset.
@@ -48,6 +51,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       - Updated tests.
       - Updated rule doc.
       - Bumped rule set to `2024_06`.
+
 
 ## v1.37.0-B0009 (pre-release)
 
