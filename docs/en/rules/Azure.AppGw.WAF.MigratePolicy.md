@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Reliability
-category: RE:07 Self-preservation
+category: RE:04 Target metrics
 resource: Application Gateway
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.WAF.MigratePolicy/
 ---
@@ -80,7 +80,7 @@ resource agw 'Microsoft.Network/applicationGateways@2023-11-01' = {
 
 ## LINKS
 
-- [RE:07 Self-preservation](https://learn.microsoft.com/azure/well-architected/reliability/self-preservation)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Retirement: Support for Application Gateway Web Application Firewall v2 Configuration is ending](https://azure.microsoft.com/updates/retirement-support-for-application-gateway-web-application-firewall-v2-configuration-is-ending/)
 - [Upgrade WAF v2 with legacy WAF configuration to WAF policy](https://learn.microsoft.com/azure/web-application-firewall/ag/upgrade-ag-waf-policy#upgrade-waf-v2-with-legacy-waf-configuration-to-waf-policy)
 - [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.network/applicationgateways)
