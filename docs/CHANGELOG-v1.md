@@ -49,7 +49,7 @@ What's changed since pre-release v1.37.0-B0009:
       - Bumped rule set to `2024_06`.
 - General improvements:
   - Updated resource providers and policy aliases.
-    [#2717](https://github.com/Azure/PSRule.Rules.Azure/pull/2717)
+    [#2880](https://github.com/Azure/PSRule.Rules.Azure/pull/2880)
 
 ## v1.37.0-B0009 (pre-release)
 
