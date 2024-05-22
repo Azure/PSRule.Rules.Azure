@@ -1,0 +1,191 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Images",
+    "apiVersions": [
+      "2024-04-04-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Images/Versions",
+    "apiVersions": [
+      "2024-04-04-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2024-04-04-preview",
+      "2024-03-26-preview",
+      "2023-12-13-preview",
+      "2023-10-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2024-04-04-preview",
+      "2024-03-26-preview",
+      "2023-12-13-preview",
+      "2023-10-30-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France South",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/Skus",
+    "apiVersions": [
+      "2024-04-04-preview",
+      "2024-03-26-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/Usages",
+    "apiVersions": [
+      "2024-04-04-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2024-04-04-preview",
+      "2024-03-26-preview",
+      "2023-12-13-preview",
+      "2023-10-30-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "pools/Resources",
+    "apiVersions": [
+      "2024-04-04-preview",
+      "2024-03-26-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Resources",
+    "apiVersions": [
+      "2024-03-26-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Skus",
+    "apiVersions": [
+      "2024-03-26-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.DevOpsInfrastructure/pools/agentProfile": "properties.agentProfile",
+      "Microsoft.DevOpsInfrastructure/pools/agentProfile.kind": "properties.agentProfile.kind",
+      "Microsoft.DevOpsInfrastructure/pools/agentProfile.resourcePredictionsProfile": "properties.agentProfile.resourcePredictionsProfile",
+      "Microsoft.DevOpsInfrastructure/pools/agentProfile.resourcePredictionsProfile.Automatic": "properties.agentProfile.resourcePredictionsProfile",
+      "Microsoft.DevOpsInfrastructure/pools/agentProfile.resourcePredictionsProfile.Automatic.predictionPreference": "properties.agentProfile.resourcePredictionsProfile.predictionPreference",
+      "Microsoft.DevOpsInfrastructure/pools/agentProfile.resourcePredictionsProfile.kind": "properties.agentProfile.resourcePredictionsProfile.kind",
+      "Microsoft.DevOpsInfrastructure/pools/agentProfile.Stateful": "properties.agentProfile",
+      "Microsoft.DevOpsInfrastructure/pools/agentProfile.Stateful.gracePeriodTimeSpan": "properties.agentProfile.gracePeriodTimeSpan",
+      "Microsoft.DevOpsInfrastructure/pools/agentProfile.Stateful.maxAgentLifetime": "properties.agentProfile.maxAgentLifetime",
+      "Microsoft.DevOpsInfrastructure/pools/devCenterProjectResourceId": "properties.devCenterProjectResourceId",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile": "properties.fabricProfile",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.kind": "properties.fabricProfile.kind",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss": "properties.fabricProfile",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.images": "properties.fabricProfile.images",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.images[*]": "properties.fabricProfile.images[*]",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.images[*].aliases": "properties.fabricProfile.images[*].aliases",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.images[*].aliases[*]": "properties.fabricProfile.images[*].aliases[*]",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.images[*].buffer": "properties.fabricProfile.images[*].buffer",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.images[*].resourceId": "properties.fabricProfile.images[*].resourceId",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.images[*].wellKnownImageName": "properties.fabricProfile.images[*].wellKnownImageName",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.networkProfile": "properties.fabricProfile.networkProfile",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.networkProfile.subnetId": "properties.fabricProfile.networkProfile.subnetId",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.osProfile": "properties.fabricProfile.osProfile",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.osProfile.logonType": "properties.fabricProfile.osProfile.logonType",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.osProfile.secretsManagementSettings": "properties.fabricProfile.osProfile.secretsManagementSettings",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.osProfile.secretsManagementSettings.certificateStoreLocation": "properties.fabricProfile.osProfile.secretsManagementSettings.certificateStoreLocation",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.osProfile.secretsManagementSettings.keyExportable": "properties.fabricProfile.osProfile.secretsManagementSettings.keyExportable",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.osProfile.secretsManagementSettings.observedCertificates": "properties.fabricProfile.osProfile.secretsManagementSettings.observedCertificates",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.osProfile.secretsManagementSettings.observedCertificates[*]": "properties.fabricProfile.osProfile.secretsManagementSettings.observedCertificates[*]",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.sku": "properties.fabricProfile.sku",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.sku.name": "properties.fabricProfile.sku.name",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.sku.tier": "properties.fabricProfile.sku.tier",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.storageProfile": "properties.fabricProfile.storageProfile",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.storageProfile.dataDisks": "properties.fabricProfile.storageProfile.dataDisks",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.storageProfile.dataDisks[*]": "properties.fabricProfile.storageProfile.dataDisks[*]",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.storageProfile.dataDisks[*].caching": "properties.fabricProfile.storageProfile.dataDisks[*].caching",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.storageProfile.dataDisks[*].diskSizeGiB": "properties.fabricProfile.storageProfile.dataDisks[*].diskSizeGiB",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.storageProfile.dataDisks[*].driveLetter": "properties.fabricProfile.storageProfile.dataDisks[*].driveLetter",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.storageProfile.dataDisks[*].storageAccountType": "properties.fabricProfile.storageProfile.dataDisks[*].storageAccountType",
+      "Microsoft.DevOpsInfrastructure/pools/fabricProfile.Vmss.storageProfile.osDiskStorageAccountType": "properties.fabricProfile.storageProfile.osDiskStorageAccountType",
+      "Microsoft.DevOpsInfrastructure/pools/maximumConcurrency": "properties.maximumConcurrency",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile": "properties.organizationProfile",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps": "properties.organizationProfile",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.organizations": "properties.organizationProfile.organizations",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.organizations[*]": "properties.organizationProfile.organizations[*]",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.organizations[*].parallelism": "properties.organizationProfile.organizations[*].parallelism",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.organizations[*].projects": "properties.organizationProfile.organizations[*].projects",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.organizations[*].projects[*]": "properties.organizationProfile.organizations[*].projects[*]",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.organizations[*].url": "properties.organizationProfile.organizations[*].url",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.permissionProfile": "properties.organizationProfile.permissionProfile",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.permissionProfile.groups": "properties.organizationProfile.permissionProfile.groups",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.permissionProfile.groups[*]": "properties.organizationProfile.permissionProfile.groups[*]",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.permissionProfile.kind": "properties.organizationProfile.permissionProfile.kind",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.permissionProfile.users": "properties.organizationProfile.permissionProfile.users",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.AzureDevOps.permissionProfile.users[*]": "properties.organizationProfile.permissionProfile.users[*]",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.GitHub": "properties.organizationProfile",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.GitHub.organizations": "properties.organizationProfile.organizations",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.GitHub.organizations[*]": "properties.organizationProfile.organizations[*]",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.GitHub.organizations[*].repositories": "properties.organizationProfile.organizations[*].repositories",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.GitHub.organizations[*].repositories[*]": "properties.organizationProfile.organizations[*].repositories[*]",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.GitHub.organizations[*].url": "properties.organizationProfile.organizations[*].url",
+      "Microsoft.DevOpsInfrastructure/pools/organizationProfile.kind": "properties.organizationProfile.kind",
+      "Microsoft.DevOpsInfrastructure/pools/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "pools"
+  }
+]

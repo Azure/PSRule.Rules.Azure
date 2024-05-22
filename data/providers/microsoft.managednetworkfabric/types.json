@@ -9,6 +9,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -26,6 +27,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -43,6 +45,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -60,6 +63,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -77,6 +81,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -94,6 +99,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -111,6 +117,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -128,6 +135,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -145,6 +153,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -162,6 +171,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -173,6 +183,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-02-15-preview",
       "2023-06-15",
       "2023-02-01-preview",
       "2022-01-15-privatepreview"
@@ -184,11 +195,13 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-02-15-preview",
       "2023-06-15"
     ],
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -206,6 +219,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -223,6 +237,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -240,6 +255,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -257,6 +273,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -274,6 +291,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -291,6 +309,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -308,6 +327,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -325,6 +345,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -342,6 +363,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -359,6 +381,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",
@@ -370,6 +393,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-02-15-preview",
       "2023-06-15",
       "2023-02-01-preview",
       "2022-01-15-privatepreview"
@@ -387,6 +411,7 @@
     "locations": [
       "Australia East",
       "East US",
+      "North Europe",
       "South Central US",
       "UAE North",
       "UK South",

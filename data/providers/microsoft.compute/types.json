@@ -71,6 +71,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -80,6 +81,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -99,6 +101,10 @@
       "Microsoft.Compute/capacityReservationGroups/capacityReservations": "properties.capacityReservations",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations[*]": "properties.capacityReservations[*]",
       "Microsoft.Compute/capacityReservationGroups/capacityReservations[*].id": "properties.capacityReservations[*].id",
+      "Microsoft.Compute/capacityReservationGroups/sharingProfile": "properties.sharingProfile",
+      "Microsoft.Compute/capacityReservationGroups/sharingProfile.subscriptionIds": "properties.sharingProfile.subscriptionIds",
+      "Microsoft.Compute/capacityReservationGroups/sharingProfile.subscriptionIds[*]": "properties.sharingProfile.subscriptionIds[*]",
+      "Microsoft.Compute/capacityReservationGroups/sharingProfile.subscriptionIds[*].id": "properties.sharingProfile.subscriptionIds[*].id",
       "Microsoft.Compute/capacityReservationGroups/virtualMachinesAssociated": "properties.virtualMachinesAssociated",
       "Microsoft.Compute/capacityReservationGroups/virtualMachinesAssociated[*]": "properties.virtualMachinesAssociated[*]",
       "Microsoft.Compute/capacityReservationGroups/virtualMachinesAssociated[*].id": "properties.virtualMachinesAssociated[*].id",
@@ -142,6 +148,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -151,6 +158,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -277,8 +285,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -337,6 +349,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -375,10 +391,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -452,6 +464,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -461,6 +474,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -587,8 +601,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -647,6 +665,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -685,10 +707,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -799,6 +817,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -808,6 +827,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -934,8 +954,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -994,6 +1018,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -1032,10 +1060,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -1083,6 +1107,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1092,6 +1117,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1134,6 +1160,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1143,6 +1170,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1187,6 +1215,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1196,6 +1225,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1238,6 +1268,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1247,6 +1278,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1291,6 +1323,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1300,6 +1333,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1367,6 +1401,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1376,6 +1411,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1457,6 +1493,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1466,6 +1503,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1501,6 +1539,7 @@
       "Microsoft.Compute/disks/creationData.imageReference.sharedGalleryImageId": "properties.creationData.imageReference.sharedGalleryImageId",
       "Microsoft.Compute/disks/creationData.logicalSectorSize": "properties.creationData.logicalSectorSize",
       "Microsoft.Compute/disks/creationData.performancePlus": "properties.creationData.performancePlus",
+      "Microsoft.Compute/disks/creationData.provisionedBandwidthCopySpeed": "properties.creationData.provisionedBandwidthCopySpeed",
       "Microsoft.Compute/disks/creationData.securityDataUri": "properties.creationData.securityDataUri",
       "Microsoft.Compute/disks/creationData.sourceResourceId": "properties.creationData.sourceResourceId",
       "Microsoft.Compute/disks/creationData.sourceUniqueId": "properties.creationData.sourceUniqueId",
@@ -1628,6 +1667,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1637,6 +1677,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1763,8 +1804,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -1823,6 +1868,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -1861,10 +1910,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -1980,6 +2025,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1989,6 +2035,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -2059,6 +2106,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2068,6 +2116,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -2198,6 +2247,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2207,6 +2257,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -2292,6 +2343,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2301,6 +2353,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -2377,6 +2430,30 @@
       "Microsoft.Compute/galleries/images/versions/safetyProfile.policyViolations[*].category": "properties.safetyProfile.policyViolations[*].category",
       "Microsoft.Compute/galleries/images/versions/safetyProfile.policyViolations[*].details": "properties.safetyProfile.policyViolations[*].details",
       "Microsoft.Compute/galleries/images/versions/safetyProfile.reportedForPolicyViolation": "properties.safetyProfile.reportedForPolicyViolation",
+      "Microsoft.Compute/galleries/images/versions/securityProfile": "properties.securityProfile",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings": "properties.securityProfile.uefiSettings",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures": "properties.securityProfile.uefiSettings.additionalSignatures",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.db": "properties.securityProfile.uefiSettings.additionalSignatures.db",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.db[*]": "properties.securityProfile.uefiSettings.additionalSignatures.db[*]",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.db[*].type": "properties.securityProfile.uefiSettings.additionalSignatures.db[*].type",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.db[*].value": "properties.securityProfile.uefiSettings.additionalSignatures.db[*].value",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.db[*].value[*]": "properties.securityProfile.uefiSettings.additionalSignatures.db[*].value[*]",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.dbx": "properties.securityProfile.uefiSettings.additionalSignatures.dbx",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.dbx[*]": "properties.securityProfile.uefiSettings.additionalSignatures.dbx[*]",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.dbx[*].type": "properties.securityProfile.uefiSettings.additionalSignatures.dbx[*].type",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.dbx[*].value": "properties.securityProfile.uefiSettings.additionalSignatures.dbx[*].value",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.dbx[*].value[*]": "properties.securityProfile.uefiSettings.additionalSignatures.dbx[*].value[*]",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.kek": "properties.securityProfile.uefiSettings.additionalSignatures.kek",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.kek[*]": "properties.securityProfile.uefiSettings.additionalSignatures.kek[*]",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.kek[*].type": "properties.securityProfile.uefiSettings.additionalSignatures.kek[*].type",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.kek[*].value": "properties.securityProfile.uefiSettings.additionalSignatures.kek[*].value",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.kek[*].value[*]": "properties.securityProfile.uefiSettings.additionalSignatures.kek[*].value[*]",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.pk": "properties.securityProfile.uefiSettings.additionalSignatures.pk",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.pk.type": "properties.securityProfile.uefiSettings.additionalSignatures.pk.type",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.pk.value": "properties.securityProfile.uefiSettings.additionalSignatures.pk.value",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.additionalSignatures.pk.value[*]": "properties.securityProfile.uefiSettings.additionalSignatures.pk.value[*]",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.signatureTemplateNames": "properties.securityProfile.uefiSettings.signatureTemplateNames",
+      "Microsoft.Compute/galleries/images/versions/securityProfile.uefiSettings.signatureTemplateNames[*]": "properties.securityProfile.uefiSettings.signatureTemplateNames[*]",
       "Microsoft.Compute/galleries/images/versions/storageProfile": "properties.storageProfile",
       "Microsoft.Compute/galleries/images/versions/storageProfile.dataDiskImages": "properties.storageProfile.dataDiskImages",
       "Microsoft.Compute/galleries/images/versions/storageProfile.dataDiskImages[*]": "properties.storageProfile.dataDiskImages[*]",
@@ -2397,7 +2474,8 @@
       "Microsoft.Compute/galleries/images/versions/storageProfile.source": "properties.storageProfile.source",
       "Microsoft.Compute/galleries/images/versions/storageProfile.source.communityGalleryImageId": "properties.storageProfile.source.communityGalleryImageId",
       "Microsoft.Compute/galleries/images/versions/storageProfile.source.id": "properties.storageProfile.source.id",
-      "Microsoft.Compute/galleries/images/versions/storageProfile.source.uri": "properties.storageProfile.source.uri"
+      "Microsoft.Compute/galleries/images/versions/storageProfile.source.uri": "properties.storageProfile.source.uri",
+      "Microsoft.Compute/galleries/images/versions/storageProfile.source.virtualMachineId": "properties.storageProfile.source.virtualMachineId"
     },
     "resourceType": "galleries/images/versions",
     "apiVersions": [
@@ -2435,6 +2513,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2444,6 +2523,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -2511,6 +2591,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2520,6 +2601,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -2646,8 +2728,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -2706,6 +2792,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -2744,10 +2834,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -2825,6 +2911,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2834,6 +2921,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -2960,8 +3048,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -3020,6 +3112,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -3058,10 +3154,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -3163,6 +3255,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3172,6 +3265,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3297,6 +3391,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3306,6 +3401,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3349,6 +3445,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3358,6 +3455,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3401,6 +3499,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3410,6 +3509,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3481,6 +3581,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3490,6 +3591,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3534,6 +3636,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3543,6 +3646,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3561,6 +3665,7 @@
     "aliases": null,
     "resourceType": "locations/diagnosticOperations",
     "apiVersions": [
+      "2024-03-01-preview",
       "2021-06-01-preview"
     ],
     "locations": [
@@ -3577,18 +3682,24 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3607,6 +3718,7 @@
     "aliases": null,
     "resourceType": "locations/diagnostics",
     "apiVersions": [
+      "2024-03-01-preview",
       "2021-06-01-preview"
     ],
     "locations": [
@@ -3623,18 +3735,24 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
+      "Poland Central",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3695,6 +3813,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3704,6 +3823,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3776,6 +3896,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3785,6 +3906,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3837,6 +3959,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3846,6 +3969,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3898,6 +4022,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3907,6 +4032,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -3967,6 +4093,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3976,6 +4103,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4043,6 +4171,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4052,6 +4181,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4123,6 +4253,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4132,6 +4263,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4181,6 +4313,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4190,6 +4323,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4251,6 +4385,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4260,6 +4395,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4331,6 +4467,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4340,6 +4477,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4393,6 +4531,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4402,6 +4541,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4455,6 +4595,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4464,6 +4605,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4530,6 +4672,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4539,6 +4682,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4601,6 +4745,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4610,6 +4755,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4672,6 +4818,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4681,6 +4828,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4747,6 +4895,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4756,6 +4905,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4821,6 +4971,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4830,6 +4981,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -4850,7 +5002,10 @@
     "apiVersions": [
       "2023-07-03"
     ],
-    "locations": [],
+    "locations": [
+      "South Central US",
+      "West Europe"
+    ],
     "zoneMappings": []
   },
   {
@@ -4938,6 +5093,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -4947,6 +5103,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -5073,8 +5230,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -5133,6 +5294,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -5171,10 +5336,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -5280,6 +5441,12 @@
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.osProfile.windowsConfiguration.winRM.listeners[*].protocol": "properties.restorePoints[*].properties.sourceMetadata.osProfile.windowsConfiguration.winRM.listeners[*].protocol",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile": "properties.restorePoints[*].properties.sourceMetadata.securityProfile",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.encryptionAtHost": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.encryptionAtHost",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.encryptionIdentity": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.encryptionIdentity",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.encryptionIdentity.userAssignedIdentityResourceId": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.encryptionIdentity.userAssignedIdentityResourceId",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.proxyAgentSettings": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.proxyAgentSettings",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.proxyAgentSettings.enabled": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.proxyAgentSettings.enabled",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.proxyAgentSettings.keyIncarnationId": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.proxyAgentSettings.keyIncarnationId",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.proxyAgentSettings.mode": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.proxyAgentSettings.mode",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.securityType": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.securityType",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.uefiSettings": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.uefiSettings",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.securityProfile.uefiSettings.secureBootEnabled": "properties.restorePoints[*].properties.sourceMetadata.securityProfile.uefiSettings.secureBootEnabled",
@@ -5307,6 +5474,7 @@
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.storageProfile.dataDisks[*].managedDisk.storageAccountType": "properties.restorePoints[*].properties.sourceMetadata.storageProfile.dataDisks[*].managedDisk.storageAccountType",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.storageProfile.dataDisks[*].name": "properties.restorePoints[*].properties.sourceMetadata.storageProfile.dataDisks[*].name",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.storageProfile.dataDisks[*].writeAcceleratorEnabled": "properties.restorePoints[*].properties.sourceMetadata.storageProfile.dataDisks[*].writeAcceleratorEnabled",
+      "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.storageProfile.diskControllerType": "properties.restorePoints[*].properties.sourceMetadata.storageProfile.diskControllerType",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.storageProfile.osDisk": "properties.restorePoints[*].properties.sourceMetadata.storageProfile.osDisk",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.storageProfile.osDisk.caching": "properties.restorePoints[*].properties.sourceMetadata.storageProfile.osDisk.caching",
       "Microsoft.Compute/restorePointCollections/restorePoints[*].sourceMetadata.storageProfile.osDisk.diskRestorePoint": "properties.restorePoints[*].properties.sourceMetadata.storageProfile.osDisk.diskRestorePoint",
@@ -5393,6 +5561,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -5402,6 +5571,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -5496,6 +5666,12 @@
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.osProfile.windowsConfiguration.winRM.listeners[*].protocol": "properties.sourceMetadata.osProfile.windowsConfiguration.winRM.listeners[*].protocol",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile": "properties.sourceMetadata.securityProfile",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.encryptionAtHost": "properties.sourceMetadata.securityProfile.encryptionAtHost",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.encryptionIdentity": "properties.sourceMetadata.securityProfile.encryptionIdentity",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.encryptionIdentity.userAssignedIdentityResourceId": "properties.sourceMetadata.securityProfile.encryptionIdentity.userAssignedIdentityResourceId",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.proxyAgentSettings": "properties.sourceMetadata.securityProfile.proxyAgentSettings",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.proxyAgentSettings.enabled": "properties.sourceMetadata.securityProfile.proxyAgentSettings.enabled",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.proxyAgentSettings.keyIncarnationId": "properties.sourceMetadata.securityProfile.proxyAgentSettings.keyIncarnationId",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.proxyAgentSettings.mode": "properties.sourceMetadata.securityProfile.proxyAgentSettings.mode",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.securityType": "properties.sourceMetadata.securityProfile.securityType",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.uefiSettings": "properties.sourceMetadata.securityProfile.uefiSettings",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.securityProfile.uefiSettings.secureBootEnabled": "properties.sourceMetadata.securityProfile.uefiSettings.secureBootEnabled",
@@ -5525,6 +5701,7 @@
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].managedDisk.storageAccountType": "properties.sourceMetadata.storageProfile.dataDisks[*].managedDisk.storageAccountType",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].name": "properties.sourceMetadata.storageProfile.dataDisks[*].name",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.dataDisks[*].writeAcceleratorEnabled": "properties.sourceMetadata.storageProfile.dataDisks[*].writeAcceleratorEnabled",
+      "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.diskControllerType": "properties.sourceMetadata.storageProfile.diskControllerType",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk": "properties.sourceMetadata.storageProfile.osDisk",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.caching": "properties.sourceMetadata.storageProfile.osDisk.caching",
       "Microsoft.Compute/restorePointCollections/restorePoints/sourceMetadata.storageProfile.osDisk.diskRestorePoint": "properties.sourceMetadata.storageProfile.osDisk.diskRestorePoint",
@@ -5609,6 +5786,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -5618,6 +5796,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -5668,6 +5847,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -5677,6 +5857,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -5789,6 +5970,7 @@
       "Microsoft.Compute/snapshots/creationData.imageReference.sharedGalleryImageId": "properties.creationData.imageReference.sharedGalleryImageId",
       "Microsoft.Compute/snapshots/creationData.logicalSectorSize": "properties.creationData.logicalSectorSize",
       "Microsoft.Compute/snapshots/creationData.performancePlus": "properties.creationData.performancePlus",
+      "Microsoft.Compute/snapshots/creationData.provisionedBandwidthCopySpeed": "properties.creationData.provisionedBandwidthCopySpeed",
       "Microsoft.Compute/snapshots/creationData.securityDataUri": "properties.creationData.securityDataUri",
       "Microsoft.Compute/snapshots/creationData.sourceResourceId": "properties.creationData.sourceResourceId",
       "Microsoft.Compute/snapshots/creationData.sourceUniqueId": "properties.creationData.sourceUniqueId",
@@ -5898,6 +6080,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -5907,6 +6090,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -5963,6 +6147,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -5972,6 +6157,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -6038,6 +6224,7 @@
       "Microsoft.Compute/virtualMachines/instanceView.statuses": "properties.instanceView.statuses",
       "Microsoft.Compute/virtualMachines/instanceView.statuses[*].code": "properties.instanceView.statuses[*].code",
       "Microsoft.Compute/virtualMachines/licenseType": "properties.licenseType",
+      "Microsoft.Compute/virtualMachines/managedBy": "managedBy",
       "Microsoft.Compute/virtualMachines/networkInterfaces[*].id": "properties.networkProfile.networkInterfaces[*].id",
       "Microsoft.Compute/virtualMachines/networkProfile": "properties.networkProfile",
       "Microsoft.Compute/virtualMachines/networkProfile.networkApiVersion": "properties.networkProfile.networkApiVersion",
@@ -6168,6 +6355,12 @@
       "Microsoft.Compute/virtualMachines/scheduledEventsProfile.terminateNotificationProfile.notBeforeTimeout": "properties.scheduledEventsProfile.terminateNotificationProfile.notBeforeTimeout",
       "Microsoft.Compute/virtualMachines/securityProfile": "properties.securityProfile",
       "Microsoft.Compute/virtualMachines/securityProfile.encryptionAtHost": "properties.securityProfile.encryptionAtHost",
+      "Microsoft.Compute/virtualMachines/securityProfile.encryptionIdentity": "properties.securityProfile.encryptionIdentity",
+      "Microsoft.Compute/virtualMachines/securityProfile.encryptionIdentity.userAssignedIdentityResourceId": "properties.securityProfile.encryptionIdentity.userAssignedIdentityResourceId",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings": "properties.securityProfile.proxyAgentSettings",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.enabled": "properties.securityProfile.proxyAgentSettings.enabled",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.keyIncarnationId": "properties.securityProfile.proxyAgentSettings.keyIncarnationId",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.mode": "properties.securityProfile.proxyAgentSettings.mode",
       "Microsoft.Compute/virtualMachines/securityProfile.securityType": "properties.securityProfile.securityType",
       "Microsoft.Compute/virtualMachines/securityProfile.uefiSettings": "properties.securityProfile.uefiSettings",
       "Microsoft.Compute/virtualMachines/securityProfile.uefiSettings.secureBootEnabled": "properties.securityProfile.uefiSettings.secureBootEnabled",
@@ -6302,6 +6495,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -6311,6 +6505,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -6437,8 +6632,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -6497,6 +6696,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -6535,10 +6738,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -6643,6 +6842,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -6652,6 +6852,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -6693,6 +6894,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -6702,6 +6904,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -6786,6 +6989,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -6795,6 +6999,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -6844,6 +7049,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -6853,6 +7059,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -6924,6 +7131,11 @@
       "Microsoft.Compute/virtualMachineScaleSets/provisioningState": "properties.provisioningState",
       "Microsoft.Compute/virtualMachineScaleSets/proximityPlacementGroup": "properties.proximityPlacementGroup",
       "Microsoft.Compute/virtualMachineScaleSets/proximityPlacementGroup.id": "properties.proximityPlacementGroup.id",
+      "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy": "properties.resiliencyPolicy",
+      "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.resilientVMCreationPolicy": "properties.resiliencyPolicy.resilientVMCreationPolicy",
+      "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.resilientVMCreationPolicy.enabled": "properties.resiliencyPolicy.resilientVMCreationPolicy.enabled",
+      "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.resilientVMDeletionPolicy": "properties.resiliencyPolicy.resilientVMDeletionPolicy",
+      "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.resilientVMDeletionPolicy.enabled": "properties.resiliencyPolicy.resilientVMDeletionPolicy.enabled",
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy": "properties.scaleInPolicy",
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy.forceDeletion": "properties.scaleInPolicy.forceDeletion",
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy.rules": "properties.scaleInPolicy.rules",
@@ -6943,6 +7155,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/upgradePolicy.automaticOSUpgradePolicy": "properties.upgradePolicy.automaticOSUpgradePolicy",
       "Microsoft.Compute/virtualMachineScaleSets/upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback": "properties.upgradePolicy.automaticOSUpgradePolicy.disableAutomaticRollback",
       "Microsoft.Compute/virtualMachineScaleSets/upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade": "properties.upgradePolicy.automaticOSUpgradePolicy.enableAutomaticOSUpgrade",
+      "Microsoft.Compute/virtualMachineScaleSets/upgradePolicy.automaticOSUpgradePolicy.osRollingUpgradeDeferral": "properties.upgradePolicy.automaticOSUpgradePolicy.osRollingUpgradeDeferral",
       "Microsoft.Compute/virtualMachineScaleSets/upgradePolicy.automaticOSUpgradePolicy.useRollingUpgradePolicy": "properties.upgradePolicy.automaticOSUpgradePolicy.useRollingUpgradePolicy",
       "Microsoft.Compute/virtualMachineScaleSets/upgradePolicy.autoOSUpgradePolicy": "properties.upgradePolicy.autoOSUpgradePolicy",
       "Microsoft.Compute/virtualMachineScaleSets/upgradePolicy.autoOSUpgradePolicy.disableAutoRollback": "properties.upgradePolicy.autoOSUpgradePolicy.disableAutoRollback",
@@ -7148,6 +7361,12 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityPostureReference.id": "properties.virtualMachineProfile.securityPostureReference.id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile": "properties.virtualMachineProfile.securityProfile",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.encryptionAtHost": "properties.virtualMachineProfile.securityProfile.encryptionAtHost",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.encryptionIdentity": "properties.virtualMachineProfile.securityProfile.encryptionIdentity",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.encryptionIdentity.userAssignedIdentityResourceId": "properties.virtualMachineProfile.securityProfile.encryptionIdentity.userAssignedIdentityResourceId",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings.enabled": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings.enabled",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings.keyIncarnationId": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings.keyIncarnationId",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings.mode": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings.mode",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.securityType": "properties.virtualMachineProfile.securityProfile.securityType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.uefiSettings": "properties.virtualMachineProfile.securityProfile.uefiSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.uefiSettings.secureBootEnabled": "properties.virtualMachineProfile.securityProfile.uefiSettings.secureBootEnabled",
@@ -7207,6 +7426,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.vhdContainers": "properties.virtualMachineProfile.storageProfile.osDisk.vhdContainers",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.vhdContainers[*]": "properties.virtualMachineProfile.storageProfile.osDisk.vhdContainers[*]",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.writeAcceleratorEnabled": "properties.virtualMachineProfile.storageProfile.osDisk.writeAcceleratorEnabled",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.timeCreated": "properties.virtualMachineProfile.timeCreated",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.userData": "properties.virtualMachineProfile.userData",
       "Microsoft.Compute/virtualMachineScaleSets/zoneBalance": "properties.zoneBalance",
       "Microsoft.Compute/virtualMachineScaleSets/zones": "zones",
@@ -7263,6 +7483,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -7272,6 +7493,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -7398,8 +7620,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -7458,6 +7684,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -7496,10 +7726,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -7554,6 +7780,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -7563,6 +7790,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -7623,6 +7851,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -7632,6 +7861,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -7718,6 +7948,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -7727,6 +7958,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -7796,6 +8028,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -7805,6 +8038,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -7866,6 +8100,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -7875,6 +8110,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -8087,6 +8323,12 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/provisioningState": "properties.provisioningState",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile": "properties.securityProfile",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.encryptionAtHost": "properties.securityProfile.encryptionAtHost",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.encryptionIdentity": "properties.securityProfile.encryptionIdentity",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.encryptionIdentity.userAssignedIdentityResourceId": "properties.securityProfile.encryptionIdentity.userAssignedIdentityResourceId",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings": "properties.securityProfile.proxyAgentSettings",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.enabled": "properties.securityProfile.proxyAgentSettings.enabled",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.keyIncarnationId": "properties.securityProfile.proxyAgentSettings.keyIncarnationId",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.mode": "properties.securityProfile.proxyAgentSettings.mode",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.securityType": "properties.securityProfile.securityType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.uefiSettings": "properties.securityProfile.uefiSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.uefiSettings.secureBootEnabled": "properties.securityProfile.uefiSettings.secureBootEnabled",
@@ -8223,6 +8465,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -8232,6 +8475,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -8316,6 +8560,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -8325,6 +8570,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -8394,6 +8640,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -8403,6 +8650,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",

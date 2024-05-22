@@ -1,20 +1,18 @@
 [
   {
     "aliases": null,
-    "resourceType": "checkNameAvailability",
+    "resourceType": "operations",
     "apiVersions": [
-      "2022-04-01-preview",
-      "2021-09-01-preview"
+      "2024-01-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "operations",
+    "resourceType": "subscriptionInternalProperties",
     "apiVersions": [
-      "2022-04-01-preview",
-      "2021-09-01-preview"
+      "2024-01-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

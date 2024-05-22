@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [
@@ -14,6 +15,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [
@@ -37,6 +39,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [
@@ -48,6 +51,7 @@
     "aliases": null,
     "resourceType": "springbootsites",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [
@@ -70,6 +74,7 @@
     "aliases": null,
     "resourceType": "springbootsites/errorsummaries",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [
@@ -92,6 +97,7 @@
     "aliases": null,
     "resourceType": "springbootsites/springbootapps",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [
@@ -114,6 +120,7 @@
     "aliases": null,
     "resourceType": "springbootsites/springbootservers",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [
@@ -136,6 +143,7 @@
     "aliases": null,
     "resourceType": "springbootsites/summaries",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-01-01-preview"
     ],
     "locations": [

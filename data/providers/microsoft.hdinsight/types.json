@@ -1,19 +1,32 @@
 [
   {
     "aliases": null,
-    "resourceType": "clusterPools",
+    "resourceType": "clusterpools",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-06-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
+      "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
+      "Japan East",
       "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -21,19 +34,30 @@
   },
   {
     "aliases": null,
-    "resourceType": "clusterPools/clusters",
+    "resourceType": "clusterpools/availableupgrades",
     "apiVersions": [
-      "2023-06-01-preview",
-      "2021-09-15-preview"
+      "2023-11-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
+      "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
+      "Japan East",
       "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -41,19 +65,32 @@
   },
   {
     "aliases": null,
-    "resourceType": "clusterPools/clusters/instanceViews",
+    "resourceType": "clusterpools/clusters",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-06-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
+      "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
+      "Japan East",
       "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -61,19 +98,30 @@
   },
   {
     "aliases": null,
-    "resourceType": "clusterPools/clusters/jobs",
+    "resourceType": "clusterpools/clusters/availableupgrades",
     "apiVersions": [
-      "2023-06-01-preview",
-      "2021-09-15-preview"
+      "2023-11-01-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
+      "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
+      "Japan East",
       "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -81,19 +129,98 @@
   },
   {
     "aliases": null,
-    "resourceType": "clusterPools/clusters/serviceConfigs",
+    "resourceType": "clusterpools/clusters/instanceViews",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-06-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
+      "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
+      "Japan East",
       "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusterpools/clusters/jobs",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "clusterpools/clusters/serviceConfigs",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-06-01-preview",
+      "2021-09-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
+      "UK South",
+      "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -251,6 +378,7 @@
       "JIO India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -387,8 +515,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -485,10 +617,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -646,6 +774,7 @@
       "JIO India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -782,8 +911,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -882,10 +1015,6 @@
         ]
       },
       {
-        "location": "West US",
-        "zones": []
-      },
-      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -936,6 +1065,7 @@
       "JIO India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -962,7 +1092,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations",
+    "resourceType": "Locations",
     "apiVersions": [
       "2023-08-15-preview",
       "2023-04-15-preview",
@@ -992,19 +1122,32 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/availableClusterPoolVersions",
+    "resourceType": "Locations/availableclusterpoolversions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-06-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
+      "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
+      "Japan East",
       "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -1012,19 +1155,32 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/availableClusterVersions",
+    "resourceType": "Locations/availableclusterversions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-06-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
+      "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
+      "Japan East",
       "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -1063,6 +1219,7 @@
       "JIO India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1120,6 +1277,7 @@
       "JIO India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1177,6 +1335,7 @@
       "JIO India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1231,6 +1390,7 @@
       "Norway East",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "UK South",
       "West Europe",
@@ -1242,19 +1402,32 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/clusterOfferingVersions",
+    "resourceType": "Locations/clusterofferingversions",
     "apiVersions": [
+      "2023-11-01-preview",
       "2023-06-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
       "Central India",
+      "Central US",
       "East Asia",
       "East US",
       "East US 2",
+      "France Central",
+      "Japan East",
       "Korea Central",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
       "UK South",
       "West Europe",
+      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -1293,6 +1466,7 @@
       "JIO India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1319,14 +1493,16 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationStatuses",
+    "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-05-01",
       "2023-11-01-preview",
       "2023-06-01-preview",
       "2021-09-15-preview"
     ],
     "locations": [
       "Australia East",
+      "Australia Southeast",
       "Brazil South",
       "Canada Central",
       "Central India",
@@ -1343,6 +1519,7 @@
       "Norway East",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
       "UK South",
       "West Europe",
@@ -1385,6 +1562,7 @@
       "JIO India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1442,6 +1620,7 @@
       "JIO India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",

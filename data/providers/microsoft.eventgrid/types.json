@@ -55,6 +55,7 @@
     },
     "resourceType": "domains",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -91,6 +92,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -120,6 +122,7 @@
     },
     "resourceType": "domains/topics",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -156,6 +159,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -448,6 +452,7 @@
     },
     "resourceType": "eventSubscriptions",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -489,6 +494,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -516,6 +522,7 @@
     "aliases": null,
     "resourceType": "extensionTopics",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -557,6 +564,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -584,6 +592,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -610,6 +619,7 @@
     "aliases": null,
     "resourceType": "locations/eventSubscriptions",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -651,6 +661,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -678,6 +689,7 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview"
     ],
@@ -710,6 +722,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -741,6 +754,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -782,6 +796,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -809,6 +824,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -850,6 +866,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -877,6 +894,7 @@
     "aliases": null,
     "resourceType": "locations/topicTypes",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -918,6 +936,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -994,6 +1013,7 @@
     },
     "resourceType": "namespaces",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview"
     ],
@@ -1038,6 +1058,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -1131,6 +1152,7 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -1166,6 +1188,7 @@
     },
     "resourceType": "partnerConfigurations",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -1188,6 +1211,7 @@
     },
     "resourceType": "partnerDestinations",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2021-10-15-preview"
@@ -1214,6 +1238,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1267,6 +1292,7 @@
     },
     "resourceType": "partnerNamespaces",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -1296,6 +1322,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1361,6 +1388,7 @@
     },
     "resourceType": "partnerNamespaces/channels",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -1388,6 +1416,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1506,6 +1535,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1549,6 +1579,7 @@
     },
     "resourceType": "partnerRegistrations",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -1612,6 +1643,7 @@
     },
     "resourceType": "partnerTopics",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -1642,6 +1674,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1932,6 +1965,7 @@
     },
     "resourceType": "partnerTopics/eventSubscriptions",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -1962,6 +1996,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2029,6 +2064,7 @@
     },
     "resourceType": "systemTopics",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -2061,6 +2097,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2351,6 +2388,7 @@
     },
     "resourceType": "systemTopics/eventSubscriptions",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -2383,6 +2421,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2460,6 +2499,7 @@
     },
     "resourceType": "topics",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -2501,6 +2541,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2528,6 +2569,7 @@
     "aliases": null,
     "resourceType": "topicTypes",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -2570,6 +2612,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2597,6 +2640,7 @@
     "aliases": null,
     "resourceType": "verifiedPartners",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-12-15-preview",
       "2023-06-01-preview",
       "2022-06-15",
@@ -2625,6 +2669,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",

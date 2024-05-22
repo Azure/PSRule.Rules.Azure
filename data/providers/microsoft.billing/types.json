@@ -38,6 +38,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/alertPreferences",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/alerts",
     "apiVersions": [
       "2022-10-01-privatepreview"
@@ -95,6 +104,15 @@
       "2020-05-01",
       "2019-10-01-preview",
       "2018-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/alertPreferences",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": []

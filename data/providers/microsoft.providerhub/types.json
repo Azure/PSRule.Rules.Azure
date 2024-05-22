@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "availableAccounts",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2023-10-01-preview",
       "2023-08-01-preview",
       "2023-04-01-preview",
       "2021-09-01-preview",
@@ -21,6 +23,8 @@
     "aliases": null,
     "resourceType": "operationStatuses",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2023-10-01-preview",
       "2023-08-01-preview",
       "2023-04-01-preview",
       "2022-07-01-preview",
@@ -41,6 +45,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2023-10-01-preview",
       "2023-08-01-preview",
       "2023-04-01-preview",
       "2022-07-01-preview",
@@ -60,6 +66,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/authorizedApplications",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2023-10-01-preview",
       "2023-08-01-preview",
       "2023-04-01-preview",
       "2023-01-01-privatepreview"
@@ -71,6 +79,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/checkinmanifest",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2023-10-01-preview",
       "2023-08-01-preview",
       "2023-04-01-preview",
       "2022-07-01-preview",
@@ -90,6 +100,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/customRollouts",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2023-10-01-preview",
       "2023-08-01-preview",
       "2023-04-01-preview",
       "2022-07-01-preview",
@@ -109,6 +121,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/defaultRollouts",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2023-10-01-preview",
       "2023-08-01-preview",
       "2023-04-01-preview",
       "2022-07-01-preview",
@@ -126,8 +140,32 @@
   },
   {
     "aliases": null,
+    "resourceType": "providerRegistrations/newRegionFrontloadRelease",
+    "apiVersions": [
+      "2024-02-01-preview",
+      "2023-08-01-preview",
+      "2023-04-01-preview",
+      "2023-01-01-privatepreview",
+      "2022-07-01-preview",
+      "2021-10-01-privatepreview",
+      "2021-09-01-preview",
+      "2021-06-01-preview",
+      "2021-05-01-preview",
+      "2020-11-20",
+      "2020-10-01-preview",
+      "2020-09-01-preview",
+      "2020-06-01-preview",
+      "2019-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "providerRegistrations/resourceActions",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2023-10-01-preview",
       "2023-08-01-preview",
       "2023-04-01-preview",
       "2021-09-01-preview",
@@ -147,6 +185,8 @@
     "aliases": null,
     "resourceType": "providerRegistrations/resourceTypeRegistrations",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2023-10-01-preview",
       "2023-08-01-preview",
       "2023-04-01-preview",
       "2022-07-01-preview",
