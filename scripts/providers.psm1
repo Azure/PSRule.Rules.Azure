@@ -88,7 +88,7 @@ function UpdateProviders {
                     aliases      = $a
                     resourceType = $_.resourceType
                     apiVersions  = $_.apiVersions
-                    locations    = @($_.locations | Sort-Object)
+                    locations    = @($_.locations | Where-Object { $_ -notlike "MSFT *" -and $_ -notlike "* (Stage)" } | Sort-Object)
                     zoneMappings = @($_.ZoneMappings | Sort-Object -Property location | ForEach-Object {
                             $zones = $_.zones
                             if ($Null -ne $zones) {
