@@ -116,6 +116,7 @@
     },
     "resourceType": "actionRules",
     "apiVersions": [
+      "2024-03-01-preview",
       "2023-05-01-preview",
       "2021-08-08-preview",
       "2021-08-08",

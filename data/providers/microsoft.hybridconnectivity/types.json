@@ -20,8 +20,10 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -45,6 +47,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "generateAwsTemplate",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
       "2023-04-01-preview",
@@ -61,6 +75,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-08-01-preview",
       "2023-03-15",
       "2022-05-01-preview",
       "2021-10-06-preview"
@@ -78,8 +93,10 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -105,6 +122,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-08-01-preview",
       "2023-12-01-preview",
       "2023-04-01-preview",
       "2023-03-15",
@@ -112,6 +130,43 @@
       "2021-10-06-preview",
       "2021-10-01-privatepreview",
       "2021-07-08-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "publicCloudConnectors",
+    "apiVersions": [
+      "2024-08-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "East US",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "solutionConfigurations",
+    "apiVersions": [
+      "2024-08-01-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "East US",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "solutionTypes",
+    "apiVersions": [
+      "2024-08-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

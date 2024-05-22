@@ -15,6 +15,7 @@
     },
     "resourceType": "licenses",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview"
     ],
@@ -34,6 +35,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -59,6 +61,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -92,6 +95,7 @@
     "aliases": null,
     "resourceType": "locations/notifyExtension",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview"
     ],
     "locations": [
@@ -109,6 +113,7 @@
       "Germany West Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -134,6 +139,7 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview"
     ],
     "locations": [
@@ -154,6 +160,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -179,6 +186,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -219,6 +227,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -244,6 +253,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -284,6 +294,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -309,6 +320,7 @@
     "aliases": null,
     "resourceType": "locations/privateLinkScopes",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -343,6 +355,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -368,6 +381,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -393,6 +407,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -418,6 +433,7 @@
     "aliases": null,
     "resourceType": "locations/publishers/extensionTypes",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -443,6 +459,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -468,6 +485,7 @@
     "aliases": null,
     "resourceType": "locations/publishers/extensionTypes/versions",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -493,6 +511,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -518,6 +537,7 @@
     "aliases": null,
     "resourceType": "locations/updateCenterOperationResults",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -713,6 +733,7 @@
     },
     "resourceType": "machines",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -754,6 +775,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -779,6 +801,7 @@
     "aliases": null,
     "resourceType": "machines/assessPatches",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -856,6 +879,7 @@
     },
     "resourceType": "machines/extensions",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -896,6 +920,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -921,6 +946,7 @@
     "aliases": null,
     "resourceType": "machines/hybridIdentityMetadata",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -943,6 +969,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -968,6 +995,7 @@
     "aliases": null,
     "resourceType": "machines/installPatches",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -1037,6 +1065,7 @@
     },
     "resourceType": "machines/licenseProfiles",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview"
     ],
@@ -1056,6 +1085,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -1081,6 +1111,7 @@
     "aliases": null,
     "resourceType": "machines/privateLinkScopes",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -1115,6 +1146,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -1177,6 +1209,7 @@
     },
     "resourceType": "machines/runcommands",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview"
@@ -1222,10 +1255,12 @@
     "aliases": null,
     "resourceType": "networkConfigurations",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview"
     ],
     "locations": [
-      "Israel Central"
+      "Israel Central",
+      "japan west"
     ],
     "zoneMappings": []
   },
@@ -1233,6 +1268,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -1265,6 +1301,7 @@
     "aliases": null,
     "resourceType": "osType",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -1279,6 +1316,7 @@
     "aliases": null,
     "resourceType": "osType/agentVersions",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -1291,6 +1329,7 @@
     "aliases": null,
     "resourceType": "osType/agentVersions/latest",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -1321,6 +1360,7 @@
     },
     "resourceType": "privateLinkScopes",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -1356,6 +1396,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -1381,6 +1422,7 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/networkSecurityPerimeterAssociationProxies",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview"
     ],
     "locations": [
@@ -1399,6 +1441,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -1424,10 +1467,12 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/networkSecurityPerimeterConfigurations",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview"
     ],
     "locations": [
-      "Israel Central"
+      "Israel Central",
+      "japan west"
     ],
     "zoneMappings": []
   },
@@ -1435,6 +1480,7 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -1470,6 +1516,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -1505,6 +1552,7 @@
     },
     "resourceType": "privateLinkScopes/privateEndpointConnections",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview",
       "2023-04-25-preview",
@@ -1540,6 +1588,7 @@
       "Israel Central",
       "Italy North",
       "Japan East",
+      "japan west",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -1565,6 +1614,7 @@
     "aliases": null,
     "resourceType": "validateLicense",
     "apiVersions": [
+      "2024-03-31-preview",
       "2023-10-03-preview",
       "2023-06-20-preview"
     ],

@@ -45,6 +45,42 @@
   },
   {
     "aliases": null,
+    "resourceType": "investigations",
+    "apiVersions": [
+      "2024-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Germany West Central",
+      "Japan East",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
       "2023-10-01-preview",
@@ -87,6 +123,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -104,7 +141,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -139,6 +177,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -156,7 +195,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -203,6 +243,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -220,6 +261,20 @@
       "West Central US",
       "West Europe",
       "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "pipelineGroups",
+    "apiVersions": [
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "East US 2",
+      "West Europe",
       "West US 2"
     ],
     "zoneMappings": []

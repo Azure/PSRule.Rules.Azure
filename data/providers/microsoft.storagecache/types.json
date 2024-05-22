@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "amlFilesystems",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
@@ -159,14 +160,6 @@
         ]
       },
       {
-        "location": "West US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -183,6 +176,35 @@
         ]
       }
     ]
+  },
+  {
+    "aliases": null,
+    "resourceType": "amlFilesystems/importJobs",
+    "apiVersions": [
+      "2024-03-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
   },
   {
     "aliases": {
@@ -282,6 +304,7 @@
     },
     "resourceType": "caches",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
@@ -402,14 +425,6 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
         "location": "North Europe",
         "zones": [
           "1",
@@ -451,14 +466,6 @@
       },
       {
         "location": "West Europe",
-        "zones": [
-          "1",
-          "2",
-          "3"
-        ]
-      },
-      {
-        "location": "West US",
         "zones": [
           "1",
           "2",
@@ -509,6 +516,7 @@
     },
     "resourceType": "caches/storageTargets",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
@@ -553,6 +561,7 @@
     "aliases": null,
     "resourceType": "checkAmlFSSubnets",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
@@ -585,6 +594,7 @@
     "aliases": null,
     "resourceType": "getRequiredAmlFSSubnetsSize",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
@@ -617,6 +627,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
@@ -641,6 +652,7 @@
     "aliases": null,
     "resourceType": "locations/ascoperations",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
@@ -688,6 +700,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
@@ -726,6 +739,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",
@@ -773,6 +787,7 @@
     "aliases": null,
     "resourceType": "usageModels",
     "apiVersions": [
+      "2024-03-01",
       "2023-11-01-preview",
       "2023-05-01",
       "2023-03-01-preview",

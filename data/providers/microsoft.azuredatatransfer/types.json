@@ -1,0 +1,114 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "connections",
+    "apiVersions": [
+      "2024-01-25",
+      "2023-10-11-preview",
+      "2023-06-28",
+      "2022-12-13-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "connections/flows",
+    "apiVersions": [
+      "2024-01-25",
+      "2023-10-11-preview",
+      "2023-06-28",
+      "2022-12-13-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "listApprovedSchemas",
+    "apiVersions": [
+      "2024-01-25",
+      "2023-10-11-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2024-01-25",
+      "2023-10-11-preview",
+      "2023-06-28",
+      "2022-12-13-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2024-01-25",
+      "2023-10-11-preview",
+      "2023-06-28",
+      "2022-12-13-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2024-01-25",
+      "2023-10-11-preview",
+      "2023-06-28",
+      "2022-12-13-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "pipelines",
+    "apiVersions": [
+      "2024-01-25",
+      "2023-10-11-preview",
+      "2023-06-28",
+      "2022-12-13-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "validateSchema",
+    "apiVersions": [
+      "2024-01-25",
+      "2023-10-11-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  }
+]

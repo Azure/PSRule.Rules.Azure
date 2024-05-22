@@ -26,6 +26,17 @@
   },
   {
     "aliases": null,
+    "resourceType": "credits/sources",
+    "apiVersions": [
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "incentiveSchedules",
     "apiVersions": [
       "2023-07-01-beta"

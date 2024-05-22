@@ -1,36 +1,9 @@
 [
   {
     "aliases": null,
-    "resourceType": "apiCollections",
+    "resourceType": "apicollections",
     "apiVersions": [
       "2022-09-12-privatepreview",
-      "2022-03-02-privatepreview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "apiCollections/apiCollectionDetails",
-    "apiVersions": [
-      "2022-03-02-privatepreview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "apiCollectionsMeta",
-    "apiVersions": [
-      "2022-03-02-privatepreview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "apiCollectionsMeta/apiCollectionMetaDetails",
-    "apiVersions": [
       "2022-03-02-privatepreview"
     ],
     "locations": [],

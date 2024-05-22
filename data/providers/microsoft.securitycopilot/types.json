@@ -1,0 +1,50 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "capacities",
+    "apiVersions": [
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2023-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  }
+]

@@ -1,6 +1,8 @@
 [
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.SerialConsole/consoleServices/disabled": "properties.disabled"
+    },
     "resourceType": "consoleServices",
     "apiVersions": [
       "2023-01-01",
@@ -63,6 +65,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Israel Central",
       "Italy North",
       "Japan East",
       "Japan West",

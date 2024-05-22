@@ -78,6 +78,7 @@
     },
     "resourceType": "actiongroups",
     "apiVersions": [
+      "2023-09-01-preview",
       "2023-08-01-preview",
       "2023-01-01",
       "2022-06-01",
@@ -100,6 +101,38 @@
       "South Central US",
       "South India",
       "Sweden Central",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "actiongroups/networkSecurityPerimeterAssociationProxies",
+    "apiVersions": [
+      "2021-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "actiongroups/networkSecurityPerimeterConfigurations",
+    "apiVersions": [
+      "2021-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
       "West US",
       "West US 2"
     ],
@@ -391,6 +424,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -434,7 +468,6 @@
       "Microsoft.Insights/components/IngestionMode": "properties.IngestionMode",
       "Microsoft.Insights/components/InstrumentationKey": "properties.InstrumentationKey",
       "Microsoft.Insights/components/LaMigrationDate": "properties.LaMigrationDate",
-      "Microsoft.Insights/components/linkedStorageAccounts.ServiceProfiler.linkedStorageAccount": "properties.linkedStorageAccount",
       "Microsoft.Insights/components/Name": "properties.Name",
       "Microsoft.Insights/components/PrivateLinkScopedResources": "properties.PrivateLinkScopedResources",
       "Microsoft.Insights/components/PrivateLinkScopedResources[*]": "properties.PrivateLinkScopedResources[*]",
@@ -2165,6 +2198,7 @@
     "aliases": null,
     "resourceType": "createnotifications",
     "apiVersions": [
+      "2023-09-01-preview",
       "2023-05-01-preview",
       "2023-01-01",
       "2022-06-01",
@@ -2203,6 +2237,7 @@
     },
     "resourceType": "dataCollectionEndpoints",
     "apiVersions": [
+      "2023-03-11",
       "2022-06-01",
       "2021-09-01-preview",
       "2021-04-01"
@@ -2257,6 +2292,38 @@
       "West US",
       "West US 2",
       "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "dataCollectionEndpoints/networkSecurityPerimeterAssociationProxies",
+    "apiVersions": [
+      "2021-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "dataCollectionEndpoints/networkSecurityPerimeterConfigurations",
+    "apiVersions": [
+      "2021-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -2332,6 +2399,7 @@
     },
     "resourceType": "dataCollectionRuleAssociations",
     "apiVersions": [
+      "2023-03-11",
       "2022-06-01",
       "2021-09-01-preview",
       "2021-04-01",
@@ -2523,6 +2591,7 @@
     },
     "resourceType": "dataCollectionRules",
     "apiVersions": [
+      "2023-03-11",
       "2022-06-01",
       "2021-09-01-preview",
       "2021-04-01",
@@ -2640,6 +2709,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2697,6 +2767,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2775,6 +2846,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3151,6 +3223,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3211,6 +3284,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3278,6 +3352,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -3340,85 +3415,10 @@
     "zoneMappings": []
   },
   {
-    "aliases": {
-      "Microsoft.Insights/myWorkbooks/category": "properties.category",
-      "Microsoft.Insights/myWorkbooks/displayName": "properties.displayName",
-      "Microsoft.Insights/myWorkbooks/serializedData": "properties.serializedData",
-      "Microsoft.Insights/myWorkbooks/sourceId": "properties.sourceId",
-      "Microsoft.Insights/myWorkbooks/storageUri": "properties.storageUri",
-      "Microsoft.Insights/myWorkbooks/tags": "properties.tags",
-      "Microsoft.Insights/myWorkbooks/tags[*]": "properties.tags[*]",
-      "Microsoft.Insights/myWorkbooks/timeModified": "properties.timeModified",
-      "Microsoft.Insights/myWorkbooks/userId": "properties.userId",
-      "Microsoft.Insights/myWorkbooks/version": "properties.version"
-    },
-    "resourceType": "myWorkbooks",
-    "apiVersions": [
-      "2021-03-08",
-      "2020-10-20",
-      "2020-02-12",
-      "2018-06-17-privatepreview",
-      "2018-06-17-preview",
-      "2018-06-15-privatepreview",
-      "2018-06-15-preview",
-      "2018-06-01-preview",
-      "2016-06-15-preview"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia Central 2",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Brazil Southeast",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "France South",
-      "Germany North",
-      "Germany West Central",
-      "Israel Central",
-      "Italy North",
-      "Japan East",
-      "Japan West",
-      "Jio India Central",
-      "Jio India West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "Norway West",
-      "Poland Central",
-      "Qatar Central",
-      "South Africa North",
-      "South Africa West",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Sweden Central",
-      "Switzerland North",
-      "Switzerland West",
-      "UAE Central",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Europe",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
     "aliases": null,
     "resourceType": "notificationstatus",
     "apiVersions": [
+      "2023-09-01-preview",
       "2023-05-01-preview",
       "2023-01-01",
       "2022-06-01",
@@ -3687,6 +3687,7 @@
     },
     "resourceType": "scheduledqueryrules",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-03-15-preview",
       "2022-08-01-preview",
       "2022-06-15",
@@ -3749,6 +3750,38 @@
     "zoneMappings": []
   },
   {
+    "aliases": null,
+    "resourceType": "scheduledqueryrules/networkSecurityPerimeterAssociationProxies",
+    "apiVersions": [
+      "2021-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "scheduledqueryrules/networkSecurityPerimeterConfigurations",
+    "apiVersions": [
+      "2021-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.Insights/tenantActionGroups/azureAppPushReceivers": "properties.azureAppPushReceivers",
       "Microsoft.Insights/tenantActionGroups/azureAppPushReceivers[*]": "properties.azureAppPushReceivers[*]",
@@ -3785,6 +3818,7 @@
     },
     "resourceType": "tenantactiongroups",
     "apiVersions": [
+      "2023-09-01-preview",
       "2023-05-01-preview",
       "2023-03-01-preview"
     ],

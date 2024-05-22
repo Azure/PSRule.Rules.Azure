@@ -93,6 +93,7 @@
     "aliases": null,
     "resourceType": "recommendations",
     "apiVersions": [
+      "2023-09-01-preview",
       "2023-01-01",
       "2022-10-01",
       "2022-09-01",

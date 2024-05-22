@@ -24,6 +24,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/cloudHsmOperationResults",
+    "apiVersions": [
+      "2023-12-10-preview",
+      "2022-08-31-preview"
+    ],
+    "locations": [
+      "UK West"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2023-12-10-preview",
@@ -38,7 +50,6 @@
       "Canada Central",
       "Central India",
       "Central US",
-      "Central US EUAP",
       "East Asia",
       "East US",
       "East US 2",
@@ -52,6 +63,7 @@
       "Switzerland West",
       "UK South",
       "UK West",
+      "West Central US",
       "West Europe",
       "West US",
       "West US 2"
