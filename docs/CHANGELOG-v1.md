@@ -66,6 +66,8 @@ What's changed since pre-release v1.37.0-B0009:
 - Engineering:
   - Bump xunit to v2.8.0.
     [#2870](https://github.com/Azure/PSRule.Rules.Azure/pull/2870)
+  - Bump xunit.runner.visualstudio to v2.8.0.
+    [#2871](https://github.com/Azure/PSRule.Rules.Azure/pull/2871)
   - Bump System.Management.Automation to 7.3.12.
     [#2868](https://github.com/Azure/PSRule.Rules.Azure/pull/2868)
 - Bug fixed:
