@@ -54,7 +54,9 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("length", Length),
             new FunctionDescriptor("min", Min),
             new FunctionDescriptor("max", Max),
+            new FunctionDescriptor("objectKeys", ObjectKeys),
             new FunctionDescriptor("range", Range),
+            new FunctionDescriptor("shallowMerge", ShallowMerge),
             new FunctionDescriptor("skip", Skip),
             new FunctionDescriptor("take", Take),
             new FunctionDescriptor("tryGet", TryGet),
@@ -163,6 +165,8 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("reduce", Reduce, delayBinding: true),
             new FunctionDescriptor("sort", Sort, delayBinding: true),
             new FunctionDescriptor("toObject", ToObject, delayBinding: true),
+            new FunctionDescriptor("mapValues", MapValues, delayBinding: true),
+            new FunctionDescriptor("groupBy", GroupBy, delayBinding: true),
             new FunctionDescriptor("lambda", Lambda, delayBinding: true),
             new FunctionDescriptor("lambdaVariables", LambdaVariables, delayBinding: true),
 
@@ -722,8 +726,10 @@ namespace PSRule.Rules.Azure.Data.Template
         /// union(arg1, arg2, arg3, ...)
         /// </summary>
         /// <remarks>
-        /// Returns a single array or object with all elements from the parameters. For arrays, duplicate values are included once.
+        /// Returns a single array or object with all elements from the parameters.
+        /// For arrays, duplicate values are included once.
         /// For objects, duplicate property names are only included once.
+        /// If there are duplicate keys, the last key wins.
         /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#union"/>.
         /// </remarks>
         internal static object Union(ITemplateContext context, object[] args)
@@ -748,11 +754,61 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 // Object
                 if (ExpressionHelpers.IsObject(args[i]))
-                    return ExpressionHelpers.UnionObject(args);
+                    return ExpressionHelpers.UnionObject(args, deepMerge: true);
             }
 
             // Handle mocks as objects if no other object or array is found.
-            return hasMocks ? ExpressionHelpers.UnionObject(args) : null;
+            return hasMocks ? ExpressionHelpers.UnionObject(args, deepMerge: true) : null;
+        }
+
+        /// <summary>
+        /// shallowMerge(inputArray)
+        /// </summary>
+        /// <remarks>
+        /// Combines an array of objects, where only the top-level objects are merged.
+        /// This means that if the objects being merged contain nested objects, those nested object aren't deeply merged.
+        /// Instead, they're replaced entirely by the corresponding property from the merging object.
+        /// Returns a single object with all elements from the parameters.
+        /// If there are duplicate keys, the last key wins.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#shallowmerge"/>.
+        /// </remarks>
+        /// <returns>Returns an object.</returns>
+        internal static object ShallowMerge(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw ArgumentsOutOfRange(nameof(ShallowMerge), args);
+
+            if (!ExpressionHelpers.TryArray(args[0], out var entries))
+                throw ArgumentFormatInvalid(nameof(ShallowMerge));
+
+            return ExpressionHelpers.UnionObject(entries.OfType<object>().ToArray(), deepMerge: false);
+        }
+
+        /// <summary>
+        /// objectKeys(object)
+        /// </summary>
+        /// <remarks>
+        /// Returns the keys from an object, where an object is a collection of key-value pairs.
+        /// Elements are consistently ordered alphabetically but case-insensitive see <see href="https://github.com/Azure/bicep/issues/14057"/>.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-object#objectkeys"/>.
+        /// </remarks>
+        /// <returns>An array of keys.</returns>
+        internal static object ObjectKeys(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1)
+                throw ArgumentsOutOfRange(nameof(ObjectKeys), args);
+
+
+            if (!ExpressionHelpers.TryJObject(args[0], out var jObject))
+                throw ArgumentFormatInvalid(nameof(ObjectKeys));
+
+            var result = new JArray();
+
+            // Sorting of properties is case-insensitive.
+            foreach (var item in jObject.Properties().OrderBy(p => p.Name, StringComparer.OrdinalIgnoreCase))
+                result.Add(item.Name);
+
+            return result;
         }
 
         #endregion Array and object
@@ -1986,6 +2042,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// sort(inputArray, lambda expression)
         /// </summary>
         /// <remarks>
+        /// Sorts an array with a custom sort function.
         /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-lambda#sort"/>.
         /// </remarks>
         internal static object Sort(ITemplateContext context, object[] args)
@@ -2004,6 +2061,13 @@ namespace PSRule.Rules.Azure.Data.Template
             return lambda.Sort(context, inputArray.OfType<object>().ToArray());
         }
 
+        /// <summary>
+        /// toObject(inputArray, lambda expression, [lambda expression])
+        /// </summary>
+        /// <remarks>
+        /// Converts an array to an object with a custom key function and optional custom value function.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-lambda#toobject"/>.
+        /// </remarks>
         internal static object ToObject(ITemplateContext context, object[] args)
         {
             var count = CountArgs(args);
@@ -2031,12 +2095,58 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
+        /// groupBy(inputArray, lambda expression)
+        /// </summary>
+        /// <remarks>
+        /// Creates an object with array values from an array, using a grouping condition.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-lambda#groupby"/>.
+        /// </remarks>
+        internal static object GroupBy(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw ArgumentsOutOfRange(nameof(GroupBy), args);
+
+            args[0] = GetExpression(context, args[0]);
+            if (!ExpressionHelpers.TryArray(args[0], out var inputArray))
+                throw ArgumentFormatInvalid(nameof(GroupBy));
+
+            args[1] = GetExpression(context, args[1]);
+            if (args[1] is not LambdaExpressionFn lambda)
+                throw ArgumentFormatInvalid(nameof(GroupBy));
+
+            return lambda.GroupBy(context, inputArray.OfType<object>().ToArray());
+        }
+
+        /// <summary>
+        /// mapValues(inputObject, lambda expression)
+        /// </summary>
+        /// <remarks>
+        /// Creates an object from an input object, using a lambda expression to map values.
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-lambda#mapvalues"/>.
+        /// </remarks>
+        internal static object MapValues(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 2)
+                throw ArgumentsOutOfRange(nameof(MapValues), args);
+
+            args[0] = GetExpression(context, args[0]);
+            if (!ExpressionHelpers.TryJObject(args[0], out var inputObject))
+                throw ArgumentFormatInvalid(nameof(MapValues));
+
+            args[1] = GetExpression(context, args[1]);
+            if (args[1] is not LambdaExpressionFn lambda)
+                throw ArgumentFormatInvalid(nameof(MapValues));
+
+            return lambda.MapValues(context, inputObject);
+        }
+
+        /// <summary>
         /// Evaluate a lambda expression.
         /// </summary>
         internal static object Lambda(ITemplateContext context, object[] args)
         {
             var count = CountArgs(args);
-            if (count is < 2 or > 3)
+            if (count is < 2 or > 4)
                 throw ArgumentsOutOfRange(nameof(Lambda), args);
 
             return new LambdaExpressionFn(args);
