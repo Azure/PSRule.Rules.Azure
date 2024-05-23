@@ -210,6 +210,24 @@ spec:
         - Standard_v2
         - WAF_v2
 
+---
+# Synopsis: Migrate to Application Gateway WAF policy.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AppGw.MigrateWAFPolicy
+  ref: AZR-000423
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Reliability
+spec:
+  with:
+  -  Azure.IsAppGwWAFV2Sku
+  condition:
+    field: properties.webApplicationFirewallConfiguration
+    exists: false
+
 #endregion Rules
 
 #region Selectors
@@ -267,5 +285,19 @@ spec:
       in:
       - Standard_v2
       - WAF_v2
+
+---
+# Synopsis: Application Gateways explicitly with the WAF v2 SKU.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.IsAppGwWAFV2Sku
+spec:
+  if:
+    allOf:
+    - type: '.'
+      equals: Microsoft.Network/applicationGateways
+    - field: properties.sku.tier
+      equals: WAF_v2
 
 #endregion Selectors

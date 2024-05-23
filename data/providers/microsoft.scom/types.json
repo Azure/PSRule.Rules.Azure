@@ -16,6 +16,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-07-07-preview",
       "2022-09-13-preview",
       "2022-04-30-preview",
@@ -52,6 +53,7 @@
     "aliases": null,
     "resourceType": "managedInstances",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-07-07-preview",
       "2022-09-13-preview",
       "2022-04-30-preview",
@@ -86,6 +88,7 @@
     "aliases": null,
     "resourceType": "managedInstances/managedGateways",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-07-07-preview"
     ],
     "locations": [
@@ -117,6 +120,7 @@
     "aliases": null,
     "resourceType": "managedInstances/monitoredResources",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-07-07-preview"
     ],
     "locations": [

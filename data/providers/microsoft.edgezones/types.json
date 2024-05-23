@@ -1,9 +1,9 @@
 [
   {
     "aliases": null,
-    "resourceType": "locations",
+    "resourceType": "operations",
     "apiVersions": [
-      "2023-09-01-preview"
+      "2024-04-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

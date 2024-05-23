@@ -23,7 +23,9 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
-      "2023-10-01"
+      "2023-12-01",
+      "2023-10-01",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -66,7 +68,9 @@
     },
     "resourceType": "datastores",
     "apiVersions": [
-      "2023-10-01"
+      "2023-12-01",
+      "2023-10-01",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -109,7 +113,9 @@
     },
     "resourceType": "hosts",
     "apiVersions": [
-      "2023-10-01"
+      "2023-12-01",
+      "2023-10-01",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -136,6 +142,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-12-01",
       "2023-10-01",
       "2023-03-01-preview",
       "2022-07-15-preview",
@@ -149,6 +156,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2023-12-01",
       "2023-10-01",
       "2023-03-01-preview",
       "2022-07-15-preview",
@@ -169,6 +177,8 @@
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
       "UK South",
       "UK West",
       "West Europe",
@@ -181,6 +191,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-12-01",
       "2023-10-01",
       "2023-03-01-preview",
       "2022-07-15-preview",
@@ -216,7 +227,9 @@
     },
     "resourceType": "resourcepools",
     "apiVersions": [
-      "2023-10-01"
+      "2023-12-01",
+      "2023-10-01",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -263,7 +276,9 @@
     },
     "resourceType": "VCenters",
     "apiVersions": [
-      "2023-10-01"
+      "2023-12-01",
+      "2023-10-01",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -327,7 +342,9 @@
     },
     "resourceType": "vcenters/inventoryitems",
     "apiVersions": [
-      "2023-10-01"
+      "2023-12-01",
+      "2023-10-01",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -354,7 +371,9 @@
     "aliases": null,
     "resourceType": "virtualmachineinstances",
     "apiVersions": [
-      "2023-10-01"
+      "2023-12-01",
+      "2023-10-01",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -693,7 +712,9 @@
     },
     "resourceType": "virtualmachinetemplates",
     "apiVersions": [
-      "2023-10-01"
+      "2023-12-01",
+      "2023-10-01",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -736,7 +757,9 @@
     },
     "resourceType": "virtualnetworks",
     "apiVersions": [
-      "2023-10-01"
+      "2023-12-01",
+      "2023-10-01",
+      "2023-03-01-preview"
     ],
     "locations": [
       "Australia East",

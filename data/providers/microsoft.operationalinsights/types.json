@@ -773,6 +773,38 @@
   },
   {
     "aliases": null,
+    "resourceType": "workspaces/networkSecurityPerimeterAssociationProxies",
+    "apiVersions": [
+      "2021-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/networkSecurityPerimeterConfigurations",
+    "apiVersions": [
+      "2021-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Central US",
+      "South Central US",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "workspaces/operations",
     "apiVersions": [
       "2022-10-01",

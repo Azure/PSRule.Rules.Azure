@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-12-01-preview",
       "2023-09-01-preview",
       "2023-04-01-preview",
@@ -40,6 +41,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -54,6 +56,7 @@
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
+      "UAE Central",
       "UAE North",
       "UK South",
       "UK West",

@@ -239,7 +239,10 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/credential": "properties.credential",
+      "Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/credential.name": "properties.credential.name"
+    },
     "resourceType": "automationAccounts/hybridRunbookWorkerGroups",
     "apiVersions": [
       "2023-11-01",
@@ -309,7 +312,9 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Automation/automationAccounts/hybridRunbookWorkerGroups/hybridRunbookWorkers/vmResourceId": "properties.vmResourceId"
+    },
     "resourceType": "automationAccounts/hybridRunbookWorkerGroups/hybridRunbookWorkers",
     "apiVersions": [
       "2023-11-01",
@@ -504,6 +509,8 @@
   },
   {
     "aliases": {
+      "Microsoft.Automation/automationAccounts/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.Automation/automationAccounts/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
       "Microsoft.Automation/automationAccounts/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
       "Microsoft.Automation/automationAccounts/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
       "Microsoft.Automation/automationAccounts/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
@@ -656,7 +663,8 @@
       "Microsoft.Automation/automationAccounts/runbooks/publishContentLink.contentHash.value": "properties.publishContentLink.contentHash.value",
       "Microsoft.Automation/automationAccounts/runbooks/publishContentLink.uri": "properties.publishContentLink.uri",
       "Microsoft.Automation/automationAccounts/runbooks/publishContentLink.version": "properties.publishContentLink.version",
-      "Microsoft.Automation/automationAccounts/runbooks/runbookType": "properties.runbookType"
+      "Microsoft.Automation/automationAccounts/runbooks/runbookType": "properties.runbookType",
+      "Microsoft.Automation/automationAccounts/runbooks/runtimeEnvironment": "properties.runtimeEnvironment"
     },
     "resourceType": "automationAccounts/runbooks",
     "apiVersions": [

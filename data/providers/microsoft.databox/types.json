@@ -198,6 +198,8 @@
     },
     "resourceType": "jobs",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",
@@ -236,6 +238,8 @@
     "aliases": null,
     "resourceType": "jobs/eventGridFilters",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",
@@ -265,6 +269,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",
@@ -287,6 +293,8 @@
     "aliases": null,
     "resourceType": "locations/availableSkus",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",
@@ -325,6 +333,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",
@@ -363,6 +373,8 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",
@@ -401,6 +413,8 @@
     "aliases": null,
     "resourceType": "locations/regionConfiguration",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",
@@ -439,6 +453,8 @@
     "aliases": null,
     "resourceType": "locations/validateAddress",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",
@@ -477,6 +493,8 @@
     "aliases": null,
     "resourceType": "locations/validateInputs",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",
@@ -515,6 +533,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2024-02-01-preview",
       "2023-12-01",
       "2023-03-01",
       "2022-12-01",

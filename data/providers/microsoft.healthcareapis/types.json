@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -30,6 +32,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -80,6 +84,8 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -131,6 +137,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -230,6 +238,8 @@
     },
     "resourceType": "services",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -360,6 +370,8 @@
     "aliases": null,
     "resourceType": "services/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -413,6 +425,8 @@
     },
     "resourceType": "services/privateEndpointConnections",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -458,6 +472,8 @@
     "aliases": null,
     "resourceType": "services/privateLinkResources",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -555,6 +571,8 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -576,6 +594,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
@@ -630,6 +649,8 @@
     },
     "resourceType": "workspaces/dicomservices",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -651,6 +672,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
@@ -672,6 +694,8 @@
     "aliases": null,
     "resourceType": "workspaces/eventGridFilters",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -692,6 +716,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
@@ -767,6 +792,8 @@
     },
     "resourceType": "workspaces/fhirservices",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -788,6 +815,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
@@ -816,6 +844,8 @@
     },
     "resourceType": "workspaces/iotconnectors",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -837,6 +867,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
@@ -863,6 +894,8 @@
     },
     "resourceType": "workspaces/iotconnectors/fhirdestinations",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -884,6 +917,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
@@ -905,6 +939,8 @@
     "aliases": null,
     "resourceType": "workspaces/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -916,7 +952,8 @@
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
-      "2021-11-01"
+      "2021-11-01",
+      "2021-03-31-preview"
     ],
     "locations": [
       "Australia East",
@@ -925,6 +962,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
@@ -954,6 +992,8 @@
     },
     "resourceType": "workspaces/privateEndpointConnections",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -965,7 +1005,8 @@
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
-      "2021-11-01"
+      "2021-11-01",
+      "2021-03-31-preview"
     ],
     "locations": [
       "Australia East",
@@ -974,6 +1015,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",
@@ -995,6 +1037,8 @@
     "aliases": null,
     "resourceType": "workspaces/privateLinkResources",
     "apiVersions": [
+      "2024-03-31",
+      "2024-03-01",
       "2023-12-01",
       "2023-11-01-preview",
       "2023-11-01",
@@ -1006,7 +1050,8 @@
       "2022-06-01",
       "2022-05-15",
       "2022-01-31-preview",
-      "2021-11-01"
+      "2021-11-01",
+      "2021-03-31-preview"
     ],
     "locations": [
       "Australia East",
@@ -1015,6 +1060,7 @@
       "East US",
       "East US 2",
       "France Central",
+      "Germany West Central",
       "Japan East",
       "Korea Central",
       "North Central US",

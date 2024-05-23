@@ -3,9 +3,10 @@
     "aliases": null,
     "resourceType": "bareMetalMachines",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -19,9 +20,10 @@
     "aliases": null,
     "resourceType": "cloudServicesNetworks",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -35,9 +37,10 @@
     "aliases": null,
     "resourceType": "clusterManagers",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -51,9 +54,10 @@
     "aliases": null,
     "resourceType": "clusters",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -67,9 +71,10 @@
     "aliases": null,
     "resourceType": "clusters/bareMetalMachineKeySets",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -83,9 +88,10 @@
     "aliases": null,
     "resourceType": "clusters/bmcKeySets",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -99,9 +105,25 @@
     "aliases": null,
     "resourceType": "clusters/metricsConfigurations",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "UAE North",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "edgeClusters/nodes",
+    "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview"
     ],
     "locations": [
       "East US",
@@ -115,9 +137,10 @@
     "aliases": null,
     "resourceType": "kubernetesClusters",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -131,9 +154,10 @@
     "aliases": null,
     "resourceType": "kubernetesClusters/agentPools",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -147,9 +171,10 @@
     "aliases": null,
     "resourceType": "l2Networks",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -163,9 +188,10 @@
     "aliases": null,
     "resourceType": "l3Networks",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -179,10 +205,10 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-03-01-preview",
       "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "global"
@@ -193,9 +219,10 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -209,10 +236,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-03-01-preview",
       "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "global"
@@ -223,9 +250,10 @@
     "aliases": null,
     "resourceType": "racks",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -239,9 +267,10 @@
     "aliases": null,
     "resourceType": "rackSkus",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -255,10 +284,10 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2024-03-01-preview",
       "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "global"
@@ -267,11 +296,42 @@
   },
   {
     "aliases": null,
+    "resourceType": "registrationHubs/images",
+    "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "UAE North",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "registrationHubs/machines",
+    "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "UAE North",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "storageAppliances",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -285,9 +345,10 @@
     "aliases": null,
     "resourceType": "trunkedNetworks",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -301,9 +362,10 @@
     "aliases": null,
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -317,9 +379,10 @@
     "aliases": null,
     "resourceType": "virtualMachines/consoles",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",
@@ -333,9 +396,10 @@
     "aliases": null,
     "resourceType": "volumes",
     "apiVersions": [
+      "2024-03-01-preview",
+      "2023-12-01-preview",
       "2023-10-01-preview",
-      "2023-07-01",
-      "2023-05-01-preview"
+      "2023-07-01"
     ],
     "locations": [
       "East US",

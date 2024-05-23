@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "instances",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-04-preview"
     ],
     "locations": [
@@ -21,6 +22,7 @@
     "aliases": null,
     "resourceType": "instances/datasets",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-04-preview"
     ],
     "locations": [
@@ -39,6 +41,7 @@
     "aliases": null,
     "resourceType": "instances/pipelines",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-04-preview"
     ],
     "locations": [
@@ -57,6 +60,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-04-preview"
     ],
     "locations": [
@@ -68,6 +72,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-04-preview"
     ],
     "locations": [
@@ -86,6 +91,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-04-preview"
     ],
     "locations": [],

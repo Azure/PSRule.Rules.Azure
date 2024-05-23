@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
@@ -25,6 +26,7 @@
     "aliases": null,
     "resourceType": "elasticVersions",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
@@ -40,6 +42,7 @@
     "aliases": null,
     "resourceType": "getElasticOrganizationToAzureSubscriptionMapping",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
@@ -52,6 +55,7 @@
     "aliases": null,
     "resourceType": "getOrganizationApiKey",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
@@ -67,6 +71,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
@@ -89,6 +94,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
@@ -130,6 +136,7 @@
     "aliases": null,
     "resourceType": "monitors",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
@@ -167,8 +174,35 @@
   },
   {
     "aliases": null,
+    "resourceType": "monitors/openAIIntegrations",
+    "apiVersions": [
+      "2024-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "North Europe",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "monitors/tagRules",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",
@@ -208,6 +242,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-01-01-preview",
       "2023-11-01-preview",
       "2023-10-01-preview",
       "2023-07-01-preview",

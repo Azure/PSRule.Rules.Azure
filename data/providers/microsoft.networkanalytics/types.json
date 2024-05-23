@@ -1,8 +1,9 @@
 [
   {
     "aliases": null,
-    "resourceType": "Locations",
+    "resourceType": "locations",
     "apiVersions": [
+      "2024-04-01-preview",
       "2022-11-15-preview"
     ],
     "locations": [],
@@ -12,6 +13,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-11-15",
       "2023-04-30-preview",
       "2023-03-31-preview",
@@ -23,6 +25,7 @@
       "East US",
       "North Europe",
       "South Central US",
+      "UAE North",
       "UK South",
       "West Central US",
       "West Europe"
@@ -33,6 +36,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-11-15",
       "2022-11-15-preview"
     ],

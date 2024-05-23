@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview"
     ],
     "locations": [],
@@ -12,6 +13,7 @@
     "aliases": null,
     "resourceType": "getCollectionCount",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview"
     ],
     "locations": [],
@@ -21,6 +23,7 @@
     "aliases": null,
     "resourceType": "getOverviewStatus",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview"
     ],
     "locations": [],
@@ -30,6 +33,7 @@
     "aliases": null,
     "resourceType": "listInUseStorageAccounts",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview"
     ],
     "locations": [],
@@ -39,6 +43,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview"
@@ -50,6 +55,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview"
@@ -63,6 +69,7 @@
     "aliases": null,
     "resourceType": "onboard",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview"
     ],
     "locations": [],
@@ -72,6 +79,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview",
@@ -84,6 +92,7 @@
     "aliases": null,
     "resourceType": "reports",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview",
@@ -96,6 +105,7 @@
     "aliases": null,
     "resourceType": "reports/evidences",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview"
     ],
     "locations": [],
@@ -105,6 +115,7 @@
     "aliases": null,
     "resourceType": "reports/scopingConfigurations",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview"
     ],
     "locations": [],
@@ -114,6 +125,7 @@
     "aliases": null,
     "resourceType": "reports/snapshots",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview",
@@ -126,6 +138,7 @@
     "aliases": null,
     "resourceType": "reports/webhooks",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview"
     ],
     "locations": [],
@@ -135,6 +148,7 @@
     "aliases": null,
     "resourceType": "triggerEvaluation",
     "apiVersions": [
+      "2024-06-27",
       "2023-02-15-preview"
     ],
     "locations": [],

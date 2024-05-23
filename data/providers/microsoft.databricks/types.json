@@ -5,6 +5,7 @@
     },
     "resourceType": "accessConnectors",
     "apiVersions": [
+      "2024-05-01",
       "2023-05-01",
       "2022-10-01-preview",
       "2022-04-01-preview"
@@ -54,6 +55,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-05-01",
       "2024-02-01-preview",
       "2023-09-15-preview",
       "2023-02-01",
@@ -108,6 +110,7 @@
     "aliases": null,
     "resourceType": "locations/getNetworkPolicies",
     "apiVersions": [
+      "2024-05-01",
       "2024-02-01-preview",
       "2023-09-15-preview",
       "2023-02-01",
@@ -160,6 +163,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2024-05-01",
       "2024-02-01-preview",
       "2023-09-15-preview",
       "2023-02-01",
@@ -212,6 +216,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-05-01",
       "2024-02-01-preview",
       "2023-09-15-preview",
       "2023-02-01",
@@ -382,6 +387,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2024-05-01",
       "2024-02-01-preview",
       "2023-09-15-preview",
       "2023-02-01",
@@ -498,6 +504,7 @@
     },
     "resourceType": "workspaces/virtualNetworkPeerings",
     "apiVersions": [
+      "2024-05-01",
       "2024-02-01-preview",
       "2023-09-15-preview",
       "2023-02-01",

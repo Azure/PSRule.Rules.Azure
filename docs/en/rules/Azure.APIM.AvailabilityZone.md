@@ -6,40 +6,37 @@ resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.AvailabilityZone/
 ---
 
-# API management services should use Availability zones in supported regions
+# API management instances should use availability zones in supported regions
 
 ## SYNOPSIS
 
-API management services deployed with Premium SKU should use availability zones in supported regions for high availability.
+ API Management instances should use availability zones in supported regions for high availability.
 
 ## DESCRIPTION
 
-API management services using availability zones improve reliability and ensure availability during failure scenarios affecting a data center within a region.
-With zone redundancy, the gateway and the control plane of your API Management instance (Management API, developer portal, Git configuration) are replicated across data centers in physically separated zones, making it resilient to a zone failure.
+API Management supports using availability zones to provide zone redundency for key components.
+Zone redundancy improves resiliency and high availability of the service by deploying scale units across data centers in physically separated zones.
+
+The following are required to deploy a zone redundant configuration:
+
+- API Management is deployed with the Premium SKU.
+- At least two scale units must be deployed in separate availbility zones.
+
+Zone redundancy has a different configuration for the primary and additional regions:
+
+- In the primary region, all service components are replicated across zones (gateway, management plane, and developer portal).
+- In additional regions, *only* the gateway is replicated across zones.
+  As the management plane/developer portal service components are only deployed to the primary region.
 
 ## RECOMMENDATION
 
-Consider using availability zones for API management services deployed with Premium SKU.
-
-## NOTES
-
-This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
-
-This rule fails when `"zones"` is `null`, `[]` or less than two zones when API management service is deployed with Premium SKU and there are supported availability zones for the given region.
-
-Configure `AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.ApiManagement` and resource type `services`.
-
-```yaml
-# YAML: The default AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
-configuration:
-  AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
-```
+Consider using at least two (2) scale units and availability zones to improve resiliency of API Management instances to zone failures.
 
 ## EXAMPLES
 
 ### Configure with Azure template
 
-To set availability zones for a API management service
+To set availability zones for a API Management instance:
 
 - Set `zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `sku.capacity`.
 - Set `properties.additionalLocations[*].zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `properties.additionalLocations[*].sku.capacity`. 
@@ -109,7 +106,7 @@ For example:
 
 ### Configure with Bicep
 
-To set availability zones for a API management service
+To set availability zones for a API Management instance:
 
 - Set `zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `sku.capacity`.
 - Set `properties.additionalLocations[*].zones` to a minimum of two zones from `["1", "2", "3"]`, ensuring the number of zones match `properties.additionalLocations[*].sku.capacity`. 
@@ -172,6 +169,22 @@ resource service_api_mgmt_test2_name_resource 'Microsoft.ApiManagement/service@2
   }
 }
 ```
+
+## NOTES
+
+This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
+
+This rule fails when `"zones"` is `null`, `[]` or less than two zones when API Management instance is deployed with Premium SKU and there are supported availability zones for the given region.
+
+Configure `AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.ApiManagement` and resource type `services`.
+
+```yaml
+# YAML: The default AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
+configuration:
+  AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
+```
+
+For developer environments, suppressing the rule might make sense as enabling zone redundancy for an API Management instance requries the `Premium` SKU currently.
 
 ## LINKS
 

@@ -1,11 +1,82 @@
 [
   {
     "aliases": null,
+    "resourceType": "fleets",
+    "apiVersions": [
+      "2024-05-01-preview",
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": [
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-11-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operations",
+    "apiVersions": [
+      "2024-05-01-preview",
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2024-05-01-preview",
+      "2023-11-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "West US",
+      "West US 2"
+    ],
     "zoneMappings": []
   }
 ]

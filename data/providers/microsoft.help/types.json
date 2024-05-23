@@ -77,7 +77,25 @@
   },
   {
     "aliases": null,
+    "resourceType": "plugins",
+    "apiVersions": [
+      "2024-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "SelfHelp",
+    "apiVersions": [
+      "2024-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "simplifiedSolutions",
     "apiVersions": [
       "2024-03-01-preview"
     ],

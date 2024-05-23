@@ -29,6 +29,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -94,6 +95,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -121,6 +123,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -201,6 +204,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -228,6 +232,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -269,6 +274,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -341,6 +347,7 @@
       "Microsoft.Cache/Redis/subnet": "properties.subnet",
       "Microsoft.Cache/Redis/subnetId": "properties.subnetId",
       "Microsoft.Cache/Redis/tenantSettings": "properties.tenantSettings",
+      "Microsoft.Cache/Redis/updateChannel": "properties.updateChannel",
       "Microsoft.Cache/Redis/virtualNetwork": "properties.virtualNetwork",
       "Microsoft.Cache/Redis/zones": "zones",
       "Microsoft.Cache/Redis/zones[*]": "zones[*]"
@@ -386,6 +393,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -521,8 +529,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -621,10 +633,6 @@
         ]
       },
       {
-        "location": "West US",
-        "zones": []
-      },
-      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -688,6 +696,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -750,6 +759,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -808,6 +818,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -874,6 +885,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -932,6 +944,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -988,6 +1001,7 @@
     },
     "resourceType": "redisEnterprise",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -1105,10 +1119,6 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
-      },
-      {
         "location": "North Europe",
         "zones": [
           "1",
@@ -1157,10 +1167,6 @@
         ]
       },
       {
-        "location": "West US",
-        "zones": []
-      },
-      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -1182,6 +1188,7 @@
     "aliases": {
       "Microsoft.Cache/redisEnterprise/databases/clientProtocol": "properties.clientProtocol",
       "Microsoft.Cache/redisEnterprise/databases/clusteringPolicy": "properties.clusteringPolicy",
+      "Microsoft.Cache/redisEnterprise/databases/deferUpgrade": "properties.deferUpgrade",
       "Microsoft.Cache/redisEnterprise/databases/evictionPolicy": "properties.evictionPolicy",
       "Microsoft.Cache/redisEnterprise/databases/geoReplication": "properties.geoReplication",
       "Microsoft.Cache/redisEnterprise/databases/geoReplication.groupNickname": "properties.geoReplication.groupNickname",
@@ -1201,10 +1208,12 @@
       "Microsoft.Cache/redisEnterprise/databases/persistence.rdbFrequency": "properties.persistence.rdbFrequency",
       "Microsoft.Cache/redisEnterprise/databases/port": "properties.port",
       "Microsoft.Cache/redisEnterprise/databases/provisioningState": "properties.provisioningState",
+      "Microsoft.Cache/redisEnterprise/databases/redisVersion": "properties.redisVersion",
       "Microsoft.Cache/redisEnterprise/databases/resourceState": "properties.resourceState"
     },
     "resourceType": "redisEnterprise/databases",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -1246,6 +1255,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -1287,6 +1297,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/operationresults",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -1328,6 +1339,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -1377,6 +1389,7 @@
     },
     "resourceType": "RedisEnterprise/privateEndpointConnections",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -1418,6 +1431,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnections/operationresults",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
@@ -1459,6 +1473,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateLinkResources",
     "apiVersions": [
+      "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
       "2023-07-01",
