@@ -56,6 +56,9 @@ What's changed since pre-release v1.37.0-B0009:
 - General improvements:
   - Updated resource providers and policy aliases.
     [#2880](https://github.com/Azure/PSRule.Rules.Azure/pull/2880)
+- Engineering:
+  - Bump xunit to v2.8.0.
+    [#2870](https://github.com/Azure/PSRule.Rules.Azure/pull/2870)
 
 ## v1.37.0-B0009 (pre-release)
 
