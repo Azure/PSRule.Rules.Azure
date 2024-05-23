@@ -686,37 +686,35 @@ namespace PSRule.Rules.Azure.Data.Template
 
         /// <summary>
         /// Union an object by merging in properties.
+        /// If there are duplicate keys, the last key wins.
         /// </summary>
-        internal static object UnionObject(object[] o)
+        internal static object UnionObject(object[] o, bool deepMerge)
         {
             var result = new JObject();
             if (o == null || o.Length == 0)
                 return result;
 
-            for (var i = o.Length - 1; i >= 0; i--)
+            for (var i = 0; i < o.Length; i++)
             {
                 if (o[i] is JObject jObject)
                 {
                     foreach (var property in jObject.Properties())
                     {
-                        if (!result.ContainsKey(property.Name))
-                            result.Add(property.Name, property.Value);
+                        ReplaceOrMergeProperty(result, property.Name, property.Value, deepMerge);
                     }
                 }
                 else if (o[i] is IDictionary<string, string> dss)
                 {
                     foreach (var kv in dss)
                     {
-                        if (!result.ContainsKey(kv.Key))
-                            result.Add(kv.Key, JToken.FromObject(kv.Value));
+                        ReplaceOrMergeProperty(result, kv.Key, JToken.FromObject(kv.Value), deepMerge);
                     }
                 }
                 else if (o[i] is IDictionary<string, object> dso)
                 {
                     foreach (var kv in dso)
                     {
-                        if (!result.ContainsKey(kv.Key))
-                            result.Add(kv.Key, JToken.FromObject(kv.Value));
+                        ReplaceOrMergeProperty(result, kv.Key, JToken.FromObject(kv.Value), deepMerge);
                     }
                 }
                 else if (o[i] is IDictionary d)
@@ -724,12 +722,33 @@ namespace PSRule.Rules.Azure.Data.Template
                     foreach (DictionaryEntry kv in d)
                     {
                         var key = kv.Key.ToString();
-                        if (!result.ContainsKey(key))
-                            result.Add(key, JToken.FromObject(kv.Value));
+                        ReplaceOrMergeProperty(result, key, JToken.FromObject(kv.Value), deepMerge);
                     }
                 }
             }
             return result;
+        }
+
+        private static void ReplaceOrMergeProperty(JObject o, string propertyName, JToken propertyValue, bool deepMerge)
+        {
+            if (!o.TryGetProperty(propertyName, out JToken currentValue))
+            {
+                o.Add(propertyName, propertyValue);
+                return;
+            }
+
+            if (deepMerge && currentValue is JObject currentObject && propertyValue is JObject newObject)
+            {
+                foreach (var property in newObject.Properties())
+                {
+                    ReplaceOrMergeProperty(currentObject, property.Name, property.Value, deepMerge);
+                }
+            }
+            else
+            {
+                o[propertyName] = propertyValue;
+            }
+            
         }
 
         /// <summary>

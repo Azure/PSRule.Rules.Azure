@@ -31,6 +31,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.37.0-B0009:
 
+- New features:
+  - Added support for new Bicep language features introduced in v0.27.1 by @BernieWhite.
+    [#2860](https://github.com/Azure/PSRule.Rules.Azure/issues/2860)
+    [#2859](https://github.com/Azure/PSRule.Rules.Azure/issues/2859)
+    - Added support for `shallowMerge`, `groupBy`, `objectKeys`, and `mapValues`.
+    - Updated syntax for Bicep lambda usage of `map`, `reduce`, and `filter` which now support indices.
+    - Added support for spread operator.
 - New rules:
   - Application Gateway:
     - Check that WAF v2 doesn't use legacy WAF configuration by @BenjaminEngeset.
@@ -59,6 +66,9 @@ What's changed since pre-release v1.37.0-B0009:
 - Engineering:
   - Bump xunit to v2.8.0.
     [#2870](https://github.com/Azure/PSRule.Rules.Azure/pull/2870)
+- Bug fixed:
+  - Fixed `union` does not perform deep merge or keep property order by @BernieWhite.
+    [#2885](https://github.com/Azure/PSRule.Rules.Azure/issues/2885)
 
 ## v1.37.0-B0009 (pre-release)
 
