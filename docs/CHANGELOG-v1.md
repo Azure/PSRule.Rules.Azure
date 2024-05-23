@@ -29,14 +29,15 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.37.0-B0009:
+
 - New rules:
   - Application Gateway:
     - Check that WAF v2 doesn't use legacy WAF configuration by @BenjaminEngeset.
       [#2877](https://github.com/Azure/PSRule.Rules.Azure/issues/2877)
-
-What's changed since pre-release v1.37.0-B0009:
-
-- New rules:
+  - Azure Managed Grafana:
+    - Check that Azure Managed Grafana workspaces uses Grafana version 10 by @BenjaminEngeset.
+      [#2878](https://github.com/Azure/PSRule.Rules.Azure/issues/2878)
   - Cosmos DB:
     - Check that database accounts have local authentication disabled by @BenjaminEngeset.
       [#2846](https://github.com/Azure/PSRule.Rules.Azure/issues/2846)
