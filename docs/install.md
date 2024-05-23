@@ -138,10 +138,10 @@ You can also use this option to install on CI workers that are not natively supp
 
 ### Prerequisites
 
-| Operating System      | Tool                                                         | Installation Link |
-| ----------------      | ----                                                         | ----------------- |
-| Windows               | Windows PowerShell 5.1 with .NET Framework 4.7.2 or greater. |  [link](https://dotnet.microsoft.com/download/dotnet-framework/net48) |
-| Windows, MacOS, Linux | PowerShell version 7.2.x or greater. | [link](https://github.com/PowerShell/PowerShell#get-powershell) |
+Operating System      | Tool                                                         | Installation Link
+----------------      | ----                                                         | -----------------
+Windows               | Windows PowerShell 5.1 with .NET Framework 4.7.2 or greater. |  [link](https://dotnet.microsoft.com/download/dotnet-framework/net48)
+Windows, MacOS, Linux | PowerShell version 7.3.x or greater. | [link](https://github.com/PowerShell/PowerShell#get-powershell)
 
 To use PSRule for Azure, PSRule a separate PowerShell module must be installed.
 The required version will automatically be installed along-side PSRule for Azure.
@@ -163,7 +163,7 @@ PowerShell modules:
 ### Installing PowerShell
 
 PowerShell 7.x can be installed on MacOS, Linux, and Windows but is not installed by default.
-For a list of platforms that PowerShell 7.2 is supported on and install instructions see [Get PowerShell][4].
+For a list of platforms that PowerShell 7.3 is supported on and install instructions see [Get PowerShell][4].
 
   [4]: https://github.com/PowerShell/PowerShell#get-powershell
 
@@ -320,4 +320,3 @@ After downloading the modules, copy the module directories to devices with restr
 *[CI]: continuous integration
 
 [module]: https://www.powershellgallery.com/packages/PSRule.Rules.Azure
-[dotnet]: https://dotnet.microsoft.com/download/dotnet/7.0
