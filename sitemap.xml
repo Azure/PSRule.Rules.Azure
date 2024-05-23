@@ -1441,6 +1441,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Grafana.Version/</loc>
+         <lastmod>2024-05-23</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Identity.UserAssignedName/</loc>
          <lastmod>2024-05-23</lastmod>
          <changefreq>daily</changefreq>
