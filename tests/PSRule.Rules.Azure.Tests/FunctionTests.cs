@@ -447,6 +447,32 @@ namespace PSRule.Rules.Azure
 
         [Fact]
         [Trait(TRAIT, TRAIT_ARRAY)]
+        public void ObjectKeys()
+        {
+            var context = GetContext();
+
+            var actual = Functions.ObjectKeys(context, new object[] { JObject.Parse("{ \"a\": 1, \"b\": 2 }") }) as JArray;
+            Assert.Equal(new string[] { "a", "b" }, actual.Values<string>().ToArray());
+
+            actual = Functions.ObjectKeys(context, new object[] { JObject.Parse("{ }") }) as JArray;
+            Assert.Equal(System.Array.Empty<string>(), actual.Values<string>().ToArray());
+
+            actual = Functions.ObjectKeys(context, new object[] { JObject.Parse("{ \"b\": 2, \"a\": 1 }") }) as JArray;
+            Assert.Equal(new string[] { "a", "b" }, actual.Values<string>().ToArray());
+
+            actual = Functions.ObjectKeys(context, new object[] { JObject.Parse("{ \"A\": 2, \"a\": 1 }") }) as JArray;
+            Assert.Equal(new string[] { "A", "a" }, actual.Values<string>().ToArray());
+
+            actual = Functions.ObjectKeys(context, new object[] { JObject.Parse("{ \"a\": 1, \"A\": 2 }") }) as JArray;
+            Assert.Equal(new string[] { "a", "A" }, actual.Values<string>().ToArray());
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ObjectKeys(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ObjectKeys(context, System.Array.Empty<object>()));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ObjectKeys(context, new object[] { 1 }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
         public void Range()
         {
             var context = GetContext();
@@ -468,6 +494,60 @@ namespace PSRule.Rules.Azure
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { 1 }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { "one", "two" }));
             Assert.Throws<ExpressionArgumentException>(() => Functions.Range(context, new object[] { 1, "0" }));
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_ARRAY)]
+        public void ShallowMerge()
+        {
+            var context = GetContext();
+            var hashtable = new Hashtable
+            {
+                ["a"] = 200
+            };
+
+            var actual = Functions.ShallowMerge(context, new object[] { new object[] { JObject.Parse("{ \"foo\": \"foo\" }"), JObject.Parse("{ \"bar\": \"bar\" }") } }) as JObject;
+            Assert.Equal(JObject.Parse("{ \"foo\": \"foo\", \"bar\": \"bar\" }"), actual);
+
+            actual = Functions.ShallowMerge(context, new object[] { new object[] { JObject.Parse("{ \"foo\": \"foo\" }"), JObject.Parse("{ \"foo\": \"bar\" }") } }) as JObject;
+            Assert.Equal(JObject.Parse("{ \"foo\": \"bar\" }"), actual);
+
+            actual = Functions.ShallowMerge(context, new object[] { new JArray(JObject.Parse("{ \"foo\": \"foo\" }"), JObject.Parse("{ \"bar\": \"bar\" }") ) }) as JObject;
+            Assert.Equal(JObject.Parse("{ \"foo\": \"foo\", \"bar\": \"bar\" }"), actual);
+
+            actual = Functions.ShallowMerge(context, new object[] { new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"a\": \"100\" }") } }) as JObject;
+            Assert.True(actual.ContainsKey("a"));
+            Assert.Equal("100", actual["a"]);
+            Assert.True(actual.ContainsKey("e"));
+            Assert.Equal("f", actual["e"]);
+            Assert.True(actual.ContainsKey("i"));
+            Assert.Equal("j", actual["i"]);
+
+            actual = Functions.ShallowMerge(context, new object[] { new object[] { new Hashtable(), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"a\": \"100\" }") } }) as JObject;
+            Assert.True(actual.ContainsKey("a"));
+            Assert.Equal("100", actual["a"]);
+            Assert.True(actual.ContainsKey("e"));
+            Assert.Equal("f", actual["e"]);
+
+            actual = Functions.ShallowMerge(context, new object[] { new object[] { hashtable, JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }") } }) as JObject;
+            Assert.True(actual.ContainsKey("a"));
+            Assert.Equal(200, actual["a"]);
+            Assert.True(actual.ContainsKey("e"));
+            Assert.Equal("f", actual["e"]);
+
+            actual = Functions.ShallowMerge(context, new object[] { new object[] { null, JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }") } }) as JObject;
+            Assert.False(actual.ContainsKey("a"));
+            Assert.True(actual.ContainsKey("e"));
+            Assert.True(actual.ContainsKey("g"));
+
+            actual = Functions.ShallowMerge(context, new object[] { new object[] { hashtable, null } }) as JObject;
+            Assert.True(actual.ContainsKey("a"));
+            Assert.False(actual.ContainsKey("e"));
+            Assert.False(actual.ContainsKey("g"));
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ShallowMerge(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ShallowMerge(context, System.Array.Empty<object>()));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.ShallowMerge(context, new object[] { 1 }));
         }
 
         [Fact]
@@ -567,6 +647,8 @@ namespace PSRule.Rules.Azure
             Assert.True(actual1.ContainsKey("a"));
             Assert.False(actual1.ContainsKey("e"));
             Assert.False(actual1.ContainsKey("g"));
+            actual1 = Functions.Union(context, new object[] { JObject.Parse("{ \"property\": { \"one\": \"a\", \"two\": \"b\", \"three\": \"c1\" }, \"nestedArray\": [ 1, 2 ] }"), JObject.Parse("{ \"property\": { \"three\": \"c2\", \"four\": \"d\", \"five\": \"e\" }, \"nestedArray\": [ 3, 4 ] }") }) as JObject;
+            Assert.Equal("{\"property\":{\"one\":\"a\",\"two\":\"b\",\"three\":\"c2\",\"four\":\"d\",\"five\":\"e\"},\"nestedArray\":[3,4]}", actual1.ToString(Formatting.None));
 
             // Union arrays
             var actual2 = Functions.Union(context, new string[][] { new string[] { "one", "two", "three" }, new string[] { "three", "four" } }) as object[];
@@ -583,6 +665,10 @@ namespace PSRule.Rules.Azure
             Assert.Equal(2, actual2.Length);
             actual2 = Functions.Union(context, new object[] { new Mock.MockUnknownObject(), new JArray { "one", "two" } }) as object[];
             Assert.Equal(2, actual2.Length);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Union(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Union(context, System.Array.Empty<object>()));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.Union(context, new object[] { 1 }));
         }
 
         [Fact]
@@ -2006,6 +2092,39 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Kira", actual.OfType<JObject>().First()["name"].Value<string>());
         }
 
+        [Fact]
+        [Trait(TRAIT, TRAIT_LAMBDA)]
+        public void MapValues()
+        {
+            var context = GetContext();
+            var o = JObject.Parse("{ \"foo\": \"foo\" }");
+
+            ExpressionFnOuter valueMapper = c =>
+            {
+                c.TryLambdaVariable("val", out JValue val);
+                return val.Value<string>().ToUpper();
+            };
+            var actual = Functions.MapValues(context, new object[] { o, new LambdaExpressionFn("val", valueMapper) }) as JObject;
+            Assert.Equal("FOO", actual["foo"].Value<string>());
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_LAMBDA)]
+        public void GroupBy()
+        {
+            var context = GetContext();
+            var o = JArray.Parse("[ \"foo\", \"bar\", \"baz\" ]");
+
+            ExpressionFnOuter groupMapper = c =>
+            {
+                c.TryLambdaVariable("x", out JValue val);
+                return val.Value<string>().Substring(0, 1);
+            };
+            var actual = Functions.GroupBy(context, new object[] { o, new LambdaExpressionFn("x", groupMapper) }) as JObject;
+            Assert.Equal(new string[] { "foo" }, actual["f"].Values<string>());
+            Assert.Equal(new string[] { "bar", "baz" }, actual["b"].Values<string>());
+        }
+
         #endregion Lambda
 
         #region CIDR
@@ -2137,6 +2256,8 @@ namespace PSRule.Rules.Azure
 
         #endregion Complex scenarios
 
+        #region Helper functions
+
         private static TemplateContext GetContext()
         {
             var context = new TemplateContext
@@ -2173,29 +2294,7 @@ namespace PSRule.Rules.Azure
         {
             return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
         }
-    }
 
-    internal sealed class TestLengthObject
-    {
-        public TestLengthObject()
-        {
-            propC = "three";
-            propD = new ChildObject();
-        }
-
-        internal sealed class ChildObject
-        {
-            public string prop1 => "sub";
-
-            public string prop2 => "sub";
-        }
-
-        public string propA => "one";
-
-        public string propB => "two";
-
-        public string propC { get; set; }
-
-        public ChildObject propD { get; set; }
+        #endregion Helper functions
     }
 }

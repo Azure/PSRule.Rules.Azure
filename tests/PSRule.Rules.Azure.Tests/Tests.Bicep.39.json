@@ -1,0 +1,131 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.27.1.19265",
+      "templateHash": "16337921613414975184"
+    }
+  },
+  "variables": {
+    "arrayA": [
+      1,
+      2,
+      3
+    ],
+    "arrayB": [
+      4,
+      5,
+      6
+    ],
+    "objectA": {
+      "a": 1,
+      "b": 2,
+      "c": 3
+    },
+    "objectB": {
+      "d": 4,
+      "e": 5,
+      "f": 6
+    },
+    "arrA": [
+      2,
+      3
+    ],
+    "objA": {
+      "bar": "bar"
+    }
+  },
+  "resources": {},
+  "outputs": {
+    "arrayResult": {
+      "type": "array",
+      "items": {
+        "type": "int"
+      },
+      "value": "[flatten(createArray(variables('arrayA'), variables('arrayB'), createArray(10)))]"
+    },
+    "objectResult": {
+      "type": "object",
+      "value": "[shallowMerge(createArray(variables('objectA'), variables('objectB'), createObject('g', 10)))]"
+    },
+    "example1": {
+      "type": "array",
+      "items": {
+        "type": "int"
+      },
+      "value": "[flatten(createArray(createArray(1), variables('arrA'), createArray(4)))]"
+    },
+    "example2": {
+      "type": "object",
+      "value": "[shallowMerge(createArray(createObject('foo', 'foo'), variables('objA')))]"
+    },
+    "example3": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "value": "[objectKeys(createObject('a', 1, 'b', 2))]"
+    },
+    "example3a": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "value": "[objectKeys(createObject())]"
+    },
+    "example3b": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "value": "[objectKeys(createObject('b', 2, 'a', 1))]"
+    },
+    "example3c": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "value": "[objectKeys(createObject('A', 2, 'a', 1))]"
+    },
+    "example3d": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "value": "[objectKeys(createObject('a', 2, 'A', 1))]"
+    },
+    "example4": {
+      "type": "object",
+      "value": "[mapValues(createObject('foo', 'foo'), lambda('val', toUpper(lambdaVariables('val'))))]"
+    },
+    "example5": {
+      "type": "object",
+      "value": "[groupBy(createArray('foo', 'bar', 'baz'), lambda('x', substring(lambdaVariables('x'), 0, 1)))]"
+    },
+    "example6": {
+      "type": "object",
+      "value": "[shallowMerge(createArray(createObject('foo', 'foo'), createObject('bar', 'bar')))]"
+    },
+    "example7": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "value": "[map(createArray('a', 'b'), lambda('x', 'i', createObject('index', lambdaVariables('i'), 'val', lambdaVariables('x'))))]"
+    },
+    "example8": {
+      "type": "int",
+      "value": "[reduce(createArray(2, 3, 7), 0, lambda('cur', 'next', 'i', if(equals(mod(lambdaVariables('i'), 2), 0), add(lambdaVariables('cur'), lambdaVariables('next')), lambdaVariables('cur'))))]"
+    },
+    "example9": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "value": "[filter(createArray('foo', 'bar', 'baz'), lambda('val', 'i', and(less(lambdaVariables('i'), 2), equals(substring(lambdaVariables('val'), 0, 1), 'b'))))]"
+    }
+  }
+}
