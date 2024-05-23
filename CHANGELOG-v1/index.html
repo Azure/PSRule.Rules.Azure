@@ -17894,6 +17894,17 @@
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since pre-release v1.37.0-B0009:</p>
 <ul>
+<li>New features:<ul>
+<li>Added support for new Bicep language features introduced in v0.27.1 by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2860">#2860</a>
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2859">#2859</a><ul>
+<li>Added support for <code>shallowMerge</code>, <code>groupBy</code>, <code>objectKeys</code>, and <code>mapValues</code>.</li>
+<li>Updated syntax for Bicep lambda usage of <code>map</code>, <code>reduce</code>, and <code>filter</code> which now support indices.</li>
+<li>Added support for spread operator.</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>New rules:<ul>
 <li>Application Gateway:<ul>
 <li>Check that WAF v2 doesn't use legacy WAF configuration by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
@@ -17935,6 +17946,11 @@
 <li>General improvements:<ul>
 <li>Updated resource providers and policy aliases.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/2880">#2880</a></li>
+</ul>
+</li>
+<li>Bug fixed:<ul>
+<li>Fixed <code>union</code> does not perform deep merge or keep property order by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2885">#2885</a></li>
 </ul>
 </li>
 </ul>
@@ -25010,14 +25026,14 @@ What's changed since v1.24.0:</p>
     
     <nav>
       
-        <a href="https://github.com/BenjaminEngeset" class="md-author" title="@BenjaminEngeset">
-          
-          <img src="https://avatars.githubusercontent.com/u/99641908?v=4&size=72" alt="BenjaminEngeset">
-        </a>
-      
         <a href="https://github.com/BernieWhite" class="md-author" title="@BernieWhite">
           
           <img src="https://avatars.githubusercontent.com/u/13513058?v=4&size=72" alt="BernieWhite">
+        </a>
+      
+        <a href="https://github.com/BenjaminEngeset" class="md-author" title="@BenjaminEngeset">
+          
+          <img src="https://avatars.githubusercontent.com/u/99641908?v=4&size=72" alt="BenjaminEngeset">
         </a>
       
         <a href="https://github.com/sebassem" class="md-author" title="@sebassem">
