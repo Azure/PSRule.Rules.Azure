@@ -1,0 +1,13 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2024-05-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  }
+]

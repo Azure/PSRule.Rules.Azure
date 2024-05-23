@@ -81,7 +81,7 @@ To update your configuration, use the new name instead.
 
 ### Realignment of rule names for network interfaces
 
-Orginally when many of the rules targeting network interfaces were created, network interfaces only applied to virtual machines.
+Originally when many of the rules targeting network interfaces were created, network interfaces only applied to virtual machines.
 Today, network interfaces can be attached to different types of resources including:
 
 - Virtual machines.
@@ -95,8 +95,7 @@ To better reflect that network interfaces are not only related to VMs, the follo
 - From `Azure.VM.UniqueDns` to `Azure.NIC.UniqueDns`.
 
 Aliases have been added to ensure any existing suppression and exclusion to these rules continues to work.
-
-From _v2.0.0_ these aliases will no longer work.
+However a warning will be displayed to indicate the an alias is being used.
 
 To update your configuration, use the new rule names instead.
 Possible locations where the old rule names may be used include:

@@ -97,6 +97,7 @@
   },
   {
     "aliases": {
+      "Microsoft.DataShare/accounts/shares/invitations/expirationDate": "properties.expirationDate",
       "Microsoft.DataShare/accounts/shares/invitations/invitationId": "properties.invitationId",
       "Microsoft.DataShare/accounts/shares/invitations/invitationStatus": "properties.invitationStatus",
       "Microsoft.DataShare/accounts/shares/invitations/respondedAt": "properties.respondedAt",
@@ -191,6 +192,7 @@
     "aliases": {
       "Microsoft.DataShare/accounts/sharesubscriptions/createdAt": "properties.createdAt",
       "Microsoft.DataShare/accounts/sharesubscriptions/createdBy": "properties.createdBy",
+      "Microsoft.DataShare/accounts/shareSubscriptions/expirationDate": "properties.expirationDate",
       "Microsoft.DataShare/accounts/sharesubscriptions/invitationId": "properties.invitationId",
       "Microsoft.DataShare/accounts/sharesubscriptions/providerEmail": "properties.providerEmail",
       "Microsoft.DataShare/accounts/sharesubscriptions/providerName": "properties.providerName",

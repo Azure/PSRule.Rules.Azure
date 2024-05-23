@@ -1,0 +1,61 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "IdentityControllers",
+    "apiVersions": [
+      "2024-02-15-preview"
+    ],
+    "locations": [
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "IdentitySets",
+    "apiVersions": [
+      "2024-02-15-preview"
+    ],
+    "locations": [
+      "South Central US",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2024-02-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2024-02-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "North Europe",
+      "South Central US",
+      "UAE North",
+      "UK South",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2024-02-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  }
+]

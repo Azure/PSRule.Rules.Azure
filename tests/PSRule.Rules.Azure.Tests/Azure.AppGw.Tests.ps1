@@ -27,10 +27,10 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppGw.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
@@ -117,14 +117,14 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            # $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'appgw-A', 'appgw-D', 'appgw-E';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'appgw-A', 'appgw-D';
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            # $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'appgw-B', 'appgw-H', 'appgw-F', 'appgw-G';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'appgw-B', 'appgw-E', 'appgw-H', 'appgw-F', 'appgw-G';
         }
 
         It 'Azure.AppGw.WAFEnabled' {
@@ -133,15 +133,15 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'appgw-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-B', 'appgw-E';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.webApplicationFirewallConfiguration.enabled', 'properties.firewallPolicy.id';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G',  'appgw-H';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-C', 'appgw-D', 'appgw-F', 'appgw-G', 'appgw-H';
         }
 
         It 'Azure.AppGw.OWASP' {
@@ -157,8 +157,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D', 'appgw-E';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D';
         }
 
         It 'Azure.AppGw.WAFRules' {
@@ -174,8 +174,8 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-D', 'appgw-E';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-D';
         }
 
         It 'Azure.AppGw.UseHTTPS' {
@@ -239,15 +239,38 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
             $ruleResult.Length | Should -Be 6;
             $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D', 'appgw-E', 'appgw-F', 'appgw-G', 'appgw-H';
         }
+
+        It 'Azure.AppGw.MigrateWAFPolicy' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppGw.MigrateWAFPolicy' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'appgw-C', 'appgw-D';
+            
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.webApplicationFirewallConfiguration: None of the field(s) existed: properties.webApplicationFirewallConfiguration";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.webApplicationFirewallConfiguration: None of the field(s) existed: properties.webApplicationFirewallConfiguration";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'appgw-H', 'appgw-E';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'appgw-A', 'appgw-B', 'appgw-F', 'appgw-G';
+        }
     }
 
     Context 'With Configuration Option' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.AppGw.json';
             $configPath = Join-Path -Path $here -ChildPath 'ps-rule-options.yaml';
@@ -258,11 +281,11 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
                 'Configuration.AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST' = @(
                     [PSCustomObject]@{
                         Location = 'Antarctica North'
-                        Zones = @("1", "2", "3")
+                        Zones    = @("1", "2", "3")
                     }
                     [PSCustomObject]@{
                         Location = 'Antarctica South'
-                        Zones = @("1", "2", "3")
+                        Zones    = @("1", "2", "3")
                     }
                 )
             }
@@ -336,14 +359,14 @@ Describe 'Azure.AppGW' -Tag 'Network', 'AppGw' {
     Context 'Resource name - Azure.AppGw.Name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Network/applicationGateways'
             }
         }

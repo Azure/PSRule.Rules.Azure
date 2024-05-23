@@ -1,6 +1,19 @@
 [
   {
     "aliases": {
+      "Microsoft.Purview/accounts/accountStatus": "properties.accountStatus",
+      "Microsoft.Purview/accounts/accountStatus.accountProvisioningState": "properties.accountStatus.accountProvisioningState",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails": "properties.accountStatus.errorDetails",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.code": "properties.accountStatus.errorDetails.code",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.details": "properties.accountStatus.errorDetails.details",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.details[*]": "properties.accountStatus.errorDetails.details[*]",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.details[*].code": "properties.accountStatus.errorDetails.details[*].code",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.details[*].details": "properties.accountStatus.errorDetails.details[*].details",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.details[*].details[*]": "properties.accountStatus.errorDetails.details[*].details[*]",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.details[*].message": "properties.accountStatus.errorDetails.details[*].message",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.details[*].target": "properties.accountStatus.errorDetails.details[*].target",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.message": "properties.accountStatus.errorDetails.message",
+      "Microsoft.Purview/accounts/accountStatus.errorDetails.target": "properties.accountStatus.errorDetails.target",
       "Microsoft.Purview/accounts/cloudConnectors": "properties.cloudConnectors",
       "Microsoft.Purview/accounts/cloudConnectors.awsExternalId": "properties.cloudConnectors.awsExternalId",
       "Microsoft.Purview/accounts/createdAt": "properties.createdAt",
@@ -11,10 +24,17 @@
       "Microsoft.Purview/accounts/endpoints.guardian": "properties.endpoints.guardian",
       "Microsoft.Purview/accounts/endpoints.scan": "properties.endpoints.scan",
       "Microsoft.Purview/accounts/friendlyName": "properties.friendlyName",
+      "Microsoft.Purview/accounts/ingestionStorage": "properties.ingestionStorage",
+      "Microsoft.Purview/accounts/ingestionStorage.id": "properties.ingestionStorage.id",
+      "Microsoft.Purview/accounts/ingestionStorage.primaryEndpoint": "properties.ingestionStorage.primaryEndpoint",
+      "Microsoft.Purview/accounts/ingestionStorage.publicNetworkAccess": "properties.ingestionStorage.publicNetworkAccess",
+      "Microsoft.Purview/accounts/managedEventHubState": "properties.managedEventHubState",
+      "Microsoft.Purview/accounts/managedResourceGroupName": "properties.managedResourceGroupName",
       "Microsoft.Purview/accounts/managedResources": "properties.managedResources",
       "Microsoft.Purview/accounts/managedResources.eventHubNamespace": "properties.managedResources.eventHubNamespace",
       "Microsoft.Purview/accounts/managedResources.resourceGroup": "properties.managedResources.resourceGroup",
       "Microsoft.Purview/accounts/managedResources.storageAccount": "properties.managedResources.storageAccount",
+      "Microsoft.Purview/accounts/managedResourcesPublicNetworkAccess": "properties.managedResourcesPublicNetworkAccess",
       "Microsoft.Purview/accounts/privateEndpointConnections": "properties.privateEndpointConnections",
       "Microsoft.Purview/accounts/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
       "Microsoft.Purview/accounts/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
@@ -31,7 +51,14 @@
       "Microsoft.Purview/accounts/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.Purview/accounts/sku": "sku",
       "Microsoft.Purview/accounts/sku.capacity": "sku.capacity",
-      "Microsoft.Purview/accounts/sku.name": "sku.name"
+      "Microsoft.Purview/accounts/sku.name": "sku.name",
+      "Microsoft.Purview/accounts/systemData": "properties.systemData",
+      "Microsoft.Purview/accounts/systemData.createdAt": "properties.systemData.createdAt",
+      "Microsoft.Purview/accounts/systemData.createdBy": "properties.systemData.createdBy",
+      "Microsoft.Purview/accounts/systemData.createdByType": "properties.systemData.createdByType",
+      "Microsoft.Purview/accounts/systemData.lastModifiedAt": "properties.systemData.lastModifiedAt",
+      "Microsoft.Purview/accounts/systemData.lastModifiedBy": "properties.systemData.lastModifiedBy",
+      "Microsoft.Purview/accounts/systemData.lastModifiedByType": "properties.systemData.lastModifiedByType"
     },
     "resourceType": "accounts",
     "apiVersions": [
@@ -70,7 +97,17 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.Purview/accounts/kafkaConfigurations/consumerGroup": "properties.consumerGroup",
+      "Microsoft.Purview/accounts/kafkaConfigurations/credentials": "properties.credentials",
+      "Microsoft.Purview/accounts/kafkaConfigurations/credentials.identityId": "properties.credentials.identityId",
+      "Microsoft.Purview/accounts/kafkaConfigurations/credentials.type": "properties.credentials.type",
+      "Microsoft.Purview/accounts/kafkaConfigurations/eventHubPartitionId": "properties.eventHubPartitionId",
+      "Microsoft.Purview/accounts/kafkaConfigurations/eventHubResourceId": "properties.eventHubResourceId",
+      "Microsoft.Purview/accounts/kafkaConfigurations/eventHubType": "properties.eventHubType",
+      "Microsoft.Purview/accounts/kafkaConfigurations/eventStreamingState": "properties.eventStreamingState",
+      "Microsoft.Purview/accounts/kafkaConfigurations/eventStreamingType": "properties.eventStreamingType"
+    },
     "resourceType": "accounts/kafkaConfigurations",
     "apiVersions": [
       "2023-05-01-preview",

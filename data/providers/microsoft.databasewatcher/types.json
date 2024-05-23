@@ -10,11 +10,79 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2023-09-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "watchers",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "watchers/sharedPrivateLinkResources",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "watchers/targets",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US"
+    ],
     "zoneMappings": []
   }
 ]

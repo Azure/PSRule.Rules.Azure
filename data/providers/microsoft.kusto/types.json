@@ -113,6 +113,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -250,8 +251,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -350,10 +355,6 @@
         ]
       },
       {
-        "location": "West US",
-        "zones": []
-      },
-      {
         "location": "West US 2",
         "zones": [
           "1",
@@ -434,6 +435,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -528,6 +530,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -636,6 +639,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -707,6 +711,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -783,6 +788,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -846,6 +852,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -914,6 +921,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -990,6 +998,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1046,6 +1055,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1143,6 +1153,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1215,6 +1226,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1274,6 +1286,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",

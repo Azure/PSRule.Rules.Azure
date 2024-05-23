@@ -1,8 +1,740 @@
 [
   {
     "aliases": null,
+    "resourceType": "apiGatewayRestApis",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "apiGatewayStages",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "applicationAutoScalingScalableTargets",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "cloudFormationStacks",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "cloudFormationStackSets",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "cloudTrailTrails",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "cloudWatchAlarms",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "dynamoDBTables",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2Instances",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2InstanceStatuses",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2KeyPairs",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2NetworkAcls",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2NetworkInterfaces",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2RouteTables",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2SecurityGroups",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2Subnets",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2Volumes",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2VPCEndpoints",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2VPCPeeringConnections",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2VPCs",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ecrRepositories",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ecsClusters",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ecsServices",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ecsTaskDefinitions",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "efsFileSystems",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "efsMountTargets",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "elasticBeanstalkEnvironments",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "elasticLoadBalancingV2Listeners",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "elasticLoadBalancingV2LoadBalancers",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "elasticLoadBalancingV2TargetGroups",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "elasticsearchDomains",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "guardDutyDetectors",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamGroups",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamInstanceProfiles",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamManagedPolicies",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamServerCertificates",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamUserPolicies",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamVirtualMFADevices",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "kmsKeys",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "lambdaFunctions",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "licenseManagerLicenses",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "lightsailBuckets",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "lightsailInstances",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-08-01-preview",
       "2023-12-01-preview"
     ],
     "locations": [],
@@ -10,11 +742,483 @@
   },
   {
     "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "logsLogGroups",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "logsLogStreams",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "logsMetricFilters",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "logsSubscriptionFilters",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "macieAllowLists",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "networkFirewallFirewallPolicies",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "networkFirewallFirewalls",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "networkFirewallRuleGroups",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "openSearchServiceDomains",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-08-01-preview",
       "2023-12-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "organizationsAccounts",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "organizationsOrganizations",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "rdsDBClusters",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "rdsDBInstances",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "rdsEventSubscriptions",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "redshiftClusterParameterGroups",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "redshiftClusters",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "route53HostedZones",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "s3AccessPoints",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "s3BucketPolicies",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "s3Buckets",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "sageMakerApps",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "sageMakerDevices",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "sageMakerImages",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "snsTopics",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "sqsQueues",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "wafv2IPSets",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "wafv2WebACLAssociations",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
     "zoneMappings": []
   }
 ]

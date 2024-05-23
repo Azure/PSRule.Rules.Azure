@@ -7,5 +7,14 @@
     ],
     "locations": [],
     "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Operations",
+    "apiVersions": [
+      "2023-12-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
   }
 ]

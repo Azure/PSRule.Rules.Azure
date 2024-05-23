@@ -1177,6 +1177,78 @@ namespace PSRule.Rules.Azure
             Assert.True(actual["identity"]["userAssignedIdentities"].Value<JObject>().TryObjectProperty("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/mi", out var o));
         }
 
+        /// <summary>
+        /// Test case for:
+        /// - https://github.com/Azure/PSRule.Rules.Azure/issues/2859
+        /// - https://github.com/Azure/PSRule.Rules.Azure/issues/2860
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenUsingSpreadOperator_ReturnsSingleObject()
+        {
+            _ = ProcessTemplate(GetSourcePath("Tests.Bicep.39.json"), null, out var templateContext);
+
+            // Basic array case
+            Assert.True(templateContext.RootDeployment.TryOutput("arrayResult", out JObject output));
+            Assert.Equal(new int[] { 1, 2, 3, 4, 5, 6, 10 }, output["value"].ToObject<int[]>());
+
+            // Basic object case
+            Assert.True(templateContext.RootDeployment.TryOutput("objectResult", out output));
+            Assert.Equal(JObject.Parse("{ \"a\": 1, \"b\": 2, \"c\": 3, \"d\": 4, \"e\": 5, \"f\": 6, \"g\": 10 }"), output["value"].Value<JObject>());
+
+            // Example 1
+            Assert.True(templateContext.RootDeployment.TryOutput("example1", out output));
+            Assert.Equal(new int[] { 1, 2, 3, 4 }, output["value"].ToObject<int[]>());
+
+            // Example 2
+            Assert.True(templateContext.RootDeployment.TryOutput("example2", out output));
+            Assert.Equal(JObject.Parse("{ \"foo\": \"foo\", \"bar\": \"bar\" }"), output["value"].Value<JObject>());
+            Assert.Equal("{\"foo\":\"foo\",\"bar\":\"bar\"}", output["value"].ToString(Newtonsoft.Json.Formatting.None));
+
+            // Example 3
+            Assert.True(templateContext.RootDeployment.TryOutput("example3", out output));
+            Assert.Equal(new string[] { "a", "b" }, output["value"].ToObject<string[]>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("example3a", out output));
+            Assert.Empty(output["value"].ToObject<string[]>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("example3b", out output));
+            Assert.Equal(new string[] { "a", "b" }, output["value"].ToObject<string[]>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("example3c", out output));
+            Assert.Equal(new string[] { "A", "a" }, output["value"].ToObject<string[]>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("example3d", out output));
+            Assert.Equal(new string[] { "a", "A" }, output["value"].ToObject<string[]>());
+
+            // Example 4
+            Assert.True(templateContext.RootDeployment.TryOutput("example4", out output));
+            Assert.Equal(JObject.Parse("{ \"foo\": \"FOO\" }"), output["value"].Value<JObject>());
+            Assert.Equal("{\"foo\":\"FOO\"}", output["value"].ToString(Newtonsoft.Json.Formatting.None));
+
+            // Example 5
+            Assert.True(templateContext.RootDeployment.TryOutput("example5", out output));
+            Assert.Equal(JObject.Parse("{ \"f\": [\"foo\"], \"b\": [ \"bar\", \"baz\" ] }"), output["value"].Value<JObject>());
+            Assert.Equal("{\"f\":[\"foo\"],\"b\":[\"bar\",\"baz\"]}", output["value"].ToString(Newtonsoft.Json.Formatting.None));
+
+            // Example 6
+            Assert.True(templateContext.RootDeployment.TryOutput("example6", out output));
+            Assert.Equal(JObject.Parse("{ \"foo\": \"foo\", \"bar\": \"bar\" }"), output["value"].Value<JObject>());
+            Assert.Equal("{\"foo\":\"foo\",\"bar\":\"bar\"}", output["value"].ToString(Newtonsoft.Json.Formatting.None));
+
+            // Example 7
+            Assert.True(templateContext.RootDeployment.TryOutput("example7", out output));
+            Assert.Equal(new JObject[] { JObject.Parse("{ \"index\": 0, \"val\": \"a\" }"), JObject.Parse("{ \"index\": 1, \"val\": \"b\" }") }, output["value"].Values<JObject>());
+            Assert.Equal("[{\"index\":0,\"val\":\"a\"},{\"index\":1,\"val\":\"b\"}]", output["value"].ToString(Newtonsoft.Json.Formatting.None));
+
+            // Example 8
+            Assert.True(templateContext.RootDeployment.TryOutput("example8", out output));
+            Assert.Equal(9, output["value"].Value<int>());
+
+            // Example 9
+            Assert.True(templateContext.RootDeployment.TryOutput("example9", out output));
+            Assert.Equal(new string[] { "bar" }, output["value"].Values<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

@@ -31,6 +31,7 @@
     },
     "resourceType": "assessmentProjects",
     "apiVersions": [
+      "2023-09-09-preview",
       "2023-07-07-preview",
       "2023-04-01-preview",
       "2023-03-15",
@@ -79,6 +80,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2023-09-09-preview",
       "2023-07-07-preview",
       "2023-04-01-preview",
       "2023-03-15",

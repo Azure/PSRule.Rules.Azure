@@ -193,8 +193,14 @@ Rule 'Azure.APIM.CertificateExpiry' -Ref 'AZR-000051' -Type 'Microsoft.ApiManage
     }
 } -Configure @{ Azure_MinimumCertificateLifetime = 30 }
 
-# Synopsis: API management services deployed with Premium SKU should use availability zones in supported regions for high availability.
-Rule 'Azure.APIM.AvailabilityZone' -Ref 'AZR-000052' -Type 'Microsoft.ApiManagement/service' -If { IsPremiumAPIM } -Tag @{ release = 'GA'; ruleSet = '2021_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
+# Synopsis: API Management instances should use availability zones in supported regions for high availability.
+Rule 'Azure.APIM.AvailabilityZone' -Ref 'AZR-000052' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    if ($TargetObject.sku.name -ne 'Premium') {
+        return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Premium') # Availability zones are only supported for the Premium SKU.
+    }
+    
+    $Assert.HasFieldValue($TargetObject, 'sku.name', 'Premium')
+   
     $apiManagementServiceProvider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.ApiManagement', 'service');
 
     $configurationZoneMappings = $Configuration.AZURE_APIM_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST;

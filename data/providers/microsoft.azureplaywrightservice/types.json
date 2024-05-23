@@ -3,9 +3,23 @@
     "aliases": null,
     "resourceType": "accounts",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-01-preview",
-      "2023-06-01-preview",
-      "2022-04-05-preview"
+      "2023-06-01-preview"
+    ],
+    "locations": [
+      "East Asia",
+      "East US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/quotas",
+    "apiVersions": [
+      "2024-02-01-preview"
     ],
     "locations": [
       "East Asia",
@@ -19,31 +33,31 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-01-preview",
-      "2023-06-01-preview",
-      "2022-04-05-preview"
+      "2023-06-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "Locations",
+    "resourceType": "locations",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-01-preview",
-      "2023-06-01-preview",
-      "2022-04-05-preview"
+      "2023-06-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "Locations/OperationStatuses",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-01-preview",
-      "2023-06-01-preview",
-      "2022-04-05-preview"
+      "2023-06-01-preview"
     ],
     "locations": [
       "East Asia",
@@ -55,11 +69,11 @@
   },
   {
     "aliases": null,
-    "resourceType": "Locations/Quotas",
+    "resourceType": "locations/quotas",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-01-preview",
-      "2023-06-01-preview",
-      "2022-04-05-preview"
+      "2023-06-01-preview"
     ],
     "locations": [
       "East Asia",
@@ -73,9 +87,9 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-01-preview",
-      "2023-06-01-preview",
-      "2022-04-05-preview"
+      "2023-06-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -84,9 +98,9 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-10-01-preview",
-      "2023-06-01-preview",
-      "2022-04-05-preview"
+      "2023-06-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

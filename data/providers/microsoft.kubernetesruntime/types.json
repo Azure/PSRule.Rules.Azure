@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "bgpPeers",
     "apiVersions": [
+      "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [
@@ -19,6 +20,7 @@
     "aliases": null,
     "resourceType": "loadBalancers",
     "apiVersions": [
+      "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [
@@ -35,6 +37,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [],
@@ -60,6 +63,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [],
@@ -69,6 +73,7 @@
     "aliases": null,
     "resourceType": "services",
     "apiVersions": [
+      "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [
@@ -85,6 +90,7 @@
     "aliases": null,
     "resourceType": "storageClasses",
     "apiVersions": [
+      "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [

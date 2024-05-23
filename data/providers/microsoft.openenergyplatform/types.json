@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-02-09-preview",
       "2023-11-12",
       "2023-10-01-preview",
       "2023-06-12",
@@ -17,7 +18,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "energyservices",
+    "resourceType": "energyServices",
     "apiVersions": [
       "2023-11-12",
       "2023-10-01-preview",
@@ -29,6 +30,7 @@
       "2021-06-01-preview"
     ],
     "locations": [
+      "Australia East",
       "Brazil South",
       "East US",
       "North Europe",
@@ -39,7 +41,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "energyservices/privateEndpointConnectionProxies",
+    "resourceType": "energyServices/privateEndpointConnectionProxies",
     "apiVersions": [
       "2023-11-12",
       "2023-10-01-preview",
@@ -51,6 +53,7 @@
       "2021-06-01-preview"
     ],
     "locations": [
+      "Australia East",
       "Brazil South",
       "East US",
       "North Europe",
@@ -61,7 +64,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "energyservices/privateEndpointConnections",
+    "resourceType": "energyServices/privateEndpointConnections",
     "apiVersions": [
       "2023-11-12",
       "2023-10-01-preview",
@@ -73,6 +76,7 @@
       "2021-06-01-preview"
     ],
     "locations": [
+      "Australia East",
       "Brazil South",
       "East US",
       "North Europe",
@@ -83,7 +87,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "energyservices/privateLinkResources",
+    "resourceType": "energyServices/privateLinkResources",
     "apiVersions": [
       "2023-11-12",
       "2023-10-01-preview",
@@ -95,6 +99,7 @@
       "2021-06-01-preview"
     ],
     "locations": [
+      "Australia East",
       "Brazil South",
       "East US",
       "North Europe",
@@ -107,6 +112,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-02-09-preview",
       "2023-11-12",
       "2023-10-01-preview",
       "2023-06-12",
@@ -133,6 +139,7 @@
       "2021-06-01-preview"
     ],
     "locations": [
+      "Australia East",
       "Brazil South",
       "East US",
       "North Europe",
@@ -145,6 +152,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-02-09-preview",
       "2023-11-12",
       "2023-10-01-preview",
       "2023-06-12",

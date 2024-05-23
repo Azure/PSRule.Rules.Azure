@@ -26,19 +26,46 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   Update PowerShell rules to use the `Azure.Resource.SupportsTags` selector instead.
   Support for the `SupportsTag` function will be removed in v2.
   See [upgrade notes][1] for more information.
-- Renamed network interface rules to reflect current usage.
-  If you have excluded or suppressed these rules, please update your configuration to reference the new names.
-  Support for the old names will be removed in v2.
-  See [upgrade notes][1] for more information.
 
 ## Unreleased
 
+What's changed since pre-release v1.37.0-B0009:
+
+- New features:
+  - Added support for new Bicep language features introduced in v0.27.1 by @BernieWhite.
+    [#2860](https://github.com/Azure/PSRule.Rules.Azure/issues/2860)
+    [#2859](https://github.com/Azure/PSRule.Rules.Azure/issues/2859)
+    - Added support for `shallowMerge`, `groupBy`, `objectKeys`, and `mapValues`.
+    - Updated syntax for Bicep lambda usage of `map`, `reduce`, and `filter` which now support indices.
+    - Added support for spread operator.
 - New rules:
+  - Application Gateway:
+    - Check that WAF v2 doesn't use legacy WAF configuration by @BenjaminEngeset.
+      [#2877](https://github.com/Azure/PSRule.Rules.Azure/issues/2877)
+  - Azure Managed Grafana:
+    - Check that Azure Managed Grafana workspaces uses Grafana version 10 by @BenjaminEngeset.
+      [#2878](https://github.com/Azure/PSRule.Rules.Azure/issues/2878)
   - Cosmos DB:
     - Check that database accounts have local authentication disabled by @BenjaminEngeset.
       [#2846](https://github.com/Azure/PSRule.Rules.Azure/issues/2846)
     - Check that database accounts have public network access disabled by @BenjaminEngeset.
       [#2702](https://github.com/Azure/PSRule.Rules.Azure/issues/2702)
+  - Event Hub:
+    - Check that access to the namespace endpoints is restricted to only allowed sources by @BenjaminEngeset.
+      [#2701](https://github.com/Azure/PSRule.Rules.Azure/issues/2701)
+- Updated rules:
+  - API Management:
+    - **Important change**: Updated `Azure.APIM.AvailabilityZone` to improve accuracy with non-premium SKUs by @BenjaminEngeset.
+      [#2788](https://github.com/Azure/PSRule.Rules.Azure/issues/2788)
+      - Removed the `If` Premium SKU.
+      - Added check for Premium SKU.
+      - Bumped rule set to `2024_06`.
+- General improvements:
+  - Updated resource providers and policy aliases.
+    [#2880](https://github.com/Azure/PSRule.Rules.Azure/pull/2880)
+- Bug fixed:
+  - Fixed `union` does not perform deep merge or keep property order by @BernieWhite.
+    [#2885](https://github.com/Azure/PSRule.Rules.Azure/issues/2885)
 
 ## v1.37.0-B0009 (pre-release)
 
@@ -730,13 +757,12 @@ What's changed since v1.31.3:
     - Promoted `Azure.Defender.Api` to GA rule set by @BernieWhite.
       [#2591](https://github.com/Azure/PSRule.Rules.Azure/issues/2591)
   - Network Interface:
-    - **Important change**: Renamed NIC rules to reflect current usage by @BernieWhite.
+    - Renamed NIC rules to reflect current usage by @BernieWhite.
       [#2574](https://github.com/Azure/PSRule.Rules.Azure/issues/2574)
       - Rename `Azure.VM.NICAttached` to `Azure.NIC.Attached`.
       - Rename `Azure.VM.NICName` to `Azure.NIC.Name`.
       - Rename `Azure.VM.UniqueDns` to `Azure.NIC.UniqueDns`.
       - Added aliases to reference the old names for suppression and exclusion.
-      - Old names will be removed from v2.
     - Added support for private link services to `Azure.VM.NICAttached` by @BernieWhite.
       [#2563](https://github.com/Azure/PSRule.Rules.Azure/issues/2563)
 - General improvements:
@@ -814,13 +840,12 @@ What's changed since pre-release v1.32.0-B0021:
 
 - Updated rules:
   - Network Interface:
-    - **Important change**: Renamed NIC rules to reflect current usage by @BernieWhite.
+    - Renamed NIC rules to reflect current usage by @BernieWhite.
       [#2574](https://github.com/Azure/PSRule.Rules.Azure/issues/2574)
       - Rename `Azure.VM.NICAttached` to `Azure.NIC.Attached`.
       - Rename `Azure.VM.NICName` to `Azure.NIC.Name`.
       - Rename `Azure.VM.UniqueDns` to `Azure.NIC.UniqueDns`.
       - Added aliases to reference the old names for suppression and exclusion.
-      - Old names will be removed from v2.
     - Added support for private link services to `Azure.VM.NICAttached` by @BernieWhite.
       [#2563](https://github.com/Azure/PSRule.Rules.Azure/issues/2563)
 - General improvements:

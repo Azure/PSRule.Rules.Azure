@@ -12,6 +12,38 @@
   },
   {
     "aliases": null,
+    "resourceType": "codeSigningAccounts",
+    "apiVersions": [
+      "2024-02-05-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Europe",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "codeSigningAccounts/certificateProfiles",
+    "apiVersions": [
+      "2024-02-05-preview"
+    ],
+    "locations": [
+      "East US",
+      "North Europe",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
       "2024-02-05-preview",
