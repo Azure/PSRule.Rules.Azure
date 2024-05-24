@@ -29,6 +29,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.37.0-B0034 (pre-release)
+
 What's changed since pre-release v1.37.0-B0009:
 
 - New features:
