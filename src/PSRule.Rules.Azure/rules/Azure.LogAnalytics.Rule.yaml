@@ -1,0 +1,31 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Log Analytics
+#
+
+#region Rules
+
+---
+# Synopsis: Log Analytics workspaces should have workspace replication enabled to improve service availability.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.LogAnalytics.Replication
+  ref: AZR-000425
+  tags:
+    release: Preview
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.OperationalInsights/workspaces
+  condition:
+    allOf:
+    - field: properties.replication.enabled
+      equals: true
+    - field: properties.replication.location
+      hasValue: true
+
+#endregion Rules
