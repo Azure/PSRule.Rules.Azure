@@ -15,17 +15,20 @@ metadata:
   name: Azure.LogAnalytics.Replication
   ref: AZR-000425
   tags:
-    release: Preview
+    release: preview
     ruleSet: 2024_06
     Azure.WAF/pillar: Reliability
 spec:
   type:
-  - Microsoft.OperationalInsights/workspaces
+    - Microsoft.OperationalInsights/workspaces
+  where:
+    field: properties.features.clusterResourceId
+    hasValue: false
   condition:
     allOf:
-    - field: properties.replication.enabled
-      equals: true
-    - field: properties.replication.location
-      hasValue: true
+      - field: properties.replication.enabled
+        equals: true
+      - field: properties.replication.location
+        hasValue: true
 
 #endregion Rules

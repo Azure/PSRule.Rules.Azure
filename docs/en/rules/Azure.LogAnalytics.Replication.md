@@ -6,7 +6,7 @@ resource: Log Analytics
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LogAnalytics.Replication/
 ---
 
-# Worskspace replication
+# Replicate workspaces across regions
 
 ## SYNOPSIS
 
@@ -14,14 +14,24 @@ Log Analytics workspaces should have workspace replication enabled to improve se
 
 ## DESCRIPTION
 
-Log Analytics workspaces supports workspace replication.
-Workspace replication provides availability of the workspace in a secondary region and provides service availability if the primary region goes offline by changing the DNS records to point to the secondary workspace.
+In the event of a service disruption, access to monitoring data and collection of new data in a workspace may be temporarily impacted.
 
-The switch to the replicated workspace is an action you trigger manually.
+Log Analytics workspaces support replication of monitoring data to a workspace to a secondary region.
+When relication is enabled, new monitoring data is replicated to the secondary region in addition to the primary region.
+Failover to the workspace in the secondary region can be triggered manually.
+
+Some limitations apply:
+
+- Failover occurs by updating DNS records to point to the secondary region.
+  As a result, failover won't occur immediately and clients with open connections won't update until a new connection is established.
+- Failover is a customer initiated action.
+  Failover to the secondard region does not occur automatically.
+- Data collection rules need to be updated to point to the system data collection endpoint for ingested data to be replicated.
+- See documentation references below for additional limitations and important information.
 
 ## RECOMMENDATION
 
-Consider deploying an Log Analytics workspace across multiple regions to improve service availability.
+Consider replicating Log Analytics workspaces across regions to improve access to monitoring data in the event of a regional service disruption.
 
 ## EXAMPLES
 
