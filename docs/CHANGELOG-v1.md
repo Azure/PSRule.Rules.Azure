@@ -32,7 +32,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 - New rules:
   - Virtual Machine Scale Sets:
     - Check that automatic instance repairs are enabled by @BenjaminEngeset.
-      [#2893](https://github.com/Azure/PSRule.Rules.Azure/issues/2893)
+      [#2895](https://github.com/Azure/PSRule.Rules.Azure/issues/2895)
 
 ## v1.37.0-B0034 (pre-release)
 
