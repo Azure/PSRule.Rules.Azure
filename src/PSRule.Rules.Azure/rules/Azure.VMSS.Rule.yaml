@@ -1,0 +1,28 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Virtual Machine Scale Sets
+#
+
+#region Rules
+
+---
+# Synopsis: Automatic instance repairs are enabled.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.VMSS.AutoInstanceRepairs
+  ref: AZR-000426
+  tags:
+    release: preview
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+    - Microsoft.Compute/virtualMachineScaleSets
+  condition:
+    field: properties.automaticRepairsPolicy.enabled
+    equals: true
+
+#endregion Rules
