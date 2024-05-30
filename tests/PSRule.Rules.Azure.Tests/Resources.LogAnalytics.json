@@ -1,0 +1,137 @@
+[
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/workspace/workspace-a",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/workspace/workspace-a",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "apiVersion": "2023-01-01-preview",
+    "name": "workspace-a",
+    "location": "westus",
+    "tags": {
+      "Resource": "Log Analytics Workspace"
+    },
+    "identity": {
+      "type": "string",
+      "userAssignedIdentities": {}
+    },
+    "properties": {
+      "features": {
+        "disableLocalAuth": false,
+        "enableLogAccessUsingOnlyResourcePermissions": false,
+        "immediatePurgeDataOn30Days": true
+      },
+      "publicNetworkAccessForIngestion": "Enabled",
+      "publicNetworkAccessForQuery": "Enabled",
+      "retentionInDays": 30,
+      "sku": {
+        "name": "PERGB2018"
+      },
+      "workspaceCapping": {
+        "dailyQuotaGb": -1
+      }
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/workspace/workspace-b",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/workspace/workspace-b",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "apiVersion": "2023-01-01-preview",
+    "name": "workspace-b",
+    "location": "westeurope",
+    "tags": {
+      "Resource": "Log Analytics Workspace"
+    },
+    "identity": {
+      "type": "string",
+      "userAssignedIdentities": {}
+    },
+    "properties": {
+      "features": {
+        "disableLocalAuth": false,
+        "enableLogAccessUsingOnlyResourcePermissions": false,
+        "immediatePurgeDataOn30Days": true
+      },
+      "replication": {
+        "enabled": false,
+        "location": "northeurope"
+      },
+      "publicNetworkAccessForIngestion": "Enabled",
+      "publicNetworkAccessForQuery": "Enabled",
+      "retentionInDays": 30,
+      "sku": {
+        "name": "PERGB2018"
+      },
+      "workspaceCapping": {
+        "dailyQuotaGb": -1
+      }
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/workspace/workspace-c",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/workspace/workspace-c",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "apiVersion": "2023-01-01-preview",
+    "name": "workspace-c",
+    "location": "westeurope",
+    "tags": {
+      "Resource": "Log Analytics Workspace"
+    },
+    "identity": {
+      "type": "string",
+      "userAssignedIdentities": {}
+    },
+    "properties": {
+      "features": {
+        "disableLocalAuth": false,
+        "enableLogAccessUsingOnlyResourcePermissions": false,
+        "immediatePurgeDataOn30Days": true
+      },
+      "replication": {
+        "enabled": true
+      },
+      "publicNetworkAccessForIngestion": "Enabled",
+      "publicNetworkAccessForQuery": "Enabled",
+      "retentionInDays": 30,
+      "sku": {
+        "name": "PERGB2018"
+      },
+      "workspaceCapping": {
+        "dailyQuotaGb": -1
+      }
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/workspace/workspace-d",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.OperationalInsights/workspace/workspace-d",
+    "type": "Microsoft.OperationalInsights/workspaces",
+    "apiVersion": "2023-01-01-preview",
+    "name": "workspace-d",
+    "location": "westeurope",
+    "tags": {
+      "Resource": "Log Analytics Workspace"
+    },
+    "identity": {
+      "type": "string",
+      "userAssignedIdentities": {}
+    },
+    "properties": {
+      "features": {
+        "disableLocalAuth": false,
+        "enableLogAccessUsingOnlyResourcePermissions": false,
+        "immediatePurgeDataOn30Days": true
+      },
+      "replication": {
+        "enabled": true,
+        "location": "northeurope"
+      },
+      "publicNetworkAccessForIngestion": "Enabled",
+      "publicNetworkAccessForQuery": "Enabled",
+      "retentionInDays": 30,
+      "sku": {
+        "name": "PERGB2018"
+      },
+      "workspaceCapping": {
+        "dailyQuotaGb": -1
+      }
+    }
+  }
+]
