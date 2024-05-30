@@ -29,6 +29,22 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Cache for Redis:
+    - Verify that cache instances have Entra ID authentication enabled by @BenjaminEngeset.
+      [#2899](https://github.com/Azure/PSRule.Rules.Azure/issues/2899)
+  - Log Analytics:
+    - Check that workspaces have workspace replication enabled by @BenjaminEngeset.
+      [#2893](https://github.com/Azure/PSRule.Rules.Azure/issues/2893)
+  - Virtual Machine Scale Sets:
+    - Check that automatic instance repairs are enabled by @BenjaminEngeset.
+      [#2895](https://github.com/Azure/PSRule.Rules.Azure/issues/2895)
+- Engineering:
+  - Bump xunit to v2.8.1.
+    [#2892](https://github.com/Azure/PSRule.Rules.Azure/pull/2892)
+
+## v1.37.0-B0034 (pre-release)
+
 What's changed since pre-release v1.37.0-B0009:
 
 - New features:
@@ -70,6 +86,8 @@ What's changed since pre-release v1.37.0-B0009:
     [#2871](https://github.com/Azure/PSRule.Rules.Azure/pull/2871)
   - Bump System.Management.Automation to 7.3.12.
     [#2868](https://github.com/Azure/PSRule.Rules.Azure/pull/2868)
+  - Bump Microsoft.NET.Test.Sdk to v17.10.0.
+    [#2884](https://github.com/Azure/PSRule.Rules.Azure/pull/2884)
 - Bug fixed:
   - Fixed `union` does not perform deep merge or keep property order by @BernieWhite.
     [#2885](https://github.com/Azure/PSRule.Rules.Azure/issues/2885)

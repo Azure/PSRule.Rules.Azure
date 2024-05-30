@@ -313,6 +313,30 @@ Describe 'Azure.Redis' -Tag 'Redis' {
             $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C', 'redis-Q', 'redis-R';
         }
+        
+
+        It 'Azure.Redis.EntraID' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Redis.EntraID' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'redis-A', 'redis-B', 'redis-C';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.redisConfiguration.aad-enabled: The field 'properties.redisConfiguration.aad-enabled' does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.redisConfiguration.aad-enabled: Is set to ''.";
+            $ruleResult[2].Reason | Should -BeExactly "Path properties.redisConfiguration.aad-enabled: Is set to 'False'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'redis-D', 'redis-E', 'redis-F', 'redis-G', 'redis-H', 'redis-I', 'redis-J', 'redis-Q', 'redis-R';
+
+             # None
+             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+             $ruleResult.Length | Should -Be 7;
+             $ruleResult.TargetName | Should -BeIn 'redis-K', 'redis-L', 'redis-M', 'redis-N', 'redis-O', 'redis-P', 'redis-S';
+        }
     }
 
     Context 'With Configuration Option' -Tag 'Configuration' {

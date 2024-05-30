@@ -191,6 +191,11 @@
       "upgradePolicy": {
         "mode": "Manual"
       },
+      "automaticRepairsPolicy": {
+        "enabled": false,
+        "gracePeriod": "PT10M",
+        "repairAction": "Replace"
+      },
       "virtualMachineProfile": {
         "osProfile": {
           "computerNamePrefix": "vmss-002",
@@ -366,6 +371,11 @@
       "upgradePolicy": {
         "mode": "Manual"
       },
+      "automaticRepairsPolicy": {
+        "enabled": true,
+        "gracePeriod": "PT10M",
+        "repairAction": "Replace"
+      },
       "virtualMachineProfile": {
         "osProfile": {
           "computerNamePrefix": "vmss-003",
@@ -523,6 +533,11 @@
       "singlePlacementGroup": true,
       "upgradePolicy": {
         "mode": "Manual"
+      },
+      "automaticRepairsPolicy": {
+        "enabled": true,
+        "gracePeriod": "PT10M",
+        "repairAction": "Replace"
       },
       "virtualMachineProfile": {
         "osProfile": {
@@ -682,6 +697,11 @@
       "singlePlacementGroup": true,
       "upgradePolicy": {
         "mode": "Manual"
+      },
+      "automaticRepairsPolicy": {
+        "enabled": true,
+        "gracePeriod": "PT10M",
+        "repairAction": "Replace"
       },
       "virtualMachineProfile": {
         "osProfile": {

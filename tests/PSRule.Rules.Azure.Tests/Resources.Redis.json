@@ -60,6 +60,7 @@
       },
       "enableNonSslPort": true,
       "redisConfiguration": {
+        "aad-enabled": null,
         "maxclients": "2000",
         "maxmemory-policy": "volatile-lru"
       },
@@ -225,6 +226,7 @@
         }
       ],
       "redisConfiguration": {
+        "aad-enabled": "False",
         "maxclients": "256",
         "maxmemory-reserved": "2",
         "maxfragmentationmemory-reserved": "12",
@@ -413,6 +415,7 @@
         }
       ],
       "redisConfiguration": {
+        "aad-enabled": "True",
         "maxclients": "1000",
         "maxmemory-reserved": "150",
         "maxfragmentationmemory-reserved": "0",
@@ -577,6 +580,7 @@
       "minimumTlsVersion": "1.2",
       "enableNonSslPort": false,
       "redisConfiguration": {
+        "aad-enabled": "True",
         "maxclients": "2000",
         "maxmemory-policy": "volatile-lru"
       },
@@ -747,6 +751,7 @@
       "publicNetworkAccess": "Disabled",
       "enableNonSslPort": false,
       "redisConfiguration": {
+        "aad-enabled": "True",
         "maxclients": "2000",
         "maxmemory-policy": "volatile-lru"
       },
@@ -780,6 +785,7 @@
       "minimumTlsVersion": "1.2",
       "enableNonSslPort": false,
       "redisConfiguration": {
+        "aad-enabled": "True",
         "maxclients": "2000",
         "maxmemory-policy": "volatile-lru"
       },
@@ -815,6 +821,7 @@
       "minimumTlsVersion": "1.2",
       "enableNonSslPort": false,
       "redisConfiguration": {
+        "aad-enabled": "True",
         "maxclients": "2000",
         "maxmemory-policy": "volatile-lru"
       },
@@ -846,6 +853,7 @@
       "minimumTlsVersion": "1.2",
       "enableNonSslPort": false,
       "redisConfiguration": {
+        "aad-enabled": "True",
         "maxclients": "2000",
         "maxmemory-policy": "volatile-lru"
       },
@@ -877,6 +885,7 @@
       "minimumTlsVersion": "1.2",
       "enableNonSslPort": false,
       "redisConfiguration": {
+        "aad-enabled": "True",
         "maxclients": "2000",
         "maxmemory-policy": "volatile-lru"
       },
@@ -1044,6 +1053,7 @@
       "minimumTlsVersion": "1.2",
       "publicNetworkAccess": "Enabled",
       "redisConfiguration": {
+        "aad-enabled": "True",
         "maxclients": "256",
         "maxmemory-reserved": "30",
         "maxfragmentationmemory-reserved": "30",
@@ -1085,6 +1095,7 @@
       "minimumTlsVersion": "1.2",
       "publicNetworkAccess": "Enabled",
       "redisConfiguration": {
+        "aad-enabled": "True",
         "maxclients": "256",
         "maxmemory-reserved": "30",
         "maxfragmentationmemory-reserved": "30",
