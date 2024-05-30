@@ -95,6 +95,7 @@ Microsoft Entra ID based authentication isn't supported in the Enterprise tiers 
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
 - [Use Microsoft Entra ID for cache authentication](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-azure-active-directory-for-authentication)
+- [Configure role-based access control with Data Access Policy](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-configure-role-based-access-control)
 - [Azure security baseline for Azure Cache for Redis](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cache-for-redis-security-baseline)
 - [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-cache-for-redis-security-baseline#im-1-use-centralized-identity-and-authentication-system)
 - [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.cache/redis#rediscommonpropertiesredisconfiguration)
