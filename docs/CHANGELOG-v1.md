@@ -30,6 +30,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - Log Analytics:
+    - Check that workspaces have workspace replication enabled by @BenjaminEngeset.
+      [#2893](https://github.com/Azure/PSRule.Rules.Azure/issues/2893)
   - Virtual Machine Scale Sets:
     - Check that automatic instance repairs are enabled by @BenjaminEngeset.
       [#2895](https://github.com/Azure/PSRule.Rules.Azure/issues/2895)
