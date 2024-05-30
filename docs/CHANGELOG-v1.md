@@ -36,6 +36,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine Scale Sets:
     - Check that automatic instance repairs are enabled by @BenjaminEngeset.
       [#2895](https://github.com/Azure/PSRule.Rules.Azure/issues/2895)
+  - Azure Cache for Redis:
+    - Verify that cache instances have Entra ID authentication enabled by @BenjaminEngeset.
+      [#2899](https://github.com/Azure/PSRule.Rules.Azure/issues/2899)
 
 ## v1.37.0-B0034 (pre-release)
 
