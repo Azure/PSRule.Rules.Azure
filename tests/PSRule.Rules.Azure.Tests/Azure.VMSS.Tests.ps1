@@ -130,6 +130,25 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-003';
         }
+
+        It 'Azure.VMSS.AutoInstanceRepairs' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.VMSS.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.AutoInstanceRepairs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.automaticRepairsPolicy.enabled: The field 'properties.automaticRepairsPolicy.enabled' does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.automaticRepairsPolicy.enabled: Is set to 'False'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-003', 'vmss-004', 'vmss-005';
+        }
     }
 
     Context 'Resource name - Azure.VMSS.Name' {
