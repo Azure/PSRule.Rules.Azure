@@ -234,6 +234,20 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging', 'fn-app';
         }
+
+        It 'Azure.AppService.NodeJsVersion' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.NodeJsVersion' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be ;
+            $ruleResult.TargetName | Should -Be ;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be  ;
+            $ruleResult.TargetName | Should -BeIn ;
+        }
     }
 
     Context 'With Template' {

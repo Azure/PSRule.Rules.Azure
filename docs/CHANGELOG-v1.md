@@ -39,6 +39,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine Scale Sets:
     - Check that automatic instance repairs are enabled by @BenjaminEngeset.
       [#2895](https://github.com/Azure/PSRule.Rules.Azure/issues/2895)
+  - App Service:
+    - Check that applications uses supported Node.js runtime versions by @BenjaminEngeset.
+      [#2879](https://github.com/Azure/PSRule.Rules.Azure/issues/2879)
 - Engineering:
   - Bump xunit to v2.8.1.
     [#2892](https://github.com/Azure/PSRule.Rules.Azure/pull/2892)
