@@ -236,7 +236,7 @@ function global:Get-NodeVersions {
         This function retrieves the Node.js versions for the App Service.
 
     .OUTPUTS
-        Output is a list of Node.js versions used, expect the 'NODE|lts' version as this is not version specific,
+        Output is a list of Node.js versions used, except the 'NODE|lts' version as this is not version specific,
         hence not parsable.
     #>
     [CmdletBinding()]
