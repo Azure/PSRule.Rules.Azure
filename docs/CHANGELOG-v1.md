@@ -42,6 +42,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 - Engineering:
   - Bump xunit to v2.8.1.
     [#2892](https://github.com/Azure/PSRule.Rules.Azure/pull/2892)
+  - Bump xunit.runner.visualstudio to v2.8.1.
+    [#2891](https://github.com/Azure/PSRule.Rules.Azure/pull/2891)
 
 ## v1.37.0-B0034 (pre-release)
 
