@@ -39,6 +39,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine Scale Sets:
     - Check that automatic instance repairs are enabled by @BenjaminEngeset.
       [#2895](https://github.com/Azure/PSRule.Rules.Azure/issues/2895)
+- Updated rules:
+  - Azure MySQL:
+    - Updated `Azure.MySQL.DefenderCloud` to support flexible servers by @BenjaminEngeset.
+      [#2904](https://github.com/Azure/PSRule.Rules.Azure/issues/2904)
+      - Added check for Microsoft Defender for Cloud for Azure Database for MySQL for the flexible deployment model.
+      - Bumped rule set to `2024_06`.
 - Engineering:
   - Bump xunit to v2.8.1.
     [#2892](https://github.com/Azure/PSRule.Rules.Azure/pull/2892)

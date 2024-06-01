@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-06-01
 severity: Important
 pillar: Security
-category: Security operations
+category: SE:10 Monitoring and threat detection
 resource: Azure Database for MySQL
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.DefenderCloud/
 ---
@@ -14,7 +15,8 @@ Enable Microsoft Defender for Cloud for Azure Database for MySQL.
 
 ## DESCRIPTION
 
-Defender for Cloud detects anomalous activities indicating unusual and potentially harmful attempts to access or exploit databases.
+Microsoft Defender for Cloud detects anomalous activities that may indicate unusual and potentially harmful attempts to access or exploit your databases. 
+It provides advanced threat protection for your Azure Database for MySQL, helping to safeguard your data and maintain compliance.
 
 ## RECOMMENDATION
 
@@ -123,12 +125,17 @@ resource mysqlDefender 'Microsoft.DBforMySQL/servers/securityAlertPolicies@2017-
 
 ## NOTES
 
-This rule is only applicable for the Azure Database for MySQL Single Server deployment model.
+For the Azure Database for MySQL Flexible Server deployment model, enabling Microsoft Defender for Cloud is handled differently as the `Microsoft.DBforMySQL/flexibleServers/advancedThreatProtectionSettings` resource is read-only. 
+It can be enabled through either of the following methods:
 
-Azure Database for MySQL Flexible Server deployment model does not currently support Microsoft Defender for Cloud.
+- Subscription Level Enablement: Enable the `open-source relational databases` resource type under the Microsoft Defender for Cloud Databases plan for the subscription where the server is located.
+- Resource Level Enablement: Manually enable Microsoft Defender for Cloud for the specific resource via the Azure portal under the resource blade.
 
 ## LINKS
 
-- [Security operations](https://learn.microsoft.com/azure/architecture/framework/security/security-operations)
-- [Enable Microsoft Defender for open-source relational databases](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-usage)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers/securityalertpolicies)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/en-us/azure/well-architected/security/monitor-threats)
+- [Azure security baseline for Azure Database for MySQL - Flexible Server](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-database-for-mysql-flexible-server-security-baseline)
+- [LT-1: Enable threat detection capabilities](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-database-for-mysql-flexible-server-security-baseline#lt-1-enable-threat-detection-capabilities)
+- [Enable Microsoft Defender for open-source relational databases](https://learn.microsoft.com/azure/defender-for-cloud/enable-defender-for-databases-azure)
+- [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers/advancedthreatprotectionsettings)
+- [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers/securityalertpolicies)

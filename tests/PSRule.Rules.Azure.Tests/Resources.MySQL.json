@@ -580,5 +580,33 @@
       "value": "ON",
       "source": "user-override"
     }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-F/advancedThreatProtectionSettings/Default",
+    "ResourceName": "server-F/Default",
+    "Name": "server-F/Default",
+    "ResourceType": "Microsoft.DBforMySQL/flexibleServers/advancedThreatProtectionSettings",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "properties": {
+      "state": "Disabled"
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-E/advancedThreatProtectionSettings/Default",
+    "Name": "server-E/Default",
+    "ResourceName": "server-E/Default",
+    "ResourceType": "Microsoft.DBforMySQL/flexibleServers/advancedThreatProtectionSettings",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "properties": {
+      "state": "Enabled"
+    }
   }
 ]
