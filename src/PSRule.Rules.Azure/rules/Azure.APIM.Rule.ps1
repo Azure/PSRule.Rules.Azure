@@ -273,8 +273,12 @@ Rule 'Azure.APIM.MinAPIVersion' -Ref 'AZR-000321' -Type 'Microsoft.ApiManagement
     }
 } -Configure @{ AZURE_APIM_MIN_API_VERSION = '2021-08-01' }
 
-# Synopsis: API Management instances should use multi-region deployment to improve service availability.
-Rule 'Azure.APIM.MultiRegion' -Ref 'AZR-000340' -Type 'Microsoft.ApiManagement/service' -If { IsPremiumAPIM } -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Reliability'; } {
+# Synopsis: Enhance service availability and resilience by deploying Azure API Management instances across multiple regions.
+Rule 'Azure.APIM.MultiRegion' -Ref 'AZR-000340' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    if ($TargetObject.sku.name -ne 'Premium') {
+        return $Assert.HasFieldValue($TargetObject, 'sku.name', 'Premium') # Multi-region deployment is only supported for the Premium SKU.
+    }
+
     $Assert.GreaterOrEqual($TargetObject, 'properties.additionalLocations', 1).Reason($LocalizedData.APIMMultiRegion)
 }
 
