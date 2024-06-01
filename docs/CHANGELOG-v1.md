@@ -42,7 +42,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 - Updated rules:
   - Azure MySQL:
     - Updated `Azure.MySQL.DefenderCloud` to support flexible servers by @BenjaminEngeset.
-      [#2788](https://github.com/Azure/PSRule.Rules.Azure/issues/2788)
+      [#2904](https://github.com/Azure/PSRule.Rules.Azure/issues/2904)
       - Added check for Microsoft Defender for Cloud for Azure Database for MySQL for the flexible deployment model.
       - Bumped rule set to `2024_06`.
 - Engineering:
