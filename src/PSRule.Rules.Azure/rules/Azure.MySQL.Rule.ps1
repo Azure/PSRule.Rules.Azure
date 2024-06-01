@@ -61,7 +61,8 @@ Rule 'Azure.MySQL.UseFlexible' -Ref 'AZR-000325' -Type 'Microsoft.DBforMySQL/fle
 }
 
 # Synopsis: Enable Microsoft Defender for Cloud for Azure Database for MySQL.
-Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/servers/securityAlertPolicies' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/servers', 'Microsoft.DBforMySQL/servers/securityAlertPolicies', 'Microsoft.DBforMySQL/flexibleServers/advancedThreatProtectionSettings' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'LT-1' } {
+    # Single server deployment model
     if ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers') {
         $defenderConfigs = @(GetSubResources -ResourceType 'Microsoft.DBforMySQL/servers/securityAlertPolicies')
         if ($defenderConfigs.Length -eq 0) {
@@ -73,6 +74,12 @@ Rule 'Azure.MySQL.DefenderCloud' -Ref 'AZR-000328' -Type 'Microsoft.DBforMySQL/s
         }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/servers/securityAlertPolicies') {
+        $Assert.HasFieldValue($TargetObject, 'properties.state', 'Enabled')
+    }
+
+    # Flexible server deployment model, only export as this resource type is read-only. 
+    # The Sub-resource when exported is not under the resources property of the parent resource.
+    elseif ($PSRule.TargetType -eq 'Microsoft.DBforMySQL/flexibleServers/advancedThreatProtectionSettings' -and (IsExport)) {
         $Assert.HasFieldValue($TargetObject, 'properties.state', 'Enabled')
     }
 }
