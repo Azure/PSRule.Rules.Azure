@@ -172,7 +172,7 @@ Rule 'Azure.AppService.WebSecureFtp' -Ref 'AZR-000081' -With 'Azure.AppService.I
 }
 
 # Synopsis: Configure applications to use supported Node.js runtime versions.
-Rule 'Azure.AppService.NodeJsVersion' -Ref 'AZR-000428' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots', 'Microsoft.Web/sites/slots/config' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.AppService.NodeJsVersion' -Ref 'AZR-000428' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots', 'Microsoft.Web/sites/slots/config' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $versions = Get-NodeVersions
 
     $pass = $true
@@ -252,26 +252,26 @@ function global:Get-NodeVersions {
         ForEach-Object { $_.properties.siteConfig.linuxFxVersion | Where-Object { $_ -like 'NODE|*' -and $_ -ne 'NODE|lts' } }
         # App Service on Linux.
         GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' |
-        Where-Object name -eq 'web' |
+        Where-Object { $_.name -eq 'web' -or $_.name -like '*/web' } |
         ForEach-Object { $_.properties.linuxFxVersion | Where-Object { $_ -like 'NODE|*' -and $_ -ne 'NODE|lts' } }
         
         # App Service on Windows. Works for when main object equals Microsoft.Web/sites or Microsoft.Web/sites/slots
-        $TargetObject.properties.siteConfig.appSettings.WEBSITE_NODE_DEFAULT_VERSION
+        $TargetObject.properties.siteConfig.appSettings | Where-Object name -eq 'WEBSITE_NODE_DEFAULT_VERSION' | ForEach-Object { $_.value }
         # App Service on Windows. Works for when main object equals Microsoft.Web/sites/config 'appsettings' or Microsoft.Web/sites/slots/config 'appsettings'
         $TargetObject.properties.WEBSITE_NODE_DEFAULT_VERSION
         # App Service on Windows. Works for when main object equals Microsoft.Web/sites/config 'web' or Microsoft.Web/sites/slots/config 'web'
-        $TargetObject.properties.appSettings.WEBSITE_NODE_DEFAULT_VERSION
+        $TargetObject.properties.appSettings | Where-Object name -eq 'WEBSITE_NODE_DEFAULT_VERSION' | ForEach-Object { $_.value }
         # App Service on Windows.
         GetSubResources -ResourceType 'Microsoft.Web/sites/slots' |
-        ForEach-Object { $_.properties.siteConfig.appSettings.WEBSITE_NODE_DEFAULT_VERSION }
+        ForEach-Object { $_.properties.siteConfig.appSettings | Where-Object name -eq 'WEBSITE_NODE_DEFAULT_VERSION' | ForEach-Object { $_.value } }
         # App Service on Windows.
         GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' |
-        Where-Object name -eq 'appsettings' |
+        Where-Object { $_.name -eq 'appsettings' -or $_.name -like '*/appsettings' } |
         ForEach-Object { $_.properties.WEBSITE_NODE_DEFAULT_VERSION }
         # App Service on Windows.
         GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' |
-        Where-Object name -eq 'web' |
-        ForEach-Object { $_.properties.appSettings.WEBSITE_NODE_DEFAULT_VERSION }
+        Where-Object { $_.name -eq 'web' -or $_.name -like '*/web' } |
+        ForEach-Object { $_.properties.appSettings | Where-Object name -eq 'WEBSITE_NODE_DEFAULT_VERSION' | ForEach-Object { $_.value } }
     ) -replace '[^\d.]' -match '.' -replace '^\d+$', '$0.0'
     $versions
 }

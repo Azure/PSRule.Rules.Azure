@@ -30,22 +30,16 @@ Consider updating applications to use supported Node.js runtime versions to main
 
 To deploy App Services that pass this rule:
 
-- For App Service apps on Linux-based plans:
+- For Linux-based apps and slots:
   - Set the `properties.siteConfig.linuxFxVersion` property to `NODE|20-lts`.
-  - It is also possible to set this for sub-resources by:
-    - If the type is `Microsoft.Web/sites/slots`, set the `properties.siteConfig.linuxFxVersion` property to `NODE|20-lts`.
-    - If the type is `Microsoft.Web/sites/config` and the `name` property is set to `web`, set the `properties.linuxFxVersion` property to `NODE|20-lts`.
-    - If the type is `Microsoft.Web/sites/slots/config` and the `name` property is set to `web`, set the `properties.linuxFxVersion` property to `NODE|20-lts`.
-- For App Service apps on Windows-based plans:
-  - Set the `properties.siteConfig.appSettings.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-  - It is also possible to set this for sub-resources by:
-    - If the type is `Microsoft.Web/sites/slots`, set the `properties.siteConfig.appSettings.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-    - If the type is `Microsoft.Web/sites/config` and the `name` property is set to `appsettings`, set the `properties.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-    - If the type is `Microsoft.Web/sites/slots/config` and the `name` property is set to `appsettings`, set the `properties.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-    - If the type is `Microsoft.Web/sites/config` and the `name` property is set to `web`, set the `properties.appSettings.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-    - If the type is `Microsoft.Web/sites/slots/config` and the `name` property is set to `web`, set the `properties.appSettings.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
+- For Windows-based apps and slots:
+  - Add an app setting within `properties.siteConfig.appSettings` by creating an object with the `name` and `value` properties.
+  - Set the `name` property to `WEBSITE_NODE_DEFAULT_VERSION`.
+  - Set the `value` property to `~20`.
 
-For example for Linux:
+In addition to setting the `properties.siteConfig` property, you can also use a sub-resource.
+
+For example (Linux app):
 
 ```json
 {
@@ -71,7 +65,7 @@ For example for Linux:
 }
 ```
 
-For example for Windows:
+For example (Windows app):
 
 ```json
 {
@@ -88,7 +82,12 @@ For example for Windows:
     "httpsOnly": true,
     "siteConfig": {
       "minTlsVersion": "1.2",
-      "linuxFxVersion": "~20"
+      "appSettings": [
+        {
+          "name": "WEBSITE_NODE_DEFAULT_VERSION",
+          "value": "~20"
+        }
+      ]
     }
   },
   "dependsOn": [
@@ -101,22 +100,16 @@ For example for Windows:
 
 To deploy App Services that pass this rule:
 
-- For App Service apps on Linux-based plans:
+- For Linux-based apps and slots:
   - Set the `properties.siteConfig.linuxFxVersion` property to `NODE|20-lts`.
-  - It is also possible to set this for sub-resources by:
-    - If the type is `Microsoft.Web/sites/slots`, set the `properties.siteConfig.linuxFxVersion` property to `NODE|20-lts`.
-    - If the type is `Microsoft.Web/sites/config` and the `name` property is set to `web`, set the `properties.linuxFxVersion` property to `NODE|20-lts`.
-    - If the type is `Microsoft.Web/sites/slots/config` and the `name` property is set to `web`, set the `properties.linuxFxVersion` property to `NODE|20-lts`.
-- For App Service apps on Windows-based plans:
-  - Set the `properties.siteConfig.appSettings.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-  - It is also possible to set this for sub-resources by:
-    - If the type is `Microsoft.Web/sites/slots`, set the `properties.siteConfig.appSettings.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-    - If the type is `Microsoft.Web/sites/config` and the `name` property is set to `appsettings`, set the `properties.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-    - If the type is `Microsoft.Web/sites/slots/config` and the `name` property is set to `appsettings`, set the `properties.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-    - If the type is `Microsoft.Web/sites/config` and the `name` property is set to `web`, set the `properties.appSettings.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
-    - If the type is `Microsoft.Web/sites/slots/config` and the `name` property is set to `web`, set the `properties.appSettings.WEBSITE_NODE_DEFAULT_VERSION` property to `~20`.
+- For Windows-based apps and slots:
+  - Add an app setting within `properties.siteConfig.appSettings` by creating an object with the `name` and `value` properties.
+  - Set the `name` property to `WEBSITE_NODE_DEFAULT_VERSION`.
+  - Set the `value` property to `~20`.
 
-For example for Linux:
+In addition to setting the `properties.siteConfig` property, you can also use a sub-resource.
+
+For example (Linux app):
 
 ```bicep
 resource linuxWeb 'Microsoft.Web/sites@2022-09-01' = {
@@ -137,7 +130,7 @@ resource linuxWeb 'Microsoft.Web/sites@2022-09-01' = {
 }
 ```
 
-For example for Windows:
+For example (Windows app):
 
 ```bicep
 resource windowsWeb 'Microsoft.Web/sites@2022-09-01' = {
@@ -152,7 +145,12 @@ resource windowsWeb 'Microsoft.Web/sites@2022-09-01' = {
     httpsOnly: true
     siteConfig: {
       minTlsVersion: '1.2'
-      linuxFxVersion: '~20'
+      appSettings: [
+        {
+          name: 'WEBSITE_NODE_DEFAULT_VERSION'
+          value: '~20'
+        }
+      ]
     }
   }
 }
