@@ -39,6 +39,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine Scale Sets:
     - Check that automatic instance repairs are enabled by @BenjaminEngeset.
       [#2895](https://github.com/Azure/PSRule.Rules.Azure/issues/2895)
+- Updated rules:
+  - API Management:
+    - **Important change**: Updated `Azure.APIM.MultiRegion` to improve accuracy with non-premium SKUs by @BenjaminEngeset.
+      [#2787](https://github.com/Azure/PSRule.Rules.Azure/issues/2787)
+      - Removed the `If` Premium SKU.
+      - Added check for Premium SKU.
+      - Bumped rule set to `2024_06`
 - Engineering:
   - Bump xunit to v2.8.1.
     [#2892](https://github.com/Azure/PSRule.Rules.Azure/pull/2892)
