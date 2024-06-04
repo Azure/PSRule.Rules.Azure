@@ -76,6 +76,11 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_HASVALUE = "hasValue";
         private const string PROPERTY_EMPTY = "empty";
         private const string PROPERTY_LENGTH = "length";
+        private const string PROPERTY_CONCAT = "concat";
+        private const string PROPERTY_SPLIT = "split";
+        private const string PROPERTY_STRING = "string";
+        private const string PROPERTY_INTEGER = "integer";
+        private const string PROPERTY_DELIMITER = "delimiter";
 
         private const string EFFECT_DISABLED = "Disabled";
         private const string EFFECT_AUDITIFNOTEXISTS = "AuditIfNotExists";
@@ -1291,7 +1296,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
 
             // Handle [field('string')]
-            else if (tokens.HasFieldTokens())
+            else if (tokens.HasFieldTokens() && !tokens.HasPolicyRuntimeTokens())
             {
                 condition = VisitFieldTokens(context, condition, tokens);
             }
@@ -1331,14 +1336,14 @@ namespace PSRule.Rules.Azure.Data.Policy
             else if (tokens.ConsumeFunction(PROPERTY_IF) &&
                 tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
             {
-                var orginal = condition;
+                var original = condition;
 
                 // Condition
                 var leftCondition = VisitFieldTokens(context, new JObject(), tokens);
                 var rightCondition = ReverseCondition(Clone(leftCondition));
 
-                var leftEvaluation = VisitFieldTokens(context, Clone(orginal), tokens);
-                var rightEvaluation = VisitFieldTokens(context, Clone(orginal), tokens);
+                var leftEvaluation = VisitFieldTokens(context, Clone(original), tokens);
+                var rightEvaluation = VisitFieldTokens(context, Clone(original), tokens);
 
                 var left = new JObject
                 {
@@ -1498,6 +1503,8 @@ namespace PSRule.Rules.Azure.Data.Policy
         private static JObject VisitRuntimeTokens(PolicyAssignmentContext context, TokenStream tokens)
         {
             var o = VisitRuntimeToken(context, tokens);
+            if (tokens.Count > 0) throw new NotImplementedException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PolicyRuntimeTokenNotProcessed, tokens.AsString()));
+
             return o == null ? null : new JObject
             {
                 { DOLLAR, o }
@@ -1524,7 +1531,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
             else if (tokens.ConsumeFunction(FUNCTION_CURRENT) && tokens.Skip(ExpressionTokenType.GroupStart))
             {
-                var fieldTarget = "";
+                var fieldTarget = string.Empty;
                 if (tokens.TryTokenType(ExpressionTokenType.String, out var current))
                 {
                     fieldTarget = current.Content;
@@ -1536,6 +1543,72 @@ namespace PSRule.Rules.Azure.Data.Policy
                     { PROPERTY_PATH, fieldTarget },
                 };
                 tokens.Skip(ExpressionTokenType.GroupEnd);
+                return o;
+            }
+            else if (tokens.ConsumeFunction(PROPERTY_CONCAT) &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
+            {
+                var items = new JArray();
+
+                while (tokens.Current.Type == ExpressionTokenType.Element ||
+                    tokens.Current.Type == ExpressionTokenType.String)
+                {
+                    var child = VisitRuntimeToken(context, tokens);
+                    items.Add(child);
+                }
+                var o = new JObject
+                {
+                    [PROPERTY_CONCAT] = items
+                };
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+                return o;
+            }
+            else if (tokens.ConsumeFunction(PROPERTY_SPLIT) &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _))
+            {
+                var child = VisitRuntimeToken(context, tokens);
+
+                var delimiter = new JArray();
+                if (tokens.ConsumeString(out var d))
+                {
+                    delimiter.Add(d);
+                }
+
+                var o = new JObject
+                {
+                    { PROPERTY_SPLIT, child },
+                    { PROPERTY_DELIMITER, delimiter }
+                };
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+                return o;
+            }
+            else if (tokens.ConsumeFunction(PROPERTY_FIELD) &&
+                tokens.TryTokenType(ExpressionTokenType.GroupStart, out _) &&
+                tokens.ConsumeString(out var field))
+            {
+                field = context.TryPolicyAliasPath(field, out var aliasPath) ? TrimFieldName(context, aliasPath) : field;
+
+                var o = new JObject
+                {
+                    { PROPERTY_PATH, field }
+                };
+                tokens.TryTokenType(ExpressionTokenType.GroupEnd, out _);
+                return o;
+            }
+            else if (tokens.ConsumeString(out var s))
+            {
+                var o = new JObject
+                {
+                    { PROPERTY_STRING, s }
+                };
+                return o;
+            }
+            else if (tokens.ConsumeInteger(out var i))
+            {
+                var o = new JObject
+                {
+                    { PROPERTY_INTEGER, i }
+                };
                 return o;
             }
             return null;
