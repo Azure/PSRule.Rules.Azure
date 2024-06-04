@@ -412,6 +412,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to process all runtime tokens: {0}.
+        /// </summary>
+        internal static string PolicyRuntimeTokenNotProcessed {
+            get {
+                return ResourceManager.GetString("PolicyRuntimeTokenNotProcessed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The language expression property &apos;{0}&apos; doesn&apos;t exist..
         /// </summary>
         internal static string PropertyNotFound {

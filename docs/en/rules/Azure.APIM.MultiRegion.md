@@ -1,27 +1,27 @@
 ---
+reviewed: 2024-06-01
 severity: Important
 pillar: Reliability
-category: Resiliency and dependencies
+category: RE:05 Regions and availability zones
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.MultiRegion/
 ---
 
-# Multi-region deployment
+# API Management instances should use multi-region deployment
 
 ## SYNOPSIS
 
-API Management instances should use multi-region deployment to improve service availability.
+Enhance service availability and resilience by deploying API Management instances across multiple regions.
 
 ## DESCRIPTION
 
-Azure API Management supports multi-region deployment.
-Multi-region deployment provides availability of the API gateway in more than one region and provides service availability if one region goes offline.
+API Management supports multi-region deployment, which allows the API gateway to be available in more than one region. This configuration enhances service availability by ensuring that if one region experiences an outage, the API gateway remains operational in another region. Multi-region deployment is crucial for maintaining high availability and reducing latency for global users.
 
-This feature is currently only available for the Premium tier of API Management.
+This feature is available exclusively in the Premium SKU for API Management.
 
 ## RECOMMENDATION
 
-Consider deploying an API Management service across multiple regions to improve service availability.
+Consider deploying API Management instances across multiple regions to enhance service availability and resilience.
 
 ## EXAMPLES
 
@@ -91,14 +91,15 @@ resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-previe
 
 ## NOTES
 
-This rule is only applicable for API Management instances configured with a Premium tier.
-
 It is recommended to configure zone redundancy if the region supports it.
 
 Virtual network settings must be configured in the added region, if networking is configured in the existing region or regions. The rule does not take this into consideration.
 
+For developer environments, suppressing the rule might make sense as configuring multi-region for an API Management instance requries the `Premium` SKU currently.
+
 ## LINKS
 
+- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
 - [Azure API Management instance multi-region](https://learn.microsoft.com/azure/api-management/api-management-howto-deploy-multi-region)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)

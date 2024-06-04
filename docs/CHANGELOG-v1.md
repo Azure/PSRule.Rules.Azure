@@ -30,6 +30,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - App Service:
+    - Check that applications uses supported Node.js runtime versions by @BenjaminEngeset.
+      [#2879](https://github.com/Azure/PSRule.Rules.Azure/issues/2879)
   - Azure Cache for Redis:
     - Verify that cache instances have Entra ID authentication enabled by @BenjaminEngeset.
       [#2899](https://github.com/Azure/PSRule.Rules.Azure/issues/2899)
@@ -39,9 +42,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Machine Scale Sets:
     - Check that automatic instance repairs are enabled by @BenjaminEngeset.
       [#2895](https://github.com/Azure/PSRule.Rules.Azure/issues/2895)
-  - App Service:
-    - Check that applications uses supported Node.js runtime versions by @BenjaminEngeset.
-      [#2879](https://github.com/Azure/PSRule.Rules.Azure/issues/2879)
+- Updated rules:
+  - API Management:
+    - **Important change**: Updated `Azure.APIM.MultiRegion` to improve accuracy with non-premium SKUs by @BenjaminEngeset.
+      [#2787](https://github.com/Azure/PSRule.Rules.Azure/issues/2787)
+      - Removed the `If` Premium SKU.
+      - Added check for Premium SKU.
+      - Bumped rule set to `2024_06`
+- General improvements:
+  - Added support for `split` and `concat` functions during policy export by @BernieWhite.
+    [#2851](https://github.com/Azure/PSRule.Rules.Azure/issues/2851)
 - Engineering:
   - Bump xunit to v2.8.1.
     [#2892](https://github.com/Azure/PSRule.Rules.Azure/pull/2892)
