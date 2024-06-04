@@ -956,6 +956,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.NodeJsVersion/</loc>
+         <lastmod>2024-06-04</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.PHPVersion/</loc>
          <lastmod>2024-06-04</lastmod>
          <changefreq>daily</changefreq>
