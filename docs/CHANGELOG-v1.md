@@ -29,6 +29,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.37.0-B0071 (pre-release)
+
+What's changed since pre-release v1.37.0-B0034:
+
 - New rules:
   - App Service:
     - Check that applications uses supported Node.js runtime versions by @BenjaminEngeset.
