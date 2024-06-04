@@ -245,7 +245,7 @@ Describe 'Azure.AppService' -Tag 'AppService' {
 
             $ruleResult[0].Reason | Should -BeExactly "Path .: The version '19.0.-1' does not match the constraint '>=20.0.0'.";
             $ruleResult[1].Reason | Should -BeExactly "Path .: The version '19.0.-1' does not match the constraint '>=20.0.0'.";
-            $ruleResult[2].Reason | Should -BeExactly "Path .: The version '19.0.-1' does not match the constraint '>=20.0.0'.";   
+            $ruleResult[2].Reason | Should -BeExactly "Path .: The version '19.0.-1' does not match the constraint '>=20.0.0'.";
             $ruleResult[3].Reason | Should -BeExactly "Path .: The version '18.0.-1' does not match the constraint '>=20.0.0'.";
             $ruleResult[4].Reason | Should -BeExactly "Path .: The version '18.0.-1' does not match the constraint '>=20.0.0'.";
             $ruleResult[5].Reason | Should -BeExactly "Path .: The version '18.0.-1' does not match the constraint '>=20.0.0'.";
