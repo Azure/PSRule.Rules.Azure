@@ -33,9 +33,6 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Firewall:
     - Verify that firewalls have availability zones configured by @BenjaminEngeset.
       [#2909](https://github.com/Azure/PSRule.Rules.Azure/issues/2909)
-  - App Service:
-    - Check that applications uses supported Node.js runtime versions by @BenjaminEngeset.
-      [#2879](https://github.com/Azure/PSRule.Rules.Azure/issues/2879)
   - Azure Cache for Redis:
     - Verify that cache instances have Entra ID authentication enabled by @BenjaminEngeset.
       [#2899](https://github.com/Azure/PSRule.Rules.Azure/issues/2899)
