@@ -269,7 +269,7 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void Expand_field_with_length()
+        public void Visit_ShouldComplete_WhenLengthField()
         {
             var context = new PolicyAssignmentContext(GetContext());
             var visitor = new PolicyAssignmentDataExportVisitor();
@@ -291,6 +291,25 @@ namespace PSRule.Rules.Azure
             Assert.Single(actual.Types);
             Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
             Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.networkAcls.defaultAction\"},{\"equals\":\"Allow\",\"field\":\"properties.networkAcls.defaultAction\"},{\"exists\":false,\"field\":\"properties.networkAcls.virtualNetworkRules\"},{\"field\":\"properties.networkAcls.virtualNetworkRules\",\"notCount\":0},{\"exists\":false,\"field\":\"properties.networkAcls.ipRules\"},{\"field\":\"properties.networkAcls.ipRules\",\"notCount\":0}]}", actual.Where.ToString(Formatting.None));
+        }
+
+        [Fact]
+        public void Visit_ShouldComplete_WhenSplitConcatField()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData("Policy.assignment.8.json").Where(a => a["Name"].Value<string>() == "assignment.8"))
+                visitor.Visit(context, assignment);
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Single(definitions);
+
+            var actual = definitions.FirstOrDefault();
+            Assert.Single(actual.Types);
+            Assert.Equal("Microsoft.Storage/storageAccounts/privateEndpointConnections", actual.Types[0]);
+            var temp = actual.Where.ToString(Formatting.None);
+            Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.privateEndpoint.id\"},{\"notEquals\":\"ffffffff-ffff-ffff-ffff-ffffffffffff\",\"value\":{\"$\":{\"split\":{\"concat\":[{\"path\":\"properties.privateEndpoint.id\"},{\"string\":\"//\"}]},\"delimiter\":[\"/\"]}}}]}", temp);
         }
 
         #region Helper methods

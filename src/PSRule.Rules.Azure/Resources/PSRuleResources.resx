@@ -241,6 +241,9 @@
   <data name="PolicyIgnoreNotApplicable" xml:space="preserve">
     <value>Policy definition has been ignored because it is not applicable to Infrastructure as Code: {0}</value>
   </data>
+  <data name="PolicyRuntimeTokenNotProcessed" xml:space="preserve">
+    <value>Failed to process all runtime tokens: {0}</value>
+  </data>
   <data name="PropertyNotFound" xml:space="preserve">
     <value>The language expression property '{0}' doesn't exist.</value>
     <comment>Occurs when a property that don't exist is referenced.</comment>

@@ -46,6 +46,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       - Removed the `If` Premium SKU.
       - Added check for Premium SKU.
       - Bumped rule set to `2024_06`
+- General improvements:
+  - Added support for `split` and `concat` functions during policy export by @BernieWhite.
+    [#2851](https://github.com/Azure/PSRule.Rules.Azure/issues/2851)
 - Engineering:
   - Bump xunit to v2.8.1.
     [#2892](https://github.com/Azure/PSRule.Rules.Azure/pull/2892)
