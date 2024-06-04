@@ -30,6 +30,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - App Service:
+    - Check that applications uses supported Node.js runtime versions by @BenjaminEngeset.
+      [#2879](https://github.com/Azure/PSRule.Rules.Azure/issues/2879)
   - Azure Cache for Redis:
     - Verify that cache instances have Entra ID authentication enabled by @BenjaminEngeset.
       [#2899](https://github.com/Azure/PSRule.Rules.Azure/issues/2899)
