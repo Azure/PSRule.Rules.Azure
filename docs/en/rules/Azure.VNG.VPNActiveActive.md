@@ -28,6 +28,90 @@ Gateways configured to use an Active-Active configuration:
 
 Consider using Active-Active VPN gateways to reduce connectivity downtime during HA failover.
 
+## EXAMPLES
+
+### Configure with Azure template
+
+To configure VPN gateways that pass this rule:
+
+- Set `properties.activeActive` to `true`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/virtualNetworkGateways",
+  "apiVersion": "2023-11-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "gatewayType": "Vpn",
+    "ipConfigurations": [
+      {
+        "name": "default",
+        "properties": {
+          "privateIPAllocationMethod": "Dynamic",
+          "subnet": {
+            "id": "[parameters('subnetId')]"
+          },
+          "publicIPAddress": {
+            "id": "[parameters('pipId')]"
+          }
+        }
+      }
+    ],
+    "activeActive": true,
+    "vpnType": "RouteBased",
+    "vpnGatewayGeneration": "Generation2",
+    "sku": {
+      "name": "VpnGw1AZ",
+      "tier": "VpnGw1AZ"
+    }
+  }
+}
+```
+
+### Configure with Bicep
+
+To configure VPN gateways that pass this rule:
+
+- Set `properties.activeActive` to `true`.
+
+For example:
+
+```bicep
+resource vng 'Microsoft.Network/virtualNetworkGateways@2023-11-01' = {
+  name: name
+  location: location
+  properties: {
+    gatewayType: 'Vpn'
+    ipConfigurations: [
+      {
+        name: 'default'
+        properties: {
+          privateIPAllocationMethod: 'Dynamic'
+          subnet: {
+            id: subnetId
+          }
+          publicIPAddress: {
+            id: pipId
+          }
+        }
+      }
+    ]
+    activeActive: true
+    vpnType: 'RouteBased'
+    vpnGatewayGeneration: 'Generation2'
+    sku: {
+      name: 'VpnGw1AZ'
+      tier: 'VpnGw1AZ'
+    }
+  }
+}
+```
+
+<!-- external:avm avm/res/network/virtual-network-gateway activeActive -->
+
 ## NOTES
 
 Azure provisions a single instance for Basic (legacy) VPN gateways.
