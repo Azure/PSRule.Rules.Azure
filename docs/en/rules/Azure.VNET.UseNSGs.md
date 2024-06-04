@@ -148,7 +148,7 @@ Set-AzVirtualNetworkSubnetConfig -Name '<subnet>' -VirtualNetwork $vnet -Address
 
 ## NOTES
 
-If you identify a false postive for an Azure service that does not support NSGs,
+If you identify a false positive for an Azure service that does not support NSGs,
 please [open an issue](https://github.com/Azure/PSRule.Rules.Azure/issues/new) to help us improve this rule.
 
 To exclude subnets that are specific to your environment, use the `AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG` configuration option.

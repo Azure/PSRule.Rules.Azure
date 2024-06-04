@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: Migrate from legacy ExpressRoute gateway SKUs
-Rule 'Azure.VNG.ERLegacySKU' -Ref 'AZR-000271' -Type 'Microsoft.Network/virtualNetworkGateways' -With 'Azure.VNG.ERGateway' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.VNG.ERLegacySKU' -Ref 'AZR-000271' -Type 'Microsoft.Network/virtualNetworkGateways' -With 'Azure.VNG.ERGateway' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     Within 'Properties.sku.name' -Not 'Basic';
 }
 

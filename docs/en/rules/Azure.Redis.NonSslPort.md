@@ -96,6 +96,8 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 }
 ```
 
+<!-- external:avm avm/res/cache/redis enableNonSslPort -->
+
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)

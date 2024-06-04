@@ -106,6 +106,8 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 }
 ```
 
+<!-- external:avm avm/res/cache/redis publicNetworkAccess -->
+
 ## LINKS
 
 - [Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)

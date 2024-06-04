@@ -16,11 +16,11 @@ Use availability zone SKU for virtual network gateways deployed with VPN gateway
 
 VPN gateways can be deployed in Availability Zones with the following SKUs:
 
-- VpnGw1AZ
-- VpnGw2AZ
-- VpnGw3AZ
-- VpnGw4AZ
-- VpnGw5AZ
+- `VpnGw1AZ`
+- `VpnGw2AZ`
+- `VpnGw3AZ`
+- `VpnGw4AZ`
+- `VpnGw5AZ`
 
 This brings resiliency, scalability, and higher availability to VPN gateways.
 Deploying VPN gateways in Azure Availability Zones physically and logically separates gateways within a region, while protecting your on-premises network connectivity to Azure from zone-level failures.
@@ -33,22 +33,22 @@ Consider deploying VPN gateways with an availability zone SKU to improve reliabi
 
 ### Configure with Azure template
 
-To configure an AZ SKU for a VPN gateway:
+To configure VPN gateways that pass this rule:
 
-- Set `properties.gatewayType` to `'Vpn'`
+- Set `properties.gatewayType` to `Vpn`.
 - Set `properties.sku.name` and `properties.sku.tier` to one of the following AZ SKUs:
-  - `'VpnGw1AZ'`
-  - `'VpnGw2AZ'`
-  - `'VpnGw3AZ'`
-  - `'VpnGw4AZ'`
-  - `'VpnGw5AZ'`
+  - `VpnGw1AZ`
+  - `VpnGw2AZ`
+  - `VpnGw3AZ`
+  - `VpnGw4AZ`
+  - `VpnGw5AZ`
 
 For example:
 
 ```json
 {
   "type": "Microsoft.Network/virtualNetworkGateways",
-  "apiVersion": "2023-06-01",
+  "apiVersion": "2023-11-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
@@ -67,6 +67,7 @@ For example:
         }
       }
     ],
+    "activeActive": true,
     "vpnType": "RouteBased",
     "vpnGatewayGeneration": "Generation2",
     "sku": {
@@ -79,20 +80,20 @@ For example:
 
 ### Configure with Bicep
 
-To configure an AZ SKU for a VPN gateway:
+To configure VPN gateways that pass this rule:
 
-- Set `properties.gatewayType` to `'Vpn'`
+- Set `properties.gatewayType` to `Vpn`.
 - Set `properties.sku.name` and `properties.sku.tier` to one of the following AZ SKUs:
-  - `'VpnGw1AZ'`
-  - `'VpnGw2AZ'`
-  - `'VpnGw3AZ'`
-  - `'VpnGw4AZ'`
-  - `'VpnGw5AZ'`
+  - `VpnGw1AZ`
+  - `VpnGw2AZ`
+  - `VpnGw3AZ`
+  - `VpnGw4AZ`
+  - `VpnGw5AZ`
 
 For example:
 
 ```bicep
-resource vng 'Microsoft.Network/virtualNetworkGateways@2023-06-01' = {
+resource vng 'Microsoft.Network/virtualNetworkGateways@2023-11-01' = {
   name: name
   location: location
   properties: {
@@ -111,6 +112,7 @@ resource vng 'Microsoft.Network/virtualNetworkGateways@2023-06-01' = {
         }
       }
     ]
+    activeActive: true
     vpnType: 'RouteBased'
     vpnGatewayGeneration: 'Generation2'
     sku: {
@@ -119,8 +121,9 @@ resource vng 'Microsoft.Network/virtualNetworkGateways@2023-06-01' = {
     }
   }
 }
-
 ```
+
+<!-- external:avm avm/res/network/virtual-network-gateway skuName -->
 
 ## NOTES
 

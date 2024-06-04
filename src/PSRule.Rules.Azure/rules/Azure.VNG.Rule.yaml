@@ -18,7 +18,7 @@ metadata:
   tags:
     release: GA
     ruleSet: 2020_06
-    Azure.WAF/pillar: Operational Excellence
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.Network/virtualNetworkGateways

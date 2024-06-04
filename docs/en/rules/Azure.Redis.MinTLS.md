@@ -96,6 +96,8 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 }
 ```
 
+<!-- external:avm avm/res/cache/redis minimumTlsVersion -->
+
 ### Configure with Azure CLI
 
 To deploy caches that pass this rule:
