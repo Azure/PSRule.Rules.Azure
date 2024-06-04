@@ -48,8 +48,8 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'firewall-B';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'firewall-B', 'firewall-C';
         }
 
         It 'Azure.Firewall.PolicyMode' {
@@ -68,8 +68,26 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B', 'firewall-A-pip', 'policy-A', 'policy-B';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B', 'firewall-C', 'firewall-A-pip', 'policy-A', 'policy-B';
+        }
+
+
+        It 'Azure.Firewall.AvailabilityZones' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Firewall.AvailabilityZones' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2
+            $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B';
+            
+            $ruleResult[0].Reason | Should -BeExactly 'Path zones: The field 'zones' does not exist.';
+            $ruleResult[1].Reason | Should -BeExactly "Path zones: The value 'System.Object[]' is not >= 1.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'firewall-C';
         }
     }
 
