@@ -15,14 +15,14 @@ Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'M
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
         return $Assert.
-            HasFieldValue($TargetObject, 'properties.siteConfig.minTlsVersion', '1.2').
-            ReasonFrom('properties.siteConfig.minTlsVersion', $LocalizedData.MinTLSVersion, $TargetObject.properties.siteConfig.minTlsVersion);
+        HasFieldValue($TargetObject, 'properties.siteConfig.minTlsVersion', '1.2').
+        ReasonFrom('properties.siteConfig.minTlsVersion', $LocalizedData.MinTLSVersion, $TargetObject.properties.siteConfig.minTlsVersion);
     }
     foreach ($siteConfig in $siteConfigs) {
         $path = $siteConfig._PSRule.path;
         $Assert.
-            HasFieldValue($siteConfig, 'properties.minTlsVersion', '1.2').
-            ReasonFrom('properties.minTlsVersion', $LocalizedData.MinTLSVersion, $siteConfig.properties.minTlsVersion).PathPrefix($path);
+        HasFieldValue($siteConfig, 'properties.minTlsVersion', '1.2').
+        ReasonFrom('properties.minTlsVersion', $LocalizedData.MinTLSVersion, $siteConfig.properties.minTlsVersion).PathPrefix($path);
     }
 }
 
@@ -129,8 +129,8 @@ Rule 'Azure.AppService.HTTP2' -Ref 'AZR-000078' -Type 'Microsoft.Web/sites', 'Mi
 # Synopsis: Configure and enable instance health probes.
 Rule 'Azure.AppService.WebProbe' -Ref 'AZR-000079' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
-        $Assert.HasField($_, 'Properties.healthCheckPath').Result
-    });
+            $Assert.HasField($_, 'Properties.healthCheckPath').Result
+        });
     if ($siteConfigs.Length -eq 0) {
         return $Assert.HasFieldValue($TargetObject, 'properties.siteConfig.healthCheckPath');
     }
@@ -142,8 +142,8 @@ Rule 'Azure.AppService.WebProbe' -Ref 'AZR-000079' -With 'Azure.AppService.IsWeb
 # Synopsis: Web apps should use a dedicated health check path.
 Rule 'Azure.AppService.WebProbePath' -Ref 'AZR-000080' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
-        $Assert.HasField($_, 'properties.healthCheckPath').Result
-    });
+            $Assert.HasField($_, 'properties.healthCheckPath').Result
+        });
     if ($siteConfigs.Length -eq 0) {
         return $Assert.Greater($TargetObject, 'properties.siteConfig.healthCheckPath', 1);
     }
@@ -155,19 +155,37 @@ Rule 'Azure.AppService.WebProbePath' -Ref 'AZR-000080' -With 'Azure.AppService.I
 # Synopsis: Web apps should disable insecure FTP and configure SFTP when required.
 Rule 'Azure.AppService.WebSecureFtp' -Ref 'AZR-000081' -With 'Azure.AppService.IsWebApp' -Tag @{ release = 'GA'; ruleSet = '2022_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
     $siteConfigs = @(GetWebSiteConfig | Where-Object {
-        $Assert.HasField($_, 'Properties.ftpsState').Result
-    });
+            $Assert.HasField($_, 'Properties.ftpsState').Result
+        });
     if ($siteConfigs.Length -eq 0) {
         return $Assert.In($TargetObject, 'Properties.siteConfig.ftpsState', @(
-            'FtpsOnly'
-            'Disabled'
-        ));
+                'FtpsOnly'
+                'Disabled'
+            ));
     }
     foreach ($siteConfig in $siteConfigs) {
         $Assert.In($siteConfig, 'Properties.ftpsState', @(
-            'FtpsOnly'
-            'Disabled'
-        ));
+                'FtpsOnly'
+                'Disabled'
+            ));
+    }
+}
+
+# Synopsis: Configure applications to use supported Node.js runtime versions.
+Rule 'Azure.AppService.NodeJsVersion' -Ref 'AZR-000428' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots', 'Microsoft.Web/sites/slots/config' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Security'; } {
+    $versions = Get-NodeVersions
+
+    $pass = $true
+    foreach ($version in $versions) {
+        if ($version -lt '20.0') {
+            $pass = $false
+            $Assert.Version($version.ToString(), '.', '>=20.0.0')
+        }
+    }
+
+    # Pass if the version is not defined or version is 20 or greater.
+    if ($pass) {
+        $Assert.Pass()
     }
 }
 
@@ -203,10 +221,59 @@ function global:GetWebSiteConfig {
     param ()
     process {
         $siteConfigs = @(GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' | Where-Object {
-            $_.Name -notlike "*/*" -or $_.Name -like "*/web" -or $_.Id -like "*/web"
-        })
+                $_.Name -notlike "*/*" -or $_.Name -like "*/web" -or $_.Id -like "*/web"
+            })
         $siteConfigs;
     }
+}
+
+function global:Get-NodeVersions {
+    <#
+    .SYNOPSIS
+        Get the Node.js versions for the App Service.
+
+    .DESCRIPTION
+        This function retrieves the Node.js versions for the App Service.
+
+    .OUTPUTS
+        Output is a list of Node.js versions used, except the 'NODE|lts' version as this is not version specific,
+        hence not parsable.
+    #>
+    [CmdletBinding()]
+    param ( )
+    
+    [Version[]]$versions = @(
+        # App Service on Linux. Works when main object equals Microsoft.Web/sites or Microsoft.Web/sites/slots
+        $TargetObject.properties.siteConfig.linuxFxVersion | Where-Object { $_ -like 'NODE|*' -and $_ -ne 'NODE|lts' }
+        # App Service on Linux. Works for when main object equals Microsoft.Web/sites/config 'web' or Microsoft.Web/sites/slots/config 'web'
+        $TargetObject.properties.linuxFxVersion | Where-Object { $_ -like 'NODE|*' -and $_ -ne 'NODE|lts' }
+        # App Service on Linux.
+        GetSubResources -ResourceType 'Microsoft.Web/sites/slots' | 
+        ForEach-Object { $_.properties.siteConfig.linuxFxVersion | Where-Object { $_ -like 'NODE|*' -and $_ -ne 'NODE|lts' } }
+        # App Service on Linux.
+        GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' |
+        Where-Object { $_.name -eq 'web' -or $_.name -like '*/web' } |
+        ForEach-Object { $_.properties.linuxFxVersion | Where-Object { $_ -like 'NODE|*' -and $_ -ne 'NODE|lts' } }
+        
+        # App Service on Windows. Works for when main object equals Microsoft.Web/sites or Microsoft.Web/sites/slots
+        $TargetObject.properties.siteConfig.appSettings | Where-Object name -eq 'WEBSITE_NODE_DEFAULT_VERSION' | ForEach-Object { $_.value }
+        # App Service on Windows. Works for when main object equals Microsoft.Web/sites/config 'appsettings' or Microsoft.Web/sites/slots/config 'appsettings'
+        $TargetObject.properties.WEBSITE_NODE_DEFAULT_VERSION
+        # App Service on Windows. Works for when main object equals Microsoft.Web/sites/config 'web' or Microsoft.Web/sites/slots/config 'web'
+        $TargetObject.properties.appSettings | Where-Object name -eq 'WEBSITE_NODE_DEFAULT_VERSION' | ForEach-Object { $_.value }
+        # App Service on Windows.
+        GetSubResources -ResourceType 'Microsoft.Web/sites/slots' |
+        ForEach-Object { $_.properties.siteConfig.appSettings | Where-Object name -eq 'WEBSITE_NODE_DEFAULT_VERSION' | ForEach-Object { $_.value } }
+        # App Service on Windows.
+        GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' |
+        Where-Object { $_.name -eq 'appsettings' -or $_.name -like '*/appsettings' } |
+        ForEach-Object { $_.properties.WEBSITE_NODE_DEFAULT_VERSION }
+        # App Service on Windows.
+        GetSubResources -ResourceType 'Microsoft.Web/sites/config', 'Microsoft.Web/sites/slots/config' |
+        Where-Object { $_.name -eq 'web' -or $_.name -like '*/web' } |
+        ForEach-Object { $_.properties.appSettings | Where-Object name -eq 'WEBSITE_NODE_DEFAULT_VERSION' | ForEach-Object { $_.value } }
+    ) -replace '[^\d.]' -match '.' -replace '^\d+$', '$0.0'
+    $versions
 }
 
 #endregion Helper functions

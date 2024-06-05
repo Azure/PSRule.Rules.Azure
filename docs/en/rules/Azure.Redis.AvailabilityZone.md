@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:05 Regions and availability zones
 resource: Azure Cache for Redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.AvailabilityZone/
 ---
@@ -126,9 +126,11 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 }
 ```
 
+<!-- external:avm avm/res/cache/redis zones -->
+
 ## LINKS
 
-- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Enable zone redundancy for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy)
 - [High availability for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redis)
