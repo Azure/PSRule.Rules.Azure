@@ -29,6 +29,87 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.37.0
+
+What's changed since v1.36.0:
+
+- New features:
+  - Added support for new Bicep language features introduced in v0.27.1 by @BernieWhite.
+    [#2860](https://github.com/Azure/PSRule.Rules.Azure/issues/2860)
+    [#2859](https://github.com/Azure/PSRule.Rules.Azure/issues/2859)
+    - Added support for `shallowMerge`, `groupBy`, `objectKeys`, and `mapValues`.
+    - Updated syntax for Bicep lambda usage of `map`, `reduce`, and `filter` which now support indices.
+    - Added support for spread operator.
+- New rules:
+  - App Service:
+    - Check that applications uses supported Node.js runtime versions by @BenjaminEngeset.
+      [#2879](https://github.com/Azure/PSRule.Rules.Azure/issues/2879)
+  - Application Gateway:
+    - Check that WAF v2 doesn't use legacy WAF configuration by @BenjaminEngeset.
+      [#2877](https://github.com/Azure/PSRule.Rules.Azure/issues/2877)
+  - Azure Cache for Redis:
+    - Verify that cache instances have Entra ID authentication enabled by @BenjaminEngeset.
+      [#2899](https://github.com/Azure/PSRule.Rules.Azure/issues/2899)
+  - Azure Managed Grafana:
+    - Check that Azure Managed Grafana workspaces uses Grafana version 10 by @BenjaminEngeset.
+      [#2878](https://github.com/Azure/PSRule.Rules.Azure/issues/2878)
+  - Cosmos DB:
+    - Check that database accounts use a paid tier by @BernieWhite.
+      [#2845](https://github.com/Azure/PSRule.Rules.Azure/issues/2845)
+    - Check that database accounts have local authentication disabled by @BenjaminEngeset.
+      [#2846](https://github.com/Azure/PSRule.Rules.Azure/issues/2846)
+    - Check that database accounts have public network access disabled by @BenjaminEngeset.
+      [#2702](https://github.com/Azure/PSRule.Rules.Azure/issues/2702)
+  - Event Hub:
+    - Check that access to the namespace endpoints is restricted to only allowed sources by @BenjaminEngeset.
+      [#2701](https://github.com/Azure/PSRule.Rules.Azure/issues/2701)
+  - Log Analytics:
+    - Check that workspaces have workspace replication enabled by @BenjaminEngeset.
+      [#2893](https://github.com/Azure/PSRule.Rules.Azure/issues/2893)
+  - Virtual Machine Scale Sets:
+    - Check that automatic instance repairs are enabled by @BenjaminEngeset.
+      [#2895](https://github.com/Azure/PSRule.Rules.Azure/issues/2895)
+- Updated rules:
+  - API Management:
+    - **Important change**: Updated `Azure.APIM.AvailabilityZone` to improve accuracy with non-premium SKUs by @BenjaminEngeset.
+      [#2788](https://github.com/Azure/PSRule.Rules.Azure/issues/2788)
+      - Removed the `If` Premium SKU.
+      - Added check for Premium SKU.
+      - Bumped rule set to `2024_06`.
+    - **Important change**: Updated `Azure.APIM.MultiRegion` to improve accuracy with non-premium SKUs by @BenjaminEngeset.
+      [#2787](https://github.com/Azure/PSRule.Rules.Azure/issues/2787)
+      - Removed the `If` Premium SKU.
+      - Added check for Premium SKU.
+      - Bumped rule set to `2024_06`.
+  - Deployment:
+    - Add additional exclusions for `Azure.Deployment.SecureParameter` by @BernieWhite.
+      [#2857](https://github.com/Azure/PSRule.Rules.Azure/issues/2857)
+- General improvements:
+  - Quality updates to documentation by @BernieWhite.
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+  - Updated resource providers and policy aliases.
+    [#2880](https://github.com/Azure/PSRule.Rules.Azure/pull/2880)
+  - Added support for `split` and `concat` functions during policy export by @BernieWhite.
+    [#2851](https://github.com/Azure/PSRule.Rules.Azure/issues/2851)
+- Engineering:
+  - Bump xunit to v2.8.1.
+    [#2892](https://github.com/Azure/PSRule.Rules.Azure/pull/2892)
+  - Bump xunit.runner.visualstudio to v2.8.1.
+    [#2891](https://github.com/Azure/PSRule.Rules.Azure/pull/2891)
+  - Bump System.Management.Automation to 7.3.12.
+    [#2868](https://github.com/Azure/PSRule.Rules.Azure/pull/2868)
+  - Bump Microsoft.NET.Test.Sdk to v17.10.0.
+    [#2884](https://github.com/Azure/PSRule.Rules.Azure/pull/2884)
+- Bug fixed:
+  - Fixed `union` does not perform deep merge or keep property order by @BernieWhite.
+    [#2885](https://github.com/Azure/PSRule.Rules.Azure/issues/2885)
+  - Fixed dependency ordering for cross scope deployments by @BernieWhite.
+    [#2850](https://github.com/Azure/PSRule.Rules.Azure/issues/2850)
+
+What's changed since pre-release v1.37.0-B0071:
+
+- No additional changes.
+
 ## v1.37.0-B0071 (pre-release)
 
 What's changed since pre-release v1.37.0-B0034:
@@ -52,7 +133,7 @@ What's changed since pre-release v1.37.0-B0034:
       [#2787](https://github.com/Azure/PSRule.Rules.Azure/issues/2787)
       - Removed the `If` Premium SKU.
       - Added check for Premium SKU.
-      - Bumped rule set to `2024_06`
+      - Bumped rule set to `2024_06`.
 - General improvements:
   - Added support for `split` and `concat` functions during policy export by @BernieWhite.
     [#2851](https://github.com/Azure/PSRule.Rules.Azure/issues/2851)
