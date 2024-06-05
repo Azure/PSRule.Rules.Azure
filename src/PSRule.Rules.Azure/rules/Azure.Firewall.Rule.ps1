@@ -20,8 +20,8 @@ Rule 'Azure.Firewall.AvailabilityZones' -Ref 'AZR-00429' -Type 'Microsoft.Networ
 
     $Assert.GreaterOrEqual($TargetObject, 'zones', 2).Reason(
         $LocalizedData.AzFWAvailabilityZone,
-        $TargetObject.name, 
-        $TargetObject.location, 
+        $TargetObject.name,
+        $TargetObject.location,
         ($availabilityZones -join ', ')
     )
 }
