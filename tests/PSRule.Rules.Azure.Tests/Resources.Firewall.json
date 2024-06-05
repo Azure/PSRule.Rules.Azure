@@ -146,6 +146,52 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-D",
+    "Identity": null,
+    "Kind": null,
+    "Location": "notregion",
+    "ManagedBy": null,
+    "ResourceName": "firewall-D",
+    "Name": "firewall-D",
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "sku": {
+        "name": "AZFW_VNet",
+        "tier": "Standard"
+      },
+      "threatIntelMode": "Deny",
+      "additionalProperties": {},
+      "ipConfigurations": [
+        {
+          "name": "configuration",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-D/azureFirewallIpConfigurations/configuration",
+          "type": "Microsoft.Network/azureFirewalls/azureFirewallIpConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.0.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-D-pip"
+            },
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
+            }
+          }
+        }
+      ],
+      "networkRuleCollections": [],
+      "applicationRuleCollections": [],
+      "natRuleCollections": []
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Network/azureFirewalls",
+    "ResourceType": "Microsoft.Network/azureFirewalls",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-A-pip",
     "Identity": null,

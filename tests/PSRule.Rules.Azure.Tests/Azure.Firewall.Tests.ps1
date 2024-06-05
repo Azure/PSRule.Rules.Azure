@@ -48,8 +48,8 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'firewall-B', 'firewall-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'firewall-B', 'firewall-C', 'firewall-D';
         }
 
         It 'Azure.Firewall.PolicyMode' {
@@ -68,8 +68,8 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B', 'firewall-C', 'firewall-A-pip', 'policy-A', 'policy-B';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B', 'firewall-C', 'firewall-D', 'firewall-A-pip', 'policy-A', 'policy-B';
         }
 
 
@@ -86,8 +86,8 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'firewall-C';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'firewall-C', 'firewall-D';
         }
     }
 

@@ -4,6 +4,7 @@ pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: Firewall
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Firewall.AvailabilityZones/
+---
 
 # Deploy firewall instances using availability zones
 
