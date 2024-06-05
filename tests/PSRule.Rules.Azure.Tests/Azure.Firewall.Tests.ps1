@@ -81,8 +81,8 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
             $ruleResult.Length | Should -Be 2
             $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B';
             
-            $ruleResult[0].Reason | Should -BeExactly 'Path zones: The field 'zones' does not exist.';
-            $ruleResult[1].Reason | Should -BeExactly "Path zones: The value 'System.Object[]' is not >= 1.";
+            $ruleResult[0].Reason | Should -BeExactly 'The firewall (firewall-A) deployed to region (westeurope) should use a minimum of two availability zones from the following [1, 2, 3].';
+            $ruleResult[1].Reason | Should -BeExactly 'The firewall (firewall-B) deployed to region (westus2) should use a minimum of two availability zones from the following [1, 2, 3].';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

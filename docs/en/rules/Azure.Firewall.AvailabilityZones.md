@@ -47,6 +47,11 @@ For example:
       "id": "[resourceId('Microsoft.Network/firewallPolicies', format('{0}_policy', parameters('name')))]"
     }
   },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ],
   "dependsOn": [
     "firewall_policy"
   ]

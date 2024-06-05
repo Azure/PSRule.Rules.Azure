@@ -97,24 +97,6 @@ spec:
     field: Properties.threatIntelMode
     equals: Deny
 
----
-# Synopsis: Deploy firewall instances using availability zones in supported regions to ensure high availability and resilience.
-apiVersion: github.com/microsoft/PSRule/v1
-kind: Rule
-metadata:
-  name: Azure.Firewall.AvailabilityZones
-  ref: AZR-000429
-  tags:
-    release: GA
-    ruleSet: 2024_06
-    Azure.WAF/pillar: Reliability
-spec:
-  type:
-  - Microsoft.Network/azureFirewalls
-  condition:
-    field: zones
-    greater: 1
-
 #endregion Rules
 
 #region Selectors
