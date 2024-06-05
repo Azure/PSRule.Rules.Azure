@@ -74,7 +74,7 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
 
 
         It 'Azure.Firewall.AvailabilityZone' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Firewall.AvailabilityZones' };
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Firewall.AvailabilityZone' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
