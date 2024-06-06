@@ -101,6 +101,7 @@
     ArcKubernetesDefender = "The Arc-enabled Kubernetes cluster '{0}' should have a Microsoft Defender for Containers extension configured."
     VMMaintenanceConfig = "The virtual machine '{0}' should have a maintenance configuration associated."
     ArcServerMaintenanceConfig = "The Arc-enabled server '{0}' should have a maintenance configuration associated."
+    VNGMaintenanceConfig = "The virtual network gateway '{0}' should have a customer-controlled maintenance configuration associated."
     SubStorageMalwareScanning = "The Microsoft Defender for Storage plan should have malware scanning configured."
     ResStorageMalwareScanning = "The storage account '{0}' should have malware scanning in Microsoft Defender for Storage configured."
     SubStorageSensitiveDataThreatDetection = "The Microsoft Defender for Storage plan should have sensitive data threat detection configured."

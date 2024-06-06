@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Virtual Network Gateway:
+    - Verify that VPN/ExpressRoute gateways have a customer-controlled maintenance configuration configured by @BenjaminEngeset.
+      [#2910](https://github.com/Azure/PSRule.Rules.Azure/issues/2910)
+
 ## v1.37.0
 
 What's changed since v1.36.0:
