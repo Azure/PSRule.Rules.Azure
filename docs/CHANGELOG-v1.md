@@ -29,6 +29,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.37.0:
+
+- New rules:
+  - Azure Firewall:
+    - Verify that firewalls have availability zones configured by @BenjaminEngeset.
+      [#2909](https://github.com/Azure/PSRule.Rules.Azure/issues/2909)
+
 ## v1.37.0
 
 What's changed since v1.36.0:

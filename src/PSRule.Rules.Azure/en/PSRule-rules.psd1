@@ -51,6 +51,7 @@
     ExpressionInTemplate = "The expression '{0}' was found in the template."
     SubResourceNotFound = "A sub-resource of type '{0}' has not been specified."
     ParameterValueNotSet = "The parameter '{0}' must have a value or Key Vault reference set."
+    AzFWAvailabilityZone = "The firewall ({0}) deployed to region ({1}) should use a minimum of two availability zones from the following [{2}]."
     AppGWAvailabilityZone = "The application gateway ({0}) deployed to region ({1}) should use following availability zones [{2}]."
     LBAvailabilityZone = "The load balancer ({0}) frontend IP configuration ({1}) should be zone-redundant."
     PublicIPAvailabilityZone = "The public IP ({0}) deployed to region ({1}) should be zone-redundant."
