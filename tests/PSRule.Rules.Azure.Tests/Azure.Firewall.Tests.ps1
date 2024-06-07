@@ -48,8 +48,8 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'firewall-B';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'firewall-B', 'firewall-C', 'firewall-D';
         }
 
         It 'Azure.Firewall.PolicyMode' {
@@ -68,8 +68,26 @@ Describe 'Azure.Firewall' -Tag 'Network', 'Firewall' {
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B', 'firewall-A-pip', 'policy-A', 'policy-B';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B', 'firewall-C', 'firewall-D', 'firewall-A-pip', 'policy-A', 'policy-B';
+        }
+
+
+        It 'Azure.Firewall.AvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Firewall.AvailabilityZone' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2
+            $ruleResult.TargetName | Should -BeIn 'firewall-A', 'firewall-B';
+            
+            $ruleResult[0].Reason | Should -BeExactly 'The firewall (firewall-A) deployed to region (westeurope) should use a minimum of two availability zones from the following [1, 2, 3].';
+            $ruleResult[1].Reason | Should -BeExactly 'The firewall (firewall-B) deployed to region (westus2) should use a minimum of two availability zones from the following [1, 2, 3].';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'firewall-C', 'firewall-D';
         }
     }
 
