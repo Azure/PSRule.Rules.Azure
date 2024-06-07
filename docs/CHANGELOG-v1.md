@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Database for MySQL:
+    - Verify that Azure Database for MySQL servers have a customer-controlled maintenance window configured by @BenjaminEngeset.
+      [#2916](https://github.com/Azure/PSRule.Rules.Azure/issues/2916)
+
 ## v1.37.0
 
 What's changed since v1.36.0:

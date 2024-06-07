@@ -371,6 +371,12 @@
       "backup": {
         "backupRetentionDays": 7
       },
+      "maintenanceWindow": {
+        "customWindow": "notset",
+        "dayOfWeek": "notset",
+        "startHour": "notset",
+        "startMinute": "notset"
+      },
       "highAvailability": {
         "mode": "Disabled"
       },
@@ -434,6 +440,12 @@
         "backupRetentionDays": 7,
         "geoRedundantBackup": "Disabled"
       },
+      "maintenanceWindow": {
+        "customWindow": "Disabled",
+        "dayOfWeek": 0,
+        "startHour": 1,
+        "startMinute": 0
+      },
       "highAvailability": {
         "mode": "Disabled"
       },
@@ -479,6 +491,45 @@
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-G",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-G",
+    "Location": "region",
+    "ResourceName": "server-G",
+    "Name": "server-G",
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "storage": {
+        "autoGrow": "Enabled",
+        "iops": 360,
+        "storageSizeGB": 20
+      },
+      "backup": {
+        "backupRetentionDays": 7,
+        "geoRedundantBackup": "Disabled"
+      },
+      "maintenanceWindow": {
+        "customWindow": "Enabled",
+        "dayOfWeek": 0,
+        "startHour": 1,
+        "startMinute": 0
+      },
+      "highAvailability": {
+        "mode": "Disabled"
+      },
+      "version": "8.0.21",
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DBforMySQL/flexibleServers",
+    "ResourceType": "Microsoft.DBforMySQL/flexibleServers",
+    "Sku": {
+      "Name": "E64",
+      "Tier": "MemoryOptimized"
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
     "Name": "ActiveDirectoryAdmin-A",
