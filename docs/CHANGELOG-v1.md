@@ -35,6 +35,9 @@ What's changed since pre-release v1.37.0:
   - Azure Firewall:
     - Verify that firewalls have availability zones configured by @BenjaminEngeset.
       [#2909](https://github.com/Azure/PSRule.Rules.Azure/issues/2909)
+  - Virtual Network Gateway:
+    - Verify that VPN/ExpressRoute gateways have a customer-controlled maintenance configuration configured by @BenjaminEngeset.
+      [#2910](https://github.com/Azure/PSRule.Rules.Azure/issues/2910)
 
 ## v1.37.0
 

@@ -2490,7 +2490,22 @@
     "ExtensionResourceType": null,
     "Sku": null,
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providersMicrosoft.Network/virtualNetworkGateways/gateway-B/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-B/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "ResourceName": "configurationassignment-a",
+        "Name": "configurationassignment-a",
+        "Properties": {
+          "maintenanceConfigurationId": null
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-C",
@@ -2547,7 +2562,22 @@
     "ExtensionResourceType": null,
     "Sku": null,
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providersMicrosoft.Network/virtualNetworkGateways/gateway-C/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-C/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "ResourceName": "configurationassignment-a",
+        "Name": "configurationassignment-a",
+        "Properties": {
+          "maintenanceConfigurationId": null
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-D",
@@ -2600,7 +2630,22 @@
     "ExtensionResourceType": null,
     "Sku": null,
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providersMicrosoft.Network/virtualNetworkGateways/gateway-D/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-D/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "ResourceName": "configurationassignment-a",
+        "Name": "configurationassignment-a",
+        "Properties": {
+          "maintenanceConfigurationId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-E",
@@ -2653,7 +2698,22 @@
     "ExtensionResourceType": null,
     "Sku": null,
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providersMicrosoft.Network/virtualNetworkGateways/gateway-E/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-E/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "ResourceName": "configurationassignment-a",
+        "Name": "configurationassignment-a",
+        "Properties": {
+          "maintenanceConfigurationId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-F",
@@ -2706,7 +2766,22 @@
     "ExtensionResourceType": null,
     "Sku": null,
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providersMicrosoft.Network/virtualNetworkGateways/gateway-F/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-F/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "ResourceName": "configurationassignment-a",
+        "Name": "configurationassignment-a",
+        "Properties": {
+          "maintenanceConfigurationId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-G",
@@ -2763,7 +2838,22 @@
     "ExtensionResourceType": null,
     "Sku": null,
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providersMicrosoft.Network/virtualNetworkGateways/gateway-G/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-G/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "ResourceName": "configurationassignment-a",
+        "Name": "configurationassignment-a",
+        "Properties": {
+          "maintenanceConfigurationId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-H",
@@ -2820,7 +2910,22 @@
     "ExtensionResourceType": null,
     "Sku": null,
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providersMicrosoft.Network/virtualNetworkGateways/gateway-H/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworkGateways/gateway-H/providers/Microsoft.Maintenance/configurationAssignments/configurationassignment-a",
+        "ResourceName": "configurationassignment-a",
+        "Name": "configurationassignment-a",
+        "Properties": {
+          "maintenanceConfigurationId": "00000000-0000-0000-0000-000000000000"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": " Microsoft.Maintenance/configurationAssignments",
+        "ResourceType": "Microsoft.Maintenance/configurationAssignments",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      }
+    ]
   },
   {
     "type": "Microsoft.Network/networkSecurityGroups",
