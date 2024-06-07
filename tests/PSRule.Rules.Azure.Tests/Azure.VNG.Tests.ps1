@@ -134,9 +134,9 @@ Describe 'Azure.VNG' -Tag 'Network', 'VNG', 'VPN', 'ExpressRoute' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'gateway-A', 'gateway-B', 'gateway-C';
 
-            $ruleResult[0].Reason | Should -BeExactly "The virtual network gateway 'gateway-A' should have customer-controlled maintenance configuration associated.";
-            $ruleResult[1].Reason | Should -BeExactly "The virtual network gateway 'gateway-B' should have customer-controlled maintenance configuration associated.";
-            $ruleResult[2].Reason | Should -BeExactly "The virtual network gateway 'gateway-C' should have customer-controlled maintenance configuration associated.";
+            $ruleResult[0].Reason | Should -BeExactly "The virtual network gateway 'gateway-A' should have a customer-controlled maintenance configuration associated.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual network gateway 'gateway-B' should have a customer-controlled maintenance configuration associated.";
+            $ruleResult[2].Reason | Should -BeExactly "The virtual network gateway 'gateway-C' should have a customer-controlled maintenance configuration associated.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
