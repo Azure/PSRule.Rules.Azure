@@ -4,7 +4,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-A",
     "Identity": null,
     "Kind": null,
-    "Location": "region",
+    "Location": "westeurope",
     "ManagedBy": null,
     "ResourceName": "firewall-A",
     "Name": "firewall-A",
@@ -50,7 +50,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-B",
     "Identity": null,
     "Kind": null,
-    "Location": "region",
+    "Location": "westus2",
     "ManagedBy": null,
     "ResourceName": "firewall-B",
     "Name": "firewall-B",
@@ -73,6 +73,106 @@
             "privateIPAllocationMethod": "Dynamic",
             "publicIPAddress": {
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-B-pip"
+            },
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
+            }
+          }
+        }
+      ],
+      "networkRuleCollections": [],
+      "applicationRuleCollections": [],
+      "natRuleCollections": []
+    },
+    "zones": [
+      "1"
+    ],
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Network/azureFirewalls",
+    "ResourceType": "Microsoft.Network/azureFirewalls",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "eastus",
+    "ManagedBy": null,
+    "ResourceName": "firewall-C",
+    "Name": "firewall-C",
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "sku": {
+        "name": "AZFW_VNet",
+        "tier": "Standard"
+      },
+      "threatIntelMode": "Deny",
+      "additionalProperties": {},
+      "ipConfigurations": [
+        {
+          "name": "configuration",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-C/azureFirewallIpConfigurations/configuration",
+          "type": "Microsoft.Network/azureFirewalls/azureFirewallIpConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.0.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-C-pip"
+            },
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
+            }
+          }
+        }
+      ],
+      "networkRuleCollections": [],
+      "applicationRuleCollections": [],
+      "natRuleCollections": []
+    },
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ],
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.Network/azureFirewalls",
+    "ResourceType": "Microsoft.Network/azureFirewalls",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-D",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-D",
+    "Identity": null,
+    "Kind": null,
+    "Location": "notregion",
+    "ManagedBy": null,
+    "ResourceName": "firewall-D",
+    "Name": "firewall-D",
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "sku": {
+        "name": "AZFW_VNet",
+        "tier": "Standard"
+      },
+      "threatIntelMode": "Deny",
+      "additionalProperties": {},
+      "ipConfigurations": [
+        {
+          "name": "configuration",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/azureFirewalls/firewall-D/azureFirewallIpConfigurations/configuration",
+          "type": "Microsoft.Network/azureFirewalls/azureFirewallIpConfigurations",
+          "properties": {
+            "provisioningState": "Succeeded",
+            "privateIPAddress": "10.0.0.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/publicIPAddresses/firewall-D-pip"
             },
             "subnet": {
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/AzureFirewallSubnet"
