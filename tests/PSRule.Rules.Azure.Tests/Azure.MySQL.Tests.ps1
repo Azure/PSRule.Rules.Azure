@@ -128,14 +128,14 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-E', 'server-F';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-E', 'server-F', 'server-G';
 
             $ruleResult[0].Reason | Should -BeExactly "The Azure Database for MySQL 'server-B' should have geo-redundant backup configured.";
             $ruleResult[1].Reason | Should -BeExactly "The Azure Database for MySQL 'server-A' should have geo-redundant backup configured.";
             $ruleResult[2].Reason | Should -BeExactly "The Azure Database for MySQL 'server-E' should have geo-redundant backup configured.";
             $ruleResult[3].Reason | Should -BeExactly "The Azure Database for MySQL 'server-F' should have geo-redundant backup configured.";
-           
+
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
@@ -178,8 +178,8 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'server-F';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'server-F', 'server-G';
         }
 
         It 'Azure.MySQL.AAD' {
@@ -188,8 +188,8 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-D', 'server-E', 'ActiveDirectoryAdmin-A', 'ActiveDirectoryAdmin-C';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B', 'server-D', 'server-E', 'ActiveDirectoryAdmin-A', 'ActiveDirectoryAdmin-C', 'server-G';
 
             $ruleResult[0].Reason | Should -BeIn 'Path properties.administratorType: Is null or empty.', 'Path properties.login: Is null or empty.', 'Path properties.sid: Is null or empty.';
             $ruleResult[1].Reason | Should -BeIn "A sub-resource of type 'Microsoft.DBforMySQL/servers/administrators' has not been specified.";
@@ -209,18 +209,37 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'aad_auth_only-A';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'server-G', 'aad_auth_only-A';
 
-            $ruleResult[0].Reason | Should -BeIn "A sub-resource of type 'Microsoft.DBforMySQL/flexibleServers/configurations' has not been specified.";
-            $ruleResult[1].Reason | Should -BeIn "Path properties.value: Is set to 'OFF'.";
-            $ruleResult[2].Reason | Should -BeIn "Path properties.value: Is set to 'OFF'.";
+            $ruleResult[0].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.DBforMySQL/flexibleServers/configurations' has not been specified.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.value: Is set to 'OFF'.";
+            $ruleResult[2].Reason | Should -BeExactly "A sub-resource of type 'Microsoft.DBforMySQL/flexibleServers/configurations' has not been specified.";
+            $ruleResult[3].Reason | Should -BeExactly "Path properties.value: Is set to 'OFF'.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'server-F', 'aad_auth_only-B';
+        }
+
+        It 'Azure.MySQL.MaintenanceWindow' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.MySQL.MaintenanceWindow' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'server-F';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path properties.maintenanceWindow.customWindow: The field 'properties.maintenanceWindow.customWindow' does not exist.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.maintenanceWindow.customWindow: Is set to 'notset'.";
+            $ruleResult[2].Reason | Should -BeExactly "Path properties.maintenanceWindow.customWindow: Is set to 'Disabled'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'server-G';
         }
     }
 

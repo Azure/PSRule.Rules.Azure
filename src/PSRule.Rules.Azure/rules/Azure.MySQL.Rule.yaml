@@ -47,4 +47,22 @@ spec:
     field: properties.minimalTlsVersion
     equals: TLS1_2
 
+---
+# Synopsis: Configure a customer-controlled maintenance window for Azure Database for MySQL servers.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.MySQL.MaintenanceWindow
+  ref: AZR-000431
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.DBforMySQL/flexibleServers
+  condition:
+    field: properties.maintenanceWindow.customWindow
+    equals: Enabled
+
 #endregion Region
