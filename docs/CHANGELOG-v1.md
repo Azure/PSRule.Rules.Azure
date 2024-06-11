@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Database for PostgreSQL:
+    - Verify that Azure Database for PostgreSQL servers have a customer-controlled maintenance window configured by @BenjaminEngeset.
+      [#2927](https://github.com/Azure/PSRule.Rules.Azure/issues/2927)
+
 What's changed since pre-release v1.37.0:
 
 - New rules:
