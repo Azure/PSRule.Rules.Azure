@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Database for MySQL:
+    - Verify that servers have zone-redundant high availability (HA) configured by @BenjaminEngeset.
+      [#2914](https://github.com/Azure/PSRule.Rules.Azure/issues/2914)
+
 What's changed since pre-release v1.37.0:
 
 - New rules:
