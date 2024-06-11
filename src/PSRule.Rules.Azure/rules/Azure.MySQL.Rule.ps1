@@ -119,26 +119,21 @@ Rule 'Azure.MySQL.AADOnly' -Ref 'AZR-000394' -Type 'Microsoft.DBforMySQL/flexibl
 
 # Synopsis: Deploy Azure Database for MySQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience.
 Rule 'Azure.MySQL.ZoneRedundantHA' -Ref 'AZR-000432' -Type 'Microsoft.DBforMySQL/flexibleServers' -Tag @{ release = 'GA'; ruleSet = '2024_06 '; 'Azure.WAF/pillar' = 'Reliability'; } {
-    $supportedSku = @('GeneralPurpose', 'MemoryOptimized')
-    if ($TargetObject.sku.tier -notin $supportedSku) {
-        return $Assert.In($TargetObject, 'sku.tier', $supportedSku) # Zone-redundant HA is only supported for the GeneralPurpose and MemoryOptimized SKU tiers.
-    }
-    
     # Check if the region supports availability zones.
-    # We use the VMSS resource type within the compute resource provider to determine if the region supports availability zones.
-    # This is not entirely accurate, but used as a helper. Based on the documentation, zone-redundant HA is currently available in Southeast Asia, WestUS 2, West Europe, and East US.
-    $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets')
+    $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.DBforMySQL', 'flexibleServers')
     $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $provider.ZoneMappings
 
     # Don't flag if the region does not support availability zones.
     if (-not $availabilityZones) {
         return $Assert.Pass()
     }
-    
-    AllOf {
-        $Assert.HasFieldValue($TargetObject, 'properties.highAvailability.mode', 'ZoneRedundant')
-        $Assert.HasFieldValue($TargetObject, 'properties.highAvailability.standbyAvailabilityZone')
+
+    $supportedSku = @('GeneralPurpose', 'MemoryOptimized')
+    if ($TargetObject.sku.tier -notin $supportedSku) {
+        return $Assert.In($TargetObject, 'sku.tier', $supportedSku) # Zone-redundant HA is only supported for the GeneralPurpose and MemoryOptimized SKU tiers.
     }
+
+    $Assert.HasFieldValue($TargetObject, 'properties.highAvailability.mode', 'ZoneRedundant')
 }
 
 #region Helper functions

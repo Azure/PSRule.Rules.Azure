@@ -326,6 +326,7 @@
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-D",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-D",
     "ResourceName": "server-D",
+    "Location": "westeurope",
     "Name": "server-D",
     "Properties": {
       "administratorLogin": "db-admin",

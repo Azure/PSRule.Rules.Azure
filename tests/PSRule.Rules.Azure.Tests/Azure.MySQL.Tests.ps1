@@ -251,10 +251,7 @@ Describe 'Azure.MySQL' -Tag 'MySql' {
             $ruleResult.TargetName | Should -BeIn 'server-D', 'server-E', 'server-F', 'server-G';
 
             $ruleResult[0].Reason | Should -BeExactly "Path sku.tier: The field value 'Burstable' was not included in the set.";
-            $ruleResult[1].Reason | Should -BeExactly @(
-                "Path properties.highAvailability.mode: Is set to 'Disabled'."
-                "Path properties.highAvailability.standbyAvailabilityZone: Does not exist."
-            )
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.highAvailability.mode: Is set to 'Disabled'."
             $ruleResult[2].Reason | Should -BeExactly "Path properties.highAvailability.mode: Is set to 'SameZone'.";
             $ruleResult[3].Reason | Should -BeExactly "Path sku.tier: The field value 'Burstable' was not included in the set.";
 

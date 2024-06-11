@@ -14,23 +14,26 @@ Deploy Azure Database for MySQL servers using zone-redundant high availability (
 
 ## DESCRIPTION
 
-Azure Database for MySQL flexible servers leverage availability zones to provide zone redundancy, which enhances server resiliency and availability by distributing the server across physically separated zones.
+Azure Database for MySQL flexible servers allows configuration high availablity (HA) across availablity zones in supported regions.
+Using availability zones improves resiliency of your solution to failures or disruptions isolated to a zone or data center.
 
-When deploying a server using the zone-redundant high availability architecture, two servers are created:
+Zone-redundant HA works by:
 
-- Primary Server: Located in one availability zone.
-- Standby Replica Server: An identical configuration to the primary server (including compute tier, compute size, storage size, and network configuration) located in a different availability zone within the same Azure region.
+- Deploying two servers; a primary in one zone, and a secondary in a physically separate zone.
+- Database and backup storage is also configured across zones and replicated.
 
-The failover process ensures continuous operation by switching from the primary server to the standby replica server. This process can be:
+The failover process ensures continuous operation by switching from the primary server to the standby replica server.
+This process can be:
 
 - Manual (Planned) Failover: Initiated by the user for maintenance or other operational reasons.
 - Automatic (Unplanned) Failover: Triggered by Azure in response to failures such as hardware or network issues affecting the primary server.
 
-Before opting for the zone-redundant HA model, review the documentation for additional limitations and critical information. This includes understanding the latency impact between zones, cost implications, and any specific regional support constraints.
+Before opting for the zone-redundant HA model, review the documentation for additional limitations and critical information.
+This includes understanding the latency impact between zones, cost implications, and any specific regional support constraints.
 
 ## RECOMMENDATION
 
-For enhanced fault tolerance and to safeguard against zone failures, it is recommended to use the zone-redundant HA model. This configuration significantly improves the resiliency of servers, ensuring continued operation even if one zone experiences an outage.
+Consider deploying flexible servers using zone-redundant high-availability to improve the resiliency of your databases.
 
 ## EXAMPLES
 
@@ -39,7 +42,6 @@ For enhanced fault tolerance and to safeguard against zone failures, it is recom
 To configure servers that pass this rule:
 
 - Set the `properties.highAvailability.mode` property to `ZoneRedundant`.
-- Set the `properties.highAvailability.standbyAvailabilityZone` property to `'1'` or `'2'` or `'3'`.
 
 For example:
 
@@ -72,7 +74,6 @@ For example:
 To configure servers that pass this rule:
 
 - Set the `properties.highAvailability.mode` property to `ZoneRedundant`.
-- Set the `properties.highAvailability.standbyAvailabilityZone` property to `'1'` or `'2'` or `'3'`.
 
 For example:
 
@@ -97,6 +98,8 @@ resource mysqlDbServer 'Microsoft.DBforMySQL/flexibleServers@2023-10-01-preview'
   }
 }
 ```
+
+<!-- external:avm avm/res/db-for-my-sql/flexible-server highAvailability -->
 
 ## NOTES
 
