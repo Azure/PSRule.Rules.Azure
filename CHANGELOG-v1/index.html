@@ -18130,22 +18130,17 @@
   See <a href="../upgrade-notes/">upgrade notes</a> for more information.</li>
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
-<ul>
-<li>New rules:<ul>
-<li>Azure Database for PostgreSQL:<ul>
-<li>Verify that Azure Database for PostgreSQL servers have a customer-controlled maintenance window configured by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
-  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2927">#2927</a></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>What's changed since pre-release v1.37.0:</p>
+<p>What's changed since v1.37.0:</p>
 <ul>
 <li>New rules:<ul>
 <li>Azure Database for MySQL:<ul>
 <li>Verify that Azure Database for MySQL servers have a customer-controlled maintenance window configured by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2916">#2916</a></li>
+</ul>
+</li>
+<li>Azure Database for PostgreSQL:<ul>
+<li>Verify that Azure Database for PostgreSQL servers have a customer-controlled maintenance window configured by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2927">#2927</a></li>
 </ul>
 </li>
 <li>Azure Firewall:<ul>
@@ -18156,6 +18151,17 @@
 <li>Virtual Network Gateway:<ul>
 <li>Verify that VPN/ExpressRoute gateways have a customer-controlled maintenance configuration configured by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2910">#2910</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Updated rules:<ul>
+<li>Virtual Machine:<ul>
+<li>Updated <code>Azure.VM.MaintenanceConfig</code> to align to the reliability pillar by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2925">#2925</a><ul>
+<li>Promoted to GA and bumped rule set to <code>2024_06</code>.</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -25477,14 +25483,14 @@ What's changed since v1.24.0:</p>
     
     <nav>
       
-        <a href="https://github.com/BenjaminEngeset" class="md-author" title="@BenjaminEngeset">
-          
-          <img src="https://avatars.githubusercontent.com/u/99641908?v=4&size=72" alt="BenjaminEngeset">
-        </a>
-      
         <a href="https://github.com/BernieWhite" class="md-author" title="@BernieWhite">
           
           <img src="https://avatars.githubusercontent.com/u/13513058?v=4&size=72" alt="BernieWhite">
+        </a>
+      
+        <a href="https://github.com/BenjaminEngeset" class="md-author" title="@BenjaminEngeset">
+          
+          <img src="https://avatars.githubusercontent.com/u/99641908?v=4&size=72" alt="BenjaminEngeset">
         </a>
       
         <a href="https://github.com/apps/dependabot" class="md-author" title="@dependabot[bot]">
