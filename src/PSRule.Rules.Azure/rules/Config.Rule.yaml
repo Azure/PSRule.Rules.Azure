@@ -40,7 +40,7 @@ spec:
     AZURE_BICEP_CHECK_TOOL: false
 
     # Configure minimum AKS cluster version.
-    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.27.9'
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.28.9'
 
     # Configures the minimum number of nodes across all system node pools.
     AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: 3
