@@ -14,14 +14,14 @@ Deploy Azure Database for PostgreSQL servers using zone-redundant high availabil
 
 ## DESCRIPTION
 
-Azure Database for PostgreSQL flexible servers allows configuration high availablity (HA) across availablity zones in supported regions.
+Azure Database for PostgreSQL flexible servers allows configuration high availability (HA) across availability zones in supported regions.
 Using availability zones improves resiliency of your solution to failures or disruptions isolated to a zone or data center.
 
 Zone-redundant HA works by:
 
 - Deploying two servers; a primary in one zone, and a secondary in a physically separate zone.
--	Daily Data Backups: Performed from the primary server and stored using zone-redundant backup storage.
--	Transaction Logs: Continuously archived in zone-redundant backup storage from the standby replica.
+- Daily Data Backups: Performed from the primary server and stored using zone-redundant backup storage.
+- Transaction Logs: Continuously archived in zone-redundant backup storage from the standby replica.
 
 The failover process ensures continuous operation by switching from the primary server to the standby replica server.
 This process can be:
@@ -93,9 +93,9 @@ resource postgresqlDbServer 'Microsoft.DBforPostgreSQL/flexibleServers@2023-03-0
     version: postgresqlVersion
     availabilityZone: 1
     highAvailability: {
-      mode: ZoneRedundant,
+      mode: 'ZoneRedundant'
       standbyAvailabilityZone: 2
-     }
+    }
   }
 }
 ```
