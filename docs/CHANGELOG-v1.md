@@ -51,6 +51,13 @@ What's changed since v1.37.0:
       - Promoted to GA and bumped rule set to `2024_06`.
   - Updated `Azure.AKS.Version` to use `1.28.9` as the minimum version by @BernieWhite.
     [#2930](https://github.com/Azure/PSRule.Rules.Azure/issues/2930)
+- Engineering:
+  - Bump Pester to v5.6.0.
+    [#2934](https://github.com/Azure/PSRule.Rules.Azure/pull/2934)
+  - Bump Az.Resources to v7.1.0.
+    [#2934](https://github.com/Azure/PSRule.Rules.Azure/pull/2934)
+  - Bump PSScriptAnalyzer to v1.22.0.
+    [#2934](https://github.com/Azure/PSRule.Rules.Azure/pull/2934)
 
 ## v1.37.0
 
