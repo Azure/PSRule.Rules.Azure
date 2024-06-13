@@ -52,6 +52,8 @@ What's changed since v1.37.0:
     - Updated `Azure.VM.MaintenanceConfig` to align to the reliability pillar by @BernieWhite.
       [#2925](https://github.com/Azure/PSRule.Rules.Azure/issues/2925)
       - Promoted to GA and bumped rule set to `2024_06`.
+  - Updated `Azure.AKS.Version` to use `1.28.9` as the minimum version by @BernieWhite.
+    [#2930](https://github.com/Azure/PSRule.Rules.Azure/issues/2930)
 
 ## v1.37.0
 
