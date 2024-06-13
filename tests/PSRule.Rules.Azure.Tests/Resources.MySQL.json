@@ -325,8 +325,8 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-D",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-D",
-    "Location": "region",
     "ResourceName": "server-D",
+    "Location": "westeurope",
     "Name": "server-D",
     "Properties": {
       "administratorLogin": "db-admin",
@@ -338,9 +338,6 @@
       "backup": {
         "backupRetentionDays": 35,
         "geoRedundantBackup": "Enabled"
-      },
-      "highAvailability": {
-        "mode": "Disabled"
       },
       "version": "8.0.21",
       "createMode": "Default"
@@ -358,7 +355,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-E",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-E",
-    "Location": "region",
+    "Location": "westeurope",
     "ResourceName": "server-E",
     "Name": "server-E",
     "Properties": {
@@ -377,6 +374,7 @@
         "startHour": "notset",
         "startMinute": "notset"
       },
+      "availabilityZone": "1",
       "highAvailability": {
         "mode": "Disabled"
       },
@@ -426,7 +424,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-F",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-F",
-    "Location": "region",
+    "Location": "westeurope",
     "ResourceName": "server-F",
     "Name": "server-F",
     "Properties": {
@@ -446,8 +444,10 @@
         "startHour": 1,
         "startMinute": 0
       },
+      "availabilityZone": "1",
       "highAvailability": {
-        "mode": "Disabled"
+        "mode": "SameZone",
+        "standbyAvailabilityZone": "1"
       },
       "version": "8.0.21",
       "createMode": "Default"
@@ -495,7 +495,7 @@
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-G",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-G",
-    "Location": "region",
+    "Location": "westeurope",
     "ResourceName": "server-G",
     "Name": "server-G",
     "Properties": {
@@ -515,8 +515,92 @@
         "startHour": 1,
         "startMinute": 0
       },
+      "availabilityZone": "1",
       "highAvailability": {
-        "mode": "Disabled"
+        "mode": "ZoneRedundant",
+        "standbyAvailabilityZone": "2"
+      },
+      "version": "8.0.21",
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DBforMySQL/flexibleServers",
+    "ResourceType": "Microsoft.DBforMySQL/flexibleServers",
+    "Sku": {
+      "Name": "Standard_B2s",
+      "Tier": "Burstable"
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-H",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-H",
+    "Location": "notregion",
+    "ResourceName": "server-H",
+    "Name": "server-H",
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "storage": {
+        "autoGrow": "Enabled",
+        "iops": 360,
+        "storageSizeGB": 20
+      },
+      "backup": {
+        "backupRetentionDays": 7,
+        "geoRedundantBackup": "Disabled"
+      },
+      "maintenanceWindow": {
+        "customWindow": "Enabled",
+        "dayOfWeek": 0,
+        "startHour": 1,
+        "startMinute": 0
+      },
+      "availabilityZone": "1",
+      "highAvailability": {
+        "mode": "ZoneRedundant",
+        "standbyAvailabilityZone": "2"
+      },
+      "version": "8.0.21",
+      "createMode": "Default"
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.DBforMySQL/flexibleServers",
+    "ResourceType": "Microsoft.DBforMySQL/flexibleServers",
+    "Sku": {
+      "Name": "E64",
+      "Tier": "MemoryOptimized"
+    },
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-I",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.DBforMySQL/flexibleServers/server-I",
+    "Location": "westeurope",
+    "ResourceName": "server-I",
+    "Name": "server-I",
+    "Properties": {
+      "administratorLogin": "db-admin",
+      "storage": {
+        "autoGrow": "Enabled",
+        "iops": 360,
+        "storageSizeGB": 20
+      },
+      "backup": {
+        "backupRetentionDays": 7,
+        "geoRedundantBackup": "Disabled"
+      },
+      "maintenanceWindow": {
+        "customWindow": "Enabled",
+        "dayOfWeek": 0,
+        "startHour": 1,
+        "startMinute": 0
+      },
+      "availabilityZone": "1",
+      "highAvailability": {
+        "mode": "ZoneRedundant",
+        "standbyAvailabilityZone": "2"
       },
       "version": "8.0.21",
       "createMode": "Default"

@@ -40,6 +40,9 @@ What's changed since v1.37.0:
   - Azure Database for MySQL:
     - Verify that Azure Database for MySQL servers have a customer-controlled maintenance window configured by @BenjaminEngeset.
       [#2916](https://github.com/Azure/PSRule.Rules.Azure/issues/2916)
+    - Verify that servers have zone-redundant high availability (HA) configured by @BenjaminEngeset.
+      [#2914](https://github.com/Azure/PSRule.Rules.Azure/issues/2914)
+
   - Azure Database for PostgreSQL:
     - Verify that Azure Database for PostgreSQL servers have a customer-controlled maintenance window configured by @BenjaminEngeset.
       [#2927](https://github.com/Azure/PSRule.Rules.Azure/issues/2927)
@@ -54,6 +57,15 @@ What's changed since v1.37.0:
     - Updated `Azure.VM.MaintenanceConfig` to align to the reliability pillar by @BernieWhite.
       [#2925](https://github.com/Azure/PSRule.Rules.Azure/issues/2925)
       - Promoted to GA and bumped rule set to `2024_06`.
+  - Updated `Azure.AKS.Version` to use `1.28.9` as the minimum version by @BernieWhite.
+    [#2930](https://github.com/Azure/PSRule.Rules.Azure/issues/2930)
+- Engineering:
+  - Bump Pester to v5.6.0.
+    [#2934](https://github.com/Azure/PSRule.Rules.Azure/pull/2934)
+  - Bump Az.Resources to v7.1.0.
+    [#2934](https://github.com/Azure/PSRule.Rules.Azure/pull/2934)
+  - Bump PSScriptAnalyzer to v1.22.0.
+    [#2934](https://github.com/Azure/PSRule.Rules.Azure/pull/2934)
 
 ## v1.37.0
 
