@@ -29,18 +29,28 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since pre-release v1.37.0:
+What's changed since v1.37.0:
 
 - New rules:
   - Azure Database for MySQL:
     - Verify that Azure Database for MySQL servers have a customer-controlled maintenance window configured by @BenjaminEngeset.
       [#2916](https://github.com/Azure/PSRule.Rules.Azure/issues/2916)
+  - Azure Database for PostgreSQL:
+    - Verify that Azure Database for PostgreSQL servers have a customer-controlled maintenance window configured by @BenjaminEngeset.
+      [#2927](https://github.com/Azure/PSRule.Rules.Azure/issues/2927)
   - Azure Firewall:
     - Verify that firewalls have availability zones configured by @BenjaminEngeset.
       [#2909](https://github.com/Azure/PSRule.Rules.Azure/issues/2909)
   - Virtual Network Gateway:
     - Verify that VPN/ExpressRoute gateways have a customer-controlled maintenance configuration configured by @BenjaminEngeset.
       [#2910](https://github.com/Azure/PSRule.Rules.Azure/issues/2910)
+- Updated rules:
+  - Virtual Machine:
+    - Updated `Azure.VM.MaintenanceConfig` to align to the reliability pillar by @BernieWhite.
+      [#2925](https://github.com/Azure/PSRule.Rules.Azure/issues/2925)
+      - Promoted to GA and bumped rule set to `2024_06`.
+  - Updated `Azure.AKS.Version` to use `1.28.9` as the minimum version by @BernieWhite.
+    [#2930](https://github.com/Azure/PSRule.Rules.Azure/issues/2930)
 
 ## v1.37.0
 

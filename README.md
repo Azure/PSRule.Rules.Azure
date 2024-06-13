@@ -1,6 +1,6 @@
 # PSRule for Azure
 
-A suite of rules to validate Azure resources and infrastructure as code (IaC) using PSRule.
+A suite of rules to test Azure resources and infrastructure as code (IaC) using PSRule.
 
 [![Open in vscode.dev](https://img.shields.io/badge/Open%20in-vscode.dev-blue)][1]
 
@@ -27,8 +27,8 @@ Features of PSRule for Azure include:
    - Provide a [Azure Well-Architected Framework][5] aligned suite of rules for validating Azure resources.
    - Provide meaningful information to allow remediation.
 2. **DevOps**:
-   - Resources and templates can be validated before deployment within DevOps workflows.
-   - Allow pull request (PR) validation to prevent invalid configuration being merged.
+   - Resources and Azure code can be tested before deployment within DevOps workflows.
+   - Allow pull request (PR) validation to prevent invalid configuration from being merged.
 3. **Enterprise ready**:
    - Rules can be directly adopted and additional enterprise specific rules can be layed on.
    - Provide regular baselines to allow progressive adoption.
@@ -85,7 +85,7 @@ To get started with a sample repository, see [PSRule for Azure Quick Start][13] 
 The following example shows how to setup GitHub Actions to validate templates pre-flight.
 
 1. See [Creating a workflow file][create-workflow].
-2. Reference `Microsoft/ps-rule` with `modules: 'PSRule.Rules.Azure'`.
+2. Reference `microsoft/ps-rule` with `modules: 'PSRule.Rules.Azure'`.
 
 For example:
 
@@ -316,37 +316,7 @@ To view a list of rules by Azure resources see:
 
 ## Baseline reference
 
-The following baselines are included within `PSRule.Rules.Azure`.
-
-- [Azure.Default](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Default/) - Default baseline for Azure rules.
-- [Azure.All](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.All/) - Includes all Azure rules.
-- [Azure.GA_2020_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2020_06/) - Baseline for GA rules released June 2020 or prior.
-- [Azure.GA_2020_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2020_09/) - Baseline for GA rules released September 2020 or prior.
-- [Azure.GA_2020_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2020_12/) - Baseline for GA rules released December 2020 or prior.
-- [Azure.GA_2021_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_03/) - Baseline for GA rules released March 2021 or prior.
-- [Azure.GA_2021_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_06/) - Baseline for GA rules released June 2021 or prior.
-- [Azure.GA_2021_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_09/) - Baseline for GA rules released September 2021 or prior.
-- [Azure.GA_2021_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2021_12/) - Baseline for GA rules released December 2021 or prior.
-- [Azure.GA_2022_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_03/) - Baseline for GA rules released March 2022 or prior.
-- [Azure.GA_2022_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_06/) - Baseline for GA rules released June 2022 or prior.
-- [Azure.GA_2022_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_09/) - Baseline for GA rules released September 2022 or prior.
-- [Azure.GA_2022_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2022_12/) - Baseline for GA rules released December 2022 or prior.
-- [Azure.GA_2023_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2023_03/) - Baseline for GA rules released March 2023 or prior.
-- [Azure.GA_2023_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2023_06/) - Baseline for GA rules released June 2023 or prior.
-- [Azure.GA_2023_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2023_09/) - Baseline for GA rules released September 2023 or prior.
-- [Azure.GA_2023_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2023_12/) - Baseline for GA rules released December 2023 or prior.
-- [Azure.Preview](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview/) - Includes rules for Azure GA and preview features.
-- [Azure.Preview_2021_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2021_09/) - Baseline for rules released September 2021 or prior for Azure preview only features.
-- [Azure.Preview_2021_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2021_12/) - Baseline for rules released December 2021 or prior for Azure preview only features.
-- [Azure.Preview_2022_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_03/) - Baseline for rules released March 2022 or prior for Azure preview only features.
-- [Azure.Preview_2022_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_06/) - Baseline for rules released June 2022 or prior for Azure preview only features.
-- [Azure.Preview_2022_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_09/) - Baseline for rules released September 2022 or prior for Azure preview only features.
-- [Azure.Preview_2022_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2022_12/) - Baseline for rules released December 2022 or prior for Azure preview only features.
-- [Azure.Preview_2023_03](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2023_03/) - Baseline for rules released March 2023 or prior for Azure preview only features.
-- [Azure.Preview_2023_06](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2023_06/) - Baseline for rules released June 2023 or prior for Azure preview only features.
-- [Azure.Preview_2023_09](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2023_09/) - Baseline for rules released September 2023 or prior for Azure preview only features.
-- [Azure.Preview_2023_12](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2023_12/) - Baseline for rules released December 2023 or prior for Azure preview only features.
-- [Azure.MCSB.v1](https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.MCSB.v1/) - A baseline aligned to Microsoft Cloud Security Benchmark v1 controls.
+For a list of baselines you can use in your configuration see [Baselines](https://azure.github.io/PSRule.Rules.Azure/en/baselines/).
 
 ## Language reference
 

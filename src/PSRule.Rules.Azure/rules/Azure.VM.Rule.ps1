@@ -277,8 +277,8 @@ Rule 'Azure.VM.AMA' -Ref 'AZR-000345' -Type 'Microsoft.Compute/virtualMachines' 
 
 #region Maintenance Configuration
 
-# Synopsis: Use a maintenance configuration for virtual machines. 
-Rule 'Azure.VM.MaintenanceConfig' -Ref 'AZR-000375' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'preview'; ruleSet = '2023_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+# Synopsis: Use a maintenance configuration for virtual machines.
+Rule 'Azure.VM.MaintenanceConfig' -Ref 'AZR-000375' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $maintenanceConfig = @(GetSubResources -ResourceType 'Microsoft.Maintenance/configurationAssignments' |
         Where-Object { $_.properties.maintenanceConfigurationId })
     $Assert.GreaterOrEqual($maintenanceConfig, '.', 1).Reason($LocalizedData.VMMaintenanceConfig, $PSRule.TargetName)

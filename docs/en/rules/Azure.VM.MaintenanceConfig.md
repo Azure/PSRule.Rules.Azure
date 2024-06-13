@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-06-12
 severity: Important
-pillar: Operational Excellence
-category: Repeatable infrastructure
+pillar: Reliability
+category: RE:04 Target metrics
 resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.MaintenanceConfig/
 ---
@@ -14,11 +15,21 @@ Use a maintenance configuration for virtual machines.
 
 ## DESCRIPTION
 
-Virtual machines can be attached to a maintenance configuration which allows customer managed assessments and updates for machine patches within the guest operating system.
+Azure Virtual Machines (VMs) support maintenance configurations.
+You can use the Maintenance Configurations to control and manage updates for Azure VM resources.
+Configuring a maintenance window and time zone allows you to reduce disruptions to your workloads during peak hours.
+
+If a maintenance configuration is not associated:
+
+- Updates managed by the platform may be still be scheduled for your virtual machine.
+- The schedule determined by the platform may not align with your maintenance window.
+
+Maintenance configurations also integrate with Azure Update Manager.
+Azure Update Manager can be used to apply guest operating system (OS) updates to keep your VMs secure and compliant.
 
 ## RECOMMENDATION
 
-Consider automatically managing and applying operating system updates by associating a maintenance configuration.
+Consider associating a maintenance configuration to your VM to reduce unplanned disruptions to your workloads.
 
 ## EXAMPLES
 
@@ -34,14 +45,15 @@ For example:
 ```json
 {
   "type": "Microsoft.Maintenance/configurationAssignments",
-  "apiVersion": "2022-11-01-preview",
-  "name": "[parameters('assignmentName')]",
-  "location": "[parameters('location')]",
+  "apiVersion": "2023-04-01",
   "scope": "[format('Microsoft.Compute/virtualMachines/{0}', parameters('name'))]",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
   "properties": {
-    "maintenanceConfigurationId": "[parameters('maintenanceConfigurationId')]"
+    "maintenanceConfigurationId": "[resourceId('Microsoft.Maintenance/maintenanceConfigurations', parameters('name'))]"
   },
   "dependsOn": [
+    "[resourceId('Microsoft.Maintenance/maintenanceConfigurations', parameters('name'))]",
     "[resourceId('Microsoft.Compute/virtualMachines', parameters('name'))]"
   ]
 }
@@ -57,27 +69,21 @@ To deploy virtual machines that pass this rule:
 For example:
 
 ```bicep
-resource config 'Microsoft.Maintenance/configurationAssignments@2022-11-01-preview' = {
-  name: assignmentName
+resource config 'Microsoft.Maintenance/configurationAssignments@2023-04-01' = {
+  name: name
   location: location
   scope: vm
   properties: {
-    maintenanceConfigurationId: maintenanceConfigurationId
+    maintenanceConfigurationId: maintenanceConfiguration.id
   }
 }
 ```
 
-## NOTES
-
-Operating system updates with Update Management center is a preview feature.
-Not all operating systems are supported, check out the `LINKS` section for more information.
-Update management center doesn't support driver updates.
-
 ## LINKS
 
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/well-architected/devops/automation-infrastructure)
-- [About Update management center](https://learn.microsoft.com/azure/update-center/overview)
-- [How to programmatically manage updates for Azure VMs](https://learn.microsoft.com/azure/update-center/manage-vms-programmatically)
-- [Manage Update configuration settings](https://learn.microsoft.com/azure/update-center/manage-update-settings)
-- [Supported operating systems](https://learn.microsoft.com/azure/update-center/support-matrix?tabs=azurevm%2Cazurevm-os#supported-operating-systems)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
+- [Managing VM updates with Maintenance Configurations](https://learn.microsoft.com/azure/virtual-machines/maintenance-configurations)
+- [About Azure Update Manager](https://learn.microsoft.com/azure/update-manager/overview)
+- [Manage update configuration settings](https://learn.microsoft.com/azure/update-manager/manage-update-settings)
+- [Support matrix for Azure Update Manager](https://learn.microsoft.com/azure/update-manager/support-matrix)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.maintenance/configurationassignments)

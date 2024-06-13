@@ -67,14 +67,14 @@ Before improving rule recommendations familiarize yourself with writing [rule ma
 Rule documentation requires the following annotations for use with PSRule for Azure:
 
 - `severity` - A subjective rating of the impact of a rule on the solution or platform.
-  *NB* - the severity ratings reflect a productionised implementation, consideration should be applied for pre-production environments.
-  
+  *NB* - the severity ratings reflect a production implementation, consideration should be applied for pre-production environments.
+
   Available severities are:
   - `Critical` - A 'must have' if the solution is to be considered 'fit for purpose', secure, well governed and managed inline with the Microsoft Azure [Well-Architected Framework](https://learn.microsoft.com/azure/well-architected/).
   - `Important` - A 'to be considered' within the context of the solution and domain.
     In some cases, can introduce cost or complexity that should be considered as a trade off and explicitly documented as a [Key Design Decision](https://learn.microsoft.com/azure/cloud-adoption-framework/decision-guides/).
   - `Awareness` - A 'good to have' feature, normally reserved for solutions with the highest [non-functional requirements](https://learn.microsoft.com/azure/well-architected/reliability/checklist).
-  
+
 - `pillar` - A Azure Well-Architected Framework pillar.
   Either `Cost Optimization`, `Operational Excellence`, `Performance Efficiency`, `Reliability`, `Security`.
 - `category` - A category of Azure Well-Architected Framework pillar.
@@ -148,19 +148,21 @@ metadata:
     ruleSet: '2020_06'
 spec:
   type:
-  - Microsoft.ApiManagement/service
+    - Microsoft.ApiManagement/service
   condition:
     field: 'Identity.Type'
     in:
-    - 'SystemAssigned'
-    - 'UserAssigned'
+      - 'SystemAssigned'
+      - 'UserAssigned'
 ```
 
 **Tips for authoring rules:**
 
 - To create new rules, snippets in the VS Code extension for PSRule can be used.
+- Use YAML-based rules over PowerShell-based rules when possible.
+  We prefer YAML-based because they are easier for the community read and maintain.
 - Use `-Type` over `-If` pre-conditions when possible.
-Both may be required in some cases.
+  Both may be required in some cases.
 
 ### Adding rule configuration options
 
@@ -184,7 +186,7 @@ When adding configuration options, please follow these guidelines:
 When you are ready to contribute a fix or feature:
 
 - Start by [forking the PSRule.Rules.Azure repo][github-fork].
-- Create a new branch from main in your fork.
+- Create a new branch from `main` in your fork.
 - Add commits in your branch.
   - If you have updated module code or rules also update `CHANGELOG.md`.
   - You don't need to update the `CHANGELOG.md` for changes to unit tests or documentation.

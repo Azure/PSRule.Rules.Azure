@@ -70,4 +70,22 @@ spec:
       - field: properties.authConfig.passwordAuth
         equals: Disabled
 
+---
+# Synopsis: Configure a customer-controlled maintenance window for Azure Database for PostgreSQL servers.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.PostgreSQL.MaintenanceWindow
+  ref: AZR-000433
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.DBforPostgreSQL/flexibleServers
+  condition:
+    field: properties.maintenanceWindow.customWindow
+    equals: Enabled
+
 #endregion Region
