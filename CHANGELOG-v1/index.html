@@ -5200,6 +5200,8 @@
       
         
       
+        
+      
     
     
       
@@ -10535,6 +10537,27 @@
   
   <span class="md-ellipsis">
     Azure.MySQL.UseSSL
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../en/rules/Azure.MySQL.ZoneRedundantHA/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure.MySQL.ZoneRedundantHA
   </span>
   
 
@@ -18132,12 +18155,18 @@
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <p>What's changed since v1.37.0:</p>
 <ul>
-<li>New rules:<ul>
+<li>
+<p>New rules:</p>
+<ul>
 <li>Azure Database for MySQL:<ul>
 <li>Verify that Azure Database for MySQL servers have a customer-controlled maintenance window configured by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2916">#2916</a></li>
+<li>Verify that servers have zone-redundant high availability (HA) configured by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2914">#2914</a></li>
 </ul>
 </li>
+</ul>
+<ul>
 <li>Azure Database for PostgreSQL:<ul>
 <li>Verify that Azure Database for PostgreSQL servers have a customer-controlled maintenance window configured by <a href="https://github.com/BenjaminEngeset">@BenjaminEngeset</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2927">#2927</a></li>
@@ -18153,9 +18182,7 @@
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2910">#2910</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li>Updated rules:<ul>
+<li>Updated rules:</li>
 <li>Virtual Machine:<ul>
 <li>Updated <code>Azure.VM.MaintenanceConfig</code> to align to the reliability pillar by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2925">#2925</a><ul>
@@ -18166,9 +18193,7 @@
 </li>
 <li>Updated <code>Azure.AKS.Version</code> to use <code>1.28.9</code> as the minimum version by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/2930">#2930</a></li>
-</ul>
-</li>
-<li>Engineering:<ul>
+<li>Engineering:</li>
 <li>Bump Pester to v5.6.0.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/pull/2934">#2934</a></li>
 <li>Bump Az.Resources to v7.1.0.
@@ -25494,14 +25519,14 @@ What's changed since v1.24.0:</p>
     
     <nav>
       
-        <a href="https://github.com/BernieWhite" class="md-author" title="@BernieWhite">
-          
-          <img src="https://avatars.githubusercontent.com/u/13513058?v=4&size=72" alt="BernieWhite">
-        </a>
-      
         <a href="https://github.com/BenjaminEngeset" class="md-author" title="@BenjaminEngeset">
           
           <img src="https://avatars.githubusercontent.com/u/99641908?v=4&size=72" alt="BenjaminEngeset">
+        </a>
+      
+        <a href="https://github.com/BernieWhite" class="md-author" title="@BernieWhite">
+          
+          <img src="https://avatars.githubusercontent.com/u/13513058?v=4&size=72" alt="BernieWhite">
         </a>
       
         <a href="https://github.com/apps/dependabot" class="md-author" title="@dependabot[bot]">

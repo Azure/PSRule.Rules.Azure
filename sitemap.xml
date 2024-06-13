@@ -1691,6 +1691,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.ZoneRedundantHA/</loc>
+         <lastmod>2024-06-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NIC.Attached/</loc>
          <lastmod>2024-06-13</lastmod>
          <changefreq>daily</changefreq>
