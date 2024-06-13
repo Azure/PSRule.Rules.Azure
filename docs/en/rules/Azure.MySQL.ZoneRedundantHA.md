@@ -14,7 +14,7 @@ Deploy Azure Database for MySQL servers using zone-redundant high availability (
 
 ## DESCRIPTION
 
-Azure Database for MySQL flexible servers allows configuration high availablity (HA) across availablity zones in supported regions.
+Azure Database for MySQL flexible servers allows configuration high availability (HA) across availability zones in supported regions.
 Using availability zones improves resiliency of your solution to failures or disruptions isolated to a zone or data center.
 
 Zone-redundant HA works by:
@@ -92,9 +92,9 @@ resource mysqlDbServer 'Microsoft.DBforMySQL/flexibleServers@2023-10-01-preview'
     version: mysqlVersion
     availabilityZone: 1
     highAvailability: {
-      mode: ZoneRedundant,
+      mode: 'ZoneRedundant'
       standbyAvailabilityZone: 2
-     }
+    }
   }
 }
 ```
@@ -103,7 +103,8 @@ resource mysqlDbServer 'Microsoft.DBforMySQL/flexibleServers@2023-10-01-preview'
 
 ## NOTES
 
-The zone-redundant HA model must be configured during the initial deployment. It is not possible to modify an existing server to include zone-redundant HA after it has been deployed.
+The zone-redundant HA model must be configured during the initial deployment.
+It is not possible to modify an existing server to include zone-redundant HA after it has been deployed.
 
 The `Burstable` SKU tier is not supported.
 
