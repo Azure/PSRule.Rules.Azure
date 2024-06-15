@@ -3,6 +3,9 @@
 
 namespace PSRule.Rules.Azure.Data.Template
 {
+    /// <summary>
+    /// The ARM scope of the deployment.
+    /// </summary>
     internal enum DeploymentScope
     {
         ResourceGroup = 0,

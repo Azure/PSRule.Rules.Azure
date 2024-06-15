@@ -1,15 +1,8 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 namespace PSRule.Rules.Azure.Data.Template
 {
-    internal enum ValidationKind
-    {
-        None = 0,
-
-        Parameter = 1
-    }
-
     internal sealed class ValidationIssue
     {
         private readonly ValidationKind _Kind;

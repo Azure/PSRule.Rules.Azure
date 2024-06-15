@@ -140,8 +140,7 @@ namespace PSRule.Rules.Azure.Data.Template
             for (var i = 0; i < inputArray.Length; i++)
             {
                 lambdaContext.LambdaVariable(varName, inputArray[i]);
-                var propertyName = groupMapper(lambdaContext) as string;
-                if (propertyName == null)
+                if (groupMapper(lambdaContext) is not string propertyName)
                     continue;
 
                 var propertyValue = result.TryArrayProperty(propertyName, out var v) ? v : new JArray();

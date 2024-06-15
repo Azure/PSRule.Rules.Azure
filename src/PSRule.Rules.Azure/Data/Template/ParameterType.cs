@@ -2,31 +2,9 @@
 // Licensed under the MIT License.
 
 using System;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
-    [JsonConverter(typeof(StringEnumConverter))]
-    internal enum TypePrimitive
-    {
-        None,
-
-        Array,
-
-        Bool,
-
-        Int,
-
-        Object,
-
-        String,
-
-        SecureString,
-
-        SecureObject
-    }
-
     internal readonly struct ParameterType
     {
         public readonly TypePrimitive Type;
@@ -42,16 +20,6 @@ namespace PSRule.Rules.Azure.Data.Template
             Type = type;
             Name = name;
         }
-
-        //public static bool operator ==(ParameterType left, TypePrimitive right)
-        //{
-        //    return left.Type == right;
-        //}
-
-        //public static bool operator !=(ParameterType left, TypePrimitive right)
-        //{
-        //    return left.Type != right;
-        //}
 
         public static bool TrySimpleType(string type, out ParameterType value)
         {

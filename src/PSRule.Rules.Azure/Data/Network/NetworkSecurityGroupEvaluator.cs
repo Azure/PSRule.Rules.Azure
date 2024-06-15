@@ -8,39 +8,6 @@ using System.Management.Automation;
 namespace PSRule.Rules.Azure.Data.Network
 {
     /// <summary>
-    /// Evaluates NSG rules to determine resulting access.
-    /// </summary>
-    public interface INetworkSecurityGroupEvaluator
-    {
-        /// <summary>
-        /// Determine the resulting outbound access after evaluating NSG rules.
-        /// </summary>
-        Access Outbound(string prefix, int port);
-    }
-
-    /// <summary>
-    /// The result after evaluating a rule.
-    /// </summary>
-    public enum Access
-    {
-        /// <summary>
-        /// The result is denies or allowed based on NSG defaults.
-        /// A specific NSG rule has not been configured to allow or deny.
-        /// </summary>
-        Default = 0,
-
-        /// <summary>
-        /// Access has been permitted.
-        /// </summary>
-        Allow = 1,
-
-        /// <summary>
-        /// Access has been denied.
-        /// </summary>
-        Deny = 2
-    }
-
-    /// <summary>
     /// A basic implementation of an evaluator for checking NSG rules.
     /// </summary>
     internal sealed class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvaluator
