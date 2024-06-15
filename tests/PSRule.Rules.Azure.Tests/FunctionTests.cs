@@ -512,7 +512,7 @@ namespace PSRule.Rules.Azure
             actual = Functions.ShallowMerge(context, new object[] { new object[] { JObject.Parse("{ \"foo\": \"foo\" }"), JObject.Parse("{ \"foo\": \"bar\" }") } }) as JObject;
             Assert.Equal(JObject.Parse("{ \"foo\": \"bar\" }"), actual);
 
-            actual = Functions.ShallowMerge(context, new object[] { new JArray(JObject.Parse("{ \"foo\": \"foo\" }"), JObject.Parse("{ \"bar\": \"bar\" }") ) }) as JObject;
+            actual = Functions.ShallowMerge(context, new object[] { new JArray(JObject.Parse("{ \"foo\": \"foo\" }"), JObject.Parse("{ \"bar\": \"bar\" }")) }) as JObject;
             Assert.Equal(JObject.Parse("{ \"foo\": \"foo\", \"bar\": \"bar\" }"), actual);
 
             actual = Functions.ShallowMerge(context, new object[] { new object[] { JObject.Parse("{ \"a\": \"b\", \"c\": \"d\" }"), JObject.Parse("{ \"e\": \"f\", \"g\": \"h\" }"), JObject.Parse("{ \"i\": \"j\" }"), JObject.Parse("{ \"a\": \"100\" }") } }) as JObject;

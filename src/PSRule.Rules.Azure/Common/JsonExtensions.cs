@@ -274,8 +274,7 @@ namespace PSRule.Rules.Azure
         internal static void RemoveProperty(this JObject o, string propertyName)
         {
             var p = o.Property(propertyName, StringComparison.OrdinalIgnoreCase);
-            if (p != null)
-                p.Remove();
+            p?.Remove();
         }
 
         /// <summary>

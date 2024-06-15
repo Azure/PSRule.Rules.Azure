@@ -748,7 +748,7 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 o[propertyName] = propertyValue;
             }
-            
+
         }
 
         /// <summary>

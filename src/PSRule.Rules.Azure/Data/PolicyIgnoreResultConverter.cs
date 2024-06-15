@@ -7,43 +7,6 @@ using Newtonsoft.Json;
 
 namespace PSRule.Rules.Azure.Data
 {
-    internal sealed class PolicyIgnoreResult
-    {
-        public PolicyIgnoreReason Reason { get; set; }
-
-        public List<string> Value { get; set; }
-    }
-
-    internal sealed class PolicyIgnoreEntry
-    {
-        [JsonProperty("i")]
-        public string[] PolicyDefinitionIds { get; set; }
-
-        [JsonProperty("r")]
-        public PolicyIgnoreReason Reason { get; set; }
-
-        [JsonProperty("v", NullValueHandling = NullValueHandling.Ignore)]
-        public string Value { get; set; }
-    }
-
-    internal enum PolicyIgnoreReason
-    {
-        /// <summary>
-        /// The policy is excluded because it was duplicated with an existing rule.
-        /// </summary>
-        Duplicate = 1,
-
-        /// <summary>
-        /// The policy is excluded because it is not testable or not applicable for IaC.
-        /// </summary>
-        NotApplicable = 2,
-
-        /// <summary>
-        /// An exclusion configured by the user.
-        /// </summary>
-        Configured = 3
-    }
-
     internal sealed class PolicyIgnoreResultConverter : JsonConverter
     {
         public override bool CanConvert(Type objectType)

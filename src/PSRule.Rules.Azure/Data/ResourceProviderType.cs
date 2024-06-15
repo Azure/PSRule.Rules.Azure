@@ -1,4 +1,4 @@
-// Copyright (c) Microsoft Corporation.
+﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System.Collections.Generic;
@@ -42,23 +42,5 @@ namespace PSRule.Rules.Azure.Data
         /// </summary>
         [JsonProperty(PropertyName = "z")]
         public AvailabilityZoneMapping[] ZoneMappings { get; set; }
-    }
-
-    /// <summary>
-    /// An Azure Availability Zone mapping between location and zones.
-    /// </summary>
-    public sealed class AvailabilityZoneMapping
-    {
-        /// <summary>
-        /// The location/ region where AZ is available.
-        /// </summary>
-        [JsonProperty(PropertyName = "l")]
-        public string Location { get; set; }
-
-        /// <summary>
-        /// The zone names available at the location.
-        /// </summary>
-        [JsonProperty(PropertyName = "z")]
-        public string[] Zones { get; set; }
     }
 }
