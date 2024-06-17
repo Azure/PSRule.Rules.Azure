@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System;
@@ -59,7 +59,7 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
-        private sealed class DeploymentOutputs : ILazyObject
+        private sealed class DeploymentOutputs : JObject, ILazyObject
         {
             private readonly DeploymentValue _Deployment;
 
@@ -76,6 +76,18 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 value = lazy.GetValue();
                 return true;
+            }
+
+            public override JToken this[object key]
+            {
+                get
+                {
+                    return key is string propertyName && TryProperty(propertyName, out var o) ? JToken.FromObject(o) : default;
+                }
+                set
+                {
+
+                }
             }
         }
 

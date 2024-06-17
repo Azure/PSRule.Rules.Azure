@@ -31,9 +31,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.38.0-B0011:
 
+- New rules:
+  - Azure Kubernetes Service:
+    - Added check to automatically upgrade AKS cluster node image by @sharmilamusunuru.
+      [#2445](https://github.com/Azure/PSRule.Rules.Azure/issues/2445)
 - Engineering:
   - Quality updates to rule documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+- Bug fixes:
+  - Fixed failed to expand with direct outputs reference by @BernieWhite.
+    [#2935](https://github.com/Azure/PSRule.Rules.Azure/issues/2935)
 
 ## v1.38.0-B0011 (pre-release)
 

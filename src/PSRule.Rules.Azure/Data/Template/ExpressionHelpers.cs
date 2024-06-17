@@ -205,6 +205,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 return true;
             }
 
+            if (o is ILazyObject lazy && lazy.TryProperty(propertyName, out value))
+                return true;
+
             if (o is JObject jObject)
             {
                 if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var propertyToken))
@@ -223,9 +226,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = propertyToken.Value<object>();
                 return true;
             }
-
-            if (o is ILazyObject lazy && lazy.TryProperty(propertyName, out value))
-                return true;
 
             // Try dictionary
             if (o is IDictionary dictionary && dictionary.TryGetValue(propertyName, out value))

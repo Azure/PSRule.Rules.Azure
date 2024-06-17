@@ -1249,6 +1249,21 @@ namespace PSRule.Rules.Azure
             Assert.Equal(new string[] { "bar" }, output["value"].Values<string>());
         }
 
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2935
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenOutputsPropertyDirectly_ReturnsObject()
+        {
+            _ = ProcessTemplate(GetSourcePath("Tests.Bicep.40.json"), null, out var templateContext);
+
+            Assert.True(templateContext.RootDeployment.TryOutput("items", out JObject output));
+            var items = output["value"].Value<JArray>();
+
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/child", items[0].Value<string>());
+            Assert.NotNull(items[1].Value<JObject>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
