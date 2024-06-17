@@ -214,11 +214,6 @@ It's important for you to know when a particular AKS release is hitting your reg
 AKS release tracker provides  specific component updates present in an AKS version release real time by versions and regions.
 It also helps you to identify such fixes shipped to a core add-on, and node image updates for Azure Linux, Ubuntu, and Windows.
 
-### Rule configuration
-
-<!-- module:config rule AZURE_AKS_CLUSTER_NODE_OS_UPGRADE -->
-
-To configure this rule override the `AZURE_AKS_CLUSTER_NODE_OS_UPGRADE` configuration value to None.
 
 ## LINKS
 
