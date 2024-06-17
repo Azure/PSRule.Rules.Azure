@@ -1,4 +1,5 @@
 ---
+reviewed: 2024-06-18
 severity: Important
 pillar: Security
 category: SE:06 Network controls
@@ -44,39 +45,47 @@ For example:
 ```json
 {
   "type": "Microsoft.App/containerApps",
-  "apiVersion": "2022-11-01-preview",
+  "apiVersion": "2024-03-01",
   "name": "[parameters('appName')]",
   "location": "[parameters('location')]",
   "identity": {
-    "type": "SystemAssigned",
-    "userAssignedIdentities": {}
+    "type": "SystemAssigned"
   },
   "properties": {
-    "environmentId": "[parameters('environmentId')]",
+    "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]",
     "template": {
-      "revisionSuffix": "",
-      "containers": "[variables('containers')]"
+      "revisionSuffix": "[parameters('revision')]",
+      "containers": "[variables('containers')]",
+      "scale": {
+        "minReplicas": 2
+      }
     },
     "configuration": {
       "ingress": {
-        "external": false,
+        "allowInsecure": false,
         "ipSecurityRestrictions": [
           {
             "action": "Allow",
-            "description": "ClientIPAddress_1",
+            "description": "Allowed IP address range",
             "ipAddressRange": "10.1.1.1/32",
             "name": "ClientIPAddress_1"
           },
           {
             "action": "Allow",
-            "description": "ClientIPAddress_2",
+            "description": "Allowed IP address range",
             "ipAddressRange": "10.1.2.1/32",
             "name": "ClientIPAddress_2"
           }
-        ]
+        ],
+        "stickySessions": {
+          "affinity": "none"
+        }
       }
     }
-  }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.App/managedEnvironments', parameters('envName'))]"
+  ]
 }
 ```
 
@@ -90,53 +99,61 @@ To deploy Container Apps that pass this rule:
 For example:
 
 ```bicep
-resource containerApp 'Microsoft.App/containerApps@2022-11-01-preview' = {
+resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
   name: appName
   location: location
   identity: {
     type: 'SystemAssigned'
-    userAssignedIdentities: {}
   }
-   properties: {
-    environmentId: environmentId
+  properties: {
+    environmentId: containerEnv.id
     template: {
-      revisionSuffix: ''
+      revisionSuffix: revision
       containers: containers
+      scale: {
+        minReplicas: 2
+      }
     }
     configuration: {
       ingress: {
-        external: false
+        allowInsecure: false
         ipSecurityRestrictions: [
           {
             action: 'Allow'
-            description: 'ClientIPAddress_1'
+            description: 'Allowed IP address range'
             ipAddressRange: '10.1.1.1/32'
             name: 'ClientIPAddress_1'
           }
           {
             action: 'Allow'
-            description: 'ClientIPAddress_2'
+            description: 'Allowed IP address range'
             ipAddressRange: '10.1.2.1/32'
             name: 'ClientIPAddress_2'
           }
         ]
+        stickySessions: {
+          affinity: 'none'
+        }
       }
     }
   }
 }
 ```
 
+<!-- external:avm avm/res/app/container-app ipSecurityRestrictions -->
+
 ## NOTES
 
-All rules must be the same type. It is not supported to combine allow rules and deny rules.
+All rules must be the same type.
+It is not supported to combine allow rules and deny rules.
 If no rules are defined at all, the rule will not pass as it expects at least one allow rule to be configured.
 
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-container-apps-security-baseline#ns-2-secure-cloud-services-with-network-controls)
 - [Networking in Azure Container Apps environment](https://learn.microsoft.com/azure/container-apps/networking)
 - [IP restrictions](https://learn.microsoft.com/azure/container-apps/ingress-overview#ip-restrictions)
 - [Set up IP ingress restrictions in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/ip-restrictions)
 - [Azure security baseline for Azure Container Apps](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-container-apps-security-baseline)
-- [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-container-apps-security-baseline#ns-2-secure-cloud-services-with-network-controls)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#ipsecurityrestrictionrule)

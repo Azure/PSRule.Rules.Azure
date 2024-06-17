@@ -43,6 +43,8 @@ What's changed since pre-release v1.38.0-B0011:
     [#2935](https://github.com/Azure/PSRule.Rules.Azure/issues/2935)
   - Fixed identification of `list*` function false positive with resource by @BernieWhite.
     [#2919](https://github.com/Azure/PSRule.Rules.Azure/issues/2919)
+  - Fixed documentation bugs for container apps by @BernieWhite.
+    [#2876](https://github.com/Azure/PSRule.Rules.Azure/issues/2876)
 
 ## v1.38.0-B0011 (pre-release)
 

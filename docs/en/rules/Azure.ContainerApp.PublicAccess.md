@@ -1,4 +1,5 @@
 ---
+reviewed: 2024-06-18
 severity: Important
 pillar: Security
 category: SE:06 Network controls
@@ -23,11 +24,15 @@ Disable public network access to improve security by exposing the Container Apps
 
 This removes the need for a public IP address and prevents internet access to all Container Apps within the environment.
 
-To provide secure access, instead consider using an Application Gateway or Azure Front Door premium in front of your Container Apps on your private VNET.
+To provide secure access externally, instead consider using:
+
+- An Application Gateway in front of your Container Apps using your private VNET.
+- A Azure Front Door premium profile with private link to your Container Apps.
+  This currently only applies to Container Apps using consumption without workload profiles.
 
 ## RECOMMENDATION
 
-Consider disabling public network access.
+Consider disabling public network access by deploying an internal-only container apps to reduce the attack surface.
 
 ## EXAMPLES
 
@@ -42,18 +47,28 @@ For example:
 
 ```json
 {
-  "type": "Microsoft.App/containerApps",
-  "apiVersion": "2022-10-01",
+  "type": "Microsoft.App/managedEnvironments",
+  "apiVersion": "2024-03-01",
   "name": "[parameters('envName')]",
   "location": "[parameters('location')]",
   "properties": {
+    "appLogsConfiguration": {
+      "destination": "log-analytics",
+      "logAnalyticsConfiguration": {
+        "customerId": "[reference(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceId')), '2022-10-01').customerId]",
+        "sharedKey": "[listKeys(resourceId('Microsoft.OperationalInsights/workspaces', parameters('workspaceId')), '2022-10-01').primarySharedKey]"
+      }
+    },
+    "zoneRedundant": true,
+    "workloadProfiles": [
+      {
+        "name": "Consumption",
+        "workloadProfileType": "Consumption"
+      }
+    ],
     "vnetConfiguration": {
-      "dockerBridgeCidr": "[parameters('dockerBridgeCidr')]",
-      "infrastructureSubnetId": "[parameters('infrastructureSubnetId')]",
-      "internal": true,
-      "outboundSettings": {},
-      "platformReservedCidr": "[parameters('platformReservedCidr')]",
-      "platformReservedDnsIP": "[parameters('platformReservedDnsIP')]",
+      "infrastructureSubnetId": "[parameters('subnetId')]",
+      "internal": true
     }
   }
 }
@@ -69,24 +84,37 @@ To deploy Container Apps environments that pass this rule:
 For example:
 
 ```bicep
-resource containerAppEnv 'Microsoft.App/managedEnvironments@2022-10-01' = {
+resource containerEnv 'Microsoft.App/managedEnvironments@2024-03-01' = {
   name: envName
   location: location
   properties: {
+    appLogsConfiguration: {
+      destination: 'log-analytics'
+      logAnalyticsConfiguration: {
+        customerId: workspace.properties.customerId
+        sharedKey: workspace.listKeys().primarySharedKey
+      }
+    }
+    zoneRedundant: true
+    workloadProfiles: [
+      {
+        name: 'Consumption'
+        workloadProfileType: 'Consumption'
+      }
+    ]
     vnetConfiguration: {
-      dockerBridgeCidr: dockerBridgeCidr
-      infrastructureSubnetId: infrastructureSubnetId
+      infrastructureSubnetId: subnetId
       internal: true
-      outboundSettings: {}
-      platformReservedCidr: platformReservedCidr
-      platformReservedDnsIP: platformReservedDnsIP
     }
   }
 }
 ```
 
+<!-- external:avm avm/res/app/managed-environment infrastructureSubnetId,internal -->
+
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-container-apps-security-baseline)
 - [Networking in Azure Container Apps environment](https://learn.microsoft.com/azure/container-apps/networking)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/managedenvironments#vnetconfiguration)
