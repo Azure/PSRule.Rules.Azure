@@ -41,9 +41,9 @@ This practice helps maintain the security and reliability of your AKS clusters a
 
 ### Configure with Azure template
 
-To deploy resource that pass this rule:
+To deploy AKS clusters that pass this rule:
 
-Set `autoUpgradeProfile.upgradeChannel` to `SecurityPatch` or `NodeImage`
+- Set `properties.autoUpgradeProfile.nodeOSupgradeChannel` to `SecurityPatch` or `NodeImage`.
 
 For example:
 
