@@ -1,10 +1,10 @@
 ---
 reviewed: 2024-06-16
-severity: severity
-pillar: pillar
-category: category
-resource: resource
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Name/
+severity: Important
+pillar: Security
+category: SE:01 Security Baseline
+resource: Azure Kubernetes Service
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NodeAutoUpgrade/
 ---
 
 # Azure AKS Node Auto-Upgrade Rule
@@ -221,8 +221,8 @@ It also helps you to identify such fixes shipped to a core add-on, and node imag
 To configure this rule override the `AZURE_AKS_CLUSTER_NODE_OS_UPGRADE` configuration value to None.
 
 ## LINKS
-
-- [AutoUpgrade NodeImages](https://learn.microsoft.com/en-us/azure/aks/auto-upgrade-node-os-image?tabs=azure-cli)
-- [NodeImage Upgrade](https://learn.microsoft.com/en-us/azure/aks/node-image-upgrade)
-- [Process Node Updates with Kured](https://learn.microsoft.com/en-us/azure/aks/node-updates-kured)
-- [NodeOSUpgrade with GithubActions](https://learn.microsoft.com/en-us/azure/aks/node-upgrade-github-actions)
+- [SE:01-Security Baseline](https://learn.microsoft.com/azure/well-architected/security/establish-baseline)
+- [AutoUpgrade NodeImages](https://learn.microsoft.com/azure/aks/auto-upgrade-node-os-image?tabs=azure-cli)
+- [NodeImage Upgrade](https://learn.microsoft.com/azure/aks/node-image-upgrade)
+- [Process Node Updates with Kured](https://learn.microsoft.com/azure/aks/node-updates-kured)
+- [NodeOSUpgrade with GithubActions](https://learn.microsoft.com/azure/aks/node-upgrade-github-actions)
