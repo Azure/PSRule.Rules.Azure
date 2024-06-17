@@ -19,15 +19,35 @@ metadata:
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'IM-1', 'IM-2' ]
+    Azure.MCSB.v1/control: ['IM-1', 'IM-2']
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: Identity.Type
     in:
       - SystemAssigned
       - UserAssigned
+
+---
+# Synopsis: AKS Node Pools should have node OS AutoUpgrade Channels Configured.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AKS.NodeAutoUpgrade
+  ref: AZR-000435  # Replace with a suitable reference ID
+  tags:
+    release: GA  # Replace ruleSet with suitable date.
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Security
+spec:
+  type:
+    - Microsoft.ContainerService/managedClusters
+  condition:
+    field: properties.autoUpgradeProfile.nodeOSUpgradeChannel
+    in:
+      - SecurityPatch
+      - NodeImage
 
 ---
 # Synopsis: Use a Standard load-balancer with AKS clusters.
@@ -62,12 +82,12 @@ metadata:
     Azure.MCSB.v1/control: 'NS-1'
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: properties.networkProfile.networkPolicy
     in:
-    - azure
-    - calico
+      - azure
+      - calico
 
 ---
 # Synopsis: AKS clusters should use Azure Policy add-on.
@@ -84,7 +104,7 @@ metadata:
     Azure.MCSB.v1/control: 'AM-2'
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: properties.addonProfiles.azurePolicy.enabled
     equals: true
@@ -101,10 +121,10 @@ metadata:
     ruleSet: 2021_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'IM-1', 'IM-2' ]
+    Azure.MCSB.v1/control: ['IM-1', 'IM-2']
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: properties.aadProfile.managed
     equals: true
@@ -124,7 +144,7 @@ metadata:
     Azure.MCSB.v1/control: NS-1
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   where:
     field: properties.apiServerAccessProfile.enablePrivateCluster
     notEquals: true
@@ -144,11 +164,11 @@ metadata:
     ruleSet: 2023_09
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'IM-1', 'PA-1' ]
+    Azure.MCSB.v1/control: ['IM-1', 'PA-1']
     Azure.Policy/id: /providers/Microsoft.Authorization/policyDefinitions/993c2fcd-2b29-49d2-9eb0-df2c3a730c32
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: 'Properties.disableLocalAccounts'
     equals: true
@@ -165,10 +185,10 @@ metadata:
     ruleSet: 2021_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'IM-1', 'PA-7' ]
+    Azure.MCSB.v1/control: ['IM-1', 'PA-7']
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: 'Properties.aadProfile.enableAzureRbac'
     equals: true
@@ -188,7 +208,7 @@ metadata:
     Azure.MCSB.v1/control: 'IM-8'
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: Properties.addonProfiles.azureKeyvaultSecretsProvider.enabled
     equals: true
@@ -208,9 +228,9 @@ metadata:
     Azure.MCSB.v1/control: 'DP-7'
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   with:
-  - Azure.AKS.SecretStoreEnabled
+    - Azure.AKS.SecretStoreEnabled
   condition:
     field: Properties.addonProfiles.azureKeyvaultSecretsProvider.config.enableSecretRotation
     equals: 'true'
@@ -227,16 +247,16 @@ metadata:
     ruleSet: 2021_12
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'NS-1', 'DP-4' ]
+    Azure.MCSB.v1/control: ['NS-1', 'DP-4']
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     anyOf:
-    - field: Properties.addonProfiles.httpApplicationRouting.enabled
-      exists: false
-    - field: Properties.addonProfiles.httpApplicationRouting.enabled
-      equals: false
+      - field: Properties.addonProfiles.httpApplicationRouting.enabled
+        exists: false
+      - field: Properties.addonProfiles.httpApplicationRouting.enabled
+        equals: false
 
 ---
 # Synopsis: Configure AKS to automatically upgrade to newer supported AKS versions as they are made available.
@@ -253,13 +273,13 @@ metadata:
     Azure.MCSB.v1/control: 'PV-7'
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     allOf:
-    - field: Properties.autoUpgradeProfile.upgradeChannel
-      hasValue: true
-    - field: Properties.autoUpgradeProfile.upgradeChannel
-      notEquals: none
+      - field: Properties.autoUpgradeProfile.upgradeChannel
+        hasValue: true
+      - field: Properties.autoUpgradeProfile.upgradeChannel
+        notEquals: none
 
 ---
 # Synopsis: Deploy AKS cluster with role-based access control (RBAC) enabled.
@@ -273,10 +293,10 @@ metadata:
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: [ 'IM-1','PA-7' ]
+    Azure.MCSB.v1/control: ['IM-1', 'PA-7']
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: Properties.enableRBAC
     equals: true
@@ -294,17 +314,17 @@ metadata:
     Azure.WAF/pillar: Operational Excellence
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     allOf:
-    - name: '.'
-      greaterOrEquals: 1
-    - name: '.'
-      lessOrEquals: 63
-    # The name must contain between 1 to 63 characters inclusive.
-    # The name only allows alphanumerics, underscores, and hyphens and must start and end with alphanumeric.
-    - name: '.'
-      match: '^[A-Za-z0-9](-|\w)*[A-Za-z0-9]$'
+      - name: '.'
+        greaterOrEquals: 1
+      - name: '.'
+        lessOrEquals: 63
+      # The name must contain between 1 to 63 characters inclusive.
+      # The name only allows alphanumerics, underscores, and hyphens and must start and end with alphanumeric.
+      - name: '.'
+        match: '^[A-Za-z0-9](-|\w)*[A-Za-z0-9]$'
 
 ---
 # Synopsis: Azure Kubernetes Service (AKS) cluster DNS prefix should meet naming requirements.
@@ -319,17 +339,17 @@ metadata:
     Azure.WAF/pillar: Operational Excellence
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     allOf:
-    - field: Properties.dnsPrefix
-      greaterOrEquals: 1
-    - field: Properties.dnsPrefix
-      lessOrEquals: 54
-    # The dnsPrefix must contain between 1 to 54 characters inclusive.
-    # The dnsPrefix only allows alphanumerics, and hyphens and must start and end with alphanumeric.
-    - field: Properties.dnsPrefix
-      match: '^[A-Za-z0-9]((-|[A-Za-z0-9]){0,}[A-Za-z0-9]){0,}$'
+      - field: Properties.dnsPrefix
+        greaterOrEquals: 1
+      - field: Properties.dnsPrefix
+        lessOrEquals: 54
+      # The dnsPrefix must contain between 1 to 54 characters inclusive.
+      # The dnsPrefix only allows alphanumerics, and hyphens and must start and end with alphanumeric.
+      - field: Properties.dnsPrefix
+        match: '^[A-Za-z0-9]((-|[A-Za-z0-9]){0,}[A-Za-z0-9]){0,}$'
 
 ---
 # Synopsis: Enable Container insights to monitor AKS cluster workloads.
@@ -346,7 +366,7 @@ metadata:
     Azure.MCSB.v1/control: 'LT-3'
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: Properties.addonProfiles.omsAgent.enabled
     equals: true
@@ -364,7 +384,7 @@ metadata:
     Azure.WAF/pillar: Security
 spec:
   type:
-  - Microsoft.ContainerService/managedClusters
+    - Microsoft.ContainerService/managedClusters
   condition:
     field: properties.securityProfile.defender.securityMonitoring.enabled
     equals: true
@@ -382,10 +402,10 @@ metadata:
 spec:
   if:
     allOf:
-    - type: '.'
-      equals: 'Microsoft.ContainerService/managedClusters'
-    - field: Properties.addonProfiles.azureKeyvaultSecretsProvider.enabled
-      equals: true
+      - type: '.'
+        equals: 'Microsoft.ContainerService/managedClusters'
+      - field: Properties.addonProfiles.azureKeyvaultSecretsProvider.enabled
+        equals: true
 
 ---
 # Synopsis: AKS clusters that use Azure CNI network plugin.
@@ -396,9 +416,8 @@ metadata:
 spec:
   if:
     allOf:
-    - type: '.'
-      equals: 'Microsoft.ContainerService/managedClusters' 
-    - field: 'Properties.networkProfile.networkPlugin'
-      equals: 'azure'
-
+      - type: '.'
+        equals: 'Microsoft.ContainerService/managedClusters'
+      - field: 'Properties.networkProfile.networkPlugin'
+        equals: 'azure'
 #endregion Selectors

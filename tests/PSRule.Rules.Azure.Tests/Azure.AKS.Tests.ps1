@@ -71,6 +71,21 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'system', 'cluster-G', 'cluster-H', 'cluster-F', 'cluster-J', 'cluster-K', 'cluster-L';
         }
 
+        It 'Azure.AKS.NodeAutoUpgrade' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.NodeAutoUpgrade' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'system', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'cluster-L';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-F';
+        }
         It 'Azure.AKS.Version' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.Version' };
 
