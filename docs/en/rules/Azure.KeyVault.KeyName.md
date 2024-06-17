@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable infrastructure
+category: OE:04 Continuous integration
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.KeyName/
 ---
@@ -32,7 +32,7 @@ This rule does not check if Key names are unique.
 
 ## LINKS
 
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftkeyvault)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)
 - [Tagging and resource naming](https://learn.microsoft.com/azure/architecture/framework/devops/app-design#tagging-and-resource-naming)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults/secrets)
