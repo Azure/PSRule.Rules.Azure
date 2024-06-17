@@ -91,6 +91,8 @@ resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
 }
 ```
 
+<!-- external:avm avm/res/key-vault/vault enableSoftDelete -->
+
 ### Configure with Azure CLI
 
 ```bash
@@ -101,7 +103,8 @@ az keyvault update -n '<name>' -g '<resource_group>' --retention-days 90
 
 To address this issue at runtime use the following policies:
 
-- [Key vaults should have soft delete enabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_SoftDeleteMustBeEnabled_Audit.json)
+- [Key vaults should have soft delete enabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/SoftDeleteMustBeEnabled_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/1e66c121-a66a-4b1f-9b83-0fd99bf0fc2d`.
 
 ## LINKS
 

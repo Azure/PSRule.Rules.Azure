@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.38.0-B0011:
+
+- Engineering:
+  - Quality updates to rule documentation by @BernieWhite.
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+
 ## v1.38.0-B0011 (pre-release)
 
 What's changed since v1.37.0:

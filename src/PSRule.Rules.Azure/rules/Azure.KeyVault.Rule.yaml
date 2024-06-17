@@ -15,8 +15,8 @@ metadata:
   name: Azure.KeyVault.SoftDelete
   ref: AZR-000124
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Reliability
 spec:
   type:
@@ -33,8 +33,8 @@ metadata:
   name: Azure.KeyVault.PurgeProtect
   ref: AZR-000125
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Reliability
 spec:
   type:
@@ -63,5 +63,25 @@ spec:
   condition:
     field: properties.enableRbacAuthorization
     equals: true
+
+---
+# Synopsis: Vaults should only accept explicitly allowed traffic.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.KeyVault.Firewall
+  ref: AZR-000355
+  tags:
+    release: GA
+    ruleSet: 2023_03
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: NS-2
+spec:
+  type:
+  - Microsoft.KeyVault/vaults
+  condition:
+    field: properties.networkAcls.defaultAction
+    equals: Deny
 
 #endregion Rules

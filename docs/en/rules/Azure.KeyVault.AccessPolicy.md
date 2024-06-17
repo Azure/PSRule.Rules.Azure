@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-02-18
+reviewed: 2024-06-17
 severity: Important
 pillar: Security
-category: Identity and access management
+category: SE:05 Identity and access management
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.AccessPolicy/
 ---
@@ -32,15 +32,17 @@ Consider assigning access to Key Vault data based on the principle of least priv
 
 To deploy Key Vaults that pass this rule:
 
-- Avoid assigning `purge` and `all` permissions for Key Vault objects.
-  Use specific permissions such as `get` and `set`.
+- Use Azure RBAC as the authorization system instead. _OR_
+- Configure the access policies by setting `properties.accessPolicies`:
+  - Avoid assigning `purge` and `all` permissions for Key Vault objects.
+    Use specific permissions such as `get` and `set`.
 
 For example:
 
 ```json
 {
   "type": "Microsoft.KeyVault/vaults",
-  "apiVersion": "2022-07-01",
+  "apiVersion": "2023-07-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
@@ -73,13 +75,15 @@ For example:
 
 To deploy Key Vaults that pass this rule:
 
-- Avoid assigning `purge` and `all` permissions for Key Vault objects.
-  Use specific permissions such as `get` and `set`.
+- Use Azure RBAC as the authorization system instead. _OR_
+- Configure the access policies by setting `properties.accessPolicies`:
+  - Avoid assigning `purge` and `all` permissions for Key Vault objects.
+    Use specific permissions such as `get` and `set`.
 
 For example:
 
 ```bicep
-resource vault 'Microsoft.KeyVault/vaults@2022-07-01' = {
+resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
   name: name
   location: location
   properties: {
@@ -108,8 +112,13 @@ resource vault 'Microsoft.KeyVault/vaults@2022-07-01' = {
 }
 ```
 
+<!-- external:avm avm/res/key-vault/vault accessPolicies -->
+
 ## LINKS
 
-- [Automate and use least privilege](https://learn.microsoft.com/azure/architecture/framework/security/security-principles#automate-and-use-least-privilege)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](https://learn.microsoft.com/azure/key-vault/general/rbac-guide)
+- [Azure role-based access control vs. access policies](https://learn.microsoft.com/azure/key-vault/general/rbac-access-policy)
+- [Migrate from vault access policy to an Azure role-based access control permission model](https://learn.microsoft.com/azure/key-vault/general/rbac-migration)
 - [Best practices to use Key Vault](https://learn.microsoft.com/azure/key-vault/general/best-practices)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults)

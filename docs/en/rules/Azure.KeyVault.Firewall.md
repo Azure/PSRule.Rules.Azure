@@ -1,8 +1,8 @@
 ---
-reviewed: 2023-08-20
+reviewed: 2024-06-17
 severity: Important
 pillar: Security
-category: Application endpoints
+category: SE:06 Network controls
 resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.Firewall/
 ---
@@ -101,12 +101,21 @@ resource vault 'Microsoft.KeyVault/vaults@2023-02-01' = {
 }
 ```
 
+<!-- external:avm avm/res/key-vault/vault networkAcls -->
+
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Azure Key Vault should have firewall enabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/FirewallEnabled_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/55615ac9-af46-4a59-874e-391cc3dfb490`.
+- [Configure key vaults to enable firewall](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/FirewallEnabled_Modify.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/ac673a9a-f77d-4846-b2d8-a57f8e1c01dc`.
+
 ## LINKS
 
-- [Public endpoints](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints#public-endpoints)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [NS-2: Secure cloud services with network controls](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline#disable-public-network-access)
 - [Configure Azure Key Vault firewalls and virtual networks](https://learn.microsoft.com/azure/key-vault/general/network-security)
-- [Azure security baseline for Key Vault - Disable Public Network Access](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline#disable-public-network-access)
-- [Azure Policies - Azure Key Vault should have firewall enabled](https://www.azadvertizer.net/azpolicyadvertizer/55615ac9-af46-4a59-874e-391cc3dfb490.html)
-- [Azure Key Vault should have firewall enabled](https://portal.azure.com/#view/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F55615ac9-af46-4a59-874e-391cc3dfb490)
 - [Trusted services](https://learn.microsoft.com/azure/key-vault/general/overview-vnet-service-endpoints#trusted-services)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults)

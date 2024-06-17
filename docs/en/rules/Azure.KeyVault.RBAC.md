@@ -92,6 +92,8 @@ resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
 }
 ```
 
+<!-- external:avm avm/res/key-vault/vault enableRbacAuthorization -->
+
 ### Configure with Azure CLI
 
 ```bash
@@ -108,7 +110,8 @@ Update-AzKeyVault -ResourceGroupName '<resource_group>' -Name '<name>' -EnableRb
 
 To address this issue at runtime use the following policies:
 
-- [Azure Key Vault should use RBAC permission model](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/AzureKeyVault_Should_Use_RBAC.json)
+- [Azure Key Vault should use RBAC permission model](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Should_Use_RBAC.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/12d4fa5e-1f9f-4c21-97a9-b99b3c6611b5`.
 
 ## NOTES
 
@@ -119,11 +122,11 @@ For information about limitations see _Azure role-based access control vs. acces
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
+- [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline#im-1-use-centralized-identity-and-authentication-system)
 - [What is Azure role-based access control?](https://learn.microsoft.com/azure/role-based-access-control/overview)
 - [Provide access to Key Vault keys, certificates, and secrets with an Azure role-based access control](https://learn.microsoft.com/azure/key-vault/general/rbac-guide)
 - [Azure role-based access control vs. access policies](https://learn.microsoft.com/azure/key-vault/general/rbac-access-policy)
 - [Migrate from vault access policy to an Azure role-based access control permission model](https://learn.microsoft.com/azure/key-vault/general/rbac-migration)
 - [Azure Key Vault security](https://learn.microsoft.com/azure/key-vault/general/security-features)
 - [Azure security baseline for Key Vault](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline)
-- [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/key-vault-security-baseline#im-1-use-centralized-identity-and-authentication-system)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.keyvault/vaults)
