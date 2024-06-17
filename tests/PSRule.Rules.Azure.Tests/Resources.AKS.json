@@ -726,7 +726,8 @@
         "skip-nodes-with-system-pods": "true"
       },
       "autoUpgradeProfile": {
-        "upgradeChannel": "rapid"
+        "upgradeChannel": "rapid",
+        "nodeOSUpgradeChannel": "SecurityPatch"
       },
       "apiServerAccessProfile": {
         "authorizedIpRanges": [

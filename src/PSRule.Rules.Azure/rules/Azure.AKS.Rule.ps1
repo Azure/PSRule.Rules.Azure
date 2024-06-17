@@ -41,6 +41,7 @@ Rule 'Azure.AKS.PoolVersion' -Ref 'AZR-000016' -Type 'Microsoft.ContainerService
     }
 }
 
+
 # Synopsis: AKS node pools should use scale sets
 Rule 'Azure.AKS.PoolScaleSet' -Ref 'AZR-000017' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
     $agentPools = @(GetAgentPoolProfiles);
