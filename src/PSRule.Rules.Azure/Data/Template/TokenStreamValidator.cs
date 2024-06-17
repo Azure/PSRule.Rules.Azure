@@ -15,7 +15,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string FN_PARAMETERS = "parameters";
         private const string FN_VARIABLES = "variables";
         private const string FN_IF = "if";
-        private const string FN_LISTKEYS = "listKeys";
+        private const string FN_LIST = "list";
         private const string FN_REFERNECE = "reference";
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     continue;
                 }
 
-                if (IsFunction(token, FN_LISTKEYS))
+                if (IsFunctionWithPrefix(token, FN_LIST) && !IsFunction(token, FN_LIST))
                     return true;
             }
             return false;
@@ -167,6 +167,12 @@ namespace PSRule.Rules.Azure.Data.Template
         {
             return token.Type == ExpressionTokenType.Element &&
                 string.Equals(token.Content, name, StringComparison.OrdinalIgnoreCase);
+        }
+
+        private static bool IsFunctionWithPrefix(ExpressionToken token, string prefix)
+        {
+            return token.Type == ExpressionTokenType.Element &&
+                token.Content.StartsWith(prefix, StringComparison.OrdinalIgnoreCase);
         }
     }
 }
