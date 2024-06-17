@@ -4,7 +4,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-001",
     "Identity": null,
     "Kind": null,
-    "Location": "region",
+    "Location": "eastus",
     "ManagedBy": null,
     "ResourceName": "vmss-001",
     "Name": "vmss-001",
@@ -179,7 +179,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-002",
     "Identity": null,
     "Kind": null,
-    "Location": "region",
+    "Location": "eastus",
     "ManagedBy": null,
     "ResourceName": "vmss-002",
     "Name": "vmss-002",
@@ -313,6 +313,9 @@
       "overprovision": false,
       "doNotRunExtensionsOnOverprovisionedVMs": false
     },
+    "zones": [
+      "1"
+    ],
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Compute/virtualMachineScaleSets",
     "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
@@ -359,7 +362,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-003",
     "Identity": null,
     "Kind": null,
-    "Location": "region",
+    "Location": "notregion",
     "ManagedBy": null,
     "ResourceName": "vmss-003",
     "Name": "vmss-003",
@@ -502,6 +505,11 @@
       "overprovision": false,
       "doNotRunExtensionsOnOverprovisionedVMs": false
     },
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ],
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Compute/virtualMachineScaleSets",
     "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
@@ -522,7 +530,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-004",
     "Identity": null,
     "Kind": null,
-    "Location": "region",
+    "Location": "eastus",
     "ManagedBy": null,
     "ResourceName": "vmss-004",
     "Name": "vmss-004",
@@ -640,6 +648,11 @@
       "overprovision": false,
       "doNotRunExtensionsOnOverprovisionedVMs": false
     },
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ],
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Compute/virtualMachineScaleSets",
     "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
@@ -686,7 +699,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-005",
     "Identity": null,
     "Kind": null,
-    "Location": "region",
+    "Location": "westeurope",
     "ManagedBy": null,
     "ResourceName": "vmss-005",
     "Name": "vmss-005",
@@ -810,6 +823,11 @@
       "overprovision": false,
       "doNotRunExtensionsOnOverprovisionedVMs": false
     },
+    "zones": [
+      "1",
+      "2",
+      "3"
+    ],
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Compute/virtualMachineScaleSets",
     "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",

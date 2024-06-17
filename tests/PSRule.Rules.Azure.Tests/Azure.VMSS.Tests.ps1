@@ -149,6 +149,22 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'vmss-003', 'vmss-004', 'vmss-005';
         }
+        
+        It 'Azure.VMSS.AvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.AvailabilityZone' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-002';
+
+            $ruleResult[0].Reason | Should -BeExactly 'The virtual machine scale set (vmss-001) deployed to region (eastus) should use a minimum of two availability zones from the following [1, 2, 3].';
+            $ruleResult[1].Reason | Should -BeExactly 'The virtual machine scale set (vmss-002) deployed to region (eastus) should use a minimum of two availability zones from the following [1, 2, 3].';
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-003', 'vmss-004', 'vmss-005';
+        }
     }
 
     Context 'Resource name - Azure.VMSS.Name' {
