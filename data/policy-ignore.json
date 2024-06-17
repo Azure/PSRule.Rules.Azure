@@ -80,13 +80,6 @@
   },
   {
     "policyDefinitionIds": [
-      "/providers/Microsoft.Authorization/policyDefinitions/0b60c0b2-2dc2-4e1c-b5c9-abbed971de53"
-    ],
-    "reason": "Duplicate",
-    "value": "Azure.KeyVault.PurgeProtect"
-  },
-  {
-    "policyDefinitionIds": [
       "/providers/Microsoft.Authorization/policyDefinitions/b6e2945c-0b7b-40f5-9233-7a5323b5cdc6"
     ],
     "reason": "NotApplicable",
@@ -130,10 +123,25 @@
   },
   {
     "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/0b60c0b2-2dc2-4e1c-b5c9-abbed971de53"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.KeyVault.PurgeProtect"
+  },
+  {
+    "policyDefinitionIds": [
       "/providers/Microsoft.Authorization/policyDefinitions/12d4fa5e-1f9f-4c21-97a9-b99b3c6611b5"
     ],
     "reason": "Duplicate",
     "value": "Azure.KeyVault.RBAC"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/55615ac9-af46-4a59-874e-391cc3dfb490",
+      "/providers/Microsoft.Authorization/policyDefinitions/ac673a9a-f77d-4846-b2d8-a57f8e1c01dc"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.KeyVault.Firewall"
   },
   {
     "policyDefinitionIds": [

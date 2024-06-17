@@ -93,6 +93,8 @@ resource vault 'Microsoft.KeyVault/vaults@2023-07-01' = {
 }
 ```
 
+<!-- external:avm avm/res/key-vault/vault enablePurgeProtection -->
+
 ### Configure with Azure CLI
 
 ```bash
@@ -109,7 +111,8 @@ Update-AzKeyVault -ResourceGroupName '<resource_group>' -Name '<name>' -EnablePu
 
 To address this issue at runtime use the following policies:
 
-- [Key vaults should have deletion protection enabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/KeyVault_Recoverable_Audit.json)
+- [Key vaults should have deletion protection enabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Recoverable_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/0b60c0b2-2dc2-4e1c-b5c9-abbed971de53`.
 
 ## LINKS
 
