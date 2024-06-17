@@ -9,7 +9,7 @@ namespace PSRule.Rules.Azure
     public sealed class TokenStreamValidatorTests
     {
         [Fact]
-        public void HasInsecureToken()
+        public void HasLiteralValue()
         {
             Assert.True(Helper.HasLiteralValue("password"));
             Assert.True(Helper.HasLiteralValue("123"));
@@ -33,8 +33,12 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void UsesListKeysFunction()
         {
-            Assert.True(Helper.UsesListKeysFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount'), '2021-09-01').keys[0].value]"));
-            Assert.True(Helper.UsesListKeysFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount'), '2021-09-01')]"));
+            Assert.True(Helper.UsesListKeysFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-09-01').keys[0].value]"));
+            Assert.True(Helper.UsesListKeysFunction("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-09-01')]"));
+            Assert.True(Helper.UsesListKeysFunction("[listAdminKeys(resourceId('Microsoft.Search/searchServices', 'search1'), '2022-09-01').primaryKey]"));
+            Assert.True(Helper.UsesListKeysFunction("[listQueryKeys(resourceId('Microsoft.Search/searchServices', 'search1'), '2021-09-01').value[0].key]"));
+            Assert.False(Helper.UsesListKeysFunction("[list(resourceId('Microsoft.OperationalInsights/workspaces', 'workspace1'), '2023-09-01').value[0].properties.name]"));
+            Assert.False(Helper.UsesListKeysFunction("[resourceId('Microsoft.Storage/storageAccounts', 'storage1')]"));
         }
 
         [Fact]

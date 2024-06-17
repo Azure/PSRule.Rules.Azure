@@ -41,6 +41,8 @@ What's changed since pre-release v1.38.0-B0011:
 - Bug fixes:
   - Fixed failed to expand with direct outputs reference by @BernieWhite.
     [#2935](https://github.com/Azure/PSRule.Rules.Azure/issues/2935)
+  - Fixed identification of `list*` function false positive with resource by @BernieWhite.
+    [#2919](https://github.com/Azure/PSRule.Rules.Azure/issues/2919)
 
 ## v1.38.0-B0011 (pre-release)
 
