@@ -221,8 +221,10 @@ It also helps you to identify such fixes shipped to a core add-on, and node imag
 To configure this rule override the `AZURE_AKS_CLUSTER_NODE_OS_UPGRADE` configuration value to None.
 
 ## LINKS
+
 - [SE:01-Security Baseline](https://learn.microsoft.com/azure/well-architected/security/establish-baseline)
 - [AutoUpgrade NodeImages](https://learn.microsoft.com/azure/aks/auto-upgrade-node-os-image?tabs=azure-cli)
 - [NodeImage Upgrade](https://learn.microsoft.com/azure/aks/node-image-upgrade)
 - [Process Node Updates with Kured](https://learn.microsoft.com/azure/aks/node-updates-kured)
 - [NodeOSUpgrade with GithubActions](https://learn.microsoft.com/azure/aks/node-upgrade-github-actions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
