@@ -31,7 +31,7 @@ See documentation references below for additional limitations and important info
 
 ## RECOMMENDATION
 
-To improve the resiliency of virtual machine scale set instances against zone failures, it is recommended to use at least two (2) availability zones. This configuration enhances fault tolerance and ensures continued operation even if one zone experiences an outage.
+Consider configuring VM scale sets to spread instances across at least two (2) availability zones to improve resiliency to issues impacting a zone.
 
 ## EXAMPLES
 
