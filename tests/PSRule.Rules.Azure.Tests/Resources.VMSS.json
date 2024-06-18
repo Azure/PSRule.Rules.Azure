@@ -505,11 +505,6 @@
       "overprovision": false,
       "doNotRunExtensionsOnOverprovisionedVMs": false
     },
-    "zones": [
-      "1",
-      "2",
-      "3"
-    ],
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Compute/virtualMachineScaleSets",
     "ResourceType": "Microsoft.Compute/virtualMachineScaleSets",
