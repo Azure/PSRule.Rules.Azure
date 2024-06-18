@@ -345,6 +345,7 @@ task Rules Dependencies, {
         As           = 'Summary'
         Outcome      = 'Problem'
     }
+    Import-Module PSRule -RequiredVersion 2.9.0;
     Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure) -Force;
     Assert-PSRule @assertParams -InputPath $PWD -Module PSRule.Rules.MSFT.OSS -Format File -OutputPath reports/ps-rule-file.xml;
 

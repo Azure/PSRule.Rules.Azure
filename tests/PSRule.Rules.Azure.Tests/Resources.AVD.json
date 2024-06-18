@@ -1,0 +1,103 @@
+[
+  {
+    "name": "pool-A",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.DesktopVirtualization/hostpools/pool-A",
+    "type": "Microsoft.DesktopVirtualization/hostpools",
+    "location": "region",
+    "properties": {
+      "managedPrivateUDP": "Default",
+      "directUDP": "Default",
+      "publicUDP": "Default",
+      "relayUDP": "Default",
+      "managementType": "Standard",
+      "appAttachPackageReferences": [],
+      "agentUpdate": null,
+      "friendlyName": null,
+      "description": "Created through the Azure Virtual Desktop extension",
+      "hostPoolType": "Pooled",
+      "personalDesktopAssignmentType": null,
+      "applicationGroupReferences": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.DesktopVirtualization/applicationgroups/pool-A-DAG"
+      ],
+      "customRdpProperty": "drivestoredirect:s:*;audiomode:i:0;videoplaybackmode:i:1;redirectclipboard:i:1;redirectprinters:i:1;devicestoredirect:s:*;redirectcomports:i:1;redirectsmartcards:i:1;usbdevicestoredirect:s:*;enablecredsspsupport:i:1;redirectwebauthn:i:1;use multimon:i:1;",
+      "maxSessionLimit": 10,
+      "loadBalancerType": "BreadthFirst",
+      "validationEnvironment": false,
+      "preferredAppGroupType": "Desktop"
+    }
+  },
+  {
+    "name": "pool-B",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.DesktopVirtualization/hostpools/pool-B",
+    "type": "Microsoft.DesktopVirtualization/hostpools",
+    "location": "region",
+    "properties": {
+      "managedPrivateUDP": "Default",
+      "directUDP": "Default",
+      "publicUDP": "Default",
+      "relayUDP": "Default",
+      "managementType": "Standard",
+      "appAttachPackageReferences": [],
+      "agentUpdate": {
+        "type": "Scheduled",
+        "useSessionHostLocalTime": false,
+        "maintenanceWindowTimeZone": "E. Australia Standard Time",
+        "maintenanceWindows": [
+          {
+            "hour": 1,
+            "dayOfWeek": "Sunday"
+          }
+        ]
+      },
+      "friendlyName": null,
+      "description": "Created through the Azure Virtual Desktop extension",
+      "hostPoolType": "Pooled",
+      "personalDesktopAssignmentType": null,
+      "applicationGroupReferences": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.DesktopVirtualization/applicationgroups/pool-B-DAG"
+      ],
+      "customRdpProperty": "drivestoredirect:s:*;audiomode:i:0;videoplaybackmode:i:1;redirectclipboard:i:1;redirectprinters:i:1;devicestoredirect:s:*;redirectcomports:i:1;redirectsmartcards:i:1;usbdevicestoredirect:s:*;enablecredsspsupport:i:1;redirectwebauthn:i:1;use multimon:i:1;",
+      "maxSessionLimit": 10,
+      "loadBalancerType": "BreadthFirst",
+      "validationEnvironment": false,
+      "preferredAppGroupType": "Desktop"
+    }
+  },
+  {
+    "name": "pool-C",
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.DesktopVirtualization/hostpools/pool-C",
+    "type": "Microsoft.DesktopVirtualization/hostpools",
+    "location": "region",
+    "properties": {
+      "managedPrivateUDP": "Default",
+      "directUDP": "Default",
+      "publicUDP": "Default",
+      "relayUDP": "Default",
+      "managementType": "Standard",
+      "appAttachPackageReferences": [],
+      "agentUpdate": {
+        "type": "Default",
+        "useSessionHostLocalTime": false,
+        "maintenanceWindowTimeZone": "E. Australia Standard Time",
+        "maintenanceWindows": [
+          {
+            "hour": 1,
+            "dayOfWeek": "Sunday"
+          }
+        ]
+      },
+      "friendlyName": null,
+      "description": "Created through the Azure Virtual Desktop extension",
+      "hostPoolType": "Pooled",
+      "personalDesktopAssignmentType": null,
+      "applicationGroupReferences": [
+        "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/Microsoft.DesktopVirtualization/applicationgroups/pool-C-DAG"
+      ],
+      "customRdpProperty": "drivestoredirect:s:*;audiomode:i:0;videoplaybackmode:i:1;redirectclipboard:i:1;redirectprinters:i:1;devicestoredirect:s:*;redirectcomports:i:1;redirectsmartcards:i:1;usbdevicestoredirect:s:*;enablecredsspsupport:i:1;redirectwebauthn:i:1;use multimon:i:1;",
+      "maxSessionLimit": 10,
+      "loadBalancerType": "BreadthFirst",
+      "validationEnvironment": false,
+      "preferredAppGroupType": "Desktop"
+    }
+  }
+]
