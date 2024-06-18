@@ -29,6 +29,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Virtual Machine Scale Sets:
+  - Verify that virtual machine scale sets have availability zones configured by @BenjaminEngeset.
+    [#2902](https://github.com/Azure/PSRule.Rules.Azure/issues/2902)
+
 What's changed since pre-release v1.38.0-B0011:
 
 - New rules:
