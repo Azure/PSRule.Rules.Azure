@@ -94,6 +94,7 @@
     MariaDBFirewallAllowAzureServices = "The Azure Database for MariaDB should not allow access to Azure services unless explicitly needed."
     VMAzureMonitorAgent = "The virtual machine should have Azure Monitor Agent installed."
     VMSSAzureMonitorAgent = "The virtual machine scale set should have Azure Monitor Agent installed."
+    VMSSAvailabilityZone = "The virtual machine scale set ({0}) deployed to region ({1}) should use a minimum of two availability zones from the following [{2}]."
     AzureCacheRedisVersion = "The Azure Cache for Redis should use the latest supported version of Redis."
     BicepCLIVersion = "The Bicep version is '{0}' however the configured minimum version is '{1}'."
     ServiceBusAuditDiagnosticSetting = "Minimum one diagnostic setting should have ({0}) configured or category group ({1}) configured."
