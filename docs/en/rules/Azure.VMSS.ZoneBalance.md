@@ -90,5 +90,5 @@ resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2023-09-01' = {
 ## LINKS
 
 - [RE:07 Self-preservation](https://learn.microsoft.com/azure/well-architected/reliability/self-preservation)
-- [Zone balancing](https://learn.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)
+- [Zone balancing](https://learn.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-use-availability-zones#zone-balancing)
 - [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)
