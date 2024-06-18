@@ -14,11 +14,18 @@ Deploy virtual machine scale set instances using availability zones in supported
 
 ## DESCRIPTION
 
-Virtual machine scale set supports the use of availability zones to provide zone redundancy. Zone redundancy enhances the resiliency and high availability of the virtual machine scale set by deploying instances across data centers in physically separated zones.
+Virtual machine scale sets (VMSS) supports the use of availability zones to provide redundancy across physically separated zones.
+When new instances are added to the VMSS as it scales, these instances are deployed across any zones that are configured.
 
-Virtual machine scale set utilizes scale rules, and as the set scales, it creates instances within the zones it is configured to use. If the set is configured to use only Zone 1, all new instances will be created in Zone 1. However, if the set is configured to use all three zones (Zone 1, Zone 2, and Zone 3), new instances will be distributed across these zones as it scales, ensuring balanced distribution and improved resilience.
+For example:
 
-Using availability zones is suitable for stateless workloads.
+- If the VMSS is configured to use only Zone 1, all new instances will be created in Zone 1.
+- If the VMSS is configured to use three zones (Zone 1, Zone 2, and Zone 3), new instances will be distributed across these zones.
+
+Also note:
+
+- Using availability zones is suitable for stateless workloads.
+- During scale-in operations, the number of instances in each zone may not be evenly distributed for all zones.
 
 See documentation references below for additional limitations and important information.
 
