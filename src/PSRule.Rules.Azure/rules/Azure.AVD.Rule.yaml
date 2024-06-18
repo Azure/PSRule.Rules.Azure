@@ -1,0 +1,32 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Virtual Desktop
+#
+
+#region Rules
+
+---
+# Synopsis: Define a windows for agent updates to minimize disruptions to users.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.AVD.ScheduleAgentUpdate
+  ref: AZR-000437
+  tags:
+    release: GA
+    ruleSet: 2024_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+  - Microsoft.DesktopVirtualization/hostPools
+  condition:
+    allOf:
+      - field: properties.agentUpdate.type
+        equals: Scheduled
+
+      - field: properties.agentUpdate.maintenanceWindows
+        greaterOrEquals: 1
+
+#endregion Rules

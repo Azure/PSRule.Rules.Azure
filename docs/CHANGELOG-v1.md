@@ -35,6 +35,9 @@ What's changed since pre-release v1.38.0-B0011:
   - Azure Kubernetes Service:
     - Added check to automatically upgrade AKS cluster node image by @sharmilamusunuru.
       [#2445](https://github.com/Azure/PSRule.Rules.Azure/issues/2445)
+  - Azure Virtual Desktop:
+    - Added check for scheduled agent updates on host pools by @BernieWhite.
+      [#2946](https://github.com/Azure/PSRule.Rules.Azure/issues/2946)
 - Engineering:
   - Quality updates to rule documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
