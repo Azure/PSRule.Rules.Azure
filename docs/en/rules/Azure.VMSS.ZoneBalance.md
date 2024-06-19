@@ -14,14 +14,26 @@ Deploy virtual machine scale set instances using the best-effort zone balance in
 
 ## DESCRIPTION
 
-When deploying virtual machine scale sets across multiple availability zones, the distribution behavior of instances can be configured with two modes:
+Virtual machine scale sets (VMSS) scale-in/ out based on scaling rules your configured.
+When scaling-out (adding instances) using availability zones instances are distribution over the configured zones.
+However, it may not be possible to create an instance in a zone if there is an active issue affecting that zone.
 
-- Best-effort zone balance
-- Strict zone balance
+The distribution behavior of instances across zones can be configured with two modes:
 
-Best-effort zone balance: This mode attempts to scale in and out while maintaining a balance across zones. If maintaining zone balance is not possible (e.g., if a zone goes down and new VMs can’t be created in that zone), the scale set allows temporary imbalance to continue scaling operations. On subsequent scale-out attempts, the scale set adds VMs to the zones needing more VMs to restore balance. Similarly, on subsequent scale-in attempts, the scale set removes VMs from zones that have more VMs than required to restore balance.
+- **Best-effort zone balance** - Attempt to scale-in/ out while maintaining balance across zones.
+  If that is not possible, allow temporary imbalance so the scaling operation can complete.
+  On subsequent scale-out attempts, the scale set adds VMs to the zones needing more VMs to restore balance.
+  Similarly, on subsequent scale-in attempts, the scale set removes VMs from zones that have more VMs than required to restore balance.
+- **Strict zone balance** - Only allow the scaling operation to continue if zone balanced can be maintained.
+  If that is not possible, the scaling operation will fail.
 
-Strict zone balance: This mode ensures that VM instances are strictly balanced across all specified zones, without allowing any temporary imbalance. This can cause the scaling operations to be paused or fail if the zone balance cannot be maintained.
+Key points:
+
+- Both modes attempt to keep balance across zones but have a different approach when balance can't be maintained.
+- Scale-out typically occurs to reduce pressure on the already provisioned instances by increasing capacity.
+- If scale-out fails, the workload may become unstable due to increasing pressure.
+- Balance only applies when two or more zones are configured on the VMSS.
+- An outage or disruption in a zone may impact a higher percentage of the workload instances when the workload is not blanced.
 
 ## RECOMMENDATION
 
