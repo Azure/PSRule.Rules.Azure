@@ -102,6 +102,8 @@ resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2023-09-01' = {
 }
 ```
 
+<!-- external:avm res/compute/virtual-machine-scale-set zoneBalance -->
+
 ## LINKS
 
 - [RE:07 Self-preservation](https://learn.microsoft.com/azure/well-architected/reliability/self-preservation)
