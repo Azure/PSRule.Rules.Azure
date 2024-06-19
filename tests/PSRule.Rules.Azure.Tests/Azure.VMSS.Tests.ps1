@@ -165,6 +165,27 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'vmss-003', 'vmss-004', 'vmss-005';
         }
+        
+        It 'Azure.VMSS.ZoneBalance' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VMSS.ZoneBalance' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vmss-002';
+
+            $ruleResult[0].Reason | Should -BeExactly "The field 'properties.zoneBalance' is set to 'True'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-001', 'vmss-004', 'vmss-005';
+
+            # None
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'vmss-003';
+        }
     }
 
     Context 'Resource name - Azure.VMSS.Name' {

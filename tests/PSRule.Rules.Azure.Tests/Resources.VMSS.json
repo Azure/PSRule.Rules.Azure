@@ -311,7 +311,8 @@
       },
       "provisioningState": "Succeeded",
       "overprovision": false,
-      "doNotRunExtensionsOnOverprovisionedVMs": false
+      "doNotRunExtensionsOnOverprovisionedVMs": false,
+      "zoneBalance": true
     },
     "zones": [
       "1"
@@ -816,7 +817,8 @@
       },
       "provisioningState": "Succeeded",
       "overprovision": false,
-      "doNotRunExtensionsOnOverprovisionedVMs": false
+      "doNotRunExtensionsOnOverprovisionedVMs": false,
+      "zoneBalance": false
     },
     "zones": [
       "1",
