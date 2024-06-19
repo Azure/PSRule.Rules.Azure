@@ -15,7 +15,7 @@ Use Entra ID authentication with Azure Database for PostgreSQL databases.
 
 ## DESCRIPTION
 
-Azure Database for PostgreSQL offer two authentication models, Entra ID (previously knows as Azure AD) and PostgreSQL logins.
+Azure Database for PostgreSQL offer two authentication models, Entra ID (previously known as Azure AD) and PostgreSQL logins.
 Entra ID authentication supports centralized identity management in addition to modern password protections.
 Some of the benefits of Entra ID authentication over PostgreSQL authentication including:
 
@@ -135,7 +135,7 @@ resource aadAdmin 'Microsoft.DBforPostgreSQL/servers/administrators@2017-12-01' 
 
 The single server deployment model is limited to:
 
-- Only one Azure AD admin at a time.
+- Only one Entra ID admin at a time.
 - Does not support enforcing Entra ID authentication only.
 
 ## LINKS

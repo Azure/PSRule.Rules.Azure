@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: Azure Database for MySQL
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.FirewallIPRange/
 ms-content-id: d8bf9741-541c-4229-86cb-2e2dad32d9a9
@@ -22,7 +22,13 @@ Typically the number of IP address rules permitted through the firewall is minim
 The MySQL server has greater then ten (10) public IP addresses that are permitted network access.
 Some rules may not be needed or can be reduced.
 
+## NOTES
+
+This rule is only applicable for the Azure Database for MySQL Single Server deployment model.
+
 ## LINKS
 
-- [Create and manage Azure Database for MySQL firewall rules by using the Azure portal](https://learn.microsoft.com/azure/mysql/howto-manage-firewall-using-portal)
-- [Create and manage Azure Database for MySQL VNet service endpoints and VNet rules by using the Azure portal](https://learn.microsoft.com/azure/mysql/howto-manage-vnet-using-portal)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Create and manage Azure Database for MySQL firewall rules by using the Azure portal](https://learn.microsoft.com/azure/mysql/single-server/how-to-manage-firewall-using-portal)
+- [Create and manage Azure Database for MySQL VNet service endpoints and VNet rules by using the Azure portal](https://learn.microsoft.com/azure/mysql/single-server/how-to-manage-vnet-using-portal)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/servers)

@@ -15,14 +15,14 @@ metadata:
   name: Azure.MySQL.UseSSL
   ref: AZR-000131
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'NS-2'
+    Azure.MCSB.v1/control: NS-2
 spec:
   type:
-  - Microsoft.DBforMySQL/servers
+    - Microsoft.DBforMySQL/servers
   condition:
     field: properties.sslEnforcement
     equals: Enabled
@@ -35,14 +35,14 @@ metadata:
   name: Azure.MySQL.MinTLS
   ref: AZR-000132
   tags:
-    release: 'GA'
-    ruleSet: '2020_09'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2020_09
+    Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'DP-3'
+    Azure.MCSB.v1/control: DP-3
 spec:
   type:
-  - Microsoft.DBforMySQL/servers
+    - Microsoft.DBforMySQL/servers
   condition:
     field: properties.minimalTlsVersion
     equals: TLS1_2
@@ -60,7 +60,7 @@ metadata:
     Azure.WAF/pillar: Reliability
 spec:
   type:
-  - Microsoft.DBforMySQL/flexibleServers
+    - Microsoft.DBforMySQL/flexibleServers
   condition:
     field: properties.maintenanceWindow.customWindow
     equals: Enabled

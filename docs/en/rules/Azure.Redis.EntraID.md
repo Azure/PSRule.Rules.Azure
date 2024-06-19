@@ -14,14 +14,16 @@ Use Entra ID authentication with cache instances.
 
 ## DESCRIPTION
 
-Azure Cache for Redis provides two authentication methods for accessing cache instances: access keys and Microsoft Entra ID. Entra ID authentication offers centralized identity management and enhanced security features.
+Azure Cache for Redis provides two authentication methods for accessing cache instances: access keys and Microsoft Entra ID.
+Entra ID authentication offers centralized identity management and enhanced security features.
 
 Some advantages of using Entra ID authentication over access keys include:
 
 - Support for Azure Multi-Factor Authentication (MFA).
 - Conditional access policies with Conditional Access.
 
-Disabling local authentication methods is not supported. However, regenerating the access keys will invalidate any previously used access keys, rendering them unusable for accessing the cache instance.
+Disabling local authentication methods is not supported.
+However, regenerating the access keys will invalidate any previously used access keys, rendering them unusable for accessing the cache instance.
 
 See documentation references below for additional limitations and important information.
 

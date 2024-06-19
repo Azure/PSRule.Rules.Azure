@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: Azure Database for PostgreSQL
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.AllowAzureAccess/
 ms-content-id: 07659a25-0a40-4979-99cd-cae83a5e3145
@@ -24,9 +24,9 @@ For example Azure Functions, Container Instances and Logic Apps.
 ## RECOMMENDATION
 
 Where a stable IP addresses are able to be configured, configure IP or virtual network based firewall rules instead of using Allow access to Azure services.
-
 Determine if access from Azure services is required for the services connecting to the hosted databases.
 
 ## LINKS
 
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [Firewall rules in Azure Database for PostgreSQL](https://learn.microsoft.com/azure/postgresql/concepts-firewall-rules#connecting-from-azure)
