@@ -10,7 +10,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.Z
 
 ## SYNOPSIS
 
-Deploy virtual machine scale set instances using the best-effort zone balance in supported regions to ensure an approximately balanced distribution of instances across availability zones.
+Deploy virtual machine scale set instances using the best-effort zone balance in supported regions.
 
 ## DESCRIPTION
 
@@ -22,8 +22,8 @@ The distribution behavior of instances across zones can be configured with two m
 
 - **Best-effort zone balance** - Attempt to scale-in/ out while maintaining balance across zones.
   If that is not possible, allow temporary imbalance so the scaling operation can complete.
-  On subsequent scale-out attempts, the scale set adds VMs to the zones needing more VMs to restore balance.
-  Similarly, on subsequent scale-in attempts, the scale set removes VMs from zones that have more VMs than required to restore balance.
+  - On subsequent scale-out attempts, the scale set adds VMs to the zones needing more VMs to restore balance.
+  - On subsequent scale-in attempts, the scale set removes VMs from zones that have more VMs than required to restore balance.
 - **Strict zone balance** - Only allow the scaling operation to continue if zone balanced can be maintained.
   If that is not possible, the scaling operation will fail.
 
@@ -33,14 +33,11 @@ Key points:
 - Scale-out typically occurs to reduce pressure on the already provisioned instances by increasing capacity.
 - If scale-out fails, the workload may become unstable due to increasing pressure.
 - Balance only applies when two or more zones are configured on the VMSS.
-- An outage or disruption in a zone may impact a higher percentage of the workload instances when the workload is not blanced.
+- An outage or disruption in a zone may impact a higher percentage of the workload instances when the workload is not balanced.
 
 ## RECOMMENDATION
 
 Consider using best-effort zone balancing to maintain stability of the workload under load.
-
-
-To enhance the distribution of virtual machine scale set instances, it is recommended to use the best-effort zone balance approach. This configuration helps in maintaining a balanced distribution of VMs across zones while allowing flexibility during scale operations.
 
 ## EXAMPLES
 
