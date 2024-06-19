@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable infrastructure
+category: OE:04 Continuous integration
 resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.PPGName/
 ---
@@ -33,5 +33,6 @@ This rule does not check if Proximity Placement Group names are unique.
 
 ## LINKS
 
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)

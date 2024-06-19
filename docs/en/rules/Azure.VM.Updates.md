@@ -1,7 +1,7 @@
 ---
 severity: Important
-pillar: Operational Excellence
-category: Deployment
+pillar: Security
+category: SE:08 Hardening resources
 resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.Updates/
 ms-content-id: 8781c21b-4e6a-47fe-860d-d2191f0304ae
@@ -23,3 +23,9 @@ Enabling this option does not prevent automatic updates being disabled or reconf
 ## RECOMMENDATION
 
 Enable automatic updates at deployment time, then reconfigure as required to meet patch management requirements.
+
+## LINKS
+
+- [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
+- [Automatic Guest Patching for Azure Virtual Machines and Scale Sets](https://learn.microsoft.com/azure/virtual-machines/automatic-vm-guest-patching)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)

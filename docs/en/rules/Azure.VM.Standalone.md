@@ -2,7 +2,7 @@
 reviewed: 2022-07-09
 severity: Important
 pillar: Reliability
-category: Availability
+category: RE:04 Target metrics
 resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.Standalone/
 ---
@@ -25,11 +25,11 @@ For Virtual Machines (VMs), running a single instance is often a single point of
 In many but not all cases, the number of VMs can be increased to add redundancy to the system.
 Taking advantage of some of the features of Azure can further increase the availability of the system.
 
-- Availability Zones (AZ) - is a physically separate zone, within an Azure region.
+- **Availability Zones (AZ)** - is a physically separate zone, within an Azure region.
   Each Availability Zone has a distinct power source, network, and cooling.
-- Availability Sets - is a logical grouping of VMs that allows Azure to understand how your application is built.
+- **Availability Sets** - is a logical grouping of VMs that allows Azure to understand how your application is built.
   By understanding the distinct tiers of the application, Azure can better organize compute and storage to improve availability.
-- Solid State Storage (SSD) Disks - high performance block-level storage with three replicas of your data.
+- **Solid State Storage (SSD) Disks** - high performance block-level storage with three replicas of your data.
 
 ## RECOMMENDATION
 
@@ -152,8 +152,9 @@ resource vm1 'Microsoft.Compute/virtualMachines@2022-03-01' = {
 
 ## LINKS
 
-- [Meet application platform requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Virtual Machine SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)
 - [Availability options for virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/availability)
 - [Manage the availability of Windows virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/windows/manage-availability)
 - [Manage the availability of Linux virtual machines](https://learn.microsoft.com/azure/virtual-machines/linux/manage-availability)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)

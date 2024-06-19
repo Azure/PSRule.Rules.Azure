@@ -42,7 +42,7 @@ Rule 'Azure.NSG.LateralTraversal' -Ref 'AZR-000139' -Type 'Microsoft.Network/net
 }
 
 # Synopsis: Network security groups should be associated to either a subnet or network interface
-Rule 'Azure.NSG.Associated' -Ref 'AZR-000140' -Type 'Microsoft.Network/networkSecurityGroups' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'NS-1' } {
+Rule 'Azure.NSG.Associated' -Ref 'AZR-000140' -Type 'Microsoft.Network/networkSecurityGroups' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Cost Optimization'; } {
     # NSG should be associated to either a subnet or network interface
     Reason $LocalizedData.ResourceNotAssociated
     $Assert.HasFieldValue($TargetObject, 'Properties.subnets').Result -or
