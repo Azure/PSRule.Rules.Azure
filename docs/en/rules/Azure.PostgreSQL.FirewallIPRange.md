@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: Azure Database for PostgreSQL
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.FirewallIPRange/
 ms-content-id: fc3b5764-5b4a-4915-9311-75ec6a0d0d55
@@ -23,5 +23,6 @@ The PostgreSQL server has greater then ten (10) public IP addresses that are per
 
 ## LINKS
 
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [Firewall rules in Azure Database for PostgreSQL - Single Server](https://learn.microsoft.com/azure/postgresql/concepts-firewall-rules)
 - [Create and manage firewall rules for Azure Database for PostgreSQL - Single Server using the Azure portal](https://learn.microsoft.com/azure/postgresql/howto-manage-firewall-using-portal)

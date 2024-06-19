@@ -1,3 +1,8 @@
+---
+export: true
+moduleVersion: v1.35.0
+---
+
 # Azure.Preview_2024_03
 
 Include rules released March 2024 or prior for Azure preview only features.
@@ -6,7 +11,7 @@ Include rules released March 2024 or prior for Azure preview only features.
 
 The following rules are included within the `Azure.Preview_2024_03` baseline.
 
-This baseline includes a total of 9 rules.
+This baseline includes a total of 8 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -18,4 +23,3 @@ Name | Synopsis | Severity
 [Azure.Arc.Server.MaintenanceConfig](../rules/Azure.Arc.Server.MaintenanceConfig.md) | Use a maintenance configuration for Arc-enabled servers. | Important
 [Azure.Defender.Storage.DataScan](../rules/Azure.Defender.Storage.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical
 [Azure.Storage.Defender.DataScan](../rules/Azure.Storage.Defender.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical
-[Azure.VM.MaintenanceConfig](../rules/Azure.VM.MaintenanceConfig.md) | Use a maintenance configuration for virtual machines. | Important

@@ -23,3 +23,7 @@ The VM agent is required to use any VM extensions.
 ## RECOMMENDATION
 
 Automatically provision the VM agent for all supported operating systems, this is the default.
+
+## LINKS
+
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)

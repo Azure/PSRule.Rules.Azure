@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: Azure Database for MariaDB
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.FirewallRuleCount/
 ---
@@ -29,7 +29,7 @@ This rule fails when the number of configured firewall rules exceeds ten (10).
 
 ## LINKS
 
-- [Network security and containment](https://learn.microsoft.com/azure/architecture/framework/security/design-network)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [Azure Database for MariaDB server firewall rules](https://learn.microsoft.com/azure/mariadb/concepts-firewall-rules)
 - [Create and manage Azure Database for MariaDB firewall rules by using the Azure portal](https://learn.microsoft.com/azure/mariadb/howto-manage-firewall-portal)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformariadb/servers/firewallrules)

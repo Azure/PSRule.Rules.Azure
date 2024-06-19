@@ -72,7 +72,7 @@ AZR-000048 | [Azure.APIM.SampleProducts](Azure.APIM.SampleProducts.md) | Remove 
 AZR-000049 | [Azure.APIM.ProductDescriptors](Azure.APIM.ProductDescriptors.md) | API Management products should have a display name and description. | GA
 AZR-000050 | [Azure.APIM.ProductTerms](Azure.APIM.ProductTerms.md) | Set legal terms for each product registered in API Management. | GA
 AZR-000051 | [Azure.APIM.CertificateExpiry](Azure.APIM.CertificateExpiry.md) | Renew certificates used for custom domain bindings. | GA
-AZR-000052 | [Azure.APIM.AvailabilityZone](Azure.APIM.AvailabilityZone.md) | API management services deployed with Premium SKU should use availability zones in supported regions for high availability. | GA
+AZR-000052 | [Azure.APIM.AvailabilityZone](Azure.APIM.AvailabilityZone.md) |  API Management instances should use availability zones in supported regions for high availability. | GA
 AZR-000053 | [Azure.APIM.ManagedIdentity](Azure.APIM.ManagedIdentity.md) | Configure managed identities to access Azure resources. | GA
 AZR-000054 | [Azure.APIM.Protocols](Azure.APIM.Protocols.md) | API Management should only accept a minimum of TLS 1.2 for client and backend communication. | GA
 AZR-000055 | [Azure.APIM.Ciphers](Azure.APIM.Ciphers.md) | API Management should not accept weak or deprecated ciphers for client or backend communication. | GA
@@ -360,7 +360,7 @@ AZR-000336 | [Azure.MariaDB.ServerName](Azure.MariaDB.ServerName.md) | Azure Dat
 AZR-000337 | [Azure.MariaDB.DatabaseName](Azure.MariaDB.DatabaseName.md) | Azure Database for MariaDB databases should meet naming requirements. | GA
 AZR-000338 | [Azure.MariaDB.FirewallRuleName](Azure.MariaDB.FirewallRuleName.md) | Azure Database for MariaDB firewall rules should meet naming requirements. | GA
 AZR-000339 | [Azure.MariaDB.VNETRuleName](Azure.MariaDB.VNETRuleName.md) | Azure Database for MariaDB VNET rules should meet naming requirements. | GA
-AZR-000340 | [Azure.APIM.MultiRegion](Azure.APIM.MultiRegion.md) | API Management instances should use multi-region deployment to improve service availability. | GA
+AZR-000340 | [Azure.APIM.MultiRegion](Azure.APIM.MultiRegion.md) | Enhance service availability and resilience by deploying API Management instances across multiple regions. | GA
 AZR-000341 | [Azure.APIM.MultiRegionGateway](Azure.APIM.MultiRegionGateway.md) | API Management instances should have multi-region deployment gateways enabled. | GA
 AZR-000342 | [Azure.MariaDB.AllowAzureAccess](Azure.MariaDB.AllowAzureAccess.md) | Determine if access from Azure services is required. | GA
 AZR-000343 | [Azure.MariaDB.FirewallRuleCount](Azure.MariaDB.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules. | GA
@@ -395,7 +395,7 @@ AZR-000371 | [Azure.APIM.PolicyBase](Azure.APIM.PolicyBase.md) | Base element fo
 AZR-000372 | [Azure.Defender.Cspm](Azure.Defender.Cspm.md) | Enable Microsoft Defender Cloud Security Posture Management Standard plan. | GA
 AZR-000373 | [Azure.Arc.Kubernetes.Defender](Azure.Arc.Kubernetes.Defender.md) | Deploy Microsoft Defender for Containers extension for Arc-enabled Kubernetes clusters. | Preview
 AZR-000374 | [Azure.Arc.Server.MaintenanceConfig](Azure.Arc.Server.MaintenanceConfig.md) | Use a maintenance configuration for Arc-enabled servers. | Preview
-AZR-000375 | [Azure.VM.MaintenanceConfig](Azure.VM.MaintenanceConfig.md) | Use a maintenance configuration for virtual machines. | Preview
+AZR-000375 | [Azure.VM.MaintenanceConfig](Azure.VM.MaintenanceConfig.md) | Use a maintenance configuration for virtual machines. | GA
 AZR-000376 | [Azure.AppGw.MigrateV2](Azure.AppGw.MigrateV2.md) | Use a Application Gateway v2 SKU. | GA
 AZR-000377 | [Azure.Defender.Api](Azure.Defender.Api.md) | Enable Microsoft Defender for APIs. | GA
 AZR-000378 | [Azure.ContainerApp.DisableAffinity](Azure.ContainerApp.DisableAffinity.md) | Disable session affinity to prevent unbalanced distribution. | GA
@@ -412,9 +412,9 @@ AZR-000388 | [Azure.KeyVault.RBAC](Azure.KeyVault.RBAC.md) | Key Vaults should u
 AZR-000389 | [Azure.PostgreSQL.AAD](Azure.PostgreSQL.AAD.md) | Use Entra ID authentication with Azure Database for PostgreSQL databases. | GA
 AZR-000390 | [Azure.PostgreSQL.AADOnly](Azure.PostgreSQL.AADOnly.md) | Ensure Entra ID only authentication is enabled with Azure Database for PostgreSQL databases. | GA
 AZR-000391 | [Azure.Storage.Defender.DataScan](Azure.Storage.Defender.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Preview
-AZR-000392 | [Azure.MySQL.AAD](Azure.MySQL.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure Database for MySQL databases. | GA
+AZR-000392 | [Azure.MySQL.AAD](Azure.MySQL.AAD.md) | Use Entra ID authentication with Azure Database for MySQL databases. | GA
 AZR-000393 | [Azure.Databricks.SecureConnectivity](Azure.Databricks.SecureConnectivity.md) | Use Databricks workspaces configured for secure cluster connectivity. | GA
-AZR-000394 | [Azure.MySQL.AADOnly](Azure.MySQL.AADOnly.md) | Ensure Azure AD-only authentication is enabled with Azure Database for MySQL databases. | GA
+AZR-000394 | [Azure.MySQL.AADOnly](Azure.MySQL.AADOnly.md) | Ensure Entra ID only authentication is enabled with Azure Database for MySQL databases. | GA
 AZR-000395 | [Azure.PublicIP.MigrateStandard](Azure.PublicIP.MigrateStandard.md) | Use the Standard SKU for Public IP addresses as the Basic SKU will be retired. | GA
 AZR-000396 | [Azure.FrontDoor.ManagedIdentity](Azure.FrontDoor.ManagedIdentity.md) | Ensure Front Door uses a managed identity to authorize access to Azure resources. | GA
 AZR-000397 | [Azure.RSV.Immutable](Azure.RSV.Immutable.md) | Ensure immutability is configured to protect backup data. | GA
@@ -440,5 +440,24 @@ AZR-000416 | [Azure.EntraDS.NTLM](Azure.EntraDS.NTLM.md) | Disable NTLM v1 for M
 AZR-000417 | [Azure.EntraDS.TLS](Azure.EntraDS.TLS.md) | Disable TLS v1 for Microsoft Entra Domain Services. | GA
 AZR-000418 | [Azure.EntraDS.RC4](Azure.EntraDS.RC4.md) | Disable RC4 encryption for Microsoft Entra Domain Services. | GA
 AZR-000419 | [Azure.Cosmos.SLA](Azure.Cosmos.SLA.md) | Use a paid tier to qualify for a Service Level Agreement (SLA). | GA
+AZR-000420 | [Azure.Cosmos.DisableLocalAuth](Azure.Cosmos.DisableLocalAuth.md) | Azure Cosmos DB should have local authentication disabled. | GA
+AZR-000421 | [Azure.Cosmos.PublicAccess](Azure.Cosmos.PublicAccess.md) | Azure Cosmos DB should have public network access disabled. | GA
+AZR-000422 | [Azure.EventHub.Firewall](Azure.EventHub.Firewall.md) | Access to the namespace endpoints should be restricted to only allowed sources. | GA
+AZR-000423 | [Azure.AppGw.MigrateWAFPolicy](Azure.AppGw.MigrateWAFPolicy.md) | Migrate to Application Gateway WAF policy. | GA
+AZR-000424 | [Azure.Grafana.Version](Azure.Grafana.Version.md) | Grafana workspaces should be on Grafana version 10. | GA
+AZR-000425 | [Azure.LogAnalytics.Replication](Azure.LogAnalytics.Replication.md) | Log Analytics workspaces should have workspace replication enabled to improve service availability. | Preview
+AZR-000426 | [Azure.VMSS.AutoInstanceRepairs](Azure.VMSS.AutoInstanceRepairs.md) | Automatic instance repairs are enabled. | Preview
+AZR-000427 | [Azure.Redis.EntraID](Azure.Redis.EntraID.md) | Use Entra ID authentication with cache instances. | GA
+AZR-000428 | [Azure.AppService.NodeJsVersion](Azure.AppService.NodeJsVersion.md) | Configure applications to use supported Node.js runtime versions. | GA
+AZR-000429 | [Azure.Firewall.AvailabilityZone](Azure.Firewall.AvailabilityZone.md) | Deploy firewall instances using availability zones in supported regions to ensure high availability and resilience. | GA
+AZR-000430 | [Azure.VNG.MaintenanceConfig](Azure.VNG.MaintenanceConfig.md) | Use a customer-controlled maintenance configuration for virtual network gateways. | Preview
+AZR-000431 | [Azure.MySQL.MaintenanceWindow](Azure.MySQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for MySQL servers. | GA
+AZR-000432 | [Azure.MySQL.ZoneRedundantHA](Azure.MySQL.ZoneRedundantHA.md) | Deploy Azure Database for MySQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | GA
+AZR-000433 | [Azure.PostgreSQL.MaintenanceWindow](Azure.PostgreSQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for PostgreSQL servers. | GA
+AZR-000434 | [Azure.PostgreSQL.ZoneRedundantHA](Azure.PostgreSQL.ZoneRedundantHA.md) | Deploy Azure Database for PostgreSQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | GA
+AZR-000435 | [Azure.AKS.NodeAutoUpgrade](Azure.AKS.NodeAutoUpgrade.md) | Deploy AKS Clusters with Node Auto-Upgrade enabled | GA
+AZR-000436 | [Azure.VMSS.AvailabilityZone](Azure.VMSS.AvailabilityZone.md) | Deploy virtual machine scale set instances using availability zones in supported regions to ensure high availability and resilience. | GA
+AZR-000437 | [Azure.AVD.ScheduleAgentUpdate](Azure.AVD.ScheduleAgentUpdate.md) | Define a windows for agent updates to minimize disruptions to users. | GA
+AZR-000438 | [Azure.VMSS.ZoneBalance](Azure.VMSS.ZoneBalance.md) | Deploy virtual machine scale set instances using the best-effort zone balance in supported regions. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

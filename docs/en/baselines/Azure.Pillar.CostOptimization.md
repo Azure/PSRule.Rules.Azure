@@ -13,7 +13,7 @@ Microsoft Azure Well-Architected Framework - Cost Optimization pillar specific b
 
 The following rules are included within the `Azure.Pillar.CostOptimization` baseline.
 
-This baseline includes a total of 14 rules.
+This baseline includes a total of 15 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -24,6 +24,7 @@ Name | Synopsis | Severity
 [Azure.FrontDoor.State](../rules/Azure.FrontDoor.State.md) | Enable Azure Front Door Classic instance. | Important
 [Azure.ML.ComputeIdleShutdown](../rules/Azure.ML.ComputeIdleShutdown.md) | Configure an idle shutdown timeout for Machine Learning compute instances. | Critical
 [Azure.NIC.Attached](../rules/Azure.NIC.Attached.md) | Network interfaces (NICs) that are not used should be removed. | Awareness
+[Azure.NSG.Associated](../rules/Azure.NSG.Associated.md) | Network Security Groups (NSGs) should be associated to a subnet or network interface. | Awareness
 [Azure.Resource.UseTags](../rules/Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | Awareness
 [Azure.ServiceBus.Usage](../rules/Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | Important
 [Azure.VM.DiskAttached](../rules/Azure.VM.DiskAttached.md) | Managed disks should be attached to virtual machines or removed. | Important

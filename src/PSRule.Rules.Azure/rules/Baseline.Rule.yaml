@@ -645,6 +645,9 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.GA_2024_03
+  annotations:
+    export: true
+    moduleVersion: v1.35.0
 spec:
   configuration:
     # Configure minimum AKS cluster version
@@ -676,6 +679,9 @@ apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
   name: Azure.Preview_2024_03
+  annotations:
+    export: true
+    moduleVersion: v1.35.0
 spec:
   rule:
     tag:
