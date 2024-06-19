@@ -25,6 +25,9 @@ Strict zone balance: This mode ensures that VM instances are strictly balanced a
 
 ## RECOMMENDATION
 
+Consider using best-effort zone balancing to maintain stability of the workload under load.
+
+
 To enhance the distribution of virtual machine scale set instances, it is recommended to use the best-effort zone balance approach. This configuration helps in maintaining a balanced distribution of VMs across zones while allowing flexibility during scale operations.
 
 ## EXAMPLES
