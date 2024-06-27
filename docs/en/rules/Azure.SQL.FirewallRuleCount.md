@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: SQL Database
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.FirewallRuleCount/
 ms-content-id: b877a8ba-bc56-4bfe-9674-4b52b75cd13b
@@ -24,5 +24,7 @@ Some rules may not be needed.
 
 ## LINKS
 
-- [Azure SQL Database and Azure Synapse IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure)
-- [Create and manage IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure#create-and-manage-ip-firewall-rules)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Azure SQL Database and Azure Synapse IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure?view=azuresql)
+- [Create and manage IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure?view=azuresql#create-and-manage-ip-firewall-rules)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/firewallrules)

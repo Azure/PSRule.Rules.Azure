@@ -74,36 +74,11 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
 }
 ```
 
-### Configure with Bicep Public Registry
-
-To deploy App Configuration Stores that pass this rule:
-
-- Set the `params.skuName` parameter to `Standard`.
-
-For example:
-
-```bicep
-module br_public_store 'br/public:app/app-configuration:1.1.2' = {
-  name: 'store'
-  params: {
-    skuName: 'Standard'
-    disableLocalAuth: true
-    enablePurgeProtection: true
-    publicNetworkAccess: 'Disabled'
-    replicas: [
-      {
-        name: 'eastus'
-        location: 'eastus'
-      }
-    ]
-  }
-}
-```
+<!-- external:avm avm/res/app-configuration/configuration-store sku -->
 
 ## LINKS
 
 - [Meet application platform requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
 - [App Configuration pricing](https://azure.microsoft.com/pricing/details/app-configuration/)
 - [Which App Configuration tier should I use?](https://learn.microsoft.com/azure/azure-app-configuration/faq#which-app-configuration-tier-should-i-use)
-- [Bicep public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)

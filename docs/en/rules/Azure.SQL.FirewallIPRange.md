@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: SQL Database
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.FirewallIPRange/
 ms-content-id: a25b1927-f04c-4a6a-8a3d-42d59d4722ff
@@ -27,5 +27,6 @@ Reduce the size or count of the IP ranges set in the Firewall rules so that the 
 
 ## LINKS
 
-- [Azure SQL Database and Azure Synapse IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure)
-- [Create and manage IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure#create-and-manage-ip-firewall-rules)
+- [Azure SQL Database and Azure Synapse IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure?view=azuresql)
+- [Create and manage IP firewall rules](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure?view=azuresql#create-and-manage-ip-firewall-rules)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/firewallrules)

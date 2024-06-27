@@ -121,6 +121,8 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
 }
 ```
 
+<!-- external:avm avm/res/api-management/service managedIdentities -->
+
 ## LINKS
 
 - [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access#resource-identity)

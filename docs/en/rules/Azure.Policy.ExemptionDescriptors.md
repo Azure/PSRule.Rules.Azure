@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable infrastructure
+category: OE:04 Tools and processes
 resource: Policy
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Policy.ExemptionDescriptors/
 ---
@@ -57,6 +57,6 @@ For example:
 
 ## LINKS
 
+- [OE:04 Tools and processes](https://learn.microsoft.com/azure/well-architected/operational-excellence/tools-processes)
 - [Azure Policy exemption structure](https://learn.microsoft.com/azure/governance/policy/concepts/exemption-structure)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.authorization/policyexemptions)
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)

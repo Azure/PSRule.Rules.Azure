@@ -1,8 +1,8 @@
 ---
-reviewed: 2021/12/20
+reviewed: 2021-12-20
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable infrastructure
+category: OE:04 Continuous integration
 resource: Application Insights
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppInsights.Name/
 ---
@@ -34,7 +34,7 @@ This rule does not check if Application Insights resource names are unique.
 
 ## LINKS
 
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/components)

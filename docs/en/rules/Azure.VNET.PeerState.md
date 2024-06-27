@@ -2,7 +2,7 @@
 reviewed: 2023-09-10
 severity: Important
 pillar: Operational Excellence
-category: Monitor
+category: OE:04 Tools and processes
 resource: Virtual Network
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.PeerState/
 ---
@@ -124,7 +124,7 @@ This rule applies when analyzing resources deployed to Azure (in-flight).
 
 ## LINKS
 
-- [Monitoring operations of cloud applications](https://learn.microsoft.com/azure/well-architected/devops/checklist)
+- [OE:04 Tools and processes](https://learn.microsoft.com/azure/well-architected/operational-excellence/tools-processes)
 - [Virtual network peering](https://learn.microsoft.com/azure/virtual-network/virtual-network-peering-overview)
 - [Create, change, or delete a virtual network peering](https://learn.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)
 - [Networking limits](https://learn.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#networking-limits)

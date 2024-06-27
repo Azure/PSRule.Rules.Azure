@@ -1,7 +1,7 @@
 ---
 reviewed: 2023-03-05
 severity: Awareness
-pillar: Operational Excellence
+pillar: OE:04 Tools and processes
 category: Instrumentation
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.APIDescriptors/
@@ -11,7 +11,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.A
 
 ## SYNOPSIS
 
-API Management APIs should have a display name and description.
+APIs should have a display name and description.
 
 ## DESCRIPTION
 
@@ -44,7 +44,7 @@ For example:
 ```json
 {
   "type": "Microsoft.ApiManagement/service/apis",
-  "apiVersion": "2021-08-01",
+  "apiVersion": "2022-08-01",
   "name": "[format('{0}/{1}', parameters('name'), 'echo-v1')]",
   "properties": {
     "displayName": "Echo API",
@@ -76,7 +76,7 @@ To deploy API Management APIs that pass this rule:
 For example:
 
 ```bicep
-resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
+resource api 'Microsoft.ApiManagement/service/apis@2022-08-01' = {
   parent: service
   name: 'echo-v1'
   properties: {
@@ -97,6 +97,6 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
 
 ## LINKS
 
-- [Human-readable data](https://learn.microsoft.com/azure/architecture/framework/devops/monitor-instrument#human-readable-data)
+- [OE:04 Tools and processes](https://learn.microsoft.com/azure/well-architected/operational-excellence/tools-processes)
 - [Import and publish your first API](https://learn.microsoft.com/azure/api-management/import-and-publish)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/apis)

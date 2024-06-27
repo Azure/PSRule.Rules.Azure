@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: SQL Database
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.AllowAzureAccess/
 ms-content-id: 30a551f6-54e0-4e51-b068-f9695d891a89
@@ -31,5 +31,6 @@ Determine if access from Azure services is required for the services connecting 
 
 ## LINKS
 
-- [Connections from inside Azure](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure#connections-from-inside-azure)
-- [Network security](https://learn.microsoft.com/azure/architecture/framework/security/design-network)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
+- [Connections from inside Azure](https://learn.microsoft.com/azure/azure-sql/database/firewall-configure?view=azuresql#connections-from-inside-azure)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers)

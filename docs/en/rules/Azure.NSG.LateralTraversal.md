@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Network segmentation
+category: SE:04 Segmentation
 resource: Network Security Group
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.LateralTraversal/
 ---
@@ -38,12 +38,6 @@ This helps improve security in two ways:
 ## RECOMMENDATION
 
 Consider configuring NSGs rules to block common outbound management traffic from non-management hosts.
-
-## NOTES
-
-Specifically this rule checks if either 3389 (RDP) or 22 (SSH) has been blocked for outbound traffic.
-
-To suppress this rule for NSGs protecting subnets expected to allow outbound management traffic see [Permit outbound management](https://azure.github.io/PSRule.Rules.Azure/customization/permit-outbound-management/).
 
 ## EXAMPLES
 
@@ -117,9 +111,15 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2021-02-01' = {
 }
 ```
 
+## NOTES
+
+Specifically this rule checks if either 3389 (RDP) or 22 (SSH) has been blocked for outbound traffic.
+
+To suppress this rule for NSGs protecting subnets expected to allow outbound management traffic see [Permit outbound management](https://azure.github.io/PSRule.Rules.Azure/customization/permit-outbound-management/).
+
 ## LINKS
 
-- [Implement network segmentation patterns on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-segmentation)
+- [SE:04 Segmentation](https://learn.microsoft.com/azure/well-architected/security/segmentation)
 - [Logically segment subnets](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices#logically-segment-subnets)
 - [Plan virtual networks](https://learn.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm#segmentation)
 - [Network security groups](https://learn.microsoft.com/azure/virtual-network/security-overview)

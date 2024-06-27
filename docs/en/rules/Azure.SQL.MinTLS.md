@@ -41,7 +41,7 @@ For example:
 ```json
 {
   "type": "Microsoft.Sql/servers",
-  "apiVersion": "2022-11-01-preview",
+  "apiVersion": "2023-08-01-preview",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
@@ -68,7 +68,7 @@ To deploy logical SQL Servers that pass this rule:
 For example:
 
 ```bicep
-resource server 'Microsoft.Sql/servers@2022-11-01-preview' = {
+resource server 'Microsoft.Sql/servers@2023-08-01-preview' = {
   name: name
   location: location
   identity: {
@@ -105,4 +105,4 @@ To address this issue at runtime use the following policies:
 - [Minimal TLS Version](https://learn.microsoft.com/azure/azure-sql/database/connectivity-settings#minimal-tls-version)
 - [TLS encryption in Azure](https://learn.microsoft.com/azure/security/fundamentals/encryption-overview#tls-encryption-in-azure)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers#serverproperties)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers)

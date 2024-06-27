@@ -86,40 +86,16 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
 }
 ```
 
-### Configure with Bicep Public Registry
-
-To deploy App Configuration Stores that pass this rule:
-
-- Set the `params.disableLocalAuth` parameter to `true`.
-
-For example:
-
-```bicep
-module br_public_store 'br/public:app/app-configuration:1.1.2' = {
-  name: 'store'
-  params: {
-    skuName: 'Standard'
-    disableLocalAuth: true
-    enablePurgeProtection: true
-    publicNetworkAccess: 'Disabled'
-    replicas: [
-      {
-        name: 'eastus'
-        location: 'eastus'
-      }
-    ]
-  }
-}
-```
+<!-- external:avm avm/res/app-configuration/configuration-store disableLocalAuth -->
 
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:
 
-Name | Resource
----- | --------
-App Configuration stores should have local authentication methods disabled | `/providers/Microsoft.Authorization/policyDefinitions/b08ab3ca-1062-4db3-8803-eec9cae605d6`
-Configure App Configuration stores to disable local authentication methods | `/providers/Microsoft.Authorization/policyDefinitions/72bc14af-4ab8-43af-b4e4-38e7983f9a1f`
+- [App Configuration stores should have local authentication methods disabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/DisableLocalAuth_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/b08ab3ca-1062-4db3-8803-eec9cae605d6`
+- [Configure App Configuration stores to disable local authentication methods](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/App%20Configuration/DisableLocalAuth_Modify.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/72bc14af-4ab8-43af-b4e4-38e7983f9a1f`
 
 ## LINKS
 
@@ -129,5 +105,4 @@ Configure App Configuration stores to disable local authentication methods | `/p
 - [Disable access key authentication](https://learn.microsoft.com/azure/azure-app-configuration/howto-disable-access-key-authentication)
 - [Azure security baseline for Azure App Configuration](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-app-configuration-security-baseline)
 - [Azure Policy built-in definitions for Azure App Configuration](https://learn.microsoft.com/azure/azure-app-configuration/policy-reference)
-- [Bicep public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)
