@@ -1,8 +1,8 @@
 ---
 reviewed: 2023-03-05
 severity: Awareness
-pillar: OE:04 Tools and processes
-category: Instrumentation
+pillar: Operational Excellence
+category: OE:04 Tools and processes
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.APIDescriptors/
 ---
