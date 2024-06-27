@@ -165,6 +165,6 @@ A managed identity is required if an Entra ID service principal (Entra ID applic
 - [Microsoft Entra-only authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication)
 - [Configure and manage Microsoft Entra authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-aad-configure)
 - [Limitations for Microsoft Entra-only authentication in SQL Database](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication#limitations-for-azure-ad-only-authentication-in-sql-database)
-- [Azure Policy for Microsoft Entra-only authentication with Azure SQL](https://learn.microsoft.com/en-gb/azure/azure-sql/database/authentication-azure-ad-only-authentication-policy)
+- [Azure Policy for Microsoft Entra-only authentication with Azure SQL](https://learn.microsoft.com/azure/azure-sql/database/authentication-azure-ad-only-authentication-policy)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers#managedinstanceexternaladministrator)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/azureadonlyauthentications#managedinstanceazureadonlyauthproperties)

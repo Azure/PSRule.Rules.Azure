@@ -84,6 +84,8 @@ resource search 'Microsoft.Search/searchServices@2022-09-01' = {
 }
 ```
 
+<!-- external:avm avm/res/search/search-service replicaCount -->
+
 ## LINKS
 
 - [RE:06 Data partitioning](https://learn.microsoft.com/azure/well-architected/reliability/partition-data)

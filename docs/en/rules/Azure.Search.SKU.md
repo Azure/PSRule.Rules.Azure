@@ -82,6 +82,8 @@ resource search 'Microsoft.Search/searchServices@2022-09-01' = {
 }
 ```
 
+<!-- external:avm avm/res/search/search-service sku -->
+
 ## LINKS
 
 - [PE:02 Capacity planning](https://learn.microsoft.com/azure/well-architected/performance-efficiency/capacity-planning)
