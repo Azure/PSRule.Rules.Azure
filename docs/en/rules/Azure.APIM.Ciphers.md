@@ -2,7 +2,7 @@
 reviewed: 2023-03-05
 severity: Critical
 pillar: Security
-category: Encryption
+category: SE:07 Encryption
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.Ciphers/
 ---
@@ -147,9 +147,11 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
 }
 ```
 
+<!-- external:avm avm/res/api-management/service customProperties -->
+
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
 - [Manage protocols and ciphers in Azure API Management](https://learn.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers)
 - [Cryptographic Recommendations](https://learn.microsoft.com/security/sdl/cryptographic-recommendations)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service)

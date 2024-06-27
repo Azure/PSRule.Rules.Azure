@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable infrastructure
+category: OE:04 Tools and processes
 resource: Policy
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Policy.Descriptors/
 ---
@@ -53,8 +53,8 @@ For example:
 
 ## LINKS
 
+- [OE:04 Tools and processes](https://learn.microsoft.com/azure/well-architected/operational-excellence/tools-processes)
 - [Azure Policy definition structure](https://learn.microsoft.com/azure/governance/policy/concepts/definition-structure#display-name-and-description)
 - [Common metadata properties](https://learn.microsoft.com/azure/governance/policy/concepts/definition-structure#common-metadata-properties)
 - [Policy definition template reference](https://learn.microsoft.com/azure/templates/microsoft.authorization/policydefinitions)
 - [Initiative definition template reference](https://learn.microsoft.com/azure/templates/microsoft.authorization/policysetdefinitions)
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)

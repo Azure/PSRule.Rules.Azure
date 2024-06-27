@@ -1,7 +1,7 @@
 ---
 severity: Awareness
-pillar: Operational Excellence
-category: Repeatable infrastructure
+pillar: Security
+category: SE:01 Security baseline
 resource: Policy
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Policy.WaiverExpiry/
 ---
@@ -60,6 +60,10 @@ This rule fails:
 - When the exemption is configured not to expire.
 - The exemption expiry date is greater than the maximum threshold.
 
+### Rule configuration
+
+<!-- module:config rule AZURE_POLICY_WAIVER_MAX_EXPIRY -->
+
 Configure `AZURE_POLICY_WAIVER_MAX_EXPIRY` to set the maximum expiry date threshold.
 
 ```yaml
@@ -70,6 +74,6 @@ configuration:
 
 ## LINKS
 
+- [SE:01 Security baseline](https://learn.microsoft.com/azure/well-architected/security/establish-baseline)
 - [Azure Policy exemption structure](https://learn.microsoft.com/azure/governance/policy/concepts/exemption-structure)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.authorization/policyexemptions)
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)

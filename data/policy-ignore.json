@@ -270,9 +270,31 @@
   },
   {
     "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/17k78e20-9358-41c9-923c-fb736d382a12"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.SQL.TDE"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/abda6d70-9778-44e7-84a8-06713e6db027"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.SQL.AADOnly"
+  },
+  {
+    "policyDefinitionIds": [
       "/providers/Microsoft.Authorization/policyDefinitions/4750c32b-89c0-46af-bfcb-2e4541a818d5"
     ],
     "reason": "Duplicate",
     "value": "Azure.Cosmos.DisableMetadataWrite"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/b08ab3ca-1062-4db3-8803-eec9cae605d6",
+      "/providers/Microsoft.Authorization/policyDefinitions/72bc14af-4ab8-43af-b4e4-38e7983f9a1f"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.AppConfig.DisableLocalAuth"
   }
 ]

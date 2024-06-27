@@ -24,7 +24,7 @@ You can transition to API version 2021-08-01 or later at any point prior to 30 S
 
 ## RECOMMENDATION
 
-Limit control plane API calls to API Management with version '2021-08-01' or newer.
+Limit control plane API calls to API Management with version `2021-08-01` or newer.
 
 ## EXAMPLES
 
@@ -32,8 +32,8 @@ Limit control plane API calls to API Management with version '2021-08-01' or new
 
 To deploy API Management services that pass this rule:
 
-- Set the `apiVersion` property to `'2021-08-01'` or newer.
-- Set the `properties.apiVersionConstraint.minApiVersion` property to `'2021-08-01'` or newer.
+- Set the `apiVersion` property to `2021-08-01` or newer.
+- Set the `properties.apiVersionConstraint.minApiVersion` property to `2021-08-01` or newer.
 
 For example:
 
@@ -82,7 +82,7 @@ For example:
 To deploy API Management services that pass this rule:
 
 - Use the API Version `Microsoft.ApiManagement/service@2021-08-01` or newer.
-- Set the `properties.apiVersionConstraint.minApiVersion` property to `'2021-08-01'` or newer.
+- Set the `properties.apiVersionConstraint.minApiVersion` property to `2021-08-01` or newer.
 
 For example:
 
@@ -124,6 +124,8 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
 }
 ```
 
+<!-- external:avm avm/res/api-management/service minApiVersion -->
+
 ## NOTES
 
 This rule fails:
@@ -136,6 +138,10 @@ This rule fails:
 
 - When you use the Azure portal or REST API version 2020-06-01-preview or later to delete an API Management instance, it's soft-deleted.
 - An API Management instance deleted using a REST API version before 2020-06-01-preview is permanently deleted.
+
+### Rule configuration
+
+<!-- module:config rule AZURE_APIM_MIN_API_VERSION -->
 
 Configure `AZURE_APIM_MIN_API_VERSION` to set the minimum API version used for control plane API calls to the API Management instance.
 

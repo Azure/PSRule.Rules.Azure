@@ -140,6 +140,8 @@ resource sqlAdministrator 'Microsoft.Sql/servers/administrators@2022-02-01-previ
 }
 ```
 
+<!-- external:avm avm/res/sql/server administrators -->
+
 ### Configure with Azure CLI
 
 ```bash

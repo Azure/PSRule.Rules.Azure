@@ -644,6 +644,8 @@ Example:
 
 ### AZURE_POLICY_RULE_PREFIX
 
+<!-- module:version v1.20.0 -->
+
 This configuration option sets the prefix for names of exported rules.
 Configure this option to change the prefix, which defaults to `Azure`.
 
@@ -672,6 +674,9 @@ Example:
 ```
 
 ### AZURE_POLICY_WAIVER_MAX_EXPIRY
+
+<!-- module:version v1.3.0 -->
+<!-- module:rule Azure.Policy.WaiverExpiry -->
 
 This configuration option determines the maximum number of days in the future for a waiver policy exemption.
 

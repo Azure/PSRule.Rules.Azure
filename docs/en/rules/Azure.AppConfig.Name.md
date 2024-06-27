@@ -2,7 +2,7 @@
 reviewed: 2022-09-24
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable infrastructure
+category: OE:04 Continuous integration
 resource: App Configuration
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.Name/
 ---
@@ -41,7 +41,7 @@ For example:
 ```json
 {
   "type": "Microsoft.AppConfiguration/configurationStores",
-  "apiVersion": "2022-05-01",
+  "apiVersion": "2023-03-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -49,7 +49,8 @@ For example:
   },
   "properties": {
     "disableLocalAuth": true,
-    "enablePurgeProtection": true
+    "enablePurgeProtection": true,
+    "publicNetworkAccess": "Disabled"
   }
 }
 ```
@@ -58,12 +59,12 @@ For example:
 
 To deploy configuration stores that pass this rule:
 
-- Set `name` to a value that meets the requirements.
+- Set the `name` property to a value that meets the requirements.
 
 For example:
 
 ```bicep
-resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
+resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
   name: name
   location: location
   sku: {
@@ -72,35 +73,12 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2022-05-01' = {
   properties: {
     disableLocalAuth: true
     enablePurgeProtection: true
-  }
-}
-```
-
-### Configure with Bicep Public Registry
-
-To deploy App Configuration Stores that pass this rule:
-
-- Set `params.name` to a value that meets the requirements.
-
-For example:
-
-```bicep
-module br_public_store 'br/public:app/app-configuration:1.1.2' = {
-  name: 'store'
-  params: {
-    skuName: 'Standard'
-    disableLocalAuth: true
-    enablePurgeProtection: true
     publicNetworkAccess: 'Disabled'
-    replicas: [
-      {
-        name: 'eastus'
-        location: 'eastus'
-      }
-    ]
   }
 }
 ```
+
+<!-- external:avm avm/res/app-configuration/configuration-store name -->
 
 ## NOTES
 
@@ -108,7 +86,7 @@ This rule does not check if App Configuration store names are unique.
 
 ## LINKS
 
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules#microsoftappconfiguration)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)

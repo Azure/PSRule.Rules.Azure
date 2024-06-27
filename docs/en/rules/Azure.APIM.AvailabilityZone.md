@@ -170,6 +170,8 @@ resource service_api_mgmt_test2_name_resource 'Microsoft.ApiManagement/service@2
 }
 ```
 
+<!-- external:avm avm/res/api-management/service zones -->
+
 ## NOTES
 
 This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.

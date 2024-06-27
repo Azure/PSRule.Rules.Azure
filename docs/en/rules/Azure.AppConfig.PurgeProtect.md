@@ -75,35 +75,10 @@ resource store 'Microsoft.AppConfiguration/configurationStores@2023-03-01' = {
 }
 ```
 
-### Configure with Bicep Public Registry
-
-To deploy App Configuration Stores that pass this rule:
-
-- Set the `params.enablePurgeProtection` parameter to `true`.
-
-For example:
-
-```bicep
-module br_public_store 'br/public:app/app-configuration:1.1.2' = {
-  name: 'store'
-  params: {
-    skuName: 'Standard'
-    disableLocalAuth: true
-    enablePurgeProtection: true
-    publicNetworkAccess: 'Disabled'
-    replicas: [
-      {
-        name: 'eastus'
-        location: 'eastus'
-      }
-    ]
-  }
-}
-```
+<!-- external:avm avm/res/app-configuration/configuration-store enablePurgeProtection -->
 
 ## LINKS
 
 - [Data management for reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/data-management)
 - [Purge protection](https://learn.microsoft.com/azure/azure-app-configuration/concept-soft-delete#purge-protection)
-- [Bicep public registry](https://azure.github.io/bicep-registry-modules/#app)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.appconfiguration/configurationstores)

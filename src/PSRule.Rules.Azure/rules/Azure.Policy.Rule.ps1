@@ -30,6 +30,6 @@ Rule 'Azure.Policy.ExemptionDescriptors' -Ref 'AZR-000145' -Type 'Microsoft.Auth
 }
 
 # Synopsis: Policy exceptions must be less then 2 years.
-Rule 'Azure.Policy.WaiverExpiry' -Ref 'AZR-000146' -Type 'Microsoft.Authorization/policyExemptions' -With 'Azure.PolicyExemptionWaiver' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.Policy.WaiverExpiry' -Ref 'AZR-000146' -Type 'Microsoft.Authorization/policyExemptions' -With 'Azure.PolicyExemptionWaiver' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $Assert.LessOrEqual($TargetObject, 'properties.expiresOn', $Configuration.AZURE_POLICY_WAIVER_MAX_EXPIRY);
 } -Configure @{ AZURE_POLICY_WAIVER_MAX_EXPIRY = 366 }
