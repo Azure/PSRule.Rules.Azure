@@ -63,7 +63,7 @@ AZR-000039 | [Azure.AKS.Name](Azure.AKS.Name.md) | Azure Kubernetes Service (AKS
 AZR-000040 | [Azure.AKS.DNSPrefix](Azure.AKS.DNSPrefix.md) | Azure Kubernetes Service (AKS) cluster DNS prefix should meet naming requirements. | GA
 AZR-000041 | [Azure.AKS.ContainerInsights](Azure.AKS.ContainerInsights.md) | Enable Container insights to monitor AKS cluster workloads. | GA
 AZR-000042 | [Azure.APIM.HTTPEndpoint](Azure.APIM.HTTPEndpoint.md) | Enforce HTTPS for communication to API clients. | GA
-AZR-000043 | [Azure.APIM.APIDescriptors](Azure.APIM.APIDescriptors.md) | API Management APIs should have a display name and description. | GA
+AZR-000043 | [Azure.APIM.APIDescriptors](Azure.APIM.APIDescriptors.md) | APIs should have a display name and description. | GA
 AZR-000044 | [Azure.APIM.HTTPBackend](Azure.APIM.HTTPBackend.md) | Use HTTPS for communication to backend services. | GA
 AZR-000045 | [Azure.APIM.EncryptValues](Azure.APIM.EncryptValues.md) | Encrypt all API Management named values with Key Vault secrets. | GA
 AZR-000046 | [Azure.APIM.ProductSubscription](Azure.APIM.ProductSubscription.md) | Configure products to require a subscription. | GA
@@ -199,7 +199,7 @@ AZR-000175 | [Azure.Search.ManagedIdentity](Azure.Search.ManagedIdentity.md) | C
 AZR-000176 | [Azure.Search.Name](Azure.Search.Name.md) | AI Search service names should meet naming requirements. | GA
 AZR-000177 | [Azure.ServiceBus.Usage](Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | GA
 AZR-000178 | [Azure.ServiceBus.DisableLocalAuth](Azure.ServiceBus.DisableLocalAuth.md) | Authenticate Service Bus publishers and consumers with Entra ID identities. | GA
-AZR-000179 | [Azure.ServiceFabric.AAD](Azure.ServiceFabric.AAD.md) | Use Azure Active Directory (AAD) client authentication for Service Fabric clusters. | GA
+AZR-000179 | [Azure.ServiceFabric.AAD](Azure.ServiceFabric.AAD.md) | Use Entra ID client authentication for Service Fabric clusters. | GA
 AZR-000180 | [Azure.SignalR.Name](Azure.SignalR.Name.md) | SignalR service instance names should meet naming requirements. | GA
 AZR-000181 | [Azure.SignalR.ManagedIdentity](Azure.SignalR.ManagedIdentity.md) | Configure SignalR Services to use managed identities to access Azure resources securely. | GA
 AZR-000182 | [Azure.SignalR.SLA](Azure.SignalR.SLA.md) | Use SKUs that include an SLA when configuring SignalR Services. | GA
@@ -389,7 +389,7 @@ AZR-000365 | [Azure.APIM.CORSPolicy](Azure.APIM.CORSPolicy.md) | Avoid using wil
 AZR-000366 | [Azure.SQLMI.AADOnly](Azure.SQLMI.AADOnly.md) | Ensure Azure AD-only authentication is enabled with Azure SQL Managed Instance. | GA
 AZR-000367 | [Azure.SQLMI.ManagedIdentity](Azure.SQLMI.ManagedIdentity.md) | Ensure managed identity is used to allow support for Azure AD authentication. | GA
 AZR-000368 | [Azure.SQLMI.AAD](Azure.SQLMI.AAD.md) | Use Azure Active Directory (AAD) authentication with Azure SQL Managed Instance. | GA
-AZR-000369 | [Azure.SQL.AADOnly](Azure.SQL.AADOnly.md) | Ensure Azure AD-only authentication is enabled with Azure SQL Database. | GA
+AZR-000369 | [Azure.SQL.AADOnly](Azure.SQL.AADOnly.md) | Ensure Entra ID only authentication is enabled with Azure SQL Database. | GA
 AZR-000370 | [Azure.AKS.DefenderProfile](Azure.AKS.DefenderProfile.md) | Enable the Defender profile with Azure Kubernetes Service (AKS) cluster. | GA
 AZR-000371 | [Azure.APIM.PolicyBase](Azure.APIM.PolicyBase.md) | Base element for any policy element in a section should be configured. | GA
 AZR-000372 | [Azure.Defender.Cspm](Azure.Defender.Cspm.md) | Enable Microsoft Defender Cloud Security Posture Management Standard plan. | GA

@@ -718,7 +718,7 @@ metadata:
 spec:
   configuration:
     # Configure minimum AKS cluster version
-    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.27.9'
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.28.9'
   rule:
     tag:
       release: GA
