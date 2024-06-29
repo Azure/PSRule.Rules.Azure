@@ -113,6 +113,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("pickZones", PickZones),
             new FunctionDescriptor("providers", Providers),
             new FunctionDescriptor("reference", Reference),
+            new FunctionDescriptor("references", References),
             new FunctionDescriptor("resourceId", ResourceId),
             new FunctionDescriptor("subscriptionResourceId", SubscriptionResourceId),
             new FunctionDescriptor("tenantResourceId", TenantResourceId),
@@ -1011,6 +1012,37 @@ namespace PSRule.Rules.Azure.Data.Template
             return context.TryGetResource(resourceId, out var resourceValue)
                 ? GetReferenceResult(resourceValue, full)
                 : full ? new Mock.MockResource(resourceId) : new Mock.MockResource(resourceId)["properties"];
+        }
+
+        /// <summary>
+        /// references(symbolic name of a resource collection, ['Full', 'Properties'])
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/templates/template-functions-resource#references"/>.
+        /// </remarks>
+        internal static object References(ITemplateContext context, object[] args)
+        {
+            var argCount = CountArgs(args);
+            if (argCount is < 1 or > 2)
+                throw ArgumentsOutOfRange(nameof(References), args);
+
+            string fullValue = null;
+            var full = argCount == 2 && ExpressionHelpers.TryString(args[1], out fullValue) && string.Equals(fullValue, PROPERTY_FULL, StringComparison.OrdinalIgnoreCase);
+            if (argCount == 2 && !full && !string.Equals(fullValue, PROPERTY_PROPERTIES, StringComparison.OrdinalIgnoreCase))
+                throw ArgumentFormatInvalid(nameof(References));
+
+            // Get symbolic name
+            if (!ExpressionHelpers.TryString(args[0], out var symbolicName))
+                throw ArgumentFormatInvalid(nameof(References));
+
+            if (!context.TryGetResourceCollection(symbolicName, out var resources))
+                throw ArgumentInvalidResourceCollection(nameof(References), symbolicName);
+
+            var result = new object[resources.Length];
+            for (var i = 0; i < resources.Length; i++)
+                result[i] = GetReferenceResult(resources[i], full);
+
+            return result;
         }
 
         private static object GetReferenceResult(IResourceValue resource, bool full)
@@ -2479,6 +2511,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 expression,
                 string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ArgumentNullNotExpected, expression)
             );
+        }
+
+        private static Exception ArgumentInvalidResourceCollection(string v, string symbolicName)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion Exceptions

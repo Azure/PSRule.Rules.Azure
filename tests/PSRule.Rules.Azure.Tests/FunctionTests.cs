@@ -7,6 +7,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Security.Cryptography.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
@@ -808,6 +809,29 @@ namespace PSRule.Rules.Azure
             Assert.Equal(string.Empty, actual.Path);
             Assert.Equal(parentId, actual["id"].Value<string>());
             Assert.Equal("a", actual["name"].Value<string>());
+        }
+
+        [Fact]
+        [Trait(TRAIT, TRAIT_RESOURCE)]
+        public void References()
+        {
+            var context = GetContext();
+            var resourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Unit.Test/type/a";
+            var resource = new ResourceValue(resourceId, "a-0", "Unit.Test/type", "child_loop[0]", new JObject(), null);
+            context.AddResource(resource);
+
+            var symbol = DeploymentSymbol.NewArray("child_loop");
+            symbol.Configure(resource);
+            context.AddSymbol(symbol);
+
+            var actual = (Functions.References(context, new object[] { "child_loop" }) as object[]).OfType<Mock.MockObject>().ToArray();
+            Assert.NotNull(actual);
+
+            actual = (Functions.References(context, new object[] { "child_loop", "Full" }) as object[]).OfType<Mock.MockObject>().ToArray();
+            Assert.NotNull(actual);
+
+            Assert.Throws<ExpressionArgumentException>(() => Functions.References(context, null));
+            Assert.Throws<ExpressionArgumentException>(() => Functions.References(context, new object[] { "Unit.Test/type", "test" }));
         }
 
         [Fact]

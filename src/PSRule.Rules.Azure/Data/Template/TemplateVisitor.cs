@@ -221,16 +221,32 @@ namespace PSRule.Rules.Azure.Data.Template
                 _ResourceIds.Remove(resource.Id);
             }
 
-            public bool TryGetResource(string resourceId, out IResourceValue resource)
+            /// <inheritdoc/>
+            public bool TryGetResource(string nameOrResourceId, out IResourceValue resource)
             {
-                if (_Symbols.TryGetValue(resourceId, out var symbol))
-                    resourceId = symbol.GetId(0);
+                if (_Symbols.TryGetValue(nameOrResourceId, out var symbol))
+                    nameOrResourceId = symbol.GetId(0);
 
-                if (_ResourceIds.TryGetValue(resourceId, out resource))
+                if (_ResourceIds.TryGetValue(nameOrResourceId, out resource))
                     return true;
 
                 resource = null;
                 return false;
+            }
+
+            /// <inheritdoc/>
+            public bool TryGetResourceCollection(string symbolicName, out IResourceValue[] resources)
+            {
+                resources = null;
+                if (!_Symbols.TryGetValue(symbolicName, out var symbol) || symbol is not ArrayDeploymentSymbol array)
+                    return false;
+
+                var ids = array.GetIds();
+                resources = new IResourceValue[ids.Length];
+                for (var i = 0; i < ids.Length; i++)
+                    resources[i] = _ResourceIds[ids[i]];
+
+                return true;
             }
 
             public void AddOutput(string name, JObject output)

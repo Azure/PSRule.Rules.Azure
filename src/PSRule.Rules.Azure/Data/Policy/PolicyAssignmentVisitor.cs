@@ -220,6 +220,12 @@ namespace PSRule.Rules.Azure.Data.Policy
                 return false;
             }
 
+            public bool TryGetResourceCollection(string symbolicName, out IResourceValue[] resources)
+            {
+                resources = null;
+                return false;
+            }
+
             internal bool TryParameterAssignment(string parameterName, out JToken value)
             {
                 return _ParameterAssignments.TryGetValue(parameterName, out value);

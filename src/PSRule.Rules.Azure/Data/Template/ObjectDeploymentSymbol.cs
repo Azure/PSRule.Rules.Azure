@@ -1,11 +1,11 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 namespace PSRule.Rules.Azure.Data.Template
 {
     internal sealed class ObjectDeploymentSymbol : DeploymentSymbol, IDeploymentSymbol
     {
-        private ResourceValue _Resource;
+        private string _ResourceId;
 
         public ObjectDeploymentSymbol(string name, ResourceValue resource)
             : base(name)
@@ -18,12 +18,12 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public void Configure(ResourceValue resource)
         {
-            _Resource = resource;
+            _ResourceId = resource.Id;
         }
 
         public string GetId(int index)
         {
-            return _Resource.Id;
+            return _ResourceId;
         }
     }
 }
