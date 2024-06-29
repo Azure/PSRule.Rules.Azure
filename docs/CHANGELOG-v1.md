@@ -37,7 +37,7 @@ What's changed since pre-release v1.38.0-B0034:
 - Bug fixes:
   - Fixed support for `references` function by @BernieWhite.
     [#2922](https://github.com/Azure/PSRule.Rules.Azure/issues/2922)
-  - Fixed group by subscription casing when exporting in-flight resource by @BernieWhite.
+  - Fixed group by subscription casing when exporting in-flight resources by @BernieWhite.
     [#2957](https://github.com/Azure/PSRule.Rules.Azure/issues/2957)
 
 ## v1.38.0-B0034 (pre-release)
