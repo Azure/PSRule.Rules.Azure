@@ -95,7 +95,7 @@ namespace PSRule.Rules.Azure.Pipeline
             else
             {
                 // Group results into subscriptions a write each to a new file.
-                foreach (var group in output.GroupBy((r) => r[PROPERTY_SUBSCRIPTIONID]))
+                foreach (var group in output.GroupBy((r) => r[PROPERTY_SUBSCRIPTIONID].Value<string>().ToLowerInvariant()))
                 {
                     var filePath = Path.Combine(_OutputPath, string.Concat(group.Key, ".json"));
                     File.WriteAllText(filePath, JsonConvert.SerializeObject(group.ToArray()), Encoding.UTF8);
