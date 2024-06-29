@@ -1264,6 +1264,27 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(items[1].Value<JObject>());
         }
 
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2922
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenReferencesUsed_ReturnsItems()
+        {
+            _ = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.1.json"), null, out var templateContext);
+
+            Assert.True(templateContext.RootDeployment.TryOutput("items", out JObject output));
+            var items = output["value"].Value<JArray>();
+
+            Assert.Equal("child-0", items[0].Value<string>());
+            Assert.Equal("child-1", items[1].Value<string>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("itemsAsString", out output));
+            items = output["value"].Value<JArray>();
+
+            Assert.Equal("child-0", items[0].Value<string>());
+            Assert.Equal("child-1", items[1].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

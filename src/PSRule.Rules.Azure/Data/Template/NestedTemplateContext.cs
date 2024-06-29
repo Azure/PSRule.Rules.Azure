@@ -57,11 +57,19 @@ namespace PSRule.Rules.Azure.Data.Template
             return _Inner.TryVariable(variableName, out value);
         }
 
-        public bool TryGetResource(string resourceId, out IResourceValue resource)
+        /// <inheritdoc/>
+        public bool TryGetResource(string nameOrResourceId, out IResourceValue resource)
         {
-            return _Inner.TryGetResource(resourceId, out resource);
+            return _Inner.TryGetResource(nameOrResourceId, out resource);
         }
 
+        /// <inheritdoc/>
+        public bool TryGetResourceCollection(string symbolicName, out IResourceValue[] resources)
+        {
+            return _Inner.TryGetResourceCollection(symbolicName, out resources);
+        }
+
+        /// <inheritdoc/>
         public void WriteDebug(string message, params object[] args)
         {
             _Inner.WriteDebug(message, args);

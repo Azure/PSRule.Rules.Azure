@@ -1,13 +1,14 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections.Generic;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
     internal sealed class ArrayDeploymentSymbol : DeploymentSymbol, IDeploymentSymbol
     {
-        private List<ResourceValue> _Resources;
+        private List<string> _Ids;
 
         public ArrayDeploymentSymbol(string name)
             : base(name) { }
@@ -16,13 +17,18 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public void Configure(ResourceValue resource)
         {
-            _Resources ??= new List<ResourceValue>();
-            _Resources.Add(resource);
+            _Ids ??= new List<string>();
+            _Ids.Add(resource.Id);
         }
 
         public string GetId(int index)
         {
-            return _Resources[index].Id;
+            return _Ids[index];
+        }
+
+        public string[] GetIds()
+        {
+            return _Ids?.ToArray() ?? Array.Empty<string>();
         }
     }
 }

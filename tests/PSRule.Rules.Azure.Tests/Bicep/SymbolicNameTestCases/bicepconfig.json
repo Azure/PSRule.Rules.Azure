@@ -1,0 +1,6 @@
+{
+  "experimentalFeaturesEnabled": {
+    "optionalModuleNames": true,
+    "symbolicNameCodegen": true
+  }
+}

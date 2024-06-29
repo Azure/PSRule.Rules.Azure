@@ -1,0 +1,71 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.28.1.47646",
+      "templateHash": "1381069533852459453"
+    }
+  },
+  "resources": {
+    "child_loop": {
+      "copy": {
+        "name": "child_loop",
+        "count": "[length(range(0, 2))]"
+      },
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "[format('deploy-{0}', copyIndex())]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "index": {
+            "value": "[copyIndex()]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.28.1.47646",
+              "templateHash": "15231390219392886169"
+            }
+          },
+          "parameters": {
+            "index": {
+              "type": "int"
+            }
+          },
+          "resources": {},
+          "outputs": {
+            "childValue": {
+              "type": "string",
+              "value": "[format('child-{0}', parameters('index'))]"
+            }
+          }
+        }
+      }
+    }
+  },
+  "outputs": {
+    "items": {
+      "type": "array",
+      "value": "[map(references('child_loop'), lambda('item', lambdaVariables('item').outputs.childValue.value))]"
+    },
+    "itemsAsString": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "value": "[map(references('child_loop'), lambda('item', lambdaVariables('item').outputs.childValue.value))]"
+    }
+  }
+}

@@ -34,6 +34,9 @@ What's changed since pre-release v1.38.0-B0034:
 - Engineering:
   - Quality updates to rule documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+- Bug fixes:
+  - Fixed support for `references` function by @BernieWhite.
+    [#2922](https://github.com/Azure/PSRule.Rules.Azure/issues/2922)
 
 ## v1.38.0-B0034 (pre-release)
 

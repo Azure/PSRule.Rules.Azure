@@ -57,8 +57,27 @@ namespace PSRule.Rules.Azure.Data.Template
 
         bool TryDefinition(string type, out ITypeDefinition definition);
 
-        bool TryGetResource(string resourceId, out IResourceValue resource);
+        /// <summary>
+        /// Try to get a resource from the current context.
+        /// </summary>
+        /// <param name="nameOrResourceId">The symbolic name or resource identifier.</param>
+        /// <param name="resource">A resource.</param>
+        /// <returns>Returns <c>true</c> when the resource exists.</returns>
+        bool TryGetResource(string nameOrResourceId, out IResourceValue resource);
 
+        /// <summary>
+        /// Try to get a resource collection from the current context.
+        /// </summary>
+        /// <param name="symbolicName">The symbolic name for the collection.</param>
+        /// <param name="resources">A collection of resources.</param>
+        /// <returns>Returns <c>true</c> when the symbolic name exists.</returns>
+        bool TryGetResourceCollection(string symbolicName, out IResourceValue[] resources);
+
+        /// <summary>
+        /// Write a debug message for the current execution context.
+        /// </summary>
+        /// <param name="message">The format message.</param>
+        /// <param name="args">Additional arguments for the format message.</param>
         void WriteDebug(string message, params object[] args);
 
         /// <summary>
