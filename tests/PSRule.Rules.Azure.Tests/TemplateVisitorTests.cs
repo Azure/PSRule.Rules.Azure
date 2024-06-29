@@ -1270,7 +1270,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void ProcessTemplate_WhenReferencesUsed_ReturnsItems()
         {
-            _ = ProcessTemplate(GetSourcePath("Bicep\\SymbolicNameTestCases\\Tests.Bicep.1.json"), null, out var templateContext);
+            _ = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.1.json"), null, out var templateContext);
 
             Assert.True(templateContext.RootDeployment.TryOutput("items", out JObject output));
             var items = output["value"].Value<JArray>();
