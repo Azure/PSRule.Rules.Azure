@@ -31,6 +31,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.38.0-B0034:
 
+- New features:
+  - Added March 2024 baselines `Azure.GA_2024_06` and `Azure.Preview_2024_06` by @BernieWhite.
+    [#2961](https://github.com/Azure/PSRule.Rules.Azure/issues/2961)
+    - Includes rules released before or during June 2024.
+    - Marked `Azure.GA_2024_03` and `Azure.Preview_2024_03` baselines as obsolete.
 - Engineering:
   - Quality updates to rule documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
