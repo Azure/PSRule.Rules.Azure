@@ -11,7 +11,7 @@ This article provides troubleshooting instructions for common errors.
 
 When expanding Bicep source files you may get an error including a _BCPnnn_ code similar to the following:
 
-!!! Error
+!!! Message
 
     Exception calling "GetResources" with "3" argument(s): "Bicep (0.14.46) compilation of '<file>' failed with: Error BCP057: The name "storageAccountName" does not exist in the current context.
 
@@ -68,7 +68,7 @@ If you are using a Bicep feature that is not supported by PSRule for Azure, plea
 
 When expanding Bicep source files you may get an error similar to the following:
 
-!!! Error
+!!! Message
 
     Bicep (0.4.1124) compilation of 'C:\temp\deploy.bicep' failed with: Bicep compilation hasn't completed within the timeout window. This can be caused by errors or warnings. Check the Bicep output by running bicep build and addressing any issues.
 
@@ -149,7 +149,7 @@ There is a few common causes of this issue including:
 
 You may find while editing a `.json` parameter file the root `metadata` property is flagged with a warning.
 
-!!! Warning
+!!! Message
 
     The property 'metadata' is not allowed.
 
@@ -173,9 +173,9 @@ However, the top level `metadata` property is ignored by Azure Resource Manager 
 
 When running PSRule or importing `PSRule.Rules.Azure` on the command-line you see a message similar to the following:
 
-!!! Quote
+!!! Message
 
-    WARNING: To use PSRule for Azure export cmdlets please install Az.Resources.
+    To use PSRule for Azure export cmdlets please install Az.Resources.
 
 
 ## An earlier version of Az.Accounts is imported
@@ -183,7 +183,7 @@ When running PSRule or importing `PSRule.Rules.Azure` on the command-line you se
 When running PSRule for Azure in Azure DevOps within the `AzurePowerShell@5` task,
 you may see the following error.
 
-!!! Error
+!!! Message
 
     This module requires Az.Accounts version 2.8.0. An earlier version of
     Az.Accounts is imported in the current PowerShell session. Please open a new
@@ -196,7 +196,7 @@ This error is raised by a chained dependency failure importing a newer version o
 To avoid this issue attempt to install the exact versions of `Az.Resources`.
 In the `AzurePowerShell@5` task before installing PSRule.
 
-```powershell
+```powershell title="PowerShell"
 Install-Module Az.Resources -RequiredVersion '5.6.0' -Force -Scope CurrentUser
 ```
 
@@ -205,7 +205,7 @@ When using export commands from PSRule, you may need to install these modules.
 
 To install these modules, use the following PowerShell command:
 
-```powershell
+```powershell title="PowerShell"
 Install-Module Az.Resources -Force -Scope CurrentUser
 ```
 
@@ -221,13 +221,13 @@ To avoid this issue:
 
 To install the latest module version of PSRule use the following commands:
 
-```powershell
+```powershell title="PowerShell"
 Install-Module -Name PSRule.Rules.Azure -MinimumVersion 1.3.1 -Scope CurrentUser -Force;
 ```
 
 For the PSRule GitHub Action, use **>=1.4.0**.
 
-```yaml
+```yaml title="GitHub Actions"
 - name: Run PSRule analysis
   uses: microsoft/ps-rule@v2.9.0
 ```
