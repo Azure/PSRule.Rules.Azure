@@ -44,6 +44,10 @@ What's changed since pre-release v1.38.0-B0034:
     [#2922](https://github.com/Azure/PSRule.Rules.Azure/issues/2922)
   - Fixed group by subscription casing when exporting in-flight resources by @BernieWhite.
     [#2957](https://github.com/Azure/PSRule.Rules.Azure/issues/2957)
+  - Fixed install Az.Resources warning by @BernieWhite.
+    [#2887](https://github.com/Azure/PSRule.Rules.Azure/issues/2887)
+    - Added new configuration option set by environment variable to suppress the warning.
+    - Set `PSRULE_AZURE_RESOURCE_MODULE_NOWARN` to `true` to suppress the warning.
 
 ## v1.38.0-B0034 (pre-release)
 

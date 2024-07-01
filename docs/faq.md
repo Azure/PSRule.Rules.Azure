@@ -16,10 +16,12 @@ For general FAQ see [PSRule - Frequently Asked Questions (FAQ)][ps-rule-faq], in
 
 !!! Note
     If you have a question that is not answered here, please [join or start a discussion][discussion].
+    For common issues and workarounds, please see [troubleshooting][19].
 
   [discussion]: https://github.com/Azure/PSRule.Rules.Azure/discussions
   [13]: https://microsoft.github.io/PSRule/v2/faq/#how-do-exclude-or-ignore-files-from-being-processed
   [14]: https://microsoft.github.io/PSRule/v2/faq/#how-do-i-disable-or-suppress-the-not-processed-warning
+  [19]: troubleshooting.md
 
 ## What is a rule?
 

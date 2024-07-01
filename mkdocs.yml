@@ -87,9 +87,11 @@ nav:
       - Changes and versioning: versioning.md
     - Support: support.md
   - Setup:
-    - Configuring options: setup/configuring-options.md
-    - Configuring rule defaults: setup/configuring-rules.md
-    - Configuring expansion: setup/configuring-expansion.md
+    - Configuring options:
+      - Index: setup/index.md
+      - Configuring rule defaults: setup/configuring-rules.md
+      - Configuring expansion: setup/configuring-expansion.md
+      - Configuring exports: setup/configuring-exports.md
     - Setup Bicep: setup/setup-bicep.md
     - Setup Azure Monitor logs: setup/setup-azure-monitor-logs.md
     - Integrations: integrations.md
@@ -135,6 +137,7 @@ plugins:
     enable_creation_date: true
     fallback_to_build_date: true
 - git-committers:
+    enabled: !ENV [GITHUB_ACTIONS, false]
     repository: Azure/PSRule.Rules.Azure
     branch: main
 - search
@@ -147,6 +150,7 @@ plugins:
       using-metadata.md: using-templates.md
       customization/index.md: customization/storing-custom-rules.md
       en/asb-v3.md: en/mcsb-v1.md
+      setup/configuring-options.md: setup/index.md
 
 hooks:
   - docs/hooks/shortcodes.py

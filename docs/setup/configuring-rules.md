@@ -14,7 +14,9 @@ Earlier versions of PSRule for Azure will ignore the configuration option.
     Each of these configuration options are set within the `ps-rule.yaml` file.
     To learn how to set configuration options see [Configuring options][1].
 
-  [1]: configuring-options.md
+  [1]: index.md
+
+## Available options
 
 ### AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES
 
@@ -603,74 +605,6 @@ configuration:
   AZURE_LINUX_OS_OFFERS:
   - 'aLinuxOffer'
   - 'anotherLinuxOffer'
-```
-
-### AZURE_POLICY_IGNORE_LIST
-
-<!-- module:version v1.21.0 -->
-
-This configuration option configures a custom list policy definitions to ignore when exporting policy to rules.
-In addition to the custom list, a built-in list of policies are ignored.
-The built-in list can be found [here](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/policy-ignore.json).
-
-Configure this option to ignore policy definitions that:
-
-- Already have a rule defined.
-- Are not relevant to testing Infrastructure as Code.
-
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_POLICY_IGNORE_LIST: array
-```
-
-Default:
-
-```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_POLICY_IGNORE_LIST configuration option
-configuration:
-  AZURE_POLICY_IGNORE_LIST: []
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Add a custom policy definition to ignore
-  AZURE_POLICY_IGNORE_LIST:
-  - '/providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9'
-  - '/providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0'
-```
-
-### AZURE_POLICY_RULE_PREFIX
-
-<!-- module:version v1.20.0 -->
-
-This configuration option sets the prefix for names of exported rules.
-Configure this option to change the prefix, which defaults to `Azure`.
-
-This configuration option will be ignored when `-Prefix` is used with `Export-AzPolicyAssignmentRuleData`.
-
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_POLICY_RULE_PREFIX: string
-```
-
-Default:
-
-```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_POLICY_RULE_PREFIX configuration option
-configuration:
-  AZURE_POLICY_RULE_PREFIX: Azure
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Override the prefix of exported policy rules
-  AZURE_POLICY_RULE_PREFIX: AzureCustomPrefix
 ```
 
 ### AZURE_POLICY_WAIVER_MAX_EXPIRY

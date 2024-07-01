@@ -8,9 +8,17 @@ PSRule for Azure comes with many configuration options.
 Additionally, the PSRule engine includes several options that apply to all rules.
 You can visit the [about_PSRule_Options][1] topic to read about general PSRule options.
 
+!!! Abstract
+    This topic covers the basics of configuration options.
+    A list of configuration options is available for:
+
+    - [Configuring rule defaults](configuring-rules.md)
+    - [Configuring expansion](configuring-expansion.md)
+    - [Configuring exports](configuring-exports.md)
+
   [1]: https://microsoft.github.io/PSRule/v2/concepts/PSRule/en-US/about_PSRule_Options/
 
-## Setting options
+## Setting options in YAML
 
 Configuration options are set within the `ps-rule.yaml` file.
 PSRule will automatically find this file within the current working directory.
@@ -49,7 +57,7 @@ Use comments to add context.
       AZURE_BICEP_CHECK_TOOL: true
 
       # Optionally, configure the minimum version of the Bicep CLI.
-      AZURE_BICEP_MINIMUM_VERSION: '0.16.2'
+      AZURE_BICEP_MINIMUM_VERSION: '0.28.1'
 
       # Configure the minimum AKS cluster version.
       AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.28.9'

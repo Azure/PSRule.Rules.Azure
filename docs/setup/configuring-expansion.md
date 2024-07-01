@@ -7,13 +7,13 @@ author: BernieWhite
 PSRule for Azure can automatically resolve Azure resource context at runtime from infrastructure code.
 This feature can be enabled by using the following configuration options.
 
-## Configuration
-
 !!! Tip
     Each of these configuration options are set within the `ps-rule.yaml` file.
     To learn how to set configuration options see [Configuring options][1].
 
   [1]: configuring-options.md
+
+## Available options
 
 ### Parameter file expansion
 

@@ -76,25 +76,45 @@ This is explained in [Setup your Bicep development environment][3].
 
 To enable this option, set the `PSRULE_AZURE_BICEP_USE_AZURE_CLI` environment variable to `true`.
 
-!!! Example
+Syntax:
 
-    ```bash title="Bash"
-    export PSRULE_AZURE_BICEP_USE_AZURE_CLI=true
-    ```
+```bash title="Environment variable"
+PSRULE_AZURE_BICEP_USE_AZURE_CLI: boolean
+```
 
-    ```powershell title="PowerShell"
-    $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true'
-    ```
+Default:
 
-    ```yaml title="GitHub Actions"
+```bash title="Environment variable"
+PSRULE_AZURE_BICEP_USE_AZURE_CLI: false
+```
+
+Example:
+
+=== "GitHub Actions"
+
+    ```yaml
     env:
       PSRULE_AZURE_BICEP_USE_AZURE_CLI: true
     ```
 
-    ```yaml title="Azure Pipelines"
+=== "Azure Pipelines"
+
+    ```yaml
     variables:
     - name: PSRULE_AZURE_BICEP_USE_AZURE_CLI
       value: true
+    ```
+
+=== "PowerShell"
+
+    ```powershell
+    $Env:PSRULE_AZURE_BICEP_USE_AZURE_CLI = 'true'
+    ```
+
+=== "Bash"
+
+    ```bash
+    export PSRULE_AZURE_BICEP_USE_AZURE_CLI=true
     ```
 
   [3]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/install#azure-cli
@@ -158,7 +178,7 @@ configuration:
 
 ### Checking Bicep version
 
-:octicons-milestone-24: v1.25.0
+<!-- module:version v1.25.0 -->
 
 To use Bicep files with PSRule for Azure:
 
@@ -183,7 +203,7 @@ configuration:
 
 ### Configuring minimum version
 
-:octicons-milestone-24: v1.25.0
+<!-- module:version v1.25.0 -->
 
 The Azure Bicep CLI is updated regularly, with new features and bug fixes.
 You must use a version of the Bicep CLI that supports the features you are using.
