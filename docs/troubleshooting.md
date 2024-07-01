@@ -177,6 +177,12 @@ When running PSRule or importing `PSRule.Rules.Azure` on the command-line you se
 
     To use PSRule for Azure export cmdlets please install Az.Resources.
 
+This warning flags that when running `Export-*` cmdlets for PSRule for Azure, the `Az.Resources` module is required.
+If you intend to call these cmdlets, first install the `Az.Resources` module.
+Otherwise this warning message can be ignored.
+
+To suppress the warning configure the `PSRULE_AZURE_RESOURCE_MODULE_NOWARN` environment variable to `true`.
+For more details see [Configuring exports](setup/configuring-exports.md#psrule_azure_resource_module_nowarn).
 
 ## An earlier version of Az.Accounts is imported
 
@@ -197,7 +203,7 @@ To avoid this issue attempt to install the exact versions of `Az.Resources`.
 In the `AzurePowerShell@5` task before installing PSRule.
 
 ```powershell title="PowerShell"
-Install-Module Az.Resources -RequiredVersion '5.6.0' -Force -Scope CurrentUser
+Install-Module Az.Resources -RequiredVersion '7.1.0' -Force -Scope CurrentUser
 ```
 
 From PSRule for Azure v1.16.0, `Az.Accounts` and `Az.Resources` are no longer installed as dependencies.
