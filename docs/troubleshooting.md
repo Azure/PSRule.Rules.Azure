@@ -169,6 +169,15 @@ This doesn't affect the workings of the parameter file or deployment.
 The reason for the warning is that the `metadata` property has not been added to the parameter file JSON schema.
 However, the top level `metadata` property is ignored by Azure Resource Manager when deploying a template.
 
+## A warning is reported for Az.Resources
+
+When running PSRule or importing `PSRule.Rules.Azure` on the command-line you see a message similar to the following:
+
+!!! Quote
+
+    WARNING: To use PSRule for Azure export cmdlets please install Az.Resources.
+
+
 ## An earlier version of Az.Accounts is imported
 
 When running PSRule for Azure in Azure DevOps within the `AzurePowerShell@5` task,
