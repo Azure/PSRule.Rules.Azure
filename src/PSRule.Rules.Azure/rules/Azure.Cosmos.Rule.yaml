@@ -109,7 +109,7 @@ spec:
     equals: Disabled
 
 ---
-# Synopsis: Cosmos DB has continuous backup configured.
+# Synopsis: Enable continuous backup on Cosmos DB accounts.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Rule
 metadata:
