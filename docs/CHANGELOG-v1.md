@@ -31,7 +31,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Cosmos DB:
-    - Verify that Cosmos DB have continuous backup configured by @BenjaminEngeset.
+    - Verify that Cosmos DB accounts have continuous backup configured by @BenjaminEngeset.
       [#2954](https://github.com/Azure/PSRule.Rules.Azure/issues/2954)
 
 ## v1.38.0-B0068 (pre-release)
