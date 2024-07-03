@@ -14,16 +14,20 @@ Enable continuous backup on Cosmos DB accounts.
 
 ## DESCRIPTION
 
-Continuous backup for Azure Cosmos DB captures changes to the data in real-time, ensuring that you always have the most up-to-date backup. Data can be restored to any point in time within the retention period, offering flexibility and precision in data recovery.
+Continuous backup for Azure Cosmos DB captures changes in near real-time, ensuring that you always have the most up-to-date backup.
+Data can be restored to any restorable timestamp within the retention period.
 
-Data can be restored to any point in time within the retention period.
+Benefits of continuous backup include:
 
-Benefits of continuous backup:
+- **Accidental Write or Delete Recovery**: Quickly recover from unintended changes within a container.
+- **Comprehensive Restoration**: Restore deleted accounts, databases, or containers.
+- **Regional Flexibility**: Restore data into any region where backups existed at the desired restore point.
+- **Ease of Use**: Restore data directly through the Azure portal without needing support requests.
 
-- Accidental Write or Delete Recovery: Quickly recover from unintended changes within a container.
--	Comprehensive Restoration: Restore deleted accounts, databases, or containers.
--	Regional Flexibility: Restore data into any region where backups existed at the desired restore point.
-- Ease of Use: Restore data directly through the Azure portal without needing support requests.
+These features typically improve your:
+
+- **Recovery Time Objective (RTO)**: How long it take to recover, and systems are back online.
+- **Recovery Point Objective (RPO)**: The point in time you can recover to.
 
 Continuous backup involves additional costs, so it is recommended for mission-critical applications with frequent data changes.
 
