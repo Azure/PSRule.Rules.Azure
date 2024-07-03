@@ -77,7 +77,9 @@ For example:
 
 To configure continuous backup for Cosmos DB:
 
-- Configure the `properties.backupPolicy` object.
+- Set the `properties.backupPolicy.type` property to `Continuous`.
+- Set the `properties.backupPolicy.continuousModeProperties.tier` property to a valid tier.
+  Valid tiers include `Continuous7Days` and `Continuous30Days`.
 
 For example:
 
