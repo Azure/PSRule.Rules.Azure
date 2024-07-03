@@ -2015,6 +2015,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Filter), args);
 
             args[0] = GetExpression(context, args[0]);
+            if (args[0] is IMock && ExpressionHelpers.TryJArray(args[0], out var mockArray))
+                return mockArray;
+
             if (!ExpressionHelpers.TryArray(args[0], out var inputArray))
                 throw ArgumentFormatInvalid(nameof(Filter));
 
