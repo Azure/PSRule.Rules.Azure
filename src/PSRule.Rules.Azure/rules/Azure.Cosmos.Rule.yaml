@@ -108,4 +108,22 @@ spec:
     field: properties.publicNetworkAccess
     equals: Disabled
 
+---
+# Synopsis: Cosmos DB has continuous backup configured.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Cosmos.ContinuousBackup
+  ref: AZR-000439
+  tags:
+    release: GA
+    ruleSet: 2024_09
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+    - Microsoft.DocumentDb/databaseAccounts
+  condition:
+    field: properties.backupPolicy.type
+    equals: Continuous
+
 #endregion Rules

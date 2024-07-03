@@ -105,6 +105,23 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'nosql-C';
         }
+
+        It 'Azure.Cosmos.ContinuousBackup' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Cosmos.ContinuousBackup' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'graph-A', 'graph-B';
+
+            $ruleResult[0].Reason | Should -Be "Path properties.backupPolicy.type: The field 'properties.backupPolicy.type' does not exist.";
+            $ruleResult[1].Reason | Should -Be "Path properties.backupPolicy.type: Is set to 'Periodic'.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'nosql-A', 'nosql-B', 'nosql-C';
+        }
     }
 
     Context 'Resource name - Azure.Cosmos.AccountName' {
