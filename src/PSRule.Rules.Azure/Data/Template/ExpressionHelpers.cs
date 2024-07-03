@@ -565,6 +565,37 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
+        internal static bool TryJArray(object o, out JArray value)
+        {
+            value = null;
+            if (o is Array array)
+            {
+                value = new JArray(array.OfType<object>());
+                return true;
+            }
+            else if (o is JArray jArray)
+            {
+                value = jArray;
+                return true;
+            }
+            else if (o is IEnumerable<string>)
+            {
+                value = new JArray(GetStringArray(o));
+                return true;
+            }
+            else if (o is IEnumerable<long> or IEnumerable<int>)
+            {
+                value = new JArray(GetLongArray(o));
+                return true;
+            }
+            else if (o is Mock.MockUnknownObject mockObject && mockObject.Count == 0 && mockObject.TryMutateTo(TypePrimitive.Array, out var replaced) && replaced is JArray jArrayMock)
+            {
+                value = jArrayMock;
+                return true;
+            }
+            return false;
+        }
+
         internal static bool IsArray(object o)
         {
             return o is JArray or Array or Mock.MockArray;

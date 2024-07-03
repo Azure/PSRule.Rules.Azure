@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.20.4.51522",
-      "templateHash": "12689734029213343259"
+      "version": "0.28.1.47646",
+      "templateHash": "15571924133724598642"
     }
   },
   "parameters": {
@@ -98,8 +98,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.20.4.51522",
-              "templateHash": "11278873704136171034"
+              "version": "0.28.1.47646",
+              "templateHash": "5110598302669187937"
             }
           },
           "variables": {
@@ -169,8 +169,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.20.4.51522",
-              "templateHash": "16150672466446768033"
+              "version": "0.28.1.47646",
+              "templateHash": "12131810097188199000"
             }
           },
           "parameters": {
@@ -206,6 +206,10 @@
     "vnetId": {
       "type": "string",
       "value": "[filter(reference(resourceId('Microsoft.Resources/deployments', 'vnet'), '2022-09-01').outputs.subnets.value, lambda('s', equals(lambdaVariables('s').name, parameters('environment'))))[0].id]"
+    },
+    "mockFilter": {
+      "type": "array",
+      "value": "[filter(reference(format('{0}/providers/microsoft.azurestackhci/edgeDevices/default', resourceId('Microsoft.HybridCompute/machines', 'node1')), '2024-01-01', 'Full').properties.deviceConfiguration.nicDetails, lambda('nic', not(equals(tryGet(lambdaVariables('nic'), 'defaultGateway'), null()))))[0].ip4Address]"
     },
     "dogNames": {
       "type": "array",

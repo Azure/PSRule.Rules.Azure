@@ -116,6 +116,7 @@ Each rule **must** meet the following requirements:
 - The rule name must not be longer than 35 characters.
 - Use a unique `Ref` following the format `AZR-nnnnnnn`.
   Where `nnnnnn` is a sequential number from `000001`.
+  See [how to get the next unique rule ref](#how-to-get-the-next-unique-rule-ref).
 - Have documentation and unit tests.
 - Have a `release` tag either `GA` or `preview`. e.g. `-Tag @{ release = 'GA' }`
   - Rules are marked as `GA` if they relate to generally available Azure features.
@@ -125,13 +126,16 @@ Each rule **must** meet the following requirements:
   - The rule set tag identifies the quarter that the rule was first released.
   - This is used to include rules in quarterly baselines.
   - New rules are included in the next quarterly baseline. i.e. (YYYY_03, YYYY_06, YYYY_09, YYYY_12)
+- Have a `Azure.WAF/pillar` tag identifying the primary WAF pillar the rule aligns to.
+  e.g. `-Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Reliability' }`
+  - If more then one pillar is applicable, the `Azure.WAF/additionalPillars` label can be added on rules.
 - Include an inline `Synopsis: ` comment above each rule.
 
 For example:
 
 ```powershell
 # Synopsis: Consider configuring a managed identity for each API Management instance.
-Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06' } {
+Rule 'Azure.APIM.ManagedIdentity' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security' } {
     $Assert.In($TargetObject, 'Identity.Type', @('SystemAssigned', 'UserAssigned'))
 }
 ```
@@ -146,6 +150,7 @@ metadata:
   tags:
     release: 'GA'
     ruleSet: '2020_06'
+    Azure.WAF/pillar: Security
 spec:
   type:
     - Microsoft.ApiManagement/service
@@ -163,6 +168,15 @@ spec:
   We prefer YAML-based because they are easier for the community read and maintain.
 - Use `-Type` over `-If` pre-conditions when possible.
   Both may be required in some cases.
+
+### How to get the next unique rule ref?
+
+To get the next unique rule ref:
+
+1. Scroll to the bottom of this [reference](https://azure.github.io/PSRule.Rules.Azure/en/rules/) page.
+2. Choose the next available ref number sequence.
+3. Be aware of any existing open PRs that add rules, and choose the next available ref number sequence.
+   If both PRs choose the same rule ref the CI build will fail after one is merged.
 
 ### Adding rule configuration options
 

@@ -34,6 +34,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Verify that Cosmos DB have continuous backup configured by @BenjaminEngeset.
       [#2954](https://github.com/Azure/PSRule.Rules.Azure/issues/2954)
 
+## v1.38.0-B0068 (pre-release)
+
 What's changed since pre-release v1.38.0-B0034:
 
 - New features:
@@ -53,6 +55,8 @@ What's changed since pre-release v1.38.0-B0034:
     [#2887](https://github.com/Azure/PSRule.Rules.Azure/issues/2887)
     - Added new configuration option set by environment variable to suppress the warning.
     - Set `PSRULE_AZURE_RESOURCE_MODULE_NOWARN` to `true` to suppress the warning.
+  - Fixed `filter` on unknown runtime property by @BernieWhite.
+    [#2966](https://github.com/Azure/PSRule.Rules.Azure/issues/2966)
 
 ## v1.38.0-B0034 (pre-release)
 
