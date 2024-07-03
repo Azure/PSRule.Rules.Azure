@@ -6,11 +6,11 @@ resource: Cosmos DB
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.ContinuousBackup/
 ---
 
-# Continuous backup
+# Enable continuous backup policy
 
 ## SYNOPSIS
 
-Cosmos DB has continuous backup configured.
+Enable continuous backup on Cosmos DB accounts.
 
 ## DESCRIPTION
 
