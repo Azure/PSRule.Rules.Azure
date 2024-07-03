@@ -35,7 +35,7 @@ Check the documentation below for important information and limitations.
 
 ## RECOMMENDATION
 
-Consider configuring Azure Cosmos DB with continuous backup mode for enhanced data protection and easier recovery.
+Consider configuring Azure Cosmos DB with continuous backup mode for enhanced data protection (RTO & RPO) and easier recovery.
 
 ## EXAMPLES
 
