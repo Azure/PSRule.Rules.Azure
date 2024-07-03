@@ -4,31 +4,31 @@
 // Tests for lambda expressions
 
 param arrayToTest array = [
-  [ 'one', 'two' ]
-  [ 'three' ]
-  [ 'four', 'five' ]
+  ['one', 'two']
+  ['three']
+  ['four', 'five']
 ]
 
 var dogs = [
   {
     name: 'Evie'
     age: 5
-    interests: [ 'Ball', 'Frisbee' ]
+    interests: ['Ball', 'Frisbee']
   }
   {
     name: 'Casper'
     age: 3
-    interests: [ 'Other dogs' ]
+    interests: ['Other dogs']
   }
   {
     name: 'Indy'
     age: 2
-    interests: [ 'Butter' ]
+    interests: ['Butter']
   }
   {
     name: 'Kira'
     age: 8
-    interests: [ 'Rubs' ]
+    interests: ['Rubs']
   }
 ]
 
@@ -54,16 +54,23 @@ module child2 'Tests.Bicep.13.child2.bicep' = {
 }
 
 output vnetId string = filter(vnet.outputs.subnets, s => s.name == environment)[0].id
+output mockFilter array = (filter(
+  reference(
+    '${resourceId('Microsoft.HybridCompute/machines', 'node1')}/providers/microsoft.azurestackhci/edgeDevices/default',
+    '2024-01-01',
+    'Full'
+  ).properties.deviceConfiguration.nicDetails,
+  nic => nic.?defaultGateway != null
+))[0].ip4Address
 
 // Map
 output dogNames array = map(dogs, dog => dog.name)
 output sayHi array = map(dogs, dog => 'Hello ${dog.name}!')
 output mapObject array = map(range(0, length(dogs)), i => {
-    i: i
-    dog: dogs[i].name
-    greeting: 'Ahoy, ${dogs[i].name}!'
-  }
-)
+  i: i
+  dog: dogs[i].name
+  greeting: 'Ahoy, ${dogs[i].name}!'
+})
 
 // Reduce
 var ages = map(dogs, dog => dog.age)
@@ -74,14 +81,13 @@ output totalAgeAdd1 int = reduce(ages, 1, (cur, next) => cur + next)
 output dogsByAge array = sort(dogs, (a, b) => a.age < b.age)
 
 // To Object
-param numbers array = [ 0, 1, 2, 3 ]
-output objectMap object = toObject([ 123, 456, 789 ], i => '${i / 100}')
+param numbers array = [0, 1, 2, 3]
+output objectMap object = toObject([123, 456, 789], i => '${i / 100}')
 output objectMap2 object = toObject(numbers, i => '${i}', i => {
-    isEven: (i % 2) == 0
-    isGreaterThan2: (i > 2)
-  }
-)
-output objectMapNull object = toObject([ 123, 456, 789, null ], i => '${i}')
+  isEven: (i % 2) == 0
+  isGreaterThan2: (i > 2)
+})
+output objectMapNull object = toObject([123, 456, 789, null], i => '${i}')
 
 // Additional cases map in map
 

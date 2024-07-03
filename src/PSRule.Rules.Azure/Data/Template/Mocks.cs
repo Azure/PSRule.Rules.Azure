@@ -71,6 +71,11 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 return GetSimpleValue<TValue>(this);
             }
+
+            public bool TryMutateTo(TypePrimitive type, out JToken replaced)
+            {
+                return TryMutate(type, this, out replaced);
+            }
         }
 
         internal class MockUnknownArray : MockArray, IUnknownMock
@@ -230,6 +235,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 if (i == -1)
                     i = Count == 0 ? 0 : Count - 1;
+
+                if (i + 1 > Count)
+                    return new MockUnknownObject(IsSecret);
 
                 var t = base[i];
                 return t == null ? new MockUnknownObject(IsSecret) : Mock.FromObject(t);
