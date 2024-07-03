@@ -109,4 +109,4 @@ Azure Cosmos DB API for Cassandra does not support continuous backup mode curren
 
 - [RE:06 Data partitioning](https://learn.microsoft.com/azure/well-architected/reliability/partition-data)
 - [Continuous backup with point-in-time restore in Azure Cosmos DB](https://learn.microsoft.com/azure/cosmos-db/continuous-backup-restore-introduction)
-- [Azure deployment reference](https://learn.microsoft.com/en-us/azure/templates/microsoft.documentdb/databaseaccounts)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.documentdb/databaseaccounts)
