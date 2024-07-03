@@ -122,8 +122,94 @@ metadata:
 spec:
   type:
     - Microsoft.DocumentDb/databaseAccounts
+  with:
+    - Azure.Cosmos.IsMongo
+    - Azure.Cosmos.IsGremlin
+    - Azure.Cosmos.IsTable
+    - Azure.Cosmos.IsNoSQL
   condition:
-    field: properties.backupPolicy.type
-    equals: Continuous
+    allOf:
+    - field: properties.backupPolicy.type
+      equals: Continuous
+    - field: properties.backupPolicy.continuousModeProperties.tier
+      hasValue: true
 
 #endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: Cosmos DB accounts that use the Mongo API.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Cosmos.IsMongo
+spec:
+  if:
+    field: properties.capabilities[*]
+    allOf:
+      - field: name
+        equals: EnableMongo
+    greaterOrEqual: 1
+
+---
+# Synopsis: Cosmos DB accounts that use the Cassandra API.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Cosmos.IsCassandra
+spec:
+  if:
+    field: properties.capabilities[*]
+    allOf:
+      - field: name
+        equals: EnableCassandra
+    greaterOrEqual: 1
+
+---
+# Synopsis: Cosmos DB accounts that use the Gremlin API.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Cosmos.IsGremlin
+spec:
+  if:
+    field: properties.capabilities[*]
+    allOf:
+      - field: name
+        equals: EnableGremlin
+    greaterOrEqual: 1
+
+---
+# Synopsis: Cosmos DB accounts that use the Table API.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Cosmos.IsTable
+spec:
+  if:
+    field: properties.capabilities[*]
+    allOf:
+      - field: name
+        equals: EnableTable
+    greaterOrEqual: 1
+
+---
+# Synopsis: Cosmos DB accounts that use the NoSQL API.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.Cosmos.IsNoSQL
+spec:
+  if:
+    field: properties.capabilities[*]
+    allOf:
+      - field: name
+        in:
+          - EnableMongo
+          - EnableCassandra
+          - EnableTable
+          - EnableGremlin
+    count: 0
+
+#endregion Selectors
