@@ -59,12 +59,12 @@ For example:
         "isZoneRedundant": true
       }
     ],
-     "backupPolicy": {
-        "type": "Continuous", 
-        "continuousModeProperties": {
+    "backupPolicy": {
+      "type": "Continuous",
+      "continuousModeProperties": {
         "tier": "Continuous7Days"
-        }
-     }
+      }
+    }
   }
 }
 ```
