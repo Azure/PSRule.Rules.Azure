@@ -99,14 +99,6 @@
           "ipAddressOrRange": "52.187.184.26"
         }
       ],
-      "backupPolicy": {
-        "type": "Periodic",
-        "periodicModeProperties": {
-          "backupIntervalInMinutes": 240,
-          "backupRetentionIntervalInHours": 8,
-          "backupStorageRedundancy": "Local"
-        }
-      },
       "networkAclBypassResourceIds": []
     },
     "ResourceGroupName": "rg-test",
@@ -264,7 +256,13 @@
       ],
       "databaseAccountOfferType": "Standard",
       "enableAutomaticFailover": true,
-      "minimalTlsVersion": "Tls"
+      "minimalTlsVersion": "Tls",
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous7Days"
+        }
+      }
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/databaseAccounts",
@@ -297,7 +295,13 @@
       "databaseAccountOfferType": "Standard",
       "enableAutomaticFailover": true,
       "disableLocalAuth": false,
-      "publicNetworkAccess": "Enabled"
+      "publicNetworkAccess": "Enabled",
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous30Days"
+        }
+      }
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/databaseAccounts",
@@ -349,8 +353,13 @@
           "name": "EnableServerless"
         }
       ],
-      "publicNetworkAccess": "Disabled"
-
+      "publicNetworkAccess": "Disabled",
+      "backupPolicy": {
+        "type": "Continuous",
+        "continuousModeProperties": {
+          "tier": "Continuous30Days"
+        }
+      }
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.DocumentDB/databaseAccounts",
