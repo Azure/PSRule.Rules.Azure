@@ -1,0 +1,112 @@
+[
+  {
+    "Identity": null,
+    "Location": null,
+    "Name": "assignment.9",
+    "ResourceId": "/providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.9",
+    "ResourceName": "assignment.9",
+    "ResourceGroupName": null,
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "SubscriptionId": null,
+    "Sku": null,
+    "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyAssignments/assignment.9",
+    "Properties": {
+      "Scope": "/providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000",
+      "NotScopes": null,
+      "DisplayName": "Org Deny Policies",
+      "Description": "https://docs.contoso.com/azure/policies",
+      "Metadata": {
+        "Version": "20240706"
+      },
+      "EnforcementMode": 0,
+      "PolicyDefinitionId": "/providers/Microsoft.Management/managementGroups/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policySetDefinitions/assignment.9",
+      "Parameters": null,
+      "NonComplianceMessages": null
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "policyDefinition.1",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/policyDefinition.1",
+        "ResourceName": "policyDefinition.1",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "SubscriptionId": null,
+        "Properties": {
+          "Description": "Microsoft Defender for Azure Cosmos DB is an Azure-native layer of security that detects attempts to exploit databases in your Azure Cosmos DB accounts.\r\nDefender for Azure Cosmos DB detects potential SQL injections, known bad actors based on Microsoft Threat Intelligence, suspicious access patterns, and potential exploitations of your database through compromised identities or malicious insiders.",
+          "DisplayName": "Configure Microsoft Defender for Azure Cosmos DB to be enabled",
+          "Metadata": {
+            "version": "1.0.0",
+            "category": "Security Center"
+          },
+          "Mode": "All",
+          "Parameters": {
+            "effect": {
+              "type": "String",
+              "metadata": {
+                "displayName": "Effect",
+                "description": "Enable or disable the execution of the policy"
+              },
+              "allowedValues": [
+                "DeployIfNotExists",
+                "Disabled"
+              ],
+              "defaultValue": "DeployIfNotExists"
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.Resources/subscriptions"
+                }
+              ]
+            },
+            "then": {
+              "effect": "[parameters('effect')]",
+              "details": {
+                "type": "Microsoft.Security/pricings",
+                "name": "CosmosDbs",
+                "deploymentScope": "subscription",
+                "existenceScope": "subscription",
+                "roleDefinitionIds": [
+                  "/providers/Microsoft.Authorization/roleDefinitions/fb1c8493-542b-48eb-b624-b4c8fea62acd"
+                ],
+                "existenceCondition": {
+                  "field": "Microsoft.Security/pricings/pricingTier",
+                  "equals": "Standard"
+                },
+                "deployment": {
+                  "location": "westeurope",
+                  "properties": {
+                    "mode": "incremental",
+                    "parameters": {},
+                    "template": {
+                      "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+                      "contentVersion": "1.0.0.0",
+                      "parameters": {},
+                      "variables": {},
+                      "resources": [
+                        {
+                          "type": "Microsoft.Security/pricings",
+                          "apiVersion": "2018-06-01",
+                          "name": "CosmosDbs",
+                          "properties": {
+                            "pricingTier": "Standard"
+                          }
+                        }
+                      ],
+                      "outputs": {}
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/policyDefinition.1"
+      }
+    ],
+    "exemptions": []
+  }
+]
