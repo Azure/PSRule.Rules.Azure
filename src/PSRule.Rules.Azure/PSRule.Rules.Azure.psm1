@@ -5,9 +5,9 @@
 # PSRule.Rules.Azure module
 #
 
-$m = Import-Module 'Az.Resources' -MinimumVersion 7.1.0 -Global -ErrorAction SilentlyContinue -PassThru;
+$m = Import-Module 'Az.Resources' -MinimumVersion 6.7.0 -MaximumVersion 6.99.99 -Global -ErrorAction SilentlyContinue -PassThru;
 if ($Null -eq $m -and $Env:PSRULE_AZURE_RESOURCE_MODULE_NOWARN -ne 'true') {
-    Write-Warning -Message "To use PSRule for Azure export cmdlets please install Az.Resources >= 7.1.0. To suppress this warning set the environment variable 'PSRULE_AZURE_RESOURCE_MODULE_NOWARN' to 'true'.";
+    Write-Warning -Message "To use PSRule for Azure export cmdlets please install Az.Resources >= 6.7.0 and < 7.0.0. To suppress this warning set the environment variable 'PSRULE_AZURE_RESOURCE_MODULE_NOWARN' to 'true'.";
 }
 
 Set-StrictMode -Version latest;
