@@ -196,7 +196,7 @@ For more details see [Configuring exports](setup/configuring-exports.md#psrule_a
 If you plan on exporting data from Azure, you must install the `Az.Resources` module.
 
 Some versions of `Az.Resources` are known to be incompatible with PSRule for Azure.
-As a result, we recommend installing and importing v6.16.2 to address these issues.
+As a result, we recommend installing and importing v6.7.0 to address these issues.
 A known incompatibility currently exists with v7.1.0 ([#2970](https://github.com/Azure/PSRule.Rules.Azure/issues/2970)).
 By default, PowerShell will attempt to install or use a newer version already installed which may return an error.
 
@@ -207,13 +207,13 @@ By default, PowerShell will attempt to install or use a newer version already in
 To install a specific version use:
 
 ```powershell title="PowerShell"
-Install-Module Az.Resources -RequiredVersion '6.16.2' -Force -Scope CurrentUser
+Install-Module Az.Resources -RequiredVersion '6.7.0' -Force -Scope CurrentUser
 ```
 
 To import a specific version prior to using PSRule:
 
 ```powershell title="PowerShell"
-Import-Module Az.Resources -RequiredVersion '6.16.2'
+Import-Module Az.Resources -RequiredVersion '6.7.0'
 ```
 
 ## Could not load file or assembly YamlDotNet

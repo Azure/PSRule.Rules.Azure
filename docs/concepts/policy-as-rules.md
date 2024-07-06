@@ -61,8 +61,8 @@ For example:
 
 ```powershell title="PowerShell"
 # Install and import required modules.
-Install-Module Az.Resources -RequiredVersion '6.16.2' -Force -Scope CurrentUser
-Import-Module Az.Resources -RequiredVersion '6.16.2'
+Install-Module Az.Resources -RequiredVersion '6.7.0' -Force -Scope CurrentUser
+Import-Module Az.Resources -RequiredVersion '6.7.0'
 Import-Module PSRule.Rules.Azure
 
 # Connect to Azure
