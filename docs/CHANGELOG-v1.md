@@ -36,6 +36,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 - Bug fixes:
   - Rollback Az.Resources to v6.7.0.
     [#2970](https://github.com/Azure/PSRule.Rules.Azure/issues/2970)
+  - Fixed handling of multi-line descriptions for policy definition and assignment exports by @BernieWhite.
+    [#2973](https://github.com/Azure/PSRule.Rules.Azure/issues/2973)
 
 ## v1.38.0-B0068 (pre-release)
 

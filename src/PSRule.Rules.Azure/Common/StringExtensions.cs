@@ -8,6 +8,9 @@ namespace PSRule.Rules.Azure
 {
     internal static class StringExtensions
     {
+        private static readonly string[] LINE_SEPARATORS = new string[] { "\r\n", "\n", "\r" };
+        private static readonly char[] RAW_LINE_SEPARATORS = new char[] { '\r', '\n' };
+
         /// <summary>
         /// Convert the first character of the string to lower-case.
         /// </summary>
@@ -82,6 +85,39 @@ namespace PSRule.Rules.Azure
                 str[0] == '[' &&
                 str[1] != '[' &&
                 str[str.Length - 1] == ']';
+        }
+
+        /// <summary>
+        /// Get the first line of a string.
+        /// If the string contains new line characters, only the first line is returned.
+        /// </summary>
+        /// <param name="str">The string to use.</param>
+        /// <returns>A formatted string.</returns>
+        internal static string ToFirstLine(this string str)
+        {
+            if (string.IsNullOrEmpty(str))
+                return string.Empty;
+
+            var firstLineEnd = str.IndexOfAny(RAW_LINE_SEPARATORS);
+            return firstLineEnd == -1
+                ? str
+                : str.Substring(0, firstLineEnd);
+        }
+
+        /// <summary>
+        /// Replace new line separators with the system default.
+        /// </summary>
+        /// <param name="str">The string to replace.</param>
+        /// <param name="replacement">Replace the new line with the supplied sequence. By default this will be the new line separator for the current operating system.</param>
+        /// <returns>A formatted string with new line separators replaced.</returns>
+        internal static string ReplaceNewLineSeparator(this string str, string replacement)
+        {
+            if (str == null || str.Length == 0) return str;
+
+            replacement ??= Environment.NewLine;
+
+            var s = str.Split(LINE_SEPARATORS, StringSplitOptions.None);
+            return string.Join(replacement, s);
         }
     }
 }

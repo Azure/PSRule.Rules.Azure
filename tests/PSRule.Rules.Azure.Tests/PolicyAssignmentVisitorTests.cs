@@ -153,7 +153,7 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(actual);
             Assert.Equal("Azure.Policy.8fc87228ae18", actual.Name);
             Assert.Equal("Allowed locations for resource groups", actual.DisplayName);
-            Assert.Equal("This policy enables you to restrict the locations your organization can create resource groups in. Use to enforce your geo-compliance requirements.", actual.Description);
+            Assert.Equal("This policy enables you to restrict the locations your organization can create resource groups in. Use to enforce your geo-compliance requirements.", actual.Recommendation);
             Assert.Equal("General", actual.Category);
             Assert.Equal("1.0.0", actual.Version);
             Assert.Single(actual.Types);
@@ -179,7 +179,8 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(actual);
             Assert.Equal("Azure.Policy.6db2a8060ade", actual.Name);
             Assert.Equal("Require a tag on resource groups", actual.DisplayName);
-            Assert.Equal("Enforces existence of a tag on resource groups.", actual.Description);
+            Assert.Equal("Enforces existence of a tag on resource groups.", actual.Synopsis);
+            Assert.Equal("Enforces existence of a tag on resource groups.", actual.Recommendation);
             Assert.Equal("Tags", actual.Category);
             Assert.Equal("1.0.0", actual.Version);
             Assert.Single(actual.Types);
@@ -310,6 +311,23 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Storage/storageAccounts/privateEndpointConnections", actual.Types[0]);
             var temp = actual.Where.ToString(Formatting.None);
             Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.privateEndpoint.id\"},{\"notEquals\":\"ffffffff-ffff-ffff-ffff-ffffffffffff\",\"value\":{\"$\":{\"split\":{\"concat\":[{\"path\":\"properties.privateEndpoint.id\"},{\"string\":\"//\"}]},\"delimiter\":[\"/\"]}}}]}", temp);
+        }
+
+        [Fact]
+        public void Visit_ShouldReturnFormattedSynopsis_WhenMultiLineDescription()
+        {
+            var context = new PolicyAssignmentContext(GetContext());
+            var visitor = new PolicyAssignmentDataExportVisitor();
+            foreach (var assignment in GetAssignmentData("Policy.assignment.9.json").Where(a => a["Name"].Value<string>() == "assignment.9"))
+                visitor.Visit(context, assignment);
+
+            var definitions = context.GetDefinitions();
+            Assert.NotNull(definitions);
+            Assert.Single(definitions);
+
+            var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/policyDefinition.1");
+            Assert.Equal("Microsoft Defender for Azure Cosmos DB is an Azure-native layer of security that detects attempts to exploit databases in your Azure Cosmos DB accounts.", actual.Synopsis);
+            Assert.Equal("Microsoft Defender for Azure Cosmos DB is an Azure-native layer of security that detects attempts to exploit databases in your Azure Cosmos DB accounts.\nDefender for Azure Cosmos DB detects potential SQL injections, known bad actors based on Microsoft Threat Intelligence, suspicious access patterns, and potential exploitations of your database through compromised identities or malicious insiders.", actual.Recommendation);
         }
 
         #region Helper methods

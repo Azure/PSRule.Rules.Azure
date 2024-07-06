@@ -1986,9 +1986,4 @@ namespace PSRule.Rules.Azure.Data.Policy
             return new PolicyDefinitionEmptyConditionException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.EmptyConditionExpandResult, policyDefinitionId, context.AssignmentId), context.AssignmentFile, context.AssignmentId, policyDefinitionId);
         }
     }
-
-    internal sealed class PolicyAssignmentDataExportVisitor : PolicyAssignmentVisitor
-    {
-
-    }
 }

@@ -37,7 +37,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             writer.WriteStartObject();
 
             // Synopsis
-            writer.WriteComment(string.Concat(SYNOPSIS_COMMENT, definition.Description));
+            writer.WriteComment(string.Concat(SYNOPSIS_COMMENT, definition.Synopsis));
 
             // Api Version
             writer.WritePropertyName(PROPERTY_APIVERSION);
@@ -65,7 +65,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             writer.WritePropertyName(PROPERTY_SPEC);
             writer.WriteStartObject();
             writer.WritePropertyName(PROPERTY_RECOMMEND);
-            writer.WriteValue(definition.Description);
+            writer.WriteValue(definition.Recommendation);
             WriteType(writer, serializer, definition);
             WriteWith(writer, serializer, definition);
             WriteWhere(writer, serializer, definition);
