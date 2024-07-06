@@ -29,12 +29,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.38.0-B0106 (pre-release)
+
+What's changed since pre-release v1.38.0-B0068:
+
 - New rules:
   - Cosmos DB:
     - Verify that Cosmos DB accounts have continuous backup configured by @BenjaminEngeset.
       [#2954](https://github.com/Azure/PSRule.Rules.Azure/issues/2954)
 - Bug fixes:
-  - Rollback Az.Resources to v6.7.0.
+  - Rollback Az.Resources to v6.7.0 by @BernieWhite.
     [#2970](https://github.com/Azure/PSRule.Rules.Azure/issues/2970)
   - Fixed handling of multi-line descriptions for policy definition and assignment exports by @BernieWhite.
     [#2973](https://github.com/Azure/PSRule.Rules.Azure/issues/2973)
