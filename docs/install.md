@@ -158,7 +158,7 @@ PowerShell modules:
     In most cases these modules will be pre-installed on the CI worker.
     For private CI workers, consider pre-installing these modules in a previous step.
 
-  [3]: troubleshooting.md#an-earlier-version-of-azaccounts-is-imported
+  [3]: troubleshooting.md#issues-with-azresources
 
 ### Installing PowerShell
 

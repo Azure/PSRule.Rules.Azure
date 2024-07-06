@@ -169,50 +169,51 @@ This doesn't affect the workings of the parameter file or deployment.
 The reason for the warning is that the `metadata` property has not been added to the parameter file JSON schema.
 However, the top level `metadata` property is ignored by Azure Resource Manager when deploying a template.
 
-## A warning is reported for Az.Resources
+## Issues with Az.Resources
 
-When running PSRule or importing `PSRule.Rules.Azure` on the command-line you see a message similar to the following:
+The PowerShell module `Az.Resources` and `Az.Accounts` is currently used when exporting data from Azure.
+These modules are use when:
+
+- Exporting resources for in-flight analysis.
+- Exporting policy assignments for policy as rules.
+
+These modules are not required if you only want to execute rules.
+
+### Suppression of Az.Resources warning
+
+If you only intend to execute rules you can suppress the following warning message.
 
 !!! Message
 
     To use PSRule for Azure export cmdlets please install Az.Resources.
 
-This warning flags that when running `Export-*` cmdlets for PSRule for Azure, the `Az.Resources` module is required.
-If you intend to call these cmdlets, first install the `Az.Resources` module.
-Otherwise this warning message can be ignored.
-
+This message can be ignored if you are not exporting data from Azure.
 To suppress the warning configure the `PSRULE_AZURE_RESOURCE_MODULE_NOWARN` environment variable to `true`.
 For more details see [Configuring exports](setup/configuring-exports.md#psrule_azure_resource_module_nowarn).
 
-## An earlier version of Az.Accounts is imported
+### Installing Az.Resources
 
-When running PSRule for Azure in Azure DevOps within the `AzurePowerShell@5` task,
-you may see the following error.
+If you plan on exporting data from Azure, you must install the `Az.Resources` module.
+
+Some versions of `Az.Resources` are known to be incompatible with PSRule for Azure.
+As a result, we recommend installing and importing v6.16.2 to address these issues.
+A known incompatibility currently exists with v7.1.0 ([#2970](https://github.com/Azure/PSRule.Rules.Azure/issues/2970)).
+By default, PowerShell will attempt to install or use a newer version already installed which may return an error.
 
 !!! Message
 
-    This module requires Az.Accounts version 2.8.0. An earlier version of
-    Az.Accounts is imported in the current PowerShell session. Please open a new
-    session before importing this module. This error could indicate that multiple
-    incompatible versions of the Azure PowerShell cmdlets are installed on your
-    system. Please see https://aka.ms/azps-version-error for troubleshooting
-    information.
+    ExpandPolicyAssignment: The property 'Properties' cannot be found on this object. Verify that the property exists.
 
-This error is raised by a chained dependency failure importing a newer version of `Az.Accounts`.
-To avoid this issue attempt to install the exact versions of `Az.Resources`.
-In the `AzurePowerShell@5` task before installing PSRule.
+To install a specific version use:
 
 ```powershell title="PowerShell"
-Install-Module Az.Resources -RequiredVersion '7.1.0' -Force -Scope CurrentUser
+Install-Module Az.Resources -RequiredVersion '6.16.2' -Force -Scope CurrentUser
 ```
 
-From PSRule for Azure v1.16.0, `Az.Accounts` and `Az.Resources` are no longer installed as dependencies.
-When using export commands from PSRule, you may need to install these modules.
-
-To install these modules, use the following PowerShell command:
+To import a specific version prior to using PSRule:
 
 ```powershell title="PowerShell"
-Install-Module Az.Resources -Force -Scope CurrentUser
+Import-Module Az.Resources -RequiredVersion '6.16.2'
 ```
 
 ## Could not load file or assembly YamlDotNet

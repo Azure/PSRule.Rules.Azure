@@ -33,6 +33,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Cosmos DB:
     - Verify that Cosmos DB accounts have continuous backup configured by @BenjaminEngeset.
       [#2954](https://github.com/Azure/PSRule.Rules.Azure/issues/2954)
+- Bug fixes:
+  - Rollback Az.Resources to v6.16.2.
+    [#2970](https://github.com/Azure/PSRule.Rules.Azure/issues/2970)
 
 ## v1.38.0-B0068 (pre-release)
 
