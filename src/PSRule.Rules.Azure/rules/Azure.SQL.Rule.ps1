@@ -176,7 +176,7 @@ Rule 'Azure.SQL.MaintenanceWindow' -Ref 'AZR-000440' -Type 'Microsoft.Sql/server
         }
 
         foreach ($resource in $resources) {
-            $Assert.Match($resource, 'properties.maintenanceConfigurationId', '\/publicMaintenanceConfigurations\/SQL_[A-Za-z]+[A-Za-z0-9]*_DB_[12]$', $True).
+            $Assert.Match($resource, 'properties.maintenanceConfigurationId', '\/publicMaintenanceConfigurations\/SQL_[A-Za-z]+[A-Za-z0-9]*_DB_[12]$', $False).
             Reason(
                 $LocalizedData.AzureSQLDatabaseMaintenanceWindow,
                 $(if ($resource.type -eq 'Microsoft.Sql/servers/databases') { 'database' } else { 'elastic pool' }),
