@@ -94,5 +94,6 @@ resource sqlDb 'Microsoft.Sql/servers/databases@2023-05-01-preview' = {
 - [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Maintenance window in Azure SQL Database](https://learn.microsoft.com/azure/azure-sql/database/maintenance-window)
 - [Configure maintenance window](https://learn.microsoft.com/azure/azure-sql/database/maintenance-window-configure)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.maintenance/publicmaintenanceconfigurations)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.dbformysql/flexibleservers)
+- [Azure deployment reference - Maintenance Configuration](https://learn.microsoft.com/azure/templates/microsoft.maintenance/publicmaintenanceconfigurations)
+- [Azure deployment reference - Azure SQL Database](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/databases)
+- [Azure deployment reference - Elastic Pool](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/elasticpools)
