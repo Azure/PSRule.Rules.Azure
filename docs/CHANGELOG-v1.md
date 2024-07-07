@@ -29,6 +29,85 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.38.0
+
+What's changed since v1.37.0:
+
+- New features:
+  - Added March 2024 baselines `Azure.GA_2024_06` and `Azure.Preview_2024_06` by @BernieWhite.
+    [#2961](https://github.com/Azure/PSRule.Rules.Azure/issues/2961)
+    - Includes rules released before or during June 2024.
+    - Marked `Azure.GA_2024_03` and `Azure.Preview_2024_03` baselines as obsolete.
+- New rules:
+  - Azure Database for MySQL:
+    - Verify that Azure Database for MySQL servers have a customer-controlled maintenance window configured by @BenjaminEngeset.
+      [#2916](https://github.com/Azure/PSRule.Rules.Azure/issues/2916)
+    - Verify that servers have zone-redundant high availability (HA) configured by @BenjaminEngeset.
+      [#2914](https://github.com/Azure/PSRule.Rules.Azure/issues/2914)
+  - Azure Database for PostgreSQL:
+    - Verify that Azure Database for PostgreSQL servers have a customer-controlled maintenance window configured by @BenjaminEngeset.
+      [#2927](https://github.com/Azure/PSRule.Rules.Azure/issues/2927)
+    - Verify that servers have zone-redundant high availability (HA) configured by @BenjaminEngeset.
+      [#2932](https://github.com/Azure/PSRule.Rules.Azure/issues/2932)
+  - Azure Firewall:
+    - Verify that firewalls have availability zones configured by @BenjaminEngeset.
+      [#2909](https://github.com/Azure/PSRule.Rules.Azure/issues/2909)
+  - Azure Kubernetes Service:
+    - Added check to automatically upgrade AKS cluster node image by @sharmilamusunuru.
+      [#2445](https://github.com/Azure/PSRule.Rules.Azure/issues/2445)
+  - Azure Virtual Desktop:
+    - Added check for scheduled agent updates on host pools by @BernieWhite.
+      [#2946](https://github.com/Azure/PSRule.Rules.Azure/issues/2946)
+  - Cosmos DB:
+    - Verify that Cosmos DB accounts have continuous backup configured by @BenjaminEngeset.
+      [#2954](https://github.com/Azure/PSRule.Rules.Azure/issues/2954)
+  - Virtual Network Gateway:
+    - Verify that VPN/ExpressRoute gateways have a customer-controlled maintenance configuration configured by @BenjaminEngeset.
+      [#2910](https://github.com/Azure/PSRule.Rules.Azure/issues/2910)
+  - Virtual Machine Scale Sets:
+    - Verify that virtual machine scale sets have best-effort zone balance configured by @BenjaminEngeset.
+      [#2901](https://github.com/Azure/PSRule.Rules.Azure/issues/2901)
+    - Verify that virtual machine scale sets have availability zones configured by @BenjaminEngeset.
+      [#2902](https://github.com/Azure/PSRule.Rules.Azure/issues/2902)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.28.9` as the minimum version by @BernieWhite.
+      [#2930](https://github.com/Azure/PSRule.Rules.Azure/issues/2930)
+  - Virtual Machine:
+    - Updated `Azure.VM.MaintenanceConfig` to align to the reliability pillar by @BernieWhite.
+      [#2925](https://github.com/Azure/PSRule.Rules.Azure/issues/2925)
+      - Promoted to GA and bumped rule set to `2024_06`.
+- Engineering:
+  - Quality updates to rule documentation by @BernieWhite.
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+  - Bump Pester to v5.6.0.
+    [#2934](https://github.com/Azure/PSRule.Rules.Azure/pull/2934)
+  - Bump PSScriptAnalyzer to v1.22.0.
+    [#2934](https://github.com/Azure/PSRule.Rules.Azure/pull/2934)
+- Bug fixes:
+  - Fixed handling of multi-line descriptions for policy definition and assignment exports by @BernieWhite.
+    [#2973](https://github.com/Azure/PSRule.Rules.Azure/issues/2973)
+  - Fixed support for `references` function by @BernieWhite.
+    [#2922](https://github.com/Azure/PSRule.Rules.Azure/issues/2922)
+  - Fixed group by subscription casing when exporting in-flight resources by @BernieWhite.
+    [#2957](https://github.com/Azure/PSRule.Rules.Azure/issues/2957)
+  - Fixed install Az.Resources warning by @BernieWhite.
+    [#2887](https://github.com/Azure/PSRule.Rules.Azure/issues/2887)
+    - Added new configuration option set by environment variable to suppress the warning.
+    - Set `PSRULE_AZURE_RESOURCE_MODULE_NOWARN` to `true` to suppress the warning.
+  - Fixed `filter` on unknown runtime property by @BernieWhite.
+    [#2966](https://github.com/Azure/PSRule.Rules.Azure/issues/2966)
+  - Fixed failed to expand with direct outputs reference by @BernieWhite.
+    [#2935](https://github.com/Azure/PSRule.Rules.Azure/issues/2935)
+  - Fixed identification of `list*` function false positive with resource by @BernieWhite.
+    [#2919](https://github.com/Azure/PSRule.Rules.Azure/issues/2919)
+  - Fixed documentation bugs for container apps by @BernieWhite.
+    [#2876](https://github.com/Azure/PSRule.Rules.Azure/issues/2876)
+
+What's changed since pre-release v1.38.0-B0068:
+
+- No additional changes.
+
 ## v1.38.0-B0106 (pre-release)
 
 What's changed since pre-release v1.38.0-B0068:
