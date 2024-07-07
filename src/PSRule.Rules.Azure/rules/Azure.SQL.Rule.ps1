@@ -205,7 +205,7 @@ Rule 'Azure.SQL.MaintenanceWindow' -Ref 'AZR-000440' -Type 'Microsoft.Sql/server
     }
 }
 
-#endregion Manintenance window
+#endregion Maintenance window
 
 #region Helper functions
 
