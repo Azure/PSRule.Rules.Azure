@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure SQL Database:
+    - Verify that Azure SQL databases have a customer-controlled maintenance window configured by @BenjaminEngeset.
+      [#2956](https://github.com/Azure/PSRule.Rules.Azure/issues/2956)
+
 ## v1.38.0
 
 What's changed since v1.37.0:
