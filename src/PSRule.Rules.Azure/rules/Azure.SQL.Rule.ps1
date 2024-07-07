@@ -186,7 +186,7 @@ Rule 'Azure.SQL.MaintenanceWindow' -Ref 'AZR-000440' -Type 'Microsoft.Sql/server
     }
 
     elseif ($PSRule.TargetType -eq 'Microsoft.Sql/servers/databases') {
-        $Assert.Match($TargetObject, 'properties.maintenanceConfigurationId', '\/publicMaintenanceConfigurations\/SQL_[A-Za-z]+[A-Za-z0-9]*_DB_[12]$', $True).
+        $Assert.Match($TargetObject, 'properties.maintenanceConfigurationId', '\/publicMaintenanceConfigurations\/SQL_[A-Za-z]+[A-Za-z0-9]*_DB_[12]$', $False).
         Reason(
             $LocalizedData.AzureSQLDatabaseMaintenanceWindow,
             'database',
