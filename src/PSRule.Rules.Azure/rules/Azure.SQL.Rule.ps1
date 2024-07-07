@@ -167,9 +167,11 @@ Rule 'Azure.SQL.FGName' -Ref 'AZR-000193' -Type 'Microsoft.Sql/servers/failoverG
 
 # Synopsis: Configure a customer-controlled maintenance window for Azure SQL databases.
 Rule 'Azure.SQL.MaintenanceWindow' -Ref 'AZR-000440' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/elasticPools' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    $notSupportedSkus = '^(?:GP_Fsv2|HS_DC)_|B|S0|S1'
     if ($PSRule.TargetType -eq 'Microsoft.Sql/servers') {
         # Microsoft.Sql/servers/elasticPools maintenance configuration is inherited to all databases within the pool, so we only need to check databases that is not in a pool.
-        $resources = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/elasticPools' | Where-Object { -not $_.properties.psobject.Properties['elasticPoolId'] })
+        $resources = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/elasticPools' |
+            Where-Object { ($_.sku.name -notmatch $notSupportedSkus) -or (-not $_.properties.psobject.Properties['elasticPoolId']) -or ($_.name -notlike '*/master' -or $_.name -eq 'master') })
 
         if ($resources.Count -eq 0) {
             return $Assert.Pass()
@@ -186,6 +188,9 @@ Rule 'Azure.SQL.MaintenanceWindow' -Ref 'AZR-000440' -Type 'Microsoft.Sql/server
     }
 
     elseif ($PSRule.TargetType -eq 'Microsoft.Sql/servers/databases') {
+        if (($TargetObject.sku.name -match $notSupportedSkus) -or $TargetObject.properties.psobject.Properties['elasticPoolId'] -or ($PSRule.TargetName -like '*/master' -or $_.name -eq 'master')) {
+            return $Assert.Pass()
+        }
         $Assert.Match($TargetObject, 'properties.maintenanceConfigurationId', '\/publicMaintenanceConfigurations\/SQL_[A-Za-z]+[A-Za-z0-9]*_DB_[12]$', $False).
         Reason(
             $LocalizedData.AzureSQLDatabaseMaintenanceWindow,

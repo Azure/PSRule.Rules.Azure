@@ -220,8 +220,8 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C', 'server-A/master', 'server-A/database-A', 'server-E/pool-A', 'server-F/pool-A';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'server-B', 'server-C', 'server-A/database-A', 'server-E/pool-A', 'server-F/pool-A';
 
             $ruleResult[0].Reason | Should -BeExactly @(
                 "The database (database-A) should have a customer-controlled maintenance window configured.";
@@ -231,15 +231,14 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
                 "The database (database-A) should have a customer-controlled maintenance window configured.";
                 "The elastic pool (pool-A) should have a customer-controlled maintenance window configured.";
             )
-            $ruleResult[2].Reason | Should -BeExactly "The database (master) should have a customer-controlled maintenance window configured.";
-            $ruleResult[3].Reason | Should -BeExactly "The database (database-A) should have a customer-controlled maintenance window configured.";
-            $ruleResult[4].Reason | Should -BeExactly "The elastic pool (server-E/pool-A) should have a customer-controlled maintenance window configured.";
-            $ruleResult[5].Reason | Should -BeExactly "The elastic pool (server-F/pool-A) should have a customer-controlled maintenance window configured.";
+            $ruleResult[2].Reason | Should -BeExactly "The database (database-A) should have a customer-controlled maintenance window configured.";
+            $ruleResult[3].Reason | Should -BeExactly "The elastic pool (server-E/pool-A) should have a customer-controlled maintenance window configured.";
+            $ruleResult[4].Reason | Should -BeExactly "The elastic pool (server-F/pool-A) should have a customer-controlled maintenance window configured.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-D', 'server-A/database-B', 'server-G/pool-A';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-D', 'server-A/master', 'server-A/database-B', 'server-G/pool-A';
         }
     }
 
