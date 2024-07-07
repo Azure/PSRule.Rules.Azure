@@ -163,7 +163,7 @@ Rule 'Azure.SQL.FGName' -Ref 'AZR-000193' -Type 'Microsoft.Sql/servers/failoverG
 
 #endregion Failover group
 
-#region Manintenance window
+#region Maintenance window
 
 # Synopsis: Configure a customer-controlled maintenance window for Azure SQL databases.
 Rule 'Azure.SQL.MaintenanceWindow' -Ref 'AZR-000440' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/elasticPools' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
