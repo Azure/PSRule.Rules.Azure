@@ -47,7 +47,7 @@ For example:
   "type": "Microsoft.Sql/servers/databases",
   "apiVersion": "2023-05-01-preview",
   "name": "[format('{0}/{1}', parameters('serverName'), parameters('sqlDbName'))]",
-  "location": "[parameters('location')]",
+  "location": "westeurope",
   "sku": {
     "name": "P1",
     "tier": "Premium"
