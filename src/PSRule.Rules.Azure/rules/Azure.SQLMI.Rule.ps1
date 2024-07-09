@@ -53,4 +53,13 @@ Rule 'Azure.SQLMI.AAD' -Ref 'AZR-000368' -Type 'Microsoft.Sql/managedInstances',
     }
 }
 
+# Synopsis: Configure a customer-controlled maintenance window for Azure SQL managed instances.
+Rule 'Azure.SQLMI.MaintenanceWindow' -Ref 'AZR-000441' -Type 'Microsoft.Sql/managedInstances' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    $Assert.Match($TargetObject, 'properties.maintenanceConfigurationId', '\/publicMaintenanceConfigurations\/SQL_[A-Za-z]+[A-Za-z0-9]*_MI_[12]$', $False).
+    Reason(
+        $LocalizedData.AzureSQLMIMaintenanceWindow,
+        $TargetObject.Name
+    )
+}
+
 #endregion SQL Managed Instance
