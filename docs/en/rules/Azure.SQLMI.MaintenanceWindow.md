@@ -14,7 +14,8 @@ Configure a customer-controlled maintenance window for Azure SQL Managed Instanc
 
 ## DESCRIPTION
 
-Azure SQL Managed Instances undergo periodic maintenance to ensure your managed databases remains secure, stable, and up-to-date. This maintenance includes applying security updates, system upgrades, and software patches.
+Azure SQL Managed Instances undergo periodic maintenance to ensure your managed databases remains secure, stable, and up-to-date.
+This maintenance includes applying security updates, system upgrades, and software patches.
 
 Maintenance windows can be scheduled in two ways for each instance:
 
@@ -85,7 +86,9 @@ resource sqlManagedInstance 'Microsoft.Sql/managedInstances@2023-05-01-preview' 
 
 ## NOTES
 
-For managed instances within an instance pool, the maintenance configuration set at the instance pool level is inherited by all instances within that pool. However, instance pools do not support customer-controlled maintenance windows directly. To specify maintenance windows, you must configure them at the individual instance level, thereby overriding the inherited instance pool configuration.
+For managed instances within an instance pool, the maintenance configuration set at the instance pool level is inherited by all instances within that pool.
+However, instance pools do not support customer-controlled maintenance windows directly.
+To specify maintenance windows, you must configure them at the individual instance level, thereby overriding the inherited instance pool configuration.
 
 ## LINKS
 
@@ -93,4 +96,4 @@ For managed instances within an instance pool, the maintenance configuration set
 - [Maintenance window in Azure SQL Managed Instance](https://learn.microsoft.com/azure/azure-sql/managed-instance/maintenance-window)
 - [Configure maintenance window](https://learn.microsoft.com/azure/azure-sql/managed-instance/maintenance-window-configure)
 - [Azure deployment reference - Maintenance Configuration](https://learn.microsoft.com/azure/templates/microsoft.maintenance/publicmaintenanceconfigurations)
-- [Azure deployment reference - Azure SQL Managed Instance](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/managedinstances)
+- [Azure deployment reference - Azure SQL Managed Instance](https://learn.microsoft.com/azure/templates/microsoft.sql/managedinstances)
