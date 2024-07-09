@@ -11,16 +11,16 @@
 Rule 'Azure.SQL.FirewallRuleCount' -Ref 'AZR-000183' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules');
     $Assert.
-        LessOrEqual($firewallRules, '.', 10).
-        WithReason(($LocalizedData.ExceededFirewallRuleCount -f $firewallRules.Length, 10), $True);
+    LessOrEqual($firewallRules, '.', 10).
+    WithReason(($LocalizedData.ExceededFirewallRuleCount -f $firewallRules.Length, 10), $True);
 }
 
 # Synopsis: Determine if access from Azure services is required
 Rule 'Azure.SQL.AllowAzureAccess' -Ref 'AZR-000184' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $firewallRules = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/firewallRules' | Where-Object {
-        $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
+            $_.ResourceName -eq 'AllowAllWindowsAzureIps' -or
         ($_.properties.StartIpAddress -eq '0.0.0.0' -and $_.properties.EndIpAddress -eq '0.0.0.0')
-    })
+        })
     $firewallRules.Length -eq 0;
 }
 
@@ -28,8 +28,8 @@ Rule 'Azure.SQL.AllowAzureAccess' -Ref 'AZR-000184' -Type 'Microsoft.Sql/servers
 Rule 'Azure.SQL.FirewallIPRange' -Ref 'AZR-000185' -Type 'Microsoft.Sql/servers' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $summary = GetIPAddressSummary
     $Assert.
-        LessOrEqual($summary, 'Public', 10).
-        WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
+    LessOrEqual($summary, 'Public', 10).
+    WithReason(($LocalizedData.DBServerFirewallPublicIPRange -f $summary.Public, 10), $True);
 }
 
 # Synopsis: Enable Microsoft Defender for Cloud for Azure SQL logical server
@@ -162,6 +162,55 @@ Rule 'Azure.SQL.FGName' -Ref 'AZR-000193' -Type 'Microsoft.Sql/servers/failoverG
 }
 
 #endregion Failover group
+
+#region Maintenance window
+
+# Synopsis: Configure a customer-controlled maintenance window for Azure SQL databases.
+Rule 'Azure.SQL.MaintenanceWindow' -Ref 'AZR-000440' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/elasticPools' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    $notSupportedSkus = '^(?:GP_Fsv2|HS_DC)_|B|S0|S1'
+    if ($PSRule.TargetType -eq 'Microsoft.Sql/servers') {
+        # Microsoft.Sql/servers/elasticPools maintenance configuration is inherited to all databases within the pool, so we only need to check databases that is not in a pool.
+        $resources = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/databases', 'Microsoft.Sql/servers/elasticPools' |
+            Where-Object { ($_.sku.name -notmatch $notSupportedSkus) -or (-not $_.properties.psobject.Properties['elasticPoolId']) -or ($_.name -notlike '*/master' -or $_.name -eq 'master') })
+
+        if ($resources.Count -eq 0) {
+            return $Assert.Pass()
+        }
+
+        foreach ($resource in $resources) {
+            $Assert.Match($resource, 'properties.maintenanceConfigurationId', '\/publicMaintenanceConfigurations\/SQL_[A-Za-z]+[A-Za-z0-9]*_DB_[12]$', $False).
+            Reason(
+                $LocalizedData.AzureSQLDatabaseMaintenanceWindow,
+                $(if ($resource.type -eq 'Microsoft.Sql/servers/databases') { 'database' } else { 'elastic pool' }),
+                $resource.Name
+            ).PathPrefix('resources')
+        }
+    }
+
+    elseif ($PSRule.TargetType -eq 'Microsoft.Sql/servers/databases') {
+        if (($TargetObject.sku.name -match $notSupportedSkus) -or $TargetObject.properties.psobject.Properties['elasticPoolId'] -or ($PSRule.TargetName -like '*/master' -or $_.name -eq 'master')) {
+            return $Assert.Pass()
+        }
+        $Assert.Match($TargetObject, 'properties.maintenanceConfigurationId', '\/publicMaintenanceConfigurations\/SQL_[A-Za-z]+[A-Za-z0-9]*_DB_[12]$', $False).
+        Reason(
+            $LocalizedData.AzureSQLDatabaseMaintenanceWindow,
+            'database',
+            $TargetObject.Name
+        )
+    }
+
+    # Microsoft.Sql/servers/elasticPools maintenance configuration is inherited to all databases within the pool.
+    else {
+        $Assert.Match($TargetObject, 'properties.maintenanceConfigurationId', '\/publicMaintenanceConfigurations\/SQL_[A-Za-z]+[A-Za-z0-9]*_DB_[12]$', $False).
+        Reason(
+            $LocalizedData.AzureSQLDatabaseMaintenanceWindow,
+            'elastic pool',
+            $TargetObject.Name
+        )
+    }
+}
+
+#endregion Maintenance window
 
 #region Helper functions
 

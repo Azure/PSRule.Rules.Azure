@@ -284,6 +284,60 @@
         "Type": "Microsoft.Sql/servers/firewallRules",
         "ResourceType": "Microsoft.Sql/servers/firewallRules",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-B/databases/database-A",
+        "ResourceName": "database-A",
+        "Name": "database-A",
+        "Kind": "v12.0,user",
+        "Location": "region",
+        "Properties": {
+          "edition": "Standard",
+          "status": "Online",
+          "serviceLevelObjective": "S2",
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "maxSizeBytes": "268435456000",
+          "requestedServiceObjectiveName": "S2",
+          "sampleName": null,
+          "defaultSecondaryLocation": "region-B",
+          "earliestRestoreDate": "2019-01-01T00:00:00Z",
+          "elasticPoolName": null,
+          "containmentState": 2,
+          "readScale": "Disabled",
+          "failoverGroupId": null,
+          "zoneRedundant": false,
+          "isUpgradeRequested": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/databases",
+        "ResourceType": "Microsoft.Sql/servers/databases",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-B/elasticPools/pool-A",
+        "ResourceName": "pool-A",
+        "Name": "pool-A",
+        "Kind": null,
+        "Location": "region",
+        "Tags": null,
+        "Sku": {
+          "name": "StandardPool",
+          "tier": "Standard",
+          "capacity": 50
+        },
+        "Properties": {
+          "maxSizeBytes": 107374182400,
+          "perDatabaseSettings": {
+            "minCapacity": 0,
+            "maxCapacity": 50
+          },
+          "zoneRedundant": false,
+          "availabilityZone": "NoPreference"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/elasticPools",
+        "ResourceType": "Microsoft.Sql/servers/elasticPools",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -396,6 +450,91 @@
         "Type": "Microsoft.Sql/servers/azureADOnlyAuthentications",
         "ResourceType": "Microsoft.Sql/servers/azureADOnlyAuthentications",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/databases/database-A",
+        "ResourceName": "database-A",
+        "Name": "database-A",
+        "Kind": "v12.0,user",
+        "Location": "region",
+        "Properties": {
+          "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default",
+          "edition": "Standard",
+          "status": "Online",
+          "serviceLevelObjective": "S2",
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "maxSizeBytes": "268435456000",
+          "requestedServiceObjectiveName": "S2",
+          "sampleName": null,
+          "defaultSecondaryLocation": "region-B",
+          "earliestRestoreDate": "2019-01-01T00:00:00Z",
+          "elasticPoolName": null,
+          "containmentState": 2,
+          "readScale": "Disabled",
+          "failoverGroupId": null,
+          "zoneRedundant": false,
+          "isUpgradeRequested": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/databases",
+        "ResourceType": "Microsoft.Sql/servers/databases",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/databases/database-B",
+        "ResourceName": "database-B",
+        "Name": "database-B",
+        "Kind": "v12.0,user",
+        "Location": "region",
+        "Properties": {
+          "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestEurope_DB_1",
+          "edition": "Standard",
+          "status": "Online",
+          "serviceLevelObjective": "S2",
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "maxSizeBytes": "268435456000",
+          "requestedServiceObjectiveName": "S2",
+          "sampleName": null,
+          "defaultSecondaryLocation": "region-B",
+          "earliestRestoreDate": "2019-01-01T00:00:00Z",
+          "elasticPoolName": null,
+          "containmentState": 2,
+          "readScale": "Disabled",
+          "failoverGroupId": null,
+          "zoneRedundant": false,
+          "isUpgradeRequested": false
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/databases",
+        "ResourceType": "Microsoft.Sql/servers/databases",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-C/elasticPools/pool-A",
+        "ResourceName": "pool-A",
+        "Name": "pool-A",
+        "Kind": null,
+        "Location": "region",
+        "Tags": null,
+        "Sku": {
+          "name": "StandardPool",
+          "tier": "Standard",
+          "capacity": 50
+        },
+        "Properties": {
+          "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default",
+          "maxSizeBytes": 107374182400,
+          "perDatabaseSettings": {
+            "minCapacity": 0,
+            "maxCapacity": 50
+          },
+          "zoneRedundant": false,
+          "availabilityZone": "NoPreference"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/elasticPools",
+        "ResourceType": "Microsoft.Sql/servers/elasticPools",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -480,6 +619,58 @@
         "Type": "Microsoft.Sql/servers/auditingSettings",
         "ResourceType": "Microsoft.Sql/servers/auditingSettings",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-D/databases/database-A",
+        "ResourceName": "database-A",
+        "Name": "database-A",
+        "Kind": "v12.0,user",
+        "Location": "region",
+        "Properties": {
+          "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestEurope_DB_1",
+          "edition": "Standard",
+          "status": "Online",
+          "serviceLevelObjective": "S2",
+          "collation": "SQL_Latin1_General_CP1_CI_AS",
+          "maxSizeBytes": "268435456000",
+          "requestedServiceObjectiveName": "S2",
+          "sampleName": null,
+          "defaultSecondaryLocation": "region-B",
+          "earliestRestoreDate": "2019-01-01T00:00:00Z",
+          "elasticPoolName": null,
+          "containmentState": 2,
+          "readScale": "Disabled",
+          "failoverGroupId": null,
+          "zoneRedundant": false,
+          "isUpgradeRequested": false
+        }
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-D/elasticPools/pool-A",
+        "ResourceName": "pool-A",
+        "Name": "pool-A",
+        "Kind": null,
+        "Location": "region",
+        "Tags": null,
+        "Sku": {
+          "name": "StandardPool",
+          "tier": "Standard",
+          "capacity": 50
+        },
+        "Properties": {
+          "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestEurope_DB_2",
+          "maxSizeBytes": 107374182400,
+          "perDatabaseSettings": {
+            "minCapacity": 0,
+            "maxCapacity": 50
+          },
+          "zoneRedundant": false,
+          "availabilityZone": "NoPreference"
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Sql/servers/elasticPools",
+        "ResourceType": "Microsoft.Sql/servers/elasticPools",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },
@@ -520,6 +711,7 @@
     "Location": "region",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Properties": {
+      "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default",
       "edition": "Standard",
       "status": "Online",
       "serviceLevelObjective": "S2",
@@ -547,6 +739,7 @@
     "Location": "region",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Properties": {
+      "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestEurope_DB_1",
       "edition": "Standard",
       "status": "Online",
       "serviceLevelObjective": "S2",
@@ -619,6 +812,86 @@
     "Tags": null,
     "Properties": {
       "azureADOnlyAuthentication": true
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-E/elasticPools/pool-A",
+    "ResourceName": "server-E/pool-A",
+    "Name": "server-E/pool-A",
+    "ResourceType": "Microsoft.Sql/servers/elasticPools",
+    "Type": "Microsoft.Sql/servers/elasticPools",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Sku": {
+      "name": "StandardPool",
+      "tier": "Standard",
+      "capacity": 50
+    },
+    "Properties": {
+      "maxSizeBytes": 107374182400,
+      "perDatabaseSettings": {
+        "minCapacity": 0,
+        "maxCapacity": 50
+      },
+      "zoneRedundant": false,
+      "availabilityZone": "NoPreference"
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-F/elasticPools/pool-A",
+    "ResourceName": "server-F/pool-A",
+    "Name": "server-F/pool-A",
+    "ResourceType": "Microsoft.Sql/servers/elasticPools",
+    "Type": "Microsoft.Sql/servers/elasticPools",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Sku": {
+      "name": "StandardPool",
+      "tier": "Standard",
+      "capacity": 50
+    },
+    "Properties": {
+      "maxSizeBytes": 107374182400,
+      "perDatabaseSettings": {
+        "minCapacity": 0,
+        "maxCapacity": 50
+      },
+      "zoneRedundant": false,
+      "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default",
+      "availabilityZone": "NoPreference"
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Sql/servers/server-G/elasticPools/pool-A",
+    "ResourceName": "server-G/pool-A",
+    "Name": "server-G/pool-A",
+    "ResourceType": "Microsoft.Sql/servers/elasticPools",
+    "Type": "Microsoft.Sql/servers/elasticPools",
+    "Kind": null,
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Sku": {
+      "name": "StandardPool",
+      "tier": "Standard",
+      "capacity": 50
+    },
+    "Properties": {
+      "maxSizeBytes": 107374182400,
+      "perDatabaseSettings": {
+        "minCapacity": 0,
+        "maxCapacity": 50
+      },
+      "zoneRedundant": false,
+      "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestEurope_DB_2",
+      "availabilityZone": "NoPreference"
     }
   }
 ]
