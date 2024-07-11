@@ -94,4 +94,4 @@ Zone-redundancy is only supported for the `PremiumV2`, `PremiumV3` and `ElasticP
 - [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Reliability in Azure App Service](https://learn.microsoft.com/azure/reliability/reliability-app-service)
 - [Availability zone support](https://learn.microsoft.com/azure/reliability/reliability-app-service#availability-zone-support)
-- [Azure resource deployment](https://learn.microsoft.comx/azure/templates/microsoft.web/serverfarms)
+- [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.web/serverfarms)
