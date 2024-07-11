@@ -34,7 +34,7 @@ Without explicitly configuring this minimum, the application may not meet the zo
 
 ## RECOMMENDATION
 
-To improve the resiliency of app service plan instances against zone failures, it is recommended to use availability zones. This configuration enhances fault tolerance and ensures continued operation even if one zone experiences an outage.
+Consider using enabling zone redundency using availability zones to improve the resiliency of your solution.
 
 ## EXAMPLES
 
