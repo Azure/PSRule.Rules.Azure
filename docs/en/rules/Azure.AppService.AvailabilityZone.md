@@ -14,17 +14,22 @@ Deploy app service plan instances using availability zones in supported regions 
 
 ## DESCRIPTION
 
-App service plans supports the use of availability zones to provide zone redundancy for the applications running on the instances within the plan. Zone redundancy enhances the resiliency and high availability of the app service plan by deploying instances across data centers in physically separated zones.
+App Service plans support zone redundency, which distributes your application running within the plan across Availablity Zones.
+Each Availability Zone is a group of phyiscally separated data centers.
+Deploying your application with zone redundency:
 
-App service plans use auto-scaling to manage the number of instances based on demand. The following rules apply when scaling a zone-redundant app service plan:
+- Scales your plan to a minimum of 3 instances in a highly available configuration.
+  Additional instances can be added manually or on-demand by using autoscale.
+- Improves the resiliency against service disruptions or issues affecting a single zone.
 
-- Minimum Instance Count: The app service plan must have a minimum of 3 instances to support zone redundancy.
- - If you enable availability zones but specify a capacity less than 3, the platform will enforce a minimum instance count of 3.
-- Even Distribution: If the instance count is larger than 3 and divisible by 3, instances are evenly distributed across the three zones.
-- Partial Distribution: Instance counts beyond 3*N are spread across the remaining one or two zones to ensure balanced distribution.
+Additionally:
+
+- **Even Distribution**: If the instance count is larger than 3 and divisible by 3, instances are evenly distributed across the three zones.
+- **Partial Distribution**: Instance counts beyond 3*N are spread across the remaining one or two zones to ensure balanced distribution.
 
 **Important** Configuring zone redundancy with per-application scaling is possible but may increase costs and administrative overhead.
-When `perSiteScaling` is enabled, each application can have its own scaling rules and run on dedicated instances. To maintain zone redundancy, it is crucial that each application’s scaling rules ensure a minimum of 3 instances.
+When `perSiteScaling` is enabled, each application can have its own scaling rules and run on dedicated instances.
+To maintain zone redundancy, it is crucial that each application’s scaling rules ensure a minimum of 3 instances.
 Without explicitly configuring this minimum, the application may not meet the zone redundancy requirement.
 
 ## RECOMMENDATION
