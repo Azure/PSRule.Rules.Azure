@@ -191,14 +191,6 @@ Rule 'Azure.AppService.NodeJsVersion' -Ref 'AZR-000428' -Type 'Microsoft.Web/sit
 
 # Synopsis: Deploy app service plan instances using availability zones in supported regions to ensure high availability and resilience.
 Rule 'Azure.AppService.AvailabilityZone' -Ref 'AZR-000442' -Type 'Microsoft.Web/serverfarms' -Tag @{ release = 'GA'; ruleSet = '2024_09 '; 'Azure.WAF/pillar' = 'Reliability'; } {
-    # Availability zones are only supported for these Premium SKUs.
-    if ($TargetObject.sku.tier -notin 'PremiumV2', 'PremiumV3', 'ElasticPremium') {
-        return $Assert.In($TargetObject, 'sku.tier', @('PremiumV2', 'PremiumV3', 'ElasticPremium')).Reason(
-            $LocalizedData.AppServiceAvailabilityZoneSKU,
-            $TargetObject.name
-        )
-    }
-
     # Check if the region supports availability zones.
     $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Compute', 'virtualMachineScaleSets') # Use VMSS provider for availability zones as the App Service provider does not provide this information.
     $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $provider.ZoneMappings
@@ -207,6 +199,12 @@ Rule 'Azure.AppService.AvailabilityZone' -Ref 'AZR-000442' -Type 'Microsoft.Web/
     if (-not $availabilityZones) {
         return $Assert.Pass()
     }
+
+    # Availability zones are only supported for these Premium SKUs.
+    $Assert.In($TargetObject, 'sku.tier', @('PremiumV2', 'PremiumV3', 'ElasticPremium')).Reason(
+        $LocalizedData.AppServiceAvailabilityZoneSKU,
+        $TargetObject.name
+    )
 
     $Assert.HasFieldValue($TargetObject, 'properties.ZoneRedundant', $true).Reason(
         $LocalizedData.AppServiceAvailabilityZone,
