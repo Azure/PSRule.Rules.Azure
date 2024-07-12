@@ -42,7 +42,7 @@ Consider using enabling zone redundancy using availability zones to improve the 
 
 To configure a zone-redundant app service plan:
 
-- Set the `properties.ZoneRedundant` property to `true`.
+- Set the `properties.zoneRedundant` property to `true`.
 
 For example:
 
@@ -60,7 +60,7 @@ For example:
     "capacity": 3
   },
   "properties": {
-    "ZoneRedundant": true
+    "zoneRedundant": true
   }
 }
 ```
@@ -69,7 +69,7 @@ For example:
 
 To configure a zone-redundant app service plan:
 
-- Set the `properties.ZoneRedundant` property to `true`.
+- Set the `properties.zoneRedundant` property to `true`.
 
 For example:
 
