@@ -261,17 +261,19 @@ Describe 'Azure.AppService' -Tag 'AppService' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'plan-A', 'plan-B', 'plan-D';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'plan-A', 'plan-D';
 
-            $ruleResult[0].Reason | Should -BeExactly "The app service plan (plan-A) is not deployed with a SKU that supports zone-redundancy.";
-            $ruleResult[1].Reason | Should -BeExactly "The app service plan (plan-B) is not deployed with a SKU that supports zone-redundancy.";
-            $ruleResult[2].Reason | Should -BeExactly "The app service plan (plan-D) deployed to region (eastus) should use a minimum of two availability zones from the following [1, 2, 3].";
+            $ruleResult[0].Reason | Should -BeExactly @(
+                "The app service plan (plan-A) is not deployed with a SKU that supports zone-redundancy."
+                "The app service plan (plan-A) deployed to region (eastus) should use a minimum of two availability zones from the following [1, 2, 3]."
+            );
+            $ruleResult[1].Reason | Should -BeExactly "The app service plan (plan-D) deployed to region (eastus) should use a minimum of two availability zones from the following [1, 2, 3].";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'plan-C', 'plan-E', 'plan-F';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'plan-B', 'plan-C', 'plan-E', 'plan-F';
         }
     }
 
