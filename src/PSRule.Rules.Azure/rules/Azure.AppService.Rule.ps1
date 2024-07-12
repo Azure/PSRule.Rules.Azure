@@ -206,7 +206,7 @@ Rule 'Azure.AppService.AvailabilityZone' -Ref 'AZR-000442' -Type 'Microsoft.Web/
         $TargetObject.name
     )
 
-    $Assert.HasFieldValue($TargetObject, 'properties.ZoneRedundant', $true).Reason(
+    $Assert.HasFieldValue($TargetObject, 'properties.zoneRedundant', $true).Reason(
         $LocalizedData.AppServiceAvailabilityZone,
         $TargetObject.name,
         $TargetObject.location,
