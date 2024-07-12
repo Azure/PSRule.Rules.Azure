@@ -14,9 +14,9 @@ Deploy app service plan instances using availability zones in supported regions 
 
 ## DESCRIPTION
 
-App Service plans support zone redundency, which distributes your application running within the plan across Availablity Zones.
+App Service plans support zone redundancy, which distributes your application running within the plan across Availablity Zones.
 Each Availability Zone is a group of phyiscally separated data centers.
-Deploying your application with zone redundency:
+Deploying your application with zone redundancy:
 
 - Scales your plan to a minimum of 3 instances in a highly available configuration.
   Additional instances can be added manually or on-demand by using autoscale.
@@ -34,7 +34,7 @@ Without explicitly configuring this minimum, the application may not meet the zo
 
 ## RECOMMENDATION
 
-Consider using enabling zone redundency using availability zones to improve the resiliency of your solution.
+Consider using enabling zone redundancy using availability zones to improve the resiliency of your solution.
 
 ## EXAMPLES
 
