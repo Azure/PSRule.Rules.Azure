@@ -39,6 +39,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - App Service Environment:
     - Verify that app service environments have availability zones configured by @BenjaminEngeset.
       [#2964](https://github.com/Azure/PSRule.Rules.Azure/issues/2964)
+
 ## v1.38.0
 
 What's changed since v1.37.0:
