@@ -112,4 +112,6 @@
     InsecureParameterType = "The parameter '{0}' with type '{1}' is not secure."
     AzureSQLMIMaintenanceWindow = "The managed instance ({0}) should have a customer-controlled maintenance window configured."
     AzureSQLDatabaseMaintenanceWindow = "The {0} ({1}) should have a customer-controlled maintenance window configured."
+    ASEAvailabilityZoneVersion = "The app service environment ({0}) is not deployed with a version that supports zone-redundancy."
+    ASEAvailabilityZone = "The app service environment ({0}) deployed to region ({1}) should use three availability zones from the following [{2}]."
 }

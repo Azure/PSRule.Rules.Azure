@@ -51,8 +51,32 @@ Describe 'Azure.ASE' -Tag 'ASE' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -BeIn 'environment-C';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'environment-C', 'environment-E', 'environment-F';
+        }
+
+        It 'Azure.ASE.AvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ASE.AvailabilityZone' };
+            
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'environment-A', 'environment-B', 'environment-D';
+
+            $ruleResult[0].Reason | Should -BeExactly @(
+                "The app service environment (environment-A) is not deployed with a version that supports zone-redundancy."
+                "The app service environment (environment-A) deployed to region (westeurope) should use three availability zones from the following [1, 2, 3]."
+                ):
+            $ruleResult[1].Reason | Should -BeExactly @(
+                "The app service environment (environment-B) is not deployed with a version that supports zone-redundancy."
+                "The app service environment (environment-B) deployed to region (westeurope) should use three availability zones from the following [1, 2, 3]."
+                ):
+            $ruleResult[2].Reason | Should -BeExactly "The app service environment (environment-D) is not deployed with a version that supports zone-redundancy.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'environment-C', 'environment-E', 'environment-F';
         }
     }
 }
