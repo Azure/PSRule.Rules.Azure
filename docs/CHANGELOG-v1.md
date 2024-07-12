@@ -36,7 +36,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure SQL Managed Instance:
     - Verify that Azure SQL Managed Instances have a customer-controlled maintenance window configured by @BenjaminEngeset.
       [#2979](https://github.com/Azure/PSRule.Rules.Azure/issues/2979)
-  - App Service:
+  - App Service Environment:
     - Verify that app service environments have availability zones configured by @BenjaminEngeset.
       [#2964](https://github.com/Azure/PSRule.Rules.Azure/issues/2964)
 ## v1.38.0
