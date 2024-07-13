@@ -29,16 +29,21 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.38.0:
+
 - New rules:
+  - App Service:
+    - Verify that app service plans have availability zones configured by @BenjaminEngeset.
+      [#2964](https://github.com/Azure/PSRule.Rules.Azure/issues/2964)
+  - App Service Environment:
+    - Verify that app service environments have availability zones configured by @BenjaminEngeset.
+      [#2964](https://github.com/Azure/PSRule.Rules.Azure/issues/2964)
   - Azure SQL Database:
     - Verify that Azure SQL databases have a customer-controlled maintenance window configured by @BenjaminEngeset.
       [#2956](https://github.com/Azure/PSRule.Rules.Azure/issues/2956)
   - Azure SQL Managed Instance:
     - Verify that Azure SQL Managed Instances have a customer-controlled maintenance window configured by @BenjaminEngeset.
       [#2979](https://github.com/Azure/PSRule.Rules.Azure/issues/2979)
-  - App Service:
-    - Verify that app service plans have availability zones configured by @BenjaminEngeset.
-      [#2964](https://github.com/Azure/PSRule.Rules.Azure/issues/2964)
 
 ## v1.38.0
 
