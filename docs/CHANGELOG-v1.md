@@ -37,7 +37,7 @@ What's changed since v1.38.0:
       [#2964](https://github.com/Azure/PSRule.Rules.Azure/issues/2964)
   - App Service Environment:
     - Verify that app service environments have availability zones configured by @BenjaminEngeset.
-      [#2985](https://github.com/Azure/PSRule.Rules.Azure/issues/2985)
+      [#2964](https://github.com/Azure/PSRule.Rules.Azure/issues/2964)
   - Azure SQL Database:
     - Verify that Azure SQL databases have a customer-controlled maintenance window configured by @BenjaminEngeset.
       [#2956](https://github.com/Azure/PSRule.Rules.Azure/issues/2956)
