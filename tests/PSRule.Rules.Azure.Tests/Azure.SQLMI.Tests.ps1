@@ -90,6 +90,23 @@ Describe 'Azure.SQLMI' -Tag 'SQLMI' {
             $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'server-B', 'server-D', 'ActiveDirectoryAdmin-B';
         }
+
+        It 'Azure.SQLMI.MaintenanceWindow' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQLMI.MaintenanceWindow' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-B';
+
+            $ruleResult[0].Reason | Should -BeExactly "The managed instance (server-A) should have a customer-controlled maintenance window configured.";
+            $ruleResult[1].Reason | Should -BeExactly "The managed instance (server-B) should have a customer-controlled maintenance window configured.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'server-C', 'server-D';
+        }
     }
 
     Context 'Resource name - Azure.SQLMI.Name' {

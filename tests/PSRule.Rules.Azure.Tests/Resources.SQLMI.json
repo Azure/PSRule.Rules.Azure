@@ -59,7 +59,8 @@
       "primaryUserAssignedIdentityId": null,
       "publicNetworkAccess": null,
       "restrictOutboundNetworkAccess": null,
-      "version": null
+      "version": null,
+      "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_Default"
     }
   },
   {
@@ -85,7 +86,8 @@
       "primaryUserAssignedIdentityId": null,
       "publicNetworkAccess": null,
       "restrictOutboundNetworkAccess": null,
-      "version": null
+      "version": null,
+      "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_WestEurope_MI_1"
     },
     "resources": [
       {
@@ -138,7 +140,8 @@
       "primaryUserAssignedIdentityId": null,
       "publicNetworkAccess": null,
       "restrictOutboundNetworkAccess": null,
-      "version": null
+      "version": null,
+      "maintenanceConfigurationId": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Maintenance/publicMaintenanceConfigurations/SQL_EastUS_MI_2"
     },
     "resources": [
       {
