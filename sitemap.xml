@@ -801,6 +801,11 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ASE.AvailabilityZone/</loc>
+         <lastmod>2024-07-13</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ASE.MigrateV3/</loc>
          <lastmod>2024-07-13</lastmod>
          <changefreq>daily</changefreq>
