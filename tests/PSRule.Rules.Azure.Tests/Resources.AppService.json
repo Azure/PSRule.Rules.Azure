@@ -6,7 +6,7 @@
     "ResourceType": "Microsoft.Web/serverfarms",
     "Kind": "app",
     "ResourceGroupName": "test-rg",
-    "Location": "region",
+    "Location": "eastus",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000",
     "Tags": null,
     "Properties": {
@@ -606,6 +606,126 @@
       "size": "B1",
       "family": "B",
       "capacity": 1
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/serverfarms/plan-C",
+    "ResourceName": "plan-C",
+    "Name": "plan-C",
+    "ResourceType": "Microsoft.Web/serverfarms",
+    "Kind": "app",
+    "ResourceGroupName": "test-rg",
+    "Location": "notregion",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "perSiteScaling": false,
+      "elasticScaleEnabled": false,
+      "maximumElasticWorkerCount": 1,
+      "isSpot": false,
+      "reserved": true,
+      "isXenon": false,
+      "hyperV": false,
+      "targetWorkerCount": 0,
+      "targetWorkerSizeId": 0,
+      "zoneRedundant": false
+    },
+    "Sku": {
+      "name": "P1v3",
+      "tier": "PremiumV3",
+      "size": "P1v3",
+      "family": "Pv3",
+      "capacity": 1
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/serverfarms/plan-D",
+    "ResourceName": "plan-D",
+    "Name": "plan-D",
+    "ResourceType": "Microsoft.Web/serverfarms",
+    "Kind": "app",
+    "ResourceGroupName": "test-rg",
+    "Location": "eastus",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "perSiteScaling": false,
+      "elasticScaleEnabled": false,
+      "maximumElasticWorkerCount": 1,
+      "isSpot": false,
+      "reserved": true,
+      "isXenon": false,
+      "hyperV": false,
+      "targetWorkerCount": 0,
+      "targetWorkerSizeId": 0,
+      "zoneRedundant": false
+    },
+    "Sku": {
+      "name": "P1v3",
+      "tier": "PremiumV3",
+      "size": "P1v3",
+      "family": "Pv3",
+      "capacity": 1
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/serverfarms/plan-E",
+    "ResourceName": "plan-E",
+    "Name": "plan-E",
+    "ResourceType": "Microsoft.Web/serverfarms",
+    "Kind": "app",
+    "ResourceGroupName": "test-rg",
+    "Location": "eastus",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "perSiteScaling": false,
+      "elasticScaleEnabled": false,
+      "maximumElasticWorkerCount": 1,
+      "isSpot": false,
+      "reserved": true,
+      "isXenon": false,
+      "hyperV": false,
+      "targetWorkerCount": 0,
+      "targetWorkerSizeId": 0,
+      "zoneRedundant": true
+    },
+    "Sku": {
+      "name": "P1v3",
+      "tier": "PremiumV3",
+      "size": "P1v3",
+      "family": "Pv3",
+      "capacity": 3
+    }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Web/serverfarms/plan-F",
+    "ResourceName": "plan-F",
+    "Name": "plan-F",
+    "ResourceType": "Microsoft.Web/serverfarms",
+    "Kind": "elastic",
+    "ResourceGroupName": "test-rg",
+    "Location": "eastus",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Tags": null,
+    "Properties": {
+      "perSiteScaling": false,
+      "elasticScaleEnabled": false,
+      "maximumElasticWorkerCount": 1,
+      "isSpot": false,
+      "reserved": true,
+      "isXenon": false,
+      "hyperV": false,
+      "targetWorkerCount": 0,
+      "targetWorkerSizeId": 0,
+      "zoneRedundant": true
+    },
+    "Sku": {
+      "name": "EP1",
+      "tier": "ElasticPremium",
+      "size": "EP1",
+      "family": "EP",
+      "capacity": 3
     }
   },
   {

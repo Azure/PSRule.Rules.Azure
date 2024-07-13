@@ -114,4 +114,6 @@
     AzureSQLDatabaseMaintenanceWindow = "The {0} ({1}) should have a customer-controlled maintenance window configured."
     ASEAvailabilityZoneVersion = "The app service environment ({0}) is not deployed with a version that supports zone-redundancy."
     ASEAvailabilityZone = "The app service environment ({0}) deployed to region ({1}) should use three availability zones from the following [{2}]."
+    AppServiceAvailabilityZoneSKU = "The app service plan ({0}) is not deployed with a SKU that supports zone-redundancy."
+    AppServiceAvailabilityZone = "The app service plan ({0}) deployed to region ({1}) should use three availability zones from the following [{2}]."
 }
