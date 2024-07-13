@@ -39,6 +39,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - App Service:
     - Verify that app service plans have availability zones configured by @BenjaminEngeset.
       [#2964](https://github.com/Azure/PSRule.Rules.Azure/issues/2964)
+- Engineering:
+  - Bump xunit to v2.9.0.
+    [#2982](https://github.com/Azure/PSRule.Rules.Azure/pull/2982)
+  - Bump xunit.runner.visualstudio to v2.8.2.
+    [#2982](https://github.com/Azure/PSRule.Rules.Azure/pull/2982)
 
 ## v1.38.0
 
