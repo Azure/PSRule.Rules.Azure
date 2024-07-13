@@ -42,15 +42,15 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'plan-B';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'plan-B', 'plan-C', 'plan-D';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'sku.capacity';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'plan-A';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'plan-A', 'plan-E';
         }
 
         It 'Azure.AppService.MinPlan' {
@@ -66,8 +66,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'plan-A';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'plan-A', 'plan-C', 'plan-D', 'plan-E';
         }
 
         It 'Azure.AppService.ARRAffinity' {
@@ -254,6 +254,26 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult.Length | Should -Be 13;
             $ruleResult.TargetName | Should -BeIn 'site-A', 'site-A/staging', 'site-B', 'site-B/staging', 'fn-app', 'site-c', 'site-d', 'site-f', 'site-h', 'site-j', 'site-l/web', 'site-n/web', 'site-p/appsettings';
+        }
+
+        It 'Azure.AppService.AvailabilityZone' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppService.AvailabilityZone' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'plan-A', 'plan-D';
+
+            $ruleResult[0].Reason | Should -BeExactly @(
+                "The app service plan (plan-A) is not deployed with a SKU that supports zone-redundancy."
+                "The app service plan (plan-A) deployed to region (eastus) should use three availability zones from the following [1, 2, 3]."
+            );
+            $ruleResult[1].Reason | Should -BeExactly "The app service plan (plan-D) deployed to region (eastus) should use three availability zones from the following [1, 2, 3].";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'plan-B', 'plan-C', 'plan-E', 'plan-F';
         }
     }
 
