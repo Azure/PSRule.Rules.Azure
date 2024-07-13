@@ -65,11 +65,11 @@ Describe 'Azure.ASE' -Tag 'ASE' {
 
             $ruleResult[0].Reason | Should -BeExactly @(
                 "The app service environment (environment-A) is not deployed with a version that supports zone-redundancy."
-                "The app service environment (environment-A) deployed to region (westeurope) should use three availability zones from the following [1, 2, 3]."
+                "Path properties.zoneRedundant: Does not exist."
                 ):
             $ruleResult[1].Reason | Should -BeExactly @(
                 "The app service environment (environment-B) is not deployed with a version that supports zone-redundancy."
-                "The app service environment (environment-B) deployed to region (westeurope) should use three availability zones from the following [1, 2, 3]."
+                "Path properties.zoneRedundant: Is set to 'False'."
                 ):
             $ruleResult[2].Reason | Should -BeExactly "The app service environment (environment-D) is not deployed with a version that supports zone-redundancy.";
 
