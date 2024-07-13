@@ -34,12 +34,7 @@ Rule 'Azure.ASE.AvailabilityZone' -Ref 'AZR-000443' -Type 'Microsoft.Web/hosting
         $TargetObject.name
     )
 
-    $Assert.HasFieldValue($TargetObject, 'properties.zoneRedundant', $true).Reason(
-        $LocalizedData.ASEAvailabilityZone,
-        $TargetObject.name,
-        $TargetObject.location,
-        ($availabilityZones -join ', ')
-    )
+    $Assert.HasFieldValue($TargetObject, 'properties.zoneRedundant', $true)
 }
 
 #endregion Rules
