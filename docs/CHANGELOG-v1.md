@@ -49,6 +49,11 @@ What's changed since v1.38.0:
   - Azure SQL Managed Instance:
     - Verify that Azure SQL Managed Instances have a customer-controlled maintenance window configured by @BenjaminEngeset.
       [#2979](https://github.com/Azure/PSRule.Rules.Azure/issues/2979)
+- Engineering:
+  - Bump xunit to v2.9.0.
+    [#2982](https://github.com/Azure/PSRule.Rules.Azure/pull/2982)
+  - Bump xunit.runner.visualstudio to v2.8.2.
+    [#2982](https://github.com/Azure/PSRule.Rules.Azure/pull/2982)
 
 ## v1.38.0
 
