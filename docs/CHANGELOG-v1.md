@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Service Bus:
+    - Verify that service bus namespaces have geo-replication configured by @BenjaminEngeset.
+      [#2988](https://github.com/Azure/PSRule.Rules.Azure/issues/2988)
+
 What's changed since v1.38.0:
 
 - New rules:

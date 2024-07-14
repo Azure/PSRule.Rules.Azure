@@ -29,15 +29,4 @@ Rule 'Azure.ServiceBus.AuditLogs' -Ref 'AZR-000358' -Type 'Microsoft.ServiceBus/
     ).PathPrefix('resources')
 }
 
-# Synopsis: Consider replication for namespaces to ensure resiliency to region outages.
-Rule 'Azure.ServiceBus.GeoReplica' -Ref 'AZR-000444' -Type 'Microsoft.ServiceBus/namespaces' -Tag @{ release = 'preview'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
-    # Geo-replication is only available for the Premium SKU.
-    $Assert.HasFieldValue($TargetObject, 'sku.name', 'Premuium')
-
-    $locations = $TargetObject.properties.geoDataReplication.locations
-    
-    $Assert.HasFieldValue($locations[0], 'roleType', 'Primary')
-    $Assert.HasFieldValue($locations[1], 'roleType', 'Secondary')
-}
-
 #endregion Rules
