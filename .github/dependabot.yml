@@ -42,6 +42,7 @@ updates:
   reviewers:
   - azure/psrule-rules-azure
 
+# Maintain dependencies for Dev Containers
 - package-ecosystem: devcontainers
   directory: '/'
   schedule:
