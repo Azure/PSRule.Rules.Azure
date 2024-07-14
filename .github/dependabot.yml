@@ -9,35 +9,35 @@ version: 2
 updates:
 
 # Maintain dependencies for .NET Core
-- package-ecosystem: 'nuget'
+- package-ecosystem: nuget
   directory: '/'
   schedule:
-    interval: 'daily'
+    interval: daily
   labels:
-  - 'dependencies'
+  - dependencies
   reviewers:
-  - 'azure/psrule-rules-azure'
+  - azure/psrule-rules-azure
   ignore:
   # Ignore upgrades to PS 7.1 for tool chain components at this time
-  # Testing against PS 7.1 is already completed
-  - dependency-name: 'Microsoft.PowerShell.SDK'
+  - dependency-name: Microsoft.PowerShell.SDK
+  - dependency-name: System.Management.Automation
 
 # Maintain dependencies for GitHub Actions
 - package-ecosystem: 'github-actions'
   directory: '/'
   schedule:
-    interval: 'daily'
+    interval: daily
   labels:
-  - 'ci-quality'
+  - ci-quality
   reviewers:
-  - 'azure/psrule-rules-azure'
+  - azure/psrule-rules-azure
 
 # Maintain dependencies for Python
-- package-ecosystem: 'pip'
+- package-ecosystem: pip
   directory: '/'
   schedule:
-    interval: 'daily'
+    interval: daily
   labels:
-  - 'ci-quality'
+  - ci-quality
   reviewers:
-  - 'azure/psrule-rules-azure'
+  - azure/psrule-rules-azure
