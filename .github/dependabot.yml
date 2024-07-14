@@ -41,3 +41,12 @@ updates:
   - ci-quality
   reviewers:
   - azure/psrule-rules-azure
+
+- package-ecosystem: devcontainers
+  directory: '/'
+  schedule:
+    interval: daily
+  labels:
+  - ci-quality
+  reviewers:
+  - azure/psrule-rules-azure
