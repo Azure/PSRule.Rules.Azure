@@ -127,4 +127,5 @@ This feature is currently in preview.
 - [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
 - [Geo-replication](https://learn.microsoft.com/azure/service-bus-messaging/service-bus-geo-replication)
 - [Configure geo-replication](https://learn.microsoft.com/azure/service-bus-messaging/service-bus-geo-replication#setup)
+- [Migrate existing Azure Service Bus standard namespaces to the premium tier](https://learn.microsoft.com/azure/service-bus-messaging/service-bus-migrate-standard-premium)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.servicebus/namespaces)
