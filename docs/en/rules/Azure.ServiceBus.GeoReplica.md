@@ -83,7 +83,8 @@ For example:
 
 To deploy namespaces that pass this rule:
 
-- Set `sku.name` to `Premium`.
+- Set the `sku.name` property to `Premium`. This only applies to new namespaces.
+  - For existing namespaces first, migrate to a namespace deployed with a premium SKU.
 - Configure the `properties.geoDataReplication.locations` array with two or more supported region elements.
 
 For example:
