@@ -42,10 +42,32 @@ metadata:
     Azure.MCSB.v1/control: DP-3
 spec:
   type:
-  - Microsoft.ServiceBus/namespaces
+    - Microsoft.ServiceBus/namespaces
   condition:
     field: properties.minimumTlsVersion
     equals: '1.2'
+
+---
+# Synopsis: Enhance resilience to regional outages by replicating namespaces.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ServiceBus.GeoReplica
+  ref: AZR-000444
+  tags:
+    release: preview
+    ruleSet: 2024_09
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+    - Microsoft.ServiceBus/namespaces
+  condition:
+    allOf:
+      # Geo-replication is only available for the Premium SKU.
+      - field: sku.name
+        equals: Premium
+      - field: properties.geoDataReplication.locations
+        greaterOrEquals: 2
 
 #endregion Rules
 
@@ -67,5 +89,4 @@ spec:
           - Microsoft.ServiceBus/namespaces
       - field: sku.name
         equals: Premium
-
 #endregion Selectors

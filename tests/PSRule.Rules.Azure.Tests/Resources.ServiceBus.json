@@ -208,7 +208,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-C",
     "Identity": null,
     "Kind": null,
-    "Location": "West Europe",
+    "Location": "centraluseuap",
     "ManagedBy": null,
     "ResourceName": "servicens-C",
     "Name": "servicens-C",
@@ -223,7 +223,16 @@
       "createdAt": "2022-06-30T13:23:58.58Z",
       "updatedAt": "2022-08-04T10:21:56.053Z",
       "serviceBusEndpoint": "https://servicens-C.servicebus.windows.net:443/",
-      "status": "Active"
+      "status": "Active",
+      "geoDataReplication": {
+        "maxReplicationLagDurationInSeconds": "300",
+        "locations": [
+          {
+            "locationName": "centraluseuap",
+            "roleType": "Primary"
+          }
+        ]
+      }
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ServiceBus/namespaces",
@@ -377,7 +386,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-D",
     "Identity": null,
     "Kind": null,
-    "Location": "East US",
+    "Location": "centraluseuap",
     "ManagedBy": null,
     "ResourceName": "servicens-D",
     "Name": "servicens-D",
@@ -392,7 +401,20 @@
       "createdAt": "2020-06-30T13:23:58.58Z",
       "updatedAt": "2020-08-04T10:21:56.053Z",
       "serviceBusEndpoint": "https://servicens-B.servicebus.windows.net:443/",
-      "status": "Active"
+      "status": "Active",
+      "geoDataReplication": {
+        "maxReplicationLagDurationInSeconds": "300",
+        "locations": [
+          {
+            "locationName": "centraluseuap",
+            "roleType": "Primary"
+          },
+          {
+            "locationName": "norwayeast",
+            "roleType": "Secondary"
+          }
+        ]
+      }
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ServiceBus/namespaces",
@@ -460,7 +482,7 @@
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.ServiceBus/namespaces/servicens-E",
     "Identity": null,
     "Kind": null,
-    "Location": "East US",
+    "Location": "italynorth",
     "ManagedBy": null,
     "ResourceName": "servicens-E",
     "Name": "servicens-E",
@@ -475,7 +497,20 @@
       "createdAt": "2020-06-30T13:23:58.58Z",
       "updatedAt": "2020-08-04T10:21:56.053Z",
       "serviceBusEndpoint": "https://servicens-B.servicebus.windows.net:443/",
-      "status": "Active"
+      "status": "Active",
+      "geoDataReplication": {
+        "maxReplicationLagDurationInSeconds": "300",
+        "locations": [
+          {
+            "locationName": "italynorth",
+            "roleType": "Primary"
+          },
+          {
+            "locationName": "spaincentral",
+            "roleType": "Secondary"
+          }
+        ]
+      }
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.ServiceBus/namespaces",
