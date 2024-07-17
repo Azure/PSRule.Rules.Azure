@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Azure Kubernetes Service:
+    - Verify that clusters have kube-audit logging disabled when not required by @BenjaminEngeset.
+      [#2450](https://github.com/Azure/PSRule.Rules.Azure/issues/2450)
+
 What's changed since v1.38.0:
 
 - New rules:

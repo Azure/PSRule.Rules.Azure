@@ -526,6 +526,23 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'cluster-L';
         }
+
+        It 'Azure.AKS.AuditAdmin' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.AuditAdmin' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'cluster-I', 'cluster-J';
+
+            $ruleResult[0].Reason | Should -Be "The diagnostic setting (metrics) should use 'kube-audit-admin' instead of the 'kube-audit' log category.";
+            $ruleResult[1].Reason | Should -Be "The diagnostic setting (metrics) should use 'kube-audit-admin' instead of the 'kube-audit' log category.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-K', 'cluster-L';
+        }
     }
 
     Context 'Resource name' {

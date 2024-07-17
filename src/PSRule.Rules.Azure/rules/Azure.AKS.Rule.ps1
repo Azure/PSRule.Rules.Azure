@@ -37,7 +37,7 @@ Rule 'Azure.AKS.PoolVersion' -Ref 'AZR-000016' -Type 'Microsoft.ContainerService
     }
     foreach ($agentPool in $agentPools) {
         $Assert.HasDefaultValue($agentPool, 'orchestratorVersion', $clusterVersion).
-            Reason($LocalizedData.AKSNodePoolVersion, $agentPool.name, $agentPool.orchestratorVersion);
+        Reason($LocalizedData.AKSNodePoolVersion, $agentPool.name, $agentPool.orchestratorVersion);
     }
 }
 
@@ -50,7 +50,7 @@ Rule 'Azure.AKS.PoolScaleSet' -Ref 'AZR-000017' -Type 'Microsoft.ContainerServic
     }
     foreach ($agentPool in $agentPools) {
         $Assert.HasFieldValue($agentPool, 'type', 'VirtualMachineScaleSets').
-            Reason($LocalizedData.AKSNodePoolType, $agentPool.name);
+        Reason($LocalizedData.AKSNodePoolType, $agentPool.name);
     }
 }
 
@@ -99,11 +99,11 @@ Rule 'Azure.AKS.CNISubnetSize' -Ref 'AZR-000020' -If { IsExport } -With 'Azure.A
         $subnetAddressPrefixSize = [int]$subnet.Properties.addressPrefix.Split('/')[-1];
         
         $Assert.LessOrEqual($subnetAddressPrefixSize, '.', $configurationMinimumSubnetSize).
-            Reason(
-                $LocalizedData.AKSAzureCNI, 
-                $subnet.Name, 
-                $configurationMinimumSubnetSize
-            );
+        Reason(
+            $LocalizedData.AKSAzureCNI, 
+            $subnet.Name, 
+            $configurationMinimumSubnetSize
+        );
     }
 } -Configure @{ AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE = 23 }
 
@@ -134,7 +134,7 @@ Rule 'Azure.AKS.AvailabilityZone' -Ref 'AZR-000021' -Type 'Microsoft.ContainerSe
         # Availability zones only available on virtual machine scale sets
         if ($Assert.HasFieldValue($agentPool, 'type', 'VirtualMachineScaleSets').Result) {
             $Assert.HasFieldValue($agentPool, 'availabilityZones').
-                Reason($LocalizedData.AKSAvailabilityZone, $agentPool.name, $TargetObject.Location, $joinedZoneString);
+            Reason($LocalizedData.AKSAvailabilityZone, $agentPool.name, $TargetObject.Location, $joinedZoneString);
         }
         else {
             $Assert.Pass();
@@ -150,15 +150,15 @@ Rule 'Azure.AKS.AuditLogs' -Ref 'AZR-000022' -Type 'Microsoft.ContainerService/m
 
     foreach ($setting in $diagnosticLogs) {
         $kubeAuditEnabledLog = @($setting.Properties.logs | Where-Object {
-            $_.category -in 'kube-audit', 'kube-audit-admin' -and $_.enabled
-        });
+                $_.category -in 'kube-audit', 'kube-audit-admin' -and $_.enabled
+            });
 
         $guardEnabledLog = @($setting.Properties.logs | Where-Object {
-            $_.category -eq 'guard' -and $_.enabled
-        });
+                $_.category -eq 'guard' -and $_.enabled
+            });
 
         $auditLogsEnabled = $Assert.Greater($kubeAuditEnabledLog, '.', 0).Result -and
-                            $Assert.Greater($guardEnabledLog, '.', 0).Result;
+        $Assert.Greater($guardEnabledLog, '.', 0).Result;
 
         $Assert.Create($auditLogsEnabled, $LocalizedData.AKSAuditLogs, $setting.name);
     }
@@ -177,7 +177,7 @@ Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerServic
     $Assert.Greater($diagnosticLogs, '.', 0).Reason($LocalizedData.DiagnosticSettingsNotConfigured, $TargetObject.name);
 
     $availableLogCategories = @{
-        Logs = @(
+        Logs    = @(
             'cluster-autoscaler', 
             'kube-apiserver', 
             'kube-controller-manager', 
@@ -189,12 +189,12 @@ Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerServic
     }
 
     $configurationLogCategories = @($configurationLogCategoriesList | Where-Object {
-        $_ -in $availableLogCategories.Logs
-    });
+            $_ -in $availableLogCategories.Logs
+        });
 
     $configurationMetricCategories = @($configurationLogCategoriesList | Where-Object {
-        $_ -in $availableLogCategories.Metrics
-    });
+            $_ -in $availableLogCategories.Metrics
+        });
 
     $logCategoriesNeeded = [System.Math]::Min(
         $configurationLogCategories.Length, 
@@ -210,19 +210,19 @@ Rule 'Azure.AKS.PlatformLogs' -Ref 'AZR-000023' -Type 'Microsoft.ContainerServic
 
     foreach ($setting in $diagnosticLogs) {
         $platformLogs = @($setting.Properties.logs | Where-Object {
-            $_.enabled -and
-            $_.category -in $configurationLogCategories -and
-            $_.category -in $availableLogCategories.Logs
-        });
+                $_.enabled -and
+                $_.category -in $configurationLogCategories -and
+                $_.category -in $availableLogCategories.Logs
+            });
 
         $metricLogs = @($setting.Properties.metrics | Where-Object {
-            $_.enabled -and 
-            $_.category -in $configurationMetricCategories -and
-            $_.category -in $availableLogCategories.Metrics
-        });
+                $_.enabled -and 
+                $_.category -in $configurationMetricCategories -and
+                $_.category -in $availableLogCategories.Metrics
+            });
 
         $platformLogsEnabled = $Assert.HasFieldValue($platformLogs, 'Length', $logCategoriesNeeded).Result -and 
-                               $Assert.HasFieldValue($metricLogs, 'Length', $metricCategoriesNeeded).Result
+        $Assert.HasFieldValue($metricLogs, 'Length', $metricCategoriesNeeded).Result
 
         $Assert.Create(
             $platformLogsEnabled, 
@@ -262,8 +262,8 @@ Rule 'Azure.AKS.MinNodeCount' -Ref 'AZR-000024' -Type 'Microsoft.ContainerServic
 Rule 'Azure.AKS.MinUserPoolNodes' -Ref 'AZR-000412' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2024_03'; 'Azure.WAF/pillar' = 'Reliability' } {
     $excludedPools = $Configuration.GetStringValues('AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES');
     $agentPools = @(GetAgentPoolProfiles | Where-Object {
-        $_.mode -eq 'user' -and $_.name -notin $excludedPools -and $_.scaleSetPriority -ne 'Spot'
-    })
+            $_.mode -eq 'user' -and $_.name -notin $excludedPools -and $_.scaleSetPriority -ne 'Spot'
+        })
 
     if ($agentPools.Length -eq 0) {
         return $Assert.Pass();
@@ -305,6 +305,21 @@ Rule 'Azure.AKS.EphemeralOSDisk' -Ref 'AZR-000287' -Level Warning -Type 'Microso
     }
 }
 
+# Synopsis: Use kube-audit-admin instead of kube-audit to capture administrative actions in AKS clusters.
+Rule 'Azure.AKS.AuditAdmin' -Ref 'AZR-000445' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Cost Optimization'; } {
+    $kubeAuditLogs = @(GetSubResources -ResourceType 'Microsoft.Insights/diagnosticSettings' |
+        Where-Object { $_.properties.logs | Where-Object { $_.category -eq 'kube-audit' -and $_.enabled } } )
+
+    if ($kubeAuditLogs.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($kubeAuditLog in $kubeAuditLogs) {
+        $Assert.HasDefaultValue($kubeAuditLog, "properties.logs[?@category == 'kube-audit'].category", 'kube-audit-admin').
+        Reason($LocalizedData.AKSAuditAdmin, $kubeAuditLog.name)
+    }
+}
+  
 #region Helper functions
 
 function global:GetAgentPoolProfiles {
@@ -315,36 +330,36 @@ function global:GetAgentPoolProfiles {
         if ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters') {
             $TargetObject.Properties.agentPoolProfiles;
             @(GetSubResources -ResourceType 'Microsoft.ContainerService/managedClusters/agentPools' | ForEach-Object {
-                [PSCustomObject]@{
-                    name = $_.name
-                    type = $_.properties.type
-                    mode = $_.properties.mode
-                    maxPods = $_.properties.maxPods
-                    orchestratorVersion = $_.properties.orchestratorVersion
-                    enableAutoScaling = $_.properties.enableAutoScaling
-                    availabilityZones = $_.properties.availabilityZones
-                    osDiskType = $_.properties.osDiskType
-                    count = [int]$_.properties.count
-                    minCount = [int]$_.properties.minCount
-                    maxCount = [int]$_.properties.maxCount
-                    scaleSetPriority = $_.properties.scaleSetPriority
-                }
-            });
+                    [PSCustomObject]@{
+                        name                = $_.name
+                        type                = $_.properties.type
+                        mode                = $_.properties.mode
+                        maxPods             = $_.properties.maxPods
+                        orchestratorVersion = $_.properties.orchestratorVersion
+                        enableAutoScaling   = $_.properties.enableAutoScaling
+                        availabilityZones   = $_.properties.availabilityZones
+                        osDiskType          = $_.properties.osDiskType
+                        count               = [int]$_.properties.count
+                        minCount            = [int]$_.properties.minCount
+                        maxCount            = [int]$_.properties.maxCount
+                        scaleSetPriority    = $_.properties.scaleSetPriority
+                    }
+                });
         }
         elseif ($PSRule.TargetType -eq 'Microsoft.ContainerService/managedClusters/agentPools') {
             [PSCustomObject]@{
-                name = $TargetObject.name
-                type = $TargetObject.properties.type
-                mode = $TargetObject.properties.mode
-                maxPods = $TargetObject.properties.maxPods
+                name                = $TargetObject.name
+                type                = $TargetObject.properties.type
+                mode                = $TargetObject.properties.mode
+                maxPods             = $TargetObject.properties.maxPods
                 orchestratorVersion = $TargetObject.properties.orchestratorVersion
-                enableAutoScaling = $TargetObject.properties.enableAutoScaling
-                availabilityZones = $TargetObject.properties.availabilityZones
-                osDiskType = $TargetObject.properties.osDiskType
-                count = [int]$TargetObject.properties.count
-                minCount = [int]$TargetObject.properties.minCount
-                maxCount = [int]$TargetObject.properties.maxCount
-                scaleSetPriority = $TargetObject.properties.scaleSetPriority
+                enableAutoScaling   = $TargetObject.properties.enableAutoScaling
+                availabilityZones   = $TargetObject.properties.availabilityZones
+                osDiskType          = $TargetObject.properties.osDiskType
+                count               = [int]$TargetObject.properties.count
+                minCount            = [int]$TargetObject.properties.minCount
+                maxCount            = [int]$TargetObject.properties.maxCount
+                scaleSetPriority    = $TargetObject.properties.scaleSetPriority
             }
         }
     }
