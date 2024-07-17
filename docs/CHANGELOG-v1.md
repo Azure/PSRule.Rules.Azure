@@ -34,6 +34,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Verify that clusters have kube-audit logging disabled when not required by @BenjaminEngeset.
       [#2450](https://github.com/Azure/PSRule.Rules.Azure/issues/2450)
 
+## v1.39.0-B0009 (pre-release)
+
 What's changed since v1.38.0:
 
 - New rules:
@@ -49,6 +51,9 @@ What's changed since v1.38.0:
   - Azure SQL Managed Instance:
     - Verify that Azure SQL Managed Instances have a customer-controlled maintenance window configured by @BenjaminEngeset.
       [#2979](https://github.com/Azure/PSRule.Rules.Azure/issues/2979)
+  - Service Bus:
+    - Verify that service bus namespaces have geo-replication configured by @BenjaminEngeset.
+      [#2988](https://github.com/Azure/PSRule.Rules.Azure/issues/2988)
 - Engineering:
   - Bump xunit to v2.9.0.
     [#2982](https://github.com/Azure/PSRule.Rules.Azure/pull/2982)

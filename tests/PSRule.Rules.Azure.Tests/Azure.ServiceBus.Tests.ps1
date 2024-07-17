@@ -109,6 +109,26 @@ Describe 'Azure.ServiceBus' -Tag 'ServiceBus' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'servicens-C', 'servicens-E';
         }
+
+        It 'Azure.ServiceBus.GeoReplica' {
+            $dataPath = Join-Path -Path $here -ChildPath 'Resources.ServiceBus.json';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.ServiceBus.GeoReplica' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'servicens-A', 'servicens-B', 'servicens-C';
+
+            $ruleResult[0].Reason | Should -BeExactly "Path sku.name: Is set to 'Standard'.";
+            $ruleResult[1].Reason | Should -BeExactly "Path properties.geoDataReplication.locations: The field 'properties.geoDataReplication.locations' does not exist.";
+            $ruleResult[2].Reason | Should -BeExactly "Path properties.geoDataReplication.locations: The value 'System.Object[]' is not >= 2.";
+            
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'servicens-D', 'servicens-E';
+        }
     }
 
     Context 'With Template' {
