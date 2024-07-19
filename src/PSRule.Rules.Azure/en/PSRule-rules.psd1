@@ -15,7 +15,7 @@
     AKSAvailabilityZone = "The agent pool ({0}) deployed to region ({1}) should use following availability zones [{2}]."
     AKSAuditLogs = "The diagnostic setting ({0}) logs should enable at least one of (kube-audit, kube-audit-admin) and guard."
     AKSPlatformLogs = "The diagnostic setting ({0}) logs should enable ({1})."
-    AKSAuditAdmin = “The diagnostic setting ({0}) should use 'kube-audit-admin' instead of the 'kube-audit' log category.”
+    AKSAuditAdmin = "The diagnostic setting ({0}) should use 'kube-audit-admin' instead of the 'kube-audit' log category."
     AKSEphemeralOSDiskNotConfigured = "The OS disk type 'Managed' should be of type 'Ephemeral'."
     SubnetNSGNotConfigured = "The subnet ({0}) has no NSG associated."
     ServiceUrlNotHttps = "The service URL for '{0}' is not a HTTPS endpoint."
