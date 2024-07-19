@@ -315,11 +315,10 @@ Rule 'Azure.AKS.AuditAdmin' -Ref 'AZR-000445' -Type 'Microsoft.ContainerService/
     }
 
     foreach ($kubeAuditLog in $kubeAuditLogs) {
-        $Assert.HasDefaultValue($kubeAuditLog, "properties.logs[?@category == 'kube-audit'].category", 'kube-audit-admin').
-        Reason($LocalizedData.AKSAuditAdmin, $kubeAuditLog.name)
+        $Assert.Fail().Reason($LocalizedData.AKSAuditAdmin, $kubeAuditLog.name)
     }
 }
-  
+
 #region Helper functions
 
 function global:GetAgentPoolProfiles {
