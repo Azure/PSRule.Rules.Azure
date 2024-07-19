@@ -14,10 +14,22 @@ Use kube-audit-admin instead of kube-audit to capture administrative actions in 
 
 ## DESCRIPTION
 
-Collecting resource logs for AKS clusters, particularly kube-audit logs, can be costly. Here are some recommendations to reduce data collection costs:
+Key components in a Kubernetes cluster regularly scan or check for updated Kubernetes resources against the API server.
+These _get_ and _list_ operations typically occur more frequently as a Kubernetes cluster grows.
 
-- Disable kube-audit logging when unnecessary: Regular kube-audit logs include all API requests, which can generate a large volume of data and increase costs.
-- Enable kube-audit-admin logging: This focuses on administrative actions and excludes less critical get and list events, reducing the amount of data collected without sacrificing important security information.
+Auditing within AKS writes log events for each operation that occur against the API server.
+As a result, collecting audit logs for _get_ and _list_ operations of a production AKS cluster can increase cost exponentially.
+
+AKS provides two log categories for collecting audit logs, `kube-audit` and `kube-audit-admin`.
+
+- `kube-audit` - Audit log data for every audit event including _get_, _list_, _create_, _update_, _delete_, _patch_, and _post_.
+- `kube-audit-admin` - Is a subset of the `kube-audit` log category that excludes _get_ and list_ audit events.
+
+In other words, both `kube-audit` and `kube-audit-admin` contain the same data except `kube-audit-admin` does not contain _get_ and _list_ events.
+Changes to the cluster configuration are captured with _create_, _update_, _delete_, _patch_, and _post_ events.
+
+By using `kube-audit-admin`, changes to resources in AKS are audited, however events relating to reading resources and configuration are not.
+This significantly reduces the number of logs and overall cost for collecting and storing AKS audit events.
 
 ## RECOMMENDATION
 
