@@ -6,7 +6,7 @@
 #
 
 ---
-# Synopsis: Default baseline for Azure rules.
+# Synopsis: Default baseline for that includes the latest rules for Azure GA features that is updated each release.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
@@ -17,7 +17,7 @@ spec:
       release: GA
 
 ---
-# Synopsis: Includes rules for Azure GA and preview features.
+# Synopsis: Includes the latest rules for Azure GA and preview features that is updated each release.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:
