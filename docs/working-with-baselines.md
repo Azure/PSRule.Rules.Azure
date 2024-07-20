@@ -8,7 +8,7 @@ A baseline is a standard PSRule artifact that combines rules and configuration.
 PSRule for Azure provides several baselines that can be referenced when running PSRule.
 
 !!! Abstract
-    This topic covers how to use the baselines shipped with PSRule for Azure.
+    This topic covers how to use standard baselines shipped with PSRule for Azure or custom baselines you define.
 
 ## Quarterly baselines
 

@@ -140,7 +140,7 @@ There is a few common causes of this issue including:
     You may be able to use `git mv` to change the case of a file if it is committed to the repository incorrectly.
 
   [5]: https://aka.ms/ps-rule/naming
-  [6]: customization/enforce-custom-tags.md#binding-type
+  [6]: customization/using-custom-rules.md#set-binding-configuration
   [12]: working-with-baselines.md#quarterly-baseline
   [13]: https://aka.ms/ps-rule/options#ruleincludelocal
   [14]: working-with-baselines.md#including-custom-rules

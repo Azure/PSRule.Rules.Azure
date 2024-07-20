@@ -86,6 +86,29 @@ For example:
 Export-AzPolicyAssignmentRuleData -AssignmentFile '.\<subscriptionId>.assignment.json'
 ```
 
+## Running policy rules
+
+Rules and an initial baseline are generated in a file ending in `.Rule.jsonc`.
+This file extension and format are automatically detected by PSRule when it is run from an included source path.
+To start using the policy rules, copy the file to the default include sub-directory (`.ps-rule/`) in the root of your repository.
+
+Additionally, the following setup is required to scan Infrastructure as Code (IaC):
+
+1. Set a binding configuration.
+2. Configure expansion for processing Bicep or ARM templates.
+3. Include the `PSRule.Rules.Azure` module.
+4. Optionally specify a baseline to limit the rules evaluated to policy rules.
+
+### Generated baseline
+
+<!-- module:version v1.33.0 -->
+
+When exporting policies, PSRule for Azure will automatically generate a baseline including any generated rules.
+By default, this baseline is called `Azure.PolicyBaseline.All`.
+If you change the prefix of generated rules the baseline will be named `<Prefix>.PolicyBaseline.All`.
+
+See [Using baselines](../working-with-baselines.md#using-baselines) for examples on how to use a baseline in a run.
+
 ## Customizing the generated rules
 
 PSRule for Azure allows you to:
@@ -107,16 +130,6 @@ configuration:
   - /providers/Microsoft.Authorization/policyDefinitions/1f314764-cb73-4fc9-b863-8eca98ac36e9
   - /providers/Microsoft.Authorization/policyDefinitions/b54ed75b-3e1a-44ac-a333-05ba39b99ff0
 ```
-
-## Generated baseline
-
-<!-- module:version v1.33.0 -->
-
-When exporting policies, PSRule for Azure will automatically generate a baseline including any generated rules.
-By default, this baseline is called `Azure.PolicyBaseline.All`.
-If you change the prefix of generated rules the baseline will be named `<Prefix>.PolicyBaseline.All`.
-
-See [Using baselines](../working-with-baselines.md#using-baselines) for examples on how to use a baseline in a run.
 
 ## Duplicate policies
 
@@ -143,3 +156,9 @@ This allows you to:
 - Reduce noise reporting the same issue multiple times.
 
 To override this behavior use the `-KeepDuplicates` parameter switch when running `Export-AzPolicyAssignmentRuleData`.
+
+## Recommended content
+
+- [Using custom rules](../customization/using-custom-rules.md)
+- [Creating your pipeline](../creating-your-pipeline.md)
+- [Working with baselines](../working-with-baselines.md)

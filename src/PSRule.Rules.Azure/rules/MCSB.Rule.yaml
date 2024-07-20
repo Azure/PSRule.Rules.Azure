@@ -6,7 +6,7 @@
 #
 
 ---
-# Synopsis: Microsoft Cloud Security Benchmark v1.
+# Synopsis: Rules for GA Azure features that align to the Microsoft Cloud Security Benchmark v1. This baseline is updated each release.
 apiVersion: github.com/microsoft/PSRule/v1
 kind: Baseline
 metadata:

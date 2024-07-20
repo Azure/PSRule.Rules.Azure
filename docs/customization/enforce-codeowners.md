@@ -60,9 +60,9 @@ Some key points to call out with the rule snippet include:
   PSRule for Azure exposes a `Template` and `Parameter` source for resources originating from a template.
 
 !!! Tip
-    For recommendations on naming and storing rules see [storing custom rules][3].
+    For recommendations on naming and storing rules see [using custom rules][3].
 
-  [3]: storing-custom-rules.md
+  [3]: using-custom-rules.md
 
 ## Binding type
 
@@ -78,8 +78,8 @@ To configure type binding:
 # Configure binding options
 binding:
   targetType:
-  - 'resourceType'
-  - 'type'
+    - 'resourceType'
+    - 'type'
 ```
 
 Some key points to call out include:

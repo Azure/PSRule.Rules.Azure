@@ -26,9 +26,12 @@ For general FAQ see [PSRule - Frequently Asked Questions (FAQ)][ps-rule-faq], in
 ## What is a rule?
 
 A rule is a named set of checks and documentation.
+Each rule is tests a specific aspect of an Azure resource or deployment to determine if
+it is aligned with the [Microsoft Azure Well-Architected Framework][AWAF].
 You can find the documentation for each rule under [reference][1].
 
   [1]: en/rules/module.md
+  [AWAF]: https://learn.microsoft.com/azure/architecture/framework/
 
 ## What is a baseline?
 
@@ -40,9 +43,22 @@ Continue reading [working with baselines][2] for a detailed breakdown.
 
   [2]: working-with-baselines.md
 
+## What is expansion?
+
+Expansion is a feature of PSRule for Azure that converts Azure Infrastructure as Code (IaC) to a testable Azure resource.
+IaC format such as Bicep and ARM templates, support dynamic capabilities such parameters, variables, and conditions...
+These dynamic capabilities allow customers to create modular reusable code that can scale across an organization.
+However, to determine if a specific Azure resource meets the requirements of an organization the final state must be known.
+
+Expansion resolves these dynamic capabilities so that a final state for each resource can be tested by rules.
+Noting the final expanded state provided by PSRule for Azure is a close approximation.
+This close approximation allows testing of Azure resources offline directly from code before deployment to Azure.
+
+Continue reading [Expanding source files](expanding-source-files.md).
+
 ## Is Terraform supported?
 
-Currently PSRule for Azure supports testing Azure resources from Infrastructure as Code (IaC) with:
+Currently PSRule for Azure supports testing Azure resources from IaC with:
 
 - Azure Resource Manager (ARM) templates.
 - Azure Bicep deployments.
@@ -88,8 +104,6 @@ Use of resource and resource group tags is recommended in the WAF, however imple
 You may want to use PSRule to enforce tagging or something similar early in a DevOps pipeline.
 
 We have a walk through scenario [Enforcing custom tags][9] to get you started.
-
-  [AWAF]: https://learn.microsoft.com/azure/architecture/framework/
 
 ## How do I create a custom rule to enforce code ownership?
 

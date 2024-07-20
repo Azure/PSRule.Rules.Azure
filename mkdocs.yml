@@ -67,7 +67,7 @@ nav:
       - Suppression: concepts/suppression.md
       - Policy as rules: concepts/policy-as-rules.md
     - Customization:
-      - Storing custom rules: customization/storing-custom-rules.md
+      - Using custom rules: customization/using-custom-rules.md
       - Enforcing custom tags: customization/enforce-custom-tags.md
       - Enforcing code ownership: customization/enforce-codeowners.md
       - Permit outbound management: customization/permit-outbound-management.md
@@ -148,7 +148,8 @@ plugins:
       install-instructions.md: install.md
       validating-locally.md: install.md
       using-metadata.md: using-templates.md
-      customization/index.md: customization/storing-custom-rules.md
+      customization/index.md: customization/using-custom-rules.md
+      customization/storing-custom-rules.md: customization/using-custom-rules.md
       en/asb-v3.md: en/mcsb-v1.md
       setup/configuring-options.md: setup/index.md
 

@@ -43,9 +43,9 @@ Some key points to call out with the rule snippet include:
 - The automatic variable `$TargetObject` automatically exposes the current resource being processed.
 
 !!! Tip
-    For recommendations on naming and storing rules see [storing custom rules][1].
+    For recommendations on naming and storing rules see [using custom rules][1].
 
-  [1]: storing-custom-rules.md
+  [1]: using-custom-rules.md
 
 ## Adding mandatory tags
 
@@ -147,12 +147,12 @@ To configure type binding:
 - Create/ update the `ps-rule.yaml` file within the root of the repository.
 - Add the following configuration snippet.
 
-```yaml
+```yaml title="ps-rule.yaml"
 # Configure binding options
 binding:
   targetType:
-  - 'resourceType'
-  - 'type'
+    - 'resourceType'
+    - 'type'
 ```
 
 Some key points to call out include:
