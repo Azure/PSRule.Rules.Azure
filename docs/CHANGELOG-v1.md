@@ -29,10 +29,15 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.39.0-B0009:
+
 - New rules:
   - Azure Kubernetes Service:
     - Verify that clusters have kube-audit logging disabled when not required by @BenjaminEngeset.
       [#2450](https://github.com/Azure/PSRule.Rules.Azure/issues/2450)
+- General improvements:
+  - Add binding configuration to policy as rules docs by @BernieWhite.
+    [#2995](https://github.com/Azure/PSRule.Rules.Azure/issues/2995)
 
 ## v1.39.0-B0009 (pre-release)
 

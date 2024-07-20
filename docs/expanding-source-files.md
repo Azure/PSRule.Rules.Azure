@@ -179,6 +179,12 @@ properties:
 
 To override, configure [`AZURE_MANAGEMENT_GROUP`](setup/configuring-expansion.md#deployment-management-group).
 
+## Related content
+
+- [Using Bicep source](using-bicep.md)
+- [Using templates](using-templates.md)
+- [Creating your pipeline](creating-your-pipeline.md)
+
 *[WAF]: Well-Architected Framework
 *[ARM]: Azure Resource Manager
 *[PR]: Pull Request
