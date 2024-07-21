@@ -19,7 +19,7 @@ AKS clusters undergo periodic maintenance automatically to ensure your applicati
 There are two types of maintenance operations:
 
 - AKS-Initiated Maintenance: Weekly updates that keep your cluster equipped with the latest features and fixes, primarily targeting AKS-specific components.
-- User-Initiated Maintenance: Includes operations like cluster auto-upgrades and automatic security updates for node operating systems (OS).
+- User-Initiated Maintenance: Includes cluster auto-upgrades and automatic security updates for node operating systems (OS).
 
 Three schedule configuration types are available for customer-controlled maintenance:
 
