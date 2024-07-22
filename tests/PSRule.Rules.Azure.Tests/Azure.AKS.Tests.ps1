@@ -549,16 +549,16 @@ Describe 'Azure.AKS' -Tag AKS {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 11;
-            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'cluster-L', 'cluster-M/default';
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B', 'cluster-D', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'cluster-L';
 
             $ruleResult[0].Reason | Should -Be "The cluster (cluster-A) should have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured.";
             $ruleResult[1].Reason | Should -Be "The cluster (cluster-B) should have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'cluster-F', 'cluster-N/aksManagedAutoUpgradeSchedule', 'cluster-O/aksManagedNodeOSUpgradeSchedule';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'cluster-C', 'cluster-F';
         }
     }
 

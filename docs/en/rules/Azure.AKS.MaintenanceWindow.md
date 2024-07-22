@@ -73,6 +73,7 @@ For cluster version auto-upgrades see the example:
   ]
 }
 ```
+
 For node OS auto-upgrades see the example:
 
 ```json
@@ -98,6 +99,8 @@ For node OS auto-upgrades see the example:
     "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
   ]
 }
+```
+
 ### Configure with Bicep
 
 To deploy AKS clusters that pass this rule:
@@ -109,7 +112,6 @@ To deploy AKS clusters that pass this rule:
 For cluster version auto-upgrades see the example:
 
 ```bicep
-
 resource aksManagedAutoUpgradeSchedule 'Microsoft.ContainerService/managedClusters/maintenanceConfigurations@2024-03-02-preview' = {
   parent: aks
   name: 'aksManagedAutoUpgradeSchedule'
@@ -128,7 +130,30 @@ resource aksManagedAutoUpgradeSchedule 'Microsoft.ContainerService/managedCluste
     }
   }
 }
-``` 
+```
+
+For node OS auto-upgrades see the example:
+
+```bicep
+resource aksManagedNodeOSUpgradeSchedule 'Microsoft.ContainerService/managedClusters/maintenanceConfigurations@2024-03-02-preview' = {
+  parent: aks
+  name: 'aksManagedNodeOSUpgradeSchedule'
+  properties: {
+    maintenanceWindow: {
+      schedule: {
+        weekly: {
+          intervalWeeks: 1
+          dayOfWeek: 'Sunday'
+        }
+      }
+      durationHours: 4
+      utcOffset: '+00:00'
+      startDate: '2024-07-15'
+      startTime: '00:00'
+    }
+  }
+}
+```
 
 ## LINKS
 
