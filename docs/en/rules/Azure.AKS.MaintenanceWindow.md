@@ -51,71 +51,9 @@ For cluster version auto-upgrades see the example:
 
 ```json
 {
-  "type": "Microsoft.ContainerService/managedClusters",
-  "apiVersion": "2024-03-02-preview",
-  "name": "[parameters('clusterName')]",
-  "location": "[parameters('location')]",
-  "sku": {
-    "name": "Basic",
-    "tier": "Standard"
-  },
-  "identity": {
-    "type": "SystemAssigned"
-  },
-  "properties": {
-    "autoUpgradeProfile": {
-      "upgradeChannel": "stable",
-      "nodeOSUpgradeChannel": "NodeImage"
-    },
-    "dnsPrefix": "[parameters('dnsPrefix')]",
-    "agentPoolProfiles": [
-      {
-        "name": "agentpool",
-        "osDiskSizeGB": "[parameters('osDiskSizeGB')]",
-        "count": "[parameters('agentCount')]",
-        "vmSize": "[parameters('agentVMSize')]",
-        "osType": "Linux",
-        "mode": "System"
-      }
-    ],
-    "linuxProfile": {
-      "adminUsername": "[parameters('linuxAdminUsername')]",
-      "ssh": {
-        "publicKeys": [
-          {
-            "keyData": "[parameters('sshRSAPublicKey')]"
-          }
-        ]
-      }
-    }
-  }
-},
-{
   "type": "Microsoft.ContainerService/managedClusters/maintenanceConfigurations",
   "apiVersion": "2024-03-02-preview",
   "name": "[format('{0}/{1}', parameters('clusterName'), 'aksManagedAutoUpgradeSchedule')]",
-  "properties": {
-    "maintenanceWindow": {
-      "schedule": {
-        "weekly": {
-          "intervalWeeks": 1,
-          "dayOfWeek": "Sunday"
-        }
-      },
-      "durationHours": 4,
-      "utcOffset": "+00:00",
-      "startDate": "2024-07-15",
-      "startTime": "00:00"
-    }
-  },
-  "dependsOn": [
-    "[resourceId('Microsoft.ContainerService/managedClusters', parameters('clusterName'))]"
-  ]
-},
-{
-  "type": "Microsoft.ContainerService/managedClusters/maintenanceConfigurations",
-  "apiVersion": "2024-03-02-preview",
-  "name": "[format('{0}/{1}', parameters('clusterName'), 'aksManagedNodeOSUpgradeSchedule')]",
   "properties": {
     "maintenanceWindow": {
       "schedule": {
