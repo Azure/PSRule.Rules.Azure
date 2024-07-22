@@ -229,6 +229,8 @@ resource aksManagedNodeOSUpgradeSchedule 'Microsoft.ContainerService/managedClus
 
 - [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Planned maintenance to schedule and control upgrades](https://learn.microsoft.com/azure/aks/planned-maintenance)
+- [Automatically upgrade an Azure Kubernetes Service (AKS) cluster](https://learn.microsoft.com/azure/aks/auto-upgrade-cluster)
+- [Auto-upgrade node OS images](https://learn.microsoft.com/azure/aks/auto-upgrade-node-os-image)
 - [Patch and upgrade guidance](https://learn.microsoft.com/azure/architecture/operator-guides/aks/aks-upgrade-practices)
 - [Create a maintenance window](https://learn.microsoft.com/azure/aks/planned-maintenance#create-a-maintenance-window)
 - [Upgrade options](https://learn.microsoft.com/azure/aks/upgrade-cluster)
