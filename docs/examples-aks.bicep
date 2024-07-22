@@ -191,6 +191,33 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2024-01-01' = {
   }
 }
 
+resource auditLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'audit'
+  scope: cluster
+  properties: {
+    logs: [
+      {
+        category: 'kube-audit-admin'
+        enabled: true
+        retentionPolicy: {
+          days: 0
+          enabled: false
+        }
+      }
+      {
+        category: 'guard'
+        enabled: true
+        retentionPolicy: {
+          days: 0
+          enabled: false
+        }
+      }
+    ]
+    workspaceId: workspaceId
+    logAnalyticsDestinationType: 'Dedicated'
+  }
+}
+
 // An example AKS cluster with pools defined.
 resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2024-01-01' = {
   location: location

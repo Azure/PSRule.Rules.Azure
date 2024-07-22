@@ -222,6 +222,8 @@ resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-07-01
 }
 ```
 
+<!-- external:avm avm/res/container-service/managed-cluster disableLocalAccounts -->
+
 ### Configure with Azure CLI
 
 ```bash
