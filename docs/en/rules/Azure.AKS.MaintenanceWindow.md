@@ -36,7 +36,8 @@ To read more about automated maintenance operations in AKS see the reference lin
 
 ## RECOMMENDATION
 
-Consider using the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' for all cluster upgrade scenarios and 'aksManagedNodeOSUpgradeSchedule' for all node OS security patching scenarios.
+Consider using a planned maintenance windows for AKS and node OS upgrades to avoid periods of high cluster utilization for improved reliability.
+Do this by configuring the `aksManagedAutoUpgradeSchedule` and `aksManagedNodeOSUpgradeSchedule` maintenance configurations.
 
 ## EXAMPLES
 
