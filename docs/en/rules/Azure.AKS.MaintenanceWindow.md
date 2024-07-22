@@ -140,10 +140,11 @@ For cluster version auto-upgrades see the example:
 
 To deploy AKS clusters that pass this rule:
 
-- Deploy two maintenance configurations.
- - Set the `name` to `aksManagedAutoUpgradeSchedule` and `aksManagedNodeOSUpgradeSchedule`.
+- Deploy maintenance configurations for cluster version and node OS auto-upgrades.
+  - For cluster version auto-upgrades, set the `name` property to `aksManagedAutoUpgradeSchedule`.
+  - For node OS auto-upgrades, set the `name` property to `aksManagedNodeOSUpgradeSchedule`.
 
-For example:
+For cluster version auto-upgrades see the example:
 
 ```bicep
 resource aks 'Microsoft.ContainerService/managedClusters@2024-03-02-preview' = {
