@@ -43,12 +43,11 @@ Do this by configuring the `aksManagedAutoUpgradeSchedule` and `aksManagedNodeOS
 
 ### Configure with Azure template
 
-To deploy AKS clusters that pass this rule:
+- Deploy maintenance configurations for cluster version and node OS auto-upgrades.
+  - For cluster version auto-upgrades, set the `name` property to `aksManagedAutoUpgradeSchedule`.
+  - For node OS auto-upgrades, set the `name` property to `aksManagedNodeOSUpgradeSchedule`.
 
-- Deploy two maintenance configurations.
- - Set the `name` to `aksManagedAutoUpgradeSchedule` and `aksManagedNodeOSUpgradeSchedule`.
-
-For example:
+For cluster version auto-upgrades see the example:
 
 ```json
 {
