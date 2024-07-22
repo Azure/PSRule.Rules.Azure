@@ -109,44 +109,6 @@ To deploy AKS clusters that pass this rule:
 For cluster version auto-upgrades see the example:
 
 ```bicep
-resource aks 'Microsoft.ContainerService/managedClusters@2024-03-02-preview' = {
-  name: clusterName
-  location: location
-  sku: {
-    name: 'Basic'
-    tier: 'Standard'
-  }
-  identity: {
-    type: 'SystemAssigned'
-  }
-  properties: {
-    autoUpgradeProfile: {
-      upgradeChannel: 'stable'
-      nodeOSUpgradeChannel: 'NodeImage'
-    }
-    dnsPrefix: dnsPrefix
-    agentPoolProfiles: [
-      {
-        name: 'agentpool'
-        osDiskSizeGB: osDiskSizeGB
-        count: agentCount
-        vmSize: agentVMSize
-        osType: 'Linux'
-        mode: 'System'
-      }
-    ]
-    linuxProfile: {
-      adminUsername: linuxAdminUsername
-      ssh: {
-        publicKeys: [
-          {
-            keyData: sshRSAPublicKey
-          }
-        ]
-      }
-    }
-  }
-}
 
 resource aksManagedAutoUpgradeSchedule 'Microsoft.ContainerService/managedClusters/maintenanceConfigurations@2024-03-02-preview' = {
   parent: aks
