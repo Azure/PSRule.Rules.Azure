@@ -14,25 +14,25 @@ Configure customer-controlled maintenance windows for AKS clusters.
 
 ## DESCRIPTION
 
-AKS clusters undergo periodic maintenance automatically to ensure your applications remains secure, stable, and up-to-date. This maintenance includes applying security updates, system upgrades, and software patches.
+AKS clusters undergo periodic maintenance automatically to ensure your applications remains secure, stable, and up-to-date.
+This maintenance includes applying security updates, system upgrades, and software patches.
 
-There are two types of maintenance operations:
+During peak load times, AKS clusters or workloads may already be scaled to their configured maximums or under stress.
+As a result, rescheduling pods, or upgrading a node may take longer then normal.
 
-- AKS-Initiated Maintenance: Weekly updates that keep your cluster equipped with the latest features and fixes, primarily targeting AKS-specific components.
-- User-Initiated Maintenance: Includes cluster auto-upgrades and automatic security updates for node operating systems (OS).
+Maintainance configurations provide a best-effort option that allows you to schedule planned maintenance operations to a predefined window.
+This provides greater predictability over cluster operations so that maintenance during peak load times can be avoided when possible.
+Noting that some critical or urgent maintenance operations may be performed outside the configured maintenace window.
 
-Three schedule configuration types are available for customer-controlled maintenance:
+AKS provides three (3) schedule configuration types are available for customer-controlled maintenance:
 
-- `default` is a basic configuration for controlling AKS releases. The releases can take up to two weeks to roll out to all regions from the initial time of shipping, because of Azure safe deployment practices. 
- - Maps to the `cluster auto-upgrade channel`, changing the default cadence in the channel.
+- `default` is a basic configuration for controlling AKS weekly releases.
+- `aksManagedAutoUpgradeSchedule` controls when to schedule AKS Kubernetes version upgrades.
+  This configuration affects the schedule for when cluster auto-upgrades are applied based on your configured channel.
+- `aksManagedNodeOSUpgradeSchedule` controls when to schedule AKS node OS upgrades.
+  This configuration affects the schedule for when AKS node OS auto-upgrades are applied based on your configured channel.
 
-- `aksManagedAutoUpgradeSchedule` controls when to perform cluster upgrades scheduled by your designated auto-upgrade channel. You can configure more finely controlled cadence and recurrence settings with this configuration compared to the default configuration.
-  -  Maps to the `cluster auto-upgrade channel`, changing the default cadence in the channel.
-
-- `aksManagedAutoUpgradeSchedule` controls when to perform cluster upgrades scheduled by your designated auto-upgrade channel. You can configure more finely controlled cadence and recurrence settings with this configuration compared to the default configuration.
-  -  Maps to the `node OS auto-upgrade channel`, changing the default cadence in the channel.
-
-The recommended approach is to use `aksManagedAutoUpgradeSchedule` for all cluster upgrade scenarios and `aksManagedNodeOSUpgradeSchedule` for all node OS security patching scenarios.
+To read more about automated maintenance operations in AKS see the reference links below.
 
 ## RECOMMENDATION
 
