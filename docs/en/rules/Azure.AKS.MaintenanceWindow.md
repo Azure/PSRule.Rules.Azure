@@ -20,9 +20,9 @@ This maintenance includes applying security updates, system upgrades, and softwa
 During peak load times, AKS clusters or workloads may already be scaled to their configured maximums or under stress.
 As a result, rescheduling pods, or upgrading a node may take longer then normal.
 
-Maintainance configurations provide a best-effort option that allows you to schedule planned maintenance operations to a predefined window.
+Maintenance configurations provide a best-effort option that allows you to schedule planned maintenance operations to a predefined window.
 This provides greater predictability over cluster operations so that maintenance during peak load times can be avoided when possible.
-Noting that some critical or urgent maintenance operations may be performed outside the configured maintenace window.
+Noting that some critical or urgent maintenance operations may be performed outside the configured maintenance window.
 
 AKS provides three (3) schedule configuration types are available for customer-controlled maintenance:
 
