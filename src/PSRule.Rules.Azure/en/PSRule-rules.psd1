@@ -17,6 +17,7 @@
     AKSPlatformLogs = "The diagnostic setting ({0}) logs should enable ({1})."
     AKSAuditAdmin = "The diagnostic setting ({0}) should use 'kube-audit-admin' instead of the 'kube-audit' log category."
     AKSEphemeralOSDiskNotConfigured = "The OS disk type 'Managed' should be of type 'Ephemeral'."
+    AKSMaintenanceWindow = "The cluster ({0}) should have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured."
     SubnetNSGNotConfigured = "The subnet ({0}) has no NSG associated."
     ServiceUrlNotHttps = "The service URL for '{0}' is not a HTTPS endpoint."
     BackendUrlNotHttps = "The backend URL for '{0}' is not a HTTPS endpoint."

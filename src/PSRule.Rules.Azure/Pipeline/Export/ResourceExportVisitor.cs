@@ -44,6 +44,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string PROPERTY_CONTAINERS = "containers";
         private const string PROPERTY_SHARES = "shares";
         private const string PROPERTY_TOPICS = "topics";
+        private const string PROPERTY_MAINTENANCECONFIGURATIONS = "maintenanceConfigurations";
 
         private const string TYPE_CONTAINERSERVICE_MANAGEDCLUSTERS = "Microsoft.ContainerService/managedClusters";
         private const string TYPE_CONTAINERREGISTRY_REGISTRIES = "Microsoft.ContainerRegistry/registries";
@@ -114,6 +115,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export
         private const string APIVERSION_2023_06_30 = "2023-06-30";
         private const string APIVERSION_2023_09_01 = "2023-09-01";
         private const string APIVERSION_2023_12_15_PREVIEW = "2023-12-15-preview";
+        private const string APIVERSION_2024_03_02_PREVIEW = "2024-03-02-preview";
 
         private readonly ProviderData _ProviderData;
 
@@ -603,6 +605,9 @@ namespace PSRule.Rules.Azure.Pipeline.Export
                     }
                 }
             }
+
+            // Get maintenance configurations
+            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_MAINTENANCECONFIGURATIONS, APIVERSION_2024_03_02_PREVIEW));
 
             // Get diagnostic settings
             await GetDiagnosticSettings(context, resource, resourceId);

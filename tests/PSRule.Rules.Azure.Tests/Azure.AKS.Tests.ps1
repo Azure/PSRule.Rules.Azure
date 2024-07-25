@@ -543,6 +543,23 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult.Length | Should -Be 9;
             $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-K', 'cluster-L';
         }
+
+        It 'Azure.AKS.MaintenanceWindow' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.MaintenanceWindow' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -Be 'cluster-A', 'cluster-B', 'cluster-D', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'cluster-L';
+
+            $ruleResult[0].Reason | Should -Be "The cluster (cluster-A) should have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured.";
+            $ruleResult[1].Reason | Should -Be "The cluster (cluster-B) should have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'cluster-C', 'cluster-F';
+        }
     }
 
     Context 'Resource name' {

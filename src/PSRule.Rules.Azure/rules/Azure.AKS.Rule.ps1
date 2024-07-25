@@ -319,6 +319,30 @@ Rule 'Azure.AKS.AuditAdmin' -Ref 'AZR-000445' -Type 'Microsoft.ContainerService/
     }
 }
 
+# Synopsis: Configure customer-controlled maintenance windows for AKS clusters.
+Rule 'Azure.AKS.MaintenanceWindow' -Ref 'AZR-000446' -Type 'Microsoft.ContainerService/managedClusters' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+      $maintenanceConfigs = @(GetSubResources -ResourceType 'Microsoft.ContainerService/managedClusters/maintenanceConfigurations')
+      
+      $hasAutoUpgrade = $false
+      $hasNodeUpgrade = $false
+
+      foreach ($config in $maintenanceConfigs) {
+          if ($config.name -match 'aksManagedAutoUpgradeSchedule$') {
+              $hasAutoUpgrade = $true
+          }
+          elseif ($config.name -match 'aksManagedNodeOSUpgradeSchedule$') {
+              $hasNodeUpgrade = $true
+          }
+      }
+
+      if ($hasAutoUpgrade -and $hasNodeUpgrade) {
+          return $Assert.Pass()
+      }
+      else {
+          $Assert.Fail().Reason($LocalizedData.AKSMaintenanceWindow, $PSRule.TargetName)
+      }
+}
+
 #region Helper functions
 
 function global:GetAgentPoolProfiles {
