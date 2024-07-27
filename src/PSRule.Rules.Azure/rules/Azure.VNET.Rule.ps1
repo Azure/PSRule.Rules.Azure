@@ -120,6 +120,28 @@ Rule 'Azure.VNET.FirewallSubnet' -Ref 'AZR-000322' -Type 'Microsoft.Network/virt
     $Assert.In($subnets, '.', @('AzureFirewallSubnet')).ReasonFrom('properties.subnets', $LocalizedData.SubnetNotFound, 'AzureFirewallSubnet')
 }
 
+# Synopsis: Disable default outbound access.
+Rule 'Azure.VNET.PrivateSubnet' -Ref 'AZR-000447' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'preview'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
+        $subnets = @(
+            $TargetObject.properties.subnets | Where-Object { -not $_.properties.delegations }
+            GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' | Where-Object { -not $_.properties.delegations }
+        )
+    }
+
+    else {
+        $subnets = @($TargetObject | Where-Object { -not $_.properties.delegations } )
+    }
+
+    if ($subnets.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($subnet in $subnets) {
+        $Assert.HasFieldValue($subnet, 'properties.defaultOutboundAccess', $false).Reason($LocalizedData.PrivateSubnet, $subnet.name)
+    }
+}
+
 #endregion Virtual Network
 
 #region Helper functions

@@ -209,6 +209,58 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vnet-F', 'vnet-G';
         }
+
+        It 'Azure.VNET.PrivateSubnet' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.PrivateSubnet' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-G', 'vnet-H/subnet-A', 'vnet-H/subnet-B';
+
+            $ruleResult[0].Reason | Should -BeExactly @(
+                "The subnet (GatewaySubnet) should disable default outbound access."
+                "The subnet (subnet-A) should disable default outbound access."
+                "The subnet (subnet-B) should disable default outbound access."
+                "The subnet (subnet-C) should disable default outbound access."
+                "The subnet (subnet-D) should disable default outbound access."
+                "The subnet (AzureFirewallSubnet) should disable default outbound access."
+                "The subnet (AzureFirewallSubnet) should disable default outbound access."
+                "The subnet (AzureFirewallManagementSubnet) should disable default outbound access."
+            );
+            $ruleResult[1].Reason | Should -BeExactly @(
+                "The subnet (GatewaySubnet) should disable default outbound access."
+                "The subnet (AzureBastionSubnet) should disable default outbound access."
+                "The subnet (subnet-A) should disable default outbound access."
+                "The subnet (subnet-B) should disable default outbound access."
+                "The subnet (subnet-C) should disable default outbound access."
+                "The subnet (subnet-D) should disable default outbound access."
+            );
+            $ruleResult[2].Reason | Should -BeExactly @(
+                "The subnet (subnet-A) should disable default outbound access."
+                "The subnet (subnet-B) should disable default outbound access."
+                "The subnet (subnet-C) should disable default outbound access."
+                "The subnet (subnet-D) should disable default outbound access."
+            );
+            $ruleResult[3].Reason | Should -BeExactly @(
+                "The subnet (GatewaySubnet) should disable default outbound access."
+                "The subnet (AzureBastionSubnet) should disable default outbound access."
+            );
+            $ruleResult[4].Reason | Should -BeExactly @(
+                "The subnet (subnet-ZZ) should disable default outbound access."
+            );
+            $ruleResult[5].Reason | Should -BeExactly @(
+                "The subnet (vnet-H/subnet-A) should disable default outbound access."
+            );
+            $ruleResult[6].Reason | Should -BeExactly @(
+                "The subnet (vnet-H/subnet-B) should disable default outbound access."
+            );
+  
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vnet-E', 'vnet-F', 'vnet-H/subnet-C';
+        }
     }
 
     Context 'Resource name - Azure.VNET.Name' {
