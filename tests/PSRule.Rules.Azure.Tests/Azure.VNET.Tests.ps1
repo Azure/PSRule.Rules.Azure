@@ -45,8 +45,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E';
             
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -HaveCount 4;
@@ -70,12 +70,15 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 "The subnet (subnet-C) has no NSG associated.", 
                 "The subnet (subnet-D) has no NSG associated."
             );
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -HaveCount 1;
+            $ruleResult[3].Reason | Should -Be "The subnet (subnet-B) has no NSG associated.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-F', 'vnet-G', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
 
         It 'Azure.VNET.SingleDNS' {
@@ -156,8 +159,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
 
         It 'Azure.VNET.BastionSubnet' {
@@ -437,7 +440,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
                 ErrorAction   = 'Stop'
-                Option = @{
+                Option        = @{
                     'Configuration.AZURE_VNET_DNS_WITH_IDENTITY' = $true
                 }
             }

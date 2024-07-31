@@ -33,6 +33,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Kubernetes Service:
     - Verify that clusters have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured by @BenjaminEngeset.
       [#2444](https://github.com/Azure/PSRule.Rules.Azure/issues/2444)
+  - Virtual Network:
+    - Verify that subnets have disabled default outbound access for virtual machines by @BenjaminEngeset.
+      [#11](https://github.com/Azure/PSRule.Rules.Azure/issues/11)
 
 What's changed since pre-release v1.39.0-B0009:
 
