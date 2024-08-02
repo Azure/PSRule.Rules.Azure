@@ -120,6 +120,28 @@ Rule 'Azure.VNET.FirewallSubnet' -Ref 'AZR-000322' -Type 'Microsoft.Network/virt
     $Assert.In($subnets, '.', @('AzureFirewallSubnet')).ReasonFrom('properties.subnets', $LocalizedData.SubnetNotFound, 'AzureFirewallSubnet')
 }
 
+# Synopsis: Use Azure NAT gateway for outbound access for virtual machines.
+Rule 'Azure.VNET.NAT' -Ref 'AZR-000448' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
+        $subnets = @(
+            $TargetObject.properties.subnets | Where-Object { $null -ne $_ -and ($_.name -ne 'GatewaySubnet' -or $_.name -notlike '*/GatewaySubnet') }
+            GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' | Where-Object { $null -ne $_ -and ($_.name -ne 'GatewaySubnet' -or $_.name -notlike '*/GatewaySubnet')}
+        )
+    }
+
+    else {
+        $subnets = @($TargetObject | Where-Object { $_.name -ne 'GatewaySubnet' -or $_.name -notlike '*/GatewaySubnet' })
+    }
+
+    if ($subnets.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($subnet in $subnets) {
+        $Assert.HasFieldValue($subnet, 'properties.natGateway.id').Reason($LocalizedData.SubnetNAT, $subnet.name)
+    }
+}
+
 #endregion Virtual Network
 
 #region Helper functions

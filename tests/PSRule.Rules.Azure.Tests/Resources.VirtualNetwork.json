@@ -214,7 +214,10 @@
           "properties": {
             "addressPrefix": "10.2.0.0/26",
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": null
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         },
@@ -243,7 +246,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": null
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         },
@@ -257,7 +263,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         },
@@ -271,7 +280,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         }
@@ -347,7 +359,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         },
@@ -360,7 +375,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         },
@@ -374,7 +392,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         },
@@ -388,7 +409,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         }
@@ -479,7 +503,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         },
@@ -492,7 +519,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         },
@@ -506,7 +536,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         },
@@ -520,7 +553,10 @@
               "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
             },
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         }
@@ -623,7 +659,43 @@
           "10.99.0.37"
         ]
       },
-      "subnets": [],
+      "subnets": [
+        {
+          "name": "subnet-A",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-E/subnets/subnet-A",
+          "properties": {
+            "addressPrefix": "10.5.0.32/28",
+            "networkSecurityGroup": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+            },
+            "routeTable": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+            },
+            "serviceEndpoints": [],
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
+          },
+          "type": "Microsoft.Network/virtualNetworks/subnets"
+        },
+        {
+          "name": "subnet-B",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-E/subnets/subnet-B",
+          "properties": {
+            "addressPrefix": "10.5.0.48/28",
+            "routeTable": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+            },
+            "serviceEndpoints": [],
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
+          },
+          "type": "Microsoft.Network/virtualNetworks/subnets"
+        }
+      ],
       "virtualNetworkPeerings": [],
       "enableDdosProtection": false,
       "enableVmProtection": false
@@ -658,6 +730,9 @@
           "ipConfigurations": [],
           "serviceEndpoints": [],
           "delegations": [],
+          "natGateway": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+          },
           "privateEndpointNetworkPolicies": "Enabled",
           "privateLinkServiceNetworkPolicies": "Enabled"
         },
@@ -720,6 +795,9 @@
           "ipConfigurations": [],
           "serviceEndpoints": [],
           "delegations": [],
+          "natGateway": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+          },
           "privateEndpointNetworkPolicies": "Enabled",
           "privateLinkServiceNetworkPolicies": "Enabled"
         },
@@ -788,7 +866,10 @@
           "properties": {
             "addressPrefix": "10.6.0.32/28",
             "serviceEndpoints": [],
-            "delegations": []
+            "delegations": [],
+            "natGateway": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+            }
           },
           "type": "Microsoft.Network/virtualNetworks/subnets"
         }
@@ -2999,5 +3080,95 @@
         }
       ]
     }
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ResourceName": "vnet-H/subnet-A",
+    "Name": "vnet-H/subnet-A",
+    "Plan": null,
+    "Properties": {
+      "addressPrefix": "10.4.0.32/28",
+      "networkSecurityGroup": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+      },
+      "routeTable": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+      },
+      "serviceEndpoints": [],
+      "delegations": []
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/virtualNetworks/subnets",
+    "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ResourceName": "vnet-H/subnet-B",
+    "Name": "vnet-H/subnet-B",
+    "Plan": null,
+    "Properties": {
+      "addressPrefix": "10.4.0.48/28",
+      "networkSecurityGroup": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+      },
+      "routeTable": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+      },
+      "serviceEndpoints": [],
+      "delegations": [],
+      "natGateway": {
+        "id": null
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/virtualNetworks/subnets",
+    "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-C",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ResourceName": "vnet-H/subnet-C",
+    "Name": "vnet-H/subnet-C",
+    "Plan": null,
+    "Properties": {
+      "addressPrefix": "10.4.0.64/28",
+      "networkSecurityGroup": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+      },
+      "routeTable": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+      },
+      "serviceEndpoints": [],
+      "delegations": [],
+      "natGateway": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/virtualNetworks/subnets",
+    "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]
