@@ -53,7 +53,9 @@ Consider using an explicit method of public connectivity for virtual machines.
 
 ### Configure with Azure template
 
-For each subnet object in defined the `properties.subnets` property:
+To configure virtual networks that pass this rule:
+
+- For each subnet in defined the `properties.subnets` property:
   - Set the `properties.defaultOutboundAccess` property to `false`.
 
 For example:
