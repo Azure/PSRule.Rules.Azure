@@ -77,7 +77,7 @@ For example:
         "name": "subnet-A",
         "properties": {
           "addressPrefix": "10.0.0.0/27",
-           "defaultOutboundAccess": false
+          "defaultOutboundAccess": false
         }
       },
       {
