@@ -139,5 +139,6 @@ This feature is currently in preview.
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [Default outbound access](https://learn.microsoft.com/azure/virtual-network/ip-services/default-outbound-access)
+- [Plan for inbound and outbound internet connectivity](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-inbound-and-outbound-internet-connectivity)
 - [Azure deployment reference - Virtual Network](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
 - [Azure deployment reference - Subnet](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)
