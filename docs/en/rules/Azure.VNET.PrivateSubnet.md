@@ -14,23 +14,34 @@ Disable default outbound access for virtual machines.
 
 ## DESCRIPTION
 
-By default, virtual machines (VMs) created in a virtual network without explicit outbound connectivity are assigned a default outbound public IP address. This IP address enables outbound connectivity to the internet.
+Azure virtual network (VNET) subnets support disabling default outbound Internet access.
+By default, virtual machines (VMs) have outbound connectivity to the Internet.
+Default outbound Internet access also applies to virtual machine scale sets (VMSS) configured with the uniform orchestration mode.
 
-Why disable default outbound access?
+When default outbound is enabled traffic to the Internet is automatically routing via a shared NAT pool.
+The IP address used by the shared NAT pool is used across multiple customers, and is subject to change.
 
-- Security: Following the zero trust network security principle, it is not recommended to expose a virtual network to the internet by default.
-- Explicit Connectivity: It is better to use explicit methods of connectivity rather than implicit ones for granting internet access to VMs.
-- Ownership and Stability: The default outbound access IP is managed by Microsoft, and its ownership or address might change, potentially causing disruptions.
+Default outbound access for new VMs and VMSS is scheduled for retirement in September 2025.
 
-Enabling the private subnet feature on a subnet prevents VMs within that subnet from using default outbound access to connect to public endpoints.
+Alternatively, outbound access to the Internet can be explictly configured.
+Explicit outbound access has the following benefits:
 
-This also applies to VMs within a scale set configured with uniform orchestration mode.
+- **Security**: Outbound Internet access can be used to transfer data or control out of your organization.
+  Controlling outbound access allows you to make an explict choice about which workloads require this vs those that don't.
+- **Ownership and stability**: The default outbound access IP is managed by Microsoft and used by multiple customers.
+  As a result, you can't assume use the address for network security rules and the address might change unexpectedly in the future,
+  potentially causing disruptions to any configuration relying on a stable or fixed IP address.
 
-Recommended approach:
+Explicit outbound access can be provided to a specific workload or application by:
 
-- Use explicit methods for public connectivity, such as:
-  - NAT Gateway: Provides a stable and owned public IP for outbound connectivity.
-  - Firewall: Offers outbound connectivity with built-in NAT capabilities.
+- Deploying a NAT gateway into the subnet where the VM or VMSS is deployed.
+- Deploying a Standard load balancer and configuring an outbound SNAT rule.
+
+A public IP address can also be attached to a specific VM instance to provide explict outbound access.
+However, attaching a public IP address to a VM also allows inbound access from the Internet which further compromises the security of the VM.
+
+To provide outbound access to multiple workloads or applications a VWAN or hub and spoke network topology can be deployed.
+See the Azure Cloud Adoption Framework (CAF) for guidance and a reference architecture for deploying network connectivity in Azure.
 
 Note that there are limitations to this feature, so please refer to the documentation for detailed information.
 
