@@ -331,7 +331,6 @@
           "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-C/subnets/GatewaySubnet",
           "properties": {
             "addressPrefix": "10.3.0.0/27",
-            "defaultOutboundAccess": false,
             "serviceEndpoints": [],
             "delegations": []
           },
@@ -688,7 +687,6 @@
         "Properties": {
           "provisioningState": "Succeeded",
           "addressPrefix": "10.5.0.0/26",
-          "defaultOutboundAccess": false,
           "networkSecurityGroup": {
             "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-AzureBastionSubnet"
           },
@@ -723,7 +721,6 @@
         "Properties": {
           "provisioningState": "Succeeded",
           "addressPrefix": "10.5.0.0/27",
-          "defaultOutboundAccess": false,
           "networkSecurityGroup": {
             "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/networkSecurityGroups/nsg-GatewaySubnet"
           },
@@ -758,7 +755,6 @@
         "Properties": {
           "provisioningState": "Succeeded",
           "addressPrefix": "10.5.0.0/27",
-          "defaultOutboundAccess": false,
           "ipConfigurations": [],
           "serviceEndpoints": [],
           "delegations": [],
