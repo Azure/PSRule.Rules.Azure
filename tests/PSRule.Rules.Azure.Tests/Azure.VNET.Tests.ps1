@@ -45,8 +45,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-J/AzureFirewallSubnet';
             
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -HaveCount 4;
@@ -156,8 +156,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-J/AzureFirewallSubnet';
         }
 
         It 'Azure.VNET.BastionSubnet' {
@@ -208,6 +208,27 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vnet-F', 'vnet-G';
+        }
+
+        It 'Azure.VNET.FirewallSubnetNAT' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.FirewallSubnetNAT' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet';
+
+            $ruleResult[0].Reason | Should -BeExactly @(
+                "The firewall should have a NAT gateway associated."
+                "The firewall should have a NAT gateway associated."
+            );
+            $ruleResult[1].Reason | Should -BeExactly "The firewall should have a NAT gateway associated.";
+            $ruleResult[2].Reason | Should -BeExactly "The firewall should have a NAT gateway associated.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -Be 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-J/AzureFirewallSubnet';
         }
     }
 

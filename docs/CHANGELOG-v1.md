@@ -33,6 +33,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Kubernetes Service:
     - Verify that clusters have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured by @BenjaminEngeset.
       [#2444](https://github.com/Azure/PSRule.Rules.Azure/issues/2444)
+  - Virtual Network:
+    - Verify that zonal-deployed Azure firewalls uses Azure NAT Gateway for outbound access by @BenjaminEngeset.
+      [##3005](https://github.com/Azure/PSRule.Rules.Azure/issues/#3005)
 
 What's changed since pre-release v1.39.0-B0009:
 

@@ -120,6 +120,28 @@ Rule 'Azure.VNET.FirewallSubnet' -Ref 'AZR-000322' -Type 'Microsoft.Network/virt
     $Assert.In($subnets, '.', @('AzureFirewallSubnet')).ReasonFrom('properties.subnets', $LocalizedData.SubnetNotFound, 'AzureFirewallSubnet')
 }
 
+# Synopsis: Zonal-deployed Azure Firewalls should consider using an Azure NAT Gateway for outbound access.
+Rule 'Azure.VNET.FirewallSubnetNAT' -Ref 'AZR-000448' -Level 'Warning' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
+        $subnets = @(
+            $TargetObject.properties.subnets | Where-Object { $null -ne $_ -and ($_.name -eq 'AzureFirewallSubnet' -or $_.name -like '*/AzureFirewallSubnet') }
+            GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' | Where-Object { $null -ne $_ -and ($_.name -eq 'AzureFirewallSubnet' -or $_.name -like '*/AzureFirewallSubnet') }
+        )
+    }
+
+    else {
+        $subnets = @($TargetObject | Where-Object { $_.name -eq 'AzureFirewallSubnet' -or $_.name -like '*/AzureFirewallSubnet' })
+    }
+
+    if ($subnets.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($subnet in $subnets) {
+        $Assert.HasFieldValue($subnet, 'properties.natGateway.id').Reason($LocalizedData.FirewallSubnetNAT)
+    }
+}
+
 #endregion Virtual Network
 
 #region Helper functions
