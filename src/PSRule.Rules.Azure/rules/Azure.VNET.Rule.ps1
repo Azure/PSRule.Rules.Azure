@@ -9,20 +9,20 @@
 
 # Synopsis: Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned.
 Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.MCSB.v1/control' = 'NS-1' } {
-    $excludedSubnets = @('GatewaySubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet', 'RouteServerSubnet');
+    $excludedSubnets = '(GatewaySubnet|AzureFirewallSubnet|AzureFirewallManagementSubnet|RouteServerSubnet)$';
     $customExcludedSubnets = $Configuration.GetStringValues('AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG');
     $subnet = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         # Get subnets
         $subnet = @($TargetObject.properties.subnets | Where-Object {
-                $_.Name -notin $excludedSubnets -and $_.Name -notin $customExcludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
+                $_.Name -notmatch $excludedSubnets -and $_.Name -notin $customExcludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
             });
         if ($subnet.Length -eq 0 -or !$Assert.HasFieldValue($TargetObject, 'properties.subnets').Result) {
             return $Assert.Pass();
         }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets' -and
-    ($PSRule.TargetName -in $excludedSubnets -or $PSRule.TargetName -in $customExcludedSubnets -or @($TargetObject.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -gt 0)) {
+    ($PSRule.TargetName -match $excludedSubnets -or $PSRule.TargetName -in $customExcludedSubnets -or @($TargetObject.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -gt 0)) {
         return $Assert.Pass();
     }
     foreach ($sn in $subnet) {
@@ -31,8 +31,6 @@ Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetw
         WithReason(($LocalizedData.SubnetNSGNotConfigured -f $sn.Name), $True);
     }
 }
-
-# TODO: Check that NSG on GatewaySubnet is not defined
 
 # Synopsis: VNETs should have at least two DNS servers assigned.
 Rule 'Azure.VNET.SingleDNS' -Ref 'AZR-000264' -Type 'Microsoft.Network/virtualNetworks' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
