@@ -35,7 +35,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#2444](https://github.com/Azure/PSRule.Rules.Azure/issues/2444)
 - Updated rules:
   - Virtual Network:
-    - Updated `Azure.VNET.UseNSGs` to correctly handle cases for special purpose subnets by @BenjaminEngeset.
+    - Updated `Azure.VNET.UseNSGs` to correctly handle cases for special purpose and customer-excluded subnets by @BenjaminEngeset.
       [#3007](https://github.com/Azure/PSRule.Rules.Azure/issues/3007)
 
 What's changed since pre-release v1.39.0-B0009:

@@ -31,9 +31,6 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
                 ErrorAction   = 'Stop'
-                Option        = @{
-                    'Configuration.AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG' = @('subnet-ZZ')
-                }
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
@@ -45,8 +42,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-G', 'vnet-H/excludedSubnet';
             
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
             $ruleResult[0].Reason | Should -HaveCount 4;
@@ -70,12 +67,18 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 "The subnet (subnet-C) has no NSG associated.", 
                 "The subnet (subnet-D) has no NSG associated."
             );
+            $ruleResult[3].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[3].Reason | Should -HaveCount 1;
+            $ruleResult[3].Reason | Should -Be "The subnet (subnet-ZZ) has no NSG associated.";
+            $ruleResult[4].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[4].Reason | Should -HaveCount 1;
+            $ruleResult[4].Reason | Should -Be "The subnet (vnet-H/excludedSubnet) has no NSG associated.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet';
         }
 
         It 'Azure.VNET.SingleDNS' {
@@ -156,8 +159,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G';
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-H/excludedSubnet';
         }
 
         It 'Azure.VNET.BastionSubnet' {
@@ -387,10 +390,11 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 ErrorAction   = 'Stop'
                 Option = @{
                     'Configuration.AZURE_VNET_DNS_WITH_IDENTITY' = $true
+                    'Configuration.AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG' = @('subnet-ZZ', 'excludedSubnet') 
                 }
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Name 'Azure.VNET.LocalDNS';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Name 'Azure.VNET.LocalDNS', 'Azure.VNET.UseNSGs';
         }
 
         It 'Azure.VNET.LocalDNS' {
@@ -403,6 +407,45 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -BeNullOrEmpty;
+        }
+
+        It 'Azure.VNET.UseNSGs' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.UseNSGs' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D';
+            
+            $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[0].Reason | Should -HaveCount 4;
+            $ruleResult[0].Reason | Should -Be @(
+                "The subnet (AzureBastionSubnet) has no NSG associated.",
+                "The subnet (subnet-B) has no NSG associated.", 
+                "The subnet (subnet-C) has no NSG associated.", 
+                "The subnet (subnet-D) has no NSG associated."
+            );
+            $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[1].Reason | Should -HaveCount 3;
+            $ruleResult[1].Reason | Should -Be @(
+                "The subnet (subnet-B) has no NSG associated.", 
+                "The subnet (subnet-C) has no NSG associated.", 
+                "The subnet (subnet-D) has no NSG associated."
+            );
+            $ruleResult[2].Reason | Should -Not -BeNullOrEmpty;
+            $ruleResult[2].Reason | Should -HaveCount 3;
+            $ruleResult[2].Reason | Should -Be @(
+                "The subnet (subnet-B) has no NSG associated.", 
+                "The subnet (subnet-C) has no NSG associated.", 
+                "The subnet (subnet-D) has no NSG associated."
+            );
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 6;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-H/excludedSubnet';
         }
     }
 }

@@ -9,20 +9,20 @@
 
 # Synopsis: Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned.
 Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; 'Azure.MCSB.v1/control' = 'NS-1' } {
-    $excludedSubnets = '(GatewaySubnet|AzureFirewallSubnet|AzureFirewallManagementSubnet|RouteServerSubnet)$';
+    $excludedSubnets = @('GatewaySubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet', 'RouteServerSubnet');
     $customExcludedSubnets = $Configuration.GetStringValues('AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG');
     $subnet = @($TargetObject);
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         # Get subnets
         $subnet = @($TargetObject.properties.subnets | Where-Object {
-                $_.Name -notmatch $excludedSubnets -and $_.Name -notin $customExcludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
+            [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -notin $excludedSubnets -and [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -notin $customExcludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
             });
         if ($subnet.Length -eq 0 -or !$Assert.HasFieldValue($TargetObject, 'properties.subnets').Result) {
             return $Assert.Pass();
         }
     }
     elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets' -and
-    ($PSRule.TargetName -match $excludedSubnets -or $PSRule.TargetName -in $customExcludedSubnets -or @($TargetObject.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -gt 0)) {
+    ([PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($PSRule.TargetName) -in $excludedSubnets -or [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($PSRule.TargetName) -in $customExcludedSubnets -or @($TargetObject.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -gt 0)) {
         return $Assert.Pass();
     }
     foreach ($sn in $subnet) {
