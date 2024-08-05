@@ -77,8 +77,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-H/AzureFirewallSubnet';
         }
 
         It 'Azure.VNET.SingleDNS' {
