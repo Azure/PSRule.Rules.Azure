@@ -33,7 +33,6 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 ErrorAction   = 'Stop'
                 Option        = @{
                     'Configuration.AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG' = @('subnet-ZZ')
-                    'Configuration.AZURE_FIREWALL_IS_ZONAL' = $True
                 }
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
@@ -216,20 +215,11 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet';
-
-            $ruleResult[0].Reason | Should -BeExactly @(
-                "The firewall should have a NAT gateway associated."
-                "The firewall should have a NAT gateway associated."
-            );
-            $ruleResult[1].Reason | Should -BeExactly "The firewall should have a NAT gateway associated.";
-            $ruleResult[2].Reason | Should -BeExactly "The firewall should have a NAT gateway associated.";
+            $ruleResult | Should -BeNullOrEmpty;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -Be 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-J/AzureFirewallSubnet';
+            $ruleResult | Should -BeNullOrEmpty;
         }
     }
 
@@ -409,10 +399,11 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 ErrorAction   = 'Stop'
                 Option = @{
                     'Configuration.AZURE_VNET_DNS_WITH_IDENTITY' = $true
+                    'Configuration.AZURE_FIREWALL_IS_ZONAL' = $True
                 }
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Name 'Azure.VNET.LocalDNS';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Name 'Azure.VNET.LocalDNS', 'Azure.VNET.FirewallSubnetNAT';
         }
 
         It 'Azure.VNET.LocalDNS' {
@@ -425,6 +416,27 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -BeNullOrEmpty;
+        }
+
+        It 'Azure.VNET.FirewallSubnetNAT' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.FirewallSubnetNAT' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet';
+
+            $ruleResult[0].Reason | Should -BeExactly @(
+                "The firewall should have a NAT gateway associated."
+                "The firewall should have a NAT gateway associated."
+            );
+            $ruleResult[1].Reason | Should -BeExactly "The firewall should have a NAT gateway associated.";
+            $ruleResult[2].Reason | Should -BeExactly "The firewall should have a NAT gateway associated.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -Be 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-J/AzureFirewallSubnet';
         }
     }
 }
