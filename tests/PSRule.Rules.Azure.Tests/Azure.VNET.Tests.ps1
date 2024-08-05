@@ -33,6 +33,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 ErrorAction   = 'Stop'
                 Option        = @{
                     'Configuration.AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG' = @('subnet-ZZ')
+                    'Configuration.AZURE_FIREWALL_IS_ZONAL' = $True
                 }
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
