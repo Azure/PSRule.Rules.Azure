@@ -77,8 +77,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-H/AzureFirewallSubnet';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-H/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
 
         It 'Azure.VNET.SingleDNS' {
@@ -159,8 +159,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-H/excludedSubnet';
+            $ruleResult.Length | Should -Be 12;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-H/excludedSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
 
         It 'Azure.VNET.BastionSubnet' {
@@ -218,8 +218,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-G', 'vnet-H/subnet-A', 'vnet-H/subnet-B';
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-G', 'vnet-H/excludedSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B';
 
             $ruleResult[0].Reason | Should -BeExactly @(
                 "The subnet (subnet-A) should disable default outbound access."
@@ -239,20 +239,15 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 "The subnet (subnet-C) should disable default outbound access."
                 "The subnet (subnet-D) should disable default outbound access."
             );
-            $ruleResult[3].Reason | Should -BeExactly @(
-                "The subnet (subnet-ZZ) should disable default outbound access."
-            );
-            $ruleResult[4].Reason | Should -BeExactly @(
-                "The subnet (vnet-H/subnet-A) should disable default outbound access."
-            );
-            $ruleResult[5].Reason | Should -BeExactly @(
-                "The subnet (vnet-H/subnet-B) should disable default outbound access."
-            );
+            $ruleResult[3].Reason | Should -BeExactly "The subnet (subnet-ZZ) should disable default outbound access.";
+            $ruleResult[4].Reason | Should -BeExactly "The subnet (vnet-H/excludedSubnet) should disable default outbound access.";
+            $ruleResult[5].Reason | Should -BeExactly "The subnet (vnet-H/subnet-A) should disable default outbound access.";
+            $ruleResult[6].Reason | Should -BeExactly "The subnet (vnet-H/subnet-B) should disable default outbound access.";
   
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-H/subnet-C';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-H/AzureFirewallSubnet', 'vnet-H/subnet-C';
         }
     }
 
@@ -486,8 +481,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-H/excludedSubnet';
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-H/excludedSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
     }
 }

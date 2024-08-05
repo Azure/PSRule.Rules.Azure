@@ -120,7 +120,7 @@ Rule 'Azure.VNET.FirewallSubnet' -Ref 'AZR-000322' -Type 'Microsoft.Network/virt
 
 # Synopsis: Disable default outbound access for virtual machines.
 Rule 'Azure.VNET.PrivateSubnet' -Ref 'AZR-000447' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'preview'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } {
-    $excludedSubnets = @('GatewaySubnet, AzureFirewallSubnet, AzureFirewallManagementSubnet, AzureBastionSubnet')
+    $excludedSubnets = @('GatewaySubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet', 'AzureBastionSubnet')
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         $subnets = @(
             $TargetObject.properties.subnets | Where-Object { $null -ne $_ -and -not $_.properties.delegations -and [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.name) -notin $excludedSubnets }
