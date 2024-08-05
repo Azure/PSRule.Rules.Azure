@@ -629,39 +629,7 @@
           "10.99.0.37"
         ]
       },
-      "subnets": [
-        {
-          "name": "subnet-A",
-          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-E/subnets/subnet-A",
-          "properties": {
-            "addressPrefix": "10.5.0.32/28",
-            "defaultOutboundAccess": false,
-            "networkSecurityGroup": {
-              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
-            },
-            "routeTable": {
-              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
-            },
-            "serviceEndpoints": [],
-            "delegations": []
-          },
-          "type": "Microsoft.Network/virtualNetworks/subnets"
-        },
-        {
-          "name": "subnet-B",
-          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-E/subnets/subnet-B",
-          "properties": {
-            "addressPrefix": "10.5.0.48/28",
-            "defaultOutboundAccess": false,
-            "routeTable": {
-              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
-            },
-            "serviceEndpoints": [],
-            "delegations": []
-          },
-          "type": "Microsoft.Network/virtualNetworks/subnets"
-        }
-      ],
+      "subnets": [],
       "virtualNetworkPeerings": [],
       "enableDdosProtection": false,
       "enableVmProtection": false
@@ -767,6 +735,37 @@
         "ExtensionResourceType": null,
         "Sku": null,
         "SubscriptionId": null
+      },
+      {
+        "name": "subnet-A",
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-E/subnets/subnet-A",
+        "properties": {
+          "addressPrefix": "10.5.0.32/28",
+          "defaultOutboundAccess": false,
+          "networkSecurityGroup": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+          },
+          "routeTable": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+          },
+          "serviceEndpoints": [],
+          "delegations": []
+        },
+        "type": "Microsoft.Network/virtualNetworks/subnets"
+      },
+      {
+        "name": "subnet-B",
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-E/subnets/subnet-B",
+        "properties": {
+          "addressPrefix": "10.5.0.48/28",
+          "defaultOutboundAccess": false,
+          "routeTable": {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+          },
+          "serviceEndpoints": [],
+          "delegations": []
+        },
+        "type": "Microsoft.Network/virtualNetworks/subnets"
       }
     ]
   },
@@ -3039,21 +3038,6 @@
     }
   },
   {
-<<<<<<< HEAD
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-A",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-A",
-    "Identity": null,
-    "Kind": null,
-    "Location": "region",
-    "ResourceName": "vnet-H/subnet-A",
-    "Name": "vnet-H/subnet-A",
-    "Plan": null,
-    "Properties": {
-      "addressPrefix": "10.4.0.32/28",
-      "networkSecurityGroup": {
-        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
-      },
-=======
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/AzureFirewallSubnet",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/AzureFirewallSubnet",
     "Identity": null,
@@ -3064,7 +3048,6 @@
     "Plan": null,
     "Properties": {
       "addressPrefix": "10.5.0.0/26",
->>>>>>> main
       "routeTable": {
         "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
       },
@@ -3080,7 +3063,59 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
-<<<<<<< HEAD
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/excludedSubnet",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/excludedSubnet",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ResourceName": "vnet-H/excludedSubnet",
+    "Name": "vnet-H/excludedSubnet",
+    "Plan": null,
+    "Properties": {
+      "addressPrefix": "10.0.0.0/29",
+      "routeTable": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+      },
+      "serviceEndpoints": [],
+      "delegations": []
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/virtualNetworks/subnets",
+    "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ResourceName": "vnet-H/subnet-A",
+    "Name": "vnet-H/subnet-A",
+    "Plan": null,
+    "Properties": {
+      "addressPrefix": "10.4.0.32/28",
+      "networkSecurityGroup": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+      },
+      "routeTable": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+      },
+      "serviceEndpoints": [],
+      "delegations": []
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/virtualNetworks/subnets",
+    "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-B",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/subnet-B",
     "Identity": null,
@@ -3124,18 +3159,6 @@
       "networkSecurityGroup": {
         "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
       },
-=======
-    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/excludedSubnet",
-    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/excludedSubnet",
-    "Identity": null,
-    "Kind": null,
-    "Location": "region",
-    "ResourceName": "vnet-H/excludedSubnet",
-    "Name": "vnet-H/excludedSubnet",
-    "Plan": null,
-    "Properties": {
-      "addressPrefix": "10.0.0.0/29",
->>>>>>> main
       "routeTable": {
         "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
       },
