@@ -29,20 +29,21 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-- New rules:
-  - Azure Kubernetes Service:
-    - Verify that clusters have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured by @BenjaminEngeset.
-      [#2444](https://github.com/Azure/PSRule.Rules.Azure/issues/2444)
-  - Virtual Network:
-    - Verify that zonal-deployed Azure firewalls uses Azure NAT Gateway for outbound access by @BenjaminEngeset.
-      [##3005](https://github.com/Azure/PSRule.Rules.Azure/issues/#3005)
-
 What's changed since pre-release v1.39.0-B0009:
 
 - New rules:
   - Azure Kubernetes Service:
     - Verify that clusters have kube-audit logging disabled when not required by @BenjaminEngeset.
       [#2450](https://github.com/Azure/PSRule.Rules.Azure/issues/2450)
+    - Verify that clusters have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured by @BenjaminEngeset.
+      [#2444](https://github.com/Azure/PSRule.Rules.Azure/issues/2444)
+  - Virtual Network:
+    - Verify that zonal-deployed Azure firewalls uses Azure NAT Gateway for outbound access by @BenjaminEngeset.
+      [##3005](https://github.com/Azure/PSRule.Rules.Azure/issues/#3005)
+- Updated rules:
+  - Virtual Network:
+    - Updated `Azure.VNET.UseNSGs` to correctly handle cases for special purpose and customer-excluded subnets by @BenjaminEngeset.
+      [#3007](https://github.com/Azure/PSRule.Rules.Azure/issues/3007)
 - General improvements:
   - Add binding configuration to policy as rules docs by @BernieWhite.
     [#2995](https://github.com/Azure/PSRule.Rules.Azure/issues/2995)

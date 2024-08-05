@@ -3057,6 +3057,34 @@
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   },
   {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/excludedSubnet",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-H/subnets/excludedSubnet",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ResourceName": "vnet-H/excludedSubnet",
+    "Name": "vnet-H/excludedSubnet",
+    "Plan": null,
+    "Properties": {
+      "addressPrefix": "10.0.0.0/29",
+      "routeTable": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/routeTables/route-A"
+      },
+      "serviceEndpoints": [],
+      "delegations": [],
+      "natGateway": {
+        "id": null
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/virtualNetworks/subnets",
+    "ResourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-J/subnets/AzureFirewallSubnet",
     "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/vnet-J/subnets/AzureFirewallSubnet",
     "Identity": null,
@@ -3074,7 +3102,8 @@
       "delegations": [],
       "natGateway": {
         "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/natGateways/gateway-A"
-      }
+      },
+      "delegations": []
     },
     "ResourceGroupName": "test-rg",
     "Type": "Microsoft.Network/virtualNetworks/subnets",
