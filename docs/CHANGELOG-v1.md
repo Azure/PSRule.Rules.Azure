@@ -36,6 +36,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Network:
     - Verify that subnets have disabled default outbound access for virtual machines by @BenjaminEngeset.
       [#3001](https://github.com/Azure/PSRule.Rules.Azure/issues/3001)
+- Updated rules:
+  - Virtual Network:
+    - Updated `Azure.VNET.UseNSGs` to correctly handle cases for special purpose and customer-excluded subnets by @BenjaminEngeset.
+      [#3007](https://github.com/Azure/PSRule.Rules.Azure/issues/3007)
 
 What's changed since pre-release v1.39.0-B0009:
 
