@@ -6,7 +6,7 @@ resource: Virtual Network
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.FirewallSubnetNAT/
 ---
 
-# Outbound access
+# Use NAT gateway with Azure Firewall for outbound access
 
 ## SYNOPSIS
 
@@ -111,10 +111,34 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-11-01' = {
 }
 ```
 
+## NOTES
+
+This rule applies if you're environment requires Azure Firewall deployed in a zonal configuration for outbound Internet access.
+
+This rule is not applicable if:
+
+- Azure Firewall is deployed across multiple availability zones.
+- Force tunneling mode is configured.
+
+### Rule configuration
+
+<!-- module:config rule AZURE_FIREWALL_IS_ZONAL -->
+
+By default, this rule is ignored.
+For this rule to apply, set the `AZURE_FIREWALL_IS_ZONAL` configuration value to `true`.
+
+For example:
+
+```yaml
+configuration:
+  AZURE_FIREWALL_IS_ZONAL: true
+```
+
 ## LINKS
 
 - [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
 - [Scale SNAT ports with Azure NAT Gateway](https://learn.microsoft.com/azure/firewall/integrate-with-nat-gateway)
 - [Plan for inbound and outbound internet connectivity](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/plan-for-inbound-and-outbound-internet-connectivity)
+- [Azure Firewall forced tunneling](https://learn.microsoft.com/azure/firewall/forced-tunneling)
 - [Azure deployment reference - Virtual Network](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
 - [Azure deployment reference - Subnet](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks/subnets)
