@@ -61,6 +61,9 @@ spec:
     # Configure Container Apps external ingress.
     AZURE_CONTAINERAPPS_RESTRICT_INGRESS: false
 
+    # Enable checks when Azure Firewall is deployed in a zonal configuration.
+    AZURE_FIREWALL_IS_ZONAL: false
+
     # Enabled resource level checks for Defender for Storage.
     AZURE_STORAGE_DEFENDER_PER_ACCOUNT: false
 
