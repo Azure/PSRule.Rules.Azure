@@ -500,6 +500,39 @@ configuration:
     - loginName
 ```
 
+### AZURE_FIREWALL_IS_ZONAL
+
+<!-- module:version v1.39.0 -->
+<!-- module:rule Azure.VNET.FirewallSubnetNAT -->
+
+This configuration identifies if Azure Firewall deployments are expected to be zonal or zone redundant.
+Some specific configurations may require Azure Firewall deployed zonal.
+If you environment requires a zonal configuration set this to `true` which will toggle rules that apply to this configuration.
+By default, `AZURE_FIREWALL_IS_ZONAL` is set to `false`.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_FIREWALL_IS_ZONAL: boolean
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_FIREWALL_IS_ZONAL configuration option
+configuration:
+  AZURE_FIREWALL_IS_ZONAL: false
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_FIREWALL_IS_ZONAL configuration option to true
+configuration:
+  AZURE_FIREWALL_IS_ZONAL: true
+```
+
 ### AZURE_RESOURCE_ALLOWED_LOCATIONS
 
 <!-- module:version v1.30.0 -->

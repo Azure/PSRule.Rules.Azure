@@ -118,6 +118,28 @@ Rule 'Azure.VNET.FirewallSubnet' -Ref 'AZR-000322' -Type 'Microsoft.Network/virt
     $Assert.In($subnets, '.', @('AzureFirewallSubnet')).ReasonFrom('properties.subnets', $LocalizedData.SubnetNotFound, 'AzureFirewallSubnet')
 }
 
+# Synopsis: Zonal-deployed Azure Firewalls should consider using an Azure NAT Gateway for outbound access.
+Rule 'Azure.VNET.FirewallSubnetNAT' -Ref 'AZR-000448' -Level 'Warning' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -If { $Configuration.GetBoolOrDefault('AZURE_FIREWALL_IS_ZONAL', $False) } -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
+        $subnets = @(
+            $TargetObject.properties.subnets | Where-Object { $null -ne $_ -and ($_.name -eq 'AzureFirewallSubnet' -or $_.name -like '*/AzureFirewallSubnet') }
+            GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' | Where-Object { $null -ne $_ -and ($_.name -eq 'AzureFirewallSubnet' -or $_.name -like '*/AzureFirewallSubnet') }
+        )
+    }
+
+    else {
+        $subnets = @($TargetObject | Where-Object { $_.name -eq 'AzureFirewallSubnet' -or $_.name -like '*/AzureFirewallSubnet' })
+    }
+
+    if ($subnets.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($subnet in $subnets) {
+        $Assert.HasFieldValue($subnet, 'properties.natGateway.id').Reason($LocalizedData.FirewallSubnetNAT)
+    }
+}
+
 # Synopsis: Disable default outbound access for virtual machines.
 Rule 'Azure.VNET.PrivateSubnet' -Ref 'AZR-000447' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'preview'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } {
     $excludedSubnets = @('GatewaySubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet', 'AzureBastionSubnet')
