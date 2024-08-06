@@ -23,11 +23,11 @@ The IP address used by the shared NAT pool is used across multiple customers, an
 
 Default outbound access for new VMs and VMSS is scheduled for retirement in September 2025.
 
-Alternatively, outbound access to the Internet can be explictly configured.
+Alternatively, outbound access to the Internet can be explicitly configured.
 Explicit outbound access has the following benefits:
 
 - **Security**: Outbound Internet access can be used to transfer data or control out of your organization.
-  Controlling outbound access allows you to make an explict choice about which workloads require this vs those that don't.
+  Controlling outbound access allows you to make an explicit choice about which workloads require this vs those that don't.
 - **Ownership and stability**: The default outbound access IP is managed by Microsoft and used by multiple customers.
   As a result, you can't assume use the address for network security rules and the address might change unexpectedly in the future,
   potentially causing disruptions to any configuration relying on a stable or fixed IP address.
@@ -37,7 +37,7 @@ Explicit outbound access can be provided to a specific workload or application b
 - Deploying a NAT gateway into the subnet where the VM or VMSS is deployed.
 - Deploying a Standard load balancer and configuring an outbound SNAT rule.
 
-A public IP address can also be attached to a specific VM instance to provide explict outbound access.
+A public IP address can also be attached to a specific VM instance to provide explicit outbound access.
 However, attaching a public IP address to a VM also allows inbound access from the Internet which further compromises the security of the VM.
 
 To provide outbound access to multiple workloads or applications a VWAN or hub and spoke network topology can be deployed.
