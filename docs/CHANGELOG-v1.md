@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Virtual Network:
+    - Verify that subnets have disabled default outbound access for virtual machines by @BenjaminEngeset.
+      [#3001](https://github.com/Azure/PSRule.Rules.Azure/issues/3001)
+
 What's changed since pre-release v1.39.0-B0009:
 
 - New rules:
