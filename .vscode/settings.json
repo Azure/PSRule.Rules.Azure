@@ -117,6 +117,7 @@
     "SBOM",
     "SIEM",
     "SKUs",
+    "SNAT",
     "stateful",
     "subnet",
     "subnets",
@@ -127,6 +128,7 @@
     "VMSS",
     "VNET",
     "VNETs",
+    "VWAN",
     "webhook",
     "webhooks",
     "xunit"

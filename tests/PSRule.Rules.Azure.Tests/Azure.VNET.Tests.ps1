@@ -77,8 +77,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-H/AzureFirewallSubnet';
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
 
         It 'Azure.VNET.SingleDNS' {
@@ -159,8 +159,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-H/excludedSubnet';
+            $ruleResult.Length | Should -Be 14;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-H/excludedSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
 
         It 'Azure.VNET.BastionSubnet' {
@@ -211,6 +211,55 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'vnet-F', 'vnet-G';
+        }
+
+        It 'Azure.VNET.FirewallSubnetNAT' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.FirewallSubnetNAT' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -BeNullOrEmpty;
+        }
+
+        It 'Azure.VNET.PrivateSubnet' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.PrivateSubnet' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-B', 'vnet-C', 'vnet-G', 'vnet-H/excludedSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B';
+
+            $ruleResult[0].Reason | Should -BeExactly @(
+                "The subnet (subnet-A) should disable default outbound access."
+                "The subnet (subnet-B) should disable default outbound access."
+                "The subnet (subnet-C) should disable default outbound access."
+                "The subnet (subnet-D) should disable default outbound access."
+            );
+            $ruleResult[1].Reason | Should -BeExactly @(
+                "The subnet (subnet-A) should disable default outbound access."
+                "The subnet (subnet-B) should disable default outbound access."
+                "The subnet (subnet-C) should disable default outbound access."
+                "The subnet (subnet-D) should disable default outbound access."
+            );
+            $ruleResult[2].Reason | Should -BeExactly @(
+                "The subnet (subnet-A) should disable default outbound access."
+                "The subnet (subnet-B) should disable default outbound access."
+                "The subnet (subnet-C) should disable default outbound access."
+                "The subnet (subnet-D) should disable default outbound access."
+            );
+            $ruleResult[3].Reason | Should -BeExactly "The subnet (subnet-ZZ) should disable default outbound access.";
+            $ruleResult[4].Reason | Should -BeExactly "The subnet (vnet-H/excludedSubnet) should disable default outbound access.";
+            $ruleResult[5].Reason | Should -BeExactly "The subnet (vnet-H/subnet-A) should disable default outbound access.";
+            $ruleResult[6].Reason | Should -BeExactly "The subnet (vnet-H/subnet-B) should disable default outbound access.";
+  
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 7;
+            $ruleResult.TargetName | Should -BeIn 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-C';
         }
     }
 
@@ -388,13 +437,14 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
                 ErrorAction   = 'Stop'
-                Option = @{
-                    'Configuration.AZURE_VNET_DNS_WITH_IDENTITY' = $true
+                Option        = @{
+                    'Configuration.AZURE_VNET_DNS_WITH_IDENTITY'        = $True
+                    'Configuration.AZURE_FIREWALL_IS_ZONAL'             = $True
                     'Configuration.AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG' = @('subnet-ZZ', 'excludedSubnet') 
                 }
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualNetwork.json';
-            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Name 'Azure.VNET.LocalDNS', 'Azure.VNET.UseNSGs';
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All -Name 'Azure.VNET.LocalDNS', 'Azure.VNET.UseNSGs', 'Azure.VNET.FirewallSubnetNAT';
         }
 
         It 'Azure.VNET.LocalDNS' {
@@ -407,6 +457,27 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -BeNullOrEmpty;
+        }
+        
+        It 'Azure.VNET.FirewallSubnetNAT' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.FirewallSubnetNAT' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'vnet-A', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet';
+
+            $ruleResult[0].Reason | Should -BeExactly @(
+                "The firewall should have a NAT gateway associated."
+                "The firewall should have a NAT gateway associated."
+            );
+            $ruleResult[1].Reason | Should -BeExactly "The firewall should have a NAT gateway associated.";
+            $ruleResult[2].Reason | Should -BeExactly "The firewall should have a NAT gateway associated.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -BeIn 'vnet-B', 'vnet-C', 'vnet-D', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/excludedSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
 
         It 'Azure.VNET.UseNSGs' {
@@ -444,8 +515,8 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-H/excludedSubnet';
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -BeIn 'vnet-A', 'vnet-E', 'vnet-F', 'vnet-G', 'vnet-H/AzureFirewallSubnet', 'vnet-I/AzureFirewallSubnet', 'vnet-H/excludedSubnet', 'vnet-J/AzureFirewallSubnet', 'vnet-H/subnet-A', 'vnet-H/subnet-B', 'vnet-H/subnet-C';
         }
     }
 }

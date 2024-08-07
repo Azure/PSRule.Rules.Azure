@@ -14,7 +14,7 @@ namespace PSRule.Rules.Azure
         [Fact]
         public void GetOptions()
         {
-            var actual = PSRuleOption.FromFileOrDefault(null);
+            var actual = PSRuleOption.FromFileOrDefault("not-a-file.yaml");
             Assert.NotNull(actual);
             Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.Configuration.Subscription.SubscriptionId);
             Assert.Equal("PSRule Test Subscription", actual.Configuration.Subscription.DisplayName);
