@@ -29,10 +29,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-- New rules:
-  - Virtual Network:
-    - Verify that subnets have disabled default outbound access for virtual machines by @BenjaminEngeset.
-      [#3001](https://github.com/Azure/PSRule.Rules.Azure/issues/3001)
+## v1.39.0-B0029 (pre-release)
 
 What's changed since pre-release v1.39.0-B0009:
 
@@ -45,6 +42,8 @@ What's changed since pre-release v1.39.0-B0009:
   - Virtual Network:
     - Verify that zonal-deployed Azure firewalls uses Azure NAT Gateway for outbound access by @BenjaminEngeset.
       [##3005](https://github.com/Azure/PSRule.Rules.Azure/issues/#3005)
+    - Verify that subnets have disabled default outbound access for virtual machines by @BenjaminEngeset.
+      [#3001](https://github.com/Azure/PSRule.Rules.Azure/issues/3001)
 - Updated rules:
   - Virtual Network:
     - Updated `Azure.VNET.UseNSGs` to correctly handle cases for special purpose and customer-excluded subnets by @BenjaminEngeset.
