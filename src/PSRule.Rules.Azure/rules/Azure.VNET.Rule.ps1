@@ -15,7 +15,7 @@ Rule 'Azure.VNET.UseNSGs' -Ref 'AZR-000263' -Type 'Microsoft.Network/virtualNetw
     if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
         # Get subnets
         $subnet = @($TargetObject.properties.subnets | Where-Object {
-            [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -notin $excludedSubnets -and [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -notin $customExcludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
+                [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -notin $excludedSubnets -and [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.Name) -notin $customExcludedSubnets -and @($_.properties.delegations | Where-Object { $_.properties.serviceName -eq 'Microsoft.HardwareSecurityModules/dedicatedHSMs' }).Length -eq 0
             });
         if ($subnet.Length -eq 0 -or !$Assert.HasFieldValue($TargetObject, 'properties.subnets').Result) {
             return $Assert.Pass();
@@ -137,6 +137,29 @@ Rule 'Azure.VNET.FirewallSubnetNAT' -Ref 'AZR-000448' -Level 'Warning' -Type 'Mi
 
     foreach ($subnet in $subnets) {
         $Assert.HasFieldValue($subnet, 'properties.natGateway.id').Reason($LocalizedData.FirewallSubnetNAT)
+    }
+}
+
+# Synopsis: Disable default outbound access for virtual machines.
+Rule 'Azure.VNET.PrivateSubnet' -Ref 'AZR-000447' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -Tag @{ release = 'preview'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } {
+    $excludedSubnets = @('GatewaySubnet', 'AzureFirewallSubnet', 'AzureFirewallManagementSubnet', 'AzureBastionSubnet')
+    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
+        $subnets = @(
+            $TargetObject.properties.subnets | Where-Object { $null -ne $_ -and -not $_.properties.delegations -and [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.name) -notin $excludedSubnets }
+            GetSubResources -ResourceType 'Microsoft.Network/virtualNetworks/subnets' | Where-Object { $null -ne $_ -and -not $_.properties.delegations -and [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.name) -notin $excludedSubnets }
+        )
+    }
+
+    else {
+        $subnets = @($TargetObject | Where-Object { -not $_.properties.delegations -and [PSRule.Rules.Azure.Runtime.Helper]::GetSubResourceName($_.name) -notin $excludedSubnets } )
+    }
+
+    if ($subnets.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($subnet in $subnets) {
+        $Assert.HasFieldValue($subnet, 'properties.defaultOutboundAccess', $false).Reason($LocalizedData.PrivateSubnet, $subnet.name)
     }
 }
 

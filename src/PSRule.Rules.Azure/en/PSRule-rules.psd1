@@ -117,4 +117,5 @@
     ASEAvailabilityZoneVersion = "The app service environment ({0}) is not deployed with a version that supports zone-redundancy."
     AppServiceAvailabilityZoneSKU = "The app service plan ({0}) is not deployed with a SKU that supports zone-redundancy."
     FirewallSubnetNAT = "The firewall should have a NAT gateway associated."
+    PrivateSubnet = "The subnet ({0}) should disable default outbound access."
 }
