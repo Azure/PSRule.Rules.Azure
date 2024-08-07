@@ -116,4 +116,5 @@
     AzureSQLDatabaseMaintenanceWindow = "The {0} ({1}) should have a customer-controlled maintenance window configured."
     ASEAvailabilityZoneVersion = "The app service environment ({0}) is not deployed with a version that supports zone-redundancy."
     AppServiceAvailabilityZoneSKU = "The app service plan ({0}) is not deployed with a SKU that supports zone-redundancy."
+    VMPublicIPAttached = "The virtual machine with the NIC ({0}) should not have a public IP address attached."
 }

@@ -286,6 +286,23 @@ Rule 'Azure.VM.MaintenanceConfig' -Ref 'AZR-000375' -Type 'Microsoft.Compute/vir
 
 #endregion Maintenance Configuration
 
+#region Public IP
+
+# Synopsis: Avoid attaching public IPs directly to virtual machines.
+Rule 'Azure.VM.PublicIPAttached' -Ref 'AZR-000449' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } {
+    $configurations = @($TargetObject.properties.ipConfigurations)
+
+    if ($configurations.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($config in $configurations) {
+        $Assert.HasDefaultValue($config, 'properties.publicIPAddress.id', $null).Reason($LocalizedData.VMPublicIPAttached, $PSRule.TargetName)
+    }
+}
+
+#endregion Public IP
+
 #region Helper functions
 
 function global:HasPublisherMicrosoftSQLServer {
