@@ -37,7 +37,7 @@ What's changed since pre-release v1.39.0-B0009:
   - Azure Kubernetes Service:
     - Verify that clusters have kube-audit logging disabled when not required by @BenjaminEngeset.
       [#2450](https://github.com/Azure/PSRule.Rules.Azure/issues/2450)
-    - Verify that clusters have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured by @BenjaminEngeset.
+    - Verify that clusters have the customer-controlled maintenance windows `aksManagedAutoUpgradeSchedule` and `aksManagedNodeOSUpgradeSchedule` configured by @BenjaminEngeset.
       [#2444](https://github.com/Azure/PSRule.Rules.Azure/issues/2444)
   - Virtual Network:
     - Verify that zonal-deployed Azure firewalls uses Azure NAT Gateway for outbound access by @BenjaminEngeset.
@@ -83,7 +83,7 @@ What's changed since v1.38.0:
 What's changed since v1.37.0:
 
 - New features:
-  - Added March 2024 baselines `Azure.GA_2024_06` and `Azure.Preview_2024_06` by @BernieWhite.
+  - Added June 2024 baselines `Azure.GA_2024_06` and `Azure.Preview_2024_06` by @BernieWhite.
     [#2961](https://github.com/Azure/PSRule.Rules.Azure/issues/2961)
     - Includes rules released before or during June 2024.
     - Marked `Azure.GA_2024_03` and `Azure.Preview_2024_03` baselines as obsolete.
