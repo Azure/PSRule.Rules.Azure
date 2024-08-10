@@ -34,12 +34,12 @@ Evaluate alternative methods for inbound access to virtual machines to enhance s
 
 ### Configure with Azure template
 
-To deploy virtual machines that pass this rule:
+To deploy VM network interfaces that pass this rule:
 
 - For each IP configuration specified in the `properties.ipConfigurations` property:
- - Ensure that the `properties.publicIPAddress.id` property does not reference a Public IP resource.
+  - Ensure that the `properties.publicIPAddress.id` property does not reference a Public IP resource.
 
- For example:
+For example:
 
 ```json
 {
