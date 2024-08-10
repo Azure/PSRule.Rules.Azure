@@ -89,9 +89,6 @@ resource nic 'Microsoft.Network/networkInterfaces@2023-11-01' = {
       }
     ]
   }
-  dependsOn: [
-    virtualNetwork
-  ]
 }
 ```
 
