@@ -68,12 +68,12 @@ For example:
 
 ### Configure with Bicep
 
-To deploy virtual machines that pass this rule:
+To deploy VM network interfaces that pass this rule:
 
 - For each IP configuration specified in the `properties.ipConfigurations` property:
- - Ensure that the `properties.publicIPAddress.id` property does not reference a Public IP resource.
+  - Ensure that the `properties.publicIPAddress.id` property does not reference a Public IP resource.
 
- For example:
+For example:
 
 ```bicep
 resource nic 'Microsoft.Network/networkInterfaces@2023-11-01' = {
