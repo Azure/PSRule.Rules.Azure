@@ -59,10 +59,7 @@ For example:
         }
       }
     ]
-  },
-  "dependsOn": [
-    "[resourceId('Microsoft.Network/virtualNetworks', parameters('virtualNetworkName'))]"
-  ]
+  }
 }
 ```
 
