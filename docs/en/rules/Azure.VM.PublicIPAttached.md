@@ -14,12 +14,19 @@ Avoid attaching public IPs directly to virtual machines.
 
 ## DESCRIPTION
 
-Attaching a public IP address to a virtual machine exposes it directly to the internet. This exposure can make the VM vulnerable to unauthorized access and potential compromise if appropriate security measures are not implemented.
+Attaching a public IP address to a virtual machine network interface (NIC) exposes it directly to the Internet.
+This exposure can make the VM vulnerable to unauthorized inbound access and security compromise.
+Minimize the number of Internet ingress/ egress points to enhance security and reduces potential attack surfaces.
 
-For enhanced security, inbound and outbound traffic should be managed through a centralized Azure Firewall or Network Virtual Appliance (NVA), ensuring control over both east/west and north/south traffic.
-Minimizing the number of internet egress points enhances security and reduces potential attack surfaces.
+For enhanced security, consider one or more of the following options:
 
-For secure RDP and SSH access to virtual machines, consider using Azure Bastion.
+- **Secure remote access** &mdash; by RDP or SSH to virtual machines can be configured through Azure Bastion.
+  - Azure Bastion provides a secure encrypted connection without exposing a public IP.
+- **Exposing web services** &mdash; by HTTP/S can be configured by App Gateway or Azure Front Door (AFD).
+  - App Gateway and AFD provide a secure reverse proxy that supports web application firewall (WAF) filtering.
+- **Internet connectivity** &mdash; should be managed through a security hardened device such as Azure Firewall.
+  - This option also allows additional controls to be applied for east/ west and north/ south traffic filtering.
+  - Alternatively a Network Virtual Appliance (NVA) can used.
 
 ## RECOMMENDATION
 
