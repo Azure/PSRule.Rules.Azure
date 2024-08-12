@@ -82,35 +82,6 @@ For example:
 }
 ```
 
-To deploy VM network interfaces that pass this rule:
-
-- For each IP configuration specified in the `properties.ipConfigurations` property:
-  - Ensure that the `properties.publicIPAddress.id` property does not reference a Public IP resource.
-
-For example:
-
-```json
-{
-  "type": "Microsoft.Network/networkInterfaces",
-  "apiVersion": "2023-11-01",
-  "name": "[parameters('nicName')]",
-  "location": "[parameters('location')]",
-  "properties": {
-    "ipConfigurations": [
-      {
-        "name": "[parameters('ipConfig')]",
-        "properties": {
-          "privateIPAllocationMethod": "Dynamic",
-          "subnet": {
-            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
 ### Configure with Bicep
 
 To deploy virtual machine scale sets that pass this rule:
