@@ -86,9 +86,9 @@ For example:
 
 To deploy virtual machine scale sets that pass this rule:
 
-- For each interface configuration specified in the `properties.virtualMachineProfle.networkProfile.networkInterfaceConfigurations.ipConfigurations` property:
+- For each interface configuration specified in the `properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations.ipConfigurations` property:
   - For each IP configuration specified in the `properties.ipConfigurations` property:
-    - Ensure that the `properties.publicIPAddress.id` property does not reference a Public IP resource.
+    - Ensure that the `properties.publicIPAddressConfiguration.name` property does specify a public IP address.
 
 For example:
 
