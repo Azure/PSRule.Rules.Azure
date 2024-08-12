@@ -30,13 +30,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
-  - Virtual Network:
-    - Verify that subnets have disabled default outbound access for virtual machines by @BenjaminEngeset.
-      [#3001](https://github.com/Azure/PSRule.Rules.Azure/issues/3001)
   - Virtual Machine Scale Sets:
     - Verify that virtual machine scale set instances does not have public IPs attached by @BenjaminEngeset.
       [#3014](https://github.com/Azure/PSRule.Rules.Azure/issues/3014)
-
+      
+## v1.39.0-B0029 (pre-release)
 
 What's changed since pre-release v1.39.0-B0009:
 
@@ -44,11 +42,13 @@ What's changed since pre-release v1.39.0-B0009:
   - Azure Kubernetes Service:
     - Verify that clusters have kube-audit logging disabled when not required by @BenjaminEngeset.
       [#2450](https://github.com/Azure/PSRule.Rules.Azure/issues/2450)
-    - Verify that clusters have the customer-controlled maintenance windows 'aksManagedAutoUpgradeSchedule' and 'aksManagedNodeOSUpgradeSchedule' configured by @BenjaminEngeset.
+    - Verify that clusters have the customer-controlled maintenance windows `aksManagedAutoUpgradeSchedule` and `aksManagedNodeOSUpgradeSchedule` configured by @BenjaminEngeset.
       [#2444](https://github.com/Azure/PSRule.Rules.Azure/issues/2444)
   - Virtual Network:
     - Verify that zonal-deployed Azure firewalls uses Azure NAT Gateway for outbound access by @BenjaminEngeset.
       [##3005](https://github.com/Azure/PSRule.Rules.Azure/issues/#3005)
+    - Verify that subnets have disabled default outbound access for virtual machines by @BenjaminEngeset.
+      [#3001](https://github.com/Azure/PSRule.Rules.Azure/issues/3001)
 - Updated rules:
   - Virtual Network:
     - Updated `Azure.VNET.UseNSGs` to correctly handle cases for special purpose and customer-excluded subnets by @BenjaminEngeset.
@@ -88,7 +88,7 @@ What's changed since v1.38.0:
 What's changed since v1.37.0:
 
 - New features:
-  - Added March 2024 baselines `Azure.GA_2024_06` and `Azure.Preview_2024_06` by @BernieWhite.
+  - Added June 2024 baselines `Azure.GA_2024_06` and `Azure.Preview_2024_06` by @BernieWhite.
     [#2961](https://github.com/Azure/PSRule.Rules.Azure/issues/2961)
     - Includes rules released before or during June 2024.
     - Marked `Azure.GA_2024_03` and `Azure.Preview_2024_03` baselines as obsolete.
