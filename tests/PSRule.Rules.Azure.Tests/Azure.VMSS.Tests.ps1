@@ -183,8 +183,8 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
 
             # None
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'None' });
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -BeIn 'vmss-003', 'vmss-006/instance-A', 'vmss-006/instance-B', 'nic-A', 'nic-B';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -BeIn 'vmss-003', 'vmss-006/instance-A', 'vmss-006/instance-B';
         }
 
         It 'Azure.VMSS.PublicIPAttached' {
@@ -192,18 +192,17 @@ Describe 'Azure.VMSS' -Tag 'VMSS' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -Be 'vmss-001', 'vmss-002', 'vmss-006/instance-A', 'nic-A';
+            $ruleResult.Length | Should -Be 3;
+            $ruleResult.TargetName | Should -Be 'vmss-001', 'vmss-002', 'vmss-006/instance-A';
 
             $ruleResult[0].Reason | Should -BeExactly "The virtual machine scale set instances should not have public IP addresses directly attached to their network interfaces.";
             $ruleResult[1].Reason | Should -BeExactly "The virtual machine scale set instances should not have public IP addresses directly attached to their network interfaces.";
             $ruleResult[2].Reason | Should -BeExactly "The virtual machine scale set instances should not have public IP addresses directly attached to their network interfaces.";
-            $ruleResult[3].Reason | Should -BeExactly "The virtual machine scale set instances should not have public IP addresses directly attached to their network interfaces.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 5;
-            $ruleResult.TargetName | Should -Be 'vmss-003', 'vmss-004', 'vmss-005', 'vmss-006/instance-B', 'nic-B';
+            $ruleResult.Length | Should -Be 4;
+            $ruleResult.TargetName | Should -Be 'vmss-003', 'vmss-004', 'vmss-005', 'vmss-006/instance-B';
         }
     }
 
