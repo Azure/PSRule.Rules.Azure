@@ -130,33 +130,6 @@ resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2023-09-01' = {
 }
 ```
 
-To deploy VM network interfaces that pass this rule:
-
-- For each IP configuration specified in the `properties.ipConfigurations` property:
-  - Ensure that the `properties.publicIPAddress.id` property does not reference a Public IP resource.
-
-For example:
-
-```bicep
-resource nic 'Microsoft.Network/networkInterfaces@2023-11-01' = {
-  name: nicName
-  location: location
-  properties: {
-    ipConfigurations: [
-      {
-        name: ipconfig
-        properties: {
-          privateIPAllocationMethod: 'Dynamic'
-          subnet: {
-            id: resourceId('Microsoft.Network/virtualNetworks/subnets', virtualNetworkName, subnetName)
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
