@@ -69,11 +69,19 @@
                   {
                     "name": "ipconfig1",
                     "properties": {
-                      "primary": true,
+                      "privateIPAddressVersion": "IPv4",
                       "subnet": {
                         "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
                       },
-                      "privateIPAddressVersion": "IPv4",
+                      "primary": true,
+                      "publicIPAddressConfiguration": {
+                        "name": "publicIpConfig-vmss-001",
+                        "properties": {
+                          "idleTimeoutInMinutes": 15,
+                          "ipTags": [],
+                          "publicIPAddressVersion": "IPv4"
+                        }
+                      },
                       "loadBalancerBackendAddressPools": [
                         {
                           "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
@@ -355,6 +363,64 @@
         "ExtensionResourceType": null,
         "Sku": null,
         "SubscriptionId": null
+      },
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-002/virtualMachines/instance-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-002/virtualMachines/instance-A",
+        "Location": "region",
+        "ResourceName": "instance-A",
+        "Name": "intance-A",
+        "Properties": {
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "vmss-002",
+                "properties": {
+                  "primary": true,
+                  "enableAcceleratedNetworking": false,
+                  "networkSecurityGroup": {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-002"
+                  },
+                  "dnsSettings": {
+                    "dnsServers": []
+                  },
+                  "enableIPForwarding": false,
+                  "ipConfigurations": [
+                    {
+                      "name": "ipconfig1",
+                      "properties": {
+                        "privateIPAddressVersion": "IPv4",
+                        "subnet": {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-002"
+                        },
+                        "primary": true,
+                        "publicIPAddressConfiguration": {
+                          "name": "publicIpConfig-vmss-002",
+                          "properties": {
+                            "idleTimeoutInMinutes": 15,
+                            "ipTags": [],
+                            "publicIPAddressVersion": "IPv4"
+                          }
+                        },
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+        "ResourceType": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
       }
     ]
   },
@@ -519,7 +585,59 @@
       "Capacity": 1
     },
     "Tags": null,
-    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "resources": [
+      {
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-003/virtualMachines/instance-A",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-003/virtualMachines/instance-A",
+        "Location": "region",
+        "ResourceName": "instance-A",
+        "Name": "intance-A",
+        "Properties": {
+          "networkProfile": {
+            "networkInterfaceConfigurations": [
+              {
+                "name": "vmss-003",
+                "properties": {
+                  "primary": true,
+                  "enableAcceleratedNetworking": false,
+                  "networkSecurityGroup": {
+                    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-003"
+                  },
+                  "dnsSettings": {
+                    "dnsServers": []
+                  },
+                  "enableIPForwarding": false,
+                  "ipConfigurations": [
+                    {
+                      "name": "ipconfig1",
+                      "properties": {
+                        "privateIPAddressVersion": "IPv4",
+                        "subnet": {
+                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-003"
+                        },
+                        "primary": true,
+                        "loadBalancerBackendAddressPools": [
+                          {
+                            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+                          }
+                        ]
+                      }
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        },
+        "ResourceGroupName": "test-rg",
+        "Type": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+        "ResourceType": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+        "ExtensionResourceType": null,
+        "Sku": null,
+        "SubscriptionId": null
+      }
+    ]
   },
   {
     "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-004",
@@ -838,6 +956,203 @@
       "Capacity": 1
     },
     "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-006/virtualMachines/instance-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-006/virtualMachines/instance-A",
+    "Location": "region",
+    "ResourceName": "vmss-006/instance-A",
+    "Name": "vmss006/instance-A",
+    "Properties": {
+      "networkProfile": {
+        "networkInterfaceConfigurations": [
+          {
+            "name": "vmss-006",
+            "properties": {
+              "primary": true,
+              "enableAcceleratedNetworking": false,
+              "networkSecurityGroup": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-006"
+              },
+              "dnsSettings": {
+                "dnsServers": []
+              },
+              "enableIPForwarding": false,
+              "ipConfigurations": [
+                {
+                  "name": "ipconfig1",
+                  "properties": {
+                    "privateIPAddressVersion": "IPv4",
+                    "subnet": {
+                      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-006"
+                    },
+                    "primary": true,
+                    "publicIPAddressConfiguration": {
+                      "name": "publicIpConfig-vmss-006",
+                      "properties": {
+                        "idleTimeoutInMinutes": 15,
+                        "ipTags": [],
+                        "publicIPAddressVersion": "IPv4"
+                      }
+                    },
+                    "loadBalancerBackendAddressPools": [
+                      {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+    "ResourceType": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "SubscriptionId": null
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-006/virtualMachines/instance-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachineScaleSets/vmss-006/virtualMachines/instance-B",
+    "Location": "region",
+    "ResourceName": "vmss-006/instance-B",
+    "Name": "vmss006/instance-B",
+    "Properties": {
+      "networkProfile": {
+        "networkInterfaceConfigurations": [
+          {
+            "name": "vmss-006",
+            "properties": {
+              "primary": true,
+              "enableAcceleratedNetworking": false,
+              "networkSecurityGroup": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-006"
+              },
+              "dnsSettings": {
+                "dnsServers": []
+              },
+              "enableIPForwarding": false,
+              "ipConfigurations": [
+                {
+                  "name": "ipconfig1",
+                  "properties": {
+                    "privateIPAddressVersion": "IPv4",
+                    "subnet": {
+                      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-006"
+                    },
+                    "primary": true,
+                    "loadBalancerBackendAddressPools": [
+                      {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+    "ResourceType": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "SubscriptionId": null
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+    "Location": "region",
+    "ResourceName": "nic-A",
+    "Name": "nic-A",
+    "Properties": {
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "privateIPAddress": "10.0.1.4",
+            "privateIPAllocationMethod": "Dynamic",
+            "publicIPAddress": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/pip-A"
+            },
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4",
+            "loadBalancerBackendAddressPools": [
+              {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/vmssLoadBalancer/backendAddressPools/bepool"
+              }
+            ]
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": []
+      },
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "networkSecurityGroup": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+      },
+      "primary": true
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/networkInterfaces",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B",
+    "Location": "region",
+    "ResourceName": "nic-B",
+    "Name": "nic-B",
+    "Properties": {
+      "ipConfigurations": [
+        {
+          "name": "ipconfig1",
+          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-B/ipConfigurations/ipconfig1",
+          "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
+          "properties": {
+            "privateIPAddress": "10.0.1.5",
+            "privateIPAllocationMethod": "Dynamic",
+            "subnet": {
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+            },
+            "primary": true,
+            "privateIPAddressVersion": "IPv4",
+            "loadBalancerBackendAddressPools": [
+              {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/vmssLoadBalancer/backendAddressPools/bepool"
+              }
+            ]
+          }
+        }
+      ],
+      "dnsSettings": {
+        "dnsServers": []
+      },
+      "enableAcceleratedNetworking": false,
+      "enableIPForwarding": false,
+      "networkSecurityGroup": {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+      },
+      "primary": true
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.Network/networkInterfaces",
+    "ResourceType": "Microsoft.Network/networkInterfaces",
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]
