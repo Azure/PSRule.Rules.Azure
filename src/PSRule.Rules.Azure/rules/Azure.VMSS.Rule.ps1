@@ -139,7 +139,6 @@ Rule 'Azure.VMSS.PublicIPAttached' -Ref 'AZR-000450' -Type 'Microsoft.Compute/vi
             $TargetObject.properties.networkProfile.networkInterfaceConfigurations | ForEach-Object { $_.properties.ipConfigurations } | Where-Object { $null -ne $_ }
             $TargetObject.properties.networkProfileConfiguration.networkInterfaceConfigurations | ForEach-Object { $_.properties.ipConfigurations } | Where-Object { $null -ne $_ }
         )
-
         
         if ($configurations.Count -eq 0) {
             return $Assert.Pass()
