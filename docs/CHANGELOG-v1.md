@@ -30,10 +30,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 ## Unreleased
 
 - New rules:
+  - Virtual Machine:
+    - Verify that virtual machines does not have public IPs attached by @BenjaminEngeset.
+      [#11](https://github.com/Azure/PSRule.Rules.Azure/issues/11)
   - Virtual Machine Scale Sets:
     - Verify that virtual machine scale set instances does not have public IPs attached by @BenjaminEngeset.
       [#3014](https://github.com/Azure/PSRule.Rules.Azure/issues/3014)
-      
+
 ## v1.39.0-B0029 (pre-release)
 
 What's changed since pre-release v1.39.0-B0009:
