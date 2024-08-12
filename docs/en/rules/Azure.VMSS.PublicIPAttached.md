@@ -139,4 +139,3 @@ resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2023-09-01' = {
 - [Azure Bastion](https://learn.microsoft.com/azure/bastion/bastion-overview)
 - [Azure deployment reference - VMSS](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)
 - [Azure deployment reference - VMSS instance](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/virtualmachines)
-- [Azure deployment reference - NIC](https://learn.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
