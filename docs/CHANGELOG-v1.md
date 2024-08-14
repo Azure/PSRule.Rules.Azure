@@ -41,6 +41,11 @@ What's changed since pre-release v1.39.0-B0029:
 - Engineering:
   - Bump development tools to .NET 8.0 SDK by @BernieWhite.
     [#3017](https://github.com/Azure/PSRule.Rules.Azure/issues/3017)
+- Bug fixed:
+  - Fixed expansion with deployments by resource ID at management group by @BernieWhite
+    [#3013](https://github.com/Azure/PSRule.Rules.Azure/issues/3013)
+  - Fixed subscription aliases don't support tags by @BernieWhite.
+    [#3021](https://github.com/Azure/PSRule.Rules.Azure/issues/3021)
 
 ## v1.39.0-B0029 (pre-release)
 

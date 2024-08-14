@@ -986,7 +986,7 @@ namespace PSRule.Rules.Azure
         public void ManagementGroupScopedResource()
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.31.json"), null, out _);
-            Assert.Equal(4, resources.Length);
+            Assert.Equal(9, resources.Length);
 
             var actual = resources[1];
             Assert.Equal("Microsoft.Subscription/aliases", actual["type"].Value<string>());
