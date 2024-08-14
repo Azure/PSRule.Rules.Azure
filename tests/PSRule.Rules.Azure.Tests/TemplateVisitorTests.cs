@@ -986,7 +986,7 @@ namespace PSRule.Rules.Azure
         public void ManagementGroupScopedResource()
         {
             var resources = ProcessTemplate(GetSourcePath("Tests.Bicep.31.json"), null, out _);
-            Assert.Equal(4, resources.Length);
+            Assert.Equal(9, resources.Length);
 
             var actual = resources[1];
             Assert.Equal("Microsoft.Subscription/aliases", actual["type"].Value<string>());
@@ -1283,6 +1283,17 @@ namespace PSRule.Rules.Azure
 
             Assert.Equal("child-0", items[0].Value<string>());
             Assert.Equal("child-1", items[1].Value<string>());
+        }
+
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2917
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenConditionalExistingReference_IgnoresExpand()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.2.json"), null, out _);
+
+            Assert.Empty(resources);
         }
 
         #region Helper methods
