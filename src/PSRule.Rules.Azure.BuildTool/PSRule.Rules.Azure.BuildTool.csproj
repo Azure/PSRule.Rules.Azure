@@ -2,7 +2,7 @@
   <Import Project="..\PSRule.Common.props" />
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ProjectGuid>{218b2d45-a2bd-4966-9b9f-4064cd68ba8a}</ProjectGuid>
     <EnableNuget>false</EnableNuget>
     <IsPackable>false</IsPackable>
