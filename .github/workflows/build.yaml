@@ -16,7 +16,7 @@ on:
 env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  DOTNET_VERSION: 7.x
+  DOTNET_VERSION: 8.x
 
 jobs:
   build:

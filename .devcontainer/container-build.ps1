@@ -5,9 +5,17 @@
 # This is run during container creation.
 
 # Install Python 3 dependencies
-sudo apt install python3-pip -y
+sudo apt-get update
+sudo apt-get install dotnet-sdk-8.0 -y
+sudo apt-get install python3-pip -y
 sudo python3 -m pip install --upgrade pip
 sudo python3 -m pip install wheel
+
+# Install Python packages
+pip install -r requirements-docs.txt
+
+# Restore .NET packages
+dotnet restore
 
 # Install PowerShell dependencies
 $ProgressPreference = [System.Management.Automation.ActionPreference]::SilentlyContinue;
