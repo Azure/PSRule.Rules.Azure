@@ -41,6 +41,9 @@ jobs:
           python-version: '3.11'
           architecture: x64
 
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
