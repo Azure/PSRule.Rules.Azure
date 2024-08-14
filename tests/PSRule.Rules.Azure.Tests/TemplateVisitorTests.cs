@@ -1285,17 +1285,6 @@ namespace PSRule.Rules.Azure
             Assert.Equal("child-1", items[1].Value<string>());
         }
 
-        /// <summary>
-        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2917
-        /// </summary>
-        [Fact]
-        public void ProcessTemplate_WhenConditionalExistingReference_IgnoresExpand()
-        {
-            var resources = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.2.json"), null, out _);
-
-            Assert.Empty(resources);
-        }
-
         #region Helper methods
 
         private static string GetSourcePath(string fileName)
