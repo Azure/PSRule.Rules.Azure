@@ -117,6 +117,39 @@ Rule 'Azure.VMSS.ZoneBalance' -Ref 'AZR-000438' -Type 'Microsoft.Compute/virtual
     $Assert.HasDefaultValue($TargetObject, 'properties.zoneBalance', $false)
 }
 
+# Synopsis: Avoid attaching public IPs directly to virtual machine scale set instances.
+Rule 'Azure.VMSS.PublicIPAttached' -Ref 'AZR-000450' -Type 'Microsoft.Compute/virtualMachineScaleSets', 'Microsoft.Compute/virtualMachineScaleSets/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } {
+    if ($PSRule.TargetType -eq 'Microsoft.Compute/virtualMachineScaleSets') {
+        $configurations = @(
+            $TargetObject.properties.virtualMachineProfile.networkProfile.networkInterfaceConfigurations | ForEach-Object { $_.properties.ipConfigurations } | Where-Object { $null -ne $_ }
+            GetSubResources -ResourceType 'Microsoft.Compute/virtualMachineScaleSets/virtualMachines' | ForEach-Object { $_.properties.networkProfile.networkInterfaceConfigurations } | ForEach-Object { $_.properties.ipConfigurations } | Where-Object { $null -ne $_ }
+            GetSubResources -ResourceType 'Microsoft.Compute/virtualMachineScaleSets/virtualMachines' | ForEach-Object { $_.properties.networkProfileConfiguration.networkInterfaceConfigurations } | ForEach-Object { $_.properties.ipConfigurations } | Where-Object { $null -ne $_ }
+        )
+
+        if ($configurations.Count -eq 0) {
+            return $Assert.Pass()
+        }
+        
+        foreach ($config in $configurations) {
+            $Assert.HasDefaultValue($config, 'properties.publicIPAddressConfiguration.name', $null).Reason($LocalizedData.VMSSPublicIPAttached)
+        }
+    }
+    else {
+        $configurations = @(
+            $TargetObject.properties.networkProfile.networkInterfaceConfigurations | ForEach-Object { $_.properties.ipConfigurations } | Where-Object { $null -ne $_ }
+            $TargetObject.properties.networkProfileConfiguration.networkInterfaceConfigurations | ForEach-Object { $_.properties.ipConfigurations } | Where-Object { $null -ne $_ }
+        )
+        
+        if ($configurations.Count -eq 0) {
+            return $Assert.Pass()
+        }
+       
+        foreach ($config in $configurations) {
+            $Assert.HasDefaultValue($config, 'properties.publicIPAddressConfiguration.name', $null).Reason($LocalizedData.VMSSPublicIPAttached)
+        }
+    }
+}
+
 #endregion Rules
 
 #endregion Virtual machine scale set
