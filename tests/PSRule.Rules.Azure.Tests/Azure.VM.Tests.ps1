@@ -27,11 +27,11 @@ Describe 'Azure.VM' -Tag 'VM' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
-                Option = (Join-Path -Path $here -ChildPath 'ps-rule-options.yaml')
+                ErrorAction   = 'Stop'
+                Option        = (Join-Path -Path $here -ChildPath 'ps-rule-options.yaml')
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json'
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Outcome All;
@@ -61,8 +61,8 @@ Describe 'Azure.VM' -Tag 'VM' {
 
             # Skip Windows client
             $ruleResult = @($filteredResult | Where-Object {
-                $_.Outcome -eq 'None' -and $_.TargetName -in 'vm-D'
-            });
+                    $_.Outcome -eq 'None' -and $_.TargetName -in 'vm-D'
+                });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
 
@@ -106,11 +106,11 @@ Describe 'Azure.VM' -Tag 'VM' {
                 'Standard_D4s_v3'
             )
             $vmObject = [PSCustomObject]@{
-                Name = "vm-A"
-                ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+                Name         = "vm-A"
+                ResourceId   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
                 ResourceName = "vm-A"
                 ResourceType = "Microsoft.Compute/virtualMachines"
-                Properties = [PSCustomObject]@{
+                Properties   = [PSCustomObject]@{
                     hardwareProfile = [PSCustomObject]@{
                         vmSize = "nn"
                     }
@@ -148,11 +148,11 @@ Describe 'Azure.VM' -Tag 'VM' {
                 'Standard_D4s_v3'
             )
             $vmObject = [PSCustomObject]@{
-                Name = "vm-A"
-                ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+                Name         = "vm-A"
+                ResourceId   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
                 ResourceName = "vm-A"
                 ResourceType = "Microsoft.Compute/virtualMachines"
-                Properties = [PSCustomObject]@{
+                Properties   = [PSCustomObject]@{
                     hardwareProfile = [PSCustomObject]@{
                         vmSize = "nn"
                     }
@@ -237,15 +237,15 @@ Describe 'Azure.VM' -Tag 'VM' {
 
             # Skip Linux
             $ruleResult = @($filteredResult | Where-Object {
-                $_.Outcome -eq 'None' -and $_.TargetName -in 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3'
-            });
+                    $_.Outcome -eq 'None' -and $_.TargetName -in 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3'
+                });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
 
             # Skip Windows client
             $ruleResult = @($filteredResult | Where-Object {
-                $_.Outcome -eq 'None' -and $_.TargetName -in 'vm-D'
-            });
+                    $_.Outcome -eq 'None' -and $_.TargetName -in 'vm-D'
+                });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
 
@@ -310,17 +310,17 @@ Describe 'Azure.VM' -Tag 'VM' {
                 'Standard_F16s_v2'
             )
             $vmObject = [PSCustomObject]@{
-                Name = "vm-A"
-                ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
-                ResourceName = "vm-A"
-                ResourceType = "Microsoft.Compute/virtualMachines"
-                Properties = [PSCustomObject]@{
+                Name           = "vm-A"
+                ResourceId     = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+                ResourceName   = "vm-A"
+                ResourceType   = "Microsoft.Compute/virtualMachines"
+                Properties     = [PSCustomObject]@{
                     hardwareProfile = [PSCustomObject]@{
                         vmSize = "na"
                     }
                 }
                 SubscriptionId = '00000000-0000-0000-0000-000000000000'
-                Resources = @(
+                Resources      = @(
                     [PSCustomObject]@{
                         ResourceType = 'Microsoft.Network/networkInterfaces'
                     }
@@ -565,7 +565,7 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult[0].Recommendation | Should -BeExactly "Consider fully de-allocating VMs instead of stopping VMs to reduce cost.";
 
             # Pass
-            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass'});
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 10
         }
@@ -589,7 +589,6 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.TargetName | Should -BeIn 'vm-C';
         }
     
-
         It 'Azure.VM.PublicIPAttached' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.PublicIPAttached' };
 
@@ -608,35 +607,35 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.TargetName | Should -Be 'aks-agentpool-00000000-nic-1', 'aks-agentpool-00000000-nic-2', 'aks-agentpool-00000000-nic-3', 'pe-001', 'private-link.nic.00000000-0000-0000-0000-000000000000';
         }
         
-       It 'Azure.VM.ASDistributeTraffic' {
-        $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ASDistributeTraffic' };
+        It 'Azure.VM.ASDistributeTraffic' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ASDistributeTraffic' };
 
-        # Fail
-        $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-        $ruleResult.Length | Should -Be 2;
-        $ruleResult.TargetName | Should -Be 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2';
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2';
 
-        $ruleResult[0].Reason | Should -BeExactly "The virtual machine 'vm-A' should have a maintenance configuration associated.";
-        $ruleResult[1].Reason | Should -BeExactly "The virtual machine 'vm-B' should have a maintenance configuration associated.";
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine 'vm-A' should have a maintenance configuration associated.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine 'vm-B' should have a maintenance configuration associated.";
 
-        # Pass
-        $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-        $ruleResult.Length | Should -Be 9;
-        $ruleResult.TargetName | Should -Be 'vm-A', 'vm-B', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
-      }
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-B', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
+        }
     }
 
     Context 'Resource name - Azure.VM.Name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Compute/virtualMachines'
             }
         }
@@ -677,21 +676,21 @@ Describe 'Azure.VM' -Tag 'VM' {
     Context 'Resource name - Azure.VM.ComputerName (Windows)' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
                 ResourceType = 'Microsoft.Compute/virtualMachines'
-                Properties = [PSCustomObject]@{
+                Properties   = [PSCustomObject]@{
                     storageProfile = [PSCustomObject]@{
                         osDisk = [PSCustomObject]@{
                             osType = 'Windows'
                         }
                     }
-                    osProfile = [PSCustomObject]@{
+                    osProfile      = [PSCustomObject]@{
                         computerName = ''
                     }
                 }
@@ -735,21 +734,21 @@ Describe 'Azure.VM' -Tag 'VM' {
     Context 'Resource name - Azure.VM.ComputerName (Linux)' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
                 ResourceType = 'Microsoft.Compute/virtualMachines'
-                Properties = [PSCustomObject]@{
+                Properties   = [PSCustomObject]@{
                     storageProfile = [PSCustomObject]@{
                         osDisk = [PSCustomObject]@{
                             osType = 'Linux'
                         }
                     }
-                    osProfile = [PSCustomObject]@{
+                    osProfile      = [PSCustomObject]@{
                         computerName = ''
                     }
                 }
@@ -793,14 +792,14 @@ Describe 'Azure.VM' -Tag 'VM' {
     Context 'Resource name - Azure.VM.DiskName' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Compute/disks'
             }
         }
@@ -842,14 +841,14 @@ Describe 'Azure.VM' -Tag 'VM' {
     Context 'Resource name - Azure.VM.ASName' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Compute/availabilitySets'
             }
         }
@@ -891,14 +890,14 @@ Describe 'Azure.VM' -Tag 'VM' {
     Context 'Resource name - Azure.VM.PPGName' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
             $testObject = [PSCustomObject]@{
-                Name = ''
+                Name         = ''
                 ResourceType = 'Microsoft.Compute/proximityPlacementGroups'
             }
         }
@@ -945,11 +944,11 @@ Describe 'Azure.VM' -Tag 'VM' {
             $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.VirtualMachineTemplate.json;
             Export-AzRuleTemplateData -TemplateFile $templatePath -ParameterFile $parameterPath -OutputPath $outputFile;
             $invokeParams = @{
-                InputPath = $outputFile
-                Module = 'PSRule.Rules.Azure'
+                InputPath     = $outputFile
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
-                Option = (Join-Path -Path $here -ChildPath 'ps-rule-options.yaml')
+                ErrorAction   = 'Stop'
+                Option        = (Join-Path -Path $here -ChildPath 'ps-rule-options.yaml')
             }
             $result = Invoke-PSRule @invokeParams -Outcome All;
         }
@@ -1009,11 +1008,11 @@ Describe 'Azure.VM' -Tag 'VM' {
                 'Standard_D4s_v3'
             )
             $vmObject = [PSCustomObject]@{
-                Name = "vm-A"
-                ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+                Name         = "vm-A"
+                ResourceId   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
                 ResourceName = "vm-A"
                 ResourceType = "Microsoft.Compute/virtualMachines"
-                Properties = [PSCustomObject]@{
+                Properties   = [PSCustomObject]@{
                     hardwareProfile = [PSCustomObject]@{
                         vmSize = "nn"
                     }
@@ -1051,11 +1050,11 @@ Describe 'Azure.VM' -Tag 'VM' {
                 'Standard_D4s_v3'
             )
             $vmObject = [PSCustomObject]@{
-                Name = "vm-A"
-                ResourceId = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
+                Name         = "vm-A"
+                ResourceId   = "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-A"
                 ResourceName = "vm-A"
                 ResourceType = "Microsoft.Compute/virtualMachines"
-                Properties = [PSCustomObject]@{
+                Properties   = [PSCustomObject]@{
                     hardwareProfile = [PSCustomObject]@{
                         vmSize = "nn"
                     }
