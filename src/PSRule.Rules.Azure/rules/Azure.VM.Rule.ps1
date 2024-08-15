@@ -286,6 +286,23 @@ Rule 'Azure.VM.MaintenanceConfig' -Ref 'AZR-000375' -Type 'Microsoft.Compute/vir
 
 #endregion Maintenance Configuration
 
+#region Public IP
+
+# Synopsis: Avoid attaching public IPs directly to virtual machines.
+Rule 'Azure.VM.PublicIPAttached' -Ref 'AZR-000449' -Type 'Microsoft.Network/networkInterfaces' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Security'; } {
+    $configurations = @($TargetObject.properties.ipConfigurations)
+
+    if ($configurations.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($config in $configurations) {
+        $Assert.HasDefaultValue($config, 'properties.publicIPAddress.id', $null).Reason($LocalizedData.VMPublicIPAttached, $PSRule.TargetName)
+    }
+}
+
+#endregion Public IP
+
 #region Availability Set
 
 # Synopsis: Distribute traffic across availability set members.
@@ -327,9 +344,9 @@ function global:GetOSAndDataDisks {
     process {
         $allowedSkuTypes = @('UltraSSD_LRS', 'PremiumV2_LRS', 'Premium_ZRS', 'Premium_LRS')
         $TargetObject.properties.storageProfile.osDisk.managedDisk |
-        Where-Object { $_.storageAccountType -and $_.storageAccountType -notin $allowedSkuTypes }
-        $TargetObject.properties.storageProfile.dataDisks |
-        Where-Object { $_.managedDisk.storageAccountType -and $_.managedDisk.storageAccountType -notin $allowedSkuTypes }
+            Where-Object { $_.storageAccountType -and $_.storageAccountType -notin $allowedSkuTypes }
+                $TargetObject.properties.storageProfile.dataDisks |
+                    Where-Object { $_.managedDisk.storageAccountType -and $_.managedDisk.storageAccountType -notin $allowedSkuTypes }
     }
 }
 

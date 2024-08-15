@@ -281,14 +281,23 @@ namespace PSRule.Rules.Azure.Data.Template
             internal bool TryParentResourceId(JObject resource, out string[] resourceId)
             {
                 resourceId = null;
-                if (!TryResourceScope(resource, out var id) ||
-                    !ResourceHelper.TryResourceIdComponents(id, out var subscriptionId, out var resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents))
+                if (!TryResourceScope(resource, out var id))
+                    return false;
+
+                if (id == TENANT_SCOPE)
+                {
+                    resourceId = new string[] { TENANT_SCOPE };
+                    return true;
+                }
+
+                if (!ResourceHelper.TryResourceIdComponents(id, out var subscriptionId, out var resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents))
                     return false;
 
                 resourceId = new string[nameComponents.Length];
                 for (var i = 0; i < nameComponents.Length; i++)
+                {
                     resourceId[i] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, resourceTypeComponents, nameComponents, depth: i);
-
+                }
                 return resourceId.Length > 0;
             }
 
@@ -1331,7 +1340,10 @@ namespace PSRule.Rules.Azure.Data.Template
             else if (deploymentScope == DeploymentScope.Subscription)
                 resourceId = ResourceHelper.CombineResourceId(subscriptionId, null, type, name);
 
-            else if (deploymentScope == DeploymentScope.ManagementGroup || deploymentScope == DeploymentScope.Tenant)
+            else if (deploymentScope == DeploymentScope.ManagementGroup)
+                resourceId = ResourceHelper.CombineResourceId(null, null, type, name, scope: scope ?? context.Deployment.Scope);
+
+            else if (deploymentScope == DeploymentScope.Tenant)
                 resourceId = ResourceHelper.CombineResourceId(null, null, type, name);
 
             context.UpdateResourceScope(resource);

@@ -376,6 +376,9 @@ namespace PSRule.Rules.Azure
             if (start + 3 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], PROVIDERS))
                 start++;
 
+            if (start == 0 && StringComparer.OrdinalIgnoreCase.Equals(parts[1], PROVIDERS))
+                start += 2;
+
             provider = parts[start++];
             type = parts[start++];
             name = parts[start++];

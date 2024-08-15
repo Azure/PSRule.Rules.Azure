@@ -16,7 +16,6 @@ on:
 env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
-  DOTNET_VERSION: 7.x
 
 jobs:
   build:
@@ -32,8 +31,6 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - name: Install dependencies
       shell: pwsh
@@ -110,8 +107,6 @@ jobs:
 
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
-      with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
 
     - if: ${{ matrix.shell == 'pwsh' }}
       name: Install dependencies (PowerShell)

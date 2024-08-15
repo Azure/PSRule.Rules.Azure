@@ -1,18 +1,20 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/dotnet
 {
   "name": "PSRule for Azure Developer Codespace",
+  // Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+  "image": "mcr.microsoft.com/devcontainers/dotnet:1-8.0-bookworm",
   "customizations": {
     "vscode": {
       "settings": {
         "terminal.integrated.defaultProfile.linux": "pwsh",
         "terminal.integrated.profiles.linux": {
           "pwsh": {
-            "path": "/opt/microsoft/powershell/7/pwsh"
+            "path": "/usr/local/bin/pwsh"
           }
-        },
-        "powershell.powerShellDefaultVersion": "PowerShell"
+        }
       },
       "extensions": [
-        "ms-dotnettools.vscode-dotnet-runtime",
         "ms-dotnettools.csdevkit",
         "ms-vscode.powershell",
         "ms-azuretools.vscode-bicep",
@@ -21,29 +23,25 @@
         "github.vscode-github-actions",
         "bewhite.psrule-vscode-preview",
         "davidanson.vscode-markdownlint",
+        "streetsidesoftware.code-spell-checker",
         "eamodio.gitlens",
-        "streetsidesoftware.code-spell-checker"
+        "ms-sarifvscode.sarif-viewer",
+        "github.vscode-github-actions"
       ]
     }
   },
   "features": {
-    "ghcr.io/devcontainers/features/github-cli": {
+    "ghcr.io/devcontainers/features/github-cli:1": {
       "version": "latest"
     },
-    "ghcr.io/devcontainers/features/powershell": {
+    "ghcr.io/devcontainers/features/powershell:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
       "version": "latest"
     }
   },
-  "onCreateCommand": "/opt/microsoft/powershell/7/pwsh -f .devcontainer/container-build.ps1",
-  "postStartCommand": "/opt/microsoft/powershell/7/pwsh -f .devcontainer/container-start.ps1",
-  "build": {
-    "dockerfile": "Dockerfile",
-    "args": {
-      "VARIANT": "7.0-bullseye-slim"
-    }
-  },
-  "remoteUser": "vscode",
-  "forwardPorts": [
-    8000
-  ]
+  "onCreateCommand": "sudo chown -R vscode:vscode /opt/microsoft/powershell/7/pwsh && sudo chmod u+x /opt/microsoft/powershell/7/pwsh && wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && sudo dpkg -i packages-microsoft-prod.deb && rm packages-microsoft-prod.deb && sudo apt-get update && sudo apt-get install dotnet-sdk-8.0 -y && sudo apt-get install python3-pip -y",
+  "updateContentCommand": "/opt/microsoft/powershell/7/pwsh -f .devcontainer/container-build.ps1",
+  "postStartCommand": "/opt/microsoft/powershell/7/pwsh -f .devcontainer/container-start.ps1"
 }
