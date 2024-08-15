@@ -786,9 +786,30 @@
         "allowExtensionOperations": true
       },
       "networkProfile": {
-        "networkInterfaces": [
+        "networkApiVersion": "2020-11-01",
+        "networkInterfaceConfigurations": [
           {
-            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-2"
+            "name": "aks-agentpool-00000000-nic-2",
+            "properties": {
+              "enableAcceleratedNetworking": true,
+              "enableIPForwarding": false,
+              "ipConfigurations": [
+                {
+                  "name": "ipconfig1",
+                  "properties": {
+                    "primary": true,
+                    "privateIPAddressVersion": "IPv4",
+                    "subnet": {
+                      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                    }
+                  }
+                }
+              ],
+              "networkSecurityGroup": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+              },
+              "primary": true
+            }
           }
         ]
       },
@@ -921,9 +942,35 @@
         "allowExtensionOperations": true
       },
       "networkProfile": {
-        "networkInterfaces": [
+        "networkApiVersion": "2020-11-01",
+        "networkInterfaceConfigurations": [
           {
-            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/networkInterfaces/aks-agentpool-00000000-nic-3"
+            "name": "aks-agentpool-00000000-nic-3",
+            "properties": {
+              "enableAcceleratedNetworking": true,
+              "enableIPForwarding": false,
+              "ipConfigurations": [
+                {
+                  "name": "ipconfig1",
+                  "properties": {
+                    "primary": true,
+                    "privateIPAddressVersion": "IPv4",
+                    "subnet": {
+                      "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                    },
+                    "loadBalancerBackendAddressPools": [
+                      {
+                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/MC_test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
+                      }
+                    ]
+                  }
+                }
+              ],
+              "networkSecurityGroup": {
+                "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-A"
+              },
+              "primary": true
+            }
           }
         ]
       },

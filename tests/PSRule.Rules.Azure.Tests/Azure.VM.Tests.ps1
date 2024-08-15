@@ -588,6 +588,23 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'vm-C';
         }
+
+        It 'Azure.VM.ASDistributeTraffic' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ASDistributeTraffic' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -Be 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2';
+
+            $ruleResult[0].Reason | Should -BeExactly "The virtual machine 'vm-A' should have a maintenance configuration associated.";
+            $ruleResult[1].Reason | Should -BeExactly "The virtual machine 'vm-B' should have a maintenance configuration associated.";
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.Length | Should -Be 9;
+            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-B', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
+        }
     }
 
     Context 'Resource name - Azure.VM.Name' {

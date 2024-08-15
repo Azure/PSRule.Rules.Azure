@@ -286,6 +286,29 @@ Rule 'Azure.VM.MaintenanceConfig' -Ref 'AZR-000375' -Type 'Microsoft.Compute/vir
 
 #endregion Maintenance Configuration
 
+#region Availability Set
+
+# Synopsis: Distribute traffic across availability set members.
+Rule 'Azure.VM.ASDistributeTraffic' -Ref 'AZR-000451' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    if (-not $TargetObject.properties.availabilitySet.id) {
+        return $Assert.Pass()
+    }
+
+    $configurations = @($TargetObject.properties.networkProfile.networkInterfaceConfigurations | ForEach-Object { $_.properties.ipConfigurations } | Where-Object { $null -ne $_ })
+
+    if ($configurations.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($config in $configurations) {
+        $result = @($config | Where-Object { $_.properties.applicationGatewayBackendAddressPools.id -or $_.properties.loadBalancerBackendAddressPools.id })
+
+        if ($result.Count -eq 0) { $Assert.Fail().Reason($LocalizedData.VMAvailabilitySetDistributeTraffic, $PSRule.TargetName) } else { $Assert.Pass() }
+    }
+}
+
+#endregion Availability Set
+
 #region Helper functions
 
 function global:HasPublisherMicrosoftSQLServer {
@@ -304,9 +327,9 @@ function global:GetOSAndDataDisks {
     process {
         $allowedSkuTypes = @('UltraSSD_LRS', 'PremiumV2_LRS', 'Premium_ZRS', 'Premium_LRS')
         $TargetObject.properties.storageProfile.osDisk.managedDisk |
-            Where-Object { $_.storageAccountType -and $_.storageAccountType -notin $allowedSkuTypes }
-                $TargetObject.properties.storageProfile.dataDisks |
-                    Where-Object { $_.managedDisk.storageAccountType -and $_.managedDisk.storageAccountType -notin $allowedSkuTypes }
+        Where-Object { $_.storageAccountType -and $_.storageAccountType -notin $allowedSkuTypes }
+        $TargetObject.properties.storageProfile.dataDisks |
+        Where-Object { $_.managedDisk.storageAccountType -and $_.managedDisk.storageAccountType -notin $allowedSkuTypes }
     }
 }
 

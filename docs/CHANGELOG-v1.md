@@ -33,6 +33,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Virtual Network:
     - Verify that subnets have disabled default outbound access for virtual machines by @BenjaminEngeset.
       [#3001](https://github.com/Azure/PSRule.Rules.Azure/issues/3001)
+  - Virtual Machine:
+   - Verify that availability set members are in a backend pool by @BenjaminEngeset.
+      [#67](https://github.com/Azure/PSRule.Rules.Azure/issues/67)
+
 
 What's changed since pre-release v1.39.0-B0009:
 

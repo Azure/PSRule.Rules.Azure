@@ -118,4 +118,5 @@
     AppServiceAvailabilityZoneSKU = "The app service plan ({0}) is not deployed with a SKU that supports zone-redundancy."
     FirewallSubnetNAT = "The firewall should have a NAT gateway associated."
     PrivateSubnet = "The subnet ({0}) should disable default outbound access."
+    VMAvailabilitySetDistributeTraffic = "The availability set member ({0}) should be a part of a backend pool."
 }
