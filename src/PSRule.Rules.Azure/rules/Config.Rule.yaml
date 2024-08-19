@@ -70,6 +70,9 @@ spec:
     # Enabled check for supported VMs use Azure Hybrid Benefit.
     AZURE_VM_USE_AZURE_HYBRID_BENEFIT: false
 
+    # Enabled checks for Multitenant Hosting Rights.
+    AZURE_VM_MULTI_TENANT_HOSTING_RIGHTS: false
+
     # Configure DNS is within the identity subscription.
     AZURE_VNET_DNS_WITH_IDENTITY: false
 

@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Virtual Machine:
+    - Verify that Multitenant Hosting Rights are used for Windows client VMs by @BenjaminEngeset.
+      [#432](https://github.com/Azure/PSRule.Rules.Azure/issues/432)
+
 What's changed since pre-release v1.39.0-B0029:
 
 - New rules:
