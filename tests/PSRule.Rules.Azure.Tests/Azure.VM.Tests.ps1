@@ -69,14 +69,14 @@ Describe 'Azure.VM' -Tag 'VM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 7;
-            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-B', 'vm-C', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -Be 'vm-C', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'vm-A', 'vm-B', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3';
         }
 
         It 'Azure.VM.PromoSku' {
@@ -606,22 +606,21 @@ Describe 'Azure.VM' -Tag 'VM' {
             $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -Be 'aks-agentpool-00000000-nic-1', 'aks-agentpool-00000000-nic-2', 'aks-agentpool-00000000-nic-3', 'pe-001', 'private-link.nic.00000000-0000-0000-0000-000000000000';
         }
-        
+
         It 'Azure.VM.ASDistributeTraffic' {
             $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.ASDistributeTraffic' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -Be 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2';
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -Be 'vm-A';
 
-            $ruleResult[0].Reason | Should -BeExactly "The virtual machine 'vm-A' should have a maintenance configuration associated.";
-            $ruleResult[1].Reason | Should -BeExactly "The virtual machine 'vm-B' should have a maintenance configuration associated.";
+            $ruleResult[0].Reason | Should -BeExactly "The availability set member (vm-A) should be a part of a backend pool.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -Be 'vm-A', 'vm-B', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
+            $ruleResult.Length | Should -Be 10;
+            $ruleResult.TargetName | Should -Be 'vm-B', 'aks-agentpool-00000000-1', 'aks-agentpool-00000000-2', 'aks-agentpool-00000000-3', 'vm-C', 'vm-D', 'offerSaysLinux', 'offerInConfig', 'vm-E', 'vm-F';
         }
     }
 

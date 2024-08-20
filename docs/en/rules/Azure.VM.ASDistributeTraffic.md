@@ -24,13 +24,80 @@ Even if one VM goes offline, the application remains accessible, thanks to the b
 
 Consider placing availability set members in backend pools.
 
-## NOTES
+## EXAMPLES
 
-This rule may produce false positives. To ensure accuracy, manually verify that all members of an availability set are correctly assigned to backend pools.
+### Configure with Azure template
+
+To deploy VM network interfaces that pass this rule:
+
+- For each IP configuration specified in the `properties.ipConfigurations` property:
+  - Ensure that the `properties.applicationGatewayBackendAddressPools.id` or/ and `properties.loadBalancerBackendAddressPools.id` property references at least one pool.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Network/networkInterfaces",
+  "apiVersion": "2023-11-01",
+  "name": "[parameters('nicName')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "ipConfigurations": [
+      {
+        "name": "[parameters('ipConfig')]",
+        "properties": {
+          "privateIPAllocationMethod": "Dynamic",
+          "subnet": {
+            "id": "[resourceId('Microsoft.Network/virtualNetworks/subnets', parameters('virtualNetworkName'), parameters('subnetName'))]"
+          },
+          "loadBalancerBackendAddressPools": [
+            {
+              "id": "[resourceId('Microsoft.Network/loadBalancers/backendAddressPools', parameters('loadBalancerName'), 'backendPool')]"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+### Configure with Bicep
+
+To deploy VM network interfaces that pass this rule:
+
+- For each IP configuration specified in the `properties.ipConfigurations` property:
+  - Ensure that the `properties.applicationGatewayBackendAddressPools.id` or/ and `properties.loadBalancerBackendAddressPools.id` property references at least one pool.
+
+For example:
+
+```bicep
+resource nic 'Microsoft.Network/networkInterfaces@2023-11-01' = {
+  name: nicName
+  location: location
+  properties: {
+    ipConfigurations: [
+      {
+        name: ipconfig
+        properties: {
+          privateIPAllocationMethod: 'Dynamic'
+          subnet: {
+            id: resourceId('Microsoft.Network/virtualNetworks/subnets', virtualNetworkName, subnetName)
+          }
+          loadBalancerBackendAddressPools: [
+            {
+              id: resourceId('Microsoft.Network/loadBalancers/backendAddressPools', loadBalancerName, 'backendPool')
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
 
 ## LINKS
 
 - [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
 - [Availability sets overview](https://learn.microsoft.com/azure/virtual-machines/availability-set-overview)
-- [Azure deployment reference - Virtual Machine](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)
-- [Azure deployment reference - Virtual Machine Network Interface](https://learn.microsoft.com/azure/templates/microsoft.network/networkinterfaces)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/networkinterfaces)

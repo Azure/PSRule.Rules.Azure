@@ -306,12 +306,12 @@ Rule 'Azure.VM.PublicIPAttached' -Ref 'AZR-000449' -Type 'Microsoft.Network/netw
 #region Availability Set
 
 # Synopsis: Distribute traffic across availability set members.
-Rule 'Azure.VM.ASDistributeTraffic' -Ref 'AZR-000451' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.VM.ASDistributeTraffic' -Ref 'AZR-000451' -Type 'Microsoft.Compute/virtualMachines' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     if (-not $TargetObject.properties.availabilitySet.id) {
         return $Assert.Pass()
     }
 
-    $configurations = @($TargetObject.properties.networkProfile.networkInterfaceConfigurations | ForEach-Object { $_.properties.ipConfigurations } | Where-Object { $null -ne $_ })
+    $configurations = @(GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces' | ForEach-Object { $_.properties.ipConfigurations }) | Where-Object { $null -ne $_ }
 
     if ($configurations.Count -eq 0) {
         return $Assert.Pass()
