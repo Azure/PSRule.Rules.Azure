@@ -305,7 +305,7 @@ Rule 'Azure.VM.PublicIPAttached' -Ref 'AZR-000449' -Type 'Microsoft.Network/netw
 
 #region Availability Set
 
-# Synopsis: Distribute traffic across availability set members.
+# Synopsis: Ensure high availability by distributing traffic among members in an availability set.
 Rule 'Azure.VM.ASDistributeTraffic' -Ref 'AZR-000451' -Type 'Microsoft.Compute/virtualMachines' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     if (-not $TargetObject.properties.availabilitySet.id) {
         return $Assert.Pass()
