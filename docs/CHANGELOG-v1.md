@@ -34,6 +34,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - Verify that availability set members are in a backend pool by @BenjaminEngeset.
       [#67](https://github.com/Azure/PSRule.Rules.Azure/issues/67)
 
+## v1.39.0-B0055 (pre-release)
+
 What's changed since pre-release v1.39.0-B0029:
 
 - New rules:
