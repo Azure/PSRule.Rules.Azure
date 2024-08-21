@@ -1255,7 +1255,7 @@ Describe 'Azure.VM' -Tag 'VM' {
                 WarningAction = 'Ignore'
                 ErrorAction   = 'Stop'
                 Option        = @{
-                    'Configuration.AZURE_VM_MULTI_TENANT_HOSTING_RIGHTS' = $True
+                    'Configuration.AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS' = $True
                 }
             }
             $dataPath = Join-Path -Path $here -ChildPath 'Resources.VirtualMachine.json'

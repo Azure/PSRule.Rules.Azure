@@ -61,17 +61,17 @@ spec:
     # Configure Container Apps external ingress.
     AZURE_CONTAINERAPPS_RESTRICT_INGRESS: false
 
-    # Enable checks when Azure Firewall is deployed in a zonal configuration.
+    # Enables checks when Azure Firewall is deployed in a zonal configuration.
     AZURE_FIREWALL_IS_ZONAL: false
 
-    # Enabled resource level checks for Defender for Storage.
+    # Enables resource level checks for Defender for Storage.
     AZURE_STORAGE_DEFENDER_PER_ACCOUNT: false
 
-    # Enabled check for supported VMs use Azure Hybrid Benefit.
+    # Enables check for supported VMs use Azure Hybrid Benefit.
     AZURE_VM_USE_AZURE_HYBRID_BENEFIT: false
 
-    # Enabled checks for Multitenant Hosting Rights.
-    AZURE_VM_MULTI_TENANT_HOSTING_RIGHTS: false
+    # Enables checks for Multi-tenant Hosting Rights.
+    AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS: false
 
     # Configure DNS is within the identity subscription.
     AZURE_VNET_DNS_WITH_IDENTITY: false

@@ -1,30 +1,30 @@
 ---
 severity: Awareness
 pillar: Cost Optimization
-category: CO:08 Environment costs
+category: CO:05 Rate optimization
 resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.MultiTenantHosting/
 ---
 
-# Multitenant Hosting Rights
+# Multi-tenant Hosting Rights
 
 ## SYNOPSIS
 
-Deploy Windows 10 and 11 virtual machines in Azure using Multitenant Hosting Rights to leverage your existing Windows licenses.
+Deploy Windows 10 and 11 virtual machines in Azure using Multi-tenant Hosting Rights to leverage your existing Windows licenses.
 
 ## DESCRIPTION
 
-Multitenant Hosting Rights allow you to bring your Windows 10 and 11 licenses to the cloud, enabling you to run virtual machines (VMs) on Azure without incurring additional licensing costs.
+Multi-tenant Hosting Rights allow you to bring your Windows 10 and 11 licenses to the cloud, enabling you to run virtual machines (VMs) on Azure without incurring additional licensing costs.
 This benefit is applicable if you have Windows licenses with Software Assurance or qualifying subscription licenses, making it a cost-effective option for your Azure deployments.
 
-By utilizing Multitenant Hosting Rights, you can reduce the total cost of ownership when running Windows VMs in Azure.
+By utilizing Multi-tenant Hosting Rights, you can reduce the total cost of ownership when running Windows VMs in Azure.
 This is particularly advantageous for organizations that already have on-premises Windows licenses covered under Software Assurance or eligible subscription plans.
 
 Please note that this benefit is available exclusively for Windows 10 Enterprise and Windows 11 Enterprise editions.
 
 ## RECOMMENDATION
 
-Consider using Multitenant Hosting Rights to maximize your existing licensing investments when deploying Windows VMs in Azure.
+Consider using Multi-tenant Hosting Rights to maximize your existing licensing investments when deploying Windows VMs in Azure.
 
 ### Configure with Azure template
 
@@ -135,20 +135,20 @@ This rule may produce false negatives because it does not verify whether the ins
 
 ### Rule configuration
 
-<!-- module:config rule AZURE_VM_MULTI_TENANT_HOSTING_RIGHTS -->
+<!-- module:config rule AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS -->
 
 By default, this rule is ignored.
-For this rule to apply, set the `AZURE_VM_MULTI_TENANT_HOSTING_RIGHTS` configuration value to `true`.
+For this rule to apply, set the `AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS` configuration value to `true`.
 
 For example:
 
 ```yaml
 configuration:
-  AZURE_VM_MULTI_TENANT_HOSTING_RIGHTS: true
+  AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS: true
 ```
 
 ## LINKS
 
-- [CO:08 Environment costs](https://learn.microsoft.com/azure/well-architected/cost-optimization/optimize-environment-costs)
-- [Multitenant Hosting Rights](https://learn.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
+- [CO:05 Rate optimization](https://learn.microsoft.com/azure/well-architected/cost-optimization/get-best-rates)
+- [Multi-tenant Hosting Rights](https://learn.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/virtualmachines)
