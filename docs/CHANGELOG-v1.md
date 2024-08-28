@@ -31,6 +31,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Virtual Machine:
+    - Verify that Multitenant Hosting Rights are used for Windows client VMs by @BenjaminEngeset.
+      [#432](https://github.com/Azure/PSRule.Rules.Azure/issues/432)
     - Verify that availability set members are in a backend pool by @BenjaminEngeset.
       [#67](https://github.com/Azure/PSRule.Rules.Azure/issues/67)
 
