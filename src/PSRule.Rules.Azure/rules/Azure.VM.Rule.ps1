@@ -303,6 +303,21 @@ Rule 'Azure.VM.PublicIPAttached' -Ref 'AZR-000449' -Type 'Microsoft.Network/netw
 
 #endregion Public IP
 
+#region Multitenant Hosting Rights
+
+# Synopsis: Deploy Windows 10 and 11 virtual machines in Azure using Multitenant Hosting Rights to leverage your existing Windows licenses.
+Rule 'Azure.VM.MultiTenantHosting' -Ref 'AZR-000452' -Type 'Microsoft.Compute/virtualMachines' -If { $Configuration.GetBoolOrDefault('AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS', $False) } -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Cost Optimization'; } {
+    if (($TargetObject.properties.storageProfile.imageReference.publisher -ne 'MicrosoftWindowsDesktop' -and
+            $TargetObject.properties.storageProfile.imageReference.offer -notmatch 'windows-10|windows-11') -or $TargetObject.Properties.storageProfile.osDisk.osType -ne 'Windows') {
+        
+        return $Assert.Pass()
+    }
+
+    $Assert.HasFieldValue($TargetObject, 'properties.licenseType', 'Windows_Client').Reason($LocalizedData.VMMultiTenantHostingRights, $PSRule.TargetName)
+}
+
+#endregion Multitenant Hosting Rights
+
 #region Helper functions
 
 function global:HasPublisherMicrosoftSQLServer {
@@ -321,9 +336,9 @@ function global:GetOSAndDataDisks {
     process {
         $allowedSkuTypes = @('UltraSSD_LRS', 'PremiumV2_LRS', 'Premium_ZRS', 'Premium_LRS')
         $TargetObject.properties.storageProfile.osDisk.managedDisk |
-            Where-Object { $_.storageAccountType -and $_.storageAccountType -notin $allowedSkuTypes }
-                $TargetObject.properties.storageProfile.dataDisks |
-                    Where-Object { $_.managedDisk.storageAccountType -and $_.managedDisk.storageAccountType -notin $allowedSkuTypes }
+        Where-Object { $_.storageAccountType -and $_.storageAccountType -notin $allowedSkuTypes }
+        $TargetObject.properties.storageProfile.dataDisks |
+        Where-Object { $_.managedDisk.storageAccountType -and $_.managedDisk.storageAccountType -notin $allowedSkuTypes }
     }
 }
 

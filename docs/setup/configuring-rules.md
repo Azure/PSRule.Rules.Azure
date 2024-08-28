@@ -733,7 +733,39 @@ Example:
 ```yaml title="ps-rule.yaml"
 # Set the configuration option to enabled.
 configuration:
-  AZURE_VNET_DNS_WITH_IDENTITY: true
+  AZURE_VM_USE_AZURE_HYBRID_BENEFIT: true
+```
+
+### AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS
+
+<!-- module:version v1.39.0 -->
+<!-- module:rule Azure.VM.MultiTenantHosting -->
+
+This configuration option determines weather to check for Multi-tenant Hosting Rights when deploying Windows VMs.
+When enabled, rules that check for MHR fail when a client VM is not configured to use MHR.
+
+By default, this configuration option is set to `false`.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS: boolean
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS: false
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# Set the configuration option to enabled.
+configuration:
+  AZURE_VM_USE_MULTI_TENANT_HOSTING_RIGHTS: true
 ```
 
 ### AZURE_VNET_DNS_WITH_IDENTITY

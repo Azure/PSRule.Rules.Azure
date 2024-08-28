@@ -120,4 +120,5 @@
     PrivateSubnet = "The subnet ({0}) should disable default outbound access."
     VMPublicIPAttached = "The virtual machine with the NIC ({0}) should not have a public IP address attached."
     VMSSPublicIPAttached = "The virtual machine scale set instances should not have public IP addresses directly attached to their network interfaces."
+    VMMultiTenantHostingRights = "The Windows 0S installed on the virtual machine ({0}) should use multi-tenant hosting rights."
 }
