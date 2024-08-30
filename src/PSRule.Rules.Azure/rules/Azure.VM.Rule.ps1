@@ -318,6 +318,29 @@ Rule 'Azure.VM.MultiTenantHosting' -Ref 'AZR-000452' -Type 'Microsoft.Compute/vi
 
 #endregion Multitenant Hosting Rights
 
+#region Availability Set
+
+# Synopsis: Ensure high availability by distributing traffic among members in an availability set.
+Rule 'Azure.VM.ASDistributeTraffic' -Ref 'AZR-000451' -Type 'Microsoft.Compute/virtualMachines' -If { IsExport } -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
+    if (-not $TargetObject.properties.availabilitySet.id) {
+        return $Assert.Pass()
+    }
+
+    $configurations = @(GetSubResources -ResourceType 'Microsoft.Network/networkInterfaces' | ForEach-Object { $_.properties.ipConfigurations }) | Where-Object { $null -ne $_ }
+
+    if ($configurations.Count -eq 0) {
+        return $Assert.Pass()
+    }
+
+    foreach ($config in $configurations) {
+        $result = @($config | Where-Object { $_.properties.applicationGatewayBackendAddressPools.id -or $_.properties.loadBalancerBackendAddressPools.id })
+
+        if ($result.Count -eq 0) { $Assert.Fail().Reason($LocalizedData.VMAvailabilitySetDistributeTraffic, $PSRule.TargetName) } else { $Assert.Pass() }
+    }
+}
+
+#endregion Availability Set
+
 #region Helper functions
 
 function global:HasPublisherMicrosoftSQLServer {
