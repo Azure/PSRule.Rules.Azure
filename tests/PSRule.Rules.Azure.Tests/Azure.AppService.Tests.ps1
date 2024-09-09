@@ -265,8 +265,8 @@ Describe 'Azure.AppService' -Tag 'AppService' {
             $ruleResult.TargetName | Should -Be 'plan-A', 'plan-D';
 
             $ruleResult[0].Reason | Should -BeExactly @(
-                "The app service plan (plan-A) is not deployed with a SKU that supports zone-redundancy."
-                "The app service plan (plan-A) is not deployed with a SKU that supports zone-redundancy."
+                "Path sku.name: The app service plan (plan-A) is not deployed with a SKU that supports zone-redundancy."
+                "Path sku.tier: The app service plan (plan-A) is not deployed with a SKU that supports zone-redundancy."
                 "Path properties.zoneRedundant: Does not exist."
             );
             $ruleResult[1].Reason | Should -BeExactly "Path properties.zoneRedundant: Is set to 'False'.";
