@@ -226,11 +226,13 @@ Rule 'Azure.AppService.AvailabilityZone' -Ref 'AZR-000442' -Type 'Microsoft.Web/
     }
 
     AnyOf {
-        $Assert.In($TargetObject, 'sku.name', $sku.name).Reason(
+        $Assert.In($TargetObject, 'sku.name', $sku.name).ReasonFrom(
+            'sku.name',
             $LocalizedData.AppServiceAvailabilityZoneSKU,
             $TargetObject.name
         )
-        $Assert.In($TargetObject, 'sku.tier', $sku.tier).Reason(
+        $Assert.In($TargetObject, 'sku.tier', $sku.tier).ReasonFrom(
+            'sku.tier',
             $LocalizedData.AppServiceAvailabilityZoneSKU,
             $TargetObject.name
         )
