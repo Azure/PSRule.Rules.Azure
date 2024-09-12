@@ -201,10 +201,42 @@ Rule 'Azure.AppService.AvailabilityZone' -Ref 'AZR-000442' -Type 'Microsoft.Web/
     }
 
     # Availability zones are only supported for these Premium SKUs.
-    $Assert.In($TargetObject, 'sku.tier', @('PremiumV2', 'PremiumV3', 'ElasticPremium')).Reason(
-        $LocalizedData.AppServiceAvailabilityZoneSKU,
-        $TargetObject.name
-    )
+    $sku = [PSCustomObject]@{
+        name = @(
+            'P1v3' 
+            'P1mv3'
+            'P2v3'   
+            'P2mv3' 
+            'P3v3'    
+            'P3mv3'
+            'P4mv3'
+            'P5mv3'
+            'P1v2'
+            'P2v2'
+            'P3v2'
+            'EP1'
+            'EP2'
+            'EP3'
+        )
+        tier = @(
+            'PremiumV3'
+            'PremiumV2'
+            'ElasticPremium'
+        )
+    }
+
+    AnyOf {
+        $Assert.In($TargetObject, 'sku.name', $sku.name).ReasonFrom(
+            'sku.name',
+            $LocalizedData.AppServiceAvailabilityZoneSKU,
+            $TargetObject.name
+        )
+        $Assert.In($TargetObject, 'sku.tier', $sku.tier).ReasonFrom(
+            'sku.tier',
+            $LocalizedData.AppServiceAvailabilityZoneSKU,
+            $TargetObject.name
+        )
+    }
 
     $Assert.HasFieldValue($TargetObject, 'properties.zoneRedundant', $true)
 }
