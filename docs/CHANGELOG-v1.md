@@ -35,6 +35,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#432](https://github.com/Azure/PSRule.Rules.Azure/issues/432)
     - Verify that availability set members are in a backend pool by @BenjaminEngeset.
       [#67](https://github.com/Azure/PSRule.Rules.Azure/issues/67)
+- Bug fixed:
+  - Fixed `Azure.AppService.AvailabilityZone` only detects premium by tier property @BenjaminEngeset.
+    [#3034](https://github.com/Azure/PSRule.Rules.Azure/issues/3034)
 
 ## v1.39.0-B0055 (pre-release)
 
