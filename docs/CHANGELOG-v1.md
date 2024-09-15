@@ -39,7 +39,7 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Fixed `Azure.AppService.AvailabilityZone` only detects premium by tier property @BenjaminEngeset.
     [#3034](https://github.com/Azure/PSRule.Rules.Azure/issues/3034)
   - Fixed loading of expansion options from non-default options file @BernieWhite.
-    [#2523](https://github.com/microsoft/PSRule/issues/2523)
+    [#3033](https://github.com/Azure/PSRule.Rules.Azure/issues/3033)
 
 ## v1.39.0-B0055 (pre-release)
 
