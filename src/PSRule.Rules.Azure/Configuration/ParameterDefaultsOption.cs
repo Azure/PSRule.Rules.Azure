@@ -104,6 +104,20 @@ namespace PSRule.Rules.Azure.Configuration
             return result;
         }
 
+        internal static ParameterDefaultsOption FromHashtable(Hashtable hashtable)
+        {
+            if (hashtable == null || hashtable.Count == 0)
+                return null;
+
+            var result = new ParameterDefaultsOption();
+            foreach (DictionaryEntry entry in hashtable)
+            {
+                if (entry.Key is string key)
+                    result._Defaults[key] = entry.Value;
+            }
+            return result;
+        }
+
         internal bool TryGetString(string parameterName, out JToken value)
         {
             value = default;
