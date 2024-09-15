@@ -4,25 +4,24 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace PSRule.Rules.Azure.Data.Template
+namespace PSRule.Rules.Azure.Data.Template;
+
+[JsonConverter(typeof(StringEnumConverter))]
+internal enum TypePrimitive
 {
-    [JsonConverter(typeof(StringEnumConverter))]
-    internal enum TypePrimitive
-    {
-        None,
+    None,
 
-        Array,
+    Array,
 
-        Bool,
+    Bool,
 
-        Int,
+    Int,
 
-        Object,
+    Object,
 
-        String,
+    String,
 
-        SecureString,
+    SecureString,
 
-        SecureObject
-    }
+    SecureObject
 }

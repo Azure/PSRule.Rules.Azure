@@ -1,12 +1,11 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-namespace PSRule.Rules.Azure.Data.Template
+namespace PSRule.Rules.Azure.Data.Template;
+
+internal enum DeploymentSymbolKind
 {
-    internal enum DeploymentSymbolKind
-    {
-        None = 0,
-        Array = 1,
-        Object = 2
-    }
+    None = 0,
+    Array = 1,
+    Object = 2
 }

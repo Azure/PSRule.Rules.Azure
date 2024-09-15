@@ -1,16 +1,15 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-namespace PSRule.Rules.Azure.Data.Template
+namespace PSRule.Rules.Azure.Data.Template;
+
+internal interface IDeploymentSymbol
 {
-    internal interface IDeploymentSymbol
-    {
-        string Name { get; }
+    string Name { get; }
 
-        DeploymentSymbolKind Kind { get; }
+    DeploymentSymbolKind Kind { get; }
 
-        void Configure(ResourceValue r);
+    void Configure(ResourceValue r);
 
-        string GetId(int index);
-    }
+    string GetId(int index);
 }
