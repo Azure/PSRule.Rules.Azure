@@ -14,7 +14,7 @@ namespace PSRule.Rules.Azure.Data.Template
     public enum FunctionErrorType
     {
         /// <summary>
-        /// An error cause by mismatching resource segements.
+        /// An error cause by mismatching resource segments.
         /// </summary>
         MismatchingResourceSegments
     }
@@ -305,24 +305,24 @@ namespace PSRule.Rules.Azure.Data.Template
     public sealed class ExpressionParseException : TemplateException
     {
         /// <summary>
-        /// Create an instance of an expression pasring exception.
+        /// Create an instance of an expression parsing exception.
         /// </summary>
         public ExpressionParseException() { }
 
         /// <summary>
-        /// Create an instance of an expression pasring exception.
+        /// Create an instance of an expression parsing exception.
         /// </summary>
         public ExpressionParseException(string message)
             : base(message) { }
 
         /// <summary>
-        /// Create an instance of an expression pasring exception.
+        /// Create an instance of an expression parsing exception.
         /// </summary>
         public ExpressionParseException(string message, Exception innerException)
             : base(message, innerException) { }
 
         /// <summary>
-        /// Create an instance of an expression pasring exception.
+        /// Create an instance of an expression parsing exception.
         /// </summary>
         internal ExpressionParseException(string expression, string message)
             : base(message)
@@ -331,7 +331,7 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
-        /// Create an instance of an expression pasring exception.
+        /// Create an instance of an expression parsing exception.
         /// </summary>
         internal ExpressionParseException(string expression, string message, Exception innerException)
             : base(message, innerException)
@@ -340,7 +340,7 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
-        /// Create an instance of an expression pasring exception.
+        /// Create an instance of an expression parsing exception.
         /// </summary>
         private ExpressionParseException(SerializationInfo info, StreamingContext context)
             : base(info, context) { }
