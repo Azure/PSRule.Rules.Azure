@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Collections;
 using System.ComponentModel;
 using YamlDotNet.Serialization;
 
@@ -92,6 +93,24 @@ namespace PSRule.Rules.Azure.Configuration
             /// Additional details of the management group.
             /// </summary>
             public ManagementGroupDetails Details { get; internal set; }
+
+            internal static ManagementGroupProperties FromHashtable(Hashtable properties)
+            {
+                var result = new ManagementGroupProperties();
+                if (properties != null)
+                {
+                    var index = PSRuleOption.BuildIndex(properties);
+                    if (index.TryPopValue("DisplayName", out string displayName))
+                        result.DisplayName = displayName;
+
+                    if (index.TryPopValue("TenantId", out string tenantId))
+                        result.TenantId = tenantId;
+
+                    if (index.TryPopHashtable("Details", out var details))
+                        result.Details = ManagementGroupDetails.FromHashtable(details);
+                }
+                return result;
+            }
         }
 
         /// <summary>
@@ -133,6 +152,27 @@ namespace PSRule.Rules.Azure.Configuration
             /// </summary>
             [DefaultValue(null)]
             public string Version { get; set; }
+
+            internal static ManagementGroupDetails FromHashtable(Hashtable details)
+            {
+                var result = new ManagementGroupDetails();
+                if (details != null)
+                {
+                    var index = PSRuleOption.BuildIndex(details);
+                    if (index.TryPopHashtable("Parent", out var parent))
+                        result.Parent = ManagementGroupParent.FromHashtable(parent);
+
+                    if (index.TryPopValue("UpdatedBy", out string updatedBy))
+                        result.UpdatedBy = updatedBy;
+
+                    if (index.TryPopValue("UpdatedTime", out string updatedTime))
+                        result.UpdatedTime = updatedTime;
+
+                    if (index.TryPopValue("Version", out string version))
+                        result.Version = version;
+                }
+                return result;
+            }
         }
 
         /// <summary>
@@ -182,6 +222,21 @@ namespace PSRule.Rules.Azure.Configuration
             /// </summary>
             [DefaultValue(null)]
             public string DisplayName { get; set; }
+
+            internal static ManagementGroupParent FromHashtable(Hashtable parent)
+            {
+                var result = new ManagementGroupParent();
+                if (parent != null)
+                {
+                    var index = PSRuleOption.BuildIndex(parent);
+                    if (index.TryPopValue("Name", out string name))
+                        result.Name = name;
+
+                    if (index.TryPopValue("DisplayName", out string displayName))
+                        result.DisplayName = displayName;
+                }
+                return result;
+            }
         }
 
         /// <inheritdoc/>
@@ -279,5 +334,20 @@ namespace PSRule.Rules.Azure.Configuration
         /// Additional properties of the management group.
         /// </summary>
         public ManagementGroupProperties Properties { get; set; }
+
+        internal static ManagementGroupOption FromHashtable(Hashtable hashtable)
+        {
+            var option = new ManagementGroupOption();
+            if (hashtable != null)
+            {
+                var index = PSRuleOption.BuildIndex(hashtable);
+                if (index.TryPopValue("Name", out string name))
+                    option.Name = name;
+
+                if (index.TryPopHashtable("Properties", out var properties))
+                    option.Properties = ManagementGroupProperties.FromHashtable(properties);
+            }
+            return option;
+        }
     }
 }

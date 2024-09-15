@@ -103,6 +103,18 @@ namespace PSRule.Rules.Azure.Configuration
         /// </summary>
         [DefaultValue(null)]
         public string Name { get; set; }
+
+        internal static DeploymentOption FromHashtable(Hashtable hashtable)
+        {
+            var option = new DeploymentOption();
+            if (hashtable != null)
+            {
+                var index = PSRuleOption.BuildIndex(hashtable);
+                if (index.TryPopValue("Name", out string s))
+                    option.Name = s;
+            }
+            return option;
+        }
     }
 
     /// <summary>
@@ -153,8 +165,8 @@ namespace PSRule.Rules.Azure.Configuration
             if (hashtable != null)
             {
                 var index = PSRuleOption.BuildIndex(hashtable);
-                if (index.TryPopValue("Name", out string svalue))
-                    option.Name = svalue;
+                if (index.TryPopValue("Name", out string s))
+                    option.Name = s;
             }
             return option;
         }

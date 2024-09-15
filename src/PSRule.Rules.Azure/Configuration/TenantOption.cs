@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using System.Collections;
 using System.ComponentModel;
 using YamlDotNet.Serialization;
 
@@ -115,6 +116,24 @@ namespace PSRule.Rules.Azure.Configuration
                 TenantId = o1?.TenantId ?? o2?.TenantId,
                 DisplayName = o1?.DisplayName ?? o2?.DisplayName,
             };
+            return result;
+        }
+
+        internal static TenantOption FromHashtable(Hashtable hashtable)
+        {
+            var result = new TenantOption();
+            if (hashtable != null)
+            {
+                var index = PSRuleOption.BuildIndex(hashtable);
+                if (index.TryPopValue("CountryCode", out string countryCode))
+                    result.CountryCode = countryCode;
+
+                if (index.TryPopValue("TenantId", out string tenantId))
+                    result.TenantId = tenantId;
+
+                if (index.TryPopValue("DisplayName", out string displayName))
+                    result.DisplayName = displayName;
+            }
             return result;
         }
 

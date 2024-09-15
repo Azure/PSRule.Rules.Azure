@@ -4,6 +4,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Management.Automation;
 
 namespace PSRule.Rules.Azure
 {
@@ -27,6 +28,23 @@ namespace PSRule.Rules.Azure
                 value = result;
                 return true;
             }
+            return false;
+        }
+
+        public static bool TryPopHashtable(this IDictionary<string, object> dictionary, string key, out Hashtable value)
+        {
+            value = null;
+            if (dictionary.TryPopValue(key, out var o) && o is Hashtable result)
+            {
+                value = result;
+                return true;
+            }
+            if (dictionary.TryPopValue(key, out PSObject pso))
+            {
+                value = pso.ToHashtable();
+                return true;
+            }
+
             return false;
         }
 

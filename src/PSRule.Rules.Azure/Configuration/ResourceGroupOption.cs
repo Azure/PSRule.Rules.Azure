@@ -92,6 +92,18 @@ namespace PSRule.Rules.Azure.Configuration
             /// The provisioning state of the resource group.
             /// </summary>
             public string ProvisioningState { get; }
+
+            internal static ResourceGroupProperties FromHashtable(Hashtable properties)
+            {
+                var option = new ResourceGroupProperties();
+                if (properties != null)
+                {
+                    var index = PSRuleOption.BuildIndex(properties);
+                    if (index.TryPopValue("ProvisioningState", out string s))
+                        option = new ResourceGroupProperties(s);
+                }
+                return option;
+            }
         }
 
         /// <inheritdoc/>
@@ -240,6 +252,33 @@ namespace PSRule.Rules.Azure.Configuration
         /// </summary>
         [DefaultValue(null)]
         public ResourceGroupProperties Properties { get; set; }
+
+        internal static ResourceGroupOption FromHashtable(Hashtable hashtable)
+        {
+            var option = new ResourceGroupOption();
+            if (hashtable != null)
+            {
+                var index = PSRuleOption.BuildIndex(hashtable);
+                if (index.TryPopValue("SubscriptionId", out string s))
+                    option.SubscriptionId = s;
+
+                if (index.TryPopValue("Name", out s))
+                    option.Name = s;
+
+                if (index.TryPopValue("Location", out s))
+                    option.Location = s;
+
+                if (index.TryPopValue("ManagedBy", out s))
+                    option.ManagedBy = s;
+
+                if (index.TryPopValue("Tags", out Hashtable tags))
+                    option.Tags = tags;
+
+                if (index.TryPopHashtable("Properties", out var properties))
+                    option.Properties = ResourceGroupProperties.FromHashtable(properties);
+            }
+            return option;
+        }
     }
 
     /// <summary>

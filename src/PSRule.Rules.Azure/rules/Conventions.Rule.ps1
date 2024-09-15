@@ -25,10 +25,40 @@ Export-PSRuleConvention 'Azure.Context' -Initialize {
     $timeout = $Configuration.GetIntegerOrDefault('AZURE_BICEP_FILE_EXPANSION_TIMEOUT', 5);
     $check = $Configuration.GetBoolOrDefault('AZURE_BICEP_CHECK_TOOL', $False);
     $allowedRegions = @($Configuration.GetValueOrDefault('Azure_AllowedRegions', $Configuration.GetStringValues('AZURE_RESOURCE_ALLOWED_LOCATIONS')));
+    $azureDeployment = $Configuration.GetValueOrDefault('AZURE_DEPLOYMENT', $Null);
+    $azureResourceGroup = $Configuration.GetValueOrDefault('AZURE_RESOURCE_GROUP', $Null);
+    $azureSubscription = $Configuration.GetValueOrDefault('AZURE_SUBSCRIPTION', $Null);
+    $azureTenant = $Configuration.GetValueOrDefault('AZURE_TENANT', $Null);
+    $azureManagementGroup = $Configuration.GetValueOrDefault('AZURE_MANAGEMENT_GROUP', $Null);
+    $azureParameterDefaults = $Configuration.GetValueOrDefault('AZURE_PARAMETER_DEFAULTS', $Null);
     $service = [PSRule.Rules.Azure.Runtime.Helper]::CreateService($minimum, $timeout);
 
     if ($allowedRegions.Length -gt 0) {
         $service.WithAllowedLocations($allowedRegions);
+    }
+
+    if ($Null -ne $azureDeployment) {
+        $service.WithAzureDeployment($azureDeployment);
+    }
+
+    if ($Null -ne $azureResourceGroup) {
+        $service.WithAzureResourceGroup($azureResourceGroup);
+    }
+
+    if ($Null -ne $azureSubscription) {
+        $service.WithAzureSubscription($azureSubscription);
+    }
+
+    if ($Null -ne $azureTenant) {
+        $service.WithAzureTenant($azureTenant);
+    }
+
+    if ($Null -ne $azureManagementGroup) {
+        $service.WithAzureManagementGroup($azureManagementGroup);
+    }
+
+    if ($Null -ne $azureParameterDefaults) {
+        $service.WithParameterDefaults($azureParameterDefaults);
     }
 
     if ($check) {
