@@ -127,6 +127,27 @@ namespace PSRule.Rules.Azure.Configuration
             return result;
         }
 
+        internal static SubscriptionOption FromHashtable(Hashtable hashtable)
+        {
+            var option = new SubscriptionOption();
+            if (hashtable != null)
+            {
+                var index = PSRuleOption.BuildIndex(hashtable);
+                if (index.TryPopValue("SubscriptionId", out string subscriptionId))
+                    option.SubscriptionId = subscriptionId;
+
+                if (index.TryPopValue("TenantId", out string tenantId))
+                    option.TenantId = tenantId;
+
+                if (index.TryPopValue("DisplayName", out string displayName))
+                    option.DisplayName = displayName;
+
+                if (index.TryPopValue("State", out string state))
+                    option.State = state;
+            }
+            return option;
+        }
+
         /// <summary>
         /// A unique identifier for the subscription.
         /// </summary>
@@ -232,17 +253,17 @@ namespace PSRule.Rules.Azure.Configuration
             if (hashtable != null)
             {
                 var index = PSRuleOption.BuildIndex(hashtable);
-                if (index.TryPopValue("SubscriptionId", out string svalue))
-                    option.SubscriptionId = svalue;
+                if (index.TryPopValue("SubscriptionId", out string s))
+                    option.SubscriptionId = s;
 
-                if (index.TryPopValue("TenantId", out svalue))
-                    option.TenantId = svalue;
+                if (index.TryPopValue("TenantId", out s))
+                    option.TenantId = s;
 
-                if (index.TryPopValue("DisplayName", out svalue))
-                    option.DisplayName = svalue;
+                if (index.TryPopValue("DisplayName", out s))
+                    option.DisplayName = s;
 
-                if (index.TryPopValue("State", out svalue))
-                    option.State = svalue;
+                if (index.TryPopValue("State", out s))
+                    option.State = s;
             }
             return option;
         }

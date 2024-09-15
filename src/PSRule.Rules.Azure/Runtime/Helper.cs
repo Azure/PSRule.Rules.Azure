@@ -34,7 +34,7 @@ namespace PSRule.Rules.Azure.Runtime
         public static string GetBicepVersion(IService service)
         {
             var s = service as RuntimeService;
-            var context = GetContext();
+            var context = GetContext(s);
             var bicep = new BicepHelper(
                 context,
                 s
@@ -117,7 +117,7 @@ namespace PSRule.Rules.Azure.Runtime
         /// </summary>
         public static PSObject[] GetResources(IService service, string parameterFile)
         {
-            var context = GetContext();
+            var context = GetContext(service as RuntimeService);
             var linkHelper = new TemplateLinkHelper(context, PSRuleOption.GetWorkingPath(), true);
             var link = linkHelper.ProcessParameterFile(parameterFile);
             if (link == null)
@@ -202,7 +202,7 @@ namespace PSRule.Rules.Azure.Runtime
 
         private static PSObject[] GetBicepResources(RuntimeService service, string templateFile, string parameterFile)
         {
-            var context = GetContext();
+            var context = GetContext(service);
             var bicep = new BicepHelper(
                 context,
                 service
@@ -212,7 +212,7 @@ namespace PSRule.Rules.Azure.Runtime
 
         private static PSObject[] GetBicepParamResources(RuntimeService service, string parameterFile)
         {
-            var context = GetContext();
+            var context = GetContext(service);
             var bicep = new BicepHelper(
                 context,
                 service
@@ -220,10 +220,11 @@ namespace PSRule.Rules.Azure.Runtime
             return bicep.ProcessParamFile(parameterFile);
         }
 
-        private static PipelineContext GetContext()
+        private static PipelineContext GetContext(RuntimeService service)
         {
             PSCmdlet commandRuntime = null;
-            var option = PSRuleOption.FromFileOrDefault(PSRuleOption.GetWorkingPath());
+
+            var option = service.ToPSRuleOption();
             var context = new PipelineContext(option, commandRuntime != null ? new PSPipelineWriter(option, commandRuntime) : null);
             return context;
         }

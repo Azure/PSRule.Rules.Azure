@@ -31,13 +31,15 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - New rules:
   - Virtual Machine:
-    - Verify that Multitenant Hosting Rights are used for Windows client VMs by @BenjaminEngeset.
+    - Verify that multi-tenant Hosting Rights are used for Windows client VMs by @BenjaminEngeset.
       [#432](https://github.com/Azure/PSRule.Rules.Azure/issues/432)
     - Verify that availability set members are in a backend pool by @BenjaminEngeset.
       [#67](https://github.com/Azure/PSRule.Rules.Azure/issues/67)
 - Bug fixed:
   - Fixed `Azure.AppService.AvailabilityZone` only detects premium by tier property @BenjaminEngeset.
     [#3034](https://github.com/Azure/PSRule.Rules.Azure/issues/3034)
+  - Fixed loading of expansion options from non-default options file @BernieWhite.
+    [#2523](https://github.com/microsoft/PSRule/issues/2523)
 
 ## v1.39.0-B0055 (pre-release)
 

@@ -1,6 +1,7 @@
 ﻿// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Collections;
 using System.IO;
 using System.Management.Automation;
 
@@ -38,6 +39,16 @@ namespace PSRule.Rules.Azure
                 return true;
             }
             return false;
+        }
+
+        internal static Hashtable ToHashtable(this PSObject o)
+        {
+            var result = new Hashtable();
+            foreach (var p in o.Properties)
+            {
+                result[p.Name] = p.Value;
+            }
+            return result;
         }
     }
 }
