@@ -179,8 +179,9 @@ Rule 'Azure.APIM.ProductTerms' -Ref 'AZR-000050' -Type 'Microsoft.ApiManagement/
 
 # Synopsis: Renew expired certificates
 Rule 'Azure.APIM.CertificateExpiry' -Ref 'AZR-000051' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-7' } {
+    $minDays = $Configuration.GetValueOrDefault('Azure_MinimumCertificateLifetime', $Configuration.AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME);
     $configurations = @($TargetObject.Properties.hostnameConfigurations | Where-Object {
-            $Null -ne $_.certificate
+            $Null -ne $_.certificate.expiry
         })
     if ($configurations.Length -eq 0) {
         return $Assert.Pass();
@@ -188,10 +189,10 @@ Rule 'Azure.APIM.CertificateExpiry' -Ref 'AZR-000051' -Type 'Microsoft.ApiManage
     foreach ($configuration in $configurations) {
         $remaining = ($configuration.certificate.expiry - [DateTime]::Now).Days;
         $Assert.
-        GreaterOrEqual($remaining, '.', $Configuration.Azure_MinimumCertificateLifetime).
+        GreaterOrEqual($remaining, '.', $minDays).
         WithReason(($LocalizedData.APIMCertificateExpiry -f $configuration.hostName, $configuration.certificate.expiry.ToString('yyyy/MM/dd')), $True);
     }
-} -Configure @{ Azure_MinimumCertificateLifetime = 30 }
+}
 
 # Synopsis: API Management instances should use availability zones in supported regions for high availability.
 Rule 'Azure.APIM.AvailabilityZone' -Ref 'AZR-000052' -Type 'Microsoft.ApiManagement/service' -Tag @{ release = 'GA'; ruleSet = '2024_06'; 'Azure.WAF/pillar' = 'Reliability'; } {

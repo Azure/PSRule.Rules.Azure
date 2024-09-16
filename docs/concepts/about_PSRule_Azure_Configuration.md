@@ -18,9 +18,9 @@ For details of setting configuration options see [PSRule options][1].
 The following configurations options are available for use:
 
 - [AZURE_AKS_CLUSTER_MINIMUM_VERSION](#azure_aks_cluster_minimum_version)
-- [Azure_AKSNodeMinimumMaxPods](#azure_aksnodeminimummaxpods)
-- [Azure_AllowedRegions](#azure_allowedregions)
-- [Azure_MinimumCertificateLifetime](#azure_minimumcertificatelifetime)
+- [AZURE_AKS_POOL_MINIMUM_MAXPODS](#azure_aks_pool_minimum_maxpods)
+- [AZURE_RESOURCE_ALLOWED_LOCATIONS](#azure_resource_allowed_locations)
+- [AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME](#azure_apim_minimum_certificate_lifetime)
 - [AZURE_PARAMETER_FILE_EXPANSION](#azure_parameter_file_expansion)
 - [AZURE_POLICY_WAIVER_MAX_EXPIRY](#azure_policy_waiver_max_expiry)
 - [AZURE_RESOURCE_GROUP](#azure_resource_group)
@@ -61,68 +61,69 @@ configuration:
   AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.19.7
 ```
 
-### Azure_AKSNodeMinimumMaxPods
+### AZURE_AKS_POOL_MINIMUM_MAXPODS
 
 This configuration option determines the minimum allowed max pods setting per node pool.
-When an AKS cluster node pool is created, a `maxPods` option is used to determine the maximum number of pods for each node in the node pool.
+When an AKS cluster node pool is created,
+a `maxPods` option is used to determine the maximum number of pods for each node in the node pool.
 
 Syntax:
 
 ```yaml
 configuration:
-  Azure_AKSNodeMinimumMaxPods: integer
+  AZURE_AKS_POOL_MINIMUM_MAXPODS: integer
 ```
 
 Default:
 
 ```yaml
-# YAML: The default Azure_AKSNodeMinimumMaxPods configuration option
+# YAML: The default AZURE_AKS_POOL_MINIMUM_MAXPODS configuration option
 configuration:
-  Azure_AKSNodeMinimumMaxPods: 50
+  AZURE_AKS_POOL_MINIMUM_MAXPODS: 50
 ```
 
 Example:
 
 ```yaml
-# YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30
+# YAML: Set the AZURE_AKS_POOL_MINIMUM_MAXPODS configuration option to 30
 configuration:
-  Azure_AKSNodeMinimumMaxPods: 30
+  AZURE_AKS_POOL_MINIMUM_MAXPODS: 30
 ```
 
-### Azure_AllowedRegions
+### AZURE_RESOURCE_ALLOWED_LOCATIONS
 
 This configuration option specifies a list of allowed locations that resources can be deployed to.
 Rules that check the location of Azure resources fail when a resource or resource group is created in a different region.
 
-By default, `Azure_AllowedRegions` is not configured.
+By default, `AZURE_RESOURCE_ALLOWED_LOCATIONS` is not configured.
 The rule `Azure.Resource.AllowedRegions` is skipped when no allowed locations are configured.
 
 Syntax:
 
 ```yaml
 configuration:
-  Azure_AllowedRegions: array # An array of regions
+  AZURE_RESOURCE_ALLOWED_LOCATIONS: array # An array of regions
 ```
 
 Default:
 
 ```yaml
-# YAML: The default Azure_AllowedRegions configuration option
+# YAML: The default AZURE_RESOURCE_ALLOWED_LOCATIONS configuration option
 configuration:
-  Azure_AllowedRegions: []
+  AZURE_RESOURCE_ALLOWED_LOCATIONS: []
 ```
 
 Example:
 
 ```yaml
-# YAML: Set the Azure_AllowedRegions configuration option to Australia East, Australia South East
+# YAML: Set the AZURE_RESOURCE_ALLOWED_LOCATIONS configuration option to Australia East, Australia South East
 configuration:
-  Azure_AllowedRegions:
+  AZURE_RESOURCE_ALLOWED_LOCATIONS:
   - 'australiaeast'
   - 'australiasoutheast'
 ```
 
-### Azure_MinimumCertificateLifetime
+### AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME
 
 This configuration option determines the minimum number of days allowed before certificate expiry.
 Rules that check certificate lifetime fail when the days remaining before expiry drop below this number.
@@ -131,23 +132,23 @@ Syntax:
 
 ```yaml
 configuration:
-  Azure_MinimumCertificateLifetime: integer
+  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: integer
 ```
 
 Default:
 
 ```yaml
-# YAML: The default Azure_MinimumCertificateLifetime configuration option
+# YAML: The default AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME configuration option
 configuration:
-  Azure_MinimumCertificateLifetime: 30
+  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 30
 ```
 
 Example:
 
 ```yaml
-# YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90
+# YAML: Set the AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME configuration option to 90
 configuration:
-  Azure_MinimumCertificateLifetime: 90
+  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 90
 ```
 
 ### AZURE_PARAMETER_FILE_EXPANSION

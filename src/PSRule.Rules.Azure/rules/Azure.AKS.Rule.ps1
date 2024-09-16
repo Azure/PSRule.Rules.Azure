@@ -56,14 +56,15 @@ Rule 'Azure.AKS.PoolScaleSet' -Ref 'AZR-000017' -Type 'Microsoft.ContainerServic
 
 # Synopsis: AKS nodes should use a minimum number of pods
 Rule 'Azure.AKS.NodeMinPods' -Ref 'AZR-000018' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {
+    $minMaxPods = $Configuration.GetValueOrDefault('Azure_AKSNodeMinimumMaxPods', $Configuration.AZURE_AKS_POOL_MINIMUM_MAXPODS);
     $agentPools = @(GetAgentPoolProfiles);
     if ($agentPools.Length -eq 0) {
         return $Assert.Pass();
     }
     foreach ($agentPool in $agentPools) {
-        $Assert.GreaterOrEqual($agentPool, 'maxPods', $Configuration.Azure_AKSNodeMinimumMaxPods);
+        $Assert.GreaterOrEqual($agentPool, 'maxPods', $minMaxPods);
     }
-} -Configure @{ Azure_AKSNodeMinimumMaxPods = 50 }
+}
 
 # Synopsis: Use Autoscaling to ensure AKS cluster is running efficiently with the right number of nodes for the workloads present.
 Rule 'Azure.AKS.AutoScaling' -Ref 'AZR-000019' -Type 'Microsoft.ContainerService/managedClusters', 'Microsoft.ContainerService/managedClusters/agentPools' -Tag @{ release = 'GA'; ruleSet = '2021_09'; 'Azure.WAF/pillar' = 'Performance Efficiency'; } {

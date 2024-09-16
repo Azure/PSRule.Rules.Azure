@@ -39,8 +39,11 @@ spec:
     AZURE_BICEP_MINIMUM_VERSION: '0.4.451'
     AZURE_BICEP_CHECK_TOOL: false
 
-    # Configure minimum AKS cluster version.
+    # Configures minimum AKS cluster version.
     AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.29.7'
+
+    # Configures the minimum allowed max pods setting per node pool.
+    AZURE_AKS_POOL_MINIMUM_MAXPODS: 50
 
     # Configures the minimum number of nodes across all system node pools.
     AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: 3
@@ -50,6 +53,9 @@ spec:
 
     # Configures user pools that are excluded from checking for minimum nodes.
     AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES: []
+
+    # Configures minimum number of days allowed before certificate expiry.
+    AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 30
 
     AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
     - adminUsername

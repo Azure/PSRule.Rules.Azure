@@ -12,9 +12,19 @@ Export-PSRuleConvention 'Azure.DeprecatedOptions' -Initialize {
         Write-Warning -Message $LocalizedData.AKSMinimumVersionReplace;
     }
 
+    $aksMinimumMaxPods = $Configuration.GetValueOrDefault('Azure_AKSNodeMinimumMaxPods', $Null);
+    if ($Null -ne $aksMinimumMaxPods) {
+        Write-Warning -Message $LocalizedData.AKSNodeMinimumMaxPodsReplace;
+    }
+
     $allowedRegions = $Configuration.GetValueOrDefault('Azure_AllowedRegions', $Null);
     if ($Null -ne $allowedRegions) {
         Write-Warning -Message $LocalizedData.AzureAllowedRegionsReplace;
+    }
+
+    $apimMinDays = $Configuration.GetValueOrDefault('Azure_MinimumCertificateLifetime', $Null);
+    if ($Null -ne $apimMinDays) {
+        Write-Warning -Message $LocalizedData.APIMMinimumCertificateLifetimeReplace;
     }
 }
 

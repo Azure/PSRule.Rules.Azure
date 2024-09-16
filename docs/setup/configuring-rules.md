@@ -245,9 +245,10 @@ configuration:
   - AllMetrics
 ```
 
-### Set the minimum MaxPods for a node pool
+### AZURE_AKS_POOL_MINIMUM_MAXPODS
 
-<!-- module:version v1.0.0 -->
+<!-- module:version v1.39.0 -->
+<!-- module:rule Azure.AKS.NodeMinPods -->
 
 This configuration option determines the minimum allowed max pods setting per node pool.
 When an AKS cluster node pool is created, a `maxPods` option is used to determine the maximum number of pods for each node in the node pool.
@@ -261,23 +262,23 @@ Syntax:
 
 ```yaml title="ps-rule.yaml"
 configuration:
-  Azure_AKSNodeMinimumMaxPods: integer
+  AZURE_AKS_POOL_MINIMUM_MAXPODS: integer
 ```
 
 Default:
 
 ```yaml title="ps-rule.yaml"
-# YAML: The default Azure_AKSNodeMinimumMaxPods configuration option
+# YAML: The default AZURE_AKS_POOL_MINIMUM_MAXPODS configuration option
 configuration:
-  Azure_AKSNodeMinimumMaxPods: 50
+  AZURE_AKS_POOL_MINIMUM_MAXPODS: 50
 ```
 
 Example:
 
 ```yaml title="ps-rule.yaml"
-# YAML: Set the Azure_AKSNodeMinimumMaxPods configuration option to 30
+# YAML: Set the AZURE_AKS_POOL_MINIMUM_MAXPODS configuration option to 30
 configuration:
-  Azure_AKSNodeMinimumMaxPods: 30
+  AZURE_AKS_POOL_MINIMUM_MAXPODS: 30
 ```
 
 ### AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES
@@ -579,7 +580,10 @@ configuration:
     location: australiaeast
 ```
 
-### Azure_MinimumCertificateLifetime
+### AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME
+
+<!-- module:version v1.39.0 -->
+<!-- module:rule Azure.APIM.CertificateExpiry -->
 
 This configuration option determines the minimum number of days allowed before certificate expiry.
 Rules that check certificate lifetime fail when the days remaining before expiry drop below this number.
@@ -588,23 +592,23 @@ Syntax:
 
 ```yaml title="ps-rule.yaml"
 configuration:
-  Azure_MinimumCertificateLifetime: integer
+  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: integer
 ```
 
 Default:
 
 ```yaml
-# YAML: The default Azure_MinimumCertificateLifetime configuration option
+# YAML: The default AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME configuration option
 configuration:
-  Azure_MinimumCertificateLifetime: 30
+  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 30
 ```
 
 Example:
 
 ```yaml title="ps-rule.yaml"
-# YAML: Set the Azure_MinimumCertificateLifetime configuration option to 90
+# YAML: Set the AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME configuration option to 90
 configuration:
-  Azure_MinimumCertificateLifetime: 90
+  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 90
 ```
 
 ### AZURE_LINUX_OS_OFFERS

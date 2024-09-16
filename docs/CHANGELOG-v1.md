@@ -14,14 +14,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 - Issue #741: `Could not load file or assembly YamlDotNet`.
   See [troubleshooting guide] for a workaround to this issue.
-- The configuration option `Azure_AKSMinimumVersion` is replaced with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
-  If you have this option configured, please update it to `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
-  Support for `Azure_AKSMinimumVersion` will be removed in v2.
+- The following configuration options are deprecated and have been replaced with alternative options.
+  If you have these options configured, please update them to the replacement.
+  Support for the old names will be removed in v2.
   See [upgrade notes][1] for more information.
-- The configuration option `Azure_AllowedRegions` is replaced with `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
-  If you have this option configured, please update it to `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
-  Support for `Azure_AllowedRegions` will be removed in v2.
-  See [upgrade notes][1] for more information.
+  - `Azure_AKSMinimumVersion` is replaced with `AZURE_AKS_CLUSTER_MINIMUM_VERSION`.
+  - `Azure_AKSNodeMinimumMaxPods` is replaced with `AZURE_AKS_POOL_MINIMUM_MAXPODS`.
+  - `Azure_AllowedRegions` is replaced with `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
+  - `Azure_MinimumCertificateLifetime` is replaced with `AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME`.
 - The `SupportsTag` PowerShell function has been replaced with the `Azure.Resource.SupportsTags` selector.
   Update PowerShell rules to use the `Azure.Resource.SupportsTags` selector instead.
   Support for the `SupportsTag` function will be removed in v2.
@@ -39,6 +39,23 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.29.7` as the minimum version by @BernieWhite.
       [#3042](https://github.com/Azure/PSRule.Rules.Azure/issues/3042)
+- General improvements:
+  - **Important change:** Replaced the `Azure_AKSNodeMinimumMaxPods` option with `AZURE_AKS_POOL_MINIMUM_MAXPODS` by @BernieWhite.
+    [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
+    - For compatibility, if `Azure_AKSNodeMinimumMaxPods` is set it will be used instead of `AZURE_AKS_POOL_MINIMUM_MAXPODS`.
+    - If only `AZURE_AKS_POOL_MINIMUM_MAXPODS` is set, this value will be used.
+    - The default will be used neither options are configured.
+    - If `Azure_AKSNodeMinimumMaxPods` is set a warning will be generated until the configuration is removed.
+    - Support for `Azure_AKSNodeMinimumMaxPods` is deprecated and will be removed in v2.
+    - See [upgrade notes][1] for details.
+  - **Important change:** Replaced the `Azure_MinimumCertificateLifetime` option with `AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME` by @BernieWhite.
+    [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
+    - For compatibility, if `Azure_MinimumCertificateLifetime` is set it will be used instead of `AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME`.
+    - If only `AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME` is set, this value will be used.
+    - The default will be used neither options are configured.
+    - If `Azure_MinimumCertificateLifetime` is set a warning will be generated until the configuration is removed.
+    - Support for `Azure_MinimumCertificateLifetime` is deprecated and will be removed in v2.
+    - See [upgrade notes][1] for details.
 - Bug fixed:
   - Fixed `Azure.AppService.AvailabilityZone` only detects premium by tier property @BenjaminEngeset.
     [#3034](https://github.com/Azure/PSRule.Rules.Azure/issues/3034)
@@ -1459,7 +1476,7 @@ What's changed since v1.29.0:
     - Promoted `Azure.ContainerApp.DisableAffinity` to GA rule set by @BernieWhite.
       [#2455](https://github.com/Azure/PSRule.Rules.Azure/issues/2455)
 - General improvements:
-  - **Important change:** Replaced the `Azure_AllowedRegions` option with `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
+  - **Important change:** Replaced the `Azure_AllowedRegions` option with `AZURE_RESOURCE_ALLOWED_LOCATIONS` by @BernieWhite.
     [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
     - For compatibility, if `Azure_AllowedRegions` is set it will be used instead of `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
     - If only `AZURE_RESOURCE_ALLOWED_LOCATIONS` is set, this value will be used.
@@ -1546,7 +1563,7 @@ What's changed since pre-release v1.30.0-B0080:
 What's changed since pre-release v1.30.0-B0047:
 
 - General improvements:
-  - **Important change:** Replaced the `Azure_AllowedRegions` option with `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
+  - **Important change:** Replaced the `Azure_AllowedRegions` option with `AZURE_RESOURCE_ALLOWED_LOCATIONS` by @BernieWhite.
     [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)
     - For compatibility, if `Azure_AllowedRegions` is set it will be used instead of `AZURE_RESOURCE_ALLOWED_LOCATIONS`.
     - If only `AZURE_RESOURCE_ALLOWED_LOCATIONS` is set, this value will be used.
