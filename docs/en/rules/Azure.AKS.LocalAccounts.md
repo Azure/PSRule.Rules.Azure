@@ -2,7 +2,7 @@
 reviewed: 2023-10-01
 severity: Important
 pillar: Security
-category: Authorization
+category: SE:05 Identity and access management
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.LocalAccounts/
 ---
@@ -222,6 +222,8 @@ resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-07-01
 }
 ```
 
+<!-- external:avm avm/res/container-service/managed-cluster disableLocalAccounts -->
+
 ### Configure with Azure CLI
 
 ```bash
@@ -237,7 +239,7 @@ To address this issue at runtime use the following policies:
 
 ## LINKS
 
-- [Authorization with Azure AD](https://learn.microsoft.com/azure/well-architected/security/design-identity-authorization)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
 - [Security design principles](https://learn.microsoft.com/azure/well-architected/security/security-principles)
 - [Manage local accounts with AKS-managed Azure Active Directory integration](https://learn.microsoft.com/azure/aks/manage-local-accounts-managed-azure-ad)
 - [Access and identity options for Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/concepts-identity#azure-ad-integration)

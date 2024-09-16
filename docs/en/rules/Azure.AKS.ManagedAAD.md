@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Identity and access management
+category: SE:05 Identity and access management
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.ManagedAAD/
 ---
@@ -33,73 +33,67 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.ContainerService/managedClusters",
-    "apiVersion": "2021-10-01",
-    "name": "[parameters('clusterName')]",
-    "location": "[parameters('location')]",
-    "identity": {
-        "type": "UserAssigned",
-        "userAssignedIdentities": {
-            "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')))]": {}
-        }
+  "type": "Microsoft.ContainerService/managedClusters",
+  "apiVersion": "2024-02-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "UserAssigned",
+    "userAssignedIdentities": {
+      "[format('{0}', resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName')))]": {}
+    }
+  },
+  "properties": {
+    "kubernetesVersion": "[parameters('kubernetesVersion')]",
+    "disableLocalAccounts": true,
+    "enableRBAC": true,
+    "dnsPrefix": "[parameters('dnsPrefix')]",
+    "agentPoolProfiles": "[variables('allPools')]",
+    "aadProfile": {
+      "managed": true,
+      "enableAzureRBAC": true,
+      "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
+      "tenantID": "[subscription().tenantId]"
     },
-    "properties": {
-        "kubernetesVersion": "[parameters('kubernetesVersion')]",
-        "disableLocalAccounts": true,
-        "enableRBAC": true,
-        "dnsPrefix": "[parameters('dnsPrefix')]",
-        "agentPoolProfiles": "[variables('allPools')]",
-        "aadProfile": {
-            "managed": true,
-            "enableAzureRBAC": true,
-            "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
-            "tenantID": "[subscription().tenantId]"
-        },
-        "networkProfile": {
-            "networkPlugin": "azure",
-            "networkPolicy": "azure",
-            "loadBalancerSku": "standard",
-            "serviceCidr": "[variables('serviceCidr')]",
-            "dnsServiceIP": "[variables('dnsServiceIP')]",
-            "dockerBridgeCidr": "[variables('dockerBridgeCidr')]"
-        },
-        "autoUpgradeProfile": {
-            "upgradeChannel": "stable"
-        },
-        "addonProfiles": {
-            "httpApplicationRouting": {
-                "enabled": false
-            },
-            "azurepolicy": {
-                "enabled": true,
-                "config": {
-                    "version": "v2"
-                }
-            },
-            "omsagent": {
-                "enabled": true,
-                "config": {
-                    "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
-                }
-            },
-            "kubeDashboard": {
-                "enabled": false
-            },
-            "azureKeyvaultSecretsProvider": {
-                "enabled": true,
-                "config": {
-                    "enableSecretRotation": "true"
-                }
-            }
-        },
-        "podIdentityProfile": {
-            "enabled": true
-        }
+    "networkProfile": {
+      "networkPlugin": "azure",
+      "networkPolicy": "azure",
+      "loadBalancerSku": "standard",
+      "serviceCidr": "[variables('serviceCidr')]",
+      "dnsServiceIP": "[variables('dnsServiceIP')]"
     },
-    "tags": "[parameters('tags')]",
-    "dependsOn": [
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
-    ]
+    "apiServerAccessProfile": {
+      "authorizedIPRanges": [
+        "0.0.0.0/32"
+      ]
+    },
+    "autoUpgradeProfile": {
+      "upgradeChannel": "stable"
+    },
+    "oidcIssuerProfile": {
+      "enabled": true
+    },
+    "addonProfiles": {
+      "azurepolicy": {
+        "enabled": true
+      },
+      "omsagent": {
+        "enabled": true,
+        "config": {
+          "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
+        }
+      },
+      "azureKeyvaultSecretsProvider": {
+        "enabled": true,
+        "config": {
+          "enableSecretRotation": "true"
+        }
+      }
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
+  ]
 }
 ```
 
@@ -112,9 +106,9 @@ To deploy AKS clusters that pass this rule:
 For example:
 
 ```bicep
-resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
+resource cluster 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
   location: location
-  name: clusterName
+  name: name
   identity: {
     type: 'UserAssigned'
     userAssignedIdentities: {
@@ -139,29 +133,27 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
       loadBalancerSku: 'standard'
       serviceCidr: serviceCidr
       dnsServiceIP: dnsServiceIP
-      dockerBridgeCidr: dockerBridgeCidr
+    }
+    apiServerAccessProfile: {
+      authorizedIPRanges: [
+        '0.0.0.0/32'
+      ]
     }
     autoUpgradeProfile: {
       upgradeChannel: 'stable'
     }
+    oidcIssuerProfile: {
+      enabled: true
+    }
     addonProfiles: {
-      httpApplicationRouting: {
-        enabled: false
-      }
       azurepolicy: {
         enabled: true
-        config: {
-          version: 'v2'
-        }
       }
       omsagent: {
         enabled: true
         config: {
           logAnalyticsWorkspaceResourceID: workspaceId
         }
-      }
-      kubeDashboard: {
-        enabled: false
       }
       azureKeyvaultSecretsProvider: {
         enabled: true
@@ -170,13 +162,11 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-10-01' = {
         }
       }
     }
-    podIdentityProfile: {
-      enabled: true
-    }
   }
-  tags: tags
 }
 ```
+
+<!-- external:avm avm/res/container-service/managed-cluster aadProfileManaged -->
 
 ### Configure with Azure CLI
 
@@ -186,7 +176,7 @@ az aks update -n '<name>' -g '<resource_group>' --enable-aad --aad-admin-group-o
 
 ## LINKS
 
-- [Authorization with Azure AD](https://learn.microsoft.com/azure/architecture/framework/security/design-identity-authorization)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
 - [Security design principles](https://learn.microsoft.com/azure/architecture/framework/security/security-principles)
 - [Access and identity options for Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/concepts-identity#azure-ad-integration)
 - [AKS-managed Azure Active Directory integration](https://learn.microsoft.com/azure/aks/managed-aad)

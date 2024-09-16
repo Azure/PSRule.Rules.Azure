@@ -23,17 +23,11 @@ New name                                  | Old name                            
 `AZURE_RESOURCE_ALLOWED_LOCATIONS`        | `Azure_AllowedRegions`               | :octicons-milestone-24: v1.30.0
 `AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME` | `Azure_MinimumCertificateLifetime`   | :octicons-milestone-24: v1.39.0
 
-!!! Note
-    Configuration options marked _TBA_ are not available yet.
-    Please use the old names until they are available.
-    Check the [change log][1] and the [upgrade notes][2] for more information on a future release.
-
 !!! Important
     New option names will work from the release specified by _Available from_.
     Configuring these options prior to that release will have no affect.
     For details on configuring these options see [upgrade notes][2] for details.
 
-  [1]: CHANGELOG-v1.md
   [2]: upgrade-notes.md#realigned-configuration-option-names
 
 ### Realignment of rules
