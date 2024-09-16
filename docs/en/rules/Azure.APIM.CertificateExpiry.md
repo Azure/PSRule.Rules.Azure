@@ -28,9 +28,13 @@ Consider renewing certificates before expiry to prevent service issues.
 
 By default, this rule fails when certificates have less than 30 days remaining before expiry.
 
-To configure this rule:
+### Rule configuration
 
-- Override the `Azure_MinimumCertificateLifetime` configuration value with the minimum number of days until expiry.
+<!-- module:config rule AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME -->
+
+By default, this rule fails if the days before a configured certificate expires is less than 30 days.
+To configure this rule,
+override the `AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME` configuration value with the minimum number of days until expiry.
 
 ## LINKS
 

@@ -82,7 +82,7 @@
           "vmSize": "Standard_F2s_v2",
           "osDiskSizeGB": 30,
           "vnetSubnetID": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A",
-          "maxPods": 30,
+          "maxPods": 20,
           "type": "AvailabilitySet",
           "orchestratorVersion": "1.11.4",
           "osType": "Linux",
