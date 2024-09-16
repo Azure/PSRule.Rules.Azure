@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-07-23
 severity: Important
 pillar: Security
-category: Monitor
+category: SE:10 Monitoring and threat detection
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AuditLogs/
 ---
@@ -14,15 +15,18 @@ AKS clusters should collect security-based audit logs to assess and monitor the 
 
 ## DESCRIPTION
 
-To capture security-based audit logs from AKS clusters, the following diagnostic log categories should be enabled:
+The Azure Kubernetes Service (AKS) service supports collection of security-based audit logs from clusters.
+The following log categories are available:
 
-- `kube-audit` or `kube-audit-admin`, or both.
-  - `kube-audit` - Contains all audit log data for every audit event, including get, list, create, update, delete, patch, and post.
-  - `kube-audit-admin` - Is a subset of the `kube-audit` log category.
-    `kube-audit-admin` reduces the number of logs significantly by excluding the get and list audit events from the log.
-- `guard` - Contains logs for Azure Active Directory (AAD) authorization integration.
-   For managed Azure AD, this includes token in and user info out.
-   For Azure RBAC, this includes access reviews in and out.
+- `kube-audit` - Audit log data for every audit event including _get_, _list_, _create_, _update_, _delete_, _patch_, and _post_.
+- `kube-audit-admin` - Is a subset of the `kube-audit` log category that excludes _get_ and _list_ audit events.
+- `guard` - Contains logs for Entra ID and Azure RBAC events.
+
+In other words, both `kube-audit` and `kube-audit-admin` contain the same data except `kube-audit-admin` does not contain _get_ and _list_ events.
+
+For most configurations, consider enabling logging for `kube-audit-admin` and `guard`.
+This configuration provides good coverage and significantly reduces the number of logs and overall cost for collecting and storing AKS audit events.
+Enable `kube-audit` only when required.
 
 ## RECOMMENDATION
 
@@ -35,127 +39,87 @@ Consider configuring diagnostic settings to capture security-based audit logs fr
 To deploy AKS clusters that pass this rule:
 
 - Deploy a diagnostic settings sub-resource.
-- Enable logging for the `kube-audit`/`kube-audit-admin` and `guard` categories.
+- Enable logging for `kube-audit-admin` (or `kube-audit`) and `guard` log categories.
 
 For example:
 
 ```json
 {
-    "comments": "Azure Kubernetes Cluster",
-    "apiVersion": "2020-12-01",
-    "dependsOn": [
-        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]"
+  "type": "Microsoft.Insights/diagnosticSettings",
+  "apiVersion": "2021-05-01-preview",
+  "scope": "[format('Microsoft.ContainerService/managedClusters/{0}', parameters('name'))]",
+  "name": "audit",
+  "properties": {
+    "logs": [
+      {
+        "category": "kube-audit-admin",
+        "enabled": true,
+        "retentionPolicy": {
+          "days": 0,
+          "enabled": false
+        }
+      },
+      {
+        "category": "guard",
+        "enabled": true,
+        "retentionPolicy": {
+          "days": 0,
+          "enabled": false
+        }
+      }
     ],
-    "type": "Microsoft.ContainerService/managedClusters",
-    "location": "[parameters('location')]",
-    "name": "[parameters('clusterName')]",
-    "identity": {
-        "type": "UserAssigned",
-        "userAssignedIdentities": {
-            "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities', parameters('identityName'))]": {}
-        }
-    },
-    "properties": {
-        "kubernetesVersion": "[parameters('kubernetesVersion')]",
-        "disableLocalAccounts": true,
-        "enableRBAC": true,
-        "dnsPrefix": "[parameters('dnsPrefix')]",
-        "agentPoolProfiles": [
-            {
-                "name": "system",
-                "osDiskSizeGB": 32,
-                "count": 3,
-                "minCount": 3,
-                "maxCount": 10,
-                "enableAutoScaling": true,
-                "maxPods": 50,
-                "vmSize": "Standard_D2s_v3",
-                "osType": "Linux",
-                "type": "VirtualMachineScaleSets",
-                "vnetSubnetID": "[variables('clusterSubnetId')]",
-                "mode": "System",
-                "osDiskType": "Ephemeral",
-                "scaleSetPriority": "Regular"
-            }
-        ],
-        "aadProfile": {
-            "managed": true,
-            "enableAzureRBAC": true,
-            "adminGroupObjectIDs": "[parameters('clusterAdmins')]",
-            "tenantID": "[subscription().tenantId]"
-        },
-        "networkProfile": {
-            "networkPlugin": "azure",
-            "networkPolicy": "azure",
-            "loadBalancerSku": "Standard",
-            "serviceCidr": "192.168.0.0/16",
-            "dnsServiceIP": "192.168.0.4",
-            "dockerBridgeCidr": "172.17.0.1/16"
-        },
-        "autoUpgradeProfile": {
-            "upgradeChannel": "stable"
-        },
-        "addonProfiles": {
-            "azurepolicy": {
-                "enabled": true,
-                "config": {
-                    "version": "v2"
-                }
-            },
-            "omsagent": {
-                "enabled": true,
-                "config": {
-                    "logAnalyticsWorkspaceResourceID": "[parameters('workspaceId')]"
-                }
-            },
-            "kubeDashboard": {
-                "enabled": false
-            }
-        }
-    },
-    "resources": [
-        {
-            "apiVersion": "2016-09-01",
-            "type": "Microsoft.ContainerService/managedClusters/providers/diagnosticSettings",
-            "name": "[concat(parameters('clusterName'), '/Microsoft.Insights/service')]",
-            "properties": {
-                "workspaceId": "[parameters('workspaceId')]",
-                "logs": [
-                    {
-                        "category": "kube-audit",
-                        "enabled": true,
-                        "retentionPolicy": {
-                            "days": 0,
-                            "enabled": false
-                        }
-                    },
-                    {
-                        "category": "kube-audit-admin",
-                        "enabled": true,
-                        "retentionPolicy": {
-                            "days": 0,
-                            "enabled": false
-                        }
-                    },
-                    {
-                        "category": "guard",
-                        "enabled": true,
-                        "retentionPolicy": {
-                            "days": 0,
-                            "enabled": false
-                        }
-                    }
-                ],
-                "metrics": []
-            }
-        }
-    ]
+    "workspaceId": "[parameters('workspaceId')]",
+    "logAnalyticsDestinationType": "Dedicated"
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.ContainerService/managedClusters', parameters('name'))]"
+  ]
 }
 ```
 
+### Configure with Bicep
+
+To deploy AKS clusters that pass this rule:
+
+- Deploy a diagnostic settings sub-resource.
+- Enable logging for `kube-audit-admin` (or `kube-audit`) and `guard` log categories.
+
+For example:
+
+```bicep
+resource auditLogs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = {
+  name: 'audit'
+  scope: cluster
+  properties: {
+    logs: [
+      {
+        category: 'kube-audit-admin'
+        enabled: true
+        retentionPolicy: {
+          days: 0
+          enabled: false
+        }
+      }
+      {
+        category: 'guard'
+        enabled: true
+        retentionPolicy: {
+          days: 0
+          enabled: false
+        }
+      }
+    ]
+    workspaceId: workspaceId
+    logAnalyticsDestinationType: 'Dedicated'
+  }
+}
+```
+
+<!-- external:avm avm/res/container-service/managed-cluster diagnosticSettings -->
+
 ## LINKS
 
-- [Security audits](https://learn.microsoft.com/azure/architecture/framework/security/monitor-audit)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [Monitoring AKS data reference](https://learn.microsoft.com/azure/aks/monitor-aks-reference)
-- [Collect resource logs](https://learn.microsoft.com/azure/aks/monitor-aks#collect-resource-logs)
-- [Template reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings?tabs=json)
+- [AKS control plane/resource logs](https://learn.microsoft.com/azure/aks/monitor-aks#aks-control-planeresource-logs)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings)

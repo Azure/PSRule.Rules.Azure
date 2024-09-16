@@ -1,4 +1,5 @@
 ---
+reviewed: 2024-07-23
 severity: Important
 pillar: Cost Optimization
 category: CO:07 Component costs
@@ -23,7 +24,7 @@ As a result, collecting audit logs for _get_ and _list_ operations of a producti
 AKS provides two log categories for collecting audit logs, `kube-audit` and `kube-audit-admin`.
 
 - `kube-audit` - Audit log data for every audit event including _get_, _list_, _create_, _update_, _delete_, _patch_, and _post_.
-- `kube-audit-admin` - Is a subset of the `kube-audit` log category that excludes _get_ and list_ audit events.
+- `kube-audit-admin` - Is a subset of the `kube-audit` log category that excludes _get_ and _list_ audit events.
 
 In other words, both `kube-audit` and `kube-audit-admin` contain the same data except `kube-audit-admin` does not contain _get_ and _list_ events.
 Changes to the cluster configuration are captured with _create_, _update_, _delete_, _patch_, and _post_ events.
@@ -119,9 +120,11 @@ resource diagnosticSetting 'Microsoft.Insights/diagnosticSettings@2021-05-01-pre
 }
 ```
 
+<!-- external:avm avm/res/container-service/managed-cluster diagnosticSettings -->
+
 ## LINKS
 
 - [CO:07 Component costs](https://learn.microsoft.com/azure/well-architected/cost-optimization/optimize-component-costs)
-- [Monitor AKS](https://learn.microsoft.com/azure/aks/monitor-aks)
+- [Monitoring AKS data reference](https://learn.microsoft.com/azure/aks/monitor-aks-reference)
 - [AKS control plane/resource logs](https://learn.microsoft.com/azure/aks/monitor-aks#aks-control-planeresource-logs)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/diagnosticsettings)

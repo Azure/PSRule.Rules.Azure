@@ -227,6 +227,8 @@ resource privateCluster 'Microsoft.ContainerService/managedClusters@2024-01-01' 
 }
 ```
 
+<!-- external:avm avm/res/container-service/managed-cluster azurePolicyEnabled -->
+
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:
