@@ -840,7 +840,7 @@
                         "vmSize": "Standard_B2ms",
                         "osDiskSizeGB": 100,
                         "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-01')]",
-                        "maxPods": 50,
+                        "maxPods": 20,
                         "type": "VirtualMachineScaleSets",
                         "osType": "Linux",
                         "enableAutoScaling": true,

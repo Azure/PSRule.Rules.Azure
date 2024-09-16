@@ -30,7 +30,9 @@ To locate any configurations, search for the old option names within your Infras
 New name                                  | Old name                             | Available from
 --------                                  | --------                             | --------------
 `AZURE_AKS_CLUSTER_MINIMUM_VERSION`       | `Azure_AKSMinimumVersion`            | :octicons-milestone-24: v1.12.0
+`AZURE_AKS_POOL_MINIMUM_MAXPODS`          | `Azure_AKSNodeMinimumMaxPods`        | :octicons-milestone-24: v1.39.0
 `AZURE_RESOURCE_ALLOWED_LOCATIONS`        | `Azure_AllowedRegions`               | :octicons-milestone-24: v1.30.0
+`AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME` | `Azure_MinimumCertificateLifetime`   | :octicons-milestone-24: v1.39.0
 
 To update your configuration, use the new name instead.
 

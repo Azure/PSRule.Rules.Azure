@@ -234,10 +234,10 @@ resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-11-01
 
 ### Rule configuration
 
-<!-- module:config rule Azure_AKSNodeMinimumMaxPods -->
+<!-- module:config rule AZURE_AKS_POOL_MINIMUM_MAXPODS -->
 
 By default, this rule fails when node pools have `maxPods` set to less than 50.
-To configure this rule override the `Azure_AKSNodeMinimumMaxPods` configuration value with the minimum maxPods.
+To configure this rule, override the `AZURE_AKS_POOL_MINIMUM_MAXPODS` configuration value with the minimum maxPods.
 
 ## LINKS
 

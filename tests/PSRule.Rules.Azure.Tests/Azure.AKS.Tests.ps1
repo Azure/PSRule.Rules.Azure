@@ -733,14 +733,14 @@ Describe 'Azure.AKS' -Tag AKS {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'clusterA';
+            $ruleResult.Length | Should -Be 2;
+            $ruleResult.TargetName | Should -BeIn 'clusterA', 'clusterF';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 6;
-            $ruleResult.TargetName | Should -BeIn 'clusterB', 'clusterC/agentpool3', 'clusterC/agentpool4', 'clusterD', 'clusterE', 'clusterF';
+            $ruleResult.Length | Should -Be 5;
+            $ruleResult.TargetName | Should -BeIn 'clusterB', 'clusterC/agentpool3', 'clusterC/agentpool4', 'clusterD', 'clusterE';
         }
 
         It 'Azure.AKS.MinUserPoolNodes' {
@@ -1217,6 +1217,27 @@ Describe 'Azure.AKS' -Tag AKS {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult | Should -HaveCount 3;
             $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-B', 'cluster-D';
+        }
+
+        It 'Azure.AKS.NodeMinPods - HashTable option' {
+            $option = @{
+                'Configuration.AZURE_AKS_POOL_MINIMUM_MAXPODS' = 30
+            }
+
+            $result = Invoke-PSRule @invokeParams -InputPath $dataPath -Option $option
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AKS.NodeMinPods' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'cluster-B';
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 11;
+            $ruleResult.TargetName | Should -BeIn 'cluster-A', 'cluster-C', 'cluster-D', 'cluster-F', 'cluster-G', 'cluster-H', 'cluster-I', 'cluster-J', 'cluster-K', 'cluster-L', 'system';
         }
 
         It 'Azure.AKS.PlatformLogs - HashTable option - Excluding metrics category' {
