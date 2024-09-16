@@ -35,6 +35,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#432](https://github.com/Azure/PSRule.Rules.Azure/issues/432)
     - Verify that availability set members are in a backend pool by @BenjaminEngeset.
       [#67](https://github.com/Azure/PSRule.Rules.Azure/issues/67)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.29.7` as the minimum version by @BernieWhite.
+      [#3042](https://github.com/Azure/PSRule.Rules.Azure/issues/3042)
 - Bug fixed:
   - Fixed `Azure.AppService.AvailabilityZone` only detects premium by tier property @BenjaminEngeset.
     [#3034](https://github.com/Azure/PSRule.Rules.Azure/issues/3034)

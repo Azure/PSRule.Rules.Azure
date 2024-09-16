@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.28.1.47646",
-      "templateHash": "5111879364998616708"
+      "version": "0.29.47.4906",
+      "templateHash": "16153598617723280180"
     }
   },
   "parameters": {
@@ -73,7 +73,7 @@
     },
     "kubernetesVersion": {
       "type": "string",
-      "defaultValue": "1.28.9",
+      "defaultValue": "1.29.7",
       "metadata": {
         "description": "The version of Kubernetes."
       }
