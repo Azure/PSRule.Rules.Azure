@@ -35,6 +35,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
       [#432](https://github.com/Azure/PSRule.Rules.Azure/issues/432)
     - Verify that availability set members are in a backend pool by @BenjaminEngeset.
       [#67](https://github.com/Azure/PSRule.Rules.Azure/issues/67)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.29.7` as the minimum version by @BernieWhite.
+      [#3042](https://github.com/Azure/PSRule.Rules.Azure/issues/3042)
 - General improvements:
   - **Important change:** Replaced the `Azure_AKSNodeMinimumMaxPods` option with `AZURE_AKS_POOL_MINIMUM_MAXPODS` by @BernieWhite.
     [#941](https://github.com/Azure/PSRule.Rules.Azure/issues/941)

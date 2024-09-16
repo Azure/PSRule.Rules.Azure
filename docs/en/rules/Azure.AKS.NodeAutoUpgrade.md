@@ -60,7 +60,7 @@ For example:
         }
     },
     "properties": {
-        "kubernetesVersion": "1.28.9",
+        "kubernetesVersion": "1.29.7",
         "enableRBAC": true,
         "dnsPrefix": "[parameters('dnsPrefix')]",
         "agentPoolProfiles": "[variables('allPools')]",
@@ -137,7 +137,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
     }
   }
   properties: {
-    kubernetesVersion: '1.28.9'
+    kubernetesVersion: '1.29.7'
     enableRBAC: true
     dnsPrefix: dnsPrefix
     agentPoolProfiles: allPools
