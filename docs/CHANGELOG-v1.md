@@ -29,12 +29,21 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.39.0-B0072 (pre-release)
+
+What's changed since pre-release v1.39.0-B0029:
+
 - New rules:
   - Virtual Machine:
+    - Verify that virtual machines does not have public IPs attached by @BenjaminEngeset.
+      [#11](https://github.com/Azure/PSRule.Rules.Azure/issues/11)
     - Verify that multi-tenant Hosting Rights are used for Windows client VMs by @BenjaminEngeset.
       [#432](https://github.com/Azure/PSRule.Rules.Azure/issues/432)
     - Verify that availability set members are in a backend pool by @BenjaminEngeset.
       [#67](https://github.com/Azure/PSRule.Rules.Azure/issues/67)
+  - Virtual Machine Scale Sets:
+    - Verify that virtual machine scale set instances does not have public IPs attached by @BenjaminEngeset.
+      [#3014](https://github.com/Azure/PSRule.Rules.Azure/issues/3014)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.29.7` as the minimum version by @BernieWhite.
@@ -56,23 +65,6 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
     - If `Azure_MinimumCertificateLifetime` is set a warning will be generated until the configuration is removed.
     - Support for `Azure_MinimumCertificateLifetime` is deprecated and will be removed in v2.
     - See [upgrade notes][1] for details.
-- Bug fixed:
-  - Fixed `Azure.AppService.AvailabilityZone` only detects premium by tier property @BenjaminEngeset.
-    [#3034](https://github.com/Azure/PSRule.Rules.Azure/issues/3034)
-  - Fixed loading of expansion options from non-default options file @BernieWhite.
-    [#3033](https://github.com/Azure/PSRule.Rules.Azure/issues/3033)
-
-## v1.39.0-B0055 (pre-release)
-
-What's changed since pre-release v1.39.0-B0029:
-
-- New rules:
-  - Virtual Machine:
-    - Verify that virtual machines does not have public IPs attached by @BenjaminEngeset.
-      [#11](https://github.com/Azure/PSRule.Rules.Azure/issues/11)
-  - Virtual Machine Scale Sets:
-    - Verify that virtual machine scale set instances does not have public IPs attached by @BenjaminEngeset.
-      [#3014](https://github.com/Azure/PSRule.Rules.Azure/issues/3014)
 - Engineering:
   - Bump development tools to .NET 8.0 SDK by @BernieWhite.
     [#3017](https://github.com/Azure/PSRule.Rules.Azure/issues/3017)
@@ -81,6 +73,10 @@ What's changed since pre-release v1.39.0-B0029:
     [#3013](https://github.com/Azure/PSRule.Rules.Azure/issues/3013)
   - Fixed subscription aliases don't support tags by @BernieWhite.
     [#3021](https://github.com/Azure/PSRule.Rules.Azure/issues/3021)
+  - Fixed `Azure.AppService.AvailabilityZone` only detects premium by tier property @BenjaminEngeset.
+    [#3034](https://github.com/Azure/PSRule.Rules.Azure/issues/3034)
+  - Fixed loading of expansion options from non-default options file @BernieWhite.
+    [#3033](https://github.com/Azure/PSRule.Rules.Azure/issues/3033)
 
 ## v1.39.0-B0029 (pre-release)
 
