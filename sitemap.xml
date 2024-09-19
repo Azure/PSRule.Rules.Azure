@@ -269,6 +269,10 @@
          <lastmod>2024-09-19</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.GA_2024_09/</loc>
+         <lastmod>2024-09-19</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.MCSB.v1/</loc>
          <lastmod>2024-09-19</lastmod>
     </url>
@@ -342,6 +346,10 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2024_06/</loc>
+         <lastmod>2024-09-19</lastmod>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/baselines/Azure.Preview_2024_09/</loc>
          <lastmod>2024-09-19</lastmod>
     </url>
     <url>
