@@ -414,6 +414,8 @@ kind: Baseline
 metadata:
   name: Azure.GA_2023_03
   annotations:
+    export: true
+    moduleVersion: v1.26.0
     obsolete: true
 spec:
   configuration:
@@ -443,8 +445,13 @@ kind: Baseline
 metadata:
   name: Azure.Preview_2023_03
   annotations:
+    export: true
+    moduleVersion: v1.26.0
     obsolete: true
 spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.25.6'
   rule:
     tag:
       release: preview
@@ -469,6 +476,8 @@ kind: Baseline
 metadata:
   name: Azure.GA_2023_06
   annotations:
+    export: true
+    moduleVersion: v1.28.0
     obsolete: true
 spec:
   configuration:
@@ -499,8 +508,13 @@ kind: Baseline
 metadata:
   name: Azure.Preview_2023_06
   annotations:
+    export: true
+    moduleVersion: v1.28.0
     obsolete: true
 spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.25.6'
   rule:
     tag:
       release: preview
@@ -526,6 +540,8 @@ kind: Baseline
 metadata:
   name: Azure.GA_2023_09
   annotations:
+    export: true
+    moduleVersion: v1.30.0
     obsolete: true
 spec:
   configuration:
@@ -557,8 +573,13 @@ kind: Baseline
 metadata:
   name: Azure.Preview_2023_09
   annotations:
+    export: true
+    moduleVersion: v1.30.0
     obsolete: true
 spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.26.6'
   rule:
     tag:
       release: preview
@@ -585,6 +606,8 @@ kind: Baseline
 metadata:
   name: Azure.GA_2023_12
   annotations:
+    export: true
+    moduleVersion: v1.32.0
     obsolete: true
 spec:
   configuration:
@@ -617,8 +640,13 @@ kind: Baseline
 metadata:
   name: Azure.Preview_2023_12
   annotations:
+    export: true
+    moduleVersion: v1.32.0
     obsolete: true
 spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.27.7'
   rule:
     tag:
       release: preview
@@ -685,6 +713,9 @@ metadata:
     moduleVersion: v1.35.0
     obsolete: true
 spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.27.9'
   rule:
     tag:
       release: preview
@@ -715,6 +746,7 @@ metadata:
   annotations:
     export: true
     moduleVersion: v1.38.0
+    obsolete: true
 spec:
   configuration:
     # Configure minimum AKS cluster version
@@ -750,7 +782,11 @@ metadata:
   annotations:
     export: true
     moduleVersion: v1.38.0
+    obsolete: true
 spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.28.9'
   rule:
     tag:
       release: preview
@@ -772,3 +808,75 @@ spec:
       - '2023_12'
       - '2024_03'
       - '2024_06'
+
+---
+# Synopsis: Include rules released September 2024 or prior for Azure GA features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.GA_2024_09
+  annotations:
+    export: true
+    moduleVersion: v1.39.0
+spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.29.7'
+  rule:
+    tag:
+      release: GA
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+      - '2021_12'
+      - '2022_03'
+      - '2022_06'
+      - '2022_09'
+      - '2022_12'
+      - '2023_03'
+      - '2023_06'
+      - '2023_09'
+      - '2023_12'
+      - '2024_03'
+      - '2024_06'
+      - '2024_09'
+
+---
+# Synopsis: Include rules released September 2024 or prior for Azure preview only features.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: Azure.Preview_2024_09
+  annotations:
+    export: true
+    moduleVersion: v1.39.0
+spec:
+  configuration:
+    # Configure minimum AKS cluster version
+    AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.29.7'
+  rule:
+    tag:
+      release: preview
+      ruleSet:
+      - '2020_06'
+      - '2020_09'
+      - '2020_12'
+      - '2021_03'
+      - '2021_06'
+      - '2021_09'
+      - '2021_12'
+      - '2022_03'
+      - '2022_06'
+      - '2022_09'
+      - '2022_12'
+      - '2023_03'
+      - '2023_06'
+      - '2023_09'
+      - '2023_12'
+      - '2024_03'
+      - '2024_06'
+      - '2024_09'
