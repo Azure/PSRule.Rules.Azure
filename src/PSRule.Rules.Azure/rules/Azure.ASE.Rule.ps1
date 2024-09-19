@@ -13,7 +13,7 @@ Rule 'Azure.ASE.MigrateV3' -Ref 'AZR-000319' -Type 'Microsoft.Web/hostingEnviron
 }
 
 # Synopsis: Deploy app service environments using availability zones in supported regions to ensure high availability and resilience.
-Rule 'Azure.ASE.AvailabilityZone' -Ref 'AZR-000443' -Type 'Microsoft.Web/hostingEnvironments' -Tag @{ release = 'GA'; ruleSet = '2024_09 '; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.ASE.AvailabilityZone' -Ref 'AZR-000443' -Type 'Microsoft.Web/hostingEnvironments' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     # Dedicated host group does not support zone-redundancy.
     if ($TargetObject.properties.dedicatedHostCount) {
         return $Assert.Pass()

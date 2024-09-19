@@ -39,6 +39,9 @@
     },
     "ghcr.io/devcontainers/features/python:1": {
       "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/azure-cli": {
+      "version": "latest"
     }
   },
   "onCreateCommand": "sudo chown -R vscode:vscode /opt/microsoft/powershell/7/pwsh && sudo chmod u+x /opt/microsoft/powershell/7/pwsh && wget https://packages.microsoft.com/config/debian/12/packages-microsoft-prod.deb -O packages-microsoft-prod.deb && sudo dpkg -i packages-microsoft-prod.deb && rm packages-microsoft-prod.deb && sudo apt-get update && sudo apt-get install dotnet-sdk-8.0 -y && sudo apt-get install python3-pip -y",
