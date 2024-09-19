@@ -29,6 +29,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.39.0-B0118 (pre-release)
+
 What's changed since pre-release v1.39.0-B0072:
 
 - New features:
@@ -54,6 +56,8 @@ What's changed since pre-release v1.39.0-B0029:
       [#3014](https://github.com/Azure/PSRule.Rules.Azure/issues/3014)
 - Updated rules:
   - Azure Kubernetes Service:
+    - Updated `Azure.AKS.AuditLogs` documentation to call out important specific of the `kube-audit` log by @BernieWhite.
+      [#2449](https://github.com/Azure/PSRule.Rules.Azure/issues/2449)
     - Updated `Azure.AKS.Version` to use `1.29.7` as the minimum version by @BernieWhite.
       [#3042](https://github.com/Azure/PSRule.Rules.Azure/issues/3042)
 - General improvements:
