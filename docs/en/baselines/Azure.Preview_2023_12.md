@@ -1,4 +1,6 @@
 ---
+export: true
+moduleVersion: v1.32.0
 obsolete: true
 ---
 

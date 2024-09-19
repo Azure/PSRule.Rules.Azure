@@ -30,7 +30,7 @@ Rule 'Rule.Release' -Type 'PSRule.Rules.Rule' {
 # Synopsis: Rules must be added to a rule set.
 Rule 'Rule.RuleSet' -Type 'PSRule.Rules.Rule' {
     Recommend 'Add a ruleSet the to the rule.'
-    $Assert.HasField($TargetObject, 'Tag.ruleSet', $True)
+    $Assert.Match($TargetObject, 'Tag.ruleSet', '^(2020|2021|2022|2023|2024)_(03|06|09|12)$')
 }
 
 # Synopsis: Annotate rules with a valid Well-Architected Framework pillar.

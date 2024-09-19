@@ -118,7 +118,7 @@ Rule 'Azure.MySQL.AADOnly' -Ref 'AZR-000394' -Type 'Microsoft.DBforMySQL/flexibl
 }
 
 # Synopsis: Deploy Azure Database for MySQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience.
-Rule 'Azure.MySQL.ZoneRedundantHA' -Ref 'AZR-000432' -Type 'Microsoft.DBforMySQL/flexibleServers' -Tag @{ release = 'GA'; ruleSet = '2024_06 '; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.MySQL.ZoneRedundantHA' -Ref 'AZR-000432' -Type 'Microsoft.DBforMySQL/flexibleServers' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     # Check if the region supports availability zones.
     $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.DBforMySQL', 'flexibleServers')
     $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $provider.ZoneMappings

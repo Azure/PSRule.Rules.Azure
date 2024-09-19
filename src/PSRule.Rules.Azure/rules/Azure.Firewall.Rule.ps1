@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: Deploy firewall instances using availability zones in supported regions to ensure high availability and resilience.
-Rule 'Azure.Firewall.AvailabilityZone' -Ref 'AZR-000429' -Type 'Microsoft.Network/azureFirewalls' -Tag @{ release = 'GA'; ruleSet = '2024_06 '; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.Firewall.AvailabilityZone' -Ref 'AZR-000429' -Type 'Microsoft.Network/azureFirewalls' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     # Check if the region supports availability zones.
     $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.Network', 'azureFirewalls')
     $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $provider.ZoneMappings

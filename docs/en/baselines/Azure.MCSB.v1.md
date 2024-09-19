@@ -9,7 +9,7 @@ experimental: true
 
 <!-- EXPERIMENTAL -->
 
-Microsoft Cloud Security Benchmark v1.
+Rules for GA Azure features that align to the Microsoft Cloud Security Benchmark v1. This baseline is updated each release.
 
 ## Controls
 

@@ -83,7 +83,7 @@ Rule 'Azure.PostgreSQL.AAD' -Ref 'AZR-000389' -Type 'Microsoft.DBforPostgreSQL/f
 }
 
 # Synopsis: Deploy Azure Database for PostgreSQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience.
-Rule 'Azure.PostgreSQL.ZoneRedundantHA' -Ref 'AZR-000434' -Type 'Microsoft.DBforPostgreSQL/flexibleServers' -Tag @{ release = 'GA'; ruleSet = '2024_06 '; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.PostgreSQL.ZoneRedundantHA' -Ref 'AZR-000434' -Type 'Microsoft.DBforPostgreSQL/flexibleServers' -Tag @{ release = 'GA'; ruleSet = '2024_09'; 'Azure.WAF/pillar' = 'Reliability'; } {
     # Check if the region supports availability zones.
     $provider = [PSRule.Rules.Azure.Runtime.Helper]::GetResourceType('Microsoft.DBforPostgreSQL', 'flexibleServers')
     $availabilityZones = GetAvailabilityZone -Location $TargetObject.Location -Zone $provider.ZoneMappings
