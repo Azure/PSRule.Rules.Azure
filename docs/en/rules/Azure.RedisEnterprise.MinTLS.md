@@ -1,4 +1,5 @@
 ---
+reviewed: 2024-09-27
 severity: Critical
 pillar: Security
 category: SE:07 Encryption
@@ -14,16 +15,18 @@ Redis Cache should reject TLS versions older than 1.2.
 
 ## DESCRIPTION
 
-The minimum version of TLS that Redis Cache accepts is configurable.
+The minimum version of TLS that Redis Cache accepts was previously configurable.
 Older TLS versions are no longer considered secure by industry standards, such as PCI DSS.
 
-Azure lets you disable outdated protocols and require connections to use a minimum of TLS 1.2.
-By default, TLS 1.0, TLS 1.1, and TLS 1.2 is accepted.
+Depending on when your cache was deployed you may be using a default that specifies an older version of TLS.
+Any new deployments do not allow TLS 1.0 or 1.1 to be specified, however existing cache deployment may require updating.
+
+Support for TLS 1.0 and TLS 1.1 will be removed in 1 November 2024.
 
 ## RECOMMENDATION
 
 Consider configuring the minimum supported TLS version to be 1.2.
-Support for TLS 1.0/ 1.1 version will be removed.
+No action is required for new cache deployments, which only support a minimum of TLS 1.2.
 
 ## EXAMPLES
 
@@ -31,14 +34,16 @@ Support for TLS 1.0/ 1.1 version will be removed.
 
 To deploy caches that pass this rule:
 
-- Set the `properties.minimumTlsVersion` property to `1.2`.
+- Set the `properties.minimumTlsVersion` property to a minimum of `1.2` for existing caches with an old version of TLS configured.
+  It is not possible to set the `properties.minimumTlsVersion` on new cache deployments.
+  New cache deployments only support a minimum TLS version of 1.2.
 
 For example:
 
 ```json
 {
   "type": "Microsoft.Cache/redisEnterprise",
-  "apiVersion": "2022-01-01",
+  "apiVersion": "2024-02-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -54,12 +59,14 @@ For example:
 
 To deploy caches that pass this rule:
 
-- Set the `properties.minimumTlsVersion` property to `1.2`.
+- Set the `properties.minimumTlsVersion` property to a minimum of `1.2` for existing caches with an old version of TLS configured.
+  It is not possible to set the `properties.minimumTlsVersion` on new cache deployments.
+  New cache deployments only support a minimum TLS version of 1.2.
 
 For example:
 
 ```bicep
-resource cache 'Microsoft.Cache/redisEnterprise@2022-01-01' = {
+resource cache 'Microsoft.Cache/redisEnterprise@2024-02-01' = {
   name: name
   location: location
   sku: {
@@ -76,6 +83,7 @@ resource cache 'Microsoft.Cache/redisEnterprise@2022-01-01' = {
 To deploy caches that pass this rule:
 
 - Use the `--set` parameter.
+  This parameter only applies to old cache deployments using TLS 1.0 or TLS 1.1.
 
 For example:
 
@@ -88,6 +96,7 @@ az redis update -n '<name>' -g '<resource_group>' --set minimumTlsVersion=1.2
 To deploy caches that pass this rule:
 
 - Use the `-MinimumTlsVersion` parameter.
+  This parameter only applies to old cache deployments using TLS 1.0 or TLS 1.1.
 
 For example:
 

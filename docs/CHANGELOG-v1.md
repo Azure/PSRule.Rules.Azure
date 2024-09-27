@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.39.0-B0118:
+
+- Bug fixes:
+  - Fixed TLS defaults for `Azure.Redis.MinTLS` and `Azure.RedisEnterprise.MinTLS` by @BernieWhite.
+    [#3066](https://github.com/Azure/PSRule.Rules.Azure/issues/3066)
+
 ## v1.39.0-B0118 (pre-release)
 
 What's changed since pre-release v1.39.0-B0072:
