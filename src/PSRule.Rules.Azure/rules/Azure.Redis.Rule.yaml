@@ -65,13 +65,13 @@ metadata:
     ruleSet: 2020_06
     Azure.WAF/pillar: Security
   labels:
-    Azure.MCSB.v1/control: 'DP-3'
+    Azure.MCSB.v1/control: DP-3
 spec:
   type:
     - Microsoft.Cache/Redis
   condition:
     field: properties.minimumTlsVersion
-    version: '>=1.2'
+    hasDefault: '1.2'
 
 ---
 # Synopsis: Redis cache should disable public network access.
