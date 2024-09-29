@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Identity and access management
+category: SE:05 Identity and access management
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.AnonymousAccess/
 ---
@@ -114,7 +114,7 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = 
 }
 ```
 
-<!-- external:avm avm/res/container-registry/registry anonymousPullEnabled -->
+<!-- external:avm avm/res/container-registry/registry:0.5.1 anonymousPullEnabled -->
 
 ### Configure with Azure CLI
 
@@ -131,7 +131,7 @@ Anonymous pull access is only available in the `Standard` and `Premium` service 
 
 ## LINKS
 
-- [Authentication with Azure AD](https://learn.microsoft.com/azure/well-architected/security/design-identity-authentication)
+- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
 - [Make your container registry content publicly available](https://learn.microsoft.com/azure/container-registry/anonymous-pull-access)
 - [Azure security baseline for Container Registry](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline)
 - [IM-1: Use centralized identity and authentication system](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline#im-1-use-centralized-identity-and-authentication-system)

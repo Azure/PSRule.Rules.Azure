@@ -132,6 +132,8 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = 
 }
 ```
 
+<!-- external:avm avm/res/container-registry/registry:0.5.1 name -->
+
 ## NOTES
 
 This rule does not check if container registry names are unique.

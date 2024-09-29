@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Data management
+category: RE:04 Target metrics
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.SoftDelete/
 ---
@@ -119,7 +119,7 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
 }
 ```
 
-<!-- external:avm avm/res/container-registry/registry softDeletePolicyStatus -->
+<!-- external:avm avm/res/container-registry/registry:0.5.1 softDeletePolicyStatus -->
 
 ### Configure with Azure CLI
 
@@ -129,7 +129,7 @@ az acr config soft-delete update -r '<name>' --days 90 --status enabled
 
 ## LINKS
 
-- [Data Management for Reliability](https://learn.microsoft.com/azure/architecture/framework/resiliency/data-management)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Azure Container Registry (ACR) soft delete policy](https://learn.microsoft.com/azure/container-registry/container-registry-soft-delete-policy)
 - [Azure Container Registry service tiers](https://learn.microsoft.com/azure/container-registry/container-registry-skus)
 - [Policy for untagged manifests](https://learn.microsoft.com/azure/container-registry/container-registry-retention-policy)
