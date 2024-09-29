@@ -100,7 +100,7 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = 
 }
 ```
 
-<!-- external:avm avm/res/container-registry/registry trustPolicyStatus -->
+<!-- external:avm avm/res/container-registry/registry:0.5.1 trustPolicyStatus -->
 
 ## LINKS
 

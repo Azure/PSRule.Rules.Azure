@@ -2,7 +2,7 @@
 reviewed: 2021-11-13
 severity: Important
 pillar: Reliability
-category: Requirements
+category: RE:04 Target metrics
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.MinSku/
 ms-content-id: a70d16d4-3717-4eef-b588-8a0204860d6e
@@ -121,11 +121,11 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
 }
 ```
 
-<!-- external:avm avm/res/container-registry/registry acrSku -->
+<!-- external:avm avm/res/container-registry/registry:0.5.1 acrSku -->
 
 ## LINKS
 
-- [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Azure Container Registry SKUs](https://learn.microsoft.com/azure/container-registry/container-registry-skus)
 - [Geo-replication in Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication)
 - [Best practices for Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)

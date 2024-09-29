@@ -31,6 +31,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.39.0-B0118:
 
+- Engineering:
+  - Quality updates to rule documentation by @BernieWhite.
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
 - Bug fixes:
   - Fixed TLS defaults for `Azure.Redis.MinTLS` and `Azure.RedisEnterprise.MinTLS` by @BernieWhite.
     [#3066](https://github.com/Azure/PSRule.Rules.Azure/issues/3066)

@@ -99,7 +99,7 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2023-05-01' = {
 }
 ```
 
-<!-- external:avm avm/res/app/managed-environment zoneRedundant -->
+<!-- external:avm avm/res/app/managed-environment:0.8.0 zoneRedundant -->
 
 ## LINKS
 

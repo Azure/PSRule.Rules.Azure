@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Data management
+category: RE:05 High-availability multi-region design
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.GeoReplica/
 ---
@@ -93,7 +93,7 @@ For example:
   "resources": [
     {
       "type": "Microsoft.ContainerRegistry/registries",
-      "apiVersion": "2019-12-01-preview",
+      "apiVersion": "2023-11-01-preview",
       "name": "[parameters('acrName')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -109,7 +109,7 @@ For example:
     },
     {
       "type": "Microsoft.ContainerRegistry/registries/replications",
-      "apiVersion": "2019-12-01-preview",
+      "apiVersion": "2023-11-01-preview",
       "name": "[format('{0}/{1}', parameters('acrName'), parameters('acrReplicaLocation'))]",
       "location": "[parameters('acrReplicaLocation')]",
       "properties": {},
@@ -137,7 +137,7 @@ To deploy Container Registries that pass this rule:
 For example:
 
 ```bicep
-resource containerRegistry 'Microsoft.ContainerRegistry/registries@2019-12-01-preview' = {
+resource containerRegistry 'Microsoft.ContainerRegistry/registries@2023-11-01-preview' = {
   name: acrName
   location: location
   sku: {
@@ -152,7 +152,7 @@ resource containerRegistry 'Microsoft.ContainerRegistry/registries@2019-12-01-pr
   }
 }
 
-resource containerRegistryReplica 'Microsoft.ContainerRegistry/registries/replications@2019-12-01-preview' = {
+resource containerRegistryReplica 'Microsoft.ContainerRegistry/registries/replications@2023-11-01-preview' = {
   parent: containerRegistry
   name: '${acrReplicaLocation}'
   location: acrReplicaLocation
@@ -167,7 +167,7 @@ This rule applies when analyzing resources deployed (in-flight) to Azure.
 
 ## LINKS
 
-- [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
+- [RE:05 High-availability multi-region design](https://learn.microsoft.com/azure/well-architected/reliability/highly-available-multi-region-design)
 - [Geo-replicate multi-region deployments](https://learn.microsoft.com/azure/container-registry/container-registry-best-practices#geo-replicate-multi-region-deployments)
 - [Geo-replication in Azure Container Registry](https://learn.microsoft.com/azure/container-registry/container-registry-geo-replication)
 - [Tutorial: Prepare a geo-replicated Azure container registry](https://learn.microsoft.com/azure/container-registry/container-registry-tutorial-prepare-registry)

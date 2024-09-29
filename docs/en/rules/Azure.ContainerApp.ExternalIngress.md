@@ -43,7 +43,7 @@ For example:
 ```json
 {
   "type": "Microsoft.App/containerApps",
-  "apiVersion": "2023-05-01",
+  "apiVersion": "2024-03-01",
   "name": "[parameters('appName')]",
   "location": "[parameters('location')]",
   "identity": {
@@ -60,8 +60,9 @@ For example:
     },
     "configuration": {
       "ingress": {
-        "external": false,
         "allowInsecure": false,
+        "external": false,
+        "ipSecurityRestrictions": "[variables('ipSecurityRestrictions')]",
         "stickySessions": {
           "affinity": "none"
         }
@@ -83,7 +84,7 @@ To deploy Container Apps that pass this rule:
 For example:
 
 ```bicep
-resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
+resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
   name: appName
   location: location
   identity: {
@@ -100,8 +101,9 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
     }
     configuration: {
       ingress: {
-        external: false
         allowInsecure: false
+        external: false
+        ipSecurityRestrictions: ipSecurityRestrictions
         stickySessions: {
           affinity: 'none'
         }
@@ -111,7 +113,7 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
 }
 ```
 
-<!-- external:avm avm/res/app/container-app ingressExternal -->
+<!-- external:avm avm/res/app/container-app:0.11.0 ingressExternal -->
 
 ## NOTES
 

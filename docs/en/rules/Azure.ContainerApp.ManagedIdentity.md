@@ -111,7 +111,7 @@ resource containerApp 'Microsoft.App/containerApps@2023-05-01' = {
 }
 ```
 
-<!-- external:avm avm/res/app/container-app managedIdentities -->
+<!-- external:avm avm/res/app/container-app:0.11.0 managedIdentities -->
 
 ### Configure with Azure Policy
 

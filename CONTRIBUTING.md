@@ -96,9 +96,15 @@ When authoring and improving rule documentation, please follow these guidelines:
   For example _https://learn.microsoft.com/azure/aks/concepts-scale_ instead of _https://learn.microsoft.com/en-us/azure/aks/concepts-scale_.
 - **Add examples** &mdash; of a Azure resource that would pass the rule.
   For rules that apply to pre-flight checks provide an example in Azure Bicep _and_ Azure template format.
-  - Additionally if a pre-built Azure Verified Module is available, reference after the Bicep example using a short-code.
-    The short-code format is `<!-- external:avm <module_path> <params> -->`.
-    For more information see the [example](https://github.com/Azure/PSRule.Rules.Azure/blob/9bb5589bd1ddb01197866d5199f3954cf6f9206b/docs/en/rules/Azure.ContainerApp.MinReplicas.md?plain=1#L113).
+- **Reference Azure Verified Module** &mdash; If a pre-built Azure Verified Module (AVM) is available,
+  reference after the Bicep example using a short-code.
+  The short-code format is `<!-- external:avm <path>[:<suggestedVersion>] [<params>,...] -->`.
+  - For example `<!-- external:avm avm/res/app/container-app:0.11.0 scaleMinReplicas -->`:
+    - The module path is `avm/res/app/container-app`.
+    - The suggested version is `0.11.0`.
+    - The parameter that must be configured to pass the rule is `scaleMinReplicas`.
+      Additional parameters can be added if multiple must be configured by separating with a comma (but no spaces).
+    - For more information see the [example](https://github.com/Azure/PSRule.Rules.Azure/blob/9bb5589bd1ddb01197866d5199f3954cf6f9206b/docs/en/rules/Azure.ContainerApp.MinReplicas.md?plain=1#L113).
 
   [4]: https://microsoft.github.io/PSRule/latest/authoring/writing-rule-help/#writing-markdown-documentation
 

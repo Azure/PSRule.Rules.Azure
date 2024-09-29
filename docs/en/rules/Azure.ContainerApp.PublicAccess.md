@@ -110,7 +110,7 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2024-03-01' = {
 }
 ```
 
-<!-- external:avm avm/res/app/managed-environment infrastructureSubnetId,internal -->
+<!-- external:avm avm/res/app/managed-environment:0.8.0 infrastructureSubnetId,internal -->
 
 ## LINKS
 

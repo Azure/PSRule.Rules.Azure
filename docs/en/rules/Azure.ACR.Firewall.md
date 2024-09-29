@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Application endpoints
+category: SE:06 Network controls
 resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Firewall/
 ---
@@ -40,7 +40,7 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2023-01-01-preview",
+  "apiVersion": "2023-11-01-preview",
   "name": "[parameters('registryName')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -72,7 +72,7 @@ To deploy Azure Container Registries that pass this rule:
 For example:
 
 ```bicep
-resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
+resource acr 'Microsoft.ContainerRegistry/registries@2023-11-01-preview' = {
   name: registryName
   location: location
   sku: {
@@ -94,17 +94,18 @@ resource acr 'Microsoft.ContainerRegistry/registries@2023-01-01-preview' = {
 }
 ```
 
-<!-- external:avm avm/res/container-registry/registry publicNetworkAccess -->
+<!-- external:avm avm/res/container-registry/registry:0.5.1 publicNetworkAccess -->
 
 ## NOTES
 
 Configuring firewall rules or using private endpoints is only available for the Premium SKU.
 
-When used with Microsoft Defender for Containers, you must enable trusted Microsoft services for the vulnerability assessment feature to be able to scan the registry.
+When used with Microsoft Defender for Containers,
+you must enable trusted Microsoft services for the vulnerability assessment feature to be able to scan the registry.
 
 ## LINKS
 
-- [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/well-architected/security/design-network-endpoints)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [Restrict access using private endpoint](https://learn.microsoft.com/azure/container-registry/container-registry-private-link)
 - [Restrict access using firewall rules](https://learn.microsoft.com/azure/container-registry/container-registry-access-selected-networks)
 - [Allow trusted services to securely access a network-restricted container registry](https://learn.microsoft.com/azure/container-registry/allow-access-trusted-services)
