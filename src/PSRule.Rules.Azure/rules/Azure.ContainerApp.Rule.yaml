@@ -216,7 +216,7 @@ spec:
     allOf:
       - type: '.'
         equals: Microsoft.App/containerApps
-      - field: 'properties.configuration.ingress'
+      - field: properties.configuration.ingress
         exists: true
 
 #endregion Selectors

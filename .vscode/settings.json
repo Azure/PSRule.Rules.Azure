@@ -92,6 +92,7 @@
     "lifecycle",
     "maxpods",
     "MCSB",
+    "mkdocs",
     "Newtonsoft",
     "nics",
     "NOTCOUNT",
@@ -116,6 +117,8 @@
     "runbook",
     "Sarif",
     "SBOM",
+    "shortcode",
+    "shortcodes",
     "SIEM",
     "SKUs",
     "SNAT",
@@ -165,6 +168,7 @@
   ],
   "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
   "cSpell.enableFiletypes": [
-    "bicep"
+    "bicep",
+    "python"
   ]
 }

@@ -140,7 +140,7 @@ resource containerApp 'Microsoft.App/containerApps@2024-03-01' = {
 }
 ```
 
-<!-- external:avm avm/res/app/container-app ipSecurityRestrictions -->
+<!-- external:avm avm/res/app/container-app:0.11.0 ipSecurityRestrictions -->
 
 ## NOTES
 

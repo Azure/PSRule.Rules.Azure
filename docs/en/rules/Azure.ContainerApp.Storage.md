@@ -1,7 +1,7 @@
 ---
 severity: Awareness
 pillar: Reliability
-category: Reliability design principles
+category: RE:05 Redundancy
 resource: Container App
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.Storage/
 ---
@@ -14,7 +14,8 @@ Use of Azure Files volume mounts to persistent storage container data.
 
 ## DESCRIPTION
 
-Container apps allows you to use different types of storage. This can be achieved by using volume mounts.
+Container apps allows you to use different types of storage.
+This can be achieved by using volume mounts.
 
 There are considerations to be taken, whether persistent storage is suitable for your app or if non-persistent storage is suitable.
 Apps may require no storage.
@@ -23,8 +24,9 @@ By default all files created inside a container are stored on a writable contain
 
 Some considerations when using container file system storage:
 
-- The data doesn’t persist when that container no longer exists, and it can be difficult to get the data out of the container if another process needs it.
-- There are no capacity guarantees. The available storage depends on the amount of disk space available in the container.
+- The data doesn't persist when that container no longer exists, and it can be difficult to get the data out of the container if another process needs it.
+- There are no capacity guarantees.
+The available storage depends on the amount of disk space available in the container.
 
 Usage examples for this can be a stateless web API or a single page application (that just calls APIs).
 
@@ -166,6 +168,6 @@ To enable Azure Files storage, a storage definition must be defined in the Conta
 
 ## LINKS
 
-- [Reliability design principles](https://learn.microsoft.com/azure/architecture/framework/resiliency/principles#design-for-scale-out)
+- [RE:05 Redundancy](https://learn.microsoft.com/azure/well-architected/reliability/redundancy)
 - [Use storage mounts in Azure Container Apps](https://learn.microsoft.com/azure/container-apps/storage-mounts)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.app/containerapps#volumemount)
