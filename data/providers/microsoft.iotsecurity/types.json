@@ -32,6 +32,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-02-01-preview",
       "2021-09-01-preview",
       "2021-02-01-preview"
@@ -70,6 +71,7 @@
     "aliases": null,
     "resourceType": "locations/deviceGroups/alerts",
     "apiVersions": [
+      "2024-06-01-preview",
       "2023-02-01-preview",
       "2021-07-01-preview"
     ],
@@ -96,6 +98,18 @@
     "resourceType": "locations/deviceGroups/alerts/pcaps",
     "apiVersions": [
       "2023-02-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/deviceGroups/alerts/violations",
+    "apiVersions": [
+      "2024-06-01-preview"
     ],
     "locations": [
       "East US",
@@ -154,6 +168,19 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/inventoryNetworks",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2 EUAP",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/remoteConfigurations",
     "apiVersions": [
       "2021-09-01-preview"
@@ -182,7 +209,20 @@
     "aliases": null,
     "resourceType": "locations/sites",
     "apiVersions": [
+      "2024-06-01-preview",
       "2021-09-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/sites/inventoryNetworks",
+    "apiVersions": [
+      "2024-06-01-preview"
     ],
     "locations": [
       "East US",

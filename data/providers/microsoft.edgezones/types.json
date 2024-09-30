@@ -1,6 +1,15 @@
 [
   {
     "aliases": null,
+    "resourceType": "extendedZones",
+    "apiVersions": [
+      "2024-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2024-04-01-preview"

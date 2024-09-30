@@ -1,0 +1,18 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Authorities",
+    "apiVersions": [
+      "2024-01-26-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "West US 2"
+    ],
+    "zoneMappings": []
+  }
+]

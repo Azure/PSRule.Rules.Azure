@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-05-15-preview",
       "2024-05-01-preview",
       "2024-04-01",
       "2024-03-01-preview",
@@ -22,6 +23,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-05-15-preview",
       "2024-05-01-preview",
       "2024-04-01",
       "2024-03-01-preview",
@@ -50,6 +52,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-05-15-preview",
       "2024-05-01-preview",
       "2024-04-01",
       "2024-03-01-preview",
@@ -69,6 +72,7 @@
     "aliases": null,
     "resourceType": "packetCoreControlPlaneVersions",
     "apiVersions": [
+      "2024-05-15-preview",
       "2024-05-01-preview",
       "2024-04-01",
       "2024-03-01-preview",

@@ -146,6 +146,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
       "2024-02-01-preview",
@@ -168,6 +169,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
       "2024-02-01-preview",
@@ -224,6 +226,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
       "2024-02-01-preview",
@@ -444,6 +447,43 @@
     "zoneMappings": []
   },
   {
+    "aliases": null,
+    "resourceType": "SqlServerEsuLicenses",
+    "apiVersions": [
+      "2024-05-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "South Africa North",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.AzureArcData/sqlServerInstances/alwaysOnRole": "properties.alwaysOnRole",
       "Microsoft.AzureArcData/sqlServerInstances/azureDefenderStatus": "properties.azureDefenderStatus",
@@ -485,6 +525,7 @@
     },
     "resourceType": "SqlServerInstances",
     "apiVersions": [
+      "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
       "2024-02-01-preview",
@@ -599,6 +640,7 @@
     },
     "resourceType": "SqlServerInstances/AvailabilityGroups",
     "apiVersions": [
+      "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
       "2024-02-01-preview",
@@ -675,6 +717,7 @@
     },
     "resourceType": "SqlServerInstances/Databases",
     "apiVersions": [
+      "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
       "2024-02-01-preview",
@@ -721,6 +764,7 @@
     "aliases": null,
     "resourceType": "SqlServerLicenses",
     "apiVersions": [
+      "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview"
     ],

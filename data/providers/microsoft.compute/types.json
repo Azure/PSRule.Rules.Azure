@@ -23,6 +23,7 @@
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -113,6 +114,7 @@
     },
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -350,7 +352,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -429,6 +435,7 @@
     },
     "resourceType": "capacityReservationGroups/capacityReservations",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -666,7 +673,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -1019,7 +1030,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -1367,6 +1382,7 @@
     },
     "resourceType": "diskAccesses",
     "apiVersions": [
+      "2024-03-02",
       "2023-10-02",
       "2023-04-02",
       "2023-01-02",
@@ -1457,6 +1473,7 @@
     },
     "resourceType": "diskEncryptionSets",
     "apiVersions": [
+      "2024-03-02",
       "2023-10-02",
       "2023-04-02",
       "2023-01-02",
@@ -1625,6 +1642,7 @@
     },
     "resourceType": "disks",
     "apiVersions": [
+      "2024-03-02",
       "2023-10-02",
       "2023-04-02",
       "2023-01-02",
@@ -1869,7 +1887,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -1991,6 +2013,7 @@
     },
     "resourceType": "galleries",
     "apiVersions": [
+      "2024-03-03",
       "2023-07-03",
       "2022-08-03",
       "2022-03-03",
@@ -2073,6 +2096,7 @@
     },
     "resourceType": "galleries/applications",
     "apiVersions": [
+      "2024-03-03",
       "2023-07-03",
       "2022-08-03",
       "2022-03-03",
@@ -2214,6 +2238,7 @@
     },
     "resourceType": "galleries/applications/versions",
     "apiVersions": [
+      "2024-03-03",
       "2023-07-03",
       "2022-08-03",
       "2022-03-03",
@@ -2309,6 +2334,7 @@
     },
     "resourceType": "galleries/images",
     "apiVersions": [
+      "2024-03-03",
       "2023-07-03",
       "2022-08-03",
       "2022-03-03",
@@ -2479,6 +2505,7 @@
     },
     "resourceType": "galleries/images/versions",
     "apiVersions": [
+      "2024-03-03",
       "2023-07-03",
       "2022-08-03",
       "2022-03-03",
@@ -2552,6 +2579,7 @@
     },
     "resourceType": "hostGroups",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -2793,7 +2821,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -2872,6 +2904,7 @@
     },
     "resourceType": "hostGroups/hosts",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -3113,7 +3146,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -3210,6 +3247,7 @@
     },
     "resourceType": "images",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -3284,6 +3322,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -3356,6 +3395,7 @@
     "aliases": null,
     "resourceType": "locations/capsoperations",
     "apiVersions": [
+      "2024-03-03",
       "2023-07-03",
       "2022-08-03",
       "2022-03-03",
@@ -3528,6 +3568,8 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2024-07-01",
+      "2024-03-03",
       "2024-03-01",
       "2023-09-01",
       "2023-07-03",
@@ -3665,6 +3707,7 @@
     "aliases": null,
     "resourceType": "locations/diagnosticOperations",
     "apiVersions": [
+      "2024-06-01-preview",
       "2024-03-01-preview",
       "2021-06-01-preview"
     ],
@@ -3718,6 +3761,7 @@
     "aliases": null,
     "resourceType": "locations/diagnostics",
     "apiVersions": [
+      "2024-06-01-preview",
       "2024-03-01-preview",
       "2021-06-01-preview"
     ],
@@ -3771,6 +3815,7 @@
     "aliases": null,
     "resourceType": "locations/diskoperations",
     "apiVersions": [
+      "2024-03-02",
       "2023-10-02",
       "2023-04-02",
       "2023-01-02",
@@ -3842,6 +3887,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -3862,6 +3908,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/publishers",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -3925,6 +3972,7 @@
     "aliases": null,
     "resourceType": "locations/edgeZones/vmimages",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -3988,6 +4036,7 @@
     "aliases": null,
     "resourceType": "locations/galleries",
     "apiVersions": [
+      "2024-03-03",
       "2023-07-03",
       "2022-08-03",
       "2022-03-03",
@@ -4051,6 +4100,7 @@
     "aliases": null,
     "resourceType": "locations/logAnalytics",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4122,6 +4172,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4198,8 +4249,118 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/placementRecommendations",
+    "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
+      "2021-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/placementScores",
+    "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
+      "2021-06-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2024-07-01",
+      "2024-03-03",
       "2024-03-01",
       "2023-09-01",
       "2023-07-03",
@@ -4282,6 +4443,7 @@
     "aliases": null,
     "resourceType": "locations/recommendations",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4342,6 +4504,7 @@
     "aliases": null,
     "resourceType": "locations/runCommands",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4414,6 +4577,8 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2024-07-01",
+      "2024-03-03",
       "2024-03-01",
       "2023-09-01",
       "2023-07-03",
@@ -4496,6 +4661,7 @@
     "aliases": null,
     "resourceType": "locations/spotEvictionRates",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4560,6 +4726,7 @@
     "aliases": null,
     "resourceType": "locations/spotPriceHistory",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4624,6 +4791,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4701,6 +4869,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachines",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4774,6 +4943,7 @@
     "aliases": null,
     "resourceType": "locations/virtualMachineScaleSets",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4847,6 +5017,7 @@
     "aliases": null,
     "resourceType": "locations/vmSizes",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -4924,6 +5095,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -5000,6 +5172,7 @@
     "aliases": null,
     "resourceType": "payloadGroups",
     "apiVersions": [
+      "2024-03-03",
       "2023-07-03"
     ],
     "locations": [
@@ -5052,6 +5225,7 @@
     },
     "resourceType": "proximityPlacementGroups",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -5295,7 +5469,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -5518,6 +5696,7 @@
     },
     "resourceType": "restorePointCollections",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -5743,6 +5922,7 @@
     },
     "resourceType": "restorePointCollections/restorePoints",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -5815,6 +5995,7 @@
     "aliases": null,
     "resourceType": "restorePointCollections/restorePoints/diskRestorePoints",
     "apiVersions": [
+      "2024-03-02",
       "2023-10-02",
       "2023-04-02",
       "2023-01-02",
@@ -6038,6 +6219,7 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2024-03-02",
       "2023-10-02",
       "2023-04-02",
       "2023-01-02",
@@ -6111,6 +6293,7 @@
     },
     "resourceType": "sshPublicKeys",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -6346,6 +6529,14 @@
       "Microsoft.Compute/virtualMachines/provisioningState": "properties.provisioningState",
       "Microsoft.Compute/virtualMachines/proximityPlacementGroup": "properties.proximityPlacementGroup",
       "Microsoft.Compute/virtualMachines/proximityPlacementGroup.id": "properties.proximityPlacementGroup.id",
+      "Microsoft.Compute/virtualMachines/scheduledEventsPolicy": "properties.scheduledEventsPolicy",
+      "Microsoft.Compute/virtualMachines/scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets": "properties.scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets",
+      "Microsoft.Compute/virtualMachines/scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph": "properties.scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph",
+      "Microsoft.Compute/virtualMachines/scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph.enable": "properties.scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph.enable",
+      "Microsoft.Compute/virtualMachines/scheduledEventsPolicy.userInitiatedReboot": "properties.scheduledEventsPolicy.userInitiatedReboot",
+      "Microsoft.Compute/virtualMachines/scheduledEventsPolicy.userInitiatedReboot.automaticallyApprove": "properties.scheduledEventsPolicy.userInitiatedReboot.automaticallyApprove",
+      "Microsoft.Compute/virtualMachines/scheduledEventsPolicy.userInitiatedRedeploy": "properties.scheduledEventsPolicy.userInitiatedRedeploy",
+      "Microsoft.Compute/virtualMachines/scheduledEventsPolicy.userInitiatedRedeploy.automaticallyApprove": "properties.scheduledEventsPolicy.userInitiatedRedeploy.automaticallyApprove",
       "Microsoft.Compute/virtualMachines/scheduledEventsProfile": "properties.scheduledEventsProfile",
       "Microsoft.Compute/virtualMachines/scheduledEventsProfile.osImageNotificationProfile": "properties.scheduledEventsProfile.osImageNotificationProfile",
       "Microsoft.Compute/virtualMachines/scheduledEventsProfile.osImageNotificationProfile.enable": "properties.scheduledEventsProfile.osImageNotificationProfile.enable",
@@ -6389,6 +6580,8 @@
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType": "properties.storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].managedDisk.storageAccountType": "properties.storageProfile.dataDisks[*].managedDisk.storageAccountType",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].name": "properties.storageProfile.dataDisks[*].name",
+      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].sourceResource": "properties.storageProfile.dataDisks[*].sourceResource",
+      "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].sourceResource.id": "properties.storageProfile.dataDisks[*].sourceResource.id",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].toBeDetached": "properties.storageProfile.dataDisks[*].toBeDetached",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].vhd": "properties.storageProfile.dataDisks[*].vhd",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].vhd.uri": "properties.storageProfile.dataDisks[*].vhd.uri",
@@ -6447,6 +6640,7 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -6697,7 +6891,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -6794,6 +6992,7 @@
     },
     "resourceType": "virtualMachines/extensions",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -6953,6 +7152,7 @@
     },
     "resourceType": "virtualMachines/runCommands",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -7018,6 +7218,7 @@
     "aliases": null,
     "resourceType": "virtualMachines/VMApplications",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -7140,6 +7341,14 @@
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy.forceDeletion": "properties.scaleInPolicy.forceDeletion",
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy.rules": "properties.scaleInPolicy.rules",
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy.rules[*]": "properties.scaleInPolicy.rules[*]",
+      "Microsoft.Compute/virtualMachineScaleSets/scheduledEventsPolicy": "properties.scheduledEventsPolicy",
+      "Microsoft.Compute/virtualMachineScaleSets/scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets": "properties.scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets",
+      "Microsoft.Compute/virtualMachineScaleSets/scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph": "properties.scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph",
+      "Microsoft.Compute/virtualMachineScaleSets/scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph.enable": "properties.scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph.enable",
+      "Microsoft.Compute/virtualMachineScaleSets/scheduledEventsPolicy.userInitiatedReboot": "properties.scheduledEventsPolicy.userInitiatedReboot",
+      "Microsoft.Compute/virtualMachineScaleSets/scheduledEventsPolicy.userInitiatedReboot.automaticallyApprove": "properties.scheduledEventsPolicy.userInitiatedReboot.automaticallyApprove",
+      "Microsoft.Compute/virtualMachineScaleSets/scheduledEventsPolicy.userInitiatedRedeploy": "properties.scheduledEventsPolicy.userInitiatedRedeploy",
+      "Microsoft.Compute/virtualMachineScaleSets/scheduledEventsPolicy.userInitiatedRedeploy.automaticallyApprove": "properties.scheduledEventsPolicy.userInitiatedRedeploy.automaticallyApprove",
       "Microsoft.Compute/virtualMachineScaleSets/singlePlacementGroup": "properties.singlePlacementGroup",
       "Microsoft.Compute/virtualMachineScaleSets/sku": "sku",
       "Microsoft.Compute/virtualMachineScaleSets/sku.capacity": "sku.capacity",
@@ -7359,6 +7568,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityPostureReference.excludeExtensions[*].type": "properties.virtualMachineProfile.securityPostureReference.excludeExtensions[*].type",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityPostureReference.excludeExtensions[*].typeHandlerVersion": "properties.virtualMachineProfile.securityPostureReference.excludeExtensions[*].properties.typeHandlerVersion",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityPostureReference.id": "properties.virtualMachineProfile.securityPostureReference.id",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityPostureReference.isOverridable": "properties.virtualMachineProfile.securityPostureReference.isOverridable",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile": "properties.virtualMachineProfile.securityProfile",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.encryptionAtHost": "properties.virtualMachineProfile.securityProfile.encryptionAtHost",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.encryptionIdentity": "properties.virtualMachineProfile.securityProfile.encryptionIdentity",
@@ -7434,6 +7644,7 @@
     },
     "resourceType": "virtualMachineScaleSets",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -7685,7 +7896,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -7749,6 +7964,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/applications",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -7809,6 +8025,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/disks",
     "apiVersions": [
+      "2024-03-02",
       "2023-10-02",
       "2023-04-02",
       "2023-01-02",
@@ -7899,6 +8116,7 @@
     },
     "resourceType": "virtualMachineScaleSets/extensions",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -7977,6 +8195,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/networkInterfaces",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -8057,6 +8276,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/publicIPAddresses",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -8360,6 +8580,8 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType": "properties.storageProfile.dataDisks[*].managedDisk.securityProfile.securityEncryptionType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].managedDisk.storageAccountType": "properties.storageProfile.dataDisks[*].managedDisk.storageAccountType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].name": "properties.storageProfile.dataDisks[*].name",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.dataDisks[*].sourceResource": "properties.storageProfile.dataDisks[*].sourceResource",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.dataDisks[*].sourceResource.id": "properties.storageProfile.dataDisks[*].sourceResource.id",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].toBeDetached": "properties.storageProfile.dataDisks[*].toBeDetached",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].vhd": "properties.storageProfile.dataDisks[*].vhd",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].vhd.uri": "properties.storageProfile.dataDisks[*].vhd.uri",
@@ -8416,6 +8638,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -8511,6 +8734,7 @@
     },
     "resourceType": "virtualMachineScaleSets/virtualMachines/extensions",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",
@@ -8589,6 +8813,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/virtualMachines/networkInterfaces",
     "apiVersions": [
+      "2024-07-01",
       "2024-03-01",
       "2023-09-01",
       "2023-07-01",

@@ -185,6 +185,8 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",
@@ -239,6 +241,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -378,6 +381,10 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": []
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -435,6 +442,8 @@
     "aliases": null,
     "resourceType": "getPrivateDnsZoneSuffix",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",
@@ -687,6 +696,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -707,6 +717,8 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",
@@ -761,6 +773,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -780,6 +793,8 @@
     "aliases": null,
     "resourceType": "locations/capabilitySets",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",
@@ -824,6 +839,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -843,6 +859,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",
@@ -895,6 +913,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -914,6 +933,8 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",
@@ -968,6 +989,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -987,6 +1009,8 @@
     "aliases": null,
     "resourceType": "locations/listMigrations",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",
@@ -1035,6 +1059,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -1054,6 +1079,8 @@
     "aliases": null,
     "resourceType": "locations/operationProgress",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",
@@ -1095,6 +1122,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -1151,6 +1179,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -1727,6 +1756,8 @@
     "aliases": null,
     "resourceType": "locations/updateMigration",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",
@@ -1775,6 +1806,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -1794,6 +1826,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-06-30",
+      "2024-06-01-preview",
       "2024-02-28",
       "2024-02-01-preview",
       "2023-12-30",

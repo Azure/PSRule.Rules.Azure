@@ -45,32 +45,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "openApiGatewayOfferings",
-    "apiVersions": [
-      "2024-01-01-preview",
-      "2023-12-15-preview",
-      "2023-11-01-preview"
-    ],
-    "locations": [
-      "global"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "openApiGateways",
-    "apiVersions": [
-      "2024-01-01-preview",
-      "2023-12-15-preview",
-      "2023-11-01-preview"
-    ],
-    "locations": [
-      "East US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2024-01-15-preview",
@@ -99,34 +73,6 @@
     "resourceType": "operatorApiPlans",
     "apiVersions": [
       "2024-01-15-preview"
-    ],
-    "locations": [
-      "global"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "OperatorConnections",
-    "apiVersions": [
-      "2024-01-01-preview",
-      "2023-12-15-preview",
-      "2023-11-01-preview"
-    ],
-    "locations": [
-      "Brazil South",
-      "East US",
-      "Germany West Central"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "OperatorOfferings",
-    "apiVersions": [
-      "2024-01-01-preview",
-      "2023-12-15-preview",
-      "2023-11-01-preview"
     ],
     "locations": [
       "global"

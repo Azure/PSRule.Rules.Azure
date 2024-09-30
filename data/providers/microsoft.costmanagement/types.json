@@ -867,23 +867,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "showbackRules",
-    "apiVersions": [
-      "2024-01-01",
-      "2023-11-01",
-      "2023-09-01",
-      "2023-08-01",
-      "2023-07-01-preview",
-      "2019-03-01-preview",
-      "2019-02-03-alpha",
-      "2019-02-02-alpha",
-      "2019-02-01-alpha"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "StartConversation",
     "apiVersions": [
       "2023-04-01-preview"

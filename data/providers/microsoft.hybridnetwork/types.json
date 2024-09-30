@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "configurationGroupValues",
     "apiVersions": [
+      "2024-04-15",
       "2023-09-01"
     ],
     "locations": [
@@ -75,6 +76,7 @@
     "aliases": null,
     "resourceType": "networkfunctions",
     "apiVersions": [
+      "2024-04-15",
       "2023-09-01",
       "2023-01-01",
       "2022-09-01-preview",
@@ -217,6 +219,7 @@
     "aliases": null,
     "resourceType": "publishers/artifactstores/artifacts",
     "apiVersions": [
+      "2024-04-15",
       "2023-09-01"
     ],
     "locations": [
@@ -238,6 +241,7 @@
     "aliases": null,
     "resourceType": "publishers/artifactstores/artifactversions",
     "apiVersions": [
+      "2024-04-15",
       "2023-09-01"
     ],
     "locations": [
@@ -301,6 +305,7 @@
     "aliases": null,
     "resourceType": "siteNetworkServices",
     "apiVersions": [
+      "2024-04-15",
       "2023-09-01"
     ],
     "locations": [
@@ -322,6 +327,7 @@
     "aliases": null,
     "resourceType": "sites",
     "apiVersions": [
+      "2024-04-15",
       "2023-09-01"
     ],
     "locations": [

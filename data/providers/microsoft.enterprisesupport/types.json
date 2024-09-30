@@ -1,7 +1,7 @@
 [
   {
     "aliases": null,
-    "resourceType": "EnterpriseSupports",
+    "resourceType": "enterpriseSupports",
     "apiVersions": [
       "2023-05-01-preview"
     ],

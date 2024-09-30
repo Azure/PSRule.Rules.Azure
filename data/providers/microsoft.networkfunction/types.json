@@ -105,6 +105,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "copilot",
+    "apiVersions": [
+      "2024-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
       "2022-11-01",

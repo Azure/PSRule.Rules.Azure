@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "acceptChangeTenant",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-01-01-privatepreview",
       "2019-10-01-preview"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "acceptOwnership",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview"
     ],
@@ -23,6 +25,7 @@
     "aliases": null,
     "resourceType": "acceptOwnershipStatus",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview"
     ],
@@ -35,6 +38,7 @@
     },
     "resourceType": "aliases",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview",
       "2020-09-01",
@@ -47,6 +51,7 @@
     "aliases": null,
     "resourceType": "cancel",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2020-09-01",
       "2019-10-01-preview",
@@ -61,6 +66,7 @@
     "aliases": null,
     "resourceType": "changeTenantRequest",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-01-01-privatepreview",
       "2019-10-01-preview"
     ],
@@ -71,6 +77,7 @@
     "aliases": null,
     "resourceType": "changeTenantStatus",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-01-01-privatepreview",
       "2019-10-01-preview"
     ],
@@ -92,8 +99,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "directories",
+    "apiVersions": [
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "enable",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2020-09-01",
       "2019-10-01-preview",
@@ -119,6 +136,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2017-11-01-preview"
     ],
@@ -131,6 +149,7 @@
     "aliases": null,
     "resourceType": "policies",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview"
     ],
@@ -141,6 +160,7 @@
     "aliases": null,
     "resourceType": "rename",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2020-09-01",
       "2019-10-01-preview",
@@ -171,6 +191,7 @@
     "aliases": null,
     "resourceType": "SubscriptionOperations",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview",
       "2019-10-01-preview",
@@ -187,6 +208,7 @@
     "aliases": null,
     "resourceType": "subscriptions",
     "apiVersions": [
+      "2024-08-01-preview",
       "2021-10-01",
       "2021-01-01-privatepreview",
       "2019-10-01-preview"

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "agreements",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -27,6 +28,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -51,6 +53,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -75,6 +78,7 @@
     "aliases": null,
     "resourceType": "locations/OperationStatuses",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -105,6 +109,7 @@
       "East US 2 EUAP",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -128,6 +133,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -152,6 +158,7 @@
     "aliases": null,
     "resourceType": "organizations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -180,6 +187,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -203,14 +211,12 @@
     "aliases": null,
     "resourceType": "organizations/access",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
       "2024-01-12-preview",
-      "2023-10-03-preview",
-      "2023-08-22",
-      "2023-07-11-preview",
-      "2023-02-09-preview"
+      "2023-10-03-preview"
     ],
     "locations": [
       "Australia East",
@@ -223,6 +229,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -246,6 +253,7 @@
     "aliases": null,
     "resourceType": "organizations/access/deleteRoleBinding",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -263,6 +271,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -286,6 +295,7 @@
     "aliases": null,
     "resourceType": "organizations/apiKeys",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -302,6 +312,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -325,6 +336,7 @@
     "aliases": null,
     "resourceType": "organizations/environments",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -341,6 +353,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -364,6 +377,7 @@
     "aliases": null,
     "resourceType": "organizations/environments/clusters",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -380,6 +394,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -403,6 +418,7 @@
     "aliases": null,
     "resourceType": "organizations/environments/clusters/connectors",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview"
     ],
     "locations": [
@@ -416,6 +432,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -439,6 +456,7 @@
     "aliases": null,
     "resourceType": "organizations/environments/clusters/createAPIKey",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -455,6 +473,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -478,6 +497,7 @@
     "aliases": null,
     "resourceType": "organizations/environments/clusters/topics",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview"
     ],
     "locations": [
@@ -491,6 +511,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -514,6 +535,7 @@
     "aliases": null,
     "resourceType": "organizations/environments/schemaRegistryClusters",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -530,6 +552,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -553,6 +576,8 @@
     "aliases": null,
     "resourceType": "organizations/listRegions",
     "apiVersions": [
+      "2024-07-01-preview",
+      "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
       "2024-01-12-preview"
@@ -568,6 +593,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Korea Central",
       "North Europe",
@@ -591,6 +617,7 @@
     "aliases": null,
     "resourceType": "validations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",

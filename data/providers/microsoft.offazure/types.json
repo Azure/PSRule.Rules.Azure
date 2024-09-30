@@ -182,6 +182,7 @@
     },
     "resourceType": "MasterSites",
     "apiVersions": [
+      "2023-10-01-preview",
       "2023-06-06",
       "2022-10-27",
       "2020-11-11-preview",

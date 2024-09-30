@@ -60,6 +60,7 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
       "2023-11-01-preview",
@@ -112,6 +113,7 @@
     },
     "resourceType": "clusters/arcSettings",
     "apiVersions": [
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
       "2023-11-01-preview",
@@ -172,6 +174,7 @@
     },
     "resourceType": "clusters/arcSettings/extensions",
     "apiVersions": [
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
       "2023-11-01-preview",
@@ -334,6 +337,7 @@
     },
     "resourceType": "clusters/deploymentSettings",
     "apiVersions": [
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
       "2023-08-01-preview"
@@ -435,6 +439,7 @@
     },
     "resourceType": "clusters/securitySettings",
     "apiVersions": [
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
       "2023-11-01-preview"
@@ -455,6 +460,7 @@
     "aliases": null,
     "resourceType": "clusters/updates",
     "apiVersions": [
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
       "2023-11-01-preview",
@@ -484,6 +490,7 @@
     "aliases": null,
     "resourceType": "clusters/updates/updateRuns",
     "apiVersions": [
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
       "2023-11-01-preview",
@@ -513,6 +520,7 @@
     "aliases": null,
     "resourceType": "clusters/updateSummaries",
     "apiVersions": [
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
       "2023-11-01-preview",
@@ -558,6 +566,7 @@
     },
     "resourceType": "edgeDevices",
     "apiVersions": [
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
       "2023-08-01-preview"
@@ -605,6 +614,8 @@
     },
     "resourceType": "galleryImages",
     "apiVersions": [
+      "2024-05-01-preview",
+      "2024-02-01-preview",
       "2024-01-01",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -629,6 +640,11 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-08-01-preview",
+      "2024-07-15-preview",
+      "2024-07-01-preview",
+      "2024-05-01-preview",
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-02-01-preview",
       "2024-01-15-preview",
@@ -663,7 +679,11 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2024-07-01-preview",
+      "2024-05-01-preview",
+      "2024-04-01",
       "2024-02-15-preview",
+      "2024-02-01-preview",
       "2024-01-15-preview",
       "2024-01-01",
       "2023-12-01-preview",
@@ -753,6 +773,8 @@
     },
     "resourceType": "logicalNetworks",
     "apiVersions": [
+      "2024-05-01-preview",
+      "2024-02-01-preview",
       "2024-01-01",
       "2023-09-01-preview"
     ],
@@ -798,6 +820,8 @@
     },
     "resourceType": "marketplaceGalleryImages",
     "apiVersions": [
+      "2024-05-01-preview",
+      "2024-02-01-preview",
       "2024-01-01",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -842,6 +866,8 @@
     },
     "resourceType": "networkInterfaces",
     "apiVersions": [
+      "2024-05-01-preview",
+      "2024-02-01-preview",
       "2024-01-01",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -864,8 +890,51 @@
   },
   {
     "aliases": null,
+    "resourceType": "networkSecurityGroups",
+    "apiVersions": [
+      "2024-05-01-preview",
+      "2024-02-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "East US",
+      "Japan East",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "networkSecurityGroups/securityRules",
+    "apiVersions": [
+      "2024-05-01-preview",
+      "2024-02-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "East US",
+      "Japan East",
+      "South Central US",
+      "Southeast Asia",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-08-01-preview",
+      "2024-07-15-preview",
+      "2024-07-01-preview",
+      "2024-05-01-preview",
+      "2024-04-01",
       "2024-02-15-preview",
       "2024-02-01-preview",
       "2024-01-15-preview",
@@ -902,6 +971,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2024-04-01",
       "2024-01-01",
       "2023-11-01-preview",
       "2023-08-01-preview",
@@ -934,6 +1004,8 @@
     },
     "resourceType": "storageContainers",
     "apiVersions": [
+      "2024-05-01-preview",
+      "2024-02-01-preview",
       "2024-01-01",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -974,6 +1046,8 @@
     },
     "resourceType": "virtualHardDisks",
     "apiVersions": [
+      "2024-05-01-preview",
+      "2024-02-01-preview",
       "2024-01-01",
       "2023-09-01-preview",
       "2023-07-01-preview",
@@ -1099,6 +1173,8 @@
     },
     "resourceType": "virtualMachineInstances",
     "apiVersions": [
+      "2024-05-01-preview",
+      "2024-02-01-preview",
       "2024-01-01",
       "2023-09-01-preview",
       "2023-07-01-preview"

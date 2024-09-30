@@ -277,6 +277,7 @@
       "2021-07-22-preview"
     ],
     "locations": [
+      "Australia Central",
       "Australia East",
       "Australia Southeast",
       "Brazil South",
@@ -305,6 +306,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -314,7 +316,8 @@
       "West Central US",
       "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },

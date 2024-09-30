@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-07-19-preview",
       "2023-09-01-preview"
     ],
     "locations": [],
@@ -17,8 +18,12 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central US",
       "East US",
+      "East US 2",
+      "North Europe",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "West Europe",
       "West US"
@@ -29,6 +34,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-19-preview",
       "2023-09-01-preview"
     ],
     "locations": [],
@@ -38,13 +44,39 @@
     "aliases": null,
     "resourceType": "watchers",
     "apiVersions": [
+      "2024-07-19-preview",
       "2023-09-01-preview"
     ],
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central US",
       "East US",
+      "East US 2",
+      "North Europe",
       "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "watchers/alertRuleResources",
+    "apiVersions": [
+      "2024-07-19-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "West Europe",
       "West US"
@@ -60,8 +92,12 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central US",
       "East US",
+      "East US 2",
+      "North Europe",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "West Europe",
       "West US"
@@ -77,8 +113,12 @@
     "locations": [
       "Australia East",
       "Canada Central",
+      "Central US",
       "East US",
+      "East US 2",
+      "North Europe",
       "Southeast Asia",
+      "Sweden Central",
       "UK South",
       "West Europe",
       "West US"

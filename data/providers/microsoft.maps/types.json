@@ -19,6 +19,7 @@
     },
     "resourceType": "accounts",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-01-01-preview",
       "2023-12-01-preview",
       "2023-08-01-preview",
@@ -47,6 +48,7 @@
     },
     "resourceType": "accounts/creators",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-01-01-preview",
       "2023-12-01-preview",
       "2023-08-01-preview",
@@ -69,6 +71,7 @@
     "aliases": null,
     "resourceType": "accounts/eventGridFilters",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-01-01-preview",
       "2023-12-01-preview",
       "2023-08-01-preview",
@@ -93,6 +96,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-01-01-preview",
       "2023-12-01-preview",
       "2023-08-01-preview",

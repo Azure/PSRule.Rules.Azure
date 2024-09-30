@@ -1,7 +1,9 @@
 [
   {
     "aliases": {
-      "Microsoft.Databricks/accessConnectors/provisioningState": "properties.provisioningState"
+      "Microsoft.Databricks/accessConnectors/provisioningState": "properties.provisioningState",
+      "Microsoft.Databricks/accessConnectors/referedBy": "properties.referedBy",
+      "Microsoft.Databricks/accessConnectors/referedBy[*]": "properties.referedBy[*]"
     },
     "resourceType": "accessConnectors",
     "apiVersions": [
@@ -269,6 +271,10 @@
   },
   {
     "aliases": {
+      "Microsoft.Databricks/workspaces/accessConnector": "properties.accessConnector",
+      "Microsoft.Databricks/workspaces/accessConnector.id": "properties.accessConnector.id",
+      "Microsoft.Databricks/workspaces/accessConnector.identityType": "properties.accessConnector.identityType",
+      "Microsoft.Databricks/workspaces/accessConnector.userAssignedIdentityId": "properties.accessConnector.userAssignedIdentityId",
       "Microsoft.DataBricks/workspaces/authorizations": "properties.authorizations",
       "Microsoft.DataBricks/workspaces/authorizations[*]": "properties.authorizations[*]",
       "Microsoft.DataBricks/workspaces/authorizations[*].principalId": "properties.authorizations[*].principalId",
@@ -278,6 +284,10 @@
       "Microsoft.Databricks/workspaces/createdBy.oid": "properties.createdBy.oid",
       "Microsoft.Databricks/workspaces/createdBy.puid": "properties.createdBy.puid",
       "Microsoft.Databricks/workspaces/createdDateTime": "properties.createdDateTime",
+      "Microsoft.Databricks/workspaces/defaultCatalog": "properties.defaultCatalog",
+      "Microsoft.Databricks/workspaces/defaultCatalog.initialName": "properties.defaultCatalog.initialName",
+      "Microsoft.Databricks/workspaces/defaultCatalog.initialType": "properties.defaultCatalog.initialType",
+      "Microsoft.Databricks/workspaces/defaultStorageFirewall": "properties.defaultStorageFirewall",
       "Microsoft.Databricks/workspaces/diskEncryptionSetId": "properties.diskEncryptionSetId",
       "Microsoft.Databricks/workspaces/encryption": "properties.encryption",
       "Microsoft.Databricks/workspaces/encryption.entities": "properties.encryption.entities",
@@ -294,6 +304,16 @@
       "Microsoft.Databricks/workspaces/encryption.entities.managedServices.keyVaultProperties.keyName": "properties.encryption.entities.managedServices.keyVaultProperties.keyName",
       "Microsoft.Databricks/workspaces/encryption.entities.managedServices.keyVaultProperties.keyVaultUri": "properties.encryption.entities.managedServices.keyVaultProperties.keyVaultUri",
       "Microsoft.Databricks/workspaces/encryption.entities.managedServices.keyVaultProperties.keyVersion": "properties.encryption.entities.managedServices.keyVaultProperties.keyVersion",
+      "Microsoft.Databricks/workspaces/enhancedSecurityCompliance": "properties.enhancedSecurityCompliance",
+      "Microsoft.Databricks/workspaces/enhancedSecurityCompliance.automaticClusterUpdate": "properties.enhancedSecurityCompliance.automaticClusterUpdate",
+      "Microsoft.Databricks/workspaces/enhancedSecurityCompliance.automaticClusterUpdate.value": "properties.enhancedSecurityCompliance.automaticClusterUpdate.value",
+      "Microsoft.Databricks/workspaces/enhancedSecurityCompliance.complianceSecurityProfile": "properties.enhancedSecurityCompliance.complianceSecurityProfile",
+      "Microsoft.Databricks/workspaces/enhancedSecurityCompliance.complianceSecurityProfile.complianceStandards": "properties.enhancedSecurityCompliance.complianceSecurityProfile.complianceStandards",
+      "Microsoft.Databricks/workspaces/enhancedSecurityCompliance.complianceSecurityProfile.complianceStandards[*]": "properties.enhancedSecurityCompliance.complianceSecurityProfile.complianceStandards[*]",
+      "Microsoft.Databricks/workspaces/enhancedSecurityCompliance.complianceSecurityProfile.value": "properties.enhancedSecurityCompliance.complianceSecurityProfile.value",
+      "Microsoft.Databricks/workspaces/enhancedSecurityCompliance.enhancedSecurityMonitoring": "properties.enhancedSecurityCompliance.enhancedSecurityMonitoring",
+      "Microsoft.Databricks/workspaces/enhancedSecurityCompliance.enhancedSecurityMonitoring.value": "properties.enhancedSecurityCompliance.enhancedSecurityMonitoring.value",
+      "Microsoft.Databricks/workspaces/isUcEnabled": "properties.isUcEnabled",
       "Microsoft.Databricks/workspaces/managedDiskIdentity": "properties.managedDiskIdentity",
       "Microsoft.Databricks/workspaces/managedDiskIdentity.principalId": "properties.managedDiskIdentity.principalId",
       "Microsoft.Databricks/workspaces/managedDiskIdentity.tenantId": "properties.managedDiskIdentity.tenantId",
@@ -555,10 +575,13 @@
   },
   {
     "aliases": {
+      "Microsoft.Databricks/workspaces/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.Databricks/workspaces/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
       "Microsoft.Databricks/workspaces/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
       "Microsoft.Databricks/workspaces/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
       "Microsoft.Databricks/workspaces/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
       "Microsoft.Databricks/workspaces/privateEndpointConnections/privateLinkServiceConnectionState.actionRequired": "properties.privateLinkServiceConnectionState.actionRequired",
+      "Microsoft.Databricks/workspaces/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
       "Microsoft.Databricks/workspaces/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
       "Microsoft.Databricks/workspaces/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
       "Microsoft.Databricks/workspaces/privateEndpointConnections/provisioningState": "properties.provisioningState"

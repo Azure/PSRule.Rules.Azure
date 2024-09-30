@@ -10,11 +10,32 @@
   },
   {
     "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2019-06-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "softwareSubscriptions",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": []
   }
 ]

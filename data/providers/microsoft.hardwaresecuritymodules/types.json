@@ -3,7 +3,7 @@
     "aliases": null,
     "resourceType": "cloudHsmClusters",
     "apiVersions": [
-      "2023-12-10-preview",
+      "2024-06-30-preview",
       "2022-08-31-preview"
     ],
     "locations": [
@@ -26,7 +26,7 @@
     "aliases": null,
     "resourceType": "locations/cloudHsmOperationResults",
     "apiVersions": [
-      "2023-12-10-preview",
+      "2024-06-30-preview",
       "2022-08-31-preview"
     ],
     "locations": [
@@ -38,7 +38,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2023-12-10-preview",
+      "2024-06-30-preview",
       "2022-08-31-preview",
       "2021-11-30",
       "2018-10-31-preview",
