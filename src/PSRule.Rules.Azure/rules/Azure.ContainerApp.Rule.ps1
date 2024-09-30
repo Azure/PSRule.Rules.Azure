@@ -30,6 +30,7 @@ Rule 'Azure.ContainerApp.AvailabilityZone' -Ref 'AZR-000414' -Type 'Microsoft.Ap
     }
 
     $Assert.HasFieldValue($TargetObject, 'properties.zoneRedundant', $True);
+    $Assert.HasFieldValue($TargetObject, 'properties.vnetConfiguration.infrastructureSubnetId');
 }
 
 #endregion Rules
@@ -38,9 +39,9 @@ Rule 'Azure.ContainerApp.AvailabilityZone' -Ref 'AZR-000414' -Type 'Microsoft.Ap
 
 function global:HasIngress {
     [CmdletBinding()]
-    param ()    
+    param ()
     process {
-        $Assert.HasField($TargetObject, 'properties.configuration.ingress').Result   
+        $Assert.HasField($TargetObject, 'properties.configuration.ingress').Result
     }
 }
 

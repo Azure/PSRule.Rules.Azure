@@ -197,7 +197,7 @@ Describe 'Azure.ContainerApp' -Tag 'ContainerApp' {
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'capp-env-A', 'capp-env-B';
-            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.zoneRedundant';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.zoneRedundant', 'properties.vnetConfiguration.infrastructureSubnetId';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
