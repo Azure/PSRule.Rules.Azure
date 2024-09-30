@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-04-07
+reviewed: 2024-10-01
 severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
@@ -16,14 +16,21 @@ Use Container Apps environments that are zone redundant to improve reliability.
 ## DESCRIPTION
 
 Container App environments can be configured to be zone redundant in regions that support availability zones.
+Zone redundancy is supported in both the workload profiles and consumption only environments.
 When configured, replicas of each Container App are spread across availability zones automatically.
 A Container App must have multiple replicas to be zone redundant.
 
-For example, if a Container App has three replicas, each replica is placed in a different availability zone.
+For example:
+
+- If a Container App has three replicas, each replica is placed in a different availability zone.
+- If a Container App has one replica, it is only available in a single zone.
+
+Zone redundancy can only be enabled at initial environment creation.
+Additionally, the Container App environment must be deployed with an infrastructure subnet configured.
 
 ## RECOMMENDATION
 
-Consider configuring Container App environments to be zone redundant to improve reliability.
+Consider configuring Container App environments to be zone redundant to improve workload resiliency.
 
 ## EXAMPLES
 
@@ -32,6 +39,7 @@ Consider configuring Container App environments to be zone redundant to improve 
 To deploy Container App environments that pass this rule:
 
 - Set the `properties.zoneRedundant` property to `true`.
+- Set the `properties.vnetConfiguration.infrastructureSubnetId` property to reference a valid subnet.
 
 For example:
 
@@ -69,6 +77,7 @@ For example:
 To deploy Container App environments that pass this rule:
 
 - Set the `properties.zoneRedundant` property to `true`.
+- Set the `properties.vnetConfiguration.infrastructureSubnetId` property to reference a valid subnet.
 
 For example:
 
@@ -99,7 +108,7 @@ resource containerEnv 'Microsoft.App/managedEnvironments@2023-05-01' = {
 }
 ```
 
-<!-- external:avm avm/res/app/managed-environment:0.8.0 zoneRedundant -->
+<!-- external:avm avm/res/app/managed-environment:0.8.0 zoneRedundant,vnetConfiguration.infrastructureSubnetId -->
 
 ## LINKS
 
