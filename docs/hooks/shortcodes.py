@@ -7,6 +7,7 @@
 import logging
 import os
 import re
+import json
 
 from mkdocs.config.defaults import MkDocsConfig
 from mkdocs.structure.files import File, Files
@@ -166,7 +167,7 @@ def _external_reference_avm(text: str, page: Page) -> str:
     avm_latest_version = _avm_module_latest_tag(page, avm_path)
 
     # Add the reference syntax.
-    syntax_body = _avm_code_reference(avm_path)
+    syntax_body = _avm_code_reference(avm_path, None)
 
     # Add suggested version.
     suggestion_body = ''
@@ -176,7 +177,7 @@ def _external_reference_avm(text: str, page: Page) -> str:
     # Add latest version.
     latest_body = ''
     if avm_latest_version != '':
-        latest_body = f"\n\nTo use latest version:{_avm_code_reference(avm_path, avm_latest_version)}"
+        latest_body = f"\n\nTo use the latest version:{_avm_code_reference(avm_path, avm_latest_version)}"
 
     return _reference_block(
         style = "Example",
