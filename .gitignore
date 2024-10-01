@@ -18,3 +18,4 @@ data/types_index.json
 *.log
 *.min.json
 docs/**/rules/metadata.json
+docs/**/rules/avm_versions.json

@@ -359,7 +359,7 @@ task Analyze Build, Dependencies, {
 }
 
 # Synopsis: Build documentation
-task BuildDocs BuildRuleDocs, BuildBaselineDocs
+task BuildDocs BuildRuleDocs, BuildBaselineDocs, BuildRuleMetadataCache, BuildAVMVersionCache
 
 # Synopsis: Build table of content for rules
 task BuildRuleDocs Build, Dependencies, {
@@ -369,6 +369,16 @@ task BuildRuleDocs Build, Dependencies, {
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
     $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/en/rules/ -Culture 'en' -Path ./RuleToc.Doc.ps1;
+
+    # Spanish
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
+    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
+}
+
+task BuildRuleMetadataCache {
+    Import-Module (Join-Path -Path $PWD -ChildPath out/modules/PSRule.Rules.Azure);
+
     $metadata = @{}
     Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Culture 'en' | ForEach-Object {
 
@@ -397,10 +407,6 @@ task BuildRuleDocs Build, Dependencies, {
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/metadata.json -Force;
 
-    # Spanish
-    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name index -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
-    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name module -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
-    $Null = './out/modules/PSRule.Rules.Azure' | Invoke-PSDocument -Name resource -OutputPath ./docs/es/rules/ -Culture 'es' -Path ./RuleToc.Doc.ps1;
     $metadata = @{}
     Get-PSRule -Module PSRule.Rules.Azure -Baseline Azure.All -Culture 'es' | ForEach-Object {
 
@@ -428,6 +434,41 @@ task BuildRuleDocs Build, Dependencies, {
         }
     }
     $metadata | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/es/rules/metadata.json -Force;
+}
+
+task BuildAVMVersionCache {
+    # Get unique module paths for any included modules.
+    $modulePaths = Get-ChildItem -Path docs/**/rules/*.md | ForEach-Object {
+        Get-Content -Path $_.FullName | Where-Object {
+            $_ -like "<!-- external:avm * -->"
+        }
+    } | ForEach-Object {
+        $_.Replace("<!-- external:avm ", "").Replace(" -->", "").Split(" ")[0].Split(":")[0]
+    } | Select-Object -Unique
+
+    $avmVersions = @{}
+
+    # For each module, get the latest version and update the data.
+    $modulePaths | ForEach-Object {
+        $modulePath = $_
+        try {
+            $latest = (Invoke-RestMethod -Method Get -Uri "https://mcr.microsoft.com/v2/bicep/$modulePath/tags/list" -ErrorAction Stop -ContentType 'application/json').tags | Sort-Object -Descending | Select-Object -First 1
+
+            if (![String]::IsNullOrWhiteSpace($latest)) {
+                $avmVersions[$modulePath] = [PSCustomObject]@{
+                    Latest = $latest.ToString()
+                }
+            }
+        }
+        catch {
+            Write-Warning "Failed to get version for: '$modulePath'"
+        }
+    }
+
+    $avmVersions.GetEnumerator() | Select-Object -Property Name, @{ Name = 'Latest'; Expression = { $_.Value.Latest } } | Sort-Object -Property Name | Format-Table -Property Name, Latest -AutoSize
+
+    $avmVersions | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/en/rules/avm_versions.json -Encoding utf8 -Force;
+    $avmVersions | ConvertTo-Json -Depth 5 | Set-Content -Path ./docs/es/rules/avm_versions.json -Encoding utf8 -Force;
 }
 
 # Synopsis: Build table of content for baselines
