@@ -206,6 +206,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2023-11-21-preview",
       "2023-11-06-preview",
       "2023-06-01-preview",
       "2023-04-01-preview",
@@ -225,6 +226,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2023-11-21-preview",
       "2023-11-06-preview",
       "2023-06-01-preview",
       "2023-04-01-preview",
@@ -246,6 +248,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-11-21-preview",
       "2023-11-06-preview",
       "2023-06-01-preview",
       "2023-04-01-preview",

@@ -198,6 +198,24 @@
   },
   {
     "aliases": null,
+    "resourceType": "MigrateRbac",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "MigrateRbac/OperationStatuses",
+    "apiVersions": [
+      "2024-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2017-05-01",
@@ -240,6 +258,7 @@
   },
   {
     "aliases": {
+      "Microsoft.Authorization/policyassignments/assignmentType": "properties.assignmentType",
       "Microsoft.Authorization/policyAssignments/description": "properties.description",
       "Microsoft.Authorization/policyAssignments/displayName": "properties.displayName",
       "Microsoft.Authorization/policyAssignments/enforcementMode": "properties.enforcementMode",
@@ -250,8 +269,29 @@
       "Microsoft.Authorization/policyassignments/nonComplianceMessages[*].policyDefinitionReferenceId": "properties.nonComplianceMessages[*].policyDefinitionReferenceId",
       "Microsoft.Authorization/policyAssignments/notScopes": "properties.notScopes",
       "Microsoft.Authorization/policyAssignments/notScopes[*]": "properties.notScopes[*]",
+      "Microsoft.Authorization/policyassignments/overrides": "properties.overrides",
+      "Microsoft.Authorization/policyassignments/overrides[*]": "properties.overrides[*]",
+      "Microsoft.Authorization/policyassignments/overrides[*].kind": "properties.overrides[*].kind",
+      "Microsoft.Authorization/policyassignments/overrides[*].selectors": "properties.overrides[*].selectors",
+      "Microsoft.Authorization/policyassignments/overrides[*].selectors[*]": "properties.overrides[*].selectors[*]",
+      "Microsoft.Authorization/policyassignments/overrides[*].selectors[*].in": "properties.overrides[*].selectors[*].in",
+      "Microsoft.Authorization/policyassignments/overrides[*].selectors[*].in[*]": "properties.overrides[*].selectors[*].in[*]",
+      "Microsoft.Authorization/policyassignments/overrides[*].selectors[*].kind": "properties.overrides[*].selectors[*].kind",
+      "Microsoft.Authorization/policyassignments/overrides[*].selectors[*].notIn": "properties.overrides[*].selectors[*].notIn",
+      "Microsoft.Authorization/policyassignments/overrides[*].selectors[*].notIn[*]": "properties.overrides[*].selectors[*].notIn[*]",
+      "Microsoft.Authorization/policyassignments/overrides[*].value": "properties.overrides[*].value",
       "Microsoft.Authorization/policyAssignments/parameters": "properties.parameters",
       "Microsoft.Authorization/policyAssignments/policyDefinitionId": "properties.policyDefinitionId",
+      "Microsoft.Authorization/policyassignments/resourceSelectors": "properties.resourceSelectors",
+      "Microsoft.Authorization/policyassignments/resourceSelectors[*]": "properties.resourceSelectors[*]",
+      "Microsoft.Authorization/policyassignments/resourceSelectors[*].name": "properties.resourceSelectors[*].name",
+      "Microsoft.Authorization/policyassignments/resourceSelectors[*].selectors": "properties.resourceSelectors[*].selectors",
+      "Microsoft.Authorization/policyassignments/resourceSelectors[*].selectors[*]": "properties.resourceSelectors[*].selectors[*]",
+      "Microsoft.Authorization/policyassignments/resourceSelectors[*].selectors[*].in": "properties.resourceSelectors[*].selectors[*].in",
+      "Microsoft.Authorization/policyassignments/resourceSelectors[*].selectors[*].in[*]": "properties.resourceSelectors[*].selectors[*].in[*]",
+      "Microsoft.Authorization/policyassignments/resourceSelectors[*].selectors[*].kind": "properties.resourceSelectors[*].selectors[*].kind",
+      "Microsoft.Authorization/policyassignments/resourceSelectors[*].selectors[*].notIn": "properties.resourceSelectors[*].selectors[*].notIn",
+      "Microsoft.Authorization/policyassignments/resourceSelectors[*].selectors[*].notIn[*]": "properties.resourceSelectors[*].selectors[*].notIn[*]",
       "Microsoft.Authorization/policyAssignments/scope": "properties.scope",
       "Microsoft.Authorization/policyAssignments/sku": "sku",
       "Microsoft.Authorization/policyAssignments/sku.name": "sku.name",
@@ -287,7 +327,10 @@
       "Microsoft.Authorization/policyDefinitions/mode": "properties.mode",
       "Microsoft.Authorization/policyDefinitions/parameters": "properties.parameters",
       "Microsoft.Authorization/policyDefinitions/policyRule": "properties.policyRule",
-      "Microsoft.Authorization/policyDefinitions/policyType": "properties.policyType"
+      "Microsoft.Authorization/policyDefinitions/policyType": "properties.policyType",
+      "Microsoft.Authorization/policydefinitions/version": "properties.version",
+      "Microsoft.Authorization/policydefinitions/versions": "properties.versions",
+      "Microsoft.Authorization/policydefinitions/versions[*]": "properties.versions[*]"
     },
     "resourceType": "policyDefinitions",
     "apiVersions": [
@@ -319,13 +362,24 @@
   },
   {
     "aliases": {
+      "Microsoft.Authorization/policyExemptions/assignmentScopeValidation": "properties.assignmentScopeValidation",
       "Microsoft.Authorization/policyExemptions/description": "properties.description",
       "Microsoft.Authorization/policyExemptions/displayName": "properties.displayName",
       "Microsoft.Authorization/policyExemptions/exemptionCategory": "properties.exemptionCategory",
       "Microsoft.Authorization/policyExemptions/expiresOn": "properties.expiresOn",
       "Microsoft.Authorization/policyExemptions/policyAssignmentId": "properties.policyAssignmentId",
       "Microsoft.Authorization/policyExemptions/policyDefinitionReferenceIds": "properties.policyDefinitionReferenceIds",
-      "Microsoft.Authorization/policyExemptions/policyDefinitionReferenceIds[*]": "properties.policyDefinitionReferenceIds[*]"
+      "Microsoft.Authorization/policyExemptions/policyDefinitionReferenceIds[*]": "properties.policyDefinitionReferenceIds[*]",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors": "properties.resourceSelectors",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors[*]": "properties.resourceSelectors[*]",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors[*].name": "properties.resourceSelectors[*].name",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors[*].selectors": "properties.resourceSelectors[*].selectors",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors[*].selectors[*]": "properties.resourceSelectors[*].selectors[*]",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors[*].selectors[*].in": "properties.resourceSelectors[*].selectors[*].in",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors[*].selectors[*].in[*]": "properties.resourceSelectors[*].selectors[*].in[*]",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors[*].selectors[*].kind": "properties.resourceSelectors[*].selectors[*].kind",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors[*].selectors[*].notIn": "properties.resourceSelectors[*].selectors[*].notIn",
+      "Microsoft.Authorization/policyExemptions/resourceSelectors[*].selectors[*].notIn[*]": "properties.resourceSelectors[*].selectors[*].notIn[*]"
     },
     "resourceType": "policyExemptions",
     "apiVersions": [
@@ -355,7 +409,10 @@
       "Microsoft.Authorization/policySetDefinitions/policyDefinitions[*].parameters": "properties.policyDefinitions[*].parameters",
       "Microsoft.Authorization/policySetDefinitions/policyDefinitions[*].policyDefinitionId": "properties.policyDefinitions[*].policyDefinitionId",
       "Microsoft.Authorization/policySetDefinitions/policyDefinitions[*].policyDefinitionReferenceId": "properties.policyDefinitions[*].policyDefinitionReferenceId",
-      "Microsoft.Authorization/policySetDefinitions/policyType": "properties.policyType"
+      "Microsoft.Authorization/policySetDefinitions/policyType": "properties.policyType",
+      "Microsoft.Authorization/policySetDefinitions/version": "properties.version",
+      "Microsoft.Authorization/policySetDefinitions/versions": "properties.versions",
+      "Microsoft.Authorization/policySetDefinitions/versions[*]": "properties.versions[*]"
     },
     "resourceType": "policySetDefinitions",
     "apiVersions": [
@@ -587,6 +644,8 @@
     "aliases": {
       "Microsoft.Authorization/roleDefinitions/assignableScopes": "properties.assignableScopes",
       "Microsoft.Authorization/roleDefinitions/assignableScopes[*]": "properties.assignableScopes[*]",
+      "Microsoft.Authorization/roleDefinitions/createdBy": "properties.createdBy",
+      "Microsoft.Authorization/roleDefinitions/createdOn": "properties.createdOn",
       "Microsoft.Authorization/roleDefinitions/description": "properties.description",
       "Microsoft.Authorization/roleDefinitions/permissions": "properties.permissions",
       "Microsoft.Authorization/roleDefinitions/permissions.actions[*]": "properties.permissions.actions[*]",
@@ -594,6 +653,8 @@
       "Microsoft.Authorization/roleDefinitions/permissions[*]": "properties.permissions[*]",
       "Microsoft.Authorization/roleDefinitions/permissions[*].actions": "properties.permissions[*].actions",
       "Microsoft.Authorization/roleDefinitions/permissions[*].actions[*]": "properties.permissions[*].actions[*]",
+      "Microsoft.Authorization/roleDefinitions/permissions[*].condition": "properties.permissions[*].condition",
+      "Microsoft.Authorization/roleDefinitions/permissions[*].conditionVersion": "properties.permissions[*].conditionVersion",
       "Microsoft.Authorization/roleDefinitions/permissions[*].dataActions": "properties.permissions[*].dataActions",
       "Microsoft.Authorization/roleDefinitions/permissions[*].dataActions[*]": "properties.permissions[*].dataActions[*]",
       "Microsoft.Authorization/roleDefinitions/permissions[*].notActions": "properties.permissions[*].notActions",
@@ -601,7 +662,9 @@
       "Microsoft.Authorization/roleDefinitions/permissions[*].notDataActions": "properties.permissions[*].notDataActions",
       "Microsoft.Authorization/roleDefinitions/permissions[*].notDataActions[*]": "properties.permissions[*].notDataActions[*]",
       "Microsoft.Authorization/roleDefinitions/roleName": "properties.roleName",
-      "Microsoft.Authorization/roleDefinitions/type": "properties.type"
+      "Microsoft.Authorization/roleDefinitions/type": "properties.type",
+      "Microsoft.Authorization/roleDefinitions/updatedBy": "properties.updatedBy",
+      "Microsoft.Authorization/roleDefinitions/updatedOn": "properties.updatedOn"
     },
     "resourceType": "roleDefinitions",
     "apiVersions": [
@@ -735,6 +798,7 @@
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules": "properties.effectiveRules",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*]": "properties.effectiveRules[*]",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].id": "properties.effectiveRules[*].id",
+      "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyApprovalRule": "properties.effectiveRules[*]",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyApprovalRule.setting": "properties.effectiveRules[*].setting",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyApprovalRule.setting.approvalMode": "properties.effectiveRules[*].setting.approvalMode",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyApprovalRule.setting.approvalStages": "properties.effectiveRules[*].setting.approvalStages",
@@ -758,12 +822,16 @@
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyApprovalRule.setting.isApprovalRequired": "properties.effectiveRules[*].setting.isApprovalRequired",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyApprovalRule.setting.isApprovalRequiredForExtension": "properties.effectiveRules[*].setting.isApprovalRequiredForExtension",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyApprovalRule.setting.isRequestorJustificationRequired": "properties.effectiveRules[*].setting.isRequestorJustificationRequired",
+      "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyAuthenticationContextRule": "properties.effectiveRules[*]",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyAuthenticationContextRule.claimValue": "properties.effectiveRules[*].claimValue",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyAuthenticationContextRule.isEnabled": "properties.effectiveRules[*].isEnabled",
+      "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyEnablementRule": "properties.effectiveRules[*]",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyEnablementRule.enabledRules": "properties.effectiveRules[*].enabledRules",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyEnablementRule.enabledRules[*]": "properties.effectiveRules[*].enabledRules[*]",
+      "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyExpirationRule": "properties.effectiveRules[*]",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyExpirationRule.isExpirationRequired": "properties.effectiveRules[*].isExpirationRequired",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyExpirationRule.maximumDuration": "properties.effectiveRules[*].maximumDuration",
+      "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyNotificationRule": "properties.effectiveRules[*]",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyNotificationRule.isDefaultRecipientsEnabled": "properties.effectiveRules[*].isDefaultRecipientsEnabled",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyNotificationRule.notificationLevel": "properties.effectiveRules[*].notificationLevel",
       "Microsoft.Authorization/roleManagementPolicies/effectiveRules[*].RoleManagementPolicyNotificationRule.notificationRecipients": "properties.effectiveRules[*].notificationRecipients",
@@ -797,6 +865,7 @@
       "Microsoft.Authorization/roleManagementPolicies/rules": "properties.rules",
       "Microsoft.Authorization/roleManagementPolicies/rules[*]": "properties.rules[*]",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].id": "properties.rules[*].id",
+      "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyApprovalRule": "properties.rules[*]",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyApprovalRule.setting": "properties.rules[*].setting",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyApprovalRule.setting.approvalMode": "properties.rules[*].setting.approvalMode",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyApprovalRule.setting.approvalStages": "properties.rules[*].setting.approvalStages",
@@ -820,12 +889,16 @@
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyApprovalRule.setting.isApprovalRequired": "properties.rules[*].setting.isApprovalRequired",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyApprovalRule.setting.isApprovalRequiredForExtension": "properties.rules[*].setting.isApprovalRequiredForExtension",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyApprovalRule.setting.isRequestorJustificationRequired": "properties.rules[*].setting.isRequestorJustificationRequired",
+      "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyAuthenticationContextRule": "properties.rules[*]",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyAuthenticationContextRule.claimValue": "properties.rules[*].claimValue",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyAuthenticationContextRule.isEnabled": "properties.rules[*].isEnabled",
+      "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyEnablementRule": "properties.rules[*]",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyEnablementRule.enabledRules": "properties.rules[*].enabledRules",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyEnablementRule.enabledRules[*]": "properties.rules[*].enabledRules[*]",
+      "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyExpirationRule": "properties.rules[*]",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyExpirationRule.isExpirationRequired": "properties.rules[*].isExpirationRequired",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyExpirationRule.maximumDuration": "properties.rules[*].maximumDuration",
+      "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyNotificationRule": "properties.rules[*]",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyNotificationRule.isDefaultRecipientsEnabled": "properties.rules[*].isDefaultRecipientsEnabled",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyNotificationRule.notificationLevel": "properties.rules[*].notificationLevel",
       "Microsoft.Authorization/roleManagementPolicies/rules[*].RoleManagementPolicyNotificationRule.notificationRecipients": "properties.rules[*].notificationRecipients",

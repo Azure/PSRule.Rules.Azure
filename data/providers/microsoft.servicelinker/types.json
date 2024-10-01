@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "configurationNames",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-04-01",
       "2023-04-01-preview",
       "2022-11-01-preview"
@@ -14,6 +15,7 @@
     "aliases": null,
     "resourceType": "daprConfigurations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-04-01",
       "2023-04-01-preview"
     ],
@@ -169,6 +171,7 @@
     },
     "resourceType": "dryruns",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-04-01",
       "2023-04-01-preview",
       "2022-11-01-preview",
@@ -307,6 +310,7 @@
     },
     "resourceType": "linkers",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-04-01",
       "2023-04-01-preview",
       "2022-11-01-preview",
@@ -362,6 +366,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-04-01",
       "2023-04-01-preview",
       "2022-11-01-preview",
@@ -460,6 +465,7 @@
     },
     "resourceType": "locations/connectors",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-04-01",
       "2023-04-01-preview",
       "2022-11-01-preview"
@@ -616,6 +622,7 @@
     },
     "resourceType": "locations/dryruns",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-04-01",
       "2023-04-01-preview",
       "2022-11-01-preview"
@@ -720,6 +727,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-04-01",
       "2023-04-01-preview",
       "2022-05-01",

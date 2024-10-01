@@ -32,6 +32,8 @@
     },
     "resourceType": "elasticSans",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-05-01",
       "2023-01-01",
       "2022-12-01-preview",
       "2021-11-20-preview"
@@ -40,6 +42,7 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -49,11 +52,13 @@
       "Japan East",
       "Korea Central",
       "North Europe",
+      "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 2",
@@ -78,6 +83,14 @@
       },
       {
         "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
         "zones": [
           "1",
           "2",
@@ -157,6 +170,14 @@
         ]
       },
       {
+        "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -190,6 +211,14 @@
       },
       {
         "location": "Switzerland North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UAE North",
         "zones": [
           "1",
           "2",
@@ -268,6 +297,8 @@
     },
     "resourceType": "elasticSans/volumeGroups",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-05-01",
       "2023-01-01",
       "2022-12-01-preview",
       "2021-11-20-preview"
@@ -276,6 +307,7 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -285,11 +317,13 @@
       "Japan East",
       "Korea Central",
       "North Europe",
+      "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 2",
@@ -314,6 +348,14 @@
       },
       {
         "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
         "zones": [
           "1",
           "2",
@@ -393,6 +435,14 @@
         ]
       },
       {
+        "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "South Africa North",
         "zones": [
           "1",
@@ -426,6 +476,14 @@
       },
       {
         "location": "Switzerland North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UAE North",
         "zones": [
           "1",
           "2",
@@ -470,6 +528,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-06-01-preview",
       "2021-11-20-preview"
     ],
     "locations": [],
@@ -479,6 +538,8 @@
     "aliases": null,
     "resourceType": "locations/asyncoperations",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-05-01",
       "2023-01-01",
       "2022-12-01-preview",
       "2021-11-20-preview"
@@ -487,6 +548,7 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -496,11 +558,13 @@
       "Japan East",
       "Korea Central",
       "North Europe",
+      "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 2",
@@ -512,6 +576,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-05-01",
       "2023-01-01",
       "2022-12-01-preview",
       "2021-11-20-preview"
@@ -520,6 +586,7 @@
       "Australia East",
       "Brazil South",
       "Canada Central",
+      "Central India",
       "Central US",
       "East Asia",
       "East US",
@@ -529,11 +596,13 @@
       "Japan East",
       "Korea Central",
       "North Europe",
+      "Norway East",
       "South Africa North",
       "South Central US",
       "Southeast Asia",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 2",

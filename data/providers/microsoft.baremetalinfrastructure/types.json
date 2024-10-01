@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "bareMetalInstances",
     "apiVersions": [
+      "2024-08-01-preview",
       "2023-11-01-preview",
       "2023-08-04-preview",
       "2023-04-06",
@@ -10,14 +11,10 @@
       "2020-08-06-preview"
     ],
     "locations": [
-      "Australia East",
-      "Australia Southeast",
       "East US",
       "East US 2",
       "Germany West Central",
-      "North Europe",
       "South Central US",
-      "West Europe",
       "West US",
       "West US 2"
     ],
@@ -32,14 +29,10 @@
       "2023-04-06"
     ],
     "locations": [
-      "Australia East",
-      "Australia Southeast",
       "East US",
       "East US 2",
       "Germany West Central",
-      "North Europe",
       "South Central US",
-      "West Europe",
       "West US",
       "West US 2"
     ],
@@ -49,6 +42,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-08-01-preview",
       "2023-11-01-preview",
       "2023-08-04-preview",
       "2023-04-06",
@@ -62,19 +56,16 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2024-08-01-preview",
       "2023-11-01-preview",
       "2023-08-04-preview",
       "2020-08-06-preview"
     ],
     "locations": [
-      "Australia East",
-      "Australia Southeast",
       "East US",
       "East US 2",
       "Germany West Central",
-      "North Europe",
       "South Central US",
-      "West Europe",
       "West US",
       "West US 2"
     ],
@@ -84,6 +75,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-08-01-preview",
       "2023-11-01-preview",
       "2023-08-04-preview",
       "2023-04-06",
@@ -91,14 +83,10 @@
       "2020-08-06-preview"
     ],
     "locations": [
-      "Australia East",
-      "Australia Southeast",
       "East US",
       "East US 2",
       "Germany West Central",
-      "North Europe",
       "South Central US",
-      "West Europe",
       "West US",
       "West US 2"
     ],

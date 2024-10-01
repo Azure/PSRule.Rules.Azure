@@ -17,6 +17,7 @@
     },
     "resourceType": "healthBots",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01",
       "2022-08-08",
       "2021-08-24",
@@ -31,6 +32,7 @@
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "UAE North",
       "UK South",
       "West Central US",
       "West Europe",
@@ -42,6 +44,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01",
       "2022-08-08",
       "2021-08-24",
@@ -55,6 +58,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01",
       "2022-08-08",
       "2021-08-24",
@@ -70,6 +74,7 @@
       "North Europe",
       "South Central US",
       "Southeast Asia",
+      "UAE North",
       "UK South",
       "West Central US",
       "West Europe",
@@ -81,6 +86,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-02-01",
       "2023-05-01",
       "2022-08-08",
       "2021-08-24",

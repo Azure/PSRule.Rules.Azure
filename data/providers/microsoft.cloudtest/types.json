@@ -3,7 +3,63 @@
     "aliases": null,
     "resourceType": "accounts",
     "apiVersions": [
+      "2024-07-05-preview",
       "2020-05-07"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Japan East",
+      "Japan West",
+      "Jio India Central",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE Central",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "buildcaches",
+    "apiVersions": [
+      "2024-07-05-preview"
     ],
     "locations": [
       "Australia Central",
@@ -58,6 +114,7 @@
     "aliases": null,
     "resourceType": "hostedpools",
     "apiVersions": [
+      "2024-07-05-preview",
       "2020-05-07"
     ],
     "locations": [
@@ -113,6 +170,7 @@
     "aliases": null,
     "resourceType": "images",
     "apiVersions": [
+      "2024-07-05-preview",
       "2020-05-07"
     ],
     "locations": [
@@ -168,6 +226,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-07-05-preview",
       "2020-05-07"
     ],
     "locations": [],
@@ -177,6 +236,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2024-07-05-preview",
       "2020-05-07"
     ],
     "locations": [
@@ -232,6 +292,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-05-preview",
       "2020-05-07"
     ],
     "locations": [],
@@ -241,6 +302,7 @@
     "aliases": null,
     "resourceType": "pools",
     "apiVersions": [
+      "2024-07-05-preview",
       "2020-05-07"
     ],
     "locations": [

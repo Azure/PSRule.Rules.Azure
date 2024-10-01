@@ -1,24 +1,5 @@
 [
   {
-    "aliases": null,
-    "resourceType": "adaptiveNetworkHardenings",
-    "apiVersions": [
-      "2020-01-01",
-      "2015-06-01-preview"
-    ],
-    "locations": [
-      "France Central",
-      "France South",
-      "Germany West Central",
-      "North Europe",
-      "Switzerland North",
-      "UK South",
-      "UK West",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
     "aliases": {
       "Microsoft.Security/advancedThreatProtectionSettings/current.isEnabled": "properties.isEnabled",
       "Microsoft.Security/advancedThreatProtectionSettings/isEnabled": "properties.isEnabled"
@@ -44,6 +25,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -153,21 +135,6 @@
       "2022-07-01-preview"
     ],
     "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "applicationWhitelistings",
-    "apiVersions": [
-      "2020-01-01",
-      "2015-06-01-preview"
-    ],
-    "locations": [
-      "Central US",
-      "East US",
-      "West Central US",
-      "West Europe"
-    ],
     "zoneMappings": []
   },
   {
@@ -553,6 +520,7 @@
     "aliases": null,
     "resourceType": "customRecommendations",
     "apiVersions": [
+      "2024-08-01",
       "2023-05-01-preview"
     ],
     "locations": [],
@@ -1450,20 +1418,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/applicationWhitelistings",
-    "apiVersions": [
-      "2020-01-01",
-      "2015-06-01-preview"
-    ],
-    "locations": [
-      "Central US",
-      "West Central US",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "locations/discoveredSecuritySolutions",
     "apiVersions": [
       "2020-01-01",
@@ -1693,11 +1647,9 @@
     "resourceType": "pricings",
     "apiVersions": [
       "2024-01-01",
-      "2023-08-01-preview",
       "2023-01-01",
       "2022-03-01",
-      "2018-06-01",
-      "2017-08-01-preview"
+      "2018-06-01"
     ],
     "locations": [],
     "zoneMappings": []
@@ -1913,6 +1865,7 @@
       "Microsoft.Security/securityConnectors/offerings[*].DefenderCspmAws.mdcContainersImageAssessment.cloudRoleArn": "properties.offerings[*].mdcContainersImageAssessment.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderCspmAws.mdcContainersImageAssessment.enabled": "properties.offerings[*].mdcContainersImageAssessment.enabled",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderCspmAws.vmScanners": "properties.offerings[*].vmScanners",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderCspmAws.vmScanners.cloudRoleArn": "properties.offerings[*].vmScanners.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderCspmAws.vmScanners.configuration": "properties.offerings[*].vmScanners.configuration",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderCspmAws.vmScanners.configuration.cloudRoleArn": "properties.offerings[*].vmScanners.configuration.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderCspmAws.vmScanners.configuration.exclusionTags": "properties.offerings[*].vmScanners.configuration.exclusionTags",
@@ -1948,10 +1901,16 @@
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.containerVulnerabilityAssessment.cloudRoleArn": "properties.offerings[*].containerVulnerabilityAssessment.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.containerVulnerabilityAssessmentTask": "properties.offerings[*].containerVulnerabilityAssessmentTask",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.containerVulnerabilityAssessmentTask.cloudRoleArn": "properties.offerings[*].containerVulnerabilityAssessmentTask.cloudRoleArn",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.dataCollectionExternalId": "properties.offerings[*].dataCollectionExternalId",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.enableAuditLogsAutoProvisioning": "properties.offerings[*].enableAuditLogsAutoProvisioning",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.enableContainerVulnerabilityAssessment": "properties.offerings[*].enableContainerVulnerabilityAssessment",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.enableDefenderAgentAutoProvisioning": "properties.offerings[*].enableDefenderAgentAutoProvisioning",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.enablePolicyAgentAutoProvisioning": "properties.offerings[*].enablePolicyAgentAutoProvisioning",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.kinesisToS3": "properties.offerings[*].kinesisToS3",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.kinesisToS3.cloudRoleArn": "properties.offerings[*].kinesisToS3.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.kubeAuditRetentionTime": "properties.offerings[*].kubeAuditRetentionTime",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.kubernetesDataCollection": "properties.offerings[*].kubernetesDataCollection",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.kubernetesDataCollection.cloudRoleArn": "properties.offerings[*].kubernetesDataCollection.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.kubernetesScubaReader": "properties.offerings[*].kubernetesScubaReader",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.kubernetesScubaReader.cloudRoleArn": "properties.offerings[*].kubernetesScubaReader.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.kubernetesService": "properties.offerings[*].kubernetesService",
@@ -1963,12 +1922,21 @@
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.mdcContainersImageAssessment.cloudRoleArn": "properties.offerings[*].mdcContainersImageAssessment.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.mdcContainersImageAssessment.enabled": "properties.offerings[*].mdcContainersImageAssessment.enabled",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.scubaExternalId": "properties.offerings[*].scubaExternalId",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.vmScanners": "properties.offerings[*].vmScanners",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.vmScanners.cloudRoleArn": "properties.offerings[*].vmScanners.cloudRoleArn",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.vmScanners.configuration": "properties.offerings[*].vmScanners.configuration",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.vmScanners.configuration.exclusionTags": "properties.offerings[*].vmScanners.configuration.exclusionTags",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.vmScanners.configuration.scanningMode": "properties.offerings[*].vmScanners.configuration.scanningMode",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersAws.vmScanners.enabled": "properties.offerings[*].vmScanners.enabled",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp": "properties.offerings[*]",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.auditLogsAutoProvisioningFlag": "properties.offerings[*].auditLogsAutoProvisioningFlag",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.dataPipelineNativeCloudConnection": "properties.offerings[*].dataPipelineNativeCloudConnection",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.dataPipelineNativeCloudConnection.serviceAccountEmailAddress": "properties.offerings[*].dataPipelineNativeCloudConnection.serviceAccountEmailAddress",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.dataPipelineNativeCloudConnection.workloadIdentityProviderId": "properties.offerings[*].dataPipelineNativeCloudConnection.workloadIdentityProviderId",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.defenderAgentAutoProvisioningFlag": "properties.offerings[*].defenderAgentAutoProvisioningFlag",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.enableAuditLogsAutoProvisioning": "properties.offerings[*].enableAuditLogsAutoProvisioning",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.enableDefenderAgentAutoProvisioning": "properties.offerings[*].enableDefenderAgentAutoProvisioning",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.enablePolicyAgentAutoProvisioning": "properties.offerings[*].enablePolicyAgentAutoProvisioning",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.mdcContainersAgentlessDiscoveryK8s": "properties.offerings[*].mdcContainersAgentlessDiscoveryK8s",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.mdcContainersAgentlessDiscoveryK8s.enabled": "properties.offerings[*].mdcContainersAgentlessDiscoveryK8s.enabled",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.mdcContainersAgentlessDiscoveryK8s.serviceAccountEmailAddress": "properties.offerings[*].mdcContainersAgentlessDiscoveryK8s.serviceAccountEmailAddress",
@@ -1981,6 +1949,11 @@
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.nativeCloudConnection.serviceAccountEmailAddress": "properties.offerings[*].nativeCloudConnection.serviceAccountEmailAddress",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.nativeCloudConnection.workloadIdentityProviderId": "properties.offerings[*].nativeCloudConnection.workloadIdentityProviderId",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.policyAgentAutoProvisioningFlag": "properties.offerings[*].policyAgentAutoProvisioningFlag",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.vmScanners": "properties.offerings[*].vmScanners",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.vmScanners.configuration": "properties.offerings[*].vmScanners.configuration",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.vmScanners.configuration.exclusionTags": "properties.offerings[*].vmScanners.configuration.exclusionTags",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.vmScanners.configuration.scanningMode": "properties.offerings[*].vmScanners.configuration.scanningMode",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForContainersGcp.vmScanners.enabled": "properties.offerings[*].vmScanners.enabled",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForDatabasesAws": "properties.offerings[*]",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForDatabasesAws.arcAutoProvisioning": "properties.offerings[*].arcAutoProvisioning",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForDatabasesAws.arcAutoProvisioning.cloudRoleArn": "properties.offerings[*].arcAutoProvisioning.cloudRoleArn",
@@ -2031,6 +2004,7 @@
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForServersAws.vaAutoProvisioning.configuration.type": "properties.offerings[*].vaAutoProvisioning.configuration.type",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForServersAws.vaAutoProvisioning.enabled": "properties.offerings[*].vaAutoProvisioning.enabled",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForServersAws.vmScanners": "properties.offerings[*].vmScanners",
+      "Microsoft.Security/securityConnectors/offerings[*].DefenderForServersAws.vmScanners.cloudRoleArn": "properties.offerings[*].vmScanners.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForServersAws.vmScanners.configuration": "properties.offerings[*].vmScanners.configuration",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForServersAws.vmScanners.configuration.cloudRoleArn": "properties.offerings[*].vmScanners.configuration.cloudRoleArn",
       "Microsoft.Security/securityConnectors/offerings[*].DefenderForServersAws.vmScanners.configuration.exclusionTags": "properties.offerings[*].vmScanners.configuration.exclusionTags",
@@ -2074,6 +2048,7 @@
     },
     "resourceType": "securityConnectors",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-03-01-preview",
       "2023-10-01-preview",
       "2023-03-01-preview"
@@ -2084,6 +2059,7 @@
       "Australia East",
       "Australia Southeast",
       "Brazil South",
+      "Brazil Southeast",
       "Canada Central",
       "Canada East",
       "Central India",
@@ -2095,6 +2071,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
       "Japan East",
       "Japan West",
       "Jio India West",
@@ -2104,11 +2081,14 @@
       "North Europe",
       "Norway East",
       "Norway West",
+      "Poland Central",
+      "Qatar Central",
       "South Africa North",
       "South Africa West",
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -2130,6 +2110,10 @@
       "Microsoft.Security/securityConnectors/devops/authorization": "properties.authorization",
       "Microsoft.Security/securityConnectors/devops/authorization.code": "properties.authorization.code",
       "Microsoft.Security/securityConnectors/devops/autoDiscovery": "properties.autoDiscovery",
+      "Microsoft.Security/securityConnectors/devops/capabilities": "properties.capabilities",
+      "Microsoft.Security/securityConnectors/devops/capabilities[*]": "properties.capabilities[*]",
+      "Microsoft.Security/securityConnectors/devops/capabilities[*].name": "properties.capabilities[*].name",
+      "Microsoft.Security/securityConnectors/devops/capabilities[*].value": "properties.capabilities[*].value",
       "Microsoft.Security/securityConnectors/devops/provisioningState": "properties.provisioningState",
       "Microsoft.Security/securityConnectors/devops/provisioningStatusMessage": "properties.provisioningStatusMessage",
       "Microsoft.Security/securityConnectors/devops/provisioningStatusUpdateTimeUtc": "properties.provisioningStatusUpdateTimeUtc",
@@ -2223,6 +2207,7 @@
     "aliases": null,
     "resourceType": "securityStandards",
     "apiVersions": [
+      "2024-08-01",
       "2023-05-01-preview"
     ],
     "locations": [],
@@ -2360,6 +2345,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE Central",
@@ -2379,6 +2365,7 @@
     "aliases": null,
     "resourceType": "standardAssignments",
     "apiVersions": [
+      "2024-08-01",
       "2023-05-01-preview"
     ],
     "locations": [],
@@ -2481,6 +2468,15 @@
       "West Central US",
       "West Europe"
     ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "trustedIps",
+    "apiVersions": [
+      "2024-07-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": []
   },
   {

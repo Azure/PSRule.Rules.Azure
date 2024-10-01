@@ -28,6 +28,7 @@
       "Australia East",
       "East US",
       "South Central US",
+      "Southeast Asia",
       "West Europe"
     ],
     "zoneMappings": []
@@ -74,21 +75,6 @@
       "Australia East",
       "East US",
       "East US 2 EUAP",
-      "South Central US",
-      "Southeast Asia",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "ManagedCCFs",
-    "apiVersions": [
-      "2023-06-28-preview",
-      "2023-01-26-preview",
-      "2022-09-08-preview"
-    ],
-    "locations": [
       "South Central US",
       "Southeast Asia",
       "West Europe"

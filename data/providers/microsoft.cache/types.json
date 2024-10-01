@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2024-03-01",
       "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -29,9 +31,14 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-04-01-preview",
+      "2024-03-01-preview",
+      "2024-03-01",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
+      "2023-08-01",
       "2023-07-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -64,6 +71,8 @@
     "aliases": null,
     "resourceType": "locations/asyncOperations",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2024-03-01",
       "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -105,6 +114,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -123,6 +133,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
@@ -165,6 +177,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2024-03-01",
       "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -214,6 +228,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -232,6 +247,8 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
@@ -274,9 +291,14 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-04-01-preview",
+      "2024-03-01-preview",
+      "2024-03-01",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
+      "2023-08-01",
       "2023-07-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -309,6 +331,7 @@
       "Microsoft.Cache/Redis/accessKeys": "properties.accessKeys",
       "Microsoft.Cache/Redis/accessKeys.primaryKey": "properties.accessKeys.primaryKey",
       "Microsoft.Cache/Redis/accessKeys.secondaryKey": "properties.accessKeys.secondaryKey",
+      "Microsoft.Cache/Redis/disableAccessKeyAuthentication": "properties.disableAccessKeyAuthentication",
       "Microsoft.Cache/Redis/enableNonSslPort": "properties.enableNonSslPort",
       "Microsoft.Cache/Redis/endIP": "properties.endIP",
       "Microsoft.Cache/Redis/hostName": "properties.hostName",
@@ -349,11 +372,14 @@
       "Microsoft.Cache/Redis/tenantSettings": "properties.tenantSettings",
       "Microsoft.Cache/Redis/updateChannel": "properties.updateChannel",
       "Microsoft.Cache/Redis/virtualNetwork": "properties.virtualNetwork",
+      "Microsoft.Cache/Redis/zonalAllocationPolicy": "properties.zonalAllocationPolicy",
       "Microsoft.Cache/Redis/zones": "zones",
       "Microsoft.Cache/Redis/zones[*]": "zones[*]"
     },
     "resourceType": "Redis",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2024-03-01",
       "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -403,6 +429,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -593,6 +620,14 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -654,6 +689,8 @@
     "aliases": null,
     "resourceType": "Redis/EventGridFilters",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2024-03-01",
       "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -708,6 +745,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -728,6 +766,8 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2024-03-01",
       "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -769,6 +809,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -787,6 +828,8 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2024-03-01",
       "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -828,6 +871,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -854,6 +898,8 @@
     },
     "resourceType": "Redis/privateEndpointConnections",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2024-03-01",
       "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -895,6 +941,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -913,6 +960,8 @@
     "aliases": null,
     "resourceType": "Redis/privateLinkResources",
     "apiVersions": [
+      "2024-04-01-preview",
+      "2024-03-01",
       "2023-08-01",
       "2023-05-01-preview",
       "2023-04-01",
@@ -954,6 +1003,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1001,6 +1051,8 @@
     },
     "resourceType": "redisEnterprise",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
@@ -1213,6 +1265,8 @@
     },
     "resourceType": "redisEnterprise/databases",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
@@ -1255,6 +1309,8 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
@@ -1297,6 +1353,8 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/operationresults",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
@@ -1339,6 +1397,8 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
@@ -1389,6 +1449,8 @@
     },
     "resourceType": "RedisEnterprise/privateEndpointConnections",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
@@ -1431,6 +1493,8 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnections/operationresults",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",
@@ -1473,6 +1537,8 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateLinkResources",
     "apiVersions": [
+      "2024-06-01-preview",
+      "2024-03-01-preview",
       "2024-02-01",
       "2023-11-01",
       "2023-10-01-preview",

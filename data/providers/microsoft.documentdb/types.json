@@ -51,6 +51,8 @@
     },
     "resourceType": "cassandraClusters",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -108,6 +110,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -126,6 +129,8 @@
     "aliases": null,
     "resourceType": "databaseAccountNames",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -197,6 +202,7 @@
       "Microsoft.DocumentDB/databaseAccounts/capabilities[*].name": "properties.capabilities[*].name",
       "Microsoft.DocumentDB/databaseAccounts/capacity": "properties.capacity",
       "Microsoft.DocumentDB/databaseAccounts/capacity.totalThroughputLimit": "properties.capacity.totalThroughputLimit",
+      "Microsoft.DocumentDB/databaseAccounts/capacityMode": "properties.capacityMode",
       "Microsoft.DocumentDB/databaseAccounts/connectorOffer": "properties.connectorOffer",
       "Microsoft.DocumentDB/databaseAccounts/consistencyPolicy": "properties.consistencyPolicy",
       "Microsoft.DocumentDB/databaseAccounts/consistencyPolicy.defaultConsistencyLevel": "properties.consistencyPolicy.defaultConsistencyLevel",
@@ -227,6 +233,7 @@
       "Microsoft.DocumentDB/databaseAccounts/enableMaterializedViews": "properties.enableMaterializedViews",
       "Microsoft.DocumentDB/databaseAccounts/enableMultipleWriteLocations": "properties.enableMultipleWriteLocations",
       "Microsoft.DocumentDB/databaseAccounts/enablePartitionMerge": "properties.enablePartitionMerge",
+      "Microsoft.DocumentDB/databaseAccounts/enablePerRegionPerPartitionAutoscale": "properties.enablePerRegionPerPartitionAutoscale",
       "Microsoft.DocumentDB/databaseAccounts/enablePriorityBasedExecution": "properties.enablePriorityBasedExecution",
       "Microsoft.DocumentDB/databaseAccounts/failoverPolicies": "properties.failoverPolicies",
       "Microsoft.DocumentDB/databaseAccounts/failoverPolicies[*]": "properties.failoverPolicies[*]",
@@ -295,6 +302,7 @@
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreMode": "properties.restoreParameters.restoreMode",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreSource": "properties.restoreParameters.restoreSource",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreTimestampInUtc": "properties.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/restoreParameters.restoreWithTtlDisabled": "properties.restoreParameters.restoreWithTtlDisabled",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.sourceBackupLocation": "properties.restoreParameters.sourceBackupLocation",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.tablesToRestore": "properties.restoreParameters.tablesToRestore",
       "Microsoft.DocumentDB/databaseAccounts/restoreParameters.tablesToRestore[*]": "properties.restoreParameters.tablesToRestore[*]",
@@ -314,6 +322,8 @@
     },
     "resourceType": "databaseAccounts",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -388,6 +398,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -406,6 +417,8 @@
     "aliases": null,
     "resourceType": "databaseAccounts/encryptionScopes",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -463,6 +476,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -481,6 +495,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -531,6 +547,8 @@
     "aliases": null,
     "resourceType": "locations/checkMongoClusterNameAvailability",
     "apiVersions": [
+      "2024-07-01",
+      "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-15-preview",
       "2023-11-15-preview",
@@ -555,6 +573,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "UAE North",
       "UK South",
       "West Europe",
@@ -567,6 +586,8 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -641,6 +662,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -659,6 +681,8 @@
     "aliases": null,
     "resourceType": "locations/mongoClusterAzureAsyncOperation",
     "apiVersions": [
+      "2024-07-01",
+      "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-15-preview",
       "2023-11-15-preview",
@@ -683,6 +707,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "UAE North",
       "UK South",
       "West Europe",
@@ -695,6 +720,8 @@
     "aliases": null,
     "resourceType": "locations/mongoClusterOperationResults",
     "apiVersions": [
+      "2024-07-01",
+      "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-15-preview",
       "2023-11-15-preview",
@@ -719,6 +746,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "UAE North",
       "UK South",
       "West Europe",
@@ -731,6 +759,8 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -787,6 +817,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -807,6 +838,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -881,6 +914,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -899,6 +933,8 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -973,6 +1009,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -991,6 +1028,8 @@
     "aliases": null,
     "resourceType": "locations/restorableDatabaseAccounts",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -1050,6 +1089,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1079,7 +1119,10 @@
       "Microsoft.DocumentDB/mongoClusters/nodeGroupSpecs[*].kind": "properties.nodeGroupSpecs[*].kind",
       "Microsoft.DocumentDB/mongoClusters/nodeGroupSpecs[*].nodeCount": "properties.nodeGroupSpecs[*].nodeCount",
       "Microsoft.DocumentDB/mongoClusters/nodeGroupSpecs[*].sku": "properties.nodeGroupSpecs[*].sku",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
       "Microsoft.DocumentDB/mongoClusters/provisioningState": "properties.provisioningState",
+      "Microsoft.DocumentDB/mongoClusters/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.DocumentDB/mongoClusters/restoreParameters": "properties.restoreParameters",
       "Microsoft.DocumentDB/mongoClusters/restoreParameters.pointInTimeUTC": "properties.restoreParameters.pointInTimeUTC",
       "Microsoft.DocumentDB/mongoClusters/restoreParameters.sourceResourceId": "properties.restoreParameters.sourceResourceId",
@@ -1087,6 +1130,8 @@
     },
     "resourceType": "mongoClusters",
     "apiVersions": [
+      "2024-07-01",
+      "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-15-preview",
       "2023-11-15-preview",
@@ -1111,6 +1156,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Sweden Central",
       "UAE North",
       "UK South",
       "West Europe",
@@ -1123,6 +1169,8 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -1173,8 +1221,13 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
+      "2024-07-01",
+      "2024-06-01-preview",
       "2024-05-15-preview",
       "2024-05-15",
+      "2024-03-01-preview",
       "2024-02-15-preview",
       "2023-11-15-preview",
       "2023-11-15",
@@ -1223,6 +1276,8 @@
     "aliases": null,
     "resourceType": "operationsStatus",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -1273,6 +1328,8 @@
     "aliases": null,
     "resourceType": "restorableDatabaseAccounts",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-15",
       "2024-05-15-preview",
       "2024-05-15",
       "2024-02-15-preview",
@@ -1332,6 +1389,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1384,6 +1442,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1436,6 +1495,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1888,7 +1948,8 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.id": "properties.resource.id",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.restoreParameters": "properties.resource.restoreParameters",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
-      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc"
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/resource.restoreParameters.restoreWithTtlDisabled": "properties.resource.restoreParameters.restoreWithTtlDisabled"
     },
     "resourceType": "databaseaccounts/gremlindatabases"
   },
@@ -1939,6 +2000,7 @@
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.restoreParameters": "properties.resource.restoreParameters",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.restoreParameters.restoreWithTtlDisabled": "properties.resource.restoreParameters.restoreWithTtlDisabled",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.uniqueKeyPolicy": "properties.resource.uniqueKeyPolicy",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.uniqueKeyPolicy.uniqueKeys": "properties.resource.uniqueKeyPolicy.uniqueKeys",
       "Microsoft.DocumentDB/databaseAccounts/gremlinDatabases/graphs/resource.uniqueKeyPolicy.uniqueKeys[*]": "properties.resource.uniqueKeyPolicy.uniqueKeys[*]",
@@ -2058,7 +2120,8 @@
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.id": "properties.resource.id",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.restoreParameters": "properties.resource.restoreParameters",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
-      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc"
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/resource.restoreParameters.restoreWithTtlDisabled": "properties.resource.restoreParameters.restoreWithTtlDisabled"
     },
     "resourceType": "databaseaccounts/mongodbdatabases"
   },
@@ -2083,6 +2146,7 @@
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.restoreParameters": "properties.resource.restoreParameters",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.restoreParameters.restoreWithTtlDisabled": "properties.resource.restoreParameters.restoreWithTtlDisabled",
       "Microsoft.DocumentDB/databaseAccounts/mongodbDatabases/collections/resource.shardKey": "properties.resource.shardKey"
     },
     "resourceType": "databaseaccounts/mongodbdatabases/collections"
@@ -2222,6 +2286,14 @@
   },
   {
     "aliases": {
+      "Microsoft.DocumentDB/databaseAccounts/networkSecurityPerimeterConfigurations/networkSecurityPerimeter.id": "properties.networkSecurityPerimeter.id",
+      "Microsoft.DocumentDB/databaseAccounts/networkSecurityPerimeterConfigurations/profile.name": "properties.profile.name",
+      "Microsoft.DocumentDB/databaseAccounts/networkSecurityPerimeterConfigurations/resourceAssociation.accessMode": "properties.resourceAssociation.accessMode"
+    },
+    "resourceType": "databaseaccounts/networksecurityperimeterconfigurations"
+  },
+  {
+    "aliases": {
       "Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces/notebookServerEndpoint": "properties.notebookServerEndpoint",
       "Microsoft.DocumentDB/databaseAccounts/notebookWorkspaces/status": "properties.status"
     },
@@ -2246,6 +2318,7 @@
       "Microsoft.DocumentDB/databaseAccounts/services/instanceCount": "properties.instanceCount",
       "Microsoft.DocumentDB/databaseAccounts/services/instanceSize": "properties.instanceSize",
       "Microsoft.DocumentDB/databaseAccounts/services/serviceType": "properties.serviceType",
+      "Microsoft.DocumentDB/databaseAccounts/services/SqlDedicatedGateway.dedicatedGatewayType": "properties.dedicatedGatewayType",
       "Microsoft.DocumentDB/databaseAccounts/services/SqlDedicatedGatewayServiceResourceProperties.locations": "properties.locations",
       "Microsoft.DocumentDB/databaseAccounts/services/SqlDedicatedGatewayServiceResourceProperties.locations[*]": "properties.locations[*]",
       "Microsoft.DocumentDB/databaseAccounts/services/SqlDedicatedGatewayServiceResourceProperties.locations[*].location": "properties.locations[*].location",
@@ -2268,7 +2341,8 @@
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.id": "properties.resource.id",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.restoreParameters": "properties.resource.restoreParameters",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
-      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc"
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/resource.restoreParameters.restoreWithTtlDisabled": "properties.resource.restoreParameters.restoreWithTtlDisabled"
     },
     "resourceType": "databaseaccounts/sqldatabases"
   },
@@ -2349,6 +2423,7 @@
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.restoreParameters": "properties.resource.restoreParameters",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.restoreParameters.restoreWithTtlDisabled": "properties.resource.restoreParameters.restoreWithTtlDisabled",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.uniqueKeyPolicy": "properties.resource.uniqueKeyPolicy",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.uniqueKeyPolicy.uniqueKeys": "properties.resource.uniqueKeyPolicy.uniqueKeys",
       "Microsoft.DocumentDB/databaseAccounts/sqlDatabases/containers/resource.uniqueKeyPolicy.uniqueKeys[*]": "properties.resource.uniqueKeyPolicy.uniqueKeys[*]",
@@ -2517,7 +2592,8 @@
       "Microsoft.DocumentDB/databaseAccounts/tables/resource.id": "properties.resource.id",
       "Microsoft.DocumentDB/databaseAccounts/tables/resource.restoreParameters": "properties.resource.restoreParameters",
       "Microsoft.DocumentDB/databaseAccounts/tables/resource.restoreParameters.restoreSource": "properties.resource.restoreParameters.restoreSource",
-      "Microsoft.DocumentDB/databaseAccounts/tables/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc"
+      "Microsoft.DocumentDB/databaseAccounts/tables/resource.restoreParameters.restoreTimestampInUtc": "properties.resource.restoreParameters.restoreTimestampInUtc",
+      "Microsoft.DocumentDB/databaseAccounts/tables/resource.restoreParameters.restoreWithTtlDisabled": "properties.resource.restoreParameters.restoreWithTtlDisabled"
     },
     "resourceType": "databaseaccounts/tables"
   },
@@ -2578,5 +2654,19 @@
       "Microsoft.DocumentDB/mongoClusters/firewallRules/startIpAddress": "properties.startIpAddress"
     },
     "resourceType": "mongoclusters/firewallrules"
+  },
+  {
+    "aliases": {
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.DocumentDB/mongoClusters/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "mongoclusters/privateendpointconnections"
   }
 ]

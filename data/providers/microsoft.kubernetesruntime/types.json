@@ -1,18 +1,55 @@
 [
   {
     "aliases": null,
-    "resourceType": "bgpPeers",
+    "resourceType": "bfdProfiles",
     "apiVersions": [
+      "2024-08-01",
+      "2024-05-01-preview",
       "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "Central India",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "bgpPeers",
+    "apiVersions": [
+      "2024-08-01",
+      "2024-05-01-preview",
+      "2024-03-01",
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central India",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -20,16 +57,26 @@
     "aliases": null,
     "resourceType": "loadBalancers",
     "apiVersions": [
+      "2024-08-01",
+      "2024-05-01-preview",
       "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "Central India",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -37,6 +84,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-08-01",
+      "2024-05-01-preview",
       "2024-03-01",
       "2023-10-01-preview"
     ],
@@ -47,15 +96,27 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-08-01",
+      "2024-05-01-preview",
+      "2024-03-01",
+      "2023-10-01-preview",
       "2019-10-01"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "Central India",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -63,6 +124,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-08-01",
+      "2024-05-01-preview",
       "2024-03-01",
       "2023-10-01-preview"
     ],
@@ -73,16 +136,26 @@
     "aliases": null,
     "resourceType": "services",
     "apiVersions": [
+      "2024-08-01",
+      "2024-05-01-preview",
       "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "Central India",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -90,16 +163,26 @@
     "aliases": null,
     "resourceType": "storageClasses",
     "apiVersions": [
+      "2024-08-01",
+      "2024-05-01-preview",
       "2024-03-01",
       "2023-10-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "Central India",
       "East US",
       "East US 2",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
       "West Europe",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   }

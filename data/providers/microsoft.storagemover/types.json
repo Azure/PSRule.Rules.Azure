@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-07-01",
       "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-07-01",
       "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
@@ -34,6 +36,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-01",
       "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
@@ -49,6 +52,7 @@
     },
     "resourceType": "storageMovers",
     "apiVersions": [
+      "2024-07-01",
       "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
@@ -83,6 +87,7 @@
     },
     "resourceType": "storageMovers/agents",
     "apiVersions": [
+      "2024-07-01",
       "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
@@ -122,6 +127,7 @@
     },
     "resourceType": "storageMovers/endpoints",
     "apiVersions": [
+      "2024-07-01",
       "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
@@ -144,6 +150,7 @@
     },
     "resourceType": "storageMovers/projects",
     "apiVersions": [
+      "2024-07-01",
       "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
@@ -178,6 +185,7 @@
     },
     "resourceType": "storageMovers/projects/jobDefinitions",
     "apiVersions": [
+      "2024-07-01",
       "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",
@@ -197,6 +205,7 @@
     "aliases": null,
     "resourceType": "storageMovers/projects/jobDefinitions/jobRuns",
     "apiVersions": [
+      "2024-07-01",
       "2023-10-01",
       "2023-07-01-preview",
       "2023-03-01",

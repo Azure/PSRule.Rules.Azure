@@ -1,0 +1,78 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "azureKeyVaultSecretProviderClasses",
+    "apiVersions": [
+      "2024-08-21-preview",
+      "2024-08-09-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2024-08-21-preview",
+      "2024-08-09-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2024-08-21-preview",
+      "2024-08-09-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2024-08-21-preview",
+      "2024-08-09-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "secretSyncs",
+    "apiVersions": [
+      "2024-08-21-preview",
+      "2024-08-09-preview"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "North Europe",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  }
+]

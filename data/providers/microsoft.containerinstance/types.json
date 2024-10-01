@@ -1,5 +1,65 @@
 [
   {
+    "aliases": null,
+    "resourceType": "containerGroupProfiles",
+    "apiVersions": [
+      "2024-05-01-preview",
+      "2023-05-15-preview",
+      "2023-05-01",
+      "2023-02-01-preview",
+      "2022-10-01-preview",
+      "2022-04-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany North",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Africa West",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.ContainerInstance/containerGroups/containers": "properties.containers",
       "Microsoft.ContainerInstance/containerGroups/containers[*]": "properties.containers[*]",
@@ -204,6 +264,7 @@
     },
     "resourceType": "containerGroups",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -262,6 +323,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -454,6 +516,14 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -515,6 +585,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -544,6 +615,7 @@
     "aliases": null,
     "resourceType": "locations/cachedImages",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -602,6 +674,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -622,6 +695,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -680,6 +754,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -700,6 +775,7 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -759,6 +835,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -779,6 +856,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -837,6 +915,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -857,6 +936,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -915,6 +995,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -935,6 +1016,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -993,6 +1075,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -1013,6 +1096,7 @@
     "aliases": null,
     "resourceType": "locations/validateDeleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -1072,6 +1156,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -1092,6 +1177,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -1121,6 +1207,7 @@
     "aliases": null,
     "resourceType": "serviceAssociationLinks",
     "apiVersions": [
+      "2024-05-01-preview",
       "2023-05-15-preview",
       "2023-05-01",
       "2023-02-01-preview",
@@ -1179,6 +1266,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",

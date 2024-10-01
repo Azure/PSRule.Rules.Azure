@@ -1,0 +1,29 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "deletedUnifiedProtectedItems",
+    "apiVersions": [
+      "2024-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2024-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "unifiedProtectedItems",
+    "apiVersions": [
+      "2024-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  }
+]

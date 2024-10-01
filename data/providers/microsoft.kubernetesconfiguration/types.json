@@ -253,6 +253,7 @@
     },
     "resourceType": "fluxConfigurations",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-05-01",
       "2022-11-01",
       "2022-07-01",
@@ -429,6 +430,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-04-01-preview",
       "2023-05-01-preview",
       "2023-05-01",
       "2022-11-01",

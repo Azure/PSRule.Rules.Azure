@@ -1,88 +1,5 @@
 [
   {
-    "aliases": {
-      "Microsoft.DataLakeStore/accounts/creationTime": "properties.creationTime",
-      "Microsoft.DataLakeStore/accounts/defaultGroup": "properties.defaultGroup",
-      "Microsoft.DataLakeStore/accounts/encryptionConfig": "properties.encryptionConfig",
-      "Microsoft.DataLakeStore/accounts/encryptionConfig.keyVaultMetaInfo": "properties.encryptionConfig.keyVaultMetaInfo",
-      "Microsoft.DataLakeStore/accounts/encryptionConfig.keyVaultMetaInfo.encryptionKeyName": "properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName",
-      "Microsoft.DataLakeStore/accounts/encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion": "properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion",
-      "Microsoft.DataLakeStore/accounts/encryptionConfig.keyVaultMetaInfo.keyVaultResourceId": "properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId",
-      "Microsoft.DataLakeStore/accounts/encryptionConfig.type": "properties.encryptionConfig.type",
-      "Microsoft.DataLakeStore/accounts/encryptionProvisioningState": "properties.encryptionProvisioningState",
-      "Microsoft.DataLakeStore/accounts/encryptionState": "properties.encryptionState",
-      "Microsoft.DataLakeStore/accounts/endpoint": "properties.endpoint",
-      "Microsoft.DataLakeStore/accounts/firewallAllowAzureIps": "properties.firewallAllowAzureIps",
-      "Microsoft.DataLakeStore/accounts/firewallRules": "properties.firewallRules",
-      "Microsoft.DataLakeStore/accounts/firewallRules[*]": "properties.firewallRules[*]",
-      "Microsoft.DataLakeStore/accounts/firewallRules[*].endIpAddress": "properties.firewallRules[*].properties.endIpAddress",
-      "Microsoft.DataLakeStore/accounts/firewallRules[*].name": "properties.firewallRules[*].name",
-      "Microsoft.DataLakeStore/accounts/firewallRules[*].startIpAddress": "properties.firewallRules[*].properties.startIpAddress",
-      "Microsoft.DataLakeStore/accounts/firewallState": "properties.firewallState",
-      "Microsoft.DataLakeStore/accounts/lastModifiedTime": "properties.lastModifiedTime",
-      "Microsoft.DataLakeStore/accounts/newTier": "properties.newTier",
-      "Microsoft.DataLakeStore/accounts/provisioningState": "properties.provisioningState",
-      "Microsoft.DataLakeStore/accounts/state": "properties.state",
-      "Microsoft.DataLakeStore/accounts/trustedIdProviders": "properties.trustedIdProviders",
-      "Microsoft.DataLakeStore/accounts/trustedIdProviders[*]": "properties.trustedIdProviders[*]",
-      "Microsoft.DataLakeStore/accounts/trustedIdProviders[*].idProvider": "properties.trustedIdProviders[*].properties.idProvider",
-      "Microsoft.DataLakeStore/accounts/trustedIdProviders[*].name": "properties.trustedIdProviders[*].name",
-      "Microsoft.DataLakeStore/accounts/trustedIdProviderState": "properties.trustedIdProviderState",
-      "Microsoft.DataLakeStore/accounts/virtualNetworkRules": "properties.virtualNetworkRules",
-      "Microsoft.DataLakeStore/accounts/virtualNetworkRules[*]": "properties.virtualNetworkRules[*]",
-      "Microsoft.DataLakeStore/accounts/virtualNetworkRules[*].name": "properties.virtualNetworkRules[*].name",
-      "Microsoft.DataLakeStore/accounts/virtualNetworkRules[*].subnetId": "properties.virtualNetworkRules[*].properties.subnetId"
-    },
-    "resourceType": "accounts",
-    "apiVersions": [
-      "2016-11-01",
-      "2015-10-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US 2",
-      "North Europe",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "accounts/eventGridFilters",
-    "apiVersions": [
-      "2016-11-01",
-      "2015-10-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US 2",
-      "North Europe",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": {
-      "Microsoft.DataLakeStore/accounts/firewallRules/endIpAddress": "properties.endIpAddress",
-      "Microsoft.DataLakeStore/accounts/firewallRules/startIpAddress": "properties.startIpAddress"
-    },
-    "resourceType": "accounts/firewallRules",
-    "apiVersions": [
-      "2016-11-01",
-      "2015-10-01-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Central US",
-      "East US 2",
-      "North Europe",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
@@ -151,6 +68,49 @@
     ],
     "locations": [],
     "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.DataLakeStore/accounts/creationTime": "properties.creationTime",
+      "Microsoft.DataLakeStore/accounts/defaultGroup": "properties.defaultGroup",
+      "Microsoft.DataLakeStore/accounts/encryptionConfig": "properties.encryptionConfig",
+      "Microsoft.DataLakeStore/accounts/encryptionConfig.keyVaultMetaInfo": "properties.encryptionConfig.keyVaultMetaInfo",
+      "Microsoft.DataLakeStore/accounts/encryptionConfig.keyVaultMetaInfo.encryptionKeyName": "properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyName",
+      "Microsoft.DataLakeStore/accounts/encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion": "properties.encryptionConfig.keyVaultMetaInfo.encryptionKeyVersion",
+      "Microsoft.DataLakeStore/accounts/encryptionConfig.keyVaultMetaInfo.keyVaultResourceId": "properties.encryptionConfig.keyVaultMetaInfo.keyVaultResourceId",
+      "Microsoft.DataLakeStore/accounts/encryptionConfig.type": "properties.encryptionConfig.type",
+      "Microsoft.DataLakeStore/accounts/encryptionProvisioningState": "properties.encryptionProvisioningState",
+      "Microsoft.DataLakeStore/accounts/encryptionState": "properties.encryptionState",
+      "Microsoft.DataLakeStore/accounts/endpoint": "properties.endpoint",
+      "Microsoft.DataLakeStore/accounts/firewallAllowAzureIps": "properties.firewallAllowAzureIps",
+      "Microsoft.DataLakeStore/accounts/firewallRules": "properties.firewallRules",
+      "Microsoft.DataLakeStore/accounts/firewallRules[*]": "properties.firewallRules[*]",
+      "Microsoft.DataLakeStore/accounts/firewallRules[*].endIpAddress": "properties.firewallRules[*].properties.endIpAddress",
+      "Microsoft.DataLakeStore/accounts/firewallRules[*].name": "properties.firewallRules[*].name",
+      "Microsoft.DataLakeStore/accounts/firewallRules[*].startIpAddress": "properties.firewallRules[*].properties.startIpAddress",
+      "Microsoft.DataLakeStore/accounts/firewallState": "properties.firewallState",
+      "Microsoft.DataLakeStore/accounts/lastModifiedTime": "properties.lastModifiedTime",
+      "Microsoft.DataLakeStore/accounts/newTier": "properties.newTier",
+      "Microsoft.DataLakeStore/accounts/provisioningState": "properties.provisioningState",
+      "Microsoft.DataLakeStore/accounts/state": "properties.state",
+      "Microsoft.DataLakeStore/accounts/trustedIdProviders": "properties.trustedIdProviders",
+      "Microsoft.DataLakeStore/accounts/trustedIdProviders[*]": "properties.trustedIdProviders[*]",
+      "Microsoft.DataLakeStore/accounts/trustedIdProviders[*].idProvider": "properties.trustedIdProviders[*].properties.idProvider",
+      "Microsoft.DataLakeStore/accounts/trustedIdProviders[*].name": "properties.trustedIdProviders[*].name",
+      "Microsoft.DataLakeStore/accounts/trustedIdProviderState": "properties.trustedIdProviderState",
+      "Microsoft.DataLakeStore/accounts/virtualNetworkRules": "properties.virtualNetworkRules",
+      "Microsoft.DataLakeStore/accounts/virtualNetworkRules[*]": "properties.virtualNetworkRules[*]",
+      "Microsoft.DataLakeStore/accounts/virtualNetworkRules[*].name": "properties.virtualNetworkRules[*].name",
+      "Microsoft.DataLakeStore/accounts/virtualNetworkRules[*].subnetId": "properties.virtualNetworkRules[*].properties.subnetId"
+    },
+    "resourceType": "accounts"
+  },
+  {
+    "aliases": {
+      "Microsoft.DataLakeStore/accounts/firewallRules/endIpAddress": "properties.endIpAddress",
+      "Microsoft.DataLakeStore/accounts/firewallRules/startIpAddress": "properties.startIpAddress"
+    },
+    "resourceType": "accounts/firewallrules"
   },
   {
     "aliases": {

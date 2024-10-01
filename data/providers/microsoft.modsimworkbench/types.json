@@ -20,6 +20,7 @@
       "East US",
       "East US 2",
       "Sweden Central",
+      "West US 2",
       "West US 3"
     ],
     "zoneMappings": []
@@ -31,6 +32,118 @@
       "2021-03-01-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workbenches",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Sweden Central",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workbenches/chambers",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Sweden Central",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workbenches/chambers/connectors",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Sweden Central",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workbenches/chambers/fileRequests",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Sweden Central",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workbenches/chambers/files",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Sweden Central",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workbenches/chambers/storages",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Sweden Central",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workbenches/chambers/workloads",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Sweden Central",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workbenches/sharedStorages",
+    "apiVersions": [
+      "2021-03-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "Sweden Central",
+      "West US 2",
+      "West US 3"
+    ],
     "zoneMappings": []
   }
 ]

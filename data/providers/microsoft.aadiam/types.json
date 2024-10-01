@@ -1,52 +1,6 @@
 [
   {
     "aliases": {
-      "microsoft.aadiam/azureADMetrics/provisioningState": "properties.provisioningState"
-    },
-    "resourceType": "azureADMetrics",
-    "apiVersions": [
-      "2020-07-01-preview",
-      "2020-07-01"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Switzerland North",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West India",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": {
       "microsoft.aadiam/diagnosticSettings/eventHubAuthorizationRuleId": "properties.eventHubAuthorizationRuleId",
       "microsoft.aadiam/diagnosticSettings/eventHubName": "properties.eventHubName",
       "microsoft.aadiam/diagnosticSettings/logs": "properties.logs",

@@ -28,6 +28,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -49,6 +50,7 @@
     "aliases": null,
     "resourceType": "generateAwsTemplate",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -61,6 +63,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
       "2023-04-01-preview",
       "2023-03-15",
       "2022-05-01-preview",
@@ -75,6 +79,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-03-15",
       "2022-05-01-preview",
@@ -101,6 +106,7 @@
       "North Central US",
       "North Europe",
       "Norway East",
+      "Qatar Central",
       "South Africa North",
       "South Central US",
       "South India",
@@ -122,6 +128,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview",
       "2023-04-01-preview",
@@ -138,13 +145,21 @@
     "aliases": null,
     "resourceType": "publicCloudConnectors",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview"
     ],
     "locations": [
       "Canada Central",
       "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Central US",
-      "West Europe"
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -152,13 +167,21 @@
     "aliases": null,
     "resourceType": "solutionConfigurations",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview"
     ],
     "locations": [
       "Canada Central",
       "East US",
+      "East US 2",
+      "North Europe",
+      "South Central US",
+      "Sweden Central",
+      "UK South",
       "West Central US",
-      "West Europe"
+      "West Europe",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -166,6 +189,7 @@
     "aliases": null,
     "resourceType": "solutionTypes",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview"
     ],
     "locations": [],

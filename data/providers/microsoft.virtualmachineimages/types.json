@@ -31,6 +31,7 @@
     },
     "resourceType": "imageTemplates",
     "apiVersions": [
+      "2024-02-01",
       "2023-07-01",
       "2022-07-01",
       "2022-02-14",
@@ -63,6 +64,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -80,6 +82,7 @@
     "aliases": null,
     "resourceType": "imageTemplates/runOutputs",
     "apiVersions": [
+      "2024-02-01",
       "2023-07-01",
       "2022-07-01",
       "2022-02-14",
@@ -112,6 +115,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -129,6 +133,7 @@
     "aliases": null,
     "resourceType": "imageTemplates/triggers",
     "apiVersions": [
+      "2024-02-01",
       "2023-07-01",
       "2022-07-01"
     ],
@@ -157,6 +162,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -207,6 +213,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -224,6 +231,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2024-02-01",
       "2023-07-01",
       "2022-07-01",
       "2022-02-14",
@@ -256,6 +264,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -273,6 +282,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-02-01",
       "2023-07-01",
       "2022-07-01",
       "2022-02-14",
@@ -305,6 +315,7 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",

@@ -1,5 +1,91 @@
 [
   {
+    "aliases": {
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].systemData": "properties.privateEndpointConnections[*].systemData",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].systemData.createdAt": "properties.privateEndpointConnections[*].systemData.createdAt",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].systemData.createdBy": "properties.privateEndpointConnections[*].systemData.createdBy",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].systemData.createdByType": "properties.privateEndpointConnections[*].systemData.createdByType",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].systemData.lastModifiedAt": "properties.privateEndpointConnections[*].systemData.lastModifiedAt",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].systemData.lastModifiedBy": "properties.privateEndpointConnections[*].systemData.lastModifiedBy",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].systemData.lastModifiedByType": "properties.privateEndpointConnections[*].systemData.lastModifiedByType",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.HealthDataAIServices/deidServices/provisioningState": "properties.provisioningState",
+      "Microsoft.HealthDataAIServices/deidServices/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.HealthDataAIServices/deidServices/serviceUrl": "properties.serviceUrl"
+    },
+    "resourceType": "DeidServices",
+    "apiVersions": [
+      "2024-02-28-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "East US",
+      "East US 2",
+      "South Central US",
+      "UK South",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "DeidServices/privateEndpointConnections",
+    "apiVersions": [
+      "2024-02-28-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "East US",
+      "East US 2",
+      "South Central US",
+      "UK South",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "DeidServices/privateLinkResources",
+    "apiVersions": [
+      "2024-02-28-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "East US",
+      "East US 2",
+      "South Central US",
+      "UK South",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
@@ -13,7 +99,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationstatuses",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
       "2024-02-28-preview",
       "2023-06-01-preview"
@@ -21,7 +107,12 @@
     "locations": [
       "Canada Central",
       "Central US",
-      "UK South"
+      "East US",
+      "East US 2",
+      "South Central US",
+      "UK South",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },

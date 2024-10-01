@@ -78,6 +78,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -87,6 +88,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -149,6 +151,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -158,6 +161,60 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "gateways",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India Central",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -210,6 +267,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -219,6 +277,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -291,6 +350,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -300,6 +360,115 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationResults",
+    "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India Central",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West India",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationsStatuses",
+    "apiVersions": [
+      "2023-09-01-preview",
+      "2023-05-01-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Jio India Central",
+      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -557,6 +726,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -566,6 +736,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -692,8 +863,12 @@
         ]
       },
       {
-        "location": "North Central US",
-        "zones": []
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -752,6 +927,14 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -790,10 +973,6 @@
           "2",
           "3"
         ]
-      },
-      {
-        "location": "West US",
-        "zones": []
       },
       {
         "location": "West US 2",
@@ -848,6 +1027,7 @@
       "Jio India West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -857,6 +1037,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1195,6 +1376,13 @@
       "Microsoft.ApiManagement/service/apis/resolvers/path": "properties.path"
     },
     "resourceType": "service/apis/resolvers"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/apis/resolvers/policies/format": "properties.format",
+      "Microsoft.ApiManagement/service/apis/resolvers/policies/value": "properties.value"
+    },
+    "resourceType": "service/apis/resolvers/policies"
   },
   {
     "aliases": {
@@ -1848,5 +2036,317 @@
       "Microsoft.ApiManagement/service/workspaces/displayName": "properties.displayName"
     },
     "resourceType": "service/workspaces"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/apis/apiRevision": "properties.apiRevision",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiRevisionDescription": "properties.apiRevisionDescription",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersion": "properties.apiVersion",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersionDescription": "properties.apiVersionDescription",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersionSet": "properties.apiVersionSet",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersionSet.description": "properties.apiVersionSet.description",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersionSet.id": "properties.apiVersionSet.id",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersionSet.name": "properties.apiVersionSet.name",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersionSet.versionHeaderName": "properties.apiVersionSet.versionHeaderName",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersionSet.versioningScheme": "properties.apiVersionSet.versioningScheme",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersionSet.versionQueryName": "properties.apiVersionSet.versionQueryName",
+      "Microsoft.ApiManagement/service/workspaces/apis/apiVersionSetId": "properties.apiVersionSetId",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings": "properties.authenticationSettings",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.oAuth2": "properties.authenticationSettings.oAuth2",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.oAuth2.authorizationServerId": "properties.authenticationSettings.oAuth2.authorizationServerId",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.oAuth2.scope": "properties.authenticationSettings.oAuth2.scope",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.oAuth2AuthenticationSettings": "properties.authenticationSettings.oAuth2AuthenticationSettings",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.oAuth2AuthenticationSettings[*]": "properties.authenticationSettings.oAuth2AuthenticationSettings[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.oAuth2AuthenticationSettings[*].authorizationServerId": "properties.authenticationSettings.oAuth2AuthenticationSettings[*].authorizationServerId",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.oAuth2AuthenticationSettings[*].scope": "properties.authenticationSettings.oAuth2AuthenticationSettings[*].scope",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.openid": "properties.authenticationSettings.openid",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.openid.bearerTokenSendingMethods": "properties.authenticationSettings.openid.bearerTokenSendingMethods",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.openid.bearerTokenSendingMethods[*]": "properties.authenticationSettings.openid.bearerTokenSendingMethods[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.openid.openidProviderId": "properties.authenticationSettings.openid.openidProviderId",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.openidAuthenticationSettings": "properties.authenticationSettings.openidAuthenticationSettings",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.openidAuthenticationSettings[*]": "properties.authenticationSettings.openidAuthenticationSettings[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.openidAuthenticationSettings[*].bearerTokenSendingMethods": "properties.authenticationSettings.openidAuthenticationSettings[*].bearerTokenSendingMethods",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.openidAuthenticationSettings[*].bearerTokenSendingMethods[*]": "properties.authenticationSettings.openidAuthenticationSettings[*].bearerTokenSendingMethods[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/authenticationSettings.openidAuthenticationSettings[*].openidProviderId": "properties.authenticationSettings.openidAuthenticationSettings[*].openidProviderId",
+      "Microsoft.ApiManagement/service/workspaces/apis/contact": "properties.contact",
+      "Microsoft.ApiManagement/service/workspaces/apis/contact.email": "properties.contact.email",
+      "Microsoft.ApiManagement/service/workspaces/apis/contact.name": "properties.contact.name",
+      "Microsoft.ApiManagement/service/workspaces/apis/contact.url": "properties.contact.url",
+      "Microsoft.ApiManagement/service/workspaces/apis/description": "properties.description",
+      "Microsoft.ApiManagement/service/workspaces/apis/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/workspaces/apis/isCurrent": "properties.isCurrent",
+      "Microsoft.ApiManagement/service/workspaces/apis/isOnline": "properties.isOnline",
+      "Microsoft.ApiManagement/service/workspaces/apis/license": "properties.license",
+      "Microsoft.ApiManagement/service/workspaces/apis/license.name": "properties.license.name",
+      "Microsoft.ApiManagement/service/workspaces/apis/license.url": "properties.license.url",
+      "Microsoft.ApiManagement/service/workspaces/apis/path": "properties.path",
+      "Microsoft.ApiManagement/service/workspaces/apis/protocols": "properties.protocols",
+      "Microsoft.ApiManagement/service/workspaces/apis/protocols[*]": "properties.protocols[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/provisioningState": "properties.provisioningState",
+      "Microsoft.ApiManagement/service/workspaces/apis/serviceUrl": "properties.serviceUrl",
+      "Microsoft.ApiManagement/service/workspaces/apis/sourceApiId": "properties.sourceApiId",
+      "Microsoft.ApiManagement/service/workspaces/apis/subscriptionKeyParameterNames": "properties.subscriptionKeyParameterNames",
+      "Microsoft.ApiManagement/service/workspaces/apis/subscriptionKeyParameterNames.header": "properties.subscriptionKeyParameterNames.header",
+      "Microsoft.ApiManagement/service/workspaces/apis/subscriptionKeyParameterNames.query": "properties.subscriptionKeyParameterNames.query",
+      "Microsoft.ApiManagement/service/workspaces/apis/subscriptionRequired": "properties.subscriptionRequired",
+      "Microsoft.ApiManagement/service/workspaces/apis/termsOfServiceUrl": "properties.termsOfServiceUrl",
+      "Microsoft.ApiManagement/service/workspaces/apis/type": "properties.type"
+    },
+    "resourceType": "service/workspaces/apis"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/description": "properties.description",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/method": "properties.method",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/policies": "properties.policies",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request": "properties.request",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.description": "properties.request.description",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers": "properties.request.headers",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*]": "properties.request.headers[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].defaultValue": "properties.request.headers[*].defaultValue",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].description": "properties.request.headers[*].description",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].examples": "properties.request.headers[*].examples",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].name": "properties.request.headers[*].name",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].required": "properties.request.headers[*].required",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].schemaId": "properties.request.headers[*].schemaId",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].type": "properties.request.headers[*].type",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].typeName": "properties.request.headers[*].typeName",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].values": "properties.request.headers[*].values",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.headers[*].values[*]": "properties.request.headers[*].values[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters": "properties.request.queryParameters",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*]": "properties.request.queryParameters[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].defaultValue": "properties.request.queryParameters[*].defaultValue",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].description": "properties.request.queryParameters[*].description",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].examples": "properties.request.queryParameters[*].examples",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].name": "properties.request.queryParameters[*].name",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].required": "properties.request.queryParameters[*].required",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].schemaId": "properties.request.queryParameters[*].schemaId",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].type": "properties.request.queryParameters[*].type",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].typeName": "properties.request.queryParameters[*].typeName",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].values": "properties.request.queryParameters[*].values",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.queryParameters[*].values[*]": "properties.request.queryParameters[*].values[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations": "properties.request.representations",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*]": "properties.request.representations[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].contentType": "properties.request.representations[*].contentType",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].examples": "properties.request.representations[*].examples",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters": "properties.request.representations[*].formParameters",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*]": "properties.request.representations[*].formParameters[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].defaultValue": "properties.request.representations[*].formParameters[*].defaultValue",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].description": "properties.request.representations[*].formParameters[*].description",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].examples": "properties.request.representations[*].formParameters[*].examples",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].name": "properties.request.representations[*].formParameters[*].name",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].required": "properties.request.representations[*].formParameters[*].required",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].schemaId": "properties.request.representations[*].formParameters[*].schemaId",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].type": "properties.request.representations[*].formParameters[*].type",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].typeName": "properties.request.representations[*].formParameters[*].typeName",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].values": "properties.request.representations[*].formParameters[*].values",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].formParameters[*].values[*]": "properties.request.representations[*].formParameters[*].values[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].schemaId": "properties.request.representations[*].schemaId",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/request.representations[*].typeName": "properties.request.representations[*].typeName",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses": "properties.responses",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*]": "properties.responses[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].description": "properties.responses[*].description",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers": "properties.responses[*].headers",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*]": "properties.responses[*].headers[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].defaultValue": "properties.responses[*].headers[*].defaultValue",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].description": "properties.responses[*].headers[*].description",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].examples": "properties.responses[*].headers[*].examples",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].name": "properties.responses[*].headers[*].name",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].required": "properties.responses[*].headers[*].required",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].schemaId": "properties.responses[*].headers[*].schemaId",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].type": "properties.responses[*].headers[*].type",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].typeName": "properties.responses[*].headers[*].typeName",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].values": "properties.responses[*].headers[*].values",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].headers[*].values[*]": "properties.responses[*].headers[*].values[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations": "properties.responses[*].representations",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*]": "properties.responses[*].representations[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].contentType": "properties.responses[*].representations[*].contentType",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].examples": "properties.responses[*].representations[*].examples",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters": "properties.responses[*].representations[*].formParameters",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*]": "properties.responses[*].representations[*].formParameters[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].defaultValue": "properties.responses[*].representations[*].formParameters[*].defaultValue",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].description": "properties.responses[*].representations[*].formParameters[*].description",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].examples": "properties.responses[*].representations[*].formParameters[*].examples",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].name": "properties.responses[*].representations[*].formParameters[*].name",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].required": "properties.responses[*].representations[*].formParameters[*].required",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].schemaId": "properties.responses[*].representations[*].formParameters[*].schemaId",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].type": "properties.responses[*].representations[*].formParameters[*].type",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].typeName": "properties.responses[*].representations[*].formParameters[*].typeName",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].values": "properties.responses[*].representations[*].formParameters[*].values",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].formParameters[*].values[*]": "properties.responses[*].representations[*].formParameters[*].values[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].schemaId": "properties.responses[*].representations[*].schemaId",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].representations[*].typeName": "properties.responses[*].representations[*].typeName",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/responses[*].statusCode": "properties.responses[*].statusCode",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters": "properties.templateParameters",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*]": "properties.templateParameters[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].defaultValue": "properties.templateParameters[*].defaultValue",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].description": "properties.templateParameters[*].description",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].examples": "properties.templateParameters[*].examples",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].name": "properties.templateParameters[*].name",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].required": "properties.templateParameters[*].required",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].schemaId": "properties.templateParameters[*].schemaId",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].type": "properties.templateParameters[*].type",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].typeName": "properties.templateParameters[*].typeName",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].values": "properties.templateParameters[*].values",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/templateParameters[*].values[*]": "properties.templateParameters[*].values[*]",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/urlTemplate": "properties.urlTemplate"
+    },
+    "resourceType": "service/workspaces/apis/operations"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/policies/format": "properties.format",
+      "Microsoft.ApiManagement/service/workspaces/apis/operations/policies/value": "properties.value"
+    },
+    "resourceType": "service/workspaces/apis/operations/policies"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/apis/policies/format": "properties.format",
+      "Microsoft.ApiManagement/service/workspaces/apis/policies/value": "properties.value"
+    },
+    "resourceType": "service/workspaces/apis/policies"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/apis/releases/apiId": "properties.apiId",
+      "Microsoft.ApiManagement/service/workspaces/apis/releases/createdDateTime": "properties.createdDateTime",
+      "Microsoft.ApiManagement/service/workspaces/apis/releases/notes": "properties.notes",
+      "Microsoft.ApiManagement/service/workspaces/apis/releases/updatedDateTime": "properties.updatedDateTime"
+    },
+    "resourceType": "service/workspaces/apis/releases"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/apis/schemas/contentType": "properties.contentType",
+      "Microsoft.ApiManagement/service/workspaces/apis/schemas/document": "properties.document",
+      "Microsoft.ApiManagement/service/workspaces/apis/schemas/document.value": "properties.document.value",
+      "Microsoft.ApiManagement/service/workspaces/apis/schemas/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "service/workspaces/apis/schemas"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/apiVersionSets/description": "properties.description",
+      "Microsoft.ApiManagement/service/workspaces/apiVersionSets/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/workspaces/apiVersionSets/versionHeaderName": "properties.versionHeaderName",
+      "Microsoft.ApiManagement/service/workspaces/apiVersionSets/versioningScheme": "properties.versioningScheme",
+      "Microsoft.ApiManagement/service/workspaces/apiVersionSets/versionQueryName": "properties.versionQueryName"
+    },
+    "resourceType": "service/workspaces/apiversionsets"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/groups/description": "properties.description",
+      "Microsoft.ApiManagement/service/workspaces/groups/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/workspaces/groups/externalId": "properties.externalId",
+      "Microsoft.ApiManagement/service/workspaces/groups/type": "properties.type"
+    },
+    "resourceType": "service/workspaces/groups"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/namedValues/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/workspaces/namedValues/keyVault": "properties.keyVault",
+      "Microsoft.ApiManagement/service/workspaces/namedValues/keyVault.identityClientId": "properties.keyVault.identityClientId",
+      "Microsoft.ApiManagement/service/workspaces/namedValues/keyVault.secretIdentifier": "properties.keyVault.secretIdentifier",
+      "Microsoft.ApiManagement/service/workspaces/namedValues/secret": "properties.secret",
+      "Microsoft.ApiManagement/service/workspaces/namedValues/tags": "properties.tags",
+      "Microsoft.ApiManagement/service/workspaces/namedValues/tags[*]": "properties.tags[*]",
+      "Microsoft.ApiManagement/service/workspaces/namedValues/value": "properties.value"
+    },
+    "resourceType": "service/workspaces/namedvalues"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/policies/format": "properties.format",
+      "Microsoft.ApiManagement/service/workspaces/policies/value": "properties.value"
+    },
+    "resourceType": "service/workspaces/policies"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/policyFragments/description": "properties.description",
+      "Microsoft.ApiManagement/service/workspaces/policyFragments/format": "properties.format",
+      "Microsoft.ApiManagement/service/workspaces/policyFragments/provisioningState": "properties.provisioningState",
+      "Microsoft.ApiManagement/service/workspaces/policyFragments/value": "properties.value"
+    },
+    "resourceType": "service/workspaces/policyfragments"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/products/approvalRequired": "properties.approvalRequired",
+      "Microsoft.ApiManagement/service/workspaces/products/description": "properties.description",
+      "Microsoft.ApiManagement/service/workspaces/products/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/workspaces/products/state": "properties.state",
+      "Microsoft.ApiManagement/service/workspaces/products/subscriptionRequired": "properties.subscriptionRequired",
+      "Microsoft.ApiManagement/service/workspaces/products/subscriptionsLimit": "properties.subscriptionsLimit",
+      "Microsoft.ApiManagement/service/workspaces/products/terms": "properties.terms"
+    },
+    "resourceType": "service/workspaces/products"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/products/apiLinks/apiId": "properties.apiId"
+    },
+    "resourceType": "service/workspaces/products/apilinks"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/products/groupLinks/groupId": "properties.groupId"
+    },
+    "resourceType": "service/workspaces/products/grouplinks"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/products/policies/format": "properties.format",
+      "Microsoft.ApiManagement/service/workspaces/products/policies/value": "properties.value"
+    },
+    "resourceType": "service/workspaces/products/policies"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/schemas/description": "properties.description",
+      "Microsoft.ApiManagement/service/workspaces/schemas/provisioningState": "properties.provisioningState",
+      "Microsoft.ApiManagement/service/workspaces/schemas/schemaType": "properties.schemaType"
+    },
+    "resourceType": "service/workspaces/schemas"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/subscriptions/allowTracing": "properties.allowTracing",
+      "Microsoft.ApiManagement/service/workspaces/subscriptions/displayName": "properties.displayName",
+      "Microsoft.ApiManagement/service/workspaces/subscriptions/ownerId": "properties.ownerId",
+      "Microsoft.ApiManagement/service/workspaces/subscriptions/primaryKey": "properties.primaryKey",
+      "Microsoft.ApiManagement/service/workspaces/subscriptions/scope": "properties.scope",
+      "Microsoft.ApiManagement/service/workspaces/subscriptions/secondaryKey": "properties.secondaryKey",
+      "Microsoft.ApiManagement/service/workspaces/subscriptions/state": "properties.state"
+    },
+    "resourceType": "service/workspaces/subscriptions"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/tags/displayName": "properties.displayName"
+    },
+    "resourceType": "service/workspaces/tags"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/tags/apiLinks/apiId": "properties.apiId"
+    },
+    "resourceType": "service/workspaces/tags/apilinks"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/tags/operationLinks/operationId": "properties.operationId"
+    },
+    "resourceType": "service/workspaces/tags/operationlinks"
+  },
+  {
+    "aliases": {
+      "Microsoft.ApiManagement/service/workspaces/tags/productLinks/productId": "properties.productId"
+    },
+    "resourceType": "service/workspaces/tags/productlinks"
   }
 ]

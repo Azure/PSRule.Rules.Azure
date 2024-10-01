@@ -10,6 +10,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "groupQuotas/groupOperationsStatus",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "groupQuotas/groupQuotaLimits",
     "apiVersions": [
       "2023-06-01-preview"
@@ -29,6 +38,33 @@
   {
     "aliases": null,
     "resourceType": "groupQuotas/groupQuotaRequests",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/locationSettings",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/locationSettingsOperationsStatus",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/locationUsages",
     "apiVersions": [
       "2023-06-01-preview"
     ],
@@ -65,6 +101,15 @@
   {
     "aliases": null,
     "resourceType": "groupQuotas/subscriptionRequests",
+    "apiVersions": [
+      "2023-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "groupQuotas/subscriptionRequestsOperationsStatus",
     "apiVersions": [
       "2023-06-01-preview"
     ],

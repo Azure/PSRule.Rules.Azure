@@ -70,6 +70,7 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -125,6 +126,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -315,6 +317,14 @@
         ]
       },
       {
+        "location": "Spain Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Sweden Central",
         "zones": [
           "1",
@@ -396,6 +406,7 @@
     },
     "resourceType": "clusters/attacheddatabaseconfigurations",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -447,6 +458,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -487,6 +499,7 @@
     },
     "resourceType": "clusters/databases",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -542,6 +555,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -596,6 +610,7 @@
     },
     "resourceType": "clusters/databases/dataconnections",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -651,6 +666,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -723,6 +739,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -750,6 +767,7 @@
     },
     "resourceType": "clusters/databases/principalassignments",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -800,6 +818,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -818,6 +837,7 @@
     "aliases": null,
     "resourceType": "clusters/databases/scripts",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -864,6 +884,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -888,6 +909,7 @@
     },
     "resourceType": "clusters/managedPrivateEndpoints",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -933,6 +955,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -960,6 +983,7 @@
     },
     "resourceType": "clusters/principalassignments",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -1010,6 +1034,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1028,6 +1053,7 @@
     "aliases": null,
     "resourceType": "clusters/sandboxCustomImages",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15"
     ],
     "locations": [
@@ -1067,6 +1093,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1085,6 +1112,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -1110,6 +1138,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -1165,6 +1194,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1183,6 +1213,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -1238,6 +1269,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1256,6 +1288,7 @@
     "aliases": null,
     "resourceType": "locations/skus",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",
@@ -1298,6 +1331,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1316,6 +1350,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-04-13",
       "2023-08-15",
       "2023-05-02",
       "2022-12-29",

@@ -37,6 +37,9 @@ What's changed since pre-release v1.39.0-B0118:
       [#3068](https://github.com/Azure/PSRule.Rules.Azure/issues/3068)
       - Configuring an infrastructure subnet is a requirement for enabling zone redundancy.
         Both rule and documentation have been updated to clearly call this out.
+- General improvements:
+  - Updated resource providers and policy aliases.
+    [#3074](https://github.com/Azure/PSRule.Rules.Azure/pull/3074)
 - Engineering:
   - Quality updates to rule documentation by @BernieWhite.
     [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)

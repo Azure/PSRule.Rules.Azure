@@ -50,8 +50,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "monitorInsights",
+    "apiVersions": [
+      "2024-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-03-01-preview",
       "2023-09-01-preview",
       "2023-06-01",

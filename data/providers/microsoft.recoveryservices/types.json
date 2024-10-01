@@ -38,6 +38,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -96,6 +97,7 @@
     "aliases": null,
     "resourceType": "locations/allocatedStamp",
     "apiVersions": [
+      "2024-04-01",
       "2016-06-01",
       "2015-08-15"
     ],
@@ -130,6 +132,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -148,6 +151,7 @@
     "aliases": null,
     "resourceType": "locations/allocateStamp",
     "apiVersions": [
+      "2024-04-01",
       "2016-06-01",
       "2015-08-15"
     ],
@@ -182,6 +186,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -555,6 +560,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -635,6 +641,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -714,6 +721,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -778,6 +786,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -829,6 +838,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -976,6 +986,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -993,6 +1004,7 @@
   {
     "aliases": {
       "Microsoft.RecoveryServices/vaults/backupStorageVersion": "properties.backupStorageVersion",
+      "Microsoft.RecoveryServices/vaults/bcdrSecurityLevel": "properties.bcdrSecurityLevel",
       "Microsoft.RecoveryServices/vaults/encryption": "properties.encryption",
       "Microsoft.RecoveryServices/vaults/encryption.infrastructureEncryption": "properties.encryption.infrastructureEncryption",
       "Microsoft.RecoveryServices/vaults/encryption.kekIdentity": "properties.encryption.kekIdentity",
@@ -1002,9 +1014,12 @@
       "Microsoft.RecoveryServices/vaults/encryption.keyVaultProperties.keyUri": "properties.encryption.keyVaultProperties.keyUri",
       "Microsoft.RecoveryServices/vaults/monitoringSettings": "properties.monitoringSettings",
       "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings": "properties.monitoringSettings.azureMonitorAlertSettings",
+      "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllFailoverIssues": "properties.monitoringSettings.azureMonitorAlertSettings.alertsForAllFailoverIssues",
       "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures": "properties.monitoringSettings.azureMonitorAlertSettings.alertsForAllJobFailures",
+      "Microsoft.RecoveryServices/vaults/monitoringSettings.azureMonitorAlertSettings.alertsForAllReplicationIssues": "properties.monitoringSettings.azureMonitorAlertSettings.alertsForAllReplicationIssues",
       "Microsoft.RecoveryServices/vaults/monitoringSettings.classicAlertSettings": "properties.monitoringSettings.classicAlertSettings",
       "Microsoft.RecoveryServices/vaults/monitoringSettings.classicAlertSettings.alertsForCriticalOperations": "properties.monitoringSettings.classicAlertSettings.alertsForCriticalOperations",
+      "Microsoft.RecoveryServices/vaults/monitoringSettings.classicAlertSettings.emailNotificationsForSiteRecovery": "properties.monitoringSettings.classicAlertSettings.emailNotificationsForSiteRecovery",
       "Microsoft.RecoveryServices/vaults/moveDetails": "properties.moveDetails",
       "Microsoft.RecoveryServices/vaults/moveDetails.completionTimeUtc": "properties.moveDetails.completionTimeUtc",
       "Microsoft.RecoveryServices/vaults/moveDetails.operationId": "properties.moveDetails.operationId",
@@ -1040,6 +1055,8 @@
       "Microsoft.RecoveryServices/vaults/redundancySettings": "properties.redundancySettings",
       "Microsoft.RecoveryServices/vaults/redundancySettings.crossRegionRestore": "properties.redundancySettings.crossRegionRestore",
       "Microsoft.RecoveryServices/vaults/redundancySettings.standardTierStorageRedundancy": "properties.redundancySettings.standardTierStorageRedundancy",
+      "Microsoft.RecoveryServices/vaults/resourceGuardOperationRequests": "properties.resourceGuardOperationRequests",
+      "Microsoft.RecoveryServices/vaults/resourceGuardOperationRequests[*]": "properties.resourceGuardOperationRequests[*]",
       "Microsoft.RecoveryServices/vaults/restoreSettings": "properties.restoreSettings",
       "Microsoft.RecoveryServices/vaults/restoreSettings.crossSubscriptionRestoreSettings": "properties.restoreSettings.crossSubscriptionRestoreSettings",
       "Microsoft.RecoveryServices/vaults/restoreSettings.crossSubscriptionRestoreSettings.crossSubscriptionRestoreState": "properties.restoreSettings.crossSubscriptionRestoreSettings.crossSubscriptionRestoreState",
@@ -1163,6 +1180,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -1551,6 +1569,13 @@
       "Microsoft.RecoveryServices/Vaults/backupFabrics/protectionContainers/protectedItems/workloadType": "properties.workloadType"
     },
     "resourceType": "vaults/backupfabrics/protectioncontainers/protecteditems"
+  },
+  {
+    "aliases": {
+      "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/recoveryPointProperties": "properties.recoveryPointProperties",
+      "Microsoft.RecoveryServices/vaults/backupFabrics/protectionContainers/protectedItems/recoveryPoints/recoveryPointProperties.expiryTime": "properties.recoveryPointProperties.expiryTime"
+    },
+    "resourceType": "vaults/backupfabrics/protectioncontainers/protecteditems/recoverypoints"
   },
   {
     "aliases": {
@@ -2283,6 +2308,7 @@
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/providerSpecificDetails.A2A.multiVmGroupId": "properties.providerSpecificDetails.multiVmGroupId",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/providerSpecificDetails.A2A.multiVmGroupName": "properties.providerSpecificDetails.multiVmGroupName",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/providerSpecificDetails.A2A.osType": "properties.providerSpecificDetails.osType",
+      "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/providerSpecificDetails.A2A.protectionClusterId": "properties.providerSpecificDetails.protectionClusterId",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/providerSpecificDetails.A2A.recoveryAvailabilityZone": "properties.providerSpecificDetails.recoveryAvailabilityZone",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/providerSpecificDetails.A2A.recoveryBootDiagStorageAccountId": "properties.providerSpecificDetails.recoveryBootDiagStorageAccountId",
       "Microsoft.RecoveryServices/vaults/replicationFabrics/replicationProtectionContainers/replicationProtectedItems/providerSpecificDetails.A2A.recoveryCapacityReservationGroupId": "properties.providerSpecificDetails.recoveryCapacityReservationGroupId",

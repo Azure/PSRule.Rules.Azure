@@ -47,15 +47,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "macc",
-    "apiVersions": [
-      "2018-08-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "mysolutions",
     "apiVersions": [
       "2023-03-01-preview"
@@ -150,6 +141,9 @@
       "2022-03-01",
       "2022-02-02",
       "2021-12-01",
+      "2021-10-01",
+      "2021-06-01",
+      "2018-08-01-beta",
       "2018-03-01-beta"
     ],
     "locations": [],

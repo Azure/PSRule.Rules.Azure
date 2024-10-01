@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "AvailabilitySets",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview"
     ],
@@ -26,6 +27,7 @@
     "aliases": null,
     "resourceType": "Clouds",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview"
     ],
@@ -47,8 +49,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations",
+    "resourceType": "Locations",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview",
       "2022-05-21-preview",
@@ -61,6 +64,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview",
       "2022-05-21-preview",
@@ -85,8 +89,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "operations",
+    "resourceType": "Operations",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview",
       "2022-05-21-preview",
@@ -99,6 +104,7 @@
     "aliases": null,
     "resourceType": "VirtualMachineInstances",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview"
     ],
@@ -187,6 +193,7 @@
     "aliases": null,
     "resourceType": "VirtualMachineTemplates",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview"
     ],
@@ -210,6 +217,7 @@
     "aliases": null,
     "resourceType": "VirtualNetworks",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview"
     ],
@@ -233,6 +241,7 @@
     "aliases": null,
     "resourceType": "VMMServers",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview"
     ],
@@ -256,6 +265,7 @@
     "aliases": null,
     "resourceType": "VMMServers/InventoryItems",
     "apiVersions": [
+      "2024-06-01",
       "2023-10-07",
       "2023-04-01-preview"
     ],

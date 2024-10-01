@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-02-16-preview",
       "2024-02-05-preview",
       "2023-09-21",
       "2023-09-01",
@@ -19,6 +20,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-02-16-preview",
       "2024-02-05-preview",
       "2023-09-21",
       "2023-09-01",
@@ -35,6 +37,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-02-16-preview",
       "2024-02-05-preview",
       "2023-09-21",
       "2023-09-01",
@@ -51,6 +54,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2024-02-16-preview",
       "2024-02-05-preview",
       "2023-09-21",
       "2023-09-01",

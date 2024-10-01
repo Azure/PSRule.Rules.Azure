@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "connections",
     "apiVersions": [
+      "2024-05-07",
       "2024-01-25",
       "2023-10-11-preview",
       "2023-06-28",
@@ -20,6 +21,7 @@
     "aliases": null,
     "resourceType": "connections/flows",
     "apiVersions": [
+      "2024-05-07",
       "2024-01-25",
       "2023-10-11-preview",
       "2023-06-28",
@@ -37,6 +39,7 @@
     "aliases": null,
     "resourceType": "listApprovedSchemas",
     "apiVersions": [
+      "2024-05-07",
       "2024-01-25",
       "2023-10-11-preview"
     ],
@@ -47,6 +50,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-05-07",
       "2024-01-25",
       "2023-10-11-preview",
       "2023-06-28",
@@ -59,6 +63,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-05-07",
       "2024-01-25",
       "2023-10-11-preview",
       "2023-06-28",
@@ -76,6 +81,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-05-07",
       "2024-01-25",
       "2023-10-11-preview",
       "2023-06-28",
@@ -88,6 +94,7 @@
     "aliases": null,
     "resourceType": "pipelines",
     "apiVersions": [
+      "2024-05-07",
       "2024-01-25",
       "2023-10-11-preview",
       "2023-06-28",
@@ -105,6 +112,7 @@
     "aliases": null,
     "resourceType": "validateSchema",
     "apiVersions": [
+      "2024-05-07",
       "2024-01-25",
       "2023-10-11-preview"
     ],
