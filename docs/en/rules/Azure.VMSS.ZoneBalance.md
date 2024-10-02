@@ -99,7 +99,7 @@ resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2023-09-01' = {
 }
 ```
 
-<!-- external:avm res/compute/virtual-machine-scale-set zoneBalance -->
+<!-- external:avm avm/res/compute/virtual-machine-scale-set:0.4.0 zoneBalance -->
 
 ## LINKS
 
