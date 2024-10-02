@@ -126,6 +126,6 @@ When naming custom rules we recommend that you:
 
 - [Using Bicep source](../using-bicep.md)
 - [Using templates](../using-templates.md)
-- [Creating your pipeline](creating-your-pipeline.md)
+- [Creating your pipeline](../creating-your-pipeline.md)
 
 *[IaC]: Azure Resource Manager
