@@ -180,6 +180,8 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
 }
 ```
 
+<!-- external:avm avm/res/container-service/managed-cluster enableSecretRotation -->
+
 ### Configure with Azure CLI
 
 ```bash

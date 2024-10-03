@@ -137,6 +137,8 @@ resource service 'Microsoft.ApiManagement/service@2021-08-01' = {
 }
 ```
 
+<!-- external:avm avm/res/api-management/service customProperties -->
+
 ## LINKS
 
 - [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)

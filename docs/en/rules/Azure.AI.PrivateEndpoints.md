@@ -90,6 +90,8 @@ resource account 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
 }
 ```
 
+<!-- external:avm avm/res/cognitive-services/account publicNetworkAccess -->
+
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)

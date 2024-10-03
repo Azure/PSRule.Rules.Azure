@@ -167,7 +167,7 @@ def _external_reference_avm(text: str, page: Page) -> str:
     avm_latest_version = _avm_module_latest_tag(page, avm_path)
 
     # Add the reference syntax.
-    syntax_body = _avm_code_reference(avm_path, None)
+    syntax_body = f"\nTo reference the module, please use the following syntax:{_avm_code_reference(avm_path, None)}"
 
     # Add suggested version.
     suggestion_body = ''
@@ -179,10 +179,13 @@ def _external_reference_avm(text: str, page: Page) -> str:
     if avm_latest_version != '':
         latest_body = f"\n\nTo use the latest version:{_avm_code_reference(avm_path, avm_latest_version)}"
 
+    # Add AVM info.
+    avm_links_body = f"\n\n---\n\n- [What is Azure Verified Modules?](https://aka.ms/avm)\n- [Usage and parameters for this module](https://github.com/Azure/bicep-registry-modules/tree/main/{avm_path})"
+
     return _reference_block(
         style = "Example",
         title = f"Configure with [Azure Verified Modules](https://github.com/Azure/bicep-registry-modules/tree/main/{avm_path})",
-        text = f"A pre-built module provided by Microsoft is available from the Azure Bicep public registry.\nTo reference the module, please use the following syntax:{syntax_body}{suggestion_body}{latest_body}"
+        text = f"A pre-validated module supported by Microsoft is available from the Azure Bicep public registry.{syntax_body}{suggestion_body}{latest_body}{avm_links_body}"
     )
 
 def _avm_code_reference(path: str, version: str) -> str:
