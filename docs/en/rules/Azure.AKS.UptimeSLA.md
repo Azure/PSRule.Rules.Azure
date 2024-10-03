@@ -129,6 +129,8 @@ resource aks 'Microsoft.ContainerService/managedClusters@2023-02-01' = {
 }
 ```
 
+<!-- external:avm avm/res/container-service/managed-cluster skuTier -->
+
 ## NOTES
 
 `Basic` and `Paid` are removed in the `2023-02-01` and `2023-02-02 Preview` API version,

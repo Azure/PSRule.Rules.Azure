@@ -335,7 +335,7 @@ configuration:
 PSRule for Azure comes with many configuration options.
 The setup section explains in detail how to configure each option.
 
-  [5]: setup/configuring-options.md
+  [5]: setup/index.md
 
 ## Recommended content
 

@@ -15,7 +15,9 @@ Enhance service availability and resilience by deploying API Management instance
 
 ## DESCRIPTION
 
-API Management supports multi-region deployment, which allows the API gateway to be available in more than one region. This configuration enhances service availability by ensuring that if one region experiences an outage, the API gateway remains operational in another region. Multi-region deployment is crucial for maintaining high availability and reducing latency for global users.
+API Management supports multi-region deployment, which allows the API gateway to be available in more than one region.
+This configuration enhances service availability by ensuring that if one region experiences an outage, the API gateway remains operational in another region.
+Multi-region deployment is crucial for maintaining high availability and reducing latency for global users.
 
 This feature is available exclusively in the Premium SKU for API Management.
 
@@ -93,9 +95,10 @@ resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-previe
 
 It is recommended to configure zone redundancy if the region supports it.
 
-Virtual network settings must be configured in the added region, if networking is configured in the existing region or regions. The rule does not take this into consideration.
+Virtual network settings must be configured in the added region, if networking is configured in the existing region or regions.
+The rule does not take this into consideration.
 
-For developer environments, suppressing the rule might make sense as configuring multi-region for an API Management instance requries the `Premium` SKU currently.
+For developer environments, suppressing the rule might make sense as configuring multi-region for an API Management instance requires the `Premium` SKU currently.
 
 ## LINKS
 

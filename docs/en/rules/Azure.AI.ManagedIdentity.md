@@ -93,6 +93,8 @@ resource language 'Microsoft.CognitiveServices/accounts@2023-05-01' = {
 }
 ```
 
+<!-- external:avm avm/res/cognitive-services/account managedIdentities -->
+
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:

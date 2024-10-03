@@ -96,6 +96,8 @@ resource apiManagementService 'Microsoft.ApiManagement/service@2021-12-01-previe
 }
 ```
 
+<!-- external:avm avm/res/api-management/service additionalLocations -->
+
 ## LINKS
 
 - [Resiliency and dependencies](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-resiliency)
