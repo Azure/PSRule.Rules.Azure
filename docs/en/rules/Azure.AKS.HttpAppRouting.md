@@ -1,8 +1,8 @@
 ---
-reviewed: 2021/12/10
+reviewed: 2021-12-10
 severity: Important
 pillar: Security
-category: Application endpoints
+category: SE:06 Network controls
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.HttpAppRouting/
 ---
@@ -21,10 +21,12 @@ This may be helpful in some limited scenarios, but should not be used in product
 When exposing application endpoints consider using an ingress controller that supports:
 
 - Security filtering behind web application firewall (WAF).
-- Encyption in transit over TLS.
+- Encryption in transit over TLS.
 - Multiple replicas.
 
 Azure provides a production ready ingress controller _Application Gateway Ingress Controller_ (AGIC).
+
+HTTP application routing add-on (preview) for Azure Kubernetes Service (AKS) will be retired on 03 March 2025.
 
 ## RECOMMENDATION
 
@@ -182,7 +184,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
 
 ## LINKS
 
-- [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [HTTP application routing](https://learn.microsoft.com/azure/aks/http-application-routing)
 - [Enable Application Gateway Ingress Controller add-on for an existing AKS cluster](https://learn.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)

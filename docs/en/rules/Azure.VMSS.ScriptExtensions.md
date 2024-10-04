@@ -2,7 +2,7 @@
 reviewed: 2022-11-16
 severity: Important
 pillar: Security
-category: Secrets
+category: SE:02 Secured development lifecycle
 resource: Virtual Machine Scale Sets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.ScriptExtensions/
 ---
@@ -80,6 +80,6 @@ extensionProfile: {
 
 ## LINKS
 
-- [Secure application configuration and dependencies](https://learn.microsoft.com/azure/architecture/framework/security/design-app-dependencies)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)
+- [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
 - [Azure VMSS Extensions Overview](https://learn.microsoft.com/azure/virtual-machines/extensions/overview)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets/extensions)

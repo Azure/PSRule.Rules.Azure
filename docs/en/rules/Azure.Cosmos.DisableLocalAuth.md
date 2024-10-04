@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: SE:05 Identity and access
+category: SE:05 Identity and access management
 resource: Cosmos DB
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.DisableLocalAuth/
 ---
