@@ -1,7 +1,9 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 namespace PSRule.Rules.Azure.Data.Template;
+
+#nullable enable
 
 internal interface IDeploymentSymbol
 {
@@ -9,7 +11,9 @@ internal interface IDeploymentSymbol
 
     DeploymentSymbolKind Kind { get; }
 
-    void Configure(ResourceValue r);
+    void Configure(IResourceValue r);
 
-    string GetId(int index);
+    string? GetId(int index);
 }
+
+#nullable restore

@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.39.0-B0182:
+
+- Bug fixes:
+  - Fixed symbolic expand for existing with conditional cases by @BernieWhite.
+    [#2917](https://github.com/Azure/PSRule.Rules.Azure/issues/2917)
+
 ## v1.39.0-B0182 (pre-release)
 
 What's changed since pre-release v1.39.0-B0118:

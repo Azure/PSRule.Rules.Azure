@@ -5,6 +5,8 @@ using System;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Resources;
 
+#nullable enable
+
 namespace PSRule.Rules.Azure
 {
     internal static class ResourceHelper
@@ -12,9 +14,11 @@ namespace PSRule.Rules.Azure
         private const string SLASH = "/";
         private const string DOT = ".";
         private const string SUBSCRIPTIONS = "subscriptions";
-        private const string RESOURCEGROUPS = "resourceGroups";
+        private const string RESOURCE_GROUPS = "resourceGroups";
+        private const string MANAGEMENT_GROUPS = "managementGroups";
         private const string PROVIDERS = "providers";
-        private const string MANAGEMENTGROUPTYPE = "/providers/Microsoft.Management/managementGroups/";
+        private const string MANAGEMENT_GROUP_TYPE = "/providers/Microsoft.Management/managementGroups/";
+
         private const char SLASH_C = '/';
 
         /// <summary>
@@ -64,7 +68,7 @@ namespace PSRule.Rules.Azure
         /// </summary>
         /// <param name="resourceId">The resource Id of a resource.</param>
         /// <returns>Returns the resource type if the Id is valid or <c>null</c> when an invalid resource Id is specified.</returns>
-        internal static string GetResourceType(string resourceId)
+        internal static string? GetResourceType(string? resourceId)
         {
             return string.IsNullOrEmpty(resourceId) ? null : string.Join(SLASH, GetResourceIdTypeParts(resourceId));
         }
@@ -72,7 +76,7 @@ namespace PSRule.Rules.Azure
         /// <summary>
         /// Get the resource provider namespaces and type from a full resource type string.
         /// </summary>
-        internal static bool TryResourceProviderFromType(string type, out string provider, out string resourceType)
+        internal static bool TryResourceProviderFromType(string type, out string? provider, out string? resourceType)
         {
             provider = null;
             resourceType = null;
@@ -88,7 +92,7 @@ namespace PSRule.Rules.Azure
         /// <summary>
         /// Get the subscription Id from a specified resource Id.
         /// </summary>
-        internal static bool TrySubscriptionId(string resourceId, out string subscriptionId)
+        internal static bool TrySubscriptionId(string resourceId, out string? subscriptionId)
         {
             subscriptionId = null;
             if (string.IsNullOrEmpty(resourceId))
@@ -96,13 +100,13 @@ namespace PSRule.Rules.Azure
 
             var idParts = resourceId.Split(SLASH_C);
             var i = 0;
-            return ConsumeSubscriptionIdPart(idParts, ref i, out subscriptionId);
+            return TryConsumeSubscriptionIdPart(idParts, ref i, out subscriptionId);
         }
 
         /// <summary>
         /// Get the name of the resource group from the specified resource Id.
         /// </summary>
-        internal static bool TryResourceGroup(string resourceId, out string subscriptionId, out string resourceGroupName)
+        internal static bool TryResourceGroup(string resourceId, out string? subscriptionId, out string? resourceGroupName)
         {
             subscriptionId = null;
             resourceGroupName = null;
@@ -111,8 +115,8 @@ namespace PSRule.Rules.Azure
 
             var idParts = resourceId.Split(SLASH_C);
             var i = 0;
-            return ConsumeSubscriptionIdPart(idParts, ref i, out subscriptionId) &&
-                ConsumeResourceGroupPart(idParts, ref i, out resourceGroupName);
+            return TryConsumeSubscriptionIdPart(idParts, ref i, out subscriptionId) &&
+                TryConsumeResourceGroupPart(idParts, ref i, out resourceGroupName);
         }
 
         /// <summary>
@@ -154,7 +158,7 @@ namespace PSRule.Rules.Azure
             if (resourceGroup != null)
             {
                 result[i++] = SLASH;
-                result[i++] = RESOURCEGROUPS;
+                result[i++] = RESOURCE_GROUPS;
                 result[i++] = SLASH;
                 result[i++] = resourceGroup;
             }
@@ -185,21 +189,266 @@ namespace PSRule.Rules.Azure
             // Handle scoped resource IDs.
             if (!string.IsNullOrEmpty(scope) && scope != SLASH && TryResourceIdComponents(scope, out subscriptionId, out resourceGroup, out var parentTypeComponents, nameComponents: out var parentNameComponents))
             {
-                typeComponents = MergeComponents(parentTypeComponents, typeComponents);
-                nameComponents = MergeComponents(parentNameComponents, nameComponents);
+                typeComponents = MergeResourceNameOrType(parentTypeComponents, typeComponents);
+                nameComponents = MergeResourceNameOrType(parentNameComponents, nameComponents);
             }
             return CombineResourceId(subscriptionId, resourceGroup, typeComponents, nameComponents, depth);
         }
 
-        /// <summary>
-        /// Merge type or name components from parent and child.
-        /// </summary>
-        private static string[] MergeComponents(string[] parent, string[] child)
+        internal static string ResourceId(string resourceType, string resourceName, string? scopeId, int depth = int.MaxValue)
         {
-            var combined = new string[parent.Length + child.Length];
-            Array.Copy(parent, combined, parent.Length);
-            Array.Copy(child, 0, combined, parent.Length, child.Length);
-            return combined;
+            var typeParts = GetResourceTypeParts(resourceType);
+            var nameParts = resourceName.Split(SLASH_C);
+            return ResourceId(typeParts, nameParts, scopeId, depth);
+        }
+
+        internal static string ResourceId(string[]? resourceType, string[]? resourceName, string? scopeId, int depth = int.MaxValue)
+        {
+            return ResourceId(tenant: null, managementGroup: null, subscriptionId: null, resourceGroup: null, resourceType, resourceName, scopeId, depth);
+        }
+
+        internal static string ResourceId(string? tenant, string? managementGroup, string? subscriptionId, string? resourceGroup, string resourceType, string resourceName, string? scopeId, int depth = int.MaxValue)
+        {
+            var typeParts = GetResourceTypeParts(resourceType);
+            var nameParts = resourceName.Split(SLASH_C);
+            return ResourceId(tenant, managementGroup, subscriptionId, resourceGroup, typeParts, nameParts, scopeId, depth);
+        }
+
+        internal static string ResourceId(string? tenant, string? managementGroup, string? subscriptionId, string? resourceGroup, string[]? resourceType, string[]? resourceName, string? scopeId, int depth = int.MaxValue)
+        {
+            var resourceTypeLength = resourceType?.Length ?? 0;
+            var nameLength = resourceName?.Length ?? 0;
+            if (resourceTypeLength != nameLength)
+                throw new TemplateFunctionException(nameof(resourceType), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
+
+            if (!ResourceIdComponents(scopeId, out var scopeTenant, out var scopeManagementGroup, out var scopeSubscriptionId, out var scopeResourceGroup, out var scopeResourceType, out var scopeResourceName))
+            {
+                scopeResourceType = null;
+                scopeResourceName = null;
+            }
+
+            resourceType = MergeResourceNameOrType(scopeResourceType, resourceType);
+            resourceName = MergeResourceNameOrType(scopeResourceName, resourceName);
+            return ResourceId(scopeTenant ?? tenant, scopeManagementGroup ?? managementGroup, scopeSubscriptionId ?? subscriptionId, scopeResourceGroup ?? resourceGroup, resourceType, resourceName, depth);
+        }
+
+        private static string[]? MergeResourceNameOrType(string[]? parentNameOrType, string[]? nameOrType)
+        {
+            if (parentNameOrType == null || parentNameOrType.Length == 0) return nameOrType;
+            if (nameOrType == null || nameOrType.Length == 0) return parentNameOrType;
+
+            var result = new string[parentNameOrType.Length + nameOrType.Length];
+
+            // Complete the resource name or type without duplicating similar segments.
+            var i = 0;
+            var j = 0;
+            var size = 0;
+            while (i < parentNameOrType.Length && j < nameOrType.Length)
+            {
+                if (string.Equals(parentNameOrType[i], nameOrType[j], StringComparison.OrdinalIgnoreCase))
+                    j++;
+
+                result[i] = parentNameOrType[i];
+                i++;
+                size++;
+            }
+
+            // Add remaining segments.
+            while (i < parentNameOrType.Length)
+            {
+                result[i] = parentNameOrType[i];
+                i++;
+                size++;
+            }
+
+            while (j < nameOrType.Length)
+            {
+                result[i] = nameOrType[j];
+                i++;
+                j++;
+                size++;
+            }
+
+            if (size < result.Length)
+            {
+                Array.Resize(ref result, size);
+            }
+
+            return result;
+
+        }
+
+        /// <summary>
+        /// Get a resource ID from the components.
+        /// </summary>
+        /// <remarks>
+        /// /subscriptions/{subscriptionId}/resourceGroups/{resourceGroup}/providers/{resourceType}/{name}
+        /// /subscriptions/{subscriptionId}/providers/{resourceType}/{name}
+        /// /providers/Microsoft.Management/managementGroups/mg1/providers/{resourceType}/{name}
+        /// /providers/{resourceType}/{name}
+        /// </remarks>
+        internal static string ResourceId(string? scopeTenant, string? scopeManagementGroup, string? scopeSubscriptionId, string? scopeResourceGroup, string[]? resourceType, string[]? resourceName, int depth = int.MaxValue)
+        {
+            var resourceTypeLength = resourceType?.Length ?? 0;
+            var nameLength = resourceName?.Length ?? 0;
+            if (resourceTypeLength != nameLength)
+                throw new TemplateFunctionException(nameof(resourceType), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
+
+            // Coalesce depth.
+            var actualDepth = ResourceIdDepth(scopeTenant, scopeManagementGroup, scopeSubscriptionId, scopeResourceGroup, resourceType, resourceName);
+            depth = depth < 0 ? actualDepth + depth : depth > actualDepth ? actualDepth : depth;
+
+            var parts = scopeTenant == SLASH ? 1 : scopeSubscriptionId != null ? 4 : scopeManagementGroup != null ? 8 : 0;
+            parts += scopeResourceGroup != null ? 4 : 0;
+            parts += depth >= resourceTypeLength ? resourceTypeLength * 4 : depth * 4;
+
+            // Add additional provider segements.
+            for (var p = 0; resourceType != null && p < resourceType.Length; p++)
+            {
+                if (resourceType[p].Contains(DOT))
+                    parts += 2;
+            }
+
+            var result = new string[parts];
+            var i = 0;
+            var j = 0;
+            var currentDepth = 0;
+
+            if (scopeTenant == null && scopeManagementGroup != null && depth >= 1)
+            {
+                result[i++] = SLASH;
+                result[i++] = PROVIDERS;
+                result[i++] = SLASH;
+                result[i++] = "Microsoft.Management";
+                result[i++] = SLASH;
+                result[i++] = MANAGEMENT_GROUPS;
+                result[i++] = SLASH;
+                result[i++] = scopeManagementGroup;
+                currentDepth++;
+            }
+            else if (scopeTenant == null && scopeSubscriptionId != null && depth >= 1)
+            {
+                result[i++] = SLASH;
+                result[i++] = SUBSCRIPTIONS;
+                result[i++] = SLASH;
+                result[i++] = scopeSubscriptionId;
+                currentDepth++;
+
+                if (scopeResourceGroup != null && depth >= 2)
+                {
+                    result[i++] = SLASH;
+                    result[i++] = RESOURCE_GROUPS;
+                    result[i++] = SLASH;
+                    result[i++] = scopeResourceGroup;
+                    currentDepth++;
+                }
+            }
+
+            // Handle resource type and name.
+            if (depth > currentDepth && resourceType != null && resourceName != null && resourceTypeLength > 0)
+            {
+                while (i < result.Length && depth > currentDepth && j < resourceTypeLength)
+                {
+                    // If a resource provider is included providers segment.
+                    if (resourceType[j].Contains(DOT))
+                    {
+                        result[i++] = SLASH;
+                        result[i++] = PROVIDERS;
+                    }
+
+                    // Don't increment when providers is already in the type segment.
+                    if (!string.Equals(resourceType[j], PROVIDERS, StringComparison.OrdinalIgnoreCase))
+                        currentDepth++;
+
+                    result[i++] = SLASH;
+                    result[i++] = resourceType[j];
+                    result[i++] = SLASH;
+                    result[i++] = resourceName[j++];
+                }
+            }
+
+            return scopeTenant != null && i == 0 ? SLASH : string.Concat(result);
+        }
+
+        /// <summary>
+        /// From the resource ID extract out the components.
+        /// </summary>
+        internal static bool ResourceIdComponents(string? resourceId, out string? tenant, out string? managementGroup, out string? subscriptionId, out string? resourceGroup, out string[]? resourceType, out string[]? resourceName)
+        {
+            tenant = null;
+            managementGroup = null;
+            subscriptionId = null;
+            resourceGroup = null;
+            resourceType = null;
+            resourceName = null;
+
+            if (string.IsNullOrEmpty(resourceId))
+                return false;
+
+            var idParts = resourceId!.Split(SLASH_C);
+            var i = 0;
+            if (TryConsumeSubscriptionIdPart(idParts, ref i, out subscriptionId))
+            {
+                if (TryConsumeResourceGroupPart(idParts, ref i, out resourceGroup))
+                {
+                    _ = TryConsumeProviderPart(idParts, ref i, out _, out resourceType, out resourceName);
+                }
+                return true;
+            }
+
+            if (TryConsumeManagementGroupPart(idParts, ref i, out managementGroup))
+            {
+                _ = TryConsumeProviderPart(idParts, ref i, out _, out resourceType, out resourceName);
+                return true;
+            }
+
+            if (TryConsumeTenantPart(idParts, ref i, out tenant))
+            {
+                _ = TryConsumeProviderPart(idParts, ref i, out _, out resourceType, out resourceName);
+                return true;
+            }
+
+            return TryConsumeProviderPart(idParts, ref i, out _, out resourceType, out resourceName);
+        }
+
+        /// <summary>
+        /// Get the depth of a specific resource ID based on split out components.
+        /// </summary>
+        /// <returns>Returns the depth of the resource ID where tenant scope is always <c>0</c>. Management group or subscriptions scopes are depth <c>1</c>.</returns>
+        internal static int ResourceIdDepth(string? scopeTenant, string? scopeManagementGroup, string? scopeSubscriptionId, string? scopeResourceGroup, string[]? resourceType, string[]? resourceName)
+        {
+            var depth = scopeTenant == SLASH || (string.IsNullOrEmpty(scopeManagementGroup) && string.IsNullOrEmpty(scopeSubscriptionId)) ? 0 : 1;
+            if (!string.IsNullOrEmpty(scopeSubscriptionId) && !string.IsNullOrEmpty(scopeResourceGroup))
+                depth++;
+
+            if (resourceType != null && resourceName != null)
+                depth += ResourceNameOrTypeDepth(resourceType);
+
+            return depth;
+        }
+
+        internal static int ResourceNameOrTypeDepth(string[] nameOrType)
+        {
+            var depth = 0;
+            for (var i = 0; i < nameOrType.Length; i++)
+            {
+                if (!string.Equals(nameOrType[i], PROVIDERS, StringComparison.OrdinalIgnoreCase))
+                    depth++;
+            }
+            return depth;
+        }
+
+        private static string[] GetResourceTypeParts(string resourceType)
+        {
+            var parts = resourceType.Split(SLASH_C);
+            var result = new string[parts.Length - 1];
+
+            if (parts.Length < 2) throw new ArgumentException(nameof(resourceType));
+            if (parts.Length == 2) return [resourceType];
+
+            result[0] = string.Concat(parts[0], SLASH, parts[1]);
+            Array.Copy(parts, 2, result, 1, parts.Length - 2);
+            return result;
         }
 
         /// <summary>
@@ -220,7 +469,7 @@ namespace PSRule.Rules.Azure
             var i = 0;
             var j = 0;
 
-            result[i++] = MANAGEMENTGROUPTYPE;
+            result[i++] = MANAGEMENT_GROUP_TYPE;
             result[i++] = managementGroupName;
             if (resourceTypeLength > 0 && depth >= 0)
             {
@@ -237,13 +486,18 @@ namespace PSRule.Rules.Azure
             return string.Concat(result);
         }
 
-        internal static string GetParentResourceId(string subscriptionId, string resourceGroup, string[] resourceType, string[] name)
+        internal static string GetParentResourceId(string subscriptionId, string resourceGroup, string[] resourceType, string[] resourceName)
         {
-            var depth = resourceType.Length - 2;
-            if (resourceType.Length >= 3 && StringComparer.OrdinalIgnoreCase.Equals(resourceType[1], PROVIDERS))
-                depth--;
-
-            return CombineResourceId(subscriptionId, resourceGroup, resourceType, name, depth);
+            return ResourceId
+            (
+                scopeTenant: null,
+                scopeManagementGroup: null,
+                scopeSubscriptionId: subscriptionId,
+                scopeResourceGroup: resourceGroup,
+                resourceType: resourceType,
+                resourceName: resourceName,
+                depth: -1
+            );
         }
 
         internal static string GetParentResourceId(string subscriptionId, string resourceGroup, string resourceType, string name)
@@ -256,11 +510,11 @@ namespace PSRule.Rules.Azure
             return CombineResourceId(subscriptionId, resourceGroup, typeComponents, nameComponents, depth);
         }
 
-        internal static bool TryResourceIdComponents(string resourceId, out string subscriptionId, out string resourceGroupName, out string resourceType, out string name)
+        internal static bool TryResourceIdComponents(string resourceId, out string subscriptionId, out string? resourceGroupName, out string? resourceType, out string? name)
         {
             resourceType = null;
             name = null;
-            if (!TryResourceIdComponents(resourceId, out subscriptionId, out resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents))
+            if (!TryResourceIdComponents(resourceId, out subscriptionId, out resourceGroupName, out string[]? resourceTypeComponents, out string[]? nameComponents))
                 return false;
 
             resourceType = string.Join(SLASH, resourceTypeComponents);
@@ -281,7 +535,7 @@ namespace PSRule.Rules.Azure
             return resourceTypeComponents.Length > 0 && nameComponents.Length > 0;
         }
 
-        internal static bool TryResourceIdComponents(string resourceId, out string subscriptionId, out string resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents)
+        internal static bool TryResourceIdComponents(string resourceId, out string subscriptionId, out string? resourceGroupName, out string[]? resourceTypeComponents, out string[]? nameComponents)
         {
             resourceGroupName = null;
             resourceTypeComponents = null;
@@ -290,14 +544,14 @@ namespace PSRule.Rules.Azure
             var i = 0;
             if (!(ConsumeSubscriptionIdPartOrNull(idParts, ref i, out subscriptionId) &&
                 ConsumeResourceGroupPartOrNull(idParts, ref i, out resourceGroupName) &&
-                ConsumeProvidersPart(idParts, ref i, out var provider, out var type, out var name)))
+                TryConsumeProviderPartOld(idParts, ref i, out var provider, out var type, out var name)))
                 return false;
 
             var resourceType = string.Concat(provider, SLASH_C, type);
-            if (!ConsumeSubResourceType(idParts, ref i, out var subTypes, out var subNames))
+            if (!TryConsumeResourceType(idParts, ref i, out var subTypes, out var subNames))
             {
-                resourceTypeComponents = new string[] { resourceType };
-                nameComponents = new string[] { name };
+                resourceTypeComponents = [resourceType];
+                nameComponents = [name];
                 return true;
             }
 
@@ -317,12 +571,12 @@ namespace PSRule.Rules.Azure
             var i = 0;
             if (!(ConsumeSubscriptionIdPartOrNull(idParts, ref i, out _) &&
                 ConsumeResourceGroupPartOrNull(idParts, ref i, out _) &&
-                ConsumeProvidersPart(idParts, ref i, out var provider, out var type, out _)))
-                return Array.Empty<string>();
+                TryConsumeProviderPartOld(idParts, ref i, out var provider, out var type, out _)))
+                return [];
 
-            ConsumeSubResourceType(idParts, ref i, out var subTypes, out _);
+            TryConsumeResourceType(idParts, ref i, out var subTypes, out _);
             if (subTypes == null || subTypes.Length == 0)
-                return new string[] { provider, type };
+                return [provider, type];
 
             var result = new string[2 + subTypes.Length];
             result[0] = provider;
@@ -333,11 +587,18 @@ namespace PSRule.Rules.Azure
 
         private static bool ConsumeSubscriptionIdPartOrNull(string[] parts, ref int start, out string subscriptionId)
         {
-            ConsumeSubscriptionIdPart(parts, ref start, out subscriptionId);
+            TryConsumeSubscriptionIdPart(parts, ref start, out subscriptionId);
             return true;
         }
 
-        private static bool ConsumeSubscriptionIdPart(string[] parts, ref int start, out string subscriptionId)
+        /// <summary>
+        /// Get the subscription component of the resource ID parts.
+        /// </summary>
+        /// <param name="parts">The parts of a resource ID split by <c>/</c>.</param>
+        /// <param name="start">The index to start from.</param>
+        /// <param name="subscriptionId">Returns the <c>subscriptionId</c>.</param>
+        /// <returns>Returns <c>true</c> if the subscription component was found.</returns>
+        private static bool TryConsumeSubscriptionIdPart(string[] parts, ref int start, out string? subscriptionId)
         {
             subscriptionId = null;
             if (start + 2 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start + 1], SUBSCRIPTIONS))
@@ -348,16 +609,17 @@ namespace PSRule.Rules.Azure
             return subscriptionId != null;
         }
 
-        private static bool ConsumeResourceGroupPartOrNull(string[] parts, ref int start, out string resourceGroupName)
-        {
-            ConsumeResourceGroupPart(parts, ref start, out resourceGroupName);
-            return true;
-        }
-
-        private static bool ConsumeResourceGroupPart(string[] parts, ref int start, out string resourceGroupName)
+        /// <summary>
+        /// Get the resource group component of the resource ID parts.
+        /// </summary>
+        /// <param name="parts">The parts of a resource ID split by <c>/</c>.</param>
+        /// <param name="start">The index to start from.</param>
+        /// <param name="resourceGroupName">Returns the <c>resourceGroupName</c>.</param>
+        /// <returns>Returns <c>true</c> if the resource group component was found.</returns>
+        private static bool TryConsumeResourceGroupPart(string[] parts, ref int start, out string? resourceGroupName)
         {
             resourceGroupName = null;
-            if (start + 1 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], RESOURCEGROUPS))
+            if (start + 1 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], RESOURCE_GROUPS))
             {
                 resourceGroupName = parts[start + 1];
                 start += 2;
@@ -365,7 +627,37 @@ namespace PSRule.Rules.Azure
             return resourceGroupName != null;
         }
 
-        private static bool ConsumeProvidersPart(string[] parts, ref int start, out string provider, out string type, out string name)
+        private static bool ConsumeResourceGroupPartOrNull(string[] parts, ref int start, out string? resourceGroupName)
+        {
+            TryConsumeResourceGroupPart(parts, ref start, out resourceGroupName);
+            return true;
+        }
+
+        private static bool TryConsumeTenantPart(string[] idParts, ref int start, out string? tenant)
+        {
+            tenant = null;
+            if (start == 0 && idParts.Length >= 2 && idParts[0] == string.Empty && (idParts[1] == string.Empty || StringComparer.OrdinalIgnoreCase.Equals(idParts[1], PROVIDERS)))
+            {
+                tenant = SLASH;
+                start += 1;
+                return true;
+            }
+            return false;
+        }
+
+        private static bool TryConsumeManagementGroupPart(string[] idParts, ref int start, out string? managementGroup)
+        {
+            managementGroup = null;
+            if (start == 0 && idParts.Length >= 5 && idParts[0] == string.Empty && StringComparer.OrdinalIgnoreCase.Equals(idParts[1], PROVIDERS) && idParts[2] == "Microsoft.Management" && idParts[3] == MANAGEMENT_GROUPS)
+            {
+                managementGroup = idParts[4];
+                start += 5;
+                return true;
+            }
+            return false;
+        }
+
+        private static bool TryConsumeProviderPartOld(string[] parts, ref int start, out string? provider, out string? type, out string? name)
         {
             provider = null;
             type = null;
@@ -385,23 +677,53 @@ namespace PSRule.Rules.Azure
             return true;
         }
 
-        private static bool ConsumeSubResourceType(string[] parts, ref int start, out string[] subTypes, out string[] subNames)
+        private static bool TryConsumeProviderPart(string[] parts, ref int start, out string? provider, out string[]? type, out string[]? name)
         {
-            subTypes = null;
-            subNames = null;
+            provider = null;
+            type = null;
+            name = null;
+
+            if (start + 2 >= parts.Length)
+                return false;
+
+            if (start + 3 < parts.Length && StringComparer.OrdinalIgnoreCase.Equals(parts[start], PROVIDERS))
+                start++;
+
+            if (start == 0 && StringComparer.OrdinalIgnoreCase.Equals(parts[1], PROVIDERS))
+                start += 2;
+
+            provider = parts[start++];
+            var remaining = parts.Length - start;
+            type = new string[remaining / 2];
+            name = new string[remaining / 2];
+            for (var i = 0; start < parts.Length; i++)
+            {
+                type[i] = i == 0 ? string.Concat(provider, SLASH, parts[start++]) : parts[start++];
+                name[i] = parts[start++];
+            }
+
+            return true;
+        }
+
+        private static bool TryConsumeResourceType(string[] parts, ref int start, out string[]? type, out string[]? name)
+        {
+            type = null;
+            name = null;
             var remaining = parts.Length - start;
             if (!(start + 1 < parts.Length && remaining % 2 == 0))
                 return false;
 
-            subTypes = new string[remaining / 2];
-            subNames = new string[remaining / 2];
+            type = new string[remaining / 2];
+            name = new string[remaining / 2];
             for (var i = 0; start < parts.Length; i++)
             {
-                subTypes[i] = parts[start];
-                subNames[i] = parts[start + 1];
+                type[i] = parts[start];
+                name[i] = parts[start + 1];
                 start += 2;
             }
             return true;
         }
     }
 }
+
+#nullable restore

@@ -1,4 +1,4 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using Newtonsoft.Json.Linq;
@@ -27,7 +27,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         {
             if (!_Resolved)
             {
-                _Value = TemplateVisitor.ExpandToken<T>(context, _LazyValue);
+                _Value = context.ExpandToken<T>(_LazyValue);
                 _Resolved = true;
             }
             return _Value;

@@ -23,6 +23,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public DeploymentValue Deployment => throw new NotImplementedException();
 
+        public string ScopeId => _Inner.ScopeId;
+
         public string TemplateFile => _Inner.TemplateFile;
 
         public string ParameterFile => _Inner.ParameterFile;

@@ -1285,6 +1285,72 @@ namespace PSRule.Rules.Azure
             Assert.Equal("child-1", items[1].Value<string>());
         }
 
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2917
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenConditionalExistingReference_IgnoresExpand()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.2.json"), null, out _);
+
+            Assert.Equal(3, resources.Length);
+
+            var actual = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("ps-rule-test-deployment", actual["name"].Value<string>());
+
+            actual = resources[1];
+            Assert.Equal("Microsoft.Resources/deployments", resources[1]["type"].Value<string>());
+            Assert.Equal("child2", resources[1]["name"].Value<string>());
+
+            actual = resources[2];
+            Assert.Equal("Microsoft.Authorization/roleAssignments", actual["type"].Value<string>());
+            Assert.Equal("02041802-66a9-0a85-7330-8186e16422c7", actual["name"].Value<string>());
+        }
+
+        [Fact]
+        public void ProcessTemplate_WhenParented_ScopeIsExpected()
+        {
+            var resources = ProcessTemplate(GetSourcePath("sql.tests.json"), null, out _);
+
+            Assert.Equal(9, resources.Length);
+
+            var actual = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("ps-rule-test-deployment", actual["name"].Value<string>());
+
+            actual = resources[1];
+            Assert.Equal("Microsoft.Sql/servers", actual["type"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg", actual["scope"].Value<string>());
+
+            actual = resources[2];
+            Assert.Equal("Microsoft.Sql/servers/databases", actual["type"].Value<string>());
+            Assert.Equal("sql-sql-01/sqldb-sql-02", actual["name"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Sql/servers/sql-sql-01", actual["scope"].Value<string>());
+            Assert.NotEmpty(actual["resources"].Values<JObject>());
+
+            actual = resources[5];
+            Assert.Equal("Microsoft.Sql/servers/databases", actual["type"].Value<string>());
+            Assert.Equal("sql-sql-01/sqldb-sql-01", actual["name"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Sql/servers/sql-sql-01", actual["scope"].Value<string>());
+
+            actual = resources[6];
+            Assert.Equal("Microsoft.Sql/servers/databases", actual["type"].Value<string>());
+            Assert.Equal("sql-sql-01/sqldb-sql-03", actual["name"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Sql/servers/sql-sql-01", actual["scope"].Value<string>());
+            Assert.NotEmpty(actual["resources"].Values<JObject>());
+
+            actual = resources[7];
+            Assert.Equal("Microsoft.Sql/servers/databases/transparentDataEncryption", actual["type"].Value<string>());
+            Assert.Equal("server01/db01/current", actual["name"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Sql/servers/server01/databases/db01", actual["scope"].Value<string>());
+
+            actual = resources[8];
+            Assert.Equal("Microsoft.Sql/servers/databases/transparentDataEncryption", actual["type"].Value<string>());
+            Assert.Equal("server01/db02/current", actual["name"].Value<string>());
+            Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Sql/servers/server01/databases/db02", actual["scope"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

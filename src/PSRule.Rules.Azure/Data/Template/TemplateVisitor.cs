@@ -6,7 +6,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading;
-using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
@@ -58,6 +57,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_SCOPE = "scope";
         private const string PROPERTY_RESOURCEGROUP = "resourceGroup";
         private const string PROPERTY_SUBSCRIPTIONID = "subscriptionId";
+        private const string PROPERTY_MANAGEMENTGROUP = "managementGroup";
         private const string PROPERTY_NAMESPACE = "namespace";
         private const string PROPERTY_MEMBERS = "members";
         private const string PROPERTY_OUTPUT = "output";
@@ -98,7 +98,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             internal TemplateContext()
             {
-                _Resources = new List<IResourceValue>();
+                _Resources = [];
                 _ResourceIds = new Dictionary<string, IResourceValue>(StringComparer.OrdinalIgnoreCase);
                 Parameters = new Dictionary<string, IParameterValue>(StringComparer.OrdinalIgnoreCase);
                 Variables = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
@@ -114,7 +114,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _ParameterAssignments = new Dictionary<string, JToken>();
                 _Validator = new TemplateValidator();
                 _IsGenerated = null;
-                _SecureValues = new HashSet<object>();
+                _SecureValues = [];
                 _Definitions = new Dictionary<string, ITypeDefinition>(StringComparer.OrdinalIgnoreCase);
                 _Symbols = new Dictionary<string, IDeploymentSymbol>(StringComparer.OrdinalIgnoreCase);
             }
@@ -178,6 +178,9 @@ namespace PSRule.Rules.Azure.Data.Template
             /// <inheritdoc/>
             public DeploymentValue Deployment => _Deployment.Count > 0 ? _Deployment.Peek() : null;
 
+            /// <inheritdoc/>
+            public string ScopeId => Deployment == null ? ResourceGroup.Id : Deployment.Scope;
+
             public string TemplateFile { get; private set; }
 
             public string ParameterFile { get; private set; }
@@ -227,7 +230,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (_Symbols.TryGetValue(nameOrResourceId, out var symbol))
                     nameOrResourceId = symbol.GetId(0);
 
-                if (_ResourceIds.TryGetValue(nameOrResourceId, out resource))
+                if (nameOrResourceId != null && _ResourceIds.TryGetValue(nameOrResourceId, out resource))
                     return true;
 
                 resource = null;
@@ -281,90 +284,27 @@ namespace PSRule.Rules.Azure.Data.Template
             internal bool TryParentResourceId(JObject resource, out string[] resourceId)
             {
                 resourceId = null;
-                if (!TryResourceScope(resource, out var id))
+                if (!resource.TryResourceScope(this, out var scopeId))
                     return false;
 
-                if (id == TENANT_SCOPE)
+                if (scopeId == TENANT_SCOPE)
                 {
-                    resourceId = new string[] { TENANT_SCOPE };
+                    resourceId = [TENANT_SCOPE];
                     return true;
                 }
 
-                if (!ResourceHelper.TryResourceIdComponents(id, out var subscriptionId, out var resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents))
+                if (!ResourceHelper.ResourceIdComponents(scopeId, out var tenant, out var managementGroup, out var subscriptionId, out var resourceGroup, out var resourceType, out var resourceName) ||
+                    resourceType == null || resourceType.Length == 0 || resourceName == null || resourceName.Length == 0)
                     return false;
 
-                resourceId = new string[nameComponents.Length];
-                for (var i = 0; i < nameComponents.Length; i++)
+                var depth = ResourceHelper.ResourceIdDepth(tenant, managementGroup, subscriptionId, resourceGroup, resourceType, resourceName);
+                var resourceTypeDepth = ResourceHelper.ResourceNameOrTypeDepth(resourceType);
+                resourceId = new string[resourceTypeDepth];
+                for (var i = 0; i < resourceId.Length; i++)
                 {
-                    resourceId[i] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, resourceTypeComponents, nameComponents, depth: i);
+                    resourceId[i] = ResourceHelper.ResourceId(tenant, managementGroup, subscriptionId, resourceGroup, resourceType, resourceName, depth: depth - i);
                 }
                 return resourceId.Length > 0;
-            }
-
-            private static bool GetResourceNameType(JObject resource, out string name, out string type)
-            {
-                name = null;
-                type = null;
-                return resource != null && resource.TryGetProperty(PROPERTY_NAME, out name) && resource.TryGetProperty(PROPERTY_TYPE, out type);
-            }
-
-            /// <summary>
-            /// Read the scope from a specified <c>scope</c> property.
-            /// </summary>
-            /// <param name="resource">The resource object.</param>
-            /// <param name="scopeId">The scope if set.</param>
-            /// <returns>Returns <c>true</c> if the scope property was set on the resource.</returns>
-            private bool TryResourceScope(JObject resource, out string scopeId)
-            {
-                scopeId = null;
-                if (!resource.ContainsKey(PROPERTY_SCOPE))
-                    return false;
-
-                var scope = ExpandProperty<string>(this, resource, PROPERTY_SCOPE);
-
-                // Check for tenant scope.
-                if (scope == TENANT_SCOPE)
-                {
-                    //scopeId = Deployment.Scope;
-                    scopeId = scope;
-                    return true;
-                }
-
-                ResourceHelper.TryResourceIdComponents(scope, out var subscriptionId, out var resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents);
-                subscriptionId ??= Subscription.SubscriptionId;
-                resourceGroupName ??= ResourceGroup.Name;
-                scopeId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, resourceTypeComponents, nameComponents);
-                return true;
-            }
-
-            /// <summary>
-            /// Read the scope from the name and type properties if this is a sub-resource.
-            /// For example: A sub-resource may use name segments such as <c>vnet-1/subnet-1</c>.
-            /// </summary>
-            /// <param name="resource">The resource object.</param>
-            /// <param name="scopeId">The calculated scope.</param>
-            /// <returns>Returns <c>true</c> if the scope could be calculated from name segments.</returns>
-            private bool TryParentScope(JObject resource, out string scopeId)
-            {
-                scopeId = null;
-                if (!GetResourceNameType(resource, out var name, out var type) ||
-                    !ResourceHelper.TryResourceIdComponents(type, name, out var resourceTypeComponents, out var nameComponents) ||
-                    resourceTypeComponents.Length == 1)
-                    return false;
-
-                scopeId = ResourceHelper.GetParentResourceId(Subscription.SubscriptionId, ResourceGroup.Name, resourceTypeComponents, nameComponents);
-                return true;
-            }
-
-            /// <summary>
-            /// Get the scope of the resource based on the scope of the deployment.
-            /// </summary>
-            /// <param name="scopeId">The scope of the deployment.</param>
-            /// <returns>Returns <c>true</c> if a deployment scope was found.</returns>
-            private bool TryDeploymentScope(out string scopeId)
-            {
-                scopeId = Deployment?.Scope;
-                return scopeId != null;
             }
 
             /// <summary>
@@ -373,9 +313,7 @@ namespace PSRule.Rules.Azure.Data.Template
             /// <param name="resource">The resource object.</param>
             public void UpdateResourceScope(JObject resource)
             {
-                if (!TryResourceScope(resource, out var scopeId) &&
-                    !TryParentScope(resource, out scopeId) &&
-                    !TryDeploymentScope(out scopeId))
+                if (!resource.TryResourceScope(this, out var scopeId))
                     return;
 
                 resource[PROPERTY_SCOPE] = scopeId;
@@ -915,7 +853,7 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 if (!_Resolved)
                 {
-                    _Value = ExpandToken<T>(_Context, _LazyValue);
+                    _Value = _Context.ExpandToken<T>(_LazyValue);
                     _Context.TrackSecureValue(Name, Type, _Value);
                     _Resolved = true;
                 }
@@ -1178,7 +1116,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 value = new ParameterType(definition.Type, type);
 
             // Try type
-            else if (parameter.TryGetProperty(PROPERTY_TYPE, out type) &&
+            else if (parameter.TryResourceType(out type) &&
                 ParameterType.TrySimpleType(type, out var v))
                 value = v;
 
@@ -1262,6 +1200,9 @@ namespace PSRule.Rules.Azure.Data.Template
             Resources(context, expanded.ToArray());
         }
 
+        /// <summary>
+        /// Handle resources as an array of resources.
+        /// </summary>
         private void Resources(TemplateContext context, ResourceValue[] resources)
         {
             if (resources.Length == 0)
@@ -1272,6 +1213,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 ResourceOuter(context, sorted[i]);
         }
 
+        /// <summary>
+        /// Handle resources as symbolic named resources.
+        /// </summary>
         private void Resources(TemplateContext context, JObject resources)
         {
             if (resources == null || resources.IsEmpty())
@@ -1282,9 +1226,45 @@ namespace PSRule.Rules.Azure.Data.Template
             foreach (var p in resources.Properties())
             {
                 if (p.Value.Type == JTokenType.Object && p.Value.Value<JObject>() is JObject resource)
-                    r.AddRange(ResourceExpand(context, p.Name, resource));
+                {
+                    if (resource.IsExisting())
+                    {
+                        Reference(context, p.Name, resource);
+                    }
+                    else
+                    {
+                        r.AddRange(ResourceExpand(context, p.Name, resource));
+                    }
+                }
             }
             Resources(context, r.ToArray());
+        }
+
+        /// <summary>
+        /// Handle an existing reference.
+        /// </summary>
+        private static void Reference(TemplateContext context, string symbolicName, JObject resource)
+        {
+            var copyIndex = GetResourceIterator(context, resource);
+            var symbol = copyIndex.IsCopy() ? DeploymentSymbol.NewArray(symbolicName) : DeploymentSymbol.NewObject(symbolicName);
+
+            while (copyIndex.Next())
+            {
+                var instance = copyIndex.CloneInput<JObject>();
+                var condition = !instance.ContainsKey(PROPERTY_CONDITION) || context.ExpandProperty<bool>(instance, PROPERTY_CONDITION);
+                if (!condition)
+                    continue;
+
+                if (!resource.TryResourceType(out var resourceType))
+                    throw new Exception();
+
+                var r = new ExistingResourceValue(context, resourceType, symbolicName, instance, copyIndex.Clone());
+                symbol.Configure(r);
+
+                // Add symbols for each array index.
+                if (symbol != null && symbol.Kind == DeploymentSymbolKind.Array)
+                    context.AddSymbol(DeploymentSymbol.NewObject(string.Concat(symbolicName, '[', copyIndex.Index, ']'), r));
+            }
         }
 
         /// <summary>
@@ -1297,7 +1277,7 @@ namespace PSRule.Rules.Azure.Data.Template
             while (copyIndex.Next())
             {
                 var instance = copyIndex.CloneInput<JObject>();
-                var condition = !resource.ContainsKey(PROPERTY_CONDITION) || ExpandProperty<bool>(context, resource, PROPERTY_CONDITION);
+                var condition = !resource.ContainsKey(PROPERTY_CONDITION) || context.ExpandProperty<bool>(resource, PROPERTY_CONDITION);
                 if (!condition)
                     continue;
 
@@ -1325,26 +1305,26 @@ namespace PSRule.Rules.Azure.Data.Template
             if (resource.TryGetProperty<JArray>(PROPERTY_DEPENDSON, out var dependsOn))
                 resource[PROPERTY_DEPENDSON] = ExpandArray(context, dependsOn);
 
-            resource.TryGetProperty(PROPERTY_NAME, out var name);
-            resource.TryGetProperty(PROPERTY_TYPE, out var type);
+            resource.TryResourceName(out var name);
+            resource.TryResourceType(out var type);
 
-            var deploymentScope = GetDeploymentScope(context, resource, type, out var subscriptionId, out var resourceGroupName);
+            var deploymentScope = GetDeploymentScope(context, resource, type, out var managementGroup, out var subscriptionId, out var resourceGroupName);
 
             // Get scope if specified.
             var scope = context.TryParentResourceId(resource, out var parentIds) && parentIds != null && parentIds.Length > 0 ? parentIds[0] : null;
 
             string resourceId = null;
             if (deploymentScope == DeploymentScope.ResourceGroup)
-                resourceId = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, type, name, scope: scope);
+                resourceId = ResourceHelper.ResourceId(tenant: null, managementGroup: null, subscriptionId: subscriptionId, resourceGroup: resourceGroupName, resourceType: type, resourceName: name, scopeId: scope);
 
             else if (deploymentScope == DeploymentScope.Subscription)
-                resourceId = ResourceHelper.CombineResourceId(subscriptionId, null, type, name);
+                resourceId = ResourceHelper.ResourceId(tenant: null, managementGroup: null, subscriptionId: subscriptionId, resourceGroup: null, resourceType: type, resourceName: name, scopeId: null);
 
             else if (deploymentScope == DeploymentScope.ManagementGroup)
-                resourceId = ResourceHelper.CombineResourceId(null, null, type, name, scope: scope ?? context.Deployment.Scope);
+                resourceId = ResourceHelper.ResourceId(tenant: null, managementGroup: managementGroup, subscriptionId: null, resourceGroup: null, resourceType: type, resourceName: name, scopeId: scope);
 
             else if (deploymentScope == DeploymentScope.Tenant)
-                resourceId = ResourceHelper.CombineResourceId(null, null, type, name);
+                resourceId = ResourceHelper.ResourceId(tenant: "/", managementGroup: null, subscriptionId: null, resourceGroup: null, resourceType: type, resourceName: name, scopeId: "/");
 
             context.UpdateResourceScope(resource);
             resource[PROPERTY_ID] = resourceId;
@@ -1363,13 +1343,23 @@ namespace PSRule.Rules.Azure.Data.Template
         /// <param name="context">The current context.</param>
         /// <param name="resource">The resource.</param>
         /// <param name="type">The resource type.</param>
+        /// <param name="managementGroup">Returns the management group name if the scope is within a management group.</param>
         /// <param name="subscriptionId">Returns the subscription ID if the scope is within a subscription.</param>
         /// <param name="resourceGroupName">Returns the resource group name if the scope is with a resource group.</param>
         /// <returns>The deployment scope.</returns>
-        private static DeploymentScope GetDeploymentScope(TemplateContext context, JObject resource, string type, out string subscriptionId, out string resourceGroupName)
+        private static DeploymentScope GetDeploymentScope(TemplateContext context, JObject resource, string type, out string managementGroup, out string subscriptionId, out string resourceGroupName)
         {
             if (!IsDeploymentResource(type))
             {
+                if (context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup)
+                {
+                    managementGroup = context.ManagementGroup.Name;
+                    resourceGroupName = null;
+                    subscriptionId = null;
+                    return context.Deployment.DeploymentScope;
+                }
+
+                managementGroup = null;
                 resourceGroupName = context.ResourceGroup.Name;
                 subscriptionId = context.Subscription.SubscriptionId;
                 return context.Deployment.DeploymentScope;
@@ -1379,8 +1369,12 @@ namespace PSRule.Rules.Azure.Data.Template
             subscriptionId = ResolveDeploymentScopeProperty(context, resource, PROPERTY_SUBSCRIPTIONID, contextValue:
                 context.Deployment.DeploymentScope == DeploymentScope.Subscription ||
                 context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.Subscription.SubscriptionId : null);
+
             resourceGroupName = ResolveDeploymentScopeProperty(context, resource, PROPERTY_RESOURCEGROUP, contextValue:
                 context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.ResourceGroup.Name : null);
+
+            managementGroup = ResolveDeploymentScopeProperty(context, resource, PROPERTY_MANAGEMENTGROUP, contextValue:
+                context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup ? context.ManagementGroup.Name : null);
 
             // Update the deployment scope.
             if (context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup || resourceGroupName != null)
@@ -1391,6 +1385,11 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 return DeploymentScope.Subscription;
             }
+            if (context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup || managementGroup != null)
+            {
+                return DeploymentScope.ManagementGroup;
+            }
+
             return context.Deployment.DeploymentScope;
         }
 
@@ -1458,11 +1457,11 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         private bool TryDeploymentResource(TemplateContext context, JObject resource)
         {
-            var resourceType = ExpandProperty<string>(context, resource, PROPERTY_TYPE);
+            var resourceType = context.ExpandProperty<string>(resource, PROPERTY_TYPE);
             if (!IsDeploymentResource(resourceType))
                 return false;
 
-            var deploymentName = ExpandProperty<string>(context, resource, PROPERTY_NAME);
+            var deploymentName = context.ExpandProperty<string>(resource, PROPERTY_NAME);
             if (string.IsNullOrEmpty(deploymentName))
                 return false;
 
@@ -1627,7 +1626,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected virtual JToken VariableSimple(TemplateContext context, JValue value)
         {
-            var result = ExpandToken<object>(context, value.Value<string>());
+            var result = context.ExpandToken<object>(value.Value<string>());
             return result == null ? JValue.CreateNull() : JToken.FromObject(result);
         }
 
@@ -1699,43 +1698,9 @@ namespace PSRule.Rules.Azure.Data.Template
             return false;
         }
 
-        protected static StringExpression<T> Expression<T>(ITemplateContext context, string s)
-        {
-            context.WriteDebug(s);
-            return () => EvaluateExpression<T>(context, context.BuildExpression(s));
-        }
-
-        private static T EvaluateExpression<T>(ITemplateContext context, ExpressionFnOuter fn)
-        {
-            var result = fn(context);
-            return result is JToken token && !typeof(JToken).IsAssignableFrom(typeof(T)) ? token.Value<T>() : Convert<T>(result);
-        }
-
-        private static T Convert<T>(object o)
-        {
-            if (o is T value)
-                return value;
-
-            return typeof(JToken).IsAssignableFrom(typeof(T)) && ExpressionHelpers.GetJToken(o) is T token ? token : (T)o;
-        }
-
-        internal static T ExpandToken<T>(ITemplateContext context, JToken value)
-        {
-            if (typeof(T) == typeof(string) && (value.Type == JTokenType.Object || value.Type == JTokenType.Array))
-                return default;
-
-            if (value.Type == JTokenType.Null)
-                return default;
-
-            if (value is IMock mock)
-                return mock.GetValue<T>();
-
-            return value.IsExpressionString() ? EvaluateExpression<T>(context, value) : value.Value<T>();
-        }
-
         internal static string ExpandString(ITemplateContext context, string value)
         {
-            return value != null && value.IsExpressionString() ? EvaluateExpression<string>(context, value, null) : value;
+            return value != null && value.IsExpressionString() ? context.EvaluateExpression<string>(value, null) : value;
         }
 
         internal static JToken ExpandPropertyToken(ITemplateContext context, TypePrimitive type, JToken value)
@@ -1743,7 +1708,7 @@ namespace PSRule.Rules.Azure.Data.Template
             if (value == null || !value.IsExpressionString())
                 return value;
 
-            var result = EvaluateExpression<object>(context, value);
+            var result = context.EvaluateExpression<object>(value);
             if (result is IMock mock)
                 return mock.GetValue(type);
 
@@ -1755,18 +1720,9 @@ namespace PSRule.Rules.Azure.Data.Template
             return ExpandPropertyToken(context, TypePrimitive.None, value);
         }
 
-        private static T ExpandProperty<T>(ITemplateContext context, JObject value, string propertyName)
-        {
-            if (!value.ContainsKey(propertyName))
-                return default;
-
-            var propertyValue = value[propertyName].Value<JValue>();
-            return (propertyValue.Type == JTokenType.String) ? ExpandToken<T>(context, propertyValue) : propertyValue.Value<T>();
-        }
-
         private static int ExpandPropertyInt(ITemplateContext context, JObject value, string propertyName)
         {
-            var result = ExpandProperty<long>(context, value, propertyName);
+            var result = context.ExpandProperty<long>(value, propertyName);
             return (int)result;
         }
 
@@ -1888,7 +1844,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     var copyObject = copyObjectArray[i] as JObject;
                     var state = new TemplateContext.CopyIndexState
                     {
-                        Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME),
+                        Name = context.ExpandProperty<string>(copyObject, PROPERTY_NAME),
                         Input = copyObject[PROPERTY_INPUT],
                         Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT)
                     };
@@ -1934,7 +1890,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     var copyObject = copyObjectArray[i] as JObject;
                     var state = new TemplateContext.CopyIndexState
                     {
-                        Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME),
+                        Name = context.ExpandProperty<string>(copyObject, PROPERTY_NAME),
                         Input = copyObject[PROPERTY_INPUT],
                         Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT)
                     };
@@ -1963,7 +1919,7 @@ namespace PSRule.Rules.Azure.Data.Template
             };
             if (value.TryObjectProperty(PROPERTY_COPY, out var copyObject))
             {
-                result.Name = ExpandProperty<string>(context, copyObject, PROPERTY_NAME);
+                result.Name = context.ExpandProperty<string>(copyObject, PROPERTY_NAME);
                 result.Count = ExpandPropertyInt(context, copyObject, PROPERTY_COUNT);
                 context.CopyIndex.PushResourceType(result);
                 value.Remove(PROPERTY_COPY);
@@ -2027,32 +1983,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 }
             }
             return result;
-        }
-
-        protected static T EvaluateExpression<T>(ITemplateContext context, JToken value)
-        {
-            if (value.Type != JTokenType.String)
-                return default;
-
-            var svalue = value.Value<string>();
-            var lineInfo = value.TryLineInfo();
-            return EvaluateExpression<T>(context, svalue, lineInfo);
-        }
-
-        protected static T EvaluateExpression<T>(ITemplateContext context, string value, IJsonLineInfo lineInfo)
-        {
-            if (string.IsNullOrEmpty(value))
-                return default;
-
-            var exp = Expression<T>(context, value);
-            try
-            {
-                return exp();
-            }
-            catch (Exception inner)
-            {
-                throw new ExpressionEvaluationException(value, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.ExpressionEvaluateError, value, lineInfo?.LineNumber, inner.Message), inner);
-            }
         }
 
         protected static bool TryArrayProperty(JObject obj, string propertyName, out JObject[] propertyValue)

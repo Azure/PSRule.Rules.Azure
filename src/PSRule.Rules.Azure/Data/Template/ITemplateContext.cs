@@ -19,6 +19,11 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         DeploymentValue Deployment { get; }
 
+        /// <summary>
+        /// The scope of the current context.
+        /// </summary>
+        string ScopeId { get; }
+
         string TemplateFile { get; }
 
         string ParameterFile { get; }
