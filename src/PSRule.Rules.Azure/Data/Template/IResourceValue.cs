@@ -19,6 +19,11 @@ internal interface IResourceValue : IResourceIdentity
     JObject Value { get; }
 
     /// <summary>
+    /// Determines if the resource value is an existing reference instead of full resource definition.
+    /// </summary>
+    bool Existing { get; }
+
+    /// <summary>
     /// Copy state of the resource.
     /// </summary>
     TemplateContext.CopyIndexState Copy { get; }

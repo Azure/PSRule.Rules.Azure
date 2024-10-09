@@ -3,56 +3,26 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Data.Template;
 
 namespace PSRule.Rules.Azure
 {
-    [DebuggerDisplay("Path: {Path}, Line:{LineNumber}, Position:{LinePosition}")]
-    internal sealed class TemplateTokenAnnotation : IJsonLineInfo
-    {
-        private bool _HasLineInfo;
-
-        public TemplateTokenAnnotation()
-        {
-
-        }
-
-        public TemplateTokenAnnotation(int lineNumber, int linePosition, string path)
-        {
-            SetLineInfo(lineNumber, linePosition);
-            Path = path;
-        }
-
-        public int LineNumber { get; private set; }
-
-        public int LinePosition { get; private set; }
-
-        public string Path { get; private set; }
-
-        public bool HasLineInfo()
-        {
-            return _HasLineInfo;
-        }
-
-        private void SetLineInfo(int lineNumber, int linePosition)
-        {
-            LineNumber = lineNumber;
-            LinePosition = linePosition;
-            _HasLineInfo = true;
-        }
-    }
-
     internal static class JsonExtensions
     {
-        private const string PROPERTY_DEPENDSON = "dependsOn";
+        private const string PROPERTY_DEPENDS_ON = "dependsOn";
         private const string PROPERTY_RESOURCES = "resources";
         private const string PROPERTY_NAME = "name";
         private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_FIELD = "field";
+        private const string PROPERTY_EXISTING = "existing";
+        private const string PROPERTY_SCOPE = "scope";
+        private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
+        private const string PROPERTY_RESOURCE_GROUP = "resourceGroup";
+
         private const string TARGETINFO_KEY = "_PSRule";
         private const string TARGETINFO_SOURCE = "source";
         private const string TARGETINFO_FILE = "file";
@@ -66,7 +36,9 @@ namespace PSRule.Rules.Azure
         private const string TARGETINFO_PATH = "path";
         private const string TARGETINFO_MESSAGE = "message";
 
-        private static readonly string[] JSON_PATH_SEPARATOR = new string[] { "." };
+        private const string TENANT_SCOPE = "/";
+
+        private static readonly string[] JSON_PATH_SEPARATOR = ["."];
 
         internal static IJsonLineInfo TryLineInfo(this JToken token)
         {
@@ -368,7 +340,7 @@ namespace PSRule.Rules.Azure
         internal static bool TryGetDependencies(this JObject resource, out string[] dependencies)
         {
             dependencies = null;
-            if (!(resource.ContainsKey(PROPERTY_DEPENDSON) && resource[PROPERTY_DEPENDSON] is JArray d && d.Count > 0))
+            if (!(resource.ContainsKey(PROPERTY_DEPENDS_ON) && resource[PROPERTY_DEPENDS_ON] is JArray d && d.Count > 0))
                 return false;
 
             dependencies = d.Values<string>().ToArray();
@@ -388,19 +360,19 @@ namespace PSRule.Rules.Azure
 
         internal static void SetTargetInfo(this JObject resource, string templateFile, string parameterFile, string path = null)
         {
-            // Get line infomation
+            // Get line information.
             var lineInfo = resource.TryLineInfo();
 
-            // Populate target info
+            // Populate target info.
             resource.UseProperty(TARGETINFO_KEY, out JObject targetInfo);
 
-            // Path
+            // Path.
             path ??= resource.GetResourcePath();
             targetInfo.Add(TARGETINFO_PATH, path);
 
             var sources = new JArray();
 
-            // Template file
+            // Template file.
             if (!string.IsNullOrEmpty(templateFile))
             {
                 var source = new JObject
@@ -415,7 +387,8 @@ namespace PSRule.Rules.Azure
                 }
                 sources.Add(source);
             }
-            // Parameter file
+
+            // Parameter file.
             if (!string.IsNullOrEmpty(parameterFile))
             {
                 var source = new JObject
@@ -533,6 +506,116 @@ namespace PSRule.Rules.Azure
             return value.Type == JTokenType.None ||
                 value.Type == JTokenType.Null ||
                 (value.Type == JTokenType.String && string.IsNullOrEmpty(value.Value<string>()));
+        }
+
+        internal static bool IsExisting(this JObject o)
+        {
+            return o != null && o.TryBoolProperty(PROPERTY_EXISTING, out var existing) && existing != null && existing.Value;
+        }
+
+        internal static bool TryResourceType(this JObject o, out string type)
+        {
+            type = default;
+            return o != null && o.TryGetProperty(PROPERTY_TYPE, out type);
+        }
+
+        internal static bool TryResourceName(this JObject o, out string name)
+        {
+            name = default;
+            return o != null && o.TryGetProperty(PROPERTY_NAME, out name);
+        }
+
+        internal static bool TryResourceNameAndType(this JObject o, out string name, out string type)
+        {
+            name = default;
+            type = default;
+            return o != null && o.TryResourceName(out name) && o.TryResourceType(out type);
+        }
+
+        /// <summary>
+        /// Read the scope from a specified <c>scope</c> property.
+        /// </summary>
+        /// <param name="resource">The resource object.</param>
+        /// <param name="context">A valid context to resolve properties.</param>
+        /// <param name="scopeId">The scope if set.</param>
+        /// <returns>Returns <c>true</c> if the scope property was set on the resource.</returns>
+        internal static bool TryResourceScope(this JObject resource, ITemplateContext context, out string scopeId)
+        {
+            scopeId = default;
+            if (resource == null)
+                return false;
+
+            return TryExplicitScope(resource, context, out scopeId)
+                || TryExplicitSubscriptionResourceGroupScope(resource, context, out scopeId)
+                || TryParentScope(resource, context, out scopeId)
+                || TryDeploymentScope(context, out scopeId);
+        }
+
+        private static bool TryExplicitScope(JObject resource, ITemplateContext context, out string scopeId)
+        {
+            scopeId = context.ExpandProperty<string>(resource, PROPERTY_SCOPE);
+            if (string.IsNullOrEmpty(scopeId))
+                return false;
+
+            // Check for full scope.
+            ResourceHelper.ResourceIdComponents(scopeId, out var tenant, out var managementGroup, out var subscriptionId, out var resourceGroup, out var resourceType, out var resourceName);
+            if (tenant != null || managementGroup != null || subscriptionId != null)
+                return true;
+
+            scopeId = ResourceHelper.ResourceId(resourceType, resourceName, scopeId: context.ScopeId);
+            return true;
+        }
+
+        /// <summary>
+        /// Get the scope from <c>subscriptionId</c> and <c>resourceGroup</c> properties set on the resource.
+        /// </summary>
+        private static bool TryExplicitSubscriptionResourceGroupScope(JObject resource, ITemplateContext context, out string scopeId)
+        {
+            var subscriptionId = context.ExpandProperty<string>(resource, PROPERTY_SUBSCRIPTION_ID);
+            var resourceGroup = context.ExpandProperty<string>(resource, PROPERTY_RESOURCE_GROUP);
+
+            // Fill subscriptionId if resourceGroup is specified.
+            if (!string.IsNullOrEmpty(resourceGroup) && string.IsNullOrEmpty(subscriptionId))
+                subscriptionId = context.Subscription.SubscriptionId;
+
+            scopeId = !string.IsNullOrEmpty(subscriptionId) ? ResourceHelper.ResourceId(scopeTenant: null, scopeManagementGroup: null, scopeSubscriptionId: subscriptionId, scopeResourceGroup: resourceGroup, resourceType: null, resourceName: null) : null;
+            return scopeId != null;
+        }
+
+        /// <summary>
+        /// Read the scope from the name and type properties if this is a sub-resource.
+        /// For example: A sub-resource may use name segments such as <c>vnet-1/subnet-1</c>.
+        /// </summary>
+        /// <param name="resource">The resource object.</param>
+        /// <param name="context">A valid context to resolve properties.</param>
+        /// <param name="scopeId">The calculated scope.</param>
+        /// <returns>Returns <c>true</c> if the scope could be calculated from name segments.</returns>
+        private static bool TryParentScope(JObject resource, ITemplateContext context, out string scopeId)
+        {
+            scopeId = null;
+            var name = context.ExpandProperty<string>(resource, PROPERTY_NAME);
+            var type = context.ExpandProperty<string>(resource, PROPERTY_TYPE);
+
+            if (string.IsNullOrEmpty(name) ||
+                string.IsNullOrEmpty(type) ||
+                !ResourceHelper.TryResourceIdComponents(type, name, out var resourceTypeComponents, out var nameComponents) ||
+                resourceTypeComponents.Length == 1)
+                return false;
+
+            scopeId = ResourceHelper.GetParentResourceId(context.Subscription.SubscriptionId, context.ResourceGroup.Name, resourceTypeComponents, nameComponents);
+            return true;
+        }
+
+        /// <summary>
+        /// Get the scope of the resource based on the scope of the deployment.
+        /// </summary>
+        /// <param name="context">A valid context to resolve the deployment scope.</param>
+        /// <param name="scopeId">The scope of the deployment.</param>
+        /// <returns>Returns <c>true</c> if a deployment scope was found.</returns>
+        private static bool TryDeploymentScope(ITemplateContext context, out string scopeId)
+        {
+            scopeId = context.Deployment?.Scope;
+            return scopeId != null;
         }
     }
 }

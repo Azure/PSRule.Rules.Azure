@@ -134,7 +134,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _ExpressionFactory = new ExpressionFactory(policy: true);
                 _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
                 _PolicyAliasProviderHelper = new PolicyAliasProviderHelper();
-                _Definitions = new List<PolicyDefinition>();
+                _Definitions = [];
                 DefinitionParameterMap = new Dictionary<string, IDictionary<string, IParameterValue>>(StringComparer.OrdinalIgnoreCase);
                 _Validator = new TemplateValidator();
                 _ParameterAssignments = new Dictionary<string, JToken>();
@@ -173,11 +173,12 @@ namespace PSRule.Rules.Azure.Data.Policy
                         };
                     }
                 }
-                _ReplacementRules = new List<string>();
+                _ReplacementRules = [];
             }
 
             public TemplateVisitor.TemplateContext.CopyIndexStore CopyIndex { get; }
             public DeploymentValue Deployment { get; }
+            public string ScopeId { get; }
             public string TemplateFile { get; }
             public string ParameterFile { get; }
             public ResourceGroupOption ResourceGroup { get; }
@@ -1111,7 +1112,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private static void ResolveObject(PolicyAssignmentContext context, JObject o)
         {
             foreach (var p in o.Properties())
-                p.Value = TemplateVisitor.ExpandToken<JToken>(context, p.Value);
+                p.Value = context.ExpandToken<JToken>(p.Value);
         }
 
         private static bool TryConditionNotIn(PolicyAssignmentContext context, JObject condition)

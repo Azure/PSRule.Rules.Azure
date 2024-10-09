@@ -91,10 +91,16 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
+        /// <inheritdoc/>
         public JObject Value => _Value.Value;
 
+        /// <inheritdoc/>
         public string Type => RESOURCETYPE_DEPLOYMENT;
 
+        /// <inheritdoc/>
+        public bool Existing => false;
+
+        /// <inheritdoc/>
         public TemplateContext.CopyIndexState Copy { get; }
 
         public ILazyObject Properties { get; }

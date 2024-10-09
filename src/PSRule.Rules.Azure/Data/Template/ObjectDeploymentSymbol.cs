@@ -1,13 +1,17 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
+
 namespace PSRule.Rules.Azure.Data.Template
 {
+#nullable enable
+
     internal sealed class ObjectDeploymentSymbol : DeploymentSymbol, IDeploymentSymbol
     {
-        private string _ResourceId;
+        private Func<string>? _GetId;
 
-        public ObjectDeploymentSymbol(string name, ResourceValue resource)
+        public ObjectDeploymentSymbol(string name, IResourceValue? resource)
             : base(name)
         {
             if (resource != null)
@@ -16,14 +20,16 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public DeploymentSymbolKind Kind => DeploymentSymbolKind.Object;
 
-        public void Configure(ResourceValue resource)
+        public void Configure(IResourceValue resource)
         {
-            _ResourceId = resource.Id;
+            _GetId = () => resource.Id;
         }
 
-        public string GetId(int index)
+        public string? GetId(int index)
         {
-            return _ResourceId;
+            return _GetId == null ? null : _GetId();
         }
     }
+
+#nullable restore
 }

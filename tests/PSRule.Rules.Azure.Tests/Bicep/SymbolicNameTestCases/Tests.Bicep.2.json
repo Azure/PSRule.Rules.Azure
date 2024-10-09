@@ -1,0 +1,157 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.30.23.60470",
+      "templateHash": "2274000470862225599"
+    }
+  },
+  "parameters": {
+    "identityId": {
+      "type": "string",
+      "defaultValue": ""
+    }
+  },
+  "resources": {
+    "identity": {
+      "existing": true,
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2023-01-31",
+      "resourceGroup": "[split(parameters('identityId'), '/')[4]]",
+      "name": "[split(parameters('identityId'), '/')[8]]"
+    },
+    "identity2": {
+      "existing": true,
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2023-01-31",
+      "subscriptionId": "00000000-0000-0000-0000-000000000000",
+      "resourceGroup": "[split(parameters('identityId'), '/')[4]]",
+      "name": "[split(parameters('identityId'), '/')[8]]"
+    },
+    "identity3": {
+      "existing": true,
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2023-01-31",
+      "name": "id-03"
+    },
+    "policy1": {
+      "existing": true,
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "apiVersion": "2024-05-01",
+      "scope": "[tenantResourceId('Microsoft.Management/managementGroups', 'mg-01')]",
+      "name": "[split(parameters('identityId'), '/')[8]]"
+    },
+    "assignment1": {
+      "existing": true,
+      "type": "Microsoft.Authorization/roleAssignments",
+      "apiVersion": "2022-04-01",
+      "scope": "[format('Microsoft.ManagedIdentity/userAssignedIdentities/{0}', split(parameters('identityId'), '/')[8])]",
+      "name": "[split(parameters('identityId'), '/')[8]]",
+      "dependsOn": [
+        "identity2"
+      ]
+    },
+    "child": {
+      "condition": "[not(empty(parameters('identityId')))]",
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "[format('child-{0}', uniqueString('child', deployment().name))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "principalId": {
+            "value": "[reference('identity').principalId]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.30.23.60470",
+              "templateHash": "11677030801132963484"
+            }
+          },
+          "parameters": {
+            "principalId": {
+              "type": "string"
+            }
+          },
+          "resources": {
+            "assignment": {
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2022-04-01",
+              "name": "[guid(parameters('principalId'))]",
+              "properties": {
+                "principalId": "[parameters('principalId')]",
+                "roleDefinitionId": "8a869b90-6d6c-4307-9d0f-22dbc136ccd9",
+                "principalType": "ServicePrincipal",
+                "description": "Test role assignment for checking scope and ID."
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "identity"
+      ]
+    },
+    "child2": {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "child2",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "principalId": {
+            "value": "[reference('identity3').principalId]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.30.23.60470",
+              "templateHash": "11677030801132963484"
+            }
+          },
+          "parameters": {
+            "principalId": {
+              "type": "string"
+            }
+          },
+          "resources": {
+            "assignment": {
+              "type": "Microsoft.Authorization/roleAssignments",
+              "apiVersion": "2022-04-01",
+              "name": "[guid(parameters('principalId'))]",
+              "properties": {
+                "principalId": "[parameters('principalId')]",
+                "roleDefinitionId": "8a869b90-6d6c-4307-9d0f-22dbc136ccd9",
+                "principalType": "ServicePrincipal",
+                "description": "Test role assignment for checking scope and ID."
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "identity3"
+      ]
+    }
+  }
+}
