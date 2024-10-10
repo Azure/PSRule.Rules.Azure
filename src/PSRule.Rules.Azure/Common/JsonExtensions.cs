@@ -19,6 +19,7 @@ namespace PSRule.Rules.Azure
         private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_FIELD = "field";
         private const string PROPERTY_EXISTING = "existing";
+        private const string PROPERTY_IMPORT = "import";
         private const string PROPERTY_SCOPE = "scope";
         private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
         private const string PROPERTY_RESOURCE_GROUP = "resourceGroup";
@@ -508,9 +509,25 @@ namespace PSRule.Rules.Azure
                 (value.Type == JTokenType.String && string.IsNullOrEmpty(value.Value<string>()));
         }
 
+        /// <summary>
+        /// Resources with the <c>existing</c> property set to <c>true</c> are references to existing resources.
+        /// </summary>
+        /// <param name="o">The resource <seealso cref="JObject"/>.</param>
+        /// <returns>Returns <c>true</c> if the resource is a reference to an existing resource.</returns>
         internal static bool IsExisting(this JObject o)
         {
             return o != null && o.TryBoolProperty(PROPERTY_EXISTING, out var existing) && existing != null && existing.Value;
+        }
+
+        /// <summary>
+        /// Resources with an <c>import</c> property set to a non-empty string refer to extensibility provided resources.
+        /// For example, Microsoft Graph.
+        /// </summary>
+        /// <param name="o">The resource <seealso cref="JObject"/>.</param>
+        /// <returns>Returns <c>true</c> if the resource is imported from an extensibility provider.</returns>
+        internal static bool IsImport(this JObject o)
+        {
+            return o != null && o.TryStringProperty(PROPERTY_IMPORT, out var s) && !string.IsNullOrEmpty(s);
         }
 
         internal static bool TryResourceType(this JObject o, out string type)

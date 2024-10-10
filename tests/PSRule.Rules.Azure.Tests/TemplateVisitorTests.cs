@@ -1351,6 +1351,21 @@ namespace PSRule.Rules.Azure
             Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Sql/servers/server01/databases/db02", actual["scope"].Value<string>());
         }
 
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3062
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenMicrosoftGraphType_ShouldIgnoreExtensibilityResources()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Bicep/ExtensibilityTestCases/Tests.Bicep.1.json"), null, out _);
+
+            Assert.Single(resources);
+
+            var actual = resources[0];
+            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
+            Assert.Equal("ps-rule-test-deployment", actual["name"].Value<string>());
+        }
+
         #region Helper methods
 
         private static string GetSourcePath(string fileName)

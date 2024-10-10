@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.39.0:
+
+- Bug fixes:
+  - Fixed `GetBicepParamResources` exception when expanding `Microsoft.Graph/groups` resource by @BernieWhite.
+    [#3062](https://github.com/Azure/PSRule.Rules.Azure/issues/3062)
+
 ## v1.39.0
 
 What's changed since pre-release v1.38.0:
