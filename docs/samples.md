@@ -1,7 +1,8 @@
 ---
-reviewed: 2023-04-23
+reviewed: 2024-10-10
 author: BernieWhite
 discussion: false
+link_users: true
 ---
 
 # Samples
@@ -22,11 +23,11 @@ This repository contains the following samples for PSRule for Azure:
 
   [1]: https://aka.ms/ps-rule-azure-quickstart
 
-## PSRule samples
+## Community samples
 
-[:octicons-repo-24: Samples][2]
+### Custom rules and conventions
 
-A community collection of samples for PSRule.
-This repository includes samples for Azure as well as other use cases.
+The following sample rules and conventions for Azure are available.
+You can use these samples as a starting point for developing your own custom rules.
 
-  [2]: https://github.com/microsoft/PSRule-samples
+<!-- samples:rules -->
