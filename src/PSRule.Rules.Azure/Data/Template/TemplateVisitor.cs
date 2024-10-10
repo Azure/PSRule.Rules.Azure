@@ -1231,7 +1231,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     {
                         Reference(context, p.Name, resource);
                     }
-                    else
+                    else if (!resource.IsImport())
                     {
                         r.AddRange(ResourceExpand(context, p.Name, resource));
                     }

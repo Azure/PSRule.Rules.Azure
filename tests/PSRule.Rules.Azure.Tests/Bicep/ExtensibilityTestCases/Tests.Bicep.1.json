@@ -1,0 +1,85 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.1-experimental",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_EXPERIMENTAL_WARNING": "This template uses ARM features that are experimental. Experimental features should be enabled for testing purposes only, as there are no guarantees about the quality or stability of these features. Do not enable these settings for any production usage, or your production environment may be subject to breaking.",
+    "_EXPERIMENTAL_FEATURES_ENABLED": [
+      "Extensibility"
+    ],
+    "_generator": {
+      "name": "bicep",
+      "version": "0.30.23.60470",
+      "templateHash": "2001503425732761903"
+    }
+  },
+  "variables": {
+    "appRoleId": "appRoleId",
+    "certKey": "certKey"
+  },
+  "imports": {
+    "MicrosoftGraph": {
+      "provider": "MicrosoftGraph",
+      "version": "0.1.8-preview"
+    }
+  },
+  "resources": {
+    "resourceApp": {
+      "import": "MicrosoftGraph",
+      "type": "Microsoft.Graph/applications@v1.0",
+      "properties": {
+        "uniqueName": "ExampleResourceApp",
+        "displayName": "Example Resource Application",
+        "appRoles": [
+          {
+            "id": "[variables('appRoleId')]",
+            "allowedMemberTypes": [
+              "User",
+              "Application"
+            ],
+            "description": "Read access to resource app data",
+            "displayName": "ResourceAppData.Read.All",
+            "value": "ResourceAppData.Read.All",
+            "isEnabled": true
+          }
+        ]
+      }
+    },
+    "resourceSp": {
+      "import": "MicrosoftGraph",
+      "type": "Microsoft.Graph/servicePrincipals@v1.0",
+      "properties": {
+        "appId": "[reference('resourceApp').appId]"
+      },
+      "dependsOn": [
+        "resourceApp"
+      ]
+    },
+    "clientApp": {
+      "import": "MicrosoftGraph",
+      "type": "Microsoft.Graph/applications@v1.0",
+      "properties": {
+        "uniqueName": "ExampleClientApp",
+        "displayName": "Example Client Application",
+        "keyCredentials": [
+          {
+            "displayName": "Example Client App Key Credential",
+            "usage": "Verify",
+            "type": "AsymmetricX509Cert",
+            "key": "[variables('certKey')]"
+          }
+        ]
+      }
+    },
+    "clientSp": {
+      "import": "MicrosoftGraph",
+      "type": "Microsoft.Graph/servicePrincipals@v1.0",
+      "properties": {
+        "appId": "[reference('clientApp').appId]"
+      },
+      "dependsOn": [
+        "clientApp"
+      ]
+    }
+  }
+}
