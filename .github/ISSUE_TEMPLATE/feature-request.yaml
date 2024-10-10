@@ -1,6 +1,7 @@
 name: Feature request
 description: Suggest an idea
 title: '[FEATURE] <title>'
+type: Feature
 labels: ['enhancement', 'Needs: Triage :mag:']
 body:
   - type: textarea

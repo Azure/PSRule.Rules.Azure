@@ -1,6 +1,7 @@
 name: Bug report
 description: Report errors or unexpected behavior
 title: '[BUG] <title>'
+type: Bug
 labels: ['bug', 'Needs: Triage :mag:']
 body:
   - type: input

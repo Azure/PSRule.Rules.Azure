@@ -1,6 +1,7 @@
 name: Rule request
 description: Suggest the creation of a new or to update an existing rule
 title: '[RULE] <title>'
+type: Feature
 labels: ['rule', 'Needs: Triage :mag:']
 body:
   - type: input
