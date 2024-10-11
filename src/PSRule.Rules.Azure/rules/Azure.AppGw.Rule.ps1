@@ -41,9 +41,13 @@ Rule 'Azure.AppGw.AvailabilityZone' -Ref 'AZR-000060' -With 'Azure.IsAppGwV2Sku'
         return $Assert.Pass();
     }
 
-    $Assert.HasFieldValue($TargetObject, 'zones').
-        ReasonFrom('zones', $LocalizedData.AppGWAvailabilityZone, $TargetObject.name, $TargetObject.Location, ($availabilityZones -join ', '));
-
+    $Assert.GreaterOrEqual($TargetObject, 'zones', 2).ReasonFrom(
+        'zones',
+        $LocalizedData.AppGWAvailabilityZone,
+        $TargetObject.name,
+        $TargetObject.location,
+        ($availabilityZones -join ', ')
+    )
 } -Configure @{ AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
 # Synopsis: Application Gateways should meet naming requirements.
