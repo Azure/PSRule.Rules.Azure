@@ -57,6 +57,9 @@ spec:
     # Configures minimum number of days allowed before certificate expiry.
     AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 30
 
+    # Configures additional regions for App Gateway that support availability zones.
+    AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
+
     AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES:
     - adminUsername
     - administratorLogin

@@ -34,6 +34,8 @@ What's changed since pre-release v1.39.0:
 - Bug fixes:
   - Fixed `GetBicepParamResources` exception when expanding `Microsoft.Graph/groups` resource by @BernieWhite.
     [#3062](https://github.com/Azure/PSRule.Rules.Azure/issues/3062)
+  - Fixed `Azure.AppGw.AvailabilityZone` passes when a zonal configuration is used by @BernieWhite.
+    [#3061](https://github.com/Azure/PSRule.Rules.Azure/issues/3061)
 
 ## v1.39.0
 

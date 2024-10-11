@@ -111,7 +111,7 @@ configuration:
 
 ### AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST
 
-This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/).
+This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/tree/main/data/providers/).
 You can use this option to add availability zones that are not included in the default list.
 
 The following providers are supported:
@@ -373,6 +373,59 @@ Example:
 configuration:
   AZURE_APIM_MIN_API_VERSION: '2021-12-01-preview'
 ```
+
+### AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST
+
+<!-- module:version v1.8.0 -->
+<!-- module:rule Azure.AppGw.AvailabilityZone -->
+
+This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/tree/main/data/providers/).
+You can use this option to add availability zones that are not included in the default list.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: array
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
+configuration:
+  AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option to Antarctica North and Antarctica South, with zones 1, 2, 3.
+configuration:
+  AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
+  - location: Antarctica North
+    zones:
+      - '1'
+      - '2'
+      - '3'
+  - location: Antarctica South
+    zones:
+      - '1'
+      - '2'
+      - '3'
+```
+
+The above example, both these forms of location are accepted:
+
+- `Antarctica North` or `antarcticanorth`
+- `Antarctica South` or `antarcticasouth`
+
+The rules normalize these location formats so either is accepted in the configuration.
+
+!!! Note
+    The above are examples for illustration purpose only.
+    At the time of writing, `Antarctica North` and `Antarctica South` are fictional locations.
+    If they do in the future exist, use this option add them prior to PSRule for Azure support.
 
 ### AZURE_CONTAINERAPPS_RESTRICT_INGRESS
 
