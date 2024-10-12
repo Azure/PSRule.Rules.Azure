@@ -4,57 +4,56 @@
 using System.Management.Automation;
 using PSRule.Rules.Azure.Data.Policy;
 
-namespace PSRule.Rules.Azure.Pipeline
+namespace PSRule.Rules.Azure.Pipeline;
+
+internal sealed class PolicyAssignmentPipeline : PipelineBase
 {
-    internal sealed class PolicyAssignmentPipeline : PipelineBase
+    private readonly PolicyAssignmentHelper _PolicyAssignmentHelper;
+
+    internal PolicyAssignmentPipeline(PipelineContext context, bool keepDuplicates)
+        : base(context)
     {
-        private readonly PolicyAssignmentHelper _PolicyAssignmentHelper;
+        _PolicyAssignmentHelper = new PolicyAssignmentHelper(context, keepDuplicates);
+    }
 
-        internal PolicyAssignmentPipeline(PipelineContext context, bool keepDuplicates)
-            : base(context)
+    /// <inheritdoc/>
+    public override void Process(PSObject sourceObject)
+    {
+        if (sourceObject == null || sourceObject.BaseObject is not PolicyAssignmentSource source)
+            return;
+
+        ProcessCatch(source.AssignmentFile);
+    }
+
+    public override void End()
+    {
+        Context.Writer.WriteObject(_PolicyAssignmentHelper.Context.GetDefinitions(), true);
+        Context.Writer.WriteObject(_PolicyAssignmentHelper.Context.GenerateBaseline(), false);
+        base.End();
+    }
+
+    private void ProcessCatch(string assignmentFile)
+    {
+        try
         {
-            _PolicyAssignmentHelper = new PolicyAssignmentHelper(context, keepDuplicates);
+            ProcessAssignment(assignmentFile);
         }
-
-        /// <inheritdoc/>
-        public override void Process(PSObject sourceObject)
+        catch (PipelineException ex)
         {
-            if (sourceObject == null || sourceObject.BaseObject is not PolicyAssignmentSource source)
-                return;
-
-            ProcessCatch(source.AssignmentFile);
+            Context.Writer.WriteError(
+                ex,
+                nameof(PipelineException),
+                ErrorCategory.InvalidData,
+                assignmentFile);
         }
-
-        public override void End()
+        catch
         {
-            Context.Writer.WriteObject(_PolicyAssignmentHelper.Context.GetDefinitions(), true);
-            Context.Writer.WriteObject(_PolicyAssignmentHelper.Context.GenerateBaseline(), false);
-            base.End();
+            throw;
         }
+    }
 
-        private void ProcessCatch(string assignmentFile)
-        {
-            try
-            {
-                ProcessAssignment(assignmentFile);
-            }
-            catch (PipelineException ex)
-            {
-                Context.Writer.WriteError(
-                    ex,
-                    nameof(PipelineException),
-                    ErrorCategory.InvalidData,
-                    assignmentFile);
-            }
-            catch
-            {
-                throw;
-            }
-        }
-
-        private void ProcessAssignment(string assignmentFile)
-        {
-            _PolicyAssignmentHelper.ProcessAssignment(assignmentFile);
-        }
+    private void ProcessAssignment(string assignmentFile)
+    {
+        _PolicyAssignmentHelper.ProcessAssignment(assignmentFile);
     }
 }

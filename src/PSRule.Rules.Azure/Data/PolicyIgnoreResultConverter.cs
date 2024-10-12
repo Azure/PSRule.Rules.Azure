@@ -5,47 +5,46 @@ using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
 
-namespace PSRule.Rules.Azure.Data
+namespace PSRule.Rules.Azure.Data;
+
+internal sealed class PolicyIgnoreResultConverter : JsonConverter
 {
-    internal sealed class PolicyIgnoreResultConverter : JsonConverter
+    public override bool CanConvert(Type objectType)
     {
-        public override bool CanConvert(Type objectType)
+        return objectType == typeof(Dictionary<string, PolicyIgnoreResult>);
+    }
+
+    public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
+    {
+        if (reader.TokenType != JsonToken.StartArray)
+            return null;
+
+        reader.Read();
+        var result = new Dictionary<string, PolicyIgnoreResult>(StringComparer.OrdinalIgnoreCase);
+
+        while (reader.TokenType != JsonToken.EndArray)
         {
-            return objectType == typeof(Dictionary<string, PolicyIgnoreResult>);
-        }
-
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer)
-        {
-            if (reader.TokenType != JsonToken.StartArray)
-                return null;
-
-            reader.Read();
-            var result = new Dictionary<string, PolicyIgnoreResult>(StringComparer.OrdinalIgnoreCase);
-
-            while (reader.TokenType != JsonToken.EndArray)
+            var entry = serializer.Deserialize<PolicyIgnoreEntry>(reader);
+            for (var i = 0; i < entry.PolicyDefinitionIds.Length; i++)
             {
-                var entry = serializer.Deserialize<PolicyIgnoreEntry>(reader);
-                for (var i = 0; i < entry.PolicyDefinitionIds.Length; i++)
+                if (!result.TryGetValue(entry.PolicyDefinitionIds[i], out var ignoreResult))
                 {
-                    if (!result.TryGetValue(entry.PolicyDefinitionIds[i], out var ignoreResult))
+                    ignoreResult = new PolicyIgnoreResult
                     {
-                        ignoreResult = new PolicyIgnoreResult
-                        {
-                            Reason = entry.Reason,
-                            Value = new List<string>()
-                        };
-                        result.Add(entry.PolicyDefinitionIds[i], ignoreResult);
-                    }
-                    ignoreResult.Value.Add(entry.Value);
+                        Reason = entry.Reason,
+                        Value = []
+                    };
+                    result.Add(entry.PolicyDefinitionIds[i], ignoreResult);
                 }
-                reader.Read();
+                ignoreResult.Value.Add(entry.Value);
             }
-            return result;
+            reader.Read();
         }
+        return result;
+    }
 
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
-        {
-            throw new NotImplementedException();
-        }
+    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)
+    {
+        throw new NotImplementedException();
     }
 }

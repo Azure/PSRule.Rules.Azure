@@ -173,4 +173,3 @@ public sealed class ResourceHelperTests
 }
 
 #nullable restore
-
