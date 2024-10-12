@@ -61,6 +61,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2025-03-01-preview",
       "2024-09-01-preview",
       "2024-03-01-preview",
       "2023-09-01-preview",
@@ -75,6 +76,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-03-01-preview",
+      "2024-09-01-preview",
       "2024-03-01-preview",
       "2023-09-01-preview",
       "2023-06-01",
@@ -108,6 +111,15 @@
     "resourceType": "simplifiedSolutions",
     "apiVersions": [
       "2024-03-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "smartDiagnostics",
+    "apiVersions": [
+      "2025-03-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

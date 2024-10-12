@@ -2,7 +2,7 @@
 reviewed: 2023-07-08
 severity: Critical
 pillar: Security
-category: Connectivity
+category: SE:06 Network controls
 resource: Azure Cache for Redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.PublicNetworkAccess/
 ---
@@ -47,18 +47,18 @@ For example:
 ```json
 {
   "type": "Microsoft.Cache/redis",
-  "apiVersion": "2023-04-01",
+  "apiVersion": "2024-03-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
-    "minimumTlsVersion": "1.2",
-    "redisVersion": "latest",
+    "redisVersion": "6",
     "sku": {
       "name": "Premium",
       "family": "P",
       "capacity": 1
     },
     "redisConfiguration": {
+      "aad-enabled": "True",
       "maxmemory-reserved": "615"
     },
     "enableNonSslPort": false,
@@ -81,18 +81,18 @@ To deploy caches that pass this rule:
 For example:
 
 ```bicep
-resource cache 'Microsoft.Cache/redis@2023-04-01' = {
+resource cache 'Microsoft.Cache/redis@2024-03-01' = {
   name: name
   location: location
   properties: {
-    minimumTlsVersion: '1.2'
-    redisVersion: 'latest'
+    redisVersion: '6'
     sku: {
       name: 'Premium'
       family: 'P'
       capacity: 1
     }
     redisConfiguration: {
+      'aad-enabled': 'True'
       'maxmemory-reserved': '615'
     }
     enableNonSslPort: false
@@ -110,7 +110,7 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 
 ## LINKS
 
-- [Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [Azure Cache for Redis with Azure Private Link](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-private-link)
 - [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
 - [Migrate from VNet injection caches to Private Link caches](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-vnet-migration)

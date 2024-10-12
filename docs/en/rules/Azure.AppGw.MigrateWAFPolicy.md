@@ -40,19 +40,41 @@ For example:
 
 ```json
 {
-  "name": "[parameters('name')]",
   "type": "Microsoft.Network/applicationGateways",
-  "apiVersion": "2023-11-01",
-  "location": "[resourceGroup().location]",
+  "apiVersion": "2024-01-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ],
   "properties": {
     "sku": {
       "name": "WAF_v2",
       "tier": "WAF_v2"
     },
+    "sslPolicy": {
+      "policyType": "Custom",
+      "minProtocolVersion": "TLSv1_2",
+      "cipherSuites": [
+        "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+        "TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+        "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+        "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256"
+      ]
+    },
+    "autoscaleConfiguration": {
+      "minCapacity": 2,
+      "maxCapacity": 3
+    },
     "firewallPolicy": {
-      "id": "[parameters('firewallPolicyId')]"
+      "id": "[resourceId('Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies', 'agwwaf')]"
     }
-  }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies', 'agwwaf')]"
+  ]
 }
 ```
 
@@ -67,16 +89,35 @@ To deploy Application Gateways that pass this rule:
 For example:
 
 ```bicep
-resource agw 'Microsoft.Network/applicationGateways@2023-11-01' = {
+resource appgw 'Microsoft.Network/applicationGateways@2024-01-01' = {
   name: name
   location: location
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
   properties: {
     sku: {
       name: 'WAF_v2'
       tier: 'WAF_v2'
     }
+    sslPolicy: {
+      policyType: 'Custom'
+      minProtocolVersion: 'TLSv1_2'
+      cipherSuites: [
+        'TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256'
+        'TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384'
+        'TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256'
+      ]
+    }
+    autoscaleConfiguration: {
+      minCapacity: 2
+      maxCapacity: 3
+    }
     firewallPolicy: {
-      id: firewallPolicyId
+      id: waf.id
     }
   }
 }

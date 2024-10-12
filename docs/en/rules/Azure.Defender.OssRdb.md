@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Security operations
+category: SE:10 Monitoring and threat detection
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.OssRdb/
 ---
@@ -45,12 +45,12 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Security/pricings",
-    "apiVersion": "2022-03-01",
-    "name": "OpenSourceRelationalDatabases",
-    "properties": {
-        "pricingTier": "Standard"
-    }
+  "type": "Microsoft.Security/pricings",
+  "apiVersion": "2024-01-01",
+  "name": "OpenSourceRelationalDatabases",
+  "properties": {
+    "pricingTier": "Standard"
+  }
 }
 ```
 
@@ -63,7 +63,7 @@ To enable Microsoft Defender for open-source relational databases:
 For example:
 
 ```bicep
-resource defenderForOssRdb 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForOssRdb 'Microsoft.Security/pricings@2024-01-01' = {
   name: 'OpenSourceRelationalDatabases'
   properties: {
     pricingTier: 'Standard'
@@ -101,7 +101,7 @@ Microsoft Defender for open-source relational databases is currently available o
 
 ## LINKS
 
-- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for open-source relational databases](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-introduction)
 - [Enable Defender for OSS RDBs](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-usage)

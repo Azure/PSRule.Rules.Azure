@@ -1,7 +1,7 @@
 ---
 severity: Important
-pillar: Operational Excellence
-category: Deployment
+pillar: Reliability
+category: RE:04 Target metrics
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.CertificateExpiry/
 ---
@@ -38,5 +38,6 @@ override the `AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME` configuration value with 
 
 ## LINKS
 
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Configure a custom domain name](https://learn.microsoft.com/azure/api-management/configure-custom-domain#use-the-azure-portal-to-set-a-custom-domain-name)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/2019-12-01/service#hostnameconfiguration-object)

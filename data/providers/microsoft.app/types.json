@@ -464,6 +464,50 @@
   },
   {
     "aliases": null,
+    "resourceType": "containerApps/resiliencyPolicies",
+    "apiVersions": [
+      "2024-02-02-preview",
+      "2023-11-02-preview",
+      "2023-08-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "functions",
     "apiVersions": [
       "2024-02-02-preview"
@@ -1496,6 +1540,10 @@
       "2024-02-02-preview"
     ],
     "locations": [
+      "East Asia",
+      "East US",
+      "North Central US",
+      "Southeast Asia",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1745,6 +1793,75 @@
       "2022-10-01",
       "2022-06-01-preview",
       "2022-03-01"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy": "properties.inboundPolicy",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.circuitBreakerPolicy": "properties.inboundPolicy.circuitBreakerPolicy",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.circuitBreakerPolicy.consecutiveErrors": "properties.inboundPolicy.circuitBreakerPolicy.consecutiveErrors",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.circuitBreakerPolicy.intervalInSeconds": "properties.inboundPolicy.circuitBreakerPolicy.intervalInSeconds",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.circuitBreakerPolicy.timeoutInSeconds": "properties.inboundPolicy.circuitBreakerPolicy.timeoutInSeconds",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy": "properties.inboundPolicy.httpRetryPolicy",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy.maxRetries": "properties.inboundPolicy.httpRetryPolicy.maxRetries",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy.retryBackOff": "properties.inboundPolicy.httpRetryPolicy.retryBackOff",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy.retryBackOff.initialDelayInMilliseconds": "properties.inboundPolicy.httpRetryPolicy.retryBackOff.initialDelayInMilliseconds",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy.retryBackOff.maxIntervalInMilliseconds": "properties.inboundPolicy.httpRetryPolicy.retryBackOff.maxIntervalInMilliseconds",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.timeoutPolicy": "properties.inboundPolicy.timeoutPolicy",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.timeoutPolicy.responseTimeoutInSeconds": "properties.inboundPolicy.timeoutPolicy.responseTimeoutInSeconds",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy": "properties.outboundPolicy",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.circuitBreakerPolicy": "properties.outboundPolicy.circuitBreakerPolicy",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.circuitBreakerPolicy.consecutiveErrors": "properties.outboundPolicy.circuitBreakerPolicy.consecutiveErrors",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.circuitBreakerPolicy.intervalInSeconds": "properties.outboundPolicy.circuitBreakerPolicy.intervalInSeconds",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.circuitBreakerPolicy.timeoutInSeconds": "properties.outboundPolicy.circuitBreakerPolicy.timeoutInSeconds",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy": "properties.outboundPolicy.httpRetryPolicy",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy.maxRetries": "properties.outboundPolicy.httpRetryPolicy.maxRetries",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy.retryBackOff": "properties.outboundPolicy.httpRetryPolicy.retryBackOff",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy.retryBackOff.initialDelayInMilliseconds": "properties.outboundPolicy.httpRetryPolicy.retryBackOff.initialDelayInMilliseconds",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy.retryBackOff.maxIntervalInMilliseconds": "properties.outboundPolicy.httpRetryPolicy.retryBackOff.maxIntervalInMilliseconds",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.timeoutPolicy": "properties.outboundPolicy.timeoutPolicy",
+      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.timeoutPolicy.responseTimeoutInSeconds": "properties.outboundPolicy.timeoutPolicy.responseTimeoutInSeconds"
+    },
+    "resourceType": "managedEnvironments/daprComponents/resiliencyPolicies",
+    "apiVersions": [
+      "2024-02-02-preview",
+      "2023-11-02-preview",
+      "2023-08-01-preview"
     ],
     "locations": [
       "Australia East",
@@ -2241,35 +2358,6 @@
       "Microsoft.App/containerApps/sourcecontrols/repoUrl": "properties.repoUrl"
     },
     "resourceType": "containerapps/sourcecontrols"
-  },
-  {
-    "aliases": {
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy": "properties.inboundPolicy",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.circuitBreakerPolicy": "properties.inboundPolicy.circuitBreakerPolicy",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.circuitBreakerPolicy.consecutiveErrors": "properties.inboundPolicy.circuitBreakerPolicy.consecutiveErrors",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.circuitBreakerPolicy.intervalInSeconds": "properties.inboundPolicy.circuitBreakerPolicy.intervalInSeconds",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.circuitBreakerPolicy.timeoutInSeconds": "properties.inboundPolicy.circuitBreakerPolicy.timeoutInSeconds",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy": "properties.inboundPolicy.httpRetryPolicy",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy.maxRetries": "properties.inboundPolicy.httpRetryPolicy.maxRetries",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy.retryBackOff": "properties.inboundPolicy.httpRetryPolicy.retryBackOff",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy.retryBackOff.initialDelayInMilliseconds": "properties.inboundPolicy.httpRetryPolicy.retryBackOff.initialDelayInMilliseconds",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.httpRetryPolicy.retryBackOff.maxIntervalInMilliseconds": "properties.inboundPolicy.httpRetryPolicy.retryBackOff.maxIntervalInMilliseconds",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.timeoutPolicy": "properties.inboundPolicy.timeoutPolicy",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/inboundPolicy.timeoutPolicy.responseTimeoutInSeconds": "properties.inboundPolicy.timeoutPolicy.responseTimeoutInSeconds",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy": "properties.outboundPolicy",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.circuitBreakerPolicy": "properties.outboundPolicy.circuitBreakerPolicy",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.circuitBreakerPolicy.consecutiveErrors": "properties.outboundPolicy.circuitBreakerPolicy.consecutiveErrors",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.circuitBreakerPolicy.intervalInSeconds": "properties.outboundPolicy.circuitBreakerPolicy.intervalInSeconds",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.circuitBreakerPolicy.timeoutInSeconds": "properties.outboundPolicy.circuitBreakerPolicy.timeoutInSeconds",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy": "properties.outboundPolicy.httpRetryPolicy",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy.maxRetries": "properties.outboundPolicy.httpRetryPolicy.maxRetries",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy.retryBackOff": "properties.outboundPolicy.httpRetryPolicy.retryBackOff",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy.retryBackOff.initialDelayInMilliseconds": "properties.outboundPolicy.httpRetryPolicy.retryBackOff.initialDelayInMilliseconds",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.httpRetryPolicy.retryBackOff.maxIntervalInMilliseconds": "properties.outboundPolicy.httpRetryPolicy.retryBackOff.maxIntervalInMilliseconds",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.timeoutPolicy": "properties.outboundPolicy.timeoutPolicy",
-      "Microsoft.App/managedEnvironments/daprComponents/resiliencyPolicies/outboundPolicy.timeoutPolicy.responseTimeoutInSeconds": "properties.outboundPolicy.timeoutPolicy.responseTimeoutInSeconds"
-    },
-    "resourceType": "managedenvironments/daprcomponents/resiliencypolicies"
   },
   {
     "aliases": {

@@ -1,4 +1,5 @@
 ---
+reviewed: 2024-10-12
 severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
@@ -14,22 +15,29 @@ Use Entra ID authentication with cache instances.
 
 ## DESCRIPTION
 
-Azure Cache for Redis provides two authentication methods for accessing cache instances: access keys and Microsoft Entra ID.
-Entra ID authentication offers centralized identity management and enhanced security features.
+Azure Cache for Redis by default requires that all requests be authenticated.
+Two methods are supported for authenticating and authorizing requests to Redis cache instances.
 
-Some advantages of using Entra ID authentication over access keys include:
+- **Access keys** - Cryptographic keys are secret similar to a shared password,
+  and as a result have a number of limitations that impact security and maintainability.
+  - Access keys have a long number of characters, so are not easily guessable but once exposed grant full access.
+  - Auditing based on user or application is not possible when using access keys.
+  - Each access key must be stored securely within any applications or scripts that use it.
+    This can introduce additional dependencies and code to maintain, that might not normally be required if using Entra ID.
+    Azure Key Vault provides a secure storage for access keys as a secret.
+  - You have two keys (primary/ secondary) to manage, each should be rotated independently on a regular basis.
+    Rotation should occur regularly using automation with a documented manual process as a backup.
+- **Microsoft Entra ID** - An OAuth2 access token issued by Microsoft Entra ID provides advantages over access keys including:
+  - More granular access control instead of only full access.
+  - Strong identity protection methods such as Multi-Factor Authentication (MFA) and conditional access.
+  - Central management and auditing.
 
-- Support for Azure Multi-Factor Authentication (MFA).
-- Conditional access policies with Conditional Access.
-
-Disabling local authentication methods is not supported.
-However, regenerating the access keys will invalidate any previously used access keys, rendering them unusable for accessing the cache instance.
-
-See documentation references below for additional limitations and important information.
+Currently Redis Enterprise and Redis Enterprise Flash tiers are not supported.
+Entra ID authentication is supported on `Basic`, `Standard`, and `Premium` tiers.
 
 ## RECOMMENDATION
 
-Consider using Entra ID authentication with cache instances.
+Consider configuring and using Microsoft Entra ID to authenticate all connections to Redis cache instances.
 
 ## EXAMPLES
 
@@ -37,28 +45,35 @@ Consider using Entra ID authentication with cache instances.
 
 To deploy cache instances that pass this rule:
 
-- Set the `properties.redisConfiguration.aad-enabled` to `'True'`.
+- Set the `properties.redisConfiguration.aad-enabled` to `"True"`.
 
 For example:
 
 ```json
 {
   "type": "Microsoft.Cache/redis",
-  "apiVersion": "2023-08-01",
+  "apiVersion": "2024-03-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
-    "minimumTlsVersion": "1.2",
-    "redisVersion": "latest",
+    "redisVersion": "6",
     "sku": {
       "name": "Premium",
       "family": "P",
       "capacity": 1
     },
     "redisConfiguration": {
-      "aad-enabled": "True"
-    }
-  }
+      "aad-enabled": "True",
+      "maxmemory-reserved": "615"
+    },
+    "enableNonSslPort": false,
+    "publicNetworkAccess": "Disabled"
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
 }
 ```
 
@@ -71,12 +86,11 @@ To deploy cache instances that pass this rule:
 For example:
 
 ```bicep
-resource cache 'Microsoft.Cache/redis@2023-08-01' = {
+resource cache 'Microsoft.Cache/redis@2024-03-01' = {
   name: name
   location: location
   properties: {
-    minimumTlsVersion: '1.2'
-    redisVersion: 'latest'
+    redisVersion: '6'
     sku: {
       name: 'Premium'
       family: 'P'
@@ -84,14 +98,24 @@ resource cache 'Microsoft.Cache/redis@2023-08-01' = {
     }
     redisConfiguration: {
       'aad-enabled': 'True'
+      'maxmemory-reserved': '615'
     }
+    enableNonSslPort: false
+    publicNetworkAccess: 'Disabled'
   }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
 }
 ```
 
+<!-- external:avm avm/res/cache/redis redisConfiguration -->
+
 ## NOTES
 
-Microsoft Entra ID based authentication isn't supported in the Enterprise tiers of Azure Cache for Redis Enterprise.
+Microsoft Entra ID based authentication isn't supported in the Enterprise/ Enterprise Flash tiers.
 
 ## LINKS
 

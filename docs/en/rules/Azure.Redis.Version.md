@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Requirements
+category: RE:04 Target metrics
 resource: Azure Cache for Redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.Version/
 ---
@@ -36,21 +36,22 @@ For example:
 ```json
 {
   "type": "Microsoft.Cache/redis",
-  "apiVersion": "2023-04-01",
+  "apiVersion": "2024-03-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
-    "minimumTlsVersion": "1.2",
-    "redisVersion": "latest",
+    "redisVersion": "6",
     "sku": {
       "name": "Premium",
       "family": "P",
       "capacity": 1
     },
     "redisConfiguration": {
+      "aad-enabled": "True",
       "maxmemory-reserved": "615"
     },
-    "enableNonSslPort": false
+    "enableNonSslPort": false,
+    "publicNetworkAccess": "Disabled"
   },
   "zones": [
     "1",
@@ -69,21 +70,22 @@ To deploy caches that pass this rule:
 For example:
 
 ```bicep
-resource cache 'Microsoft.Cache/redis@2023-04-01' = {
+resource cache 'Microsoft.Cache/redis@2024-03-01' = {
   name: name
   location: location
   properties: {
-    minimumTlsVersion: '1.2'
-    redisVersion: 'latest'
+    redisVersion: '6'
     sku: {
       name: 'Premium'
       family: 'P'
       capacity: 1
     }
     redisConfiguration: {
+      'aad-enabled': 'True'
       'maxmemory-reserved': '615'
     }
     enableNonSslPort: false
+    publicNetworkAccess: 'Disabled'
   }
   zones: [
     '1'
@@ -93,13 +95,15 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 }
 ```
 
+<!-- external:avm avm/res/cache/redis redisVersion -->
+
 ## NOTES
 
 This rule is only applicable for Azure Cache for Redis (OSS Redis) offering.
 
 ## LINKS
 
-- [Requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Security operations](https://learn.microsoft.com/azure/architecture/framework/security/security-operations)
 - [Set Redis version for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-how-to-version)
 - [How to upgrade an existing Redis 4 cache to Redis 6](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-how-to-upgrade)

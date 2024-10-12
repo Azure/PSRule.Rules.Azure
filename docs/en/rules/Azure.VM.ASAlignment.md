@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Availability
+category: RE:04 Target metrics
 resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.ASAlignment/
 ms-content-id: 28583693-11e4-4a16-b864-8caa6e408162
@@ -25,6 +25,8 @@ Consider deploying VMs with managed disks into aligned availability sets.
 
 ## LINKS
 
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Availability sets](https://learn.microsoft.com/azure/virtual-machines/availability#availability-sets)
 - [Managed disk integration with availability sets](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview)
 - [Reliability checklist](https://learn.microsoft.com/azure/architecture/checklist/resiliency-per-service#virtual-machines)
+- [Azure deployment reference](https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/availabilitysets)

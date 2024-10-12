@@ -118,6 +118,9 @@
       "Microsoft.CognitiveServices/accounts/quotaLimit.rules[*].matchPatterns[*].path": "properties.quotaLimit.rules[*].matchPatterns[*].path",
       "Microsoft.CognitiveServices/accounts/quotaLimit.rules[*].minCount": "properties.quotaLimit.rules[*].minCount",
       "Microsoft.CognitiveServices/accounts/quotaLimit.rules[*].renewalPeriod": "properties.quotaLimit.rules[*].renewalPeriod",
+      "Microsoft.CognitiveServices/accounts/raiMonitorConfig": "properties.raiMonitorConfig",
+      "Microsoft.CognitiveServices/accounts/raiMonitorConfig.adxStorageResourceId": "properties.raiMonitorConfig.adxStorageResourceId",
+      "Microsoft.CognitiveServices/accounts/raiMonitorConfig.identityClientId": "properties.raiMonitorConfig.identityClientId",
       "Microsoft.CognitiveServices/accounts/restore": "properties.restore",
       "Microsoft.CognitiveServices/accounts/restrictOutboundNetworkAccess": "properties.restrictOutboundNetworkAccess",
       "Microsoft.CognitiveServices/accounts/scheduledPurgeDate": "properties.scheduledPurgeDate",
@@ -1621,6 +1624,12 @@
   },
   {
     "aliases": {
+      "Microsoft.CognitiveServices/accounts/defenderForAISettings/state": "properties.state"
+    },
+    "resourceType": "accounts/defenderforaisettings"
+  },
+  {
+    "aliases": {
       "Microsoft.CognitiveServices/accounts/deployments/callRateLimit": "properties.callRateLimit",
       "Microsoft.CognitiveServices/accounts/deployments/callRateLimit.count": "properties.callRateLimit.count",
       "Microsoft.CognitiveServices/accounts/deployments/callRateLimit.renewalPeriod": "properties.callRateLimit.renewalPeriod",
@@ -1658,8 +1667,11 @@
       "Microsoft.CognitiveServices/accounts/deployments/model.callRateLimit.rules[*].renewalPeriod": "properties.model.callRateLimit.rules[*].renewalPeriod",
       "Microsoft.CognitiveServices/accounts/deployments/model.format": "properties.model.format",
       "Microsoft.CognitiveServices/accounts/deployments/model.name": "properties.model.name",
+      "Microsoft.CognitiveServices/accounts/deployments/model.publisher": "properties.model.publisher",
       "Microsoft.CognitiveServices/accounts/deployments/model.source": "properties.model.source",
+      "Microsoft.CognitiveServices/accounts/deployments/model.sourceAccount": "properties.model.sourceAccount",
       "Microsoft.CognitiveServices/accounts/deployments/model.version": "properties.model.version",
+      "Microsoft.CognitiveServices/accounts/deployments/parentDeploymentName": "properties.parentDeploymentName",
       "Microsoft.CognitiveServices/accounts/deployments/provisioningState": "properties.provisioningState",
       "Microsoft.CognitiveServices/accounts/deployments/raiPolicyName": "properties.raiPolicyName",
       "Microsoft.CognitiveServices/accounts/deployments/rateLimits": "properties.rateLimits",
@@ -1695,6 +1707,13 @@
   },
   {
     "aliases": {
+      "Microsoft.CognitiveServices/accounts/raiBlocklists/raiBlocklistItems/isRegex": "properties.isRegex",
+      "Microsoft.CognitiveServices/accounts/raiBlocklists/raiBlocklistItems/pattern": "properties.pattern"
+    },
+    "resourceType": "accounts/raiblocklists/raiblocklistitems"
+  },
+  {
+    "aliases": {
       "Microsoft.CognitiveServices/accounts/raiPolicies/basePolicyName": "properties.basePolicyName",
       "Microsoft.CognitiveServices/accounts/raiPolicies/completionBlocklists": "properties.completionBlocklists",
       "Microsoft.CognitiveServices/accounts/raiPolicies/completionBlocklists[*]": "properties.completionBlocklists[*]",
@@ -1705,14 +1724,22 @@
       "Microsoft.CognitiveServices/accounts/raiPolicies/contentFilters[*].allowedContentLevel": "properties.contentFilters[*].allowedContentLevel",
       "Microsoft.CognitiveServices/accounts/raiPolicies/contentFilters[*].blocking": "properties.contentFilters[*].blocking",
       "Microsoft.CognitiveServices/accounts/raiPolicies/contentFilters[*].enabled": "properties.contentFilters[*].enabled",
+      "Microsoft.CognitiveServices/accounts/raiPolicies/contentFilters[*].name": "properties.contentFilters[*].name",
       "Microsoft.CognitiveServices/accounts/raiPolicies/contentFilters[*].policyName": "properties.contentFilters[*].policyName",
+      "Microsoft.CognitiveServices/accounts/raiPolicies/contentFilters[*].severityThreshold": "properties.contentFilters[*].severityThreshold",
       "Microsoft.CognitiveServices/accounts/raiPolicies/contentFilters[*].source": "properties.contentFilters[*].source",
+      "Microsoft.CognitiveServices/accounts/raiPolicies/customBlocklists": "properties.customBlocklists",
+      "Microsoft.CognitiveServices/accounts/raiPolicies/customBlocklists[*]": "properties.customBlocklists[*]",
+      "Microsoft.CognitiveServices/accounts/raiPolicies/customBlocklists[*].blocking": "properties.customBlocklists[*].blocking",
+      "Microsoft.CognitiveServices/accounts/raiPolicies/customBlocklists[*].blocklistName": "properties.customBlocklists[*].blocklistName",
+      "Microsoft.CognitiveServices/accounts/raiPolicies/customBlocklists[*].source": "properties.customBlocklists[*].source",
       "Microsoft.CognitiveServices/accounts/raiPolicies/mode": "properties.mode",
       "Microsoft.CognitiveServices/accounts/raiPolicies/policyType": "properties.policyType",
       "Microsoft.CognitiveServices/accounts/raiPolicies/promptBlocklists": "properties.promptBlocklists",
       "Microsoft.CognitiveServices/accounts/raiPolicies/promptBlocklists[*]": "properties.promptBlocklists[*]",
       "Microsoft.CognitiveServices/accounts/raiPolicies/promptBlocklists[*].blocking": "properties.promptBlocklists[*].blocking",
-      "Microsoft.CognitiveServices/accounts/raiPolicies/promptBlocklists[*].blocklistName": "properties.promptBlocklists[*].blocklistName"
+      "Microsoft.CognitiveServices/accounts/raiPolicies/promptBlocklists[*].blocklistName": "properties.promptBlocklists[*].blocklistName",
+      "Microsoft.CognitiveServices/accounts/raiPolicies/type": "properties.type"
     },
     "resourceType": "accounts/raipolicies"
   }

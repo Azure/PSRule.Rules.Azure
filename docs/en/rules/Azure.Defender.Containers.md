@@ -2,7 +2,7 @@
 reviewed: 2023-02-19
 severity: Critical
 pillar: Security
-category: Azure resources
+category: SE:10 Monitoring and threat detection
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Containers/
 ---
@@ -53,12 +53,12 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Security/pricings",
-    "apiVersion": "2022-03-01",
-    "name": "Containers",
-    "properties": {
-        "pricingTier": "Standard"
-    }
+  "type": "Microsoft.Security/pricings",
+  "apiVersion": "2024-01-01",
+  "name": "Containers",
+  "properties": {
+    "pricingTier": "Standard"
+  }
 }
 ```
 
@@ -71,13 +71,15 @@ To enable Microsoft Defender for Containers:
 For example:
 
 ```bicep
-resource defenderForContainers 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForContainers 'Microsoft.Security/pricings@2024-01-01' = {
   name: 'Containers'
   properties: {
     pricingTier: 'Standard'
   }
 }
 ```
+
+<!-- external:avm avm/ptn/security/security-center containersTier -->
 
 ### Configure with Azure CLI
 
@@ -103,13 +105,9 @@ For example:
 Set-AzSecurityPricing -Name 'Containers' -PricingTier 'Standard'
 ```
 
-## NOTES
-
-This rule applies when analyzing resources deployed (in-flight) to Azure.
-
 ## LINKS
 
-- [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#containers)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [Introduction to Microsoft Defender for Containers](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-containers-introduction)
 - [Secure the images and run time](https://learn.microsoft.com/azure/aks/operator-best-practices-container-image-management#secure-the-images-and-run-time)
 - [Azure security baseline for Container Registry](https://learn.microsoft.com/security/benchmark/azure/baselines/container-registry-security-baseline)

@@ -29,9 +29,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.39.1:
+
 - Engineering:
   - Migrated Azure samples into PSRule for Azure by @BernieWhite.
     [#3085](https://github.com/Azure/PSRule.Rules.Azure/issues/3085)
+  - Quality updates to rule documentation by @BernieWhite.
+    [#3102](https://github.com/Azure/PSRule.Rules.Azure/issues/3102)
 
 ## v1.39.1
 

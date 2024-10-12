@@ -2,7 +2,7 @@
 reviewed: 2023-02-19
 severity: Critical
 pillar: Security
-category: Security operations
+category: SE:10 Monitoring and threat detection
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.SQL/
 ---
@@ -41,12 +41,12 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Security/pricings",
-    "apiVersion": "2022-03-01",
-    "name": "SqlServers",
-    "properties": {
-        "pricingTier": "Standard"
-    }
+  "type": "Microsoft.Security/pricings",
+  "apiVersion": "2024-01-01",
+  "name": "SqlServers",
+  "properties": {
+    "pricingTier": "Standard"
+  }
 }
 ```
 
@@ -59,13 +59,15 @@ To enable Microsoft Defender for SQL:
 For example:
 
 ```bicep
-resource defenderForSQL 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForSQL 'Microsoft.Security/pricings@2024-01-01' = {
   name: 'SqlServers'
   properties: {
     pricingTier: 'Standard'
   }
 }
 ```
+
+<!-- external:avm avm/ptn/security/security-center sqlServersPricingTier -->
 
 ### Configure with Azure CLI
 
@@ -91,13 +93,9 @@ For example:
 Set-AzSecurityPricing -Name 'SqlServers' -PricingTier 'Standard'
 ```
 
-## NOTES
-
-This rule applies when analyzing resources deployed (in-flight) to Azure.
-
 ## LINKS
 
-- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [Azure SQL Database and security](https://learn.microsoft.com/azure/architecture/framework/services/data/azure-sql-database-well-architected-framework#azure-sql-database-and-security)
 - [Introduction to Microsoft Defender for SQL](https://learn.microsoft.com/azure/azure-sql/database/azure-defender-for-sql?view=azuresql)
 - [Azure security baseline for Azure SQL](https://learn.microsoft.com/security/benchmark/azure/baselines/azure-sql-security-baseline)

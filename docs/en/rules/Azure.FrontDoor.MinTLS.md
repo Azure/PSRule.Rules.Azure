@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Encryption
+category: SE:07 Encryption
 resource: Front Door
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.MinTLS/
 ---
@@ -99,7 +99,7 @@ resource afd_classic 'Microsoft.Network/frontDoors@2021-06-01' = {
 
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [Supported TLS versions](https://learn.microsoft.com/azure/frontdoor/end-to-end-tls?pivots=front-door-classic#supported-tls-versions)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/frontdoors/frontendendpoints)

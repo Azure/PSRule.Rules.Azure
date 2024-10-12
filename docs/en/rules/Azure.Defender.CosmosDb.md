@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Security operations
+category: SE:10 Monitoring and threat detection
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.CosmosDb/
 ---
@@ -39,12 +39,12 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Security/pricings",
-    "apiVersion": "2022-03-01",
-    "name": "CosmosDbs",
-    "properties": {
-        "pricingTier": "Standard"
-    }
+  "type": "Microsoft.Security/pricings",
+  "apiVersion": "2024-01-01",
+  "name": "CosmosDbs",
+  "properties": {
+    "pricingTier": "Standard"
+  }
 }
 ```
 
@@ -57,13 +57,15 @@ To enable Microsoft Defender for Azure Cosmos DB accounts:
 For example:
 
 ```bicep
-resource defenderForCosmosDb 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForCosmosDbs 'Microsoft.Security/pricings@2024-01-01' = {
   name: 'CosmosDbs'
   properties: {
     pricingTier: 'Standard'
   }
 }
 ```
+
+<!-- external:avm avm/ptn/security/security-center cosmosDbsTier -->
 
 ### Configure with Azure CLI
 
@@ -95,7 +97,7 @@ Microsoft Defender for Azure Cosmos DB is currently available only for the NoSQL
 
 ## LINKS
 
-- [Security operations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/monitor-security-operations)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [What is Microsoft Defender for Cloud?](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-cloud-introduction)
 - [Overview of Microsoft Defender for Azure Cosmos DB](https://learn.microsoft.com/azure/defender-for-cloud/concept-defender-for-cosmos)
 - [Enable Microsoft Defender for Azure Cosmos DB](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-databases-enable-cosmos-protections)

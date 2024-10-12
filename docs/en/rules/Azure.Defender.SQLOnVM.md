@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Security operations
+category: SE:10 Monitoring and threat detection
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.SQLOnVM/
 ---
@@ -39,12 +39,12 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Security/pricings",
-    "apiVersion": "2022-03-01",
-    "name": "SqlServerVirtualMachines",
-    "properties": {
-        "pricingTier": "Standard"
-    }
+  "type": "Microsoft.Security/pricings",
+  "apiVersion": "2024-01-01",
+  "name": "SqlServerVirtualMachines",
+  "properties": {
+    "pricingTier": "Standard"
+  }
 }
 ```
 
@@ -57,13 +57,15 @@ To enable Defender for SQL servers on machines:
 For example:
 
 ```bicep
-resource defenderForSQLOnVM 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForSQLOnVM 'Microsoft.Security/pricings@2024-01-01' = {
   name: 'SqlServerVirtualMachines'
   properties: {
     pricingTier: 'Standard'
   }
 }
 ```
+
+<!-- external:avm avm/ptn/security/security-center sqlServerVirtualMachinesPricingTier -->
 
 ### Configure with Azure CLI
 
@@ -77,13 +79,10 @@ az security pricing create -n 'SqlServerVirtualMachines' --tier 'standard'
 Set-AzSecurityPricing -Name 'SqlServerVirtualMachines' -PricingTier 'Standard'
 ```
 
-## NOTES
-
-This rule applies when analyzing resources deployed (in-flight) to Azure.
-
 ## LINKS
 
-- [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#virtual-machines)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [Introduction to Microsoft Defender for SQL Servers on machines](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-sql-usage)
 - [Security considerations for SQL Server on Azure Virtual Machines](https://learn.microsoft.com/azure/azure-sql/virtual-machines/windows/security-considerations-best-practices?view=azuresql)
 - [Azure Security Benchmark - Data protection](https://learn.microsoft.com/security/benchmark/azure/security-controls-v2-data-protection)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/pricings)
