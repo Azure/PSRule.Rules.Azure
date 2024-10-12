@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 using PSRule.Rules.Azure.Runtime;
-using Xunit;
 
 namespace PSRule.Rules.Azure
 {

@@ -1,30 +1,29 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using System.Diagnostics;
 
-namespace PSRule.Rules.Azure.Data.Template
+namespace PSRule.Rules.Azure.Data.Template;
+
+/// <summary>
+/// An individual expression token.
+/// </summary>
+[DebuggerDisplay("Type = {Type}, Content = {Content}")]
+internal sealed class ExpressionToken
 {
-    /// <summary>
-    /// An individual expression token.
-    /// </summary>
-    [DebuggerDisplay("Type = {Type}, Content = {Content}")]
-    internal sealed class ExpressionToken
+    internal readonly ExpressionTokenType Type;
+    internal readonly long Value;
+    internal readonly string Content;
+
+    internal ExpressionToken(ExpressionTokenType type, string content)
     {
-        internal readonly ExpressionTokenType Type;
-        internal readonly long Value;
-        internal readonly string Content;
+        Type = type;
+        Content = content;
+    }
 
-        internal ExpressionToken(ExpressionTokenType type, string content)
-        {
-            Type = type;
-            Content = content;
-        }
-
-        internal ExpressionToken(long value)
-        {
-            Type = ExpressionTokenType.Numeric;
-            Value = value;
-        }
+    internal ExpressionToken(long value)
+    {
+        Type = ExpressionTokenType.Numeric;
+        Value = value;
     }
 }

@@ -2,10 +2,10 @@
 // Licensed under the MIT License.
 
 using System;
-using Newtonsoft.Json.Linq;
-using Newtonsoft.Json;
-using PSRule.Rules.Azure.Resources;
 using System.Threading;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Data.Template;
 
@@ -53,9 +53,9 @@ internal static class ITemplateContextExtensions
         if (value.Type != JTokenType.String)
             return default;
 
-        var svalue = value.Value<string>();
+        var s = value.Value<string>();
         var lineInfo = value.TryLineInfo();
-        return EvaluateExpression<T>(context, svalue, lineInfo);
+        return EvaluateExpression<T>(context, s, lineInfo);
     }
 
     internal static T EvaluateExpression<T>(this ITemplateContext context, string value, IJsonLineInfo lineInfo)

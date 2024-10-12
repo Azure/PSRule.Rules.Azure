@@ -9,7 +9,6 @@ using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Policy;
 using PSRule.Rules.Azure.Pipeline;
-using Xunit;
 using static PSRule.Rules.Azure.Data.Policy.PolicyAssignmentVisitor;
 
 namespace PSRule.Rules.Azure

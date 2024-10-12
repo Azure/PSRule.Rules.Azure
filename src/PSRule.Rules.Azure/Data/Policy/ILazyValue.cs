@@ -1,10 +1,9 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-namespace PSRule.Rules.Azure.Data.Policy
+namespace PSRule.Rules.Azure.Data.Policy;
+
+internal interface ILazyValue
 {
-    internal interface ILazyValue
-    {
-        object GetValue(PolicyAssignmentVisitor.PolicyAssignmentContext context);
-    }
+    object GetValue(PolicyAssignmentVisitor.PolicyAssignmentContext context);
 }
