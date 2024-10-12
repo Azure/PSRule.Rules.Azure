@@ -29,4 +29,4 @@ Consider deploying VMs with managed disks into aligned availability sets.
 - [Availability sets](https://learn.microsoft.com/azure/virtual-machines/availability#availability-sets)
 - [Managed disk integration with availability sets](https://learn.microsoft.com/azure/virtual-machines/managed-disks-overview)
 - [Reliability checklist](https://learn.microsoft.com/azure/architecture/checklist/resiliency-per-service#virtual-machines)
-- [Azure deployment reference](https://learn.microsoft.com/en-us/azure/templates/microsoft.compute/availabilitysets)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/availabilitysets)
