@@ -5,111 +5,110 @@ using System;
 using System.Collections.Generic;
 using System.Management.Automation;
 
-namespace PSRule.Rules.Azure.Data.Network
+namespace PSRule.Rules.Azure.Data.Network;
+
+/// <summary>
+/// A basic implementation of an evaluator for checking NSG rules.
+/// </summary>
+internal sealed class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvaluator
 {
-    /// <summary>
-    /// A basic implementation of an evaluator for checking NSG rules.
-    /// </summary>
-    internal sealed class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvaluator
+    private const string PROPERTIES = "properties";
+    private const string DIRECTION = "direction";
+    private const string ACCESS = "access";
+    private const string DESTINATION_ADDRESS_PREFIX = "destinationAddressPrefix";
+    private const string DESTINATION_ADDRESS_PREFIXES = "destinationAddressPrefixes";
+    private const string DESTINATION_PORT_RANGE = "destinationPortRange";
+    private const string DESTINATION_PORT_RANGES = "destinationPortRanges";
+    private const string ANY = "*";
+
+    private readonly List<SecurityRule> _Outbound;
+
+    internal NetworkSecurityGroupEvaluator()
     {
-        private const string PROPERTIES = "properties";
-        private const string DIRECTION = "direction";
-        private const string ACCESS = "access";
-        private const string DESTINATION_ADDRESS_PREFIX = "destinationAddressPrefix";
-        private const string DESTINATION_ADDRESS_PREFIXES = "destinationAddressPrefixes";
-        private const string DESTINATION_PORT_RANGE = "destinationPortRange";
-        private const string DESTINATION_PORT_RANGES = "destinationPortRanges";
-        private const string ANY = "*";
+        _Outbound = [];
+    }
 
-        private readonly List<SecurityRule> _Outbound;
+    internal enum Direction
+    {
+        Inbound = 1,
 
-        internal NetworkSecurityGroupEvaluator()
+        Outbound = 2
+    }
+
+    private sealed class SecurityRule
+    {
+        public SecurityRule(Direction direction, Access access, string[] destinationAddressPrefixes, string[] destinationPortRanges)
         {
-            _Outbound = new List<SecurityRule>();
+            Direction = direction;
+            Access = access;
+            DestinationAddressPrefixes = destinationAddressPrefixes == null ? null : new HashSet<string>(destinationAddressPrefixes, StringComparer.OrdinalIgnoreCase);
+            DestinationPortRanges = destinationPortRanges == null ? null : new HashSet<string>(destinationPortRanges, StringComparer.OrdinalIgnoreCase);
         }
 
-        internal enum Direction
-        {
-            Inbound = 1,
+        public Access Access { get; }
 
-            Outbound = 2
+        public Direction Direction { get; }
+
+        public HashSet<string> DestinationAddressPrefixes { get; }
+
+        public HashSet<string> DestinationPortRanges { get; }
+
+        internal bool TryDestinationPrefix(string prefix)
+        {
+            return DestinationAddressPrefixes == null || DestinationAddressPrefixes.Contains(prefix);
         }
 
-        private sealed class SecurityRule
+        internal bool TryDestinationPort(int port)
         {
-            public SecurityRule(Direction direction, Access access, string[] destinationAddressPrefixes, string[] destinationPortRanges)
-            {
-                Direction = direction;
-                Access = access;
-                DestinationAddressPrefixes = destinationAddressPrefixes == null ? null : new HashSet<string>(destinationAddressPrefixes, StringComparer.OrdinalIgnoreCase);
-                DestinationPortRanges = destinationPortRanges == null ? null : new HashSet<string>(destinationPortRanges, StringComparer.OrdinalIgnoreCase);
-            }
-
-            public Access Access { get; }
-
-            public Direction Direction { get; }
-
-            public HashSet<string> DestinationAddressPrefixes { get; }
-
-            public HashSet<string> DestinationPortRanges { get; }
-
-            internal bool TryDestinationPrefix(string prefix)
-            {
-                return DestinationAddressPrefixes == null || DestinationAddressPrefixes.Contains(prefix);
-            }
-
-            internal bool TryDestinationPort(int port)
-            {
-                return DestinationPortRanges == null || DestinationPortRanges.Contains(port.ToString());
-            }
+            return DestinationPortRanges == null || DestinationPortRanges.Contains(port.ToString());
         }
+    }
 
-        public void With(PSObject[] items)
+    public void With(PSObject[] items)
+    {
+        if (items == null || items.Length == 0)
+            return;
+
+        for (var i = 0; i < items.Length; i++)
         {
-            if (items == null || items.Length == 0)
-                return;
-
-            for (var i = 0; i < items.Length; i++)
-            {
-                var r = GetRule(items[i]);
-                if (r.Direction == Direction.Outbound)
-                    _Outbound.Add(r);
-            }
+            var r = GetRule(items[i]);
+            if (r.Direction == Direction.Outbound)
+                _Outbound.Add(r);
         }
+    }
 
-        /// <inheritdoc/>
-        public Access Outbound(string prefix, int port)
+    /// <inheritdoc/>
+    public Access Outbound(string prefix, int port)
+    {
+        for (var i = 0; i < _Outbound.Count; i++)
         {
-            for (var i = 0; i < _Outbound.Count; i++)
-            {
-                if (_Outbound[i].TryDestinationPrefix(prefix) && _Outbound[i].TryDestinationPort(port))
-                    return _Outbound[i].Access;
-            }
-            return Access.Default;
+            if (_Outbound[i].TryDestinationPrefix(prefix) && _Outbound[i].TryDestinationPort(port))
+                return _Outbound[i].Access;
         }
+        return Access.Default;
+    }
 
-        private static SecurityRule GetRule(PSObject o)
-        {
-            var properties = o.GetPropertyValue<PSObject>(PROPERTIES);
-            var direction = (Direction)Enum.Parse(typeof(Direction), properties.GetPropertyValue<string>(DIRECTION), ignoreCase: true);
-            var access = (Access)Enum.Parse(typeof(Access), properties.GetPropertyValue<string>(ACCESS), ignoreCase: true);
-            var destinationAddressPrefixes = GetFilter(properties, DESTINATION_ADDRESS_PREFIX) ?? GetFilter(properties, DESTINATION_ADDRESS_PREFIXES);
-            var destinationPortRanges = GetFilter(properties, DESTINATION_PORT_RANGE) ?? GetFilter(properties, DESTINATION_PORT_RANGES);
-            var result = new SecurityRule(
-                direction,
-                access,
-                destinationAddressPrefixes,
-                destinationPortRanges
-            );
-            return result;
-        }
+    private static SecurityRule GetRule(PSObject o)
+    {
+        var properties = o.GetPropertyValue<PSObject>(PROPERTIES);
+        var direction = (Direction)Enum.Parse(typeof(Direction), properties.GetPropertyValue<string>(DIRECTION), ignoreCase: true);
+        var access = (Access)Enum.Parse(typeof(Access), properties.GetPropertyValue<string>(ACCESS), ignoreCase: true);
+        var destinationAddressPrefixes = GetFilter(properties, DESTINATION_ADDRESS_PREFIX) ?? GetFilter(properties, DESTINATION_ADDRESS_PREFIXES);
+        var destinationPortRanges = GetFilter(properties, DESTINATION_PORT_RANGE) ?? GetFilter(properties, DESTINATION_PORT_RANGES);
+        var result = new SecurityRule(
+            direction,
+            access,
+            destinationAddressPrefixes,
+            destinationPortRanges
+        );
+        return result;
+    }
 
-        private static string[] GetFilter(PSObject o, string propertyName)
-        {
-            if (o.TryProperty(propertyName, out string[] value) && value.Length > 0)
-                return value;
+    private static string[] GetFilter(PSObject o, string propertyName)
+    {
+        if (o.TryProperty(propertyName, out string[] value) && value.Length > 0)
+            return value;
 
-            return o.TryProperty(propertyName, out string s) && s != ANY ? (new string[] { s }) : null;
-        }
+        return o.TryProperty(propertyName, out string s) && s != ANY ? (new string[] { s }) : null;
     }
 }

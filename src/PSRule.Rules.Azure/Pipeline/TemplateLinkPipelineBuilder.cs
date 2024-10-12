@@ -1,40 +1,28 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-namespace PSRule.Rules.Azure.Pipeline
+namespace PSRule.Rules.Azure.Pipeline;
+
+internal sealed class TemplateLinkPipelineBuilder : PipelineBuilderBase, ITemplateLinkPipelineBuilder
 {
-    /// <summary>
-    /// A helper to build a template link pipeline.
-    /// </summary>
-    public interface ITemplateLinkPipelineBuilder : IPipelineBuilder
+    private readonly string _BasePath;
+
+    private bool _SkipUnlinked;
+
+    internal TemplateLinkPipelineBuilder(string basePath)
     {
-        /// <summary>
-        /// Determines if unlinked parameter files are skipped or error.
-        /// </summary>
-        void SkipUnlinked(bool skipUnlinked);
+        _BasePath = basePath;
     }
 
-    internal sealed class TemplateLinkPipelineBuilder : PipelineBuilderBase, ITemplateLinkPipelineBuilder
+    /// <inheritdoc/>
+    public void SkipUnlinked(bool skipUnlinked)
     {
-        private readonly string _BasePath;
+        _SkipUnlinked = skipUnlinked;
+    }
 
-        private bool _SkipUnlinked;
-
-        internal TemplateLinkPipelineBuilder(string basePath)
-        {
-            _BasePath = basePath;
-        }
-
-        /// <inheritdoc/>
-        public void SkipUnlinked(bool skipUnlinked)
-        {
-            _SkipUnlinked = skipUnlinked;
-        }
-
-        /// <inheritdoc/>
-        public override IPipeline Build()
-        {
-            return new TemplateLinkPipeline(PrepareContext(), _BasePath, _SkipUnlinked);
-        }
+    /// <inheritdoc/>
+    public override IPipeline Build()
+    {
+        return new TemplateLinkPipeline(PrepareContext(), _BasePath, _SkipUnlinked);
     }
 }

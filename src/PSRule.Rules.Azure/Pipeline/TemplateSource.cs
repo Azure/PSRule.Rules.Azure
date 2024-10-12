@@ -3,48 +3,39 @@
 
 using System;
 
-namespace PSRule.Rules.Azure.Pipeline
+namespace PSRule.Rules.Azure.Pipeline;
+
+/// <summary>
+/// A source for template expansion.
+/// </summary>
+public sealed class TemplateSource
 {
-    internal enum TemplateSourceKind
+    internal readonly string TemplateFile;
+    internal readonly string[] ParametersFile;
+    internal readonly TemplateSourceKind Kind;
+
+    /// <summary>
+    /// Create a source.
+    /// </summary>
+    public TemplateSource(string templateFile, string[] parametersFile)
     {
-        None = 0,
-        Template = 1,
-        Bicep = 2,
-        BicepParam = 3,
+        TemplateFile = templateFile;
+        ParametersFile = parametersFile;
+        Kind = TemplateSourceKind.Template;
     }
 
     /// <summary>
-    /// A source for template expansion.
+    /// Create a source.
     /// </summary>
-    public sealed class TemplateSource
+    public TemplateSource(string sourceFile)
     {
-        internal readonly string TemplateFile;
-        internal readonly string[] ParametersFile;
-        internal readonly TemplateSourceKind Kind;
+        if (string.IsNullOrEmpty(sourceFile))
+            throw new ArgumentNullException(nameof(sourceFile));
 
-        /// <summary>
-        /// Create a source.
-        /// </summary>
-        public TemplateSource(string templateFile, string[] parametersFile)
-        {
-            TemplateFile = templateFile;
-            ParametersFile = parametersFile;
-            Kind = TemplateSourceKind.Template;
-        }
-
-        /// <summary>
-        /// Create a source.
-        /// </summary>
-        public TemplateSource(string sourceFile)
-        {
-            if (string.IsNullOrEmpty(sourceFile))
-                throw new ArgumentNullException(nameof(sourceFile));
-
-            TemplateFile = sourceFile;
-            if (TemplateFile.EndsWith(".bicep", StringComparison.OrdinalIgnoreCase))
-                Kind = TemplateSourceKind.Bicep;
-            else if (TemplateFile.EndsWith(".bicepparam", StringComparison.OrdinalIgnoreCase))
-                Kind = TemplateSourceKind.BicepParam;
-        }
+        TemplateFile = sourceFile;
+        if (TemplateFile.EndsWith(".bicep", StringComparison.OrdinalIgnoreCase))
+            Kind = TemplateSourceKind.Bicep;
+        else if (TemplateFile.EndsWith(".bicepparam", StringComparison.OrdinalIgnoreCase))
+            Kind = TemplateSourceKind.BicepParam;
     }
 }

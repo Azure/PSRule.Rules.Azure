@@ -3,40 +3,39 @@
 
 using PSRule.Rules.Azure.Pipeline.Export;
 
-namespace PSRule.Rules.Azure.Pipeline
+namespace PSRule.Rules.Azure.Pipeline;
+
+/// <summary>
+/// A base class for a pipeline that exports data from Azure.
+/// </summary>
+internal abstract class ExportDataPipeline : PipelineBase
 {
-    /// <summary>
-    /// A base class for a pipeline that exports data from Azure.
-    /// </summary>
-    internal abstract class ExportDataPipeline : PipelineBase
+    private bool _Disposed;
+
+    protected ExportDataPipeline(PipelineContext context, GetAccessTokenFn getToken)
+        : base(context)
     {
-        private bool _Disposed;
+        PoolSize = 10;
+        TokenCache = new AccessTokenCache(getToken);
+    }
 
-        protected ExportDataPipeline(PipelineContext context, GetAccessTokenFn getToken)
-            : base(context)
+    /// <summary>
+    /// The size of the thread pool for the pipeline.
+    /// </summary>
+    protected int PoolSize { get; }
+
+    protected AccessTokenCache TokenCache { get; }
+
+    protected override void Dispose(bool disposing)
+    {
+        if (!_Disposed)
         {
-            PoolSize = 10;
-            TokenCache = new AccessTokenCache(getToken);
-        }
-
-        /// <summary>
-        /// The size of the thread pool for the pipeline.
-        /// </summary>
-        protected int PoolSize { get; }
-
-        protected AccessTokenCache TokenCache { get; }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (!_Disposed)
+            if (disposing)
             {
-                if (disposing)
-                {
-                    TokenCache.Dispose();
-                }
-                _Disposed = true;
+                TokenCache.Dispose();
             }
-            base.Dispose(disposing);
+            _Disposed = true;
         }
+        base.Dispose(disposing);
     }
 }
