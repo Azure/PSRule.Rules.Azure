@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:05 Regions and availability zones
 resource: Azure Cache for Redis Enterprise
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RedisEnterprise.Zones/
 ---
@@ -21,18 +21,6 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
 ## RECOMMENDATION
 
 Consider using availability zones for Enterprise Redis Cache deployed in supported regions.
-
-## NOTES
-
-This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.
-
-Configure `AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.Cache` and resource type `redisEnterprise`.
-
-```yaml
-# YAML: The default AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
-configuration:
-  AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
-```
 
 ## EXAMPLES
 
@@ -149,9 +137,21 @@ resource testrediscache_default 'Microsoft.Cache/redisEnterprise/databases@2021-
 }
 ```
 
+## NOTES
+
+This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.
+
+Configure `AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.Cache` and resource type `redisEnterprise`.
+
+```yaml
+# YAML: The default AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
+configuration:
+  AZURE_REDISENTERPRISECACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
+```
+
 ## LINKS
 
-- [Use zone-aware services](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-best-practices#use-zone-aware-services)
+- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Enable zone redundancy for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-how-to-zone-redundancy)
 - [High availability for Azure Cache for Redis](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-high-availability)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cache/redisenterprise?tabs=json)

@@ -3,10 +3,7 @@
     "aliases": null,
     "resourceType": "gateways",
     "apiVersions": [
-      "2024-01-15-preview",
-      "2024-01-01-preview",
-      "2023-12-15-preview",
-      "2023-11-01-preview"
+      "2024-01-15-preview"
     ],
     "locations": [
       "Brazil South",
@@ -19,10 +16,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2024-01-15-preview",
-      "2024-01-01-preview",
-      "2023-12-15-preview",
-      "2023-11-01-preview"
+      "2024-01-15-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -31,10 +25,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
-      "2024-01-15-preview",
-      "2024-01-01-preview",
-      "2023-12-15-preview",
-      "2023-11-01-preview"
+      "2024-01-15-preview"
     ],
     "locations": [
       "Brazil South",
@@ -47,10 +38,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2024-01-15-preview",
-      "2024-01-01-preview",
-      "2023-12-15-preview",
-      "2023-11-01-preview"
+      "2024-01-15-preview"
     ],
     "locations": [],
     "zoneMappings": []

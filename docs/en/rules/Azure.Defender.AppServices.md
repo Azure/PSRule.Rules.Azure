@@ -1,7 +1,8 @@
 ---
+reviewed: 2024-10-12
 severity: Critical
 pillar: Security
-category: Data protection
+category: SE:10 Monitoring and threat detection
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.AppServices/
 ---
@@ -43,12 +44,12 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Security/pricings",
-    "apiVersion": "2022-03-01",
-    "name": "AppServices",
-    "properties": {
-        "pricingTier": "Standard"
-    }
+  "type": "Microsoft.Security/pricings",
+  "apiVersion": "2024-01-01",
+  "name": "AppServices",
+  "properties": {
+    "pricingTier": "Standard"
+  }
 }
 ```
 
@@ -61,13 +62,15 @@ To enable Defender for App Service:
 For example:
 
 ```bicep
-resource defenderForAppService 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForAppServices 'Microsoft.Security/pricings@2024-01-01' = {
   name: 'AppServices'
   properties: {
     pricingTier: 'Standard'
   }
 }
 ```
+
+<!-- external:avm avm/ptn/security/security-center appServicesPricingTier -->
 
 ### Configure with Azure CLI
 
@@ -81,12 +84,10 @@ az security pricing create -n 'AppServices' --tier 'standard'
 Set-AzSecurityPricing -Name 'AppServices' -PricingTier 'Standard'
 ```
 
-## NOTES
-
-This rule applies when analyzing resources deployed (in-flight) to Azure.
-
 ## LINKS
 
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [Securing applications and PaaS deployments](https://learn.microsoft.com/azure/security/fundamentals/paas-deployments)
 - [Introduction to Microsoft Defender for App Service](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-app-service-introduction)
 - [App Service security best practices](https://learn.microsoft.com/azure/security/fundamentals/paas-applications-using-app-services)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/pricings)

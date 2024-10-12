@@ -2,7 +2,7 @@
 reviewed: 2023-07-08
 severity: Critical
 pillar: Security
-category: Connectivity
+category: SE:08 Hardening resources
 resource: Azure Cache for Redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.FirewallIPRange/
 ---
@@ -85,7 +85,7 @@ Firewall rules can be used with VNET injected caches, but not private endpoints.
 
 ## LINKS
 
-- [Azure services for securing network connectivity](https://learn.microsoft.com/azure/well-architected/security/design-network-connectivity)
+- [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
 - [Azure best practices for network security](https://learn.microsoft.com/azure/security/fundamentals/network-best-practices)
 - [Azure Cache for Redis network isolation options](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-network-isolation)
 - [Limitations of firewall rules](https://learn.microsoft.com/azure/azure-cache-for-redis/cache-network-isolation#limitations-of-firewall-rules)

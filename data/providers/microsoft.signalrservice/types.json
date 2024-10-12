@@ -306,6 +306,17 @@
   },
   {
     "aliases": {
+      "Microsoft.SignalRService/SignalR/applicationFirewall": "properties.applicationFirewall",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules": "properties.applicationFirewall.clientConnectionCountRules",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules[*]": "properties.applicationFirewall.clientConnectionCountRules[*]",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtCustomClaimRule": "properties.applicationFirewall.clientConnectionCountRules[*]",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtCustomClaimRule.claimName": "properties.applicationFirewall.clientConnectionCountRules[*].claimName",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtCustomClaimRule.maxCount": "properties.applicationFirewall.clientConnectionCountRules[*].maxCount",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtSignatureRule": "properties.applicationFirewall.clientConnectionCountRules[*]",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtSignatureRule.maxCount": "properties.applicationFirewall.clientConnectionCountRules[*].maxCount",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules[*].ThrottleByUserIdRule": "properties.applicationFirewall.clientConnectionCountRules[*]",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules[*].ThrottleByUserIdRule.maxCount": "properties.applicationFirewall.clientConnectionCountRules[*].maxCount",
+      "Microsoft.SignalRService/SignalR/applicationFirewall.clientConnectionCountRules[*].type": "properties.applicationFirewall.clientConnectionCountRules[*].type",
       "Microsoft.SignalRservice/SignalR/cors": "properties.cors",
       "Microsoft.SignalRservice/SignalR/cors.allowedOrigins": "properties.cors.allowedOrigins",
       "Microsoft.SignalRservice/SignalR/cors.allowedOrigins[*]": "properties.cors.allowedOrigins[*]",
@@ -326,6 +337,10 @@
       "Microsoft.SignalRService/SignalR/liveTraceConfiguration.enabled": "properties.liveTraceConfiguration.enabled",
       "Microsoft.SignalRService/SignalR/networkACLs": "properties.networkACLs",
       "Microsoft.SignalRService/SignalR/networkACLs.defaultAction": "properties.networkACLs.defaultAction",
+      "Microsoft.SignalRService/SignalR/networkACLs.ipRules": "properties.networkACLs.ipRules",
+      "Microsoft.SignalRService/SignalR/networkACLs.ipRules[*]": "properties.networkACLs.ipRules[*]",
+      "Microsoft.SignalRService/SignalR/networkACLs.ipRules[*].action": "properties.networkACLs.ipRules[*].action",
+      "Microsoft.SignalRService/SignalR/networkACLs.ipRules[*].value": "properties.networkACLs.ipRules[*].value",
       "Microsoft.SignalRService/SignalR/networkACLs.privateEndpoints": "properties.networkACLs.privateEndpoints",
       "Microsoft.SignalRService/SignalR/networkACLs.privateEndpoints[*]": "properties.networkACLs.privateEndpoints[*]",
       "Microsoft.SignalRService/SignalR/networkACLs.privateEndpoints[*].allow": "properties.networkACLs.privateEndpoints[*].allow",
@@ -362,16 +377,20 @@
       "Microsoft.SignalRService/SignalR/provisioningState": "properties.provisioningState",
       "Microsoft.SignalRService/SignalR/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.SignalRService/SignalR/publicPort": "properties.publicPort",
+      "Microsoft.SignalRService/SignalR/regionEndpointEnabled": "properties.regionEndpointEnabled",
       "Microsoft.SignalRService/SignalR/resourceLogConfiguration": "properties.resourceLogConfiguration",
       "Microsoft.SignalRService/SignalR/resourceLogConfiguration.categories": "properties.resourceLogConfiguration.categories",
       "Microsoft.SignalRService/SignalR/resourceLogConfiguration.categories[*]": "properties.resourceLogConfiguration.categories[*]",
       "Microsoft.SignalRService/SignalR/resourceLogConfiguration.categories[*].enabled": "properties.resourceLogConfiguration.categories[*].enabled",
       "Microsoft.SignalRService/SignalR/resourceLogConfiguration.categories[*].name": "properties.resourceLogConfiguration.categories[*].name",
+      "Microsoft.SignalRService/SignalR/resourceStopped": "properties.resourceStopped",
       "Microsoft.SignalRService/SignalR/serverless": "properties.serverless",
       "Microsoft.SignalRService/SignalR/serverless.connectionTimeoutInSeconds": "properties.serverless.connectionTimeoutInSeconds",
       "Microsoft.SignalRService/SignalR/serverPort": "properties.serverPort",
       "Microsoft.SignalRService/SignalR/sharedPrivateLinkResources": "properties.sharedPrivateLinkResources",
       "Microsoft.SignalRService/SignalR/sharedPrivateLinkResources[*]": "properties.sharedPrivateLinkResources[*]",
+      "Microsoft.SignalRService/SignalR/sharedPrivateLinkResources[*].fqdns": "properties.sharedPrivateLinkResources[*].properties.fqdns",
+      "Microsoft.SignalRService/SignalR/sharedPrivateLinkResources[*].fqdns[*]": "properties.sharedPrivateLinkResources[*].properties.fqdns[*]",
       "Microsoft.SignalRService/SignalR/sharedPrivateLinkResources[*].groupId": "properties.sharedPrivateLinkResources[*].properties.groupId",
       "Microsoft.SignalRService/SignalR/sharedPrivateLinkResources[*].id": "properties.sharedPrivateLinkResources[*].id",
       "Microsoft.SignalRService/SignalR/sharedPrivateLinkResources[*].name": "properties.sharedPrivateLinkResources[*].name",
@@ -469,7 +488,12 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.SignalRService/signalR/customDomains/customCertificate": "properties.customCertificate",
+      "Microsoft.SignalRService/signalR/customDomains/customCertificate.id": "properties.customCertificate.id",
+      "Microsoft.SignalRService/signalR/customDomains/domainName": "properties.domainName",
+      "Microsoft.SignalRService/signalR/customDomains/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "SignalR/customDomains",
     "apiVersions": [
       "2024-04-01-preview",
@@ -591,7 +615,17 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.SignalRService/signalR/replicas/provisioningState": "properties.provisioningState",
+      "Microsoft.SignalRService/signalR/replicas/regionEndpointEnabled": "properties.regionEndpointEnabled",
+      "Microsoft.SignalRService/signalR/replicas/resourceStopped": "properties.resourceStopped",
+      "Microsoft.SignalRService/signalR/replicas/sku": "sku",
+      "Microsoft.SignalRService/signalR/replicas/sku.capacity": "sku.capacity",
+      "Microsoft.SignalRService/signalR/replicas/sku.family": "sku.family",
+      "Microsoft.SignalRService/signalR/replicas/sku.name": "sku.name",
+      "Microsoft.SignalRService/signalR/replicas/sku.size": "sku.size",
+      "Microsoft.SignalRService/signalR/replicas/sku.tier": "sku.tier"
+    },
     "resourceType": "SignalR/replicas",
     "apiVersions": [
       "2024-04-01-preview",
@@ -643,6 +677,17 @@
   },
   {
     "aliases": {
+      "Microsoft.SignalRService/webPubSub/applicationFirewall": "properties.applicationFirewall",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules": "properties.applicationFirewall.clientConnectionCountRules",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules[*]": "properties.applicationFirewall.clientConnectionCountRules[*]",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtCustomClaimRule": "properties.applicationFirewall.clientConnectionCountRules[*]",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtCustomClaimRule.claimName": "properties.applicationFirewall.clientConnectionCountRules[*].claimName",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtCustomClaimRule.maxCount": "properties.applicationFirewall.clientConnectionCountRules[*].maxCount",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtSignatureRule": "properties.applicationFirewall.clientConnectionCountRules[*]",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules[*].ThrottleByJwtSignatureRule.maxCount": "properties.applicationFirewall.clientConnectionCountRules[*].maxCount",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules[*].ThrottleByUserIdRule": "properties.applicationFirewall.clientConnectionCountRules[*]",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules[*].ThrottleByUserIdRule.maxCount": "properties.applicationFirewall.clientConnectionCountRules[*].maxCount",
+      "Microsoft.SignalRService/webPubSub/applicationFirewall.clientConnectionCountRules[*].type": "properties.applicationFirewall.clientConnectionCountRules[*].type",
       "Microsoft.SignalRService/webPubSub/diagnosticConfiguration": "properties.diagnosticConfiguration",
       "Microsoft.SignalRService/webPubSub/diagnosticConfiguration.enableConnectivityLogs": "properties.diagnosticConfiguration.enableConnectivityLogs",
       "Microsoft.SignalRService/webPubSub/diagnosticConfiguration.enableLiveTrace": "properties.diagnosticConfiguration.enableLiveTrace",
@@ -666,6 +711,10 @@
       "Microsoft.SignalRService/webPubSub/liveTraceConfiguration.enabled": "properties.liveTraceConfiguration.enabled",
       "Microsoft.SignalRService/webPubSub/networkACLs": "properties.networkACLs",
       "Microsoft.SignalRService/webPubSub/networkACLs.defaultAction": "properties.networkACLs.defaultAction",
+      "Microsoft.SignalRService/webPubSub/networkACLs.ipRules": "properties.networkACLs.ipRules",
+      "Microsoft.SignalRService/webPubSub/networkACLs.ipRules[*]": "properties.networkACLs.ipRules[*]",
+      "Microsoft.SignalRService/webPubSub/networkACLs.ipRules[*].action": "properties.networkACLs.ipRules[*].action",
+      "Microsoft.SignalRService/webPubSub/networkACLs.ipRules[*].value": "properties.networkACLs.ipRules[*].value",
       "Microsoft.SignalRService/webPubSub/networkACLs.privateEndpoints": "properties.networkACLs.privateEndpoints",
       "Microsoft.SignalRService/webPubSub/networkACLs.privateEndpoints[*]": "properties.networkACLs.privateEndpoints[*]",
       "Microsoft.SignalRService/webPubSub/networkACLs.privateEndpoints[*].allow": "properties.networkACLs.privateEndpoints[*].allow",
@@ -702,14 +751,18 @@
       "Microsoft.SignalRService/webPubSub/provisioningState": "properties.provisioningState",
       "Microsoft.SignalRService/webPubSub/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.SignalRService/webPubSub/publicPort": "properties.publicPort",
+      "Microsoft.SignalRService/webPubSub/regionEndpointEnabled": "properties.regionEndpointEnabled",
       "Microsoft.SignalRService/webPubSub/resourceLogConfiguration": "properties.resourceLogConfiguration",
       "Microsoft.SignalRService/webPubSub/resourceLogConfiguration.categories": "properties.resourceLogConfiguration.categories",
       "Microsoft.SignalRService/webPubSub/resourceLogConfiguration.categories[*]": "properties.resourceLogConfiguration.categories[*]",
       "Microsoft.SignalRService/webPubSub/resourceLogConfiguration.categories[*].enabled": "properties.resourceLogConfiguration.categories[*].enabled",
       "Microsoft.SignalRService/webPubSub/resourceLogConfiguration.categories[*].name": "properties.resourceLogConfiguration.categories[*].name",
+      "Microsoft.SignalRService/webPubSub/resourceStopped": "properties.resourceStopped",
       "Microsoft.SignalRService/webPubSub/serverPort": "properties.serverPort",
       "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources": "properties.sharedPrivateLinkResources",
       "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources[*]": "properties.sharedPrivateLinkResources[*]",
+      "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources[*].fqdns": "properties.sharedPrivateLinkResources[*].properties.fqdns",
+      "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources[*].fqdns[*]": "properties.sharedPrivateLinkResources[*].properties.fqdns[*]",
       "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources[*].groupId": "properties.sharedPrivateLinkResources[*].properties.groupId",
       "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources[*].id": "properties.sharedPrivateLinkResources[*].id",
       "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources[*].name": "properties.sharedPrivateLinkResources[*].name",
@@ -731,6 +784,8 @@
       "Microsoft.SignalRService/webPubSub/sku.name": "sku.name",
       "Microsoft.SignalRService/webPubSub/sku.size": "sku.size",
       "Microsoft.SignalRService/webPubSub/sku.tier": "sku.tier",
+      "Microsoft.SignalRService/webPubSub/socketIO": "properties.socketIO",
+      "Microsoft.SignalRService/webPubSub/socketIO.serviceMode": "properties.socketIO.serviceMode",
       "Microsoft.SignalRService/webPubSub/tls": "properties.tls",
       "Microsoft.SignalRService/webPubSub/tls.clientCertEnabled": "properties.tls.clientCertEnabled",
       "Microsoft.SignalRService/webPubSub/version": "properties.version"
@@ -792,7 +847,12 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.SignalRService/webPubSub/customDomains/customCertificate": "properties.customCertificate",
+      "Microsoft.SignalRService/webPubSub/customDomains/customCertificate.id": "properties.customCertificate.id",
+      "Microsoft.SignalRService/webPubSub/customDomains/domainName": "properties.domainName",
+      "Microsoft.SignalRService/webPubSub/customDomains/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "WebPubSub/customDomains",
     "apiVersions": [
       "2024-04-01-preview",
@@ -850,7 +910,17 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.SignalRService/webPubSub/replicas/provisioningState": "properties.provisioningState",
+      "Microsoft.SignalRService/webPubSub/replicas/regionEndpointEnabled": "properties.regionEndpointEnabled",
+      "Microsoft.SignalRService/webPubSub/replicas/resourceStopped": "properties.resourceStopped",
+      "Microsoft.SignalRService/webPubSub/replicas/sku": "sku",
+      "Microsoft.SignalRService/webPubSub/replicas/sku.capacity": "sku.capacity",
+      "Microsoft.SignalRService/webPubSub/replicas/sku.family": "sku.family",
+      "Microsoft.SignalRService/webPubSub/replicas/sku.name": "sku.name",
+      "Microsoft.SignalRService/webPubSub/replicas/sku.size": "sku.size",
+      "Microsoft.SignalRService/webPubSub/replicas/sku.tier": "sku.tier"
+    },
     "resourceType": "WebPubSub/replicas",
     "apiVersions": [
       "2024-04-01-preview",
@@ -902,6 +972,15 @@
   },
   {
     "aliases": {
+      "Microsoft.SignalRService/signalR/customCertificates/keyVaultBaseUri": "properties.keyVaultBaseUri",
+      "Microsoft.SignalRService/signalR/customCertificates/keyVaultSecretName": "properties.keyVaultSecretName",
+      "Microsoft.SignalRService/signalR/customCertificates/keyVaultSecretVersion": "properties.keyVaultSecretVersion",
+      "Microsoft.SignalRService/signalR/customCertificates/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "signalr/customcertificates"
+  },
+  {
+    "aliases": {
       "Microsoft.SignalRService/signalR/privateEndpointConnections/groupIds": "properties.groupIds",
       "Microsoft.SignalRService/signalR/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
       "Microsoft.SignalRService/signalR/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
@@ -916,6 +995,20 @@
   },
   {
     "aliases": {
+      "Microsoft.SignalRService/signalR/replicas/sharedPrivateLinkResources/fqdns": "properties.fqdns",
+      "Microsoft.SignalRService/signalR/replicas/sharedPrivateLinkResources/fqdns[*]": "properties.fqdns[*]",
+      "Microsoft.SignalRService/signalR/replicas/sharedPrivateLinkResources/groupId": "properties.groupId",
+      "Microsoft.SignalRService/signalR/replicas/sharedPrivateLinkResources/privateLinkResourceId": "properties.privateLinkResourceId",
+      "Microsoft.SignalRService/signalR/replicas/sharedPrivateLinkResources/provisioningState": "properties.provisioningState",
+      "Microsoft.SignalRService/signalR/replicas/sharedPrivateLinkResources/requestMessage": "properties.requestMessage",
+      "Microsoft.SignalRService/signalR/replicas/sharedPrivateLinkResources/status": "properties.status"
+    },
+    "resourceType": "signalr/replicas/sharedprivatelinkresources"
+  },
+  {
+    "aliases": {
+      "Microsoft.SignalRService/signalR/sharedPrivateLinkResources/fqdns": "properties.fqdns",
+      "Microsoft.SignalRService/signalR/sharedPrivateLinkResources/fqdns[*]": "properties.fqdns[*]",
       "Microsoft.SignalRService/signalR/sharedPrivateLinkResources/groupId": "properties.groupId",
       "Microsoft.SignalRService/signalR/sharedPrivateLinkResources/privateLinkResourceId": "properties.privateLinkResourceId",
       "Microsoft.SignalRService/signalR/sharedPrivateLinkResources/provisioningState": "properties.provisioningState",
@@ -923,6 +1016,15 @@
       "Microsoft.SignalRService/signalR/sharedPrivateLinkResources/status": "properties.status"
     },
     "resourceType": "signalr/sharedprivatelinkresources"
+  },
+  {
+    "aliases": {
+      "Microsoft.SignalRService/webPubSub/customCertificates/keyVaultBaseUri": "properties.keyVaultBaseUri",
+      "Microsoft.SignalRService/webPubSub/customCertificates/keyVaultSecretName": "properties.keyVaultSecretName",
+      "Microsoft.SignalRService/webPubSub/customCertificates/keyVaultSecretVersion": "properties.keyVaultSecretVersion",
+      "Microsoft.SignalRService/webPubSub/customCertificates/provisioningState": "properties.provisioningState"
+    },
+    "resourceType": "webpubsub/customcertificates"
   },
   {
     "aliases": {
@@ -949,7 +1051,8 @@
       "Microsoft.SignalRService/webPubSub/hubs/eventListeners[*].filter.EventName.systemEvents": "properties.eventListeners[*].filter.systemEvents",
       "Microsoft.SignalRService/webPubSub/hubs/eventListeners[*].filter.EventName.systemEvents[*]": "properties.eventListeners[*].filter.systemEvents[*]",
       "Microsoft.SignalRService/webPubSub/hubs/eventListeners[*].filter.EventName.userEventPattern": "properties.eventListeners[*].filter.userEventPattern",
-      "Microsoft.SignalRService/webPubSub/hubs/eventListeners[*].filter.type": "properties.eventListeners[*].filter.type"
+      "Microsoft.SignalRService/webPubSub/hubs/eventListeners[*].filter.type": "properties.eventListeners[*].filter.type",
+      "Microsoft.SignalRService/webPubSub/hubs/webSocketKeepAliveIntervalInSeconds": "properties.webSocketKeepAliveIntervalInSeconds"
     },
     "resourceType": "webpubsub/hubs"
   },
@@ -969,6 +1072,20 @@
   },
   {
     "aliases": {
+      "Microsoft.SignalRService/webPubSub/replicas/sharedPrivateLinkResources/fqdns": "properties.fqdns",
+      "Microsoft.SignalRService/webPubSub/replicas/sharedPrivateLinkResources/fqdns[*]": "properties.fqdns[*]",
+      "Microsoft.SignalRService/webPubSub/replicas/sharedPrivateLinkResources/groupId": "properties.groupId",
+      "Microsoft.SignalRService/webPubSub/replicas/sharedPrivateLinkResources/privateLinkResourceId": "properties.privateLinkResourceId",
+      "Microsoft.SignalRService/webPubSub/replicas/sharedPrivateLinkResources/provisioningState": "properties.provisioningState",
+      "Microsoft.SignalRService/webPubSub/replicas/sharedPrivateLinkResources/requestMessage": "properties.requestMessage",
+      "Microsoft.SignalRService/webPubSub/replicas/sharedPrivateLinkResources/status": "properties.status"
+    },
+    "resourceType": "webpubsub/replicas/sharedprivatelinkresources"
+  },
+  {
+    "aliases": {
+      "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources/fqdns": "properties.fqdns",
+      "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources/fqdns[*]": "properties.fqdns[*]",
       "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources/groupId": "properties.groupId",
       "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources/privateLinkResourceId": "properties.privateLinkResourceId",
       "Microsoft.SignalRService/webPubSub/sharedPrivateLinkResources/provisioningState": "properties.provisioningState",

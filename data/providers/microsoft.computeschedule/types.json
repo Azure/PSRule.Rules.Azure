@@ -23,7 +23,19 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationstatuses",
+    "resourceType": "locations/notifications",
+    "apiVersions": [
+      "2024-08-15-preview",
+      "2024-06-01-preview"
+    ],
+    "locations": [
+      "North Central US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/OperationStatuses",
     "apiVersions": [
       "2024-08-01-preview"
     ],
@@ -45,10 +57,13 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Israel Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -58,6 +73,7 @@
       "South Africa West",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -66,8 +82,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -121,8 +139,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -176,8 +196,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -231,8 +253,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -286,8 +310,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -341,8 +367,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -396,8 +424,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -451,8 +481,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -506,8 +538,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -561,8 +595,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -616,8 +652,10 @@
       "UK South",
       "UK West",
       "West Central US",
+      "West Europe",
       "West US",
-      "West US 2"
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },

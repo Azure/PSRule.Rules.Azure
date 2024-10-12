@@ -1,7 +1,7 @@
 ---
 severity: Important
-pillar: Operational Excellence
-category: Deployment
+pillar: Reliability
+category: RE:04 Target metrics
 resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.BasicSku/
 ms-content-id: 49cef14e-19f0-4a54-be14-7c27a0347b4c
@@ -25,5 +25,6 @@ Consider migration to an alternative Standard VM size.
 
 ## LINKS
 
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Sizes for Windows virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/windows/sizes)
 - [Sizes for Linux virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/sizes)

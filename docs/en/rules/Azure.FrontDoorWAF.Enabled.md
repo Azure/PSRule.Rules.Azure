@@ -2,7 +2,7 @@
 reviewed: 2022-09-20
 severity: Critical
 pillar: Security
-category: Network security and containment
+category: SE:06 Network controls
 resource: Front Door
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoorWAF.Enabled/
 ---
@@ -114,7 +114,7 @@ resource waf 'Microsoft.Network/FrontDoorWebApplicationFirewallPolicies@2022-05-
 
 ## LINKS
 
-- [Best practices for endpoint security on Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-network-endpoints)
+- [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [Securing PaaS deployments](https://learn.microsoft.com/azure/security/fundamentals/paas-deployments#install-a-web-application-firewall)
 - [Policy settings for Web Application Firewall on Azure Front Door](https://learn.microsoft.com/azure/web-application-firewall/afds/waf-front-door-policy-settings#waf-state)
 - [Web Application Firewall best practices](https://learn.microsoft.com/azure/web-application-firewall/afds/waf-front-door-best-practices)

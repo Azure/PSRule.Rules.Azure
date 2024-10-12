@@ -16,11 +16,14 @@ Deploy firewall instances using availability zones in supported regions to ensur
 
 Azure Firewall supports the use of availability zones to provide zone redundancy. Zone redundancy enhances the resiliency and high availability of the firewall by deploying instances across data centers in physically separated zones.
 
-Azure Firewall utilizes auto-scaling, and as the firewall scales, it creates instances within the zones it is configured to use. If the firewall is configured to use only Zone 1, all new instances will be created in Zone 1. However, if the firewall is configured to use all three zones (Zone 1, Zone 2, and Zone 3), new instances will be distributed across these zones as it scales, ensuring balanced distribution and improved resilience.
+Azure Firewall utilizes auto-scaling, and as the firewall scales, it creates instances within the zones it is configured to use.
+If the firewall is configured to use only Zone 1, all new instances will be created in Zone 1.
+However, if the firewall is configured to use all three zones (Zone 1, Zone 2, and Zone 3), new instances will be distributed across these zones as it scales, ensuring balanced distribution and improved resilience.
 
 ## RECOMMENDATION
 
-To improve the resiliency of firewall instances against zone failures, it is recommended to use at least two (2) availability zones. This configuration enhances fault tolerance and ensures continued operation even if one zone experiences an outage.
+To improve the resiliency of firewall instances against zone failures, it is recommended to use at least two (2) availability zones.
+This configuration enhances fault tolerance and ensures continued operation even if one zone experiences an outage.
 
 ## EXAMPLES
 
@@ -89,7 +92,8 @@ resource firewall 'Microsoft.Network/azureFirewalls@2023-11-01' = {
 
 ## NOTES
 
-Availability zones must be configured during the initial deployment. It is not possible to modify an existing firewall to include availability zones after it has been deployed.
+Availability zones must be configured during the initial deployment.
+It is not possible to modify an existing firewall to include availability zones after it has been deployed.
 
 ## LINKS
 

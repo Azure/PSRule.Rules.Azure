@@ -15,6 +15,7 @@
     },
     "resourceType": "licenses",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -64,6 +65,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -100,6 +102,7 @@
     "aliases": null,
     "resourceType": "locations/notifyExtension",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -147,6 +150,7 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -197,6 +201,7 @@
     "aliases": null,
     "resourceType": "locations/notifyRunCommand",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -244,6 +249,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -314,6 +320,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -384,6 +391,7 @@
     "aliases": null,
     "resourceType": "locations/privateLinkScopes",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -448,6 +456,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -503,6 +512,7 @@
     "aliases": null,
     "resourceType": "locations/publishers/extensionTypes",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -558,6 +568,7 @@
     "aliases": null,
     "resourceType": "locations/publishers/extensionTypes/versions",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -613,6 +624,7 @@
     "aliases": null,
     "resourceType": "locations/updateCenterOperationResults",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -812,6 +824,7 @@
     },
     "resourceType": "machines",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -883,6 +896,7 @@
     "aliases": null,
     "resourceType": "machines/assessPatches",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -964,6 +978,7 @@
     },
     "resourceType": "machines/extensions",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1034,6 +1049,7 @@
     "aliases": null,
     "resourceType": "machines/hybridIdentityMetadata",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1086,6 +1102,7 @@
     "aliases": null,
     "resourceType": "machines/installPatches",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1159,6 +1176,7 @@
     },
     "resourceType": "machines/licenseProfiles",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1208,6 +1226,7 @@
     "aliases": null,
     "resourceType": "machines/privateLinkScopes",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1309,6 +1328,7 @@
     },
     "resourceType": "machines/runcommands",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1357,6 +1377,7 @@
     "aliases": null,
     "resourceType": "networkConfigurations",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1373,6 +1394,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1408,6 +1430,7 @@
     "aliases": null,
     "resourceType": "osType",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1425,6 +1448,7 @@
     "aliases": null,
     "resourceType": "osType/agentVersions",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1440,6 +1464,7 @@
     "aliases": null,
     "resourceType": "osType/agentVersions/latest",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1473,6 +1498,7 @@
     },
     "resourceType": "privateLinkScopes",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1538,6 +1564,7 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/networkSecurityPerimeterAssociationProxies",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1586,6 +1613,7 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/networkSecurityPerimeterConfigurations",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1602,6 +1630,7 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1677,6 +1706,7 @@
     },
     "resourceType": "privateLinkScopes/privateEndpointConnections",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",
@@ -1742,6 +1772,7 @@
     "aliases": null,
     "resourceType": "settings",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview"
@@ -1755,6 +1786,7 @@
     "aliases": null,
     "resourceType": "validateLicense",
     "apiVersions": [
+      "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
       "2024-03-31-preview",

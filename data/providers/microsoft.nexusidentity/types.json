@@ -6,7 +6,11 @@
       "2024-02-15-preview"
     ],
     "locations": [
+      "East US",
+      "North Europe",
       "South Central US",
+      "UAE North",
+      "UK South",
       "West US 3"
     ],
     "zoneMappings": []
@@ -18,7 +22,11 @@
       "2024-02-15-preview"
     ],
     "locations": [
+      "East US",
+      "North Europe",
       "South Central US",
+      "UAE North",
+      "UK South",
       "West US 3"
     ],
     "zoneMappings": []

@@ -13,6 +13,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-07-19-preview",
       "2023-09-01-preview"
     ],
     "locations": [
@@ -87,6 +88,7 @@
     "aliases": null,
     "resourceType": "watchers/sharedPrivateLinkResources",
     "apiVersions": [
+      "2024-07-19-preview",
       "2023-09-01-preview"
     ],
     "locations": [
@@ -108,6 +110,7 @@
     "aliases": null,
     "resourceType": "watchers/targets",
     "apiVersions": [
+      "2024-07-19-preview",
       "2023-09-01-preview"
     ],
     "locations": [

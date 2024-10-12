@@ -64,9 +64,9 @@ metadata:
   name: Azure.VM.BasicSku
   ref: AZR-000241
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
-    Azure.WAF/pillar: Operational Excellence
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Reliability
 spec:
   type:
   - Microsoft.Compute/virtualMachines

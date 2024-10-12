@@ -1,7 +1,7 @@
 ---
 severity: Critical
 pillar: Security
-category: Virtual Machine
+category: SE:10 Monitoring and threat detection
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.Servers/
 ---
@@ -41,15 +41,17 @@ For example:
 
 ```json
 {
-    "type": "Microsoft.Security/pricings",
-    "apiVersion": "2022-03-01",
-    "name": "VirtualMachines",
-    "properties": {
-        "pricingTier": "Standard",
-        "subPlan": "P2"
-    }
+  "type": "Microsoft.Security/pricings",
+  "apiVersion": "2024-01-01",
+  "name": "VirtualMachines",
+  "properties": {
+    "pricingTier": "Standard",
+    "subPlan": "P2"
+  }
 }
 ```
+
+<!-- external:avm avm/ptn/security/security-center virtualMachinesPricingTier -->
 
 ### Configure with Bicep
 
@@ -60,7 +62,7 @@ To enable Defender for Servers:
 For example:
 
 ```bicep
-resource defenderForServers 'Microsoft.Security/pricings@2022-03-01' = {
+resource defenderForServers 'Microsoft.Security/pricings@2024-01-01' = {
   name: 'VirtualMachines'
   properties: {
     pricingTier: 'Standard',
@@ -81,12 +83,9 @@ az security pricing create -n 'VirtualMachines' --tier 'standard'
 Set-AzSecurityPricing -Name 'VirtualMachines' -PricingTier 'Standard'
 ```
 
-## NOTES
-
-This rule applies when analyzing resources deployed (in-flight) to Azure.
-
 ## LINKS
 
-- [Monitor Azure resources in Microsoft Defender for Cloud](https://learn.microsoft.com/azure/architecture/framework/security/monitor-resources#virtual-machines)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
 - [Introduction to Microsoft Defender for Containers](https://learn.microsoft.com/azure/defender-for-cloud/defender-for-servers-introduction)
 - [Azure Monitor agent auto-provisioning](https://learn.microsoft.com/azure/defender-for-cloud/auto-deploy-azure-monitoring-agent)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/pricings)

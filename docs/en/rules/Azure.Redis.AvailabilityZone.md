@@ -22,22 +22,6 @@ By spreading node pools across multiple zones, nodes in one node pool will conti
 
 Consider using availability zones for Premium Redis Cache deployed in supported regions.
 
-## NOTES
-
-This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
-
-This rule fails when `"zones"` is `null`, `[]` or less than two zones are used when there are availability zones for the given region.
-
-This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.
-
-Configure `AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.Cache` and resource type `Redis`.
-
-```yaml
-# YAML: The default AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
-configuration:
-  AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
-```
-
 ## EXAMPLES
 
 ### Configure with Azure template
@@ -60,21 +44,22 @@ For example:
 ```json
 {
   "type": "Microsoft.Cache/redis",
-  "apiVersion": "2023-04-01",
+  "apiVersion": "2024-03-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
-    "minimumTlsVersion": "1.2",
-    "redisVersion": "latest",
+    "redisVersion": "6",
     "sku": {
       "name": "Premium",
       "family": "P",
       "capacity": 1
     },
     "redisConfiguration": {
+      "aad-enabled": "True",
       "maxmemory-reserved": "615"
     },
-    "enableNonSslPort": false
+    "enableNonSslPort": false,
+    "publicNetworkAccess": "Disabled"
   },
   "zones": [
     "1",
@@ -102,21 +87,22 @@ To set availability zones for Premium SKU Redis Cache:
 For example:
 
 ```bicep
-resource cache 'Microsoft.Cache/redis@2023-04-01' = {
+resource cache 'Microsoft.Cache/redis@2024-03-01' = {
   name: name
   location: location
   properties: {
-    minimumTlsVersion: '1.2'
-    redisVersion: 'latest'
+    redisVersion: '6'
     sku: {
       name: 'Premium'
       family: 'P'
       capacity: 1
     }
     redisConfiguration: {
+      'aad-enabled': 'True'
       'maxmemory-reserved': '615'
     }
     enableNonSslPort: false
+    publicNetworkAccess: 'Disabled'
   }
   zones: [
     '1'
@@ -127,6 +113,22 @@ resource cache 'Microsoft.Cache/redis@2023-04-01' = {
 ```
 
 <!-- external:avm avm/res/cache/redis zones -->
+
+## NOTES
+
+This rule applies when analyzing resources deployed to Azure using *pre-flight* and *in-flight* data.
+
+This rule fails when `"zones"` is `null`, `[]` or less than two zones are used when there are availability zones for the given region.
+
+This rule fails when cache is not zone redundant(1, 2 and 3) when there are availability zones for the given region.
+
+Configure `AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST` to set additional availability zones that need to be supported which are not in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/providers/) for namespace `Microsoft.Cache` and resource type `Redis`.
+
+```yaml
+# YAML: The default AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST configuration option
+configuration:
+  AZURE_REDISCACHE_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST: []
+```
 
 ## LINKS
 

@@ -14,7 +14,8 @@ Use a Application Gateway v2 SKU.
 
 ## DESCRIPTION
 
-The Application Gateway v1 SKUs (Standard and WAF) will be retired on April 28, 2026. To avoid service disruption, migrate to Application Gateway v2 SKUs.
+The Application Gateway v1 SKUs (Standard and WAF) will be retired on April 28, 2026.
+To avoid service disruption, migrate to Application Gateway v2 SKUs.
 
 The v2 SKUs offers performance enhancements, security controls and adds support for critical new features like autoscaling, zone redundancy, support for static VIPs, header rewrite, key vault integration, mutual authentication (mTLS), Azure Kubernetes Service ingress controller and private link.
 
