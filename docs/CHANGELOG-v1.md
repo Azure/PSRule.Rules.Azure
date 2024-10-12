@@ -36,6 +36,8 @@ What's changed since pre-release v1.39.0:
     [#3062](https://github.com/Azure/PSRule.Rules.Azure/issues/3062)
   - Fixed `Azure.AppGw.AvailabilityZone` passes when a zonal configuration is used by @BernieWhite.
     [#3061](https://github.com/Azure/PSRule.Rules.Azure/issues/3061)
+  - Fixed conditional secret as parameter or placeholder by @BernieWhite.
+    [#2054](https://github.com/Azure/PSRule.Rules.Azure/issues/2054)
 
 ## v1.39.0
 
