@@ -29,7 +29,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since pre-release v1.39.0:
+## v1.39.1
+
+What's changed since v1.39.0:
 
 - Bug fixes:
   - Fixed `GetBicepParamResources` exception when expanding `Microsoft.Graph/groups` resource by @BernieWhite.
