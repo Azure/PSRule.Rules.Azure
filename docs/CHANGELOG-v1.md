@@ -33,6 +33,18 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Migrated Azure samples into PSRule for Azure by @BernieWhite.
     [#3085](https://github.com/Azure/PSRule.Rules.Azure/issues/3085)
 
+## v1.39.1
+
+What's changed since v1.39.0:
+
+- Bug fixes:
+  - Fixed `GetBicepParamResources` exception when expanding `Microsoft.Graph/groups` resource by @BernieWhite.
+    [#3062](https://github.com/Azure/PSRule.Rules.Azure/issues/3062)
+  - Fixed `Azure.AppGw.AvailabilityZone` passes when a zonal configuration is used by @BernieWhite.
+    [#3061](https://github.com/Azure/PSRule.Rules.Azure/issues/3061)
+  - Fixed conditional secret as parameter or placeholder by @BernieWhite.
+    [#2054](https://github.com/Azure/PSRule.Rules.Azure/issues/2054)
+
 ## v1.39.0
 
 What's changed since pre-release v1.38.0:
