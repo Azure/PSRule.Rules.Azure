@@ -3,7 +3,6 @@
 
 using Newtonsoft.Json;
 using PSRule.Rules.Azure.Data.Policy;
-using Xunit;
 
 namespace PSRule.Rules.Azure
 {

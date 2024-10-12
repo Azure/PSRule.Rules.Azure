@@ -1,14 +1,13 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-namespace PSRule.Rules.Azure.Data.Policy
+namespace PSRule.Rules.Azure.Data.Policy;
+
+internal interface IParameterValue
 {
-    internal interface IParameterValue
-    {
-        string Name { get; }
+    string Name { get; }
 
-        ParameterType Type { get; }
+    ParameterType Type { get; }
 
-        object GetValue(PolicyAssignmentVisitor.PolicyAssignmentContext context);
-    }
+    object GetValue(PolicyAssignmentVisitor.PolicyAssignmentContext context);
 }

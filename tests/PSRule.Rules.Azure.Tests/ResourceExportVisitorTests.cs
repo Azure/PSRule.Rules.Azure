@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Pipeline.Export;
-using Xunit;
 
 namespace PSRule.Rules.Azure
 {

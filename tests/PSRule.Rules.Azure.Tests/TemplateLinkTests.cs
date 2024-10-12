@@ -7,7 +7,6 @@ using System.Management.Automation;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
-using Xunit;
 
 namespace PSRule.Rules.Azure
 {

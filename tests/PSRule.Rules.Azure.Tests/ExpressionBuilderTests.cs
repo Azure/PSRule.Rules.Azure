@@ -4,7 +4,6 @@
 using System;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data.Template;
-using Xunit;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure

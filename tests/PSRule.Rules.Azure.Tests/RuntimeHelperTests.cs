@@ -3,7 +3,6 @@
 
 using System.Management.Automation;
 using PSRule.Rules.Azure.Runtime;
-using Xunit;
 
 namespace PSRule.Rules.Azure
 {

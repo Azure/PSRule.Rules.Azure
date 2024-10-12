@@ -5,7 +5,6 @@ using System;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data;
 using PSRule.Rules.Azure.Data.Template;
-using Xunit;
 
 namespace PSRule.Rules.Azure
 {

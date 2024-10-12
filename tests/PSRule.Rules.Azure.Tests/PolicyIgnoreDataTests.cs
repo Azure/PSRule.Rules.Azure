@@ -3,7 +3,6 @@
 
 using System.Collections.Generic;
 using PSRule.Rules.Azure.Data;
-using Xunit;
 
 namespace PSRule.Rules.Azure
 {

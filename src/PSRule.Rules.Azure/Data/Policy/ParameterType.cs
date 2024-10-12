@@ -1,26 +1,25 @@
-﻿// Copyright (c) Microsoft Corporation.
+// Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 
-namespace PSRule.Rules.Azure.Data.Policy
+namespace PSRule.Rules.Azure.Data.Policy;
+
+[JsonConverter(typeof(StringEnumConverter))]
+internal enum ParameterType
 {
-    [JsonConverter(typeof(StringEnumConverter))]
-    internal enum ParameterType
-    {
-        String,
+    String,
 
-        Array,
+    Array,
 
-        Object,
+    Object,
 
-        Boolean,
+    Boolean,
 
-        Integer,
+    Integer,
 
-        Float,
+    Float,
 
-        DateTime
-    }
+    DateTime
 }

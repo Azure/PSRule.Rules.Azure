@@ -73,7 +73,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_PATH = "path";
         private const string PROPERTY_CONVERT = "convert";
         private const string PROPERTY_NONCOMPLIANCEMESSAGES = "NonComplianceMessages";
-        private const string PROPERTY_HASVALUE = "hasValue";
+        private const string PROPERTY_HAS_VALUE = "hasValue";
         private const string PROPERTY_EMPTY = "empty";
         private const string PROPERTY_LENGTH = "length";
         private const string PROPERTY_CONCAT = "concat";
@@ -103,8 +103,8 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string TYPE_SECURITYASSESSMENTS = "Microsoft.Security/assessments";
         private const string TYPE_GUESTCONFIGURATIONASSIGNMENTS = "Microsoft.GuestConfiguration/guestConfigurationAssignments";
         private const string TYPE_BACKUPPROTECTEDITEMS = "Microsoft.RecoveryServices/backupprotecteditems";
-        private const string TYPE_SUBSCRIPTION_RESOURCEGROUP = "Microsoft.Resources/subscriptions/resourceGroups";
-        private const string TYPE_RESOURCEGROUP = "Microsoft.Resources/resourceGroups";
+        private const string TYPE_SUBSCRIPTION_RESOURCE_GROUP = "Microsoft.Resources/subscriptions/resourceGroups";
+        private const string TYPE_RESOURCE_GROUP = "Microsoft.Resources/resourceGroups";
         private const string FUNCTION_CURRENT = "current";
 
         private static readonly CultureInfo AzureCulture = new("en-US");
@@ -308,7 +308,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                     }
                     else if (TryPolicyAliasPath(fieldProperty, out var fieldAliasPath))
                     {
-                        subProperty = fieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS)[1];
+                        subProperty = fieldAliasPath.GetLastSegment(COLLECTION_ALIAS);
                     }
 
                     var comparisonExpression = obj.Children<JProperty>()
@@ -476,8 +476,8 @@ namespace PSRule.Rules.Azure.Data.Policy
                         // Set policy rule type
                         else if (hasFieldType && child.TryGetProperty(PROPERTY_EQUALS, out field))
                         {
-                            if (string.Equals(TYPE_SUBSCRIPTION_RESOURCEGROUP, field, StringComparison.OrdinalIgnoreCase))
-                                field = TYPE_RESOURCEGROUP;
+                            if (string.Equals(TYPE_SUBSCRIPTION_RESOURCE_GROUP, field, StringComparison.OrdinalIgnoreCase))
+                                field = TYPE_RESOURCE_GROUP;
 
                             types.Add(field);
                             SetDefaultResourceType(field);
@@ -1251,8 +1251,8 @@ namespace PSRule.Rules.Azure.Data.Policy
         {
             if (condition.TryGetProperty(PROPERTY_EQUALS, out var resourceType))
             {
-                if (string.Equals(TYPE_SUBSCRIPTION_RESOURCEGROUP, resourceType, StringComparison.OrdinalIgnoreCase))
-                    resourceType = TYPE_RESOURCEGROUP;
+                if (string.Equals(TYPE_SUBSCRIPTION_RESOURCE_GROUP, resourceType, StringComparison.OrdinalIgnoreCase))
+                    resourceType = TYPE_RESOURCE_GROUP;
 
                 policyDefinition.Types.Add(resourceType);
                 context.SetDefaultResourceType(resourceType);
@@ -1390,7 +1390,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 if (condition.TryBoolProperty(PROPERTY_EQUALS, out var emptyEquals))
                 {
                     condition.RemoveProperty(PROPERTY_EQUALS);
-                    condition.Add(PROPERTY_HASVALUE, !emptyEquals.Value);
+                    condition.Add(PROPERTY_HAS_VALUE, !emptyEquals.Value);
                 }
                 VisitFieldTokens(context, condition, tokens);
 
