@@ -6,11 +6,11 @@ resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.AnonymousAccess/
 ---
 
-# Anonymous pull access
+# Container registry anonymous pull access is enabled
 
 ## SYNOPSIS
 
-Disable anonymous pull access.
+Anonymous pull access allows unidentified downloading of images and metadata from a container registry.
 
 ## DESCRIPTION
 

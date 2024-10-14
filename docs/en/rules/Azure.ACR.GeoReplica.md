@@ -6,11 +6,11 @@ resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.GeoReplica/
 ---
 
-# Geo-replicate container images
+# Container Registry does not replica images to a secondary region
 
 ## SYNOPSIS
 
-Use geo-replicated container registries to compliment a multi-region container deployments.
+Applications or infrastructure relying on a container image may fail if the registry is not available at the time they start.
 
 ## DESCRIPTION
 

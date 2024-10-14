@@ -7,11 +7,11 @@ resource: Azure AI
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AI.DisableLocalAuth/
 ---
 
-# Use identity-based authentication for Azure AI accounts
+# Azure AI account access keys are enabled
 
 ## SYNOPSIS
 
-Authenticate requests to Azure AI services with Entra ID identities.
+Access keys allow depersonalized access to Azure AI using a shared secret.
 
 ## DESCRIPTION
 

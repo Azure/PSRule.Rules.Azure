@@ -6,11 +6,11 @@ resource: Cosmos DB
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.DisableLocalAuth/
 ---
 
-# Disable local authentication on Cosmos DB
+# Cosmos DB account access keys are enabled
 
 ## SYNOPSIS
 
-Azure Cosmos DB should have local authentication disabled.
+Access keys allow depersonalized access to Cosmos DB accounts using a shared secret.
 
 ## DESCRIPTION
 
@@ -29,7 +29,7 @@ Any subsequent requests to the resource using account keys will be rejected.
 
 ## RECOMMENDATION
 
-Consider disabling local authentication on Cosmos DB.
+Consider disabling local authentication on Cosmos DB account and using Entra ID.
 
 ## EXAMPLES
 
