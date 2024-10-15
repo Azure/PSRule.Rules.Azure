@@ -24,6 +24,10 @@ By turning auto-provisioning on, Microsoft Defender for Cloud automatically depl
 
 Consider enabling auto-provisioning to improve Azure Microsoft Defender for Cloud VM insights.
 
+## NOTES
+
+This rule applies when analyzing resources deployed (in-flight) to Azure.
+
 ## LINKS
 
 - [Quickstart: Configure auto provisioning for agents and extensions from Microsoft Defender for Cloud](https://learn.microsoft.com/azure/defender-for-cloud/enable-data-collection)

@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-02-17
+reviewed: 2024-10-14
 severity: Important
 pillar: Security
 category: SE:04 Segmentation
@@ -7,11 +7,11 @@ resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NetworkPolicy/
 ---
 
-# AKS clusters use Network Policies
+# AKS network policies are not configured
 
 ## SYNOPSIS
 
-Deploy AKS clusters with Network Policies enabled.
+AKS clusters without inter-pod network restrictions may be permit unauthorized lateral movement.
 
 ## DESCRIPTION
 
@@ -25,6 +25,9 @@ Using Network Policies allows network controls to be applied with the context of
 
 For improved security, define network policy rules to control the flow of traffic.
 For example, only permit backend components to receive traffic from frontend components.
+
+When network communication is unrestricted, your applications or infrastructure may be exposed to lateral movement.
+Lateral movement is technique used to bypass controls, increase impact, and escalate privileges.
 
 To use Network Policy it must be enabled at cluster deployment time.
 AKS supports two implementations of network policies, Azure Network Policies and Calico Network Policies.

@@ -18,7 +18,7 @@ This baseline includes a total of 11 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
-[Azure.ACR.AnonymousAccess](../rules/Azure.ACR.AnonymousAccess.md) | Disable anonymous pull access. | Important
+[Azure.ACR.AnonymousAccess](../rules/Azure.ACR.AnonymousAccess.md) | Anonymous pull access allows unidentified downloading of images and metadata from a container registry. | Important
 [Azure.ACR.Quarantine](../rules/Azure.ACR.Quarantine.md) | Enable container image quarantine, scan, and mark images as verified. | Important
 [Azure.ACR.Retention](../rules/Azure.ACR.Retention.md) | Use a retention policy to cleanup untagged manifests. | Important
 [Azure.ACR.SoftDelete](../rules/Azure.ACR.SoftDelete.md) | Azure Container Registries should have soft delete policy enabled. | Important

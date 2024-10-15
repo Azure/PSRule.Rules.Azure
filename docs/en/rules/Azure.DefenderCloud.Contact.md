@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Security operations
+category: SE:12 Incident response
 resource: Microsoft Defender for Cloud
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.DefenderCloud.Contact/
 ms-content-id: 18fcf75f-a5e6-4a34-baba-74bd49502cd7
@@ -21,8 +21,12 @@ Security contact details configured in Microsoft Defender for Cloud are used by 
 
 Consider configuring Microsoft Defender for Cloud email and phone contact details.
 
+## NOTES
+
+This rule applies when analyzing resources deployed (in-flight) to Azure.
+
 ## LINK
 
-- [Security operations in Azure](https://learn.microsoft.com/azure/well-architected/security/monitor-security-operations#assign-incident-notification-contact)
+- [SE:12 Incident response](https://learn.microsoft.com/azure/well-architected/security/incident-response)
 - [Quickstart: Configure email notifications for security alerts](https://learn.microsoft.com/azure/defender-for-cloud/configure-email-notifications)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.security/securitycontacts)

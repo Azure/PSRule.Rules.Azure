@@ -14,13 +14,11 @@ Anonymous pull access allows unidentified downloading of images and metadata fro
 
 ## DESCRIPTION
 
-Azure Container Registry (ACR) allows you to pull or push content from an Azure container registry by being authenticated.
-However, it is possible to pull content from an Azure container registry by being unauthenticated (anonymous pull access).
+By default, Azure Container Registry (ACR) requires you to be authorized before you push or pull content from the registry.
+When _anonymous pull access_ is enabled:
 
-By default, access to pull or push content from an Azure container registry is only available to authenticated users.
-
-Generally speaking it is not a good practice to allow data-plane operations to unauthenticated users.
-However, anonymous pull access can be used in scenarios that do not require user authentication such as distributing public container images.
+- Any client with network access can pull content from the entire registry without authorization.
+- Repository-scoped tokens can not be used to limit pull access, tokens will be able to pull all content.
 
 ## RECOMMENDATION
 
@@ -128,6 +126,9 @@ az acr update  -n '<name>' -g '<resource_group>' --anonymous-pull-enabled false
 
 The anonymous pull access feature is currently in preview.
 Anonymous pull access is only available in the `Standard` and `Premium` service tiers.
+
+This rule may generate false positives in specific scenarios where to intend to distribute OCI content to Internet users,
+for example: You are a software vendor and intend to distribute container images of your software to customers.
 
 ## LINKS
 
