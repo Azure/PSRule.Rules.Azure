@@ -6,11 +6,11 @@ resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Firewall/
 ---
 
-# Restrict network access to container registries
+# Container Registry service firewall is not restricted
 
 ## SYNOPSIS
 
-Limit network access of container registries to only trusted clients.
+Container Registry without restrictions can be accessed from any network location including the Internet.
 
 ## DESCRIPTION
 

@@ -1,4 +1,5 @@
 ---
+deprecated: true
 severity: Awareness
 pillar: Operational Excellence
 category: Release engineering

@@ -17,7 +17,7 @@
       "",
       "## SYNOPSIS",
       "",
-      "{{ A brief summary of the rule }}",
+      "{{ A brief summary what the issue is }}",
       "",
       "## DESCRIPTION",
       "",

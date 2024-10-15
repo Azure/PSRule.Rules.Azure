@@ -7,11 +7,11 @@ resource: App Configuration
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.DisableLocalAuth/
 ---
 
-# Use identity-based authentication for App Configuration
+# App Configuration access keys are enabled
 
 ## SYNOPSIS
 
-Authenticate App Configuration clients with Entra ID identities.
+Access keys allow depersonalized access to App Configuration using a shared secret.
 
 ## DESCRIPTION
 

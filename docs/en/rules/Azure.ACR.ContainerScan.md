@@ -7,11 +7,11 @@ resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ContainerScan/
 ---
 
-# Scan Container Registry images
+# Container Registry images are not scanned regularly for vulnerabilities
 
 ## SYNOPSIS
 
-Enable vulnerability scanning for container images.
+Container images or their base images may have vulnerabilities discovered after they are built.
 
 ## DESCRIPTION
 
@@ -93,7 +93,7 @@ Set-AzSecurityPricing -Name 'ContainerRegistry' -PricingTier 'Standard'
 
 ## NOTES
 
-This rule applies when analyzing resources deployed (in-flight) to Azure.
+This rule applies when analyzing resources deployed (in-flight) to Azure and does not detect third-party scanning tools.
 
 ## LINKS
 

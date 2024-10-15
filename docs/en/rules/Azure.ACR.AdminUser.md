@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-01-05
+reviewed: 2024-10-14
 severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
@@ -8,20 +8,20 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Ad
 ms-content-id: bbf194a7-6ca3-4b1d-9170-6217eb26620d
 ---
 
-# Disable ACR admin user
+# Container Registry local admin account is enabled
 
 ## SYNOPSIS
 
-Use Entra ID identities instead of using the registry admin user.
+The local admin account allows depersonalized access to a container registry using a shared secret.
 
 ## DESCRIPTION
 
 Azure Container Registry (ACR) includes a built-in local admin user account.
-The admin user account is a single user account with administrative access to the registry.
-This account provides single user access for early test and development.
-The admin user account is not intended for use with production container registries.
+The local admin account is a single user account with administrative access to the registry.
+This account is intended for early proof of concepts and working with sample code.
+The admin user account is not intended for general use with container registries.
 
-Instead of using the admin user account, consider using Entra ID (previously Azure AD) identities.
+Instead of using the admin account, consider using Entra ID (previously Azure AD) identities.
 Entra ID provides a centralized identity and authentication system for Azure.
 This provides a number of benefits including:
 
@@ -32,7 +32,7 @@ This provides a number of benefits including:
 
 ## RECOMMENDATION
 
-Consider disabling the admin user account and only use identity-based authentication for registry operations.
+Consider disabling the local admin account and only use identity-based authentication for registry operations.
 
 ## EXAMPLES
 
