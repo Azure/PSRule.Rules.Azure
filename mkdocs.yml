@@ -158,6 +158,7 @@ hooks:
   - docs/hooks/shortcodes.py
   - docs/hooks/metadata.py
   - docs/hooks/aliases.py
+  - docs/hooks/github.py
   - docs/hooks/old_hooks.py
 
 extra:
