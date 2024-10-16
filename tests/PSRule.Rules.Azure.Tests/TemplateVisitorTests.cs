@@ -1385,8 +1385,11 @@ namespace PSRule.Rules.Azure
             Assert.Equal("placeholder", actual["properties"]["value"].Value<string>());
         }
 
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3120
+        /// </summary>
         [Fact]
-        public void ProcessTemplate_WhenImportingCustomFunction()
+        public void ProcessTemplate_WhenUserDefinedFunctionReferencesExportedVariables_ShouldFindVariable()
         {
             _ = ProcessTemplate(GetSourcePath("Bicep/UserDefinedFunctionTestCases/Tests.Bicep.1.json"), null, out var templateContext);
 
