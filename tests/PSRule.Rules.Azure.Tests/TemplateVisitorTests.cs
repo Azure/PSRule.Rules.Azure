@@ -1307,6 +1307,15 @@ namespace PSRule.Rules.Azure
             Assert.Equal("02041802-66a9-0a85-7330-8186e16422c7", actual["name"].Value<string>());
         }
 
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3123
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenExistingReferenceNameUsesExpression_ShouldExpandExpression()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.3.json"), null, out _);
+        }
+
         [Fact]
         public void ProcessTemplate_WhenParented_ShouldReturnExpectedScope()
         {
@@ -1382,6 +1391,30 @@ namespace PSRule.Rules.Azure
             actual = resources.Where(r => r["name"].Value<string>() == "vault1/toSet2").FirstOrDefault();
             Assert.Equal("Microsoft.KeyVault/vaults/secrets", actual["type"].Value<string>());
             Assert.Equal("placeholder", actual["properties"]["value"].Value<string>());
+        }
+
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3120
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenUserDefinedFunctionReferencesExportedVariables_ShouldFindVariable()
+        {
+            _ = ProcessTemplate(GetSourcePath("Bicep/UserDefinedFunctionTestCases/Tests.Bicep.1.json"), null, out var templateContext);
+
+            Assert.True(templateContext.RootDeployment.TryOutput("o1", out JObject o1));
+            Assert.Equal([2], o1["value"].Values<int>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("o2", out JObject o2));
+            Assert.Equal([1], o2["value"].Values<int>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("o3", out JObject o3));
+            Assert.Equal([1], o3["value"].Values<int>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("o4", out JObject o4));
+            Assert.Equal([2, 1], o4["value"].Values<int>());
+
+            Assert.True(templateContext.RootDeployment.TryOutput("o5", out JObject o5));
+            Assert.Equal([3], o5["value"].Values<int>());
         }
 
         #region Helper methods
