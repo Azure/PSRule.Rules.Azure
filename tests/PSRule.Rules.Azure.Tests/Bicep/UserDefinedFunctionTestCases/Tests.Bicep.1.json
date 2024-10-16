@@ -1,0 +1,92 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.30.23.60470",
+      "templateHash": "3104036790319433669"
+    }
+  },
+  "functions": [
+    {
+      "namespace": "__bicep",
+      "members": {
+        "getV3": {
+          "parameters": [],
+          "output": {
+            "type": "array",
+            "value": "[union(variables('v1'), variables('v2'))]"
+          }
+        }
+      }
+    },
+    {
+      "namespace": "_1",
+      "members": {
+        "getV3": {
+          "parameters": [],
+          "output": {
+            "type": "array",
+            "value": "[union(variables('_1.v1'), variables('_1.v2'))]"
+          },
+          "metadata": {
+            "__bicep_imported_from!": {
+              "sourceTemplate": "Tests.Bicep.1.child.bicep"
+            }
+          }
+        },
+        "getV4": {
+          "parameters": [],
+          "output": {
+            "type": "array",
+            "value": "[union(variables('_2.v1'), variables('_2.v2'))]"
+          },
+          "metadata": {
+            "__bicep_imported_from!": {
+              "sourceTemplate": "Tests.Bicep.1.child.bicep"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "variables": {
+    "v1": [],
+    "v2": [
+      2
+    ],
+    "_1.v1": [],
+    "_1.v2": [
+      1
+    ],
+    "_2.v1": [],
+    "_2.v2": [
+      3
+    ]
+  },
+  "resources": {},
+  "outputs": {
+    "o1": {
+      "type": "array",
+      "value": "[__bicep.getV3()]"
+    },
+    "o2": {
+      "type": "array",
+      "value": "[_1.getV3()]"
+    },
+    "o3": {
+      "type": "array",
+      "value": "[union(variables('_1.v1'), variables('_1.v2'))]"
+    },
+    "o4": {
+      "type": "array",
+      "value": "[union(variables('v2'), variables('_1.v2'))]"
+    },
+    "o5": {
+      "type": "array",
+      "value": "[_1.getV4()]"
+    }
+  }
+}
