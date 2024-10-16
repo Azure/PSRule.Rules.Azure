@@ -1,0 +1,43 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.30.23.60470",
+      "templateHash": "3757483382650491065"
+    }
+  },
+  "variables": {
+    "webAppsNames": [
+      "example1",
+      "example2"
+    ]
+  },
+  "resources": {
+    "webApps": {
+      "copy": {
+        "name": "webApps",
+        "count": "[length(variables('webAppsNames'))]"
+      },
+      "existing": true,
+      "type": "Microsoft.Web/sites",
+      "apiVersion": "2022-09-01",
+      "name": "[variables('webAppsNames')[copyIndex()]]"
+    },
+    "webAppSettings": {
+      "copy": {
+        "name": "webAppSettings",
+        "count": "[length(range(0, length(variables('webAppsNames'))))]"
+      },
+      "existing": true,
+      "type": "Microsoft.Web/sites/config",
+      "apiVersion": "2022-09-01",
+      "name": "[format('{0}/{1}', variables('webAppsNames')[range(0, length(variables('webAppsNames')))[copyIndex()]], 'appsettings')]",
+      "dependsOn": [
+        "[format('webApps[{0}]', range(0, length(variables('webAppsNames')))[copyIndex()])]"
+      ]
+    }
+  }
+}

@@ -1308,6 +1308,15 @@ namespace PSRule.Rules.Azure
             Assert.Equal("02041802-66a9-0a85-7330-8186e16422c7", actual["name"].Value<string>());
         }
 
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3123
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenExistingReferenceNameUsesExpression_ShouldExpandExpression()
+        {
+            var resources = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.3.json"), null, out _);
+        }
+
         [Fact]
         public void ProcessTemplate_WhenParented_ShouldReturnExpectedScope()
         {

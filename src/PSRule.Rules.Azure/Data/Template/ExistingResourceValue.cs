@@ -70,8 +70,7 @@ internal sealed class ExistingResourceValue : IResourceValue
     /// <returns></returns>
     private string GetId()
     {
-        if (!Value.TryResourceScope(_Context, out var scopeId))
-            throw new TemplateSymbolException(SymbolicName);
+        if (!Value.TryResourceScope(_Context, out var scopeId)) throw new TemplateSymbolException(SymbolicName);
 
         return _Id = ResourceHelper.ResourceId(Type, Name, scopeId);
     }
@@ -81,10 +80,9 @@ internal sealed class ExistingResourceValue : IResourceValue
     /// </summary>
     private string GetName()
     {
-        if (!Value.TryResourceName(out var name) || string.IsNullOrEmpty(name))
-            throw new TemplateSymbolException(SymbolicName);
+        if (!Value.TryResourceName(out var name) || string.IsNullOrEmpty(name)) throw new TemplateSymbolException(SymbolicName);
 
-        return _Name = name.IsExpressionString() ? name.ToString() : name;
+        return _Name = ExpandString(_Context, name);
     }
 }
 
