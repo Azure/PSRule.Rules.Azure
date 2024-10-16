@@ -769,37 +769,6 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
-        internal sealed class UserDefinedFunctionContext : NestedTemplateContext
-        {
-            private readonly Dictionary<string, object> _Parameters;
-
-            public UserDefinedFunctionContext(ITemplateContext context)
-                : base(context)
-            {
-                _Parameters = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
-            }
-
-            public override bool TryParameter(string parameterName, out object value)
-            {
-                return _Parameters.TryGetValue(parameterName, out value);
-            }
-
-            public override bool TryVariable(string variableName, out object value)
-            {
-                value = null;
-                return false;
-            }
-
-            internal void SetParameters(JObject[] parameters, object[] args)
-            {
-                if (parameters == null || parameters.Length == 0 || args == null || args.Length == 0)
-                    return;
-
-                for (var i = 0; i < parameters.Length; i++)
-                    _Parameters.Add(parameters[i]["name"].Value<string>(), args[i]);
-            }
-        }
-
         internal interface IParameterValue
         {
             string Name { get; }
@@ -1169,7 +1138,6 @@ namespace PSRule.Rules.Azure.Data.Template
                 return;
 
             TryArrayProperty(function, PROPERTY_PARAMETERS, out var parameters);
-            //var outputFn = context.Expression.Build(outputValue);
             ExpressionFn fn = (ctx, args) =>
             {
                 var fnContext = new UserDefinedFunctionContext(ctx);
