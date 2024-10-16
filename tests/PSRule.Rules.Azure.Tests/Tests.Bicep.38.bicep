@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 // Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2850
+// Based on work contributed by @maythamfahmi
 
 // Handle from subscription scope.
 targetScope = 'subscription'

@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 // Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3120
+// Based on work contributed by @GABRIELNGBTUC
 
 import * as child from './Tests.Bicep.1.child.bicep'
 

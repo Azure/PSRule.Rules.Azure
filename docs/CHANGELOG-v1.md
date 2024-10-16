@@ -34,6 +34,8 @@ What's changed since v1.39.1:
 - Bug fixes:
   - Fixed user-defined function reference to exported variable by @BernieWhite.
     [#3120](https://github.com/Azure/PSRule.Rules.Azure/issues/3120)
+  - Fixed name expand of existing resource references by @BernieWhite.
+    [#3123](https://github.com/Azure/PSRule.Rules.Azure/issues/3123)
 
 ## v1.39.1
 
