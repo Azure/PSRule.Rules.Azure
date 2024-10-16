@@ -29,13 +29,23 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.39.1:
+What's changed since v1.39.2:
 
 - Engineering:
   - Migrated Azure samples into PSRule for Azure by @BernieWhite.
     [#3085](https://github.com/Azure/PSRule.Rules.Azure/issues/3085)
   - Quality updates to rule documentation by @BernieWhite.
     [#3102](https://github.com/Azure/PSRule.Rules.Azure/issues/3102)
+
+## v1.39.2
+
+What's changed since v1.39.1:
+
+- Bug fixes:
+  - Fixed user-defined function reference to exported variable by @BernieWhite.
+    [#3120](https://github.com/Azure/PSRule.Rules.Azure/issues/3120)
+  - Fixed name expand of existing resource references by @BernieWhite.
+    [#3123](https://github.com/Azure/PSRule.Rules.Azure/issues/3123)
 
 ## v1.39.1
 
