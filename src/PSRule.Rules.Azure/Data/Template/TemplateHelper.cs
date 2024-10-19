@@ -11,6 +11,7 @@ using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
+using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template
 {
@@ -25,7 +26,7 @@ namespace PSRule.Rules.Azure.Data.Template
             _DeploymentName = context.Option.Configuration.Deployment.Name;
         }
 
-        internal PSObject[] ProcessTemplate(string templateFile, string parameterFile, out TemplateVisitor.TemplateContext templateContext)
+        internal PSObject[] ProcessTemplate(string templateFile, string parameterFile, out TemplateContext templateContext)
         {
             var rootedTemplateFile = PSRuleOption.GetRootedPath(templateFile);
             if (!File.Exists(rootedTemplateFile))
