@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System;
-using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
@@ -15,7 +13,7 @@ namespace PSRule.Rules.Azure
     /// <summary>
     /// This class tests the functionality of the <see cref="TemplateVisitor"/> class that is used to expand resources from an ARM template/ Bicep file.
     /// </summary>
-    public sealed class TemplateVisitorTests
+    public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
     {
         [Fact]
         public void ResolveTemplateTest()
@@ -1263,59 +1261,6 @@ namespace PSRule.Rules.Azure
             Assert.NotNull(items[1].Value<JObject>());
         }
 
-        /// <summary>
-        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2922
-        /// </summary>
-        [Fact]
-        public void ProcessTemplate_WhenReferencesUsed_ReturnsItems()
-        {
-            _ = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.1.json"), null, out var templateContext);
-
-            Assert.True(templateContext.RootDeployment.TryOutput("items", out JObject output));
-            var items = output["value"].Value<JArray>();
-
-            Assert.Equal("child-0", items[0].Value<string>());
-            Assert.Equal("child-1", items[1].Value<string>());
-
-            Assert.True(templateContext.RootDeployment.TryOutput("itemsAsString", out output));
-            items = output["value"].Value<JArray>();
-
-            Assert.Equal("child-0", items[0].Value<string>());
-            Assert.Equal("child-1", items[1].Value<string>());
-        }
-
-        /// <summary>
-        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2917
-        /// </summary>
-        [Fact]
-        public void ProcessTemplate_WhenConditionalExistingReference_IgnoresExpand()
-        {
-            var resources = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.2.json"), null, out _);
-
-            Assert.Equal(3, resources.Length);
-
-            var actual = resources[0];
-            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
-            Assert.Equal("ps-rule-test-deployment", actual["name"].Value<string>());
-
-            actual = resources[1];
-            Assert.Equal("Microsoft.Resources/deployments", resources[1]["type"].Value<string>());
-            Assert.Equal("child2", resources[1]["name"].Value<string>());
-
-            actual = resources[2];
-            Assert.Equal("Microsoft.Authorization/roleAssignments", actual["type"].Value<string>());
-            Assert.Equal("02041802-66a9-0a85-7330-8186e16422c7", actual["name"].Value<string>());
-        }
-
-        /// <summary>
-        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3123
-        /// </summary>
-        [Fact]
-        public void ProcessTemplate_WhenExistingReferenceNameUsesExpression_ShouldExpandExpression()
-        {
-            var resources = ProcessTemplate(GetSourcePath("Bicep/SymbolicNameTestCases/Tests.Bicep.3.json"), null, out _);
-        }
-
         [Fact]
         public void ProcessTemplate_WhenParented_ShouldReturnExpectedScope()
         {
@@ -1358,96 +1303,5 @@ namespace PSRule.Rules.Azure
             Assert.Equal("server01/db02/current", actual["name"].Value<string>());
             Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Sql/servers/server01/databases/db02", actual["scope"].Value<string>());
         }
-
-        /// <summary>
-        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3062
-        /// </summary>
-        [Fact]
-        public void ProcessTemplate_WhenMicrosoftGraphType_ShouldIgnoreExtensibilityResources()
-        {
-            var resources = ProcessTemplate(GetSourcePath("Bicep/ExtensibilityTestCases/Tests.Bicep.1.json"), null, out _);
-
-            Assert.Single(resources);
-
-            var actual = resources[0];
-            Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());
-            Assert.Equal("ps-rule-test-deployment", actual["name"].Value<string>());
-        }
-
-        /// <summary>
-        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2054
-        /// </summary>
-        [Fact]
-        public void ProcessTemplate_WhenConditionalSecretParameter_ShouldReturnSecretsPlaceholders()
-        {
-            var resources = ProcessTemplate(GetSourcePath("Bicep/SecretTestCases/Tests.Bicep.1.json"), null, out _);
-
-            Assert.NotNull(resources);
-
-            var actual = resources.Where(r => r["name"].Value<string>() == "vault1/toSet1").FirstOrDefault();
-            Assert.Equal("Microsoft.KeyVault/vaults/secrets", actual["type"].Value<string>());
-            Assert.Equal("{{SecretReference:supersecret1}}", actual["properties"]["value"].Value<string>());
-
-            actual = resources.Where(r => r["name"].Value<string>() == "vault1/toSet2").FirstOrDefault();
-            Assert.Equal("Microsoft.KeyVault/vaults/secrets", actual["type"].Value<string>());
-            Assert.Equal("placeholder", actual["properties"]["value"].Value<string>());
-        }
-
-        /// <summary>
-        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3120
-        /// </summary>
-        [Fact]
-        public void ProcessTemplate_WhenUserDefinedFunctionReferencesExportedVariables_ShouldFindVariable()
-        {
-            _ = ProcessTemplate(GetSourcePath("Bicep/UserDefinedFunctionTestCases/Tests.Bicep.1.json"), null, out var templateContext);
-
-            Assert.True(templateContext.RootDeployment.TryOutput("o1", out JObject o1));
-            Assert.Equal([2], o1["value"].Values<int>());
-
-            Assert.True(templateContext.RootDeployment.TryOutput("o2", out JObject o2));
-            Assert.Equal([1], o2["value"].Values<int>());
-
-            Assert.True(templateContext.RootDeployment.TryOutput("o3", out JObject o3));
-            Assert.Equal([1], o3["value"].Values<int>());
-
-            Assert.True(templateContext.RootDeployment.TryOutput("o4", out JObject o4));
-            Assert.Equal([2, 1], o4["value"].Values<int>());
-
-            Assert.True(templateContext.RootDeployment.TryOutput("o5", out JObject o5));
-            Assert.Equal([3], o5["value"].Values<int>());
-        }
-
-        #region Helper methods
-
-        private static string GetSourcePath(string fileName)
-        {
-            return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-        }
-
-        private static JObject[] ProcessTemplate(string templateFile, string parametersFile)
-        {
-            var context = new PipelineContext(PSRuleOption.Default, null);
-            var helper = new TemplateHelper(context);
-            helper.ProcessTemplate(templateFile, parametersFile, out var templateContext);
-            return templateContext.GetResources().Select(i => i.Value).ToArray();
-        }
-
-        private static JObject[] ProcessTemplate(string templateFile, string parametersFile, out TemplateContext templateContext)
-        {
-            var context = new PipelineContext(PSRuleOption.Default, null);
-            var helper = new TemplateHelper(context);
-            helper.ProcessTemplate(templateFile, parametersFile, out templateContext);
-            return templateContext.GetResources().Select(i => i.Value).ToArray();
-        }
-
-        private static JObject[] ProcessTemplate(string templateFile, string parametersFile, PSRuleOption option)
-        {
-            var context = new PipelineContext(option, null);
-            var helper = new TemplateHelper(context);
-            helper.ProcessTemplate(templateFile, parametersFile, out var templateContext);
-            return templateContext.GetResources().Select(i => i.Value).ToArray();
-        }
-
-        #endregion Helper methods
     }
 }

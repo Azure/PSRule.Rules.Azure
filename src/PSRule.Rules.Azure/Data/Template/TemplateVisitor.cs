@@ -1233,6 +1233,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (symbol != null && symbol.Kind == DeploymentSymbolKind.Array)
                     context.AddSymbol(DeploymentSymbol.NewObject(string.Concat(symbolicName, '[', copyIndex.Index, ']'), r));
             }
+
+            if (copyIndex.IsCopy())
+                context.CopyIndex.Pop();
+
+            context.AddSymbol(symbol);
         }
 
         /// <summary>
