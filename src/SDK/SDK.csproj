@@ -39,8 +39,4 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
   </ItemGroup>
-
-  <!-- <ItemGroup>
-    <PackageReference Include="Microsoft.PSRule.SDK" Version="2.3.0-B0001" />
-  </ItemGroup> -->
 </Project>
