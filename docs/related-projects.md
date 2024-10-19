@@ -11,8 +11,8 @@ You can find out more by visiting each repository.
 Name                          | Description
 ----                          | -----------
 [microsoft/PSRule]            | Core engine responsible for running rules.
-[microsoft/ps-rule]           | GitHub continious integration using GitHub Actions.
-[microsoft/PSRule-pipelines]  | Azure DevOps continious integration using Azure Pipelines.
+[microsoft/ps-rule]           | GitHub continuous integration using GitHub Actions.
+[microsoft/PSRule-pipelines]  | Azure DevOps continuous integration using Azure Pipelines.
 [microsoft/PSRule-vscode]     | Support for running and authoring rules within Visual Studio Code.
 [microsoft/PSRule.Monitor]    | Support for logging PSRule analysis results to Azure Monitor.
 [microsoft/PSRule.Rules.CAF]        | A suite of rules to validate Azure resources against the Cloud Adoption Framework (CAF) using PSRule.

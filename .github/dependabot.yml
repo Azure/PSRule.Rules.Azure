@@ -17,10 +17,6 @@ updates:
   - dependencies
   reviewers:
   - azure/psrule-rules-azure
-  ignore:
-  # Ignore upgrades to PS 7.1 for tool chain components at this time
-  - dependency-name: Microsoft.PowerShell.SDK
-  - dependency-name: System.Management.Automation
 
 # Maintain dependencies for GitHub Actions
 - package-ecosystem: github-actions
