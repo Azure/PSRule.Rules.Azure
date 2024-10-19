@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.39.2:
+
+- Bug fixes:
+  - Fixed index out of bounds for existing symbolic name reference by @BernieWhite.
+    [#3129](https://github.com/Azure/PSRule.Rules.Azure/issues/3129)
+
 ## v1.39.2
 
 What's changed since v1.39.1:
