@@ -10,7 +10,7 @@ namespace PSRule.Rules.Azure.Data.Template
     /// <summary>
     /// A implementation for nested template contexts.
     /// </summary>
-    internal abstract class NestedTemplateContext : BaseTemplateContext, ITemplateContext
+    internal abstract class NestedTemplateContext : ResourceManagerVisitorContext, ITemplateContext
     {
         protected readonly ITemplateContext _Inner;
 

@@ -112,7 +112,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <summary>
         /// A context state used during expanding policy assignments and definitions.
         /// </summary>
-        public sealed class PolicyAssignmentContext : BaseTemplateContext, ITemplateContext
+        public sealed class PolicyAssignmentContext : ResourceManagerVisitorContext, ITemplateContext
         {
             private readonly ExpressionFactory _ExpressionFactory;
             private readonly ExpressionBuilder _ExpressionBuilder;
@@ -262,7 +262,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 if (type.CountCharacterOccurrences(SLASH) > 0)
                 {
-                    var contents = type.Split(new char[] { SLASH }, count: 2);
+                    var contents = type.Split([SLASH], count: 2);
                     var providerNamespace = contents[0];
                     var resourceType = contents[1];
                     _PolicyAliasProviderHelper.SetDefaultResourceType(providerNamespace, resourceType);

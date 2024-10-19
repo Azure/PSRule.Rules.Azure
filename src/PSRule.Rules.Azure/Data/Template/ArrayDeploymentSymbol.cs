@@ -7,6 +7,10 @@ namespace PSRule.Rules.Azure.Data.Template;
 
 #nullable enable
 
+/// <summary>
+/// A symbol that represents an array of deployment resources.
+/// </summary>
+/// <param name="name"></param>
 internal sealed class ArrayDeploymentSymbol(string name) : DeploymentSymbol(name), IDeploymentSymbol
 {
     private List<string>? _Ids;

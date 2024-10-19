@@ -12,15 +12,10 @@ namespace PSRule.Rules.Azure.Data.Template;
 [DebuggerDisplay("{Id}")]
 internal sealed class ExistingResourceValue : IResourceValue
 {
-    private const string PROPERTY_SCOPE = "scope";
-    private const string PROPERTY_SUBSCRIPTIONID = "subscriptionId";
-    private const string PROPERTY_RESOURCEGROUP = "resourceGroup";
-
     private readonly ITemplateContext _Context;
 
     private string? _Id;
     private string? _Name;
-
 
     public ExistingResourceValue(ITemplateContext context, string type, string symbolicName, JObject value, TemplateContext.CopyIndexState copy)
     {

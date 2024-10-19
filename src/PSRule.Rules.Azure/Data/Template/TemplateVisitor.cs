@@ -25,10 +25,10 @@ namespace PSRule.Rules.Azure.Data.Template
     internal abstract class TemplateVisitor : ResourceManagerVisitor
     {
         private const string TENANT_SCOPE = "/";
-        private const string RESOURCETYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
-        private const string DEPLOYMENTSCOPE_INNER = "inner";
+        private const string RESOURCE_TYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
+        private const string DEPLOYMENT_SCOPE_INNER = "inner";
         private const string PROPERTY_SCHEMA = "$schema";
-        private const string PROPERTY_CONTENTVERSION = "contentVersion";
+        private const string PROPERTY_CONTENT_VERSION = "contentVersion";
         private const string PROPERTY_PARAMETERS = "parameters";
         private const string PROPERTY_FUNCTIONS = "functions";
         private const string PROPERTY_VARIABLES = "variables";
@@ -70,7 +70,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_ROOTDEPLOYMENT = "rootDeployment";
         private const string PROPERTY_NULLABLE = "nullable";
 
-        internal sealed class TemplateContext : BaseTemplateContext, ITemplateContext
+        internal sealed class TemplateContext : ResourceManagerVisitorContext, ITemplateContext
         {
             private const string CLOUD_PUBLIC = "AzureCloud";
             private const string ISSUE_PARAMETER_EXPRESSIONLENGTH = "PSRule.Rules.Azure.Template.ExpressionLength";
@@ -479,7 +479,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 TryObjectProperty(template, PROPERTY_METADATA, out var metadata);
                 TryStringProperty(template, PROPERTY_SCHEMA, out var schema);
                 var scope = GetDeploymentScope(schema, out var deploymentScope);
-                var id = string.Concat(scope, "/providers/", RESOURCETYPE_DEPLOYMENT, "/", deploymentName);
+                var id = string.Concat(scope, "/providers/", RESOURCE_TYPE_DEPLOYMENT, "/", deploymentName);
                 var location = ResourceGroup.Location;
 
                 var templateLink = new JObject
@@ -505,7 +505,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     { PROPERTY_NAME, deploymentName },
                     { PROPERTY_PROPERTIES, properties },
                     { PROPERTY_LOCATION, location },
-                    { PROPERTY_TYPE, RESOURCETYPE_DEPLOYMENT },
+                    { PROPERTY_TYPE, RESOURCE_TYPE_DEPLOYMENT },
                     { PROPERTY_METADATA, metadata },
 
                     { PROPERTY_ID, id },
@@ -582,6 +582,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 Parameters.Add(name, new SimpleParameterValue(name, type, value));
             }
 
+            /// <summary>
+            /// Add a parameter to the context.
+            /// </summary>
+            /// <param name="value">The <see cref="IParameterValue"/> to add.</param>
             internal void Parameter(IParameterValue value)
             {
                 Parameters.Add(value.Name, value);
@@ -769,36 +773,6 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
-        internal interface IParameterValue
-        {
-            string Name { get; }
-
-            ParameterType Type { get; }
-
-            object GetValue();
-        }
-
-        internal sealed class SimpleParameterValue : IParameterValue
-        {
-            private readonly object _Value;
-
-            public SimpleParameterValue(string name, ParameterType type, object value)
-            {
-                Name = name;
-                Type = type;
-                _Value = value;
-            }
-
-            public string Name { get; }
-
-            public ParameterType Type { get; }
-
-            public object GetValue()
-            {
-                return _Value;
-            }
-        }
-
         private sealed class LazyParameter<T> : ILazyValue, IParameterValue
         {
             private readonly TemplateContext _Context;
@@ -892,7 +866,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (TryStringProperty(template, PROPERTY_SCHEMA, out var schema))
                     Schema(context, schema);
 
-                if (TryStringProperty(template, PROPERTY_CONTENTVERSION, out var contentVersion))
+                if (TryStringProperty(template, PROPERTY_CONTENT_VERSION, out var contentVersion))
                     ContentVersion(context, contentVersion);
 
                 // Handle custom type definitions
@@ -1004,13 +978,13 @@ namespace PSRule.Rules.Azure.Data.Template
         private static bool TryParameter(TemplateContext context, string parameterName, JObject parameter)
         {
             return parameter == null ||
-                TryParameterAssignment(context, parameterName, parameter) ||
-                TryParameterDefaultValue(context, parameterName, parameter) ||
-                TryParameterDefault(context, parameterName, parameter) ||
-                TryParameterNullable(context, parameterName, parameter);
+                FillParameterFromAssignedValue(context, parameterName, parameter) ||
+                FillParameterFromDefaultValue(context, parameterName, parameter) ||
+                FillParameterFromDefaultConfiguration(context, parameterName, parameter) ||
+                FillParameterWhenNullable(context, parameterName, parameter);
         }
 
-        private static bool TryParameterAssignment(TemplateContext context, string parameterName, JObject parameter)
+        private static bool FillParameterFromAssignedValue(TemplateContext context, string parameterName, JObject parameter)
         {
             if (!context.TryParameterAssignment(parameterName, out var value))
                 return false;
@@ -1023,9 +997,9 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
-        /// Try to fill parameter from default value.
+        /// Try to fill the parameter from default value property on the definition.
         /// </summary>
-        private static bool TryParameterDefaultValue(TemplateContext context, string parameterName, JObject parameter)
+        private static bool FillParameterFromDefaultValue(TemplateContext context, string parameterName, JObject parameter)
         {
             if (!parameter.ContainsKey(PROPERTY_DEFAULTVALUE))
                 return false;
@@ -1038,7 +1012,10 @@ namespace PSRule.Rules.Azure.Data.Template
             return true;
         }
 
-        private static bool TryParameterDefault(TemplateContext context, string parameterName, JObject parameter)
+        /// <summary>
+        /// Try to fill the parameter from the PSRule default value configuration.
+        /// </summary>
+        private static bool FillParameterFromDefaultConfiguration(TemplateContext context, string parameterName, JObject parameter)
         {
             if (!TryParameterType(context, parameter, out var type))
                 throw ThrowTemplateParameterException(parameterName);
@@ -1051,9 +1028,9 @@ namespace PSRule.Rules.Azure.Data.Template
         }
 
         /// <summary>
-        /// Handle cases when the parameter has been marked as nullable.
+        /// If the parameter been marked as nullable, fill the parameter with a null value.
         /// </summary>
-        private static bool TryParameterNullable(TemplateContext context, string parameterName, JObject parameter)
+        private static bool FillParameterWhenNullable(TemplateContext context, string parameterName, JObject parameter)
         {
             var isNullable = false;
             if (parameter.TryGetProperty(PROPERTY_REF, out var typeRef) &&
@@ -1454,14 +1431,14 @@ namespace PSRule.Rules.Azure.Data.Template
 
         protected static bool IsDeploymentResource(string resourceType)
         {
-            return string.Equals(resourceType, RESOURCETYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase);
+            return string.Equals(resourceType, RESOURCE_TYPE_DEPLOYMENT, StringComparison.OrdinalIgnoreCase);
         }
 
         private TemplateContext GetDeploymentContext(TemplateContext context, string deploymentName, JObject resource, JObject properties)
         {
             if (!TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out var options) ||
                 !TryStringProperty(options, PROPERTY_SCOPE, out var scope) ||
-                !StringComparer.OrdinalIgnoreCase.Equals(DEPLOYMENTSCOPE_INNER, scope) ||
+                !StringComparer.OrdinalIgnoreCase.Equals(DEPLOYMENT_SCOPE_INNER, scope) ||
                 !TryObjectProperty(properties, "template", out var template))
                 return context;
 

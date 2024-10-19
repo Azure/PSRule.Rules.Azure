@@ -9,6 +9,8 @@ namespace PSRule.Rules.Azure;
 
 internal static class PSObjectExtensions
 {
+    private const string JSON = ".json";
+
     internal static T GetPropertyValue<T>(this PSObject obj, string propertyName)
     {
         return (T)obj.Properties[propertyName]?.Value;
@@ -33,7 +35,7 @@ internal static class PSObjectExtensions
             path = s;
             return true;
         }
-        if (sourceObject.BaseObject is FileInfo info && info.Extension == ".json")
+        if (sourceObject.BaseObject is FileInfo info && info.Extension == JSON)
         {
             path = info.FullName;
             return true;
