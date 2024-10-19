@@ -325,13 +325,13 @@ internal static class ExpressionHelpers
             }
             return result;
         }
-        else if (o is IEnumerable<long> elong)
+        else if (o is IEnumerable<long> l)
         {
-            return elong.ToArray();
+            return l.ToArray();
         }
-        else if (o is IEnumerable<int> eint)
+        else if (o is IEnumerable<int> i)
         {
-            return eint.Select(i => (long)i).ToArray();
+            return i.Select(n => (long)n).ToArray();
         }
         else if (o is IEnumerable e)
         {
@@ -341,7 +341,7 @@ internal static class ExpressionHelpers
 
             return result;
         }
-        return Array.Empty<long>();
+        return [];
     }
 
     internal static bool TryStringArray(object o, out string[] value)
@@ -418,7 +418,7 @@ internal static class ExpressionHelpers
         if (TryLong(o, out value))
             return true;
 
-        if (TryString(o, out var svalue) && long.TryParse(svalue, out value))
+        if (TryString(o, out var s) && long.TryParse(s, out value))
             return true;
 
         value = default;
@@ -507,13 +507,13 @@ internal static class ExpressionHelpers
         if (TryBool(o, out value))
             return true;
 
-        if (TryLong(o, out var ivalue))
+        if (TryLong(o, out var i))
         {
-            value = ivalue > 0;
+            value = i > 0;
             return true;
         }
 
-        return TryString(o, out var svalue) && bool.TryParse(svalue, out value);
+        return TryString(o, out var s) && bool.TryParse(s, out value);
     }
 
     internal static bool TryArray<T>(object o, out T value) where T : class
@@ -529,11 +529,6 @@ internal static class ExpressionHelpers
             value = array as T;
             return true;
         }
-        //else if (o is MockArray mock)
-        //{
-        //    value = mock as T;
-        //    return true;
-        //}
         return false;
     }
 
@@ -621,15 +616,6 @@ internal static class ExpressionHelpers
                         result.Add(element);
                 }
             }
-            //else if (o[i] is Mock.MockArray mock && mock.Value != null && mock.Value.Count > 0)
-            //{
-            //    for (var j = 0; j < mock.Value.Count; j++)
-            //    {
-            //        var element = mock.Value[j];
-            //        if (!result.Contains(element))
-            //            result.Add(element);
-            //    }
-            //}
             else if (o[i] is Array array && array.Length > 0)
             {
                 for (var j = 0; j < array.Length; j++)

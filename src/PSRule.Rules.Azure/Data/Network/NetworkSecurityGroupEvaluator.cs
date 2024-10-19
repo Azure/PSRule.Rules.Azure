@@ -7,10 +7,12 @@ using System.Management.Automation;
 
 namespace PSRule.Rules.Azure.Data.Network;
 
+#nullable enable
+
 /// <summary>
 /// A basic implementation of an evaluator for checking NSG rules.
 /// </summary>
-internal sealed class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvaluator
+internal sealed partial class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvaluator
 {
     private const string PROPERTIES = "properties";
     private const string DIRECTION = "direction";
@@ -26,42 +28,6 @@ internal sealed class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvalu
     internal NetworkSecurityGroupEvaluator()
     {
         _Outbound = [];
-    }
-
-    internal enum Direction
-    {
-        Inbound = 1,
-
-        Outbound = 2
-    }
-
-    private sealed class SecurityRule
-    {
-        public SecurityRule(Direction direction, Access access, string[] destinationAddressPrefixes, string[] destinationPortRanges)
-        {
-            Direction = direction;
-            Access = access;
-            DestinationAddressPrefixes = destinationAddressPrefixes == null ? null : new HashSet<string>(destinationAddressPrefixes, StringComparer.OrdinalIgnoreCase);
-            DestinationPortRanges = destinationPortRanges == null ? null : new HashSet<string>(destinationPortRanges, StringComparer.OrdinalIgnoreCase);
-        }
-
-        public Access Access { get; }
-
-        public Direction Direction { get; }
-
-        public HashSet<string> DestinationAddressPrefixes { get; }
-
-        public HashSet<string> DestinationPortRanges { get; }
-
-        internal bool TryDestinationPrefix(string prefix)
-        {
-            return DestinationAddressPrefixes == null || DestinationAddressPrefixes.Contains(prefix);
-        }
-
-        internal bool TryDestinationPort(int port)
-        {
-            return DestinationPortRanges == null || DestinationPortRanges.Contains(port.ToString());
-        }
     }
 
     public void With(PSObject[] items)
@@ -95,7 +61,8 @@ internal sealed class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvalu
         var access = (Access)Enum.Parse(typeof(Access), properties.GetPropertyValue<string>(ACCESS), ignoreCase: true);
         var destinationAddressPrefixes = GetFilter(properties, DESTINATION_ADDRESS_PREFIX) ?? GetFilter(properties, DESTINATION_ADDRESS_PREFIXES);
         var destinationPortRanges = GetFilter(properties, DESTINATION_PORT_RANGE) ?? GetFilter(properties, DESTINATION_PORT_RANGES);
-        var result = new SecurityRule(
+        var result = new SecurityRule
+        (
             direction,
             access,
             destinationAddressPrefixes,
@@ -104,11 +71,13 @@ internal sealed class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvalu
         return result;
     }
 
-    private static string[] GetFilter(PSObject o, string propertyName)
+    private static string[]? GetFilter(PSObject o, string propertyName)
     {
         if (o.TryProperty(propertyName, out string[] value) && value.Length > 0)
             return value;
 
-        return o.TryProperty(propertyName, out string s) && s != ANY ? (new string[] { s }) : null;
+        return o.TryProperty(propertyName, out string s) && s != ANY ? [s] : null;
     }
 }
+
+#nullable restore
