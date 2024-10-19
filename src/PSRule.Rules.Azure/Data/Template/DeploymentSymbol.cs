@@ -1,10 +1,13 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Diagnostics;
+
 namespace PSRule.Rules.Azure.Data.Template;
 
 #nullable enable
 
+[DebuggerDisplay("{Name}")]
 internal abstract class DeploymentSymbol(string name)
 {
     public string Name { get; } = name;
