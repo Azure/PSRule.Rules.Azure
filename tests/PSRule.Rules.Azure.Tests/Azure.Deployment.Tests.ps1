@@ -64,9 +64,9 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
+            $ruleResult.Length | Should -Be 4;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
-            $targetNames | Should -BeIn 'secret_bad', 'ps-rule-test-deployment', 'streaming_jobs_bad';
+            $targetNames | Should -BeIn 'secret_bad', 'ps-rule-test-deployment', 'streaming_jobs_bad', 'container_apps_bad';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });

@@ -31,6 +31,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.39.3:
 
+- Updated rules:
+  - Deployment:
+    - Updated `Azure.Deployment.SecureValue` to check additional resource types by @BernieWhite.
+      [#2650](https://github.com/Azure/PSRule.Rules.Azure/issues/2650)
+      [#2651](https://github.com/Azure/PSRule.Rules.Azure/issues/2651)
+      - Added support for container apps secret properties.
+      - Added support for deployment script secret properties.
+      - Bumped rule set to `2024_12`.
 - Engineering:
   - Migrated Azure samples into PSRule for Azure by @BernieWhite.
     [#3085](https://github.com/Azure/PSRule.Rules.Azure/issues/3085)

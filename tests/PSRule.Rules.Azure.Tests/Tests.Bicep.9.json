@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.28.1.47646",
-      "templateHash": "18275092912549928193"
+      "version": "0.30.23.60470",
+      "templateHash": "14187359232601139223"
     }
   },
   "resources": [
@@ -29,8 +29,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.28.1.47646",
-              "templateHash": "1518984315103849805"
+              "version": "0.30.23.60470",
+              "templateHash": "17919476539610503167"
             }
           },
           "parameters": {
@@ -71,8 +71,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.28.1.47646",
-              "templateHash": "6215663120730168687"
+              "version": "0.30.23.60470",
+              "templateHash": "15649027828701608410"
             }
           },
           "parameters": {
@@ -121,8 +121,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.28.1.47646",
-              "templateHash": "3797411740136360330"
+              "version": "0.30.23.60470",
+              "templateHash": "11413388873748694759"
             }
           },
           "parameters": {
@@ -229,8 +229,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.28.1.47646",
-              "templateHash": "4134825371520485157"
+              "version": "0.30.23.60470",
+              "templateHash": "6931469984343125497"
             }
           },
           "parameters": {
@@ -280,6 +280,56 @@
     {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
+      "name": "container_apps_bad",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "notSecret": {
+            "value": ""
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.30.23.60470",
+              "templateHash": "17669244616149029030"
+            }
+          },
+          "parameters": {
+            "notSecret": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.App/containerApps",
+              "apiVersion": "2024-03-01",
+              "name": "badContainerApp",
+              "location": "[resourceGroup().location]",
+              "properties": {
+                "configuration": {
+                  "secrets": [
+                    {
+                      "name": "badSecret",
+                      "value": "[parameters('notSecret')]"
+                    }
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
       "name": "reference_good",
       "properties": {
         "expressionEvaluationOptions": {
@@ -292,8 +342,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.28.1.47646",
-              "templateHash": "6922313715624563061"
+              "version": "0.30.23.60470",
+              "templateHash": "9581683583109687527"
             }
           },
           "parameters": {

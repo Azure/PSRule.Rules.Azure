@@ -4,6 +4,7 @@
 using System.Collections.Generic;
 using System.Management.Automation;
 using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Data;
 using PSRule.Rules.Azure.Data.Bicep;
 
 #nullable enable
@@ -48,6 +49,11 @@ internal sealed class RuntimeService : IRuntimeService
 
     /// <inheritdoc/>
     public BicepHelper.BicepInfo? Bicep { get; internal set; }
+
+    /// <summary>
+    /// Lookup secret properties for Azure resource types.
+    /// </summary>
+    public SecretPropertyData? SecretProperty { get; internal set; }
 
     /// <inheritdoc/>
     public void WithAllowedLocations(string[] locations)
