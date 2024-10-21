@@ -2,7 +2,7 @@
 reviewed: 2023-09-02
 severity: Important
 pillar: Reliability
-category: Data management
+category: RE:04 Target metrics
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.SoftDelete/
 ms-content-id: 9927b427-e694-4485-9abf-61545e63956e
@@ -129,6 +129,8 @@ resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2023-01-01'
 }
 ```
 
+<!-- external:avm avm/res/storage/storage-account blobServices -->
+
 ### Configure with Azure CLI
 
 ```bash
@@ -153,7 +155,7 @@ Storage accounts with:
 
 ## LINKS
 
-- [Data management for reliability](https://learn.microsoft.com/azure/well-architected/resiliency/data-management)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Storage Accounts and reliability](https://learn.microsoft.com/azure/well-architected/services/storage/storage-accounts/reliability)
 - [Soft delete for Azure Storage blobs](https://learn.microsoft.com/azure/storage/blobs/soft-delete-blob-overview)
 - [Blob storage features available in Azure Data Lake Storage Gen2](https://learn.microsoft.com/azure/storage/blobs/storage-feature-support-in-storage-accounts)

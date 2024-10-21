@@ -2,7 +2,7 @@
 reviewed: 2023-09-02
 severity: Important
 pillar: Reliability
-category: Data Management
+category: RE:04 Target metrics
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.FileShareSoftDelete/
 ---
@@ -79,6 +79,8 @@ resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2023-01-01
 }
 ```
 
+<!-- external:avm avm/res/storage/storage-account fileServices -->
+
 ## Notes
 
 Cloud Shell storage with the tag `ms-resource-usage = 'azure-cloud-shell'` is excluded.
@@ -86,7 +88,7 @@ Storage accounts used for Cloud Shell are not intended to store data.
 
 ## Links
 
-- [Data management for reliability](https://learn.microsoft.com/azure/well-architected/resiliency/data-management)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Storage Accounts and reliability](https://learn.microsoft.com/azure/well-architected/services/storage/storage-accounts/reliability)
 - [Enable soft delete on Azure file shares](https://learn.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion)
 - [About Azure file share backup](https://learn.microsoft.com/azure/backup/azure-file-share-backup-overview)
