@@ -1,24 +1,22 @@
 ---
-reviewed: 2023-09-10
+reviewed: 2024-10-21
 severity: Important
 pillar: Reliability
-category: Requirements
+category: RE:04 Target metrics
 resource: Public IP address
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.StandardSKU/
 ---
 
-# Public IP addresses should use Standard SKU
+# Public IP address uses basic SKU
 
 ## SYNOPSIS
 
-Public IP addresses should be deployed with Standard SKU for production workloads.
+The basic SKU is being retired on 30 September 2025, and does not include several reliability and security features.
 
 ## DESCRIPTION
 
 Public IP addresses allow Internet resources to communicate inbound to Azure resources.
 Currently two SKUs are supported: Basic and Standard.
-
-However, the Basic SKU for Public IP addresses will be retired on September 30, 2025.
 
 The Standard SKU additionally offers security and redundancy improvements over the Basic SKU.
 Including:
@@ -47,7 +45,7 @@ For example:
 ```json
 {
   "type": "Microsoft.Network/publicIPAddresses",
-  "apiVersion": "2023-05-01",
+  "apiVersion": "2024-01-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -78,7 +76,7 @@ For example:
 For example:
 
 ```bicep
-resource pip 'Microsoft.Network/publicIPAddresses@2023-05-01' = {
+resource pip 'Microsoft.Network/publicIPAddresses@2024-01-01' = {
   name: name
   location: location
   sku: {
@@ -98,9 +96,11 @@ resource pip 'Microsoft.Network/publicIPAddresses@2023-05-01' = {
 }
 ```
 
+<!-- external:avm avm/res/network/public-ip-address skuName -->
+
 ## LINKS
 
-- [Meet application platform requirements](https://learn.microsoft.com/azure/well-architected/resiliency/design-requirements#meet-application-platform-requirements)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Standard Public IP addresses](https://learn.microsoft.com/azure/virtual-network/ip-services/public-ip-addresses#sku)
 - [Load Balancer and Availability Zones](https://learn.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/publicipaddresses)

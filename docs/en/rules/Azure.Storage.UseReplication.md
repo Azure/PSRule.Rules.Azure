@@ -1,20 +1,21 @@
 ---
 severity: Important
 pillar: Reliability
-category: Requirements
+category: RE:05 Regions and availability zones
 resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.UseReplication/
 ---
 
-# Use geo-replicated or zone-replicated storage
+# Storage Account is available in a single zone
 
 ## SYNOPSIS
 
-Storage Accounts not using geo-replicated storage (GRS) or zone-redundant (ZRS) may be at risk.
+Storage Accounts using the LRS SKU are only replicated within a single zone.
 
 ## DESCRIPTION
 
-Storage Accounts can be configured with several different durability options.
+Storage Accounts can be configured with several different durability options that replicate data between regions/ zones.
+
 Azure provides a number of geo-replicated options including;
 Geo-redundant storage and geo-zone-redundant storage.
 Geo-zone-redundant storage is only available in supported regions.
@@ -32,7 +33,7 @@ The following geo-replicated and zone-replicated options are available within Az
 
 ## RECOMMENDATION
 
-Consider using GRS for storage accounts that contain data.
+Consider using a zone-redundant or geo-replicated SKU for storage accounts that contain data.
 
 ## EXAMPLES
 
@@ -48,7 +49,7 @@ For example:
 ```json
 {
   "type": "Microsoft.Storage/storageAccounts",
-  "apiVersion": "2023-01-01",
+  "apiVersion": "2023-05-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -78,7 +79,7 @@ To deploy Storage Accounts that pass this rule:
 For example:
 
 ```bicep
-resource storageAccount 'Microsoft.Storage/storageAccounts@2023-01-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
   name: name
   location: location
   sku: {
@@ -114,6 +115,6 @@ Storage Accounts with the following tags are automatically excluded from this ru
 
 ## LINKS
 
-- [Meet application platform requirements](https://learn.microsoft.com/azure/well-architected/resiliency/design-requirements#meet-application-platform-requirements)
+- [RE:05 Regions and availability zones](https://learn.microsoft.com/azure/well-architected/reliability/regions-availability-zones)
 - [Azure Storage redundancy](https://learn.microsoft.com/azure/storage/common/storage-redundancy)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.storage/storageaccounts)
