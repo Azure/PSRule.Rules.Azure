@@ -65,7 +65,7 @@ public static class Helper
     internal static string[] GetParameterTokenValue(string expression)
     {
         return !IsTemplateExpression(expression)
-            ? Array.Empty<string>()
+            ? []
             : TokenStreamValidator.GetParameterTokenValue(ExpressionParser.Parse(expression));
     }
 
@@ -170,6 +170,25 @@ public static class Helper
         var resourceProviderHelper = new ResourceProviderHelper();
         return resourceProviderHelper.GetResourceType(providerNamespace, resourceType);
     }
+
+#nullable enable
+
+    /// <summary>
+    /// Get a list of secret properties for a resource type.
+    /// </summary>
+    /// <param name="service">A reference to the runtime service.</param>
+    /// <param name="resourceType">An Azure resource type to lookup.</param>
+    /// <returns>A list of properties that store secret values.</returns>
+    public static string[]? GetSecretProperty(IService service, string resourceType)
+    {
+        if (service is not RuntimeService runtimeService)
+            return null;
+
+        runtimeService.SecretProperty ??= new SecretPropertyData();
+        return runtimeService.SecretProperty.TryGetValue(resourceType, out var properties) ? properties : null;
+    }
+
+#nullable restore
 
     /// <summary>
     /// Get the last element in the sub-resource name by splitting the name by '/' separator.

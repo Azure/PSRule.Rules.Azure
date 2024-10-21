@@ -34,6 +34,13 @@ module streaming_jobs_bad 'Tests.Bicep.9.badStreamingJobs.bicep' = {
   }
 }
 
+module container_apps_bad 'Tests.Bicep.9.badContainerApps.bicep' = {
+  name: 'container_apps_bad'
+  params: {
+    notSecret: ''
+  }
+}
+
 module secret_goodreference 'Tests.Bicep.9.goodReference.bicep' = {
   name: 'reference_good'
 }

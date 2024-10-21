@@ -2,16 +2,16 @@
 reviewed: 2022-10-10
 severity: Critical
 pillar: Security
-category: Infrastructure provisioning
+category: SE:02 Secured development lifecycle
 resource: Deployment
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.SecureValue/
 ---
 
-# Use secure resource values
+# Deployment sets a secret property with a non-secure value
 
 ## SYNOPSIS
 
-Use secure parameters for setting properties of resources that contain sensitive information.
+A secret property set from a non-secure value may leak the secret into deployment history or logs.
 
 ## DESCRIPTION
 
@@ -80,15 +80,12 @@ resource goodSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
 
 ## NOTES
 
-This rule checks the following resource type properties:
+For a list of resource types and properties that are checked by this rule see:
 
-- `Microsoft.KeyVault/vaults/secrets`:
-  - `properties.value`
-- `Microsoft.Compute/virtualMachineScaleSets`:
-  - `properties.virtualMachineProfile.osProfile.adminPassword`
+- https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/secret-property.json
 
 ## LINKS
 
-- [Infrastructure provisioning considerations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/deploy-infrastructure)
+- [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
 - [Use Azure Key Vault to pass secure parameter value during Bicep deployment](https://learn.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
 - [Integrate Azure Key Vault in your ARM template deployment](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
