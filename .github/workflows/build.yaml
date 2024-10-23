@@ -13,6 +13,8 @@ on:
     branches: [ main, 'release/*' ]
   workflow_dispatch:
 
+permissions: {}
+
 env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
