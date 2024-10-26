@@ -35,7 +35,7 @@ Consider using secure parameters for setting the value of any sensitive resource
 
 To configure deployments that pass this rule:
 
-- Set the type of parameters used set sensitive resource properties to `secureString` or `secureObject`.
+- Set the `type` of parameters used set sensitive resource properties to `secureString` or `secureObject`.
 
 For example:
 

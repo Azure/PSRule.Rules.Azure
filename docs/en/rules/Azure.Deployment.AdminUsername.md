@@ -1,4 +1,5 @@
 ---
+reviewed: 2024-10-26
 severity: Awareness
 pillar: Security
 category: SE:02 Secured development lifecycle
@@ -10,12 +11,13 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deploy
 
 ## SYNOPSIS
 
-Use secure parameters for sensitive resource properties.
+A sensitive property set from deterministic or hardcoded values is not secure.
 
 ## DESCRIPTION
 
 Resource properties can be configured using a hardcoded value or Azure Bicep/ template expressions.
-When specifying sensitive values use _secure_ parameters such as `secureString` or `secureObject`.
+When specifying sensitive values use _secure_ parameters.
+Secure parameters use the `@secure` decorator in Bicep or the `secureString` / `secureObject` type.
 
 Sensitive values that use deterministic expressions such as hardcoded string literals or variables are not secure.
 These values can be read by anyone with read access to deployment history or logs.
@@ -32,9 +34,9 @@ Avoid using deterministic or hardcoded values for sensitive properties.
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To configure deployments that pass this rule:
 
-- Use secure parameters to specify sensitive properties.
+- Set the `type` of parameters used set sensitive resource properties to `secureString` or `secureObject`.
 
 For example:
 
@@ -89,9 +91,9 @@ For example:
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To configure deployments that pass this rule:
 
-- Use secure parameters to specify sensitive properties.
+- Add the `@secure()` decorators on parameters used to set sensitive resource properties.
 
 For example:
 
@@ -148,6 +150,10 @@ resource vm1 'Microsoft.Compute/virtualMachines@2022-03-01' = {
 ```
 
 ## NOTES
+
+### Rule configuration
+
+<!-- module:config rule AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES -->
 
 Configure `AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES` to specify sensitive property names.
 By default, the following values are used:
