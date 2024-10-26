@@ -2607,7 +2607,7 @@
           <li class="md-nav__item">
   <a href="#se01-security-baseline" class="md-nav__link">
     <span class="md-ellipsis">
-      SE:01 Security baseline
+      SE:01 Security Baseline
     </span>
   </a>
   
@@ -15359,7 +15359,7 @@
           <li class="md-nav__item">
   <a href="#se01-security-baseline" class="md-nav__link">
     <span class="md-ellipsis">
-      SE:01 Security baseline
+      SE:01 Security Baseline
     </span>
   </a>
   
@@ -17647,20 +17647,8 @@
 <td>Error</td>
 </tr>
 <tr>
-<td><a href="../Azure.APIM.HTTPEndpoint/">Azure.APIM.HTTPEndpoint</a></td>
-<td>Enforce HTTPS for communication to API clients.</td>
-<td>Important</td>
-<td>Error</td>
-</tr>
-<tr>
 <td><a href="../Azure.Automation.EncryptVariables/">Azure.Automation.EncryptVariables</a></td>
 <td>Azure Automation variables should be encrypted.</td>
-<td>Important</td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="../Azure.CDN.HTTP/">Azure.CDN.HTTP</a></td>
-<td>Enforce HTTPS for client connections.</td>
 <td>Important</td>
 <td>Error</td>
 </tr>
@@ -17721,21 +17709,9 @@
 <td>Error</td>
 </tr>
 <tr>
-<td><a href="../Azure.APIM.HTTPBackend/">Azure.APIM.HTTPBackend</a></td>
-<td>Use HTTPS for communication to backend services.</td>
-<td>Critical</td>
-<td>Error</td>
-</tr>
-<tr>
 <td><a href="../Azure.APIM.Protocols/">Azure.APIM.Protocols</a></td>
 <td>API Management should only accept a minimum of TLS 1.2 for client and backend communication.</td>
 <td>Critical</td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="../Azure.CDN.MinTLS/">Azure.CDN.MinTLS</a></td>
-<td>Azure CDN endpoints should reject TLS versions older than 1.2.</td>
-<td>Important</td>
 <td>Error</td>
 </tr>
 <tr>
@@ -17967,7 +17943,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="se01-security-baseline">SE:01 Security baseline<a class="headerlink" href="#se01-security-baseline" title="Permanent link">#</a></h3>
+<h3 id="se01-security-baseline">SE:01 Security Baseline<a class="headerlink" href="#se01-security-baseline" title="Permanent link">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -18602,6 +18578,18 @@
 <td>Error</td>
 </tr>
 <tr>
+<td><a href="../Azure.APIM.HTTPBackend/">Azure.APIM.HTTPBackend</a></td>
+<td>Unencrypted communication could allow disclosure of information to an untrusted party.</td>
+<td>Critical</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="../Azure.APIM.HTTPEndpoint/">Azure.APIM.HTTPEndpoint</a></td>
+<td>Unencrypted communication could allow disclosure of information to an untrusted party.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
 <td><a href="../Azure.AppGw.SSLPolicy/">Azure.AppGw.SSLPolicy</a></td>
 <td>Application Gateway should only accept a minimum of TLS 1.2.</td>
 <td>Critical</td>
@@ -18621,13 +18609,25 @@
 </tr>
 <tr>
 <td><a href="../Azure.AppService.UseHTTPS/">Azure.AppService.UseHTTPS</a></td>
-<td>Azure App Service apps should only accept encrypted connections.</td>
+<td>Unencrypted communication could allow disclosure of information to an untrusted party.</td>
 <td>Important</td>
 <td>Error</td>
 </tr>
 <tr>
 <td><a href="../Azure.AppService.WebSecureFtp/">Azure.AppService.WebSecureFtp</a></td>
 <td>Web apps should disable insecure FTP and configure SFTP when required.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="../Azure.CDN.HTTP/">Azure.CDN.HTTP</a></td>
+<td>Unencrypted communication could allow disclosure of information to an untrusted party.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="../Azure.CDN.MinTLS/">Azure.CDN.MinTLS</a></td>
+<td>Azure CDN endpoints should reject TLS versions older than 1.2.</td>
 <td>Important</td>
 <td>Error</td>
 </tr>
