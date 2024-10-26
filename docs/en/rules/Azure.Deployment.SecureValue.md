@@ -83,11 +83,10 @@ resource goodSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
 
 ## NOTES
 
-For a list of resource types and properties that are checked by this rule see:
-
-- https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/secret-property.json
-
+For a list of resource types and properties that are checked by this rule see [secret properties][1].
 If you find properties that are missing, please let us know by logging an issue on GitHub.
+
+  [1]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/secret-property.json
 
 ## LINKS
 
