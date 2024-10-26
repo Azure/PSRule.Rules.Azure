@@ -1,12 +1,12 @@
 ---
 severity: Awareness
 pillar: Security
-category: Infrastructure provisioning
+category: SE:02 Secured development lifecycle
 resource: Deployment
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.AdminUsername/
 ---
 
-# Administrator Username Types
+# Deployment uses deterministic credential values
 
 ## SYNOPSIS
 
@@ -17,12 +17,16 @@ Use secure parameters for sensitive resource properties.
 Resource properties can be configured using a hardcoded value or Azure Bicep/ template expressions.
 When specifying sensitive values use _secure_ parameters such as `secureString` or `secureObject`.
 
-Sensitive values that use deterministic expressions such as hardcodes string literals or variables are not secure.
+Sensitive values that use deterministic expressions such as hardcoded string literals or variables are not secure.
+These values can be read by anyone with read access to deployment history or logs.
+Logs are often exposed at multiple levels including CI pipeline logs, Azure Activity Logs, and SIEM systems.
+
+<!-- security:note rotate-secret -->
 
 ## RECOMMENDATION
 
 Sensitive properties should be passed as parameters.
-Avoid using deterministic values for sensitive properties.
+Avoid using deterministic or hardcoded values for sensitive properties.
 
 ## EXAMPLES
 
@@ -154,6 +158,6 @@ By default, the following values are used:
 
 ## LINKS
 
-- [Infrastructure provisioning considerations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/deploy-infrastructure)
+- [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
 - [Use Azure Key Vault to pass secure parameter value during Bicep deployment](https://learn.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
 - [Integrate Azure Key Vault in your ARM template deployment](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
