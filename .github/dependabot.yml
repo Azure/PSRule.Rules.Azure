@@ -23,6 +23,8 @@ updates:
       patterns:
         - System.Management.Automation
         - Microsoft.PowerShell.SDK
+  ignore:
+    - dependency-name: gitversion.tool
 
 # Maintain dependencies for GitHub Actions
 - package-ecosystem: github-actions
