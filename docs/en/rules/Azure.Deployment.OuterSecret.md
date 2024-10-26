@@ -2,16 +2,16 @@
 reviewed: 2022-11-15
 severity: Critical
 pillar: Security
-category: Infrastructure provisioning
+category: SE:02 Secured development lifecycle
 resource: Deployment
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.OuterSecret/
 ---
 
-# Secret value in deployment output
+# Deployment exposes secrets with outer deployment
 
 ## SYNOPSIS
 
-Do not use Outer deployments when references SecureString or SecureObject parameters.
+Outer evaluation deployments may leak secrets exposed as secure parameters into logs and nested deployments.
 
 ## DESCRIPTION
 
@@ -21,6 +21,8 @@ templates instead of enforcing `secureString` and `secureObject` types.
 
 When passing secure values to nested deployments always use `inner` scope deployments to ensure secure values are not logging.
 Bicep modules always use `inner` scope evaluated deployments.
+
+<!-- security:note rotate-secret -->
 
 ## RECOMMENDATION
 
@@ -86,9 +88,11 @@ Nested Deployments within an ARM template need the property `expressionEvaluatio
 
 ### Configure with Bicep
 
-Bicep templates will do this by default when performing nested deployments.
+This does not apply to Bicep code as under normal circumstances.
+If you use the `module` keyword your deployments always use the `inner` evaluation mode.
 
 ## LINKS
 
+- [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.resources/deployments?pivots=deployment-language-bicep)
 - [Deployment Function Scopes](https://learn.microsoft.com/azure/azure-resource-manager/templates/scope-functions?tabs=azure-powershell#function-resolution-in-scopes)

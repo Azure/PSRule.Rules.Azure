@@ -1,0 +1,8 @@
+[project]
+name = "bicep-syntax"
+version = "0.0.1"
+dependencies = ["pygments"]
+readme = "README.md"
+
+[project.entry-points."pygments.lexers"]
+bicep = "lexer:BicepLexer"

@@ -2,16 +2,16 @@
 reviewed: 2022-06-12
 severity: Critical
 pillar: Security
-category: Infrastructure provisioning
+category: SE:02 Secured development lifecycle
 resource: Deployment
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.OutputSecretValue/
 ---
 
-# Secret value in deployment output
+# Deployment exposes a secret in output
 
 ## SYNOPSIS
 
-Avoid outputting sensitive deployment values.
+Outputting a sensitive value from deployment may leak secrets into deployment history or logs.
 
 ## DESCRIPTION
 
@@ -22,6 +22,11 @@ Examples of secrets are:
 
 - Parameters using the `secureString` or `secureObject` type.
 - Output from `list*` functions such as `listKeys`.
+
+Outputs are recorded in clear texts within deployment history and logs.
+Logs are often exposed at multiple levels including CI pipeline logs, Azure Activity Logs, and SIEM systems.
+
+<!-- security:note rotate-secret -->
 
 ## RECOMMENDATION
 
@@ -82,7 +87,7 @@ The following example fails because it returns a secret:
 
 To deploy securely pass secrets within Infrastructure as Code:
 
-- Mark secrets with the `@secure()` annotation.
+- Add the `@secure()` decorators on sensitive parameters.
 - Avoid returning a secret in output values.
 
 Example using `@secure()` annotation:
@@ -101,7 +106,7 @@ output accountPassword string = adminPassword
 
 ## LINKS
 
-- [Pipeline secret management](https://learn.microsoft.com/azure/architecture/framework/security/deploy-infrastructure#pipeline-secret-management)
+- [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
 - [Test cases for ARM templates](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-test-cases#outputs-cant-include-secrets)
 - [Outputs should not contain secrets](https://learn.microsoft.com/azure/azure-resource-manager/bicep/linter-rule-outputs-should-not-contain-secrets)
 - [List function](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-resource#list)

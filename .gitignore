@@ -9,6 +9,8 @@ dist/
 **/bin/
 **/obj/
 **/__pycache__/
+**/*.egg-info/
+**/build/
 BenchmarkDotNet.Artifacts/
 results/
 .venv/

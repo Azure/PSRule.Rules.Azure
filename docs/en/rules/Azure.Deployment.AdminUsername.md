@@ -1,36 +1,42 @@
 ---
+reviewed: 2024-10-26
 severity: Awareness
 pillar: Security
-category: Infrastructure provisioning
+category: SE:02 Secured development lifecycle
 resource: Deployment
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.AdminUsername/
 ---
 
-# Administrator Username Types
+# Deployment uses deterministic credential values
 
 ## SYNOPSIS
 
-Use secure parameters for sensitive resource properties.
+A sensitive property set from deterministic or hardcoded values is not secure.
 
 ## DESCRIPTION
 
 Resource properties can be configured using a hardcoded value or Azure Bicep/ template expressions.
-When specifying sensitive values use _secure_ parameters such as `secureString` or `secureObject`.
+When specifying sensitive values use _secure_ parameters.
+Secure parameters use the `@secure` decorator in Bicep or the `secureString` / `secureObject` type.
 
-Sensitive values that use deterministic expressions such as hardcodes string literals or variables are not secure.
+Sensitive values that use deterministic expressions such as hardcoded string literals or variables are not secure.
+These values can be read by anyone with read access to deployment history or logs.
+Logs are often exposed at multiple levels including CI pipeline logs, Azure Activity Logs, and SIEM systems.
+
+<!-- security:note rotate-secret -->
 
 ## RECOMMENDATION
 
 Sensitive properties should be passed as parameters.
-Avoid using deterministic values for sensitive properties.
+Avoid using deterministic or hardcoded values for sensitive properties.
 
 ## EXAMPLES
 
 ### Configure with Azure template
 
-To deploy resources that pass this rule:
+To configure deployments that pass this rule:
 
-- Use secure parameters to specify sensitive properties.
+- Set the `type` of parameters used set sensitive resource properties to `secureString` or `secureObject`.
 
 For example:
 
@@ -85,9 +91,9 @@ For example:
 
 ### Configure with Bicep
 
-To deploy resources that pass this rule:
+To configure deployments that pass this rule:
 
-- Use secure parameters to specify sensitive properties.
+- Add the `@secure()` decorators on parameters used to set sensitive resource properties.
 
 For example:
 
@@ -145,6 +151,10 @@ resource vm1 'Microsoft.Compute/virtualMachines@2022-03-01' = {
 
 ## NOTES
 
+### Rule configuration
+
+<!-- module:config rule AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES -->
+
 Configure `AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES` to specify sensitive property names.
 By default, the following values are used:
 
@@ -154,6 +164,6 @@ By default, the following values are used:
 
 ## LINKS
 
-- [Infrastructure provisioning considerations in Azure](https://learn.microsoft.com/azure/architecture/framework/security/deploy-infrastructure)
+- [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
 - [Use Azure Key Vault to pass secure parameter value during Bicep deployment](https://learn.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
 - [Integrate Azure Key Vault in your ARM template deployment](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)

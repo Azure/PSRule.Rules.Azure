@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-10-10
+reviewed: 2024-10-26
 severity: Critical
 pillar: Security
 category: SE:02 Secured development lifecycle
@@ -17,14 +17,17 @@ A secret property set from a non-secure value may leak the secret into deploymen
 
 Azure Bicep and Azure Resource Manager (ARM) templates can be used to deploy resources to Azure.
 When deploying Azure resources, sensitive values such as passwords, certificates, and keys should be passed as secure parameters.
-Secure parameters use the `secureString` or `secureObject` type.
+Secure parameters use the `@secure` decorator in Bicep or the `secureString` / `secureObject` type.
 
-Parameters that do not use secure types are recorded in logs and deployment history.
-These values can be retrieved by anyone with access to the deployment history.
+Parameters that do not use secure types are recorded in deployment history and logs.
+These values can be retrieved by anyone with read access to the deployment history and logs.
+Logs are often exposed at multiple levels including CI pipeline logs, Azure Activity Logs, and SIEM systems.
+
+<!-- security:note rotate-secret -->
 
 ## RECOMMENDATION
 
-Consider using secure parameters for sensitive resource properties.
+Consider using secure parameters for setting the value of any sensitive resource properties.
 
 ## EXAMPLES
 
@@ -32,7 +35,7 @@ Consider using secure parameters for sensitive resource properties.
 
 To configure deployments that pass this rule:
 
-- Set the type of parameters used set sensitive resource properties to `secureString` or `secureObject`.
+- Set the `type` of parameters used set sensitive resource properties to `secureString` or `secureObject`.
 
 For example:
 
@@ -62,7 +65,7 @@ For example:
 
 To configure deployments that pass this rule:
 
-- Add the `@secure()` attribute on parameters used to set sensitive resource properties.
+- Add the `@secure()` decorators on parameters used to set sensitive resource properties.
 
 For example:
 
@@ -80,12 +83,14 @@ resource goodSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
 
 ## NOTES
 
-For a list of resource types and properties that are checked by this rule see:
+For a list of resource types and properties that are checked by this rule see [secret properties][1].
+If you find properties that are missing, please let us know by logging an issue on GitHub.
 
-- https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/secret-property.json
+  [1]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/secret-property.json
 
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Secure parameters](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters#secure-parameters)
 - [Use Azure Key Vault to pass secure parameter value during Bicep deployment](https://learn.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
 - [Integrate Azure Key Vault in your ARM template deployment](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
