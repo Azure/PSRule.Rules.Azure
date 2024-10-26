@@ -39,6 +39,10 @@ What's changed since v1.39.3:
       - Added support for container apps secret properties.
       - Added support for deployment script secret properties.
       - Bumped rule set to `2024_12`.
+    - Updated `Azure.Deployment.SecureParameter` to reduce false positives by @BernieWhite.
+      [#3149](https://github.com/Azure/PSRule.Rules.Azure/issues/3149)
+      - Parameters named ending with `name`, `uri`, `url`, `path`, `type`, `id`, or `options` are ignored.
+      - The `customerManagedKey` parameter is ignored.
 - Engineering:
   - Migrated Azure samples into PSRule for Azure by @BernieWhite.
     [#3085](https://github.com/Azure/PSRule.Rules.Azure/issues/3085)

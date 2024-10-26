@@ -73,6 +73,14 @@ function global:GetSecureParameter {
                         '*key'
                         '*keys'
                     )).Result -and
+                    $parameter.Name -ne 'customerManagedKey' -and
+                    $parameter.Name -notLike '*name' -and
+                    $parameter.Name -notLike '*uri' -and
+                    $parameter.Name -notLike '*url' -and
+                    $parameter.Name -notLike '*path' -and
+                    $parameter.Name -notLike '*type' -and
+                    $parameter.Name -notLike '*id' -and
+                    $parameter.Name -notLike '*options' -and
                     $parameter.Name -notLike '*publickey' -and
                     $parameter.Name -notLike '*publickeys' -and
                     $parameter.Name -notLike '*secretname*' -and
