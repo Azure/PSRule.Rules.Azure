@@ -14303,8 +14303,13 @@ When deploying Azure resources, sensitive values such as passwords, certificates
 Secure parameters use the <code>@secure</code> decorator in Bicep or the <code>secureString</code> / <code>secureObject</code> type.</p>
 <p>Parameters that do not use secure types are recorded in deployment history and logs.
 These values can be retrieved by anyone with read access to the deployment history and logs.</p>
-<!-- security:note rotate-secret -->
-
+<div class="admonition security">
+<p class="admonition-title">Secret rotation &mdash; <a href="https://learn.microsoft.com/azure/well-architected/security/application-secrets#secret-rotation">SE:09 Application secrets</a></p>
+<p>If a secret has already been exposed by a previous insecure deployment,
+rotate it immediately to prevent unauthorized access to your resources.</p>
+<p>Rotating a secret involves changing or regenerating the secret value and updating all dependent resources with the new value.
+This process should be done in a secure manner to prevent the new secret from being exposed.</p>
+</div>
 <h2 id="recommendation">Recommendation<a class="headerlink" href="#recommendation" title="Permanent link">#</a></h2>
 <p>Consider using secure parameters for any parameter that contain sensitive information.</p>
 <h2 id="examples">Examples<a class="headerlink" href="#examples" title="Permanent link">#</a></h2>
@@ -14340,16 +14345,16 @@ These values can be retrieved by anyone with read access to the deployment histo
 <li>Add the <code>@secure()</code> decorators on sensitive parameters.</li>
 </ul>
 <p>For example:</p>
-<div class="language-text highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>@secure()
-</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>param secret string
+<div class="language-bicep highlight"><span class="filename">Azure Bicep snippet</span><pre><span></span><code><span id="__span-1-1"><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="k k-Decorator">@secure</span><span class="p">()</span>
+</span><span id="__span-1-2"><a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="kd">param</span><span class="w"> </span><span class="n n-Symbol">secret</span><span class="w"> </span><span class="n n-Type">string</span>
 </span><span id="__span-1-3"><a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>resource goodSecret &#39;Microsoft.KeyVault/vaults/secrets@2022-07-01&#39; = {
-</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>  parent: vault
-</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>  name: &#39;good&#39;
-</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>  properties: {
-</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>    value: secret
-</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>  }
-</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>}
+</span><span id="__span-1-4"><a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="kd">resource</span><span class="w"> </span><span class="n n-Symbol">goodSecret</span><span class="err"> </span><span class="s">&#39;Microsoft.KeyVault/vaults/secrets@2022-07-01&#39;</span><span class="err"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-5"><a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="py">parent</span><span class="p">:</span><span class="w"> </span><span class="err">vault</span>
+</span><span id="__span-1-6"><a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="py">name</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;good&#39;</span>
+</span><span id="__span-1-7"><a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="py">properties</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+</span><span id="__span-1-8"><a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="py">value</span><span class="p">:</span><span class="w"> </span><span class="err">secret</span>
+</span><span id="__span-1-9"><a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="p">}</span>
+</span><span id="__span-1-10"><a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="p">}</span>
 </span></code></pre></div>
 <h2 id="notes">Notes<a class="headerlink" href="#notes" title="Permanent link">#</a></h2>
 <p>This rule uses a heuristics to determine if a parameter should use a secure type:</p>

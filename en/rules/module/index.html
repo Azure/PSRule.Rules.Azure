@@ -2569,15 +2569,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#infrastructure-provisioning_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Infrastructure provisioning
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#key-and-secret-management" class="md-nav__link">
     <span class="md-ellipsis">
       Key and secret management
@@ -2616,7 +2607,7 @@
           <li class="md-nav__item">
   <a href="#se01-security-baseline" class="md-nav__link">
     <span class="md-ellipsis">
-      SE:01 Security Baseline
+      SE:01 Security baseline
     </span>
   </a>
   
@@ -15330,15 +15321,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#infrastructure-provisioning_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      Infrastructure provisioning
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#key-and-secret-management" class="md-nav__link">
     <span class="md-ellipsis">
       Key and secret management
@@ -15377,7 +15359,7 @@
           <li class="md-nav__item">
   <a href="#se01-security-baseline" class="md-nav__link">
     <span class="md-ellipsis">
-      SE:01 Security Baseline
+      SE:01 Security baseline
     </span>
   </a>
   
@@ -17849,37 +17831,6 @@
 </tr>
 </tbody>
 </table>
-<h3 id="infrastructure-provisioning_1">Infrastructure provisioning<a class="headerlink" href="#infrastructure-provisioning_1" title="Permanent link">#</a></h3>
-<table>
-<thead>
-<tr>
-<th>Name</th>
-<th>Synopsis</th>
-<th>Severity</th>
-<th>Level</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="../Azure.Deployment.AdminUsername/">Azure.Deployment.AdminUsername</a></td>
-<td>Use secure parameters for sensitive resource properties.</td>
-<td>Awareness</td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="../Azure.Deployment.OuterSecret/">Azure.Deployment.OuterSecret</a></td>
-<td>Do not use Outer deployments when references SecureString or SecureObject parameters.</td>
-<td>Critical</td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="../Azure.Deployment.OutputSecretValue/">Azure.Deployment.OutputSecretValue</a></td>
-<td>Avoid outputting sensitive deployment values.</td>
-<td>Critical</td>
-<td>Error</td>
-</tr>
-</tbody>
-</table>
 <h3 id="key-and-secret-management">Key and secret management<a class="headerlink" href="#key-and-secret-management" title="Permanent link">#</a></h3>
 <table>
 <thead>
@@ -18016,7 +17967,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="se01-security-baseline">SE:01 Security Baseline<a class="headerlink" href="#se01-security-baseline" title="Permanent link">#</a></h3>
+<h3 id="se01-security-baseline">SE:01 Security baseline<a class="headerlink" href="#se01-security-baseline" title="Permanent link">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -18086,6 +18037,24 @@
 <td><a href="../Azure.AppService.PHPVersion/">Azure.AppService.PHPVersion</a></td>
 <td>Configure applications to use newer PHP runtime versions.</td>
 <td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="../Azure.Deployment.AdminUsername/">Azure.Deployment.AdminUsername</a></td>
+<td>A sensitive property set from deterministic or hardcoded values is not secure.</td>
+<td>Awareness</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="../Azure.Deployment.OuterSecret/">Azure.Deployment.OuterSecret</a></td>
+<td>Outer evaluation deployments may leak secrets exposed as secure parameters into logs and nested deployments.</td>
+<td>Critical</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="../Azure.Deployment.OutputSecretValue/">Azure.Deployment.OutputSecretValue</a></td>
+<td>Outputting a sensitive value from deployment may leak secrets into deployment history or logs.</td>
+<td>Critical</td>
 <td>Error</td>
 </tr>
 <tr>

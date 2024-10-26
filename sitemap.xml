@@ -93,38 +93,6 @@
          <lastmod>2024-10-26</lastmod>
     </url>
     <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/benchmark/results-v1.10.4/</loc>
-         <lastmod>2024-10-26</lastmod>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/benchmark/results-v1.11.0/</loc>
-         <lastmod>2024-10-26</lastmod>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/benchmark/results-v1.14.3/</loc>
-         <lastmod>2024-10-26</lastmod>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/benchmark/results-v1.15.0/</loc>
-         <lastmod>2024-10-26</lastmod>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/benchmark/results-v1.34.2/</loc>
-         <lastmod>2024-10-26</lastmod>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/benchmark/results-v1.35.0/</loc>
-         <lastmod>2024-10-26</lastmod>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/benchmark/results-v1.8.1/</loc>
-         <lastmod>2024-10-26</lastmod>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/benchmark/results-v1.9.1/</loc>
-         <lastmod>2024-10-26</lastmod>
-    </url>
-    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/commands/Export-AzPolicyAssignmentData/</loc>
          <lastmod>2024-10-26</lastmod>
     </url>
@@ -2310,10 +2278,6 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/setup/setup-bicep/</loc>
-         <lastmod>2024-10-26</lastmod>
-    </url>
-    <url>
-         <loc>https://azure.github.io/PSRule.Rules.Azure/specs/inflight-export-spec/</loc>
          <lastmod>2024-10-26</lastmod>
     </url>
 </urlset>
