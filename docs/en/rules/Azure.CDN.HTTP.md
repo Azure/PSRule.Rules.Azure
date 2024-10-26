@@ -1,16 +1,16 @@
 ---
 severity: Important
 pillar: Security
-category: Data protection
+category: SE:07 Encryption
 resource: Content Delivery Network
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.HTTP/
 ---
 
-# Use HTTPS client connections
+# CDN endpoint allows unencrypted traffic
 
 ## SYNOPSIS
 
-Enforce HTTPS for client connections.
+Unencrypted communication could allow disclosure of information to an untrusted party.
 
 ## DESCRIPTION
 
@@ -24,5 +24,6 @@ Consider disabling HTTP support on the CDN endpoint origin.
 
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
-- [Configure HTTPS on an Azure CDN custom domain](https://learn.microsoft.com/azure/cdn/cdn-custom-ssl?tabs=option-1-default-enable-https-with-a-cdn-managed-certificate)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#encrypt-data-in-transit)
+- [Configure HTTPS on an Azure CDN custom domain](https://learn.microsoft.com/azure/cdn/cdn-custom-ssl)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cdn/profiles/endpoints)

@@ -16,10 +16,15 @@ Use Azure Front Door Standard or Premium SKU to improve the performance of web p
 
 Using a CDN is a good way to minimize the load on your application, and maximize availability and performance.
 
-Standard content delivery network (CDN) capability includes the ability to cache files closer to end users to speed up delivery of static files. However, with dynamic web applications, caching that content in edge locations isn't possible because the server generates the content in response to user behavior. Speeding up the delivery of such content is more complex than traditional edge caching and requires an end-to-end solution that finely tunes each element along the entire data path from inception to delivery. With Azure CDN dynamic site acceleration (DSA) optimization, the performance of web pages with dynamic content is measurably improved.
+Standard content delivery network (CDN) capability includes the ability to cache files closer to end users to speed up delivery of static files.
+However, with dynamic web applications, caching that content in edge locations isn't possible because the server generates the content in response to user behavior.
+Speeding up the delivery of such content is more complex than traditional edge caching and requires an end-to-end solution that finely tunes each element along the entire data path from inception to delivery.
+With Azure CDN dynamic site acceleration (DSA) optimization, the performance of web pages with dynamic content is measurably improved.
 
 Azure Front Door Standard or Premium SKU offers modern cloud Content Delivery Network (CDN).
 These SKUs in particular provides fast, reliable, and secure access between users and dynamic web content across the globe.
+
+Azure CDN Standard from Microsoft (classic) will be retired on September 30, 2027.
 
 ## RECOMMENDATION
 

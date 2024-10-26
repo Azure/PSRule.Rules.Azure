@@ -7,11 +7,11 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppSer
 ms-content-id: b26053bc-db4a-487a-8fb1-11c438c8d493
 ---
 
-# Enforce encrypted App Service connections
+# App Service allows unencrypted traffic
 
 ## SYNOPSIS
 
-Azure App Service apps should only accept encrypted connections.
+Unencrypted communication could allow disclosure of information to an untrusted party.
 
 ## DESCRIPTION
 
@@ -112,7 +112,7 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 
 ## LINKS
 
-- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#encrypt-data-in-transit)
 - [DP-3: Encrypt sensitive data in transit](https://learn.microsoft.com/security/benchmark/azure/baselines/app-service-security-baseline#dp-3-encrypt-sensitive-data-in-transit)
 - [Enforce HTTPS](https://learn.microsoft.com/azure/app-service/configure-ssl-bindings#enforce-https)
 - [Azure Policy built-in definitions for Azure App Service](https://learn.microsoft.com/azure/app-service/policy-reference)

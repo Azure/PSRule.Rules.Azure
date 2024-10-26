@@ -1,16 +1,16 @@
 ---
 severity: Critical
 pillar: Security
-category: Encryption
+category: SE:07 Encryption
 resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.HTTPBackend/
 ---
 
-# Use HTTPS backend connections
+# API Management allows unencrypted traffic to backends
 
 ## SYNOPSIS
 
-Use HTTPS for communication to backend services.
+Unencrypted communication could allow disclosure of information to an untrusted party.
 
 ## DESCRIPTION
 
@@ -110,6 +110,8 @@ resource api 'Microsoft.ApiManagement/service/apis@2021-08-01' = {
 }
 ```
 
+<!-- external:avm avm/res/api-management/service apis -->
+
 To deploy API backends that pass this rule:
 
 - Set the `properties.url` property to a URL that starts with `https://`.
@@ -129,9 +131,11 @@ resource backend 'Microsoft.ApiManagement/service/backends@2021-08-01' = {
 }
 ```
 
+<!-- external:avm avm/res/api-management/service backends -->
+
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption#encrypt-data-in-transit)
 - [Manage protocols and ciphers in Azure API Management](https://learn.microsoft.com/azure/api-management/api-management-howto-manage-protocols-ciphers)
 - [Secure backend services using client certificate authentication in Azure API Management](https://learn.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 - [Azure deployment reference for APIs](https://learn.microsoft.com/azure/templates/microsoft.apimanagement/service/apis)
