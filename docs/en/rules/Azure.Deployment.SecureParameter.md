@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-05-07
+reviewed: 2024-10-26
 severity: Critical
 pillar: Security
 category: SE:02 Secured development lifecycle
@@ -7,24 +7,26 @@ resource: Deployment
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.SecureParameter/
 ---
 
-# Use secure parameters for sensitive information
+# Deployment parameter name implies it is secret but is a non-secure value
 
 ## SYNOPSIS
 
-Use secure parameters for any parameter that contains sensitive information.
+Sensitive parameters that have been not been marked as secure may leak the secret into deployment history or logs.
 
 ## DESCRIPTION
 
 Azure Bicep and Azure Resource Manager (ARM) templates can be used to deploy resources to Azure.
 When deploying Azure resources, sensitive values such as passwords, certificates, and keys should be passed as secure parameters.
-Secure parameters use the `secureString` or `secureObject` type.
+Secure parameters use the `@secure` decorator in Bicep or the `secureString` / `secureObject` type.
 
-Parameters that do not use secure types are recorded in logs and deployment history.
-These values can be retrieved by anyone with access to the deployment history.
+Parameters that do not use secure types are recorded in deployment history and logs.
+These values can be retrieved by anyone with read access to the deployment history and logs.
+
+<!-- security:note rotate-secret -->
 
 ## RECOMMENDATION
 
-Consider using secure parameters for parameters that contain sensitive information.
+Consider using secure parameters for any parameter that contain sensitive information.
 
 ## EXAMPLES
 
@@ -62,7 +64,7 @@ For example:
 
 To configure deployments that pass this rule:
 
-- Add the `@secure()` attribute on sensitive parameters.
+- Add the `@secure()` decorators on sensitive parameters.
 
 For example:
 
@@ -84,13 +86,16 @@ resource goodSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
 This rule uses a heuristics to determine if a parameter should use a secure type:
 
 - Parameters with the type `int` or `bool` are ignored regardless of how they are named.
-- Any parameter with a name containing `password`, `secret`, or `token` will be considered sensitive.
-  - Except parameter names containing any of the following:
+- Parameters named ending with `name`, `uri`, `url`, `path`, `type`, `id`, or `options` are ignored.
+- Any remaining parameters with a name containing `password`, `secret`, or `token` will be considered sensitive.
+  Except if they contains any of the following in sequences in their name:
     `length`, `interval`, `secretname`, `secreturl`, `secreturi`, `secrettype`, `secretrotation`,
     `secretprovider`, `secretsprovider`, `secretref`, `secretid`, `disablepassword`, `sync*passwords`,
     `tokenname`, `tokentype`, `keyvaultpath`, `keyvaultname`, or `keyvaulturi`.
-- Any parameter with a name ending in `key` or `keys` will be considered sensitive.
-  - Except parameter names ending in `publickey` or `publickeys`.
+- Any remaining parameters with a name ending in `key` or `keys` will be considered sensitive.
+  Except for:
+  - The `customermanagedkey` parameter.
+  - Parameter names ending in `publickey` or `publickeys`.
 
 ### Rule configuration
 
@@ -104,5 +109,6 @@ To override this rule:
 ## LINKS
 
 - [SE:02 Secured development lifecycle](https://learn.microsoft.com/azure/well-architected/security/secure-development-lifecycle)
+- [Secure parameters](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters#secure-parameters)
 - [Use Azure Key Vault to pass secure parameter value during Bicep deployment](https://learn.microsoft.com/azure/azure-resource-manager/bicep/key-vault-parameter)
 - [Integrate Azure Key Vault in your ARM template deployment](https://learn.microsoft.com/azure/azure-resource-manager/templates/template-tutorial-use-key-vault#edit-the-parameters-file)
