@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Encryption
+category: SE:07 Encryption
 resource: Content Delivery Network
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.MinTLS/
 ---
@@ -28,7 +28,7 @@ Consider configuring a custom domain and setting the minimum supported TLS versi
 
 ## LINKS
 
-- [Data encryption in Azure](https://learn.microsoft.com/azure/architecture/framework/security/design-storage-encryption#data-in-transit)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption)
 - [Preparing for TLS 1.2 in Microsoft Azure](https://azure.microsoft.com/updates/azuretls12/)
 - [REST API Custom Domains - Enable Custom Https](https://learn.microsoft.com/rest/api/cdn/customdomains/enablecustomhttps#minimumtlsversion)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.cdn/profiles/endpoints)
