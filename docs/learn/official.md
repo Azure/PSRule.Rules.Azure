@@ -1,3 +1,8 @@
+---
+author: BernieWhite
+discussion: false
+---
+
 # Official learning
 
 ## Blog posts
