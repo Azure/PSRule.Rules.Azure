@@ -29,6 +29,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.40.0-B0029 (pre-release)
+
 What's changed since v1.39.3:
 
 - Updated rules:
@@ -84,7 +86,7 @@ What's changed since v1.39.0:
 
 ## v1.39.0
 
-What's changed since pre-release v1.38.0:
+What's changed since v1.38.0:
 
 - New features:
   - Added September 2024 baselines `Azure.GA_2024_09` and `Azure.Preview_2024_09` by @BernieWhite.
