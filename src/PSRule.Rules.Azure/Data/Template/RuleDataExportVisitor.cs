@@ -18,6 +18,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     private const string PROPERTY_RESOURCES = "resources";
     private const string PROPERTY_ID = "id";
     private const string PROPERTY_NAME = "name";
+    private const string PROPERTY_CUSTOM_NETWORK_INTERFACE_NAME = "customNetworkInterfaceName";
     private const string PROPERTY_PROPERTIES = "properties";
     private const string PROPERTY_CLIENT_ID = "clientId";
     private const string PROPERTY_PRINCIPAL_ID = "principalId";
@@ -201,9 +202,13 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
         // Add network interfaces
         if (!properties.ContainsKeyInsensitive(PROPERTY_NETWORKINTERFACES))
         {
+            // If the special case of a customNetworkInterfaceName property exists then use that for the name of the NIC.
+            var networkInterfaceName = properties.TryStringProperty(PROPERTY_CUSTOM_NETWORK_INTERFACE_NAME, out var customNetworkInterfaceName) &&
+                !string.IsNullOrEmpty(customNetworkInterfaceName) ? customNetworkInterfaceName : $"pe.nic.{ExpressionHelpers.GetUniqueString([resource.Id])}";
+
             var networkInterface = new JObject
             {
-                [PROPERTY_ID] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, TYPE_NETWORKINTERFACE, $"pe.nic.{ExpressionHelpers.GetUniqueString(new object[] { resource.Id })}")
+                [PROPERTY_ID] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, TYPE_NETWORKINTERFACE, networkInterfaceName)
             };
             properties[PROPERTY_NETWORKINTERFACES] = new JArray(new JObject[] { networkInterface });
         }

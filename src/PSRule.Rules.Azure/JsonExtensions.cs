@@ -17,6 +17,8 @@ internal static class JsonExtensions
     private const string PROPERTY_RESOURCES = "resources";
     private const string PROPERTY_NAME = "name";
     private const string PROPERTY_TYPE = "type";
+    private const string PROPERTY_ITEMS = "items";
+    private const string PROPERTY_VALUE = "value";
     private const string PROPERTY_FIELD = "field";
     private const string PROPERTY_EXISTING = "existing";
     private const string PROPERTY_IMPORT = "import";
@@ -530,24 +532,64 @@ internal static class JsonExtensions
         return o != null && o.TryStringProperty(PROPERTY_IMPORT, out var s) && !string.IsNullOrEmpty(s);
     }
 
-    internal static bool TryResourceType(this JObject o, out string type)
+#nullable enable
+
+    /// <summary>
+    /// Get the <c>type</c> property from a object.
+    /// </summary>
+    /// <param name="o">The object to read from.</param>
+    /// <param name="type">The value of <c>type</c> if it exists and is a string</param>
+    /// <returns>Returns <c>true</c> if the <c>type</c> property exists and is a string.</returns>
+    internal static bool TryTypeProperty(this JObject o, out string? type)
     {
         type = default;
         return o != null && o.TryGetProperty(PROPERTY_TYPE, out type);
     }
 
-    internal static bool TryResourceName(this JObject o, out string name)
+    /// <summary>
+    /// Get the <c>name</c> property from a object.
+    /// </summary>
+    /// <param name="o">The object to read from.</param>
+    /// <param name="name">The value of <c>name</c> if it exists and is a string</param>
+    /// <returns>Returns <c>true</c> if the <c>name</c> property exists and is a string.</returns>
+    internal static bool TryNameProperty(this JObject o, out string? name)
     {
         name = default;
         return o != null && o.TryGetProperty(PROPERTY_NAME, out name);
     }
 
-    internal static bool TryResourceNameAndType(this JObject o, out string name, out string type)
+    internal static bool TryNameAndType(this JObject o, out string? name, out string? type)
     {
         name = default;
         type = default;
-        return o != null && o.TryResourceName(out name) && o.TryResourceType(out type);
+        return o != null && o.TryNameProperty(out name) && o.TryTypeProperty(out type);
     }
+
+    /// <summary>
+    /// Get the <c>items.type</c> property from a object.
+    /// </summary>
+    /// <param name="o">The object to read from.</param>
+    /// <param name="itemType">The value of <c>items.type</c> if it exists and is a string</param>
+    /// <returns>Returns <c>true</c> if the <c>items.type</c> property exists and is a string.</returns>
+    internal static bool TryItemsTypeProperty(this JObject o, out string? itemType)
+    {
+        itemType = default;
+        return o != null && o.TryObjectProperty(PROPERTY_ITEMS, out var items) && items.TryTypeProperty(out itemType);
+    }
+
+    /// <summary>
+    /// Get the <c>value</c> property from a object.
+    /// </summary>
+    /// <param name="o">The object to read from.</param>
+    /// <param name="value">The value of <c>value</c> if it exists</param>
+    /// <returns>Returns <c>true</c> if the <c>value</c> property exists.</returns>
+    internal static bool TryValueProperty(this JObject o, out JToken? value)
+    {
+        value = default;
+        return o != null && o.TryGetProperty(PROPERTY_VALUE, out value);
+    }
+
+#nullable restore
 
     /// <summary>
     /// Read the scope from a specified <c>scope</c> property.

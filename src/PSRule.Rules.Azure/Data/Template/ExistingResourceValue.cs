@@ -75,7 +75,7 @@ internal sealed class ExistingResourceValue : IResourceValue
     /// </summary>
     private string GetName()
     {
-        if (!Value.TryResourceName(out var name) || string.IsNullOrEmpty(name)) throw new TemplateSymbolException(SymbolicName);
+        if (!Value.TryNameProperty(out var name) || string.IsNullOrEmpty(name)) throw new TemplateSymbolException(SymbolicName);
 
         return _Name = ExpandString(_Context, name);
     }
