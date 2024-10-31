@@ -821,8 +821,10 @@ namespace PSRule.Rules.Azure.Data.Template
             }
         }
 
+        [DebuggerDisplay("{_Name}, {_Type.Type}")]
         private sealed class LazyOutput : ILazyValue
         {
+            private readonly string _Name;
             private readonly TemplateContext _Context;
             private readonly JObject _Value;
             private readonly ParameterType _Type;
@@ -830,6 +832,7 @@ namespace PSRule.Rules.Azure.Data.Template
             public LazyOutput(TemplateContext context, string name, JObject value)
             {
                 _Context = context;
+                _Name = name;
                 _Value = value;
                 if (!TryParameterType(context, value, out var type))
                     throw ThrowTemplateOutputException(name);
@@ -840,6 +843,32 @@ namespace PSRule.Rules.Azure.Data.Template
             public object GetValue()
             {
                 ResolveProperty(_Context, _Value, PROPERTY_VALUE);
+
+                // Handle basic types.
+                if (_Value.TryValueProperty(out var value) && _Type.Type == TypePrimitive.String && value.Type == JTokenType.String)
+                {
+                    return _Value;
+                }
+                else if (value != null && _Type.Type == TypePrimitive.Bool && value.Type == JTokenType.Boolean)
+                {
+                    return _Value;
+                }
+                else if (value != null && _Type.Type == TypePrimitive.Int && value.Type == JTokenType.Integer)
+                {
+                    return _Value;
+                }
+                else if (value != null && _Type.Type == TypePrimitive.Array && _Type.ItemType == TypePrimitive.String && value.Type == JTokenType.Array)
+                {
+                    return _Value;
+                }
+                else if (value != null && _Type.Type == TypePrimitive.Array && _Type.ItemType == TypePrimitive.Bool && value.Type == JTokenType.Array)
+                {
+                    return _Value;
+                }
+                else if (value != null && _Type.Type == TypePrimitive.Array && _Type.ItemType == TypePrimitive.Int && value.Type == JTokenType.Array)
+                {
+                    return _Value;
+                }
                 return new MockObject(_Value);
             }
         }
@@ -1050,24 +1079,36 @@ namespace PSRule.Rules.Azure.Data.Template
             return true;
         }
 
+#nullable enable
+
         private static bool TryParameterType(ITemplateContext context, JObject parameter, out ParameterType? value)
         {
             value = null;
             if (parameter == null)
                 throw new ArgumentNullException(nameof(parameter));
 
-            // Try $ref
+            // Try $ref property.
             if (parameter.TryGetProperty(PROPERTY_REF, out var type) &&
                 context.TryDefinition(type, out var definition))
-                value = new ParameterType(definition.Type, type);
-
-            // Try type
-            else if (parameter.TryResourceType(out type) &&
-                ParameterType.TrySimpleType(type, out var v))
-                value = v;
+            {
+                value = new ParameterType(definition.Type, default, type);
+            }
+            // Try type property.
+            else if (parameter.TryTypeProperty(out type) && TypeHelpers.TryTypePrimitive(type, out var typePrimitive))
+            {
+                value = typePrimitive == TypePrimitive.Array && parameter.TryItemsTypeProperty(out var itemsType) ?
+                    ParameterType.TryArrayType(type, itemsType, out var arrayType) ?
+                        arrayType :
+                        default :
+                    ParameterType.TrySimpleType(type, out var typeSimple) ?
+                        typeSimple :
+                        default;
+            }
 
             return value != null && value.Value.Type != TypePrimitive.None;
         }
+
+#nullable restore
 
         private static void AddParameterFromType(TemplateContext context, string parameterName, ParameterType type, JToken value)
         {
@@ -1200,7 +1241,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (!condition)
                     continue;
 
-                if (!resource.TryResourceType(out var resourceType))
+                if (!resource.TryTypeProperty(out var resourceType))
                     throw new Exception();
 
                 var r = new ExistingResourceValue(context, resourceType, symbolicName, instance, copyIndex.Clone());
@@ -1255,8 +1296,8 @@ namespace PSRule.Rules.Azure.Data.Template
             if (resource.TryGetProperty<JArray>(PROPERTY_DEPENDSON, out var dependsOn))
                 resource[PROPERTY_DEPENDSON] = ExpandArray(context, dependsOn);
 
-            resource.TryResourceName(out var name);
-            resource.TryResourceType(out var type);
+            resource.TryNameProperty(out var name);
+            resource.TryTypeProperty(out var type);
 
             var deploymentScope = GetDeploymentScope(context, resource, type, out var managementGroup, out var subscriptionId, out var resourceGroupName);
 
@@ -1346,8 +1387,12 @@ namespace PSRule.Rules.Azure.Data.Template
         private static string ResolveDeploymentScopeProperty(TemplateContext context, JObject resource, string propertyName, string contextValue)
         {
             var resolvedValue = contextValue;
-            if (resource.TryGetProperty<JValue>(propertyName, out var value) && value.Type != JTokenType.Null)
-                resolvedValue = ResolveToken(context, value).Value<string>();
+            if (resource.TryGetProperty<JValue>(propertyName, out var value) && value.Type != JTokenType.Null && ExpressionHelpers.TryString(value, out var s))
+            {
+                s = ExpandString(context, s);
+                if (!string.IsNullOrEmpty(s))
+                    resolvedValue = s;
+            }
 
             resource[propertyName] = resolvedValue;
             return resolvedValue;
@@ -1449,10 +1494,18 @@ namespace PSRule.Rules.Azure.Data.Template
             var managementGroup = new ManagementGroupOption(context.ManagementGroup);
             var parameterDefaults = new ParameterDefaultsOption(context.ParameterDefaults);
             if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out var subscriptionId))
-                subscription.SubscriptionId = ExpandString(context, subscriptionId);
+            {
+                var targetSubscriptionId = ExpandString(context, subscriptionId);
+                if (!string.IsNullOrEmpty(subscriptionId))
+                    subscription.SubscriptionId = targetSubscriptionId;
+            }
 
             if (TryStringProperty(resource, PROPERTY_RESOURCEGROUP, out var resourceGroupName))
-                resourceGroup.Name = ExpandString(context, resourceGroupName);
+            {
+                var targetResourceGroup = ExpandString(context, resourceGroupName);
+                if (!string.IsNullOrEmpty(targetResourceGroup))
+                    resourceGroup.Name = targetResourceGroup;
+            }
 
             resourceGroup.SubscriptionId = subscription.SubscriptionId;
             TryObjectProperty(template, PROPERTY_PARAMETERS, out var templateParameters);

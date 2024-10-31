@@ -48,6 +48,9 @@ What's changed since v1.39.3:
     [#3085](https://github.com/Azure/PSRule.Rules.Azure/issues/3085)
   - Quality updates to rule documentation by @BernieWhite.
     [#3102](https://github.com/Azure/PSRule.Rules.Azure/issues/3102)
+- Bug fixes:
+  - Fixed output map expansion with resource IDs by @BernieWhite.
+    [#3153](https://github.com/Azure/PSRule.Rules.Azure/issues/3153)
 
 ## v1.39.3
 

@@ -739,12 +739,16 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw ArgumentsOutOfRange(nameof(Union), args);
 
             var hasMocks = false;
+            var mockArrays = 0;
 
             // Find first non-null case.
             for (var i = 0; i < args.Length; i++)
             {
-                if (args[i] is IMock)
+                if (args[i] is IMock mock)
                 {
+                    if (mock.BaseType == TypePrimitive.Array)
+                        mockArrays++;
+
                     hasMocks = true;
                     continue;
                 }
@@ -757,6 +761,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (ExpressionHelpers.IsObject(args[i]))
                     return ExpressionHelpers.UnionObject(args, deepMerge: true);
             }
+
+            // Handle mocks as arrays.
+            if (hasMocks && mockArrays == args.Length)
+                return ExpressionHelpers.UnionArray(args);
 
             // Handle mocks as objects if no other object or array is found.
             return hasMocks ? ExpressionHelpers.UnionObject(args, deepMerge: true) : null;

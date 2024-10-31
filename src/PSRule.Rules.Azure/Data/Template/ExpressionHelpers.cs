@@ -557,6 +557,13 @@ internal static class ExpressionHelpers
             value = GetLongArray(o);
             return true;
         }
+        else if (o is Mock.MockUnknownObject mockObject && mockObject.Count == 0 && mockObject.TryMutateTo(TypePrimitive.Array, out var replaced) && replaced is JArray jArrayMock)
+        {
+            var jr = new JToken[jArrayMock.Count];
+            jArrayMock.CopyTo(jr, 0);
+            value = jr;
+            return true;
+        }
         return false;
     }
 

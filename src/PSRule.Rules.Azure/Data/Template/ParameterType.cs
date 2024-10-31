@@ -1,34 +1,49 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System;
+using System.Diagnostics;
 
 namespace PSRule.Rules.Azure.Data.Template;
 
-internal readonly struct ParameterType
+#nullable enable
+
+[DebuggerDisplay("{Type}/{ItemType}, {Name}")]
+internal readonly struct ParameterType(TypePrimitive type = TypePrimitive.None, TypePrimitive itemType = TypePrimitive.None, string? name = null)
 {
-    public readonly TypePrimitive Type;
-    public readonly string Name;
+    public readonly TypePrimitive Type = type;
+    public readonly TypePrimitive ItemType = itemType;
+    public readonly string? Name = name;
 
     public static readonly ParameterType String = new(TypePrimitive.String);
     public static readonly ParameterType Object = new(TypePrimitive.Object);
     public static readonly ParameterType SecureString = new(TypePrimitive.SecureString);
     public static readonly ParameterType Array = new(TypePrimitive.Array);
 
-    public ParameterType(TypePrimitive type = TypePrimitive.None, string name = null)
+    public static bool TrySimpleType(string? type, out ParameterType? value)
     {
-        Type = type;
-        Name = name;
-    }
-
-    public static bool TrySimpleType(string type, out ParameterType value)
-    {
-        if (!Enum.TryParse(type, ignoreCase: true, result: out TypePrimitive primitive))
+        if (!TypeHelpers.TryTypePrimitive(type, out var primitive) || primitive == null)
         {
             value = new ParameterType();
             return false;
         }
-        value = new ParameterType(primitive, null);
+        value = new ParameterType(primitive.Value, default, default);
+        return true;
+    }
+
+    public static bool TryArrayType(string? type, string? itemType, out ParameterType? value)
+    {
+        if (!TypeHelpers.TryTypePrimitive(type, out var primitive) || primitive == null)
+        {
+            value = new ParameterType();
+            return false;
+        }
+
+        value = TypeHelpers.TryTypePrimitive(itemType, out var itemPrimitive) && itemPrimitive != null
+            ? new ParameterType(primitive.Value, itemPrimitive.Value, default)
+            : new ParameterType(primitive.Value, TypePrimitive.None, default);
+
         return true;
     }
 }
+
+#nullable restore
