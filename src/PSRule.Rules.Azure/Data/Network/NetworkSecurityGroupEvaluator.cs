@@ -12,7 +12,7 @@ namespace PSRule.Rules.Azure.Data.Network;
 /// <summary>
 /// A basic implementation of an evaluator for checking NSG rules.
 /// </summary>
-internal sealed partial class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvaluator
+internal sealed class NetworkSecurityGroupEvaluator : INetworkSecurityGroupEvaluator
 {
     private const string PROPERTIES = "properties";
     private const string DIRECTION = "direction";
@@ -76,7 +76,7 @@ internal sealed partial class NetworkSecurityGroupEvaluator : INetworkSecurityGr
         if (o.TryProperty(propertyName, out string[] value) && value.Length > 0)
             return value;
 
-        return o.TryProperty(propertyName, out string s) && s != ANY ? [s] : null;
+        return o.TryProperty(propertyName, out string s) && s != ANY && !string.IsNullOrEmpty(s) ? [s] : null;
     }
 }
 

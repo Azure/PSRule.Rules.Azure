@@ -29,6 +29,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Bug fixes:
+  - Fixed evaluation of `Azure.NSG.LateralTraversal` with empty string properties by @BernieWhite.
+    [#3130](https://github.com/Azure/PSRule.Rules.Azure/issues/3130)
+
 ## v1.40.0-B0029 (pre-release)
 
 What's changed since v1.39.3:
