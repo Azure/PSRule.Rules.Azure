@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Updated rules:
+  - Microsoft Defender for Cloud:
+    - Updated `Azure.DefenderCloud.Contact` to use `emails` property and removed `phone` by @BernieWhite.
+      [#3117](https://github.com/Azure/PSRule.Rules.Azure/issues/3117)
+      - Renamed rule to `Azure.Defender.SecurityContact` to better align with naming for defender rules.
+      - Bumped rule set to `2024_12`.
 - Bug fixes:
   - Fixed evaluation of `Azure.NSG.LateralTraversal` with empty string properties by @BernieWhite.
     [#3130](https://github.com/Azure/PSRule.Rules.Azure/issues/3130)
