@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Management.Automation.Language;
 using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure.Data.Template;
@@ -22,6 +23,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     private const string PROPERTY_PROPERTIES = "properties";
     private const string PROPERTY_CLIENT_ID = "clientId";
     private const string PROPERTY_PRINCIPAL_ID = "principalId";
+    private const string PROPERTY_PRINCIPAL_TYPE = "principalType";
     private const string PROPERTY_TENANT_ID = "tenantId";
     private const string PROPERTY_ADMINISTRATORS = "administrators";
     private const string PROPERTY_IDENTITY = "identity";
@@ -39,6 +41,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
 
     private const string PLACEHOLDER_GUID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
     private const string IDENTITY_SYSTEMASSIGNED = "SystemAssigned";
+    private const string DEFAULT_USER = "User";
 
     private const string TYPE_USERASSIGNEDIDENTITY = "Microsoft.ManagedIdentity/userAssignedIdentities";
     private const string TYPE_SQLSERVER = "Microsoft.Sql/servers";
@@ -54,6 +57,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     private const string TYPE_CONTAINERREGISTRY = "Microsoft.ContainerRegistry/registries";
     private const string TYPE_KEYVAULT = "Microsoft.KeyVault/vaults";
     private const string TYPE_STORAGE_OBJECTREPLICATIONPOLICIES = "Microsoft.Storage/storageAccounts/objectReplicationPolicies";
+    private const string TYPE_AUTHORIZATION_ROLE_ASSIGNMENTS = "Microsoft.Authorization/roleAssignments";
 
     private static readonly JsonMergeSettings _MergeSettings = new()
     {
@@ -133,6 +137,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
             ProjectSubscriptionAlias(context, resource) ||
             ProjectStorageObjectReplicationPolicies(context, resource) ||
             ProjectKeyVault(context, resource) ||
+            ProjectRoleAssignments(context, resource) ||
             ProjectResource(context, resource);
     }
 
@@ -148,6 +153,22 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
 
         if (!identity.ContainsKeyInsensitive(PROPERTY_TENANT_ID))
             identity.Add(PROPERTY_TENANT_ID, context.Tenant.TenantId);
+
+        return true;
+    }
+
+    private static bool ProjectRoleAssignments(TemplateContext context, IResourceValue resource)
+    {
+        if (!resource.IsType(TYPE_AUTHORIZATION_ROLE_ASSIGNMENTS))
+            return false;
+
+        resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+
+        // Add properties.principalType
+        if (!properties.ContainsKeyInsensitive(PROPERTY_PRINCIPAL_TYPE))
+        {
+            properties[PROPERTY_PRINCIPAL_TYPE] = DEFAULT_USER;
+        }
 
         return true;
     }
