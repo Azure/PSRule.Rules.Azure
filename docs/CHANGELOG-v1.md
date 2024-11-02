@@ -29,6 +29,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.40.0-B0063 (pre-release)
+
+What's changed since pre-release v1.40.0-B0029:
+
 - Updated rules:
   - Microsoft Defender for Cloud:
     - Updated `Azure.DefenderCloud.Contact` to use `emails` property and removed `phone` by @BernieWhite.
