@@ -9002,6 +9002,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../en/rules/Azure.Defender.SecurityContact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure.Defender.SecurityContact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../en/rules/Azure.Defender.Servers/" class="md-nav__link">
         
   
@@ -9070,27 +9091,6 @@
   
   <span class="md-ellipsis">
     Azure.Defender.Storage
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../en/rules/Azure.DefenderCloud.Contact/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Azure.DefenderCloud.Contact
   </span>
   
 
@@ -19046,6 +19046,18 @@
 </ul>
 <h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">#</a></h2>
 <ul>
+<li>Updated rules:<ul>
+<li>Microsoft Defender for Cloud:<ul>
+<li>Updated <code>Azure.DefenderCloud.Contact</code> to use <code>emails</code> property and removed <code>phone</code> by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
+  <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/3117">#3117</a><ul>
+<li>Renamed rule to <code>Azure.Defender.SecurityContact</code> to better align with naming for defender rules.</li>
+<li>Bumped rule set to <code>2024_12</code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 <li>Bug fixes:<ul>
 <li>Fixed evaluation of <code>Azure.NSG.LateralTraversal</code> with empty string properties by <a href="https://github.com/BernieWhite">@BernieWhite</a>.
   <a href="https://github.com/Azure/PSRule.Rules.Azure/issues/3130">#3130</a></li>
