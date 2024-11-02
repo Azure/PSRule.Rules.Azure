@@ -7,16 +7,25 @@ namespace PSRule.Rules.Azure;
 
 public sealed class TokenStreamValidatorTests
 {
-    [Fact]
-    public void HasLiteralValue()
+    [Theory]
+    [InlineData("password")]
+    [InlineData("123")]
+    [InlineData("[variables('password')]")]
+    [InlineData("[if(true(), variables('password'), parameters('password'))]")]
+    [InlineData("[if(true(), 'password', parameters('password'))]")]
+    public void HasLiteralValue_ShouldReturnTrue(string value)
     {
-        Assert.True(Helper.HasLiteralValue("password"));
-        Assert.True(Helper.HasLiteralValue("123"));
-        Assert.False(Helper.HasLiteralValue("[parameters('adminPassword')]"));
-        Assert.True(Helper.HasLiteralValue("[variables('password')]"));
-        Assert.True(Helper.HasLiteralValue("[if(true(), variables('password'), parameters('password'))]"));
-        Assert.True(Helper.HasLiteralValue("[if(true(), 'password', parameters('password'))]"));
-        Assert.False(Helper.HasLiteralValue("[if(and(empty(parameters('sqlLogin')),parameters('useAADOnlyAuthentication')),null(),parameters('sqlLogin'))]"));
+        Assert.True(Helper.HasLiteralValue(value));
+    }
+
+    [Theory]
+    [InlineData("[parameters('adminPassword')]")]
+    [InlineData("[if(and(empty(parameters('sqlLogin')),parameters('useAADOnlyAuthentication')),null(),parameters('sqlLogin'))]")]
+    [InlineData("[if(not(empty(parameters('administratorLogin'))), parameters('administratorLogin'), null())]")]
+    [InlineData("")]
+    public void HasLiteralValue_ShouldReturnFalse(string value)
+    {
+        Assert.False(Helper.HasLiteralValue(value));
     }
 
     [Fact]
@@ -38,12 +47,13 @@ public sealed class TokenStreamValidatorTests
         Assert.True(Helper.UsesListKeysFunction("[listQueryKeys(resourceId('Microsoft.Search/searchServices', 'search1'), '2021-09-01').value[0].key]"));
         Assert.False(Helper.UsesListKeysFunction("[list(resourceId('Microsoft.OperationalInsights/workspaces', 'workspace1'), '2023-09-01').value[0].properties.name]"));
         Assert.False(Helper.UsesListKeysFunction("[resourceId('Microsoft.Storage/storageAccounts', 'storage1')]"));
+        Assert.False(Helper.UsesListKeysFunction("[if(not(empty(parameters('administratorLogin'))), parameters('administratorLogin'), null())]"));
     }
 
     [Fact]
     public void HasSecureValue()
     {
-        var secureParameters = new string[] { "adminPassword" };
+        var secureParameters = new string[] { "adminPassword", "administratorLogin" };
 
         Assert.True(Helper.HasSecureValue("[parameters('adminPassword')]", secureParameters));
         Assert.True(Helper.HasSecureValue("[parameters('adminPassword')]", ["AdminPassword"]));
@@ -56,5 +66,6 @@ public sealed class TokenStreamValidatorTests
         Assert.True(Helper.HasSecureValue("[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'aStorageAccount'), '2021-09-01').keys[0].value]", secureParameters));
         Assert.True(Helper.HasSecureValue("{{SecretReference aName}}", secureParameters));
         Assert.True(Helper.HasSecureValue("[reference(resourceId('Microsoft.Insights/components', parameters('appInsightsName')), '2020-02-02').InstrumentationKey]", secureParameters));
+        Assert.True(Helper.HasSecureValue("[if(not(empty(parameters('administratorLogin'))), parameters('administratorLogin'), null())]", secureParameters));
     }
 }

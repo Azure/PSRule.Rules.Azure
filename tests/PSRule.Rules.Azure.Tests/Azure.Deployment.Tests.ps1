@@ -76,6 +76,28 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             $targetNames | Should -BeIn 'secret_good', 'streaming_jobs_good', 'reference_good';
         }
     }
+
+    Context 'With Template' {
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'deployment.tests.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Deployment.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        }
+
+        It 'Azure.Deployment.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.Name' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -BeNullOrEmpty;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.Length | Should -Be 2;
+        }
+    }
 }
 
 Describe 'Azure.Deployment' -Tag 'Deployment' {
@@ -162,9 +184,18 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 3;
         }
+    }
 
-        It 'Azure.Deployment.Name' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.Name' };
+    Context 'With Bicep with symbolic names' {
+        BeforeAll {
+            $templatePath = Join-Path -Path $here -ChildPath 'Bicep/SymbolicNameTestCases/Tests.Bicep.5.json';
+            $outputFile = Join-Path -Path $rootPath -ChildPath out/tests/Resources.Deployment.json;
+            Export-AzRuleTemplateData -TemplateFile $templatePath -OutputPath $outputFile;
+            $result = Invoke-PSRule -Module PSRule.Rules.Azure -InputPath $outputFile -Outcome All -WarningAction Ignore -ErrorAction Stop;
+        }
+
+        It 'Azure.Deployment.AdminUsername' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.AdminUsername' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -173,7 +204,7 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
+            $ruleResult.Length | Should -Be 10;
         }
     }
 }

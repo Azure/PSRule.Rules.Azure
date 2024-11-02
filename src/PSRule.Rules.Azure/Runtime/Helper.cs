@@ -55,8 +55,10 @@ public static class Helper
     /// </summary>
     public static bool HasLiteralValue(string expression)
     {
-        return !IsTemplateExpression(expression) ||
-            TokenStreamValidator.HasLiteralValue(ExpressionParser.Parse(expression));
+        return !string.IsNullOrEmpty(expression) && (
+            !IsTemplateExpression(expression) ||
+            TokenStreamValidator.HasLiteralValue(ExpressionParser.Parse(expression))
+        );
     }
 
     /// <summary>
