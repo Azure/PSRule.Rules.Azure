@@ -8,13 +8,18 @@
 #region Rules
 
 # Synopsis: Microsoft Defender for Cloud email and phone contact details should be set
-Rule 'Azure.DefenderCloud.Contact' -Alias 'Azure.SecurityCenter.Contact' -Ref 'AZR-000209' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
-    Reason $LocalizedData.SecurityCenterNotConfigured;
-    $contacts = @(GetSubResources -ResourceType 'Microsoft.Security/securityContacts');
-    $Null -ne $contacts -and $contacts.Length -gt 0;
+Rule 'Azure.Defender.SecurityContact' -Alias 'Azure.DefenderCloud.Contact', 'Azure.SecurityCenter.Contact' -Ref 'AZR-000209' -Type 'Microsoft.Subscription', 'Microsoft.Security/securityContacts' -Tag @{ release = 'GA'; ruleSet = '2024_12'; 'Azure.WAF/pillar' = 'Security'; } {
+    $contacts = @($TargetObject);
+    if ($PSRule.TargetType -eq 'Microsoft.Subscription') {
+        $contacts = @(GetSubResources -ResourceType 'Microsoft.Security/securityContacts');
+    }
+
+    if ($contacts.Length -eq 0) {
+        return $Assert.Fail($LocalizedData.SecurityContactsNotConfigured);
+    }
+
     foreach ($c in $contacts) {
-        $Assert.HasFieldValue($c, 'Properties.Email')
-        $Assert.HasFieldValue($c, 'Properties.Phone');
+        $Assert.HasFieldValue($c, 'properties.emails')
     }
 }
 

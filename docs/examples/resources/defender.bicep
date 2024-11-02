@@ -6,9 +6,10 @@ targetScope = 'subscription'
 // Bicep documentation examples
 
 // Configures security contacts to be notified for Microsoft Defender alerts
-resource securityContact 'Microsoft.Security/securityContacts@2020-01-01-preview' = {
+resource securityContact 'Microsoft.Security/securityContacts@2023-12-01-preview' = {
   name: 'default'
   properties: {
+    isEnabled: true
     notificationsByRole: {
       roles: [
         'Owner'
@@ -16,10 +17,16 @@ resource securityContact 'Microsoft.Security/securityContacts@2020-01-01-preview
       state: 'On'
     }
     emails: 'security@contoso.com'
-    alertNotifications: {
-      minimalSeverity: 'High'
-      state: 'On'
-    }
+    notificationsSources: [
+      {
+        sourceType: 'Alert'
+        minimalSeverity: 'High'
+      }
+      {
+        sourceType: 'AttackPath'
+        minimalRiskLevel: 'High'
+      }
+    ]
   }
 }
 

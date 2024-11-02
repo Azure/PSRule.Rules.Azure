@@ -5,15 +5,16 @@
     "_generator": {
       "name": "bicep",
       "version": "0.30.23.60470",
-      "templateHash": "2395927344385178299"
+      "templateHash": "7941752543000454149"
     }
   },
   "resources": [
     {
       "type": "Microsoft.Security/securityContacts",
-      "apiVersion": "2020-01-01-preview",
+      "apiVersion": "2023-12-01-preview",
       "name": "default",
       "properties": {
+        "isEnabled": true,
         "notificationsByRole": {
           "roles": [
             "Owner"
@@ -21,10 +22,16 @@
           "state": "On"
         },
         "emails": "security@contoso.com",
-        "alertNotifications": {
-          "minimalSeverity": "High",
-          "state": "On"
-        }
+        "notificationsSources": [
+          {
+            "sourceType": "Alert",
+            "minimalSeverity": "High"
+          },
+          {
+            "sourceType": "AttackPath",
+            "minimalRiskLevel": "High"
+          }
+        ]
       }
     },
     {

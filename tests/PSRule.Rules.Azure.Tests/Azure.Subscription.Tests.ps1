@@ -156,7 +156,7 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
     }
 }
 
-Describe 'Azure.DefenderCloud' -Tag 'Subscription', 'DefenderCloud' {
+Describe 'Azure.DefenderCloud' -Tag 'Subscription', 'DefenderCloud', 'defender' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -168,8 +168,8 @@ Describe 'Azure.DefenderCloud' -Tag 'Subscription', 'DefenderCloud' {
             $result = Invoke-PSRule @invokeParams -InputPath $dataPath;
         }
 
-        It 'Azure.DefenderCloud.Contact' {
-            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.DefenderCloud.Contact' };
+        It 'Azure.Defender.SecurityContact' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Defender.SecurityContact' };
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
@@ -178,17 +178,14 @@ Describe 'Azure.DefenderCloud' -Tag 'Subscription', 'DefenderCloud' {
             $ruleResult.TargetName | Should -BeIn 'subscription-B', 'subscription-A';
 
             $ruleResult[0].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[0].Reason | Should -HaveCount 2;
+            $ruleResult[0].Reason | Should -HaveCount 1;
             $ruleResult[0].Reason | Should -BeIn @(
-                "Security Center is not configured.", 
-                "Path Properties.Phone: Is null or empty."
+                "Path properties.emails: Does not exist."
             );
             $ruleResult[1].Reason | Should -Not -BeNullOrEmpty;
-            $ruleResult[1].Reason | Should -HaveCount 3;
+            $ruleResult[1].Reason | Should -HaveCount 1;
             $ruleResult[1].Reason | Should -BeIn @(
-                "Security Center is not configured.", 
-                "Path Properties.Email: Is null or empty.", 
-                "Path Properties.Phone: Is null or empty."
+                "Path properties.emails: Is null or empty."
             );
 
             # Pass

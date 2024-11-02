@@ -26,7 +26,7 @@
     AccessPolicyLeastPrivilege = "One or more access policies grant all or purge permission."
     DiagnosticSettingsNotConfigured = "Diagnostic settings are not configured."
     DiagnosticSettingsLoggingNotConfigured = "Diagnostic settings is not configured to log events for '{0}'."
-    SecurityCenterNotConfigured = "Security Center is not configured."
+    SecurityContactsNotConfigured = "Security contacts are not configured."
     LateralTraversalNotRestricted = "A rule to limit lateral traversal was not found."
     AllInboundRestricted = "The first inbound rule denies traffic from all sources."
     APIMProductSubscription = "The product '{0}' does not require a subscription to use."
