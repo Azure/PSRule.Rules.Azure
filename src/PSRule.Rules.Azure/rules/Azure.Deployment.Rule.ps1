@@ -123,8 +123,17 @@ function global:RecurseDeploymentSensitive {
         [PSObject]$Deployment
     )
     process {
+        Write-Debug "Deployment is: $($Deployment.name)";
         $propertyNames = $Configuration.GetStringValues('AZURE_DEPLOYMENT_SENSITIVE_PROPERTY_NAMES');
+
+        # Resources could be an object or an array. Check if it is an object and enumerate properties instead.
         $resources = @($Deployment.properties.template.resources);
+        if ($Deployment.properties.template.resources -is [System.Management.Automation.PSObject]) {
+            $resources = @($Deployment.properties.template.resources.PSObject.Properties.GetEnumerator() | ForEach-Object {
+                $_.Value
+            });
+        }
+
         if ($resources.Length -eq 0) {
             return $Assert.Pass();
         }
@@ -140,7 +149,7 @@ function global:RecurseDeploymentSensitive {
                         $Assert.Pass();
                     }
                     else {
-                        Write-Debug "Found property name: $propertyName";
+                        Write-Debug "Found property name: $propertyName, value: $found";
                         foreach ($value in $found) {
                             $Assert.Create(![PSRule.Rules.Azure.Runtime.Helper]::HasLiteralValue($value), $LocalizedData.LiteralSensitiveProperty, $propertyName);
                         }
@@ -167,9 +176,9 @@ function global:RecursivePropertiesSecretEvaluation {
         [Bool]$ShouldUseSecret = $True
     )
     process {
-        $PropertyName = $Property.psObject.properties.Name 
-        foreach ($NestedProperty in $Property.PSObject.Properties.Value.PSObject.Properties ) {
-            if($NestedProperty.MemberType -eq 'NoteProperty'){
+        $PropertyName = $Property.PSObject.properties.Name
+        foreach ($NestedProperty in $Property.PSObject.Properties.Value.PSObject.Properties) {
+            if($NestedProperty.MemberType -eq 'NoteProperty') {
                 RecursivePropertiesSecretEvaluation -Resource $Resource -SecureParameters $SecureParameters -Property $NestedProperty -ShouldUseSecret $ShouldUseSecret
             } else {
                 CheckPropertyUsesSecureParameter -Resource $Resource -SecureParameters $SecureParameters -PropertyPath "properties.$($PropertyName)" -ShouldUseSecret $ShouldUseSecret

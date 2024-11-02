@@ -32,6 +32,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 - Bug fixes:
   - Fixed evaluation of `Azure.NSG.LateralTraversal` with empty string properties by @BernieWhite.
     [#3130](https://github.com/Azure/PSRule.Rules.Azure/issues/3130)
+  - Fixed evaluation of `Azure.Deployment.AdminUsername` with symbolic references by @BernieWhite.
+    [#3146](https://github.com/Azure/PSRule.Rules.Azure/issues/3146)
 
 ## v1.40.0-B0029 (pre-release)
 
