@@ -24,6 +24,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private const string PARAMETER_FILE_SUFFIX = ".parameters";
         private const string TEMPLATE_FILE_EXTENSION_JSON = ".json";
+        private const string TEMPLATE_FILE_EXTENSION_JSONC = ".jsonc";
         private const string TEMPLATE_FILE_EXTENSION_BICEP = ".bicep";
 
         private const char SLASH = '/';
@@ -180,11 +181,20 @@ namespace PSRule.Rules.Azure.Data.Template
 
             var baseFilename = filename.Remove(filename.Length - suffix.Length);
             var jsonTemplateFile = Path.Combine(parentPath, string.Concat(baseFilename, TEMPLATE_FILE_EXTENSION_JSON));
+            var jsoncTemplateFile = Path.Combine(parentPath, string.Concat(baseFilename, TEMPLATE_FILE_EXTENSION_JSONC));
             var bicepTemplateFile = Path.Combine(parentPath, string.Concat(baseFilename, TEMPLATE_FILE_EXTENSION_BICEP));
             if (File.Exists(jsonTemplateFile))
+            {
                 templateFile = jsonTemplateFile;
+            }
+            else if (File.Exists(jsoncTemplateFile))
+            {
+                templateFile = jsoncTemplateFile;
+            }
             else if (File.Exists(bicepTemplateFile))
+            {
                 templateFile = bicepTemplateFile;
+            }
 
             return templateFile != null;
         }

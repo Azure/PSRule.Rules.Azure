@@ -173,7 +173,7 @@ Describe 'Azure.Cosmos' -Tag 'Cosmos', 'CosmosDB' {
 
     Context 'With template' {
         BeforeAll {
-            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Cosmos.Parameters.*.json';
+            $templatePath = Join-Path -Path $here -ChildPath 'Resources.Cosmos.Parameters.*.json?';
             $invokeParams = @{
                 Baseline      = 'Azure.All'
                 Option        = (Join-Path -Path $here -ChildPath 'test-template-options.yaml')

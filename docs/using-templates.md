@@ -7,8 +7,8 @@ author: BernieWhite
 PSRule for Azure discovers and analyzes Azure resources contained within template and parameter files.
 To enable this feature, you need to:
 
-- Enable expansion.
-- Link parameter files to templates.
+1. Enable expansion.
+2. Link parameter files to templates.
 
 !!! Abstract
     This topic covers how you can validate Azure resources within template `.json` files.
@@ -24,6 +24,15 @@ configuration:
   AZURE_PARAMETER_FILE_EXPANSION: true
 ```
 
+After enabling expansion, PSRule for Azure will start to discover ARM templates and Bicep module from parameter files.
+Supported parameter files must:
+
+- The use `.parameters.json` or `.parameters.jsonc` suffix. i.e. `deploy.parameters.jsonc`.
+- The use either of the following schemas:
+  - `https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#` OR
+  - `https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#`
+- Must be linked to a template or Bicep module using one of the methods described below.
+
 ## Linking templates
 
 PSRule for Azure automatically detects parameter files and uses the following logic to link templates or Bicep modules.
@@ -36,7 +45,7 @@ PSRule for Azure automatically detects parameter files and uses the following lo
     For details on both options continue reading.
 
 !!! Tip
-    Linking templates also applies to Bicep modules when you are using `.json` parameter files.
+    Linking templates also applies to Bicep modules when you are using JSON parameter files.
 
 ### By metadata
 
@@ -123,12 +132,18 @@ When metadata links are not set, PSRule will fallback to use a naming convention
 
 PSRule for Azure supports linking by naming convention when:
 
-- Parameter files end with `.parameters.json` linking to ARM templates or Bicep modules.
+- Parameter files end with `.parameters.json` or `.parameters.jsonc` linking to ARM templates or Bicep modules.
 - The parameter file prefix matches the file name of the template or Bicep module.
-  For example, `azuredeploy.parameters.json` links to `azuredeploy.json` or `azuredeploy.bicep`.
-- If both an ARM template and Bicep module exist, the template (`.json`) is preferred.
-  For example, `azuredeploy.parameters.json` chooses `azuredeploy.json` over `azuredeploy.bicep` if both exist.
+  For example, `azuredeploy.parameters.json` links to `azuredeploy.json`, `azuredeploy.jsonc`, or `azuredeploy.bicep`.
 - Both parameter file and template or Bicep module must be in the same directory.
+- The following search order is used to determine the file that will be used if multiple template or Bicep files exist:
+  1. ARM template file with the `.json` extension.
+  2. ARM template file with the `.jsonc` extension.
+  3. Bicep module file with the `.bicep` extension.
+
+For example, `azuredeploy.parameters.json` links to `azuredeploy.json` over `azuredeploy.jsonc` or `azuredeploy.bicep`.
+When `azuredeploy.json` does not exist, `azuredeploy.jsonc` is chosen.
+Finally `azuredeploy.parameters.json` will link to `azuredeploy.bicep` if neither of the other files exist.
 
 The following is not currently supported:
 

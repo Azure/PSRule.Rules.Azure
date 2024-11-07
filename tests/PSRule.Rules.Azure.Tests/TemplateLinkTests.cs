@@ -23,7 +23,7 @@ namespace PSRule.Rules.Azure
         }
 
         [Fact]
-        public void GetBicepParameters()
+        public void ProcessParameterFile_WhenUsingReferencingBicep_ShouldLinkToBicep()
         {
             var helper = new TemplateLinkHelper(GetContext(), AppDomain.CurrentDomain.BaseDirectory, true);
 
@@ -50,6 +50,23 @@ namespace PSRule.Rules.Azure
             Assert.EndsWith("Tests.Bicep.2.json", link.TemplateFile);
             Assert.NotNull(link.ParameterFile);
             Assert.EndsWith("Tests.Bicep.2.parameters.json", link.ParameterFile);
+        }
+
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/2053.
+        /// </summary>
+        [Fact]
+        public void ProcessParameterFile_WhenUsingJSONCExtension_ShouldLinkToTemplate()
+        {
+            var helper = new TemplateLinkHelper(GetContext(), AppDomain.CurrentDomain.BaseDirectory, true);
+
+            // From naming convention
+            var link = helper.ProcessParameterFile(GetSourcePath("azuredeploy.parameters.jsonc"));
+            Assert.NotNull(link);
+            Assert.NotNull(link.TemplateFile);
+            Assert.EndsWith("azuredeploy.jsonc", link.TemplateFile);
+            Assert.NotNull(link.ParameterFile);
+            Assert.EndsWith("azuredeploy.parameters.jsonc", link.ParameterFile);
         }
 
         #region Helper methods
