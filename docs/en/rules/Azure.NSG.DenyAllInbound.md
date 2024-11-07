@@ -1,20 +1,21 @@
 ---
 severity: Important
-pillar: Operational Excellence
-category: Configuration
+pillar: Reliability
+category: RE:01 Simplicity and efficiency
 resource: Network Security Group
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.DenyAllInbound/
 ---
 
-# Avoid denying all inbound traffic
+# Network Security Group denies all inbound traffic
 
 ## SYNOPSIS
 
-Avoid denying all inbound traffic.
+When all inbound traffic is denied, some functions that affect the reliability of your service may not work as expected.
 
 ## DESCRIPTION
 
-Network Security Groups (NSGs) are configured to block all inbound network traffic by default.
+Network Security Groups (NSGs) are can be configured to block or allow network traffic by defining security rules.
+Each security rule is processed in order from lowest priority to highest priority until the first match is found.
 Blocking all inbound traffic will fail load balancer health probes and other required traffic.
 
 When using a custom deny all inbound rule, also add rules to allow permitted traffic.
@@ -24,7 +25,7 @@ Rules with a lower priority number will be processed first.
 
 ## RECOMMENDATION
 
-Consider using a higher priority number for deny all rules to allow permitted traffic rules to be added.
+Consider using a higher priority number for deny all rules to allow permitted traffic rules to be added and processed first.
 Consider enabling Flow Logs on all critical subnets in your subscription as an auditability and security best practice.
 
 ## EXAMPLES
@@ -189,6 +190,7 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2022-01-01' = {
 
 ## LINKS
 
+- [RE:01 Simplicity and efficiency](https://learn.microsoft.com/azure/well-architected/reliability/simplify)
 - [Network security groups](https://learn.microsoft.com/azure/virtual-network/security-overview)
 - [Introduction to flow logging for network security groups](https://learn.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)
 - [Virtual network service tags](https://learn.microsoft.com/azure/virtual-network/service-tags-overview)

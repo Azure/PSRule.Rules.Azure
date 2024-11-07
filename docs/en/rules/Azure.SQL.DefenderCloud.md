@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Security
-category: Security operations
+category: SE:10 Monitoring and threat detection
 resource: SQL Database
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.DefenderCloud/
 ms-content-id: 720e560d-4ad3-41ca-93dd-69c5783b9dbe
@@ -68,6 +68,7 @@ Set-AzSqlDatabaseThreatDetectionPolicy -ResourceGroupName '<resource_group>' -Se
 
 ## LINKS
 
-- [Advanced Threat Protection for Azure SQL Database](https://learn.microsoft.com/azure/sql-database/sql-database-threat-detection-overview)
+- [SE:10 Monitoring and threat detection](https://learn.microsoft.com/azure/well-architected/security/monitor-threats)
+- [SQL Advanced Threat Protection](https://learn.microsoft.com/azure/azure-sql/database/threat-detection-overview)
 - [Microsoft Defender for SQL](https://learn.microsoft.com/azure/azure-sql/database/azure-defender-for-sql)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.sql/servers/securityalertpolicies)

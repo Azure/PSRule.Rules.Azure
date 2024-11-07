@@ -7,7 +7,7 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.
 ms-content-id: d8bf9741-541c-4229-86cb-2e2dad32d9a9
 ---
 
-# Limit MySQL server firewall rule range
+# MySQL service firewall exposes a broad range of addresses
 
 ## SYNOPSIS
 

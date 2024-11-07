@@ -18,7 +18,7 @@ Rule 'Azure.NSG.AnyInboundSource' -Ref 'AZR-000137' -Type 'Microsoft.Network/net
 }
 
 # Synopsis: Avoid blocking all inbound network traffic
-Rule 'Azure.NSG.DenyAllInbound' -Ref 'AZR-000138' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.NSG.DenyAllInbound' -Ref 'AZR-000138' -Type 'Microsoft.Network/networkSecurityGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     Reason $LocalizedData.AllInboundRestricted;
     $inboundRules = @(GetOrderedNSGRules -Direction Inbound);
     $denyRules = @($inboundRules | Where-Object {

@@ -102,7 +102,7 @@ resource securityContact 'Microsoft.Security/securityContacts@2023-12-01-preview
 az security contact update -n 'default' --emails 'security@contoso.com'
 ```
 
-## LINK
+## LINKS
 
 - [SE:12 Incident response](https://learn.microsoft.com/azure/well-architected/security/incident-response)
 - [Quickstart: Configure email notifications for security alerts](https://learn.microsoft.com/azure/defender-for-cloud/configure-email-notifications)
