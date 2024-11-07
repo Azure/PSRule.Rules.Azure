@@ -906,11 +906,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (TryObjectProperty(template, PROPERTY_VARIABLES, out var variables))
                     FunctionVariables(context, variables);
 
-                if (TryObjectProperty(template, PROPERTY_PARAMETERS, out var parameters))
-                    Parameters(context, parameters);
-
                 if (TryArrayProperty(template, PROPERTY_FUNCTIONS, out var functions))
                     Functions(context, functions);
+
+                if (TryObjectProperty(template, PROPERTY_PARAMETERS, out var parameters))
+                    Parameters(context, parameters);
 
                 if (TryObjectProperty(template, PROPERTY_VARIABLES, out variables))
                     Variables(context, variables);

@@ -1,0 +1,83 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.31.34.60546",
+      "templateHash": "6735599436485338599"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "storage",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {},
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.31.34.60546",
+              "templateHash": "12715503820119808772"
+            }
+          },
+          "functions": [
+            {
+              "namespace": "__bicep",
+              "members": {
+                "customNamingFunction": {
+                  "parameters": [
+                    {
+                      "type": "string",
+                      "name": "prefix"
+                    },
+                    {
+                      "type": "int",
+                      "name": "instance"
+                    }
+                  ],
+                  "output": {
+                    "type": "string",
+                    "value": "[format('{0}{1}{2}', parameters('prefix'), uniqueString(resourceGroup().id), parameters('instance'))]"
+                  },
+                  "metadata": {
+                    "__bicep_imported_from!": {
+                      "sourceTemplate": "Tests.Bicep.2.fn.bicep"
+                    }
+                  }
+                }
+              }
+            }
+          ],
+          "parameters": {
+            "name": {
+              "type": "string",
+              "defaultValue": "[__bicep.customNamingFunction('sa', 1)]"
+            }
+          },
+          "resources": {
+            "storage": {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2023-05-01",
+              "name": "[parameters('name')]",
+              "location": "[resourceGroup().location]",
+              "kind": "StorageV2",
+              "sku": {
+                "name": "Standard_LRS"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
