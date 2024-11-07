@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Performance Efficiency
-category: Performance
+category: PE:07 Code and infrastructure
 resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.AcceleratedNetworking/
 ms-content-id: c2b60867-f911-45d6-8d9a-a22bf0a7e729
@@ -27,5 +27,6 @@ Consider enabling accelerated networking for supported operating systems and VM 
 
 ## LINKS
 
+- [PE:07 Code and infrastructure](https://learn.microsoft.com/azure/well-architected/performance-efficiency/optimize-code-infrastructure)
 - [Create a Linux virtual machine with Accelerated Networking using Azure CLI](https://learn.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli)
 - [Create a Windows VM with accelerated networking using Azure PowerShell](https://learn.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-powershell)
