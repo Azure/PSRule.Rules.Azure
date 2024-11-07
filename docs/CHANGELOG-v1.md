@@ -42,6 +42,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 - Bug fixes:
   - Fixed projection of default role authorization property `principalType` by @BernieWhite.
     [#3163](https://github.com/Azure/PSRule.Rules.Azure/issues/3163)
+  - Fixed user defined function not found when used as parameter default by @BernieWhite.
+    [#3169](https://github.com/Azure/PSRule.Rules.Azure/issues/3169)
 
 ## v1.40.0-B0063 (pre-release)
 

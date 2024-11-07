@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data.Template;
 
@@ -30,5 +31,19 @@ public sealed class BicepUserDefinedFunctionTests : TemplateVisitorTestsBase
 
         Assert.True(templateContext.RootDeployment.TryOutput("o5", out JObject o5));
         Assert.Equal([3], o5["value"].Values<int>());
+    }
+
+    /// <summary>
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3169
+    /// </summary>
+    [Fact]
+    public void ProcessTemplate_WhenUserDefinedFunctionCalledAsParameterDefault_ShouldFindFunction()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Bicep/UserDefinedFunctionTestCases/Tests.Bicep.2.json"), null, out var templateContext);
+
+        Assert.NotNull(resources);
+
+        var actual = resources.Where(r => r["type"].Value<string>() == "Microsoft.Storage/storageAccounts").FirstOrDefault();
+        Assert.Equal("sa5f3e65afb63bb1", actual["name"].Value<string>());
     }
 }
