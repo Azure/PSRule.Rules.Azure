@@ -176,6 +176,12 @@
     <None Update="Tests.Bicep.1.parameters.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="azuredeploy.jsonc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="azuredeploy.parameters.jsonc">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Tests.Bicep.11.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

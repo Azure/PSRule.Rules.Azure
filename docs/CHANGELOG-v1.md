@@ -29,6 +29,13 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New features:
+  - Added support for expanding from `.jsonc` parameter files by @BernieWhite.
+    [#2053](https://github.com/Azure/PSRule.Rules.Azure/issues/2053)
+    - Previously only parameter files with the `.json` extension where automatically expanded.
+    - This feature adds support so that JSON parameter files with the `.jsonc` extension are also discovered and expanded.
+    - No additional configuration is required if expansion of JSON parameter files is enabled.
+    - To enable parameter file expansion set the `AZURE_PARAMETER_FILE_EXPANSION` configuration option to `true`.
 - Bug fixes:
   - Fixed projection of default role authorization property `principalType` by @BernieWhite.
     [#3163](https://github.com/Azure/PSRule.Rules.Azure/issues/3163)

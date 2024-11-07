@@ -1,0 +1,105 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "accountName": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the Cosmos DB account."
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+                "description": "The location to deploy Azure resources.",
+                "strongType": "location"
+            }
+        },
+        "disableKeyBasedMetadataWriteAccess": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "When enabled, resource keys and tokens are limit from performing resource management operations."
+            }
+        }
+    },
+    "resources": [
+        {
+            "comments": "A test Cosmos DB account.",
+            "type": "Microsoft.DocumentDB/databaseAccounts",
+            "apiVersion": "2021-04-15",
+            "name": "[parameters('accountName')]",
+            "location": "[parameters('location')]",
+            "tags": {
+                "defaultExperience": "Gremlin (graph)",
+                "hidden-cosmos-mmspecial": "",
+                "CosmosAccountType": "Production"
+            },
+            "kind": "GlobalDocumentDB",
+            "identity": {
+                "type": "None"
+            },
+            "properties": {
+                "publicNetworkAccess": "Enabled",
+                "enableAutomaticFailover": false,
+                "enableMultipleWriteLocations": false,
+                "isVirtualNetworkFilterEnabled": false,
+                "virtualNetworkRules": [],
+                "disableKeyBasedMetadataWriteAccess": "[parameters('disableKeyBasedMetadataWriteAccess')]",
+                "enableFreeTier": false,
+                "enableAnalyticalStorage": false,
+                "databaseAccountOfferType": "Standard",
+                "defaultIdentity": "FirstPartyIdentity",
+                "networkAclBypass": "None",
+                "consistencyPolicy": {
+                    "defaultConsistencyLevel": "Session",
+                    "maxIntervalInSeconds": 5,
+                    "maxStalenessPrefix": 100
+                },
+                "locations": [
+                    {
+                        "locationName": "region",
+                        "provisioningState": "Succeeded",
+                        "failoverPriority": 0,
+                        "isZoneRedundant": true
+                    }
+                ],
+                "cors": [],
+                "capabilities": [
+                    {
+                        "name": "EnableGremlin"
+                    },
+                    {
+                        "name": "EnableServerless"
+                    }
+                ],
+                "ipRules": [
+                    {
+                        "ipAddressOrRange": "104.42.195.92"
+                    },
+                    {
+                        "ipAddressOrRange": "40.76.54.131"
+                    },
+                    {
+                        "ipAddressOrRange": "52.176.6.30"
+                    },
+                    {
+                        "ipAddressOrRange": "52.169.50.45"
+                    },
+                    {
+                        "ipAddressOrRange": "52.187.184.26"
+                    }
+                ],
+                "backupPolicy": {
+                    "type": "Periodic",
+                    "periodicModeProperties": {
+                        "backupIntervalInMinutes": 240,
+                        "backupRetentionIntervalInHours": 8
+                    }
+                },
+                "networkAclBypassResourceIds": []
+            }
+        }
+    ]
+}
