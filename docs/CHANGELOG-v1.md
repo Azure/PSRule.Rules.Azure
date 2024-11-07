@@ -29,6 +29,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.40.0-B0103 (pre-release)
+
+What's changed since pre-release v1.40.0-B0063:
+
 - New features:
   - Added support for expanding from `.jsonc` parameter files by @BernieWhite.
     [#2053](https://github.com/Azure/PSRule.Rules.Azure/issues/2053)
