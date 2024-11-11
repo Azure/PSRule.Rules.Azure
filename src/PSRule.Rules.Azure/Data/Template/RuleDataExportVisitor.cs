@@ -3,7 +3,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Management.Automation.Language;
 using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure.Data.Template;
@@ -58,6 +57,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     private const string TYPE_KEYVAULT = "Microsoft.KeyVault/vaults";
     private const string TYPE_STORAGE_OBJECTREPLICATIONPOLICIES = "Microsoft.Storage/storageAccounts/objectReplicationPolicies";
     private const string TYPE_AUTHORIZATION_ROLE_ASSIGNMENTS = "Microsoft.Authorization/roleAssignments";
+    private const string TYPE_MANAGEMENT_GROUPS = "Microsoft.Management/managementGroups";
 
     private static readonly JsonMergeSettings _MergeSettings = new()
     {
@@ -138,6 +138,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
             ProjectStorageObjectReplicationPolicies(context, resource) ||
             ProjectKeyVault(context, resource) ||
             ProjectRoleAssignments(context, resource) ||
+            ProjectManagementGroup(context, resource) ||
             ProjectResource(context, resource);
     }
 
@@ -153,6 +154,22 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
 
         if (!identity.ContainsKeyInsensitive(PROPERTY_TENANT_ID))
             identity.Add(PROPERTY_TENANT_ID, context.Tenant.TenantId);
+
+        return true;
+    }
+
+    private static bool ProjectManagementGroup(TemplateContext context, IResourceValue resource)
+    {
+        if (!resource.IsType(TYPE_MANAGEMENT_GROUPS))
+            return false;
+
+        resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+
+        // Add properties.tenantId
+        if (!properties.ContainsKeyInsensitive(PROPERTY_TENANT_ID))
+        {
+            properties[PROPERTY_TENANT_ID] = context.Tenant.TenantId;
+        }
 
         return true;
     }

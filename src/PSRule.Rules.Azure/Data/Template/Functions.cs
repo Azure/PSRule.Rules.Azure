@@ -1127,6 +1127,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         /// <summary>
         /// tenantResourceId(resourceType, resourceName1, [resourceName2], ...)
+        /// See <see href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-resource#tenantresourceid/" />.
         /// </summary>
         /// <returns>
         /// /providers/{resourceProviderNamespace}/{resourceType}/{resourceName}

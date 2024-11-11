@@ -151,6 +151,7 @@ public sealed class ResourceHelperTests
     [InlineData("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-5/providers/Microsoft.KeyVault/vaults/keyvault-1/secrets/secret-1", null, null, "ffffffff-ffff-ffff-ffff-ffffffffffff", "rg-5", new string[] { "Microsoft.KeyVault/vaults", "secrets" }, new string[] { "keyvault-1", "secret-1" })]
     [InlineData("Microsoft.Network/virtualNetworks/vnet-A", null, null, null, null, new string[] { "Microsoft.Network/virtualNetworks" }, new string[] { "vnet-A" })]
     [InlineData("Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet", null, null, null, null, new string[] { "Microsoft.Network/virtualNetworks", "subnets" }, new string[] { "vnet-A", "GatewaySubnet" })]
+    [InlineData("Microsoft.Management/managementGroups/mg-1", null, "mg-1", null, null, null, null)]
     public void ResourceIdComponents(string id, string? tenant, string? managementGroup, string? subscriptionId, string? resourceGroup, string[]? resourceType, string[]? resourceName)
     {
         Assert.True(ResourceHelper.ResourceIdComponents(id, out var actualTenant, out var actualManagementGroup, out var actualSubscriptionId, out var actualResourceGroup, out var actualResourceType, out var actualResourceName));
