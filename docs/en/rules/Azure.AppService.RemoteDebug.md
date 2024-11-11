@@ -106,6 +106,8 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/web/site siteConfig.remoteDebuggingEnabled -->
+
 ## LINKS
 
 - [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)

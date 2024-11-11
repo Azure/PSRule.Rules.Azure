@@ -107,6 +107,8 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/web/site siteConfig.healthCheckPath -->
+
 ## LINKS
 
 - [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)

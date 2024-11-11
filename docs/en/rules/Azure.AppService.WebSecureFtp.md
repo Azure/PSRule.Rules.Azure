@@ -109,6 +109,8 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 }
 ```
 
+<!-- external:avm avm/res/web/site siteConfig.ftpsState -->
+
 ### Configure with Azure Policy
 
 To address this issue at runtime use the following policies:
