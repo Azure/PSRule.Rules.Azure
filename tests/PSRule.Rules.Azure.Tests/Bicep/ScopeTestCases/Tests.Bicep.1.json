@@ -1,0 +1,35 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.31.34.60546",
+      "templateHash": "7600444971325533016"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2023-04-01",
+      "name": "mg-02",
+      "properties": {
+        "displayName": "mg-02",
+        "details": {
+          "parent": "[reference(tenantResourceId('Microsoft.Management/managementGroups', 'mg-01'), '2023-04-01', 'full')]"
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Management/managementGroups', 'mg-01')]"
+      ]
+    },
+    {
+      "type": "Microsoft.Management/managementGroups",
+      "apiVersion": "2023-04-01",
+      "name": "mg-01",
+      "properties": {
+        "displayName": "mg-01"
+      }
+    }
+  ]
+}

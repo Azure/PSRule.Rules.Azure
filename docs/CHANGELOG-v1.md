@@ -34,6 +34,8 @@ What's changed since pre-release v1.40.0-B0103:
 - Bug fixes:
   - Fixed object to hashtable conversion for default parameter values by @BernieWhite.
     [#3033](https://github.com/Azure/PSRule.Rules.Azure/issues/3033)
+  - Fixed deployments with more than one module at tenant scope by @BernieWhite.
+    [#3167](https://github.com/Azure/PSRule.Rules.Azure/issues/3167)
 
 ## v1.40.0-B0103 (pre-release)
 

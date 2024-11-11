@@ -549,7 +549,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     if (string.Equals(template, "tenantDeploymentTemplate.json", StringComparison.OrdinalIgnoreCase))
                     {
                         deploymentScope = DeploymentScope.Tenant;
-                        return Tenant.Id;
+                        return "/";
                     }
                 }
 

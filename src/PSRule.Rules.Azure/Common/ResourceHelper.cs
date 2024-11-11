@@ -18,6 +18,7 @@ internal static class ResourceHelper
     private const string MANAGEMENT_GROUPS = "managementGroups";
     private const string PROVIDERS = "providers";
     private const string MANAGEMENT_GROUP_TYPE = "/providers/Microsoft.Management/managementGroups/";
+    private const string PROVIDER_MICROSOFT_MANAGEMENT = "Microsoft.Management";
 
     private const char SLASH_C = '/';
 
@@ -319,7 +320,7 @@ internal static class ResourceHelper
             result[i++] = SLASH;
             result[i++] = PROVIDERS;
             result[i++] = SLASH;
-            result[i++] = "Microsoft.Management";
+            result[i++] = PROVIDER_MICROSOFT_MANAGEMENT;
             result[i++] = SLASH;
             result[i++] = MANAGEMENT_GROUPS;
             result[i++] = SLASH;
@@ -648,10 +649,18 @@ internal static class ResourceHelper
     private static bool TryConsumeManagementGroupPart(string[] idParts, ref int start, out string? managementGroup)
     {
         managementGroup = null;
-        if (start == 0 && idParts.Length >= 5 && idParts[0] == string.Empty && StringComparer.OrdinalIgnoreCase.Equals(idParts[1], PROVIDERS) && idParts[2] == "Microsoft.Management" && idParts[3] == MANAGEMENT_GROUPS)
+        // Handle ID form: /providers/Microsoft.Management/managementGroups/<name>
+        if (start == 0 && idParts.Length >= 5 && idParts[0] == string.Empty && StringComparer.OrdinalIgnoreCase.Equals(idParts[1], PROVIDERS) && idParts[2] == PROVIDER_MICROSOFT_MANAGEMENT && idParts[3] == MANAGEMENT_GROUPS)
         {
             managementGroup = idParts[4];
             start += 5;
+            return true;
+        }
+        // Handle scope form: Microsoft.Management/managementGroups/<name>
+        else if (start == 0 && idParts.Length >= 3 && idParts[0] == PROVIDER_MICROSOFT_MANAGEMENT && idParts[1] == MANAGEMENT_GROUPS)
+        {
+            managementGroup = idParts[2];
+            start += 3;
             return true;
         }
         return false;
