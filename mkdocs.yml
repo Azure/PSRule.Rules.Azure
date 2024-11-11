@@ -86,6 +86,7 @@ nav:
       - Deprecations: deprecations.md
       - Changes and versioning: versioning.md
     - Support: support.md
+  - Updates: updates/index.md
   - Setup:
     - Configuring options:
       - Index: setup/index.md
