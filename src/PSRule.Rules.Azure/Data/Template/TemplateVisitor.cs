@@ -119,7 +119,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _Symbols = new Dictionary<string, IDeploymentSymbol>(StringComparer.OrdinalIgnoreCase);
             }
 
-            internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, ParameterDefaultsOption parameterDefaults)
+            internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, IDictionary<string, object> parameterDefaults)
                 : this()
             {
                 Pipeline = context;
@@ -136,7 +136,7 @@ namespace PSRule.Rules.Azure.Data.Template
                     ManagementGroup = managementGroup;
 
                 if (parameterDefaults != null)
-                    ParameterDefaults = parameterDefaults;
+                    ParameterDefaults = new Dictionary<string, object>(parameterDefaults, StringComparer.OrdinalIgnoreCase);
             }
 
             internal TemplateContext(PipelineContext context)
@@ -144,19 +144,19 @@ namespace PSRule.Rules.Azure.Data.Template
             {
                 Pipeline = context;
                 if (context?.Option?.Configuration?.Subscription != null)
-                    Subscription = context?.Option?.Configuration?.Subscription;
+                    Subscription = context.Option.Configuration.Subscription;
 
                 if (context?.Option?.Configuration?.ResourceGroup != null)
-                    ResourceGroup = context?.Option?.Configuration?.ResourceGroup;
+                    ResourceGroup = context.Option.Configuration.ResourceGroup;
 
                 if (context?.Option?.Configuration?.Tenant != null)
-                    Tenant = context?.Option?.Configuration?.Tenant;
+                    Tenant = context.Option.Configuration.Tenant;
 
                 if (context?.Option?.Configuration?.ManagementGroup != null)
-                    ManagementGroup = context?.Option?.Configuration?.ManagementGroup;
+                    ManagementGroup = context.Option.Configuration.ManagementGroup;
 
                 if (context?.Option?.Configuration?.ParameterDefaults != null)
-                    ParameterDefaults = context?.Option?.Configuration?.ParameterDefaults;
+                    ParameterDefaults = new Dictionary<string, object>(context.Option.Configuration.ParameterDefaults, StringComparer.OrdinalIgnoreCase);
             }
 
             private Dictionary<string, IParameterValue> Parameters { get; }
@@ -173,7 +173,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public ManagementGroupOption ManagementGroup { get; internal set; }
 
-            public ParameterDefaultsOption ParameterDefaults { get; private set; }
+            public IDictionary<string, object> ParameterDefaults { get; private set; }
 
             /// <inheritdoc/>
             public DeploymentValue Deployment => _Deployment.Count > 0 ? _Deployment.Peek() : null;
@@ -628,15 +628,51 @@ namespace PSRule.Rules.Azure.Data.Template
             internal bool TryParameterDefault(string parameterName, ParameterType type, out JToken value)
             {
                 value = default;
-                return type.Type switch
+                switch (type.Type)
                 {
-                    TypePrimitive.String or TypePrimitive.SecureString => ParameterDefaults.TryGetString(parameterName, out value),
-                    TypePrimitive.Bool => ParameterDefaults.TryGetBool(parameterName, out value),
-                    TypePrimitive.Int => ParameterDefaults.TryGetLong(parameterName, out value),
-                    TypePrimitive.Array => ParameterDefaults.TryGetArray(parameterName, out value),
-                    TypePrimitive.Object or TypePrimitive.SecureObject => ParameterDefaults.TryGetObject(parameterName, out value),
-                    _ => false,
+                    case TypePrimitive.String:
+                    case TypePrimitive.SecureString:
+                        if (ParameterDefaults.TryGetString(parameterName, out var s))
+                        {
+                            value = new JValue(s);
+                            return true;
+                        }
+                        break;
+
+                    case TypePrimitive.Bool:
+                        if (ParameterDefaults.TryGetBool(parameterName, out var b))
+                        {
+                            value = new JValue(b);
+                            return true;
+                        }
+                        break;
+
+                    case TypePrimitive.Int:
+                        if (ParameterDefaults.TryGetLong(parameterName, out var i))
+                        {
+                            value = new JValue(i);
+                            return true;
+                        }
+                        break;
+
+                    case TypePrimitive.Array:
+                        if (ParameterDefaults.TryGetArray(parameterName, out var a))
+                        {
+                            value = a;
+                            return true;
+                        }
+                        break;
+
+                    case TypePrimitive.Object:
+                    case TypePrimitive.SecureObject:
+                        if (ParameterDefaults.TryGetObject(parameterName, out var o))
+                        {
+                            value = o;
+                            return true;
+                        }
+                        break;
                 };
+                return false;
             }
 
             internal bool TryParameter(string parameterName)
@@ -1492,7 +1528,6 @@ namespace PSRule.Rules.Azure.Data.Template
             var resourceGroup = new ResourceGroupOption(context.ResourceGroup);
             var tenant = new TenantOption(context.Tenant);
             var managementGroup = new ManagementGroupOption(context.ManagementGroup);
-            var parameterDefaults = new ParameterDefaultsOption(context.ParameterDefaults);
             if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out var subscriptionId))
             {
                 var targetSubscriptionId = ExpandString(context, subscriptionId);
@@ -1510,7 +1545,7 @@ namespace PSRule.Rules.Azure.Data.Template
             resourceGroup.SubscriptionId = subscription.SubscriptionId;
             TryObjectProperty(template, PROPERTY_PARAMETERS, out var templateParameters);
 
-            var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup, parameterDefaults);
+            var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup, context.ParameterDefaults);
 
             // Handle custom type definitions early to allow type mapping of parameters if required.
             if (TryObjectProperty(template, PROPERTY_DEFINITIONS, out var definitions))

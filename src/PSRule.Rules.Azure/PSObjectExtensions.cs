@@ -46,9 +46,19 @@ internal static class PSObjectExtensions
     internal static Hashtable ToHashtable(this PSObject o)
     {
         var result = new Hashtable();
-        foreach (var p in o.Properties)
+        if (o.BaseObject is IDictionary d)
         {
-            result[p.Name] = p.Value;
+            foreach (var k in d.Keys)
+            {
+                result[k.ToString()] = d[k];
+            }
+        }
+        else
+        {
+            foreach (var p in o.Properties)
+            {
+                result[p.Name] = p.Value;
+            }
         }
         return result;
     }

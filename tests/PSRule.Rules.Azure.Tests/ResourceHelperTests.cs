@@ -53,29 +53,29 @@ public sealed class ResourceHelperTests
             "Microsoft.Network/virtualNetworks/vnet-A/subnets/GatewaySubnet"
         };
 
-        Assert.True(ResourceHelper.TryResourceIdComponents(id[0], out var subscriptionId, out var resourceGroupName, out string[] resourceTypeComponents, out string[] nameComponents));
+        Assert.True(ResourceHelper.TryResourceIdComponents(id[0], out var subscriptionId, out var resourceGroupName, out string[]? resourceTypeComponents, out string[]? nameComponents));
         Assert.Equal("00000000-0000-0000-0000-000000000000", subscriptionId);
         Assert.Equal("rg-test", resourceGroupName);
-        Assert.Equal("microsoft.operationalinsights/workspaces", resourceTypeComponents[0]);
-        Assert.Equal("workspace001", nameComponents[0]);
+        Assert.Equal("microsoft.operationalinsights/workspaces", resourceTypeComponents?[0]);
+        Assert.Equal("workspace001", nameComponents?[0]);
 
         Assert.True(ResourceHelper.TryResourceIdComponents(id[1], out subscriptionId, out resourceGroupName, out resourceTypeComponents, out nameComponents));
         Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", subscriptionId);
         Assert.Equal("test-rg", resourceGroupName);
-        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents[0]);
-        Assert.Equal("subnets", resourceTypeComponents[1]);
-        Assert.Equal("vnet-A", nameComponents[0]);
-        Assert.Equal("GatewaySubnet", nameComponents[1]);
+        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents?[0]);
+        Assert.Equal("subnets", resourceTypeComponents?[1]);
+        Assert.Equal("vnet-A", nameComponents?[0]);
+        Assert.Equal("GatewaySubnet", nameComponents?[1]);
 
         Assert.True(ResourceHelper.TryResourceIdComponents(id[2], out _, out _, out resourceTypeComponents, out nameComponents));
-        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents[0]);
-        Assert.Equal("vnet-A", nameComponents[0]);
+        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents?[0]);
+        Assert.Equal("vnet-A", nameComponents?[0]);
 
         Assert.True(ResourceHelper.TryResourceIdComponents(id[3], out _, out _, out resourceTypeComponents, out nameComponents));
-        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents[0]);
-        Assert.Equal("subnets", resourceTypeComponents[1]);
-        Assert.Equal("vnet-A", nameComponents[0]);
-        Assert.Equal("GatewaySubnet", nameComponents[1]);
+        Assert.Equal("Microsoft.Network/virtualNetworks", resourceTypeComponents?[0]);
+        Assert.Equal("subnets", resourceTypeComponents?[1]);
+        Assert.Equal("vnet-A", nameComponents?[0]);
+        Assert.Equal("GatewaySubnet", nameComponents?[1]);
     }
 
     [Fact]

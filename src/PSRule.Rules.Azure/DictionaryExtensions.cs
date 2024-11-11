@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -82,12 +83,14 @@ internal static class DictionaryExtensions
     public static bool TryGetString(this IDictionary<string, object> dictionary, string key, out string value)
     {
         value = null;
-        if (!dictionary.TryGetValue(key, out var o))
-            return false;
-
-        if (o is string result)
+        if (dictionary.TryGetValue(key, out var o) && o is string s)
         {
-            value = result;
+            value = s;
+            return true;
+        }
+        if (dictionary.TryGetValue(key, out s))
+        {
+            value = s;
             return true;
         }
         return false;
@@ -119,6 +122,26 @@ internal static class DictionaryExtensions
             return true;
         }
         return false;
+    }
+
+    public static bool TryGetArray(this IDictionary<string, object> dictionary, string parameterName, out JToken value)
+    {
+        value = default;
+        if (!dictionary.TryGetValue<List<object>>(parameterName, out var result))
+            return false;
+
+        value = JArray.FromObject(result);
+        return true;
+    }
+
+    public static bool TryGetObject(this IDictionary<string, object> dictionary, string parameterName, out JToken value)
+    {
+        value = default;
+        if (!dictionary.TryGetValue<Dictionary<object, object>>(parameterName, out var result))
+            return false;
+
+        value = JObject.FromObject(result);
+        return true;
     }
 
     /// <summary>
