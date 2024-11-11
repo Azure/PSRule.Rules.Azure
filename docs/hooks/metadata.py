@@ -24,6 +24,12 @@ def on_pre_page(page: Page, config: MkDocsConfig, files: Files) -> Page:
     return load_metadata(page)
 
 
+def on_page_markdown(markdown: str, *, page: Page, config: MkDocsConfig, files: Files) -> str:
+    '''Hook on_page_markdown event.'''
+
+    read_from_page(markdown, page)
+    return markdown
+
 
 #
 # Supporting functions
@@ -35,7 +41,7 @@ def load_metadata(page: Page) -> Page:
     if page.canonical_url.__contains__('/rules/'):
         name = page.canonical_url.split("/")[-2]
         if name != None:
-          return read_metadata(page, name)
+            return read_metadata(page, name)
 
     return page
 
@@ -78,5 +84,30 @@ def read_metadata(page: Page, name: str) -> Page:
 
             meta['alias'] = aliases
 
+        if data.get(name, None) != None and data[name].get('Control', None) != None and len(data[name]['Control']) > 0:
+            mcsb = []
+            for control in data[name]['Control']:
+                mcsb.append(control)
+
+            meta['mcsb'] = mcsb
+
     page.__annotations__['__psrule__'] = meta
     return page
+
+def read_from_page(markdown: str, page: Page):
+    '''Read metadata from the markdown content.'''
+
+    if markdown.__contains__("<!-- EXPERIMENTAL -->"):
+        page.meta['experimental'] = 'true'
+
+    if markdown.__contains__("<!-- OBSOLETE -->"):
+        page.meta['obsolete'] = 'true'
+
+    # Base on page location
+    if page.canonical_url.__contains__("/baselines/"):
+        page.meta['template'] = 'reference.html'
+        page.meta['generated'] = 'true'
+        page.meta['type'] = 'baseline'
+
+    if page.canonical_url.__contains__("/rules/") and page.meta.get("pillar", "None") != "None":
+        page.meta['type'] = 'rule'

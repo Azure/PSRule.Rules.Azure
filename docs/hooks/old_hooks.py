@@ -40,21 +40,10 @@ def on_page_markdown(markdown: str, page: Page, config: MkDocsConfig, files: Fil
         markdown = markdown.replace("## LONG DESCRIPTION", "## Description")
         markdown = re.sub("(\#\#\s+(NOTE|KEYWORDS)\s+(.|\s{1,2}(?!\#))+)", "", markdown)
 
-    if page.meta.get('link_users', 'false') != 'false':
-        markdown = re.sub(r"\@([\w-]*)", r"[@\g<1>](https://github.com/\g<1>)", markdown)
-
     markdown = add_tags(markdown)
-
-    if markdown.__contains__("<!-- EXPERIMENTAL -->"):
-        page.meta['experimental'] = 'true'
-
-    if markdown.__contains__("<!-- OBSOLETE -->"):
-        page.meta['obsolete'] = 'true'
+    markdown = markdown.replace("## Description", "<!-- RULE_INFO --><!-- RULE_FRAMEWORKS -->\r\r## Description")
 
     if page.canonical_url.__contains__("/baselines/"):
-        page.meta['template'] = 'reference.html'
-        page.meta['generated'] = 'true'
-        page.meta['type'] = 'baseline'
         if page.meta.get('experimental', 'false') == 'true':
             markdown = markdown.replace("<!-- EXPERIMENTAL -->", "!!! Experimental\r    This baseline is experimental and subject to change.")
 
@@ -65,41 +54,26 @@ def on_page_markdown(markdown: str, page: Page, config: MkDocsConfig, files: Fil
             markdown = markdown.replace("<!-- TAGS -->", f"{_badge_for_version(page.meta['moduleVersion'], page, files)}<!-- TAGS -->")
 
     if page.canonical_url.__contains__("/rules/") and page.meta.get("pillar", "None") != "None":
-        page.meta['rule'] = page.canonical_url.split("/")[-2]
         read_metadata(page)
 
     if page.meta.get('rule', None) != None:
-        markdown = markdown.replace('<!-- TAGS -->', '<nav class="md-tags"><rule/><ref/><level/></nav>\r<!-- TAGS -->')
-        markdown = markdown.replace('<rule/>', '<span class="md-tag">' + page.meta['rule'] + '</span>')
-        markdown = markdown.replace('<level/>', '<span class="md-tag">' + page.meta['level'] + '</span>')
-        if page.meta.get('ref', 'None') != 'None':
-            markdown = markdown.replace('<ref/>', '<span class="md-tag">' + page.meta['ref'] + '</span>')
-        if page.meta.get('ref', 'None') == 'None':
-            markdown = markdown.replace('<ref/>', '')
+        if page.meta.get('resource', None) != None:
+            markdown = markdown.replace("<!-- TAGS -->", "Applies to [" + page.meta['resource'] + "](resource.md#" + page.meta['resource'].lower().replace(" ", "-") + ").\r\r<!-- TAGS -->")
 
-        markdown = markdown.replace("```bicep\r", "```bicep title=\"Azure Bicep snippet\"\r")
-        markdown = markdown.replace("```json\r", "```json title=\"Azure Template snippet\"\r")
-        markdown = markdown.replace("```powershell\r", "```powershell title=\"Azure PowerShell snippet\"\r")
-        markdown = markdown.replace("```bash\r", "```bash title=\"Azure CLI snippet\"\r")
-        markdown = markdown.replace("```xml\r", "```xml title=\"API Management policy\"\r")
+        # markdown = markdown.replace('<!-- TAGS -->', '<nav class="md-tags"><rule/><ref/><level/></nav>\r<!-- TAGS -->')
+        # markdown = markdown.replace('<rule/>', '<span class="md-tag">' + page.meta['rule'] + '</span>')
+        # markdown = markdown.replace('<level/>', '<span class="md-tag">' + page.meta['level'] + '</span>')
+        # if page.meta.get('ref', 'None') != 'None':
+        #     markdown = markdown.replace('<ref/>', '<span class="md-tag">' + page.meta['ref'] + '</span>')
+        # if page.meta.get('ref', 'None') == 'None':
+        #     markdown = markdown.replace('<ref/>', '')
 
-    if page.canonical_url.__contains__("/rules/") and page.meta.get("pillar", "None") != "None":
-        markdown = markdown.replace("<!-- TAGS -->", "[:octicons-diamond-24: " + page.meta['pillar'] + "](module.md#" + page.meta['pillar'].lower().replace(" ", "-") + ")\r<!-- TAGS -->")
+        markdown = _add_snippet_titles(markdown)
+        markdown = _add_rule_information_table(markdown, page)
+        markdown = _add_rule_framework_table(markdown, page)
 
-    if page.meta.get("resource", "None") != "None":
-        markdown = markdown.replace("<!-- TAGS -->", " · [:octicons-container-24: " + page.meta['resource'] + "](resource.md#" + page.meta['resource'].lower().replace(" ", "-") + ")\r<!-- TAGS -->")
-
-    if page.meta.get('source', 'None') != 'None':
-        markdown = markdown.replace("<!-- TAGS -->", " · [:octicons-file-code-24: Rule](" + page.meta['source'] + ")\r<!-- TAGS -->")
-
-    if page.meta.get('release', 'None') == 'preview':
-        markdown = markdown.replace("<!-- TAGS -->", " · :octicons-beaker-24: Preview\r<!-- TAGS -->")
-
-    if page.meta.get('ruleSet', 'None') != 'None':
-        markdown = markdown.replace("<!-- TAGS -->", " · :octicons-tag-24: " + page.meta['ruleSet'] + "\r<!-- TAGS -->")
-
-    if page.meta.get('severity', 'None') != 'None':
-        markdown = markdown.replace("<!-- TAGS -->", " · :octicons-bell-24: " + page.meta['severity'] + "\r<!-- TAGS -->")
+        if page.meta.get('release', 'None') == 'preview':
+            markdown = markdown.replace("<!-- TAGS -->", " · :octicons-beaker-24: Preview\r<!-- TAGS -->")
 
     return markdown.replace("<!-- TAGS -->", "")
 
@@ -144,6 +118,9 @@ def read_metadata(page: Page):
 
     if meta.get('source', None) != None:
         page.meta['source'] = meta['source']
+
+    if meta.get('mcsb', None) != None:
+        page.meta['mcsb'] = meta['mcsb']
 
     page.meta['tags'] = tags
 
@@ -238,3 +215,59 @@ def _relative_path(file: File, page: Page) -> str:
 
     path = os.path.relpath(file.src_uri, page.file.src_uri)
     return os.path.sep.join(path.split(os.path.sep)[1:])
+
+def _add_snippet_titles(markdown: str) -> str:
+    '''A friendly titles to common code snippets for rules.'''
+
+    markdown = markdown.replace("```bicep\r", "```bicep title=\"Azure Bicep snippet\"\r")
+    markdown = markdown.replace("```json\r", "```json title=\"Azure Template snippet\"\r")
+    markdown = markdown.replace("```powershell\r", "```powershell title=\"Azure PowerShell snippet\"\r")
+    markdown = markdown.replace("```bash\r", "```bash title=\"Azure CLI snippet\"\r")
+    markdown = markdown.replace("```xml\r", "```xml title=\"API Management policy\"\r")
+    return markdown
+
+def _add_rule_information_table(markdown: str, page: Page) -> str:
+    '''Add a table for rule information.'''
+
+    rows = []
+    rows.append(_badge(
+        icon = "Name",
+        text = f"[{page.meta['rule']}]({page.meta['source']} 'Jump to source')"
+    ))
+
+    rows.append(_badge(
+        icon = "Rule ID",
+        text = page.meta['ref']
+    ))
+
+    rows.append(_badge(
+        icon = "Severity",
+        text = page.meta['severity']
+    ))
+
+    rows.append(_badge(
+        icon = ":octicons-tag-24:",
+        text = page.meta['ruleSet']
+    ))
+
+    return markdown.replace("<!-- RULE_INFO -->", "\r".join(rows) + "\r\r")
+
+def _add_rule_framework_table(markdown: str, page: Page) -> str:
+    '''Add a table for rule framework information.'''
+
+    rows = []
+
+    rows.append("Framework | Control ID(s)")
+    rows.append('----- | ---------')
+    
+    if page.meta.get('pillar', None) != None:
+        rows.append(f"Well-Architected Framework | [{page.meta['pillar']}](module.md#{page.meta['pillar'].lower().replace(' ', '-')}) · {page.meta['category']}")
+
+    if page.meta.get('mcsb', None) != None:
+        controls = []
+        for mcsb in page.meta['mcsb']:
+            controls.append(mcsb)
+
+        rows.append(f"Microsoft Cloud Security Benchmark | {' · '.join(controls)} |")
+
+    return markdown.replace("<!-- RULE_FRAMEWORKS -->", "\r".join(rows) + "\r\r")
