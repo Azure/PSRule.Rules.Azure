@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.40.0-B0103:
+
+- Bug fixes:
+  - Fixed object to hashtable conversion for default parameter values by @BernieWhite.
+    [#3033](https://github.com/Azure/PSRule.Rules.Azure/issues/3033)
+
 ## v1.40.0-B0103 (pre-release)
 
 What's changed since pre-release v1.40.0-B0063:

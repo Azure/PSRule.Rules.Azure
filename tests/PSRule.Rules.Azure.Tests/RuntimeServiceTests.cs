@@ -1,6 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Collections;
 using System.Management.Automation;
 using PSRule.Rules.Azure.Runtime;
 
@@ -89,12 +90,35 @@ public sealed class RuntimeServiceTests
     }
 
     [Fact]
-    public void WithParameterDefaults_WhenValid_ShouldSetOptions()
+    public void WithParameterDefaults_WhenValidPSObject_ShouldSetOptions()
     {
         var runtime = GetRuntimeService();
         var pso = new PSObject();
         pso.Properties.Add(new PSNoteProperty("value1", "1"));
         pso.Properties.Add(new PSNoteProperty("value2", "2"));
+
+        // Act
+        runtime.WithParameterDefaults(pso);
+
+        // Assert
+        var actual = runtime.ToPSRuleOption();
+        Assert.True(actual.Configuration.ParameterDefaults.TryGetString("value1", out string value1));
+        Assert.Equal("1", value1);
+        Assert.True(actual.Configuration.ParameterDefaults.TryGetString("value2", out string value2));
+        Assert.Equal("2", value2);
+    }
+
+    [Fact]
+    public void WithParameterDefaults_WhenValidHashtable_ShouldSetOptions()
+    {
+        var runtime = GetRuntimeService();
+        var hashtable = new Hashtable
+        {
+            ["value1"] = "1",
+            ["value2"] = "2"
+        };
+
+        var pso = new PSObject(hashtable);
 
         // Act
         runtime.WithParameterDefaults(pso);
