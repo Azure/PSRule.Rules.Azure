@@ -383,7 +383,7 @@ function global:GetAPIMPolicyNode {
         }
         $policies | ForEach-Object {
             if (!($IgnoreGlobal -and $_.type -eq 'Microsoft.ApiManagement/service/policies') -and $_.properties.format -in 'rawxml', 'xml' -and $_.properties.value) {
-                $xml = [Xml]$_.properties.value
+                $xml = [PSRule.Rules.Azure.Runtime.Helper]::GetAPIMPolicyDocument($_.properties.value)
                 $xml.SelectNodes("//${Node}")
             }
         }

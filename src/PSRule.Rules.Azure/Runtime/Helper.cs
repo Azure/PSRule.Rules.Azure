@@ -5,8 +5,10 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Management.Automation;
+using System.Xml;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data;
+using PSRule.Rules.Azure.Data.APIM;
 using PSRule.Rules.Azure.Data.Bicep;
 using PSRule.Rules.Azure.Data.Network;
 using PSRule.Rules.Azure.Data.Template;
@@ -204,6 +206,17 @@ public static class Helper
 
         var parts = resourceName.Split('/');
         return parts[parts.Length - 1];
+    }
+
+    /// <summary>
+    /// Load a APIM policy as an XML document.
+    /// </summary>
+    public static XmlDocument GetAPIMPolicyDocument(string content)
+    {
+        using var reader = APIMPolicyReader.ReadContent(content);
+        var doc = new XmlDocument();
+        doc.Load(reader);
+        return doc;
     }
 
     #region Helper methods
