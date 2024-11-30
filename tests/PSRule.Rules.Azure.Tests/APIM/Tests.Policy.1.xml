@@ -1,0 +1,19 @@
+<!-- Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3184 -->
+<!-- Based on work contributed by @GABRIELNGBTUC -->
+<policies>
+	<inbound>
+		<base />
+		<set-backend-service base-url="{{backend}}" />
+		<authentication-managed-identity resource="{{audience}}" />
+    <set-variable name="originalHost" value="@(context.Request.Headers.GetValueOrDefault("X-Original-Host", "NotAvailable"))" />
+	</inbound>
+	<backend>
+		<base />
+	</backend>
+	<outbound>
+		<base />
+	</outbound>
+	<on-error>
+		<base />
+	</on-error>
+</policies>

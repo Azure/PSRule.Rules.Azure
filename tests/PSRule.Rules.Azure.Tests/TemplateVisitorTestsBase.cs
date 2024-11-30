@@ -1,8 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System;
-using System.IO;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
@@ -12,14 +10,9 @@ using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure;
 
-public abstract class TemplateVisitorTestsBase
+public abstract class TemplateVisitorTestsBase : BaseTests
 {
     #region Helper methods
-
-    protected static string GetSourcePath(string fileName)
-    {
-        return Path.Combine(AppDomain.CurrentDomain.BaseDirectory, fileName);
-    }
 
     protected static JObject[] ProcessTemplate(string templateFile, string parametersFile)
     {
