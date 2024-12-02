@@ -75,6 +75,7 @@ nav:
     - Samples: samples.md
     - License and contributing:
       - Index: license-contributing/index.md
+        - First Contributors Guide: license-contributing/first-contributors-guide.md
       - Writing documentation: license-contributing/writing-documentation.md
       - Past hackathons: license-contributing/hackathons.md
     - Related projects: related-projects.md
