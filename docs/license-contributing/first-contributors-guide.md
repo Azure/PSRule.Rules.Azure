@@ -29,12 +29,8 @@ PSRule for Azure requires the following dependencies:
 
 ### Install Dependencies:
 
-1. Install the required modules from PowerShell Gallery:
+1. For development dependencies, refer to the [installation guide](https://azure.github.io/PSRule.Rules.Azure/install/#development-dependencies).
 
-   ```
-   Install-Module -Name 'PSRule.Rules.Azure' -Scope CurrentUser
-   Install-Module -Name 'Az' -Scope CurrentUser
-   ```
 2. Install PSRule from GitHub if needed:
  
     ```
@@ -59,8 +55,8 @@ Before writing a fix or feature enhancement, ensure that an issue is logged. Be 
 
 3. Add commits in your branch, making sure they are logically grouped and well-described.
 
-4. If you have updated module code or rules, also update the `CHANGELOG.md`.
-    - Note: You don't need to update the `CHANGELOG.md` for changes to unit tests or documentation.
+4. If you have updated module code or rules, also update the `docs/CHANGELOG-v1.md`.
+    - Note: You don't need to update the `docs/CHANGELOG-v1.md` for changes to unit tests or documentation.
 
 5. Build your changes locally before pushing them. This ensures that they work as expected.
 
@@ -79,14 +75,20 @@ Before writing a fix or feature enhancement, ensure that an issue is logged. Be 
 Before opening a pull request, it’s important to build and test your changes locally. PSRule for Azure uses Continuous Integration (CI) pipelines to test changes across MacOS, Linux, and Windows configurations.
 
 1. Build and Test Locally:
-    - Ensure that you can build your changes locally. Follow the instructions in the [Building from Source](https://github.com/Azure/PSRule.Rules.Azure/blob/main/docs/install.md#building-from-source) guide to set up your local environment for testing.
+   - Ensure that you can build your changes locally. Follow the instructions in the [Building from Source](https://azure.github.io/PSRule.Rules.Azure/install/#building-from-source) guide to set up your local environment for testing.
 
 2. Run All Tests:
     - Before creating your PR, run the tests to make sure your changes are working as expected:
       
        ```
-       Invoke-Pester -Script .\tests
+       Invoke-Build Test -AssertStyle Client
        ```
+
+### Example Unit Test
+
+Here is an example of a unit test for validating rules:
+[Azure.ACR.Tests.ps1 Example](https://github.com/Azure/psrule.rules.azure/blob/main/tests/PSRule.Rules.Azure.Tests/Azure.ACR.Tests.ps1#L40-L56)
+
 
 
 ## 6. **Submit Your Pull Request**
