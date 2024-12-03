@@ -101,7 +101,7 @@ If you don't already have a Bicep deployment in your repository, add a sample de
 
 You can also find a copy of these files in the [quickstart sample repository][6].
 
-  [6]: https://github.com/Azure/PSRule.Rules.Azure-quickstart/tree/main/bicep/deployments/contoso/landing-zones/subscription-1/rg-app-001
+  [6]: https://github.com/Azure/PSRule.Rules.Azure-quickstart/tree/main/deployments/contoso/landing-zones/subscription-1/rg-app-001
 
 ## Create an options file
 
