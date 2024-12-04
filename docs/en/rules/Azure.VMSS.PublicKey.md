@@ -1,12 +1,12 @@
 ---
 severity: Important
 pillar: Security
-category: Identity and access management
+category: SE:08 Hardening resources
 resource: Virtual Machine Scale Sets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.PublicKey/
 ---
 
-# Disable password authentication
+# VMSS password-based authentication is enabled
 
 ## SYNOPSIS
 
@@ -16,11 +16,9 @@ Use SSH keys instead of common credentials to secure virtual machine scale sets 
 
 Linux virtual machine scale sets should have password authentication disabled to help with eliminating password-based attacks.
 
-A common tactic observed used by adversaries against customers running Linux Virtual Machines (VMs) in Azure is password-based attacks.
-
 ## RECOMMENDATION
 
-Linux virtual machine scale sets should have password authentication disabled and instead use SSH keys.
+Consider disabling password-based authentication on Linux VM scale sets and instead use public keys.
 
 ## EXAMPLES
 
@@ -28,47 +26,48 @@ Linux virtual machine scale sets should have password authentication disabled an
 
 To deploy an virtual machine scale set that pass this rule:
 
-- Set `properties.virtualMachineProfile.OsProfile.linuxConfiguration.disablePasswordAuthentication` to `true`.
+- Set the `properties.virtualMachineProfile.OsProfile.linuxConfiguration.disablePasswordAuthentication` property to `true`.
 
 For example:
 
 ```json
 {
-    "type": "Microsoft.Compute/virtualMachineScaleSets",
-    "apiVersion": "2021-11-01",
-    "name": "vmss-01",
-    "location": "[resourceGroup().location]",
-    "sku": {
-      "name": "b2ms",
-      "tier": "Standard",
-      "capacity": 1
+  "type": "Microsoft.Compute/virtualMachineScaleSets",
+  "apiVersion": "2024-07-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "identity": {
+    "type": "SystemAssigned"
+  },
+  "sku": {
+    "name": "Standard_D8d_v5",
+    "tier": "Standard",
+    "capacity": 3
+  },
+  "properties": {
+    "overprovision": true,
+    "upgradePolicy": {
+      "mode": "Automatic"
     },
-    "properties": {
-      "overprovision": true,
-      "upgradePolicy": {
-        "mode": "Automatic"
-      },
-      "singlePlacementGroup": true,
-      "platformFaultDomainCount": 3,
-      "virtualMachineProfile": {
-        "storageProfile": {
-          "osDisk": {
-            "caching": "ReadWrite",
-            "createOption": "FromImage"
-          },
-          "imageReference": {
-            "publisher": "microsoft-aks",
-            "offer": "aks",
-            "sku": "aks-ubuntu-1804-202208",
-            "version": "2022.08.29"
-          }
+    "singlePlacementGroup": true,
+    "virtualMachineProfile": {
+      "storageProfile": {
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage"
         },
-        "osProfile": {
-          "adminUsername": "azureuser",
-          "computerNamePrefix": "vmss-01",
-          "linuxConfiguration": {
-            "disablePasswordAuthentication": true
-          },
+        "imageReference": {
+          "publisher": "MicrosoftCblMariner",
+          "offer": "Cbl-Mariner",
+          "sku": "cbl-mariner-2-gen2",
+          "version": "latest"
+        }
+      },
+      "osProfile": {
+        "adminUsername": "[parameters('adminUsername')]",
+        "computerNamePrefix": "vmss-01",
+        "linuxConfiguration": {
+          "disablePasswordAuthentication": true,
           "provisionVMAgent": true,
           "ssh": {
             "publicKeys": [
@@ -77,59 +76,65 @@ For example:
               }
             ]
           }
-        },
-        "networkProfile": {
-          "networkInterfaceConfigurations": [
-            {
-              "name": "vmss-001",
-              "properties": {
-                "primary": true,
-                "enableAcceleratedNetworking": true,
-                "networkSecurityGroup": {
-                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-001"
-                },
-                "ipConfigurations": [
-                  {
-                    "name": "ipconfig1",
-                    "properties": {
-                      "primary": true,
-                      "subnet": {
-                        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001"
-                      },
-                      "privateIPAddressVersion": "IPv4",
-                      "loadBalancerBackendAddressPools": [
-                        {
-                          "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes"
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
-            }
-          ]
         }
+      },
+      "networkProfile": {
+        "networkInterfaceConfigurations": [
+          {
+            "name": "vmss-001",
+            "properties": {
+              "primary": true,
+              "enableAcceleratedNetworking": true,
+              "ipConfigurations": [
+                {
+                  "name": "ipconfig1",
+                  "properties": {
+                    "primary": true,
+                    "subnet": {
+                      "id": "[parameters('subnetId')]"
+                    },
+                    "privateIPAddressVersion": "IPv4",
+                    "loadBalancerBackendAddressPools": [
+                      {
+                        "id": "[parameters('backendPoolId')]"
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
       }
     }
-  }
+  },
+  "zones": [
+    "1",
+    "2",
+    "3"
+  ]
+}
 ```
 
 ### Configure with Bicep
 
 To deploy an virtual machine scale set that pass this rule:
 
-- Set `properties.virtualMachineProfile.OsProfile.linuxConfiguration.disablePasswordAuthentication` to `true`.
+- Set the `properties.virtualMachineProfile.OsProfile.linuxConfiguration.disablePasswordAuthentication` property to `true`.
 
 For example:
 
 ```bicep
-resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
-  name: 'vmss-01'
-  location: resourceGroup().location
+resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2024-07-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   sku: {
-    name: 'b2ms'
+    name: 'Standard_D8d_v5'
     tier: 'Standard'
-    capacity: 1
+    capacity: 3
   }
   properties: {
     overprovision: true
@@ -137,7 +142,6 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
       mode: 'Automatic'
     }
     singlePlacementGroup: true
-    platformFaultDomainCount: 3
     virtualMachineProfile: {
       storageProfile: {
         osDisk: {
@@ -145,18 +149,17 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
           createOption: 'FromImage'
         }
         imageReference: {
-          publisher: 'microsoft-aks'
-          offer: 'aks'
-          sku: 'aks-ubuntu-1804-202208'
-          version: '2022.08.29'
-        }    
+          publisher: 'MicrosoftCblMariner'
+          offer: 'Cbl-Mariner'
+          sku: 'cbl-mariner-2-gen2'
+          version: 'latest'
+        }
       }
       osProfile: {
-        adminUsername: 'azureuser'
+        adminUsername: adminUsername
         computerNamePrefix: 'vmss-01'
         linuxConfiguration: {
           disablePasswordAuthentication: true
-          }
           provisionVMAgent: true
           ssh: {
             publicKeys: [
@@ -166,6 +169,7 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
             ]
           }
         }
+      }
       networkProfile: {
         networkInterfaceConfigurations: [
           {
@@ -173,21 +177,18 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
             properties: {
               primary: true
               enableAcceleratedNetworking: true
-              networkSecurityGroup: {
-                id: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-001'
-              }
               ipConfigurations: [
                 {
                   name: 'ipconfig1'
                   properties: {
                     primary: true
                     subnet: {
-                      id: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001'
+                      id: subnetId
                     }
                     privateIPAddressVersion: 'IPv4'
                     loadBalancerBackendAddressPools: [
                       {
-                        id:  '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes'
+                        id: backendPoolId
                       }
                     ]
                   }
@@ -199,12 +200,17 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
       }
     }
   }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
 }
 ```
 
 ## LINKS
 
-- [Identity and access management](https://learn.microsoft.com/azure/architecture/framework/security/design-identity)
+- [SE:08 Hardening resources](https://learn.microsoft.com/azure/well-architected/security/harden-resources)
 - [Azure security baseline for Linux Virtual Machines](https://learn.microsoft.com/security/benchmark/azure/baselines/virtual-machines-linux-security-baseline)
 - [Detailed steps: Create and manage SSH keys for authentication to a Linux VM in Azure](https://learn.microsoft.com/azure/virtual-machines/linux/create-ssh-keys-detailed)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachinescalesets)
