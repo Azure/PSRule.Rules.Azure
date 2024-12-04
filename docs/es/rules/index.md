@@ -48,7 +48,7 @@ AZR-000023 | [Azure.AKS.PlatformLogs](Azure.AKS.PlatformLogs.md) | AKS clusters 
 AZR-000024 | [Azure.AKS.MinNodeCount](Azure.AKS.MinNodeCount.md) | AKS clusters should have minimum number of system nodes for failover and updates. | GA
 AZR-000025 | [Azure.AKS.ManagedIdentity](Azure.AKS.ManagedIdentity.md) | Configure AKS clusters to use managed identities for managing cluster infrastructure. | GA
 AZR-000026 | [Azure.AKS.StandardLB](Azure.AKS.StandardLB.md) | Azure Kubernetes Clusters (AKS) should use a Standard load balancer SKU. | GA
-AZR-000027 | [Azure.AKS.NetworkPolicy](Azure.AKS.NetworkPolicy.md) | Deploy AKS clusters with Network Policies enabled. | GA
+AZR-000027 | [Azure.AKS.NetworkPolicy](Azure.AKS.NetworkPolicy.md) | AKS clusters without inter-pod network restrictions may be permit unauthorized lateral movement. | GA
 AZR-000028 | [Azure.AKS.AzurePolicyAddOn](Azure.AKS.AzurePolicyAddOn.md) | Configure Azure Kubernetes Service (AKS) clusters to use Azure Policy Add-on for Kubernetes. | GA
 AZR-000029 | [Azure.AKS.ManagedAAD](Azure.AKS.ManagedAAD.md) | Use AKS-managed Azure AD to simplify authorization and improve security. | GA
 AZR-000030 | [Azure.AKS.AuthorizedIPs](Azure.AKS.AuthorizedIPs.md) | Restrict access to API server endpoints to authorized IP addresses. | GA
@@ -62,9 +62,9 @@ AZR-000038 | [Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | Deploy AKS cluster with
 AZR-000039 | [Azure.AKS.Name](Azure.AKS.Name.md) | Azure Kubernetes Service (AKS) cluster names should meet naming requirements. | GA
 AZR-000040 | [Azure.AKS.DNSPrefix](Azure.AKS.DNSPrefix.md) | Azure Kubernetes Service (AKS) cluster DNS prefix should meet naming requirements. | GA
 AZR-000041 | [Azure.AKS.ContainerInsights](Azure.AKS.ContainerInsights.md) | Enable Container insights to monitor AKS cluster workloads. | GA
-AZR-000042 | [Azure.APIM.HTTPEndpoint](Azure.APIM.HTTPEndpoint.md) | Enforce HTTPS for communication to API clients. | GA
+AZR-000042 | [Azure.APIM.HTTPEndpoint](Azure.APIM.HTTPEndpoint.md) | Unencrypted communication could allow disclosure of information to an untrusted party. | GA
 AZR-000043 | [Azure.APIM.APIDescriptors](Azure.APIM.APIDescriptors.md) | APIs should have a display name and description. | GA
-AZR-000044 | [Azure.APIM.HTTPBackend](Azure.APIM.HTTPBackend.md) | Use HTTPS for communication to backend services. | GA
+AZR-000044 | [Azure.APIM.HTTPBackend](Azure.APIM.HTTPBackend.md) | Unencrypted communication could allow disclosure of information to an untrusted party. | GA
 AZR-000045 | [Azure.APIM.EncryptValues](Azure.APIM.EncryptValues.md) | Encrypt all API Management named values with Key Vault secrets. | GA
 AZR-000046 | [Azure.APIM.ProductSubscription](Azure.APIM.ProductSubscription.md) | Configure products to require a subscription. | GA
 AZR-000047 | [Azure.APIM.ProductApproval](Azure.APIM.ProductApproval.md) | Configure products to require approval. | GA
@@ -104,7 +104,7 @@ AZR-000080 | [Azure.AppService.WebProbePath](Azure.AppService.WebProbePath.md) |
 AZR-000081 | [Azure.AppService.WebSecureFtp](Azure.AppService.WebSecureFtp.md) | Web apps should disable insecure FTP and configure SFTP when required. | GA
 AZR-000082 | [Azure.AppService.ManagedIdentity](Azure.AppService.ManagedIdentity.md) | Configure managed identities to access Azure resources. | GA
 AZR-000083 | [Azure.AppService.ARRAffinity](Azure.AppService.ARRAffinity.md) | Disable client affinity for stateless services. | GA
-AZR-000084 | [Azure.AppService.UseHTTPS](Azure.AppService.UseHTTPS.md) | Azure App Service apps should only accept encrypted connections. | GA
+AZR-000084 | [Azure.AppService.UseHTTPS](Azure.AppService.UseHTTPS.md) | Unencrypted communication could allow disclosure of information to an untrusted party. | GA
 AZR-000085 | [Azure.ASG.Name](Azure.ASG.Name.md) | Application Security Group (ASG) names should meet naming requirements. | GA
 AZR-000086 | [Azure.Automation.EncryptVariables](Azure.Automation.EncryptVariables.md) | Azure Automation variables should be encrypted. | GA
 AZR-000087 | [Azure.Automation.WebHookExpiry](Azure.Automation.WebHookExpiry.md) | Do not create webhooks with an expiry time greater than 1 year (default). | GA
@@ -113,7 +113,7 @@ AZR-000089 | [Azure.Automation.PlatformLogs](Azure.Automation.PlatformLogs.md) |
 AZR-000090 | [Azure.Automation.ManagedIdentity](Azure.Automation.ManagedIdentity.md) | Ensure Managed Identity is used for authentication. | GA
 AZR-000091 | [Azure.CDN.EndpointName](Azure.CDN.EndpointName.md) | Azure CDN Endpoint names should meet naming requirements. | GA
 AZR-000092 | [Azure.CDN.MinTLS](Azure.CDN.MinTLS.md) | Azure CDN endpoints should reject TLS versions older than 1.2. | GA
-AZR-000093 | [Azure.CDN.HTTP](Azure.CDN.HTTP.md) | Enforce HTTPS for client connections. | GA
+AZR-000093 | [Azure.CDN.HTTP](Azure.CDN.HTTP.md) | Unencrypted communication could allow disclosure of information to an untrusted party. | GA
 AZR-000094 | [Azure.ContainerApp.Insecure](Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | GA
 AZR-000095 | [Azure.Cosmos.DisableMetadataWrite](Azure.Cosmos.DisableMetadataWrite.md) | Use Entra ID identities for management place operations in Azure Cosmos DB. | GA
 AZR-000096 | [Azure.Cosmos.AccountName](Azure.Cosmos.AccountName.md) | Cosmos DB account names should meet naming requirements. | GA
@@ -158,7 +158,7 @@ AZR-000134 | [Azure.MySQL.AllowAzureAccess](Azure.MySQL.AllowAzureAccess.md) | D
 AZR-000135 | [Azure.MySQL.FirewallIPRange](Azure.MySQL.FirewallIPRange.md) | Determine if there is an excessive number of permitted IP addresses. | GA
 AZR-000136 | [Azure.MySQL.ServerName](Azure.MySQL.ServerName.md) | Azure MySQL DB server names should meet naming requirements. | GA
 AZR-000137 | [Azure.NSG.AnyInboundSource](Azure.NSG.AnyInboundSource.md) | Network security groups (NSGs) should avoid rules that allow "any" as an inbound source. | GA
-AZR-000138 | [Azure.NSG.DenyAllInbound](Azure.NSG.DenyAllInbound.md) | Avoid denying all inbound traffic. | GA
+AZR-000138 | [Azure.NSG.DenyAllInbound](Azure.NSG.DenyAllInbound.md) | When all inbound traffic is denied, some functions that affect the reliability of your service may not work as expected. | GA
 AZR-000139 | [Azure.NSG.LateralTraversal](Azure.NSG.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | GA
 AZR-000140 | [Azure.NSG.Associated](Azure.NSG.Associated.md) | Network Security Groups (NSGs) should be associated to a subnet or network interface. | GA
 AZR-000141 | [Azure.NSG.Name](Azure.NSG.Name.md) | Network Security Group (NSG) names should meet naming requirements. | GA
@@ -178,7 +178,7 @@ AZR-000154 | [Azure.PublicIP.IsAttached](Azure.PublicIP.IsAttached.md) | Public 
 AZR-000155 | [Azure.PublicIP.Name](Azure.PublicIP.Name.md) | Public IP names should meet naming requirements. | GA
 AZR-000156 | [Azure.PublicIP.DNSLabel](Azure.PublicIP.DNSLabel.md) | Public IP domain name labels should meet naming requirements. | GA
 AZR-000157 | [Azure.PublicIP.AvailabilityZone](Azure.PublicIP.AvailabilityZone.md) | Public IP addresses deployed with Standard SKU should use availability zones in supported regions for high availability. | GA
-AZR-000158 | [Azure.PublicIP.StandardSKU](Azure.PublicIP.StandardSKU.md) | Public IP addresses should be deployed with Standard SKU for production workloads. | GA
+AZR-000158 | [Azure.PublicIP.StandardSKU](Azure.PublicIP.StandardSKU.md) | The basic SKU is being retired on 30 September 2025, and does not include several reliability and security features. | GA
 AZR-000159 | [Azure.Redis.MinSKU](Azure.Redis.MinSKU.md) | Use Azure Cache for Redis instances of at least Standard C1. | GA
 AZR-000160 | [Azure.Redis.MaxMemoryReserved](Azure.Redis.MaxMemoryReserved.md) | Configure maxmemory-reserved to reserve memory for non-cache operations. | GA
 AZR-000161 | [Azure.Redis.AvailabilityZone](Azure.Redis.AvailabilityZone.md) | Premium Redis cache should be deployed with availability zones for high availability. | GA
@@ -205,7 +205,7 @@ AZR-000181 | [Azure.SignalR.ManagedIdentity](Azure.SignalR.ManagedIdentity.md) |
 AZR-000182 | [Azure.SignalR.SLA](Azure.SignalR.SLA.md) | Use SKUs that include an SLA when configuring SignalR Services. | GA
 AZR-000183 | [Azure.SQL.FirewallRuleCount](Azure.SQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules. | GA
 AZR-000184 | [Azure.SQL.AllowAzureAccess](Azure.SQL.AllowAzureAccess.md) | Determine if access from Azure services is required. | GA
-AZR-000185 | [Azure.SQL.FirewallIPRange](Azure.SQL.FirewallIPRange.md) | Determine if there is an excessive number of permitted IP addresses set in the allowed IP list (CIDR range). | GA
+AZR-000185 | [Azure.SQL.FirewallIPRange](Azure.SQL.FirewallIPRange.md) | Each IP address in the permitted IP list is allowed network access to any databases hosted on the same logical server. | GA
 AZR-000186 | [Azure.SQL.DefenderCloud](Azure.SQL.DefenderCloud.md) | Enable Microsoft Defender for Azure SQL logical server. | GA
 AZR-000187 | [Azure.SQL.Auditing](Azure.SQL.Auditing.md) | Enable auditing for Azure SQL logical server. | GA
 AZR-000188 | [Azure.SQL.AAD](Azure.SQL.AAD.md) | Use Entra ID authentication with Azure SQL databases. | GA
@@ -215,7 +215,7 @@ AZR-000191 | [Azure.SQL.TDE](Azure.SQL.TDE.md) | Use Transparent Data Encryption
 AZR-000192 | [Azure.SQL.DBName](Azure.SQL.DBName.md) | Azure SQL Database names should meet naming requirements. | GA
 AZR-000193 | [Azure.SQL.FGName](Azure.SQL.FGName.md) | Azure SQL failover group names should meet naming requirements. | GA
 AZR-000194 | [Azure.SQLMI.Name](Azure.SQLMI.Name.md) | SQL Managed Instance names should meet naming requirements. | GA
-AZR-000195 | [Azure.Storage.UseReplication](Azure.Storage.UseReplication.md) | Storage Accounts not using geo-replicated storage (GRS) or zone-redundant (ZRS) may be at risk. | GA
+AZR-000195 | [Azure.Storage.UseReplication](Azure.Storage.UseReplication.md) | Storage Accounts using the LRS SKU are only replicated within a single zone. | GA
 AZR-000196 | [Azure.Storage.SecureTransfer](Azure.Storage.SecureTransfer.md) | Storage accounts should only accept encrypted connections. | GA
 AZR-000197 | [Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable blob soft delete on Storage Accounts. | GA
 AZR-000198 | [Azure.Storage.BlobPublicAccess](Azure.Storage.BlobPublicAccess.md) | Storage Accounts should only accept authorized requests. | GA
@@ -229,7 +229,7 @@ AZR-000205 | [Azure.RBAC.LimitMGDelegation](Azure.RBAC.LimitMGDelegation.md) | L
 AZR-000206 | [Azure.RBAC.CoAdministrator](Azure.RBAC.CoAdministrator.md) | Delegate access to manage Azure resources using role-based access control (RBAC). | GA
 AZR-000207 | [Azure.RBAC.UseRGDelegation](Azure.RBAC.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | GA
 AZR-000208 | [Azure.RBAC.PIM](Azure.RBAC.PIM.md) | Use just-in-time (JiT) activation of roles instead of persistent role assignment. | GA
-AZR-000209 | [Azure.DefenderCloud.Contact](Azure.DefenderCloud.Contact.md) | Microsoft Defender for Cloud email and phone contact details should be set. | GA
+AZR-000209 | [Azure.Defender.SecurityContact](Azure.Defender.SecurityContact.md) | Important security notifications may be lost or not processed in a timely manner when a clear security contact is not identified. | GA
 AZR-000210 | [Azure.DefenderCloud.Provisioning](Azure.DefenderCloud.Provisioning.md) | Enable auto-provisioning on to improve Microsoft Defender for Cloud insights. | GA
 AZR-000211 | [Azure.Monitor.ServiceHealth](Azure.Monitor.ServiceHealth.md) | Configure Service Health alerts to notify administrators. | GA
 AZR-000212 | [Azure.Template.TemplateFile](Azure.Template.TemplateFile.md) | Use ARM template files that are valid. | GA
@@ -299,12 +299,12 @@ AZR-000275 | [Azure.VNG.ConnectionName](Azure.VNG.ConnectionName.md) | Virtual N
 AZR-000276 | [Azure.vWAN.Name](Azure.vWAN.Name.md) | Virtual WAN (vWAN) names should meet naming requirements. | GA
 AZR-000277 | [Azure.WebPubSub.ManagedIdentity](Azure.WebPubSub.ManagedIdentity.md) | Configure Web PubSub Services to use managed identities to access Azure resources securely. | GA
 AZR-000278 | [Azure.WebPubSub.SLA](Azure.WebPubSub.SLA.md) | Use SKUs that include an SLA when configuring Web PubSub Services. | GA
-AZR-000279 | [Azure.Deployment.OutputSecretValue](Azure.Deployment.OutputSecretValue.md) | Avoid outputting sensitive deployment values. | GA
+AZR-000279 | [Azure.Deployment.OutputSecretValue](Azure.Deployment.OutputSecretValue.md) | Outputting a sensitive value from deployment may leak secrets into deployment history or logs. | GA
 AZR-000280 | [Azure.AI.PublicAccess](Azure.AI.PublicAccess.md) | Restrict access of Azure AI services to authorized virtual networks. | GA
 AZR-000281 | [Azure.AI.ManagedIdentity](Azure.AI.ManagedIdentity.md) | Configure managed identities to access Azure resources. | GA
 AZR-000282 | [Azure.AI.DisableLocalAuth](Azure.AI.DisableLocalAuth.md) | Access keys allow depersonalized access to Azure AI using a shared secret. | GA
 AZR-000283 | [Azure.AI.PrivateEndpoints](Azure.AI.PrivateEndpoints.md) | Use Private Endpoints to access Azure AI services accounts. | GA
-AZR-000284 | [Azure.Deployment.AdminUsername](Azure.Deployment.AdminUsername.md) | Use secure parameters for sensitive resource properties. | GA
+AZR-000284 | [Azure.Deployment.AdminUsername](Azure.Deployment.AdminUsername.md) | A sensitive property set from deterministic or hardcoded values is not secure. | GA
 AZR-000285 | [Azure.AKS.UptimeSLA](Azure.AKS.UptimeSLA.md) | AKS clusters should have Uptime SLA enabled for a financially backed SLA. | GA
 AZR-000286 | [Azure.CDN.UseFrontDoor](Azure.CDN.UseFrontDoor.md) | Use Azure Front Door Standard or Premium SKU to improve the performance of web pages with dynamic content and overall capabilities. | GA
 AZR-000287 | [Azure.AKS.EphemeralOSDisk](Azure.AKS.EphemeralOSDisk.md) | AKS clusters should use ephemeral OS disks which can provide lower read/write latency, along with faster node scaling and cluster upgrades. | GA
@@ -336,7 +336,7 @@ AZR-000312 | [Azure.AppConfig.GeoReplica](Azure.AppConfig.GeoReplica.md) | Repli
 AZR-000313 | [Azure.AppConfig.PurgeProtect](Azure.AppConfig.PurgeProtect.md) | Consider purge protection for app configuration store to ensure store cannot be purged in the retention period. | GA
 AZR-000314 | [Azure.VNET.BastionSubnet](Azure.VNET.BastionSubnet.md) | VNETs with a GatewaySubnet should have an AzureBastionSubnet to allow for out of band remote access to VMs. | GA
 AZR-000315 | [Azure.ServiceBus.MinTLS](Azure.ServiceBus.MinTLS.md) | Service Bus namespaces should reject TLS versions older than 1.2. | GA
-AZR-000316 | [Azure.Deployment.SecureValue](Azure.Deployment.SecureValue.md) | Use secure parameters for setting properties of resources that contain sensitive information. | GA
+AZR-000316 | [Azure.Deployment.SecureValue](Azure.Deployment.SecureValue.md) | A secret property set from a non-secure value may leak the secret into deployment history or logs. | GA
 AZR-000317 | [Azure.VM.MigrateAMA](Azure.VM.MigrateAMA.md) | Use Azure Monitor Agent as replacement for Log Analytics Agent. | GA
 AZR-000318 | [Azure.VMSS.MigrateAMA](Azure.VMSS.MigrateAMA.md) | Use Azure Monitor Agent as replacement for Log Analytics Agent. | GA
 AZR-000319 | [Azure.ASE.MigrateV3](Azure.ASE.MigrateV3.md) | Use ASEv3 as replacement for the classic app service environment versions ASEv1 and ASEv2. | GA
@@ -351,7 +351,7 @@ AZR-000327 | [Azure.PostgreSQL.DefenderCloud](Azure.PostgreSQL.DefenderCloud.md)
 AZR-000328 | [Azure.MySQL.DefenderCloud](Azure.MySQL.DefenderCloud.md) | Enable Microsoft Defender for Cloud for Azure Database for MySQL. | GA
 AZR-000329 | [Azure.MariaDB.GeoRedundantBackup](Azure.MariaDB.GeoRedundantBackup.md) | Azure Database for MariaDB should store backups in a geo-redundant storage. | GA
 AZR-000330 | [Azure.MariaDB.DefenderCloud](Azure.MariaDB.DefenderCloud.md) | Enable Microsoft Defender for Cloud for Azure Database for MariaDB. | GA
-AZR-000331 | [Azure.Deployment.OuterSecret](Azure.Deployment.OuterSecret.md) | Do not use Outer deployments when references SecureString or SecureObject parameters. | GA
+AZR-000331 | [Azure.Deployment.OuterSecret](Azure.Deployment.OuterSecret.md) | Outer evaluation deployments may leak secrets exposed as secure parameters into logs and nested deployments. | GA
 AZR-000332 | [Azure.VM.ScriptExtensions](Azure.VM.ScriptExtensions.md) | Custom Script Extensions scripts that reference secret values must use the protectedSettings. | GA
 AZR-000333 | [Azure.VMSS.ScriptExtensions](Azure.VMSS.ScriptExtensions.md) | Custom Script Extensions scripts that reference secret values must use the protectedSettings. | GA
 AZR-000334 | [Azure.MariaDB.UseSSL](Azure.MariaDB.UseSSL.md) | Azure Database for MariaDB servers should only accept encrypted connections. | GA
@@ -428,7 +428,7 @@ AZR-000404 | [Azure.ML.DisableLocalAuth](Azure.ML.DisableLocalAuth.md) | Azure M
 AZR-000405 | [Azure.ML.ComputeVnet](Azure.ML.ComputeVnet.md) | Azure Machine Learning Computes should be hosted in a virtual network (VNet). | GA
 AZR-000406 | [Azure.ML.PublicAccess](Azure.ML.PublicAccess.md) | Disable public network access from a Azure Machine Learning workspace. | GA
 AZR-000407 | [Azure.ML.UserManagedIdentity](Azure.ML.UserManagedIdentity.md) | ML workspaces should use user-assigned managed identity, rather than the default system-assigned managed identity. | GA
-AZR-000408 | [Azure.Deployment.SecureParameter](Azure.Deployment.SecureParameter.md) | Use secure parameters for any parameter that contains sensitive information. | GA
+AZR-000408 | [Azure.Deployment.SecureParameter](Azure.Deployment.SecureParameter.md) | Sensitive parameters that have been not been marked as secure may leak the secret into deployment history or logs. | GA
 AZR-000409 | [Azure.Databricks.SKU](Azure.Databricks.SKU.md) | Ensure Databricks workspaces are non-trial SKUs for production workloads. | GA
 AZR-000410 | [Azure.Databricks.PublicAccess](Azure.Databricks.PublicAccess.md) | Azure Databricks workspaces should disable public network access. | GA
 AZR-000411 | [Azure.DevBox.ProjectLimit](Azure.DevBox.ProjectLimit.md) | Limit the number of Dev Boxes a single user can create for a project. | GA
