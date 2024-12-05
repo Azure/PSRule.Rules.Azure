@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.28.1.47646",
-      "templateHash": "14523451418990638896"
+      "version": "0.31.92.45157",
+      "templateHash": "1657333872264934230"
     }
   },
   "parameters": {
@@ -67,9 +67,9 @@
       "apiVersion": "2024-03-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
-      "zones": [
-        "1"
-      ],
+      "identity": {
+        "type": "SystemAssigned"
+      },
       "properties": {
         "hardwareProfile": {
           "vmSize": "Standard_D2s_v3"
@@ -112,6 +112,9 @@
           ]
         }
       },
+      "zones": [
+        "1"
+      ],
       "dependsOn": [
         "[resourceId('Microsoft.Compute/disks', parameters('name'))]",
         "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
@@ -249,6 +252,56 @@
           }
         ]
       }
+    },
+    {
+      "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2024-03-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "hardwareProfile": {
+          "vmSize": "Standard_D8d_v5"
+        },
+        "osProfile": {
+          "computerName": "[parameters('name')]",
+          "adminUsername": "[parameters('adminUsername')]",
+          "linuxConfiguration": {
+            "disablePasswordAuthentication": true
+          }
+        },
+        "storageProfile": {
+          "imageReference": {
+            "publisher": "MicrosoftCblMariner",
+            "offer": "Cbl-Mariner",
+            "sku": "cbl-mariner-2-gen2",
+            "version": "latest"
+          },
+          "osDisk": {
+            "name": "[format('{0}-disk0', parameters('name'))]",
+            "caching": "ReadWrite",
+            "createOption": "FromImage",
+            "managedDisk": {
+              "storageAccountType": "Premium_LRS"
+            }
+          }
+        },
+        "networkProfile": {
+          "networkInterfaces": [
+            {
+              "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
+            }
+          ]
+        }
+      },
+      "zones": [
+        "1"
+      ],
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
+      ]
     }
   ]
 }

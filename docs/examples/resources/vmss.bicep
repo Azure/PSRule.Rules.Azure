@@ -3,13 +3,31 @@
 
 // An example simple Linux VMSS
 
-resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
-  name: 'vmss-01'
-  location: resourceGroup().location
+@description('The name of the resource.')
+param name string
+
+@description('The location resources will be deployed.')
+param location string = resourceGroup().location
+
+@description('A unique identifier for the VNET subnet.')
+param subnetId string
+
+@description('A unique identifier for the load balancer backend pool.')
+param backendPoolId string
+
+@description('The admin username used for each VM instance.')
+param adminUsername string
+
+resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2024-07-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
   sku: {
-    name: 'b2ms'
+    name: 'Standard_D8d_v5'
     tier: 'Standard'
-    capacity: 1
+    capacity: 3
   }
   properties: {
     overprovision: true
@@ -17,7 +35,6 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
       mode: 'Automatic'
     }
     singlePlacementGroup: true
-    platformFaultDomainCount: 3
     virtualMachineProfile: {
       storageProfile: {
         osDisk: {
@@ -25,18 +42,17 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
           createOption: 'FromImage'
         }
         imageReference: {
-          publisher: 'microsoft-aks'
-          offer: 'aks'
-          sku: 'aks-ubuntu-1804-202208'
-          version: '2022.08.29'
-        }    
+          publisher: 'MicrosoftCblMariner'
+          offer: 'Cbl-Mariner'
+          sku: 'cbl-mariner-2-gen2'
+          version: 'latest'
+        }
       }
       osProfile: {
-        adminUsername: 'azureuser'
+        adminUsername: adminUsername
         computerNamePrefix: 'vmss-01'
         linuxConfiguration: {
           disablePasswordAuthentication: true
-          }
           provisionVMAgent: true
           ssh: {
             publicKeys: [
@@ -46,6 +62,7 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
             ]
           }
         }
+      }
       networkProfile: {
         networkInterfaceConfigurations: [
           {
@@ -53,21 +70,18 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
             properties: {
               primary: true
               enableAcceleratedNetworking: true
-              networkSecurityGroup: {
-                id: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkSecurityGroups/nsg-001'
-              }
               ipConfigurations: [
                 {
                   name: 'ipconfig1'
                   properties: {
                     primary: true
                     subnet: {
-                      id: '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001'
+                      id: subnetId
                     }
                     privateIPAddressVersion: 'IPv4'
                     loadBalancerBackendAddressPools: [
                       {
-                        id:  '/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/loadBalancers/kubernetes/backendAddressPools/kubernetes'
+                        id: backendPoolId
                       }
                     ]
                   }
@@ -79,4 +93,9 @@ resource vmScaleSet 'Microsoft.Compute/virtualMachineScaleSets@2021-11-01' = {
       }
     }
   }
+  zones: [
+    '1'
+    '2'
+    '3'
+  ]
 }

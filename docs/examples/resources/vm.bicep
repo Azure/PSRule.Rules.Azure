@@ -30,9 +30,9 @@ param amaIdentityId string
 resource vm 'Microsoft.Compute/virtualMachines@2024-03-01' = {
   name: name
   location: location
-  zones: [
-    '1'
-  ]
+  identity: {
+    type: 'SystemAssigned'
+  }
   properties: {
     hardwareProfile: {
       vmSize: 'Standard_D2s_v3'
@@ -75,6 +75,9 @@ resource vm 'Microsoft.Compute/virtualMachines@2024-03-01' = {
       ]
     }
   }
+  zones: [
+    '1'
+  ]
 }
 
 // An example of a VM managed disk.
@@ -204,4 +207,51 @@ resource nic 'Microsoft.Network/networkInterfaces@2023-06-01' = {
       }
     ]
   }
+}
+
+// An example virtual machine running Azure Linux.
+resource linux 'Microsoft.Compute/virtualMachines@2024-03-01' = {
+  name: name
+  location: location
+  identity: {
+    type: 'SystemAssigned'
+  }
+  properties: {
+    hardwareProfile: {
+      vmSize: 'Standard_D8d_v5'
+    }
+    osProfile: {
+      computerName: name
+      adminUsername: adminUsername
+      linuxConfiguration: {
+        disablePasswordAuthentication: true
+      }
+    }
+    storageProfile: {
+      imageReference: {
+        publisher: 'MicrosoftCblMariner'
+        offer: 'Cbl-Mariner'
+        sku: 'cbl-mariner-2-gen2'
+        version: 'latest'
+      }
+      osDisk: {
+        name: '${name}-disk0'
+        caching: 'ReadWrite'
+        createOption: 'FromImage'
+        managedDisk: {
+          storageAccountType: 'Premium_LRS'
+        }
+      }
+    }
+    networkProfile: {
+      networkInterfaces: [
+        {
+          id: nic.id
+        }
+      ]
+    }
+  }
+  zones: [
+    '1'
+  ]
 }
