@@ -8,6 +8,7 @@ site/
 dist/
 **/bin/
 **/obj/
+**/node_modules/
 **/__pycache__/
 **/*.egg-info/
 **/build/
