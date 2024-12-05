@@ -75,7 +75,6 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.APIM.ProductTerms](Azure.APIM.ProductTerms.md) | Set legal terms for each product registered in API Management. | Important | Error
 [Azure.APIM.SampleProducts](Azure.APIM.SampleProducts.md) | Remove starter and unlimited sample products. | Awareness | Error
-[Azure.NSG.DenyAllInbound](Azure.NSG.DenyAllInbound.md) | Avoid denying all inbound traffic. | Important | Error
 
 ### Deployment
 
@@ -281,19 +280,14 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.AppService.HTTP2](Azure.AppService.HTTP2.md) | Use HTTP/2 instead of HTTP/1.x to improve protocol efficiency. | Awareness | Error
+[Azure.VM.AcceleratedNetworking](Azure.VM.AcceleratedNetworking.md) | Use accelerated networking for supported operating systems and VM types. | Important | Error
+[Azure.VM.DiskCaching](Azure.VM.DiskCaching.md) | Check disk caching is configured correctly for the workload. | Important | Error
 
 ### PE:08 Data performance
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.FrontDoor.UseCaching](Azure.FrontDoor.UseCaching.md) | Use caching to reduce retrieving contents from origins. | Important | Error
-
-### Performance
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.VM.AcceleratedNetworking](Azure.VM.AcceleratedNetworking.md) | Use accelerated networking for supported operating systems and VM types. | Important | Error
-[Azure.VM.DiskCaching](Azure.VM.DiskCaching.md) | Check disk caching is configured correctly for the workload. | Important | Error
 
 ### Performance efficiency checklist
 
@@ -321,9 +315,6 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.AppConfig.PurgeProtect](Azure.AppConfig.PurgeProtect.md) | Consider purge protection for app configuration store to ensure store cannot be purged in the retention period. | Important | Error
-[Azure.Storage.ContainerSoftDelete](Azure.Storage.ContainerSoftDelete.md) | Enable container soft delete on Storage Accounts. | Important | Error
-[Azure.Storage.FileShareSoftDelete](Azure.Storage.FileShareSoftDelete.md) | Enable soft delete on Storage Accounts file shares. | Important | Error
-[Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable blob soft delete on Storage Accounts. | Important | Error
 
 ### Design
 
@@ -352,6 +343,7 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
+[Azure.NSG.DenyAllInbound](Azure.NSG.DenyAllInbound.md) | When all inbound traffic is denied, some functions that affect the reliability of your service may not work as expected. | Important | Error
 [Azure.VM.UseManagedDisks](Azure.VM.UseManagedDisks.md) | Virtual machines (VMs) should use managed disks. | Important | Error
 
 ### RE:04 Target metrics
@@ -376,10 +368,14 @@ Name | Synopsis | Severity | Level
 [Azure.LB.StandardSKU](Azure.LB.StandardSKU.md) | Load balancers should be deployed with Standard SKU for production workloads. | Important | Error
 [Azure.MySQL.MaintenanceWindow](Azure.MySQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for MySQL servers. | Important | Error
 [Azure.PostgreSQL.MaintenanceWindow](Azure.PostgreSQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for PostgreSQL servers. | Important | Error
+[Azure.PublicIP.StandardSKU](Azure.PublicIP.StandardSKU.md) | The basic SKU is being retired on 30 September 2025, and does not include several reliability and security features. | Important | Error
 [Azure.Redis.Version](Azure.Redis.Version.md) | Azure Cache for Redis should use the latest supported version of Redis. | Important | Error
 [Azure.SignalR.SLA](Azure.SignalR.SLA.md) | Use SKUs that include an SLA when configuring SignalR Services. | Important | Error
 [Azure.SQL.MaintenanceWindow](Azure.SQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure SQL databases. | Important | Error
 [Azure.SQLMI.MaintenanceWindow](Azure.SQLMI.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure SQL Managed Instances. | Important | Error
+[Azure.Storage.ContainerSoftDelete](Azure.Storage.ContainerSoftDelete.md) | Enable container soft delete on Storage Accounts. | Important | Error
+[Azure.Storage.FileShareSoftDelete](Azure.Storage.FileShareSoftDelete.md) | Enable soft delete on Storage Accounts file shares. | Important | Error
+[Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable blob soft delete on Storage Accounts. | Important | Error
 [Azure.VM.ASAlignment](Azure.VM.ASAlignment.md) | Use availability sets aligned with managed disks fault domains. | Important | Error
 [Azure.VM.BasicSku](Azure.VM.BasicSku.md) | Virtual machines (VMs) should not use Basic sizes. | Important | Error
 [Azure.VM.MaintenanceConfig](Azure.VM.MaintenanceConfig.md) | Use a maintenance configuration for virtual machines. | Important | Error
@@ -433,6 +429,7 @@ Name | Synopsis | Severity | Level
 [Azure.PublicIP.AvailabilityZone](Azure.PublicIP.AvailabilityZone.md) | Public IP addresses deployed with Standard SKU should use availability zones in supported regions for high availability. | Important | Error
 [Azure.Redis.AvailabilityZone](Azure.Redis.AvailabilityZone.md) | Premium Redis cache should be deployed with availability zones for high availability. | Important | Error
 [Azure.RedisEnterprise.Zones](Azure.RedisEnterprise.Zones.md) | Enterprise Redis cache should be zone-redundant for high availability. | Important | Error
+[Azure.Storage.UseReplication](Azure.Storage.UseReplication.md) | Storage Accounts using the LRS SKU are only replicated within a single zone. | Important | Error
 [Azure.VMSS.AvailabilityZone](Azure.VMSS.AvailabilityZone.md) | Deploy virtual machine scale set instances using availability zones in supported regions to ensure high availability and resilience. | Important | Error
 
 ### RE:06 Data partitioning
@@ -451,13 +448,6 @@ Name | Synopsis | Severity | Level
 [Azure.KeyVault.SoftDelete](Azure.KeyVault.SoftDelete.md) | Enable Soft Delete on Key Vaults to protect vaults and vault items from accidental deletion. | Important | Error
 [Azure.VMSS.AutoInstanceRepairs](Azure.VMSS.AutoInstanceRepairs.md) | Automatic instance repairs are enabled. | Important | Error
 [Azure.VMSS.ZoneBalance](Azure.VMSS.ZoneBalance.md) | Deploy virtual machine scale set instances using the best-effort zone balance in supported regions. | Important | Error
-
-### Requirements
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.PublicIP.StandardSKU](Azure.PublicIP.StandardSKU.md) | Public IP addresses should be deployed with Standard SKU for production workloads. | Important | Error
-[Azure.Storage.UseReplication](Azure.Storage.UseReplication.md) | Storage Accounts not using geo-replicated storage (GRS) or zone-redundant (ZRS) may be at risk. | Important | Error
 
 ### Resiliency and dependencies
 
@@ -521,9 +511,7 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.APIM.EncryptValues](Azure.APIM.EncryptValues.md) | Encrypt all API Management named values with Key Vault secrets. | Important | Error
-[Azure.APIM.HTTPEndpoint](Azure.APIM.HTTPEndpoint.md) | Enforce HTTPS for communication to API clients. | Important | Error
 [Azure.Automation.EncryptVariables](Azure.Automation.EncryptVariables.md) | Azure Automation variables should be encrypted. | Important | Error
-[Azure.CDN.HTTP](Azure.CDN.HTTP.md) | Enforce HTTPS for client connections. | Important | Error
 [Azure.MariaDB.UseSSL](Azure.MariaDB.UseSSL.md) | Azure Database for MariaDB servers should only accept encrypted connections. | Critical | Error
 [Azure.VM.ADE](Azure.VM.ADE.md) | Use Azure Disk Encryption (ADE). | Important | Error
 
@@ -539,9 +527,7 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.ADX.DiskEncryption](Azure.ADX.DiskEncryption.md) | Use disk encryption for Azure Data Explorer (ADX) clusters. | Important | Error
-[Azure.APIM.HTTPBackend](Azure.APIM.HTTPBackend.md) | Use HTTPS for communication to backend services. | Critical | Error
 [Azure.APIM.Protocols](Azure.APIM.Protocols.md) | API Management should only accept a minimum of TLS 1.2 for client and backend communication. | Critical | Error
-[Azure.CDN.MinTLS](Azure.CDN.MinTLS.md) | Azure CDN endpoints should reject TLS versions older than 1.2. | Important | Error
 [Azure.IoTHub.MinTLS](Azure.IoTHub.MinTLS.md) | IoT Hubs should reject TLS versions older than 1.2. | Critical | Error
 
 ### Identity and access management
@@ -560,15 +546,6 @@ Name | Synopsis | Severity | Level
 [Azure.SQLMI.AADOnly](Azure.SQLMI.AADOnly.md) | Ensure Azure AD-only authentication is enabled with Azure SQL Managed Instance. | Important | Error
 [Azure.VM.PublicKey](Azure.VM.PublicKey.md) | Linux virtual machines should use public keys. | Important | Error
 [Azure.VMSS.PublicKey](Azure.VMSS.PublicKey.md) | Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities. | Important | Error
-
-### Infrastructure provisioning
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.Deployment.AdminUsername](Azure.Deployment.AdminUsername.md) | Use secure parameters for sensitive resource properties. | Awareness | Error
-[Azure.Deployment.OuterSecret](Azure.Deployment.OuterSecret.md) | Do not use Outer deployments when references SecureString or SecureObject parameters. | Critical | Error
-[Azure.Deployment.OutputSecretValue](Azure.Deployment.OutputSecretValue.md) | Avoid outputting sensitive deployment values. | Critical | Error
-[Azure.Deployment.SecureValue](Azure.Deployment.SecureValue.md) | Use secure parameters for setting properties of resources that contain sensitive information. | Critical | Error
 
 ### Key and secret management
 
@@ -604,7 +581,7 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.VNET.FirewallSubnet](Azure.VNET.FirewallSubnet.md) | Use Azure Firewall to filter network traffic to and from Azure resources. | Important | Error
 
-### SE:01 Security Baseline
+### SE:01 Security baseline
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
@@ -621,7 +598,11 @@ Name | Synopsis | Severity | Level
 [Azure.AppService.NETVersion](Azure.AppService.NETVersion.md) | Configure applications to use newer .NET versions. | Important | Error
 [Azure.AppService.NodeJsVersion](Azure.AppService.NodeJsVersion.md) | Configure applications to use supported Node.js runtime versions. | Important | Error
 [Azure.AppService.PHPVersion](Azure.AppService.PHPVersion.md) | Configure applications to use newer PHP runtime versions. | Important | Error
-[Azure.Deployment.SecureParameter](Azure.Deployment.SecureParameter.md) | Use secure parameters for any parameter that contains sensitive information. | Critical | Error
+[Azure.Deployment.AdminUsername](Azure.Deployment.AdminUsername.md) | A sensitive property set from deterministic or hardcoded values is not secure. | Awareness | Error
+[Azure.Deployment.OuterSecret](Azure.Deployment.OuterSecret.md) | Outer evaluation deployments may leak secrets exposed as secure parameters into logs and nested deployments. | Critical | Error
+[Azure.Deployment.OutputSecretValue](Azure.Deployment.OutputSecretValue.md) | Outputting a sensitive value from deployment may leak secrets into deployment history or logs. | Critical | Error
+[Azure.Deployment.SecureParameter](Azure.Deployment.SecureParameter.md) | Sensitive parameters that have been not been marked as secure may leak the secret into deployment history or logs. | Critical | Error
+[Azure.Deployment.SecureValue](Azure.Deployment.SecureValue.md) | A secret property set from a non-secure value may leak the secret into deployment history or logs. | Critical | Error
 [Azure.VM.ScriptExtensions](Azure.VM.ScriptExtensions.md) | Custom Script Extensions scripts that reference secret values must use the protectedSettings. | Important | Error
 [Azure.VMSS.ScriptExtensions](Azure.VMSS.ScriptExtensions.md) | Custom Script Extensions scripts that reference secret values must use the protectedSettings. | Important | Error
 
@@ -629,7 +610,7 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.AKS.NetworkPolicy](Azure.AKS.NetworkPolicy.md) | Deploy AKS clusters with Network Policies enabled. | Important | Error
+[Azure.AKS.NetworkPolicy](Azure.AKS.NetworkPolicy.md) | AKS clusters without inter-pod network restrictions may be permit unauthorized lateral movement. | Important | Error
 [Azure.NSG.LateralTraversal](Azure.NSG.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | Important | Error
 
 ### SE:05 Identity and access management
@@ -709,7 +690,7 @@ Name | Synopsis | Severity | Level
 [Azure.PostgreSQL.FirewallRuleCount](Azure.PostgreSQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules. | Awareness | Error
 [Azure.Redis.PublicNetworkAccess](Azure.Redis.PublicNetworkAccess.md) | Redis cache should disable public network access. | Critical | Error
 [Azure.SQL.AllowAzureAccess](Azure.SQL.AllowAzureAccess.md) | Determine if access from Azure services is required. | Important | Error
-[Azure.SQL.FirewallIPRange](Azure.SQL.FirewallIPRange.md) | Determine if there is an excessive number of permitted IP addresses set in the allowed IP list (CIDR range). | Important | Error
+[Azure.SQL.FirewallIPRange](Azure.SQL.FirewallIPRange.md) | Each IP address in the permitted IP list is allowed network access to any databases hosted on the same logical server. | Important | Error
 [Azure.SQL.FirewallRuleCount](Azure.SQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules. | Awareness | Error
 [Azure.Storage.Firewall](Azure.Storage.Firewall.md) | Storage Accounts should only accept explicitly allowed traffic. | Important | Error
 [Azure.VM.PublicIPAttached](Azure.VM.PublicIPAttached.md) | Avoid attaching public IPs directly to virtual machines. | Critical | Error
@@ -722,11 +703,15 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.APIM.Ciphers](Azure.APIM.Ciphers.md) | API Management should not accept weak or deprecated ciphers for client or backend communication. | Critical | Error
+[Azure.APIM.HTTPBackend](Azure.APIM.HTTPBackend.md) | Unencrypted communication could allow disclosure of information to an untrusted party. | Critical | Error
+[Azure.APIM.HTTPEndpoint](Azure.APIM.HTTPEndpoint.md) | Unencrypted communication could allow disclosure of information to an untrusted party. | Important | Error
 [Azure.AppGw.SSLPolicy](Azure.AppGw.SSLPolicy.md) | Application Gateway should only accept a minimum of TLS 1.2. | Critical | Error
 [Azure.AppGw.UseHTTPS](Azure.AppGw.UseHTTPS.md) | Application Gateways should only expose frontend HTTP endpoints over HTTPS. | Critical | Error
 [Azure.AppService.MinTLS](Azure.AppService.MinTLS.md) | App Service should reject TLS versions older than 1.2. | Critical | Error
-[Azure.AppService.UseHTTPS](Azure.AppService.UseHTTPS.md) | Azure App Service apps should only accept encrypted connections. | Important | Error
+[Azure.AppService.UseHTTPS](Azure.AppService.UseHTTPS.md) | Unencrypted communication could allow disclosure of information to an untrusted party. | Important | Error
 [Azure.AppService.WebSecureFtp](Azure.AppService.WebSecureFtp.md) | Web apps should disable insecure FTP and configure SFTP when required. | Important | Error
+[Azure.CDN.HTTP](Azure.CDN.HTTP.md) | Unencrypted communication could allow disclosure of information to an untrusted party. | Important | Error
+[Azure.CDN.MinTLS](Azure.CDN.MinTLS.md) | Azure CDN endpoints should reject TLS versions older than 1.2. | Important | Error
 [Azure.ContainerApp.Insecure](Azure.ContainerApp.Insecure.md) | Ensure insecure inbound traffic is not permitted to the container app. | Important | Error
 [Azure.Cosmos.MinTLS](Azure.Cosmos.MinTLS.md) | Cosmos DB accounts should reject TLS versions older than 1.2. | Critical | Error
 [Azure.EntraDS.NTLM](Azure.EntraDS.NTLM.md) | Disable NTLM v1 for Microsoft Entra Domain Services. | Critical | Error
@@ -794,9 +779,16 @@ Name | Synopsis | Severity | Level
 [Azure.FrontDoor.Logs](Azure.FrontDoor.Logs.md) | Audit and monitor access through Azure Front Door profiles. | Important | Error
 [Azure.KeyVault.Logs](Azure.KeyVault.Logs.md) | Ensure audit diagnostics logs are enabled to audit Key Vault access. | Important | Error
 [Azure.SQL.Auditing](Azure.SQL.Auditing.md) | Enable auditing for Azure SQL logical server. | Important | Error
+[Azure.SQL.DefenderCloud](Azure.SQL.DefenderCloud.md) | Enable Microsoft Defender for Azure SQL logical server. | Important | Error
 [Azure.Storage.Defender.DataScan](Azure.Storage.Defender.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical | Error
 [Azure.Storage.Defender.MalwareScan](Azure.Storage.Defender.MalwareScan.md) | Enable Malware Scanning in Microsoft Defender for Storage. | Critical | Error
 [Azure.Storage.DefenderCloud](Azure.Storage.DefenderCloud.md) | Enable Microsoft Defender for Storage for storage accounts. | Critical | Error
+
+### SE:12 Incident response
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Defender.SecurityContact](Azure.Defender.SecurityContact.md) | Important security notifications may be lost or not processed in a timely manner when a clear security contact is not identified. | Important | Error
 
 ### Security design principles
 
@@ -810,9 +802,7 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Arc.Kubernetes.Defender](Azure.Arc.Kubernetes.Defender.md) | Deploy Microsoft Defender for Containers extension for Arc-enabled Kubernetes clusters. | Important | Error
-[Azure.DefenderCloud.Contact](Azure.DefenderCloud.Contact.md) | Microsoft Defender for Cloud email and phone contact details should be set. | Important | Error
 [Azure.DefenderCloud.Provisioning](Azure.DefenderCloud.Provisioning.md) | Enable auto-provisioning on to improve Microsoft Defender for Cloud insights. | Important | Error
 [Azure.MariaDB.DefenderCloud](Azure.MariaDB.DefenderCloud.md) | Enable Microsoft Defender for Cloud for Azure Database for MariaDB. | Important | Error
 [Azure.MySQL.DefenderCloud](Azure.MySQL.DefenderCloud.md) | Enable Microsoft Defender for Cloud for Azure Database for MySQL. | Important | Error
 [Azure.PostgreSQL.DefenderCloud](Azure.PostgreSQL.DefenderCloud.md) | Enable Microsoft Defender for Cloud for Azure Database for PostgreSQL. | Important | Error
-[Azure.SQL.DefenderCloud](Azure.SQL.DefenderCloud.md) | Enable Microsoft Defender for Azure SQL logical server. | Important | Error
