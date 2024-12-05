@@ -1332,7 +1332,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../license-contributing/first-contributors-guide/" class="md-nav__link">
+      <a href="../../../license-contributing/get-started-contributing/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2463,6 +2463,15 @@
   <a href="#re07-self-preservation" class="md-nav__link">
     <span class="md-ellipsis">
       RE:07 Self-preservation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#re10-monitoring-and-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      RE:10 Monitoring and alerting
     </span>
   </a>
   
@@ -15212,6 +15221,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#re10-monitoring-and-alerting" class="md-nav__link">
+    <span class="md-ellipsis">
+      RE:10 Monitoring and alerting
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#resiliency-and-dependencies" class="md-nav__link">
     <span class="md-ellipsis">
       Resiliency and dependencies
@@ -15813,12 +15831,6 @@
 <tr>
 <td><a href="../Azure.Automation.PlatformLogs/">Azure.Automation.PlatformLogs</a></td>
 <td>Ensure automation account platform diagnostic logs are enabled.</td>
-<td>Important</td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="../Azure.Monitor.ServiceHealth/">Azure.Monitor.ServiceHealth</a></td>
-<td>Configure Service Health alerts to notify administrators.</td>
 <td>Important</td>
 <td>Error</td>
 </tr>
@@ -17409,6 +17421,25 @@
 </tr>
 </tbody>
 </table>
+<h3 id="re10-monitoring-and-alerting">RE:10 Monitoring and alerting<a class="headerlink" href="#re10-monitoring-and-alerting" title="Permanent link">#</a></h3>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Synopsis</th>
+<th>Severity</th>
+<th>Level</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../Azure.Monitor.ServiceHealth/">Azure.Monitor.ServiceHealth</a></td>
+<td>Configure Service Health alerts to notify administrators.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+</tbody>
+</table>
 <h3 id="resiliency-and-dependencies">Resiliency and dependencies<a class="headerlink" href="#resiliency-and-dependencies" title="Permanent link">#</a></h3>
 <table>
 <thead>
@@ -17782,18 +17813,6 @@
 <tr>
 <td><a href="../Azure.SQLMI.AADOnly/">Azure.SQLMI.AADOnly</a></td>
 <td>Ensure Azure AD-only authentication is enabled with Azure SQL Managed Instance.</td>
-<td>Important</td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="../Azure.VM.PublicKey/">Azure.VM.PublicKey</a></td>
-<td>Linux virtual machines should use public keys.</td>
-<td>Important</td>
-<td>Error</td>
-</tr>
-<tr>
-<td><a href="../Azure.VMSS.PublicKey/">Azure.VMSS.PublicKey</a></td>
-<td>Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities.</td>
 <td>Important</td>
 <td>Error</td>
 </tr>
@@ -18787,8 +18806,20 @@
 <td>Error</td>
 </tr>
 <tr>
+<td><a href="../Azure.VM.PublicKey/">Azure.VM.PublicKey</a></td>
+<td>Linux virtual machines should use public keys.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
 <td><a href="../Azure.VM.Updates/">Azure.VM.Updates</a></td>
 <td>Ensure automatic updates are enabled at deployment.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="../Azure.VMSS.PublicKey/">Azure.VMSS.PublicKey</a></td>
+<td>Use SSH keys instead of common credentials to secure virtual machine scale sets against malicious activities.</td>
 <td>Important</td>
 <td>Error</td>
 </tr>
