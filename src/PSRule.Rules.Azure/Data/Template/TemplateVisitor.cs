@@ -70,6 +70,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_ROOTDEPLOYMENT = "rootDeployment";
         private const string PROPERTY_NULLABLE = "nullable";
 
+        private const string TYPE_RESOURCE_GROUPS = "Microsoft.Resources/resourceGroups";
+
         internal sealed class TemplateContext : ResourceManagerVisitorContext, ITemplateContext
         {
             private const string CLOUD_PUBLIC = "AzureCloud";
@@ -1341,17 +1343,28 @@ namespace PSRule.Rules.Azure.Data.Template
             var scope = context.TryParentResourceId(resource, out var parentIds) && parentIds != null && parentIds.Length > 0 ? parentIds[0] : null;
 
             string resourceId = null;
-            if (deploymentScope == DeploymentScope.ResourceGroup)
+
+            // Handle special case when resource type is a resource group.
+            if (StringComparer.OrdinalIgnoreCase.Equals(type, TYPE_RESOURCE_GROUPS))
+            {
+                resourceId = ResourceHelper.ResourceGroupId(subscriptionId: subscriptionId, resourceGroup: name);
+            }
+            else if (deploymentScope == DeploymentScope.ResourceGroup)
+            {
                 resourceId = ResourceHelper.ResourceId(tenant: null, managementGroup: null, subscriptionId: subscriptionId, resourceGroup: resourceGroupName, resourceType: type, resourceName: name, scopeId: scope);
-
+            }
             else if (deploymentScope == DeploymentScope.Subscription)
+            {
                 resourceId = ResourceHelper.ResourceId(tenant: null, managementGroup: null, subscriptionId: subscriptionId, resourceGroup: null, resourceType: type, resourceName: name, scopeId: null);
-
+            }
             else if (deploymentScope == DeploymentScope.ManagementGroup)
+            {
                 resourceId = ResourceHelper.ResourceId(tenant: null, managementGroup: managementGroup, subscriptionId: null, resourceGroup: null, resourceType: type, resourceName: name, scopeId: scope);
-
+            }
             else if (deploymentScope == DeploymentScope.Tenant)
+            {
                 resourceId = ResourceHelper.ResourceId(tenant: "/", managementGroup: null, subscriptionId: null, resourceGroup: null, resourceType: type, resourceName: name, scopeId: "/");
+            }
 
             context.UpdateResourceScope(resource);
             resource[PROPERTY_ID] = resourceId;

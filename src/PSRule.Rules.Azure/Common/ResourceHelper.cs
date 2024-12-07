@@ -215,12 +215,12 @@ internal static class ResourceHelper
         return ResourceId(tenant, managementGroup, subscriptionId, resourceGroup, typeParts, nameParts, scopeId, depth);
     }
 
-    internal static string ResourceId(string? tenant, string? managementGroup, string? subscriptionId, string? resourceGroup, string[]? resourceType, string[]? resourceName, string? scopeId, int depth = int.MaxValue)
+    internal static string ResourceId(string? tenant, string? managementGroup, string? subscriptionId, string? resourceGroup, string[]? resourceTypeParts, string[]? resourceNameParts, string? scopeId, int depth = int.MaxValue)
     {
-        var resourceTypeLength = resourceType?.Length ?? 0;
-        var nameLength = resourceName?.Length ?? 0;
+        var resourceTypeLength = resourceTypeParts?.Length ?? 0;
+        var nameLength = resourceNameParts?.Length ?? 0;
         if (resourceTypeLength != nameLength)
-            throw new TemplateFunctionException(nameof(resourceType), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
+            throw new TemplateFunctionException(nameof(resourceTypeParts), FunctionErrorType.MismatchingResourceSegments, PSRuleResources.MismatchingResourceSegments);
 
         if (!ResourceIdComponents(scopeId, out var scopeTenant, out var scopeManagementGroup, out var scopeSubscriptionId, out var scopeResourceGroup, out var scopeResourceType, out var scopeResourceName))
         {
@@ -228,9 +228,14 @@ internal static class ResourceHelper
             scopeResourceName = null;
         }
 
-        resourceType = MergeResourceNameOrType(scopeResourceType, resourceType);
-        resourceName = MergeResourceNameOrType(scopeResourceName, resourceName);
-        return ResourceId(scopeTenant ?? tenant, scopeManagementGroup ?? managementGroup, scopeSubscriptionId ?? subscriptionId, scopeResourceGroup ?? resourceGroup, resourceType, resourceName, depth);
+        resourceTypeParts = MergeResourceNameOrType(scopeResourceType, resourceTypeParts);
+        resourceNameParts = MergeResourceNameOrType(scopeResourceName, resourceNameParts);
+        return ResourceId(scopeTenant ?? tenant, scopeManagementGroup ?? managementGroup, scopeSubscriptionId ?? subscriptionId, scopeResourceGroup ?? resourceGroup, resourceTypeParts, resourceNameParts, depth);
+    }
+
+    internal static string ResourceGroupId(string subscriptionId, string resourceGroup)
+    {
+        return string.Format("/subscriptions/{0}/resourceGroups/{1}", subscriptionId, resourceGroup);
     }
 
     private static string[]? MergeResourceNameOrType(string[]? parentNameOrType, string[]? nameOrType)

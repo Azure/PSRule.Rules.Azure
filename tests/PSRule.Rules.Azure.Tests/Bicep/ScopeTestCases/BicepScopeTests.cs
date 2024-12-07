@@ -33,4 +33,28 @@ public sealed class BicepScopeTests : TemplateVisitorTestsBase
         Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual["properties"]["tenantId"].Value<string>());
         Assert.Equal("/providers/Microsoft.Management/managementGroups/mg-01", actual["properties"]["details"]["parent"]["id"].Value<string>());
     }
+
+    [Fact]
+    public void ProcessTemplate_WhenResourceGroupFromSubscriptionScope_ShouldReturnCorrectIdentifiers()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Bicep/ScopeTestCases/Tests.Bicep.2.json"), null, out _);
+
+        Assert.NotNull(resources);
+
+        var actual = resources.Where(r => r["name"].Value<string>() == "rg-1").FirstOrDefault();
+        Assert.Equal("Microsoft.Resources/resourceGroups", actual["type"].Value<string>());
+        Assert.Equal("rg-1", actual["name"].Value<string>());
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-1", actual["id"].Value<string>());
+
+        actual = resources.Where(r => r["name"].Value<string>() == "id-1").FirstOrDefault();
+        Assert.Equal("id-1", actual["name"].Value<string>());
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-1", actual["id"].Value<string>());
+
+        actual = resources.Where(r => r["name"].Value<string>() == "registry-1").FirstOrDefault();
+        Assert.Equal("registry-1", actual["name"].Value<string>());
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-1/providers/Microsoft.ContainerRegistry/registries/registry-1", actual["id"].Value<string>());
+
+        var property = actual["identity"]["userAssignedIdentities"].Value<JObject>().Properties().FirstOrDefault();
+        Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-1", property.Name);
+    }
 }

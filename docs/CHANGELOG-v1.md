@@ -37,6 +37,8 @@ What's changed since pre-release v1.40.0-B0147:
 - Bug fixes:
   - Fixed evaluation of APIM policies when using embedded C# with quotes by @BernieWhite.
     [#3184](https://github.com/Azure/PSRule.Rules.Azure/issues/3184)
+  - Fixed Resource group ID is incorrect under subscription scope by @BernieWhite.
+    [#3198](https://github.com/Azure/PSRule.Rules.Azure/issues/3198)
 
 ## v1.40.0-B0147 (pre-release)
 

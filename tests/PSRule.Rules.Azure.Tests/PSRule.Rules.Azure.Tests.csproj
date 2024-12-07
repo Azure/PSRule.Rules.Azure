@@ -317,6 +317,9 @@
     <None Update="Bicep\ScopeTestCases\Tests.Bicep.1.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Bicep\ScopeTestCases\Tests.Bicep.2.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="APIM\Tests.Policy.1.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
