@@ -31,6 +31,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.40.0-B0147:
 
+- General improvements:
+  - Added first time contributor guide in docs by @that-ar-guy.
+    [#3097](https://github.com/Azure/PSRule.Rules.Azure/issues/3097)
 - Engineering:
   - Quality updates to rule documentation by @BernieWhite.
     [#3102](https://github.com/Azure/PSRule.Rules.Azure/issues/3102)
