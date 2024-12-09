@@ -142,7 +142,7 @@ metadata:
   name: Azure.ACR.AnonymousAccess
   ref: AZR-000401
   tags:
-    release: preview
+    release: GA
     ruleSet: 2024_12
     Azure.WAF/pillar: Security
   labels:
