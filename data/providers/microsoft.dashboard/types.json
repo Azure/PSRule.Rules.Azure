@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-10-01",
       "2023-10-01-preview",
       "2023-09-01",
       "2022-10-01-preview",
@@ -63,6 +64,7 @@
     },
     "resourceType": "grafana",
     "apiVersions": [
+      "2024-10-01",
       "2023-10-01-preview",
       "2023-09-01",
       "2022-10-01-preview",
@@ -81,6 +83,42 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "North Europe",
+      "Norway East",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UAE North",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "grafana/integrationFabrics",
+    "apiVersions": [
+      "2024-10-01",
+      "2023-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Europe",
       "Norway East",
@@ -113,6 +151,7 @@
     },
     "resourceType": "grafana/managedPrivateEndpoints",
     "apiVersions": [
+      "2024-10-01",
       "2023-10-01-preview",
       "2023-09-01",
       "2022-10-01-preview"
@@ -128,6 +167,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Europe",
       "Norway East",
@@ -158,6 +198,7 @@
     },
     "resourceType": "grafana/privateEndpointConnections",
     "apiVersions": [
+      "2024-10-01",
       "2023-10-01-preview",
       "2023-09-01",
       "2022-10-01-preview",
@@ -175,6 +216,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Europe",
       "Norway East",
@@ -195,6 +237,7 @@
     "aliases": null,
     "resourceType": "grafana/privateLinkResources",
     "apiVersions": [
+      "2024-10-01",
       "2023-10-01-preview",
       "2023-09-01",
       "2022-10-01-preview",
@@ -212,6 +255,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Europe",
       "Norway East",
@@ -232,6 +276,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-10-01",
       "2023-10-01-preview",
       "2023-09-01",
       "2022-10-01-preview",
@@ -246,6 +291,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-10-01",
       "2023-10-01-preview",
       "2023-09-01",
       "2022-10-01-preview",
@@ -260,6 +306,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-10-01",
       "2023-10-01-preview",
       "2023-09-01",
       "2022-10-01-preview",
@@ -280,7 +327,9 @@
       "East US 2 EUAP",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
+      "Korea Central",
       "North Europe",
       "Norway East",
       "South Central US",
@@ -288,7 +337,6 @@
       "Sweden Central",
       "UAE North",
       "UK South",
-      "UK West",
       "West Central US",
       "West Europe",
       "West US",
@@ -301,6 +349,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-10-01",
       "2023-10-01-preview",
       "2023-09-01",
       "2022-10-01-preview",

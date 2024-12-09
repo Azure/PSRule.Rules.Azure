@@ -13,24 +13,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "assessments",
-    "apiVersions": [
-      "2023-09-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "assessmentTypes",
-    "apiVersions": [
-      "2023-09-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "configurations",
     "apiVersions": [
       "2023-01-01",
@@ -126,15 +108,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "resiliencyReviews",
-    "apiVersions": [
-      "2023-09-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "suppressions",
     "apiVersions": [
       "2023-01-01",
@@ -145,24 +118,6 @@
       "2017-03-31",
       "2016-07-12-preview",
       "2016-05-09-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "triageRecommendations",
-    "apiVersions": [
-      "2023-09-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "workloads",
-    "apiVersions": [
-      "2023-09-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

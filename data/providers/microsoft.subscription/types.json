@@ -1,54 +1,6 @@
 [
   {
     "aliases": null,
-    "resourceType": "acceptChangeTenant",
-    "apiVersions": [
-      "2024-08-01-preview",
-      "2021-01-01-privatepreview",
-      "2019-10-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "acceptOwnership",
-    "apiVersions": [
-      "2024-08-01-preview",
-      "2021-10-01",
-      "2021-01-01-privatepreview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "acceptOwnershipStatus",
-    "apiVersions": [
-      "2024-08-01-preview",
-      "2021-10-01",
-      "2021-01-01-privatepreview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": {
-      "Microsoft.Subscription/aliases/subscriptionId": "properties.subscriptionId"
-    },
-    "resourceType": "aliases",
-    "apiVersions": [
-      "2024-08-01-preview",
-      "2021-10-01",
-      "2021-01-01-privatepreview",
-      "2020-09-01",
-      "2019-10-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "cancel",
     "apiVersions": [
       "2024-08-01-preview",
@@ -64,28 +16,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "changeTenantRequest",
-    "apiVersions": [
-      "2024-08-01-preview",
-      "2021-01-01-privatepreview",
-      "2019-10-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "changeTenantStatus",
-    "apiVersions": [
-      "2024-08-01-preview",
-      "2021-01-01-privatepreview",
-      "2019-10-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "CreateSubscription",
     "apiVersions": [
       "2019-10-01-preview",
@@ -95,15 +25,6 @@
     "locations": [
       "Central US"
     ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "directories",
-    "apiVersions": [
-      "2021-01-01-privatepreview"
-    ],
-    "locations": [],
     "zoneMappings": []
   },
   {
@@ -143,17 +64,6 @@
     "locations": [
       "West US"
     ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "policies",
-    "apiVersions": [
-      "2024-08-01-preview",
-      "2021-10-01",
-      "2021-01-01-privatepreview"
-    ],
-    "locations": [],
     "zoneMappings": []
   },
   {
@@ -217,12 +127,9 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
-    "resourceType": "validateCancel",
-    "apiVersions": [
-      "2021-01-01-privatepreview"
-    ],
-    "locations": [],
-    "zoneMappings": []
+    "aliases": {
+      "Microsoft.Subscription/aliases/subscriptionId": "properties.subscriptionId"
+    },
+    "resourceType": "aliases"
   }
 ]

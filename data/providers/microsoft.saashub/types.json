@@ -51,7 +51,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationStatuses",
+    "resourceType": "locations/operationstatuses",
     "apiVersions": [
       "2023-01-01-preview"
     ],

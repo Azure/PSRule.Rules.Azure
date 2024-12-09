@@ -207,6 +207,7 @@
     },
     "resourceType": "monitors",
     "apiVersions": [
+      "2023-12-01-preview",
       "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
@@ -337,6 +338,7 @@
     },
     "resourceType": "monitors/providerInstances",
     "apiVersions": [
+      "2023-12-01-preview",
       "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview",
@@ -391,6 +393,7 @@
     },
     "resourceType": "monitors/sapLandscapeMonitor",
     "apiVersions": [
+      "2023-12-01-preview",
       "2023-10-01-preview",
       "2023-04-01",
       "2022-11-01-preview"

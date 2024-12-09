@@ -36,6 +36,7 @@
     },
     "resourceType": "guestConfigurationAssignments",
     "apiVersions": [
+      "2024-04-05",
       "2022-01-25",
       "2021-01-25",
       "2020-06-25",
@@ -50,6 +51,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-04-05",
       "2022-01-25",
       "2021-01-25",
       "2020-06-25",

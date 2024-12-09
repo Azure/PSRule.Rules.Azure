@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-10-31-preview",
       "2024-03-31-preview",
       "2023-09-28-preview"
     ],
@@ -37,6 +38,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-10-31-preview",
       "2024-03-31-preview",
       "2023-09-28-preview"
     ],
@@ -49,11 +51,13 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-10-31-preview",
       "2024-03-31-preview",
       "2023-09-28-preview"
     ],
     "locations": [
-      "North Europe"
+      "North Europe",
+      "Sweden Central"
     ],
     "zoneMappings": []
   },
@@ -61,6 +65,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-10-31-preview",
       "2024-03-31-preview",
       "2023-09-28-preview"
     ],
@@ -73,6 +78,7 @@
     "aliases": null,
     "resourceType": "transparencyLogs",
     "apiVersions": [
+      "2024-10-31-preview",
       "2024-03-31-preview"
     ],
     "locations": [

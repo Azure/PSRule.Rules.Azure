@@ -42,19 +42,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/alertSuppressionRules",
-    "apiVersions": [
-      "2022-08-01-preview"
-    ],
-    "locations": [
-      "East US",
-      "East US 2 EUAP",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "locations/deviceGroups",
     "apiVersions": [
       "2023-02-01-preview",
@@ -162,45 +149,6 @@
     ],
     "locations": [
       "East US",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/inventoryNetworks",
-    "apiVersions": [
-      "2024-06-01-preview"
-    ],
-    "locations": [
-      "East US",
-      "East US 2 EUAP",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/remoteConfigurations",
-    "apiVersions": [
-      "2021-09-01-preview"
-    ],
-    "locations": [
-      "East US",
-      "East US 2 EUAP",
-      "West Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "locations/sensors",
-    "apiVersions": [
-      "2021-09-01-preview"
-    ],
-    "locations": [
-      "East US",
-      "East US 2 EUAP",
       "West Europe"
     ],
     "zoneMappings": []

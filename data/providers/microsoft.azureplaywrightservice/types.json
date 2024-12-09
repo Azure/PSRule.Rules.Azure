@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "accounts",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2024-02-01-preview",
       "2023-10-01-preview",
@@ -20,6 +21,7 @@
     "aliases": null,
     "resourceType": "accounts/quotas",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2024-02-01-preview"
     ],
@@ -35,6 +37,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2024-02-01-preview",
       "2023-10-01-preview",
@@ -47,6 +50,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2024-02-01-preview",
       "2023-10-01-preview",
@@ -59,6 +63,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2024-02-01-preview",
       "2023-10-01-preview",
@@ -76,6 +81,7 @@
     "aliases": null,
     "resourceType": "locations/quotas",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2024-02-01-preview",
       "2023-10-01-preview",
@@ -93,6 +99,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2024-02-01-preview",
       "2023-10-01-preview",
@@ -105,6 +112,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2024-02-01-preview",
       "2023-10-01-preview",

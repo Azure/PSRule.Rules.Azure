@@ -1,8 +1,9 @@
 [
   {
     "aliases": null,
-    "resourceType": "apiGatewayRestApis",
+    "resourceType": "accessAnalyzerAnalyzers",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -12,6 +13,45 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "acmCertificateSummaries",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "apiGatewayRestApis",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -20,6 +60,7 @@
     "aliases": null,
     "resourceType": "apiGatewayStages",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -29,6 +70,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -52,8 +94,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "cloudFormationStacks",
+    "resourceType": "appSyncGraphQLApis",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -63,6 +106,45 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "autoScalingAutoScalingGroups",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "cloudFormationStacks",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -71,6 +153,7 @@
     "aliases": null,
     "resourceType": "cloudFormationStackSets",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -80,6 +163,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "cloudFrontDistributions",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -88,6 +191,7 @@
     "aliases": null,
     "resourceType": "cloudTrailTrails",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -97,6 +201,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -105,6 +210,7 @@
     "aliases": null,
     "resourceType": "cloudWatchAlarms",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -114,6 +220,158 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "codeBuildProjects",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "codeBuildSourceCredentialsInfos",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configServiceConfigurationRecorders",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configServiceConfigurationRecorderStatuses",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "configServiceDeliveryChannels",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "databaseMigrationServiceReplicationInstances",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "daxClusters",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "dynamoDBContinuousBackupsDescriptions",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -122,6 +380,7 @@
     "aliases": null,
     "resourceType": "dynamoDBTables",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -131,6 +390,82 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2AccountAttributes",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2Addresses",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2FlowLogs",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2Images",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -139,6 +474,7 @@
     "aliases": null,
     "resourceType": "ec2Instances",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -148,6 +484,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -156,6 +493,7 @@
     "aliases": null,
     "resourceType": "ec2InstanceStatuses",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -165,6 +503,25 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2Ipams",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -173,6 +530,7 @@
     "aliases": null,
     "resourceType": "ec2KeyPairs",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -182,6 +540,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -190,6 +549,7 @@
     "aliases": null,
     "resourceType": "ec2NetworkAcls",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -199,6 +559,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -207,6 +568,7 @@
     "aliases": null,
     "resourceType": "ec2NetworkInterfaces",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -216,6 +578,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -224,6 +587,7 @@
     "aliases": null,
     "resourceType": "ec2RouteTables",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -233,6 +597,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -241,6 +606,7 @@
     "aliases": null,
     "resourceType": "ec2SecurityGroups",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -250,6 +616,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ec2Snapshots",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -258,6 +644,7 @@
     "aliases": null,
     "resourceType": "ec2Subnets",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -267,6 +654,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -275,6 +663,7 @@
     "aliases": null,
     "resourceType": "ec2Volumes",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -284,6 +673,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -292,6 +682,7 @@
     "aliases": null,
     "resourceType": "ec2VPCEndpoints",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -301,6 +692,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -309,6 +701,7 @@
     "aliases": null,
     "resourceType": "ec2VPCPeeringConnections",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -318,6 +711,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -326,6 +720,7 @@
     "aliases": null,
     "resourceType": "ec2VPCs",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -335,6 +730,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ecrImageDetails",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -343,6 +758,7 @@
     "aliases": null,
     "resourceType": "ecrRepositories",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -352,6 +768,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -360,6 +777,7 @@
     "aliases": null,
     "resourceType": "ecsClusters",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -369,6 +787,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -377,6 +796,7 @@
     "aliases": null,
     "resourceType": "ecsServices",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -386,6 +806,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -394,6 +815,7 @@
     "aliases": null,
     "resourceType": "ecsTaskDefinitions",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -403,6 +825,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -411,6 +834,7 @@
     "aliases": null,
     "resourceType": "efsFileSystems",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -420,6 +844,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -428,6 +853,7 @@
     "aliases": null,
     "resourceType": "efsMountTargets",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -437,6 +863,83 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "eksClusters",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "eksNodegroups",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "elasticBeanstalkApplications",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "elasticBeanstalkConfigurationTemplates",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -445,6 +948,7 @@
     "aliases": null,
     "resourceType": "elasticBeanstalkEnvironments",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -454,6 +958,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -462,6 +967,7 @@
     "aliases": null,
     "resourceType": "elasticLoadBalancingV2Listeners",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -471,6 +977,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -479,6 +986,7 @@
     "aliases": null,
     "resourceType": "elasticLoadBalancingV2LoadBalancers",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -488,6 +996,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -496,6 +1005,7 @@
     "aliases": null,
     "resourceType": "elasticLoadBalancingV2TargetGroups",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -505,6 +1015,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "elasticLoadBalancingV2TargetHealthDescriptions",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -528,8 +1058,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "guardDutyDetectors",
+    "resourceType": "emrClusters",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -539,6 +1070,64 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "guardDutyDetectors",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamAccessKeyLastUseds",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamAccessKeyMetaData",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -547,6 +1136,7 @@
     "aliases": null,
     "resourceType": "iamGroups",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -556,6 +1146,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -564,6 +1155,7 @@
     "aliases": null,
     "resourceType": "iamInstanceProfiles",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -573,6 +1165,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -596,8 +1189,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "iamServerCertificates",
+    "resourceType": "iamMFADevices",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -607,6 +1201,83 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamPasswordPolicies",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamPolicyVersions",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamRoles",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "iamServerCertificates",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -632,6 +1303,7 @@
     "aliases": null,
     "resourceType": "iamVirtualMFADevices",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -641,6 +1313,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "kmsAliases",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -649,6 +1341,7 @@
     "aliases": null,
     "resourceType": "kmsKeys",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -658,6 +1351,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "lambdaFunctionCodeLocations",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -666,6 +1379,7 @@
     "aliases": null,
     "resourceType": "lambdaFunctions",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -675,6 +1389,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -700,6 +1415,7 @@
     "aliases": null,
     "resourceType": "lightsailBuckets",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -709,6 +1425,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -717,6 +1434,7 @@
     "aliases": null,
     "resourceType": "lightsailInstances",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -726,6 +1444,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -734,6 +1453,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -744,18 +1464,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
-      "2024-08-01-preview",
-      "2023-12-01-preview"
-    ],
-    "locations": [
-      "East US"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "logsLogGroups",
-    "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -765,6 +1474,25 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "logsLogGroups",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -773,6 +1501,7 @@
     "aliases": null,
     "resourceType": "logsLogStreams",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -782,6 +1511,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -790,6 +1520,7 @@
     "aliases": null,
     "resourceType": "logsMetricFilters",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -799,6 +1530,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -807,6 +1539,7 @@
     "aliases": null,
     "resourceType": "logsSubscriptionFilters",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -816,6 +1549,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "macie2JobSummaries",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -824,6 +1577,7 @@
     "aliases": null,
     "resourceType": "macieAllowLists",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -833,6 +1587,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -841,6 +1596,7 @@
     "aliases": null,
     "resourceType": "networkFirewallFirewallPolicies",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -850,6 +1606,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -858,6 +1615,7 @@
     "aliases": null,
     "resourceType": "networkFirewallFirewalls",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -867,6 +1625,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -875,6 +1634,7 @@
     "aliases": null,
     "resourceType": "networkFirewallRuleGroups",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -884,6 +1644,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "openSearchDomainStatuses",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -909,6 +1689,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -919,6 +1700,7 @@
     "aliases": null,
     "resourceType": "organizationsAccounts",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -928,6 +1710,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -936,6 +1719,7 @@
     "aliases": null,
     "resourceType": "organizationsOrganizations",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -945,6 +1729,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -953,6 +1738,7 @@
     "aliases": null,
     "resourceType": "rdsDBClusters",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -970,6 +1756,7 @@
     "aliases": null,
     "resourceType": "rdsDBInstances",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -979,6 +1766,45 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "rdsDBSnapshotAttributesResults",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "rdsDBSnapshots",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -987,6 +1813,7 @@
     "aliases": null,
     "resourceType": "rdsEventSubscriptions",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -996,6 +1823,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "rdsExportTasks",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1004,6 +1851,7 @@
     "aliases": null,
     "resourceType": "redshiftClusterParameterGroups",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1013,6 +1861,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1021,6 +1870,7 @@
     "aliases": null,
     "resourceType": "redshiftClusters",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1030,6 +1880,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "route53DomainsDomainSummaries",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1038,6 +1908,7 @@
     "aliases": null,
     "resourceType": "route53HostedZones",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1047,6 +1918,45 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "route53ResourceRecordSets",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "s3AccessControlPolicies",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1055,6 +1965,7 @@
     "aliases": null,
     "resourceType": "s3AccessPoints",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1064,6 +1975,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1072,6 +1984,7 @@
     "aliases": null,
     "resourceType": "s3BucketPolicies",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1081,6 +1994,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1089,6 +2003,7 @@
     "aliases": null,
     "resourceType": "s3Buckets",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1098,6 +2013,26 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "s3ControlMultiRegionAccessPointPolicyDocuments",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1106,6 +2041,7 @@
     "aliases": null,
     "resourceType": "sageMakerApps",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1115,6 +2051,7 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1155,8 +2092,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "snsTopics",
+    "resourceType": "sageMakerNotebookInstanceSummaries",
     "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1166,6 +2104,83 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "secretsManagerResourcePolicies",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "secretsManagerSecrets",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "snsSubscriptions",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "snsTopics",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []
@@ -1174,6 +2189,64 @@
     "aliases": null,
     "resourceType": "sqsQueues",
     "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ssmInstanceInformations",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ssmParameters",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "ssmResourceComplianceSummaryItems",
+    "apiVersions": [
+      "2024-12-01",
       "2024-08-01-preview",
       "2023-12-01-preview"
     ],
@@ -1206,6 +2279,25 @@
   },
   {
     "aliases": null,
+    "resourceType": "wafv2LoggingConfigurations",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "wafv2WebACLAssociations",
     "apiVersions": [
       "2024-08-01-preview",
@@ -1217,6 +2309,25 @@
       "East US",
       "Southeast Asia",
       "UK South",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "wafWebACLSummaries",
+    "apiVersions": [
+      "2024-12-01",
+      "2024-08-01-preview",
+      "2023-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "East US",
+      "Southeast Asia",
+      "UK South",
+      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []

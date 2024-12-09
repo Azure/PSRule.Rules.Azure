@@ -88,6 +88,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/billingPeriods",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/billingPermissions",
     "apiVersions": [
       "2024-04-01",
@@ -147,6 +156,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/billingPeriods",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/billingPermissions",
     "apiVersions": [
       "2024-04-01",
@@ -197,6 +215,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/billingSubscriptions",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
@@ -275,6 +294,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/customers/billingSubscriptions",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01"
     ],
     "locations": [],
@@ -301,6 +321,15 @@
   {
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/departments",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/departments/billingPeriods",
     "apiVersions": [
       "2022-10-01-privatepreview"
     ],
@@ -347,6 +376,16 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/departments/enrollmentAccounts",
     "apiVersions": [
+      "2024-08-01-preview",
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/departments/enrollmentAccounts/billingPeriods",
+    "apiVersions": [
       "2022-10-01-privatepreview"
     ],
     "locations": [],
@@ -355,6 +394,16 @@
   {
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/enrollmentAccounts",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/billingProfiles/enrollmentAccounts/billingPeriods",
     "apiVersions": [
       "2022-10-01-privatepreview"
     ],
@@ -502,6 +551,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/invoiceSections/billingSubscriptions",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2020-05-01",
       "2019-10-01-preview"
@@ -784,6 +834,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingSubscriptions",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2021-10-01",
@@ -927,6 +978,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/customers/billingSubscriptions",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2020-05-01",
       "2019-10-01-preview",
@@ -1020,6 +1072,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/departments/billingPeriods",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/departments/billingPermissions",
     "apiVersions": [
       "2024-04-01",
@@ -1067,6 +1128,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/departments/enrollmentAccounts",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2020-12-15-privatepreview"
     ],
@@ -1075,8 +1137,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/departments/enrollmentAccounts/billingPeriods",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/enrollmentAccounts",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2020-12-15-privatepreview",
       "2019-10-01-preview",
@@ -1091,6 +1163,15 @@
     "apiVersions": [
       "2020-12-15-privatepreview",
       "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/enrollmentAccounts/billingPeriods",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -1135,6 +1216,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/enrollmentAccounts/billingSubscriptions",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2020-12-15-privatepreview"
     ],
@@ -1369,6 +1451,15 @@
     "resourceType": "billingAccounts/listProductRecommendations",
     "apiVersions": [
       "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/migrations",
+    "apiVersions": [
+      "2024-08-01-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -1630,6 +1721,7 @@
     "aliases": null,
     "resourceType": "billingProperty",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2020-11-01-privatepreview",
       "2020-05-01",

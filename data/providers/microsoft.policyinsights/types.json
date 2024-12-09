@@ -11,49 +11,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "attestations",
-    "apiVersions": [
-      "2022-09-01",
-      "2021-01-01",
-      "2019-10-01"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "checkPolicyRestrictions",
-    "apiVersions": [
-      "2023-03-01",
-      "2022-03-01",
-      "2020-07-01-preview",
-      "2020-07-01"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "componentPolicyStates",
-    "apiVersions": [
-      "2022-04-01"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "eventGridFilters",
-    "apiVersions": [
-      "2020-10-01"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-10-01",
       "2022-04-01",
       "2019-10-01",
       "2018-07-01-preview",
@@ -69,6 +29,7 @@
     "aliases": null,
     "resourceType": "policyEvents",
     "apiVersions": [
+      "2024-10-01",
       "2019-10-01",
       "2018-07-01-preview",
       "2018-04-04",
@@ -81,17 +42,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "policyMetadata",
-    "apiVersions": [
-      "2019-10-01"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "policyStates",
     "apiVersions": [
+      "2024-10-01",
       "2019-10-01",
       "2018-07-01-preview",
       "2018-04-04",
@@ -115,6 +68,7 @@
     "aliases": null,
     "resourceType": "remediations",
     "apiVersions": [
+      "2024-10-01",
       "2021-10-01",
       "2019-07-01",
       "2018-07-01-preview"

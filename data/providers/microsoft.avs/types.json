@@ -300,7 +300,11 @@
       },
       {
         "location": "Central India",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Central US",
@@ -384,7 +388,11 @@
       },
       {
         "location": "South Africa North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "South Central US",
@@ -412,11 +420,19 @@
       },
       {
         "location": "Switzerland North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",

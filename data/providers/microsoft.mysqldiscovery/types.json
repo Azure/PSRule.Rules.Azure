@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-09-30-preview"
     ],
     "locations": [
@@ -14,13 +15,23 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-09-30-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
       "Central US EUAP",
       "East US 2 EUAP",
+      "France Central",
+      "Japan East",
       "Korea Central",
-      "Southeast Asia"
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -28,11 +39,21 @@
     "aliases": null,
     "resourceType": "MySQLSites",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-09-30-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
       "Korea Central",
-      "Southeast Asia"
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -40,11 +61,21 @@
     "aliases": null,
     "resourceType": "MySQLSites/ErrorSummaries",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-09-30-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
       "Korea Central",
-      "Southeast Asia"
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -52,11 +83,21 @@
     "aliases": null,
     "resourceType": "MySQLSites/MySQLServers",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-09-30-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
       "Korea Central",
-      "Southeast Asia"
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -64,11 +105,21 @@
     "aliases": null,
     "resourceType": "MySQLSites/Refresh",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-09-30-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
       "Korea Central",
-      "Southeast Asia"
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -76,11 +127,21 @@
     "aliases": null,
     "resourceType": "MySQLSites/Summaries",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-09-30-preview"
     ],
     "locations": [
+      "Australia East",
+      "Canada Central",
+      "Central US",
+      "France Central",
+      "Japan East",
       "Korea Central",
-      "Southeast Asia"
+      "North Europe",
+      "Southeast Asia",
+      "UK South",
+      "West Europe",
+      "West US 2"
     ],
     "zoneMappings": []
   },
@@ -88,6 +149,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-09-30-preview"
     ],
     "locations": [

@@ -146,6 +146,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
@@ -169,6 +170,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
@@ -226,6 +228,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
@@ -450,6 +453,7 @@
     "aliases": null,
     "resourceType": "SqlServerEsuLicenses",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-05-01-preview"
     ],
     "locations": [
@@ -525,6 +529,7 @@
     },
     "resourceType": "SqlServerInstances",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
@@ -640,6 +645,7 @@
     },
     "resourceType": "SqlServerInstances/AvailabilityGroups",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
@@ -717,6 +723,7 @@
     },
     "resourceType": "SqlServerInstances/Databases",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
@@ -764,6 +771,7 @@
     "aliases": null,
     "resourceType": "SqlServerLicenses",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-05-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview"

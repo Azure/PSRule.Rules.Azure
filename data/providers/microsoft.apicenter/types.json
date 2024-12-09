@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "deletedServices",
     "apiVersions": [
+      "2024-06-01-preview",
       "2024-03-15-preview"
     ],
     "locations": [
@@ -18,6 +19,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-06-01-preview",
       "2024-03-15-preview",
       "2024-03-01",
       "2023-07-01-preview"
@@ -31,6 +33,7 @@
     "aliases": null,
     "resourceType": "services",
     "apiVersions": [
+      "2024-06-01-preview",
       "2024-03-15-preview",
       "2024-03-01",
       "2023-07-01-preview"
@@ -48,6 +51,7 @@
     "aliases": null,
     "resourceType": "services/eventGridFilters",
     "apiVersions": [
+      "2024-06-01-preview",
       "2024-03-01"
     ],
     "locations": [

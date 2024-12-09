@@ -5,6 +5,7 @@
     },
     "resourceType": "consoleServices",
     "apiVersions": [
+      "2024-07-01",
       "2023-01-01",
       "2018-05-01"
     ],
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-07-01",
       "2023-01-01",
       "2018-05-01"
     ],
@@ -25,6 +27,7 @@
     "aliases": null,
     "resourceType": "locations/consoleServices",
     "apiVersions": [
+      "2024-07-01",
       "2023-01-01",
       "2018-05-01"
     ],
@@ -38,6 +41,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-01",
       "2023-01-01",
       "2018-05-01"
     ],
@@ -48,6 +52,7 @@
     "aliases": null,
     "resourceType": "serialPorts",
     "apiVersions": [
+      "2024-07-01",
       "2023-01-01",
       "2018-05-01"
     ],
@@ -69,8 +74,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India Central",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",

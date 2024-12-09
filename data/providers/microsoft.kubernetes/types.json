@@ -22,6 +22,7 @@
     },
     "resourceType": "connectedClusters",
     "apiVersions": [
+      "2024-12-01-preview",
       "2024-07-15-preview",
       "2024-07-01-preview",
       "2024-06-01-preview",
@@ -75,6 +76,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-12-01-preview",
       "2024-07-15-preview",
       "2024-07-01-preview",
       "2024-06-01-preview",
@@ -95,6 +97,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-12-01-preview",
       "2024-07-15-preview",
       "2024-07-01-preview",
       "2024-06-01-preview",
@@ -152,6 +155,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-12-01-preview",
       "2024-07-15-preview",
       "2024-07-01-preview",
       "2024-06-01-preview",
@@ -174,6 +178,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2024-12-01-preview",
       "2024-07-15-preview",
       "2024-07-01-preview",
       "2024-06-01-preview",
