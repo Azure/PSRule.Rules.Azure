@@ -29,6 +29,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.40.0:
+
+- Updated rules:
+  - Container Registry:
+    - Updated documentation and promoted `Azure.ACR.AnonymousAccess` to GA by @BernieWhite.
+      [#3119](https://github.com/Azure/PSRule.Rules.Azure/issues/3119)
+      - Bumped rule set to `2024_12`.
+
 ## v1.40.0
 
 What's changed since v1.39.3:

@@ -296,5 +296,13 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.AppConfig.DisableLocalAuth"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/9f2dea28-e834-476c-99c5-3507b4728395",
+      "/providers/Microsoft.Authorization/policyDefinitions/cced2946-b08a-44fe-9fd9-e4ed8a779897"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.ACR.AnonymousAccess"
   }
 ]
