@@ -788,7 +788,7 @@ public sealed class FunctionTests
 
         var actual2 = Functions.Providers(context, ["Microsoft.Web"]) as ResourceProviderType[];
         Assert.NotNull(actual1);
-        Assert.Equal(101, actual2.Length);
+        Assert.Equal(102, actual2.Length);
 
         var actual3 = Functions.Providers(context, ["microsoft.web", "Sites"]) as ResourceProviderType;
         Assert.NotNull(actual3);
