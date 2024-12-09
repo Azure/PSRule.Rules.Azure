@@ -29,6 +29,68 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.40.0
+
+What's changed since v1.39.3:
+
+- New features:
+  - Added support for expanding from `.jsonc` parameter files by @BernieWhite.
+    [#2053](https://github.com/Azure/PSRule.Rules.Azure/issues/2053)
+    - Previously only parameter files with the `.json` extension where automatically expanded.
+    - This feature adds support so that JSON parameter files with the `.jsonc` extension are also discovered and expanded.
+    - No additional configuration is required if expansion of JSON parameter files is enabled.
+    - To enable parameter file expansion set the `AZURE_PARAMETER_FILE_EXPANSION` configuration option to `true`.
+- Updated rules:
+  - Deployment:
+    - Updated `Azure.Deployment.SecureValue` to check additional resource types by @BernieWhite.
+      [#2650](https://github.com/Azure/PSRule.Rules.Azure/issues/2650)
+      [#2651](https://github.com/Azure/PSRule.Rules.Azure/issues/2651)
+      - Added support for container apps secret properties.
+      - Added support for deployment script secret properties.
+      - Bumped rule set to `2024_12`.
+    - Updated `Azure.Deployment.SecureParameter` to reduce false positives by @BernieWhite.
+      [#3149](https://github.com/Azure/PSRule.Rules.Azure/issues/3149)
+      - Parameters named ending with `name`, `uri`, `url`, `path`, `type`, `id`, or `options` are ignored.
+      - The `customerManagedKey` parameter is ignored.
+  - Microsoft Defender for Cloud:
+    - Updated `Azure.DefenderCloud.Contact` to use `emails` property and removed `phone` by @BernieWhite.
+      [#3117](https://github.com/Azure/PSRule.Rules.Azure/issues/3117)
+      - Renamed rule to `Azure.Defender.SecurityContact` to better align with naming for defender rules.
+      - Bumped rule set to `2024_12`.
+- General improvements:
+  - Added first time contributor guide in docs by @that-ar-guy.
+    [#3097](https://github.com/Azure/PSRule.Rules.Azure/issues/3097)
+  - Additional quality updates to documentation by @BernieWhite.
+    [#3102](https://github.com/Azure/PSRule.Rules.Azure/issues/3102)
+- Engineering:
+  - Quality updates to rule documentation by @BernieWhite.
+    [#3102](https://github.com/Azure/PSRule.Rules.Azure/issues/3102)
+  - Migrated Azure samples into PSRule for Azure by @BernieWhite.
+    [#3085](https://github.com/Azure/PSRule.Rules.Azure/issues/3085)
+- Bug fixes:
+  - Fixed evaluation of APIM policies when using embedded C# with quotes by @BernieWhite.
+    [#3184](https://github.com/Azure/PSRule.Rules.Azure/issues/3184)
+  - Fixed resource group ID is incorrect under subscription scope by @BernieWhite.
+    [#3198](https://github.com/Azure/PSRule.Rules.Azure/issues/3198)
+  - Fixed object to hashtable conversion for default parameter values by @BernieWhite.
+    [#3033](https://github.com/Azure/PSRule.Rules.Azure/issues/3033)
+  - Fixed deployments with more than one module at tenant scope by @BernieWhite.
+    [#3167](https://github.com/Azure/PSRule.Rules.Azure/issues/3167)
+  - Fixed projection of default role authorization property `principalType` by @BernieWhite.
+    [#3163](https://github.com/Azure/PSRule.Rules.Azure/issues/3163)
+  - Fixed user defined function not found when used as parameter default by @BernieWhite.
+    [#3169](https://github.com/Azure/PSRule.Rules.Azure/issues/3169)
+  - Fixed evaluation of `Azure.NSG.LateralTraversal` with empty string properties by @BernieWhite.
+    [#3130](https://github.com/Azure/PSRule.Rules.Azure/issues/3130)
+  - Fixed evaluation of `Azure.Deployment.AdminUsername` with symbolic references by @BernieWhite.
+    [#3146](https://github.com/Azure/PSRule.Rules.Azure/issues/3146)
+  - Fixed output map expansion with resource IDs by @BernieWhite.
+    [#3153](https://github.com/Azure/PSRule.Rules.Azure/issues/3153)
+
+What's changed since pre-release v1.40.0-B0206:
+
+- No additional changes.
+
 ## v1.40.0-B0206 (pre-release)
 
 What's changed since pre-release v1.40.0-B0147:
@@ -42,7 +104,7 @@ What's changed since pre-release v1.40.0-B0147:
 - Bug fixes:
   - Fixed evaluation of APIM policies when using embedded C# with quotes by @BernieWhite.
     [#3184](https://github.com/Azure/PSRule.Rules.Azure/issues/3184)
-  - Fixed Resource group ID is incorrect under subscription scope by @BernieWhite.
+  - Fixed resource group ID is incorrect under subscription scope by @BernieWhite.
     [#3198](https://github.com/Azure/PSRule.Rules.Azure/issues/3198)
 
 ## v1.40.0-B0147 (pre-release)
