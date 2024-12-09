@@ -1,4 +1,5 @@
 ---
+reviewed: 2024-12-10
 severity: Important
 pillar: Security
 category: SE:05 Identity and access management
@@ -37,7 +38,7 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerRegistry/registries",
-  "apiVersion": "2023-08-01-preview",
+  "apiVersion": "2023-11-01-preview",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "sku": {
@@ -79,7 +80,7 @@ To deploy registries that pass this rule:
 For example:
 
 ```bicep
-resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = {
+resource registry 'Microsoft.ContainerRegistry/registries@2023-11-01-preview' = {
   name: name
   location: location
   sku: {
@@ -112,7 +113,7 @@ resource registry 'Microsoft.ContainerRegistry/registries@2023-08-01-preview' = 
 }
 ```
 
-<!-- external:avm avm/res/container-registry/registry:0.5.1 anonymousPullEnabled -->
+<!-- external:avm avm/res/container-registry/registry anonymousPullEnabled -->
 
 ### Configure with Azure CLI
 
@@ -122,13 +123,21 @@ To configure registries that pass this rule:
 az acr update  -n '<name>' -g '<resource_group>' --anonymous-pull-enabled false
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Container registries should have anonymous authentication disabled](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_AnonymousPullDisabled_AuditDeny.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/9f2dea28-e834-476c-99c5-3507b4728395`.
+- [Configure container registries to disable anonymous authentication](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Container%20Registry/ACR_AnonymousPullDisabled_Modify.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/cced2946-b08a-44fe-9fd9-e4ed8a779897`.
+
 ## NOTES
 
-The anonymous pull access feature is currently in preview.
 Anonymous pull access is only available in the `Standard` and `Premium` service tiers.
 
-This rule may generate false positives in specific scenarios where to intend to distribute OCI content to Internet users,
-for example: You are a software vendor and intend to distribute container images of your software to customers.
+This rule may generate false positives in specific scenarios where to intend to distribute OCI content to Internet users.
+For example: You are a software vendor and intend to distribute container images of your software to customers.
 
 ## LINKS
 

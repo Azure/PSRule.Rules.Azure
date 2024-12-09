@@ -12,7 +12,7 @@ param name string
 param location string = resourceGroup().location
 
 // An example container registry deployed with Premium SKU.
-module registry 'br/public:avm/res/container-registry/registry:0.5.1' = {
+module registry 'br/public:avm/res/container-registry/registry:0.6.0' = {
   params: {
     name: name
     location: location

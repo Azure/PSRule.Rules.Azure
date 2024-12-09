@@ -143,7 +143,7 @@ metadata:
   ref: AZR-000401
   tags:
     release: preview
-    ruleSet: 2023_09
+    ruleSet: 2024_12
     Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'IM-1'
