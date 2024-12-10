@@ -230,6 +230,8 @@ resource clusterWithPools 'Microsoft.ContainerService/managedClusters@2023-11-01
 }
 ```
 
+<!-- external:avm avm/res/container-service/managed-cluster agentPools[*].minPods -->
+
 ## NOTES
 
 ### Rule configuration

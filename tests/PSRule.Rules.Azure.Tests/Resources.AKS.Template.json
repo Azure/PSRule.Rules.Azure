@@ -50,7 +50,7 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "kubernetesVersion": "1.29.7",
+                "kubernetesVersion": "1.30.6",
                 "dnsPrefix": "[concat('dns-', parameters('clusterName'))]",
                 "agentPoolProfiles": [
                     {
@@ -210,7 +210,7 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "kubernetesVersion": "1.29.7",
+                "kubernetesVersion": "1.30.6",
                 "dnsPrefix": "[concat('dns-', parameters('clusterName'))]",
                 "agentPoolProfiles": [
                     {
@@ -395,7 +395,7 @@
                 "vnetSubnetID": "[concat(parameters('vnetId'), '/subnets/subnet-03')]",
                 "maxPods": 50,
                 "type": "VirtualMachineScaleSets",
-                "orchestratorVersion": "1.29.7",
+                "orchestratorVersion": "1.30.6",
                 "osType": "Linux",
                 "enableAutoScaling": false
             }
@@ -427,7 +427,7 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "kubernetesVersion": "1.29.7",
+                "kubernetesVersion": "1.30.6",
                 "dnsPrefix": "[concat('dns-', parameters('clusterName'))]",
                 "agentPoolProfiles": [
                     {
@@ -628,7 +628,7 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "kubernetesVersion": "1.29.7",
+                "kubernetesVersion": "1.30.6",
                 "dnsPrefix": "[concat('dns-', parameters('clusterName5'))]",
                 "agentPoolProfiles": [
                     {
@@ -831,7 +831,7 @@
                 "type": "SystemAssigned"
             },
             "properties": {
-                "kubernetesVersion": "1.29.7",
+                "kubernetesVersion": "1.30.6",
                 "dnsPrefix": "[concat('dns-', parameters('clusterName6'))]",
                 "agentPoolProfiles": [
                     {

@@ -67,7 +67,7 @@ For example:
         }
     },
     "properties": {
-        "kubernetesVersion": "1.29.7",
+        "kubernetesVersion": "1.30.6",
         "enableRBAC": true,
         "dnsPrefix": "[parameters('dnsPrefix')]",
         "agentPoolProfiles": "[variables('allPools')]",
@@ -145,7 +145,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
     }
   }
   properties: {
-    kubernetesVersion: '1.29.7'
+    kubernetesVersion: '1.30.6'
     enableRBAC: true
     dnsPrefix: dnsPrefix
     agentPoolProfiles: allPools
@@ -200,6 +200,8 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
 }
 ```
 
+<!-- external:avm avm/res/container-service/managed-cluster kubernetesVersion -->
+
 ### Configure with Azure CLI
 
 ```bash
@@ -207,13 +209,13 @@ az aks update -n '<name>' -g '<resource_group>' --auto-upgrade-channel 'stable'
 ```
 
 ```bash
-az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.29.7'
+az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.30.6'
 ```
 
 ### Configure with Azure PowerShell
 
 ```powershell
-Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.29.7'
+Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.30.6'
 ```
 
 ## NOTES
