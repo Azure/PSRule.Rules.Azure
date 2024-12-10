@@ -32,6 +32,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since v1.40.0:
 
 - Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.30.6` as the minimum version by @BernieWhite.
+      [#3206](https://github.com/Azure/PSRule.Rules.Azure/issues/3206)
   - Container Registry:
     - Updated documentation and promoted `Azure.ACR.AnonymousAccess` to GA by @BernieWhite.
       [#3119](https://github.com/Azure/PSRule.Rules.Azure/issues/3119)

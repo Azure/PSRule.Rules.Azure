@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Design
+category: RE:04 Target metrics
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.PoolVersion/
 ---
@@ -26,7 +26,7 @@ Consider upgrading node pools to match AKS control plan version.
 
 ## LINKS
 
-- [Target and non-functional requirements](https://learn.microsoft.com/azure/architecture/framework/resiliency/design-requirements#meet-application-platform-requirements)
+- [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
 - [Upgrade a cluster control plane with multiple node pools](https://learn.microsoft.com/azure/aks/use-multiple-node-pools#upgrade-a-cluster-control-plane-with-multiple-node-pools)
 - [Supported Kubernetes versions in Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/supported-kubernetes-versions)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

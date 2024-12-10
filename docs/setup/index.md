@@ -60,7 +60,7 @@ Use comments to add context.
       AZURE_BICEP_MINIMUM_VERSION: '0.28.1'
 
       # Configure the minimum AKS cluster version.
-      AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.29.7'
+      AZURE_AKS_CLUSTER_MINIMUM_VERSION: '1.30.6'
 
     rule:
       # Enable custom rules that don't exist in the baseline
