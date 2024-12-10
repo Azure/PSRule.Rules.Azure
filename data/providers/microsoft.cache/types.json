@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2024-03-01",
       "2023-08-01",
@@ -31,6 +32,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-11-01",
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
@@ -71,6 +74,7 @@
     "aliases": null,
     "resourceType": "locations/asyncOperations",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2024-03-01",
       "2023-08-01",
@@ -101,10 +105,10 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -133,6 +137,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",
@@ -177,6 +182,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2024-03-01",
       "2023-08-01",
@@ -215,10 +221,10 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -247,6 +253,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",
@@ -291,6 +298,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-11-01",
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01-preview",
       "2024-03-01-preview",
@@ -378,6 +387,7 @@
     },
     "resourceType": "Redis",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2024-03-01",
       "2023-08-01",
@@ -416,10 +426,10 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -564,6 +574,14 @@
         ]
       },
       {
+        "location": "New Zealand North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "North Europe",
         "zones": [
           "1",
@@ -689,6 +707,7 @@
     "aliases": null,
     "resourceType": "Redis/EventGridFilters",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2024-03-01",
       "2023-08-01",
@@ -730,10 +749,10 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -766,6 +785,7 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2024-03-01",
       "2023-08-01",
@@ -796,10 +816,10 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -828,6 +848,7 @@
     "aliases": null,
     "resourceType": "Redis/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2024-03-01",
       "2023-08-01",
@@ -858,10 +879,10 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -898,6 +919,7 @@
     },
     "resourceType": "Redis/privateEndpointConnections",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2024-03-01",
       "2023-08-01",
@@ -928,10 +950,10 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -960,6 +982,7 @@
     "aliases": null,
     "resourceType": "Redis/privateLinkResources",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2024-03-01",
       "2023-08-01",
@@ -990,10 +1013,10 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1051,6 +1074,7 @@
     },
     "resourceType": "redisEnterprise",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",
@@ -1265,6 +1289,7 @@
     },
     "resourceType": "redisEnterprise/databases",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",
@@ -1309,6 +1334,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",
@@ -1353,6 +1379,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/operationresults",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",
@@ -1397,6 +1424,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",
@@ -1449,6 +1477,7 @@
     },
     "resourceType": "RedisEnterprise/privateEndpointConnections",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",
@@ -1493,6 +1522,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnections/operationresults",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",
@@ -1537,6 +1567,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateLinkResources",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2024-02-01",

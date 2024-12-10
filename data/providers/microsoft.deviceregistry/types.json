@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "assetEndpointProfiles",
     "apiVersions": [
+      "2024-11-01",
       "2024-09-01-preview",
       "2023-11-01-preview"
     ],
@@ -21,6 +22,7 @@
     "aliases": null,
     "resourceType": "assets",
     "apiVersions": [
+      "2024-11-01",
       "2024-09-01-preview",
       "2023-11-01-preview"
     ],
@@ -32,6 +34,19 @@
       "West US",
       "West US 2",
       "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingContainers",
+    "apiVersions": [
+      "2024-11-01",
+      "2024-09-01-preview",
+      "2024-07-01-preview"
+    ],
+    "locations": [
+      "global"
     ],
     "zoneMappings": []
   },
@@ -73,6 +88,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-11-01",
       "2024-09-01-preview",
       "2024-07-01-preview",
       "2023-11-01-preview",
@@ -91,6 +107,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-11-01",
       "2024-09-01-preview",
       "2023-11-01-preview"
     ],
@@ -109,6 +126,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-11-01",
       "2024-09-01-preview",
       "2024-07-01-preview",
       "2023-11-01-preview",
@@ -127,6 +145,7 @@
     "aliases": null,
     "resourceType": "operationStatuses",
     "apiVersions": [
+      "2024-11-01",
       "2024-09-01-preview",
       "2024-07-01-preview",
       "2023-11-01-preview",

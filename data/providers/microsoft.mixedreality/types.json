@@ -44,28 +44,6 @@
     "zoneMappings": []
   },
   {
-    "aliases": {
-      "Microsoft.MixedReality/objectAnchorsAccounts/accountDomain": "properties.accountDomain",
-      "Microsoft.MixedReality/objectAnchorsAccounts/accountId": "properties.accountId",
-      "Microsoft.MixedReality/objectAnchorsAccounts/sku": "sku",
-      "Microsoft.MixedReality/objectAnchorsAccounts/sku.capacity": "sku.capacity",
-      "Microsoft.MixedReality/objectAnchorsAccounts/sku.family": "sku.family",
-      "Microsoft.MixedReality/objectAnchorsAccounts/sku.name": "sku.name",
-      "Microsoft.MixedReality/objectAnchorsAccounts/sku.size": "sku.size",
-      "Microsoft.MixedReality/objectAnchorsAccounts/sku.tier": "sku.tier",
-      "Microsoft.MixedReality/objectAnchorsAccounts/storageAccountName": "properties.storageAccountName"
-    },
-    "resourceType": "objectAnchorsAccounts",
-    "apiVersions": [
-      "2021-03-01-preview"
-    ],
-    "locations": [
-      "East US 2",
-      "North Europe"
-    ],
-    "zoneMappings": []
-  },
-  {
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [

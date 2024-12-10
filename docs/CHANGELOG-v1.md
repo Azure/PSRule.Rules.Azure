@@ -36,6 +36,9 @@ What's changed since v1.40.0:
     - Updated documentation and promoted `Azure.ACR.AnonymousAccess` to GA by @BernieWhite.
       [#3119](https://github.com/Azure/PSRule.Rules.Azure/issues/3119)
       - Bumped rule set to `2024_12`.
+- Engineering:
+  - Updated resource providers and policy aliases by @BernieWhite.
+    [#3166](https://github.com/Azure/PSRule.Rules.Azure/pull/3166)
 
 ## v1.40.0
 

@@ -24,7 +24,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -185,6 +184,8 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -226,7 +227,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -258,19 +258,35 @@
     "zoneMappings": [
       {
         "location": "Australia East",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Brazil South",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Canada Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Central India",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Central US",
@@ -282,7 +298,11 @@
       },
       {
         "location": "East Asia",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "East US",
@@ -318,11 +338,19 @@
       },
       {
         "location": "Israel Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Italy North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Japan East",
@@ -334,11 +362,19 @@
       },
       {
         "location": "Korea Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Mexico Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "North Europe",
@@ -350,19 +386,35 @@
       },
       {
         "location": "Norway East",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Poland Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Qatar Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "South Africa North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "South Central US",
@@ -382,7 +434,11 @@
       },
       {
         "location": "Spain Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Sweden Central",
@@ -402,7 +458,11 @@
       },
       {
         "location": "UAE North",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "UK South",
@@ -442,6 +502,8 @@
     "aliases": null,
     "resourceType": "getPrivateDnsZoneSuffix",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -481,7 +543,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -530,7 +591,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -580,7 +640,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -630,7 +689,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -681,7 +739,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -717,6 +774,8 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -758,7 +817,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -793,6 +851,8 @@
     "aliases": null,
     "resourceType": "locations/capabilitySets",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -824,7 +884,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -859,6 +918,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -898,7 +959,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -933,6 +993,8 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -974,7 +1036,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1009,6 +1070,8 @@
     "aliases": null,
     "resourceType": "locations/listMigrations",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -1044,7 +1107,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1079,6 +1141,8 @@
     "aliases": null,
     "resourceType": "locations/operationProgress",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -1107,7 +1171,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1164,7 +1227,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1221,7 +1283,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1272,7 +1333,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1323,7 +1383,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1374,7 +1433,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1425,7 +1483,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1476,7 +1533,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1527,7 +1583,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1576,7 +1631,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1625,7 +1679,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1676,7 +1729,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1727,7 +1779,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1756,6 +1807,8 @@
     "aliases": null,
     "resourceType": "locations/updateMigration",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -1791,7 +1844,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1826,6 +1878,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-10-30",
+      "2024-10-01-preview",
       "2024-06-30",
       "2024-06-01-preview",
       "2024-02-28",
@@ -1868,8 +1922,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India Central",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1949,7 +2001,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2000,7 +2051,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2055,7 +2105,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2106,7 +2155,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2165,7 +2213,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2216,7 +2263,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2267,7 +2313,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2317,7 +2362,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2368,7 +2412,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2419,7 +2462,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2470,7 +2512,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2524,7 +2565,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2575,7 +2615,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",

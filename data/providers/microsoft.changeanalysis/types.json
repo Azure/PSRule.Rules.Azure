@@ -12,24 +12,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "changeSnapshots",
-    "apiVersions": [
-      "2021-04-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "computeChanges",
-    "apiVersions": [
-      "2021-04-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2020-04-01-preview",

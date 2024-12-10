@@ -21,6 +21,7 @@
       "Germany West Central",
       "Italy North",
       "Japan East",
+      "Korea Central",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -121,6 +122,14 @@
         ]
       },
       {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "North Europe",
         "zones": [
           "1",
@@ -204,6 +213,7 @@
       "Germany West Central",
       "Italy North",
       "Japan East",
+      "Korea Central",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -589,6 +599,7 @@
       "Germany West Central",
       "Italy North",
       "Japan East",
+      "Korea Central",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -623,6 +634,7 @@
       "Germany West Central",
       "Italy North",
       "Japan East",
+      "Korea Central",
       "North Europe",
       "South Central US",
       "Southeast Asia",

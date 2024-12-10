@@ -47,6 +47,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
       "2024-03-01-privatepreview",
@@ -90,8 +91,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India Central",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -230,6 +229,7 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
       "2024-03-01-privatepreview",
@@ -268,7 +268,405 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
+      "Korea Central",
+      "Korea South",
+      "Mexico Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": [
+      {
+        "location": "Australia East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Brazil South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Canada Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central India",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "East US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "France Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Israel Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Italy North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "North Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Norway East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Poland Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Qatar Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Africa North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "South Central US",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Spain Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Sweden Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Switzerland North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UAE North",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "UK South",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West Europe",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 2",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "West US 3",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      }
+    ]
+  },
+  {
+    "aliases": {
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/cancel": "properties.cancel",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus": "properties.currentStatus",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails": "properties.currentStatus.currentSubStateDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.currentSubState": "properties.currentStatus.currentSubStateDetails.currentSubState",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.dbDetails": "properties.currentStatus.currentSubStateDetails.dbDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails": "properties.currentStatus.currentSubStateDetails.validationDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].databaseName": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].databaseName",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].endedOn": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].endedOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].startedOn": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].startedOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].message": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].message",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].type": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].type",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].message": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].message",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].type": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].type",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.status": "properties.currentStatus.currentSubStateDetails.validationDetails.status",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.validationEndTimeInUtc": "properties.currentStatus.currentSubStateDetails.validationDetails.validationEndTimeInUtc",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.validationStartTimeInUtc": "properties.currentStatus.currentSubStateDetails.validationDetails.validationStartTimeInUtc",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.error": "properties.currentStatus.error",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.state": "properties.currentStatus.state",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToCancelMigrationOn": "properties.dBsToCancelMigrationOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToCancelMigrationOn[*]": "properties.dBsToCancelMigrationOn[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToMigrate": "properties.dBsToMigrate",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToMigrate[*]": "properties.dBsToMigrate[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToTiggerCutoverOn": "properties.dBsToTiggerCutoverOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToTiggerCutoverOn[*]": "properties.dBsToTiggerCutoverOn[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dbsToTriggerCutoverOn": "properties.dbsToTriggerCutoverOn",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dbsToTriggerCutoverOn[*]": "properties.dbsToTriggerCutoverOn[*]",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrateRoles": "properties.migrateRoles",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationDetailsLevel": "properties.migrationDetailsLevel",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationId": "properties.migrationId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationInstanceResourceId": "properties.migrationInstanceResourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationMode": "properties.migrationMode",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationName": "properties.migrationName",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationOption": "properties.migrationOption",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup": "properties.migrationResourceGroup",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup.resourceId": "properties.migrationResourceGroup.resourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup.subnetResourceId": "properties.migrationResourceGroup.subnetResourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationWindowEndTimeInUtc": "properties.migrationWindowEndTimeInUtc",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationWindowStartTimeInUtc": "properties.migrationWindowStartTimeInUtc",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/overwriteDBsInTarget": "properties.overwriteDBsInTarget",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters": "properties.secretParameters",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp": "properties.secretParameters.aadApp",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp.aadSecret": "properties.secretParameters.aadApp.aadSecret",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp.clientId": "properties.secretParameters.aadApp.clientId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp.tenantId": "properties.secretParameters.aadApp.tenantId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials": "properties.secretParameters.adminCredentials",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.sourceServerPassword": "properties.secretParameters.adminCredentials.sourceServerPassword",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.targetServerPassword": "properties.secretParameters.adminCredentials.targetServerPassword",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.sourceServerUsername": "properties.secretParameters.sourceServerUsername",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.targetServerUsername": "properties.secretParameters.targetServerUsername",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/setupLogicalReplicationOnSourceDBIfNeeded": "properties.setupLogicalReplicationOnSourceDBIfNeeded",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerFullyQualifiedDomainName": "properties.sourceDBServerFullyQualifiedDomainName",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata": "properties.sourceDBServerMetadata",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.location": "properties.sourceDBServerMetadata.location",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku": "properties.sourceDBServerMetadata.sku",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku.name": "properties.sourceDBServerMetadata.sku.name",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku.tier": "properties.sourceDBServerMetadata.sku.tier",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.storageMB": "properties.sourceDBServerMetadata.storageMB",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.version": "properties.sourceDBServerMetadata.version",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerResourceId": "properties.sourceDBServerResourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceType": "properties.sourceType",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sslMode": "properties.sslMode",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/startDataMigration": "properties.startDataMigration",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerFullyQualifiedDomainName": "properties.targetDBServerFullyQualifiedDomainName",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata": "properties.targetDBServerMetadata",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.location": "properties.targetDBServerMetadata.location",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku": "properties.targetDBServerMetadata.sku",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku.name": "properties.targetDBServerMetadata.sku.name",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku.tier": "properties.targetDBServerMetadata.sku.tier",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.storageMB": "properties.targetDBServerMetadata.storageMB",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.version": "properties.targetDBServerMetadata.version",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerResourceId": "properties.targetDBServerResourceId",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/triggerCutover": "properties.triggerCutover",
+      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/userAssignedIdentityResourceId": "properties.userAssignedIdentityResourceId"
+    },
+    "resourceType": "flexibleServers/migrations",
+    "apiVersions": [
+      "2024-11-01-preview",
+      "2024-08-01",
+      "2024-05-01-privatepreview",
+      "2024-03-01-privatepreview",
+      "2023-12-01-preview",
+      "2023-06-01-preview",
+      "2023-03-01-preview",
+      "2023-01-01-privatepreview",
+      "2022-12-01",
+      "2022-11-01-preview",
+      "2022-05-01-privatepreview",
+      "2022-05-01-preview",
+      "2022-03-08-privatepreview",
+      "2022-03-08-preview",
+      "2022-01-20-preview",
+      "2021-06-01-preview",
+      "2021-06-01",
+      "2020-02-14-privatepreview",
+      "2020-02-14-preview"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "France South",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -557,7 +955,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "North Central US",
       "North Europe",
@@ -603,7 +1000,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -653,7 +1049,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -703,7 +1098,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -752,7 +1146,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -786,6 +1179,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
       "2024-03-01-privatepreview",
@@ -823,7 +1217,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -855,6 +1248,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
       "2024-03-01-privatepreview",
@@ -892,7 +1286,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -924,6 +1317,7 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
       "2024-03-01-privatepreview",
@@ -959,7 +1353,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -991,6 +1384,7 @@
     "aliases": null,
     "resourceType": "locations/getAutoMigrationFreeSlots",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-03-01-privatepreview"
     ],
@@ -1013,7 +1407,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1065,6 +1458,7 @@
     "aliases": null,
     "resourceType": "locations/getLatestAutoMigrationSchedule",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-03-01-privatepreview"
     ],
@@ -1087,7 +1481,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1139,7 +1532,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1194,7 +1586,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1245,7 +1636,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1296,7 +1686,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1347,7 +1736,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1398,7 +1786,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1449,7 +1836,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1500,7 +1886,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1529,6 +1914,7 @@
     "aliases": null,
     "resourceType": "locations/resourceType",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
       "2024-03-01-privatepreview",
@@ -1566,7 +1952,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1618,7 +2003,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1667,7 +2051,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1718,7 +2101,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1769,7 +2151,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -1798,6 +2179,7 @@
     "aliases": null,
     "resourceType": "locations/updateAutoMigrationSchedule",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-03-01-privatepreview"
     ],
@@ -1820,7 +2202,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -1852,6 +2233,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
       "2024-03-01-privatepreview",
@@ -1891,8 +2273,6 @@
       "Italy North",
       "Japan East",
       "Japan West",
-      "Jio India Central",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "Mexico Central",
@@ -2016,7 +2396,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2067,7 +2446,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2122,7 +2500,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2173,7 +2550,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2232,7 +2608,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2283,7 +2658,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2334,7 +2708,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2384,7 +2757,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2435,7 +2807,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2486,7 +2857,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2540,7 +2910,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2591,7 +2960,6 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
-      "Jio India West",
       "Korea Central",
       "Korea South",
       "North Central US",
@@ -2660,98 +3028,6 @@
       "Microsoft.DBForPostgreSql/flexibleServers/firewallRules/startIpAddress": "properties.startIpAddress"
     },
     "resourceType": "flexibleservers/firewallrules"
-  },
-  {
-    "aliases": {
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/cancel": "properties.cancel",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus": "properties.currentStatus",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails": "properties.currentStatus.currentSubStateDetails",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.currentSubState": "properties.currentStatus.currentSubStateDetails.currentSubState",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.dbDetails": "properties.currentStatus.currentSubStateDetails.dbDetails",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails": "properties.currentStatus.currentSubStateDetails.validationDetails",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*]",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].databaseName": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].databaseName",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].endedOn": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].endedOn",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].startedOn": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].startedOn",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*]",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*]",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].message": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].message",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].messages[*].state",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].state",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].type": "properties.currentStatus.currentSubStateDetails.validationDetails.dbLevelValidationDetails[*].summary[*].type",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*]",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*]": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*]",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].message": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].message",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].messages[*].state",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].state": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].state",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].type": "properties.currentStatus.currentSubStateDetails.validationDetails.serverLevelValidationDetails[*].type",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.status": "properties.currentStatus.currentSubStateDetails.validationDetails.status",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.validationEndTimeInUtc": "properties.currentStatus.currentSubStateDetails.validationDetails.validationEndTimeInUtc",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.currentSubStateDetails.validationDetails.validationStartTimeInUtc": "properties.currentStatus.currentSubStateDetails.validationDetails.validationStartTimeInUtc",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.error": "properties.currentStatus.error",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/currentStatus.state": "properties.currentStatus.state",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToCancelMigrationOn": "properties.dBsToCancelMigrationOn",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToCancelMigrationOn[*]": "properties.dBsToCancelMigrationOn[*]",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToMigrate": "properties.dBsToMigrate",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToMigrate[*]": "properties.dBsToMigrate[*]",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToTiggerCutoverOn": "properties.dBsToTiggerCutoverOn",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dBsToTiggerCutoverOn[*]": "properties.dBsToTiggerCutoverOn[*]",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dbsToTriggerCutoverOn": "properties.dbsToTriggerCutoverOn",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/dbsToTriggerCutoverOn[*]": "properties.dbsToTriggerCutoverOn[*]",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrateRoles": "properties.migrateRoles",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationDetailsLevel": "properties.migrationDetailsLevel",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationId": "properties.migrationId",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationInstanceResourceId": "properties.migrationInstanceResourceId",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationMode": "properties.migrationMode",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationName": "properties.migrationName",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationOption": "properties.migrationOption",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup": "properties.migrationResourceGroup",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup.resourceId": "properties.migrationResourceGroup.resourceId",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationResourceGroup.subnetResourceId": "properties.migrationResourceGroup.subnetResourceId",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationWindowEndTimeInUtc": "properties.migrationWindowEndTimeInUtc",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/migrationWindowStartTimeInUtc": "properties.migrationWindowStartTimeInUtc",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/overwriteDBsInTarget": "properties.overwriteDBsInTarget",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters": "properties.secretParameters",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp": "properties.secretParameters.aadApp",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp.aadSecret": "properties.secretParameters.aadApp.aadSecret",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp.clientId": "properties.secretParameters.aadApp.clientId",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.aadApp.tenantId": "properties.secretParameters.aadApp.tenantId",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials": "properties.secretParameters.adminCredentials",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.sourceServerPassword": "properties.secretParameters.adminCredentials.sourceServerPassword",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.adminCredentials.targetServerPassword": "properties.secretParameters.adminCredentials.targetServerPassword",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.sourceServerUsername": "properties.secretParameters.sourceServerUsername",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/secretParameters.targetServerUsername": "properties.secretParameters.targetServerUsername",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/setupLogicalReplicationOnSourceDBIfNeeded": "properties.setupLogicalReplicationOnSourceDBIfNeeded",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerFullyQualifiedDomainName": "properties.sourceDBServerFullyQualifiedDomainName",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata": "properties.sourceDBServerMetadata",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.location": "properties.sourceDBServerMetadata.location",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku": "properties.sourceDBServerMetadata.sku",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku.name": "properties.sourceDBServerMetadata.sku.name",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.sku.tier": "properties.sourceDBServerMetadata.sku.tier",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.storageMB": "properties.sourceDBServerMetadata.storageMB",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerMetadata.version": "properties.sourceDBServerMetadata.version",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceDBServerResourceId": "properties.sourceDBServerResourceId",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sourceType": "properties.sourceType",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/sslMode": "properties.sslMode",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/startDataMigration": "properties.startDataMigration",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerFullyQualifiedDomainName": "properties.targetDBServerFullyQualifiedDomainName",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata": "properties.targetDBServerMetadata",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.location": "properties.targetDBServerMetadata.location",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku": "properties.targetDBServerMetadata.sku",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku.name": "properties.targetDBServerMetadata.sku.name",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.sku.tier": "properties.targetDBServerMetadata.sku.tier",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.storageMB": "properties.targetDBServerMetadata.storageMB",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerMetadata.version": "properties.targetDBServerMetadata.version",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/targetDBServerResourceId": "properties.targetDBServerResourceId",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/triggerCutover": "properties.triggerCutover",
-      "Microsoft.DBforPostgreSQL/flexibleServers/migrations/userAssignedIdentityResourceId": "properties.userAssignedIdentityResourceId"
-    },
-    "resourceType": "flexibleservers/migrations"
   },
   {
     "aliases": {

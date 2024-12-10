@@ -1,8 +1,9 @@
 [
   {
     "aliases": null,
-    "resourceType": "Images",
+    "resourceType": "images",
     "apiVersions": [
+      "2024-10-19",
       "2024-04-04-preview"
     ],
     "locations": [],
@@ -10,8 +11,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "Images/Versions",
+    "resourceType": "images/versions",
     "apiVersions": [
+      "2024-10-19",
       "2024-04-04-preview"
     ],
     "locations": [],
@@ -21,6 +23,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview",
       "2023-12-13-preview",
@@ -33,6 +36,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview",
       "2023-12-13-preview",
@@ -49,11 +53,16 @@
       "East US 2",
       "Germany West Central",
       "Italy North",
+      "Japan East",
+      "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Central US",
       "West Europe",
@@ -67,6 +76,7 @@
     "aliases": null,
     "resourceType": "Locations/Skus",
     "apiVersions": [
+      "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview"
     ],
@@ -88,6 +98,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview",
       "2023-12-13-preview",
@@ -164,6 +175,7 @@
     },
     "resourceType": "pools",
     "apiVersions": [
+      "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview",
       "2023-12-13-preview",
@@ -180,11 +192,16 @@
       "East US 2",
       "Germany West Central",
       "Italy North",
+      "Japan East",
+      "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
       "South Central US",
       "Southeast Asia",
+      "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Central US",
       "West Europe",
@@ -198,6 +215,7 @@
     "aliases": null,
     "resourceType": "pools/Resources",
     "apiVersions": [
+      "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview"
     ],

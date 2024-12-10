@@ -60,6 +60,7 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
@@ -113,6 +114,7 @@
     },
     "resourceType": "clusters/arcSettings",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
@@ -174,6 +176,7 @@
     },
     "resourceType": "clusters/arcSettings/extensions",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
@@ -337,6 +340,7 @@
     },
     "resourceType": "clusters/deploymentSettings",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
@@ -439,6 +443,7 @@
     },
     "resourceType": "clusters/securitySettings",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
@@ -460,6 +465,7 @@
     "aliases": null,
     "resourceType": "clusters/updates",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
@@ -490,6 +496,7 @@
     "aliases": null,
     "resourceType": "clusters/updates/updateRuns",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
@@ -520,6 +527,7 @@
     "aliases": null,
     "resourceType": "clusters/updateSummaries",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
@@ -566,6 +574,7 @@
     },
     "resourceType": "edgeDevices",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-02-15-preview",
       "2024-01-01",
@@ -614,6 +623,7 @@
     },
     "resourceType": "galleryImages",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-05-01-preview",
       "2024-02-01-preview",
       "2024-01-01",
@@ -640,6 +650,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-08-01-preview",
       "2024-07-15-preview",
       "2024-07-01-preview",
@@ -679,6 +690,8 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-08-01-preview",
       "2024-07-01-preview",
       "2024-05-01-preview",
       "2024-04-01",
@@ -773,6 +786,7 @@
     },
     "resourceType": "logicalNetworks",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-05-01-preview",
       "2024-02-01-preview",
       "2024-01-01",
@@ -820,6 +834,7 @@
     },
     "resourceType": "marketplaceGalleryImages",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-05-01-preview",
       "2024-02-01-preview",
       "2024-01-01",
@@ -866,6 +881,7 @@
     },
     "resourceType": "networkInterfaces",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-05-01-preview",
       "2024-02-01-preview",
       "2024-01-01",
@@ -892,6 +908,7 @@
     "aliases": null,
     "resourceType": "networkSecurityGroups",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-05-01-preview",
       "2024-02-01-preview"
     ],
@@ -911,6 +928,7 @@
     "aliases": null,
     "resourceType": "networkSecurityGroups/securityRules",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-05-01-preview",
       "2024-02-01-preview"
     ],
@@ -930,6 +948,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-08-01-preview",
       "2024-07-15-preview",
       "2024-07-01-preview",
@@ -971,6 +990,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2024-09-01-preview",
       "2024-04-01",
       "2024-01-01",
       "2023-11-01-preview",
@@ -1004,6 +1024,7 @@
     },
     "resourceType": "storageContainers",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-05-01-preview",
       "2024-02-01-preview",
       "2024-01-01",
@@ -1046,6 +1067,7 @@
     },
     "resourceType": "virtualHardDisks",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-05-01-preview",
       "2024-02-01-preview",
       "2024-01-01",
@@ -1173,6 +1195,7 @@
     },
     "resourceType": "virtualMachineInstances",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-05-01-preview",
       "2024-02-01-preview",
       "2024-01-01",

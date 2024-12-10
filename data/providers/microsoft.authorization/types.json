@@ -198,24 +198,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "MigrateRbac",
-    "apiVersions": [
-      "2024-06-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "MigrateRbac/OperationStatuses",
-    "apiVersions": [
-      "2024-06-01-preview"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2017-05-01",
@@ -921,6 +903,8 @@
     },
     "resourceType": "roleManagementPolicies",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-02-01-preview",
       "2020-10-01-preview",
       "2020-10-01"
     ],
@@ -931,6 +915,8 @@
     "aliases": null,
     "resourceType": "roleManagementPolicyAssignments",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-02-01-preview",
       "2020-10-01-preview",
       "2020-10-01"
     ],

@@ -26,8 +26,9 @@
       "Microsoft.HealthDataAIServices/deidServices/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.HealthDataAIServices/deidServices/serviceUrl": "properties.serviceUrl"
     },
-    "resourceType": "DeidServices",
+    "resourceType": "deidServices",
     "apiVersions": [
+      "2024-09-20",
       "2024-02-28-preview"
     ],
     "locations": [
@@ -53,8 +54,9 @@
       "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
       "Microsoft.HealthDataAIServices/deidServices/privateEndpointConnections/provisioningState": "properties.provisioningState"
     },
-    "resourceType": "DeidServices/privateEndpointConnections",
+    "resourceType": "deidServices/privateEndpointConnections",
     "apiVersions": [
+      "2024-09-20",
       "2024-02-28-preview"
     ],
     "locations": [
@@ -70,8 +72,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "DeidServices/privateLinkResources",
+    "resourceType": "deidServices/privateLinkResources",
     "apiVersions": [
+      "2024-09-20",
       "2024-02-28-preview"
     ],
     "locations": [
@@ -89,8 +92,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
-      "2024-02-28-preview",
-      "2023-06-01-preview"
+      "2024-09-20",
+      "2024-02-28-preview"
     ],
     "locations": [
       "global"
@@ -101,8 +104,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
-      "2024-02-28-preview",
-      "2023-06-01-preview"
+      "2024-09-20",
+      "2024-02-28-preview"
     ],
     "locations": [
       "Canada Central",
@@ -118,10 +121,10 @@
   },
   {
     "aliases": null,
-    "resourceType": "Operations",
+    "resourceType": "operations",
     "apiVersions": [
-      "2024-02-28-preview",
-      "2023-06-01-preview"
+      "2024-09-20",
+      "2024-02-28-preview"
     ],
     "locations": [
       "global"
