@@ -1,5 +1,5 @@
 ---
-reviewed: 2021-12-10
+reviewed: 2024-12-10
 severity: Important
 pillar: Security
 category: SE:06 Network controls
@@ -24,14 +24,18 @@ When exposing application endpoints consider using an ingress controller that su
 - Encryption in transit over TLS.
 - Multiple replicas.
 
-Azure provides a production ready ingress controller _Application Gateway Ingress Controller_ (AGIC).
+Azure Kubernetes Service provides several ingress controller options including:
+
+- **Application routing add-on** &mdash; an NGINX-based managed ingress controller add-on.
+- **Application Gateway Ingress Controller (AGIC)** &mdash; an ingress controller which integrates with Application Gateway.
+- **Application Gateway for Containers** &mdash; is the successor to AGIC that additional features and scale.
 
 HTTP application routing add-on (preview) for Azure Kubernetes Service (AKS) will be retired on 03 March 2025.
 
 ## RECOMMENDATION
 
 Consider disabling the HTTP application routing add-on in your AKS cluster.
-Also consider using Application Gateway Ingress Controller (AGIC) instead to protect application endpoints.
+Also consider migrating to an alternative ingress controller.
 
 ## EXAMPLES
 
@@ -186,5 +190,7 @@ resource cluster 'Microsoft.ContainerService/managedClusters@2021-07-01' = {
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
 - [HTTP application routing](https://learn.microsoft.com/azure/aks/http-application-routing)
+- [Migrate from HTTP application routing to the application routing add-on](https://learn.microsoft.com/azure/aks/app-routing-migration)
+- [What is Application Gateway for Containers?](https://learn.microsoft.com/azure/application-gateway/for-containers/overview)
 - [Enable Application Gateway Ingress Controller add-on for an existing AKS cluster](https://learn.microsoft.com/azure/application-gateway/tutorial-ingress-controller-add-on-existing)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters#ManagedClusterAutoUpgradeProfile)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
