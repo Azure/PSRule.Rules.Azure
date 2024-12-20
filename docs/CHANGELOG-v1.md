@@ -31,6 +31,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.40.0:
 
+- New features:
+  - Added December 2024 baselines `Azure.GA_2024_12` and `Azure.Preview_2024_12` by @BernieWhite.
+    [#3165](https://github.com/Azure/PSRule.Rules.Azure/issues/3165)
+    - Includes rules released before or during December 2024.
+    - Marked `Azure.GA_2024_09` and `Azure.Preview_2024_09` baselines as obsolete.
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.30.6` as the minimum version by @BernieWhite.
