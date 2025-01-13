@@ -7,11 +7,11 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppSer
 ms-content-id: e19fbe7e-da05-47d4-8de1-2fdf52ada662
 ---
 
-# App Service minimum TLS version
+# Use secure protocols for App Service
 
 ## SYNOPSIS
 
-App Service should reject TLS versions older than 1.2.
+App Service should not accept weak or deprecated transport protocols for client-server communication.
 
 ## DESCRIPTION
 
