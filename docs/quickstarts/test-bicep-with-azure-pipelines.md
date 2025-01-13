@@ -108,12 +108,18 @@ steps:
   inputs:
     versionSpec: '3.x'
 
+- task: PSRule@1
+  inputs:
+    module: 'PSRule.Rules.Azure'
+    inputPath: './templates'
+    options: './ps-rule.yaml'
+
 - task: PowerShell@2
   inputs:
     targetType: 'inline'
     script: |
       Install-Module -Name PSRule.Rules.Azure -Force -Scope CurrentUser
-      pwsh -Command "Invoke-PSRule -InputPath './templates'"
+      pwsh -Command "Assert-PSRule -InputPath './templates' -Option './ps-rule.yaml'"
 
 - task: PublishTestResults@2
   inputs:
