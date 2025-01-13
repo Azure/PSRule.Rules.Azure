@@ -2,7 +2,7 @@
 
 This quickstart guide will help you set up PSRule for Azure in an Azure DevOps pipeline to validate Infrastructure as Code (IaC) templates, such as ARM or Bicep files. By the end, you will have a pipeline that installs and runs PSRule, validates IaC templates, and publishes validation results in Azure DevOps Test Reports.
 
-## Prerequisites
+## Before you begin
 
 1. **Azure DevOps account:** You need an Azure DevOps organization with an active project.
 2. **IaC templates:** Ensure you have ARM or Bicep templates in your repository for validation.
