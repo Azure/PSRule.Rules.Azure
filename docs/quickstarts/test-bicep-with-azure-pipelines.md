@@ -10,7 +10,81 @@ This quickstart guide will help you set up PSRule for Azure in an Azure DevOps p
 4. **PowerShell Core:** Your build agent should have PowerShell Core installed (v7 or later).
 5. **PSRule module:** The PSRule module will be installed during pipeline execution.
 
----
+ ## Add a sample Bicep deployment 
+  
+ If you don't already have a Bicep deployment in your repository, add a sample deployment. 
+  
+ 1. In the root of your repository, create a new folder called `deployments`. 
+ 2. In the `deployments` folder, create a new file called `dev.bicepparam`. 
+ 3. In the `deployments` folder, create a new file called `main.bicep`. 
+  
+ ??? Example "Example parameter file" 
+  
+     ```bicep title="deployments/dev.bicepparam" 
+     using 'main.bicep' 
+  
+     param environment = 'dev' 
+     param name = 'kv-example-001' 
+     param defaultAction = 'Deny' 
+     param workspaceId = '/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/rg-test/providers/microsoft.operationalinsights/workspaces/workspace-001' 
+     ``` 
+  
+ ??? Example "Example deployment module" 
+  
+     ```bicep title="deployments/main.bicep" 
+     targetScope = 'resourceGroup' 
+  
+     param name string 
+     param location string = resourceGroup().location 
+  
+     @allowed([ 
+       'Allow' 
+       'Deny' 
+     ]) 
+     param defaultAction string = 'Deny' 
+     param environment string 
+     param workspaceId string = '' 
+  
+     resource vault 'Microsoft.KeyVault/vaults@2023-02-01' = { 
+       name: name 
+       location: location 
+       properties: { 
+         sku: { 
+           family: 'A' 
+           name: 'standard' 
+         } 
+         tenantId: tenant().tenantId 
+         enableSoftDelete: true 
+         enablePurgeProtection: true 
+         enableRbacAuthorization: true 
+         networkAcls: { 
+           defaultAction: defaultAction 
+         } 
+       } 
+       tags: { 
+         env: environment 
+       } 
+     } 
+  
+     @sys.description('Configure auditing for Key Vault.') 
+     resource logs 'Microsoft.Insights/diagnosticSettings@2021-05-01-preview' = if (!empty(workspaceId)) { 
+       name: 'service' 
+       scope: vault 
+       properties: { 
+         workspaceId: workspaceId 
+         logs: [ 
+           { 
+             category: 'AuditEvent' 
+             enabled: true 
+           } 
+         ] 
+       } 
+     } 
+     ``` 
+  
+ You can also find a copy of these files in the [quickstart sample repository][6]. 
+  
+   [6]: https://github.com/Azure/PSRule.Rules.Azure-quickstart/tree/main/deployments/contoso/landing-zones/subscription-1/rg-app-001
 
 ## Steps to Create the Pipeline
 
