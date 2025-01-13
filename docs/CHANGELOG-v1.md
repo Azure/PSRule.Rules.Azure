@@ -47,6 +47,10 @@ What's changed since v1.40.0:
 - Engineering:
   - Updated resource providers and policy aliases by @BernieWhite.
     [#3166](https://github.com/Azure/PSRule.Rules.Azure/pull/3166)
+- Documentation:
+  - Added a new quickstart guide for using Azure Pipelines with PSRule by @that-ar-guy.  
+    [#3220](https://github.com/Azure/PSRule.Rules.Azure/pull/3220)
+
 
 ## v1.40.0
 
