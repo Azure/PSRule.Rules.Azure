@@ -123,7 +123,7 @@ steps:
 
 - task: PublishTestResults@2
   inputs:
-    testResultsFormat: 'JUnit'
+    testResultsFormat: 'NUnit3'
     testResultsFiles: '**/psrule-results.xml'
 ```
 
