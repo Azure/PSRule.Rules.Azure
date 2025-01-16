@@ -1,4 +1,5 @@
 ---
+deprecated: true
 severity: Important
 pillar: Operational Excellence
 category: Configuration
@@ -6,7 +7,7 @@ resource: API Management
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.ProductTerms/
 ---
 
-# Use API product legal terms
+# API Management products do not have legal terms set
 
 ## SYNOPSIS
 
@@ -24,6 +25,12 @@ Acceptance of legal terms is bypassed when an administrator creates a subscripti
 ## RECOMMENDATION
 
 Consider configuring legal terms for all products to declare acceptable use of included APIs.
+
+## NOTES
+
+This rule is deprecated from v1.41.0.
+By default, PSRule will not evaluate this rule unless explicitly enabled.
+See https://aka.ms/ps-rule-azure/deprecations.
 
 ## LINKS
 

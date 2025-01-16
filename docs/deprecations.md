@@ -40,6 +40,7 @@ The following rules are deprecated and will be removed in v2:
 
 Reference ID | Name                             | Deprecated from | Reason
 ------------ | ----                             | --------------- | ------
+AZR-000050   | Azure.APIM.ProductTerms          | v1.41.0         | No clear linkage to WAF.
 AZR-000217   | Azure.Template.UseParameters     | v1.36.0         | Linting already handled by Bicep linter. No clear linkage to WAF.
 AZR-000219   | Azure.Template.UseVariables      | v1.36.0         | Linting already handled by Bicep linter. No clear linkage to WAF.
 AZR-000218   | Azure.Template.DefineParameters  | v1.36.0         | No applicable to Bicep. No clear linkage to WAF.
