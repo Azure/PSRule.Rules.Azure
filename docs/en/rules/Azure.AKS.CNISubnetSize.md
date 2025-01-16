@@ -1,7 +1,7 @@
 ---
 severity: Important
 pillar: Reliability
-category: Scalability
+category: PE:05 Scaling and partitioning
 resource: Azure Kubernetes Service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.CNISubnetSize/
 ---
@@ -43,7 +43,7 @@ configuration:
 
 ## LINKS
 
-- [Plan for growth](https://learn.microsoft.com/azure/architecture/framework/scalability/design-scale#plan-for-growth)
+- [PE:05 Scaling and partitioning](https://learn.microsoft.com/azure/well-architected/performance-efficiency/scale-partition#configure-scaling)
 - [Configure Azure CNI networking in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/configure-azure-cni)
 - [Use kubenet networking with your own IP address ranges in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/configure-kubenet)
 - [Tutorial: Configure Azure CNI networking in Azure Kubernetes Service (AKS) using Ansible](https://learn.microsoft.com/azure/developer/ansible/aks-configure-cni-networking)

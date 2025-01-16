@@ -41,6 +41,9 @@ resource vm 'Microsoft.Compute/virtualMachines@2024-03-01' = {
       computerName: name
       adminUsername: adminUsername
       adminPassword: adminPassword
+      windowsConfiguration: {
+        provisionVMAgent: true
+      }
     }
     storageProfile: {
       imageReference: {
@@ -224,6 +227,7 @@ resource linux 'Microsoft.Compute/virtualMachines@2024-03-01' = {
       computerName: name
       adminUsername: adminUsername
       linuxConfiguration: {
+        provisionVMAgent: true
         disablePasswordAuthentication: true
       }
     }
