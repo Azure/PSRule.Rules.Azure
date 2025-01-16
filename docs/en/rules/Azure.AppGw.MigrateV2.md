@@ -71,11 +71,14 @@ resource appGw 'Microsoft.Network/applicationGateways@2022-07-01' = {
 }
 ```
 
+<!-- external:avm avm/res/network/application-gateway sku -->
+
 ## NOTES
 
 This rule is applicable for both Application Gateways and Application Gateways with Web Application Firewall (WAF).
 
-Not all existing features under the v1 SKUs are supported in the v2 SKUs. The v2 SKUs are not currently available in all regions.
+Not all existing features under the v1 SKUs are supported in the v2 SKUs.
+The v2 SKUs are not currently available in all regions.
 
 ## LINKS
 
