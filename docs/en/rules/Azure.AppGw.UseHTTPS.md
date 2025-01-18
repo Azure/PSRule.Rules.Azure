@@ -114,6 +114,8 @@ resource app_gw 'Microsoft.Network/applicationGateways@2023-09-01' = {
 }
 ```
 
+<!-- external:avm avm/res/network/application-gateway frontendPorts -->
+
 ## LINKS
 
 - [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption)

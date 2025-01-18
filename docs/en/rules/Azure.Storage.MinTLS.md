@@ -7,11 +7,11 @@ resource: Storage Account
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.MinTLS/
 ---
 
-# Storage Account minimum TLS version
+# Use secure protocols for Storage Accounts
 
 ## SYNOPSIS
 
-Storage Accounts should reject TLS versions older than 1.2.
+Storage Accounts should not accept weak or deprecated transport protocols for client-server communication.
 
 ## DESCRIPTION
 

@@ -93,7 +93,7 @@ AZR-000069 | [Azure.AppInsights.Workspace](Azure.AppInsights.Workspace.md) | Con
 AZR-000070 | [Azure.AppInsights.Name](Azure.AppInsights.Name.md) | Azure Application Insights resources names should meet naming requirements. | GA
 AZR-000071 | [Azure.AppService.PlanInstanceCount](Azure.AppService.PlanInstanceCount.md) | App Service Plan should use a minimum number of instances for failover. | GA
 AZR-000072 | [Azure.AppService.MinPlan](Azure.AppService.MinPlan.md) | Use at least a Standard App Service Plan. | GA
-AZR-000073 | [Azure.AppService.MinTLS](Azure.AppService.MinTLS.md) | App Service should reject TLS versions older than 1.2. | GA
+AZR-000073 | [Azure.AppService.MinTLS](Azure.AppService.MinTLS.md) | App Service should not accept weak or deprecated transport protocols for client-server communication. | GA
 AZR-000074 | [Azure.AppService.RemoteDebug](Azure.AppService.RemoteDebug.md) | Disable remote debugging on App Service apps when not in use. | GA
 AZR-000075 | [Azure.AppService.NETVersion](Azure.AppService.NETVersion.md) | Configure applications to use newer .NET versions. | GA
 AZR-000076 | [Azure.AppService.PHPVersion](Azure.AppService.PHPVersion.md) | Configure applications to use newer PHP runtime versions. | GA
@@ -220,7 +220,7 @@ AZR-000196 | [Azure.Storage.SecureTransfer](Azure.Storage.SecureTransfer.md) | S
 AZR-000197 | [Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable blob soft delete on Storage Accounts. | GA
 AZR-000198 | [Azure.Storage.BlobPublicAccess](Azure.Storage.BlobPublicAccess.md) | Storage Accounts should only accept authorized requests. | GA
 AZR-000199 | [Azure.Storage.BlobAccessType](Azure.Storage.BlobAccessType.md) | Use containers configured with a private access type that requires authorization. | GA
-AZR-000200 | [Azure.Storage.MinTLS](Azure.Storage.MinTLS.md) | Storage Accounts should reject TLS versions older than 1.2. | GA
+AZR-000200 | [Azure.Storage.MinTLS](Azure.Storage.MinTLS.md) | Storage Accounts should not accept weak or deprecated transport protocols for client-server communication. | GA
 AZR-000201 | [Azure.Storage.Name](Azure.Storage.Name.md) | Storage Account names should meet naming requirements. | GA
 AZR-000202 | [Azure.Storage.Firewall](Azure.Storage.Firewall.md) | Storage Accounts should only accept explicitly allowed traffic. | GA
 AZR-000203 | [Azure.RBAC.UseGroups](Azure.RBAC.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | GA
@@ -421,7 +421,7 @@ AZR-000397 | [Azure.RSV.Immutable](Azure.RSV.Immutable.md) | Ensure immutability
 AZR-000398 | [Azure.BV.Immutable](Azure.BV.Immutable.md) | Ensure immutability is configured to protect backup data. | GA
 AZR-000399 | [Azure.Firewall.PolicyMode](Azure.Firewall.PolicyMode.md) | Deny high confidence malicious IP addresses, domains and URLs. | GA
 AZR-000400 | [Azure.ContainerApp.APIVersion](Azure.ContainerApp.APIVersion.md) | Migrate from retired API version to a supported version. | GA
-AZR-000401 | [Azure.ACR.AnonymousAccess](Azure.ACR.AnonymousAccess.md) | Anonymous pull access allows unidentified downloading of images and metadata from a container registry. | Preview
+AZR-000401 | [Azure.ACR.AnonymousAccess](Azure.ACR.AnonymousAccess.md) | Anonymous pull access allows unidentified downloading of images and metadata from a container registry. | GA
 AZR-000402 | [Azure.ACR.Firewall](Azure.ACR.Firewall.md) | Container Registry without restrictions can be accessed from any network location including the Internet. | GA
 AZR-000403 | [Azure.ML.ComputeIdleShutdown](Azure.ML.ComputeIdleShutdown.md) | Configure an idle shutdown timeout for Machine Learning compute instances. | GA
 AZR-000404 | [Azure.ML.DisableLocalAuth](Azure.ML.DisableLocalAuth.md) | Azure Machine Learning compute resources should have local authentication methods disabled. | GA
