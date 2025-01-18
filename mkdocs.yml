@@ -52,6 +52,7 @@ nav:
     - Quickstarts:
       - Test a Bicep deployment:
         - With GitHub Actions: quickstarts/test-bicep-with-github.md
+        - With Azure Pipelines: quickstarts/test-bicep-with-azure-pipelines.md
         # - With Visual Studio Code: quickstarts/test-bicep-with-vscode.md
     # - Tutorials:
     - Testing infrastructure code:
