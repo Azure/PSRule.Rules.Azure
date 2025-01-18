@@ -34,12 +34,9 @@ include:
 output:
   culture:
   - en-US
-  format: NUnit3
-  path: output/results.xml
   # jobSummaryPath: summary.md
 
 configuration:
   # Authoring rules
   RULE_AUTHORING_ONLINE_HELP: 'https://azure.github.io/PSRule.Rules.Azure/en/rules/'
   RULE_AUTHORING_PREFIX: 'Azure'
-  AZURE_BICEP_PARAMS_FILE_EXPANSION: true
