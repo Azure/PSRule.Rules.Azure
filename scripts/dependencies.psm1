@@ -140,7 +140,7 @@ function InstallVersion {
             Write-Host -Object "[$group] -- Installing $($module.Name) v$($module.Value.version)";
             $installParams = @{ RequiredVersion = $module.Value.version };
             if ($Null -eq (Get-InstalledModule -Name $module.Name @installParams -ErrorAction Ignore)) {
-                Install-Module -Name $module.Name @installParams -Force -Repository $Repository;
+                Install-Module -Name $module.Name @installParams -Force -Repository $Repository -AllowClobber;
             }
         }
     }
