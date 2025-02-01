@@ -2257,6 +2257,10 @@
          <lastmod>2025-02-01</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/quickstarts/test-bicep-with-azure-pipelines/</loc>
+         <lastmod>2025-02-01</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/quickstarts/test-bicep-with-github/</loc>
          <lastmod>2025-02-01</lastmod>
     </url>
