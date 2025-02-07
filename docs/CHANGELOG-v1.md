@@ -34,6 +34,8 @@ What's changed since v1.41.0:
 - Bug fixes:
   - Fixed incorrect generation of resource ID for tenant scoped deployments by @BernieWhite.
     [#3237](https://github.com/Azure/PSRule.Rules.Azure/issues/3237)
+  - Fixed in-flight export of subscription resource type `Microsoft.Subscription` by @BernieWhite.
+    [#3231](https://github.com/Azure/PSRule.Rules.Azure/issues/3231)
 
 ## v1.41.0
 
