@@ -5,6 +5,9 @@ namespace PSRule.Rules.Azure;
 
 #nullable enable
 
+/// <summary>
+/// Unit tests for <see cref="ResourceHelper"/>.
+/// </summary>
 public sealed class ResourceHelperTests
 {
     [Fact]
@@ -170,6 +173,25 @@ public sealed class ResourceHelperTests
     public void ResourceIdDepth(string[] resourceType, string[] resourceName, int depth)
     {
         Assert.Equal(depth, ResourceHelper.ResourceIdDepth(null, null, null, null, resourceType, resourceName));
+    }
+
+    [Theory]
+    [InlineData("/providers/Microsoft.Management/managementGroups/mg-1", "mg-1")]
+    [InlineData("/providers/Microsoft.Management/managementGroups/mg-1/providers/Microsoft.Authorization/policyAssignments/assignment-1", "mg-1")]
+    [InlineData("Microsoft.Management/managementGroups/mg-1", "mg-1")]
+    public void TryManagementGroup_WithValidResourceId_ShouldReturnManagementGroup(string resourceId, string managementGroup)
+    {
+        Assert.True(ResourceHelper.TryManagementGroup(resourceId, out var actualManagementGroup));
+        Assert.Equal(managementGroup, actualManagementGroup);
+    }
+
+    [Theory]
+    [InlineData("/")]
+    [InlineData("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-4")]
+    public void TryManagementGroup_WithInvalidResourceId_ShouldReturnFalse(string resourceId)
+    {
+        Assert.False(ResourceHelper.TryManagementGroup(resourceId, out var actualManagementGroup));
+        Assert.Null(actualManagementGroup);
     }
 }
 
