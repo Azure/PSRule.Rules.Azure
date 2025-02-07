@@ -12,7 +12,7 @@ namespace PSRule.Rules.Azure.Pipeline.Export;
 /// <summary>
 /// A context to export an Azure subscription.
 /// </summary>
-internal class SubscriptionExportContext : ExportDataContext, ISubscriptionExportContext
+internal sealed class SubscriptionExportContext : ExportDataContext, ISubscriptionExportContext
 {
     private readonly string _ResourceEndpoint;
     private readonly string _ResourceGroupEndpoint;
@@ -27,7 +27,7 @@ internal class SubscriptionExportContext : ExportDataContext, ISubscriptionExpor
     {
         _ResourceEndpoint = $"{RESOURCE_MANAGER_URL}/subscriptions/{scope.SubscriptionId}/resources?api-version=2021-04-01{GetFilter(tag)}";
         _ResourceGroupEndpoint = $"{RESOURCE_MANAGER_URL}/subscriptions/{scope.SubscriptionId}/resourcegroups?api-version=2021-04-01{GetFilter(tag)}";
-        _SubscriptionEndpoint = $"{RESOURCE_MANAGER_URL}/subscriptions/{scope.SubscriptionId}";
+        _SubscriptionEndpoint = $"{RESOURCE_MANAGER_URL}/subscriptions/{scope.SubscriptionId}?api-version=2022-12-01";
         SubscriptionId = scope.SubscriptionId;
         TenantId = scope.TenantId;
         RefreshToken(scope.TenantId);
