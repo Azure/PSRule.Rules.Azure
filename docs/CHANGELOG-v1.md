@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.41.0:
+
+- Bug fixes:
+  - Fixed incorrect generation of resource ID for tenant scoped deployments by @BernieWhite.
+    [#3237](https://github.com/Azure/PSRule.Rules.Azure/issues/3237)
+
 ## v1.41.0
 
 What's changed since v1.40.0:

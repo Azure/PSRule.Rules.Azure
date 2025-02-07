@@ -121,6 +121,20 @@ internal static class ResourceHelper
     }
 
     /// <summary>
+    /// Get the name of the management group from the specified resource Id.
+    /// </summary>
+    internal static bool TryManagementGroup(string resourceId, out string? managementGroup)
+    {
+        managementGroup = null;
+        if (string.IsNullOrEmpty(resourceId))
+            return false;
+
+        var idParts = resourceId.Split(SLASH_C);
+        var i = 0;
+        return TryConsumeManagementGroupPart(idParts, ref i, out managementGroup);
+    }
+
+    /// <summary>
     /// Combines Id fragments to form a resource Id.
     /// </summary>
     /// <remarks>

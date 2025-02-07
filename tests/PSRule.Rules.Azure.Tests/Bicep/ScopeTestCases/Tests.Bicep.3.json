@@ -1,0 +1,171 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.33.93.31351",
+      "templateHash": "2473504024471157297"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "mg",
+      "location": "[deployment().location]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.33.93.31351",
+              "templateHash": "17955590497928865384"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Management/managementGroups",
+              "apiVersion": "2023-04-01",
+              "name": "mg-test",
+              "properties": {
+                "displayName": "Test Management Group",
+                "details": {
+                  "parent": {
+                    "id": ""
+                  }
+                }
+              }
+            }
+          ],
+          "outputs": {
+            "managementGroupId": {
+              "type": "string",
+              "value": "[tenantResourceId('Microsoft.Management/managementGroups', 'mg-test')]"
+            },
+            "subscriptionId": {
+              "type": "string",
+              "value": "00000000-0000-0000-0000-000000000000"
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "child",
+      "location": "[deployment().location]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "managementGroups": {
+            "value": [
+              {
+                "id": "[reference(tenantResourceId('Microsoft.Resources/deployments', 'mg'), '2022-09-01').outputs.managementGroupId.value]",
+                "subscriptionId": "[reference(tenantResourceId('Microsoft.Resources/deployments', 'mg'), '2022-09-01').outputs.subscriptionId.value]"
+              }
+            ]
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+          "languageVersion": "2.0",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.33.93.31351",
+              "templateHash": "8581646487883214838"
+            }
+          },
+          "definitions": {
+            "managementGroup": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string"
+                },
+                "subscriptionId": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "parameters": {
+            "managementGroups": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/managementGroup"
+              }
+            }
+          },
+          "resources": {
+            "customSubscriptionPlacement": {
+              "copy": {
+                "name": "customSubscriptionPlacement",
+                "count": "[length(parameters('managementGroups'))]"
+              },
+              "type": "Microsoft.Resources/deployments",
+              "apiVersion": "2022-09-01",
+              "name": "[format('placement-{0}{1}', uniqueString(parameters('managementGroups')[copyIndex()].id), copyIndex())]",
+              "location": "[deployment().location]",
+              "properties": {
+                "expressionEvaluationOptions": {
+                  "scope": "inner"
+                },
+                "mode": "Incremental",
+                "parameters": {
+                  "managementGroupId": {
+                    "value": "[parameters('managementGroups')[copyIndex()].id]"
+                  },
+                  "subscriptionId": {
+                    "value": "[parameters('managementGroups')[copyIndex()].subscriptionId]"
+                  }
+                },
+                "template": {
+                  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+                  "contentVersion": "1.0.0.0",
+                  "metadata": {
+                    "_generator": {
+                      "name": "bicep",
+                      "version": "0.33.93.31351",
+                      "templateHash": "2385326936979591180"
+                    }
+                  },
+                  "parameters": {
+                    "managementGroupId": {
+                      "type": "string"
+                    },
+                    "subscriptionId": {
+                      "type": "string"
+                    }
+                  },
+                  "resources": [
+                    {
+                      "type": "Microsoft.Management/managementGroups/subscriptions",
+                      "apiVersion": "2023-04-01",
+                      "name": "[format('{0}/{1}', last(split(parameters('managementGroupId'), '/')), parameters('subscriptionId'))]"
+                    }
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "dependsOn": [
+        "[tenantResourceId('Microsoft.Resources/deployments', 'mg')]"
+      ]
+    }
+  ]
+}
