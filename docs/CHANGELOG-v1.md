@@ -29,11 +29,21 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.41.0:
+What's changed since v1.41.1:
 
 - General improvements:
   - Added a new quickstart guide for using Azure Pipelines with PSRule by @that-ar-guy.  
     [#3220](https://github.com/Azure/PSRule.Rules.Azure/pull/3220)
+
+## v1.41.1
+
+What's changed since v1.41.0:
+
+- Bug fixes:
+  - Fixed incorrect generation of resource ID for tenant scoped deployments by @BernieWhite.
+    [#3237](https://github.com/Azure/PSRule.Rules.Azure/issues/3237)
+  - Fixed in-flight export of subscription resource type `Microsoft.Subscription` by @BernieWhite.
+    [#3231](https://github.com/Azure/PSRule.Rules.Azure/issues/3231)
 
 ## v1.41.0
 

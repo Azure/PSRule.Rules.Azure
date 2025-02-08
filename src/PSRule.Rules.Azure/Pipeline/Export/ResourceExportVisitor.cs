@@ -19,8 +19,8 @@ internal sealed class ResourceExportVisitor
     private const string PROPERTY_PROPERTIES = "properties";
     private const string PROPERTY_ZONES = "zones";
     private const string PROPERTY_RESOURCES = "resources";
-    private const string PROPERTY_SUBSCRIPTIONID = "subscriptionId";
-    private const string PROPERTY_RESOURCEGROUPNAME = "resourceGroupName";
+    private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
+    private const string PROPERTY_RESOURCE_GROUP_NAME = "resourceGroupName";
     private const string PROPERTY_KIND = "kind";
     private const string PROPERTY_SHAREDKEY = "sharedKey";
     private const string PROPERTY_NETWORKPROFILE = "networkProfile";
@@ -235,11 +235,12 @@ internal sealed class ResourceExportVisitor
     private static void SetResourceIdentifiers(JObject resource, string resourceType, string resourceId)
     {
         if (ResourceHelper.TryResourceGroup(resourceId, out var subscriptionId, out var resourceGroupName) &&
-            !string.Equals(resourceType, TYPE_RESOURCES_RESOURCEGROUP, StringComparison.OrdinalIgnoreCase))
-            resource.Add(PROPERTY_RESOURCEGROUPNAME, resourceGroupName);
+            !string.Equals(resourceType, TYPE_RESOURCES_RESOURCEGROUP, StringComparison.OrdinalIgnoreCase) &&
+            !resource.ContainsKeyInsensitive(PROPERTY_RESOURCE_GROUP_NAME))
+            resource.Add(PROPERTY_RESOURCE_GROUP_NAME, resourceGroupName);
 
-        if (!string.IsNullOrEmpty(subscriptionId))
-            resource.Add(PROPERTY_SUBSCRIPTIONID, subscriptionId);
+        if (!string.IsNullOrEmpty(subscriptionId) && !resource.ContainsKeyInsensitive(PROPERTY_SUBSCRIPTION_ID))
+            resource.Add(PROPERTY_SUBSCRIPTION_ID, subscriptionId);
     }
 
     private bool TryGetLatestAPIVersion(string resourceType, out string apiVersion)

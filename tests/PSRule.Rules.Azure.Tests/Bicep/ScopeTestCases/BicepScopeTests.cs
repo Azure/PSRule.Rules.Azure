@@ -57,4 +57,20 @@ public sealed class BicepScopeTests : TemplateVisitorTestsBase
         var property = actual["identity"]["userAssignedIdentities"].Value<JObject>().Properties().FirstOrDefault();
         Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-1/providers/Microsoft.ManagedIdentity/userAssignedIdentities/id-1", property.Name);
     }
+
+    [Fact]
+    public void ProcessTemplate_WhenTenantScope_ShouldReturnCorrectIdentifiers()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Bicep/ScopeTestCases/Tests.Bicep.3.json"), null, out _);
+
+        Assert.NotNull(resources);
+
+        var actual = resources.Where(r => r["name"].Value<string>() == "mg-test").FirstOrDefault();
+        Assert.Equal("Microsoft.Management/managementGroups", actual["type"].Value<string>());
+        Assert.Equal("/providers/Microsoft.Management/managementGroups/mg-test", actual["id"].Value<string>());
+
+        actual = resources.Where(r => r["name"].Value<string>() == "mg-test/00000000-0000-0000-0000-000000000000").FirstOrDefault();
+        Assert.Equal("Microsoft.Management/managementGroups/subscriptions", actual["type"].Value<string>());
+        Assert.Equal("/providers/Microsoft.Management/managementGroups/mg-test/subscriptions/00000000-0000-0000-0000-000000000000", actual["id"].Value<string>());
+    }
 }
