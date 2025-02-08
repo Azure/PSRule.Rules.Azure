@@ -39,7 +39,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_TYPE = "type";
         private const string PROPERTY_PROPERTIES = "properties";
         private const string PROPERTY_TEMPLATE = "template";
-        private const string PROPERTY_TEMPLATELINK = "templateLink";
+        private const string PROPERTY_TEMPLATE_LINK = "templateLink";
         private const string PROPERTY_LOCATION = "location";
         private const string PROPERTY_COPY = "copy";
         private const string PROPERTY_NAME = "name";
@@ -49,15 +49,15 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_MODE = "mode";
         private const string PROPERTY_DEFAULTVALUE = "defaultValue";
         private const string PROPERTY_SECRETNAME = "secretName";
-        private const string PROPERTY_PROVISIONINGSTATE = "provisioningState";
+        private const string PROPERTY_PROVISIONING_STATE = "provisioningState";
         private const string PROPERTY_ID = "id";
         private const string PROPERTY_URI = "uri";
         private const string PROPERTY_TEMPLATEHASH = "templateHash";
         private const string PROPERTY_EXPRESSIONEVALUATIONOPTIONS = "expressionEvaluationOptions";
         private const string PROPERTY_SCOPE = "scope";
-        private const string PROPERTY_RESOURCEGROUP = "resourceGroup";
-        private const string PROPERTY_SUBSCRIPTIONID = "subscriptionId";
-        private const string PROPERTY_MANAGEMENTGROUP = "managementGroup";
+        private const string PROPERTY_RESOURCE_GROUP = "resourceGroup";
+        private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
+        private const string PROPERTY_MANAGEMENT_GROUP = "managementGroup";
         private const string PROPERTY_NAMESPACE = "namespace";
         private const string PROPERTY_MEMBERS = "members";
         private const string PROPERTY_OUTPUT = "output";
@@ -481,7 +481,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 TryObjectProperty(template, PROPERTY_METADATA, out var metadata);
                 TryStringProperty(template, PROPERTY_SCHEMA, out var schema);
                 var scope = GetDeploymentScope(schema, out var deploymentScope);
-                var id = string.Concat(scope, "/providers/", RESOURCE_TYPE_DEPLOYMENT, "/", deploymentName);
+                var id = string.Concat(scope == "/" ? string.Empty : scope, "/providers/", RESOURCE_TYPE_DEPLOYMENT, "/", deploymentName);
                 var location = ResourceGroup.Location;
 
                 var templateLink = new JObject
@@ -493,10 +493,10 @@ namespace PSRule.Rules.Azure.Data.Template
                 var properties = new JObject
                 {
                     { PROPERTY_TEMPLATE, template.CloneTemplateJToken() },
-                    { PROPERTY_TEMPLATELINK, templateLink },
+                    { PROPERTY_TEMPLATE_LINK, templateLink },
                     { PROPERTY_PARAMETERS, _Parameters },
                     { PROPERTY_MODE, "Incremental" },
-                    { PROPERTY_PROVISIONINGSTATE, "Accepted" },
+                    { PROPERTY_PROVISIONING_STATE, "Accepted" },
                     { PROPERTY_TEMPLATEHASH, templateHash },
                     { PROPERTY_OUTPUTS, new JObject() }
                 };
@@ -673,7 +673,7 @@ namespace PSRule.Rules.Azure.Data.Template
                             return true;
                         }
                         break;
-                };
+                }
                 return false;
             }
 
@@ -1406,14 +1406,14 @@ namespace PSRule.Rules.Azure.Data.Template
             }
 
             // Handle special case for cross-scope deployments which may have an alternative subscription or resource group set.
-            subscriptionId = ResolveDeploymentScopeProperty(context, resource, PROPERTY_SUBSCRIPTIONID, contextValue:
+            subscriptionId = ResolveDeploymentScopeProperty(context, resource, PROPERTY_SUBSCRIPTION_ID, contextValue:
                 context.Deployment.DeploymentScope == DeploymentScope.Subscription ||
                 context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.Subscription.SubscriptionId : null);
 
-            resourceGroupName = ResolveDeploymentScopeProperty(context, resource, PROPERTY_RESOURCEGROUP, contextValue:
+            resourceGroupName = ResolveDeploymentScopeProperty(context, resource, PROPERTY_RESOURCE_GROUP, contextValue:
                 context.Deployment.DeploymentScope == DeploymentScope.ResourceGroup ? context.ResourceGroup.Name : null);
 
-            managementGroup = ResolveDeploymentScopeProperty(context, resource, PROPERTY_MANAGEMENTGROUP, contextValue:
+            managementGroup = ResolveDeploymentScopeProperty(context, resource, PROPERTY_MANAGEMENT_GROUP, contextValue:
                 context.Deployment.DeploymentScope == DeploymentScope.ManagementGroup ? context.ManagementGroup.Name : null);
 
             // Update the deployment scope.
@@ -1541,18 +1541,30 @@ namespace PSRule.Rules.Azure.Data.Template
             var resourceGroup = new ResourceGroupOption(context.ResourceGroup);
             var tenant = new TenantOption(context.Tenant);
             var managementGroup = new ManagementGroupOption(context.ManagementGroup);
-            if (TryStringProperty(resource, PROPERTY_SUBSCRIPTIONID, out var subscriptionId))
+            if (TryStringProperty(resource, PROPERTY_SUBSCRIPTION_ID, out var subscriptionId))
             {
                 var targetSubscriptionId = ExpandString(context, subscriptionId);
                 if (!string.IsNullOrEmpty(subscriptionId))
                     subscription.SubscriptionId = targetSubscriptionId;
             }
 
-            if (TryStringProperty(resource, PROPERTY_RESOURCEGROUP, out var resourceGroupName))
+            if (TryStringProperty(resource, PROPERTY_RESOURCE_GROUP, out var resourceGroupName))
             {
                 var targetResourceGroup = ExpandString(context, resourceGroupName);
                 if (!string.IsNullOrEmpty(targetResourceGroup))
                     resourceGroup.Name = targetResourceGroup;
+            }
+
+            if (TryStringProperty(resource, PROPERTY_SCOPE, out var scopeId) && ResourceHelper.ResourceIdComponents(scopeId, out _, out var managementGroupName, out subscriptionId, out resourceGroupName, out _, out _))
+            {
+                if (!string.IsNullOrEmpty(managementGroupName))
+                    managementGroup.Name = managementGroupName;
+
+                if (!string.IsNullOrEmpty(subscriptionId))
+                    subscription.SubscriptionId = subscriptionId;
+
+                if (!string.IsNullOrEmpty(resourceGroupName))
+                    resourceGroup.Name = resourceGroupName;
             }
 
             resourceGroup.SubscriptionId = subscription.SubscriptionId;

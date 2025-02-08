@@ -28,6 +28,8 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
     private const string PROPERTY_DISPLAYNAME = "displayName";
     private const string PROPERTY_TENANTID = "tenantId";
 
+    private const string PLACEHOLDER_SUBSCRIPTION_TYPE = "Microsoft.Subscription";
+
     private const string ERRORID_RESOURCEDATAEXPAND = "PSRule.Rules.Azure.ResourceDataExpand";
 
     private readonly ConcurrentQueue<JObject> _Resources;
@@ -170,7 +172,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
         var r = await context.GetSubscriptionAsync();
         if (r != null)
         {
-            r.Add(PROPERTY_TYPE, "Microsoft.Subscription");
+            r.Add(PROPERTY_TYPE, PLACEHOLDER_SUBSCRIPTION_TYPE);
             if (r.TryGetProperty(PROPERTY_DISPLAYNAME, out var displayName))
                 r.Add(PROPERTY_NAME, displayName);
 
