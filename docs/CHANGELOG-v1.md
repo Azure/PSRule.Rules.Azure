@@ -29,7 +29,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.41.2:
+## v1.41.2
+
+What's changed since v1.41.1:
 
 - Bug fixes:
   - Fixed recursive lookup of cross module resources in the deployment by @BernieWhite.
