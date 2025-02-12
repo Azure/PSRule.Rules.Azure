@@ -137,16 +137,6 @@
     "webhooks",
     "xunit"
   ],
-  "cSpell.enabledLanguageIds": [
-    "csharp",
-    "git-commit",
-    "markdown",
-    "plaintext",
-    "powershell",
-    "text",
-    "yaml",
-    "yml"
-  ],
   "json.schemas": [
     {
       "fileMatch": [
@@ -155,9 +145,7 @@
       "url": "./.vscode/policy-ignore.schema.json"
     }
   ],
-  "omnisharp.organizeImportsOnFormat": true,
   "omnisharp.enableEditorConfigSupport": true,
-  "omnisharp.enableRoslynAnalyzers": true,
   "PSRule.documentation.path": "docs",
   "PSRule.documentation.localePath": "en/rules/",
   "PSRule.documentation.customSnippetPath": ".vscode/markdown.code-snippets",
@@ -167,8 +155,17 @@
     "release/*"
   ],
   "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
-  "cSpell.enableFiletypes": [
-    "bicep",
-    "python"
-  ]
+  "cSpell.enabledFileTypes": {
+    "csharp": true,
+    "git-commit": true,
+    "markdown": true,
+    "plaintext": true,
+    "powershell": true,
+    "text": true,
+    "yaml": true,
+    "yml": true,
+    "python": true,
+    "bicep": true,
+  },
+  "dotnet.formatting.organizeImportsOnFormat": true
 }

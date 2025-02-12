@@ -18,8 +18,10 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     private const string PROPERTY_RESOURCES = "resources";
     private const string PROPERTY_ID = "id";
     private const string PROPERTY_NAME = "name";
+    private const string PROPERTY_LOCATION = "location";
     private const string PROPERTY_CUSTOM_NETWORK_INTERFACE_NAME = "customNetworkInterfaceName";
     private const string PROPERTY_PROPERTIES = "properties";
+    private const string PROPERTY_PROVISIONING_STATE = "provisioningState";
     private const string PROPERTY_CLIENT_ID = "clientId";
     private const string PROPERTY_PRINCIPAL_ID = "principalId";
     private const string PROPERTY_PRINCIPAL_TYPE = "principalType";
@@ -29,18 +31,22 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     private const string PROPERTY_TYPE = "type";
     private const string PROPERTY_SITECONFIG = "siteConfig";
     private const string PROPERTY_SUBNETS = "subnets";
-    private const string PROPERTY_NETWORKINTERFACES = "networkInterfaces";
-    private const string PROPERTY_SUBSCRIPTIONID = "subscriptionId";
-    private const string PROPERTY_ACCEPTOWNERSHIPSTATE = "acceptOwnershipState";
-    private const string PROPERTY_ACCEPTOWNERSHIPURL = "acceptOwnershipUrl";
-    private const string PROPERTY_LOGINSERVER = "loginServer";
+    private const string PROPERTY_NETWORK_INTERFACES = "networkInterfaces";
+    private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
+    private const string PROPERTY_ACCEPT_OWNERSHIP_STATE = "acceptOwnershipState";
+    private const string PROPERTY_ACCEPT_OWNERSHIP_URL = "acceptOwnershipUrl";
+    private const string PROPERTY_LOGIN_SERVER = "loginServer";
     private const string PROPERTY_RULES = "rules";
-    private const string PROPERTY_RULEID = "ruleId";
-    private const string PROPERTY_ACCESSPOLICIES = "accessPolicies";
+    private const string PROPERTY_RULE_ID = "ruleId";
+    private const string PROPERTY_ACCESS_POLICIES = "accessPolicies";
+    private const string PROPERTY_SERVICE_BUS_ENDPOINT = "serviceBusEndpoint";
+    private const string PROPERTY_PRIMARY_ENDPOINTS = "primaryEndpoints";
+    private const string PROPERTY_PRIMARY_LOCATION = "primaryLocation";
 
     private const string PLACEHOLDER_GUID = "ffffffff-ffff-ffff-ffff-ffffffffffff";
-    private const string IDENTITY_SYSTEMASSIGNED = "SystemAssigned";
+    private const string IDENTITY_SYSTEM_ASSIGNED = "SystemAssigned";
     private const string DEFAULT_USER = "User";
+    private const string PROVISIONING_STATE_SUCCEEDED = "Succeeded";
 
     private const string TYPE_USERASSIGNEDIDENTITY = "Microsoft.ManagedIdentity/userAssignedIdentities";
     private const string TYPE_SQLSERVER = "Microsoft.Sql/servers";
@@ -51,13 +57,16 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     private const string TYPE_WEBAPPSLOT_CONFIG = "Microsoft.Web/sites/slots/config";
     private const string TYPE_VIRTUALNETWORK = "Microsoft.Network/virtualNetworks";
     private const string TYPE_PRIVATEENDPOINT = "Microsoft.Network/privateEndpoints";
-    private const string TYPE_NETWORKINTERFACE = "Microsoft.Network/networkInterfaces";
-    private const string TYPE_SUBSCRIPTIONALIAS = "Microsoft.Subscription/aliases";
-    private const string TYPE_CONTAINERREGISTRY = "Microsoft.ContainerRegistry/registries";
+    private const string TYPE_NETWORK_INTERFACE = "Microsoft.Network/networkInterfaces";
+    private const string TYPE_SUBSCRIPTION_ALIAS = "Microsoft.Subscription/aliases";
+    private const string TYPE_CONTAINER_REGISTRY = "Microsoft.ContainerRegistry/registries";
     private const string TYPE_KEYVAULT = "Microsoft.KeyVault/vaults";
     private const string TYPE_STORAGE_OBJECTREPLICATIONPOLICIES = "Microsoft.Storage/storageAccounts/objectReplicationPolicies";
     private const string TYPE_AUTHORIZATION_ROLE_ASSIGNMENTS = "Microsoft.Authorization/roleAssignments";
     private const string TYPE_MANAGEMENT_GROUPS = "Microsoft.Management/managementGroups";
+    private const string TYPE_RELAY_NAMESPACE = "Microsoft.Relay/namespaces";
+    private const string TYPE_SERVICE_BUS_NAMESPACE = "Microsoft.ServiceBus/namespaces";
+    private const string TYPE_STORAGE_ACCOUNT = "Microsoft.Storage/storageAccounts";
 
     private static readonly JsonMergeSettings _MergeSettings = new()
     {
@@ -139,14 +148,70 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
             ProjectKeyVault(context, resource) ||
             ProjectRoleAssignments(context, resource) ||
             ProjectManagementGroup(context, resource) ||
+            ProjectServiceBusNamespace(context, resource) ||
+            ProjectRelayNamespace(context, resource) ||
+            ProjectStorageAccount(context, resource) ||
             ProjectResource(context, resource);
+    }
+
+    /// <summary>
+    /// Project runtime properties for a relay namespace.
+    /// </summary>
+    private static bool ProjectRelayNamespace(TemplateContext context, IResourceValue resource)
+    {
+        if (!resource.IsType(TYPE_RELAY_NAMESPACE))
+            return false;
+
+        resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+        properties.AddIfNotExists(PROPERTY_PROVISIONING_STATE, PROVISIONING_STATE_SUCCEEDED);
+        properties.AddIfNotExists(PROPERTY_SERVICE_BUS_ENDPOINT, $"https://{resource.Name}.servicebus.windows.net:443/");
+
+        return true;
+    }
+
+    /// <summary>
+    /// Project runtime properties for a service bus namespace.
+    /// </summary>
+    private static bool ProjectServiceBusNamespace(TemplateContext context, IResourceValue resource)
+    {
+        if (!resource.IsType(TYPE_SERVICE_BUS_NAMESPACE))
+            return false;
+
+        resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+        properties.AddIfNotExists(PROPERTY_PROVISIONING_STATE, PROVISIONING_STATE_SUCCEEDED);
+        properties.AddIfNotExists(PROPERTY_SERVICE_BUS_ENDPOINT, $"https://{resource.Name}.servicebus.windows.net:443/");
+
+        return true;
+    }
+
+    /// <summary>
+    /// Project runtime properties for a storage account.
+    /// </summary>
+    private static bool ProjectStorageAccount(TemplateContext context, IResourceValue resource)
+    {
+        if (!resource.IsType(TYPE_STORAGE_ACCOUNT))
+            return false;
+
+        resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
+        properties.AddIfNotExists(PROPERTY_PROVISIONING_STATE, PROVISIONING_STATE_SUCCEEDED);
+        properties.AddIfNotExists(PROPERTY_PRIMARY_LOCATION, resource.Value[PROPERTY_LOCATION]?.Value<string>()?.ToLowerInvariant());
+
+        properties.UseProperty(PROPERTY_PRIMARY_ENDPOINTS, out JObject primaryEndpoints);
+        primaryEndpoints.AddIfNotExists("web", $"https://{resource.Name}.web.core.windows.net/");
+        primaryEndpoints.AddIfNotExists("dfs", $"https://{resource.Name}.dfs.core.windows.net/");
+        primaryEndpoints.AddIfNotExists("blob", $"https://{resource.Name}.blob.core.windows.net/");
+        primaryEndpoints.AddIfNotExists("file", $"https://{resource.Name}.file.core.windows.net/");
+        primaryEndpoints.AddIfNotExists("queue", $"https://{resource.Name}.queue.core.windows.net/");
+        primaryEndpoints.AddIfNotExists("table", $"https://{resource.Name}.table.core.windows.net/");
+
+        return true;
     }
 
     private static bool ProjectResource(TemplateContext context, IResourceValue resource)
     {
         if (!resource.Value.TryGetProperty(PROPERTY_IDENTITY, out JObject identity) ||
             !identity.TryGetProperty(PROPERTY_TYPE, out var type) ||
-            type.IndexOf(IDENTITY_SYSTEMASSIGNED, StringComparison.OrdinalIgnoreCase) == -1)
+            type.IndexOf(IDENTITY_SYSTEM_ASSIGNED, StringComparison.OrdinalIgnoreCase) == -1)
             return true;
 
         if (!identity.ContainsKeyInsensitive(PROPERTY_PRINCIPAL_ID))
@@ -238,7 +303,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
         resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
 
         // Add network interfaces
-        if (!properties.ContainsKeyInsensitive(PROPERTY_NETWORKINTERFACES))
+        if (!properties.ContainsKeyInsensitive(PROPERTY_NETWORK_INTERFACES))
         {
             // If the special case of a customNetworkInterfaceName property exists then use that for the name of the NIC.
             var networkInterfaceName = properties.TryStringProperty(PROPERTY_CUSTOM_NETWORK_INTERFACE_NAME, out var customNetworkInterfaceName) &&
@@ -246,51 +311,51 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
 
             var networkInterface = new JObject
             {
-                [PROPERTY_ID] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, TYPE_NETWORKINTERFACE, networkInterfaceName)
+                [PROPERTY_ID] = ResourceHelper.CombineResourceId(subscriptionId, resourceGroupName, TYPE_NETWORK_INTERFACE, networkInterfaceName)
             };
-            properties[PROPERTY_NETWORKINTERFACES] = new JArray(new JObject[] { networkInterface });
+            properties[PROPERTY_NETWORK_INTERFACES] = new JArray(new JObject[] { networkInterface });
         }
         return true;
     }
 
     private static bool ProjectSubscriptionAlias(TemplateContext context, IResourceValue resource)
     {
-        if (!resource.IsType(TYPE_SUBSCRIPTIONALIAS))
+        if (!resource.IsType(TYPE_SUBSCRIPTION_ALIAS))
             return false;
 
         resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
 
         // Add subscriptionId
-        if (!properties.ContainsKeyInsensitive(PROPERTY_SUBSCRIPTIONID))
+        if (!properties.ContainsKeyInsensitive(PROPERTY_SUBSCRIPTION_ID))
         {
-            properties[PROPERTY_SUBSCRIPTIONID] = Guid.NewGuid().ToString();
+            properties[PROPERTY_SUBSCRIPTION_ID] = Guid.NewGuid().ToString();
         }
 
         // Add acceptOwnershipState
-        if (!properties.ContainsKeyInsensitive(PROPERTY_ACCEPTOWNERSHIPSTATE))
+        if (!properties.ContainsKeyInsensitive(PROPERTY_ACCEPT_OWNERSHIP_STATE))
         {
-            properties[PROPERTY_ACCEPTOWNERSHIPSTATE] = "Completed";
+            properties[PROPERTY_ACCEPT_OWNERSHIP_STATE] = "Completed";
         }
 
         // Add acceptOwnershipUrl
-        if (!properties.ContainsKeyInsensitive(PROPERTY_ACCEPTOWNERSHIPURL))
+        if (!properties.ContainsKeyInsensitive(PROPERTY_ACCEPT_OWNERSHIP_URL))
         {
-            properties[PROPERTY_ACCEPTOWNERSHIPURL] = string.Empty;
+            properties[PROPERTY_ACCEPT_OWNERSHIP_URL] = string.Empty;
         }
         return true;
     }
 
     private static bool ProjectContainerRegistry(TemplateContext context, IResourceValue resource)
     {
-        if (!resource.IsType(TYPE_CONTAINERREGISTRY))
+        if (!resource.IsType(TYPE_CONTAINER_REGISTRY))
             return false;
 
         resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
 
         // Add loginServer
-        if (!properties.ContainsKeyInsensitive(PROPERTY_LOGINSERVER))
+        if (!properties.ContainsKeyInsensitive(PROPERTY_LOGIN_SERVER))
         {
-            properties[PROPERTY_LOGINSERVER] = $"{resource.Name}.azurecr.io";
+            properties[PROPERTY_LOGIN_SERVER] = $"{resource.Name}.azurecr.io";
         }
         return ProjectResource(context, resource);
     }
@@ -303,9 +368,9 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
         resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
 
         // Add properties.accessPolicies
-        if (!properties.ContainsKeyInsensitive(PROPERTY_ACCESSPOLICIES))
+        if (!properties.ContainsKeyInsensitive(PROPERTY_ACCESS_POLICIES))
         {
-            properties[PROPERTY_ACCESSPOLICIES] = new JArray();
+            properties[PROPERTY_ACCESS_POLICIES] = new JArray();
         }
 
         // Add properties.tenantId
@@ -328,8 +393,8 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
         {
             foreach (var rule in rules.Values<JObject>())
             {
-                if (!rule.ContainsKeyInsensitive(PROPERTY_RULEID))
-                    rule[PROPERTY_RULEID] = Guid.NewGuid().ToString();
+                if (!rule.ContainsKeyInsensitive(PROPERTY_RULE_ID))
+                    rule[PROPERTY_RULE_ID] = Guid.NewGuid().ToString();
             }
 
         }

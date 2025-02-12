@@ -232,6 +232,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Failed to deserialize &apos;{0}&apos;. {1}.
+        /// </summary>
+        internal static string DeserializationFailure {
+            get {
+                return ResourceManager.GetString("DeserializationFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The expand resulted in an empty condition being returned for &apos;{0}&apos; from &apos;{1}&apos;..
         /// </summary>
         internal static string EmptyConditionExpandResult {
@@ -255,6 +264,15 @@ namespace PSRule.Rules.Azure.Resources {
         internal static string ExpressionInvalid {
             get {
                 return ResourceManager.GetString("ExpressionInvalid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The function &apos;{0}&apos; failed. {1}.
+        /// </summary>
+        internal static string FunctionGenericError {
+            get {
+                return ResourceManager.GetString("FunctionGenericError", resourceCulture);
             }
         }
         
