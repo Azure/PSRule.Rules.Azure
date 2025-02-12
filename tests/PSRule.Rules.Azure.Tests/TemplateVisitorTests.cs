@@ -504,12 +504,12 @@ namespace PSRule.Rules.Azure
 
             actual = resources[5];
             Assert.Equal("Microsoft.Storage/storageAccounts", actual["type"].Value<string>());
-            Assert.Equal("sabicep001f8cbd7940fe93", actual["name"].Value<string>());
+            Assert.Equal("sabicep00193e72b142f565", actual["name"].Value<string>());
             Assert.Equal("test", actual["tags"]["env"].Value<string>());
 
             actual = resources[6];
             Assert.Equal("Microsoft.Network/privateEndpoints", actual["type"].Value<string>());
-            Assert.Equal("pe-sabicep001f8cbd7940fe93", actual["name"].Value<string>());
+            Assert.Equal("pe-sabicep00193e72b142f565", actual["name"].Value<string>());
 
             actual = resources[7];
             Assert.Equal("Microsoft.Resources/deployments", actual["type"].Value<string>());

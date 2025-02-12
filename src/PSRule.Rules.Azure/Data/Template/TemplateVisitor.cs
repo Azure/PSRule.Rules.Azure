@@ -48,12 +48,12 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_INPUT = "input";
         private const string PROPERTY_MODE = "mode";
         private const string PROPERTY_DEFAULTVALUE = "defaultValue";
-        private const string PROPERTY_SECRETNAME = "secretName";
+        private const string PROPERTY_SECRET_NAME = "secretName";
         private const string PROPERTY_PROVISIONING_STATE = "provisioningState";
         private const string PROPERTY_ID = "id";
         private const string PROPERTY_URI = "uri";
         private const string PROPERTY_TEMPLATEHASH = "templateHash";
-        private const string PROPERTY_EXPRESSIONEVALUATIONOPTIONS = "expressionEvaluationOptions";
+        private const string PROPERTY_EXPRESSION_EVALUATION_OPTIONS = "expressionEvaluationOptions";
         private const string PROPERTY_SCOPE = "scope";
         private const string PROPERTY_RESOURCE_GROUP = "resourceGroup";
         private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
@@ -64,7 +64,7 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_METADATA = "metadata";
         private const string PROPERTY_GENERATOR = "_generator";
         private const string PROPERTY_CONDITION = "condition";
-        private const string PROPERTY_DEPENDSON = "dependsOn";
+        private const string PROPERTY_DEPENDS_ON = "dependsOn";
         private const string PROPERTY_DEFINITIONS = "definitions";
         private const string PROPERTY_REF = "$ref";
         private const string PROPERTY_ROOTDEPLOYMENT = "rootDeployment";
@@ -72,11 +72,14 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private const string TYPE_RESOURCE_GROUPS = "Microsoft.Resources/resourceGroups";
 
+        [DebuggerDisplay("{Deployment?.Name}, Resources = {_Resources.Count}")]
         internal sealed class TemplateContext : ResourceManagerVisitorContext, ITemplateContext
         {
             private const string CLOUD_PUBLIC = "AzureCloud";
-            private const string ISSUE_PARAMETER_EXPRESSIONLENGTH = "PSRule.Rules.Azure.Template.ExpressionLength";
-            private const int EXPRESSION_MAXLENGTH = 24576;
+            private const string ISSUE_PARAMETER_EXPRESSION_LENGTH = "PSRule.Rules.Azure.Template.ExpressionLength";
+            private const int EXPRESSION_MAX_LENGTH = 24576;
+
+            internal readonly ITemplateContext? Parent;
 
             internal readonly PipelineContext Pipeline;
 
@@ -113,7 +116,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _ExpressionFactory = new ExpressionFactory();
                 _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
                 _ResourceProviderHelper = new ResourceProviderHelper();
-                _ParameterAssignments = new Dictionary<string, JToken>();
+                _ParameterAssignments = [];
                 _Validator = new TemplateValidator();
                 _IsGenerated = null;
                 _SecureValues = [];
@@ -121,10 +124,11 @@ namespace PSRule.Rules.Azure.Data.Template
                 _Symbols = new Dictionary<string, IDeploymentSymbol>(StringComparer.OrdinalIgnoreCase);
             }
 
-            internal TemplateContext(PipelineContext context, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, IDictionary<string, object> parameterDefaults)
+            internal TemplateContext(ITemplateContext? parent, PipelineContext pipelineContext, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, IDictionary<string, object> parameterDefaults)
                 : this()
             {
-                Pipeline = context;
+                Parent = parent;
+                Pipeline = pipelineContext;
                 if (subscription != null)
                     Subscription = subscription;
 
@@ -141,24 +145,24 @@ namespace PSRule.Rules.Azure.Data.Template
                     ParameterDefaults = new Dictionary<string, object>(parameterDefaults, StringComparer.OrdinalIgnoreCase);
             }
 
-            internal TemplateContext(PipelineContext context)
+            internal TemplateContext(PipelineContext pipelineContext)
                 : this()
             {
-                Pipeline = context;
-                if (context?.Option?.Configuration?.Subscription != null)
-                    Subscription = context.Option.Configuration.Subscription;
+                Pipeline = pipelineContext;
+                if (pipelineContext?.Option?.Configuration?.Subscription != null)
+                    Subscription = pipelineContext.Option.Configuration.Subscription;
 
-                if (context?.Option?.Configuration?.ResourceGroup != null)
-                    ResourceGroup = context.Option.Configuration.ResourceGroup;
+                if (pipelineContext?.Option?.Configuration?.ResourceGroup != null)
+                    ResourceGroup = pipelineContext.Option.Configuration.ResourceGroup;
 
-                if (context?.Option?.Configuration?.Tenant != null)
-                    Tenant = context.Option.Configuration.Tenant;
+                if (pipelineContext?.Option?.Configuration?.Tenant != null)
+                    Tenant = pipelineContext.Option.Configuration.Tenant;
 
-                if (context?.Option?.Configuration?.ManagementGroup != null)
-                    ManagementGroup = context.Option.Configuration.ManagementGroup;
+                if (pipelineContext?.Option?.Configuration?.ManagementGroup != null)
+                    ManagementGroup = pipelineContext.Option.Configuration.ManagementGroup;
 
-                if (context?.Option?.Configuration?.ParameterDefaults != null)
-                    ParameterDefaults = new Dictionary<string, object>(context.Option.Configuration.ParameterDefaults, StringComparer.OrdinalIgnoreCase);
+                if (pipelineContext?.Option?.Configuration?.ParameterDefaults != null)
+                    ParameterDefaults = new Dictionary<string, object>(pipelineContext.Option.Configuration.ParameterDefaults, StringComparer.OrdinalIgnoreCase);
             }
 
             private Dictionary<string, IParameterValue> Parameters { get; }
@@ -192,15 +196,17 @@ namespace PSRule.Rules.Azure.Data.Template
             /// </summary>
             internal DeploymentValue RootDeployment { get; private set; }
 
-            public ExpressionFnOuter BuildExpression(string s)
+#nullable enable
+
+            public ExpressionFnOuter BuildExpression(string? s)
             {
-                if (s != null && s.Length > EXPRESSION_MAXLENGTH && !IsGenerated())
-                    AddValidationIssue(ISSUE_PARAMETER_EXPRESSIONLENGTH, s, null, ReasonStrings.ExpressionLength, s, EXPRESSION_MAXLENGTH);
+                if (s != null && s.Length > EXPRESSION_MAX_LENGTH && !IsGenerated())
+                    AddValidationIssue(ISSUE_PARAMETER_EXPRESSION_LENGTH, s, null, ReasonStrings.ExpressionLength, s, EXPRESSION_MAX_LENGTH);
 
                 return _ExpressionBuilder.Build(s);
             }
 
-            public void AddResource(IResourceValue resource)
+            public void AddResource(IResourceValue? resource)
             {
                 if (resource == null)
                     return;
@@ -209,7 +215,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _ResourceIds[resource.Id] = resource;
             }
 
-            public void AddResource(IResourceValue[] resource)
+            public void AddResource(IResourceValue[]? resource)
             {
                 for (var i = 0; resource != null && i < resource.Length; i++)
                     AddResource(resource[i]);
@@ -217,7 +223,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
             public IResourceValue[] GetResources()
             {
-                return _Resources.ToArray();
+                return [.. _Resources];
             }
 
             public void RemoveResource(IResourceValue resource)
@@ -227,20 +233,28 @@ namespace PSRule.Rules.Azure.Data.Template
             }
 
             /// <inheritdoc/>
-            public bool TryGetResource(string nameOrResourceId, out IResourceValue resource)
+            public bool TryGetResource(string nameOrResourceId, out IResourceValue? resource)
             {
-                if (_Symbols.TryGetValue(nameOrResourceId, out var symbol))
-                    nameOrResourceId = symbol.GetId(0);
+                resource = null;
+                if (string.IsNullOrWhiteSpace(nameOrResourceId))
+                    return false;
 
-                if (nameOrResourceId != null && _ResourceIds.TryGetValue(nameOrResourceId, out resource))
+                var resourceId = nameOrResourceId;
+                if (_Symbols.TryGetValue(nameOrResourceId, out var symbol) && symbol != null)
+                    resourceId = symbol.GetId(0);
+
+                if (resourceId != null && _ResourceIds.TryGetValue(resourceId, out resource))
                     return true;
 
-                resource = null;
+                // Recurse search for resource in the parent deployment by original resource ID only.
+                if (Parent != null && ResourceHelper.IsResourceId(nameOrResourceId) && Parent.TryGetResource(nameOrResourceId, out resource))
+                    return true;
+
                 return false;
             }
 
             /// <inheritdoc/>
-            public bool TryGetResourceCollection(string symbolicName, out IResourceValue[] resources)
+            public bool TryGetResourceCollection(string symbolicName, out IResourceValue[]? resources)
             {
                 resources = null;
                 if (!_Symbols.TryGetValue(symbolicName, out var symbol) || symbol is not ArrayDeploymentSymbol array)
@@ -253,6 +267,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 return true;
             }
+
+#nullable restore
 
             public void AddOutput(string name, JObject output)
             {
@@ -354,9 +370,9 @@ namespace PSRule.Rules.Azure.Data.Template
                     AddParameterAssignment(name, SecretPlaceholder(parameter[PROPERTY_REFERENCE].Value<string>()));
                     return true;
                 }
-                else if (valueType == JTokenType.Object && parameter[PROPERTY_REFERENCE] is JObject refObj && refObj.ContainsKey(PROPERTY_SECRETNAME))
+                else if (valueType == JTokenType.Object && parameter[PROPERTY_REFERENCE] is JObject refObj && refObj.ContainsKey(PROPERTY_SECRET_NAME))
                 {
-                    AddParameterAssignment(name, SecretPlaceholder(refObj[PROPERTY_SECRETNAME].Value<string>()));
+                    AddParameterAssignment(name, SecretPlaceholder(refObj[PROPERTY_SECRET_NAME].Value<string>()));
                     return true;
                 }
                 return false;
@@ -1331,8 +1347,8 @@ namespace PSRule.Rules.Azure.Data.Template
             if (resource.TryGetProperty<JValue>(PROPERTY_NAME, out var nameValue))
                 resource[PROPERTY_NAME] = ResolveToken(context, nameValue);
 
-            if (resource.TryGetProperty<JArray>(PROPERTY_DEPENDSON, out var dependsOn))
-                resource[PROPERTY_DEPENDSON] = ExpandArray(context, dependsOn);
+            if (resource.TryGetProperty<JArray>(PROPERTY_DEPENDS_ON, out var dependsOn))
+                resource[PROPERTY_DEPENDS_ON] = ExpandArray(context, dependsOn);
 
             resource.TryNameProperty(out var name);
             resource.TryTypeProperty(out var type);
@@ -1517,6 +1533,8 @@ namespace PSRule.Rules.Azure.Data.Template
                 return false;
 
             Template(deploymentContext, deploymentName, template, isNested: true);
+
+            // Collect resource from the completed deployment context in the parent context.
             if (deploymentContext != context)
                 context.AddResource(deploymentContext.GetResources());
 
@@ -1530,10 +1548,10 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private TemplateContext GetDeploymentContext(TemplateContext context, string deploymentName, JObject resource, JObject properties)
         {
-            if (!TryObjectProperty(properties, PROPERTY_EXPRESSIONEVALUATIONOPTIONS, out var options) ||
+            if (!TryObjectProperty(properties, PROPERTY_EXPRESSION_EVALUATION_OPTIONS, out var options) ||
                 !TryStringProperty(options, PROPERTY_SCOPE, out var scope) ||
                 !StringComparer.OrdinalIgnoreCase.Equals(DEPLOYMENT_SCOPE_INNER, scope) ||
-                !TryObjectProperty(properties, "template", out var template))
+                !TryObjectProperty(properties, PROPERTY_TEMPLATE, out var template))
                 return context;
 
             // Handle inner scope
@@ -1570,7 +1588,7 @@ namespace PSRule.Rules.Azure.Data.Template
             resourceGroup.SubscriptionId = subscription.SubscriptionId;
             TryObjectProperty(template, PROPERTY_PARAMETERS, out var templateParameters);
 
-            var deploymentContext = new TemplateContext(context.Pipeline, subscription, resourceGroup, tenant, managementGroup, context.ParameterDefaults);
+            var deploymentContext = new TemplateContext(context, context.Pipeline, subscription, resourceGroup, tenant, managementGroup, context.ParameterDefaults);
 
             // Handle custom type definitions early to allow type mapping of parameters if required.
             if (TryObjectProperty(template, PROPERTY_DEFINITIONS, out var definitions))

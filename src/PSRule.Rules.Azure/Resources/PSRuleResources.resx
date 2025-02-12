@@ -175,6 +175,9 @@
   <data name="CloudEnvironmentInvalid" xml:space="preserve">
     <value>Failed to read cloud environment content.</value>
   </data>
+  <data name="DeserializationFailure" xml:space="preserve">
+    <value>Failed to deserialize '{0}'. {1}</value>
+  </data>
   <data name="EmptyConditionExpandResult" xml:space="preserve">
     <value>The expand resulted in an empty condition being returned for '{0}' from '{1}'.</value>
   </data>
@@ -184,6 +187,9 @@
   <data name="ExpressionInvalid" xml:space="preserve">
     <value>Failed to parse expression. The expression may not be valid. Expression: "{0}"</value>
     <comment>Occurs when an expression fails to be parsed.</comment>
+  </data>
+  <data name="FunctionGenericError" xml:space="preserve">
+    <value>The function '{0}' failed. {1}</value>
   </data>
   <data name="FunctionInvalidString" xml:space="preserve">
     <value>The specified parameter is not a valid string.</value>

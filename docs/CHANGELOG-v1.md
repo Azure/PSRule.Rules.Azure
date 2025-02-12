@@ -29,6 +29,16 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.41.2:
+
+- Bug fixes:
+  - Fixed recursive lookup of cross module resources in the deployment by @BernieWhite.
+    [#3251](https://github.com/Azure/PSRule.Rules.Azure/issues/3251)
+    - This improves the ability to reference resource properties in the same parent deployment.
+    - Additionally, projection of runtime properties has been improved.
+  - Fixed literal strings may be incorrectly interpreted as expressions by @BernieWhite.
+    [#3252](https://github.com/Azure/PSRule.Rules.Azure/issues/3252)
+
 ## v1.41.1
 
 What's changed since v1.41.0:
