@@ -46,6 +46,17 @@ internal static class ResourceHelper
     }
 
     /// <summary>
+    /// Determines if the string is a valid resource Id.
+    /// </summary>
+    internal static bool IsResourceId(string? s)
+    {
+        if (s == null || string.IsNullOrWhiteSpace(s))
+            return false;
+
+        return s == SLASH || TrySubscriptionId(s, out _) || TryManagementGroup(s, out _) || TryTenantResourceProvider(s, out _, out _, out _);
+    }
+
+    /// <summary>
     /// Determine if the resource type is a sub-resource of the parent resource Id.
     /// </summary>
     /// <param name="parentId">The resource Id of the parent resource.</param>
@@ -53,7 +64,7 @@ internal static class ResourceHelper
     /// <returns>Returns <c>true</c> if the resource type is a sub-resource. Otherwise <c>false</c> is returned.</returns>
     internal static bool IsSubResourceType(string parentId, string resourceType)
     {
-        if (string.IsNullOrEmpty(parentId) || string.IsNullOrEmpty(parentId))
+        if (string.IsNullOrWhiteSpace(parentId) || string.IsNullOrWhiteSpace(resourceType))
             return false;
 
         // Is the resource type has no provider namespace dot it is a sub type.
@@ -132,6 +143,27 @@ internal static class ResourceHelper
         var idParts = resourceId.Split(SLASH_C);
         var i = 0;
         return TryConsumeManagementGroupPart(idParts, ref i, out managementGroup);
+    }
+
+    /// <summary>
+    /// Get the resource type and name from the specified resource Id from a tenant scope.
+    /// </summary>
+    internal static bool TryTenantResourceProvider(string resourceId, out string? provider, out string[]? type, out string[]? name)
+    {
+        provider = null;
+        type = null;
+        name = null;
+        if (string.IsNullOrWhiteSpace(resourceId) || resourceId == SLASH)
+            return false;
+
+        var idParts = resourceId.Split(SLASH_C);
+        var i = 0;
+        if (TryConsumeTenantPart(idParts, ref i, out _))
+        {
+            _ = TryConsumeProviderPart(idParts, ref i, out provider, out type, out name);
+            return true;
+        }
+        return false;
     }
 
     /// <summary>
@@ -322,7 +354,7 @@ internal static class ResourceHelper
         parts += scopeResourceGroup != null ? 4 : 0;
         parts += depth >= resourceTypeLength ? resourceTypeLength * 4 : depth * 4;
 
-        // Add additional provider segements.
+        // Add additional provider segments.
         for (var p = 0; resourceType != null && p < resourceType.Length; p++)
         {
             if (resourceType[p].Contains(DOT))
