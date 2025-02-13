@@ -130,6 +130,20 @@ internal static class JsonExtensions
     }
 
     /// <summary>
+    /// Add a property to the object if a property with the same name does not exist.
+    /// </summary>
+    /// <param name="o">The object to set properties on.</param>
+    /// <param name="propertyName">The property to check. A case insensitive compare is used.</param>
+    /// <param name="value">The value to set as the property if the property didn't exist.</param>
+    internal static void AddIfNotExists(this JObject o, string propertyName, JToken value)
+    {
+        if (o == null || propertyName == null || value == null) return;
+
+        if (!o.ContainsKeyInsensitive(propertyName))
+            o.Add(propertyName, value);
+    }
+
+    /// <summary>
     /// Determine if the token is a value.
     /// </summary>
     internal static bool HasValue(this JToken o)

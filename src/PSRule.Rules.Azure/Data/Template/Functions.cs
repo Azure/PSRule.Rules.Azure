@@ -37,8 +37,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private const char SINGLE_QUOTE = '\'';
         private const char DOUBLE_QUOTE = '"';
 
-        internal static readonly IFunctionDescriptor[] Common = new IFunctionDescriptor[]
-        {
+        internal static readonly IFunctionDescriptor[] Common =
+        [
             // Array and object
             new FunctionDescriptor("array", Array),
             new FunctionDescriptor("concat", Concat),
@@ -175,7 +175,7 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("parseCidr", ParseCidr),
             new FunctionDescriptor("cidrSubnet", CidrSubnet),
             new FunctionDescriptor("cidrHost", CidrHost),
-        };
+        ];
 
         /// <summary>
         /// Functions specific to Azure Policy.
@@ -480,7 +480,14 @@ namespace PSRule.Rules.Azure.Data.Template
             if (args == null || args.Length != 1 || !ExpressionHelpers.TryString(args[0], out var json))
                 throw ArgumentsOutOfRange(nameof(Json), args);
 
-            return JsonConvert.DeserializeObject(DecodeJsonString(json));
+            try
+            {
+                return JsonConvert.DeserializeObject(DecodeJsonString(json));
+            }
+            catch (Exception ex)
+            {
+                throw DeserializationFailure(nameof(Json), json, ex);
+            }
         }
 
         private static string DecodeJsonString(string s)
@@ -1996,7 +2003,7 @@ namespace PSRule.Rules.Azure.Data.Template
             string[] delimiter = null;
             if (ExpressionHelpers.TryString(args[1], out var single))
             {
-                delimiter = new string[] { single };
+                delimiter = [single];
             }
             else if (ExpressionHelpers.TryStringArray(args[1], out var delimiterArray))
             {
@@ -2406,7 +2413,7 @@ namespace PSRule.Rules.Azure.Data.Template
 
         private static object GetExpression(ITemplateContext context, object o)
         {
-            return o is ExpressionFnOuter fn ? fn(context) : o;
+            return o is ExpressionFnOuter fn ? ExpressionHelpers.UnwrapLiteralString(fn(context)) : o;
         }
 
         #endregion Helper functions
@@ -2511,6 +2518,19 @@ namespace PSRule.Rules.Azure.Data.Template
                 expression,
                 FunctionErrorType.MismatchingResourceSegments,
                 PSRuleResources.MismatchingResourceSegments
+            );
+        }
+
+        /// <summary>
+        /// Failed to deserialize '{0}'. {1}
+        /// </summary>
+        private static TemplateFunctionException DeserializationFailure(string expression, string s, Exception inner)
+        {
+            return new TemplateFunctionException(
+                expression,
+                FunctionErrorType.DeserializationFailure,
+                string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.DeserializationFailure, s, inner.Message),
+                inner
             );
         }
 

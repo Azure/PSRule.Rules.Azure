@@ -37,7 +37,7 @@ internal static class ExpressionHelpers
         return false;
     }
 
-    internal static bool TryString(object o, out string value)
+    internal static bool TryString(object o, out string value, bool allowMocks = true)
     {
         if (o is string s)
         {
@@ -49,7 +49,7 @@ internal static class ExpressionHelpers
             value = token.Value<string>();
             return true;
         }
-        else if (o is IMock mock && (mock.BaseType == TypePrimitive.String || mock is IUnknownMock))
+        else if (allowMocks && o is IMock mock && (mock.BaseType == TypePrimitive.String || mock is IUnknownMock))
         {
             value = mock.GetValue<string>();
             return true;
@@ -73,7 +73,7 @@ internal static class ExpressionHelpers
 
     internal static bool TryConvertStringArray(object[] o, out string[] value)
     {
-        value = Array.Empty<string>();
+        value = [];
         if (o == null || o.Length == 0 || !TryConvertString(o[0], out var s))
             return false;
 
@@ -276,6 +276,28 @@ internal static class ExpressionHelpers
 
         // Objects
         return ObjectEquals(o1, o2);
+    }
+
+    /// <summary>
+    /// Wrap a literal string that could be interpreted as an expression in a later evaluation.
+    /// If the input string starts with '[' and ends with ']' it should be escaped.
+    /// </summary>
+    internal static object WrapLiteralString(object o)
+    {
+        if (!TryString(o, out var s, allowMocks: false)) return o;
+
+        return !s.IsExpressionString() ? s : string.Concat('[', s);
+    }
+
+    /// <summary>
+    /// Remove expression escaping for a literal string if it exists.
+    /// If the input string starts with '[[' and ends with ']' it should be unescaped by removing the first character.
+    /// </summary>
+    internal static object UnwrapLiteralString(object o)
+    {
+        if (!TryString(o, out var s, allowMocks: false)) return o;
+
+        return s == null || s.Length <= 3 || s[0] != '[' || s[1] != '[' || s[s.Length - 1] != ']' ? s : s.Substring(1);
     }
 
     private static bool IsNull(object o)
@@ -802,9 +824,9 @@ internal static class ExpressionHelpers
         if (TryDateTime(o, out value))
             return true;
 
-        return TryString(o, out var svalue) &&
-            (DateTime.TryParseExact(svalue, "yyyyMMddTHHmmssZ", AzureCulture, style, out value) ||
-            DateTime.TryParse(svalue, AzureCulture, style, out value));
+        return TryString(o, out var s) &&
+            (DateTime.TryParseExact(s, "yyyyMMddTHHmmssZ", AzureCulture, style, out value) ||
+            DateTime.TryParse(s, AzureCulture, style, out value));
     }
 
     internal static bool TryJToken(object o, out JToken value)
@@ -877,11 +899,11 @@ internal static class ExpressionHelpers
         {
             if (GetStringForMock(args[i], out var s) || TryString(args[i], out s))
             {
-                var bvalue = Encoding.UTF8.GetBytes(s);
+                var b = Encoding.UTF8.GetBytes(s);
                 if (i == args.Length - 1)
-                    algorithm.TransformFinalBlock(bvalue, 0, bvalue.Length);
+                    algorithm.TransformFinalBlock(b, 0, b.Length);
                 else
-                    algorithm.TransformBlock(bvalue, 0, bvalue.Length, null, 0);
+                    algorithm.TransformBlock(b, 0, b.Length, null, 0);
             }
         }
         return algorithm.Hash;

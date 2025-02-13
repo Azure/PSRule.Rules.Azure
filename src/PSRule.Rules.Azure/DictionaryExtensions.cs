@@ -1,11 +1,11 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using Newtonsoft.Json.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Management.Automation;
+using Newtonsoft.Json.Linq;
 
 namespace PSRule.Rules.Azure;
 

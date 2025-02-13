@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Data.Template;
-using System.Linq;
 
 namespace PSRule.Rules.Azure.Bicep.AVMTestCases;
 
@@ -35,5 +35,18 @@ public sealed class BicepAVMTests : TemplateVisitorTestsBase
         Assert.Equal([
             "/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Network/networkInterfaces/nic1"
         ], id);
+    }
+
+    [Fact]
+    public void ProcessTemplate_WhenReferencingCrossModuleDependency_ShouldGetResource()
+    {
+        var resources = ProcessTemplate(GetSourcePath("Bicep/AVMTestCases/Tests.Bicep.2.json"), null, out var templateContext);
+
+        var actual = resources.FirstOrDefault(r => r["name"].Value<string>() == "site1");
+        Assert.NotNull(actual);
+
+        var endpoint = actual["properties"]["siteConfig"]["appSettings"].ToArray().FirstOrDefault(setting => setting["name"].Value<string>() == "endpoint");
+        Assert.NotNull(endpoint);
+        Assert.Equal("https://storage1.blob.core.windows.net/", endpoint["value"].Value<string>());
     }
 }

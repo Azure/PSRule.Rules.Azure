@@ -193,6 +193,52 @@ public sealed class ResourceHelperTests
         Assert.False(ResourceHelper.TryManagementGroup(resourceId, out var actualManagementGroup));
         Assert.Null(actualManagementGroup);
     }
+
+    [Theory]
+    [InlineData("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff")]
+    [InlineData("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-4")]
+    [InlineData("/providers/Microsoft.Management/managementGroups/mg-1")]
+    [InlineData("/providers/Microsoft.Management/managementGroups/mg-1/providers/Microsoft.Authorization/policyAssignments/assignment-1")]
+    [InlineData("/providers/Microsoft.Authorization/policyDefinitions/policy-1")]
+    [InlineData("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-4/providers/Microsoft.KeyVault/vaults/keyvault-1/secrets/secret-1")]
+    [InlineData("/")]
+    public void IsResourceId_WithValidResourceId_ShouldReturnTrue(string resourceId)
+    {
+        Assert.True(ResourceHelper.IsResourceId(resourceId));
+    }
+
+    [Theory]
+    [InlineData(null)]
+    [InlineData("")]
+    [InlineData(" ")]
+    [InlineData("/subscriptions")]
+    [InlineData("subscriptions")]
+    public void IsResourceId_WithInvalidResourceId_ShouldReturnFalse(string? resourceId)
+    {
+        Assert.False(ResourceHelper.IsResourceId(resourceId));
+    }
+
+    [Theory]
+    [InlineData("/providers/Microsoft.Authorization/policyDefinitions/policy-1", "Microsoft.Authorization", new string[] { "Microsoft.Authorization/policyDefinitions" }, new string[] { "policy-1" })]
+    [InlineData("/providers/Microsoft.Management/managementGroups/mg-1", "Microsoft.Management", new string[] { "Microsoft.Management/managementGroups" }, new string[] { "mg-1" })]
+    [InlineData("/providers/Microsoft.Management/managementGroups/mg-1/providers/Microsoft.Authorization/policyAssignments/assignment-1", "Microsoft.Management", new string[] { "Microsoft.Management/managementGroups", "providers", "policyAssignments" }, new string[] { "mg-1", "Microsoft.Authorization", "assignment-1" })]
+    public void TryTenantResourceProvider_WithValidTenantResourceId_ShouldReturnTenantResourceProvider(string resourceId, string provider, string[] type, string[] name)
+    {
+        Assert.True(ResourceHelper.TryTenantResourceProvider(resourceId, out var actualProvider, out var actualType, out var actualName));
+        Assert.Equal(provider, actualProvider);
+        Assert.Equal(type, actualType);
+        Assert.Equal(name, actualName);
+    }
+
+    [Theory]
+    [InlineData("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff")]
+    [InlineData("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/rg-4")]
+    [InlineData("subscriptions")]
+    [InlineData("/")]
+    public void TryTenantResourceProvider_WithOtherResourceId_ShouldReturnFalse(string resourceId)
+    {
+        Assert.False(ResourceHelper.TryTenantResourceProvider(resourceId, out _, out _, out _));
+    }
 }
 
 #nullable restore

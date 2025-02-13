@@ -137,16 +137,6 @@
     "webhooks",
     "xunit"
   ],
-  "cSpell.enabledLanguageIds": [
-    "csharp",
-    "git-commit",
-    "markdown",
-    "plaintext",
-    "powershell",
-    "text",
-    "yaml",
-    "yml"
-  ],
   "json.schemas": [
     {
       "fileMatch": [
@@ -165,9 +155,17 @@
     "release/*"
   ],
   "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
-  "cSpell.enableFiletypes": [
-    "bicep",
-    "python"
-  ],
+  "cSpell.enabledFileTypes": {
+    "csharp": true,
+    "git-commit": true,
+    "markdown": true,
+    "plaintext": true,
+    "powershell": true,
+    "text": true,
+    "yaml": true,
+    "yml": true,
+    "python": true,
+    "bicep": true,
+  },
   "dotnet.formatting.organizeImportsOnFormat": true
 }
