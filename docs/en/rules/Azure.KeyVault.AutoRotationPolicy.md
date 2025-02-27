@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-06-17
+reviewed: 2025-02-27
 severity: Important
 pillar: Security
 category: SE:09 Application secrets
@@ -7,11 +7,11 @@ resource: Key Vault
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.AutoRotationPolicy/
 ---
 
-# Enable Key Vault key auto-rotation
+# Key Vault key rotation policy is not set
 
 ## SYNOPSIS
 
-Key Vault keys should have auto-rotation enabled.
+Keys that become compromised may be used to spoof, decrypt, or gain access to sensitive data.
 
 ## DESCRIPTION
 
@@ -123,6 +123,10 @@ resource vaultName_key1 'Microsoft.KeyVault/vaults/keys@2021-06-01-preview' = {
   }
 }
 ```
+
+## NOTES
+
+This rule only applies to pre-flight validation of Azure templates and Bicep files.
 
 ## LINKS
 
