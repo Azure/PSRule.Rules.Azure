@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.32.4.45862",
-      "templateHash": "13775676563717028722"
+      "version": "0.33.93.31351",
+      "templateHash": "2836501364278978101"
     }
   },
   "parameters": {
@@ -64,7 +64,7 @@
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2024-03-01",
+      "apiVersion": "2024-07-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -193,7 +193,7 @@
     },
     {
       "type": "Microsoft.Compute/virtualMachines",
-      "apiVersion": "2023-09-01",
+      "apiVersion": "2024-07-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "zones": [

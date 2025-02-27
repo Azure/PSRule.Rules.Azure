@@ -29,11 +29,30 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
-What's changed since v1.41.2:
+What's changed since v1.41.4:
 
 - General improvements:
   - Added a new quickstart guide for using Azure Pipelines with PSRule by @that-ar-guy.  
     [#3220](https://github.com/Azure/PSRule.Rules.Azure/pull/3220)
+
+## v1.41.4
+
+What's changed since v1.41.3:
+
+- Bug fixes:
+  - Fixed Azure VM Standalone failing on data disks check by @BernieWhite.
+    [#3263](https://github.com/Azure/PSRule.Rules.Azure/issues/3263)
+  - Fixed in-flight analysis of key rotation policy fails due to missing data by @BernieWhite.
+    [#3261](https://github.com/Azure/PSRule.Rules.Azure/issues/3261)
+    - Disabled export of `keys` from management plane API because the data is incomplete for this rule.
+
+## v1.41.3
+
+What's changed since v1.41.2:
+
+- Bug fixes:
+  - Fixed ordering of symbolic copy loop dependencies by @BernieWhite.
+    [#3257](https://github.com/Azure/PSRule.Rules.Azure/issues/3257)
 
 ## v1.41.2
 

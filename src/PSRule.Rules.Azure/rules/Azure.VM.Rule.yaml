@@ -15,8 +15,8 @@ metadata:
   name: Azure.VM.Standalone
   ref: AZR-000239
   tags:
-    release: 'GA'
-    ruleSet: '2020_06'
+    release: GA
+    ruleSet: 2020_06
     Azure.WAF/pillar: Reliability
 spec:
   type:
@@ -31,8 +31,17 @@ spec:
       hasValue: true
     - allOf:
       - field: properties.storageProfile.osDisk.managedDisk.storageAccountType
-        equals: Premium_LRS
-      - field: properties.storageProfile.dataDisks[?@.managedDisk.storageAccountType != 'Premium_LRS' && @.managedDisk.storageAccountType != 'Premium_ZRS' && @.managedDisk.storageAccountType != 'UltraSSD_LRS']
+        in:
+          - Premium_LRS
+          - Premium_ZRS
+      - field: properties.storageProfile.dataDisks
+        allOf:
+          - field: managedDisk.storageAccountType
+            notIn:
+              - Premium_LRS
+              - Premium_ZRS
+              - PremiumV2_LRS
+              - UltraSSD_LRS
         count: 0
 
 ---
