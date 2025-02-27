@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.41.3:
+
+- Bug fixes:
+  - Fixed Azure VM Standalone failing on data disks check by @BernieWhite.
+    [#3263](https://github.com/Azure/PSRule.Rules.Azure/issues/3263)
+
 ## v1.41.3
 
 What's changed since v1.41.2:
