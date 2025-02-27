@@ -29,6 +29,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.41.4
+
 What's changed since v1.41.3:
 
 - Bug fixes:
