@@ -34,6 +34,9 @@ What's changed since v1.41.3:
 - Bug fixes:
   - Fixed Azure VM Standalone failing on data disks check by @BernieWhite.
     [#3263](https://github.com/Azure/PSRule.Rules.Azure/issues/3263)
+  - Fixed in-flight analysis of key rotation policy fails due to missing data by @BernieWhite.
+    [#3261](https://github.com/Azure/PSRule.Rules.Azure/issues/3261)
+    - Disabled export of `keys` from management plane API because the data is incomplete for this rule.
 
 ## v1.41.3
 
