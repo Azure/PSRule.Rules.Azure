@@ -2140,26 +2140,26 @@
     },
     "resources": [
       {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A",
+        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-F-nic",
+        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-F-nic",
         "Location": "region",
-        "ResourceName": "nic-A",
-        "Name": "nic-A",
+        "ResourceName": "vm-F-nic",
+        "Name": "vm-F-nic",
         "Properties": {
           "ipConfigurations": [
             {
               "name": "ipconfig1",
-              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/nic-A/ipConfigurations/ipconfig1",
+              "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-F-nic/ipConfigurations/ipconfig1",
               "type": "Microsoft.Network/networkInterfaces/ipConfigurations",
               "properties": {
                 "provisioningState": "Succeeded",
                 "privateIPAddress": "10.0.0.4",
                 "privateIPAllocationMethod": "Static",
                 "publicIPAddress": {
-                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/nic-A-pip"
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/publicIPAddresses/vm-F-nic-pip"
                 },
                 "subnet": {
-                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vnet-A/subnets/subnet-A"
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/virtualNetworks/vm-F-nic/subnets/subnet-A"
                 },
                 "primary": true,
                 "privateIPAddressVersion": "IPv4"
@@ -2334,5 +2334,141 @@
     "Sku": null,
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "Name": "vm-H",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-H",
+    "ResourceName": "vm-H",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "hardwareProfile": {
+        "vmSize": "Standard_E32s_v3"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "MicrosoftSQLServer",
+          "offer": "SQL2017-WS2016",
+          "sku": "Enterprise",
+          "version": "latest"
+        },
+        "osDisk": {
+          "osType": "Windows",
+          "name": "vm-H_OsDisk_1_0000000000000000000000000000000",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "Premium_LRS"
+          },
+          "diskSizeGB": 127
+        },
+        "dataDisks": [
+          {
+            "lun": 0,
+            "name": "vm-H_disk2_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "Premium_ZRS"
+            },
+            "diskSizeGB": 1023
+          },
+          {
+            "lun": 1,
+            "name": "vm-H_disk3_0000000000000000000000000000000",
+            "createOption": "Empty",
+            "caching": "ReadOnly",
+            "managedDisk": {
+              "storageAccountType": "Standard_LRS"
+            },
+            "diskSizeGB": 1023
+          }
+        ]
+      },
+      "osProfile": {
+        "computerName": "vm-H",
+        "adminUsername": "vm-admin",
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": true
+        },
+        "linuxConfiguration": null,
+        "secrets": [],
+        "allowExtensionOperations": true
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-H-nic"
+          }
+        ]
+      },
+      "diagnosticsProfile": {
+        "bootDiagnostics": {
+          "enabled": true,
+          "storageUri": "https://storage-A.blob.core.windows.net/"
+        }
+      },
+      "licenseType": "Windows_Server"
+    }
+  },
+  {
+    "Name": "vm-I",
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Compute/virtualMachines/vm-I",
+    "ResourceName": "vm-I",
+    "ResourceType": "Microsoft.Compute/virtualMachines",
+    "ResourceGroupName": "test-rg",
+    "Location": "region",
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000",
+    "Properties": {
+      "hardwareProfile": {
+        "vmSize": "Standard_E32s_v3"
+      },
+      "storageProfile": {
+        "imageReference": {
+          "publisher": "MicrosoftSQLServer",
+          "offer": "SQL2017-WS2016",
+          "sku": "Enterprise",
+          "version": "latest"
+        },
+        "osDisk": {
+          "osType": "Windows",
+          "name": "vm-I_OsDisk_1_0000000000000000000000000000000",
+          "createOption": "FromImage",
+          "caching": "ReadWrite",
+          "managedDisk": {
+            "storageAccountType": "Premium_ZRS"
+          },
+          "diskSizeGB": 127
+        }
+      },
+      "osProfile": {
+        "computerName": "vm-I",
+        "adminUsername": "vm-admin",
+        "windowsConfiguration": {
+          "provisionVMAgent": true,
+          "enableAutomaticUpdates": true
+        },
+        "linuxConfiguration": null,
+        "secrets": [],
+        "allowExtensionOperations": true
+      },
+      "networkProfile": {
+        "networkInterfaces": [
+          {
+            "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/test-rg/providers/Microsoft.Network/networkInterfaces/vm-I-nic"
+          }
+        ]
+      },
+      "diagnosticsProfile": {
+        "bootDiagnostics": {
+          "enabled": true,
+          "storageUri": "https://storage-A.blob.core.windows.net/"
+        }
+      },
+      "licenseType": "Windows_Server"
+    }
   }
 ]

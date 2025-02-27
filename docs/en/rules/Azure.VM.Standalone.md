@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-07-09
+reviewed: 2025-02-27
 severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
@@ -7,11 +7,11 @@ resource: Virtual Machine
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.Standalone/
 ---
 
-# Standalone Virtual Machine
+# Virtual Machine is not configured for improved SLA
 
 ## SYNOPSIS
 
-Use VM features to increase reliability and improve covered SLA for VM configurations.
+Single instance VMs are a single point of failure, however reliability can be improved by using premium storage.
 
 ## DESCRIPTION
 
@@ -29,72 +29,14 @@ Taking advantage of some of the features of Azure can further increase the avail
   Each Availability Zone has a distinct power source, network, and cooling.
 - **Availability Sets** - is a logical grouping of VMs that allows Azure to understand how your application is built.
   By understanding the distinct tiers of the application, Azure can better organize compute and storage to improve availability.
-- **Solid State Storage (SSD) Disks** - high performance block-level storage with three replicas of your data.
+- **Premium Solid State Storage (SSD) Disks** - high performance block-level storage with three replicas of your data.
+  When you use a mix of storage for OS and data disk attached to your VMs, the SLA is based on the lowest performing disk.
 
 ## RECOMMENDATION
 
 Consider using availability zones/ sets or only premium/ ultra disks to improve SLA.
 
 ## EXAMPLES
-
-### Configure with Azure template
-
-To deploy VMs that pass this rule with on of the following:
-
-- Deploy the VM in an Availability Set by specifying `properties.availabilitySet.id` in code.
-- Deploy the VM in an Availability Zone by specifying `zones` with `1`, `2`, or `3` in code.
-- Deploy the VM using only premium disks for OS and data disks by specifying `storageAccountType` as `Premium_LRS`.
-
-For example:
-
-```json
-{
-    "type": "Microsoft.Compute/virtualMachines",
-    "apiVersion": "2022-03-01",
-    "name": "[parameters('name')]",
-    "location": "[parameters('location')]",
-    "zones": [
-        "1"
-    ],
-    "properties": {
-        "hardwareProfile": {
-            "vmSize": "Standard_D2s_v3"
-        },
-        "osProfile": {
-            "computerName": "[parameters('name')]",
-            "adminUsername": "[parameters('adminUsername')]",
-            "adminPassword": "[parameters('adminPassword')]"
-        },
-        "storageProfile": {
-            "imageReference": {
-                "publisher": "MicrosoftWindowsServer",
-                "offer": "WindowsServer",
-                "sku": "[parameters('sku')]",
-                "version": "latest"
-            },
-            "osDisk": {
-                "name": "[format('{0}-disk0', parameters('name'))]",
-                "caching": "ReadWrite",
-                "createOption": "FromImage",
-                "managedDisk": {
-                    "storageAccountType": "Premium_LRS"
-                }
-            }
-        },
-        "licenseType": "Windows_Server",
-        "networkProfile": {
-            "networkInterfaces": [
-                {
-                    "id": "[resourceId('Microsoft.Network/networkInterfaces', format('{0}-nic0', parameters('name')))]"
-                }
-            ]
-        }
-    },
-    "dependsOn": [
-        "[resourceId('Microsoft.Network/networkInterfaces', format('{0}-nic0', parameters('name')))]"
-    ]
-}
-```
 
 ### Configure with Bicep
 
@@ -107,7 +49,7 @@ To deploy VMs that pass this rule with on of the following:
 For example:
 
 ```bicep
-resource vm1 'Microsoft.Compute/virtualMachines@2022-03-01' = {
+resource vm 'Microsoft.Compute/virtualMachines@2024-07-01' = {
   name: name
   location: location
   zones: [
@@ -150,11 +92,70 @@ resource vm1 'Microsoft.Compute/virtualMachines@2022-03-01' = {
 }
 ```
 
+<!-- external:avm avm/res/compute/virtual-machine zone -->
+
+### Configure with Azure template
+
+To deploy VMs that pass this rule with on of the following:
+
+- Deploy the VM in an Availability Set by specifying `properties.availabilitySet.id` in code.
+- Deploy the VM in an Availability Zone by specifying `zones` with `1`, `2`, or `3` in code.
+- Deploy the VM using only premium disks for OS and data disks by specifying `storageAccountType` as `Premium_LRS`.
+
+For example:
+
+```json
+{
+  "type": "Microsoft.Compute/virtualMachines",
+  "apiVersion": "2024-07-01",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "zones": [
+    "1"
+  ],
+  "properties": {
+    "hardwareProfile": {
+      "vmSize": "Standard_D2s_v3"
+    },
+    "osProfile": {
+      "computerName": "[parameters('name')]",
+      "adminUsername": "[parameters('adminUsername')]",
+      "adminPassword": "[parameters('adminPassword')]"
+    },
+    "storageProfile": {
+      "imageReference": {
+        "publisher": "MicrosoftWindowsServer",
+        "offer": "WindowsServer",
+        "sku": "[parameters('sku')]",
+        "version": "latest"
+      },
+      "osDisk": {
+        "name": "[format('{0}-disk0', parameters('name'))]",
+        "caching": "ReadWrite",
+        "createOption": "FromImage",
+        "managedDisk": {
+          "storageAccountType": "Premium_LRS"
+        }
+      }
+    },
+    "licenseType": "Windows_Server",
+    "networkProfile": {
+      "networkInterfaces": [
+        {
+          "id": "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
+        }
+      ]
+    }
+  },
+  "dependsOn": [
+    "[resourceId('Microsoft.Network/networkInterfaces', parameters('nicName'))]"
+  ]
+}
+```
+
 ## LINKS
 
 - [RE:04 Target metrics](https://learn.microsoft.com/azure/well-architected/reliability/metrics)
-- [Virtual Machine SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines)
-- [Availability options for virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/availability)
-- [Manage the availability of Windows virtual machines in Azure](https://learn.microsoft.com/azure/virtual-machines/windows/manage-availability)
-- [Manage the availability of Linux virtual machines](https://learn.microsoft.com/azure/virtual-machines/linux/manage-availability)
+- [Virtual Machine SLA](https://www.microsoft.com/licensing/docs/view/Service-Level-Agreements-SLA-for-Online-Services)
+- [Availability options for Azure Virtual Machines](https://learn.microsoft.com/azure/virtual-machines/availability)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.compute/virtualmachines)

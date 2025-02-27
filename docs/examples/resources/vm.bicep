@@ -27,7 +27,7 @@ param subnetId string
 param amaIdentityId string
 
 // An example virtual machine running Windows Server and one data disk attached.
-resource vm 'Microsoft.Compute/virtualMachines@2024-03-01' = {
+resource vm 'Microsoft.Compute/virtualMachines@2024-07-01' = {
   name: name
   location: location
   identity: {
@@ -146,7 +146,7 @@ resource config 'Microsoft.Maintenance/configurationAssignments@2023-04-01' = {
 }
 
 // An example virtual machine with Azure Hybrid Benefit.
-resource vm_with_benefit 'Microsoft.Compute/virtualMachines@2023-09-01' = {
+resource vm_with_benefit 'Microsoft.Compute/virtualMachines@2024-07-01' = {
   name: name
   location: location
   zones: [
