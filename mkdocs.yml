@@ -77,9 +77,9 @@ nav:
     - License and contributing:
       - Index: license-contributing/index.md
       - Get started contributing: license-contributing/get-started-contributing.md
+      - Getting started with contributions: license-contributing/getting-started-with-documentation.md
       - Writing documentation: license-contributing/writing-documentation.md
       - Past hackathons: license-contributing/hackathons.md
-      - Getting started with contributions: license-contributing/getting-started-with-documentation.md
     - Related projects: related-projects.md
     - Releases:
       - Change log:
