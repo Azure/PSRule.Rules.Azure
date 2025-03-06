@@ -38,6 +38,9 @@ What's changed since v1.41.4:
 - General improvements:
   - Added a new quickstart guide for using Azure Pipelines with PSRule by @that-ar-guy.  
     [#3220](https://github.com/Azure/PSRule.Rules.Azure/pull/3220)
+- Engineering:
+  - Updates to WAF documentation by @BernieWhite.
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
 
 ## v1.41.4
 
