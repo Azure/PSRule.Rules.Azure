@@ -7,7 +7,7 @@ resource: Container Registry
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.AnonymousAccess/
 ---
 
-# Container registry anonymous pull access is enabled
+# Container Registry anonymous pull access is enabled
 
 ## SYNOPSIS
 
