@@ -1,0 +1,100 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.33.93.31351",
+      "templateHash": "6607772561245464948"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    },
+    "imageId": {
+      "type": "string",
+      "metadata": {
+        "description": "The image ID to distribute the image to."
+      }
+    },
+    "outputRunName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the output run to distribute the image to."
+      }
+    },
+    "identityId": {
+      "type": "string",
+      "metadata": {
+        "description": "The managed identity used to create Azure resources."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.VirtualMachineImages/imageTemplates",
+      "apiVersion": "2024-02-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[format('{0}', parameters('identityId'))]": {}
+        }
+      },
+      "properties": {
+        "source": {
+          "type": "PlatformImage",
+          "publisher": "canonical",
+          "offer": "ubuntu-24_04-lts",
+          "sku": "server",
+          "version": "latest"
+        },
+        "distribute": [
+          {
+            "location": "[parameters('location')]",
+            "imageId": "[parameters('imageId')]",
+            "runOutputName": "[parameters('outputRunName')]",
+            "type": "ManagedImage",
+            "artifactTags": {
+              "sourceType": "PlatformImage",
+              "sourcePublisher": "canonical",
+              "sourceOffer": "ubuntu-24_04-lts",
+              "sourceSku": "server",
+              "sourceVersion": "latest"
+            }
+          }
+        ],
+        "customize": [
+          {
+            "type": "Shell",
+            "name": "PowerShell installation",
+            "scriptUri": "https://raw.githubusercontent.com/Azure/bicep-registry-modules/5bbac220dfdf8643fb0091e23095ce875f7fe54b/avm/res/virtual-machine-images/image-template/tests/e2e/max/src/Install-LinuxPowerShell.sh",
+            "sha256Checksum": "8d469f6864a38e1cf957cd080603026bba325793edfb4fe2e8b8e7368eb15b92"
+          }
+        ],
+        "validate": {
+          "inVMValidations": [
+            {
+              "type": "PowerShell",
+              "name": "Run PowerShell script",
+              "scriptUri": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/5670db39d51799c896f1f8223f32b8ba08cc816e/demos/imagebuilder-windowsbaseline/scripts/runScript.ps1",
+              "sha256Checksum": "c76d82a68e57b559ea82bcb191b48f5e08a391b036ba5fa0b9c3efe795131e82"
+            }
+          ]
+        }
+      }
+    }
+  ]
+}
