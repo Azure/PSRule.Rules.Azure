@@ -31,6 +31,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.41.4:
 
+- New rules:
+  - Image Builder:
+    - Check that image builder build and validation scripts are pinned by @BernieWhite.
+      [#2903](https://github.com/Azure/PSRule.Rules.Azure/issues/2903)
 - General improvements:
   - Added a new quickstart guide for using Azure Pipelines with PSRule by @that-ar-guy.  
     [#3220](https://github.com/Azure/PSRule.Rules.Azure/pull/3220)
