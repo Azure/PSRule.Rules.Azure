@@ -427,10 +427,14 @@ internal sealed class ResourceExportVisitor
             return false;
 
         await GetDiagnosticSettings(context, resource, resourceId);
-        if (resource.TryGetProperty(PROPERTY_PROPERTIES, out JObject properties) &&
-            properties.TryGetProperty(PROPERTY_TENANTID, out var tenantId) &&
-            string.Equals(tenantId, context.TenantId))
-            AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "keys", APIVERSION_2022_07_01));
+
+        // Key rotations policies are not exposed in the management API.
+        // Exporting keys has been disabled to resolve issue https://github.com/Azure/PSRule.Rules.Azure/issues/3261
+        // Currently there is no rules applicable to in-flight that require getting key resources.
+        // if (resource.TryGetProperty(PROPERTY_PROPERTIES, out JObject properties) &&
+        //     properties.TryGetProperty(PROPERTY_TENANTID, out var tenantId) &&
+        //     string.Equals(tenantId, context.TenantId))
+        //     AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "keys", APIVERSION_2022_07_01));
 
         return true;
     }
