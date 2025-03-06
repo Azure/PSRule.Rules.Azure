@@ -2716,7 +2716,7 @@
           <li class="md-nav__item">
   <a href="#se01-security-baseline" class="md-nav__link">
     <span class="md-ellipsis">
-      SE:01 Security baseline
+      SE:01 Security Baseline
     </span>
   </a>
   
@@ -2887,6 +2887,10 @@
   
     
     
+      
+        
+      
+        
       
         
       
@@ -8540,6 +8544,50 @@
   
   <span class="md-ellipsis">
     Azure.Identity.UserAssignedName
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Azure.ImageBuilder.CustomizeHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure.ImageBuilder.CustomizeHash
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Azure.ImageBuilder.ValidateHash/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Azure.ImageBuilder.ValidateHash
     
   </span>
   
@@ -16042,7 +16090,7 @@
           <li class="md-nav__item">
   <a href="#se01-security-baseline" class="md-nav__link">
     <span class="md-ellipsis">
-      SE:01 Security baseline
+      SE:01 Security Baseline
     </span>
   </a>
   
@@ -18616,7 +18664,7 @@
 </tr>
 </tbody>
 </table>
-<h3 id="se01-security-baseline">SE:01 Security baseline<a class="headerlink" href="#se01-security-baseline" title="Permanent link">#</a></h3>
+<h3 id="se01-security-baseline">SE:01 Security Baseline<a class="headerlink" href="#se01-security-baseline" title="Permanent link">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -18716,6 +18764,18 @@
 <td><a href="../Azure.Deployment.SecureValue/">Azure.Deployment.SecureValue</a></td>
 <td>A secret property set from a non-secure value may leak the secret into deployment history or logs.</td>
 <td>Critical</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="../Azure.ImageBuilder.CustomizeHash/">Azure.ImageBuilder.CustomizeHash</a></td>
+<td>External scripts that are not pinned may be modified to execute privileged actions by an unauthorized user.</td>
+<td>Important</td>
+<td>Error</td>
+</tr>
+<tr>
+<td><a href="../Azure.ImageBuilder.ValidateHash/">Azure.ImageBuilder.ValidateHash</a></td>
+<td>External scripts that are not pinned may be modified to execute privileged actions by an unauthorized user.</td>
+<td>Important</td>
 <td>Error</td>
 </tr>
 <tr>
