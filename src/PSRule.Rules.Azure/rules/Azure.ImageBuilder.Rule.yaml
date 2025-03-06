@@ -1,0 +1,80 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Azure Image Builder
+#
+
+---
+# Synopsis: External scripts that are not pinned may be modified to execute privileged actions by an unauthorized user.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ImageBuilder.CustomizeHash
+  ref: AZR-000453
+  tags:
+    release: GA
+    ruleSet: 2025_03
+    Azure.WAF/pillar: Security
+spec:
+  type:
+    - Microsoft.VirtualMachineImages/imageTemplates
+  condition:
+    anyOf:
+      - field: properties.customize
+        hasValue: false
+      - field: properties.customize
+        where:
+          anyOf:
+            - allOf:
+                - field: type
+                  equals: File
+                - field: sourceUri
+                  hasValue: true
+            - allOf:
+                - field: type
+                  in:
+                    - PowerShell
+                    - Shell
+                - field: scriptUri
+                  hasValue: true
+        allOf:
+          - field: sha256Checksum
+            hasValue: true
+
+---
+# Synopsis: External scripts that are not pinned may be modified to execute privileged actions by an unauthorized user.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ImageBuilder.ValidateHash
+  ref: AZR-000454
+  tags:
+    release: GA
+    ruleSet: 2025_03
+    Azure.WAF/pillar: Security
+spec:
+  type:
+    - Microsoft.VirtualMachineImages/imageTemplates
+  condition:
+    anyOf:
+      - field: properties.validate.inVMValidations
+        hasValue: false
+      - field: properties.validate.inVMValidations
+        where:
+          anyOf:
+            - allOf:
+                - field: type
+                  equals: File
+                - field: sourceUri
+                  hasValue: true
+            - allOf:
+                - field: type
+                  in:
+                    - PowerShell
+                    - Shell
+                - field: scriptUri
+                  hasValue: true
+        allOf:
+          - field: sha256Checksum
+            hasValue: true
