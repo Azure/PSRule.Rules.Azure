@@ -3,7 +3,7 @@ reviewed: 2025-03-06
 severity: Important
 pillar: Security
 category: SE:02 Secured development lifecycle
-resource: Image Builder
+resource: VM Image Builder
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ImageBuilder.ValidateHash/
 ---
 

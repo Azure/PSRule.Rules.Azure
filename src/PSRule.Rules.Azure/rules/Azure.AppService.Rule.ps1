@@ -10,19 +10,17 @@ Rule 'Azure.AppService.PlanInstanceCount' -Ref 'AZR-000071' -Type 'Microsoft.Web
     $Assert.GreaterOrEqual($TargetObject, 'sku.capacity', 2);
 }
 
-# Synopsis: App Service should reject TLS versions older than 1.2.
+# Synopsis: App Service should not accept weak or deprecated transport protocols for client-server communication.
 Rule 'Azure.AppService.MinTLS' -Ref 'AZR-000073' -Type 'Microsoft.Web/sites', 'Microsoft.Web/sites/slots' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Security'; } -Labels @{ 'Azure.MCSB.v1/control' = 'DP-3' } {
     $siteConfigs = @(GetWebSiteConfig);
     if ($siteConfigs.Length -eq 0) {
-        return $Assert.
-        HasFieldValue($TargetObject, 'properties.siteConfig.minTlsVersion', '1.2').
-        ReasonFrom('properties.siteConfig.minTlsVersion', $LocalizedData.MinTLSVersion, $TargetObject.properties.siteConfig.minTlsVersion);
+        return $Assert.Version($TargetObject, 'properties.siteConfig.minTlsVersion', '>=1.2').
+            ReasonFrom('properties.siteConfig.minTlsVersion', $LocalizedData.MinTLSVersion, $TargetObject.properties.siteConfig.minTlsVersion);
     }
     foreach ($siteConfig in $siteConfigs) {
         $path = $siteConfig._PSRule.path;
-        $Assert.
-        HasFieldValue($siteConfig, 'properties.minTlsVersion', '1.2').
-        ReasonFrom('properties.minTlsVersion', $LocalizedData.MinTLSVersion, $siteConfig.properties.minTlsVersion).PathPrefix($path);
+        $Assert.Version($siteConfig, 'properties.minTlsVersion', '>=1.2').
+            ReasonFrom('properties.minTlsVersion', $LocalizedData.MinTLSVersion, $siteConfig.properties.minTlsVersion).PathPrefix($path);
     }
 }
 

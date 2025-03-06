@@ -304,5 +304,15 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.ACR.AnonymousAccess"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/f0e6e85b-9b9f-4a4b-b67b-f730d42f1b0b",
+      "/providers/Microsoft.Authorization/policyDefinitions/4ee5b817-627a-435a-8932-116193268172",
+      "/providers/Microsoft.Authorization/policyDefinitions/ae44c1d1-0df2-4ca9-98fa-a3d3ae5b409d",
+      "/providers/Microsoft.Authorization/policyDefinitions/014664e7-e348-41a3-aeb9-566e4ff6a9df"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.AppService.MinTLS"
   }
 ]

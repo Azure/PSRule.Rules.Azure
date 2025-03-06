@@ -13,7 +13,7 @@ param planName string
 param location string = resourceGroup().location
 
 // An example App Services Plan.
-resource plan 'Microsoft.Web/serverfarms@2023-01-01' = {
+resource plan 'Microsoft.Web/serverfarms@2024-04-01' = {
   name: planName
   location: location
   sku: {
@@ -26,7 +26,7 @@ resource plan 'Microsoft.Web/serverfarms@2023-01-01' = {
 }
 
 // An example .NET Framework Web App running on a Windows App Services Plan.
-resource web 'Microsoft.Web/sites@2023-01-01' = {
+resource web 'Microsoft.Web/sites@2024-04-01' = {
   name: name
   location: location
   identity: {
@@ -56,7 +56,7 @@ resource web 'Microsoft.Web/sites@2023-01-01' = {
 }
 
 // An example PHP Web App running on a Linux App Services Plan.
-resource php 'Microsoft.Web/sites@2023-01-01' = {
+resource php 'Microsoft.Web/sites@2024-04-01' = {
   name: name
   location: location
   identity: {
@@ -79,7 +79,7 @@ resource php 'Microsoft.Web/sites@2023-01-01' = {
 }
 
 // Disable basic publishing credentials for FTP.
-resource ftp 'Microsoft.Web/sites/basicPublishingCredentialsPolicies@2023-01-01' = {
+resource ftp 'Microsoft.Web/sites/basicPublishingCredentialsPolicies@2024-04-01' = {
   parent: web
   name: 'ftp'
   properties: {
@@ -88,7 +88,7 @@ resource ftp 'Microsoft.Web/sites/basicPublishingCredentialsPolicies@2023-01-01'
 }
 
 // Disable basic publishing credentials over SCM.
-resource scm 'Microsoft.Web/sites/basicPublishingCredentialsPolicies@2023-01-01' = {
+resource scm 'Microsoft.Web/sites/basicPublishingCredentialsPolicies@2024-04-01' = {
   parent: web
   name: 'scm'
   properties: {
@@ -97,7 +97,7 @@ resource scm 'Microsoft.Web/sites/basicPublishingCredentialsPolicies@2023-01-01'
 }
 
 // An example PHP Web App
-resource webAppPHP 'Microsoft.Web/sites@2023-01-01' = {
+resource webAppPHP 'Microsoft.Web/sites@2024-04-01' = {
   name: name
   location: location
   identity: {
