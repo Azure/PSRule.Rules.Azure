@@ -29,6 +29,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.42.0-B0021 (pre-release)
+
 What's changed since v1.41.4:
 
 - New rules:
@@ -40,7 +42,7 @@ What's changed since v1.41.4:
     - Updated `Azure.AppService.MinTLS` to include TLS 1.3 as a valid minimum version by @BernieWhite.
       [#3269](https://github.com/Azure/PSRule.Rules.Azure/issues/3269)
 - General improvements:
-  - Added a new quickstart guide for using Azure Pipelines with PSRule by @that-ar-guy.  
+  - Added a new quickstart guide for using Azure Pipelines with PSRule by @that-ar-guy.
     [#3220](https://github.com/Azure/PSRule.Rules.Azure/pull/3220)
   - Added additional exclusions to policies for `Azure.AppService.MinTLS` by @BernieWhite.
     [#1731](https://github.com/Azure/PSRule.Rules.Azure/issues/1731)
