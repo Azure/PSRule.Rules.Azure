@@ -1,0 +1,22 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+---
+# Synopsis: Suppress geo-replication in dev.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: SuppressionGroup
+metadata:
+  name: SuppressGeoReplicationInDev
+spec:
+  rule:
+    - Azure.ACR.GeoReplica
+    - Azure.Storage.UseReplication
+  if:
+    allOf:
+      - type: .
+        in:
+          - Microsoft.ContainerRegistry/registries
+          - Microsoft.Storage/storageAccounts
+      - field: tags.env
+        in:
+          - dev
