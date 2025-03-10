@@ -1,0 +1,24 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+# IMPORTANT:
+# This file demonstrates defining YAML-based custom baselines.
+# To correctly find resources set binding configuration within ps-rule.yaml.
+# See: https://azure.github.io/PSRule.Rules.Azure/customization/using-custom-rules/#set-binding-configuration
+
+---
+# Synopsis: This is a custom baseline that only includes GA rules in the Security and Reliability pillars.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Baseline
+metadata:
+  name: CombinePillars.GA
+spec:
+  rule:
+    tag:
+      release: GA
+      Azure.WAF/pillar:
+        - Security
+        - Reliability
+
+    exclude:
+      - Azure.ACR.GeoReplica

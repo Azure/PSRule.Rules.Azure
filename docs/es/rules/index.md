@@ -1,6 +1,6 @@
 ---
-generated: True
 title: Reference
+generated: True
 ---
 
 # Reference
@@ -68,9 +68,9 @@ AZR-000044 | [Azure.APIM.HTTPBackend](Azure.APIM.HTTPBackend.md) | Unencrypted c
 AZR-000045 | [Azure.APIM.EncryptValues](Azure.APIM.EncryptValues.md) | Encrypt all API Management named values with Key Vault secrets. | GA
 AZR-000046 | [Azure.APIM.ProductSubscription](Azure.APIM.ProductSubscription.md) | Configure products to require a subscription. | GA
 AZR-000047 | [Azure.APIM.ProductApproval](Azure.APIM.ProductApproval.md) | Configure products to require approval. | GA
-AZR-000048 | [Azure.APIM.SampleProducts](Azure.APIM.SampleProducts.md) | Remove starter and unlimited sample products. | GA
+AZR-000048 | [Azure.APIM.SampleProducts](Azure.APIM.SampleProducts.md) | API Management Services with default products configured may expose more APIs than intended. | GA
 AZR-000049 | [Azure.APIM.ProductDescriptors](Azure.APIM.ProductDescriptors.md) | API Management products should have a display name and description. | GA
-AZR-000050 | [Azure.APIM.ProductTerms](Azure.APIM.ProductTerms.md) | Set legal terms for each product registered in API Management. | GA
+AZR-000050 | [Azure.APIM.ProductTerms](Azure.APIM.ProductTerms.md) | Set legal terms for each product registered in API Management. | deprecated
 AZR-000051 | [Azure.APIM.CertificateExpiry](Azure.APIM.CertificateExpiry.md) | Renew certificates used for custom domain bindings. | GA
 AZR-000052 | [Azure.APIM.AvailabilityZone](Azure.APIM.AvailabilityZone.md) |  API Management instances should use availability zones in supported regions for high availability. | GA
 AZR-000053 | [Azure.APIM.ManagedIdentity](Azure.APIM.ManagedIdentity.md) | Configure managed identities to access Azure resources. | GA
@@ -143,14 +143,14 @@ AZR-000119 | [Azure.KeyVault.Logs](Azure.KeyVault.Logs.md) | Ensure audit diagno
 AZR-000120 | [Azure.KeyVault.Name](Azure.KeyVault.Name.md) | Key Vault names should meet naming requirements. | GA
 AZR-000121 | [Azure.KeyVault.SecretName](Azure.KeyVault.SecretName.md) | Key Vault Secret names should meet naming requirements. | GA
 AZR-000122 | [Azure.KeyVault.KeyName](Azure.KeyVault.KeyName.md) | Key Vault Key names should meet naming requirements. | GA
-AZR-000123 | [Azure.KeyVault.AutoRotationPolicy](Azure.KeyVault.AutoRotationPolicy.md) | Key Vault keys should have auto-rotation enabled. | GA
+AZR-000123 | [Azure.KeyVault.AutoRotationPolicy](Azure.KeyVault.AutoRotationPolicy.md) | Keys that become compromised may be used to spoof, decrypt, or gain access to sensitive data. | GA
 AZR-000124 | [Azure.KeyVault.SoftDelete](Azure.KeyVault.SoftDelete.md) | Enable Soft Delete on Key Vaults to protect vaults and vault items from accidental deletion. | GA
 AZR-000125 | [Azure.KeyVault.PurgeProtect](Azure.KeyVault.PurgeProtect.md) | Enable Purge Protection on Key Vaults to prevent early purge of vaults and vault items. | GA
 AZR-000126 | [Azure.LB.Probe](Azure.LB.Probe.md) | Use a specific probe for web protocols. | GA
 AZR-000127 | [Azure.LB.AvailabilityZone](Azure.LB.AvailabilityZone.md) | Load balancers deployed with Standard SKU should be zone-redundant for high availability. | GA
 AZR-000128 | [Azure.LB.StandardSKU](Azure.LB.StandardSKU.md) | Load balancers should be deployed with Standard SKU for production workloads. | GA
 AZR-000129 | [Azure.LB.Name](Azure.LB.Name.md) | Load Balancer names should meet naming requirements. | GA
-AZR-000130 | [Azure.LogicApp.LimitHTTPTrigger](Azure.LogicApp.LimitHTTPTrigger.md) | Limit HTTP request trigger access to trusted IP addresses. | GA
+AZR-000130 | [Azure.LogicApp.LimitHTTPTrigger](Azure.LogicApp.LimitHTTPTrigger.md) | Logic Apps using HTTP triggers without restrictions can be accessed from any network location including the Internet. | GA
 AZR-000131 | [Azure.MySQL.UseSSL](Azure.MySQL.UseSSL.md) | Enforce encrypted MySQL connections. | GA
 AZR-000132 | [Azure.MySQL.MinTLS](Azure.MySQL.MinTLS.md) | MySQL DB servers should reject TLS versions older than 1.2. | GA
 AZR-000133 | [Azure.MySQL.FirewallRuleCount](Azure.MySQL.FirewallRuleCount.md) | Determine if there is an excessive number of firewall rules. | GA
@@ -259,14 +259,14 @@ AZR-000235 | [Azure.Template.UseDescriptions](Azure.Template.UseDescriptions.md)
 AZR-000236 | [Azure.TrafficManager.Endpoints](Azure.TrafficManager.Endpoints.md) | Traffic Manager should use at lest two enabled endpoints. | GA
 AZR-000237 | [Azure.TrafficManager.Protocol](Azure.TrafficManager.Protocol.md) | Monitor Traffic Manager web-based endpoints with HTTPS. | GA
 AZR-000238 | [Azure.VM.UseManagedDisks](Azure.VM.UseManagedDisks.md) | Virtual machines (VMs) should use managed disks. | GA
-AZR-000239 | [Azure.VM.Standalone](Azure.VM.Standalone.md) | Use VM features to increase reliability and improve covered SLA for VM configurations. | GA
+AZR-000239 | [Azure.VM.Standalone](Azure.VM.Standalone.md) | Single instance VMs are a single point of failure, however reliability can be improved by using premium storage. | GA
 AZR-000240 | [Azure.VM.PromoSku](Azure.VM.PromoSku.md) | Virtual machines (VMs) should not use expired promotional SKU. | GA
 AZR-000241 | [Azure.VM.BasicSku](Azure.VM.BasicSku.md) | Virtual machines (VMs) should not use Basic sizes. | GA
 AZR-000242 | [Azure.VM.DiskCaching](Azure.VM.DiskCaching.md) | Check disk caching is configured correctly for the workload. | GA
 AZR-000243 | [Azure.VM.UseHybridUseBenefit](Azure.VM.UseHybridUseBenefit.md) | Use Azure Hybrid Benefit for applicable virtual machine (VM) workloads. | GA
 AZR-000244 | [Azure.VM.AcceleratedNetworking](Azure.VM.AcceleratedNetworking.md) | Use accelerated networking for supported operating systems and VM types. | GA
 AZR-000245 | [Azure.VM.PublicKey](Azure.VM.PublicKey.md) | Linux virtual machines should use public keys. | GA
-AZR-000246 | [Azure.VM.Agent](Azure.VM.Agent.md) | Ensure the VM agent is provisioned automatically. | GA
+AZR-000246 | [Azure.VM.Agent](Azure.VM.Agent.md) | Virtual Machines (VMs) without an agent provisioned are unable to use monitoring, management, and security extensions. | GA
 AZR-000247 | [Azure.VM.Updates](Azure.VM.Updates.md) | Ensure automatic updates are enabled at deployment. | GA
 AZR-000248 | [Azure.VM.Name](Azure.VM.Name.md) | Virtual Machine (VM) names should meet naming requirements. | GA
 AZR-000249 | [Azure.VM.ComputerName](Azure.VM.ComputerName.md) | Virtual Machine (VM) computer name should meet naming requirements. | GA
@@ -473,5 +473,7 @@ AZR-000449 | [Azure.VM.PublicIPAttached](Azure.VM.PublicIPAttached.md) | Avoid a
 AZR-000450 | [Azure.VMSS.PublicIPAttached](Azure.VMSS.PublicIPAttached.md) | Avoid attaching public IPs directly to virtual machine scale set instances. | GA
 AZR-000451 | [Azure.VM.ASDistributeTraffic](Azure.VM.ASDistributeTraffic.md) | Ensure high availability by distributing traffic among members in an availability set. | GA
 AZR-000452 | [Azure.VM.MultiTenantHosting](Azure.VM.MultiTenantHosting.md) | Deploy Windows 10 and 11 virtual machines in Azure using Multi-tenant Hosting Rights to leverage your existing Windows licenses. | GA
+AZR-000453 | [Azure.ImageBuilder.CustomizeHash](Azure.ImageBuilder.CustomizeHash.md) | External scripts that are not pinned may be modified to execute privileged actions by an unauthorized user. | GA
+AZR-000454 | [Azure.ImageBuilder.ValidateHash](Azure.ImageBuilder.ValidateHash.md) | External scripts that are not pinned may be modified to execute privileged actions by an unauthorized user. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

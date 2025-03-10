@@ -1,5 +1,6 @@
 ---
 author: BernieWhite
+type: Rule,Convention
 ---
 
 # API Management Policy
@@ -14,6 +15,7 @@ The custom rule `APIManagementPolicy.ValidateJwt` then checks that `validate-jwt
 
 ## Usage
 
+- Copy the `APIManagementPolicy.Rule.ps1` file to your default include path `.ps-rule/`.
 - Include the `APIManagementPolicy.Import` convention.
 - Store policy XML files in the `policies/` subdirectory.
 
