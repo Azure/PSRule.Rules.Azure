@@ -1,5 +1,6 @@
 ---
 author: BernieWhite
+type: Rule,Convention
 ---
 
 # Bicep Module Requires
@@ -18,6 +19,7 @@ For example:
 
 ## Usage
 
+- Copy the file `BicepModuleRequires.Rule.ps1` into your default include path `.ps-rule/`.
 - Include the `BicepModuleRequires.Import` convention.
 - Create modules in the `modules/` sub-directory.
 - Store your modules in major versioned sub-directories.

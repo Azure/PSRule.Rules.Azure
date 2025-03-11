@@ -25,9 +25,20 @@ This repository contains the following samples for PSRule for Azure:
 
 ## Community samples
 
-### Custom rules and conventions
+### Baselines
+
+The following sample baselines for Azure are available.
+
+<!-- samples:baselines -->
+
+### Rules and conventions
 
 The following sample rules and conventions for Azure are available.
-You can use these samples as a starting point for developing your own custom rules.
 
 <!-- samples:rules -->
+
+### Suppression groups
+
+The following sample suppression groups for Azure are available.
+
+<!-- samples:suppression -->

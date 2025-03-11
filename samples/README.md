@@ -5,9 +5,11 @@ If you have a question about these samples, please start a discussion on GitHub.
 
 These samples are broken into the following categories:
 
+- `baselines/` - Sample baselines that can be used to create a baseline for Azure resources.
 - `rules/` - Sample rules not shipped with PSRule for Azure.
   These samples do no align to Azure Well-Architected Framework (WAF),
   and should be considered as a starting point for custom rules.
+- `suppression/` - Sample suppression groups that can be used to suppress rules in PSRule for Azure.
 
 ## Contributing samples
 
