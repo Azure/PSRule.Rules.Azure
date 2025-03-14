@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Storage Accounts not using geo-replicated storage (GRS) or zone-redundant (ZRS) may be at risk.
-Rule 'Azure.Storage.UseReplication' -Ref 'AZR-000195' -Type 'Microsoft.Storage/storageAccounts' -If { (ShouldStorageReplicate) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
+Rule 'Azure.Storage.UseReplicationnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnnn' -Ref 'AZR-000195' -Type 'Microsoft.Storage/storageAccounts' -If { (ShouldStorageReplicate) } -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Reliability'; } {
     $Assert.In($TargetObject, 'sku.name', @(
             'Standard_GRS'
             'Standard_RAGRS'
