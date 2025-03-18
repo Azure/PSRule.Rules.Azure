@@ -1,23 +1,13 @@
 [
   {
     "aliases": null,
-    "resourceType": "discoveryServices",
+    "resourceType": "operations",
     "apiVersions": [
-      "2024-12-01-preview"
+      "2024-12-01-preview",
+      "2024-11-01-preview"
     ],
     "locations": [
-      "East US 2"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "discoveryServices/ownershipVoucherPublicKeys",
-    "apiVersions": [
-      "2024-12-01-preview"
-    ],
-    "locations": [
-      "East US 2"
+      "global"
     ],
     "zoneMappings": []
   }

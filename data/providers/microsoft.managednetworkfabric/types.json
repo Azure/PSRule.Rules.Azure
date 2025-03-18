@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "accesscontrollists",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -21,6 +22,7 @@
     "aliases": null,
     "resourceType": "internetgatewayrules",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -39,6 +41,7 @@
     "aliases": null,
     "resourceType": "InternetGateways",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -57,6 +60,7 @@
     "aliases": null,
     "resourceType": "IpCommunities",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -75,6 +79,7 @@
     "aliases": null,
     "resourceType": "IpExtendedCommunities",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -93,6 +98,7 @@
     "aliases": null,
     "resourceType": "ipprefixes",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -111,6 +117,7 @@
     "aliases": null,
     "resourceType": "L2IsolationDomains",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -129,6 +136,7 @@
     "aliases": null,
     "resourceType": "L3IsolationDomains",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -147,6 +155,7 @@
     "aliases": null,
     "resourceType": "L3IsolationDomains/externalNetworks",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -165,6 +174,7 @@
     "aliases": null,
     "resourceType": "L3IsolationDomains/internalNetworks",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -196,6 +206,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -214,6 +225,7 @@
     "aliases": null,
     "resourceType": "neighborgroups",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -232,6 +244,7 @@
     "aliases": null,
     "resourceType": "NetworkDevices",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -250,6 +263,7 @@
     "aliases": null,
     "resourceType": "NetworkDevices/NetworkInterfaces",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -268,6 +282,7 @@
     "aliases": null,
     "resourceType": "NetworkFabricControllers",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -286,6 +301,7 @@
     "aliases": null,
     "resourceType": "NetworkFabrics",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -304,6 +320,7 @@
     "aliases": null,
     "resourceType": "NetworkFabrics/NetworkToNetworkInterconnects",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -320,8 +337,26 @@
   },
   {
     "aliases": null,
+    "resourceType": "networkMonitors",
+    "apiVersions": [
+      "2024-06-15-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "East US",
+      "North Europe",
+      "South Central US",
+      "UAE North",
+      "UK South",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "networkpacketbrokers",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -340,6 +375,7 @@
     "aliases": null,
     "resourceType": "NetworkRacks",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -358,6 +394,7 @@
     "aliases": null,
     "resourceType": "networktaprules",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -376,6 +413,7 @@
     "aliases": null,
     "resourceType": "networktaps",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],
@@ -407,6 +445,7 @@
     "aliases": null,
     "resourceType": "RoutePolicies",
     "apiVersions": [
+      "2024-06-15-preview",
       "2024-02-15-preview",
       "2023-06-15"
     ],

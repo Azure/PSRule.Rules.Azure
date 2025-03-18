@@ -42,6 +42,7 @@
     "resourceType": "billingContainers",
     "apiVersions": [
       "2024-11-01",
+      "2024-10-01-preview",
       "2024-09-01-preview",
       "2024-07-01-preview"
     ],
@@ -89,6 +90,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2024-11-01",
+      "2024-10-01-preview",
       "2024-09-01-preview",
       "2024-07-01-preview",
       "2023-11-01-preview",
@@ -127,6 +129,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2024-11-01",
+      "2024-10-01-preview",
       "2024-09-01-preview",
       "2024-07-01-preview",
       "2023-11-01-preview",
@@ -146,6 +149,7 @@
     "resourceType": "operationStatuses",
     "apiVersions": [
       "2024-11-01",
+      "2024-10-01-preview",
       "2024-09-01-preview",
       "2024-07-01-preview",
       "2023-11-01-preview",

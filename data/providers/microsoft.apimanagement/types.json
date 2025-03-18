@@ -81,6 +81,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -154,6 +155,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -222,6 +224,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -285,6 +288,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -370,6 +374,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -401,7 +406,10 @@
       "2024-06-01-preview",
       "2024-05-01",
       "2023-09-01-preview",
-      "2023-05-01-preview"
+      "2023-05-01-preview",
+      "2023-03-01-preview",
+      "2022-09-01-preview",
+      "2022-08-01"
     ],
     "locations": [
       "Australia Central",
@@ -424,6 +432,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -478,6 +487,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -750,6 +760,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -887,6 +898,14 @@
       },
       {
         "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "New Zealand North",
         "zones": [
           "1",
           "2",
@@ -1049,6 +1068,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",

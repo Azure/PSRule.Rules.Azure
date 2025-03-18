@@ -371,6 +371,14 @@
         ]
       },
       {
+        "location": "Japan West",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "North Europe",
         "zones": [
           "1",

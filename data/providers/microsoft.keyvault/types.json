@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "checkMhsmNameAvailability",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -17,6 +19,8 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -42,6 +46,8 @@
     "aliases": null,
     "resourceType": "deletedManagedHSMs",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -112,6 +118,8 @@
     "aliases": null,
     "resourceType": "deletedVaults",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -179,6 +187,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -203,6 +213,8 @@
     "aliases": null,
     "resourceType": "locations/deletedManagedHSMs",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -273,6 +285,8 @@
     "aliases": null,
     "resourceType": "locations/deletedVaults",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -340,6 +354,8 @@
     "aliases": null,
     "resourceType": "locations/deleteVirtualNetworkOrSubnets",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -407,6 +423,8 @@
     "aliases": null,
     "resourceType": "locations/managedHsmOperationResults",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -477,6 +495,8 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -545,6 +565,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -656,6 +678,8 @@
     },
     "resourceType": "managedHSMs",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -755,6 +779,8 @@
     },
     "resourceType": "managedHSMs/keys",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -818,6 +844,8 @@
     "aliases": null,
     "resourceType": "managedHSMs/keys/versions",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -881,6 +909,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -960,6 +990,8 @@
     },
     "resourceType": "vaults",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -1028,6 +1060,8 @@
     "aliases": null,
     "resourceType": "vaults/accessPolicies",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -1096,6 +1130,8 @@
     "aliases": null,
     "resourceType": "vaults/eventGridFilters",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -1190,6 +1226,8 @@
     },
     "resourceType": "vaults/keys",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -1254,6 +1292,8 @@
     "aliases": null,
     "resourceType": "vaults/keys/versions",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",
@@ -1329,6 +1369,8 @@
     },
     "resourceType": "vaults/secrets",
     "apiVersions": [
+      "2024-12-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-08-01-PREVIEW",
       "2023-07-01",

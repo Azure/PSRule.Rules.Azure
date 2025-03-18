@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "loadTestMappings",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview"
     ],
     "locations": [
@@ -61,6 +63,7 @@
     "aliases": null,
     "resourceType": "loadTestProfileMappings",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview"
     ],
     "locations": [
@@ -118,6 +121,7 @@
     },
     "resourceType": "loadtests",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
     ],
@@ -146,8 +150,38 @@
   },
   {
     "aliases": null,
+    "resourceType": "loadtests/Limits",
+    "apiVersions": [
+      "2024-12-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Japan East",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "loadtests/outboundNetworkDependenciesEndpoints",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
     ],
@@ -178,6 +212,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
     ],
@@ -188,6 +223,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
     ],
@@ -218,6 +254,7 @@
     "aliases": null,
     "resourceType": "Locations/Quotas",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
     ],
@@ -248,6 +285,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
     ],
@@ -258,6 +296,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2024-12-01-preview",
       "2023-12-01-preview",
       "2022-12-01"
     ],

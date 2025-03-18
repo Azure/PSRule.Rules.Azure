@@ -30,8 +30,8 @@
     "aliases": null,
     "resourceType": "enterpriseMccCustomers",
     "apiVersions": [
-      "2023-05-01-preview",
-      "2023-04-01-preview"
+      "2024-11-30-preview",
+      "2023-05-01-preview"
     ],
     "locations": [
       "Korea Central",
@@ -44,8 +44,8 @@
     "aliases": null,
     "resourceType": "enterpriseMccCustomers/enterpriseMccCacheNodes",
     "apiVersions": [
-      "2023-05-01-preview",
-      "2023-04-01-preview"
+      "2024-11-30-preview",
+      "2023-05-01-preview"
     ],
     "locations": [
       "Korea Central",
@@ -58,9 +58,8 @@
     "aliases": null,
     "resourceType": "ispCustomers",
     "apiVersions": [
-      "2023-05-01-preview",
-      "2023-04-01-preview",
-      "2022-03-21-preview"
+      "2024-11-30-preview",
+      "2023-05-01-preview"
     ],
     "locations": [
       "Korea Central",
@@ -73,9 +72,8 @@
     "aliases": null,
     "resourceType": "ispCustomers/ispCacheNodes",
     "apiVersions": [
-      "2023-05-01-preview",
-      "2023-04-01-preview",
-      "2022-03-21-preview"
+      "2024-11-30-preview",
+      "2023-05-01-preview"
     ],
     "locations": [
       "Korea Central",
@@ -88,6 +86,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-11-30-preview",
       "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
@@ -99,6 +98,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2024-11-30-preview",
       "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"
@@ -114,6 +114,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2024-11-30-preview",
       "2023-05-01-preview",
       "2023-04-01-preview",
       "2022-03-21-preview"

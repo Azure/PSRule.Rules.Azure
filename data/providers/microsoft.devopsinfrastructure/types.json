@@ -1,8 +1,19 @@
 [
   {
     "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2025-01-21",
+      "2024-10-19"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "images",
     "apiVersions": [
+      "2025-01-21",
       "2024-10-19",
       "2024-04-04-preview"
     ],
@@ -13,6 +24,7 @@
     "aliases": null,
     "resourceType": "images/versions",
     "apiVersions": [
+      "2025-01-21",
       "2024-10-19",
       "2024-04-04-preview"
     ],
@@ -23,6 +35,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-01-21",
       "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview",
@@ -36,6 +49,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-01-21",
       "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview",
@@ -76,6 +90,7 @@
     "aliases": null,
     "resourceType": "Locations/Skus",
     "apiVersions": [
+      "2025-01-21",
       "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview"
@@ -98,6 +113,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-01-21",
       "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview",
@@ -175,6 +191,7 @@
     },
     "resourceType": "pools",
     "apiVersions": [
+      "2025-01-21",
       "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview",
@@ -215,6 +232,7 @@
     "aliases": null,
     "resourceType": "pools/Resources",
     "apiVersions": [
+      "2025-01-21",
       "2024-10-19",
       "2024-04-04-preview",
       "2024-03-26-preview"

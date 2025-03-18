@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -27,6 +28,7 @@
     "aliases": null,
     "resourceType": "checkScopedNameAvailability",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -62,6 +64,7 @@
     },
     "resourceType": "devcenters",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -115,6 +118,7 @@
     },
     "resourceType": "devcenters/attachednetworks",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -189,6 +193,7 @@
     },
     "resourceType": "devcenters/catalogs",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -271,6 +276,7 @@
     "aliases": null,
     "resourceType": "devcenters/catalogs/environmentDefinitions",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -311,6 +317,7 @@
     "aliases": null,
     "resourceType": "devcenters/catalogs/tasks",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -409,6 +416,7 @@
     },
     "resourceType": "devcenters/devboxdefinitions",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -459,6 +467,7 @@
     },
     "resourceType": "devcenters/environmentTypes",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -509,6 +518,7 @@
     },
     "resourceType": "devcenters/galleries",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -556,6 +566,7 @@
     "aliases": null,
     "resourceType": "devcenters/galleries/images",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -603,6 +614,7 @@
     "aliases": null,
     "resourceType": "devcenters/galleries/images/versions",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -650,6 +662,7 @@
     "aliases": null,
     "resourceType": "devcenters/images",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -697,6 +710,7 @@
     "aliases": null,
     "resourceType": "devcenters/projectpolicies",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview"
     ],
     "locations": [
@@ -728,6 +742,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -753,6 +768,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -800,6 +816,7 @@
     "aliases": null,
     "resourceType": "Locations/usages",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -832,6 +849,7 @@
     },
     "resourceType": "networkconnections",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -879,6 +897,7 @@
     "aliases": null,
     "resourceType": "networkconnections/healthchecks",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -926,6 +945,7 @@
     "aliases": null,
     "resourceType": "networkconnections/outboundNetworkDependenciesEndpoints",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -969,6 +989,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1004,6 +1025,7 @@
     },
     "resourceType": "projects",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1051,6 +1073,7 @@
     "aliases": null,
     "resourceType": "projects/allowedEnvironmentTypes",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1097,6 +1120,7 @@
     "aliases": null,
     "resourceType": "projects/attachednetworks",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1171,6 +1195,7 @@
     },
     "resourceType": "projects/catalogs",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1208,6 +1233,7 @@
     "aliases": null,
     "resourceType": "projects/catalogs/environmentDefinitions",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1245,6 +1271,7 @@
     "aliases": null,
     "resourceType": "projects/catalogs/imagedefinitions",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1279,6 +1306,7 @@
     "aliases": null,
     "resourceType": "projects/catalogs/imagedefinitions/builds",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview"
@@ -1312,6 +1340,7 @@
     "aliases": null,
     "resourceType": "projects/devboxdefinitions",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1368,6 +1397,7 @@
     },
     "resourceType": "projects/environmentTypes",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1415,6 +1445,7 @@
     "aliases": null,
     "resourceType": "projects/images",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1449,6 +1480,7 @@
     "aliases": null,
     "resourceType": "projects/images/versions",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1483,6 +1515,7 @@
     "aliases": null,
     "resourceType": "projects/listskus",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1537,6 +1570,7 @@
     },
     "resourceType": "projects/pools",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",
@@ -1593,6 +1627,7 @@
     },
     "resourceType": "projects/pools/schedules",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01-preview",

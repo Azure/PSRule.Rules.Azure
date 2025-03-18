@@ -4,18 +4,14 @@
     "resourceType": "configurationGroupValues",
     "apiVersions": [
       "2024-04-15",
-      "2023-09-01"
+      "2023-09-01",
+      "2023-04-01-preview"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -30,7 +26,6 @@
     ],
     "locations": [
       "East US",
-      "Southeast Asia",
       "West Europe"
     ],
     "zoneMappings": []
@@ -54,18 +49,13 @@
       "2020-01-01-preview"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "Central US EUAP",
       "East US",
       "East US 2 EUAP",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Central US",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -76,6 +66,7 @@
     "apiVersions": [
       "2024-04-15",
       "2023-09-01",
+      "2023-04-01-preview",
       "2023-01-01",
       "2022-09-01-preview",
       "2022-01-01-preview",
@@ -84,15 +75,10 @@
       "2020-01-01-preview"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -103,19 +89,15 @@
     "apiVersions": [
       "2024-04-15",
       "2023-09-01",
+      "2023-04-01-preview",
       "2023-01-01",
       "2022-09-01-preview"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -150,20 +132,76 @@
   },
   {
     "aliases": null,
+    "resourceType": "proxyPublishers",
+    "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "proxyPublishers/configurationGroupSchemas",
+    "apiVersions": [
+      "2023-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "proxyPublishers/networkFunctionDefinitionGroups",
+    "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "proxyPublishers/networkFunctionDefinitionGroups/networkFunctionDefinitionVersions",
+    "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "proxyPublishers/networkServiceDesignGroups",
+    "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "proxyPublishers/networkServiceDesignGroups/networkServiceDesignVersions",
+    "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "publishers",
     "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview",
       "2023-01-01"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -172,18 +210,15 @@
     "aliases": null,
     "resourceType": "publishers/artifactStores",
     "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview",
       "2023-01-01"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -192,18 +227,15 @@
     "aliases": null,
     "resourceType": "publishers/artifactStores/artifactManifests",
     "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview",
       "2023-01-01"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -213,18 +245,14 @@
     "resourceType": "publishers/artifactstores/artifacts",
     "apiVersions": [
       "2024-04-15",
-      "2023-09-01"
+      "2023-09-01",
+      "2023-04-01-preview"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -234,18 +262,30 @@
     "resourceType": "publishers/artifactstores/artifactversions",
     "apiVersions": [
       "2024-04-15",
-      "2023-09-01"
+      "2023-09-01",
+      "2023-04-01-preview"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "publishers/configurationGroupSchemas",
+    "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "UK South",
+      "West Europe",
       "West US 3"
     ],
     "zoneMappings": []
@@ -254,18 +294,15 @@
     "aliases": null,
     "resourceType": "publishers/networkFunctionDefinitionGroups",
     "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview",
       "2023-01-01"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -274,18 +311,47 @@
     "aliases": null,
     "resourceType": "publishers/networkFunctionDefinitionGroups/networkFunctionDefinitionVersions",
     "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview",
       "2023-01-01"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "publishers/networkServiceDesignGroups",
+    "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "UK South",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "publishers/networkServiceDesignGroups/networkServiceDesignVersions",
+    "apiVersions": [
+      "2023-09-01",
+      "2023-04-01-preview"
+    ],
+    "locations": [
+      "East US",
+      "South Central US",
+      "UK South",
+      "West Europe",
       "West US 3"
     ],
     "zoneMappings": []
@@ -295,18 +361,14 @@
     "resourceType": "siteNetworkServices",
     "apiVersions": [
       "2024-04-15",
-      "2023-09-01"
+      "2023-09-01",
+      "2023-04-01-preview"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []
@@ -316,18 +378,14 @@
     "resourceType": "sites",
     "apiVersions": [
       "2024-04-15",
-      "2023-09-01"
+      "2023-09-01",
+      "2023-04-01-preview"
     ],
     "locations": [
-      "Australia East",
-      "Canada Central",
       "East US",
-      "North Europe",
       "South Central US",
-      "Southeast Asia",
       "UK South",
       "West Europe",
-      "West US",
       "West US 3"
     ],
     "zoneMappings": []

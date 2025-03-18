@@ -255,6 +255,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-09-15-preview",
       "2021-08-31-preview",
       "2021-08-15",
       "2021-03-15-preview",

@@ -1,0 +1,47 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "dependencyof",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationsStatuses",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "serviceGroupMember",
+    "apiVersions": [
+      "2023-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  }
+]

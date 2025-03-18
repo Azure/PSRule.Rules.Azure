@@ -612,6 +612,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -1664,6 +1665,9 @@
     "aliases": null,
     "resourceType": "query",
     "apiVersions": [
+      "2025-02-01-preview",
+      "2025-02-01-beta",
+      "2025-02-01-alpha",
       "2022-04-01-preview",
       "2022-04-01-beta",
       "2022-04-01-alpha"

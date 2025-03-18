@@ -110,6 +110,34 @@
   },
   {
     "aliases": null,
+    "resourceType": "resourceInsights",
+    "apiVersions": [
+      "2024-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Korea Central",
+      "North Central US",
+      "South Central US",
+      "Southeast Asia",
+      "West Central US",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "SiteAwareResourceTypes",
     "apiVersions": [
       "2023-08-01-preview"
@@ -121,6 +149,9 @@
     "aliases": null,
     "resourceType": "Sites",
     "apiVersions": [
+      "2025-03-01-preview",
+      "2025-02-01-preview",
+      "2024-12-01-preview",
       "2024-02-01-preview",
       "2023-07-01-preview",
       "2023-06-01-preview"

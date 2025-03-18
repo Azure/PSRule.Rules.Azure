@@ -57,6 +57,10 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-02-28-preview",
+      "2025-02-01",
+      "2025-01-01",
+      "2024-11-01-preview",
       "2024-10-01",
       "2024-09-30-preview",
       "2024-07-30-preview",
@@ -496,6 +500,10 @@
     "aliases": null,
     "resourceType": "locations/backupPreValidateProtection",
     "apiVersions": [
+      "2025-02-28-preview",
+      "2025-02-01",
+      "2025-01-01",
+      "2024-11-01-preview",
       "2024-10-01",
       "2024-09-30-preview",
       "2024-07-30-preview",
@@ -579,6 +587,10 @@
     "aliases": null,
     "resourceType": "locations/backupStatus",
     "apiVersions": [
+      "2025-02-28-preview",
+      "2025-02-01",
+      "2025-01-01",
+      "2024-11-01-preview",
       "2024-10-01",
       "2024-09-30-preview",
       "2024-07-30-preview",
@@ -663,6 +675,10 @@
     "aliases": null,
     "resourceType": "locations/backupValidateFeatures",
     "apiVersions": [
+      "2025-02-28-preview",
+      "2025-02-01",
+      "2025-01-01",
+      "2024-11-01-preview",
       "2024-10-01",
       "2024-09-30-preview",
       "2024-07-30-preview",
@@ -746,6 +762,10 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2025-02-28-preview",
+      "2025-02-01",
+      "2025-01-01",
+      "2024-11-01-preview",
       "2024-10-01",
       "2024-09-30-preview",
       "2024-07-30-preview",
@@ -866,6 +886,7 @@
     "aliases": null,
     "resourceType": "locations/deletedVaults",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-10-01",
       "2024-09-30-preview"
     ],
@@ -919,6 +940,10 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-02-28-preview",
+      "2025-02-01",
+      "2025-01-01",
+      "2024-11-01-preview",
       "2024-10-01",
       "2024-09-30-preview",
       "2024-07-30-preview",
@@ -990,6 +1015,10 @@
     "aliases": null,
     "resourceType": "replicationEligibilityResults",
     "apiVersions": [
+      "2025-02-28-preview",
+      "2025-02-01",
+      "2025-01-01",
+      "2024-11-01-preview",
       "2024-10-01",
       "2024-09-30-preview",
       "2024-07-30-preview",
@@ -1156,6 +1185,10 @@
     },
     "resourceType": "vaults",
     "apiVersions": [
+      "2025-02-28-preview",
+      "2025-02-01",
+      "2025-01-01",
+      "2024-11-01-preview",
       "2024-10-01",
       "2024-09-30-preview",
       "2024-07-30-preview",

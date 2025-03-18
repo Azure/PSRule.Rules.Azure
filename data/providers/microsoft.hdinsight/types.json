@@ -619,6 +619,14 @@
         ]
       },
       {
+        "location": "Japan West",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Korea Central",
         "zones": [
           "1",
@@ -1026,6 +1034,14 @@
       },
       {
         "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan West",
         "zones": [
           "1",
           "2",

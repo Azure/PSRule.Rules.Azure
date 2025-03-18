@@ -178,6 +178,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
       "2023-07-01",
@@ -193,6 +194,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
       "2023-07-01",
@@ -208,6 +210,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
       "2023-07-01",
@@ -220,7 +223,6 @@
       "Australia East",
       "East US",
       "East US 2",
-      "East US 2 EUAP",
       "North Europe",
       "South Central US",
       "Southeast Asia",
@@ -236,6 +238,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
       "2023-07-01",
@@ -251,6 +254,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
       "2023-07-01",

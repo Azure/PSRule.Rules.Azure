@@ -1,17 +1,6 @@
 [
   {
     "aliases": null,
-    "resourceType": "instances",
-    "apiVersions": [
-      "2020-06-10-preview"
-    ],
-    "locations": [
-      "East US 2"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2020-06-10-privatepreview",

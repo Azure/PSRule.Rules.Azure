@@ -244,6 +244,14 @@
         ]
       },
       {
+        "location": "Japan West",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Korea Central",
         "zones": [
           "1",

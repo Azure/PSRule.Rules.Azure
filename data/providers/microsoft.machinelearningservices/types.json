@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -56,6 +57,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -104,8 +106,107 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/availableQuota",
+    "apiVersions": [
+      "2025-01-01-preview",
+      "2024-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/availableQuota/default",
+    "apiVersions": [
+      "2025-01-01-preview",
+      "2024-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/computeOperationsStatus",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -241,6 +342,7 @@
     "aliases": null,
     "resourceType": "locations/mfeOperationResults",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -309,6 +411,7 @@
     "aliases": null,
     "resourceType": "locations/mfeOperationsStatus",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -375,8 +478,58 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/quotaAndUsage",
+    "apiVersions": [
+      "2025-01-01-preview",
+      "2024-10-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations/quotas",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -461,6 +614,7 @@
     "aliases": null,
     "resourceType": "locations/registryOperationsStatus",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -523,6 +677,7 @@
     "aliases": null,
     "resourceType": "locations/updatequotas",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -607,6 +762,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -693,6 +849,7 @@
     "aliases": null,
     "resourceType": "locations/vmsizes",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -779,6 +936,7 @@
     "aliases": null,
     "resourceType": "locations/workspaceOperationsStatus",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -868,6 +1026,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -988,10 +1147,16 @@
       "Microsoft.MachineLearningServices/registries/sku.name": "sku.name",
       "Microsoft.MachineLearningServices/registries/sku.size": "sku.size",
       "Microsoft.MachineLearningServices/registries/sku.tier": "sku.tier",
+      "Microsoft.MachineLearningServices/registries/syndicatedRegistries": "properties.syndicatedRegistries",
+      "Microsoft.MachineLearningServices/registries/syndicatedRegistries[*]": "properties.syndicatedRegistries[*]",
+      "Microsoft.MachineLearningServices/registries/syndicatedRegistries[*].syndicatedRegistry": "properties.syndicatedRegistries[*].syndicatedRegistry",
+      "Microsoft.MachineLearningServices/registries/syndicatedRegistries[*].syndicatedRegistry.registryId": "properties.syndicatedRegistries[*].syndicatedRegistry.registryId",
+      "Microsoft.MachineLearningServices/registries/syndicatedRegistries[*].syndicatedRegistryGuid": "properties.syndicatedRegistries[*].syndicatedRegistryGuid",
       "Microsoft.MachineLearningServices/registries/tags": "properties.tags"
     },
     "resourceType": "registries",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1054,6 +1219,7 @@
     "aliases": null,
     "resourceType": "registries/codes",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1115,6 +1281,7 @@
     "aliases": null,
     "resourceType": "registries/codes/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1176,6 +1343,7 @@
     "aliases": null,
     "resourceType": "registries/components",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1237,6 +1405,7 @@
     "aliases": null,
     "resourceType": "registries/components/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1298,6 +1467,7 @@
     "aliases": null,
     "resourceType": "registries/data",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1357,6 +1527,7 @@
     "aliases": null,
     "resourceType": "registries/data/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1416,6 +1587,7 @@
     "aliases": null,
     "resourceType": "registries/datareferences",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1470,6 +1642,7 @@
     "aliases": null,
     "resourceType": "registries/datareferences/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1524,6 +1697,7 @@
     "aliases": null,
     "resourceType": "registries/environments",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1585,6 +1759,7 @@
     "aliases": null,
     "resourceType": "registries/environments/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1646,6 +1821,7 @@
     "aliases": null,
     "resourceType": "registries/models",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1707,6 +1883,7 @@
     "aliases": null,
     "resourceType": "registries/models/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -1766,6 +1943,7 @@
   },
   {
     "aliases": {
+      "Microsoft.MachineLearningServices/workspaces/agentsEndpointUri": "properties.agentsEndpointUri",
       "Microsoft.MachineLearningServices/workspaces/allowPublicAccessWhenBehindVnet": "properties.allowPublicAccessWhenBehindVnet",
       "Microsoft.MachineLearningServices/workspaces/allowRecoverSoftDeletedWorkspace": "properties.allowRecoverSoftDeletedWorkspace",
       "Microsoft.MachineLearningServices/workspaces/allowRoleAssignmentOnRG": "properties.allowRoleAssignmentOnRG",
@@ -1816,6 +1994,7 @@
       "Microsoft.MachineLearningServices/workspaces/managedNetwork": "properties.managedNetwork",
       "Microsoft.MachineLearningServices/workspaces/managedNetwork.changeableIsolationModes": "properties.managedNetwork.changeableIsolationModes",
       "Microsoft.MachineLearningServices/workspaces/managedNetwork.changeableIsolationModes[*]": "properties.managedNetwork.changeableIsolationModes[*]",
+      "Microsoft.MachineLearningServices/workspaces/managedNetwork.firewallSku": "properties.managedNetwork.firewallSku",
       "Microsoft.MachineLearningServices/workspaces/managedNetwork.isolationMode": "properties.managedNetwork.isolationMode",
       "Microsoft.MachineLearningServices/workspaces/managedNetwork.networkId": "properties.managedNetwork.networkId",
       "Microsoft.MachineLearningServices/workspaces/managedNetwork.outboundRules": "properties.managedNetwork.outboundRules",
@@ -1823,6 +2002,11 @@
       "Microsoft.MachineLearningServices/workspaces/managedNetwork.status.sparkReady": "properties.managedNetwork.status.sparkReady",
       "Microsoft.MachineLearningServices/workspaces/managedNetwork.status.status": "properties.managedNetwork.status.status",
       "Microsoft.MachineLearningServices/workspaces/mlFlowTrackingUri": "properties.mlFlowTrackingUri",
+      "Microsoft.MachineLearningServices/workspaces/networkAcls": "properties.networkAcls",
+      "Microsoft.MachineLearningServices/workspaces/networkAcls.defaultAction": "properties.networkAcls.defaultAction",
+      "Microsoft.MachineLearningServices/workspaces/networkAcls.ipRules": "properties.networkAcls.ipRules",
+      "Microsoft.MachineLearningServices/workspaces/networkAcls.ipRules[*]": "properties.networkAcls.ipRules[*]",
+      "Microsoft.MachineLearningServices/workspaces/networkAcls.ipRules[*].value": "properties.networkAcls.ipRules[*].value",
       "Microsoft.MachineLearningServices/workspaces/notebookInfo": "properties.notebookInfo",
       "Microsoft.MachineLearningServices/workspaces/notebookInfo.fqdn": "properties.notebookInfo.fqdn",
       "Microsoft.MachineLearningServices/workspaces/notebookInfo.isPrivateLinkEnabled": "properties.notebookInfo.isPrivateLinkEnabled",
@@ -1866,6 +2050,7 @@
       "Microsoft.MachineLearningServices/workspaces/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
       "Microsoft.MachineLearningServices/workspaces/privateLinkCount": "properties.privateLinkCount",
       "Microsoft.MachineLearningServices/workspaces/provisioningState": "properties.provisioningState",
+      "Microsoft.MachineLearningServices/workspaces/provisionNetworkNow": "properties.provisionNetworkNow",
       "Microsoft.MachineLearningServices/workspaces/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.MachineLearningServices/workspaces/scheduledPurgeDate": "properties.scheduledPurgeDate",
       "Microsoft.MachineLearningServices/workspaces/serverlessComputeSettings": "properties.serverlessComputeSettings",
@@ -1906,6 +2091,7 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -2012,6 +2198,7 @@
     },
     "resourceType": "workspaces/batchEndpoints",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -2146,6 +2333,7 @@
     },
     "resourceType": "workspaces/batchEndpoints/deployments",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -2213,6 +2401,7 @@
     "aliases": null,
     "resourceType": "workspaces/capabilityhosts",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview"
     ],
     "locations": [
@@ -2268,6 +2457,7 @@
     },
     "resourceType": "workspaces/codes",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -2347,6 +2537,7 @@
     },
     "resourceType": "workspaces/codes/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -2421,6 +2612,7 @@
     },
     "resourceType": "workspaces/components",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -2497,6 +2689,7 @@
     },
     "resourceType": "workspaces/components/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -2944,6 +3137,7 @@
     },
     "resourceType": "workspaces/computes",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -3038,6 +3232,7 @@
     },
     "resourceType": "workspaces/data",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -3135,6 +3330,7 @@
     },
     "resourceType": "workspaces/data/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -3995,6 +4191,7 @@
     },
     "resourceType": "workspaces/datastores",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -4076,6 +4273,12 @@
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].name": "properties.deployments[*].name",
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].provisioningState": "properties.deployments[*].properties.provisioningState",
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].raiPolicyName": "properties.deployments[*].properties.raiPolicyName",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].sku": "properties.deployments[*].properties.sku",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].sku.capacity": "properties.deployments[*].properties.sku.capacity",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].sku.family": "properties.deployments[*].properties.sku.family",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].sku.name": "properties.deployments[*].properties.sku.name",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].sku.size": "properties.deployments[*].properties.sku.size",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].sku.tier": "properties.deployments[*].properties.sku.tier",
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].systemData": "properties.deployments[*].systemData",
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].systemData.createdAt": "properties.deployments[*].systemData.createdAt",
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments[*].systemData.createdBy": "properties.deployments[*].systemData.createdBy",
@@ -4117,6 +4320,7 @@
     },
     "resourceType": "workspaces/endpoints",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -4179,6 +4383,7 @@
     },
     "resourceType": "workspaces/environments",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -4297,6 +4502,7 @@
     },
     "resourceType": "workspaces/environments/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -4364,6 +4570,7 @@
     "aliases": null,
     "resourceType": "workspaces/eventGridFilters",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -4456,6 +4663,7 @@
     },
     "resourceType": "workspaces/featuresets",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -4514,6 +4722,7 @@
     "aliases": null,
     "resourceType": "workspaces/featuresets/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -4579,6 +4788,7 @@
     },
     "resourceType": "workspaces/featurestoreEntities",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -4637,6 +4847,7 @@
     "aliases": null,
     "resourceType": "workspaces/featurestoreEntities/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -4695,6 +4906,7 @@
     "aliases": null,
     "resourceType": "workspaces/inferencePools",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
       "2024-01-01-preview",
@@ -4746,6 +4958,7 @@
     "aliases": null,
     "resourceType": "workspaces/inferencePools/endpoints",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
       "2024-01-01-preview",
@@ -4797,6 +5010,7 @@
     "aliases": null,
     "resourceType": "workspaces/inferencePools/groups",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
       "2024-01-01-preview",
@@ -4854,6 +5068,8 @@
       "Microsoft.MachineLearningServices/workspaces/jobs/AutoML.queueSettings.priority": "properties.queueSettings.priority",
       "Microsoft.MachineLearningServices/workspaces/jobs/AutoML.resources": "properties.resources",
       "Microsoft.MachineLearningServices/workspaces/jobs/AutoML.resources.dockerArgs": "properties.resources.dockerArgs",
+      "Microsoft.MachineLearningServices/workspaces/jobs/AutoML.resources.dockerArgsList": "properties.resources.dockerArgsList",
+      "Microsoft.MachineLearningServices/workspaces/jobs/AutoML.resources.dockerArgsList[*]": "properties.resources.dockerArgsList[*]",
       "Microsoft.MachineLearningServices/workspaces/jobs/AutoML.resources.instanceCount": "properties.resources.instanceCount",
       "Microsoft.MachineLearningServices/workspaces/jobs/AutoML.resources.instanceType": "properties.resources.instanceType",
       "Microsoft.MachineLearningServices/workspaces/jobs/AutoML.resources.locations": "properties.resources.locations",
@@ -5300,6 +5516,8 @@
       "Microsoft.MachineLearningServices/workspaces/jobs/Command.queueSettings.priority": "properties.queueSettings.priority",
       "Microsoft.MachineLearningServices/workspaces/jobs/Command.resources": "properties.resources",
       "Microsoft.MachineLearningServices/workspaces/jobs/Command.resources.dockerArgs": "properties.resources.dockerArgs",
+      "Microsoft.MachineLearningServices/workspaces/jobs/Command.resources.dockerArgsList": "properties.resources.dockerArgsList",
+      "Microsoft.MachineLearningServices/workspaces/jobs/Command.resources.dockerArgsList[*]": "properties.resources.dockerArgsList[*]",
       "Microsoft.MachineLearningServices/workspaces/jobs/Command.resources.instanceCount": "properties.resources.instanceCount",
       "Microsoft.MachineLearningServices/workspaces/jobs/Command.resources.instanceType": "properties.resources.instanceType",
       "Microsoft.MachineLearningServices/workspaces/jobs/Command.resources.locations": "properties.resources.locations",
@@ -5545,6 +5763,8 @@
       "Microsoft.MachineLearningServices/workspaces/jobs/Sweep.trial.outputDataBindings": "properties.trial.outputDataBindings",
       "Microsoft.MachineLearningServices/workspaces/jobs/Sweep.trial.resources": "properties.trial.resources",
       "Microsoft.MachineLearningServices/workspaces/jobs/Sweep.trial.resources.dockerArgs": "properties.trial.resources.dockerArgs",
+      "Microsoft.MachineLearningServices/workspaces/jobs/Sweep.trial.resources.dockerArgsList": "properties.trial.resources.dockerArgsList",
+      "Microsoft.MachineLearningServices/workspaces/jobs/Sweep.trial.resources.dockerArgsList[*]": "properties.trial.resources.dockerArgsList[*]",
       "Microsoft.MachineLearningServices/workspaces/jobs/Sweep.trial.resources.instanceCount": "properties.trial.resources.instanceCount",
       "Microsoft.MachineLearningServices/workspaces/jobs/Sweep.trial.resources.instanceType": "properties.trial.resources.instanceType",
       "Microsoft.MachineLearningServices/workspaces/jobs/Sweep.trial.resources.locations": "properties.trial.resources.locations",
@@ -5556,6 +5776,7 @@
     },
     "resourceType": "workspaces/jobs",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -5744,6 +5965,7 @@
     },
     "resourceType": "workspaces/marketplaceSubscriptions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -5804,6 +6026,7 @@
     },
     "resourceType": "workspaces/models",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -5890,6 +6113,7 @@
     },
     "resourceType": "workspaces/models/versions",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -5977,6 +6201,7 @@
     },
     "resourceType": "workspaces/onlineEndpoints",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -6134,6 +6359,7 @@
     },
     "resourceType": "workspaces/onlineEndpoints/deployments",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -6202,6 +6428,7 @@
     "aliases": null,
     "resourceType": "workspaces/onlineEndpoints/deployments/skus",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -6953,6 +7180,7 @@
     },
     "resourceType": "workspaces/schedules",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -7040,6 +7268,7 @@
     },
     "resourceType": "workspaces/serverlessEndpoints",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
       "2024-07-01-preview",
@@ -7204,12 +7433,12 @@
       "Microsoft.MachineLearningServices/workspaces/connections/deployments/model.version": "properties.model.version",
       "Microsoft.MachineLearningServices/workspaces/connections/deployments/provisioningState": "properties.provisioningState",
       "Microsoft.MachineLearningServices/workspaces/connections/deployments/raiPolicyName": "properties.raiPolicyName",
-      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku": "sku",
-      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.capacity": "sku.capacity",
-      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.family": "sku.family",
-      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.name": "sku.name",
-      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.size": "sku.size",
-      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.tier": "sku.tier",
+      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku": "properties.sku",
+      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.capacity": "properties.sku.capacity",
+      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.family": "properties.sku.family",
+      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.name": "properties.sku.name",
+      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.size": "properties.sku.size",
+      "Microsoft.MachineLearningServices/workspaces/connections/deployments/sku.tier": "properties.sku.tier",
       "Microsoft.MachineLearningServices/workspaces/connections/deployments/type": "properties.type",
       "Microsoft.MachineLearningServices/workspaces/connections/deployments/versionUpgradeOption": "properties.versionUpgradeOption"
     },
@@ -7263,12 +7492,12 @@
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/model.version": "properties.model.version",
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/provisioningState": "properties.provisioningState",
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/raiPolicyName": "properties.raiPolicyName",
-      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku": "sku",
-      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.capacity": "sku.capacity",
-      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.family": "sku.family",
-      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.name": "sku.name",
-      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.size": "sku.size",
-      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.tier": "sku.tier",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku": "properties.sku",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.capacity": "properties.sku.capacity",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.family": "properties.sku.family",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.name": "properties.sku.name",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.size": "properties.sku.size",
+      "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/sku.tier": "properties.sku.tier",
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/type": "properties.type",
       "Microsoft.MachineLearningServices/workspaces/endpoints/deployments/versionUpgradeOption": "properties.versionUpgradeOption"
     },

@@ -23,6 +23,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-01-31-preview",
       "2022-12-31-preview"
     ],
     "locations": [],

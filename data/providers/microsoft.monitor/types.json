@@ -132,6 +132,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-10-03-preview",
+      "2024-10-01-preview",
       "2024-04-03-preview",
       "2024-04-01-preview",
       "2023-10-01-preview",
@@ -147,6 +149,8 @@
     "aliases": null,
     "resourceType": "locations/locationOperationStatuses",
     "apiVersions": [
+      "2024-10-03-preview",
+      "2024-10-01-preview",
       "2024-04-03-preview",
       "2024-04-01-preview",
       "2023-04-03",
@@ -206,6 +210,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-10-03-preview",
+      "2024-10-01-preview",
       "2024-04-03-preview",
       "2024-04-01-preview",
       "2023-04-03",
@@ -279,6 +285,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-03-01-preview",
+      "2024-10-03-preview",
       "2024-10-01-preview",
       "2024-04-03-preview",
       "2024-04-01-preview",
@@ -338,11 +346,13 @@
     "aliases": null,
     "resourceType": "pipelineGroups",
     "apiVersions": [
-      "2024-10-01-preview",
-      "2023-10-01-preview"
+      "2025-03-01-preview",
+      "2024-10-01-preview"
     ],
     "locations": [
+      "Canada Central",
       "East US 2",
+      "Italy North",
       "West Europe",
       "West US 2"
     ],

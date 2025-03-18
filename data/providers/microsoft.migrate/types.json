@@ -32,6 +32,7 @@
     "resourceType": "assessmentProjects",
     "apiVersions": [
       "2024-03-03-preview",
+      "2024-01-01-preview",
       "2023-09-09-preview",
       "2023-07-07-preview",
       "2023-05-01-preview",
@@ -84,6 +85,7 @@
     "resourceType": "assessmentProjects/assessments",
     "apiVersions": [
       "2024-03-03-preview",
+      "2024-01-01-preview",
       "2023-09-09-preview",
       "2023-07-07-preview",
       "2023-05-01-preview",

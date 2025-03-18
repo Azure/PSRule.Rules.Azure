@@ -56,50 +56,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "privateLinkForAzureAD",
-    "apiVersions": [
-      "2020-03-01-preview",
-      "2020-03-01"
-    ],
-    "locations": [
-      "Australia Central",
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Canada Central",
-      "Canada East",
-      "Central India",
-      "Central US",
-      "East Asia",
-      "East US",
-      "East US 2",
-      "France Central",
-      "Germany West Central",
-      "Japan East",
-      "Japan West",
-      "Korea Central",
-      "Korea South",
-      "North Central US",
-      "North Europe",
-      "Norway East",
-      "South Africa North",
-      "South Central US",
-      "South India",
-      "Southeast Asia",
-      "Switzerland North",
-      "UAE North",
-      "UK South",
-      "UK West",
-      "West Central US",
-      "West Europe",
-      "West India",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "tenants",
     "apiVersions": [
       "2017-04-01",
@@ -117,19 +73,5 @@
       "West US"
     ],
     "zoneMappings": []
-  },
-  {
-    "aliases": {
-      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
-      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
-      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkConnectionTags": "properties.privateLinkConnectionTags",
-      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkConnectionTags.tags": "properties.privateLinkConnectionTags.tags",
-      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
-      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
-      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
-      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
-      "microsoft.aadiam/privateLinkForAzureAd/privateEndpointConnections/provisioningState": "properties.provisioningState"
-    },
-    "resourceType": "privatelinkforazuread/privateendpointconnections"
   }
 ]

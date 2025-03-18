@@ -1,15 +1,6 @@
 [
   {
     "aliases": null,
-    "resourceType": "listAvailableOffers",
-    "apiVersions": [
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
       "2022-07-31",
@@ -68,71 +59,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "offerTypes",
-    "apiVersions": [
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "offerTypes/publishers",
-    "apiVersions": [
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "offerTypes/publishers/offers",
-    "apiVersions": [
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "offerTypes/publishers/offers/plans",
-    "apiVersions": [
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "offerTypes/publishers/offers/plans/agreements",
-    "apiVersions": [
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "offerTypes/publishers/offers/plans/configs",
-    "apiVersions": [
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "offerTypes/publishers/offers/plans/configs/importImage",
-    "apiVersions": [
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-03-01-preview",
       "2023-01-01-preview",
       "2023-01-01",
@@ -143,25 +72,6 @@
       "2021-12-01",
       "2021-10-01",
       "2021-06-01",
-      "2018-08-01-beta",
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "privategalleryitems",
-    "apiVersions": [
-      "2018-03-01-beta"
-    ],
-    "locations": [],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "privateStoreClient",
-    "apiVersions": [
       "2018-08-01-beta",
       "2018-03-01-beta"
     ],
@@ -526,6 +436,7 @@
     "aliases": null,
     "resourceType": "products",
     "apiVersions": [
+      "2023-05-01-preview",
       "2023-01-01-preview",
       "2022-12-01-preview",
       "2021-10-01",

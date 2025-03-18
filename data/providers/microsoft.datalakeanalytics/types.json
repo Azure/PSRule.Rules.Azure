@@ -54,8 +54,6 @@
       "2015-10-01-preview"
     ],
     "locations": [
-      "Central US",
-      "East US 2",
       "North Europe",
       "West Europe"
     ],
@@ -72,8 +70,6 @@
       "2015-10-01-preview"
     ],
     "locations": [
-      "Central US",
-      "East US 2",
       "North Europe",
       "West Europe"
     ],
@@ -91,8 +87,6 @@
       "2015-10-01-preview"
     ],
     "locations": [
-      "Central US",
-      "East US 2",
       "North Europe",
       "West Europe"
     ],
@@ -107,8 +101,6 @@
       "2015-10-01-preview"
     ],
     "locations": [
-      "Central US",
-      "East US 2",
       "North Europe",
       "West Europe"
     ],
@@ -123,8 +115,34 @@
       "2015-10-01-preview"
     ],
     "locations": [
-      "Central US",
-      "East US 2",
+      "North Europe",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/transferAnalyticsUnits",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [
+      "North Europe",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/transferEcoAnalyticsUnits",
+    "apiVersions": [
+      "2019-11-01-preview",
+      "2016-11-01",
+      "2015-10-01-preview"
+    ],
+    "locations": [
       "North Europe",
       "West Europe"
     ],

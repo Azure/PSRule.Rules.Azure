@@ -63,6 +63,8 @@
     },
     "resourceType": "bareMetalMachines",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -111,6 +113,8 @@
     },
     "resourceType": "cloudServicesNetworks",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -151,6 +155,8 @@
     },
     "resourceType": "clusterManagers",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -287,6 +293,8 @@
     },
     "resourceType": "clusters",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -331,6 +339,8 @@
     },
     "resourceType": "clusters/bareMetalMachineKeySets",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -372,6 +382,8 @@
     },
     "resourceType": "clusters/bmcKeySets",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -402,6 +414,8 @@
     },
     "resourceType": "clusters/metricsConfigurations",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -607,6 +621,8 @@
     },
     "resourceType": "kubernetesClusters",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -670,6 +686,8 @@
     },
     "resourceType": "kubernetesClusters/agentPools",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -691,6 +709,8 @@
     "aliases": null,
     "resourceType": "kubernetesClusters/features",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -724,6 +744,8 @@
     },
     "resourceType": "l2Networks",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -764,6 +786,8 @@
     },
     "resourceType": "l3Networks",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -785,6 +809,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01",
@@ -804,6 +829,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -825,6 +852,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01",
@@ -853,6 +881,8 @@
     },
     "resourceType": "racks",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -874,6 +904,8 @@
     "aliases": null,
     "resourceType": "rackSkus",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -895,6 +927,7 @@
     "aliases": null,
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
+      "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-07-01",
@@ -965,6 +998,8 @@
     },
     "resourceType": "storageAppliances",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -1003,6 +1038,8 @@
     },
     "resourceType": "trunkedNetworks",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -1081,6 +1118,8 @@
     },
     "resourceType": "virtualMachines",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -1112,6 +1151,8 @@
     },
     "resourceType": "virtualMachines/consoles",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",
@@ -1141,6 +1182,8 @@
     },
     "resourceType": "volumes",
     "apiVersions": [
+      "2025-02-01",
+      "2024-10-01-preview",
       "2024-07-01",
       "2024-06-01-preview",
       "2024-05-01-preview",

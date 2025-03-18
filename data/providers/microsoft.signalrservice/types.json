@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -29,6 +30,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -91,6 +93,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -153,6 +156,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -215,6 +219,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -277,6 +282,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -431,6 +437,7 @@
     },
     "resourceType": "SignalR",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -498,6 +505,7 @@
     },
     "resourceType": "SignalR/customDomains",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -558,6 +566,7 @@
     "aliases": null,
     "resourceType": "SignalR/eventGridFilters",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -630,6 +639,7 @@
     },
     "resourceType": "SignalR/replicas",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -794,6 +804,7 @@
     },
     "resourceType": "WebPubSub",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -857,6 +868,7 @@
     },
     "resourceType": "WebPubSub/customDomains",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
@@ -925,6 +937,7 @@
     },
     "resourceType": "WebPubSub/replicas",
     "apiVersions": [
+      "2024-10-01-preview",
       "2024-08-01-preview",
       "2024-04-01-preview",
       "2024-03-01",
