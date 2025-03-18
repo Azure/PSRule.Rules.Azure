@@ -15,14 +15,22 @@ When expanding Bicep source files you may get an error including a _BCPnnn_ code
 
     Exception calling "GetResources" with "3" argument(s): "Bicep (0.14.46) compilation of '<file>' failed with: Error BCP057: The name "storageAccountName" does not exist in the current context.
 
-This error is raised when Bicep fails to compile a source file.
+This error is raised when the Bicep CLI fails to compile a source file.
 To resolve this issue:
 
 - You may need to update your Bicep source file before PSRule can expand it.
   Use guidance from the Bicep error message to help resolve the issue.
+- If the error message is not clear, the Bicep documentation may help you understand the error.
+  A list of Bicep diagnostic codes is available at [Bicep core diagnostics][15].
 - Check that you are using a version of Bicep that supports the Bicep features you are using.
-  It may not always be clear which version of Bicep CLI PSRule for Azure is using if you have multiple versions installed.
-  Using the Bicep CLI via `az bicep` is not the default, and you may need to [set additional options to use it][7].
+  It may not always be clear which version of Bicep CLI that PSRule for Azure is using if you have multiple versions installed.
+  For example:
+  - GitHub Actions and Azure DevOps may use a different version of Bicep CLI than your local machine.
+  - The version of the Bicep CLI installed by the Azure CLI may be different from the standalone Bicep CLI.
+
+!!! Note
+    Using the Bicep CLI managed by the Azure CLI (`az bicep`) is not the default,
+    and you may need to [set additional options to use it][7].
 
 !!! Tip
     From PSRule for Azure v1.25.0 you can configure the minimum version of Bicep CLI required.
@@ -31,6 +39,7 @@ To resolve this issue:
 
   [7]: setup/setup-bicep.md#using-azure-cli
   [8]: setup/setup-bicep.md#configuring-minimum-version
+  [15]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-core-diagnostics
 
 ## Bicep version
 

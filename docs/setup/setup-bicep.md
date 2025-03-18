@@ -119,6 +119,32 @@ Example:
 
   [3]: https://learn.microsoft.com/azure/azure-resource-manager/bicep/install#azure-cli
 
+### Updating Bicep in Azure CLI
+
+If you have configured PSRule for Azure to use the Azure CLI, you may need to update the Bicep CLI version.
+To update the Bicep CLI version installed with the Azure CLI,
+use the following command locally or in your CI/CD pipeline before running PSRule:
+
+```bash
+az bicep install --version v<version>
+```
+
+For example, to install version `0.33.93` of the Bicep CLI, use the following command:
+
+```bash
+az bicep install --version v0.33.93
+```
+
+Alternatively, you can use the `az bicep upgrade` command to update the Bicep CLI to the latest version.
+
+```bash
+az bicep upgrade
+```
+
+!!! Tip
+    Pinning to a specific version with `az bicep install` is the recommended approach.
+    This help to ensure that version of Bicep used across your environments is the same.
+
 ### Additional arguments
 
 For configuration, additional arguments can be passed to the Bicep CLI.
@@ -198,7 +224,7 @@ configuration:
   AZURE_BICEP_CHECK_TOOL: true
 
   # Optionally, configure the minimum version of the Bicep CLI.
-  AZURE_BICEP_MINIMUM_VERSION: '0.16.2'
+  AZURE_BICEP_MINIMUM_VERSION: '0.33.93'
 ```
 
 ### Configuring minimum version
@@ -224,7 +250,7 @@ configuration:
   AZURE_BICEP_CHECK_TOOL: true
 
   # Configure the minimum version of the Bicep CLI.
-  AZURE_BICEP_MINIMUM_VERSION: '0.16.2'
+  AZURE_BICEP_MINIMUM_VERSION: '0.33.93'
 ```
 
 !!! Important
