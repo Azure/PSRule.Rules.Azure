@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "carbonEmissionReports",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [],
@@ -12,6 +13,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [],
@@ -21,6 +23,7 @@
     "aliases": null,
     "resourceType": "queryCarbonEmissionDataAvailableDateRange",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-04-01-preview"
     ],
     "locations": [],

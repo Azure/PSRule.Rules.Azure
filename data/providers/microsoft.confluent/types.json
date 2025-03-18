@@ -4,6 +4,7 @@
     "resourceType": "agreements",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -29,6 +30,7 @@
     "resourceType": "checkNameAvailability",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -54,6 +56,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -79,6 +82,7 @@
     "resourceType": "locations/OperationStatuses",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -134,6 +138,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -159,6 +164,7 @@
     "resourceType": "organizations",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -212,6 +218,7 @@
     "resourceType": "organizations/access",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -254,6 +261,7 @@
     "resourceType": "organizations/access/deleteRoleBinding",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -296,6 +304,7 @@
     "resourceType": "organizations/apiKeys",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -337,6 +346,7 @@
     "resourceType": "organizations/environments",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -378,6 +388,7 @@
     "resourceType": "organizations/environments/clusters",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -419,6 +430,7 @@
     "resourceType": "organizations/environments/clusters/connectors",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview"
     ],
     "locations": [
@@ -457,6 +469,7 @@
     "resourceType": "organizations/environments/clusters/createAPIKey",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -536,6 +549,7 @@
     "resourceType": "organizations/environments/schemaRegistryClusters",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -577,6 +591,7 @@
     "resourceType": "organizations/listRegions",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",
@@ -618,6 +633,7 @@
     "resourceType": "validations",
     "apiVersions": [
       "2024-07-01-preview",
+      "2024-07-01",
       "2024-03-20-preview",
       "2024-02-13",
       "2024-02-05-preview",

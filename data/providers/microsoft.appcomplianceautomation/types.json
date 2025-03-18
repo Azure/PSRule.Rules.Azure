@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "getCollectionCount",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview"
     ],
@@ -23,6 +25,7 @@
     "aliases": null,
     "resourceType": "getOverviewStatus",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview"
     ],
@@ -33,6 +36,7 @@
     "aliases": null,
     "resourceType": "listInUseStorageAccounts",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview"
     ],
@@ -43,6 +47,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
@@ -55,6 +60,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
@@ -69,6 +75,7 @@
     "aliases": null,
     "resourceType": "onboard",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview"
     ],
@@ -79,6 +86,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
@@ -92,19 +100,23 @@
     "aliases": null,
     "resourceType": "reports",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
       "2022-05-10-privatepreview",
       "2022-05-10-beta"
     ],
-    "locations": [],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": []
   },
   {
     "aliases": null,
     "resourceType": "reports/evidences",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview"
     ],
@@ -115,6 +127,7 @@
     "aliases": null,
     "resourceType": "reports/scopingConfigurations",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview"
     ],
@@ -125,6 +138,7 @@
     "aliases": null,
     "resourceType": "reports/snapshots",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview",
       "2022-11-16-preview",
@@ -136,8 +150,18 @@
   },
   {
     "aliases": null,
+    "resourceType": "reports/snapshots/controls",
+    "apiVersions": [
+      "2024-12-15-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "reports/webhooks",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview"
     ],
@@ -148,6 +172,7 @@
     "aliases": null,
     "resourceType": "triggerEvaluation",
     "apiVersions": [
+      "2024-12-15-preview",
       "2024-06-27",
       "2023-02-15-preview"
     ],

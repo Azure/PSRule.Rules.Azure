@@ -57,6 +57,7 @@
     },
     "resourceType": "extensions",
     "apiVersions": [
+      "2024-11-01",
       "2023-05-01",
       "2022-11-01",
       "2022-07-01",
@@ -97,6 +98,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -116,6 +118,7 @@
     "aliases": null,
     "resourceType": "extensionTypes",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-05-01-preview",
       "2022-01-15-preview"
     ],
@@ -153,6 +156,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -281,6 +285,7 @@
     },
     "resourceType": "fluxConfigurations",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-05-01",
       "2022-11-01",
@@ -324,6 +329,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -343,6 +349,7 @@
     "aliases": null,
     "resourceType": "locations/extensionTypes",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-05-01-preview",
       "2022-01-15-preview"
     ],
@@ -380,6 +387,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -399,6 +407,7 @@
     "aliases": null,
     "resourceType": "locations/extensionTypes/versions",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-05-01-preview",
       "2022-01-15-preview"
     ],
@@ -436,6 +445,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -455,6 +465,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-11-01-preview",
+      "2024-11-01",
       "2024-04-01-preview",
       "2023-05-01-preview",
       "2023-05-01",
@@ -502,6 +514,7 @@
     },
     "resourceType": "privateLinkScopes",
     "apiVersions": [
+      "2024-11-01-preview",
       "2022-04-02-preview"
     ],
     "locations": [
@@ -538,6 +551,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -557,6 +571,7 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-11-01-preview",
       "2022-04-02-preview"
     ],
     "locations": [
@@ -593,6 +608,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -620,6 +636,7 @@
     },
     "resourceType": "privateLinkScopes/privateEndpointConnections",
     "apiVersions": [
+      "2024-11-01-preview",
       "2022-04-02-preview"
     ],
     "locations": [
@@ -656,6 +673,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",
@@ -740,6 +758,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "Switzerland West",

@@ -735,6 +735,7 @@
     "aliases": null,
     "resourceType": "locations/environments/managedClusterVersions",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -806,6 +807,7 @@
     "aliases": null,
     "resourceType": "locations/managedClusterOperationResults",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -877,6 +879,7 @@
     "aliases": null,
     "resourceType": "locations/managedClusterOperations",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -948,6 +951,7 @@
     "aliases": null,
     "resourceType": "locations/managedClusterVersions",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -1019,6 +1023,7 @@
     "aliases": null,
     "resourceType": "locations/managedUnsupportedVMSizes",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -1401,6 +1406,7 @@
     },
     "resourceType": "managedclusters",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -1501,6 +1507,7 @@
     },
     "resourceType": "managedclusters/applications",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -1644,6 +1651,7 @@
     },
     "resourceType": "managedclusters/applications/services",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -1716,6 +1724,7 @@
     },
     "resourceType": "managedclusters/applicationTypes",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -1789,6 +1798,7 @@
     },
     "resourceType": "managedclusters/applicationTypes/versions",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -1953,6 +1963,7 @@
     },
     "resourceType": "managedclusters/nodetypes",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",
@@ -2024,6 +2035,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-11-01-preview",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01",

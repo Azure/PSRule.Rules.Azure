@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "billingAccounts",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
@@ -29,6 +30,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/agreements",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2020-11-01-privatepreview",
       "2020-05-01",
@@ -51,6 +53,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/alerts",
     "apiVersions": [
+      "2024-08-01-preview",
       "2022-10-01-privatepreview"
     ],
     "locations": [],
@@ -99,6 +102,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingPermissions",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
@@ -136,6 +140,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles/alerts",
     "apiVersions": [
+      "2024-08-01-preview",
       "2022-10-01-privatepreview"
     ],
     "locations": [],
@@ -798,6 +803,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingRoleAssignments",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
@@ -811,6 +817,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingRoleDefinitions",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
@@ -1426,6 +1433,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/licenseReservations",
+    "apiVersions": [
+      "2024-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/lineOfCredit",
     "apiVersions": [
       "2019-10-01-preview",
@@ -1477,6 +1493,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/operationResults",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2021-10-01",

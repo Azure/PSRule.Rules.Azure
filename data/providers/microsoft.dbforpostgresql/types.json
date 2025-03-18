@@ -94,6 +94,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -271,6 +272,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -408,6 +410,14 @@
       },
       {
         "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "New Zealand North",
         "zones": [
           "1",
           "2",
@@ -670,6 +680,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -807,6 +818,14 @@
       },
       {
         "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "New Zealand North",
         "zones": [
           "1",
           "2",
@@ -1002,6 +1021,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1149,6 +1169,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1220,6 +1241,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1289,6 +1311,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1356,6 +1379,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1410,6 +1434,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1484,6 +1509,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1535,6 +1561,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2205,6 +2232,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -2276,6 +2304,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",

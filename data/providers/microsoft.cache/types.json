@@ -33,6 +33,7 @@
     "resourceType": "locations",
     "apiVersions": [
       "2024-11-01",
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01-preview",
@@ -137,6 +138,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -163,6 +165,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -253,6 +256,7 @@
     "aliases": null,
     "resourceType": "locations/operationsStatus",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -279,6 +283,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -299,6 +304,7 @@
     "resourceType": "operations",
     "apiVersions": [
       "2024-11-01",
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-04-01-preview",
@@ -1074,6 +1080,7 @@
     },
     "resourceType": "redisEnterprise",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -1100,6 +1107,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -1180,6 +1188,14 @@
       },
       {
         "location": "Germany West Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Italy North",
         "zones": [
           "1",
           "2",
@@ -1289,6 +1305,7 @@
     },
     "resourceType": "redisEnterprise/databases",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -1315,6 +1332,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -1334,6 +1352,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -1360,6 +1379,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -1379,6 +1399,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/operationresults",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -1405,6 +1426,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -1424,6 +1446,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -1450,6 +1473,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -1477,6 +1501,7 @@
     },
     "resourceType": "RedisEnterprise/privateEndpointConnections",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -1503,6 +1528,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -1522,6 +1548,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateEndpointConnections/operationresults",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -1548,6 +1575,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -1567,6 +1595,7 @@
     "aliases": null,
     "resourceType": "RedisEnterprise/privateLinkResources",
     "apiVersions": [
+      "2024-10-01",
       "2024-09-01-preview",
       "2024-06-01-preview",
       "2024-03-01-preview",
@@ -1593,6 +1622,7 @@
       "East US",
       "East US 2",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",

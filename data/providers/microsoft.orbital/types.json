@@ -193,9 +193,11 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-02-11-preview",
       "2024-01-31-preview"
     ],
     "locations": [
+      "Canada Central",
       "East US",
       "North Central US",
       "UK South",
@@ -207,6 +209,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-02-11-preview",
       "2024-01-31-preview",
       "2022-11-01",
       "2022-03-01",

@@ -3,9 +3,11 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2023-11-22-preview"
+      "2025-02-01-preview"
     ],
-    "locations": [],
+    "locations": [
+      "global"
+    ],
     "zoneMappings": []
   }
 ]

@@ -36,32 +36,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/previewActions",
-    "apiVersions": [
-      "2023-01-01"
-    ],
-    "locations": [
-      "Australia East",
-      "Australia Southeast",
-      "Brazil South",
-      "Canada Central",
-      "Central India",
-      "Central US",
-      "France Central",
-      "Germany West Central",
-      "North Central US",
-      "North Europe",
-      "South Central US",
-      "Southeast Asia",
-      "Switzerland North",
-      "West Europe",
-      "West US",
-      "West US 2"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2023-01-01"

@@ -14,6 +14,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-04-01",
       "2023-09-01-preview",
       "2022-10-01",
       "2021-06-01-preview",
@@ -23,7 +24,7 @@
       "2018-09-01-preview"
     ],
     "locations": [
-      "East US"
+      "Global"
     ],
     "zoneMappings": []
   },
@@ -31,10 +32,11 @@
     "aliases": null,
     "resourceType": "queries",
     "apiVersions": [
+      "2024-04-01",
       "2018-09-01-preview"
     ],
     "locations": [
-      "global"
+      "Global"
     ],
     "zoneMappings": []
   },
@@ -47,7 +49,7 @@
       "2018-09-01-preview"
     ],
     "locations": [
-      "East US"
+      "Global"
     ],
     "zoneMappings": []
   },
@@ -60,7 +62,7 @@
       "2018-09-01-preview"
     ],
     "locations": [
-      "East US"
+      "Global"
     ],
     "zoneMappings": []
   },
@@ -68,6 +70,7 @@
     "aliases": null,
     "resourceType": "resources",
     "apiVersions": [
+      "2024-04-01",
       "2023-09-01-preview",
       "2022-10-01",
       "2021-06-01-preview",
@@ -77,7 +80,7 @@
       "2018-09-01-preview"
     ],
     "locations": [
-      "East US"
+      "Global"
     ],
     "zoneMappings": []
   },
@@ -91,7 +94,7 @@
       "2018-09-01-preview"
     ],
     "locations": [
-      "East US"
+      "Global"
     ],
     "zoneMappings": []
   },
@@ -103,7 +106,7 @@
       "2018-09-01-preview"
     ],
     "locations": [
-      "East US"
+      "Global"
     ],
     "zoneMappings": []
   }

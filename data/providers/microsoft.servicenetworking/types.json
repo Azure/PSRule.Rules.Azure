@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-01-01",
       "2024-05-01-preview",
       "2023-11-01",
       "2023-05-01-preview",
@@ -15,6 +16,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2025-01-01",
       "2024-05-01-preview",
       "2023-11-01",
       "2023-05-01-preview",
@@ -27,6 +29,7 @@
     "aliases": null,
     "resourceType": "locations/operations",
     "apiVersions": [
+      "2025-01-01",
       "2024-05-01-preview",
       "2023-11-01",
       "2023-05-01-preview",
@@ -39,6 +42,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-01-01",
       "2024-05-01-preview",
       "2023-11-01",
       "2023-05-01-preview",
@@ -72,6 +76,7 @@
     "aliases": null,
     "resourceType": "trafficControllers",
     "apiVersions": [
+      "2025-01-01",
       "2024-05-01-preview",
       "2023-11-01",
       "2023-05-01-preview",
@@ -105,6 +110,7 @@
     "aliases": null,
     "resourceType": "trafficControllers/associations",
     "apiVersions": [
+      "2025-01-01",
       "2024-05-01-preview",
       "2023-11-01",
       "2023-05-01-preview",
@@ -138,6 +144,7 @@
     "aliases": null,
     "resourceType": "trafficControllers/frontends",
     "apiVersions": [
+      "2025-01-01",
       "2024-05-01-preview",
       "2023-11-01",
       "2023-05-01-preview",

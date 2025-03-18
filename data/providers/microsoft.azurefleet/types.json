@@ -99,12 +99,15 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -114,6 +117,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -224,7 +228,31 @@
         ]
       },
       {
+        "location": "Japan West",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "New Zealand North",
         "zones": [
           "1",
           "2",
@@ -281,6 +309,14 @@
       },
       {
         "location": "Southeast Asia",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Spain Central",
         "zones": [
           "1",
           "2",
@@ -377,12 +413,15 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -392,6 +431,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",
@@ -427,12 +467,15 @@
       "East US",
       "East US 2",
       "France Central",
+      "France South",
       "Germany West Central",
       "Israel Central",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -442,6 +485,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
       "UAE North",

@@ -198,6 +198,7 @@
     },
     "resourceType": "jobs",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",
@@ -238,6 +239,7 @@
     "aliases": null,
     "resourceType": "jobs/eventGridFilters",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",
@@ -269,6 +271,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",
@@ -293,6 +296,7 @@
     "aliases": null,
     "resourceType": "locations/availableSkus",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",
@@ -333,6 +337,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",
@@ -373,6 +378,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",
@@ -413,6 +419,7 @@
     "aliases": null,
     "resourceType": "locations/regionConfiguration",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",
@@ -453,6 +460,7 @@
     "aliases": null,
     "resourceType": "locations/validateAddress",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",
@@ -493,6 +501,7 @@
     "aliases": null,
     "resourceType": "locations/validateInputs",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",
@@ -533,6 +542,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-02-01",
       "2024-03-01-preview",
       "2024-02-01-preview",
       "2023-12-01",

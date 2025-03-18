@@ -46,6 +46,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2024-08-01-preview",
       "2019-10-01-preview"
     ],
     "locations": [

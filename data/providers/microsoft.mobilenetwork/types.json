@@ -37,12 +37,8 @@
       "2022-04-01-preview"
     ],
     "locations": [
-      "Central US EUAP",
       "East US",
       "East US 2 EUAP",
-      "North Europe",
-      "South Central US",
-      "West Central US",
       "West Europe"
     ],
     "zoneMappings": []

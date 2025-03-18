@@ -1,8 +1,36 @@
 [
   {
     "aliases": null,
+    "resourceType": "getUploadToken",
+    "apiVersions": [
+      "2025-01-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "impactCategories",
+    "apiVersions": [
+      "2025-01-01-preview",
+      "2024-05-01-preview",
+      "2023-12-01-preview",
+      "2023-02-01-preview",
+      "2022-11-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-01-01-preview",
+      "2024-05-01-preview",
       "2023-12-01-preview",
       "2023-07-01-preview",
       "2023-02-01-preview",
@@ -17,6 +45,8 @@
     "aliases": null,
     "resourceType": "workloadImpacts",
     "apiVersions": [
+      "2025-01-01-preview",
+      "2024-05-01-preview",
       "2023-12-01-preview",
       "2023-02-01-preview",
       "2022-11-01-preview"
@@ -30,6 +60,7 @@
     "aliases": null,
     "resourceType": "workloadImpacts/insights",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-05-01-preview",
       "2023-12-01-preview"
     ],

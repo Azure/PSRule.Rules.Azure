@@ -253,12 +253,14 @@
       "Microsoft.Search/searchServices/authOptions": "properties.authOptions",
       "Microsoft.Search/searchServices/authOptions.aadOrApiKey": "properties.authOptions.aadOrApiKey",
       "Microsoft.Search/searchServices/authOptions.aadOrApiKey.aadAuthFailureMode": "properties.authOptions.aadOrApiKey.aadAuthFailureMode",
+      "Microsoft.Search/searchServices/computeType": "properties.computeType",
       "Microsoft.Search/searchServices/disabledDataExfiltrationOptions": "properties.disabledDataExfiltrationOptions",
       "Microsoft.Search/searchServices/disabledDataExfiltrationOptions[*]": "properties.disabledDataExfiltrationOptions[*]",
       "Microsoft.Search/searchServices/disableLocalAuth": "properties.disableLocalAuth",
       "Microsoft.Search/searchServices/encryptionWithCmk": "properties.encryptionWithCmk",
       "Microsoft.Search/searchServices/encryptionWithCmk.encryptionComplianceStatus": "properties.encryptionWithCmk.encryptionComplianceStatus",
       "Microsoft.Search/searchServices/encryptionWithCmk.enforcement": "properties.encryptionWithCmk.enforcement",
+      "Microsoft.Search/searchServices/endpoint": "properties.endpoint",
       "Microsoft.Search/searchServices/eTag": "properties.eTag",
       "Microsoft.Search/searchServices/hostingMode": "properties.hostingMode",
       "Microsoft.Search/searchServices/networkRuleSet": "properties.networkRuleSet",
@@ -293,6 +295,7 @@
       "Microsoft.Search/searchServices/publicNetworkAccess": "properties.publicNetworkAccess",
       "Microsoft.Search/searchServices/replicaCount": "properties.replicaCount",
       "Microsoft.Search/searchServices/semanticSearch": "properties.semanticSearch",
+      "Microsoft.Search/searchServices/serviceUpgradeDate": "properties.serviceUpgradeDate",
       "Microsoft.Search/searchServices/sharedPrivateLinkResources": "properties.sharedPrivateLinkResources",
       "Microsoft.Search/searchServices/sharedPrivateLinkResources.groupId": "properties.groupId",
       "Microsoft.Search/searchServices/sharedPrivateLinkResources.privateLinkResourceId": "properties.privateLinkResourceId",
@@ -312,7 +315,8 @@
       "Microsoft.Search/searchServices/sku.externalDocs": "sku.externalDocs",
       "Microsoft.Search/searchServices/sku.name": "sku.name",
       "Microsoft.Search/searchServices/status": "properties.status",
-      "Microsoft.Search/searchServices/statusDetails": "properties.statusDetails"
+      "Microsoft.Search/searchServices/statusDetails": "properties.statusDetails",
+      "Microsoft.Search/searchServices/upgradeAvailable": "properties.upgradeAvailable"
     },
     "resourceType": "searchServices",
     "apiVersions": [
@@ -375,6 +379,14 @@
       "West US 3"
     ],
     "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.Search/searchServices/networkSecurityPerimeterConfigurations/networkSecurityPerimeter.id": "properties.networkSecurityPerimeter.id",
+      "Microsoft.Search/searchServices/networkSecurityPerimeterConfigurations/profile.name": "properties.profile.name",
+      "Microsoft.Search/searchServices/networkSecurityPerimeterConfigurations/resourceAssociation.accessMode": "properties.resourceAssociation.accessMode"
+    },
+    "resourceType": "searchservices/networksecurityperimeterconfigurations"
   },
   {
     "aliases": {

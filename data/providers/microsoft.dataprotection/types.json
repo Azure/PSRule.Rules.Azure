@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "backupInstances",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -101,6 +102,7 @@
     },
     "resourceType": "BackupVaults",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -178,6 +180,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -212,6 +215,7 @@
     "aliases": null,
     "resourceType": "locations/checkFeatureSupport",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -289,6 +293,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -366,6 +371,7 @@
     "aliases": null,
     "resourceType": "locations/crossRegionRestore",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -425,6 +431,7 @@
     "aliases": null,
     "resourceType": "locations/fetchCrossRegionRestoreJob",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -484,6 +491,7 @@
     "aliases": null,
     "resourceType": "locations/fetchCrossRegionRestoreJobs",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -543,6 +551,7 @@
     "aliases": null,
     "resourceType": "locations/fetchSecondaryRecoveryPoints",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -602,6 +611,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -679,6 +689,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -756,6 +767,7 @@
     "aliases": null,
     "resourceType": "locations/validateCrossRegionRestore",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -815,6 +827,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",
@@ -849,6 +862,7 @@
     "aliases": null,
     "resourceType": "ResourceGuards",
     "apiVersions": [
+      "2025-01-01",
       "2024-04-01",
       "2024-03-01",
       "2024-02-01-preview",

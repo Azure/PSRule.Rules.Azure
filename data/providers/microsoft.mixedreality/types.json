@@ -45,6 +45,19 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2019-10-01"
+    ],
+    "locations": [
+      "East US",
+      "East US 2",
+      "UK South"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2023-07-01-preview",
@@ -82,40 +95,6 @@
       "East US",
       "East US 2",
       "Japan East",
-      "North Europe",
-      "South Central US",
-      "Southeast Asia",
-      "UK South",
-      "West Europe",
-      "West US 2"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": {
-      "Microsoft.MixedReality/spatialAnchorsAccounts/accountDomain": "properties.accountDomain",
-      "Microsoft.MixedReality/spatialAnchorsAccounts/accountId": "properties.accountId",
-      "Microsoft.MixedReality/spatialAnchorsAccounts/sku": "sku",
-      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.capacity": "sku.capacity",
-      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.family": "sku.family",
-      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.name": "sku.name",
-      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.size": "sku.size",
-      "Microsoft.MixedReality/spatialAnchorsAccounts/sku.tier": "sku.tier",
-      "Microsoft.MixedReality/spatialAnchorsAccounts/storageAccountName": "properties.storageAccountName"
-    },
-    "resourceType": "spatialAnchorsAccounts",
-    "apiVersions": [
-      "2021-03-01-preview",
-      "2021-01-01",
-      "2020-05-01",
-      "2019-12-02-preview",
-      "2019-02-28-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "East US",
-      "East US 2",
-      "Korea Central",
       "North Europe",
       "South Central US",
       "Southeast Asia",

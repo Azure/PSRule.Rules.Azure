@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "accounts",
     "apiVersions": [
+      "2025-03-01",
+      "2025-01-01",
       "2024-09-23-preview",
       "2024-06-01-preview",
       "2024-04-01-preview",
@@ -130,6 +132,8 @@
     "aliases": null,
     "resourceType": "checknameavailability",
     "apiVersions": [
+      "2025-03-01",
+      "2025-01-01",
       "2024-09-23-preview",
       "2024-06-01-preview",
       "2024-04-01-preview",
@@ -153,6 +157,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-03-01",
+      "2025-01-01",
       "2024-09-23-preview",
       "2024-06-01-preview",
       "2024-04-01-preview",
@@ -215,6 +221,8 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2025-03-01",
+      "2025-01-01",
       "2024-09-23-preview",
       "2024-06-01-preview",
       "2024-04-01-preview",
@@ -310,6 +318,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-03-01",
+      "2025-01-01",
       "2024-09-23-preview",
       "2024-06-01-preview",
       "2024-04-01-preview",

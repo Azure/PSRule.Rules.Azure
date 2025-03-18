@@ -8,8 +8,11 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "Central India",
       "East US",
+      "France Central",
+      "Sweden Central",
       "UK South",
       "West Europe"
     ],
@@ -40,8 +43,11 @@
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "Central India",
       "East US",
+      "France Central",
+      "Sweden Central",
       "UK South",
       "West Europe"
     ],
@@ -52,12 +58,17 @@
     "resourceType": "services/eventGridFilters",
     "apiVersions": [
       "2024-06-01-preview",
-      "2024-03-01"
+      "2024-03-15-preview",
+      "2024-03-01",
+      "2023-07-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Canada Central",
       "Central India",
       "East US",
+      "France Central",
+      "Sweden Central",
       "UK South",
       "West Europe"
     ],

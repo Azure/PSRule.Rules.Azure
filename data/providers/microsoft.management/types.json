@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-04-01",
       "2021-04-01",
       "2020-10-01",
@@ -20,6 +21,7 @@
     "aliases": null,
     "resourceType": "getEntities",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-04-01",
       "2021-04-01",
       "2020-10-01",
@@ -65,6 +67,7 @@
     },
     "resourceType": "managementGroups",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-04-01",
       "2021-04-01",
       "2020-10-01",
@@ -86,6 +89,7 @@
     "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-04-01",
       "2021-04-01",
       "2020-10-01",
@@ -103,6 +107,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-02-01-preview",
       "2023-04-01",
       "2021-04-01",
       "2020-10-01",

@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -105,6 +107,8 @@
     "aliases": null,
     "resourceType": "locations/checkFilePathAvailability",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -206,6 +210,8 @@
     "aliases": null,
     "resourceType": "locations/CheckInventory",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -288,6 +294,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -389,6 +397,8 @@
     "aliases": null,
     "resourceType": "locations/checkQuotaAvailability",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -480,6 +490,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -583,6 +595,8 @@
     "aliases": null,
     "resourceType": "locations/queryNetworkSiblingSet",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -658,6 +672,8 @@
     "aliases": null,
     "resourceType": "locations/QuotaLimits",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -740,6 +756,8 @@
     "aliases": null,
     "resourceType": "locations/regionInfo",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -816,6 +834,8 @@
     "aliases": null,
     "resourceType": "locations/regionInfos",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -883,6 +903,8 @@
     "aliases": null,
     "resourceType": "locations/updateNetworkSiblingSet",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -1003,6 +1025,8 @@
     },
     "resourceType": "netAppAccounts",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -1191,6 +1215,8 @@
     },
     "resourceType": "netAppAccounts/backupPolicies",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -1283,6 +1309,8 @@
     "aliases": null,
     "resourceType": "netAppAccounts/backupVaults",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -1352,6 +1380,8 @@
     "aliases": null,
     "resourceType": "netAppAccounts/backupVaults/backups",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -1431,6 +1461,8 @@
     },
     "resourceType": "netAppAccounts/capacityPools",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -1647,6 +1679,8 @@
     },
     "resourceType": "netAppAccounts/capacityPools/volumes",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -1843,6 +1877,14 @@
       },
       {
         "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan West",
         "zones": [
           "1",
           "2",
@@ -2122,6 +2164,8 @@
     },
     "resourceType": "netAppAccounts/capacityPools/volumes/snapshots",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -2229,6 +2273,8 @@
     },
     "resourceType": "netAppAccounts/capacityPools/volumes/volumeQuotaRules",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -2334,6 +2380,8 @@
     },
     "resourceType": "netAppAccounts/snapshotPolicies",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -2616,6 +2664,8 @@
     },
     "resourceType": "netAppAccounts/volumeGroups",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",
@@ -2700,6 +2750,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-09-01-preview",
+      "2024-09-01",
       "2024-07-01-preview",
       "2024-07-01",
       "2024-05-01-preview",

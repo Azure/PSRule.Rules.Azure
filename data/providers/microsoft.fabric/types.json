@@ -317,7 +317,29 @@
   },
   {
     "aliases": null,
+    "resourceType": "privateLinkServicesForFabric",
+    "apiVersions": [
+      "2024-06-01"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "privateLinkServicesForFabric/operationResults",
+    "apiVersions": [
+      "2024-06-01"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "privateLinkServicesForFabric/operationStatuses",
     "apiVersions": [
       "2024-06-01"
     ],

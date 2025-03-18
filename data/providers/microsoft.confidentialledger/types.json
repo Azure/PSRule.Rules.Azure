@@ -17,6 +17,7 @@
     "aliases": null,
     "resourceType": "Ledgers",
     "apiVersions": [
+      "2024-09-19-preview",
       "2023-06-28-preview",
       "2023-01-26-preview",
       "2022-09-08-preview",
@@ -29,7 +30,8 @@
       "East US",
       "South Central US",
       "Southeast Asia",
-      "West Europe"
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": []
   },

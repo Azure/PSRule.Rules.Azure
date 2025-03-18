@@ -3,11 +3,51 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-02-27-preview",
       "2024-10-31-preview",
       "2024-03-31-preview",
       "2023-09-28-preview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "landingZoneAccounts",
+    "apiVersions": [
+      "2025-02-27-preview"
+    ],
+    "locations": [
+      "North Europe",
+      "Sweden Central",
+      "UAE North"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "landingZoneAccounts/landingZoneConfigurations",
+    "apiVersions": [
+      "2025-02-27-preview"
+    ],
+    "locations": [
+      "North Europe",
+      "Sweden Central",
+      "UAE North"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "landingZoneAccounts/landingZoneRegistrations",
+    "apiVersions": [
+      "2025-02-27-preview"
+    ],
+    "locations": [
+      "North Europe",
+      "Sweden Central",
+      "UAE North"
+    ],
     "zoneMappings": []
   },
   {
@@ -38,6 +78,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-02-27-preview",
       "2024-10-31-preview",
       "2024-03-31-preview",
       "2023-09-28-preview"
@@ -51,13 +92,16 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-02-27-preview",
       "2024-10-31-preview",
       "2024-03-31-preview",
       "2023-09-28-preview"
     ],
     "locations": [
       "North Europe",
-      "Sweden Central"
+      "Sweden Central",
+      "UAE North",
+      "UK South"
     ],
     "zoneMappings": []
   },
@@ -65,6 +109,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-02-27-preview",
       "2024-10-31-preview",
       "2024-03-31-preview",
       "2023-09-28-preview"

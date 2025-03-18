@@ -1,18 +1,18 @@
 [
   {
     "aliases": null,
-    "resourceType": "Operations",
+    "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
-      "2023-02-06-preview"
+      "2025-05-31-preview"
     ],
     "locations": [],
     "zoneMappings": []
   },
   {
     "aliases": null,
-    "resourceType": "operationStatuses",
+    "resourceType": "Operations",
     "apiVersions": [
-      "2023-02-06-preview"
+      "2025-05-31-preview"
     ],
     "locations": [],
     "zoneMappings": []

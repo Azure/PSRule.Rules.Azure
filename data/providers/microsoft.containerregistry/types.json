@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -76,6 +77,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -219,6 +221,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -292,6 +295,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -577,6 +581,7 @@
     },
     "resourceType": "registries",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -728,6 +733,7 @@
     },
     "resourceType": "registries/cacheRules",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -828,6 +834,7 @@
     },
     "resourceType": "registries/connectedRegistries",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -894,6 +901,7 @@
     "aliases": null,
     "resourceType": "registries/connectedRegistries/deactivate",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -973,6 +981,7 @@
     },
     "resourceType": "registries/credentialSets",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -1104,6 +1113,7 @@
     },
     "resourceType": "registries/exportPipelines",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -1171,6 +1181,7 @@
     "aliases": null,
     "resourceType": "registries/generateCredentials",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -1240,6 +1251,7 @@
     "aliases": null,
     "resourceType": "registries/importImage",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -1323,6 +1335,7 @@
     },
     "resourceType": "registries/importPipelines",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -1450,6 +1463,7 @@
     "aliases": null,
     "resourceType": "registries/listCredentials",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -1581,6 +1595,7 @@
     "aliases": null,
     "resourceType": "registries/listUsages",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -1688,6 +1703,7 @@
     },
     "resourceType": "registries/pipelineRuns",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-06-01-preview",
@@ -1755,6 +1771,7 @@
     "aliases": null,
     "resourceType": "registries/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -1825,6 +1842,7 @@
     "aliases": null,
     "resourceType": "registries/privateEndpointConnectionProxies/validate",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -1903,6 +1921,7 @@
     },
     "resourceType": "registries/privateEndpointConnections",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -1973,6 +1992,7 @@
     "aliases": null,
     "resourceType": "registries/privateLinkResources",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -2043,6 +2063,7 @@
     "aliases": null,
     "resourceType": "registries/regenerateCredential",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -2124,6 +2145,7 @@
     },
     "resourceType": "registries/replications",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -2443,6 +2465,7 @@
     },
     "resourceType": "registries/scopeMaps",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -3001,6 +3024,7 @@
     },
     "resourceType": "registries/tokens",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -3133,6 +3157,7 @@
     },
     "resourceType": "registries/webhooks",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -3205,6 +3230,7 @@
     "aliases": null,
     "resourceType": "registries/webhooks/getCallbackConfig",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -3277,6 +3303,7 @@
     "aliases": null,
     "resourceType": "registries/webhooks/listEvents",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",
@@ -3349,6 +3376,7 @@
     "aliases": null,
     "resourceType": "registries/webhooks/ping",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-11-01-preview",
       "2023-08-01-preview",
       "2023-07-01",

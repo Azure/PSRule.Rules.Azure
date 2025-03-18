@@ -1520,6 +1520,7 @@
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.state": "properties.state",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties": "properties.typeProperties",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties": "properties.typeProperties.computeProperties",
+      "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.copyComputeScaleProperties": "properties.typeProperties.computeProperties.copyComputeScaleProperties",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.dataFlowProperties": "properties.typeProperties.computeProperties.dataFlowProperties",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.dataFlowProperties.cleanup": "properties.typeProperties.computeProperties.dataFlowProperties.cleanup",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.dataFlowProperties.computeType": "properties.typeProperties.computeProperties.dataFlowProperties.computeType",
@@ -1529,6 +1530,7 @@
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.maxParallelExecutionsPerNode": "properties.typeProperties.computeProperties.maxParallelExecutionsPerNode",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.nodeSize": "properties.typeProperties.computeProperties.nodeSize",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.numberOfNodes": "properties.typeProperties.computeProperties.numberOfNodes",
+      "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.pipelineExternalComputeScaleProperties": "properties.typeProperties.computeProperties.pipelineExternalComputeScaleProperties",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.vNetProperties": "properties.typeProperties.computeProperties.vNetProperties",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.vNetProperties.publicIPs": "properties.typeProperties.computeProperties.vNetProperties.publicIPs",
       "Microsoft.Synapse/workspaces/integrationRuntimes/Managed.typeProperties.computeProperties.vNetProperties.publicIPs[*]": "properties.typeProperties.computeProperties.vNetProperties.publicIPs[*]",
@@ -1603,6 +1605,7 @@
       "Microsoft.Synapse/workspaces/integrationRuntimes/SelfHosted.typeProperties.linkedInfo.Key.key.value": "properties.typeProperties.linkedInfo.key.value",
       "Microsoft.Synapse/workspaces/integrationRuntimes/SelfHosted.typeProperties.linkedInfo.RBAC": "properties.typeProperties.linkedInfo",
       "Microsoft.Synapse/workspaces/integrationRuntimes/SelfHosted.typeProperties.linkedInfo.RBAC.resourceId": "properties.typeProperties.linkedInfo.resourceId",
+      "Microsoft.Synapse/workspaces/integrationRuntimes/SelfHosted.typeProperties.selfContainedInteractiveAuthoringEnabled": "properties.typeProperties.selfContainedInteractiveAuthoringEnabled",
       "Microsoft.Synapse/workspaces/integrationRuntimes/type": "properties.type"
     },
     "resourceType": "workspaces/integrationruntimes"

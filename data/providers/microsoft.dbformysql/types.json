@@ -184,6 +184,8 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
@@ -230,6 +232,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -361,6 +364,14 @@
         ]
       },
       {
+        "location": "Japan West",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Korea Central",
         "zones": [
           "1",
@@ -370,6 +381,14 @@
       },
       {
         "location": "Mexico Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "New Zealand North",
         "zones": [
           "1",
           "2",
@@ -502,6 +521,8 @@
     "aliases": null,
     "resourceType": "getPrivateDnsZoneSuffix",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
@@ -742,6 +763,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -774,6 +796,8 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
@@ -820,6 +844,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -851,6 +876,8 @@
     "aliases": null,
     "resourceType": "locations/capabilitySets",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
@@ -887,6 +914,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -918,6 +946,8 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
@@ -962,6 +992,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -993,6 +1024,8 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
@@ -1039,6 +1072,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1070,6 +1104,8 @@
     "aliases": null,
     "resourceType": "locations/listMigrations",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
@@ -1110,6 +1146,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1141,6 +1178,8 @@
     "aliases": null,
     "resourceType": "locations/operationProgress",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
@@ -1174,6 +1213,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1230,6 +1270,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1807,6 +1848,8 @@
     "aliases": null,
     "resourceType": "locations/updateMigration",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
@@ -1847,6 +1890,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",
@@ -1878,6 +1922,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-12-30",
+      "2024-12-01-preview",
       "2024-10-30",
       "2024-10-01-preview",
       "2024-06-30",
