@@ -11,17 +11,19 @@ on:
     branches: [ main, 'release/*' ]
   pull_request:
     branches: [ main, 'release/*' ]
-  workflow_dispatch:
-
-permissions: {}
+  schedule:
+    - cron: '26 21 * * 0' # At 09:26 PM, on Sunday each week
+  workflow_dispatch: {}
 
 env:
   DOTNET_NOLOGO: true
   DOTNET_CLI_TELEMETRY_OPTOUT: true
 
+permissions: {}
+
 jobs:
-  build:
-    name: Build
+  build_module:
+    name: Build module
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -29,10 +31,12 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
+      with:
+        global-json-file: global.json
 
     - name: Install dependencies
       shell: pwsh
@@ -45,7 +49,7 @@ jobs:
       run: Invoke-Build -Configuration Release -AssertStyle GitHubActions
 
     - name: Upload module
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
       with:
         name: Module
         path: ./out/modules/PSRule.Rules.Azure/*
@@ -53,7 +57,7 @@ jobs:
         if-no-files-found: error
 
     # - name: Upload Test Results
-    #   uses: actions/upload-artifact@v4
+    #   uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
     #   if: always()
     #   with:
     #     name: Module.DotNet.TestResults
@@ -62,7 +66,7 @@ jobs:
     #     if-no-files-found: error
 
     - name: Upload PSRule Results
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
       if: always()
       with:
         name: Results-PSRule
@@ -70,10 +74,10 @@ jobs:
         retention-days: 3
         if-no-files-found: error
 
-  test:
-    name: Test (${{ matrix.rid }}-${{ matrix.shell }})
+  test_module:
+    name: 🧪 Test module (${{ matrix.rid }}-${{ matrix.shell }})
     runs-on: ${{ matrix.os }}
-    needs: build
+    needs: build_module
     permissions:
       contents: read
 
@@ -105,10 +109,12 @@ jobs:
     steps:
 
     - name: Checkout
-      uses: actions/checkout@v4
+      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+      uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
+      with:
+        global-json-file: global.json
 
     - if: ${{ matrix.shell == 'pwsh' }}
       name: Install dependencies (PowerShell)
@@ -139,3 +145,131 @@ jobs:
       shell: powershell
       timeout-minutes: 30
       run: Invoke-Build TestModule -Configuration Release -AssertStyle GitHubActions
+
+  build_docs:
+    name: Build docs
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+        with:
+          fetch-depth: 0
+
+      - name: Setup Python
+        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
+        with:
+          python-version: '3.11'
+          architecture: 'x64'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install wheel
+          python3 -m pip install -r requirements-docs.txt
+
+      - name: Build site
+        run: mkdocs build
+        env:
+          MKDOCS_GIT_COMMITTERS_APIKEY: ${{ secrets.GITHUB_TOKEN }}
+
+  # ------------------
+  # Run analysis tools
+  # ------------------
+  oss:
+    name: 🔍 Analyze with PSRule
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Run PSRule analysis
+        uses: microsoft/ps-rule@46451b8f5258c41beb5ae69ed7190ccbba84112c # v2.9.0
+        with:
+          modules: PSRule.Rules.MSFT.OSS
+          prerelease: true
+          outputFormat: Sarif
+          outputPath: reports/ps-rule-results.sarif
+
+      - name: Upload results to security tab
+        uses: github/codeql-action/upload-sarif@5f8171a638ada777af81d42b55959a643bb29017 # v3.28.12
+        if: always()
+        with:
+          sarif_file: reports/ps-rule-results.sarif
+
+      - name: Upload results
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        if: always()
+        with:
+          name: PSRule-Sarif
+          path: reports/ps-rule-results.sarif
+          retention-days: 1
+          if-no-files-found: error
+
+  devskim:
+    name: 🔍 Analyze with DevSkim
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Run DevSkim scanner
+        uses: microsoft/DevSkim-Action@a6b6966a33b497cd3ae2ebc406edf8f4cc2feec6 # v1.0.15
+        with:
+          directory-to-scan: .
+
+      - name: Upload results to security tab
+        uses: github/codeql-action/upload-sarif@5f8171a638ada777af81d42b55959a643bb29017 # v3.28.12
+        if: always()
+        with:
+          sarif_file: devskim-results.sarif
+
+      - name: Upload results
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        if: always()
+        with:
+          name: DevSkim-Sarif
+          path: devskim-results.sarif
+          retention-days: 1
+          if-no-files-found: error
+
+  codeql:
+    name: 🔍 Analyze with CodeQL
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4.2.2
+
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@5f8171a638ada777af81d42b55959a643bb29017 # v3.28.12
+        with:
+          languages: 'csharp'
+
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@5f8171a638ada777af81d42b55959a643bb29017 # v3.28.12
+
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@5f8171a638ada777af81d42b55959a643bb29017 # v3.28.12
+        id: codeql-analyze
+
+      - name: Upload results
+        uses: actions/upload-artifact@4cec3d8aa04e39d1a68397de0c4cd6fb9dce8ec1 # v4.6.1
+        if: always()
+        with:
+          name: CodeQL-Sarif
+          path: ${{ steps.codeql-analyze.outputs.sarif-output }}
+          retention-days: 1
+          if-no-files-found: error
