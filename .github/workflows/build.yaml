@@ -158,17 +158,22 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Setup Python
-        uses: actions/setup-python@42375524e23c412d93fb67b49958b491fce71c38 # v5.4.0
+      - name: Setup .NET
+        uses: actions/setup-dotnet@67a3573c9a986a3f9c594539f4ab511d57bb3ce9 # v4.3.1
         with:
-          python-version: '3.11'
-          architecture: 'x64'
+          global-json-file: global.json
 
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
           python3 -m pip install wheel
           python3 -m pip install -r requirements-docs.txt
+
+      - name: Build docs
+        run: |
+          Install-Module InvokeBuild -MinimumVersion 5.4.0 -Scope CurrentUser -Force
+          Invoke-Build BuildDocs
+        shell: pwsh
 
       - name: Build site
         run: mkdocs build
