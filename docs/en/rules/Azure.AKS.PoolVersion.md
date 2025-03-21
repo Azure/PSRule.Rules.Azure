@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.PoolVersion/
 ---
 

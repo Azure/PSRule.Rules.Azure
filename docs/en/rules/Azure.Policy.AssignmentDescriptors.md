@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
 resource: Policy
+resourceType: Microsoft.Authorization/policyAssignments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Policy.AssignmentDescriptors/
 ---
 

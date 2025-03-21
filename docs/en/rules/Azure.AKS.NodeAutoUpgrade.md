@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:01 Security Baseline
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NodeAutoUpgrade/
 ---
 

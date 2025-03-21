@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: Resiliency and dependencies
 resource: API Management
+resourceType: Microsoft.ApiManagement/service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.MultiRegionGateway/
 ---
 

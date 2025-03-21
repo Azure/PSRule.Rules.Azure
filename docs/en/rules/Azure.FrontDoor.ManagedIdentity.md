@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Authentication
 resource: Front Door
+resourceType: Microsoft.Cdn/profiles
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.ManagedIdentity/
 ---
 

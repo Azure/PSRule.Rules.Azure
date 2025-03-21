@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.ASDistributeTraffic/
 ---
 

@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:08 Hardening resources
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.Updates/
 ms-content-id: 8781c21b-4e6a-47fe-860d-d2191f0304ae
 ---

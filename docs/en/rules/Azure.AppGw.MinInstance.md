@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: Load balancing and failover
 resource: Application Gateway
+resourceType: Microsoft.Network/applicationGateways
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.MinInstance/
 ---
 

@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Cost Optimization
 category: CO:13 Personnel time
 resource: Network Interface
+resourceType: Microsoft.Network/networkInterfaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NIC.Attached/
 ---
 

@@ -3,6 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Performance efficiency checklist
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters,Microsoft.ContainerService/managedClusters/agentPools
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.EphemeralOSDisk/
 ---
 

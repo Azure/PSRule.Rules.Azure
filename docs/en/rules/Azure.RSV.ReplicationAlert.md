@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: Design
 resource: Recovery Services Vault
+resourceType: Microsoft.RecoveryServices/vaults
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.RSV.ReplicationAlert/
 ---
 

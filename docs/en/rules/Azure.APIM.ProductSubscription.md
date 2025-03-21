@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: API Management
+resourceType: Microsoft.ApiManagement/service,Microsoft.ApiManagement/service/products
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.ProductSubscription/
 ---
 

@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: Event Grid
+resourceType: Microsoft.EventGrid/topics
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventGrid.DisableLocalAuth/
 ---
 

@@ -3,6 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: OE:10 Automation design
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.Agent/
 ms-content-id: e4f6f6e7-593c-4507-811d-778ee8ec9ac4
 ---

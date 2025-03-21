@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Azure Database for MySQL
+resourceType: Microsoft.DBforMySQL/flexibleServers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.MaintenanceWindow/
 ---
 

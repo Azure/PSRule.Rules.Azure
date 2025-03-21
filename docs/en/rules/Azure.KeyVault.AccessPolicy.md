@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: Key Vault
+resourceType: Microsoft.KeyVault/vaults,Microsoft.KeyVault/vaults/accessPolicies
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.AccessPolicy/
 ---
 

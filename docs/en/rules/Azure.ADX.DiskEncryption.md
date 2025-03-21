@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: Encryption
 resource: Data Explorer
+resourceType: Microsoft.Kusto/clusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ADX.DiskEncryption/
 ---
 

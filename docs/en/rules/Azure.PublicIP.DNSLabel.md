@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Public IP address
+resourceType: Microsoft.Network/publicIPAddresses
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.DNSLabel/
 ---
 

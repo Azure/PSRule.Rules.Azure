@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:01 Simplicity and efficiency
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.UseManagedDisks/
 ---
 

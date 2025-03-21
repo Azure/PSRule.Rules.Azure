@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Virtual Machine
+resourceType: Microsoft.Compute/availabilitySets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.ASMinMembers/
 ms-content-id: 0e9b75e5-2a63-4bea-afeb-2807e6f9d5a0
 ---

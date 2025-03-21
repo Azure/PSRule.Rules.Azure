@@ -3,6 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Application capacity
 resource: App Service
+resourceType: Microsoft.Web/serverfarms
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.MinPlan/
 ms-content-id: 97b58cfa-7b7e-4630-ac13-4596defe1795
 ---

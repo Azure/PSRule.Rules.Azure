@@ -4,6 +4,7 @@ severity: Important
 pillar: Cost Optimization
 category: CO:07 Component costs
 resource: Virtual Machine
+resourceType: Microsoft.Compute/disks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.DiskAttached/
 ms-content-id: 23a06a0e-7965-4d43-8e29-bb9ac6eeffcc
 ---

@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Azure Database
+resourceType: Microsoft.Sql/servers',Microsoft.Sql/servers/databases,Microsoft.Sql/servers/elasticPools
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.MaintenanceWindow/
 ---
 

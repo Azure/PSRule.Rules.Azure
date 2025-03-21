@@ -3,6 +3,7 @@ severity: Critical
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Application Gateway
+resourceType: Microsoft.Network/applicationGateways
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.MigrateWAFPolicy/
 ---
 

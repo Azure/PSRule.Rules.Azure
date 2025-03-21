@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:07 Self-preservation
 resource: Virtual Machine Scale Sets
+resourceType: Microsoft.Compute/virtualMachineScaleSets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.ZoneBalance/
 ---
 

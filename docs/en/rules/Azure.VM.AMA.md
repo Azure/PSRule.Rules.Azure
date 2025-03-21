@@ -4,6 +4,7 @@ severity: Important
 pillar: Operational Excellence
 category: OE:07 Monitoring system
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachines/extensions
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.AMA/
 ---
 

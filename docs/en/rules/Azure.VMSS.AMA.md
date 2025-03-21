@@ -3,6 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: OE:07 Monitoring system
 resource: Virtual Machine Scale Sets
+resourceType: Microsoft.Compute/virtualMachineScaleSets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.AMA/
 ---
 

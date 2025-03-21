@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: Front Door
+resourceType: Microsoft.Network/frontDoors,Microsoft.Network/frontDoors/frontendEndpoints
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.MinTLS/
 ---
 

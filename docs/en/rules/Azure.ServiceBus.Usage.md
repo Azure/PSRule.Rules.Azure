@@ -4,6 +4,7 @@ severity: Important
 pillar: Cost Optimization
 category: CO:14 Consolidation
 resource: Service Bus
+resourceType: Microsoft.ServiceBus/namespaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceBus.Usage/
 ---
 

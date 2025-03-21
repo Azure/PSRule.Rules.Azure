@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: Authentication
 resource: SQL Managed Instance
+resourceType: Microsoft.Sql/managedInstances
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQLMI.AAD/
 ---
 

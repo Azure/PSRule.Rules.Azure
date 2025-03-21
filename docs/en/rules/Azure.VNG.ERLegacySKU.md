@@ -3,6 +3,7 @@ severity: Critical
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Virtual Network Gateway
+resourceType: Microsoft.Network/virtualNetworkGateways
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.ERLegacySKU/
 ---
 

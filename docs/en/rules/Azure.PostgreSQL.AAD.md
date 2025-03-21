@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
 resource: Azure Database for PostgreSQL
+resourceType: Microsoft.DBforPostgreSQL/flexibleServers,Microsoft.DBforPostgreSQL/servers,Microsoft.DBforPostgreSQL/flexibleServers/administrators,Microsoft.DBforPostgreSQL/servers/administrators
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.AAD/
 ---
 

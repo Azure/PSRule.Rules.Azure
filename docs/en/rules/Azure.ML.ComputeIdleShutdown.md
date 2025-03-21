@@ -4,6 +4,7 @@ severity: Critical
 pillar: Cost Optimization
 category: CO:06 Usage and billing increments
 resource: Machine Learning
+resourceType: Microsoft.MachineLearningServices/workspaces/computes
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.ComputeIdleShutdown/
 ---
 

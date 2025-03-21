@@ -3,10 +3,11 @@ severity: Awareness
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Container App
+resourceType: Microsoft.App/containerApps
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.Storage/
 ---
 
-# Persistant storage
+# Persistent storage
 
 ## SYNOPSIS
 

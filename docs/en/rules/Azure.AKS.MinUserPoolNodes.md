@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters,Microsoft.ContainerService/managedClusters/agentPools
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.MinUserPoolNodes/
 ---
 

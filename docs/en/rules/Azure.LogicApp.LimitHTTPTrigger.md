@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:06 Network controls
 resource: Logic App
+resourceType: Microsoft.Logic/workflows
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LogicApp.LimitHTTPTrigger/
 ---
 

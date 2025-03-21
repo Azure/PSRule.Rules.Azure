@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: SQL Database
+resourceType: Microsoft.Sql/servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.MinTLS/
 ---
 

@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: Storage Account
+resourceType: Microsoft.Storage/storageAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.BlobPublicAccess/
 ---
 

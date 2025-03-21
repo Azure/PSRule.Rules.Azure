@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:07 Self-preservation
 resource: Virtual Machine Scale Sets
+resourceType: Microsoft.Compute/virtualMachineScaleSets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.AutoInstanceRepairs/
 ---
 
@@ -18,7 +19,7 @@ Enabling automatic instance repairs helps to achieve high application availabili
 
 The automatic instance repair feature relies on health monitoring of individual VM instances in a scale set.
 VM Instances in a scale set can be configured to emit application health status using either the Application Health extension or Load balancer health probes.
-If an VM instance is found to be unhealthy, the scale set will perform a preconfigured repair action on the unhealthy VM instance.
+If an VM instance is found to be unhealthy, the scale set will perform a pre-configured repair action on the unhealthy VM instance.
 Automatic instance repairs can be enabled in the Virtual Machine Scale Set model by using the `automaticRepairsPolicy` object.
 
 See documentation references below for additional limitations and important information.

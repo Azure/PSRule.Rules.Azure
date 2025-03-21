@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Azure Database for PostgreSQL
+resourceType: Microsoft.DBforPostgreSQL/servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.ServerName/
 ---
 

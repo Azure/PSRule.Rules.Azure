@@ -4,6 +4,7 @@ severity: Important
 pillar: Cost Optimization
 category: CO:04 Spending guardrails
 resource: Dev Box
+resourceType: Microsoft.DevCenter/projects
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.DevBox.ProjectLimit/
 ---
 

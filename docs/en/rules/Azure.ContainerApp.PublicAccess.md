@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:06 Network controls
 resource: Container App
+resourceType: Microsoft.App/managedEnvironments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.PublicAccess/
 ---
 

@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Identity and access management
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.UseRBAC/
 ms-content-id: 61ff3a23-9bfd-4e91-8959-798b43237775
 ---

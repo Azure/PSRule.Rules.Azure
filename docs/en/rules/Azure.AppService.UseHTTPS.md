@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:07 Encryption
 resource: App Service
+resourceType: Microsoft.Web/sites,Microsoft.Web/sites/slots
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.UseHTTPS/
 ms-content-id: b26053bc-db4a-487a-8fb1-11c438c8d493
 ---

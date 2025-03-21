@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:06 Network controls
 resource: Azure Cache for Redis
+resourceType: Microsoft.Cache/redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.PublicNetworkAccess/
 ---
 

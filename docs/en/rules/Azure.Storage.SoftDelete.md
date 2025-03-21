@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Storage Account
+resourceType: Microsoft.Storage/storageAccounts,Microsoft.Storage/storageAccounts/blobServices
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.SoftDelete/
 ms-content-id: 9927b427-e694-4485-9abf-61545e63956e
 ---

@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: Design
 resource: API Management
+resourceType: Microsoft.ApiManagement/service,Microsoft.ApiManagement/service/policies
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.CORSPolicy/
 ---
 

@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:07 Self-preservation
 resource: Key Vault
+resourceType: Microsoft.KeyVault/vaults
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.SoftDelete/
 ---
 

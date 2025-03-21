@@ -3,6 +3,7 @@ severity: Important
 pillar: Cost Optimization
 category: CO:14 Consolidation
 resource: Public IP address
+resourceType: Microsoft.Network/publicIPAddresses
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.IsAttached/
 ms-content-id: 9222ec9f-7eea-4301-bee6-3022c9008874
 ---

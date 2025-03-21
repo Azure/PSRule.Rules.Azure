@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Security
 category: SE:08 Hardening resources
 resource: API Management
+resourceType: Microsoft.ApiManagement/service,Microsoft.ApiManagement/service/products
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.SampleProducts/
 ---
 

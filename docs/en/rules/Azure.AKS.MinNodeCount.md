@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.MinNodeCount/
 ms-content-id: 320afea5-5c19-45ad-b9a5-c1a63ae6e114
 ---

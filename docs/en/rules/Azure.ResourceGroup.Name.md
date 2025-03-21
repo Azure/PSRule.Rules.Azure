@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Resource Group
+resourceType: Microsoft.Resources/resourceGroups
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ResourceGroup.Name/
 ---
 

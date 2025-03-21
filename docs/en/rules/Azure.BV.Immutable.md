@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Security design principles
 resource:  Backup Vault
+resourceType: Microsoft.DataProtection/backupVaults
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.BV.Immutable/
 ---
 

@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Virtual WAN
+resourceType: Microsoft.Network/virtualWans
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.vWAN.Name/
 ---
 

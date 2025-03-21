@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: SQL Database
+resourceType: Microsoft.Sql/servers/failoverGroups
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.FGName/
 ---
 

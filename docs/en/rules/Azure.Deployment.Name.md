@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Deployment
+resourceType: Microsoft.Resources/deployments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.Name/
 ---
 

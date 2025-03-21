@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: IoT Hub
+resourceType: Microsoft.Devices/IotHubs
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.IoTHub.MinTLS/
 ---
 

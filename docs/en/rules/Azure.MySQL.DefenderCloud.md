@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Azure Database for MySQL
+resourceType: Microsoft.DBforMySQL/servers,Microsoft.DBforMySQL/servers/securityAlertPolicies
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.DefenderCloud/
 ---
 

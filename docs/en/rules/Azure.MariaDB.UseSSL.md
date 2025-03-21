@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: Data protection
 resource: Azure Database for MariaDB
+resourceType: Microsoft.DBforMariaDB/servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.UseSSL/
 ---
 

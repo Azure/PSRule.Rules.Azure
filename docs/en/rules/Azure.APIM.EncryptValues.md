@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Data protection
 resource: API Management
+resourceType: Microsoft.ApiManagement/service,Microsoft.ApiManagement/service/namedValues
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.EncryptValues/
 ---
 

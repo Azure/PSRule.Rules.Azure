@@ -1,11 +1,11 @@
 ---
+reviewed: 2021-07-25
 severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Application Gateway
+resourceType: Microsoft.Network/applicationGateways
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.Prevention/
-author: BernieWhite
-ms-date: 2021/07/25
 ---
 
 # Use WAF prevention mode

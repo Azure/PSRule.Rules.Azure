@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: Container App
+resourceType: Microsoft.App/managedEnvironments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.AvailabilityZone/
 ---
 

@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Microsoft Defender for Cloud
+resourceType: Microsoft.Security/autoProvisioningSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.DefenderCloud.Provisioning/
 ms-content-id: 966390bc-0358-43dd-8b5f-6b0ae2b16edd
 ---

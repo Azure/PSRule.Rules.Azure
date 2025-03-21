@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: Resiliency and dependencies
 resource: Virtual Network
+resourceType: Microsoft.Network/virtualNetworks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.LocalDNS/
 ---
 

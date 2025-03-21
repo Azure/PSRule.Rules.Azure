@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: Identity and Access Management
 resource: Machine Learning
+resourceType: Microsoft.MachineLearningServices/workspaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.UserManagedIdentity/
 ---
 
@@ -15,7 +16,7 @@ ML workspaces should use user-assigned managed identity, rather than the default
 
 ## DESCRIPTION
 
-Manange access to Azure ML workspace and associated resources, Azure Container Registry, KeyVault, Storage, and App Insights using user-assigned managed identity.
+Manage access to Azure ML workspace and associated resources, Azure Container Registry, KeyVault, Storage, and App Insights using user-assigned managed identity.
 By default, system-assigned managed identity is used by Azure ML workspace to access the associated resources.
 User-assigned managed identity allows you to create the identity as an Azure resource and maintain the life cycle of that identity.
 

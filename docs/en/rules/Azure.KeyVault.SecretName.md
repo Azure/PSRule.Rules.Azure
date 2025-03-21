@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
 resource: Key Vault
+resourceType: Microsoft.KeyVault/vaults,Microsoft.KeyVault/vaults/secrets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.SecretName/
 ---
 

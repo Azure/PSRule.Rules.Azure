@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: Authentication
 resource: Automation Account
+resourceType: Microsoft.Automation/automationAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.ManagedIdentity/
 ---
 

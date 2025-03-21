@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Azure Database for MySQL
+resourceType: Microsoft.DBforMySQL/servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.ServerName/
 ---
 

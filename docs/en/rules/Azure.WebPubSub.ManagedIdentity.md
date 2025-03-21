@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: Authentication
 resource: Web PubSub Service
+resourceType: Microsoft.SignalRService/webPubSub
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.WebPubSub.ManagedIdentity/
 ---
 

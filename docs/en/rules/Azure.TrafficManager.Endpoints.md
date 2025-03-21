@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Traffic Manager
+resourceType: Microsoft.Network/trafficManagerProfiles
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.TrafficManager.Endpoints/
 ---
 

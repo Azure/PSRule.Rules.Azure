@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: Design
 resource: Virtual Network Gateway
+resourceType: Microsoft.Network/virtualNetworkGateways
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.ERAvailabilityZoneSKU/
 ---
 

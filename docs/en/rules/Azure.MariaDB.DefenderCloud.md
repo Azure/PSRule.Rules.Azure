@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Azure Database for MariaDB
+resourceType: Microsoft.DBforMariaDB/servers,Microsoft.DBforMariaDB/servers/securityAlertPolicies
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.DefenderCloud/
 ---
 

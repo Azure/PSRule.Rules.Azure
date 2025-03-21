@@ -3,6 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: PE:05 Scaling and partitioning
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters,Microsoft.ContainerService/managedClusters/agentPools
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NodeMinPods/
 ---
 

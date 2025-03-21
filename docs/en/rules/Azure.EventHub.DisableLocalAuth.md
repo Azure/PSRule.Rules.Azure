@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: Event Hub
+resourceType: Microsoft.EventHub/namespaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventHub.DisableLocalAuth/
 ---
 

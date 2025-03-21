@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:10 Monitoring and threat detection
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters,Microsoft.Insights/diagnosticSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AuditLogs/
 ---
 

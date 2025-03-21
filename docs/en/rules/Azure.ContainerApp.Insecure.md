@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:07 Encryption
 resource: Container App
+resourceType: Microsoft.App/containerApps
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.Insecure/
 ---
 

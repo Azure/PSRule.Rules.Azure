@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Network security and containment
 resource: Azure Database for MariaDB
+resourceType: Microsoft.DBforMariaDB/servers,Microsoft.DBforMariaDB/servers/firewallRules
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.AllowAzureAccess/
 ---
 

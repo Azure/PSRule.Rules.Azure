@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Performance Efficiency
 category: PE:05 Scaling and partitioning
 resource: App Service
+resourceType: Microsoft.Web/sites,Microsoft.Web/sites/slots
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.ARRAffinity/
 ms-content-id: 3f07def6-6e5e-4f87-8b5d-3a0baf6631e5
 ---

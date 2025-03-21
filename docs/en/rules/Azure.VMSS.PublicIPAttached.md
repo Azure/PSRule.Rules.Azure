@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: SE:06 Network controls
 resource: Virtual Machine Scale Sets
+resourceType: Microsoft.Compute/virtualMachineScaleSets,Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.PublicIPAttached/
 ---
 

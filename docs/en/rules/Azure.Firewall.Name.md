@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Firewall
+resourceType: Microsoft.Network/azureFirewalls
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Firewall.Name/
 ---
 

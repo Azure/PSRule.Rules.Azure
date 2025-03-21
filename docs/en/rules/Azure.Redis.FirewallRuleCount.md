@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Security
 category: SE:08 Hardening resources
 resource: Azure Cache for Redis
+resourceType: Microsoft.Cache/redis,Microsoft.Cache/redis/firewallRules
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.FirewallRuleCount/
 ---
 

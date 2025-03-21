@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Network Security Group
+resourceType: Microsoft.Network/networkSecurityGroups
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.Name/
 ---
 

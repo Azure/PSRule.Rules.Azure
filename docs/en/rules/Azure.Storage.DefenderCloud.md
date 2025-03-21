@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:10 Monitoring and threat detection
 resource: Storage Account
+resourceType: Microsoft.Storage/storageAccounts,Microsoft.Security/defenderForStorageSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.DefenderCloud/
 ---
 

@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: SE:06 Network controls
 resource: Application Gateway
+resourceType: Microsoft.Network/applicationGateways
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGw.WAFEnabled/
 ---
 

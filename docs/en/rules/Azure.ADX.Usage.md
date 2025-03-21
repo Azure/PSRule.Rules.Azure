@@ -4,6 +4,7 @@ severity: Important
 pillar: Cost Optimization
 category: CO:14 Consolidation
 resource: Data Explorer
+resourceType: Microsoft.Kusto/clusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ADX.Usage/
 ---
 

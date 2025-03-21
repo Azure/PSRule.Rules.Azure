@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Policy
+resourceType: Microsoft.Authorization/policyAssignments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Policy.AssignmentAssignedBy/
 ---
 

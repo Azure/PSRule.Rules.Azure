@@ -4,6 +4,7 @@ severity: Important
 pillar: Cost Optimization
 category: CO:14 Consolidation
 resource: Front Door
+resourceType: Microsoft.Network/frontDoors
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.State/
 ---
 

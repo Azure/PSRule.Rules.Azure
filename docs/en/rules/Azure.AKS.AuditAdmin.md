@@ -4,6 +4,7 @@ severity: Important
 pillar: Cost Optimization
 category: CO:07 Component costs
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters,Microsoft.Insights/diagnosticSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AuditAdmin/
 ---
 

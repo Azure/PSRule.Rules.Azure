@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
 resource: Container Registry
+resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.AdminUser/
 ms-content-id: bbf194a7-6ca3-4b1d-9170-6217eb26620d
 ---

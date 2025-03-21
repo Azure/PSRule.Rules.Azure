@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: User Assigned Managed Identity
+resourceType: Microsoft.ManagedIdentity/userAssignedIdentities
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Identity.UserAssignedName/
 ---
 

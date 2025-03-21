@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Cost Optimization
 category: CO:13 Personnel time
 resource: Network Security Group
+resourceType: Microsoft.Network/networkSecurityGroups
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.Associated/
 ---
 

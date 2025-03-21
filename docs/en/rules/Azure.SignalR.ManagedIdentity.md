@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: Authentication
 resource: SignalR Service
+resourceType: Microsoft.SignalRService/signalR
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SignalR.ManagedIdentity/
 ---
 

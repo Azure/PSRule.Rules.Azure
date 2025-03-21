@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: SignalR Service
+resourceType: Microsoft.SignalRService/SignalR
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SignalR.Name/
 ---
 

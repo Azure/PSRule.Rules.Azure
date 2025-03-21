@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: PE:05 Scaling and partitioning
 resource: Azure Kubernetes Service
+resourceType: Microsoft.ContainerService/managedClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.CNISubnetSize/
 ---
 

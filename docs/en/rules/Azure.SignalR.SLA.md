@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: SignalR Service
+resourceType: Microsoft.SignalRService/signalR
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SignalR.SLA/
 ---
 

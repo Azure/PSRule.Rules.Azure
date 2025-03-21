@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Security
 category: Identity and access management
 resource: Automation Account
+resourceType: Microsoft.Automation/automationAccounts,Microsoft.Automation/automationAccounts/webhooks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.WebHookExpiry/
 ms-content-id: 7b8aa617-6278-42e4-b8ae-d9da6e3d8ade
 ---

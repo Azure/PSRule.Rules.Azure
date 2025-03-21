@@ -4,6 +4,7 @@ severity: Important
 pillar: Operational Excellence
 category: OE:07 Monitoring system
 resource: Application Insights
+resourceType: Microsoft.Insights/components
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppInsights.Workspace/
 ---
 

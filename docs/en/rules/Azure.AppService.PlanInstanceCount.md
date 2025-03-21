@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: Resiliency and dependencies
 resource: App Service
+resourceType: Microsoft.Web/serverfarms
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.PlanInstanceCount/
 ms-content-id: 6f3eff05-1bd0-4c82-a5a5-573fc8e0beda
 ---

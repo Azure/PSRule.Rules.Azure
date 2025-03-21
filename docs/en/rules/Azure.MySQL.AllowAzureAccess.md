@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:06 Network controls
 resource: Azure Database for MySQL
+resourceType: Microsoft.DBforMySQL/servers,Microsoft.DBforMySQL/servers/firewallRules
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.AllowAzureAccess/
 ms-content-id: 8a159312-1dcd-4c64-91a8-4dd17f97efdb
 ---

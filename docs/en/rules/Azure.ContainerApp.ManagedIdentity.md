@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: Container App
+resourceType: Microsoft.App/containerApps
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.ManagedIdentity/
 ---
 

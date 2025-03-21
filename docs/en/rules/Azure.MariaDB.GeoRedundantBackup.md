@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: Target and non-functional requirements
 resource: Azure Database for MariaDB
+resourceType: Microsoft.DBforMariaDB/servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.GeoRedundantBackup/
 ---
 

@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: SE:02 Secured development lifecycle
 resource: Container Registry
+resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.ImageHealth/
 ---
 

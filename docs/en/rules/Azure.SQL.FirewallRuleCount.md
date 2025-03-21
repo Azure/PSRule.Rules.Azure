@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Security
 category: SE:06 Network controls
 resource: SQL Database
+resourceType: Microsoft.Sql/servers,Microsoft.Sql/servers/firewallRules
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.FirewallRuleCount/
 ms-content-id: b877a8ba-bc56-4bfe-9674-4b52b75cd13b
 ---

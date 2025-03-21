@@ -4,6 +4,7 @@ severity: Important
 pillar: Performance Efficiency
 category: PE:05 Scaling and partitioning
 resource: Azure Cache for Redis
+resourceType: Microsoft.Cache/redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MaxMemoryReserved/
 ---
 

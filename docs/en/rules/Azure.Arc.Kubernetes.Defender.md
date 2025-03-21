@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Arc
+resourceType: Microsoft.Kubernetes/connectedClusters,Microsoft.KubernetesConfiguration/extensions
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Arc.Kubernetes.Defender/
 ---
 

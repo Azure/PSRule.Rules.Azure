@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: SE:06 Network controls
 resource: Virtual Machine
+resourceType: Microsoft.Network/networkInterfaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.PublicIPAttached/
 ---
 

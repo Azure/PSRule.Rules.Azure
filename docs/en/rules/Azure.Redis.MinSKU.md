@@ -3,6 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: PE:03 Selecting services
 resource: Azure Cache for Redis
+resourceType: Microsoft.Cache/redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MinSKU/
 ---
 

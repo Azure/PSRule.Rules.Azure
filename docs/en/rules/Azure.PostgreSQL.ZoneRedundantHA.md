@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: Azure Database for PostgreSQL
+resourceType: Microsoft.DBforPostgreSQL/flexibleServers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.ZoneRedundantHA/
 ---
 

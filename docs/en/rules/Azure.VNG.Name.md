@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
 resource: Virtual Network Gateway
+resourceType: Microsoft.Network/virtualNetworkGateways
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.Name/
 ---
 

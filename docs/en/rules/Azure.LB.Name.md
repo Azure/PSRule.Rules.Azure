@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
 resource: Load Balancer
+resourceType: Microsoft.Network/loadBalancers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LB.Name/
 ---
 

@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Design
 resource: API Management
+resourceType: Microsoft.ApiManagement/service,Microsoft.ApiManagement/service/apis,Microsoft.ApiManagement/service/apis/policies,Microsoft.ApiManagement/service/apis/operations,Microsoft.ApiManagement/service/apis/resolvers/policies,Microsoft.ApiManagement/service/products/policies
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.PolicyBase/
 ---
 

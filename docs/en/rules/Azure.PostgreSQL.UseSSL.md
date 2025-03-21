@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: Azure Database for PostgreSQL
+resourceType: Microsoft.DBforPostgreSQL/servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.UseSSL/
 ms-content-id: 80d34e65-8ab5-4cf3-a0dd-3b5e56e06f40
 ---

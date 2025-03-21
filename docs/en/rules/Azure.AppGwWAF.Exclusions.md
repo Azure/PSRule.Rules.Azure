@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: Network security and containment
 resource: Application Gateway
+resourceType: Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppGwWAF.Exclusions/
 ---
 
