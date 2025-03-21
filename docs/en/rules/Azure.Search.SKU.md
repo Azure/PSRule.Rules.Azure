@@ -4,6 +4,7 @@ severity: Critical
 pillar: Performance Efficiency
 category: PE:02 Capacity planning
 resource: AI Search
+resourceType: Microsoft.Search/searchServices
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.SKU/
 ---
 

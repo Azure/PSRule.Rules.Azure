@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Monitor
 resource: Service Bus
+resourceType: Microsoft.ServiceBus/namespaces,Microsoft.Insights/diagnosticSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceBus.AuditLogs/
 ---
 

@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
 resource: Network Interface
+resourceType: Microsoft.Network/networkInterfaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NIC.Name/
 ---
 

@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: Azure resources
 resource: Container Registry
+resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Quarantine/
 ---
 

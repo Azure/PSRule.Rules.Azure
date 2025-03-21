@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:10 Monitoring and threat detection
 resource: SQL Database
+resourceType: Microsoft.Sql/servers,Microsoft.Sql/servers/securityAlertPolicies
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.DefenderCloud/
 ms-content-id: 720e560d-4ad3-41ca-93dd-69c5783b9dbe
 ---

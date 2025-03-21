@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Content Delivery Network
+resourceType: Microsoft.Cdn/profiles/endpoints
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.EndpointName/
 ---
 

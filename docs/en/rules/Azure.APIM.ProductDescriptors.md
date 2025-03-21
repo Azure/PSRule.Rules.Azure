@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
 resource: API Management
+resourceType: Microsoft.ApiManagement/service,Microsoft.ApiManagement/service/products
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.ProductDescriptors/
 ---
 

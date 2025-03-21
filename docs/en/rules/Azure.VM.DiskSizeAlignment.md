@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Cost Optimization
 category: CO:06 Usage and billing increments
 resource: Virtual Machine
+resourceType: Microsoft.Compute/disks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.DiskSizeAlignment/
 ---
 

@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: SQL Managed Instance
+resourceType: Microsoft.Sql/managedInstances
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQLMI.Name/
 ---
 

@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: App Configuration
+resourceType: Microsoft.AppConfiguration/configurationStores
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.DisableLocalAuth/
 ---
 

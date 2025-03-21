@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: Azure Database for MySQL
+resourceType: Microsoft.DBforMySQL/flexibleServers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.ZoneRedundantHA/
 ---
 

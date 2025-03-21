@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Data Explorer
+resourceType: Microsoft.Kusto/clusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ADX.SLA/
 ---
 

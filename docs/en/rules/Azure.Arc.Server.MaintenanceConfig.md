@@ -3,6 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Arc
+resourceType: Microsoft.HybridCompute/machines,Microsoft.Maintenance/configurationAssignments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Arc.Server.MaintenanceConfig/
 ---
 

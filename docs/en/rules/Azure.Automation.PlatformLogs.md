@@ -3,6 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Monitoring
 resource: Automation Account
+resourceType: Microsoft.Automation/automationAccounts,Microsoft.Insights/diagnosticSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.PlatformLogs/
 ---
 

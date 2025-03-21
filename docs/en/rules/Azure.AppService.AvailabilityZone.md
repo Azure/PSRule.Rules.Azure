@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: App Service
+resourceType: Microsoft.Web/serverfarms
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.AvailabilityZone/
 ---
 

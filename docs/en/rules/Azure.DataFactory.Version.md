@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Data Factory
+resourceType: Microsoft.DataFactory/factories,Microsoft.DataFactory/datafactories
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.DataFactory.Version/
 ---
 

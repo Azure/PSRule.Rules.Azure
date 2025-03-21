@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:06 Network controls
 resource: Azure Database for PostgreSQL
+resourceType: Microsoft.DBforPostgreSQL/servers,Microsoft.DBforPostgreSQL/servers/firewallRules
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.FirewallIPRange/
 ms-content-id: fc3b5764-5b4a-4915-9311-75ec6a0d0d55
 ---

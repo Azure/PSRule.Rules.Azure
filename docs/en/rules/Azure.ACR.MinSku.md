@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Container Registry
+resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.MinSku/
 ms-content-id: a70d16d4-3717-4eef-b588-8a0204860d6e
 ---

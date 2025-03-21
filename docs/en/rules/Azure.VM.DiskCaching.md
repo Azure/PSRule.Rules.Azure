@@ -3,6 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: PE:07 Code and infrastructure
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.DiskCaching/
 ms-content-id: d28da16e-4639-466f-95e5-4ab6bf61aec7
 ---

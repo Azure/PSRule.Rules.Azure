@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:10 Monitoring and threat detection
 resource: Key Vault
+resourceType: Microsoft.KeyVault/vaults,Microsoft.Insights/diagnosticSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.Logs/
 ---
 

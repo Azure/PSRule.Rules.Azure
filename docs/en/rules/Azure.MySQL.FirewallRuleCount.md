@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Security
 category: SE:06 Network controls
 resource: Azure Database for MySQL
+resourceType: Microsoft.DBforMySQL/servers,Microsoft.DBforMySQL/servers/firewallRules
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.FirewallRuleCount/
 ms-content-id: 9debdffb-0da1-4b8d-8a17-3f480f1015ec
 ---

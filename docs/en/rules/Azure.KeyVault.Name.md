@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Key Vault
+resourceType: Microsoft.KeyVault/vaults
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.Name/
 ---
 

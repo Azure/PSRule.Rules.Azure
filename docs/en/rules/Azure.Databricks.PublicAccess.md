@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:06 Network controls
 resource: Databricks
+resourceType: Microsoft.Databricks/workspaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Databricks.PublicAccess/
 ---
 

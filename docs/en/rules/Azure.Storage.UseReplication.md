@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: Storage Account
+resourceType: Microsoft.Storage/storageAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.UseReplication/
 ---
 

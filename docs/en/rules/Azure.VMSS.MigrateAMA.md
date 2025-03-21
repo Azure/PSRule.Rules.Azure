@@ -3,6 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Monitoring
 resource: Virtual Machine Scale Sets
+resourceType: Microsoft.Compute/virtualMachineScaleSets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.MigrateAMA/
 ---
 

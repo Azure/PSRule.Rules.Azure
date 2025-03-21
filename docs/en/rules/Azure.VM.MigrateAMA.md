@@ -3,6 +3,7 @@ severity: Important
 pillar: Operational Excellence
 category: Monitoring
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines,Microsoft.Compute/virtualMachines/extensions
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.MigrateAMA/
 ---
 

@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
 resource: Azure Database for MariaDB
+resourceType: Microsoft.DBforMariaDB/servers,Microsoft.DBforMariaDB/servers/databases
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.DatabaseName/
 ---
 

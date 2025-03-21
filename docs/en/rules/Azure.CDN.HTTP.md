@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:07 Encryption
 resource: Content Delivery Network
+resourceType: Microsoft.Cdn/profiles/endpoints
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.CDN.HTTP/
 ---
 

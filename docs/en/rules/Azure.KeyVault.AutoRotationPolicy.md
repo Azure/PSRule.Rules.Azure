@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:09 Application secrets
 resource: Key Vault
+resourceType: Microsoft.KeyVault/vaults,Microsoft.KeyVault/vaults/keys
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.AutoRotationPolicy/
 ---
 

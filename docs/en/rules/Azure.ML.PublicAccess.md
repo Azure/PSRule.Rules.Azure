@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: Connectivity
 resource: Machine Learning
+resourceType: Microsoft.MachineLearningServices/workspaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.PublicAccess/
 ---
 

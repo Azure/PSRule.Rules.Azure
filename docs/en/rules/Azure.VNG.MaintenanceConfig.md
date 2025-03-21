@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Virtual Network Gateway
+resourceType: Microsoft.Network/virtualNetworkGateways,Microsoft.Maintenance/configurationAssignments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.MaintenanceConfig/
 ---
 

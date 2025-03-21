@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Azure Database for MySQL
+resourceType: Microsoft.DBforMySQL/servers,Microsoft.DBforMySQL/flexibleServers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.UseFlexible/
 ---
 

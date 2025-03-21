@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Virtual Machine
+resourceType: Microsoft.Compute/availabilitySets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.ASAlignment/
 ms-content-id: 28583693-11e4-4a16-b864-8caa6e408162
 ---

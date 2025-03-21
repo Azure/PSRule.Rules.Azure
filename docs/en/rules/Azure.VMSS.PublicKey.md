@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:08 Hardening resources
 resource: Virtual Machine Scale Sets
+resourceType: Microsoft.Compute/virtualMachineScaleSets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VMSS.PublicKey/
 ---
 

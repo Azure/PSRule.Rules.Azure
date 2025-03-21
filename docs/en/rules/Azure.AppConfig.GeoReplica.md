@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: App Configuration
+resourceType: Microsoft.AppConfiguration/configurationStores,Microsoft.AppConfiguration/configurationStores/replicas
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.GeoReplica/
 ---
 

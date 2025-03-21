@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:02 Secured development lifecycle
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines/extensions
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.ScriptExtensions/
 ---
 

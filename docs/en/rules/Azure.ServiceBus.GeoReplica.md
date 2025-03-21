@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Service Bus
+resourceType: Microsoft.ServiceBus/namespaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceBus.GeoReplica/
 ---
 

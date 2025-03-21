@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: Entra Domain Services
+resourceType: Microsoft.AAD/domainServices
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EntraDS.NTLM/
 ---
 

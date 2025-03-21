@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Bastion
+resourceType: Microsoft.Network/bastionHosts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Bastion.Name/
 ---
 

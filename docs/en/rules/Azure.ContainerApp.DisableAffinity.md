@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Performance Efficiency
 category: PE:05 Scaling and partitioning
 resource: Container App
+resourceType: Microsoft.App/containerApps
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.DisableAffinity/
 ---
 

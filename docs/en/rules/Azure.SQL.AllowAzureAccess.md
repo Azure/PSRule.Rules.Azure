@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:06 Network controls
 resource: SQL Database
+resourceType: Microsoft.Sql/servers,Microsoft.Sql/servers/firewallRules
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.AllowAzureAccess/
 ms-content-id: 30a551f6-54e0-4e51-b068-f9695d891a89
 ---

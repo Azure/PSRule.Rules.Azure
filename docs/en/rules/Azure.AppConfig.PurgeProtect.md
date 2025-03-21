@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: Data management
 resource: App Configuration
+resourceType: Microsoft.AppConfiguration/configurationStores
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.PurgeProtect/
 ---
 

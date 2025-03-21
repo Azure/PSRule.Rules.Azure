@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: Azure Database for MariaDB
+resourceType: Microsoft.DBforMariaDB/servers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.MinTLS/
 ---
 

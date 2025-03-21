@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Reliability
 category: RE:01 Simplicity and efficiency
 resource: Network Interface
+resourceType: Microsoft.Network/networkInterfaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NIC.UniqueDns/
 ---
 

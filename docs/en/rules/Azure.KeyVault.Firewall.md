@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:06 Network controls
 resource: Key Vault
+resourceType: Microsoft.KeyVault/vaults
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.KeyVault.Firewall/
 ---
 

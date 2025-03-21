@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Security
 category: SE:01 Security baseline
 resource: Policy
+resourceType: Microsoft.Authorization/policyExemptions
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Policy.WaiverExpiry/
 ---
 

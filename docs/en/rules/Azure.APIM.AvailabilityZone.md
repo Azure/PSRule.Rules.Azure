@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: API Management
+resourceType: Microsoft.ApiManagement/service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.AvailabilityZone/
 ---
 

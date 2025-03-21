@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Reliability
 category: RE:05 Redundancy
 resource: Virtual Network
+resourceType: Microsoft.Network/virtualNetworks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.FirewallSubnetNAT/
 ---
 
@@ -14,9 +15,11 @@ Zonal-deployed Azure Firewalls should consider using an Azure NAT Gateway for ou
 
 ## DESCRIPTION
 
-Azure Firewall can be deployed with up to 250 public IP addresses, each providing 2,496 SNAT ports. This setup offers a maximum of 1,248,000 SNAT ports.
+Azure Firewall can be deployed with up to 250 public IP addresses, each providing 2,496 SNAT ports.
+This setup offers a maximum of 1,248,000 SNAT ports.
 
-Managing a large number of public IP addresses comes with challenges, particularly regarding downstream IP address filtering requirements. When Azure Firewall is associated with multiple public IP addresses, these filtering requirements must be applied to all associated addresses. 
+Managing a large number of public IP addresses comes with challenges, particularly regarding downstream IP address filtering requirements.
+When Azure Firewall is associated with multiple public IP addresses, these filtering requirements must be applied to all associated addresses. 
 Even when using Public IP address prefixes, associating 250 public IP addresses requires managing 16 public IP address prefixes on the downstream side.
 
 A more efficient solution for scaling and dynamically allocating outbound SNAT ports is to use an Azure NAT Gateway:
@@ -32,7 +35,8 @@ When an Azure NAT Gateway is associated with an Azure Firewall subnet:
   - Response traffic for outbound flows also passes through the NAT Gateway.
 - If multiple public IP addresses are associated with the NAT Gateway, the IP address used is randomly selected, and specific addresses cannot be chosen.
 
-**Important** Azure NAT Gateway supports only zonal deployment. Therefore, only zonal-deployed Azure Firewalls should utilize Azure NAT Gateway.
+**Important** Azure NAT Gateway supports only zonal deployment.
+Therefore, only zonal-deployed Azure Firewalls should utilize Azure NAT Gateway.
 Azure Firewalls with zone redundancy might face reduced availability if a NAT Gateway is deployed in a single zone that experiences a failure.
 
 ## RECOMMENDATION

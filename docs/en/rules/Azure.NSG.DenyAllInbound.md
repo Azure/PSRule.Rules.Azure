@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:01 Simplicity and efficiency
 resource: Network Security Group
+resourceType: Microsoft.Network/networkSecurityGroups
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.DenyAllInbound/
 ---
 

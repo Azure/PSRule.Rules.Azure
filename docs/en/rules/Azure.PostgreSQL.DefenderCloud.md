@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Security operations
 resource: Azure Database for PostgreSQL
+resourceType: Microsoft.DBforPostgreSQL/servers,Microsoft.DBforPostgreSQL/servers/securityAlertPolicies
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.DefenderCloud/
 ---
 

@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Front Door
+resourceType: Microsoft.Network/FrontDoorWebApplicationFirewallPolicies
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.WAF.Name/
 ---
 

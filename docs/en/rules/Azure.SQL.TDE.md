@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: SQL Database
+resourceType: Microsoft.Sql/servers/databases,Microsoft.Sql/servers/databases/transparentDataEncryption
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.TDE/
 ---
 

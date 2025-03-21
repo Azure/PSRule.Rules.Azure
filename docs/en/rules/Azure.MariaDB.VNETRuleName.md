@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Azure Database for MariaDB
+resourceType: Microsoft.DBforMariaDB/servers,Microsoft.DBforMariaDB/servers/virtualNetworkRules
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MariaDB.VNETRuleName/
 ---
 

@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: Encryption
 resource: API Management
+resourceType: Microsoft.ApiManagement/service
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.Protocols/
 ---
 

@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
 resource: SQL Database
+resourceType: Microsoft.Sql/servers,Microsoft.Sql/servers/administrators
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.AAD/
 ---
 

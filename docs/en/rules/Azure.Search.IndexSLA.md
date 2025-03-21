@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:06 Data partitioning
 resource: AI Search
+resourceType: Microsoft.Search/searchServices
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.IndexSLA/
 ---
 

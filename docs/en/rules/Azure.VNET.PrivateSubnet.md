@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: SE:06 Network controls
 resource: Virtual Network
+resourceType: Microsoft.Network/virtualNetworks,Microsoft.Network/virtualNetworks/subnets
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.PrivateSubnet/
 ---
 

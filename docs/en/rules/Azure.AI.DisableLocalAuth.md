@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: Azure AI
+resourceType: Microsoft.CognitiveServices/accounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AI.DisableLocalAuth/
 ---
 

@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
 resource: Application Insights
+resourceType: Microsoft.Insights/components
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppInsights.Name/
 ---
 

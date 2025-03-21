@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: Azure Cache for Redis
+resourceType: Microsoft.Cache/redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.MinTLS/
 ms-content-id: 31240bca-b04f-4267-9c31-cfca4e91cfbf
 ---

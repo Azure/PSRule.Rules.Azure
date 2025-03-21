@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: Public IP address
+resourceType: Microsoft.Network/publicIPAddresses
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.AvailabilityZone/
 ---
 

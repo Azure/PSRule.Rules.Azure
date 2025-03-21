@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:10 Monitoring and threat detection
 resource: SQL Database
+resourceType: Microsoft.Sql/servers,Microsoft.Sql/servers/auditingSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.Auditing/
 ms-content-id: d6084913-9ff9-40b6-a65b-30fcd4d49251
 ---

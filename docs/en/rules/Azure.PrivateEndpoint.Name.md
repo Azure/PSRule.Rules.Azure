@@ -1,9 +1,10 @@
 ---
-reviewed: 2021/11/27
+reviewed: 2021-11-27
 severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Private Endpoint
+resourceType: Microsoft.Network/privateEndpoints
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PrivateEndpoint.Name/
 ---
 

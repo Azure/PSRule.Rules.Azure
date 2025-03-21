@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: Health modeling
 resource: Front Door
+resourceType: Microsoft.Network/frontDoors,Microsoft.Network/Frontdoors/HealthProbeSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.ProbeMethod/
 ---
 

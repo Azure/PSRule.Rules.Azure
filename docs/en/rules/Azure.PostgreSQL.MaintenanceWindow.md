@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Azure Database for PostgreSQL
+resourceType: Microsoft.DBforPostgreSQL/flexibleServers
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.MaintenanceWindow/
 ---
 
@@ -14,7 +15,8 @@ Configure a customer-controlled maintenance window for Azure Database for Postgr
 
 ## DESCRIPTION
 
-Azure Database for PostgreSQL flexible servers undergo periodic maintenance to ensure your managed database remains secure, stable, and up-to-date. This maintenance includes applying security updates, system upgrades, and software patches.
+Azure Database for PostgreSQL flexible servers undergo periodic maintenance to ensure your managed database remains secure, stable, and up-to-date.
+This maintenance includes applying security updates, system upgrades, and software patches.
 
 Maintenance windows can be scheduled in two ways for each flexible server:
 

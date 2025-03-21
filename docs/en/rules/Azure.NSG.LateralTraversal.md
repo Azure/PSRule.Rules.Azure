@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:04 Segmentation
 resource: Network Security Group
+resourceType: Microsoft.Network/networkSecurityGroups
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.LateralTraversal/
 ---
 

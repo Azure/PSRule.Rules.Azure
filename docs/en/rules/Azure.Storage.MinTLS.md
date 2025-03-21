@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: Storage Account
+resourceType: Microsoft.Storage/storageAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.MinTLS/
 ---
 

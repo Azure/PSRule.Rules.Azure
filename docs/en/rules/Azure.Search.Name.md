@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
 resource: AI Search
+resourceType: Microsoft.Search/searchServices
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.Name/
 ---
 

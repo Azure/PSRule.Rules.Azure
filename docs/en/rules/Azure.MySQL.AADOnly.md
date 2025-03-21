@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:05 Identity and access management
 resource: Azure Database for MySQL
+resourceType: Microsoft.DBforMySQL/flexibleServers,Microsoft.DBforMySQL/flexibleServers/configurations
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.MySQL.AADOnly/
 ---
 

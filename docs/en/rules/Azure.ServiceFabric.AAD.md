@@ -3,6 +3,7 @@ severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
 resource: Service Fabric
+resourceType: Microsoft.ServiceFabric/clusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.AAD/
 ---
 

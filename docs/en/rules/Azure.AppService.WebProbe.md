@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: App Service
+resourceType: Microsoft.Web/sites,Microsoft.Web/sites/slots
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.WebProbe/
 ---
 

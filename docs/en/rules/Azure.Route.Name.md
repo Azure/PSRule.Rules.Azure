@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Route table
+resourceType: Microsoft.Network/routeTables
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Route.Name/
 ---
 

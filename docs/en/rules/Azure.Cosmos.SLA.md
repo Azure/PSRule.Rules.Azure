@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Cosmos DB
+resourceType: Microsoft.DocumentDB/databaseAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.SLA/
 ---
 

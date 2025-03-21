@@ -3,6 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: Design for performance
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.SQLServerDisk/
 ---
 

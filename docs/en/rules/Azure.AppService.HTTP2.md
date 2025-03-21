@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Performance Efficiency
 category: PE:07 Code and infrastructure
 resource: App Service
+resourceType: Microsoft.Web/sites,Microsoft.Web/sites/slots
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.HTTP2/
 ---
 

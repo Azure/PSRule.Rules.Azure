@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: App Service Environment
+resourceType: Microsoft.Web/hostingEnvironments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ASE.AvailabilityZone/
 ---
 
@@ -15,7 +16,7 @@ Deploy app service environments using availability zones in supported regions to
 ## DESCRIPTION
 
 App Service Environments support zone redundancy, which distributes your application running within the environment across Availablity Zones.
-Each Availability Zone is a group of phyiscally separated data centers.
+Each Availability Zone is a group of physically separated data centers.
 Deploying your application with zone redundancy:
 
 - Scales your plan within the environment to a minimum of 3 instances in a highly available configuration.

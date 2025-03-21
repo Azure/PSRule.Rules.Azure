@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Azure Managed Grafana
+resourceType: Microsoft.Dashboard/grafana
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Grafana.Version/
 ---
 

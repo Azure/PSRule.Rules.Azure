@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:12 Incident response
 resource: Microsoft Defender for Cloud
+resourceType: Microsoft.Security/securityContacts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Defender.SecurityContact/
 ms-content-id: 18fcf75f-a5e6-4a34-baba-74bd49502cd7
 ---

@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: Authentication
 resource: Machine Learning
+resourceType: Microsoft.MachineLearningServices/workspaces/computes
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ML.DisableLocalAuth/
 ---
 
@@ -15,7 +16,7 @@ Azure Machine Learning compute resources should have local authentication method
 
 ## DESCRIPTION
 
-Azure Machine Learning (ML) compute can have local authenication enabled or disabled.
+Azure Machine Learning (ML) compute can have local authentication enabled or disabled.
 When enabled local authentication methods must be managed and audited separately.
 
 Disabling local authentication ensures that Entra ID (previously Azure Active Directory) is used exclusively for authentication.

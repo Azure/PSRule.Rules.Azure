@@ -3,6 +3,7 @@ severity: Important
 pillar: Performance Efficiency
 category: PE:08 Data performance
 resource: Front Door
+resourceType: Microsoft.Network/frontDoors,Microsoft.Network/frontDoors/rulesEngines
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.FrontDoor.UseCaching/
 ---
 

@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: App Service
+resourceType: Microsoft.Web/sites,Microsoft.Web/sites/slots
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppService.MinTLS/
 ms-content-id: e19fbe7e-da05-47d4-8de1-2fdf52ada662
 ---

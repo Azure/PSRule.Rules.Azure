@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: Network segmentation
 resource: Virtual Network
+resourceType: Microsoft.Network/virtualNetworks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.FirewallSubnet/
 ---
 

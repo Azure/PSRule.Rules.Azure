@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Continuous integration
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.ComputerName/
 ---
 

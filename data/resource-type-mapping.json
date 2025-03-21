@@ -1,0 +1,3754 @@
+[
+  {
+    "category": "CO:07 Component costs",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.ACR.Usage",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.ACR.ContainerScan",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.ACR.ContainerScan",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.ACR.ImageHealth",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:05 High-availability multi-region design",
+    "pillar": "Reliability",
+    "ruleId": "Azure.ACR.GeoReplica",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.ACR.SoftDelete",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:14 Consolidation",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.ADX.Usage",
+    "resourceType": "Microsoft.Kusto/clusters",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.Version",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.Version",
+    "resourceType": "Microsoft.ContainerService/managedClusters/agentPools",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.PoolVersion",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Application scalability",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AKS.PoolScaleSet",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Application scalability",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AKS.PoolScaleSet",
+    "resourceType": "Microsoft.ContainerService/managedClusters/agentPools",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:05 Scaling and partitioning",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AKS.NodeMinPods",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:05 Scaling and partitioning",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AKS.NodeMinPods",
+    "resourceType": "Microsoft.ContainerService/managedClusters/agentPools",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:05 Scaling and partitioning",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AKS.AutoScaling",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:05 Scaling and partitioning",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AKS.AutoScaling",
+    "resourceType": "Microsoft.ContainerService/managedClusters/agentPools",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:05 Scaling and partitioning",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.CNISubnetSize",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.AvailabilityZone",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.AuditLogs",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.AuditLogs",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitoring",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AKS.PlatformLogs",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitoring",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AKS.PlatformLogs",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.MinNodeCount",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.MinUserPoolNodes",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.MinUserPoolNodes",
+    "resourceType": "Microsoft.ContainerService/managedClusters/agentPools",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.UptimeSLA",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Performance efficiency checklist",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AKS.EphemeralOSDisk",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Performance efficiency checklist",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AKS.EphemeralOSDisk",
+    "resourceType": "Microsoft.ContainerService/managedClusters/agentPools",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:07 Component costs",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.AKS.AuditAdmin",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:07 Component costs",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.AKS.AuditAdmin",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.MaintenanceWindow",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AKS.MaintenanceWindow",
+    "resourceType": "Microsoft.ContainerService/managedClusters/maintenanceConfigurations",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.HTTPEndpoint",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.HTTPEndpoint",
+    "resourceType": "Microsoft.ApiManagement/service/apis",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.APIM.APIDescriptors",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.APIM.APIDescriptors",
+    "resourceType": "Microsoft.ApiManagement/service/apis",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.HTTPBackend",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.HTTPBackend",
+    "resourceType": "Microsoft.ApiManagement/service/backends",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.HTTPBackend",
+    "resourceType": "Microsoft.ApiManagement/service/apis",
+    "severity": "Critical"
+  },
+  {
+    "category": "Data protection",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.EncryptValues",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "Data protection",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.EncryptValues",
+    "resourceType": "Microsoft.ApiManagement/service/namedValues",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.ProductSubscription",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.ProductSubscription",
+    "resourceType": "Microsoft.ApiManagement/service/products",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.ProductApproval",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.ProductApproval",
+    "resourceType": "Microsoft.ApiManagement/service/products",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.SampleProducts",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.SampleProducts",
+    "resourceType": "Microsoft.ApiManagement/service/products",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.APIM.ProductDescriptors",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.APIM.ProductDescriptors",
+    "resourceType": "Microsoft.ApiManagement/service/products",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Configuration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.APIM.ProductTerms",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "Configuration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.APIM.ProductTerms",
+    "resourceType": "Microsoft.ApiManagement/service/products",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.APIM.CertificateExpiry",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.APIM.AvailabilityZone",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.APIM.MinAPIVersion",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.APIM.MultiRegion",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "Resiliency and dependencies",
+    "pillar": "Reliability",
+    "ruleId": "Azure.APIM.MultiRegionGateway",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.CORSPolicy",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.CORSPolicy",
+    "resourceType": "Microsoft.ApiManagement/service/policies",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.PolicyBase",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.PolicyBase",
+    "resourceType": "Microsoft.ApiManagement/service/apis",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.PolicyBase",
+    "resourceType": "Microsoft.ApiManagement/service/apis/policies",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.PolicyBase",
+    "resourceType": "Microsoft.ApiManagement/service/apis/operations",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.PolicyBase",
+    "resourceType": "Microsoft.ApiManagement/service/apis/resolvers/policies",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.PolicyBase",
+    "resourceType": "Microsoft.ApiManagement/service/products/policies",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.DefenderCloud",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.DefenderCloud",
+    "resourceType": "Microsoft.Security/apiCollections",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.AppConfig.AuditLogs",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.AppConfig.AuditLogs",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppConfig.GeoReplica",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppConfig.GeoReplica",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores/replicas",
+    "severity": "Important"
+  },
+  {
+    "category": "Data management",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppConfig.PurgeProtect",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGw.UseHTTPS",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppGw.AvailabilityZone",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AppGw.Name",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Resiliency and dependencies",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppService.PlanInstanceCount",
+    "resourceType": "Microsoft.Web/serverfarms",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.MinTLS",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.MinTLS",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.RemoteDebug",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.RemoteDebug",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.NETVersion",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.NETVersion",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.PHPVersion",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.PHPVersion",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "Application design",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppService.AlwaysOn",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "Application design",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppService.AlwaysOn",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:07 Code and infrastructure",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AppService.HTTP2",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Awareness"
+  },
+  {
+    "category": "PE:07 Code and infrastructure",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AppService.HTTP2",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppService.WebProbe",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppService.WebProbe",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppService.WebProbePath",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppService.WebProbePath",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.WebSecureFtp",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.WebSecureFtp",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.NodeJsVersion",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.NodeJsVersion",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppService.AvailabilityZone",
+    "resourceType": "Microsoft.Web/serverfarms",
+    "severity": "Important"
+  },
+  {
+    "category": "Security operations",
+    "pillar": "Security",
+    "ruleId": "Azure.Arc.Kubernetes.Defender",
+    "resourceType": "Microsoft.Kubernetes/connectedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Security operations",
+    "pillar": "Security",
+    "ruleId": "Azure.Arc.Kubernetes.Defender",
+    "resourceType": "Microsoft.KubernetesConfiguration/extensions",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Arc.Server.MaintenanceConfig",
+    "resourceType": "Microsoft.HybridCompute/machines",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Arc.Server.MaintenanceConfig",
+    "resourceType": "Microsoft.Maintenance/configurationAssignments",
+    "severity": "Important"
+  },
+  {
+    "category": "Infrastructure provisioning",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.ASE.MigrateV3",
+    "resourceType": "Microsoft.Web/hostingEnvironments",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.ASE.AvailabilityZone",
+    "resourceType": "Microsoft.Web/hostingEnvironments",
+    "severity": "Important"
+  },
+  {
+    "category": "Data protection",
+    "pillar": "Security",
+    "ruleId": "Azure.Automation.EncryptVariables",
+    "resourceType": "Microsoft.Automation/automationAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "Data protection",
+    "pillar": "Security",
+    "ruleId": "Azure.Automation.EncryptVariables",
+    "resourceType": "Microsoft.Automation/automationAccounts/variables",
+    "severity": "Important"
+  },
+  {
+    "category": "Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.Automation.WebHookExpiry",
+    "resourceType": "Microsoft.Automation/automationAccounts",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.Automation.WebHookExpiry",
+    "resourceType": "Microsoft.Automation/automationAccounts/webhooks",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Monitor",
+    "pillar": "Security",
+    "ruleId": "Azure.Automation.AuditLogs",
+    "resourceType": "Microsoft.Automation/automationAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitor",
+    "pillar": "Security",
+    "ruleId": "Azure.Automation.AuditLogs",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitoring",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Automation.PlatformLogs",
+    "resourceType": "Microsoft.Automation/automationAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitoring",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Automation.PlatformLogs",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.CDN.EndpointName",
+    "resourceType": "Microsoft.Cdn/profiles/endpoints",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.CDN.MinTLS",
+    "resourceType": "Microsoft.Cdn/profiles/endpoints",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.CDN.MinTLS",
+    "resourceType": "Microsoft.Cdn/profiles/endpoints/customdomains",
+    "severity": "Important"
+  },
+  {
+    "category": "Performance efficiency checklist",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.CDN.UseFrontDoor",
+    "resourceType": "Microsoft.Cdn/profiles",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.ContainerApp.RestrictIngress",
+    "resourceType": "Microsoft.App/containerApps",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.ContainerApp.AvailabilityZone",
+    "resourceType": "Microsoft.App/managedEnvironments",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.Cosmos.DisableLocalAuth",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:12 Incident response",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.SecurityContact",
+    "resourceType": "Microsoft.Security/securityContacts",
+    "severity": "Important"
+  },
+  {
+    "category": "Security operations",
+    "pillar": "Security",
+    "ruleId": "Azure.DefenderCloud.Provisioning",
+    "resourceType": "Microsoft.Security/autoProvisioningSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.Storage.MalwareScan",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.Storage.DataScan",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.Deployment.OutputSecretValue",
+    "resourceType": "Microsoft.Resources/deployments",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.Deployment.AdminUsername",
+    "resourceType": "Microsoft.Resources/deployments",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.Deployment.SecureParameter",
+    "resourceType": "Microsoft.Resources/deployments",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.Deployment.SecureValue",
+    "resourceType": "Microsoft.Resources/deployments",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.Deployment.OuterSecret",
+    "resourceType": "Microsoft.Resources/deployments",
+    "severity": "Critical"
+  },
+  {
+    "category": "CO:14 Consolidation",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.EventHub.Usage",
+    "resourceType": "Microsoft.EventHub/namespaces",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.EventHub.Firewall",
+    "resourceType": "Microsoft.EventHub/namespaces",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Firewall.AvailabilityZone",
+    "resourceType": "Microsoft.Network/azureFirewalls",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.MinTLS",
+    "resourceType": "Microsoft.Network/frontDoors",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.MinTLS",
+    "resourceType": "Microsoft.Network/frontDoors/frontendEndpoints",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.Logs",
+    "resourceType": "Microsoft.Cdn/profiles",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.Logs",
+    "resourceType": "Microsoft.Network/frontDoors",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.Logs",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "Health modeling",
+    "pillar": "Reliability",
+    "ruleId": "Azure.FrontDoor.Probe",
+    "resourceType": "Microsoft.Network/frontDoors",
+    "severity": "Important"
+  },
+  {
+    "category": "Health modeling",
+    "pillar": "Reliability",
+    "ruleId": "Azure.FrontDoor.Probe",
+    "resourceType": "Microsoft.Network/Frontdoors/HealthProbeSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "Health modeling",
+    "pillar": "Reliability",
+    "ruleId": "Azure.FrontDoor.ProbeMethod",
+    "resourceType": "Microsoft.Network/frontDoors",
+    "severity": "Important"
+  },
+  {
+    "category": "Health modeling",
+    "pillar": "Reliability",
+    "ruleId": "Azure.FrontDoor.ProbeMethod",
+    "resourceType": "Microsoft.Network/Frontdoors/HealthProbeSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "Health modeling",
+    "pillar": "Reliability",
+    "ruleId": "Azure.FrontDoor.ProbePath",
+    "resourceType": "Microsoft.Network/frontDoors",
+    "severity": "Important"
+  },
+  {
+    "category": "Health modeling",
+    "pillar": "Reliability",
+    "ruleId": "Azure.FrontDoor.ProbePath",
+    "resourceType": "Microsoft.Network/Frontdoors/HealthProbeSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.UseWAF",
+    "resourceType": "Microsoft.Network/frontDoors",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.UseWAF",
+    "resourceType": "Microsoft.Network/frontDoors/frontendEndpoints",
+    "severity": "Critical"
+  },
+  {
+    "category": "PE:08 Data performance",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.FrontDoor.UseCaching",
+    "resourceType": "Microsoft.Network/frontDoors",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:08 Data performance",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.FrontDoor.UseCaching",
+    "resourceType": "Microsoft.Network/frontDoors/rulesEngines",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.KeyVault.AccessPolicy",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.KeyVault.AccessPolicy",
+    "resourceType": "Microsoft.KeyVault/vaults/accessPolicies",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.KeyVault.Logs",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.KeyVault.Logs",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.KeyVault.Name",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.KeyVault.SecretName",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.KeyVault.SecretName",
+    "resourceType": "Microsoft.KeyVault/vaults/secrets",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.KeyVault.KeyName",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.KeyVault.KeyName",
+    "resourceType": "Microsoft.KeyVault/vaults/keys",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:09 Application secrets",
+    "pillar": "Security",
+    "ruleId": "Azure.KeyVault.AutoRotationPolicy",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:09 Application secrets",
+    "pillar": "Security",
+    "ruleId": "Azure.KeyVault.AutoRotationPolicy",
+    "resourceType": "Microsoft.KeyVault/vaults/keys",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.LB.Probe",
+    "resourceType": "Microsoft.Network/loadBalancers",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.LB.AvailabilityZone",
+    "resourceType": "Microsoft.Network/loadBalancers",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.LB.StandardSKU",
+    "resourceType": "Microsoft.Network/loadBalancers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.LogicApp.LimitHTTPTrigger",
+    "resourceType": "Microsoft.Logic/workflows",
+    "severity": "Critical"
+  },
+  {
+    "category": "Security operations",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.DefenderCloud",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "Security operations",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.DefenderCloud",
+    "resourceType": "Microsoft.DBforMariaDB/servers/securityAlertPolicies",
+    "severity": "Important"
+  },
+  {
+    "category": "Data protection",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.UseSSL",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.MinTLS",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.MariaDB.ServerName",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.MariaDB.DatabaseName",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.MariaDB.DatabaseName",
+    "resourceType": "Microsoft.DBforMariaDB/servers/databases",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.MariaDB.FirewallRuleName",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.MariaDB.FirewallRuleName",
+    "resourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.MariaDB.VNETRuleName",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.MariaDB.VNETRuleName",
+    "resourceType": "Microsoft.DBforMariaDB/servers/virtualNetworkRules",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Network security and containment",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.AllowAzureAccess",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "Network security and containment",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.AllowAzureAccess",
+    "resourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.FirewallRuleCount",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.FirewallRuleCount",
+    "resourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.FirewallIPRange",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MariaDB.FirewallIPRange",
+    "resourceType": "Microsoft.DBforMariaDB/servers/firewallRules",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.FirewallRuleCount",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.FirewallRuleCount",
+    "resourceType": "Microsoft.DBforMySQL/servers/firewallRules",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.AllowAzureAccess",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.AllowAzureAccess",
+    "resourceType": "Microsoft.DBforMySQL/servers/firewallRules",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.FirewallIPRange",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.FirewallIPRange",
+    "resourceType": "Microsoft.DBforMySQL/servers/firewallRules",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.MySQL.ServerName",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.MySQL.UseFlexible",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.MySQL.UseFlexible",
+    "resourceType": "Microsoft.DBforMySQL/flexibleServers",
+    "severity": "Important"
+  },
+  {
+    "category": "Security operations",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.DefenderCloud",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "Security operations",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.DefenderCloud",
+    "resourceType": "Microsoft.DBforMySQL/servers/securityAlertPolicies",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.AAD",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.AAD",
+    "resourceType": "Microsoft.DBforMySQL/flexibleServers",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.AAD",
+    "resourceType": "Microsoft.DBforMySQL/servers/administrators",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.AAD",
+    "resourceType": "Microsoft.DBforMySQL/flexibleServers/administrators",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.AADOnly",
+    "resourceType": "Microsoft.DBforMySQL/flexibleServers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.AADOnly",
+    "resourceType": "Microsoft.DBforMySQL/flexibleServers/configurations",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.MySQL.ZoneRedundantHA",
+    "resourceType": "Microsoft.DBforMySQL/flexibleServers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.NSG.AnyInboundSource",
+    "resourceType": "Microsoft.Network/networkSecurityGroups",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:01 Simplicity and efficiency",
+    "pillar": "Reliability",
+    "ruleId": "Azure.NSG.DenyAllInbound",
+    "resourceType": "Microsoft.Network/networkSecurityGroups",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:04 Segmentation",
+    "pillar": "Security",
+    "ruleId": "Azure.NSG.LateralTraversal",
+    "resourceType": "Microsoft.Network/networkSecurityGroups",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:13 Personnel time",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.NSG.Associated",
+    "resourceType": "Microsoft.Network/networkSecurityGroups",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Policy.Descriptors",
+    "resourceType": "Microsoft.Authorization/policyDefinitions",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Policy.Descriptors",
+    "resourceType": "Microsoft.Authorization/policySetDefinitions",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Policy.AssignmentDescriptors",
+    "resourceType": "Microsoft.Authorization/policyAssignments",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Policy.AssignmentAssignedBy",
+    "resourceType": "Microsoft.Authorization/policyAssignments",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Policy.ExemptionDescriptors",
+    "resourceType": "Microsoft.Authorization/policyExemptions",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:01 Security baseline",
+    "pillar": "Security",
+    "ruleId": "Azure.Policy.WaiverExpiry",
+    "resourceType": "Microsoft.Authorization/policyExemptions",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.FirewallRuleCount",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.FirewallRuleCount",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers/firewallRules",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.AllowAzureAccess",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.AllowAzureAccess",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers/firewallRules",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.FirewallIPRange",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.FirewallIPRange",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers/firewallRules",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.PostgreSQL.ServerName",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Target and non-functional requirements",
+    "pillar": "Reliability",
+    "ruleId": "Azure.PostgreSQL.GeoRedundantBackup",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "Target and non-functional requirements",
+    "pillar": "Reliability",
+    "ruleId": "Azure.PostgreSQL.GeoRedundantBackup",
+    "resourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+    "severity": "Important"
+  },
+  {
+    "category": "Security operations",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.DefenderCloud",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "Security operations",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.DefenderCloud",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers/securityAlertPolicies",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.AAD",
+    "resourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.AAD",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.AAD",
+    "resourceType": "Microsoft.DBforPostgreSQL/flexibleServers/administrators",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.AAD",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers/administrators",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.PostgreSQL.ZoneRedundantHA",
+    "resourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:14 Consolidation",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.PublicIP.IsAttached",
+    "resourceType": "Microsoft.Network/publicIPAddresses",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.PublicIP.Name",
+    "resourceType": "Microsoft.Network/publicIPAddresses",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.PublicIP.DNSLabel",
+    "resourceType": "Microsoft.Network/publicIPAddresses",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.PublicIP.AvailabilityZone",
+    "resourceType": "Microsoft.Network/publicIPAddresses",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:05 Scaling and partitioning",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.Redis.MaxMemoryReserved",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Redis.AvailabilityZone",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.RedisEnterprise.Zones",
+    "resourceType": "Microsoft.Cache/redisEnterprise",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.Redis.FirewallRuleCount",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.Redis.FirewallRuleCount",
+    "resourceType": "Microsoft.Cache/redis/firewallRules",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.Redis.FirewallIPRange",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.Redis.FirewallIPRange",
+    "resourceType": "Microsoft.Cache/redis/firewallRules",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Redis.Version",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.ResourceGroup.Name",
+    "resourceType": "Microsoft.Resources/resourceGroups",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Design",
+    "pillar": "Reliability",
+    "ruleId": "Azure.RSV.StorageType",
+    "resourceType": "Microsoft.RecoveryServices/vaults",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Reliability",
+    "ruleId": "Azure.RSV.StorageType",
+    "resourceType": "Microsoft.RecoveryServices/vaults/backupconfig",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Reliability",
+    "ruleId": "Azure.RSV.ReplicationAlert",
+    "resourceType": "Microsoft.RecoveryServices/vaults",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:02 Capacity planning",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.Search.SKU",
+    "resourceType": "Microsoft.Search/searchServices",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:06 Data partitioning",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Search.QuerySLA",
+    "resourceType": "Microsoft.Search/searchServices",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:06 Data partitioning",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Search.IndexSLA",
+    "resourceType": "Microsoft.Search/searchServices",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.Search.ManagedIdentity",
+    "resourceType": "Microsoft.Search/searchServices",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Search.Name",
+    "resourceType": "Microsoft.Search/searchServices",
+    "severity": "Awareness"
+  },
+  {
+    "category": "CO:14 Consolidation",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.ServiceBus.Usage",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitor",
+    "pillar": "Security",
+    "ruleId": "Azure.ServiceBus.AuditLogs",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitor",
+    "pillar": "Security",
+    "ruleId": "Azure.ServiceBus.AuditLogs",
+    "resourceType": "Microsoft.Insights/diagnosticSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.ServiceFabric.AAD",
+    "resourceType": "Microsoft.ServiceFabric/clusters",
+    "severity": "Critical"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.SignalR.Name",
+    "resourceType": "Microsoft.SignalRService/SignalR",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.FirewallRuleCount",
+    "resourceType": "Microsoft.Sql/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.FirewallRuleCount",
+    "resourceType": "Microsoft.Sql/servers/firewallRules",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.AllowAzureAccess",
+    "resourceType": "Microsoft.Sql/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.AllowAzureAccess",
+    "resourceType": "Microsoft.Sql/servers/firewallRules",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.FirewallIPRange",
+    "resourceType": "Microsoft.Sql/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.FirewallIPRange",
+    "resourceType": "Microsoft.Sql/servers/firewallRules",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.DefenderCloud",
+    "resourceType": "Microsoft.Sql/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.DefenderCloud",
+    "resourceType": "Microsoft.Sql/servers/securityAlertPolicies",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.Auditing",
+    "resourceType": "Microsoft.Sql/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.Auditing",
+    "resourceType": "Microsoft.Sql/servers/auditingSettings",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.AAD",
+    "resourceType": "Microsoft.Sql/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.AAD",
+    "resourceType": "Microsoft.Sql/servers/administrators",
+    "severity": "Critical"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.SQL.ServerName",
+    "resourceType": "Microsoft.Sql/servers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.AADOnly",
+    "resourceType": "Microsoft.Sql/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.AADOnly",
+    "resourceType": "Microsoft.Sql/servers/azureADOnlyAuthentications",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.TDE",
+    "resourceType": "Microsoft.Sql/servers/databases",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.TDE",
+    "resourceType": "Microsoft.Sql/servers/databases/transparentDataEncryption",
+    "severity": "Critical"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.SQL.DBName",
+    "resourceType": "Microsoft.Sql/servers/databases",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.SQL.FGName",
+    "resourceType": "Microsoft.Sql/servers/failoverGroups",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.SQL.MaintenanceWindow",
+    "resourceType": "Microsoft.Sql/servers'",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.SQL.MaintenanceWindow",
+    "resourceType": "Microsoft.Sql/servers/databases",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.SQL.MaintenanceWindow",
+    "resourceType": "Microsoft.Sql/servers/elasticPools",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.SQLMI.Name",
+    "resourceType": "Microsoft.Sql/managedInstances",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.SQLMI.AADOnly",
+    "resourceType": "Microsoft.Sql/managedInstances",
+    "severity": "Important"
+  },
+  {
+    "category": "Authentication",
+    "pillar": "Security",
+    "ruleId": "Azure.SQLMI.AAD",
+    "resourceType": "Microsoft.Sql/managedInstances",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Storage.UseReplication",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Storage.SoftDelete",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Storage.SoftDelete",
+    "resourceType": "Microsoft.Storage/storageAccounts/blobServices",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.BlobAccessType",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.BlobAccessType",
+    "resourceType": "Microsoft.Storage/storageAccounts/blobServices/containers",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Storage.Name",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Storage.FileShareSoftDelete",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Storage.FileShareSoftDelete",
+    "resourceType": "Microsoft.Storage/storageAccounts/fileServices",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Storage.ContainerSoftDelete",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Storage.ContainerSoftDelete",
+    "resourceType": "Microsoft.Storage/storageAccounts/blobServices",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.Defender.MalwareScan",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.Defender.MalwareScan",
+    "resourceType": "Microsoft.Security/defenderForStorageSettings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.Defender.DataScan",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.Defender.DataScan",
+    "resourceType": "Microsoft.Security/defenderForStorageSettings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.DefenderCloud",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.DefenderCloud",
+    "resourceType": "Microsoft.Security/defenderForStorageSettings",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.TrafficManager.Endpoints",
+    "resourceType": "Microsoft.Network/trafficManagerProfiles",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.TrafficManager.Protocol",
+    "resourceType": "Microsoft.Network/trafficManagerProfiles",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:01 Simplicity and efficiency",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VM.UseManagedDisks",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:07 Code and infrastructure",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.VM.DiskCaching",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:05 Rate optimization",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.VM.UseHybridUseBenefit",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.VM.PublicKey",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:10 Automation design",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.Agent",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.VM.Updates",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.Name",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.ComputerName",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Awareness"
+  },
+  {
+    "category": "CO:07 Component costs",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.VM.DiskAttached",
+    "resourceType": "Microsoft.Compute/disks",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:06 Usage and billing increments",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.VM.DiskSizeAlignment",
+    "resourceType": "Microsoft.Compute/disks",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Data protection",
+    "pillar": "Security",
+    "ruleId": "Azure.VM.ADE",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.DiskName",
+    "resourceType": "Microsoft.Compute/disks",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VM.ASMinMembers",
+    "resourceType": "Microsoft.Compute/availabilitySets",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.ASName",
+    "resourceType": "Microsoft.Compute/availabilitySets",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.PPGName",
+    "resourceType": "Microsoft.Compute/proximityPlacementGroups",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.VM.ScriptExtensions",
+    "resourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitoring",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.MigrateAMA",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitoring",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.MigrateAMA",
+    "resourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "severity": "Important"
+  },
+  {
+    "category": "Design for performance",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.VM.SQLServerDisk",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:07 Monitoring system",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.AMA",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:07 Monitoring system",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VM.AMA",
+    "resourceType": "Microsoft.Compute/virtualMachines/extensions",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VM.MaintenanceConfig",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VM.MaintenanceConfig",
+    "resourceType": "Microsoft.Maintenance/configurationAssignments",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.VM.PublicIPAttached",
+    "resourceType": "Microsoft.Network/networkInterfaces",
+    "severity": "Critical"
+  },
+  {
+    "category": "CO:05 Rate optimization",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.VM.MultiTenantHosting",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VM.ASDistributeTraffic",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VMSS.Name",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VMSS.ComputerName",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.VMSS.PublicKey",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.VMSS.ScriptExtensions",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.VMSS.ScriptExtensions",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets/extensions",
+    "severity": "Important"
+  },
+  {
+    "category": "Monitoring",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VMSS.MigrateAMA",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:07 Monitoring system",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VMSS.AMA",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VMSS.AvailabilityZone",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:07 Self-preservation",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VMSS.ZoneBalance",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.VMSS.PublicIPAttached",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.VMSS.PublicIPAttached",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets/virtualMachines",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.VNET.UseNSGs",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.VNET.UseNSGs",
+    "resourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "severity": "Critical"
+  },
+  {
+    "category": "Resiliency and dependencies",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNET.SingleDNS",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Important"
+  },
+  {
+    "category": "Resiliency and dependencies",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNET.LocalDNS",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VNET.PeerState",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VNET.PeerState",
+    "resourceType": "Microsoft.Network/virtualNetworks/virtualNetworkPeerings",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VNET.SubnetName",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VNET.SubnetName",
+    "resourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Best practices",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNET.BastionSubnet",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Important"
+  },
+  {
+    "category": "Network segmentation",
+    "pillar": "Security",
+    "ruleId": "Azure.VNET.FirewallSubnet",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNET.FirewallSubnetNAT",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.VNET.PrivateSubnet",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.VNET.PrivateSubnet",
+    "resourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNG.ERLegacySKU",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNG.VPNAvailabilityZoneSKU",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "Design",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNG.ERAvailabilityZoneSKU",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNG.MaintenanceConfig",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNG.MaintenanceConfig",
+    "resourceType": "Microsoft.Maintenance/configurationAssignments",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.ACR.AdminUser",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.ACR.MinSku",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.ACR.Name",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Azure resources",
+    "pillar": "Security",
+    "ruleId": "Azure.ACR.Quarantine",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.ACR.ContentTrust",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:10 Data costs",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.ACR.Retention",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.ACR.AnonymousAccess",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.ACR.Firewall",
+    "resourceType": "Microsoft.ContainerRegistry/registries",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.ADX.ManagedIdentity",
+    "resourceType": "Microsoft.Kusto/clusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.ADX.DiskEncryption",
+    "resourceType": "Microsoft.Kusto/clusters",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.ADX.SLA",
+    "resourceType": "Microsoft.Kusto/clusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.AI.PublicAccess",
+    "resourceType": "Microsoft.CognitiveServices/accounts",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AI.ManagedIdentity",
+    "resourceType": "Microsoft.CognitiveServices/accounts",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AI.DisableLocalAuth",
+    "resourceType": "Microsoft.CognitiveServices/accounts",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.AI.PrivateEndpoints",
+    "resourceType": "Microsoft.CognitiveServices/accounts",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.ManagedIdentity",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:01 Security Baseline",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.NodeAutoUpgrade",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Application scalability",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AKS.StandardLB",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:04 Segmentation",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.NetworkPolicy",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:08 Hardening resources",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.AzurePolicyAddOn",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.ManagedAAD",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.AuthorizedIPs",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.LocalAccounts",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.AzureRBAC",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Key and secret management",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.SecretStore",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Key and secret management",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.SecretStoreRotation",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.HttpAppRouting",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:09 Task automation",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AKS.AutoUpgrade",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.UseRBAC",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AKS.Name",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AKS.DNSPrefix",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Monitoring",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AKS.ContainerInsights",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "Azure resources",
+    "pillar": "Security",
+    "ruleId": "Azure.AKS.DefenderProfile",
+    "resourceType": "Microsoft.ContainerService/managedClusters",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.ManagedIdentity",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Important"
+  },
+  {
+    "category": "Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.Protocols",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.APIM.Ciphers",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Critical"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.APIM.Name",
+    "resourceType": "Microsoft.ApiManagement/service",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppConfig.SKU",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AppConfig.Name",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AppConfig.DisableLocalAuth",
+    "resourceType": "Microsoft.AppConfiguration/configurationStores",
+    "severity": "Important"
+  },
+  {
+    "category": "Load balancing and failover",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppGw.MinInstance",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "Deployment",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AppGw.MinSku",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGw.UseWAF",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGw.SSLPolicy",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Critical"
+  },
+  {
+    "category": "Network security and containment",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGw.Prevention",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGw.WAFEnabled",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Critical"
+  },
+  {
+    "category": "Network security and containment",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGw.OWASP",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "Network security and containment",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGw.WAFRules",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "Infrastructure provisioning",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AppGw.MigrateV2",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AppGw.MigrateWAFPolicy",
+    "resourceType": "Microsoft.Network/applicationGateways",
+    "severity": "Critical"
+  },
+  {
+    "category": "Network security and containment",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGwWAF.Enabled",
+    "resourceType": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "Network security and containment",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGwWAF.PreventionMode",
+    "resourceType": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "Network security and containment",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGwWAF.Exclusions",
+    "resourceType": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "Network security and containment",
+    "pillar": "Security",
+    "ruleId": "Azure.AppGwWAF.RuleGroups",
+    "resourceType": "Microsoft.Network/ApplicationGatewayWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "OE:07 Monitoring system",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AppInsights.Workspace",
+    "resourceType": "Microsoft.Insights/components",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.AppInsights.Name",
+    "resourceType": "Microsoft.Insights/components",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Application capacity",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AppService.MinPlan",
+    "resourceType": "Microsoft.Web/serverfarms",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.ManagedIdentity",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.ManagedIdentity",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:05 Scaling and partitioning",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AppService.ARRAffinity",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Awareness"
+  },
+  {
+    "category": "PE:05 Scaling and partitioning",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.AppService.ARRAffinity",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.UseHTTPS",
+    "resourceType": "Microsoft.Web/sites",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.AppService.UseHTTPS",
+    "resourceType": "Microsoft.Web/sites/slots",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.ASG.Name",
+    "resourceType": "Microsoft.Network/applicationSecurityGroups",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Authentication",
+    "pillar": "Security",
+    "ruleId": "Azure.Automation.ManagedIdentity",
+    "resourceType": "Microsoft.Automation/automationAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.AVD.ScheduleAgentUpdate",
+    "resourceType": "Microsoft.DesktopVirtualization/hostPools",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Bastion.Name",
+    "resourceType": "Microsoft.Network/bastionHosts",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Security design principles",
+    "pillar": "Security",
+    "ruleId": "Azure.BV.Immutable",
+    "resourceType": "Microsoft.DataProtection/backupVaults",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.CDN.HTTP",
+    "resourceType": "Microsoft.Cdn/profiles/endpoints",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.ContainerApp.Insecure",
+    "resourceType": "Microsoft.App/containerApps",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.ContainerApp.ManagedIdentity",
+    "resourceType": "Microsoft.App/containerApps",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.ContainerApp.Name",
+    "resourceType": "Microsoft.App/containerApps",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.ContainerApp.PublicAccess",
+    "resourceType": "Microsoft.App/managedEnvironments",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.ContainerApp.ExternalIngress",
+    "resourceType": "Microsoft.App/containerApps",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.ContainerApp.Storage",
+    "resourceType": "Microsoft.App/containerApps",
+    "severity": "Awareness"
+  },
+  {
+    "category": "PE:05 Scaling and partitioning",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.ContainerApp.DisableAffinity",
+    "resourceType": "Microsoft.App/containerApps",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Tools and processes",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.ContainerApp.APIVersion",
+    "resourceType": "Microsoft.App/containerApps",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.ContainerApp.MinReplicas",
+    "resourceType": "Microsoft.App/containerApps",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.Cosmos.DisableMetadataWrite",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Cosmos.AccountName",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.Cosmos.MinTLS",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Cosmos.SLA",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.Cosmos.PublicAccess",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:06 Data partitioning",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Cosmos.ContinuousBackup",
+    "resourceType": "Microsoft.DocumentDB/databaseAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.Databricks.SecureConnectivity",
+    "resourceType": "Microsoft.Databricks/workspaces",
+    "severity": "Critical"
+  },
+  {
+    "category": "PE:03 Selecting services",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.Databricks.SKU",
+    "resourceType": "Microsoft.Databricks/workspaces",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.Databricks.PublicAccess",
+    "resourceType": "Microsoft.Databricks/workspaces",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.DataFactory.Version",
+    "resourceType": "Microsoft.DataFactory/factories",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.DataFactory.Version",
+    "resourceType": "Microsoft.DataFactory/datafactories",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.Containers",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.Servers",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.SQL",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.AppServices",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.Storage",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.SQLOnVM",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.KeyVault",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.Dns",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.Arm",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.Cspm",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.Api",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.CosmosDb",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Defender.OssRdb",
+    "resourceType": "Microsoft.Security/pricings",
+    "severity": "Critical"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Deployment.Name",
+    "resourceType": "Microsoft.Resources/deployments",
+    "severity": "Awareness"
+  },
+  {
+    "category": "CO:04 Spending guardrails",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.DevBox.ProjectLimit",
+    "resourceType": "Microsoft.DevCenter/projects",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.EntraDS.NTLM",
+    "resourceType": "Microsoft.AAD/domainServices",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.EntraDS.TLS",
+    "resourceType": "Microsoft.AAD/domainServices",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.EntraDS.RC4",
+    "resourceType": "Microsoft.AAD/domainServices",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.EventGrid.TopicPublicAccess",
+    "resourceType": "Microsoft.EventGrid/topics",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.EventGrid.ManagedIdentity",
+    "resourceType": "Microsoft.EventGrid/topics",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.EventGrid.DisableLocalAuth",
+    "resourceType": "Microsoft.EventGrid/topics",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.EventHub.DisableLocalAuth",
+    "resourceType": "Microsoft.EventHub/namespaces",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.EventHub.MinTLS",
+    "resourceType": "Microsoft.EventHub/namespaces",
+    "severity": "Critical"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Firewall.Name",
+    "resourceType": "Microsoft.Network/azureFirewalls",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Firewall.PolicyName",
+    "resourceType": "Microsoft.Network/firewallPolicies",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Firewall.Mode",
+    "resourceType": "Microsoft.Network/azureFirewalls",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:10 Monitoring and threat detection",
+    "pillar": "Security",
+    "ruleId": "Azure.Firewall.PolicyMode",
+    "resourceType": "Microsoft.Network/firewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "CO:14 Consolidation",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.FrontDoor.State",
+    "resourceType": "Microsoft.Network/frontDoors",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.FrontDoor.Name",
+    "resourceType": "Microsoft.Network/frontDoors",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.WAF.Mode",
+    "resourceType": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.WAF.Enabled",
+    "resourceType": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.FrontDoor.WAF.Name",
+    "resourceType": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Authentication",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoor.ManagedIdentity",
+    "resourceType": "Microsoft.Cdn/profiles",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoorWAF.Enabled",
+    "resourceType": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoorWAF.PreventionMode",
+    "resourceType": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoorWAF.Exclusions",
+    "resourceType": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.FrontDoorWAF.RuleGroups",
+    "resourceType": "Microsoft.Network/FrontDoorWebApplicationFirewallPolicies",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.Grafana.Version",
+    "resourceType": "Microsoft.Dashboard/grafana",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Identity.UserAssignedName",
+    "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.ImageBuilder.CustomizeHash",
+    "resourceType": "Microsoft.VirtualMachineImages/imageTemplates",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:02 Secured development lifecycle",
+    "pillar": "Security",
+    "ruleId": "Azure.ImageBuilder.ValidateHash",
+    "resourceType": "Microsoft.VirtualMachineImages/imageTemplates",
+    "severity": "Important"
+  },
+  {
+    "category": "Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.IoTHub.MinTLS",
+    "resourceType": "Microsoft.Devices/IotHubs",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:07 Self-preservation",
+    "pillar": "Reliability",
+    "ruleId": "Azure.KeyVault.SoftDelete",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:07 Self-preservation",
+    "pillar": "Reliability",
+    "ruleId": "Azure.KeyVault.PurgeProtect",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.KeyVault.RBAC",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.KeyVault.Firewall",
+    "resourceType": "Microsoft.KeyVault/vaults",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.LB.Name",
+    "resourceType": "Microsoft.Network/loadBalancers",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:05 Regions and availability zones",
+    "pillar": "Reliability",
+    "ruleId": "Azure.LogAnalytics.Replication",
+    "resourceType": "Microsoft.OperationalInsights/workspaces",
+    "severity": "Important"
+  },
+  {
+    "category": "Target and non-functional requirements",
+    "pillar": "Reliability",
+    "ruleId": "Azure.MariaDB.GeoRedundantBackup",
+    "resourceType": "Microsoft.DBforMariaDB/servers",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:06 Usage and billing increments",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.ML.ComputeIdleShutdown",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces/computes",
+    "severity": "Critical"
+  },
+  {
+    "category": "Authentication",
+    "pillar": "Security",
+    "ruleId": "Azure.ML.DisableLocalAuth",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces/computes",
+    "severity": "Critical"
+  },
+  {
+    "category": "Connectivity",
+    "pillar": "Security",
+    "ruleId": "Azure.ML.ComputeVnet",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces/computes",
+    "severity": "Critical"
+  },
+  {
+    "category": "Connectivity",
+    "pillar": "Security",
+    "ruleId": "Azure.ML.PublicAccess",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces",
+    "severity": "Critical"
+  },
+  {
+    "category": "Identity and Access Management",
+    "pillar": "Security",
+    "ruleId": "Azure.ML.UserManagedIdentity",
+    "resourceType": "Microsoft.MachineLearningServices/workspaces",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.UseSSL",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.MySQL.MinTLS",
+    "resourceType": "Microsoft.DBforMySQL/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.MySQL.MaintenanceWindow",
+    "resourceType": "Microsoft.DBforMySQL/flexibleServers",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:13 Personnel time",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.NIC.Attached",
+    "resourceType": "Microsoft.Network/networkInterfaces",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:01 Simplicity and efficiency",
+    "pillar": "Reliability",
+    "ruleId": "Azure.NIC.UniqueDns",
+    "resourceType": "Microsoft.Network/networkInterfaces",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.NIC.Name",
+    "resourceType": "Microsoft.Network/networkInterfaces",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.NSG.Name",
+    "resourceType": "Microsoft.Network/networkSecurityGroups",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.NSG.AKSRules",
+    "resourceType": "Microsoft.Network/networkSecurityGroups",
+    "severity": "Awareness"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.UseSSL",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.MinTLS",
+    "resourceType": "Microsoft.DBforPostgreSQL/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.PostgreSQL.AADOnly",
+    "resourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.PostgreSQL.MaintenanceWindow",
+    "resourceType": "Microsoft.DBforPostgreSQL/flexibleServers",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.PrivateEndpoint.Name",
+    "resourceType": "Microsoft.Network/privateEndpoints",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.PublicIP.StandardSKU",
+    "resourceType": "Microsoft.Network/publicIPAddresses",
+    "severity": "Important"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.PublicIP.MigrateStandard",
+    "resourceType": "Microsoft.Network/publicIPAddresses",
+    "severity": "Important"
+  },
+  {
+    "category": "PE:03 Selecting services",
+    "pillar": "Performance Efficiency",
+    "ruleId": "Azure.Redis.MinSKU",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.Redis.NonSslPort",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.Redis.MinTLS",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.Redis.PublicNetworkAccess",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.Redis.EntraID",
+    "resourceType": "Microsoft.Cache/redis",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.RedisEnterprise.MinTLS",
+    "resourceType": "Microsoft.Cache/redisEnterprise",
+    "severity": "Critical"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.Route.Name",
+    "resourceType": "Microsoft.Network/routeTables",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.RSV.Name",
+    "resourceType": "Microsoft.RecoveryServices/vaults",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Security design principles",
+    "pillar": "Security",
+    "ruleId": "Azure.RSV.Immutable",
+    "resourceType": "Microsoft.RecoveryServices/vaults",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.ServiceBus.DisableLocalAuth",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.ServiceBus.MinTLS",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.ServiceBus.GeoReplica",
+    "resourceType": "Microsoft.ServiceBus/namespaces",
+    "severity": "Important"
+  },
+  {
+    "category": "Authentication",
+    "pillar": "Security",
+    "ruleId": "Azure.SignalR.ManagedIdentity",
+    "resourceType": "Microsoft.SignalRService/signalR",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.SignalR.SLA",
+    "resourceType": "Microsoft.SignalRService/signalR",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.SQL.MinTLS",
+    "resourceType": "Microsoft.Sql/servers",
+    "severity": "Critical"
+  },
+  {
+    "category": "Authentication",
+    "pillar": "Security",
+    "ruleId": "Azure.SQLMI.ManagedIdentity",
+    "resourceType": "Microsoft.Sql/managedInstances",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:06 Network controls",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.Firewall",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.MinTLS",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Critical"
+  },
+  {
+    "category": "SE:07 Encryption",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.SecureTransfer",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "SE:05 Identity and access management",
+    "pillar": "Security",
+    "ruleId": "Azure.Storage.BlobPublicAccess",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VM.Standalone",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:05 Rate optimization",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.VM.PromoSku",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VM.BasicSku",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VM.ASAlignment",
+    "resourceType": "Microsoft.Compute/availabilitySets",
+    "severity": "Important"
+  },
+  {
+    "category": "CO:07 Component costs",
+    "pillar": "Cost Optimization",
+    "ruleId": "Azure.VM.ShouldNotBeStopped",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:07 Self-preservation",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VMSS.AutoInstanceRepairs",
+    "resourceType": "Microsoft.Compute/virtualMachineScaleSets",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VNET.Name",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "severity": "Awareness"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNG.VPNLegacySKU",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways",
+    "severity": "Critical"
+  },
+  {
+    "category": "RE:05 Redundancy",
+    "pillar": "Reliability",
+    "ruleId": "Azure.VNG.VPNActiveActive",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways",
+    "severity": "Important"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VNG.Name",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways",
+    "severity": "Awareness"
+  },
+  {
+    "category": "OE:04 Continuous integration",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.VNG.ConnectionName",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways/connections",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Repeatable infrastructure",
+    "pillar": "Operational Excellence",
+    "ruleId": "Azure.vWAN.Name",
+    "resourceType": "Microsoft.Network/virtualWans",
+    "severity": "Awareness"
+  },
+  {
+    "category": "Authentication",
+    "pillar": "Security",
+    "ruleId": "Azure.WebPubSub.ManagedIdentity",
+    "resourceType": "Microsoft.SignalRService/webPubSub",
+    "severity": "Important"
+  },
+  {
+    "category": "RE:04 Target metrics",
+    "pillar": "Reliability",
+    "ruleId": "Azure.WebPubSub.SLA",
+    "resourceType": "Microsoft.SignalRService/webPubSub",
+    "severity": "Important"
+  }
+]

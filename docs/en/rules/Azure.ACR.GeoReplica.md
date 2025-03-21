@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 High-availability multi-region design
 resource: Container Registry
+resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.GeoReplica/
 ---
 

@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:07 Encryption
 resource: Service Bus
+resourceType: Microsoft.ServiceBus/namespaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceBus.MinTLS/
 ---
 

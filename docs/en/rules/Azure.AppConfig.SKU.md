@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: App Configuration
+resourceType: Microsoft.AppConfiguration/configurationStores
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppConfig.SKU/
 ---
 

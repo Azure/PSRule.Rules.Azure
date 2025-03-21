@@ -4,6 +4,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Application Security Group
+resourceType: Microsoft.Network/applicationSecurityGroups
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ASG.Name/
 ---
 

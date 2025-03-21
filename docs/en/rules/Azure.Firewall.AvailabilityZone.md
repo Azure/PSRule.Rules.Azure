@@ -3,6 +3,7 @@ severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
 resource: Firewall
+resourceType: Microsoft.Network/azureFirewalls
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Firewall.AvailabilityZone/
 ---
 

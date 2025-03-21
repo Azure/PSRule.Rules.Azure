@@ -4,6 +4,7 @@ severity: Critical
 pillar: Performance Efficiency
 category: PE:03 Selecting services
 resource: Databricks
+resourceType: Microsoft.Databricks/workspaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Databricks.SKU/
 ---
 

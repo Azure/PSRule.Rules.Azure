@@ -4,6 +4,7 @@ severity: Important
 pillar: Operational Excellence
 category: OE:04 Tools and processes
 resource: Container App
+resourceType: Microsoft.App/containerApps
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ContainerApp.APIVersion/
 ---
 

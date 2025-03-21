@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:06 Network controls
 resource: Container Registry
+resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Firewall/
 ---
 

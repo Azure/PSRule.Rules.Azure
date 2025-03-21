@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:05 Identity and access management
 resource: Azure Cache for Redis
+resourceType: Microsoft.Cache/redis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Redis.EntraID/
 ---
 

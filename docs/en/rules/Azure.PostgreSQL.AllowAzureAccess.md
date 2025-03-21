@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:06 Network controls
 resource: Azure Database for PostgreSQL
+resourceType: Microsoft.DBforPostgreSQL/servers,Microsoft.DBforPostgreSQL/servers/firewallRules
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PostgreSQL.AllowAzureAccess/
 ms-content-id: 07659a25-0a40-4979-99cd-cae83a5e3145
 ---

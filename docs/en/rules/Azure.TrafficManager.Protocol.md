@@ -4,6 +4,7 @@ severity: Important
 pillar: Security
 category: SE:07 Encryption
 resource: Traffic Manager
+resourceType: Microsoft.Network/trafficManagerProfiles
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.TrafficManager.Protocol/
 ---
 

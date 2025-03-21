@@ -3,6 +3,7 @@ severity: Awareness
 pillar: Operational Excellence
 category: Repeatable infrastructure
 resource: Cosmos DB
+resourceType: Microsoft.DocumentDB/databaseAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.AccountName/
 ---
 

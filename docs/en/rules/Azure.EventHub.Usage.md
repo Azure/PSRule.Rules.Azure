@@ -4,6 +4,7 @@ severity: Important
 pillar: Cost Optimization
 category: CO:14 Consolidation
 resource: Event Hub
+resourceType: Microsoft.EventHub/namespaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventHub.Usage/
 ---
 

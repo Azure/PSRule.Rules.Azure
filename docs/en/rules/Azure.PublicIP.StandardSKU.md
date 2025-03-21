@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Public IP address
+resourceType: Microsoft.Network/publicIPAddresses
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.StandardSKU/
 ---
 

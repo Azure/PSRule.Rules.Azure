@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: SE:07 Encryption
 resource: API Management
+resourceType: Microsoft.ApiManagement/service,Microsoft.ApiManagement/service/apis
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.HTTPEndpoint/
 ---
 

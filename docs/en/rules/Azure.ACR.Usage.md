@@ -4,6 +4,7 @@ severity: Important
 pillar: Cost Optimization
 category: CO:07 Component costs
 resource: Container Registry
+resourceType: Microsoft.ContainerRegistry/registries
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ACR.Usage/
 ---
 

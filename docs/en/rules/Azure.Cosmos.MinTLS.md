@@ -4,6 +4,7 @@ severity: Critical
 pillar: Security
 category: SE:07 Encryption
 resource: Cosmos DB
+resourceType: Microsoft.DocumentDB/databaseAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Cosmos.MinTLS/
 ---
 

@@ -4,6 +4,7 @@ severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
 resource: Virtual Machine
+resourceType: Microsoft.Compute/virtualMachines,Microsoft.Maintenance/configurationAssignments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.MaintenanceConfig/
 ---
 

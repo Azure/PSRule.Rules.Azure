@@ -3,6 +3,7 @@ severity: Important
 pillar: Security
 category: Monitor
 resource: Automation Account
+resourceType: Microsoft.Automation/automationAccounts,Microsoft.Insights/diagnosticSettings
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Automation.AuditLogs/
 ---
 

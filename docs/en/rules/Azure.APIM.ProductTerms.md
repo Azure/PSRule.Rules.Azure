@@ -4,6 +4,7 @@ severity: Important
 pillar: Operational Excellence
 category: Configuration
 resource: API Management
+resourceType: Microsoft.ApiManagement/service,Microsoft.ApiManagement/service/products
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.APIM.ProductTerms/
 ---
 
