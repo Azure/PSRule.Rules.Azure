@@ -671,6 +671,17 @@
         "Type": "Microsoft.Sql/servers/elasticPools",
         "ResourceType": "Microsoft.Sql/servers/elasticPools",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "properties": {
+          "state": "Enabled"
+        },
+        "id": "/subscriptions/a7437ea4-0e87-4129-8862-0b47fabb4665/resourceGroups/rg-demo-dev-eus-001/providers/Microsoft.Sql/servers/server-D/sqlVulnerabilityAssessments/Default",
+        "name": "Default",
+        "type": "Microsoft.Sql/servers/sqlVulnerabilityAssessments",
+        "apiVersion": "2024-08-01-preview",
+        "ResourceGroupName": "test-rg",
+        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
       }
     ]
   },

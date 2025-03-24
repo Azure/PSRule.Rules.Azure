@@ -240,6 +240,20 @@ Describe 'Azure.SQL' -Tag 'SQL', 'SQLDB' {
             $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn 'server-A', 'server-D', 'server-A/master', 'server-A/database-B', 'server-G/pool-A';
         }
+
+        It 'Azure.SQL.VAScan' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.SQL.VAScan' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult.TargetName | Should -BeIn 'server-B';
+            $ruleResult.Length | Should -Be 1;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult.TargetName | Should -BeIn 'server-A', 'server-C', 'server-D';
+            $ruleResult.Length | Should -Be 3;
+        }
     }
 
     Context 'Resource name - Azure.SQL.ServerName' {

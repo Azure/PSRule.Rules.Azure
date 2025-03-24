@@ -33,7 +33,8 @@ internal sealed class ResourceExportVisitor
     private const string PROPERTY_SECURITYALERTPOLICIES = "securityAlertPolicies";
     private const string PROPERTY_CONFIGURATIONS = "configurations";
     private const string PROPERTY_ADMINISTRATORS = "administrators";
-    private const string PROPERTY_VULNERABILITYASSESSMENTS = "vulnerabilityAssessments";
+    private const string PROPERTY_VULNERABILITY_ASSESSMENTS = "vulnerabilityAssessments";
+    private const string PROPERTY_SQL_VULNERABILITY_ASSESSMENTS = "sqlVulnerabilityAssessments";
     private const string PROPERTY_AUDITINGSETTINGS = "auditingSettings";
     private const string PROPERTY_CUSTOMDOMAINS = "customDomains";
     private const string PROPERTY_WEBHOOKS = "webhooks";
@@ -116,6 +117,7 @@ internal sealed class ResourceExportVisitor
     private const string APIVERSION_2023_09_01 = "2023-09-01";
     private const string APIVERSION_2023_12_15_PREVIEW = "2023-12-15-preview";
     private const string APIVERSION_2024_03_02_PREVIEW = "2024-03-02-preview";
+    private const string APIVERSION_2024_05_01_PREVIEW = "2024-05-01-preview";
 
     private readonly ProviderData _ProviderData;
 
@@ -583,7 +585,8 @@ internal sealed class ResourceExportVisitor
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALLRULES, APIVERSION_2021_11_01));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_ADMINISTRATORS, APIVERSION_2021_11_01));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITYALERTPOLICIES, APIVERSION_2021_11_01));
-        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_VULNERABILITYASSESSMENTS, APIVERSION_2021_11_01));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_VULNERABILITY_ASSESSMENTS, APIVERSION_2021_11_01));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SQL_VULNERABILITY_ASSESSMENTS, APIVERSION_2024_05_01_PREVIEW));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_AUDITINGSETTINGS, APIVERSION_2021_11_01));
         return true;
     }

@@ -98,6 +98,32 @@ Rule 'Azure.SQL.AADOnly' -Ref 'AZR-000369' -Type 'Microsoft.Sql/servers', 'Micro
     $Assert.GreaterOrEqual($enabledAADOnly, '.', 1).Reason($LocalizedData.AzureADOnlyAuthentication)
 }
 
+# Synopsis: Ensure SQL logical server has a vulnerability assessment scan enabled.
+Rule 'Azure.SQL.VAScan' -Ref 'AZR-000455' -Type 'Microsoft.Sql/servers', 'Microsoft.Sql/servers/sqlVulnerabilityAssessments' -Tag @{ release = 'GA'; ruleSet = '2025_03'; 'Azure.WAF/pillar' = 'Security'; } {
+    $configs = @($TargetObject);
+    $classicConfigs = @();
+    if ($PSRule.TargetType -eq 'Microsoft.Sql/servers') {
+        $configs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/sqlVulnerabilityAssessments');
+
+        if ($configs.Length -eq 0) {
+            $classicConfigs = @(GetSubResources -ResourceType 'Microsoft.Sql/servers/vulnerabilityAssessments');
+        }
+    }
+
+    if ($configs.Length -eq 0) {
+        # Check for classic configuration.
+        if ($classicConfigs.Length -gt 0) {
+            return $Assert.Pass();
+        }
+
+        return $Assert.Fail($LocalizedData.SubResourceNotFound, 'Microsoft.Sql/servers/sqlVulnerabilityAssessments');
+    }
+
+    foreach ($config in $configs) {
+        $Assert.HasFieldValue($config, 'properties.state', 'Enabled');
+    }
+}
+
 #endregion SQL Logical Server
 
 #region SQL Database
