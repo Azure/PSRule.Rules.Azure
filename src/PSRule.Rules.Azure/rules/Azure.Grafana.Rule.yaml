@@ -16,14 +16,14 @@ metadata:
   ref: AZR-000424
   tags:
     release: GA
-    ruleSet: 2024_06
+    ruleSet: 2025_03
     Azure.WAF/pillar: Reliability
 spec:
   type:
     - Microsoft.Dashboard/grafana
   condition:
     field: properties.grafanaMajorVersion
-    greaterOrEquals: 10
+    greaterOrEquals: 11
     convert: true
 
 #endregion Rules
