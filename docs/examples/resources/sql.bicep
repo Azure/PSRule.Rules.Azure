@@ -15,7 +15,7 @@ param adminPrincipalId string
 var maxSize = 32 * 1048576
 
 // An example Azure SQL Database logical server.
-resource server 'Microsoft.Sql/servers@2023-08-01-preview' = {
+resource server 'Microsoft.Sql/servers@2024-05-01-preview' = {
   name: name
   location: location
   identity: {
@@ -35,8 +35,17 @@ resource server 'Microsoft.Sql/servers@2023-08-01-preview' = {
   }
 }
 
+// An example configuration to enable SQL Vulnerability Assessment for an Azure SQL Database logical server.
+resource vulnerabilityAssessment 'Microsoft.Sql/servers/sqlVulnerabilityAssessments@2024-05-01-preview' = {
+  parent: server
+  name: 'default'
+  properties: {
+    state: 'Enabled'
+  }
+}
+
 // An example administrator configuration for an Azure SQL Database logical server.
-resource sqlAdministrator 'Microsoft.Sql/servers/administrators@2023-08-01-preview' = {
+resource sqlAdministrator 'Microsoft.Sql/servers/administrators@2024-05-01-preview' = {
   parent: server
   name: 'ActiveDirectory'
   properties: {
@@ -47,7 +56,7 @@ resource sqlAdministrator 'Microsoft.Sql/servers/administrators@2023-08-01-previ
 }
 
 // An example configuration to enable SQL Advanced Threat Protection for an Azure SQL Database logical server.
-resource defenderSql 'Microsoft.Sql/servers/securityAlertPolicies@2023-08-01-preview' = {
+resource defenderSql 'Microsoft.Sql/servers/securityAlertPolicies@2024-05-01-preview' = {
   name: 'default'
   parent: server
   properties: {
@@ -56,7 +65,7 @@ resource defenderSql 'Microsoft.Sql/servers/securityAlertPolicies@2023-08-01-pre
 }
 
 // An example configuration to enable Azure SQL auditing for an Azure SQL Database logical server.
-resource sqlAuditSettings 'Microsoft.Sql/servers/auditingSettings@2023-08-01-preview' = {
+resource sqlAuditSettings 'Microsoft.Sql/servers/auditingSettings@2024-05-01-preview' = {
   name: 'default'
   parent: server
   properties: {
@@ -72,7 +81,7 @@ resource sqlAuditSettings 'Microsoft.Sql/servers/auditingSettings@2023-08-01-pre
 }
 
 // An example Azure SQL Database.
-resource database 'Microsoft.Sql/servers/databases@2023-08-01-preview' = {
+resource database 'Microsoft.Sql/servers/databases@2024-05-01-preview' = {
   parent: server
   name: name
   location: location
@@ -86,7 +95,7 @@ resource database 'Microsoft.Sql/servers/databases@2023-08-01-preview' = {
 }
 
 // An example configuration to enable TDE for an Azure SQL Database.
-resource tde 'Microsoft.Sql/servers/databases/transparentDataEncryption@2023-08-01-preview' = {
+resource tde 'Microsoft.Sql/servers/databases/transparentDataEncryption@2024-05-01-preview' = {
   parent: database
   name: 'current'
   properties: {

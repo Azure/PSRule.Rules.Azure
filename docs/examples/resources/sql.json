@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.28.1.47646",
-      "templateHash": "16965524500352716387"
+      "version": "0.34.1.11899",
+      "templateHash": "13668357951305686306"
     }
   },
   "parameters": {
@@ -35,7 +35,7 @@
   "resources": [
     {
       "type": "Microsoft.Sql/servers",
-      "apiVersion": "2023-08-01-preview",
+      "apiVersion": "2024-05-01-preview",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -55,8 +55,19 @@
       }
     },
     {
+      "type": "Microsoft.Sql/servers/sqlVulnerabilityAssessments",
+      "apiVersion": "2024-05-01-preview",
+      "name": "[format('{0}/{1}', parameters('name'), 'default')]",
+      "properties": {
+        "state": "Enabled"
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Sql/servers', parameters('name'))]"
+      ]
+    },
+    {
       "type": "Microsoft.Sql/servers/administrators",
-      "apiVersion": "2023-08-01-preview",
+      "apiVersion": "2024-05-01-preview",
       "name": "[format('{0}/{1}', parameters('name'), 'ActiveDirectory')]",
       "properties": {
         "administratorType": "ActiveDirectory",
@@ -69,7 +80,7 @@
     },
     {
       "type": "Microsoft.Sql/servers/securityAlertPolicies",
-      "apiVersion": "2023-08-01-preview",
+      "apiVersion": "2024-05-01-preview",
       "name": "[format('{0}/{1}', parameters('name'), 'default')]",
       "properties": {
         "state": "Enabled"
@@ -80,7 +91,7 @@
     },
     {
       "type": "Microsoft.Sql/servers/auditingSettings",
-      "apiVersion": "2023-08-01-preview",
+      "apiVersion": "2024-05-01-preview",
       "name": "[format('{0}/{1}', parameters('name'), 'default')]",
       "properties": {
         "isAzureMonitorTargetEnabled": true,
@@ -98,7 +109,7 @@
     },
     {
       "type": "Microsoft.Sql/servers/databases",
-      "apiVersion": "2023-08-01-preview",
+      "apiVersion": "2024-05-01-preview",
       "name": "[format('{0}/{1}', parameters('name'), parameters('name'))]",
       "location": "[parameters('location')]",
       "properties": {
@@ -114,7 +125,7 @@
     },
     {
       "type": "Microsoft.Sql/servers/databases/transparentDataEncryption",
-      "apiVersion": "2023-08-01-preview",
+      "apiVersion": "2024-05-01-preview",
       "name": "[format('{0}/{1}/{2}', parameters('name'), parameters('name'), 'current')]",
       "properties": {
         "state": "Enabled"

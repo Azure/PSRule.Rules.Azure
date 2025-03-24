@@ -31,6 +31,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.42.0-B0021:
 
+- New rules:
+  - Azure SQL Database:
+    - Check that logical SQL servers have vulnerability assessment enabled by @BernieWhite.
+      [#3196](https://github.com/Azure/PSRule.Rules.Azure/issues/3196)
 - Engineering:
   - Updated resource providers and policy aliases by @BernieWhite.
     [#3285](https://github.com/Azure/PSRule.Rules.Azure/issues/3285)

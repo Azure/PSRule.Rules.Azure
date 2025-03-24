@@ -15,7 +15,8 @@ Configure a customer-controlled maintenance window for Azure SQL databases.
 
 ## DESCRIPTION
 
-Azure SQL databases undergo periodic maintenance to ensure your managed database remains secure, stable, and up-to-date. This maintenance includes applying security updates, system upgrades, and software patches.
+Azure SQL databases undergo periodic maintenance to ensure your managed database remains secure, stable, and up-to-date.
+This maintenance includes applying security updates, system upgrades, and software patches.
 
 Maintenance windows can be scheduled in two ways for each database:
 
