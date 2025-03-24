@@ -41,15 +41,15 @@ Describe 'Azure.Grafana' -Tag 'Grafana' {
 
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
-            $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'grafana-a';
+            $ruleResult.Length | Should -Be 1;
 
-            $ruleResult[0].Reason | Should -Be "Path properties.grafanaMajorVersion: The value '9' is not >= 10.";
+            $ruleResult[0].Reason | Should -Be "Path properties.grafanaMajorVersion: The value '10' is not >= 11.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
-            $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'grafana-b';
+            $ruleResult.Length | Should -Be 1;
         }
     }
 }

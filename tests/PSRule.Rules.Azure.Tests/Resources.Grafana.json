@@ -41,7 +41,7 @@
           }
         ]
       },
-      "grafanaMajorVersion": "9",
+      "grafanaMajorVersion": "10",
       "grafanaPlugins": {
         "{customized property}": {}
       },
@@ -91,7 +91,7 @@
           }
         ]
       },
-      "grafanaMajorVersion": "10",
+      "grafanaMajorVersion": "11",
       "grafanaPlugins": {
         "{customized property}": {}
       },

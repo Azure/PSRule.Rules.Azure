@@ -1,0 +1,44 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.34.1.11899",
+      "templateHash": "10670661185846540130"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Dashboard/grafana",
+      "apiVersion": "2024-10-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "sku": {
+        "name": "Standard"
+      },
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "grafanaMajorVersion": "11",
+        "zoneRedundancy": "Enabled"
+      }
+    }
+  ]
+}
