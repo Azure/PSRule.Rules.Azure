@@ -36,12 +36,16 @@ What's changed since pre-release v1.42.0-B0021:
     - Check that logical SQL servers have vulnerability assessment enabled by @BernieWhite.
       [#3196](https://github.com/Azure/PSRule.Rules.Azure/issues/3196)
 - Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.30.10` as the minimum version by @BernieWhite.
+      [#3301](https://github.com/Azure/PSRule.Rules.Azure/issues/3301)
+  - App Service:
+    - Updated SKUs support by `Azure.AppService.AvailabilityZone` by @Sjors-Boom.
+      [#3299](https://github.com/Azure/PSRule.Rules.Azure/issues/3299)
   - Azure Managed Grafana:
     - Bumped `Azure.Grafana.Version` to use version `11` as `10` is now depreciated by @BernieWhite.
       [#3293](https://github.com/Azure/PSRule.Rules.Azure/issues/3293)
       - Bumped rule set to `2025_03`.
-  - Azure.AppService.AvailabilityZone:
-    - Update supported SKU's [#3299](https://github.com/Azure/PSRule.Rules.Azure/issues/3299)
 - Engineering:
   - Updated resource providers and policy aliases by @BernieWhite.
     [#3285](https://github.com/Azure/PSRule.Rules.Azure/issues/3285)
