@@ -32,6 +32,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.42.0-B0021:
 
 - New rules:
+  - Azure DNS:
+    - Check that public zones use DNSSEC by @BernieWhite.
+      [#3201](https://github.com/Azure/PSRule.Rules.Azure/issues/3201)
   - Azure SQL Database:
     - Check that logical SQL servers have vulnerability assessment enabled by @BernieWhite.
       [#3196](https://github.com/Azure/PSRule.Rules.Azure/issues/3196)

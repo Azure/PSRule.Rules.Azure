@@ -1,0 +1,123 @@
+[
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/dnszones/test1.contoso.com",
+    "name": "test1.contoso.com",
+    "type": "Microsoft.Network/dnszones",
+    "location": "global",
+    "tags": {},
+    "properties": {
+      "maxNumberOfRecordSets": 10000,
+      "maxNumberOfRecordsPerRecordSet": null,
+      "nameServers": [
+        "ns1-nn.azure-dns.com.",
+        "ns2-nn.azure-dns.net.",
+        "ns3-nn.azure-dns.org.",
+        "ns4-nn.azure-dns.info."
+      ],
+      "numberOfRecordSets": 2,
+      "signingKeys": [
+        {
+          "delegationSignerInfo": [],
+          "flags": 256,
+          "keyTag": 11351,
+          "protocol": 3,
+          "publicKey": "nnn",
+          "securityAlgorithmType": 13
+        },
+        {
+          "delegationSignerInfo": [
+            {
+              "digestAlgorithmType": 2,
+              "digestValue": "nnn",
+              "record": "37507 13 2 nnn"
+            }
+          ],
+          "flags": 257,
+          "keyTag": 37507,
+          "protocol": 3,
+          "publicKey": "nnn",
+          "securityAlgorithmType": 13
+        }
+      ],
+      "zoneType": "Public"
+    },
+    "resources": [
+      {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/dnszones/test1.contoso.com/dnssecConfigs/default",
+        "name": "default",
+        "type": "Microsoft.Network/dnszones/dnssecConfigs",
+        "properties": {
+          "provisioningState": "Succeeded",
+          "signingKeys": [
+            {
+              "delegationSignerInfo": [],
+              "flags": 256,
+              "keyTag": 11351,
+              "protocol": 3,
+              "publicKey": "nnn",
+              "securityAlgorithmType": 13
+            },
+            {
+              "delegationSignerInfo": [
+                {
+                  "digestAlgorithmType": 2,
+                  "digestValue": "nnn",
+                  "record": "37507 13 2 nnn"
+                }
+              ],
+              "flags": 257,
+              "keyTag": 37507,
+              "protocol": 3,
+              "publicKey": "nnn",
+              "securityAlgorithmType": 13
+            }
+          ]
+        },
+        "apiVersion": "2023-07-01-preview"
+      }
+    ]
+  },
+  {
+    "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/dnszones/test2.contoso.com",
+    "name": "test2.contoso.com",
+    "type": "Microsoft.Network/dnszones",
+    "location": "global",
+    "tags": {},
+    "properties": {
+      "maxNumberOfRecordSets": 10000,
+      "maxNumberOfRecordsPerRecordSet": null,
+      "nameServers": [
+        "ns1-nn.azure-dns.com.",
+        "ns2-nn.azure-dns.net.",
+        "ns3-nn.azure-dns.org.",
+        "ns4-nn.azure-dns.info."
+      ],
+      "numberOfRecordSets": 2,
+      "signingKeys": [
+        {
+          "delegationSignerInfo": [],
+          "flags": 256,
+          "keyTag": 11351,
+          "protocol": 3,
+          "publicKey": "nnn",
+          "securityAlgorithmType": 13
+        },
+        {
+          "delegationSignerInfo": [
+            {
+              "digestAlgorithmType": 2,
+              "digestValue": "nnn",
+              "record": "37507 13 2 nnn"
+            }
+          ],
+          "flags": 257,
+          "keyTag": 37507,
+          "protocol": 3,
+          "publicKey": "nnn",
+          "securityAlgorithmType": 13
+        }
+      ],
+      "zoneType": "Public"
+    }
+  }
+]

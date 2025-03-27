@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.34.44.8038",
+      "templateHash": "3311084942276034298"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/dnsZones",
+      "apiVersion": "2023-07-01-preview",
+      "name": "[parameters('name')]",
+      "location": "Global",
+      "properties": {
+        "zoneType": "Public"
+      }
+    },
+    {
+      "type": "Microsoft.Network/dnsZones/dnssecConfigs",
+      "apiVersion": "2023-07-01-preview",
+      "name": "[format('{0}/{1}', parameters('name'), 'default')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/dnsZones', parameters('name'))]"
+      ]
+    }
+  ]
+}
