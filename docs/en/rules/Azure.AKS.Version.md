@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-03-25
+reviewed: 2025-03-27
 severity: Important
 pillar: Reliability
 category: RE:04 Target metrics
@@ -9,11 +9,11 @@ online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.Ve
 ms-content-id: b0bd4e66-af2f-4d0a-82ae-e4738418bb7e
 ---
 
-# Upgrade Kubernetes version
+# Kubernetes Cluster version is old
 
 ## SYNOPSIS
 
-AKS control plane and nodes pools should use a current stable release.
+Older versions of Kubernetes may have known bugs or security vulnerabilities, and may have limited support.
 
 ## DESCRIPTION
 
@@ -46,6 +46,83 @@ Also consider enabling cluster auto-upgrade within a maintenance window to minim
 
 ## EXAMPLES
 
+### Configure with Bicep
+
+To deploy AKS clusters that pass this rule:
+
+- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable`. _OR_
+- Set `properties.kubernetesVersion` to a newer stable version.
+
+For example:
+
+```bicep
+resource cluster 'Microsoft.ContainerService/managedClusters@2024-10-01' = {
+  location: location
+  name: clusterName
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${identity.id}': {}
+    }
+  }
+  properties: {
+    kubernetesVersion: '1.30.10'
+    enableRBAC: true
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: allPools
+    aadProfile: {
+      managed: true
+      enableAzureRBAC: true
+      adminGroupObjectIDs: clusterAdmins
+      tenantID: subscription().tenantId
+    }
+    networkProfile: {
+      networkPlugin: 'azure'
+      networkPolicy: 'azure'
+      loadBalancerSku: 'standard'
+      serviceCidr: serviceCidr
+      dnsServiceIP: dnsServiceIP
+      dockerBridgeCidr: dockerBridgeCidr
+    }
+    autoUpgradeProfile: {
+      upgradeChannel: 'stable'
+    }
+    addonProfiles: {
+      httpApplicationRouting: {
+        enabled: false
+      }
+      azurepolicy: {
+        enabled: true
+        config: {
+          version: 'v2'
+        }
+      }
+      omsagent: {
+        enabled: true
+        config: {
+          logAnalyticsWorkspaceResourceID: workspaceId
+        }
+      }
+      kubeDashboard: {
+        enabled: false
+      }
+      azureKeyvaultSecretsProvider: {
+        enabled: true
+        config: {
+          enableSecretRotation: 'true'
+        }
+      }
+    }
+    podIdentityProfile: {
+      enabled: true
+    }
+  }
+  tags: tags
+}
+```
+
+<!-- external:avm avm/res/container-service/managed-cluster kubernetesVersion -->
+
 ### Configure with Azure template
 
 To deploy AKS clusters that pass this rule:
@@ -58,7 +135,7 @@ For example:
 ```json
 {
     "type": "Microsoft.ContainerService/managedClusters",
-    "apiVersion": "2023-07-01",
+    "apiVersion": "2024-10-01",
     "name": "[parameters('clusterName')]",
     "location": "[parameters('location')]",
     "identity": {
@@ -68,7 +145,7 @@ For example:
         }
     },
     "properties": {
-        "kubernetesVersion": "1.30.6",
+        "kubernetesVersion": "1.30.10",
         "enableRBAC": true,
         "dnsPrefix": "[parameters('dnsPrefix')]",
         "agentPoolProfiles": "[variables('allPools')]",
@@ -126,83 +203,6 @@ For example:
 }
 ```
 
-### Configure with Bicep
-
-To deploy AKS clusters that pass this rule:
-
-- Set `properties.autoUpgradeProfile.upgradeChannel` to `rapid` or `stable`. _OR_
-- Set `properties.kubernetesVersion` to a newer stable version.
-
-For example:
-
-```bicep
-resource cluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
-  location: location
-  name: clusterName
-  identity: {
-    type: 'UserAssigned'
-    userAssignedIdentities: {
-      '${identity.id}': {}
-    }
-  }
-  properties: {
-    kubernetesVersion: '1.30.6'
-    enableRBAC: true
-    dnsPrefix: dnsPrefix
-    agentPoolProfiles: allPools
-    aadProfile: {
-      managed: true
-      enableAzureRBAC: true
-      adminGroupObjectIDs: clusterAdmins
-      tenantID: subscription().tenantId
-    }
-    networkProfile: {
-      networkPlugin: 'azure'
-      networkPolicy: 'azure'
-      loadBalancerSku: 'standard'
-      serviceCidr: serviceCidr
-      dnsServiceIP: dnsServiceIP
-      dockerBridgeCidr: dockerBridgeCidr
-    }
-    autoUpgradeProfile: {
-      upgradeChannel: 'stable'
-    }
-    addonProfiles: {
-      httpApplicationRouting: {
-        enabled: false
-      }
-      azurepolicy: {
-        enabled: true
-        config: {
-          version: 'v2'
-        }
-      }
-      omsagent: {
-        enabled: true
-        config: {
-          logAnalyticsWorkspaceResourceID: workspaceId
-        }
-      }
-      kubeDashboard: {
-        enabled: false
-      }
-      azureKeyvaultSecretsProvider: {
-        enabled: true
-        config: {
-          enableSecretRotation: 'true'
-        }
-      }
-    }
-    podIdentityProfile: {
-      enabled: true
-    }
-  }
-  tags: tags
-}
-```
-
-<!-- external:avm avm/res/container-service/managed-cluster kubernetesVersion -->
-
 ### Configure with Azure CLI
 
 ```bash
@@ -210,13 +210,13 @@ az aks update -n '<name>' -g '<resource_group>' --auto-upgrade-channel 'stable'
 ```
 
 ```bash
-az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.30.6'
+az aks upgrade -n '<name>' -g '<resource_group>' --kubernetes-version '1.30.10'
 ```
 
 ### Configure with Azure PowerShell
 
 ```powershell
-Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.30.6'
+Set-AzAksCluster -Name '<name>' -ResourceGroupName '<resource_group>' -KubernetesVersion '1.30.10'
 ```
 
 ## NOTES
@@ -241,5 +241,5 @@ To configure this rule override the `AZURE_AKS_CLUSTER_MINIMUM_VERSION` configur
 - [Support policies for Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/support-policies)
 - [Platform support policy](https://learn.microsoft.com/azure/aks/supported-kubernetes-versions#platform-support-policy)
 - [Blue-green deployment of AKS clusters](https://learn.microsoft.com/azure/architecture/guide/aks/blue-green-deployment-for-aks)
-- [Long Term Support (LTS)](https://learn.microsoft.com/azure/aks/supported-kubernetes-version#long-term-support-lts)
+- [Long Term Support (LTS)](https://learn.microsoft.com/azure/aks/long-term-support)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)

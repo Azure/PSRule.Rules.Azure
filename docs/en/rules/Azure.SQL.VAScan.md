@@ -1,9 +1,10 @@
 ---
-reviewed: 2025-03-25
+reviewed: 2025-03-27
 severity: Important
 pillar: Security
 category: SE:10 Monitoring and threat detection
 resource: SQL Database
+resourceType: Microsoft.Sql/servers/databases,Microsoft.Sql/servers/sqlVulnerabilityAssessments,Microsoft.Sql/servers/vulnerabilityAssessments
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.VAScan/
 ---
 

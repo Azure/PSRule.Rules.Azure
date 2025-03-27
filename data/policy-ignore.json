@@ -83,7 +83,7 @@
       "/providers/Microsoft.Authorization/policyDefinitions/b6e2945c-0b7b-40f5-9233-7a5323b5cdc6"
     ],
     "reason": "NotApplicable",
-    "value": "Checking for Network Watcher in a resource group is not enforcable by code."
+    "value": "Checking for Network Watcher in a resource group is not enforceable by code."
   },
   {
     "policyDefinitionIds": [
@@ -224,7 +224,7 @@
       "/providers/Microsoft.Authorization/policyDefinitions/fbb99e8e-e444-4da0-9ff1-75c92f5a85b2"
     ],
     "reason": "NotApplicable",
-    "value": "Checking for BYOK of a storage account used for logging activity is not enforcable by code (#2725)."
+    "value": "Checking for BYOK of a storage account used for logging activity is not enforceable by code (#2725)."
   },
   {
     "policyDefinitionIds": [
@@ -314,5 +314,13 @@
     ],
     "reason": "Duplicate",
     "value": "Azure.AppService.MinTLS"
+  },
+  {
+    "policyDefinitionIds": [
+      "/providers/Microsoft.Authorization/policyDefinitions/04408ca5-aa10-42ce-8536-98955cdddd4c",
+      "/providers/Microsoft.Authorization/policyDefinitions/40f1aee2-4db4-4b74-acb1-c6972e24cca8"
+    ],
+    "reason": "Duplicate",
+    "value": "Azure.AKS.NodeAutoUpgrade"
   }
 ]

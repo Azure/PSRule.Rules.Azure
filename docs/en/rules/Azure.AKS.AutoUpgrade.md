@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-03-25
+reviewed: 2025-03-27
 severity: Important
 pillar: Operational Excellence
 category: OE:09 Task automation
@@ -8,11 +8,12 @@ resourceType: Microsoft.ContainerService/managedClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.AutoUpgrade/
 ---
 
-# Set AKS auto-upgrade channel
+# Kubernetes Cluster version is not automatically upgraded
 
 ## SYNOPSIS
 
-Configure AKS to automatically upgrade to newer supported AKS versions as they are made available.
+New versions of Kubernetes are released regularly.
+Upgrading each release manually can add operational overhead without realizing equivalent value.
 
 ## DESCRIPTION
 
@@ -37,6 +38,77 @@ Consider enabling auto-upgrades for AKS clusters by setting an auto-upgrade chan
 
 ## EXAMPLES
 
+### Configure with Bicep
+
+To deploy AKS clusters that pass this rule:
+
+- Set `properties.autoUpgradeProfile.upgradeChannel` to an upgrade channel such as `stable`.
+
+For example:
+
+```bicep
+resource cluster 'Microsoft.ContainerService/managedClusters@2024-10-01' = {
+  location: location
+  name: name
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${identity.id}': {}
+    }
+  }
+  properties: {
+    kubernetesVersion: kubernetesVersion
+    disableLocalAccounts: true
+    enableRBAC: true
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: allPools
+    aadProfile: {
+      managed: true
+      enableAzureRBAC: true
+      adminGroupObjectIDs: clusterAdmins
+      tenantID: subscription().tenantId
+    }
+    networkProfile: {
+      networkPlugin: 'azure'
+      networkPolicy: 'azure'
+      loadBalancerSku: 'standard'
+      serviceCidr: serviceCidr
+      dnsServiceIP: dnsServiceIP
+    }
+    apiServerAccessProfile: {
+      authorizedIPRanges: [
+        '0.0.0.0/32'
+      ]
+    }
+    autoUpgradeProfile: {
+      upgradeChannel: 'stable'
+    }
+    oidcIssuerProfile: {
+      enabled: true
+    }
+    addonProfiles: {
+      azurepolicy: {
+        enabled: true
+      }
+      omsagent: {
+        enabled: true
+        config: {
+          logAnalyticsWorkspaceResourceID: workspaceId
+        }
+      }
+      azureKeyvaultSecretsProvider: {
+        enabled: true
+        config: {
+          enableSecretRotation: 'true'
+        }
+      }
+    }
+  }
+}
+```
+
+<!-- external:avm avm/res/container-service/managed-cluster autoUpgradeProfileUpgradeChannel -->
+
 ### Configure with Azure template
 
 To deploy AKS clusters that pass this rule:
@@ -48,7 +120,7 @@ For example:
 ```json
 {
   "type": "Microsoft.ContainerService/managedClusters",
-  "apiVersion": "2024-02-01",
+  "apiVersion": "2024-10-01",
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "identity": {
@@ -110,77 +182,6 @@ For example:
   ]
 }
 ```
-
-### Configure with Bicep
-
-To deploy AKS clusters that pass this rule:
-
-- Set `properties.autoUpgradeProfile.upgradeChannel` to an upgrade channel such as `stable`.
-
-For example:
-
-```bicep
-resource cluster 'Microsoft.ContainerService/managedClusters@2024-02-01' = {
-  location: location
-  name: name
-  identity: {
-    type: 'UserAssigned'
-    userAssignedIdentities: {
-      '${identity.id}': {}
-    }
-  }
-  properties: {
-    kubernetesVersion: kubernetesVersion
-    disableLocalAccounts: true
-    enableRBAC: true
-    dnsPrefix: dnsPrefix
-    agentPoolProfiles: allPools
-    aadProfile: {
-      managed: true
-      enableAzureRBAC: true
-      adminGroupObjectIDs: clusterAdmins
-      tenantID: subscription().tenantId
-    }
-    networkProfile: {
-      networkPlugin: 'azure'
-      networkPolicy: 'azure'
-      loadBalancerSku: 'standard'
-      serviceCidr: serviceCidr
-      dnsServiceIP: dnsServiceIP
-    }
-    apiServerAccessProfile: {
-      authorizedIPRanges: [
-        '0.0.0.0/32'
-      ]
-    }
-    autoUpgradeProfile: {
-      upgradeChannel: 'stable'
-    }
-    oidcIssuerProfile: {
-      enabled: true
-    }
-    addonProfiles: {
-      azurepolicy: {
-        enabled: true
-      }
-      omsagent: {
-        enabled: true
-        config: {
-          logAnalyticsWorkspaceResourceID: workspaceId
-        }
-      }
-      azureKeyvaultSecretsProvider: {
-        enabled: true
-        config: {
-          enableSecretRotation: 'true'
-        }
-      }
-    }
-  }
-}
-```
-
-<!-- external:avm avm/res/container-service/managed-cluster autoUpgradeProfileUpgradeChannel -->
 
 ### Configure with Azure CLI
 

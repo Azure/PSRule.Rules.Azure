@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-06-16
+reviewed: 2025-03-27
 severity: Important
 pillar: Security
 category: SE:01 Security Baseline
@@ -8,11 +8,11 @@ resourceType: Microsoft.ContainerService/managedClusters
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AKS.NodeAutoUpgrade/
 ---
 
-# Azure AKS Node Auto-Upgrade Rule
+# Kubernetes Cluster nodes are not automatically patched
 
 ## SYNOPSIS
 
-Deploy AKS Clusters with Node Auto-Upgrade enabled
+Operating system (OS) security updates should be applied to AKS nodes and rebooted as required to address security vulnerabilities.
 
 ## DESCRIPTION
 
@@ -33,12 +33,84 @@ Node OS image auto-upgrade won't affect the cluster's Kubernetes version.
 
 ## RECOMMENDATION
 
-AKS clusters should be configured to utilize the SecurityPatch,NodeImage upgrade channels to ensure timely security updates.
-This will help maintain operational resilience by addressing known security issues and improving overall cluster performance.
-
-This practice helps maintain the security and reliability of your AKS clusters aligning with Well Architected Framework principles.
+Consider setting a channel for node OS upgrades to automatically apply OS security updates and reboot each node when required.
+The upgrade of each node uses safe deployment practices to minimize downtime and impact to workloads.
 
 ## EXAMPLES
+
+### Configure with Bicep
+
+To deploy AKS clusters that pass this rule:
+
+- Set `properties.autoUpgradeProfile.nodeOSupgradeChannel` to `SecurityPatch` or `NodeImage`.
+
+For example:
+
+```bicep
+resource cluster 'Microsoft.ContainerService/managedClusters@2024-10-01' = {
+  location: location
+  name: clusterName
+  identity: {
+    type: 'UserAssigned'
+    userAssignedIdentities: {
+      '${identity.id}': {}
+    }
+  }
+  properties: {
+    kubernetesVersion: '1.30.10'
+    enableRBAC: true
+    dnsPrefix: dnsPrefix
+    agentPoolProfiles: allPools
+    aadProfile: {
+      managed: true
+      enableAzureRBAC: true
+      adminGroupObjectIDs: clusterAdmins
+      tenantID: subscription().tenantId
+    }
+    networkProfile: {
+      networkPlugin: 'azure'
+      networkPolicy: 'azure'
+      loadBalancerSku: 'standard'
+      serviceCidr: serviceCidr
+      dnsServiceIP: dnsServiceIP
+      dockerBridgeCidr: dockerBridgeCidr
+    }
+    autoUpgradeProfile: {
+      nodeOSupgradeChannel: 'SecurityPatch'
+    }
+    addonProfiles: {
+      httpApplicationRouting: {
+        enabled: false
+      }
+      azurepolicy: {
+        enabled: true
+        config: {
+          version: 'v2'
+        }
+      }
+      omsagent: {
+        enabled: true
+        config: {
+          logAnalyticsWorkspaceResourceID: workspaceId
+        }
+      }
+      kubeDashboard: {
+        enabled: false
+      }
+      azureKeyvaultSecretsProvider: {
+        enabled: true
+        config: {
+          enableSecretRotation: 'true'
+        }
+      }
+    }
+    podIdentityProfile: {
+      enabled: true
+    }
+  }
+  tags: tags
+}
+```
 
 ### Configure with Azure template
 
@@ -51,7 +123,7 @@ For example:
 ```json
 {
     "type": "Microsoft.ContainerService/managedClusters",
-    "apiVersion": "2023-07-01",
+    "apiVersion": "2024-10-01",
     "name": "[parameters('clusterName')]",
     "location": "[parameters('location')]",
     "identity": {
@@ -61,7 +133,7 @@ For example:
         }
     },
     "properties": {
-        "kubernetesVersion": "1.30.6",
+        "kubernetesVersion": "1.30.10",
         "enableRBAC": true,
         "dnsPrefix": "[parameters('dnsPrefix')]",
         "agentPoolProfiles": "[variables('allPools')]",
@@ -119,80 +191,6 @@ For example:
 }
 ```
 
-### Configure with Bicep
-
-To deploy AKS clusters that pass this rule:
-
-- Set `properties.autoUpgradeProfile.nodeOSupgradeChannel` to `SecurityPatch` or `NodeImage`.
-
-For example:
-
-```bicep
-resource cluster 'Microsoft.ContainerService/managedClusters@2023-07-01' = {
-  location: location
-  name: clusterName
-  identity: {
-    type: 'UserAssigned'
-    userAssignedIdentities: {
-      '${identity.id}': {}
-    }
-  }
-  properties: {
-    kubernetesVersion: '1.30.6'
-    enableRBAC: true
-    dnsPrefix: dnsPrefix
-    agentPoolProfiles: allPools
-    aadProfile: {
-      managed: true
-      enableAzureRBAC: true
-      adminGroupObjectIDs: clusterAdmins
-      tenantID: subscription().tenantId
-    }
-    networkProfile: {
-      networkPlugin: 'azure'
-      networkPolicy: 'azure'
-      loadBalancerSku: 'standard'
-      serviceCidr: serviceCidr
-      dnsServiceIP: dnsServiceIP
-      dockerBridgeCidr: dockerBridgeCidr
-    }
-    autoUpgradeProfile: {
-      nodeOSupgradeChannel: 'SecurityPatch'
-    }
-    addonProfiles: {
-      httpApplicationRouting: {
-        enabled: false
-      }
-      azurepolicy: {
-        enabled: true
-        config: {
-          version: 'v2'
-        }
-      }
-      omsagent: {
-        enabled: true
-        config: {
-          logAnalyticsWorkspaceResourceID: workspaceId
-        }
-      }
-      kubeDashboard: {
-        enabled: false
-      }
-      azureKeyvaultSecretsProvider: {
-        enabled: true
-        config: {
-          enableSecretRotation: 'true'
-        }
-      }
-    }
-    podIdentityProfile: {
-      enabled: true
-    }
-  }
-  tags: tags
-}
-```
-
 ### Configure with Azure CLI
 
 ```bash
@@ -207,6 +205,15 @@ az aks update -n '<name>' -g '<resource_group>' --node-os-upgrade-channel 'Secur
 az aks update -n '<name>' -g '<resource_group>' --node-os-upgrade-channel 'NodeImage'.  
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Azure Kubernetes Service Clusters should enable node os auto-upgrade](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_Autoupgrade_NodeOS_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/04408ca5-aa10-42ce-8536-98955cdddd4c`.
+- [Configure Node OS Auto upgrade on Azure Kubernetes Cluster](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Kubernetes/AKS_Autoupgrade_NodeOS_DINE.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/40f1aee2-4db4-4b74-acb1-c6972e24cca8`.
+
 ## NOTES
 
 AKS releases weekly rounds of fixes and feature and component updates that affect all clusters and customers.
@@ -218,8 +225,8 @@ It also helps you to identify such fixes shipped to a core add-on, and node imag
 ## LINKS
 
 - [SE:01-Security Baseline](https://learn.microsoft.com/azure/well-architected/security/establish-baseline)
-- [AutoUpgrade NodeImages](https://learn.microsoft.com/azure/aks/auto-upgrade-node-os-image?tabs=azure-cli)
-- [NodeImage Upgrade](https://learn.microsoft.com/azure/aks/node-image-upgrade)
-- [Process Node Updates with Kured](https://learn.microsoft.com/azure/aks/node-updates-kured)
-- [NodeOSUpgrade with GithubActions](https://learn.microsoft.com/azure/aks/node-upgrade-github-actions)
+- [Automatically upgrade AKS cluster node OS images](https://learn.microsoft.com/azure/aks/auto-upgrade-node-os-image?tabs=azure-cli)
+- [Upgrade Azure Kubernetes Service (AKS) node images](https://learn.microsoft.com/azure/aks/node-image-upgrade)
+- [Apply security and kernel updates to Linux nodes in Azure Kubernetes Service (AKS)](https://learn.microsoft.com/azure/aks/node-updates-kured)
+- [Apply automatic security upgrades to Azure Kubernetes Service (AKS) nodes using GitHub Actions](https://learn.microsoft.com/azure/aks/node-upgrade-github-actions)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.containerservice/managedclusters)
