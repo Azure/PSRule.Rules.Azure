@@ -15,7 +15,8 @@ The following baselines relate to generally available Azure features.
 
 Name | Synopsis | Status
 ---- | -------- | ------
-[Azure.GA_2024_12](Azure.GA_2024_12.md) | Include rules released December 2024 or prior for Azure GA features. | Latest
+[Azure.GA_2025_03](Azure.GA_2025_03.md) | Include rules released March 2025 or prior for Azure GA features. | Latest
+[Azure.GA_2024_12](Azure.GA_2024_12.md) | Include rules released December 2024 or prior for Azure GA features. | Obsolete
 [Azure.GA_2024_09](Azure.GA_2024_09.md) | Include rules released September 2024 or prior for Azure GA features. | Obsolete
 [Azure.GA_2024_06](Azure.GA_2024_06.md) | Include rules released June 2024 or prior for Azure GA features. | Obsolete
 [Azure.GA_2024_03](Azure.GA_2024_03.md) | Include rules released March 2024 or prior for Azure GA features. | Obsolete
@@ -41,7 +42,8 @@ The following baselines relate to preview Azure features.
 
 Name | Synopsis | Status
 ---- | -------- | ------
-[Azure.Preview_2024_12](Azure.Preview_2024_12.md) | Include rules released December 2024 or prior for Azure preview only features. | Latest
+[Azure.Preview_2025_03](Azure.Preview_2025_03.md) | Include rules released March 2025 or prior for Azure preview only features. | Latest
+[Azure.Preview_2024_12](Azure.Preview_2024_12.md) | Include rules released December 2024 or prior for Azure preview only features. | Obsolete
 [Azure.Preview_2024_09](Azure.Preview_2024_09.md) | Include rules released September 2024 or prior for Azure preview only features. | Obsolete
 [Azure.Preview_2024_06](Azure.Preview_2024_06.md) | Include rules released June 2024 or prior for Azure preview only features. | Obsolete
 [Azure.Preview_2024_03](Azure.Preview_2024_03.md) | Include rules released March 2024 or prior for Azure preview only features. | Obsolete

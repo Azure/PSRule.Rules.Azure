@@ -1,6 +1,6 @@
 ---
-title: Reference
 generated: True
+title: Reference
 ---
 
 # Reference
@@ -36,7 +36,7 @@ AZR-000011 | [Azure.ADX.Usage](Azure.ADX.Usage.md) | Regularly remove unused res
 AZR-000012 | [Azure.ADX.ManagedIdentity](Azure.ADX.ManagedIdentity.md) | Configure Data Explorer clusters to use managed identities to access Azure resources securely. | GA
 AZR-000013 | [Azure.ADX.DiskEncryption](Azure.ADX.DiskEncryption.md) | Use disk encryption for Azure Data Explorer (ADX) clusters. | GA
 AZR-000014 | [Azure.ADX.SLA](Azure.ADX.SLA.md) | Use SKUs that include an SLA when configuring Azure Data Explorer (ADX) clusters. | GA
-AZR-000015 | [Azure.AKS.Version](Azure.AKS.Version.md) | AKS control plane and nodes pools should use a current stable release. | GA
+AZR-000015 | [Azure.AKS.Version](Azure.AKS.Version.md) | Older versions of Kubernetes may have known bugs or security vulnerabilities, and may have limited support. | GA
 AZR-000016 | [Azure.AKS.PoolVersion](Azure.AKS.PoolVersion.md) | AKS node pools should match Kubernetes control plane version. | GA
 AZR-000017 | [Azure.AKS.PoolScaleSet](Azure.AKS.PoolScaleSet.md) | Deploy AKS clusters with nodes pools based on VM scale sets. | GA
 AZR-000018 | [Azure.AKS.NodeMinPods](Azure.AKS.NodeMinPods.md) | Azure Kubernetes Cluster (AKS) nodes should use a minimum number of pods. | GA
@@ -57,7 +57,7 @@ AZR-000032 | [Azure.AKS.AzureRBAC](Azure.AKS.AzureRBAC.md) | Use Azure RBAC for 
 AZR-000033 | [Azure.AKS.SecretStore](Azure.AKS.SecretStore.md) | Deploy AKS clusters with Secrets Store CSI Driver and store Secrets in Key Vault. | GA
 AZR-000034 | [Azure.AKS.SecretStoreRotation](Azure.AKS.SecretStoreRotation.md) | Enable autorotation of Secrets Store CSI Driver secrets for AKS clusters. | GA
 AZR-000035 | [Azure.AKS.HttpAppRouting](Azure.AKS.HttpAppRouting.md) | Disable HTTP application routing add-on in AKS clusters. | GA
-AZR-000036 | [Azure.AKS.AutoUpgrade](Azure.AKS.AutoUpgrade.md) | Configure AKS to automatically upgrade to newer supported AKS versions as they are made available. | GA
+AZR-000036 | [Azure.AKS.AutoUpgrade](Azure.AKS.AutoUpgrade.md) | New versions of Kubernetes are released regularly. Upgrading each release manually can add operational overhead without realizing equivalent value. | GA
 AZR-000038 | [Azure.AKS.UseRBAC](Azure.AKS.UseRBAC.md) | Deploy AKS cluster with role-based access control (RBAC) enabled. | GA
 AZR-000039 | [Azure.AKS.Name](Azure.AKS.Name.md) | Azure Kubernetes Service (AKS) cluster names should meet naming requirements. | GA
 AZR-000040 | [Azure.AKS.DNSPrefix](Azure.AKS.DNSPrefix.md) | Azure Kubernetes Service (AKS) cluster DNS prefix should meet naming requirements. | GA
@@ -455,7 +455,7 @@ AZR-000431 | [Azure.MySQL.MaintenanceWindow](Azure.MySQL.MaintenanceWindow.md) |
 AZR-000432 | [Azure.MySQL.ZoneRedundantHA](Azure.MySQL.ZoneRedundantHA.md) | Deploy Azure Database for MySQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | GA
 AZR-000433 | [Azure.PostgreSQL.MaintenanceWindow](Azure.PostgreSQL.MaintenanceWindow.md) | Configure a customer-controlled maintenance window for Azure Database for PostgreSQL servers. | GA
 AZR-000434 | [Azure.PostgreSQL.ZoneRedundantHA](Azure.PostgreSQL.ZoneRedundantHA.md) | Deploy Azure Database for PostgreSQL servers using zone-redundant high availability (HA) in supported regions to ensure high availability and resilience. | GA
-AZR-000435 | [Azure.AKS.NodeAutoUpgrade](Azure.AKS.NodeAutoUpgrade.md) | Deploy AKS Clusters with Node Auto-Upgrade enabled | GA
+AZR-000435 | [Azure.AKS.NodeAutoUpgrade](Azure.AKS.NodeAutoUpgrade.md) | Operating system (OS) security updates should be applied to AKS nodes and rebooted as required to address security vulnerabilities. | GA
 AZR-000436 | [Azure.VMSS.AvailabilityZone](Azure.VMSS.AvailabilityZone.md) | Deploy virtual machine scale set instances using availability zones in supported regions to ensure high availability and resilience. | GA
 AZR-000437 | [Azure.AVD.ScheduleAgentUpdate](Azure.AVD.ScheduleAgentUpdate.md) | Define a windows for agent updates to minimize disruptions to users. | GA
 AZR-000438 | [Azure.VMSS.ZoneBalance](Azure.VMSS.ZoneBalance.md) | Deploy virtual machine scale set instances using the best-effort zone balance in supported regions. | GA
@@ -475,5 +475,7 @@ AZR-000451 | [Azure.VM.ASDistributeTraffic](Azure.VM.ASDistributeTraffic.md) | E
 AZR-000452 | [Azure.VM.MultiTenantHosting](Azure.VM.MultiTenantHosting.md) | Deploy Windows 10 and 11 virtual machines in Azure using Multi-tenant Hosting Rights to leverage your existing Windows licenses. | GA
 AZR-000453 | [Azure.ImageBuilder.CustomizeHash](Azure.ImageBuilder.CustomizeHash.md) | External scripts that are not pinned may be modified to execute privileged actions by an unauthorized user. | GA
 AZR-000454 | [Azure.ImageBuilder.ValidateHash](Azure.ImageBuilder.ValidateHash.md) | External scripts that are not pinned may be modified to execute privileged actions by an unauthorized user. | GA
+AZR-000455 | [Azure.SQL.VAScan](Azure.SQL.VAScan.md) | SQL Databases may have configuration vulnerabilities discovered after they are deployed. | GA
+AZR-000456 | [Azure.DNS.DNSSEC](Azure.DNS.DNSSEC.md) | DNS may be vulnerable to several attacks when the DNS clients are not able to verify the authenticity of the DNS responses. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

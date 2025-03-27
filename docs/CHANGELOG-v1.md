@@ -31,6 +31,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.42.0-B0021:
 
+- New features:
+  - Added March 2025 baselines `Azure.GA_2025_03` and `Azure.Preview_2025_03` by @BernieWhite.
+    [#3304](https://github.com/Azure/PSRule.Rules.Azure/issues/3304)
+    - Includes rules released before or during March 2025.
+    - Marked `Azure.GA_2024_12` and `Azure.Preview_2024_12` baselines as obsolete.
 - New rules:
   - Azure DNS:
     - Check that public zones use DNSSEC by @BernieWhite.
