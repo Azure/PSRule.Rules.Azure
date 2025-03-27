@@ -1,18 +1,15 @@
 ---
 export: true
-moduleVersion: v1.41.0
-obsolete: true
+moduleVersion: v1.42.0
 ---
 
-# Azure.Preview_2024_12
+# Azure.Preview_2025_03
 
-<!-- OBSOLETE -->
-
-Include rules released December 2024 or prior for Azure preview only features.
+Include rules released March 2025 or prior for Azure preview only features.
 
 ## Rules
 
-The following rules are included within the `Azure.Preview_2024_12` baseline.
+The following rules are included within the `Azure.Preview_2025_03` baseline.
 
 This baseline includes a total of 12 rules.
 
