@@ -93,7 +93,7 @@ resource plan 'Microsoft.Web/serverfarms@2022-09-01' = {
 
 ## NOTES
 
-Zone-redundancy is only supported for the `PremiumV2`, `PremiumV3` and `ElasticPremium` SKU tiers.
+Zone-redundancy is only supported for the `PremiumV2`, `PremiumV3`, `Premium0V3`, `PremiumMV3` and `ElasticPremium` SKU tiers.
 
 ## LINKS
 
