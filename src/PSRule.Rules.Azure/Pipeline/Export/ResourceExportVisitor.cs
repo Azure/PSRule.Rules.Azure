@@ -27,7 +27,7 @@ internal sealed class ResourceExportVisitor
     private const string PROPERTY_NETWORKINTERFACES = "networkInterfaces";
     private const string PROPERTY_NETOWORKPLUGIN = "networkPlugin";
     private const string PROPERTY_AGENTPOOLPROFILES = "agentPoolProfiles";
-    private const string PROPERTY_TENANTID = "tenantId";
+    private const string PROPERTY_TENANT_ID = "tenantId";
     private const string PROPERTY_POLICIES = "policies";
     private const string PROPERTY_FIREWALLRULES = "firewallRules";
     private const string PROPERTY_SECURITYALERTPOLICIES = "securityAlertPolicies";
@@ -70,14 +70,15 @@ internal sealed class ResourceExportVisitor
     private const string TYPE_NETWORK_FRONTDOOR = "Microsoft.Network/frontDoors";
     private const string TYPE_NETWORK_CONNECTION = "Microsoft.Network/connections";
     private const string TYPE_SUBSCRIPTION = "Microsoft.Subscription";
-    private const string TYPE_RESOURCES_RESOURCEGROUP = "Microsoft.Resources/resourceGroups";
+    private const string TYPE_RESOURCES_RESOURCE_GROUP = "Microsoft.Resources/resourceGroups";
     private const string TYPE_KUSTO_CLUSTER = "Microsoft.Kusto/Clusters";
     private const string TYPE_EVENTHUB_NAMESPACE = "Microsoft.EventHub/namespaces";
     private const string TYPE_SERVICEBUS_NAMESPACE = "Microsoft.ServiceBus/namespaces";
     private const string TYPE_VISUALSTUDIO_ACCOUNT = "Microsoft.VisualStudio/account";
     private const string TYPE_DEVCENTER_PROJECT = "Microsoft.DevCenter/projects";
-    private const string TYPE_NETWORK_FIREWALLPOLICY = "Microsoft.Network/firewallPolicies";
-    private const string TYPE_NETWORK_VIRTUALHUB = "Microsoft.Network/virtualHubs";
+    private const string TYPE_NETWORK_FIREWALL_POLICY = "Microsoft.Network/firewallPolicies";
+    private const string TYPE_NETWORK_VIRTUAL_HUB = "Microsoft.Network/virtualHubs";
+    private const string TYPE_NETWORK_DNS_ZONE = "Microsoft.Network/dnsZones";
     private const string TYPE_EVENTGRID_TOPIC = "Microsoft.EventGrid/topics";
     private const string TYPE_EVENTGRID_DOMAIN = "Microsoft.EventGrid/domains";
     private const string TYPE_EVENTGRID_NAMESPACE = "Microsoft.EventGrid/namespaces";
@@ -114,6 +115,7 @@ internal sealed class ResourceExportVisitor
     private const string APIVERSION_2023_04_01 = "2023-04-01";
     private const string APIVERSION_2023_05_01 = "2023-05-01";
     private const string APIVERSION_2023_06_30 = "2023-06-30";
+    private const string APIVERSION_2023_07_01_PREVIEW = "2023-07-01-preview";
     private const string APIVERSION_2023_09_01 = "2023-09-01";
     private const string APIVERSION_2023_12_15_PREVIEW = "2023-12-15-preview";
     private const string APIVERSION_2024_03_02_PREVIEW = "2024-03-02-preview";
@@ -160,7 +162,7 @@ internal sealed class ResourceExportVisitor
             !resource.TryStringProperty(PROPERTY_TYPE, out var resourceType) ||
             string.IsNullOrWhiteSpace(resourceType) ||
             !resource.TryGetProperty(PROPERTY_ID, out var resourceId) ||
-            !resource.TryGetProperty(PROPERTY_TENANTID, out var tenantId))
+            !resource.TryGetProperty(PROPERTY_TENANT_ID, out var tenantId))
             return false;
 
         var resourceContext = new ResourceContext(context, tenantId);
@@ -206,6 +208,7 @@ internal sealed class ResourceExportVisitor
             await VisitDevCenterProject(resourceContext, resource, resourceType, resourceId) ||
             await VisitFirewallPolicy(resourceContext, resource, resourceType, resourceId) ||
             await VisitVirtualHub(resourceContext, resource, resourceType, resourceId) ||
+            await VisitDNSZone(resourceContext, resource, resourceType, resourceId) ||
             VisitNetworkConnection(resource, resourceType);
     }
 
@@ -215,7 +218,7 @@ internal sealed class ResourceExportVisitor
     private async Task GetProperties(ResourceContext context, JObject resource, string resourceType, string resourceId)
     {
         if (string.Equals(resourceType, TYPE_SUBSCRIPTION, StringComparison.OrdinalIgnoreCase) ||
-            string.Equals(resourceType, TYPE_RESOURCES_RESOURCEGROUP, StringComparison.OrdinalIgnoreCase) ||
+            string.Equals(resourceType, TYPE_RESOURCES_RESOURCE_GROUP, StringComparison.OrdinalIgnoreCase) ||
             resource.ContainsKeyInsensitive(PROPERTY_PROPERTIES) ||
             !TryGetLatestAPIVersion(resourceType, out var apiVersion))
             return;
@@ -237,7 +240,7 @@ internal sealed class ResourceExportVisitor
     private static void SetResourceIdentifiers(JObject resource, string resourceType, string resourceId)
     {
         if (ResourceHelper.TryResourceGroup(resourceId, out var subscriptionId, out var resourceGroupName) &&
-            !string.Equals(resourceType, TYPE_RESOURCES_RESOURCEGROUP, StringComparison.OrdinalIgnoreCase) &&
+            !string.Equals(resourceType, TYPE_RESOURCES_RESOURCE_GROUP, StringComparison.OrdinalIgnoreCase) &&
             !resource.ContainsKeyInsensitive(PROPERTY_RESOURCE_GROUP_NAME))
             resource.Add(PROPERTY_RESOURCE_GROUP_NAME, resourceGroupName);
 
@@ -336,7 +339,7 @@ internal sealed class ResourceExportVisitor
 
     private static async Task<bool> VisitFirewallPolicy(ResourceContext context, JObject resource, string resourceType, string resourceId)
     {
-        if (!string.Equals(resourceType, TYPE_NETWORK_FIREWALLPOLICY, StringComparison.OrdinalIgnoreCase))
+        if (!string.Equals(resourceType, TYPE_NETWORK_FIREWALL_POLICY, StringComparison.OrdinalIgnoreCase))
             return false;
 
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "ruleCollectionGroups", APIVERSION_2023_09_01));
@@ -354,10 +357,19 @@ internal sealed class ResourceExportVisitor
 
     private static async Task<bool> VisitVirtualHub(ResourceContext context, JObject resource, string resourceType, string resourceId)
     {
-        if (!string.Equals(resourceType, TYPE_NETWORK_VIRTUALHUB, StringComparison.OrdinalIgnoreCase))
+        if (!string.Equals(resourceType, TYPE_NETWORK_VIRTUAL_HUB, StringComparison.OrdinalIgnoreCase))
             return false;
 
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "routingIntent", APIVERSION_2023_04_01));
+        return true;
+    }
+
+    private static async Task<bool> VisitDNSZone(ResourceContext context, JObject resource, string resourceType, string resourceId)
+    {
+        if (!string.Equals(resourceType, TYPE_NETWORK_DNS_ZONE, StringComparison.OrdinalIgnoreCase))
+            return false;
+
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "dnssecConfigs", APIVERSION_2023_07_01_PREVIEW));
         return true;
     }
 
@@ -372,7 +384,7 @@ internal sealed class ResourceExportVisitor
 
     private static async Task<bool> VisitResourceGroup(ResourceContext context, JObject resource, string resourceType, string resourceId)
     {
-        if (!string.Equals(resourceType, TYPE_RESOURCES_RESOURCEGROUP, StringComparison.OrdinalIgnoreCase))
+        if (!string.Equals(resourceType, TYPE_RESOURCES_RESOURCE_GROUP, StringComparison.OrdinalIgnoreCase))
             return false;
 
         await GetRoleAssignments(context, resource, resourceId);
