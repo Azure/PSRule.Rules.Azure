@@ -1,135 +1,169 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-A",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "topic-A",
-        "Name": "topic-A",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "endpoint": "https://topic-A.region-1.eventgrid.azure.net/api/events",
-            "inputSchema": "EventGridSchema",
-            "metricResourceId": "00000000-0000-0000-0000-000000000000",
-            "publicNetworkAccess": "Enabled"
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.EventGrid/topics",
-        "ResourceType": "Microsoft.EventGrid/topics",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "topic-A",
+    "Name": "topic-A",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://topic-A.region-1.eventgrid.azure.net/api/events",
+      "inputSchema": "EventGridSchema",
+      "metricResourceId": "00000000-0000-0000-0000-000000000000",
+      "publicNetworkAccess": "Enabled"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-B",
-        "identity": {
-            "principalId": "00000000-0000-0000-0000-000000000000",
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "type": "SystemAssigned"
-        },
-        "kind": "Azure",
-        "sku": {
-            "name": "Basic"
-        },
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "topic-B",
-        "Name": "topic-B",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "endpoint": "https://topic-B.region-1.eventgrid.azure.net/api/events",
-            "inputSchema": "EventGridSchema",
-            "metricResourceId": "00000000-0000-0000-0000-000000000000",
-            "publicNetworkAccess": "Enabled",
-            "inboundIpRules": [
-                {
-                    "ipMask": "n.n.n.n",
-                    "action": "Allow"
-                }
-            ]
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.EventGrid/topics",
-        "ResourceType": "Microsoft.EventGrid/topics",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.EventGrid/topics",
+    "ResourceType": "Microsoft.EventGrid/topics",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-B",
+    "identity": {
+      "principalId": "00000000-0000-0000-0000-000000000000",
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "type": "SystemAssigned"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-C",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-C",
-        "identity": {
-            "principalId": "00000000-0000-0000-0000-000000000000",
-            "tenantId": "00000000-0000-0000-0000-000000000000",
-            "type": "SystemAssigned"
-        },
-        "kind": "Azure",
-        "sku": {
-            "name": "Basic"
-        },
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "topic-C",
-        "Name": "topic-C",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "endpoint": "https://topic-C.region-1.eventgrid.azure.net/api/events",
-            "inputSchema": "EventGridSchema",
-            "metricResourceId": "00000000-0000-0000-0000-000000000000",
-            "publicNetworkAccess": "Disabled",
-            "disableLocalAuth": true
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.EventGrid/topics",
-        "ResourceType": "Microsoft.EventGrid/topics",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+    "kind": "Azure",
+    "sku": {
+      "name": "Basic"
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/domains/domain-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/domains/domain-A",
-        "Identity": {
-            "PrincipalId": "00000000-0000-0000-0000-000000000000",
-            "TenantId": "00000000-0000-0000-0000-000000000000",
-            "Type": "SystemAssigned"
-        },
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "domain-A",
-        "Name": "domain-A",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "endpoint": "https://domain-A.region-1.eventgrid.azure.net/api/events",
-            "inputSchema": "CloudEventSchemaV1_0",
-            "publicNetworkAccess": "Disabled",
-            "inboundIpRules": []
-        },
-        "ResourceGroupName": "rg-test",
-        "Type": "Microsoft.EventGrid/domains",
-        "ResourceType": "Microsoft.EventGrid/domains",
-        "ExtensionResourceType": null,
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "topic-B",
+    "Name": "topic-B",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://topic-B.region-1.eventgrid.azure.net/api/events",
+      "inputSchema": "EventGridSchema",
+      "metricResourceId": "00000000-0000-0000-0000-000000000000",
+      "publicNetworkAccess": "Enabled",
+      "inboundIpRules": [
+        {
+          "ipMask": "n.n.n.n",
+          "action": "Allow"
+        }
+      ]
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.EventGrid/topics",
+    "ResourceType": "Microsoft.EventGrid/topics",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-C",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/topics/topic-C",
+    "identity": {
+      "principalId": "00000000-0000-0000-0000-000000000000",
+      "tenantId": "00000000-0000-0000-0000-000000000000",
+      "type": "SystemAssigned"
+    },
+    "kind": "Azure",
+    "sku": {
+      "name": "Basic"
+    },
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "topic-C",
+    "Name": "topic-C",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://topic-C.region-1.eventgrid.azure.net/api/events",
+      "inputSchema": "EventGridSchema",
+      "metricResourceId": "00000000-0000-0000-0000-000000000000",
+      "publicNetworkAccess": "Disabled",
+      "disableLocalAuth": true,
+      "minimumTlsVersionAllowed": "1.2"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.EventGrid/topics",
+    "ResourceType": "Microsoft.EventGrid/topics",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/domains/domain-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/domains/domain-A",
+    "Identity": {
+      "PrincipalId": "00000000-0000-0000-0000-000000000000",
+      "TenantId": "00000000-0000-0000-0000-000000000000",
+      "Type": "SystemAssigned"
+    },
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "domain-A",
+    "Name": "domain-A",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://domain-A.region-1.eventgrid.azure.net/api/events",
+      "inputSchema": "CloudEventSchemaV1_0",
+      "publicNetworkAccess": "Disabled",
+      "inboundIpRules": []
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.EventGrid/domains",
+    "ResourceType": "Microsoft.EventGrid/domains",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/domains/domain-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.EventGrid/domains/domain-B",
+    "Identity": {
+      "PrincipalId": "00000000-0000-0000-0000-000000000000",
+      "TenantId": "00000000-0000-0000-0000-000000000000",
+      "Type": "SystemAssigned"
+    },
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "domain-B",
+    "Name": "domain-B",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "endpoint": "https://domain-B.region-1.eventgrid.azure.net/api/events",
+      "inputSchema": "CloudEventSchemaV1_0",
+      "publicNetworkAccess": "Disabled",
+      "inboundIpRules": [],
+      "disableLocalAuth": true,
+      "minimumTlsVersionAllowed": "1.2"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.EventGrid/domains",
+    "ResourceType": "Microsoft.EventGrid/domains",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 ]

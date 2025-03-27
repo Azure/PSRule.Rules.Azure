@@ -10,7 +10,7 @@ param name string
 param location string = resourceGroup().location
 
 // An example Event Grid Topic with local auth and public access disabled.
-resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
+resource topic 'Microsoft.EventGrid/topics@2025-02-15' = {
   name: name
   location: location
   identity: {
@@ -19,6 +19,19 @@ resource eventGrid 'Microsoft.EventGrid/topics@2022-06-15' = {
   properties: {
     disableLocalAuth: true
     publicNetworkAccess: 'Disabled'
+    minimumTlsVersionAllowed: '1.2'
+    inputSchema: 'CloudEventSchemaV1_0'
+  }
+}
+
+// An example Event Grid Domain with local auth and public access disabled.
+resource domain 'Microsoft.EventGrid/domains@2025-02-15' = {
+  name: name
+  location: location
+  properties: {
+    disableLocalAuth: true
+    publicNetworkAccess: 'Disabled'
+    minimumTlsVersionAllowed: '1.2'
     inputSchema: 'CloudEventSchemaV1_0'
   }
 }

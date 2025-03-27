@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.24.24.22086",
-      "templateHash": "15911896001062089949"
+      "version": "0.34.44.8038",
+      "templateHash": "11884501302086453487"
     }
   },
   "parameters": {
@@ -26,7 +26,7 @@
   "resources": [
     {
       "type": "Microsoft.EventGrid/topics",
-      "apiVersion": "2022-06-15",
+      "apiVersion": "2025-02-15",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
@@ -35,6 +35,19 @@
       "properties": {
         "disableLocalAuth": true,
         "publicNetworkAccess": "Disabled",
+        "minimumTlsVersionAllowed": "1.2",
+        "inputSchema": "CloudEventSchemaV1_0"
+      }
+    },
+    {
+      "type": "Microsoft.EventGrid/domains",
+      "apiVersion": "2025-02-15",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "disableLocalAuth": true,
+        "publicNetworkAccess": "Disabled",
+        "minimumTlsVersionAllowed": "1.2",
         "inputSchema": "CloudEventSchemaV1_0"
       }
     }

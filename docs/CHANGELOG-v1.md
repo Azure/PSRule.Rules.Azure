@@ -43,6 +43,9 @@ What's changed since pre-release v1.42.0-B0021:
   - Azure SQL Database:
     - Check that logical SQL servers have vulnerability assessment enabled by @BernieWhite.
       [#3196](https://github.com/Azure/PSRule.Rules.Azure/issues/3196)
+  - Event Grid:
+    - Check that topics and domains use a minimum of TLS 1.2 by @BernieWhite.
+      [#3306](https://github.com/Azure/PSRule.Rules.Azure/issues/3306)
 - Updated rules:
   - Azure Kubernetes Service:
     - Updated `Azure.AKS.Version` to use `1.30.10` as the minimum version by @BernieWhite.

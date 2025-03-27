@@ -8,11 +8,11 @@ resourceType: Microsoft.EventHub/namespaces
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EventHub.MinTLS/
 ---
 
-# Minimum TLS version
+# Event Hub Namespace accepts insecure TLS versions
 
 ## SYNOPSIS
 
-Event Hub namespaces should reject TLS versions older than 1.2.
+Weak or deprecated transport protocols for client-server communication introduce security vulnerabilities.
 
 ## DESCRIPTION
 
