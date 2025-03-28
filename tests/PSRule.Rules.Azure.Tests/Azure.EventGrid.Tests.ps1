@@ -42,14 +42,14 @@ Describe 'Azure.EventGrid' -Tag 'EventGrid' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'topic-A', 'topic-B';
+            $ruleResult.Length | Should -Be 2;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
-            $ruleResult.TargetName | Should -BeIn 'topic-C', 'domain-A';
+            $ruleResult.TargetName | Should -BeIn 'topic-C', 'domain-A', 'domain-B';
+            $ruleResult.Length | Should -Be 3;
         }
 
         It 'Azure.EventGrid.ManagedIdentity' {
@@ -58,14 +58,14 @@ Describe 'Azure.EventGrid' -Tag 'EventGrid' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'topic-A';
+            $ruleResult.Length | Should -Be 1;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
-            $ruleResult.TargetName | Should -BeIn 'topic-B', 'topic-C', 'domain-A';
+            $ruleResult.TargetName | Should -BeIn 'topic-B', 'topic-C', 'domain-A', 'domain-B';
+            $ruleResult.Length | Should -Be 4;
         }
 
         It 'Azure.EventGrid.DisableLocalAuth' {
@@ -74,14 +74,46 @@ Describe 'Azure.EventGrid' -Tag 'EventGrid' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'topic-A', 'topic-B', 'domain-A';
+            $ruleResult.Length | Should -Be 3;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
+            $ruleResult.TargetName | Should -BeIn 'topic-C', 'domain-B';
+            $ruleResult.Length | Should -Be 2;
+        }
+
+        It 'Azure.EventGrid.TopicTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.EventGrid.TopicTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'topic-A', 'topic-B';
+            $ruleResult.Length | Should -Be 2;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.TargetName | Should -BeIn 'topic-C';
+            $ruleResult.Length | Should -Be 1;
+        }
+
+        It 'Azure.EventGrid.DomainTLS' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.EventGrid.DomainTLS' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'domain-A';
+            $ruleResult.Length | Should -Be 1;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'domain-B';
+            $ruleResult.Length | Should -Be 1;
         }
     }
 

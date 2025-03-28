@@ -17,7 +17,7 @@ metadata:
   tags:
     release: GA
     ruleSet: 2021_12
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'NS-2'
 spec:
@@ -41,7 +41,7 @@ metadata:
   tags:
     release: GA
     ruleSet: 2021_12
-    Azure.WAF/pillar: 'Security'
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: [ 'IM-1', 'IM-3' ]
 spec:
@@ -69,9 +69,9 @@ metadata:
   name: Azure.EventGrid.DisableLocalAuth
   ref: AZR-000100
   tags:
-    release: 'GA'
-    ruleSet: '2022_09'
-    Azure.WAF/pillar: 'Security'
+    release: GA
+    ruleSet: 2022_09
+    Azure.WAF/pillar: Security
   labels:
     Azure.MCSB.v1/control: 'IM-1'
 spec:
@@ -81,6 +81,42 @@ spec:
   condition:
     field: properties.disableLocalAuth
     equals: true
+
+---
+# Synopsis: Event Grid topics should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EventGrid.TopicTLS
+  ref: AZR-000457
+  tags:
+    release: GA
+    ruleSet: 2025_03
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.EventGrid/topics
+  condition:
+    field: properties.minimumTlsVersionAllowed
+    version: '>=1.2'
+
+---
+# Synopsis: Event Grid domains should reject TLS versions older than 1.2.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EventGrid.DomainTLS
+  ref: AZR-000458
+  tags:
+    release: GA
+    ruleSet: 2025_03
+    Azure.WAF/pillar: Security
+spec:
+  type:
+  - Microsoft.EventGrid/domains
+  condition:
+    field: properties.minimumTlsVersionAllowed
+    version: '>=1.2'
 
 #endregion Rules
 

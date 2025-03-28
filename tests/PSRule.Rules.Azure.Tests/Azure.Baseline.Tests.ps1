@@ -290,7 +290,7 @@ Describe 'Baselines' -Tag Baseline {
             $result = @(Get-PSRule -Module PSRule.Rules.Azure -Baseline 'Azure.GA_2025_03' -WarningAction Ignore);
             $filteredResult = @($result | Where-Object { $_.Tag.release -in 'GA'});
             $filteredResult | Should -Not -BeNullOrEmpty;
-            $filteredResult.Length | Should -Be 438;
+            $filteredResult.Length | Should -Be 440;
         }
 
         It 'With Azure.Preview_2025_03' {
