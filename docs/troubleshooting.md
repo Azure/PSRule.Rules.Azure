@@ -247,3 +247,14 @@ For the PSRule GitHub Action, use **>=1.4.0**.
 - name: Run PSRule analysis
   uses: microsoft/ps-rule@v2.9.0
 ```
+
+## PFA0001: Unable to process the deployment
+
+!!! Message
+
+    PFA0001: Unable to process the deployment because the template requested a failure. See https://aka.ms/ps-rule-azure/troubleshooting.
+
+This error is returned when the template or Bicep module called the `fail()` function.
+A template or Bicep module author may call the `fail()` function cause a validation error.
+
+If you got this message, continue reading to the end of the message to see the instructions left by the template author.

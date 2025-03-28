@@ -24,6 +24,7 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
         ManagementGroup = ManagementGroupOption.Default,
         ParameterDefaults = ParameterDefaultsOption.Default,
         Deployment = DeploymentOption.Default,
+        Deployer = DeployerOption.Default,
         PolicyRulePrefix = DEFAULT_POLICY_RULE_PREFIX,
         BicepMinimumVersion = DEFAULT_BICEP_MINIMUM_VERSION,
         BicepFileExpansionTimeout = DEFAULT_BICEP_FILE_EXPANSION_TIMEOUT,
@@ -40,6 +41,7 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
         ManagementGroup = null;
         ParameterDefaults = null;
         Deployment = null;
+        Deployer = null;
         PolicyIgnoreList = null;
         PolicyRulePrefix = null;
         BicepMinimumVersion = null;
@@ -57,6 +59,7 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
         ManagementGroup = new ManagementGroupOption(option.ManagementGroup);
         ParameterDefaults = new ParameterDefaultsOption(option.ParameterDefaults);
         Deployment = new DeploymentOption(option.Deployment);
+        Deployer = new DeployerOption(option.Deployer);
         PolicyIgnoreList = (string[])option.PolicyIgnoreList?.Clone();
         PolicyRulePrefix = option.PolicyRulePrefix;
         BicepMinimumVersion = option.BicepMinimumVersion;
@@ -79,6 +82,7 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
             ManagementGroup == other.ManagementGroup &&
             ParameterDefaults == other.ParameterDefaults &&
             Deployment == other.Deployment &&
+            Deployer == other.Deployer &&
             PolicyIgnoreList == other.PolicyIgnoreList &&
             PolicyRulePrefix == other.PolicyRulePrefix &&
             BicepMinimumVersion == other.BicepMinimumVersion &&
@@ -97,6 +101,7 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
             hash = hash * 23 + (ManagementGroup != null ? ManagementGroup.GetHashCode() : 0);
             hash = hash * 23 + (ParameterDefaults != null ? ParameterDefaults.GetHashCode() : 0);
             hash = hash * 23 + (Deployment != null ? Deployment.GetHashCode() : 0);
+            hash = hash * 23 + (Deployer != null ? Deployer.GetHashCode() : 0);
             hash = hash * 23 + (PolicyIgnoreList != null ? PolicyIgnoreList.GetHashCode() : 0);
             hash = hash * 23 + (PolicyRulePrefix != null ? PolicyRulePrefix.GetHashCode() : 0);
             hash = hash * 23 + (BicepMinimumVersion != null ? BicepMinimumVersion.GetHashCode() : 0);
@@ -115,6 +120,7 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
             ManagementGroup = ManagementGroupOption.Combine(o1?.ManagementGroup, o2?.ManagementGroup),
             ParameterDefaults = ParameterDefaultsOption.Combine(o1?.ParameterDefaults, o2?.ParameterDefaults),
             Deployment = DeploymentOption.Combine(o1?.Deployment, o2?.Deployment),
+            Deployer = DeployerOption.Combine(o1?.Deployer, o2?.Deployer),
             PolicyIgnoreList = o1?.PolicyIgnoreList ?? o2?.PolicyIgnoreList,
             PolicyRulePrefix = o1?.PolicyRulePrefix ?? o2?.PolicyRulePrefix,
             BicepMinimumVersion = o1?.BicepMinimumVersion ?? o2?.BicepMinimumVersion,
@@ -163,6 +169,13 @@ public sealed class ConfigurationOption : IEquatable<ConfigurationOption>
     [DefaultValue(null)]
     [YamlMember(Alias = "AZURE_DEPLOYMENT", ApplyNamingConventions = false)]
     public DeploymentOption Deployment { get; set; }
+
+    /// <summary>
+    /// Configures the properties of the deployer object.
+    /// </summary>
+    [DefaultValue(null)]
+    [YamlMember(Alias = "AZURE_DEPLOYER", ApplyNamingConventions = false)]
+    public DeployerOption Deployer { get; set; }
 
     /// <summary>
     /// Configures the policy rule prefix.

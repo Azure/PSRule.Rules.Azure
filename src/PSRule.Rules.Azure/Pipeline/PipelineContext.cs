@@ -17,10 +17,14 @@ internal sealed class PipelineContext
         Option.Configuration.Tenant = TenantOption.Combine(Option.Configuration.Tenant, TenantOption.Default);
         Option.Configuration.Tenant.TenantId = tenantId;
         Option.Configuration.ManagementGroup = ManagementGroupOption.Combine(Option.Configuration.ManagementGroup, ManagementGroupOption.Default);
+        Option.Configuration.Deployer = DeployerOption.Combine(Option.Configuration.Deployer, DeployerOption.Default);
         Option.Configuration.Subscription = SubscriptionOption.Combine(Option.Configuration.Subscription, SubscriptionOption.Default);
+
+        // Adjust based on other options if they have been set.
         Option.Configuration.Subscription.TenantId = Option.Configuration.Tenant.TenantId;
         Option.Configuration.ResourceGroup.SubscriptionId = Option.Configuration.Subscription.SubscriptionId;
         Option.Configuration.ManagementGroup.Properties.TenantId = Option.Configuration.Tenant.TenantId;
+        Option.Configuration.Deployer.TenantId = Option.Configuration.Tenant.TenantId;
     }
 
     public PSRuleOption Option { get; }

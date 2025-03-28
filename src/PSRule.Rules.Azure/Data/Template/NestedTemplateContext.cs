@@ -37,6 +37,8 @@ namespace PSRule.Rules.Azure.Data.Template
 
         public ManagementGroupOption ManagementGroup => _Inner.ManagementGroup;
 
+        public DeployerOption Deployer => _Inner.Deployer;
+
         public ExpressionFnOuter BuildExpression(string s)
         {
             return _Inner.BuildExpression(s);
