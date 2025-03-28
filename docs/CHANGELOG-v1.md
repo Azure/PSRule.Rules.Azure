@@ -57,6 +57,9 @@ What's changed since pre-release v1.42.0-B0021:
     - Bumped `Azure.Grafana.Version` to use version `11` as `10` is now depreciated by @BernieWhite.
       [#3293](https://github.com/Azure/PSRule.Rules.Azure/issues/3293)
       - Bumped rule set to `2025_03`.
+- General improvements:
+  - Added support for `fail` and `deployer` functions during Bicep expansion by @BernieWhite.
+    [#3308](https://github.com/Azure/PSRule.Rules.Azure/issues/3308)
 - Engineering:
   - Updated resource providers and policy aliases by @BernieWhite.
     [#3285](https://github.com/Azure/PSRule.Rules.Azure/issues/3285)

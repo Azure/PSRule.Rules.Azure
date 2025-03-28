@@ -5,6 +5,7 @@ using System.Linq;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
+using PSRule.Rules.Azure.Pipeline;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure
@@ -1301,6 +1302,18 @@ namespace PSRule.Rules.Azure
             Assert.Equal("Microsoft.Sql/servers/databases/transparentDataEncryption", actual["type"].Value<string>());
             Assert.Equal("server01/db02/current", actual["name"].Value<string>());
             Assert.Equal("/subscriptions/ffffffff-ffff-ffff-ffff-ffffffffffff/resourceGroups/ps-rule-test-rg/providers/Microsoft.Sql/servers/server01/databases/db02", actual["scope"].Value<string>());
+        }
+
+        /// <summary>
+        /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3308
+        /// </summary>
+        [Fact]
+        public void ProcessTemplate_WhenFailCalled_ShouldThrowException()
+        {
+            var ex = Assert.Throws<TemplateReadException>(() => ProcessTemplate(GetSourcePath("Tests.Bicep.41.json"), null, out _));
+
+            Assert.StartsWith("PFA0001:", ex.InnerException.InnerException.InnerException.Message);
+            Assert.EndsWith(" This is a test failure message.", ex.InnerException.InnerException.InnerException.Message);
         }
     }
 }

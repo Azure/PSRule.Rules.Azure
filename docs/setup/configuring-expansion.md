@@ -385,6 +385,43 @@ configuration:
       displayName: 'My test management group'
 ```
 
+### Deployer properties
+
+<!-- module:version v1.42.0 -->
+
+This configuration option sets the deployer object used by the `deployer()` function.
+Configure this option to change the details of the deployer when exporting templates for analysis.
+Provided properties will override the default.
+Any properties that are not provided with use the defaults as specified below.
+
+Syntax:
+
+```yaml title='ps-rule.yaml'
+configuration:
+  AZURE_DEPLOYER:
+    objectId: string
+    tenantId: string
+```
+
+Default:
+
+```yaml title='ps-rule.yaml'
+# YAML: The default AZURE_DEPLOYER configuration option
+configuration:
+  AZURE_DEPLOYER:
+    objectId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+    tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+```
+
+Example:
+
+```yaml title='ps-rule.yaml'
+# YAML: Override the objectID of the deployer object
+configuration:
+  AZURE_DEPLOYER:
+    objectId: '00000000-0000-0000-0000-000000000000'
+```
+
 ### Required parameter defaults
 
 <!-- module:version v1.13.0 -->

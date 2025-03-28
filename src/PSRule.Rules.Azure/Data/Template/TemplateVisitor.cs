@@ -112,6 +112,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 Subscription = SubscriptionOption.Default;
                 Tenant = TenantOption.Default;
                 ManagementGroup = ManagementGroupOption.Default;
+                Deployer = DeployerOption.Default;
                 _Deployment = new Stack<DeploymentValue>();
                 _ExpressionFactory = new ExpressionFactory();
                 _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
@@ -124,7 +125,7 @@ namespace PSRule.Rules.Azure.Data.Template
                 _Symbols = new Dictionary<string, IDeploymentSymbol>(StringComparer.OrdinalIgnoreCase);
             }
 
-            internal TemplateContext(ITemplateContext? parent, PipelineContext pipelineContext, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, IDictionary<string, object> parameterDefaults)
+            internal TemplateContext(ITemplateContext? parent, PipelineContext pipelineContext, SubscriptionOption subscription, ResourceGroupOption resourceGroup, TenantOption tenant, ManagementGroupOption managementGroup, DeployerOption? deployer, IDictionary<string, object> parameterDefaults)
                 : this()
             {
                 Parent = parent;
@@ -140,6 +141,9 @@ namespace PSRule.Rules.Azure.Data.Template
 
                 if (managementGroup != null)
                     ManagementGroup = managementGroup;
+
+                if (deployer != null)
+                    Deployer = deployer;
 
                 if (parameterDefaults != null)
                     ParameterDefaults = new Dictionary<string, object>(parameterDefaults, StringComparer.OrdinalIgnoreCase);
@@ -161,6 +165,9 @@ namespace PSRule.Rules.Azure.Data.Template
                 if (pipelineContext?.Option?.Configuration?.ManagementGroup != null)
                     ManagementGroup = pipelineContext.Option.Configuration.ManagementGroup;
 
+                if (pipelineContext?.Option?.Configuration.Deployer != null)
+                    Deployer = pipelineContext.Option.Configuration.Deployer;
+
                 if (pipelineContext?.Option?.Configuration?.ParameterDefaults != null)
                     ParameterDefaults = new Dictionary<string, object>(pipelineContext.Option.Configuration.ParameterDefaults, StringComparer.OrdinalIgnoreCase);
             }
@@ -178,6 +185,8 @@ namespace PSRule.Rules.Azure.Data.Template
             public TenantOption Tenant { get; internal set; }
 
             public ManagementGroupOption ManagementGroup { get; internal set; }
+
+            public DeployerOption Deployer { get; internal set; }
 
             public IDictionary<string, object> ParameterDefaults { get; private set; }
 
@@ -1559,6 +1568,7 @@ namespace PSRule.Rules.Azure.Data.Template
             var resourceGroup = new ResourceGroupOption(context.ResourceGroup);
             var tenant = new TenantOption(context.Tenant);
             var managementGroup = new ManagementGroupOption(context.ManagementGroup);
+            var deployer = new DeployerOption(context.Deployer);
             if (TryStringProperty(resource, PROPERTY_SUBSCRIPTION_ID, out var subscriptionId))
             {
                 var targetSubscriptionId = ExpandString(context, subscriptionId);
@@ -1588,7 +1598,7 @@ namespace PSRule.Rules.Azure.Data.Template
             resourceGroup.SubscriptionId = subscription.SubscriptionId;
             TryObjectProperty(template, PROPERTY_PARAMETERS, out var templateParameters);
 
-            var deploymentContext = new TemplateContext(context, context.Pipeline, subscription, resourceGroup, tenant, managementGroup, context.ParameterDefaults);
+            var deploymentContext = new TemplateContext(context, context.Pipeline, subscription, resourceGroup, tenant, managementGroup, deployer, context.ParameterDefaults);
 
             // Handle custom type definitions early to allow type mapping of parameters if required.
             if (TryObjectProperty(template, PROPERTY_DEFINITIONS, out var definitions))

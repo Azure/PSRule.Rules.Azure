@@ -49,7 +49,7 @@ public sealed class FunctionTests
         Assert.Empty(actual4);
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Array(context, ["abcd", "efgh"]));
     }
 
@@ -68,7 +68,7 @@ public sealed class FunctionTests
         Assert.Equal("a", Functions.Coalesce(context, [null, "a", throws]));
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Coalesce(context, []));
         Assert.Throws<NotImplementedException>(() => Functions.Coalesce(context, [null, throws]));
     }
 
@@ -161,7 +161,7 @@ public sealed class FunctionTests
             "mockProp",
             new Mock.MockResource("Microsoft.Resources/deployments/test1")["outputs"]["aksSubnetId"]["value"],
         ]) as JObject;
-        var actual2 = Functions.CreateObject(context, System.Array.Empty<object>()) as JObject;
+        var actual2 = Functions.CreateObject(context, []) as JObject;
         var actual3 = Functions.CreateObject(context, [
             "intProp",
             new Mock.MockValue(1),
@@ -246,7 +246,7 @@ public sealed class FunctionTests
         Assert.Null(actual2);
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.First(context, []));
     }
 
     [Fact]
@@ -268,7 +268,7 @@ public sealed class FunctionTests
         Assert.Equal([], actual);
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Flatten(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.Flatten(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Flatten(context, []));
     }
 
     [Fact]
@@ -290,7 +290,7 @@ public sealed class FunctionTests
         Assert.Equal("c", actual2["three"]);
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Intersection(context, ["one", "two", "three"]));
     }
 
@@ -330,7 +330,7 @@ public sealed class FunctionTests
         Assert.Null(actual3);
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Json(context, []));
     }
 
     [Fact]
@@ -396,7 +396,7 @@ public sealed class FunctionTests
         Assert.Equal(2, actual);
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Length(context, [null]));
     }
 
@@ -423,7 +423,7 @@ public sealed class FunctionTests
         Assert.Equal(8, actual6);
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, ["one", "two"]));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Max(context, [1, "0"]));
     }
@@ -451,7 +451,7 @@ public sealed class FunctionTests
         Assert.Equal(4, actual6);
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, ["one", "two"]));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Min(context, [1, "0"]));
     }
@@ -478,7 +478,7 @@ public sealed class FunctionTests
         Assert.Equal(new string[] { "a", "A" }, actual.Values<string>().ToArray());
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.ObjectKeys(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.ObjectKeys(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ObjectKeys(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.ObjectKeys(context, [1]));
     }
 
@@ -557,7 +557,7 @@ public sealed class FunctionTests
         Assert.False(actual.ContainsKey("g"));
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.ShallowMerge(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.ShallowMerge(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ShallowMerge(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.ShallowMerge(context, [1]));
     }
 
@@ -678,7 +678,7 @@ public sealed class FunctionTests
         Assert.Equal(2, actual2.Length);
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.Union(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.Union(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Union(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.Union(context, [1]));
     }
 
@@ -708,7 +708,7 @@ public sealed class FunctionTests
         Assert.Null(Functions.TryGet(context, [testObject, "properties", "notValue", "value"]));
 
         Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, null));
-        Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, System.Array.Empty<object>()));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, ["one"]));
     }
 
@@ -1061,11 +1061,11 @@ public sealed class FunctionTests
     {
         var context = GetContext();
 
-        var actual1 = Functions.Environment(context, null) as JObject;
-        Assert.Equal("AzureCloud", actual1["name"]);
-        Assert.Equal("https://graph.windows.net/", actual1["graph"]);
-        Assert.Equal("https://management.azure.com/", actual1["resourceManager"]);
-        Assert.Equal("https://login.microsoftonline.com/", actual1["authentication"]["loginEndpoint"]);
+        var actual = Functions.Environment(context, null) as JObject;
+        Assert.Equal("AzureCloud", actual["name"]);
+        Assert.Equal("https://graph.windows.net/", actual["graph"]);
+        Assert.Equal("https://management.azure.com/", actual["resourceManager"]);
+        Assert.Equal("https://login.microsoftonline.com/", actual["authentication"]["loginEndpoint"]);
     }
 
     [Fact]
@@ -1100,6 +1100,42 @@ public sealed class FunctionTests
         // Parameters object
         var actual2 = Functions.Variables(context, ["test"]) as TestLengthObject;
         Assert.Equal("two", actual2.propB);
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_DEPLOYMENT)]
+    public void Deployer()
+    {
+        var context = GetContext();
+
+        var actual = Functions.Deployer(context, null) as DeployerOption;
+        Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.ObjectId);
+        Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.TenantId);
+
+        context.Deployer.ObjectId = "00000000-0000-0000-0000-000000000000";
+        context.Deployer.TenantId = "00000000-0000-0000-0000-000000000000";
+        actual = Functions.Deployer(context, null) as DeployerOption;
+        Assert.Equal("00000000-0000-0000-0000-000000000000", actual.ObjectId);
+        Assert.Equal("00000000-0000-0000-0000-000000000000", actual.TenantId);
+
+        // Accepts no arguments.
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Deployer(context, [123]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_DEPLOYMENT)]
+    public void Fail()
+    {
+        var context = GetContext();
+
+        // Check for out of range and invalid errors.
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Fail(context, null));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Fail(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Fail(context, [1, 2]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.Fail(context, [1]));
+
+        // Check for intended failure message.
+        Assert.Throws<DeploymentFailureException>(() => Functions.Fail(context, ["test"]));
     }
 
     #endregion Deployment
@@ -2300,6 +2336,7 @@ public sealed class FunctionTests
             Subscription = SubscriptionOption.Default,
             Tenant = TenantOption.Default,
             ManagementGroup = ManagementGroupOption.Default,
+            Deployer = DeployerOption.Default,
         };
         context.Load(JObject.Parse("{ \"parameters\": { \"name\": { \"value\": \"abcdef\" } } }"));
         return context;
@@ -2313,6 +2350,7 @@ public sealed class FunctionTests
             Subscription = option.Configuration.Subscription,
             Tenant = option.Configuration.Tenant,
             ManagementGroup = option.Configuration.ManagementGroup,
+            Deployer = option.Configuration.Deployer,
         };
         context.Load(JObject.Parse("{ \"parameters\": { \"name\": { \"value\": \"abcdef\" } } }"));
         return context;

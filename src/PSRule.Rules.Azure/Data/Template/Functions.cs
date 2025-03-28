@@ -31,6 +31,8 @@ namespace PSRule.Rules.Azure.Data.Template
         private const string PROPERTY_OPERAND1 = "operand1";
         private const string PROPERTY_OPERAND2 = "operand2";
         private const string PROPERTY_VALUETOCONVERT = "valueToConvert";
+        private const string PROPERTY_MESSAGE = "message";
+
         private const string FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ssZ";
         private const string FORMAT_AZURE_DATETIME = "M/d/yyyy h:mm:ss tt";
 
@@ -81,6 +83,8 @@ namespace PSRule.Rules.Azure.Data.Template
             new FunctionDescriptor("environment", Environment),
             new FunctionDescriptor("parameters", Parameters),
             new FunctionDescriptor("variables", Variables),
+            new FunctionDescriptor("deployer", Deployer),
+            new FunctionDescriptor("fail", Fail),
 
             // Logical
             new FunctionDescriptor("and", And, delayBinding: true),
@@ -174,8 +178,7 @@ namespace PSRule.Rules.Azure.Data.Template
             // CIDR
             new FunctionDescriptor("parseCidr", ParseCidr),
             new FunctionDescriptor("cidrSubnet", CidrSubnet),
-            new FunctionDescriptor("cidrHost", CidrHost),
-        ];
+            new FunctionDescriptor("cidrHost", CidrHost),        ];
 
         /// <summary>
         /// Functions specific to Azure Policy.
@@ -836,8 +839,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object Deployment(ITemplateContext context, object[] args)
         {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(Deployment), args);
+            if (CountArgs(args) > 0) throw ArgumentsOutOfRange(nameof(Deployment), args);
 
             return context.Deployment;
         }
@@ -847,8 +849,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object Environment(ITemplateContext context, object[] args)
         {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(Environment), args);
+            if (CountArgs(args) > 0) throw ArgumentsOutOfRange(nameof(Environment), args);
 
             return JObject.FromObject(context.GetEnvironment());
         }
@@ -858,8 +859,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object Parameters(ITemplateContext context, object[] args)
         {
-            if (CountArgs(args) != 1)
-                throw ArgumentsOutOfRange(nameof(Parameters), args);
+            if (CountArgs(args) != 1) throw ArgumentsOutOfRange(nameof(Parameters), args);
 
             if (!ExpressionHelpers.TryString(args[0], out var parameterName))
                 throw ArgumentFormatInvalid(nameof(Parameters));
@@ -875,8 +875,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object Variables(ITemplateContext context, object[] args)
         {
-            if (CountArgs(args) != 1)
-                throw ArgumentsOutOfRange(nameof(Variables), args);
+            if (CountArgs(args) != 1) throw ArgumentsOutOfRange(nameof(Variables), args);
 
             if (!ExpressionHelpers.TryString(args[0], out var variableName))
                 throw ArgumentFormatInvalid(nameof(Variables));
@@ -885,6 +884,30 @@ namespace PSRule.Rules.Azure.Data.Template
                 throw new KeyNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.VariableNotFound, variableName));
 
             return result;
+        }
+
+        /// <summary>
+        /// deployer()
+        /// </summary>
+        /// <remarks>
+        /// See <seealso href="https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/template-functions-deployment#deployer"/>.
+        /// </remarks>
+        internal static object Deployer(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) > 0) throw ArgumentsOutOfRange(nameof(Deployer), args);
+
+            return context.Deployer;
+        }
+
+        /// <summary>
+        /// fail(message)
+        /// </summary>
+        internal static object Fail(ITemplateContext context, object[] args)
+        {
+            if (CountArgs(args) != 1) throw ArgumentsOutOfRange(nameof(Fail), args);
+
+            throw ExpressionHelpers.TryString(args[0], out var message) ?
+                DeploymentFailure(message) : ArgumentInvalidString(nameof(Fail), PROPERTY_MESSAGE);
         }
 
         #endregion Deployment
@@ -1202,8 +1225,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object ResourceGroup(ITemplateContext context, object[] args)
         {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(ResourceGroup), args);
+            if (CountArgs(args) > 0) throw ArgumentsOutOfRange(nameof(ResourceGroup), args);
 
             return context.ResourceGroup;
         }
@@ -1213,8 +1235,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object Subscription(ITemplateContext context, object[] args)
         {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(Subscription), args);
+            if (CountArgs(args) > 0) throw ArgumentsOutOfRange(nameof(Subscription), args);
 
             return context.Subscription;
         }
@@ -1224,8 +1245,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object Tenant(ITemplateContext context, object[] args)
         {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(Tenant), args);
+            if (CountArgs(args) > 0) throw ArgumentsOutOfRange(nameof(Tenant), args);
 
             return context.Tenant;
         }
@@ -1235,8 +1255,7 @@ namespace PSRule.Rules.Azure.Data.Template
         /// </summary>
         internal static object ManagementGroup(ITemplateContext context, object[] args)
         {
-            if (CountArgs(args) > 0)
-                throw ArgumentsOutOfRange(nameof(ManagementGroup), args);
+            if (CountArgs(args) > 0) throw ArgumentsOutOfRange(nameof(ManagementGroup), args);
 
             return context.ManagementGroup;
         }
@@ -2548,6 +2567,14 @@ namespace PSRule.Rules.Azure.Data.Template
         private static Exception ArgumentInvalidResourceCollection(string v, string symbolicName)
         {
             throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// PFA0001: Unable to process the deployment because the template requested a failure. See https://aka.ms/ps-rule-azure/troubleshooting. {0}
+        /// </summary>
+        private static DeploymentFailureException DeploymentFailure(string message)
+        {
+            return new DeploymentFailureException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.DeploymentFailure, message));
         }
 
         #endregion Exceptions

@@ -36,6 +36,8 @@ internal interface ITemplateContext : IValidationContext
 
     ManagementGroupOption ManagementGroup { get; }
 
+    DeployerOption Deployer { get; }
+
     bool ShouldThrowMissingProperty { get; }
 
     DebugSymbol DebugSymbol { get; set; }

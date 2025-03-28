@@ -232,6 +232,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PFA0001: Unable to process the deployment because the template requested a failure. See https://aka.ms/ps-rule-azure/troubleshooting. {0}.
+        /// </summary>
+        internal static string DeploymentFailure {
+            get {
+                return ResourceManager.GetString("DeploymentFailure", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Failed to deserialize &apos;{0}&apos;. {1}.
         /// </summary>
         internal static string DeserializationFailure {

@@ -141,21 +141,11 @@ namespace PSRule.Rules.Azure.Data.Policy
                 Pipeline = context;
                 _FieldPrefix = new Stack<string>();
 
-                ResourceGroup = ResourceGroupOption.Default;
-                if (context?.Option?.Configuration?.ResourceGroup != null)
-                    ResourceGroup = context?.Option?.Configuration?.ResourceGroup;
-
-                Subscription = SubscriptionOption.Default;
-                if (context?.Option?.Configuration?.Subscription != null)
-                    Subscription = context?.Option?.Configuration?.Subscription;
-
-                Tenant = TenantOption.Default;
-                if (context?.Option?.Configuration?.Tenant != null)
-                    Tenant = context?.Option?.Configuration?.Tenant;
-
-                ManagementGroup = ManagementGroupOption.Default;
-                if (context?.Option?.Configuration?.ManagementGroup != null)
-                    ManagementGroup = context?.Option?.Configuration?.ManagementGroup;
+                ResourceGroup = context?.Option?.Configuration?.ResourceGroup ?? ResourceGroupOption.Default;
+                Subscription = context?.Option?.Configuration?.Subscription ?? SubscriptionOption.Default;
+                Tenant = context?.Option?.Configuration?.Tenant ?? TenantOption.Default;
+                ManagementGroup = context?.Option?.Configuration?.ManagementGroup ??ManagementGroupOption.Default;
+                Deployer = context?.Option?.Configuration?.Deployer ?? DeployerOption.Default;
 
                 PolicyRulePrefix = ConfigurationOption.Default.PolicyRulePrefix;
                 if (context?.Option?.Configuration?.PolicyRulePrefix != null)
@@ -185,6 +175,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             public SubscriptionOption Subscription { get; }
             public TenantOption Tenant { get; }
             public ManagementGroupOption ManagementGroup { get; }
+            public DeployerOption Deployer { get; }
 
             public string PolicyRulePrefix { get; }
             public string FieldPrefix
