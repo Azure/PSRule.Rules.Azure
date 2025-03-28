@@ -17,7 +17,7 @@ internal sealed class ExistingResourceValue : IResourceValue
     private string? _Id;
     private string? _Name;
 
-    public ExistingResourceValue(ITemplateContext context, string type, string symbolicName, JObject value, TemplateContext.CopyIndexState copy)
+    public ExistingResourceValue(ITemplateContext context, string type, string symbolicName, JObject value, CopyIndexState copy)
     {
         _Context = context;
         Type = type;
@@ -57,7 +57,10 @@ internal sealed class ExistingResourceValue : IResourceValue
     public bool Existing => true;
 
     /// <inheritdoc/>
-    public TemplateContext.CopyIndexState Copy { get; }
+    public CopyIndexState Copy { get; }
+
+    /// <inheritdoc/>
+    public string Scope => string.Empty;
 
     /// <summary>
     /// Expand <c>id</c> on demand.

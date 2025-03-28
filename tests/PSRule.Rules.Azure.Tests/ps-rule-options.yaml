@@ -30,6 +30,9 @@ configuration:
     arrayOptions: [ 'test', 'value' ]
   AZURE_DEPLOYMENT:
     name: 'deployment-from-yaml'
+  AZURE_DEPLOYER:
+    objectId: '11111111-1111-1111-1111-111111111111'
+    tenantId: '11111111-1111-1111-1111-111111111111'
   AZURE_AKS_CLUSTER_MINIMUM_VERSION: '9.99.9'
   AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST:
   - location: 'Antarctica North'

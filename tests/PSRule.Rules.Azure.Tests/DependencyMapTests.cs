@@ -118,7 +118,7 @@ namespace PSRule.Rules.Azure
 
         private static IResourceValue GetResourceValue(TemplateContext context, JObject resource, string symbolicName = null, int? copyInstance = null)
         {
-            var copy = copyInstance == null || symbolicName == null ? null : new TemplateContext.CopyIndexState
+            var copy = copyInstance == null || symbolicName == null ? null : new CopyIndexState
             {
                 Name = symbolicName,
                 Index = copyInstance.Value

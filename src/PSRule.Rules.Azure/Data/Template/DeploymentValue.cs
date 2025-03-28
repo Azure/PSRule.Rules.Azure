@@ -5,7 +5,6 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template;
 
@@ -20,10 +19,10 @@ internal sealed class DeploymentValue : BaseResourceValue, IResourceValue, ILazy
     private readonly Lazy<JObject> _Value;
     private readonly Dictionary<string, ILazyValue> _Outputs;
 
-    internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, JObject value, TemplateContext.CopyIndexState copy)
+    internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, JObject value, CopyIndexState copy)
         : this(id, name, symbolicName, scope, deploymentScope, () => value, copy) { }
 
-    internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, Func<JObject> value, TemplateContext.CopyIndexState copy)
+    internal DeploymentValue(string id, string name, string symbolicName, string scope, DeploymentScope deploymentScope, Func<JObject> value, CopyIndexState copy)
         : base(id, name, symbolicName)
     {
         _Value = new Lazy<JObject>(value);
@@ -101,7 +100,7 @@ internal sealed class DeploymentValue : BaseResourceValue, IResourceValue, ILazy
     public bool Existing => false;
 
     /// <inheritdoc/>
-    public TemplateContext.CopyIndexState Copy { get; }
+    public CopyIndexState Copy { get; }
 
     public ILazyObject Properties { get; }
 

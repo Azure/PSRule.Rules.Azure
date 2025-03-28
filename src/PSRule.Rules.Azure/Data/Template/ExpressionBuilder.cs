@@ -9,9 +9,17 @@ using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Data.Template;
 
+/// <summary>
+/// A function that can be invoked at runtime to resolve the value of an expression.
+/// </summary>
 internal delegate object ExpressionFnOuter(ITemplateContext context);
+
 internal delegate object ExpressionFn(ITemplateContext context, object[] args);
 
+/// <summary>
+/// Based on an expression string, build a delegate that will resolve the expression at runtime to a value.
+/// This builder first parses the expression into tokens, then walks the tokens to build a delegate that can be invoked at sometime in the future.
+/// </summary>
 internal sealed class ExpressionBuilder
 {
     private readonly ExpressionFactory _Functions;
@@ -23,16 +31,25 @@ internal sealed class ExpressionBuilder
         _Functions = expressionFactory;
     }
 
+    /// <summary>
+    /// Convert the expression string into a delegate that can be invoked at runtime.
+    /// </summary>
     internal ExpressionFnOuter Build(string s)
     {
         return Lexer(Parse(s));
     }
 
+    /// <summary>
+    /// Break up the expression into tokens.
+    /// </summary>
     private static TokenStream Parse(string s)
     {
         return ExpressionParser.Parse(s);
     }
 
+    /// <summary>
+    /// Walk through the tokens and return a callable function delegate.
+    /// </summary>
     private ExpressionFnOuter Lexer(TokenStream stream)
     {
         if (stream.TryTokenType(ExpressionTokenType.Element, out var token))
@@ -47,6 +64,9 @@ internal sealed class ExpressionBuilder
         return null;
     }
 
+    /// <summary>
+    /// An element is most likely a function, but could be a numeric literal.
+    /// </summary>
     private ExpressionFnOuter Element(TokenStream stream, ExpressionToken element)
     {
         ExpressionFnOuter result = null;
@@ -54,6 +74,7 @@ internal sealed class ExpressionBuilder
         // function
         if (stream.Skip(ExpressionTokenType.GroupStart))
         {
+            // Try to find a known ARM function.
             if (!_Functions.TryDescriptor(element.Content, out var descriptor))
                 throw new NotImplementedException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.FunctionNotFound, element.Content));
 
@@ -109,33 +130,52 @@ internal sealed class ExpressionBuilder
         return result;
     }
 
+    /// <summary>
+    /// Handle the token as a string literal.
+    /// </summary>
     private static ExpressionFnOuter String(ExpressionToken token)
     {
         return (context) => token.Content;
     }
 
+    /// <summary>
+    /// Handle the token as a numeric literal.
+    /// </summary>
     private static ExpressionFnOuter Numeric(ExpressionToken token)
     {
         return (context) => token.Value;
     }
 
-    private static ExpressionFnOuter AddIndex(ExpressionFnOuter inner, ExpressionFnOuter innerInner)
+    private static ExpressionFnOuter AddIndex(ExpressionFnOuter leftSideExpression, ExpressionFnOuter index)
     {
-        return (context) => Index(context, inner, innerInner);
+        return (context) => EvaluateIndex(context, leftSideExpression, index);
     }
 
-    private static object Index(ITemplateContext context, ExpressionFnOuter inner, ExpressionFnOuter index)
+    private static ExpressionFnOuter AddProperty(ExpressionFnOuter leftSideExpression, string propertyName)
     {
-        var source = inner(context);
-        var indexResult = index(context);
+        return (context) => EvaluateProperty(context, leftSideExpression, propertyName);
+    }
 
-        if (source is IMock mock)
-            return mock.GetValue(indexResult);
+    /// <summary>
+    /// Evaluate an index expression and get the result.
+    /// </summary>
+    private static object EvaluateIndex(ITemplateContext context, ExpressionFnOuter leftSideExpression, ExpressionFnOuter index)
+    {
+        // Get the value of the expression to the left side of the index.
+        var leftValue = leftSideExpression(context);
 
-        if (ExpressionHelpers.TryArray(source, out var array) && ExpressionHelpers.TryConvertInt(indexResult, out var arrayIndex))
+        // Get the number or string that was used as the index value. i.e. [0], ["name"]
+        var indexValue = index(context);
+
+        if (leftValue is IMock mock)
+            return mock.GetValue(indexValue);
+
+        // If the left side is an array, get that element number.
+        if (ExpressionHelpers.TryArray(leftValue, out var array) && ExpressionHelpers.TryConvertInt(indexValue, out var arrayIndex))
             return array.GetValue(arrayIndex);
 
-        if (source is JObject jObject && ExpressionHelpers.TryString(indexResult, out var propertyName))
+        // If the left side is an object, then get the property.
+        if (leftValue is JObject jObject && ExpressionHelpers.TryString(indexValue, out var propertyName))
         {
             if (!jObject.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var property))
                 throw new ExpressionReferenceException(propertyName, string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.PropertyNotFound, propertyName));
@@ -143,23 +183,24 @@ internal sealed class ExpressionBuilder
             return property;
         }
 
-        if (source is ILazyObject lazy && ExpressionHelpers.TryConvertString(indexResult, out var memberName) && lazy.TryProperty(memberName, out var value))
+        if (leftValue is ILazyObject lazy && ExpressionHelpers.TryConvertString(indexValue, out var memberName) && lazy.TryProperty(memberName, out var value))
             return value;
 
-        if (ExpressionHelpers.TryString(indexResult, out propertyName) && ExpressionHelpers.TryPropertyOrField(source, propertyName, out value))
+        if (ExpressionHelpers.TryString(indexValue, out propertyName) && ExpressionHelpers.TryPropertyOrField(leftValue, propertyName, out value))
             return value;
 
-        throw new InvalidOperationException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.IndexInvalid, indexResult));
+        throw new InvalidOperationException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.IndexInvalid, indexValue));
     }
 
-    private static ExpressionFnOuter AddProperty(ExpressionFnOuter inner, string propertyName)
+    /// <summary>
+    /// Evaluate a property expression and get the result.
+    /// </summary>
+    private static object EvaluateProperty(ITemplateContext context, ExpressionFnOuter leftSideExpression, string propertyName)
     {
-        return (context) => Property(context, inner, propertyName);
-    }
+        // Get the value of expression on the left side of the dot. i.e. some.property
+        var result = leftSideExpression(context);
 
-    private static object Property(ITemplateContext context, ExpressionFnOuter inner, string propertyName)
-    {
-        var result = inner(context);
+        // Try to get the property.
         if (ExpressionHelpers.TryPropertyOrField(result, propertyName, out var value))
             return value;
 

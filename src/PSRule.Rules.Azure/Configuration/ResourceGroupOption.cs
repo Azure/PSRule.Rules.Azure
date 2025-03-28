@@ -30,7 +30,7 @@ public sealed class ResourceGroupOption : IEquatable<ResourceGroupOption>
         Name = DEFAULT_NAME,
         Location = DEFAULT_LOCATION,
         ManagedBy = DEFAULT_MANAGED_BY,
-        Tags = DEFAULT_TAGS,
+        Tags = new Hashtable(StringComparer.OrdinalIgnoreCase),
         Properties = new ResourceGroupProperties(DEFAULT_PROVISIONING_STATE),
     };
 
@@ -66,7 +66,7 @@ public sealed class ResourceGroupOption : IEquatable<ResourceGroupOption>
         Name = name ?? DEFAULT_NAME;
         Location = location ?? DEFAULT_LOCATION;
         ManagedBy = managedBy ?? DEFAULT_MANAGED_BY;
-        Tags = tags ?? DEFAULT_TAGS;
+        Tags = tags ?? new Hashtable(StringComparer.OrdinalIgnoreCase);
         Properties = new ResourceGroupProperties(provisioningState);
     }
 

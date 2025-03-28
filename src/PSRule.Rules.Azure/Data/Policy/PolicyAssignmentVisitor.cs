@@ -144,7 +144,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 ResourceGroup = context?.Option?.Configuration?.ResourceGroup ?? ResourceGroupOption.Default;
                 Subscription = context?.Option?.Configuration?.Subscription ?? SubscriptionOption.Default;
                 Tenant = context?.Option?.Configuration?.Tenant ?? TenantOption.Default;
-                ManagementGroup = context?.Option?.Configuration?.ManagementGroup ??ManagementGroupOption.Default;
+                ManagementGroup = context?.Option?.Configuration?.ManagementGroup ?? ManagementGroupOption.Default;
                 Deployer = context?.Option?.Configuration?.Deployer ?? DeployerOption.Default;
 
                 PolicyRulePrefix = ConfigurationOption.Default.PolicyRulePrefix;
@@ -166,7 +166,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 _ReplacementRules = [];
             }
 
-            public TemplateVisitor.TemplateContext.CopyIndexStore CopyIndex { get; }
+            public CopyIndexStore CopyIndex { get; }
             public DeploymentValue Deployment { get; }
             public string ScopeId { get; }
             public string TemplateFile { get; }

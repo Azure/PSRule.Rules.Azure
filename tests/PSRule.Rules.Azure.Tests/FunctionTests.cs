@@ -1492,7 +1492,7 @@ public sealed class FunctionTests
     public void CopyIndex()
     {
         var context = GetContext();
-        var copy = new TemplateContext.CopyIndexState
+        var copy = new CopyIndexState
         {
             Name = "test1",
             Count = 5
