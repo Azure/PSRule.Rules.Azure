@@ -3,14 +3,15 @@
 
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template;
+
+#nullable enable
 
 [DebuggerDisplay("{Id}")]
 internal sealed class ResourceValue : BaseResourceValue, IResourceValue
 {
-    internal ResourceValue(string id, string name, string type, string symbolicName, JObject value, TemplateContext.CopyIndexState copy)
+    internal ResourceValue(string id, string name, string type, string symbolicName, JObject value, CopyIndexState copy)
         : base(id, name, symbolicName)
     {
         Type = type;
@@ -28,5 +29,10 @@ internal sealed class ResourceValue : BaseResourceValue, IResourceValue
     public bool Existing => false;
 
     /// <inheritdoc/>
-    public TemplateContext.CopyIndexState Copy { get; }
+    public CopyIndexState Copy { get; }
+
+    /// <inheritdoc/>
+    public string Scope => string.Empty;
 }
+
+#nullable restore

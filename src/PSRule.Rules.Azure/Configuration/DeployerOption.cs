@@ -1,9 +1,9 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using System;
 using System.Collections;
 using System.ComponentModel;
-using System;
 
 namespace PSRule.Rules.Azure.Configuration;
 

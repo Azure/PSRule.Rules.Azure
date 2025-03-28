@@ -3,7 +3,6 @@
 
 using System;
 using PSRule.Rules.Azure.Configuration;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template;
 
@@ -12,7 +11,7 @@ namespace PSRule.Rules.Azure.Data.Template;
 /// </summary>
 internal interface ITemplateContext : IValidationContext
 {
-    TemplateContext.CopyIndexStore CopyIndex { get; }
+    CopyIndexStore CopyIndex { get; }
 
     /// <summary>
     /// The current deployment.

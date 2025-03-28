@@ -55,6 +55,9 @@ internal sealed class TokenStream
         return true;
     }
 
+    /// <summary>
+    /// Check if the current token is of the specified type and move to the next token.
+    /// </summary>
     public bool Skip(ExpressionTokenType tokenType)
     {
         if (Current == null || Current.Type != tokenType)
@@ -105,7 +108,7 @@ internal sealed class TokenStream
 
     internal ExpressionToken[] ToArray()
     {
-        return _Token.ToArray();
+        return [.. _Token];
     }
 
     internal string AsString()
