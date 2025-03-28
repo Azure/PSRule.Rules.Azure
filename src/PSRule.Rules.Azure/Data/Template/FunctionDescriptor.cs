@@ -9,8 +9,11 @@ using PSRule.Rules.Azure.Resources;
 namespace PSRule.Rules.Azure.Data.Template;
 
 /// <summary>
-/// A wrapper for the function definition that can be invoked.
+/// A wrapper for the ARM function definition that can be invoked.
 /// </summary>
+/// <param name="name">The name of the function, as it is defined by ARM.</param>
+/// <param name="fn">The function delegate to invoke.</param>
+/// <param name="delayBinding"><c>true</c> if the value of arguments should not be resolved before the function is called.</param>
 [DebuggerDisplay("Function: {Name}")]
 internal sealed class FunctionDescriptor(string name, ExpressionFn fn, bool delayBinding = false) : IFunctionDescriptor
 {
@@ -25,7 +28,10 @@ internal sealed class FunctionDescriptor(string name, ExpressionFn fn, bool dela
     {
         var parameters = new object[args.Length];
         for (var i = 0; i < args.Length; i++)
+        {
+            // Wait to resolve the argument or calculate the value now.
             parameters[i] = _DelayBinding ? args[i] : ExpressionHelpers.UnwrapLiteralString(args[i](context));
+        }
 
         context.DebugSymbol = debugSymbol;
         try

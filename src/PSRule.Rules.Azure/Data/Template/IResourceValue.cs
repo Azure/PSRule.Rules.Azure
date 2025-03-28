@@ -2,7 +2,6 @@
 // Licensed under the MIT License.
 
 using Newtonsoft.Json.Linq;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template;
 
@@ -19,6 +18,11 @@ internal interface IResourceValue : IResourceIdentity
     JObject Value { get; }
 
     /// <summary>
+    /// The scope of the resource.
+    /// </summary>
+    string Scope { get; }
+
+    /// <summary>
     /// Determines if the resource value is an existing reference instead of full resource definition.
     /// </summary>
     bool Existing { get; }
@@ -26,5 +30,5 @@ internal interface IResourceValue : IResourceIdentity
     /// <summary>
     /// Copy state of the resource.
     /// </summary>
-    TemplateContext.CopyIndexState Copy { get; }
+    CopyIndexState Copy { get; }
 }

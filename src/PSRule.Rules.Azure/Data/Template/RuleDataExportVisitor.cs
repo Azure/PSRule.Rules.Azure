@@ -29,7 +29,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     private const string PROPERTY_ADMINISTRATORS = "administrators";
     private const string PROPERTY_IDENTITY = "identity";
     private const string PROPERTY_TYPE = "type";
-    private const string PROPERTY_SITECONFIG = "siteConfig";
+    private const string PROPERTY_SITE_CONFIG = "siteConfig";
     private const string PROPERTY_SUBNETS = "subnets";
     private const string PROPERTY_NETWORK_INTERFACES = "networkInterfaces";
     private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
@@ -48,15 +48,15 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     private const string DEFAULT_USER = "User";
     private const string PROVISIONING_STATE_SUCCEEDED = "Succeeded";
 
-    private const string TYPE_USERASSIGNEDIDENTITY = "Microsoft.ManagedIdentity/userAssignedIdentities";
+    private const string TYPE_USER_ASSIGNED_IDENTITY = "Microsoft.ManagedIdentity/userAssignedIdentities";
     private const string TYPE_SQLSERVER = "Microsoft.Sql/servers";
     private const string TYPE_SQLSERVER_ADMINISTRATOR = "Microsoft.Sql/servers/administrators";
     private const string TYPE_WEBAPP = "Microsoft.Web/sites";
     private const string TYPE_WEBAPP_CONFIG = "Microsoft.Web/sites/config";
-    private const string TYPE_WEBAPPSLOT = "Microsoft.Web/sites/slots";
-    private const string TYPE_WEBAPPSLOT_CONFIG = "Microsoft.Web/sites/slots/config";
-    private const string TYPE_VIRTUALNETWORK = "Microsoft.Network/virtualNetworks";
-    private const string TYPE_PRIVATEENDPOINT = "Microsoft.Network/privateEndpoints";
+    private const string TYPE_WEBAPP_SLOT = "Microsoft.Web/sites/slots";
+    private const string TYPE_WEBAPP_SLOT_CONFIG = "Microsoft.Web/sites/slots/config";
+    private const string TYPE_VIRTUAL_NETWORK = "Microsoft.Network/virtualNetworks";
+    private const string TYPE_PRIVATE_ENDPOINT = "Microsoft.Network/privateEndpoints";
     private const string TYPE_NETWORK_INTERFACE = "Microsoft.Network/networkInterfaces";
     private const string TYPE_SUBSCRIPTION_ALIAS = "Microsoft.Subscription/aliases";
     private const string TYPE_CONTAINER_REGISTRY = "Microsoft.ContainerRegistry/registries";
@@ -92,14 +92,19 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
 
     protected override void EndTemplate(TemplateContext context, string deploymentName, JObject template)
     {
+        // Re-arrange sub-resources.
         var resources = context.GetResources();
         for (var i = 0; i < resources.Length; i++)
             MoveResource(context, resources[i]);
 
+        // Fill in properties for resources that have known special cases that can be calculated.
         BuildMaterializedView(context, context.GetResources());
         base.EndTemplate(context, deploymentName, template);
     }
 
+    /// <summary>
+    /// When a resource in emitted, fill in runtime properties that can be calculated.
+    /// </summary>
     protected override void Emit(TemplateContext context, IResourceValue resource)
     {
         ProjectRuntimeProperties(context, resource);
@@ -130,8 +135,8 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
     /// </summary>
     private static void ProjectEffectiveProperties(IResourceValue resource)
     {
-        _ = ProjectWebApp(resource) ||
-            ProjectSQLServer(resource);
+        _ = MaterializedWebApp(resource) ||
+            MaterializedSQLServer(resource);
     }
 
     /// <summary>
@@ -257,7 +262,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
 
     private static bool ProjectManagedIdentity(TemplateContext context, IResourceValue resource)
     {
-        if (!resource.IsType(TYPE_USERASSIGNEDIDENTITY))
+        if (!resource.IsType(TYPE_USER_ASSIGNED_IDENTITY))
             return false;
 
         resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
@@ -275,7 +280,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
 
     private static bool ProjectVirtualNetwork(TemplateContext context, IResourceValue resource)
     {
-        if (!resource.IsType(TYPE_VIRTUALNETWORK))
+        if (!resource.IsType(TYPE_VIRTUAL_NETWORK))
             return false;
 
         resource.Value.UseProperty(PROPERTY_PROPERTIES, out JObject properties);
@@ -294,7 +299,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
 
     private static bool ProjectPrivateEndpoints(TemplateContext context, IResourceValue resource)
     {
-        if (!resource.IsType(TYPE_PRIVATEENDPOINT))
+        if (!resource.IsType(TYPE_PRIVATE_ENDPOINT))
             return false;
 
         if (!ResourceHelper.TryResourceGroup(resource.Id, out var subscriptionId, out var resourceGroupName))
@@ -401,7 +406,11 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
         return true;
     }
 
-    private static bool ProjectSQLServer(IResourceValue resource)
+    /// <summary>
+    /// Handle special cases for Logical SQL Server.
+    /// Entra administrator group can be defined on the server or overridden by a sub-resource.
+    /// </summary>
+    private static bool MaterializedSQLServer(IResourceValue resource)
     {
         if (!resource.IsType(TYPE_SQLSERVER))
             return false;
@@ -411,6 +420,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
 
         for (var i = 0; i < subResources.Length; i++)
         {
+            // The sub-resource if defined overrides the configuration on the server.
             if (subResources[i].ResourceNameEquals("ActiveDirectory") &&
                 subResources[i].TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var overrideProperties))
             {
@@ -422,13 +432,17 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
         return true;
     }
 
-    private static bool ProjectWebApp(IResourceValue resource)
+    /// <summary>
+    /// Handle special cases for web apps and slots.
+    /// SiteConfig can be defined on the web app or be overridden by a config sub-resource.
+    /// </summary>
+    private static bool MaterializedWebApp(IResourceValue resource)
     {
         string configType = null;
         if (resource.IsType(TYPE_WEBAPP))
             configType = TYPE_WEBAPP_CONFIG;
-        else if (resource.IsType(TYPE_WEBAPPSLOT))
-            configType = TYPE_WEBAPPSLOT_CONFIG;
+        else if (resource.IsType(TYPE_WEBAPP_SLOT))
+            configType = TYPE_WEBAPP_SLOT_CONFIG;
 
         if (configType == null)
             return false;
@@ -442,7 +456,7 @@ internal sealed class RuleDataExportVisitor : TemplateVisitor
                 subResources[i].TryGetProperty<JObject>(PROPERTY_PROPERTIES, out var overrideProperties))
             {
                 resource.Value.UseProperty<JObject>(PROPERTY_PROPERTIES, out var properties);
-                properties.UseProperty<JObject>(PROPERTY_SITECONFIG, out var siteConfig);
+                properties.UseProperty<JObject>(PROPERTY_SITE_CONFIG, out var siteConfig);
                 siteConfig.Merge(overrideProperties, _MergeSettings);
             }
         }
