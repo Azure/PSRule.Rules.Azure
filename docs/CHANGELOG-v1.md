@@ -29,6 +29,58 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.42.0
+
+What's changed since v1.41.4:
+
+- New features:
+  - Added March 2025 baselines `Azure.GA_2025_03` and `Azure.Preview_2025_03` by @BernieWhite.
+    [#3304](https://github.com/Azure/PSRule.Rules.Azure/issues/3304)
+    - Includes rules released before or during March 2025.
+    - Marked `Azure.GA_2024_12` and `Azure.Preview_2024_12` baselines as obsolete.
+- New rules:
+  - Azure DNS:
+    - Check that public zones use DNSSEC by @BernieWhite.
+      [#3201](https://github.com/Azure/PSRule.Rules.Azure/issues/3201)
+  - Azure SQL Database:
+    - Check that logical SQL servers have vulnerability assessment enabled by @BernieWhite.
+      [#3196](https://github.com/Azure/PSRule.Rules.Azure/issues/3196)
+  - Event Grid:
+    - Check that topics and domains use a minimum of TLS 1.2 by @BernieWhite.
+      [#3306](https://github.com/Azure/PSRule.Rules.Azure/issues/3306)
+  - Image Builder:
+    - Check that image builder build and validation scripts are pinned by @BernieWhite.
+      [#2903](https://github.com/Azure/PSRule.Rules.Azure/issues/2903)
+- Updated rules:
+  - Azure Kubernetes Service:
+    - Updated `Azure.AKS.Version` to use `1.30.10` as the minimum version by @BernieWhite.
+      [#3301](https://github.com/Azure/PSRule.Rules.Azure/issues/3301)
+  - App Service:
+    - Updated SKUs support by `Azure.AppService.AvailabilityZone` by @Sjors-Boom.
+      [#3299](https://github.com/Azure/PSRule.Rules.Azure/issues/3299)
+    - Updated `Azure.AppService.MinTLS` to include TLS 1.3 as a valid minimum version by @BernieWhite.
+      [#3269](https://github.com/Azure/PSRule.Rules.Azure/issues/3269)
+  - Azure Managed Grafana:
+    - Bumped `Azure.Grafana.Version` to use version `11` as `10` is now depreciated by @BernieWhite.
+      [#3293](https://github.com/Azure/PSRule.Rules.Azure/issues/3293)
+      - Bumped rule set to `2025_03`.
+- General improvements:
+  - Added support for `fail` and `deployer` functions during Bicep expansion by @BernieWhite.
+    [#3308](https://github.com/Azure/PSRule.Rules.Azure/issues/3308)
+  - Added a new quickstart guide for using Azure Pipelines with PSRule by @that-ar-guy.
+    [#3220](https://github.com/Azure/PSRule.Rules.Azure/pull/3220)
+  - Added additional exclusions to policies for `Azure.AppService.MinTLS` by @BernieWhite.
+    [#1731](https://github.com/Azure/PSRule.Rules.Azure/issues/1731)
+- Engineering:
+  - Updates to WAF documentation by @BernieWhite.
+    [#2570](https://github.com/Azure/PSRule.Rules.Azure/issues/2570)
+  - Updated resource providers and policy aliases by @BernieWhite.
+    [#3285](https://github.com/Azure/PSRule.Rules.Azure/issues/3285)
+
+What's changed since pre-release v1.42.0-B0066:
+
+- No additional changes.
+
 ## v1.42.0-B0066 (pre-release)
 
 What's changed since pre-release v1.42.0-B0021:
