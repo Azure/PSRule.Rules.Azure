@@ -237,7 +237,7 @@
     "category": "OE:09 Task automation",
     "resourceType": "Microsoft.ContainerService/managedClusters",
     "ruleId": "Azure.AKS.AutoUpgrade",
-    "displayName": "Set AKS auto-upgrade channel"
+    "displayName": "Kubernetes Cluster version is not automatically upgraded"
   },
   {
     "severity": "Important",
@@ -405,7 +405,7 @@
     "category": "SE:01 Security Baseline",
     "resourceType": "Microsoft.ContainerService/managedClusters",
     "ruleId": "Azure.AKS.NodeAutoUpgrade",
-    "displayName": "Azure AKS Node Auto-Upgrade Rule"
+    "displayName": "Kubernetes Cluster nodes are not automatically patched"
   },
   {
     "severity": "Important",
@@ -509,7 +509,7 @@
     "category": "RE:04 Target metrics",
     "resourceType": "Microsoft.ContainerService/managedClusters",
     "ruleId": "Azure.AKS.Version",
-    "displayName": "Upgrade Kubernetes version"
+    "displayName": "Kubernetes Cluster version is old"
   },
   {
     "severity": "Important",
@@ -517,7 +517,7 @@
     "category": "RE:04 Target metrics",
     "resourceType": "Microsoft.ContainerService/managedClusters/agentPools",
     "ruleId": "Azure.AKS.Version",
-    "displayName": "Upgrade Kubernetes version"
+    "displayName": "Kubernetes Cluster version is old"
   },
   {
     "severity": "Awareness",
@@ -1840,6 +1840,22 @@
     "displayName": "Limit number of Dev Boxes per user"
   },
   {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:08 Hardening resources",
+    "resourceType": "Microsoft.Network/dnsZones",
+    "ruleId": "Azure.DNS.DNSSEC",
+    "displayName": "DNS Zone is not signed"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:08 Hardening resources",
+    "resourceType": "Microsoft.Network/dnsZones/dnssecConfigs",
+    "ruleId": "Azure.DNS.DNSSEC",
+    "displayName": "DNS Zone is not signed"
+  },
+  {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:07 Encryption",
@@ -1872,6 +1888,14 @@
     "displayName": "Use identity-based authentication for Event Grid topics"
   },
   {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:07 Encryption",
+    "resourceType": "Microsoft.EventGrid/domains",
+    "ruleId": "Azure.EventGrid.DomainTLS",
+    "displayName": "Event Grid Domain accepts insecure TLS versions"
+  },
+  {
     "severity": "Important",
     "pillar": "Security",
     "category": "SE:05 Identity and access management",
@@ -1886,6 +1910,14 @@
     "resourceType": "Microsoft.EventGrid/topics",
     "ruleId": "Azure.EventGrid.TopicPublicAccess",
     "displayName": "Use Event Grid Private Endpoints"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:07 Encryption",
+    "resourceType": "Microsoft.EventGrid/topics",
+    "ruleId": "Azure.EventGrid.TopicTLS",
+    "displayName": "Event Grid Topic accepts insecure TLS versions"
   },
   {
     "severity": "Important",
@@ -1909,7 +1941,7 @@
     "category": "SE:07 Encryption",
     "resourceType": "Microsoft.EventHub/namespaces",
     "ruleId": "Azure.EventHub.MinTLS",
-    "displayName": "Minimum TLS version"
+    "displayName": "Event Hub Namespace accepts insecure TLS versions"
   },
   {
     "severity": "Important",
@@ -2165,7 +2197,7 @@
     "category": "RE:04 Target metrics",
     "resourceType": "Microsoft.Dashboard/grafana",
     "ruleId": "Azure.Grafana.Version",
-    "displayName": "Upgrade Grafana version"
+    "displayName": "Azure Managed Grafana uses a deprecated version of Grafana"
   },
   {
     "severity": "Awareness",
@@ -3526,6 +3558,30 @@
     "resourceType": "Microsoft.Sql/servers/databases/transparentDataEncryption",
     "ruleId": "Azure.SQL.TDE",
     "displayName": "Use SQL database TDE"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:10 Monitoring and threat detection",
+    "resourceType": "Microsoft.Sql/servers/databases",
+    "ruleId": "Azure.SQL.VAScan",
+    "displayName": "Logical SQL Servers are not scanned for vulnerabilities"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:10 Monitoring and threat detection",
+    "resourceType": "Microsoft.Sql/servers/sqlVulnerabilityAssessments",
+    "ruleId": "Azure.SQL.VAScan",
+    "displayName": "Logical SQL Servers are not scanned for vulnerabilities"
+  },
+  {
+    "severity": "Important",
+    "pillar": "Security",
+    "category": "SE:10 Monitoring and threat detection",
+    "resourceType": "Microsoft.Sql/servers/vulnerabilityAssessments",
+    "ruleId": "Azure.SQL.VAScan",
+    "displayName": "Logical SQL Servers are not scanned for vulnerabilities"
   },
   {
     "severity": "Critical",
