@@ -134,6 +134,12 @@ Each rule **must** meet the following requirements:
   - New rules are included in the next quarterly baseline. i.e. (YYYY_03, YYYY_06, YYYY_09, YYYY_12)
 - Have a `Azure.WAF/pillar` tag identifying the primary WAF pillar the rule aligns to.
   e.g. `-Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Reliability' }`
+  - Available pillars are:
+    - `Cost Optimization`
+    - `Operational Excellence`
+    - `Performance Efficiency`
+    - `Reliability`
+    - `Security`
   - If more then one pillar is applicable, the `Azure.WAF/additionalPillars` label can be added on rules.
 - Include an inline `Synopsis: ` comment above each rule.
 
@@ -181,8 +187,11 @@ To get the next unique rule ref:
 
 1. Scroll to the bottom of this [reference](https://azure.github.io/PSRule.Rules.Azure/en/rules/) page.
 2. Choose the next available ref number sequence.
+   For example, if the last rule ref is `AZR-000123`, the next available ref is `AZR-000124`.
 3. Be aware of any existing open PRs that add rules, and choose the next available ref number sequence.
    If both PRs choose the same rule ref the CI build will fail after one is merged.
+
+If you are unsure, submit the PR as is and we will help you resolve any conflicts.
 
 ### Adding rule configuration options
 
