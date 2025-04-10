@@ -64,9 +64,9 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
+            $ruleResult.Length | Should -Be 5;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
-            $targetNames | Should -BeIn 'secret_bad', 'ps-rule-test-deployment', 'streaming_jobs_bad', 'container_apps_bad';
+            $targetNames | Should -BeIn 'secret_bad', 'secret_Bad2', 'ps-rule-test-deployment', 'streaming_jobs_bad', 'container_apps_bad';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
@@ -74,6 +74,27 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             $ruleResult.Length | Should -Be 3;
             $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
             $targetNames | Should -BeIn 'secret_good', 'streaming_jobs_good', 'reference_good';
+        }
+
+        It 'Azure.Deployment.SecretLeak' {
+            $sourcePath = Join-Path -Path $here -ChildPath 'Tests.Bicep.9.json';
+            $data = Export-AzRuleTemplateData -TemplateFile $sourcePath -PassThru;
+            $result = $data | Invoke-PSRule @invokeParams -Name 'Azure.Deployment.SecretLeak';
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Deployment.SecretLeak' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
+            $targetNames | Should -BeIn 'secret_bad2'
+            $ruleResult.Length | Should -Be 1;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $targetNames = $ruleResult | ForEach-Object { $_.TargetObject.name };
+            $targetNames | Should -BeIn 'secret_good', 'streaming_jobs_good', 'reference_good', 'secret_bad', 'ps-rule-test-deployment', 'streaming_jobs_bad', 'container_apps_bad';
+            $ruleResult.Length | Should -Be 7;
         }
     }
 

@@ -1,5 +1,5 @@
 ---
-reviewed: 2022-06-12
+reviewed: 2025-04-11
 severity: Critical
 pillar: Security
 category: SE:02 Secured development lifecycle
@@ -16,8 +16,12 @@ Outputting a sensitive value from deployment may leak secrets into deployment hi
 
 ## DESCRIPTION
 
-Don't include any values in an ARM template or Bicep output that could potentially expose secrets.
-The output from a template is stored in the deployment history, so a malicious user could find that information.
+This rule checks for cases when a sensitive value is output from a deployment.
+For example, if a parameter is marked as secure and then assigned to an output value.
+
+Don't include any values in an ARM template or Bicep output that could potentially expose sensitive information.
+The output from each deployment is stored in the deployment history.
+If the output contains sensitive information, the output value is leaked to the deployment history.
 
 Examples of secrets are:
 
@@ -34,6 +38,27 @@ Logs are often exposed at multiple levels including CI pipeline logs, Azure Acti
 Consider removing any output values that return secret values in code.
 
 ## EXAMPLES
+
+### Configure with Bicep
+
+To deploy securely pass secrets within Infrastructure as Code:
+
+- Add the `@secure()` decorators on sensitive parameters.
+- Avoid returning a secret in output values.
+
+Example using `@secure()` annotation:
+
+```bicep
+@secure()
+@description('Local administrator password for virtual machine.')
+param adminPassword string
+```
+
+The following example fails because it returns a secret:
+
+```bicep
+output accountPassword string = adminPassword
+```
 
 ### Configure with Azure template
 
@@ -84,26 +109,9 @@ The following example fails because it returns a secret:
 }
 ```
 
-### Configure with Bicep
+## NOTES
 
-To deploy securely pass secrets within Infrastructure as Code:
-
-- Add the `@secure()` decorators on sensitive parameters.
-- Avoid returning a secret in output values.
-
-Example using `@secure()` annotation:
-
-```bicep
-@secure()
-@description('Local administrator password for virtual machine.')
-param adminPassword string
-```
-
-The following example fails because it returns a secret:
-
-```bicep
-output accountPassword string = adminPassword
-```
+When using Bicep, the built-in linter will also automatically check for common cases when secrets are output from a deployment.
 
 ## LINKS
 

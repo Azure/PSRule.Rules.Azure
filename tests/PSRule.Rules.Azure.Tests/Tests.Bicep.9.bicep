@@ -15,6 +15,17 @@ module secret_bad 'Tests.Bicep.9.badSecret.bicep' = {
   }
 }
 
+resource storage 'Microsoft.Storage/storageAccounts@2021-04-01' existing = {
+  name: 'storageAccountName'
+}
+
+module secret_bad2 'Tests.Bicep.9.badSecret.bicep' = {
+  name: 'secret_bad2'
+  params: {
+    notSecret: storage.listKeys().keys[0].value
+  }
+}
+
 resource vault 'Microsoft.KeyVault/vaults@2022-07-01' existing = {
   name: 'aKeyVault'
 }

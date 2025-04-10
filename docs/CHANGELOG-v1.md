@@ -29,6 +29,11 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- New rules:
+  - Deployment:
+    - Check if sensitive values have been passed to non-secure parameters that might leak the value @BernieWhite.
+      [#3319](https://github.com/Azure/PSRule.Rules.Azure/issues/3319)
+
 ## v1.42.0
 
 What's changed since v1.41.4:

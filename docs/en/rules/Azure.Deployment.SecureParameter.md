@@ -1,5 +1,5 @@
 ---
-reviewed: 2024-10-26
+reviewed: 2025-04-11
 severity: Critical
 pillar: Security
 category: SE:02 Secured development lifecycle
@@ -16,6 +16,11 @@ Sensitive parameters that have been not been marked as secure may leak the secre
 
 ## DESCRIPTION
 
+This rule uses a heuristics to determine if a parameter should use a secure type based on how it is named.
+For example if the parameter is named `password` it is likely to contain a password value.
+However, there are cases when the parameter name may be confused with a sensitive value, but the value is not sensitive.
+See notes below for more details.
+
 Azure Bicep and Azure Resource Manager (ARM) templates can be used to deploy resources to Azure.
 When deploying Azure resources, sensitive values such as passwords, certificates, and keys should be passed as secure parameters.
 Secure parameters use the `@secure` decorator in Bicep or the `secureString` / `secureObject` type.
@@ -24,6 +29,8 @@ Parameters that do not use secure types are recorded in deployment history and l
 These values can be retrieved by anyone with read access to the deployment history and logs.
 
 <!-- security:note rotate-secret -->
+
+<!-- security:note non-secret-values -->
 
 ## RECOMMENDATION
 
@@ -84,7 +91,7 @@ resource goodSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
 
 ## NOTES
 
-This rule uses a heuristics to determine if a parameter should use a secure type:
+The following business logic is used to determine if a parameter is marked as secure or not:
 
 - Parameters with the type `int` or `bool` are ignored regardless of how they are named.
 - Parameters named ending with `name`, `uri`, `url`, `path`, `type`, `id`, or `options` are ignored.
