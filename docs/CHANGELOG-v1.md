@@ -29,6 +29,14 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+- Updated rules:
+  - Deployment:
+    - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
+      [#3321](https://github.com/Azure/PSRule.Rules.Azure/issues/3321)
+      - Added support for `Microsoft.Kusto/clusters/databases/scripts` resource type.
+      - Added support for `Microsoft.ContainerInstance/containerGroupProfiles` resource type.
+      - Added new sensitive properties to `Microsoft.ContainerInstance/containerGroups`.
+
 ## v1.42.0
 
 What's changed since v1.41.4:
