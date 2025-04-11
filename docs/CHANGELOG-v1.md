@@ -29,10 +29,30 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.42.0:
+
 - New rules:
   - Deployment:
     - Check if sensitive values have been passed to non-secure parameters that might leak the value @BernieWhite.
       [#3319](https://github.com/Azure/PSRule.Rules.Azure/issues/3319)
+- Updated rules:
+  - Deployment:
+    - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
+      [#3321](https://github.com/Azure/PSRule.Rules.Azure/issues/3321)
+      - Added support for new resource types:
+        - `Microsoft.ApiManagement/service/caches`
+        - `Microsoft.ApiManagement/service/loggers`
+        - `Microsoft.ApiManagement/service/subscriptions`
+        - `Microsoft.App/containerApps/sourcecontrols`
+        - `Microsoft.App/managedEnvironments/storages`
+        - `Microsoft.App/sessionPools`
+        - `Microsoft.Kusto/clusters/databases/scripts`
+        - `Microsoft.ContainerInstance/containerGroupProfiles`
+      - Added new sensitive properties to:
+        - `Microsoft.ApiManagement/service`
+        - `Microsoft.App/managedEnvironments`
+        - `Microsoft.Network/applicationGateways`
+        - `Microsoft.ContainerInstance/containerGroups`
 
 ## v1.42.0
 
