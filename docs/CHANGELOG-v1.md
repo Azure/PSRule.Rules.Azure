@@ -32,9 +32,27 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since v1.42.0:
 
 - New rules:
+  - AI Service:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_AI_SERVICES_NAME_FORMAT` configuration option.
   - Deployment:
     - Check if sensitive values have been passed to non-secure parameters that might leak the value @BernieWhite.
       [#3319](https://github.com/Azure/PSRule.Rules.Azure/issues/3319)
+  - Event Grid:
+    - Check if resource names for topics and domains matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format for domains can be configured by the `AZURE_EVENTGRID_DOMAIN_NAME_FORMAT` configuration option.
+      - The name format for topics can be configured by the `AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT` configuration option.
+      - The name format for system topics can be configured by the `AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT` configuration option.
+  - Load Balancer:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_LOAD_BALANCER_NAME_FORMAT` configuration option.
+  - Resource Group:
+    - Check if the resource group name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_RESOURCE_GROUP_NAME_FORMAT` configuration option.
 - Updated rules:
   - Deployment:
     - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
@@ -53,6 +71,10 @@ What's changed since v1.42.0:
         - `Microsoft.App/managedEnvironments`
         - `Microsoft.Network/applicationGateways`
         - `Microsoft.ContainerInstance/containerGroups`
+  - Resource Group:
+    - **Important change**: Renamed the rule `Azure.ResourceGroup.Name` to `Azure.Group.Name` by @BernieWhite.
+      [#3319](https://github.com/Azure/PSRule.Rules.Azure/issues/3319)
+      - The rule was renamed to better align with upcoming related rules.
 
 ## v1.42.0
 

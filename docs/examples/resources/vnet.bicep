@@ -3,16 +3,16 @@
 
 // Bicep documentation examples
 
+@minLength(2)
+@maxLength(64)
 @description('The name of the resource.')
 param name string
 
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-param lbName string = 'lb-001'
-
 // An example virtual network (VNET) with NSG configured.
-resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
+resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   name: name
   location: location
   properties: {
@@ -62,7 +62,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2023-09-01' = {
 }
 
 // An example network security group.
-resource nsg 'Microsoft.Network/networkSecurityGroups@2023-09-01' = {
+resource nsg 'Microsoft.Network/networkSecurityGroups@2024-05-01' = {
   name: name
   location: location
   properties: {
@@ -131,42 +131,14 @@ resource nsg 'Microsoft.Network/networkSecurityGroups@2023-09-01' = {
 }
 
 // An example application security group.
-resource asg 'Microsoft.Network/applicationSecurityGroups@2023-09-01' = {
+resource asg 'Microsoft.Network/applicationSecurityGroups@2024-05-01' = {
   name: name
   location: location
   properties: {}
 }
 
-// An example internal load balancer with availability zones configured.
-resource internal_lb 'Microsoft.Network/loadBalancers@2023-09-01' = {
-  name: lbName
-  location: location
-  sku: {
-    name: 'Standard'
-    tier: 'Regional'
-  }
-  properties: {
-    frontendIPConfigurations: [
-      {
-        name: 'frontendIPConfig'
-        properties: {
-          privateIPAllocationMethod: 'Dynamic'
-          subnet: {
-            id: vnet.properties.subnets[1].id
-          }
-        }
-        zones: [
-          '1'
-          '2'
-          '3'
-        ]
-      }
-    ]
-  }
-}
-
 // An example zone redundant public IP address.
-resource pip 'Microsoft.Network/publicIPAddresses@2023-09-01' = {
+resource pip 'Microsoft.Network/publicIPAddresses@2024-05-01' = {
   name: 'pip-001'
   location: location
   sku: {
@@ -185,104 +157,8 @@ resource pip 'Microsoft.Network/publicIPAddresses@2023-09-01' = {
   ]
 }
 
-// An example load balancer with serving HTTPS from a backend pool.
-resource https_lb 'Microsoft.Network/loadBalancers@2023-09-01' = {
-  name: lbName
-  location: location
-  sku: {
-    name: 'Standard'
-    tier: 'Regional'
-  }
-  properties: {
-    frontendIPConfigurations: [
-      {
-        name: 'frontend1'
-        properties: {
-          privateIPAddressVersion: 'IPv4'
-          privateIPAllocationMethod: 'Dynamic'
-          subnet: {
-            id: subnet01.id
-          }
-        }
-        zones: [
-          '2'
-          '3'
-          '1'
-        ]
-      }
-    ]
-    backendAddressPools: [
-      {
-        name: 'backend1'
-      }
-    ]
-    probes: [
-      {
-        name: 'https'
-        properties: {
-          protocol: 'HTTPS'
-          port: 443
-          requestPath: '/health'
-          intervalInSeconds: 5
-          numberOfProbes: 1
-        }
-      }
-    ]
-    loadBalancingRules: [
-      {
-        name: 'https'
-        properties: {
-          frontendIPConfiguration: {
-            id: resourceId('Microsoft.Network/loadBalancers/frontendIPConfigurations', lbName, 'frontend1')
-          }
-          frontendPort: 443
-          backendPort: 443
-          enableFloatingIP: false
-          idleTimeoutInMinutes: 4
-          protocol: 'TCP'
-          loadDistribution: 'Default'
-          probe: {
-            id: resourceId('Microsoft.Network/loadBalancers/probes', lbName, 'https')
-          }
-          disableOutboundSnat: true
-          enableTcpReset: false
-          backendAddressPools: [
-            {
-              id: resourceId('Microsoft.Network/loadBalancers/backendAddressPools', lbName, 'backend1')
-            }
-          ]
-        }
-      }
-    ]
-    inboundNatRules: []
-    outboundRules: []
-  }
-}
-
-// An example public load balancer.
-resource public_lb 'Microsoft.Network/loadBalancers@2023-09-01' = {
-  name: lbName
-  location: location
-  sku: {
-    name: 'Standard'
-    tier: 'Regional'
-  }
-  properties: {
-    frontendIPConfigurations: [
-      {
-        name: 'frontendIPConfig'
-        properties: {
-          publicIPAddress: {
-            id: pip.id
-          }
-        }
-      }
-    ]
-  }
-}
-
 // An example VNET with a GatewaySubnet, AzureBastionSubnet, and AzureBastionSubnet.
-resource spoke 'Microsoft.Network/virtualNetworks@2023-09-01' = {
+resource spoke 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   name: name
   location: location
   properties: {
@@ -321,7 +197,7 @@ resource spoke 'Microsoft.Network/virtualNetworks@2023-09-01' = {
 }
 
 // An simple VNET with DNS servers defined.
-resource hub 'Microsoft.Network/virtualNetworks@2023-09-01' = {
+resource hub 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   name: name
   location: location
   properties: {
@@ -340,7 +216,7 @@ resource hub 'Microsoft.Network/virtualNetworks@2023-09-01' = {
 }
 
 // An example peering connection from a spoke to a hub VNET.
-resource toHub 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2023-09-01' = {
+resource toHub 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2024-05-01' = {
   parent: spoke
   name: 'peer-to-${hub.name}'
   properties: {
@@ -355,7 +231,7 @@ resource toHub 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2023-09
 }
 
 // An example peering connection from a hub to a spoke VNET.
-resource toSpoke 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2023-09-01' = {
+resource toSpoke 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2024-05-01' = {
   parent: hub
   name: 'peer-to-${spoke.name}'
   properties: {
@@ -369,8 +245,8 @@ resource toSpoke 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2023-
   }
 }
 
-// A gateway subnet defined as a separate sub-resource.
-resource subnet01 'Microsoft.Network/virtualNetworks/subnets@2023-09-01' = {
+// An gateway subnet defined as a separate sub-resource.
+resource subnet01 'Microsoft.Network/virtualNetworks/subnets@2024-05-01' = {
   name: 'GatewaySubnet'
   parent: hub
   properties: {
@@ -378,11 +254,24 @@ resource subnet01 'Microsoft.Network/virtualNetworks/subnets@2023-09-01' = {
   }
 }
 
-// A Azure Bastion Subnet defined as a separate sub-resource.
-resource subnet02 'Microsoft.Network/virtualNetworks/subnets@2023-09-01' = {
+// An Azure Bastion Subnet defined as a separate sub-resource.
+resource subnet02 'Microsoft.Network/virtualNetworks/subnets@2024-05-01' = {
   name: 'AzureBastionSubnet'
   parent: hub
   properties: {
     addressPrefix: '10.0.0.0/26'
+  }
+}
+
+// An example subnet with a network security group.
+resource subnet 'Microsoft.Network/virtualNetworks/subnets@2024-05-01' = {
+  parent: vnet
+  name: name
+  properties: {
+    addressPrefix: '10.0.0.0/24'
+    networkSecurityGroup: {
+      id: nsg.id
+    }
+    defaultOutboundAccess: false
   }
 }

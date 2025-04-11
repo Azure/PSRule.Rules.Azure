@@ -4,15 +4,17 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.24.24.22086",
-      "templateHash": "4359857000491870165"
+      "version": "0.34.44.8038",
+      "templateHash": "1334073252436312734"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
       "metadata": {
-        "description": "The name of the cognitive services account."
+        "description": "The name of the resource."
       }
     },
     "location": {
@@ -26,7 +28,7 @@
   "resources": [
     {
       "type": "Microsoft.CognitiveServices/accounts",
-      "apiVersion": "2023-05-01",
+      "apiVersion": "2024-10-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "sku": {
@@ -43,7 +45,7 @@
     },
     {
       "type": "Microsoft.CognitiveServices/accounts",
-      "apiVersion": "2023-05-01",
+      "apiVersion": "2024-10-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {

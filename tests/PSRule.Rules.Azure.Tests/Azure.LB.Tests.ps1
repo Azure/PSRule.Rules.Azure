@@ -104,24 +104,50 @@ Describe 'Azure.LB' -Tag 'Network', 'LB' {
     Context 'Resource name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'Microsoft.Network/loadBalancers'
-            }
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_LOAD_BALANCER_NAME_FORMAT' = '^(lbi|lbe)-'
+            };
+
+            $names = @(
+                'lb-001'
+                'lb-001_'
+                'LB.001'
+                'l'
+                '_lb-001'
+                '-lb-001'
+                'lb-001-'
+                'lb-001.'
+                'lbi-001'
+                'lbe-001'
+                'LBI-001'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Network/loadBalancers'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.LB.Name','Azure.LB.Naming'
         }
 
-        BeforeDiscovery {
+        It 'Azure.LB.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.LB.Name' };
             $validNames = @(
                 'lb-001'
                 'lb-001_'
                 'LB.001'
                 'l'
+                'lbi-001'
+                'lbe-001'
+                'LBI-001'
             )
 
             $invalidNames = @(
@@ -130,22 +156,50 @@ Describe 'Azure.LB' -Tag 'Network', 'LB' {
                 'lb-001-'
                 'lb-001.'
             )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.LB.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+        It 'Azure.LB.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.LB.Naming' };
+            $validNames = @(
+                'lbi-001'
+                'lbe-001'
+            )
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.LB.Name';
+            $invalidNames = @(
+                'lb-001'
+                'lb-001_'
+                'LB.001'
+                'l'
+                '_lb-001'
+                '-lb-001'
+                'lb-001-'
+                'lb-001.'
+                'LBI-001'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 }

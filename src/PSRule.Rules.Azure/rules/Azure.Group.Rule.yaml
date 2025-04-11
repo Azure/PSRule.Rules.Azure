@@ -1,0 +1,31 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Resource Groups
+#
+
+---
+# Synopsis: Use Resource Group naming requirements
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Group.Name
+  ref: AZR-000168
+  alias:
+    - Azure.ResourceGroup.Name
+  tags:
+    release: GA
+    ruleSet: 2020_06
+    Azure.WAF/pillar: Operational Excellence
+spec:
+  type:
+    - Microsoft.Resources/resourceGroups
+  condition:
+    allOf:
+      - name: .
+        greaterOrEquals: 1
+      - name: .
+        lessOrEquals: 90
+      - name: .
+        match: ^[-\w\._\(\)]*[-\w_\(\)]$

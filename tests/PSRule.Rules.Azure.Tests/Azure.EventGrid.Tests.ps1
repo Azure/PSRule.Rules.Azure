@@ -179,4 +179,134 @@ Describe 'Azure.EventGrid' -Tag 'EventGrid' {
             $ruleResult.TargetName | Should -BeIn 'topic-002';
         }
     }
+
+    Context 'Resource name' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_EVENTGRID_DOMAIN_NAME_FORMAT' = '^evgd-'
+                'AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT' = '^egst-'
+                'AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT' = '^evgt-'
+            };
+
+            $names = @(
+                'evgd-'
+                'evgt-'
+                'egst-'
+                'topic-1'
+                'EVGD-'
+                'EVGT-'
+                'EVST-'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.EventGrid/domains'
+                }
+
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.EventGrid/topics'
+                }
+
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.EventGrid/systemTopics'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.EventGrid.DomainNaming', 'Azure.EventGrid.TopicNaming', 'Azure.EventGrid.SystemTopicNaming'
+        }
+
+        It 'Azure.EventGrid.DomainNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.EventGrid.DomainNaming' };
+            $validNames = @(
+                'evgd-'
+            )
+
+            $invalidNames = @(
+                'evgt-'
+                'egst-'
+                'topic-1'
+                'EVGD-'
+                'EVGT-'
+                'EVST-'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
+        }
+
+        It 'Azure.EventGrid.TopicNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.EventGrid.TopicNaming' };
+            $validNames = @(
+                'evgt-'
+            )
+
+            $invalidNames = @(
+                'evgd-'
+                'egst-'
+                'topic-1'
+                'EVGD-'
+                'EVGT-'
+                'EVST-'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
+        }
+
+        It 'Azure.EventGrid.SystemTopicNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.EventGrid.SystemTopicNaming' };
+            $validNames = @(
+                'egst-'
+            )
+
+            $invalidNames = @(
+                'evgd-'
+                'evgt-'
+                'topic-1'
+                'EVGD-'
+                'EVGT-'
+                'EVST-'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
+        }
+    }
 }
