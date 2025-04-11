@@ -1,6 +1,8 @@
 # PSRule for Azure
 
-A suite of rules to test Azure resources and infrastructure as code (IaC) using PSRule.
+A suite of rules to test Azure resources and Infrastructure as Code (IaC) using PSRule.
+The built-in rules test the configuration of Azure resources for security, reliability, and much more.
+Rules can be created to enforce your own policies and standards.
 
 [![Open in vscode.dev](https://img.shields.io/badge/Open%20in-vscode.dev-blue)][1]
 
@@ -8,7 +10,7 @@ Features of PSRule for Azure include:
 
 - [Learn by example][6] - Fix issues quickly, and learn how to improve your Infrastructure as Code..
 - [Framework aligned][7] - Apply principals of Azure Well-Architected Framework to your workloads.
-- [Start day one][2] - Leverage over 400 pre-built rules to test Azure resources.
+- [Start day one][2] - Leverage over 450 pre-built rules to test Azure resources.
 - [DevOps integrated][3] - Test Azure infrastructure as code such as Bicep or Azure Resource Manager templates.
 - [Cross-platform][4] - Run locally or in the cloud on MacOS, Linux, and Windows.
 - [Open community][8] - Open source rules for the Azure community.
@@ -30,7 +32,7 @@ Features of PSRule for Azure include:
    - Resources and Azure code can be tested before deployment within DevOps workflows.
    - Allow pull request (PR) validation to prevent invalid configuration from being merged.
 3. **Enterprise ready**:
-   - Rules can be directly adopted and additional enterprise specific rules can be layed on.
+   - Rules can be directly adopted and additional enterprise specific rules can be layered on.
    - Provide regular baselines to allow progressive adoption.
 
   [5]: https://learn.microsoft.com/azure/well-architected/

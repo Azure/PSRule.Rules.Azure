@@ -32,7 +32,7 @@ Within the root directory of your infrastructure as code repository:
         runs-on: ubuntu-latest
         steps:
         - name: Checkout
-          uses: actions/checkout@v3
+          uses: actions/checkout@v4
 
         # Analyze Azure resources using PSRule for Azure
         - name: Analyze Azure template files
@@ -144,7 +144,7 @@ See [working with baselines][8] for more information.
       uses: microsoft/ps-rule@v2.9.0
       with:
         modules: 'PSRule.Rules.Azure'
-        baseline: Azure.GA_2023_09
+        baseline: Azure.GA_2025_03
     ```
 
 === "Azure Pipelines"
@@ -155,7 +155,7 @@ See [working with baselines][8] for more information.
       displayName: Analyze Azure template files
       inputs:
         modules: 'PSRule.Rules.Azure'
-        baseline: Azure.GA_2023_09
+        baseline: Azure.GA_2025_03
     ```
 
 === "Generic with PowerShell"
@@ -164,7 +164,7 @@ See [working with baselines][8] for more information.
     # Analyze Azure resources using PSRule for Azure
     $modules = @('PSRule.Rules.Azure')
     Install-Module -Name $modules -Scope CurrentUser -Force -ErrorAction Stop;
-    Assert-PSRule -InputPath '.' -Baseline 'Azure.GA_2023_09' -Module $modules -Format File -ErrorAction Stop;
+    Assert-PSRule -InputPath '.' -Baseline 'Azure.GA_2025_03' -Module $modules -Format File -ErrorAction Stop;
     ```
 
 ### Continue on error
