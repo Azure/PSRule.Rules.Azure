@@ -5,20 +5,20 @@ pillar: Security
 category: SE:02 Secured development lifecycle
 resource: Deployment
 resourceType: Microsoft.Resources/deployments
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.SecureValue/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Deployment.SecretLeak/
 ---
 
-# Deployment sets a secret property with a non-secure value
+# Deployment parameter contains a secret that is not secured
 
 ## SYNOPSIS
 
-A secret property set from a non-secure value may leak the secret into deployment history or logs.
+Sensitive parameters that have been not been marked as secure may leak the secret into deployment history or logs.
 
 ## DESCRIPTION
 
-This rule checks for cases when a non-secure value is assigned to a resource property that contains sensitive information.
-For example, a regular parameter or hard coded variable is used to set the `value` property of an Azure Key Vault secret.
-This property is used to store the secret value in the Key Vault, however the value has been leaked.
+This rule detects cases when a sensitive value is passed to a parameter that is not marked as secure.
+For example, you used `listKeys` to get a storage account key and then passed the value to a parameter of a child module.
+The parameter on the child module is not marked as secure, so the value has been leaked by the child deployment.
 
 Azure Bicep and Azure Resource Manager (ARM) templates can be used to deploy resources to Azure.
 When deploying Azure resources, sensitive values such as passwords, certificates, and keys should be passed as secure parameters.
@@ -26,7 +26,6 @@ Secure parameters use the `@secure` decorator in Bicep or the `secureString` / `
 
 Parameters that do not use secure types are recorded in deployment history and logs.
 These values can be retrieved by anyone with read access to the deployment history and logs.
-Logs are often exposed at multiple levels including CI pipeline logs, Azure Activity Logs, and SIEM systems.
 
 <!-- security:note rotate-secret -->
 
@@ -34,7 +33,7 @@ Logs are often exposed at multiple levels including CI pipeline logs, Azure Acti
 
 ## RECOMMENDATION
 
-Consider using secure parameters for setting the value of any sensitive resource properties.
+Consider using secure parameters for any parameter that contain sensitive information.
 
 ## EXAMPLES
 
@@ -42,7 +41,7 @@ Consider using secure parameters for setting the value of any sensitive resource
 
 To configure deployments that pass this rule:
 
-- Set the `type` of parameters used set sensitive resource properties to `secureString` or `secureObject`.
+- Set the type of sensitive parameters to `secureString` or `secureObject`.
 
 For example:
 
@@ -72,7 +71,7 @@ For example:
 
 To configure deployments that pass this rule:
 
-- Add the `@secure()` decorators on parameters used to set sensitive resource properties.
+- Add the `@secure()` decorators on sensitive parameters.
 
 For example:
 
@@ -81,7 +80,8 @@ For example:
 param secret string
 
 resource goodSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
-  name: 'keyvault/good'
+  parent: vault
+  name: 'good'
   properties: {
     value: secret
   }
@@ -90,10 +90,10 @@ resource goodSecret 'Microsoft.KeyVault/vaults/secrets@2022-07-01' = {
 
 ## NOTES
 
-For a list of resource types and properties that are checked by this rule see [secret properties][1].
-If you find properties that are missing, please let us know by logging an issue on GitHub.
+Sensitive values detected include:
 
-  [1]: https://github.com/Azure/PSRule.Rules.Azure/blob/main/data/secret-property.json
+- Key Vault secret references.
+- The output of a `list*` function such as `listKeys`.
 
 ## LINKS
 

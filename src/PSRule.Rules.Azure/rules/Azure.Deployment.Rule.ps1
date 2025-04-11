@@ -52,6 +52,11 @@ Rule 'Azure.Deployment.OuterSecret' -Ref 'AZR-000331' -Type 'Microsoft.Resources
     }
 }
 
+# Synopsis: The deployment parameter leaks sensitive information.
+Rule 'Azure.Deployment.SecretLeak' -Ref 'AZR-000459' -Type 'Microsoft.Resources/deployments' -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } {
+    $Assert.Create($PSRule.Issue.Get('PSRule.Rules.Azure.Template.ParameterSecureAssignment'));
+}
+
 #endregion Rules
 
 #region Helpers

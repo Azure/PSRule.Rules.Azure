@@ -29,6 +29,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.42.0:
+
+- New rules:
+  - Deployment:
+    - Check if sensitive values have been passed to non-secure parameters that might leak the value @BernieWhite.
+      [#3319](https://github.com/Azure/PSRule.Rules.Azure/issues/3319)
 - Updated rules:
   - Deployment:
     - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.

@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.30.23.60470",
-      "templateHash": "14187359232601139223"
+      "version": "0.34.44.8038",
+      "templateHash": "14409181984077612677"
     }
   },
   "resources": [
@@ -29,8 +29,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.23.60470",
-              "templateHash": "17919476539610503167"
+              "version": "0.34.44.8038",
+              "templateHash": "12021859544324691874"
             }
           },
           "parameters": {
@@ -71,8 +71,50 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.23.60470",
-              "templateHash": "15649027828701608410"
+              "version": "0.34.44.8038",
+              "templateHash": "18020043987634887872"
+            }
+          },
+          "parameters": {
+            "notSecret": {
+              "type": "string"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.KeyVault/vaults/secrets",
+              "apiVersion": "2022-07-01",
+              "name": "keyvault/bad",
+              "properties": {
+                "value": "[parameters('notSecret')]"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "secret_bad2",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "notSecret": {
+            "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'storageAccountName'), '2021-04-01').keys[0].value]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.34.44.8038",
+              "templateHash": "18020043987634887872"
             }
           },
           "parameters": {
@@ -121,8 +163,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.23.60470",
-              "templateHash": "11413388873748694759"
+              "version": "0.34.44.8038",
+              "templateHash": "12243531247418230904"
             }
           },
           "parameters": {
@@ -229,8 +271,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.23.60470",
-              "templateHash": "6931469984343125497"
+              "version": "0.34.44.8038",
+              "templateHash": "12561933358262611323"
             }
           },
           "parameters": {
@@ -297,8 +339,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.23.60470",
-              "templateHash": "17669244616149029030"
+              "version": "0.34.44.8038",
+              "templateHash": "1257552944509438829"
             }
           },
           "parameters": {
@@ -342,8 +384,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.30.23.60470",
-              "templateHash": "9581683583109687527"
+              "version": "0.34.44.8038",
+              "templateHash": "9205852281080076957"
             }
           },
           "parameters": {
