@@ -53,6 +53,7 @@ Document 'module' {
 
     Metadata @{
         generated = $True
+        description = 'A listing of rules included in PSRule for Azure organized by Azure Well-Architected Framework pillar.'
     }
 
     Import-Module ./out/modules/PSRule.Rules.Azure
@@ -91,6 +92,7 @@ Document 'resource' {
 
     Metadata @{
         generated = $True
+        description = 'A listing of the rules included in PSRule for Azure organized by resource type.'
     }
 
     Import-Module ./out/modules/PSRule.Rules.Azure
