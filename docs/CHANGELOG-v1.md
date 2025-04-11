@@ -33,9 +33,20 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
   - Deployment:
     - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
       [#3321](https://github.com/Azure/PSRule.Rules.Azure/issues/3321)
-      - Added support for `Microsoft.Kusto/clusters/databases/scripts` resource type.
-      - Added support for `Microsoft.ContainerInstance/containerGroupProfiles` resource type.
-      - Added new sensitive properties to `Microsoft.ContainerInstance/containerGroups`.
+      - Added support for new resource types:
+        - `Microsoft.ApiManagement/service/caches`
+        - `Microsoft.ApiManagement/service/loggers`
+        - `Microsoft.ApiManagement/service/subscriptions`
+        - `Microsoft.App/containerApps/sourcecontrols`
+        - `Microsoft.App/managedEnvironments/storages`
+        - `Microsoft.App/sessionPools`
+        - `Microsoft.Kusto/clusters/databases/scripts`
+        - `Microsoft.ContainerInstance/containerGroupProfiles`
+      - Added new sensitive properties to:
+        - `Microsoft.ApiManagement/service`
+        - `Microsoft.App/managedEnvironments`
+        - `Microsoft.Network/applicationGateways`
+        - `Microsoft.ContainerInstance/containerGroups`
 
 ## v1.42.0
 
