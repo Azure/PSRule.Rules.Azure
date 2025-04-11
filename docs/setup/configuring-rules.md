@@ -18,98 +18,43 @@ Earlier versions of PSRule for Azure will ignore the configuration option.
 
 ## Available options
 
-### AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES
+### AZURE_AI_SERVICES_NAME_FORMAT
 
-<!-- module:version v1.34.0 -->
-<!-- module:rule Azure.AKS.MinNodeCount -->
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.AI.Naming -->
 
-This configuration option determines the minimum number of nodes in an AKS clusters across all system node pools.
+This configuration option specifies a regular expression that defines the naming format for Azure AI Services.
+When this configuration option is not set, any name is considered valid.
 
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: integer
-```
-
-Default:
-
-```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES configuration option
-configuration:
-  AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: 3
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES configuration option to 2
-configuration:
-  AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: 2
-```
-
-### AZURE_AKS_CLUSTER_MINIMUM_VERSION
-
-<!-- module:version v1.12.0 -->
-<!-- module:rule Azure.AKS.Version -->
-
-This configuration option determines the minimum version of Kubernetes for AKS clusters and node pools.
-Rules that check the Kubernetes version fail when the version is older than the version specified.
+The regular expression used to specify the naming format is case-sensitive by default.
+You can use the `(?i)` prefix to make the regular expression case-insensitive.
 
 Syntax:
 
 ```yaml title="ps-rule.yaml"
 configuration:
-  AZURE_AKS_CLUSTER_MINIMUM_VERSION: string # A version string
+  AZURE_AI_SERVICES_NAME_FORMAT: string
 ```
 
 Default:
 
 ```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option
+# YAML: The default AZURE_AI_SERVICES_NAME_FORMAT configuration option
 configuration:
-  AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.30.10
+  AZURE_AI_SERVICES_NAME_FORMAT: ''
 ```
 
 Example:
 
 ```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.22.4
+# YAML: Set the AZURE_AI_SERVICES_NAME_FORMAT configuration option to a specific format
 configuration:
-  AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.22.4
-```
-
-### AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE
-
-<!-- module:version v1.7.0 -->
-<!-- module:rule Azure.AKS.CNISubnetSize -->
-
-This configuration option determines the minimum subnet size for Azure AKS CNI.
-
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: integer
-```
-
-Default:
-
-```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option
-configuration:
-  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 23
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option to 26
-configuration:
-  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 26
+  AZURE_AI_SERVICES_NAME_FORMAT: '^ais-'
 ```
 
 ### AZURE_AKS_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST
+
+<!-- module:rule Azure.AKS.AvailabilityZone -->
 
 This configuration option adds availability zones that are not included in the existing [providers](https://github.com/Azure/PSRule.Rules.Azure/tree/main/data/providers/).
 You can use this option to add availability zones that are not included in the default list.
@@ -178,7 +123,163 @@ The rules normalize these location formats so either is accepted in the configur
     If they do in the future exist, use this option add them prior to PSRule for Azure support.
     The above shows examples specific to `Azure.AKS.AvailabilityZone`, but behavior is consistent across all supported rules.
 
+### AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES
+
+<!-- module:version v1.34.0 -->
+<!-- module:rule Azure.AKS.MinNodeCount -->
+
+This configuration option determines the minimum number of nodes in an AKS clusters across all system node pools.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: integer
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES configuration option
+configuration:
+  AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: 3
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES configuration option to 2
+configuration:
+  AZURE_AKS_CLUSTER_MINIMUM_SYSTEM_NODES: 2
+```
+
+### AZURE_AKS_CLUSTER_MINIMUM_VERSION
+
+<!-- module:version v1.12.0 -->
+<!-- module:rule Azure.AKS.Version -->
+
+This configuration option determines the minimum version of Kubernetes for AKS clusters and node pools.
+Rules that check the Kubernetes version fail when the version is older than the version specified.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: string # A version string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option
+configuration:
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.30.10
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AKS_CLUSTER_MINIMUM_VERSION configuration option to 1.22.4
+configuration:
+  AZURE_AKS_CLUSTER_MINIMUM_VERSION: 1.22.4
+```
+
+### AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES
+
+<!-- module:version v1.34.0 -->
+<!-- module:rule Azure.AKS.MinUserPoolNodes -->
+
+This configuration option excludes specific user node pools by name from requiring a minimum number of nodes.
+By default, no user node pools are configured to be excluded.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES: array
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES configuration option
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES: []
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES configuration option to exclude nodepool2
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES:
+  - nodepool2
+```
+
+### AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES
+
+<!-- module:version v1.34.0 -->
+<!-- module:rule Azure.AKS.MinUserPoolNodes -->
+
+This configuration option determines the minimum number of nodes in each user node pool for an AKS clusters.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: integer
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES configuration option
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: 3
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES configuration option to 2
+configuration:
+  AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: 2
+```
+
+### AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE
+
+<!-- module:version v1.7.0 -->
+<!-- module:rule Azure.AKS.CNISubnetSize -->
+
+This configuration option determines the minimum subnet size for Azure AKS CNI.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: integer
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option
+configuration:
+  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 23
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE configuration option to 26
+configuration:
+  AZURE_AKS_CNI_MINIMUM_CLUSTER_SUBNET_SIZE: 26
+```
+
 ### AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST
+
+<!-- module:version v1.8.0 -->
+<!-- module:rule Azure.AKS.PlatformLogs -->
 
 This configuration option sets selective platform diagnostic categories to report on being enabled.
 
@@ -209,39 +310,6 @@ Example:
 configuration:
   AZURE_AKS_ENABLED_PLATFORM_LOG_CATEGORIES_LIST:
   - cluster-autoscaler
-  - AllMetrics
-```
-
-### AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST
-
-This configuration option sets selective platform diagnostic categories to report on being enabled.
-
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: array
-```
-
-Default:
-
-```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option
-configuration:
-  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST:
-  - JobLogs
-  - JobStreams
-  - DscNodeStatus
-  - AllMetrics
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to JobLogs and AllMetrics categories only.
-configuration:
-  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST:
-  - JobLogs
   - AllMetrics
 ```
 
@@ -279,99 +347,6 @@ Example:
 # YAML: Set the AZURE_AKS_POOL_MINIMUM_MAXPODS configuration option to 30
 configuration:
   AZURE_AKS_POOL_MINIMUM_MAXPODS: 30
-```
-
-### AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES
-
-<!-- module:version v1.34.0 -->
-<!-- module:rule Azure.AKS.MinUserPoolNodes -->
-
-This configuration option determines the minimum number of nodes in each user node pool for an AKS clusters.
-
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: integer
-```
-
-Default:
-
-```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES configuration option
-configuration:
-  AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: 3
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES configuration option to 2
-configuration:
-  AZURE_AKS_CLUSTER_USER_POOL_MINIMUM_NODES: 2
-```
-
-### AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES
-
-<!-- module:version v1.34.0 -->
-<!-- module:rule Azure.AKS.MinUserPoolNodes -->
-
-This configuration option excludes specific user node pools by name from requiring a minimum number of nodes.
-By default, no user node pools are configured to be excluded.
-
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES: array
-```
-
-Default:
-
-```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES configuration option
-configuration:
-  AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES: []
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES configuration option to exclude nodepool2
-configuration:
-  AZURE_AKS_CLUSTER_USER_POOL_EXCLUDED_FROM_MINIMUM_NODES:
-  - nodepool2
-```
-
-### AZURE_APIM_MIN_API_VERSION
-
-<!-- module:version v1.22.0 -->
-<!-- module:rule Azure.APIM.MinAPIVersion -->
-
-This configuration option sets the minimum API version used for control plane API calls to API Management instances.
-Configure this option to change the minimum API version, which defaults to `'2021-08-01'`.
-
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_APIM_MIN_API_VERSION: string
-```
-
-Default:
-
-```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_APIM_MIN_API_VERSION configuration option
-configuration:
-  AZURE_APIM_MIN_API_VERSION: '2021-08-01'
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to '2021-12-01-preview'
-configuration:
-  AZURE_APIM_MIN_API_VERSION: '2021-12-01-preview'
 ```
 
 ### AZURE_APPGW_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST
@@ -426,6 +401,101 @@ The rules normalize these location formats so either is accepted in the configur
     The above are examples for illustration purpose only.
     At the time of writing, `Antarctica North` and `Antarctica South` are fictional locations.
     If they do in the future exist, use this option add them prior to PSRule for Azure support.
+
+### AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME
+
+<!-- module:version v1.39.0 -->
+<!-- module:rule Azure.APIM.CertificateExpiry -->
+
+This configuration option determines the minimum number of days allowed before certificate expiry.
+Rules that check certificate lifetime fail when the days remaining before expiry drop below this number.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: integer
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME configuration option
+configuration:
+  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 30
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME configuration option to 90
+configuration:
+  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 90
+```
+
+### AZURE_APIM_MIN_API_VERSION
+
+<!-- module:version v1.22.0 -->
+<!-- module:rule Azure.APIM.MinAPIVersion -->
+
+This configuration option sets the minimum API version used for control plane API calls to API Management instances.
+Configure this option to change the minimum API version, which defaults to `'2021-08-01'`.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_APIM_MIN_API_VERSION: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_APIM_MIN_API_VERSION configuration option
+configuration:
+  AZURE_APIM_MIN_API_VERSION: '2021-08-01'
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_APIM_MIN_API_VERSION configuration option to '2021-12-01-preview'
+configuration:
+  AZURE_APIM_MIN_API_VERSION: '2021-12-01-preview'
+```
+
+### AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST
+
+This configuration option sets selective platform diagnostic categories to report on being enabled.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST: array
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option
+configuration:
+  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST:
+  - JobLogs
+  - JobStreams
+  - DscNodeStatus
+  - AllMetrics
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST configuration option to JobLogs and AllMetrics categories only.
+configuration:
+  AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST:
+  - JobLogs
+  - AllMetrics
+```
 
 ### AZURE_CONTAINERAPPS_RESTRICT_INGRESS
 
@@ -554,6 +624,108 @@ configuration:
     - loginName
 ```
 
+### AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.EventGrid.TopicNaming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Event Grid Custom Topics.
+When this configuration option is not set, any name is considered valid.
+
+The regular expression used to specify the naming format is case-sensitive by default.
+You can use the `(?i)` prefix to make the regular expression case-insensitive.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT configuration option
+configuration:
+  AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT: '^evgt-'
+```
+
+### AZURE_EVENTGRID_DOMAIN_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.EventGrid.DomainNaming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Event Grid Domains.
+When this configuration option is not set, any name is considered valid.
+
+The regular expression used to specify the naming format is case-sensitive by default.
+You can use the `(?i)` prefix to make the regular expression case-insensitive.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_EVENTGRID_DOMAIN_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_EVENTGRID_DOMAIN_NAME_FORMAT configuration option
+configuration:
+  AZURE_EVENTGRID_DOMAIN_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_EVENTGRID_DOMAIN_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_EVENTGRID_DOMAIN_NAME_FORMAT: '^evgd-'
+```
+
+### AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.EventGrid.SystemTopicNaming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Event Grid System Topics.
+When this configuration option is not set, any name is considered valid.
+
+The regular expression used to specify the naming format is case-sensitive by default.
+You can use the `(?i)` prefix to make the regular expression case-insensitive.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT configuration option
+configuration:
+  AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT: '^egst-'
+```
+
 ### AZURE_FIREWALL_IS_ZONAL
 
 <!-- module:version v1.39.0 -->
@@ -585,6 +757,99 @@ Example:
 # YAML: Set the AZURE_FIREWALL_IS_ZONAL configuration option to true
 configuration:
   AZURE_FIREWALL_IS_ZONAL: true
+```
+
+### AZURE_LINUX_OS_OFFERS
+
+<!-- module:version v1.20.0 -->
+
+This configurations specifies names of offers corresponding to the Linux OS.
+It's mostly intended to be used when analyzing templates that use private Linux offerings.
+Rules that check if a VM or VMSS has Linux OS also validate against the values set by this configuration.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_LINUX_OS_OFFERS: array # An array of offer names
+```
+
+Default:
+
+```yaml
+# YAML: The default AZURE_LINUX_OS_OFFERS configuration option
+configuration:
+  AZURE_LINUX_OS_OFFERS: []
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_LINUX_OS_OFFERS configuration option to aLinuxOffer, anotherLinuxOffer
+configuration:
+  AZURE_LINUX_OS_OFFERS:
+  - 'aLinuxOffer'
+  - 'anotherLinuxOffer'
+```
+
+### AZURE_LOAD_BALANCER_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.LB.Naming -->
+
+This configuration option specifies the naming format for Azure Load Balancers.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_LOAD_BALANCER_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_LOAD_BALANCER_NAME_FORMAT configuration option
+configuration:
+  AZURE_LOAD_BALANCER_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_LOAD_BALANCER_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_LOAD_BALANCER_NAME_FORMAT: 'lb-{name}'
+```
+
+### AZURE_POLICY_WAIVER_MAX_EXPIRY
+
+<!-- module:version v1.3.0 -->
+<!-- module:rule Azure.Policy.WaiverExpiry -->
+
+This configuration option determines the maximum number of days in the future for a waiver policy exemption.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_POLICY_WAIVER_MAX_EXPIRY: integer
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option
+configuration:
+  AZURE_POLICY_WAIVER_MAX_EXPIRY: 366
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90
+configuration:
+  AZURE_POLICY_WAIVER_MAX_EXPIRY: 90
 ```
 
 ### AZURE_RESOURCE_ALLOWED_LOCATIONS
@@ -633,98 +898,38 @@ configuration:
     location: australiaeast
 ```
 
-### AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME
+### AZURE_RESOURCE_GROUP_NAME_FORMAT
 
-<!-- module:version v1.39.0 -->
-<!-- module:rule Azure.APIM.CertificateExpiry -->
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.Group.Naming -->
 
-This configuration option determines the minimum number of days allowed before certificate expiry.
-Rules that check certificate lifetime fail when the days remaining before expiry drop below this number.
+This configuration option specifies a regular expression that defines the naming format for Resource Groups.
+When this configuration option is not set, any name is considered valid.
 
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: integer
-```
-
-Default:
-
-```yaml
-# YAML: The default AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME configuration option
-configuration:
-  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 30
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME configuration option to 90
-configuration:
-  AZURE_APIM_MINIMUM_CERTIFICATE_LIFETIME: 90
-```
-
-### AZURE_LINUX_OS_OFFERS
-
-<!-- module:version v1.20.0 -->
-
-This configurations specifies names of offers corresponding to the Linux OS.
-It's mostly intended to be used when analyzing templates that use private Linux offerings.
-Rules that check if a VM or VMSS has Linux OS also validate against the values set by this configuration.
+The regular expression used to specify the naming format is case-sensitive by default.
+You can use the `(?i)` prefix to make the regular expression case-insensitive.
 
 Syntax:
 
 ```yaml title="ps-rule.yaml"
 configuration:
-  AZURE_LINUX_OS_OFFERS: array # An array of offer names
-```
-
-Default:
-
-```yaml
-# YAML: The default AZURE_LINUX_OS_OFFERS configuration option
-configuration:
-  AZURE_LINUX_OS_OFFERS: []
-```
-
-Example:
-
-```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_LINUX_OS_OFFERS configuration option to aLinuxOffer, anotherLinuxOffer
-configuration:
-  AZURE_LINUX_OS_OFFERS:
-  - 'aLinuxOffer'
-  - 'anotherLinuxOffer'
-```
-
-### AZURE_POLICY_WAIVER_MAX_EXPIRY
-
-<!-- module:version v1.3.0 -->
-<!-- module:rule Azure.Policy.WaiverExpiry -->
-
-This configuration option determines the maximum number of days in the future for a waiver policy exemption.
-
-Syntax:
-
-```yaml title="ps-rule.yaml"
-configuration:
-  AZURE_POLICY_WAIVER_MAX_EXPIRY: integer
+  AZURE_RESOURCE_GROUP_NAME_FORMAT: string
 ```
 
 Default:
 
 ```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option
+# YAML: The default AZURE_RESOURCE_GROUP_NAME_FORMAT configuration option
 configuration:
-  AZURE_POLICY_WAIVER_MAX_EXPIRY: 366
+  AZURE_RESOURCE_GROUP_NAME_FORMAT: ''
 ```
 
 Example:
 
 ```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90
+# YAML: Set the AZURE_RESOURCE_GROUP_NAME_FORMAT configuration option to a specific format
 configuration:
-  AZURE_POLICY_WAIVER_MAX_EXPIRY: 90
+  AZURE_RESOURCE_GROUP_NAME_FORMAT: '^rg-'
 ```
 
 ### AZURE_STORAGE_DEFENDER_PER_ACCOUNT

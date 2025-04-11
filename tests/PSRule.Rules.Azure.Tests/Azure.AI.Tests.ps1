@@ -2,7 +2,7 @@
 # Licensed under the MIT License.
 
 #
-# Unit tests for Cognitive Services rules
+# Unit tests for Azure AI rules
 #
 
 [CmdletBinding()]
@@ -200,6 +200,60 @@ Describe 'Azure.AI' -Tag 'Cognitive', 'AI' {
             $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'cognitive-01';
+        }
+    }
+
+    Context 'Resource name' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_AI_SERVICES_NAME_FORMAT' = '^ais-' };
+
+            $names = @(
+                'ais-'
+                'ais-123'
+                'AIS-123'
+                'cognitive-'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.CognitiveServices/accounts'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.AI.Naming'
+        }
+
+        It 'Azure.AI.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AI.Naming' };
+            $validNames = @(
+                'ais-'
+                'ais-123'
+            )
+
+            $invalidNames = @(
+                'AIS-123'
+                'cognitive-'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 }

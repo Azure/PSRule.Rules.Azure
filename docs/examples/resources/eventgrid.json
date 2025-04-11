@@ -5,14 +5,16 @@
     "_generator": {
       "name": "bicep",
       "version": "0.34.44.8038",
-      "templateHash": "11884501302086453487"
+      "templateHash": "6907948879870980207"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 3,
+      "maxLength": 50,
       "metadata": {
-        "description": "The name of the Event Grid Topic."
+        "description": "The name of the resource."
       }
     },
     "location": {
@@ -20,6 +22,12 @@
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "The location resources will be deployed."
+      }
+    },
+    "storageId": {
+      "type": "string",
+      "metadata": {
+        "description": "The resource ID of the storage account."
       }
     }
   },
@@ -49,6 +57,19 @@
         "publicNetworkAccess": "Disabled",
         "minimumTlsVersionAllowed": "1.2",
         "inputSchema": "CloudEventSchemaV1_0"
+      }
+    },
+    {
+      "type": "Microsoft.EventGrid/systemTopics",
+      "apiVersion": "2025-02-15",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "identity": {
+        "type": "SystemAssigned"
+      },
+      "properties": {
+        "source": "[parameters('storageId')]",
+        "topicType": "Microsoft.Storage.StorageAccounts"
       }
     }
   ]

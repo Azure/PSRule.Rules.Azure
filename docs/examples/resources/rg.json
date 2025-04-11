@@ -4,20 +4,21 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.16.2.56959",
-      "templateHash": "14150843793582590973"
+      "version": "0.34.44.8038",
+      "templateHash": "2313748121071500940"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 1,
+      "maxLength": 90,
       "metadata": {
         "description": "The name of the resource group."
       }
     },
     "location": {
       "type": "string",
-      "defaultValue": "eastus",
       "metadata": {
         "description": "The location resource group will be deployed."
       }
@@ -26,7 +27,7 @@
   "resources": [
     {
       "type": "Microsoft.Resources/resourceGroups",
-      "apiVersion": "2022-09-01",
+      "apiVersion": "2024-11-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "tags": {

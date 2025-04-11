@@ -3,7 +3,7 @@ reviewed: 2024-03-26
 severity: Important
 pillar: Security
 category: SE:05 Identity and access management
-resource: Azure AI
+resource: AI Service
 resourceType: Microsoft.CognitiveServices/accounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AI.ManagedIdentity/
 ---

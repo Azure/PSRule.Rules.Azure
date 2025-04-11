@@ -56,6 +56,11 @@ Rule 'Azure.LB.StandardSKU' -Ref 'AZR-000128' -Type 'Microsoft.Network/loadBalan
     IsStandardLoadBalancer;
 }
 
+# Synopsis: Use standard load balancer names.
+Rule 'Azure.LB.Naming' -Ref 'AZR-000465' -Type 'Microsoft.Network/loadBalancers' -If { !(Azure_IsManagedLB) -and $Configuration['AZURE_LOAD_BALANCER_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_LOAD_BALANCER_NAME_FORMAT, $True);
+}
+
 #endregion Rules
 
 #region Helper functions

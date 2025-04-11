@@ -20,15 +20,23 @@ Rule 'Azure.Resource.AllowedRegions' -Ref 'AZR-000167' -If { (SupportsRegions) -
     $Assert.Create('location', [bool]$context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, @($location));
 }
 
-# Synopsis: Use Resource Group naming requirements
-Rule 'Azure.ResourceGroup.Name' -Ref 'AZR-000168' -Type 'Microsoft.Resources/resourceGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
-    # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftresources
+# # Synopsis: Tag resources and resource groups with a valid environment.
+# Rule 'Azure.Resource.Environment' -Ref 'AZR-000nnn' -With 'Azure.Resource.SupportsTags' -If { (Exists "tags.$($Configuration.CAF_EnvironmentTag)") } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'tagging' } {
+#     $Assert.HasField($TargetObject, 'tags');
+#     if ($Null -ne $TargetObject.Tags) {
+#         $Assert.HasField($TargetObject.Tags, $Configuration.CAF_EnvironmentTag, $Configuration.CAF_MatchTagNameCase);
+#         $Assert.In($TargetObject.Tags, $Configuration.CAF_EnvironmentTag, $Configuration.CAF_Environments, $Configuration.CAF_MatchTagValueCase);
+#     }
+# }
 
-    # Between 1 and 90 characters long
-    $Assert.GreaterOrEqual($PSRule, 'TargetName', 1);
-    $Assert.LessOrEqual($PSRule, 'TargetName', 90);
-
-    # Alphanumerics, underscores, parentheses, hyphens, periods
-    # Can't end with period.
-    $Assert.Match($PSRule, 'TargetName', '^[-\w\._\(\)]*[-\w_\(\)]$');
-}
+# # Synopsis: Tag resources with mandatory tags.
+# Rule 'CAF.Tag.Resource' -Ref 'AZR-000nnn' -With 'Azure.Resource.SupportsTags' -If { !($PSRule.TargetType -eq 'Microsoft.Resources/resourceGroups') -and ($Configuration.GetStringValues('CAF_ResourceMandatoryTags').Length -gt 0) } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'tagging' } {
+#     $required = $Configuration.GetStringValues('CAF_ResourceMandatoryTags')
+#     if ($required.Length -eq 0) {
+#         return $Assert.Pass();
+#     }
+#     $Assert.HasField($TargetObject, 'tags');
+#     if ($Null -ne $TargetObject.Tags) {
+#         $Assert.HasFields($TargetObject.Tags, $required, $Configuration.CAF_MatchTagNameCase);
+#     }
+# }
