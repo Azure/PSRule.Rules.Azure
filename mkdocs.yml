@@ -75,23 +75,21 @@ nav:
     - Troubleshooting: troubleshooting.md
     - Samples: samples.md
     - License and contributing:
-      - Index: license-contributing/index.md
+      - license-contributing/index.md
       - Get started contributing: license-contributing/get-started-contributing.md
       - Getting started with contributions: license-contributing/getting-started-with-documentation.md
       - Writing documentation: license-contributing/writing-documentation.md
       - Past hackathons: license-contributing/hackathons.md
     - Related projects: related-projects.md
-    - Releases:
-      - Change log:
-        - v1: 'CHANGELOG-v1.md'
-        - v0: 'CHANGELOG-v0.md'
-      - Upgrade notes: upgrade-notes.md
-      - Deprecations: deprecations.md
-      - Changes and versioning: versioning.md
     - Support: support.md
+  - Updates:
+    - Change log: changelog.md
+    - Upgrade notes: upgrade-notes.md
+    - Deprecations: deprecations.md
+    - Changes and versioning: versioning.md
   - Setup:
     - Configuring options:
-      - Index: setup/index.md
+      - setup/index.md
       - Configuring rule defaults: setup/configuring-rules.md
       - Configuring expansion: setup/configuring-expansion.md
       - Configuring exports: setup/configuring-exports.md
@@ -99,7 +97,7 @@ nav:
     - Setup Azure Monitor logs: setup/setup-azure-monitor-logs.md
     - Integrations: integrations.md
   - Reference:
-    - Index: en/rules/index.md
+    - en/rules/index.md
     - By pillar: en/rules/module.md
     - By resource: en/rules/resource.md
     - Microsoft Cloud Security Benchmark: en/mcsb-v1.md
@@ -157,9 +155,12 @@ plugins:
       customization/storing-custom-rules.md: customization/using-custom-rules.md
       en/asb-v3.md: en/mcsb-v1.md
       setup/configuring-options.md: setup/index.md
+      CHANGELOG-v1.md: changelog.md
+      CHANGELOG-v0.md: https://github.com/Azure/PSRule.Rules.Azure/blob/v0.19.0/CHANGELOG.md
 
 hooks:
   - docs/hooks/samples.py
+  - docs/hooks/updates.py
   - docs/hooks/shortcodes.py
   - docs/hooks/metadata.py
   - docs/hooks/aliases.py
