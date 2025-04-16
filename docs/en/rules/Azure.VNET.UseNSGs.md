@@ -38,6 +38,51 @@ Consider assigning a network security group (NSG) to each virtual network subnet
 
 ## EXAMPLES
 
+### Configure with Bicep
+
+To deploy virtual network subnets that pass this rule:
+
+- Set the `properties.networkSecurityGroup.id` property for each supported subnet to a NSG resource id.
+
+For example:
+
+```bicep
+resource vnet 'Microsoft.Network/virtualNetworks@2023-05-01' = {
+  name: name
+  location: location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        '10.0.0.0/16'
+      ]
+    }
+    dhcpOptions: {
+      dnsServers: [
+        '10.0.1.4'
+        '10.0.1.5'
+      ]
+    }
+    subnets: [
+      {
+        name: 'GatewaySubnet'
+        properties: {
+          addressPrefix: '10.0.0.0/24'
+        }
+      }
+      {
+        name: 'snet-001'
+        properties: {
+          addressPrefix: '10.0.1.0/24'
+          networkSecurityGroup: {
+            id: nsg.id
+          }
+        }
+      }
+    ]
+  }
+}
+```
+
 ### Configure with Azure template
 
 To deploy virtual networks subnets that pass this rule:
@@ -88,51 +133,6 @@ For example:
 }
 ```
 
-### Configure with Bicep
-
-To deploy virtual network subnets that pass this rule:
-
-- Set the `properties.networkSecurityGroup.id` property for each supported subnet to a NSG resource id.
-
-For example:
-
-```bicep
-resource vnet 'Microsoft.Network/virtualNetworks@2023-05-01' = {
-  name: name
-  location: location
-  properties: {
-    addressSpace: {
-      addressPrefixes: [
-        '10.0.0.0/16'
-      ]
-    }
-    dhcpOptions: {
-      dnsServers: [
-        '10.0.1.4'
-        '10.0.1.5'
-      ]
-    }
-    subnets: [
-      {
-        name: 'GatewaySubnet'
-        properties: {
-          addressPrefix: '10.0.0.0/24'
-        }
-      }
-      {
-        name: 'snet-001'
-        properties: {
-          addressPrefix: '10.0.1.0/24'
-          networkSecurityGroup: {
-            id: nsg.id
-          }
-        }
-      }
-    ]
-  }
-}
-```
-
 ### Configure with Azure CLI
 
 ```bash
@@ -151,6 +151,10 @@ Set-AzVirtualNetworkSubnetConfig -Name '<subnet>' -VirtualNetwork $vnet -Address
 
 If you identify a false positive for an Azure service that does not support NSGs,
 please [open an issue](https://github.com/Azure/PSRule.Rules.Azure/issues/new) to help us improve this rule.
+
+### Rule configuration
+
+<!-- module:config rule AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG -->
 
 To exclude subnets that are specific to your environment, use the `AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG` configuration option.
 Any subnet names specified by this option will be ignored by this rule.
@@ -173,5 +177,5 @@ configuration:
 - [Azure Route Server FAQ](https://learn.microsoft.com/azure/route-server/route-server-faq#can-i-associate-a-network-security-group-nsg-to-the-routeserversubnet)
 - [Azure Dedicated HSM networking](https://learn.microsoft.com/azure/dedicated-hsm/networking#subnets)
 - [NS-1: Establish network segmentation boundaries](https://learn.microsoft.com/security/benchmark/azure/baselines/virtual-network-security-baseline#ns-1-establish-network-segmentation-boundaries)
-- [Azure VNET deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks?pivots=deployment-language-bicep)
+- [Azure VNET deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/virtualnetworks)
 - [Azure NSG deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)

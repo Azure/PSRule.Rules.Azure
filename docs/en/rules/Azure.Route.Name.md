@@ -2,13 +2,13 @@
 reviewed: 2021-11-27
 severity: Awareness
 pillar: Operational Excellence
-category: Repeatable infrastructure
+category: OE:04 Continuous integration
 resource: Route table
 resourceType: Microsoft.Network/routeTables
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Route.Name/
 ---
 
-# Use valid Route table names
+# Route table name must be valid
 
 ## SYNOPSIS
 
@@ -36,7 +36,9 @@ This rule does not check if Route table names are unique.
 
 ## LINKS
 
-- [Repeatable infrastructure](https://learn.microsoft.com/azure/architecture/framework/devops/automation-infrastructure)
+- [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/routetables)
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
+- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/routetables)

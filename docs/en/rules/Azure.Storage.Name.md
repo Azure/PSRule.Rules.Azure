@@ -8,7 +8,7 @@ resourceType: Microsoft.Storage/storageAccounts
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.Name/
 ---
 
-# Use valid storage account names
+# Storage Account name must be valid
 
 ## SYNOPSIS
 
