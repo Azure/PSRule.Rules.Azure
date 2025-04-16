@@ -8,11 +8,11 @@ resourceType: Microsoft.Network/virtualNetworks
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.Name/
 ---
 
-# Use valid VNET names
+# Virtual Network name must be valid
 
 ## SYNOPSIS
 
-Virtual Network (VNET) names should meet naming requirements.
+Azure Resource Manager (ARM) has requirements for Virtual Network names.
 
 ## DESCRIPTION
 
@@ -29,6 +29,174 @@ The requirements for Virtual Network names are:
 
 Consider using names that meet Virtual Network naming requirements.
 Additionally consider naming resources with a standard naming convention.
+
+## EXAMPLES
+
+### Configure with Bicep
+
+To deploy virtual networks that pass this rule:
+
+- Set the `name` property to a string that matches the naming requirements.
+- Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```bicep
+@minLength(2)
+@maxLength(64)
+@description('The name of the resource.')
+param name string
+
+@description('The location resources will be deployed.')
+param location string = resourceGroup().location
+
+// An example virtual network (VNET) with NSG configured.
+resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
+  name: name
+  location: location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        '10.0.0.0/16'
+      ]
+    }
+    dhcpOptions: {
+      dnsServers: [
+        '10.0.1.4'
+        '10.0.1.5'
+      ]
+    }
+    subnets: [
+      {
+        name: 'GatewaySubnet'
+        properties: {
+          addressPrefix: '10.0.0.0/24'
+        }
+      }
+      {
+        name: 'snet-001'
+        properties: {
+          addressPrefix: '10.0.1.0/24'
+          networkSecurityGroup: {
+            id: nsg.id
+          }
+        }
+      }
+      {
+        name: 'snet-002'
+        properties: {
+          addressPrefix: '10.0.2.0/24'
+          delegations: [
+            {
+              name: 'HSM'
+              properties: {
+                serviceName: 'Microsoft.HardwareSecurityModules/dedicatedHSMs'
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+<!-- external:avm avm/res/network/virtual-network name -->
+
+### Configure with Azure template
+
+To deploy virtual networks that pass this rule:
+
+- Set the `name` property to a string that matches the naming requirements.
+- Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
+
+For example:
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.34.44.8038",
+      "templateHash": "4612577866627056405"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 2,
+      "maxLength": 64,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Network/virtualNetworks",
+      "apiVersion": "2024-05-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "addressSpace": {
+          "addressPrefixes": [
+            "10.0.0.0/16"
+          ]
+        },
+        "dhcpOptions": {
+          "dnsServers": [
+            "10.0.1.4",
+            "10.0.1.5"
+          ]
+        },
+        "subnets": [
+          {
+            "name": "GatewaySubnet",
+            "properties": {
+              "addressPrefix": "10.0.0.0/24"
+            }
+          },
+          {
+            "name": "snet-001",
+            "properties": {
+              "addressPrefix": "10.0.1.0/24",
+              "networkSecurityGroup": {
+                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('name'))]"
+              }
+            }
+          },
+          {
+            "name": "snet-002",
+            "properties": {
+              "addressPrefix": "10.0.2.0/24",
+              "delegations": [
+                {
+                  "name": "HSM",
+                  "properties": {
+                    "serviceName": "Microsoft.HardwareSecurityModules/dedicatedHSMs"
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('name'))]"
+      ]
+    }
+  ]
+}
+```
 
 ## NOTES
 
