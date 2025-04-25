@@ -251,7 +251,7 @@ Describe 'Azure.VNG' -Tag 'Network', 'VNG', 'VPN', 'ExpressRoute' {
                 ErrorAction   = 'Stop'
             }
 
-            $option = New-PSRuleOption -Configuration @{ 'AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT' = '^vgw-' };
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_GATEWAY_CONNECTION_NAME_FORMAT' = '^cn-' };
 
             $names = @(
                 'cn-001'
