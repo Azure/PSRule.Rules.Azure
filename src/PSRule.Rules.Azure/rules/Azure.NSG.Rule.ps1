@@ -49,6 +49,11 @@ Rule 'Azure.NSG.Associated' -Ref 'AZR-000140' -Type 'Microsoft.Network/networkSe
         $Assert.HasFieldValue($TargetObject, 'Properties.networkInterfaces').Result
 }
 
+# Synopsis: Use standard network security group names.
+Rule 'Azure.NSG.Naming' -Ref 'AZR-000467' -Type 'Microsoft.Network/networkSecurityGroups' -If { $Configuration['AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT, $True);
+}
+
 #endregion Rules
 
 #region Helper functions

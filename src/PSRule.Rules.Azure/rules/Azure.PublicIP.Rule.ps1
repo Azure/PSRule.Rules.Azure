@@ -62,6 +62,11 @@ Rule 'Azure.PublicIP.AvailabilityZone' -Ref 'AZR-000157' -With 'Azure.PublicIP.S
 
 } -Configure @{ AZURE_PUBLICIP_ADDITIONAL_REGION_AVAILABILITY_ZONE_LIST = @() }
 
+# Synopsis: Use standard public IP address names.
+Rule 'Azure.PublicIP.Naming' -Ref 'AZR-000471' -Type 'Microsoft.Network/publicIPAddresses' -If { $Configuration['AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT, $True);
+}
+
 #region Helper functions
 
 function global:IsStandardPublicIP {

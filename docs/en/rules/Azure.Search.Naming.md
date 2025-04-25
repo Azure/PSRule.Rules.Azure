@@ -1,33 +1,49 @@
 ---
-reviewed: 2023-07-02
+reviewed: 2025-04-25
 severity: Awareness
 pillar: Operational Excellence
-category: OE:04 Continuous integration
+category: OE:04 Tools and processes
 resource: AI Search
 resourceType: Microsoft.Search/searchServices
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.Name/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.Naming/
 ---
 
-# Azure AI Search name must be valid
+# AI Search services must use standard naming
 
 ## SYNOPSIS
 
-Azure Resource Manager (ARM) has requirements for AI Search service names.
+Azure AI Search services without a standard naming convention may be difficult to identify and manage.
 
 ## DESCRIPTION
 
-When naming Azure resources, resource names must meet service requirements.
-The requirements for AI Search (previously known as Cognitive Search) service names are:
+An effective naming convention allows operators to quickly identify resources, related systems, and their purpose.
+Identifying resources easily is important to improve operational efficiency, reduce the time to respond to incidents,
+and minimize the risk of human error.
 
-- Between 2 and 60 characters long.
-- Lowercase letters, numbers, and hyphens.
-- The first two and last one character must be a letter or a number.
-- AI Search service names must be globally unique.
+Some of the benefits of using standardized tagging and naming conventions are:
+
+- They provide consistency and clarity for resource identification and discovery across the Azure Portal, CLIs, and APIs.
+- They enable filtering and grouping of resources for billing, monitoring, security, and compliance purposes.
+- They support resource lifecycle management, such as provisioning, decommissioning, backup, and recovery.
+
+For example, if you come upon a security incident, it's critical to quickly identify affected systems,
+the functions that those systems support, and the potential business impact.
+
+For AI Search services (previously known as Cognitive Search),
+the Cloud Adoption Framework (CAF) recommends using the `srch-` prefix.
+
+Requirements for AI Search services names:
+
+- At least 2 character, but no more than 60.
+- Can include lowercase alphanumeric, and hyphen characters.
+- The first two and last character of the name must be a letter or number.
+- Cannot contain consecutive hyphens.
+- AI Search services must be unique within a resource group.
 
 ## RECOMMENDATION
 
-Consider using names that meet Azure AI Search service naming requirements.
-Additionally consider naming resources with a standard naming convention.
+Consider creating AI Search service instances with a standard name.
+Additionally consider using Azure Policy to only permit creation using a standard naming convention.
 
 ## EXAMPLES
 
@@ -129,12 +145,28 @@ For example:
 
 ## NOTES
 
-This rule does not check if Azure AI Search service names are unique.
+This rule does not check if AI Search service names are unique.
+
+<!-- caf:note name-format -->
+
+### Rule configuration
+
+<!-- module:config rule AZURE_AI_SEARCH_NAME_FORMAT -->
+
+To configure this rule set the `AZURE_AI_SEARCH_NAME_FORMAT` configuration value to a regular expression
+that matches the required format.
+
+For example:
+
+```yaml
+configuration:
+  AZURE_AI_SEARCH_NAME_FORMAT: '^srch-'
+```
 
 ## LINKS
 
-- [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
-- [REST API reference](https://learn.microsoft.com/rest/api/searchmanagement/services/create-or-update)
-- [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
+- [OE:04 Tools and processes](https://learn.microsoft.com/azure/well-architected/operational-excellence/tools-processes)
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
+- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.search/searchservices)

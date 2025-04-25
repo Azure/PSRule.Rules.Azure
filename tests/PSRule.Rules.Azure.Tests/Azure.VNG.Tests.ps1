@@ -145,69 +145,137 @@ Describe 'Azure.VNG' -Tag 'Network', 'VNG', 'VPN', 'ExpressRoute' {
         }
     }
 
-    Context 'Resource name - Azure.VNG.Name' {
+    Context 'Resource name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'Microsoft.Network/virtualNetworkGateways'
-            }
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT' = '^vgw-' };
+
+            $names = @(
+                'vng-001'
+                'vng-001_'
+                'VNG.001'
+                'v'
+                '_vng-001'
+                '-vng-001'
+                'vng-001-'
+                'vng-001.'
+                'vgw-001'
+                'VGW-001'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Network/virtualNetworkGateways'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.VNG.Name','Azure.VNG.Naming'
         }
 
-        BeforeDiscovery {
+        It 'Azure.VNG.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.Name' };
             $validNames = @(
                 'vng-001'
                 'vng-001_'
                 'VNG.001'
                 'v'
+                'vgw-001'
+                'VGW-001'
             )
+
             $invalidNames = @(
                 '_vng-001'
                 '-vng-001'
                 'vng-001-'
                 'vng-001.'
             )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNG.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+        It 'Azure.VNG.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.Naming' };
+            $validNames = @(
+                'vgw-001'
+            )
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNG.Name';
+            $invalidNames = @(
+                '_vng-001'
+                '-vng-001'
+                'vng-001-'
+                'vng-001.'
+                'vng-001'
+                'vng-001_'
+                'VNG.001'
+                'v'
+                'VGW-001'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 
-    Context 'Resource name - Azure.VNG.ConnectionName' {
+    Context 'Resource name - Connection Name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'Microsoft.Network/connections'
-            }    
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_GATEWAY_CONNECTION_NAME_FORMAT' = '^cn-' };
+
+            $names = @(
+                'cn-001'
+                'cn-001_'
+                'CN.001'
+                'c'
+                '_cn-001'
+                '-cn-001'
+                'cn-001-'
+                'cn-001.'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Network/connections'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.VNG.ConnectionName','Azure.VNG.ConnectionNaming'
         }
 
-        BeforeDiscovery {
+        It 'Azure.VNG.ConnectionName' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.ConnectionName' };
             $validNames = @(
                 'cn-001'
                 'cn-001_'
@@ -221,22 +289,47 @@ Describe 'Azure.VNG' -Tag 'Network', 'VNG', 'VPN', 'ExpressRoute' {
                 'cn-001-'
                 'cn-001.'
             )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNG.ConnectionName';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+        It 'Azure.VNG.ConnectionNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNG.ConnectionNaming' };
+            $validNames = @(
+                'cn-001'
+                'cn-001_'
+                'cn-001-'
+                'cn-001.'
+            )
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNG.ConnectionName';
+            $invalidNames = @(
+                'CN.001'
+                'c'
+                '_cn-001'
+                '-cn-001'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 

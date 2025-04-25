@@ -163,6 +163,42 @@ Rule 'Azure.VNET.PrivateSubnet' -Ref 'AZR-000447' -Type 'Microsoft.Network/virtu
     }
 }
 
+# Synopsis: Use standard virtual networks names.
+Rule 'Azure.VNET.Naming' -Ref 'AZR-000474' -Type 'Microsoft.Network/virtualNetworks' -If { $Configuration['AZURE_VNET_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_VNET_NAME_FORMAT, $True);
+}
+
+# Synopsis: Use standard subnets names.
+Rule 'Azure.VNET.SubnetNaming' -Ref 'AZR-000475' -Type 'Microsoft.Network/virtualNetworks', 'Microsoft.Network/virtualNetworks/subnets' -If { $Configuration['AZURE_VNET_SUBNET_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    if ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks') {
+        $subnets = @($TargetObject.Properties.subnets);
+
+        if ($subnets.Length -eq 0) {
+            $Assert.Pass();
+        }
+        foreach ($subnet in $subnets) {
+            $name = $subnet.Name;
+
+            if ($name -in 'GatewaySubnet', 'AzureFirewallSubnet') {
+                $Assert.Pass();
+            }
+            else {
+                $Assert.Match($name, '.', $Configuration.AZURE_VNET_SUBNET_NAME_FORMAT, $True);
+            }
+        }
+    }
+    elseif ($PSRule.TargetType -eq 'Microsoft.Network/virtualNetworks/subnets') {
+        $name = $PSRule.TargetName.Split('/')[-1];
+
+        if ($name -in 'GatewaySubnet', 'AzureFirewallSubnet') {
+            $Assert.Pass();
+        }
+        else {
+            $Assert.Match($name, '.', $Configuration.AZURE_VNET_SUBNET_NAME_FORMAT, $True);
+        }
+    }
+}
+
 #endregion Virtual Network
 
 #region Helper functions

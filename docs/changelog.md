@@ -32,6 +32,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since v1.42.0:
 
 - New rules:
+  - AI Search:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_AI_SEARCH_NAME_FORMAT` configuration option.
   - AI Service:
     - Check if resource name matches the configured name format by @BernieWhite.
       [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
@@ -49,10 +53,39 @@ What's changed since v1.42.0:
     - Check if resource name matches the configured name format by @BernieWhite.
       [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
       - The name format can be configured by the `AZURE_LOAD_BALANCER_NAME_FORMAT` configuration option.
+  - Network Security Group:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+  - Public IP Address:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT` configuration option.
   - Resource Group:
     - Check if the resource group name matches the configured name format by @BernieWhite.
       [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
       - The name format can be configured by the `AZURE_RESOURCE_GROUP_NAME_FORMAT` configuration option.
+  - Route Table:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_ROUTE_TABLE_NAME_FORMAT` configuration option.
+  - Storage Account:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_STORAGE_ACCOUNT_NAME_FORMAT` configuration option.
+  - Virtual Machine:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_VIRTUAL_MACHINE_NAME_FORMAT` configuration option.
+  - Virtual Network:
+    - Check if resource name and subnet name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format for virtual networks can be configured by the `AZURE_VNET_NAME_FORMAT` configuration option.
+      - The name format for subnets can be configured by the `AZURE_VNET_SUBNET_NAME_FORMAT` configuration option.
+  - Virtual Network Gateway:
+    - Check if resource and connection name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format for gateways can be configured by the `AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT` configuration option.
+      - The name format for connections can be configured by the `AZURE_GATEWAY_CONNECTION_NAME_FORMAT` configuration option.
 - Updated rules:
   - Deployment:
     - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.

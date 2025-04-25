@@ -25,7 +25,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.PublicIP' -Tag 'publicip' {
+Describe 'Azure.PublicIP' -Tag 'publicip', 'pip', 'ip' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -147,27 +147,54 @@ Describe 'Azure.PublicIP' -Tag 'publicip' {
         }
     }
 
-    Context 'Resource name -- Azure.PublicIP.Name' {
+    Context 'Resource name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'Microsoft.Network/publicIPAddresses'
-            }
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT' = '^pip-' };
+
+            $names = @(
+                'pip-001'
+                'pip-001_'
+                'PIP.001'
+                'p'
+                'pip'
+                '_pip-001'
+                '-pip-001'
+                'pip-001-'
+                'pip-001.'
+                'PIP-001'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Network/publicIPAddresses'
+                    Properties = [PSCustomObject]@{
+                        dnsSettings = [PSCustomObject]@{
+                            domainNameLabel = $_
+                        }
+                    }
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.PublicIP.Name','Azure.PublicIP.Naming','Azure.PublicIP.DNSLabel'
         }
 
-        BeforeDiscovery {
+        It 'Azure.PublicIP.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PublicIP.Name' };
             $validNames = @(
                 'pip-001'
                 'pip-001_'
                 'PIP.001'
                 'p'
+                'pip'
+                'PIP-001'
             )
 
             $invalidNames = @(
@@ -176,45 +203,53 @@ Describe 'Azure.PublicIP' -Tag 'publicip' {
                 'pip-001-'
                 'pip-001.'
             )
-        }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.Name';
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.Name';
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
-        }
-    }
-
-    Context 'Resource name -- Azure.PublicIP.DNSLabel' {
-        BeforeAll {
-            $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
-                WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
-            }
-
-            $testObject = [PSCustomObject]@{
-                ResourceType = 'Microsoft.Network/publicIPAddresses'
-                Properties = [PSCustomObject]@{
-                    dnsSettings = [PSCustomObject]@{
-                        domainNameLabel = ''
-                    }
-                }
-            }
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        BeforeDiscovery {
+        It 'Azure.PublicIP.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PublicIP.Naming' };
+            $validNames = @(
+                'pip-001'
+                'pip-001_'
+                'pip-001-'
+                'pip-001.'
+            )
+
+            $invalidNames = @(
+                'PIP.001'
+                'p'
+                'pip'
+                '_pip-001'
+                '-pip-001'
+                'PIP-001'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
+        }
+
+        It 'Azure.PublicIP.DNSLabel' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.PublicIP.DNSLabel' };
             $validNames = @(
                 'pip-001'
                 'pip'
@@ -230,22 +265,18 @@ Describe 'Azure.PublicIP' -Tag 'publicip' {
                 'pip-001_'
                 'p'
             )
-        }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Properties.dnsSettings.domainNameLabel = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.DNSLabel';
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Properties.dnsSettings.domainNameLabel = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.PublicIP.DNSLabel';
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 

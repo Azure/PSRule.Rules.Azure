@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.34.44.8038",
-      "templateHash": "17848762994629458305"
+      "templateHash": "487876098704704279"
     }
   },
   "parameters": {
@@ -22,6 +22,12 @@
       "defaultValue": "[resourceGroup().location]",
       "metadata": {
         "description": "The location resources will be deployed."
+      }
+    },
+    "nsgId": {
+      "type": "string",
+      "metadata": {
+        "description": "The resource ID of the network security group."
       }
     }
   },
@@ -55,7 +61,7 @@
             "properties": {
               "addressPrefix": "10.0.1.0/24",
               "networkSecurityGroup": {
-                "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('name'))]"
+                "id": "[parameters('nsgId')]"
               }
             }
           },
@@ -70,78 +76,6 @@
                     "serviceName": "Microsoft.HardwareSecurityModules/dedicatedHSMs"
                   }
                 }
-              ]
-            }
-          }
-        ]
-      },
-      "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('name'))]"
-      ]
-    },
-    {
-      "type": "Microsoft.Network/networkSecurityGroups",
-      "apiVersion": "2024-05-01",
-      "name": "[parameters('name')]",
-      "location": "[parameters('location')]",
-      "properties": {
-        "securityRules": [
-          {
-            "name": "AllowLoadBalancerHealthInbound",
-            "properties": {
-              "description": "Allow inbound Azure Load Balancer health check.",
-              "access": "Allow",
-              "direction": "Inbound",
-              "priority": 100,
-              "protocol": "*",
-              "sourcePortRange": "*",
-              "sourceAddressPrefix": "AzureLoadBalancer",
-              "destinationPortRange": "*",
-              "destinationAddressPrefix": "*"
-            }
-          },
-          {
-            "name": "AllowApplicationInbound",
-            "properties": {
-              "description": "Allow internal web traffic into application.",
-              "access": "Allow",
-              "direction": "Inbound",
-              "priority": 300,
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "sourceAddressPrefix": "10.0.0.0/8",
-              "destinationPortRange": "443",
-              "destinationAddressPrefix": "VirtualNetwork"
-            }
-          },
-          {
-            "name": "DenyAllInbound",
-            "properties": {
-              "description": "Deny all other inbound traffic.",
-              "access": "Deny",
-              "direction": "Inbound",
-              "priority": 4000,
-              "protocol": "*",
-              "sourcePortRange": "*",
-              "sourceAddressPrefix": "*",
-              "destinationPortRange": "*",
-              "destinationAddressPrefix": "*"
-            }
-          },
-          {
-            "name": "DenyTraversalOutbound",
-            "properties": {
-              "description": "Deny outbound double hop traversal.",
-              "access": "Deny",
-              "direction": "Outbound",
-              "priority": 200,
-              "protocol": "Tcp",
-              "sourcePortRange": "*",
-              "sourceAddressPrefix": "VirtualNetwork",
-              "destinationAddressPrefix": "*",
-              "destinationPortRanges": [
-                "3389",
-                "22"
               ]
             }
           }
@@ -298,12 +232,11 @@
       "properties": {
         "addressPrefix": "10.0.0.0/24",
         "networkSecurityGroup": {
-          "id": "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('name'))]"
+          "id": "[parameters('nsgId')]"
         },
         "defaultOutboundAccess": false
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Network/networkSecurityGroups', parameters('name'))]",
         "[resourceId('Microsoft.Network/virtualNetworks', parameters('name'))]"
       ]
     }

@@ -39,3 +39,8 @@ Rule 'Azure.Search.Name' -Ref 'AZR-000176' -Type 'Microsoft.Search/searchService
     # The first two and last one character must be a letter or a number
     $Assert.Match($PSRule, 'TargetName', '^[a-z0-9]{2}(([a-z0-9-](?!--)){0,57}[a-z0-9])?$', $True);
 }
+
+# Synopsis: Use standard cognitive search names.
+Rule 'Azure.Search.Naming' -Ref 'AZR-000473' -Type 'Microsoft.Search/searchServices' -If { $Configuration['AZURE_AI_SEARCH_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_AI_SEARCH_NAME_FORMAT, $True);
+}

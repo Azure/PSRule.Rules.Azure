@@ -1,34 +1,47 @@
 ---
-reviewed: 2021-11-27
+reviewed: 2025-04-25
 severity: Awareness
 pillar: Operational Excellence
-category: OE:04 Continuous integration
+category: OE:04 Tools and processes
 resource: Network Security Group
 resourceType: Microsoft.Network/networkSecurityGroups
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.Name/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.Naming/
 ---
 
-# Network Security Group name must be valid
+# Network Security Groups must use standard naming
 
 ## SYNOPSIS
 
-Azure Resource Manager (ARM) has requirements for Network Security Group (NSG) names.
+Network security group (NSG) without a standard naming convention may be difficult to identify and manage.
 
 ## DESCRIPTION
 
-When naming Azure resources, resource names must meet service requirements.
-The requirements for NSG names are:
+An effective naming convention allows operators to quickly identify resources, related systems, and their purpose.
+Identifying resources easily is important to improve operational efficiency, reduce the time to respond to incidents,
+and minimize the risk of human error.
 
-- Between 1 and 80 characters long.
-- Alphanumerics, underscores, periods, and hyphens.
-- Start with alphanumeric.
-- End alphanumeric or underscore.
+Some of the benefits of using standardized tagging and naming conventions are:
+
+- They provide consistency and clarity for resource identification and discovery across the Azure Portal, CLIs, and APIs.
+- They enable filtering and grouping of resources for billing, monitoring, security, and compliance purposes.
+- They support resource lifecycle management, such as provisioning, decommissioning, backup, and recovery.
+
+For example, if you come upon a security incident, it's critical to quickly identify affected systems,
+the functions that those systems support, and the potential business impact.
+
+For NSGs, the Cloud Adoption Framework (CAF) recommends using the `nsg-` prefix.
+
+Requirements for NSG names:
+
+- At least 1 character, but no more than 80.
+- Can include alphanumeric, underscore, hyphen, period characters.
+- Can only start with a letter or number, and end with a letter, number or underscore.
 - NSG names must be unique within a resource group.
 
 ## RECOMMENDATION
 
-Consider using names that meet Network Security Group naming requirements.
-Additionally consider naming resources with a standard naming convention.
+Consider creating NSGs with a standard name.
+Additionally consider using Azure Policy to only permit creation using a standard naming convention.
 
 ## EXAMPLES
 
@@ -236,15 +249,26 @@ For example:
 
 This rule does not check if NSG names are unique.
 
-If creating resources using CI/CD pipelines consider programmatically Generating Cloud Resource Names using
-[PowerShell](https://blog.tyang.org/2022/09/10/programmatically-generate-cloud-resource-names-part-1/) or
-[Bicep](https://4bes.nl/2021/10/10/get-a-consistent-azure-naming-convention-with-bicep-modules/)
+<!-- caf:note name-format -->
+
+### Rule configuration
+
+<!-- module:config rule AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT -->
+
+To configure this rule set the `AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT` configuration value to a regular expression
+that matches the required format.
+
+For example:
+
+```yaml
+configuration:
+  AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT: '^nsg-'
+```
 
 ## LINKS
 
-- [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
-- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [OE:04 Tools and processes](https://learn.microsoft.com/azure/well-architected/operational-excellence/tools-processes)
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
-- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
-- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/networksecuritygroups)
