@@ -1469,6 +1469,10 @@
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.NSG.Naming/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Policy.AssignmentAssignedBy/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
@@ -1558,6 +1562,10 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.Name/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.PublicIP.Naming/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
@@ -1665,6 +1673,10 @@
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Route.Naming/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.SQL.AAD/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
@@ -1753,6 +1765,10 @@
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.Naming/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Search.QuerySLA/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
@@ -1834,6 +1850,10 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.Name/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Storage.Naming/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
@@ -2025,6 +2045,10 @@
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.Naming/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VM.PPGName/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
@@ -2129,6 +2153,10 @@
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.Naming/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.PeerState/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
@@ -2145,11 +2173,19 @@
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.SubnetNaming/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNET.UseNSGs/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.ConnectionName/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.ConnectionNaming/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
@@ -2166,6 +2202,10 @@
     </url>
     <url>
          <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.Name/</loc>
+         <lastmod>2025-04-25</lastmod>
+    </url>
+    <url>
+         <loc>https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.VNG.Naming/</loc>
          <lastmod>2025-04-25</lastmod>
     </url>
     <url>
