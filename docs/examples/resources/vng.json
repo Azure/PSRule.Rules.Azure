@@ -4,13 +4,15 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.27.1.19265",
-      "templateHash": "17685739923265585206"
+      "version": "0.34.44.8038",
+      "templateHash": "3784629056340702957"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 1,
+      "maxLength": 80,
       "metadata": {
         "description": "The name of the resource."
       }
@@ -33,12 +35,18 @@
       "metadata": {
         "description": "The resource ID of the public IP address to use."
       }
+    },
+    "circuitId": {
+      "type": "string",
+      "metadata": {
+        "description": "The resource ID of the ExpressRoute circuit to connect to."
+      }
     }
   },
   "resources": [
     {
       "type": "Microsoft.Network/virtualNetworkGateways",
-      "apiVersion": "2023-11-01",
+      "apiVersion": "2024-05-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "properties": {
@@ -65,6 +73,25 @@
           "tier": "VpnGw1AZ"
         }
       }
+    },
+    {
+      "type": "Microsoft.Network/connections",
+      "apiVersion": "2024-05-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "connectionType": "ExpressRoute",
+        "routingWeight": 0,
+        "virtualNetworkGateway1": {
+          "id": "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('name'))]"
+        },
+        "peer": {
+          "id": "[parameters('circuitId')]"
+        }
+      },
+      "dependsOn": [
+        "[resourceId('Microsoft.Network/virtualNetworkGateways', parameters('name'))]"
+      ]
     }
   ]
 }

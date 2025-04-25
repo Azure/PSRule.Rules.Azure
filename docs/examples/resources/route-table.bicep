@@ -11,22 +11,12 @@ param name string
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-// An example zone redundant public IP address
-resource pip 'Microsoft.Network/publicIPAddresses@2024-05-01' = {
+// An example route table
+resource routeTable 'Microsoft.Network/routeTables@2024-05-01' = {
   name: name
   location: location
-  sku: {
-    name: 'Standard'
-    tier: 'Regional'
-  }
   properties: {
-    publicIPAddressVersion: 'IPv4'
-    publicIPAllocationMethod: 'Static'
-    idleTimeoutInMinutes: 4
+    disableBgpRoutePropagation: false
+    routes: []
   }
-  zones: [
-    '1'
-    '2'
-    '3'
-  ]
 }

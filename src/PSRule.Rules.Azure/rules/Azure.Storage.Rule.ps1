@@ -113,6 +113,11 @@ Rule 'Azure.Storage.DefenderCloud' -Ref 'AZR-000386' -Type 'Microsoft.Storage/st
     $Assert.GreaterOrEqual($defender, '.', 1).Reason($LocalizedData.SubResourceNotFound, 'Microsoft.Security/DefenderForStorageSettings')
 }
 
+# Synopsis: Use standard storage accounts names.
+Rule 'Azure.Storage.Naming' -Ref 'AZR-000470' -Type 'Microsoft.Storage/storageAccounts' -If { !(Azure_IsManagedStorage) -and $Configuration['AZURE_STORAGE_ACCOUNT_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_STORAGE_ACCOUNT_NAME_FORMAT, $True);
+}
+
 #region Helper functions
 
 function global:ShouldStorageReplicate {

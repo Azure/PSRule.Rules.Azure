@@ -263,7 +263,7 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
         }
     }
 
-    Context 'Resource name - Azure.VNET.Name' {
+    Context 'Resource name - VNET' {
         BeforeAll {
             $invokeParams = @{
                 Baseline      = 'Azure.All'
@@ -272,17 +272,37 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name         = ''
-                ResourceType = 'Microsoft.Network/virtualNetworks'
-            }
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_VNET_NAME_FORMAT' = '^vnet-' };
+
+            $names = @(
+                'vnet-001'
+                'vnet-001_'
+                'VNET.001'
+                '_vnet-001'
+                '-vnet-001'
+                'vnet-001-'
+                'v'
+                'vnet-001.'
+                'VNET-001'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Network/virtualNetworks'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.VNET.Name','Azure.VNET.Naming'
         }
 
-        BeforeDiscovery {
+        It 'Azure.VNET.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.Name' };
             $validNames = @(
                 'vnet-001'
                 'vnet-001_'
                 'VNET.001'
+                'VNET-001'
             )
 
             $invalidNames = @(
@@ -292,26 +312,52 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 'v'
                 'vnet-001.'
             )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNET.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+        It 'Azure.VNET.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.Naming' };
+            $validNames = @(
+                'vnet-001'
+                'vnet-001_'
+                'vnet-001-'
+                'vnet-001.'
+            )
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNET.Name';
+            $invalidNames = @(
+                'VNET.001'
+                '_vnet-001'
+                '-vnet-001'
+                'v'
+                'VNET-001'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 
-    Context 'Resource name - Azure.VNET.SubnetName' {
+    Context 'Resource name - Subnet' {
         BeforeAll {
             $invokeParams = @{
                 Baseline      = 'Azure.All'
@@ -320,19 +366,42 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name         = ''
-                ResourceType = 'Microsoft.Network/virtualNetworks/subnets'
-            }
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_VNET_SUBNET_NAME_FORMAT' = '^snet-' };
+
+            $names = @(
+                'snet-001'
+                'snet-001_'
+                'SNET.001'
+                's'
+                'vnet-001/GatewaySubnet'
+                '_snet-001'
+                '-snet-001'
+                'snet-001-'
+                'snet-001.'
+                'SNET-001'
+                'vnet-001/snet-001'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Network/virtualNetworks/subnets'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.VNET.SubnetName','Azure.VNET.SubnetNaming'
         }
 
-        BeforeDiscovery {
+        It 'Azure.VNET.SubnetName' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.SubnetName' };
             $validNames = @(
                 'snet-001'
                 'snet-001_'
                 'SNET.001'
                 's'
                 'vnet-001/GatewaySubnet'
+                'SNET-001'
+                'vnet-001/snet-001'
             )
 
             $invalidNames = @(
@@ -341,22 +410,50 @@ Describe 'Azure.VNET' -Tag 'Network', 'VNET' {
                 'snet-001-'
                 'snet-001.'
             )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNET.SubnetName';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+        It 'Azure.VNET.SubnetNaming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VNET.SubnetNaming' };
+            $validNames = @(
+                'snet-001'
+                'snet-001_'
+                'snet-001-'
+                'snet-001.'
+                'vnet-001/GatewaySubnet'
+                'vnet-001/snet-001'
+            )
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VNET.SubnetName';
+            $invalidNames = @(
+                '_snet-001'
+                '-snet-001'
+                's'
+                'SNET-001'
+                'SNET.001'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 

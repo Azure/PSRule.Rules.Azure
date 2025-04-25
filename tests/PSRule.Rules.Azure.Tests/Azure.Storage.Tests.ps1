@@ -23,7 +23,7 @@ BeforeAll {
     $here = (Resolve-Path $PSScriptRoot).Path;
 }
 
-Describe 'Azure.Storage' -Tag Storage {
+Describe 'Azure.Storage' -Tag 'Storage' {
     Context 'Conditions' {
         BeforeAll {
             $invokeParams = @{
@@ -289,28 +289,6 @@ Describe 'Azure.Storage' -Tag Storage {
     }
 
     Context 'Resource name' {
-        $invokeParams = @{
-            Baseline      = 'Azure.All'
-            Module        = 'PSRule.Rules.Azure'
-            WarningAction = 'Ignore'
-            ErrorAction   = 'Stop'
-        }
-        $validNames = @(
-            'storage1'
-            '1storage'
-        )
-        $invalidNames = @(
-            'Storage1'
-            'storage-001'
-            'storage_001'
-            's'
-            'storage.1'
-        )
-        $testObject = [PSCustomObject]@{
-            Name         = ''
-            ResourceType = 'Microsoft.Storage/storageAccounts'
-        }
-
         BeforeAll {
             $invokeParams = @{
                 Baseline      = 'Azure.All'
@@ -319,16 +297,37 @@ Describe 'Azure.Storage' -Tag Storage {
                 ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name         = ''
-                ResourceType = 'Microsoft.Storage/storageAccounts'
-            }
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_STORAGE_ACCOUNT_NAME_FORMAT' = '^(st|stvm|dls)' };
+
+            $names = @(
+                'storage1'
+                '1storage'
+                'Storage1'
+                'storage-001'
+                'storage_001'
+                's'
+                'storage.1'
+                'dls001'
+                'stvm001'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Storage/storageAccounts'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.Storage.Name','Azure.Storage.Naming'
         }
 
-        BeforeDiscovery {
+        It 'Azure.Storage.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.Name' };
             $validNames = @(
                 'storage1'
                 '1storage'
+                'dls001'
+                'stvm001'
             )
 
             $invalidNames = @(
@@ -338,22 +337,48 @@ Describe 'Azure.Storage' -Tag Storage {
                 's'
                 'storage.1'
             )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Storage.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+        It 'Azure.Storage.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Storage.Naming' };
+            $validNames = @(
+                'storage1'
+                'dls001'
+                'stvm001'
+                'storage-001'
+                'storage_001'
+                'storage.1'
+            )
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Storage.Name';
+            $invalidNames = @(
+                '1storage'
+                'Storage1'
+                's'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 

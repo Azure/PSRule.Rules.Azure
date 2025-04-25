@@ -3,6 +3,8 @@
 
 // Bicep documentation examples
 
+@minLength(1)
+@maxLength(80)
 @description('The name of the resource.')
 param name string
 
@@ -15,8 +17,11 @@ param subnetId string
 @description('The resource ID of the public IP address to use.')
 param pipId string
 
+@description('The resource ID of the ExpressRoute circuit to connect to.')
+param circuitId string
+
 // An example Virtual Network Gateway with availability zone aware SKU.
-resource vng 'Microsoft.Network/virtualNetworkGateways@2023-11-01' = {
+resource vng 'Microsoft.Network/virtualNetworkGateways@2024-05-01' = {
   name: name
   location: location
   properties: {
@@ -41,6 +46,21 @@ resource vng 'Microsoft.Network/virtualNetworkGateways@2023-11-01' = {
     sku: {
       name: 'VpnGw1AZ'
       tier: 'VpnGw1AZ'
+    }
+  }
+}
+
+resource connection 'Microsoft.Network/connections@2024-05-01' = {
+  name: name
+  location: location
+  properties: {
+    connectionType: 'ExpressRoute'
+    routingWeight: 0
+    virtualNetworkGateway1: {
+      id: vng.id
+    }
+    peer: {
+      id: circuitId
     }
   }
 }

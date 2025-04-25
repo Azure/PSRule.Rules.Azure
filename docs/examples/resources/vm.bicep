@@ -3,6 +3,8 @@
 
 // Bicep documentation examples
 
+@minLength(1)
+@maxLength(15)
 @description('The name of the resource.')
 param name string
 
@@ -27,7 +29,7 @@ param subnetId string
 param amaIdentityId string
 
 // An example virtual machine running Windows Server and one data disk attached.
-resource vm 'Microsoft.Compute/virtualMachines@2024-07-01' = {
+resource vm 'Microsoft.Compute/virtualMachines@2024-11-01' = {
   name: name
   location: location
   identity: {
@@ -43,6 +45,14 @@ resource vm 'Microsoft.Compute/virtualMachines@2024-07-01' = {
       adminPassword: adminPassword
       windowsConfiguration: {
         provisionVMAgent: true
+      }
+    }
+    securityProfile: {
+      securityType: 'TrustedLaunch'
+      encryptionAtHost: true
+      uefiSettings: {
+        secureBootEnabled: true
+        vTpmEnabled: true
       }
     }
     storageProfile: {

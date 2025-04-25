@@ -112,6 +112,11 @@ Rule 'Azure.VM.ComputerName' -Ref 'AZR-000249' -Type 'Microsoft.Compute/virtualM
     Match 'Properties.osProfile.computerName' $matchExpression
 }
 
+# Synopsis: Use standard virtual machines names.
+Rule 'Azure.VM.Naming' -Ref 'AZR-000469' -Type 'Microsoft.Compute/virtualMachines' -If { $Configuration['AZURE_VIRTUAL_MACHINE_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_VIRTUAL_MACHINE_NAME_FORMAT, $True);
+}
+
 #endregion Virtual machine
 
 #region Managed Disks

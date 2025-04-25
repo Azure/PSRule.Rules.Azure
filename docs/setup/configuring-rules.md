@@ -18,6 +18,37 @@ Earlier versions of PSRule for Azure will ignore the configuration option.
 
 ## Available options
 
+### AZURE_AI_SEARCH_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.Search.Naming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure AI Search Services.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_AI_SEARCH_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_AI_SEARCH_NAME_FORMAT configuration option
+configuration:
+  AZURE_AI_SEARCH_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_AI_SEARCH_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_AI_SEARCH_NAME_FORMAT: '^srch-'
+```
+
 ### AZURE_AI_SERVICES_NAME_FORMAT
 
 <!-- module:version v1.43.0 -->
@@ -759,6 +790,37 @@ configuration:
   AZURE_FIREWALL_IS_ZONAL: true
 ```
 
+### AZURE_GATEWAY_CONNECTION_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.VNG.ConnectionNaming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Gateway Connections.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_GATEWAY_CONNECTION_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_GATEWAY_CONNECTION_NAME_FORMAT configuration option
+configuration:
+  AZURE_GATEWAY_CONNECTION_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_GATEWAY_CONNECTION_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_GATEWAY_CONNECTION_NAME_FORMAT: '^cn-'
+```
+
 ### AZURE_LINUX_OS_OFFERS
 
 <!-- module:version v1.20.0 -->
@@ -822,6 +884,37 @@ configuration:
   AZURE_LOAD_BALANCER_NAME_FORMAT: 'lb-{name}'
 ```
 
+### AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.NSG.Naming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Network Security Groups.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT configuration option
+configuration:
+  AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT: '^nsg-'
+```
+
 ### AZURE_POLICY_WAIVER_MAX_EXPIRY
 
 <!-- module:version v1.3.0 -->
@@ -850,6 +943,37 @@ Example:
 # YAML: Set the AZURE_POLICY_WAIVER_MAX_EXPIRY configuration option to 90
 configuration:
   AZURE_POLICY_WAIVER_MAX_EXPIRY: 90
+```
+
+### AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.PublicIP.Naming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Public IP Addresses.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT configuration option
+configuration:
+  AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT: '^pip-'
 ```
 
 ### AZURE_RESOURCE_ALLOWED_LOCATIONS
@@ -932,6 +1056,37 @@ configuration:
   AZURE_RESOURCE_GROUP_NAME_FORMAT: '^rg-'
 ```
 
+### AZURE_ROUTE_TABLE_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.Route.Naming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Route Tables.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_ROUTE_TABLE_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_ROUTE_TABLE_NAME_FORMAT configuration option
+configuration:
+  AZURE_ROUTE_TABLE_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_ROUTE_TABLE_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_ROUTE_TABLE_NAME_FORMAT: '^rt-'
+```
+
 ### AZURE_STORAGE_DEFENDER_PER_ACCOUNT
 
 <!-- module:version v1.27.0 -->
@@ -962,6 +1117,99 @@ Example:
 # YAML: Set the AZURE_STORAGE_DEFENDER_PER_ACCOUNT configuration option to true
 configuration:
   AZURE_STORAGE_DEFENDER_PER_ACCOUNT: true
+```
+
+### AZURE_STORAGE_ACCOUNT_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.Storage.Naming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Storage Accounts.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_STORAGE_ACCOUNT_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_STORAGE_ACCOUNT_NAME_FORMAT configuration option
+configuration:
+  AZURE_STORAGE_ACCOUNT_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_STORAGE_ACCOUNT_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_STORAGE_ACCOUNT_NAME_FORMAT: '^(st|stvm|dls)'
+```
+
+### AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.VNG.Naming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Virtual Network Gateways.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT configuration option
+configuration:
+  AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: '^vgw-'
+```
+
+### AZURE_VIRTUAL_MACHINE_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.VM.Naming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Virtual Machines.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_VIRTUAL_MACHINE_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_VIRTUAL_MACHINE_NAME_FORMAT configuration option
+configuration:
+  AZURE_VIRTUAL_MACHINE_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_VIRTUAL_MACHINE_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_VIRTUAL_MACHINE_NAME_FORMAT: '^vm'
 ```
 
 ### AZURE_VM_USE_AZURE_HYBRID_BENEFIT
@@ -1067,6 +1315,37 @@ configuration:
   AZURE_VNET_DNS_WITH_IDENTITY: true
 ```
 
+### AZURE_VNET_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.VNET.Naming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Virtual Networks.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_VNET_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_VNET_NAME_FORMAT configuration option
+configuration:
+  AZURE_VNET_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_VNET_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_VNET_NAME_FORMAT: '^vnet-'
+```
+
 ### AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG
 
 <!-- module:version v1.33.0 -->
@@ -1098,4 +1377,35 @@ configuration:
   AZURE_VNET_SUBNET_EXCLUDED_FROM_NSG:
   - subnet-1
   - subnet-2
+```
+
+### AZURE_VNET_SUBNET_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.VNET.SubnetNaming -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Virtual Network Subnets.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_VNET_SUBNET_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_VNET_SUBNET_NAME_FORMAT configuration option
+configuration:
+  AZURE_VNET_SUBNET_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_VNET_SUBNET_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_VNET_SUBNET_NAME_FORMAT: '^snet-'
 ```

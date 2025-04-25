@@ -624,7 +624,7 @@ Describe 'Azure.VM' -Tag 'VM' {
         }
     }
 
-    Context 'Resource name - Azure.VM.Name' {
+    Context 'Resource name - VM' {
         BeforeAll {
             $invokeParams = @{
                 Baseline      = 'Azure.All'
@@ -633,13 +633,41 @@ Describe 'Azure.VM' -Tag 'VM' {
                 ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name         = ''
-                ResourceType = 'Microsoft.Compute/virtualMachines'
-            }
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_VIRTUAL_MACHINE_NAME_FORMAT' = '^vm' };
+
+            $names = @(
+                'vm-001'
+                'vm-001_'
+                'VM.001'
+                '000000'
+                '_vm-001'
+                '-vm-001'
+                'vm-001-'
+                'vm-001.'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Compute/virtualMachines'
+                    Properties   = [PSCustomObject]@{
+                        storageProfile = [PSCustomObject]@{
+                            osDisk = [PSCustomObject]@{
+                                osType = 'Windows'
+                            }
+                        }
+                        osProfile      = [PSCustomObject]@{
+                            computerName = $_
+                        }
+                    }
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.VM.Name','Azure.VM.Naming'
         }
 
-        BeforeDiscovery {
+        It 'Azure.VM.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.Name' };
             $validNames = @(
                 'vm-001'
                 'vm-001_'
@@ -653,22 +681,47 @@ Describe 'Azure.VM' -Tag 'VM' {
                 'vm-001-'
                 'vm-001.'
             )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+        It 'Azure.VM.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.VM.Naming' };
+            $validNames = @(
+                'vm-001'
+                'vm-001_'
+                'vm-001-'
+                'vm-001.'
+            )
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.VM.Name';
+            $invalidNames = @(
+                '_vm-001'
+                '-vm-001'
+                'VM.001'
+                '000000'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 

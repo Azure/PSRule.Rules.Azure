@@ -108,23 +108,45 @@ Describe 'Azure.Search' -Tag 'Search' {
     Context 'Resource name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'Microsoft.Search/searchServices'
-            }    
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_AI_SEARCH_NAME_FORMAT' = '^srch-' };
+
+            $names = @(
+                'service1'
+                'service-1'
+                'se'
+                'service.1'
+                'SERVICE-1'
+                '_service1'
+                '-service1'
+                'service--1'
+                's'
+                'srch-001'
+                'SRCH-001'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Search/searchServices'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.Search.Name','Azure.Search.Naming'
         }
 
-        BeforeDiscovery {
+        It 'Azure.Search.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Search.Name' };
             $validNames = @(
                 'service1'
                 'service-1'
                 'se'
+                'srch-001'
             )
 
             $invalidNames = @(
@@ -134,23 +156,52 @@ Describe 'Azure.Search' -Tag 'Search' {
                 '-service1'
                 'service--1'
                 's'
+                'SRCH-001'
             )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Search.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+        It 'Azure.Search.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Search.Naming' };
+            $validNames = @(
+                'srch-001'
+            )
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Search.Name';
+            $invalidNames = @(
+                'service1'
+                'service-1'
+                'se'
+                'service.1'
+                'SERVICE-1'
+                '_service1'
+                '-service1'
+                'service--1'
+                's'
+                'SRCH-001'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 

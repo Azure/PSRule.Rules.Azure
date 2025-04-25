@@ -137,47 +137,94 @@ Describe 'Azure.NSG' -Tag 'Network', 'NSG' {
     Context 'Resource name' {
         BeforeAll {
             $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
                 WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
+                ErrorAction   = 'Stop'
             }
 
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'Microsoft.Network/networkSecurityGroups'
-            }
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT' = '^nsg-' };
+
+            $names = @(
+                'nsg-001'
+                'nsg-001_'
+                'NSG.001'
+                'n'
+                '_nsg-001'
+                '-nsg-001'
+                'nsg-001-'
+                'nsg-001.'
+                'NSG-001'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Network/networkSecurityGroups'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.NSG.Name','Azure.NSG.Naming'
         }
 
-        BeforeDiscovery {
+        It 'Azure.NSG.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.NSG.Name' };
             $validNames = @(
                 'nsg-001'
                 'nsg-001_'
                 'NSG.001'
                 'n'
+                'NSG-001'
             )
+
             $invalidNames = @(
                 '_nsg-001'
                 '-nsg-001'
                 'nsg-001-'
                 'nsg-001.'
             )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.NSG.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
+        It 'Azure.NSG.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.NSG.Naming' };
+            $validNames = @(
+                'nsg-001'
+                'nsg-001_'
+                'nsg-001-'
+                'nsg-001.'
+            )
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.NSG.Name';
+            $invalidNames = @(
+                'NSG.001'
+                '_nsg-001'
+                '-nsg-001'
+                'n'
+                'NSG-001'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 

@@ -3,6 +3,8 @@
 
 // Bicep documentation examples
 
+@minLength(3)
+@maxLength(24)
 @description('The name of the resource.')
 param name string
 
@@ -16,7 +18,7 @@ var containerName = 'data'
 var shareName = 'group'
 
 // Define a Storage Account with common security settings.
-resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
   name: name
   location: location
   sku: {
@@ -36,7 +38,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
 }
 
 // Configure blob services with soft-delete enabled.
-resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2023-05-01' = {
+resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2024-01-01' = {
   parent: storageAccount
   name: 'default'
   properties: {
@@ -52,7 +54,7 @@ resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2023-05-01'
 }
 
 // Create a storage container.
-resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-05-01' = {
+resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@2024-01-01' = {
   parent: blobService
   name: containerName
   properties: {
@@ -61,7 +63,7 @@ resource container 'Microsoft.Storage/storageAccounts/blobServices/containers@20
 }
 
 // Configure file services.
-resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2023-05-01' = {
+resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2024-01-01' = {
   parent: storageAccount
   name: 'default'
   properties: {
@@ -73,7 +75,7 @@ resource fileServices 'Microsoft.Storage/storageAccounts/fileServices@2023-05-01
 }
 
 // Create a file share.
-resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2023-05-01' = {
+resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2024-01-01' = {
   parent: fileServices
   name: shareName
   properties: {
@@ -82,7 +84,7 @@ resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2023-05-01
 }
 
 // Override Defender for Storage settings on a Storage Account.
-resource defenderForStorageSettings 'Microsoft.Security/defenderForStorageSettings@2022-12-01-preview' = {
+resource defenderForStorageSettings 'Microsoft.Security/defenderForStorageSettings@2024-10-01-preview' = {
   name: 'current'
   scope: storageAccount
   properties: {

@@ -33,4 +33,14 @@ Rule 'Azure.VNG.MaintenanceConfig' -Ref 'AZR-000430' -Type 'Microsoft.Network/vi
     $Assert.GreaterOrEqual($maintenanceConfig, '.', 1).Reason($LocalizedData.VNGMaintenanceConfig, $PSRule.TargetName)
 }
 
+# Synopsis: Use standard virtual network gateway names.
+Rule 'Azure.VNG.Naming' -Ref 'AZR-000476' -Type 'Microsoft.Network/virtualNetworkGateways' -If { $Configuration['AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT, $True);
+}
+
+# Synopsis: Use standard virtual networks gateway connection names.
+Rule 'Azure.VNG.ConnectionNaming' -Ref 'AZR-000466' -Type 'Microsoft.Network/connections' -If { $Configuration['AZURE_GATEWAY_CONNECTION_NAME_FORMAT'] -ne '' } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'naming' } {
+    $Assert.Match($PSRule, 'TargetName', $Configuration.AZURE_GATEWAY_CONNECTION_NAME_FORMAT, $True);
+}
+
 #endregion Rules
