@@ -1,4 +1,5 @@
 ---
+description: A listing of the rules included in PSRule for Azure organized by resource type.
 generated: True
 ---
 
@@ -12,7 +13,8 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Search.IndexSLA](Azure.Search.IndexSLA.md) | Use a minimum of 3 replicas to receive an SLA for query and index updates. | Important | Error
 [Azure.Search.ManagedIdentity](Azure.Search.ManagedIdentity.md) | Configure managed identities to access Azure resources. | Important | Error
-[Azure.Search.Name](Azure.Search.Name.md) | AI Search service names should meet naming requirements. | Awareness | Error
+[Azure.Search.Name](Azure.Search.Name.md) | Azure Resource Manager (ARM) has requirements for AI Search service names. | Awareness | Error
+[Azure.Search.Naming](Azure.Search.Naming.md) | Azure AI Search services without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Search.QuerySLA](Azure.Search.QuerySLA.md) | Use a minimum of 2 replicas to receive an SLA for index queries. | Important | Error
 [Azure.Search.SKU](Azure.Search.SKU.md) | Use the basic and standard tiers for entry level workloads. | Critical | Error
 
@@ -31,6 +33,7 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Resource.AllowedRegions](Azure.Resource.AllowedRegions.md) | Resources should be deployed to allowed regions. | Important | Error
+[Azure.Resource.RequiredTags](Azure.Resource.RequiredTags.md) | Resources without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Resource.UseTags](Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | Awareness | Error
 [Azure.Template.DebugDeployment](Azure.Template.DebugDeployment.md) | Use default deployment detail level for nested deployments. | Awareness | Error
 [Azure.Template.DefineParameters](Azure.Template.DefineParameters.md) | Each Azure Resource Manager (ARM) template file should contain a minimal number of parameters. | Awareness | Error
@@ -588,7 +591,8 @@ Name | Synopsis | Severity | Level
 [Azure.NSG.Associated](Azure.NSG.Associated.md) | Network Security Groups (NSGs) should be associated to a subnet or network interface. | Awareness | Error
 [Azure.NSG.DenyAllInbound](Azure.NSG.DenyAllInbound.md) | When all inbound traffic is denied, some functions that affect the reliability of your service may not work as expected. | Important | Error
 [Azure.NSG.LateralTraversal](Azure.NSG.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | Important | Error
-[Azure.NSG.Name](Azure.NSG.Name.md) | Network Security Group (NSG) names should meet naming requirements. | Awareness | Error
+[Azure.NSG.Name](Azure.NSG.Name.md) | Azure Resource Manager (ARM) has requirements for Network Security Group (NSG) names. | Awareness | Error
+[Azure.NSG.Naming](Azure.NSG.Naming.md) | Network security group (NSG) without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Policy
 
@@ -614,7 +618,8 @@ Name | Synopsis | Severity | Level
 [Azure.PublicIP.DNSLabel](Azure.PublicIP.DNSLabel.md) | Public IP domain name labels should meet naming requirements. | Awareness | Error
 [Azure.PublicIP.IsAttached](Azure.PublicIP.IsAttached.md) | Public IP addresses should be attached or cleaned up if not in use. | Important | Error
 [Azure.PublicIP.MigrateStandard](Azure.PublicIP.MigrateStandard.md) | Use the Standard SKU for Public IP addresses as the Basic SKU will be retired. | Important | Error
-[Azure.PublicIP.Name](Azure.PublicIP.Name.md) | Public IP names should meet naming requirements. | Awareness | Error
+[Azure.PublicIP.Name](Azure.PublicIP.Name.md) | Azure Resource Manager (ARM) has requirements for Public IP address names. | Awareness | Error
+[Azure.PublicIP.Naming](Azure.PublicIP.Naming.md) | Public IP addresses without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.PublicIP.StandardSKU](Azure.PublicIP.StandardSKU.md) | The basic SKU is being retired on 30 September 2025, and does not include several reliability and security features. | Important | Error
 
 ## Recovery Services Vault
@@ -632,12 +637,14 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Group.Name](Azure.Group.Name.md) | Azure Resource Manager (ARM) has requirements for Resource Groups names. | Awareness | Error
 [Azure.Group.Naming](Azure.Group.Naming.md) | Resource Groups without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Group.RequiredTags](Azure.Group.RequiredTags.md) | Resource groups without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
 
 ## Route table
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.Route.Name](Azure.Route.Name.md) | Route table names should meet naming requirements. | Awareness | Error
+[Azure.Route.Name](Azure.Route.Name.md) | Azure Resource Manager (ARM) has requirements for Route table names. | Awareness | Error
+[Azure.Route.Naming](Azure.Route.Naming.md) | Route tables without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ## Service Bus
 
@@ -704,7 +711,8 @@ Name | Synopsis | Severity | Level
 [Azure.Storage.FileShareSoftDelete](Azure.Storage.FileShareSoftDelete.md) | Enable soft delete on Storage Accounts file shares. | Important | Error
 [Azure.Storage.Firewall](Azure.Storage.Firewall.md) | Storage Accounts should only accept explicitly allowed traffic. | Important | Error
 [Azure.Storage.MinTLS](Azure.Storage.MinTLS.md) | Storage Accounts should not accept weak or deprecated transport protocols for client-server communication. | Critical | Error
-[Azure.Storage.Name](Azure.Storage.Name.md) | Storage Account names should meet naming requirements. | Awareness | Error
+[Azure.Storage.Name](Azure.Storage.Name.md) | Azure Resource Manager (ARM) has requirements for Storage Account names. | Awareness | Error
+[Azure.Storage.Naming](Azure.Storage.Naming.md) | Storage Accounts without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Storage.SecureTransfer](Azure.Storage.SecureTransfer.md) | Storage accounts should only accept encrypted connections. | Important | Error
 [Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable blob soft delete on Storage Accounts. | Important | Error
 [Azure.Storage.UseReplication](Azure.Storage.UseReplication.md) | Storage Accounts using the LRS SKU are only replicated within a single zone. | Important | Error
@@ -719,6 +727,7 @@ Name | Synopsis | Severity | Level
 [Azure.RBAC.PIM](Azure.RBAC.PIM.md) | Use just-in-time (JiT) activation of roles instead of persistent role assignment. | Important | Error
 [Azure.RBAC.UseGroups](Azure.RBAC.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | Important | Error
 [Azure.RBAC.UseRGDelegation](Azure.RBAC.UseRGDelegation.md) | Use RBAC assignments on resource groups instead of individual resources. | Important | Error
+[Azure.Subscription.RequiredTags](Azure.Subscription.RequiredTags.md) | Subscriptions without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
 
 ## Traffic Manager
 
@@ -755,6 +764,7 @@ Name | Synopsis | Severity | Level
 [Azure.VM.MigrateAMA](Azure.VM.MigrateAMA.md) | Use Azure Monitor Agent as replacement for Log Analytics Agent. | Important | Error
 [Azure.VM.MultiTenantHosting](Azure.VM.MultiTenantHosting.md) | Deploy Windows 10 and 11 virtual machines in Azure using Multi-tenant Hosting Rights to leverage your existing Windows licenses. | Awareness | Error
 [Azure.VM.Name](Azure.VM.Name.md) | Virtual Machine (VM) names should meet naming requirements. | Awareness | Error
+[Azure.VM.Naming](Azure.VM.Naming.md) | Virtual machines without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.VM.PPGName](Azure.VM.PPGName.md) | Proximity Placement Group (PPG) names should meet naming requirements. | Awareness | Error
 [Azure.VM.PromoSku](Azure.VM.PromoSku.md) | Virtual machines (VMs) should not use expired promotional SKU. | Awareness | Error
 [Azure.VM.PublicIPAttached](Azure.VM.PublicIPAttached.md) | Avoid attaching public IPs directly to virtual machines. | Critical | Error
@@ -790,11 +800,13 @@ Name | Synopsis | Severity | Level
 [Azure.VNET.FirewallSubnet](Azure.VNET.FirewallSubnet.md) | Use Azure Firewall to filter network traffic to and from Azure resources. | Important | Error
 [Azure.VNET.FirewallSubnetNAT](Azure.VNET.FirewallSubnetNAT.md) | Zonal-deployed Azure Firewalls should consider using an Azure NAT Gateway for outbound access. | Awareness | Warning
 [Azure.VNET.LocalDNS](Azure.VNET.LocalDNS.md) | Virtual networks (VNETs) should use DNS servers deployed within the same Azure region. | Important | Error
-[Azure.VNET.Name](Azure.VNET.Name.md) | Virtual Network (VNET) names should meet naming requirements. | Awareness | Error
+[Azure.VNET.Name](Azure.VNET.Name.md) | Azure Resource Manager (ARM) has requirements for Virtual Network names. | Awareness | Error
+[Azure.VNET.Naming](Azure.VNET.Naming.md) | Virtual Networks without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.VNET.PeerState](Azure.VNET.PeerState.md) | VNET peering connections must be connected. | Important | Error
 [Azure.VNET.PrivateSubnet](Azure.VNET.PrivateSubnet.md) | Disable default outbound access for virtual machines. | Critical | Error
 [Azure.VNET.SingleDNS](Azure.VNET.SingleDNS.md) | Virtual networks (VNETs) should have at least two DNS servers assigned. | Important | Error
-[Azure.VNET.SubnetName](Azure.VNET.SubnetName.md) | Subnet names should meet naming requirements. | Awareness | Error
+[Azure.VNET.SubnetName](Azure.VNET.SubnetName.md) | Azure Resource Manager (ARM) has requirements for Virtual Network Subnet names. | Awareness | Error
+[Azure.VNET.SubnetNaming](Azure.VNET.SubnetNaming.md) | Virtual Network subnets without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.VNET.UseNSGs](Azure.VNET.UseNSGs.md) | Virtual network (VNET) subnets should have Network Security Groups (NSGs) assigned. | Critical | Error
 
 ## Virtual Network Gateway
@@ -802,10 +814,12 @@ Name | Synopsis | Severity | Level
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.VNG.ConnectionName](Azure.VNG.ConnectionName.md) | Virtual Network Gateway (VNG) connection names should meet naming requirements. | Awareness | Error
+[Azure.VNG.ConnectionNaming](Azure.VNG.ConnectionNaming.md) | Virtual network gateway connections without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.VNG.ERAvailabilityZoneSKU](Azure.VNG.ERAvailabilityZoneSKU.md) | Use availability zone SKU for virtual network gateways deployed with ExpressRoute gateway type. | Important | Error
 [Azure.VNG.ERLegacySKU](Azure.VNG.ERLegacySKU.md) | Migrate from legacy SKUs to improve reliability and performance of ExpressRoute (ER) gateways. | Critical | Error
 [Azure.VNG.MaintenanceConfig](Azure.VNG.MaintenanceConfig.md) | Use a customer-controlled maintenance configuration for virtual network gateways. | Important | Error
 [Azure.VNG.Name](Azure.VNG.Name.md) | Virtual Network Gateway (VNG) names should meet naming requirements. | Awareness | Error
+[Azure.VNG.Naming](Azure.VNG.Naming.md) | Virtual network gateway without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.VNG.VPNActiveActive](Azure.VNG.VPNActiveActive.md) | Use VPN gateways configured to operate in an Active-Active configuration to reduce connectivity downtime. | Important | Error
 [Azure.VNG.VPNAvailabilityZoneSKU](Azure.VNG.VPNAvailabilityZoneSKU.md) | Use availability zone SKU for virtual network gateways deployed with VPN gateway type. | Important | Error
 [Azure.VNG.VPNLegacySKU](Azure.VNG.VPNLegacySKU.md) | Migrate from legacy SKUs to improve reliability and performance of VPN gateways. | Critical | Error

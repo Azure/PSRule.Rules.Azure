@@ -1,4 +1,5 @@
 ---
+description: A listing of rules included in PSRule for Azure organized by Azure Well-Architected Framework pillar.
 generated: True
 ---
 
@@ -116,13 +117,16 @@ Name | Synopsis | Severity | Level
 [Azure.LB.Name](Azure.LB.Name.md) | Load Balancer names should meet naming requirements. | Awareness | Error
 [Azure.MariaDB.DatabaseName](Azure.MariaDB.DatabaseName.md) | Azure Database for MariaDB databases should meet naming requirements. | Awareness | Error
 [Azure.NIC.Name](Azure.NIC.Name.md) | Network Interface (NIC) names should meet naming requirements. | Awareness | Error
-[Azure.PublicIP.Name](Azure.PublicIP.Name.md) | Public IP names should meet naming requirements. | Awareness | Error
-[Azure.Search.Name](Azure.Search.Name.md) | AI Search service names should meet naming requirements. | Awareness | Error
-[Azure.Storage.Name](Azure.Storage.Name.md) | Storage Account names should meet naming requirements. | Awareness | Error
+[Azure.NSG.Name](Azure.NSG.Name.md) | Azure Resource Manager (ARM) has requirements for Network Security Group (NSG) names. | Awareness | Error
+[Azure.PublicIP.Name](Azure.PublicIP.Name.md) | Azure Resource Manager (ARM) has requirements for Public IP address names. | Awareness | Error
+[Azure.Route.Name](Azure.Route.Name.md) | Azure Resource Manager (ARM) has requirements for Route table names. | Awareness | Error
+[Azure.Search.Name](Azure.Search.Name.md) | Azure Resource Manager (ARM) has requirements for AI Search service names. | Awareness | Error
+[Azure.Storage.Name](Azure.Storage.Name.md) | Azure Resource Manager (ARM) has requirements for Storage Account names. | Awareness | Error
 [Azure.VM.ComputerName](Azure.VM.ComputerName.md) | Virtual Machine (VM) computer name should meet naming requirements. | Awareness | Error
 [Azure.VM.Name](Azure.VM.Name.md) | Virtual Machine (VM) names should meet naming requirements. | Awareness | Error
 [Azure.VM.PPGName](Azure.VM.PPGName.md) | Proximity Placement Group (PPG) names should meet naming requirements. | Awareness | Error
-[Azure.VNET.Name](Azure.VNET.Name.md) | Virtual Network (VNET) names should meet naming requirements. | Awareness | Error
+[Azure.VNET.Name](Azure.VNET.Name.md) | Azure Resource Manager (ARM) has requirements for Virtual Network names. | Awareness | Error
+[Azure.VNET.SubnetName](Azure.VNET.SubnetName.md) | Azure Resource Manager (ARM) has requirements for Virtual Network Subnet names. | Awareness | Error
 [Azure.VNG.ConnectionName](Azure.VNG.ConnectionName.md) | Virtual Network Gateway (VNG) connection names should meet naming requirements. | Awareness | Error
 [Azure.VNG.Name](Azure.VNG.Name.md) | Virtual Network Gateway (VNG) names should meet naming requirements. | Awareness | Error
 
@@ -138,11 +142,24 @@ Name | Synopsis | Severity | Level
 [Azure.EventGrid.SystemTopicNaming](Azure.EventGrid.SystemTopicNaming.md) | Event Grid system topics without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.EventGrid.TopicNaming](Azure.EventGrid.TopicNaming.md) | Event Grid topics without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Group.Naming](Azure.Group.Naming.md) | Resource Groups without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Group.RequiredTags](Azure.Group.RequiredTags.md) | Resource groups without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
 [Azure.LB.Naming](Azure.LB.Naming.md) | Load balancer names should use a standard prefix. | Awareness | Error
+[Azure.NSG.Naming](Azure.NSG.Naming.md) | Network security group (NSG) without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Policy.AssignmentDescriptors](Azure.Policy.AssignmentDescriptors.md) | Policy assignments should use a display name and description. | Awareness | Error
 [Azure.Policy.Descriptors](Azure.Policy.Descriptors.md) | Policy and initiative definitions should use a display name, description, and category. | Awareness | Error
 [Azure.Policy.ExemptionDescriptors](Azure.Policy.ExemptionDescriptors.md) | Policy exemptions should use a display name and description. | Awareness | Error
+[Azure.PublicIP.Naming](Azure.PublicIP.Naming.md) | Public IP addresses without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Resource.RequiredTags](Azure.Resource.RequiredTags.md) | Resources without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Route.Naming](Azure.Route.Naming.md) | Route tables without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Search.Naming](Azure.Search.Naming.md) | Azure AI Search services without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Storage.Naming](Azure.Storage.Naming.md) | Storage Accounts without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Subscription.RequiredTags](Azure.Subscription.RequiredTags.md) | Subscriptions without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
+[Azure.VM.Naming](Azure.VM.Naming.md) | Virtual machines without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.VNET.Naming](Azure.VNET.Naming.md) | Virtual Networks without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.VNET.PeerState](Azure.VNET.PeerState.md) | VNET peering connections must be connected. | Important | Error
+[Azure.VNET.SubnetNaming](Azure.VNET.SubnetNaming.md) | Virtual Network subnets without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.VNG.ConnectionNaming](Azure.VNG.ConnectionNaming.md) | Virtual network gateway connections without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.VNG.Naming](Azure.VNG.Naming.md) | Virtual network gateway without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 
 ### OE:05 Infrastructure as code
 
@@ -210,13 +227,11 @@ Name | Synopsis | Severity | Level
 [Azure.MariaDB.VNETRuleName](Azure.MariaDB.VNETRuleName.md) | Azure Database for MariaDB VNET rules should meet naming requirements. | Awareness | Error
 [Azure.MySQL.ServerName](Azure.MySQL.ServerName.md) | Azure MySQL DB server names should meet naming requirements. | Awareness | Error
 [Azure.NSG.AKSRules](Azure.NSG.AKSRules.md) | AKS Network Security Group (NSG) should not have custom rules. | Awareness | Error
-[Azure.NSG.Name](Azure.NSG.Name.md) | Network Security Group (NSG) names should meet naming requirements. | Awareness | Error
 [Azure.Policy.AssignmentAssignedBy](Azure.Policy.AssignmentAssignedBy.md) | Policy assignments should use assignedBy metadata. | Awareness | Error
 [Azure.PostgreSQL.ServerName](Azure.PostgreSQL.ServerName.md) | Azure PostgreSQL DB server names should meet naming requirements. | Awareness | Error
 [Azure.PrivateEndpoint.Name](Azure.PrivateEndpoint.Name.md) | Private Endpoint names should meet naming requirements. | Awareness | Error
 [Azure.PublicIP.DNSLabel](Azure.PublicIP.DNSLabel.md) | Public IP domain name labels should meet naming requirements. | Awareness | Error
 [Azure.PublicIP.MigrateStandard](Azure.PublicIP.MigrateStandard.md) | Use the Standard SKU for Public IP addresses as the Basic SKU will be retired. | Important | Error
-[Azure.Route.Name](Azure.Route.Name.md) | Route table names should meet naming requirements. | Awareness | Error
 [Azure.RSV.Name](Azure.RSV.Name.md) | Recovery Services vaults should meet naming requirements. | Awareness | Error
 [Azure.SignalR.Name](Azure.SignalR.Name.md) | SignalR service instance names should meet naming requirements. | Awareness | Error
 [Azure.SQL.DBName](Azure.SQL.DBName.md) | Azure SQL Database names should meet naming requirements. | Awareness | Error
@@ -236,7 +251,6 @@ Name | Synopsis | Severity | Level
 [Azure.VM.DiskName](Azure.VM.DiskName.md) | Managed Disk names should meet naming requirements. | Awareness | Error
 [Azure.VMSS.ComputerName](Azure.VMSS.ComputerName.md) | Virtual Machine Scale Set (VMSS) computer name should meet naming requirements. | Awareness | Error
 [Azure.VMSS.Name](Azure.VMSS.Name.md) | Virtual Machine Scale Set (VMSS) names should meet naming requirements. | Awareness | Error
-[Azure.VNET.SubnetName](Azure.VNET.SubnetName.md) | Subnet names should meet naming requirements. | Awareness | Error
 [Azure.vWAN.Name](Azure.vWAN.Name.md) | Virtual WAN (vWAN) names should meet naming requirements. | Awareness | Error
 
 ## Performance Efficiency
