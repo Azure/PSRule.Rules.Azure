@@ -11,7 +11,7 @@ Rule 'Azure.PublicIP.IsAttached' -Ref 'AZR-000154' -Type 'Microsoft.Network/publ
 }
 
 # Synopsis: Use public IP address naming requirements
-Rule 'Azure.PublicIP.Name' -Ref 'AZR-000155' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.PublicIP.Name' -Ref 'AZR-000155' -Type 'Microsoft.Network/publicIPAddresses' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftnetwork
 
     # Between 1 and 80 characters long

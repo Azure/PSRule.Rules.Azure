@@ -40,6 +40,10 @@ What's changed since v1.42.0:
     - Check if resource name matches the configured name format by @BernieWhite.
       [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
       - The name format can be configured by the `AZURE_AI_SERVICES_NAME_FORMAT` configuration option.
+  - All resources:
+    - Check if resource tags match the required tags by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The required tags can be configured by the `AZURE_RESOURCE_REQUIRED_TAGS` configuration option.
   - Deployment:
     - Check if sensitive values have been passed to non-secure parameters that might leak the value @BernieWhite.
       [#3319](https://github.com/Azure/PSRule.Rules.Azure/issues/3319)
@@ -64,6 +68,9 @@ What's changed since v1.42.0:
     - Check if the resource group name matches the configured name format by @BernieWhite.
       [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
       - The name format can be configured by the `AZURE_RESOURCE_GROUP_NAME_FORMAT` configuration option.
+    - Check if resource group tags match the required tags by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The required tags can be configured by the `AZURE_RESOURCE_GROUP_REQUIRED_TAGS` configuration option.
   - Route Table:
     - Check if resource name matches the configured name format by @BernieWhite.
       [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
@@ -72,6 +79,10 @@ What's changed since v1.42.0:
     - Check if resource name matches the configured name format by @BernieWhite.
       [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
       - The name format can be configured by the `AZURE_STORAGE_ACCOUNT_NAME_FORMAT` configuration option.
+  - Subscription:
+    - Check if subscription tags match the required tags by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The required tags can be configured by the `AZURE_SUBSCRIPTION_REQUIRED_TAGS` configuration option.
   - Virtual Machine:
     - Check if resource name matches the configured name format by @BernieWhite.
       [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)

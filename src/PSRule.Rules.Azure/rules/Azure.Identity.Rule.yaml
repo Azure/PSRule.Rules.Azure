@@ -17,7 +17,9 @@ metadata:
   tags:
     release: GA
     ruleSet: 2021_12
-    Azure.WAF/pillar: 'Operational Excellence'
+    Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
   - Microsoft.ManagedIdentity/userAssignedIdentities

@@ -15,9 +15,11 @@ metadata:
   name: Azure.Firewall.Name
   ref: AZR-000103
   tags:
-    release: 'GA'
-    ruleSet: '2021_12'
-    Azure.WAF/pillar: 'Operational Excellence'
+    release: GA
+    ruleSet: 2021_12
+    Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
   - Microsoft.Network/azureFirewalls
@@ -38,9 +40,11 @@ metadata:
   name: Azure.Firewall.PolicyName
   ref: AZR-000104
   tags:
-    release: 'GA'
-    ruleSet: '2021_12'
-    Azure.WAF/pillar: 'Operational Excellence'
+    release: GA
+    ruleSet: 2021_12
+    Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
   - Microsoft.Network/firewallPolicies

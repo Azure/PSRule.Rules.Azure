@@ -36,6 +36,8 @@ metadata:
     release: GA
     ruleSet: 2021_06
     Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
   - microsoft.insights/components

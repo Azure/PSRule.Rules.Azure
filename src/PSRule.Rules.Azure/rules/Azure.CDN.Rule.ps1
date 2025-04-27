@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: Use CDN endpoint naming requirements
-Rule 'Azure.CDN.EndpointName' -Ref 'AZR-000091' -Type 'Microsoft.Cdn/profiles/endpoints' -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.CDN.EndpointName' -Ref 'AZR-000091' -Type 'Microsoft.Cdn/profiles/endpoints' -Tag @{ release = 'GA'; ruleSet = '2020_09'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcdn
 
     $nameParts = $PSRule.TargetName.Split('/');

@@ -70,7 +70,7 @@ resource account 'Microsoft.CognitiveServices/accounts@2024-10-01' = {
   sku: {
     name: 'S0'
   }
-  kind: 'CognitiveServices'
+  kind: 'AIServices'
   properties: {
     publicNetworkAccess: 'Disabled'
     networkAcls: {
@@ -129,7 +129,7 @@ For example:
       "sku": {
         "name": "S0"
       },
-      "kind": "CognitiveServices",
+      "kind": "AIServices",
       "properties": {
         "publicNetworkAccess": "Disabled",
         "networkAcls": {
@@ -144,7 +144,8 @@ For example:
 
 ## NOTES
 
-This rule does not check if Azure AI service accounts names are unique.
+This rule does not check if Azure AI service accounts names are unique,
+and specifically targets the resource with the `kind` = `AIServices`.
 
 <!-- caf:note name-format -->
 

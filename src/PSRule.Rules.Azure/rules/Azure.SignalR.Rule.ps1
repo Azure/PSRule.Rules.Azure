@@ -6,7 +6,7 @@
 #
 
 # Synopsis: Use SignalR naming requirements
-Rule 'Azure.SignalR.Name' -Ref 'AZR-000180' -Type 'Microsoft.SignalRService/signalR' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.SignalR.Name' -Ref 'AZR-000180' -Type 'Microsoft.SignalRService/signalR' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftsignalrservice
 
     # Between 3 and 63 characters long

@@ -18,6 +18,8 @@ metadata:
     release: GA
     ruleSet: 2020_06
     Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
   - Microsoft.Network/loadBalancers

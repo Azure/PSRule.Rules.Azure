@@ -28,7 +28,7 @@ Rule 'Azure.Search.ManagedIdentity' -Ref 'AZR-000175' -Type 'Microsoft.Search/se
 }
 
 # Synopsis: Azure Cognitive Search service names should meet naming requirements.
-Rule 'Azure.Search.Name' -Ref 'AZR-000176' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.Search.Name' -Ref 'AZR-000176' -Type 'Microsoft.Search/searchServices' -Tag @{ release = 'GA'; ruleSet = '2021_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/rest/api/searchmanagement/services/createorupdate
 
     # Between 2 and 60 characters long

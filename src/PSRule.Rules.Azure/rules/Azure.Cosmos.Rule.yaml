@@ -38,6 +38,8 @@ metadata:
     release: GA
     ruleSet: 2021_09
     Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
     - Microsoft.DocumentDb/databaseAccounts

@@ -8,7 +8,7 @@
 #region Virtual machine scale set
 
 # Synopsis: Use VM naming requirements
-Rule 'Azure.VMSS.Name' -Ref 'AZR-000261' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.VMSS.Name' -Ref 'AZR-000261' -Type 'Microsoft.Compute/virtualMachineScaleSets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute
 
     # Between 1 and 64 characters long

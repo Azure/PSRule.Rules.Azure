@@ -36,6 +36,8 @@ metadata:
     release: GA
     ruleSet: 2020_12
     Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
   - Microsoft.AppConfiguration/configurationStores

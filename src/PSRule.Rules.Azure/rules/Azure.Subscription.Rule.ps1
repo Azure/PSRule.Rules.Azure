@@ -75,6 +75,28 @@ Rule 'Azure.RBAC.PIM' -Ref 'AZR-000208' -Type 'Microsoft.Subscription' -Tag @{ r
         WithReason($LocalizedData.UnmanagedSubscription, $True)
 }
 
+# Synopsis: Subscriptions without a standard tagging convention may be difficult to identify and manage.
+Rule 'Azure.Subscription.RequiredTags' -Ref 'AZR-000479' -Type 'Microsoft.Subscription/aliases' -If { $Configuration.GetStringValues('AZURE_SUBSCRIPTION_REQUIRED_TAGS').Length -gt 0 } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'tagging' } {
+    $required = $Configuration.GetStringValues('AZURE_SUBSCRIPTION_REQUIRED_TAGS')
+    if ($required.Length -eq 0) {
+        return $Assert.Pass();
+    }
+
+    # Check that the tag exists.
+    if (!$Assert.HasField($PSRule.TargetObject, 'properties.additionalProperties.tags', $False).Result) {
+        return $Assert.Fail($LocalizedData.ResourceHasNoTags, [String]::Join(', ', $required)).PathPrefix('properties.additionalProperties.tags');
+    }
+    $Assert.HasFields($PSRule.TargetObject.properties.additionalProperties.tags, $required, $True);
+
+    # Check for required name format.
+    foreach ($tagName in $required) {
+        $requiredValueFormat = $Configuration.GetValueOrDefault("AZURE_TAG_FORMAT_FOR_$($tagName.ToUpper())", $Null)
+        if (![String]::IsNullOrWhiteSpace($requiredValueFormat)) {
+            $Assert.Match($PSRule.TargetObject, "properties.additionalProperties.tags.$tagName", $requiredValueFormat, $True);
+        }
+    }
+}
+
 #endregion RBAC
 
 #region Monitor
