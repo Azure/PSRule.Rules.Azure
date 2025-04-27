@@ -69,3 +69,12 @@ Name | Synopsis | Status
 [Azure.Pillar.PerformanceEfficiency](Azure.Pillar.PerformanceEfficiency.md) | Microsoft Azure Well-Architected Framework - Performance Efficiency pillar specific baseline. | Latest
 [Azure.Pillar.OperationalExcellence](Azure.Pillar.OperationalExcellence.md) | Microsoft Azure Well-Architected Framework - Operational Excellence pillar specific baseline. | Latest
 [Azure.Pillar.CostOptimization](Azure.Pillar.CostOptimization.md) | Microsoft Azure Well-Architected Framework - Cost Optimization pillar specific baseline. | Latest
+
+## Cloud Adoption Framework baselines
+
+Pillar specific baselines provide a focused set of rules that assist with implementing naming and tagging conventions recommended by the Azure Cloud Adoption Framework (CAF).
+
+Name | Synopsis | Status
+---- | -------- | ------
+[Azure.CAF_Compatibility](Azure.CAF_Compatibility.md) | A converted baseline migrated from PSRule.Rules.CAF. Use this for compatibility with the previous strict module defaults. | Latest
+[Azure.CAF_2025_03](Azure.CAF_2025_03.md) | Includes rules related to Azure CAF based on a March 2025 snapshot. | Latest

@@ -1,6 +1,6 @@
 ---
-title: Reference
 generated: True
+title: Reference
 ---
 
 # Reference
@@ -161,7 +161,7 @@ AZR-000137 | [Azure.NSG.AnyInboundSource](Azure.NSG.AnyInboundSource.md) | Netwo
 AZR-000138 | [Azure.NSG.DenyAllInbound](Azure.NSG.DenyAllInbound.md) | When all inbound traffic is denied, some functions that affect the reliability of your service may not work as expected. | GA
 AZR-000139 | [Azure.NSG.LateralTraversal](Azure.NSG.LateralTraversal.md) | Deny outbound management connections from non-management hosts. | GA
 AZR-000140 | [Azure.NSG.Associated](Azure.NSG.Associated.md) | Network Security Groups (NSGs) should be associated to a subnet or network interface. | GA
-AZR-000141 | [Azure.NSG.Name](Azure.NSG.Name.md) | Network Security Group (NSG) names should meet naming requirements. | GA
+AZR-000141 | [Azure.NSG.Name](Azure.NSG.Name.md) | Azure Resource Manager (ARM) has requirements for Network Security Group (NSG) names. | GA
 AZR-000142 | [Azure.Policy.Descriptors](Azure.Policy.Descriptors.md) | Policy and initiative definitions should use a display name, description, and category. | GA
 AZR-000143 | [Azure.Policy.AssignmentDescriptors](Azure.Policy.AssignmentDescriptors.md) | Policy assignments should use a display name and description. | GA
 AZR-000144 | [Azure.Policy.AssignmentAssignedBy](Azure.Policy.AssignmentAssignedBy.md) | Policy assignments should use assignedBy metadata. | GA
@@ -175,7 +175,7 @@ AZR-000151 | [Azure.PostgreSQL.FirewallIPRange](Azure.PostgreSQL.FirewallIPRange
 AZR-000152 | [Azure.PostgreSQL.ServerName](Azure.PostgreSQL.ServerName.md) | Azure PostgreSQL DB server names should meet naming requirements. | GA
 AZR-000153 | [Azure.PrivateEndpoint.Name](Azure.PrivateEndpoint.Name.md) | Private Endpoint names should meet naming requirements. | GA
 AZR-000154 | [Azure.PublicIP.IsAttached](Azure.PublicIP.IsAttached.md) | Public IP addresses should be attached or cleaned up if not in use. | GA
-AZR-000155 | [Azure.PublicIP.Name](Azure.PublicIP.Name.md) | Public IP names should meet naming requirements. | GA
+AZR-000155 | [Azure.PublicIP.Name](Azure.PublicIP.Name.md) | Azure Resource Manager (ARM) has requirements for Public IP address names. | GA
 AZR-000156 | [Azure.PublicIP.DNSLabel](Azure.PublicIP.DNSLabel.md) | Public IP domain name labels should meet naming requirements. | GA
 AZR-000157 | [Azure.PublicIP.AvailabilityZone](Azure.PublicIP.AvailabilityZone.md) | Public IP addresses deployed with Standard SKU should use availability zones in supported regions for high availability. | GA
 AZR-000158 | [Azure.PublicIP.StandardSKU](Azure.PublicIP.StandardSKU.md) | The basic SKU is being retired on 30 September 2025, and does not include several reliability and security features. | GA
@@ -189,14 +189,14 @@ AZR-000165 | [Azure.Redis.PublicNetworkAccess](Azure.Redis.PublicNetworkAccess.m
 AZR-000166 | [Azure.Resource.UseTags](Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | GA
 AZR-000167 | [Azure.Resource.AllowedRegions](Azure.Resource.AllowedRegions.md) | Resources should be deployed to allowed regions. | GA
 AZR-000168 | [Azure.Group.Name](Azure.Group.Name.md) | Azure Resource Manager (ARM) has requirements for Resource Groups names. | GA
-AZR-000169 | [Azure.Route.Name](Azure.Route.Name.md) | Route table names should meet naming requirements. | GA
+AZR-000169 | [Azure.Route.Name](Azure.Route.Name.md) | Azure Resource Manager (ARM) has requirements for Route table names. | GA
 AZR-000170 | [Azure.RSV.StorageType](Azure.RSV.StorageType.md) | Recovery Services Vaults (RSV) not using geo-replicated storage (GRS) may be at risk. | GA
 AZR-000171 | [Azure.RSV.ReplicationAlert](Azure.RSV.ReplicationAlert.md) | Recovery Services Vaults (RSV) without replication alerts configured may be at risk. | GA
 AZR-000172 | [Azure.Search.SKU](Azure.Search.SKU.md) | Use the basic and standard tiers for entry level workloads. | GA
 AZR-000173 | [Azure.Search.QuerySLA](Azure.Search.QuerySLA.md) | Use a minimum of 2 replicas to receive an SLA for index queries. | GA
 AZR-000174 | [Azure.Search.IndexSLA](Azure.Search.IndexSLA.md) | Use a minimum of 3 replicas to receive an SLA for query and index updates. | GA
 AZR-000175 | [Azure.Search.ManagedIdentity](Azure.Search.ManagedIdentity.md) | Configure managed identities to access Azure resources. | GA
-AZR-000176 | [Azure.Search.Name](Azure.Search.Name.md) | AI Search service names should meet naming requirements. | GA
+AZR-000176 | [Azure.Search.Name](Azure.Search.Name.md) | Azure Resource Manager (ARM) has requirements for AI Search service names. | GA
 AZR-000177 | [Azure.ServiceBus.Usage](Azure.ServiceBus.Usage.md) | Regularly remove unused resources to reduce costs. | GA
 AZR-000178 | [Azure.ServiceBus.DisableLocalAuth](Azure.ServiceBus.DisableLocalAuth.md) | Authenticate Service Bus publishers and consumers with Entra ID identities. | GA
 AZR-000179 | [Azure.ServiceFabric.AAD](Azure.ServiceFabric.AAD.md) | Use Entra ID client authentication for Service Fabric clusters. | GA
@@ -221,7 +221,7 @@ AZR-000197 | [Azure.Storage.SoftDelete](Azure.Storage.SoftDelete.md) | Enable bl
 AZR-000198 | [Azure.Storage.BlobPublicAccess](Azure.Storage.BlobPublicAccess.md) | Storage Accounts should only accept authorized requests. | GA
 AZR-000199 | [Azure.Storage.BlobAccessType](Azure.Storage.BlobAccessType.md) | Use containers configured with a private access type that requires authorization. | GA
 AZR-000200 | [Azure.Storage.MinTLS](Azure.Storage.MinTLS.md) | Storage Accounts should not accept weak or deprecated transport protocols for client-server communication. | GA
-AZR-000201 | [Azure.Storage.Name](Azure.Storage.Name.md) | Storage Account names should meet naming requirements. | GA
+AZR-000201 | [Azure.Storage.Name](Azure.Storage.Name.md) | Azure Resource Manager (ARM) has requirements for Storage Account names. | GA
 AZR-000202 | [Azure.Storage.Firewall](Azure.Storage.Firewall.md) | Storage Accounts should only accept explicitly allowed traffic. | GA
 AZR-000203 | [Azure.RBAC.UseGroups](Azure.RBAC.UseGroups.md) | Use groups for assigning permissions instead of individual user accounts. | GA
 AZR-000204 | [Azure.RBAC.LimitOwner](Azure.RBAC.LimitOwner.md) | Limit the number of subscription Owners. | GA
@@ -287,8 +287,8 @@ AZR-000263 | [Azure.VNET.UseNSGs](Azure.VNET.UseNSGs.md) | Virtual network (VNET
 AZR-000264 | [Azure.VNET.SingleDNS](Azure.VNET.SingleDNS.md) | Virtual networks (VNETs) should have at least two DNS servers assigned. | GA
 AZR-000265 | [Azure.VNET.LocalDNS](Azure.VNET.LocalDNS.md) | Virtual networks (VNETs) should use DNS servers deployed within the same Azure region. | GA
 AZR-000266 | [Azure.VNET.PeerState](Azure.VNET.PeerState.md) | VNET peering connections must be connected. | GA
-AZR-000267 | [Azure.VNET.SubnetName](Azure.VNET.SubnetName.md) | Subnet names should meet naming requirements. | GA
-AZR-000268 | [Azure.VNET.Name](Azure.VNET.Name.md) | Virtual Network (VNET) names should meet naming requirements. | GA
+AZR-000267 | [Azure.VNET.SubnetName](Azure.VNET.SubnetName.md) | Azure Resource Manager (ARM) has requirements for Virtual Network Subnet names. | GA
+AZR-000268 | [Azure.VNET.Name](Azure.VNET.Name.md) | Azure Resource Manager (ARM) has requirements for Virtual Network names. | GA
 AZR-000269 | [Azure.VNG.VPNLegacySKU](Azure.VNG.VPNLegacySKU.md) | Migrate from legacy SKUs to improve reliability and performance of VPN gateways. | GA
 AZR-000270 | [Azure.VNG.VPNActiveActive](Azure.VNG.VPNActiveActive.md) | Use VPN gateways configured to operate in an Active-Active configuration to reduce connectivity downtime. | GA
 AZR-000271 | [Azure.VNG.ERLegacySKU](Azure.VNG.ERLegacySKU.md) | Migrate from legacy SKUs to improve reliability and performance of ExpressRoute (ER) gateways. | GA
@@ -486,5 +486,18 @@ AZR-000462 | [Azure.EventGrid.TopicNaming](Azure.EventGrid.TopicNaming.md) | Eve
 AZR-000463 | [Azure.EventGrid.SystemTopicNaming](Azure.EventGrid.SystemTopicNaming.md) | Event Grid system topics without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000464 | [Azure.Group.Naming](Azure.Group.Naming.md) | Resource Groups without a standard naming convention may be difficult to identify and manage. | GA
 AZR-000465 | [Azure.LB.Naming](Azure.LB.Naming.md) | Load balancer names should use a standard prefix. | GA
+AZR-000466 | [Azure.VNG.ConnectionNaming](Azure.VNG.ConnectionNaming.md) | Virtual network gateway connections without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000467 | [Azure.NSG.Naming](Azure.NSG.Naming.md) | Network security group (NSG) without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000468 | [Azure.Route.Naming](Azure.Route.Naming.md) | Route tables without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000469 | [Azure.VM.Naming](Azure.VM.Naming.md) | Virtual machines without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000470 | [Azure.Storage.Naming](Azure.Storage.Naming.md) | Storage Accounts without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000471 | [Azure.PublicIP.Naming](Azure.PublicIP.Naming.md) | Public IP addresses without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000473 | [Azure.Search.Naming](Azure.Search.Naming.md) | Azure AI Search services without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000474 | [Azure.VNET.Naming](Azure.VNET.Naming.md) | Virtual Networks without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000475 | [Azure.VNET.SubnetNaming](Azure.VNET.SubnetNaming.md) | Virtual Network subnets without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000476 | [Azure.VNG.Naming](Azure.VNG.Naming.md) | Virtual network gateway without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000477 | [Azure.Resource.RequiredTags](Azure.Resource.RequiredTags.md) | Resources without a standard tagging convention may be difficult to identify and manage. | GA
+AZR-000478 | [Azure.Group.RequiredTags](Azure.Group.RequiredTags.md) | Resource groups without a standard tagging convention may be difficult to identify and manage. | GA
+AZR-000479 | [Azure.Subscription.RequiredTags](Azure.Subscription.RequiredTags.md) | Subscriptions without a standard tagging convention may be difficult to identify and manage. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.
