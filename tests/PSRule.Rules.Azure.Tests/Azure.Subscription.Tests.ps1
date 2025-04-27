@@ -154,6 +154,89 @@ Describe 'Azure.RBAC' -Tag 'Subscription', 'RBAC' {
             $ruleResult.TargetName | Should -BeIn 'subscription-A';
         }
     }
+
+    Context 'Required tags' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{
+                'AZURE_SUBSCRIPTION_REQUIRED_TAGS' = @('tag1', 'tag2');
+                'AZURE_TAG_FORMAT_FOR_TAG1' = '^tag1$';
+                'AZURE_TAG_FORMAT_FOR_TAG2' = '^tag2$'
+            };
+
+            $items = @(
+                [PSCustomObject]@{
+                    Name         = 'rg-test-1'
+                    Type         = 'Microsoft.Subscription/aliases'
+                    Properties   = [PSCustomObject]@{
+                        AdditionalProperties = [PSCustomObject]@{
+                            tags = @{ tag1 = 'tag1'; tag2 = 'tag2'; tag3 = 'tag3' }
+                        }
+                    }
+                }
+                [PSCustomObject]@{
+                    Name         = 'rg-test-2'
+                    Type         = 'Microsoft.Subscription/aliases'
+                    Properties   = [PSCustomObject]@{
+                        AdditionalProperties = [PSCustomObject]@{
+                            Tags = @{ tag1 = 'tag1'; tag2 = 'invalid' }
+                        }
+                    }
+                }
+                [PSCustomObject]@{
+                    Name         = 'rg-test-3'
+                    Type         = 'Microsoft.Subscription/aliases'
+                    Properties   = [PSCustomObject]@{
+                        AdditionalProperties = [PSCustomObject]@{
+                            Tags = @{ tag1 = 'invalid'; tag2 = 'invalid' }
+                        }
+                    }
+                }
+                [PSCustomObject]@{
+                    Name         = 'rg-test-4'
+                    Type         = 'Microsoft.Subscription/aliases'
+                    Properties   = [PSCustomObject]@{
+                        AdditionalProperties = [PSCustomObject]@{
+                            Tags         = @{ Tag1 = 'tag1'; tag2 = 'tag2' }
+                        }
+                    }
+                }
+            )
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.Subscription.RequiredTags'
+        }
+
+        It 'Azure.Subscription.RequiredTags' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.Subscription.RequiredTags' };
+            $validNames = @(
+                'rg-test-1'
+            )
+
+            $invalidNames = @(
+                'rg-test-2'
+                'rg-test-3'
+                'rg-test-4'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
+        }
+    }
 }
 
 Describe 'Azure.DefenderCloud' -Tag 'Subscription', 'DefenderCloud', 'defender' {

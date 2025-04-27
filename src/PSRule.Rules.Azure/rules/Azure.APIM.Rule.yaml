@@ -108,6 +108,8 @@ metadata:
     release: GA
     ruleSet: 2020_09
     Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
   - Microsoft.ApiManagement/service

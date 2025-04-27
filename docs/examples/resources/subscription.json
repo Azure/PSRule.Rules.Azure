@@ -1,0 +1,61 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/tenantDeploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.34.44.8038",
+      "templateHash": "12166472721046035989"
+    }
+  },
+  "definitions": {
+    "requiredTags": {
+      "type": "object",
+      "properties": {
+        "Env": {
+          "type": "string"
+        },
+        "CostCode": {
+          "type": "string"
+        }
+      },
+      "metadata": {
+        "description": "A custom type defining the required tags on a subscription."
+      }
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 24,
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "tags": {
+      "$ref": "#/definitions/requiredTags",
+      "metadata": {
+        "description": "Tags to assign to the subscription alias."
+      }
+    },
+    "billingScope": {
+      "type": "string"
+    }
+  },
+  "resources": {
+    "subscription": {
+      "type": "Microsoft.Subscription/aliases",
+      "apiVersion": "2024-08-01-preview",
+      "name": "[parameters('name')]",
+      "properties": {
+        "displayName": "[parameters('name')]",
+        "billingScope": "[parameters('billingScope')]",
+        "additionalProperties": {
+          "tags": "[parameters('tags')]"
+        }
+      }
+    }
+  }
+}

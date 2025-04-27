@@ -15,9 +15,11 @@ metadata:
   name: Azure.RSV.Name
   ref: AZR-000350
   tags:
-    release: 'GA'
-    ruleSet: '2022_12'
-    Azure.WAF/pillar: 'Operational Excellence'
+    release: GA
+    ruleSet: 2022_12
+    Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
   - Microsoft.RecoveryServices/vaults

@@ -15,9 +15,11 @@ metadata:
   name: Azure.ASG.Name
   ref: AZR-000085
   tags:
-    release: 'GA'
-    ruleSet: '2021_12'
-    Azure.WAF/pillar: 'Operational Excellence'
+    release: GA
+    ruleSet: 2021_12
+    Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
   - Microsoft.Network/applicationSecurityGroups

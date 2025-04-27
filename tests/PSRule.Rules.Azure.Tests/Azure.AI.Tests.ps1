@@ -225,6 +225,7 @@ Describe 'Azure.AI' -Tag 'Cognitive', 'AI' {
                 [PSCustomObject]@{
                     Name         = $_
                     Type = 'Microsoft.CognitiveServices/accounts'
+                    Kind = 'AIServices'
                 }
             })
 

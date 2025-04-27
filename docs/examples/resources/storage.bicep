@@ -17,6 +17,15 @@ var containerName = 'data'
 // The name of a file share
 var shareName = 'group'
 
+@description('Tags to assign to the resource.')
+param tags requiredTags
+
+@description('A custom type defining the required tags on a resource.')
+type requiredTags = {
+  Env: string
+  CostCode: string
+}
+
 // Define a Storage Account with common security settings.
 resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
   name: name
@@ -35,6 +44,7 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
       defaultAction: 'Deny'
     }
   }
+  tags: tags
 }
 
 // Configure blob services with soft-delete enabled.

@@ -20,23 +20,24 @@ Rule 'Azure.Resource.AllowedRegions' -Ref 'AZR-000167' -If { (SupportsRegions) -
     $Assert.Create('location', [bool]$context.IsAllowedLocation($location), $LocalizedData.LocationNotAllowed, @($location));
 }
 
-# # Synopsis: Tag resources and resource groups with a valid environment.
-# Rule 'Azure.Resource.Environment' -Ref 'AZR-000nnn' -With 'Azure.Resource.SupportsTags' -If { (Exists "tags.$($Configuration.CAF_EnvironmentTag)") } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'tagging' } {
-#     $Assert.HasField($TargetObject, 'tags');
-#     if ($Null -ne $TargetObject.Tags) {
-#         $Assert.HasField($TargetObject.Tags, $Configuration.CAF_EnvironmentTag, $Configuration.CAF_MatchTagNameCase);
-#         $Assert.In($TargetObject.Tags, $Configuration.CAF_EnvironmentTag, $Configuration.CAF_Environments, $Configuration.CAF_MatchTagValueCase);
-#     }
-# }
+# Synopsis: Tag resources with mandatory tags.
+Rule 'Azure.Resource.RequiredTags' -Ref 'AZR-000477' -With 'Azure.Resource.SupportsTags' -If { !($PSRule.TargetType -eq 'Microsoft.Resources/resourceGroups') -and ($Configuration.GetStringValues('AZURE_RESOURCE_REQUIRED_TAGS').Length -gt 0) } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'tagging' } {
+    $required = $Configuration.GetStringValues('AZURE_RESOURCE_REQUIRED_TAGS')
+    if ($required.Length -eq 0) {
+        return $Assert.Pass();
+    }
 
-# # Synopsis: Tag resources with mandatory tags.
-# Rule 'CAF.Tag.Resource' -Ref 'AZR-000nnn' -With 'Azure.Resource.SupportsTags' -If { !($PSRule.TargetType -eq 'Microsoft.Resources/resourceGroups') -and ($Configuration.GetStringValues('CAF_ResourceMandatoryTags').Length -gt 0) } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Operational Excellence' } -Labels @{ 'Azure.CAF' = 'tagging' } {
-#     $required = $Configuration.GetStringValues('CAF_ResourceMandatoryTags')
-#     if ($required.Length -eq 0) {
-#         return $Assert.Pass();
-#     }
-#     $Assert.HasField($TargetObject, 'tags');
-#     if ($Null -ne $TargetObject.Tags) {
-#         $Assert.HasFields($TargetObject.Tags, $required, $Configuration.CAF_MatchTagNameCase);
-#     }
-# }
+    # Check that the tag exists.
+    if (!$Assert.HasField($PSRule.TargetObject, 'tags', $False).Result) {
+        return $Assert.Fail($LocalizedData.ResourceHasNoTags, [String]::Join(', ', $required)).PathPrefix('tags');
+    }
+    $Assert.HasFields($PSRule.TargetObject.tags, $required, $True);
+
+    # Check for required name format.
+    foreach ($tagName in $required) {
+        $requiredValueFormat = $Configuration.GetValueOrDefault("AZURE_TAG_FORMAT_FOR_$($tagName.ToUpper())", $Null)
+        if (![String]::IsNullOrWhiteSpace($requiredValueFormat)) {
+            $Assert.Match($PSRule.TargetObject, "tags.$tagName", $requiredValueFormat, $True);
+        }
+    }
+}

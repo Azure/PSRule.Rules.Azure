@@ -95,6 +95,7 @@ nav:
       - Configuring exports: setup/configuring-exports.md
     - Setup Bicep: setup/setup-bicep.md
     - Setup Azure Monitor logs: setup/setup-azure-monitor-logs.md
+    - Setup naming and tagging: setup/setup-naming-and-tagging.md
     - Integrations: integrations.md
   - Reference:
     - en/rules/index.md

@@ -76,7 +76,7 @@ Rule 'Azure.VM.Updates' -Ref 'AZR-000247' -Type 'Microsoft.Compute/virtualMachin
 }
 
 # Synopsis: Use VM naming requirements
-Rule 'Azure.VM.Name' -Ref 'AZR-000248' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.VM.Name' -Ref 'AZR-000248' -Type 'Microsoft.Compute/virtualMachines' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute
 
     # Between 1 and 64 characters long
@@ -162,7 +162,7 @@ Rule 'Azure.VM.ADE' -Ref 'AZR-000252' -Type 'Microsoft.Compute/disks' -If { IsEx
 }
 
 # Synopsis: Use Managed Disk naming requirements
-Rule 'Azure.VM.DiskName' -Ref 'AZR-000253' -Type 'Microsoft.Compute/disks' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.VM.DiskName' -Ref 'AZR-000253' -Type 'Microsoft.Compute/disks' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute
 
     # Between 1 and 80 characters long
@@ -185,7 +185,7 @@ Rule 'Azure.VM.ASMinMembers' -Ref 'AZR-000255' -Type 'Microsoft.Compute/availabi
 }
 
 # Synopsis: Use Availability Set naming requirements
-Rule 'Azure.VM.ASName' -Ref 'AZR-000256' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.VM.ASName' -Ref 'AZR-000256' -Type 'Microsoft.Compute/availabilitySets' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute
 
     # Between 1 and 80 characters long
@@ -203,7 +203,7 @@ Rule 'Azure.VM.ASName' -Ref 'AZR-000256' -Type 'Microsoft.Compute/availabilitySe
 #region Proximity Placement Groups
 
 # Synopsis: Use Proximity Placement Groups naming requirements
-Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlacementGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.VM.PPGName' -Ref 'AZR-000260' -Type 'Microsoft.Compute/proximityPlacementGroups' -Tag @{ release = 'GA'; ruleSet = '2020_06'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/en-us/azure/azure-resource-manager/management/resource-name-rules#microsoftcompute
 
     # Between 1 and 80 characters long

@@ -62,6 +62,8 @@ metadata:
     release: GA
     ruleSet: 2023_03
     Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
 spec:
   type:
     - Microsoft.App/containerApps

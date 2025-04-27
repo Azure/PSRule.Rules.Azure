@@ -1,11 +1,28 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
   "contentVersion": "1.0.0.0",
   "metadata": {
     "_generator": {
       "name": "bicep",
       "version": "0.34.44.8038",
-      "templateHash": "623188591179107280"
+      "templateHash": "10075851903169332670"
+    }
+  },
+  "definitions": {
+    "requiredTags": {
+      "type": "object",
+      "properties": {
+        "Env": {
+          "type": "string"
+        },
+        "CostCode": {
+          "type": "string"
+        }
+      },
+      "metadata": {
+        "description": "A custom type defining the required tags on a resource."
+      }
     }
   },
   "parameters": {
@@ -23,14 +40,20 @@
       "metadata": {
         "description": "The location resources will be deployed."
       }
+    },
+    "tags": {
+      "$ref": "#/definitions/requiredTags",
+      "metadata": {
+        "description": "Tags to assign to the resource."
+      }
     }
   },
   "variables": {
     "containerName": "data",
     "shareName": "group"
   },
-  "resources": [
-    {
+  "resources": {
+    "storageAccount": {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2024-01-01",
       "name": "[parameters('name')]",
@@ -48,9 +71,10 @@
         "networkAcls": {
           "defaultAction": "Deny"
         }
-      }
+      },
+      "tags": "[parameters('tags')]"
     },
-    {
+    "blobService": {
       "type": "Microsoft.Storage/storageAccounts/blobServices",
       "apiVersion": "2024-01-01",
       "name": "[format('{0}/{1}', parameters('name'), 'default')]",
@@ -65,10 +89,10 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+        "storageAccount"
       ]
     },
-    {
+    "container": {
       "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
       "apiVersion": "2024-01-01",
       "name": "[format('{0}/{1}/{2}', parameters('name'), 'default', variables('containerName'))]",
@@ -76,10 +100,10 @@
         "publicAccess": "None"
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/blobServices', parameters('name'), 'default')]"
+        "blobService"
       ]
     },
-    {
+    "fileServices": {
       "type": "Microsoft.Storage/storageAccounts/fileServices",
       "apiVersion": "2024-01-01",
       "name": "[format('{0}/{1}', parameters('name'), 'default')]",
@@ -90,10 +114,10 @@
         }
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+        "storageAccount"
       ]
     },
-    {
+    "share": {
       "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
       "apiVersion": "2024-01-01",
       "name": "[format('{0}/{1}/{2}', parameters('name'), 'default', variables('shareName'))]",
@@ -101,10 +125,10 @@
         "accessTier": "TransactionOptimized"
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts/fileServices', parameters('name'), 'default')]"
+        "fileServices"
       ]
     },
-    {
+    "defenderForStorageSettings": {
       "type": "Microsoft.Security/defenderForStorageSettings",
       "apiVersion": "2024-10-01-preview",
       "scope": "[format('Microsoft.Storage/storageAccounts/{0}', parameters('name'))]",
@@ -123,8 +147,8 @@
         "overrideSubscriptionLevelSettings": false
       },
       "dependsOn": [
-        "[resourceId('Microsoft.Storage/storageAccounts', parameters('name'))]"
+        "storageAccount"
       ]
     }
-  ]
+  }
 }

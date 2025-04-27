@@ -124,4 +124,5 @@
     VMSSPublicIPAttached = "The virtual machine scale set instances should not have public IP addresses directly attached to their network interfaces."
     VMMultiTenantHostingRights = "The Windows 0S installed on the virtual machine ({0}) should use multi-tenant hosting rights."
     VMAvailabilitySetDistributeTraffic = "The availability set member ({0}) should be a part of a backend pool."
+    ResourceHasNoTags = "The resource does not have any tags. Expected tags: {0}."
 }

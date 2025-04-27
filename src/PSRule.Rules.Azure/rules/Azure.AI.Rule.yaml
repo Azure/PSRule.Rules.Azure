@@ -112,3 +112,21 @@ spec:
       equals: Disabled
 
 #endregion Rules
+
+#region Selectors
+
+---
+# Synopsis: An Azure AI services account.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Selector
+metadata:
+  name: Azure.AI.AIServices
+spec:
+  if:
+    allOf:
+      - type: .
+        equals: Microsoft.CognitiveServices/accounts
+      - field: kind
+        equals: AIServices
+
+#endregion Selectors

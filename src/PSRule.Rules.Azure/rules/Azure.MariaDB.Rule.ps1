@@ -35,7 +35,7 @@ Rule 'Azure.MariaDB.MinTLS' -Ref 'AZR-000335' -Type 'Microsoft.DBforMariaDB/serv
 }
 
 # Synopsis: Azure Database for MariaDB servers should meet naming requirements.
-Rule 'Azure.MariaDB.ServerName' -Ref 'AZR-000336' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.MariaDB.ServerName' -Ref 'AZR-000336' -Type 'Microsoft.DBforMariaDB/servers' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
 
     # Between 3 and 63 characters long
@@ -48,7 +48,7 @@ Rule 'Azure.MariaDB.ServerName' -Ref 'AZR-000336' -Type 'Microsoft.DBforMariaDB/
 }
 
 # Synopsis: Azure Database for MariaDB databases should meet naming requirements.
-Rule 'Azure.MariaDB.DatabaseName' -Ref 'AZR-000337' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/databases' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.MariaDB.DatabaseName' -Ref 'AZR-000337' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/databases' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     # https://learn.microsoft.com/nb-no/azure/azure-resource-manager/management/resource-name-rules#microsoftdbformariadb
 
     $databases = @(GetMariaDBDatabaseName)
@@ -67,7 +67,7 @@ Rule 'Azure.MariaDB.DatabaseName' -Ref 'AZR-000337' -Type 'Microsoft.DBforMariaD
 }
 
 # Synopsis: Azure Database for MariaDB firewall rules should meet naming requirements.
-Rule 'Azure.MariaDB.FirewallRuleName' -Ref 'AZR-000338' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.MariaDB.FirewallRuleName' -Ref 'AZR-000338' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/firewallRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     $firewallRules = @(GetMariaDBFirewallRuleName)
     if ($firewallRules.Length -eq 0) {
         return $Assert.Pass()
@@ -84,7 +84,7 @@ Rule 'Azure.MariaDB.FirewallRuleName' -Ref 'AZR-000338' -Type 'Microsoft.DBforMa
 }
 
 # Synopsis: Azure Database for MariaDB VNET rules should meet naming requirements.
-Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } {
+Rule 'Azure.MariaDB.VNETRuleName' -Ref 'AZR-000339' -Type 'Microsoft.DBforMariaDB/servers', 'Microsoft.DBforMariaDB/servers/virtualNetworkRules' -Tag @{ release = 'GA'; ruleSet = '2022_12'; 'Azure.WAF/pillar' = 'Operational Excellence'; } -Labels @{ 'Azure.CAF' = 'naming' } {
     $virtualNetworkRules = @(GetMariaDBVNETRuleName)
     if ($virtualNetworkRules.Length -eq 0) {
         return $Assert.Pass()

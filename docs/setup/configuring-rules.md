@@ -22,6 +22,7 @@ Earlier versions of PSRule for Azure will ignore the configuration option.
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.Search.Naming -->
+<!-- module:resource Microsoft.Search/searchServices -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure AI Search Services.
 When this configuration option is not set, any name is considered valid.
@@ -53,6 +54,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.AI.Naming -->
+<!-- module:resource Microsoft.CognitiveServices/accounts -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure AI Services.
 When this configuration option is not set, any name is considered valid.
@@ -659,6 +661,8 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.EventGrid.TopicNaming -->
+<!-- module:resource Microsoft.EventGrid/topics -->
+<!-- module:resource Microsoft.EventGrid/domains/topics -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Event Grid Custom Topics.
 When this configuration option is not set, any name is considered valid.
@@ -693,6 +697,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.EventGrid.DomainNaming -->
+<!-- module:resource Microsoft.EventGrid/domains -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Event Grid Domains.
 When this configuration option is not set, any name is considered valid.
@@ -727,6 +732,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.EventGrid.SystemTopicNaming -->
+<!-- module:resource Microsoft.EventGrid/systemTopics -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Event Grid System Topics.
 When this configuration option is not set, any name is considered valid.
@@ -794,6 +800,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.VNG.ConnectionNaming -->
+<!-- module:resource Microsoft.Network/connections -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Gateway Connections.
 When this configuration option is not set, any name is considered valid.
@@ -858,6 +865,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.LB.Naming -->
+<!-- module:resource Microsoft.Network/loadBalancers -->
 
 This configuration option specifies the naming format for Azure Load Balancers.
 
@@ -888,6 +896,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.NSG.Naming -->
+<!-- module:resource Microsoft.Network/networkSecurityGroups -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Network Security Groups.
 When this configuration option is not set, any name is considered valid.
@@ -949,6 +958,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.PublicIP.Naming -->
+<!-- module:resource Microsoft.Network/publicIPAddresses -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Public IP Addresses.
 When this configuration option is not set, any name is considered valid.
@@ -1022,10 +1032,44 @@ configuration:
     location: australiaeast
 ```
 
+### AZURE_RESOURCE_REQUIRED_TAGS
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.Resource.RequiredTags -->
+
+This configuration option specifies a list of required tags that must be present on child resources that support tags.
+The tag names that you specify are case-sensitive.
+When this configuration option is not set, no tags are required.
+
+For example:
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_RESOURCE_REQUIRED_TAGS: array
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_RESOURCE_REQUIRED_TAGS configuration option
+configuration:
+  AZURE_RESOURCE_REQUIRED_TAGS: []
+```
+
+Example:
+
+```yaml
+configuration:
+  AZURE_RESOURCE_REQUIRED_TAGS: [ 'Env', 'Criticality' ]
+```
+
 ### AZURE_RESOURCE_GROUP_NAME_FORMAT
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.Group.Naming -->
+<!-- module:resource Microsoft.Resources/resourceGroups -->
 
 This configuration option specifies a regular expression that defines the naming format for Resource Groups.
 When this configuration option is not set, any name is considered valid.
@@ -1056,10 +1100,45 @@ configuration:
   AZURE_RESOURCE_GROUP_NAME_FORMAT: '^rg-'
 ```
 
+### AZURE_RESOURCE_GROUP_REQUIRED_TAGS
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.Group.RequiredTags -->
+<!-- module:resource Microsoft.Resources/resourceGroups -->
+
+This configuration option specifies a list of required tags that must be present on Resource Groups.
+The tag names that you specify are case-sensitive.
+When this configuration option is not set, no tags are required.
+
+For example:
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_RESOURCE_GROUP_REQUIRED_TAGS: array
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_RESOURCE_GROUP_REQUIRED_TAGS configuration option
+configuration:
+  AZURE_RESOURCE_GROUP_REQUIRED_TAGS: []
+```
+
+Example:
+
+```yaml
+configuration:
+  AZURE_RESOURCE_GROUP_REQUIRED_TAGS: [ 'Env', 'Criticality' ]
+```
+
 ### AZURE_ROUTE_TABLE_NAME_FORMAT
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.Route.Naming -->
+<!-- module:resource Microsoft.Network/routeTables -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Route Tables.
 When this configuration option is not set, any name is considered valid.
@@ -1123,6 +1202,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.Storage.Naming -->
+<!-- module:resource Microsoft.Storage/storageAccounts -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Storage Accounts.
 When this configuration option is not set, any name is considered valid.
@@ -1150,41 +1230,45 @@ configuration:
   AZURE_STORAGE_ACCOUNT_NAME_FORMAT: '^(st|stvm|dls)'
 ```
 
-### AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT
+### AZURE_SUBSCRIPTION_REQUIRED_TAGS
 
 <!-- module:version v1.43.0 -->
-<!-- module:rule Azure.VNG.Naming -->
+<!-- module:rule Azure.Subscription.RequiredTags -->
+<!-- module:resource Microsoft.Subscription/aliases -->
 
-This configuration option specifies a regular expression that defines the naming format for Azure Virtual Network Gateways.
-When this configuration option is not set, any name is considered valid.
+This configuration option specifies a list of required tags that must be present on subscriptions.
+The tag names that you specify are case-sensitive.
+When this configuration option is not set, no tags are required.
+
+For example:
 
 Syntax:
 
 ```yaml title="ps-rule.yaml"
 configuration:
-  AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: string
+  AZURE_SUBSCRIPTION_REQUIRED_TAGS: array
 ```
 
 Default:
 
 ```yaml title="ps-rule.yaml"
-# YAML: The default AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT configuration option
+# YAML: The default AZURE_SUBSCRIPTION_REQUIRED_TAGS configuration option
 configuration:
-  AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: ''
+  AZURE_SUBSCRIPTION_REQUIRED_TAGS: []
 ```
 
 Example:
 
-```yaml title="ps-rule.yaml"
-# YAML: Set the AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT configuration option to a specific format
+```yaml
 configuration:
-  AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: '^vgw-'
+  AZURE_SUBSCRIPTION_REQUIRED_TAGS: [ 'Env', 'Criticality' ]
 ```
 
 ### AZURE_VIRTUAL_MACHINE_NAME_FORMAT
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.VM.Naming -->
+<!-- module:resource Microsoft.Compute/virtualMachines -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Virtual Machines.
 When this configuration option is not set, any name is considered valid.
@@ -1210,6 +1294,38 @@ Example:
 # YAML: Set the AZURE_VIRTUAL_MACHINE_NAME_FORMAT configuration option to a specific format
 configuration:
   AZURE_VIRTUAL_MACHINE_NAME_FORMAT: '^vm'
+```
+
+### AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT
+
+<!-- module:version v1.43.0 -->
+<!-- module:rule Azure.VNG.Naming -->
+<!-- module:resource Microsoft.Network/virtualNetworkGateways -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Virtual Network Gateways.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT configuration option
+configuration:
+  AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT: '^vgw-'
 ```
 
 ### AZURE_VM_USE_AZURE_HYBRID_BENEFIT
@@ -1319,6 +1435,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.VNET.Naming -->
+<!-- module:resource Microsoft.Network/virtualNetworks -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Virtual Networks.
 When this configuration option is not set, any name is considered valid.
@@ -1383,6 +1500,7 @@ configuration:
 
 <!-- module:version v1.43.0 -->
 <!-- module:rule Azure.VNET.SubnetNaming -->
+<!-- module:resource Microsoft.Network/virtualNetworks/subnets -->
 
 This configuration option specifies a regular expression that defines the naming format for Azure Virtual Network Subnets.
 When this configuration option is not set, any name is considered valid.
