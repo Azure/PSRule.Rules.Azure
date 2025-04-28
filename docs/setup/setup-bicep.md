@@ -1,6 +1,6 @@
 ---
 title: Setup Azure Bicep
-description: This topic covers setting up support for analyzing Azure resources within Bicep source files using PSRule for Azure.
+description: Setup for static analysis of Azure resources within Bicep source files using PSRule for Azure.
 author: BernieWhite
 ---
 

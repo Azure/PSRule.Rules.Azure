@@ -1,6 +1,7 @@
 ---
 author: BernieWhite
 discussion: false
+description: How we managing version of rules and release of PSRule for Azure.
 ---
 
 # Changes and versioning

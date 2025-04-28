@@ -1,5 +1,6 @@
 ---
 author: BernieWhite
+description: Frequently asked questions (FAQ) for PSRule for Azure.
 ---
 
 # Frequently Asked Questions (FAQ)

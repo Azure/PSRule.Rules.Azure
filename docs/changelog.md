@@ -1,6 +1,7 @@
 ---
 discussion: false
 link_users: true
+description: See what is new and changed in the latest dot release of PSRule for Azure v1.
 ---
 
 # Change log
