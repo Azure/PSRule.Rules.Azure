@@ -3,6 +3,7 @@ reviewed: 2024-10-10
 author: BernieWhite
 discussion: false
 link_users: true
+description: A collection of community samples and code resources for PSRule for Azure.
 ---
 
 # Samples

@@ -1,6 +1,7 @@
 ---
 author: BernieWhite
 discussion: false
+description: License and contributing to PSRule for Azure.
 ---
 
 # License and contributing

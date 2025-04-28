@@ -1,5 +1,6 @@
 ---
 author: BernieWhite
+description: A list of options for configuring expansion of Azure template and Bicep files for analysis with PSRule for Azure.
 ---
 
 # Configuring expansion

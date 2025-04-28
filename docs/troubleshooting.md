@@ -1,6 +1,7 @@
 ---
 author: BernieWhite
 discussion: false
+description: Error messages and troubleshooting steps for resolving common issues with PSRule for Azure.
 ---
 
 # Troubleshooting

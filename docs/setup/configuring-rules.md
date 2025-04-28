@@ -1,5 +1,6 @@
 ---
 author: BernieWhite
+description: A list of configuration options that can be set to override the default values used by rules within PSRule for Azure.
 ---
 
 # Configuring rule defaults

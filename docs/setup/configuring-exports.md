@@ -1,5 +1,6 @@
 ---
 author: BernieWhite
+description: Configuration options for exporting data from Azure with PSRule for Azure for later analysis and rule generation.
 ---
 
 # Configuring exports
