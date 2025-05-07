@@ -30,6 +30,103 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.43.0
+
+What's changed since v1.42.0:
+
+- New rules:
+  - AI Search:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_AI_SEARCH_NAME_FORMAT` configuration option.
+  - AI Service:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_AI_SERVICES_NAME_FORMAT` configuration option.
+  - All resources:
+    - Check if resource tags match the required tags by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The required tags can be configured by the `AZURE_RESOURCE_REQUIRED_TAGS` configuration option.
+  - Deployment:
+    - Check if sensitive values have been passed to non-secure parameters that might leak the value @BernieWhite.
+      [#3319](https://github.com/Azure/PSRule.Rules.Azure/issues/3319)
+  - Event Grid:
+    - Check if resource names for topics and domains matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format for domains can be configured by the `AZURE_EVENTGRID_DOMAIN_NAME_FORMAT` configuration option.
+      - The name format for topics can be configured by the `AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT` configuration option.
+      - The name format for system topics can be configured by the `AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT` configuration option.
+  - Load Balancer:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_LOAD_BALANCER_NAME_FORMAT` configuration option.
+  - Network Security Group:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+  - Public IP Address:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT` configuration option.
+  - Resource Group:
+    - Check if the resource group name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_RESOURCE_GROUP_NAME_FORMAT` configuration option.
+    - Check if resource group tags match the required tags by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The required tags can be configured by the `AZURE_RESOURCE_GROUP_REQUIRED_TAGS` configuration option.
+  - Route Table:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_ROUTE_TABLE_NAME_FORMAT` configuration option.
+  - Storage Account:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_STORAGE_ACCOUNT_NAME_FORMAT` configuration option.
+  - Subscription:
+    - Check if subscription tags match the required tags by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The required tags can be configured by the `AZURE_SUBSCRIPTION_REQUIRED_TAGS` configuration option.
+  - Virtual Machine:
+    - Check if resource name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format can be configured by the `AZURE_VIRTUAL_MACHINE_NAME_FORMAT` configuration option.
+  - Virtual Network:
+    - Check if resource name and subnet name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format for virtual networks can be configured by the `AZURE_VNET_NAME_FORMAT` configuration option.
+      - The name format for subnets can be configured by the `AZURE_VNET_SUBNET_NAME_FORMAT` configuration option.
+  - Virtual Network Gateway:
+    - Check if resource and connection name matches the configured name format by @BernieWhite.
+      [#3325](https://github.com/Azure/PSRule.Rules.Azure/issues/3325)
+      - The name format for gateways can be configured by the `AZURE_VIRTUAL_NETWORK_GATEWAY_NAME_FORMAT` configuration option.
+      - The name format for connections can be configured by the `AZURE_GATEWAY_CONNECTION_NAME_FORMAT` configuration option.
+- Updated rules:
+  - Deployment:
+    - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
+      [#3321](https://github.com/Azure/PSRule.Rules.Azure/issues/3321)
+      - Added support for new resource types:
+        - `Microsoft.ApiManagement/service/caches`
+        - `Microsoft.ApiManagement/service/loggers`
+        - `Microsoft.ApiManagement/service/subscriptions`
+        - `Microsoft.App/containerApps/sourcecontrols`
+        - `Microsoft.App/managedEnvironments/storages`
+        - `Microsoft.App/sessionPools`
+        - `Microsoft.Kusto/clusters/databases/scripts`
+        - `Microsoft.ContainerInstance/containerGroupProfiles`
+      - Added new sensitive properties to:
+        - `Microsoft.ApiManagement/service`
+        - `Microsoft.App/managedEnvironments`
+        - `Microsoft.Network/applicationGateways`
+        - `Microsoft.ContainerInstance/containerGroups`
+  - Resource Group:
+    - **Important change**: Renamed the rule `Azure.ResourceGroup.Name` to `Azure.Group.Name` by @BernieWhite.
+      [#3319](https://github.com/Azure/PSRule.Rules.Azure/issues/3319)
+      - The rule was renamed to better align with upcoming related rules.
+
+What's changed since pre-release v1.43.0-B0017:
+
+- No additional changes.
+
 ## v1.43.0-B0017 (pre-release)
 
 What's changed since v1.42.0:
