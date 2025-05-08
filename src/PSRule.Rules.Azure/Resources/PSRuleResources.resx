@@ -217,6 +217,9 @@
   <data name="MismatchingResourceSegments" xml:space="preserve">
     <value>The number of resource segments needs to match the provided resource type.</value>
   </data>
+  <data name="ObjectPropertyNotProvided" xml:space="preserve">
+    <value>The required input property '{0}' was not provided for '{1}'.</value>
+  </data>
   <data name="OutputTypeInvalid" xml:space="preserve">
     <value>The type for output '{0}' was not defined or invalid.</value>
   </data>

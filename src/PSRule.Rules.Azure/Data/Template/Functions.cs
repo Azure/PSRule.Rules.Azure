@@ -32,8 +32,13 @@ internal static class Functions
     private const string PROPERTY_OFFSET = "offset";
     private const string PROPERTY_OPERAND1 = "operand1";
     private const string PROPERTY_OPERAND2 = "operand2";
-    private const string PROPERTY_VALUETOCONVERT = "valueToConvert";
+    private const string PROPERTY_VALUE_TO_CONVERT = "valueToConvert";
     private const string PROPERTY_MESSAGE = "message";
+    private const string PROPERTY_SCHEME = "scheme";
+    private const string PROPERTY_HOST = "host";
+    private const string PROPERTY_PORT = "port";
+    private const string PROPERTY_PATH = "path";
+    private const string PROPERTY_QUERY = "query";
 
     private const string FORMAT_ISO8601 = "yyyy-MM-ddTHH:mm:ssZ";
     private const string FORMAT_AZURE_DATETIME = "M/d/yyyy h:mm:ss tt";
@@ -137,8 +142,10 @@ internal static class Functions
         new FunctionDescriptor("base64ToString", Base64ToString),
         // concat - also in array and object
         // contains - also in array and object
+        new FunctionDescriptor("buildUri", BuildUri),
         new FunctionDescriptor("dataUri", DataUri),
         new FunctionDescriptor("dataUriToString", DataUriToString),
+        new FunctionDescriptor("parseUri", ParseUri),
         // empty - also in array and object
         new FunctionDescriptor("endsWith", EndsWith),
         // first - also in array and object
@@ -1321,7 +1328,7 @@ internal static class Functions
         else if (ExpressionHelpers.TryString(args[0], out var svalue))
             return float.Parse(svalue, AzureCulture);
 
-        throw ArgumentInvalidInteger(nameof(Float), PROPERTY_VALUETOCONVERT);
+        throw ArgumentInvalidInteger(nameof(Float), PROPERTY_VALUE_TO_CONVERT);
     }
 
     internal static object Int(ITemplateContext context, object[] args)
@@ -1332,7 +1339,7 @@ internal static class Functions
         if (ExpressionHelpers.TryConvertLong(args[0], out var value))
             return value;
 
-        throw ArgumentInvalidInteger(nameof(Int), PROPERTY_VALUETOCONVERT);
+        throw ArgumentInvalidInteger(nameof(Int), PROPERTY_VALUE_TO_CONVERT);
     }
 
     internal static object Mod(ITemplateContext context, object[] args)
@@ -1658,24 +1665,46 @@ internal static class Functions
         return Encoding.UTF8.GetString(Convert.FromBase64String(base64Value));
     }
 
+    /// <summary>
+    /// buildUri(uriObject)
+    /// </summary>
+    internal static object BuildUri(ITemplateContext context, object[] args)
+    {
+        if (CountArgs(args) != 1) throw ArgumentsOutOfRange(nameof(BuildUri), args);
+        if (!ExpressionHelpers.TryJObject(args[0], out var value)) throw ArgumentFormatInvalid(nameof(BuildUri));
+
+        if (!value.TryGetProperty(PROPERTY_SCHEME, out var scheme) || string.IsNullOrEmpty(scheme))
+            throw ObjectPropertyNotProvided(nameof(BuildUri), PROPERTY_SCHEME);
+
+        if (!value.TryGetProperty(PROPERTY_HOST, out var host) || string.IsNullOrEmpty(host))
+            throw ObjectPropertyNotProvided(nameof(BuildUri), PROPERTY_HOST);
+
+        var port = value.TryGetProperty<JValue>(PROPERTY_PORT, out var p) ? p.Value<int?>() : null;
+        value.TryGetProperty(PROPERTY_PATH, out var path);
+        value.TryGetProperty(PROPERTY_QUERY, out var query);
+
+        return new UriBuilder
+        {
+            Scheme = scheme,
+            Host = host,
+            Port = port ?? -1,
+            Path = path ?? string.Empty,
+            Query = query ?? string.Empty,
+        }.ToString();
+    }
+
     internal static object DataUri(ITemplateContext context, object[] args)
     {
-        if (CountArgs(args) != 1)
-            throw ArgumentsOutOfRange(nameof(DataUri), args);
-
-        if (!ExpressionHelpers.TryString(args[0], out var value))
-            throw new ArgumentException();
+        if (CountArgs(args) != 1) throw ArgumentsOutOfRange(nameof(DataUri), args);
+        if (!ExpressionHelpers.TryString(args[0], out var value)) throw new ArgumentException();
 
         return string.Concat("data:text/plain;charset=utf8;base64,", Convert.ToBase64String(Encoding.UTF8.GetBytes(value)));
     }
 
     internal static object DataUriToString(ITemplateContext context, object[] args)
     {
-        if (CountArgs(args) != 1)
-            throw ArgumentsOutOfRange(nameof(DataUriToString), args);
-
-        if (!ExpressionHelpers.TryString(args[0], out var value))
-            throw new ArgumentException();
+        if (CountArgs(args) != 1) throw ArgumentsOutOfRange(nameof(DataUriToString), args);
+        if (!ExpressionHelpers.TryString(args[0], out var value)) throw new ArgumentException();
 
         var scheme = value.Substring(0, 5);
         if (scheme != "data:")
@@ -1692,6 +1721,31 @@ internal static class Functions
         var encoding = Encoding.UTF8;
         var data = value.Substring(dataStart + 1);
         return base64 ? encoding.GetString(Convert.FromBase64String(data)) : data;
+    }
+
+    /// <summary>
+    /// parseUri(uriString)
+    /// </summary>
+    internal static object ParseUri(ITemplateContext context, object[] args)
+    {
+        if (CountArgs(args) != 1) throw ArgumentsOutOfRange(nameof(ParseUri), args);
+        if (!ExpressionHelpers.TryString(args[0], out var value)) throw ArgumentInvalidString(nameof(ParseUri), "");
+
+        var uri = new Uri(value);
+        var result = new JObject
+        {
+            { PROPERTY_SCHEME, uri.Scheme },
+            { PROPERTY_HOST, uri.Host },
+            { PROPERTY_PORT, uri.IsDefaultPort ? null : uri.Port },
+        };
+
+        if (!string.IsNullOrEmpty(uri.AbsolutePath) && uri.AbsolutePath != "/")
+            result[PROPERTY_PATH] = uri.PathAndQuery;
+
+        if (!string.IsNullOrEmpty(uri.Query))
+            result[PROPERTY_QUERY] = uri.Query;
+
+        return result;
     }
 
     internal static object EndsWith(ITemplateContext context, object[] args)
@@ -2578,6 +2632,21 @@ internal static class Functions
     private static DeploymentFailureException DeploymentFailure(string message)
     {
         return new DeploymentFailureException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.DeploymentFailure, message));
+    }
+
+    /// <summary>
+    /// The required input property '{0}' was not provided for '{1}'.
+    /// </summary>
+    /// <param name="expression">The name of the function that failed.</param>
+    /// <param name="property">The name of the property that was expected.</param>
+    private static ExpressionArgumentException ObjectPropertyNotProvided(string expression, string property)
+    {
+        return new ExpressionArgumentException(expression, string.Format(
+            Thread.CurrentThread.CurrentCulture,
+            PSRuleResources.ObjectPropertyNotProvided,
+            property,
+            expression
+        ));
     }
 
     #endregion Exceptions

@@ -349,6 +349,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The required input property &apos;{0}&apos; was not provided for &apos;{1}&apos;..
+        /// </summary>
+        internal static string ObjectPropertyNotProvided {
+            get {
+                return ResourceManager.GetString("ObjectPropertyNotProvided", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to The type for output &apos;{0}&apos; was not defined or invalid..
         /// </summary>
         internal static string OutputTypeInvalid {
