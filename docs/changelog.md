@@ -30,6 +30,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.43.0:
+
+- New features:
+  - Added support for the `buildUri` and `parseUri` functions during Bicep expansion by @BernieWhite.
+    [#3345](https://github.com/Azure/PSRule.Rules.Azure/issues/3345)
+
 ## v1.43.0
 
 What's changed since v1.42.0:

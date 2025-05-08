@@ -1678,6 +1678,42 @@ public sealed class FunctionTests
 
     [Fact]
     [Trait(TRAIT, TRAIT_STRING)]
+    public void BuildUri()
+    {
+        var context = GetContext();
+
+        var actual = Functions.BuildUri(context, [new JObject
+        {
+            {"scheme", "https" },
+            {"host", "example.com"},
+            {"port", 1234},
+            {"path", "/foo/bar"},
+        }]) as string;
+        Assert.Equal("https://example.com:1234/foo/bar", actual);
+
+        actual = Functions.BuildUri(context, [new JObject
+        {
+            {"scheme", "https" },
+            {"host", "example.com"},
+        }]) as string;
+        Assert.Equal("https://example.com/", actual);
+
+        actual = Functions.BuildUri(context, [new JObject
+        {
+            {"scheme", "https" },
+            {"host", "example.com"},
+            {"path", "/foo/bar"},
+            {"query", "?a=1&b=2"},
+        }]) as string;
+        Assert.Equal("https://example.com/foo/bar?a=1&b=2", actual);
+
+        Assert.Throws<ExpressionArgumentException>(() => Functions.BuildUri(context, null));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.BuildUri(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.BuildUri(context, [1]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_STRING)]
     public void DataUri()
     {
         var context = GetContext();
@@ -1707,6 +1743,38 @@ public sealed class FunctionTests
         Assert.Throws<ExpressionArgumentException>(() => Functions.DataUriToString(context, System.Array.Empty<object>()));
         Assert.Throws<ArgumentException>(() => Functions.DataUriToString(context, [1]));
         Assert.Throws<ArgumentException>(() => Functions.DataUriToString(context, ["SGVsbG8sIFdvcmxkIQ=="]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_STRING)]
+    public void ParseUri()
+    {
+        var context = GetContext();
+
+        var actual = Functions.ParseUri(context, ["https://example.com:1234/foo/bar"]) as JObject;
+        Assert.Equal("https", actual["scheme"]);
+        Assert.Equal("example.com", actual["host"]);
+        Assert.Equal(1234, actual["port"]);
+        Assert.Equal("/foo/bar", actual["path"]);
+        Assert.False(actual.ContainsKey("query"));
+
+        actual = Functions.ParseUri(context, ["https://example.com/"]) as JObject;
+        Assert.Equal("https", actual["scheme"]);
+        Assert.Equal("example.com", actual["host"]);
+        Assert.Equal(JTokenType.Null, actual["port"].Type);
+        Assert.False(actual.ContainsKey("path"));
+        Assert.False(actual.ContainsKey("query"));
+
+        actual = Functions.ParseUri(context, ["https://example.com/foo/bar?a=1&b=2"]) as JObject;
+        Assert.Equal("https", actual["scheme"]);
+        Assert.Equal("example.com", actual["host"]);
+        Assert.Equal(JTokenType.Null, actual["port"].Type);
+        Assert.Equal("/foo/bar", actual["path"]);
+        Assert.Equal("?a=1&b=2", actual["query"]);
+
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ParseUri(context, null));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ParseUri(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ParseUri(context, [1]));
     }
 
     [Fact]
