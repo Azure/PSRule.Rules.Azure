@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Deployments;
 
 namespace PSRule.Rules.Azure.Data.Template;
 

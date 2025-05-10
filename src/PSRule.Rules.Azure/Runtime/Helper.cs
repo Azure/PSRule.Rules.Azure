@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Management.Automation;
 using System.Xml;
+using PSRule.Rules.Azure.Arm.Expressions;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data;
 using PSRule.Rules.Azure.Data.APIM;

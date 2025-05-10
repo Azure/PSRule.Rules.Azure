@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using PSRule.Rules.Azure.Arm.Expressions;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Resources;
 
@@ -82,7 +83,7 @@ internal static class ResourceHelper
     /// <returns>Returns the resource type if the Id is valid or <c>null</c> when an invalid resource Id is specified.</returns>
     internal static string? GetResourceType(string? resourceId)
     {
-        return string.IsNullOrEmpty(resourceId) ? null : string.Join(SLASH, GetResourceIdTypeParts(resourceId));
+        return resourceId == null || string.IsNullOrEmpty(resourceId) ? null : string.Join(SLASH, GetResourceIdTypeParts(resourceId));
     }
 
     /// <summary>
@@ -229,7 +230,7 @@ internal static class ResourceHelper
         return string.Concat(result);
     }
 
-    internal static string CombineResourceId(string subscriptionId, string resourceGroup, string resourceType, string name, int depth = int.MaxValue, string scope = null)
+    internal static string CombineResourceId(string subscriptionId, string resourceGroup, string resourceType, string name, int depth = int.MaxValue, string? scope = null)
     {
         TryResourceIdComponents(resourceType, name, out var typeComponents, out var nameComponents);
 
@@ -562,7 +563,7 @@ internal static class ResourceHelper
         return CombineResourceId(subscriptionId, resourceGroup, typeComponents, nameComponents, depth);
     }
 
-    internal static bool TryResourceIdComponents(string resourceId, out string subscriptionId, out string? resourceGroupName, out string? resourceType, out string? name)
+    internal static bool TryResourceIdComponents(string resourceId, out string? subscriptionId, out string? resourceGroupName, out string? resourceType, out string? name)
     {
         resourceType = null;
         name = null;
@@ -587,7 +588,7 @@ internal static class ResourceHelper
         return resourceTypeComponents.Length > 0 && nameComponents.Length > 0;
     }
 
-    internal static bool TryResourceIdComponents(string resourceId, out string subscriptionId, out string? resourceGroupName, out string[]? resourceTypeComponents, out string[]? nameComponents)
+    internal static bool TryResourceIdComponents(string resourceId, out string? subscriptionId, out string? resourceGroupName, out string[]? resourceTypeComponents, out string[]? nameComponents)
     {
         resourceGroupName = null;
         resourceTypeComponents = null;
@@ -637,7 +638,7 @@ internal static class ResourceHelper
         return result;
     }
 
-    private static bool ConsumeSubscriptionIdPartOrNull(string[] parts, ref int start, out string subscriptionId)
+    private static bool ConsumeSubscriptionIdPartOrNull(string[] parts, ref int start, out string? subscriptionId)
     {
         TryConsumeSubscriptionIdPart(parts, ref start, out subscriptionId);
         return true;

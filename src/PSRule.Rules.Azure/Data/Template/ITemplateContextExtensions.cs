@@ -5,6 +5,8 @@ using System;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Expressions;
+using PSRule.Rules.Azure.Arm.Mocks;
 using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Data.Template;

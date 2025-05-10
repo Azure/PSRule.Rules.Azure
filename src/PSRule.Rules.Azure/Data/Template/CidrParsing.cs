@@ -5,10 +5,14 @@ using System;
 using System.Text;
 using System.Threading;
 using Newtonsoft.Json;
+using PSRule.Rules.Azure.Arm.Expressions;
 using PSRule.Rules.Azure.Resources;
 
 namespace PSRule.Rules.Azure.Data.Template;
 
+/// <summary>
+/// a helper to parse CIDR notation.
+/// </summary>
 internal static class CidrParsing
 {
     // Parsing and formatting constants
@@ -22,7 +26,7 @@ internal static class CidrParsing
     private const string FORMAT_HEX = "x";
     private const string FORMAT_2HEX = "x2";
 
-    internal struct CidrIP
+    internal readonly struct CidrIP
     {
         public CidrIP(byte[] value)
         {

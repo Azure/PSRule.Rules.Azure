@@ -3,6 +3,7 @@
 
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Deployments;
 using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template;

@@ -11,6 +11,8 @@ using System.Text;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Deployments;
+using PSRule.Rules.Azure.Arm.Expressions;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
