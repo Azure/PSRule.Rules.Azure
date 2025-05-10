@@ -143,14 +143,14 @@ Describe 'Azure.Deployment' -Tag 'Deployment' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-I';
+            $ruleResult.Length | Should -Be 1;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 9;
-            $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-D', 'nestedDeployment-E', 'nestedDeployment-F', 'nestedDeployment-G', 'nestedDeployment-H', 'nestedDeployment-J';
+            $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-D', 'nestedDeployment-E', 'nestedDeployment-F', 'nestedDeployment-G', 'nestedDeployment-H', 'nestedDeployment-J', 'nestedDeployment-K';
+            $ruleResult.Length | Should -Be 10;
         }
     }
 }
@@ -174,14 +174,14 @@ Describe 'Azure.Deployment.AdminUsername' -Tag 'Deployment' {
              # Fail
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
              $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 3;
              $ruleResult.TargetName | Should -BeIn 'nestedDeployment-A', 'nestedDeployment-D', 'nestedDeployment-E';
+             $ruleResult.Length | Should -Be 3;
  
              # Pass
              $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
              $ruleResult | Should -Not -BeNullOrEmpty;
-             $ruleResult.Length | Should -Be 7;
-             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-F', 'nestedDeployment-G', 'nestedDeployment-H', 'nestedDeployment-I', 'nestedDeployment-J';
+             $ruleResult.TargetName | Should -BeIn 'nestedDeployment-B', 'nestedDeployment-C', 'nestedDeployment-F', 'nestedDeployment-G', 'nestedDeployment-H', 'nestedDeployment-I', 'nestedDeployment-J', 'nestedDeployment-K';
+             $ruleResult.Length | Should -Be 8;
         }
     }
 
