@@ -459,6 +459,11 @@ configuration:
     workspaceId: /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.OperationalInsights/workspaces/{workspaceName}
 ```
 
+!!! Security
+    When configuring `AZURE_PARAMETER_DEFAULTS`, use placeholders for the secret values instead of the actual values.
+    Placeholders are sufficient for the expansion process, and the actual values can be provided at runtime during a
+    CI/CD pipeline loaded from a secure location.
+
 ## Excluding files
 
 Template or Bicep source files can be excluded from being processed by PSRule and expansion.
