@@ -10,7 +10,7 @@ The requirements for this feature/ mode of operation include:
 - Export resources, resource groups, and subscription configuration.
 - Export related sub-resource configuration data to support rules.
 
-Additonally some non-function requirements include:
+Additionally some non-function requirements include:
 
 - Gracefully handle Azure management API throttling.
 - Limit exported data based on filters.

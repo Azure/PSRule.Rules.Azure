@@ -79,6 +79,7 @@ nav:
       - Get started contributing: license-contributing/get-started-contributing.md
       - Getting started with contributions: license-contributing/getting-started-with-documentation.md
       - Writing documentation: license-contributing/writing-documentation.md
+      - Expansion internals: license-contributing/expansion-internals.md
       - Past hackathons: license-contributing/hackathons.md
     - Related projects: related-projects.md
     - Support: support.md
