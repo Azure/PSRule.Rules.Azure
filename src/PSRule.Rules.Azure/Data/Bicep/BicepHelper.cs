@@ -14,7 +14,6 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Arm.Deployments;
 using PSRule.Rules.Azure.Configuration;
-using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
 using PSRule.Rules.Azure.Runtime;
@@ -295,7 +294,7 @@ internal sealed class BicepHelper
             throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateFileNotFound, templateFile), templateFile);
 
         var json = ReadBicepFile(templateFile);
-        return json == null ? Array.Empty<PSObject>() : ProcessJson(json, templateFile, parameterFile);
+        return json == null ? [] : ProcessJson(json, templateFile, parameterFile);
     }
 
     internal PSObject[] ProcessParamFile(string parameterFile)
@@ -305,7 +304,7 @@ internal sealed class BicepHelper
 
         var json = ReadBicepFile(parameterFile);
         if (json == null || !json.TryGetProperty("templateJson", out var templateJson) || !json.TryGetProperty("parametersJson", out var parametersJson))
-            return Array.Empty<PSObject>();
+            return [];
 
         return ProcessJson(JObject.Parse(templateJson), JObject.Parse(parametersJson), parameterFile);
     }
@@ -389,14 +388,12 @@ internal sealed class BicepHelper
         foreach (var resource in templateContext.GetResources())
             results.Add(resource.Value.ToObject<PSObject>(serializer));
 
-        return results.ToArray();
+        return [.. results];
     }
 
     private JObject ReadBicepFile(string path)
     {
-        var bicep = GetBicep(path, _Timeout);
-        if (bicep == null)
-            throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepNotFound), null, path, null);
+        var bicep = GetBicep(path, _Timeout) ?? throw new BicepCompileException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.BicepNotFound), null, path, null);
 
         try
         {
@@ -440,7 +437,7 @@ internal sealed class BicepHelper
         return _Service.Bicep ??= BicepInfo.Create(GetBinaryPath(out var useAzCLI), useAzCLI);
     }
 
-    private string GetBinaryPath(out bool useAzCLI)
+    private static string GetBinaryPath(out bool useAzCLI)
     {
         useAzCLI = false;
         return GetBicepEnvironmentVariable() ??
