@@ -2,9 +2,8 @@
 // Licensed under the MIT License.
 
 using System.Diagnostics;
-using PSRule.Rules.Azure.Arm;
 
-namespace PSRule.Rules.Azure.Data.Template;
+namespace PSRule.Rules.Azure.Arm.Deployments;
 
 #nullable enable
 

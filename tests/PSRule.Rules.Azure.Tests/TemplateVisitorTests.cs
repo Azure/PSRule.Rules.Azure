@@ -3,15 +3,15 @@
 
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Deployments;
 using PSRule.Rules.Azure.Configuration;
-using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
+using static PSRule.Rules.Azure.Arm.Deployments.DeploymentVisitor;
 
 namespace PSRule.Rules.Azure
 {
     /// <summary>
-    /// This class tests the functionality of the <see cref="TemplateVisitor"/> class that is used to expand resources from an ARM template/ Bicep file.
+    /// This class tests the functionality of the <see cref="DeploymentVisitor"/> class that is used to expand resources from an ARM template/ Bicep file.
     /// </summary>
     public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
     {

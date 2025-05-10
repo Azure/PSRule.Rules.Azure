@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System;
+using PSRule.Rules.Azure.Arm;
 using PSRule.Rules.Azure.Arm.Deployments;
 using PSRule.Rules.Azure.Arm.Expressions;
 using PSRule.Rules.Azure.Configuration;

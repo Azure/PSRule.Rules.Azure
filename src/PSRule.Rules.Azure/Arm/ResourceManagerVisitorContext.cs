@@ -3,7 +3,7 @@
 
 using PSRule.Rules.Azure.Arm.Symbols;
 
-namespace PSRule.Rules.Azure.Data.Template;
+namespace PSRule.Rules.Azure.Arm;
 
 /// <summary>
 /// A base implementation for template contexts.

@@ -7,24 +7,25 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using Newtonsoft.Json.Linq;
-using PSRule.Rules.Azure.Arm;
-using PSRule.Rules.Azure.Arm.Deployments;
+using PSRule.Rules.Azure;
 using PSRule.Rules.Azure.Arm.Expressions;
 using PSRule.Rules.Azure.Arm.Mocks;
 using PSRule.Rules.Azure.Arm.Symbols;
 using PSRule.Rules.Azure.Configuration;
+using PSRule.Rules.Azure.Data;
+using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
 using static PSRule.Rules.Azure.Arm.Mocks.Mock;
 
-namespace PSRule.Rules.Azure.Data.Template;
+namespace PSRule.Rules.Azure.Arm.Deployments;
 
 /// <summary>
 /// The base class for a template visitor.
 /// This is where most of the processing of an ARM deployment/ template/ module occurs.
 /// The end result is a resource is emitted for each resource in the template.
 /// </summary>
-internal abstract class TemplateVisitor : ResourceManagerVisitor
+internal abstract class DeploymentVisitor : ResourceManagerVisitor
 {
     private const string TENANT_SCOPE = "/";
     private const string RESOURCE_TYPE_DEPLOYMENT = "Microsoft.Resources/deployments";
@@ -531,7 +532,7 @@ internal abstract class TemplateVisitor : ResourceManagerVisitor
         internal void TrackSecureValue(string name, ParameterType type, object value)
         {
             if (value == null || !(type.Type == TypePrimitive.SecureString || type.Type == TypePrimitive.SecureObject) ||
-                (value is JValue jValue && jValue.IsEmpty()))
+                value is JValue jValue && jValue.IsEmpty())
                 return;
 
             _SecureValues.Add(value);

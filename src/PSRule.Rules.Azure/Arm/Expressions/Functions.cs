@@ -12,6 +12,7 @@ using System.Web;
 using System.Xml;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Deployments;
 using PSRule.Rules.Azure.Arm.Mocks;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Resources;

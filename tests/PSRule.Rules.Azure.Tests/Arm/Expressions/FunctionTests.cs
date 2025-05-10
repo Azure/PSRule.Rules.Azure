@@ -15,7 +15,7 @@ using PSRule.Rules.Azure.Arm.Symbols;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data;
 using PSRule.Rules.Azure.Data.Template;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
+using static PSRule.Rules.Azure.Arm.Deployments.DeploymentVisitor;
 
 namespace PSRule.Rules.Azure.Arm.Expressions;
 
