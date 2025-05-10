@@ -112,13 +112,85 @@ function global:GetSecureParameter {
                     $parameter.Value.type -ne 'int'
                 ) {
                     $count++
-                    $Assert.In($parameter.Value.type, '.', @('secureString', 'secureObject')).ReasonFrom($parameter.Name, $LocalizedData.InsecureParameterType, $parameter.Name, $parameter.Value.type);
+
+                    # If the parameter is a custom type, recurse the type properties marked as secure.
+                    if ($Assert.HasField($parameter.Value, '$ref').Result) {
+                        $result = DefinitionHasSecureProperty -Definitions $Deployment.properties.template.definitions -Name $parameter.Value.'$ref';
+                        $Assert.Create($result -eq $True, $LocalizedData.InsecureParameterType, $parameter.Name, $parameter.Value.'$ref');
+                    }
+                    elseif ($Assert.HasField($parameter.Value, 'items.$ref').Result) {
+                        # Array of custom types
+                        $result = DefinitionHasSecureProperty -Definitions $Deployment.properties.template.definitions -Name $parameter.Value.items.'$ref';
+                        $Assert.Create($result -eq $True, $LocalizedData.InsecureParameterType, $parameter.Name, $parameter.Value.items.'$ref');
+                    }
+                    elseif ($Assert.HasField($parameter.Value, 'items.type').Result) {
+                        # Array parameters
+                        $Assert.In($parameter.Value.items.type, '.', @('secureString', 'secureObject')).ReasonFrom($parameter.Name, $LocalizedData.InsecureParameterType, $parameter.Name, $parameter.Value.items.type);
+                    }
+                    else {
+                        # Normal parameters
+                        $Assert.In($parameter.Value.type, '.', @('secureString', 'secureObject')).ReasonFrom($parameter.Name, $LocalizedData.InsecureParameterType, $parameter.Name, $parameter.Value.type);
+                    }
                 }
             }
         }
         if ($count -eq 0) {
             return $Assert.Pass();
         }
+    }
+}
+
+# Check a definition for secure properties.
+# If the property is a custom type, recurse the definition to check these properties are secure.
+function global:DefinitionHasSecureProperty {
+    param (
+        [Parameter(Mandatory = $True)]
+        [PSObject]$Definitions,
+
+        [Parameter(Mandatory = $True)]
+        [String]$Name
+    )
+    process {
+        $result = $False;
+        $shortName = $Name.Split('/')[-1];
+        Write-Verbose -Message "Checking definition: $shortName";
+
+        foreach ($definition in $Definitions.PSObject.Properties.GetEnumerator()) {
+            if ($definition.Name -eq $shortName) {
+                if ($Assert.HasField($definition.Value, 'properties').Result) {
+                    foreach ($property in $definition.Value.properties.PSObject.Properties.GetEnumerator()) {
+                        if ($Assert.HasField($property.Value, '$ref').Result) {
+                            $child = DefinitionHasSecureProperty -Definitions $Definitions -Name $property.Value.'$ref';
+                            if ($child) {
+                                $result = $True;
+                            }
+                        }
+                        elseif ($Assert.HasField($property.Value, 'items.$ref').Result) {
+                            $child = DefinitionHasSecureProperty -Definitions $Definitions -Name $property.Value.items.'$ref';
+                            if ($child) {
+                                $result = $True;
+                            }
+                        }
+                        elseif ($Assert.HasField($property.Value, 'items.type').Result) {
+                            $child = $Assert.In($property.Value.items.type, '.', @('secureString', 'secureObject')).Result;
+                            if ($child) {
+                                $result = $True;
+                            }
+                        }
+                        elseif ($Assert.In($property.Value.type, '.', @('secureString', 'secureObject')).Result) {
+                            $result = $True;
+                        }
+                    }
+                }
+            }
+        }
+        if ($result -eq $False) {
+            Write-Verbose -Message "No secure properties found in definition: $shortName";
+        }
+        else {
+            Write-Verbose -Message "Secure properties found in definition: $shortName";
+        }
+        return $result;
     }
 }
 

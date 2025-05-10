@@ -105,6 +105,23 @@ The following business logic is used to determine if a parameter is marked as se
   - The `customermanagedkey` parameter.
   - Parameter names ending in `publickey` or `publickeys`.
 
+### Custom types
+
+When using custom object or array types, only one property of the definition is required to be marked as `secure`.
+For example:
+
+```bicep
+param secrets secretType = []
+
+type secretType object {
+  name string
+  description string
+
+  @secure()
+  value string
+}
+```
+
 ### Rule configuration
 
 <!-- module:config rule AZURE_DEPLOYMENT_NONSENSITIVE_PARAMETER_NAMES -->

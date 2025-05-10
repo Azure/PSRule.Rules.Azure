@@ -35,6 +35,9 @@ What's changed since v1.43.0:
 - New features:
   - Added support for the `buildUri` and `parseUri` functions during Bicep expansion by @BernieWhite.
     [#3345](https://github.com/Azure/PSRule.Rules.Azure/issues/3345)
+- Bug fixes:
+  - Fixed identification of secure parameters with custom type for `Azure.Deployment.SecureParameter` by @BernieWhite.
+    [#3347](https://github.com/Azure/PSRule.Rules.Azure/issues/3347)
 
 ## v1.43.0
 

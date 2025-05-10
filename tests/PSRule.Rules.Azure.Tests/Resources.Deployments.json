@@ -324,5 +324,75 @@
       },
       "parameters": {}
     }
+  },
+  {
+    "name": "nestedDeployment-K",
+    "type": "Microsoft.Resources/deployments",
+    "apiVersion": "2020-10-01",
+    "properties": {
+      "expressionEvaluationOptions": {
+        "scope": "inner"
+      },
+      "mode": "Incremental",
+      "template": {
+        "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+        "contentVersion": "1.0.0.0",
+        "languageVersion": "2.0",
+        "parameters": {
+          "adminUser": {
+            "type": "string"
+          },
+          "secrets": {
+            "type": "array",
+            "items": {
+              "$ref": "#/definitions/secretType"
+            },
+            "nullable": true,
+            "metadata": {
+              "description": "Optional. All secrets to create."
+            }
+          }
+        },
+        "variables": {},
+        "resources": {},
+        "definitions": {
+          "secretType": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string",
+                "metadata": {
+                  "description": "Required. The name of the secret."
+                }
+              },
+              "value": {
+                "type": "securestring",
+                "metadata": {
+                  "description": "Required. The value of the secret. NOTE: \"value\" will never be returned from the service, as APIs using this model are is intended for internal use in ARM deployments. Users should use the data-plane REST service for interaction with vault secrets."
+                }
+              },
+              "roleAssignments": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/roleAssignmentType"
+                },
+                "nullable": true,
+                "metadata": {
+                  "description": "Optional. Array of role assignments to create."
+                }
+              }
+            },
+            "metadata": {
+              "__bicep_export!": true,
+              "description": "The type for a secret output."
+            }
+          }
+        },
+        "roleAssignmentType": {
+          "type": "object"
+        }
+      },
+      "parameters": {}
+    }
   }
 ]
