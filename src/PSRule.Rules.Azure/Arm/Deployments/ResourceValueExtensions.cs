@@ -3,7 +3,7 @@
 
 using System;
 
-namespace PSRule.Rules.Azure.Data.Template;
+namespace PSRule.Rules.Azure.Arm.Deployments;
 
 internal static class ResourceValueExtensions
 {

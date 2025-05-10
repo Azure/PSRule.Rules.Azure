@@ -8,10 +8,11 @@ using System.Management.Automation;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Deployments;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
-using static PSRule.Rules.Azure.Data.Template.TemplateVisitor;
+using static PSRule.Rules.Azure.Arm.Deployments.DeploymentVisitor;
 
 namespace PSRule.Rules.Azure.Data.Template;
 
@@ -27,7 +28,7 @@ internal sealed class TemplateHelper(PipelineContext context)
             throw new FileNotFoundException(string.Format(Thread.CurrentThread.CurrentCulture, PSRuleResources.TemplateFileNotFound, rootedTemplateFile), rootedTemplateFile);
 
         var templateObject = ReadFile(rootedTemplateFile);
-        var visitor = new RuleDataExportVisitor();
+        var visitor = new MaterializedDeploymentVisitor();
 
         // Load context
         templateContext = new TemplateContext(_Context);

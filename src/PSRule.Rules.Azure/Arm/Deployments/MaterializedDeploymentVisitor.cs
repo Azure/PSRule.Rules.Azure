@@ -6,12 +6,12 @@ using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
 using PSRule.Rules.Azure.Arm.Expressions;
 
-namespace PSRule.Rules.Azure.Data.Template;
+namespace PSRule.Rules.Azure.Arm.Deployments;
 
 /// <summary>
 /// A template visitor for generating rule data.
 /// </summary>
-internal sealed class RuleDataExportVisitor : TemplateVisitor
+internal sealed class MaterializedDeploymentVisitor : DeploymentVisitor
 {
     private const string PROPERTY_DEPENDS_ON = "dependsOn";
     private const string PROPERTY_COMMENTS = "comments";

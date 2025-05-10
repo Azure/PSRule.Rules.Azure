@@ -11,6 +11,7 @@ using System.Text;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm;
 using PSRule.Rules.Azure.Arm.Deployments;
 using PSRule.Rules.Azure.Arm.Expressions;
 using PSRule.Rules.Azure.Configuration;
@@ -205,7 +206,7 @@ namespace PSRule.Rules.Azure.Data.Policy
 
             private JToken GetExpression(JProperty child)
             {
-                return TemplateVisitor.ExpandPropertyToken(this, child.Value);
+                return DeploymentVisitor.ExpandPropertyToken(this, child.Value);
             }
 
             public bool TryGetResource(string resourceId, out IResourceValue resource)
@@ -278,7 +279,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                 {
                     if (parameterValue.ContainsKey(PROPERTY_DEFAULTVALUE))
                     {
-                        var defaultValue = TemplateVisitor.ExpandPropertyToken(this, parameterValue[PROPERTY_DEFAULTVALUE]);
+                        var defaultValue = DeploymentVisitor.ExpandPropertyToken(this, parameterValue[PROPERTY_DEFAULTVALUE]);
                         CheckParameter(parameterName, parameterValue, type, defaultValue);
                         AddParameterFromType(definition, parameterName, type, defaultValue);
                     }
@@ -314,7 +315,7 @@ namespace PSRule.Rules.Azure.Data.Policy
                         // Expand string values if we come across any
                         var comparisonValue = comparisonExpression.Value;
                         if (comparisonValue.Type == JTokenType.String)
-                            comparisonValue = TemplateVisitor.ExpandPropertyToken(this, comparisonValue);
+                            comparisonValue = DeploymentVisitor.ExpandPropertyToken(this, comparisonValue);
 
                         if (objectPathComparisonOperator != null)
                         {
@@ -1034,7 +1035,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 try
                 {
-                    field = ExpandField(context, TemplateVisitor.ExpandString(context, field));
+                    field = ExpandField(context, DeploymentVisitor.ExpandString(context, field));
                     context.EnterFieldPrefix(field);
                     parent.Add(PROPERTY_FIELD, field);
                     if (count.TryObjectProperty(PROPERTY_WHERE, out var where))
@@ -1208,7 +1209,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         private static JObject VisitField(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject condition, string field)
         {
             var isExpression = field.IsExpressionString();
-            field = TemplateVisitor.ExpandString(context, field);
+            field = DeploymentVisitor.ExpandString(context, field);
             if (string.Equals(field, PROPERTY_TYPE, StringComparison.OrdinalIgnoreCase))
             {
                 condition.RemoveProperty(PROPERTY_FIELD);
@@ -1875,7 +1876,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             if (details == null || !details.TryStringProperty(PROPERTY_NAME, out var name))
                 return condition;
 
-            name = TemplateVisitor.ExpandString(context, name);
+            name = DeploymentVisitor.ExpandString(context, name);
 
             var nameCondition = new JObject {
                 { PROPERTY_NAME, DOT },

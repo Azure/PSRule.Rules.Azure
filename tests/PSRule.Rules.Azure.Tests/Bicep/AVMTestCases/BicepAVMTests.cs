@@ -3,7 +3,7 @@
 
 using System.Linq;
 using Newtonsoft.Json.Linq;
-using PSRule.Rules.Azure.Data.Template;
+using PSRule.Rules.Azure.Arm.Deployments;
 
 namespace PSRule.Rules.Azure.Bicep.AVMTestCases;
 

@@ -1,7 +1,7 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-namespace PSRule.Rules.Azure.Data.Template;
+namespace PSRule.Rules.Azure.Arm.Deployments;
 
 internal sealed class SimpleParameterValue(string name, ParameterType type, object value) : IParameterValue
 {

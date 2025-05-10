@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Deployments;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Template;
 using PSRule.Rules.Azure.Pipeline;
@@ -311,10 +312,10 @@ internal sealed class BicepHelper
 
     private PSObject[] ProcessJson(JObject templateObject, string templateFile, string parameterFile)
     {
-        var visitor = new RuleDataExportVisitor();
+        var visitor = new MaterializedDeploymentVisitor();
 
         // Load context
-        var templateContext = new TemplateVisitor.TemplateContext(_Context);
+        var templateContext = new DeploymentVisitor.TemplateContext(_Context);
         if (!string.IsNullOrEmpty(parameterFile))
         {
             var rootedParameterFile = PSRuleOption.GetRootedPath(parameterFile);
@@ -349,10 +350,10 @@ internal sealed class BicepHelper
 
     private PSObject[] ProcessJson(JObject templateObject, JObject parametersObject, string parameterFile)
     {
-        var visitor = new RuleDataExportVisitor();
+        var visitor = new MaterializedDeploymentVisitor();
 
         // Load context
-        var templateContext = new TemplateVisitor.TemplateContext(_Context);
+        var templateContext = new DeploymentVisitor.TemplateContext(_Context);
         try
         {
             templateContext.Load(parametersObject);
@@ -380,7 +381,7 @@ internal sealed class BicepHelper
     /// <summary>
     /// Get resulting resources from expansion.
     /// </summary>
-    private static PSObject[] GetResources(TemplateVisitor.TemplateContext templateContext)
+    private static PSObject[] GetResources(DeploymentVisitor.TemplateContext templateContext)
     {
         var results = new List<PSObject>();
         var serializer = new JsonSerializer();

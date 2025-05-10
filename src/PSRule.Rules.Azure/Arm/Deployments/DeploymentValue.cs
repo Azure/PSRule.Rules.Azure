@@ -5,9 +5,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
-using PSRule.Rules.Azure.Arm.Deployments;
+using PSRule.Rules.Azure.Data.Template;
 
-namespace PSRule.Rules.Azure.Data.Template;
+namespace PSRule.Rules.Azure.Arm.Deployments;
 
 [DebuggerDisplay("{Id}")]
 internal sealed class DeploymentValue : BaseResourceValue, IResourceValue, ILazyObject
