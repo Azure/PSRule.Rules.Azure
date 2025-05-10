@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Deployments;
 
 namespace PSRule.Rules.Azure.Data.Template;
 

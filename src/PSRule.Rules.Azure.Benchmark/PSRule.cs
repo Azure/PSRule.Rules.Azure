@@ -7,6 +7,7 @@ using System.Management.Automation;
 using System.Reflection;
 using BenchmarkDotNet.Attributes;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm.Deployments;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Data.Policy;
 using PSRule.Rules.Azure.Data.Template;

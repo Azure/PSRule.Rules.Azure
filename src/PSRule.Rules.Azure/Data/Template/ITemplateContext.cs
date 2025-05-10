@@ -2,6 +2,9 @@
 // Licensed under the MIT License.
 
 using System;
+using PSRule.Rules.Azure.Arm.Deployments;
+using PSRule.Rules.Azure.Arm.Expressions;
+using PSRule.Rules.Azure.Arm.Symbols;
 using PSRule.Rules.Azure.Configuration;
 
 namespace PSRule.Rules.Azure.Data.Template;

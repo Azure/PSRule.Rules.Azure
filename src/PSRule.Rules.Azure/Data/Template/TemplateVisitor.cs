@@ -7,10 +7,15 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm;
+using PSRule.Rules.Azure.Arm.Deployments;
+using PSRule.Rules.Azure.Arm.Expressions;
+using PSRule.Rules.Azure.Arm.Mocks;
+using PSRule.Rules.Azure.Arm.Symbols;
 using PSRule.Rules.Azure.Configuration;
 using PSRule.Rules.Azure.Pipeline;
 using PSRule.Rules.Azure.Resources;
-using static PSRule.Rules.Azure.Data.Template.Mock;
+using static PSRule.Rules.Azure.Arm.Mocks.Mock;
 
 namespace PSRule.Rules.Azure.Data.Template;
 

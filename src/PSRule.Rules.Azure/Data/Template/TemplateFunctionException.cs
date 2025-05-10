@@ -4,6 +4,7 @@
 using System;
 using System.Runtime.Serialization;
 using System.Security.Permissions;
+using PSRule.Rules.Azure.Arm.Expressions;
 
 namespace PSRule.Rules.Azure.Data.Template;
 
