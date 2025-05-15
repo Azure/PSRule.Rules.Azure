@@ -35,6 +35,14 @@ What's changed since v1.43.0:
 - New features:
   - Added support for the `buildUri` and `parseUri` functions during Bicep expansion by @BernieWhite.
     [#3345](https://github.com/Azure/PSRule.Rules.Azure/issues/3345)
+- Updated rules:
+  - Deployment:
+    - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
+      [#3342](https://github.com/Azure/PSRule.Rules.Azure/issues/3342)
+      - Added support for new resource types:
+        - `Microsoft.AzureFleet/fleets`
+        - `Microsoft.Web/staticSites`
+        - `Microsoft.Web/staticSites/basicAuth`
 - Bug fixes:
   - Fixed identification of secure parameters with custom type for `Azure.Deployment.SecureParameter` by @BernieWhite.
     [#3347](https://github.com/Azure/PSRule.Rules.Azure/issues/3347)
