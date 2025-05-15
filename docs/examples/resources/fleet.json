@@ -1,0 +1,107 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.35.1.17967",
+      "templateHash": "7405187375780643078"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    },
+    "adminUsername": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the local administrator account."
+      }
+    },
+    "secret": {
+      "type": "securestring",
+      "metadata": {
+        "description": "The password for the local administrator account."
+      }
+    },
+    "subnetId": {
+      "type": "string",
+      "metadata": {
+        "description": "The ID of the subnet where the fleet will be deployed."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.AzureFleet/fleets",
+      "apiVersion": "2024-11-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "computeProfile": {
+          "baseVirtualMachineProfile": {
+            "securityProfile": {
+              "securityType": "TrustedLaunch",
+              "encryptionAtHost": true,
+              "uefiSettings": {
+                "secureBootEnabled": true,
+                "vTpmEnabled": true
+              }
+            },
+            "osProfile": {
+              "computerNamePrefix": "fleet",
+              "adminUsername": "[parameters('adminUsername')]",
+              "adminPassword": "[parameters('secret')]"
+            },
+            "networkProfile": {
+              "networkInterfaceConfigurations": [
+                {
+                  "name": "netconfig",
+                  "properties": {
+                    "ipConfigurations": [
+                      {
+                        "name": "ipconfig",
+                        "properties": {
+                          "primary": true,
+                          "subnet": {
+                            "id": "[parameters('subnetId')]"
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "vmSizesProfile": [
+          {
+            "name": "Standard_D8ds_v6",
+            "rank": 0
+          }
+        ],
+        "regularPriorityProfile": {
+          "minCapacity": 1,
+          "capacity": 5,
+          "allocationStrategy": "Prioritized"
+        }
+      },
+      "zones": [
+        "1",
+        "2",
+        "3"
+      ]
+    }
+  ]
+}
