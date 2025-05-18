@@ -37,6 +37,8 @@ What's changed since v1.43.0:
     [#3345](https://github.com/Azure/PSRule.Rules.Azure/issues/3345)
 - Updated rules:
   - Deployment:
+    - Updated `Azure.Deployment.OutputSecretValue` to support secure outputs by @BernieWhite.
+      [#3357](https://github.com/Azure/PSRule.Rules.Azure/issues/3357)
     - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
       [#3342](https://github.com/Azure/PSRule.Rules.Azure/issues/3342)
       - Added support for new resource types:

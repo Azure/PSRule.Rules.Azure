@@ -621,8 +621,7 @@ internal abstract partial class DeploymentVisitor
 
         internal void CheckOutput(string outputName, JObject output)
         {
-            if (!TryParameterType(this, output, out var type))
-                throw ThrowTemplateOutputException(outputName);
+            if (!TryParameterType(this, output, out var type)) throw ThrowTemplateOutputException(outputName);
 
             output.TryGetProperty<JToken>(PROPERTY_VALUE, out var value);
             _Validator.ValidateOutput(this, type.Value, outputName, output, value);

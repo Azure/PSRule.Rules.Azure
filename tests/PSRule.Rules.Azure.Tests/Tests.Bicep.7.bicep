@@ -49,3 +49,7 @@ output secretFromListKeys string = storage.listKeys().keys[0].value
 
 // Secret from key vault reference assigned to output
 output secretFromChild string = child.outputs.secretFromParameter
+
+// Use a secure output
+@secure()
+output secureSecretFromChild string = child.outputs.secretFromParameter
