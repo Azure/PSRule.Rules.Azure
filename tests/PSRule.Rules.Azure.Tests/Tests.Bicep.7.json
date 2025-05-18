@@ -1,11 +1,12 @@
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
   "contentVersion": "1.0.0.0",
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.23.1.45101",
-      "templateHash": "12192623794386839246"
+      "version": "0.35.1.17967",
+      "templateHash": "17679312365081199503"
     }
   },
   "parameters": {
@@ -18,8 +19,14 @@
       "defaultValue": "[newGuid()]"
     }
   },
-  "resources": [
-    {
+  "resources": {
+    "vault": {
+      "existing": true,
+      "type": "Microsoft.KeyVault/vaults",
+      "apiVersion": "2021-10-01",
+      "name": "vault1"
+    },
+    "kvSecret": {
       "type": "Microsoft.KeyVault/vaults/secrets",
       "apiVersion": "2021-10-01",
       "name": "[format('{0}/{1}', 'vault1', 'secret1')]",
@@ -27,7 +34,7 @@
         "value": "[parameters('secret')]"
       }
     },
-    {
+    "storage": {
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2021-09-01",
       "name": "storage1",
@@ -37,7 +44,7 @@
       },
       "kind": "StorageV2"
     },
-    {
+    "child": {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
       "name": "child",
@@ -58,12 +65,13 @@
         },
         "template": {
           "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "languageVersion": "2.0",
           "contentVersion": "1.0.0.0",
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.23.1.45101",
-              "templateHash": "4029531724262360110"
+              "version": "0.35.1.17967",
+              "templateHash": "6788969935633473679"
             }
           },
           "parameters": {
@@ -71,8 +79,14 @@
               "type": "securestring"
             }
           },
-          "resources": [
-            {
+          "resources": {
+            "vault": {
+              "existing": true,
+              "type": "Microsoft.KeyVault/vaults",
+              "apiVersion": "2021-10-01",
+              "name": "vault1"
+            },
+            "kvSecret": {
               "type": "Microsoft.KeyVault/vaults/secrets",
               "apiVersion": "2021-10-01",
               "name": "[format('{0}/{1}', 'vault1', 'secret2')]",
@@ -80,7 +94,7 @@
                 "value": "[parameters('secret')]"
               }
             }
-          ],
+          },
           "outputs": {
             "secretFromParameter": {
               "type": "string",
@@ -90,7 +104,7 @@
         }
       }
     },
-    {
+    "good": {
       "type": "Microsoft.Resources/deployments",
       "apiVersion": "2022-09-01",
       "name": "good",
@@ -105,8 +119,8 @@
           "metadata": {
             "_generator": {
               "name": "bicep",
-              "version": "0.23.1.45101",
-              "templateHash": "16879825181530868322"
+              "version": "0.35.1.17967",
+              "templateHash": "6994212941957520508"
             }
           },
           "parameters": {
@@ -129,7 +143,7 @@
         }
       }
     }
-  ],
+  },
   "outputs": {
     "id": {
       "type": "string",
@@ -137,7 +151,7 @@
     },
     "contentType": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.KeyVault/vaults/secrets', 'vault1', 'secret1'), '2021-10-01').contentType]"
+      "value": "[reference('kvSecret').contentType]"
     },
     "secret": {
       "type": "string",
@@ -145,11 +159,15 @@
     },
     "secretFromListKeys": {
       "type": "string",
-      "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-09-01').keys[0].value]"
+      "value": "[listKeys('storage', '2021-09-01').keys[0].value]"
     },
     "secretFromChild": {
       "type": "string",
-      "value": "[reference(resourceId('Microsoft.Resources/deployments', 'child'), '2022-09-01').outputs.secretFromParameter.value]"
+      "value": "[reference('child').outputs.secretFromParameter.value]"
+    },
+    "secureSecretFromChild": {
+      "type": "securestring",
+      "value": "[reference('child').outputs.secretFromParameter.value]"
     }
   }
 }

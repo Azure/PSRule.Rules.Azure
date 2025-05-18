@@ -47,9 +47,14 @@ internal sealed class TemplateValidator
 
     private static void OutputSecretValue(IValidationContext context, ParameterType type, string outputName, JObject output, object value)
     {
-        if (IsSecureValue(context, value) ||
-            (TryStringValue(value, out var s) && IsSecretReferenceOrKey(s)))
+        // Ignore outputs with a secure type.
+        if (IsSecureType(type))
+            return;
+
+        if (IsSecureValue(context, value) || (TryStringValue(value, out var s) && IsSecretReferenceOrKey(s)))
+        {
             context.AddValidationIssue(ISSUE_OUTPUT_SECRET_VALUE, outputName, output.Path, ReasonStrings.OutputSecureAssignment, outputName);
+        }
     }
 
     private static void ParameterSecureValue(IValidationContext context, ParameterType type, string parameterName, JObject parameter, object value)
@@ -58,11 +63,11 @@ internal sealed class TemplateValidator
             return;
 
         // Parameter is marked as secure but value is not from a Key Vault, value exposed in parameters
-        if (IsSecureParameter(type, s) && !IsSecretReferenceOrKey(s))
+        if (IsSecureType(type) && !IsSecretReferenceOrKey(s))
             context.AddValidationIssue(ISSUE_PARAMETER_UNSECURE_VALUE, parameterName, parameter.Path, ReasonStrings.UnsecureValue, parameterName);
 
         // Parameter is not marked as secure but value is loaded from Key Vault, value is exposed in template
-        if (!IsSecureParameter(type, s) && IsSecretReferenceOrKey(s))
+        if (!IsSecureType(type) && IsSecretReferenceOrKey(s))
             context.AddValidationIssue(ISSUE_PARAMETER_SECURE_ASSIGNMENT, parameterName, parameter.Path, ReasonStrings.ParameterSecureAssignment, parameterName);
     }
 
@@ -83,7 +88,7 @@ internal sealed class TemplateValidator
         return ExpressionHelpers.TryString(o, out value) && !string.IsNullOrEmpty(value);
     }
 
-    private static bool IsSecureParameter(ParameterType type, string s)
+    private static bool IsSecureType(ParameterType type)
     {
         return type.Type is TypePrimitive.SecureString or TypePrimitive.SecureObject;
     }
