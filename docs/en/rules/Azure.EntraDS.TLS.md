@@ -8,7 +8,7 @@ resourceType: Microsoft.AAD/domainServices
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.EntraDS.TLS/
 ---
 
-# Disable TLS v1
+# Entra Domain Services allows insecure version of TLS
 
 ## SYNOPSIS
 
@@ -27,6 +27,44 @@ Consider disabling TLS v1 which is considered weak and can be disabled if not re
 
 ## EXAMPLES
 
+### Configure with Bicep
+
+To deploy domains that pass this rule:
+
+- Set the `properties.domainSecuritySettings.tlsV1` property to `Disabled`.
+
+For example:
+
+```bicep
+resource ds 'Microsoft.AAD/domainServices@2022-12-01' = {
+  name: name
+  location: location
+  properties: {
+    sku: 'Enterprise'
+    ldapsSettings: {
+      ldaps: 'Enabled'
+    }
+    domainSecuritySettings: {
+      ntlmV1: 'Disabled'
+      tlsV1: 'Disabled'
+      kerberosRc4Encryption: 'Disabled'
+    }
+    replicaSets: [
+      {
+        subnetId: primarySubnetId
+        location: location
+      }
+      {
+        subnetId: secondarySubnetId
+        location: secondaryLocation
+      }
+    ]
+  }
+}
+```
+
+<!-- external:avm avm/res/aad/domain-service tlsV1 -->
+
 ### Configure with Azure template
 
 To deploy domains that pass this rule:
@@ -42,6 +80,7 @@ For example:
   "name": "[parameters('name')]",
   "location": "[parameters('location')]",
   "properties": {
+    "sku": "Enterprise",
     "ldapsSettings": {
       "ldaps": "Enabled"
     },
@@ -49,32 +88,17 @@ For example:
       "ntlmV1": "Disabled",
       "tlsV1": "Disabled",
       "kerberosRc4Encryption": "Disabled"
-    }
-  }
-}
-```
-
-### Configure with Bicep
-
-To deploy domains that pass this rule:
-
-- Set the `properties.domainSecuritySettings.tlsV1` property to `Disabled`.
-
-For example:
-
-```bicep
-resource ds 'Microsoft.AAD/domainServices@2022-12-01' = {
-  name: name
-  location: location
-  properties: {
-    ldapsSettings: {
-      ldaps: 'Enabled'
-    }
-    domainSecuritySettings: {
-      ntlmV1: 'Disabled'
-      tlsV1: 'Disabled'
-      kerberosRc4Encryption: 'Disabled'
-    }
+    },
+    "replicaSets": [
+      {
+        "subnetId": "[parameters('primarySubnetId')]",
+        "location": "[parameters('location')]"
+      },
+      {
+        "subnetId": "[parameters('secondarySubnetId')]",
+        "location": "[parameters('secondaryLocation')]"
+      }
+    ]
   }
 }
 ```

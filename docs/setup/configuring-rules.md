@@ -991,6 +991,7 @@ configuration:
 
 <!-- module:version v1.30.0 -->
 <!-- module:rule Azure.Resource.AllowedRegions -->
+<!-- module:rule Azure.EntraDS.ReplicaLocation -->
 
 This configuration option specifies a list of allowed locations that resources can be deployed to.
 Rules that check the location of Azure resources fail when a resource or resource group is created in a different region.

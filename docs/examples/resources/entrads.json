@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.26.170.59819",
-      "templateHash": "11147541802368036352"
+      "version": "0.35.1.17967",
+      "templateHash": "5032234098926393776"
     }
   },
   "parameters": {
@@ -21,6 +21,24 @@
       "metadata": {
         "description": "The location resources will be deployed."
       }
+    },
+    "secondaryLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "The location of the secondary replica set."
+      }
+    },
+    "primarySubnetId": {
+      "type": "string",
+      "metadata": {
+        "description": "The ID of the subnet for the primary replica set."
+      }
+    },
+    "secondarySubnetId": {
+      "type": "string",
+      "metadata": {
+        "description": "The ID of the subnet for the secondary replica set."
+      }
     }
   },
   "resources": [
@@ -30,6 +48,7 @@
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "properties": {
+        "sku": "Enterprise",
         "ldapsSettings": {
           "ldaps": "Enabled"
         },
@@ -37,7 +56,17 @@
           "ntlmV1": "Disabled",
           "tlsV1": "Disabled",
           "kerberosRc4Encryption": "Disabled"
-        }
+        },
+        "replicaSets": [
+          {
+            "subnetId": "[parameters('primarySubnetId')]",
+            "location": "[parameters('location')]"
+          },
+          {
+            "subnetId": "[parameters('secondarySubnetId')]",
+            "location": "[parameters('secondaryLocation')]"
+          }
+        ]
       }
     }
   ]

@@ -30,6 +30,23 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.44.0-B0011:
+
+- New rules:
+  - Entra Domain Services:
+    - Check that the SKU supports geo-replication by @BernieWhite.
+      [#3355](https://github.com/Azure/PSRule.Rules.Azure/issues/3355)
+    - Check that at least two replicas are configured by @BernieWhite.
+      [#3364](https://github.com/Azure/PSRule.Rules.Azure/issues/3364)
+    - Check that replicas are located in allowed locations by @BernieWhite.
+      [#3365](https://github.com/Azure/PSRule.Rules.Azure/issues/3365)
+- Updated rules:
+  - Deployment:
+    - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
+      [#3366](https://github.com/Azure/PSRule.Rules.Azure/issues/3366)
+      - Added new sensitive properties to:
+        - `Microsoft.AAD/domainServices`
+
 ## v1.44.0-B0011 (pre-release)
 
 What's changed since v1.43.0:
