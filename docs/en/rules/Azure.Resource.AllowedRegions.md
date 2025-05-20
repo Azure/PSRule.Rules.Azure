@@ -7,20 +7,20 @@ resource: All resources
 online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Resource.AllowedRegions/
 ---
 
-# Use allowed regions
+# Resource deployment location is not allowed
 
 ## SYNOPSIS
 
-Resources should be deployed to allowed regions.
+The deployment location of a resource determines the country or region where metadata and data is stored and processed.
 
 ## DESCRIPTION
 
 Azure supports deployment to many locations around the world called regions.
-Many organizations have requirements that limit where data can be stored or processed.
+Many organizations have requirements or legal obligations that limit where data can be stored or processed.
 This is commonly known as data residency.
 
-Most Azure resources must be deployed to a specific region.
 To align with your organizational requirements, you may choose to limit the regions that resources can be deployed to.
+This allows you to ensure that resources are deployed to regions that meet your data residency requirements.
 
 Some resources, particularly those related to preview services or features, may not be available in all regions.
 

@@ -3,7 +3,7 @@
     "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.AAD/DomainServices/ds-A",
     "name": "ds-A",
     "type": "Microsoft.AAD/DomainServices",
-    "location": "region",
+    "location": "australiaeast",
     "tenantId": "00000000-0000-0000-0000-000000000000",
     "resourceGroupName": "rg-test",
     "subscriptionId": "00000000-0000-0000-0000-000000000000",
@@ -17,11 +17,22 @@
       "replicaSets": [
         {
           "replicaSetId": "00000000-0000-0000-0000-000000000000",
-          "location": "region",
+          "location": "australiaeast",
           "subnetId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-001/subnets/subnet-001",
           "domainControllerIpAddress": [
             "10.0.1.4",
             "10.0.1.5"
+          ],
+          "externalAccessIpAddress": "0.0.0.0",
+          "serviceStatus": "Running"
+        },
+        {
+          "replicaSetId": "00000000-0000-0000-0000-000000000001",
+          "location": "australiasoutheast",
+          "subnetId": "/subscriptions/00000000-0000-0000-0000-000000000001/resourceGroups/rg-test/providers/Microsoft.Network/virtualNetworks/vnet-002/subnets/subnet-002",
+          "domainControllerIpAddress": [
+            "10.1.1.4",
+            "10.1.1.5"
           ],
           "externalAccessIpAddress": "0.0.0.0",
           "serviceStatus": "Running"
@@ -55,7 +66,7 @@
         "notifyDcAdmins": "Enabled",
         "additionalRecipients": []
       },
-      "sku": "Standard"
+      "sku": "Enterprise"
     }
   },
   {

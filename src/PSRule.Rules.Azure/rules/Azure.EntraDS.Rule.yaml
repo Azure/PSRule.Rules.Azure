@@ -20,7 +20,7 @@ metadata:
     Azure.WAF/pillar: Security
 spec:
   type:
-  - Microsoft.AAD/domainServices
+    - Microsoft.AAD/domainServices
   condition:
     field: properties.domainSecuritySettings.ntlmV1
     equals: Disabled
@@ -40,7 +40,7 @@ metadata:
     Azure.MCSB.v1/control: DP-3
 spec:
   type:
-  - Microsoft.AAD/domainServices
+    - Microsoft.AAD/domainServices
   condition:
     field: properties.domainSecuritySettings.tlsV1
     equals: Disabled
@@ -58,9 +58,47 @@ metadata:
     Azure.WAF/pillar: Security
 spec:
   type:
-  - Microsoft.AAD/domainServices
+    - Microsoft.AAD/domainServices
   condition:
     field: properties.domainSecuritySettings.kerberosRc4Encryption
     equals: Disabled
+
+---
+# Synopsis: The default SKU for Microsoft Entra Domain Services supports resiliency in a single region.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EntraDS.SKU
+  ref: AZR-000480
+  tags:
+    release: GA
+    ruleSet: 2025_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+    - Microsoft.AAD/domainServices
+  condition:
+    field: properties.sku
+    in:
+      - Enterprise
+      - Premium
+
+---
+# Synopsis: Applications or infrastructure relying on a managed domain may fail if the domain is not available.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.EntraDS.MinReplicas
+  ref: AZR-000481
+  tags:
+    release: GA
+    ruleSet: 2025_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+    - Microsoft.AAD/domainServices
+  condition:
+    field: properties.replicaSets
+    greaterOrEquals: 2
 
 #endregion Rules
