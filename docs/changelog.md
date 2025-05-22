@@ -44,6 +44,9 @@ What's changed since pre-release v1.44.0-B0011:
   - Deployment:
     - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
       [#3366](https://github.com/Azure/PSRule.Rules.Azure/issues/3366)
+      [#3368](https://github.com/Azure/PSRule.Rules.Azure/issues/3368)
+      - Added support for new resource types:
+        - `Microsoft.DocumentDB/mongoClusters`
       - Added new sensitive properties to:
         - `Microsoft.AAD/domainServices`
 
