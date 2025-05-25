@@ -8,7 +8,7 @@
 #region Rules
 
 # Synopsis: The location of a replica set determines the country or region where the data is stored and processed.
-Rule 'Azure.EntraDS.ReplicaLocation' -Ref 'AZR-000482' -Type 'Microsoft.AAD/domainServices' -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } {
+Rule 'Azure.EntraDS.ReplicaLocation' -Ref 'AZR-000482' -Type 'Microsoft.AAD/domainServices' -If { $Assert.HasField($TargetObject, 'properties.replicaSets') } -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } {
     $context = $PSRule.GetService('Azure.Context');
     $locations = $PSRule.GetPath($TargetObject, 'properties.replicaSets[*].location');
     if ($locations -eq $Null -or $locations.Length -eq 0) {

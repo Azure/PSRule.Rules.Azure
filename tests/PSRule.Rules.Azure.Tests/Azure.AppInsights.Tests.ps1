@@ -42,15 +42,32 @@ Describe 'Azure.AppInsights' -Tag 'AppInsights' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'insights-B';
             $ruleResult.Length | Should -Be 1;
-            $ruleResult.TargetName | Should -Be 'insights-B';
             $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.workspaceResourceId';
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'insights-A';
             $ruleResult.Length | Should -Be 1;
+        }
+
+        It 'Azure.AppInsights.LocalAuth' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppInsights.LocalAuth' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -Be 'insights-B';
+            $ruleResult.Detail.Reason.Path | Should -BeIn 'properties.disableLocalAuth';
+            $ruleResult.Length | Should -Be 1;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
             $ruleResult.TargetName | Should -Be 'insights-A';
+            $ruleResult.Length | Should -Be 1;
         }
     }
 
@@ -83,8 +100,44 @@ Describe 'Azure.AppInsights' -Tag 'AppInsights' {
         }
     }
 
-    Context 'Resource name - Azure.AppInsights.Name' {
-        BeforeDiscovery {
+    Context 'Resource name' {
+        BeforeAll {
+            $invokeParams = @{
+                Baseline      = 'Azure.All'
+                Module        = 'PSRule.Rules.Azure'
+                WarningAction = 'Ignore'
+                ErrorAction   = 'Stop'
+            }
+
+            $option = New-PSRuleOption -Configuration @{ 'AZURE_APP_INSIGHTS_NAME_FORMAT' = '^appi-' };
+
+            $names = @(
+                'app-1'
+                '1-App'
+                'app_1'
+                'app.1'
+                'app(1)'
+                '..app1'
+                '--app1'
+                '__app1'
+                'app1.'
+                'app[1]'
+                'app1?'
+                'appi-001'
+            )
+
+            $items = @($names | ForEach-Object {
+                [PSCustomObject]@{
+                    Name         = $_
+                    Type = 'Microsoft.Insights/components'
+                }
+            })
+
+            $result = $items | Invoke-PSRule @invokeParams -Option $option -Name 'Azure.AppInsights.Name','Azure.AppInsights.Naming'
+        }
+
+        It 'Azure.AppInsights.Name' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppInsights.Name' };
             $validNames = @(
                 'app-1'
                 '1-App'
@@ -94,43 +147,59 @@ Describe 'Azure.AppInsights' -Tag 'AppInsights' {
                 '..app1'
                 '--app1'
                 '__app1'
+                'appi-001'
             )
+
             $invalidNames = @(
                 'app1.'
                 'app[1]'
                 'app1?'
             )
-        }
 
-        BeforeAll {
-            $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
-                WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
-            }
-
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'microsoft.insights/components'
-            }
-        }
-
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AppInsights.Name';
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
 
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.AppInsights.Name';
+        It 'Azure.AppInsights.Naming' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.AppInsights.Naming' };
+            $validNames = @(
+                'appi-001'
+            )
+
+            $invalidNames = @(
+                'app-1'
+                '1-App'
+                'app_1'
+                'app.1'
+                'app(1)'
+                '..app1'
+                '--app1'
+                '__app1'
+                'app1.'
+                'app[1]'
+                'app1?'
+            )
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
-            $ruleResult.Detail.Reason.Path | Should -BeIn 'name';
+            $ruleResult.TargetName | Should -BeIn $invalidNames;
+            $ruleResult | Should -HaveCount $invalidNames.Length;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn $validNames;
+            $ruleResult | Should -HaveCount $validNames.Length;
         }
     }
 }

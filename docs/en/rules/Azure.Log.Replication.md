@@ -1,13 +1,14 @@
 ---
+reviewed: 2025-05-25
 severity: Important
 pillar: Reliability
 category: RE:05 Regions and availability zones
-resource: Log Analytics
+resource: Azure Monitor Logs
 resourceType: Microsoft.OperationalInsights/workspaces
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.LogAnalytics.Replication/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Log.Replication/
 ---
 
-# Replicate workspaces across regions
+# Logs workspace is not replicated across regions
 
 ## SYNOPSIS
 
@@ -36,39 +37,9 @@ Consider replicating Log Analytics workspaces across regions to improve access t
 
 ## EXAMPLES
 
-### Configure with Azure template
-
-To deploy Log Analytics workspaces that pass this rule:
-
-- Set the `properties.replication.enabled` property to `true`.
-- Set the `properties.replication.location` property to a supported region in the same region group as the workspace primary region.
-
-For example:
-
-```json
-{
-  "type": "Microsoft.OperationalInsights/workspaces",
-  "apiVersion": "2023-01-01-preview",
-  "name": "[parameters('name')]",
-  "location": "westeurope",
-  "properties": {
-    "replication": {
-      "enabled": true,
-      "location": "northeurope"
-    },
-    "publicNetworkAccessForIngestion": "Enabled",
-    "publicNetworkAccessForQuery": "Enabled",
-    "retentionInDays": 30,
-    "sku": {
-      "name": "PERGB2018"
-    }
-  }
-}
-```
-
 ### Configure with Bicep
 
-To deploy Log Analytics workspaces that pass this rule:
+To deploy log workspaces that pass this rule:
 
 - Set the `properties.replication.enabled` property to `true`.
 - Set the `properties.replication.location` property to a supported region in the same region group as the workspace primary region.
@@ -76,29 +47,53 @@ To deploy Log Analytics workspaces that pass this rule:
 For example:
 
 ```bicep
-resource workspace 'Microsoft.OperationalInsights/workspaces@2023-01-01-preview' = {
+resource workspace 'Microsoft.OperationalInsights/workspaces@2025-02-01' = {
   name: name
-  location: 'westeurope'
+  location: location
   properties: {
     replication: {
       enabled: true
-      location: 'northeurope'
+      location: secondaryLocation
     }
     publicNetworkAccessForIngestion: 'Enabled'
     publicNetworkAccessForQuery: 'Enabled'
     retentionInDays: 30
     sku: {
-      name: 'PERGB2018'
+      name: 'PerGB2018'
     }
   }
 }
 ```
 
-## NOTES
+### Configure with Azure template
 
-This feature for Log Analytics workspaces is currently in preview.
+To deploy log workspaces that pass this rule:
 
-Replication of Log Analytics workspaces linked to a dedicated cluster is currently not supported.
+- Set the `properties.replication.enabled` property to `true`.
+- Set the `properties.replication.location` property to a supported region in the same region group as the workspace primary region.
+
+For example:
+
+```json
+    {
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2025-02-01",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "replication": {
+          "enabled": true,
+          "location": "[parameters('secondaryLocation')]"
+        },
+        "publicNetworkAccessForIngestion": "Enabled",
+        "publicNetworkAccessForQuery": "Enabled",
+        "retentionInDays": 30,
+        "sku": {
+          "name": "PerGB2018"
+        }
+      }
+    }
+```
 
 ## LINKS
 

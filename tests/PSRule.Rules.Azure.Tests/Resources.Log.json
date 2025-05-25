@@ -36,7 +36,7 @@
     "type": "Microsoft.OperationalInsights/workspaces",
     "apiVersion": "2023-01-01-preview",
     "name": "workspace-b",
-    "location": "westeurope",
+    "location": "australiaeast",
     "tags": {
       "Resource": "Log Analytics Workspace"
     },
@@ -52,7 +52,7 @@
       },
       "replication": {
         "enabled": false,
-        "location": "northeurope"
+        "location": "Australia Southeast"
       },
       "publicNetworkAccessForIngestion": "Enabled",
       "publicNetworkAccessForQuery": "Enabled",

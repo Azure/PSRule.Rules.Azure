@@ -1,22 +1,36 @@
 ---
-reviewed: 2021-12-20
+reviewed: 2025-05-25
 severity: Awareness
 pillar: Operational Excellence
-category: OE:04 Continuous integration
+category: OE:04 Tools and processes
 resource: Application Insights
 resourceType: Microsoft.Insights/components
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppInsights.Name/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.AppInsights.Naming/
 ---
 
-# Use valid Application Insights resource names
+# Application Insights resources must use standard naming
 
 ## SYNOPSIS
 
-Azure Resource Manager (ARM) has requirements for Application Insights resource names.
+Application Insights resources without a standard naming convention may be difficult to identify and manage.
 
 ## DESCRIPTION
 
-When naming Azure resources, resource names must meet service requirements.
+An effective naming convention allows operators to quickly identify resources, related systems, and their purpose.
+Identifying resources easily is important to improve operational efficiency, reduce the time to respond to incidents,
+and minimize the risk of human error.
+
+Some of the benefits of using standardized tagging and naming conventions are:
+
+- They provide consistency and clarity for resource identification and discovery across the Azure Portal, CLIs, and APIs.
+- They enable filtering and grouping of resources for billing, monitoring, security, and compliance purposes.
+- They support resource lifecycle management, such as provisioning, decommissioning, backup, and recovery.
+
+For example, if you come upon a security incident, it's critical to quickly identify affected systems,
+the functions that those systems support, and the potential business impact.
+
+For Application Insights, the Cloud Adoption Framework (CAF) recommends using the `appi-` prefix.
+
 The requirements for Application Insights resource names are:
 
 - Between 1 and 255 characters long.
@@ -26,8 +40,8 @@ The requirements for Application Insights resource names are:
 
 ## RECOMMENDATION
 
-Consider using names that meet Application Insights resource naming requirements.
-Additionally consider naming resources with a standard naming convention.
+Consider creating Application Insights with a standard name.
+Additionally consider using Azure Policy to only permit creation using a standard naming convention.
 
 ## EXAMPLES
 
@@ -118,11 +132,26 @@ For example:
 
 This rule does not check if Application Insights resource names are unique.
 
+<!-- caf:note name-format -->
+
+### Rule configuration
+
+<!-- module:config rule AZURE_APP_INSIGHTS_NAME_FORMAT -->
+
+To configure this rule set the `AZURE_APP_INSIGHTS_NAME_FORMAT` configuration to a regular expression
+that matches the required format.
+
+For example:
+
+```yaml
+configuration:
+  AZURE_APP_INSIGHTS_NAME_FORMAT: '^appi-'
+```
+
 ## LINKS
 
-- [OE:04 Continuous integration](https://learn.microsoft.com/azure/well-architected/operational-excellence/release-engineering-continuous-integration)
-- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [OE:04 Tools and processes](https://learn.microsoft.com/azure/well-architected/operational-excellence/tools-processes)
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
-- [Parameters in Bicep](https://learn.microsoft.com/azure/azure-resource-manager/bicep/parameters)
-- [Bicep functions](https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions)
+- [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
+- [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
 - [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.insights/components)

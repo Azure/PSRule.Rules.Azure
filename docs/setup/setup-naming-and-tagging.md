@@ -227,11 +227,13 @@ Rule                                | Resource type                             
 ----                                | -------------                               | -------------------
 `Azure.Search.Naming`               | `Microsoft.Search/searchServices`           | `AZURE_AI_SEARCH_NAME_FORMAT`
 `Azure.AI.Naming`                   | `Microsoft.CognitiveServices/accounts`      | `AZURE_AI_SERVICES_NAME_FORMAT`
+`Azure.AppInsights.Naming`          | `Microsoft.Insights/components`             | `AZURE_APP_INSIGHTS_NAME_FORMAT`
 `Azure.EventGrid.DomainNaming`      | `Microsoft.EventGrid/domains`               | `AZURE_EVENTGRID_DOMAIN_NAME_FORMAT`
 `Azure.EventGrid.TopicNaming`       | `Microsoft.EventGrid/topics`, `Microsoft.EventGrid/domains/topics` | `AZURE_EVENTGRID_CUSTOM_TOPIC_NAME_FORMAT`
 `Azure.EventGrid.SystemTopicNaming` | `Microsoft.EventGrid/systemTopics`          | `AZURE_EVENTGRID_SYSTEM_TOPIC_NAME_FORMAT`
 `Azure.VNG.ConnectionNaming`        | `Microsoft.Network/connections`             | `AZURE_GATEWAY_CONNECTION_NAME_FORMAT`
 `Azure.LB.Naming`                   | `Microsoft.Network/loadBalancers`           | `AZURE_LOAD_BALANCER_NAME_FORMAT`
+`Azure.Log.Naming`                  | `Microsoft.OperationalInsights/workspaces`  | `AZURE_LOG_WORKSPACE_NAME_FORMAT`
 `Azure.NSG.Naming`                  | `Microsoft.Network/networkSecurityGroups`   | `AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT`
 `Azure.PublicIP.Naming`             | `Microsoft.Network/publicIPAddresses`       | `AZURE_PUBLIC_IP_ADDRESS_NAME_FORMAT`
 `Azure.Group.Naming`                | `Microsoft.Resources/resourceGroups`        | `AZURE_RESOURCE_GROUP_NAME_FORMAT`

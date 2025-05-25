@@ -1,0 +1,63 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Rules for Azure Monitor
+#
+
+#region Rules
+
+---
+# Synopsis: Log Analytics workspaces should have workspace replication enabled to improve service availability.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Log.Replication
+  ref: AZR-000425
+  alias:
+    - Azure.LogAnalytics.Replication
+  tags:
+    release: GA
+    ruleSet: 2025_06
+    Azure.WAF/pillar: Reliability
+spec:
+  type:
+    - Microsoft.OperationalInsights/workspaces
+  where:
+    field: properties.features.clusterResourceId
+    hasValue: false
+  condition:
+    allOf:
+      - field: properties.replication.enabled
+        equals: true
+      - field: properties.replication.location
+        hasValue: true
+
+---
+# Synopsis: Azure Resource Manager (ARM) has requirements for Azure Monitor Log workspace names.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.Log.Name
+  ref: AZR-000486
+  tags:
+    release: GA
+    ruleSet: 2025_06
+    Azure.WAF/pillar: Operational Excellence
+  labels:
+    Azure.CAF: naming
+spec:
+  type:
+    - Microsoft.OperationalInsights/workspaces
+  condition:
+    allOf:
+      - name: '.'
+        greaterOrEquals: 4
+      - name: '.'
+        lessOrEquals: 63
+      # The name must contain between 4 to 63 characters inclusive.
+      # The name only allows alphanumeric characters and hyphens and must start and end with alphanumeric.
+      - name: '.'
+        match: '^[a-z0-9][a-z0-9-]{2,61}[a-z0-9]$'
+
+#endregion Rules

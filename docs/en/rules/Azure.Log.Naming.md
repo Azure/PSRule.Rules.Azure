@@ -1,18 +1,18 @@
 ---
-reviewed: 2025-04-25
+reviewed: 2025-05-25
 severity: Awareness
 pillar: Operational Excellence
 category: OE:04 Tools and processes
-resource: Route table
-resourceType: Microsoft.Network/routeTables
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Route.Naming/
+resource: Azure Monitor Logs
+resourceType: Microsoft.OperationalInsights/workspaces
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.Log.Naming/
 ---
 
-# Route tables must use standard naming
+# Log workspaces must use standard naming
 
 ## SYNOPSIS
 
-Route tables without a standard naming convention may be difficult to identify and manage.
+Azure Monitor Log workspaces without a standard naming convention may be difficult to identify and manage.
 
 ## DESCRIPTION
 
@@ -29,25 +29,25 @@ Some of the benefits of using standardized tagging and naming conventions are:
 For example, if you come upon a security incident, it's critical to quickly identify affected systems,
 the functions that those systems support, and the potential business impact.
 
-For route tables, the Cloud Adoption Framework (CAF) recommends using the `rt-` prefix.
+For Azure Monitor Log workspaces, the Cloud Adoption Framework (CAF) recommends using the `log-` prefix.
 
-Requirements for route table names:
+The requirements for Azure Monitor Log workspace names are:
 
-- At least 1 character, but no more than 80.
-- Can include alphanumeric, underscore, hyphen, period characters.
-- Can only start with a letter or number, and end with a letter, number or underscore.
-- Route table names must be unique within a resource group.
+- Between 3 and 63 characters long.
+- Letters, numbers, and hyphens.
+- Must start and end with a letter or number.
+- Resource names must be unique within a resource group.
 
 ## RECOMMENDATION
 
-Consider creating route tables with a standard name.
+Consider creating Azure Monitor Log workspaces with a standard name.
 Additionally consider using Azure Policy to only permit creation using a standard naming convention.
 
 ## EXAMPLES
 
 ### Configure with Bicep
 
-To deploy Route Tables that pass this rule:
+To deploy workspaces that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -55,29 +55,43 @@ To deploy Route Tables that pass this rule:
 For example:
 
 ```bicep
-@minLength(1)
-@maxLength(80)
+@minLength(4)
+@maxLength(63)
 @description('The name of the resource.')
 param name string
 
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-resource routeTable 'Microsoft.Network/routeTables@2024-05-01' = {
+param secondaryLocation string
+
+// An example Log Analytics workspace with replication enabled.
+resource workspace 'Microsoft.OperationalInsights/workspaces@2025-02-01' = {
   name: name
   location: location
   properties: {
-    disableBgpRoutePropagation: false
-    routes: []
+    replication: {
+      enabled: true
+      location: secondaryLocation
+    }
+    publicNetworkAccessForIngestion: 'Enabled'
+    publicNetworkAccessForQuery: 'Enabled'
+    retentionInDays: 30
+    features: {
+      disableLocalAuth: true
+    }
+    sku: {
+      name: 'PerGB2018'
+    }
   }
 }
 ```
 
-<!-- external:avm avm/res/network/route-table name -->
+<!-- external:avm avm/res/operational-insights/workspace name -->
 
 ### Configure with Azure template
 
-To deploy Route Tables that pass this rule:
+To deploy workspaces that pass this rule:
 
 - Set the `name` property to a string that matches the naming requirements.
 - Optionally, consider constraining name parameters with `minLength` and `maxLength` attributes.
@@ -88,18 +102,11 @@ For example:
 {
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
-  "metadata": {
-    "_generator": {
-      "name": "bicep",
-      "version": "0.34.44.8038",
-      "templateHash": "12779212299580018014"
-    }
-  },
   "parameters": {
     "name": {
       "type": "string",
-      "minLength": 1,
-      "maxLength": 80,
+      "minLength": 4,
+      "maxLength": 63,
       "metadata": {
         "description": "The name of the resource."
       }
@@ -110,17 +117,31 @@ For example:
       "metadata": {
         "description": "The location resources will be deployed."
       }
+    },
+    "secondaryLocation": {
+      "type": "string"
     }
   },
   "resources": [
     {
-      "type": "Microsoft.Network/routeTables",
-      "apiVersion": "2024-05-01",
+      "type": "Microsoft.OperationalInsights/workspaces",
+      "apiVersion": "2025-02-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "properties": {
-        "disableBgpRoutePropagation": false,
-        "routes": []
+        "replication": {
+          "enabled": true,
+          "location": "[parameters('secondaryLocation')]"
+        },
+        "publicNetworkAccessForIngestion": "Enabled",
+        "publicNetworkAccessForQuery": "Enabled",
+        "retentionInDays": 30,
+        "features": {
+          "disableLocalAuth": true
+        },
+        "sku": {
+          "name": "PerGB2018"
+        }
       }
     }
   ]
@@ -129,22 +150,22 @@ For example:
 
 ## NOTES
 
-This rule does not check if route table names are unique.
+This rule does not check if workspaces names are unique.
 
 <!-- caf:note name-format -->
 
 ### Rule configuration
 
-<!-- module:config rule AZURE_ROUTE_TABLE_NAME_FORMAT -->
+<!-- module:config rule AZURE_LOG_WORKSPACE_NAME_FORMAT -->
 
-To configure this rule set the `AZURE_ROUTE_TABLE_NAME_FORMAT` configuration to a regular expression
+To configure this rule set the `AZURE_LOG_WORKSPACE_NAME_FORMAT` configuration to a regular expression
 that matches the required format.
 
 For example:
 
 ```yaml
 configuration:
-  AZURE_ROUTE_TABLE_NAME_FORMAT: '^rt-'
+  AZURE_LOG_WORKSPACE_NAME_FORMAT: '^log-'
 ```
 
 ## LINKS
@@ -153,4 +174,4 @@ configuration:
 - [Recommended abbreviations for Azure resource types](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-abbreviations)
 - [Naming rules and restrictions for Azure resources](https://learn.microsoft.com/azure/azure-resource-manager/management/resource-name-rules)
 - [Define your naming convention](https://learn.microsoft.com/azure/cloud-adoption-framework/ready/azure-best-practices/resource-naming)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.network/routetables)
+- [Azure resource deployment](https://learn.microsoft.com/azure/templates/microsoft.operationalinsights/workspaces)
