@@ -76,11 +76,6 @@ nav:
     - Samples: samples.md
     - License and contributing:
       - license-contributing/index.md
-      - Get started contributing: license-contributing/get-started-contributing.md
-      - Getting started with contributions: license-contributing/getting-started-with-documentation.md
-      - Writing documentation: license-contributing/writing-documentation.md
-      - Expansion internals: license-contributing/expansion-internals.md
-      - Past hackathons: license-contributing/hackathons.md
     - Related projects: related-projects.md
     - Support: support.md
   - Updates:
@@ -103,6 +98,12 @@ nav:
     - By pillar: en/rules/module.md
     - By resource: en/rules/resource.md
     - Microsoft Cloud Security Benchmark: en/mcsb-v1.md
+  - Contribute:
+    - Get started contributing: license-contributing/get-started-contributing.md
+    - Getting started with contributions: license-contributing/getting-started-with-documentation.md
+    - Writing documentation: license-contributing/writing-documentation.md
+    - Expansion internals: license-contributing/expansion-internals.md
+    - Past hackathons: license-contributing/hackathons.md
   - Learn:
     - Learn PSRule for Azure series: learn/learn-video-series.md
     - Official learning: learn/official.md

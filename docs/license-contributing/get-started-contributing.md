@@ -120,7 +120,7 @@ What you can expect from review and approval of your contribution:
 - Keep up with the latest changes in the project by regularly pulling updates from the upstream repository.
 - Share feedback and help others when possible.
 
-## Further resources
+## Related content
 
 - [Contributing Guide](https://github.com/Azure/PSRule.Rules.Azure/blob/main/CONTRIBUTING.md) – Detailed guidelines for contributing to the project.
 - [PSRule Documentation](https://github.com/microsoft/PSRule) – Learn about the PSRule engine used in this project.
