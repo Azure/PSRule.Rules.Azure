@@ -1,5 +1,5 @@
 ---
-reviewed: 2025-05-20
+reviewed: 2025-05-25
 severity: Important
 pillar: Security
 category: SE:01 Security baseline
@@ -21,7 +21,8 @@ Many organizations have requirements or legal obligations that limit where data 
 This is commonly known as data residency.
 
 Entra managed domains are deployed into a primary region and can be additionally replicated to additional regions.
-Each of these regions is called a replica set, which both stores and processes data in that region.
+Each of these regions is called a replica set.
+The replica set hold directory data which is stored, processed, and subject to local legal requirements in that region.
 
 To align with your organizational requirements, you may choose to limit the regions that replica sets can be deployed to.
 This allows you to ensure that resources are deployed to regions that meet your data residency requirements.

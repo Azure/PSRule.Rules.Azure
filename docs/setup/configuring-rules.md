@@ -498,6 +498,38 @@ configuration:
   AZURE_APIM_MIN_API_VERSION: '2021-12-01-preview'
 ```
 
+### AZURE_APP_INSIGHTS_NAME_FORMAT
+
+<!-- module:version v1.44.0 -->
+<!-- module:rule Azure.AppInsights.Naming -->
+<!-- module:resource Microsoft.Insights/components -->
+
+This configuration option specifies a regular expression that defines the naming format for Application Insights resources.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_APP_INSIGHTS_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_APP_INSIGHTS_NAME_FORMAT configuration option
+configuration:
+  AZURE_APP_INSIGHTS_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_APP_INSIGHTS_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_APP_INSIGHTS_NAME_FORMAT: '^appi-'
+```
+
 ### AZURE_AUTOMATIONACCOUNT_ENABLED_PLATFORM_LOG_CATEGORIES_LIST
 
 This configuration option sets selective platform diagnostic categories to report on being enabled.
@@ -893,6 +925,38 @@ configuration:
   AZURE_LOAD_BALANCER_NAME_FORMAT: 'lb-{name}'
 ```
 
+### AZURE_LOG_WORKSPACE_NAME_FORMAT
+
+<!-- module:version v1.44.0 -->
+<!-- module:rule Azure.Log.Naming -->
+<!-- module:resource Microsoft.OperationalInsights/workspaces -->
+
+This configuration option specifies a regular expression that defines the naming format for Azure Monitor Log workspace resources.
+When this configuration option is not set, any name is considered valid.
+
+Syntax:
+
+```yaml title="ps-rule.yaml"
+configuration:
+  AZURE_LOG_WORKSPACE_NAME_FORMAT: string
+```
+
+Default:
+
+```yaml title="ps-rule.yaml"
+# YAML: The default AZURE_LOG_WORKSPACE_NAME_FORMAT configuration option
+configuration:
+  AZURE_LOG_WORKSPACE_NAME_FORMAT: ''
+```
+
+Example:
+
+```yaml title="ps-rule.yaml"
+# YAML: Set the AZURE_LOG_WORKSPACE_NAME_FORMAT configuration option to a specific format
+configuration:
+  AZURE_LOG_WORKSPACE_NAME_FORMAT: '^log-'
+```
+
 ### AZURE_NETWORK_SECURITY_GROUP_NAME_FORMAT
 
 <!-- module:version v1.43.0 -->
@@ -992,6 +1056,7 @@ configuration:
 <!-- module:version v1.30.0 -->
 <!-- module:rule Azure.Resource.AllowedRegions -->
 <!-- module:rule Azure.EntraDS.ReplicaLocation -->
+<!-- module:rule Azure.Log.ReplicaLocation -->
 
 This configuration option specifies a list of allowed locations that resources can be deployed to.
 Rules that check the location of Azure resources fail when a resource or resource group is created in a different region.

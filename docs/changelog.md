@@ -33,6 +33,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.44.0-B0011:
 
 - New rules:
+  - Application Insights:
+    - Check that local authentication is disabled by @BernieWhite.
+      [#3374](https://github.com/Azure/PSRule.Rules.Azure/issues/3374)
+    - Check application insights resources matches configured name format by @BernieWhite.
+      [#3375](https://github.com/Azure/PSRule.Rules.Azure/issues/3375)
+      - The name format can be configured by the `AZURE_APP_INSIGHTS_NAME_FORMAT` configuration option.
   - Entra Domain Services:
     - Check that the SKU supports geo-replication by @BernieWhite.
       [#3355](https://github.com/Azure/PSRule.Rules.Azure/issues/3355)
@@ -40,6 +46,16 @@ What's changed since pre-release v1.44.0-B0011:
       [#3364](https://github.com/Azure/PSRule.Rules.Azure/issues/3364)
     - Check that replicas are located in allowed locations by @BernieWhite.
       [#3365](https://github.com/Azure/PSRule.Rules.Azure/issues/3365)
+      - Configure the `AZURE_RESOURCE_ALLOWED_LOCATIONS` configuration option to specify allowed locations.
+  - Monitor Logs:
+    - Check that log workspaces replicate to allowed locations by @BernieWhite.
+      [#3373](https://github.com/Azure/PSRule.Rules.Azure/issues/3373)
+      - Configure the `AZURE_RESOURCE_ALLOWED_LOCATIONS` configuration option to specify allowed locations.
+    - Check that log workspaces meet the service naming requirements by @BernieWhite.
+      [#3376](https://github.com/Azure/PSRule.Rules.Azure/issues/3376)
+    - Check log workspaces matches configured name format by @BernieWhite.
+      [#3376](https://github.com/Azure/PSRule.Rules.Azure/issues/3376)
+      - The name format can be configured by the `AZURE_LOG_WORKSPACE_NAME_FORMAT` configuration option.
 - Updated rules:
   - Deployment:
     - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
@@ -49,6 +65,10 @@ What's changed since pre-release v1.44.0-B0011:
         - `Microsoft.DocumentDB/mongoClusters`
       - Added new sensitive properties to:
         - `Microsoft.AAD/domainServices`
+  - Monitor Logs:
+    - Updated documentation and promoted `Azure.Log.Replication` to GA by @BernieWhite.
+      [#3372](https://github.com/Azure/PSRule.Rules.Azure/issues/3372)
+      - This rule was renamed from `Azure.LogAnalytics.Replication` to `Azure.Log.Replication` to drop the legacy name.
 
 ## v1.44.0-B0011 (pre-release)
 

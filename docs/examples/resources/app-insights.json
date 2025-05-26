@@ -4,15 +4,17 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.4.1124.51302",
-      "templateHash": "9444962656265745391"
+      "version": "0.35.1.17967",
+      "templateHash": "8054245111667921954"
     }
   },
   "parameters": {
     "name": {
       "type": "string",
+      "minLength": 1,
+      "maxLength": 255,
       "metadata": {
-        "description": "The name of the App Configuration Store."
+        "description": "The name of the resource."
       }
     },
     "location": {
@@ -25,7 +27,7 @@
     "workspaceId": {
       "type": "string",
       "metadata": {
-        "description": "The unique resource Id of a Log Analytics workspace."
+        "description": "The unique resource Id of a Log Analytics workspace to store logs."
       }
     }
   },
@@ -40,7 +42,8 @@
         "Application_Type": "web",
         "Flow_Type": "Redfield",
         "Request_Source": "IbizaAIExtension",
-        "WorkspaceResourceId": "[parameters('workspaceId')]"
+        "WorkspaceResourceId": "[parameters('workspaceId')]",
+        "DisableLocalAuth": true
       }
     }
   ]

@@ -24,54 +24,6 @@ BeforeAll {
 }
 
 Describe 'Azure.Route' -Tag 'Network', 'Route' {
-    Context 'Resource name - Azure.Route.Name' {
-        BeforeAll {
-            $invokeParams = @{
-                Baseline = 'Azure.All'
-                Module = 'PSRule.Rules.Azure'
-                WarningAction = 'Ignore'
-                ErrorAction = 'Stop'
-            }
-
-            $testObject = [PSCustomObject]@{
-                Name = ''
-                ResourceType = 'Microsoft.Network/routeTables'
-            }
-        }
-
-        BeforeDiscovery {
-            $validNames = @(
-                'rt-001'
-                'rt-001_'
-                'RT.001'
-                'r'
-            )
-
-            $invalidNames = @(
-                '_rt-001'
-                '-rt-001'
-                'rt-001-'
-                'rt-001.'
-            )
-        }
-
-        # Pass
-        It '<_>' -ForEach $validNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Route.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Pass';
-        }
-
-        # Fail
-        It '<_>' -ForEach $invalidNames {
-            $testObject.Name = $_;
-            $ruleResult = $testObject | Invoke-PSRule @invokeParams -Name 'Azure.Route.Name';
-            $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Outcome | Should -Be 'Fail';
-        }
-    }
-
     Context 'Resource name' {
         BeforeAll {
             $invokeParams = @{

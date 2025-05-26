@@ -3,16 +3,18 @@
 
 // Bicep documentation examples
 
-@description('The name of the App Configuration Store.')
+@minLength(1)
+@maxLength(255)
+@description('The name of the resource.')
 param name string
 
 @description('The location resources will be deployed.')
 param location string = resourceGroup().location
 
-@description('The unique resource Id of a Log Analytics workspace.')
+@description('The unique resource Id of a Log Analytics workspace to store logs.')
 param workspaceId string
 
-// An example Application Insights workspace
+// An example Application Insights resource
 resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
   name: name
   location: location
@@ -22,5 +24,6 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
     Flow_Type: 'Redfield'
     Request_Source: 'IbizaAIExtension'
     WorkspaceResourceId: workspaceId
+    DisableLocalAuth: true
   }
 }
