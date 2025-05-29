@@ -103,7 +103,7 @@ nav:
     - Writing documentation: license-contributing/writing-documentation.md
     - Rules:
       - Prerequisites: contribute/rule-prerequisites.md
-      - Create a rule: contribute/rule-creation.md
+      - Create or update a rule: contribute/rule-creation.md
       - Get started contributing: license-contributing/get-started-contributing.md
       - Getting started with contributions: license-contributing/getting-started-with-documentation.md
     - Resources:
