@@ -19,7 +19,7 @@ You may want to use PSRule to enforce tagging or something similar early in a De
 Within the `.ps-rule` sub-directory create a new file called `Org.Azure.Rule.ps1`.
 Use the following snippet to populate the rule file:
 
-```powershell
+```powershell title="PowerShell"
 # Synopsis: Resource Groups must have all mandatory tags defined.
 Rule 'Org.Azure.RG.Tags' -Type 'Microsoft.Resources/resourceGroups' {
     $hasTags = $Assert.HasField($TargetObject, 'Tags')
@@ -51,7 +51,7 @@ Some key points to call out with the rule snippet include:
 
 To require specific tags to be configured on Resource Groups append this code to the rule.
 
-```powershell
+```powershell title="PowerShell"
 # Require tags be case-sensitive
 $Assert.HasField($TargetObject.tags, 'costCentre', <# case-sensitive #> $True)
 $Assert.HasField($TargetObject.tags, 'env', $True)
@@ -66,7 +66,7 @@ Some key points to call out include:
 ???+ Example "Updated Rule"
     The updated rule should look like:
 
-    ```powershell
+    ```powershell title="PowerShell"
     # Synopsis: Resource Groups must have all mandatory tags defined.
     Rule 'Org.Azure.RG.Tags' -Type 'Microsoft.Resources/resourceGroups' {
         $hasTags = $Assert.HasField($TargetObject, 'Tags')
@@ -84,7 +84,7 @@ Some key points to call out include:
 
 To require these tags to only accept allowed values, append this code to the rule.
 
-```powershell
+```powershell title="PowerShell"
 <#
 The costCentre tag must:
 - Start with a letter.
@@ -109,7 +109,7 @@ i.e. `tags.costCentre`.
 ???+ Example "Completed rule"
     The completed rule should look like:
 
-    ```powershell
+    ```powershell title="PowerShell"
     # Synopsis: Resource Groups must have all mandatory tags defined.
     Rule 'Org.Azure.RG.Tags' -Type 'Microsoft.Resources/resourceGroups' {
         $hasTags = $Assert.HasField($TargetObject, 'Tags')

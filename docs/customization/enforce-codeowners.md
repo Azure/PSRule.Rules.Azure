@@ -23,7 +23,7 @@ In the context of Azure Infrastructure as Code (IaC) - Azure Bicep/ ARM template
 
 - Add, change, or remove infrastructure components.
 - Include sensitive changes such as updates to firewall rules or policy exemptions.
-- Introduce concerns that sentitive changes could be moved to a different file path to bypass review by a specific team.
+- Introduce concerns that sensitive changes could be moved to a different file path to bypass review by a specific team.
 
 PSRule allows teams to layer on additional rules to ensure Azure resources fall within the paths expected by code ownership.
 
@@ -38,7 +38,7 @@ PSRule allows teams to layer on additional rules to ensure Azure resources fall 
 Within the `.ps-rule/` sub-directory create a new file called `Org.Azure.Rule.ps1`.
 Use the following snippet to populate the rule file:
 
-```powershell
+```powershell title="PowerShell"
 # Synopsis: Policy exemptions must be stored under designated paths for review.
 Rule 'Org.Azure.Policy.Path' -Type 'Microsoft.Authorization/policyExemptions' {
     $Assert.WithinPath($PSRule.Source['Parameter'], '.', @(

@@ -1,6 +1,6 @@
 ---
-generated: True
 title: Reference
+generated: True
 ---
 
 # Reference
@@ -90,7 +90,7 @@ AZR-000066 | [Azure.AppGw.WAFEnabled](Azure.AppGw.WAFEnabled.md) | Application G
 AZR-000067 | [Azure.AppGw.OWASP](Azure.AppGw.OWASP.md) | Application Gateway Web Application Firewall (WAF) should use OWASP 3.x rules. | GA
 AZR-000068 | [Azure.AppGw.WAFRules](Azure.AppGw.WAFRules.md) | Application Gateway Web Application Firewall (WAF) should have all rules enabled. | GA
 AZR-000069 | [Azure.AppInsights.Workspace](Azure.AppInsights.Workspace.md) | Configure Application Insights resources to store data in a workspace. | GA
-AZR-000070 | [Azure.AppInsights.Name](Azure.AppInsights.Name.md) | Azure Application Insights resources names should meet naming requirements. | GA
+AZR-000070 | [Azure.AppInsights.Name](Azure.AppInsights.Name.md) | Azure Resource Manager (ARM) has requirements for Application Insights resource names. | GA
 AZR-000071 | [Azure.AppService.PlanInstanceCount](Azure.AppService.PlanInstanceCount.md) | App Service Plan should use a minimum number of instances for failover. | GA
 AZR-000072 | [Azure.AppService.MinPlan](Azure.AppService.MinPlan.md) | Use at least a Standard App Service Plan. | GA
 AZR-000073 | [Azure.AppService.MinTLS](Azure.AppService.MinTLS.md) | App Service should not accept weak or deprecated transport protocols for client-server communication. | GA
@@ -187,7 +187,7 @@ AZR-000163 | [Azure.Redis.NonSslPort](Azure.Redis.NonSslPort.md) | Azure Cache f
 AZR-000164 | [Azure.Redis.MinTLS](Azure.Redis.MinTLS.md) | Redis Cache should reject TLS versions older than 1.2. | GA
 AZR-000165 | [Azure.Redis.PublicNetworkAccess](Azure.Redis.PublicNetworkAccess.md) | Redis cache should disable public network access. | GA
 AZR-000166 | [Azure.Resource.UseTags](Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | GA
-AZR-000167 | [Azure.Resource.AllowedRegions](Azure.Resource.AllowedRegions.md) | Resources should be deployed to allowed regions. | GA
+AZR-000167 | [Azure.Resource.AllowedRegions](Azure.Resource.AllowedRegions.md) | The deployment location of a resource determines the country or region where metadata and data is stored and processed. | GA
 AZR-000168 | [Azure.Group.Name](Azure.Group.Name.md) | Azure Resource Manager (ARM) has requirements for Resource Groups names. | GA
 AZR-000169 | [Azure.Route.Name](Azure.Route.Name.md) | Azure Resource Manager (ARM) has requirements for Route table names. | GA
 AZR-000170 | [Azure.RSV.StorageType](Azure.RSV.StorageType.md) | Recovery Services Vaults (RSV) not using geo-replicated storage (GRS) may be at risk. | GA
@@ -445,7 +445,7 @@ AZR-000421 | [Azure.Cosmos.PublicAccess](Azure.Cosmos.PublicAccess.md) | Azure C
 AZR-000422 | [Azure.EventHub.Firewall](Azure.EventHub.Firewall.md) | Access to the namespace endpoints should be restricted to only allowed sources. | GA
 AZR-000423 | [Azure.AppGw.MigrateWAFPolicy](Azure.AppGw.MigrateWAFPolicy.md) | Migrate to Application Gateway WAF policy. | GA
 AZR-000424 | [Azure.Grafana.Version](Azure.Grafana.Version.md) | Grafana workspaces should be on Grafana version 10. | GA
-AZR-000425 | [Azure.LogAnalytics.Replication](Azure.LogAnalytics.Replication.md) | Log Analytics workspaces should have workspace replication enabled to improve service availability. | Preview
+AZR-000425 | [Azure.Log.Replication](Azure.Log.Replication.md) | Log Analytics workspaces should have workspace replication enabled to improve service availability. | GA
 AZR-000426 | [Azure.VMSS.AutoInstanceRepairs](Azure.VMSS.AutoInstanceRepairs.md) | Automatic instance repairs are enabled. | Preview
 AZR-000427 | [Azure.Redis.EntraID](Azure.Redis.EntraID.md) | Use Entra ID authentication with cache instances. | GA
 AZR-000428 | [Azure.AppService.NodeJsVersion](Azure.AppService.NodeJsVersion.md) | Configure applications to use supported Node.js runtime versions. | GA
@@ -499,5 +499,13 @@ AZR-000476 | [Azure.VNG.Naming](Azure.VNG.Naming.md) | Virtual network gateway w
 AZR-000477 | [Azure.Resource.RequiredTags](Azure.Resource.RequiredTags.md) | Resources without a standard tagging convention may be difficult to identify and manage. | GA
 AZR-000478 | [Azure.Group.RequiredTags](Azure.Group.RequiredTags.md) | Resource groups without a standard tagging convention may be difficult to identify and manage. | GA
 AZR-000479 | [Azure.Subscription.RequiredTags](Azure.Subscription.RequiredTags.md) | Subscriptions without a standard tagging convention may be difficult to identify and manage. | GA
+AZR-000480 | [Azure.EntraDS.SKU](Azure.EntraDS.SKU.md) | The default SKU for Microsoft Entra Domain Services supports resiliency in a single region. | GA
+AZR-000481 | [Azure.EntraDS.MinReplicas](Azure.EntraDS.MinReplicas.md) | Applications or infrastructure relying on a managed domain may fail if the domain is not available. | GA
+AZR-000482 | [Azure.EntraDS.ReplicaLocation](Azure.EntraDS.ReplicaLocation.md) | The location of a replica set determines the country or region where the data is stored and processed. | GA
+AZR-000483 | [Azure.Log.ReplicaLocation](Azure.Log.ReplicaLocation.md) | The replication location determines the country or region where the data is stored and processed. | GA
+AZR-000484 | [Azure.AppInsights.LocalAuth](Azure.AppInsights.LocalAuth.md) | Local authentication allows depersonalized access to store telemetry in Application Insights using a shared identifier. | GA
+AZR-000485 | [Azure.AppInsights.Naming](Azure.AppInsights.Naming.md) | Application Insights resources without a standard naming convention may be difficult to identify and manage. | GA
+AZR-000486 | [Azure.Log.Name](Azure.Log.Name.md) | Azure Resource Manager (ARM) has requirements for Azure Monitor Log workspace names. | GA
+AZR-000487 | [Azure.Log.Naming](Azure.Log.Naming.md) | Azure Monitor Log workspaces without a standard naming convention may be difficult to identify and manage. | GA
 
 *[GA]: Generally Available &mdash; Rules related to a generally available Azure features.

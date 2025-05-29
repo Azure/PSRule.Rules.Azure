@@ -16,14 +16,14 @@ Some of the documentation that you might like to improve includes:
 
 PSRule for Azure includes recommendations and expanded documentation with each rule.
 The recommendations are written in markdown and consumed by PSRule during analysis.
-This allows us to present easy to read web documentation without writing it separately for anaylsis.
+This allows us to present easy to read web documentation without writing it separately for analysis.
 
 As a result, PSRule does require rule documentation to be structured in a standard way.
 Also we have standards about the metadata we required to ensure there is consistency across documentation.
 
 Some key points for writing rule help:
 
-- **Aligned** &mdash; PSRule for Azure is aligned to the Microsoft Azure Well-Archtected Framework (WAF).
+- **Aligned** &mdash; PSRule for Azure is aligned to the Microsoft Azure Well-Architected Framework (WAF).
 - **Actionable** &mdash; Any recommendations **must** be clear and actionable.
   The reader must be able to understand:
   - What has been detected as an issue.

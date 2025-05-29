@@ -218,7 +218,7 @@ jobs:
   [8]: https://code.visualstudio.com/docs/sourcecontrol/overview#_commit
   [9]: https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request
 
-## Recommended content
+## Related content
 
 - [Testing Bicep modules][10]
 - [Restoring modules from a private registry][11]

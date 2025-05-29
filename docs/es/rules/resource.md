@@ -32,7 +32,7 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.Resource.AllowedRegions](Azure.Resource.AllowedRegions.md) | Resources should be deployed to allowed regions. | Important | Error
+[Azure.Resource.AllowedRegions](Azure.Resource.AllowedRegions.md) | The deployment location of a resource determines the country or region where metadata and data is stored and processed. | Important | Error
 [Azure.Resource.RequiredTags](Azure.Resource.RequiredTags.md) | Resources without a standard tagging convention may be difficult to identify and manage. | Awareness | Error
 [Azure.Resource.UseTags](Azure.Resource.UseTags.md) | Azure resources should be tagged using a standard convention. | Awareness | Error
 [Azure.Template.DebugDeployment](Azure.Template.DebugDeployment.md) | Use default deployment detail level for nested deployments. | Awareness | Error
@@ -151,7 +151,9 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
-[Azure.AppInsights.Name](Azure.AppInsights.Name.md) | Azure Application Insights resources names should meet naming requirements. | Awareness | Error
+[Azure.AppInsights.LocalAuth](Azure.AppInsights.LocalAuth.md) | Local authentication allows depersonalized access to store telemetry in Application Insights using a shared identifier. | Critical | Error
+[Azure.AppInsights.Name](Azure.AppInsights.Name.md) | Azure Resource Manager (ARM) has requirements for Application Insights resource names. | Awareness | Error
+[Azure.AppInsights.Naming](Azure.AppInsights.Naming.md) | Application Insights resources without a standard naming convention may be difficult to identify and manage. | Awareness | Error
 [Azure.AppInsights.Workspace](Azure.AppInsights.Workspace.md) | Configure Application Insights resources to store data in a workspace. | Important | Error
 
 ## Application Security Group
@@ -306,6 +308,15 @@ Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
 [Azure.Grafana.Version](Azure.Grafana.Version.md) | Grafana workspaces should be on Grafana version 10. | Important | Error
 
+## Azure Monitor Logs
+
+Name | Synopsis | Severity | Level
+---- | -------- | -------- | -----
+[Azure.Log.Name](Azure.Log.Name.md) | Azure Resource Manager (ARM) has requirements for Azure Monitor Log workspace names. | Awareness | Error
+[Azure.Log.Naming](Azure.Log.Naming.md) | Azure Monitor Log workspaces without a standard naming convention may be difficult to identify and manage. | Awareness | Error
+[Azure.Log.ReplicaLocation](Azure.Log.ReplicaLocation.md) | The replication location determines the country or region where the data is stored and processed. | Important | Error
+[Azure.Log.Replication](Azure.Log.Replication.md) | Log Analytics workspaces should have workspace replication enabled to improve service availability. | Important | Error
+
 ## Azure Virtual Desktop
 
 Name | Synopsis | Severity | Level
@@ -424,8 +435,11 @@ Name | Synopsis | Severity | Level
 
 Name | Synopsis | Severity | Level
 ---- | -------- | -------- | -----
+[Azure.EntraDS.MinReplicas](Azure.EntraDS.MinReplicas.md) | Applications or infrastructure relying on a managed domain may fail if the domain is not available. | Important | Error
 [Azure.EntraDS.NTLM](Azure.EntraDS.NTLM.md) | Disable NTLM v1 for Microsoft Entra Domain Services. | Critical | Error
 [Azure.EntraDS.RC4](Azure.EntraDS.RC4.md) | Disable RC4 encryption for Microsoft Entra Domain Services. | Critical | Error
+[Azure.EntraDS.ReplicaLocation](Azure.EntraDS.ReplicaLocation.md) | The location of a replica set determines the country or region where the data is stored and processed. | Important | Error
+[Azure.EntraDS.SKU](Azure.EntraDS.SKU.md) | The default SKU for Microsoft Entra Domain Services supports resiliency in a single region. | Important | Error
 [Azure.EntraDS.TLS](Azure.EntraDS.TLS.md) | Disable TLS v1 for Microsoft Entra Domain Services. | Critical | Error
 
 ## Event Grid
@@ -523,12 +537,6 @@ Name | Synopsis | Severity | Level
 [Azure.LB.Naming](Azure.LB.Naming.md) | Load balancer names should use a standard prefix. | Awareness | Error
 [Azure.LB.Probe](Azure.LB.Probe.md) | Use a specific probe for web protocols. | Important | Error
 [Azure.LB.StandardSKU](Azure.LB.StandardSKU.md) | Load balancers should be deployed with Standard SKU for production workloads. | Important | Error
-
-## Log Analytics
-
-Name | Synopsis | Severity | Level
----- | -------- | -------- | -----
-[Azure.LogAnalytics.Replication](Azure.LogAnalytics.Replication.md) | Log Analytics workspaces should have workspace replication enabled to improve service availability. | Important | Error
 
 ## Logic App
 
