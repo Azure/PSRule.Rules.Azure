@@ -30,17 +30,23 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         '10.0.1.5'
       ]
     }
+    encryption: {
+      enabled: true
+      enforcement: 'AllowUnencrypted'
+    }
     subnets: [
       {
         name: 'GatewaySubnet'
         properties: {
           addressPrefix: '10.0.0.0/24'
+          defaultOutboundAccess: false
         }
       }
       {
         name: 'snet-001'
         properties: {
           addressPrefix: '10.0.1.0/24'
+          defaultOutboundAccess: false
           networkSecurityGroup: {
             id: nsgId
           }
@@ -50,6 +56,7 @@ resource vnet 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         name: 'snet-002'
         properties: {
           addressPrefix: '10.0.2.0/24'
+          defaultOutboundAccess: false
           delegations: [
             {
               name: 'HSM'
@@ -107,23 +114,30 @@ resource spoke 'Microsoft.Network/virtualNetworks@2024-05-01' = {
         '10.0.1.5'
       ]
     }
+    encryption: {
+      enabled: true
+      enforcement: 'AllowUnencrypted'
+    }
     subnets: [
       {
         name: 'GatewaySubnet'
         properties: {
           addressPrefix: '10.0.0.0/27'
+          defaultOutboundAccess: false
         }
       }
       {
         name: 'AzureFirewallSubnet'
         properties: {
           addressPrefix: '10.0.1.0/26'
+          defaultOutboundAccess: false
         }
       }
       {
         name: 'AzureBastionSubnet'
         properties: {
           addressPrefix: '10.0.1.64/26'
+          defaultOutboundAccess: false
         }
       }
     ]

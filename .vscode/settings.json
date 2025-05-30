@@ -102,6 +102,7 @@
     "NOTIN",
     "NSGs",
     "NTLM",
+    "overprovision",
     "OWASP",
     "Peerings",
     "POLICYDEFINITIONID",

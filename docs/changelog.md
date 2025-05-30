@@ -30,6 +30,18 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.44.0-B0027:
+
+- Updated rules:
+  - Virtual Network:
+    - Updated documentation and promoted `Azure.VNET.PrivateSubnet` to GA by @BernieWhite.
+      [#3386](https://github.com/Azure/PSRule.Rules.Azure/issues/3386)
+      - Bumped rule set to `2025_06`.
+  - Virtual Machine Scale Sets:
+    - Updated documentation and promoted `Azure.VMSS.AutoInstanceRepairs` to GA by @BernieWhite.
+      [#3378](https://github.com/Azure/PSRule.Rules.Azure/issues/3378)
+      - Bumped rule set to `2025_06`.
+
 ## v1.44.0-B0027 (pre-release)
 
 What's changed since pre-release v1.44.0-B0011:
@@ -71,6 +83,7 @@ What's changed since pre-release v1.44.0-B0011:
     - Updated documentation and promoted `Azure.Log.Replication` to GA by @BernieWhite.
       [#3372](https://github.com/Azure/PSRule.Rules.Azure/issues/3372)
       - This rule was renamed from `Azure.LogAnalytics.Replication` to `Azure.Log.Replication` to drop the legacy name.
+      - Bumped rule set to `2025_06`.
 
 ## v1.44.0-B0011 (pre-release)
 

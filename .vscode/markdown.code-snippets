@@ -88,6 +88,8 @@
     "body": [
       "### Configure with Azure CLI",
       "",
+      "To address this issue at runtime use the following CLI command:",
+      "",
       "```bash",
       "az ${1:command} -n '<name>' -g '<resource_group>'",
       "```"
@@ -99,6 +101,8 @@
     "description": "Example for Azure PowerShell",
     "body": [
       "### Configure with Azure PowerShell",
+      "",
+      "To address this issue at runtime use the following PowerShell command:",
       "",
       "```powershell",
       "${1:command} -Name '<name>' -ResourceGroupName '<resource_group>'",
@@ -136,7 +140,10 @@
     "body": [
       "### Configure with Azure Policy",
       "",
-      "To address this issue at runtime use the following policies:"
+      "To address this issue at runtime use the following policies:",
+      "",
+      "- [${1:policy}](${2:policy_link})",
+      "  `${4:policy_definition_id}`.",
     ]
   }
 }
