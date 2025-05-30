@@ -4,8 +4,8 @@
   "metadata": {
     "_generator": {
       "name": "bicep",
-      "version": "0.31.92.45157",
-      "templateHash": "18183969840754772084"
+      "version": "0.35.1.17967",
+      "templateHash": "1355273047342894691"
     }
   },
   "parameters": {
@@ -44,14 +44,14 @@
   "resources": [
     {
       "type": "Microsoft.Compute/virtualMachineScaleSets",
-      "apiVersion": "2024-07-01",
+      "apiVersion": "2024-11-01",
       "name": "[parameters('name')]",
       "location": "[parameters('location')]",
       "identity": {
         "type": "SystemAssigned"
       },
       "sku": {
-        "name": "Standard_D8d_v5",
+        "name": "Standard_D8ds_v6",
         "tier": "Standard",
         "capacity": 3
       },
@@ -59,6 +59,11 @@
         "overprovision": true,
         "upgradePolicy": {
           "mode": "Automatic"
+        },
+        "automaticRepairsPolicy": {
+          "enabled": true,
+          "gracePeriod": "PT10M",
+          "repairAction": "Replace"
         },
         "singlePlacementGroup": true,
         "virtualMachineProfile": {
@@ -69,8 +74,8 @@
             },
             "imageReference": {
               "publisher": "MicrosoftCblMariner",
-              "offer": "Cbl-Mariner",
-              "sku": "cbl-mariner-2-gen2",
+              "offer": "azure-linux-3",
+              "sku": "azure-linux-3-gen2-fips",
               "version": "latest"
             }
           },

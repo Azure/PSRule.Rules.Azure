@@ -18,14 +18,15 @@ param backendPoolId string
 @description('The admin username used for each VM instance.')
 param adminUsername string
 
-resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2024-07-01' = {
+// An example of a simple Linux VMSS with a system-assigned managed identity.
+resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2024-11-01' = {
   name: name
   location: location
   identity: {
     type: 'SystemAssigned'
   }
   sku: {
-    name: 'Standard_D8d_v5'
+    name: 'Standard_D8ds_v6'
     tier: 'Standard'
     capacity: 3
   }
@@ -33,6 +34,11 @@ resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2024-07-01' = {
     overprovision: true
     upgradePolicy: {
       mode: 'Automatic'
+    }
+    automaticRepairsPolicy: {
+      enabled: true
+      gracePeriod: 'PT10M'
+      repairAction: 'Replace'
     }
     singlePlacementGroup: true
     virtualMachineProfile: {
@@ -43,8 +49,8 @@ resource vmss 'Microsoft.Compute/virtualMachineScaleSets@2024-07-01' = {
         }
         imageReference: {
           publisher: 'MicrosoftCblMariner'
-          offer: 'Cbl-Mariner'
-          sku: 'cbl-mariner-2-gen2'
+          offer: 'azure-linux-3'
+          sku: 'azure-linux-3-gen2-fips'
           version: 'latest'
         }
       }
