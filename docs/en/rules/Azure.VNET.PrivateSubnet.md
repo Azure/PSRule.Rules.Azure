@@ -196,6 +196,21 @@ For example:
 }
 ```
 
+### Configure with Azure Policy
+
+To address this issue at runtime use the following policies:
+
+- [Subnets should be private](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/PrivateSubnetOnly_Audit.json)
+  `/providers/Microsoft.Authorization/policyDefinitions/7bca8353-aa3b-429b-904a-9229c4385837`.
+
+### Configure with Azure CLI
+
+To address this issue at runtime use the following CLI command:
+
+```bash
+az network vnet subnet update -n '<subnet_name>' -g '<resource_group>' --vnet-name '<vnet_name>' --default-outbound false
+```
+
 ## LINKS
 
 - [SE:06 Network controls](https://learn.microsoft.com/azure/well-architected/security/networking)
