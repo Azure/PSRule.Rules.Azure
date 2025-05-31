@@ -32,6 +32,7 @@
     },
     "resourceType": "elasticSans",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-01-01",
@@ -297,6 +298,7 @@
     },
     "resourceType": "elasticSans/volumeGroups",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-01-01",
@@ -528,6 +530,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-06-01-preview",
       "2021-11-20-preview"
     ],
@@ -538,6 +541,7 @@
     "aliases": null,
     "resourceType": "locations/asyncoperations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-01-01",
@@ -576,6 +580,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-07-01-preview",
       "2024-06-01-preview",
       "2024-05-01",
       "2023-01-01",

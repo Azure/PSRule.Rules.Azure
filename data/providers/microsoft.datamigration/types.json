@@ -68,6 +68,7 @@
     },
     "resourceType": "DatabaseMigrations",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -127,6 +128,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -147,6 +149,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -200,6 +203,7 @@
     "aliases": null,
     "resourceType": "locations/migrationServiceOperationResults",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview"
     ],
     "locations": [
@@ -255,6 +259,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -308,6 +313,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -361,6 +367,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationTypes",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -420,6 +427,7 @@
     "aliases": null,
     "resourceType": "Locations/sqlMigrationServiceOperationResults",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -482,6 +490,7 @@
     },
     "resourceType": "migrationServices",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview"
     ],
     "locations": [
@@ -537,6 +546,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -611,6 +621,7 @@
     },
     "resourceType": "services",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -785,6 +796,7 @@
     },
     "resourceType": "services/projects",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",
@@ -841,6 +853,7 @@
     },
     "resourceType": "SqlMigrationServices",
     "apiVersions": [
+      "2025-03-15-preview",
       "2023-07-15-preview",
       "2022-03-30-preview",
       "2022-01-30-preview",

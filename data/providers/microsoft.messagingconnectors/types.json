@@ -3,15 +3,9 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
-      "2025-01-01-preview",
-      "2024-12-24-preview",
-      "2024-12-17-preview",
-      "2024-12-01-preview",
-      "2024-11-01-preview",
-      "2024-10-01-preview",
-      "2024-09-01-preview",
-      "2024-08-01-preview",
-      "2024-05-01-preview"
+      "2025-03-01-preview",
+      "2025-02-01-preview",
+      "2025-01-01-preview"
     ],
     "locations": [
       "global"
@@ -22,15 +16,9 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
-      "2025-01-01-preview",
-      "2024-12-24-preview",
-      "2024-12-17-preview",
-      "2024-12-01-preview",
-      "2024-11-01-preview",
-      "2024-10-01-preview",
-      "2024-09-01-preview",
-      "2024-08-01-preview",
-      "2024-05-01-preview"
+      "2025-03-01-preview",
+      "2025-02-01-preview",
+      "2025-01-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

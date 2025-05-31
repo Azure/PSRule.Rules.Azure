@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "configurationGroupValues",
     "apiVersions": [
+      "2025-03-30",
       "2024-04-15",
       "2023-09-01",
       "2023-04-01-preview"
@@ -64,6 +65,7 @@
     "aliases": null,
     "resourceType": "networkfunctions",
     "apiVersions": [
+      "2025-03-30",
       "2024-04-15",
       "2023-09-01",
       "2023-04-01-preview",
@@ -87,6 +89,7 @@
     "aliases": null,
     "resourceType": "networkFunctions/components",
     "apiVersions": [
+      "2025-03-30",
       "2024-04-15",
       "2023-09-01",
       "2023-04-01-preview",
@@ -117,6 +120,7 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-03-30",
       "2024-04-15",
       "2024-04-01-preview",
       "2023-09-01",
@@ -244,6 +248,7 @@
     "aliases": null,
     "resourceType": "publishers/artifactstores/artifacts",
     "apiVersions": [
+      "2025-03-30",
       "2024-04-15",
       "2023-09-01",
       "2023-04-01-preview"
@@ -261,6 +266,7 @@
     "aliases": null,
     "resourceType": "publishers/artifactstores/artifactversions",
     "apiVersions": [
+      "2025-03-30",
       "2024-04-15",
       "2023-09-01",
       "2023-04-01-preview"
@@ -360,6 +366,7 @@
     "aliases": null,
     "resourceType": "siteNetworkServices",
     "apiVersions": [
+      "2025-03-30",
       "2024-04-15",
       "2023-09-01",
       "2023-04-01-preview"
@@ -377,6 +384,7 @@
     "aliases": null,
     "resourceType": "sites",
     "apiVersions": [
+      "2025-03-30",
       "2024-04-15",
       "2023-09-01",
       "2023-04-01-preview"

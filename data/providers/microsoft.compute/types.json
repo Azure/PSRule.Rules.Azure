@@ -6,6 +6,14 @@
       "Microsoft.Compute/availabilitySets/platformUpdateDomainCount": "properties.platformUpdateDomainCount",
       "Microsoft.Compute/availabilitySets/proximityPlacementGroup": "properties.proximityPlacementGroup",
       "Microsoft.Compute/availabilitySets/proximityPlacementGroup.id": "properties.proximityPlacementGroup.id",
+      "Microsoft.Compute/availabilitySets/scheduledEventsPolicy": "properties.scheduledEventsPolicy",
+      "Microsoft.Compute/availabilitySets/scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets": "properties.scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets",
+      "Microsoft.Compute/availabilitySets/scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph": "properties.scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph",
+      "Microsoft.Compute/availabilitySets/scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph.enable": "properties.scheduledEventsPolicy.scheduledEventsAdditionalPublishingTargets.eventGridAndResourceGraph.enable",
+      "Microsoft.Compute/availabilitySets/scheduledEventsPolicy.userInitiatedReboot": "properties.scheduledEventsPolicy.userInitiatedReboot",
+      "Microsoft.Compute/availabilitySets/scheduledEventsPolicy.userInitiatedReboot.automaticallyApprove": "properties.scheduledEventsPolicy.userInitiatedReboot.automaticallyApprove",
+      "Microsoft.Compute/availabilitySets/scheduledEventsPolicy.userInitiatedRedeploy": "properties.scheduledEventsPolicy.userInitiatedRedeploy",
+      "Microsoft.Compute/availabilitySets/scheduledEventsPolicy.userInitiatedRedeploy.automaticallyApprove": "properties.scheduledEventsPolicy.userInitiatedRedeploy.automaticallyApprove",
       "Microsoft.Compute/availabilitySets/sku": "sku",
       "Microsoft.Compute/availabilitySets/sku.capacity": "sku.capacity",
       "Microsoft.Compute/availabilitySets/sku.name": "sku.name",
@@ -19,7 +27,14 @@
       "Microsoft.Compute/availabilitySets/statuses[*].time": "properties.statuses[*].time",
       "Microsoft.Compute/availabilitySets/virtualMachines": "properties.virtualMachines",
       "Microsoft.Compute/availabilitySets/virtualMachines[*]": "properties.virtualMachines[*]",
-      "Microsoft.Compute/availabilitySets/virtualMachines[*].id": "properties.virtualMachines[*].id"
+      "Microsoft.Compute/availabilitySets/virtualMachines[*].id": "properties.virtualMachines[*].id",
+      "Microsoft.Compute/availabilitySets/virtualMachineScaleSetMigrationInfo": "properties.virtualMachineScaleSetMigrationInfo",
+      "Microsoft.Compute/availabilitySets/virtualMachineScaleSetMigrationInfo.defaultVirtualMachineScaleSetInfo": "properties.virtualMachineScaleSetMigrationInfo.defaultVirtualMachineScaleSetInfo",
+      "Microsoft.Compute/availabilitySets/virtualMachineScaleSetMigrationInfo.defaultVirtualMachineScaleSetInfo.constrainedMaximumCapacity": "properties.virtualMachineScaleSetMigrationInfo.defaultVirtualMachineScaleSetInfo.constrainedMaximumCapacity",
+      "Microsoft.Compute/availabilitySets/virtualMachineScaleSetMigrationInfo.defaultVirtualMachineScaleSetInfo.defaultVirtualMachineScaleSet": "properties.virtualMachineScaleSetMigrationInfo.defaultVirtualMachineScaleSetInfo.defaultVirtualMachineScaleSet",
+      "Microsoft.Compute/availabilitySets/virtualMachineScaleSetMigrationInfo.defaultVirtualMachineScaleSetInfo.defaultVirtualMachineScaleSet.id": "properties.virtualMachineScaleSetMigrationInfo.defaultVirtualMachineScaleSetInfo.defaultVirtualMachineScaleSet.id",
+      "Microsoft.Compute/availabilitySets/virtualMachineScaleSetMigrationInfo.migrateToVirtualMachineScaleSet": "properties.virtualMachineScaleSetMigrationInfo.migrateToVirtualMachineScaleSet",
+      "Microsoft.Compute/availabilitySets/virtualMachineScaleSetMigrationInfo.migrateToVirtualMachineScaleSet.id": "properties.virtualMachineScaleSetMigrationInfo.migrateToVirtualMachineScaleSet.id"
     },
     "resourceType": "availabilitySets",
     "apiVersions": [
@@ -61,6 +76,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -73,6 +89,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -141,6 +158,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -153,6 +171,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -219,6 +238,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -260,7 +287,11 @@
       },
       {
         "location": "Indonesia Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Israel Central",
@@ -288,10 +319,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -480,6 +523,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -492,6 +536,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -558,6 +603,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -599,7 +652,11 @@
       },
       {
         "location": "Indonesia Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Israel Central",
@@ -627,10 +684,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -822,6 +891,7 @@
       "Microsoft.Compute/cloudServices/osProfile.secrets[*].vaultCertificates": "properties.osProfile.secrets[*].vaultCertificates",
       "Microsoft.Compute/cloudServices/osProfile.secrets[*].vaultCertificates[*]": "properties.osProfile.secrets[*].vaultCertificates[*]",
       "Microsoft.Compute/cloudServices/osProfile.secrets[*].vaultCertificates[*].certificateUrl": "properties.osProfile.secrets[*].vaultCertificates[*].certificateUrl",
+      "Microsoft.Compute/cloudServices/osProfile.secrets[*].vaultCertificates[*].isBootstrapCertificate": "properties.osProfile.secrets[*].vaultCertificates[*].isBootstrapCertificate",
       "Microsoft.Compute/cloudServices/packageUrl": "properties.packageUrl",
       "Microsoft.Compute/cloudServices/provisioningState": "properties.provisioningState",
       "Microsoft.Compute/cloudServices/roleProfile": "properties.roleProfile",
@@ -855,6 +925,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -867,6 +938,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -933,6 +1005,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -974,7 +1054,11 @@
       },
       {
         "location": "Indonesia Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Israel Central",
@@ -1002,10 +1086,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -1166,6 +1262,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -1178,6 +1275,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -1220,6 +1318,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -1232,6 +1331,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -1277,6 +1377,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -1289,6 +1390,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -1331,6 +1433,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -1343,6 +1446,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -1388,6 +1492,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -1400,6 +1505,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -1445,6 +1551,7 @@
     },
     "resourceType": "diskAccesses",
     "apiVersions": [
+      "2025-01-02",
       "2024-03-02",
       "2023-10-02",
       "2023-04-02",
@@ -1468,6 +1575,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -1480,6 +1588,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -1537,6 +1646,7 @@
     },
     "resourceType": "diskEncryptionSets",
     "apiVersions": [
+      "2025-01-02",
       "2024-03-02",
       "2023-10-02",
       "2023-04-02",
@@ -1562,6 +1672,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -1574,6 +1685,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -1707,6 +1819,7 @@
     },
     "resourceType": "disks",
     "apiVersions": [
+      "2025-01-02",
       "2024-03-02",
       "2023-10-02",
       "2023-04-02",
@@ -1738,6 +1851,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -1750,6 +1864,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -1816,6 +1931,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -1857,7 +1980,11 @@
       },
       {
         "location": "Indonesia Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Israel Central",
@@ -1885,10 +2012,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -2095,6 +2234,7 @@
     },
     "resourceType": "galleries",
     "apiVersions": [
+      "2025-03-03",
       "2024-03-03",
       "2023-07-03",
       "2022-08-03",
@@ -2118,6 +2258,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -2130,6 +2271,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -2179,6 +2321,7 @@
     },
     "resourceType": "galleries/applications",
     "apiVersions": [
+      "2025-03-03",
       "2024-03-03",
       "2023-07-03",
       "2022-08-03",
@@ -2201,6 +2344,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -2213,6 +2357,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -2270,6 +2415,7 @@
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.settings": "properties.publishingProfile.settings",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.settings.configFileName": "properties.publishingProfile.settings.configFileName",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.settings.packageFileName": "properties.publishingProfile.settings.packageFileName",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.settings.scriptBehaviorAfterReboot": "properties.publishingProfile.settings.scriptBehaviorAfterReboot",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.source": "properties.publishingProfile.source",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.source.defaultConfigurationLink": "properties.publishingProfile.source.defaultConfigurationLink",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.source.fileName": "properties.publishingProfile.source.fileName",
@@ -2295,6 +2441,10 @@
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetExtendedLocations[*].storageAccountType": "properties.publishingProfile.targetExtendedLocations[*].storageAccountType",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions": "properties.publishingProfile.targetRegions",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*]": "properties.publishingProfile.targetRegions[*]",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].additionalReplicaSets": "properties.publishingProfile.targetRegions[*].additionalReplicaSets",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].additionalReplicaSets[*]": "properties.publishingProfile.targetRegions[*].additionalReplicaSets[*]",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].additionalReplicaSets[*].regionalReplicaCount": "properties.publishingProfile.targetRegions[*].additionalReplicaSets[*].regionalReplicaCount",
+      "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].additionalReplicaSets[*].storageAccountType": "properties.publishingProfile.targetRegions[*].additionalReplicaSets[*].storageAccountType",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption": "properties.publishingProfile.targetRegions[*].encryption",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.dataDiskImages": "properties.publishingProfile.targetRegions[*].encryption.dataDiskImages",
       "Microsoft.Compute/galleries/applications/versions/publishingProfile.targetRegions[*].encryption.dataDiskImages[*]": "properties.publishingProfile.targetRegions[*].encryption.dataDiskImages[*]",
@@ -2322,6 +2472,7 @@
     },
     "resourceType": "galleries/applications/versions",
     "apiVersions": [
+      "2025-03-03",
       "2024-03-03",
       "2023-07-03",
       "2022-08-03",
@@ -2344,6 +2495,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -2356,6 +2508,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -2384,6 +2537,7 @@
   },
   {
     "aliases": {
+      "Microsoft.Compute/galleries/images/allowUpdateImage": "properties.allowUpdateImage",
       "Microsoft.Compute/galleries/images/architecture": "properties.architecture",
       "Microsoft.Compute/galleries/images/description": "properties.description",
       "Microsoft.Compute/galleries/images/disallowed": "properties.disallowed",
@@ -2394,6 +2548,7 @@
       "Microsoft.Compute/galleries/images/features": "properties.features",
       "Microsoft.Compute/galleries/images/features[*]": "properties.features[*]",
       "Microsoft.Compute/galleries/images/features[*].name": "properties.features[*].name",
+      "Microsoft.Compute/galleries/images/features[*].startsAtVersion": "properties.features[*].startsAtVersion",
       "Microsoft.Compute/galleries/images/features[*].value": "properties.features[*].value",
       "Microsoft.Compute/galleries/images/hyperVGeneration": "properties.hyperVGeneration",
       "Microsoft.Compute/galleries/images/identifier": "properties.identifier",
@@ -2419,6 +2574,7 @@
     },
     "resourceType": "galleries/images",
     "apiVersions": [
+      "2025-03-03",
       "2024-03-03",
       "2023-07-03",
       "2022-08-03",
@@ -2442,6 +2598,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -2454,6 +2611,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -2513,6 +2671,10 @@
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetExtendedLocations[*].storageAccountType": "properties.publishingProfile.targetExtendedLocations[*].storageAccountType",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions": "properties.publishingProfile.targetRegions",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*]": "properties.publishingProfile.targetRegions[*]",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].additionalReplicaSets": "properties.publishingProfile.targetRegions[*].additionalReplicaSets",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].additionalReplicaSets[*]": "properties.publishingProfile.targetRegions[*].additionalReplicaSets[*]",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].additionalReplicaSets[*].regionalReplicaCount": "properties.publishingProfile.targetRegions[*].additionalReplicaSets[*].regionalReplicaCount",
+      "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].additionalReplicaSets[*].storageAccountType": "properties.publishingProfile.targetRegions[*].additionalReplicaSets[*].storageAccountType",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption": "properties.publishingProfile.targetRegions[*].encryption",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.dataDiskImages": "properties.publishingProfile.targetRegions[*].encryption.dataDiskImages",
       "Microsoft.Compute/galleries/images/versions/publishingProfile.targetRegions[*].encryption.dataDiskImages[*]": "properties.publishingProfile.targetRegions[*].encryption.dataDiskImages[*]",
@@ -2535,8 +2697,10 @@
       "Microsoft.Compute/galleries/images/versions/replicationStatus.summary[*].progress": "properties.replicationStatus.summary[*].progress",
       "Microsoft.Compute/galleries/images/versions/replicationStatus.summary[*].region": "properties.replicationStatus.summary[*].region",
       "Microsoft.Compute/galleries/images/versions/replicationStatus.summary[*].state": "properties.replicationStatus.summary[*].state",
+      "Microsoft.Compute/galleries/images/versions/restore": "properties.restore",
       "Microsoft.Compute/galleries/images/versions/safetyProfile": "properties.safetyProfile",
       "Microsoft.Compute/galleries/images/versions/safetyProfile.allowDeletionOfReplicatedLocations": "properties.safetyProfile.allowDeletionOfReplicatedLocations",
+      "Microsoft.Compute/galleries/images/versions/safetyProfile.blockDeletionBeforeEndOfLife": "properties.safetyProfile.blockDeletionBeforeEndOfLife",
       "Microsoft.Compute/galleries/images/versions/safetyProfile.policyViolations": "properties.safetyProfile.policyViolations",
       "Microsoft.Compute/galleries/images/versions/safetyProfile.policyViolations[*]": "properties.safetyProfile.policyViolations[*]",
       "Microsoft.Compute/galleries/images/versions/safetyProfile.policyViolations[*].category": "properties.safetyProfile.policyViolations[*].category",
@@ -2587,10 +2751,23 @@
       "Microsoft.Compute/galleries/images/versions/storageProfile.source.communityGalleryImageId": "properties.storageProfile.source.communityGalleryImageId",
       "Microsoft.Compute/galleries/images/versions/storageProfile.source.id": "properties.storageProfile.source.id",
       "Microsoft.Compute/galleries/images/versions/storageProfile.source.uri": "properties.storageProfile.source.uri",
-      "Microsoft.Compute/galleries/images/versions/storageProfile.source.virtualMachineId": "properties.storageProfile.source.virtualMachineId"
+      "Microsoft.Compute/galleries/images/versions/storageProfile.source.virtualMachineId": "properties.storageProfile.source.virtualMachineId",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile": "properties.validationsProfile",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.executedValidations": "properties.validationsProfile.executedValidations",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.executedValidations[*]": "properties.validationsProfile.executedValidations[*]",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.executedValidations[*].executionTime": "properties.validationsProfile.executedValidations[*].executionTime",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.executedValidations[*].status": "properties.validationsProfile.executedValidations[*].status",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.executedValidations[*].type": "properties.validationsProfile.executedValidations[*].type",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.executedValidations[*].version": "properties.validationsProfile.executedValidations[*].version",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.platformAttributes": "properties.validationsProfile.platformAttributes",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.platformAttributes[*]": "properties.validationsProfile.platformAttributes[*]",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.platformAttributes[*].name": "properties.validationsProfile.platformAttributes[*].name",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.platformAttributes[*].value": "properties.validationsProfile.platformAttributes[*].value",
+      "Microsoft.Compute/galleries/images/versions/validationsProfile.validationEtag": "properties.validationsProfile.validationEtag"
     },
     "resourceType": "galleries/images/versions",
     "apiVersions": [
+      "2025-03-03",
       "2024-03-03",
       "2023-07-03",
       "2022-08-03",
@@ -2614,6 +2791,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -2626,6 +2804,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -2695,6 +2874,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -2707,6 +2887,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -2773,6 +2954,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -2814,7 +3003,11 @@
       },
       {
         "location": "Indonesia Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Israel Central",
@@ -2842,10 +3035,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -3038,6 +3243,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -3050,6 +3256,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -3116,6 +3323,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -3157,7 +3372,11 @@
       },
       {
         "location": "Indonesia Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Israel Central",
@@ -3185,10 +3404,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -3405,6 +3636,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -3417,6 +3649,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -3521,6 +3754,7 @@
     "aliases": null,
     "resourceType": "locations/capsoperations",
     "apiVersions": [
+      "2025-03-03",
       "2024-03-03",
       "2023-07-03",
       "2022-08-03",
@@ -3545,6 +3779,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -3557,6 +3792,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -3601,6 +3837,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -3613,6 +3850,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -3657,6 +3895,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -3669,6 +3908,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -3699,6 +3939,7 @@
     "aliases": null,
     "resourceType": "locations/communityGalleries",
     "apiVersions": [
+      "2025-03-03",
       "2024-11-01",
       "2024-07-01",
       "2024-03-03",
@@ -3743,6 +3984,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -3755,6 +3997,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -3800,6 +4043,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -3812,6 +4056,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -3858,6 +4103,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -3872,6 +4118,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -3922,6 +4169,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -3936,6 +4184,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -3970,6 +4219,7 @@
     "aliases": null,
     "resourceType": "locations/diskoperations",
     "apiVersions": [
+      "2025-01-02",
       "2024-03-02",
       "2023-10-02",
       "2023-04-02",
@@ -4001,6 +4251,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4013,6 +4264,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4089,6 +4341,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4101,6 +4354,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4155,6 +4409,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4167,6 +4422,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4197,6 +4453,7 @@
     "aliases": null,
     "resourceType": "locations/galleries",
     "apiVersions": [
+      "2025-03-03",
       "2024-03-03",
       "2023-07-03",
       "2022-08-03",
@@ -4220,6 +4477,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4232,6 +4490,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4294,6 +4553,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4306,6 +4566,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4375,6 +4636,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4387,6 +4649,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4433,6 +4696,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4447,6 +4711,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4497,6 +4762,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4511,6 +4777,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4545,6 +4812,7 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2025-03-03",
       "2024-11-01",
       "2024-07-01",
       "2024-03-03",
@@ -4589,6 +4857,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4601,6 +4870,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4652,6 +4922,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4664,6 +4935,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4727,6 +4999,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4739,6 +5012,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4769,6 +5043,7 @@
     "aliases": null,
     "resourceType": "locations/sharedGalleries",
     "apiVersions": [
+      "2025-03-03",
       "2024-11-01",
       "2024-07-01",
       "2024-03-03",
@@ -4813,6 +5088,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4825,6 +5101,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4880,6 +5157,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4892,6 +5170,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -4947,6 +5226,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -4959,6 +5239,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -5027,6 +5308,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -5039,6 +5321,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -5103,6 +5386,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -5115,6 +5399,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -5179,6 +5464,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -5191,6 +5477,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -5234,6 +5521,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -5248,6 +5536,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -5320,6 +5609,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -5332,6 +5622,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -5399,6 +5690,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -5411,6 +5703,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -5441,6 +5734,7 @@
     "aliases": null,
     "resourceType": "payloadGroups",
     "apiVersions": [
+      "2025-03-03",
       "2024-03-03",
       "2023-07-03"
     ],
@@ -5525,6 +5819,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -5537,6 +5832,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -5603,6 +5899,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -5644,7 +5948,11 @@
       },
       {
         "location": "Indonesia Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Israel Central",
@@ -5672,10 +5980,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -6016,6 +6336,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -6028,6 +6349,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -6244,6 +6566,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -6256,6 +6579,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -6286,6 +6610,7 @@
     "aliases": null,
     "resourceType": "restorePointCollections/restorePoints/diskRestorePoints",
     "apiVersions": [
+      "2025-01-02",
       "2024-03-02",
       "2023-10-02",
       "2023-04-02",
@@ -6307,6 +6632,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -6319,6 +6645,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -6511,6 +6838,7 @@
     },
     "resourceType": "snapshots",
     "apiVersions": [
+      "2025-01-02",
       "2024-03-02",
       "2023-10-02",
       "2023-04-02",
@@ -6542,6 +6870,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -6554,6 +6883,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -6612,6 +6942,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -6624,6 +6955,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -6845,14 +7177,21 @@
       "Microsoft.Compute/virtualMachines/securityProfile.encryptionIdentity.userAssignedIdentityResourceId": "properties.securityProfile.encryptionIdentity.userAssignedIdentityResourceId",
       "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings": "properties.securityProfile.proxyAgentSettings",
       "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.enabled": "properties.securityProfile.proxyAgentSettings.enabled",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.imds": "properties.securityProfile.proxyAgentSettings.imds",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.imds.inVMAccessControlProfileReferenceId": "properties.securityProfile.proxyAgentSettings.imds.inVMAccessControlProfileReferenceId",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.imds.mode": "properties.securityProfile.proxyAgentSettings.imds.mode",
       "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.keyIncarnationId": "properties.securityProfile.proxyAgentSettings.keyIncarnationId",
       "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.mode": "properties.securityProfile.proxyAgentSettings.mode",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.wireServer": "properties.securityProfile.proxyAgentSettings.wireServer",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.wireServer.inVMAccessControlProfileReferenceId": "properties.securityProfile.proxyAgentSettings.wireServer.inVMAccessControlProfileReferenceId",
+      "Microsoft.Compute/virtualMachines/securityProfile.proxyAgentSettings.wireServer.mode": "properties.securityProfile.proxyAgentSettings.wireServer.mode",
       "Microsoft.Compute/virtualMachines/securityProfile.securityType": "properties.securityProfile.securityType",
       "Microsoft.Compute/virtualMachines/securityProfile.uefiSettings": "properties.securityProfile.uefiSettings",
       "Microsoft.Compute/virtualMachines/securityProfile.uefiSettings.secureBootEnabled": "properties.securityProfile.uefiSettings.secureBootEnabled",
       "Microsoft.Compute/virtualMachines/securityProfile.uefiSettings.vTpmEnabled": "properties.securityProfile.uefiSettings.vTpmEnabled",
       "Microsoft.Compute/virtualMachines/sku.name": "properties.hardwareProfile.vmSize",
       "Microsoft.Compute/virtualMachines/storageProfile": "properties.storageProfile",
+      "Microsoft.Compute/virtualMachines/storageProfile.alignRegionalDisksToVMZone": "properties.storageProfile.alignRegionalDisksToVMZone",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks": "properties.storageProfile.dataDisks",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*]": "properties.storageProfile.dataDisks[*]",
       "Microsoft.Compute/virtualMachines/storageProfile.dataDisks[*].caching": "properties.storageProfile.dataDisks[*].caching",
@@ -6973,6 +7312,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -6985,6 +7325,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -7051,6 +7392,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -7092,7 +7441,11 @@
       },
       {
         "location": "Indonesia Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Israel Central",
@@ -7120,10 +7473,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -7343,6 +7708,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -7355,6 +7721,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -7396,6 +7763,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -7408,6 +7776,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -7494,6 +7863,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -7506,6 +7876,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -7557,6 +7928,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -7569,6 +7941,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -7653,12 +8026,17 @@
       "Microsoft.Compute/virtualMachineScaleSets/proximityPlacementGroup": "properties.proximityPlacementGroup",
       "Microsoft.Compute/virtualMachineScaleSets/proximityPlacementGroup.id": "properties.proximityPlacementGroup.id",
       "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy": "properties.resiliencyPolicy",
+      "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.automaticZoneRebalancingPolicy": "properties.resiliencyPolicy.automaticZoneRebalancingPolicy",
+      "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.automaticZoneRebalancingPolicy.enabled": "properties.resiliencyPolicy.automaticZoneRebalancingPolicy.enabled",
+      "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.automaticZoneRebalancingPolicy.rebalanceBehavior": "properties.resiliencyPolicy.automaticZoneRebalancingPolicy.rebalanceBehavior",
+      "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.automaticZoneRebalancingPolicy.rebalanceStrategy": "properties.resiliencyPolicy.automaticZoneRebalancingPolicy.rebalanceStrategy",
       "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.resilientVMCreationPolicy": "properties.resiliencyPolicy.resilientVMCreationPolicy",
       "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.resilientVMCreationPolicy.enabled": "properties.resiliencyPolicy.resilientVMCreationPolicy.enabled",
       "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.resilientVMDeletionPolicy": "properties.resiliencyPolicy.resilientVMDeletionPolicy",
       "Microsoft.Compute/virtualMachineScaleSets/resiliencyPolicy.resilientVMDeletionPolicy.enabled": "properties.resiliencyPolicy.resilientVMDeletionPolicy.enabled",
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy": "properties.scaleInPolicy",
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy.forceDeletion": "properties.scaleInPolicy.forceDeletion",
+      "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy.prioritizeUnhealthyVMs": "properties.scaleInPolicy.prioritizeUnhealthyVMs",
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy.rules": "properties.scaleInPolicy.rules",
       "Microsoft.Compute/virtualMachineScaleSets/scaleInPolicy.rules[*]": "properties.scaleInPolicy.rules[*]",
       "Microsoft.Compute/virtualMachineScaleSets/scheduledEventsPolicy": "properties.scheduledEventsPolicy",
@@ -7674,6 +8052,12 @@
       "Microsoft.Compute/virtualMachineScaleSets/sku.capacity": "sku.capacity",
       "Microsoft.Compute/VirtualMachineScaleSets/sku.name": "sku.name",
       "Microsoft.Compute/VirtualMachineScaleSets/sku.tier": "sku.tier",
+      "Microsoft.Compute/virtualMachineScaleSets/skuProfile": "properties.skuProfile",
+      "Microsoft.Compute/virtualMachineScaleSets/skuProfile.allocationStrategy": "properties.skuProfile.allocationStrategy",
+      "Microsoft.Compute/virtualMachineScaleSets/skuProfile.vmSizes": "properties.skuProfile.vmSizes",
+      "Microsoft.Compute/virtualMachineScaleSets/skuProfile.vmSizes[*]": "properties.skuProfile.vmSizes[*]",
+      "Microsoft.Compute/virtualMachineScaleSets/skuProfile.vmSizes[*].name": "properties.skuProfile.vmSizes[*].name",
+      "Microsoft.Compute/virtualMachineScaleSets/skuProfile.vmSizes[*].rank": "properties.skuProfile.vmSizes[*].rank",
       "Microsoft.Compute/virtualMachineScaleSets/spotRestorePolicy": "properties.spotRestorePolicy",
       "Microsoft.Compute/virtualMachineScaleSets/spotRestorePolicy.enabled": "properties.spotRestorePolicy.enabled",
       "Microsoft.Compute/virtualMachineScaleSets/spotRestorePolicy.restoreTimeout": "properties.spotRestorePolicy.restoreTimeout",
@@ -7895,8 +8279,10 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.encryptionIdentity.userAssignedIdentityResourceId": "properties.virtualMachineProfile.securityProfile.encryptionIdentity.userAssignedIdentityResourceId",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings.enabled": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings.enabled",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings.imds": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings.imds",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings.keyIncarnationId": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings.keyIncarnationId",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings.mode": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings.mode",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.proxyAgentSettings.wireServer": "properties.virtualMachineProfile.securityProfile.proxyAgentSettings.wireServer",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.securityType": "properties.virtualMachineProfile.securityProfile.securityType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.uefiSettings": "properties.virtualMachineProfile.securityProfile.uefiSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.securityProfile.uefiSettings.secureBootEnabled": "properties.virtualMachineProfile.securityProfile.uefiSettings.secureBootEnabled",
@@ -7958,6 +8344,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.storageProfile.osDisk.writeAcceleratorEnabled": "properties.virtualMachineProfile.storageProfile.osDisk.writeAcceleratorEnabled",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.timeCreated": "properties.virtualMachineProfile.timeCreated",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile.userData": "properties.virtualMachineProfile.userData",
+      "Microsoft.Compute/virtualMachineScaleSets/zonalPlatformFaultDomainAlignMode": "properties.zonalPlatformFaultDomainAlignMode",
       "Microsoft.Compute/virtualMachineScaleSets/zoneBalance": "properties.zoneBalance",
       "Microsoft.Compute/virtualMachineScaleSets/zones": "zones",
       "Microsoft.Compute/virtualMachineScaleSets/zones[*]": "zones[*]"
@@ -8003,6 +8390,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -8015,6 +8403,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -8081,6 +8470,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -8122,7 +8519,11 @@
       },
       {
         "location": "Indonesia Central",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Israel Central",
@@ -8150,10 +8551,22 @@
       },
       {
         "location": "Japan West",
-        "zones": []
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -8323,6 +8736,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -8335,6 +8749,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -8365,6 +8780,7 @@
     "aliases": null,
     "resourceType": "virtualMachineScaleSets/disks",
     "apiVersions": [
+      "2025-01-02",
       "2024-03-02",
       "2023-10-02",
       "2023-04-02",
@@ -8396,6 +8812,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -8408,6 +8825,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -8496,6 +8914,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -8508,6 +8927,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -8579,6 +8999,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -8591,6 +9012,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -8654,6 +9076,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -8666,6 +9089,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -8888,14 +9312,21 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/protectionPolicy.protectFromScaleIn": "properties.protectionPolicy.protectFromScaleIn",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/protectionPolicy.protectFromScaleSetActions": "properties.protectionPolicy.protectFromScaleSetActions",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/provisioningState": "properties.provisioningState",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/resilientVMDeletionStatus": "properties.resilientVMDeletionStatus",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile": "properties.securityProfile",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.encryptionAtHost": "properties.securityProfile.encryptionAtHost",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.encryptionIdentity": "properties.securityProfile.encryptionIdentity",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.encryptionIdentity.userAssignedIdentityResourceId": "properties.securityProfile.encryptionIdentity.userAssignedIdentityResourceId",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings": "properties.securityProfile.proxyAgentSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.enabled": "properties.securityProfile.proxyAgentSettings.enabled",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.imds": "properties.securityProfile.proxyAgentSettings.imds",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.imds.inVMAccessControlProfileReferenceId": "properties.securityProfile.proxyAgentSettings.imds.inVMAccessControlProfileReferenceId",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.imds.mode": "properties.securityProfile.proxyAgentSettings.imds.mode",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.keyIncarnationId": "properties.securityProfile.proxyAgentSettings.keyIncarnationId",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.mode": "properties.securityProfile.proxyAgentSettings.mode",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.wireServer": "properties.securityProfile.proxyAgentSettings.wireServer",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.wireServer.inVMAccessControlProfileReferenceId": "properties.securityProfile.proxyAgentSettings.wireServer.inVMAccessControlProfileReferenceId",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.proxyAgentSettings.wireServer.mode": "properties.securityProfile.proxyAgentSettings.wireServer.mode",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.securityType": "properties.securityProfile.securityType",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.uefiSettings": "properties.securityProfile.uefiSettings",
       "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/securityProfile.uefiSettings.secureBootEnabled": "properties.securityProfile.uefiSettings.secureBootEnabled",
@@ -8905,6 +9336,7 @@
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/sku.name": "sku.name",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/sku.tier": "sku.tier",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile": "properties.storageProfile",
+      "Microsoft.Compute/virtualMachineScaleSets/virtualmachines/storageProfile.alignRegionalDisksToVMZone": "properties.storageProfile.alignRegionalDisksToVMZone",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks": "properties.storageProfile.dataDisks",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*]": "properties.storageProfile.dataDisks[*]",
       "Microsoft.Compute/virtualMachineScaleSets/virtualMachines/storageProfile.dataDisks[*].caching": "properties.storageProfile.dataDisks[*].caching",
@@ -9024,6 +9456,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -9036,6 +9469,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -9122,6 +9556,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -9134,6 +9569,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -9205,6 +9641,7 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
@@ -9217,6 +9654,7 @@
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",

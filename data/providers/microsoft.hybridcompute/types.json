@@ -10,6 +10,8 @@
     },
     "resourceType": "gateways",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -75,6 +77,8 @@
     },
     "resourceType": "licenses",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -127,6 +131,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -166,6 +172,8 @@
     "aliases": null,
     "resourceType": "locations/notifyExtension",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -216,6 +224,8 @@
     "aliases": null,
     "resourceType": "locations/notifyNetworkSecurityPerimeterUpdatesAvailable",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -269,6 +279,8 @@
     "aliases": null,
     "resourceType": "locations/notifyRunCommand",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -319,6 +331,8 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -347,7 +361,8 @@
       "2020-07-30-preview",
       "2020-03-11-preview",
       "2019-12-12",
-      "2019-08-02-preview"
+      "2019-08-02-preview",
+      "2019-03-18-preview"
     ],
     "locations": [
       "Australia East",
@@ -392,6 +407,8 @@
     "aliases": null,
     "resourceType": "locations/operationStatus",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -420,7 +437,8 @@
       "2020-07-30-preview",
       "2020-03-11-preview",
       "2019-12-12",
-      "2019-08-02-preview"
+      "2019-08-02-preview",
+      "2019-03-18-preview"
     ],
     "locations": [
       "Australia East",
@@ -465,6 +483,8 @@
     "aliases": null,
     "resourceType": "locations/privateLinkScopes",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -487,7 +507,14 @@
       "2021-05-17-preview",
       "2021-04-22-preview",
       "2021-03-25-preview",
-      "2021-01-28-preview"
+      "2021-01-28-preview",
+      "2020-08-15-preview",
+      "2020-08-02",
+      "2020-07-30-preview",
+      "2020-03-11-preview",
+      "2019-12-12",
+      "2019-08-02-preview",
+      "2019-03-18-preview"
     ],
     "locations": [
       "Australia East",
@@ -532,6 +559,8 @@
     "aliases": null,
     "resourceType": "locations/publishers",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -590,6 +619,8 @@
     "aliases": null,
     "resourceType": "locations/publishers/extensionTypes",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -648,6 +679,8 @@
     "aliases": null,
     "resourceType": "locations/publishers/extensionTypes/versions",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -706,6 +739,8 @@
     "aliases": null,
     "resourceType": "locations/updateCenterOperationResults",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2024-09-10-preview",
       "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
@@ -965,6 +1000,8 @@
     },
     "resourceType": "machines",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1039,6 +1076,8 @@
     "aliases": null,
     "resourceType": "machines/assessPatches",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2024-09-10-preview",
       "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
@@ -1121,6 +1160,8 @@
     },
     "resourceType": "machines/extensions",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1149,7 +1190,8 @@
       "2020-07-30-preview",
       "2020-03-11-preview",
       "2019-12-12",
-      "2019-08-02-preview"
+      "2019-08-02-preview",
+      "2019-03-18-preview"
     ],
     "locations": [
       "Australia East",
@@ -1194,6 +1236,8 @@
     "aliases": null,
     "resourceType": "machines/hybridIdentityMetadata",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1249,6 +1293,9 @@
     "aliases": null,
     "resourceType": "machines/installPatches",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
+      "2024-09-10-preview",
       "2024-07-31-preview",
       "2024-07-10",
       "2024-05-20-preview",
@@ -1364,6 +1411,8 @@
     },
     "resourceType": "machines/licenseProfiles",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1416,6 +1465,8 @@
     "aliases": null,
     "resourceType": "machines/privateLinkScopes",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1438,7 +1489,14 @@
       "2021-05-17-preview",
       "2021-04-22-preview",
       "2021-03-25-preview",
-      "2021-01-28-preview"
+      "2021-01-28-preview",
+      "2020-08-15-preview",
+      "2020-08-02",
+      "2020-07-30-preview",
+      "2020-03-11-preview",
+      "2019-12-12",
+      "2019-08-02-preview",
+      "2019-03-18-preview"
     ],
     "locations": [
       "Australia East",
@@ -1534,6 +1592,8 @@
     },
     "resourceType": "machines/runcommands",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1585,6 +1645,8 @@
     "aliases": null,
     "resourceType": "networkConfigurations",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1604,6 +1666,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1642,6 +1706,8 @@
     "aliases": null,
     "resourceType": "osType",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1662,6 +1728,8 @@
     "aliases": null,
     "resourceType": "osType/agentVersions",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1680,6 +1748,8 @@
     "aliases": null,
     "resourceType": "osType/agentVersions/latest",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1716,6 +1786,8 @@
     },
     "resourceType": "privateLinkScopes",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1739,7 +1811,13 @@
       "2021-04-22-preview",
       "2021-03-25-preview",
       "2021-01-28-preview",
-      "2020-08-15-preview"
+      "2020-08-15-preview",
+      "2020-08-02",
+      "2020-07-30-preview",
+      "2020-03-11-preview",
+      "2019-12-12",
+      "2019-08-02-preview",
+      "2019-03-18-preview"
     ],
     "locations": [
       "Australia East",
@@ -1784,6 +1862,8 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/networkSecurityPerimeterAssociationProxies",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1835,6 +1915,8 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/networkSecurityPerimeterConfigurations",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1854,6 +1936,8 @@
     "aliases": null,
     "resourceType": "privateLinkScopes/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1877,7 +1961,13 @@
       "2021-04-22-preview",
       "2021-03-25-preview",
       "2021-01-28-preview",
-      "2020-08-15-preview"
+      "2020-08-15-preview",
+      "2020-08-02",
+      "2020-07-30-preview",
+      "2020-03-11-preview",
+      "2019-12-12",
+      "2019-08-02-preview",
+      "2019-03-18-preview"
     ],
     "locations": [
       "Australia East",
@@ -1932,6 +2022,8 @@
     },
     "resourceType": "privateLinkScopes/privateEndpointConnections",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -1955,7 +2047,13 @@
       "2021-04-22-preview",
       "2021-03-25-preview",
       "2021-01-28-preview",
-      "2020-08-15-preview"
+      "2020-08-15-preview",
+      "2020-08-02",
+      "2020-07-30-preview",
+      "2020-03-11-preview",
+      "2019-12-12",
+      "2019-08-02-preview",
+      "2019-03-18-preview"
     ],
     "locations": [
       "Australia East",
@@ -2000,6 +2098,8 @@
     "aliases": null,
     "resourceType": "settings",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",
@@ -2050,6 +2150,8 @@
     "aliases": null,
     "resourceType": "validateLicense",
     "apiVersions": [
+      "2025-02-19-preview",
+      "2025-01-13",
       "2024-11-10-preview",
       "2024-09-10-preview",
       "2024-07-31-preview",

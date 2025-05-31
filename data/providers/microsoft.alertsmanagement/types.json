@@ -150,10 +150,7 @@
       "2019-05-05-preview",
       "2019-03-01-preview",
       "2019-03-01",
-      "2018-11-02-privatepreview",
-      "2018-05-05-preview",
-      "2018-05-05",
-      "2017-11-15-privatepreview"
+      "2018-05-05"
     ],
     "locations": [],
     "zoneMappings": []
@@ -181,6 +178,23 @@
       "2017-11-15-privatepreview"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "issues",
+    "apiVersions": [
+      "2025-03-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "UK South",
+      "West Europe"
+    ],
     "zoneMappings": []
   },
   {

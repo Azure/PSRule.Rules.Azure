@@ -1,54 +1,6 @@
 [
   {
     "aliases": null,
-    "resourceType": "availableGroundStations",
-    "apiVersions": [
-      "2022-11-01",
-      "2022-03-01",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
-      "Norway East",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "contactProfiles",
-    "apiVersions": [
-      "2022-11-01",
-      "2022-03-01",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
-      "Norway East",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "edgeSites",
     "apiVersions": [
       "2024-03-01-preview",
@@ -56,18 +8,23 @@
       "2021-04-04-preview"
     ],
     "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
-      "Norway East",
-      "South Africa North",
       "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
       "West US 2",
       "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "geoCatalogs",
+    "apiVersions": [
+      "2025-02-11-preview",
+      "2024-01-31-preview"
+    ],
+    "locations": [
+      "Canada Central",
+      "North Central US",
+      "West Europe"
     ],
     "zoneMappings": []
   },
@@ -80,16 +37,7 @@
       "2021-04-04-preview"
     ],
     "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
-      "Norway East",
-      "South Africa North",
       "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -104,16 +52,7 @@
       "2021-04-04-preview"
     ],
     "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
-      "Norway East",
-      "South Africa North",
       "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -128,16 +67,7 @@
       "2021-04-04-preview"
     ],
     "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
-      "Norway East",
-      "South Africa North",
       "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -146,19 +76,12 @@
   {
     "aliases": null,
     "resourceType": "locations",
-    "apiVersions": [],
+    "apiVersions": [
+      "2022-11-01"
+    ],
     "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
       "global",
-      "Norway East",
-      "South Africa North",
       "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -174,16 +97,7 @@
       "2022-03-01"
     ],
     "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
-      "Norway East",
-      "South Africa North",
       "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
       "West US 2",
       "West US 3"
     ],
@@ -211,54 +125,6 @@
     "apiVersions": [
       "2025-02-11-preview",
       "2024-01-31-preview",
-      "2022-11-01",
-      "2022-03-01",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
-      "Norway East",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "spacecrafts",
-    "apiVersions": [
-      "2022-11-01",
-      "2022-03-01",
-      "2021-04-04-preview"
-    ],
-    "locations": [
-      "Australia East",
-      "Brazil South",
-      "East US",
-      "Norway East",
-      "South Africa North",
-      "South Central US",
-      "Southeast Asia",
-      "Sweden Central",
-      "UK South",
-      "West US",
-      "West US 2",
-      "West US 3"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "spacecrafts/contacts",
-    "apiVersions": [
       "2022-11-01",
       "2022-03-01",
       "2021-04-04-preview"

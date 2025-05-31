@@ -95,17 +95,20 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
       "France South",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -172,6 +175,14 @@
         ]
       },
       {
+        "location": "Chile Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "East Asia",
         "zones": [
           "1",
@@ -212,6 +223,14 @@
         ]
       },
       {
+        "location": "Indonesia Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Israel Central",
         "zones": [
           "1",
@@ -237,6 +256,14 @@
       },
       {
         "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Malaysia West",
         "zones": [
           "1",
           "2",
@@ -409,17 +436,20 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
       "France South",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",
@@ -463,17 +493,20 @@
       "Canada East",
       "Central India",
       "Central US",
+      "Chile Central",
       "East Asia",
       "East US",
       "East US 2",
       "France Central",
       "France South",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Japan East",
       "Japan West",
       "Korea Central",
       "Korea South",
+      "Malaysia West",
       "Mexico Central",
       "New Zealand North",
       "North Central US",

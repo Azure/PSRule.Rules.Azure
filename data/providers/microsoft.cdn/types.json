@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "canMigrate",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -46,6 +47,7 @@
     "aliases": null,
     "resourceType": "CdnWebApplicationFirewallManagedRuleSets",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -142,6 +144,7 @@
     },
     "resourceType": "CdnWebApplicationFirewallPolicies",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -168,6 +171,7 @@
     "aliases": null,
     "resourceType": "checkEndpointNameAvailability",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -212,6 +216,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -268,6 +273,7 @@
     "aliases": null,
     "resourceType": "checkResourceUsage",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -322,6 +328,7 @@
     "aliases": null,
     "resourceType": "edgenodes",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -378,6 +385,7 @@
     "aliases": null,
     "resourceType": "migrate",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -421,6 +429,7 @@
     "aliases": null,
     "resourceType": "operationresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -477,6 +486,7 @@
     "aliases": null,
     "resourceType": "operationresults/cdnwebapplicationfirewallpolicyresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -503,6 +513,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -559,6 +570,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/afdendpointresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -593,6 +605,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -603,6 +616,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/afdendpointresults/routeresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -637,6 +651,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -647,6 +662,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/customdomainresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -681,6 +697,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -691,6 +708,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -747,6 +765,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults/customdomainresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -803,6 +822,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults/origingroupresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -840,6 +860,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -850,6 +871,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/endpointresults/originresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -906,6 +928,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/origingroupresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -940,6 +963,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -950,6 +974,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/origingroupresults/originresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -984,6 +1009,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1027,6 +1053,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1037,6 +1064,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/rulesetresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -1081,6 +1109,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/rulesetresults/ruleresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -1115,6 +1144,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1125,6 +1155,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/secretresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -1159,6 +1190,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1169,6 +1201,7 @@
     "aliases": null,
     "resourceType": "operationresults/profileresults/securitypolicyresults",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -1203,6 +1236,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1234,6 +1268,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1265,6 +1300,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1275,6 +1311,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -1352,6 +1389,7 @@
     },
     "resourceType": "profiles",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -1416,6 +1454,7 @@
     },
     "resourceType": "profiles/afdendpoints",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -1450,6 +1489,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1495,6 +1535,7 @@
     },
     "resourceType": "profiles/afdendpoints/routes",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -1529,6 +1570,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1581,6 +1623,7 @@
     },
     "resourceType": "profiles/customdomains",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -1615,6 +1658,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -1648,6 +1692,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -2025,6 +2070,7 @@
     },
     "resourceType": "profiles/endpoints",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -2083,6 +2129,7 @@
     },
     "resourceType": "profiles/endpoints/customdomains",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -2158,6 +2205,7 @@
     },
     "resourceType": "profiles/endpoints/origingroups",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -2221,6 +2269,7 @@
     },
     "resourceType": "profiles/endpoints/origins",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -2304,6 +2353,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -2346,6 +2396,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -2378,6 +2429,7 @@
     },
     "resourceType": "profiles/origingroups",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -2412,6 +2464,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -2443,6 +2496,7 @@
     },
     "resourceType": "profiles/origingroups/origins",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -2477,6 +2531,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -2508,6 +2563,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -2518,6 +2574,7 @@
     "aliases": null,
     "resourceType": "profiles/rulesets",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -2552,6 +2609,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -3252,6 +3310,7 @@
     },
     "resourceType": "profiles/rulesets/rules",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -3286,6 +3345,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -3335,6 +3395,7 @@
     },
     "resourceType": "profiles/secrets",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -3369,6 +3430,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -3396,6 +3458,7 @@
     },
     "resourceType": "profiles/securitypolicies",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -3430,6 +3493,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -3461,6 +3525,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -3492,6 +3557,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"
@@ -3502,6 +3568,7 @@
     "aliases": null,
     "resourceType": "validateProbe",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -3555,6 +3622,7 @@
     "aliases": null,
     "resourceType": "validateSecret",
     "apiVersions": [
+      "2025-04-15",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-09-01",
@@ -3589,6 +3657,7 @@
       "South Central US",
       "South India",
       "Southeast Asia",
+      "West Central US",
       "West Europe",
       "West India",
       "West US"

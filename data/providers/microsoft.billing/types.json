@@ -116,6 +116,7 @@
     "aliases": null,
     "resourceType": "billingAccounts/billingProfiles",
     "apiVersions": [
+      "2024-08-01-preview",
       "2024-04-01",
       "2022-10-01-privatepreview",
       "2020-12-15-privatepreview",
@@ -1508,6 +1509,15 @@
   },
   {
     "aliases": null,
+    "resourceType": "billingAccounts/partnerOrganizations",
+    "apiVersions": [
+      "2022-10-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "billingAccounts/patchOperations",
     "apiVersions": [
       "2018-11-01-preview"
@@ -1520,6 +1530,15 @@
     "resourceType": "billingAccounts/payableOverage",
     "apiVersions": [
       "2020-12-15-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "billingAccounts/paymentMethodLinks",
+    "apiVersions": [
+      "2024-08-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

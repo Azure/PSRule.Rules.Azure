@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "instances",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -23,6 +24,7 @@
     "aliases": null,
     "resourceType": "instances/brokers",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -43,6 +45,7 @@
     "aliases": null,
     "resourceType": "instances/brokers/authentications",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -63,6 +66,7 @@
     "aliases": null,
     "resourceType": "instances/brokers/authorizations",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -84,6 +88,7 @@
     "aliases": null,
     "resourceType": "instances/brokers/listeners",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -104,6 +109,7 @@
     "aliases": null,
     "resourceType": "instances/dataflowEndpoints",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -124,6 +130,7 @@
     "aliases": null,
     "resourceType": "instances/dataflowProfiles",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -144,6 +151,7 @@
     "aliases": null,
     "resourceType": "instances/dataflowProfiles/dataflows",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -164,6 +172,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -178,6 +187,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",
@@ -198,6 +208,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01",
       "2024-11-01",
       "2024-09-15-preview",
       "2024-08-15-preview",

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10",
       "2023-02-08-preview"
     ],
@@ -13,6 +14,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10",
       "2023-02-08-preview"
     ],
@@ -26,6 +28,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10",
       "2023-02-08-preview",
       "2022-09-15-privatepreview",
@@ -38,6 +41,7 @@
     "aliases": null,
     "resourceType": "workspaces",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10",
       "2023-02-08-preview"
     ],
@@ -51,6 +55,7 @@
     "aliases": null,
     "resourceType": "workspaces/firmwares",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10",
       "2023-02-08-preview"
     ],
@@ -64,7 +69,20 @@
     "aliases": null,
     "resourceType": "workspaces/firmwares/binaryHardeningResults",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/firmwares/commonVulnerabilitiesAndExposures",
+    "apiVersions": [
+      "2025-04-01-preview"
     ],
     "locations": [
       "East US",
@@ -76,6 +94,7 @@
     "aliases": null,
     "resourceType": "workspaces/firmwares/cryptoCertificates",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10"
     ],
     "locations": [
@@ -88,6 +107,7 @@
     "aliases": null,
     "resourceType": "workspaces/firmwares/cryptoKeys",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10"
     ],
     "locations": [
@@ -112,6 +132,7 @@
     "aliases": null,
     "resourceType": "workspaces/firmwares/passwordHashes",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10"
     ],
     "locations": [
@@ -124,6 +145,7 @@
     "aliases": null,
     "resourceType": "workspaces/firmwares/sbomComponents",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10"
     ],
     "locations": [
@@ -136,7 +158,20 @@
     "aliases": null,
     "resourceType": "workspaces/firmwares/summaries",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-01-10"
+    ],
+    "locations": [
+      "East US",
+      "West Europe"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "workspaces/usageMetrics",
+    "apiVersions": [
+      "2025-04-01-preview"
     ],
     "locations": [
       "East US",

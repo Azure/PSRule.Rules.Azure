@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkDomainAvailability",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01",
       "2023-12-01",
       "2023-01-01",
@@ -125,6 +126,7 @@
     },
     "resourceType": "domains",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01",
       "2023-12-01",
       "2023-01-01",
@@ -154,6 +156,7 @@
     },
     "resourceType": "domains/domainOwnershipIdentifiers",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01",
       "2023-12-01",
       "2023-01-01",
@@ -181,6 +184,7 @@
     "aliases": null,
     "resourceType": "generateSsoRequest",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01",
       "2023-12-01",
       "2023-01-01",
@@ -208,6 +212,7 @@
     "aliases": null,
     "resourceType": "listDomainRecommendations",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01",
       "2023-12-01",
       "2023-01-01",
@@ -235,6 +240,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01",
       "2023-12-01",
       "2023-01-01",
@@ -262,6 +268,7 @@
     "aliases": null,
     "resourceType": "topLevelDomains",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01",
       "2023-12-01",
       "2023-01-01",
@@ -289,6 +296,7 @@
     "aliases": null,
     "resourceType": "validateDomainRegistrationInformation",
     "apiVersions": [
+      "2024-11-01",
       "2024-04-01",
       "2023-12-01",
       "2023-01-01",

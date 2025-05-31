@@ -1,6 +1,26 @@
 [
   {
     "aliases": null,
+    "resourceType": "applicableCredits",
+    "apiVersions": [
+      "2023-11-01-preview",
+      "2023-11-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "applicableDiscounts",
+    "apiVersions": [
+      "2024-11-01-preview",
+      "2024-11-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "calculateMigrationCost",
     "apiVersions": [
       "2022-11-01-beta",
@@ -37,6 +57,17 @@
   },
   {
     "aliases": null,
+    "resourceType": "discounts",
+    "apiVersions": [
+      "2024-11-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "incentiveSchedules",
     "apiVersions": [
       "2023-07-01-beta"
@@ -63,6 +94,33 @@
       "2023-11-01-beta"
     ],
     "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2024-11-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2024-11-01-preview"
+    ],
+    "locations": [
+      "Australia Southeast",
+      "East US",
+      "East US 2",
+      "North Europe",
+      "South India",
+      "West Europe",
+      "West US",
+      "West US 2"
+    ],
     "zoneMappings": []
   },
   {

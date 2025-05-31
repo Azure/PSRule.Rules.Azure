@@ -1,12 +1,13 @@
 [
   {
     "aliases": null,
-    "resourceType": "locations/operations",
+    "resourceType": "accounts",
     "apiVersions": [
-      "2024-03-01-preview"
+      "2025-02-13-preview"
     ],
     "locations": [
-      "global"
+      "Canada Central",
+      "West US 3"
     ],
     "zoneMappings": []
   }

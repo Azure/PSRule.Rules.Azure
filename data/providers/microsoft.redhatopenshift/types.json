@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-08-12-preview",
       "2023-11-22",
       "2023-09-04",
       "2023-07-01-preview",
@@ -20,6 +21,7 @@
     "aliases": null,
     "resourceType": "locations/openshiftversions",
     "apiVersions": [
+      "2024-08-12-preview",
       "2023-11-22",
       "2023-09-04",
       "2023-07-01-preview",
@@ -74,6 +76,7 @@
     "aliases": null,
     "resourceType": "locations/operationresults",
     "apiVersions": [
+      "2024-08-12-preview",
       "2023-11-22",
       "2023-09-04",
       "2023-07-01-preview",
@@ -131,6 +134,7 @@
     "aliases": null,
     "resourceType": "locations/operationsstatus",
     "apiVersions": [
+      "2024-08-12-preview",
       "2023-11-22",
       "2023-09-04",
       "2023-07-01-preview",
@@ -139,6 +143,56 @@
       "2022-04-01",
       "2021-09-01-preview",
       "2020-04-30"
+    ],
+    "locations": [
+      "Australia Central",
+      "Australia Central 2",
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Brazil Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Norway West",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/platformworkloadidentityrolesets",
+    "apiVersions": [
+      "2024-08-12-preview"
     ],
     "locations": [
       "Australia Central",
@@ -228,6 +282,7 @@
     },
     "resourceType": "OpenShiftClusters",
     "apiVersions": [
+      "2024-08-12-preview",
       "2023-11-22",
       "2023-09-04",
       "2023-07-01-preview",
@@ -285,6 +340,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-08-12-preview",
       "2023-11-22",
       "2023-09-04",
       "2023-07-01-preview",

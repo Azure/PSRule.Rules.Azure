@@ -119,6 +119,16 @@
   },
   {
     "aliases": null,
+    "resourceType": "checkBenefitScopes",
+    "apiVersions": [
+      "2021-03-01-privatepreview",
+      "2021-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "checkOffers",
     "apiVersions": [
       "2020-10-01-preview",
@@ -206,6 +216,38 @@
     "apiVersions": [
       "2019-04-01-beta",
       "2019-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "listSkus",
+    "apiVersions": [
+      "2021-01-01-privatepreview",
+      "2021-01-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationResults",
+    "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
+      "2022-03-01-beta",
+      "2022-03-01",
+      "2022-02-16-privatepreview",
+      "2022-02-16-beta",
+      "2021-07-01-beta",
+      "2021-07-01",
+      "2020-10-01-preview",
+      "2020-10-01-beta"
     ],
     "locations": [],
     "zoneMappings": []
@@ -324,6 +366,28 @@
       "2018-06-01",
       "2017-11-01-beta",
       "2017-11-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "reservationOrders/changeDirectory",
+    "apiVersions": [
+      "2023-07-01-preview",
+      "2023-07-01-beta",
+      "2022-11-01-beta",
+      "2022-11-01",
+      "2022-06-02-privatepreview",
+      "2022-06-02-beta",
+      "2022-03-01-beta",
+      "2022-03-01",
+      "2022-02-16-privatepreview",
+      "2022-02-16-beta",
+      "2021-07-01",
+      "2020-11-15-preview",
+      "2020-11-15-beta",
+      "2020-11-15"
     ],
     "locations": [],
     "zoneMappings": []
@@ -538,6 +602,45 @@
   },
   {
     "aliases": null,
+    "resourceType": "resourceProviders/locations",
+    "apiVersions": [
+      "2020-10-25",
+      "2019-07-19-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/currentValue": "properties.currentValue",
+      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/limit": "properties.limit",
+      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/name": "properties.name",
+      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/name.localizedValue": "properties.name.localizedValue",
+      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/name.value": "properties.name.value",
+      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/quotaPeriod": "properties.quotaPeriod",
+      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/resourceType": "properties.resourceType",
+      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/unit": "properties.unit"
+    },
+    "resourceType": "resourceProviders/locations/serviceLimits",
+    "apiVersions": [
+      "2020-10-25",
+      "2019-07-19-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "resourceProviders/locations/serviceLimitsRequests",
+    "apiVersions": [
+      "2020-10-25",
+      "2019-07-19-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "resources",
     "apiVersions": [
       "2019-04-01",
@@ -571,18 +674,5 @@
     ],
     "locations": [],
     "zoneMappings": []
-  },
-  {
-    "aliases": {
-      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/currentValue": "properties.currentValue",
-      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/limit": "properties.limit",
-      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/name": "properties.name",
-      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/name.localizedValue": "properties.name.localizedValue",
-      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/name.value": "properties.name.value",
-      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/quotaPeriod": "properties.quotaPeriod",
-      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/resourceType": "properties.resourceType",
-      "Microsoft.Capacity/resourceProviders/locations/serviceLimits/unit": "properties.unit"
-    },
-    "resourceType": "resourceproviders/locations/servicelimits"
   }
 ]

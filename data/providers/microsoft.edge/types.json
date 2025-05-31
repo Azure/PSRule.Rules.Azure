@@ -1,6 +1,15 @@
 [
   {
     "aliases": null,
+    "resourceType": "configurationReferences",
+    "apiVersions": [
+      "2024-09-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "connectivityStatuses",
     "apiVersions": [
       "2023-07-01-preview"
@@ -134,6 +143,17 @@
       "West US 2",
       "West US 3"
     ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "schemaReferences",
+    "apiVersions": [
+      "2025-01-01-preview",
+      "2024-08-01-preview",
+      "2024-06-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": []
   },
   {

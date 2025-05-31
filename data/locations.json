@@ -1,0 +1,110 @@
+{
+  "australiaeast": {
+    "zones": 3
+  },
+  "brazilsouth": {
+    "zones": 3
+  },
+  "canadacentral": {
+    "zones": 3
+  },
+  "centralindia": {
+    "zones": 3
+  },
+  "centralus": {
+    "zones": 3
+  },
+  "chilecentral": {
+    "zones": 3
+  },
+  "eastasia": {
+    "zones": 3
+  },
+  "eastus": {
+    "zones": 3
+  },
+  "eastus2": {
+    "zones": 3
+  },
+  "eastus2euap": {
+    "zones": 4
+  },
+  "francecentral": {
+    "zones": 3
+  },
+  "germanywestcentral": {
+    "zones": 3
+  },
+  "indonesiacentral": {
+    "zones": 3
+  },
+  "israelcentral": {
+    "zones": 3
+  },
+  "italynorth": {
+    "zones": 3
+  },
+  "japaneast": {
+    "zones": 3
+  },
+  "japanwest": {
+    "zones": 3
+  },
+  "koreacentral": {
+    "zones": 3
+  },
+  "malaysiawest": {
+    "zones": 3
+  },
+  "mexicocentral": {
+    "zones": 3
+  },
+  "newzealandnorth": {
+    "zones": 3
+  },
+  "northeurope": {
+    "zones": 3
+  },
+  "norwayeast": {
+    "zones": 3
+  },
+  "polandcentral": {
+    "zones": 3
+  },
+  "qatarcentral": {
+    "zones": 3
+  },
+  "southafricanorth": {
+    "zones": 3
+  },
+  "southcentralus": {
+    "zones": 3
+  },
+  "southeastasia": {
+    "zones": 3
+  },
+  "spaincentral": {
+    "zones": 3
+  },
+  "swedencentral": {
+    "zones": 3
+  },
+  "switzerlandnorth": {
+    "zones": 3
+  },
+  "uaenorth": {
+    "zones": 3
+  },
+  "uksouth": {
+    "zones": 3
+  },
+  "westeurope": {
+    "zones": 3
+  },
+  "westus2": {
+    "zones": 3
+  },
+  "westus3": {
+    "zones": 3
+  }
+}

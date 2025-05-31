@@ -1,0 +1,68 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "checkNameAvailability",
+    "apiVersions": [
+      "2024-09-18-preview",
+      "2024-09-18"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "instances",
+    "apiVersions": [
+      "2024-09-18-preview",
+      "2024-09-18"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2024-09-18-preview",
+      "2024-09-18"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2024-09-18-preview",
+      "2024-09-18"
+    ],
+    "locations": [
+      "Central US EUAP",
+      "East US",
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2024-09-18-preview",
+      "2024-09-18"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "registeredSubscriptions",
+    "apiVersions": [
+      "2024-09-18-preview",
+      "2024-09-18"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  }
+]
