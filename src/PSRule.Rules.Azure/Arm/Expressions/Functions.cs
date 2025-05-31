@@ -191,6 +191,12 @@ internal static class Functions
         new FunctionDescriptor("parseCidr", ParseCidr),
         new FunctionDescriptor("cidrSubnet", CidrSubnet),
         new FunctionDescriptor("cidrHost", CidrHost),
+
+        // Availability zones
+        new FunctionDescriptor("toLogicalZone", ToLogicalZone),
+        new FunctionDescriptor("toLogicalZones", ToLogicalZones),
+        new FunctionDescriptor("toPhysicalZone", ToPhysicalZone),
+        new FunctionDescriptor("toPhysicalZones", ToPhysicalZones),
     ];
 
     /// <summary>
@@ -2369,8 +2375,7 @@ internal static class Functions
     /// </remarks>
     internal static object CidrHost(ITemplateContext context, object[] args)
     {
-        if (CountArgs(args) != 2)
-            throw ArgumentsOutOfRange(nameof(CidrHost), args);
+        if (CountArgs(args) != 2) throw ArgumentsOutOfRange(nameof(CidrHost), args);
 
         if (!ExpressionHelpers.TryString(args[0], out var network))
             throw ArgumentInvalidString(nameof(CidrHost), "network");
@@ -2391,6 +2396,165 @@ internal static class Functions
     }
 
     #endregion CIDR
+
+    #region Availability Zones
+
+    /// <summary>
+    /// toLogicalZone(subscriptionId, location, physicalZone)
+    /// </summary>
+    /// <remarks>
+    /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-resource#tologicalzone"/>.
+    /// </remarks>
+    internal static object ToLogicalZone(ITemplateContext context, object[] args)
+    {
+        if (CountArgs(args) != 3) throw ArgumentsOutOfRange(nameof(ToLogicalZone), args);
+        if (!ExpressionHelpers.TryString(args[0], out var subscriptionId))
+            throw ArgumentInvalidString(nameof(ToLogicalZone), "subscriptionId");
+
+        if (!ExpressionHelpers.TryString(args[1], out var location))
+            throw ArgumentInvalidString(nameof(ToLogicalZone), "location");
+
+        if (!ExpressionHelpers.TryString(args[2], out var physicalZone))
+            throw ArgumentInvalidString(nameof(ToLogicalZone), "physicalZone");
+
+        var logicalZone = GetLogicalZoneFromPhysicalZone(physicalZone);
+        if (logicalZone == null)
+            return string.Empty;
+
+        // Check if the location has any zones.
+        location = LocationHelper.Normalize(location);
+        var entry = context.GetAzureLocation(location);
+
+        // Get logical zone number from the physical zone.
+        // This is a mock implementation, as the actual mapping would be subscription-specific and require Azure API calls.
+        if (entry != null && entry.Zones != 0 && byte.TryParse(logicalZone, out var zoneNumber) && zoneNumber > 0 && zoneNumber <= entry.Zones)
+        {
+            // Return the logical zone as a string.
+            return logicalZone;
+        }
+
+        // If the location is not found or the zone number is invalid, return an empty string.
+        return string.Empty;
+    }
+
+#nullable enable
+
+    private static string? GetLogicalZoneFromPhysicalZone(string physicalZone)
+    {
+        var zoneParts = physicalZone.ToLower().Split(["-az"], StringSplitOptions.RemoveEmptyEntries);
+        if (zoneParts == null || zoneParts.Length != 2)
+            return string.Empty;
+
+        // Return the logical zone number as a string.
+        return zoneParts[1];
+    }
+
+#nullable restore
+
+    /// <summary>
+    /// 
+    /// </summary>
+    internal static object ToLogicalZones(ITemplateContext context, object[] args)
+    {
+        if (CountArgs(args) != 3) throw ArgumentsOutOfRange(nameof(ToLogicalZones), args);
+        if (!ExpressionHelpers.TryString(args[0], out var subscriptionId))
+            throw ArgumentInvalidString(nameof(ToLogicalZones), "subscriptionId");
+
+        if (!ExpressionHelpers.TryString(args[1], out var location))
+            throw ArgumentInvalidString(nameof(ToLogicalZones), "location");
+
+        if (!ExpressionHelpers.TryStringArray(args[2], out var physicalZones))
+            throw ArgumentInvalidStringArray(nameof(ToLogicalZones), "physicalZones");
+
+        if (physicalZones == null || physicalZones.Length == 0)
+            return new JArray();
+
+        var logicalZones = new List<string>(physicalZones.Length);
+        foreach (var physicalZone in physicalZones)
+        {
+            var logicalZone = GetLogicalZoneFromPhysicalZone(physicalZone);
+            if (logicalZone != null)
+            {
+                // Check if the location has any zones.
+                location = LocationHelper.Normalize(location);
+                var entry = context.GetAzureLocation(location);
+
+                // Get logical zone number from the physical zone.
+                // This is a mock implementation, as the actual mapping would be subscription-specific and require Azure API calls.
+                if (entry != null && entry.Zones != 0 && byte.TryParse(logicalZone, out var zoneNumber) && zoneNumber > 0 && zoneNumber <= entry.Zones)
+                {
+                    logicalZones.Add(logicalZone);
+                }
+            }
+        }
+        return new JArray(logicalZones.ToArray());
+    }
+
+    /// <summary>
+    /// toPhysicalZone(subscriptionId, location, logicalZone)
+    /// </summary>
+    /// <remarks>
+    /// See <seealso href="https://learn.microsoft.com/azure/azure-resource-manager/bicep/bicep-functions-resource#tophysicalzone"/>.
+    /// </remarks>
+    internal static object ToPhysicalZone(ITemplateContext context, object[] args)
+    {
+        if (CountArgs(args) != 3) throw ArgumentsOutOfRange(nameof(ToPhysicalZone), args);
+        if (!ExpressionHelpers.TryString(args[0], out var subscriptionId))
+            throw ArgumentInvalidString(nameof(ToPhysicalZone), "subscriptionId");
+
+        if (!ExpressionHelpers.TryString(args[1], out var location))
+            throw ArgumentInvalidString(nameof(ToPhysicalZone), "location");
+
+        if (!ExpressionHelpers.TryString(args[2], out var logicalZone))
+            throw ArgumentInvalidString(nameof(ToPhysicalZone), "logicalZone");
+
+        if (!byte.TryParse(logicalZone, out var zoneNumber) || zoneNumber <= 0)
+            return string.Empty;
+
+        // Check if the location has any zones.
+        location = LocationHelper.Normalize(location);
+        var entry = context.GetAzureLocation(location);
+
+        return entry == null || entry.Zones == 0 || zoneNumber > entry.Zones ? string.Empty : $"{location}-az{zoneNumber}";
+    }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    internal static object ToPhysicalZones(ITemplateContext context, object[] args)
+    {
+        if (CountArgs(args) != 3) throw ArgumentsOutOfRange(nameof(ToPhysicalZones), args);
+        if (!ExpressionHelpers.TryString(args[0], out var subscriptionId))
+            throw ArgumentInvalidString(nameof(ToPhysicalZones), "subscriptionId");
+
+        if (!ExpressionHelpers.TryString(args[1], out var location))
+            throw ArgumentInvalidString(nameof(ToPhysicalZones), "location");
+
+        if (!ExpressionHelpers.TryStringArray(args[2], out var logicalZones))
+            throw ArgumentInvalidStringArray(nameof(ToPhysicalZones), "logicalZones");
+
+        if (logicalZones == null || logicalZones.Length == 0)
+            return new JArray();
+
+        var physicalZones = new List<string>(logicalZones.Length);
+        foreach (var logicalZone in logicalZones)
+        {
+            if (!byte.TryParse(logicalZone, out var zoneNumber) || zoneNumber <= 0)
+                continue;
+
+            // Check if the location has any zones.
+            location = LocationHelper.Normalize(location);
+            var entry = context.GetAzureLocation(location);
+
+            if (entry == null || entry.Zones == 0 || zoneNumber > entry.Zones)
+                continue;
+
+            physicalZones.Add($"{location}-az{zoneNumber}");
+        }
+        return new JArray(physicalZones.ToArray());
+    }
+
+    #endregion Availability Zones
 
     #region Helper functions
 

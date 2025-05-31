@@ -128,5 +128,15 @@
       "West US 2"
     ],
     "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2025-01-31-preview",
+      "2024-06-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
   }
 ]

@@ -3,7 +3,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
-      "2024-05-01-preview"
+      "2025-05-01-preview"
     ],
     "locations": [],
     "zoneMappings": []

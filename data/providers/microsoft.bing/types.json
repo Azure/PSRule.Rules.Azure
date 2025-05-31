@@ -3,7 +3,19 @@
     "aliases": null,
     "resourceType": "accounts",
     "apiVersions": [
+      "2025-05-01-preview",
       "2020-06-10"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "accounts/customSearchConfigurations",
+    "apiVersions": [
+      "2025-05-01-preview"
     ],
     "locations": [
       "global"

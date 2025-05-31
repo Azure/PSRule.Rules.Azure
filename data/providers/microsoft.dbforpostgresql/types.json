@@ -47,6 +47,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
@@ -87,6 +88,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
@@ -230,6 +232,7 @@
     },
     "resourceType": "flexibleServers",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
@@ -394,6 +397,14 @@
       },
       {
         "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan West",
         "zones": [
           "1",
           "2",
@@ -638,6 +649,7 @@
     },
     "resourceType": "flexibleServers/migrations",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
@@ -802,6 +814,14 @@
       },
       {
         "location": "Japan East",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
+        "location": "Japan West",
         "zones": [
           "1",
           "2",
@@ -1017,6 +1037,7 @@
       "France Central",
       "France South",
       "Germany West Central",
+      "Indonesia Central",
       "Japan East",
       "Japan West",
       "Korea Central",
@@ -1200,6 +1221,7 @@
     "aliases": null,
     "resourceType": "locations/capabilities",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
@@ -1270,6 +1292,7 @@
     "aliases": null,
     "resourceType": "locations/checkNameAvailability",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
@@ -1340,6 +1363,7 @@
     "aliases": null,
     "resourceType": "locations/checkVirtualNetworkSubnetUsage",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
@@ -1408,6 +1432,7 @@
     "aliases": null,
     "resourceType": "locations/getAutoMigrationFreeSlots",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-03-01-privatepreview"
@@ -1483,6 +1508,7 @@
     "aliases": null,
     "resourceType": "locations/getLatestAutoMigrationSchedule",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-03-01-privatepreview"
@@ -1941,6 +1967,7 @@
     "aliases": null,
     "resourceType": "locations/resourceType",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
@@ -2206,6 +2233,7 @@
     "aliases": null,
     "resourceType": "locations/updateAutoMigrationSchedule",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-03-01-privatepreview"
@@ -2261,6 +2289,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-01-01-preview",
       "2024-11-01-preview",
       "2024-08-01",
       "2024-05-01-privatepreview",
@@ -2297,6 +2326,7 @@
       "France South",
       "Germany North",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",

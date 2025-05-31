@@ -103,6 +103,12 @@ internal abstract class NestedTemplateContext(ITemplateContext context) : Resour
     }
 
     /// <inheritdoc/>
+    public AzureLocationEntry GetAzureLocation(string location)
+    {
+        return _Inner.GetAzureLocation(location);
+    }
+
+    /// <inheritdoc/>
     public bool IsSecureValue(object value)
     {
         return _Inner.IsSecureValue(value);

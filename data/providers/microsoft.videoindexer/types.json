@@ -1,8 +1,47 @@
 [
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.VideoIndexer/accounts/accountId": "properties.accountId",
+      "Microsoft.VideoIndexer/accounts/accountName": "properties.accountName",
+      "Microsoft.VideoIndexer/accounts/mediaServices": "properties.mediaServices",
+      "Microsoft.VideoIndexer/accounts/mediaServices.resourceId": "properties.mediaServices.resourceId",
+      "Microsoft.VideoIndexer/accounts/mediaServices.userAssignedIdentity": "properties.mediaServices.userAssignedIdentity",
+      "Microsoft.VideoIndexer/accounts/openAiServices": "properties.openAiServices",
+      "Microsoft.VideoIndexer/accounts/openAiServices.resourceId": "properties.openAiServices.resourceId",
+      "Microsoft.VideoIndexer/accounts/openAiServices.userAssignedIdentity": "properties.openAiServices.userAssignedIdentity",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections": "properties.privateEndpointConnections",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*]": "properties.privateEndpointConnections[*]",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].groupIds": "properties.privateEndpointConnections[*].properties.groupIds",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].groupIds[*]": "properties.privateEndpointConnections[*].properties.groupIds[*]",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].id": "properties.privateEndpointConnections[*].id",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].name": "properties.privateEndpointConnections[*].name",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].privateEndpoint": "properties.privateEndpointConnections[*].properties.privateEndpoint",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].privateEndpoint.id": "properties.privateEndpointConnections[*].properties.privateEndpoint.id",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState.actionsRequired": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState.description": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.description",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].privateLinkServiceConnectionState.status": "properties.privateEndpointConnections[*].properties.privateLinkServiceConnectionState.status",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].provisioningState": "properties.privateEndpointConnections[*].properties.provisioningState",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].systemData": "properties.privateEndpointConnections[*].systemData",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].systemData.createdAt": "properties.privateEndpointConnections[*].systemData.createdAt",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].systemData.createdBy": "properties.privateEndpointConnections[*].systemData.createdBy",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].systemData.createdByType": "properties.privateEndpointConnections[*].systemData.createdByType",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].systemData.lastModifiedAt": "properties.privateEndpointConnections[*].systemData.lastModifiedAt",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].systemData.lastModifiedBy": "properties.privateEndpointConnections[*].systemData.lastModifiedBy",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].systemData.lastModifiedByType": "properties.privateEndpointConnections[*].systemData.lastModifiedByType",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections[*].type": "properties.privateEndpointConnections[*].type",
+      "Microsoft.VideoIndexer/accounts/provisioningState": "properties.provisioningState",
+      "Microsoft.VideoIndexer/accounts/publicNetworkAccess": "properties.publicNetworkAccess",
+      "Microsoft.VideoIndexer/accounts/storageServices": "properties.storageServices",
+      "Microsoft.VideoIndexer/accounts/storageServices.resourceId": "properties.storageServices.resourceId",
+      "Microsoft.VideoIndexer/accounts/storageServices.userAssignedIdentity": "properties.storageServices.userAssignedIdentity",
+      "Microsoft.VideoIndexer/accounts/tenantId": "properties.tenantId",
+      "Microsoft.VideoIndexer/accounts/totalMinutesIndexed": "properties.totalMinutesIndexed",
+      "Microsoft.VideoIndexer/accounts/totalSecondsIndexed": "properties.totalSecondsIndexed"
+    },
     "resourceType": "accounts",
     "apiVersions": [
+      "2025-04-01",
       "2025-03-01",
       "2025-01-01",
       "2024-09-23-preview",
@@ -47,9 +86,20 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections/groupIds": "properties.groupIds",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections/groupIds[*]": "properties.groupIds[*]",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections/privateEndpoint": "properties.privateEndpoint",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections/privateEndpoint.id": "properties.privateEndpoint.id",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections/privateLinkServiceConnectionState": "properties.privateLinkServiceConnectionState",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections/privateLinkServiceConnectionState.actionsRequired": "properties.privateLinkServiceConnectionState.actionsRequired",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections/privateLinkServiceConnectionState.description": "properties.privateLinkServiceConnectionState.description",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections/privateLinkServiceConnectionState.status": "properties.privateLinkServiceConnectionState.status",
+      "Microsoft.VideoIndexer/accounts/privateEndpointConnections/provisioningState": "properties.provisioningState"
+    },
     "resourceType": "accounts/privateEndpointConnections",
     "apiVersions": [
+      "2025-04-01",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2023-11-01-preview"
@@ -87,6 +137,7 @@
     "aliases": null,
     "resourceType": "accounts/privateLinkResources",
     "apiVersions": [
+      "2025-04-01",
       "2024-06-01-preview",
       "2024-03-01-preview",
       "2023-11-01-preview"
@@ -132,6 +183,7 @@
     "aliases": null,
     "resourceType": "checknameavailability",
     "apiVersions": [
+      "2025-04-01",
       "2025-03-01",
       "2025-01-01",
       "2024-09-23-preview",
@@ -157,6 +209,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-04-01",
       "2025-03-01",
       "2025-01-01",
       "2024-09-23-preview",
@@ -221,6 +274,7 @@
     "aliases": null,
     "resourceType": "locations/operationstatuses",
     "apiVersions": [
+      "2025-04-01",
       "2025-03-01",
       "2025-01-01",
       "2024-09-23-preview",
@@ -318,6 +372,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01",
       "2025-03-01",
       "2025-01-01",
       "2024-09-23-preview",

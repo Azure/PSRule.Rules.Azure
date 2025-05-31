@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "gateways",
     "apiVersions": [
+      "2025-03-30-preview",
       "2024-01-15-preview"
     ],
     "locations": [
@@ -16,6 +17,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-03-30-preview",
       "2024-01-15-preview"
     ],
     "locations": [],
@@ -25,6 +27,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-03-30-preview",
       "2024-01-15-preview"
     ],
     "locations": [
@@ -38,6 +41,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-03-30-preview",
       "2024-01-15-preview"
     ],
     "locations": [],
@@ -47,6 +51,7 @@
     "aliases": null,
     "resourceType": "operatorApiConnections",
     "apiVersions": [
+      "2025-03-30-preview",
       "2024-01-15-preview"
     ],
     "locations": [
@@ -60,6 +65,7 @@
     "aliases": null,
     "resourceType": "operatorApiPlans",
     "apiVersions": [
+      "2025-03-30-preview",
       "2024-01-15-preview"
     ],
     "locations": [

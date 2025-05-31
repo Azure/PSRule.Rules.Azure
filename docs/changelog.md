@@ -32,6 +32,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since pre-release v1.44.0-B0027:
 
+- New features:
+  - Added support for the `toPhysicalZone`, `toPhysicalZones`, `toLogicalZone`, `toLogicalZones` functions during Bicep expansion by @BernieWhite.
+    [#3346](https://github.com/Azure/PSRule.Rules.Azure/issues/3346)
 - Updated rules:
   - Virtual Network:
     - Updated documentation and promoted `Azure.VNET.PrivateSubnet` to GA by @BernieWhite.

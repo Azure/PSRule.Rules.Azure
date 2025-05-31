@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-02-15-preview",
+      "2025-01-01-preview",
       "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
@@ -14,6 +16,8 @@
     "aliases": null,
     "resourceType": "Locations/CheckNameAvailability",
     "apiVersions": [
+      "2025-02-15-preview",
+      "2025-01-01-preview",
       "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
@@ -23,8 +27,9 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/offerings",
+    "resourceType": "Locations/Offerings",
     "apiVersions": [
+      "2025-01-01-preview",
       "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
@@ -48,6 +53,8 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-02-15-preview",
+      "2025-01-01-preview",
       "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
@@ -73,6 +80,8 @@
     "aliases": null,
     "resourceType": "Operations",
     "apiVersions": [
+      "2025-02-15-preview",
+      "2025-01-01-preview",
       "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"
@@ -84,6 +93,7 @@
     "aliases": null,
     "resourceType": "Workspaces",
     "apiVersions": [
+      "2025-01-01-preview",
       "2023-11-13-preview",
       "2022-01-10-preview",
       "2019-11-04-preview"

@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -17,6 +18,7 @@
     "aliases": null,
     "resourceType": "locations/checkQuotaAvailability",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -40,6 +42,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -64,6 +67,7 @@
     "aliases": null,
     "resourceType": "locations/checkTrialAvailability",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -87,6 +91,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -111,6 +116,7 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -133,6 +139,7 @@
       "Germany West Central",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -157,6 +164,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -230,6 +238,7 @@
     },
     "resourceType": "privateClouds",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -255,6 +264,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -379,6 +389,14 @@
         ]
       },
       {
+        "location": "Korea Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "North Europe",
         "zones": [
           "1",
@@ -487,6 +505,7 @@
     },
     "resourceType": "privateClouds/addons",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -510,6 +529,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -539,6 +559,7 @@
     },
     "resourceType": "privateClouds/authorizations",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -562,6 +583,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -586,6 +608,7 @@
     "aliases": null,
     "resourceType": "privateClouds/cloudLinks",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -608,6 +631,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -640,6 +664,7 @@
     },
     "resourceType": "privateClouds/clusters",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -664,6 +689,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -702,6 +728,7 @@
     },
     "resourceType": "privateClouds/clusters/datastores",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -725,6 +752,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -749,6 +777,7 @@
     "aliases": null,
     "resourceType": "privateClouds/clusters/placementPolicies",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -770,6 +799,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -794,6 +824,7 @@
     "aliases": null,
     "resourceType": "privateClouds/clusters/virtualMachines",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -815,6 +846,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -839,6 +871,7 @@
     "aliases": null,
     "resourceType": "privateClouds/eventGridFilters",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01"
     ],
     "locations": [
@@ -857,6 +890,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -888,6 +922,7 @@
     },
     "resourceType": "privateClouds/globalReachConnections",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -911,6 +946,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -938,6 +974,7 @@
     },
     "resourceType": "privateClouds/hcxEnterpriseSites",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -961,6 +998,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -985,6 +1023,7 @@
     "aliases": null,
     "resourceType": "privateClouds/iscsiPaths",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01"
     ],
     "locations": [
@@ -1003,6 +1042,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1027,6 +1067,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptExecutions",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1049,6 +1090,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1073,6 +1115,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptPackages",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1095,6 +1138,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1119,6 +1163,7 @@
     "aliases": null,
     "resourceType": "privateClouds/scriptPackages/scriptCmdlets",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1141,6 +1186,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1165,6 +1211,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1188,6 +1235,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1223,6 +1271,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/dhcpConfigurations",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1246,6 +1295,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1280,6 +1330,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/dnsServices",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1303,6 +1354,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1337,6 +1389,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/dnsZones",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1360,6 +1413,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1384,6 +1438,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/gateways",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1407,6 +1462,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1439,6 +1495,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/portMirroringProfiles",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1462,6 +1519,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1486,6 +1544,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/publicIPs",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1508,6 +1567,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1545,6 +1605,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/segments",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1568,6 +1629,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1592,6 +1654,7 @@
     "aliases": null,
     "resourceType": "privateClouds/workloadNetworks/virtualMachines",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1615,6 +1678,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",
@@ -1646,6 +1710,7 @@
     },
     "resourceType": "privateClouds/workloadNetworks/vmGroups",
     "apiVersions": [
+      "2024-09-01",
       "2023-09-01",
       "2023-03-01",
       "2022-05-01",
@@ -1669,6 +1734,7 @@
       "Italy North",
       "Japan East",
       "Japan West",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Qatar Central",

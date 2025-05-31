@@ -1,7 +1,7 @@
 [
   {
     "aliases": null,
-    "resourceType": "checkNameAvailability",
+    "resourceType": "CheckNameAvailability",
     "apiVersions": [
       "2024-12-01-preview",
       "2024-11-01-preview",

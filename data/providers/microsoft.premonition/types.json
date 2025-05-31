@@ -1,0 +1,26 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "Locations",
+    "apiVersions": [
+      "2025-06-01-preview",
+      "2025-05-01-preview",
+      "2025-04-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "Locations/OperationStatuses",
+    "apiVersions": [
+      "2025-06-01-preview",
+      "2025-05-01-preview",
+      "2025-04-01-preview"
+    ],
+    "locations": [
+      "East US"
+    ],
+    "zoneMappings": []
+  }
+]

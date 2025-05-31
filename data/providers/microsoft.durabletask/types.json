@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview",
       "2024-02-01-preview"
     ],
@@ -13,19 +14,36 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
       "Central US",
       "East Asia",
       "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "UAE North",
       "UK South",
-      "West US 2"
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -33,6 +51,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview",
       "2024-02-01-preview"
     ],
@@ -43,19 +62,72 @@
     "aliases": null,
     "resourceType": "schedulers",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
       "Central US",
       "East Asia",
       "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "UAE North",
       "UK South",
-      "West US 2"
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "schedulers/retentionpolicies",
+    "apiVersions": [
+      "2025-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "Southeast Asia",
+      "Sweden Central",
+      "Switzerland North",
+      "UAE North",
+      "UK South",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -63,19 +135,36 @@
     "aliases": null,
     "resourceType": "schedulers/taskhubs",
     "apiVersions": [
+      "2025-04-01-preview",
       "2024-10-01-preview"
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada Central",
+      "Central India",
       "Central US",
       "East Asia",
       "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
       "Korea Central",
       "North Central US",
       "North Europe",
+      "Norway East",
+      "Poland Central",
+      "South Africa North",
+      "Southeast Asia",
       "Sweden Central",
+      "Switzerland North",
+      "UAE North",
       "UK South",
-      "West US 2"
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   }
