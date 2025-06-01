@@ -1115,12 +1115,15 @@ public sealed class FunctionTests
         var actual = Functions.Deployer(context, null) as DeployerOption;
         Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.ObjectId);
         Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.TenantId);
+        Assert.Equal("psrule-test@contoso.com", actual.UserPrincipalName);
 
         context.Deployer.ObjectId = "00000000-0000-0000-0000-000000000000";
         context.Deployer.TenantId = "00000000-0000-0000-0000-000000000000";
+        context.Deployer.UserPrincipalName = "other@contoso.com";
         actual = Functions.Deployer(context, null) as DeployerOption;
         Assert.Equal("00000000-0000-0000-0000-000000000000", actual.ObjectId);
         Assert.Equal("00000000-0000-0000-0000-000000000000", actual.TenantId);
+        Assert.Equal("other@contoso.com", actual.UserPrincipalName);
 
         // Accepts no arguments.
         Assert.Throws<ExpressionArgumentException>(() => Functions.Deployer(context, [123]));

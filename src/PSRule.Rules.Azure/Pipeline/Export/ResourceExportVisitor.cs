@@ -5,6 +5,7 @@ using System;
 using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm;
 using PSRule.Rules.Azure.Data;
 
 namespace PSRule.Rules.Azure.Pipeline.Export;
