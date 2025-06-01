@@ -33,8 +33,10 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since pre-release v1.44.0-B0027:
 
 - New features:
-  - Added support for the `toPhysicalZone`, `toPhysicalZones`, `toLogicalZone`, `toLogicalZones` functions during Bicep expansion by @BernieWhite.
+  - Added support for the `toPhysicalZone`, `toPhysicalZones`, `toLogicalZone`, `toLogicalZones` Bicep functions by @BernieWhite.
     [#3346](https://github.com/Azure/PSRule.Rules.Azure/issues/3346)
+  - Added the `userPrincipalName` property to the `deployer()` object by @BernieWhite.
+    [#3390](https://github.com/Azure/PSRule.Rules.Azure/issues/3390)
 - Updated rules:
   - Virtual Network:
     - Updated documentation and promoted `Azure.VNET.PrivateSubnet` to GA by @BernieWhite.

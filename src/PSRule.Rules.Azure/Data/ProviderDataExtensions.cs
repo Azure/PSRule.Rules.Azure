@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+using PSRule.Rules.Azure.Arm;
+
 namespace PSRule.Rules.Azure.Data;
 
 /// <summary>

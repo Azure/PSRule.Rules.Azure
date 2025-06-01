@@ -7,6 +7,7 @@ using System.Linq;
 using System.Threading;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm;
 using PSRule.Rules.Azure.Data.Template;
 
 namespace PSRule.Rules.Azure;
