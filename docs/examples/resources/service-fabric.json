@@ -1,0 +1,86 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.35.1.17967",
+      "templateHash": "16820822623191152552"
+    }
+  },
+  "parameters": {
+    "name": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the resource."
+      }
+    },
+    "location": {
+      "type": "string",
+      "defaultValue": "[resourceGroup().location]",
+      "metadata": {
+        "description": "The location resources will be deployed."
+      }
+    },
+    "endpointUri": {
+      "type": "string"
+    },
+    "tenantId": {
+      "type": "string"
+    },
+    "clusterApplication": {
+      "type": "string"
+    },
+    "clientApplication": {
+      "type": "string"
+    },
+    "certificateThumbprint": {
+      "type": "string",
+      "metadata": {
+        "description": "Certificate thumbprint."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.ServiceFabric/clusters",
+      "apiVersion": "2023-11-01-preview",
+      "name": "[parameters('name')]",
+      "location": "[parameters('location')]",
+      "properties": {
+        "azureActiveDirectory": {
+          "clientApplication": "[parameters('clientApplication')]",
+          "clusterApplication": "[parameters('clusterApplication')]",
+          "tenantId": "[parameters('tenantId')]"
+        },
+        "certificate": {
+          "thumbprint": "[parameters('certificateThumbprint')]",
+          "x509StoreName": "My"
+        },
+        "diagnosticsStorageAccountConfig": {
+          "blobEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-01-01').primaryEndpoints.blob]",
+          "protectedAccountKeyName": "StorageAccountKey1",
+          "queueEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-01-01').primaryEndpoints.queue]",
+          "storageAccountName": "storage1",
+          "tableEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-01-01').primaryEndpoints.table]"
+        },
+        "fabricSettings": [
+          {
+            "parameters": [
+              {
+                "name": "ClusterProtectionLevel",
+                "value": "EncryptAndSign"
+              }
+            ],
+            "name": "Security"
+          }
+        ],
+        "managementEndpoint": "[parameters('endpointUri')]",
+        "nodeTypes": [],
+        "reliabilityLevel": "Silver",
+        "upgradeMode": "Automatic",
+        "vmImage": "Windows"
+      }
+    }
+  ]
+}

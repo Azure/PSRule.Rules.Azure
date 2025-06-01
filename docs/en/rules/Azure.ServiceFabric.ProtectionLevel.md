@@ -1,30 +1,28 @@
 ---
-severity: Critical
+reviewed: 2025-06-02
+severity: Important
 pillar: Security
-category: SE:05 Identity and access management
+category: SE:07 Encryption
 resource: Service Fabric
 resourceType: Microsoft.ServiceFabric/clusters
-online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.AAD/
+online version: https://azure.github.io/PSRule.Rules.Azure/en/rules/Azure.ServiceFabric.ProtectionLevel/
 ---
 
-# Use Entra ID authentication with Service Fabric clusters
+# Service Fabric Cluster allows unencrypted node to node communication
 
 ## SYNOPSIS
 
-Use Entra ID client authentication for Service Fabric clusters.
+Node to node communication that is not signed and encrypted may be susceptible to man-in-the-middle attacks.
 
 ## DESCRIPTION
 
-When deploying Service Fabric clusters on Azure,
-Entra ID (previously known as Azure AD) can optionally be used to secure management endpoints.
-If configured, client authentication (client-to-node security) uses Entra ID.
-Additionally Azure Role-based Access Control (RBAC) can be used to delegate cluster access.
-
-For Service Fabric clusters running on Azure, Entra ID is recommended to secure access to management endpoints.
+Service Fabric provides three levels of protection (None, Sign, and EncryptAndSign) for node-to-node communication.
+When configured for signing and encryption the primary cluster certificate is used to sign and encrypt all node-to-node messages.
+Node-to-node security helps secure communication between the VMs or computers in a cluster.
 
 ## RECOMMENDATION
 
-Consider enabling Entra ID client authentication for Service Fabric clusters.
+Consider configuring the cluster protection level to encrypt and sign all node-to-node communication.
 
 ## EXAMPLES
 
@@ -32,7 +30,8 @@ Consider enabling Entra ID client authentication for Service Fabric clusters.
 
 To deploy clusters that pass this rule:
 
-- steps
+- Add the `Security` fabric setting to the `properties.fabricSettings` property.
+- Set the `ClusterProtectionLevel` parameter to `EncryptAndSign`.
 
 For example:
 
@@ -81,7 +80,8 @@ resource cluster 'Microsoft.ServiceFabric/clusters@2023-11-01-preview' = {
 
 To deploy clusters that pass this rule:
 
-- steps
+- Add the `Security` fabric setting to the `properties.fabricSettings` property.
+- Set the `ClusterProtectionLevel` parameter to `EncryptAndSign`.
 
 For example:
 
@@ -128,15 +128,8 @@ For example:
 }
 ```
 
-## NOTES
-
-For Linux clusters, Entra ID authentication must be configured at cluster creation time.
-Windows cluster can be updated to support Entra ID authentication after initial deployment.
-
 ## LINKS
 
-- [SE:05 Identity and access management](https://learn.microsoft.com/azure/well-architected/security/identity-access)
-- [Security recommendations](https://learn.microsoft.com/azure/service-fabric/service-fabric-cluster-security#security-recommendations)
-- [Set up Microsoft Entra ID for client authentication](https://learn.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-setup-aad)
-- [Configure Azure Active Directory Authentication for Existing Cluster](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides/blob/master/Security/Configure%20Azure%20Active%20Directory%20Authentication%20for%20Existing%20Cluster.md)
-- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.servicefabric/clusters)
+- [SE:07 Encryption](https://learn.microsoft.com/azure/well-architected/security/encryption)
+- [Service Fabric cluster security scenarios](https://learn.microsoft.com/azure/service-fabric/service-fabric-cluster-security)
+- [Azure deployment reference](https://learn.microsoft.com/azure/templates/microsoft.servicefabric/clusters#settingsparameterdescription)

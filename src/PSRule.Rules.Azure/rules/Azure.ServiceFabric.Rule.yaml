@@ -1,0 +1,54 @@
+# Copyright (c) Microsoft Corporation.
+# Licensed under the MIT License.
+
+#
+# Validation rules for Service Fabric
+#
+
+#region Rules
+
+---
+# Synopsis: Use Azure Active Directory (AAD) client authentication for Service Fabric clusters.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ServiceFabric.AAD
+  ref: AZR-000179
+  tags:
+    release: GA
+    ruleSet: 2021_03
+    Azure.WAF/pillar: Security
+  labels:
+    Azure.MCSB.v1/control: [ 'IM-1', 'IM-3' ]
+spec:
+  type:
+    - Microsoft.ServiceFabric/clusters
+  condition:
+    field: properties.azureActiveDirectory.tenantId
+    hasValue: true
+
+---
+# Synopsis: Node to node communication that is not signed and encrypted may be susceptible to man-in-the-middle attacks.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: Rule
+metadata:
+  name: Azure.ServiceFabric.ProtectionLevel
+  ref: AZR-000488
+  tags:
+    release: GA
+    ruleSet: 2025_06
+    Azure.WAF/pillar: Security
+spec:
+  type:
+    - Microsoft.ServiceFabric/clusters
+  condition:
+    field: properties.fabricSettings[? @.name == 'Security'].parameters
+    where:
+      field: name
+      equals: ClusterProtectionLevel
+    allOf:
+      - field: value
+        equals: EncryptAndSign
+    count: 1
+
+#endregion Rules

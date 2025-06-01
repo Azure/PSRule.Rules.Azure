@@ -37,6 +37,10 @@ What's changed since pre-release v1.44.0-B0027:
     [#3346](https://github.com/Azure/PSRule.Rules.Azure/issues/3346)
   - Added the `userPrincipalName` property to the `deployer()` object by @BernieWhite.
     [#3390](https://github.com/Azure/PSRule.Rules.Azure/issues/3390)
+- New rules:
+  - Service Fabric:
+    - Check that Service Fabric clusters use encrypted and signed node-to-node communication by @BernieWhite.
+      [#3356](https://github.com/Azure/PSRule.Rules.Azure/issues/3356)
 - Updated rules:
   - Virtual Network:
     - Updated documentation and promoted `Azure.VNET.PrivateSubnet` to GA by @BernieWhite.
