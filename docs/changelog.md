@@ -50,6 +50,11 @@ What's changed since pre-release v1.44.0-B0027:
     - Updated documentation and promoted `Azure.VMSS.AutoInstanceRepairs` to GA by @BernieWhite.
       [#3378](https://github.com/Azure/PSRule.Rules.Azure/issues/3378)
       - Bumped rule set to `2025_06`.
+- Bug fixes:
+  - Fixed not implemented exception for deployment name in lambda expression by @BernieWhite.
+    [#3393](https://github.com/Azure/PSRule.Rules.Azure/issues/3393)
+  - Fixed incorrect parsing of double quoted string during expansion by @BernieWhite.
+    [#3394](https://github.com/Azure/PSRule.Rules.Azure/issues/3394)
 
 ## v1.44.0-B0027 (pre-release)
 

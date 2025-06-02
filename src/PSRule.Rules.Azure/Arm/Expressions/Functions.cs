@@ -2137,18 +2137,22 @@ internal static class Functions
     /// </remarks>
     internal static object Map(ITemplateContext context, object[] args)
     {
-        if (CountArgs(args) != 2)
-            throw ArgumentsOutOfRange(nameof(Map), args);
+        if (CountArgs(args) != 2) throw ArgumentsOutOfRange(nameof(Map), args);
 
         args[0] = GetExpression(context, args[0]);
-        if (!ExpressionHelpers.TryArray(args[0], out var inputArray))
-            throw ArgumentFormatInvalid(nameof(Map));
+        if (!ExpressionHelpers.TryArray(args[0], out var inputArray)) throw ArgumentFormatInvalid(nameof(Map));
 
         args[1] = GetExpression(context, args[1]);
-        if (args[1] is not LambdaExpressionFn lambda)
-            throw ArgumentFormatInvalid(nameof(Map));
+        if (args[1] is not LambdaExpressionFn lambda) throw ArgumentFormatInvalid(nameof(Map));
 
-        return lambda.Map(context, inputArray.OfType<object>().ToArray());
+        try
+        {
+            return lambda.Map(context, [.. inputArray.OfType<object>()]);
+        }
+        catch
+        {
+            throw;
+        }
     }
 
     /// <summary>
@@ -2207,8 +2211,7 @@ internal static class Functions
     internal static object ToObject(ITemplateContext context, object[] args)
     {
         var count = CountArgs(args);
-        if (count is < 2 or > 3)
-            throw ArgumentsOutOfRange(nameof(ToObject), args);
+        if (count is < 2 or > 3) throw ArgumentsOutOfRange(nameof(ToObject), args);
 
         args[0] = GetExpression(context, args[0]);
         if (!ExpressionHelpers.TryArray(args[0], out var inputArray))
