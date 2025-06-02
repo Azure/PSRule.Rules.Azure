@@ -131,6 +131,9 @@ internal sealed class ExpressionStream
 
         var start = Position;
         var length = 0;
+
+        SkipQuotePairs(ref length);
+
         while (!EOF)
         {
             if (!IsEscaped && Apostrophe == Current)
