@@ -1,14 +1,19 @@
 ---
-description: Learn how to setup your GitHub repository to automatically test Bicep deployments.
+description: Learn how to setup your GitHub repository to automatically test Bicep code (deployments) using Bicep parameter files and PSRule for Azure.
 author: BernieWhite
 ---
 
 # Test a Bicep deployment with GitHub Actions
 
-Bicep supports using a parameter file to deploy a module to Azure.
+Azure Bicep supports using a parameter file to deploy a module to Azure.
+In this quickstart, you will learn how to set up your GitHub repository to automatically test deployments
+that use Bicep parameter files (`.bicepparam`).
 
-!!! Abstract
-    Learn how to setup your GitHub repository to automatically test Bicep deployments referenced using `.bicepparam` files.
+Once set up, GitHub Actions will run PSRule for Azure to test your Bicep code during pull requests and pushes.
+You can configure the GitHub Actions workflow triggers to run on additional branches or events.
+
+Testing your Bicep code using parameter files is a great way to ensure your code produces Azure resources
+that meet the security and compliance requirements of your organization.
 
 ## Before you begin
 

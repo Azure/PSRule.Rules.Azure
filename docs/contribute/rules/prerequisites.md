@@ -1,9 +1,14 @@
 ---
 reviewed: 2025-05-27
-author: BernieWhite
+title: Prerequisites for contributing rules
+description: Learn about the learning resources and required tooling for contributing rules to PSRule for Azure.
+discussion: false
 ---
 
-# Prerequisites for contributing rules
+# Prerequisites
+
+Before you start contributing rules to PSRule for Azure, there are some required tools and recommended learning resources
+to help you get started.
 
 ## Recommended learning
 

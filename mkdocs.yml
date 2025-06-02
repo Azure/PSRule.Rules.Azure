@@ -102,8 +102,11 @@ nav:
     - Overview: contribute/overview.md
     - Writing documentation: license-contributing/writing-documentation.md
     - Rules:
-      - Prerequisites: contribute/rule-prerequisites.md
-      - Create or update a rule: contribute/rule-creation.md
+      - 1. Prerequisites: contribute/rules/prerequisites.md
+      - 2. Choosing identifiers: contribute/rules/identifiers.md
+      - 3. Create or update a rule: contribute/rules/create.md
+      - 4. Testing a rule: contribute/rules/testing.md
+      - 5. Adding rule help: contribute/rules/help.md
       - Get started contributing: license-contributing/get-started-contributing.md
       - Getting started with contributions: license-contributing/getting-started-with-documentation.md
     - Resources:

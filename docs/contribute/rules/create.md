@@ -1,11 +1,12 @@
 ---
-reviewed: 2025-05-27
-author: BernieWhite
+reviewed: 2025-06-03
+description: Learn how to create or update a rule in PSRule for Azure.
+discussion: false
 ---
 
 # Create or update a rule
 
-This article describes the steps for creating or updating a rule in PSRule for Azure.
+This article describes the steps for creating or updating a rule when contributing to PSRule for Azure.
 
 ## Choosing the rule format for new rules
 
