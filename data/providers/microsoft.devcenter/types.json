@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "checkNameAvailability",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -28,6 +29,7 @@
     "aliases": null,
     "resourceType": "checkScopedNameAvailability",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -60,10 +62,13 @@
       "Microsoft.DevCenter/devcenters/planId": "properties.planId",
       "Microsoft.DevCenter/devcenters/projectCatalogSettings": "properties.projectCatalogSettings",
       "Microsoft.DevCenter/devcenters/projectCatalogSettings.catalogItemSyncEnableStatus": "properties.projectCatalogSettings.catalogItemSyncEnableStatus",
-      "Microsoft.DevCenter/devcenters/provisioningState": "properties.provisioningState"
+      "Microsoft.DevCenter/devcenters/provisioningState": "properties.provisioningState",
+      "Microsoft.DevCenter/devcenters/restrictedResourceTypes": "properties.restrictedResourceTypes",
+      "Microsoft.DevCenter/devcenters/restrictedResourceTypes[*]": "properties.restrictedResourceTypes[*]"
     },
     "resourceType": "devcenters",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -100,8 +105,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -118,6 +125,7 @@
     },
     "resourceType": "devcenters/attachednetworks",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -154,8 +162,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -193,6 +203,7 @@
     },
     "resourceType": "devcenters/catalogs",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -229,8 +240,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -264,8 +277,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -276,6 +291,7 @@
     "aliases": null,
     "resourceType": "devcenters/catalogs/environmentDefinitions",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -305,8 +321,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -317,6 +335,7 @@
     "aliases": null,
     "resourceType": "devcenters/catalogs/tasks",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -345,8 +364,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -377,8 +398,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -416,6 +439,7 @@
     },
     "resourceType": "devcenters/devboxdefinitions",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -452,8 +476,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -467,6 +493,7 @@
     },
     "resourceType": "devcenters/environmentTypes",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -503,8 +530,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -518,6 +547,7 @@
     },
     "resourceType": "devcenters/galleries",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -554,8 +584,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -566,6 +598,7 @@
     "aliases": null,
     "resourceType": "devcenters/galleries/images",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -602,8 +635,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -614,6 +649,7 @@
     "aliases": null,
     "resourceType": "devcenters/galleries/images/versions",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -650,8 +686,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -662,6 +700,7 @@
     "aliases": null,
     "resourceType": "devcenters/images",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -698,8 +737,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -707,9 +748,20 @@
     "zoneMappings": []
   },
   {
-    "aliases": null,
+    "aliases": {
+      "Microsoft.DevCenter/devcenters/projectPolicies/provisioningState": "properties.provisioningState",
+      "Microsoft.DevCenter/devcenters/projectPolicies/resourcePolicies": "properties.resourcePolicies",
+      "Microsoft.DevCenter/devcenters/projectPolicies/resourcePolicies[*]": "properties.resourcePolicies[*]",
+      "Microsoft.DevCenter/devcenters/projectPolicies/resourcePolicies[*].action": "properties.resourcePolicies[*].action",
+      "Microsoft.DevCenter/devcenters/projectPolicies/resourcePolicies[*].filter": "properties.resourcePolicies[*].filter",
+      "Microsoft.DevCenter/devcenters/projectPolicies/resourcePolicies[*].resources": "properties.resourcePolicies[*].resources",
+      "Microsoft.DevCenter/devcenters/projectPolicies/resourcePolicies[*].resourceType": "properties.resourcePolicies[*].resourceType",
+      "Microsoft.DevCenter/devcenters/projectPolicies/scopes": "properties.scopes",
+      "Microsoft.DevCenter/devcenters/projectPolicies/scopes[*]": "properties.scopes[*]"
+    },
     "resourceType": "devcenters/projectpolicies",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview"
     ],
@@ -730,8 +782,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -742,6 +796,7 @@
     "aliases": null,
     "resourceType": "Locations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -768,6 +823,7 @@
     "aliases": null,
     "resourceType": "Locations/OperationStatuses",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -804,8 +860,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -816,6 +874,7 @@
     "aliases": null,
     "resourceType": "Locations/usages",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -849,6 +908,7 @@
     },
     "resourceType": "networkconnections",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -885,8 +945,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -897,6 +959,7 @@
     "aliases": null,
     "resourceType": "networkconnections/healthchecks",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -933,8 +996,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -945,6 +1010,7 @@
     "aliases": null,
     "resourceType": "networkconnections/outboundNetworkDependenciesEndpoints",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -977,8 +1043,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -989,6 +1057,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1013,18 +1082,36 @@
   },
   {
     "aliases": {
+      "Microsoft.DevCenter/projects/azureAiServicesSettings": "properties.azureAiServicesSettings",
+      "Microsoft.DevCenter/projects/azureAiServicesSettings.azureAiServicesMode": "properties.azureAiServicesSettings.azureAiServicesMode",
       "Microsoft.DevCenter/projects/catalogSettings": "properties.catalogSettings",
       "Microsoft.DevCenter/projects/catalogSettings.catalogItemSyncTypes": "properties.catalogSettings.catalogItemSyncTypes",
       "Microsoft.DevCenter/projects/catalogSettings.catalogItemSyncTypes[*]": "properties.catalogSettings.catalogItemSyncTypes[*]",
+      "Microsoft.DevCenter/projects/customizationSettings": "properties.customizationSettings",
+      "Microsoft.DevCenter/projects/customizationSettings.identities": "properties.customizationSettings.identities",
+      "Microsoft.DevCenter/projects/customizationSettings.identities[*]": "properties.customizationSettings.identities[*]",
+      "Microsoft.DevCenter/projects/customizationSettings.identities[*].identityResourceId": "properties.customizationSettings.identities[*].identityResourceId",
+      "Microsoft.DevCenter/projects/customizationSettings.identities[*].identityType": "properties.customizationSettings.identities[*].identityType",
+      "Microsoft.DevCenter/projects/customizationSettings.userCustomizationsEnableStatus": "properties.customizationSettings.userCustomizationsEnableStatus",
       "Microsoft.DevCenter/projects/description": "properties.description",
+      "Microsoft.DevCenter/projects/devBoxAutoDeleteSettings": "properties.devBoxAutoDeleteSettings",
+      "Microsoft.DevCenter/projects/devBoxAutoDeleteSettings.deleteMode": "properties.devBoxAutoDeleteSettings.deleteMode",
+      "Microsoft.DevCenter/projects/devBoxAutoDeleteSettings.gracePeriod": "properties.devBoxAutoDeleteSettings.gracePeriod",
+      "Microsoft.DevCenter/projects/devBoxAutoDeleteSettings.inactiveThreshold": "properties.devBoxAutoDeleteSettings.inactiveThreshold",
       "Microsoft.DevCenter/projects/devCenterId": "properties.devCenterId",
       "Microsoft.DevCenter/projects/devCenterUri": "properties.devCenterUri",
       "Microsoft.DevCenter/projects/displayName": "properties.displayName",
       "Microsoft.DevCenter/projects/maxDevBoxesPerUser": "properties.maxDevBoxesPerUser",
-      "Microsoft.DevCenter/projects/provisioningState": "properties.provisioningState"
+      "Microsoft.DevCenter/projects/provisioningState": "properties.provisioningState",
+      "Microsoft.DevCenter/projects/serverlessGpuSessionsSettings": "properties.serverlessGpuSessionsSettings",
+      "Microsoft.DevCenter/projects/serverlessGpuSessionsSettings.maxConcurrentSessionsPerProject": "properties.serverlessGpuSessionsSettings.maxConcurrentSessionsPerProject",
+      "Microsoft.DevCenter/projects/serverlessGpuSessionsSettings.serverlessGpuSessionsMode": "properties.serverlessGpuSessionsSettings.serverlessGpuSessionsMode",
+      "Microsoft.DevCenter/projects/workspaceStorageSettings": "properties.workspaceStorageSettings",
+      "Microsoft.DevCenter/projects/workspaceStorageSettings.workspaceStorageMode": "properties.workspaceStorageSettings.workspaceStorageMode"
     },
     "resourceType": "projects",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1061,8 +1148,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1073,6 +1162,7 @@
     "aliases": null,
     "resourceType": "projects/allowedEnvironmentTypes",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1108,8 +1198,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1120,6 +1212,7 @@
     "aliases": null,
     "resourceType": "projects/attachednetworks",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1156,8 +1249,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1195,6 +1290,7 @@
     },
     "resourceType": "projects/catalogs",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1221,8 +1317,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1233,6 +1331,7 @@
     "aliases": null,
     "resourceType": "projects/catalogs/environmentDefinitions",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1259,8 +1358,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1271,6 +1372,7 @@
     "aliases": null,
     "resourceType": "projects/catalogs/imagedefinitions",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1294,8 +1396,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1306,6 +1410,7 @@
     "aliases": null,
     "resourceType": "projects/catalogs/imagedefinitions/builds",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1328,8 +1433,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1340,6 +1447,7 @@
     "aliases": null,
     "resourceType": "projects/devboxdefinitions",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1376,8 +1484,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1397,6 +1507,7 @@
     },
     "resourceType": "projects/environmentTypes",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1433,8 +1544,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1445,6 +1558,7 @@
     "aliases": null,
     "resourceType": "projects/images",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1468,8 +1582,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1480,6 +1596,7 @@
     "aliases": null,
     "resourceType": "projects/images/versions",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1503,8 +1620,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1515,6 +1634,7 @@
     "aliases": null,
     "resourceType": "projects/listskus",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1538,8 +1658,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1548,8 +1670,29 @@
   },
   {
     "aliases": {
+      "Microsoft.DevCenter/projects/pools/activeHoursConfiguration": "properties.activeHoursConfiguration",
+      "Microsoft.DevCenter/projects/pools/activeHoursConfiguration.autoStartEnableStatus": "properties.activeHoursConfiguration.autoStartEnableStatus",
+      "Microsoft.DevCenter/projects/pools/activeHoursConfiguration.defaultEndTimeHour": "properties.activeHoursConfiguration.defaultEndTimeHour",
+      "Microsoft.DevCenter/projects/pools/activeHoursConfiguration.defaultStartTimeHour": "properties.activeHoursConfiguration.defaultStartTimeHour",
+      "Microsoft.DevCenter/projects/pools/activeHoursConfiguration.defaultTimeZone": "properties.activeHoursConfiguration.defaultTimeZone",
+      "Microsoft.DevCenter/projects/pools/activeHoursConfiguration.keepAwakeEnableStatus": "properties.activeHoursConfiguration.keepAwakeEnableStatus",
       "Microsoft.DevCenter/projects/pools/devBoxCount": "properties.devBoxCount",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition": "properties.devBoxDefinition",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.activeImageReference": "properties.devBoxDefinition.activeImageReference",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.activeImageReference.exactVersion": "properties.devBoxDefinition.activeImageReference.exactVersion",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.activeImageReference.id": "properties.devBoxDefinition.activeImageReference.id",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.imageReference": "properties.devBoxDefinition.imageReference",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.imageReference.exactVersion": "properties.devBoxDefinition.imageReference.exactVersion",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.imageReference.id": "properties.devBoxDefinition.imageReference.id",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.sku": "properties.devBoxDefinition.sku",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.sku.capacity": "properties.devBoxDefinition.sku.capacity",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.sku.family": "properties.devBoxDefinition.sku.family",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.sku.name": "properties.devBoxDefinition.sku.name",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.sku.size": "properties.devBoxDefinition.sku.size",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinition.sku.tier": "properties.devBoxDefinition.sku.tier",
       "Microsoft.DevCenter/projects/pools/devBoxDefinitionName": "properties.devBoxDefinitionName",
+      "Microsoft.DevCenter/projects/pools/devBoxDefinitionType": "properties.devBoxDefinitionType",
+      "Microsoft.DevCenter/projects/pools/devBoxTunnelEnableStatus": "properties.devBoxTunnelEnableStatus",
       "Microsoft.DevCenter/projects/pools/displayName": "properties.displayName",
       "Microsoft.DevCenter/projects/pools/healthStatus": "properties.healthStatus",
       "Microsoft.DevCenter/projects/pools/healthStatusDetails": "properties.healthStatusDetails",
@@ -1566,10 +1709,14 @@
       "Microsoft.DevCenter/projects/pools/stopOnDisconnect": "properties.stopOnDisconnect",
       "Microsoft.DevCenter/projects/pools/stopOnDisconnect.gracePeriodMinutes": "properties.stopOnDisconnect.gracePeriodMinutes",
       "Microsoft.DevCenter/projects/pools/stopOnDisconnect.status": "properties.stopOnDisconnect.status",
+      "Microsoft.DevCenter/projects/pools/stopOnNoConnect": "properties.stopOnNoConnect",
+      "Microsoft.DevCenter/projects/pools/stopOnNoConnect.gracePeriodMinutes": "properties.stopOnNoConnect.gracePeriodMinutes",
+      "Microsoft.DevCenter/projects/pools/stopOnNoConnect.status": "properties.stopOnNoConnect.status",
       "Microsoft.DevCenter/projects/pools/virtualNetworkType": "properties.virtualNetworkType"
     },
     "resourceType": "projects/pools",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1606,8 +1753,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"
@@ -1627,6 +1776,7 @@
     },
     "resourceType": "projects/pools/schedules",
     "apiVersions": [
+      "2025-04-01-preview",
       "2025-02-01",
       "2024-10-01-preview",
       "2024-08-01-preview",
@@ -1663,8 +1813,10 @@
       "South Africa North",
       "South Central US",
       "Southeast Asia",
+      "Spain Central",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
       "UK South",
       "West Europe",
       "West US 3"

@@ -74,6 +74,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
@@ -148,6 +149,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
@@ -217,6 +219,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
@@ -281,6 +284,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
@@ -367,6 +371,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
@@ -425,6 +430,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
@@ -480,6 +486,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
@@ -753,6 +760,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",
@@ -865,6 +873,14 @@
         ]
       },
       {
+        "location": "Indonesia Central",
+        "zones": [
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      {
         "location": "Israel Central",
         "zones": [
           "1",
@@ -887,6 +903,10 @@
           "2",
           "3"
         ]
+      },
+      {
+        "location": "Japan West",
+        "zones": []
       },
       {
         "location": "Korea Central",
@@ -1061,6 +1081,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Indonesia Central",
       "Israel Central",
       "Italy North",
       "Japan East",

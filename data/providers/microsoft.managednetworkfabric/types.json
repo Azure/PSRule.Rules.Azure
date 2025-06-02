@@ -96,7 +96,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "ipprefixes",
+    "resourceType": "IpPrefixes",
     "apiVersions": [
       "2024-06-15-preview",
       "2024-02-15-preview",
@@ -337,7 +337,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "networkMonitors",
+    "resourceType": "networkmonitors",
     "apiVersions": [
       "2024-06-15-preview"
     ],

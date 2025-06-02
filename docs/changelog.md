@@ -30,6 +30,34 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.44.0-B0052 (pre-release)
+
+What's changed since pre-release v1.44.0-B0027:
+
+- New features:
+  - Added support for the `toPhysicalZone`, `toPhysicalZones`, `toLogicalZone`, `toLogicalZones` Bicep functions by @BernieWhite.
+    [#3346](https://github.com/Azure/PSRule.Rules.Azure/issues/3346)
+  - Added the `userPrincipalName` property to the `deployer()` object by @BernieWhite.
+    [#3390](https://github.com/Azure/PSRule.Rules.Azure/issues/3390)
+- New rules:
+  - Service Fabric:
+    - Check that Service Fabric clusters use encrypted and signed node-to-node communication by @BernieWhite.
+      [#3356](https://github.com/Azure/PSRule.Rules.Azure/issues/3356)
+- Updated rules:
+  - Virtual Network:
+    - Updated documentation and promoted `Azure.VNET.PrivateSubnet` to GA by @BernieWhite.
+      [#3386](https://github.com/Azure/PSRule.Rules.Azure/issues/3386)
+      - Bumped rule set to `2025_06`.
+  - Virtual Machine Scale Sets:
+    - Updated documentation and promoted `Azure.VMSS.AutoInstanceRepairs` to GA by @BernieWhite.
+      [#3378](https://github.com/Azure/PSRule.Rules.Azure/issues/3378)
+      - Bumped rule set to `2025_06`.
+- Bug fixes:
+  - Fixed not implemented exception for deployment name in lambda expression by @BernieWhite.
+    [#3393](https://github.com/Azure/PSRule.Rules.Azure/issues/3393)
+  - Fixed incorrect parsing of double quoted string during expansion by @BernieWhite.
+    [#3394](https://github.com/Azure/PSRule.Rules.Azure/issues/3394)
+
 ## v1.44.0-B0027 (pre-release)
 
 What's changed since pre-release v1.44.0-B0011:
@@ -71,6 +99,7 @@ What's changed since pre-release v1.44.0-B0011:
     - Updated documentation and promoted `Azure.Log.Replication` to GA by @BernieWhite.
       [#3372](https://github.com/Azure/PSRule.Rules.Azure/issues/3372)
       - This rule was renamed from `Azure.LogAnalytics.Replication` to `Azure.Log.Replication` to drop the legacy name.
+      - Bumped rule set to `2025_06`.
 
 ## v1.44.0-B0011 (pre-release)
 

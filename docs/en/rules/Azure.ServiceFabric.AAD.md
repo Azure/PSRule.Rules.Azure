@@ -26,6 +26,108 @@ For Service Fabric clusters running on Azure, Entra ID is recommended to secure 
 
 Consider enabling Entra ID client authentication for Service Fabric clusters.
 
+## EXAMPLES
+
+### Configure with Bicep
+
+To deploy clusters that pass this rule:
+
+- steps
+
+For example:
+
+```bicep
+resource cluster 'Microsoft.ServiceFabric/clusters@2023-11-01-preview' = {
+  name: name
+  location: location
+  properties: {
+    azureActiveDirectory: {
+      clientApplication: clientApplication
+      clusterApplication: clusterApplication
+      tenantId: tenantId
+    }
+    certificate: {
+      thumbprint: certificateThumbprint
+      x509StoreName: 'My'
+    }
+    diagnosticsStorageAccountConfig: {
+      blobEndpoint: storageAccount.properties.primaryEndpoints.blob
+      protectedAccountKeyName: 'StorageAccountKey1'
+      queueEndpoint: storageAccount.properties.primaryEndpoints.queue
+      storageAccountName: storageAccount.name
+      tableEndpoint: storageAccount.properties.primaryEndpoints.table
+    }
+    fabricSettings: [
+      {
+        parameters: [
+          {
+            name: 'ClusterProtectionLevel'
+            value: 'EncryptAndSign'
+          }
+        ]
+        name: 'Security'
+      }
+    ]
+    managementEndpoint: endpointUri
+    nodeTypes: []
+    reliabilityLevel: 'Silver'
+    upgradeMode: 'Automatic'
+    vmImage: 'Windows'
+  }
+}
+```
+
+### Configure with Azure template
+
+To deploy clusters that pass this rule:
+
+- steps
+
+For example:
+
+```json
+{
+  "type": "Microsoft.ServiceFabric/clusters",
+  "apiVersion": "2023-11-01-preview",
+  "name": "[parameters('name')]",
+  "location": "[parameters('location')]",
+  "properties": {
+    "azureActiveDirectory": {
+      "clientApplication": "[parameters('clientApplication')]",
+      "clusterApplication": "[parameters('clusterApplication')]",
+      "tenantId": "[parameters('tenantId')]"
+    },
+    "certificate": {
+      "thumbprint": "[parameters('certificateThumbprint')]",
+      "x509StoreName": "My"
+    },
+    "diagnosticsStorageAccountConfig": {
+      "blobEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-01-01').primaryEndpoints.blob]",
+      "protectedAccountKeyName": "StorageAccountKey1",
+      "queueEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-01-01').primaryEndpoints.queue]",
+      "storageAccountName": "storage1",
+      "tableEndpoint": "[reference(resourceId('Microsoft.Storage/storageAccounts', 'storage1'), '2021-01-01').primaryEndpoints.table]"
+    },
+    "fabricSettings": [
+      {
+        "parameters": [
+          {
+            "name": "ClusterProtectionLevel",
+            "value": "EncryptAndSign"
+          }
+        ],
+        "name": "Security"
+      }
+    ],
+    "managementEndpoint": "[parameters('endpointUri')]",
+    "nodeTypes": [],
+    "reliabilityLevel": "Silver",
+    "upgradeMode": "Automatic",
+    "vmImage": "Windows"
+  }
+}
+```
+
 ## NOTES
 
 For Linux clusters, Entra ID authentication must be configured at cluster creation time.

@@ -62,7 +62,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "Locations",
+    "resourceType": "locations",
     "apiVersions": [
       "2024-12-15-preview",
       "2024-12-01",

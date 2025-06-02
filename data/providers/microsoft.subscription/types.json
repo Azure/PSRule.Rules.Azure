@@ -1,6 +1,54 @@
 [
   {
     "aliases": null,
+    "resourceType": "acceptChangeTenant",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2021-01-01-privatepreview",
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "acceptOwnership",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2021-10-01",
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "acceptOwnershipStatus",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2021-10-01",
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": {
+      "Microsoft.Subscription/aliases/subscriptionId": "properties.subscriptionId"
+    },
+    "resourceType": "aliases",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2021-10-01",
+      "2021-01-01-privatepreview",
+      "2020-09-01",
+      "2019-10-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "cancel",
     "apiVersions": [
       "2024-08-01-preview",
@@ -9,9 +57,29 @@
       "2019-10-01-preview",
       "2019-03-01-preview"
     ],
-    "locations": [
-      "West US"
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "changeTenantRequest",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2021-01-01-privatepreview",
+      "2019-10-01-preview"
     ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "changeTenantStatus",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2021-01-01-privatepreview",
+      "2019-10-01-preview"
+    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -22,9 +90,16 @@
       "2018-11-01-preview",
       "2018-03-01-preview"
     ],
-    "locations": [
-      "Central US"
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "directories",
+    "apiVersions": [
+      "2021-01-01-privatepreview"
     ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -37,9 +112,7 @@
       "2019-10-01-preview",
       "2019-03-01-preview"
     ],
-    "locations": [
-      "West US"
-    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -49,9 +122,7 @@
       "2024-08-01-preview",
       "2019-10-01-preview"
     ],
-    "locations": [
-      "Central US"
-    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -62,9 +133,18 @@
       "2021-10-01",
       "2017-11-01-preview"
     ],
-    "locations": [
-      "West US"
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "policies",
+    "apiVersions": [
+      "2024-08-01-preview",
+      "2021-10-01",
+      "2021-01-01-privatepreview"
     ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -77,9 +157,7 @@
       "2019-10-01-preview",
       "2019-03-01-preview"
     ],
-    "locations": [
-      "West US"
-    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -93,9 +171,7 @@
     "apiVersions": [
       "2017-11-01-preview"
     ],
-    "locations": [
-      "West US"
-    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -110,9 +186,7 @@
       "2018-03-01-preview",
       "2017-11-01-preview"
     ],
-    "locations": [
-      "West US"
-    ],
+    "locations": [],
     "zoneMappings": []
   },
   {
@@ -128,9 +202,21 @@
     "zoneMappings": []
   },
   {
-    "aliases": {
-      "Microsoft.Subscription/aliases/subscriptionId": "properties.subscriptionId"
-    },
-    "resourceType": "aliases"
+    "aliases": null,
+    "resourceType": "supportPlans",
+    "apiVersions": [
+      "2024-08-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "validateCancel",
+    "apiVersions": [
+      "2021-01-01-privatepreview"
+    ],
+    "locations": [],
+    "zoneMappings": []
   }
 ]

@@ -10,6 +10,7 @@
     },
     "resourceType": "builders",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -60,6 +61,7 @@
     "aliases": null,
     "resourceType": "builders/builds",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -127,6 +129,8 @@
     },
     "resourceType": "connectedEnvironments",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -145,7 +149,10 @@
       "East US",
       "North Central US",
       "Southeast Asia",
-      "West Europe"
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -171,6 +178,8 @@
     },
     "resourceType": "connectedEnvironments/certificates",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -189,7 +198,10 @@
       "East US",
       "North Central US",
       "Southeast Asia",
-      "West Europe"
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -430,6 +442,8 @@
     },
     "resourceType": "containerApps",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -488,6 +502,7 @@
     "aliases": null,
     "resourceType": "containerApps/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -537,6 +552,7 @@
     "aliases": null,
     "resourceType": "containerApps/resiliencyPolicies",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -587,6 +603,7 @@
     "aliases": null,
     "resourceType": "functions",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview"
@@ -635,6 +652,8 @@
     "aliases": null,
     "resourceType": "getCustomDomainVerificationId",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -814,6 +833,8 @@
     },
     "resourceType": "jobs",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -869,6 +890,8 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -890,6 +913,8 @@
     "aliases": null,
     "resourceType": "locations/availableManagedEnvironmentsWorkloadProfileTypes",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -947,6 +972,8 @@
     "aliases": null,
     "resourceType": "locations/billingMeters",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1004,6 +1031,8 @@
     "aliases": null,
     "resourceType": "locations/connectedEnvironmentOperationResults",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1022,7 +1051,10 @@
       "East US",
       "North Central US",
       "Southeast Asia",
-      "West Europe"
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -1030,6 +1062,8 @@
     "aliases": null,
     "resourceType": "locations/connectedEnvironmentOperationStatuses",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1048,7 +1082,10 @@
       "East US",
       "North Central US",
       "Southeast Asia",
-      "West Europe"
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -1056,6 +1093,7 @@
     "aliases": null,
     "resourceType": "locations/connectedOperationResults",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview"
     ],
     "locations": [
@@ -1063,7 +1101,10 @@
       "East US",
       "North Central US",
       "Southeast Asia",
-      "West Europe"
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -1071,6 +1112,7 @@
     "aliases": null,
     "resourceType": "locations/connectedOperationStatuses",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview"
     ],
     "locations": [
@@ -1078,7 +1120,10 @@
       "East US",
       "North Central US",
       "Southeast Asia",
-      "West Europe"
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -1086,6 +1131,8 @@
     "aliases": null,
     "resourceType": "locations/containerappOperationResults",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1144,6 +1191,8 @@
     "aliases": null,
     "resourceType": "locations/containerappOperationStatuses",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1202,6 +1251,8 @@
     "aliases": null,
     "resourceType": "locations/containerappsjobOperationResults",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1257,6 +1308,8 @@
     "aliases": null,
     "resourceType": "locations/containerappsjobOperationStatuses",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1312,6 +1365,8 @@
     "aliases": null,
     "resourceType": "locations/managedCertificateOperationStatuses",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1367,6 +1422,8 @@
     "aliases": null,
     "resourceType": "locations/managedEnvironmentOperationResults",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1425,6 +1482,8 @@
     "aliases": null,
     "resourceType": "locations/managedEnvironmentOperationStatuses",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1483,6 +1542,8 @@
     "aliases": null,
     "resourceType": "locations/OperationResults",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -1533,6 +1594,8 @@
     "aliases": null,
     "resourceType": "locations/OperationStatuses",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -1583,6 +1646,8 @@
     "aliases": null,
     "resourceType": "locations/sourceControlOperationResults",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1641,6 +1706,8 @@
     "aliases": null,
     "resourceType": "locations/sourceControlOperationStatuses",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1699,6 +1766,8 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1751,6 +1820,7 @@
     "aliases": null,
     "resourceType": "logicApps",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview"
@@ -1760,7 +1830,10 @@
       "East US",
       "North Central US",
       "Southeast Asia",
-      "West Europe"
+      "Sweden Central",
+      "UK South",
+      "West Europe",
+      "West US"
     ],
     "zoneMappings": []
   },
@@ -1876,6 +1949,8 @@
     },
     "resourceType": "managedEnvironments",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -1952,6 +2027,8 @@
     },
     "resourceType": "managedEnvironments/certificates",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -2036,6 +2113,8 @@
     },
     "resourceType": "managedEnvironments/daprComponents",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -2119,6 +2198,7 @@
     },
     "resourceType": "managedEnvironments/daprComponents/resiliencyPolicies",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -2180,6 +2260,7 @@
     },
     "resourceType": "managedEnvironments/dotNetComponents",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -2260,6 +2341,8 @@
     },
     "resourceType": "managedEnvironments/javaComponents",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -2315,6 +2398,8 @@
     },
     "resourceType": "managedEnvironments/managedCertificates",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -2370,6 +2455,7 @@
     "aliases": null,
     "resourceType": "managedEnvironments/privateEndpointConnectionProxies",
     "apiVersions": [
+      "2025-02-02-preview",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -2419,6 +2505,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-03-01",
@@ -2472,6 +2560,10 @@
       "Microsoft.App/sessionPools/dynamicPoolConfiguration": "properties.dynamicPoolConfiguration",
       "Microsoft.App/sessionPools/dynamicPoolConfiguration.cooldownPeriodInSeconds": "properties.dynamicPoolConfiguration.cooldownPeriodInSeconds",
       "Microsoft.App/sessionPools/dynamicPoolConfiguration.executionType": "properties.dynamicPoolConfiguration.executionType",
+      "Microsoft.App/sessionPools/dynamicPoolConfiguration.lifecycleConfiguration": "properties.dynamicPoolConfiguration.lifecycleConfiguration",
+      "Microsoft.App/sessionPools/dynamicPoolConfiguration.lifecycleConfiguration.cooldownPeriodInSeconds": "properties.dynamicPoolConfiguration.lifecycleConfiguration.cooldownPeriodInSeconds",
+      "Microsoft.App/sessionPools/dynamicPoolConfiguration.lifecycleConfiguration.lifecycleType": "properties.dynamicPoolConfiguration.lifecycleConfiguration.lifecycleType",
+      "Microsoft.App/sessionPools/dynamicPoolConfiguration.lifecycleConfiguration.maxAlivePeriodInSeconds": "properties.dynamicPoolConfiguration.lifecycleConfiguration.maxAlivePeriodInSeconds",
       "Microsoft.App/sessionPools/environmentId": "properties.environmentId",
       "Microsoft.App/sessionPools/managedIdentitySettings": "properties.managedIdentitySettings",
       "Microsoft.App/sessionPools/managedIdentitySettings[*]": "properties.managedIdentitySettings[*]",
@@ -2493,6 +2585,8 @@
     },
     "resourceType": "sessionPools",
     "apiVersions": [
+      "2025-02-02-preview",
+      "2025-01-01",
       "2024-10-02-preview",
       "2024-08-02-preview",
       "2024-02-02-preview",
@@ -2501,19 +2595,32 @@
     ],
     "locations": [
       "Australia East",
+      "Brazil South",
+      "Canada East",
       "East Asia",
       "East US",
+      "East US 2",
+      "France Central",
       "Germany West Central",
       "Italy North",
       "Japan East",
+      "Korea Central",
       "North Central US",
       "North Europe",
       "Norway East",
       "Poland Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
       "Sweden Central",
       "Switzerland North",
+      "UAE North",
+      "UK South",
       "West Central US",
-      "West US 2"
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },

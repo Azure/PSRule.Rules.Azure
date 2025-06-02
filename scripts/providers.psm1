@@ -10,33 +10,6 @@ function Update-Providers {
         [Parameter(Mandatory = $False)]
         [String]$Path = (Join-Path -Path $PWD -ChildPath 'data')
     )
-    process {
-        UpdateProviders -Path $Path;
-
-        $updates = @(git status --porcelain);
-        if ($Null -ne $Env:WORKING_BRANCH -and $Null -ne $updates -and $updates.Length -gt 0) {
-            git add 'data/providers/';
-            git commit -m "Update provider data";
-            git push --force -u origin $Env:WORKING_BRANCH;
-
-            $existingBranch = @(gh pr list --head $Env:WORKING_BRANCH --state open --json number | ConvertFrom-Json);
-            if ($Null -eq $existingBranch -or $existingBranch.Length -eq 0) {
-                gh pr create -B 'main' -H $Env:WORKING_BRANCH -l 'dependencies' -t 'Bump resource providers' -F '.github/templates/provider-updates.txt';
-            }
-            else {
-                $pr = $existingBranch[0].number
-                gh pr edit $pr -F '.github/templates/provider-updates.txt';
-            }
-        }
-    }
-}
-
-function UpdateProviders {
-    [CmdletBinding()]
-    param (
-        [Parameter(Mandatory = $True)]
-        [String]$Path
-    )
     begin {
         $providerPath = Join-Path -Path $Path -ChildPath ("./providers/");
         if (Test-Path -Path $providerPath) {
@@ -120,6 +93,40 @@ function UpdateProviders {
     }
 }
 
+function Update-Locations {
+    [CmdletBinding()]
+    param (
+        [Parameter(Mandatory = $False)]
+        [String]$Path = (Join-Path -Path $PWD -ChildPath 'data')
+    )
+    process {
+        $subscriptionId = (Get-AzContext).Subscription.Id
+        $raw = @(((Invoke-AzRest -Method Get -Path "/subscriptions/$subscriptionId/locations?api-version=2022-12-01").Content | ConvertFrom-Json).value | Sort-Object -Property namespace -CaseSensitive);
+
+        $locationIndex = [ordered]@{};
+        foreach ($rawLocation in ($raw | Where-Object { $_.displayName -notlike "MSFT *" -and $_.displayName -notlike "* (Stage)" -and $_.metadata.regionType -ne 'Logical' } | Sort-Object -Property name)) {
+            $name = $rawLocation.name.ToLower();
+            $physicalZones = 0
+            if ($Null -ne $rawLocation.availabilityZoneMappings) {
+                $physicalZones = @($rawLocation.availabilityZoneMappings).Length;
+            }
+
+            # Ignore locations that don't have any zones.
+            if ($physicalZones -eq 0) {
+                continue;
+            }
+
+            $location = [ordered]@{
+                zones = $physicalZones
+            }
+            $locationIndex.Add($name, $location);
+        }
+
+        ConvertTo-Json -Depth 5 -InputObject $locationIndex | Set-Content -Path (Join-Path -Path $Path -ChildPath "locations.json") -Encoding utf8 -Force;
+    }
+}
+
 Export-ModuleMember -Function @(
     'Update-Providers'
+    'Update-Locations'
 )

@@ -402,6 +402,7 @@ configuration:
   AZURE_DEPLOYER:
     objectId: string
     tenantId: string
+    userPrincipalName: string
 ```
 
 Default:
@@ -412,6 +413,7 @@ configuration:
   AZURE_DEPLOYER:
     objectId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
     tenantId: 'ffffffff-ffff-ffff-ffff-ffffffffffff'
+    userPrincipalName: 'psrule-test@contoso.com'
 ```
 
 Example:

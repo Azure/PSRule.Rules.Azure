@@ -216,4 +216,46 @@ public sealed class ExpressionParserTests
         Assert.Equal(ExpressionTokenType.GroupEnd, actual[10].Type);
         Assert.Equal(ExpressionTokenType.GroupEnd, actual[11].Type);
     }
+
+    [Fact]
+    public void ParseQuotingDoubles()
+    {
+        var expression = "[format('''{0}''', replace(replace(join(parameters('principalTypes'), ','), '\\\"', ''''), ',', ''','''))]";
+        var actual = ExpressionParser.Parse(expression).ToArray();
+
+        Assert.Equal(ExpressionTokenType.Element, actual[0].Type); // format
+        Assert.Equal("format", actual[0].Content);
+        Assert.Equal(ExpressionTokenType.GroupStart, actual[1].Type);
+        Assert.Equal(ExpressionTokenType.String, actual[2].Type); // '''{0}'''
+        Assert.Equal("'{0}'", actual[2].Content);
+        Assert.Equal(ExpressionTokenType.Element, actual[3].Type); // replace
+        Assert.Equal("replace", actual[3].Content);
+        Assert.Equal(ExpressionTokenType.GroupStart, actual[4].Type);
+        Assert.Equal(ExpressionTokenType.Element, actual[5].Type); // replace
+        Assert.Equal("replace", actual[5].Content);
+        Assert.Equal(ExpressionTokenType.GroupStart, actual[6].Type);
+        Assert.Equal(ExpressionTokenType.Element, actual[7].Type); // join
+        Assert.Equal("join", actual[7].Content);
+        Assert.Equal(ExpressionTokenType.GroupStart, actual[8].Type);
+        Assert.Equal(ExpressionTokenType.Element, actual[9].Type); // parameters
+        Assert.Equal("parameters", actual[9].Content);
+        Assert.Equal(ExpressionTokenType.GroupStart, actual[10].Type);
+        Assert.Equal(ExpressionTokenType.String, actual[11].Type); // 'principalTypes'
+        Assert.Equal("principalTypes", actual[11].Content);
+        Assert.Equal(ExpressionTokenType.GroupEnd, actual[12].Type);
+        Assert.Equal(ExpressionTokenType.String, actual[13].Type); // ','
+        Assert.Equal(",", actual[13].Content);
+        Assert.Equal(ExpressionTokenType.GroupEnd, actual[14].Type);
+        Assert.Equal(ExpressionTokenType.String, actual[15].Type); // '\"'
+        Assert.Equal("\\\"", actual[15].Content);
+        Assert.Equal(ExpressionTokenType.String, actual[16].Type); // ''''
+        Assert.Equal("'", actual[16].Content);
+        Assert.Equal(ExpressionTokenType.GroupEnd, actual[17].Type);
+        Assert.Equal(ExpressionTokenType.String, actual[18].Type); // ','
+        Assert.Equal(",", actual[18].Content);
+        Assert.Equal(ExpressionTokenType.String, actual[19].Type); // ''','''
+        Assert.Equal("','", actual[19].Content);
+        Assert.Equal(ExpressionTokenType.GroupEnd, actual[20].Type);
+        Assert.Equal(ExpressionTokenType.GroupEnd, actual[21].Type);
+    }
 }

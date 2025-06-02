@@ -3,6 +3,7 @@
 
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using PSRule.Rules.Azure.Arm;
 using PSRule.Rules.Azure.Arm.Deployments;
 using static PSRule.Rules.Azure.Arm.Deployments.DeploymentVisitor;
 

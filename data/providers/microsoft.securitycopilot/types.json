@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "capacities",
     "apiVersions": [
+      "2024-11-01-preview",
       "2023-12-01-preview"
     ],
     "locations": [

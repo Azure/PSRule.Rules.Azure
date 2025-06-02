@@ -78,6 +78,7 @@
     "locations": [
       "Central US",
       "East US",
+      "North Europe",
       "West Europe"
     ],
     "zoneMappings": []
@@ -168,6 +169,7 @@
     },
     "resourceType": "assessmentMetadata",
     "apiVersions": [
+      "2025-05-04",
       "2021-06-01",
       "2020-01-01",
       "2019-01-01-preview"
@@ -227,6 +229,7 @@
     },
     "resourceType": "assessments",
     "apiVersions": [
+      "2025-05-04",
       "2021-06-01",
       "2020-01-01",
       "2019-01-01-preview"
@@ -252,6 +255,7 @@
     },
     "resourceType": "assessments/governanceAssignments",
     "apiVersions": [
+      "2025-05-04",
       "2022-01-01-preview"
     ],
     "locations": [],
@@ -590,7 +594,10 @@
     },
     "resourceType": "defenderForStorageSettings",
     "apiVersions": [
+      "2025-02-01-preview",
+      "2025-01-01",
       "2024-10-01-preview",
+      "2024-08-01-preview",
       "2022-12-01-preview",
       "2017-08-01-preview"
     ],
@@ -2120,6 +2127,7 @@
     },
     "resourceType": "securityConnectors/devops",
     "apiVersions": [
+      "2025-03-01",
       "2024-05-01-preview",
       "2024-04-01",
       "2023-09-01-preview"
@@ -2332,6 +2340,7 @@
       "Korea Central",
       "Korea South",
       "Mexico Central",
+      "New Zealand North",
       "North Central US",
       "North Europe",
       "Norway East",

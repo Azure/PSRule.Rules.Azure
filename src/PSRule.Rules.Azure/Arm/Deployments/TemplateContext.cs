@@ -39,6 +39,7 @@ internal abstract partial class DeploymentVisitor
         private readonly List<IResourceValue> _Resources;
         private readonly Dictionary<string, IResourceValue> _ResourceIds;
         private readonly ResourceProviderHelper _ResourceProviderHelper;
+        private readonly LocationData _LocationData;
         private readonly Dictionary<string, JToken> _ParameterAssignments;
         private readonly TemplateValidator _Validator;
         private readonly HashSet<object> _SecureValues;
@@ -67,6 +68,7 @@ internal abstract partial class DeploymentVisitor
             _ExpressionFactory = new ExpressionFactory();
             _ExpressionBuilder = new ExpressionBuilder(_ExpressionFactory);
             _ResourceProviderHelper = new ResourceProviderHelper();
+            _LocationData = new LocationData();
             _ParameterAssignments = [];
             _Validator = new TemplateValidator();
             _IsGenerated = null;
@@ -590,6 +592,12 @@ internal abstract partial class DeploymentVisitor
         public ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
         {
             return _ResourceProviderHelper.GetResourceType(providerNamespace, resourceType);
+        }
+
+        /// <inheritdoc/>
+        public AzureLocationEntry GetAzureLocation(string location)
+        {
+            return _LocationData.Get(location);
         }
 
         public CloudEnvironment GetEnvironment()

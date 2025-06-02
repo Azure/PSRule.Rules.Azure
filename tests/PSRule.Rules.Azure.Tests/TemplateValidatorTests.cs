@@ -78,6 +78,11 @@ public sealed class TemplateValidatorTests
             Value.SetValidationIssue(issueId, name, path, message, args);
         }
 
+        public AzureLocationEntry GetAzureLocation(string location)
+        {
+            throw new NotImplementedException();
+        }
+
         public ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
         {
             throw new NotImplementedException();

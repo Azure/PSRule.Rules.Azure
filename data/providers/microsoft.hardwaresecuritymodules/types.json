@@ -3,12 +3,31 @@
     "aliases": null,
     "resourceType": "cloudHsmClusters",
     "apiVersions": [
-      "2024-06-30-preview",
-      "2022-08-31-preview"
+      "2025-03-31",
+      "2024-06-30-preview"
     ],
     "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
       "UK West",
-      "West Europe"
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },
@@ -28,12 +47,31 @@
     "aliases": null,
     "resourceType": "locations/cloudHsmOperationResults",
     "apiVersions": [
-      "2024-06-30-preview",
-      "2022-08-31-preview"
+      "2025-03-31",
+      "2024-06-30-preview"
     ],
     "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Canada Central",
+      "Canada East",
+      "Central US",
+      "East US",
+      "East US 2",
+      "Japan East",
+      "Japan West",
+      "North Europe",
+      "South Central US",
+      "Southeast Asia",
+      "Switzerland North",
+      "Switzerland West",
+      "UK South",
       "UK West",
-      "West Europe"
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
     ],
     "zoneMappings": []
   },

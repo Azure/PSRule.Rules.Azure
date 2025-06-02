@@ -1,0 +1,69 @@
+[
+  {
+    "aliases": null,
+    "resourceType": "discoveryHubs",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "discoveryHubs/applications",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "discoveryHubs/applications/members",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "Australia East"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "locations/operationStatuses",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "Central US EUAP",
+      "East US 2 EUAP"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operations",
+    "apiVersions": [
+      "2025-02-01-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  }
+]

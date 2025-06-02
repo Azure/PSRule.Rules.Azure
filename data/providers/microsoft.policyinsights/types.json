@@ -11,6 +11,77 @@
   },
   {
     "aliases": null,
+    "resourceType": "attestations",
+    "apiVersions": [
+      "2024-10-01",
+      "2022-09-01",
+      "2021-01-01",
+      "2019-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "checkPolicyRestrictions",
+    "apiVersions": [
+      "2024-10-01",
+      "2023-03-01",
+      "2022-03-01",
+      "2020-07-01-preview",
+      "2020-07-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "componentPolicyStates",
+    "apiVersions": [
+      "2024-10-01",
+      "2022-04-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "derivePolicyProperties",
+    "apiVersions": [
+      "2025-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "eventGridFilters",
+    "apiVersions": [
+      "2020-10-01"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "generatePolicyRuleIf",
+    "apiVersions": [
+      "2025-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "handlePolicyCopilotRequest",
+    "apiVersions": [
+      "2025-05-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
       "2024-10-01",
@@ -36,6 +107,16 @@
       "2017-12-12-preview",
       "2017-10-17-preview",
       "2017-08-09-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "policyMetadata",
+    "apiVersions": [
+      "2024-10-01",
+      "2019-10-01"
     ],
     "locations": [],
     "zoneMappings": []

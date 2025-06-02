@@ -160,6 +160,14 @@
     "displayName": "Use Managed Identity for Azure AI services accounts"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.CognitiveServices/accounts",
+    "ruleId": "Azure.AI.Naming",
+    "displayName": "Azure AI services must use standard naming"
+  },
+  {
     "severity": "Important",
     "pillar": "Security",
     "category": "SE:06 Network controls",
@@ -1820,6 +1828,14 @@
     "pillar": "Security",
     "category": "SE:02 Secured development lifecycle",
     "resourceType": "Microsoft.Resources/deployments",
+    "ruleId": "Azure.Deployment.SecretLeak",
+    "displayName": "Deployment parameter contains a secret that is not secured"
+  },
+  {
+    "severity": "Critical",
+    "pillar": "Security",
+    "category": "SE:02 Secured development lifecycle",
+    "resourceType": "Microsoft.Resources/deployments",
     "ruleId": "Azure.Deployment.SecureParameter",
     "displayName": "Deployment parameter name implies it is secret but is a non-secure value"
   },
@@ -1888,6 +1904,14 @@
     "displayName": "Use identity-based authentication for Event Grid topics"
   },
   {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.EventGrid/domains",
+    "ruleId": "Azure.EventGrid.DomainNaming",
+    "displayName": "Event Grid Domains must use standard naming"
+  },
+  {
     "severity": "Critical",
     "pillar": "Security",
     "category": "SE:07 Encryption",
@@ -1902,6 +1926,30 @@
     "resourceType": "Microsoft.EventGrid/topics",
     "ruleId": "Azure.EventGrid.ManagedIdentity",
     "displayName": "Use Managed Identity for Event Grid Topics"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.EventGrid/systemTopics",
+    "ruleId": "Azure.EventGrid.SystemTopicNaming",
+    "displayName": "Event Grid System Topics must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.EventGrid/domains/topics",
+    "ruleId": "Azure.EventGrid.TopicNaming",
+    "displayName": "Event Grid Custom Topics must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.EventGrid/topics",
+    "ruleId": "Azure.EventGrid.TopicNaming",
+    "displayName": "Event Grid Custom Topics must use standard naming"
   },
   {
     "severity": "Important",
@@ -2202,6 +2250,30 @@
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
+    "category": "OE:04 Continuous integration",
+    "resourceType": "Microsoft.Resources/resourceGroups",
+    "ruleId": "Azure.Group.Name",
+    "displayName": "Resource Group name must be valid"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Resources/resourceGroups",
+    "ruleId": "Azure.Group.Naming",
+    "displayName": "Resource Groups must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Resources/resourceGroups",
+    "ruleId": "Azure.Group.RequiredTags",
+    "displayName": "Resource Groups must use standard tagging"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
     "category": "Repeatable infrastructure",
     "resourceType": "Microsoft.ManagedIdentity/userAssignedIdentities",
     "ruleId": "Azure.Identity.UserAssignedName",
@@ -2366,6 +2438,14 @@
     "resourceType": "Microsoft.Network/loadBalancers",
     "ruleId": "Azure.LB.Name",
     "displayName": "Use valid Load Balancer names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Network/loadBalancers",
+    "ruleId": "Azure.LB.Naming",
+    "displayName": "Use standard load balancer names"
   },
   {
     "severity": "Important",
@@ -2818,10 +2898,18 @@
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
+    "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Network/networkSecurityGroups",
     "ruleId": "Azure.NSG.Name",
-    "displayName": "Use valid NSG names"
+    "displayName": "Network Security Group name must be valid"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Network/networkSecurityGroups",
+    "ruleId": "Azure.NSG.Naming",
+    "displayName": "Network Security Groups must use standard naming"
   },
   {
     "severity": "Awareness",
@@ -3077,7 +3165,15 @@
     "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Network/publicIPAddresses",
     "ruleId": "Azure.PublicIP.Name",
-    "displayName": "Use valid Public IP names"
+    "displayName": "Public IP address name must be valid"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Network/publicIPAddresses",
+    "ruleId": "Azure.PublicIP.Naming",
+    "displayName": "Public IP addresses must use standard naming"
   },
   {
     "severity": "Important",
@@ -3202,18 +3298,18 @@
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
-    "resourceType": "Microsoft.Resources/resourceGroups",
-    "ruleId": "Azure.ResourceGroup.Name",
-    "displayName": "Use valid resource group names"
+    "category": "OE:04 Continuous integration",
+    "resourceType": "Microsoft.Network/routeTables",
+    "ruleId": "Azure.Route.Name",
+    "displayName": "Route table name must be valid"
   },
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
+    "category": "OE:04 Tools and processes",
     "resourceType": "Microsoft.Network/routeTables",
-    "ruleId": "Azure.Route.Name",
-    "displayName": "Use valid Route table names"
+    "ruleId": "Azure.Route.Naming",
+    "displayName": "Route tables must use standard naming"
   },
   {
     "severity": "Important",
@@ -3277,7 +3373,15 @@
     "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Search/searchServices",
     "ruleId": "Azure.Search.Name",
-    "displayName": "Use valid Cognitive Search service names"
+    "displayName": "Azure AI Search name must be valid"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Search/searchServices",
+    "ruleId": "Azure.Search.Naming",
+    "displayName": "AI Search services must use standard naming"
   },
   {
     "severity": "Important",
@@ -3741,7 +3845,15 @@
     "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Storage/storageAccounts",
     "ruleId": "Azure.Storage.Name",
-    "displayName": "Use valid storage account names"
+    "displayName": "Storage Account name must be valid"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Storage/storageAccounts",
+    "ruleId": "Azure.Storage.Naming",
+    "displayName": "Storage Accounts must use standard naming"
   },
   {
     "severity": "Important",
@@ -3774,6 +3886,14 @@
     "resourceType": "Microsoft.Storage/storageAccounts",
     "ruleId": "Azure.Storage.UseReplication",
     "displayName": "Storage Account is available in a single zone"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Subscription/aliases",
+    "ruleId": "Azure.Subscription.RequiredTags",
+    "displayName": "Subscriptions must use standard tagging"
   },
   {
     "severity": "Important",
@@ -3950,6 +4070,14 @@
     "resourceType": "Microsoft.Compute/virtualMachines",
     "ruleId": "Azure.VM.Name",
     "displayName": "Use valid VM names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Compute/virtualMachines",
+    "ruleId": "Azure.VM.Naming",
+    "displayName": "Virtual Machine must use standard naming"
   },
   {
     "severity": "Awareness",
@@ -4173,7 +4301,15 @@
     "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Network/virtualNetworks",
     "ruleId": "Azure.VNET.Name",
-    "displayName": "Use valid VNET names"
+    "displayName": "Virtual Network name must be valid"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "ruleId": "Azure.VNET.Naming",
+    "displayName": "Virtual Network must use standard naming"
   },
   {
     "severity": "Important",
@@ -4218,18 +4354,34 @@
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
+    "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Network/virtualNetworks",
     "ruleId": "Azure.VNET.SubnetName",
-    "displayName": "Use valid subnet names"
+    "displayName": "Virtual Network Subnet name must be valid"
   },
   {
     "severity": "Awareness",
     "pillar": "Operational Excellence",
-    "category": "Repeatable infrastructure",
+    "category": "OE:04 Continuous integration",
     "resourceType": "Microsoft.Network/virtualNetworks/subnets",
     "ruleId": "Azure.VNET.SubnetName",
-    "displayName": "Use valid subnet names"
+    "displayName": "Virtual Network Subnet name must be valid"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Network/virtualNetworks",
+    "ruleId": "Azure.VNET.SubnetNaming",
+    "displayName": "Virtual Network Subnet must use standard naming"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Network/virtualNetworks/subnets",
+    "ruleId": "Azure.VNET.SubnetNaming",
+    "displayName": "Virtual Network Subnet must use standard naming"
   },
   {
     "severity": "Critical",
@@ -4254,6 +4406,14 @@
     "resourceType": "Microsoft.Network/virtualNetworkGateways/connections",
     "ruleId": "Azure.VNG.ConnectionName",
     "displayName": "Use valid connection names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways/connections",
+    "ruleId": "Azure.VNG.ConnectionNaming",
+    "displayName": "Virtual Network Gateway Connection must use standard naming"
   },
   {
     "severity": "Important",
@@ -4294,6 +4454,14 @@
     "resourceType": "Microsoft.Network/virtualNetworkGateways",
     "ruleId": "Azure.VNG.Name",
     "displayName": "Use valid VNG names"
+  },
+  {
+    "severity": "Awareness",
+    "pillar": "Operational Excellence",
+    "category": "OE:04 Tools and processes",
+    "resourceType": "Microsoft.Network/virtualNetworkGateways",
+    "ruleId": "Azure.VNG.Naming",
+    "displayName": "Virtual Network Gateway must use standard naming"
   },
   {
     "severity": "Important",

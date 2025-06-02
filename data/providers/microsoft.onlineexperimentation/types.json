@@ -1,7 +1,7 @@
 [
   {
     "aliases": null,
-    "resourceType": "locations/checkNameAvailability",
+    "resourceType": "Locations",
     "apiVersions": [
       "2025-05-31-preview"
     ],

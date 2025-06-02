@@ -87,6 +87,21 @@
   },
   {
     "aliases": null,
+    "resourceType": "managementGroups/settings",
+    "apiVersions": [
+      "2024-02-01-preview",
+      "2023-04-01",
+      "2021-04-01",
+      "2020-10-01",
+      "2020-05-01",
+      "2020-02-01",
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operationResults",
     "apiVersions": [
       "2024-02-01-preview",
@@ -99,6 +114,28 @@
       "2018-03-01-preview",
       "2018-03-01-beta",
       "2018-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "operationResults/asyncOperation",
+    "apiVersions": [
+      "2024-02-01-preview",
+      "2023-04-01",
+      "2021-04-01",
+      "2020-10-01",
+      "2020-05-01",
+      "2020-02-01",
+      "2019-11-01",
+      "2018-03-01-preview",
+      "2018-03-01-beta",
+      "2018-01-01-preview",
+      "2017-11-01-preview",
+      "2017-08-31-preview",
+      "2017-06-30-preview",
+      "2017-05-31-preview"
     ],
     "locations": [],
     "zoneMappings": []
@@ -133,6 +170,49 @@
       "2017-08-31-preview",
       "2017-06-30-preview",
       "2017-05-31-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "serviceGroups",
+    "apiVersions": [
+      "2024-02-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "startTenantBackfill",
+    "apiVersions": [
+      "2024-02-01-preview",
+      "2023-04-01",
+      "2021-04-01",
+      "2020-10-01",
+      "2020-05-01",
+      "2020-02-01",
+      "2019-11-01",
+      "2018-03-01-preview",
+      "2018-03-01-beta"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "tenantBackfillStatus",
+    "apiVersions": [
+      "2024-02-01-preview",
+      "2023-04-01",
+      "2021-04-01",
+      "2020-10-01",
+      "2020-05-01",
+      "2020-02-01",
+      "2019-11-01",
+      "2018-03-01-preview",
+      "2018-03-01-beta"
     ],
     "locations": [],
     "zoneMappings": []

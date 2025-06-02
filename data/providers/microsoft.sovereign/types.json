@@ -13,45 +13,6 @@
   },
   {
     "aliases": null,
-    "resourceType": "landingZoneAccounts",
-    "apiVersions": [
-      "2025-02-27-preview"
-    ],
-    "locations": [
-      "North Europe",
-      "Sweden Central",
-      "UAE North"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "landingZoneAccounts/landingZoneConfigurations",
-    "apiVersions": [
-      "2025-02-27-preview"
-    ],
-    "locations": [
-      "North Europe",
-      "Sweden Central",
-      "UAE North"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
-    "resourceType": "landingZoneAccounts/landingZoneRegistrations",
-    "apiVersions": [
-      "2025-02-27-preview"
-    ],
-    "locations": [
-      "North Europe",
-      "Sweden Central",
-      "UAE North"
-    ],
-    "zoneMappings": []
-  },
-  {
-    "aliases": null,
     "resourceType": "landingZoneConfigurations",
     "apiVersions": [
       "2024-03-31-preview",

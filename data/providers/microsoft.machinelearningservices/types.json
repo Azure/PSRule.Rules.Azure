@@ -3,6 +3,8 @@
     "aliases": null,
     "resourceType": "capacityReservationGroups",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -55,8 +57,58 @@
   },
   {
     "aliases": null,
+    "resourceType": "inferenceModels",
+    "apiVersions": [
+      "2025-01-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -108,6 +160,8 @@
     "aliases": null,
     "resourceType": "locations/availableQuota",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview"
     ],
@@ -157,6 +211,8 @@
     "aliases": null,
     "resourceType": "locations/availableQuota/default",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview"
     ],
@@ -206,6 +262,8 @@
     "aliases": null,
     "resourceType": "locations/computeOperationsStatus",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -342,6 +400,8 @@
     "aliases": null,
     "resourceType": "locations/mfeOperationResults",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -411,6 +471,8 @@
     "aliases": null,
     "resourceType": "locations/mfeOperationsStatus",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -480,6 +542,8 @@
     "aliases": null,
     "resourceType": "locations/quotaAndUsage",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview"
     ],
@@ -529,6 +593,8 @@
     "aliases": null,
     "resourceType": "locations/quotas",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -614,6 +680,8 @@
     "aliases": null,
     "resourceType": "locations/registryOperationsStatus",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -677,6 +745,8 @@
     "aliases": null,
     "resourceType": "locations/updatequotas",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -762,6 +832,8 @@
     "aliases": null,
     "resourceType": "locations/usages",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -849,6 +921,8 @@
     "aliases": null,
     "resourceType": "locations/vmsizes",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -936,6 +1010,8 @@
     "aliases": null,
     "resourceType": "locations/workspaceOperationsStatus",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1026,6 +1102,8 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1156,6 +1234,8 @@
     },
     "resourceType": "registries",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1219,6 +1299,8 @@
     "aliases": null,
     "resourceType": "registries/codes",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1281,6 +1363,8 @@
     "aliases": null,
     "resourceType": "registries/codes/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1343,6 +1427,8 @@
     "aliases": null,
     "resourceType": "registries/components",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1405,6 +1491,8 @@
     "aliases": null,
     "resourceType": "registries/components/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1467,6 +1555,8 @@
     "aliases": null,
     "resourceType": "registries/data",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1527,6 +1617,8 @@
     "aliases": null,
     "resourceType": "registries/data/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1587,6 +1679,8 @@
     "aliases": null,
     "resourceType": "registries/datareferences",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1642,6 +1736,8 @@
     "aliases": null,
     "resourceType": "registries/datareferences/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1697,6 +1793,8 @@
     "aliases": null,
     "resourceType": "registries/environments",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1759,6 +1857,8 @@
     "aliases": null,
     "resourceType": "registries/environments/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1821,6 +1921,8 @@
     "aliases": null,
     "resourceType": "registries/models",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -1883,6 +1985,8 @@
     "aliases": null,
     "resourceType": "registries/models/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -2091,6 +2195,8 @@
     },
     "resourceType": "workspaces",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -2198,6 +2304,8 @@
     },
     "resourceType": "workspaces/batchEndpoints",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -2333,6 +2441,8 @@
     },
     "resourceType": "workspaces/batchEndpoints/deployments",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -2401,6 +2511,8 @@
     "aliases": null,
     "resourceType": "workspaces/capabilityhosts",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview"
     ],
@@ -2457,6 +2569,8 @@
     },
     "resourceType": "workspaces/codes",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -2537,6 +2651,8 @@
     },
     "resourceType": "workspaces/codes/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -2612,6 +2728,8 @@
     },
     "resourceType": "workspaces/components",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -2689,6 +2807,8 @@
     },
     "resourceType": "workspaces/components/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -3137,6 +3257,8 @@
     },
     "resourceType": "workspaces/computes",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -3232,6 +3354,8 @@
     },
     "resourceType": "workspaces/data",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -3330,6 +3454,8 @@
     },
     "resourceType": "workspaces/data/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4191,6 +4317,8 @@
     },
     "resourceType": "workspaces/datastores",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4320,6 +4448,8 @@
     },
     "resourceType": "workspaces/endpoints",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4383,6 +4513,8 @@
     },
     "resourceType": "workspaces/environments",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4502,6 +4634,8 @@
     },
     "resourceType": "workspaces/environments/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4570,6 +4704,8 @@
     "aliases": null,
     "resourceType": "workspaces/eventGridFilters",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4663,6 +4799,8 @@
     },
     "resourceType": "workspaces/featuresets",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4722,6 +4860,8 @@
     "aliases": null,
     "resourceType": "workspaces/featuresets/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4788,6 +4928,8 @@
     },
     "resourceType": "workspaces/featurestoreEntities",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4847,6 +4989,8 @@
     "aliases": null,
     "resourceType": "workspaces/featurestoreEntities/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -4906,6 +5050,8 @@
     "aliases": null,
     "resourceType": "workspaces/inferencePools",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
@@ -4958,6 +5104,8 @@
     "aliases": null,
     "resourceType": "workspaces/inferencePools/endpoints",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
@@ -5010,6 +5158,8 @@
     "aliases": null,
     "resourceType": "workspaces/inferencePools/groups",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-04-01-preview",
@@ -5776,6 +5926,8 @@
     },
     "resourceType": "workspaces/jobs",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -5954,6 +6106,54 @@
     "zoneMappings": []
   },
   {
+    "aliases": null,
+    "resourceType": "workspaces/managednetworks",
+    "apiVersions": [
+      "2025-04-01-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Australia Southeast",
+      "Brazil South",
+      "Canada Central",
+      "Canada East",
+      "Central India",
+      "Central US",
+      "East Asia",
+      "East US",
+      "East US 2",
+      "France Central",
+      "Germany West Central",
+      "Israel Central",
+      "Italy North",
+      "Japan East",
+      "Japan West",
+      "Korea Central",
+      "North Central US",
+      "North Europe",
+      "Norway East",
+      "Poland Central",
+      "Qatar Central",
+      "South Africa North",
+      "South Central US",
+      "South India",
+      "Southeast Asia",
+      "Spain Central",
+      "Sweden Central",
+      "Switzerland North",
+      "Switzerland West",
+      "UAE North",
+      "UK South",
+      "UK West",
+      "West Central US",
+      "West Europe",
+      "West US",
+      "West US 2",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
     "aliases": {
       "Microsoft.MachineLearningServices/workspaces/marketplaceSubscriptions/marketplacePlan": "properties.marketplacePlan",
       "Microsoft.MachineLearningServices/workspaces/marketplaceSubscriptions/marketplacePlan.offerId": "properties.marketplacePlan.offerId",
@@ -5965,6 +6165,8 @@
     },
     "resourceType": "workspaces/marketplaceSubscriptions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -6026,6 +6228,8 @@
     },
     "resourceType": "workspaces/models",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -6113,6 +6317,8 @@
     },
     "resourceType": "workspaces/models/versions",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -6201,6 +6407,8 @@
     },
     "resourceType": "workspaces/onlineEndpoints",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -6359,6 +6567,8 @@
     },
     "resourceType": "workspaces/onlineEndpoints/deployments",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -6428,6 +6638,8 @@
     "aliases": null,
     "resourceType": "workspaces/onlineEndpoints/deployments/skus",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -7180,6 +7392,8 @@
     },
     "resourceType": "workspaces/schedules",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",
@@ -7268,6 +7482,8 @@
     },
     "resourceType": "workspaces/serverlessEndpoints",
     "apiVersions": [
+      "2025-04-01-preview",
+      "2025-04-01",
       "2025-01-01-preview",
       "2024-10-01-preview",
       "2024-10-01",

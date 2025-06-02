@@ -1,193 +1,193 @@
 [
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ServiceFabric/clusters/cluster-A",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ServiceFabric/clusters/cluster-A",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "cluster-A",
-        "Name": "cluster-A",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "clusterId": "00000000-0000-0000-0000-000000000000",
-            "clusterCodeVersion": "7.2.432.9590",
-            "clusterState": "Ready",
-            "managementEndpoint": "https://cluster-A.region.cloudapp.azure.com:19080",
-            "clusterEndpoint": "https://region.servicefabric.azure.com/runtime/clusters/00000000-0000-0000-0000-000000000000",
-            "certificate": {
-                "thumbprint": "0000000000000000000000000000000000000000",
-                "x509StoreName": "My"
-            },
-            "clientCertificateThumbprints": [],
-            "clientCertificateCommonNames": [],
-            "fabricSettings": [
-                {
-                    "name": "Security",
-                    "parameters": [
-                        {
-                            "name": "ClusterProtectionLevel",
-                            "value": "EncryptAndSign"
-                        }
-                    ]
-                }
-            ],
-            "vmImage": "Windows",
-            "azureActiveDirectory": {
-                "tenantId": "00000000-0000-0000-0000-000000000000",
-                "clusterApplication": "00000000-0000-0000-0000-000000000000",
-                "clientApplication": "00000000-0000-0000-0000-000000000000"
-            },
-            "reliabilityLevel": "None",
-            "nodeTypes": [
-                {
-                    "name": "Type474",
-                    "vmInstanceCount": 2,
-                    "clientConnectionEndpointPort": 19000,
-                    "httpGatewayEndpointPort": 19080,
-                    "applicationPorts": {
-                        "startPort": 20000,
-                        "endPort": 30000
-                    },
-                    "ephemeralPorts": {
-                        "startPort": 49152,
-                        "endPort": 65534
-                    },
-                    "isPrimary": true,
-                    "durabilityLevel": "Silver"
-                }
-            ],
-            "diagnosticsStorageAccountConfig": {
-                "storageAccountName": "sflogssf001",
-                "primaryAccessKey": "",
-                "secondaryAccessKey": "",
-                "protectedAccountKeyName": "StorageAccountKey1",
-                "blobEndpoint": "https://sflogssf001.blob.core.windows.net/",
-                "queueEndpoint": "https://sflogssf001.queue.core.windows.net/",
-                "tableEndpoint": "https://sflogssf001.table.core.windows.net/",
-                "protectedAccountKeyName2": ""
-            },
-            "upgradeMode": "Automatic",
-            "addonFeatures": [],
-            "availableClusterVersions": [
-                {
-                    "codeVersion": "7.2.432.9590",
-                    "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                    "environment": "Windows"
-                },
-                {
-                    "codeVersion": "7.2.433.9590",
-                    "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                    "environment": "Windows"
-                },
-                {
-                    "codeVersion": "7.2.445.9590",
-                    "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                    "environment": "Windows"
-                }
-            ]
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ServiceFabric/clusters/cluster-A",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ServiceFabric/clusters/cluster-A",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "cluster-A",
+    "Name": "cluster-A",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "clusterId": "00000000-0000-0000-0000-000000000000",
+      "clusterCodeVersion": "7.2.432.9590",
+      "clusterState": "Ready",
+      "managementEndpoint": "https://cluster-A.region.cloudapp.azure.com:19080",
+      "clusterEndpoint": "https://region.servicefabric.azure.com/runtime/clusters/00000000-0000-0000-0000-000000000000",
+      "certificate": {
+        "thumbprint": "0000000000000000000000000000000000000000",
+        "x509StoreName": "My"
+      },
+      "clientCertificateThumbprints": [],
+      "clientCertificateCommonNames": [],
+      "fabricSettings": [
+        {
+          "name": "Security",
+          "parameters": [
+            {
+              "name": "ClusterProtectionLevel",
+              "value": "EncryptAndSign"
+            }
+          ]
+        }
+      ],
+      "vmImage": "Windows",
+      "azureActiveDirectory": {
+        "tenantId": "00000000-0000-0000-0000-000000000000",
+        "clusterApplication": "00000000-0000-0000-0000-000000000000",
+        "clientApplication": "00000000-0000-0000-0000-000000000000"
+      },
+      "reliabilityLevel": "None",
+      "nodeTypes": [
+        {
+          "name": "Type474",
+          "vmInstanceCount": 2,
+          "clientConnectionEndpointPort": 19000,
+          "httpGatewayEndpointPort": 19080,
+          "applicationPorts": {
+            "startPort": 20000,
+            "endPort": 30000
+          },
+          "ephemeralPorts": {
+            "startPort": 49152,
+            "endPort": 65534
+          },
+          "isPrimary": true,
+          "durabilityLevel": "Silver"
+        }
+      ],
+      "diagnosticsStorageAccountConfig": {
+        "storageAccountName": "sflogssf001",
+        "primaryAccessKey": "",
+        "secondaryAccessKey": "",
+        "protectedAccountKeyName": "StorageAccountKey1",
+        "blobEndpoint": "https://sflogssf001.blob.core.windows.net/",
+        "queueEndpoint": "https://sflogssf001.queue.core.windows.net/",
+        "tableEndpoint": "https://sflogssf001.table.core.windows.net/",
+        "protectedAccountKeyName2": ""
+      },
+      "upgradeMode": "Automatic",
+      "addonFeatures": [],
+      "availableClusterVersions": [
+        {
+          "codeVersion": "7.2.432.9590",
+          "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+          "environment": "Windows"
         },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ServiceFabric/clusters",
-        "ResourceType": "Microsoft.ServiceFabric/clusters",
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+        {
+          "codeVersion": "7.2.433.9590",
+          "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+          "environment": "Windows"
+        },
+        {
+          "codeVersion": "7.2.445.9590",
+          "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+          "environment": "Windows"
+        }
+      ]
     },
-    {
-        "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ServiceFabric/clusters/cluster-B",
-        "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ServiceFabric/clusters/cluster-B",
-        "Identity": null,
-        "Kind": null,
-        "Location": "region",
-        "ManagedBy": null,
-        "ResourceName": "cluster-B",
-        "Name": "cluster-B",
-        "ExtensionResourceName": null,
-        "ParentResource": null,
-        "Plan": null,
-        "Properties": {
-            "provisioningState": "Succeeded",
-            "clusterId": "00000000-0000-0000-0000-000000000000",
-            "clusterCodeVersion": "7.2.432.9590",
-            "clusterState": "Ready",
-            "managementEndpoint": "https://cluster-B.region.cloudapp.azure.com:19080",
-            "clusterEndpoint": "https://region.servicefabric.azure.com/runtime/clusters/00000000-0000-0000-0000-000000000000",
-            "certificate": {
-                "thumbprint": "0000000000000000000000000000000000000000",
-                "x509StoreName": "My"
-            },
-            "clientCertificateThumbprints": [],
-            "clientCertificateCommonNames": [],
-            "fabricSettings": [
-                {
-                    "name": "Security",
-                    "parameters": [
-                        {
-                            "name": "ClusterProtectionLevel",
-                            "value": "EncryptAndSign"
-                        }
-                    ]
-                }
-            ],
-            "vmImage": "Windows",
-            "reliabilityLevel": "None",
-            "nodeTypes": [
-                {
-                    "name": "Type474",
-                    "vmInstanceCount": 2,
-                    "clientConnectionEndpointPort": 19000,
-                    "httpGatewayEndpointPort": 19080,
-                    "applicationPorts": {
-                        "startPort": 20000,
-                        "endPort": 30000
-                    },
-                    "ephemeralPorts": {
-                        "startPort": 49152,
-                        "endPort": 65534
-                    },
-                    "isPrimary": true,
-                    "durabilityLevel": "Silver"
-                }
-            ],
-            "diagnosticsStorageAccountConfig": {
-                "storageAccountName": "sflogssf001",
-                "primaryAccessKey": "",
-                "secondaryAccessKey": "",
-                "protectedAccountKeyName": "StorageAccountKey1",
-                "blobEndpoint": "https://sflogssf001.blob.core.windows.net/",
-                "queueEndpoint": "https://sflogssf001.queue.core.windows.net/",
-                "tableEndpoint": "https://sflogssf001.table.core.windows.net/",
-                "protectedAccountKeyName2": ""
-            },
-            "upgradeMode": "Automatic",
-            "addonFeatures": [],
-            "availableClusterVersions": [
-                {
-                    "codeVersion": "7.2.432.9590",
-                    "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                    "environment": "Windows"
-                },
-                {
-                    "codeVersion": "7.2.433.9590",
-                    "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                    "environment": "Windows"
-                },
-                {
-                    "codeVersion": "7.2.445.9590",
-                    "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
-                    "environment": "Windows"
-                }
-            ]
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ServiceFabric/clusters",
+    "ResourceType": "Microsoft.ServiceFabric/clusters",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ServiceFabric/clusters/cluster-B",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/test-rg/providers/Microsoft.ServiceFabric/clusters/cluster-B",
+    "Identity": null,
+    "Kind": null,
+    "Location": "region",
+    "ManagedBy": null,
+    "ResourceName": "cluster-B",
+    "Name": "cluster-B",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "provisioningState": "Succeeded",
+      "clusterId": "00000000-0000-0000-0000-000000000000",
+      "clusterCodeVersion": "7.2.432.9590",
+      "clusterState": "Ready",
+      "managementEndpoint": "https://cluster-B.region.cloudapp.azure.com:19080",
+      "clusterEndpoint": "https://region.servicefabric.azure.com/runtime/clusters/00000000-0000-0000-0000-000000000000",
+      "certificate": {
+        "thumbprint": "0000000000000000000000000000000000000000",
+        "x509StoreName": "My"
+      },
+      "clientCertificateThumbprints": [],
+      "clientCertificateCommonNames": [],
+      "fabricSettings": [
+        {
+          "name": "Security",
+          "parameters": [
+            {
+              "name": "ClusterProtectionLevel",
+              "value": "None"
+            }
+          ]
+        }
+      ],
+      "vmImage": "Windows",
+      "reliabilityLevel": "None",
+      "nodeTypes": [
+        {
+          "name": "Type474",
+          "vmInstanceCount": 2,
+          "clientConnectionEndpointPort": 19000,
+          "httpGatewayEndpointPort": 19080,
+          "applicationPorts": {
+            "startPort": 20000,
+            "endPort": 30000
+          },
+          "ephemeralPorts": {
+            "startPort": 49152,
+            "endPort": 65534
+          },
+          "isPrimary": true,
+          "durabilityLevel": "Silver"
+        }
+      ],
+      "diagnosticsStorageAccountConfig": {
+        "storageAccountName": "sflogssf001",
+        "primaryAccessKey": "",
+        "secondaryAccessKey": "",
+        "protectedAccountKeyName": "StorageAccountKey1",
+        "blobEndpoint": "https://sflogssf001.blob.core.windows.net/",
+        "queueEndpoint": "https://sflogssf001.queue.core.windows.net/",
+        "tableEndpoint": "https://sflogssf001.table.core.windows.net/",
+        "protectedAccountKeyName2": ""
+      },
+      "upgradeMode": "Automatic",
+      "addonFeatures": [],
+      "availableClusterVersions": [
+        {
+          "codeVersion": "7.2.432.9590",
+          "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+          "environment": "Windows"
         },
-        "ResourceGroupName": "test-rg",
-        "Type": "Microsoft.ServiceFabric/clusters",
-        "ResourceType": "Microsoft.ServiceFabric/clusters",
-        "Sku": null,
-        "Tags": null,
-        "SubscriptionId": "00000000-0000-0000-0000-000000000000"
-    }
+        {
+          "codeVersion": "7.2.433.9590",
+          "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+          "environment": "Windows"
+        },
+        {
+          "codeVersion": "7.2.445.9590",
+          "supportExpiryUtc": "9999-12-31T23:59:59.9999999",
+          "environment": "Windows"
+        }
+      ]
+    },
+    "ResourceGroupName": "test-rg",
+    "Type": "Microsoft.ServiceFabric/clusters",
+    "ResourceType": "Microsoft.ServiceFabric/clusters",
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  }
 ]

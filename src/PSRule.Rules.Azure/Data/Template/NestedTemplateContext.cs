@@ -1,7 +1,6 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
-using System;
 using PSRule.Rules.Azure.Arm;
 using PSRule.Rules.Azure.Arm.Deployments;
 using PSRule.Rules.Azure.Arm.Expressions;
@@ -18,7 +17,7 @@ internal abstract class NestedTemplateContext(ITemplateContext context) : Resour
 
     public CopyIndexStore CopyIndex => _Inner.CopyIndex;
 
-    public DeploymentValue Deployment => throw new NotImplementedException();
+    public DeploymentValue Deployment => _Inner.Deployment;
 
     public string ScopeId => _Inner.ScopeId;
 
@@ -100,6 +99,12 @@ internal abstract class NestedTemplateContext(ITemplateContext context) : Resour
     public ResourceProviderType[] GetResourceType(string providerNamespace, string resourceType)
     {
         return _Inner.GetResourceType(providerNamespace, resourceType);
+    }
+
+    /// <inheritdoc/>
+    public AzureLocationEntry GetAzureLocation(string location)
+    {
+        return _Inner.GetAzureLocation(location);
     }
 
     /// <inheritdoc/>

@@ -44,6 +44,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-01-01-preview"
     ],
     "locations": [],
@@ -51,7 +52,7 @@
   },
   {
     "aliases": null,
-    "resourceType": "locations/operationstatuses",
+    "resourceType": "locations/operationStatuses",
     "apiVersions": [
       "2023-01-01-preview"
     ],
@@ -74,8 +75,33 @@
   },
   {
     "aliases": null,
+    "resourceType": "locations/tenantOperationStatuses",
+    "apiVersions": [
+      "2024-09-30-preview"
+    ],
+    "locations": [
+      "Australia East",
+      "Brazil South",
+      "Canada East",
+      "Central US",
+      "Central US EUAP",
+      "East Asia",
+      "East US 2",
+      "North Central US",
+      "North Europe",
+      "South Central US",
+      "UK South",
+      "West Central US",
+      "West Europe",
+      "West US 3"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2024-09-30-preview",
       "2023-01-01-preview"
     ],
     "locations": [],
@@ -95,6 +121,26 @@
     "resourceType": "registeredSubscriptions",
     "apiVersions": [
       "2023-01-01-preview"
+    ],
+    "locations": [],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "saasResources",
+    "apiVersions": [
+      "2024-09-30-preview"
+    ],
+    "locations": [
+      "global"
+    ],
+    "zoneMappings": []
+  },
+  {
+    "aliases": null,
+    "resourceType": "tenantLevelCanCreate",
+    "apiVersions": [
+      "2024-09-30-preview"
     ],
     "locations": [],
     "zoneMappings": []

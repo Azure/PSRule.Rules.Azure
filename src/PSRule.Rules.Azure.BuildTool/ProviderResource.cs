@@ -13,11 +13,6 @@ using PSRule.Rules.Azure.BuildTool.Models;
 
 namespace PSRule.Rules.Azure.BuildTool;
 
-internal sealed class ProviderResourceOption
-{
-    public string OutputPath { get; set; }
-}
-
 /// <summary>
 /// Build a Azure resource type index for each resource provider.
 /// </summary>
@@ -34,6 +29,7 @@ internal sealed class ProviderResource
     {
         BuildIndex(options);
         MinifyTypes(options);
+        MinifyLocations(options);
         MinifyEnvironments(options);
         MinifyPolicyIgnore(options);
         MinifySecretTemplate(options);
@@ -66,6 +62,13 @@ internal sealed class ProviderResource
         Console.WriteLine("BuildTool -- Minify secret-property");
         var secretProperty = ReadFile<JObject>(GetSourcePath("./data/secret-property.json"));
         WriteFile(GetSourcePath("./data/secret-property.min.json"), secretProperty);
+    }
+
+    private static void MinifyLocations(ProviderResourceOption options)
+    {
+        Console.WriteLine("BuildTool -- Minify locations");
+        var locations = ReadFile<JObject>(GetSourcePath("./data/locations.json"));
+        WriteFile(GetSourcePath("./data/locations.min.json"), locations);
     }
 
     private static void MinifyTypes(ProviderResourceOption options)

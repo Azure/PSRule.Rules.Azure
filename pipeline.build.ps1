@@ -553,6 +553,7 @@ task Dependencies NuGet, {
 task ExportData {
     Import-Module $PWD/scripts/providers.psm1;
     Update-Providers;
+    Update-Locations;
 }
 
 # Synopsis: Remove temp files.

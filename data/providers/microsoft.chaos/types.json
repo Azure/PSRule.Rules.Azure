@@ -3,6 +3,7 @@
     "aliases": null,
     "resourceType": "experiments",
     "apiVersions": [
+      "2025-01-01",
       "2024-03-22-preview",
       "2024-01-01",
       "2023-11-01",
@@ -35,6 +36,7 @@
     "aliases": null,
     "resourceType": "locations",
     "apiVersions": [
+      "2025-01-01",
       "2024-03-22-preview",
       "2024-01-01",
       "2023-11-01",
@@ -53,6 +55,7 @@
     "aliases": null,
     "resourceType": "locations/operationResults",
     "apiVersions": [
+      "2025-01-01",
       "2024-03-22-preview",
       "2024-01-01",
       "2023-12-01-preview",
@@ -70,6 +73,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -88,6 +92,7 @@
     "aliases": null,
     "resourceType": "locations/operationStatuses",
     "apiVersions": [
+      "2025-01-01",
       "2024-03-22-preview",
       "2024-01-01",
       "2023-12-01-preview",
@@ -105,6 +110,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -123,6 +129,7 @@
     "aliases": null,
     "resourceType": "locations/targetTypes",
     "apiVersions": [
+      "2025-01-01",
       "2024-03-22-preview",
       "2024-01-01",
       "2023-11-01",
@@ -144,6 +151,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -162,6 +170,7 @@
     "aliases": null,
     "resourceType": "operations",
     "apiVersions": [
+      "2025-01-01",
       "2024-03-22-preview",
       "2024-01-01",
       "2023-11-01",
@@ -196,6 +205,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",
@@ -214,6 +224,7 @@
     "aliases": null,
     "resourceType": "targets",
     "apiVersions": [
+      "2025-01-01",
       "2024-03-22-preview",
       "2024-01-01",
       "2023-11-01",
@@ -235,6 +246,7 @@
       "East US 2",
       "France Central",
       "Germany West Central",
+      "Italy North",
       "Japan East",
       "North Central US",
       "North Europe",

@@ -8,7 +8,7 @@ using PSRule.Rules.Azure.Resources;
 
 #nullable enable
 
-namespace PSRule.Rules.Azure;
+namespace PSRule.Rules.Azure.Arm;
 
 internal static class ResourceHelper
 {
@@ -235,7 +235,7 @@ internal static class ResourceHelper
         TryResourceIdComponents(resourceType, name, out var typeComponents, out var nameComponents);
 
         // Handle scoped resource IDs.
-        if (!string.IsNullOrEmpty(scope) && scope != SLASH && TryResourceIdComponents(scope, out subscriptionId, out resourceGroup, out var parentTypeComponents, nameComponents: out var parentNameComponents))
+        if (!string.IsNullOrEmpty(scope) && scope != null && scope != SLASH && TryResourceIdComponents(scope, out subscriptionId, out resourceGroup, out var parentTypeComponents, nameComponents: out var parentNameComponents))
         {
             typeComponents = MergeResourceNameOrType(parentTypeComponents, typeComponents);
             nameComponents = MergeResourceNameOrType(parentNameComponents, nameComponents);

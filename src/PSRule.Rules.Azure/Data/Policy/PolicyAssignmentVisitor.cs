@@ -758,6 +758,11 @@ namespace PSRule.Rules.Azure.Data.Policy
 
                 _FieldPrefix.Pop();
             }
+
+            public AzureLocationEntry GetAzureLocation(string location)
+            {
+                throw new NotImplementedException();
+            }
         }
 
         internal void Visit(PolicyAssignmentContext context, JObject assignment)

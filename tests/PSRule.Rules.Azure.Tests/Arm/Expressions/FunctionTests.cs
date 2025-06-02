@@ -33,6 +33,7 @@ public sealed class FunctionTests
     private const string TRAIT_SCOPE = "Scope";
     private const string TRAIT_LAMBDA = "Lambda";
     private const string TRAIT_CIDR = "CIDR";
+    private const string TRAIT_AVAILABILITY_ZONES = "AvailabilityZones";
 
     #region Array and object
 
@@ -786,12 +787,12 @@ public sealed class FunctionTests
         var actual1 = Functions.Providers(context, ["Microsoft.Web", "sites"]) as ResourceProviderType;
         Assert.NotNull(actual1);
         Assert.Equal("sites", actual1.ResourceType);
-        Assert.Equal("2024-04-01", actual1.ApiVersions[0]);
+        Assert.Equal("2024-11-01", actual1.ApiVersions[0]);
         Assert.Equal("Australia Central", actual1.Locations[0]);
 
         var actual2 = Functions.Providers(context, ["Microsoft.Web"]) as ResourceProviderType[];
         Assert.NotNull(actual1);
-        Assert.Equal(102, actual2.Length);
+        Assert.Equal(106, actual2.Length);
 
         var actual3 = Functions.Providers(context, ["microsoft.web", "Sites"]) as ResourceProviderType;
         Assert.NotNull(actual3);
@@ -1114,12 +1115,15 @@ public sealed class FunctionTests
         var actual = Functions.Deployer(context, null) as DeployerOption;
         Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.ObjectId);
         Assert.Equal("ffffffff-ffff-ffff-ffff-ffffffffffff", actual.TenantId);
+        Assert.Equal("psrule-test@contoso.com", actual.UserPrincipalName);
 
         context.Deployer.ObjectId = "00000000-0000-0000-0000-000000000000";
         context.Deployer.TenantId = "00000000-0000-0000-0000-000000000000";
+        context.Deployer.UserPrincipalName = "other@contoso.com";
         actual = Functions.Deployer(context, null) as DeployerOption;
         Assert.Equal("00000000-0000-0000-0000-000000000000", actual.ObjectId);
         Assert.Equal("00000000-0000-0000-0000-000000000000", actual.TenantId);
+        Assert.Equal("other@contoso.com", actual.UserPrincipalName);
 
         // Accepts no arguments.
         Assert.Throws<ExpressionArgumentException>(() => Functions.Deployer(context, [123]));
@@ -2382,6 +2386,98 @@ public sealed class FunctionTests
     }
 
     #endregion CIDR
+
+    #region Availability Zones
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_AVAILABILITY_ZONES)]
+    public void ToLogicalZone()
+    {
+        var context = GetContext();
+
+        var actual1 = Functions.ToLogicalZone(context, ["00000000-0000-0000-0000-000000000000", "West US2", "westus2-az1"]) as string;
+        var actual2 = Functions.ToLogicalZone(context, ["00000000-0000-0000-0000-000000000000", "eastus2", "eastus2-az3"]) as string;
+        var actual3 = Functions.ToLogicalZone(context, ["00000000-0000-0000-0000-000000000000", "eastus2euap", "eastus2euap-az4"]) as string;
+        var actual4 = Functions.ToLogicalZone(context, ["00000000-0000-0000-0000-000000000000", "eastus", "eastus-az4"]) as string;
+        var actual5 = Functions.ToLogicalZone(context, ["00000000-0000-0000-0000-000000000000", "not-a-region", "not-a-region-az1"]) as string;
+        Assert.Equal("1", actual1);
+        Assert.Equal("3", actual2);
+        Assert.Equal("4", actual3);
+        Assert.Equal(string.Empty, actual4);
+        Assert.Equal(string.Empty, actual5);
+
+        // Invalid zone
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ToLogicalZone(context, ["n", "n"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ToLogicalZone(context, [5]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_AVAILABILITY_ZONES)]
+    public void ToLogicalZones()
+    {
+        var context = GetContext();
+
+        var actual1 = Functions.ToLogicalZones(context, ["00000000-0000-0000-0000-000000000000", "West US2", new string[] { "westus2-az1", "westus2-az2" }]) as JArray;
+        var actual2 = Functions.ToLogicalZones(context, ["00000000-0000-0000-0000-000000000000", "eastus2", new string[] { "eastus2-az3" }]) as JArray;
+        var actual3 = Functions.ToLogicalZones(context, ["00000000-0000-0000-0000-000000000000", "eastus2euap", new string[] { "eastus2euap-az4" }]) as JArray;
+        var actual4 = Functions.ToLogicalZones(context, ["00000000-0000-0000-0000-000000000000", "eastus", new string[] { "eastus-az3", "eastus-az4" }]) as JArray;
+        var actual5 = Functions.ToLogicalZones(context, ["00000000-0000-0000-0000-000000000000", "not-a-region", new string[] { "not-a-region-az1" }]) as JArray;
+        Assert.Equal(["1", "2"], actual1.Values<string>());
+        Assert.Equal(["3"], actual2.Values<string>());
+        Assert.Equal(["4"], actual3.Values<string>());
+        Assert.Equal(["3"], actual4.Values<string>());
+        Assert.Equal([], actual5.Values<string>());
+
+        // Invalid zone
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ToLogicalZones(context, ["n", "n"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ToLogicalZones(context, [5]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_AVAILABILITY_ZONES)]
+    public void ToPhysicalZone()
+    {
+        var context = GetContext();
+
+        var actual1 = Functions.ToPhysicalZone(context, ["00000000-0000-0000-0000-000000000000", "West US2", "1"]) as string;
+        var actual2 = Functions.ToPhysicalZone(context, ["00000000-0000-0000-0000-000000000000", "eastus2", "3"]) as string;
+        var actual3 = Functions.ToPhysicalZone(context, ["00000000-0000-0000-0000-000000000000", "eastus2euap", "4"]) as string;
+        var actual4 = Functions.ToPhysicalZone(context, ["00000000-0000-0000-0000-000000000000", "eastus", "4"]) as string;
+        var actual5 = Functions.ToPhysicalZone(context, ["00000000-0000-0000-0000-000000000000", "not-a-region", "1"]) as string;
+        Assert.Equal("westus2-az1", actual1);
+        Assert.Equal("eastus2-az3", actual2);
+        Assert.Equal("eastus2euap-az4", actual3);
+        Assert.Equal(string.Empty, actual4);
+        Assert.Equal(string.Empty, actual5);
+
+        // Invalid zone
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ToPhysicalZone(context, ["n", "n"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ToPhysicalZone(context, [5]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_AVAILABILITY_ZONES)]
+    public void ToPhysicalZones()
+    {
+        var context = GetContext();
+
+        var actual1 = Functions.ToPhysicalZones(context, ["00000000-0000-0000-0000-000000000000", "West US2", new string[] { "1", "2" }]) as JArray;
+        var actual2 = Functions.ToPhysicalZones(context, ["00000000-0000-0000-0000-000000000000", "eastus2", new string[] { "3" }]) as JArray;
+        var actual3 = Functions.ToPhysicalZones(context, ["00000000-0000-0000-0000-000000000000", "eastus2euap", new string[] { "4" }]) as JArray;
+        var actual4 = Functions.ToPhysicalZones(context, ["00000000-0000-0000-0000-000000000000", "eastus", new string[] { "3", "4" }]) as JArray;
+        var actual5 = Functions.ToPhysicalZones(context, ["00000000-0000-0000-0000-000000000000", "not-a-region", new string[] { "1" }]) as JArray;
+        Assert.Equal(["westus2-az1", "westus2-az2"], actual1.Values<string>());
+        Assert.Equal(["eastus2-az3"], actual2.Values<string>());
+        Assert.Equal(["eastus2euap-az4"], actual3.Values<string>());
+        Assert.Equal(["eastus-az3"], actual4.Values<string>());
+        Assert.Equal([], actual5.Values<string>());
+
+        // Invalid zone
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ToPhysicalZones(context, ["n", "n"]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.ToPhysicalZones(context, [5]));
+    }
+
+    #endregion Availability Zones
 
     #region Complex scenarios
 
