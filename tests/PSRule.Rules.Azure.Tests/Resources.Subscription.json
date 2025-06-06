@@ -280,6 +280,263 @@
         "Sku": null,
         "Tags": {},
         "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+      },
+      {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Sample-RG/providers/Microsoft.Security/locations/centralus/alerts/00000000-0000-0000-0000-000000000000",
+        "name": "00000000-0000-0000-0000-000000000000",
+        "type": "Microsoft.Security/Locations/alerts",
+        "properties": {
+          "status": "Active",
+          "timeGeneratedUtc": "2025-06-05T18:19:38.452Z",
+          "processingEndTimeUtc": "2025-06-05T18:19:37.5141648Z",
+          "version": "2022-01-01.0",
+          "vendorName": "Microsoft",
+          "productName": "Microsoft Defender for Cloud",
+          "productComponentName": "KeyVault",
+          "alertType": "SIMULATED_KV_OperationVolumeAnomaly",
+          "startTimeUtc": "2025-06-05T18:19:31.5140214Z",
+          "endTimeUtc": "2025-06-05T18:19:31.5140214Z",
+          "severity": "Medium",
+          "isIncident": false,
+          "systemAlertId": "00000000-0000-0000-0000-000000000000",
+          "correlationKey": "",
+          "intent": "Unknown",
+          "resourceIdentifiers": [
+            {
+              "$id": "centralus_9",
+              "azureResourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/Sample-RG/providers/microsoft.keyvault/vaults/Sample-KV",
+              "type": "AzureResource",
+              "azureResourceTenantId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+              "$id": "centralus_10",
+              "aadTenantId": "00000000-0000-0000-0000-000000000000",
+              "type": "AAD"
+            }
+          ],
+          "compromisedEntity": "Sample-KV",
+          "alertDisplayName": "[SAMPLE ALERT] User accessed high volume of Key Vaults",
+          "description": "THIS IS A SAMPLE ALERT: While may be benign it could also indicate that a larger volume of Key Vault operations has been performed compared to past historical data. Key Vaults typical exhibit the same behavior over time. This may be a legitimate change in activity but may also indicate that your Key Vault infrastructure has been compromised warranting further investigation.",
+          "remediationSteps": [
+            "Please review your activity logs to determine if the access attempts that triggered this alert were legitimate. If you are concerned that these access attempts may not have been legitimate, please contact your security administrator and disable access policies to the user or application and rotate the secrets, keys, and passwords stored in this key vault."
+          ],
+          "extendedProperties": {
+            "resourceType": "Key Vault",
+            "effectiveAzureResourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/Sample-RG/providers/microsoft.keyvault/vaults/Sample-KV",
+            "compromisedEntity": "Sample-KV",
+            "productComponentName": "KeyVault",
+            "effectiveSubscriptionId": "00000000-0000-0000-0000-000000000000",
+            "application ID": "00000000-0000-0000-0000-000000000000",
+            "client Information": "Microsoft.Azure.Management.Resources.ResourceManagementClient/2.0.0.0, ",
+            "result Signature": "OK",
+            "target": "https://sample.vault.azure.net/secrets/sample",
+            "alert Reasons": "[The application(appid) does not usually come from this IP, The application(appid) performed more operations than usual, The user(objid) does not usually come from this IP, The user(objid) performed more operations than usual, This vault is not usually accessed from this IP] Note: related application(appid), user(objid), IP and operations are included in appid, objid, callerIpAddress and suspiciousOperations entries, respectively",
+            "all vault operations in last 24 hours": "[SecretSet:1, SecretGet:5, Authentication:2, VaultGet:3]",
+            "suspicious Operations": "[SecretGet:2, VaultGet:2]",
+            "start Time UTC": "06/05/2025 18:19:31",
+            "end Time UTC": "06/05/2025 18:19:31",
+            "attacker IP Address": "00.00.00.00",
+            "attacker Object ID": "00000000-0000-0000-0000-000000000000"
+          },
+          "entities": [
+            {
+              "$id": "centralus_11",
+              "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/Sample-RG/providers/microsoft.keyvault/vaults/Sample-KV",
+              "resourceType": "Key Vault",
+              "resourceName": "Sample-KV",
+              "metadata": {
+                "isGraphCenter": true
+              },
+              "entityIds": [
+                {
+                  "type": "AzureResourceId",
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/sample-rg/providers/microsoft.keyvault/vaults/sample-kv"
+                }
+              ],
+              "asset": true,
+              "rbacScopes": {
+                "scopesPerType": {
+                  "workloads": {
+                    "mode": "All",
+                    "scopes": [
+                      "Mdc"
+                    ]
+                  }
+                }
+              },
+              "type": "azure-resource"
+            },
+            {
+              "$id": "centralus_12",
+              "aadUserId": "00000000-0000-0000-0000-000000000000",
+              "isDomainJoined": false,
+              "isValid": false,
+              "asset": true,
+              "rbacScopes": {
+                "scopesPerType": {
+                  "workloads": {
+                    "mode": "All",
+                    "scopes": [
+                      "Mdc"
+                    ]
+                  }
+                }
+              },
+              "type": "account"
+            },
+            {
+              "$id": "centralus_13",
+              "address": "00.00.00.00",
+              "location": {
+                "countryCode": "US",
+                "countryName": "United States",
+                "state": "Virginia",
+                "city": "Washington"
+              },
+              "asset": false,
+              "rbacScopes": {
+                "scopesPerType": {
+                  "workloads": {
+                    "mode": "All",
+                    "scopes": [
+                      "Mdc"
+                    ]
+                  }
+                }
+              },
+              "type": "ip"
+            }
+          ],
+          "alertUri": "https://portal.azure.com/#blade/Microsoft_Azure_Security_AzureDefenderForData/AlertBlade/alertId/00000000-0000-0000-0000-000000000000/subscriptionId/00000000-0000-0000-0000-000000000000/resourceGroup/Sample-RG/referencedFrom/alertDeepLink/location/centralus"
+        }
+      },
+      {
+        "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/Sample-RG/providers/Microsoft.Security/locations/centralus/alerts/00000000-0000-0000-0000-000000000000",
+        "name": "00000000-0000-0000-0000-000000000000",
+        "type": "Microsoft.Security/Locations/alerts",
+        "properties": {
+          "status": "Active",
+          "timeGeneratedUtc": "2025-06-05T18:19:38.675Z",
+          "processingEndTimeUtc": "2025-06-05T18:19:37.5144057Z",
+          "version": "2022-01-01.0",
+          "vendorName": "Microsoft",
+          "productName": "Microsoft Defender for Cloud",
+          "productComponentName": "KeyVault",
+          "alertType": "SIMULATED_KV_AccountVolumeAnomaly",
+          "startTimeUtc": "2025-06-05T18:19:29.5140214Z",
+          "endTimeUtc": "2025-06-05T18:19:29.5140214Z",
+          "severity": "Medium",
+          "isIncident": false,
+          "systemAlertId": "00000000-0000-0000-0000-000000000000",
+          "correlationKey": "",
+          "intent": "Unknown",
+          "resourceIdentifiers": [
+            {
+              "$id": "centralus_14",
+              "azureResourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/Sample-RG/providers/microsoft.keyvault/vaults/Sample-KV",
+              "type": "AzureResource",
+              "azureResourceTenantId": "00000000-0000-0000-0000-000000000000"
+            },
+            {
+              "$id": "centralus_15",
+              "aadTenantId": "00000000-0000-0000-0000-000000000000",
+              "type": "AAD"
+            }
+          ],
+          "compromisedEntity": "Sample-KV",
+          "alertDisplayName": "[SAMPLE ALERT] High volume of operations in a Key Vault",
+          "description": "THIS IS A SAMPLE ALERT: While may be benign it could also indicate that the number of vaults that a user or application accesses has changed compared to past historical data. Key Vault activity typically exhibits the same behavior over time. This may be a legitimate change in activity but may also indicate that your Key Vault infrastructure has been compromised warranting further investigation.",
+          "remediationSteps": [
+            "Please review your activity logs to determine if the access attempts that triggered this alert were legitimate. If you are concerned that these access attempts may not have been legitimate, please contact your security administrator and disable access policies to the user or application and rotate the secrets, keys, and passwords stored in this key vault."
+          ],
+          "extendedProperties": {
+            "resourceType": "Key Vault",
+            "effectiveAzureResourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/Sample-RG/providers/microsoft.keyvault/vaults/Sample-KV",
+            "compromisedEntity": "Sample-KV",
+            "productComponentName": "KeyVault",
+            "effectiveSubscriptionId": "00000000-0000-0000-0000-000000000000",
+            "application ID": "00000000-0000-0000-0000-000000000000",
+            "result Signature": "OK",
+            "target": "https://sample.vault.azure.net/secrets/sample",
+            "alert Reasons": "[The application(appid) accessed more vaults than usual, The application(appid) does not usually come from this IP, The user(objid) accessed more vaults than usual, The user(objid) does not usually come from this IP, This vault is not usually accessed from this IP] Note: related application(appid), user(objid), IP and operations are included in appid, objid, callerIpAddress and suspiciousOperations entries, respectively",
+            "all vault operations in last 24 hours": "[AfterAuthentication:1, SecretGet:345545, EventGridGetAllSubscriptions:19, Authentication:169, VaultGet:3]",
+            "suspicious Operations": "[SecretGet:64]",
+            "start Time UTC": "06/05/2025 18:19:29",
+            "end Time UTC": "06/05/2025 18:19:29",
+            "attacker IP Address": "00.00.00.00",
+            "attacker Object ID": "00000000-0000-0000-0000-000000000000"
+          },
+          "entities": [
+            {
+              "$id": "centralus_16",
+              "resourceId": "/SUBSCRIPTIONS/00000000-0000-0000-0000-000000000000/RESOURCEGROUPS/Sample-RG/providers/microsoft.keyvault/vaults/Sample-KV",
+              "resourceType": "Key Vault",
+              "resourceName": "Sample-KV",
+              "metadata": {
+                "isGraphCenter": true
+              },
+              "entityIds": [
+                {
+                  "type": "AzureResourceId",
+                  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourcegroups/sample-rg/providers/microsoft.keyvault/vaults/sample-kv"
+                }
+              ],
+              "asset": true,
+              "rbacScopes": {
+                "scopesPerType": {
+                  "workloads": {
+                    "mode": "All",
+                    "scopes": [
+                      "Mdc"
+                    ]
+                  }
+                }
+              },
+              "type": "azure-resource"
+            },
+            {
+              "$id": "centralus_17",
+              "aadUserId": "00000000-0000-0000-0000-000000000000",
+              "isDomainJoined": false,
+              "isValid": false,
+              "asset": true,
+              "rbacScopes": {
+                "scopesPerType": {
+                  "workloads": {
+                    "mode": "All",
+                    "scopes": [
+                      "Mdc"
+                    ]
+                  }
+                }
+              },
+              "type": "account"
+            },
+            {
+              "$id": "centralus_18",
+              "address": "00.00.00.00",
+              "location": {
+                "countryCode": "US",
+                "countryName": "United States",
+                "state": "Virginia",
+                "city": "Washington"
+              },
+              "asset": false,
+              "rbacScopes": {
+                "scopesPerType": {
+                  "workloads": {
+                    "mode": "All",
+                    "scopes": [
+                      "Mdc"
+                    ]
+                  }
+                }
+              },
+              "type": "ip"
+            }
+          ],
+          "alertUri": "https://portal.azure.com/#blade/Microsoft_Azure_Security_AzureDefenderForData/AlertBlade/alertId/00000000-0000-0000-0000-000000000000/subscriptionId/00000000-0000-0000-0000-000000000000/resourceGroup/Sample-RG/referencedFrom/alertDeepLink/location/centralus"
+        }
       }
     ]
   },

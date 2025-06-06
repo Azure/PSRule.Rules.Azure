@@ -22,6 +22,7 @@ The exported state is processed later during analysis.
 
 - **What's exported** &mdash; Configurations such as:
   - Resource SKUs, names, tags, and settings configured for an Azure resource.
+  - Optionally, security alerts can be exported from Microsoft Defender for Cloud.
 - **What's not exported** &mdash; Resource data such as:
   - The contents of blobs stored on a storage account, or databases tables.
 
@@ -79,4 +80,16 @@ For example:
 ```powershell
 # Export data from all subscription contexts
 Export-AzRuleData -All;
+```
+
+To export security alerts from Microsoft Defender for Cloud for the subscription use:
+
+- `-ExportSecurityAlerts` - to export active security alerts from Microsoft Defender for Cloud.
+  When this option is specified, active security alerts that are high or medium severity will be exported.
+
+For example:
+
+```powershell
+# Export security alerts from the specified subscription
+Export-AzRuleData -Subscription 'Contoso Production' -ExportSecurityAlerts;
 ```

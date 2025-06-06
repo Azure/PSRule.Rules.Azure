@@ -293,6 +293,22 @@ Describe 'Azure.DefenderCloud' -Tag 'Subscription', 'DefenderCloud', 'defender' 
             $ruleResult.Length | Should -Be 1;
             $ruleResult.TargetName | Should -Be 'subscription-A';
         }
+
+        It 'Azure.DefenderCloud.ActiveAlerts' {
+            $filteredResult = $result | Where-Object { $_.RuleName -eq 'Azure.DefenderCloud.ActiveAlerts' };
+
+            # Fail
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'subscription-B';
+            $ruleResult.Length | Should -Be 1;
+
+            # Pass
+            $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
+            $ruleResult | Should -Not -BeNullOrEmpty;
+            $ruleResult.TargetName | Should -BeIn 'subscription-A', 'subscription-C';
+            $ruleResult.Length | Should -Be 2;
+        }
     }
 }
 
