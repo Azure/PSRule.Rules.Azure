@@ -58,6 +58,9 @@ function Export-AzRuleData {
         [Parameter(Mandatory = $False, ParameterSetName = 'Default')]
         [Switch]$SkipDiscovery,
 
+        [Parameter(Mandatory = $False)]
+        [Switch]$ExportSecurityAlerts,
+
         [Parameter(Mandatory = $False, ParameterSetName = 'Default', ValueFromPipeline = $True)]
         [string[]]$ResourceId
     )
@@ -72,6 +75,13 @@ function Export-AzRuleData {
         # Build the pipeline
         $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::ResourceData($Option);
         $builder.AccessToken({ param($TenantId) $t = (Get-AzAccessToken -TenantId $TenantId); return [PSRule.Rules.Azure.Pipeline.AccessToken]::new($t.Token, $t.ExpiresOn, $t.TenantId); });
+        if ($ExportSecurityAlerts) {
+            Write-Verbose -Message "[Export-AzRuleData] -- Exporting security alerts.";
+            $builder.SecurityAlerts();
+        }
+        else {
+            Write-Verbose -Message "[Export-AzRuleData] -- Not exporting security alerts.";
+        }
 
         # Get subscriptions
         if (-not $SkipDiscovery) {

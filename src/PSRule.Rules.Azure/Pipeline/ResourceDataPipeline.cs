@@ -25,9 +25,9 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
     private const string PROPERTY_ID = "id";
     private const string PROPERTY_TYPE = "type";
     private const string PROPERTY_NAME = "name";
-    private const string PROPERTY_SUBSCRIPTIONID = "subscriptionId";
+    private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
     private const string PROPERTY_DISPLAYNAME = "displayName";
-    private const string PROPERTY_TENANTID = "tenantId";
+    private const string PROPERTY_TENANT_ID = "tenantId";
 
     private const string PLACEHOLDER_SUBSCRIPTION_TYPE = "Microsoft.Subscription";
 
@@ -36,6 +36,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
     private readonly ConcurrentQueue<JObject> _Resources;
     private readonly ConcurrentQueue<JObject> _Output;
     private readonly int _ExpandThreadCount;
+    private readonly bool _SecurityAlerts;
     private readonly ExportSubscriptionScope[] _Subscription;
     private readonly HashSet<string> _ResourceGroup;
     private readonly Hashtable _Tag;
@@ -44,7 +45,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
     private readonly string _OutputPath;
     private readonly string _TenantId;
 
-    public ResourceDataPipeline(PipelineContext context, ExportSubscriptionScope[] subscription, string[] resourceGroup, GetAccessTokenFn getToken, Hashtable tag, int retryCount, int retryInterval, string outputPath, string tenantId)
+    public ResourceDataPipeline(PipelineContext context, ExportSubscriptionScope[] subscription, string[] resourceGroup, GetAccessTokenFn getToken, Hashtable tag, int retryCount, int retryInterval, string outputPath, string tenantId, bool securityAlerts)
         : base(context, getToken)
     {
         _Subscription = subscription;
@@ -57,6 +58,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
         _Resources = new ConcurrentQueue<JObject>();
         _Output = new ConcurrentQueue<JObject>();
         _ExpandThreadCount = Environment.ProcessorCount > 0 ? Environment.ProcessorCount * 4 : 20;
+        _SecurityAlerts = securityAlerts;
     }
 
     /// <inheritdoc/>
@@ -98,7 +100,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
         else
         {
             // Group results into subscriptions a write each to a new file.
-            foreach (var group in output.GroupBy((r) => r[PROPERTY_SUBSCRIPTIONID].Value<string>().ToLowerInvariant()))
+            foreach (var group in output.GroupBy((r) => r[PROPERTY_SUBSCRIPTION_ID].Value<string>().ToLowerInvariant()))
             {
                 var filePath = Path.Combine(_OutputPath, string.Concat(group.Key, ".json"));
                 File.WriteAllText(filePath, JsonConvert.SerializeObject(group.ToArray()), Encoding.UTF8);
@@ -136,7 +138,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
         if (r != null)
         {
             added++;
-            r.Add(PROPERTY_TENANTID, context.TenantId);
+            r.Add(PROPERTY_TENANT_ID, context.TenantId);
             _Resources.Enqueue(r);
             added++;
         }
@@ -195,7 +197,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
             if (_ResourceGroup == null || (ResourceHelper.TryResourceGroup(r[PROPERTY_ID].Value<string>(), out _, out var resourceGroupName) &&
                 _ResourceGroup.Contains(resourceGroupName)))
             {
-                r.Add(PROPERTY_TENANTID, context.TenantId);
+                r.Add(PROPERTY_TENANT_ID, context.TenantId);
                 _Resources.Enqueue(r);
                 added++;
             }
@@ -215,7 +217,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
             if (_ResourceGroup == null || (ResourceHelper.TryResourceGroup(r[PROPERTY_ID].Value<string>(), out _, out var resourceGroupName) &&
                 _ResourceGroup.Contains(resourceGroupName)))
             {
-                r.Add(PROPERTY_TENANTID, context.TenantId);
+                r.Add(PROPERTY_TENANT_ID, context.TenantId);
                 _Resources.Enqueue(r);
                 added++;
             }
@@ -233,7 +235,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
     /// <param name="poolSize">The size of the thread pool to use.</param>
     private void ExpandResource(int poolSize)
     {
-        var context = new ResourceExportContext(Context, _Resources, TokenCache, _RetryCount, _RetryInterval);
+        var context = new ResourceExportContext(Context, _Resources, TokenCache, _RetryCount, _RetryInterval, _SecurityAlerts);
         var visitor = new ResourceExportVisitor();
         var pool = new Task[poolSize];
         for (var i = 0; i < poolSize; i++)

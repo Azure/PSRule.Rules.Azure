@@ -9,6 +9,11 @@ namespace PSRule.Rules.Azure.Pipeline.Export;
 internal interface IResourceExportContext : ILogger
 {
     /// <summary>
+    /// Determines if security alerts are included in the export.
+    /// </summary>
+    bool SecurityAlerts { get; }
+
+    /// <summary>
     /// Get a resource.
     /// </summary>
     /// <param name="tenantId">The tenant Id for the request.</param>

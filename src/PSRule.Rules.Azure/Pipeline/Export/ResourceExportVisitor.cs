@@ -55,7 +55,7 @@ internal sealed class ResourceExportVisitor
     private const string TYPE_CDN_PROFILES_ENDPOINTS = "Microsoft.Cdn/profiles/endpoints";
     private const string TYPE_CDN_PROFILES_AFDENDPOINTS = "Microsoft.Cdn/profiles/afdEndpoints";
     private const string TYPE_AUTOMATION_ACCOUNTS = "Microsoft.Automation/automationAccounts";
-    private const string TYPE_APIMANAGEMENT_SERVICE = "Microsoft.ApiManagement/service";
+    private const string TYPE_API_MANAGEMENT_SERVICE = "Microsoft.ApiManagement/service";
     private const string TYPE_SQL_SERVERS = "Microsoft.Sql/servers";
     private const string TYPE_SQL_DATABASES = "Microsoft.Sql/servers/databases";
     private const string TYPE_POSTGRESQL_SERVERS = "Microsoft.DBforPostgreSQL/servers";
@@ -84,16 +84,17 @@ internal sealed class ResourceExportVisitor
     private const string TYPE_EVENTGRID_DOMAIN = "Microsoft.EventGrid/domains";
     private const string TYPE_EVENTGRID_NAMESPACE = "Microsoft.EventGrid/namespaces";
 
-    private const string PROVIDERTYPE_DIAGNOSTICSETTINGS = "/providers/microsoft.insights/diagnosticSettings";
-    private const string PROVIDERTYPE_ROLEASSIGNMENTS = "/providers/Microsoft.Authorization/roleAssignments";
-    private const string PROVIDERTYPE_RESOURCELOCKS = "/providers/Microsoft.Authorization/locks";
-    private const string PROVIDERTYPE_AUTOPROVISIONING = "/providers/Microsoft.Security/autoProvisioningSettings";
-    private const string PROVIDERTYPE_SECURITYCONTACTS = "/providers/Microsoft.Security/securityContacts";
-    private const string PROVIDERTYPE_SECURITYPRICINGS = "/providers/Microsoft.Security/pricings";
-    private const string PROVIDERTYPE_POLICYASSIGNMENTS = "/providers/Microsoft.Authorization/policyAssignments";
-    private const string PROVIDERTYPE_CLASSICADMINISTRATORS = "/providers/Microsoft.Authorization/classicAdministrators";
-    private const string PROVIDERTYPE_APICOLLECTIONS = "/providers/Microsoft.Security/apiCollections";
-    private const string PROVIDERTYPE_DEFENDERFORSTORAGESETTINGS = "/providers/Microsoft.Security/DefenderForStorageSettings";
+    private const string PROVIDER_TYPE_DIAGNOSTIC_SETTINGS = "/providers/microsoft.insights/diagnosticSettings";
+    private const string PROVIDER_TYPE_ROLE_ASSIGNMENTS = "/providers/Microsoft.Authorization/roleAssignments";
+    private const string PROVIDER_TYPE_RESOURCE_LOCKS = "/providers/Microsoft.Authorization/locks";
+    private const string PROVIDER_TYPE_AUTO_PROVISIONING = "/providers/Microsoft.Security/autoProvisioningSettings";
+    private const string PROVIDER_TYPE_SECURITY_CONTACTS = "/providers/Microsoft.Security/securityContacts";
+    private const string PROVIDER_TYPE_SECURITY_PRICINGS = "/providers/Microsoft.Security/pricings";
+    private const string PROVIDER_TYPE_POLICY_ASSIGNMENTS = "/providers/Microsoft.Authorization/policyAssignments";
+    private const string PROVIDER_TYPE_CLASSIC_ADMINISTRATORS = "/providers/Microsoft.Authorization/classicAdministrators";
+    private const string PROVIDER_TYPE_SECURITY_ALERTS = "/providers/Microsoft.Security/alerts";
+    private const string PROVIDER_TYPE_API_COLLECTIONS = "/providers/Microsoft.Security/apiCollections";
+    private const string PROVIDER_TYPE_DEFENDER_FOR_STORAGE_SETTINGS = "/providers/Microsoft.Security/DefenderForStorageSettings";
 
     private const string MASKED_VALUE = "*** MASKED ***";
 
@@ -121,6 +122,7 @@ internal sealed class ResourceExportVisitor
     private const string APIVERSION_2023_12_15_PREVIEW = "2023-12-15-preview";
     private const string APIVERSION_2024_03_02_PREVIEW = "2024-03-02-preview";
     private const string APIVERSION_2024_05_01_PREVIEW = "2024-05-01-preview";
+    private const string APIVERSION_2024_05_01 = "2024-05-01";
 
     private readonly ProviderData _ProviderData;
 
@@ -129,17 +131,16 @@ internal sealed class ResourceExportVisitor
         _ProviderData = new ProviderData();
     }
 
-    private sealed class ResourceContext
+    private sealed class ResourceContext(IResourceExportContext context, string tenantId)
     {
-        private readonly IResourceExportContext _Context;
+        private readonly IResourceExportContext _Context = context;
 
-        public ResourceContext(IResourceExportContext context, string tenantId)
-        {
-            _Context = context;
-            TenantId = tenantId;
-        }
+        public string TenantId { get; } = tenantId;
 
-        public string TenantId { get; }
+        /// <summary>
+        /// Indicates whether security alerts should be included in the export.
+        /// </summary>
+        public bool SecurityAlerts => _Context.SecurityAlerts;
 
         internal async Task<JObject> GetAsync(string resourceId, string apiVersion)
         {
@@ -399,11 +400,30 @@ internal sealed class ResourceExportVisitor
             return false;
 
         await GetRoleAssignments(context, resource, resourceId);
-        AddSubResource(resource, await GetResource(context, string.Concat(resourceId, PROVIDERTYPE_CLASSICADMINISTRATORS), "2015-07-01"));
-        AddSubResource(resource, await GetResource(context, string.Concat(resourceId, PROVIDERTYPE_AUTOPROVISIONING), "2017-08-01-preview"));
-        AddSubResource(resource, await GetResource(context, string.Concat(resourceId, PROVIDERTYPE_SECURITYCONTACTS), "2017-08-01-preview"));
-        AddSubResource(resource, await GetResource(context, string.Concat(resourceId, PROVIDERTYPE_SECURITYPRICINGS), "2018-06-01"));
-        AddSubResource(resource, await GetResource(context, string.Concat(resourceId, PROVIDERTYPE_POLICYASSIGNMENTS), "2019-06-01"));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_CLASSIC_ADMINISTRATORS, "2015-07-01"));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_AUTO_PROVISIONING, "2017-08-01-preview"));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_SECURITY_CONTACTS, "2017-08-01-preview"));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_SECURITY_PRICINGS, "2018-06-01"));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_POLICY_ASSIGNMENTS, "2019-06-01"));
+
+        // Collect security alerts if enabled.
+        if (context.SecurityAlerts)
+        {
+            AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_SECURITY_ALERTS, "2022-01-01", filter: (r) =>
+            {
+                var status = r["properties"]["status"]?.Value<string>();
+                var timestamp = r["properties"]["timeGeneratedUtc"]?.Value<DateTime>();
+                var severity = r["properties"]["severity"]?.Value<string>();
+
+                return !string.IsNullOrEmpty(status) &&
+                    !string.Equals(status, "Resolved", StringComparison.OrdinalIgnoreCase) &&
+                    DateTime.UtcNow - timestamp < TimeSpan.FromDays(30) &&
+                    (
+                        string.Equals(severity, "High", StringComparison.OrdinalIgnoreCase) ||
+                        string.Equals(severity, "Medium", StringComparison.OrdinalIgnoreCase)
+                    );
+            }));
+        }
         return true;
     }
 
@@ -527,7 +547,7 @@ internal sealed class ResourceExportVisitor
             }
         }
 
-        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_DEFENDERFORSTORAGESETTINGS, "2022-12-01-preview", ignoreNotFound: true));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_DEFENDER_FOR_STORAGE_SETTINGS, "2022-12-01-preview", ignoreNotFound: true));
         return true;
     }
 
@@ -690,11 +710,11 @@ internal sealed class ResourceExportVisitor
 
     private static async Task<bool> VisitAPIManagement(ResourceContext context, JObject resource, string resourceType, string resourceId)
     {
-        if (!string.Equals(resourceType, TYPE_APIMANAGEMENT_SERVICE, StringComparison.OrdinalIgnoreCase))
+        if (!string.Equals(resourceType, TYPE_API_MANAGEMENT_SERVICE, StringComparison.OrdinalIgnoreCase))
             return false;
 
         // APIs
-        var apis = await GetSubResourcesByType(context, resourceId, "apis", APIVERSION_2022_08_01);
+        var apis = await GetSubResourcesByType(context, resourceId, "apis", APIVERSION_2024_05_01);
         AddSubResource(resource, apis);
         foreach (var api in apis)
         {
@@ -703,7 +723,7 @@ internal sealed class ResourceExportVisitor
             var isGraphQL = string.Equals(apiType, "graphql");
 
             // Get policies for each API
-            AddSubResource(resource, await GetSubResourcesByType(context, apiResourceId, PROPERTY_POLICIES, APIVERSION_2022_08_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, apiResourceId, PROPERTY_POLICIES, APIVERSION_2024_05_01));
 
             if (!isGraphQL)
             {
@@ -726,18 +746,18 @@ internal sealed class ResourceExportVisitor
             }
         }
 
-        var backends = await GetSubResourcesByType(context, resourceId, "backends", APIVERSION_2022_08_01);
+        var backends = await GetSubResourcesByType(context, resourceId, "backends", APIVERSION_2024_05_01);
         AddSubResource(resource, backends);
 
-        var products = await GetSubResourcesByType(context, resourceId, "products", APIVERSION_2022_08_01);
+        var products = await GetSubResourcesByType(context, resourceId, "products", APIVERSION_2024_05_01);
         AddSubResource(resource, products);
         foreach (var product in products)
         {
             // Get policies for each product
-            AddSubResource(resource, await GetSubResourcesByType(context, product[PROPERTY_ID].Value<string>(), PROPERTY_POLICIES, APIVERSION_2022_08_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, product[PROPERTY_ID].Value<string>(), PROPERTY_POLICIES, APIVERSION_2024_05_01));
         }
 
-        var policies = await GetSubResourcesByType(context, resourceId, PROPERTY_POLICIES, APIVERSION_2022_08_01);
+        var policies = await GetSubResourcesByType(context, resourceId, PROPERTY_POLICIES, APIVERSION_2024_05_01);
         AddSubResource(resource, policies);
 
         var identityProviders = await GetSubResourcesByType(context, resourceId, "identityProviders", APIVERSION_2022_08_01);
@@ -761,7 +781,7 @@ internal sealed class ResourceExportVisitor
         var portalSettings = await GetSubResourcesByType(context, resourceId, "portalsettings", APIVERSION_2022_08_01);
         AddSubResource(resource, portalSettings);
 
-        var apiCollections = await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_APICOLLECTIONS, APIVERSION_2022_11_20_PREVIEW);
+        var apiCollections = await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_API_COLLECTIONS, APIVERSION_2022_11_20_PREVIEW);
         AddSubResource(resource, apiCollections);
 
         return true;
@@ -772,17 +792,17 @@ internal sealed class ResourceExportVisitor
     /// </summary>
     private static async Task GetDiagnosticSettings(ResourceContext context, JObject resource, string resourceId)
     {
-        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_DIAGNOSTICSETTINGS, APIVERSION_2021_05_01_PREVIEW));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_DIAGNOSTIC_SETTINGS, APIVERSION_2021_05_01_PREVIEW));
     }
 
     private static async Task GetRoleAssignments(ResourceContext context, JObject resource, string resourceId)
     {
-        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_ROLEASSIGNMENTS, APIVERSION_2022_04_01));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_ROLE_ASSIGNMENTS, APIVERSION_2022_04_01));
     }
 
     private static async Task GetResourceLocks(ResourceContext context, JObject resource, string resourceId)
     {
-        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDERTYPE_RESOURCELOCKS, APIVERSION_2016_09_01));
+        AddSubResource(resource, await GetSubResourcesByProvider(context, resourceId, PROVIDER_TYPE_RESOURCE_LOCKS, APIVERSION_2016_09_01));
     }
 
     private static void AddSubResource(JObject parent, JObject child)
@@ -814,8 +834,17 @@ internal sealed class ResourceExportVisitor
         return await context.ListAsync(string.Concat(resourceId, '/', type), apiVersion, ignoreNotFound);
     }
 
-    private static async Task<JObject[]> GetSubResourcesByProvider(ResourceContext context, string resourceId, string type, string apiVersion, bool ignoreNotFound = false)
+#nullable enable
+
+    private static async Task<JObject[]> GetSubResourcesByProvider(ResourceContext context, string resourceId, string type, string apiVersion, bool ignoreNotFound = false, Func<JObject, bool>? filter = null)
     {
-        return await context.ListAsync(string.Concat(resourceId, type), apiVersion, ignoreNotFound);
+        var items = await context.ListAsync(string.Concat(resourceId, type), apiVersion, ignoreNotFound);
+        if (filter != null)
+        {
+            items = items.Where(filter).ToArray();
+        }
+        return items;
     }
+
+#nullable restore
 }
