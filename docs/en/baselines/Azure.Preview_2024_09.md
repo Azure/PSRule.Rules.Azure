@@ -14,7 +14,7 @@ Include rules released September 2024 or prior for Azure preview only features.
 
 The following rules are included within the `Azure.Preview_2024_09` baseline.
 
-This baseline includes a total of 11 rules.
+This baseline includes a total of 9 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -26,6 +26,4 @@ Name | Synopsis | Severity
 [Azure.Defender.Storage.DataScan](../rules/Azure.Defender.Storage.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical
 [Azure.ServiceBus.GeoReplica](../rules/Azure.ServiceBus.GeoReplica.md) | Enhance resilience to regional outages by replicating namespaces. | Important
 [Azure.Storage.Defender.DataScan](../rules/Azure.Storage.Defender.DataScan.md) | Enable sensitive data threat detection in Microsoft Defender for Storage. | Critical
-[Azure.VMSS.AutoInstanceRepairs](../rules/Azure.VMSS.AutoInstanceRepairs.md) | Automatic instance repairs are enabled. | Important
-[Azure.VNET.PrivateSubnet](../rules/Azure.VNET.PrivateSubnet.md) | Disable default outbound access for virtual machines. | Critical
 [Azure.VNG.MaintenanceConfig](../rules/Azure.VNG.MaintenanceConfig.md) | Use a customer-controlled maintenance configuration for virtual network gateways. | Important
