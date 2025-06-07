@@ -30,6 +30,17 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since pre-release v1.44.0-B0052:
+
+- New features:
+  - Added support for optionally exporting in-flight security alerts from Microsoft Defender for Cloud by @BernieWhite.
+    [#3238](https://github.com/Azure/PSRule.Rules.Azure/issues/3238)
+    - To export security alerts use the `-ExportSecurityAlerts` switch when running `Export-AzRuleData`.
+- New rules:
+  - Microsoft Defender for Cloud:
+    - Check if subscriptions have active security alerts in Microsoft Defender for Cloud by @BernieWhite.
+      [#3238](https://github.com/Azure/PSRule.Rules.Azure/issues/3238)
+
 ## v1.44.0-B0052 (pre-release)
 
 What's changed since pre-release v1.44.0-B0027:

@@ -20,11 +20,15 @@ internal class ResourceExportContext : ExportDataContext, IResourceExportContext
     public ResourceExportContext(PipelineContext context, AccessTokenCache tokenCache)
         : base(context, tokenCache) { }
 
-    public ResourceExportContext(PipelineContext context, ConcurrentQueue<JObject> resources, AccessTokenCache tokenCache, int retryCount, int retryInterval)
+    public ResourceExportContext(PipelineContext context, ConcurrentQueue<JObject> resources, AccessTokenCache tokenCache, int retryCount, int retryInterval, bool securityAlerts)
         : base(context, tokenCache, retryCount, retryInterval)
     {
         _Resources = resources;
+        SecurityAlerts = securityAlerts;
     }
+
+    /// <inheritdoc/>
+    public bool SecurityAlerts { get; }
 
     /// <inheritdoc/>
     public async Task<JObject> GetAsync(string tenantId, string requestUri, string apiVersion)

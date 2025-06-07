@@ -38,7 +38,7 @@ namespace PSRule.Rules.Azure
     internal sealed class TestResourceExportContext : ResourceExportContext
     {
         public TestResourceExportContext()
-            : base(null, null, new AccessTokenCache(GetAccessToken), retryCount: 3, retryInterval: 10)
+            : base(null, null, new AccessTokenCache(GetAccessToken), retryCount: 3, retryInterval: 10, securityAlerts: false)
         {
             RefreshToken("ffffffff-ffff-ffff-ffff-ffffffffffff");
         }

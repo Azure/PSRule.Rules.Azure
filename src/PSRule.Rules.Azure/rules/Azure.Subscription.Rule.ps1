@@ -113,3 +113,22 @@ Rule 'Azure.Monitor.ServiceHealth' -Ref 'AZR-000211' -Type 'Microsoft.Subscripti
 }
 
 #endregion Monitor
+
+#region Security
+
+# Synopsis: Alerts that have not received a response may indicate a security issue that requires attention.
+Rule 'Azure.DefenderCloud.ActiveAlerts' -Ref 'AZR-000489' -Type 'Microsoft.Subscription' -Tag @{ release = 'GA'; ruleSet = '2025_06'; 'Azure.WAF/pillar' = 'Security'; } {
+    $alerts = @(GetSubResources -ResourceType 'Microsoft.Security/Locations/alerts' | Where-Object {
+        $_.properties.status -eq 'Active' -and
+        $_.properties.severity -in @('High', 'Medium')
+    })
+    $Assert.LessOrEqual($alerts, '.', 0).Reason($LocalizedData.ActiveSecurityAlerts, $alerts.Length);
+
+    # Use up to 5 alerts as reasons for failure.
+    for ($i = 0; $i -lt $alerts.Length -and $i -lt 5; $i++) {
+        $alert = $alerts[$i];
+        $Assert.Fail($alert.properties.alertDisplayName);
+    }
+}
+
+#endregion Security
