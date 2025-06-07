@@ -1,16 +1,13 @@
-# Writing documentation
+---
+reviewed: 2025-06-07
+description: Learn how to create or update documentation for rules in PSRule for Azure.
+discussion: false
+---
 
-PSRule for Azure contains documentation ranging from conceptual, code examples, to recommendations.
-All of this documentation is written in markdown, open source, and available for you to contribute to.
+# Adding rule help
 
-Some of the documentation that you might like to improve includes:
-
-- Rule recommendations (`docs/en/rules/`).
-- Scenarios and examples (`docs/customization/` and `docs/scenarios/`).
-- PowerShell cmdlet and conceptual topics (`docs/commands/` and `docs/concepts/`).
-
-!!! Abstract
-    This topic covers contributing documentation in PSRule for Azure.
+When you create or update a rule, you should also add or update the help documentation for the rule.
+The help documentation is used to generate the rule documentation in the PSRule for Azure documentation.
 
 ## Rule help
 

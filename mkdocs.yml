@@ -74,13 +74,8 @@ nav:
       - Permit outbound management: customization/permit-outbound-management.md
     - Troubleshooting: troubleshooting.md
     - Samples: samples.md
-    - License and contributing:
+    - License:
       - license-contributing/index.md
-      - Get started contributing: license-contributing/get-started-contributing.md
-      - Getting started with contributions: license-contributing/getting-started-with-documentation.md
-      - Writing documentation: license-contributing/writing-documentation.md
-      - Expansion internals: license-contributing/expansion-internals.md
-      - Past hackathons: license-contributing/hackathons.md
     - Related projects: related-projects.md
     - Support: support.md
   - Updates:
@@ -103,6 +98,24 @@ nav:
     - By pillar: en/rules/module.md
     - By resource: en/rules/resource.md
     - Microsoft Cloud Security Benchmark: en/mcsb-v1.md
+  - Contribute:
+    - Overview: contribute/overview.md
+    - Rules:
+      - 1. Complete prerequisites: contribute/rules/prerequisites.md
+      - 2. Create or assign an issue: contribute/rules/create-issue.md
+      - 3. Choosing identifiers: contribute/rules/identifiers.md
+      - 4. Create or update a rule: contribute/rules/create-rule.md
+      - 5. Testing a rule: contribute/rules/testing.md
+      - 6. Adding rule help: contribute/rules/help.md
+      - 7. Update the change log: contribute/rules/change-log.md
+      - 8. Submit a pull request: contribute/rules/pull-request.md
+    - Writing documentation: license-contributing/writing-documentation.md
+    - Resources:
+      - Expansion internals: license-contributing/expansion-internals.md
+      - Get started contributing: license-contributing/get-started-contributing.md
+      - Getting started with contributions: license-contributing/getting-started-with-documentation.md
+    - Contribution Q&A: contribute/contribution-qna.md
+    - Past hackathons: license-contributing/hackathons.md
   - Learn:
     - Learn PSRule for Azure series: learn/learn-video-series.md
     - Official learning: learn/official.md

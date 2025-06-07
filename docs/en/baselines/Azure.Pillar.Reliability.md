@@ -13,7 +13,7 @@ Microsoft Azure Well-Architected Framework - Reliability pillar specific baselin
 
 The following rules are included within the `Azure.Pillar.Reliability` baseline.
 
-This baseline includes a total of 91 rules.
+This baseline includes a total of 95 rules.
 
 Name | Synopsis | Severity
 ---- | -------- | --------
@@ -51,6 +51,8 @@ Name | Synopsis | Severity
 [Azure.Cosmos.ContinuousBackup](../rules/Azure.Cosmos.ContinuousBackup.md) | Enable continuous backup on Cosmos DB accounts. | Important
 [Azure.Cosmos.SLA](../rules/Azure.Cosmos.SLA.md) | Use a paid tier to qualify for a Service Level Agreement (SLA). | Important
 [Azure.DataFactory.Version](../rules/Azure.DataFactory.Version.md) | Consider migrating to DataFactory v2. | Awareness
+[Azure.EntraDS.MinReplicas](../rules/Azure.EntraDS.MinReplicas.md) | Applications or infrastructure relying on a managed domain may fail if the domain is not available. | Important
+[Azure.EntraDS.SKU](../rules/Azure.EntraDS.SKU.md) | The default SKU for Microsoft Entra Domain Services supports resiliency in a single region. | Important
 [Azure.Firewall.AvailabilityZone](../rules/Azure.Firewall.AvailabilityZone.md) | Deploy firewall instances using availability zones in supported regions to ensure high availability and resilience. | Important
 [Azure.FrontDoor.Probe](../rules/Azure.FrontDoor.Probe.md) | Use health probes to check the health of each backend. | Important
 [Azure.FrontDoor.ProbeMethod](../rules/Azure.FrontDoor.ProbeMethod.md) | Configure health probes to use HEAD requests to reduce performance overhead. | Important
@@ -61,6 +63,7 @@ Name | Synopsis | Severity
 [Azure.LB.AvailabilityZone](../rules/Azure.LB.AvailabilityZone.md) | Load balancers deployed with Standard SKU should be zone-redundant for high availability. | Important
 [Azure.LB.Probe](../rules/Azure.LB.Probe.md) | Use a specific probe for web protocols. | Important
 [Azure.LB.StandardSKU](../rules/Azure.LB.StandardSKU.md) | Load balancers should be deployed with Standard SKU for production workloads. | Important
+[Azure.Log.Replication](../rules/Azure.Log.Replication.md) | Log Analytics workspaces should have workspace replication enabled to improve service availability. | Important
 [Azure.MariaDB.GeoRedundantBackup](../rules/Azure.MariaDB.GeoRedundantBackup.md) | Azure Database for MariaDB should store backups in a geo-redundant storage. | Important
 [Azure.Monitor.ServiceHealth](../rules/Azure.Monitor.ServiceHealth.md) | Configure Service Health alerts to notify administrators. | Important
 [Azure.MySQL.GeoRedundantBackup](../rules/Azure.MySQL.GeoRedundantBackup.md) | Azure Database for MySQL should store backups in a geo-redundant storage. | Important
@@ -96,6 +99,7 @@ Name | Synopsis | Severity
 [Azure.VM.BasicSku](../rules/Azure.VM.BasicSku.md) | Virtual machines (VMs) should not use Basic sizes. | Important
 [Azure.VM.MaintenanceConfig](../rules/Azure.VM.MaintenanceConfig.md) | Use a maintenance configuration for virtual machines. | Important
 [Azure.VM.Standalone](../rules/Azure.VM.Standalone.md) | Single instance VMs are a single point of failure, however reliability can be improved by using premium storage. | Important
+[Azure.VMSS.AutoInstanceRepairs](../rules/Azure.VMSS.AutoInstanceRepairs.md) | Applications or infrastructure relying on a virtual machine scale sets may fail if VM instances are unhealthy. | Important
 [Azure.VMSS.AvailabilityZone](../rules/Azure.VMSS.AvailabilityZone.md) | Deploy virtual machine scale set instances using availability zones in supported regions to ensure high availability and resilience. | Important
 [Azure.VMSS.ZoneBalance](../rules/Azure.VMSS.ZoneBalance.md) | Deploy virtual machine scale set instances using the best-effort zone balance in supported regions. | Important
 [Azure.VNET.BastionSubnet](../rules/Azure.VNET.BastionSubnet.md) | VNETs with a GatewaySubnet should have an AzureBastionSubnet to allow for out of band remote access to VMs. | Important
