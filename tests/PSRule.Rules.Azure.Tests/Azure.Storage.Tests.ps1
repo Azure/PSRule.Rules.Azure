@@ -67,14 +67,14 @@ Describe 'Azure.Storage' -Tag 'Storage' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 3;
             $ruleResult.TargetName | Should -BeIn 'storage-B', 'storage-C', 'storage-D';
+            $ruleResult.Length | Should -Be 3;
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 5;
             $ruleResult.TargetName | Should -BeIn 'storage-A', 'storage-E', 'storage-F', 'storage-G', 'storage-H';
+            $ruleResult.Length | Should -Be 5;
         }
 
         It 'Azure.Storage.SoftDelete' {
