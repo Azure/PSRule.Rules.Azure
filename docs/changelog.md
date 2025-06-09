@@ -30,6 +30,90 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.44.0
+
+What's changed since v1.43.0:
+
+- New features:
+  - Added support for the `buildUri` and `parseUri` functions during Bicep expansion by @BernieWhite.
+    [#3345](https://github.com/Azure/PSRule.Rules.Azure/issues/3345)
+  - Added support for the `toPhysicalZone`, `toPhysicalZones`, `toLogicalZone`, `toLogicalZones` Bicep functions by @BernieWhite.
+    [#3346](https://github.com/Azure/PSRule.Rules.Azure/issues/3346)
+  - Added the `userPrincipalName` property to the `deployer()` object by @BernieWhite.
+    [#3390](https://github.com/Azure/PSRule.Rules.Azure/issues/3390)
+  - Added support for optionally exporting in-flight security alerts from Microsoft Defender for Cloud by @BernieWhite.
+    [#3238](https://github.com/Azure/PSRule.Rules.Azure/issues/3238)
+    - To export security alerts use the `-ExportSecurityAlerts` switch when running `Export-AzRuleData`.
+- New rules:
+  - Application Insights:
+    - Check that local authentication is disabled by @BernieWhite.
+      [#3374](https://github.com/Azure/PSRule.Rules.Azure/issues/3374)
+    - Check application insights resources matches configured name format by @BernieWhite.
+      [#3375](https://github.com/Azure/PSRule.Rules.Azure/issues/3375)
+      - The name format can be configured by the `AZURE_APP_INSIGHTS_NAME_FORMAT` configuration option.
+  - Entra Domain Services:
+    - Check that the SKU supports geo-replication by @BernieWhite.
+      [#3355](https://github.com/Azure/PSRule.Rules.Azure/issues/3355)
+    - Check that at least two replicas are configured by @BernieWhite.
+      [#3364](https://github.com/Azure/PSRule.Rules.Azure/issues/3364)
+    - Check that replicas are located in allowed locations by @BernieWhite.
+      [#3365](https://github.com/Azure/PSRule.Rules.Azure/issues/3365)
+      - Configure the `AZURE_RESOURCE_ALLOWED_LOCATIONS` configuration option to specify allowed locations.
+  - Microsoft Defender for Cloud:
+    - Check if subscriptions have active security alerts in Microsoft Defender for Cloud by @BernieWhite.
+      [#3238](https://github.com/Azure/PSRule.Rules.Azure/issues/3238)
+  - Monitor Logs:
+    - Check that log workspaces replicate to allowed locations by @BernieWhite.
+      [#3373](https://github.com/Azure/PSRule.Rules.Azure/issues/3373)
+      - Configure the `AZURE_RESOURCE_ALLOWED_LOCATIONS` configuration option to specify allowed locations.
+    - Check that log workspaces meet the service naming requirements by @BernieWhite.
+      [#3376](https://github.com/Azure/PSRule.Rules.Azure/issues/3376)
+    - Check log workspaces matches configured name format by @BernieWhite.
+      [#3376](https://github.com/Azure/PSRule.Rules.Azure/issues/3376)
+      - The name format can be configured by the `AZURE_LOG_WORKSPACE_NAME_FORMAT` configuration option.
+  - Service Fabric:
+    - Check that Service Fabric clusters use encrypted and signed node-to-node communication by @BernieWhite.
+      [#3356](https://github.com/Azure/PSRule.Rules.Azure/issues/3356)
+- Updated rules:
+  - Deployment:
+    - Updated `Azure.Deployment.SecureValue` to check additional resource types and properties by @BernieWhite.
+      [#3366](https://github.com/Azure/PSRule.Rules.Azure/issues/3366)
+      [#3368](https://github.com/Azure/PSRule.Rules.Azure/issues/3368)
+      [#3342](https://github.com/Azure/PSRule.Rules.Azure/issues/3342)
+      - Added support for new resource types:
+        - `Microsoft.AzureFleet/fleets`
+        - `Microsoft.DocumentDB/mongoClusters`
+        - `Microsoft.Web/staticSites`
+        - `Microsoft.Web/staticSites/basicAuth`
+      - Added new sensitive properties to:
+        - `Microsoft.AAD/domainServices`
+    - Updated `Azure.Deployment.OutputSecretValue` to support secure outputs by @BernieWhite.
+      [#3357](https://github.com/Azure/PSRule.Rules.Azure/issues/3357)
+  - Monitor Logs:
+    - Updated documentation and promoted `Azure.Log.Replication` to GA by @BernieWhite.
+      [#3372](https://github.com/Azure/PSRule.Rules.Azure/issues/3372)
+      - This rule was renamed from `Azure.LogAnalytics.Replication` to `Azure.Log.Replication` to drop the legacy name.
+      - Bumped rule set to `2025_06`.
+  - Virtual Network:
+    - Updated documentation and promoted `Azure.VNET.PrivateSubnet` to GA by @BernieWhite.
+      [#3386](https://github.com/Azure/PSRule.Rules.Azure/issues/3386)
+      - Bumped rule set to `2025_06`.
+  - Virtual Machine Scale Sets:
+    - Updated documentation and promoted `Azure.VMSS.AutoInstanceRepairs` to GA by @BernieWhite.
+      [#3378](https://github.com/Azure/PSRule.Rules.Azure/issues/3378)
+      - Bumped rule set to `2025_06`.
+- Bug fixes:
+  - Fixed identification of secure parameters with custom type for `Azure.Deployment.SecureParameter` by @BernieWhite.
+    [#3347](https://github.com/Azure/PSRule.Rules.Azure/issues/3347)
+  - Fixed not implemented exception for deployment name in lambda expression by @BernieWhite.
+    [#3393](https://github.com/Azure/PSRule.Rules.Azure/issues/3393)
+  - Fixed incorrect parsing of double quoted string during expansion by @BernieWhite.
+    [#3394](https://github.com/Azure/PSRule.Rules.Azure/issues/3394)
+
+What's changed since pre-release v1.44.0-B0081:
+
+- No additional changes.
+
 ## v1.44.0-B0081 (pre-release)
 
 What's changed since pre-release v1.44.0-B0052:
