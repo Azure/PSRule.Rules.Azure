@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "languageVersion": "2.0",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.36.1.42791",
+      "templateHash": "4431975804949625930"
+    }
+  },
+  "variables": {
+    "subscriptionName": "sub-topic-eastus-001",
+    "firstPart": "[split(variables('subscriptionName'), '-')[0]]",
+    "secondPart": "[tryGet(split(variables('subscriptionName'), '-'), 1)]",
+    "lastPart": "[indexFromEnd(split(variables('subscriptionName'), '-'), 1)]",
+    "secondLastPart": "[tryIndexFromEnd(split(variables('subscriptionName'), '-'), 2)]"
+  },
+  "resources": {},
+  "outputs": {
+    "firstPartOutput": {
+      "type": "string",
+      "value": "[variables('firstPart')]"
+    },
+    "secondPartOutput": {
+      "type": "string",
+      "value": "[variables('secondPart')]"
+    },
+    "lastPartOutput": {
+      "type": "string",
+      "value": "[variables('lastPart')]"
+    },
+    "secondLastPartOutput": {
+      "type": "string",
+      "value": "[variables('secondLastPart')]"
+    }
+  }
+}

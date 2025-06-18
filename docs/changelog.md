@@ -30,6 +30,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.44.0:
+
+- Bug fixes:
+  - Fixes the function `tryIndexFromEnd` was not found by @BernieWhite.
+    [#3409](https://github.com/Azure/PSRule.Rules.Azure/issues/3409)
+
 ## v1.44.0
 
 What's changed since v1.43.0:

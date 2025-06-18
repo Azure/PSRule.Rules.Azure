@@ -1315,4 +1315,29 @@ public sealed class TemplateVisitorTests : TemplateVisitorTestsBase
         Assert.StartsWith("PFA0001:", ex.InnerException.InnerException.InnerException.Message);
         Assert.EndsWith(" This is a test failure message.", ex.InnerException.InnerException.InnerException.Message);
     }
+
+    /// <summary>
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3409
+    /// </summary>
+    [Fact]
+    public void ProcessTemplate_WhenNullableIndexFromEnd_ShouldReturnExpectedValue()
+    {
+        _ = ProcessTemplate(GetSourcePath("Tests.Bicep.42.json"), null, out var templateContext);
+
+        Assert.True(templateContext.RootDeployment.TryOutput("firstPartOutput", out JObject firstPartOutput));
+        var firstPart = firstPartOutput["value"].Value<string>();
+        Assert.Equal("sub", firstPart);
+
+        Assert.True(templateContext.RootDeployment.TryOutput("secondPartOutput", out JObject secondPartOutput));
+        var secondPart = secondPartOutput["value"].Value<string>();
+        Assert.Equal("topic", secondPart);
+
+        Assert.True(templateContext.RootDeployment.TryOutput("lastPartOutput", out JObject lastPartOutput));
+        var lastPart = lastPartOutput["value"].Value<string>();
+        Assert.Equal("001", lastPart);
+
+        Assert.True(templateContext.RootDeployment.TryOutput("secondLastPartOutput", out JObject secondLastPartOutput));
+        var secondLastPart = secondLastPartOutput["value"].Value<string>();
+        Assert.Equal("eastus", secondLastPart);
+    }
 }

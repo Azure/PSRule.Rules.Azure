@@ -711,9 +711,71 @@ public sealed class FunctionTests
         Assert.Null(Functions.TryGet(context, [testObject, "properties", "notValue"]));
         Assert.Null(Functions.TryGet(context, [testObject, "properties", "notValue", "value"]));
 
+        var testObject2 = new JArray
+        {
+            "one",
+            "two",
+        };
+
+        Assert.Equal("two", (Functions.TryGet(context, [testObject2, 1]) as JValue).Value<string>());
+
         Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, null));
         Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, []));
         Assert.Throws<ExpressionArgumentException>(() => Functions.TryGet(context, ["one"]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_ARRAY)]
+    public void TryIndexFromEnd()
+    {
+        var context = GetContext();
+        var testArray = new JArray("one", "two", "three");
+
+        // Valid index from end
+        Assert.Equal("three", (Functions.TryIndexFromEnd(context, [testArray, 1]) as JValue).Value<string>());
+        Assert.Equal("two", (Functions.TryIndexFromEnd(context, [testArray, 2]) as JValue).Value<string>());
+        Assert.Equal("one", (Functions.TryIndexFromEnd(context, [testArray, 3]) as JValue).Value<string>());
+
+        Assert.Equal("three", Functions.TryIndexFromEnd(context, [new string[] { "one", "two", "three" }, 1]) as string);
+        Assert.Equal("two", Functions.TryIndexFromEnd(context, [new string[] { "one", "two", "three" }, 2]) as string);
+        Assert.Equal("one", Functions.TryIndexFromEnd(context, [new string[] { "one", "two", "three" }, 3]) as string);
+
+        // Invalid index from end
+        Assert.Null(Functions.TryIndexFromEnd(context, [testArray, 4]));
+        Assert.Null(Functions.TryIndexFromEnd(context, [testArray, -1]));
+        Assert.Null(Functions.TryIndexFromEnd(context, [testArray, "2"]));
+
+        // Invalid input
+        Assert.Null(Functions.TryIndexFromEnd(context, [null, 1]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.TryIndexFromEnd(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.TryIndexFromEnd(context, ["one"]));
+    }
+
+    [Fact]
+    [Trait(TRAIT, TRAIT_ARRAY)]
+    public void IndexFromEnd()
+    {
+        var context = GetContext();
+        var testArray = new JArray("one", "two", "three");
+
+        // Valid index from end
+        Assert.Equal("three", (Functions.IndexFromEnd(context, [testArray, 1]) as JValue).Value<string>());
+        Assert.Equal("two", (Functions.IndexFromEnd(context, [testArray, 2]) as JValue).Value<string>());
+        Assert.Equal("one", (Functions.IndexFromEnd(context, [testArray, 3]) as JValue).Value<string>());
+
+        Assert.Equal("three", Functions.IndexFromEnd(context, [new string[] { "one", "two", "three" }, 1]) as string);
+        Assert.Equal("two", Functions.IndexFromEnd(context, [new string[] { "one", "two", "three" }, 2]) as string);
+        Assert.Equal("one", Functions.IndexFromEnd(context, [new string[] { "one", "two", "three" }, 3]) as string);
+
+        // Invalid index from end
+        Assert.Throws<ExpressionArgumentException>(() => Functions.IndexFromEnd(context, [testArray, 4]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.IndexFromEnd(context, [testArray, -1]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.IndexFromEnd(context, [testArray, "2"]));
+
+        // Invalid input
+        Assert.Throws<ExpressionArgumentException>(() => Functions.IndexFromEnd(context, [null, 1]));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.IndexFromEnd(context, []));
+        Assert.Throws<ExpressionArgumentException>(() => Functions.IndexFromEnd(context, ["one"]));
     }
 
     #endregion Array and object

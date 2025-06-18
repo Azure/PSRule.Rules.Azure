@@ -150,6 +150,9 @@
   <data name="ArgumentsOutOfRange" xml:space="preserve">
     <value>The number of arguments '{1}' is not within the allowed range for '{0}'.</value>
   </data>
+  <data name="ArrayIndexNotInRange" xml:space="preserve">
+    <value>The index '{0}' for '{1}' is not in range of the array.</value>
+  </data>
   <data name="AssignmentFileExpandFailed" xml:space="preserve">
     <value>Unable to expand the specified assignment file '{0}'. {1}</value>
   </data>

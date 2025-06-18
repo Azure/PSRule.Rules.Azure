@@ -72,6 +72,8 @@ internal static class Functions
         new FunctionDescriptor("skip", Skip),
         new FunctionDescriptor("take", Take),
         new FunctionDescriptor("tryGet", TryGet),
+        new FunctionDescriptor("tryIndexFromEnd", TryIndexFromEnd),
+        new FunctionDescriptor("indexFromEnd", IndexFromEnd),
         new FunctionDescriptor("union", Union),
 
         // Comparison
@@ -737,19 +739,44 @@ internal static class Functions
 
     internal static object TryGet(ITemplateContext context, object[] args)
     {
-        if (args == null || args.Length < 2)
-            throw ArgumentsOutOfRange(nameof(TryGet), args);
+        if (args == null || args.Length < 2) throw ArgumentsOutOfRange(nameof(TryGet), args);
 
         var o = args[0];
         for (var i = 1; i < args.Length; i++)
         {
             if (args[i] is string propertyName && ExpressionHelpers.TryPropertyOrField(o, propertyName, out var value) ||
-                args[i] is int index && ExpressionHelpers.TryIndex(o, index, out value))
+                ExpressionHelpers.TryInt(args[i], out var index) && ExpressionHelpers.TryIndex(o, index, out value))
+            {
                 o = value;
+            }
             else
+            {
                 return null;
+            }
         }
         return o;
+    }
+
+    internal static object TryIndexFromEnd(ITemplateContext context, object[] args)
+    {
+        if (args == null || args.Length != 2) throw ArgumentsOutOfRange(nameof(TryIndexFromEnd), args);
+
+        return ExpressionHelpers.TryInt(args[1], out var index) && index >= 1 &&
+            ExpressionHelpers.TryIndexFromEnd(args[0], index, out var value) ? value : null;
+    }
+
+    internal static object IndexFromEnd(ITemplateContext context, object[] args)
+    {
+        if (args == null || args.Length != 2) throw ArgumentsOutOfRange(nameof(IndexFromEnd), args);
+        if (!ExpressionHelpers.TryInt(args[1], out var index)) throw ArgumentInvalidInteger(nameof(IndexFromEnd), nameof(index));
+        if (index < 1) throw ArgumentInvalidInteger(nameof(IndexFromEnd), nameof(index));
+        if (!ExpressionHelpers.IsArray(args[0])) throw ArgumentFormatInvalid(nameof(IndexFromEnd));
+
+        if (ExpressionHelpers.TryIndexFromEnd(args[0], index, out var value))
+        {
+            return value;
+        }
+        throw ArrayIndexNotInRange(nameof(IndexFromEnd), index);
     }
 
     /// <summary>
@@ -2815,6 +2842,19 @@ internal static class Functions
             Thread.CurrentThread.CurrentCulture,
             PSRuleResources.ObjectPropertyNotProvided,
             property,
+            expression
+        ));
+    }
+
+    /// <summary>
+    /// The index '{0}' for '{1}' is not in range of the array.
+    /// </summary>
+    private static ExpressionArgumentException ArrayIndexNotInRange(string expression, int index)
+    {
+        return new ExpressionArgumentException(expression, string.Format(
+            Thread.CurrentThread.CurrentCulture,
+            PSRuleResources.ArrayIndexNotInRange,
+            index,
             expression
         ));
     }
