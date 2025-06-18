@@ -160,6 +160,15 @@ namespace PSRule.Rules.Azure.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to The index &apos;{0}&apos; for &apos;{1}&apos; is not in range of the array..
+        /// </summary>
+        internal static string ArrayIndexNotInRange {
+            get {
+                return ResourceManager.GetString("ArrayIndexNotInRange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to expand the specified assignment file &apos;{0}&apos;. {1}.
         /// </summary>
         internal static string AssignmentFileExpandFailed {

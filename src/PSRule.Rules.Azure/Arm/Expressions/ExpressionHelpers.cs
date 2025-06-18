@@ -162,7 +162,7 @@ internal static class ExpressionHelpers
     internal static bool TryIndex(object o, object index, out object value)
     {
         value = null;
-        if (o == null) return false;
+        if (IsNull(o)) return false;
 
         if (o is IMock mock)
         {
@@ -192,6 +192,23 @@ internal static class ExpressionHelpers
             return true;
 
         return TryString(index, out propertyName) && TryPropertyOrField(o, propertyName, out value);
+    }
+
+    internal static bool TryIndexFromEnd(object o, long index, out object value)
+    {
+        value = null;
+        if (IsNull(o)) return false;
+
+        if (TryArray(o, out var array))
+        {
+            if (index < 1 || index > array.Length)
+                return false;
+
+            value = array.GetValue(array.Length - index);
+            return true;
+        }
+
+        return false;
     }
 
     internal static bool TryPropertyOrField(object o, string propertyName, out object value)

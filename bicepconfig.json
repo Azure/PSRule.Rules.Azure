@@ -1,5 +1,6 @@
 {
   "experimentalFeaturesEnabled": {
-    "optionalModuleNames": true
+    "optionalModuleNames": true,
+    "typedVariables": true
   }
 }
