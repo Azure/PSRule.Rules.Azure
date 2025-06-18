@@ -3296,5 +3296,29 @@
     "Sku": null,
     "Tags": null,
     "SubscriptionId": "00000000-0000-0000-0000-000000000000"
+  },
+  {
+    "ResourceId": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-P/apis/api-A/policies/api-policy-E",
+    "Id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/rg-test/providers/Microsoft.ApiManagement/service/apim-B/apim-P/apis/api-A/policies/api-policy-E",
+    "Identity": null,
+    "Kind": null,
+    "Location": null,
+    "ManagedBy": null,
+    "ResourceName": "api-policy-E",
+    "Name": "api-policy-E",
+    "ExtensionResourceName": null,
+    "ParentResource": null,
+    "Plan": null,
+    "Properties": {
+      "value": "<policies><inbound><base /><ip-filter action=\"allow\"><address-range from=\"51.175.196.188\" to=\"51.175.196.188\" /></ip-filter></inbound><backend><base /></backend><outbound><base /></outbound></policies>",
+      "format": "xml"
+    },
+    "ResourceGroupName": "rg-test",
+    "Type": "Microsoft.ApiManagement/service/apis/policies",
+    "ResourceType": "Microsoft.ApiManagement/service/apis/policies",
+    "ExtensionResourceType": null,
+    "Sku": null,
+    "Tags": null,
+    "SubscriptionId": "00000000-0000-0000-0000-000000000000"
   }
 ]

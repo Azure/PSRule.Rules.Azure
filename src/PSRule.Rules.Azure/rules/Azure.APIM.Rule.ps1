@@ -327,11 +327,38 @@ Rule 'Azure.APIM.PolicyBase' -Ref 'AZR-000371' -Type 'Microsoft.ApiManagement/se
     $policies = GetAPIMPolicyNode -Node 'policies' -IgnoreGlobal
     foreach ($policy in $policies) {
         Write-Debug "Got policy: $($policy.OuterXml)"
-        
-        $Assert.HasField($policy.inbound, 'base').PathPrefix('inbound')
-        $Assert.HasField($policy.backend, 'base').PathPrefix('backend')
-        $Assert.HasField($policy.outbound, 'base').PathPrefix('outbound')
-        $Assert.HasField($policy.'on-error', 'base').PathPrefix('on-error')
+
+        # inbound section
+        if ($Assert.HasField($policy, 'inbound').Result) {
+            $Assert.HasField($policy.inbound, 'base').PathPrefix('inbound')
+        }
+        else {
+            $Assert.HasField($policy, 'inbound')
+        }
+
+        # outbound section
+        if ($Assert.HasField($policy, 'backend').Result) {
+            $Assert.HasField($policy.backend, 'base').PathPrefix('backend')
+        }
+        else {
+            $Assert.HasField($policy, 'backend')
+        }
+
+        # outbound section
+        if ($Assert.HasField($policy, 'outbound').Result) {
+            $Assert.HasField($policy.outbound, 'base').PathPrefix('outbound')
+        }
+        else {
+            $Assert.HasField($policy, 'outbound')
+        }
+
+        # on-error section
+        if ($Assert.HasField($policy, 'on-error').Result) {
+            $Assert.HasField($policy.'on-error', 'base').PathPrefix('on-error')
+        }
+        else {
+            $Assert.HasField($policy, 'on-error')
+        }
     }
 }
 

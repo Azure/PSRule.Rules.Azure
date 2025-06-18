@@ -432,17 +432,18 @@ Describe 'Azure.APIM' -Tag 'APIM' {
             # Fail
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Fail' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 4;
-            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'api-policy-A', 'api-policy-B';
+            $ruleResult.TargetName | Should -BeIn 'apim-B', 'apim-C', 'api-policy-A', 'api-policy-B', 'api-policy-E';
+            $ruleResult.Length | Should -Be 5;
 
             $ruleResult[0].Reason | Should -BeIn "Path inbound.base: Does not exist.", "Path backend.base: Does not exist.", "Path outbound.base: Does not exist.", "Path on-error.base: Does not exist.";
             $ruleResult[1].Reason | Should -BeIn "Path inbound.base: Does not exist.", "Path backend.base: Does not exist.", "Path outbound.base: Does not exist.", "Path on-error.base: Does not exist.";
+            $ruleResult[4].Reason | Should -BeIn "Path on-error: Does not exist.";
 
             # Pass
             $ruleResult = @($filteredResult | Where-Object { $_.Outcome -eq 'Pass' });
             $ruleResult | Should -Not -BeNullOrEmpty;
-            $ruleResult.Length | Should -Be 2;
             $ruleResult.TargetName | Should -BeIn 'apim-D', 'api-policy-C';
+            $ruleResult.Length | Should -Be 2;
         }
 
         It 'Azure.APIM.DefenderCloud' {
