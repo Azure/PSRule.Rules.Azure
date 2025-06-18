@@ -37,6 +37,8 @@ What's changed since v1.44.0:
     [#3411](https://github.com/Azure/PSRule.Rules.Azure/issues/3411)
   - Fixes the function `tryIndexFromEnd` was not found by @BernieWhite.
     [#3409](https://github.com/Azure/PSRule.Rules.Azure/issues/3409)
+  - Fixes `Azure.APIM.PolicyBase` to provide detailed output when policy sections are missing by @BernieWhite.
+    [#3413](https://github.com/Azure/PSRule.Rules.Azure/issues/3413)
 
 ## v1.44.0
 

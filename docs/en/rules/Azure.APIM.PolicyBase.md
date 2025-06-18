@@ -1,4 +1,5 @@
 ---
+reviewed: 2025-06-19
 severity: Important
 pillar: Security
 category: Design
@@ -30,15 +31,72 @@ The _Global_ scope does not need the _base_ element because this is the peak sco
 
 ## RECOMMENDATION
 
-Consider configuring the base element for any policy element in a section.
+Consider configuring the base element for each policy section.
 
 ## EXAMPLES
+
+### Configure with Bicep
+
+To deploy API Management policies that pass this rule:
+
+- Configure an policy sub-resource.
+- Define each of the policy sections in the policy XML: `inbound`, `backend`, `outbound`, and `on-error`.
+- Configure the base element before or after any policy element in a section in `properties.value` property.
+
+For example an API policy:
+
+```bicep
+resource apiName_policy 'Microsoft.ApiManagement/service/apis/policies@2021-08-01' = {
+  parent: api
+  name: 'policy'
+  properties: {
+    value: '<policies><inbound><base /><ip-filter action=\"allow\"><address-range from=\"10.1.0.1\" to=\"10.1.0.255\" /></ip-filter></inbound><backend><base /></backend><outbound><base /></outbound><on-error><base /></on-error></policies>'
+    format: 'xml'
+  }
+}
+```
+
+Additionally you can import this from a file using the `loadTextContent` Bicep function:
+
+```bicep
+resource apiName_policy 'Microsoft.ApiManagement/service/apis/policies@2021-08-01' = {
+  parent: api
+  name: 'policy'
+  properties: {
+    value: loadTextContent('./policy.xml')
+    format: 'xml'
+  }
+}
+```
+
+Where `policy.xml` contains the policy XML:
+
+```xml
+<policies>
+  <inbound>
+    <base />
+    <ip-filter action="allow">
+      <address-range from="10.1.0.1" to="10.1.0.255" />
+    </ip-filter>
+  </inbound>
+  <backend>
+    <base />
+  </backend>
+  <outbound>
+    <base />
+  </outbound>
+  <on-error>
+    <base />
+  </on-error>
+</policies>
+```
 
 ### Configure with Azure template
 
 To deploy API Management policies that pass this rule:
 
 - Configure an policy sub-resource.
+- Define each of the policy sections in the policy XML: `inbound`, `backend`, `outbound`, and `on-error`.
 - Configure the base element before or after any policy element in a section in `properties.value` property.
 
 For example an API policy:
@@ -58,30 +116,13 @@ For example an API policy:
 }
 ```
 
-### Configure with Bicep
-
-To deploy API Management policies that pass this rule:
-
-- Configure an policy sub-resource.
-- Configure the base element before or after any policy element in a section in `properties.value` property.
-
-For example an API policy:
-
-```bicep
-resource apiName_policy 'Microsoft.ApiManagement/service/apis/policies@2021-08-01' = {
-  parent: api
-  name: 'policy'
-  properties: {
-    value: '<policies><inbound><base /><ip-filter action=\"allow\"><address-range from=\"10.1.0.1\" to=\"10.1.0.255\" /></ip-filter></inbound><backend><base /></backend><outbound><base /></outbound><on-error><base /></on-error></policies>'
-    format: 'xml'
-  }
-}
-```
-
 ## NOTES
 
 The rule only checks against `rawxml` and `xml` policy formatted content.
 Global policies are excluded since they don't benefit from the base element.
+
+This rule will fail if the policy XML does not contain all sections.
+Check that `inbound`, `backend`, `outbound`, and `on-error` are all present.
 
 ## LINKS
 
