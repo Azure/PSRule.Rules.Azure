@@ -30,8 +30,6 @@ spec:
     allOf:
       - field: properties.replication.enabled
         equals: true
-      - field: properties.replication.location
-        hasValue: true
 
 ---
 # Synopsis: Azure Resource Manager (ARM) has requirements for Azure Monitor Log workspace names.

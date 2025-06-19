@@ -33,6 +33,8 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 What's changed since v1.44.0:
 
 - Bug fixes:
+  - Fixes `Azure.Log.Replication` by removing `location` check by @BernieWhite.
+    [#3411](https://github.com/Azure/PSRule.Rules.Azure/issues/3411)
   - Fixes the function `tryIndexFromEnd` was not found by @BernieWhite.
     [#3409](https://github.com/Azure/PSRule.Rules.Azure/issues/3409)
   - Fixes `Azure.APIM.PolicyBase` to provide detailed output when policy sections are missing by @BernieWhite.
