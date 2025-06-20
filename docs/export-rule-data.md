@@ -43,6 +43,25 @@ Get-AzContext;
 Export-AzRuleData -OutputPath 'out/';
 ```
 
+!!! Important
+    There are known issue with different versions of the Azure PowerShell modules.
+    The recommended versions of `Az.Accounts` and `Az.Resources` modules are:
+
+    - `Az.Accounts` &mdash; `3.0.x` ... `5.1.x`
+    - `Az.Resources` &mdash; `6.7.x` ... `6.16.x`
+
+    If you are using a different version, you may encounter issues with the export process.
+    If you have multiple version of the Azure PowerShell modules installed, you can ensure the correct version is used by:
+
+    - Starting a new PowerShell session.
+    - Importing the specific version of the module you want to use.
+      For example:
+
+      ```powershell
+      Import-Module Az.Accounts -RequiredVersion 5.1.0;
+      Import-Module Az.Resources -RequiredVersion 6.7.0;
+      ```
+
 ### Additional options
 
 By default, resource data for the current subscription context will be exported.

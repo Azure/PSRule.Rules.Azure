@@ -23,15 +23,15 @@ internal sealed class ResourceExportVisitor
     private const string PROPERTY_SUBSCRIPTION_ID = "subscriptionId";
     private const string PROPERTY_RESOURCE_GROUP_NAME = "resourceGroupName";
     private const string PROPERTY_KIND = "kind";
-    private const string PROPERTY_SHAREDKEY = "sharedKey";
-    private const string PROPERTY_NETWORKPROFILE = "networkProfile";
-    private const string PROPERTY_NETWORKINTERFACES = "networkInterfaces";
-    private const string PROPERTY_NETOWORKPLUGIN = "networkPlugin";
-    private const string PROPERTY_AGENTPOOLPROFILES = "agentPoolProfiles";
+    private const string PROPERTY_SHARED_KEY = "sharedKey";
+    private const string PROPERTY_NETWORK_PROFILE = "networkProfile";
+    private const string PROPERTY_NETWORK_INTERFACES = "networkInterfaces";
+    private const string PROPERTY_NETWORK_PLUGIN = "networkPlugin";
+    private const string PROPERTY_AGENT_POOL_PROFILES = "agentPoolProfiles";
     private const string PROPERTY_TENANT_ID = "tenantId";
     private const string PROPERTY_POLICIES = "policies";
-    private const string PROPERTY_FIREWALLRULES = "firewallRules";
-    private const string PROPERTY_SECURITYALERTPOLICIES = "securityAlertPolicies";
+    private const string PROPERTY_FIREWALL_RULES = "firewallRules";
+    private const string PROPERTY_SECURITY_ALERT_POLICIES = "securityAlertPolicies";
     private const string PROPERTY_CONFIGURATIONS = "configurations";
     private const string PROPERTY_ADMINISTRATORS = "administrators";
     private const string PROPERTY_VULNERABILITY_ASSESSMENTS = "vulnerabilityAssessments";
@@ -61,12 +61,12 @@ internal sealed class ResourceExportVisitor
     private const string TYPE_POSTGRESQL_SERVERS = "Microsoft.DBforPostgreSQL/servers";
     private const string TYPE_POSTGRESQL_FLEXABLESERVERS = "Microsoft.DBforPostgreSQL/flexibleServers";
     private const string TYPE_MYSQL_SERVERS = "Microsoft.DBforMySQL/servers";
-    private const string TYPE_MYSQL_FLEXABLESERVERS = "Microsoft.DBforMySQL/flexibleServers";
+    private const string TYPE_MYSQL_FLEXABLE_SERVERS = "Microsoft.DBforMySQL/flexibleServers";
     private const string TYPE_STORAGE_ACCOUNTS = "Microsoft.Storage/storageAccounts";
     private const string TYPE_WEB_APP = "Microsoft.Web/sites";
-    private const string TYPE_WEB_APPSLOT = "Microsoft.Web/sites/slots";
-    private const string TYPE_RECOVERYSERVICES_VAULT = "Microsoft.RecoveryServices/vaults";
-    private const string TYPE_COMPUTER_VIRTUALMACHINE = "Microsoft.Compute/virtualMachines";
+    private const string TYPE_WEB_APP_SLOT = "Microsoft.Web/sites/slots";
+    private const string TYPE_RECOVERY_SERVICES_VAULT = "Microsoft.RecoveryServices/vaults";
+    private const string TYPE_COMPUTER_VIRTUAL_MACHINE = "Microsoft.Compute/virtualMachines";
     private const string TYPE_KEYVAULT_VAULT = "Microsoft.KeyVault/vaults";
     private const string TYPE_NETWORK_FRONTDOOR = "Microsoft.Network/frontDoors";
     private const string TYPE_NETWORK_CONNECTION = "Microsoft.Network/connections";
@@ -163,8 +163,8 @@ internal sealed class ResourceExportVisitor
         if (resource == null ||
             !resource.TryStringProperty(PROPERTY_TYPE, out var resourceType) ||
             string.IsNullOrWhiteSpace(resourceType) ||
-            !resource.TryGetProperty(PROPERTY_ID, out var resourceId) ||
-            !resource.TryGetProperty(PROPERTY_TENANT_ID, out var tenantId))
+            !resource.TryStringProperty(PROPERTY_ID, out var resourceId) ||
+            !resource.TryStringProperty(PROPERTY_TENANT_ID, out var tenantId))
             return false;
 
         var resourceContext = new ResourceContext(context, tenantId);
@@ -298,8 +298,10 @@ internal sealed class ResourceExportVisitor
         var topics = await GetSubResourcesByType(context, resourceId, PROPERTY_TOPICS, APIVERSION_2023_12_15_PREVIEW);
         foreach (var topic in topics)
         {
-            if (topic.TryStringProperty(PROPERTY_ID, out var topicId))
-                AddSubResource(topic, await GetSubResourcesByType(context, topicId, "eventSubscriptions", APIVERSION_2023_12_15_PREVIEW));
+            if (!topic.TryStringProperty(PROPERTY_ID, out var topicId))
+                continue;
+
+            AddSubResource(topic, await GetSubResourcesByType(context, topicId, "eventSubscriptions", APIVERSION_2023_12_15_PREVIEW));
         }
 
         AddSubResource(resource, topics);
@@ -315,8 +317,10 @@ internal sealed class ResourceExportVisitor
         var topics = await GetSubResourcesByType(context, resourceId, PROPERTY_TOPICS, APIVERSION_2023_12_15_PREVIEW);
         foreach (var topic in topics)
         {
-            if (topic.TryStringProperty(PROPERTY_ID, out var topicId))
-                AddSubResource(topic, await GetSubResourcesByType(context, topicId, "eventSubscriptions", APIVERSION_2023_12_15_PREVIEW));
+            if (!topic.TryStringProperty(PROPERTY_ID, out var topicId))
+                continue;
+
+            AddSubResource(topic, await GetSubResourcesByType(context, topicId, "eventSubscriptions", APIVERSION_2023_12_15_PREVIEW));
         }
 
         AddSubResource(resource, topics);
@@ -331,8 +335,10 @@ internal sealed class ResourceExportVisitor
         var pools = await GetSubResourcesByType(context, resourceId, "pools", APIVERSION_2023_04_01);
         foreach (var pool in pools)
         {
-            if (pool.TryStringProperty(PROPERTY_ID, out var poolId))
-                AddSubResource(pool, await GetSubResourcesByType(context, poolId, "schedules", APIVERSION_2023_04_01));
+            if (!pool.TryStringProperty(PROPERTY_ID, out var poolId))
+                continue;
+
+            AddSubResource(pool, await GetSubResourcesByType(context, poolId, "schedules", APIVERSION_2023_04_01));
         }
 
         AddSubResource(resource, pools);
@@ -433,7 +439,7 @@ internal sealed class ResourceExportVisitor
             return false;
 
         if (resource.TryGetProperty(PROPERTY_PROPERTIES, out JObject properties))
-            properties.ReplaceProperty(PROPERTY_SHAREDKEY, JValue.CreateString(MASKED_VALUE));
+            properties.ReplaceProperty(PROPERTY_SHARED_KEY, JValue.CreateString(MASKED_VALUE));
 
         return true;
     }
@@ -476,17 +482,19 @@ internal sealed class ResourceExportVisitor
 
     private static async Task<bool> VisitVirtualMachine(ResourceContext context, JObject resource, string resourceType, string resourceId)
     {
-        if (!string.Equals(resourceType, TYPE_COMPUTER_VIRTUALMACHINE, StringComparison.OrdinalIgnoreCase))
+        if (!string.Equals(resourceType, TYPE_COMPUTER_VIRTUAL_MACHINE, StringComparison.OrdinalIgnoreCase))
             return false;
 
         if (resource.TryGetProperty(PROPERTY_PROPERTIES, out JObject properties) &&
-            properties.TryGetProperty(PROPERTY_NETWORKPROFILE, out JObject networkProfile) &&
-            networkProfile.TryGetProperty(PROPERTY_NETWORKINTERFACES, out JArray networkInterfaces))
+            properties.TryGetProperty(PROPERTY_NETWORK_PROFILE, out JObject networkProfile) &&
+            networkProfile.TryGetProperty(PROPERTY_NETWORK_INTERFACES, out JArray networkInterfaces))
         {
-            foreach (var netif in networkInterfaces.Values<JObject>())
+            foreach (var networkInterface in networkInterfaces.Values<JObject>())
             {
-                if (netif.TryGetProperty(PROPERTY_ID, out var id))
-                    AddSubResource(resource, await GetResource(context, id, APIVERSION_2022_07_01));
+                if (!networkInterface.TryStringProperty(PROPERTY_ID, out var networkInterfaceId))
+                    continue;
+
+                AddSubResource(resource, await GetResource(context, networkInterfaceId, APIVERSION_2022_07_01));
             }
         }
 
@@ -498,7 +506,7 @@ internal sealed class ResourceExportVisitor
 
     private static async Task<bool> VisitRecoveryServicesVault(ResourceContext context, JObject resource, string resourceType, string resourceId)
     {
-        if (!string.Equals(resourceType, TYPE_RECOVERYSERVICES_VAULT, StringComparison.OrdinalIgnoreCase))
+        if (!string.Equals(resourceType, TYPE_RECOVERY_SERVICES_VAULT, StringComparison.OrdinalIgnoreCase))
             return false;
 
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "replicationRecoveryPlans", APIVERSION_2022_09_10));
@@ -510,7 +518,7 @@ internal sealed class ResourceExportVisitor
     private static async Task<bool> VisitWebApp(ResourceContext context, JObject resource, string resourceType, string resourceId)
     {
         if (!string.Equals(resourceType, TYPE_WEB_APP, StringComparison.OrdinalIgnoreCase) &&
-            !string.Equals(resourceType, TYPE_WEB_APPSLOT, StringComparison.OrdinalIgnoreCase))
+            !string.Equals(resourceType, TYPE_WEB_APP_SLOT, StringComparison.OrdinalIgnoreCase))
             return false;
 
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, "config", APIVERSION_2022_09_01));
@@ -530,7 +538,10 @@ internal sealed class ResourceExportVisitor
             AddSubResource(resource, blobServices);
             foreach (var blobService in blobServices)
             {
-                AddSubResource(resource, await GetSubResourcesByType(context, blobService[PROPERTY_ID].Value<string>(), PROPERTY_CONTAINERS, APIVERSION_2023_01_01));
+                if (!blobService.TryStringProperty(PROPERTY_ID, out var blobServiceId))
+                    continue;
+
+                AddSubResource(resource, await GetSubResourcesByType(context, blobServiceId, PROPERTY_CONTAINERS, APIVERSION_2023_01_01));
             }
         }
 
@@ -539,11 +550,14 @@ internal sealed class ResourceExportVisitor
             !string.Equals(kind, "BlobStorage", StringComparison.OrdinalIgnoreCase) &&
             !string.Equals(kind, "BlockBlobStorage", StringComparison.OrdinalIgnoreCase))
         {
-            var blobServices = await GetSubResourcesByType(context, resourceId, "fileServices", APIVERSION_2023_01_01);
-            AddSubResource(resource, blobServices);
-            foreach (var blobService in blobServices)
+            var fileServices = await GetSubResourcesByType(context, resourceId, "fileServices", APIVERSION_2023_01_01);
+            AddSubResource(resource, fileServices);
+            foreach (var fileService in fileServices)
             {
-                AddSubResource(resource, await GetSubResourcesByType(context, blobService[PROPERTY_ID].Value<string>(), PROPERTY_SHARES, APIVERSION_2023_01_01));
+                if (!fileService.TryStringProperty(PROPERTY_ID, out var fileServiceId))
+                    continue;
+
+                AddSubResource(resource, await GetSubResourcesByType(context, fileServiceId, PROPERTY_SHARES, APIVERSION_2023_01_01));
             }
         }
 
@@ -557,19 +571,19 @@ internal sealed class ResourceExportVisitor
             return false;
 
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_ADMINISTRATORS, APIVERSION_2017_12_01));
-        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALLRULES, APIVERSION_2017_12_01));
-        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITYALERTPOLICIES, APIVERSION_2017_12_01));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALL_RULES, APIVERSION_2017_12_01));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITY_ALERT_POLICIES, APIVERSION_2017_12_01));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_CONFIGURATIONS, APIVERSION_2017_12_01));
         return true;
     }
 
     private static async Task<bool> VisitMySqlFlexibleServer(ResourceContext context, JObject resource, string resourceType, string resourceId)
     {
-        if (!string.Equals(resourceType, TYPE_MYSQL_FLEXABLESERVERS, StringComparison.OrdinalIgnoreCase))
+        if (!string.Equals(resourceType, TYPE_MYSQL_FLEXABLE_SERVERS, StringComparison.OrdinalIgnoreCase))
             return false;
 
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_ADMINISTRATORS, APIVERSION_2023_06_30));
-        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALLRULES, APIVERSION_2023_06_30));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALL_RULES, APIVERSION_2023_06_30));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_CONFIGURATIONS, APIVERSION_2023_06_30));
         return true;
     }
@@ -580,8 +594,8 @@ internal sealed class ResourceExportVisitor
             return false;
 
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_ADMINISTRATORS, APIVERSION_2017_12_01));
-        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALLRULES, APIVERSION_2017_12_01));
-        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITYALERTPOLICIES, APIVERSION_2017_12_01));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALL_RULES, APIVERSION_2017_12_01));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITY_ALERT_POLICIES, APIVERSION_2017_12_01));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_CONFIGURATIONS, APIVERSION_2017_12_01));
         return true;
     }
@@ -592,7 +606,7 @@ internal sealed class ResourceExportVisitor
             return false;
 
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_ADMINISTRATORS, APIVERSION_2023_03_01_PREVIEW));
-        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALLRULES, APIVERSION_2023_03_01_PREVIEW));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALL_RULES, APIVERSION_2023_03_01_PREVIEW));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_CONFIGURATIONS, APIVERSION_2023_03_01_PREVIEW));
         return true;
     }
@@ -615,9 +629,9 @@ internal sealed class ResourceExportVisitor
         if (!string.Equals(resourceType, TYPE_SQL_SERVERS, StringComparison.OrdinalIgnoreCase))
             return false;
 
-        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALLRULES, APIVERSION_2021_11_01));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_FIREWALL_RULES, APIVERSION_2021_11_01));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_ADMINISTRATORS, APIVERSION_2021_11_01));
-        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITYALERTPOLICIES, APIVERSION_2021_11_01));
+        AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SECURITY_ALERT_POLICIES, APIVERSION_2021_11_01));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_VULNERABILITY_ASSESSMENTS, APIVERSION_2021_11_01));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_SQL_VULNERABILITY_ASSESSMENTS, APIVERSION_2024_05_01_PREVIEW));
         AddSubResource(resource, await GetSubResourcesByType(context, resourceId, PROPERTY_AUDITINGSETTINGS, APIVERSION_2021_11_01));
@@ -631,10 +645,10 @@ internal sealed class ResourceExportVisitor
 
         // Get related VNET
         if (resource.TryGetProperty(PROPERTY_PROPERTIES, out JObject properties) &&
-            properties.TryGetProperty(PROPERTY_NETWORKPROFILE, out JObject networkProfile) &&
-            networkProfile.TryGetProperty(PROPERTY_NETOWORKPLUGIN, out var networkPlugin) &&
+            properties.TryGetProperty(PROPERTY_NETWORK_PROFILE, out JObject networkProfile) &&
+            networkProfile.TryGetProperty(PROPERTY_NETWORK_PLUGIN, out var networkPlugin) &&
             string.Equals(networkPlugin, "azure", StringComparison.OrdinalIgnoreCase) &&
-            properties.TryArrayProperty(PROPERTY_AGENTPOOLPROFILES, out var agentPoolProfiles) &&
+            properties.TryArrayProperty(PROPERTY_AGENT_POOL_PROFILES, out var agentPoolProfiles) &&
             agentPoolProfiles.Count > 0)
         {
             for (var i = 0; i < agentPoolProfiles.Count; i++)
@@ -718,8 +732,10 @@ internal sealed class ResourceExportVisitor
         AddSubResource(resource, apis);
         foreach (var api in apis)
         {
-            var apiResourceId = api[PROPERTY_ID].Value<string>();
-            var apiType = api[PROPERTY_TYPE].Value<string>();
+            if (!api.TryStringProperty(PROPERTY_ID, out var apiResourceId) ||
+                !api.TryStringProperty(PROPERTY_TYPE, out var apiType))
+                continue;
+
             var isGraphQL = string.Equals(apiType, "graphql");
 
             // Get policies for each API
@@ -731,7 +747,10 @@ internal sealed class ResourceExportVisitor
                 var operations = await GetSubResourcesByType(context, apiResourceId, "operations", APIVERSION_2022_08_01);
                 foreach (var operation in operations)
                 {
-                    AddSubResource(resource, await GetSubResourcesByType(context, operation[PROPERTY_ID].Value<string>(), PROPERTY_POLICIES, APIVERSION_2022_08_01));
+                    if (!operation.TryStringProperty(PROPERTY_ID, out var operationId))
+                        continue;
+
+                    AddSubResource(resource, await GetSubResourcesByType(context, operationId, PROPERTY_POLICIES, APIVERSION_2022_08_01));
                 }
             }
 
@@ -741,7 +760,10 @@ internal sealed class ResourceExportVisitor
                 var resolvers = await GetSubResourcesByType(context, apiResourceId, "resolvers", APIVERSION_2022_08_01);
                 foreach (var resolver in resolvers)
                 {
-                    AddSubResource(resource, await GetSubResourcesByType(context, resolver[PROPERTY_ID].Value<string>(), PROPERTY_POLICIES, APIVERSION_2022_08_01));
+                    if (!resolver.TryStringProperty(PROPERTY_ID, out var resolverId))
+                        continue;
+
+                    AddSubResource(resource, await GetSubResourcesByType(context, resolverId, PROPERTY_POLICIES, APIVERSION_2022_08_01));
                 }
             }
         }
@@ -753,8 +775,11 @@ internal sealed class ResourceExportVisitor
         AddSubResource(resource, products);
         foreach (var product in products)
         {
+            if (!product.TryStringProperty(PROPERTY_ID, out var productId))
+                continue;
+
             // Get policies for each product
-            AddSubResource(resource, await GetSubResourcesByType(context, product[PROPERTY_ID].Value<string>(), PROPERTY_POLICIES, APIVERSION_2024_05_01));
+            AddSubResource(resource, await GetSubResourcesByType(context, productId, PROPERTY_POLICIES, APIVERSION_2024_05_01));
         }
 
         var policies = await GetSubResourcesByType(context, resourceId, PROPERTY_POLICIES, APIVERSION_2024_05_01);
