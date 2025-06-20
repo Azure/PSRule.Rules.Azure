@@ -31,7 +31,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
 
     private const string PLACEHOLDER_SUBSCRIPTION_TYPE = "Microsoft.Subscription";
 
-    private const string ERRORID_RESOURCEDATAEXPAND = "PSRule.Rules.Azure.ResourceDataExpand";
+    private const string ERROR_ID_RESOURCE_DATA_EXPAND = "PSRule.Rules.Azure.ResourceDataExpand";
 
     private readonly ConcurrentQueue<JObject> _Resources;
     private readonly ConcurrentQueue<JObject> _Output;
@@ -252,7 +252,7 @@ internal sealed class ResourceDataPipeline : ExportDataPipeline
                     }
                     catch (Exception ex)
                     {
-                        context.Error(ex, ERRORID_RESOURCEDATAEXPAND);
+                        context.Error(ex, ERROR_ID_RESOURCE_DATA_EXPAND);
                     }
                 }
             });

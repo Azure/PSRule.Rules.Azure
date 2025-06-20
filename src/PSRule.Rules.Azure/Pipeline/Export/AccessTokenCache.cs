@@ -3,6 +3,7 @@
 
 using System;
 using System.Collections.Concurrent;
+using System.Security;
 using System.Threading;
 
 namespace PSRule.Rules.Azure.Pipeline.Export;
@@ -10,24 +11,14 @@ namespace PSRule.Rules.Azure.Pipeline.Export;
 /// <summary>
 /// Define a cache for storing and refreshing tokens.
 /// </summary>
-internal sealed class AccessTokenCache : IDisposable
+/// <param name="getToken">A delegate method to get a token for a tenant.</param>
+internal sealed class AccessTokenCache(GetAccessTokenFn getToken) : IDisposable
 {
-    private readonly GetAccessTokenFn _GetToken;
-    private readonly CancellationTokenSource _Cancel;
-    private readonly ConcurrentDictionary<string, AccessToken> _Cache;
+    private readonly GetAccessTokenFn _GetToken = getToken;
+    private readonly CancellationTokenSource _Cancel = new();
+    private readonly ConcurrentDictionary<string, AccessToken> _Cache = new();
 
     private bool _Disposed;
-
-    /// <summary>
-    /// Create an instance of a token cache.
-    /// </summary>
-    /// <param name="getToken">A delegate method to get a token for a tenant.</param>
-    public AccessTokenCache(GetAccessTokenFn getToken)
-    {
-        _GetToken = getToken;
-        _Cache = new ConcurrentDictionary<string, AccessToken>();
-        _Cancel = new CancellationTokenSource();
-    }
 
     /// <summary>
     /// Check and refresh all tokens as required.
@@ -41,7 +32,9 @@ internal sealed class AccessTokenCache : IDisposable
             {
                 var token = _GetToken.Invoke(tokens[i].Value.TenantId);
                 if (token != null)
+                {
                     _Cache.TryUpdate(tokens[i].Key, token, tokens[i].Value);
+                }
             }
         }
     }
@@ -52,18 +45,7 @@ internal sealed class AccessTokenCache : IDisposable
     /// <param name="tenantId">The tenant Id of the specific tenant to refresh the token for.</param>
     internal void RefreshToken(string tenantId)
     {
-        if (!_Cache.TryGetValue(tenantId, out var oldToken))
-        {
-            var newToken = _GetToken.Invoke(tenantId);
-            if (newToken != null)
-                _Cache.TryAdd(tenantId, newToken);
-        }
-        else if (oldToken.ShouldRefresh())
-        {
-            var newToken = _GetToken.Invoke(tenantId);
-            if (newToken != null)
-                _Cache.TryUpdate(tenantId, newToken, oldToken);
-        }
+        _ = GetToken(tenantId);
     }
 
     /// <summary>
@@ -72,18 +54,20 @@ internal sealed class AccessTokenCache : IDisposable
     /// </summary>
     /// <param name="tenantId">The tenant Id of the specific tenant to get a token for.</param>
     /// <returns>An access token or <c>null</c>.</returns>
-    internal string GetToken(string tenantId)
+    internal SecureString GetToken(string tenantId)
     {
         while (!_Cancel.IsCancellationRequested)
         {
-            if (!_Cache.TryGetValue(tenantId, out var token))
-            {
-                _Cache.TryAdd(tenantId, new AccessToken(tenantId));
-            }
-            else if (!token.ShouldRefresh())
-            {
+            if (_Cache.TryGetValue(tenantId, out var token) && token != null && !token.ShouldRefresh())
                 return token.Token;
-            }
+
+            var newToken = _GetToken.Invoke(tenantId);
+            if (newToken != null && token != null && _Cache.TryUpdate(tenantId, newToken, token))
+                return newToken.Token;
+
+            if (newToken != null && token == null && _Cache.TryAdd(tenantId, newToken))
+                return newToken.Token;
+
             Thread.Sleep(100);
         }
         return null;

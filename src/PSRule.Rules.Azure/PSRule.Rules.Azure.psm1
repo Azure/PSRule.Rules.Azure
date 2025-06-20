@@ -74,7 +74,7 @@ function Export-AzRuleData {
 
         # Build the pipeline
         $builder = [PSRule.Rules.Azure.Pipeline.PipelineBuilder]::ResourceData($Option);
-        $builder.AccessToken({ param($TenantId) $t = (Get-AzAccessToken -TenantId $TenantId); return [PSRule.Rules.Azure.Pipeline.AccessToken]::new($t.Token, $t.ExpiresOn, $t.TenantId); });
+        $builder.AccessToken({ param($TenantId) $t = (Get-AzAccessToken -TenantId $TenantId -AsSecureString); return [PSRule.Rules.Azure.Pipeline.AccessToken]::new($t.Token, $t.ExpiresOn, $t.TenantId); });
         if ($ExportSecurityAlerts) {
             Write-Verbose -Message "[Export-AzRuleData] -- Exporting security alerts.";
             $builder.SecurityAlerts();
@@ -685,18 +685,25 @@ function FindAzureContext {
             return;
         }
 
-        Write-Verbose "[Context] -- Found ($($context.Length)) subscription contexts";
-        $filteredContext = @($context | ForEach-Object -Process {
-                if (
-                ($Null -eq $Tenant -or $Tenant.Length -eq 0 -or ($_.Tenant.Id -in $Tenant)) -and
-                ($Null -eq $Subscription -or $Subscription.Length -eq 0 -or ($_.Subscription.Id -in $Subscription) -or ($_.Subscription.Name -in $Subscription))
-                ) {
-                    $_;
-                    Write-Verbose "[Context] -- Using subscription: $($_.Subscription.Name), Id=$($_.Subscription.Id), TenantId=$($_.Tenant.Id)";
-                }
-            })
-        Write-Verbose "[Context] -- Using [$($filteredContext.Length)/$($context.Length)] subscription contexts";
-        return $filteredContext;
+        try {
+            Write-Verbose "[Context] -- Found ($($context.Length)) subscription contexts";
+            $filteredContext = @($context | ForEach-Object -Process {
+                    if (
+                    ($Null -eq $Tenant -or $Tenant.Length -eq 0 -or ($_.Tenant.Id -in $Tenant)) -and
+                    ($Null -eq $Subscription -or $Subscription.Length -eq 0 -or ($_.Subscription.Id -in $Subscription) -or ($_.Subscription.Name -in $Subscription))
+                    ) {
+                        $_;
+                        Write-Verbose "[Context] -- Using subscription: $($_.Subscription.Name), Id=$($_.Subscription.Id), TenantId=$($_.Tenant.Id)";
+                    }
+                })
+
+            Write-Verbose "[Context] -- Using [$($filteredContext.Length)/$($context.Length)] subscription contexts";
+
+            return $filteredContext;
+        }
+        catch {
+            Write-Error -Message "Failed to filter contexts. Error: $_";
+        }
     }
 }
 

@@ -9,6 +9,7 @@ using System.Management.Automation;
 using System.Net;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Security;
 using System.Threading;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
@@ -23,7 +24,7 @@ internal abstract class ExportDataContext : IDisposable, ILogger
 {
     protected const string RESOURCE_MANAGER_URL = "https://management.azure.com";
 
-    private const string HEADERS_MEDIATYPE_JSON = "application/json";
+    private const string HEADERS_MEDIA_TYPE_JSON = "application/json";
     private const string HEADERS_AUTHORIZATION_BEARER = "Bearer";
     private const string HEADERS_CORRELATION_ID = "x-ms-correlation-request-id";
 
@@ -73,7 +74,7 @@ internal abstract class ExportDataContext : IDisposable, ILogger
         _TokenCache.RefreshAll();
     }
 
-    protected string GetToken(string tenantId)
+    protected SecureString GetToken(string tenantId)
     {
         return _TokenCache.GetToken(tenantId);
     }
@@ -84,8 +85,8 @@ internal abstract class ExportDataContext : IDisposable, ILogger
         {
             Timeout = TimeSpan.FromSeconds(90)
         };
-        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(HEADERS_AUTHORIZATION_BEARER, GetToken(tenantId));
-        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(HEADERS_MEDIATYPE_JSON));
+        client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(HEADERS_AUTHORIZATION_BEARER, new NetworkCredential(string.Empty, GetToken(tenantId)).Password);
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(HEADERS_MEDIA_TYPE_JSON));
         client.DefaultRequestHeaders.Add(HEADERS_CORRELATION_ID, _CorrelationId);
         return client;
     }
