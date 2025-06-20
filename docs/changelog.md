@@ -30,10 +30,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+## v1.44.2
+
 What's changed since v1.44.1:
 
 - Bug fixes:
-  - Fixed compatibility with newer Az.Accounts modules by @BernieWhite.
+  - Fixed compatibility with newer `Az.Accounts` modules by @BernieWhite.
     [#3420](https://github.com/Azure/PSRule.Rules.Azure/issues/3420)
 
 ## v1.44.1
