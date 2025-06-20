@@ -36,8 +36,8 @@
         "ResourceType": "Microsoft.Authorization/policyDefinitions",
         "SubscriptionId": "00000000-0000-0000-0000-000000000000",
         "Properties": {
-          "Description": "Minmum TLS version must be used on Storage accounts",
-          "DisplayName": "Deny Storage Account Not Using Minumum TLS version",
+          "Description": "Minimum TLS version must be used on Storage accounts",
+          "DisplayName": "Deny Storage Account Not Using Minimum TLS version",
           "Metadata": {
             "version": "1.0.0",
             "category": "Storage",

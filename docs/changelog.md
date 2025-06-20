@@ -30,6 +30,12 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 ## Unreleased
 
+What's changed since v1.44.2:
+
+- Bug fixes:
+  - Fixed incorrect inversion of policy as rules conditions by @BernieWhite.
+    [#3419](https://github.com/Azure/PSRule.Rules.Azure/issues/3419)
+
 ## v1.44.2
 
 What's changed since v1.44.1:

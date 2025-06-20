@@ -1,11 +1,11 @@
 [
   {
-    // Synopsis: Minmum TLS version must be used on Storage accounts
+    // Synopsis: Minimum TLS version must be used on Storage accounts
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
       "name": "Azure.Policy.65db1c629a22",
-      "displayName": "Deny Storage Account Not Using Minumum TLS version",
+      "displayName": "Deny Storage Account Not Using Minimum TLS version",
       "tags": {
         "Azure.Policy/category": "Storage"
       },
@@ -15,7 +15,7 @@
       }
     },
     "spec": {
-      "recommend": "Minmum TLS version must be used on Storage accounts",
+      "recommend": "Minimum TLS version must be used on Storage accounts",
       "type": [
         "Microsoft.Storage/storageAccounts"
       ],
@@ -517,7 +517,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.2d46ae1952d5",
+      "name": "Azure.Policy.0d02adda36d8",
       "displayName": "DenyPortsNSG",
       "annotations": {
         "Azure.Policy/id": "/subscriptions/00000000-0000-0000-0000-000000000000/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000008"
@@ -541,10 +541,8 @@
                 "type": "."
               },
               {
-                "not": {
-                  "field": "properties.sourceAddressPrefix",
-                  "notEquals": "*"
-                }
+                "field": "properties.sourceAddressPrefix",
+                "equals": "*"
               },
               {
                 "anyOf": [
@@ -793,7 +791,7 @@
           "Azure.Policy.956f4a31128a",
           "Azure.Policy.f95588f22a92",
           "Azure.Policy.9aefa39d26cc",
-          "Azure.Policy.2d46ae1952d5",
+          "Azure.Policy.0d02adda36d8",
           "Azure.Policy.eac8effcedc0",
           "Azure.Policy.6e7a9b50e524",
           "Azure.Policy.55eedf5a41fd",
