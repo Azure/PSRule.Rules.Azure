@@ -70,9 +70,9 @@ namespace PSRule.Rules.Azure.Data.Policy
         private const string PROPERTY_NOTCOUNT = "notCount";
         private const string PROPERTY_WHERE = "where";
         private const string PROPERTY_RESOURCES = "resources";
-        private const string PROPERTY_REQUESTCONTEXT = "requestContext";
+        private const string PROPERTY_REQUEST_CONTEXT = "requestContext";
         private const string PROPERTY_APIVERSION = "apiVersion";
-        private const string PROPERTY_PADLEFT = "padLeft";
+        private const string PROPERTY_PAD_LEFT = "padLeft";
         private const string PROPERTY_PATH = "path";
         private const string PROPERTY_CONVERT = "convert";
         private const string PROPERTY_NONCOMPLIANCEMESSAGES = "NonComplianceMessages";
@@ -375,16 +375,14 @@ namespace PSRule.Rules.Azure.Data.Policy
                         objectPath.Append(filter);
                         clauseSeparator = $" {clause} ";
                     }
-
-                    else if (obj.TryArrayProperty(PROPERTY_ALLOF, out var allOfExpression))
+                    else if (obj.TryAllOf(out var allOfExpression))
                     {
                         objectPath.Append($" {clause} ");
                         objectPath.Append(GROUP_OPEN);
                         ExpressionToObjectPathArrayFilter(allOfExpression, AND_CLAUSE, objectPath);
                         objectPath.Append(GROUP_CLOSE);
                     }
-
-                    else if (obj.TryArrayProperty(PROPERTY_ANYOF, out var anyOfExpression))
+                    else if (obj.TryAnyOf(out var anyOfExpression))
                     {
                         objectPath.Append($" {clause} ");
                         objectPath.Append(GROUP_OPEN);
@@ -505,18 +503,16 @@ namespace PSRule.Rules.Azure.Data.Policy
                                             var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                                             policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], fieldFilter);
                                         }
-
                                         // nested allOf in where expression
-                                        else if (whereExpression.TryArrayProperty(PROPERTY_ALLOF, out var allofExpression))
+                                        else if (whereExpression.TryAllOf(out var allofExpression))
                                         {
                                             var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                                             var filter = new StringBuilder();
                                             ExpressionToObjectPathArrayFilter(allofExpression, AND_CLAUSE, filter);
                                             policyRule[PROPERTY_FIELD] = FormatObjectPathArrayExpression(splitAliasPath[0], filter.ToString());
                                         }
-
                                         // nested anyOf in where expression
-                                        else if (whereExpression.TryArrayProperty(PROPERTY_ANYOF, out var anyOfExpression))
+                                        else if (whereExpression.TryAnyOf(out var anyOfExpression))
                                         {
                                             var splitAliasPath = outerFieldAliasPath.SplitByLastSubstring(COLLECTION_ALIAS);
                                             var filter = new StringBuilder();
@@ -993,8 +989,7 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// </summary>
         private static void VisitCondition(PolicyAssignmentContext context, PolicyDefinition policyDefinition, JObject condition)
         {
-            if (condition.TryArrayProperty(PROPERTY_ALLOF, out var all) ||
-                condition.TryArrayProperty(PROPERTY_ANYOF, out all))
+            if (condition.TryAllOf(out var all) || condition.TryAnyOf(out all))
             {
                 foreach (var item in all.Values<JObject>().ToArray())
                 {
@@ -1111,25 +1106,19 @@ namespace PSRule.Rules.Azure.Data.Policy
         private static void ResolveObject(PolicyAssignmentContext context, JObject o)
         {
             foreach (var p in o.Properties())
+            {
                 p.Value = context.ExpandToken<JToken>(p.Value);
+            }
         }
 
         private static bool TryConditionNotIn(PolicyAssignmentContext context, JObject condition)
         {
-            if (!condition.ContainsKeyInsensitive(PROPERTY_NOTIN))
-                return false;
-
-
-            return true;
+            return condition.ContainsKeyInsensitive(PROPERTY_NOTIN);
         }
 
         private static bool TryConditionIn(PolicyAssignmentContext context, JObject condition)
         {
-            if (!condition.ContainsKeyInsensitive(PROPERTY_IN))
-                return false;
-
-
-            return true;
+            return condition.ContainsKeyInsensitive(PROPERTY_IN);
         }
 
         private static bool TryConditionNotEquals(PolicyAssignmentContext context, JObject condition)
@@ -1230,6 +1219,12 @@ namespace PSRule.Rules.Azure.Data.Policy
                 field = field.Replace("[", "['").Replace("]", "']");
                 condition.ReplaceProperty(PROPERTY_FIELD, TrimFieldName(context, field));
             }
+            else if (field.StartsWith("tags[", StringComparison.OrdinalIgnoreCase) && field.EndsWith("]") && field.Length > 6)
+            {
+                // Replace tags[ with tags.
+                field = string.Concat("tags.", field.Substring(5, field.Length - 6));
+                condition.ReplaceProperty(PROPERTY_FIELD, field);
+            }
             return condition;
         }
 
@@ -1267,7 +1262,7 @@ namespace PSRule.Rules.Azure.Data.Policy
             var tokens = ExpressionParser.Parse(s);
 
             // Handle [requestContext().apiVersion]
-            if (tokens.ConsumeFunction(PROPERTY_REQUESTCONTEXT) &&
+            if (tokens.ConsumeFunction(PROPERTY_REQUEST_CONTEXT) &&
                 tokens.ConsumeGroup() &&
                 tokens.ConsumePropertyName(PROPERTY_APIVERSION))
             {
@@ -1519,12 +1514,12 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         private static JObject VisitRuntimeToken(PolicyAssignmentContext context, TokenStream tokens)
         {
-            if (tokens.ConsumeFunction(PROPERTY_PADLEFT) && tokens.Skip(ExpressionTokenType.GroupStart))
+            if (tokens.ConsumeFunction(PROPERTY_PAD_LEFT) && tokens.Skip(ExpressionTokenType.GroupStart))
             {
                 var child = VisitRuntimeToken(context, tokens);
                 var o = new JObject
                 {
-                    { PROPERTY_PADLEFT, child },
+                    { PROPERTY_PAD_LEFT, child },
                 };
                 if (tokens.ConsumeInteger(out var totalLength))
                     o.Add("totalLength", totalLength);
@@ -1672,12 +1667,11 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         private static JObject OptimizeConditionObject(PolicyDefinition policyDefinition, JObject condition, bool keep = false)
         {
-            if (condition == null || !keep && OptimizeTypeCondition(policyDefinition, condition))
+            if (condition == null || !keep && ShouldOptimizeTypeCondition(policyDefinition, condition))
                 return null;
 
-            // Handle allOf and anyOf depth
-            if (condition.TryArrayProperty(PROPERTY_ALLOF, out var items) ||
-                condition.TryArrayProperty(PROPERTY_ANYOF, out items))
+            // Handle allOf and anyOf depth.
+            if (condition.TryAllOf(out var items) || condition.TryAnyOf(out items))
             {
                 foreach (var item in items.OfType<JObject>().ToArray())
                 {
@@ -1691,10 +1685,18 @@ namespace PSRule.Rules.Azure.Data.Policy
                     return items[0].Value<JObject>();
                 }
             }
-            // Handle field merge
+            // Handle field merge.
             else if (condition.TryGetProperty(PROPERTY_FIELD, out var field))
             {
                 MergeWithPeerCondition(condition, field);
+            }
+            // Handle inverted conditions that can be flattened.
+            else if (condition.TryObjectProperty(PROPERTY_NOT, out var notChild) &&
+                ShouldFlattenNotConditionWithChild(notChild))
+            {
+                var invertedChild = ReverseCondition(notChild);
+                condition.Replace(invertedChild);
+                return invertedChild;
             }
             return condition;
         }
@@ -1715,12 +1717,41 @@ namespace PSRule.Rules.Azure.Data.Policy
             }
         }
 
-        private static bool OptimizeTypeCondition(PolicyDefinition policyDefinition, JObject condition)
+        /// <summary>
+        /// Check for conditions that can be inverted with not.
+        /// </summary>
+        private static bool ShouldFlattenNotConditionWithChild(JObject condition)
         {
-            return policyDefinition.Types != null &&
-                policyDefinition.Types.Count == 1 &&
-                condition.ContainsKeyInsensitive(PROPERTY_TYPE) &&
-                condition.ContainsKeyInsensitive(PROPERTY_EQUALS);
+            return condition.ContainsKeyInsensitive(PROPERTY_EQUALS) ||
+                condition.ContainsKeyInsensitive(PROPERTY_NOTEQUALS) ||
+                condition.ContainsKeyInsensitive(PROPERTY_IN) ||
+                condition.ContainsKeyInsensitive(PROPERTY_NOTIN) ||
+                condition.ContainsKeyInsensitive(PROPERTY_CONTAINS) ||
+                condition.ContainsKeyInsensitive(PROPERTY_NOTCONTAINS);
+        }
+
+        private static bool ShouldOptimizeTypeCondition(PolicyDefinition policyDefinition, JObject condition)
+        {
+            if (policyDefinition.Types == null || policyDefinition.Types.Count == 0 || !condition.ContainsKeyInsensitive(PROPERTY_TYPE))
+                return false;
+
+            // Handle simple case of one to one type.
+            if (condition.ContainsKeyInsensitive(PROPERTY_EQUALS))
+            {
+                return policyDefinition.Types.Count == 1;
+            }
+
+            // Handle type list.
+            if (condition.TryGetStringArray(PROPERTY_IN, out var types) && types != null && policyDefinition.Types.Count == types.Length)
+            {
+                // Compare to two type sets to be equal using case insensitive comparison.
+                var actualTypes = new HashSet<string>(policyDefinition.Types, StringComparer.OrdinalIgnoreCase);
+                var expectedTypes = new HashSet<string>(types, StringComparer.OrdinalIgnoreCase);
+
+                return actualTypes.SetEquals(expectedTypes);
+            }
+
+            return false;
         }
 
         /// <summary>
@@ -1770,6 +1801,13 @@ namespace PSRule.Rules.Azure.Data.Policy
             if (policyDefinition.Condition != null)
                 return;
 
+            if (TrySplitPositiveNegativeCases(policyDefinition.Where, out var positive, out var negative))
+            {
+                policyDefinition.Where = positive;
+                policyDefinition.Condition = ReverseCondition(negative);
+                return;
+            }
+
             if (policyDefinition.Where == null ||
                 (policyDefinition.Where.ContainsKeyInsensitive(PROPERTY_ALLOF) ||
                 policyDefinition.Where.ContainsKeyInsensitive(PROPERTY_ANYOF)) &&
@@ -1782,6 +1820,48 @@ namespace PSRule.Rules.Azure.Data.Policy
             // Convert precondition to condition.
             policyDefinition.Condition = ReverseCondition(policyDefinition.Where);
             policyDefinition.Where = null;
+        }
+
+        /// <summary>
+        /// Try to split positive and negative cases.
+        /// Positive cases are used to select resources.
+        /// Negative cases are used to descriminate against resources that don't meet the policy.
+        /// </summary>
+        private static bool TrySplitPositiveNegativeCases(JObject condition, out JObject positive, out JObject negative)
+        {
+            positive = null;
+            negative = null;
+            if (condition == null || !condition.TryAllOf(out var allOf) || allOf == null || allOf.Count == 0)
+                return false;
+
+            var positiveCases = new JArray();
+            var negativeCases = new JArray();
+
+            foreach (var item in allOf.OfType<JObject>())
+            {
+                if (!item.ContainsKeyInsensitive(PROPERTY_FIELD))
+                    return false;
+
+                if (item.ContainsKeyInsensitive(PROPERTY_EQUALS) || item.ContainsKeyInsensitive(PROPERTY_IN) || item.ContainsKeyInsensitive(PROPERTY_CONTAINS))
+                {
+                    positiveCases.Add(item);
+                }
+                else if (item.ContainsKeyInsensitive(PROPERTY_NOTEQUALS) || item.ContainsKeyInsensitive(PROPERTY_NOTIN) || item.ContainsKeyInsensitive(PROPERTY_NOTCONTAINS))
+                {
+                    negativeCases.Add(item);
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            if (negativeCases.Count == 0)
+                return false;
+
+            positive = AllOfConditionOrSingle(positiveCases);
+            negative = AllOfConditionOrSingle(negativeCases);
+            return true;
         }
 
         private static JObject ReverseCondition(JObject condition)
@@ -1890,38 +1970,81 @@ namespace PSRule.Rules.Azure.Data.Policy
             return AndCondition(condition, nameCondition);
         }
 
+        /// <summary>
+        /// Merge two conditions with an <c>allOf</c>.
+        /// </summary>
         private static JObject AndCondition(JObject left, JObject right)
         {
             if (left != null && left.Count > 0 && right != null && right.Count > 0)
             {
-                var allOf = new JArray
+                if (left.TryAllOf(out var allOf))
                 {
-                    left,
-                    right
-                };
-                return new JObject
+                    allOf.MergeAllOf(right);
+                }
+                else if (right.TryAllOf(out allOf))
                 {
-                    { PROPERTY_ALLOF, allOf }
-                };
+                    allOf.MergeAllOf(left, insertBefore: true);
+                }
+                else
+                {
+                    allOf = new JArray
+                    {
+                        left,
+                        right
+                    };
+                }
+                return AllOfCondition(allOf);
             }
             return left == null || left.Count == 0 ? right : left;
         }
 
+        /// <summary>
+        /// Merge two conditions with an <c>anyOf</c>.
+        /// </summary>
         private static JObject OrCondition(JObject left, JObject right)
         {
             if (left != null && left.Count > 0 && right != null && right.Count > 0)
             {
-                var allOf = new JArray
+                if (left.TryAnyOf(out var anyOf))
                 {
-                    left,
-                    right
-                };
-                return new JObject
+                    anyOf.MergeAnyOf(right);
+                }
+                else if (right.TryAnyOf(out anyOf))
                 {
-                    { PROPERTY_ANYOF, allOf }
-                };
+                    anyOf.MergeAnyOf(left, insertBefore: true);
+                }
+                else
+                {
+                    anyOf = new JArray
+                    {
+                        left,
+                        right
+                    };
+                }
+                return AnyOfCondition(anyOf);
             }
             return left == null || left.Count == 0 ? right : left;
+        }
+
+        private static JObject AllOfCondition(JArray conditions)
+        {
+            return new JObject
+            {
+                { PROPERTY_ALLOF, conditions }
+            };
+        }
+
+        private static JObject AllOfConditionOrSingle(JArray conditions)
+        {
+            return conditions.Count == 1 ? conditions[0].Value<JObject>() : AllOfCondition(conditions);
+        }
+
+        private static JObject AnyOfCondition(JArray conditions)
+        {
+            return new JObject
+            {
+                { PROPERTY_ANYOF, conditions }
+            };
         }
 
         private static bool TryPolicyRuleEffect(PolicyAssignmentContext context, JObject then, out string effect)

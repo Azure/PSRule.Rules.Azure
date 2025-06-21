@@ -68,6 +68,9 @@
     <None Update="Policy.assignment.9.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Policy.assignment.10.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Update="Policy.assignment.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>

@@ -202,6 +202,21 @@ internal static class JsonExtensions
         return false;
     }
 
+#nullable enable
+
+    internal static bool TryGetStringArray(this JObject o, string propertyName, out string[]? value)
+    {
+        value = null;
+        if (o.TryGetValue(propertyName, StringComparison.OrdinalIgnoreCase, out var v) && v.Type == JTokenType.Array)
+        {
+            value = v.Values<string>()?.OfType<string>()?.ToArray();
+            return value != null;
+        }
+        return false;
+    }
+
+#nullable restore
+
     internal static bool TryGetProperty(this JObject o, string propertyName, out string value)
     {
         value = null;
