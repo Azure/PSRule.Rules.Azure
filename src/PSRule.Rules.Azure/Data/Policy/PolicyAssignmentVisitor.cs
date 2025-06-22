@@ -1675,15 +1675,32 @@ namespace PSRule.Rules.Azure.Data.Policy
             {
                 foreach (var item in items.OfType<JObject>().ToArray())
                 {
-                    if (OptimizeConditionObject(policyDefinition, item) == null)
+                    var child = OptimizeConditionObject(policyDefinition, item);
+                    if (child == null)
+                    {
                         item.Remove();
+                    }
+                    else if (condition.ContainsKeyInsensitive(PROPERTY_ALLOF) && child.TrySimpleAllOf(out var childItems))
+                    {
+                        // Re-parent child items of a similar simple allOf.
+                        items.AddRange(childItems);
+                        item.Remove();
+                    }
+                    else if (condition.ContainsKeyInsensitive(PROPERTY_ANYOF) && child.TrySimpleAnyOf(out childItems))
+                    {
+                        // Re-parent child items of a similar simple anyOf.
+                        items.AddRange(childItems);
+                        item.Remove();
+                    }
                 }
 
-                // Pull up child condition if not a sub-selector or quantifier
+                // Pull up child condition if this is a simple allOf/ anyOf and not a sub-selector or quantifier.
                 if (items.Count == 1 && condition.Count == 1)
-                {
                     return items[0].Value<JObject>();
-                }
+
+                // Optimize out if there is no child items remaining.
+                if (items.Count == 0)
+                    return null;
             }
             // Handle field merge.
             else if (condition.TryGetProperty(PROPERTY_FIELD, out var field))

@@ -15,6 +15,9 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <param name="definitionId">The policy definition ID.</param>
         public static void VerbosePolicyIgnoreConfigured(this ILogger logger, string definitionId)
         {
+            if (logger == null)
+                return;
+
             logger.WriteVerbose(PSRuleResources.PolicyIgnoreConfigured, definitionId);
         }
 
@@ -25,6 +28,9 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <param name="definitionId">The policy definition ID.</param>
         public static void VerbosePolicyIgnoreNotApplicable(this ILogger logger, string definitionId)
         {
+            if (logger == null)
+                return;
+
             logger.WriteVerbose(PSRuleResources.PolicyIgnoreNotApplicable, definitionId);
         }
 
@@ -36,6 +42,9 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <param name="ruleName">The name of the built-in rule.</param>
         public static void VerbosePolicyIgnoreDuplicate(this ILogger logger, string definitionId, string ruleName)
         {
+            if (logger == null)
+                return;
+
             logger.WriteVerbose(PSRuleResources.PolicyIgnoreDuplicate, definitionId, ruleName);
         }
 
@@ -46,6 +55,9 @@ namespace PSRule.Rules.Azure.Data.Policy
         /// <param name="definitionId">The policy definition ID.</param>
         public static void VerbosePolicyIgnoreDisabled(this ILogger logger, string definitionId)
         {
+            if (logger == null)
+                return;
+
             logger.WriteVerbose(PSRuleResources.PolicyIgnoreDisabled, definitionId);
         }
     }

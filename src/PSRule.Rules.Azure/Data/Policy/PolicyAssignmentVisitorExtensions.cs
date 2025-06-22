@@ -31,6 +31,24 @@ internal static class PolicyAssignmentVisitorExtensions
     }
 
     /// <summary>
+    /// Try to read the <c>allOf</c> property when it is the only property in the object.
+    /// </summary>
+    internal static bool TrySimpleAllOf(this JObject obj, out JArray allOf)
+    {
+        allOf = null;
+        return obj.Count == 1 && obj.TryArrayProperty(PROPERTY_ALLOF, out allOf);
+    }
+
+    /// <summary>
+    /// Try to read the <c>anyOf</c> property when it is the only property in the object.
+    /// </summary>
+    internal static bool TrySimpleAnyOf(this JObject obj, out JArray anyOf)
+    {
+        anyOf = null;
+        return obj.Count == 1 && obj.TryArrayProperty(PROPERTY_ANYOF, out anyOf);
+    }
+
+    /// <summary>
     /// Merge two <c>allOf</c> objects into a consolidated object to optimize condition evaluation.
     /// </summary>
     internal static void MergeAllOf(this JArray allOf, JObject other, bool insertBefore = false)

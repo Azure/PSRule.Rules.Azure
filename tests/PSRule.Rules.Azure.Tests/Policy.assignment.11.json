@@ -1,0 +1,92 @@
+[
+  {
+    "Location": "region",
+    "Name": "assignment.11",
+    "ResourceId": "/providers/Microsoft.Management/managementGroups/test/providers/Microsoft.Authorization/policyAssignments/assignment.11",
+    "ResourceName": "assignment.11",
+    "ResourceType": "Microsoft.Authorization/policyAssignments",
+    "PolicyAssignmentId": "/providers/Microsoft.Management/managementGroups/test/providers/Microsoft.Authorization/policyAssignments/assignment.11",
+    "Properties": {
+      "Scope": "/providers/Microsoft.Management/managementGroups/test",
+      "NotScopes": null,
+      "DisplayName": "ASC-Monitoring",
+      "Description": "ASC-Monitoring",
+      "Metadata": {},
+      "EnforcementMode": 0,
+      "PolicyDefinitionId": "/providers/Microsoft.Authorization/policySetDefinitions/1f3afdf9-d0c9-4c3d-847f-89da613e70a8",
+      "Parameters": null,
+      "NonComplianceMessages": null
+    },
+    "PolicyDefinitions": [
+      {
+        "Name": "definition.1",
+        "ResourceId": "/providers/Microsoft.Authorization/policyDefinitions/definition.1",
+        "ResourceName": "definition.1",
+        "ResourceType": "Microsoft.Authorization/policyDefinitions",
+        "Properties": {
+          "Description": "This policy audits Windows Azure Arc machines if the Log Analytics extension is not installed.",
+          "DisplayName": "[Preview]: Log Analytics extension should be installed on your Windows Azure Arc machines",
+          "Metadata": {
+            "version": "1.0.1-preview",
+            "category": "Monitoring",
+            "preview": true
+          },
+          "Mode": "Indexed",
+          "Parameters": {
+            "effect": {
+              "type": "String",
+              "metadata": {
+                "displayName": "Effect",
+                "description": "Enable or disable the execution of the policy"
+              },
+              "allowedValues": [
+                "AuditIfNotExists",
+                "Disabled"
+              ],
+              "defaultValue": "AuditIfNotExists"
+            }
+          },
+          "PolicyRule": {
+            "if": {
+              "allOf": [
+                {
+                  "field": "type",
+                  "equals": "Microsoft.HybridCompute/machines"
+                },
+                {
+                  "field": "Microsoft.HybridCompute/imageOffer",
+                  "like": "windows*"
+                }
+              ]
+            },
+            "then": {
+              "effect": "[parameters('effect')]",
+              "details": {
+                "type": "Microsoft.HybridCompute/machines/extensions",
+                "existenceCondition": {
+                  "allOf": [
+                    {
+                      "field": "Microsoft.HybridCompute/machines/extensions/type",
+                      "equals": "MicrosoftMonitoringAgent"
+                    },
+                    {
+                      "field": "Microsoft.HybridCompute/machines/extensions/publisher",
+                      "equals": "Microsoft.EnterpriseCloud.Monitoring"
+                    },
+                    {
+                      "field": "Microsoft.HybridCompute/machines/extensions/provisioningState",
+                      "equals": "Succeeded"
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "PolicyType": 2
+        },
+        "PolicyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/definition.1"
+      }
+    ],
+    "exemptions": []
+  }
+]
