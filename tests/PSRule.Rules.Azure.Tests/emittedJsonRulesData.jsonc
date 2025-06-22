@@ -33,7 +33,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "Azure.Policy.dda024fdd4b3",
+      "name": "Azure.Policy.5af91eb9c997",
       "displayName": "Deploy Log Analytics extension for Linux VMs",
       "tags": {
         "Azure.Policy/category": "Monitoring"
@@ -304,20 +304,16 @@
         "field": "resources",
         "allOf": [
           {
-            "allOf": [
-              {
-                "field": "properties.type",
-                "equals": "OmsAgentForLinux"
-              },
-              {
-                "field": "properties.publisher",
-                "equals": "Microsoft.EnterpriseCloud.Monitoring"
-              },
-              {
-                "field": "properties.provisioningState",
-                "equals": "Succeeded"
-              }
-            ]
+            "field": "properties.type",
+            "equals": "OmsAgentForLinux"
+          },
+          {
+            "field": "properties.publisher",
+            "equals": "Microsoft.EnterpriseCloud.Monitoring"
+          },
+          {
+            "field": "properties.provisioningState",
+            "equals": "Succeeded"
           }
         ],
         "where": {
@@ -785,7 +781,7 @@
       "rule": {
         "include": [
           "Azure.Policy.65db1c629a22",
-          "Azure.Policy.dda024fdd4b3",
+          "Azure.Policy.5af91eb9c997",
           "Azure.Policy.d56db8a16bcd",
           "Azure.Policy.5236dec1a570",
           "Azure.Policy.956f4a31128a",

@@ -32,6 +32,9 @@ See [upgrade notes][1] for helpful information when upgrading from previous vers
 
 What's changed since v1.44.2:
 
+- General improvements:
+  - Optimize generation of nested allOf/ anyOf condition in policy as rules by @BernieWhite.
+    [#1965](https://github.com/Azure/PSRule.Rules.Azure/issues/1965)
 - Bug fixes:
   - Fixed incorrect inversion of policy as rules conditions by @BernieWhite.
     [#3419](https://github.com/Azure/PSRule.Rules.Azure/issues/3419)
