@@ -1,6 +1,5 @@
 [
   {
-    "Location": "region",
     "Name": "assignment.11",
     "ResourceId": "/providers/Microsoft.Management/managementGroups/test/providers/Microsoft.Authorization/policyAssignments/assignment.11",
     "ResourceName": "assignment.11",

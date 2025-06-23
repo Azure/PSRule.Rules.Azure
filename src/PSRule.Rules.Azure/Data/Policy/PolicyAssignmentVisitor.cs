@@ -1100,7 +1100,8 @@ namespace PSRule.Rules.Azure.Data.Policy
                 TryConditionGreaterOrEquals(context, condition) ||
                 TryConditionIn(context, condition) ||
                 TryConditionNotIn(context, condition) ||
-                TryConditionNotEquals(context, condition);
+                TryConditionNotEquals(context, condition) ||
+                TryConditionEquals(context, condition);
         }
 
         private static void ResolveObject(PolicyAssignmentContext context, JObject o)
@@ -1123,10 +1124,28 @@ namespace PSRule.Rules.Azure.Data.Policy
 
         private static bool TryConditionNotEquals(PolicyAssignmentContext context, JObject condition)
         {
-            if (!condition.TryGetProperty<JToken>(PROPERTY_NOTEQUALS, out var notEquals))
+            if (!condition.ContainsKeyInsensitive(PROPERTY_NOTEQUALS))
                 return false;
 
-            notEquals.Parent.Replace(new JProperty(PROPERTY_NOTEQUALS, notEquals));
+            // Add type conversion.
+            if (condition.ContainsKeyInsensitive(PROPERTY_FIELD))
+            {
+                condition.Add(PROPERTY_CONVERT, true);
+            }
+            _ = condition.TryRenameProperty(PROPERTY_NOTEQUALS, PROPERTY_NOTEQUALS);
+            return true;
+        }
+
+        private static bool TryConditionEquals(PolicyAssignmentContext context, JObject condition)
+        {
+            if (!condition.ContainsKeyInsensitive(PROPERTY_EQUALS))
+                return false;
+
+            // Add type conversion.
+            if (condition.ContainsKeyInsensitive(PROPERTY_FIELD))
+            {
+                condition.Add(PROPERTY_CONVERT, true);
+            }
             return true;
         }
 
