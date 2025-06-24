@@ -4,7 +4,7 @@
     "apiVersion": "github.com/microsoft/PSRule/v1",
     "kind": "Rule",
     "metadata": {
-      "name": "AzureCustomPrefix.Policy.6546bdb3e190",
+      "name": "AzureCustomPrefix.Policy.3372c5c9437d",
       "displayName": "Allowed locations",
       "tags": {
         "Azure.Policy/category": "General"
@@ -30,7 +30,8 @@
           },
           {
             "field": "location",
-            "notEquals": "global"
+            "notEquals": "global",
+            "convert": true
           },
           {
             "notEquals": "Microsoft.AzureActiveDirectory/b2cDirectories",

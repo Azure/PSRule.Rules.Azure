@@ -38,35 +38,35 @@ public sealed class PolicyAssignmentVisitorTests
         // Check category and version
         var actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/34c877ad-507e-4c82-993e-3452a6e0ad3c");
         Assert.NotNull(actual);
-        Assert.Equal("Azure.Policy.ff989b7c6a22", actual.Name);
+        Assert.Equal("Azure.Policy.a62d063ad400", actual.Name);
         Assert.Equal("Storage", actual.Category);
         Assert.Equal("1.1.1", actual.Version);
         Assert.Single(actual.Types);
         Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
         Assert.Null(actual.Where);
-        Assert.Equal("{\"field\":\"properties.networkAcls.defaultAction\",\"equals\":\"Deny\"}", actual.Condition.ToString(Formatting.None));
+        Assert.Equal("{\"field\":\"properties.networkAcls.defaultAction\",\"equals\":\"Deny\",\"convert\":true}", actual.Condition.ToString(Formatting.None));
         Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
 
         actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/04c4380f-3fae-46e8-96c9-30193528f602");
         Assert.NotNull(actual);
-        Assert.Equal("Azure.Policy.60f209d143c7", actual.Name);
+        Assert.Equal("Azure.Policy.6c68f6293a36", actual.Name);
         Assert.Equal("Monitoring", actual.Category);
         Assert.Equal("1.0.2-preview", actual.Version);
         Assert.Single(actual.Types);
         Assert.Equal("Microsoft.Compute/virtualMachines", actual.Types[0]);
-        Assert.Equal("{\"anyOf\":[{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"Canonical\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"UbuntuServer\"},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"18.04-LTS\",\"16.04-LTS\",\"16.04.0-LTS\",\"14.04.0-LTS\",\"14.04.1-LTS\",\"14.04.5-LTS\"]}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"RedHat\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"RHEL\",\"RHEL-SAP-HANA\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"SUSE\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"SLES\",\"SLES-HPC\",\"SLES-HPC-Priority\",\"SLES-SAP\",\"SLES-SAP-BYOS\",\"SLES-Priority\",\"SLES-BYOS\",\"SLES-SAPCAL\",\"SLES-Standard\"]},{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"12-SP2\",\"12-SP3\",\"12-SP4\"]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"OpenLogic\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"CentOS\",\"Centos-LVM\",\"CentOS-SRIOV\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"cloudera\"},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"cloudera-centos-os\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]}", actual.Where.ToString(Formatting.None));
-        Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"field\":\"properties.type\",\"equals\":\"DependencyAgentLinux\"},{\"field\":\"properties.publisher\",\"equals\":\"Microsoft.Azure.Monitoring.DependencyAgent\"},{\"field\":\"properties.provisioningState\",\"equals\":\"Succeeded\"}],\"where\":{\"type\":\".\",\"equals\":\"Microsoft.Compute/virtualMachines/extensions\"}}", actual.Condition.ToString(Formatting.None));
+        Assert.Equal("{\"anyOf\":[{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"Canonical\",\"convert\":true},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"UbuntuServer\",\"convert\":true},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"18.04-LTS\",\"16.04-LTS\",\"16.04.0-LTS\",\"14.04.0-LTS\",\"14.04.1-LTS\",\"14.04.5-LTS\"]}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"RedHat\",\"convert\":true},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"RHEL\",\"RHEL-SAP-HANA\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"SUSE\",\"convert\":true},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"SLES\",\"SLES-HPC\",\"SLES-HPC-Priority\",\"SLES-SAP\",\"SLES-SAP-BYOS\",\"SLES-Priority\",\"SLES-BYOS\",\"SLES-SAPCAL\",\"SLES-Standard\"]},{\"field\":\"properties.storageProfile.imageReference.sku\",\"in\":[\"12-SP2\",\"12-SP3\",\"12-SP4\"]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"OpenLogic\",\"convert\":true},{\"field\":\"properties.storageProfile.imageReference.offer\",\"in\":[\"CentOS\",\"Centos-LVM\",\"CentOS-SRIOV\"]},{\"anyOf\":[{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"6.*\"},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]},{\"allOf\":[{\"field\":\"properties.storageProfile.imageReference.publisher\",\"equals\":\"cloudera\",\"convert\":true},{\"field\":\"properties.storageProfile.imageReference.offer\",\"equals\":\"cloudera-centos-os\",\"convert\":true},{\"field\":\"properties.storageProfile.imageReference.sku\",\"like\":\"7*\"}]}]}", actual.Where.ToString(Formatting.None));
+        Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"field\":\"properties.type\",\"equals\":\"DependencyAgentLinux\",\"convert\":true},{\"field\":\"properties.publisher\",\"equals\":\"Microsoft.Azure.Monitoring.DependencyAgent\",\"convert\":true},{\"field\":\"properties.provisioningState\",\"equals\":\"Succeeded\",\"convert\":true}],\"where\":{\"type\":\".\",\"equals\":\"Microsoft.Compute/virtualMachines/extensions\"}}", actual.Condition.ToString(Formatting.None));
         Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
 
         actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Authorization/policyDefinitions/f9be5368-9bf5-4b84-9e0a-7850da98bb46");
         Assert.NotNull(actual);
-        Assert.Equal("Azure.Policy.2289f9ccdf2b", actual.Name);
+        Assert.Equal("Azure.Policy.8e1841e332d8", actual.Name);
         Assert.Equal("Stream Analytics", actual.Category);
         Assert.Equal("5.0.0", actual.Version);
         Assert.Single(actual.Types);
         Assert.Equal("Microsoft.StreamAnalytics/streamingJobs", actual.Types[0]);
         var condition = actual.Condition.ToString(Formatting.None);
-        Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"greaterOrEqual\":1,\"field\":\"properties.logs[*]\",\"anyOf\":[{\"allOf\":[{\"field\":\"retentionPolicy.enabled\",\"equals\":\"true\"},{\"anyOf\":[{\"field\":\"retentionPolicy.days\",\"equals\":\"0\"},{\"value\":{\"$\":{\"padLeft\":{\"path\":\"retentionPolicy.days\"},\"totalLength\":3,\"paddingCharacter\":\"0\"}},\"greaterOrEquals\":365,\"convert\":true}]},{\"field\":\"enabled\",\"equals\":\"true\"}]},{\"allOf\":[{\"field\":\"enabled\",\"equals\":\"true\"},{\"anyOf\":[{\"field\":\"retentionPolicy.enabled\",\"notEquals\":\"true\"},{\"field\":\"properties.storageAccountId\",\"exists\":false}]}]}]}],\"where\":{\"type\":\".\",\"equals\":\"Microsoft.Insights/diagnosticSettings\"}}", actual.Condition.ToString(Formatting.None));
+        Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"greaterOrEqual\":1,\"field\":\"properties.logs[*]\",\"anyOf\":[{\"allOf\":[{\"field\":\"retentionPolicy.enabled\",\"equals\":\"true\",\"convert\":true},{\"anyOf\":[{\"field\":\"retentionPolicy.days\",\"equals\":\"0\",\"convert\":true},{\"value\":{\"$\":{\"padLeft\":{\"path\":\"retentionPolicy.days\"},\"totalLength\":3,\"paddingCharacter\":\"0\"}},\"greaterOrEquals\":365,\"convert\":true}]},{\"field\":\"enabled\",\"equals\":\"true\",\"convert\":true}]},{\"allOf\":[{\"field\":\"enabled\",\"equals\":\"true\",\"convert\":true},{\"anyOf\":[{\"field\":\"retentionPolicy.enabled\",\"notEquals\":\"true\",\"convert\":true},{\"field\":\"properties.storageAccountId\",\"exists\":false}]}]}]}],\"where\":{\"type\":\".\",\"equals\":\"Microsoft.Insights/diagnosticSettings\"}}", actual.Condition.ToString(Formatting.None));
         Assert.Equal(new string[] { "PSRule.Rules.Azure\\Azure.Policy.Indexed" }, actual.With);
     }
 
@@ -201,7 +201,7 @@ public sealed class PolicyAssignmentVisitorTests
 
         Assert.Equal("Azure.PolicyBaseline.All", baseline.Name);
         Assert.Equal("Generated automatically when exporting Azure Policy rules.", baseline.Description);
-        Assert.Equal(new string[] { "Azure.Policy.b8a4e2d03e09", "PSRule.Rules.Azure\\Azure.KeyVault.SoftDelete" }, baseline.Include);
+        Assert.Equal(new string[] { "Azure.Policy.708db92296f8", "PSRule.Rules.Azure\\Azure.KeyVault.SoftDelete" }, baseline.Include);
     }
 
     /// <summary>
@@ -284,13 +284,13 @@ public sealed class PolicyAssignmentVisitorTests
         Assert.NotNull(actual);
         Assert.Single(actual.Types);
         Assert.Equal("Microsoft.KeyVault/Vaults", actual.Types[0]);
-        Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.networkAcls.defaultAction\"},{\"equals\":\"Allow\",\"field\":\"properties.networkAcls.defaultAction\"},{\"exists\":false,\"field\":\"properties.networkAcls.virtualNetworkRules\"},{\"field\":\"properties.networkAcls.virtualNetworkRules\",\"notCount\":0},{\"exists\":false,\"field\":\"properties.networkAcls.ipRules\"},{\"field\":\"properties.networkAcls.ipRules\",\"notCount\":0}]}", actual.Where.ToString(Formatting.None));
+        Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.networkAcls.defaultAction\"},{\"equals\":\"Allow\",\"field\":\"properties.networkAcls.defaultAction\",\"convert\":true},{\"exists\":false,\"field\":\"properties.networkAcls.virtualNetworkRules\"},{\"field\":\"properties.networkAcls.virtualNetworkRules\",\"notCount\":0},{\"exists\":false,\"field\":\"properties.networkAcls.ipRules\"},{\"field\":\"properties.networkAcls.ipRules\",\"notCount\":0}]}", actual.Where.ToString(Formatting.None));
 
         actual = definitions.FirstOrDefault(definition => definition.DefinitionId == "/providers/Microsoft.Management/managementGroups/mg-01/providers/Microsoft.Authorization/policyDefinitions/00000000-0000-0000-0000-000000000002");
         Assert.NotNull(actual);
         Assert.Single(actual.Types);
         Assert.Equal("Microsoft.Storage/storageAccounts", actual.Types[0]);
-        Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.networkAcls.defaultAction\"},{\"equals\":\"Allow\",\"field\":\"properties.networkAcls.defaultAction\"},{\"exists\":false,\"field\":\"properties.networkAcls.virtualNetworkRules\"},{\"field\":\"properties.networkAcls.virtualNetworkRules\",\"notCount\":0},{\"exists\":false,\"field\":\"properties.networkAcls.ipRules\"},{\"field\":\"properties.networkAcls.ipRules\",\"notCount\":0}]}", actual.Where.ToString(Formatting.None));
+        Assert.Equal("{\"anyOf\":[{\"exists\":false,\"field\":\"properties.networkAcls.defaultAction\"},{\"equals\":\"Allow\",\"field\":\"properties.networkAcls.defaultAction\",\"convert\":true},{\"exists\":false,\"field\":\"properties.networkAcls.virtualNetworkRules\"},{\"field\":\"properties.networkAcls.virtualNetworkRules\",\"notCount\":0},{\"exists\":false,\"field\":\"properties.networkAcls.ipRules\"},{\"field\":\"properties.networkAcls.ipRules\",\"notCount\":0}]}", actual.Where.ToString(Formatting.None));
     }
 
     [Fact]
@@ -373,8 +373,29 @@ public sealed class PolicyAssignmentVisitorTests
 
         var actual = definitions.FirstOrDefault();
         Assert.Equal("{\"field\":\"properties.osName\",\"like\":\"windows*\"}", actual.Where.ToString(Formatting.None));
-        var s = actual.Condition.ToString(Formatting.None);
-        Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"field\":\"properties.type\",\"equals\":\"MicrosoftMonitoringAgent\"},{\"field\":\"properties.publisher\",\"equals\":\"Microsoft.EnterpriseCloud.Monitoring\"},{\"field\":\"properties.provisioningState\",\"equals\":\"Succeeded\"}],\"where\":{\"type\":\".\",\"equals\":\"Microsoft.HybridCompute/machines/extensions\"}}", actual.Condition.ToString(Formatting.None));
+        Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"field\":\"properties.type\",\"equals\":\"MicrosoftMonitoringAgent\",\"convert\":true},{\"field\":\"properties.publisher\",\"equals\":\"Microsoft.EnterpriseCloud.Monitoring\",\"convert\":true},{\"field\":\"properties.provisioningState\",\"equals\":\"Succeeded\",\"convert\":true}],\"where\":{\"type\":\".\",\"equals\":\"Microsoft.HybridCompute/machines/extensions\"}}", actual.Condition.ToString(Formatting.None));
+    }
+
+    /// <summary>
+    /// Test case for https://github.com/Azure/PSRule.Rules.Azure/issues/3426.
+    /// </summary>
+    [Fact]
+    public void Visit_ShouldConvertValues_WhenComparingFieldEquity()
+    {
+        var context = new PolicyAssignmentContext(GetContext());
+        var visitor = new PolicyAssignmentDataExportVisitor();
+        foreach (var assignment in GetAssignmentData("Policy.assignment.12.json").Where(a => a["Name"].Value<string>() == "assignment.12"))
+            visitor.Visit(context, assignment);
+
+        var definitions = context.GetDefinitions();
+        Assert.NotNull(definitions);
+        Assert.Single(definitions);
+
+        var actual = definitions.FirstOrDefault();
+        var s = actual.Where.ToString(Formatting.None);
+        var t = actual.Condition.ToString(Formatting.None);
+        Assert.Equal("{\"allOf\":[{\"field\":\"kind\",\"contains\":\"functionapp\"},{\"field\":\"kind\",\"notContains\":\"workflowapp\"}]}", actual.Where.ToString(Formatting.None));
+        Assert.Equal("{\"field\":\"resources\",\"allOf\":[{\"field\":\"properties.remoteDebuggingEnabled\",\"equals\":\"false\",\"convert\":true}],\"where\":{\"type\":\".\",\"equals\":\"Microsoft.Web/sites/config\"}}", actual.Condition.ToString(Formatting.None));
     }
 
     #region Helper methods
